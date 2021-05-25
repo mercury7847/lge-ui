@@ -1,0 +1,927 @@
+.cont-wrap {
+    max-width:100%;
+    padding: 0;
+    background-color: #fff;
+    @include mobile {
+        border:none;
+    }
+}
+
+.pc-only {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+
+.mo-only {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.unmanned-store-head {
+    position: relative;
+    .inner {
+        &.head {
+            position: relative;
+            max-width: 1380px;
+            display: flex;
+            margin: 23px auto 64px auto;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            .headTitle {
+                margin: 0 auto;
+                font-size: 24px;
+            }
+            .shareBox {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                right: 0;
+                top: -5px;
+                .shareTitle {
+                    font-size: 14px;
+                }
+                .component-wrap {
+                    position: relative;
+                }
+            }
+        }
+    }
+    @include mobile {
+        .inner {
+            &.head {
+                margin-bottom: 33px;
+                .headTitle {
+                    width: 216px;
+                    line-height: 34px;
+                }
+                .shareBox {
+                    right: 16px;
+                    top: 0px;
+                    .shareTitle {
+                        display: none;
+                    }
+                    .component-wrap {
+                        position: relative;
+                    }
+                    .title {
+                        font-size: 16px;
+                        line-height: 24px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.visual-wrap {
+    position:relative;
+    img {
+        width:100%;
+    }
+    @include mobile {
+        // padding:0 20px;
+    }
+    .bg {
+        display:block;
+        width:100%;
+        height:100%;
+        background-position:center center;
+        background-size:auto 100%;
+        background-repeat:no-repeat;
+    }
+    .tit-wrap {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-573px,-50%);
+        @media screen and (max-width: 1146px) {
+            left:40px;
+            transform:translate(0,-50%);
+        }
+        @include mobile {
+            top:48px;
+            right:20px;
+            left: 20px;
+            transform:translateY(0);
+            color: $color-white;
+        }
+        @include pc {
+            color: $color-white;
+        }
+        .tit {
+            font-size:48px;
+            line-height:64px;
+            font-weight:700;
+            @media screen and (max-width: 1411px) and (min-width: 768px) {
+                 font-size:48px;
+                line-height:64px;
+                 font-size: 4.20684vw;
+                line-height: 5.60911vw;
+
+            }
+            @include mobile {
+                font-size:26px;
+                line-height:35px;
+                font-weight: 700;
+            }
+        }
+        .txt {
+            display:block;
+            padding-top:20px;
+            font-size:24px;
+            line-height:34px;
+            font-weight:400;
+            @media screen and (max-width: 1411px) and (min-width: 768px) {
+                padding-top: 1.75285vw;
+                font-size: 2.10342vw;
+                line-height: 2.97984vw;
+            }
+
+            sub{
+                @include font-small;
+                margin-top: 12px;
+            }
+
+            @include mobile {
+                padding-top:10px;
+                font-size:16px;
+                line-height:24px;
+                font-weight: 400;
+            }
+        }
+        .btn-area {
+            margin-top: 32px;
+            .btn {
+                padding: 7px 15px;
+                @include font-small;
+                @include pc {
+                    border-color: $color-white !important;
+                    color: $color-white;
+                }
+                @include mobile {
+                    padding:10px 19px;
+                }
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: $color-primary !important;
+                }
+            }
+        }
+    }
+}
+
+.page-header {
+    &.fixed {
+        margin-bottom: 0;
+        padding-top: 0;
+        background-color: $color-bg-wt;
+    }
+}
+@include mobile {
+    .page-header {
+        padding:0;
+        &.border {
+            border-bottom:12px solid #f4f4f4;
+        }
+        .title {
+            display:none;
+        }
+    }
+    .tabs-wrap.btn-type {
+        padding-top:40px;
+        text-align:center;
+    }
+}
+
+.unmanned-store-content {
+    width: 100%;
+    margin-top: 90px;
+    @include mobile {
+        margin-top: 55px;
+    }
+    .unmanned-store-intro-wrap {
+        max-width: 1380px;
+        margin: 0 auto;
+            @include mobile {
+                max-width: 100%;
+                padding: 0 16px;
+            }
+    }
+    .unmanned-store-introdution {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 80px;
+        @include mobile {
+            display: block;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .unmanned-store-text {
+            width: 560px;
+            padding-top: 56px;
+            padding-right: 40px;
+
+            .num {
+                display: none;
+                margin-bottom: 12px;
+                font-weight: 700;
+                @include font-large-2;
+                color: $color-gray-1;
+            }
+            .tit {
+                font-weight: 700;
+                @include font(40px,56px);
+                word-break: keep-all;
+            }
+            .desc {
+                margin-top: 16px;
+                @include font($font-medium,26px);
+                word-break: keep-all;
+                .txt {
+                    display: block;
+                    margin-top: 16px;
+                    @include font-small;
+                    color: $color-gray-1;
+                }
+            }
+            .bullet-list {
+                margin-top: 12px;
+            }
+            .btn-area {
+                margin-top: 32px;
+            }
+            @include mobile {
+                width: 100%;
+                padding: 0 16px 32px;
+                .tit {
+                    @include font(27px,38px);
+                }
+                .desc {
+                    margin-top: 12px;
+                    @include font(15px,23px);
+                }
+                .btn-area {
+                    margin-top: 24px;
+                }
+                .bullet-list {
+                    margin-top: 8px;
+                    .b-txt {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        .unmanned-store-visual {
+            @include pc{
+                max-width: 678px;
+            }
+            
+            //flex: 1;
+            img {
+                max-width: 100%;
+                height: auto;
+                vertical-align: top;
+            }
+        }
+        &.center {
+            align-items: center;
+            .unmanned-store-text {
+                padding-top: 0;
+                @include mobile {
+                    width: 100%;
+                    padding: 0 20px 32px;
+                }
+            }
+        }
+        &.right {
+            .unmanned-store-text {
+                order: 2;
+                padding-right: 0;
+                padding-left: 40px;
+                @include mobile {
+                    width: 100%;
+                    padding: 0 20px 32px;
+                }
+            }
+            .unmanned-store-visual {
+                order: 1;
+            }
+        }
+    }
+}
+.unmanned-store-map{
+    .pc-only{
+        display: inline-block;
+        @include mobile{
+            display: none;
+        }
+    }
+    
+   .inner {
+        max-width: 1380px + 80px;
+        margin: 0 auto;
+        padding: 0 40px;
+        .service-title {
+            margin-bottom: 64px;
+            @include font(40px,56px);
+            text-align: center;
+        }
+        @include mobile {
+            max-width: 100%;
+            padding: 0px;
+            .service-title {
+                margin-bottom: 32px;
+                @include font(27px,38px);
+            }
+        }
+        .map-area{
+            padding-top: 80px;
+            padding-bottom: 80px;
+            @include mobile{
+                padding-top: 40px;
+                padding-bottom: 60px;
+            }
+            .box{
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                @include mobile { 
+                    flex-wrap: wrap; 
+                }
+            }
+            .map{
+                width: 973px;
+                min-width: 973px;
+                height: 536px;
+                position: relative;
+
+                @media screen and (max-width: 1300px) and (min-width: 768px) {
+                     width: 74.84615vw;
+                    min-width: 74.84615vw;
+                    height: 41.23077vw
+                }
+
+                @include mobile{
+                    width: 100vw;
+                    min-width: 100%;
+                    height: 89.96089vw;
+                }
+                &.seoul{
+
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_seoul.svg') no-repeat 0 0; 
+                    background-size: 100%;
+                    
+                    @include mobile{ background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_seoul-m.svg') no-repeat 0 0; background-size: 100%; }
+
+                    .pin{
+                        &.idx01{ left: 53.5%; top: 73.7%; }
+                        &.idx02{ left: 33.5%; top: 50.7%; }
+                        &.idx03{ left: 38.5%; top: 78.7%; }
+                        &.idx04{ left: 41.5%; top: 70.7%; }
+                        &.idx05{ left: 57.5%; top: 14.7%; }
+                        &.idx06{ left: 43.5%; top: 33.7%; }
+                        &.idx07{ left: 17.5%; top: 66.7%; }
+                        &.idx08{ left: 26.5%; top: 19.7%}          
+                        @include mobile{
+                            &.idx01 {left: 65.5%; top: 77.7%; }
+                            &.idx02 {left: 31.5%; top: 51.7%; }
+                            &.idx03 {left: 38.5%; top: 79.7%; }
+                            &.idx04 {left: 46.5%; top: 70.7%; }
+                            &.idx05 {left: 71.5%; top: 11.7%; }
+                            &.idx06 {left: 48.5%; top: 27%; }
+                            &.idx07 {left: 3.5%; top: 65.7%; }
+                            &.idx08 {left: 10.5%; top: 15.7%; }                            
+                        }          
+                    }
+                }
+                &.gyeongsang{ 
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang.svg') no-repeat 0 0; 
+                    background-size: 100%;
+                    @include mobile{
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang-m.svg') no-repeat 0 0; 
+                        background-size: 100%;
+                    }
+                    .pin{
+                        &.idx01{ left: 41.9%; top: 49.7%; }
+                    }
+                }
+                
+                .pin{
+                    color: #fff;
+                    font-size: 14px;
+                    text-align: center;
+                    display: inline-block;
+                    position: absolute;
+                    width: 97px;
+                    height: 38px;
+                    padding: 7px 0 0 20px;
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin.svg') no-repeat 0 0;
+                    background-size: 100%;
+                    
+                    &.wide{
+                        width: 106px;
+                        height: 38px;
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide.svg') no-repeat 0 0;
+                        background-size: 100%;
+                        &:hover,&:focus{
+                            background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide_over.svg') no-repeat 0 0;
+                            background-size: 100%;
+                        }
+                         @media all and (max-width: 1200px) and (min-width: 768px) { width: 8.83333vw; height: 3.16667vw; }
+                         @include mobile{
+                            background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide-m.svg') no-repeat 0 0;
+                            background-size: 100%;
+                            width: 160px;
+                            height: 63px;
+                            width: 20.86050vw;
+                            height: 8.21382vw;
+                            &:hover,&:focus{
+                                background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide_over-m.svg') no-repeat 0 0;
+                                background-size: 100%;
+                            }
+                    
+                         }
+                    }
+
+                    @include mobile{
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m.svg') no-repeat 0 0;
+                        font-size: 26px;
+                        padding: 6px 24px 0;
+                        width: 142px;
+                        height: 63px;
+                        background-size: 100% 100%;
+                        font-size: 3.38542vw;
+                        
+                        padding: 0.78125vw 3.12500vw 0;
+                        padding: 1.04302vw 0 0 0;
+               
+
+                        width: 18.51369vw;
+                        height: 8.21382vw;    
+                        padding: 1.56454vw 0 0 0;
+
+                    }
+                    
+                    &:hover,&:focus{
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_over.svg') no-repeat 0 0;
+                        background-size: 100%;
+
+                        @include mobile{
+                            background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_over-m.svg') no-repeat 0 0;
+                            background-size: 100% 100%;
+
+                        }
+                    }
+                  
+                    @media all and (max-width: 1200px) and (min-width: 768px) {
+                        font-size: 1.16667vw;
+                        width: 8.08333vw;
+                        height: 3.16667vw;
+                        padding: 0.58333vw 0 0 1.66667vw;
+                    }
+                }
+            
+            }
+            .list{
+                // min-width: 345px;
+                max-width: 100%;
+                margin-left: 30px;
+                @media screen and (max-width: 1200px) and (min-width: 768px) {
+                    margin-left: 2.50000vw
+                    // margin-left: 0px;
+                    // margin-top: 25px;
+                }
+                // padding-left: 82px;
+                position: relative;
+                // text-align: right;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                @include mobile{
+                    margin-top: 6.5px;
+                    margin-left: 0;
+                    padding: 0 30px;
+                }
+                
+                
+                > ol{
+
+                    @include mobile{
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: baseline;
+                    }
+                    > li{
+                         @include mobile{
+                             display: inline-block;
+                             width: 50%;
+                         }
+                        a {
+                            @include font(16px, 26px);
+                            @media screen and (max-width: 1200px) and (min-width: 768px) {
+                                        font-size: 1.33333vw; line-height: 2.16667vw
+                            }
+                            font-weight: $font-weight-regular;
+                            text-decoration: underline;
+                            &::after {
+                                content: '';
+                                display: inline-block;
+                                width: 16px;
+                                height: 16px;
+                                background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 4px 3px;
+                                background-repeat: no-repeat;
+                                @media all and (max-width: 1200px) and (min-width: 768px) {
+                                        width: 1.33333vw;
+                                        height: 1.33333vw;
+                                        background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 0.33333vw 0.25000vw;
+                                        background-size: 100%;
+                                }
+                            }
+                        }
+                        &:not(:first-child){
+                            margin-top: 24px;
+                            @media all and (max-width: 1200px) and (min-width: 768px) { margin-top: 2.00000vw }                            
+                        }
+                        
+                          @include mobile{
+                                margin-top: 18.5px;
+                            }
+
+                        
+                    }
+                }
+
+                    .bullet-list{
+                        // margin-top: 10px;
+
+                        @include mobile{
+                            margin-top: 40px;
+                        }
+                        > li{
+                            margin-top: 0;
+                            @include font-small;
+
+                             @media all and (max-width: 1200px) and (min-width: 768px) {
+                                    margin-top: 0.16667vw;
+                                    padding-left: 0.91667vw;
+                                    font-size: 1.16667vw;
+                                    line-height: 2.00000vw
+                            }
+                        }
+                    }
+                    .bullet-text{
+                    
+                        @include mobile{
+                            margin-top: 40px;
+                        }
+                        @media all and (max-width: 1200px) and (min-width: 768px) {
+                                margin-top: 0.16667vw;
+                                padding-left: 0.91667vw;
+                                font-size: 1.16667vw;
+                                line-height: 2.00000vw
+                        }
+                }
+                
+            }
+
+        }
+
+
+        > ol {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -24px 0 0 -24px;
+            > li {
+                position: relative;
+                width: 50%;
+                padding: 24px 0 0 24px;
+                &:nth-child(1) {
+                    width: 100%;
+                    .img-area {
+                        max-width: 678px;
+                    }
+                    .text-area {
+                        align-self: center;
+                    }
+                }
+            }
+            @include mobile {
+                margin: -12px 0 0;
+                > li {
+                    width: 100%;
+                    padding: 12px 0 0;
+                }
+            }
+        }
+    }
+
+}
+
+.unmanned-store-service {
+    margin-bottom: 100px;
+    padding: 80px 0;
+    background-color: $color-bg;
+    @include mobile {
+        margin: 60px 0;
+        padding: 60px 0;
+        overflow: hidden;
+    }
+    .title {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 50px;
+        @include mobile {
+            font-size: 27px;
+            margin-bottom: 24px;
+        }
+    }
+    .slide-wrap {
+        &.carousel-type {
+            &.carousel-4 {
+                max-width: 1380px;
+                @include mobile {
+                    max-width: none;
+                }
+                .slide-conts {
+                    position: relative;
+                    &::before {
+                        position: absolute;
+                        top: 90px;
+                        right: -20px;
+                        content: '';
+                        width: 32px;
+                        height: 32px;
+                        background-image: url('/lg5-common/images/MA/unmanned-store/ic_calender_next.png');
+                        background-position: 0 0;
+                        background-repeat: no-repeat;
+                        @include mobile {
+                            display: none;
+                        }
+                    }
+                    &:last-child {
+                        &::before {
+                            display: none;
+                        }
+                    }
+                    .slide-box {
+                        text-align: center;
+                        .icon {
+                            width: 200px;
+                            height: 200px;
+                            margin: 0 auto 30px auto;
+                            background-color: #fff;
+                            border-radius: 100%;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: center;
+                            @include mobile {
+                                width: 180px;
+                                height: 180px;
+                                margin: 0 auto 25px auto;
+                            }
+                            img {
+                                align-self: center;
+                            }
+                        }
+                        .SlideNum {
+                            font-size: 24px;
+                            font-weight: 700;
+                            margin-bottom: 10px;
+                            display: block;
+                            @include mobile {
+                                font-size: 18px;
+                                margin-bottom: 7px;
+                            }
+                        }
+                        .SlideText {
+                            font-size: 18px;
+                            line-height: 28px;
+                            @include mobile {
+                                font-size: 14px;
+                                line-height: 22px;
+                            }
+                            span {
+                                color: #da0f47;
+                            }
+                        }
+                    }
+                }
+                .btn-arrow {
+                    &.prev {
+                        @include mobile {
+                            left: 30px;
+                        }
+                    }
+                    &.next {
+                        @include mobile {
+                            right: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
+            
+    
+}
+.btm-link {
+    margin: 80px 0 120px;
+    padding: 48px 0;
+    text-align: center;
+    @include mobile {
+        margin: 60px 0;
+        padding: 40px 16px;
+    }
+    &:before {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 24px;
+        background: url('/lg5-common/images/STC/lg-pay-logo.png') no-repeat 0 0;
+        background-size: 100%;
+        content: '';
+    }
+    .tit {
+        font-weight: 700;
+        @include font($font-large-2,34px);
+        @include mobile {
+            @include font($font-large-1,28px);
+        }
+    }
+    .btn-area {
+       margin-top: 24px;
+    }
+}
+.title-wrap {
+    max-width:1380px + 80px;
+    margin:0 auto;
+    padding:0 40px;
+    text-align:center;
+    .service-title {
+        margin-bottom:64px;
+        @include font(40px,56px);
+        @include mobile {
+            margin-bottom:32px;
+            @include font(27px,38px);
+        }
+    }
+}
+.slide-wrap.carousel-type {
+    &.carousel-1 {
+        &.lg-pay {
+            max-width: 1380px;
+            margin: 0 auto;
+            background: #f4f4fb;
+
+            .indi-wrap {
+                position: absolute;
+                bottom: 32px;
+                margin-top: 0;
+                li {
+                    padding: 0 4px;
+                }
+            }
+            @include mobile {
+                max-width: 100%;
+                padding: 45px 0 64px;
+                .indi-wrap {
+                    bottom: 32px;
+                }
+            }
+            .slide-controls {
+                // display: none;
+                right: 0;
+                left: 0;
+                transform: translateX(0px);
+                .btn-arrow {
+                    &.prev,
+                    &.next {
+                        transform: translateX(0);
+                    }
+                    &.prev {
+                        left: -18px;
+                    }
+                    &.next {
+                        right: -18px;
+                    }
+                }
+                @media screen and (max-width: 1380px) {
+                    .btn-arrow {
+                        &.prev {
+                            left: 20px;
+                        }
+                        &.next {
+                            right: 20px;
+                        }
+                    }
+                }
+            }
+            .slide-content {
+                .slide-conts {
+                    height: 455px;
+                    .inner {
+                        display: table;
+                        width: 100%;
+                        max-width: (1380px + 80px);
+                        height: 100%;
+                        margin: 0 auto;
+                        padding: 0 40px;
+                        font-size: 0;
+                        @media screen and (min-width:(1380px + 80px + 1)) {
+                            padding: 0 157px;
+                        }
+                    }
+                    .slide-info-area {
+                        display: table-cell;
+                        width: 396px;
+                        //margin-right: 93px;
+                        vertical-align: middle;
+                        .boxs {
+                            .step {
+                                font-weight: 700;
+                                @include font-small;
+                                color: $color-gray-1;
+                            }
+                            .title {
+                                margin: 2px 0 16px;
+                                font-weight: 700;
+                                @include font($font-large-2,34px);
+                            }
+                            .desc {
+                                @include font-medium;
+                            }
+                            .bullet-list {
+                                margin-top: 8px;
+                            }
+                            .btn-area {
+                                margin-top: 24px;
+                            }
+                        }
+                    }
+                    .visual-area {
+                        display: table-cell;
+                        width: 560px;
+                        text-align: right;
+                        vertical-align: middle;
+                        img {
+                            width: 100%;
+                            max-width: 560px;
+                        }
+                    }
+
+                    @include mobile {
+                        height: 100%;
+                        margin: 0;
+                        padding-bottom: 14.2%;
+                        .inner {
+                            //display: flex;
+                            //flex-direction: column;
+                            //justify-content: space-between;
+                            max-width: 100%;
+                            padding: 0 16px;
+                        }
+                        .slide-info-area {
+                            display: block;
+                            width: 100%;
+                            min-height: 202px;
+                            padding-top: 0;
+                            text-align: center;
+                            .boxs {
+                                padding: 0 20px;
+                                .title {
+                                    margin-bottom: 12px;
+                                    @include font($font-large-1,28px);
+                                }
+                            }
+                        }
+                        .visual-area {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            left: 0;
+                            //align-content: flex-end;
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            img {
+                                max-width: 100%;
+                                //height: auto;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
