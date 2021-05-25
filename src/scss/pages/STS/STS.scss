@@ -77,13 +77,13 @@
     }
 
     .story-section {
-        &.new_story {
+        &.new_story { 
             border-top: 0;
-            /* 20210526 추가 */  
+            /* 20210526_1 추가 */  
             .inner {
-                padding-top: 70px !important; 
+                padding-top: 60px !important;
             }
-            /* //20210526 추가 */ 
+            /* //20210526_1 추가 */ 
         }
         border-top: 16px solid $color-bg;
         padding-bottom: 120px;
