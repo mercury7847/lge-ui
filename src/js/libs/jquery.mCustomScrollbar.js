@@ -1,6 +1,5 @@
 /*
-
-=== malihu jquery custom scrollbar plugin ===
+== malihu jquery custom scrollbar plugin == 
 Version: 3.1.5 
 Plugin URI: http://manos.malihu.gr/jquery-custom-content-scroller 
 Author: malihu
@@ -36,8 +35,6 @@ For production, use either the minified jquery.mCustomScrollbar.min.js script or
 the production-ready jquery.mCustomScrollbar.concat.min.js which contains the plugin 
 and dependencies (minified). 
 */
-
-
 
 (function(factory){
 	if(typeof define==="function" && define.amd){

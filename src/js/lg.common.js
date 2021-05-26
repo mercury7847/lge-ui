@@ -2,38 +2,6 @@
 var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
-var goAppLink = function() {
-    var path = location.pathname;
-    
-    
-
-    return vcui.detect.isIOS ? 'lgeapp://goto?weblink='+path : 'lgeapp://goto?weblink='+path+'#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;'
-}
-
-var appRun = function() {
-   
-    var redirectWeb = localStorage.getItem('redirectWebUrl') === 'true';
-    console.log(redirectWeb);
-    if(!redirectWeb) {
-        var now = new Date().getTime();
-        var redirectWebUrl = location.href;
-        var appScheme = goAppLink();
-
-        setTimeout(function () {
-            if (new Date().getTime() - now < 1000) {
-                localStorage.setItem('redirectWebUrl','true') 
-                location.href = redirectWebUrl;
-
-            }
-        }, 500);
-
-        setTimeout(function () {
-            location.href = appScheme;
-        }, 100);
-
-    } 
-}
-
 
 
 ;(function(global){
@@ -52,7 +20,6 @@ var appRun = function() {
 
 
     window.onload = function(){
-        appRun();
         vcui.require([
             'ui/lazyLoaderSwitch',
             'ui/lazyLoader'
