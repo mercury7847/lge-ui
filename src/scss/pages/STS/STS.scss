@@ -20,6 +20,7 @@
 //            }
 //        }
 //    }
+
 //    .floating-wrap .floating-menu {
 //        .easy-path {
 //            .inner {
@@ -51,6 +52,7 @@
 //        }
 //    }
 //}
+// test
 
 .story-main {
     .pc-only {
@@ -65,7 +67,7 @@
     }
     .cont-wrap {
         max-width: 100%;
-        padding: 0;
+        padding: 0; 
     }
 
     .flexbox-wrap {
@@ -75,9 +77,17 @@
     }
 
     .story-section {
-        padding-bottom: 120px;
+        &.new_story { 
+            border-top: 0;
+            /* 20210526_1 추가 */  
+            .inner {
+                padding-top: 60px !important;
+            }
+            /* //20210526_1 추가 */ 
+        }
         border-top: 16px solid $color-bg;
-        &:first-child {
+        padding-bottom: 120px;
+        &:first-child { 
             border-top: 0;
             .inner {
                 > .title {
@@ -184,7 +194,8 @@
                 text-align: center;
             }
         }
-        &.link-story {
+        /* 20210517 수정 */
+        &.link-story { 
             padding-bottom:48px;
             .title {
                 margin-bottom: 0;
@@ -195,6 +206,7 @@
             .inner {
                 //padding-top:0;
             }
+            /* //20210517 수정 */
         }
         .story-link {
             margin-top:24px;
@@ -206,6 +218,9 @@
                 font-size:0;
                 @include mobile {
                     margin-top:-12px;
+                    width: 45%;
+                    min-width: 270px;
+                    margin: 0 auto;
                 }
                 li {
                     display:inline-block;
@@ -348,6 +363,119 @@
                 }
             }
         }
+        /* 20210518 추가*/ 
+        &.tag-subscribe-story2 {
+            margin-bottom: -16px;
+            padding: 32px 0 28px;
+            border-top: 0;
+            background-color: $color-bg;
+            .flexbox-wrap {
+                max-width: 1460px;
+                margin: 0 auto;
+                padding: 0 40px;
+                .flexbox {
+                    width: 100%;
+                }
+            }
+            .title-area {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 16px;
+                .title {
+                    margin: 0;
+                    font-size: 20px;
+                    line-height: 30px;
+                    em {
+                        color: $color-primary;
+                    }
+                }
+            }
+            @include mobile {
+                margin-bottom: -12px;
+                padding: 24px 0 18px;
+                .flexbox-wrap {
+                    padding: 0;
+                    .flexbox {
+                        padding-bottom: 0;
+                    }
+                }
+                .title-area {
+                    padding: 0 20px;
+                    .title {
+                        font-size: 14px;
+                        line-height: 23px;
+                    }
+                }
+            }
+            .tag-lists-wrap {
+                position: relative;
+                margin: 0 -6px;
+                @include mobile {
+                    margin: 0;
+                    .scroll-controls {
+                        .btn-arrow {
+                            position: absolute;
+                            top: 0;
+                            width: 40px;
+                            height: 100%;
+                            padding: 0;
+                            border-radius: 0;
+                            &:before {
+                                display: none;
+                            }
+                            &.prev {
+                                left: 0;
+                                background-image: linear-gradient(to left, rgba($color-bg, 0), $color-bg);
+                            }
+                            &.next {
+                                right: 0;
+                                background-image: linear-gradient(to right, rgba($color-bg, 0), $color-bg);
+                            }
+                        }
+                    }
+                }
+            }
+            .tag-lists {
+                @include pc {
+                    width: auto !important;
+                }
+                padding: 0;
+                li {
+                    display: inline-block;
+                    margin: 0;
+                    padding: 0 6px 12px;
+                    &:last-child {
+                    }
+                }
+                .tag {
+                    padding: 14px 16px 14px 20px;
+                    .text {
+                        padding-right: 24px;
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+                }
+                @include mobile {
+                    padding: 0 16px;
+                    li {
+                        display: inline-block;
+                        margin: 0;
+                        padding: 0 4px 12px;
+                        &:last-child {
+                        }
+                    }
+                    .tag {
+                        padding: 11px 12px 11px 16px;
+                        .text {
+                            padding-right: 12px;
+                            font-size: 16px;
+                            line-height: 23px;
+                        }
+                    }
+                }
+            }
+        }
+        /* //20210518 추가*/
     }
 
     .story-count {
