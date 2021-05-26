@@ -157,7 +157,7 @@
                 var marker = new naver.maps.Marker({
                         position: new naver.maps.LatLng(latitude, longitude),
                         icon: {
-                            url: '/lg5-common/images/icons/icon-point.svg',
+                            url: '/lg5-common/images/icons/icon-point.png',
                             // content: 
                             //     '<div>'+
                             //     '   <div class="point on">'+
