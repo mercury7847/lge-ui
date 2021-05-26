@@ -892,12 +892,24 @@ $(function () {
         var cookie_name = '__LGAPP_DLOG__';
         var app = {
             ios: {
-                link: 'https://itunes.apple.com/app/id1561079401?mt=8'
+                // link: 'https://itunes.apple.com/app/id1561079401?mt=8'
+                link:'lgeapp://goto?weblink={랜딩페이지}'
             },
             android: {
-                link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
+                // link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
+                link:'Intent://goto?weblink=/lg-objet-collection#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;'
             }
         };
+
+// ios
+//         <a href="lgeapp://goto?weblink={랜딩페이지}">WEB</a>
+
+//         android
+//         <a href="Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;">WEB</a>
+// 개발 패키지명 : kr.co.lge.android.dev
+//         <a href="Intent://goto?weblink={랜딩페이지}#Intent;scheme=lgeapp;package=kr.co.lge.android;end;">WEB</a>
+
+
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');
