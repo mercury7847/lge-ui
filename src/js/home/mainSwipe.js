@@ -164,6 +164,10 @@ MainSwiper.prototype = {
             });
             */
         });
+    },
+    // fixed 처리된 모달 수정값
+    getLeft: function(){
+        return Math.abs($('#sw_con .swiper-wrapper').offset().left);
     }
 }
 
