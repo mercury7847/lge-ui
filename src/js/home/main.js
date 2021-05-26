@@ -206,7 +206,7 @@ $(function () {
         var visualAnimInterval;
 
         if (vcui.detect.isMobileDevice){
-            $scenes.eq(0).css('height', 'calc(100vh - 84px)');
+            //$scenes.eq(0).css('height', 'calc(100vh - 84px)');
         } else {
             $scenes.eq(0).css('height', 'calc(100vh - 110px)');
         }
@@ -710,6 +710,12 @@ $(function () {
                 }else{
                     itemHeight = winHeight;    
                 }
+                // BTOCSITE-740 스크롤 배너 사이즈 변경
+                if (vcui.detect.isMobileDevice){
+                    itemHeight = 500;
+                }
+                
+
                 allHeight += itemHeight;
                 posArr.push(allHeight);
                 //$(this).height(itemHeight);
