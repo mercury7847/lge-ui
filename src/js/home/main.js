@@ -892,12 +892,13 @@ $(function () {
         var cookie_name = '__LGAPP_DLOG__';
         var app = {
             ios: {
-                link: 'https://itunes.apple.com/app/id1561079401?mt=8'
+                link:goAppLink()
             },
             android: {
-                link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
+                link:goAppLink()
             }
         };
+
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');

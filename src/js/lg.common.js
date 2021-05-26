@@ -2,8 +2,10 @@
 var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
-
-
+var goAppLink = function() {
+    var path = location.pathname;
+    return vcui.detect.isIOS ? 'lgeapp://goto?weblink='+path : 'lgeapp://goto?weblink='+path+'#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;'
+}
 ;(function(global){
 
     if(global['lgkorUI']) return;
