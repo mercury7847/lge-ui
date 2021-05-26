@@ -1451,8 +1451,8 @@
                             font-size: 13px;
                         }
                         a:active{
-                            text-decoration: underline;
-                            color: #DA0F47;
+                            background-color: inherit;
+                            
                         }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
