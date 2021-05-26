@@ -95,7 +95,7 @@
             requestModal: function(dm) {
                 var _self = this;
                 var ajaxUrl = $(dm).attr('href');
-                window.open(ajaxUrl,'','width=912,height=760,scrollbars=no');
+                window.open(ajaxUrl,'','width=912,height=760,scrollbars=yes');
                 /*
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                     _self.openModalFromHtml(result);
