@@ -4,7 +4,7 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip/colorchip.png');
+		background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 	}
 	&.large{
@@ -18,6 +18,14 @@
 			background:#fff; color:#000000 !important;
 		}
 	}
+	/* BTOCSITE-644 시블링코드 마스터 색상 추가 */
+	&.mattblack_glossy-white {
+		& input + label:before {
+			background:#fff; color:#000000 !important;
+		}
+	}
+	/* //BTOCSITE-644 시블링코드 마스터 색상 추가 */
+
 	&.wild-cherry-redd,
 	&.wild-cherry-red,
 	&.blackcherry,
