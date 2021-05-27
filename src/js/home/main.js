@@ -896,21 +896,7 @@ $(function () {
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                if( vcui.detect.isIOS ) {
-                    var clickedAt = +new Date;
-                    setTimeout( function () { 
-                        if (+new Date - clickedAt < 1000 ) { 
-                            // 앱스토어 이동 
-                            location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
-                        }
-                    } ,500);
-    
-                    setTimeout( function () { // 앱실행 
-                        location.href = goAppLink(); 
-                    } ,0 );
-                } else {
-                    window.open(link, '_blank');
-                }
+                goAppLink();
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {

@@ -4,7 +4,20 @@ var isApp = function(){
 }
 var goAppLink = function() {
     var path = location.pathname;
-    return vcui.detect.isIOS ? 'lgeapp://goto?weblink='+path : 'lgeapp://goto?weblink='+path+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;'
+    var link = 'lgeapp://goto?weblink='+path;
+    
+    if( vcui.detect.isIOS ) {
+        var clickedAt = +new Date;
+        setTimeout( function () { 
+            if (+new Date - clickedAt < 1000 ) { 
+                // 앱스토어 이동 
+                location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+            }
+        } ,500);
+        location.href = link; // 앱실행 
+    } else {
+        window.open(link+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
+    }
 }
 ;(function(global){
 
