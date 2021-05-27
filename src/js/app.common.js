@@ -222,7 +222,7 @@ $(document).ready(function() {
         }
 
         /* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
-        *  @path : 랜딩할 경로
+        *  @path : 랜딩할 경로 
         */
         goAppUrl = function(path=null) {
             var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
