@@ -649,6 +649,38 @@
                     }
                 }
             }
+
+            /* 20210527 할인카드 flag*/
+            .flag-wrap{
+                display: flex;
+                align-items: center;
+                &.bar-type {
+                    .flag {
+                        margin-right: 10px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 7px;
+                            left: -5px;
+                            margin: 0;
+                        }
+                        &.cardDiscount { 
+                            background-color: #da0f4d;
+                            font-weight: 500;
+                            color: #fff;
+                            padding: 0 5px;
+                            border-radius: 2px;
+                            height: 18px;
+                            display: flex;
+                            align-items: center;
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            /* //20210527 할인카드 flag*/
         }
 
         .product-detail-option {
@@ -2006,6 +2038,37 @@
             .flag-wrap.bar-type .flag {
                 font-size: 11px;
             }
+            /* 20210527 할인카드 flag*/
+            .flag-wrap{
+                display: flex;
+                align-items: center;
+                &.bar-type {
+                    .flag {
+                        margin-right: 10px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 7px;
+                            left: -5px;
+                            margin: 0;
+                        }
+                        &.cardDiscount {
+                            background-color: #da0f4d;
+                            font-weight: 500;
+                            color: #fff;
+                            padding: 0 5px;
+                            border-radius: 2px;
+                            height: 18px;
+                            display: flex;
+                            align-items: center;
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
             .product-name {
                 position:relative;
                 margin: 8px 0 6px;
