@@ -10,11 +10,14 @@
     padding-left: 40px;
 
     /* BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
-    a:hover, a:focus, a:active{
-        background-color: inherit;
+    .info-bottom,
+    .btn-area,
+    .btn-group
+    {
+        -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4) !important;
     }
     /* //BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
-    
+
     @include mobile {
         max-width: 100%;
         padding: 0 16px 40px;
