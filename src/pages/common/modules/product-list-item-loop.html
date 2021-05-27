@@ -71,6 +71,11 @@
                 @@for ( var i=0; i < flags.length; i++ ) {
                 <span class="flag">`+flags[i]+`</span>
                 }
+                <!-- 20210527 추가 -->
+                @@if (context.flagDiscount) {
+                    <span class="flag cardDiscount">신한카드 5% 청구할인</span>
+                }
+                <!-- //20210527 추가 -->
             </div>
             }
             <div class="product-info">
