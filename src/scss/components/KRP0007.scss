@@ -380,6 +380,14 @@
                 align-items: center;
                 &.bar-type {
                     .flag {
+                        margin-right: 10px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 7px;
+                            left: -5px;
+                            margin: 0;
+                        }
                         &.cardDiscount {
                             background-color: #da0f4d;
                             font-weight: 500;
@@ -389,7 +397,6 @@
                             height: 18px;
                             display: flex;
                             align-items: center;
-                            margin-left: 10px;
                             &::before {
                                 display: none;
                             }
