@@ -226,8 +226,6 @@ $(document).ready(function() {
         */
         goAppUrl = function(path) {
             var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
-
-            console.log("scheme %o",scheme);
             
             if( vcui.detect.isIOS ) {
                 var clickedAt = +new Date;
