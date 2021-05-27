@@ -4,7 +4,7 @@ var isApp = function(){
 }
 var goAppLink = function() {
     var path = location.pathname;
-    return vcui.detect.isIOS ? 'lgeapp://goto?weblink='+path : 'lgeapp://goto?weblink='+path+'#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;'
+    return vcui.detect.isIOS ? 'lgeapp://goto?weblink='+path : 'lgeapp://goto?weblink='+path+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;'
 }
 ;(function(global){
 
