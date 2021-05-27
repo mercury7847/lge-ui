@@ -569,9 +569,11 @@
                     }
                     if(index == 0) {
                         //구매
+                        $('.flag-wrap bar-type').hide();
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
+                        $('.flag-wrap bar-type').show();
                     }
                     history.replaceState({},"",url);
                 });
