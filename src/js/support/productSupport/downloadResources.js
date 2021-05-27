@@ -243,6 +243,23 @@
 
                 if (!self.isPSP) {
                     self.$cont.vcSearchModel({model:self.param});
+                } else {
+                    $.extend(self.manualPara, {
+                        category:      $('#category').val(),
+                        categoryNm:    $('#categoryNm').val(), 
+                        subCategory:   $('#subCategory').val(),
+                        subCategoryNm: $('#subCategoryNm').val(), 
+                        modelCode:     $('#modelCode').val(),
+                        productCode:   $('#productCode').val()
+                    });
+                    $.extend(self.driverParam, {
+                        category:      $('#category').val(),
+                        categoryNm:    $('#categoryNm').val(), 
+                        subCategory:   $('#subCategory').val(),
+                        subCategoryNm: $('#subCategoryNm').val(), 
+                        modelCode:     $('#modelCode').val(),
+                        productCode:   $('#productCode').val()
+                    });
                 }
 
                 self.$manualPagination.data('page', 1);
