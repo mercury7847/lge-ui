@@ -890,33 +890,27 @@ $(function () {
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
         var cookie_name = '__LGAPP_DLOG__';
-        var app = {
-            ios: {
-                // link: 'https://itunes.apple.com/app/id1561079401?mt=8'
-                link:'lgeapp://goto?weblink={랜딩페이지}'
-            },
-            android: {
-                // link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
-                link:'Intent://goto?weblink=/lg-objet-collection#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;'
-            }
-        };
-
-// ios
-//         <a href="lgeapp://goto?weblink={랜딩페이지}">WEB</a>
-
-//         android
-//         <a href="Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;">WEB</a>
-// 개발 패키지명 : kr.co.lge.android.dev
-//         <a href="Intent://goto?weblink={랜딩페이지}#Intent;scheme=lgeapp;package=kr.co.lge.android;end;">WEB</a>
-
 
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                var link = vcui.detect.isIOS ? app.ios.link : app.android.link;
-                window.open(link, '_blank');
+                if( vcui.detect.isIOS ) {
+                    var clickedAt = +new Date;
+                    setTimeout( function () { 
+                        if ( (+new Date - clickedAt < 1000 ) { 
+                            // 앱스토어 이동 
+                            location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                        }
+                    } ,500);
+    
+                    setTimeout( function () { // 앱실행 
+                        location.href = goAppLink(); 
+                    } ,0 );
+                } else {
+                    window.open(link, '_blank');
+                }
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
