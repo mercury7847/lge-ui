@@ -68,26 +68,28 @@ $(function () {
         '   </div>\n'+
         '</div>';
     
+    var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
+        
 
-        $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+        $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
         // 화면 100% 채우기
        // $('html,body').css({'overflow':'hidden', 'height':'100%'});
         
         $('body').addClass('ignore-overflow-hidden');
 
-        $('.ui_carousel_slider_banner1').find('.flow-bar').css({
+        $context.find('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $('.ui_carousel_slider_banner2').find('.flow-bar').css({
+        $context.find('.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $context.find('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -133,7 +135,7 @@ $(function () {
             ]
         });
 
-        $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $context.find('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
 
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -190,7 +192,7 @@ $(function () {
             
         var isApplication = isApp();
         var $window  = $(window);
-        var $contentWrap = $('.section-cover');
+        var $contentWrap = $context.find('.section-cover');
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -198,7 +200,7 @@ $(function () {
         var winHeight = $window.height();            
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.scene').add('.section-cover');
+        var $scenes = $context.find('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
@@ -213,7 +215,7 @@ $(function () {
         
 
         // 웨일 결합처리
-        $('.foot-cont').find('.menu-opener').on('click', function(e){
+        $context.find('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
@@ -227,7 +229,7 @@ $(function () {
         });
         */
 
-        $(document).on('click', 'a', function(e){
+        $context.on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
             if(href == '#'){
                 e.preventDefault();
@@ -237,13 +239,13 @@ $(function () {
         $window.on('breakpointchange', function(e){
 
             var data = window.breakpoint;
-            var isRecom = $('.recom-list-slide').data('ui_carousel');
-            var isBenefit = $('.benefit-list-slide').data('ui_carousel');
+            var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
+            var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
 
             if(data.name == 'mobile'){
 
                 if(!isRecom){
-                    $('.recom-list-slide').vcCarousel({                        
+                    $context.find('.recom-list-slide').vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -251,7 +253,7 @@ $(function () {
                 }
 
                 if(!isBenefit){
-                    $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
+                    $context.find('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
                         animCtrlers[3] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
@@ -268,13 +270,13 @@ $(function () {
 
             }else if(data.name == 'pc'){
 
-                $('.recom-list-slide').find('.ui_carousel_dots').hide();
-                $('.benefit-list-slide').find('.ui_carousel_dots').hide();
+                $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
+                $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
                 if(isRecom){
-                    $('.recom-list-slide').vcCarousel('destroy');
+                    $context.find('.recom-list-slide').vcCarousel('destroy');
                 }
                 if(isBenefit){
-                    $('.benefit-list-slide').vcCarousel('destroy');
+                    $context.find('.benefit-list-slide').vcCarousel('destroy');
                 }
             }
 
@@ -366,12 +368,12 @@ $(function () {
                     if(idx==0){
                         if(hasTop){
                             //$('.floating-menu.top').css('opacity', 0);
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
                             $(window).trigger('floatingTopHide');
-                            $('.floating-menu.top').hide();
+                            $context.find('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
-                                $('.floating-menu.top').addClass('call-yet');
+                                $context.find('.floating-menu.top').addClass('call-yet');
                             }
                         } else {
                             /*
@@ -383,28 +385,28 @@ $(function () {
                             //임시 추가
                             //앱인데 메인이 아닐경우에만 실행
                             //$('.floating-menu.top').css('opacity', 1);
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
                             $(window).trigger('floatingTopHide');
-                            $('.floating-menu.top').hide();
+                            $context.find('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
-                                $('.floating-menu.top').addClass('call-yet');
+                                $context.find('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
                         }
                     }else{
                         if(hasTop){
                             //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                            $('.floating-menu.top').removeClass('call-yet');
+                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                            $context.find('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
-                            $('.floating-menu.top').show();
+                            $context.find('.floating-menu.top').show();
 
                         } else {
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                            $('.floating-menu.top').removeClass('call-yet');
+                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                            $context.find('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
-                            $('.floating-menu.top').show();
+                            $context.find('.floating-menu.top').show();
                         }                       
                     }
                     /*
@@ -443,7 +445,7 @@ $(function () {
                 });
             }, 100);
 
-            if(idx > 1 && $('.video-poster').length) $('.video-poster').remove();
+            if(idx > 1 && $context.find('.video-poster').length) $context.find('.video-poster').remove();
         } 
 
         var prevTime = new Date().getTime();
@@ -662,7 +664,7 @@ $(function () {
                 oVideo   = $video[0];
 
                 if ( isAndroid ) {
-                    $(document).one('touchstart.videoPlay', function() {
+                    $context.one('touchstart.videoPlay', function() {
                         oVideo.play();
                     });
                 }
@@ -698,7 +700,7 @@ $(function () {
             winHeight = $window.height();
             posArr = [];
                         
-            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
+            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');            
             var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
             var totalHeight = winHeight;
             var itemHeight = winHeight;
@@ -726,7 +728,7 @@ $(function () {
                     height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
                 };
 
-                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
                 if(!$(this).hasClass('section-cover')){
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
@@ -819,7 +821,7 @@ $(function () {
     //메인 아이콘 애니매이션...
     var animCtrlers = [];
     var startIconAnim = function(){
-        $('.ui_ico_anim').each(function(idx, item){
+        $context.find('.ui_ico_anim').each(function(idx, item){
             setIconAnimCtrler($(item));
         });
     }
@@ -861,7 +863,7 @@ $(function () {
     }
     window.loadAnimSourceComplete = loadAnimSourceComplete;
 
-    $('.ui_ico_anim').each(function(idx, item){
+    $context.find('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
         var patharr = $(item).find('img').attr('src').split("/");
         var pleng = patharr.length;
@@ -901,8 +903,8 @@ $(function () {
         $(item).data("loadTotal", total);
         $(item).data('length', total+1);
     });
-    $('.ui_ico_anim img').css({position:'absolute', display:'none'});
-    $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
+    $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
+    $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
     /* 20210503 : 모바일앱 다운로드 팝업 */
    if (vcui.detect.isMobileDevice && !isApp()) {
@@ -919,7 +921,7 @@ $(function () {
             }
         };
         if (vcui.Cookie.get(cookie_name) === '') {
-            vcui.modal(layer_id, open);
+            vcui.modal(layer_id);
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {

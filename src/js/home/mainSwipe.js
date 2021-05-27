@@ -173,5 +173,5 @@ MainSwiper.prototype = {
 
 $(function(){
     var mainSwiperID = 'mobileNav';
-    new MainSwiper( mainSwiperID );
+    window.mainSwiper = new MainSwiper( mainSwiperID );
 });

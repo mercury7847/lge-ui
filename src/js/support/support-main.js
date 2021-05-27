@@ -1,8 +1,9 @@
 (function(){
     var detect = vcui.detect;
-    var isMobileDevice = detect.isMobileDevice;
-    var $context = !!$('#sw_con').length ? $('.support-home').closest('.swiper-slide') : $(document);
-
+    var isMobileDevice = detect.isMobileDevice;    
+    var $context = !!$('[data-hash="cs"]').length ? $('[data-hash="cs"]') : $(document);
+    var contextLeft = !!$('[data-hash="cs"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
+    
     var supportHome = {
         loginTooltip : function(){
             var $tooltip = $context.find('.tooltip-login');
@@ -878,6 +879,12 @@
                 close : '.btn-close'
             },
             init : function(){
+
+                if (contextLeft != null){
+                    this.el.modal = '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:'+ contextLeft +'px; width:100%; height:100%;"/>'
+                }
+                
+
                 var self = this;
                 var $popup = $context.find(self.el.popup);
                 
