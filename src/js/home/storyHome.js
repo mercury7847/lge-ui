@@ -482,7 +482,7 @@
                 
                 setRepositionTagBox(sectionItem);
             } else{
-                if(sectioname == "user_story"){
+                if(sectioname == "user_story"){ 
                     // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                     /* 20210518 추가 */    
                     $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
