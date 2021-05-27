@@ -890,22 +890,27 @@ $(function () {
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
         var cookie_name = '__LGAPP_DLOG__';
-        var app = {
-            ios: {
-                link:goAppLink()
-            },
-            android: {
-                link:goAppLink()
-            }
-        };
 
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                var link = vcui.detect.isIOS ? app.ios.link : app.android.link;
-                window.open(link, '_blank');
+                if( vcui.detect.isIOS ) {
+                    var clickedAt = +new Date;
+                    setTimeout( function () { 
+                        if ( (+new Date - clickedAt < 1000 ) { 
+                            // 앱스토어 이동 
+                            location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                        }
+                    } ,500);
+    
+                    setTimeout( function () { // 앱실행 
+                        location.href = goAppLink(); 
+                    } ,0 );
+                } else {
+                    window.open(link, '_blank');
+                }
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
