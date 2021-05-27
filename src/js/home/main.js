@@ -896,7 +896,7 @@ $(function () {
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                goAppLink();
+                goAppUrl();
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
@@ -906,5 +906,5 @@ $(function () {
         }
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
-    
+
 });
