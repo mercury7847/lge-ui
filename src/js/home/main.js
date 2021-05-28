@@ -729,7 +729,8 @@ $(function () {
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
                     width : window.breakpoint.name=='pc'? 1920 : 720, 
-                    height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
+                    //height : window.breakpoint.name=='pc'? 1080 : 1285 //1285 1476 1080
+                    height : window.breakpoint.name=='pc'? 1080 : 920
                 };
 
                 $('body').vcLazyLoaderSwitch('reload', $('.contents'));
@@ -742,7 +743,7 @@ $(function () {
                 }
                 
                 totalHeight += itemHeight;
-            });  
+            });
 
             /* 메인 테스트 */
             if(vcui.detect.isIOS) {
