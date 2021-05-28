@@ -596,6 +596,9 @@ $(function () {
         // 비디오 태그 처리
 
         function updateVideo(video) {
+            // BTOSCITE-740 모바일 화면 동영상 사용중지
+            if(isMobileDevice) return;
+
 
             var isAndroid = vcui.detect.isAndroid;
 
@@ -603,7 +606,8 @@ $(function () {
                 $wrap     = $target.closest('.img'),
                 // $image    = $wrap.find('img'),
                 // loaded    = $target.data('loaded'),           
-                videoAttr = $target.data('options') || 'autoplay playsinline muted',
+                //videoAttr = $target.data('options') || 'autoplay playsinline muted',
+                videoAttr = $target.data('options') || 'playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
 
@@ -677,6 +681,11 @@ $(function () {
             }
 
             createVideoObject();
+
+
+            setVideoPlayByScroll();
+
+            
         }
 
         // 렌더링
@@ -917,21 +926,13 @@ $(function () {
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
         var cookie_name = '__LGAPP_DLOG__';
-        var app = {
-            ios: {
-                link: 'https://itunes.apple.com/app/id1561079401?mt=8'
-            },
-            android: {
-                link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
-            }
-        };
+
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                var link = vcui.detect.isIOS ? app.ios.link : app.android.link;
-                window.open(link, '_blank');
+                goAppUrl();
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
@@ -941,5 +942,40 @@ $(function () {
         }
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
+
+    function setVideoPlayByScroll(){
+        // BTOCSITE-740
+        var videoDOMS = $('.scene video');
+        videoDOMS.each(function(){
+            $(this).on('playstart', function(e, scrollTop){
+                console.log('playstart scrollTop', scrollTop);
+                var top = $(this).offset().top;
+                var videoHeight = $(this).height();
+
+                if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                    this.play();
+                } else {
+                    $(this).stop();
+                }                
+            });
+        });
+        
+
+        var scrollInterval = null;
+
+        $(window).on('scroll.videoPlay', function(){
+            clearTimeout(scrollInterval);
+            
+            scrollInterval = setTimeout(function(){
+                var scrollTop = $(window).scrollTop();
+                //console.log('scrollTop', scrollTop);
+                videoDOMS.each(function(){
+                    $(this).trigger('playstart', scrollTop)
+                });
+            }, 50);
+        });
+
+        $(window).trigger('scroll.videoPlay');
+    }
     
 });
