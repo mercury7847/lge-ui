@@ -232,11 +232,11 @@ $(document).ready(function() {
             if( vcui.detect.isIOS ) {
                 var clickedAt = +new Date;
                 setTimeout( function () { 
-                    if (+new Date - clickedAt < 1000 ) { 
+                    if (+new Date - clickedAt < 2000 ) { 
                         // 앱스토어 이동 
                         location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
                     }
-                } ,500);
+                } ,1500);
                 location.href = scheme; // 앱실행 
             } else {
                 window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
