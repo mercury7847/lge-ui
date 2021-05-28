@@ -569,9 +569,11 @@
                     }
                     if(index == 0) {
                         //구매
+                        $('.cardDiscount').removeClass('retalCareOn');
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
+                        $('.cardDiscount').addClass('retalCareOn');
                     }
                     history.replaceState({},"",url);
                 });
