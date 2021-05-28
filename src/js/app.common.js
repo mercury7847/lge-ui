@@ -233,11 +233,22 @@ $(document).ready(function() {
                 var clickedAt = +new Date;
                 setTimeout( function () { 
                     if (+new Date - clickedAt < 2000 ) { 
+                        alert('스토어 실행');
                         // 앱스토어 이동 
-                        location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                       // if(confirm("LGE.COM에서 열겠습니까?")) {
+                            location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                     //   }
                     }
                 } ,1500);
-                location.href = scheme; // 앱실행 
+
+                if(confirm("LGE.COM에서 열겠습니까?")) {
+                    try {
+                        location.href = scheme; // 앱실행 
+                    } catch(e) {
+                        alert('앱실행 에러');
+                    }
+                  
+                }
             } else {
                 window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
             }
