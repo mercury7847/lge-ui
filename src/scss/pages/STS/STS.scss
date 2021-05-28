@@ -75,11 +75,13 @@
     }
 
     .story-section {
+        &.user_story { display:none; } /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
         &.new_story {
             border-top: 0;
-            /* 20210525 추가 */  
+            /* 20210525 추가 */ 
             .inner {
                 padding-top: 60px !important;
+                .title { display:none; }   /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
             }
             /* //20210525 추가 */ 
         }
