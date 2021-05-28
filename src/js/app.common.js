@@ -227,7 +227,7 @@ $(document).ready(function() {
         goAppUrl = function(path) {
             // ios 버그 이후 반영예정
             // var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
-            var scheme = 'lgeapp://goto';
+            var scheme = 'lgeapp://';
             
             if( vcui.detect.isIOS ) {
                 var clickedAt = +new Date;
