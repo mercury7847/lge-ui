@@ -924,6 +924,7 @@ $(function () {
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
                 goAppUrl();
+                
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
