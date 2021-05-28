@@ -16,7 +16,7 @@ var goAppUrl = function(path) {
         setTimeout( function () { 
             if (+new Date - clickedAt < 1000 ) { 
                 // 앱스토어 이동 
-                    // location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
             }
         } ,500);
 
@@ -26,7 +26,7 @@ var goAppUrl = function(path) {
     } else {
             // ios 버그 이후 반영예정
         // window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
-        window.open(scheme+'goto', '_blank');
+        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
     }
 }
 
