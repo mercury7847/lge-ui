@@ -168,7 +168,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
