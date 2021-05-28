@@ -241,17 +241,10 @@ $(document).ready(function() {
                 setTimeout( function () { 
                     location.href = scheme; // 앱실행 
                 },50);
-
-                // if(confirm("LGE.COM에서 열겠습니까?")) {
-                //     try {
-                //         location.href = scheme; // 앱실행 
-                //     } catch(e) {
-                //         alert('앱실행 에러');
-                //     }
-                  
-                // }
             } else {
-                window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
+                 // ios 버그 이후 반영예정
+                // window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
+                window.open(scheme+'goto', '_blank');
             }
         }
 
