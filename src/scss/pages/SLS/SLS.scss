@@ -308,16 +308,24 @@ br.pc {
         @media screen and (max-width: 1024px){
         //@include mobile {
             margin-top: 50px;
-            padding: 0 40px;
+            padding: 0 15px;
             text-align: center;
         }
         li {
             display: inline-block;
-            width: 33.33%;
-            vertical-align: top;
+            width: calc(33.33% - 20px);
+            border-radius: 8px;
+            border:2px solid #fff;
+            background-color: #fff;
+            box-shadow: 2px 4px 12px 0 rgb(0 0 0 / 14%);
+            margin: 0 10px;
+            &:hover {
+                border:2px solid #b81f4b; 
+            }
             @media screen and (max-width: 1024px){
             //@include mobile {
                 width: 100%;
+                margin: 0;
                 & + li {
                     margin-top: 38px;
                 }
@@ -326,24 +334,31 @@ br.pc {
             > a {
                 display: inline-block;
                 position: relative;
-                padding: 88px 24px 0;
-                font-weight: 700;
-                font-size: 40px;
-                line-height:56px;
-                text-align: left;
+                // padding: 90px 22px 4px;
+                // font-weight: 500;
+                // font-size: 20px;
+                // line-height: 36px;
+                text-align: center;
+
+                padding: 90px 22px 30px;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 36px;
                 &:after {
                     display: none;
                     content:' ';
                     position:absolute;
                     right:-8px;
-                    bottom:11px;
+                    
+                    // bottom:5px;
+                    bottom:31px;
                     width:32px;
                     height:32px;
                     background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                     @include mobile {
                         display: block;
                         right:-16px;
-                        bottom:2px;
+                        bottom:31px;
                     }
                 }
                 @include pc {
@@ -365,7 +380,9 @@ br.pc {
                     content: '';
                     position: absolute;
                     top: 0;
-                    left: 24px;
+                    left: 50%;
+                    transform: translateX(-50%);                           
+                    margin: 20px 0;
                     width: 64px;
                     height: 64px;
                     @media screen and (max-width: 1024px){
@@ -383,11 +400,15 @@ br.pc {
                     color: $color-default;
                 }
             }
+            &:nth-child(1) {
+                text-align: center;
+                position: relative;
+            }
             &:nth-child(2) {
                 text-align: center;
             }
             &:nth-child(3) {
-                text-align: right;
+                text-align: center;
                 @media screen and (max-width: 1024px){
                 //@include mobile {
                     text-align: center;
@@ -397,6 +418,11 @@ br.pc {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
+
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin: 20px 0;
                 }
                 //&.on a:before,
                 //&:hover a:before {
