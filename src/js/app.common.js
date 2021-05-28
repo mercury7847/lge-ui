@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, goAppUrl;
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
 var LGEAPPclickCNT = 0;
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
@@ -218,33 +218,6 @@ $(document).ready(function() {
                     count = "99+";
                 }
                 $target.html(count);
-            }
-        }
-
-        /* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
-        *  @path : 랜딩할 경로
-        */
-        goAppUrl = function(path) {
-            // ios 버그 이후 반영예정
-            // var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
-            var scheme = 'lgeapp://';
-            
-            if( vcui.detect.isIOS ) {
-                var clickedAt = +new Date;
-                setTimeout( function () { 
-                    if (+new Date - clickedAt < 1000 ) { 
-                        // 앱스토어 이동 
-                            // location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
-                    }
-                } ,500);
-
-                setTimeout( function () { 
-                    location.href = scheme; // 앱실행 
-                },50);
-            } else {
-                 // ios 버그 이후 반영예정
-                // window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
-                window.open(scheme+'goto', '_blank');
             }
         }
 
