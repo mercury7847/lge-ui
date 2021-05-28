@@ -890,21 +890,13 @@ $(function () {
         var el = $(layer_id);
         if (el.size() === 0) { return false; }
         var cookie_name = '__LGAPP_DLOG__';
-        var app = {
-            ios: {
-                link: 'https://itunes.apple.com/app/id1561079401?mt=8'
-            },
-            android: {
-                link: 'https://play.google.com/store/apps/details?id=kr.co.lge.android'
-            }
-        };
+
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
             var checkbox = $('#check-today');
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
-                var link = vcui.detect.isIOS ? app.ios.link : app.android.link;
-                window.open(link, '_blank');
+                goAppUrl();
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
