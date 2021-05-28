@@ -234,7 +234,7 @@ $(document).ready(function() {
                 setTimeout( function () { 
                     if (+new Date - clickedAt < 1000 ) { 
                         // 앱스토어 이동 
-                            location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                            // location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
                     }
                 } ,500);
 
