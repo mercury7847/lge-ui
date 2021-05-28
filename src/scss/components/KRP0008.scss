@@ -676,6 +676,9 @@
                             &::before {
                                 display: none;
                             }
+                            &.retalCareOn {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -2062,6 +2065,9 @@
                             display: flex;
                             align-items: center;
                             &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
                                 display: none;
                             }
                         }
