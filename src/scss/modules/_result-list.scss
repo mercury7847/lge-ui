@@ -588,6 +588,7 @@
         .info-text {
             .result-tit {
                 max-width: 280px;
+                max-width: 100%;
                 @include mobile {
                     max-width: 100%;
                 }

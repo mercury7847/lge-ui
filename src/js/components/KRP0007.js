@@ -69,6 +69,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT")}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -167,7 +168,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
@@ -760,7 +761,13 @@
 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+                /* 20210527 추가 */
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                item.obsSellingPriceNumber = (item.obsSellingPrice != null) ? item.obsSellingPrice : null;  
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                /* 20210527 추가 */
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+                
                 item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
                 item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;

@@ -9,6 +9,15 @@
     padding-right: 40px;
     padding-left: 40px;
 
+    /* BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
+    .info-bottom,
+    .btn-area,
+    .btn-group
+    {
+        -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4) !important;
+    }
+    /* //BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
+
     @include mobile {
         max-width: 100%;
         padding: 0 16px 40px;
@@ -649,6 +658,41 @@
                     }
                 }
             }
+
+            /* 20210527 할인카드 flag*/
+            .flag-wrap{
+                display: flex;
+                align-items: center;
+                &.bar-type {
+                    .flag {
+                        margin-right: 10px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 7px;
+                            left: -5px;
+                            margin: 0;
+                        }
+                        &.cardDiscount { 
+                            background-color: #da0f4d;
+                            font-weight: 500;
+                            color: #fff;
+                            padding: 0 5px;
+                            border-radius: 2px;
+                            height: 18px;
+                            display: flex;
+                            align-items: center;
+                            &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            /* //20210527 할인카드 flag*/
         }
 
         .product-detail-option {
@@ -1450,6 +1494,10 @@
                         @include mobile {
                             font-size: 13px;
                         }
+                        a:active{
+                            background-color: inherit;
+                            
+                        }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
                         }
@@ -2006,6 +2054,40 @@
             .flag-wrap.bar-type .flag {
                 font-size: 11px;
             }
+            /* 20210527 할인카드 flag*/
+            .flag-wrap{
+                display: flex;
+                align-items: center;
+                &.bar-type {
+                    .flag {
+                        margin-right: 10px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 7px;
+                            left: -5px;
+                            margin: 0;
+                        }
+                        &.cardDiscount {
+                            background-color: #da0f4d;
+                            font-weight: 500;
+                            color: #fff;
+                            padding: 0 5px;
+                            border-radius: 2px;
+                            height: 18px;
+                            display: flex;
+                            align-items: center;
+                            &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
             .product-name {
                 position:relative;
                 margin: 8px 0 6px;
