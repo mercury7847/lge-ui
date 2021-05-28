@@ -272,15 +272,13 @@
                         var thisMonth = new Date().getMonth() + 1;
                         var thisYear = new Date().getFullYear();
                         item.changeEnable = false;
-                    //    if(_id !== 'all') { // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발 : 추후 반영 예정
-                    //         if(itemYear < thisYear) {
-                    //             item.changeEnable = true;
-                    //         } else if(itemYear == thisYear && itemMonth <= thisMonth) {
-                    //             item.changeEnable = true;
-                    //         }
-                    //    }
-
-
+                       if(_id !== 'all') { // BTOCSITE-954 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발 
+                            if(itemYear < thisYear) {
+                                item.changeEnable = true;
+                            } else if(itemYear == thisYear && itemMonth <= thisMonth) {
+                                item.changeEnable = true;
+                            }
+                       }
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
                 });

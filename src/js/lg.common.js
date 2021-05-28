@@ -3,7 +3,6 @@ var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
-
 ;(function(global){
 
     if(global['lgkorUI']) return;
