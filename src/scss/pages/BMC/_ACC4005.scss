@@ -103,6 +103,8 @@
                 }
             }
         }
+
+        /* 20210528 추가 */
         .card-tab-contents {
             padding-top:48px;
             @include mobile {
@@ -128,6 +130,9 @@
                             @include mobile {
                                 max-width:265px;
                             }
+                        }
+                        .img_card_01 {
+                            max-width:194px;
                         }
                         &.type2 {
                             img {
@@ -178,6 +183,7 @@
                             color:#000;
                             @include font-medium;
                             word-break:keep-all;
+                            line-height: 26px;
                             &:first-child {
                                 margin-top:0;
                             }
@@ -206,6 +212,41 @@
                                 line-height: 36px;
                             }
                         }
+                        .benetit{
+                            margin:25px 0;
+                        }
+                        .desc-wrap{
+                            line-height: 12px;
+                            /* 210531 bullet style 적용 */
+                            .bullet {
+                                .bultxt {
+                                    line-height: 24px;
+                                    text-indent: 10px;
+                                    font-size:14px;
+                                    margin-top:5px;
+                                }
+
+                                .bultxt::before{
+                                    position: absolute;
+                                    content : '';
+                                    width:3px;
+                                    height:3px;
+                                    background:#000;
+                                    margin:10px 0 0 -10px
+                                }
+                            }
+                            .stit {
+                                padding: 30px 0 15px;
+                            }
+                            /* // 210531 bullet style 적용 */
+                        }
+                        p {
+                            line-height:26px;
+                        }
+                        .subtit {
+                            margin:25px 0;
+                        }
+                        /* // 210531  */
                         @include mobile {
                             margin-top:40px;
                             .tit {
@@ -218,12 +259,44 @@
                                     line-height: 28px;
                                 }
                             }
-                            .tit {
-                            }
                         }
                     }
                 }
             }
+
+            .card-sects {
+                position: relative;
+                border-bottom: 1px solid #ddd;
+                padding: 48px 0;
+                &:first-of-type {
+                    border-top: 0;
+                }
+            }
+            // <!-- to-be 210531 멤버십 카드혜택 개편 -->
+            .sects {
+                margin-top: 0;
+                .sects-head{
+                    border-bottom: 2px solid #000;
+                    padding-bottom:8px;
+                    strong {
+                        font-size:28px;
+                        line-height: 38px;
+                        @include mobile {
+                            display: block;
+                        }
+                    }
+                    em {
+                        font-size:16px;
+                        line-height: 26px;
+                        margin-left: 12px;
+                        @include mobile {
+                            display: block;
+                            margin-left:0;
+                        }
+                    }
+                }                
+            }
+            // <!-- to-be 210531 멤버십 카드혜택 개편 -->
         }
     }
     
