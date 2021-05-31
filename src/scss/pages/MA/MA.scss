@@ -20,7 +20,7 @@
 		}
 	}
 }
-
+// BTOCSITE-740 start
 .only-mobile{
 
 	display:none;
@@ -42,6 +42,7 @@
 
 	}
 }
+// BTOCSITE-740 end
 
 /* 클래스별이미지분기 */
 img{
@@ -95,12 +96,14 @@ img{
 		// height:100%;
 		height:100vh;
 		overflow:hidden;
+		// BTOCSITE-740 start
 		@include mobile {			
 			height: 500px;
 			&+.scene {
 				margin-top:12px;
 			}
 		}
+		// BTOCSITE-740 end
 		/*
 		&:first-child {
 			height:calc(100vh - 84px);
@@ -139,7 +142,7 @@ img{
 			// width:1920px;
 			// height:1080px;
 
-			
+			// BTOCSITE-740 start
 			&.only-mobile{
 
 				display:none;
@@ -161,6 +164,7 @@ img{
 			
 				}
 			}
+			// BTOCSITE-740 end
 
 			img {
 				position:absolute;

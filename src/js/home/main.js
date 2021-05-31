@@ -750,7 +750,9 @@ $(function () {
                 totalHeight += itemHeight;
             });
 
+            // BTOCSITE-740 start
             setVideoPlayByScroll();
+            // BTOCSITE-740 end
 
             /* 메인 테스트 */
             if(vcui.detect.isIOS) {
@@ -942,8 +944,8 @@ $(function () {
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
 
-    function setVideoPlayByScroll(){
-        // BTOCSITE-740
+    // BTOCSITE-740 start
+    function setVideoPlayByScroll(){        
         var videoDOMS = $('.scene video');
         videoDOMS.each(function(){
             $(this).on('playstart', function(e, scrollTop){
@@ -976,5 +978,6 @@ $(function () {
 
         $(window).trigger('scroll.videoPlay');
     }
+    // BTOCSITE-740 end
     
 });
