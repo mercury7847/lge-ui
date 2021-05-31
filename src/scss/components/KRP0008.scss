@@ -1116,6 +1116,13 @@
                     }
                 }
                 .desc {
+                    &::before{
+                        content: '※';
+                        display: inline-block;
+                        margin-left: -14px;
+                        margin-right: 2px;
+                    }
+                    padding-left: 12px;
                     margin-top: 12px;
                     // padding-right: 28px;
                     @include font-x-small;
