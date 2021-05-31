@@ -219,11 +219,11 @@
                     if(param.date && param.time) {
                         self.requestChangeVisitDay(param);
                     } else {
-
                         $selectedDate = self.$calendarTable.find('tr td.choice').length == 1;
-
                         $selectedTime = self.$timeTable.find('tr td.choice').length == 1;
 
+                        if(!$selectedDate) alert('변경할 방문일을 선택해주세요.');
+                        if(!$selectedTime) alert('방문시간을 선택해주세요.');
                     }
 
                    
