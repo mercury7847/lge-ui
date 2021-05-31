@@ -156,6 +156,15 @@
                     vcui.require(['support/common/searchModel.min'], function () {
                         self.$cont.vcSearchModel({model:self.param});
                     });
+                } else {
+                    $.extend(self.param, {
+                        category:      $('#category').val(),
+                        categoryNm:    $('#categoryNm').val(), 
+                        subCategory:   $('#subCategory').val(),
+                        subCategoryNm: $('#subCategoryNm').val(), 
+                        modelCode:     $('#modelCode').val(),
+                        productCode:   $('#productCode').val()
+                    });
                 }
                 
                 self.$keywordWrap.search({
