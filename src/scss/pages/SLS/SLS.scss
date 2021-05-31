@@ -317,7 +317,7 @@ br.pc {
             width: calc(33.33% - 20px);
             border-radius: 16px;
             
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);            
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
             background-color: #ffffff;
             border:2px solid #fff;
             margin: 0 10px;
@@ -474,7 +474,18 @@ br.pc {
 				//	background-size: 100% 100%;
                 //}
                 .day {
-                    display: block;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    /* 210531 케어솔루션 홈 버튼 로그인후 버튼 영역 */
+    .link-list.list02 {
+        li {
+            a:after{
+                @media screen and (max-width: 1024px){
+                    right:-13px;
+                    bottom:32px;
                 }
             }
         }
