@@ -1077,7 +1077,13 @@
                     word-break: keep-all;
                 }
                 .btn-area {
-                    margin-top: 24px;
+                    // outline: 1px solid red;
+                    /* BTOCSITE-324 : MARGIN조정 */
+                    margin-top: 12px;
+                    @include mobile{
+                        margin-top: 6px;
+                    }
+                    /* //BTOCSITE-324 : MARGIN조정 */
                     text-align: right;
                     .btn-link {
                         @include font-small;
