@@ -846,7 +846,7 @@
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(1)');
                     arr = self.checkArrayData(data.additional); // 
                     count = self.checkCountData(data.additional);
-                    self.setTabCount(4, count);
+                    self.setTabCount(2, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -908,7 +908,7 @@
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(3)');
                     arr = self.checkArrayData(data.event); //
                     count = self.checkCountData(data.event);
-                    self.setTabCount(2, count);
+                    self.setTabCount(4, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
