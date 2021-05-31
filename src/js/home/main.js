@@ -633,7 +633,7 @@ $(function () {
 
                 if ( !extArr.length ) return false;
 
-                var $video = $('<video '+ videoAttr +'></video>');
+                var $video = $('<video '+ videoAttr +'></video>');                
 
                 for (var i = extArr.length - 1; i >= 0; i--) {
                     if (extArr[i] == 'mp4') {
@@ -952,11 +952,14 @@ $(function () {
                 //console.log('playstart scrollTop', scrollTop);
                 var top = $(this).offset().top;
                 var videoHeight = $(this).height();
+                var winHeight = $(window).height();
 
-                if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                //if (scrollTop + (videoHeight / 2) > top && scrollTop < + (top + (videoHeight / 2))){
+                if (scrollTop + (winHeight / 2) > top && scrollTop < + (top + (winHeight / 2))){
                     this.play();
                 } else {
-                    $(this).stop();
+                    this.pause();
+                    this.currentTime = 0;
                 }                
             });
         });
