@@ -569,9 +569,17 @@
                     }
                     if(index == 0) {
                         //구매
+                        //$('.cardDiscount').removeClass('retalCareOn');
+                        $('.cardDiscount').show();
+                        /* 20210528 추가 */
+                        $('.care-solution-info').hide();
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
+                        //$('.cardDiscount').addClass('retalCareOn');
+                        $('.cardDiscount').hide();
+                        /* 20210528 추가 */
+                        $('.care-solution-info').show();
                     }
                     history.replaceState({},"",url);
                 });
