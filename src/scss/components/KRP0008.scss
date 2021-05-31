@@ -12,9 +12,10 @@
     /* BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
     .info-bottom,
     .btn-area,
-    .btn-group
+    .btn-group,
+    .btn-link
     {
-        -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4) !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.15) !important;
     }
     /* //BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
 
