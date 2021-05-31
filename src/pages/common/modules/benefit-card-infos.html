@@ -2,10 +2,14 @@
     @@if ( context.buyType ) {
     <div class="card-image-wrap">
         <!-- 210428 웹접근성(알트값 추가) -->
-        <span class="images"><img src="/lg5-common/images/BMC/@@cardImg.jpg" alt="@@cardAlt" aria-hidden="true"></span>
+        <span class="images"><img class="@@cardImg" src="/lg5-common/images/BMC/@@cardImg.jpg" alt="@@cardAlt" aria-hidden="true"></span>
         <!-- //210428 웹접근성(알트값 추가) -->
         <!-- 210423 카드명추가(숨김처리) -->
-        <a href="@@url" class="btn-link" target="_blank" title="새창열림"><span class="blind">@@cardName</span> 카드 정보 자세히 보기</a><!-- 20210324 수정 [target,title,링크 추가] -->
+
+        <!--20210528 카드링크 숨김-->
+        <!-- <a href="@@url" class="btn-link" target="_blank" title="새창열림"><span class="blind">@@cardName</span> 카드 정보 자세히 보기</a>20210324 수정 [target,title,링크 추가] -->
+        <!--//20210528 카드링크 숨김-->
+        
         <!-- //210423 카드명추가(숨김처리) -->
     </div>
     }
@@ -26,16 +30,54 @@
     </div>
     }
     <div class="card-info-wrap">
+        <!-- 210531 - 카드혜택 안내 개편 -->
         @@if ( context.basic ) {
         <div class="info-sect">
+            @@if ( context.basic.title ) { 
             <h4 class="tit">@@basic.title</h4>
-            <ul class="benefit-lists">
-                @@for ( var i=0; i < basic.benefits.length; i++ ) {
-                <li>`+basic.benefits[i]+`</li>
+            }
+            @@if ( context.basic.subtitle ) { 
+            <p class="subtit">@@basic.subtitle</p>
+            }
+            @@if ( context.basic.benetit ) { 
+            <h4 class="benetit">@@basic.benetit</h4>
+            }
+            <div class="desc-wrap">
+                @@if ( context.basic.benedesc ) { 
+                <p>@@basic.benedesc</p>
                 }
-            </ul>
+                <ul class="benefit-lists">
+                    @@for ( var i=0; i < basic.benefits.length; i++ ) {
+                    <li class="">`+basic.benefits[i]+`</li>
+                    }
+                </ul>
+                <ul class="bullet">
+                    @@if ( context.basic.bulletTxt1 ) { 
+                    <li class="bultxt">@@basic.bulletTxt1</li> 
+                    }
+                    @@if ( context.basic.bulletTxt2 ) { 
+                    <li class="bultxt">@@basic.bulletTxt2</li> 
+                    }
+                    @@if ( context.basic.bulletTxt3 ) { 
+                    <li class="bultxt">@@basic.bulletTxt3</li>
+                    }
+                </ul>
+                @@if ( context.basic.cashback ) { 
+                <p>@@basic.cashback</p> 
+                }
+                @@if ( context.basic.saletitle ) { 
+                <p class="stit">@@basic.saletitle</p> 
+                }                    
+                @@if ( context.basic.salecont1){
+                <ul class="benefit-lists sconts">
+                    <li>@@basic.salecont1</li>
+                    <li>@@basic.salecont2</li>
+                </ul>
+                }
+            </div>
         </div>
         }
+        <!-- // 210531 - 카드혜택 안내 개편 -->
         @@if ( context.cardFee ) {
         <div class="info-sect">
             <h4 class="tit">@@cardFee.title</h4>
