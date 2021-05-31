@@ -681,10 +681,6 @@ $(function () {
             }
 
             createVideoObject();
-
-
-            setVideoPlayByScroll();
-
             
         }
 
@@ -753,6 +749,8 @@ $(function () {
                 
                 totalHeight += itemHeight;
             });
+
+            setVideoPlayByScroll();
 
             /* 메인 테스트 */
             if(vcui.detect.isIOS) {
@@ -933,6 +931,7 @@ $(function () {
             var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
                 goAppUrl();
+                
                 return;
             });
             el.find('.ui_modal_close').one('click', function () {
@@ -948,7 +947,7 @@ $(function () {
         var videoDOMS = $('.scene video');
         videoDOMS.each(function(){
             $(this).on('playstart', function(e, scrollTop){
-                console.log('playstart scrollTop', scrollTop);
+                //console.log('playstart scrollTop', scrollTop);
                 var top = $(this).offset().top;
                 var videoHeight = $(this).height();
 
