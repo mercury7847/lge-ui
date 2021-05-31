@@ -26,8 +26,8 @@ var goAppUrl = function(path) {
         },0);
     } else {
             // ios 버그 이후 반영예정
-        // location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;';
-        location.href = scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;';
+        // window.open(location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
     }
 }
 
