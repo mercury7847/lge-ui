@@ -214,9 +214,18 @@
                     param.visitQna = self.$myVisitQna.is(':visible') ? self.$myVisitQna.find('div.cont').html() : null;
                     param.irregularCheckout = self.$irregularCheckout.is(':visible') ? self.$irregularCheckout.find('div.cont').html() : null;
                     
+
+                    // BTOCSITE-954 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
+                    $selectedDate = self.$calendarTable.find('tr td.choice').length == 1;
+                    $selectedTime = self.$timeTable.find('tr td.choice').length == 1;
+
+                    if(!$selectedDate) alert('변경할 방문일을 선택해주세요.');
+                    if($selectedDate && !$selectedTime) alert('방문시간을 선택해주세요.');
+
                     if(param.date && param.time) {
                         self.requestChangeVisitDay(param);
                     }
+                   
                 });
             },
 
