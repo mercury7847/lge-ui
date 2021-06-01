@@ -123,10 +123,13 @@
                     .images {
                         display:block;
                         text-align:center;
+                        // start - 210601 이미지 srcset 관련 css 속성 추가
                         img {
                             width:100%;
+                            max-width:303px;
                             height:auto;
                             vertical-align:top;
+                            object-fit: contain;
                             @include mobile {
                                 max-width:265px;
                             }
@@ -134,6 +137,10 @@
                         .img_card_01 {
                             max-width:194px;
                         }
+                        .img-card-02 {
+                            max-width: 310px;
+                        }
+                        // end - 210601 이미지 srcset 관련 css 속성 추가
                         &.type2 {
                             img {
                                 max-width:206px;

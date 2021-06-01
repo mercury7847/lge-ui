@@ -2,7 +2,9 @@
     @@if ( context.buyType ) {
     <div class="card-image-wrap">
         <!-- 210428 웹접근성(알트값 추가) -->
-        <span class="images"><img class="@@cardImg" src="/lg5-common/images/BMC/@@cardImg.jpg" alt="@@cardAlt" aria-hidden="true"></span>
+        <!-- 210601 이미지 srcset 속성 추가 -->
+        <span class="images"><img class="@@cardImg" src="/lg5-common/images/BMC/@@cardImg.jpg" srcset="/lg5-common/images/BMC/@@cardImg2x.jpg, /lg5-common/images/BMC/@@cardImg3x.jpg" alt="@@cardAlt" aria-hidden="true"></span>
+        <!-- //210601 이미지 srcset 속성 추가-->
         <!-- //210428 웹접근성(알트값 추가) -->
         <!-- 210423 카드명추가(숨김처리) -->
 
