@@ -21,6 +21,28 @@
 	}
 }
 
+.only-mobile{
+
+	display:none;
+	
+	@include mobile {
+
+		display:block;		
+
+	}
+}
+
+.only-desktop{
+
+	display:block;
+	
+	@include mobile {
+
+		display:none;		
+
+	}
+}
+
 /* 클래스별이미지분기 */
 img{
 	&.pc{
@@ -73,9 +95,17 @@ img{
 		// height:100%;
 		height:100vh;
 		overflow:hidden;
+		@include mobile {			
+			height: 500px;
+			&+.scene {
+				margin-top:12px;
+			}
+		}
+		/*
 		&:first-child {
 			height:calc(100vh - 84px);
 		}
+		*/
 		&:nth-child(2) {
 			.text-link {
 				//top:280px;
@@ -99,6 +129,7 @@ img{
 		// }
 		> a {
 			display:block;
+			height:100%;
 		}
 		.opac {
 			opacity:.7;
@@ -107,6 +138,30 @@ img{
 			position:relative;
 			// width:1920px;
 			// height:1080px;
+
+			
+			&.only-mobile{
+
+				display:none;
+				
+				@include mobile {
+			
+					display:block;		
+			
+				}
+			}
+			
+			&.only-desktop{
+			
+				display:block;
+				
+				@include mobile {
+			
+					display:none;		
+			
+				}
+			}
+
 			img {
 				position:absolute;
 				top:50%;

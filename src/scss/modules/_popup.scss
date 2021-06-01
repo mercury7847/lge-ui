@@ -329,6 +329,11 @@
         max-height:580px;
         padding:48px 40px 0;
         overflow-y:auto;
+        /* 20210601 구매혜택 팝업 conts수정 */
+        &.pop4 {
+            padding:48px 40px 40px;
+        }
+        /* //20210601 구매혜택 팝업 conts수정 */
         &.no-footer {
             max-height:576px + 130px;
             padding-bottom:48px;
