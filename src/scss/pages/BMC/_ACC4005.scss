@@ -272,6 +272,10 @@
                     border-top: 0;
                 }
             }
+            // 210601 마지막 카드 border-bottom: 0; 처리
+            .card-sects:last-child {
+                border-bottom : 0;
+            }
             // <!-- to-be 210531 멤버십 카드혜택 개편 -->
             .sects {
                 margin-top: 0;
