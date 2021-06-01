@@ -827,16 +827,16 @@
                         //self.$listSorting.hide();
                     }
 
-                    //이벤트/기획전
-                    count = self.checkCountData(data.event);
+                    //케어용품/소모품 
+                    count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
 
                     //스토리
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
 
-                    //케어용품/소모품
-                    count = self.checkCountData(data.additional);
+                    //이벤트/기획전
+                    count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
 
                     //센터매장
