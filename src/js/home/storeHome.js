@@ -156,25 +156,12 @@ $(function(){
     }
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+        
+        
 
-        $('.ui_lifestyle_list').vcCarousel({
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            responsive: [{
-                breakpoint: 100000,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                }
-            },{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]                
-        });
+        $('.ui_lifestyle_list.idx1').vcCarousel({ infinite: true, slidesToShow: 4, slidesToScroll: 1, swipeToSlide: true, cssEase: 'ease-out', speed: 500, touchThreshold: 100, responsive: [{ breakpoint: 100000, settings: { slidesToShow: 4, slidesToScroll: 1, } },{ breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }] });
+        $('.ui_lifestyle_list.idx2').vcCarousel({ infinite: true, slidesToShow: 4, slidesToScroll: 1, swipeToSlide: true, cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)', speed : 350, touchThreshold: 100, responsive: [{ breakpoint: 100000, settings: { slidesToShow: 4, slidesToScroll: 1, } },{ breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }] });
+        $('.ui_lifestyle_list.idx3').vcCarousel({ infinite: true, slidesToShow: 4, slidesToScroll: 1, responsive: [{ breakpoint: 100000, settings: { slidesToShow: 4, slidesToScroll: 1, } },{ breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }] });
 
         $(window).on('breakpointchange.lifestyle', function(e){
 
