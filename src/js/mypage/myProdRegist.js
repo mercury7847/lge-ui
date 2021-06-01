@@ -519,32 +519,12 @@
                 }
             })
 
-
-            //제조번호 확인 test
+            //제조번호 확인
             self.$snCheckButton.on('click', function(e){
                 var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());
                 if(checkSerialSuccess) {
-                    //lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
-                    // BTOCSITE-138 :: START -- 제조번호 형식 검증후 중복여부 ajax 통신
-                    var isSnDuplicate = false;  // 시리얼넘버 중복여부                    
-                    var sn = self.$snInput.val();
-                    var ajaxUrl = self.$registMyProductPopup.attr('data-sn-url');
-                    lgkorUI.requestAjaxData(ajaxUrl, {"sn":sn}, function(result) {
-                        var data = result.data;
-                        if(lgkorUI.stringToBool(data.success)) {
-                            //checkSerialSuccess = true;
-                            lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
-                        } else {
-                            checkSerialSuccess = false;
-                            if (!!data.alert.title){
-                                lgkorUI.alert("", {title: data.alert.title});
-                            } else {
-                                lgkorUI.alert("", {title: "동일한 제조번호(S/N)가 등록되어 있습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
-                            }
-                        }
-                    });
-                    // BTOCSITE-138 :: END
+                    lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                 } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
@@ -576,8 +556,8 @@
                 } else {
                     //등록
                     //2021-03-06 제조번호(sn) 필수 제외
-                    if(checkModelSuccess && checkSerialSuccess) {
-                    //if(checkModelSuccess) {
+                    //if(checkModelSuccess && checkSerialSuccess) {
+                    if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
                             var param = self.registMyProductValidation.getAllValues();
@@ -603,13 +583,14 @@
                             });
                         }
                     } else {
-                        //lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                        
+                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        /*
                         if(!checkModelSuccess) {
                             lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                         } else if(!checkSerialSuccess) {
                             lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
-                        }                        
+                        }
+                        */
                     }
                 }
             });
