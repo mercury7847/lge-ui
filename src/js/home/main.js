@@ -75,7 +75,9 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-       // $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        if (!vcui.detect.isMobileDevice){
+            $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        }
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -217,15 +219,16 @@ $(function () {
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
-        //$('.scene').css({'overflow':'hidden'});
+        $('.scene').css({'overflow':'hidden'});
         
-        //$('.container').css({'overflow':'visible', 'height':'auto'});     
-        /*
-        $('.next-arr').on('click', 'a', function(e){
-            e.preventDefault();
-            wheelScene(1);
-        });
-        */
+        $('.container').css({'overflow':'visible', 'height':'auto'});     
+        
+        if ( !vcui.detect.isMobileDevice ){            
+            $('.next-arr').on('click', 'a', function(e){
+                e.preventDefault();
+                wheelScene(1);
+            });
+        }
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -282,20 +285,20 @@ $(function () {
 
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
-        /*
+        
         var maxScale = 110;
 
         $scenes.find('.img img').css({
             width: maxScale + '%'
         });
-        */
+        
 
         function stopVisualAnim(){
             clearInterval(visualAnimInterval);
         }
 
         function playVisualAnim(){
-            if(currentPage > 0 && currentPage < 5){
+            //if(currentPage > 0 && currentPage < 5){
                 clearInterval(visualAnimInterval);
 
                 var newwidth = maxScale;
@@ -309,12 +312,12 @@ $(function () {
 
                     if(newwidth == 100) clearInterval(visualAnimInterval);
                 }, 18);
-            }
+            //}
         }
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){
+            if(!isMobileDevice){                
                 if(!canScroll) return; 
             }           
             
@@ -407,15 +410,16 @@ $(function () {
                             $('.floating-menu.top').show();
                         }                       
                     }
-                    /*
+                    
                     $scenes.eq(currentPage).find('.img img').css({
                         width: maxScale + '%'
                     });
-                    */
+                    
                     currentPage = idx;   
-
+                    /*
                     if(currentPage == 5) startIconAnim();
                     else stopIconAnim();
+                    */
                     
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
@@ -431,7 +435,7 @@ $(function () {
                         }
                     });
 
-                    //playVisualAnim();
+                    playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {
@@ -453,7 +457,7 @@ $(function () {
         if(!isMobileDevice){
 
             /* 메인테스트*/
-            /* BTOCSITE-27
+            
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -478,8 +482,6 @@ $(function () {
                 }       
     
             });
-            
-            //BTOCSITE-27  */
 
         }
         
@@ -491,7 +493,7 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        /*
+        
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -507,7 +509,7 @@ $(function () {
                     // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
-
+                /* BTOCSITE-740
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -524,12 +526,11 @@ $(function () {
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
                     }
-                }    
+                } 
+                */   
                 
             }
         });
-        */
-        // BTOCSITE-27
 
         var wrapTouchSy = 0;
         
@@ -633,7 +634,7 @@ $(function () {
 
                 if ( !extArr.length ) return false;
 
-                var $video = $('<video '+ videoAttr +'></video>');                
+                var $video = $('<video '+ videoAttr +'></video>');
 
                 for (var i = extArr.length - 1; i >= 0; i--) {
                     if (extArr[i] == 'mp4') {
@@ -723,7 +724,7 @@ $(function () {
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                //$(this).height(itemHeight);
+                $(this).height(itemHeight);
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
@@ -750,29 +751,33 @@ $(function () {
                 totalHeight += itemHeight;
             });
 
-            // BTOCSITE-740 start
             setVideoPlayByScroll();
-            // BTOCSITE-740 end
 
-            /* 메인 테스트 */
+            /* 메인 테스트 */            
             if(vcui.detect.isIOS) {
+                /*
                 if($contentWrap.hasClass('active')) {
-                    //$contentWrap.css({'overflow':'auto','height':winHeight});
+                    $contentWrap.css({'overflow':'auto','height':winHeight});
                 } else {
-                    //$contentWrap.css({'overflow':'','height':winHeight});
+                    $contentWrap.css({'overflow':'','height':winHeight});
                 }
+                */
             } else {
-                //$contentWrap.css({'overflow':'auto','height':winHeight});
+                $contentWrap.css({'overflow':'auto','height':winHeight});
             }
-            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
+
+            if (!vcui.detect.isMobileDevice){
+                $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            }
+            
             
             if(idx!==undefined){
                 currentPage = idx;
-                //moveScene(currentPage,0);
+                moveScene(currentPage,0);
             }else{
                 setTimeout(function(){
                     currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-                    //moveScene(currentPage,0);
+                    moveScene(currentPage,0);
 
                     if(window.sessionStorage){ 
                         var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
@@ -944,22 +949,19 @@ $(function () {
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
 
-    // BTOCSITE-740 start
-    function setVideoPlayByScroll(){        
+    function setVideoPlayByScroll(){
+        // BTOCSITE-740
         var videoDOMS = $('.scene video');
         videoDOMS.each(function(){
             $(this).on('playstart', function(e, scrollTop){
                 //console.log('playstart scrollTop', scrollTop);
                 var top = $(this).offset().top;
                 var videoHeight = $(this).height();
-                var winHeight = $(window).height();
 
-                //if (scrollTop + (videoHeight / 2) > top && scrollTop < + (top + (videoHeight / 2))){
-                if (scrollTop + (winHeight / 2) > top && scrollTop < + (top + (winHeight / 2))){
+                if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
                     this.play();
                 } else {
-                    this.pause();
-                    this.currentTime = 0;
+                    $(this).stop();
                 }                
             });
         });
@@ -981,6 +983,5 @@ $(function () {
 
         $(window).trigger('scroll.videoPlay');
     }
-    // BTOCSITE-740 end
     
 });
