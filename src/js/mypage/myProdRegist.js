@@ -519,7 +519,8 @@
                 }
             })
 
-            //제조번호 확인
+
+            //제조번호 확인 test
             self.$snCheckButton.on('click', function(e){
                 var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
                 checkSerialSuccess = serialRegex.test(self.$snInput.val());
