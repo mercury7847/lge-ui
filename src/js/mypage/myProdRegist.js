@@ -528,6 +528,7 @@
                     // BTOCSITE-138 :: START -- 제조번호 형식 검증후 중복여부 ajax 통신
                     var isSnDuplicate = false;  // 시리얼넘버 중복여부                    
                     var sn = self.$snInput.val();
+                    var ajaxUrl = self.$registMyProductPopup.attr('data-sn-url');
                     lgkorUI.requestAjaxData(ajaxUrl, {"sn":sn}, function(result) {
                         var data = result.data;
                         if(lgkorUI.stringToBool(data.success)) {
