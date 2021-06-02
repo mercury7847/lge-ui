@@ -214,12 +214,12 @@ $(function(){
 
         var exhibitionLocal = [
             {
-                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
-                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "PC 아카데미 페스티벌<br>앵콜 기획전",
+                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02.jpg",
+                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02-m.jpg",
+                "title" : "올레드 업그레이드<br>지원금 행사",
                 "imageAlt" : "",
                 "date" : "",
-                "modelUrlPath" : "/benefits/exhibitions/detail-PE00007002",
+                "modelUrlPath" : "/benefits/exhibitions/detail-PE00011004",
                 "textClass":"fc-black"  
             },
             {
