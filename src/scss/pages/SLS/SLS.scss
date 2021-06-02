@@ -427,8 +427,7 @@ br.pc {
             &.link-benefit {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-
+					background-size: 100% 100%;
                     position: absolute;
                     left: 50%;
                     transform: translateX(-50%);
@@ -795,7 +794,7 @@ br.pc {
             font-size: 28px;
             line-height: 38px;
             @include mobile {
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 26px;
             }
         }

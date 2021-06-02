@@ -686,6 +686,9 @@
                             &::before {
                                 display: none;
                             }
+                            &.retalCareOn {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -1113,13 +1116,28 @@
                     }
                 }
                 .desc {
+                    /* 210531 : 디스크립션 영역 패딩 적용 */
+                    &::before {
+                        content: '※';
+                        display: inline-block;
+                        margin-left: -14px;
+                        margin-right: 2px;
+                    }
+                    padding-left: 12px;
+                    /* //210531 : 디스크립션 영역 패딩 적용 */
                     margin-top: 12px;
                     // padding-right: 28px;
                     @include font-x-small;
                     word-break: keep-all;
                 }
                 .btn-area {
-                    margin-top: 24px;
+                    // outline: 1px solid red;
+                    /* BTOCSITE-324 : MARGIN조정 */
+                    margin-top: 12px;
+                    @include mobile{
+                        margin-top: 6px;
+                    }
+                    /* //BTOCSITE-324 : MARGIN조정 */
                     text-align: right;
                     .btn-link {
                         @include font-small;
@@ -2072,6 +2090,9 @@
                             display: flex;
                             align-items: center;
                             &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
                                 display: none;
                             }
                         }

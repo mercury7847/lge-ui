@@ -403,7 +403,8 @@ var res = {
 					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
 					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
 					"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"],
-					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""]
+					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""],
+					"제품 카탈로그" : ["/html/CS/BTOCSITE-212.html","",""]
 				},
 				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]

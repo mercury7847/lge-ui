@@ -743,12 +743,12 @@
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
 
-                    //이벤트
-                    count = self.checkCountData(data.event);
-                    self.setTabCount(2, count);
-
                     //케어용품/소모품
                     count = self.checkCountData(data.additional);
+                    self.setTabCount(2, count);
+
+                    //이벤트
+                    count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
 
                     //센터매장
