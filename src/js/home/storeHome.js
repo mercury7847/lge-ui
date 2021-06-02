@@ -198,8 +198,8 @@ $(function(){
         // 많이 구매하는 제품 -> Best 이미지관리
 
         var rankBuyProductLocal = {
-            "pcImagePath" : "/lg5-common/images/PRS/img-buy-product-best.jpg",
-            "mobileImagePath" : "/lg5-common/images/PRS/img-buy-product-best-m.jpg"
+            "pcImagePath" : "/kr/main/store/assets/img-buy-product-best.jpg",
+            "mobileImagePath" : "/kr/main/store/assets/img-buy-product-best-m.jpg"
         }
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
         var newProductRecommendLocal = [{
@@ -214,12 +214,12 @@ $(function(){
 
         var exhibitionLocal = [
             {
-                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
-                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "PC 아카데미 페스티벌<br>앵콜 기획전",
+                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02.jpg",
+                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02-m.jpg",
+                "title" : "올레드 업그레이드<br>지원금 행사",
                 "imageAlt" : "",
                 "date" : "",
-                "modelUrlPath" : "/benefits/exhibitions/detail-PE00007002",
+                "modelUrlPath" : "/benefits/exhibitions/detail-PE00011004",
                 "textClass":"fc-black"  
             },
             {
@@ -232,6 +232,7 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        
         // 직접관리하는 영역 끝
 
         
