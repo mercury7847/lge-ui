@@ -232,6 +232,7 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        
         // 직접관리하는 영역 끝
 
         
