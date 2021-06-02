@@ -968,19 +968,53 @@ $(function () {
     function setVideoPlayByScroll(){
         // BTOCSITE-740
         var videoDOMS = $('.scene video');
-        videoDOMS.each(function(){
-            $(this).on('playstart', function(e, scrollTop){
-                //console.log('playstart scrollTop', scrollTop);
-                var top = $(this).offset().top;
-                var videoHeight = $(this).height();
+        var scenes = $('.scene');
+
+        scenes.each(function(){
+            var self = $(this);
+
+            self.on('active.scroll', function(e, scrollTop){
+                var top = self.offset().top;
+                var videoHeight = self.height();
 
                 if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
                     this.play();
                 } else {
                     $(this).stop();
-                }                
+                }
             });
         });
+
+        if (!vcui.detect.isMobileDevice){
+            videoDOMS.each(function(){
+                $(this).on('playstart.scroll', function(e, scrollTop){
+                    //console.log('playstart scrollTop', scrollTop);
+                    var top = $(this).offset().top;
+                    var videoHeight = $(this).height();
+    
+                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                        this.play();
+                    } else {
+                        $(this).stop();
+                    }                
+                });
+            });
+        } else {
+            videoDOMS.each(function(){
+                $(this).on('playstart.scroll', function(e, scrollTop){
+                    //console.log('playstart scrollTop', scrollTop);
+                    var top = $(this).offset().top;
+                    var videoHeight = $(this).height();
+    
+                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                        this.play();
+                    } else {
+                        $(this).stop();
+                    }                
+                });
+            });
+        }
+        
         
 
         var scrollInterval = null;
@@ -990,7 +1024,12 @@ $(function () {
             
             scrollInterval = setTimeout(function(){
                 var scrollTop = $(window).scrollTop();
+                
                 //console.log('scrollTop', scrollTop);
+                scenes.each(function(){
+                    $(this).trigger('active', scrollTop);
+                });
+
                 videoDOMS.each(function(){
                     $(this).trigger('playstart', scrollTop)
                 });
