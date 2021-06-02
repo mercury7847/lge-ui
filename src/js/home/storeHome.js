@@ -198,8 +198,8 @@ $(function(){
         // 많이 구매하는 제품 -> Best 이미지관리
 
         var rankBuyProductLocal = {
-            "pcImagePath" : "/lg5-common/images/PRS/img-buy-product-best.jpg",
-            "mobileImagePath" : "/lg5-common/images/PRS/img-buy-product-best-m.jpg"
+            "pcImagePath" : "/kr/main/store/assets/img-buy-product-best.jpg",
+            "mobileImagePath" : "/kr/main/store/assets/mg-buy-product-best-m.jpg"
         }
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
         var newProductRecommendLocal = [{
