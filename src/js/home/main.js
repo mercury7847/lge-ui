@@ -228,7 +228,15 @@ $(function () {
                 e.preventDefault();
                 wheelScene(1);
             });
+        } else {
+            // BTOCSITE-740 
+            $('.scene').addClass('active');
+            setTimeout(function(){
+                $('.scene').eq(0).addClass('on');
+            },500);
         }
+
+        
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -319,6 +327,8 @@ $(function () {
 
             if(!isMobileDevice){                
                 if(!canScroll) return; 
+            } else {
+                return;
             }           
             
             var nextIndex = (delta < 0) ? -1 : 1;
@@ -598,7 +608,7 @@ $(function () {
 
         function updateVideo(video) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
-            if(isMobileDevice) return;
+            //if(isMobileDevice) return;
 
 
             var isAndroid = vcui.detect.isAndroid;
@@ -772,22 +782,28 @@ $(function () {
             
             
             if(idx!==undefined){
-                currentPage = idx;
-                moveScene(currentPage,0);
-            }else{
-                setTimeout(function(){
-                    currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                if ( !vcui.detect.isMobileDevice ){
+                    currentPage = idx;
                     moveScene(currentPage,0);
-
-                    if(window.sessionStorage){ 
-                        var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
-                        if(lgeMainScrollTop){
-                            $contentWrap.scrollTop(lgeMainScrollTop);                            
+                } else {
+                    //$('.scene').eq(0).addClass('on');
+                }
+            }else{
+                if ( !vcui.detect.isMobileDevice ){
+                    setTimeout(function(){
+                        currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                        moveScene(currentPage,0);
+    
+                        if(window.sessionStorage){ 
+                            var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
+                            if(lgeMainScrollTop){
+                                $contentWrap.scrollTop(lgeMainScrollTop);                            
+                            }
+                            window.sessionStorage.removeItem('lgeMainScrollTop');
                         }
-                        window.sessionStorage.removeItem('lgeMainScrollTop');
-                    }
-
-                }, 100);
+    
+                    }, 100);
+                }
             }
             
         }

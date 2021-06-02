@@ -333,6 +333,7 @@ img{
 			z-index:2;
 			color:rgba(#fff, .5);
 			@include mobile {
+				display:none;
 				// right:24px;
 				bottom:32px;
 			}
@@ -364,6 +365,7 @@ img{
 				animation: arr 1s infinite;
 			}
 			@include mobile {
+				display:none;
 				width:100%;
 				right:0;
 				bottom:0;
