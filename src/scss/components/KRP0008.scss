@@ -8,7 +8,6 @@
     margin: 0 auto;
     padding-right: 40px;
     padding-left: 40px;
-
     /* BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
     .info-bottom,
     .btn-area,
@@ -17,7 +16,6 @@
         -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4) !important;
     }
     /* //BTOCSITE-656 : 스토어 > 버튼 클릭 시 효과 추가 요청 */
-
     @include mobile {
         max-width: 100%;
         padding: 0 16px 40px;
@@ -685,6 +683,9 @@
                             &::before {
                                 display: none;
                             }
+                            &.retalCareOn {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -1091,6 +1092,23 @@
                         &.on .btn-toggle {
                             top: 12px;
                         }
+                        
+                        /* 20210602 BTOCSITE-495 추가 */
+                        .price-info {
+                            &.info-Mb {
+                                margin-bottom: 20px;
+                                @include mobile{
+                                    margin-bottom: 13px;
+                                }
+                            }
+                        }
+                        /* //20210602 BTOCSITE-495 추가 */
+                        .select-info {
+                            .select-text {
+                                font-weight: 700;
+                            }
+                        }
+                            
                     }
                 }
                 &.care-solution-payment-info {
@@ -1112,13 +1130,28 @@
                     }
                 }
                 .desc {
+                    /* 210531 : 디스크립션 영역 패딩 적용 */
+                    &::before {
+                        content: '※';
+                        display: inline-block;
+                        margin-left: -14px;
+                        margin-right: 2px;
+                    }
+                    padding-left: 12px;
+                    /* //210531 : 디스크립션 영역 패딩 적용 */
                     margin-top: 12px;
                     // padding-right: 28px;
                     @include font-x-small;
                     word-break: keep-all;
                 }
                 .btn-area {
-                    margin-top: 24px;
+                    // outline: 1px solid red;
+                    /* BTOCSITE-324 : MARGIN조정 */
+                    margin-top: 12px;
+                    @include mobile{
+                        margin-top: 6px;
+                    }
+                    /* //BTOCSITE-324 : MARGIN조정 */
                     text-align: right;
                     .btn-link {
                         @include font-small;
@@ -2071,6 +2104,9 @@
                             display: flex;
                             align-items: center;
                             &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
                                 display: none;
                             }
                         }
