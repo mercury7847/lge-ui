@@ -428,7 +428,6 @@ br.pc {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
 					background-size: 100% 100%;
-
                     position: absolute;
                     left: 50%;
                     transform: translateX(-50%);
@@ -437,41 +436,41 @@ br.pc {
                 //&.on a:before,
                 //&:hover a:before {
                 //    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-				//	background-size: 100% 100%;
+                //  background-size: 100% 100%;
                 //}
             }
             &.link-planner {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
+                    background-size: 100% 100%;
                 }
                 //&.on a:before,
                 //&:hover a:before {
                 //    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-				//	background-size: 100% 100%;
+                //  background-size: 100% 100%;
                 //}
             }
             &.link-my {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
+                    background-size: 100% 100%;
                 }
                 //&.on a:before,
                 //&:hover a:before {
                 //    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-				//	background-size: 100% 100%;
+                //  background-size: 100% 100%;
                 //}
 
             }
             &.next-schedule {
                 a:before {
                     background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-					background-size: 100% 100%;
+                    background-size: 100% 100%;
                 }
                 //&.on span:before,
                 //&:hover span:before {
                 //    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-				//	background-size: 100% 100%;
+                //  background-size: 100% 100%;
                 //}
                 .day {
                     display: inline-block;

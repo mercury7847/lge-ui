@@ -295,7 +295,7 @@ $(function () {
         }
 
         function playVisualAnim(){
-            if(currentPage > 0 && currentPage < 5){
+            //if(currentPage > 0 && currentPage < 5){
                 clearInterval(visualAnimInterval);
 
                 var newwidth = maxScale;
@@ -309,7 +309,7 @@ $(function () {
 
                     if(newwidth == 100) clearInterval(visualAnimInterval);
                 }, 18);
-            }
+            //}
         }
 
         function wheelScene(delta) {
@@ -414,7 +414,7 @@ $(function () {
                     */
                     currentPage = idx;   
 
-                    if(currentPage == 5) startIconAnim();
+                    if(currentPage == maxLens) startIconAnim();
                     else stopIconAnim();
                     
                     $('html').removeClass('sceneMoving');
