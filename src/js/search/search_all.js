@@ -705,11 +705,15 @@
 
             //전체 검색
             requestSearchData:function(value, force) {
+                debugger;
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
+                var postData = {"search":value, "force":force};
+                var careType = lgkorUI.getParameterByName('careType')
+                if(careType) vcui.extend(postData,{ "careType" : careType });
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
                     var data = result.data;
