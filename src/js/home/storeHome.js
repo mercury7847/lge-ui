@@ -199,7 +199,7 @@ $(function(){
 
         var rankBuyProductLocal = {
             "pcImagePath" : "/kr/main/store/assets/img-buy-product-best.jpg",
-            "mobileImagePath" : "/kr/main/store/assets/mg-buy-product-best-m.jpg"
+            "mobileImagePath" : "/kr/main/store/assets/img-buy-product-best-m.jpg"
         }
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
         var newProductRecommendLocal = [{
