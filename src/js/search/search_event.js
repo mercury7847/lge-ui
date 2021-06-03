@@ -710,7 +710,7 @@
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
                     arr = self.checkArrayData(data.event);
                     count = self.checkCountData(data.event);
-                    self.setTabCount(2, count);
+                    self.setTabCount(4, count);
                     var subcount = self.checkSubCountData(data.event);
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
@@ -739,13 +739,13 @@
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
 
+                    //케어용품/소모품
+                    count = self.checkCountData(data.additional);
+                    self.setTabCount(2, count);
+
                     //스토리
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
-
-                    //케어용품/소모품
-                    count = self.checkCountData(data.additional);
-                    self.setTabCount(4, count);
 
                     //센터매장
                     count = self.checkCountData(data.shop);

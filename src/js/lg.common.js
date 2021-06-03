@@ -7,6 +7,7 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
+    
     // ios 버그 이후 반영예정
     // var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
     var scheme = 'lgeapp://';
@@ -14,23 +15,21 @@ var goAppUrl = function(path) {
     if( vcui.detect.isIOS ) {
         var clickedAt = +new Date;
         setTimeout( function () { 
-            if (+new Date - clickedAt < 1000 ) { 
+            if (+new Date - clickedAt < 2000 ) { 
                 // 앱스토어 이동 
-                location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
             }
-        } ,500);
+        } ,1500);
 
         setTimeout( function () { 
             location.href = scheme; // 앱실행 
-        },50);
+        },0);
     } else {
             // ios 버그 이후 반영예정
-        // window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
-        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;', '_blank');
+        // window.open(location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
     }
 }
-
-
 
 ;(function(global){
 
