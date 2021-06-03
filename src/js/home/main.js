@@ -734,7 +734,9 @@ $(function () {
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                $(this).height(itemHeight);
+                if (!vcui.detect.isMobileDevice){
+                    $(this).height(itemHeight);
+                }
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
@@ -773,7 +775,7 @@ $(function () {
                 }
                 */
             } else {
-                $contentWrap.css({'overflow':'auto','height':winHeight});
+                //$contentWrap.css({'overflow':'auto','height':winHeight});
             }
 
             if (!vcui.detect.isMobileDevice){
@@ -974,6 +976,7 @@ $(function () {
         scenes.each(function(){
             var self = $(this);
             var video = self.find('video');
+            var image = self.find('.img img');
             
             self.on('active.scroll', function(e, scrollTop){
                 var top = self.offset().top;
@@ -981,11 +984,21 @@ $(function () {
                 var winHeight = $(window).height();                
                 if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){
                     self.addClass('on');
+                    if (!!image.length){
+                        image.animate({
+                            'width' : '100%'
+                        });
+                    }
                     if (!!video.length){
                         video.get(0).play();
                     }
                 } else {
                     self.removeClass('on');
+                    if (!!image.length){
+                        image.animate({
+                            'width' : '110%'
+                        });
+                    }
                     if (!!video.length){
                         video.get(0).pause();
                         video.get(0).currentTime = 0;
