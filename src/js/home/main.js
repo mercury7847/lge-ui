@@ -982,7 +982,8 @@ $(function () {
                 var top = self.offset().top;
                 var sceneHeight = self.height();
                 var winHeight = $(window).height();                
-                if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){
+                //if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){  // 영역이 완전히 보일떄 
+                if ( top >= scrollTop - (sceneHeight /2) && (scrollTop + winHeight) + (sceneHeight /2) >= (top + sceneHeight) ){  // 영역이 절반이상 보여질때 
                     self.addClass('on');
                     if (!!image.length){
                         image.animate({
@@ -1008,6 +1009,7 @@ $(function () {
         });
 
         var scrollInterval = null;
+        var sceneActiveQue = [];
 
         $(window).on('scroll.videoPlay', function(){
             clearTimeout(scrollInterval);
