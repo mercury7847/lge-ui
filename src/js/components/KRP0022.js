@@ -70,7 +70,7 @@
                 });
                 
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
-                if($(e.target).vcSelectbox('value') === 'progress') postData['eventSort'] = '';
+                if($(e.target).hasClass('ui_selectbox') && $(e.target).vcSelectbox('value') === 'progress') postData['eventSort'] = '';
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
