@@ -972,7 +972,7 @@ $(function () {
 
         scenes.each(function(){
             var self = $(this);
-
+            /*
             self.on('active.scroll', function(e, scrollTop){
                 var top = self.offset().top;
                 var videoHeight = self.height();
@@ -983,6 +983,7 @@ $(function () {
                     $(this).stop();
                 }
             });
+            */
         });
 
         if (!vcui.detect.isMobileDevice){
