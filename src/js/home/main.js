@@ -75,7 +75,9 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-       // $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        if (!vcui.detect.isMobileDevice){
+            $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        }
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -217,15 +219,24 @@ $(function () {
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
-        //$('.scene').css({'overflow':'hidden'});
+        $('.scene').css({'overflow':'hidden'});
         
-        //$('.container').css({'overflow':'visible', 'height':'auto'});     
-        /*
-        $('.next-arr').on('click', 'a', function(e){
-            e.preventDefault();
-            wheelScene(1);
-        });
-        */
+        $('.container').css({'overflow':'visible', 'height':'auto'});     
+        
+        if ( !vcui.detect.isMobileDevice ){            
+            $('.next-arr').on('click', 'a', function(e){
+                e.preventDefault();
+                wheelScene(1);
+            });
+        } else {
+            // BTOCSITE-740 
+            $('.scene').addClass('active');
+            setTimeout(function(){
+                $('.scene').eq(0).addClass('on');
+            },500);
+        }
+
+        
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -282,20 +293,20 @@ $(function () {
 
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
-        /*
+        
         var maxScale = 110;
 
         $scenes.find('.img img').css({
             width: maxScale + '%'
         });
-        */
+        
 
         function stopVisualAnim(){
             clearInterval(visualAnimInterval);
         }
 
         function playVisualAnim(){
-            if(currentPage > 0 && currentPage < 5){
+            //if(currentPage > 0 && currentPage < 5){
                 clearInterval(visualAnimInterval);
 
                 var newwidth = maxScale;
@@ -309,13 +320,15 @@ $(function () {
 
                     if(newwidth == 100) clearInterval(visualAnimInterval);
                 }, 18);
-            }
+            //}
         }
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){
+            if(!isMobileDevice){                
                 if(!canScroll) return; 
+            } else {
+                return;
             }           
             
             var nextIndex = (delta < 0) ? -1 : 1;
@@ -407,15 +420,16 @@ $(function () {
                             $('.floating-menu.top').show();
                         }                       
                     }
-                    /*
+                    
                     $scenes.eq(currentPage).find('.img img').css({
                         width: maxScale + '%'
                     });
-                    */
+                    
                     currentPage = idx;   
-
+                    /*
                     if(currentPage == 5) startIconAnim();
                     else stopIconAnim();
+                    */
                     
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
@@ -431,7 +445,7 @@ $(function () {
                         }
                     });
 
-                    //playVisualAnim();
+                    playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {
@@ -453,7 +467,7 @@ $(function () {
         if(!isMobileDevice){
 
             /* 메인테스트*/
-            /* BTOCSITE-27
+            
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -478,8 +492,6 @@ $(function () {
                 }       
     
             });
-            
-            //BTOCSITE-27  */
 
         }
         
@@ -491,7 +503,7 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        /*
+        
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -507,7 +519,7 @@ $(function () {
                     // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
-
+                /* BTOCSITE-740
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -524,12 +536,11 @@ $(function () {
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
                     }
-                }    
+                } 
+                */   
                 
             }
         });
-        */
-        // BTOCSITE-27
 
         var wrapTouchSy = 0;
         
@@ -597,8 +608,7 @@ $(function () {
 
         function updateVideo(video) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
-            if(isMobileDevice) return;
-
+            //if(isMobileDevice) return;
 
             var isAndroid = vcui.detect.isAndroid;
 
@@ -723,7 +733,7 @@ $(function () {
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                //$(this).height(itemHeight);
+                $(this).height(itemHeight);
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
@@ -751,36 +761,48 @@ $(function () {
             });
 
             setVideoPlayByScroll();
-
-            /* 메인 테스트 */
+            
+            /* 메인 테스트 */            
             if(vcui.detect.isIOS) {
+                /*
                 if($contentWrap.hasClass('active')) {
-                    //$contentWrap.css({'overflow':'auto','height':winHeight});
+                    $contentWrap.css({'overflow':'auto','height':winHeight});
                 } else {
-                    //$contentWrap.css({'overflow':'','height':winHeight});
+                    $contentWrap.css({'overflow':'','height':winHeight});
                 }
+                */
             } else {
-                //$contentWrap.css({'overflow':'auto','height':winHeight});
+                $contentWrap.css({'overflow':'auto','height':winHeight});
             }
-            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
+
+            if (!vcui.detect.isMobileDevice){
+                $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            }
+            
             
             if(idx!==undefined){
-                currentPage = idx;
-                //moveScene(currentPage,0);
+                if ( !vcui.detect.isMobileDevice ){
+                    currentPage = idx;
+                    moveScene(currentPage,0);
+                } else {
+                    //$('.scene').eq(0).addClass('on');
+                }
             }else{
-                setTimeout(function(){
-                    currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-                    //moveScene(currentPage,0);
-
-                    if(window.sessionStorage){ 
-                        var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
-                        if(lgeMainScrollTop){
-                            $contentWrap.scrollTop(lgeMainScrollTop);                            
+                if ( !vcui.detect.isMobileDevice ){
+                    setTimeout(function(){
+                        currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                        moveScene(currentPage,0);
+    
+                        if(window.sessionStorage){ 
+                            var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
+                            if(lgeMainScrollTop){
+                                $contentWrap.scrollTop(lgeMainScrollTop);                            
+                            }
+                            window.sessionStorage.removeItem('lgeMainScrollTop');
                         }
-                        window.sessionStorage.removeItem('lgeMainScrollTop');
-                    }
-
-                }, 100);
+    
+                    }, 100);
+                }
             }
             
         }
@@ -945,20 +967,52 @@ $(function () {
     function setVideoPlayByScroll(){
         // BTOCSITE-740
         var videoDOMS = $('.scene video');
-        videoDOMS.each(function(){
-            $(this).on('playstart', function(e, scrollTop){
-                //console.log('playstart scrollTop', scrollTop);
-                var top = $(this).offset().top;
-                var videoHeight = $(this).height();
+        var scenes = $('.scene');
 
+        scenes.each(function(){
+            var self = $(this);
+            /*
+            self.on('active.scroll', function(e, scrollTop){
+                var top = self.offset().top;
+                var videoHeight = self.height();
                 if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
                     this.play();
                 } else {
                     $(this).stop();
-                }                
+                }
             });
+            */
         });
-        
+
+        if (!vcui.detect.isMobileDevice){
+            videoDOMS.each(function(){
+                $(this).on('playstart.scroll', function(e, scrollTop){
+                    //console.log('playstart scrollTop', scrollTop);
+                    var top = $(this).offset().top;
+                    var videoHeight = $(this).height();
+    
+                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                        this.play();
+                    } else {
+                        $(this).stop();
+                    }                
+                });
+            });
+        } else {
+            videoDOMS.each(function(){
+                $(this).on('playstart.scroll', function(e, scrollTop){
+                    //console.log('playstart scrollTop', scrollTop);
+                    var top = $(this).offset().top;
+                    var videoHeight = $(this).height();
+    
+                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
+                        this.play();
+                    } else {
+                        $(this).stop();
+                    }                
+                });
+            });
+        }
 
         var scrollInterval = null;
 
@@ -968,6 +1022,9 @@ $(function () {
             scrollInterval = setTimeout(function(){
                 var scrollTop = $(window).scrollTop();
                 //console.log('scrollTop', scrollTop);
+                scenes.each(function(){
+                    $(this).trigger('active', scrollTop);
+                });
                 videoDOMS.each(function(){
                     $(this).trigger('playstart', scrollTop)
                 });
