@@ -694,7 +694,7 @@ $(function () {
                 $video.on('loadeddata', function(e) {
                     $video.data('loaded', true);
                     $wrap.trigger('videoLoaded');
-                    oVideo.play();
+                    //oVideo.play();
                 }).trigger('load');
                 
             }
