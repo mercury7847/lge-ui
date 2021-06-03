@@ -17,6 +17,17 @@
     {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0.15) !important;
     }
+    /* BTOCSITE-1303 : chrome일 경우 hack 처리 */
+    @media screen and (-webkit-min-device-pixel-ratio:0){
+        .info-bottom,
+        .btn-area,
+        .btn-group,
+        .btn-link
+        {
+            -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4) !important;
+        }
+    }
+    /* //BTOCSITE-1303 : chrome일 경우 hack 처리 */
     /* //BTOCSITE-1105 : 스토어 > 버튼 클릭 시 효과 추가 및 색상변경 요청 */
 
     @include mobile {
