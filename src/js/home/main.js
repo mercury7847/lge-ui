@@ -967,57 +967,32 @@ $(function () {
 
     function setActivePlayByScroll(){
         // BTOCSITE-740
-        var videoDOMS = $('.scene video');
+        if (!vcui.detect.isMobileDevice) return;
+
         var scenes = $('.scene');
 
         scenes.each(function(){
             var self = $(this);
+            var video = self.find('video');
             
             self.on('active.scroll', function(e, scrollTop){
                 var top = self.offset().top;
                 var sceneHeight = self.height();
-
-                if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + sceneHeight)){
+                var winHeight = $(window).height();                
+                if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){
                     self.addClass('on');
-
+                    if (!!video.length){
+                        video.get(0).play();
+                    }
                 } else {
                     self.removeClass('on');
-                }
-            });
-            
+                    if (!!video.length){
+                        video.get(0).pause();
+                        video.get(0).currentTime = 0;
+                    }
+                }        
+            });            
         });
-
-        if (!vcui.detect.isMobileDevice){
-            videoDOMS.each(function(){
-                $(this).on('playstart.scroll', function(e, scrollTop){
-                    //console.log('playstart scrollTop', scrollTop);
-                    var top = $(this).offset().top;
-                    var videoHeight = $(this).height();
-    
-                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
-                        this.play();
-                    } else {
-                        $(this).stop();
-                    }                
-                });
-            });
-        } else {
-            videoDOMS.each(function(){
-                $(this).on('playstart.scroll', function(e, scrollTop){
-                    //console.log('playstart scrollTop', scrollTop);
-                    var top = $(this).offset().top;
-                    var videoHeight = $(this).height();
-    
-                    if (scrollTop + ($(window).height() / 3) > top && scrollTop < + (top + videoHeight)){
-                        this.play();
-                    } else {
-                        $(this).stop();
-                    }                
-                });
-            });
-        }
-        
-        
 
         var scrollInterval = null;
 
@@ -1031,10 +1006,7 @@ $(function () {
                 scenes.each(function(){
                     $(this).trigger('active', scrollTop);
                 });
-
-                videoDOMS.each(function(){
-                    $(this).trigger('playstart', scrollTop)
-                });
+                   
             }, 50);
         });
         setTimeout(function(){
