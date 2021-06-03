@@ -100,7 +100,7 @@ img{
 		@include mobile {			
 			height: 500px;
 			&+.scene {
-				margin-top:24px;
+				margin-top:12px;
 			}
 		}
 		// BTOCSITE-740 end
