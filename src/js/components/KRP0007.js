@@ -2,7 +2,7 @@
 (function () {
     var productItemTemplate =
     '<li data-uniq-id="{{uniqId}}">' +
-        '<div class="item plp-item">' +
+        '<div class="item plp-item" data-ec-product="{{ecProduct}}">' +
         '{{#if promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
@@ -834,6 +834,37 @@
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
 
+                function getEcCategoryName(item){
+                    return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                }
+
+                function getGubunValue(bizType){
+                    var curValue = "";
+                    switch(bizType) {
+                        case "PRODUCT": 
+                            curValue = "일반제품"
+                            break;
+                        case "CARESOLUTION": 
+                            curValue = "케어솔루션"
+                            break;
+                        case "DISPOSABLE": 
+                            curValue = "케어용품/소모품"
+                            break;                            
+                    }
+                    return curValue;
+                }
+
+                var ecProduct = {
+                    "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+                    "model_id": item.modelId,
+                    "model_sku": item.sku, 
+                    "model_gubun": getGubunValue(item.bizType),
+                    "price": vcui.number.addComma(item.obsOriginalPrice), 
+                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                    "brand": "LG",
+                    "category": getEcCategoryName(item) 
+                }
+                item.ecProduct = JSON.stringify(ecProduct);
                 return vcui.template(productItemTemplate, item);
             },
 
