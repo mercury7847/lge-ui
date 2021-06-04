@@ -7,11 +7,7 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    
-    // ios 버그 이후 반영예정
-    // var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
-    var scheme = 'lgeapp://';
-    
+    var weblink = path ? path : location.pathname;
     if( vcui.detect.isIOS ) {
         var clickedAt = +new Date;
         setTimeout( function () { 
@@ -22,12 +18,10 @@ var goAppUrl = function(path) {
         } ,1500);
 
         setTimeout( function () { 
-            location.href = scheme; // 앱실행 
+            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
         },0);
     } else {
-            // ios 버그 이후 반영예정
-        // window.open(location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
-        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
     }
 }
 

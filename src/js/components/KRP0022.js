@@ -31,11 +31,11 @@
             bindEvents: function() {
                 var _self = this;
                 self.$KRP0022.find('.ui_selectbox').on('change', function(e){
-                   _self.requestData(e);
+                   _self.requestData();
                 });
 
                 self.$tab.on("tabchange", function(e) {
-                    _self.requestData(e);
+                    _self.requestData();
                 });
 
 
@@ -58,7 +58,7 @@
                 _self.noData(self.$list.find('li').length > 0 ? false : true);
             },
 
-            requestData: function(e) {
+            requestData: function() {
                 var _self = this;
                 var ajaxUrl = self.$KRP0022.attr('data-list-url');
                 var selectIdx = self.$tab.vcTab('getSelectIdx');
@@ -70,7 +70,7 @@
                 });
                 
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
-                if($(e.target).hasClass('ui_selectbox') && $(e.target).vcSelectbox('value') === 'progress') postData['eventSort'] = '';
+                if($(".ui_selectbox").vcSelectbox('value') === 'progress') postData['eventSort'] = '';
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
