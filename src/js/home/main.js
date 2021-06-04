@@ -1090,7 +1090,7 @@ $(function () {
                 sceneActiveQue.forEach(function( scene ){
                     var video = $(scene.el).find('video');
                     if ( scene.hiActiveView == true ){
-                        if (!!video.length){
+                        if (!!video.length && video.get(0).currentTime == 0){
                             video.get(0).play();
                         }
                     }
