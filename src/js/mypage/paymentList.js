@@ -20,6 +20,7 @@
                             '<th scope="col">청구금액</th>'+
                             '<th scope="col">할인금액</th>'+
                             '<th scope="col">납부금액</th>'+
+                            '<th scope="col">결제정보</th>'+
                         '</tr>'+
                     '</thead>'+
                     '<tbody>'+
@@ -30,6 +31,13 @@
                             '<td>{{item.chargePrice}}</td>'+
                             '<td>{{item.discountPrice}}</td>'+
                             '<td>{{item.paymentPrice}}</td>'+
+                            '<td>'+
+                            '<ul class="payment-info">'+
+                            '{{#each row in item.paymentInfo}}'+
+                            '<li>{{row.bank}}</li>'+
+                            '{{/each}}'+
+                            '</ul>'+
+                            '</td>'+
                         '</tr>'+
                     '{{/each}}'+
                     '</tbody>'+
@@ -85,6 +93,7 @@
 
                 if(result.data.paymentList && result.data.paymentList.length > 0){
                     $('.section-wrap .sects').show();
+
                     var list = vcui.template(listTableTemplate, result.data);
                     $('.section-wrap .sects').append(list);
     
