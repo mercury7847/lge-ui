@@ -442,16 +442,18 @@ $(function () {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    $scenes.each(function() {
-                        if ( $(this).find('video').length != 0 ) {
-                            if ( $(this).hasClass('on') ) {
-                                $(this).find('video')[0].play();
-                            }else {
-                                $(this).find('video')[0].pause();
-                                $(this).find('video')[0].currentTime = 0;							
+                    if (!vcui.detect.isMobileDevice){
+                        $scenes.each(function() {
+                            if ( $(this).find('video').length != 0 ) {
+                                if ( $(this).hasClass('on') ) {
+                                    $(this).find('video')[0].play();
+                                }else {
+                                    $(this).find('video')[0].pause();
+                                    $(this).find('video')[0].currentTime = 0;							
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
 
                     playVisualAnim();
 
@@ -683,12 +685,13 @@ $(function () {
                     'transform': 'translate(-50%,-50%)'
                 })
                 oVideo   = $video[0];
-
+                /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {
                         oVideo.play();
                     });
                 }
+                */
                 $wrap.addClass('video');
 
                 $video.on('loadeddata', function(e) {
