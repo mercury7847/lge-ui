@@ -22,7 +22,7 @@
             <div class="contents signature-main">
                 <div class="sub-main">
                     <!-- Hero Banner -->
-                    <div class="brand-hero signature-hero">
+                    <div class="brand-hero signature-hero" style="display: none;"> <!-- 210603 임시 display:none 처리 테스트용 -->
                         <div class="scene01">
                             <!-- 210330 data-step 수정 -->
                             <div class="image ui_bg_switch" data-pc-src="/lg5-common/images/PRH/img-signature-visual.jpg" data-m-src="/lg5-common/images/PRH/img-signature-visual-m.jpg" aria-hidden="true"></div>
@@ -989,33 +989,51 @@
                             <h2 class="content-title"><span>작품 정보</span></h2>
                             <div class="signature-section">
                                 <div class="inner">
+                                    <!-- 210603 진행중 -->
                                     <ul class="signature-product-list">
                                         <li>
                                             <div class="box">
-                                                <div class="image">
-                                                    <img data-pc-src="/lg5-common/images/PRH/img-signature-product01.jpg" data-m-src="/lg5-common/images/PRH/img-signature-product01-m.jpg" alt="">
-                                                </div>
                                                 <div class="text-area">
                                                     <h3 class="title"><span>올레드 TV</span></h3>
                                                     <p class="body-copy">화면이 사라지는 순간 찾아오는 예술 <br>시그니처 디자인세계 최초 롤러블 TV</p>
-                                                    <div class="btn-area">
-                                                        <a href="/tvs/oled65rxkna" class="btn border"><span>제품 보기</span></a><!-- 210406 수정 [target, title 삭제] --><!-- 210224 수정 [링크 추가] -->
-                                                        <div class="select-wrap ui_dropdown">
-                                                            <a href="#" class="select-button ui_dropdown_toggle">다른 모델 보기</a>
-                                                            <div class="selectbox-list ui_dropdown_list">
-                                                                <!-- 210315 수정 [링크 새 창 열림 추가] -->
-                                                                <!-- 210406 수정 [target, title 삭제] -->
-                                                                <ul class="model-list">
-                                                                    <li><a href="/tvs/oled65rxkna" class="btn border">OLED65RXKNA</a></li>
-                                                                    <li><a href="/tvs/oled88zxkna" class="btn border">OLED88ZXKNA</a></li>
-                                                                    <li><a href="/tvs/oled77zxkna" class="btn border">OLED77ZXKNA</a></li>
-                                                                    <li><a href="/tvs/oled88z9kna" class="btn border">OLED88Z9KNA</a></li>
-                                                                    <li><a href="/tvs/oled77w9wna" class="btn border">OLED77W9WNA</a></li>
-                                                                    <li><a href="/tvs/oled65w9wna" class="btn border">OLED65W9WNA</a></li>
-                                                                </ul>
-                                                                <!-- // 210406 수정 [target, title 삭제] -->
-                                                                <!-- // 210315 수정 [링크 새 창 열림 추가] -->
-                                                            </div>
+                                                </div>
+                                                <div class="img-area">
+                                                    <div class="slide-wrap ui_carousel_slider img-area-box">
+                                                        <div class="indi-wrap">
+                                                            <ul class="indi-conts ui_carousel_dots">
+                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                            </ul>                                            
+                                                        </div>
+                                                        <div class="slide-content ui_carousel_list">
+                                                            <ul class="slide-track ui_carousel_track prd-area">
+                                                                <!-- 210224 수정 [링크 추가] -->
+                                                                <li class="slide-conts ui_carousel_slide">
+                                                                    <div class="image">
+                                                                        <img data-pc-src="/lg5-common/images/PRH/img_01.jpg" data-m-src="/lg5-common/images/PRH/img_01.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        <div class="prd-model"><strong>OLED65RXKNA</strong></div>
+                                                                        <div class="prd-btn">
+                                                                            <a href="/tvs/oled65rxkna" class="btn border"><span>제품 보기</span></a><!-- 210406 수정 [target, title 삭제] --><!-- 210224 수정 [링크 추가] -->
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="slide-conts ui_carousel_slide">
+                                                                    <div class="image">
+                                                                        <img data-pc-src="/lg5-common/images/PRH/img_01.jpg" data-m-src="/lg5-common/images/tvs/md08044902/gallery/medium01.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        <div class="prd-model"><strong>OLED65RXKNA222</strong></div>
+                                                                        <div class="prd-btn">
+                                                                            <a href="/tvs/oled65rxkna" class="btn border"><span>제품 보기</span></a><!-- 210406 수정 [target, title 삭제] --><!-- 210224 수정 [링크 추가] -->
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1023,64 +1041,36 @@
                                         </li>
                                         <li>
                                             <div class="box">
-                                                <div class="image">
-                                                    <img data-pc-src="/lg5-common/images/PRH/img-signature-product02.jpg" data-m-src="/lg5-common/images/PRH/img-signature-product02-m.jpg" alt="">
-                                                </div>
                                                 <div class="text-area">
                                                     <h3 class="title"><span>냉장고</span></h3>
-                                                    <p class="body-copy">신선함을 위한 작품의 완성 <br>본질에 집중한 최고의 성능</p>
-                                                    <div class="btn-area">
-                                                        <a href="/refrigerators/j842nd79" class="btn border"><span>제품 보기</span></a><!-- 210406 수정 [target, title 삭제] --><!-- 210224 수정 [링크 추가] -->
-                                                        <div class="select-wrap ui_dropdown">
-                                                            <a href="#" class="select-button ui_dropdown_toggle">다른 모델 보기</a>
-                                                            <div class="selectbox-list ui_dropdown_list">
-                                                                <!-- 210315 수정 [링크 새 창 열림 추가] -->
-                                                                <!-- 210406 수정 [target, title 삭제] -->
-                                                                <ul class="model-list-wrap">
-                                                                    <li>
-                                                                        <ul class="model-list">
-                                                                            <li>
-                                                                                <dl>
-                                                                                    <dt>정수기형</dt>
-                                                                                    <dd><a href="/refrigerators/j842nd79" class="btn border">J842ND79</a></dd>
-                                                                                </dl>
-
-                                                                            </li>
-                                                                            <li>
-                                                                                <dl>
-                                                                                    <dt>일반형</dt>
-                                                                                    <dd><a href="/refrigerators/m400nd" class="btn border">M400ND</a></dd>
-                                                                                </dl>
-
-                                                                            </li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    <li>
-                                                                        <ul class="model-list">
-                                                                            <li>
-                                                                                <dl>
-                                                                                    <dt>상냉장/하냉동</dt>
-                                                                                    <dd><a href="/refrigerators/f902nd79e" class="btn border">F902ND79E</a></dd>
-                                                                                </dl>
-
-                                                                            </li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    <li>
-                                                                        <dl>
-                                                                            <dt>와인셀러</dt>
-                                                                            <dd>
-                                                                                <ul class="model-list">
-                                                                                    <li><a href="/refrigerators/w400nd" class="btn border">W400ND</a></li>
-                                                                                    <li><a href="/refrigerators/w409ndr" class="btn border">W409NDR</a></li>
-                                                                                </ul>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                                <!-- 210406 수정 [target, title 삭제] -->
-                                                                <!-- // 210315 수정 [링크 새 창 열림 추가] -->
-                                                            </div>
+                                                    <p class="body-copy">신선함을 위한 작품의 완성<br>본질에 집중한 최고의 성능</p>
+                                                </div>
+                                                <div class="img-area">
+                                                    <div class="slide-wrap ui_carousel_slider img-area-box">
+                                                        <div class="indi-wrap">
+                                                            <ul class="indi-conts ui_carousel_dots">
+                                                                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                            </ul>                                            
+                                                        </div>
+                                                        <div class="slide-content ui_carousel_list">
+                                                            <ul class="slide-track ui_carousel_track prd-area">
+                                                                <!-- 210224 수정 [링크 추가] -->
+                                                                <li class="slide-conts ui_carousel_slide">
+                                                                    <div class="image">
+                                                                        <img data-pc-src="/lg5-common/images/PRH/img_01.jpg" data-m-src="/lg5-common/images/PRH/img_01.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        <div class="prd-model"><strong>OLED65RXKNA</strong></div>
+                                                                        <div class="prd-btn">
+                                                                            <a href="/tvs/oled65rxkna" class="btn border"><span>제품 보기</span></a><!-- 210406 수정 [target, title 삭제] --><!-- 210224 수정 [링크 추가] -->
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="slide-controls">
+                                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1160,6 +1150,7 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <!-- // 210603 진행중 -->
                                 </div>
                             </div>
                         </div>
