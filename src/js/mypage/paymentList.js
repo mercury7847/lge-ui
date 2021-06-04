@@ -32,9 +32,11 @@
                             '<td>{{item.discountPrice}}</td>'+
                             '<td>{{item.paymentPrice}}</td>'+
                             '<td>'+
+                            '<ul class="payment-info">'+
                             '{{#each row in item.paymentInfo}}'+
-                            '<span>{{row.bank}}</span>'+
+                            '<li>{{row.bank}}</li>'+
                             '{{/each}}'+
+                            '</ul>'+
                             '</td>'+
                         '</tr>'+
                     '{{/each}}'+
@@ -92,21 +94,6 @@
                 if(result.data.paymentList && result.data.paymentList.length > 0){
                     $('.section-wrap .sects').show();
 
-                    /* 결제정보 추가 */
-                    console.log( result.data );
-                    console.log( result.data.paymentList );
-
-
-                    // var loop = 
-                    // '{{#each item in paymentList}}'+
-                    //     '{{#each row in item.paymentInfo}}'
-                    //     '<span>{{row.bank}}</span>'+
-                    //     '{{/each}}'+
-                    // '{{/each}}';
-
-                    // console.log(vcui.template(loop, result.data) );
-
-                    /* 결제정보 추가 */
                     var list = vcui.template(listTableTemplate, result.data);
                     $('.section-wrap .sects').append(list);
     
