@@ -3,6 +3,28 @@ var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
+/* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
+*  @path : 랜딩할 경로
+*/
+var goAppUrl = function(path) {
+    var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
+    
+    if( vcui.detect.isIOS ) {
+        var clickedAt = +new Date;
+        setTimeout( function () { 
+            if (+new Date - clickedAt < 2000 ) { 
+                // 앱스토어 이동 
+                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+            }
+        } ,1500);
+
+        setTimeout( function () { 
+            location.href = scheme; // 앱실행 
+        },0);
+    } else {
+        window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+    }
+}
 
 ;(function(global){
 
