@@ -1123,6 +1123,13 @@ $(function () {
         // 플로팅 버튼 AR 관련 
         if (vcui.detect.isMobileDevice){
             var isApplication = isApp();
+
+            setTimeout(function(){
+                if (isApplication){
+                    $('.floating-menu.btn-app-ar').css('display', 'block');
+                }
+            }, 100);
+
             $(window).on('scroll.floating', function(){                
                 var scrollTop = $(window).scrollTop();
                 var hasTop = $('.floating-menu.top').hasClass('call-yet');
