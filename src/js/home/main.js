@@ -1041,12 +1041,12 @@ $(function () {
                         });
                         */
                     }
-                    /*
+                    
                     if (!!video.length){
                         video.get(0).pause();
                         video.get(0).currentTime = 0;
                     }
-                    */
+                    
                 }        
             });            
         });
@@ -1056,10 +1056,13 @@ $(function () {
         $(window).on('scroll.videoPlay', function(){
             //clearTimeout(scrollInterval);
             
-            //scrollInterval = setTimeout(function(){
+            //scrollInterval = setTimeout(function(){                
                 var scrollTop = $(window).scrollTop();
                 
                 //console.log('scrollTop', scrollTop);
+                
+                sceneActiveQue = [];
+
                 scenes.each(function(){
                     $(this).trigger('active', scrollTop);
                 });
@@ -1106,11 +1109,7 @@ $(function () {
                             video.get(0).pause();
                             video.get(0).currentTime = 0;
                         }
-                    }
-                    // 마지막일때 초기화
-                    if (sceneActiveQue.length == idx + 1){
-                        sceneActiveQue = [];
-                    }
+                    }                    
                 });
                 //console.log('hiActiveView', hiActiveView);
                 /*
