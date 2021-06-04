@@ -22,7 +22,7 @@ var goAppUrl = function(path) {
             location.href = scheme; // 앱실행 
         },0);
     } else {
-        window.open(location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open(scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
     }
 }
 
