@@ -442,16 +442,18 @@ $(function () {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    $scenes.each(function() {
-                        if ( $(this).find('video').length != 0 ) {
-                            if ( $(this).hasClass('on') ) {
-                                $(this).find('video')[0].play();
-                            }else {
-                                $(this).find('video')[0].pause();
-                                $(this).find('video')[0].currentTime = 0;							
+                    if (!vcui.detect.isMobileDevice){
+                        $scenes.each(function() {
+                            if ( $(this).find('video').length != 0 ) {
+                                if ( $(this).hasClass('on') ) {
+                                    $(this).find('video')[0].play();
+                                }else {
+                                    $(this).find('video')[0].pause();
+                                    $(this).find('video')[0].currentTime = 0;							
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
 
                     playVisualAnim();
 
@@ -683,12 +685,13 @@ $(function () {
                     'transform': 'translate(-50%,-50%)'
                 })
                 oVideo   = $video[0];
-
+                /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {
                         oVideo.play();
                     });
                 }
+                */
                 $wrap.addClass('video');
 
                 $video.on('loadeddata', function(e) {
@@ -824,7 +827,9 @@ $(function () {
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            moveScene(currentPage,0);
+            if (!vcui.detect.isMobileDevice){
+                moveScene(currentPage,0);
+            }
         });
         
         if(isApplication){
@@ -1036,23 +1041,28 @@ $(function () {
                         });
                         */
                     }
+                    
                     if (!!video.length){
                         video.get(0).pause();
                         video.get(0).currentTime = 0;
                     }
+                    
                 }        
             });            
         });
 
-        var scrollInterval = null;    
+        var scrollInterval = null;
 
         $(window).on('scroll.videoPlay', function(){
-            clearTimeout(scrollInterval);
+            //clearTimeout(scrollInterval);
             
-            scrollInterval = setTimeout(function(){
+            //scrollInterval = setTimeout(function(){                
                 var scrollTop = $(window).scrollTop();
                 
                 //console.log('scrollTop', scrollTop);
+                
+                sceneActiveQue = [];
+
                 scenes.each(function(){
                     $(this).trigger('active', scrollTop);
                 });
@@ -1087,10 +1097,10 @@ $(function () {
 
                 //console.log('########### sceneActiveQue ###########', sceneActiveQue);
 
-                sceneActiveQue.forEach(function( scene ){
+                sceneActiveQue.forEach(function( scene, idx ){
                     var video = $(scene.el).find('video');
                     if ( scene.hiActiveView == true ){
-                        if (!!video.length){
+                        if (!!video.length && video.get(0).currentTime == 0){
                             video.get(0).play();
                         }
                     }
@@ -1099,11 +1109,8 @@ $(function () {
                             video.get(0).pause();
                             video.get(0).currentTime = 0;
                         }
-                    }
+                    }                    
                 });
-                
-                sceneActiveQue = [];
-
                 //console.log('hiActiveView', hiActiveView);
                 /*
                 var video = $(hiActiveView.el).find('video');
@@ -1112,7 +1119,7 @@ $(function () {
                     video.get(0).play();
                 }
                 */
-            }, 50);
+            //}, 500);
         });
         
         setTimeout(function(){
