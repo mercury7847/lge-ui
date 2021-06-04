@@ -783,7 +783,9 @@ $(function () {
                 }
                 */
             } else {
-                $contentWrap.css({'overflow':'auto','height':winHeight});
+                if (!vcui.detect.isMobileDevice){
+                    $contentWrap.css({'overflow':'auto','height':winHeight});
+                }
             }
             /*
             if (!vcui.detect.isMobileDevice){
