@@ -783,12 +783,13 @@ $(function () {
                 }
                 */
             } else {
-                //$contentWrap.css({'overflow':'auto','height':winHeight});
+                $contentWrap.css({'overflow':'auto','height':winHeight});
             }
-
+            /*
             if (!vcui.detect.isMobileDevice){
                 $('.contents').css({'overflow':'hidden', 'height':totalHeight});
             }
+            */
             
             
             if(idx!==undefined){
