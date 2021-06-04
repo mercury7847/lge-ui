@@ -827,7 +827,9 @@ $(function () {
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            moveScene(currentPage,0);
+            if (!vcui.detect.isMobileDevice){
+                moveScene(currentPage,0);
+            }
         });
         
         if(isApplication){
@@ -1102,7 +1104,7 @@ $(function () {
                     if ( scene.hiActiveView == false ){
                         if (!!video.length){
                             video.get(0).pause();
-                            video.get(0).currentTime = 0;
+                            //video.get(0).currentTime = 0;
                         }
                     }
                 });
