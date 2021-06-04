@@ -1044,12 +1044,12 @@ $(function () {
             });            
         });
 
-        var scrollInterval = null;    
+        var scrollInterval = null;
 
         $(window).on('scroll.videoPlay', function(){
-            clearTimeout(scrollInterval);
+            //clearTimeout(scrollInterval);
             
-            scrollInterval = setTimeout(function(){
+            //scrollInterval = setTimeout(function(){
                 var scrollTop = $(window).scrollTop();
                 
                 //console.log('scrollTop', scrollTop);
@@ -1112,7 +1112,7 @@ $(function () {
                     video.get(0).play();
                 }
                 */
-            }, 50);
+            //}, 500);
         });
         
         setTimeout(function(){
