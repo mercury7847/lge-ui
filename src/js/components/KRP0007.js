@@ -857,7 +857,7 @@
                 var ecProduct = {
                     "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
                     "model_id": item.modelId,
-                    "model_sku": item.sku, 
+                    "model_sku": item.modelName, 
                     "model_gubun": getGubunValue(item.bizType),
                     "price": vcui.number.addComma(item.obsOriginalPrice), 
                     "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
