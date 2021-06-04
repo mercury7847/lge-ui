@@ -1036,10 +1036,12 @@ $(function () {
                         });
                         */
                     }
+                    /*
                     if (!!video.length){
                         video.get(0).pause();
                         video.get(0).currentTime = 0;
                     }
+                    */
                 }        
             });            
         });
