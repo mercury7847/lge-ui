@@ -1094,7 +1094,7 @@ $(function () {
 
                 //console.log('########### sceneActiveQue ###########', sceneActiveQue);
 
-                sceneActiveQue.forEach(function( scene ){
+                sceneActiveQue.forEach(function( scene, idx ){
                     var video = $(scene.el).find('video');
                     if ( scene.hiActiveView == true ){
                         if (!!video.length && video.get(0).currentTime == 0){
@@ -1104,13 +1104,14 @@ $(function () {
                     if ( scene.hiActiveView == false ){
                         if (!!video.length){
                             video.get(0).pause();
-                            //video.get(0).currentTime = 0;
+                            video.get(0).currentTime = 0;
                         }
                     }
+                    // 마지막일때 초기화
+                    if (sceneActiveQue.length == idx + 1){
+                        sceneActiveQue = [];
+                    }
                 });
-                
-                sceneActiveQue = [];
-
                 //console.log('hiActiveView', hiActiveView);
                 /*
                 var video = $(hiActiveView.el).find('video');
