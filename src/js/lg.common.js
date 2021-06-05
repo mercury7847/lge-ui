@@ -856,16 +856,16 @@ var isApp = function(){
         addCompareProd: function(categoryId, data){
             var self = this;
             
-
             var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -881,7 +881,7 @@ var isApp = function(){
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
@@ -899,11 +899,9 @@ var isApp = function(){
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
