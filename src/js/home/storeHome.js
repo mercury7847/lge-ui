@@ -158,7 +158,7 @@ $(function(){
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        var price = typeof item.obsOriginalPriceitem != NaN ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/(<([^>]+)>)/ig,"");
+        var price = typeof item.obsOriginalPriceitem == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
 
         function getCategoryName(){
             if( item.subCategoryName != "" && item.subCategoryName == undefined) {
