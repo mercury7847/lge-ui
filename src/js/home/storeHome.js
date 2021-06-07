@@ -174,6 +174,7 @@ $(function(){
             "model_sku": item.modelName,					 
             "model_gubun": item.modelGubunName,					
             "price": vcui.number.addComma(price),
+            "discounted_price": vcui.number.addComma(price - item.obsDiscountPrice - item.obsMemberPrice),
             "brand": "LG",					
             "category": getCategoryName()
         }
