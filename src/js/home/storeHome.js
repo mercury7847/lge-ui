@@ -162,9 +162,9 @@ $(function(){
 
         function getCategoryName(){
             if( item.subCategoryName != "" && item.subCategoryName == undefined) {
-                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
-            } else {
                 return item.superCategoryName + "/" + item.categoryName;
+            } else {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
             }
         }
 
