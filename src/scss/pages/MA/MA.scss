@@ -3,7 +3,6 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-
 // 메인
 /* 앱용 */
 .app {
@@ -15,6 +14,29 @@
 		}
 	}
 }
+// BTOCSITE-740 start
+.only-mobile{
+
+	display:none;
+	
+	@include mobile {
+
+		display:block;		
+
+	}
+}
+
+.only-desktop{
+
+	display:block;
+	
+	@include mobile {
+
+		display:none;		
+
+	}
+}
+// BTOCSITE-740 end
 
 /* 클래스별이미지분기 */
 img{
@@ -52,7 +74,7 @@ img{
 		height: calc(100% - 110px);
 		@include mobile {
 			top: 84px;
-			height: calc(100vh - 84px);
+			height: calc(100% - 84px);
 		}
 		img {
 			position: absolute;
@@ -66,11 +88,21 @@ img{
 		position:relative;
 		width:100%;
 		// height:100%;
-		height:100vh;		
+		height:100vh;
 		overflow:hidden;
+		// BTOCSITE-740 start
+		@include mobile {			
+			height: 500px;
+			&+.scene {
+				margin-top:12px;
+			}
+		}
+		// BTOCSITE-740 end
+		/*
 		&:first-child {
 			height:calc(100vh - 84px);
 		}
+		*/
 		&:nth-child(2) {
 			.text-link {
 				//top:280px;
@@ -94,6 +126,7 @@ img{
 		// }
 		> a {
 			display:block;
+			height:100%;
 		}
 		.opac {
 			opacity:.7;
@@ -102,6 +135,31 @@ img{
 			position:relative;
 			// width:1920px;
 			// height:1080px;
+
+			// BTOCSITE-740 start
+			&.only-mobile{
+
+				display:none;
+				
+				@include mobile {
+			
+					display:block;		
+			
+				}
+			}
+			
+			&.only-desktop{
+			
+				display:block;
+				
+				@include mobile {
+			
+					display:none;		
+			
+				}
+			}
+			// BTOCSITE-740 end
+
 			img {
 				position:absolute;
 				top:50%;
@@ -110,14 +168,9 @@ img{
 				height:auto;
 				transform:translate(-50%,-50%);
 				-webkit-transform:translate(-50%,-50%);
-				
+				// height:100vh;
 				@include mobile {
 					// width:auto;
-					top:50%;
-					left:50%;
-					height:auto;
-					transform:translate(-50%,-50%);
-					-webkit-transform:translate(-50%,-50%);
 				}
 			}
 
