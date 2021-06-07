@@ -726,9 +726,10 @@ $(function () {
             winWidth = $window.width();
             winHeight = $window.height();
             posArr = [];
-                        
+
             var $prevTarget = $context.find('.container').prevAll(':not(#layerSearch):visible:first');
-            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
+            //var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
+            var prevAllHeight = 84;
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
