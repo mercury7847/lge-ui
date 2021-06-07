@@ -835,7 +835,12 @@
                 //console.log("### item.siblingType ###", item.siblingType);
 
                 function getEcCategoryName(item){
-                    return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                        return item.superCategoryName + "/" + item.categoryName 
+                    } else {
+                        return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    }
+
                 }
 
                 function getGubunValue(bizType){
