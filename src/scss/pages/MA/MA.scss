@@ -3,11 +3,11 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-
 // 무인매장
 .contents.unmanned-store-wrap {
     @import "unmanned-store";
 }
+
 
 // 메인
 /* 앱용 */
@@ -20,6 +20,29 @@
 		}
 	}
 }
+// BTOCSITE-740 start
+.only-mobile{
+
+	display:none;
+	
+	@include mobile {
+
+		display:block;		
+
+	}
+}
+
+.only-desktop{
+
+	display:block;
+	
+	@include mobile {
+
+		display:none;		
+
+	}
+}
+// BTOCSITE-740 end
 
 /* 클래스별이미지분기 */
 img{
@@ -73,9 +96,19 @@ img{
 		// height:100%;
 		height:100vh;
 		overflow:hidden;
+		// BTOCSITE-740 start
+		@include mobile {			
+			height: 500px;
+			&+.scene {
+				margin-top:12px;
+			}
+		}
+		// BTOCSITE-740 end
+		/*
 		&:first-child {
 			height:calc(100vh - 84px);
 		}
+		*/
 		&:nth-child(2) {
 			.text-link {
 				//top:280px;
@@ -99,6 +132,7 @@ img{
 		// }
 		> a {
 			display:block;
+			height:100%;
 		}
 		.opac {
 			opacity:.7;
@@ -107,6 +141,31 @@ img{
 			position:relative;
 			// width:1920px;
 			// height:1080px;
+
+			// BTOCSITE-740 start
+			&.only-mobile{
+
+				display:none;
+				
+				@include mobile {
+			
+					display:block;		
+			
+				}
+			}
+			
+			&.only-desktop{
+			
+				display:block;
+				
+				@include mobile {
+			
+					display:none;		
+			
+				}
+			}
+			// BTOCSITE-740 end
+
 			img {
 				position:absolute;
 				top:50%;
@@ -115,9 +174,25 @@ img{
 				height:auto;
 				transform:translate(-50%,-50%);
 				-webkit-transform:translate(-50%,-50%);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				@include mobile {
+					// width:auto;
+					top:50%;
+					left:50%;
+					height:auto;
+					transform:translate(-50%,-50%);;
+					-webkit-transform:translate(-50%,-50%);;
+=======
 				// height:100vh;
 				@include mobile {
 					// width:auto;
+>>>>>>> b3668968459480ac379078d38ad24735979f2405
+=======
+				// height:100vh;
+				@include mobile {
+					// width:auto;
+>>>>>>> f8da5b9e1e976eec781fe2dfdd6c21958956fdbc
 				}
 			}
 
@@ -274,6 +349,7 @@ img{
 			z-index:2;
 			color:rgba(#fff, .5);
 			@include mobile {
+				display:none;
 				// right:24px;
 				bottom:32px;
 			}
@@ -305,6 +381,7 @@ img{
 				animation: arr 1s infinite;
 			}
 			@include mobile {
+				display:none;
 				width:100%;
 				right:0;
 				bottom:0;
