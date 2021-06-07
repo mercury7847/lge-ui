@@ -161,10 +161,10 @@ $(function(){
         var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
 
         function getCategoryName(){
-            if( item.subCategoryName != "" && item.subCategoryName == undefined) {
-                return item.superCategoryName + "/" + item.categoryName; 
+            if( item.subCategoryName != "" || item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
             } else {
-                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
+                return item.superCategoryName + "/" + item.categoryName; 
             }
         }
 
