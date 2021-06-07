@@ -409,6 +409,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$specInfoPopup = $('#specInfoPopup'); /* 20210607 스펙선택 추가 */
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -835,14 +836,22 @@
                     }
                 });
 
+                /* 20210607 스펙선택 추가 */
+                self.$pdpInfo.on('click','li.lists.Spec a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.$specInfoPopup.vcModal({opener: this});
+                });
+                /* //20210607 스펙선택 추가 */
+                
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
                     self.$benefitInfoPopup.vcModal({opener: this});
                 });
 
+                /* 20210607 스펙선택 추가 */
                 //인포 옵션 변경 (링크로 바뀜)
-                self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                self.$pdpInfoSiblingOption.on('click','div.sibling-group .sibling-btn button', function(e){
                     var ajaxUrl = self.$pdpInfo.attr('data-sibling-url');
                     if(ajaxUrl) {
                         var siblingCode = [];
@@ -890,6 +899,7 @@
                     }
                     */
                 });
+                /* //20210607 스펙선택 추가 */
 
                 //소모품 추가구매
                 self.$pdpInfoAdditionalPurchase.on('click','div.selectbox-list a', function(e){
