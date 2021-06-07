@@ -1,3 +1,8 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
 .cont-wrap {
     max-width:100%;
     padding: 0;
@@ -8,16 +13,16 @@
 }
 
 .pc-only {
-    display:block;
+    display: inline-block;
     @include mobile {
         display:none;
     }
 }
 
 .mo-only {
-    display:none;
+    display: none;
     @include mobile {
-        display:block;
+        display: inline-block;
     }
 }
 
@@ -30,7 +35,7 @@
             display: flex;
             margin: 23px auto 64px auto;
             text-align: center;
-            justify-content: center;
+            // justify-content: center;
             align-items: center;
             .headTitle {
                 margin: 0 auto;

@@ -329,6 +329,202 @@
         max-height:580px;
         padding:48px 40px 0;
         overflow-y:auto;
+        /* 20210601 구매혜택 팝업 conts수정 */
+        &.pop4 {
+            padding:48px 40px 40px;
+        }
+        /* //20210601 구매혜택 팝업 conts수정 */
+
+        /* 주영주영 */
+        &.sibling-pop {
+            padding: 24px 40px 0;
+            .process-info {
+                .info-box {
+                    padding: 0;
+                    border-radius: 0;
+                    background-color: #fff;
+                    p {
+                        @include font-medium;
+                    }
+                    .sibling-option {
+                        margin-bottom: 0px;
+                        padding: 0px 0 30px;
+                        border-bottom: 1px solid $color-border;
+                        > [class*="sibling-"] {
+                            display: flex;
+                            //justify-content: space-between;
+                            width: 100%;
+                            flex-wrap: wrap;
+                            &[class*="select"],
+                            &[class*="color"] {
+                                margin-top: 30px;
+                                @include pc {
+                                    .text {
+                                        margin-top: 0px;
+                                    }
+                                }
+                            }
+                            &[class*="color"] {
+                                .text {
+                                    padding-top: 0;
+                                }
+                                @include mobile {
+                                    position:relative;
+                                    .color-text {
+                                        position:absolute;
+                                        top:0;
+                                        left:32px;
+                                        margin-top:0 !important;
+                                    }
+                                }
+                            }
+                            &[class*="text"] {
+                                margin-top: 24px;
+                                .text {
+                                    padding-top: 0;
+                                }
+                            }
+                            .text {
+                                flex: none;
+                                display: block;
+                                width: 100%;
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 700;
+                                margin-bottom: 8px;
+                            }
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                        .sibling-color {
+                            position: relative;
+                            .sibling-colorHead {
+                                display: flex;
+                                width: 100%;
+                                align-items: center;
+                                margin-bottom: 20px;
+                                .text {
+                                    width: auto;
+                                    margin-bottom: 0;
+                                    margin-right: 35px;
+                                }
+                                .color-text {
+                                    color:#da0f47;
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            padding: 0 0 40px;
+                            > [class*="sibling-"] {
+                                flex-direction: column;
+                                justify-content: left;
+                                .text {
+                                    width: auto;
+                                    margin-bottom: 8px;
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                        .select-option {
+                            .option-list {
+                                margin-top:0;
+                                @include mobile {
+                                    margin-top:0;
+                                }
+                            }
+                            &.color {
+                                flex: auto;
+                                .chk-wrap-colorchip {
+                                    width: 24px;
+                                    height: 24px;
+                                    &:not(:last-child) {
+                                        margin-top:8px;
+                                        margin-right: 8px;
+                                    }
+                                    input {
+                                        & + label {
+                                            padding-left: 0;
+                                            &:before {
+                                                top: 0;
+                                                left: 0;
+                                                width: 24px;
+                                                height: 24px;
+                                                border: 0;
+                                                background-size: 144px auto;
+                                            }
+                                            &:after {
+                                                display: none;
+                                            }
+                                        }
+                                        &:checked {
+                                            & + label {
+                                                &:after {
+                                                    display: block;
+                                                    @include calc(top,50%,-7px);
+                                                    @include calc(left,50%,-7px);
+                                                    width: 10px;
+                                                    height: 8px;
+                                                    border: 0;
+                                                    border-bottom: 2px solid #fff;
+                                                    border-left: 2px solid #fff;
+                                                    border-radius: 0;
+                                                    transform: rotate(-45deg);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .color-text {
+                                    margin-top: 8px;
+                                    color:#da0f47;
+                                    @include font-x-small;
+                                    font-weight:700;
+                                }
+                            }
+                            &.select {
+                                .option-list {
+                                    margin-right: 0;
+                                    margin-bottom: 0;
+                                }
+                                .rdo-wrap.btn-type2 {
+                                    margin-right: 8px;
+                                    margin-bottom: 0;
+                                    &:last-of-type {
+                                        margin-right: 0;
+                                    }
+                                    input {
+                                        & + label {
+                                            width: auto;
+                                            min-width: 60px;
+                                            padding: 4px 8px;
+                                            border-radius: 40px;
+                                            border: 1px solid;
+                                            @include font($font-small,26px);
+                                            color: $color-gray-1;
+                                            @include mobile {
+                                                min-width: 55px;
+                                            }
+                                        }
+                                        &:checked {
+                                            & + label {
+                                                padding:3px 8px;
+                                                color: $color-primary;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .text-option {
+                            @include font-small;
+                        }
+                    }
+                }
+            }
+        }
+        /* //주영주영 */
         &.no-footer {
             max-height:576px + 130px;
             padding-bottom:48px;
@@ -362,6 +558,15 @@
         padding:32px 48px 48px;
         background:transparent;
         font-size:0;
+        /* 주영주영 */
+        &.sibling-btn {
+            .btn-group {
+                .btn {
+                    width: 192px;
+                }
+            }
+        }
+        /* 주영주영 */
         &.center {
             text-align:center;
         }

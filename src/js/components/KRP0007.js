@@ -2,7 +2,7 @@
 (function () {
     var productItemTemplate =
     '<li data-uniq-id="{{uniqId}}">' +
-        '<div class="item plp-item">' +
+        '<div class="item plp-item" data-ec-product="{{ecProduct}}">' +
         '{{#if promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
@@ -69,6 +69,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT")}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -167,7 +168,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
@@ -760,7 +761,13 @@
 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+                /* 20210527 추가 */
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                item.obsSellingPriceNumber = (item.obsSellingPrice != null) ? item.obsSellingPrice : null;  
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                /* 20210527 추가 */
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+                
                 item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
                 item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;
@@ -827,6 +834,41 @@
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
 
+                function getEcCategoryName(item){
+                    if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                        return item.superCategoryName + "/" + item.categoryName 
+                    } else {
+                        return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    }
+                }
+
+                function getGubunValue(bizType){
+                    var curValue = "";
+                    switch(bizType) {
+                        case "PRODUCT": 
+                            curValue = "일반제품"
+                            break;
+                        case "CARESOLUTION": 
+                            curValue = "케어솔루션"
+                            break;
+                        case "DISPOSABLE": 
+                            curValue = "케어용품/소모품"
+                            break;                            
+                    }
+                    return curValue;
+                }
+
+                var ecProduct = {
+                    "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+                    "model_id": item.modelId,
+                    "model_sku": item.modelName, 
+                    "model_gubun": getGubunValue(item.bizType),
+                    "price": vcui.number.addComma(item.obsOriginalPrice), 
+                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                    "brand": "LG",
+                    "category": getEcCategoryName(item) 
+                }
+                item.ecProduct = JSON.stringify(ecProduct);
                 return vcui.template(productItemTemplate, item);
             },
 

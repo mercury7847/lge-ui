@@ -457,7 +457,7 @@ $(function () {
                         });
                     }
 
-                    //playVisualAnim();
+                    playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {

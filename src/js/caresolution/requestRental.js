@@ -55,7 +55,6 @@
 
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
-            /*
             if(vcui.detect.isIOS){
                 isProgress = false;
 
@@ -68,7 +67,6 @@
                     }
                 });
             }
-            */
 
             setting();
             bindEvents();
