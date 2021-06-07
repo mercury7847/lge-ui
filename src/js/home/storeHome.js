@@ -158,7 +158,7 @@ $(function(){
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        var price = typeof item.obsOriginalPriceitem == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
+        var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
 
         function getCategoryName(){
             if( item.subCategoryName != "" && item.subCategoryName == undefined) {
@@ -174,7 +174,7 @@ $(function(){
             "model_sku": item.modelName,					 
             "model_gubun": item.modelGubunName,					
             "price": vcui.number.addComma(price),
-            "discounted_price": item.obsOriginalPrice - item.discountPrice - item.memberPrice,
+            "discounted_price": vcui.number.addComma(price - item.obsDiscountPrice - item.obsMemberPrice),
             "brand": "LG",					
             "category": getCategoryName()
         }
