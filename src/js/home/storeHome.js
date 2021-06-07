@@ -158,7 +158,6 @@ $(function(){
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        console.log(typeof item.obsOriginalPrice)
         var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
 
         function getCategoryName(){
