@@ -5102,9 +5102,9 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
-            }
+            // if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+            //     defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            // }
             priceArry.push(defaultModel);
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
@@ -5117,7 +5117,7 @@
             priceHtml += '                      <span class="product_price"><em></em>원</span>';
             priceHtml += '                  </li>';
             sumPrice += parseInt(minusComma(defaultPrice));
-            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
+            //if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     if (doorModelCode == "B320TT-SMT") {
@@ -5130,7 +5130,7 @@
                     priceHtml += '                  </li>';
                     sumPrice += parseInt(minusComma(doorInfo[i][4]));
                 }
-            }
+            //}
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';

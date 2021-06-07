@@ -7,11 +7,7 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    
-    // ios 버그 이후 반영예정
-    // var scheme = 'lgeapp://goto?weblink='+(path ? path : location.pathname);
-    var scheme = 'lgeapp://';
-    
+    var weblink = path ? path : location.pathname;
     if( vcui.detect.isIOS ) {
         var clickedAt = +new Date;
         setTimeout( function () { 
@@ -22,12 +18,10 @@ var goAppUrl = function(path) {
         } ,1500);
 
         setTimeout( function () { 
-            location.href = scheme; // 앱실행 
+            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
         },0);
     } else {
-            // ios 버그 이후 반영예정
-        // window.open(location.href = scheme+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
-        window.open(scheme+'goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
     }
 }
 
@@ -307,12 +301,21 @@ var goAppUrl = function(path) {
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        init: function(){
+        CONTEXT_AREA: null,      
+        init: function( $context ){            
             var self = this;
 
             self._bindErrBackEvent();
             self._addImgOnloadEvent();
-            self._preloadComponents();
+
+            if (!!$context){
+                self.CONTEXT_AREA = $context;
+                self._preloadComponents();
+            } else {
+                self.CONTEXT_AREA = null;
+                self._preloadComponents();
+            }
+
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
@@ -392,7 +395,7 @@ var goAppUrl = function(path) {
                 "ui/smoothScrollTab",
                 'ui/imageFileInput',
                 'common/header', 
-                'common/footer',  
+                'common/footer',
             ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
                 // new BreakpointDispatcher({
@@ -447,7 +450,7 @@ var goAppUrl = function(path) {
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resizeend', function(e){
+                $(window).off('resizeend').on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -558,11 +561,19 @@ var goAppUrl = function(path) {
                         }
                     }
                 });
-    
-                $('header.header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
+                
+                if (!!lgkorUI.CONTEXT_AREA){                 
+                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
-                $('body').buildCommonUI();
+                    lgkorUI.CONTEXT_AREA.buildCommonUI();
+
+                } else {
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    $('footer').vcFooter(); //푸터모듈 적용...
+
+                    $('body').buildCommonUI();
+                }
+                
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     

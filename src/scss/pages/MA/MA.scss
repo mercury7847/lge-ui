@@ -3,11 +3,11 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-
 // 무인매장
 .contents.unmanned-store-wrap {
     @import "unmanned-store";
 }
+
 
 // 메인
 /* 앱용 */
@@ -174,9 +174,25 @@ img{
 				height:auto;
 				transform:translate(-50%,-50%);
 				-webkit-transform:translate(-50%,-50%);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				@include mobile {
+					// width:auto;
+					top:50%;
+					left:50%;
+					height:auto;
+					transform:translate(-50%,-50%);;
+					-webkit-transform:translate(-50%,-50%);;
+=======
 				// height:100vh;
 				@include mobile {
 					// width:auto;
+>>>>>>> b3668968459480ac379078d38ad24735979f2405
+=======
+				// height:100vh;
+				@include mobile {
+					// width:auto;
+>>>>>>> f8da5b9e1e976eec781fe2dfdd6c21958956fdbc
 				}
 			}
 
