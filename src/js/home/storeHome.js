@@ -139,7 +139,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '           </div>\n'+
     '           <div class="product-price">\n'+
     '               {{#if isPrice}}\n'+
-    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}원{{/if}}</div>\n'+
+    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}<em>원</em>{{/if}}</div>\n'+
     '                   <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{#raw totalPrice}}{{/if}}</div>\n'+
     '               {{/if}}\n'+
     '           </div>\n'+
