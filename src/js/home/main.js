@@ -513,7 +513,7 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        
+        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
@@ -529,7 +529,7 @@ $(function () {
                     // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
-                /* BTOCSITE-740
+                
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -547,11 +547,13 @@ $(function () {
                         wheelScene(-1);
                     }
                 } 
-                */   
+                  
                 
             }
         });
-
+        */
+        
+        /*
         var wrapTouchSy = 0;
         
         $contentWrap.on('touchstart touchend touchcancel', function(e) {
@@ -572,9 +574,10 @@ $(function () {
 
             }
         });
+        */
 
         
-
+        /*
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -585,6 +588,7 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
+        */
         
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
