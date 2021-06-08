@@ -25,7 +25,9 @@
         .component.KRC0032 {
             .component-box {
                 @include mobile {
-                    padding-bottom:60px;
+                    /* BTOCSITE-1442 : wcms_컴포넌트 설정값 출력 오류 */
+                    padding-bottom: 0;
+                    /* //BTOCSITE-1442 : wcms_컴포넌트 설정값 출력 오류 */
                 }
             }
         }
