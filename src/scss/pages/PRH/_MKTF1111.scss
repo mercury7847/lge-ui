@@ -799,6 +799,7 @@
         }
     }
 }
+
 /* 210608 시그니처 브랜드관 제품 구조 변경 */
 .signature-product {
     .signature-section{
@@ -966,7 +967,7 @@
                                 border-radius: 8px;
                                 padding:22px 20px 30px;
                                 box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.03) inset;
-                                background:#fff; 
+                                background:#fff;
                                 @media screen and (max-width:1155px){
                                     border-radius: 16px;
                                     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.07);
@@ -1014,7 +1015,7 @@
                                             }
                                         }
                                     }
-                                    &.prd-model{
+                                    .prd-model{
                                         font-size:24px;
                                         @include mobile {
 
@@ -1030,8 +1031,6 @@
     }    
 }
 /* 210608 시그니처 브랜드관 제품 구조 변경 */
-            
-
 .signature-wrap {
     .bottom-banner {
         height: 230px;
@@ -1107,4 +1106,5 @@
             }
         }
     }
+}
 }
