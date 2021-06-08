@@ -109,6 +109,19 @@
             > li {
                 display: inline-block;
                 border-top: 0;
+                &.icon-update {
+                    position: relative;
+                    &:after {
+                        position: absolute;
+                        top: 6px;
+                        right: 2px;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 2px;
+                        background-color: #da0f47;
+                        content: '';
+                    }
+                }
             }
             .nav-item {
                 padding: 6px 6px 8px;
@@ -611,6 +624,19 @@
             vertical-align: top;
             &:last-child {
                 padding-right: 0;
+            }
+            &.icon-update {
+                position: relative;
+                &:after {
+                    position: absolute;
+                    top: 5px;
+                    right: -5px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 2px;
+                    background-color: #da0f47;
+                    content: '';
+                }
             }
         }
 

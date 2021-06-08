@@ -799,6 +799,7 @@
         }
     }
 }
+
 /* 210608 시그니처 브랜드관 제품 구조 변경 */
 .signature-product {
     .signature-section{
@@ -852,41 +853,16 @@
                         font-weight: 500;
                         @include font-large-1;
                     }
-                    .btn-area {
-                        margin-top: 24px;
-                        .btn {
-                            &:hover,
-                            &:focus,
-                            &:active {
-                                color: $color-white;
-                            }
-                        }
-                    }
-                    @include mobile {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        text-align: center;
-                        position:static;
-                        width:100%;
-                        transform: none;
-                        .title {
-                            font-weight: 700;
-                            font-size: 34px;
-                            line-height: 46px;
-                            text-align: center;
-                        }
-                        .body-copy {
-                            font-weight: normal;
-                            font-stretch: normal;
-                            margin-top: 12px;
-                        }
-                        .btn-area {
-                            .btn {
-                                padding: 8px 0;
-                            }
-                        }
-                    }
+                    // .btn-area {
+                    //     margin-top: 24px;
+                    //     .btn {
+                    //         &:hover,
+                    //         &:focus,
+                    //         &:active {
+                    //             color: $color-white;
+                    //         }
+                    //     }
+                    // }
                     @media screen and (max-width:1155px) {
                         display: flex;
                         flex-direction: column;
@@ -908,11 +884,11 @@
                             font-stretch: normal;
                             margin-top: 12px;
                         }
-                        .btn-area {
-                            .btn {
-                                padding: 8px 0;
-                            }
-                        }
+                        // .btn-area {
+                        //     .btn {
+                        //         padding: 8px 0;
+                        //     }
+                        // }
                     }
                 }
                 .img-area {
@@ -945,6 +921,69 @@
                             @media screen and (max-width: 1155px){
                                 border-radius: 16px;
                             }
+                            .prd-area{
+                                li.slide-conts {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    border-radius: 8px;
+                                    padding:22px 20px 30px;
+                                    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.03) inset;
+                                    background:#fff;
+                                    @media screen and (max-width:1155px){
+                                        border-radius: 16px;
+                                        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.07);
+                                        padding:0 24px 32px;
+                                    }
+                                    .image {
+                                        @include pc {
+                                            width:320px;
+                                            height:320px;
+                                        }
+                                        @include mobile {
+                                            width: 264px;
+                                            height: 264px;
+                                        }
+                                        img {
+                                            width:100%;
+                                            height:100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+                                    .text {
+                                        width:100%;
+                                        display:flex;
+                                        flex-direction: row;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        padding:0 56px;
+                                        @include mobile {
+                                            padding:0;
+                                        }
+                                        div {
+                                            display:flex;
+                                        }
+                                        .prd-btn {
+                                            .btn.border {
+                                                min-width: 0;
+                                                width:86px;
+                                                height:40px;
+                                                border:1px solid #000;
+                                                font-size:14px;
+                                                padding:6px;
+                                                @include mobile {
+                                                    border:2px solid #000;
+                                                    width:91px;
+                                                    height:43px;
+                                                }
+                                            }
+                                        }
+                                        .prd-model{
+                                            font-size:24px;
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         .slide-controls{
@@ -957,72 +996,6 @@
                                 }
                             }
                         }
-                        
-                        .prd-area{
-                            li.slide-conts {
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                border-radius: 8px;
-                                padding:22px 20px 30px;
-                                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.03) inset;
-                                background:#fff; 
-                                @media screen and (max-width:1155px){
-                                    border-radius: 16px;
-                                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.07);
-                                    padding:0 24px 32px;
-                                .image {
-                                    @include pc {
-                                        width:320px;
-                                        height:320px;
-                                    }
-                                    @include mobile {
-                                        width: 264px;
-                                        height: 264px;
-                                    }
-                                    img {
-                                        width:100%;
-                                        height:100%;
-                                        object-fit: cover;
-                                    }
-                                }
-                                .text {
-                                    width:100%;
-                                    display:flex;
-                                    flex-direction: row;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    padding:0 56px;
-                                    @include mobile {
-                                        padding:0;
-                                    }
-                                    div {
-                                        display:flex;
-                                    }
-                                    .prd-btn {
-                                        .btn.border {
-                                            min-width: 0;
-                                            width:86px;
-                                            height:40px;
-                                            border:1px solid #000;
-                                            font-size:14px;
-                                            padding:6px;
-                                            @include mobile {
-                                                border:2px solid #000;
-                                                width:91px;
-                                                height:43px;
-                                            }
-                                        }
-                                    }
-                                    &.prd-model{
-                                        font-size:24px;
-                                        @include mobile {
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -1030,7 +1003,6 @@
     }    
 }
 /* 210608 시그니처 브랜드관 제품 구조 변경 */
-            
 
 .signature-wrap {
     .bottom-banner {
