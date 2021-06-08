@@ -371,6 +371,12 @@
                     var $li = self.$tab.find('li a:eq("'+index+'")');
                     var href = $li.attr('href');
 
+                    var careType = lgkorUI.getParameterByName('careType')
+                    if(careType) {
+                        href += (href.indexOf("?") === -1 ? "?" : "&");
+                        href += "careType="+careType;
+                    }
+
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
@@ -707,9 +713,12 @@
             requestSearchData:function(value, force) {
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
+                var postData = {"search":value, "force":force};
+                var careType = lgkorUI.getParameterByName('careType')
+                if(careType) vcui.extend(postData,{ "careType" : careType });
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
                     var data = result.data;
