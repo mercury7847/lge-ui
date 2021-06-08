@@ -1092,6 +1092,17 @@
                         &.on .btn-toggle {
                             top: 12px;
                         }
+
+                        /* 20210602 BTOCSITE-495 추가 */
+                        .price-info {
+                            &.info-Mb {
+                                margin-bottom: 20px;
+                                @include mobile{
+                                    margin-bottom: 13px;
+                                }
+                            }
+                        }
+                        /* //20210602 BTOCSITE-495 추가 */
                     }
                 }
                 &.care-solution-payment-info {
