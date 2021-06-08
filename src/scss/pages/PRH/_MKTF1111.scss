@@ -810,11 +810,11 @@
             .signature-product-list {
                 > li {
                     margin-bottom:24px;
-
+                    background: #f4f4f4;
+                    padding:24px 93px 48px 117px;
                     @media screen and (max-width:1155px){
                         margin:16px 0;
                         padding:40px 0 50px 0;
-                        background: #f4f4f4;
                     }
                 }
                 .box {
@@ -911,7 +911,7 @@
                         position: relative;
                         .indi-wrap {
                             position: absolute;
-                            bottom:-33px;
+                            bottom:-39px;
                             left: 50%;
                             transform: translateX(-50%);
                         }
@@ -928,7 +928,7 @@
                                     align-items: center;
                                     border-radius: 8px;
                                     padding:22px 20px 30px;
-                                    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.03) inset;
+                                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                                     background:#fff;
                                     @media screen and (max-width:1155px){
                                         border-radius: 16px;
