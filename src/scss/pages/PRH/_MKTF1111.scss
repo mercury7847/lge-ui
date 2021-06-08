@@ -799,167 +799,237 @@
         }
     }
 }
-/* 210603 작업 진행중 */
+/* 210608 시그니처 브랜드관 제품 구조 변경 */
 .signature-product {
-    .signature-product-list {
-        > li {
-            margin-bottom:24px;
-        }
-        .box {
-            position: relative;
-            width:100%;
-            border-radius: 8px;
-            @include pc {
-                overflow: hidden;
-                position: relative;
-                max-width: 1380px;
-                height:478px;
-                // margin:48px 0 84px;
-                padding:48px 0 84px;
-            }
-        }
-        .text-area {
-            position: absolute;
-            width:50%;
-            top: 50%;
-            left:10%;
-            transform:translate(-10%,-50%);
-            .title {
-                font-weight: 700;
-                font-size: 52px;
-                line-height: 70px;
-                text-align: left;
-            }
-            .body-copy {
-                margin-top: 24px;
-                line-height:34px;
-                font-weight: 500;
-                @include font-large-1;
-            }
-            .btn-area {
-                margin-top: 24px;
-                .btn {
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        color: $color-white;
+    .signature-section{
+        .inner {
+            @include mobile{
+                padding:0;
+            }    
+            .signature-product-list {
+                > li {
+                    margin-bottom:24px;
+
+                    @media screen and (max-width:1155px){
+                        margin:16px 0;
+                        padding:40px 0 50px 0;
+                        background: #f4f4f4;
                     }
                 }
-            }
-            @include mobile {
-                position: absolute;
-                top: 97.778vw;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                transform: translateY(0);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                .title {
-                    font-weight: 700;
-                    font-size: 34px;
-                    line-height: 46px;
-                }
-                .body-copy {
-                    margin-top: 12px;
-                }
-                .btn-area {
-                    .btn {
-                        padding: 8px 0;
-                    }
-                }
-            }
-        }
-        .img-area {
-            position: absolute;
-            width:100%;
-            max-width:561px;
-            top:50%;
-            right:117px;
-            transform:translateY(-50%);
-            .img-area-box {
-                position: relative;
-                .indi-wrap {
-                    position: absolute;
-                    bottom:-33px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-                .slide-content {
+                .box {
+                    position: relative;
                     border-radius: 8px;
+                    @include pc {
+                        overflow: hidden;
+                        position: relative;
+                        width:100%;
+                        max-width: 1380px;
+                        height:478px;
+                        // margin:48px 0 84px;
+                        padding:48px 0 84px;
+                    }
+
+                    @media screen and (max-width: 1155px) {
+                        width: 100%;
+                        height:100%;
+                    }
                 }
-                
-                .prd-area{
-                    li.slide-conts {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        border-radius: 8px;
-                        padding:22px 20px 30px;
-                        // padding: 32px 56px 40px;
-                        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.20);
-                        border:1px solid #e4e4e4;
-                        .image {
-                            @include pc {
-                                width:320px;
-                                height:320px;
-                            }
-                            @include mobile {
-                                width: 528px;
-                                height: 528px;
-                            }
-                            img {
-                                width:100%;
-                                height:100%;
-                                object-fit: cover;
+                .text-area {
+                    position: absolute;
+                    width:50%;
+                    top: 50%;
+                    left:10%;
+                    transform:translate(-10%,-50%);
+                    .title {
+                        font-weight: 700;
+                        font-size: 52px;
+                        line-height: 70px;
+                        text-align: left;
+                    }
+                    .body-copy {
+                        margin-top: 24px;
+                        line-height:34px;
+                        font-weight: 500;
+                        @include font-large-1;
+                    }
+                    .btn-area {
+                        margin-top: 24px;
+                        .btn {
+                            &:hover,
+                            &:focus,
+                            &:active {
+                                color: $color-white;
                             }
                         }
-                        .text {
-                            width:100%;
-                            display:flex;
-                            flex-direction: row;
-                            justify-content: space-between;
-                            align-items: center;
-                            padding:0 56px;
-                            div {
-                                display:flex;
-                                .prd-model {
+                    }
+                    @include mobile {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+                        position:static;
+                        width:100%;
+                        transform: none;
+                        .title {
+                            font-weight: 700;
+                            font-size: 34px;
+                            line-height: 46px;
+                            text-align: center;
+                        }
+                        .body-copy {
+                            font-weight: normal;
+                            font-stretch: normal;
+                            margin-top: 12px;
+                        }
+                        .btn-area {
+                            .btn {
+                                padding: 8px 0;
+                            }
+                        }
+                    }
+                    @media screen and (max-width:1155px) {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+                        position:static;
+                        width:100%;
+                        transform: none;
+
+
+                        .title {
+                            font-weight: 700;
+                            font-size: 34px;
+                            line-height: 46px;
+                            text-align: center;
+                        }
+                        .body-copy {
+                            font-weight: normal;
+                            font-stretch: normal;
+                            margin-top: 12px;
+                        }
+                        .btn-area {
+                            .btn {
+                                padding: 8px 0;
+                            }
+                        }
+                    }
+                }
+                .img-area {
+                    position: absolute;
+                    width:100%;
+                    max-width:561px;
+                    top:50%;
+                    right:59px;
+                    transform:translateY(-50%);
+
+                    @media screen and (max-width:1155px) {
+                        position: static;
+                        transform: none;
+                        display: flex;
+                        flex-direction: column;
+                        padding:20px 16px 40px;
+                        margin:0 auto;
+                    }
+                    .img-area-box {
+                        position: relative;
+                        .indi-wrap {
+                            position: absolute;
+                            bottom:-33px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        .slide-content {
+                            border-radius: 8px;
+
+                            @media screen and (max-width: 1155px){
+                                border-radius: 16px;
+                            }
+                        }
+
+                        .slide-controls{
+                            button {
+                                &.prev {
+                                    left: -20px;
+                                }
+                                &.next {
+                                    right: -20px;
+                                }
+                            }
+                        }
+                        
+                        .prd-area{
+                            li.slide-conts {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                border-radius: 8px;
+                                padding:22px 20px 30px;
+                                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.03) inset;
+                                background:#fff;
+                                @media screen and (max-width:1155px){
+                                    border-radius: 16px;
+                                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.07);
+                                    padding:0 24px 32px;
+                                .image {
                                     @include pc {
-                                        font-size:24px;
-                                        line-height: 24px;
+                                        width:320px;
+                                        height:320px;
                                     }
                                     @include mobile {
-                                        font-size:32px;
-                                        line-height:48px;
+                                        width: 264px;
+                                        height: 264px;
                                     }
-                                    
+                                    img {
+                                        width:100%;
+                                        height:100%;
+                                        object-fit: cover;
+                                    }
                                 }
-                                .prd-btn {
-                                    border:1px solid #000;
-                                    .btn{
-                                        min-width: 86px;
-                                        height: 40px;
-                                        margin: 16px 0 0 244px;
-                                        padding: 10px 16px;
-                                        border-radius: 25px;
+                                .text {
+                                    width:100%;
+                                    display:flex;
+                                    flex-direction: row;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    padding:0 56px;
+                                    @include mobile {
+                                        padding:0;
+                                    }
+                                    div {
+                                        display:flex;
+                                    }
+                                    .prd-btn {
+                                        .btn.border {
+                                            min-width: 0;
+                                            width:86px;
+                                            height:40px;
+                                            border:1px solid #000;
+                                            font-size:14px;
+                                            padding:6px;
+                                            @include mobile {
+                                                border:2px solid #000;
+                                                width:91px;
+                                                height:43px;
+                                            }
+                                        }
+                                    }
+                                    &.prd-model{
+                                        font-size:24px;
                                         @include mobile {
-                                            width: 182px;
-                                            height: 86px;
-                                            padding:25px 40px 24px;
-                                            border-radius: 42px;
+
                                         }
                                     }
                                 }
-                            }                        
+                            }
                         }
                     }
                 }
             }
         }
-    }
+    }    
 }
+/* 210608 시그니처 브랜드관 제품 구조 변경 */
             
 
 .signature-wrap {
