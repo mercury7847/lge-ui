@@ -335,9 +335,9 @@
         }
         /* //20210601 구매혜택 팝업 conts수정 */
 
-        /* 주영주영 */
+        /* 20210607 스펙선택 추가 */
         &.sibling-pop {
-            padding: 24px 40px 0;
+            padding: 0;
             .process-info {
                 .info-box {
                     padding: 0;
@@ -348,111 +348,145 @@
                     }
                     .sibling-option {
                         margin-bottom: 0px;
-                        padding: 0px 0 30px;
-                        border-bottom: 1px solid $color-border;
                         > [class*="sibling-"] {
                             display: flex;
                             //justify-content: space-between;
                             width: 100%;
                             flex-wrap: wrap;
-                            &[class*="select"],
-                            &[class*="color"] {
-                                margin-top: 30px;
-                                @include pc {
-                                    .text {
-                                        margin-top: 0px;
-                                    }
-                                }
-                            }
-                            &[class*="color"] {
-                                .text {
-                                    padding-top: 0;
-                                }
+                            &[class*="cont"] {
+                                position: relative;
+                                padding: 24px 40px 0;
                                 @include mobile {
-                                    position:relative;
-                                    .color-text {
-                                        position:absolute;
-                                        top:0;
-                                        left:32px;
-                                        margin-top:0 !important;
+                                    padding: 20px 15px 0;
+                                }
+                                .sibling-select,
+                                .sibling-color {
+                                    width: 100%;
+                                    margin-top: 30px;
+                                    .sibling-colorHead {
+                                        display: flex;
+                                        width: 100%;
+                                        align-items: center;
+                                        margin-bottom: 20px;
+                                        @include mobile {
+                                            margin-bottom: 10px;
+                                        }
+                                        .text {
+                                            width: auto;
+                                            margin-bottom: 0;
+                                            margin-right: 35px;
+                                            @include mobile {
+                                                margin-right: 0px;
+                                            }
+                                        }
+                                        .color-text {
+                                            color:#da0f47;
+                                            font-weight: 700;
+                                            @include mobile {
+                                                font-size: 14px;
+                                                margin-left: 10px;
+                                            }
+                                        }
+                                    }
+                                    @include pc {
+                                        .text {
+                                            margin-top: 0px;
+                                        }
+                                    }
+                                    @include mobile {
+                                        text-align: left;
                                     }
                                 }
-                            }
-                            &[class*="text"] {
-                                margin-top: 24px;
-                                .text {
-                                    padding-top: 0;
+                                .sibling-color {
+                                    position: relative;
+                                    border-bottom: 1px solid #ddd;
+                                    margin-bottom: 30px;
+                                    padding-bottom: 30px;
                                 }
-                            }
-                            .text {
-                                flex: none;
-                                display: block;
-                                width: 100%;
-                                font-size: 16px;
-                                line-height: 24px;
-                                font-weight: 700;
-                                margin-bottom: 8px;
-                            }
-                            &:first-child {
-                                margin-top: 0;
-                            }
-                        }
-                        .sibling-color {
-                            position: relative;
-                            .sibling-colorHead {
-                                display: flex;
-                                width: 100%;
-                                align-items: center;
-                                margin-bottom: 20px;
-                                .text {
-                                    width: auto;
-                                    margin-bottom: 0;
-                                    margin-right: 35px;
+                                .sibling-select:first-of-type {
+                                    margin-top: 0;
                                 }
-                                .color-text {
-                                    color:#da0f47;
+                                .sibling-text {
+                                    margin-top: 24px;
+                                    .text {
+                                        padding-top: 0;
+                                    }
+                                }
+                                .text {
+                                    flex: none;
+                                    display: block;
+                                    width: 100%;
+                                    font-size: 16px;
+                                    line-height: 24px;
                                     font-weight: 700;
+                                    margin-bottom: 8px;
+                                }
+                                &:first-child {
+                                    margin-top: 0;
                                 }
                             }
+                            
                         }
+                        
                         @include mobile {
-                            padding: 0 0 40px;
+                            padding: 0 0 0px;
+                            border-bottom: 0;
                             > [class*="sibling-"] {
                                 flex-direction: column;
                                 justify-content: left;
+                                align-content: flex-start;
                                 .text {
+                                    text-align: left;
                                     width: auto;
                                     margin-bottom: 8px;
                                     padding-right: 0;
+                                    font-size: 14px;
                                 }
                             }
                         }
                         .select-option {
                             .option-list {
                                 margin-top:0;
+                                margin-right: 15px;
+                                &:last-of-type {
+                                    margin-right: 0;
+                                }
                                 @include mobile {
                                     margin-top:0;
+                                    margin-right: 10px;
                                 }
                             }
                             &.color {
                                 flex: auto;
+                                display: flex;
                                 .chk-wrap-colorchip {
-                                    width: 24px;
-                                    height: 24px;
+                                    width: 40px;
+                                    height: 40px;
+                                    @include mobile {
+                                        width: 34px;
+                                        height: 34px;
+                                    }
                                     &:not(:last-child) {
                                         margin-top:8px;
                                         margin-right: 8px;
                                     }
                                     input {
                                         & + label {
-                                            padding-left: 0;
+                                            @include mobile {
+                                                width: 34px;
+                                                height: 34px;
+                                            }
                                             &:before {
                                                 top: 0;
                                                 left: 0;
-                                                width: 24px;
-                                                height: 24px;
+                                                width: 40px;
+                                                height: 40px;
                                                 border: 0;
                                                 background-size: 144px auto;
+                                                @include mobile {
+                                                    width: 34px;
+                                                    height: 34px;
+                                                }
                                             }
                                             &:after {
                                                 display: none;
@@ -462,17 +496,29 @@
                                             & + label {
                                                 &:after {
                                                     display: block;
-                                                    @include calc(top,50%,-7px);
-                                                    @include calc(left,50%,-7px);
-                                                    width: 10px;
-                                                    height: 8px;
+                                                    @include calc(top,50%, -10px);
+                                                    @include calc(left,50%, 5px);
+                                                    width: 20px;
+                                                    height: 13px;
                                                     border: 0;
                                                     border-bottom: 2px solid #fff;
                                                     border-left: 2px solid #fff;
                                                     border-radius: 0;
                                                     transform: rotate(-45deg);
+                                                    @include mobile {
+                                                        top: calc( 50% - 8px);
+                                                        left: calc( 50% - 8px);
+                                                        width: 17px;
+                                                        height: 11px;
+                                                    }
                                                 }
                                             }
+                                        }
+                                    }
+                                    &.snow_white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
                                         }
                                     }
                                 }
@@ -491,6 +537,9 @@
                                 .rdo-wrap.btn-type2 {
                                     margin-right: 8px;
                                     margin-bottom: 0;
+                                    @include mobile {
+                                        margin-right: 3px;
+                                    }
                                     &:last-of-type {
                                         margin-right: 0;
                                     }
@@ -498,13 +547,14 @@
                                         & + label {
                                             width: auto;
                                             min-width: 60px;
-                                            padding: 4px 8px;
+                                            padding: 3px 8px;
                                             border-radius: 40px;
                                             border: 1px solid;
                                             @include font($font-small,26px);
                                             color: $color-gray-1;
                                             @include mobile {
                                                 min-width: 55px;
+                                                font-size: 13px;
                                             }
                                         }
                                         &:checked {
@@ -521,10 +571,32 @@
                             @include font-small;
                         }
                     }
+                    .sibling-group {
+                        padding: 0 30px 40px 30px;
+                        @include mobile {
+                            padding-bottom: 0;
+                            padding: 0;
+                        }
+                        .sibling-btn {
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            @include mobile {
+                                position: relative;
+                            }
+                            .btn {
+                                width: 192px;
+                                @include mobile {
+                                    width: 100%;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        /* //주영주영 */
+        /* //20210607 스펙선택 추가 */
         &.no-footer {
             max-height:576px + 130px;
             padding-bottom:48px;
@@ -539,8 +611,8 @@
         }
         @include mobile {
             padding:32px 16px 60px;
-            height:calc(100% - 122px);
-            max-height:calc(100% - 122px);
+            height:calc(100% - 62px);
+            max-height:calc(100% - 62px);
             //max-height:none;
         }
         .tabs-wrap {
@@ -558,15 +630,6 @@
         padding:32px 48px 48px;
         background:transparent;
         font-size:0;
-        /* 주영주영 */
-        &.sibling-btn {
-            .btn-group {
-                .btn {
-                    width: 192px;
-                }
-            }
-        }
-        /* 주영주영 */
         &.center {
             text-align:center;
         }

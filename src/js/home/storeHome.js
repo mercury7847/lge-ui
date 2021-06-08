@@ -161,15 +161,15 @@ $(function(){
         var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
 
         function getCategoryName(){
-            if( item.subCategoryName != "" && item.subCategoryName == undefined) {
-                return item.superCategoryName + "/" + item.categoryName; 
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
             } else {
-                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
+                return item.superCategoryName + "/" + item.categoryName; 
             }
         }
 
         return {
-            "model_name": displayName,
+            "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
             "model_gubun": item.modelGubunName,					

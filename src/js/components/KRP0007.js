@@ -835,7 +835,11 @@
                 //console.log("### item.siblingType ###", item.siblingType);
 
                 function getEcCategoryName(item){
-                    return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                        return item.superCategoryName + "/" + item.categoryName 
+                    } else {
+                        return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    }
                 }
 
                 function getGubunValue(bizType){
@@ -936,13 +940,12 @@
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    //if(!vcui.isEmpty(storageCompare[categoryId]))
-                    for(var i in storageCompare[categoryId]){
-                        var modelID = storageCompare[categoryId][i]['id'];
+                    storageCompare[categoryId].forEach(function(item){ 
+                        var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
                         compare.addClass('on');
                         compare.find('.blind').text('선택됨');
-                    }
+                    });
                 }
             },
 

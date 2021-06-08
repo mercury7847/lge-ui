@@ -301,12 +301,21 @@ var goAppUrl = function(path) {
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        init: function(){
+        CONTEXT_AREA: null,      
+        init: function( $context ){            
             var self = this;
 
             self._bindErrBackEvent();
             self._addImgOnloadEvent();
-            self._preloadComponents();
+
+            if (!!$context){
+                self.CONTEXT_AREA = $context;
+                self._preloadComponents();
+            } else {
+                self.CONTEXT_AREA = null;
+                self._preloadComponents();
+            }
+
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
@@ -386,7 +395,7 @@ var goAppUrl = function(path) {
                 "ui/smoothScrollTab",
                 'ui/imageFileInput',
                 'common/header', 
-                'common/footer',  
+                'common/footer',
             ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
                 // new BreakpointDispatcher({
@@ -441,7 +450,7 @@ var goAppUrl = function(path) {
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resizeend', function(e){
+                $(window).off('resizeend').on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -552,11 +561,19 @@ var goAppUrl = function(path) {
                         }
                     }
                 });
-    
-                $('header.header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
+                
+                if (!!lgkorUI.CONTEXT_AREA){                 
+                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
-                $('body').buildCommonUI();
+                    lgkorUI.CONTEXT_AREA.buildCommonUI();
+
+                } else {
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    $('footer').vcFooter(); //푸터모듈 적용...
+
+                    $('body').buildCommonUI();
+                }
+                
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
@@ -877,16 +894,16 @@ var goAppUrl = function(path) {
         addCompareProd: function(categoryId, data){
             var self = this;
             
-
             var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -902,7 +919,7 @@ var goAppUrl = function(path) {
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
@@ -920,11 +937,9 @@ var goAppUrl = function(path) {
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);

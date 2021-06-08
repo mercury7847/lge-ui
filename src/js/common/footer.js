@@ -79,11 +79,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 elements += '</ul>';
 
-                $('.cont-area').prepend(elements);
+                lgkorUI.CONTEXT_AREA.find('.cont-area').prepend(elements);
 
                                 
 
-                $('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
+                lgkorUI.CONTEXT_AREA.find('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
                     $(toggleList[idx]).addClass('ui_accord_toggle');
                     $(item).prepend($(toggleList[idx]));
                     
@@ -113,13 +113,13 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 self.$mobileLinks = self.$el.find('.link-wrap.ui_footer_accordion');
 
-                $('.ui_footer_accordion').vcAccordion({
+                lgkorUI.CONTEXT_AREA.find('.ui_footer_accordion').vcAccordion({
                     singleOpen: true,
                     itemSelector: "> li",
                     toggleSelector: "> .ui_accord_toggle"
                 });
 
-                $('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
+                lgkorUI.CONTEXT_AREA.find('.ui_footer_accordion .ui_accord_toggle').each(function(idx, item){
                     $(item).find('> a').on('click', function(e){
                         e.preventDefault();
                         // if(!$(e.currentTarget).closest('.btn_open').length){
@@ -138,7 +138,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             winwidth = $(window).outerWidth(true);
             if(winwidth > 767){
                 if(self.$mobileLinks != null){
-                    $('.ui_footer_accordion').vcAccordion('collapseAll');
+                    lgkorUI.CONTEXT_AREA.find('.ui_footer_accordion').vcAccordion('collapseAll');
                     self.$mobileLinks.hide();
                 }
 
