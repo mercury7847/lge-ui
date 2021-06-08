@@ -26,7 +26,7 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                   {{/each}}'
 
 var bestRankBuyProductTmpl =
-    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
+    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
     '   <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '   <span class="bg ui_bg_switch"'+ 
     '       style="background-image:url();"'+ 
@@ -47,7 +47,7 @@ var bestRankBuyProductTmpl =
 
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
@@ -116,7 +116,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
-    '   <div class="slide-box">\n'+
+    '   <div class="slide-box" data-ec-product="{{ecProduct}}">\n'+
     '       <div class="img"><img src="{{fullImagePath}}" alt="{{modelDisplayName}}"></div>\n'+    
     '       <div class="product-area">\n'+
     '           <div class="product-contents">\n'+
@@ -153,6 +153,31 @@ $(function(){
         var parseUrl = vcui.uri.parseUrl(url);
         var obj = vcui.uri.parseQuery(parseUrl.query);
         return name? obj[name] : obj;
+    }
+
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
+
+        var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
+
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName == undefined) {
+                return item.superCategoryName + "/" + item.categoryName;
+            } else {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
+            }
+        }
+
+        return {
+            "model_name": displayName,
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName,					
+            "price": vcui.number.addComma(price),
+            "discounted_price": vcui.number.addComma(price - item.obsDiscountPrice - item.obsMemberPrice),
+            "brand": "LG",					
+            "category": getCategoryName()
+        }
     }
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
@@ -300,6 +325,7 @@ $(function(){
                 $.each(posArr, function(index, item){
 
                     if(list[index]){       
+                        list[index].ecProduct = JSON.stringify(getEcProduct(list[index]));
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
@@ -545,6 +571,7 @@ $(function(){
                 if(sortArr.length>0){
 
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
+                    bestObj.ecProduct = JSON.stringify(getEcProduct(bestObj));
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
                     $('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
@@ -560,6 +587,9 @@ $(function(){
                     }
     
                     sortArr = vcui.array.removeAt(sortArr, 0);
+                    sortArr.forEach(function(item){
+                        item.ecProduct = JSON.stringify(getEcProduct(item));
+                    })
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
                     $('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
     
