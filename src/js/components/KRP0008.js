@@ -2272,12 +2272,12 @@
             setCompares:function(){
                 var self = this;
                 var chk = false;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-                var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+                var isCompare = vcui.isEmpty(storageCompare);
 
                 if(!isCompare){
-                    storageCompare[categoryId].forEach(function(item){ 
+                    storageCompare['data'].forEach(function (item) {
                         if(lgePdpSendData['id'] == item['id']) chk = true;
                     });
                 }
