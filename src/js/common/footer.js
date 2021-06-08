@@ -8,6 +8,11 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
         },
 
         initialize: function initialize(el, options) {
+
+            if (!!lgkorUI.CONTEXT_AREA == false){
+                lgkorUI.CONTEXT_AREA = $(document);
+            }
+
             var self = this;
             
             if (self.supr(el, options) === false) {
@@ -45,7 +50,6 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
         _addMobileLinks: function(){
             var self = this;
 
-
             if(self.$mobileLinks == null){
                 var toggleList = [];
                 var itemList = {};
@@ -79,10 +83,9 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 elements += '</ul>';
 
+                
                 lgkorUI.CONTEXT_AREA.find('.cont-area').prepend(elements);
-
-                                
-
+                
                 lgkorUI.CONTEXT_AREA.find('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
                     $(toggleList[idx]).addClass('ui_accord_toggle');
                     $(item).prepend($(toggleList[idx]));
