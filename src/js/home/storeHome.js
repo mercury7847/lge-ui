@@ -171,9 +171,7 @@ $(function(){
             "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
-            "model_gubun": item.modelGubunName,					
-            "brand": "LG",					
-            "category": getCategoryName(),
+            "model_gubun": item.modelGubunName		
         }
 
         if( item.obsOriginalPrice && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
@@ -183,6 +181,9 @@ $(function(){
         if( item.obssellingprice && item.obssellingprice !== null && item.obssellingprice !== "") {
             currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
         }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
 
         return currentEcValue;
     }
