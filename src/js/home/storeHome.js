@@ -158,8 +158,6 @@ $(function(){
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
-
         function getCategoryName(){
             if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
                 return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
@@ -168,16 +166,25 @@ $(function(){
             }
         }
 
-        return {
+
+        var currentEcValue = {
             "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
             "model_gubun": item.modelGubunName,					
-            "price": vcui.number.addComma(price),
-            "discounted_price": vcui.number.addComma(price - item.obsDiscountPrice - item.obsMemberPrice),
             "brand": "LG",					
-            "category": getCategoryName()
+            "category": getCategoryName(),
         }
+
+        if( item.obsOriginalPrice && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        return currentEcValue;
     }
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
@@ -290,11 +297,11 @@ $(function(){
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
-                    if(obsOriginalPrice!==0){ 
-                        item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
-                    }else{
-                        item['obsOriginalPrice'] = null;
-                    }
+                    // if(obsOriginalPrice!==0){ 
+                    //     item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
+                    // }else{
+                    //     item['obsOriginalPrice'] = null;
+                    // }
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
