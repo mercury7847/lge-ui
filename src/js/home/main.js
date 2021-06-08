@@ -507,8 +507,8 @@ $(function () {
         
         
         // 앱 하단 메뉴 컨트롤
-        lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
+        //lgkorUI.showAppBottomMenuOver(true);
+        //lgkorUI.setEnableAppScrollBottomMenu(false);
 
 
         /* 메인테스트*/
