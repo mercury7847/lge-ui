@@ -96,22 +96,31 @@ $(window).ready(function(){
             var compareCate = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
 
             // 카테고리가 1개이상이면 selectbox 붙힌다
-            if(Object.keys(compareCate).length >1 && $('.ui_selectbox').length === 0) {
-                var selectData = {'list' : [] }
-                Object.keys(compareCate).map(function(key) {
+            if (Object.keys(compareCate).length > 1) {
+                var selectData = {
+                    'list': []
+                }
+                Object.keys(compareCate).map(function (key) {
                     var selected = '';
-                    if(categoryId == key) selected = 'selected'; 
-                    selectData['list'].push({ 'label' : compareCate[key].categoryName, 'value' : key ,'selected' : selected} );
+                    if (categoryId == key) selected = 'selected';
+                    selectData['list'].push({
+                        'label': compareCate[key].categoryName,
+                        'value': key,
+                        'selected': selected
+                    });
                 });
+
+                if ($('.sticy-compare .select-wrap').length > 0) {
+                    $('.sticy-compare .select-wrap').remove();
+                }
 
                 $('.sticy-compare .compare-title').after(vcui.template(compareSelect, selectData))
                 $('.sticy-compare').addClass('cate-select');
-                $('.ui_selectbox').vcSelectbox().on('change',function() {
+                $('.ui_selectbox').vcSelectbox().on('change', function () {
 
                     var categoryId = $(this).val();
                     setCompares(categoryId);
                     setCompareStatus(categoryId);
-
                 })
             }
 

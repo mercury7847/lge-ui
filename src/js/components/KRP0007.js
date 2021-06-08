@@ -928,19 +928,18 @@
             },
 
             //비교하기 저장 유무 체크...
-            setCompares:function(){
+            setCompares: function () {
                 var self = this;
-
                 var compare = self.$productList.find('li .product-compare a');
                 compare.removeClass('on');
-                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                if (!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
                 else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
                 var isCompare = vcui.isEmpty(storageCompare);
-                if(!isCompare){
-                    storageCompare[categoryId].forEach(function(item){ 
+                if (!isCompare) {
+                    storageCompare['data'].forEach(function (item) {
                         var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
                         compare.addClass('on');
