@@ -228,3 +228,22 @@ $(document).ready(function() {
         });
     }
 });
+
+
+function ChatbotAppClose(type) {
+    // 앱에서 호출될경우
+    if(isApp()) {
+        if(vcui.detect.isIOS){ 
+            window.close(); 
+        }else{
+            android.closeNewWebview(); 
+        }
+    } else {
+        if(type == 'native') {
+            history.back();
+        } else {
+            //웹에서 호출될경우
+            historyBack();
+        }
+    }
+}
