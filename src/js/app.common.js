@@ -9,7 +9,6 @@ ANDROID:    /android/.test(navigator.userAgent.toLowerCase()),
 WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
-
 $(document).ready(function() {
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
