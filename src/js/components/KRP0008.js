@@ -2287,9 +2287,9 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
 
                 if(!isCompare){
-                    for(var i in storageCompare[categoryId]){
-                        if(lgePdpSendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
-                    }
+                    storageCompare[categoryId].forEach(function(item){ 
+                        if(lgePdpSendData['id'] == item['id']) chk = true;
+                    });
                 }
                 
                 var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
