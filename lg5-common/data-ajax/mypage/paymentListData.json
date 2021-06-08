@@ -10,91 +10,39 @@
                 "paymentDate": "2020.09.10",
                 "chargePrice": "88,800원",
                 "discountPrice": "0원",
-                "paymentPrice": "88,800원",
-                "paymentInfo": [
-                    {
-                        "bank": "우리카드 5678********* 111,000원"
-                    }
-                ]
+                "paymentPrice": "88,800원"
             },
             {
                 "turnNumber": "4",
                 "paymentDate": "2020.09.10",
                 "chargePrice": "88,800원",
                 "discountPrice": "0원",
-                "paymentPrice": "88,800원",
-                "paymentInfo": [
-                    {
-                        "bank": "우리카드 5678********* 110,000원"
-                    },
-                    {
-                        "bank": "하나은행 1234********* 1,000원"
-                    }
-                ]
+                "paymentPrice": "88,800원"
             },
             {
                 "turnNumber": "3",
                 "paymentDate": "2020.09.10",
                 "chargePrice": "88,800원",
                 "discountPrice": "0원",
-                "paymentPrice": "88,800원",
-                "paymentInfo": [
-                    {
-                        "bank": "삼성카드 1111******** 100,000원"
-                    },
-                    {
-                        "bank": "우리카드 5678********* 10,000원"
-                    },
-                    {
-                        "bank": "하나은행 1234******** 1,000원"
-                    }
-                ]
+                "paymentPrice": "88,800원"
             },
             {
                 "turnNumber": "2",
                 "paymentDate": "2020.09.10",
                 "chargePrice": "88,800원",
                 "discountPrice": "10,000원",
-                "paymentPrice": "78,800원",
-                "paymentInfo": [
-                    {
-                        "bank": "삼성카드 1111********* 100,000원"
-                    },
-                    {
-                        "bank": "우리카드 5678******** 10,000원"
-                    },
-                    {
-                        "bank": "신한은행 2222******** 500원 "
-                    },
-                    {
-                        "bank": "하나은행 1234******** 500원"
-                    }
-                ]
+                "paymentPrice": "78,800원"
             },
             {
                 "turnNumber": "1",
                 "paymentDate": "2020.09.10",
                 "chargePrice": "88,800원",
                 "discountPrice": "0원",
-                "paymentPrice": "88,800원",
-                "paymentInfo": [
-                    {
-                        "bank": "삼성카드 1111********* 100,000원"
-                    },
-                    {
-                        "bank": "우리카드 5678******** 10,000원"
-                    },
-                    {
-                        "bank": "신한은행 2222******** 500원 "
-                    },
-                    {
-                        "bank": "하나은행 1234******** 500원"
-                    }
-                ]
+                "paymentPrice": "88,800원"
             }
         ],
         "periodSortSelect": "AA",
-        "periodSortList": [
+        "periodSortList":[
             {
                 "value": "ALL",
                 "name": "전체"
@@ -112,8 +60,8 @@
                 "name": "3년차"
             }
         ],
-        "description": [
-            "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
+        "description":[
+            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
             "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
         ]
     }

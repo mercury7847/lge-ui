@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-pageCSS: ["MYC/MYC"],
-pageJS: ["mypage/paymentList"]
-})
-
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/paymentList"]
+    })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-            "pageTitle": "납부내역 조회",
-            "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
+                "pageTitle": "납부내역 조회",
+                "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage" data-payment-list-url="/lg5-common/data-ajax/mypage/paymentListData.json">
+            <div class="contents mypage"
+                data-payment-list-url="/lg5-common/data-ajax/mypage/paymentListData.json"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
-                        "sect2" : [
-                        { "on": "", "page": "계약현황" },
-                        { "on": "on", "page": "납부내역" },
-                        { "on": "", "page": "방문알리미" }
-                        ]
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "on", "page": "납부내역" },
+                                { "on": "", "page": "방문알리미" }
+                            ]
                         })
                         <div class="lnb-contents">
                             <!-- 계약정보 -->
@@ -35,12 +36,9 @@ pageJS: ["mypage/paymentList"]
                                         <dd class="conts">
                                             <div class="select-wrap">
                                                 <select class="ui_selectbox" id="contractInfo">
-                                                    <option value="RH9WGANR1|12345671">건조기 (RH9WGANR1) 계약번호 (12345671)
-                                                    </option>
-                                                    <option value="RH9WGANR2|12345672">건조기 (RH9WGANR2) 계약번호 (12345672)
-                                                    </option>
-                                                    <option value="RH9WGANR3|12345673">건조기 (RH9WGANR3) 계약번호 (12345673)
-                                                    </option>
+                                                    <option value="RH9WGANR1|12345671">건조기 (RH9WGANR1) 계약번호 (12345671)</option>
+                                                    <option value="RH9WGANR2|12345672">건조기 (RH9WGANR2) 계약번호 (12345672)</option>
+                                                    <option value="RH9WGANR3|12345673">건조기 (RH9WGANR3) 계약번호 (12345673)</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -52,9 +50,7 @@ pageJS: ["mypage/paymentList"]
                             <!-- 내역 -->
                             <div class="section-wrap">
                                 <!-- [2021.01.21] 데이터 없을 경우 아래 <div class="sects">은 삭제하면 안됩니다. display:none; 처리만 해주세요-->
-                                <div class="no-data">
-                                    <p>검색된 결과가 없습니다.</p>
-                                </div>
+                                <div class="no-data"><p>검색된 결과가 없습니다.</p></div>
                                 <div class="sects" style="display:none;">
                                     <!-- sorting -->
                                     <div class="list-sorting">
@@ -125,15 +121,14 @@ pageJS: ["mypage/paymentList"]
                                     </div>
                                     <!-- // [12.01 수정] .tb-scroll 으로 DOM 감싸기 -->
                                     <!-- // table -->
-                                    <!-- BTOCSITE-698 : 수정됨 0604 -->
+
                                     @@include('./common/modules/bullet-list.html', {
-                                    "bulletTxt" : [
-                                    "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
-                                    "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
-                                    ]
+                                        "bulletTxt" : [
+                                            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
+                                            "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
+                                        ]
                                     })
-                                    <!-- //BTOCSITE-698 : 수정됨 0604 -->
-                                </div>
+                                </div>                                
                                 <!-- //데이터 없을 경우 아래 <div class="sects">은 삭제하면 안됩니다. display:none; 처리만 해주세요-->
                             </div>
                             <!-- // 내역 -->
@@ -143,9 +138,8 @@ pageJS: ["mypage/paymentList"]
             </div>
             <!-- // mypage -->
         </div>
-
+        
         @@include('./common/footer.html')
     </div>
 </body>
-
 </html>
