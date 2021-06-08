@@ -1140,6 +1140,7 @@ $(function () {
                     $('.floating-menu.btn-app-ar').css('display', 'block');                    
                     $('.floating-menu.top').hide();
                     $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
                     $(window).scrollTop(0);
                 }
             }, 100);
