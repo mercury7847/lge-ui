@@ -300,7 +300,7 @@ var goAppUrl = function(path) {
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.lge.co.kr'],
         CONTEXT_AREA: null,      
         init: function( $context ){            
             var self = this;
