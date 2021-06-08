@@ -277,6 +277,10 @@
 						padding: 15px 5px;
 					}
 
+					td[colspan] {
+						flex: 1;
+					}
+
 					.winner-tt,
 					.winner {
 						display: inline-flex;
