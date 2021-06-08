@@ -1137,7 +1137,8 @@ $(function () {
 
             setTimeout(function(){
                 if (isApplication){
-                    $('.floating-menu.btn-app-ar').css('display', 'block');
+                    $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                    $('.floating-menu.top').hide();
                 }
             }, 100);
 
