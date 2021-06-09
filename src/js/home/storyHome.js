@@ -383,6 +383,7 @@
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
+
             if(result.data.loginUrl){
                 location.href = result.data.loginUrl;
 
@@ -495,6 +496,11 @@
                 }
                 sectionItem.hide();
             }
+            // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
+            if (typeof(mainSwiper) !== 'undefined'){
+                mainSwiper.swiper.updateAutoHeight();
+            }
+        
         });
     }
 

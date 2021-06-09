@@ -68,7 +68,7 @@ MainSwiper.prototype = {
 
                     mainSwiper.tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
-                   
+                    
                 }
             }
         });
