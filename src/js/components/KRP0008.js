@@ -186,7 +186,10 @@
                 self.$mobilePdpInfo = $('div.mobile-pdp-info');
                 self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
-                self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                //self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
+                self.$pdpInfoSiblingOption = self.$specInfoPopup.find('.sibling-option'); //20210607 스펙선택 추가
+                self.$pdpInfoSiblingColorText = $('.chk-wrap-colorchip'); //20210607 스펙선택 추가
                 
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
@@ -848,6 +851,14 @@
                     e.preventDefault();
                     self.$benefitInfoPopup.vcModal({opener: this});
                 });
+
+                /* 20210609 스펙선택 추가 */
+                //sibilng 팝업 제품 칼라값 텍스트 변경
+                self.$pdpInfoSiblingColorText.on('click', function(){
+                    var siblingColorText = $(this).attr('title') 
+                    $('.color-text span').text(siblingColorText);
+                });
+                /* 20210609 스펙선택 추가 */
 
                 /* 20210607 스펙선택 추가 */
                 //인포 옵션 변경 (링크로 바뀜)
