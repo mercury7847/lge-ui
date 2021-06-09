@@ -155,9 +155,11 @@ $(function(){
         return name? obj[name] : obj;
     }
 
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
+    
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-
-        $('.ui_lifestyle_list').vcCarousel({
+        
+        $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -180,14 +182,14 @@ $(function(){
 
             var breakpoint = window.breakpoint;    
             if(breakpoint.name == 'mobile'){                    
-                $('.ui_product_lifestyle').vcCarousel({
+                $context.find('.ui_product_lifestyle').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
                     slidesToScroll: 1                        
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $('.ui_product_lifestyle').vcCarousel('destroy');                            
+                $context.find('.ui_product_lifestyle').vcCarousel('destroy');                            
             }    
         })
 
@@ -235,12 +237,12 @@ $(function(){
         // 직접관리하는 영역 끝
 
         
-        var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
-        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
-        var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
-        var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        var storeNewRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
-        var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
+        var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
+        var storeSubCategoryTabUrl = $context.find('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
+        var storeRankBuyProductUrl = $context.find('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
+        var storeExhibitionProductUrl = $context.find('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
+        var storeNewRecommendProductUrl = $context.find('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
+        var exhibitionModelId = $context.find('.ui_exhib_carousel').data('modelId');
         var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var newExhibitionLocal = [];
 
@@ -300,7 +302,7 @@ $(function(){
 
                     if(list[index]){       
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
-                        var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
+                        var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
                         if($appendTarget[0]) $appendTarget.after(newHtml);
                     }
@@ -312,7 +314,7 @@ $(function(){
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
 
-                        $('.ui_new_product_carousel').vcCarousel({
+                        $context.find('.ui_new_product_carousel').vcCarousel({
                             infinite: false,
                             slidesToShow: 1,
                             slidesToScroll: 1,
@@ -322,7 +324,7 @@ $(function(){
                         
                     }else if(breakpoint.name == 'pc'){   
                         
-                        $('.ui_new_product_carousel').vcCarousel('destroy');
+                        $context.find('.ui_new_product_carousel').vcCarousel('destroy');
                     }    
                 })
 
@@ -341,11 +343,11 @@ $(function(){
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){    
                     
-                    $('.ui_recom_carousel').vcCarousel('destroy');
+                    $context.find('.ui_recom_carousel').vcCarousel('destroy');
                     
                 }else if(breakpoint.name == 'pc'){   
                     
-                    $('.ui_recom_carousel').vcCarousel({
+                    $context.find('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
                         slidesToScroll: 2
@@ -401,10 +403,10 @@ $(function(){
                 });
 
                 var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-                $('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $('.ui_exhib_carousel').vcCarousel();
+                $context.find('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
+                $context.find('.ui_exhib_carousel').vcCarousel();
 
-                $('body').vcLazyLoaderSwitch('reload', $('.ui_exhib_carousel'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 
             }
             
@@ -434,7 +436,7 @@ $(function(){
                 });
 
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
-                $('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
+                $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
 
             }
 
@@ -451,11 +453,11 @@ $(function(){
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
                 var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});
 
-                $('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
-                $('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
+                $context.find('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
+                $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
 
-                $('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
                     
                     var categoryId = null;
 
@@ -478,7 +480,7 @@ $(function(){
 
                         lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
                             buildSubCatagoryTab(e, categoryId);
-                            $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
+                            $context.find('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
                             $(data.content).transit({opacity:1});
 
                         }, errorRequest);
@@ -490,13 +492,13 @@ $(function(){
                 }).vcTab();
 
 
-                $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
+                $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
                 $(window).on('breakpointchange.category', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
-                        $('.ui_category_carousel').vcCarousel({
+                        $context.find('.ui_category_carousel').vcCarousel({
                             infinite: true,
                             variableWidth : false,
                             dots: true,
@@ -506,7 +508,7 @@ $(function(){
 
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $('.ui_category_carousel').vcCarousel('destroy');                            
+                        $context.find('.ui_category_carousel').vcCarousel('destroy');                            
                     }    
                 })
 
@@ -545,7 +547,7 @@ $(function(){
 
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
-                    $('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
+                    $context.find('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
                     if(window.breakpoint && window.breakpoint.name){
 
@@ -560,9 +562,9 @@ $(function(){
     
                     sortArr = vcui.array.removeAt(sortArr, 0);
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
-                    $('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
+                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
     
-                    $('body').vcLazyLoaderSwitch('reload', $('.ui_buy_product'));
+                    $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_buy_product'));
 
                 }
             }
