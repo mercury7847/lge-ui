@@ -232,10 +232,15 @@ $(document).ready(function() {
 
 
 function ChatbotAppClose() {
-    //최종 종료
-    if(vcui.detect.isIOS){ 
-        window.close(); 
-    }else{
-        android.closeNewWebview(); 
+    // 앱에서 호출될경우
+    if(isApp()) {
+        if(vcui.detect.isIOS){ 
+            window.close(); 
+        }else{
+            android.closeNewWebview(); 
+        }
+    } else {
+        //웹에서 호출될경우
+        history.back();
     }
 }
