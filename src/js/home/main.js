@@ -68,7 +68,6 @@ $(function () {
         '   </div>\n'+
         '</div>';
     
-
     var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
@@ -194,7 +193,7 @@ $(function () {
             
         var isApplication = isApp();
         var $window  = $(window);
-        var $contentWrap = $('.section-cover');
+        var $contentWrap = $context.find('.section-cover');
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -202,7 +201,7 @@ $(function () {
         var winHeight = $window.height();            
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.scene').add('.section-cover');
+        var $scenes = $context.find('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
@@ -242,7 +241,7 @@ $(function () {
 
         
 
-        $context.on('click', 'a', function(e){
+        $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
             if(href == '#'){
                 e.preventDefault();
@@ -389,12 +388,12 @@ $(function () {
                     if(idx==0){
                         if(hasTop){
                             //$('.floating-menu.top').css('opacity', 0);
-                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
                             $(window).trigger('floatingTopHide');
-                            $context.find('.floating-menu.top').hide();
+                            $('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
-                                $context.find('.floating-menu.top').addClass('call-yet');
+                                $('.floating-menu.top').addClass('call-yet');
                             }
                         } else {
                             /*
@@ -406,28 +405,28 @@ $(function () {
                             //임시 추가
                             //앱인데 메인이 아닐경우에만 실행
                             //$('.floating-menu.top').css('opacity', 1);
-                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
                             $(window).trigger('floatingTopHide');
-                            $context.find('.floating-menu.top').hide();
+                            $('.floating-menu.top').hide();
                             if(!(isApplication && location.pathname == "/")) {
                                 $(window).trigger('floatingTopHide');
-                                $context.find('.floating-menu.top').addClass('call-yet');
+                                $('.floating-menu.top').addClass('call-yet');
                             }
                             //임시 추가 끝
                         }
                     }else{
                         if(hasTop){
                             //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
-                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
-                            $context.find('.floating-menu.top').removeClass('call-yet');
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
-                            $context.find('.floating-menu.top').show();
+                            $('.floating-menu.top').show();
 
                         } else {
-                            $context.find('.floating-menu.btn-app-ar').css('display', 'block');
-                            $context.find('.floating-menu.top').removeClass('call-yet');
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                            $('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
-                            $context.find('.floating-menu.top').show();
+                            $('.floating-menu.top').show();
                         }                       
                     }
                     
@@ -482,7 +481,7 @@ $(function () {
             
             document.addEventListener('wheel', function(e){
 
-                var open = $context.find('#layerSearch').hasClass('open');           
+                var open = $('#layerSearch').hasClass('open');           
                 if(!open){    
                     var curTime = new Date().getTime();
                     if(typeof prevTime !== 'undefined'){
@@ -509,14 +508,14 @@ $(function () {
         
         
         // 앱 하단 메뉴 컨트롤
-        lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
+        //lgkorUI.showAppBottomMenuOver(true);
+        //lgkorUI.setEnableAppScrollBottomMenu(false);
 
 
         /* 메인테스트*/
         // BTOCSITE-27
-        
-        $context.find('.container').on('touchstart touchend touchcancel', function(e) {
+        /*
+        $('.container').on('touchstart touchend touchcancel', function(e) {
             
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
@@ -531,7 +530,7 @@ $(function () {
                     // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
-                /* BTOCSITE-740
+                
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -549,11 +548,13 @@ $(function () {
                         wheelScene(-1);
                     }
                 } 
-                */   
+                  
                 
             }
         });
-
+        */
+        
+        /*
         var wrapTouchSy = 0;
         
         $contentWrap.on('touchstart touchend touchcancel', function(e) {
@@ -574,9 +575,10 @@ $(function () {
 
             }
         });
+        */
 
         
-
+        /*
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -587,6 +589,7 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
+        */
         
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
@@ -726,10 +729,9 @@ $(function () {
             winWidth = $window.width();
             winHeight = $window.height();
             posArr = [];
-
-            var $prevTarget = $context.find('.container').prevAll(':not(#layerSearch):visible:first');
-            //var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
-            var prevAllHeight = 84;
+                        
+            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
+            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
@@ -765,7 +767,7 @@ $(function () {
                     height : window.breakpoint.name=='pc'? 1080 : 920
                 };
 
-                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
                 if(!$(this).hasClass('section-cover')){
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
@@ -965,14 +967,14 @@ $(function () {
     /* 20210503 : 모바일앱 다운로드 팝업 */
    if (vcui.detect.isMobileDevice && !isApp()) {
         var layer_id = '#mobile-close-popup';
-        var el = $context.find(layer_id);
+        var el = $(layer_id);
         if (el.size() === 0) { return false; }
         var cookie_name = '__LGAPP_DLOG__';
 
         if (vcui.Cookie.get(cookie_name) === '') {
             vcui.modal(layer_id, open);
-            var checkbox = $context.find('#check-today');
-            var download_btn = $context.find('#lg__app-download');
+            var checkbox = $('#check-today');
+            var download_btn = $('#lg__app-download');
             download_btn.on('click', function () {
                 goAppUrl();
                 
@@ -1136,23 +1138,27 @@ $(function () {
 
             setTimeout(function(){
                 if (isApplication){
-                    $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                    $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                    $('.floating-menu.top').hide();
+                    $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
+                    $(window).scrollTop(0);
                 }
             }, 100);
 
             $(window).on('scroll.floating', function(){                
                 var scrollTop = $(window).scrollTop();
-                var hasTop = $context.find('.floating-menu.top').hasClass('call-yet');
+                var hasTop = $('.floating-menu.top').hasClass('call-yet');
 
                 if(scrollTop == 0){
                     if(hasTop){
                         //$('.floating-menu.top').css('opacity', 0);
-                        $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $(window).trigger('floatingTopHide');
-                        $context.find('.floating-menu.top').hide();
+                        $('.floating-menu.top').hide();
                         if(!(isApplication && location.pathname == "/")) {
                             $(window).trigger('floatingTopHide');
-                            $context.find('.floating-menu.top').addClass('call-yet');
+                            $('.floating-menu.top').addClass('call-yet');
                         }
                     } else {
                         /*
@@ -1164,28 +1170,28 @@ $(function () {
                         //임시 추가
                         //앱인데 메인이 아닐경우에만 실행
                         //$('.floating-menu.top').css('opacity', 1);
-                        $context.find('.floating-menu.btn-app-ar').css('display', 'block');
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $(window).trigger('floatingTopHide');
-                        $context.find('.floating-menu.top').hide();
+                        $('.floating-menu.top').hide();
                         if(!(isApplication && location.pathname == "/")) {
                             $(window).trigger('floatingTopHide');
-                            $context.find('.floating-menu.top').addClass('call-yet');
+                            $('.floating-menu.top').addClass('call-yet');
                         }
                         //임시 추가 끝
                     }
                 }else{
                     if(hasTop){
                         //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
-                        $context.find('.floating-menu.btn-app-ar').css('display', 'block');
-                        $context.find('.floating-menu.top').removeClass('call-yet');
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
+                        $('.floating-menu.top').removeClass('call-yet');
                         $(window).trigger('floatingTopShow');
-                        $context.find('.floating-menu.top').show();
+                        $('.floating-menu.top').show();
 
                     } else {
-                        $context.find('.floating-menu.btn-app-ar').css('display', 'block');
-                        $context.find('.floating-menu.top').removeClass('call-yet');
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
+                        $('.floating-menu.top').removeClass('call-yet');
                         $(window).trigger('floatingTopShow');
-                        $context.find('.floating-menu.top').show();
+                        $('.floating-menu.top').show();
                     }                       
                 }
             });
