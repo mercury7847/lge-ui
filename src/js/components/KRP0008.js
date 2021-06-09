@@ -186,7 +186,7 @@
                 self.$mobilePdpInfo = $('div.mobile-pdp-info');
                 self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
-                self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                //self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
                 self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingOption = self.$specInfoPopup.find('.sibling-option'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingColorText = $('.chk-wrap-colorchip'); //20210607 스펙선택 추가
