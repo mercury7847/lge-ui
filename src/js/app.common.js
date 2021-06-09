@@ -232,9 +232,9 @@ $(document).ready(function() {
 
 function ChatbotAppClose() {
     //최종 종료
-    if(gProfileMkt.os.type == "ios" || gProfile.os.type == "ios"){ 
+    if(vcui.detect.isIOS){ 
         window.close(); 
-    }else if (gProfileMkt.os.type == "android" || gProfile.os.type == "android"){
+    }else{
         android.closeNewWebview(); 
     }
 }
