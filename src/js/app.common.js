@@ -1,6 +1,7 @@
 var LGEAPPHostName = window.location.hostname;
 var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
 var LGEAPPclickCNT = 0;
+
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -9,7 +10,6 @@ ANDROID:    /android/.test(navigator.userAgent.toLowerCase()),
 WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
-
 $(document).ready(function() {
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
@@ -229,3 +229,13 @@ $(document).ready(function() {
         });
     }
 });
+
+
+function ChatbotAppClose() {
+    //최종 종료
+    if(gProfileMkt.os.type == "ios" || gProfile.os.type == "ios"){ 
+        window.close(); 
+    }else if (gProfileMkt.os.type == "android" || gProfile.os.type == "android"){
+        android.closeNewWebview(); 
+    }
+}

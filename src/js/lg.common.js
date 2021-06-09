@@ -3,6 +3,27 @@ var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
+/* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
+*  @path : 랜딩할 경로
+*/
+var goAppUrl = function(path) {
+    var weblink = path ? path : location.pathname;
+    if( vcui.detect.isIOS ) {
+        var clickedAt = +new Date;
+        setTimeout( function () { 
+            if (+new Date - clickedAt < 2000 ) { 
+                // 앱스토어 이동 
+                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+            }
+        } ,1500);
+
+        setTimeout( function () { 
+            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
+        },0);
+    } else {
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+    }
+}
 
 ;(function(global){
 
@@ -279,13 +300,23 @@ var isApp = function(){
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        init: function(){
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.lge.co.kr'],
+        CONTEXT_AREA: null,      
+        init: function( $context ){            
             var self = this;
 
             self._bindErrBackEvent();
             self._addImgOnloadEvent();
-            self._preloadComponents();
+
+            if (!!$context){
+                self.CONTEXT_AREA = $context;
+                self._preloadComponents();
+            } else {
+                //self.CONTEXT_AREA = null;
+                self.CONTEXT_AREA = $(document);
+                self._preloadComponents();
+            }
+
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
@@ -365,7 +396,7 @@ var isApp = function(){
                 "ui/smoothScrollTab",
                 'ui/imageFileInput',
                 'common/header', 
-                'common/footer',  
+                'common/footer',
             ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
                 // new BreakpointDispatcher({
@@ -420,7 +451,7 @@ var isApp = function(){
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resizeend', function(e){
+                $(window).off('resizeend').on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -531,11 +562,19 @@ var isApp = function(){
                         }
                     }
                 });
-    
-                $('header.header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
+                
+                if (!!lgkorUI.CONTEXT_AREA){                 
+                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
-                $('body').buildCommonUI();
+                    lgkorUI.CONTEXT_AREA.buildCommonUI();
+
+                } else {
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    $('footer').vcFooter(); //푸터모듈 적용...
+
+                    $('body').buildCommonUI();
+                }
+                
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
@@ -856,16 +895,16 @@ var isApp = function(){
         addCompareProd: function(categoryId, data){
             var self = this;
             
-
             var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -881,7 +920,7 @@ var isApp = function(){
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
@@ -899,11 +938,9 @@ var isApp = function(){
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);

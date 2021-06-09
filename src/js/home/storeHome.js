@@ -26,7 +26,7 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                   {{/each}}'
 
 var bestRankBuyProductTmpl =
-    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
+    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
     '   <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '   <span class="bg ui_bg_switch"'+ 
     '       style="background-image:url();"'+ 
@@ -47,7 +47,7 @@ var bestRankBuyProductTmpl =
 
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
@@ -116,7 +116,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
-    '   <div class="slide-box">\n'+
+    '   <div class="slide-box" data-ec-product="{{ecProduct}}">\n'+
     '       <div class="img"><img src="{{fullImagePath}}" alt="{{modelDisplayName}}"></div>\n'+    
     '       <div class="product-area">\n'+
     '           <div class="product-contents">\n'+
@@ -155,9 +155,43 @@ $(function(){
         return name? obj[name] : obj;
     }
 
-    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        $('.ui_lifestyle_list').vcCarousel({
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
+            } else {
+                return item.superCategoryName + "/" + item.categoryName; 
+            }
+        }
+
+        var currentEcValue = {
+            "model_name": displayName.trim(),
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName		
+        }
+
+        if( item.obsOriginalPrice && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
+    }
+
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
+
+    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+        
+        $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -180,14 +214,14 @@ $(function(){
 
             var breakpoint = window.breakpoint;    
             if(breakpoint.name == 'mobile'){                    
-                $('.ui_product_lifestyle').vcCarousel({
+                $context.find('.ui_product_lifestyle').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
                     slidesToScroll: 1                        
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $('.ui_product_lifestyle').vcCarousel('destroy');                            
+                $context.find('.ui_product_lifestyle').vcCarousel('destroy');                            
             }    
         })
 
@@ -236,12 +270,12 @@ $(function(){
         // 직접관리하는 영역 끝
 
         
-        var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
-        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
-        var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
-        var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        var storeNewRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
-        var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
+        var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
+        var storeSubCategoryTabUrl = $context.find('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
+        var storeRankBuyProductUrl = $context.find('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
+        var storeExhibitionProductUrl = $context.find('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
+        var storeNewRecommendProductUrl = $context.find('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
+        var exhibitionModelId = $context.find('.ui_exhib_carousel').data('modelId');
         var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var newExhibitionLocal = [];
 
@@ -249,7 +283,6 @@ $(function(){
             var obj = exhibitionLocal[i];
             obj['modelId'] = exhibitionModelIdArr[i];
             newExhibitionLocal.push(obj);
-
         }
 
         // 새제품 추천 렌더링
@@ -265,11 +298,16 @@ $(function(){
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
+                    var newTempEcProduct = getEcProduct(item);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
+
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                     }else{
                         item['obsOriginalPrice'] = null;
                     }
+
+
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
@@ -299,9 +337,10 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
+                    if(list[index]){
+                        
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
-                        var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
+                        var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
                         if($appendTarget[0]) $appendTarget.after(newHtml);
                     }
@@ -313,7 +352,7 @@ $(function(){
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
 
-                        $('.ui_new_product_carousel').vcCarousel({
+                        $context.find('.ui_new_product_carousel').vcCarousel({
                             infinite: false,
                             slidesToShow: 1,
                             slidesToScroll: 1,
@@ -323,7 +362,7 @@ $(function(){
                         
                     }else if(breakpoint.name == 'pc'){   
                         
-                        $('.ui_new_product_carousel').vcCarousel('destroy');
+                        $context.find('.ui_new_product_carousel').vcCarousel('destroy');
                     }    
                 })
 
@@ -342,11 +381,11 @@ $(function(){
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){    
                     
-                    $('.ui_recom_carousel').vcCarousel('destroy');
+                    $context.find('.ui_recom_carousel').vcCarousel('destroy');
                     
                 }else if(breakpoint.name == 'pc'){   
                     
-                    $('.ui_recom_carousel').vcCarousel({
+                    $context.find('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
                         slidesToScroll: 2
@@ -402,10 +441,10 @@ $(function(){
                 });
 
                 var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-                $('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $('.ui_exhib_carousel').vcCarousel();
+                $context.find('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
+                $context.find('.ui_exhib_carousel').vcCarousel();
 
-                $('body').vcLazyLoaderSwitch('reload', $('.ui_exhib_carousel'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 
             }
             
@@ -435,7 +474,7 @@ $(function(){
                 });
 
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
-                $('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
+                $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
 
             }
 
@@ -452,11 +491,11 @@ $(function(){
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
                 var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});
 
-                $('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
-                $('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
+                $context.find('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
+                $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
 
-                $('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
                     
                     var categoryId = null;
 
@@ -479,7 +518,7 @@ $(function(){
 
                         lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
                             buildSubCatagoryTab(e, categoryId);
-                            $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
+                            $context.find('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
                             $(data.content).transit({opacity:1});
 
                         }, errorRequest);
@@ -491,13 +530,13 @@ $(function(){
                 }).vcTab();
 
 
-                $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
+                $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
                 $(window).on('breakpointchange.category', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
-                        $('.ui_category_carousel').vcCarousel({
+                        $context.find('.ui_category_carousel').vcCarousel({
                             infinite: true,
                             variableWidth : false,
                             dots: true,
@@ -507,7 +546,7 @@ $(function(){
 
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $('.ui_category_carousel').vcCarousel('destroy');                            
+                        $context.find('.ui_category_carousel').vcCarousel('destroy');                            
                     }    
                 })
 
@@ -545,8 +584,9 @@ $(function(){
                 if(sortArr.length>0){
 
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
+                    bestObj.ecProduct = JSON.stringify(getEcProduct(bestObj));
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
-                    $('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
+                    $context.find('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
                     if(window.breakpoint && window.breakpoint.name){
 
@@ -560,10 +600,13 @@ $(function(){
                     }
     
                     sortArr = vcui.array.removeAt(sortArr, 0);
+                    sortArr.forEach(function(item){
+                        item.ecProduct = JSON.stringify(getEcProduct(item));
+                    })
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
-                    $('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
+                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
     
-                    $('body').vcLazyLoaderSwitch('reload', $('.ui_buy_product'));
+                    $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_buy_product'));
 
                 }
             }
