@@ -281,7 +281,6 @@ $(function(){
             var obj = exhibitionLocal[i];
             obj['modelId'] = exhibitionModelIdArr[i];
             newExhibitionLocal.push(obj);
-
         }
 
         // 새제품 추천 렌더링
