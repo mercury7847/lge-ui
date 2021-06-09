@@ -139,7 +139,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '           </div>\n'+
     '           <div class="product-price">\n'+
     '               {{#if isPrice}}\n'+
-    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}<em>원</em>{{/if}}</div>\n'+
+    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}{{/if}}</div>\n'+
     '                   <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{#raw totalPrice}}{{/if}}</div>\n'+
     '               {{/if}}\n'+
     '           </div>\n'+
@@ -165,7 +165,6 @@ $(function(){
                 return item.superCategoryName + "/" + item.categoryName; 
             }
         }
-
 
         var currentEcValue = {
             "model_name": displayName.trim(),
@@ -298,11 +297,16 @@ $(function(){
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
-                    // if(obsOriginalPrice!==0){ 
-                    //     item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
-                    // }else{
-                    //     item['obsOriginalPrice'] = null;
-                    // }
+                    var newTempEcProduct = getEcProduct(item);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
+
+                    if(obsOriginalPrice!==0){ 
+                        item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
+                    }else{
+                        item['obsOriginalPrice'] = null;
+                    }
+
+
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
@@ -332,8 +336,8 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
-                        list[index].ecProduct = JSON.stringify(getEcProduct(list[index]));
+                    if(list[index]){
+                        
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
