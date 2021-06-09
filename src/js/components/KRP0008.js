@@ -899,7 +899,7 @@
                     }
                     */
                 });
-                /* //20210607 스펙선택 추가 */
+                /* //20210607 스펙선택 추가 */ 
 
                 //소모품 추가구매
                 self.$pdpInfoAdditionalPurchase.on('click','div.selectbox-list a', function(e){
