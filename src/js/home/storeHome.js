@@ -318,7 +318,7 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
-                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
 
                     var obj = newProductRecommendLocal[index];
 
