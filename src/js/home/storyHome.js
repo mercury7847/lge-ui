@@ -1,5 +1,4 @@
 ;(function(){
-
     var stickyTagTemplate = 
         '<div class="subscribe-wrap ui_sticky">'+
             '<div class="inner">'+
@@ -148,10 +147,10 @@
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
                 if(storyUserHeight){
-                    $('#content').find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
+                    $context.find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
                 }
                 if(storyNewHeight){
-                    $('#content').find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
+                    $context.find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
                 }
 
                 if(storyHomeScrollTop) {
@@ -384,6 +383,7 @@
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
+
             if(result.data.loginUrl){
                 location.href = result.data.loginUrl;
 
@@ -406,6 +406,7 @@
             // console.log("result.data.selectTags:", result.data.selectTags);
             var viewMode;
             if(result.data.selectTags){
+
                 viewMode = "selectTagMode";
                 
                 sectionItem.find('.inner h2.title').hide();
@@ -439,7 +440,7 @@
                     sectionItem.find('.flexbox-wrap').append(list);
                 }
 
-                if(page == 1){
+                if(page == 1){ 
                     if(IS_LOGIN == "Y"){
                         if(viewMode == "listMode" && sectioname == "user_story"){
                             $context.find('.tag-subscribe-story').empty().hide();
@@ -450,7 +451,10 @@
                         }
                     } else{
                         if(sectioname == "new_story"){
-                            $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            //$('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            /* 20210518 추가 */
+                            $context.find('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            /* //20210518 추가 */
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                         }
                     }
@@ -481,14 +485,22 @@
                 
                 setRepositionTagBox(sectionItem);
             } else{
-                if(sectioname == "user_story"){
+                if(sectioname == "user_story"){ 
+                    // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags})); 
+                    /* 20210518 추가 */    
                     $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                    /* //20210518 추가 */
                     $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
 
                     $context.find('.new_story').find('.inner h2.title').hide();
                 }
                 sectionItem.hide();
             }
+            // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
+            if (typeof(mainSwiper) !== 'undefined'){
+                mainSwiper.swiper.updateAutoHeight();
+            }
+        
         });
     }
 
