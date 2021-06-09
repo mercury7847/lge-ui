@@ -7,6 +7,22 @@ function MainSwiper( ID ){
     this.swiper = null;
     this.currentHash = window.location.hash;
 
+    this.hashMap = [
+        '#home',
+        '#store',
+        '#story',
+        '#cs',
+        '#care'
+    ];
+
+    this.urlToHash = {
+        'home' : '#home',
+        'store' : '#store',
+        'story' : '#story',
+        'support' : '#cs',
+        'care-solutions' : '#care'
+    };
+
     this.init();
     
 }
@@ -33,12 +49,14 @@ MainSwiper.prototype = {
                     $('#sw_con .swiper-slide').data('isLoaded', false);
                 },
                 'init' : function(swiper){
-                    console.log('window.location.hash', window.location.hash);
-                    if (!!window.location.hash == false){
-                        window.location.hash = '#home';
-                    }
-                    var currentSlide = swiper.slides[ mainSwiper.currentIdx ];
-                    mainSwiper.loadContent( currentSlide );
+                    console.log('mainSwiper.getHash', mainSwiper.getHash());
+
+                    //if (!!mainSwiper.getLastSegmentByUrl() == false){
+                        window.location.hash = mainSwiper.getHash();
+                        var currentSlide = swiper.slides[ mainSwiper.currentIdx ];
+                        mainSwiper.loadContent( currentSlide );
+                    //}
+                    
                     //swiper.slideChange();
                 },
                 'slideChange' : function(swiper){
@@ -168,6 +186,22 @@ MainSwiper.prototype = {
     // fixed 처리된 모달 수정값
     getLeft: function(){
         return Math.abs($('#sw_con .swiper-wrapper').offset().left);
+    },
+    // url 마지막 경로 
+    getLastSegmentByUrl: function(){
+        return window.location.href.split('/').pop();
+    },
+
+    getHash: function(){
+        console.log('urltohash value', this.urlToHash[ this.getLastSegmentByUrl() ] );
+        var hash = '';
+        if (!!this.urlToHash[ this.getLastSegmentByUrl() ] == false ){
+            hash = this.urlToHash['home'];
+        } else {
+            hash = this.urlToHash[ this.getLastSegmentByUrl() ];
+        }
+
+        return hash;
     }
 }
 
