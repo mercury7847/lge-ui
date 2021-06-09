@@ -240,6 +240,6 @@ function ChatbotAppClose() {
         }
     } else {
         //웹에서 호출될경우
-        history.back();
+        historyBack();
     }
 }
