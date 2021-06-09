@@ -1,10 +1,12 @@
 (function(){
     var detect = vcui.detect;
-    var isMobileDevice = detect.isMobileDevice;
-
+    var isMobileDevice = detect.isMobileDevice;    
+    var $context = !!$('[data-hash="cs"]').length ? $('[data-hash="cs"]') : $(document);
+    var contextLeft = !!$('[data-hash="cs"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
+    
     var supportHome = {
         loginTooltip : function(){
-            var $tooltip = $('.tooltip-login');
+            var $tooltip = $context.find('.tooltip-login');
             var $btnClose = $tooltip.find('.btn-tooltip-close');
 
             $tooltip.on('click', function() {
@@ -26,7 +28,7 @@
             toggle : function(){
                 var self = this;
 
-                $(document).on('click', self.el.btn, function(e){
+                $context.on('click', self.el.btn, function(e){
                     var $this = $(this);
                     var $listWrap = $this.closest(self.el.wrap);
                     var $list = $listWrap.find(self.el.list);
@@ -59,7 +61,7 @@
             btnShow : function(){
                 var self = this;
 
-                $(self.el.container).each(function(){
+                $context.find(self.el.container).each(function(){
                     var $this = $(this);
                     var $item = $this.find(self.el.hidden);
 
@@ -72,9 +74,9 @@
             },
             hiddenVisible : function(){
                 var self = this;
-                var $moreBtn = $(self.el.btn);
+                var $moreBtn = $context.find(self.el.btn);
 
-                $(self.el.container).each(function(){
+                $context.find(self.el.container).each(function(){
                     var $this = $(this);
                     var $item = $this.find('.item');
                     var $itemList = $this.find('.item-list');
@@ -117,7 +119,7 @@
         slide : {
             activeClass : ".slick-initialized",
             controls : {
-                play : $('.btn-play')
+                play : $context.find('.btn-play')
             },
             heroPd : {
                 el : {
@@ -164,12 +166,12 @@
                 },
                 init : function(){
                     var self = this;
-                    var $container = $(self.el.slider);
+                    var $container = $context.find(self.el.slider);
                     var $backContList = $container.find('.card-back-cont');
                     var $btnBackOpen = $container.find('.btn-goto-back');
                     var $btnBackClose = $container.find('.btn-goto-front');
 
-                    $(document).on('click', self.el.front, function(e){
+                    $context.on('click', self.el.front, function(e){
                         var $this = $(this);
                         var $card = $this.closest('.item-card');
                         var $backCard = $card.find('.card-back');
@@ -186,7 +188,7 @@
                         e.preventDefault();
                     })
 
-                    $(document).on('click', self.el.btnBackClose, function(e){
+                    $context.on('click', self.el.btnBackClose, function(e){
                         var $this = $(this);
                         var $backCard = $this.closest('.card-back');
 
@@ -202,7 +204,7 @@
             },
             supportList : {
                 el : {
-                    slider : $('.support-toggle-list-wrap')
+                    slider : $context.find('.support-toggle-list-wrap')
                 },
                 config : {
                     infinite: false,
@@ -216,9 +218,8 @@
             },
             notice : {
                 el : {
-                    slider : $('.notice-slider')
-                },
-                
+                    slider : $context.find('.notice-slider')
+                },                
                 config : {
                     infinite: true,
                     autoplay: true,
@@ -229,7 +230,7 @@
             },
             main_service : {
                 el : {
-                    slider : $('.main-service-slider .main-list-wrap'),
+                    slider : $context.find('.main-service-slider .main-list-wrap'),
                 },
                 config : {
                     infinite: false,
@@ -295,7 +296,7 @@
             },
             inquiry : {
                 el : {
-                    slider : $('.reserv-inquiry-slider')
+                    slider : $context.find('.reserv-inquiry-slider')
                 },
                 config : {
                     infinite: false,
@@ -331,7 +332,7 @@
             },
             award : {
                 el : {
-                    slider : $('.award-slider .award-list'),
+                    slider : $context.find('.award-slider .award-list'),
                 },                
                 config : {
                     infinite: true,
@@ -370,25 +371,25 @@
             resize : function(){
                 var self = this;
                 if( window.innerWidth > 1024) {
-                    $('.support-toggle-list-wrap').not('.only-desktop').addClass('only-desktop');
+                    $context.find('.support-toggle-list-wrap').not('.only-desktop').addClass('only-desktop');
                     self.supportList.el.slider.filter('.slick-initialized').slick('unslick');
                 } else {
-                    $('.support-toggle-list-wrap').removeClass('only-desktop');
+                    $context.find('.support-toggle-list-wrap').removeClass('only-desktop');
                     self.supportList.el.slider.not(self.activeClass).slick(self.supportList.config);
                 }
                 
             },
             firstInit : function(){
                 if( window.innerWidth > 1024) {
-                    $('.support-toggle-list-wrap').addClass('only-desktop');
+                    $context.find('.support-toggle-list-wrap').addClass('only-desktop');
                 } else {
-                    $('.support-toggle-list-wrap').removeClass('only-desktop');
+                    $context.find('.support-toggle-list-wrap').removeClass('only-desktop');
                 };
             },
             init : function(){
                 var self = this;
 
-                $('[data-auto-type]').each(function(){
+                $context.find('[data-auto-type]').each(function(){
                     $(this).on('init', function(event, slick){
                         var $this = $(this);
                         var _type = $this.data('autoType');
@@ -414,7 +415,7 @@
 
                 });
 
-                $('[data-auto-type]').on('breakpoint', function(event, slick, breakpoint){
+                $context.find('[data-auto-type]').on('breakpoint', function(event, slick, breakpoint){
                     var $this = $(this);
                     var $container = $this.closest('[data-role="slide-container"]');
 
@@ -425,7 +426,7 @@
                     }
                 });
                 //재생/정지 버튼
-                $('[data-role="slide-container"]').on('click', '.btn-play', function(e){
+                $context.find('[data-role="slide-container"]').on('click', '.btn-play', function(e){
                     var $this = $(this);
                     var $container = $this.closest('[data-role="slide-container"]');
                     var $slider = $container.find('.slick-initialized');
@@ -467,15 +468,15 @@
                 self.inquiry.el.slider.not(self.activeClass).slick(self.inquiry.config);
             },
             refresh : function(){
-                $('.slick-initialized').slick('refresh');
+                $context.find('.slick-initialized').slick('refresh');
             }
         },
         reservation : {
             serviceReserv : {
                 el : {
-                    container : $('.service-reserv'),
-                    agreeChk : $('#agreePrivacyCheck'),
-                    popup : $('#agreePrivacyPopup'),
+                    container : $context.find('.service-reserv'),
+                    agreeChk : $context.find('#agreePrivacyCheck'),
+                    popup : $context.find('#agreePrivacyPopup'),
                 },
                 validation : null,
                 addressFinder : null,
@@ -556,11 +557,11 @@
                         if( validationResult ) {
                             //각 인풋의 value를 히든 인풋에 담은 뒤에 서브밋
                             
-                            $('#userName').val($('#serviceUserName').val());
-                            $('#userPhoneNo').val($('#servicePhoneNo').val())
-                            $('#userZipCode').val($('#serviceZipCode').val())
-                            $('#userAddress').val($('#serviceUserAddress').val())
-                            $('#userDetailAddress').val($('#serviceDetailAddress').val())
+                            $context.find('#userName').val($context.find('#serviceUserName').val());
+                            $context.find('#userPhoneNo').val($context.find('#servicePhoneNo').val())
+                            $context.find('#userZipCode').val($context.find('#serviceZipCode').val())
+                            $context.find('#userAddress').val($context.find('#serviceUserAddress').val())
+                            $context.find('#userDetailAddress').val($context.find('#serviceDetailAddress').val())
                             
                             lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainEngineerClick.do', '/acecount/mainEngineerClickm.do');
                             self.el.container.find('#serviceReservationForm').submit();
@@ -581,9 +582,9 @@
             },
             reservInquiry : {
                 el : {
-                    container : $('.reserv-inquiry'),
+                    container : $context.find('.reserv-inquiry'),
                     authChangeRdo : '[name="inquiryRdo"]',
-                    changeCont : $('.reserv-inquiry .toggle-forms')
+                    changeCont : $context.find('.reserv-inquiry .toggle-forms')
                 },
                 validation : null,
                 authManager : null,
@@ -591,7 +592,7 @@
                     var self = this;
                    
                     vcui.require(['ui/validation', 'ui/formatter'], function () {
-                        $('#inquiryAuthPhoneNo').vcFormatter({'format':'num', "maxlength":11});
+                        $context.find('#inquiryAuthPhoneNo').vcFormatter({'format':'num', "maxlength":11});
         
                         var register = {
                             userName1 : {
@@ -666,9 +667,9 @@
                                     if( validationResult ) {
                                         lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainStatusClick.do', '/acecount/mainStatusClickm.do');
                                         lgkorUI.showLoading();
-                                        lgkorUI.requestAjaxDataPost($('#authDataForm1').data('ajax'), resultData, function(result) {
+                                        lgkorUI.requestAjaxDataPost($context.find('#authDataForm1').data('ajax'), resultData, function(result) {
                                             if (result.data.resultFlag == 'Y') {
-                                                $('#authDataForm1').attr('action', result.data.url).submit();
+                                                $context.find('#authDataForm1').attr('action', result.data.url).submit();
                                             } else if (result.data.resultFlag == 'N') {
                                                 lgkorUI.alert("", {
                                                     title: result.data.resultMessage,
@@ -760,8 +761,8 @@
                 var $container = $(self.el.container);
                 var $pdCont = $container.find(self.el.pdCont);
                 var ajaxUrl = $container.data('ajax');
-                var modelCnt = $('[name="modelCnt"]').val();
-                var memberContentsCnt = $('[name="memberContentsCnt"]').val();
+                var modelCnt = $context.find('[name="modelCnt"]').val();
+                var memberContentsCnt = $context.find('[name="memberContentsCnt"]').val();
                 var alertMsgArry = [
                     '등록된 제품이 없습니다. <br>보유제품을 등록하시겠습니까?',
                     '보유하신 제품으로 검색된 결과가 없습니다.'
@@ -795,7 +796,7 @@
                             html;
                           
                             if( listData.length ) {
-                                html = vcui.template(self.template, data);
+                                html = vcui.template(self.template, data); 
                                 $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
                                 $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
                                 $(self.el.toggleBtn).addClass('active');
@@ -823,11 +824,11 @@
             },
             init : function(){
                 var self = this;
-                var $container = $(self.el.container);
+                var $container = $context.find(self.el.container);
                 var $listWrap = $container.find(self.el.listWrap);
                 var $pdCont = $container.find(self.el.pdCont);
-                var modelCnt = $('[name="modelCnt"]').val();
-                var memberContentsCnt = $('[name="memberContentsCnt"]').val();
+                var modelCnt = $context.find('[name="modelCnt"]').val();
+                var memberContentsCnt = $context.find('[name="memberContentsCnt"]').val();
 
                 if( memberContentsCnt > 0 && modelCnt > 0) {
                     self.getProduct();
@@ -878,8 +879,14 @@
                 close : '.btn-close'
             },
             init : function(){
+
+                if (contextLeft != null){
+                    this.el.modal = '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:'+ contextLeft +'px; width:100%; height:100%;"/>'
+                }
+                
+
                 var self = this;
-                var $popup = $(self.el.popup);
+                var $popup = $context.find(self.el.popup);
                 
 
 
@@ -896,10 +903,10 @@
                     $popup.not('.hidden').addClass('active').attr('tabindex', '0');
 
                     if( $popup.filter('.active').length ) {
-                        $('html').css('overflow', 'hidden');
+                        //$('html').css('overflow', 'hidden');
                         $popup.filter('.active').wrapAll(self.el.modal);
                         if( $popup.filter('.active').length == 1) {
-                            $('.ui_modal_wrap.init-type').addClass('center-only');
+                            $context.find('.ui_modal_wrap.init-type').addClass('center-only');
                         }
                         $popup.filter('.active').stop().fadeIn();
 
@@ -915,7 +922,7 @@
 
 
                 $popup.find(self.el.close).on('click', function(e){
-                    var $this =$(this);
+                    var $this = $(this);
                     var $curModal = $this.closest('.popup-init');
                     var $modalWrap = $this.closest('.ui_modal_wrap');
                     var $dimm = $modalWrap.find('.ui_modal_dim');
@@ -944,15 +951,15 @@
                     e.preventDefault();
                 });
 
-                var $elFocus = $('.ui_modal_wrap.init-type').find('a, button, input, textarea').filter(':visible');
+                var $elFocus = $context.find('.ui_modal_wrap.init-type').find('a, button, input, textarea').filter(':visible');
 
-                $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
+                $context.find('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
                     e.preventDefault();
                     e.stopPropagation();
                 })
 
-                $elFocus.first().css('color', 'red')
-                $elFocus.last().css('color', 'blue')
+                $elFocus.first().css('color', 'red');
+                $elFocus.last().css('color', 'blue');
 
                 $popup.filter('.active').first().on('keydown', function(e){
                     if( e.shiftKey && e.keyCode == 9) {
@@ -981,14 +988,14 @@
                 autocompleteWrap: '.autocomplete-box'
             },
             init: function() {
-                if (!$('.ui_search').length) return;
+                if (!$context.find('.ui_search').length) return;
 
                 var self = this;
-                var $searchWrap = $(self.el.searchWrap);
-                var $searchInput = $(self.el.searchInput);
-                var $recentlyWrap = $(self.el.recentlyWrap);
-                var $popularWrap = $(self.el.popularWrap);
-                var $autocompleteWrap = $(self.el.autocompleteWrap);
+                var $searchWrap = $context.find(self.el.searchWrap);
+                var $searchInput = $context.find(self.el.searchInput);
+                var $recentlyWrap = $context.find(self.el.recentlyWrap);
+                var $popularWrap = $context.find(self.el.popularWrap);
+                var $autocompleteWrap = $context.find(self.el.autocompleteWrap);
                 var url = $searchWrap.data('searchUrl');
 
                 $searchInput.on('keyup', function(e) {
