@@ -312,7 +312,8 @@ var goAppUrl = function(path) {
                 self.CONTEXT_AREA = $context;
                 self._preloadComponents();
             } else {
-                self.CONTEXT_AREA = null;
+                //self.CONTEXT_AREA = null;
+                self.CONTEXT_AREA = $(document);
                 self._preloadComponents();
             }
 
