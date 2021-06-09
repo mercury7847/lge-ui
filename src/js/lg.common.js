@@ -543,6 +543,7 @@ var isApp = function(){
                 });
                 
                 if (!!lgkorUI.CONTEXT_AREA){                 
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
                     lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
                     lgkorUI.CONTEXT_AREA.buildCommonUI();

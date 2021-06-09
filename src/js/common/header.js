@@ -139,6 +139,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         },
 
         _bindEvents: function(){
+            console.log('header bind event');
             var self = this;
 
             //장바구니, 마이페이지홈 클릭시 로딩바 노출
