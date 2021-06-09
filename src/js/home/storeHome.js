@@ -297,6 +297,7 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                    
 
                     var newTempEcProduct = getEcProduct(item);
                     item.ecProduct = JSON.stringify(newTempEcProduct);
@@ -317,7 +318,7 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
-                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
 
                     var obj = newProductRecommendLocal[index];
 
