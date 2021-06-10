@@ -747,7 +747,19 @@ var FilterLayer = (function() {
                 var $pa = $(findDm);
                 $pa.vcAccordion('expand',idx,false);
             });
+        },
+        //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
+        openFilterDefault: function(tabList) {
+            var $Tab = $('.tabs');
+            var $list = $Tab.find('li');
+            var $openList = $('li[data-label="제품"]') || $('li[data-label="케어용품/소모품"]')
+            if(tabList === $openList) {
+                var $target = $('.ui_accord_content');
+                $target.removeClass("desc");
+            }
+
         }
+
     }
     return FilterLayer;
 })();
