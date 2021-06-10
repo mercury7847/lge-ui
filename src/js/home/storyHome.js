@@ -147,10 +147,10 @@
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
                 if(storyUserHeight){
-                    $('#content').find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
+                    $context.find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
                 }
                 if(storyNewHeight){
-                    $('#content').find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
+                    $context.find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
                 }
 
                 if(storyHomeScrollTop) {

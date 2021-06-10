@@ -68,6 +68,7 @@ $(function () {
         '   </div>\n'+
         '</div>';
     
+    var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
@@ -192,7 +193,7 @@ $(function () {
             
         var isApplication = isApp();
         var $window  = $(window);
-        var $contentWrap = $('.section-cover');
+        var $contentWrap = $context.find('.section-cover');
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -200,7 +201,7 @@ $(function () {
         var winHeight = $window.height();            
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.scene').add('.section-cover');
+        var $scenes = $context.find('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
@@ -766,7 +767,7 @@ $(function () {
                     height : window.breakpoint.name=='pc'? 1080 : 920
                 };
 
-                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
                 if(!$(this).hasClass('section-cover')){
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
@@ -1139,6 +1140,9 @@ $(function () {
                 if (isApplication){
                     $('.floating-menu.btn-app-ar').css('display', 'block');                    
                     $('.floating-menu.top').hide();
+                    $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
+                    $(window).scrollTop(0);
                 }
             }, 100);
 
