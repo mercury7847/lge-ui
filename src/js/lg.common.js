@@ -7,7 +7,8 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.pathname;
+    var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
+
     if( vcui.detect.isIOS ) {
         var clickedAt = +new Date;
         setTimeout( function () { 
@@ -352,7 +353,9 @@ var goAppUrl = function(path) {
         _appDownloadPopup: function() {
             var enableUrl = [
                 '^/$', // 메인
-                '^/benefits/event/detail-' // 이벤트 페이지
+                '^/benefits/event/?', // 이벤트 페이지
+                '^/benefits/exhibitions/?' // 기획전 페이지
+
             ];
 
             console.log("pathname : %o",location.pathname);
