@@ -230,7 +230,7 @@ $(document).ready(function() {
 });
 
 
-function ChatbotAppClose() {
+function ChatbotAppClose(type) {
     // 앱에서 호출될경우
     if(isApp()) {
         if(vcui.detect.isIOS){ 
@@ -239,7 +239,11 @@ function ChatbotAppClose() {
             android.closeNewWebview(); 
         }
     } else {
-        //웹에서 호출될경우
-        historyBack();
+        if(type == 'native') {
+            history.back();
+        } else {
+            //웹에서 호출될경우
+            historyBack();
+        }
     }
 }
