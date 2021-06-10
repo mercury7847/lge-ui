@@ -102,9 +102,8 @@
                                 <tr>
                                     <td class="winner">홍*동</td>
                                     <td class="phone">010-****-6654</td>
-                                    <!-- td 내용 없을 때 class empty 추가 -->
-                                    <td class="winner empty"></td>
-                                    <td class="phone empty"></td>
+                                    <td class="winner"></td>
+                                    <td class="phone"></td>
                                 </tr>
                             </tbody>    
                         </table>
@@ -140,22 +139,33 @@
                 })
 
                 $('#button-search').on('click', function(){
-                    validation.validate(); 	
+                    validation.validate();
                     var value = $('#inp01').val();
+                    var result = 0;
+                    var dataTb = $('.table-cont:not(#searchResultTb)');
+                    var resultTb = dataTb.clone().attr('id', 'searchResultTb');
+                    $('table tbody tr', resultTb).remove();
 
-                    $('td.on').removeClass('on');
+                    $('td.on', dataTb).removeClass('on');
+                    $('#searchResultTb').remove();
+                    $('.inner-contents').prepend(resultTb);
+                    $('.tb-tit', resultTb).text('당첨자 검색 결과');
 
-                    $('td.phone').each(function(){
+                    $('td.phone', dataTb).each(function(){
                         var str = $(this).text();
                         str = str.slice(-4);
 
                         if(value == str){
-                            $(this).addClass('on');
-                            $(this).prev('.winner').addClass('on');
+                        	$(this).addClass('on');
+                        	$(this).prev('.winner').addClass('on')
+                        	var searchRow = $(this).parent('tr').clone();
+                        	$('table tbody', resultTb).append(searchRow);
+                            result = result + 1;
                         }
-
                     });
-                                    
+                    if(result == 0) {
+                        $('#searchResultTb tbody').html('<tr><td colspan="4">당첨되지 않으셨습니다.</td></tr>');
+                    }
                 });
             })
         });
