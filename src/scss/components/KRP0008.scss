@@ -1110,14 +1110,20 @@
                         }
                             
                     }
-                    /* 20210607 스펙선택 추가 */
-                    &.Spec {
+                    /* 20210607 스펙선택 추가 */ 
+                    &.Spec { 
                         .price-info {
                             padding-right: 0;
-                            .btn-area {
-                                margin-top: 0;
-                                .btn-link {
-                                    text-decoration: none;
+                            .content {
+                                width: 320px;
+                                .btn-area {
+                                    margin-top: 0 !important;
+                                    .btn-link {
+                                        text-decoration: none;
+                                        display: block !important;
+                                        width: 100%;
+                                        position: relative;
+                                    }
                                 }
                             }
                         }

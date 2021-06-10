@@ -231,11 +231,20 @@ $(document).ready(function() {
 });
 
 
-function ChatbotAppClose() {
-    //최종 종료
-    if(gProfileMkt.os.type == "ios" || gProfile.os.type == "ios"){ 
-        window.close(); 
-    }else if (gProfileMkt.os.type == "android" || gProfile.os.type == "android"){
-        android.closeNewWebview(); 
+function ChatbotAppClose(type) {
+    // 앱에서 호출될경우
+    if(isApp()) {
+        if(vcui.detect.isIOS){ 
+            window.close(); 
+        }else{
+            android.closeNewWebview(); 
+        }
+    } else {
+        if(type == 'native') {
+            history.back();
+        } else {
+            //웹에서 호출될경우
+            historyBack();
+        }
     }
 }

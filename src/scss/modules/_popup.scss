@@ -335,7 +335,7 @@
         }
         /* //20210601 구매혜택 팝업 conts수정 */
 
-        /* 20210607 스펙선택 추가 */
+        /* 20210607 스펙선택 추가 */ 
         &.sibling-pop {
             padding: 0;
             .process-info {
@@ -400,7 +400,6 @@
                                 .sibling-color {
                                     position: relative;
                                     border-bottom: 1px solid #ddd;
-                                    margin-bottom: 30px;
                                     padding-bottom: 30px;
                                 }
                                 .sibling-select:first-of-type {
@@ -573,6 +572,7 @@
                     }
                     .sibling-group {
                         padding: 0 30px 40px 30px;
+                        margin-top: 30px;
                         @include mobile {
                             padding-bottom: 0;
                             padding: 0;
@@ -611,8 +611,8 @@
         }
         @include mobile {
             padding:32px 16px 60px;
-            height:calc(100% - 62px);
-            max-height:calc(100% - 62px);
+            height:calc(100% - 122px);
+            max-height:calc(100% - 122px);
             //max-height:none;
         }
         .tabs-wrap {

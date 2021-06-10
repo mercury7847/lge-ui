@@ -715,6 +715,27 @@
                         serviceType: $('#serviceType').val(),
                         productCode: $('#productCode').val()
                     };
+
+                // 20210610 세척서비스 증상 선택시 팝업 띄움
+                var topicName = $(this).data('topicName');
+                var alertMsg = '제품 세척 서비스는<br><strong>콜센터[1544-7777]</strong>로 바로 전화하시거나,<br>홈페이지 전화상담 <strong>예약</strong> 메뉴를 통해 예약을 하시면,<br>상담사가 제품과 관련된 내용을 상담 후 접수를 도와드릴 수 있습니다.';
+                
+                if( topicName === "세척서비스" ){
+                    // $(this).prop('checked', false)
+                    lgkorUI.confirm(alertMsg,{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = "/support/request-call-reservation";
+                        },
+                        cancel: function() {
+                            
+                        }
+                    });
+                }
+                
                 
                 self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);

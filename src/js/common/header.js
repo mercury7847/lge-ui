@@ -135,7 +135,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
-
         },
 
         _bindEvents: function(){
@@ -551,6 +550,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }).on('accordioncollapse', function(e, data){
                 $(data.content).find('.ui_gnb_accordion').vcAccordion("collapseAll");
             });
+
+            self._setStoryUpdateCheck();
         },
 
         _mypageOver: function(){
@@ -609,7 +610,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$hamburger.removeClass('active');
 
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-        }
+        },
+        _setStoryUpdateCheck: function(){
+            var $mobileNav = $('.mobile-nav-wrap');
+            var $list = $mobileNav.find('li');
+            var $storyList = $list.eq(2);
+
+            var ajaxUrl = $mobileNav.data('storyUrl');
+
+            if(ajaxUrl) {
+                lgkorUI.requestAjaxData(ajaxUrl,{},function(resultData){
+                    var data = resultData.data;
+                    if( data=== 1 && resultData.status=== "success") $storyList.addClass('icon-update')
+                })
+            }
+        },
     });
 
     return Header;
