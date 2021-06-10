@@ -2,7 +2,7 @@
 (function () {
     var productItemTemplate =
     '<li data-uniq-id="{{uniqId}}">' +
-        '<div class="item plp-item" data-ec-product="{{ecProduct}}">' +
+        '<div class="item plp-item">' +
         '{{#if promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
@@ -834,42 +834,6 @@
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
 
-                function getEcCategoryName(item){
-                    if( item.subCategoryName == "" || item.subCategoryName == undefined) {
-                        return item.superCategoryName + "/" + item.categoryName 
-                    } else {
-                        return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
-                    }
-
-                }
-
-                function getGubunValue(bizType){
-                    var curValue = "";
-                    switch(bizType) {
-                        case "PRODUCT": 
-                            curValue = "일반제품"
-                            break;
-                        case "CARESOLUTION": 
-                            curValue = "케어솔루션"
-                            break;
-                        case "DISPOSABLE": 
-                            curValue = "케어용품/소모품"
-                            break;                            
-                    }
-                    return curValue;
-                }
-
-                var ecProduct = {
-                    "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
-                    "model_id": item.modelId,
-                    "model_sku": item.modelName, 
-                    "model_gubun": getGubunValue(item.bizType),
-                    "price": vcui.number.addComma(item.obsOriginalPrice), 
-                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
-                    "brand": "LG",
-                    "category": getEcCategoryName(item) 
-                }
-                item.ecProduct = JSON.stringify(ecProduct);
                 return vcui.template(productItemTemplate, item);
             },
 
@@ -929,25 +893,23 @@
             },
 
             //비교하기 저장 유무 체크...
-            setCompares:function(){
+            setCompares: function () {
                 var self = this;
-
                 var compare = self.$productList.find('li .product-compare a');
                 compare.removeClass('on');
-                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                if (!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
                 else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
                 var isCompare = vcui.isEmpty(storageCompare);
-                if(!isCompare){
-                    //if(!vcui.isEmpty(storageCompare[categoryId]))
-                    for(var i in storageCompare[categoryId]){
-                        var modelID = storageCompare[categoryId][i]['id'];
+                if (!isCompare) {
+                    storageCompare['data'].forEach(function (item) {
+                        var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
                         compare.addClass('on');
                         compare.find('.blind').text('선택됨');
-                    }
+                    });
                 }
             },
 

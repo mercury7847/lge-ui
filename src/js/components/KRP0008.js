@@ -2272,14 +2272,14 @@
             setCompares:function(){
                 var self = this;
                 var chk = false;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-                var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+                var isCompare = vcui.isEmpty(storageCompare);
 
                 if(!isCompare){
-                    for(var i in storageCompare[categoryId]){
-                        if(lgePdpSendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
-                    }
+                    storageCompare['data'].forEach(function (item) {
+                        if(lgePdpSendData['id'] == item['id']) chk = true;
+                    });
                 }
                 
                 var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
