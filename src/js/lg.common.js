@@ -22,7 +22,7 @@ var goAppUrl = function(path) {
             location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
         },0);
     } else {
-        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android.dev;end;','_blank');
     }
 }
 
@@ -345,34 +345,24 @@ var goAppUrl = function(path) {
                 '^/$', // 메인
                 '^/benefits/event/?', // 이벤트 페이지
                 '^/benefits/exhibitions/?' // 기획전 페이지
-
             ];
 
-            console.log("pathname : %o",location.pathname);
-
             var isPopUp = enableUrl.some(function(element) {
-                    console.log(
-                        "match %o el %o location.pathname %o",location.pathname.match(new RegExp(element,"g")),element,location.pathname
-
-                    );
                 return location.pathname.match(new RegExp(element,"g"))
             })
 
             $(function() {
-                console.log("isPopUp : %o",isPopUp);
-    
                 if (vcui.detect.isMobileDevice && !isApp()) {
-                    var el = $('#mobile-close-popup');
                     var cookie_name = '__LGAPP_DLOG__';
                     if (vcui.Cookie.get(cookie_name) === '' && isPopUp ) {
-                        if(el.size() === 0) $('body').append(vcui.template(appDownloadTmpl))
+                        if($('#mobile-close-popup').size() === 0) $('body').append(vcui.template(appDownloadTmpl))
                         vcui.modal('#mobile-close-popup', open);
-
-                        $('#lg__app-download').on('click', function () {
+                        var el = $('#mobile-close-popup');
+                        el.find('#lg__app-download').on('click', function () {
                             goAppUrl();
                             return;
                         });
-
+                        
                         el.find('.ui_modal_close').one('click', function () {
                             vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
                             return;
