@@ -181,6 +181,9 @@
 				slidesToShow: 4,
 				slidesToScroll: 4,
 				lazyLoad: 'anticipated',
+				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+				speed: 250,
+				touchThreshold: 100,
 				responsive: [{
 					breakpoint: 100000,
 					settings: {
