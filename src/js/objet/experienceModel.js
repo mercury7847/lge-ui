@@ -3729,8 +3729,6 @@
                 let idx = $(this).index();
                 let idxImg = $(this).html();
 
-                //console.log("idx", idx);
-                //console.log("idxImg", idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ 
                     "data-door-model_spec_material": $(this).attr("data-material"), 
                     "data-door-model_spec_color": $(this).attr("data-color-code"), 
@@ -3776,11 +3774,8 @@
                 let idx = $(this).index();
                 let idxImg = $(this).html();
 
-                //console.log("idx", idx);
-                //console.log("idxImg", idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ "data-door-model_spec_material": $(this).attr("data-material"), "data-door-model_spec_color": $(this).attr("data-color-code"), "data-door-code": $(this).attr("data-front-code"), "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color") });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                //$(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -3854,7 +3849,6 @@
         //제품선택 탭이벤트
         $(document).on("click", ".model_choice_area .model_sub_tab_wrap .model_sub_tab_head button", function(e) {
             let idx = $(this).closest(".swiper-slide").index();
-            //console.log("idx", idx);
             $(this).closest(".swiper-slide").addClass("on");
             $(this).closest(".swiper-slide").siblings(".swiper-slide").removeClass("on");
             $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper .swiper-slide:eq(" + idx + ")").addClass("on");
@@ -4674,7 +4668,8 @@
                             if (doorLeng == 1) {
                                 let doorDirection = "TT";
                                 let doorLocation = "TT";
-                                doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                doorKLocation = "도어"
+                                doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                 doorHtml += '   <span class="blind">도어 선택</span>';
                                 doorHtml += '   <span class="door_img"></span>';
                                 doorHtml += '</button>';
@@ -5122,7 +5117,7 @@
             priceHtml += '                      <span class="product_price"><em></em>원</span>';
             priceHtml += '                  </li>';
             sumPrice += parseInt(minusComma(defaultPrice));
-            //if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
+            // if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     if (doorModelCode == "B320TT-SMT") {
@@ -5137,10 +5132,8 @@
                     priceHtml += '                      <span class="product_price"><em></em>원</span>';
                     priceHtml += '                  </li>';
                     sumPrice += parseInt(minusComma(doorInfo[i][4]));
-                    console.log('문짝가격')
-                    console.log(doorInfo[i][4])
                 }
-            //}
+            // }
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';
@@ -5171,16 +5164,13 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            //console.log("priceArry", priceArry);
             resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
                 let totalSumPrice = 0;
                 $(".total_price_info_body .swiper-wrapper .swiper-slide").each(function() {
-                    //console.log('$(this).find(".sum .product_price em").text()', $(this).find(".sum .product_price em").text());
                     totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price em").text()));
                 });
-                //console.log(addComma(totalSumPrice));
                 $(".total_result_price .price em").text(addComma(totalSumPrice));
             }, 100);
 
@@ -5291,8 +5281,6 @@
 
                         
                         for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                            // console.log(1)
-                            // console.log(_doorInfoColor[j])
                             if (_doorInfoMaterial[j] == "F") {
                                 _doorInfoKMaterial[j] = "페닉스"
                             } else if (_doorInfoMaterial[j] == "S") {
@@ -5304,8 +5292,6 @@
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
-                            // console.log(2)
-                            // console.log(_doorInfoColor[j])
                             if (_doorInfoColor[j] == "BT") {
                                 _doorInfoKColor[j] = "보타닉"
                             } else if (_doorInfoColor[j] == "SD") {
@@ -5575,15 +5561,11 @@
         //나의 오브제 출력
         openMyPickModel: function(modelCode, modelcate) {
             let _thisModel = [];
-            //console.log("myPickSet.myPickConfig.length", myPickSet.myPickConfig.length)
             for (let i = 0; i < myPickSet.myPickConfig.length; i++) {
-                //console.log("modelCode", modelCode);
-                //console.log("myPickSet.myPickConfig[i].defaultCode", myPickSet.myPickConfig[i].defaultCode);
                 if (modelCode == myPickSet.myPickConfig[i].defaultcode) {
                     _thisModel.push(myPickSet.myPickConfig[i]);
                 }
             }
-            //console.log("_thisModel.length", _thisModel.length)
             setTimeout(function() {
                 if (_thisModel.length > 0) {
                     let imgCate;
@@ -5825,7 +5807,6 @@
                 _doorKName.push(_doorKMaterial[i] + " " + _doorKColor[i]);
             }
             if (rfModelFilter(_defaultModelCode).length > 0) {
-                //console.log("aaaa");
                 resultFilter = rfModelFilter(_defaultModelCode);
                 let tabHeadHtml = '';
                 let tabBodyHtml = '';
@@ -5900,7 +5881,6 @@
                 }, 100);
 
             } else if (kimModelFilter(_defaultModelCode).length > 0) {
-                //console.log("bbb");
                 resultFilter = kimModelFilter(_defaultModelCode);
                 _modelCate = configData.modelConfig[resultFilter[0]].id;
                 _modelMiniCate = "rf_kim";
@@ -5914,19 +5894,16 @@
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door2.defaultPrice);
                 _doorKLocation.push(configData.modelConfig[resultFilter[0]].door.door3.name);
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].door.door3.defaultPrice);
-                //console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
                     $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
                 }, 100);
-                //$(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                 _modelName = $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").attr("data-name");
                 setTimeout(function() {
                     modelSimulator.stepOneNext(1, _modelCate, _modelName);
                 }, 100);
             } else if (conModelFilter(_defaultModelCode).length > 0) {
-                //console.log("ccc");
                 let tabBodyHtml = '';
                 resultFilter = conModelFilter(_defaultModelCode);
                 _modelCate = configData.modelConfig[resultFilter[0]].id;
@@ -5938,7 +5915,6 @@
                 _count = configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.count;
                 _doorKLocation.push(configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.door1.name);
                 _doorPrice.push(configData.modelConfig[resultFilter[0]].typModel[resultFilter[1]].door.door1.defaultPrice);
-                //console.log("_modelCate", _modelCate);
                 setTimeout(function() {
                     $(".model_choice_area .model_choice_tab .btn_model_pick[data-lead-name='" + _modelCate + "']").addClass("is_active");
                     $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
@@ -6071,10 +6047,6 @@ function minusComma(value) {
 
 //제품과 도어의 가격과 할인정보 //개발에서 함수로 반환해줌 //견적확인 버튼을 눌렀을때
 function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
-    //console.log("resultDoorPrice", price);
-    // console.log("price", price);
-    // console.log("memberDiscount", memberDiscount);
-    // console.log("directDiscount", directDiscount);
     let priceLeng = price.length;
     let sumPrice = 0;
     for (let i = 0; i < priceLeng; i++) {
@@ -6114,7 +6086,6 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 }
 //스텝3 비교하기에 나오는 가격 노출되는 함수 //개발에서 함수로 반환해줌
 function resultModelPrice(price) {
-    //console.log("price", price);
     let priceLeng = price.length;
     setTimeout(function() {
         $(".tb_compare").css("visibility", "visible");
