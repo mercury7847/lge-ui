@@ -11,7 +11,10 @@ $(window).ready(function(){
                 infinite: true,
                 dots: true,
                 slidesToShow: 1, 
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 250,
+                touchThreshold: 100
             }
         });
 
