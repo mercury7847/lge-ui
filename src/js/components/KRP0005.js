@@ -26,7 +26,7 @@
 
             self.$popup = $('#KRP0032:eq(0)');
             self.$list = self.$popup.find('div.lately-list ul');
-        },
+        },        
 
         getChatPinCode: function() {
             var self = this;
@@ -205,6 +205,22 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0005')) return false;
         //$('.KRP0005').buildCommonUI();
-	    KRP0005.init();
+
+        // BTOCSITE-27 :: 플로팅 바 swipe 대응
+        
+        setTimeout(function(){
+            var isSwipe = !!$('#sw_con').length;
+            if (isSwipe){
+                console.log('krp0005 init');
+                var floatingWrap = $('.floating-wrap').remove();
+                //var KRP0005 = $('.KRP0005.floating-menu').remove();
+                $('#floatBox').append(floatingWrap);
+                //$('#floatBox').append(KRP0005);            
+            }
+            // BTOCSITE-27 :: 플로팅 바 swipe 대응
+    
+            KRP0005.init();
+        },100);
+        
     });
 })();
