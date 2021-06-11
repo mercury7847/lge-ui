@@ -173,11 +173,11 @@ $(function(){
             "model_gubun": item.modelGubunName		
         }
 
-        if( item.obsOriginalPrice && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
             currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
         }
 
-        if( item.obssellingprice && item.obssellingprice !== null && item.obssellingprice !== "") {
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
             currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
         }
 
