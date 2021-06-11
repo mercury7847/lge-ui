@@ -14,6 +14,9 @@ $(window).ready(function(){
                 swipeToSlide: true,
                 slidesToShow: 3,
                 slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 250,
+                touchThreshold: 100,
                 responsive: [{
                     breakpoint: 20000,
                     settings: {
