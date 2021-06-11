@@ -263,7 +263,7 @@ var FilterLayer = (function() {
             var $currentList = $list.filter('.on');
             var labelName = $currentList.attr('data-label');
 
-            if( labelName == "케어용품/소모품" || labelName == "제품" ) {
+            if( labelName == "케어용품/소모품" || labelName == "제품" || labelName == "고객지원") {
                 var $category = $('.contents.search .ui_filter_accordion');
                 $category.vcAccordion("expandAll");
             }
