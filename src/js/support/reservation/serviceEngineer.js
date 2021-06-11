@@ -730,9 +730,7 @@
                         ok: function() {
                             location.href = "/support/request-call-reservation";
                         },
-                        cancel: function() {
-                            
-                        }
+                        cancel: function() {}
                     });
                 } 
                 
