@@ -734,14 +734,10 @@
                             
                         }
                     });
-                } else {
-                    self.$solutionsBanner.hide();
-                    self.requestSubTopic(url, param);
-                }
+                } 
                 
-                
-                
-                
+                self.$solutionsBanner.hide();
+                self.requestSubTopic(url, param);
 
                 if (self.autoFlag) {
                     self.$stepInput.find('.step-btn-wrap').show();
