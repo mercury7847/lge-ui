@@ -3731,12 +3731,7 @@
 
                 //console.log("idx", idx);
                 //console.log("idxImg", idxImg);
-                $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ 
-                    "data-door-model_spec_material": $(this).attr("data-material"), 
-                    "data-door-model_spec_color": $(this).attr("data-color-code"), 
-                    "data-door-code": $(this).attr("data-front-code"), 
-                    "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
-                });
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ")").attr({ "data-door-model_spec_material": $(this).attr("data-material"), "data-door-model_spec_color": $(this).attr("data-color-code"), "data-door-code": $(this).attr("data-front-code"), "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color") });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
             });
@@ -5107,9 +5102,9 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            // if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-            //     defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
-            // }
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            }
             priceArry.push(defaultModel);
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
@@ -5122,7 +5117,7 @@
             priceHtml += '                      <span class="product_price"><em></em>원</span>';
             priceHtml += '                  </li>';
             sumPrice += parseInt(minusComma(defaultPrice));
-            //if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
                     if (doorModelCode == "B320TT-SMT") {
@@ -5130,17 +5125,12 @@
                     }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '">';
-
-                    var _klocation = doorInfo[i][7]!=undefined ? doorInfo[i][7]: "";
-
-                    priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + _klocation + '</span>';
+                    priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + doorInfo[i][7] + '</span>';
                     priceHtml += '                      <span class="product_price"><em></em>원</span>';
                     priceHtml += '                  </li>';
                     sumPrice += parseInt(minusComma(doorInfo[i][4]));
-                    console.log('문짝가격')
-                    console.log(doorInfo[i][4])
                 }
-            //}
+            }
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                        <li class="sum">';
@@ -5288,11 +5278,7 @@
                         _doorFrontInfo.push(_doorFrontInfo2[0]);
                         _doorFrontInfo.push(_doorFrontInfo3[0]);
                         _doorFrontInfo.push(_doorFrontInfo4[0]);
-
-                        
                         for (let j = 0; j < _doorInfoMaterial.length; j++) {
-                            // console.log(1)
-                            // console.log(_doorInfoColor[j])
                             if (_doorInfoMaterial[j] == "F") {
                                 _doorInfoKMaterial[j] = "페닉스"
                             } else if (_doorInfoMaterial[j] == "S") {
@@ -5304,8 +5290,6 @@
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
-                            // console.log(2)
-                            // console.log(_doorInfoColor[j])
                             if (_doorInfoColor[j] == "BT") {
                                 _doorInfoKColor[j] = "보타닉"
                             } else if (_doorInfoColor[j] == "SD") {
@@ -5332,8 +5316,6 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
-                            } else if (_doorInfoColor[j] == "SR") {
-                                _doorInfoKColor[j] = "실버"
                             }
                         }
 
