@@ -1359,7 +1359,8 @@ function validatePhone(value){
                     return validateNum10();
                 }
                 if( _length == 11) {
-                    if(rangeFlag(9500, 9999) || rangeFlag(1700, 1799)) {
+                    //BTOCSITE-1613: 11자리일때 중간4자리 유효범위 수정 9500 -> 9000
+                    if(rangeFlag(9000, 9999) || rangeFlag(1700, 1799)) {
                         return true;
                     } else {
                         return false;
