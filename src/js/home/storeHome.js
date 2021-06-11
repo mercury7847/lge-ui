@@ -182,10 +182,20 @@ $(function(){
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
+        $('.ui_wide_slider').vcCarousel('setOption', {
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            touchThreshold: 100,
+            speed: 250
+        }, true);
+
+
         $('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 250,
+            touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
                 settings: {
@@ -208,7 +218,10 @@ $(function(){
                 $('.ui_product_lifestyle').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1                        
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 250,
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
@@ -344,7 +357,10 @@ $(function(){
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             variableWidth: true,
-                            lastFix: true
+                            lastFix: true,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 250,
+                            touchThreshold: 100
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
@@ -375,7 +391,10 @@ $(function(){
                     $('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 250,
+                        touchThreshold: 100
                     });
                 }    
             })
@@ -429,7 +448,11 @@ $(function(){
 
                 var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
                 $('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $('.ui_exhib_carousel').vcCarousel();
+                $('.ui_exhib_carousel').vcCarousel({
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 250,
+                    touchThreshold: 100
+                });
 
                 $('body').vcLazyLoaderSwitch('reload', $('.ui_exhib_carousel'));
                 
@@ -528,7 +551,10 @@ $(function(){
                             variableWidth : false,
                             dots: true,
                             slidesToShow: 3,
-                            slidesToScroll: 3
+                            slidesToScroll: 3,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 250,
+                            touchThreshold: 100
                         });
 
                         

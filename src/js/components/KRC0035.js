@@ -19,6 +19,9 @@ $(document).ready(function(){
 				slidesToScroll: 1,
 				adaptiveHeight: true,
 				lazyLoad: 'anticipated', //수정 jsw
+				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+				speed: 250,
+				touchThreshold: 100
 			});
 		});
 		//$('body').vcLazyLoaderSwitch('reload',$KRC0035);
