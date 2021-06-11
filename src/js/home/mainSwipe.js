@@ -11,16 +11,16 @@ function MainSwiper( ID ){
         '#home',
         '#store',
         '#story',
-        '#cs',
-        '#care'
+        '#support',
+        '#care-solutions'
     ];
 
     this.urlToHash = {
         'home' : '#home',
         'store' : '#store',
         'story' : '#story',
-        'support' : '#cs',
-        'care-solutions' : '#care'
+        'support' : '#support',
+        'care-solutions' : '#care-solutions'
     };
 
     this.init();
@@ -56,6 +56,7 @@ MainSwiper.prototype = {
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
+                    console.log('swiper', swiper );
                     var currentSlide = swiper.slides[swiper.activeIndex];
 
                     mainSwiper.loadContent( currentSlide );

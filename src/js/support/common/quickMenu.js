@@ -133,16 +133,6 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
                     self.$el.removeClass('top');
                 }
             });
-        },
-        _applySwipe: function _applySwipe(){
-            var isSwipe = !!$('#sw_con').length;
-            console.log('isSwipe', isSwipe);
-            if (isSwipe){
-                var quickMenu = $('#quickMenu').remove();
-                $('#floatBox').append(quickMenu);
-                console.log('quickMenu', quickMenu);
-
-            }
         }
     });
 

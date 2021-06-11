@@ -1391,11 +1391,15 @@ function validatePhone(value){
     vcui.require(['support/common/quickMenu.min'], function() {
         var isSwipe = !!$('#sw_con').length;
         
-        if (isSwipe){
+        if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
             var quickMenu = $('#quickMenu').remove();
-            $('#floatBox').append(quickMenu);            
+            $('#floatBox').append(quickMenu);
+            $('#quickMenu').vcQuickMenu();
         }
-        $('#quickMenu').vcQuickMenu();
+
+        if (isSwipe == false){
+            $('#quickMenu').vcQuickMenu();
+        }
         
     });
 
