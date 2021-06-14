@@ -3933,6 +3933,7 @@
 
         //문짝 색상 선택
         $(document).on("click", ".color_sel_wrap .btn_door_color_sel", function() {
+            let _self = this;
             let mCode = $(this).attr("data-m-code");
             let mName = $(this).attr("data-m-name");
             let cCode = $(this).attr("data-c-code");
@@ -3947,12 +3948,22 @@
             let doorLocation = $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_location");
             let littleCate;
             $(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "N";
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_material", mCode);
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_color", cCode);
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-price", doorPrice);
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-code", doorCode);
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-klocation", doorKlocation);
-            $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-text", textColor);
+
+            if( $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").length ) {
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_material", mCode);
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-model_spec_color", cCode);
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-price", doorPrice);
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-code", doorCode);
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-klocation", doorKlocation);
+                $(".model_set_wrap[data-model-editing='Y'] .model_door[data-edit='Y']").attr("data-door-text", textColor);
+            } else {
+                lgkorUI.alert("", {
+                    title: "색상을 변경할 도어를 선택하세요.",
+                    ok: function(el) {
+                        
+                    }
+                }, _self);
+            }
             //console.log("modelCate", modelCate);
             if (modelCate == "refrigerator1") {
                 modelCate = "refrigerator";
