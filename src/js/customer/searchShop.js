@@ -736,9 +736,9 @@
             var resultLen = 0;
 
             if(keywords.searchType =='local'){
-
+                var searchCity = self.$citySelect.find('option:selected').text();
                 var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
-                    return keywords.searchCity!==''? xsearch(item.shopAdress, keywords.searchCity).length > 0 : false;
+                    return keywords.searchCity!==''? xsearch(item.shopAdress, searchCity).length > 0 : false;
                 });
                 nArr = vcui.array.filter(nArr, function(item,index){
                     return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;

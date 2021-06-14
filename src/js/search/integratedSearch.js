@@ -509,16 +509,13 @@
             var ajaxUrl = self.$searchLayer.data('searchInputUrl');
 
             lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
-                console.log("result %o",result);
                 if(result.data && result.data.success == 'Y' && result.data.url) {
-                    console.log("랜딩");
                     if(result.data.linkTarget == 'self') {
                         location.href = result.data.url;
                     } else {
                         window.open(result.data.url,'_blank');
                     }
                 } else {
-                    console.log("검색");
                     lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
                         self.hideSearchResultArea();
                         self.$searchSimilar.hide();

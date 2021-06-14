@@ -1,3 +1,4 @@
+
 var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
 '       <a href="#{{obj.categoryId}}">{{obj.categoryName}}</a>\n'+
@@ -155,6 +156,7 @@ $(function(){
         return name? obj[name] : obj;
     }
 
+
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
@@ -173,11 +175,11 @@ $(function(){
             "model_gubun": item.modelGubunName		
         }
 
-        if( item.obsOriginalPrice && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
             currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
         }
 
-        if( item.obssellingprice && item.obssellingprice !== null && item.obssellingprice !== "") {
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
             currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
         }
 
@@ -187,28 +189,34 @@ $(function(){
         return currentEcValue;
     }
 
-    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+        var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
+        /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
+        $('.ui_wide_slider').vcCarousel('setOption', {
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                touchThreshold: 100,
+                speed: 250
+        }, true);
+
+        /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         
-        $context.find('.ui_lifestyle_list').vcCarousel({
+        /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
+        $('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
+            swipeToSlide: true,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 250,
+            touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                }
-            },{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]                
+                settings: { slidesToShow: 4, slidesToScroll: 1, }
+            }, { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }]
         });
+        /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
+
 
         $(window).on('breakpointchange.lifestyle', function(e){
 
@@ -217,7 +225,10 @@ $(function(){
                 $context.find('.ui_product_lifestyle').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1                        
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 250,
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
@@ -358,7 +369,10 @@ $(function(){
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             variableWidth: true,
-                            lastFix: true
+                            lastFix: true,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 250,
+                            touchThreshold: 100
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
@@ -389,7 +403,10 @@ $(function(){
                     $context.find('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 250,
+                        touchThreshold: 100
                     });
                 }    
             })
@@ -443,7 +460,11 @@ $(function(){
 
                 var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
                 $context.find('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $context.find('.ui_exhib_carousel').vcCarousel();
+                $context.find('.ui_exhib_carousel').vcCarousel({
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 250,
+                    touchThreshold: 100
+                });
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 
@@ -542,7 +563,10 @@ $(function(){
                             variableWidth : false,
                             dots: true,
                             slidesToShow: 3,
-                            slidesToScroll: 3
+                            slidesToScroll: 3,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 250,
+                            touchThreshold: 100
                         });
 
                         

@@ -404,7 +404,10 @@
                     focusOnSelect: false,
                     focusOnChange: false,
                     dots: false,
-                    buildDots: false
+                    buildDots: false,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 250,
+                    touchThreshold: 100
                 });
                 //self.$pdpMobileVisual.show();
             },
@@ -1914,13 +1917,15 @@
                 var ajaxUrl;
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-
-                    if(self.loginCheckEnd) {
+                    alert('self.loginCheckEnd' + self.loginCheckEnd.toString());
+                    if(self.loginCheckEnd) {                        
                         if(lgkorUI.stringToBool(loginFlag)) {
                             ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                             var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                            alert('렌탈신청 url' + url);
                             if(ajaxUrl) {
                                 if(isDirectBuy) {
+                                    alert('isDirectBuy 일때');
                                     $('#careRequireBuyPopup').data('sendUrl',url);
                                     /*
                                     $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
@@ -1935,6 +1940,7 @@
                                         $('#careRequireBuyPopup').vcModal();
                                     }
                                 } else {
+                                    alert('isDirectBuy 아닐때');
                                     location.href = url;
                                 }
                             }
