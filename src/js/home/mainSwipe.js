@@ -1,19 +1,19 @@
 function MainSwiper( ID ){
     this.$el = $('#' + ID);
-    this.tabs = this.$el.find('.nav-item');
+    this.$tabs = this.$el.find('.nav-item');
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
     this.swiper = null;
     this.currentHash = window.location.hash;
 
-    this.hashMap = [
-        '#home',
-        '#store',
-        '#story',
-        '#support',
-        '#care-solutions'
-    ];
+    this.hashToUrl = {
+        '#home' : 'home',
+        '#store' : 'store',
+        '#story' : 'story',
+        '#support' : 'support',
+        '#care-solutions' : 'care-solutions'
+    };
 
     this.urlToHash = {
         'home' : '#home',
@@ -22,6 +22,10 @@ function MainSwiper( ID ){
         'support' : '#support',
         'care-solutions' : '#care-solutions'
     };
+
+    this.hashArray = [
+        'home', 'store', 'story', 'support', 'care-solutions'
+    ];
 
     this.init();
     
@@ -40,19 +44,20 @@ MainSwiper.prototype = {
         this.swiper = new Swiper('#sw_con', {
             autoHeight : true,
             observer : true,
-            slidesPerView : 1,           
+            slidesPerView : 1,
+            /*
             hashNavigation : {
                 watchState: true
             },
+            */
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
                 },
                 'init' : function(swiper){
-                    //console.log('mainSwiper.getHash', mainSwiper.getHash());
-                    window.location.hash = mainSwiper.getHash();
-                    var currentSlide = swiper.slides[ mainSwiper.currentIdx ];
-                    mainSwiper.loadContent( currentSlide );
+                    var hash = mainSwiper.getLastSegmentByUrl();
+                    var idx = mainSwiper.getIndexByHash( hash );
+                    swiper.slideTo( idx );
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
@@ -62,14 +67,13 @@ MainSwiper.prototype = {
                     mainSwiper.loadContent( currentSlide );
                     mainSwiper.currentIdx = swiper.activeIndex;
 
-                    mainSwiper.tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
-
+                    mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
                    
                 }
             }
         });
 
-        $('#sw_con .swiper-slide').on('touchstart', function( e ){
+        $('#sw_con .swiper-slide').on('touchstart, touchmove', function( e ){
             //console.log('touchstart event', e);
             //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
 
@@ -78,41 +82,32 @@ MainSwiper.prototype = {
             var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
-            
-            
-            
 
             if (isCategoryTab || isCarouselList || isCategoryTabContent || isTagScrollTab || isSlick){
                 e.stopPropagation();
             }
             
-        });
-
-        $('#sw_con .swiper-slide').on('touchmove', function( e ){
-            //console.log('touchmove event', e);
-            //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
-
-            var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
-            var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
-            var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
-            var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
-            var isSlick = !!$(e.target).closest('.slick-track').length;
-
-            if (isCategoryTab || isCarouselList || isCategoryTabContent || isTagScrollTab || isSlick){
-                e.stopPropagation();
-            }
-        });
+        });        
 
     },
     loadContent: function( currentSlide ){
+        var self = this;
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
+        var hash = '/' + $(currentSlide).data().hash;
 
-        console.log('currentSlide', $(currentSlide).data());
+        if (hash == '/home'){
+            hash = '/';
+        }
+
+        //console.log('currentSlide hash', self.hashToUrl[hash]);
 
         if (!href) return;
 
-        if (isLoaded) return;
+        if (isLoaded) {
+            history.pushState({}, '', hash);
+            return;
+        }
 
         $.ajax({
             method: 'POST',
@@ -126,57 +121,18 @@ MainSwiper.prototype = {
             },
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
-                $(currentSlide).data().isLoaded = true;       
+                $(currentSlide).data().isLoaded = true;
+                history.pushState({}, '', hash);
             }
         });
     },
     setMobileNav : function(){
-        var $tabs = this.tabs;
-        $tabs.on('click', function( e ){
-            //e.preventDefault();
-            //var href = $(this).data().href;
-            var idx = $tabs.index(this);
-
-            $tabs.removeClass('on').eq(idx).addClass('on');
-
-            window.location.href = this.href;
-
-            //if (!href) return;
-            /*
-            
-
-            if (!href) return;
-
-            if (idx == 0){
-                $('html').attr('canscroll', 'true');
-                $('html').css({
-                    'overflow' : 'hidden',
-                    'height' : '100%'
-                });
-            } else {
-                $('html').attr('canscroll', 'false');
-                $('html').css({
-                    'overflow' : '',
-                    'height' : ''
-                });
-            } 
-            */       
-            /*
-            $.ajax({
-                url : href,
-                dataType : 'html',
-                success : function( res ){
-                    $('#sw_con').html( '<div class="swipe-item">' + res + '</div>' );
-                },
-                error : function(error){
-                    console.log('mainSwiper cant get HTML', error);
-                },
-                complete: function(){                    
-                    lgkorUI.init();
-                    $tabs.removeClass('on').eq(idx).addClass('on');
-                }
-            });
-            */
+        var self = this;
+        var $tabs = this.$tabs;
+        $tabs.on('click', function( e ){ 
+            e.preventDefault();           
+            var idx = $tabs.index(this);            
+            self.swiper.slideTo(idx);
         });
     },
     // fixed 처리된 모달 수정값
@@ -198,6 +154,20 @@ MainSwiper.prototype = {
         }
 
         return hash;
+    },
+
+    getIndexByHash: function( hash ){
+        var index = false;
+        this.hashArray.forEach(function( value, idx ){
+            if (value == hash) index = idx;
+        });
+
+        return index;
+    },
+
+    setActiveTabByHash: function( hash ){
+        var idx = this.getIndexByHash( hash );
+        this.$tabs.removeClass('on').eq(idx).addClass('on');        
     }
 }
 

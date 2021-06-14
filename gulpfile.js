@@ -38,6 +38,7 @@ gulp.task("browser-sync", () => {
             function(req, res, next){
                 let lastseq = req.url.split('/').pop();
                 if (lastseq == 'story' || lastseq == 'store' || lastseq == 'support' || lastseq == 'care-solutions' || lastseq == ''){                    
+                    res.setHeader('Content-Type', 'text/html');
                     res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
                 }
                 next();
