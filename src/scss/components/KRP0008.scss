@@ -1135,12 +1135,18 @@
                     @include font-x-small;
                     word-break: keep-all;
                 }
-                .btn-area {
-                    margin-top: 24px;
-                    text-align: right;
-                    .btn-link {
-                        @include font-small;
-                    }
+                .btn-area {	
+                    // outline: 1px solid red;	
+                    /* BTOCSITE-324 : MARGIN조정 */	
+                    margin-top: 12px;	
+                    @include mobile{	
+                        margin-top: 6px;	
+                    }	
+                    /* //BTOCSITE-324 : MARGIN조정 */	
+                    text-align: right;	
+                    .btn-link {	
+                        @include font-small;	
+                    }	
                 }
             }
         }
@@ -1251,7 +1257,7 @@
                         }
                     }
                     .ui-selectbox-list {
-                        z-index: 4;
+                        z-index: 6;
                         ul li a {
                             padding: 12px 40px 12px 15px;
                             @include font-small;
