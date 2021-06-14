@@ -35,6 +35,7 @@ MainSwiper.prototype = {
     init : function(){       
         this.setMobileNav();
         this.setSwipe();
+        this.setUrlEvent();
         
     },
     setSwipe : function(){
@@ -56,8 +57,13 @@ MainSwiper.prototype = {
                 },
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
-                    var idx = mainSwiper.getIndexByHash( hash );
-                    swiper.slideTo( idx );
+                    var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
+                    if ( idx == 0){
+                        var currentSlide = swiper.slides[swiper.activeIndex];
+                        mainSwiper.loadContent( currentSlide );
+                    } else {
+                        swiper.slideTo( idx );
+                    }
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
@@ -105,7 +111,8 @@ MainSwiper.prototype = {
         if (!href) return;
 
         if (isLoaded) {
-            history.pushState({}, '', hash);
+            history.pushState({}, '', hash);            
+            self.switchQuickMenu( hash );
             return;
         }
 
@@ -123,6 +130,7 @@ MainSwiper.prototype = {
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
                 history.pushState({}, '', hash);
+                self.switchQuickMenu( hash );
             }
         });
     },
@@ -133,6 +141,15 @@ MainSwiper.prototype = {
             e.preventDefault();           
             var idx = $tabs.index(this);            
             self.swiper.slideTo(idx);
+        });
+    },
+    setUrlEvent : function(){
+        var self = this;
+        $(window).on('popstate', function(){
+            //console.log('popstate', location.href);
+            var hash = self.getLastSegmentByUrl();
+            var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
+            self.swiper.slideTo( idx );
         });
     },
     // fixed 처리된 모달 수정값
@@ -168,6 +185,17 @@ MainSwiper.prototype = {
     setActiveTabByHash: function( hash ){
         var idx = this.getIndexByHash( hash );
         this.$tabs.removeClass('on').eq(idx).addClass('on');        
+    },
+
+    switchQuickMenu : function( hash ){
+        // 퀵메뉴 처리
+        if ( hash == '/support' ){
+            $('#floatBox > .floating-wrap').hide();
+            $('#floatBox > #quickMenu').show();
+        } else {
+            $('#floatBox > .floating-wrap').show();
+            $('#floatBox > #quickMenu').hide();
+        }
     }
 }
 

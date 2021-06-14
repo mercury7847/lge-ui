@@ -1164,14 +1164,16 @@
 			}
 			.tabs-wrap {
 				&.border-type {
-					padding-top:0;
+					//padding-top:32px;
+					margin-top:32px;
 					&:before {
 						display:none;
 					}
 					.tabs {
 						li {
 							a {
-								padding-top:32px;
+								//padding-top:32px;
+								padding-top:0px;
 							}
 						}
 					}
@@ -1193,7 +1195,7 @@
 						white-space:nowrap;
 						li {
 							display:inline-block;
-							width:29%;
+							width:25%;
 							margin-top:0;
 							text-align:center;
 							vertical-align:top;
