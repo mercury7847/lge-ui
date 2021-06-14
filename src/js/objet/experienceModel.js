@@ -5312,8 +5312,6 @@
                             } else if (_doorInfoColor[j] == "SV") {
                                 _doorInfoKColor[j] = "실버"
                             } else if (_doorInfoColor[j] == "GR") {
-                                console.log('aaaa')
-                                console.log(_doorInfoColor)
                                 _doorInfoKColor[j] = "그린"
                             } else if (_doorInfoColor[j] == "MT") {
                                 _doorInfoKColor[j] = "맨해튼 미드나잇"
