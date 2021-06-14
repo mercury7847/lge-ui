@@ -1,8 +1,8 @@
 (function(){
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
-    var $context = !!$('[data-hash="cs"]').length ? $('[data-hash="cs"]') : $(document);
-    var contextLeft = !!$('[data-hash="cs"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
+    var $context = !!$('[data-hash="support"]').length ? $('[data-hash="support"]') : $(document);
+    var contextLeft = !!$('[data-hash="support"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
     
     var supportHome = {
         loginTooltip : function(){
@@ -935,7 +935,7 @@
                     
                     if( $modalWrap.find('.popup-init.active').length == 1) {
                         $modalWrap.stop().fadeOut(function(){
-                            $popup.unwrap();
+                            //$popup.unwrap();
                             $curModal.hide().removeClass('active');
                             $('html').css('overflow', 'visible');
                         });

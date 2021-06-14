@@ -74,6 +74,9 @@ MainSwiper.prototype = {
                     mainSwiper.currentIdx = swiper.activeIndex;
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
+                    $('html,body').stop().animate({scrollTop:0}, 300);
+                       
                    
                 }
             }
