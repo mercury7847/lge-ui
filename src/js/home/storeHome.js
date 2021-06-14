@@ -158,26 +158,33 @@ $(function(){
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
 
-        var price = typeof item.obsOriginalPrice == "number" ? item.obsOriginalPrice : item.obsOriginalPrice.replace(/[^0-9]/g,'');
-
         function getCategoryName(){
-            if( item.subCategoryName != "" && item.subCategoryName == undefined) {
-                return item.superCategoryName + "/" + item.categoryName;
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
             } else {
-                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName        
+                return item.superCategoryName + "/" + item.categoryName; 
             }
         }
 
-        return {
-            "model_name": displayName,
+        var currentEcValue = {
+            "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
-            "model_gubun": item.modelGubunName,					
-            "price": vcui.number.addComma(price),
-            "discounted_price": vcui.number.addComma(price - item.obsDiscountPrice - item.obsMemberPrice),
-            "brand": "LG",					
-            "category": getCategoryName()
+            "model_gubun": item.modelGubunName		
         }
+
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
     }
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
@@ -287,7 +294,6 @@ $(function(){
             var obj = exhibitionLocal[i];
             obj['modelId'] = exhibitionModelIdArr[i];
             newExhibitionLocal.push(obj);
-
         }
 
         // 새제품 추천 렌더링
@@ -302,12 +308,18 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                    
+
+                    var newTempEcProduct = getEcProduct(item);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                     }else{
                         item['obsOriginalPrice'] = null;
                     }
+
+
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
@@ -317,7 +329,7 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
-                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
 
                     var obj = newProductRecommendLocal[index];
 
@@ -337,8 +349,8 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
-                        list[index].ecProduct = JSON.stringify(getEcProduct(list[index]));
+                    if(list[index]){
+                        
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
