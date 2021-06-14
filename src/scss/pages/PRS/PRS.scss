@@ -1186,13 +1186,13 @@
 				}
 				.category-list {
 					ul {
-						// display: flex;
-						// flex-wrap: wrap;
+						display: flex;
+						flex-wrap: wrap;
 						height:100%;
 						margin-top:0;
 						overflow:hidden;
-						overflow-x:auto;
-						white-space:nowrap;
+						//overflow-x:auto;
+						//white-space:nowrap;
 						li {
 							display:inline-block;
 							width:25%;
