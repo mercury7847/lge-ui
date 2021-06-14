@@ -1,6 +1,6 @@
 var LGEAPPHostName = window.location.hostname;
 var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
-var LGEAPPclickCNT = 0; 
+var LGEAPPclickCNT = 0;
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -228,3 +228,22 @@ $(document).ready(function() {
         });
     }
 });
+
+
+function ChatbotAppClose(type) {
+    // 앱에서 호출될경우
+    if(isApp()) {
+        if(vcui.detect.isIOS){ 
+            window.close(); 
+        }else{
+            android.closeNewWebview(); 
+        }
+    } else {
+        if(type == 'native') {
+            history.back();
+        } else {
+            //웹에서 호출될경우
+            historyBack();
+        }
+    }
+}
