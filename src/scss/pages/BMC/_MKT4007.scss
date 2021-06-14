@@ -258,9 +258,13 @@
 	@include mobile {
 		.table-cont {
 			table {
+				col {
+					width: auto !important;
+				}
 				tr {
 					display: flex;
 					width: 100%;
+					justify-content: space-between;
 
 					// flex-wrap: wrap;
 					// th:nth-child(3),
@@ -271,6 +275,10 @@
 					td {
 						font-size: 12px;
 						padding: 15px 5px;
+					}
+
+					td[colspan] {
+						flex: 1;
 					}
 
 					.winner-tt,
