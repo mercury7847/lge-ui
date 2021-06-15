@@ -521,6 +521,12 @@
                                             border-left: 2px solid #000;
                                         }
                                     }
+                                    &.white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
+                                        }
+                                    }
                                 }
                                 .color-text {
                                     margin-top: 8px;
