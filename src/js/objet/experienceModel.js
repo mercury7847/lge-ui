@@ -5575,7 +5575,6 @@
                     _thisModel.push(myPickSet.myPickConfig[i]);
                 }
             }
-            
             setTimeout(function() {
                 if (_thisModel.length > 0) {
                     let imgCate;
@@ -5699,20 +5698,20 @@
                     contHtml += '</div>';
 
                     $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(contHtml);
-                } else {
-                    let nodataHtml = '<div class="swiper-slide nodata"><span class="comment">나만의 조합을 만들어 저장해 보세요.</span></div>';
-                    $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(nodataHtml);
-                }
-                $(".color_my_pick").stop().slideDown() //.addClass("is_active");
-                if( window.innerWidth < 768) {
-                    $('html, body').stop().animate({
-                        scrollTop: $('.simul_body').offset().top - $('.objetcollection-tabs').outerHeight()
-                    })
-                }
+                    $(".color_my_pick").slideDown() //.addClass("is_active");
                     setTimeout(function() {
                         slideWrapAutoSize(".color_my_pick .color_my_pick_body");
                     }, 10);
-                
+
+                } else {
+                    let nodataHtml = '<div class="swiper-slide nodata"><span class="comment">나만의 조합을 만들어 저장해 보세요.</span></div>';
+                    $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(nodataHtml);
+                    $(".color_my_pick").slideDown() //.addClass("is_active");
+                    setTimeout(function() {
+                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
+                    }, 10);
+
+                }
             }, 10);
 
 
@@ -5723,12 +5722,12 @@
         //추천제품 닫기
         closeProposeModel: function() {
             //$(".color_best").aremoveClass("is_active");
-            $(".color_best").stop().slideUp(); //.addClass("is_active");
+            $(".color_best").slideUp(); //.addClass("is_active");
         },
         //나의오브제 닫기
         closeMyPickModel: function() {
             //$(".color_best").aremoveClass("is_active");
-            $(".color_my_pick").stop().slideUp(); //.addClass("is_active");
+            $(".color_my_pick").slideUp(); //.addClass("is_active");
         },
         //pdp에서 넘어왔을때 해당 제품 스텝2로 셋팅
         pdpProductStep: function(modelCode) {
