@@ -366,6 +366,7 @@
                                     .sibling-colorHead {
                                         display: flex;
                                         width: 100%;
+                                        font-size: 16px;
                                         align-items: center;
                                         margin-bottom: 20px;
                                         @include mobile {
@@ -515,6 +516,12 @@
                                         }
                                     }
                                     &.snow_white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
+                                        }
+                                    }
+                                    &.white {
                                         & input + label::after {
                                             border-bottom: 2px solid #000;
                                             border-left: 2px solid #000;
