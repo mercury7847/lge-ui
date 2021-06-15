@@ -24,7 +24,7 @@ $(window).ready(function(){
 				playSelector: '.btn-play.play',
 				adaptiveHeight:true,
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				speed: 250,
+				speed: 150,
 				touchThreshold: 100
 
 			}).on('carouselbeforechange', function(e, slide, prev, next){
