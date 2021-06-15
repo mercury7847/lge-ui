@@ -438,6 +438,19 @@ $(function(){
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
                 $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
 
+                // 4개 이하일때 중앙정렬
+                if (arr.length < 4){
+                    $context.find('#'+categoryId).find('.ui_sub_category').css({
+                        'justify-content' : 'center'
+                    });
+                } else {
+                    /*
+                    $context.find('#'+categoryId).find('.ui_sub_category').css({
+                        'justify-content' : ''
+                    });
+                    */
+                }
+
             }
 
         }
