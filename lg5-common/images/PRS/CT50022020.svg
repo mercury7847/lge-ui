@@ -1,27 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g stroke="#000" stroke-width="1.5">
-            <g>
-                <g>
-                    <g>
-                        <g transform="translate(-705 -3629) translate(128 414) translate(0 3215) translate(577)">
-                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
-                        </g>
-                        <g stroke-linejoin="round">
-                            <g>
-                                <g>
-                                    <path stroke-linecap="round" d="M2.53 0h20.55c.953 0 1.725.772 1.725 1.725v30.55c0 .953-.772 1.725-1.725 1.725H2.53c-.952 0-1.725-.772-1.725-1.725V1.725C.805.772 1.578 0 2.53 0z" transform="translate(-705 -3629) translate(128 414) translate(0 3215) translate(577) translate(19 15)"/>
-                                    <path d="M.805 24.5h24" transform="translate(-705 -3629) translate(128 414) translate(0 3215) translate(577) translate(19 15)"/>
-                                </g>
-                                <g stroke-linecap="round" transform="translate(-705 -3629) translate(128 414) translate(0 3215) translate(577) translate(19 15) translate(4 3)">
-                                    <circle cx="8.805" cy="8" r="8"/>
-                                    <circle cx="8.805" cy="4" r="2"/>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_signature_washer_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect id="Rectangle" width="80" height="80" fill="none"/>
+  <g id="ic" transform="translate(15 6)">
+    <g id="body">
+      <path id="Rectangle-2" data-name="Rectangle" d="M0,3.45A3.45,3.45,0,0,1,3.45,0h41.1A3.45,3.45,0,0,1,48,3.45v61.1A3.45,3.45,0,0,1,44.55,68H3.45A3.45,3.45,0,0,1,0,64.55Z" transform="translate(0.611)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Stroke_3" data-name="Stroke 3" d="M0,1H48" transform="translate(0.611 48)" fill="none" stroke="#000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     </g>
+    <g id="circle" transform="translate(8 6)">
+      <circle id="Oval" cx="16" cy="16" r="16" transform="translate(0.611)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval-2" data-name="Oval" cx="4" cy="4" r="4" transform="translate(12.611 4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
 </svg>
