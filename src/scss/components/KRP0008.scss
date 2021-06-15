@@ -1116,6 +1116,9 @@
                             padding-right: 0;
                             .content {
                                 width: 320px;
+                                @include mobile{
+                                    width: 80%; 
+                                }
                                 .btn-area {
                                     margin-top: 0 !important;
                                     .btn-link {

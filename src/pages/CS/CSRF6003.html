@@ -61,13 +61,125 @@
                                     <img src="/lg5-common/images/dummy/@img-detail-1.jpg" alt="">
                                 </div>
 
-                                <div class="survey-banner-wrap">
+                                <div class="survey-banner-wrap renew">  <!-- 210615 클래스 renew 추가 -->
                                     <div class="banner">
                                         <!-- 2021.02.25. 마크업 수정 -->
                                         <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주세요.<br>평가해 주신 의견은 콘텐츠 개선을 위해 활용하겠습니다.</p>
-                                        <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                                        <!-- <button type="button" class="btn border size-m" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button> 210615 삭제 -->
                                         <!-- //2021.02.25. 마크업 수정 -->
                                     </div>
+                                    <!-- 210615 영역 추가 -->
+                                    <section class="pop-conts survey-pop">
+                                        <input type="hidden" name="hiddenInput1" value="hiddenInput1_value">
+                                        <input type="hidden" name="hiddenInput2" value="hiddenInput2_value">
+                                        <input type="hidden" name="hiddenInput3" value="hiddenInput3_value">
+                                
+                                        <div class="form-infos">
+                                            <p class="req" aria-disabled="true">필수 입력 사항</p>
+                                        </div>
+                                        <div class="form-wrap">
+                                            @@if (context.service) {
+                                            <div class="forms type3">
+                                                <div class="tit">
+                                                    <p class="label req">고객님의 제품 ”[<em class="model">OLED55B7K</em>]”으로 어떤 서비스를 이용하셨나요 ?<span class="blind">필수입력</span></p>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="rdo-list-wrap">
+                                                        <ul class="rdo-list">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="serviceName" id="serviceManual" value="manual" data-error-msg="필수 선택 사항입니다." data-required="true" required>
+                                                                    <label for="serviceManual">제품사용설명서</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="serviceName" id="serviceDriver" value="driver">
+                                                                    <label for="serviceDriver">드라이버/소프트웨어</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="serviceName" id="serviceAll" value="all">
+                                                                    <label for="serviceAll">제품사용설명서 + 드라이버/소프트웨어</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="btm-more err-block service-err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                                            <div class="forms type3">
+                                                <div class="tit">
+                                                    <p class="label req">1. 이 콘텐츠를 통해 궁금증이 해결되었습니까?<span class="blind">필수입력</span></p>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="rdo-list-wrap">
+                                                        <ul class="rdo-list">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="csaFlag" id="csaFlagY" value="Y" data-error-msg="필수 선택 사항입니다." data-required="true" required>
+                                                                    <label for="csaFlagY">네</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="csaFlag" id="csaFlagN" value="N">
+                                                                    <label for="csaFlagN">아니오</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="btm-more err-block csa-err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms type3">
+                                                <div class="tit">
+                                                    <label for="rating" class="req">2. 이 콘텐츠가 고객님께 도움이 되셨습니까?<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="star-rating-wrap">
+                                                        <div class="rating-box">
+                                                            <select class="ui_star_rating" name="rating" id="rating" data-label="true" data-error-msg="필수 선택 사항입니다." data-required="true" title="콘텐츠 별점 선택" required>
+                                                                <option value="">0점</option>
+                                                                <option value="1">1점</option>
+                                                                <option value="2">2점</option>
+                                                                <option value="3">3점</option>
+                                                                <option value="4">4점</option>
+                                                                <option value="5">5점</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms type3">
+                                                <div class="tit">
+                                                    <label for="surveyContent">3. 이 콘텐츠를 통해서 해결 못하신 이유 또는 홈페이지에 개선/보완 사항이 있으시면 적어주세요.</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="text-form">   
+                                                        <div class="input-wrap">
+                                                            <textarea name="content" id="surveyContent" class="ui_textcontrol" placeholder="제품 불만, 서비스 불편사항은 이메일 문의나 고객의 소리를 이용하시고, 서비스 신청 및   상담은 출장서비스 예약 또는 전화상담예약 등의 메뉴를 이용하시기 바랍니다." maxlength="120" data-limit="120" data-count-target="#txt-count1" data-error-msg="20자 이상 입력해주세요." data-pattern-msg="20자 이상 입력해주세요." data-required="true" required title="의견 내용"></textarea>
+                                                            <span id="txt-count1" class="inner-text"><em>0</em>/120자</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-area"><button type="button" class="btn btn-confirm"><span>제출</span></button></div>
+                                    </section>
+                                    <!-- //210615 영역 추가 -->                                    
                                 </div>
                             </div>
                         </div>
