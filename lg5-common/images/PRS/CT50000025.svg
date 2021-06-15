@@ -1,25 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g stroke="#000" stroke-width="1.5" transform="translate(-128 -414) translate(128 414)">
-                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
-                        </g>
-                        <g>
-                            <g>
-                                <g transform="translate(-128 -414) translate(128 414) translate(12 12) translate(3 9) translate(2 19)">
-                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.312 0L0 2"/>
-                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M30 0L26.616 2" transform="matrix(1 0 0 -1 0 2)"/>
-                                    <rect width="6" height="1.5" x="12" fill="#000" rx=".75"/>
-                                </g>
-                                <path stroke="#000" stroke-width="1.5" d="M1.5.75h31c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-31c-.828 0-1.5-.672-1.5-1.5v-15C0 1.422.672.75 1.5.75z" transform="translate(-128 -414) translate(128 414) translate(12 12) translate(3 9)"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_TV_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 18)">
+    <g id="tv_leg" transform="translate(4 37)">
+      <path id="Stroke_5" data-name="Stroke 5" d="M8,0,0,5" transform="translate(0 1)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Stroke_5-2" data-name="Stroke 5" d="M8,0,0-5" transform="translate(52 6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <rect id="Rectangle" width="12" height="3" rx="1.5" transform="translate(24 0.5)"/>
     </g>
+    <rect id="Rectangle-2" data-name="Rectangle" width="68" height="38" rx="3" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+  </g>
 </svg>

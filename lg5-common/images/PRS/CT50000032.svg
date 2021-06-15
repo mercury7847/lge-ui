@@ -1,25 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g stroke="#000" stroke-width="1.5">
-            <g>
-                <g>
-                    <g>
-                        <g transform="translate(-386 -414) translate(128 414) translate(258)">
-                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
-                        </g>
-                        <g>
-                            <g>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M1.5 0h31c.828 0 1.5.672 1.5 1.5v12c0 .828-.672 1.5-1.5 1.5h-31C.672 15 0 14.328 0 13.5v-12C0 .672.672 0 1.5 0z" transform="translate(-386 -414) translate(128 414) translate(258) translate(12 12) translate(3 11)"/>
-                                <g transform="translate(-386 -414) translate(128 414) translate(258) translate(12 12) translate(3 11) translate(21 3)">
-                                    <circle cx="4.5" cy="4.5" r="4.5"/>
-                                    <path d="M4.5 6C5.328 6 6 5.328 6 4.5S5.328 3 4.5 3 3 3.672 3 4.5 3.672 6 4.5 6z"/>
-                                </g>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15v2.883c0 .58.442 1.057 1.008 1.112l-.04.005h26.064l-.04-.005c.566-.055 1.008-.532 1.008-1.112V15" transform="translate(-386 -414) translate(128 414) translate(258) translate(12 12) translate(3 11)"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_Projector_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 22)">
+    <rect id="Rectangle" width="68" height="30" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <g id="Group_3" data-name="Group 3" transform="translate(42 6)">
+      <circle id="Oval" cx="9" cy="9" r="9" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval-2" data-name="Oval" cx="3" cy="3" r="3" transform="translate(6 6)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
     </g>
+    <path id="Path" d="M0,0V5.767A2.233,2.233,0,0,0,2.016,7.989L1.936,8H54.064l-.08-.011A2.233,2.233,0,0,0,56,5.767V0" transform="translate(6 30)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+  </g>
 </svg>

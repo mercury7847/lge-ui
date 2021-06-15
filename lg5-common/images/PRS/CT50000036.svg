@@ -1,30 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g stroke="#000" stroke-width="1.5" transform="translate(-386 -414) translate(128 414) translate(258)">
-                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
-                        </g>
-                        <g>
-                            <g transform="translate(-386 -414) translate(128 414) translate(258) translate(13 20)">
-                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 15h22.5c.828 0 1.5.672 1.5 1.5v5c0 .828-.672 1.5-1.5 1.5H14h0v-8z"/>
-                                <g fill="#000" fill-rule="nonzero">
-                                    <path d="M5.584 4.21c2.217 0 4.291.857 5.843 2.414 1.552 1.557 2.406 3.632 2.406 5.846l.047.122c.134.35.528.526.879.391.222-.085.383-.28.425-.513 0-5.303-4.257-9.6-9.6-9.6-.368.08-.602.444-.521.812.05.23.214.417.435.497l.086.03z" transform="translate(17 .5) rotate(-45 9.225 8.864)"/>
-                                    <path d="M7.14 8.267c2.838 0 5.06 2.23 5.06 5.078l.04.101c.136.35.53.524.88.388.213-.082.37-.266.42-.489 0-3.534-2.822-6.4-6.4-6.4-.356.034-.616.349-.583.703.022.233.168.435.38.53l.202.089z" transform="translate(17 .5) rotate(-45 9.112 11.248)"/>
-                                </g>
-                                <rect width="8" height="1.5" x="22" y="18.25" fill="#000" rx=".75"/>
-                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 2h11c.828 0 1.5.672 1.5 1.5V23h0H1.5C.672 23 0 22.328 0 21.5v-18C0 2.672.672 2 1.5 2z"/>
-                                <g stroke="#000" stroke-width="1.5" transform="translate(4 6)">
-                                    <circle cx="3" cy="2" r="2"/>
-                                    <path d="M3 13.5c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"/>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_AV_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(2 17)">
+    <path id="Rectangle" d="M0,0H45a3,3,0,0,1,3,3V13a3,3,0,0,1-3,3H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(28 29)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <g id="Group_2" data-name="Group 2" transform="translate(35)">
+      <path id="Path" d="M4.636,2.68a16.457,16.457,0,0,1,16.5,16.52l.094.245a1.361,1.361,0,0,0,2.609-.245h0A19.147,19.147,0,0,0,4.636,0h0a1.365,1.365,0,0,0-.172,2.619Z" transform="translate(0.546 17.678) rotate(-45)"/>
+      <path id="Path-2" data-name="Path" d="M4.91,2.644A10.029,10.029,0,0,1,15.032,12.8l.079.2a1.362,1.362,0,0,0,2.6-.2h0A12.744,12.744,0,0,0,4.91,0h0a1.291,1.291,0,0,0-.4,2.465Z" transform="translate(4.877 22.672) rotate(-45)"/>
     </g>
+    <rect id="Rectangle-2" data-name="Rectangle" width="16" height="3" rx="1.5" transform="translate(44 35.5)"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M3,0H25a3,3,0,0,1,3,3V42a0,0,0,0,1,0,0H3a3,3,0,0,1-3-3V3A3,3,0,0,1,3,0Z" transform="translate(0 3)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <g id="Group" transform="translate(8 11)">
+      <circle id="Oval" cx="4" cy="4" r="4" transform="translate(2)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval-2" data-name="Oval" cx="6" cy="6" r="6" transform="translate(0 15)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
 </svg>
