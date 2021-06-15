@@ -9,7 +9,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 150;
+    z-index: 108;
     width: 100%;
     padding-right: 30px;
     padding-left: 30px;
@@ -323,12 +323,14 @@
              } 
           }
           .bullet-list {
-              display:inline-block;
-              margin-top:36px;
-              @include mobile {
-                  display:block;
-                  margin-top:12px;
-              }
+            display:none;
+            /* BTOCSITE-13 비교하기 개선 - 초기화 메시지 삭제 */
+            //   display:inline-block;
+            //   margin-top:36px;
+            //   @include mobile {
+            //       display:block;
+            //       margin-top:12px;
+            //   }
           }
           .btn-group {
               position:static;
