@@ -116,6 +116,9 @@ $(function () {
             centerMode: true,
             centerPadding: '13.3%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -163,6 +166,9 @@ $(function () {
             centerMode: true,
             centerPadding: '13.3%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -260,7 +266,10 @@ $(function () {
                     $context.find('.recom-list-slide').vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }
 
@@ -275,7 +284,10 @@ $(function () {
                     }).vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1                                
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100                            
                     });
                 }
 
