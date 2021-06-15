@@ -2,7 +2,7 @@
     if(!global['lgkorUI']) global['lgkorUI'] = {};
     
     var csUI = {
-        isLogin: $('html').data('login') == 'Y' ? true : false,
+        isLogin: $('.support-home').data('loginFlag') == 'Y' ? true : false,
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
