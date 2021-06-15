@@ -1522,7 +1522,7 @@
 	}
 	&.white {
 		& input + label:before {
-			background:#fff !important; color:#ddd !important;
+			background:#fff !important; color:#000 !important; border-color: #ddd;
 		}
 	}
 	&.blue-silver {
