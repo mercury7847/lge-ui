@@ -1,8 +1,12 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
+
+    function getLoginFlag(){
+        return $('html').data('login') == 'Y' || $('.support-home').data('login') == 'Y' ? true : false;
+    }
     
     var csUI = {
-        isLogin: $('.support-home').data('loginFlag') == 'Y' ? true : false,
+        isLogin: getLoginFlag(),
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
