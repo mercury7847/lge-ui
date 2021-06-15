@@ -54,6 +54,7 @@ MainSwiper.prototype = {
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
+                    $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
@@ -88,11 +89,11 @@ MainSwiper.prototype = {
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
             var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
-            var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
+            //var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
 
-            if (isCategoryTab || isCarouselList || isCategoryTabContent || isTagScrollTab || isSlick){
+            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick){
                 e.stopPropagation();
             }
             
@@ -132,6 +133,7 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
+                $(currentSlide).attr('data-isLoaded', true);
                 history.pushState({}, '', hash);
                 self.switchQuickMenu( hash );
             }

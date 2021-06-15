@@ -542,3 +542,15 @@ button.swiper-pagination-bullet {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
+
+/* BTOCSITE-27 */
+#sw_con .swiper-wrapper .swiper-slide[data-isloaded='false'] {  
+  background: url('/lg5-common/images/dummy/slide-dummy.jpg') repeat-y;
+  background-size: contain;
+  height:100%;
+}
+
+#sw_con .swiper-wrapper .swiper-slide[data-isloaded='true'] {  
+  background: none;
+}
+/* //BTOCSITE-27 */
