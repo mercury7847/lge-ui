@@ -193,7 +193,7 @@ $(function(){
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
         var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
         /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
-        $('.ui_wide_slider').vcCarousel('setOption', {
+        $('.ui_wide_slider').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
