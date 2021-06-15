@@ -51,7 +51,7 @@ img{
 			display:none;
 		}
 		&.mobile{
-			display:block;
+			display:inline-block;
 		}
 	}
 }
@@ -1275,7 +1275,7 @@ img{
 		}
 	}
 }
-
+/*
 .mdevice {
 	@include mobile {
 		.main-wrap {
@@ -1359,3 +1359,4 @@ img{
 		}
 	}
 }
+*/
