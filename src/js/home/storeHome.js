@@ -194,10 +194,22 @@ $(function(){
         var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
         /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         $('.ui_wide_slider').vcCarousel('setOption', {
-                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                touchThreshold: 100,
-                speed: 250
-        }, true);
+            autoplay: true,
+            autoplaySpped: 5000,
+            infinite: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            swipeToSlide: true,
+            buildDots: false,
+            dotsSelector: '.ui_wideslider_dots',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: false,
+            touchThreshold: 100,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150
+        });
+
 
         /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         
