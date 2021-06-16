@@ -211,7 +211,9 @@
             var isSwipe = !!$('#sw_con').length;
             if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
                 console.log('krp0005 init');
-                var floatingWrap = $('.floating-wrap').remove();                
+                var floatingWrap = $('.floating-wrap').remove();
+                var btnFloatingWrap = $('.btn-floating-wrap').remove();
+                $('#floatBox').append(btnFloatingWrap);
                 $('#floatBox').append(floatingWrap);
                 $('.back-to-top button').off('click').on('click', function (e) {
                     e.preventDefault();
