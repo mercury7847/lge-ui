@@ -172,6 +172,7 @@ $(function(){
         return currentEcValue;
     }
 
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
