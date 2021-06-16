@@ -741,15 +741,16 @@ $(function () {
             winHeight = $window.height();
             posArr = [];
                         
-            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
-            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
+            //var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');            
+            //var prevAllHeight = $prevTarget.offset().top + $prevTarget.height();
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
             
             $scenes.each(function(i) {
                 if(i==0){
-                    itemHeight = winHeight-prevAllHeight;   
+                    //itemHeight = winHeight-prevAllHeight;
+                    itemHeight = winHeight - $('#content').offset().top;
                 }else{
                     itemHeight = winHeight;    
                 }
