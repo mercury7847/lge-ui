@@ -174,11 +174,8 @@ $(function(){
 
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-        var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
-        /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
-        $('.ui_wide_slider')
-        .vcCarousel('destroy')
-        .vcCarousel({
+
+        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
@@ -194,10 +191,9 @@ $(function(){
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
-        /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         
         /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
-        $('.ui_lifestyle_list').vcCarousel({
+        $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,

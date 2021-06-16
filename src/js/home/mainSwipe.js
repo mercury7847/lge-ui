@@ -77,6 +77,8 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
                     $('html,body').stop().animate({scrollTop:0}, 300);
+
+                    console.log('slideChange arguments', arguments);
                        
                    
                 }
@@ -154,7 +156,7 @@ MainSwiper.prototype = {
             //console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
-            self.swiper.slideTo( idx );
+            self.swiper.slideTo( idx, 'test' );
         });
     },
     // fixed 처리된 모달 수정값
