@@ -1,34 +1,40 @@
-<svg id="img_FeaturePhone_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="ic" transform="translate(22 6)">
-    <path id="Rectangle" d="M0,0H36V28a6,6,0,0,1-6,6H6a6,6,0,0,1-6-6Z" transform="translate(0 34)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-    <path id="Rectangle-2" data-name="Rectangle" d="M0,0H36V-28a6,6,0,0,0-6-6H6a6,6,0,0,0-6,6Z" transform="translate(0 34)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-    <rect id="Rectangle-3" data-name="Rectangle" width="20" height="16" rx="3" transform="translate(8 12)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-    <path id="Path" d="M2,0A2,2,0,1,0,4,2,2,2,0,0,0,2,0Z" transform="translate(16 4)"/>
-    <g id="Group_11" data-name="Group 11" transform="translate(9 40)">
-      <g id="Group_6" data-name="Group 6">
-        <g id="Group_7" data-name="Group 7" transform="translate(0 6)">
-          <path id="Path-2" data-name="Path" d="M3.182,0H.818A.816.816,0,0,0,0,.81V3.19A.813.813,0,0,0,.818,4H3.182A.816.816,0,0,0,4,3.19V.81A.816.816,0,0,0,3.182,0Z" transform="translate(7 0)"/>
-          <path id="Path-3" data-name="Path" d="M3.175,0H.825A.822.822,0,0,0,0,.814V3.186A.818.818,0,0,0,.825,4h2.35A.822.822,0,0,0,4,3.186V.814A.822.822,0,0,0,3.175,0Z" transform="translate(14)"/>
-          <path id="Path-4" data-name="Path" d="M3.179,0H.826A.822.822,0,0,0,0,.814V3.186A.819.819,0,0,0,.826,4H3.179A.817.817,0,0,0,4,3.186V.814A.81.81,0,0,0,3.179,0Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M0 17h18v14c0 1.657-1.343 3-3 3H3c-1.657 0-3-1.343-3-3V17h0zM0 17h18V3c0-1.657-1.343-3-3-3H3C1.343 0 0 1.343 0 3v14h0z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3)"/>
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6H14V14H4z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3)"/>
+                                <path fill="#000" fill-rule="nonzero" d="M9 2c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3)"/>
+                                <g fill="#000">
+                                    <g>
+                                        <g>
+                                            <path d="M5.091 0H3.909C3.683 0 3.5.183 3.5.405v1.19c0 .225.183.405.409.405h1.182c.226 0 .409-.183.409-.405V.405C5.5.183 5.317 0 5.091 0zM8.587 0H7.413C7.185 0 7 .184 7 .407v1.186c0 .226.185.407.413.407h1.174C8.815 2 9 1.816 9 1.593V.407C8.997.18 8.815 0 8.587 0zM1.59 0H.413C.185 0 0 .184 0 .407v1.186C0 1.82.185 2 .413 2H1.59c.228 0 .41-.184.41-.407V.407C2.003.18 1.818 0 1.59 0z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3) translate(4 19.5) translate(.5 3.5)"/>
+                                        </g>
+                                        <g>
+                                            <path d="M5.091 0H3.909C3.683 0 3.5.183 3.5.405v1.19c0 .225.183.405.409.405h1.182c.226 0 .409-.183.409-.405V.405C5.5.183 5.317 0 5.091 0zM8.587 0H7.413C7.185 0 7 .184 7 .407v1.186c0 .226.185.407.413.407h1.174C8.815 2 9 1.816 9 1.593V.407C8.997.18 8.815 0 8.587 0zM1.59 0H.413C.185 0 0 .184 0 .407v1.186C0 1.82.185 2 .413 2H1.59c.228 0 .41-.184.41-.407V.407C2.003.18 1.818 0 1.59 0z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3) translate(4 19.5) translate(.5 .5)"/>
+                                        </g>
+                                        <g>
+                                            <path d="M5.091 0H3.909C3.683 0 3.5.183 3.5.405v1.19c0 .225.183.405.409.405h1.182c.226 0 .409-.183.409-.405V.405C5.5.183 5.317 0 5.091 0zM8.587 0H7.413C7.185 0 7 .184 7 .407v1.186c0 .226.185.407.413.407h1.174C8.815 2 9 1.816 9 1.593V.407C8.997.18 8.815 0 8.587 0zM1.59 0H.413C.185 0 0 .184 0 .407v1.186C0 1.82.185 2 .413 2H1.59c.228 0 .41-.184.41-.407V.407C2.003.18 1.818 0 1.59 0z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3) translate(4 19.5) translate(.5 6.5)"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M5.091 0H3.909C3.683 0 3.5.183 3.5.405v1.19c0 .225.183.405.409.405h1.182c.226 0 .409-.183.409-.405V.405C5.5.183 5.317 0 5.091 0zM8.587 0H7.413C7.185 0 7 .184 7 .407v1.186c0 .226.185.407.413.407h1.174C8.815 2 9 1.816 9 1.593V.407C8.997.18 8.815 0 8.587 0zM1.59 0H.413C.185 0 0 .184 0 .407v1.186C0 1.82.185 2 .413 2H1.59c.228 0 .41-.184.41-.407V.407C2.003.18 1.818 0 1.59 0z" transform="translate(-405 -2749) translate(128 414) translate(0 2335) translate(277) translate(12 12) translate(11 3) translate(4 19.5) translate(0 9.5) translate(.5)"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
         </g>
-        <g id="Group_7-2" data-name="Group 7">
-          <path id="Path-5" data-name="Path" d="M3.182,0H.818A.816.816,0,0,0,0,.81V3.19A.813.813,0,0,0,.818,4H3.182A.816.816,0,0,0,4,3.19V.81A.816.816,0,0,0,3.182,0Z" transform="translate(7 0)"/>
-          <path id="Path-6" data-name="Path" d="M3.175,0H.825A.822.822,0,0,0,0,.814V3.186A.818.818,0,0,0,.825,4h2.35A.822.822,0,0,0,4,3.186V.814A.822.822,0,0,0,3.175,0Z" transform="translate(14)"/>
-          <path id="Path-7" data-name="Path" d="M3.179,0H.826A.822.822,0,0,0,0,.814V3.186A.819.819,0,0,0,.826,4H3.179A.817.817,0,0,0,4,3.186V.814A.81.81,0,0,0,3.179,0Z"/>
-        </g>
-        <g id="Group_7-3" data-name="Group 7" transform="translate(0 12)">
-          <path id="Path-8" data-name="Path" d="M3.182,0H.818A.816.816,0,0,0,0,.81V3.19A.813.813,0,0,0,.818,4H3.182A.816.816,0,0,0,4,3.19V.81A.816.816,0,0,0,3.182,0Z" transform="translate(7 0)"/>
-          <path id="Path-9" data-name="Path" d="M3.175,0H.825A.822.822,0,0,0,0,.814V3.186A.818.818,0,0,0,.825,4h2.35A.822.822,0,0,0,4,3.186V.814A.822.822,0,0,0,3.175,0Z" transform="translate(14)"/>
-          <path id="Path-10" data-name="Path" d="M3.179,0H.826A.822.822,0,0,0,0,.814V3.186A.819.819,0,0,0,.826,4H3.179A.817.817,0,0,0,4,3.186V.814A.81.81,0,0,0,3.179,0Z"/>
-        </g>
-      </g>
-      <g id="Group_6-2" data-name="Group 6" transform="translate(0 18)">
-        <g id="Group_7-4" data-name="Group 7">
-          <path id="Path-11" data-name="Path" d="M3.182,0H.818A.816.816,0,0,0,0,.81V3.19A.813.813,0,0,0,.818,4H3.182A.816.816,0,0,0,4,3.19V.81A.816.816,0,0,0,3.182,0Z" transform="translate(7 0)"/>
-          <path id="Path-12" data-name="Path" d="M3.175,0H.825A.822.822,0,0,0,0,.814V3.186A.818.818,0,0,0,.825,4h2.35A.822.822,0,0,0,4,3.186V.814A.822.822,0,0,0,3.175,0Z" transform="translate(14)"/>
-          <path id="Path-13" data-name="Path" d="M3.179,0H.826A.822.822,0,0,0,0,.814V3.186A.819.819,0,0,0,.826,4H3.179A.817.817,0,0,0,4,3.186V.814A.81.81,0,0,0,3.179,0Z"/>
-        </g>
-      </g>
     </g>
-  </g>
 </svg>
