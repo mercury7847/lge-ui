@@ -239,7 +239,16 @@ $(window).ready(function(){
         }
 
         function setClearCompare(){
-            var categoryId = $('.ui_selectbox').length === 0 ? lgkorUI.getHiddenInputData().categoryId : $('.ui_selectbox').vcSelectbox('value');
+            var $uiSelectbox = $('.ui_selectbox');
+            var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+            var removeOption = $uiSelectbox.find('option').filter("[value="+categoryId+"]");
+
+            if(removeOption.length > 0) removeOption.remove();
+            if( $uiSelectbox.find('option').length === 1) {
+                $('.sticy-compare').removeClass('cate-select');
+                $uiSelectbox.parent().remove();
+            }
+
             lgkorUI.initCompareProd(categoryId);
         }
 
