@@ -620,7 +620,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(ajaxUrl) {
                 lgkorUI.requestAjaxData(ajaxUrl,{},function(resultData){
                     var data = resultData.data;
-                    if( data=== 1 && resultData.status=== "success") $storyList.addClass('icon-update')
+                    if( data > 0 && resultData.status=== "success") $storyList.addClass('icon-update')
                 })
             }
         },
