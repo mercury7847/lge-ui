@@ -1233,7 +1233,8 @@
                             </div>
                             <!-- //Category Layer -->
                         </li>
-                        <li>
+                        <!-- 210608 컨텐츠 업데이트 표기 클래스 추가  -->
+                        <li class="icon-update">
                             <!-- [D] [1Depth] Click, Hover - .active 추가 -->
                             <a href="#" class="nav-item">스토리</a>
                             <!-- Category Layer -->
@@ -1860,10 +1861,12 @@
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
 <!-- Mobile 메인 메뉴 -->
 <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
-<div class="mobile-nav-wrap">
+<!-- 210609 수정  data-story-url="url" 추가 -->
+<div class="mobile-nav-wrap" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
     <ul class="nav">
         <li><a href="#n" class="nav-item on">홈</a></li>
         <li><a href="#n" class="nav-item">스토어</a></li>
+        <!-- 210608 컨텐츠 업데이트 표기 클래스 추가  -->
         <li><a href="#n" class="nav-item">스토리</a></li>
         <li><a href="#n" class="nav-item">고객지원</a></li>
         <li><a href="#n" class="nav-item">케어솔루션</a></li>
