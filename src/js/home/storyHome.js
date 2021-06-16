@@ -131,7 +131,10 @@
                     $context.find('.story-review').vcCarousel({
                         variableWidth: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();

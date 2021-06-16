@@ -1287,3 +1287,88 @@ img{
 		}
 	}
 }
+/*
+.mdevice {
+	@include mobile {
+		.main-wrap {
+			.scene {
+				height:auto;
+				padding: 16px;
+				a {
+					position: relative;
+					.img {
+						width: 100% !important;
+						height: auto !important;
+						margin: 0 !important;
+						overflow: hidden;
+						&:before {
+							display: none;
+						}
+						img {
+							position: relative;
+							top: 0;
+							left: 0;
+							height: auto;
+							transform: none;
+						}
+					}
+					.text-cont {
+						position: relative;
+						top: auto;
+						left: 0;
+						margin-top: 13px;
+						padding-left: 10px;
+						.title {
+							overflow: hidden;
+							max-height: 58px;
+							font-size: 24px;
+							line-height: 1.21;
+							color: #000 !important;
+						}
+						.desc {
+							overflow: hidden;
+							max-height: 36px;
+							margin-top: 9px;
+							font-size: 13px;
+							line-height: 1.38;
+							color: #000 !important;
+							font-weight: 400;
+						}
+						.btn-view {
+	
+						}
+					}
+					.text-link {
+						top: 21px;
+						bottom: auto !important;
+						right: 16px;
+						>.a {
+							display: none;
+						}
+						>.bi-svg .lg-bi-main {}
+					}
+				}
+				.btn-wrap {
+					margin-top: 10px;
+					margin-left: 10px;
+					.size-main {
+						min-width: 88px;
+						height: 36px;
+						padding: 3px 19px;
+						margin-right: 2px;
+						border-radius: 21px;
+						line-height: 1.62;
+						> span {
+							font-size: 13px;
+							font-weight: 500;
+						}
+					}
+				}
+				& + .scene {
+					margin-top: 32px;
+				}
+			}
+		}
+	}
+}
+*/

@@ -1116,6 +1116,9 @@
                             padding-right: 0;
                             .content {
                                 width: 320px;
+                                @include mobile{
+                                    width: 80%; 
+                                }
                                 .btn-area {
                                     margin-top: 0 !important;
                                     .btn-link {
@@ -1283,7 +1286,7 @@
                         }
                     }
                     .ui-selectbox-list {
-                        z-index: 4;
+                        z-index: 6;
                         ul li a {
                             padding: 12px 40px 12px 15px;
                             @include font-small;

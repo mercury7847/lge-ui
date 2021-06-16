@@ -1165,7 +1165,7 @@
 			.tabs-wrap {
 				&.border-type {
 					//padding-top:32px;
-					margin-top:32px;
+					margin-top:45px;
 					&:before {
 						display:none;
 					}
@@ -1174,6 +1174,7 @@
 							a {
 								//padding-top:32px;
 								padding-top:0px;
+								//padding-bottom:12px;
 							}
 						}
 					}
@@ -1201,7 +1202,7 @@
 							vertical-align:top;
 							a {
 								display:block;
-								padding:24px 0 24px;
+								padding:25px 0 30px;
 								.txt {
 									display:block;
 									width:100%;
