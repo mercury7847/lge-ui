@@ -4,6 +4,7 @@ function MainSwiper( ID ){
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
+    this.ablePushState = true;
     this.swiper = null;
     this.currentHash = window.location.hash;
 
@@ -107,6 +108,11 @@ MainSwiper.prototype = {
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
+        var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
+
+        self.setDigitalData(currentPageData);
+
+        console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
 
         if (hash == '/home'){
             hash = '/';
@@ -117,7 +123,10 @@ MainSwiper.prototype = {
         if (!href) return;
 
         if (isLoaded) {
-            history.pushState({}, '', hash);            
+            if (self.ablePushState){
+                history.pushState({}, '', hash);
+            }
+            self.ablePushState = true;
             self.switchQuickMenu( hash );
             return;
         }
@@ -141,6 +150,15 @@ MainSwiper.prototype = {
             }
         });
     },
+    setDigitalData : function( pageData ){
+        // GA 관련 데이터 셋팅
+        if (typeof(digitalData) !== 'undefined'){
+            digitalData.pageInfo = pageData.digitalData.pageInfo;
+        } else {
+            window.digitalData = {};
+            window.digitalData.pageInfo = pageData.digitalData.pageInfo
+        }
+    },
     setMobileNav : function(){
         var self = this;
         var $tabs = this.$tabs;
@@ -156,7 +174,8 @@ MainSwiper.prototype = {
             //console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
-            self.swiper.slideTo( idx, 'test' );
+            self.ablePushState = false;
+            self.swiper.slideTo(idx);            
         });
     },
     // fixed 처리된 모달 수정값
