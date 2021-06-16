@@ -20,7 +20,7 @@ $(document).ready(function(){
 				adaptiveHeight: true,
 				lazyLoad: 'anticipated', //수정 jsw
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				speed: 250,
+				speed: 150,
 				touchThreshold: 100
 			});
 		});
