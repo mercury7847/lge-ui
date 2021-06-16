@@ -248,11 +248,14 @@ MainSwiper.prototype = {
     switchQuickMenu : function( hash ){
         // 퀵메뉴 처리
         if ( hash == '/support' ){
+            $('#floatBox > .btn-floating-wrap').hide();
             $('#floatBox > .floating-wrap').hide();
             $('#floatBox > #quickMenu').show();
         } else {
-            $('#floatBox > .floating-wrap').show();
             $('#floatBox > #quickMenu').hide();
+            $('#floatBox > .btn-floating-wrap').show();
+            $('#floatBox > .floating-wrap').show();
+            
         }
     }
 }
@@ -272,6 +275,7 @@ $(function(){
 
 
 // 테스트용 임시 페이지 데이터
+/*
 var _PAGE_DATA_TEMP = {
     'home' : {
         'meta' : {
@@ -414,3 +418,4 @@ var _PAGE_DATA_TEMP = {
         }
     }
 };
+*/
