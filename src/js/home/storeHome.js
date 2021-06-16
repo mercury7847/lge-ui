@@ -158,6 +158,24 @@ $(function(){
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
     
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+
+        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
+            autoplay: true,
+            autoplaySpped: 5000,
+            infinite: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            swipeToSlide: true,
+            buildDots: false,
+            dotsSelector: '.ui_wideslider_dots',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: false,
+            touchThreshold: 100,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150
+        });
+
         
         $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
