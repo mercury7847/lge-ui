@@ -16,6 +16,14 @@ $(document).ready(function() {
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
+            // start - 210616 test용 추가
+            if($('.app-alarm-button').hasClass('active') == true){
+                $('.app-alarm-button').hide();
+                console.log(success);
+            }else{
+                console.log(fail);
+            }
+            // end - 210616 test용 추가
             $(".app-settings-button").on({
                 click : function() {
                     document.location.href="/mobile-app/option";
