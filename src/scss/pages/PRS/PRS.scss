@@ -329,6 +329,10 @@
 								display:inline-block;
 								width:64px;
 								height:64px;
+								@include mobile {
+									width: 64px;
+									height: 64px;
+								}
 								img {
 									width:100%;
 								}
@@ -1202,16 +1206,19 @@
 							vertical-align:top;
 							a {
 								display:block;
-								padding:25px 0 30px;
+								padding:20px 0 25px;
 								.txt {
-									display:block;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									display: -webkit-box;
 									width:100%;
+									height: 36px;
 									margin-top:6px;
 									padding:0 2px;
-									font-size:15px;
-									line-height:23px;
-									white-space:initial;
-									word-break:break-all;
+									font-size:13px;
+									line-height:1.38;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
 								}
 							}
 						}

@@ -1,0 +1,11 @@
+<svg id="_06img_Monitor_80" data-name="06img_Monitor_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect id="Rectangle" width="128" height="128" fill="none"/>
+  <g id="ic" transform="translate(32 40)">
+    <g id="Group_3" data-name="Group 3">
+      <rect id="Rectangle-2" data-name="Rectangle" width="64" height="40" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <rect id="Rectangle-3" data-name="Rectangle" width="12" height="3" rx="1.5" transform="translate(26 32)"/>
+      <path id="Stroke_3" data-name="Stroke 3" d="M0,4,14.088,0,28,4" transform="translate(18 47)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Line" d="M1,0V6" transform="translate(31 40.56)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
