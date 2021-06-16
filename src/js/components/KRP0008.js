@@ -401,7 +401,10 @@
                     focusOnSelect: false,
                     focusOnChange: false,
                     dots: false,
-                    buildDots: false
+                    buildDots: false,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    touchThreshold: 100,
+                    speed: 150
                 });
                 //self.$pdpMobileVisual.show();
             },

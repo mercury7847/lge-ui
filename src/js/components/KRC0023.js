@@ -7,6 +7,9 @@ $(window).ready(function(){
 
         $('.KRC0023').find('.ui_carousel_slider2').vcToggleCarousel({
             pcOption: "unbuild",
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            touchThreshold: 100,
+            speed: 150,
             mobileOption: {
                 infinite: true,
                 dots: true,
