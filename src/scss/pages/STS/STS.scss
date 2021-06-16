@@ -82,7 +82,8 @@
             border-top: 0;
             /* 20210526_2 추가 */  
             .inner {
-                //padding-top: 60px !important;                
+                //padding-top: 60px !important;
+                padding-top: 16px !important;
                 .title { display:none; }   /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
             }
             /* //20210526_2 추가 */ 
