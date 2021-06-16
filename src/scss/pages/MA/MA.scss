@@ -1275,13 +1275,15 @@ img{
 		}
 	}
 }
-/*
+
+// 20210616 메인 컨텐츠 리뉴얼
 .mdevice {
 	@include mobile {
 		.main-wrap {
-			.scene {
+			.scene-renew {
 				height:auto;
 				padding: 16px;
+				background: none !important;
 				a {
 					position: relative;
 					.img {
@@ -1289,6 +1291,9 @@ img{
 						height: auto !important;
 						margin: 0 !important;
 						overflow: hidden;
+						&.video {
+							height: 390px !important;
+						}
 						&:before {
 							display: none;
 						}
@@ -1305,7 +1310,7 @@ img{
 						top: auto;
 						left: 0;
 						margin-top: 13px;
-						padding-left: 10px;
+						padding: 0 10px;
 						.title {
 							overflow: hidden;
 							max-height: 58px;
@@ -1322,9 +1327,6 @@ img{
 							color: #000 !important;
 							font-weight: 400;
 						}
-						.btn-view {
-	
-						}
 					}
 					.text-link {
 						top: 21px;
@@ -1333,7 +1335,12 @@ img{
 						>.a {
 							display: none;
 						}
-						>.bi-svg .lg-bi-main {}
+						.bi-svg .lg-bi-main {
+							max-width: 130px;
+						}
+					}
+					&.btn-scene-cover {
+						position: relative;
 					}
 				}
 				.btn-wrap {
@@ -1353,10 +1360,9 @@ img{
 					}
 				}
 				& + .scene {
-					margin-top: 32px;
+					margin-top: 28px;
 				}
 			}
 		}
 	}
 }
-*/
