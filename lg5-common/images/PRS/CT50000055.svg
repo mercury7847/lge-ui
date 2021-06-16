@@ -1,10 +1,24 @@
-<svg id="img_Monitor_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="ic" transform="translate(8 16)">
-    <g id="Group_3" data-name="Group 3">
-      <rect id="Rectangle" width="64" height="40" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-      <rect id="Rectangle-2" data-name="Rectangle" width="12" height="3" rx="1.5" transform="translate(26 32)"/>
-      <path id="Stroke_3" data-name="Stroke 3" d="M0,4,14.088,0,28,4" transform="translate(18 47)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-      <path id="Line" d="M1,0V6" transform="translate(31 40.56)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-727 -818) translate(128 414) translate(0 404) translate(599)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <g transform="translate(-727 -818) translate(128 414) translate(0 404) translate(599) translate(12 12) translate(4 8)">
+                                    <rect width="32" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="1.5"/>
+                                    <rect width="6" height="1.5" x="13" y="16" fill="#000" rx=".75"/>
+                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 25.5L16.044 23.5 23 25.5M16 20.28L16 23.28"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
-  </g>
 </svg>

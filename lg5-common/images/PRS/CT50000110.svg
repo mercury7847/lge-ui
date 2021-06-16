@@ -1,23 +1,35 @@
-<svg id="img_WashTower_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-  <g id="ic" transform="translate(16 2)">
-    <g id="body">
-      <g id="Rectangle" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-        <path d="M0,3.45A3.45,3.45,0,0,1,3.45,0h41.1A3.45,3.45,0,0,1,48,3.45v69.1A3.45,3.45,0,0,1,44.55,76H3.45A3.45,3.45,0,0,1,0,72.55Z" stroke="none"/>
-        <path d="M 3.450000762939453 3 C 3.201866149902344 3 3 3.201866149902344 3 3.449996948242188 L 3 72.55000305175781 C 3 72.79813385009766 3.201866149902344 73 3.450000762939453 73 L 44.54999923706055 73 C 44.79813385009766 73 45 72.79813385009766 45 72.55000305175781 L 45 3.449996948242188 C 45 3.201866149902344 44.79813385009766 3 44.54999923706055 3 L 3.450000762939453 3 M 3.450000762939453 0 L 44.54999923706055 0 C 46.45538330078125 0 48 1.54461669921875 48 3.449996948242188 L 48 72.55000305175781 C 48 74.45538330078125 46.45538330078125 76 44.54999923706055 76 L 3.450000762939453 76 C 1.54461669921875 76 0 74.45538330078125 0 72.55000305175781 L 0 3.449996948242188 C 0 1.54461669921875 1.54461669921875 0 3.450000762939453 0 Z" stroke="none" fill="#000"/>
-      </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-128 -1733) translate(128 414) translate(0 1318) translate(0 1)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <g stroke="#000" stroke-width="1.5">
+                                    <path d="M22.275.75H1.725c-.27 0-.513.11-.69.286-.176.176-.285.42-.285.689v34.55c0 .27.11.513.286.69.176.176.42.285.689.285h20.55c.27 0 .513-.11.69-.286.176-.176.285-.42.285-.689V1.725c0-.27-.11-.513-.286-.69-.176-.176-.42-.285-.689-.285z" transform="translate(-128 -1733) translate(128 414) translate(0 1318) translate(0 1) translate(12.195 12) translate(8 1)"/>
+                                </g>
+                                <g fill="#000" transform="translate(-128 -1733) translate(128 414) translate(0 1318) translate(0 1) translate(12.195 12) translate(8 1) translate(0 17.5)">
+                                    <rect width="8" height="1.5" x="16" y=".3" rx=".75"/>
+                                    <rect width="8" height="1.5" y=".3" rx=".75"/>
+                                    <path fill-rule="nonzero" d="M12 0c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1z"/>
+                                </g>
+                                <g transform="translate(-128 -1733) translate(128 414) translate(0 1318) translate(0 1) translate(12.195 12) translate(8 1) translate(7 23)">
+                                    <circle cx="5" cy="5" r="5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                    <path fill="#000" fill-rule="nonzero" d="M7.923 3.628L9 2.748 8.001 2 6.458 3.162C6.17 3.38 6 3.72 6 4.082v1.844c0 .362.17.703.46.92L8.002 8 9 7.252l-1.035-.768c-.293-.216-.465-.56-.465-.923V4.519c0-.345.155-.672.423-.89z"/>
+                                </g>
+                                <g transform="translate(-128 -1733) translate(128 414) translate(0 1318) translate(0 1) translate(12.195 12) translate(8 1) translate(7 5)">
+                                    <circle cx="5" cy="5" r="5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                    <path fill="#000" fill-rule="nonzero" d="M7.923 3.628L9 2.748 8.001 2 6.458 3.162C6.17 3.38 6 3.72 6 4.082v1.844c0 .362.17.703.46.92L8.002 8 9 7.252l-1.035-.768c-.293-.216-.465-.56-.465-.923V4.519c0-.345.155-.672.423-.89z"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
-    <g id="Group_18" data-name="Group 18" transform="translate(0 35)">
-      <rect id="Rectangle-2" data-name="Rectangle" width="16" height="3" rx="1.5" transform="translate(32 0.6)"/>
-      <rect id="Rectangle-3" data-name="Rectangle" width="16" height="3" rx="1.5" transform="translate(0 0.6)"/>
-      <path id="Path" d="M2,0A2,2,0,1,0,4,2,2,2,0,0,0,2,0Z" transform="translate(22)"/>
-    </g>
-    <g id="circle" transform="translate(14 46)">
-      <circle id="Oval" cx="10" cy="10" r="10" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-      <path id="Path-2" data-name="Path" d="M3,5.038a2.3,2.3,0,0,1,.845-1.781L6,1.5,4,0,.916,2.325A2.3,2.3,0,0,0,0,4.162v3.69A2.3,2.3,0,0,0,.922,9.693L4,12l2-1.5L3.93,8.969A2.3,2.3,0,0,1,3,7.122Z" transform="translate(12 4)"/>
-    </g>
-    <g id="circle-2" data-name="circle" transform="translate(14 10)">
-      <circle id="Oval-2" data-name="Oval" cx="10" cy="10" r="10" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-      <path id="Path-3" data-name="Path" d="M3,5.038a2.3,2.3,0,0,1,.845-1.781L6,1.5,4,0,.916,2.325A2.3,2.3,0,0,0,0,4.162v3.69A2.3,2.3,0,0,0,.922,9.693L4,12l2-1.5L3.93,8.969A2.3,2.3,0,0,1,3,7.122Z" transform="translate(12 4)"/>
-    </g>
-  </g>
 </svg>

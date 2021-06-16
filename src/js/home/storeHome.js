@@ -479,7 +479,11 @@ $(function(){
                     var categoryId = item['categoryId'];
                     var iconPath = '';                    
                     if(categoryId){
-                        iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                        if (vcui.detect.isMobileDevice){
+                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
+                        } else {
+                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                        }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
