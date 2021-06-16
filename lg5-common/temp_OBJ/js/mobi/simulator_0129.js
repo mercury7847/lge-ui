@@ -533,6 +533,9 @@ var go_shop_model = "";
                             { colorCode: 'nm_green', filename: 'appliances/wash/wt_door01_04nm_green.png' },
                             { colorCode: 'nm_beige', filename: 'appliances/wash/wt_door01_04nm_beige.png' },
                             { colorCode: 'nm_pink', filename: 'appliances/wash/wt_door01_04nm_pink.png' },
+                            { colorCode: 'nm_redwood', filename: 'appliances/wash/wt_door01_nature_redwood.png' },
+                            { colorCode: 'nm_claybrown', filename: 'appliances/wash/wt_door01_nature_claybrown.png' },
+                            // 210615 wash Top - Surface colorCode 신규 추가
                         ],
                     },
                     {
@@ -545,6 +548,9 @@ var go_shop_model = "";
                             { colorCode: 'nm_green', filename: 'appliances/wash/wt_door02_04nm_green.png' },
                             { colorCode: 'nm_beige', filename: 'appliances/wash/wt_door02_04nm_beige.png' },
                             { colorCode: 'nm_pink', filename: 'appliances/wash/wt_door02_04nm_pink.png' },
+                            { colorCode: 'nm_redwood', filename: 'appliances/wash/wt_door02_nature_redwood.png' },
+                            { colorCode: 'nm_claybrown', filename: 'appliances/wash/wt_door02_nature_claybrown.png' },
+                            // 210615 wash Bottom - Surface colorCode 신규 추가
                         ],
                     },
                 ],
@@ -554,6 +560,9 @@ var go_shop_model = "";
                         { name: '네이쳐<br />그린', colorChip: 'color_04nm_green.png', colorCode: 'nm_green' },
                         { name: '네이쳐<br />베이지', colorChip: 'color_04nm_beige.png', colorCode: 'nm_beige' },
                         { name: '네이쳐<br />핑크', colorChip: 'color_04nm_pink.png', colorCode: 'nm_pink' },
+                        { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'nm_redwood' },
+                        { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'nm_claybrown' },
+                        // 210615 워시타워 - Surface colors name 신규 추가
                     ],
                 }, ],
             },
@@ -609,6 +618,9 @@ var go_shop_model = "";
                     Surface: [
                         { colorCode: 'mg_green', filename: 'appliances/styler/styler_03mg_green.png' },
                         { colorCode: 'mg_beige', filename: 'appliances/styler/styler_03mg_beige.png' },
+                        { colorCode: 'mg_redwood', filename: 'appliances/styler/styler_mist_redwood.png' },
+                        { colorCode: 'mg_claybrown', filename: 'appliances/styler/styler_mist_clay brown.png' },
+                        // 210615 styler - Surface colorCode 신규 추가
                     ],
                 }, ],
                 supportedSurface: [{
@@ -616,6 +628,9 @@ var go_shop_model = "";
                     colors: [
                         { name: '미스트<br />그린', colorChip: 'color_03mg_green.png', colorCode: 'mg_green' },
                         { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                        { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'mg_redwood' },
+                        { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'mg_claybrown' },
+                        // 210615 styler - colors 신규 추가
                     ],
                 }, ],
             },
@@ -2003,19 +2018,19 @@ var go_shop_model = "";
                 var scrollbar = window.Scrollbar;
                 if(window.Scrollbar.has(targetSideBarArea)){
                     var scrollx = window.Scrollbar.get(targetSideBarArea).offset.x;
-					window.Scrollbar.get(targetSideBarArea).destroy();
+                    window.Scrollbar.get(targetSideBarArea).destroy();
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, {});
-					var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
-					scrollbar.scrollLeft = left;
-						//window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
-					
+                    var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
+                    scrollbar.scrollLeft = left;
+                        //window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
+                    
                 }else{
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, { });
                 }
             }
-			*/
+            */
             if (targetSideBarArea !== null && window.Scrollbar) {
                 if (window.Scrollbar.has(targetSideBarArea)) {
 
@@ -2130,7 +2145,7 @@ var go_shop_model = "";
             // 인기조합 선택 부 (s)
             /*
             ex Html
-			    <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
+                <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
              */
 
             var targetSideBarFavArea = (typeof document.querySelector('[data-simulator-sidebar-fav-area]') !== 'undefined') ?
