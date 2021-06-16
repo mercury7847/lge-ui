@@ -239,7 +239,7 @@ $(window).ready(function(){
         }
 
         function setClearCompare(){
-            var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            var categoryId = $('.ui_selectbox').length === 0 ? lgkorUI.getHiddenInputData().categoryId : $('.ui_selectbox').vcSelectbox('value');
             lgkorUI.initCompareProd(categoryId);
         }
 
