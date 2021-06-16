@@ -43,7 +43,7 @@ MainSwiper.prototype = {
         var currentHash = this.currentHash;
 
         this.swiper = new Swiper('#sw_con', {
-            autoHeight : true,
+            //autoHeight : true,
             observer : true,
             slidesPerView : 1,
             /*
