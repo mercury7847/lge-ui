@@ -403,7 +403,7 @@
                     dots: false,
                     buildDots: false,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100
                 });
                 //self.$pdpMobileVisual.show();
