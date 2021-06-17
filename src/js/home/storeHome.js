@@ -66,38 +66,10 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
 
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <div class="product-list">\n'+
-    '       <ul>\n'+
-    '           <li>\n'+
-    '               <a href="{{obj.modelUrlPath}}">\n'+
-    '                  <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
-    '                  <div class="info">\n'+
-    '                      <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
-    '                      <div class="code">{{obj.modelName}}</div>\n'+
-    '                       {{#if obj.isPrice}}'+
-    '                          <div class="price-area">\n'+
-    '                              <div class="original">\n'+
-    '                                  {{#if obj.obsOriginalPrice}}'+
-    '                                      <em class="blind">기존가격</em>\n'+
-    '                                      <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
-    '                                  {{/if}}'+
-    '                              </div>\n'+
-    '                              <div class="total">\n'+
-    '                                  {{#if obj.totalPrice}}'+
-    '                                      <em class="blind">판매가격</em>\n'+
-    '                                      <span class="price">{{#raw obj.totalPrice}}</span>\n'+
-    '                                  {{/if}}'+
-    '                              </div>\n'+
-    '                          </div>\n'+
-    '                      {{/if}}\n'+
-    '                  </div>\n'+
-    '               </a>\n'+
-    '           </li>\n'+
-    '       </ul>\n'+
+    '       <ul>{{#raw obj.productList}}</ul>\n'+
     '   </div>\n'+                       
     '{{/each}}';
 
-/* 20210617 추천 기획전 구조변경 */  
-/*
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
     '       <a href="{{obj.modelUrlPath}}">\n'+
@@ -125,8 +97,6 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
-*/
-/* //20210617 추천 기획전 구조변경 */ 
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
@@ -203,9 +173,10 @@ $(function(){
     }
 
 
-    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
+        var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
+        /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
+        $('.ui_wide_slider').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
@@ -221,14 +192,18 @@ $(function(){
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
+
+
+        /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         
         /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
-        $context.find('.ui_lifestyle_list').vcCarousel({
+        $('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
+            swipeToSlide: true,
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
+            speed: 250,
             touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
@@ -247,7 +222,7 @@ $(function(){
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
+                    speed: 250,
                     touchThreshold: 100
                 });
                 
@@ -391,7 +366,7 @@ $(function(){
                             variableWidth: true,
                             lastFix: true,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 150,
+                            speed: 250,
                             touchThreshold: 100
                         });
                         
@@ -474,9 +449,7 @@ $(function(){
                         return item;
                     });
 
-                    /* 20210617 추천 기획전 구조변경 */
-                    //nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
-                    /* //20210617 추천 기획전 구조변경 */
+                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
                     return nObj;
                 });
 
@@ -486,7 +459,7 @@ $(function(){
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
+                    speed: 250,
                     touchThreshold: 100
                 });
 
@@ -511,11 +484,7 @@ $(function(){
                     var categoryId = item['categoryId'];
                     var iconPath = '';                    
                     if(categoryId){
-                        if (vcui.detect.isMobileDevice){
-                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
-                        } else {
-                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
-                        }
+                        iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -606,7 +575,7 @@ $(function(){
                             slidesToShow: 3,
                             slidesToScroll: 3,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 150,
+                            speed: 250,
                             touchThreshold: 100
                         });
 
