@@ -64,10 +64,49 @@ MainSwiper.prototype = {
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
                         mainSwiper.loadContent( currentSlide );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
                         //mainSwiper.loadContent( nextSlide );
                     } else {
                         swiper.slideTo( idx );
+
+                        if(swiper.activeIndex === swiper.slides.length -1) {
+
+                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ]);
+    
+                        } else {
+                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1] );
+                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
+    
+                        }
+    
                     }
+                },
+                'touchStart' : function(swiper) {
+
+                    console.log('touchStart page %o', swiper.activeIndex );
+                    console.log('touchStart slides %o', swiper.slides[swiper.activeIndex] );
+
+
+
+                    // if(swiper.activeIndex === 0){
+
+                    //     console.log("swiper.slid %o",swiper.slides);
+                    //     console.log("index %o",swiper.activeIndex +1);
+                    //     mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
+
+                    // } else if(swiper.activeIndex === swiper.slides.length -1) {
+
+                    //     mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ]);
+
+                    // } else {
+                    //     mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1] );
+                    //     mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
+
+                    // }
+
+
+
+
                 },
                 'slideChange' : function(swiper){
                     console.log('active page', swiper.slides[swiper.activeIndex] );
@@ -87,6 +126,24 @@ MainSwiper.prototype = {
                     console.log('customEventActionString' , mainSwiper.customEventActionString);
 
                     mainSwiper.loadContent( currentSlide );
+
+                    if(swiper.activeIndex === 0){
+
+                        console.log("swiper.slid %o",swiper.slides);
+                        console.log("index %o",swiper.activeIndex +1);
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
+
+                    } else if(swiper.activeIndex === swiper.slides.length -1) {
+
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ]);
+
+                    } else {
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1] );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1] );
+
+                    }
+
+
                     mainSwiper.currentIdx = swiper.activeIndex;
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
@@ -143,6 +200,9 @@ MainSwiper.prototype = {
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
         var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
+
+        console.log("currentSlide %o",currentSlide);
+        console.log("isLoaded %o",isLoaded);
 
         if (pushFlag !== undefined){
             self.ablePushState = pushFlag;
