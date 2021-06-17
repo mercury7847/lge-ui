@@ -1286,61 +1286,58 @@ img{
 				background: none !important;
 				a {
 					position: relative;
-					.img {
-						width: 100% !important;
-						height: auto !important;
-						margin: 0 !important;
-						overflow: hidden;
-						&.video {
-							height: 390px !important;
-						}
-						&:before {
-							display: none;
-						}
-						img {
-							position: relative;
-							top: 0;
-							left: 0;
-							height: auto;
-							transform: none;
-						}
+				}
+				.img {
+					width: 100% !important;
+					height: auto !important;
+					margin: 0 !important;
+					overflow: hidden;
+					&.video {
+						height: 390px !important;
 					}
-					.text-cont {
+					&:before {
+						display: none;
+					}
+					img {
 						position: relative;
-						top: auto;
+						top: 0;
 						left: 0;
-						margin-top: 13px;
-						padding: 0 10px;
-						.title {
-							overflow: hidden;
-							max-height: 58px;
-							font-size: 24px;
-							line-height: 1.21;
-							color: #000 !important;
-						}
-						.desc {
-							overflow: hidden;
-							max-height: 36px;
-							margin-top: 9px;
-							font-size: 13px;
-							line-height: 1.38;
-							color: #000 !important;
-							font-weight: 400;
-						}
+						height: auto;
+						transform: none;
 					}
-					.text-link {
-						top: 21px;
-						bottom: auto !important;
-						right: 16px;
-						>.a {
-							display: none;
-						}
-						.bi-svg .lg-bi-main {
-							max-width: 130px;
-						}
+				}
+				.text-cont {
+					position: relative;
+					top: auto;
+					left: 0;
+					margin-top: 13px;
+					padding: 0 10px;
+					.title {
+						overflow: hidden;
+						max-height: 58px;
+						font-size: 24px;
+						line-height: 1.21;
+						color: #000 !important;
 					}
-					&.btn-scene-cover {
-						position: relative;
+					.desc {
+						overflow: hidden;
+						max-height: 36px;
+						margin-top: 9px;
+						font-size: 13px;
+						line-height: 1.38;
+						color: #000 !important;
+						font-weight: 400;
+					}
+				}
+				.text-link {
+					top: 21px;
+					bottom: auto !important;
+					right: 16px;
+					>.a {
+						display: none;
+					}
+					.bi-svg .lg-bi-main {
+						max-width: 130px;
 					}
 				}
 				.btn-wrap {

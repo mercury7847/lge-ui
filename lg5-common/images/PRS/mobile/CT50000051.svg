@@ -1,8 +1,7 @@
-<svg id="_05img_PC_80" data-name="05img_PC_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(30 41)">
+<svg id="img_PC_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 17)">
     <g id="monitor" transform="translate(0 11)">
-      <rect id="Rectangle-2" data-name="Rectangle" width="46" height="26" rx="3" transform="translate(0 0.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <rect id="Rectangle" width="46" height="26" rx="3" transform="translate(0 0.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
       <path id="Stroke_3" data-name="Stroke 3" d="M0,2,9.057,0,18,2" transform="translate(14 32.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
       <path id="Line" d="M1.25,0V4" transform="translate(22 28.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     </g>
