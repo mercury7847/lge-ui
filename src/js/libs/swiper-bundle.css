@@ -544,7 +544,7 @@ button.swiper-pagination-bullet {
 }
 
 /* BTOCSITE-27 */
-#sw_con .swiper-wrapper .swiper-slide {  
+/* #sw_con .swiper-wrapper .swiper-slide {  
   background: url('/lg5-common/images/dummy/content_loading.gif') no-repeat;
   background-size: auto;
   background-position: center;
@@ -563,5 +563,5 @@ button.swiper-pagination-bullet {
 #sw_con .swiper-wrapper .swiper-slide[data-isloaded='true'] {  
   background: none;
   height:auto;
-}
+} */
 /* //BTOCSITE-27 */

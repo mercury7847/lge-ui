@@ -55,7 +55,7 @@ MainSwiper.prototype = {
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
-                    $('#sw_con .swiper-slide').attr('data-isLoaded', false);
+                  //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
@@ -165,7 +165,7 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
-                $(currentSlide).attr('data-isLoaded', true);
+            //    $(currentSlide).attr('data-isLoaded', true);
                 if (self.ablePushState){
                     history.pushState({}, '', hash);
                 }
