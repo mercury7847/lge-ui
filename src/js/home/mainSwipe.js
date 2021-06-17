@@ -194,6 +194,7 @@ MainSwiper.prototype = {
                 self.switchQuickMenu( hash );
             }
         }).done(function(){
+            $(document).trigger('appInit');
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
             }, 1000);
