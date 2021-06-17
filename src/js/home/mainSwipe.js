@@ -121,7 +121,7 @@ MainSwiper.prototype = {
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
-        var currentPageData = _PAGE_DATA_TEMP[$(currentSlide).data().hash];
+        var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
 
         if (pushFlag !== undefined){
             self.ablePushState = pushFlag;
@@ -129,7 +129,7 @@ MainSwiper.prototype = {
 
         if (self.ablePushState !== false){
             self.setDigitalData(currentPageData);
-            console.log('PAGE_DATA', _PAGE_DATA_TEMP[$(currentSlide).data().hash]);
+            console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
         }
 
         if (hash == '/home'){
