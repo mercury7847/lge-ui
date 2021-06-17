@@ -1,6 +1,7 @@
 var LGEAPPHostName = window.location.hostname;
 var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
 var LGEAPPclickCNT = 0;
+
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -9,7 +10,6 @@ ANDROID:    /android/.test(navigator.userAgent.toLowerCase()),
 WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
-
 var appInit = function() {
     console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
@@ -233,14 +233,36 @@ var appInit = function() {
             }
         });
     }
+};
+
+function ChatbotAppClose(type) {
+    // 앱에서 호출될경우
+    if(isApp()) {
+        if(vcui.detect.isIOS){ 
+           var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+           webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        }else{
+            android.closeNewWebview(); 
+        }
+    } else {
+        if(type == 'native') {
+            history.back();
+        } else {
+            //웹에서 호출될경우
+            historyBack();
+        }
+    }
 }
+
 // 스와이프 적용일때 분기 처리
-var isSwipe = !!$('#sw_con').length;
-if ( isSwipe ){
-    $(document).one('appInit', appInit);
-} else {
-    $(document).ready(appInit);
-}
+$(document).ready(function(){
+    var isSwipe = !!$('#sw_con').length;
+    if ( isSwipe ){
+        $(document).one('appInit', appInit);
+    } else {
+        appInit();
+    }
+});
 
 
 
