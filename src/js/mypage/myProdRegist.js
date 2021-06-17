@@ -578,7 +578,7 @@
                                 self.requestOwnData(true);
 
                                 self.hideLoading();
-                            }, "POST", null, null, null, true, function(err){
+                            }, "POST", null, null, null, false, function(err){
                                 self.hideLoading(true);
                             });
                         }

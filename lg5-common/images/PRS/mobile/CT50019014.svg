@@ -1,0 +1,6 @@
+<svg id="img_CeilingFan_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(4 5)">
+    <path id="Path" d="M42.829,1.189c0,.13,0,9.241.842,24.311.425,7.6,5.688,14.47,13,20.825l14.811,11.2a1.118,1.118,0,0,1,.514.924A76.42,76.42,0,0,1,70.545,68l-1.012-.567A112.423,112.423,0,0,0,50.51,55.947c-5.481-2.653-9.24-2.653-13.02-2.653s-8.376,2.653-13.03,4.778L8.626,65.385a1.045,1.045,0,0,1-1.017-.016A77.08,77.08,0,0,1,0,59.323l1.045-.611c.109-.065,7.37-2.836,18.093-10.754,6.714-4.958,13-13.958,13-22.988l1.11-20.55a1.1,1.1,0,0,1,.542-.908A77.554,77.554,0,0,1,42.818,0Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <path id="Path-2" data-name="Path" d="M4,0A4,4,0,1,0,8,4,4,4,0,0,0,4,0Z" transform="translate(34 39)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+  </g>
+</svg>

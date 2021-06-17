@@ -1,0 +1,16 @@
+<svg id="img_PC_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 17)">
+    <g id="monitor" transform="translate(0 11)">
+      <rect id="Rectangle" width="46" height="26" rx="3" transform="translate(0 0.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Stroke_3" data-name="Stroke 3" d="M0,2,9.057,0,18,2" transform="translate(14 32.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Line" d="M1.25,0V4" transform="translate(22 28.438)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+    <g id="pc" transform="translate(42)">
+      <path id="Path" d="M0,11.448V1.992A2.028,2.028,0,0,1,2.063,0H22.938A2.028,2.028,0,0,1,25,1.992V41.508A2.028,2.028,0,0,1,22.938,43.5H2.063A2.028,2.028,0,0,1,0,41.508V37.819" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval" cx="2" cy="2" r="2" transform="translate(10.5 33)"/>
+      <path id="Line-2" data-name="Line" d="M0,1H18" transform="translate(5.75 13.75)" fill="none" stroke="#000" stroke-linecap="square" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Line-3" data-name="Line" d="M1,0V2" transform="translate(20.25 44.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Line-4" data-name="Line" d="M1,0V2" transform="translate(2.75 44.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

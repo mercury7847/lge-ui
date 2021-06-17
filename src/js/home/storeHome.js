@@ -172,6 +172,7 @@ $(function(){
         return currentEcValue;
     }
 
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
         var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
@@ -400,7 +401,7 @@ $(function(){
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                        speed: 250,
+                        speed: 150,
                         touchThreshold: 100
                     });
                 }    
