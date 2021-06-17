@@ -55,7 +55,7 @@ MainSwiper.prototype = {
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
-                    $('#sw_con .swiper-slide').attr('data-isLoaded', false);
+                  //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
@@ -121,7 +121,7 @@ MainSwiper.prototype = {
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
-        var currentPageData = _PAGE_DATA_TEMP[$(currentSlide).data().hash];
+        var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
 
         if (pushFlag !== undefined){
             self.ablePushState = pushFlag;
@@ -129,7 +129,7 @@ MainSwiper.prototype = {
 
         if (self.ablePushState !== false){
             self.setDigitalData(currentPageData);
-            console.log('PAGE_DATA', _PAGE_DATA_TEMP[$(currentSlide).data().hash]);
+            console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
         }
 
         if (hash == '/home'){
@@ -165,7 +165,7 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
-                $(currentSlide).attr('data-isLoaded', true);
+            //    $(currentSlide).attr('data-isLoaded', true);
                 if (self.ablePushState){
                     history.pushState({}, '', hash);
                 }
@@ -275,7 +275,6 @@ $(function(){
 
 
 // 테스트용 임시 페이지 데이터
-/*
 var _PAGE_DATA_TEMP = {
     'home' : {
         'meta' : {
@@ -418,4 +417,3 @@ var _PAGE_DATA_TEMP = {
         }
     }
 };
-*/

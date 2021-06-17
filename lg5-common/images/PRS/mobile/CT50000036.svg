@@ -1,13 +1,12 @@
-<svg id="_03img_AV_80" data-name="03img_AV_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(26 41)">
-    <path id="Rectangle-2" data-name="Rectangle" d="M0,0H45a3,3,0,0,1,3,3V13a3,3,0,0,1-3,3H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(28 29)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+<svg id="img_AV_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(2 17)">
+    <path id="Rectangle" d="M0,0H45a3,3,0,0,1,3,3V13a3,3,0,0,1-3,3H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(28 29)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     <g id="Group_2" data-name="Group 2" transform="translate(35)">
       <path id="Path" d="M4.636,2.68a16.457,16.457,0,0,1,16.5,16.52l.094.245a1.361,1.361,0,0,0,2.609-.245h0A19.147,19.147,0,0,0,4.636,0h0a1.365,1.365,0,0,0-.172,2.619Z" transform="translate(0.546 17.678) rotate(-45)"/>
       <path id="Path-2" data-name="Path" d="M4.91,2.644A10.029,10.029,0,0,1,15.032,12.8l.079.2a1.362,1.362,0,0,0,2.6-.2h0A12.744,12.744,0,0,0,4.91,0h0a1.291,1.291,0,0,0-.4,2.465Z" transform="translate(4.877 22.672) rotate(-45)"/>
     </g>
-    <rect id="Rectangle-3" data-name="Rectangle" width="16" height="3" rx="1.5" transform="translate(44 35.5)"/>
-    <path id="Rectangle-4" data-name="Rectangle" d="M3,0H25a3,3,0,0,1,3,3V42a0,0,0,0,1,0,0H3a3,3,0,0,1-3-3V3A3,3,0,0,1,3,0Z" transform="translate(0 3)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <rect id="Rectangle-2" data-name="Rectangle" width="16" height="3" rx="1.5" transform="translate(44 35.5)"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M3,0H25a3,3,0,0,1,3,3V42a0,0,0,0,1,0,0H3a3,3,0,0,1-3-3V3A3,3,0,0,1,3,0Z" transform="translate(0 3)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     <g id="Group" transform="translate(8 11)">
       <circle id="Oval" cx="4" cy="4" r="4" transform="translate(2)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
       <circle id="Oval-2" data-name="Oval" cx="6" cy="6" r="6" transform="translate(0 15)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
