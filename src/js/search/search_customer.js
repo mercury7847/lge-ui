@@ -111,7 +111,7 @@
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
             '{{#if item.target == "popup"}}' + 
-            '<li><a href="{{item.url}}" target="{{item.target}}" data-popup-width="{{item.width}}" data-popup-height="{{item.height}}"class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-popup-width="{{item.width}}" data-popup-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
             
             '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
@@ -855,19 +855,19 @@
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
-                    $('.service-link, .mobile-service-link').find('a').on('click', function(e){
-                        var $this = $(this);
-                        var _target = $this.attr('target');
+                    // $('.service-link, .mobile-service-link').find('a').on('click', function(e){
+                    //     var $this = $(this);
+                    //     var _target = $this.attr('target');
                         
-                        if( _target == "popup") {
-                            var _url = $this.attr('href')
-                            var _width = $this.attr('data-popup-width')
-                            var _height = $this.attr('data-popup-height')
+                    //     if( _target == "popup") {
+                    //         var _url = $this.attr('href')
+                    //         var _width = $this.attr('data-popup-width')
+                    //         var _height = $this.attr('data-popup-height')
                         
-                            e.preventDefault();
-                            popupCenter({url:_url, title:'', w:_width, h:_height})
-                        }
-                    })
+                    //         e.preventDefault();
+                    //         popupCenter({url:_url, title:'', w:_width, h:_height})
+                    //     }
+                    // })
 
                     //noData 체크
                     if(noData) {
