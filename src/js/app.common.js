@@ -10,7 +10,7 @@ WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
 
-$(document).ready(function() {
+var appInit = function() {
     console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
@@ -233,4 +233,15 @@ $(document).ready(function() {
             }
         });
     }
-});
+}
+// 스와이프 적용일때 분기 처리
+var isSwipe = !!$('#sw_con').length;
+if ( isSwipe ){
+    $(document).one('appInit', appInit);
+} else {
+    $(document).ready(appInit);
+}
+
+
+
+
