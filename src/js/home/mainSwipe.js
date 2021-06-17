@@ -142,7 +142,7 @@ MainSwiper.prototype = {
 
         if (isLoaded) {
             if (self.ablePushState){
-                history.pushState({}, '', hash);
+                history.pushState({}, '', hash);                
             }
             self.ablePushState = true;
             self.switchQuickMenu( hash );
@@ -167,7 +167,7 @@ MainSwiper.prototype = {
                 $(currentSlide).data().isLoaded = true;
             //    $(currentSlide).attr('data-isLoaded', true);
                 if (self.ablePushState){
-                    history.pushState({}, '', hash);
+                    history.pushState({}, '', hash);                    
                 }
                 self.ablePushState = true;
                 self.switchQuickMenu( hash );
@@ -190,6 +190,12 @@ MainSwiper.prototype = {
                 window.digitalData.pageInfo = pageData.digitalData.pageInfo;
             }
         }
+        // GA 커스텀 이벤트 실행
+        dataLayer.push({
+            'event': 'customEvent',				
+            'customEventCategory': '스와이프',				
+            'customEventAction': '스와이프 - 좌측'
+        });
     },
     setMobileNav : function(){
         var self = this;
