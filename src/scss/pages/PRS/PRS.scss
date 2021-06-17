@@ -1208,6 +1208,7 @@
 						li {
 							display:inline-block;
 							width:25%;
+							padding: 0 5px;
 							margin-top: 17px;
 							text-align:center;
 							vertical-align:top;
@@ -1229,6 +1230,7 @@
 									line-height:1.38;
 									-webkit-line-clamp: 2;
 									-webkit-box-orient: vertical;
+									word-break: break-all;
 								}
 							}
 						}
