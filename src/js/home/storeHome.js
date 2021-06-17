@@ -71,7 +71,6 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '{{/each}}';
 
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
-    '   <ul class="product-list">\n'+
     '   <li>\n'+
     '       <a href="{{obj.modelUrlPath}}">\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
@@ -97,7 +96,6 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '           </div>\n'+
     '       </a>\n'+
     '   </li>\n'+
-    '   </ul>\n'+
     '{{/each}}';
 
 
@@ -453,7 +451,7 @@ $(function(){
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionProductTmpl, {list : nArr});
+                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
                 /* 20210615 추천 기획전 구조변경 */
                 $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
                 /* //20210615 추천 기획전 구조변경 */
