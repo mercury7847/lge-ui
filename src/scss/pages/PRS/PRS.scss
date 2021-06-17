@@ -265,10 +265,16 @@
 			&:before {
 				left: 0;
 				background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+				@include mobile {
+					display: none;
+				}
 			}
 			&:after {
 				right: 0;
 				background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+				@include mobile {
+					display: none;
+				}
 			}
 			@include pc {
 				.tabs-wrap {
