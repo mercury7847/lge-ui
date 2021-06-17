@@ -1308,9 +1308,12 @@ img{
 						// position: static;
 						height: auto !important;
 						min-height: 390px !important;
-						padding-bottom: 100%;
 						video {
+							position: relative !important;
 							height: auto;
+							top: 0 !important;
+							left: 0 !important;
+							transform: none !important;
 						}
 					}
 					&:before {
