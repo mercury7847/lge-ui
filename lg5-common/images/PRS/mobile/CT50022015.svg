@@ -1,6 +1,6 @@
-<svg id="_43img_AirConditioner_80" data-name="43img_AirConditioner_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(48 28)">
+<svg id="img_AirConditioner_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect id="Rectangle" width="80" height="80" fill="none"/>
+  <g id="ic" transform="translate(24 4)">
     <rect id="Rectangle-2" data-name="Rectangle" width="32" height="72" rx="4" fill="#eee6da" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     <circle id="Oval" cx="10" cy="10" r="10" transform="translate(6 10)" fill="#f0e3da" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
   </g>

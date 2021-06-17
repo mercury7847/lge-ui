@@ -1,7 +1,6 @@
-<svg id="_02img_Projector_80" data-name="02img_Projector_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(30 46)">
-    <rect id="Rectangle-2" data-name="Rectangle" width="68" height="30" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+<svg id="img_Projector_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 22)">
+    <rect id="Rectangle" width="68" height="30" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
     <g id="Group_3" data-name="Group 3" transform="translate(42 6)">
       <circle id="Oval" cx="9" cy="9" r="9" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
       <circle id="Oval-2" data-name="Oval" cx="3" cy="3" r="3" transform="translate(6 6)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
