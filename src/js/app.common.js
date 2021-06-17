@@ -255,12 +255,14 @@ function ChatbotAppClose(type) {
 }
 
 // 스와이프 적용일때 분기 처리
-var isSwipe = !!$('#sw_con').length;
-if ( isSwipe ){
-    $(document).one('appInit', appInit);
-} else {
-    $(document).ready(appInit);
-}
+$(document).ready(function(){
+    var isSwipe = !!$('#sw_con').length;
+    if ( isSwipe ){
+        $(document).one('appInit', appInit);
+    } else {
+        appInit();
+    }
+});
 
 
 
