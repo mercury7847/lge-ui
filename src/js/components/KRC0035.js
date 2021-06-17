@@ -21,7 +21,7 @@ $(document).ready(function(){
 				lazyLoad: 'anticipated', //수정 jsw,
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
 				touchThreshold: 100,
-				speed: 250
+				speed: 150
 			});
 		});
 		//$('body').vcLazyLoaderSwitch('reload',$KRC0035);

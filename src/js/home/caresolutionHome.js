@@ -58,7 +58,10 @@ $(function(){
             infinite: false,
             autoplay: false,
             slidesToScroll: 1,
-            slidesToShow: 1
+            slidesToShow: 1,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100
         });
 
         // 플로우배너
@@ -72,6 +75,9 @@ $(function(){
             centerMode: true,
             centerPadding: '13.5%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -122,6 +128,9 @@ $(function(){
             slidesToScroll: 1,
             variableWidth : true,
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -178,7 +187,10 @@ $(function(){
                 $context.find('.ui_carousel_m1_slider').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
@@ -197,6 +209,9 @@ $(function(){
             slidesToShow: 1,
             slidesToScroll: 1,
             variableWidth : true,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -339,6 +354,9 @@ $(function(){
                         slidesToShow: 4,
                         slidesToScroll: 4,
                         variableWidth : false,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100,
                         responsive: [
                             {
                                 breakpoint: 1200,

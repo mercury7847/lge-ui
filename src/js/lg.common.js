@@ -1,5 +1,5 @@
 //통합앱 구축팀 요청...통합앱 식별 스크립트
-var isApp = function(){
+var isApp = function(){    
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
@@ -22,7 +22,8 @@ var goAppUrl = function(path) {
             location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
         },0);
     } else {
-        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        alert(weblink);
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end;','_blank');
     }
 }
 
