@@ -237,7 +237,8 @@ function ChatbotAppClose(type) {
     // 앱에서 호출될경우
     if(isApp()) {
         if(vcui.detect.isIOS){ 
-            window.close(); 
+           var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+           webkit.messageHandlers.callbackHandler.postMessage(jsonString);
         }else{
             android.closeNewWebview(); 
         }
