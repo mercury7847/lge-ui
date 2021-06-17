@@ -66,10 +66,38 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
 
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <div class="product-list">\n'+
-    '       <ul>{{#raw obj.productList}}</ul>\n'+
+    '       <ul>\n'+
+    '           <li>\n'+
+    '               <a href="{{obj.modelUrlPath}}">\n'+
+    '                  <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '                  <div class="info">\n'+
+    '                      <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
+    '                      <div class="code">{{obj.modelName}}</div>\n'+
+    '                       {{#if obj.isPrice}}'+
+    '                          <div class="price-area">\n'+
+    '                              <div class="original">\n'+
+    '                                  {{#if obj.obsOriginalPrice}}'+
+    '                                      <em class="blind">기존가격</em>\n'+
+    '                                      <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
+    '                                  {{/if}}'+
+    '                              </div>\n'+
+    '                              <div class="total">\n'+
+    '                                  {{#if obj.totalPrice}}'+
+    '                                      <em class="blind">판매가격</em>\n'+
+    '                                      <span class="price">{{#raw obj.totalPrice}}</span>\n'+
+    '                                  {{/if}}'+
+    '                              </div>\n'+
+    '                          </div>\n'+
+    '                      {{/if}}\n'+
+    '                  </div>\n'+
+    '               </a>\n'+
+    '           </li>\n'+
+    '       </ul>\n'+
     '   </div>\n'+                       
     '{{/each}}';
 
+/* 20210617 추천 기획전 구조변경 */  
+/*
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
     '       <a href="{{obj.modelUrlPath}}">\n'+
@@ -97,6 +125,8 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
+*/
+/* //20210617 추천 기획전 구조변경 */ 
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
@@ -174,8 +204,8 @@ $(function(){
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-
         $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
@@ -445,7 +475,9 @@ $(function(){
                         return item;
                     });
 
-                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    /* 20210617 추천 기획전 구조변경 */
+                    //nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    /* //20210617 추천 기획전 구조변경 */
                     return nObj;
                 });
 
