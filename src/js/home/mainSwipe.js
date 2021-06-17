@@ -44,7 +44,7 @@ MainSwiper.prototype = {
         var currentHash = this.currentHash;
 
         this.swiper = new Swiper('#sw_con', {
-            //autoHeight : true,
+            autoHeight : true,
             observer : true,
             slidesPerView : 1,
             /*
@@ -55,14 +55,16 @@ MainSwiper.prototype = {
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
-                    $('#sw_con .swiper-slide').attr('data-isLoaded', false);
+                  //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
                     var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
+                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
                         mainSwiper.loadContent( currentSlide );
+                        //mainSwiper.loadContent( nextSlide );
                     } else {
                         swiper.slideTo( idx );
                     }
@@ -79,9 +81,20 @@ MainSwiper.prototype = {
 
                     $('html,body').stop().animate({scrollTop:0}, 300);
 
-                    console.log('slideChange arguments', arguments);
-                       
-                   
+                    /*
+                    var nextSlide = swiper.slides[swiper.activeIndex + 1];
+                    var prevSlide = swiper.slides[swiper.activeIndex - 1];
+
+                    if (nextSlide !== undefined){
+                        mainSwiper.loadContent( nextSlide, false);
+                    }
+
+                    if (prevSlide !== undefined){
+                        mainSwiper.loadContent( prevSlide, false);
+                    }
+                    */
+
+                    //console.log('slideChange arguments', arguments);
                 }
             }
         });
@@ -103,16 +116,21 @@ MainSwiper.prototype = {
         });        
 
     },
-    loadContent: function( currentSlide ){
+    loadContent: function( currentSlide, pushFlag ){
         var self = this;
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
-        var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
+        var currentPageData = _PAGE_DATA_TEMP[$(currentSlide).data().hash];
 
-        self.setDigitalData(currentPageData);
+        if (pushFlag !== undefined){
+            self.ablePushState = pushFlag;
+        }
 
-        console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
+        if (self.ablePushState !== false){
+            self.setDigitalData(currentPageData);
+            console.log('PAGE_DATA', _PAGE_DATA_TEMP[$(currentSlide).data().hash]);
+        }
 
         if (hash == '/home'){
             hash = '/';
@@ -128,6 +146,9 @@ MainSwiper.prototype = {
             }
             self.ablePushState = true;
             self.switchQuickMenu( hash );
+            setTimeout(function(){
+                mainSwiper.swiper.updateAutoHeight();
+            }, 1000);
             return;
         }
 
@@ -144,10 +165,17 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
-                $(currentSlide).attr('data-isLoaded', true);
-                history.pushState({}, '', hash);
+            //    $(currentSlide).attr('data-isLoaded', true);
+                if (self.ablePushState){
+                    history.pushState({}, '', hash);
+                }
+                self.ablePushState = true;
                 self.switchQuickMenu( hash );
             }
+        }).done(function(){
+            setTimeout(function(){
+                mainSwiper.swiper.updateAutoHeight();
+            }, 1000);
         });
     },
     setDigitalData : function( pageData ){
@@ -220,11 +248,14 @@ MainSwiper.prototype = {
     switchQuickMenu : function( hash ){
         // 퀵메뉴 처리
         if ( hash == '/support' ){
+            $('#floatBox > .btn-floating-wrap').hide();
             $('#floatBox > .floating-wrap').hide();
             $('#floatBox > #quickMenu').show();
         } else {
-            $('#floatBox > .floating-wrap').show();
             $('#floatBox > #quickMenu').hide();
+            $('#floatBox > .btn-floating-wrap').show();
+            $('#floatBox > .floating-wrap').show();
+            
         }
     }
 }
@@ -244,7 +275,7 @@ $(function(){
 
 
 // 테스트용 임시 페이지 데이터
-var _PAGE_DATA = {
+var _PAGE_DATA_TEMP = {
     'home' : {
         'meta' : {
             'title' : 'LGE.COM | LG전자',

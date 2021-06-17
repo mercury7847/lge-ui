@@ -544,20 +544,24 @@ button.swiper-pagination-bullet {
 }
 
 /* BTOCSITE-27 */
-#sw_con .swiper-wrapper .swiper-slide {  
-  background: url('/lg5-common/images/dummy/slide-dummy.jpg') repeat-y;
-  background-size: contain;
+/* #sw_con .swiper-wrapper .swiper-slide {  
+  background: url('/lg5-common/images/dummy/content_loading.gif') no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-position-y: 40%;
   height:auto;
 } 
 
 #sw_con .swiper-wrapper .swiper-slide[data-isloaded='false'] {  
-  background: url('/lg5-common/images/dummy/slide-dummy.jpg') repeat-y;
-  background-size: contain;
+  background: url('/lg5-common/images/dummy/content_loading.gif') no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-position-y: 40%;
   height:100vh;
 }
 
 #sw_con .swiper-wrapper .swiper-slide[data-isloaded='true'] {  
   background: none;
   height:auto;
-}
+} */
 /* //BTOCSITE-27 */
