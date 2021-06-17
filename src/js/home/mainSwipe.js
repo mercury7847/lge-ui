@@ -186,7 +186,7 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
-            //    $(currentSlide).attr('data-isLoaded', true);
+                //$(currentSlide).attr('data-isLoaded', true);
                 if (self.ablePushState){
                     history.pushState({}, '', hash);                    
                 }
@@ -194,7 +194,7 @@ MainSwiper.prototype = {
                 self.switchQuickMenu( hash );
             }
         }).done(function(){
-            $(document).trigger('appInit');
+            //$(document).trigger('appInit');
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
             }, 1000);

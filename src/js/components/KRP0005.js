@@ -207,9 +207,10 @@
         //$('.KRP0005').buildCommonUI();
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
-        setTimeout(function(){
-            var isSwipe = !!$('#sw_con').length;
-            if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
+        var isSwipe = !!$('#sw_con').length;
+        
+        if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
+            setTimeout(function(){
                 console.log('krp0005 init');
                 var floatingWrap = $('.floating-wrap').remove();
                 var btnFloatingWrap = $('.btn-floating-wrap').remove();
@@ -222,16 +223,19 @@
                         scrollTop: 0
                     }, 400);
                 });
-
+    
                 KRP0005.init();
-            }
-            // 스와이프 아닌 페이지
-            if (isSwipe == false){
-                KRP0005.init();
-            }
-            
-            
-        },100);
+    
+                $(document).trigger('appInit');
+                
+            },100);
+        }
+        
+        // 스와이프 아닌 페이지
+        if (isSwipe == false){
+            KRP0005.init();
+        }
+        
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
         
     });
