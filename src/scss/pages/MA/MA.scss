@@ -1285,7 +1285,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				a {
-					position: relative;
+					//position: relative;
 				}
 				.img {
 					width: 100% !important;
@@ -1293,7 +1293,13 @@ img{
 					margin: 0 !important;
 					overflow: hidden;
 					&.video {
-						height: 390px !important;
+						// position: static;
+						height: auto !important;
+						min-height: 390px !important;
+						padding-bottom: 100%;
+						video {
+							height: auto;
+						}
 					}
 					&:before {
 						display: none;
@@ -1330,9 +1336,9 @@ img{
 					}
 				}
 				.text-link {
-					top: 21px;
+					top: 37px;
 					bottom: auto !important;
-					right: 16px;
+					right: 32px;
 					>.a {
 						display: none;
 					}
