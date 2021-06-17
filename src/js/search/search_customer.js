@@ -110,7 +110,12 @@
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
+            '{{#if item.target == "popup"}}' + 
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-popup-width="{{item.width}}" data-popup-height="{{item.height}}"class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            
+            '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '{{/if}}' +
             '{{/each}}'+
         '</ul>';
 
@@ -628,16 +633,28 @@
 
             //검색버튼 검색
             requestSearchInput:function(value) {
+                //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
-                    self.openSearchInputLayer(false);
-                    var data = result.data;
-                    //검색어 저장
-                    self.$contentsSearch.attr('data-search-value',value);
-                    self.$contentsSearch.attr('data-search-force',false);
-                    var tab = self.getTabItembyCategoryID(data.category);
-                    self.sendSearchPage(tab.attr('href'),value,false);
+
+                lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    if(result.data && result.data.success == 'Y' && result.data.url) {
+                        if(result.data.linkTarget == 'self') {
+                            location.href = result.data.url;
+                        } else {
+                            window.open(result.data.url,'_blank');
+                        }
+                    } else {
+                        lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                            self.openSearchInputLayer(false);
+                            var data = result.data;
+                            //검색어 저장
+                            self.$contentsSearch.attr('data-search-value',value);
+                            self.$contentsSearch.attr('data-search-force',false);
+                            var tab = self.getTabItembyCategoryID(data.category);
+                            self.sendSearchPage(tab.attr('href'),value,false);
+                        });
+                    }
                 });
             },
 
@@ -807,6 +824,30 @@
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
                     */
+                    
+                    var popupCenter = ({url, title, w, h}) => {
+                        // Fixes dual-screen position                             Most browsers      Firefox
+                        var dualScreenLeft = window.screenLeft !==  undefined ? window.screenLeft : window.screenX;
+                        var dualScreenTop = window.screenTop !==  undefined   ? window.screenTop  : window.screenY;
+                    
+                        var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                        var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+                    
+                        var systemZoom = width / window.screen.availWidth;
+                        var left = (width - w) / 2 / systemZoom + dualScreenLeft
+                        var top = (height - h) / 2 / systemZoom + dualScreenTop
+                        var newWindow = window.open(url, title, 
+                          `
+                          scrollbars=yes,
+                          width=${w / systemZoom}, 
+                          height=${h / systemZoom}, 
+                          top=${top}, 
+                          left=${left}
+                          `
+                        )
+                    
+                        if (window.focus) newWindow.focus();
+                    }
 
                     //서비스 링크
                     $('.service-link, .mobile-service-link').empty();
@@ -814,6 +855,19 @@
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
+                    $('.service-link, .mobile-service-link').find('a').on('click', function(e){
+                        var $this = $(this);
+                        var _target = $this.attr('target');
+                        
+                        if( _target == "popup") {
+                            var _url = $this.attr('href')
+                            var _width = $this.attr('data-popup-width')
+                            var _height = $this.attr('data-popup-height')
+                        
+                            e.preventDefault();
+                            popupCenter({url:_url, title:'', w:_width, h:_height})
+                        }
+                    })
 
                     //noData 체크
                     if(noData) {
