@@ -40,13 +40,15 @@ MainSwiper.prototype = {
         
     },
     setSwipe : function(){
-        var mainSwiper =  this;
-        var currentHash = this.currentHash;
+        var mainSwiper =  this;        
+        var hash = mainSwiper.getLastSegmentByUrl();
+        var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
 
         this.swiper = new Swiper('#sw_con', {
             autoHeight : true,
             observer : true,
             slidesPerView : 1,
+            initialSlide : idx,
             /*
             hashNavigation : {
                 watchState: true
@@ -57,9 +59,7 @@ MainSwiper.prototype = {
                     $('#sw_con .swiper-slide').data('isLoaded', false);
                   //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
-                'init' : function(swiper){
-                    var hash = mainSwiper.getLastSegmentByUrl();
-                    var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
+                'init' : function(swiper){                    
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
@@ -73,6 +73,18 @@ MainSwiper.prototype = {
                     console.log('active page', swiper.slides[swiper.activeIndex] );
                     console.log('swiper', swiper );
                     var currentSlide = swiper.slides[swiper.activeIndex];
+                    // GA 이벤트 액션값 
+                    mainSwiper.customEventActionString = '';
+
+                    if (mainSwiper.currentIdx > swiper.activeIndex){
+                        mainSwiper.customEventActionString = '스와이프 - 좌측';
+                    }
+
+                    if (mainSwiper.currentIdx < swiper.activeIndex){
+                        mainSwiper.customEventActionString = '스와이프 - 우측';
+                    }
+
+                    console.log('customEventActionString' , mainSwiper.customEventActionString);
 
                     mainSwiper.loadContent( currentSlide );
                     mainSwiper.currentIdx = swiper.activeIndex;
@@ -80,6 +92,15 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
                     $('html,body').stop().animate({scrollTop:0}, 300);
+
+                    // GA 커스텀 이벤트 실행
+                    /*
+                    dataLayer.push({
+                        'event': 'customEvent',				
+                        'customEventCategory': '스와이프',				
+                        'customEventAction': '스와이프 - 좌측'
+                    });
+                    */
 
                     /*
                     var nextSlide = swiper.slides[swiper.activeIndex + 1];
@@ -179,6 +200,7 @@ MainSwiper.prototype = {
         });
     },
     setDigitalData : function( pageData ){
+        var self = this;
         // GA 관련 데이터 셋팅
         if (typeof(digitalData) !== 'undefined'){
             if (!!pageData){
@@ -190,12 +212,29 @@ MainSwiper.prototype = {
                 window.digitalData.pageInfo = pageData.digitalData.pageInfo;
             }
         }
+        // 타이틀, 메타값 변경
+        $('link[rel="canonical"]').attr('href' , pageData.meta['canonical']);
+        $('meta[name="description"]').attr('content' , pageData.meta['description']);
+        $('meta[property="og:description"]').attr('content' , pageData.meta['og:description']);
+        $('meta[property="og:image"]').attr('content' , pageData.meta['og:image']);
+        $('meta[property="og:locale"]').attr('content' , pageData.meta['og:locale']);
+        $('meta[property="og:site_name"]').attr('content' , pageData.meta['og:site_name']);
+        $('meta[property="og:title"]').attr('content' , pageData.meta['og:title']);
+        $('meta[property="og:type"]').attr('content' , pageData.meta['og:type']);
+        $('meta[property="og:url"]').attr('content' , pageData.meta['og:url']);
+        $('title').text(pageData.meta['title']);
+        $('meta[name="twitter:card"]').attr('content' , pageData.meta['twitter:card']);
+
         // GA 커스텀 이벤트 실행
-        dataLayer.push({
-            'event': 'customEvent',				
-            'customEventCategory': '스와이프',				
-            'customEventAction': '스와이프 - 좌측'
-        });
+        if (!!self.customEventActionString && typeof(dataLayer) !== 'undefined'){
+            dataLayer.push({
+                'event': 'customEvent',				
+                'customEventCategory': '스와이프',				
+                'customEventAction': self.customEventActionString
+            });
+
+            console.log('dataLayer push!@!@!@', dataLayer);
+        }
     },
     setMobileNav : function(){
         var self = this;
