@@ -275,7 +275,6 @@ $(function(){
 
 
 // 테스트용 임시 페이지 데이터
-/*
 var _PAGE_DATA_TEMP = {
     'home' : {
         'meta' : {
@@ -418,4 +417,3 @@ var _PAGE_DATA_TEMP = {
         }
     }
 };
-*/
