@@ -330,8 +330,8 @@
 								width:64px;
 								height:64px;
 								@include mobile {
-									width: 64px;
-									height: 64px;
+									width: 40px;
+									height: 40px;
 								}
 								img {
 									width:100%;
@@ -1195,18 +1195,22 @@
 						flex-wrap: wrap;
 						height:100%;
 						margin-top:0;
+						padding: 25px 0;
 						overflow:hidden;
 						//overflow-x:auto;
 						//white-space:nowrap;
 						li {
 							display:inline-block;
 							width:25%;
-							margin-top:0;
+							margin-top: 17px;
 							text-align:center;
 							vertical-align:top;
+							&:nth-child(-n + 4) {
+								margin-top: 0;
+							}
 							a {
 								display:block;
-								padding:20px 0 25px;
+								padding: 0;
 								.txt {
 									overflow: hidden;
 									text-overflow: ellipsis;
