@@ -4,7 +4,7 @@ function MainSwiper( ID ){
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
-    this.ablePushState = true;
+    this.ablePushState = false;
     this.swiper = null;
     this.currentHash = window.location.hash;
 
@@ -40,6 +40,7 @@ MainSwiper.prototype = {
         
     },
     setSwipe : function(){
+        var self = this;
         var mainSwiper =  this;        
         var hash = mainSwiper.getLastSegmentByUrl();
         var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
@@ -63,15 +64,17 @@ MainSwiper.prototype = {
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
-                        mainSwiper.loadContent( currentSlide );
-                        //mainSwiper.loadContent( nextSlide );
+                        mainSwiper.loadContent( currentSlide,true );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                     } else {
                         swiper.slideTo( idx );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+                        if(swiper.activeIndex !== swiper.slides.length -1) {
+                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+                        }
                     }
                 },
                 'slideChange' : function(swiper){
-                    console.log('active page', swiper.slides[swiper.activeIndex] );
-                    console.log('swiper', swiper );
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
@@ -86,7 +89,16 @@ MainSwiper.prototype = {
 
                     console.log('customEventActionString' , mainSwiper.customEventActionString);
 
-                    mainSwiper.loadContent( currentSlide );
+                    mainSwiper.loadContent( currentSlide,true );
+
+                    if(swiper.activeIndex > 0){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+                    }
+
+                    if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+                    }
+
                     mainSwiper.currentIdx = swiper.activeIndex;
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
@@ -116,6 +128,22 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
+                },
+                'transitionEnd' : function(swiper){
+                    console.log(" self.ablePushState %o", self.ablePushState );
+                    var currentSlide = swiper.slides[swiper.activeIndex];
+                    var hash = '/' + $(currentSlide).data().hash;
+                    if (hash == '/home'){
+                        hash = '/';
+                    }
+
+                    if(self.ablePushState) {
+                        history.pushState({}, '', hash);      
+                        self.switchQuickMenu( hash );  
+                        self.ablePushState = false;
+                    }
+        
+                    
                 }
             }
         });
@@ -144,11 +172,7 @@ MainSwiper.prototype = {
         var hash = '/' + $(currentSlide).data().hash;
         var currentPageData = _PAGE_DATA[$(currentSlide).data().hash];
 
-        if (pushFlag !== undefined){
-            self.ablePushState = pushFlag;
-        }
-
-        if (self.ablePushState !== false){
+        if (pushFlag){
             self.setDigitalData(currentPageData);
             console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
         }
@@ -162,11 +186,10 @@ MainSwiper.prototype = {
         if (!href) return;
 
         if (isLoaded) {
-            if (self.ablePushState){
-                history.pushState({}, '', hash);                
+            if (pushFlag){
+                self.ablePushState = true;      
             }
-            self.ablePushState = true;
-            self.switchQuickMenu( hash );
+
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
             }, 1000);
@@ -186,12 +209,12 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
+                isLoaded = true;
                 //$(currentSlide).attr('data-isLoaded', true);
-                if (self.ablePushState){
-                    history.pushState({}, '', hash);                    
+
+                if (isLoaded && pushFlag){
+                    self.ablePushState = true;       
                 }
-                self.ablePushState = true;
-                self.switchQuickMenu( hash );
             }
         }).done(function(){
             //$(document).trigger('appInit');
@@ -249,10 +272,9 @@ MainSwiper.prototype = {
     setUrlEvent : function(){
         var self = this;
         $(window).on('popstate', function(){
-            //console.log('popstate', location.href);
+            console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
-            self.ablePushState = false;
             self.swiper.slideTo(idx);            
         });
     },
@@ -321,145 +343,145 @@ $(function(){
 
 
 // 테스트용 임시 페이지 데이터
-var _PAGE_DATA_TEMP = {
-    'home' : {
-        'meta' : {
-            'title' : 'LGE.COM | LG전자',
-            'description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
-            'og:locale' : 'ko_KR',
-            'og:site_name' : 'LG전자',
-            'og:type' : 'website',
-            'og:title' : 'LGE.COM | LG전자',
-            'og:description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
-            'og:url' : 'https://wwwdev50.lge.co.kr',
-            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-            'twitter:card' : 'summary',
-            'canonical' : 'https://wwwdev50.lge.co.kr'
-        },
-        'digitalData' : {
-            'pageInfo' : {
-                "content_depth1": "홈",
-                "content_depth2": null,
-                "content_depth3": null,
-                "content_depth4": null,
-                "content_depth5": null,
-                "event_page_category1": null,
-                "event_page_category2": null,
-                "event_page_category3": null,
-                "exhibition_type": null
-            }
-        }
-    },
-    'store' : {
-        'meta' : {
-            'title' : '전체 제품 | LG전자',
-            'description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
-            'og:locale' : 'ko_KR',
-            'og:site_name' : 'LG전자',
-            'og:type' : 'website',
-            'og:title' : '전체 제품 | LG전자',
-            'og:description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
-            'og:url' : 'https://wwwdev50.lge.co.kr/store',
-            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-            'twitter:card' : 'summary',
-            'canonical' : 'https://wwwdev50.lge.co.kr/store'            
-        },
-        'digitalData' : {
-            'pageInfo' : {
-                "content_depth1": "스토어",
-                "content_depth2": null,
-                "content_depth3": null,
-                "content_depth4": null,
-                "content_depth5": null,
-                "event_page_category1": null,
-                "event_page_category2": null,
-                "event_page_category3": null,
-                "exhibition_type": null
-            }
-        }
-    },
-    'story' : {
-        'meta' : {
-            'title' : '스토리 | LG전자',
-            'description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
-            'og:locale' : 'ko_KR',
-            'og:site_name' : 'LG전자',
-            'og:type' : 'website',
-            'og:title' : '스토리 | LG전자',
-            'og:description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
-            'og:url' : 'https://wwwdev50.lge.co.kr/story',
-            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-            'twitter:card' : 'summary',
-            'canonical' : 'https://wwwdev50.lge.co.kr/story'            
-        },
-        'digitalData' : {
-            'pageInfo' : {
-                "content_depth1": "스토리",
-                "content_depth2": null,
-                "content_depth3": null,
-                "content_depth4": null,
-                "content_depth5": null,
-                "event_page_category1": null,
-                "event_page_category2": null,
-                "event_page_category3": null,
-                "exhibition_type": null
-            }
-        }
-    },
-    'care-solutions' : {
-        'meta' : {
-            'title' : '케어솔루션 렌탈 제품 | LG전자',
-            'description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
-            'og:locale' : 'ko_KR',
-            'og:site_name' : 'LG전자',
-            'og:type' : 'website',
-            'og:title' : '케어솔루션 렌탈 제품 | LG전자',
-            'og:description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
-            'og:url' : 'https://wwwdev50.lge.co.kr/care-solutions',
-            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-            'twitter:card' : 'summary',
-            'canonical' : 'https://wwwdev50.lge.co.kr/care-solutions'            
-        },
-        'digitalData' : {
-            'pageInfo' : {
-                "content_depth1": "케어솔루션",
-                "content_depth2": null,
-                "content_depth3": null,
-                "content_depth4": null,
-                "content_depth5": null,
-                "event_page_category1": null,
-                "event_page_category2": null,
-                "event_page_category3": null,
-                "exhibition_type": null
-            }
-        }
-    },
-    'support' : {
-        'meta' : {
-            'title' : 'LG전자 고객지원',
-            'description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
-            'og:locale' : 'ko_KR',
-            'og:site_name' : 'LG전자',
-            'og:type' : 'website',
-            'og:title' : 'LG전자 고객지원',
-            'og:description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
-            'og:url' : 'https://wwwdev50.lge.co.kr/support',
-            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-            'twitter:card' : 'summary',
-            'canonical' : 'https://wwwdev50.lge.co.kr/support'            
-        },
-        'digitalData' : {
-            'pageInfo' : {
-                "content_depth1": "고객지원",
-                "content_depth2": null,
-                "content_depth3": null,
-                "content_depth4": null,
-                "content_depth5": null,
-                "event_page_category1": null,
-                "event_page_category2": null,
-                "event_page_category3": null,
-                "exhibition_type": null
-            }
-        }
-    }
-};
+// var _PAGE_DATA_TEMP = {
+//     'home' : {
+//         'meta' : {
+//             'title' : 'LGE.COM | LG전자',
+//             'description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
+//             'og:locale' : 'ko_KR',
+//             'og:site_name' : 'LG전자',
+//             'og:type' : 'website',
+//             'og:title' : 'LGE.COM | LG전자',
+//             'og:description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
+//             'og:url' : 'https://wwwdev50.lge.co.kr',
+//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+//             'twitter:card' : 'summary',
+//             'canonical' : 'https://wwwdev50.lge.co.kr'
+//         },
+//         'digitalData' : {
+//             'pageInfo' : {
+//                 "content_depth1": "홈",
+//                 "content_depth2": null,
+//                 "content_depth3": null,
+//                 "content_depth4": null,
+//                 "content_depth5": null,
+//                 "event_page_category1": null,
+//                 "event_page_category2": null,
+//                 "event_page_category3": null,
+//                 "exhibition_type": null
+//             }
+//         }
+//     },
+//     'store' : {
+//         'meta' : {
+//             'title' : '전체 제품 | LG전자',
+//             'description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
+//             'og:locale' : 'ko_KR',
+//             'og:site_name' : 'LG전자',
+//             'og:type' : 'website',
+//             'og:title' : '전체 제품 | LG전자',
+//             'og:description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
+//             'og:url' : 'https://wwwdev50.lge.co.kr/store',
+//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+//             'twitter:card' : 'summary',
+//             'canonical' : 'https://wwwdev50.lge.co.kr/store'            
+//         },
+//         'digitalData' : {
+//             'pageInfo' : {
+//                 "content_depth1": "스토어",
+//                 "content_depth2": null,
+//                 "content_depth3": null,
+//                 "content_depth4": null,
+//                 "content_depth5": null,
+//                 "event_page_category1": null,
+//                 "event_page_category2": null,
+//                 "event_page_category3": null,
+//                 "exhibition_type": null
+//             }
+//         }
+//     },
+//     'story' : {
+//         'meta' : {
+//             'title' : '스토리 | LG전자',
+//             'description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
+//             'og:locale' : 'ko_KR',
+//             'og:site_name' : 'LG전자',
+//             'og:type' : 'website',
+//             'og:title' : '스토리 | LG전자',
+//             'og:description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
+//             'og:url' : 'https://wwwdev50.lge.co.kr/story',
+//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+//             'twitter:card' : 'summary',
+//             'canonical' : 'https://wwwdev50.lge.co.kr/story'            
+//         },
+//         'digitalData' : {
+//             'pageInfo' : {
+//                 "content_depth1": "스토리",
+//                 "content_depth2": null,
+//                 "content_depth3": null,
+//                 "content_depth4": null,
+//                 "content_depth5": null,
+//                 "event_page_category1": null,
+//                 "event_page_category2": null,
+//                 "event_page_category3": null,
+//                 "exhibition_type": null
+//             }
+//         }
+//     },
+//     'care-solutions' : {
+//         'meta' : {
+//             'title' : '케어솔루션 렌탈 제품 | LG전자',
+//             'description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
+//             'og:locale' : 'ko_KR',
+//             'og:site_name' : 'LG전자',
+//             'og:type' : 'website',
+//             'og:title' : '케어솔루션 렌탈 제품 | LG전자',
+//             'og:description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
+//             'og:url' : 'https://wwwdev50.lge.co.kr/care-solutions',
+//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+//             'twitter:card' : 'summary',
+//             'canonical' : 'https://wwwdev50.lge.co.kr/care-solutions'            
+//         },
+//         'digitalData' : {
+//             'pageInfo' : {
+//                 "content_depth1": "케어솔루션",
+//                 "content_depth2": null,
+//                 "content_depth3": null,
+//                 "content_depth4": null,
+//                 "content_depth5": null,
+//                 "event_page_category1": null,
+//                 "event_page_category2": null,
+//                 "event_page_category3": null,
+//                 "exhibition_type": null
+//             }
+//         }
+//     },
+//     'support' : {
+//         'meta' : {
+//             'title' : 'LG전자 고객지원',
+//             'description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+//             'og:locale' : 'ko_KR',
+//             'og:site_name' : 'LG전자',
+//             'og:type' : 'website',
+//             'og:title' : 'LG전자 고객지원',
+//             'og:description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+//             'og:url' : 'https://wwwdev50.lge.co.kr/support',
+//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+//             'twitter:card' : 'summary',
+//             'canonical' : 'https://wwwdev50.lge.co.kr/support'            
+//         },
+//         'digitalData' : {
+//             'pageInfo' : {
+//                 "content_depth1": "고객지원",
+//                 "content_depth2": null,
+//                 "content_depth3": null,
+//                 "content_depth4": null,
+//                 "content_depth5": null,
+//                 "event_page_category1": null,
+//                 "event_page_category2": null,
+//                 "event_page_category3": null,
+//                 "exhibition_type": null
+//             }
+//         }
+//     }
+// };
