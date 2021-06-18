@@ -175,9 +175,7 @@ $(function(){
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-        var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
-        /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
-        $('.ui_wide_slider').vcCarousel({
+        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
@@ -195,16 +193,13 @@ $(function(){
         });
 
 
-        /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
-        
         /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
-        $('.ui_lifestyle_list').vcCarousel({
+        $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
-            swipeToSlide: true,
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 250,
+            speed: 150,
             touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
@@ -223,7 +218,7 @@ $(function(){
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100
                 });
                 
@@ -366,7 +361,7 @@ $(function(){
                             variableWidth: true,
                             lastFix: true,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 250,
+                            speed: 150,
                             touchThreshold: 100
                         });
                         
@@ -468,7 +463,7 @@ $(function(){
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100
                 });
 
@@ -491,7 +486,11 @@ $(function(){
                     var categoryId = item['categoryId'];
                     var iconPath = '';                    
                     if(categoryId){
-                        iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                        if (vcui.detect.isMobileDevice){
+                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
+                        } else {
+                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                        }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -582,7 +581,7 @@ $(function(){
                             slidesToShow: 3,
                             slidesToScroll: 3,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 250,
+                            speed: 150,
                             touchThreshold: 100
                         });
 
