@@ -66,7 +66,7 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
 
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <div class="product-list">\n'+
-    '       <ul>{{#raw obj.productList}}</ul>\n'+
+    '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
     '   </div>\n'+                       
     '{{/each}}';
 
@@ -276,7 +276,6 @@ $(function(){
         
         // 직접관리하는 영역 끝
 
-        
         var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
         var storeSubCategoryTabUrl = $context.find('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
         var storeRankBuyProductUrl = $context.find('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
@@ -450,13 +449,37 @@ $(function(){
                         return item;
                     });
 
-                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
+                    console.log('======================productList=======================')
+                    // console.log(vcui.template(exhibitionProductTmpl, { list: list }) )
+                    // console.log( list  )
+                    console.log('======================/productList=======================')
+                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
+                    console.log( exhibitionStr )
+                    // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                    // $('.plan-exhib-slide.ui_exhib_carousel').find('.ui_carousel_track li .product-listCont').html(exhibitionStr);
+
+                    // $('.ui_exhib_carousel .product-listCont').eq(index).find('.product-list ul').html(' <li>test'+index+'</li>');
+                    // $('.ui_exhib_carousel .product-listCont').eq(index).find('.product-list ul').html(exhibitionStr);
+
+                    
+                    // $('.plan-exhib-slide.ui_exhib_carousel').find('.slide-content > .slide-track > li').size()
+                    console.log(index);
+
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+
+                console.log(nArr )
+                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                    console.log(i,v)
+                    $(this).find('ul').html(nArr[i].productList );
+                })
+                // $('.ui_exhib_carousel .product-listCont').eq(index).find('.product-list ul').html(' <li>test' + index + '</li>');
+                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+              
                 /* 20210615 추천 기획전 구조변경 */
-                $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
