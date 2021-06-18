@@ -111,7 +111,7 @@
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
             '{{#if item.target == "popup"}}' + 
-            '<li><a href="{{item.url}}" target="{{item.target}}" data-popup-width="{{item.width}}" data-popup-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
             
             '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
