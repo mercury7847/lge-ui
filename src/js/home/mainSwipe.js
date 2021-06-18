@@ -4,6 +4,7 @@ function MainSwiper( ID ){
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
+    this.ablePushState = false;
     this.swiper = null;
     this.currentHash = window.location.hash;
 
@@ -39,6 +40,7 @@ MainSwiper.prototype = {
         
     },
     setSwipe : function(){
+        var self = this;
         var mainSwiper =  this;        
         var hash = mainSwiper.getLastSegmentByUrl();
         var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
@@ -126,6 +128,22 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
+                },
+                'transitionEnd' : function(swiper){
+                    console.log(" self.ablePushState %o", self.ablePushState );
+                    var currentSlide = swiper.slides[swiper.activeIndex];
+                    var hash = '/' + $(currentSlide).data().hash;
+                    if (hash == '/home'){
+                        hash = '/';
+                    }
+
+                    if(self.ablePushState) {
+                        history.pushState({}, '', hash);      
+                        self.switchQuickMenu( hash );  
+                        self.ablePushState = false;
+                    }
+        
+                    
                 }
             }
         });
@@ -169,8 +187,7 @@ MainSwiper.prototype = {
 
         if (isLoaded) {
             if (pushFlag){
-                history.pushState({}, '', hash);   
-                self.switchQuickMenu( hash );               
+                self.ablePushState = true;      
             }
 
             setTimeout(function(){
@@ -196,8 +213,7 @@ MainSwiper.prototype = {
                 //$(currentSlide).attr('data-isLoaded', true);
 
                 if (isLoaded && pushFlag){
-                    history.pushState({}, '', hash);      
-                    self.switchQuickMenu( hash );              
+                    self.ablePushState = true;       
                 }
             }
         }).done(function(){
