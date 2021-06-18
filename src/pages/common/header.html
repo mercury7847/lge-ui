@@ -1228,7 +1228,8 @@
                             </div>
                             <!-- //Category Layer -->
                         </li>
-                        <li>
+                        <!-- 210608 컨텐츠 업데이트 표기 클래스 추가  -->
+                        <li class="icon-update">
                             <!-- [D] [1Depth] Click, Hover - .active 추가 -->
                             <a href="#" class="nav-item">스토리</a>
                             <!-- Category Layer -->
@@ -1855,7 +1856,8 @@
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
 <!-- Mobile 메인 메뉴 -->
 <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
-<div class="mobile-nav-wrap" id="mobileNav">
+<!-- 210609 수정  data-story-url="url" 추가 -->
+<div class="mobile-nav-wrap" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
     <ul class="nav">
         <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
         <li><a href="#home" class="nav-item on" >홈</a></li>

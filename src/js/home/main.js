@@ -1,5 +1,4 @@
 $(function () {
-            
     $.extend( $.easing,{
         def: 'easeOutQuad',
         easeInOutQuart: function (x, t, b, c, d) {
@@ -73,7 +72,7 @@ $(function () {
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
 
-        $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
+        $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
         if (!vcui.detect.isMobileDevice){
@@ -82,15 +81,15 @@ $(function () {
         
         $('body').addClass('ignore-overflow-hidden');
 
-        $context.find('.ui_carousel_slider_banner1').find('.flow-bar').css({
+        $('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $context.find('.ui_carousel_slider_banner2').find('.flow-bar').css({
+        $('.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $context.find('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -139,7 +138,7 @@ $(function () {
             ]
         });
 
-        $context.find('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
 
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -222,16 +221,16 @@ $(function () {
         
 
         // 웨일 결합처리
-        $context.find('.foot-cont').find('.menu-opener').on('click', function(e){
+        $('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
-        $context.find('.scene').css({'overflow':'hidden'});
+        $('.scene').css({'overflow':'hidden'});
         
-        $context.find('.container').css({'overflow':'visible', 'height':'auto'});     
+        $('.container').css({'overflow':'visible', 'height':'auto'});     
         
         if ( !vcui.detect.isMobileDevice ){            
-            $context.find('.next-arr').on('click', 'a', function(e){
+            $('.next-arr').on('click', 'a', function(e){
                 e.preventDefault();
                 wheelScene(1);
             });
@@ -257,13 +256,13 @@ $(function () {
         $window.on('breakpointchange', function(e){
 
             var data = window.breakpoint;
-            var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
-            var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
+            var isRecom = $('.recom-list-slide').data('ui_carousel');
+            var isBenefit = $('.benefit-list-slide').data('ui_carousel');
 
             if(data.name == 'mobile'){
 
                 if(!isRecom){
-                    $context.find('.recom-list-slide').vcCarousel({                        
+                    $('.recom-list-slide').vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
@@ -274,7 +273,7 @@ $(function () {
                 }
 
                 if(!isBenefit){
-                    $context.find('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
+                    $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
                         animCtrlers[3] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
@@ -294,13 +293,13 @@ $(function () {
 
             }else if(data.name == 'pc'){
 
-                $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
-                $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
+                $('.recom-list-slide').find('.ui_carousel_dots').hide();
+                $('.benefit-list-slide').find('.ui_carousel_dots').hide();
                 if(isRecom){
-                    $context.find('.recom-list-slide').vcCarousel('destroy');
+                    $('.recom-list-slide').vcCarousel('destroy');
                 }
                 if(isBenefit){
-                    $context.find('.benefit-list-slide').vcCarousel('destroy');
+                    $('.benefit-list-slide').vcCarousel('destroy');
                 }
             }
 
@@ -480,7 +479,7 @@ $(function () {
                 });
             }, 100);
 
-            if(idx > 1 && $context.find('.video-poster').length) $context.find('.video-poster').remove();
+            if(idx > 1 && $('.video-poster').length) $('.video-poster').remove();
         } 
 
         var prevTime = new Date().getTime();
@@ -892,7 +891,7 @@ $(function () {
     //메인 아이콘 애니매이션...
     var animCtrlers = [];
     var startIconAnim = function(){
-        $context.find('.ui_ico_anim').each(function(idx, item){
+        $('.ui_ico_anim').each(function(idx, item){
             setIconAnimCtrler($(item));
         });
     }
@@ -934,7 +933,7 @@ $(function () {
     }
     window.loadAnimSourceComplete = loadAnimSourceComplete;
 
-    $context.find('.ui_ico_anim').each(function(idx, item){
+    $('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
         var patharr = $(item).find('img').attr('src').split("/");
         var pleng = patharr.length;
@@ -974,39 +973,16 @@ $(function () {
         $(item).data("loadTotal", total);
         $(item).data('length', total+1);
     });
-    $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
-    $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
+    $('.ui_ico_anim img').css({position:'absolute', display:'none'});
+    $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
-    /* 20210503 : 모바일앱 다운로드 팝업 */
-   if (vcui.detect.isMobileDevice && !isApp()) {
-        var layer_id = '#mobile-close-popup';
-        var el = $(layer_id);
-        if (el.size() === 0) { return false; }
-        var cookie_name = '__LGAPP_DLOG__';
-
-        if (vcui.Cookie.get(cookie_name) === '') {
-            vcui.modal(layer_id, open);
-            var checkbox = $('#check-today');
-            var download_btn = $('#lg__app-download');
-            download_btn.on('click', function () {
-                goAppUrl();
-                
-                return;
-            });
-            el.find('.ui_modal_close').one('click', function () {
-                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
-                return;
-            });
-        }
-    }
-    /* //20210503 : 모바일앱 다운로드 팝업 */
 
     function setActivePlayByScroll(){
         // BTOCSITE-740
         if (!vcui.detect.isMobileDevice) return;
 
         var sceneActiveQue = [];
-        var scenes = $context.find('.scene');
+        var scenes = $('.scene');
 
         scenes.each(function(){
             var self = $(this);

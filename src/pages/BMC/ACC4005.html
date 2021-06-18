@@ -49,414 +49,353 @@
     
                             <div class="cardinfo-tab-wrap">
                                 <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
+                                    <!-- 210531 멤버십 카드혜택 개편 -->
                                     <ul class="tabs">
-                                        <li class="on"><a href="#card1">베스트샵 신한카드<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#card2">LG라서 즐거운 우리카드</a></li>
-                                        <li><a href="#card3">LG BEST 모바일 Gold 신한카드</a></li>
-                                        <li><a href="#card4">베스트케어 광주카드</a></li>
+                                        <li class="on"><a href="#card1">카드사별 혜택<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#card2">무이자 혜택</a></li>
                                     </ul>
+                                    <!-- //210531 멤버십 카드혜택 개편 -->
                                 </div>
     
-                                <!-- 베스트샵 신한카드 -->
+                                <!-- 카드사별 혜택 -->
                                 <div id="card1" class="card-tab-contents">
-                                    @@include('./common/modules/benefit-card-infos.html', {
-                                        "buyType" : true,
-                                        "cardImg" : "img-cards01",
-                                        "cardAlt" : "카드실물 - (신한카드) 베스트샵",
-                                        "url" : "https://www.shinhancard.com/conts/person/card_info/dream/credit/life/1210252_46588.jsp",
-                                        "cardName" : "베스트샵 신한카드",
-
-                                        "basic" : {
-                                            "title" : "베스트샵 신한카드 특별 혜택",
-                                            "benefits" : [
-                                                "베스트샵플러스 할부 15만원 이상 약정 시 기본 8% 포인트 (5% 포인트 10만원 한도) + 최고 50만원 캐시백 (타가맹점에서 100만원 사용 시)",
-                                                "베스트라이프 교원 plus+ 가입 시 130만원 할인 + 최대 8% 포인트 (추가금액 베스트플러스할부 결제 시)"
-                                            ]
-                                        },
-
-                                        "col2Tbl" : {
-                                            "title" : "신한 PAY FAN & 신한카드 결제금액 별 캐시백 제공",
-                                            "caption" : "카드 결제금액별 제공 캐시백 안내",
-                                            "th1" : "결제금액",
-                                            "th2" : "제공 캐시백",
-                                            "tr" : [
-                                                { "td1" : "100만원 결제시", "td2" : "10,000원" },
-                                                { "td1" : "300만원 결제시", "td2" : "20,000원" },
-                                                { "td1" : "500만원 결제시", "td2" : "30,000원" },
-                                            ]
-                                        }
-                                    })
+                                    <!-- 210601 이미지 srcset 속성 관련 키값 추가 - cardImg2x, cardImg3x -->
+                                    <!-- to-be 210531 멤버십 카드혜택 개편 -->
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img_card_01",
+                                            "cardImg2x" : "img_card_01@2x",
+                                            "cardImg3x" : "img_card_01@3x",
+                                            "cardAlt" : "카드실물 - [롯데] LG전자 x LOCA 롯데카드",
+                                            "cardName" : "[롯데] LG전자 x LOCA 롯데카드",
+    
+                                            "basic" : {
+                                                "title" : "[롯데] LG전자 x LOCA 롯데카드",
+                                                "subtitle" : "- 제휴 신용카드",
+                                                "benetit" : "장기 할부 혜택",
+                                                "benedesc" : "24/36개월 무이자 + 할부금 청구 할인(최대 월 1.6만원)",
+                                                "benefits" : [
+                                                    "청구 전월 제휴카드를 30/70만 이상 이용 시, 각 1만/1.6만원 제공"
+                                                ],
+                                                "bulletTxt1" : "단, 무이자 매출/아파트관리비/세금/공공요금/수수료/면회비 제외",
+                                                "bulletTxt2" : "장기할부 건이 여러 건인 경우에도 합산하여 할인 한도 내에서 통합 할인이 제공됩니다.",
+                                                "bulletTxt3" : "",
+                                                "cashback" : "100만원 이상 결제 시, 5만원 캐시백",
+                                                "saletitle" : "",
+                                                "salecont1" : "",
+                                                "salecont2" : ""
+                                            }
+                                        })
+                                    </div>
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img-card-02",
+                                            "cardImg2x" : "img-card-02@2x",
+                                            "cardImg3x" : "img-card-02@3x",
+                                            "cardAlt" : "카드실물 - [우리] LG전자라서 즐거운 우리카드",
+                                            "cardName" : "[우리] LG전자라서 즐거운 우리카드",
+    
+                                            "basic" : {
+                                                "title" : "[우리] LG전자라서 즐거운 우리카드",
+                                                "subtitle" : "- 제휴 신용카드",
+                                                "benetit" : "장기 할부 혜택",
+                                                "benedesc" : "24/36개월 무이자 + 할부금 청구 할인(최대 월 2만원)",
+                                                "benefits" : [
+                                                    "청구 전월 제휴카드를 30/70/100만 이상 이용 시, 각 1.3만/1.5만/2만원 제공"
+                                                ],
+                                                "bulletTxt1" : "단, 무이자 매출/아파트관리비/세금/공공요금/수수료/면회비 제외",
+                                                "bulletTxt2" : "장기 할부 미이용(월 할부금 선결제 포함) 또는 상환 종료 시에는 할인이 제공되지 않습니다.",
+                                                "bulletTxt3" : "장기할부 건이 여러 건인 경우에도 합산하여 할인 한도 내에서 통합 할인이 제공됩니다.",
+                                                "cashback" : "",
+                                                "saletitle" : "할부 개월 수에 따른 할인 금액",
+                                                "salecont1" : "24개월 할부시 30/70/100만원 → 1.3만/1.5만/2만원 할인",
+                                                "salecont2" : "36개월 할부시 30/70/100만원 → 1.0만/1.5만/2만원 할인"
+                                            }
+                                        })
+                                    </div>
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img-card-hyundai",
+                                            "cardImg2x" : "img-card-hyundai@2x",
+                                            "cardImg3x" : "img-card-hyundai@3x",
+                                            "cardAlt" : "카드실물 - 현대카드",
+                                            "cardName" : "현대카드",
+    
+                                            "basic" : {
+                                                "title" : "현대카드",
+                                                "subtitle" : "- 개인 신용카드 한정 / 법인, 기업, 선불카드 제외",
+                                                "benetit" : "결제 혜택",
+                                                "benedesc" : "할부 결제 시, 금액대별 혜택",
+                                                "benefits" : [
+                                                    "500만/700만/1,000만 이상 결제 시, 15만/20만/30만원 캐시백"
+                                                ],
+                                                "bulletTxt1" : "일시불 결제 시 적용 불가합니다.",
+                                                "bulletTxt2" : "",
+                                                "bulletTxt3" : "",
+                                                "cashback" : "",
+                                                "saletitle" : "",
+                                                "salecont1" : "",
+                                                "salecont2" : ""
+                                            }
+                                        })
+                                    </div>
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img-card-nh",
+                                            "cardImg2x" : "img-card-nh@2x",
+                                            "cardImg3x" : "img-card-nh@3x",
+                                            "cardAlt" : "카드실물 - 농협카드",
+                                            "cardName" : "농협카드",
+    
+                                            "basic" : {
+                                                "title" : "농협카드",
+                                                "subtitle" : "- 개인 신용카드 한정 / 법인, 기업, 선불카드 제외",
+                                                "benetit" : "결제 혜택",
+                                                "benedesc" : "일시불 결제 시, 금액대별 혜택",
+                                                "benefits" : [
+                                                    "300만/500만/700만/1,000만 이상 결제 시, 10만/20만/30만/50만원 캐시백"
+                                                ],
+                                                "bulletTxt1" : "",
+                                                "bulletTxt2" : "",
+                                                "bulletTxt3" : "",
+                                                "cashback" : "",
+                                                "saletitle" : "",
+                                                "salecont1" : "",
+                                                "salecont2" : ""
+                                            }
+                                        })
+                                    </div>
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img-card-kb",
+                                            "cardImg2x" : "img-card-kb@2x",
+                                            "cardImg3x" : "img-card-kb@3x",
+                                            "cardAlt" : "카드실물 - KB국민카드",
+                                            "cardName" : "KB국민카드",
+    
+                                            "basic" : {
+                                                "title" : "KB국민카드",
+                                                "subtitle" : "- 개인 신용카드 한정 / 법인, 기업, 선불카드 제외",
+                                                "benetit" : "결제 혜택",
+                                                "benedesc" : "세이브 결제 시, 금액대별 혜택",
+                                                "benefits" : [
+                                                    "300만/500만/700만/1,000만/1,500만 이상 결제 시, 15만/25만/35만/50만/75만원 캐시백"
+                                                ],
+                                                "bulletTxt1" : "세이브 약정 20만원 이상 시, 금액대별 캐시박 혜택 적용됩니다.",
+                                                "bulletTxt2" : "카드 승인기준 금, 토, 일, 월 결제 시 혜택 적용됩니다.",
+                                                "bulletTxt3" : "",
+                                                "cashback" : "",
+                                                "saletitle" : "",
+                                                "salecont1" : "",
+                                                "salecont2" : ""
+                                            }
+                                        })
+                                    </div>
+                                    <div class="card-sects">
+                                        @@include('./common/modules/benefit-card-infos.html', {
+                                            "buyType" : true,
+                                            "cardImg" : "img-card-citi",
+                                            "cardImg2x" : "img-card-citi@2x",
+                                            "cardImg3x" : "img-card-citi@3x",
+                                            "cardAlt" : "카드실물 - 씨티카드",
+                                            "cardName" : "씨티카드",
+    
+                                            "basic" : {
+                                                "title" : "씨티카드",
+                                                "subtitle" : "- 개인 신용카드 한정 / 법인, 기업, 선불카드 제외",
+                                                "benetit" : "결제 혜택",
+                                                "benedesc" : "일시불/할부 결제 시, 금액대별 혜택",
+                                                "benefits" : [
+                                                    "500만/700만 이상 결제 시, 20만/30만 '익익월말' 캐시백"
+                                                ],
+                                                "bulletTxt1" : "",
+                                                "bulletTxt2" : "",
+                                                "bulletTxt3" : "",
+                                                "cashback" : "",
+                                                "saletitle" : "",
+                                                "salecont1" : "",
+                                                "salecont2" : ""
+                                            }
+                                        })
+                                    </div>
                                 </div>
-                                <!-- // 베스트샵 신한카드 -->
+                                <!-- // 카드사별 혜택 -->
 
-                                <!-- LG라서 즐거운 우리카드 -->
+                                <!-- 무이자 혜택 -->
                                 <div id="card2" class="card-tab-contents" style="display:none;">
-                                    @@include('./common/modules/benefit-card-infos.html', {
-                                        "buyType" : true,
-                                        "cardImg" : "img-cards02",
-                                        "cardAlt" : "카드실물 - (우리카드) LG전자 라서 즐거운",
-                                        "url" : "https://sccd.wooribank.com/ccd/Dream?withyou=CDCIF0021&__STEP=1&amp;CD_PRD_CD=228264&amp;CTGR_CD=C200013",
-                                        "cardName" : "LG라서 즐거운 우리카드",
-
-                                        "basic" : {
-                                            "title" : "LG라서 즐거운 우리카드 혜택",
-                                            "benefits" : [
-                                                "최대 48개월 무이자(24개월/36개월/48개월)<br>※ 특정제품 구매에 한함.",
-                                                "매월 30만원 사용시 월 1만원 할인",
-                                                "청구할인 3% (6만원 한도)"
+                                    <!-- 210531 -->
+                                    <div class="sects">
+                                        <div class="sects-head">
+                                            <strong>카드사별 혜택</strong>
+                                            <em>신용카드 한정 / 법인, 기업, 선불카드 제외</em>
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-ci1",
+                                                "cardImg2x" : "img-ci1",
+                                                "cardImg3x" : "img-ci1",
+                                                "cardAlt" : "신한카드",
+                                                "cardName" : "신한카드",
+        
+                                                "basic" : {
+                                                    "title" : "신한카드",
+                                                    "benefits" : [
+                                                        "2~5개월 무이자 (5만원 이상 결제 시)",
+                                                        "12개월 무이자 (ARS 등록 시, 080-850-0554)"
+                                                    ],
+                                                    "bulletTxt1" : "NEW LG전자 베스트샵 PLUS 카드 제외",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-kb",
+                                                "cardImg2x" : "img-card-kb@2x",
+                                                "cardImg3x" : "img-card-kb@3x",
+                                                "cardAlt" : "KB국민카드",
+                                                "cardName" : "KB국민카드",
+        
+                                                "basic" : {
+                                                    "title" : "KB국민카드",
+                                                    "benefits" : [
+                                                        "2~5개월 무이자 (5만원 이상 결제 시)",
+                                                        "12개월 무이자 (100만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-nh",
+                                                "cardImg2x" : "img-card-nh@2x",
+                                                "cardImg3x" : "img-card-nh@3x",
+                                                "cardAlt" : "NH농협카드",
+                                                "cardName" : "NH농협카드",
+        
+                                                "basic" : {
+                                                    "title" : "농협카드",
+                                                    "benefits" : [
+                                                        "2~5개월 무이자 (5만원 이상 결제 시)",
+                                                        "12개월 무이자 (30만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-woori",
+                                                "cardImg2x" : "img-card-woori@2x",
+                                                "cardImg3x" : "img-card-woori@3x",
+                                                "cardAlt" : "우리카드",
+                                                "cardName" : "우리카드",
+        
+                                                "basic" : {
+                                                    "title" : "우리카드",
+                                                    "benefits" : [
+                                                        "2~5개월 무이자 (5만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-hana",
+                                                "cardImg2x" : "img-card-hana@2x",
+                                                "cardImg3x" : "img-card-hana@3x",
+                                                "cardAlt" : "하나카드",
+                                                "cardName" : "하나카드",
+        
+                                                "basic" : {
+                                                    "title" : "하나카드",
+                                                    "benefits" : [
+                                                        "2~6개월 무이자 (5만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-citi",
+                                                "cardImg2x" : "img-card-citi@2x",
+                                                "cardImg3x" : "img-card-citi@3x",
+                                                "cardAlt" : "씨티카드",
+                                                "cardName" : "씨티카드",
+        
+                                                "basic" : {
+                                                    "title" : "씨티카드",
+                                                    "benefits" : [
+                                                        "2~6개월 무이자 (5만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""
+                                                }
+                                            })
+                                        </div>
+                                        <div class="card-sects">
+                                            @@include('./common/modules/benefit-card-infos.html', {
+                                                "buyType" : true,
+                                                "cardImg" : "img-card-hyundai",
+                                                "cardImg2x" : "img-card-hyundai@2x",
+                                                "cardImg3x" : "img-card-hyundai@3x",
+                                                "cardAlt" : "현대카드",
+                                                "cardName" : "현대카드",
+    
+                                                "basic" : {
+                                                    "title" : "현대카드",
+                                                    "benefits" : [
+                                                        "2/3/4/5/6/7/10/12개월 무이자 (5만원 이상 결제 시)"
+                                                    ],
+                                                    "bulletTxt1" : "",
+                                                    "bulletTxt2" : "",
+                                                    "bulletTxt3" : ""                                                    
+                                                }
+                                            })
+                                        </div>
+                                        <!-- @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTit" : "일반제품 구매 시 카드 혜택 유의사항",
+                                            "bulletTxt" : [
+                                                "동일 모델 4대 이상 복수 구입시 모든 카드 행사는 적용 불가함",
+                                                "법인, 기프트, 체크카드는 혜택 및 제품 카드할인 행사에 제외됨",
+                                                "결제 취소 시 캐시백 금액에 대해서 환불 요청 가능함",
+                                                "진행되는 카드 행사는 금융감독원 및 카드사 조정에 따라 변동될 수 있음",
+                                                "캐시백은 제품 구매 시 배송완료일 기준 익월 말에 지급됩니다."
                                             ]
-                                        }
-                                    })
+                                        }) -->
+                                    </div>
+                                    <!-- // 210531 멤버십 카드혜택 개편 -->
+                                    <!-- // 210601 이미지 srcset 속성 관련 키값 추가 - cardImg2x, cardImg3x -->
                                 </div>
-                                <!-- // LG라서 즐거운 우리카드 -->
-
-                                <!-- LG BEST 모바일 Gold 신한카드 -->
-                                <div id="card3" class="card-tab-contents" style="display:none;">
-                                    @@include('./common/modules/benefit-card-infos.html', {
-                                        "buyType" : true,
-                                        "cardImg" : "img-cards03",
-                                        "cardAlt" : "카드실물 - (신한카드) LG BEST 모바일 Gold",
-                                        "url" : "https://www.shinhancard.com/pconts/html/card/apply/credit/1196320_2207.html",
-                                        "cardName" : "LG BEST 모바일 Gold 신한카드",
-
-                                        "basic" : {
-                                            "title" : "LG BEST 모바일 Gold 신한카드 혜택",
-                                            "benefits" : [
-                                                "24개월 할부 (유이자 5.9%)",
-                                                "매월 30만원 사용시 월 15,000원 할인(통신비 자동이체 필수, Master 카드에 한함)"
-                                            ]
-                                        }
-                                    })
-                                </div>
-                                <!-- // LG BEST 모바일 Gold 신한카드 -->
-
-                                <!-- 베스트케어 광주카드 -->
-                                <div id="card4" class="card-tab-contents" style="display:none;">
-                                    <!-- 210326 url 수정 -->
-                                    @@include('./common/modules/benefit-card-infos.html', {
-                                        "buyType" : true,
-                                        "cardImg" : "img-cards04",
-                                        "cardAlt" : "카드실물 - (광주카드) 베스트케어",
-                                        "url" : "https://www.kjbank.com/ib20/mnu/FPMCARD020103?ib20_cur_mnu=FPMCARD020102&ib20_cur_wgt=FPMCARD020102V10",
-                                        "cardName" : "베스트케어 광주카드",
-
-                                        "basic" : {
-                                            "title" : "베스트케어 광주카드 혜택",
-                                            "benefits" : [
-                                                "최대 36개월 무이자할부(24개월/36개월)",
-                                                "매월 30만원 사용시 월 15,000원 할인"
-                                            ]
-                                        }
-                                    })
-                                    <!-- //210326 url 수정 -->
-                                </div>
-                                <!-- // 베스트케어 광주카드 -->
+                                <!-- // 무이자 혜택 -->
                             </div>
                         </div>
                         <!-- // 카드 종류 -->
-
-                        <!-- 카드사별 혜택 -->
-                        <div class="sects">
-                            <div class="tit-wrap">
-                                <h3 class="tit">카드사별 혜택</h3>
-                            </div>
-                            <div class="card-benefit-accordion ui_accordion" data-single-open="false">
-                                <ul>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
-                                                <span class="title">신한카드</span>
-                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content">
-                                            <div class="accord-inner">
-                                                <div class="cell cis">
-                                                    <span class="ci"><img src="/lg5-common/images/BMC/img-ci1.jpg" alt="신한카드 로고"></span>
-                                                    <span class="pc-only blind">신한카드 혜택</span>
-                                                </div>
-                                                <div class="cell infos-wrap">
-                                                    <div class="info-sect">
-                                                        <p class="tit">무이자 할부</p>
-                                                        <ul class="desc">
-                                                            <li>5만원 이상 결제 시 2~5개월</li>
-                                                            <li>30만원 이상 결제시 6개월~12개월 (부분 무이자 제공)</li>
-                                                        </ul>
-                                                        @@include('./common/modules/bullet-list.html', {
-                                                            "bulletTxt" : [
-                                                                "베스트샵 신한카드의 경우 1회차 만 수수료 청구됨"
-                                                            ]
-                                                        })
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">TV/냉장고/건조기/세탁기 등 최고 200만원 캐시백</p>
-                                                        <ul class="desc">
-                                                            <li>LG전자 제휴카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협</li>
-                                                            <li>일반카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협, 씨티, 현대</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
-                                                <span class="title">NH농협카드</span>
-                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content">
-                                            <div class="accord-inner">
-                                                <div class="cell cis">
-                                                    <span class="ci"><img src="/lg5-common/images/BMC/img-ci2.jpg" alt="NH농협카드 로고"></span>
-                                                    <span class="pc-only blind">NH농협카드 혜택</span>
-                                                </div>
-                                                <div class="cell infos-wrap">
-                                                    <div class="info-sect">
-                                                        <p class="tit">일시불 결제 시 금액별 캐시백 제공</p>
-                                                        <div class="tb_row tb-row-bl">
-                                                            <table>
-                                                                <caption>일시불 결제 금액에 따른 캐시백 금액 안내</caption>
-                                                                <colgroup>
-                                                                    <col style="width:50%">
-                                                                    <col>
-                                                                </colgroup>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">결제 금액</th>
-                                                                        <th scope="col">캐시백 금액</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>300만원 결제시</td>
-                                                                        <td>10만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>500만원 결제시</td>
-                                                                        <td>20만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>700만원 결제시</td>
-                                                                        <td>30만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>1,000만원 결제시</td>
-                                                                        <td>50만원 캐시백</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        @@include('./common/modules/bullet-list.html', {
-                                                            "bulletTxt" : [
-                                                                "캐시백은 결제 월 기준  1회 제공"
-                                                            ]
-                                                        })
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">무이자 할부</p>
-                                                        <ul class="desc">
-                                                            <li>5만원 이상 결제 시 2~5개월</li>
-                                                            <li>30만원 이상 결제시 6개월~12개월</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">TV/냉장고/건조기/세탁기 등 최고 200만원 캐시백</p>
-                                                        <ul class="desc">
-                                                            <li>LG전자 제휴카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협</li>
-                                                            <li>일반카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협, 씨티, 현대</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
-                                                <span class="title">KB국민카드</span>
-                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content">
-                                            <div class="accord-inner">
-                                                <div class="cell cis">
-                                                    <span class="ci"><img src="/lg5-common/images/BMC/img-ci3.jpg" alt="KB국민카드 로고"></span>
-                                                    <span class="pc-only blind">KB국민카드 혜택</span>
-                                                </div>
-                                                <div class="cell infos-wrap">
-                                                    <div class="info-sect">
-                                                        <p class="tit">세이브 20만원 이상 약정시 결제 금액별 캐시백 제공</p>
-                                                        <div class="tb_row tb-row-bl">
-                                                            <table>
-                                                                <caption>세이브 20만원 이상 약정시 결제 금액에 따른 캐시백 금액 안내</caption>
-                                                                <colgroup>
-                                                                    <col style="width:50%">
-                                                                    <col>
-                                                                </colgroup>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">결제 금액</th>
-                                                                        <th scope="col">캐시백 금액</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>300만원 결제시</td>
-                                                                        <td>15만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>500만원 결제시</td>
-                                                                        <td>25만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>700만원 결제시</td>
-                                                                        <td>35만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>1,000만원 결제시</td>
-                                                                        <td>50만원 캐시백</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        @@include('./common/modules/bullet-list.html', {
-                                                            "bulletTxt" : [
-                                                                "캐시백은 결제 월 기준  1회 제공, 금,토,일,월 결제 시 만 적용됨"
-                                                            ]
-                                                        })
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">무이자 할부</p>
-                                                        <ul class="desc">
-                                                            <li>5만원 이상 결제 시 2~5개월</li>
-                                                            <li>30만원 이상 결제 시 6개월</li>
-                                                            <li>100만원 이상 결제 시 12개월</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">TV/냉장고/건조기/세탁기 등 최고 200만원 캐시백</p>
-                                                        <ul class="desc">
-                                                            <li>LG전자 제휴카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협</li>
-                                                            <li>일반카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협, 씨티, 현대</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
-                                                <span class="title">씨티카드</span>
-                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content">
-                                            <div class="accord-inner">
-                                                <div class="cell cis">
-                                                    <span class="ci"><img src="/lg5-common/images/BMC/img-ci4.jpg" alt="씨티카드 로고"></span>
-                                                    <span class="pc-only blind">씨티카드 혜택</span>
-                                                </div>
-                                                <div class="cell infos-wrap">
-                                                    <div class="info-sect">
-                                                        <p class="tit">무이자 할부</p>
-                                                        <ul class="desc">
-                                                            <li>5만원 이상 결제 시 2~5개월</li>
-                                                            <li>30만원 이상 결제시 6개월</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">TV/냉장고/건조기/세탁기 등 최고 200만원 캐시백</p>
-                                                        <ul class="desc">
-                                                            <li>LG전자 제휴카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협</li>
-                                                            <li>일반카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협, 씨티, 현대</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="lists">
-                                        <div class="head">
-                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="혜택 자세히보기" data-close-text="혜택 닫기">
-                                                <span class="title">현대카드</span>
-                                                <span class="blind ui_accord_text">혜택 자세히보기</span>
-                                            </a>
-                                        </div>
-                                        <div class="accord-cont ui_accord_content">
-                                            <div class="accord-inner">
-                                                <div class="cell cis">
-                                                    <span class="ci"><img src="/lg5-common/images/BMC/img-ci5.jpg" alt="현대카드 로고"></span>
-                                                    <span class="pc-only blind">현대카드 혜택</span>
-                                                </div>
-                                                <div class="cell infos-wrap">
-                                                    <div class="info-sect">
-                                                        <p class="tit">할부 결제 시 결제 금액별 캐시백 제공</p>
-                                                        <div class="tb_row tb-row-bl">
-                                                            <table>
-                                                                <caption>할부 결제 금액에 따른 캐시백 금액 안내</caption>
-                                                                <colgroup>
-                                                                    <col style="width:50%">
-                                                                    <col>
-                                                                </colgroup>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">결제 금액</th>
-                                                                        <th scope="col">캐시백 금액</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>500만원 결제시</td>
-                                                                        <td>15만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>700만원 결제시</td>
-                                                                        <td>20만원 캐시백</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>1,000만원 결제시</td>
-                                                                        <td>30만원 캐시백</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">무이자 할부</p>
-                                                        <ul class="desc">
-                                                            <li>5만원 이상 결제 시 2~5개월</li>
-                                                            <li>30만원 이상 결제 시 6개월</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="info-sect">
-                                                        <p class="tit">TV/냉장고/건조기/세탁기 등 최고 200만원 캐시백</p>
-                                                        <ul class="desc">
-                                                            <li>LG전자 제휴카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협</li>
-                                                            <li>일반카드 : 신한, 우리, 하나, 전북, 광주, KB국민, NH농협, 씨티, 현대</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "일반제품 구매 시 카드 혜택 유의사항",
-                                "bulletTxt" : [
-                                    "동일 모델 4대 이상 복수 구입시 모든 카드 행사는 적용 불가함",
-                                    "법인, 기프트, 체크카드는 혜택 및 제품 카드할인 행사에 제외됨",
-                                    "결제 취소 시 캐시백 금액에 대해서 환불 요청 가능함",
-                                    "진행되는 카드 행사는 금융감독원 및 카드사 조정에 따라 변동될 수 있음",
-                                    "캐시백은 제품 구매 시 배송완료일 기준 익월 말에 지급됩니다."
-                                ]
-                            })
-                        </div>
-                        <!-- // 카드사별 혜택 -->
                     </div>
                     <!-- // 제품 구매 카드 혜택-->
 

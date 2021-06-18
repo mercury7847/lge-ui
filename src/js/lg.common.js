@@ -3,6 +3,29 @@ var isApp = function(){
     return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
 }
 
+/* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
+*  @path : 랜딩할 경로
+*/
+var goAppUrl = function(path) {
+    var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
+
+    if( vcui.detect.isIOS ) {
+        var clickedAt = +new Date;
+        setTimeout( function () { 
+            if (+new Date - clickedAt < 2000 ) { 
+                // 앱스토어 이동 
+                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
+            }
+        } ,1500);
+
+        setTimeout( function () { 
+            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
+        },0);
+    } else {
+        alert(weblink);
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end;','_blank');
+    }
+}
 
 ;(function(global){
 
@@ -29,6 +52,27 @@ var isApp = function(){
             $b.vcLazyLoader();
         });
     };
+
+    // BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가 - 해당 요건으로인해 스크립트로 이동
+    var appDownloadTmpl = 
+        '<article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">\n'+
+        '    <section class="pop-conts align-center">\n'+
+        '        <section class="section">\n'+
+        '            <div class="appMobile-pop-content">\n'+
+        '                <p class="appMobile-popImg"><img src="/lg5-common/images/MA/appPop_img_v2.png" alt="LG로고" class="pop-img"></p>\n'+
+        '                <div class="text-cont">\n'+
+        '                LG전자 <b>LGE.COM</b><br/>\n'+
+        '                앱으로 더 편리하게<br/>\n'+
+        '                이용하실 수 있습니다.\n'+
+        '                </div>\n'+
+        '            </div>\n'+
+        '            <div class="btn-wrap">\n'+
+        '                <button type="button" class="btn full border size-m" id="lg__app-download"><span>지금 앱으로 보기</span></button>\n'+
+        '            </div>\n'+
+        '        </section>\n'+
+        '    </section>\n'+
+        '    <button type="button" class="ui_modal_close">모바일 웹에서볼게요</button>\n'+
+        '</article>\n';
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -279,7 +323,7 @@ var isApp = function(){
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.lge.co.kr'],
         CONTEXT_AREA: null,      
         init: function( $context ){            
             var self = this;
@@ -299,12 +343,45 @@ var isApp = function(){
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
+            self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
             else $('body').find('.container').attr('id', 'content');
         },
 
+        //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
+        _appDownloadPopup: function() {
+            var enableUrl = [
+                '^/$', // 메인
+                '^/benefits/event/?', // 이벤트 페이지
+                '^/benefits/exhibitions/?' // 기획전 페이지
+            ];
+
+            var isPopUp = enableUrl.some(function(element) {
+                return location.pathname.match(new RegExp(element,"g"))
+            })
+
+            $(function() {
+                if (vcui.detect.isMobileDevice && !isApp()) {
+                    var cookie_name = '__LGAPP_DLOG__';
+                    if (vcui.Cookie.get(cookie_name) === '' && isPopUp ) {
+                        if($('#mobile-close-popup').size() === 0) $('body').append(vcui.template(appDownloadTmpl))
+                        vcui.modal('#mobile-close-popup', open);
+                        var el = $('#mobile-close-popup');
+                        el.find('#lg__app-download').on('click', function () {
+                            goAppUrl();
+                            return;
+                        });
+                        
+                        el.find('.ui_modal_close').one('click', function () {
+                            vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                            return;
+                        });
+                    }
+                }
+            });
+        },
         _addImgOnloadEvent: function(){
             var self = this;
             $('img').not('[data-pc-src]').on('error', function(e){
@@ -875,16 +952,16 @@ var isApp = function(){
         addCompareProd: function(categoryId, data){
             var self = this;
             
-
             var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -900,7 +977,7 @@ var isApp = function(){
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
@@ -918,11 +995,9 @@ var isApp = function(){
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
@@ -1955,21 +2030,39 @@ var isApp = function(){
 
         //크레마로그인
         cremaLogin:function() {
-            if(typeof cremaid !== 'undefined' && typeof cremaname !== 'undefined') {
-                window.cremaAsyncInit = function () {
-                    if(typeof crema !== 'undefined') {
-                        crema.init(cremaid, cremaname);
-                    }
+
+            // 크레마 init 구조상 cremaAsyncInit 함수가 먼저 선언되 있어야 초기화 오류가 안난다.
+            window.cremaAsyncInit = function () {
+                if(typeof crema !== 'undefined') {
+                    crema.init(cremaid, cremaname);
+                }
+            };
+
+            (function(i,s,o,g,r,a,m){
+                var isMobile = false;
+                if(vcui.detect.isMobile){
+                    isMobile = true;
+                }
+                
+                if(location.hostname == "www.lge.co.kr") {
+                    r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+                } else {
+                    r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+                }
+            
+                if(s.getElementById(g)){
+                    return
                 };
-                window.cremaAsyncInit();
-            } else {
-                window.cremaAsyncInit = function () {
-                    if(typeof crema !== 'undefined') {
-                        crema.init(cremaid, cremaname);
-                    }
-                };
-                window.cremaAsyncInit();
-            }
+                a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+                a.id=g;
+                a.async=1;
+                a.src=r;
+                m.parentNode.insertBefore(a,m);
+            })(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
+
+
+            window.cremaAsyncInit();
+
         },
 
         //크레마리플래쉬
@@ -2130,6 +2223,7 @@ var isApp = function(){
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();
+
     });
 
     global.addEventListener('load', function(){
@@ -2139,4 +2233,3 @@ var isApp = function(){
     });
 
 })(window);
-

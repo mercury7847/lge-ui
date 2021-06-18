@@ -18,10 +18,7 @@
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
                 '</div>{{/if}}' +
-                //03-31
-                //방문 알리미 > 다음방문 서비스 상세 영역에 [방문일정 변경 요청] 버튼은 하이케어의 요청으로 파일럿 운영에 대한 추가 요구사항 분석 및 반영 이후 적용되어야 한다고 합니다.
-                //때문에 현재 시점에서는 해당 버튼을 숨김 처리 해주십시오. 개발/STG/운영에 모두 숨김처리 요청드립니다.
-                //'{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
+                '{{#if type=="next" && changeEnable}}<button type="button" class="btn size border" data-date="{{date}}" data-time="{{time}}"><span>방문일정 변경요청</span></button>{{/if}}' +
             '</div>' +
         '</div>' +
     '</li>'
@@ -29,11 +26,13 @@
     var popUpVisitDayItemTemplate = '<tr>' +
         '{{#each item in listData}}' +
             '{{#if item.type=="disabled"}}' +
-                '<td class="disabled" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">선택불가</span></button></td>' +
+                '{{#if item.expected==true}}' +
+                    '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
+                '{{#else}}' +
+                    '<td class="disabled" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">선택불가</span></button></td>' +
+                '{{/if}}' +
             '{{#elsif item.type=="enabled"}}' +
                 '<td data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span></button></td>' +
-            '{{#elsif item.type=="expected"}}' +
-                '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}"><span>{{item.day}}</span><span class="blind">방문 예정일</span></button></td>' +
             /*
                 '{{#elsif item.type=="expectedDisabled"}}' +
                 '<td class="expected" data-value="{{item.value}}"><button type="button" title="{{item.dateString}}" disabled><span>{{item.day}}</span><span class="blind">방문 예정일 선택불가</span></button></td>' +
@@ -185,7 +184,7 @@
                 var self = this;
 
                 //방문일정 변경 팝업 날짜 선택
-                self.$popupChangeVisitDate.on('click', 'table.box-table tr td button', function(e){
+                self.$popupChangeVisitDate.on('click', 'table.box-table tr td:not(.disabled):not(.expected) button', function(e){
                     e.preventDefault();
                     var $table = $(this).parents('table.box-table');
                     var $td = $table.find('tr td.choice');
@@ -217,9 +216,18 @@
                     param.visitQna = self.$myVisitQna.is(':visible') ? self.$myVisitQna.find('div.cont').html() : null;
                     param.irregularCheckout = self.$irregularCheckout.is(':visible') ? self.$irregularCheckout.find('div.cont').html() : null;
                     
+
+                    // BTOCSITE-954 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
+                    $selectedDate = self.$calendarTable.find('tr td.choice').length == 1;
+                    $selectedTime = self.$timeTable.find('tr td.choice').length == 1;
+
+                    if(!$selectedDate) alert('변경할 방문일을 선택해주세요.');
+                    if($selectedDate && !$selectedTime) alert('방문시간을 선택해주세요.');
+
                     if(param.date && param.time) {
                         self.requestChangeVisitDay(param);
                     }
+                   
                 });
             },
 
@@ -256,6 +264,7 @@
             requestData: function(contract) {
                 var self = this;
                 var ajaxUrl = self.$contents.attr('data-list-url');
+                var _id = self.getSelectedContractID();   // BTOCSITE-25 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발
                 location.hash = contract;
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, {"contract":contract}, function(result) {
@@ -273,13 +282,16 @@
                         var itemYear = parseInt(vcui.date.format(item.date,'yyyy'));
                         var thisMonth = new Date().getMonth() + 1;
                         var thisYear = new Date().getFullYear();
-                        item.changeEnable = false;
-                        if(itemYear < thisYear) {
-                            item.changeEnable = true;
-                        } else if(itemYear == thisYear && itemMonth <= thisMonth) {
-                            item.changeEnable = true;
-                        }
 
+                       if(_id !== 'all' && item.changeEnable) { // BTOCSITE-954 케어솔루션 - 방문일정, 고객접점이력 관련 기능 개발 
+                            if(itemYear < thisYear) {
+                                item.changeEnable = true;
+                            } else if(itemYear == thisYear && itemMonth <= thisMonth) {
+                                item.changeEnable = true;
+                            } else {
+                                item.changeEnable = false;
+                            }
+                       }
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
                 });
@@ -305,6 +317,7 @@
                 self.$popupChangeVisitDate.attr('data-manager-emp-no', param.managerEmpNo);
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                    var timeTableDraw = true;
                     var data = result.data;
 
                     if(lgkorUI.stringToBool(data.pendingRequest)) {
@@ -318,20 +331,22 @@
                     arr.forEach(function(obj, index) {
                         obj.expectedDate = date;
                         obj.listData.forEach(function(item, index) {
+                            item.expected = false;
                             if(item.value && !getBasicDate) {
                                 getBasicDate = item.value;
                             }
                             item.dateString = vcui.date.format(item.value,'yyyy년 M월.d일');
                             item.day = vcui.date.format(item.value,'d');
                             if(!(!item.value) && item.value == date) {
-                                item.type = "expected";
-                                /*
-                                if(item.type == "disabled") {
-                                    item.type = "expectedDisabled";
-                                } else {
-                                    item.type = "expected";
-                                }
-                                */
+                                item.expected = true;
+                                timeTableDraw = item.type !== 'disabled'
+                                
+                                // if(item.type == "disabled") {
+                                //     item.type = "expectedDisabled";
+                                // } else {
+                                //     item.type = "expected";
+                                // }
+                                
                             }
                         });
                         $list.append(vcui.template(popUpVisitDayItemTemplate, obj));
@@ -355,6 +370,7 @@
                         selectedData.date = getBasicDate;
                     }
                     self.setVisitDateText(selectedData);
+                    if(timeTableDraw) self.requestEnableVisitTime(selectedData);
                     
                     self.$timeTableWrap.hide();
                     self.$timeTableWrapFirst.show();

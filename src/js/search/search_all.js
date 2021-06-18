@@ -371,6 +371,12 @@
                     var $li = self.$tab.find('li a:eq("'+index+'")');
                     var href = $li.attr('href');
 
+                    var careType = lgkorUI.getParameterByName('careType')
+                    if(careType) {
+                        href += (href.indexOf("?") === -1 ? "?" : "&");
+                        href += "careType="+careType;
+                    }
+
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
                     var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
@@ -690,16 +696,28 @@
 
             //검색버튼 검색
             requestSearchInput:function(value) {
+                //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
-                    self.openSearchInputLayer(false);
-                    var data = result.data;
-                    //검색어 저장
-                    self.$contentsSearch.attr('data-search-value',value);
-                    self.$contentsSearch.attr('data-search-force',false);
-                    var tab = self.getTabItembyCategoryID(data.category);
-                    self.sendSearchPage(tab.attr('href'),value,false);
+                
+                lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    if(result.data && result.data.success == 'Y' && result.data.url) {
+                        if(result.data.linkTarget == 'self') {
+                            location.href = result.data.url;
+                        } else {
+                            window.open(result.data.url,'_blank');
+                        }
+                    } else {
+                        lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                            self.openSearchInputLayer(false);
+                            var data = result.data;
+                            //검색어 저장
+                            self.$contentsSearch.attr('data-search-value',value);
+                            self.$contentsSearch.attr('data-search-force',false);
+                            var tab = self.getTabItembyCategoryID(data.category);
+                            self.sendSearchPage(tab.attr('href'),value,false);
+                        });
+                    }
                 });
             },
 
@@ -707,9 +725,12 @@
             requestSearchData:function(value, force) {
                 var self = this;
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
+                var postData = {"search":value, "force":force};
+                var careType = lgkorUI.getParameterByName('careType')
+                if(careType) vcui.extend(postData,{ "careType" : careType });
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
 
                     var data = result.data;
@@ -842,20 +863,21 @@
                         $resultListWrap.hide();
                     }
 
-                    //이벤트/기획전
+                    //케어용품/소모품
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(1)');
-                    arr = self.checkArrayData(data.event);
-                    count = self.checkCountData(data.event);
+                    arr = self.checkArrayData(data.additional); // 
+                    count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
-                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
-                            item.isEnd = lgkorUI.stringToBool(item.isEnd);
-                            $list_ul.append(vcui.template(eventItemTemplate, item));
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            item.hasPrice = (item.price || item.carePrice);
+                            $list_ul.append(vcui.template(additionalItemTemplate, item));
                         });
                         $resultListWrap.show();
                         noData = false;
@@ -869,6 +891,7 @@
                     } else {
                         $resultListWrap.hide();
                     }
+
 
                     //스토리
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(2)');
@@ -902,21 +925,20 @@
                         $resultListWrap.hide();
                     }
 
-                    //케어용품/소모품
+                    //이벤트/기획전
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(3)');
-                    arr = self.checkArrayData(data.additional);
-                    count = self.checkCountData(data.additional);
+                    arr = self.checkArrayData(data.event); //
+                    count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                            item.hasPrice = (item.price || item.carePrice);
-                            $list_ul.append(vcui.template(additionalItemTemplate, item));
+                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            item.isEnd = lgkorUI.stringToBool(item.isEnd);
+                            $list_ul.append(vcui.template(eventItemTemplate, item));
                         });
                         $resultListWrap.show();
                         noData = false;

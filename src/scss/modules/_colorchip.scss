@@ -4,7 +4,7 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip/colorchip.png');
+		background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 	}
 	&.large{
@@ -18,6 +18,14 @@
 			background:#fff; color:#000000 !important;
 		}
 	}
+	/* BTOCSITE-644 시블링코드 마스터 색상 추가 */
+	&.mattblack_glossy-white {
+		& input + label:before {
+			background:#fff; color:#000000 !important;
+		}
+	}
+	/* //BTOCSITE-644 시블링코드 마스터 색상 추가 */
+
 	&.wild-cherry-redd,
 	&.wild-cherry-red,
 	&.blackcherry,
@@ -1512,11 +1520,13 @@
 			background:#494D50 !important; color:#000 !important;
 		}
 	}
+	/* 20210607 스펙선택 추가 */ 
 	&.white {
 		& input + label:before {
-			background:#fff !important; color:#000 !important;
+			background:#fff !important; color:#000 !important; border: 1px solid #ddd !important;
 		}
 	}
+	/* //20210607 스펙선택 추가 */ 
 	&.blue-silver {
 		& input + label:before {
 			background:#2F5275 !important; color:#000 !important;
@@ -2481,11 +2491,14 @@
 			background:#333438;
 		}
 	}
+	/* 20210607 스펙선택 추가 */ 
 	&.snow_white {
 		& input + label:before {
-			background:#efeef0;
+			background:#fff;
+			border: 1px solid #ddd !important;
 		}
 	}
+	/* //20210607 스펙선택 추가 */
 	&.dark_silver {
 		& input + label:before {
 			background:#555557;

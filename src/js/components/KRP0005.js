@@ -79,8 +79,15 @@
             });
 
             self.$KRP0005.on('click','div.floating-linker > a',function(e){
+              
                 e.preventDefault();
                 var $div = $(this).parents('div.floating-linker');
+
+                if ($div.hasClass('faq')){
+                    window.open('/support/usage-guide-faq','_blank');
+                    return;
+                }
+
                 if($div.hasClass('chat')) {
                     //상담쳇
                 } else if($div.hasClass('recently')) {

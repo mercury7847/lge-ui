@@ -597,16 +597,28 @@
 
             //검색버튼 검색
             requestSearchInput:function(value) {
+                //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
-                    self.openSearchInputLayer(false);
-                    var data = result.data;
-                    //검색어 저장
-                    self.$contentsSearch.attr('data-search-value',value);
-                    self.$contentsSearch.attr('data-search-force',false);
-                    var tab = self.getTabItembyCategoryID(data.category);
-                    self.sendSearchPage(tab.attr('href'),value,false);
+
+                lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    if(result.data && result.data.success == 'Y' && result.data.url) {
+                        if(result.data.linkTarget == 'self') {
+                            location.href = result.data.url;
+                        } else {
+                            window.open(result.data.url,'_blank');
+                        }
+                    } else {
+                        lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                            self.openSearchInputLayer(false);
+                            var data = result.data;
+                            //검색어 저장
+                            self.$contentsSearch.attr('data-search-value',value);
+                            self.$contentsSearch.attr('data-search-force',false);
+                            var tab = self.getTabItembyCategoryID(data.category);
+                            self.sendSearchPage(tab.attr('href'),value,false);
+                        });
+                    }
                 });
             },
 
@@ -747,16 +759,16 @@
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
 
-                    //이벤트
-                    count = self.checkCountData(data.event);
+                    //케어용품/소모품
+                    count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
 
                     //스토리
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
 
-                    //케어용품/소모품
-                    count = self.checkCountData(data.additional);
+                    //이벤트
+                    count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
 
                     //고객지원

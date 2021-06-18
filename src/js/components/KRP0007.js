@@ -2,7 +2,7 @@
 (function () {
     var productItemTemplate =
     '<li data-uniq-id="{{uniqId}}">' +
-        '<div class="item plp-item">' +
+        '<div class="item plp-item" data-ec-product="{{ecProduct}}">' +
         '{{#if promotionBadges}}'+
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
@@ -69,6 +69,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT")}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -167,7 +168,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
@@ -684,11 +685,13 @@
                         return false;
                     }
                 } else if(item.bizType == "CARESOLUTION") {
-                    if (item.years1TotAmt && item.years1TotAmt != "" && item.obsBtnRule=="enable") {
+                    /* BTOCSITE-520 */
+                    if (item.years1TotAmt && item.years1TotAmt != "") {
                         return true;
                     } else {
                         return false;
                     }
+                    /* //BTOCSITE-520 */
                 } else {
                     //소모품 DISPOSABLE
                     if (item.obsInventoryQty > 0) {
@@ -758,7 +761,13 @@
 
                 item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
+                /* 20210527 추가 */
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                item.obsSellingPriceNumber = (item.obsSellingPrice != null) ? item.obsSellingPrice : null;  
+                // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
+                /* 20210527 추가 */
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
+                
                 item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 
                 item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;
@@ -825,6 +834,41 @@
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
                 //console.log("### item.siblingType ###", item.siblingType);
 
+                function getEcCategoryName(item){
+                    if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                        return item.superCategoryName + "/" + item.categoryName 
+                    } else {
+                        return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                    }
+                }
+
+                function getGubunValue(bizType){
+                    var curValue = "";
+                    switch(bizType) {
+                        case "PRODUCT": 
+                            curValue = "일반제품"
+                            break;
+                        case "CARESOLUTION": 
+                            curValue = "케어솔루션"
+                            break;
+                        case "DISPOSABLE": 
+                            curValue = "케어용품/소모품"
+                            break;                            
+                    }
+                    return curValue;
+                }
+
+                var ecProduct = {
+                    "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+                    "model_id": item.modelId,
+                    "model_sku": item.modelName, 
+                    "model_gubun": getGubunValue(item.bizType),
+                    "price": vcui.number.addComma(item.obsOriginalPrice), 
+                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                    "brand": "LG",
+                    "category": getEcCategoryName(item) 
+                }
+                item.ecProduct = JSON.stringify(ecProduct);
                 return vcui.template(productItemTemplate, item);
             },
 
@@ -884,25 +928,23 @@
             },
 
             //비교하기 저장 유무 체크...
-            setCompares:function(){
+            setCompares: function () {
                 var self = this;
-
                 var compare = self.$productList.find('li .product-compare a');
                 compare.removeClass('on');
-                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                if (!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
                 else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
                 var isCompare = vcui.isEmpty(storageCompare);
-                if(!isCompare){
-                    //if(!vcui.isEmpty(storageCompare[categoryId]))
-                    for(var i in storageCompare[categoryId]){
-                        var modelID = storageCompare[categoryId][i]['id'];
+                if (!isCompare) {
+                    storageCompare['data'].forEach(function (item) {
+                        var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
                         compare.addClass('on');
                         compare.find('.blind').text('선택됨');
-                    }
+                    });
                 }
             },
 

@@ -186,7 +186,10 @@
                 self.$mobilePdpInfo = $('div.mobile-pdp-info');
                 self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
-                self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                //self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
+                self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
+                self.$pdpInfoSiblingOption = self.$specInfoPopup.find('.sibling-option'); //20210607 스펙선택 추가
+                self.$pdpInfoSiblingColorText = $('.chk-wrap-colorchip'); //20210607 스펙선택 추가
                 
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
@@ -401,7 +404,10 @@
                     focusOnSelect: false,
                     focusOnChange: false,
                     dots: false,
-                    buildDots: false
+                    buildDots: false,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
                 });
                 //self.$pdpMobileVisual.show();
             },
@@ -409,6 +415,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$specInfoPopup = $('#specInfoPopup'); /* 20210607 스펙선택 추가 */
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -569,9 +576,17 @@
                     }
                     if(index == 0) {
                         //구매
+                        //$('.cardDiscount').removeClass('retalCareOn');
+                        $('.cardDiscount').show();
+                        /* 20210528 추가 */
+                        $('.care-solution-info').hide();
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
+                        //$('.cardDiscount').addClass('retalCareOn');
+                        $('.cardDiscount').hide();
+                        /* 20210528 추가 */
+                        $('.care-solution-info').show();
                     }
                     history.replaceState({},"",url);
                 });
@@ -827,14 +842,30 @@
                     }
                 });
 
+                /* 20210607 스펙선택 추가 */
+                self.$pdpInfo.on('click','li.lists.Spec a.btn-link.popup', function(e) {
+                    e.preventDefault();
+                    self.$specInfoPopup.vcModal({opener: this});
+                });
+                /* //20210607 스펙선택 추가 */
+                
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
                     self.$benefitInfoPopup.vcModal({opener: this});
                 });
 
+                /* 20210609 스펙선택 추가 */
+                //sibilng 팝업 제품 칼라값 텍스트 변경
+                self.$pdpInfoSiblingColorText.on('click', function(){
+                    var siblingColorText = $(this).attr('title') 
+                    $('.color-text span').text(siblingColorText);
+                });
+                /* 20210609 스펙선택 추가 */
+
+                /* 20210607 스펙선택 추가 */
                 //인포 옵션 변경 (링크로 바뀜)
-                self.$pdpInfoSiblingOption.on('click','div.option-list input', function(e){
+                self.$pdpInfoSiblingOption.on('click','div.sibling-group .sibling-btn button', function(e){
                     var ajaxUrl = self.$pdpInfo.attr('data-sibling-url');
                     if(ajaxUrl) {
                         var siblingCode = [];
@@ -882,6 +913,7 @@
                     }
                     */
                 });
+                /* //20210607 스펙선택 추가 */ 
 
                 //소모품 추가구매
                 self.$pdpInfoAdditionalPurchase.on('click','div.selectbox-list a', function(e){
@@ -1885,13 +1917,15 @@
                 var ajaxUrl;
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-
-                    if(self.loginCheckEnd) {
+                    alert('self.loginCheckEnd' + self.loginCheckEnd.toString());
+                    if(self.loginCheckEnd) {                        
                         if(lgkorUI.stringToBool(loginFlag)) {
                             ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                             var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                            alert('렌탈신청 url' + url);
                             if(ajaxUrl) {
                                 if(isDirectBuy) {
+                                    alert('isDirectBuy 일때');
                                     $('#careRequireBuyPopup').data('sendUrl',url);
                                     /*
                                     $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
@@ -1906,6 +1940,7 @@
                                         $('#careRequireBuyPopup').vcModal();
                                     }
                                 } else {
+                                    alert('isDirectBuy 아닐때');
                                     location.href = url;
                                 }
                             }
@@ -2264,14 +2299,14 @@
             setCompares:function(){
                 var self = this;
                 var chk = false;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
-                var isCompare = vcui.isEmpty(storageCompare);
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+                var isCompare = vcui.isEmpty(storageCompare);
 
                 if(!isCompare){
-                    for(var i in storageCompare[categoryId]){
-                        if(lgePdpSendData['id'] == storageCompare[categoryId][i]['id']) chk = true;
-                    }
+                    storageCompare['data'].forEach(function (item) {
+                        if(lgePdpSendData['id'] == item['id']) chk = true;
+                    });
                 }
                 
                 var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');

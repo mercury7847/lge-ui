@@ -5,9 +5,15 @@ footer {
     @media screen and (max-width:1200px) {
         padding-bottom:66px;
     }
+    /* 20210601 : BTOCSITE-874 추가 */
+    @include pc {
+        .pc-only-ib{display: inline-block;}
+    }
     @include mobile {
+        .pc-only-ib{display: none;}
         padding: 16px 0 60px;
     }
+    /* 20210601 : BTOCSITE-874 추가 */
     // footer cont
     .foot-cont {
         .cont-area {
