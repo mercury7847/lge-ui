@@ -73,6 +73,8 @@ MainSwiper.prototype = {
                             mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
                         }
                     }
+
+                    swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
                 'slideChange' : function(swiper){
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -99,11 +101,17 @@ MainSwiper.prototype = {
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
                     }
 
+                    swiper.allowSlideNext = swiper.activeIndex === swiper.slides.length -1 ? false: true;
+                    swiper.allowSlidePrev = swiper.activeIndex === 0 ? false: true;
+                    
+
                     mainSwiper.currentIdx = swiper.activeIndex;
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
-                    $('html,body').stop().animate({scrollTop:0}, 300);
+                    // $('html,body').stop().animate({scrollTop:0}, 300);
+
+                    $('html,body').scrollTop(0)
 
                     // GA 커스텀 이벤트 실행
                     /*
