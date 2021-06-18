@@ -26,7 +26,7 @@
 
             self.$popup = $('#KRP0032:eq(0)');
             self.$list = self.$popup.find('div.lately-list ul');
-        },
+        },        
 
         getChatPinCode: function() {
             var self = this;
@@ -79,15 +79,8 @@
             });
 
             self.$KRP0005.on('click','div.floating-linker > a',function(e){
-              
                 e.preventDefault();
                 var $div = $(this).parents('div.floating-linker');
-
-                if ($div.hasClass('faq')){
-                    window.open('/support/usage-guide-faq','_blank');
-                    return;
-                }
-
                 if($div.hasClass('chat')) {
                     //상담쳇
                 } else if($div.hasClass('recently')) {
@@ -212,6 +205,38 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0005')) return false;
         //$('.KRP0005').buildCommonUI();
-	    KRP0005.init();
+
+        // BTOCSITE-27 :: 플로팅 바 swipe 대응        
+        var isSwipe = !!$('#sw_con').length;
+        
+        if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
+            setTimeout(function(){
+                console.log('krp0005 init');
+                var floatingWrap = $('.floating-wrap').remove();
+                var btnFloatingWrap = $('.btn-floating-wrap').remove();
+                $('#floatBox').append(btnFloatingWrap);
+                $('#floatBox').append(floatingWrap);
+                $('.back-to-top button').off('click').on('click', function (e) {
+                    e.preventDefault();
+                    $(window).trigger('floatingTop');
+                    $('html, body').stop().animate({
+                        scrollTop: 0
+                    }, 400);
+                });
+    
+                KRP0005.init();
+    
+                $(document).trigger('appInit');
+                
+            },100);
+        }
+        
+        // 스와이프 아닌 페이지
+        if (isSwipe == false){
+            KRP0005.init();
+        }
+        
+        // BTOCSITE-27 :: 플로팅 바 swipe 대응
+        
     });
 })();

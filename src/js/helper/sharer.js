@@ -227,9 +227,12 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
 
             self.options = core.extend(true, defaultOption, options);
 
-            if(Kakao) {
-                Kakao.init(self.options.appKey);
+            if(Kakao && Kakao.isInitialized() === false) {
+                try{
+                     Kakao.init(self.options.appKey);
+                } catch(e) { }
             }
+
 
             function hasClass($el) {
                 var service;

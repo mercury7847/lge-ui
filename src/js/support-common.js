@@ -1,8 +1,12 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
+
+    function getLoginFlag(){
+        return $('html').data('login') == 'Y' || $('.support-home').data('login') == 'Y' ? true : false;
+    }
     
     var csUI = {
-        isLogin: $('html').data('login') == 'Y' ? true : false,
+        isLogin: getLoginFlag(),
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
@@ -1359,8 +1363,7 @@ function validatePhone(value){
                     return validateNum10();
                 }
                 if( _length == 11) {
-                    //BTOCSITE-1613: 11자리일때 중간4자리 유효범위 수정 9500 -> 9000
-                    if(rangeFlag(9000, 9999) || rangeFlag(1700, 1799)) {
+                    if(rangeFlag(9500, 9999) || rangeFlag(1700, 1799)) {
                         return true;
                     } else {
                         return false;
@@ -1387,9 +1390,25 @@ function validatePhone(value){
         return false;
     }
 }
+
 (function($){
     vcui.require(['support/common/quickMenu.min'], function() {
-        $('#quickMenu').vcQuickMenu();
+        var isSwipe = !!$('#sw_con').length;
+        
+        if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
+            var quickMenu = $('#quickMenu').remove();
+            // preload 대응 현재 슬라이드가 고객지원이 아닐때는 숨김처리
+            if ($('.swiper-slide-active').data().hash !== 'support'){
+                $(quickMenu).hide();
+            }
+            $('#floatBox').append(quickMenu);
+            $('#quickMenu').vcQuickMenu();
+        }
+
+        if (isSwipe == false){
+            $('#quickMenu').vcQuickMenu();
+        }
+        
     });
 
     function commonInit(){
