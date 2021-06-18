@@ -1458,7 +1458,7 @@
         .app-alarm-button{
             display:none;
             position:absolute;
-            right:66px; // 210618 알람버튼 위치 수정
+            right:30px; // 210618 알람버튼 위치 수정
             top:-2px;
             width:29px;
             height:36px;
@@ -1505,7 +1505,7 @@
     .btn-mypage {
         position: absolute;
         top: -1px;
-        right: 0;
+        right: 30px; //210618 아이콘 위치 수정
         z-index: 1;
         a {
             display: block;
