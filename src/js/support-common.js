@@ -1397,6 +1397,10 @@ function validatePhone(value){
         
         if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
             var quickMenu = $('#quickMenu').remove();
+            // preload 대응 현재 슬라이드가 고객지원이 아닐때는 숨김처리
+            if ($('.swiper-slide-active').data().hash !== 'support'){
+                $(quickMenu).hide();
+            }
             $('#floatBox').append(quickMenu);
             $('#quickMenu').vcQuickMenu();
         }
