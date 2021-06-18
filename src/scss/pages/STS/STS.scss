@@ -87,7 +87,8 @@
             }
             /* //20210525 추가 */ 
             @include mobile {
-                margin-top: 16px !important;
+                //margin-top: 16px !important;
+                margin-top: 0px !important;
             }
         }
         border-top: 16px solid $color-bg;
