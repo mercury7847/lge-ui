@@ -66,7 +66,7 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
 
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <div class="product-list">\n'+
-    '       <ul>{{#raw obj.productList}}</ul>\n'+
+    '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
     '   </div>\n'+                       
     '{{/each}}';
 
@@ -174,9 +174,10 @@ $(function(){
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
-    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
+        var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
+        /* BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
+        $('.ui_wide_slider').vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
@@ -192,14 +193,18 @@ $(function(){
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
+
+
+        /* //BTOCSITE-654 : ui_wide_slider(공통 정의) 스토어 홈 영역에서만 옵션 조정  */
         
         /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
-        $context.find('.ui_lifestyle_list').vcCarousel({
+        $('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
+            swipeToSlide: true,
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
+            speed: 250,
             touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
@@ -218,7 +223,7 @@ $(function(){
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
+                    speed: 250,
                     touchThreshold: 100
                 });
                 
@@ -271,7 +276,6 @@ $(function(){
         
         // 직접관리하는 영역 끝
 
-        
         var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
         var storeSubCategoryTabUrl = $context.find('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
         var storeRankBuyProductUrl = $context.find('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
@@ -362,7 +366,7 @@ $(function(){
                             variableWidth: true,
                             lastFix: true,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 150,
+                            speed: 250,
                             touchThreshold: 100
                         });
                         
@@ -445,26 +449,31 @@ $(function(){
                         return item;
                     });
 
-                    /* 20210617 추천 기획전 구조변경 */
                     nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
-                    /* //20210617 추천 기획전 구조변경 */
+                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
+
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+
+                console.log(nArr )
+                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                    console.log(i,v)
+                    $(this).find('ul').html(nArr[i].productList );
+                })
                 /* 20210615 추천 기획전 구조변경 */
-                $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+              
+                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
+                    speed: 250,
                     touchThreshold: 100
                 });
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
-                
             }
-            
         }
 
 
@@ -482,11 +491,7 @@ $(function(){
                     var categoryId = item['categoryId'];
                     var iconPath = '';                    
                     if(categoryId){
-                        if (vcui.detect.isMobileDevice){
-                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
-                        } else {
-                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
-                        }
+                        iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -577,7 +582,7 @@ $(function(){
                             slidesToShow: 3,
                             slidesToScroll: 3,
                             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 150,
+                            speed: 250,
                             touchThreshold: 100
                         });
 
