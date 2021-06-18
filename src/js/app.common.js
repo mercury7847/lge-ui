@@ -1,6 +1,7 @@
 var LGEAPPHostName = window.location.hostname;
 var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
 var LGEAPPclickCNT = 0;
+
 /*
 IOS:        /ipod|iphone|ipad/.test(navigator.userAgent.toLowerCase()),
 IPHONE:     /iphone/.test(navigator.userAgent.toLowerCase()),
@@ -9,9 +10,14 @@ ANDROID:    /android/.test(navigator.userAgent.toLowerCase()),
 WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
-$(document).ready(function() {
+var appInit = function() {
+    //console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
+            if ($("#floatBox .btn-app-ar").length > 0){
+                return;
+            }
+            //console.log('앱 확인');
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
@@ -21,7 +27,7 @@ $(document).ready(function() {
                 }
             });
             //Quick메뉴, Easy-path 삭제
-            $('.KRP0005,.KRP0032,.quick-menu-list,.easy-path').remove();
+            $('#floatBox .KRP0005,#floatBox .KRP0032,#floatBox .quick-menu-list,#floatBox .easy-path').remove();
 
             //앱 개인정보 수정 링크 변경
             $(".mod-link").each(function(){ 
@@ -29,11 +35,12 @@ $(document).ready(function() {
             });
 
             if($(".main-wrap").length > 0){
+                //console.log('AR 버튼 추가');
                 //Quick메뉴 AR 버튼 추가
-                $(".KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
+                $("#floatBox .KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
 
                 //Quick메뉴 AR 버튼 이벤트
-                $(".btn-app-ar a, .btn-app-ar button").off("click").on({
+                $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").off("click").on({
                     click : function() {
                         $(this).addClass("active");
 
@@ -51,42 +58,44 @@ $(document).ready(function() {
                     },
                     focusin : function(){
                         setTimeout(function(){
-                            $(".btn-app-ar a, .btn-app-ar button").addClass("active");
+                            $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").addClass("active");
                             LGEAPPclickCNT = 1;
                         }, 150);
                     },
                     focusout : function(){
-                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
+                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
 
                 //스크롤 시 AR 버튼 default 상태로 변경
+                /*
                 $("body").scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
+                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
                 $(".section-cover").scroll(function(){
                     if ($(this).scrollTop() > 100) {
-                        $(".btn-app-ar a, .btn-app-ar button").removeClass("active");
+                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
+                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
                 var agent = navigator.userAgent;
                 if(agent.indexOf("LGEAPP-in") != -1) {
                     //노치 있음
-                    $(".floating-wrap").addClass("app-LGEAPP-in");
+                    $("#floatBox .floating-wrap").addClass("app-LGEAPP-in");
                 }else if(agent.indexOf("LGEAPP-io") != -1) {
                     //노치 없음
-                    $(".floating-wrap").addClass("app-LGEAPP-io");
+                    $("#floatBox .floating-wrap").addClass("app-LGEAPP-io");
                 }else if(agent.indexOf("LGEAPP") != -1) {
                     //안드로이드
-                    $(".floating-wrap").addClass("app-LGEAPP");
+                    $("#floatBox .floating-wrap").addClass("app-LGEAPP");
                 }
 
                 /*
@@ -96,14 +105,14 @@ $(document).ready(function() {
                 //하단 탭바 덮는 경우
                 LGEquickMenuPosCover = function(bool){
                     if(bool == "Y"){
-                        $('.floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
+                        $('#floatBox .floating-wrap').removeClass('app-chng-push-pos').addClass('app-chng-pos');
                     }else{
-                        $('.floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
+                        $('#floatBox .floating-wrap').removeClass('app-chng-push-pos').removeClass('app-chng-pos');
                     }
                 }
                 //하단 탭바 미는 경우
                 LGEquickMenuPosPush = function(bool){
-                    $('.floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
+                    $('#floatBox .floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
                 }
             }
 
@@ -227,14 +236,14 @@ $(document).ready(function() {
             }
         });
     }
-});
-
+};
 
 function ChatbotAppClose(type) {
     // 앱에서 호출될경우
     if(isApp()) {
         if(vcui.detect.isIOS){ 
-            window.close(); 
+           var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+           webkit.messageHandlers.callbackHandler.postMessage(jsonString);
         }else{
             android.closeNewWebview(); 
         }
@@ -247,3 +256,17 @@ function ChatbotAppClose(type) {
         }
     }
 }
+
+// 스와이프 적용일때 분기 처리
+$(document).ready(function(){
+    var isSwipe = !!$('#sw_con').length;
+    if ( isSwipe && isApp() ){
+        $(document).one('appInit', appInit);
+    } else {
+        appInit();
+    }
+});
+
+
+
+

@@ -1,0 +1,16 @@
+<svg id="img_Cooktop_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 16)">
+    <g id="Group_3" data-name="Group 3">
+      <g id="Rectangle" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3">
+        <rect width="68" height="48" rx="3" stroke="none"/>
+        <rect x="1.5" y="1.5" width="65" height="45" rx="1.5" fill="none"/>
+      </g>
+      <g id="Group_14" data-name="Group 14" transform="translate(36 13)">
+        <circle id="Oval" cx="11" cy="11" r="11" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="12" height="3" rx="1.5" transform="translate(10 9)"/>
+      </g>
+      <circle id="Oval-2" data-name="Oval" cx="6" cy="6" r="6" transform="translate(12 9)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval-3" data-name="Oval" cx="6" cy="6" r="6" transform="translate(12 27)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

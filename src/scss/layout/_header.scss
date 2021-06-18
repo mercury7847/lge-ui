@@ -109,20 +109,6 @@
             > li {
                 display: inline-block;
                 border-top: 0;
-                &.icon-update {
-                    .nav-item {
-                        &:before {
-                            position: absolute;
-                            top: 6px;
-                            right: 2px;
-                            width: 4px;
-                            height: 4px;
-                            border-radius: 2px;
-                            background-color: #da0f47;
-                            content: '';    
-                        }
-                    }
-                }
             }
             .nav-item {
                 padding: 6px 6px 8px;
@@ -625,20 +611,6 @@
             vertical-align: top;
             &:last-child {
                 padding-right: 0;
-            }
-            &.icon-update {
-                .nav-item {
-                    &:before {
-                        position: absolute;
-                        top: 5px;
-                        right: -5px;
-                        width: 4px;
-                        height: 4px;
-                        border-radius: 2px;
-                        background-color: #da0f47;
-                        content: '';    
-                    }
-                }
             }
         }
 
@@ -1637,7 +1609,7 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                right: 30px;
+                right: 30px; // 앱 업데이트시 66px로 교체
                 //right: 66px;
             }
         }
@@ -1728,7 +1700,8 @@ html {
         .floating-wrap {
             //노치 있음
             &.app-LGEAPP-in {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1739,7 +1712,8 @@ html {
             }
             //노치 없음
             &.app-LGEAPP-io {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1750,10 +1724,12 @@ html {
             }
             //안드로이드
             &.app-LGEAPP {
-                bottom:84px;
+                //bottom:84px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
-                    bottom:84px;
+                    //bottom:84px;
+                    bottom:24px;
                 }
                 &.app-chng-push-pos {
                     bottom:24px;

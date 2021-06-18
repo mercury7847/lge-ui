@@ -91,7 +91,7 @@ var res = {
 				"KRP0008_Product Summary[KRP0010] Popup" : ["/html/components/KRP0008-modal.html","","검수완료"],
 				"KRP0009_PDP Tab Anchor[KRP0012]" : ["/html/components/KRP0009.html","","검수완료"],
 				"KRP0010_PDP Specs[KRP0014]" : ["/html/components/KRP0010.html","","검수완료"],
-				"KRP0010_PDP Specs SAR 팝업" : ["/html/components/KRP0010-popup.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+				"KRP0010_PDP Specs SAR 팝업" : ["/html/components/KRP0010-popup.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 				"KRP0011_PDP_Spec compare[KRC0041]" : ["/html/components/KRP0011.html","","검수완료"],
 				"KRP0012_PDP Reviews[KRP0015]" : ["/html/components/KRP0012.html","","검수완료"],
 				"KRP0013_PDP Support[KRP0016]" : ["/html/components/KRP0013.html","","검수완료"],
@@ -206,6 +206,9 @@ var res = {
 		// 	"KRP0045_PDP Return Replacement" : ["/html/components/KRP0045.html","","진행중"],
 		// },
 		"Page" : {
+			"B2C메인(MA)(swipe test)" : {
+				"B2C메인" : ["/html/MA/MKTF1000_TEST.html","",""]				
+			},
 			"공통(UTS)" : {
 				"통합검색" : {
 					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
@@ -308,19 +311,19 @@ var res = {
 					// "리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
 					"상세_종료(지난이벤트)" : ["/html/BMC/MKT4005.html","","검수완료"],
-					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-					"상세_당첨자발표2" : ["/html/BMC/MKT4007_2.html","_blank:width=912,height=560,scrollbars=yes","검수완료"],
+					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+					"상세_당첨자발표2" : ["/html/BMC/MKT4007_2.html","_blank:width=912,height=560,scrollbars=1","검수완료"],
 					"상세_PC아카데미" : ["/html/BMC/MKT4008.html","","검수완료"],
 					"(헤더,푸터X)상세_PC아카데미" : ["/html/BMC/MKT4008_1.html","","검수완료"],
-					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","_blank:width=912,height=560,scrollbars=yes","검수완료"],
+					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","_blank:width=912,height=560,scrollbars=1","검수완료"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","검수완료"],
 					"상세_미리미리페스티벌" : ["/html/BMC/MKT4011.html","","검수완료"],
 					"(헤더,푸터X)상세_미리미리페스티벌" : ["/html/BMC/MKT4011_1.html","","검수완료"],
-					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","검수완료"],
-					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-					"케어솔루션_이벤트 응모 내역 조회" : ["/html/BMC/MKT4016.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+					"케어솔루션_이벤트 응모 내역 조회" : ["/html/BMC/MKT4016.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 				},
 				"기획전" : {
 					// "리스트" : ["/html/BMC/OBS4001.html","","검수완료"],
@@ -345,9 +348,9 @@ var res = {
 					"주문/배송 조회(케어솔루션 청약 리스트)" : ["/html/MYC/ACCF7024.html","","검수완료"],
 					"케어솔루션 청약 상세보기" : ["/html/MYC/ACCF7065.html","","검수완료"],
 					"주문/배송(구매, 청약) 화면 내 팝업" : ["/html/MYC/ACCF7002_popup.html","","검수완료"],
-					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","검수완료"],
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","검수완료"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","검수완료"],
@@ -403,8 +406,7 @@ var res = {
 					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
 					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
 					"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"],
-					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""],
-					"제품 카탈로그" : ["/html/CS/BTOCSITE-212.html","",""]
+					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""]
 				},
 				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]
@@ -427,7 +429,7 @@ var res = {
 					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","","검수완료"],
 					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","","검수완료"],
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수완료"],
-					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
@@ -446,9 +448,7 @@ var res = {
 					"오픈소문내기이벤트" : ["/html/BMC/MKT4002_04.html","",""],
 					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4002_04_pop.html","",""]
 				},
-				"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"],
-				"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
-				"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"]
+				"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"]
 			},
 			"Exhibitions" : {
 				"06. 오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],
@@ -461,11 +461,21 @@ var res = {
 				
 			},
 			"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","","검수완료"]
-		},
-		"LGE" : {
-			"이벤트" : {
-				"내가만드는LG전자기획전" : ["/html/BMC/EVENT_210428/EVENT_210428.html","",""]
-			}
 		}
-	}
+	},
+	"LGE" : {
+		"이벤트" : {
+			"05" : {
+				"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+				"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
+				"오브제 검색 이벤트" : ["/html/BMC/2021/05/0512_objet_search/objet_search_pop.html","_blank:width=912,height=760,scrollbars=1","검수완료"]
+			},
+			"06" : {
+				
+			}
+		},
+		"기획전" : {
+			"내가만드는LG전자기획전" : ["/html/BMC/EVENT_210428/EVENT_210428.html","",""]
+		}
+	},
 }
