@@ -451,11 +451,15 @@ $(function(){
                 });
 
 
-                console.log(nArr )
+                //console.log(nArr )
                 $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
-                    console.log(i,v)
-                    $(this).find('ul').html(nArr[i].productList );
+                    //console.log(i,v)
+                    if(nArr[i]) {
+                        $(this).find('ul').html(nArr[i].productList );
+                    } 
+                    
                 })
+
                 /* 20210615 추천 기획전 구조변경 */
                 // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
               
