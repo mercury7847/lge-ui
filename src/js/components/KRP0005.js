@@ -227,6 +227,12 @@
                 var btnFloatingWrap = $('.btn-floating-wrap').remove();
                 $('#floatBox').append(btnFloatingWrap);
                 $('#floatBox').append(floatingWrap);
+
+                // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
+                if ($('.swiper-slide-active').data().hash == 'support'){
+                    $(floatingWrap).hide();
+                    $(btnFloatingWrap).hide();
+                }
                 $('.back-to-top button').off('click').on('click', function (e) {
                     e.preventDefault();
                     $(window).trigger('floatingTop');
