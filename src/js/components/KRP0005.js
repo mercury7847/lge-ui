@@ -208,6 +208,10 @@
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
         var isSwipe = !!$('#sw_con').length;
+
+        if (isSwipe && $('#floatBox').length == 0){
+            $('.swiper-container').after('<div id="floatBox"></div>');
+        }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
             setTimeout(function(){
@@ -216,6 +220,12 @@
                 var btnFloatingWrap = $('.btn-floating-wrap').remove();
                 $('#floatBox').append(btnFloatingWrap);
                 $('#floatBox').append(floatingWrap);
+
+                // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
+                if ($('.swiper-slide-active').data().hash == 'support'){
+                    $(floatingWrap).hide();
+                    $(btnFloatingWrap).hide();
+                }
                 $('.back-to-top button').off('click').on('click', function (e) {
                     e.preventDefault();
                     $(window).trigger('floatingTop');
