@@ -215,6 +215,10 @@
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
         var isSwipe = !!$('#sw_con').length;
+
+        if (isSwipe && $('#floatBox').length == 0){
+            $('.swiper-container').after('<div id="floatBox"></div>');
+        }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
             setTimeout(function(){

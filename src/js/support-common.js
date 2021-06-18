@@ -1395,6 +1395,10 @@ function validatePhone(value){
 (function($){
     vcui.require(['support/common/quickMenu.min'], function() {
         var isSwipe = !!$('#sw_con').length;
+
+        if (isSwipe && $('#floatBox').length == 0){
+            $('.swiper-container').after('<div id="floatBox"></div>');
+        }
         
         if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
             var quickMenu = $('#quickMenu').remove();
