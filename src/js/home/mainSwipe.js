@@ -4,7 +4,7 @@ function MainSwiper( ID ){
     this.currentIdx = 0;
     this.contentHTMLArray = [];
     this.canScroll = false;
-    this.ablePushState = true;
+    this.ablePushState = false;
     this.swiper = null;
     this.currentHash = window.location.hash;
 
@@ -60,21 +60,33 @@ MainSwiper.prototype = {
                 'init' : function(swiper){
                     var hash = mainSwiper.getLastSegmentByUrl();
                     var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
+
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
-                        mainSwiper.loadContent( currentSlide );
-                        //mainSwiper.loadContent( nextSlide );
+                        mainSwiper.loadContent( currentSlide,true );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                     } else {
                         swiper.slideTo( idx );
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+                        if(swiper.activeIndex !== swiper.slides.length -1) {
+                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+                        }
                     }
                 },
                 'slideChange' : function(swiper){
-                    console.log('active page', swiper.slides[swiper.activeIndex] );
-                    console.log('swiper', swiper );
                     var currentSlide = swiper.slides[swiper.activeIndex];
 
-                    mainSwiper.loadContent( currentSlide );
+                    mainSwiper.loadContent( currentSlide,true );
+
+                    if(swiper.activeIndex > 0){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+                    }
+
+                    if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+                    }
+
                     mainSwiper.currentIdx = swiper.activeIndex;
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
@@ -123,11 +135,12 @@ MainSwiper.prototype = {
         var hash = '/' + $(currentSlide).data().hash;
         var currentPageData = _PAGE_DATA_TEMP[$(currentSlide).data().hash];
 
-        if (pushFlag !== undefined){
-            self.ablePushState = pushFlag;
-        }
+        console.log("currentSlide %o",currentSlide);
+        console.log("isLoaded %o",isLoaded);
 
-        if (self.ablePushState !== false){
+        self.ablePushState = pushFlag || false;
+
+        if (self.ablePushState){
             self.setDigitalData(currentPageData);
             console.log('PAGE_DATA', _PAGE_DATA_TEMP[$(currentSlide).data().hash]);
         }
@@ -143,9 +156,9 @@ MainSwiper.prototype = {
         if (isLoaded) {
             if (self.ablePushState){
                 history.pushState({}, '', hash);
+                self.switchQuickMenu( hash );
             }
-            self.ablePushState = true;
-            self.switchQuickMenu( hash );
+
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
             }, 1000);
@@ -165,12 +178,13 @@ MainSwiper.prototype = {
             complete: function(){
                 lgkorUI.init( $(currentSlide) );
                 $(currentSlide).data().isLoaded = true;
+                isLoaded = true;
             //    $(currentSlide).attr('data-isLoaded', true);
-                if (self.ablePushState){
+                if (isLoaded && self.ablePushState){
                     history.pushState({}, '', hash);
+                    self.ablePushState = true;
+                    self.switchQuickMenu( hash );
                 }
-                self.ablePushState = true;
-                self.switchQuickMenu( hash );
             }
         }).done(function(){
             setTimeout(function(){
