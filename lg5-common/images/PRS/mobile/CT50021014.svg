@@ -1,6 +1,6 @@
-<svg id="_50img_Printer_80" data-name="50img_Printer_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(139.5 60.5)">
+<svg id="img_Printer_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect id="Rectangle" width="80" height="80" fill="none"/>
+  <g id="ic" transform="translate(115.5 36.5)">
     <g id="printer" transform="translate(-107.965 -26.935)">
       <rect id="사각형_2" data-name="사각형 2" width="8.116" height="3.044" rx="0.75" transform="translate(8.114 24.348)"/>
       <path id="사각형_1" data-name="사각형 1" d="M3.044,0H37.537a3.044,3.044,0,0,1,3.044,3.044V18.261H0V3.044A3.044,3.044,0,0,1,3.044,0Z" transform="translate(12.174 -0.001)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="3"/>

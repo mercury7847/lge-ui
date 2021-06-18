@@ -1700,7 +1700,8 @@ html {
         .floating-wrap {
             //노치 있음
             &.app-LGEAPP-in {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1711,7 +1712,8 @@ html {
             }
             //노치 없음
             &.app-LGEAPP-io {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1722,10 +1724,12 @@ html {
             }
             //안드로이드
             &.app-LGEAPP {
-                bottom:84px;
+                //bottom:84px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
-                    bottom:84px;
+                    //bottom:84px;
+                    bottom:24px;
                 }
                 &.app-chng-push-pos {
                     bottom:24px;

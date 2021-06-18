@@ -1,11 +1,10 @@
-<svg id="_01img_TV_80" data-name="01img_TV_80" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect id="Rectangle" width="128" height="128" fill="none"/>
-  <g id="ic" transform="translate(30 42)">
+<svg id="img_TV_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 18)">
     <g id="tv_leg" transform="translate(4 37)">
       <path id="Stroke_5" data-name="Stroke 5" d="M8,0,0,5" transform="translate(0 1)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
       <path id="Stroke_5-2" data-name="Stroke 5" d="M8,0,0-5" transform="translate(52 6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
-      <rect id="Rectangle-2" data-name="Rectangle" width="12" height="3" rx="1.5" transform="translate(24 0.5)"/>
+      <rect id="Rectangle" width="12" height="3" rx="1.5" transform="translate(24 0.5)"/>
     </g>
-    <rect id="Rectangle-3" data-name="Rectangle" width="68" height="38" rx="3" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    <rect id="Rectangle-2" data-name="Rectangle" width="68" height="38" rx="3" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
   </g>
 </svg>
