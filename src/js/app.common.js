@@ -16,7 +16,6 @@ $(document).ready(function() {
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
-            $('.btn-mypage').css('right','60px'); //210618 추가
             $(".app-settings-button").on({
                 click : function() {
                     document.location.href="/mobile-app/option";
