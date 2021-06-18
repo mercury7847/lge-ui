@@ -10,9 +10,14 @@ ANDROID:    /android/.test(navigator.userAgent.toLowerCase()),
 WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
-$(document).ready(function() {
+var appInit = function() {
+    //console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
+            if ($("#floatBox .btn-app-ar").length > 0){
+                return;
+            }
+            //console.log('앱 확인');
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
@@ -30,6 +35,7 @@ $(document).ready(function() {
             });
 
             if($(".main-wrap").length > 0){
+                //console.log('AR 버튼 추가');
                 //Quick메뉴 AR 버튼 추가
                 $("#floatBox .KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
 
@@ -230,14 +236,14 @@ $(document).ready(function() {
             }
         });
     }
-});
-
+};
 
 function ChatbotAppClose(type) {
     // 앱에서 호출될경우
     if(isApp()) {
         if(vcui.detect.isIOS){ 
-            window.close(); 
+           var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+           webkit.messageHandlers.callbackHandler.postMessage(jsonString);
         }else{
             android.closeNewWebview(); 
         }
@@ -250,3 +256,17 @@ function ChatbotAppClose(type) {
         }
     }
 }
+
+// 스와이프 적용일때 분기 처리
+$(document).ready(function(){
+    var isSwipe = !!$('#sw_con').length;
+    if ( isSwipe && isApp() ){
+        $(document).one('appInit', appInit);
+    } else {
+        appInit();
+    }
+});
+
+
+
+
