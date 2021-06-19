@@ -885,7 +885,12 @@ var isApp = function(){
                     return item['id'] != id;
                 });
 
-                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                if(compareStorage[categoryId]['data'].length == 0) {
+                    self.removeStorage(self.COMPARE_KEY, categoryId);
+                } else {
+                    self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                }
+                
             } else {
                 self.removeStorage(self.COMPARE_KEY, categoryId);
             }
