@@ -303,6 +303,10 @@ var isApp = function(){
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
             else $('body').find('.container').attr('id', 'content');
+
+            if (!!$context){
+                return $.Deferred().resolve($context.data());
+            }
         },
 
         _addImgOnloadEvent: function(){
