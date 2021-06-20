@@ -110,7 +110,12 @@
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
+            '{{#if item.target == "popup"}}' + 
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            
+            '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '{{/if}}' +
             '{{/each}}'+
         '</ul>';
 
@@ -819,8 +824,7 @@
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
                     */
-
-                    //서비스 링크
+                    //BTOCSITE-1339 서비스 링크
                     $('.service-link, .mobile-service-link').empty();
                     if(data.serviceLinkers && data.serviceLinkers.length){
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));

@@ -5709,10 +5709,9 @@
                         scrollTop: $('.simul_body').offset().top - $('.objetcollection-tabs').outerHeight()
                     })
                 }
-                    setTimeout(function() {
-                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
-                    }, 10);
-                
+                setTimeout(function() {
+                  slideWrapAutoSize(".color_my_pick .color_my_pick_body");
+                }, 10);
             }, 10);
 
 
