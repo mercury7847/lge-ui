@@ -49,6 +49,7 @@ MainSwiper.prototype = {
             autoHeight : true,
             observer : true,
             slidesPerView : 1,
+            slidesPerColumn : 1,
             initialSlide : idx,
             /*
             hashNavigation : {
@@ -331,7 +332,12 @@ MainSwiper.prototype = {
             $('#floatBox > #quickMenu').hide();
             $('#floatBox > .btn-floating-wrap').show();
             $('#floatBox > .floating-wrap').show();
-            
+        }
+        // 앱 AR 버튼 처리
+        if ( hash == '/' ){
+            $('.floating-menu.cs-cst.btn-app-ar').show();
+        } else {
+            $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
     }
 }
