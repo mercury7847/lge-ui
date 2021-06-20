@@ -348,6 +348,10 @@ var goAppUrl = function(path) {
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
             else $('body').find('.container').attr('id', 'content');
+
+            if (!!$context){
+                return $.Deferred().resolve($context.data());
+            }
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
