@@ -1,91 +1,42 @@
 {
-    "status":"success",
-    "message":"",
-    "data": {
-        "success": "Y",
-        "data" : [
-                    {                       
-
-                        "modelId":"65NANO99KNA",
-                        "saleModelCode":"FQ2",
-                        "saleSuffixCode":"AKOR",
-                        "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "obsOriginalPrice":"1100000",
-                        "obsMemberPrice":"1000",
-                        "obsDiscountPrice":"20000",
-                        "obsSellFlag":"",
-                        "obsInventoryFlag":"",
-                        "obsInventoryQty":"",
-                        "modelStatusCode":"ACTIVE",
-                        "categoryId":"",
-                        "categoryName":"",
-                        "modelUrlPath":"#1",
-                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
-                    },
-                    {  
-                        "modelId":"75NANO99KNA",
-                        "saleModelCode":"FQ2",
-                        "saleSuffixCode":"AKOR",
-                        "modelName":"전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "modelDisplayName":"전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "obsOriginalPrice":"1100000",
-                        "obsMemberPrice":"1000",
-                        "obsDiscountPrice":"20000",
-                        "obsSellFlag":"",
-                        "obsInventoryFlag":"",
-                        "obsInventoryQty":"",
-                        "modelStatusCode":"ACTIVE",
-                        "categoryId":"",
-                        "categoryName":"",
-                        "modelUrlPath":"#2",
-                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
-                    },
-                    {
-
-                        "modelId":"55NANO99KNA",
-                        "saleModelCode":"FQ2",
-                        "saleSuffixCode":"AKOR",
-                        "modelName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "modelDisplayName":"LG TROMM 미니워시+전기식 건조기 히트 전기식 건조기(듀얼 인버터히트)",
-                        "obsOriginalPrice":"1100000",
-                        "obsMemberPrice":"1000",
-                        "obsDiscountPrice":"20000",
-                        "obsSellFlag":"",
-                        "obsInventoryFlag":"",
-                        "obsInventoryQty":"",
-                        "modelStatusCode":"ACTIVE",
-                        "categoryId":"",
-                        "categoryName":"",
-                        "modelUrlPath":"#2",
-                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
-                    },
-                    {
-                        "modelId":"45NANO99KNA",
-                        "saleModelCode":"FQ2",
-                        "saleSuffixCode":"AKOR",
-                        "modelName":"LG TROMM 미니워시",
-                        "modelDisplayName":"LG TROMM 미니워시",
-                        "obsOriginalPrice":"1100000",
-                        "obsMemberPrice":"1000",
-                        "obsDiscountPrice":"20000",
-                        "obsSellFlag":"",
-                        "obsInventoryFlag":"",
-                        "obsInventoryQty":"",
-                        "modelStatusCode":"ACTIVE",
-                        "categoryId":"",
-                        "categoryName":"",
-                        "modelUrlPath":"#2",
-                        "samllImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "mediumImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
-                        "largeImgAddr":"/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg"
-                    }
-        ]    
-    }
-}
+    "data":{
+       "data":[
+          {
+             "modelGubun":"1",
+             "obsSellFlag":"",
+             "obsInventoryFlag":"",
+             "modelId":"MD08922095",
+             "superCategoryName":"TV/AV",
+             "modelUrlPath":"https://wwwstg.lge.co.kr/tvs/oled77g1kna-stand",
+             "salesModelCode":"OLED77G1KS",
+             "reviewsCount":4.00,
+             "categoryName":"TV",
+             "obssellingprice":0,
+             "subCategoryName":"올레드 TV",
+             "largeImageAddr":"https://wwwstg.lge.co.kr/kr/images/tvs/md08922095/md08922095-450x450.jpg",
+             "superCategoryId":"CT50000024",
+             "obsDiscountPrice":0,
+             "obsMemberPrice":0,
+             "modelDisplayName":"LG 올레드 evo (스탠드형)",
+             "group":0,
+             "newProductBadgeFlag":"Y",
+             "modelStatusCode":"ACTIVE",
+             "obsOriginalPrice":0,
+             "mediumImageAddr":"https://wwwstg.lge.co.kr/kr/images/tvs/md08922095/md08922095-350x350.jpg",
+             "smallImageAddr":"https://wwwstg.lge.co.kr/kr/images/tvs/md08922095/md08922095-280x280.jpg",
+             "isflag":"신제품|캐시백",
+             "subCategoryId":"CT50000028",
+             "reviewsScore":4.0,
+             "salesSuffixCode":"AKRG",
+             "obsCartFlag":"Y",
+             "modelName":"OLED77G1KNA",
+             "obsInventoryQty":"",
+             "modelGubunName":"일반제품",
+             "categoryId":"CT50000025"
+          }
+       ],
+       "success":"Y"
+    },
+    "message":null,
+    "status":"success"
+ }

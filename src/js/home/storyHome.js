@@ -232,12 +232,17 @@
             requestTagMngPop(this);
         });
 
-        $context.find('#popup-tagMnger').on('click', '.btn-group button', function(e){
+        console.log(232323)
+
+        $(document).on('click', '#popup-tagMnger .btn-group button', function(e){
             e.preventDefault();
 
             var ajaxurl = $(this).data("submitUrl");
+            console.log("button ajaxurl", ajaxurl)
             setTagMngOK(ajaxurl);
-        }).on('change', 'input[type=checkbox]', function(){
+        })
+        $(document).on('change', '#popup-tagMnger input[type=checkbox]', function(){
+            console.log(444)
             setTagMngChecked();
         });
 
@@ -278,39 +283,44 @@
     }
 
     function setTagMngChecked(){
-        $context.find('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
+        console.log("$context.find('#popup-tagMnger').find('.btn-group button').length", $('#popup-tagMnger').find('.btn-group button').length)
+        $('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
 
         setTagMngCount();
     }
 
     function setTagMngCount(count){
-        var leng = count ? count : $context.find('#popup-tagMnger').find('input[type=checkbox]:checked').length;
+        var leng = count ? count : $('#popup-tagMnger').find('input[type=checkbox]:checked').length;
         var total = leng ? ' (' + leng + ')' : "";
-        $context.find('#popup-tagMnger .btn-group button').empty().html('<span>저장' + total + '</span>');
+        $('#popup-tagMnger .btn-group button').empty().html('<span>저장' + total + '</span>');
     }
 
     function setTagMngINIT(){
         for(var idx in tagMngChkList){
-            $context.find('#popup-tagMnger').find('input[id=' + tagMngChkList[idx].id + ']').prop("checked", tagMngChkList[idx].chk);
+            $('#popup-tagMnger').find('input[id=' + tagMngChkList[idx].id + ']').prop("checked", tagMngChkList[idx].chk);
         }
 
-        $context.find('#popup-tagMnger').find('.btn-group button').prop('disabled', true);
+        $('#popup-tagMnger').find('.btn-group button').prop('disabled', true);
         setTagMngCount(0);
     }
 
     function setTagMngOK(ajaxurl){
         lgkorUI.showLoading();
+        
+        console.log("ajaxurl", ajaxurl)
 
         var sendata = {tag:[]}
-        $context.find('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
+        $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
             var id = $(item).attr('id');
             sendata.tag.push(id);
         });
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
             lgkorUI.hideLoading();
+            
+            console.log("result", result)
 
-            $context.find('#popup-tagMnger').vcModal('close');
+            $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");
         });
@@ -318,7 +328,7 @@
 
     function addTagMngInitData(){
         tagMngChkList = [];
-        $context.find('#popup-tagMnger').find('input[type=checkbox]').each(function(idx, item){
+        $('#popup-tagMnger').find('input[type=checkbox]').each(function(idx, item){
             var id = $(item).attr('id');
             var chk = $(item).prop('checked');
             tagMngChkList.push({id: id, chk: chk});

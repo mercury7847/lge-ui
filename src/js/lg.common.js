@@ -357,9 +357,9 @@ var goAppUrl = function(path) {
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
         _appDownloadPopup: function() {
             var enableUrl = [
-                '^/$', // 메인
-                '^/benefits/event/?', // 이벤트 페이지
-                '^/benefits/exhibitions/?' // 기획전 페이지
+                '^/$' // 메인
+                //'^/benefits/event/?', // 이벤트 페이지
+                //'^/benefits/exhibitions/?' // 기획전 페이지
             ];
 
             var isPopUp = enableUrl.some(function(element) {
