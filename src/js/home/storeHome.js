@@ -176,18 +176,13 @@ $(function(){
 
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
         $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
-            autoplay: true,
-            autoplaySpped: 5000,
+            autoplay:true,
+            autoplaySpped:5000,
             infinite: true,
-            pauseOnHover: false,
-            pauseOnFocus: false,
+            pauseOnHover:false,
+            pauseOnFocus:false,
             swipeToSlide: true,
-            buildDots: false,
-            dotsSelector: '.ui_wideslider_dots',
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth: false,
-            touchThreshold: 100,
+            dotsSelector:'.ui_wideslider_dots',
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
