@@ -26,7 +26,7 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                   {{/each}}'
 
 var bestRankBuyProductTmpl =
-    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
+    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
     '   <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '   <span class="bg ui_bg_switch"'+ 
     '       style="background-image:url();"'+ 
@@ -47,7 +47,7 @@ var bestRankBuyProductTmpl =
 
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
@@ -67,7 +67,7 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
 var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   <div class="product-list">\n'+
     '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
-    '   </div>\n'+                       
+    '   </div>\n'+
     '{{/each}}';
 /* //20210615 추천 기획전 구조변경 */
 
@@ -101,7 +101,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
-    '   <div class="slide-box" data-ec-product="{{ecProduct}}">\n'+
+    '   <div class="slide-box">\n'+
     '       <div class="img"><img src="{{fullImagePath}}" alt="{{modelDisplayName}}"></div>\n'+    
     '       <div class="product-area">\n'+
     '           <div class="product-contents">\n'+
@@ -139,6 +139,38 @@ $(function(){
         var obj = vcui.uri.parseQuery(parseUrl.query);
         return name? obj[name] : obj;
     }
+    
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
+
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
+            } else {
+                return item.superCategoryName + "/" + item.categoryName; 
+            }
+        }
+
+        var currentEcValue = {
+            "model_name": displayName.trim(),
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName		
+        }
+
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
+    }
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
@@ -151,6 +183,7 @@ $(function(){
             pauseOnHover: false,
             pauseOnFocus: false,
             swipeToSlide: true,
+            
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -160,7 +193,7 @@ $(function(){
             speed: 150
         });
 
-        
+
         $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
@@ -197,7 +230,7 @@ $(function(){
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $context.find('.ui_product_lifestyle').vcCarousel('destroy');                            
+                $context.find('.ui_product_lifestyle').vcCarousel('destroy');
             }    
         })
 
@@ -242,41 +275,8 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        
         // 직접관리하는 영역 끝
-
-
-        function getEcProduct(item){
-            var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
-    
-            function getCategoryName(){
-                if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
-                    return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
-                } else {
-                    return item.superCategoryName + "/" + item.categoryName; 
-                }
-            }
-    
-            var currentEcValue = {
-                "model_name": displayName.trim(),
-                "model_id": item.modelId,					
-                "model_sku": item.modelName,					 
-                "model_gubun": item.modelGubunName		
-            }
-    
-            if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
-                currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
-            }
-    
-            if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
-                currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
-            }
-    
-            currentEcValue.brand=  "LG";
-            currentEcValue.category= getCategoryName()
-    
-            return currentEcValue;
-        }
-    
 
         
         var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
@@ -307,6 +307,7 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                    
 
                     var newTempEcProduct = getEcProduct(item);
                     item.ecProduct = JSON.stringify(newTempEcProduct);
@@ -317,6 +318,8 @@ $(function(){
                         item['obsOriginalPrice'] = null;
                     }
 
+
+
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
                     if(price!==0){ 
@@ -325,7 +328,7 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
-                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
 
                     var obj = newProductRecommendLocal[index];
 
@@ -345,7 +348,7 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
+                    if(list[index]){
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
@@ -410,7 +413,6 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
                 var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
@@ -456,13 +458,13 @@ $(function(){
                     //console.log(i,v)
                     if(nArr[i]) {
                         $(this).find('ul').html(nArr[i].productList );
-                    } 
-                    
+                    }
+
                 })
 
                 /* 20210615 추천 기획전 구조변경 */
                 // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-            
+
                 // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
@@ -539,7 +541,7 @@ $(function(){
                 $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
 
-                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
 
@@ -590,7 +592,7 @@ $(function(){
 
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $context.find('.ui_category_carousel').vcCarousel('destroy');                            
+                        $context.find('.ui_category_carousel').vcCarousel('destroy');
                     }    
                 })
 
@@ -647,9 +649,8 @@ $(function(){
                     sortArr.forEach(function(item){
                         item.ecProduct = JSON.stringify(getEcProduct(item));
                     })
-
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
-                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
+                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);
     
                     $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_buy_product'));
 
