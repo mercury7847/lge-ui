@@ -372,7 +372,7 @@ MainSwiper.prototype = {
             if (value == hash) index = idx;
         });
 
-        return index;
+        return index == false ? 0 : index;
     },
 
     setActiveTabByHash: function( hash ){
