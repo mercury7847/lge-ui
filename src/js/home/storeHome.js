@@ -368,21 +368,13 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
-                console.log('arr' , arr);
-
-                var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
-                    console.log('item',item);
+                var nArr = vcui.array.map(newExhibitionLocal, function(item, index){                    
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
-                    var list = vcui.array.filter(arr, function(item) {
+                    var list = vcui.array.filter(arr, function(item) {                                        
                         return vcui.array.include(codesArr, item['modelId']);
                     });
-
-                    console.log('list filter', list);
-
                     list = vcui.array.map(list, function(item, index){
-
                         var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                         var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                         var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
@@ -401,8 +393,6 @@ $(function(){
                         }
 
                         item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
-                        // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
-
                         return item;
                     });
 
@@ -411,15 +401,15 @@ $(function(){
                     nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
                     /* //20210615 추천 기획전 구조변경 */
 
-                    console.log("nObj['productList']" , nObj['productList']);
+                    //console.log("nObj['productList']" , nObj['productList']);
 
                     return nObj;
                 });
 
-                console.log('nArr' , nArr);
+                //console.log('nArr' , nArr);
 
                 /* 20210615 추천 기획전 구조변경 */
-                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                $context.find('.ui_exhib_carousel .product-listCont').each(function(i,v) {
                     //console.log(i,v)
                     if(nArr[i]) {
                         $(this).find('ul').html(nArr[i].productList );
