@@ -139,6 +139,38 @@ $(function(){
         var obj = vcui.uri.parseQuery(parseUrl.query);
         return name? obj[name] : obj;
     }
+    
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
+
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
+            } else {
+                return item.superCategoryName + "/" + item.categoryName; 
+            }
+        }
+
+        var currentEcValue = {
+            "model_name": displayName.trim(),
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName		
+        }
+
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
+    }
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
@@ -151,7 +183,7 @@ $(function(){
             pauseOnHover: false,
             pauseOnFocus: false,
             swipeToSlide: true,
-            buildDots: false,
+            
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
             slidesToScroll: 1,
