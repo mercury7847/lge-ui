@@ -2,27 +2,27 @@
 
 /*
 &.event-popup {
-    max-width: 1066px;
+	max-width: 1066px;
 
-    @media screen and (min-width:1126px) {
-        //top: 0 !important;
-        width: 1066px;
-        //transform: translateX(-50%) translateY(0%) !important;
-    }
-    @media screen and (max-width:1125px) {
-        width: calc(100% - 60px);
-        margin-bottom: 0;
-    }
-    @include mobile {
-        width: 100%;
-    }
-    .pop-conts {
-        //max-height: none;
-        padding: 24px 0 32px;
-        @include mobile {
-            padding: 0;
-        }
-    }
+	@media screen and (min-width:1126px) {
+		//top: 0 !important;
+		width: 1066px;
+		//transform: translateX(-50%) translateY(0%) !important;
+	}
+	@media screen and (max-width:1125px) {
+		width: calc(100% - 60px);
+		margin-bottom: 0;
+	}
+	@include mobile {
+		width: 100%;
+	}
+	.pop-conts {
+		//max-height: none;
+		padding: 24px 0 32px;
+		@include mobile {
+			padding: 0;
+		}
+	}
 }
 */
 .hidden {
@@ -37,57 +37,57 @@
 
 /*
 .tit-area {
-    position: relative;
-    .visual-area {
-        position: relative;
-        img {
-            max-width: 100%;
-        }
-    }
-    .content-block {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1; 
-        width: 100%;
-        height: 100%;
-        .text-block {
-            
-            padding: 25px 57px 32px 55px;
-            text-align: center;
-            @include mobile {
-                padding: 20px;
-            }
-            @include mobile {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            .flag {
-                background-color: #fff;
-            }
-            .sub-tit {
-                margin-top: 8px;
-                font-size: 28px;
-                line-height: 36px;
-                color: #000;
-                font-weight: 700;
-                @include mobile {
-                    font-size: 24px;
-                    line-height: 29px;
-                }
-            }
-            .date {
-                font-size: 16px;
-                line-height: 24px;
-                color: #000;
-            }
-        }
-    }
+	position: relative;
+	.visual-area {
+		position: relative;
+		img {
+			max-width: 100%;
+		}
+	}
+	.content-block {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1; 
+		width: 100%;
+		height: 100%;
+		.text-block {
+			
+			padding: 25px 57px 32px 55px;
+			text-align: center;
+			@include mobile {
+				padding: 20px;
+			}
+			@include mobile {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			.flag {
+				background-color: #fff;
+			}
+			.sub-tit {
+				margin-top: 8px;
+				font-size: 28px;
+				line-height: 36px;
+				color: #000;
+				font-weight: 700;
+				@include mobile {
+					font-size: 24px;
+					line-height: 29px;
+				}
+			}
+			.date {
+				font-size: 16px;
+				line-height: 24px;
+				color: #000;
+			}
+		}
+	}
 }
 */
 .tit-area {
@@ -230,7 +230,9 @@
 				white-space: nowrap;
 
 				&.on {
-					background-color: rgba($color-primary, .3);
+					border-width: 2px 1px 2px 2px;
+					border-style: solid;
+					border-color: $color-primary #ddd $color-primary $color-primary;
 				}
 			}
 
@@ -238,7 +240,9 @@
 				white-space: nowrap;
 
 				&.on {
-					background-color: rgba($color-primary, .3);
+					border-width: 2px 2px 2px 1px;
+					border-style: solid;
+					border-color: $color-primary $color-primary $color-primary #ddd;
 				}
 			}
 
@@ -254,9 +258,13 @@
 	@include mobile {
 		.table-cont {
 			table {
+				col {
+					width: auto !important;
+				}
 				tr {
 					display: flex;
 					width: 100%;
+					justify-content: space-between;
 
 					// flex-wrap: wrap;
 					// th:nth-child(3),
@@ -267,6 +275,10 @@
 					td {
 						font-size: 12px;
 						padding: 15px 5px;
+					}
+
+					td[colspan] {
+						flex: 1;
 					}
 
 					.winner-tt,

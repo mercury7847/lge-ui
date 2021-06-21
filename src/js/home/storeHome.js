@@ -26,7 +26,7 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                   {{/each}}'
 
 var bestRankBuyProductTmpl =
-    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
+    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
     '   <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '   <span class="bg ui_bg_switch"'+ 
     '       style="background-image:url();"'+ 
@@ -47,7 +47,7 @@ var bestRankBuyProductTmpl =
 
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
@@ -101,7 +101,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 
 
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
-    '   <div class="slide-box">\n'+
+    '   <div class="slide-box" data-ec-product="{{ecProduct}}">\n'+
     '       <div class="img"><img src="{{fullImagePath}}" alt="{{modelDisplayName}}"></div>\n'+    
     '       <div class="product-area">\n'+
     '           <div class="product-contents">\n'+
@@ -204,8 +204,8 @@ $(function(){
         // 많이 구매하는 제품 -> Best 이미지관리
 
         var rankBuyProductLocal = {
-            "pcImagePath" : "/lg5-common/images/PRS/img-buy-product-best.jpg",
-            "mobileImagePath" : "/lg5-common/images/PRS/img-buy-product-best-m.jpg"
+            "pcImagePath" : "/kr/main/store/assets/img-buy-product-best.jpg",
+            "mobileImagePath" : "/kr/main/store/assets/img-buy-product-best-m.jpg"
         }
         // 새로운 제품, 놓치지 마세요 -> 이미지관리
         var newProductRecommendLocal = [{
@@ -220,12 +220,12 @@ $(function(){
 
         var exhibitionLocal = [
             {
-                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01.jpg",
-                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-01-m.jpg",
-                "title" : "PC 아카데미 페스티벌<br>앵콜 기획전",
+                "pcImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02.jpg",
+                "mobileImagePath" : "/lg5-common/images/PRS/img-plan-exhib-slid-02-m.jpg",
+                "title" : "올레드 업그레이드<br>지원금 행사",
                 "imageAlt" : "",
                 "date" : "",
-                "modelUrlPath" : "/benefits/exhibitions/detail-PE00007002",
+                "modelUrlPath" : "/benefits/exhibitions/detail-PE00011004",
                 "textClass":"fc-black"  
             },
             {
@@ -238,6 +238,7 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        
         // 직접관리하는 영역 끝
 
         
@@ -254,7 +255,6 @@ $(function(){
             var obj = exhibitionLocal[i];
             obj['modelId'] = exhibitionModelIdArr[i];
             newExhibitionLocal.push(obj);
-
         }
 
         // 새제품 추천 렌더링
@@ -268,12 +268,18 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                    
+
+                    var newTempEcProduct = getEcProduct(item);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                     }else{
                         item['obsOriginalPrice'] = null;
                     }
+
+
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
@@ -283,7 +289,7 @@ $(function(){
                         item['totalPrice'] = null;
                     }
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
-                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
+                    item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
 
                     var obj = newProductRecommendLocal[index];
 
@@ -303,7 +309,8 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
+                    if(list[index]){
+                        
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
@@ -581,6 +588,7 @@ $(function(){
                 if(sortArr.length>0){
 
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
+                    bestObj.ecProduct = JSON.stringify(getEcProduct(bestObj));
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
                     $context.find('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
@@ -596,6 +604,9 @@ $(function(){
                     }
     
                     sortArr = vcui.array.removeAt(sortArr, 0);
+                    sortArr.forEach(function(item){
+                        item.ecProduct = JSON.stringify(getEcProduct(item));
+                    })
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
                     $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
     

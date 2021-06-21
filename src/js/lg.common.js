@@ -2043,21 +2043,39 @@ var goAppUrl = function(path) {
 
         //크레마로그인
         cremaLogin:function() {
-            if(typeof cremaid !== 'undefined' && typeof cremaname !== 'undefined') {
-                window.cremaAsyncInit = function () {
-                    if(typeof crema !== 'undefined') {
-                        crema.init(cremaid, cremaname);
-                    }
+
+            // 크레마 init 구조상 cremaAsyncInit 함수가 먼저 선언되 있어야 초기화 오류가 안난다.
+            window.cremaAsyncInit = function () {
+                if(typeof crema !== 'undefined') {
+                    crema.init(cremaid, cremaname);
+                }
+            };
+
+            (function(i,s,o,g,r,a,m){
+                var isMobile = false;
+                if(vcui.detect.isMobile){
+                    isMobile = true;
+                }
+                
+                if(location.hostname == "www.lge.co.kr") {
+                    r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+                } else {
+                    r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+                }
+            
+                if(s.getElementById(g)){
+                    return
                 };
-                window.cremaAsyncInit();
-            } else {
-                window.cremaAsyncInit = function () {
-                    if(typeof crema !== 'undefined') {
-                        crema.init(cremaid, cremaname);
-                    }
-                };
-                window.cremaAsyncInit();
-            }
+                a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+                a.id=g;
+                a.async=1;
+                a.src=r;
+                m.parentNode.insertBefore(a,m);
+            })(window,document,'script','crema-jssdk','//widgets.cre.ma/lge.co.kr/init.js');
+
+
+            window.cremaAsyncInit();
+
         },
 
         //크레마리플래쉬

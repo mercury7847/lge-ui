@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+pageCSS: ["BMC/BMC"]
+})
+
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#goodPop" data-control="modal" class="btn pink"><span>당첨 팝업</span></button>
+        <button type="button" data-href="#badPopup" data-control="modal" class="btn pink"><span>미당첨 팝업</span></button>
+    </div>
+
+    <article id="goodPopup" class="popup-wrap">
+        <!-- 210126 수정 - 전체 화면 변경 -->
+        <header class="pop-header">
+            <h1 class="tit"><span>모델명 확인 방법</span></h1>
+        </header>
+        <section class="pop-conts common-pop academy-pop no-footer">
+            <!-- [11.27 수정] common-pop Class 추가 -->
+            <p class="noti-txt">사용하시는 제품의 <em>모델명</em>과 <em>제조번호</em>를 확인해주세요.</p>
+            <div class="example-list">
+                <dl>
+                    <dt>모델명</dt>
+                    <dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
+                </dl>
+                <dl>
+                    <dt>제조번호</dt>
+                    <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
+                </dl>
+                <dl class="sel-category">
+                    <dt>카테고리 선택</dt>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select1" title="카테고리 선택">
+                                <option value="" class="placeholder">TV/AV</option>
+                                <option value="">카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                    <dd>
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select2" title="세부 카테고리 선택" disabled>
+                                <option value="" class="placeholder">세부 카테고리 선택</option>
+                                <option value="">세부 카테고리</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+                <!-- [11.27 수정] 샘플이미지 영역 DOM 변경 -->
+                <div class="example-img">
+                    <p class="desc">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+                    <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
+                </div>
+                <!-- // [11.27 수정] 샘플이미지 영역 DOM 변경 -->
+                <!-- 이미지 없을 경우 -->
+                <div class="example-img no-img">
+                    <p class="desc">제품 이미지 준비중입니다.</p>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+
+</html>

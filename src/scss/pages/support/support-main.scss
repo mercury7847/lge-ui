@@ -252,6 +252,11 @@
 .support-home {
     overflow:hidden;
     padding-bottom:100px;
+    /* BTOCSITE-1433 - App> 고객지원 Main, pinch out 기능 제공 */
+    .slick-slider{
+        touch-action: auto;
+    }
+    /* //BTOCSITE-1433 - App> 고객지원 Main, pinch out 기능 제공 */
     .btn {
         &.light-gray {
             background: #aaa;
@@ -1449,7 +1454,7 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc.jpg") no-repeat center top;
+                background: url("/lg5-common/images/CS/img-support-main-hero-pc02.jpg") no-repeat center top; /* 0528 이미지변경 */
                 background-size: cover;
             }
         }
@@ -1469,7 +1474,7 @@
                 // background: none;
 
                 &:before {
-                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo-new.jpg");
+                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo02.jpg"); /* 0528 이미지변경 */
                     background-size:cover;
                     background-position:bottom center;
                 }

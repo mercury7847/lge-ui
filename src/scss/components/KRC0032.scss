@@ -25,7 +25,9 @@
         .component.KRC0032 {
             .component-box {
                 @include mobile {
+                    /* BTOCSITE-1895 : BTOCSITE-1442 원복 요청 */
                     padding-bottom:60px;
+                    /* //BTOCSITE-1895 : BTOCSITE-1442 원복 요청 */
                 }
             }
         }

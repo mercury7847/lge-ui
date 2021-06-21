@@ -8,6 +8,11 @@
 	@import "unmanned-store";
 }
 
+// 무인매장
+.contents.unmanned-store-wrap {
+    @import "unmanned-store";
+}
+
 // 메인
 /* 앱용 */
 .app {
