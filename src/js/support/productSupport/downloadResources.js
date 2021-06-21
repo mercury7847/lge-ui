@@ -5,19 +5,19 @@
             '<p class="tit">{{type}}</p>' +
             '<p class="desc">{{title}}</p>' +
             '<div class="info-wrap">' +
-                '{{# if (typeof language != "undefined" || typeof date != "undefined" || typeof os != "undefined") { #}}' +
+                '{{# if (typeof language != "undefined" || typeof date != "undefined" || typeof os != "undefined" || language != "" || date !="" || os != "") { #}}' +
                 '<ul class="options">' +
-                    '{{# if (typeof language != "undefined") { #}}' +
+                    '{{# if (typeof language != "undefined" || language != "") { #}}' +
                     '<li>{{language}}</li>' +
                     '{{# } #}}' +
-                    '{{# if (typeof date != "undefined") { #}}' +
+                    '{{# if (typeof date != "undefined" || date != "") { #}}' +
                     '<li>{{date}}</li>' +
                     '{{# } #}}' +
                     // start 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
-                    // '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
-                    // '<li>OS</li>' +
-                    // '{{# } #}}' +
-                    '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
+                    '{{# if (typeof os != "undefined" || os != "") { #}}' +
+                    '<li>OS</li>' +
+                    '{{# } #}}' +
+                    '{{# if (typeof os != "undefined" || os != "") { #}}' +
                     '<li>{{os}}</li>' +
                     '{{# } #}}' +
                     // end 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
@@ -309,7 +309,7 @@
                     html += vcui.template(manualListTemplate, item);
                 });
                 $list.append(html);
-                console.log($list);
+                console.logg($)
                 $listWrap.show();
                 $noData.hide();
             } else {
