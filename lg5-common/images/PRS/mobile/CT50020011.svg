@@ -1,0 +1,13 @@
+<svg id="img_AirConditioner_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(23 4)">
+    <rect id="Rectangle" width="34" height="72" rx="4" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    <g id="Group_19" data-name="Group 19">
+      <path id="Path" d="M1,0V14" transform="translate(26 10)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-2" data-name="Path" d="M0,1H12" transform="translate(22 31)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-3" data-name="Path" d="M0,1H12" transform="translate(0 31)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-4" data-name="Path" d="M1,0V70" transform="translate(19 0.769)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-5" data-name="Path" d="M1,0V70" transform="translate(13.127 0.769)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-6" data-name="Path" d="M1,0V14" transform="translate(6 10)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

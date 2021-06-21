@@ -1,8 +1,12 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
+
+    function getLoginFlag(){
+        return $('html').data('login') == 'Y' || $('.support-home').data('login') == 'Y' ? true : false;
+    }
     
     var csUI = {
-        isLogin: $('html').data('login') == 'Y' ? true : false,
+        isLogin: getLoginFlag(),
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
@@ -1387,9 +1391,29 @@ function validatePhone(value){
         return false;
     }
 }
+
 (function($){
     vcui.require(['support/common/quickMenu.min'], function() {
-        $('#quickMenu').vcQuickMenu();
+        var isSwipe = !!$('#sw_con').length;
+
+        if (isSwipe && $('#floatBox').length == 0){
+            $('.swiper-container').after('<div id="floatBox"></div>');
+        }
+        
+        if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
+            var quickMenu = $('#quickMenu').remove();
+            // preload 대응 현재 슬라이드가 고객지원이 아닐때는 숨김처리
+            if ($('.swiper-slide-active').data().hash !== 'support'){
+                $(quickMenu).hide();
+            }
+            $('#floatBox').append(quickMenu);
+            $('#quickMenu').vcQuickMenu();
+        }
+
+        if (isSwipe == false){
+            $('#quickMenu').vcQuickMenu();
+        }
+        
     });
 
     function commonInit(){

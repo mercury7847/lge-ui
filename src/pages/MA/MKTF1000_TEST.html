@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
+    <!-- 210423 페이지타이틀 수정 -->
+    <!-- BTOCSITE-27 head -->
+    @@include('./common/head.html', {
+		pageCSS: ["MA/MA"],
+        pageJS: ["components/KRP0005"],
+        pageTitle: "LGE.COM | LG전자",
+        pageDesc: "차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다."
+    })
+    <!-- //BTOCSITE-27 head -->
+    <!-- //210423 페이지타이틀 수정 -->
+    <!-- //210330 스키티챗JS 추가 -->
+
+
+    
+    <!-- BTOCSITE-27 서브메인 css preload -->   
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/PRS/PRS.min.css">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/STS/STS.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support-main.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/SLS/SLS.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://wwwstg.lge.co.kr/kr/main/css/f-style.css" />    
+    <!-- //BTOCSITE-27 서브메인 css preload -->   
+
+    <!-- BTOCSITE-27 스와이프 스크립트 -->   
+    <link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
+    <script src="/lg5-common/js/libs/swiper-bundle.min.js"></script>
+    <script src="/lg5-common/js/home/mainSwipe.min.js"></script>
+    <!-- BTOCSITE-27 페이지 메타 데이터, GA 관련 페이지 정보 변수 선언 -->
+    <script>
+        
+
+var _PAGE_DATA = {
+    'home' : {
+        'meta' : {
+            'title' : 'LGE.COM | LG전자',
+            'description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : 'LGE.COM | LG전자',
+            'og:description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
+            'og:url' : 'https://wwwdev50.lge.co.kr',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr'
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "홈",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
+    },
+    'store' : {
+        'meta' : {
+            'title' : '전체 제품 | LG전자',
+            'description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : '전체 제품 | LG전자',
+            'og:description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
+            'og:url' : 'https://wwwdev50.lge.co.kr/store',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr/store'            
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "스토어",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
+    },
+    'story' : {
+        'meta' : {
+            'title' : '스토리 | LG전자',
+            'description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : '스토리 | LG전자',
+            'og:description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
+            'og:url' : 'https://wwwdev50.lge.co.kr/story',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr/story'            
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "스토리",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
+    },
+    'care-solutions' : {
+        'meta' : {
+            'title' : '케어솔루션 렌탈 제품 | LG전자',
+            'description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : '케어솔루션 렌탈 제품 | LG전자',
+            'og:description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
+            'og:url' : 'https://wwwdev50.lge.co.kr/care-solutions',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr/care-solutions'            
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "케어솔루션",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
+    },
+    'support' : {
+        'meta' : {
+            'title' : 'LG전자 고객지원',
+            'description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : 'LG전자 고객지원',
+            'og:description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+            'og:url' : 'https://wwwdev50.lge.co.kr/support',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr/support'            
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "고객지원",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
+    }
+};
+
+    </script>
+    <!-- //BTOCSITE-27 페이지 메타 데이터, GA 관련 페이지 정보 변수 선언 -->
+    <!-- //BTOCSITE-27 스와이프 스크립트 -->
+    
+<body data-lgkor-main="true"> <!-- BTOCSITE-27 data-lgkor-main="true" 속성값 추가 -->
+	<div class="wrap">
+        @@include('./common/header.html', {
+            "pageCase": "main",
+            "mobileCase": "main",
+            hiddenTitle: "엘지이닷컴"
+        })
+		<div class="container">            
+     
+            <!-- BTOCSITE-27 상단 퀵메뉴 스와이프 처리 --> 
+            <div class="swiper-container" id="sw_con">                
+                <div class="swiper-wrapper">        
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1000_content.html" data-hash="home"></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF1001_content.html" data-hash="store" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/OBS5001_content.html" data-hash="story" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/CSRF6001_content.html" data-hash="support" ></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/MKTF2001_content.html" data-hash="care-solutions"></div>
+                </div>
+            </div>
+            <!-- //BTOCSITE-27 상단 퀵메뉴 스와이프 처리 -->
+		</div>
+        <!-- BTOCSITE-27 하단 퀵메뉴 컨테이너 -->
+        <div id="floatBox">
+        </div>
+        <!-- //BTOCSITE-27 하단 퀵메뉴 컨테이너 -->
+    </div>
+</body>
+</html>

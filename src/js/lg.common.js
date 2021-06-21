@@ -7,7 +7,8 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.pathname;
+    var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
+
     if( vcui.detect.isIOS ) {
         var clickedAt = +new Date;
         setTimeout( function () { 
@@ -50,6 +51,27 @@ var goAppUrl = function(path) {
             $b.vcLazyLoader();
         });
     };
+
+    // BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가 - 해당 요건으로인해 스크립트로 이동
+    var appDownloadTmpl = 
+        '<article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">\n'+
+        '    <section class="pop-conts align-center">\n'+
+        '        <section class="section">\n'+
+        '            <div class="appMobile-pop-content">\n'+
+        '                <p class="appMobile-popImg"><img src="/lg5-common/images/MA/appPop_img_v2.png" alt="LG로고" class="pop-img"></p>\n'+
+        '                <div class="text-cont">\n'+
+        '                LG전자 <b>LGE.COM</b><br/>\n'+
+        '                앱으로 더 편리하게<br/>\n'+
+        '                이용하실 수 있습니다.\n'+
+        '                </div>\n'+
+        '            </div>\n'+
+        '            <div class="btn-wrap">\n'+
+        '                <button type="button" class="btn full border size-m" id="lg__app-download"><span>지금 앱으로 보기</span></button>\n'+
+        '            </div>\n'+
+        '        </section>\n'+
+        '    </section>\n'+
+        '    <button type="button" class="ui_modal_close">모바일 웹에서볼게요</button>\n'+
+        '</article>\n';
 
     var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
@@ -301,20 +323,75 @@ var goAppUrl = function(path) {
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        init: function(){
+        CONTEXT_AREA: null,      
+        init: function( $context ){            
             var self = this;
 
             self._bindErrBackEvent();
             self._addImgOnloadEvent();
-            self._preloadComponents();
+
+            if (!!$context){
+                self.CONTEXT_AREA = $context;
+                self._preloadComponents();
+            } else {
+                //self.CONTEXT_AREA = null;
+                self.CONTEXT_AREA = $(document);
+                self._preloadComponents();
+            }
+
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
+            self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
             else $('body').find('.container').attr('id', 'content');
+
+            if (!!$context){
+                return $.Deferred().resolve($context.data());
+            }
         },
+
+        //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
+        _appDownloadPopup: function() {
+            var enableUrl = [
+                '^/$' // 메인
+                //'^/benefits/event/?', // 이벤트 페이지
+                //'^/benefits/exhibitions/?' // 기획전 페이지
+            ];
+
+            var isPopUp = enableUrl.some(function(element) {
+                return location.pathname.match(new RegExp(element,"g"))
+            })
+
+            
+
+            $(function() {
+                if (vcui.detect.isMobileDevice && !isApp()) {
+                    var cookie_name = '__LGAPP_DLOG__';
+                    if (vcui.Cookie.get(cookie_name) === '' && isPopUp ) {
+                        if($('#mobile-close-popup').size() === 0 && !!vcui.modal) {
+                            $('body').append(vcui.template(appDownloadTmpl));
+                            vcui.modal('#mobile-close-popup', open);
+                            var el = $('#mobile-close-popup');
+                            el.find('#lg__app-download').on('click', function () {
+                                goAppUrl();
+                                return;
+                            });
+                            
+                            el.find('.ui_modal_close').one('click', function () {
+                                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                                $('html, body').css('overflow', '');
+                                return;
+                            });
+                        }
+                        
+                    }
+                }
+            });
+        },
+
 
         _addImgOnloadEvent: function(){
             var self = this;
@@ -386,7 +463,7 @@ var goAppUrl = function(path) {
                 "ui/smoothScrollTab",
                 'ui/imageFileInput',
                 'common/header', 
-                'common/footer',  
+                'common/footer',
             ], function (/*ResponsiveImage,*/ /*BreakpointDispatcher*/) {
                 
                 // new BreakpointDispatcher({
@@ -441,7 +518,7 @@ var goAppUrl = function(path) {
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
-                $(window).on('resizeend', function(e){
+                $(window).off('resizeend').on('resizeend', function(e){
                     self.resetFlexibleBox();
                 });  
                 self.resetFlexibleBox();
@@ -552,11 +629,20 @@ var goAppUrl = function(path) {
                         }
                     }
                 });
-    
-                $('header.header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
+                
+                if (!!lgkorUI.CONTEXT_AREA){                 
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
-                $('body').buildCommonUI();
+                    lgkorUI.CONTEXT_AREA.buildCommonUI();
+
+                } else {
+                    $('header.header').vcHeader(); //헤더 모듈 적용...
+                    $('footer').vcFooter(); //푸터모듈 적용...
+
+                    $('body').buildCommonUI();
+                }
+                
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     

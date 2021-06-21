@@ -68,30 +68,33 @@ $(function () {
         '   </div>\n'+
         '</div>';
     
+    var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
 
-        $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+        $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        if (!vcui.detect.isMobileDevice){
+            $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        }
         
         $('body').addClass('ignore-overflow-hidden');
 
-        $('.ui_carousel_slider_banner1').find('.flow-bar').css({
+        $context.find('.ui_carousel_slider_banner1').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $('.ui_carousel_slider_banner2').find('.flow-bar').css({
+        $context.find('.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
-        $('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $context.find('.ui_carousel_slider_banner1').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
             
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
-                $slider.addClass('on');  
+                $slider.addClass('on');
                 $(this).find('.flow-bar-wrap').hide();
             }else{
                 $(this).find('.flow-bar-wrap').show();
@@ -113,6 +116,9 @@ $(function () {
             centerMode: true,
             centerPadding: '13.3%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -133,7 +139,7 @@ $(function () {
             ]
         });
 
-        $('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
+        $context.find('.ui_carousel_slider_banner2').on('carouselinit carouselresize carouselafterchange', function(e, carousel, index){
 
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
@@ -160,6 +166,9 @@ $(function () {
             centerMode: true,
             centerPadding: '13.3%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -190,7 +199,7 @@ $(function () {
             
         var isApplication = isApp();
         var $window  = $(window);
-        var $contentWrap = $('.section-cover');
+        var $contentWrap = $context.find('.section-cover');
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
         var wheelInterval = null;            
@@ -198,26 +207,45 @@ $(function () {
         var winHeight = $window.height();            
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.scene').add('.section-cover');
+        var $scenes = $context.find('.scene').add('.section-cover');
         var maxLens = $scenes.length - 1;
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
 
         var visualAnimInterval;
 
+        if (vcui.detect.isMobileDevice){
+            //$scenes.eq(0).css('height', 'calc(100vh - 84px)');
+        } else {
+            $scenes.eq(0).css('height', 'calc(100vh - 110px)');
+        }
+        
+
         // 웨일 결합처리
-        $('.foot-cont').find('.menu-opener').on('click', function(e){
+        $context.find('.foot-cont').find('.menu-opener').on('click', function(e){
             $('html,body').scrollTop(maxLens*winHeight);
         });
 
-        $('.scene').css({'overflow':'hidden'});
+        $context.find('.scene').css({'overflow':'hidden'});
         
-        $('.container').css({'overflow':'visible', 'height':'auto'});     
+        $context.find('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        $('.next-arr').on('click', 'a', function(e){
-            e.preventDefault();
-            wheelScene(1);
-        });
+        if ( !vcui.detect.isMobileDevice ){            
+            $context.find('.next-arr').on('click', 'a', function(e){
+                e.preventDefault();
+                wheelScene(1);
+            });
+        } else {
+            // BTOCSITE-740 
+            /*
+            $('.scene').addClass('active');
+            setTimeout(function(){
+                $('.scene').eq(0).addClass('on');
+            },500);
+            */
+        }
+
+        
 
         $(document).on('click', 'a', function(e){
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -229,21 +257,24 @@ $(function () {
         $window.on('breakpointchange', function(e){
 
             var data = window.breakpoint;
-            var isRecom = $('.recom-list-slide').data('ui_carousel');
-            var isBenefit = $('.benefit-list-slide').data('ui_carousel');
+            var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
+            var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
 
             if(data.name == 'mobile'){
 
                 if(!isRecom){
-                    $('.recom-list-slide').vcCarousel({                        
+                    $context.find('.recom-list-slide').vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }
 
                 if(!isBenefit){
-                    $('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
+                    $context.find('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
                         clearInterval(animCtrlers[3]);
                         animCtrlers[3] = null;
                     }).on("carouselafterchange", function(e, carousel, index){
@@ -253,20 +284,23 @@ $(function () {
                     }).vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1                                
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100                            
                     });
                 }
 
 
             }else if(data.name == 'pc'){
 
-                $('.recom-list-slide').find('.ui_carousel_dots').hide();
-                $('.benefit-list-slide').find('.ui_carousel_dots').hide();
+                $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
+                $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
                 if(isRecom){
-                    $('.recom-list-slide').vcCarousel('destroy');
+                    $context.find('.recom-list-slide').vcCarousel('destroy');
                 }
                 if(isBenefit){
-                    $('.benefit-list-slide').vcCarousel('destroy');
+                    $context.find('.benefit-list-slide').vcCarousel('destroy');
                 }
             }
 
@@ -274,12 +308,15 @@ $(function () {
 
 
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
-
+        
         var maxScale = 110;
-
-        $scenes.find('.img img').css({
-            width: maxScale + '%'
-        });
+        if (!vcui.detect.isMobileDevice){
+            $scenes.find('.img img').css({
+                width: maxScale + '%'
+            });
+        }
+        
+        
 
         function stopVisualAnim(){
             clearInterval(visualAnimInterval);
@@ -305,10 +342,12 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){
-                if(!canScroll) return;
-            }
-
+            if(!isMobileDevice){                
+                if(!canScroll) return; 
+            } else {
+                return;
+            }           
+            
             var nextIndex = (delta < 0) ? -1 : 1;
             nextIndex = nextIndex + currentPage;
             nextIndex = Math.max(Math.min(nextIndex, maxLens), 0);
@@ -320,18 +359,26 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isMobileDevice){
-                if(!canScroll) return;
-                canScroll = false;
+            if(!isMobileDevice){                
+                if(!canScroll) return;  
+                canScroll = false;   
             }
 
-            $contentWrap.scrollTop(0);
+            if ( $('html').attr('canscroll') == 'false' ){
+                return;
+            }
+            
+            $contentWrap.scrollTop(0);                
             $('html').addClass('sceneMoving');
 
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;
-            $scenes.removeClass('active').eq(idx).addClass('active');
 
+            if (!vcui.detect.isMobileDevice){
+                $scenes.removeClass('active').eq(idx).addClass('active');
+            }
+            
+            
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
 
@@ -394,28 +441,32 @@ $(function () {
                             $('.floating-menu.top').show();
                         }
                     }
-
+                    
                     $scenes.eq(currentPage).find('.img img').css({
                         width: maxScale + '%'
                     });
-                    currentPage = idx;
-
-                    if(currentPage == maxLens) startIconAnim();
+                    
+                    currentPage = idx;   
+                    /*
+                    if(currentPage == 5) startIconAnim();
                     else stopIconAnim();
-
+                    */
+                    
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    $scenes.each(function() {
-                        if ( $(this).find('video').length != 0 ) {
-                            if ( $(this).hasClass('on') ) {
-                                $(this).find('video')[0].play();
-                            }else {
-                                $(this).find('video')[0].pause();
-                                $(this).find('video')[0].currentTime = 0;
+                    if (!vcui.detect.isMobileDevice){
+                        $scenes.each(function() {
+                            if ( $(this).find('video').length != 0 ) {
+                                if ( $(this).hasClass('on') ) {
+                                    $(this).find('video')[0].play();
+                                }else {
+                                    $(this).find('video')[0].pause();
+                                    $(this).find('video')[0].currentTime = 0;							
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
 
                     playVisualAnim();
 
@@ -429,8 +480,8 @@ $(function () {
                 });
             }, 100);
 
-            if(idx > 1 && $('.video-poster').length) $('.video-poster').remove();
-        }
+            if(idx > 1 && $context.find('.video-poster').length) $context.find('.video-poster').remove();
+        } 
 
         var prevTime = new Date().getTime();
 
@@ -469,11 +520,13 @@ $(function () {
 
 
         // 앱 하단 메뉴 컨트롤
-        lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
+        //lgkorUI.showAppBottomMenuOver(true);
+        //lgkorUI.setEnableAppScrollBottomMenu(false);
 
 
         /* 메인테스트*/
+        // BTOCSITE-27
+        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
@@ -489,7 +542,7 @@ $(function () {
                     // console.log('up');
                     lgkorUI.showAppBottomMenu(true);
                 }
-
+                
                 if(currentPage == maxLens){
                     if(wheelInterval) clearTimeout(wheelInterval);
                     wheelInterval = setTimeout(function(){
@@ -506,11 +559,14 @@ $(function () {
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
                     }
-                }
-
+                } 
+                  
+                
             }
         });
-
+        */
+        
+        /*
         var wrapTouchSy = 0;
 
         $contentWrap.on('touchstart touchend touchcancel', function(e) {
@@ -531,9 +587,10 @@ $(function () {
 
             }
         });
+        */
 
-
-
+        
+        /*
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -544,7 +601,8 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
-
+        */
+        
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
             var rate, newW, newH;
@@ -576,14 +634,18 @@ $(function () {
         // 비디오 태그 처리
 
         function updateVideo(video) {
+            // BTOSCITE-740 모바일 화면 동영상 사용중지
+            //if(isMobileDevice) return;
+
 
             var isAndroid = vcui.detect.isAndroid;
 
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
                 // $image    = $wrap.find('img'),
-                // loaded    = $target.data('loaded'),
-                videoAttr = $target.data('options') || 'autoplay playsinline muted',
+                // loaded    = $target.data('loaded'),           
+                //videoAttr = $target.data('options') || 'autoplay playsinline muted',
+                videoAttr = $target.data('options') || 'playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
 
@@ -640,23 +702,25 @@ $(function () {
                     'transform': 'translate(-50%,-50%)'
                 })
                 oVideo   = $video[0];
-
+                /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {
                         oVideo.play();
                     });
                 }
+                */
                 $wrap.addClass('video');
 
                 $video.on('loadeddata', function(e) {
                     $video.data('loaded', true);
                     $wrap.trigger('videoLoaded');
-                    oVideo.play();
+                    //oVideo.play();
                 }).trigger('load');
 
             }
 
             createVideoObject();
+            
         }
 
         // 렌더링
@@ -673,27 +737,36 @@ $(function () {
             $('html, body').stop(true);
             $('html').removeClass('sceneMoving');
 
-            canScroll = true;
+            //canScroll = true;    
             winWidth = $window.width();
             winHeight = $window.height();
             posArr = [];
-
-            var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
-            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height();
+                        
+            //var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');            
+            //var prevAllHeight = $prevTarget.offset().top + $prevTarget.height();
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
 
             $scenes.each(function(i) {
                 if(i==0){
-                    itemHeight = winHeight-prevAllHeight;
+                    //itemHeight = winHeight-prevAllHeight;
+                    itemHeight = winHeight - $('#content').offset().top;
                 }else{
                     itemHeight = winHeight;
                 }
+                // BTOCSITE-740 스크롤 배너 사이즈 변경
+                if (vcui.detect.isMobileDevice){
+                    itemHeight = 500;
+                }
+                
+
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                $(this).height(itemHeight);
-
+                if (!vcui.detect.isMobileDevice){
+                    $(this).height(itemHeight);
+                }
+                
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
                 //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920,
@@ -702,11 +775,12 @@ $(function () {
 
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
-                    width : window.breakpoint.name=='pc'? 1920 : 720,
-                    height : window.breakpoint.name=='pc'? 1080 : 1285, //1285 1476 1080
+                    width : window.breakpoint.name=='pc'? 1920 : 720, 
+                    //height : window.breakpoint.name=='pc'? 1080 : 1285 //1285 1476 1080
+                    height : window.breakpoint.name=='pc'? 1080 : 920
                 };
 
-                $('body').vcLazyLoaderSwitch('reload', $('.contents'));
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
                 if(!$(this).hasClass('section-cover')){
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
@@ -718,35 +792,52 @@ $(function () {
                 totalHeight += itemHeight;
             });
 
-            /* 메인 테스트 */
+            setActivePlayByScroll();
+
+            /* 메인 테스트 */            
             if(vcui.detect.isIOS) {
+                /*
                 if($contentWrap.hasClass('active')) {
                     $contentWrap.css({'overflow':'auto','height':winHeight});
                 } else {
                     $contentWrap.css({'overflow':'','height':winHeight});
                 }
+                */
             } else {
-                $contentWrap.css({'overflow':'auto','height':winHeight});
+                if (!vcui.detect.isMobileDevice){
+                    $contentWrap.css({'overflow':'auto','height':winHeight});
+                }
             }
-            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-
+            /*
+            if (!vcui.detect.isMobileDevice){
+                $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            }
+            */
+            
+            
             if(idx!==undefined){
-                currentPage = idx;
-                moveScene(currentPage,0);
-            }else{
-                setTimeout(function(){
-                    currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                if ( !vcui.detect.isMobileDevice ){
+                    currentPage = idx;
                     moveScene(currentPage,0);
-
-                    if(window.sessionStorage){
-                        var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
-                        if(lgeMainScrollTop){
-                            $contentWrap.scrollTop(lgeMainScrollTop);
+                } else {
+                    //$('.scene').eq(0).addClass('on');
+                }
+            }else{
+                if ( !vcui.detect.isMobileDevice ){
+                    setTimeout(function(){
+                        currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+                        moveScene(currentPage,0);
+    
+                        if(window.sessionStorage){ 
+                            var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
+                            if(lgeMainScrollTop){
+                                $contentWrap.scrollTop(lgeMainScrollTop);                            
+                            }
+                            window.sessionStorage.removeItem('lgeMainScrollTop');
                         }
-                        window.sessionStorage.removeItem('lgeMainScrollTop');
-                    }
-
-                }, 100);
+    
+                    }, 100);
+                }
             }
 
         }
@@ -754,7 +845,9 @@ $(function () {
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            moveScene(currentPage,0);
+            if (!vcui.detect.isMobileDevice){
+                moveScene(currentPage,0);
+            }
         });
 
         if(isApplication){
@@ -799,7 +892,7 @@ $(function () {
     //메인 아이콘 애니매이션...
     var animCtrlers = [];
     var startIconAnim = function(){
-        $('.ui_ico_anim').each(function(idx, item){
+        $context.find('.ui_ico_anim').each(function(idx, item){
             setIconAnimCtrler($(item));
         });
     }
@@ -841,7 +934,7 @@ $(function () {
     }
     window.loadAnimSourceComplete = loadAnimSourceComplete;
 
-    $('.ui_ico_anim').each(function(idx, item){
+    $context.find('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
         var patharr = $(item).find('img').attr('src').split("/");
         var pleng = patharr.length;
@@ -881,8 +974,8 @@ $(function () {
         $(item).data("loadTotal", total);
         $(item).data('length', total+1);
     });
-    $('.ui_ico_anim img').css({position:'absolute', display:'none'});
-    $('.ui_ico_anim img:nth-child(1)').css({display:'block'});
+    $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
+    $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
     /* 20210503 : 모바일앱 다운로드 팝업 */
    if (vcui.detect.isMobileDevice && !isApp()) {
@@ -908,4 +1001,227 @@ $(function () {
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
 
+    function setActivePlayByScroll(){
+        // BTOCSITE-740
+        if (!vcui.detect.isMobileDevice) return;
+
+        var sceneActiveQue = [];
+        var scenes = $context.find('.scene');
+
+        scenes.each(function(){
+            var self = $(this);
+            var video = self.find('video');
+            var image = self.find('.img img');
+            
+            self.on('active.scroll', function(e, scrollTop){
+                var gnbHeight = 84;
+                var top = self.offset().top;
+                //var sceneHeight = self.height();
+                var sceneHeight = 500;
+                var winHeight = $(window).height();               
+                //if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){  // 영역이 완전히 보일떄 
+                if ( top >= (scrollTop + gnbHeight) - (sceneHeight /2) && (scrollTop + winHeight) - (sceneHeight /2) >= top ){  // 영역이 절반이상 보여질때 
+                    self.addClass('on');
+                    if (!!image.length){
+                        /*
+                        image.animate({
+                            'width' : '100%'
+                        });
+                        */
+                    }
+                    /*
+                    if (!!video.length){
+                        video.get(0).play();
+                    }
+                    */
+
+                    var viewHeight = 500; // 보여지는 영역 높이값
+                    
+                    // 배너가 화면보다 위에 있을떄
+                    if (top < scrollTop){
+                        viewHeight = (top + 500) - scrollTop;
+                    }
+                    // 배너가 화면보다 아래에 있을때
+                    if (top + 500 > scrollTop + winHeight){
+                        viewHeight = (scrollTop + winHeight) - top;
+                    }
+
+                    sceneActiveQue.push({
+                        'el' : self,
+                        'viewHeight' : viewHeight
+                    });
+                } else {
+                    self.removeClass('on');
+                    if (!!image.length){
+                        /*
+                        image.animate({
+                            'width' : '110%'
+                        });
+                        */
+                    }
+                    
+                    if (!!video.length){
+                        video.get(0).pause();
+                        video.get(0).currentTime = 0;
+                    }
+                    
+                }        
+            });            
+        });
+
+        var scrollInterval = null;
+
+        $(window).on('scroll.videoPlay', function(){
+            //clearTimeout(scrollInterval);
+            
+            //scrollInterval = setTimeout(function(){                
+                var scrollTop = $(window).scrollTop();
+                
+                //console.log('scrollTop', scrollTop);
+                
+                sceneActiveQue = [];
+
+                scenes.each(function(){
+                    $(this).trigger('active', scrollTop);
+                });
+                
+                var hiActiveView = null;    // 가장 많이 보이고있는 배너
+                sceneActiveQue.forEach(function( scene ){
+                    //console.log('activeScene viewHeight', scene.viewHeight);
+                    //console.log('activeScene el', scene.el);
+                    scene.hiActiveView = false;
+
+                    if (hiActiveView == null){
+                        hiActiveView = scene;
+                        scene.hiActiveView = true;
+                    } else {
+                        if (hiActiveView.viewHeight < scene.viewHeight ){
+                            hiActiveView = scene;
+                            scene.hiActiveView = true;
+                            if (sceneActiveQue.length > 0){
+                                sceneActiveQue[0].hiActiveView = false;
+                            }
+                        }
+
+                        if (hiActiveView.viewHeight == scene.viewHeight ){
+                            hiActiveView = scene;
+                            scene.hiActiveView = true;
+                            if (sceneActiveQue.length > 0){
+                                sceneActiveQue[0].hiActiveView = false;
+                            }
+                        }
+                    }
+                });
+
+                //console.log('########### sceneActiveQue ###########', sceneActiveQue);
+
+                sceneActiveQue.forEach(function( scene, idx ){
+                    var video = $(scene.el).find('video');
+                    if ( scene.hiActiveView == true ){
+                        if (!!video.length && video.get(0).currentTime == 0){
+                            video.get(0).play();
+                        }
+                    }
+                    if ( scene.hiActiveView == false ){
+                        if (!!video.length){
+                            video.get(0).pause();
+                            video.get(0).currentTime = 0;
+                        }
+                    }                    
+                });
+                //console.log('hiActiveView', hiActiveView);
+                /*
+                var video = $(hiActiveView.el).find('video');
+                console.log('video', video);
+                if (!!video.length){
+                    video.get(0).play();
+                }
+                */
+            //}, 500);
+        });
+        
+        setTimeout(function(){
+            $(window).trigger('scroll.videoPlay');
+        }, 50);
+
+
+        // 플로팅 버튼 AR 관련 
+        if (vcui.detect.isMobileDevice){
+            var isApplication = isApp();
+
+            setTimeout(function(){
+                if (isApplication){
+                    $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                    $('.floating-menu.top').hide();
+                    $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
+                    $(window).scrollTop(0);
+                }
+            }, 100);
+
+            $(window).on('scroll.floating', function(){                
+                var scrollTop = $(window).scrollTop();
+                var hasTop = $('.floating-menu.top').hasClass('call-yet');
+
+                if(scrollTop == 0){
+                    if(hasTop){
+                        //$('.floating-menu.top').css('opacity', 0);
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $(window).trigger('floatingTopHide');
+                        $('.floating-menu.top').hide();
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                    } else {
+                        /*
+                        // 원본 소스
+                        $(window).trigger('floatingTopHide');
+                        $('.floating-menu.top').addClass('call-yet');
+                        */
+
+                        //임시 추가
+                        //앱인데 메인이 아닐경우에만 실행
+                        //$('.floating-menu.top').css('opacity', 1);
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $(window).trigger('floatingTopHide');
+                        $('.floating-menu.top').hide();
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                        }
+                        //임시 추가 끝
+                    }
+                }else{
+                    if(hasTop){
+                        //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $('.floating-menu.top').removeClass('call-yet');
+                        $(window).trigger('floatingTopShow');
+                        $('.floating-menu.top').show();
+
+                    } else {
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $('.floating-menu.top').removeClass('call-yet');
+                        $(window).trigger('floatingTopShow');
+                        $('.floating-menu.top').show();
+                    }                       
+                }
+            });
+        }
+
+        
+        
+    }
+    
 });
