@@ -14,7 +14,7 @@
                     '<li>{{date}}</li>' +
                     '{{# } #}}' +
                     // start 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
-                    '{{# if (typeof os != "undefined" || os != "") { #}}' +
+                    '{{# if (os != "") { #}}' +
                     '<li>OS</li>' +
                     '{{# } #}}' +
                     '{{# if (typeof os != "undefined" || os != "") { #}}' +
