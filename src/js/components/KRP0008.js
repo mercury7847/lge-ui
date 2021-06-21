@@ -1383,30 +1383,13 @@
                     console.log("uniqModelArray[0]", uniqModelArray[0])
 
                     //필터링된 모델값이 하나일 경우
-                    if( uniqModelArray.length != 0 ) {
+                    if( uniqModelArray.length > 0 ) {
                         if( uniqModelArray.length == 1) {
                             self.requestSiblingData(uniqModelArray[0], _self)
                         }  else {
                             //필터링된 모델값이 여러개일 경우
                             //console.log('length :: ' + uniqModelArray.length)
-    
-                            //defaultModelFlag가 Y인 모델만 추출
-                            var mainModel = uniqModelArray.filter(function(v){
-                                if( v.defaultModelFlag == "Y") {
-                                    return true
-                                }
-                            });
-                            if( mainModel.length ) {
-                                //defaultModelFlag가 Y인 모델이 있으면 Y모델중 첫번째 모델로 ajax call
-                                console.log('main model')
-                                console.log(mainModel)
-                                self.requestSiblingData(mainModel[0], _self)
-                            } else {
-                                //defaultModelFlag가 Y인 모델이 없으면 그냥 첫번째 모델로 ajax call
-                                console.log('normal first model ')
-                                console.log(uniqModelArray)
-                                self.requestSiblingData(uniqModelArray[0], _self)
-                            }
+                            self.requestSiblingData(uniqModelArray[0], _self)
                         }
                     } else {
                         //console.log(uniqModelArray)
