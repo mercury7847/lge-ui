@@ -2427,16 +2427,11 @@
                         currentCheckIndex: currentIndexArry[i],
                         colorValue: v[1][0].siblingType == "COLOR" ? v[1][currentIndexArry[i]].siblingValue : ""
                     }
-
                     //console.log("templateItem :::", templateItem)
                     optionHTML += vcui.template(siblingTemplate, templateItem); 
                 })
 
-                
-
                 self.$siblingCont.attr('data-model-path', modelFilter[0].modelUrlPath);
-
-                
 
                 $(optionHTML).find('.option-list').each(function(i){
                     if( $(this).closest('.select-option.color').length ) {
