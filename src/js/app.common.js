@@ -21,6 +21,7 @@ var appInit = function() {
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
+            // 210621 앱 알림함 아이콘 추가 원복처리 $('.app-alarm-button').css('right','30px');
             $(".app-settings-button").on({
                 click : function() {
                     document.location.href="/mobile-app/option";
@@ -117,6 +118,7 @@ var appInit = function() {
             }
 
             //알림함 Count 표시
+            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정
             if (/iPhone|iPad|iPod/i.test(agent)) {
                 var obj = new Object();
                 obj.command = "getUncheckedPushCount";
@@ -128,6 +130,7 @@ var appInit = function() {
             }else{
                 //console.log("Count Update");
             }
+            */
 
             //알림함 버튼 이벤트
             $(".app-alarm-button").on({
