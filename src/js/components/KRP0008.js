@@ -1359,7 +1359,7 @@
                         });
                     })
 
-                    console.log("curModel" , curModel)
+                    //console.log("curModel" , curModel)
                     
                     var curModelArryOnly = curModel.filter(function(v){
                         if( v!= null && v.length ==1 ) {
@@ -1367,10 +1367,9 @@
                         }
                     })
                     
-                    console.log("curModelArryOnlyCheck", curModelArryOnly)
+                    //console.log("curModelArryOnlyCheck", curModelArryOnly)
                     
                     if( curModelArryOnly && curModelArryOnly.length == 1) {
-                        console.log(1111)
                         uniqModelArray = curModelArryOnly[0];
                     } else {
                         uniqModelArray = curModel.reduce(function (a, arr) {
@@ -1379,8 +1378,8 @@
                             });
                         });
                     }
-                    console.log("uniqModelArray", uniqModelArray)
-                    console.log("uniqModelArray[0]", uniqModelArray[0])
+                    //console.log("uniqModelArray", uniqModelArray)
+                    //console.log("uniqModelArray[0]", uniqModelArray[0])
 
                     //필터링된 모델값이 하나일 경우
                     if( uniqModelArray.length > 0 ) {
