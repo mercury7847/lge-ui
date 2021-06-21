@@ -5,7 +5,7 @@
             '<p class="tit">{{type}}</p>' +
             '<p class="desc">{{title}}</p>' +
             '<div class="info-wrap">' +
-                '{{# if (typeof language != "undefined" || typeof date != "undefined") { #}}' +
+                '{{# if (typeof language != "undefined" || typeof date != "undefined" || typeof os != "undefined") { #}}' +
                 '<ul class="options">' +
                     '{{# if (typeof language != "undefined") { #}}' +
                     '<li>{{language}}</li>' +
@@ -13,12 +13,14 @@
                     '{{# if (typeof date != "undefined") { #}}' +
                     '<li>{{date}}</li>' +
                     '{{# } #}}' +
-                    '{{# if (typeof os != "undefined") { #}}' +
+                    // start 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
+                    '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
                     '<li>OS</li>' +
                     '{{# } #}}' +
-                    '{{# if (typeof os != "undefined") { #}}' +
+                    '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
                     '<li>{{os}}</li>' +
                     '{{# } #}}' +
+                    // end 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
                 ' </ul>' +
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
