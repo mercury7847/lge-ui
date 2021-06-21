@@ -1371,7 +1371,7 @@
                     
                     if( curModelArryOnly && curModelArryOnly.length == 1) {
                         console.log(1111)
-                        uniqModelArray = curModelArryOnly;
+                        uniqModelArray = curModelArryOnly[0];
                     } else {
                         uniqModelArray = curModel.reduce(function (a, arr) {
                             return a.filter(function (num) {
@@ -1398,13 +1398,13 @@
                             });
                             if( mainModel.length ) {
                                 //defaultModelFlag가 Y인 모델이 있으면 Y모델중 첫번째 모델로 ajax call
-                                // console.log('main model')
-                                // console.log(mainModel)
+                                console.log('main model')
+                                console.log(mainModel)
                                 self.requestSiblingData(mainModel[0], _self)
                             } else {
                                 //defaultModelFlag가 Y인 모델이 없으면 그냥 첫번째 모델로 ajax call
-                                // console.log('normal first model ')
-                                // console.log(uniqModelArray)
+                                console.log('normal first model ')
+                                console.log(uniqModelArray)
                                 self.requestSiblingData(uniqModelArray[0], _self)
                             }
                         }
@@ -2500,7 +2500,7 @@
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
                 
-                //console.log("request MODEL ID ::: ", modelId)
+                console.log("request MODEL ID ::: ", modelId)
                 if( ajaxUrl && ajaxUrl != "" ) {
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(ajaxUrl, {modelId: modelId}, function(resultData) {
