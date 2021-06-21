@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"], pageJS: ["objet/experienceModel_1"] })
+<script src="/lg5-common/temp_OBJ/js/swiper.js"></script>
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/swiper.css">
+<script type="text/javascript">
+    //<![CDATA[
+
+
+
+
+    //]]>
+</script>
+
+<body>
+
+
+    <div class="wrap">
+
+        <div class="container">
+            <!-- @@include('./common/modules/page-header.html', { "hiddenTitle": "제품체험" }) -->
+            <!-- 오브제컬렉션 모델 체험하기 -->
+            <div class="contents objet model_experience">
+                <div class="cont-wrap">
+                    <h2 class="title"><img src="/lg5-common/images/OBJ/experience/leader/img_h2_objet.png" alt="LG Objet Collection">제품 체험하기</h2>
+                    <!-- 모델 체험하기 영역 -->
+                    <div class="model_simul_wrap">
+                        <!-- 좌측 모델 시뮬 영역 -->
+                        <div class="model_simul_area area1">
+                            <div class="model_simul_body">
+                                <span class="make_model"><span>나만의 오브제컬렉션 제품을 <br>만들어 보세요.</span></span>
+
+                            </div>
+                        </div>
+                        <!--// 좌측 모델 시뮬 영역 -->
+                        <!-- 모델 시뮬 영역 (상황에 따라 위치 이동) -->
+                        <div class="simul_wrap swiper-container">
+                            <button type="button" class="model_reset"><span>제품 다시 선택</span></button>
+                            <div class="simul_body swiper-wrapper" data-add-active="N">
+
+                                <!-- model_set_wrap -->
+                                <!-- data-model-cate:제품군, data-model-code:상품코드, data-model-completed:선택완료여부(y,n)  -->
+                                <!-- <div data-model-cate="" data-model_code="" data-model-editing="N" data-model-completed="" class="model_set_wrap">
+                                    <div class="model_set">
+                                        <button type="button" class="btn_model_del"><span class="blind">선택 제품 삭제</span></button>
+                                        <button type="button" class="btn_model_sel"><span class="blind">제품 선택</span></button>
+                                        <div class="sel_model_set">
+                                            <div class="door_wrap">
+                                                <-- data-door-direction:도어방향(좌상-LT, 좌하-LB, 우하-TB, 상-T, 중-M, 하-B), 
+                                                data-door-model_location:도어코드(TT, BB, MM), 
+                                                data-door-model_spec_material:도어재질(F, S, G, M), 
+                                                data-door-model_spec_color:도어색상(샌드-SD, 보타닉-BT, 스톤-ST, 실버-SV, 그린-GR, 맨해론미드나잇-MT, 베이지-BE, 실버-SV, 핑크-PK, 민트-MN, 화이트-WH, 그레이-GY, 블랙-BK) >
+                                                <button type="button" data-door-direction="" data-door-model_location="" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">
+                                                    <span class="blind">도어 선택</span>
+                                                    <span class="door_img"></span>
+                                                </button>
+                                            </div>
+                                            <div class="default_img"></div>
+                                        </div>
+                                        <span class="model_name">노크온 매직스페이스</span>
+                                    </div>
+                                    <div class="model_next">
+                                        <button type="button" class="btn_model_add"><span class="blind">제품 추가</span></button>
+                                    </div>
+                                </div> -->
+                                <!--// model_set_wrap -->
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+                        </div>
+                        <!--// 모델 시뮬 영역 -->
+                        <!-- 우측 스텝 영역 -->
+                        <div class="model_simul_step_wrap" data-simul-step="0">
+                            <!-- STEP 1 -->
+                            <dl class="simul_step simul_step1">
+                                <dt>
+                                    <div class="simul_tit">
+                                        <div class="simul_comment">
+                                            <span class="tit">제품 체험을 단계별로 진행해 주세요.</span>
+                                        </div>
+                                        <span class="step">STEP 1.</span>
+                                        <span class="tit">제품 선택하기</span>
+                                    </div>
+                                </dt>
+                                <dd>
+                                    <div class="model_choice_area">
+                                        <div class="model_choice_tab swiper-container">
+                                            <div class="swiper-wrapper">
+                                            </div>
+                                            <!-- <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div> -->
+                                        </div>
+
+                                        <div class="model_sub_tab_wrap">
+                                            <div class="model_sub_tab_head swiper-container">
+                                                <div class="swiper-wrapper"></div>
+                                                <!-- <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div> -->
+                                            </div>
+                                            <div class="model_sub_tab_cont swiper-container">
+                                                <div class="swiper-wrapper"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="slide-controls">
+                                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                        </div> -->
+                                    </div>
+                                </dd>
+                            </dl>
+                            <!--// STEP 1 -->
+                            <!-- STEP 2 -->
+                            <dl class="simul_step simul_step2">
+                                <dt>
+                                <div class="simul_tit">
+                                    <span class="step">STEP 2.</span>
+                                    <span class="tit">소재와컬러 선택하기
+                                        <div class="obj_tooltip_wrap">
+                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                            <div class="tooltip_box">
+                                                <div class="material_modal swiper-container">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">  
+                                                            <dl>      
+                                                                <dt>FENIX (페닉스)</dt>
+                                <dd>
+                                    <p>감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.</p>
+                                    <span><img src="/lg5-common/images/OBJ/simulator/img/img-fenix.jpg" alt=""></span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="swiper-slide">
+                            <dl>
+                                <dt>Solid Metal (솔리드)</dt>
+                                <dd>
+                                    <p>메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.</p>
+                                    <span><img src="/lg5-common/images/OBJ/simulator/img/img-Solid.jpg" alt=""></span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="swiper-slide">
+                            <dl>
+                                <dt>Mist Glass (미스트)</dt>
+                                <dd>
+                                    <p>고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.</p>
+                                    <span><img src="/lg5-common/images/OBJ/simulator/img/img-Mist.jpg" alt=""></span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="swiper-slide">
+                            <dl>
+                                <dt>Nature Metal (네이쳐)</dt>
+                                <dd>
+                                    <p>자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.</p>
+                                    <span><img src="/lg5-common/images/OBJ/simulator/img/img-Mist.jpg" alt=""></span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+            </div>
+        </div>
+
+
+        <!-- <div class="tooltip-wrap"><-- 활성화시 active ->
+                                            <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                            <span class="tooltip-box">
+                                                <div class="material_modal swiper-container">
+                                                    <div class="swiper-wrapper"></div>
+                                                    <div class="swiper-button-prev"></div>
+                                                    <div class="swiper-button-next"></div>
+                                                </div>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </span>
+                                        </div> -->
+        </span>
+        <p class="comment">도어를 선택하신 후 소재와 컬러를 선택해 주세요.</p>
+    </div>
+    </dt>
+    <dd>
+
+        <div class="model_simul_area area2"></div>
+
+        <div class="color_mixing_area">
+            <div class="color_best">
+                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                <div class="color_best_body swiper-container">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="color_my_pick">
+                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                <div class="color_my_pick_body swiper-container">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="color_sel_wrap">
+                <div class="color_sel_body swiper-container">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="etc_area">
+            <div class="btn_wrap">
+                <button type="button" class="btn border size-m proposeModel"><span>추천조합</span></button>
+            </div>
+            <p class="err-msg">각 소재에 따라 재질감이 달라 같은 소재끼리의 조합을 권장합니다.<br>얼음정수기 냉장고는 추천조합만 구매 가능합니다.</p>
+        </div>
+    </dd>
+    </dl>
+    <!--// STEP 2 -->
+    <!-- STEP 3 -->
+    <dl class="simul_step simul_step3">
+        <dt>
+                                <div class="simul_tit">
+                                    <span class="step">STEP 3.</span>
+                                    <span class="tit">가격을 비교하여 모델 정하기</span>
+                                </div>
+                            </dt>
+        <dd>
+            <div class="compare_sel_model_area">
+
+            </div>
+            <div class="etc_area">
+                <p class="err-msg">
+                    최초 가격은 본체 가격이며, 도어 패널을 선택하면 종류에 따른 추가 금액을 확인할 수 있습니다.
+                </p>
+                <div class="btn_wrap">
+                    <button type="button" class="btn btn_check_price"><span>견적 확인하기</span></button>
+                </div>
+            </div>
+
+        </dd>
+    </dl>
+    <!--// STEP 3 -->
+    <!-- 합계 -->
+    <div data-sum-active="N" class="total_price_info_wrap">
+        <div class="total_price_info_body">
+            <button type="button" class="btn_price_close"><span class="blind">닫기</span></button>
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <!-- <div class="swiper-slide">
+                                    <dl data-cate="" data-door-default-code="">
+                                        <dt>노크온 그래프트 아이스</dt>
+                                        <dd>
+                                            <div class="price_info">
+                                                <ul class="product_list">
+                                                    <li data-default-code="">
+                                                        <span class="product_name">M870FBS451</span>
+                                                        <span class="product_price"><em>2,990,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 보타닉 (상좌)</span>
+                                                        <span class="product_price"><em>150,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 샌드 (하좌)</span>
+                                                        <span class="product_price"><em>100,000</em>원</span>
+                                                    </li>
+                                                    <li data-door-color-code="" data-door-location="">
+                                                        <span class="product_name">페닉스 샌드 (하우)</span>
+                                                        <span class="product_price"><em>100,000</em>원</span>
+                                                    </li>
+                                                    <li class="sum">
+                                                        <span class="product_name">합계</span>
+                                                        <span class="product_price"><em>4,900,000</em>원</span>
+                                                    </li>
+                                                </ul>
+                                                <button class="btn btn_purchase"><span>구매하기</span></button>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div> -->
+
+
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="total_result_price">
+            <div class="cont">
+                <span class="sum_tit">합계</span>
+                <span class="price"><em>0</em>원</span>
+                <button type="button" class="btn_price_open"><span class="blind">펼치기</span></button>
+            </div>
+        </div>
+    </div>
+    <!--// 합계 -->
+    </div>
+    <!--// 우측 스텝 영역 -->
+    </div>
+    <!--// 모델 체험하기 영역 -->
+    </div>
+
+    </div>
+    <!-- // 오브제 콜렉션 모델 체험하기 -->
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        function resultDoorPriceCheck(idx, priceArry) {
+            let price = [];
+            let memberDiscount = [];
+            let directDiscount = [];
+            let Aarry = priceArry.length;
+            for (let i = 0; i < priceArry.length; i++) {
+                price.push(400000 - i);
+                memberDiscount.push((i * 1000));
+                directDiscount.push((i * 100));
+            }
+            return resultDoorPrice(idx, price, memberDiscount, directDiscount);
+        };
+
+        function resultModelPriceCheck(modelPriceArry) {
+            let aaa = [];
+            let Barry = modelPriceArry.length;
+            for (let i = 0; i < modelPriceArry.length; i++) {
+                aaa.push(4000000);
+            }
+            return resultModelPrice(aaa);
+        };
+
+        function myPickSave(saveInfo) {
+            console.log("saveInfo", saveInfo);
+        }
+
+        function myPickBtnFn() {}
+        $(document).ready(function() {
+
+            $(window).load(function() { //pdp유입 제품
+                //modelSimulator.pdpProductStep("M870GSB451S");
+                modelSimulator.pdpProductStep("M870FBB451S");
+                //modelSimulator.pdpProductStep("Z330FSS151S");
+                //modelSimulator.pdpProductStep("Y320MWS");
+            });
+        });
+
+        //]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                //autoFixedLinkTab()
+
+            });
+            $(window).on("scroll", function() {
+                //autoFixedLinkTab()
+            });
+
+            // function autoFixedLinkTab() {
+            //     let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+            //     let scrollT = $(window).scrollTop();
+            //     let tabH = $(".objetcollection-tabs").height();
+            //     $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+            //     if (scrollT > fixedOffsetTop) {
+            //         $(".brand-wrap.objet-wrap").addClass("active on");
+            //         $("#content.container").css("padding-top", tabH);
+            //     } else {
+            //         $(".brand-wrap.objet-wrap").removeClass("active on");
+            //         $("#content.container").css("padding-top", 0);
+            //     }
+            // }
+
+        });
+        //]]>
+    </script>
+</body>
+
+</html>
