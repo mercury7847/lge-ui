@@ -5,7 +5,7 @@
             '<p class="tit">{{type}}</p>' +
             '<p class="desc">{{title}}</p>' +
             '<div class="info-wrap">' +
-                '{{# if (typeof language != "undefined" || typeof date != "undefined" || typeof date != "os") { #}}' +
+                '{{# if (typeof language != "undefined" || typeof date != "undefined" || typeof os != "undefined") { #}}' +
                 '<ul class="options">' +
                     '{{# if (typeof language != "undefined") { #}}' +
                     '<li>{{language}}</li>' +
