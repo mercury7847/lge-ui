@@ -17,13 +17,13 @@
                     '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
                     '<li>OS</li>' +
                     '{{# } #}}' +
-                    '{{# else }}' +
+                    '{{# else { #}}' +
                     '<li style="display:none;"></li>'
                     '{{# } #}}' +
                     '{{# if (typeof os != "undefined" || typeof os != "") { #}}' +
                     '<li>{{os}}</li>' +
                     '{{# } #}}' +
-                    '{{# else }}' +
+                    '{{# else { #}}' +
                     '<li style="display:none;"></li>'
                     '{{# } #}}' +
                     // end 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
