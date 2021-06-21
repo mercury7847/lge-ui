@@ -14,7 +14,6 @@ $(document).ready(function() {
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
             //헤더 앱 설정 버튼
-            $('.mapExclusive').hide(); //210621
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
             $('.app-alarm-button').css('right','30px'); //210621
