@@ -1326,7 +1326,8 @@
 
                 //BTOCSITE-44: 시블링레이어 라디오버튼 change
                 self.$siblingCont.on('change', '.select-option input:radio',function(){
-                    var $this = $(this);
+                    var _self = this;
+                    var $this = $(_self);
                     var $colorWrap = $this.closest('.sibling-color');
                     var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
                     var currentSiblingCode = $this.closest('.chk-wrap-colorchip').attr('title');
@@ -1370,7 +1371,7 @@
                     //필터링된 모델값이 하나일 경우
                     if( uniqModelArray.length != 0 ) {
                         if( uniqModelArray.length == 1) {
-                            self.requestSiblingData(uniqModelArray[0])
+                            self.requestSiblingData(uniqModelArray[0], _self)
                         }  else {
                             //필터링된 모델값이 여러개일 경우
                             //console.log('length :: ' + uniqModelArray.length)
@@ -1385,12 +1386,12 @@
                                 //defaultModelFlag가 Y인 모델이 있으면 Y모델중 첫번째 모델로 ajax call
                                 // console.log('main model')
                                 // console.log(mainModel)
-                                self.requestSiblingData(mainModel[0])
+                                self.requestSiblingData(mainModel[0], _self)
                             } else {
                                 //defaultModelFlag가 Y인 모델이 없으면 그냥 첫번째 모델로 ajax call
                                 // console.log('normal first model ')
                                 // console.log(uniqModelArray)
-                                self.requestSiblingData(uniqModelArray[0])
+                                self.requestSiblingData(uniqModelArray[0], _self)
                             }
                         }
                     } else {
@@ -2486,7 +2487,7 @@
                     self.codesSortArry[i][1] = [];
                 })
             },
-            requestSiblingData: function(modelId){
+            requestSiblingData: function(modelId, target){
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
                 
@@ -2499,7 +2500,16 @@
                             self.receivedSiblingData = resultData.data;
                             self.drawSiblingOptionList(resultData.data[0], modelId)
                             lgkorUI.hideLoading();
-                            //console.log('finish@@@@@@')
+                        } else {
+                            if( resultData.message ) {
+                                lgkorUI.hideLoading();
+                                lgkorUI.alert("", {
+                                    title: resultData.message,
+                                    ok: function(el) {
+                                        
+                                    }
+                                }, target);
+                            }
                         }
                     });
                 }
