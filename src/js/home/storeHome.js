@@ -63,28 +63,13 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   </li>\n'+
     '{{/each}}';
 
+/* 20210615 추천 기획전 구조변경 */
 var exhibitionTmpl = '{{#each obj in list}}\n'+
-    '   <li class="slide-conts ui_carousel_slide">\n'+
-    '       <div class="slide-box">\n'+
-    '           <div class="inner">\n'+
-    '               <div class="img">\n'+
-    '                   <img src=""'+
-    '                   alt="{{obj.imageAlt}}"'+
-    '                   data-pc-src="{{obj.pcImagePath}}"'+ 
-    '                   data-m-src="{{obj.mobileImagePath}}">'+
-    '               </div>\n'+
-    '               <div class="product-info {{obj.textClass}}">\n'+
-    '                   <p class="tit">{{#raw obj.title}}</p>\n'+
-    '                   <div class="date">{{obj.date}}</div>\n'+
-    '                   <a href="{{obj.modelUrlPath}}" class="btn border">자세히 보기</a>\n'+
-    '               </div>\n'+
-    '               <div class="product-list">\n'+
-    '                   <ul>{{#raw obj.productList}}</ul>\n'+
-    '               </div>\n'+                       
-    '           </div>\n'+
-    '       </div>\n'+
-    '   </li>\n'+
+    '   <div class="product-list">\n'+
+    '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
+    '   </div>\n'+                       
     '{{/each}}';
+/* //20210615 추천 기획전 구조변경 */
 
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -422,13 +407,28 @@ $(function(){
                         return item;
                     });
 
-                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    /* 20210615 추천 기획전 구조변경 */
+                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
+                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
+                    /* //20210615 추천 기획전 구조변경 */
+
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-                $context.find('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $context.find('.ui_exhib_carousel').vcCarousel();
+                //console.log(nArr )
+                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                    //console.log(i,v)
+                    if(nArr[i]) {
+                        $(this).find('ul').html(nArr[i].productList );
+                    } 
+                    
+                })
+
+                /* 20210615 추천 기획전 구조변경 */
+                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+            
+                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                /* //20210615 추천 기획전 구조변경 */
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 
