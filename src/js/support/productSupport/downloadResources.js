@@ -309,7 +309,6 @@
                     html += vcui.template(manualListTemplate, item);
                 });
                 $list.append(html);
-                console.logg($)
                 $listWrap.show();
                 $noData.hide();
             } else {
