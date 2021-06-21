@@ -2240,38 +2240,38 @@ var goAppUrl = function(path) {
          * ?dateTest=20200808,20200801,20200807 
          * 날짜 형식 : 년월일시분초 ex> 20200820 or 20200820230159
          */
-        isShowDate: function(startTime, endTime, nowTime) {
+         isShowDate: function(startTime, endTime, nowTime) {
             var self = this;
             var dateTest = self.getParameterByName("dateTest").split(",").filter(Boolean); // 테스트용 dateTest 파라미터 체크
             var debug = self.getParameterByName("debug"); 
         
             // 날짜 셋팅
             var setDate = function(time) {
-                var limitTime = null
+                var limitTime = null;
             
                 if (!time) {
-                    limitTime = new Date()
+                    limitTime = new Date();
                 } else {
-                    var regex = /^[0-9]*$/g
+                    var regex = /^[0-9]*$/g;
                     if (!regex.test(time)) {
-                      throw ("error : 형식 에러")
+                      throw ("error : 형식 에러");
                     }
             
                     if (typeof time === 'number') {
-                        time = time + ''
+                        time = time + '';
                     }
             
                     if (time.length < 8)  throw ("error : 형식 에러")
             
-                    let year = time.slice(0, 4)
-                    let month = time.slice(4, 6)
-                    let day = time.slice(6, 8)
+                    var year = time.slice(0, 4);
+                    var month = time.slice(4, 6);
+                    var day = time.slice(6, 8);
                     // 시간, 분 체크 필요시 사용
-                    let hours = time.slice(8, 10) || '00'
-                    let minutes = time.slice(10, 12) || '00'
-                    let second = time.slice(12, 14) || '00'
+                    var hours = time.slice(8, 10) || '00';
+                    var minutes = time.slice(10, 12) || '00';
+                    var second = time.slice(12, 14) || '00';
             
-                    limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second)
+                    limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second);
                 }
 
                 return limitTime.getTime();
@@ -2279,15 +2279,15 @@ var goAppUrl = function(path) {
             
             var printDate = function(time) {
                 return new Date(time - new Date().getTimezoneOffset() * 60000).toISOString().replace('T',' ').slice(0,-5)
-            }
+            };
 
             try {
                 nowTime   = setDate(dateTest.length == 0 ? nowTime   : dateTest[0]);  // 현재시간
                 startTime = setDate(dateTest.length <= 1 ? startTime : dateTest[1]);  // 행사 시작일
                 endTime   = setDate(dateTest.length <= 1 ? endTime   : dateTest[2]);  // 행사 종료일
             } catch (e) {
-                console.log(e)
-                return false
+                console.log(e);
+                return false;
             }
 
             if(debug === 'y') {
