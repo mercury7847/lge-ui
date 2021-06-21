@@ -2160,6 +2160,7 @@ var goAppUrl = function(path) {
         isShowDate: function(startTime, endTime, nowTime) {
             var self = this;
             var dateTest = self.getParameterByName("dateTest").split(",").filter(Boolean); // 테스트용 dateTest 파라미터 체크
+            var debug = self.getParameterByName("debug"); 
         
             // 날짜 셋팅
             var setDate = function(time) {
@@ -2187,15 +2188,16 @@ var goAppUrl = function(path) {
                     let minutes = time.slice(10, 12) || '00'
                     let second = time.slice(12, 14) || '00'
             
-                   // console.log("setdate 시간 %o", year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second)
                     limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second)
                 }
-            
-                //  console.log("setdate 시간 %o", limitTime)
-                return limitTime.getTime();
-            }   
 
-            console.log('dateTest %o',dateTest);
+                return limitTime.getTime();
+            };
+            
+            var printDate = function(time) {
+                return new Date(time - new Date().getTimezoneOffset() * 60000).toISOString().replace('T',' ').slice(0,-5)
+            }
+
             try {
                 nowTime   = setDate(dateTest.length == 0 ? nowTime   : dateTest[0]);  // 현재시간
                 startTime = setDate(dateTest.length <= 1 ? startTime : dateTest[1]);  // 행사 시작일
@@ -2204,11 +2206,24 @@ var goAppUrl = function(path) {
                 console.log(e)
                 return false
             }
-        
-            console.log("startTime %o %o", startTime,new Date(startTime));
-            console.log("endTime %o %o",endTime, new Date(endTime));
-            console.log("nowTime %o %o", nowTime, new Date(nowTime));
-            console.log(nowTime >= startTime && nowTime < endTime ? "행사중" :"행사 종료");
+
+            if(debug === 'y') {
+
+                console.log('dateTest %o',dateTest);
+                console.log(
+                    "행사기간 : %o ~ %o"
+                    ,printDate(startTime)
+                    ,printDate(endTime)
+                );
+
+                console.log(
+                    "현제날짜 : %o 결과값 :  %o"
+                    , printDate(nowTime)
+                    , nowTime >= startTime && nowTime < endTime ? "행사중" :"행사 종료"
+                );
+
+            }
+
             return nowTime >= startTime && nowTime < endTime ? true : false;
         },
     }

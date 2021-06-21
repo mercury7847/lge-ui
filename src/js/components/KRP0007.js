@@ -872,7 +872,7 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
-                item.isShow = lgkorUI.isShowDate('20210601','20210630235959')
+                item.isShow = lgkorUI.isShowDate('20210601','20210701')
                 
                 return vcui.template(productItemTemplate, item);
             },
