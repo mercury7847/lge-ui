@@ -7,6 +7,8 @@ function MainSwiper( ID ){
     this.ablePushState = false;
     this.swiper = null;
     this.currentHash = window.location.hash;
+    this.loadQUE = [];
+    this.isLoading = false;
 
     this.hashToUrl = {
         '#home' : 'home',
@@ -49,6 +51,7 @@ MainSwiper.prototype = {
             autoHeight : true,
             observer : true,
             slidesPerView : 1,
+            slidesPerColumn : 1,
             initialSlide : idx,
             /*
             hashNavigation : {
@@ -66,13 +69,21 @@ MainSwiper.prototype = {
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
                         mainSwiper.loadContent( currentSlide,true );
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
-                    } else {
+                    } 
+                    
+                    else {
+                        swiper.animating = false;
                         swiper.slideTo( idx );
+                        swiper.animating = true;
+                        /*
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
                         if(swiper.activeIndex !== swiper.slides.length -1) {
                             mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
                         }
+                        */
+                      
                     }
+                    
 
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
@@ -110,8 +121,10 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
-
-                    $('html,body').scrollTop(0)
+                    setTimeout(function(){
+                        $('html,body').stop().animate({scrollTop:0}, 300);
+                    }, 500);
+                    
 
                     // GA 커스텀 이벤트 실행
                     /*
@@ -136,7 +149,8 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
-                },
+                }
+                /*
                 'transitionEnd' : function(swiper){
                     console.log(" self.ablePushState %o", self.ablePushState );
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -153,6 +167,7 @@ MainSwiper.prototype = {
         
                     
                 }
+                */
             }
         });
 
@@ -173,8 +188,31 @@ MainSwiper.prototype = {
         });        
 
     },
-    loadContent: function( currentSlide, pushFlag ){
+    loadContent : function( currentSlide, pushFlag ){
+        this.loadQUE.push({
+            'slide' : currentSlide,
+            'pushFlag' : pushFlag
+        });
+        this.getContent();
+        console.log('this.loadQUE', this.loadQUE);
+    },
+    getContent: function(){        
         var self = this;
+        
+        // 로딩중일때
+        if (self.isLoading == true){
+            return;
+        }
+        // 로딩할 슬라이드가 없을때        
+        if (!!self.loadQUE[0] == false){
+            return;
+        }
+        var targetSlide = self.loadQUE.shift();
+        var currentSlide = targetSlide.slide;
+        var pushFlag = targetSlide.pushFlag;
+
+        self.isLoading = true;
+
         var href = $(currentSlide).data().href;
         var isLoaded = $(currentSlide).data().isLoaded;
         var hash = '/' + $(currentSlide).data().hash;
@@ -198,9 +236,19 @@ MainSwiper.prototype = {
                 self.ablePushState = true;      
             }
 
+            if(self.ablePushState) {
+                history.pushState({}, '', hash);      
+                self.switchQuickMenu( hash );  
+                self.ablePushState = false;
+            }
+
+            self.isLoading = false;
+            self.getContent();
+            /*
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
             }, 1000);
+            */
             return;
         }
 
@@ -215,20 +263,30 @@ MainSwiper.prototype = {
                 console.log('mainSwiper cant get HTML', error);
             },
             complete: function(){
-                lgkorUI.init( $(currentSlide) );
-                $(currentSlide).data().isLoaded = true;
-                isLoaded = true;
-                //$(currentSlide).attr('data-isLoaded', true);
+                lgkorUI.init( $(currentSlide) ).done(function( msg ){
+                    console.log('컨텐츠 로드 성공', msg);
+                    $(currentSlide).data().isLoaded = true;                
+                    $(currentSlide).attr('data-isLoaded', true);
+                    isLoaded = true;
 
-                if (isLoaded && pushFlag){
-                    self.ablePushState = true;       
-                }
+                    if (isLoaded && pushFlag){
+                        self.ablePushState = true;                        
+                    }
+
+                    if(self.ablePushState) {
+                        history.pushState({}, '', hash);      
+                        self.switchQuickMenu( hash );  
+                        self.ablePushState = false;
+                    }
+
+                    self.isLoading = false;
+                    self.getContent();
+
+                    setTimeout(function(){
+                        mainSwiper.swiper.updateAutoHeight();
+                    }, 500);
+                });
             }
-        }).done(function(){
-            //$(document).trigger('appInit');
-            setTimeout(function(){
-                mainSwiper.swiper.updateAutoHeight();
-            }, 1000);
         });
     },
     setDigitalData : function( pageData ){
@@ -331,7 +389,12 @@ MainSwiper.prototype = {
             $('#floatBox > #quickMenu').hide();
             $('#floatBox > .btn-floating-wrap').show();
             $('#floatBox > .floating-wrap').show();
-            
+        }
+        // 앱 AR 버튼 처리
+        if ( hash == '/' ){
+            $('.floating-menu.cs-cst.btn-app-ar').show();
+        } else {
+            $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
     }
 }
