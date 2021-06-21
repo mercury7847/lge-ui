@@ -13,6 +13,12 @@
                     '{{# if (typeof date != "undefined") { #}}' +
                     '<li>{{date}}</li>' +
                     '{{# } #}}' +
+                    '{{# if (typeof os != "undefined") { #}}' +
+                    '<li>OS</li>' +
+                    '{{# } #}}' +
+                    '{{# if (typeof os != "undefined") { #}}' +
+                    '<li>{{os}}</li>' +
+                    '{{# } #}}' +
                 ' </ul>' +
                 '{{# } #}}' +
                 '<div class="btn-wrap">' +
