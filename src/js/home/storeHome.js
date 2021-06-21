@@ -268,7 +268,6 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
                 var list = vcui.array.map(arr, function(item, index){
                     
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
@@ -375,12 +374,17 @@ $(function(){
             if(data && data.data){
                 var arr = data.data;
 
+                console.log('arr' , arr);
+
                 var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
+                    console.log('item',item);
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
                     var list = vcui.array.filter(arr, function(item) {
                         return vcui.array.include(codesArr, item['modelId']);
                     });
+
+                    console.log('list filter', list);
 
                     list = vcui.array.map(list, function(item, index){
 
@@ -407,12 +411,17 @@ $(function(){
                         return item;
                     });
 
+                    //console.log('list', list);
                     /* 20210615 추천 기획전 구조변경 */
                     nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
                     /* //20210615 추천 기획전 구조변경 */
 
+                    console.log("nObj['productList']" , nObj['productList']);
+
                     return nObj;
                 });
+
+                console.log('nArr' , nArr);
 
                 /* 20210615 추천 기획전 구조변경 */
                 $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
@@ -421,7 +430,7 @@ $(function(){
                         $(this).find('ul').html(nArr[i].productList );
                     } 
                     
-                })
+                });
 
                 $context.find('.ui_exhib_carousel').vcCarousel({
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',

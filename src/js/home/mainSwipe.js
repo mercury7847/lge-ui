@@ -122,7 +122,8 @@ MainSwiper.prototype = {
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
-                        $('html,body').stop().animate({scrollTop:0}, 300);
+                        //$('html,body').stop().animate({scrollTop:0}, 300);
+                        $(window).scrollTop(0);
                     }, 500);
                     
 
