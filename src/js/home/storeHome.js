@@ -145,18 +145,13 @@ $(function(){
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
         $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
-            autoplay: true,
-            autoplaySpped: 5000,
+            autoplay:true,
+            autoplaySpped:5000,
             infinite: true,
-            pauseOnHover: false,
-            pauseOnFocus: false,
+            pauseOnHover:false,
+            pauseOnFocus:false,
             swipeToSlide: true,
-            buildDots: false,
-            dotsSelector: '.ui_wideslider_dots',
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth: false,
-            touchThreshold: 100,
+            dotsSelector:'.ui_wideslider_dots',
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
@@ -268,7 +263,6 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
                 var list = vcui.array.map(arr, function(item, index){
                     
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
@@ -374,16 +368,13 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
-                var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
+                var nArr = vcui.array.map(newExhibitionLocal, function(item, index){                    
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
-                    var list = vcui.array.filter(arr, function(item) {
+                    var list = vcui.array.filter(arr, function(item) {                                        
                         return vcui.array.include(codesArr, item['modelId']);
                     });
-
                     list = vcui.array.map(list, function(item, index){
-
                         var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                         var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                         var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
@@ -402,33 +393,36 @@ $(function(){
                         }
 
                         item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
-                        // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
-
                         return item;
                     });
 
+                    //console.log('list', list);
                     /* 20210615 추천 기획전 구조변경 */
                     nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
-                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
                     /* //20210615 추천 기획전 구조변경 */
+
+                    //console.log("nObj['productList']" , nObj['productList']);
 
                     return nObj;
                 });
 
-                //console.log(nArr )
-                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                //console.log('nArr' , nArr);
+
+                /* 20210615 추천 기획전 구조변경 */
+                $context.find('.ui_exhib_carousel .product-listCont').each(function(i,v) {
                     //console.log(i,v)
                     if(nArr[i]) {
                         $(this).find('ul').html(nArr[i].productList );
                     } 
                     
-                })
+                });
 
-                /* 20210615 추천 기획전 구조변경 */
-                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-            
-                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
-                /* //20210615 추천 기획전 구조변경 */
+                $context.find('.ui_exhib_carousel').vcCarousel({
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
+                });
+                 /* //20210615 추천 기획전 구조변경 */
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 

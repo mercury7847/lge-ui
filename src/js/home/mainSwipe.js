@@ -100,7 +100,7 @@ MainSwiper.prototype = {
                         mainSwiper.customEventActionString = '스와이프 - 우측';
                     }
 
-                    console.log('customEventActionString' , mainSwiper.customEventActionString);
+                    //console.log('customEventActionString' , mainSwiper.customEventActionString);
 
                     mainSwiper.loadContent( currentSlide,true );
 
@@ -122,7 +122,8 @@ MainSwiper.prototype = {
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
-                        $('html,body').stop().animate({scrollTop:0}, 300);
+                        //$('html,body').stop().animate({scrollTop:0}, 300);
+                        $(window).scrollTop(0);
                     }, 500);
                     
 
@@ -194,7 +195,7 @@ MainSwiper.prototype = {
             'pushFlag' : pushFlag
         });
         this.getContent();
-        console.log('this.loadQUE', this.loadQUE);
+        //console.log('this.loadQUE', this.loadQUE);
     },
     getContent: function(){        
         var self = this;
@@ -220,7 +221,7 @@ MainSwiper.prototype = {
 
         if (pushFlag){
             self.setDigitalData(currentPageData);
-            console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
+            //console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
         }
 
         if (hash == '/home'){
@@ -264,7 +265,7 @@ MainSwiper.prototype = {
             },
             complete: function(){
                 lgkorUI.init( $(currentSlide) ).done(function( msg ){
-                    console.log('컨텐츠 로드 성공', msg);
+                    //console.log('컨텐츠 로드 성공', msg);
                     $(currentSlide).data().isLoaded = true;                
                     $(currentSlide).attr('data-isLoaded', true);
                     isLoaded = true;
@@ -324,7 +325,7 @@ MainSwiper.prototype = {
                 'customEventAction': self.customEventActionString
             });
 
-            console.log('dataLayer push!@!@!@', dataLayer);
+            //console.log('dataLayer push!@!@!@', dataLayer);
         }
     },
     setMobileNav : function(){
@@ -339,7 +340,7 @@ MainSwiper.prototype = {
     setUrlEvent : function(){
         var self = this;
         $(window).on('popstate', function(){
-            console.log('popstate', location.href);
+            //console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
             self.swiper.slideTo(idx);            
@@ -355,7 +356,7 @@ MainSwiper.prototype = {
     },
 
     getHash: function(){
-        console.log('urltohash value', this.urlToHash[ this.getLastSegmentByUrl() ] );
+        //console.log('urltohash value', this.urlToHash[ this.getLastSegmentByUrl() ] );
         var hash = '';
         if (!!this.urlToHash[ this.getLastSegmentByUrl() ] == false ){
             hash = this.urlToHash['home'];
@@ -372,7 +373,7 @@ MainSwiper.prototype = {
             if (value == hash) index = idx;
         });
 
-        return index;
+        return index == false ? 0 : index;
     },
 
     setActiveTabByHash: function( hash ){
