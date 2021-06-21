@@ -19,8 +19,10 @@ var appInit = function() {
             }
             //console.log('앱 확인');
             //헤더 앱 설정 버튼
+            $('.mapExclusive').hide(); //210621
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
+            $('.app-alarm-button').css('right','30px'); //210621
             $(".app-settings-button").on({
                 click : function() {
                     document.location.href="/mobile-app/option";
