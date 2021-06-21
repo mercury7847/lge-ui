@@ -23,22 +23,36 @@
         '</a>' +
     '</li>';
 
-    var siblingTemplate = '<div class="sibling-select">' + 
-        '<div class="text">{{pdpTitle}}</div>' +
-        '{{#if itemList[0].siblingType=="COLOR"}}' +
-            '<div class="color-text"><span>{{itemList[0].siblingValue}}</span></div>' + 
-        '{{/if}}' + 
-        '<div class="select-option radio select">' + 
-            '<div class="option-list" role="radiogroup">' + 
+    var siblingTemplate = 
+        '<div class="{{#if itemList[0].siblingType=="COLOR"}}sibling-color {{#else}}sibling-select{{/if}}">' + 
+            '{{#if itemList[0].siblingType=="COLOR"}}' +
+                '<div class="sibling-colorHead">' + 
+                    '<div class="text">{{pdpTitle}}</div>' +
+                    '<div class="color-text"><span>{{colorValue}}</span></div>' + 
+                '</div>' + 
+                '{{#else}}' + 
+                '<div class="text">{{pdpTitle}}</div>' +
+            '{{/if}}' + 
+            '<div class="select-option radio {{#if itemList[0].siblingType=="COLOR"}}color{{#else}}select{{/if}}">' + 
+                '<div class="option-list" role="radiogroup">' + 
                 '{{#each (item, index) in itemList}}'+ 
                     '{{#if item.siblingType=="COLOR"}}' +
-                    '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" title="{{item.siblingValue}}">' + 
-                    '{{#else}}' + 
-                    '<div role="radio" class="rdo-wrap btn-type2" title="{{item.siblingValue}}">' + 
+                        '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" title="{{item.siblingValue}}">' + 
+                        '{{#else}}' + 
+                        '<div role="radio" class="rdo-wrap btn-type2" title="{{item.siblingValue}}">' + 
                     '{{/if}}' + 
-                        '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}">' + 
-                        '<label for="rdo-option-{{optionIndex}}-{{index}}">{{item.siblingValue}}</label>' + 
-                    '</div>' + 
+
+                            '{{#if index === currentCheckIndex}}' +
+                            '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}" checked>' + 
+                            '{{#else}}' + 
+                            '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}">' + 
+                            '{{/if}}' + 
+                            '{{#if item.siblingType=="COLOR"}}' +
+                                '<label for="rdo-option-{{optionIndex}}-{{index}}"><span class="blind">{{item.siblingValue}}</span></label>' + 
+                                '{{#else}}' + 
+                                '<label for="rdo-option-{{optionIndex}}-{{index}}">{{item.siblingValue}}</label>' + 
+                            '{{/if}}' + 
+                        '</div>' + 
                 '{{/each}}'
             '</div>' + 
         '</div>' + 
@@ -1315,7 +1329,7 @@
                     var $this = $(this);
                     var $colorWrap = $this.closest('.sibling-color');
                     var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
-                    var currentSiblingCode = $this.attr('sibling-code');
+                    var currentSiblingCode = $this.closest('.chk-wrap-colorchip').attr('title');
                     var curModel = []
                     var currentModelValue = [];
                     var models, uniqModelArray;
@@ -1343,37 +1357,44 @@
                             }
                         });
                     })
+
+                    //console.log("curModel" , curModel)
                     
                     uniqModelArray = curModel.reduce(function (a, arr) {
                         return a.filter(function (num) {
                             return arr.includes(num);
                         });
                     });
+                    //console.log("uniqModelArray", uniqModelArray)
 
                     //필터링된 모델값이 하나일 경우
-                    if( uniqModelArray.length == 1) {
-                        self.requestSiblingData(uniqModelArray[0])
-                    } else {
-                        //필터링된 모델값이 여러개일 경우
-                        //console.log('length :: ' + uniqModelArray.length)
-
-                        //defaultModelFlag가 Y인 모델만 추출
-                        var mainModel = uniqModelArray.filter(function(v){
-                            if( v.defaultModelFlag == "Y") {
-                                return true
-                            }
-                        });
-                        if( mainModel.length ) {
-                            //defaultModelFlag가 Y인 모델이 있으면 Y모델중 첫번째 모델로 ajax call
-                            // console.log('main model')
-                            // console.log(mainModel)
-                            self.requestSiblingData(mainModel[0])
-                        } else {
-                            //defaultModelFlag가 Y인 모델이 없으면 그냥 첫번째 모델로 ajax call
-                            // console.log('normal first model ')
-                            // console.log(uniqModelArray)
+                    if( uniqModelArray.length != 0 ) {
+                        if( uniqModelArray.length == 1) {
                             self.requestSiblingData(uniqModelArray[0])
+                        }  else {
+                            //필터링된 모델값이 여러개일 경우
+                            //console.log('length :: ' + uniqModelArray.length)
+    
+                            //defaultModelFlag가 Y인 모델만 추출
+                            var mainModel = uniqModelArray.filter(function(v){
+                                if( v.defaultModelFlag == "Y") {
+                                    return true
+                                }
+                            });
+                            if( mainModel.length ) {
+                                //defaultModelFlag가 Y인 모델이 있으면 Y모델중 첫번째 모델로 ajax call
+                                // console.log('main model')
+                                // console.log(mainModel)
+                                self.requestSiblingData(mainModel[0])
+                            } else {
+                                //defaultModelFlag가 Y인 모델이 없으면 그냥 첫번째 모델로 ajax call
+                                // console.log('normal first model ')
+                                // console.log(uniqModelArray)
+                                self.requestSiblingData(uniqModelArray[0])
+                            }
                         }
+                    } else {
+                        //console.log(uniqModelArray)
                     }
                 });
 
@@ -2379,24 +2400,10 @@
                 //템플릿 그리기
                 var self = this;
                 var optionHTML = "";
-
-                self.codesSortArry.forEach(function(v, i){
-                    var templateItem = {
-                        optionIndex: i,
-                        pdpTitle: v[0],
-                        itemList: v[1]
-                    }
-
-                    //console.log("templateItem :::", templateItem)
-                    optionHTML += vcui.template(siblingTemplate, templateItem); 
-                })
-
                 var currentIndexArry = []
                 var modelFilter = models.filter(function(v){
                     return v.modelId == modelId
                 })
-
-                self.$siblingCont.attr('data-model-path', modelFilter[0].modelUrlPath);
 
                 modelFilter.forEach(function(v, i){
                     var currentCodeIndex = 0;
@@ -2405,13 +2412,46 @@
                     })
                     currentIndexArry.push(currentCodeIndex);
                 })
+
+                // console.log(self.codesSortArry)
+                // console.log(currentIndexArry)
+
+                self.codesSortArry.forEach(function(v, i){
+                    // console.log("currentIndexArry[i]", currentIndexArry[i])
+                    // console.log(v[1][0].siblingType == "COLOR" ? v[1][currentIndexArry[i]].siblingValue : "")
+                    var templateItem = {
+                        optionIndex: i,
+                        pdpTitle: v[0],
+                        itemList: v[1],
+                        currentCheckIndex: currentIndexArry[i],
+                        colorValue: v[1][0].siblingType == "COLOR" ? v[1][currentIndexArry[i]].siblingValue : ""
+                    }
+
+                    //console.log("templateItem :::", templateItem)
+                    optionHTML += vcui.template(siblingTemplate, templateItem); 
+                })
+
+                
+
+                self.$siblingCont.attr('data-model-path', modelFilter[0].modelUrlPath);
+
+                
+
+                $(optionHTML).find('.option-list').each(function(i){
+                    if( $(this).closest('.select-option.color').length ) {
+                        var $colorText = $(this).closest('.sibling-color').find('.color-text');
+                        var _currentColor = $(this).find('.chk-wrap-colorchip').eq(currentIndexArry[i]).attr('title');
+                        //console.log(_currentColor)
+                        $colorText.text(_currentColor);
+                    }
+                })
+                
                 self.$siblingCont.empty().append($(optionHTML));
-                self.$siblingCont.find('.option-list').each(function(i){
-                    $(this).find('input:radio').eq(currentIndexArry[i]).prop('checked', true);
-                });
             },
             drawSiblingOptionList: function(data, modelId){
                 var self = this;
+
+                //console.log("DATA #### ", data)
                 self.$siblingCont.data('current-model', modelId);
                 self.$siblingCont.attr('data-current-model', modelId);
 
@@ -2449,7 +2489,8 @@
             requestSiblingData: function(modelId){
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
-
+                
+                //console.log("request MODEL ID ::: ", modelId)
                 if( ajaxUrl && ajaxUrl != "" ) {
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(ajaxUrl, {modelId: modelId}, function(resultData) {
