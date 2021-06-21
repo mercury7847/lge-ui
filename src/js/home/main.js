@@ -1142,10 +1142,7 @@ $(function () {
                 if(scrollTop == 0){
                     if(hasTop){
                         //$('.floating-menu.top').css('opacity', 0);
-                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                        }
-                        
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $(window).trigger('floatingTopHide');
                         $('.floating-menu.top').hide();
                         if(!(isApplication && location.pathname == "/")) {
@@ -1162,9 +1159,7 @@ $(function () {
                         //임시 추가
                         //앱인데 메인이 아닐경우에만 실행
                         //$('.floating-menu.top').css('opacity', 1);
-                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                        }
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $(window).trigger('floatingTopHide');
                         $('.floating-menu.top').hide();
                         if(!(isApplication && location.pathname == "/")) {
@@ -1176,18 +1171,13 @@ $(function () {
                 }else{
                     if(hasTop){
                         //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
-                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                        }
-                        
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $('.floating-menu.top').removeClass('call-yet');
                         $(window).trigger('floatingTopShow');
                         $('.floating-menu.top').show();
 
                     } else {
-                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
-                            $('.floating-menu.btn-app-ar').css('display', 'block');
-                        }
+                        $('.floating-menu.btn-app-ar').css('display', 'block');
                         $('.floating-menu.top').removeClass('call-yet');
                         $(window).trigger('floatingTopShow');
                         $('.floating-menu.top').show();
