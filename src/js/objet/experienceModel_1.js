@@ -4092,7 +4092,7 @@
                     }
                 };
                 var desc = '';
-                //주영
+                /* 20210621 BTOCSITE-1582 : step2팝업 확인 제거 */
                 // obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
                 // let popLoginCheck = $("meta[name='login']").attr("content");
                 // // console.log("popLoginCheck", popLoginCheck);
@@ -4102,6 +4102,7 @@
                 //     desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                 // }
                 //lgkorUI.confirm(desc, obj);
+                /* //20210621 BTOCSITE-1582 : step2팝업 확인 제거 */
                 modelSimulator.mobileStep(".simul_step3");
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
