@@ -69,7 +69,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT")}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -869,6 +869,11 @@
                     "category": getEcCategoryName(item) 
                 }
                 item.ecProduct = JSON.stringify(ecProduct);
+                // item.isShow = true;
+                // console.log("item %o",item);
+
+                item.isShow = lgkorUI.isShowDate('20210601','20210701')
+                
                 return vcui.template(productItemTemplate, item);
             },
 

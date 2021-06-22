@@ -3652,21 +3652,14 @@
         ]
     }
 
-
-
-
-
-
-
-
     $(document).ready(function() {
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
-                if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-                    location.reload();
-                }
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                location.reload();
             }
-            //초기셋팅
+        }
+        //초기셋팅
         modelSimulator.init();
 
         $(document).on("click", function(e) {
@@ -3698,6 +3691,40 @@
         $(window).on("scroll", function() {
             simulPositionAutoMove();
         });
+
+
+
+        /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
+        var $objLocation = location.pathname;
+        var $objHeader = $('.header');
+        var $objBreadcrb = $('.breadcrumb');
+        var $objTopNavi = $('.brand-wrap');
+        var $objMyPickBtn = $('.myPick');
+        var $objFooter = $('footer');
+
+        var $urlBestLocation = '-newbest?msabun=LG239321&sendtime=202104291242179';
+        var $urlHimartLocation = '-hm?msabun=LG239321&sendtime=202104291242179';
+
+        var $urlBest = $objLocation.concat($urlBestLocation);
+        var $urlHimart = $objLocation.concat($urlHimartLocation);
+
+        //console.log($urlBest);
+        //console.log($urlHimart);
+
+        if($urlBest && $urlHimart) {
+            $objHeader.hide();
+            $objBreadcrb.hide();
+            $objTopNavi.hide();
+            $objMyPickBtn.hide();
+            $objFooter.hide();
+        } else {
+            //console.log("정상적인 경로")
+        }
+        /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+
+
+
+
 
         //추천조합 열기
         $(".proposeModel").on("click", function() {
@@ -4092,15 +4119,23 @@
                     }
                 };
                 var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                let popLoginCheck = $("meta[name='login']").attr("content");
-                // console.log("popLoginCheck", popLoginCheck);
-                if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
-                    desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+
+                /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
+                if($urlBest && $urlHimart) {
+                    //console.log("해당 url이 아니라면 팝업이 안띄워진다.");
                 } else {
-                    desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                    let popLoginCheck = $("meta[name='login']").attr("content");
+                    // console.log("popLoginCheck", popLoginCheck);
+                    if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
+                        desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    } else {
+                        desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    }
+                    lgkorUI.confirm(desc, obj);
                 }
-                lgkorUI.confirm(desc, obj);
+                /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+                
                 modelSimulator.mobileStep(".simul_step3");
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {

@@ -62,13 +62,13 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
-                            $popup.vcModal('hide');
+                            //$popup.vcModal('hide'); 0622 삭제
                         }
         
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
-                        lgkorUI.hideLoading();
+                        //lgkorUI.hideLoading(); 0622 삭제
                     });
                 }
             });
