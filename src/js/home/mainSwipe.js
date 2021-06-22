@@ -122,7 +122,8 @@ MainSwiper.prototype = {
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
-                        $('html,body').stop().animate({scrollTop:0}, 300);
+                        //$('html,body').stop().animate({scrollTop:0}, 300);
+                        $(window).scrollTop(0);
                     }, 500);
                     
 
@@ -351,16 +352,22 @@ MainSwiper.prototype = {
     },
     // url 마지막 경로 
     getLastSegmentByUrl: function(){
-        return window.location.href.split('/').pop();
+        return window.location.href.split('/').pop().split('?')[0];
     },
 
     getHash: function(){
         //console.log('urltohash value', this.urlToHash[ this.getLastSegmentByUrl() ] );
         var hash = '';
-        if (!!this.urlToHash[ this.getLastSegmentByUrl() ] == false ){
-            hash = this.urlToHash['home'];
+        var lastSeq = this.getLastSegmentByUrl();
+        if (!!this.urlToHash[ lastSeq ] == false ){
+            // 파라미터가 붙어있을때
+            if ( lastSeq.split('?').length > 1 ){
+                hash = this.urlToHash[ lastSeq.split('?')[0] ]
+            } else {
+                hash = this.urlToHash['home'];
+            }
         } else {
-            hash = this.urlToHash[ this.getLastSegmentByUrl() ];
+            hash = this.urlToHash[ lastSeq ];
         }
 
         return hash;
@@ -413,147 +420,3 @@ $(function(){
 
 
 
-
-// 테스트용 임시 페이지 데이터
-// var _PAGE_DATA_TEMP = {
-//     'home' : {
-//         'meta' : {
-//             'title' : 'LGE.COM | LG전자',
-//             'description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
-//             'og:locale' : 'ko_KR',
-//             'og:site_name' : 'LG전자',
-//             'og:type' : 'website',
-//             'og:title' : 'LGE.COM | LG전자',
-//             'og:description' : '차원이 다른 가치를 제공하는 LG전자 노트북, TV 및 냉장고 등 다양한 제품으로 당신의 라이프 스타일을 완성해보세요. 엘지이닷컴에서 전 제품을 소개합니다.',
-//             'og:url' : 'https://wwwdev50.lge.co.kr',
-//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-//             'twitter:card' : 'summary',
-//             'canonical' : 'https://wwwdev50.lge.co.kr'
-//         },
-//         'digitalData' : {
-//             'pageInfo' : {
-//                 "content_depth1": "홈",
-//                 "content_depth2": null,
-//                 "content_depth3": null,
-//                 "content_depth4": null,
-//                 "content_depth5": null,
-//                 "event_page_category1": null,
-//                 "event_page_category2": null,
-//                 "event_page_category3": null,
-//                 "exhibition_type": null
-//             }
-//         }
-//     },
-//     'store' : {
-//         'meta' : {
-//             'title' : '전체 제품 | LG전자',
-//             'description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
-//             'og:locale' : 'ko_KR',
-//             'og:site_name' : 'LG전자',
-//             'og:type' : 'website',
-//             'og:title' : '전체 제품 | LG전자',
-//             'og:description' : 'LG전자의 TV, 노트북 및 주방가전, 생활가전 등 모든 제품을 소개합니다. LG전자만의 차별화된 혁신 제품과 서비스로 당신의 소중한 일상을 완성해보세요.',
-//             'og:url' : 'https://wwwdev50.lge.co.kr/store',
-//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-//             'twitter:card' : 'summary',
-//             'canonical' : 'https://wwwdev50.lge.co.kr/store'            
-//         },
-//         'digitalData' : {
-//             'pageInfo' : {
-//                 "content_depth1": "스토어",
-//                 "content_depth2": null,
-//                 "content_depth3": null,
-//                 "content_depth4": null,
-//                 "content_depth5": null,
-//                 "event_page_category1": null,
-//                 "event_page_category2": null,
-//                 "event_page_category3": null,
-//                 "exhibition_type": null
-//             }
-//         }
-//     },
-//     'story' : {
-//         'meta' : {
-//             'title' : '스토리 | LG전자',
-//             'description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
-//             'og:locale' : 'ko_KR',
-//             'og:site_name' : 'LG전자',
-//             'og:type' : 'website',
-//             'og:title' : '스토리 | LG전자',
-//             'og:description' : 'LG전자 스토리에서 최신 뉴스와 광고 캠페인부터 다양한 제품을 위한 활용 가이드, 매거진, e-카탈로그까지 필요한 정보를 확인하실 수 있습니다.',
-//             'og:url' : 'https://wwwdev50.lge.co.kr/story',
-//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-//             'twitter:card' : 'summary',
-//             'canonical' : 'https://wwwdev50.lge.co.kr/story'            
-//         },
-//         'digitalData' : {
-//             'pageInfo' : {
-//                 "content_depth1": "스토리",
-//                 "content_depth2": null,
-//                 "content_depth3": null,
-//                 "content_depth4": null,
-//                 "content_depth5": null,
-//                 "event_page_category1": null,
-//                 "event_page_category2": null,
-//                 "event_page_category3": null,
-//                 "exhibition_type": null
-//             }
-//         }
-//     },
-//     'care-solutions' : {
-//         'meta' : {
-//             'title' : '케어솔루션 렌탈 제품 | LG전자',
-//             'description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
-//             'og:locale' : 'ko_KR',
-//             'og:site_name' : 'LG전자',
-//             'og:type' : 'website',
-//             'og:title' : '케어솔루션 렌탈 제품 | LG전자',
-//             'og:description' : 'LG전자 케어 솔루션과 케어십은 가전제품 케어 서비스입니다. 케어솔루션 제품을 구매하거나 렌탈한 고객님을 위한 케어 서비스를 안내해 드립니다.',
-//             'og:url' : 'https://wwwdev50.lge.co.kr/care-solutions',
-//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-//             'twitter:card' : 'summary',
-//             'canonical' : 'https://wwwdev50.lge.co.kr/care-solutions'            
-//         },
-//         'digitalData' : {
-//             'pageInfo' : {
-//                 "content_depth1": "케어솔루션",
-//                 "content_depth2": null,
-//                 "content_depth3": null,
-//                 "content_depth4": null,
-//                 "content_depth5": null,
-//                 "event_page_category1": null,
-//                 "event_page_category2": null,
-//                 "event_page_category3": null,
-//                 "exhibition_type": null
-//             }
-//         }
-//     },
-//     'support' : {
-//         'meta' : {
-//             'title' : 'LG전자 고객지원',
-//             'description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
-//             'og:locale' : 'ko_KR',
-//             'og:site_name' : 'LG전자',
-//             'og:type' : 'website',
-//             'og:title' : 'LG전자 고객지원',
-//             'og:description' : 'LG전자 고객지원 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
-//             'og:url' : 'https://wwwdev50.lge.co.kr/support',
-//             'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
-//             'twitter:card' : 'summary',
-//             'canonical' : 'https://wwwdev50.lge.co.kr/support'            
-//         },
-//         'digitalData' : {
-//             'pageInfo' : {
-//                 "content_depth1": "고객지원",
-//                 "content_depth2": null,
-//                 "content_depth3": null,
-//                 "content_depth4": null,
-//                 "content_depth5": null,
-//                 "event_page_category1": null,
-//                 "event_page_category2": null,
-//                 "event_page_category3": null,
-//                 "exhibition_type": null
-//             }
-//         }
-//     }
-// };
