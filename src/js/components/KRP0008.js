@@ -559,6 +559,7 @@
                     var $radio = $modal.find('.model-list input:radio');
 
                     if( !$radio.filter(':checked').length ) {
+                        console.log('no data');
                         var msgTxt = '제품을 선택해주세요';
                         lgkorUI.alert("", {title: msgTxt}, _self);
                     } else {
