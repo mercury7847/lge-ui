@@ -130,6 +130,7 @@ var appInit = function() {
             }
 
             //알림함 버튼 이벤트
+            /* 210622 알림 버튼 비노출
             $(".app-alarm-button").on({
                 click : function(){
                     if (/iPhone|iPad|iPod/i.test(agent)) {
@@ -144,6 +145,7 @@ var appInit = function() {
                     }
                 }
             });
+            */
         }
 
         //제품등록 페이지 탭

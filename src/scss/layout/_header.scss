@@ -1430,7 +1430,7 @@
         .app-alarm-button{
             display:none;
             position:absolute;
-            right:30px; // 210618 알람버튼 위치 수정
+            right: 33px;
             top:-2px;
             width:29px;
             height:36px;
@@ -1609,8 +1609,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                //right: 30px;
-                right: 60px; //210618 앱 알림함 아이콘 추가에 따른 my-page 아이콘 위치 조정
+                right: 30px;
+                //right: 60px;
             }
         }
 
