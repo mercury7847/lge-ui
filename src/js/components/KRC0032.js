@@ -23,6 +23,9 @@ $(window).ready(function(){
 				slidesToScroll: 1,
 				playSelector: '.btn-play.play',
 				adaptiveHeight:true,
+				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+				touchThreshold: 100,
+				speed: 150
 
 			}).on('carouselbeforechange', function(e, slide, prev, next){
 
