@@ -3692,38 +3692,37 @@
             simulPositionAutoMove();
         });
 
-
+        
 
         /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
         var $objLocation = location.pathname;
         var $objHeader = $('.header');
         var $objBreadcrb = $('.breadcrumb');
+        var $objContent = $('.model_experience');
         var $objTopNavi = $('.brand-wrap');
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
 
-        var $urlBestLocation = '-newbest?msabun=LG239321&sendtime=202104291242179';
-        var $urlHimartLocation = '-hm?msabun=LG239321&sendtime=202104291242179';
-
-        var $urlBest = $objLocation.concat($urlBestLocation);
-        var $urlHimart = $objLocation.concat($urlHimartLocation);
-
-        //console.log($urlBest);
-        //console.log($urlHimart);
-
-        if($urlBest && $urlHimart) {
+        if($objContent.attr('data-page-type') === 'COMMON') {
+            //console.log("common");
+        }
+        if($objContent.attr('data-page-type') === 'NEWBEST') {
+            console.log("NEWBEST");
             $objHeader.hide();
             $objBreadcrb.hide();
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-        } else {
-            //console.log("정상적인 경로")
+        }
+        if($objContent.attr('data-page-type') === 'HIMART') {
+            console.log("HIMART");
+            $objHeader.hide();
+            $objBreadcrb.hide();
+            $objTopNavi.hide();
+            $objMyPickBtn.hide();
+            $objFooter.hide();
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-
-
-
 
 
         //추천조합 열기
@@ -4121,9 +4120,7 @@
                 var desc = '';
 
                 /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
-                if($urlBest && $urlHimart) {
-                    //console.log("해당 url이 아니라면 팝업이 안띄워진다.");
-                } else {
+                if($objContent.attr('data-page-type') === 'COMMON') {
                     obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
                     let popLoginCheck = $("meta[name='login']").attr("content");
                     // console.log("popLoginCheck", popLoginCheck);
@@ -4135,7 +4132,7 @@
                     lgkorUI.confirm(desc, obj);
                 }
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-                
+
                 modelSimulator.mobileStep(".simul_step3");
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
