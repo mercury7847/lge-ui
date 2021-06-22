@@ -63,28 +63,13 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   </li>\n'+
     '{{/each}}';
 
+/* 20210615 추천 기획전 구조변경 */
 var exhibitionTmpl = '{{#each obj in list}}\n'+
-    '   <li class="slide-conts ui_carousel_slide">\n'+
-    '       <div class="slide-box">\n'+
-    '           <div class="inner">\n'+
-    '               <div class="img">\n'+
-    '                   <img src=""'+
-    '                   alt="{{obj.imageAlt}}"'+
-    '                   data-pc-src="{{obj.pcImagePath}}"'+ 
-    '                   data-m-src="{{obj.mobileImagePath}}">'+
-    '               </div>\n'+
-    '               <div class="product-info {{obj.textClass}}">\n'+
-    '                   <p class="tit">{{#raw obj.title}}</p>\n'+
-    '                   <div class="date">{{obj.date}}</div>\n'+
-    '                   <a href="{{obj.modelUrlPath}}" class="btn border">자세히 보기</a>\n'+
-    '               </div>\n'+
-    '               <div class="product-list">\n'+
-    '                   <ul>{{#raw obj.productList}}</ul>\n'+
-    '               </div>\n'+                       
-    '           </div>\n'+
-    '       </div>\n'+
-    '   </li>\n'+
+    '   <div class="product-list">\n'+
+    '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
+    '   </div>\n'+
     '{{/each}}';
+/* //20210615 추천 기획전 구조변경 */
 
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -154,9 +139,41 @@ $(function(){
         var obj = vcui.uri.parseQuery(parseUrl.query);
         return name? obj[name] : obj;
     }
+    
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
+
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
+            } else {
+                return item.superCategoryName + "/" + item.categoryName; 
+            }
+        }
+
+        var currentEcValue = {
+            "model_name": displayName.trim(),
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName		
+        }
+
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
+    }
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
-    
+
     vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
 
         $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
@@ -166,7 +183,7 @@ $(function(){
             pauseOnHover: false,
             pauseOnFocus: false,
             swipeToSlide: true,
-            buildDots: false,
+            
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -176,7 +193,7 @@ $(function(){
             speed: 150
         });
 
-        
+
         $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
@@ -209,11 +226,11 @@ $(function(){
                     slidesToScroll: 1,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                     speed: 150,
-                    touchThreshold: 100                        
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $context.find('.ui_product_lifestyle').vcCarousel('destroy');                            
+                $context.find('.ui_product_lifestyle').vcCarousel('destroy');
             }    
         })
 
@@ -258,6 +275,7 @@ $(function(){
                 "textClass" : "fc-black"
             }
         ]
+        
         // 직접관리하는 영역 끝
 
         
@@ -289,12 +307,18 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                    
+
+                    var newTempEcProduct = getEcProduct(item);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
                     }else{
                         item['obsOriginalPrice'] = null;
                     }
+
+
 
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
@@ -324,7 +348,7 @@ $(function(){
                 var posArr = [0, 6];
                 $.each(posArr, function(index, item){
 
-                    if(list[index]){       
+                    if(list[index]){
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
                         var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
@@ -389,7 +413,6 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
                 var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
@@ -422,13 +445,33 @@ $(function(){
                         return item;
                     });
 
-                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    /* 20210615 추천 기획전 구조변경 */
+                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
+                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
+                    /* //20210615 추천 기획전 구조변경 */
+
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-                $context.find('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $context.find('.ui_exhib_carousel').vcCarousel();
+                //console.log(nArr )
+                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                    //console.log(i,v)
+                    if(nArr[i]) {
+                        $(this).find('ul').html(nArr[i].productList );
+                    }
+
+                })
+
+                /* 20210615 추천 기획전 구조변경 */
+                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+
+                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                /* //20210615 추천 기획전 구조변경 */
+                $context.find('.ui_exhib_carousel').vcCarousel({
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
+                });
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
                 
@@ -498,7 +541,7 @@ $(function(){
                 $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
 
-                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
 
@@ -549,7 +592,7 @@ $(function(){
 
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $context.find('.ui_category_carousel').vcCarousel('destroy');                            
+                        $context.find('.ui_category_carousel').vcCarousel('destroy');
                     }    
                 })
 
@@ -587,6 +630,7 @@ $(function(){
                 if(sortArr.length>0){
 
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
+                    bestObj.ecProduct = JSON.stringify(getEcProduct(bestObj));
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
                     $context.find('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
@@ -602,8 +646,11 @@ $(function(){
                     }
     
                     sortArr = vcui.array.removeAt(sortArr, 0);
+                    sortArr.forEach(function(item){
+                        item.ecProduct = JSON.stringify(getEcProduct(item));
+                    })
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
-                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
+                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);
     
                     $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_buy_product'));
 
