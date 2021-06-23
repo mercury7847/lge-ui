@@ -536,14 +536,14 @@ $(function () {
                     touchSy = data.y;
                 } else {
     
-                    if (touchSy - data.y > 80) {
-                        // console.log('down');
-                        lgkorUI.showAppBottomMenu(false);
+                    // if (touchSy - data.y > 80) {
+                    //     // console.log('down');
+                    //     lgkorUI.showAppBottomMenu(false);
     
-                    } else if (touchSy - data.y < -80) {
-                        // console.log('up');
-                        lgkorUI.showAppBottomMenu(true);
-                    }
+                    // } else if (touchSy - data.y < -80) {
+                    //     // console.log('up');
+                    //     lgkorUI.showAppBottomMenu(true);
+                    // }
                     
                     if(currentPage == maxLens){
                         if(wheelInterval) clearTimeout(wheelInterval);
