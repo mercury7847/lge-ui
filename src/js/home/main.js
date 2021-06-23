@@ -361,7 +361,7 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isMobileDevice){                
+            if(!isOnlyMobileDevice){                
                 if(!canScroll) return;  
                 canScroll = false;   
             }
@@ -384,7 +384,7 @@ $(function () {
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
 
-                if(!isMobileDevice){
+                if(!isOnlyMobileDevice){
                     if(! $('html').hasClass('sceneMoving')){
                         return false;
                     }
