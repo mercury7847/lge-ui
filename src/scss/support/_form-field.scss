@@ -4,11 +4,14 @@
 .btn-group {
     margin:64px auto 0;
     @include mobile {
-        margin-top: 32px;
         padding: 0 16px;
     }
 }
-
+.btn-group.bestshop {
+    @include mobile {
+        padding: 0 !important;
+    } 
+}
 .btn-delete {
     position:absolute;
     top:50%;
