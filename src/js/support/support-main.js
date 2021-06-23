@@ -137,7 +137,7 @@
                     slidesToScroll: 3,
                     slidesToShow: 3,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100,
                     responsive: [
                         {
@@ -215,11 +215,11 @@
                     dots : true,
                     swipe : true,
                     arrows : false,
-                    slidesToScroll: 1,
-                    slidesToShow: 1,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
-                    touchThreshold: 100
+                    speed: 150,
+                    touchThreshold: 100,
+                    slidesToScroll: 1,
+                    slidesToShow: 1
                 }
             },
             notice : {
@@ -233,7 +233,7 @@
                     slidesToShow: 1,
                     vertical:true,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100
                 },
             },
@@ -250,7 +250,7 @@
                     arrows : false,
                     draggable : false, 
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100,
                     responsive: [
                         {
@@ -318,7 +318,7 @@
                     slidesToScroll: 1,
                     slidesToShow: 2,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100,
                     responsive: [
                         {
@@ -358,7 +358,7 @@
                     slidesToShow: 4,
                     appendDots : '.awards .slick-dot-container',
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 250,
+                    speed: 150,
                     touchThreshold: 100,
                     responsive: [
                         {
