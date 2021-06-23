@@ -7,6 +7,10 @@ $(function () {
         }
     });
 
+    var isOnlyMobileDevice = vcui.detect.isMobileDevice && window.innerWidth < 768
+
+    // console.log("isOnlyMobileDevice", isOnlyMobileDevice)
+
     var sceneTmpl =  '<div class="scene">\n'+
         '   <div class="img">\n'+
         '       <img src={{imagePath}} alt={{imageAlt}}>\n'+
@@ -75,7 +79,7 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $('.contents'));
 
         // 화면 100% 채우기
-        if (!vcui.detect.isMobileDevice){
+        if (!isOnlyMobileDevice){
             $('html,body').css({'overflow':'hidden', 'height':'100%'});
         }
         
@@ -210,10 +214,11 @@ $(function () {
         var maxLens = $scenes.length - 1;
         var posArr = [];
         var isMobileDevice = vcui.detect.isMobileDevice;
+        
 
         var visualAnimInterval;
 
-        if (vcui.detect.isMobileDevice){
+        if (isOnlyMobileDevice){
             //$scenes.eq(0).css('height', 'calc(100vh - 84px)');
         } else {
             $scenes.eq(0).css('height', 'calc(100vh - 110px)');
@@ -229,7 +234,7 @@ $(function () {
         
         $('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        if ( !vcui.detect.isMobileDevice ){            
+        if ( !isOnlyMobileDevice ){            
             $('.next-arr').on('click', 'a', function(e){
                 e.preventDefault();
                 wheelScene(1);
@@ -306,10 +311,10 @@ $(function () {
         });               
 
 
-        var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
+        var $html = (vcui.detect.isSafari || isOnlyMobileDevice) ? $('body') : $('html, body');
         
         var maxScale = 110;
-        if (!vcui.detect.isMobileDevice){
+        if (!isOnlyMobileDevice){
             $scenes.find('.img img').css({
                 width: maxScale + '%'
             });
@@ -341,8 +346,10 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){                
-                if(!canScroll) return; 
+            if(!isOnlyMobileDevice){                
+                if(!canScroll) {
+                    return; 
+                }
             } else {
                 return;
             }           
@@ -373,7 +380,7 @@ $(function () {
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;
 
-            if (!vcui.detect.isMobileDevice){
+            if (!isOnlyMobileDevice){
                 $scenes.removeClass('active').eq(idx).addClass('active');
             }
             
@@ -454,7 +461,7 @@ $(function () {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    if (!vcui.detect.isMobileDevice){
+                    if (!isOnlyMobileDevice){
                         $scenes.each(function() {
                             if ( $(this).find('video').length != 0 ) {
                                 if ( $(this).hasClass('on') ) {
@@ -525,71 +532,69 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        /*
         $('.container').on('touchstart touchend touchcancel', function(e) {
-            
-            var data = _getEventPoint(e);
-            if (e.type == 'touchstart') {
-                touchSy = data.y;
-            } else {
 
-                if (touchSy - data.y > 80) {
-                    // console.log('down');
-                    lgkorUI.showAppBottomMenu(false);
-
-                } else if (touchSy - data.y < -80) {
-                    // console.log('up');
-                    lgkorUI.showAppBottomMenu(true);
-                }
-                
-                if(currentPage == maxLens){
-                    if(wheelInterval) clearTimeout(wheelInterval);
-                    wheelInterval = setTimeout(function(){
-                        var st = $contentWrap.scrollTop();
-                        if(st<=0 && touchSy - data.y < -80){
+            if(!isOnlyMobileDevice){
+                var data = _getEventPoint(e);
+                if (e.type == 'touchstart') {
+                    touchSy = data.y;
+                } else {
+                    if (touchSy - data.y > 80) {
+                        // console.log('down');
+                        lgkorUI.showAppBottomMenu(false);
+    
+                    } else if (touchSy - data.y < -80) {
+                        // console.log('up');
+                        lgkorUI.showAppBottomMenu(true);
+                    }
+                    
+                    if(currentPage == maxLens){
+                        if(wheelInterval) clearTimeout(wheelInterval);
+                        wheelInterval = setTimeout(function(){
+                            var st = $contentWrap.scrollTop();
+                            if(st<=0 && touchSy - data.y < -80){
+                                wheelScene(-1);
+                            }
+                        }, 100);
+    
+                    }else{
+                        if (touchSy - data.y > 80) {
+                            wheelScene(1);
+                        } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    }, 100);
-
-                }else{
-
-                    if (touchSy - data.y > 80) {
-                        wheelScene(1);
-                    } else if (touchSy - data.y < -80) {
-                        wheelScene(-1);
-                    }
-                } 
-                  
-                
-            }
-        });
-        */
-        
-        /*
-        var wrapTouchSy = 0;
-        
-        $contentWrap.on('touchstart touchend touchcancel', function(e) {
-            
-            var data = _getEventPoint(e);
-            if (e.type == 'touchstart') {
-                wrapTouchSy = data.y;
-            } else {
-
-                if (wrapTouchSy - data.y > 80) {
-                    // console.log('down');
-                    lgkorUI.showAppBottomMenu(false);
-
-                } else if (wrapTouchSy - data.y < -80) {
-                    // console.log('up');
-                    lgkorUI.showAppBottomMenu(true);
+                    } 
+                      
+                    
                 }
-
             }
         });
-        */
+        
+        
+        var wrapTouchSy = 0;
+        $contentWrap.on('touchstart touchend touchcancel', function(e) {
+            if(!isOnlyMobileDevice){
+                var data = _getEventPoint(e);
+                if (e.type == 'touchstart') {
+                    wrapTouchSy = data.y;
+                } else {
+    
+                    if (wrapTouchSy - data.y > 80) {
+                        // console.log('down');
+                        lgkorUI.showAppBottomMenu(false);
+    
+                    } else if (wrapTouchSy - data.y < -80) {
+                        // console.log('up');
+                        lgkorUI.showAppBottomMenu(true);
+                    }
+    
+                }
+            }
+        });
+        
 
         
-        /*
+        
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -600,7 +605,7 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
-        */
+        
         
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
@@ -755,14 +760,14 @@ $(function () {
                     itemHeight = winHeight;    
                 }
                 // BTOCSITE-740 스크롤 배너 사이즈 변경
-                if (vcui.detect.isMobileDevice){
+                if (isOnlyMobileDevice){
                     itemHeight = 500;
                 }
                 
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                if (!vcui.detect.isMobileDevice){
+                if (!isOnlyMobileDevice){
                     $(this).height(itemHeight);
                 }
                 
@@ -803,7 +808,7 @@ $(function () {
                 }
                 */
             } else {
-                if (!vcui.detect.isMobileDevice){
+                if (!isOnlyMobileDevice){
                     $contentWrap.css({'overflow':'auto','height':winHeight});
                 }
             }
@@ -815,14 +820,14 @@ $(function () {
             
             
             if(idx!==undefined){
-                if ( !vcui.detect.isMobileDevice ){
+                if ( !isOnlyMobileDevice ){
                     currentPage = idx;
                     moveScene(currentPage,0);
                 } else {
                     //$('.scene').eq(0).addClass('on');
                 }
             }else{
-                if ( !vcui.detect.isMobileDevice ){
+                if ( !isOnlyMobileDevice ){
                     setTimeout(function(){
                         currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                         moveScene(currentPage,0);
@@ -844,7 +849,7 @@ $(function () {
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            if (!vcui.detect.isMobileDevice){
+            if (!isOnlyMobileDevice){
                 moveScene(currentPage,0);
             }
         });
@@ -979,7 +984,7 @@ $(function () {
 
     function setActivePlayByScroll(){
         // BTOCSITE-740
-        if (!vcui.detect.isMobileDevice) return;
+        if (!isOnlyMobileDevice) return;
 
         var sceneActiveQue = [];
         var scenes = $('.scene');
@@ -1122,7 +1127,7 @@ $(function () {
 
 
         // 플로팅 버튼 AR 관련 
-        if (vcui.detect.isMobileDevice){
+        if (isOnlyMobileDevice){
             var isApplication = isApp();
 
             setTimeout(function(){
