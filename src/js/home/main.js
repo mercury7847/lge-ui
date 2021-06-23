@@ -344,7 +344,7 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){                
+            if(!isOnlyMobileDevice){                
                 if(!canScroll) return; 
             } else {
                 return;
