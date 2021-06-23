@@ -510,7 +510,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
         _mobileSetting: function(){
             var self = this;
+            var isSwipe = !!$('#sw_con').length;
 
+            if( isSwipe ) {
+                $('.wrap').addClass('is-main-sticky-header');
+            }
+            
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
             self.$mobileNaviWrapper.find('img').remove();
             self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
@@ -552,6 +557,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             self._setStoryUpdateCheck();
+            self._mobileGnbSticky();
+        },
+
+        _mobileGnbSticky: function(scrollTop){
+            console.log(1)
         },
 
         _mypageOver: function(){

@@ -1771,7 +1771,7 @@ html {
 //BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
 .mdevice {
     .wrap {
-        &.is-main {
+        &.is-main-sticky-header {
             padding-top:84px;
 
             .header,
@@ -1793,6 +1793,16 @@ html {
                 .mobile-nav-wrap {
                     position: fixed;
                     z-index:100;
+                    transition:top .4s;
+                }
+
+                &.scroll-down {
+                    .header {
+                        top:-46px;
+                    }
+                    .mobile-nav-wrap {
+                        top:0;
+                    }
                 }
             }
         }
