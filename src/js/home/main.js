@@ -489,7 +489,7 @@ $(function () {
 
         // 휠 이벤트 처리
 
-        if(!isMobileDevice){
+        if(!isOnlyMobileDevice){
 
             /* 메인테스트*/
             
@@ -528,45 +528,46 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        /*
+        
         $('.container').on('touchstart touchend touchcancel', function(e) {
-            
-            var data = _getEventPoint(e);
-            if (e.type == 'touchstart') {
-                touchSy = data.y;
-            } else {
-
-                if (touchSy - data.y > 80) {
-                    // console.log('down');
-                    lgkorUI.showAppBottomMenu(false);
-
-                } else if (touchSy - data.y < -80) {
-                    // console.log('up');
-                    lgkorUI.showAppBottomMenu(true);
-                }
-                
-                if(currentPage == maxLens){
-                    if(wheelInterval) clearTimeout(wheelInterval);
-                    wheelInterval = setTimeout(function(){
-                        var st = $contentWrap.scrollTop();
-                        if(st<=0 && touchSy - data.y < -80){
+            if(!isOnlyMobileDevice){
+                var data = _getEventPoint(e);
+                if (e.type == 'touchstart') {
+                    touchSy = data.y;
+                } else {
+    
+                    if (touchSy - data.y > 80) {
+                        // console.log('down');
+                        lgkorUI.showAppBottomMenu(false);
+    
+                    } else if (touchSy - data.y < -80) {
+                        // console.log('up');
+                        lgkorUI.showAppBottomMenu(true);
+                    }
+                    
+                    if(currentPage == maxLens){
+                        if(wheelInterval) clearTimeout(wheelInterval);
+                        wheelInterval = setTimeout(function(){
+                            var st = $contentWrap.scrollTop();
+                            if(st<=0 && touchSy - data.y < -80){
+                                wheelScene(-1);
+                            }
+                        }, 100);
+    
+                    }else{
+    
+                        if (touchSy - data.y > 80) {
+                            wheelScene(1);
+                        } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    }, 100);
-
-                }else{
-
-                    if (touchSy - data.y > 80) {
-                        wheelScene(1);
-                    } else if (touchSy - data.y < -80) {
-                        wheelScene(-1);
-                    }
-                } 
-                  
-                
+                    } 
+                      
+                    
+                }
             }
         });
-        */
+        
         
         /*
         var wrapTouchSy = 0;
@@ -592,7 +593,7 @@ $(function () {
         */
 
         
-        /*
+        
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -603,7 +604,7 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
-        */
+        
         
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
