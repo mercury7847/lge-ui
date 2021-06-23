@@ -377,7 +377,15 @@
 
             window.infoWindowDetail = function(url){
                 var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
-                void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+
+                if(isApp() && vcui.detect.isIOS){ 
+                       var jsonString = JSON.stringify({'url':'https://www.lge.co.kr'+url,'command':'closeInAppBrowser'});
+                       webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+                }
+
+                
             }
 
             self.$optionContainer.on('click', '.btn-sel', function(e){
