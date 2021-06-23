@@ -619,7 +619,7 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        var isShow = lgkorUI.isShowDate('20210601','20210701')
+                        var isShow = lgkorUI.isShowDate('20210601','20210901')
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
