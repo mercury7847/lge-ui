@@ -379,7 +379,7 @@
                 var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
 
                 if(isApp() && vcui.detect.isIOS){ 
-                       var jsonString = JSON.stringify({'url':'https://'+window.LGEAPPHostName+url,'command':'closeInAppBrowser'});
+                       var jsonString = JSON.stringify({'url':'https://'+window.LGEAPPHostName+url,'command':'openInAppBrowser'});
                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
