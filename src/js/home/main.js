@@ -8,6 +8,8 @@ $(function () {
         }
     });
 
+    var isOnlyMobileDevice = vcui.detect.isMobileDevice && window.innerWidth < 768
+
     var sceneTmpl =  '<div class="scene">\n'+
         '   <div class="img">\n'+
         '       <img src={{imagePath}} alt={{imageAlt}}>\n'+
@@ -76,7 +78,7 @@ $(function () {
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
         // 화면 100% 채우기
-        if (!vcui.detect.isMobileDevice){
+        if (!isOnlyMobileDevice){
             $('html,body').css({'overflow':'hidden', 'height':'100%'});
         }
         
@@ -214,7 +216,7 @@ $(function () {
 
         var visualAnimInterval;
 
-        if (vcui.detect.isMobileDevice){
+        if (isOnlyMobileDevice){
             //$scenes.eq(0).css('height', 'calc(100vh - 84px)');
         } else {
             $scenes.eq(0).css('height', 'calc(100vh - 110px)');
@@ -230,7 +232,7 @@ $(function () {
         
         $context.find('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        if ( !vcui.detect.isMobileDevice ){            
+        if ( !isOnlyMobileDevice ){            
             $context.find('.next-arr').on('click', 'a', function(e){
                 e.preventDefault();
                 wheelScene(1);
@@ -310,7 +312,7 @@ $(function () {
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
         
         var maxScale = 110;
-        if (!vcui.detect.isMobileDevice){
+        if (!isOnlyMobileDevice){
             $scenes.find('.img img').css({
                 width: maxScale + '%'
             });
@@ -342,7 +344,7 @@ $(function () {
 
         function wheelScene(delta) {
 
-            if(!isMobileDevice){                
+            if(!isOnlyMobileDevice){                
                 if(!canScroll) return; 
             } else {
                 return;
@@ -359,7 +361,7 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isMobileDevice){                
+            if(!isOnlyMobileDevice){                
                 if(!canScroll) return;  
                 canScroll = false;   
             }
@@ -370,11 +372,11 @@ $(function () {
             
             $contentWrap.scrollTop(0);                
             $('html').addClass('sceneMoving');
-
+            
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;
 
-            if (!vcui.detect.isMobileDevice){
+            if (!isOnlyMobileDevice){
                 $scenes.removeClass('active').eq(idx).addClass('active');
             }
             
@@ -382,7 +384,7 @@ $(function () {
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
 
-                if(!isMobileDevice){
+                if(!isOnlyMobileDevice){
                     if(! $('html').hasClass('sceneMoving')){
                         return false;
                     }
@@ -393,7 +395,7 @@ $(function () {
 
                 $html.stop(true).animate({
                     scrollTop: scrollTopData
-                }, speedTime, 'easeInOutQuart',  function() {
+                }, speedTime, 'easeInOutQuart',  function() { 
                     canScroll = true;
 
                     var hasTop = $('.floating-menu.top').hasClass('call-yet');
@@ -439,7 +441,7 @@ $(function () {
                             $('.floating-menu.top').removeClass('call-yet');
                             $(window).trigger('floatingTopShow');
                             $('.floating-menu.top').show();
-                        }
+                        }                       
                     }
                     
                     $scenes.eq(currentPage).find('.img img').css({
@@ -455,7 +457,7 @@ $(function () {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    if (!vcui.detect.isMobileDevice){
+                    if (!isOnlyMobileDevice){
                         $scenes.each(function() {
                             if ( $(this).find('video').length != 0 ) {
                                 if ( $(this).hasClass('on') ) {
@@ -487,14 +489,14 @@ $(function () {
 
         // 휠 이벤트 처리
 
-        if(!isMobileDevice){
+        if(!isOnlyMobileDevice){
 
             /* 메인테스트*/
-
+            
             document.addEventListener('wheel', function(e){
 
-                var open = $('#layerSearch').hasClass('open');
-                if(!open){
+                var open = $('#layerSearch').hasClass('open');           
+                if(!open){    
                     var curTime = new Date().getTime();
                     if(typeof prevTime !== 'undefined'){
                         var timeDiff = curTime-prevTime;
@@ -509,16 +511,16 @@ $(function () {
                                     wheelScene(e.deltaY);
                                 }
                             }
-                        }
-                    }
-                    prevTime = curTime;
-                }
-
+                        }                    
+                    }            
+                    prevTime = curTime; 
+                }       
+    
             });
 
         }
-
-
+        
+        
         // 앱 하단 메뉴 컨트롤
         //lgkorUI.showAppBottomMenuOver(true);
         //lgkorUI.setEnableAppScrollBottomMenu(false);
@@ -526,51 +528,52 @@ $(function () {
 
         /* 메인테스트*/
         // BTOCSITE-27
-        /*
+        
         $('.container').on('touchstart touchend touchcancel', function(e) {
-
-            var data = _getEventPoint(e);
-            if (e.type == 'touchstart') {
-                touchSy = data.y;
-            } else {
-
-                if (touchSy - data.y > 80) {
-                    // console.log('down');
-                    lgkorUI.showAppBottomMenu(false);
-
-                } else if (touchSy - data.y < -80) {
-                    // console.log('up');
-                    lgkorUI.showAppBottomMenu(true);
-                }
-                
-                if(currentPage == maxLens){
-                    if(wheelInterval) clearTimeout(wheelInterval);
-                    wheelInterval = setTimeout(function(){
-                        var st = $contentWrap.scrollTop();
-                        if(st<=0 && touchSy - data.y < -80){
+            if(!isOnlyMobileDevice){
+                var data = _getEventPoint(e);
+                if (e.type == 'touchstart') {
+                    touchSy = data.y;
+                } else {
+    
+                    // if (touchSy - data.y > 80) {
+                    //     // console.log('down');
+                    //     lgkorUI.showAppBottomMenu(false);
+    
+                    // } else if (touchSy - data.y < -80) {
+                    //     // console.log('up');
+                    //     lgkorUI.showAppBottomMenu(true);
+                    // }
+                    
+                    if(currentPage == maxLens){
+                        if(wheelInterval) clearTimeout(wheelInterval);
+                        wheelInterval = setTimeout(function(){
+                            var st = $contentWrap.scrollTop();
+                            if(st<=0 && touchSy - data.y < -80){
+                                wheelScene(-1);
+                            }
+                        }, 100);
+    
+                    }else{
+    
+                        if (touchSy - data.y > 80) {
+                            wheelScene(1);
+                        } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    }, 100);
-
-                }else{
-
-                    if (touchSy - data.y > 80) {
-                        wheelScene(1);
-                    } else if (touchSy - data.y < -80) {
-                        wheelScene(-1);
-                    }
-                } 
-                  
-                
+                    } 
+                      
+                    
+                }
             }
         });
-        */
+        
         
         /*
         var wrapTouchSy = 0;
-
+        
         $contentWrap.on('touchstart touchend touchcancel', function(e) {
-
+            
             var data = _getEventPoint(e);
             if (e.type == 'touchstart') {
                 wrapTouchSy = data.y;
@@ -590,7 +593,7 @@ $(function () {
         */
 
         
-        /*
+        
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -601,7 +604,7 @@ $(function () {
                 y : e.pageY || e.clientY
             };
         }
-        */
+        
         
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
@@ -627,7 +630,7 @@ $(function () {
                     return i;
                 }
             }
-            return 0;
+            return 0;                
         }
 
 
@@ -664,7 +667,7 @@ $(function () {
 
             // 비디오 요소 생성.
             var createVideoObject = function() {
-
+                
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                 // var regExp = "\.(mp4|webm|ogv)";
                 // console.log(src, src.match(regExp));
@@ -682,7 +685,7 @@ $(function () {
                         $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
                     }
                 }
-
+                    
                 if ( $target.data('alt') != null ) {
                     $('<p>').text($target.data('alt')).appendTo($video);
                 }
@@ -716,7 +719,7 @@ $(function () {
                     $wrap.trigger('videoLoaded');
                     //oVideo.play();
                 }).trigger('load');
-
+                
             }
 
             createVideoObject();
@@ -735,7 +738,7 @@ $(function () {
             wheelInterval = null;
 
             $('html, body').stop(true);
-            $('html').removeClass('sceneMoving');
+            $('html').removeClass('sceneMoving');   
 
             //canScroll = true;    
             winWidth = $window.width();
@@ -747,29 +750,29 @@ $(function () {
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
-
+            
             $scenes.each(function(i) {
                 if(i==0){
                     //itemHeight = winHeight-prevAllHeight;
                     itemHeight = winHeight - $('#content').offset().top;
                 }else{
-                    itemHeight = winHeight;
+                    itemHeight = winHeight;    
                 }
                 // BTOCSITE-740 스크롤 배너 사이즈 변경
-                if (vcui.detect.isMobileDevice){
+                if (isOnlyMobileDevice){
                     itemHeight = 500;
                 }
                 
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                if (!vcui.detect.isMobileDevice){
+                if (!isOnlyMobileDevice){
                     $(this).height(itemHeight);
                 }
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
-                //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920,
+                //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920, 
                 //     height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1285,//1285 1476 1080
                 // };
 
@@ -788,7 +791,7 @@ $(function () {
                         updateVideo(this);
                     });
                 }
-
+                
                 totalHeight += itemHeight;
             });
 
@@ -804,26 +807,26 @@ $(function () {
                 }
                 */
             } else {
-                if (!vcui.detect.isMobileDevice){
+                if (!isOnlyMobileDevice){
                     $contentWrap.css({'overflow':'auto','height':winHeight});
                 }
             }
             /*
-            if (!vcui.detect.isMobileDevice){
+            if (!isOnlyMobileDevice){
                 $('.contents').css({'overflow':'hidden', 'height':totalHeight});
             }
             */
             
             
             if(idx!==undefined){
-                if ( !vcui.detect.isMobileDevice ){
+                if ( !isOnlyMobileDevice ){
                     currentPage = idx;
                     moveScene(currentPage,0);
                 } else {
                     //$('.scene').eq(0).addClass('on');
                 }
             }else{
-                if ( !vcui.detect.isMobileDevice ){
+                if ( !isOnlyMobileDevice ){
                     setTimeout(function(){
                         currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
                         moveScene(currentPage,0);
@@ -839,17 +842,17 @@ $(function () {
                     }, 100);
                 }
             }
-
+            
         }
 
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            if (!vcui.detect.isMobileDevice){
+            if (!isOnlyMobileDevice){
                 moveScene(currentPage,0);
             }
         });
-
+        
         if(isApplication){
 
             render();
@@ -876,7 +879,7 @@ $(function () {
         //앱인데 메인일경우 처음 시작하면 맨위 첫번째 컨텐츠 일테니 뭐든 올려본다
         if(isApplication && location.pathname == "/") {
             //$(window).trigger('floatingTopShow');
-
+            
             //??$('.floating-menu.top').css('opacity', 0);
             //??$('.floating-menu.top').removeClass('call-yet');
 
@@ -916,7 +919,7 @@ $(function () {
                     var total = icons.data('length');
                     if(currentIdx == total-1) animIdx = 0;
                     else animIdx = currentIdx+1;
-
+        
                     icons.find('img').eq(currentIdx).hide();
                     icons.find('img').eq(animIdx).show();
                     icons.data('animIdx', animIdx);
@@ -949,7 +952,7 @@ $(function () {
         $(item).data("animIdx", 0);
         $(item).data("loadIdx", 1);
         $(item).data("isReady", false);
-
+        
         var i, num;
         var total = 0;
         if(idx < 2){
@@ -966,7 +969,7 @@ $(function () {
         } else{
             for(i=1;i<leng;i++){
                 total++;
-
+                
                 num = i < 10 ? "0" + i : i;
                 $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
             }
