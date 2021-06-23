@@ -8,7 +8,12 @@
         padding: 0 16px;
     }
 }
-
+.btn-group.bestshop {
+    @include mobile {
+        margin-top: 32px;
+        padding: 0 !important;
+    } 
+}
 .btn-delete {
     position:absolute;
     top:50%;
