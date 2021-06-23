@@ -9,7 +9,6 @@
 }
 .btn-group.bestshop {
     @include mobile {
-        margin-top: 32px;
         padding: 0 !important;
     } 
 }
