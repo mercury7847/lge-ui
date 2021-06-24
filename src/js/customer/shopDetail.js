@@ -88,7 +88,7 @@
             ]
         });
 
-        $('.cont-wrap > .btn-close').on('click', function(e){
+        $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
             e.preventDefault();
 
             if(isApp() && vcui.detect.isIOS){ 
@@ -99,6 +99,19 @@
             }
            
         });
+
+        // $('.cont-wrap [data-close]').on('click', function(e){
+        //     e.preventDefault();
+            
+        //    if(isApp() && vcui.detect.isIOS){ 
+        //         var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+        //         webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        //     } else {
+        //         window.close();
+        //     }
+        // });
+
+
 
         $('.chk-bookmark-wrap input[type=checkbox]').on('change', function(e){
             var ipt = $(this);
