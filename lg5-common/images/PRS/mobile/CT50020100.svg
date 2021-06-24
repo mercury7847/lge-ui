@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_TV_128" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#070203;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="img_TV_80">
+        <path id="Rectangle-61" fill="none" d="M0 0H80V80H0z"/>
+        <g id="img_Hose" transform="translate(526.522 -924.385)">
+            <g id="line">
+                <ellipse id="Oval-17" cx="26.71" cy="26.4" class="cls-2" rx="26.71" ry="26.4" transform="translate(-506.941 939.585)"/>
+                <ellipse id="Oval-17-2" cx="20.032" cy="19.8" class="cls-2" rx="20.032" ry="19.8" transform="translate(-500.264 946.185)"/>
+                <ellipse id="Oval-17-3" cx="13.355" cy="13.2" class="cls-2" rx="13.355" ry="13.2" transform="translate(-493.586 952.785)"/>
+            </g>
+            <g id="head">
+                <path id="Rectangle-62" d="M-507.276 941.178h17.461" class="cls-2"/>
+                <path id="Rectangle-62-2" d="M-500.264 948.459h-7.156" class="cls-2"/>
+                <g id="Group_145">
+                    <path id="Rectangle-47" d="M-511.341 951.694a2.4 2.4 0 0 1-2.406-2.392l.029-9.539a2.4 2.4 0 0 1 2.42-2.378l1.3.007a2.4 2.4 0 0 1 2.4 2.392l-.028 9.539a2.4 2.4 0 0 1-2.42 2.378z" class="cls-2"/>
+                    <path id="Rectangle-62-3" d="M-514.356 948.505l-5.4-.814a2.758 2.758 0 0 1-2.767-2.75v-.875a2.758 2.758 0 0 1 2.783-2.734l5.4-.776" class="cls-2"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

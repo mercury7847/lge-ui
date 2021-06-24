@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_AirConditioner_80" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke:#070203;stroke-linecap:round;stroke-width:3px}.cls-2{stroke-miterlimit:10}.cls-3{stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle" fill="none" d="M0 0H80V80H0z"/>
+    <g id="img_Gender" transform="translate(809.449 -924.417)">
+        <g id="head">
+            <g id="Group_137">
+                <g id="Group_135"/>
+                <g id="Group_136"/>
+            </g>
+            <g id="Group_138">
+                <path id="Rectangle-62" d="M-783.3 974.514v5.943a2.522 2.522 0 0 1-2.512 2.531h-.8a2.522 2.522 0 0 1-2.513-2.531v-5.943" class="cls-3"/>
+                <path id="Path_40" d="M-797.449 943.327v28.127a2.82 2.82 0 0 0 2.809 2.83h16.852a2.82 2.82 0 0 0 2.809-2.83v-28.127z" class="cls-3"/>
+                <path id="Path_41" d="M-778.256 943.1v-8.85a2.819 2.819 0 0 0-2.809-2.83h-10.3a2.82 2.82 0 0 0-2.809 2.83v8.85" class="cls-3"/>
+            </g>
+        </g>
+        <g id="line">
+            <path id="Path_42" d="M-786.214 983.7v3.19a11.485 11.485 0 0 0 11.441 11.527 11.485 11.485 0 0 0 11.442-11.527V961.9" class="cls-3"/>
+            <path id="Path_43" d="M-763.331 962.722v-.976a11.484 11.484 0 0 1 11.441-11.527 11.484 11.484 0 0 1 11.441 11.527v36.671" class="cls-3"/>
+        </g>
+    </g>
+</svg>
