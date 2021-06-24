@@ -90,7 +90,14 @@
 
         $('.cont-wrap > .btn-close').on('click', function(e){
             e.preventDefault();
-            window.close();
+
+            if(isApp() && vcui.detect.isIOS){ 
+                var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                window.close();
+            }
+           
         });
 
         $('.chk-bookmark-wrap input[type=checkbox]').on('change', function(e){
