@@ -943,7 +943,7 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
                 var isCompare = vcui.isEmpty(storageCompare);
-                if (!isCompare) {
+                if(!isCompare){
                     storageCompare['data'].forEach(function (item) {
                         var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');

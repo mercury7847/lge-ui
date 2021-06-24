@@ -358,8 +358,8 @@ var goAppUrl = function(path) {
         _appDownloadPopup: function() {
             var enableUrl = [
                 '^/$', // 메인
-                '^/benefits/event/?', // 이벤트 페이지
-                '^/benefits/exhibitions/?' // 기획전 페이지
+               '^/benefits/event/?', // 이벤트 페이지
+               '^/benefits/exhibitions/?' // 기획전 페이지
             ];
 
             var isPopUp = enableUrl.some(function(element) {
@@ -989,7 +989,6 @@ var goAppUrl = function(path) {
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-       
                 compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
@@ -999,7 +998,6 @@ var goAppUrl = function(path) {
                 } else {
                     var data = {};
                         data[categoryId] = compareStorage[categoryId];
-
                     self.setStorage(self.COMPARE_KEY, data, true, categoryId);
                 }
                 
@@ -1034,7 +1032,8 @@ var goAppUrl = function(path) {
 
         setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
-            var storageData = storage? JSON.parse(storage) : {};        
+            var storageData = storage? JSON.parse(storage) : {};   
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };     
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
             if(isExtend) {
@@ -1043,19 +1042,8 @@ var goAppUrl = function(path) {
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
-
-           
-
-            var data = { 'state' : 'set', 'key' : key, 'value' : value };
-            if(name) {
-                data = $.extend(data, { 'name' : name});
-            }
-
-            console.log("setStorage data %o",data)
+            if(name) data = $.extend(data, { 'name' : name});
             $(window).trigger(jQuery.Event("changeStorageData", data));
-           
-
-            
 
             return storageData;
         },
@@ -1073,19 +1061,21 @@ var goAppUrl = function(path) {
         removeStorage: function(key, name){    
             var data = {};
             var returnValue;
+            var data = {  'state' : 'remove', 'key' : key  }
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 	
-                var data = 	storageData[name]			
+                var storageData = storage? JSON.parse(storage) : {}; 		
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
-                data = {  'state' : 'remove' , 'key' : key,'name' : name }
+                data = $.extend(data, { 'name' : name});
             }else{
                 sessionStorage.removeItem(key);
                 returnValue =  null;
                 data = {  'state' : 'remove', 'key' : key  }
             }
+            
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
             console.log("removeStorage data %o",data)
             
