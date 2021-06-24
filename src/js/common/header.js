@@ -593,7 +593,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
 
                 if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
-                    console.log(direction)
                     if( direction === 1 ) {
                         $wrap.addClass('scroll-down')
                     } else if (direction === -1) {
