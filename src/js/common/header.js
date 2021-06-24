@@ -533,7 +533,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             
             
             if( isSwipe ) {
-                $('.wrap').addClass('is-main-sticky-header');
+                $('body').addClass('is-main-sticky-header');
             }
             
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
@@ -582,21 +582,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _mobileGnbSticky: function(scrollTop){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
-            var $html = $('html');
+            var $body = $('body');
             var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
 
-            if( $html.hasClass('is-main-sticky-header')) {
+            if( $body.hasClass('is-main-sticky-header')) {
                 if( scrollTop > 0) {
-                    $html.addClass('header-fixed')
+                    $body.addClass('header-fixed')
                 } else {
-                    $html.removeClass('header-fixed')
+                    $body.removeClass('header-fixed')
                 }
 
                 if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
                     if( direction == 1 && self.skipActive == false) {
-                        $html.addClass('scroll-down')
+                        $body.addClass('scroll-down')
                     } else {
-                        $html.removeClass('scroll-down')
+                        $body.removeClass('scroll-down')
                     }
                 }
                 self.prevScrollTop = scrollTop;

@@ -1769,16 +1769,30 @@ html {
 
 
 //BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
-.mdevice {
-    .is-main-sticky-header {
-        padding-top:84px;
+.is-main-sticky-header {
+    padding-top:84px;
 
+    .header,
+    .mobile-nav-wrap {
+        position: absolute;
+        left:0;
+        width:100%; 
+        background: #fff;
+    }
+
+    .header {
+        top:0;
+    }
+    .mobile-nav-wrap {
+        top:45px;
+    }
+
+    &.header-fixed {
         .header,
         .mobile-nav-wrap {
-            position: absolute;
-            left:0;
-            width:100%; 
-            background: #fff;
+            position: fixed;
+            z-index:100;
+            transition:top .4s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .header {
@@ -1788,28 +1802,12 @@ html {
             top:45px;
         }
 
-        &.header-fixed {
-            .header,
-            .mobile-nav-wrap {
-                position: fixed;
-                z-index:100;
-                transition:top .4s cubic-bezier(0.25, 0.1, 0.25, 1);
-            }
-
+        &.scroll-down {
             .header {
-                top:0;
+                top:-46px;
             }
             .mobile-nav-wrap {
-                top:45px;
-            }
-
-            &.scroll-down {
-                .header {
-                    top:-46px;
-                }
-                .mobile-nav-wrap {
-                    top:0;
-                }
+                top:0;
             }
         }
     }
