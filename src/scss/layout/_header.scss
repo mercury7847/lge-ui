@@ -1794,7 +1794,7 @@ html {
                 .mobile-nav-wrap {
                     position: fixed;
                     z-index:100;
-                    transition:top .4s;
+                    transition:top .4s cubic-bezier(0.25, 0.1, 0.25, 1);
                 }
 
                 .header {
