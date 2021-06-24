@@ -583,16 +583,20 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
             var $body = $('body');
+            var $isMain = $('.is-main-sticky-header');
             var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
+            var scrollDownValue = $isMain.find('.header').outerHeight() + $isMain.find('.mobile-nav-wrap').outerHeight();
+
+            console.log("scrollDownValue", scrollDownValue)
 
             if( $body.hasClass('is-main-sticky-header')) {
-                // if( scrollTop > 0 ) {
-                //     $body.addClass('header-fixed')
-                // } else {
-                //     $body.removeClass('header-fixed')
-                // }
+                if( scrollTop > 0 ) {
+                    $body.addClass('header-fixed')
+                } else {
+                    $body.removeClass('header-fixed')
+                }
 
-                if( scrollTop > 46 ) {
+                if( scrollTop > scrollDownValue ) {
                     if( direction == 1 && self.skipActive == false) {
                         $body.addClass('scroll-down')
                     } else {
