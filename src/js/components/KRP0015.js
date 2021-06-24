@@ -81,10 +81,13 @@ $(window).ready(function(){
 
             setCompares();
             setCompareStatus();
-            _$(window).on("changeStorageData", function(){
-                console.log("changeStorageData");
-                setCompares();
-                setCompareStatus();
+            _$(window).on("changeStorageData", function(e){
+                console.log("changeStorageData %o",e);
+
+                setCompares(e.name || null);
+                setCompareStatus(e.name || null);
+
+
             }).on("excessiveCompareStorage", function(){
                 console.log("excessiveCompareStorage");
                 addToastAlert('excessive');
@@ -92,11 +95,12 @@ $(window).ready(function(){
             });
         }
         function setCompares(id){         
-            var $uiSelectbox = $('.ui_selectbox');
+           // var $uiSelectbox = $('.ui_selectbox');
             if(id) {
                 var categoryId = id 
             } else {
-                var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+                // var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
             }
  
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
@@ -163,10 +167,14 @@ $(window).ready(function(){
 
         function setCompareStatus(id){
             var $uiSelectbox = $('.ui_selectbox');
+
+            console.log("setCompareStatus %o",id);
+
             if(id) {
                 var categoryId = id 
             } else {
-                var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+                // var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
             }
  
 
@@ -210,10 +218,11 @@ $(window).ready(function(){
                     $uiSelectbox.parent().remove();
                 }
 
-                // if(lgkorUI.getHiddenInputData().categoryId === categoryId) {
+                if(lgkorUI.getHiddenInputData().categoryId === categoryId) {
                     hideCompareBox();
-                // }
-
+                } else {
+                    setCompares();
+                }
 
                 if(isInitChecked){
                     isInitChecked = false;

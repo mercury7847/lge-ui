@@ -879,8 +879,11 @@ var isApp = function(){
         removeCompareProd: function(categoryId, id){
             var self = this;
 
+            console.log("removeCompareProd cat %o id %o",categoryId,id);
+
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
+       
                 compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
@@ -888,7 +891,10 @@ var isApp = function(){
                 if(compareStorage[categoryId]['data'].length == 0) {
                     self.removeStorage(self.COMPARE_KEY, categoryId);
                 } else {
-                    self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                    var data = {};
+                        data[categoryId] = compareStorage[categoryId];
+
+                    self.setStorage(self.COMPARE_KEY, data, true, categoryId);
                 }
                 
             } else {
@@ -920,7 +926,7 @@ var isApp = function(){
             location.href = url;
         },
 
-        setStorage: function(key, value, isExtend){
+        setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
             //Internet Explorer 불가
@@ -931,8 +937,19 @@ var isApp = function(){
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
+
+           
+
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };
+            if(name) {
+                data = $.extend(data, { 'name' : name});
+            }
+
+            console.log("setStorage data %o",data)
+            $(window).trigger(jQuery.Event("changeStorageData", data));
+           
+
             
-            $(window).trigger("changeStorageData");
 
             return storageData;
         },
@@ -948,20 +965,26 @@ var isApp = function(){
         },
 
         removeStorage: function(key, name){    
+            var data = {};
             var returnValue;
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 						
+                var storageData = storage? JSON.parse(storage) : {}; 	
+                var data = 	storageData[name]			
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
+                data = {  'state' : 'remove' , 'key' : key,'name' : name }
             }else{
                 sessionStorage.removeItem(key);
                 returnValue =  null;
+                data = {  'state' : 'remove', 'key' : key  }
             }
-            
-            $(window).trigger("changeStorageData");
 
+            console.log("removeStorage data %o",data)
+            
+            $(window).trigger(jQuery.Event("changeStorageData", data));
+           
             return returnValue;
         },
 
