@@ -142,6 +142,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
 
             self.prevScrollTop = $(window).scrollTop() || 0;
+            self.skipActive = false;
         },
 
         _bindEvents: function(){
@@ -212,6 +213,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             
             self._pcSetting();
             self._mobileSetting();
+
+            $('.is-main-sticky-header #skipToContent').on('focusin', function(){
+                self.skipActive = true;
+                $('.is-main-sticky-header').removeClass('scroll-down');
+            }).on('blur', function(){
+                self.skipActive = false;
+            })
         },
 
         _focusFn:function(e){
@@ -574,21 +582,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _mobileGnbSticky: function(scrollTop){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
-            var $wrap = $('.wrap');
+            var $html = $('html');
             var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
 
-            if( $wrap.hasClass('is-main-sticky-header')) {
+            if( $html.hasClass('is-main-sticky-header')) {
                 if( scrollTop > 0) {
-                    $wrap.addClass('header-fixed')
+                    $html.addClass('header-fixed')
                 } else {
-                    $wrap.removeClass('header-fixed')
+                    $html.removeClass('header-fixed')
                 }
 
                 if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
-                    if( direction == 1 ) {
-                        $wrap.addClass('scroll-down')
+                    if( direction == 1 && self.skipActive == false) {
+                        $html.addClass('scroll-down')
                     } else {
-                        $wrap.removeClass('scroll-down')
+                        $html.removeClass('scroll-down')
                     }
                 }
                 self.prevScrollTop = scrollTop;
