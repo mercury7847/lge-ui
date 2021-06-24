@@ -1770,7 +1770,7 @@ html {
 
 //BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
 .mdevice {
-    &.is-main-sticky-header {
+    .is-main-sticky-header {
         padding-top:84px;
 
         .header,
