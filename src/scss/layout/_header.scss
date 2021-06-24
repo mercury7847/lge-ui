@@ -1778,14 +1778,15 @@ html {
             .mobile-nav-wrap {
                 position: absolute;
                 left:0;
-                width:100%;
+                width:100%; 
+                background: #fff;
             }
 
             .header {
                 top:0;
             }
             .mobile-nav-wrap {
-                top:46px;
+                top:45px;
             }
 
             &.header-fixed {
@@ -1794,6 +1795,13 @@ html {
                     position: fixed;
                     z-index:100;
                     transition:top .4s;
+                }
+
+                .header {
+                    top:0;
+                }
+                .mobile-nav-wrap {
+                    top:45px;
                 }
 
                 &.scroll-down {

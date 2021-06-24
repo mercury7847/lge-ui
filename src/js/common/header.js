@@ -56,6 +56,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     slidesToScroll: 1,
                     lastFix : true
                 });
+
+                $(window).on('scroll', function(){
+                    var _scrollTop = $(this).scrollTop();
+                    console.log(1)
+                    self._scroll(_scrollTop)
+                });
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -135,10 +141,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
+
+            self.prevScrollTop = $(window).scrollTop() || 0;
         },
 
         _bindEvents: function(){
-            console.log('header bind event');
             var self = this;
 
             //장바구니, 마이페이지홈 클릭시 로딩바 노출
@@ -270,6 +277,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             }
+        },
+
+        _scroll: function(scrollTop){
+            var self = this;
+            self._mobileGnbSticky(scrollTop)
         },
 
         _arrowState: function(){
@@ -511,8 +523,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _mobileSetting: function(){
             var self = this;
             var isSwipe = !!$('#sw_con').length;
-
+            
+            console.log("isSwipe", isSwipe)
             if( isSwipe ) {
+                console.log('1111')
                 $('.wrap').addClass('is-main-sticky-header');
             }
             
@@ -561,7 +575,25 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         },
 
         _mobileGnbSticky: function(scrollTop){
-            console.log(1)
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
+            var self = this;
+            var $wrap = $('.wrap');
+            var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
+
+            if( $wrap.hasClass('is-main-sticky-header')) {
+                if( scrollTop > 0) {
+                    $wrap.addClass('header-fixed')
+                } else {
+                    $wrap.removeClass('header-fixed')
+                }
+
+                if( direction == 1 ) {
+                    $wrap.addClass('scroll-down')
+                } else {
+                    $wrap.removeClass('scroll-down')
+                }
+                self.prevScrollTop = scrollTop;
+            }
         },
 
         _mypageOver: function(){
