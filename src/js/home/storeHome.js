@@ -18,7 +18,7 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
 
 //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
-    '                       <li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
+'                       <li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
     '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
     '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
@@ -465,7 +465,6 @@ $(function(){
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
                     var categoryId = item['categoryId'];
-                    var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(categoryId){
                         iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
@@ -473,7 +472,6 @@ $(function(){
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
                     item['iconPath'] = iconPath;
-                    item['gnbId'] = gnbId;
                     return item;
                 });
 
