@@ -4,7 +4,8 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/kr/images/color/colorchip_210521.png');
+		background-image:url('../images/colorchip/colorchip_210622.png');
+		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 	}
 	&.large{
@@ -2651,4 +2652,119 @@
 			background-position:-96px -96px;
 		}
 	}
+
+	/* 210624 추가 */
+	&.redwood {
+		& input + label:before {
+			background-position:-24px -132px;
+		}
+	}
+	&.claybrown {
+		& input + label:before {
+			background-position:0 -156px;
+		}
+	}
+	&.redwood_claybrown {
+		& input + label:before {
+			background-position:-120px -144px;
+		}
+	}
+	&.claybrown_redwood {
+		& input + label:before {
+			background-position:-96px -132px;
+		}
+	}
+	&.beige_redwood {
+		& input + label:before {
+			background-position:-24px -120px;
+		}
+	}
+	&.beige_claybrown {
+		& input + label:before {
+			background-position:-48px -120px;
+		}
+	}
+	&.green-redwood {
+		& input + label:before {
+			background-position:-72px -120px;
+		}
+	}
+	&.green_claybrown {
+		& input + label:before {
+			background-position:-96px -120px;
+		}
+	}
+	&.pink_redwood {
+		& input + label:before {
+			background-position:-120px -120px;
+		}
+	}
+	&.pink_claybrown {
+		& input + label:before {
+			background-position:0px -144px;
+		}
+	}
+	&.redwood_beige {
+		& input + label:before {
+			background-position:-24px -144px;
+		}
+	}
+	&.redwood_green {
+		& input + label:before {
+			background-position:-48px -144px;
+		}
+	}
+	&.redwood_pink {
+		& input + label:before {
+			background-position:-72px -144px;
+		}
+	}
+	&.redwood_redwood {
+		& input + label:before {
+			background-position:-96px -144px;
+		}
+	}
+	&.claybrown_beige {
+		& input + label:before {
+			background-position:0px -168px;
+		}
+	}
+	&.claybrown_green {
+		& input + label:before {
+			background-position:-24px -168px;
+		}
+	}
+	&.claybrown_pink {
+		& input + label:before {
+			background-position:-48px -168px;
+		}
+	}
+	&.claybrown_claybrown {
+		& input + label:before {
+			background-position:-96px -168px;
+		}
+	}
+	&.nature-green_beige {
+		& input + label:before {
+			background-position:-120px -168px;
+		}
+	}
+	&.nature-beige_green {
+		& input + label:before {
+			background-position:0 -192px;
+		}
+	}
+	&.gray_white {
+		& input + label:before {
+			background-position:-48px -192px;
+		}
+	}
+	&.quartz_silver {
+		& input + label:before {
+			background-color: #014a6a;
+			background-position:-24px -192px;
+		}
+	}
 }
+
+
