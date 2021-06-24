@@ -16,14 +16,16 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   </div>\n'+
     '{{/each}}';
 
+//-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
-    '                       <li data-category-id="{{obj.categoryId}}">\n'+
+    '                       <li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
     '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
     '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
     '                           </a>\n'+
     '                       </li>\n'+
     '                   {{/each}}'
+//-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
 var bestRankBuyProductTmpl =
     '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
@@ -454,6 +456,7 @@ $(function(){
             //console.log(err);
         }
 
+        //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
         function buildSubCatagoryTab(result, categoryId){
 
             var data = result.data;
@@ -462,6 +465,7 @@ $(function(){
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
                     var categoryId = item['categoryId'];
+                    var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(categoryId){
                         iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
@@ -469,6 +473,7 @@ $(function(){
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
                     item['iconPath'] = iconPath;
+                    item['gnbId'] = gnbId;
                     return item;
                 });
 
@@ -478,6 +483,7 @@ $(function(){
             }
 
         }
+        //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
         
         // 카테고리 화면 렌더링
         function buildCategoryTab(result){
