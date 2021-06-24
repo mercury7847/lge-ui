@@ -4,7 +4,7 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/kr/images/color/colorchip_210521.png');
+		background-image:url('../images/colorchip/colorchip_210622.png');
 		background-size:144px auto;
 	}
 	&.large{
@@ -2644,6 +2644,13 @@
 	&.green_green {
 		& input + label:before {
 			background-position:-96px -96px;
+		}
+	}
+
+	/* 210624 추가 */
+	&.redwood {
+		& input + label:before {
+			background-position:-72px -96px;
 		}
 	}
 }
