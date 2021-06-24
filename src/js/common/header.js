@@ -587,11 +587,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
             var scrollDownValue = $isMain.find('.header').outerHeight() + $isMain.find('.mobile-nav-wrap').outerHeight();
 
-            console.log("scrollDownValue", scrollDownValue)
-
             if( $body.hasClass('is-main-sticky-header')) {
                 if( scrollTop > 0 ) {
                     $body.addClass('header-fixed')
+                    $body.removeClass('scroll-down')
                 } else {
                     $body.removeClass('header-fixed')
                 }
