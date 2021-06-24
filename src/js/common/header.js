@@ -601,6 +601,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     } else {
                         $body.removeClass('scroll-down')
                     }
+                } else {
+                    $body.removeClass('scroll-down')
                 }
                 self.prevScrollTop = scrollTop;
             }
