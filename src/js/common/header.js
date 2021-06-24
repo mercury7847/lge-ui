@@ -59,7 +59,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 $(window).on('scroll', function(){
                     var _scrollTop = $(this).scrollTop();
-                    console.log(1)
                     self._scroll(_scrollTop)
                 });
             });
@@ -524,9 +523,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var isSwipe = !!$('#sw_con').length;
             
-            console.log("isSwipe", isSwipe)
+            
             if( isSwipe ) {
-                console.log('1111')
                 $('.wrap').addClass('is-main-sticky-header');
             }
             
@@ -571,7 +569,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             self._setStoryUpdateCheck();
-            self._mobileGnbSticky();
         },
 
         _mobileGnbSticky: function(scrollTop){
@@ -587,10 +584,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     $wrap.removeClass('header-fixed')
                 }
 
-                if( direction == 1 ) {
-                    $wrap.addClass('scroll-down')
-                } else {
-                    $wrap.removeClass('scroll-down')
+                if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
+                    if( direction == 1 ) {
+                        $wrap.addClass('scroll-down')
+                    } else {
+                        $wrap.removeClass('scroll-down')
+                    }
                 }
                 self.prevScrollTop = scrollTop;
             }
