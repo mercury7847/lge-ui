@@ -11,7 +11,7 @@
                 //콤포넌트
                 self.$component = $('section.component.KRP0013');
                 self.$packageButton = self.$component.find('.item-manual.package');
-                self.$selectPopup = $('#packageProductSelectPopup');
+                self.$selectPopup = $('#packageProductSelectPopup_01');
             },
             //팝업 버튼 이벤트
             bindPopupEvents: function() {
