@@ -465,6 +465,7 @@ $(function(){
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
                     var categoryId = item['categoryId'];
+                    var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(categoryId){
                         iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
@@ -472,6 +473,7 @@ $(function(){
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
                     item['iconPath'] = iconPath;
+                    item['gnbId'] = gnbId;
                     return item;
                 });
 
