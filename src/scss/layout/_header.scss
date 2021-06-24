@@ -1774,10 +1774,12 @@ html {
 
     .header,
     .mobile-nav-wrap {
-        position: absolute;
+        position: fixed;
         left:0;
         width:100%; 
         background: #fff;
+        z-index:100;
+        transition:top .4s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .header {
@@ -1787,12 +1789,22 @@ html {
         top:45px;
     }
 
+    &.scroll-down {
+        .header {
+            top:-46px;
+        }
+        .mobile-nav-wrap {
+            top:0;
+        }
+    }
+
     &.header-fixed {
         .header,
         .mobile-nav-wrap {
-            position: fixed;
+            // position: fixed;
             z-index:100;
             transition:top .4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition-delay:.6s;
         }
 
         .header {
@@ -1802,13 +1814,6 @@ html {
             top:45px;
         }
 
-        &.scroll-down {
-            .header {
-                top:-46px;
-            }
-            .mobile-nav-wrap {
-                top:0;
-            }
-        }
+        
     }
 }

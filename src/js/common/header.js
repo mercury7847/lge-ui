@@ -586,13 +586,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
 
             if( $body.hasClass('is-main-sticky-header')) {
-                if( scrollTop > 0) {
-                    $body.addClass('header-fixed')
-                } else {
-                    $body.removeClass('header-fixed')
-                }
+                // if( scrollTop > 0 ) {
+                //     $body.addClass('header-fixed')
+                // } else {
+                //     $body.removeClass('header-fixed')
+                // }
 
-                if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
+                if( scrollTop > 46 ) {
                     if( direction == 1 && self.skipActive == false) {
                         $body.addClass('scroll-down')
                     } else {
