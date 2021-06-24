@@ -57,10 +57,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     lastFix : true
                 });
 
-                $(window).on('scroll', function(){
-                    var _scrollTop = $(this).scrollTop();
-                    self._scroll(_scrollTop)
+                $(window).on('load', function(){
+                    $(this).on('scroll', function(){
+                        var _scrollTop = $(this).scrollTop();
+                        self._scroll(_scrollTop)
+                    });
                 });
+
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -142,7 +145,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
 
             self.prevScrollTop = $(window).scrollTop() || 0;
-            self.skipActive = false;
         },
 
         _bindEvents: function(){
@@ -213,13 +215,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             
             self._pcSetting();
             self._mobileSetting();
-
-            $('.is-main-sticky-header #skipToContent').on('focusin', function(){
-                self.skipActive = true;
-                $('.is-main-sticky-header').removeClass('scroll-down');
-            }).on('blur', function(){
-                self.skipActive = false;
-            })
         },
 
         _focusFn:function(e){
@@ -288,7 +283,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
         _scroll: function(scrollTop){
             var self = this;
-            self._mobileGnbSticky(scrollTop)
+            var direction = scrollTop > self.prevScrollTop ? 1:-1;
+
+            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
+                return;
+            }
+            self._mobileGnbSticky(scrollTop, direction)
         },
 
         _arrowState: function(){
@@ -533,7 +533,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             
             
             if( isSwipe ) {
-                $('body').addClass('is-main-sticky-header');
+                $('.wrap').addClass('is-main-sticky-header');
             }
             
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
@@ -579,30 +579,25 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self._setStoryUpdateCheck();
         },
 
-        _mobileGnbSticky: function(scrollTop){
+        _mobileGnbSticky: function(scrollTop, direction){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
-            var $body = $('body');
-            var $isMain = $('.is-main-sticky-header');
-            var direction = scrollTop - self.prevScrollTop > 0? 1:-1;
-            var scrollDownValue = $isMain.find('.header').outerHeight() + $isMain.find('.mobile-nav-wrap').outerHeight();
+            var $wrap = $('.wrap');
+            
 
-            if( $body.hasClass('is-main-sticky-header')) {
-                if( scrollTop > 0 ) {
-                    $body.addClass('header-fixed')
-                    $body.removeClass('scroll-down')
+            if( $wrap.hasClass('is-main-sticky-header')) {
+                if( scrollTop > 0) {
+                    $wrap.addClass('header-fixed')
                 } else {
-                    $body.removeClass('header-fixed')
+                    $wrap.removeClass('header-fixed')
                 }
 
-                if( scrollTop > scrollDownValue ) {
-                    if( direction == 1 && self.skipActive == false) {
-                        $body.addClass('scroll-down')
-                    } else {
-                        $body.removeClass('scroll-down')
+                if( scrollTop > $('.is-main-sticky-header .header').outerHeight()) {
+                    if( direction === 1 ) {
+                        $wrap.addClass('scroll-down')
+                    } else if (direction === -1) {
+                        $wrap.removeClass('scroll-down')
                     }
-                } else {
-                    $body.removeClass('scroll-down')
                 }
                 self.prevScrollTop = scrollTop;
             }
