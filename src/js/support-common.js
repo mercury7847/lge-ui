@@ -1425,7 +1425,8 @@ function validatePhone(value){
             var $this = $(this),
                 value = $this.val();
             
-            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            //var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            var regex = /[0-9]/g;
             
             if (regex.test(value)) {
                 $this.val(value.replace(regex, ''));

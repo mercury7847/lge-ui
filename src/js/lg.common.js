@@ -1,6 +1,6 @@
 //통합앱 구축팀 요청...통합앱 식별 스크립트
 var isApp = function(){
-    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
+    return /lgeapp/i.test(navigator.userAgent);
 }
 
 /* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
@@ -22,7 +22,8 @@ var goAppUrl = function(path) {
             location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
         },0);
     } else {
-        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
+        alert(weblink);
+        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end;','_blank');
     }
 }
 
@@ -322,7 +323,7 @@ var goAppUrl = function(path) {
         MAX_SAVE_RECENT_PRODUCT: 10, //최근 본 제품 저장 최대수,
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
-        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
+        DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.lge.co.kr'],
         CONTEXT_AREA: null,      
         init: function( $context ){            
             var self = this;
@@ -356,17 +357,15 @@ var goAppUrl = function(path) {
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
         _appDownloadPopup: function() {
             var enableUrl = [
-                '^/$' // 메인
-                //'^/benefits/event/?', // 이벤트 페이지
-                //'^/benefits/exhibitions/?' // 기획전 페이지
+                '^/$', // 메인
+               '^/benefits/event/?', // 이벤트 페이지
+               '^/benefits/exhibitions/?' // 기획전 페이지
             ];
 
             var isPopUp = enableUrl.some(function(element) {
                 return location.pathname.match(new RegExp(element,"g"))
-            })
-
+            });
             
-
             $(function() {
                 if (vcui.detect.isMobileDevice && !isApp()) {
                     var cookie_name = '__LGAPP_DLOG__';
@@ -963,16 +962,16 @@ var goAppUrl = function(path) {
         addCompareProd: function(categoryId, data){
             var self = this;
             
-
             var compareLimit = self.getCompareLimit();
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -986,13 +985,22 @@ var goAppUrl = function(path) {
         removeCompareProd: function(categoryId, id){
             var self = this;
 
+            console.log("removeCompareProd cat %o id %o",categoryId,id);
+
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
-                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                if(compareStorage[categoryId]['data'].length == 0) {
+                    self.removeStorage(self.COMPARE_KEY, categoryId);
+                } else {
+                    var data = {};
+                        data[categoryId] = compareStorage[categoryId];
+                    self.setStorage(self.COMPARE_KEY, data, true, categoryId);
+                }
+                
             } else {
                 self.removeStorage(self.COMPARE_KEY, categoryId);
             }
@@ -1006,11 +1014,9 @@ var goAppUrl = function(path) {
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
@@ -1024,9 +1030,10 @@ var goAppUrl = function(path) {
             location.href = url;
         },
 
-        setStorage: function(key, value, isExtend){
+        setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
-            var storageData = storage? JSON.parse(storage) : {};        
+            var storageData = storage? JSON.parse(storage) : {};   
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };     
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
             if(isExtend) {
@@ -1035,8 +1042,8 @@ var goAppUrl = function(path) {
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
-            
-            $(window).trigger("changeStorageData");
+            if(name) data = $.extend(data, { 'name' : name});
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
             return storageData;
         },
@@ -1052,20 +1059,28 @@ var goAppUrl = function(path) {
         },
 
         removeStorage: function(key, name){    
+            var data = {};
             var returnValue;
+            var data = {  'state' : 'remove', 'key' : key  }
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 						
+                var storageData = storage? JSON.parse(storage) : {}; 		
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
+                data = $.extend(data, { 'name' : name});
             }else{
                 sessionStorage.removeItem(key);
                 returnValue =  null;
+                data = {  'state' : 'remove', 'key' : key  }
             }
             
-            $(window).trigger("changeStorageData");
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
+            console.log("removeStorage data %o",data)
+            
+            $(window).trigger(jQuery.Event("changeStorageData", data));
+           
             return returnValue;
         },
 
@@ -2230,12 +2245,95 @@ var goAppUrl = function(path) {
                 location.href = iosScheme;
             }
         },
+
+        /**
+         * 기간일 설정
+         * @param {String} startTime - 시작일
+         * @param {String} endTime - 종료일
+         * @param {String} nowTime - 현제시간 ( 서버 타임 넘어올경우, 나머지는 로컬타임 )
+         * @returns {Boolean} true  - 행사중
+         * @returns {Boolean} false - 행사기간 지남 
+         * URL 파라미터형식 
+         * ?dateTest=변경할 시간,행사 시작일,행사 종료일
+         * ?dateTest=20200808,20200801,20200807 
+         * 날짜 형식 : 년월일시분초 ex> 20200820 or 20200820230159
+         */
+         isShowDate: function(startTime, endTime, nowTime) {
+            var self = this;
+            var dateTest = self.getParameterByName("dateTest").split(",").filter(Boolean); // 테스트용 dateTest 파라미터 체크
+            var debug = self.getParameterByName("debug"); 
+        
+            // 날짜 셋팅
+            var setDate = function(time) {
+                var limitTime = null;
+            
+                if (!time) {
+                    limitTime = new Date();
+                } else {
+                    var regex = /^[0-9]*$/g;
+                    if (!regex.test(time)) {
+                      throw ("error : 형식 에러");
+                    }
+            
+                    if (typeof time === 'number') {
+                        time = time + '';
+                    }
+            
+                    if (time.length < 8)  throw ("error : 형식 에러")
+            
+                    var year = time.slice(0, 4);
+                    var month = time.slice(4, 6);
+                    var day = time.slice(6, 8);
+                    // 시간, 분 체크 필요시 사용
+                    var hours = time.slice(8, 10) || '00';
+                    var minutes = time.slice(10, 12) || '00';
+                    var second = time.slice(12, 14) || '00';
+            
+                    limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second);
+                }
+
+                return limitTime.getTime();
+            };
+            
+            var printDate = function(time) {
+                return new Date(time - new Date().getTimezoneOffset() * 60000).toISOString().replace('T',' ').slice(0,-5)
+            };
+
+            try {
+                nowTime   = setDate(dateTest.length == 0 ? nowTime   : dateTest[0]);  // 현재시간
+                startTime = setDate(dateTest.length <= 1 ? startTime : dateTest[1]);  // 행사 시작일
+                endTime   = setDate(dateTest.length <= 1 ? endTime   : dateTest[2]);  // 행사 종료일
+            } catch (e) {
+                console.log(e);
+                return false;
+            }
+
+            if(debug === 'y') {
+
+                console.log('dateTest %o',dateTest);
+                console.log(
+                    "행사기간 : %o ~ %o"
+                    ,printDate(startTime)
+                    ,printDate(endTime)
+                );
+
+                console.log(
+                    "현제날짜 : %o 결과값 :  %o"
+                    , printDate(nowTime)
+                    , nowTime >= startTime && nowTime < endTime ? "행사중" :"행사 종료"
+                );
+
+            }
+
+            return nowTime >= startTime && nowTime < endTime ? true : false;
+        },
     }
 
     window.historyBack = lgkorUI._historyBack;
 
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();
+
     });
 
     global.addEventListener('load', function(){
@@ -2245,4 +2343,3 @@ var goAppUrl = function(path) {
     });
 
 })(window);
-

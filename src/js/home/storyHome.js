@@ -232,13 +232,17 @@
             requestTagMngPop(this);
         });
 
+        console.log(232323)
+
         $(document).on('click', '#popup-tagMnger .btn-group button', function(e){
             e.preventDefault();
 
             var ajaxurl = $(this).data("submitUrl");
+            console.log("button ajaxurl", ajaxurl)
             setTagMngOK(ajaxurl);
         })
         $(document).on('change', '#popup-tagMnger input[type=checkbox]', function(){
+            console.log(444)
             setTagMngChecked();
         });
 
@@ -279,6 +283,7 @@
     }
 
     function setTagMngChecked(){
+        console.log("$context.find('#popup-tagMnger').find('.btn-group button').length", $('#popup-tagMnger').find('.btn-group button').length)
         $('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
 
         setTagMngCount();
@@ -302,6 +307,8 @@
     function setTagMngOK(ajaxurl){
         lgkorUI.showLoading();
         
+        console.log("ajaxurl", ajaxurl)
+
         var sendata = {tag:[]}
         $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
             var id = $(item).attr('id');
@@ -311,6 +318,8 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
             lgkorUI.hideLoading();
             
+            console.log("result", result)
+
             $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");

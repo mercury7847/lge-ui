@@ -9,8 +9,8 @@ $(window).ready(function(){
             slidesToShow: 3,
             slidesToScroll: 3,
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            touchThreshold: 100,
             speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,

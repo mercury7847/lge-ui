@@ -57,7 +57,51 @@
             }
         }
     }
-
+    /* 210622 */
+    .section {
+        .survey-banner-wrap.renew {
+            margin-top:0
+        } 
+    }
+    .survey-banner-wrap.renew {
+        padding:28px 48px 38px;
+        border-radius:8px;
+        background:#f4f4f4;  
+        .banner {
+            border-bottom: 2px solid #000;
+            padding: 0 0 16px;
+            margin: 0 0 16px;
+            border-radius:0;
+            background:transparent;
+        }
+        .survey-pop {
+            .inner-text {
+                background: #fff;
+            }
+            
+        }
+        .btn-area {
+            margin:38px 0 0;
+            text-align:center;
+        }
+        @include mobile {
+            padding:16px 24px 24px;
+            .banner {
+                padding:0;
+            }
+            .btn-area {
+                margin:24px 0 0;
+                text-align:center;
+                .btn {
+                    min-width: 80px;
+                    padding: 10px 19px;
+                    border-radius: 22px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    /* //210622 */
     .search-history {
         margin-bottom:32px;
         .old-keyword {
@@ -344,6 +388,11 @@
                 & > li {
                     position:relative;
                     display:inline;
+                    // start - 210621 추가
+                    &:nth-child(2) {
+                        margin-right: 15px;
+                    }
+                    // end - 210621 추가
                     &:after {
                         content:'';
                         display:inline-block;
@@ -352,6 +401,12 @@
                         margin:7px 8px 0;
                         background:#ddd;
                     }
+                    // start - 210621 추가
+                    &:nth-child(2)::after {
+                        width:0;
+                        height:0;
+                    }
+                    // end - 210621 추가
                     &:last-child {
                         margin:0;
                         padding:0;

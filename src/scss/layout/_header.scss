@@ -1458,7 +1458,7 @@
         .app-alarm-button{
             display:none;
             position:absolute;
-            right:33px;
+            right:33px; // 210621 앱 알림함 아이콘 추가 원복처리
             top:-2px;
             width:29px;
             height:36px;
@@ -1637,8 +1637,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                right: 30px; // 앱 업데이트시 66px로 교체
-                //right: 66px;
+                right: 30px;
+                // right: 60px; 210621 앱 알림함 아이콘 추가에 따른 my-page 아이콘 위치 조정 원복처리 
             }
         }
         .KRP0005,
@@ -1763,6 +1763,59 @@ html {
                     bottom:24px;
                 }
             }
+        }
+    }
+}
+
+
+//BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
+.is-main-sticky-header {
+    .wrap {
+        padding-top:84px;
+    }
+
+    .header,
+    .mobile-nav-wrap {
+        position: fixed;
+        left:0;
+        width:100%; 
+        background: #fff;
+        //transition:transform .4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        transition:transform .3s ease-in;
+    }
+    .header {
+        top:0;
+        z-index:100;
+        &:before {
+            content:"";
+            display: block;
+            position: absolute;
+            top:-3px;
+            left:0;
+            width:100%;
+            height:4px;
+            background: #fff;
+        }
+    }
+    .mobile-nav-wrap {
+        top:45px;
+        z-index:99;
+        border-top:1px solid #fff;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &.show-skip {
+        .mobile-nav-wrap {
+            top:97px;
+        }
+    }
+
+    &.scroll-down {
+        .header {
+            transform: translateY(-43px);
+        }
+        .mobile-nav-wrap {
+            transform: translateY(-43px);
         }
     }
 }

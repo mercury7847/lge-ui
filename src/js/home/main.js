@@ -1149,7 +1149,7 @@ $(function () {
 
 
         // 플로팅 버튼 AR 관련 
-        if (vcui.detect.isMobileDevice){
+        if (isOnlyMobileDevice){
             var isApplication = isApp();
 
             setTimeout(function(){
