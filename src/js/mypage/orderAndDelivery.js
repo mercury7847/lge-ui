@@ -21,7 +21,7 @@
             '<div class="btn-link-area">'+
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-                '{{/if}}'+
+                '{{/if}}'+                
                 '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
@@ -2110,6 +2110,24 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+
+                // BTOCSITE-1775
+                var isAllCancelAbleNo = true;
+                productList.forEach(function( data ){
+                    console.log('data.orderCancelAbleYn', data.orderCancelAbleYn);
+                    if (data.orderCancelAbleYn == "Y"){
+                        isAllCancelAbleNo = false;
+                    }
+                });
+
+                if (isAllCancelAbleNo == true){
+                    $('#popup-cancel').find('.ui_all_checkbox').prop('disabled', true);
+                    $('#popup-cancel').find('#cancel_desc').hide();
+                } else {
+                    $('#popup-cancel').find('.ui_all_checkbox').prop('disabled', false);
+                    $('#popup-cancel').find('#cancel_desc').show();
+                }
+                // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";

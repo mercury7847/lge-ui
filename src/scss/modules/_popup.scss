@@ -352,6 +352,42 @@
             max-height:calc(100% - 122px);
             //max-height:none;
         }
+
+        .not-cancel-footer {                        
+            h2 {
+                font-size: 24px;
+                line-height: 34px;
+                font-weight: 700;
+            }
+            p { 
+                font-size:18px;
+                font-weight:600;
+                margin-top:24px;
+            }
+
+            .btn-group {
+                margin-top:32px;
+            }
+
+            @include mobile {
+                margin-top:24px;
+                h2 {
+                    font-size: 20px;
+                    line-height: 28px;
+                    font-weight: 700;
+                }
+                p {
+                    margin-top:12px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+
+                .btn-group {
+                    margin-top:24px;
+                }
+            }
+        }
+
         .tabs-wrap {
             &:first-child {
                 @include mobile {
