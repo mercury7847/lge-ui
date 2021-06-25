@@ -2113,9 +2113,8 @@
 
                 // BTOCSITE-1775
                 var isAllCancelAbleNo = true;
-                productList.forEach(function( data ){
-                    console.log('data.orderCancelAbleYn', data.orderCancelAbleYn);
-                    if (data.orderCancelAbleYn == "Y"){
+                productList.forEach(function( data ){                    
+                    if (data.itemCancelAbleYn == "Y"){
                         isAllCancelAbleNo = false;
                     }
                 });
