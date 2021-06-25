@@ -1811,11 +1811,16 @@ html {
     }
 
     &.scroll-down {
-        .header {
-            transform: translateY(-43px);
-        }
+        .header,
         .mobile-nav-wrap {
             transform: translateY(-43px);
+        }
+
+        &.show-skip {
+            .header,
+            .mobile-nav-wrap {
+                transform: translateY(0);
+            }
         }
     }
 }
