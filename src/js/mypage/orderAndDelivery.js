@@ -2122,9 +2122,13 @@
                 if (isAllCancelAbleNo == true){
                     $('#popup-cancel').find('.ui_all_checkbox').prop('disabled', true);
                     $('#popup-cancel').find('#cancel_desc').hide();
+                    $('#popup-cancel').find('.pop-footer').hide();
+                    $('#popup-cancel').find('.not-cancel-footer').show();                    
                 } else {
                     $('#popup-cancel').find('.ui_all_checkbox').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('.pop-footer').show();
+                    $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
                 // //BTOCSITE-1775
             } else{
