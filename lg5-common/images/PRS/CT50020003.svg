@@ -1,29 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="img_kitchen_64" width="64" height="64" viewBox="0 0 64 64">
-    <defs>
-        <style>
-            .cls-2,.cls-3{fill:none}.cls-3{stroke-width:1.5px;stroke:#070203;stroke-linecap:round;stroke-linejoin:round}
-        </style>
-    </defs>
-    <g id="ice_tray" transform="translate(692.08 -903.934)">
-        <g id="circle_128" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5px" transform="translate(-692.08 903.934)">
-            <rect width="64" height="64" stroke="none" rx="32"/>
-            <rect width="62.5" height="62.5" x=".75" y=".75" class="cls-2" rx="31.25"/>
-        </g>
-        <g id="ice_tray-2" transform="translate(-677.58 924.434)">
-            <path id="Rectangle-61" d="M0 0H40V40H0z" class="cls-2" transform="translate(-2.5 -8.501)"/>
-            <g id="Group_150" transform="translate(2.785)">
-                <path id="Rectangle-74" d="M-660.456 953.07a1.2 1.2 0 0 1 1.2-1.2h3.191a1.2 1.2 0 0 1 1.2 1.2v3.187a1.2 1.2 0 0 1-1.2 1.2h-3.191a1.2 1.2 0 0 1-1.2-1.2z" class="cls-3" transform="translate(660.456 -945.53)"/>
-                <path id="Rectangle-74-2" d="M-644.921 953.07a1.2 1.2 0 0 1 1.2-1.2h3.19a1.2 1.2 0 0 1 1.2 1.2v3.187a1.2 1.2 0 0 1-1.2 1.2h-3.19a1.2 1.2 0 0 1-1.2-1.2z" class="cls-3" transform="translate(652.688 -945.53)"/>
-                <path id="Rectangle-74-3" d="M-629.521 953.07a1.2 1.2 0 0 1 1.2-1.2h3.19a1.2 1.2 0 0 1 1.2 1.2v3.187a1.2 1.2 0 0 1-1.2 1.2h-3.19a1.2 1.2 0 0 1-1.2-1.2z" class="cls-3" transform="translate(644.989 -945.53)"/>
-                <path id="Rectangle-74-4" d="M-615 942.721a1.2 1.2 0 0 1 .372-1.649l2.7-1.7a1.2 1.2 0 0 1 1.65.372l1.7 2.694a1.194 1.194 0 0 1-.372 1.648l-2.7 1.7a1.2 1.2 0 0 1-1.651-.372z" class="cls-3" transform="translate(637.82 -939.185)"/>
-            </g>
-            <path id="Rectangle-84" d="M-665.184 973.545c-.189 0-.342-.2-.342-.454l-.5-1.685c0-.25.153-.453.342-.453h34.316c.189 0 .342.2.342.453l-.5 1.685c0 .25-.153.454-.342.454z" class="cls-3" transform="translate(666.026 -955.069)"/>
-            <g id="Group_151" transform="translate(2.664 18.518)">
-                <path id="Path_63" d="M-660.7 976.283l.625 4c.078.558.407.948.908.948h3.219c.581 0 .94-.381 1.052-1.1l.626-3.852z" class="cls-3" transform="translate(660.698 -976.253)"/>
-                <path id="Path_64" d="M-645.163 976.283l.626 4c.078.558.407.948.908.948h3.219c.582 0 .94-.381 1.052-1.1l.626-3.852z" class="cls-3" transform="translate(652.931 -976.253)"/>
-                <path id="Path_65" d="M-629.763 976.222l.625 4c.079.558.407.948.908.948h3.219c.581 0 .939-.381 1.052-1.1l.625-3.852z" class="cls-3" transform="translate(645.23 -976.222)"/>
-                <path id="Path_66" d="M-614.215 976.277l.626 4c.078.558.406.948.908.948h3.219c.582 0 .94-.381 1.053-1.1l.625-3.852z" class="cls-3" transform="translate(637.457 -976.25)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="64" viewBox="0 0 65 64">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke="#000" stroke-width="1.5">
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-128 -1224) translate(128 414) translate(0 809) translate(.195 1)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M1.5 0h17c.828 0 1.5.672 1.5 1.5v31c0 .828-.672 1.5-1.5 1.5h-17C.672 34 0 33.328 0 32.5v-31C0 .672.672 0 1.5 0z" transform="translate(-128 -1224) translate(128 414) translate(0 809) translate(.195 1) translate(12 12) translate(10 3)"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 4L17 4 17 15 13 15z" transform="translate(-128 -1224) translate(128 414) translate(0 809) translate(.195 1) translate(12 12) translate(10 3)"/>
+                                <path stroke-linecap="round" d="M10 34L10 0" transform="translate(-128 -1224) translate(128 414) translate(0 809) translate(.195 1) translate(12 12) translate(10 3)"/>
+                                <path d="M0 19L20 19" transform="translate(-128 -1224) translate(128 414) translate(0 809) translate(.195 1) translate(12 12) translate(10 3)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>
 </svg>
+
