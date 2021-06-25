@@ -9,6 +9,10 @@
     @import "unmanned-store";
 }
 
+.contents.sysaircon-form-wrap {
+    @import "sysaircon-form";
+}
+
 // 메인
 /* 앱용 */
 .app {
