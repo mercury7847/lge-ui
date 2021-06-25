@@ -514,7 +514,7 @@
         }
 
         @include mobile {
-            padding:30px 16px 24px; //0625
+            padding:33px 16px 24px; //0625
         }
     }
 
@@ -535,7 +535,7 @@
                     color:#fff;
                     font-weight:bold;
                     line-height:1.6;
-                    text-shadow: #000 1px 1px 18px;
+                    text-shadow: 0px 1px 20px rgba(0, 0, 0, .5); //0625
                 }
                 .btn-list-toggle {
                     display: inline-block;
@@ -754,7 +754,7 @@
                 ul {
                     max-width:336px;
                     width:100%;
-                    margin: 16px auto 0; //0625
+                    margin: 18px auto 0; //0625
                     > li {
                         a {
                             font-size:13px;
@@ -1282,7 +1282,7 @@
 
         @include mobile {
             overflow:hidden;
-            padding:30px 16px 24px; //0625
+            padding:33px 16px 24px; //0625
             justify-content: flex-start; //0625
 
             .had-pd-inner {
@@ -1437,7 +1437,7 @@
                     }
                 }
                 .slick-dots {
-                    bottom:-27px; //0625
+                    bottom:-24px; //0625
                 }
             }
         }
