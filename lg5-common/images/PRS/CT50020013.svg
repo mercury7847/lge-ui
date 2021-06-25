@@ -1,26 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="img_Mobile_64" width="64" height="64" viewBox="0 0 64 64">
-    <defs>
-        <style>
-            .cls-1,.cls-3,.cls-4{fill:none}.cls-3,.cls-4{stroke-width:1.5px;stroke:#0a0607;stroke-linecap:round}.cls-3{stroke-miterlimit:10}.cls-4{stroke-linejoin:round}
-        </style>
-    </defs>
-    <path id="guidebox" d="M0 64h64V0H0z" class="cls-1" transform="translate(0 0)"/>
-    <g id="EARPHONE_64" transform="translate(800.24 -1284.695)">
-        <path id="Rectangle-61-2" d="M0 0H40V40H0z" class="cls-1" transform="translate(-788.24 1296.696)"/>
-        <g id="circle_128-2">
-            <path id="Path_59" d="M-768.24 1284.695a32 32 0 0 1 32 32 32 32 0 0 1-32 32 32 32 0 0 1-32-32 32 32 0 0 1 32-32z" class="cls-1"/>
-            <path id="Path_60" fill="none" stroke="#070203" stroke-miterlimit="10" stroke-width="1.5px" d="M-768.24 1285.445a31.25 31.25 0 0 1 31.25 31.25 31.25 31.25 0 0 1-31.25 31.25 31.25 31.25 0 0 1-31.25-31.25 31.25 31.25 0 0 1 31.25-31.25z"/>
-        </g>
-        <g id="img-2">
-            <g id="그룹_147">
-                <path id="Path-99" d="M-773.017 1332.2v-21.919" class="cls-3"/>
-                <path id="Rectangle-62" d="M-776.667 1304.278h5.036a2.063 2.063 0 0 1 2.058 2.069v1.86a2.063 2.063 0 0 1-2.058 2.069h-4.83" class="cls-4"/>
-                <path id="패스_44" d="M-778.691 1301.7h1.867v11.163h-1.867a5.566 5.566 0 0 1-5.55-5.58 5.565 5.565 0 0 1 5.548-5.581z" class="cls-4"/>
-            </g>
-            <g id="그룹_148">
-                <path id="Path-99-2" d="M-763.463 1321.273v10.927" class="cls-3"/>
-                <path id="Rectangle-62-2" d="M-760.019 1321.273h-4.83a2.064 2.064 0 0 1-2.058-2.069v-1.86a2.063 2.063 0 0 1 2.058-2.069h4.83" class="cls-4"/>
-                <path id="패스_45" d="M-757.789 1312.692h-1.867v11.163h1.867a5.565 5.565 0 0 0 5.55-5.581 5.565 5.565 0 0 0-5.549-5.582z" class="cls-4"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-128 -2749) translate(128 414) translate(0 2335)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g transform="translate(-128 -2749) translate(128 414) translate(0 2335) translate(12 12) translate(12 5)">
+                                <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 0h13c.828 0 1.5.672 1.5 1.5v27c0 .828-.672 1.5-1.5 1.5h-13C.672 30 0 29.328 0 28.5v-27C0 .672.672 0 1.5 0z"/>
+                                <path fill="#000" fill-rule="nonzero" d="M8 3.5c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1z"/>
+                                <rect width="5" height="1.5" x="5.5" y="26" fill="#000" rx=".75"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>
