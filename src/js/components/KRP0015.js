@@ -58,8 +58,8 @@ $(window).ready(function(){
 
             $('.sticy-compare .list-inner li').on('click', '.btn-close', function(e){
                 e.preventDefault();
-
-                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var $uiSelectbox = $('.ui_selectbox');
+                var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
                 var id = $(this).siblings('.item-inner').data("id");
                 lgkorUI.removeCompareProd(categoryId, id);
             });
@@ -81,16 +81,21 @@ $(window).ready(function(){
 
             setCompares();
             setCompareStatus();
-            _$(window).on("changeStorageData", function(){
-                setCompares();
-                setCompareStatus();
+            _$(window).on("changeStorageData", function(e){
+                setCompares(e.name || null);
+                setCompareStatus(e.name || null);
             }).on("excessiveCompareStorage", function(){
                 addToastAlert('excessive');
                 updateCompareButton();
             });
         }
         function setCompares(id){         
-            var categoryId = id || lgkorUI.getHiddenInputData().categoryId;
+            if(id) {
+                var categoryId = id 
+            } else {
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            }
+ 
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var isCompare = vcui.isEmpty(storageCompare);
             var compareCate = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
@@ -152,7 +157,14 @@ $(window).ready(function(){
         }
 
         function setCompareStatus(id){
-            var categoryId = id || lgkorUI.getHiddenInputData().categoryId;
+            var $uiSelectbox = $('.ui_selectbox');
+
+            if(id) {
+                var categoryId = id 
+            } else {
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            }
+
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
 
             var leng = !storageCompare ? 0 : storageCompare.data.length;
@@ -183,7 +195,19 @@ $(window).ready(function(){
 
                 isInitChecked = true;
             } else{
-                hideCompareBox();
+                var removeOption = $uiSelectbox.find('option').filter("[value="+categoryId+"]");
+
+                if(removeOption.length > 0) removeOption.remove();
+                if( $uiSelectbox.find('option').length === 1) {
+                    $('.sticy-compare').removeClass('cate-select');
+                    $uiSelectbox.parent().remove();
+                }
+
+                if(lgkorUI.getHiddenInputData().categoryId === categoryId) {
+                    hideCompareBox();
+                } else {
+                    setCompares();
+                }
 
                 if(isInitChecked){
                     isInitChecked = false;
