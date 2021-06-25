@@ -57,11 +57,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     lastFix : true
                 });
 
+                $(window).on('scroll', function(){
+                    var _scrollTop = $(this).scrollTop();
+                    self._scroll(_scrollTop)
+                });
                 $(window).on('load', function(){
-                    $(this).on('scroll', function(){
-                        var _scrollTop = $(this).scrollTop();
-                        self._scroll(_scrollTop)
-                    });
                 });
 
             });
@@ -144,7 +144,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
 
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
+            self.$scrollContainer = $('body');
+            self.$mainSticky = $('.is-main-sticky-header');
+            self.$mainStickyHeader = self.$mainSticky.find('.header');
+            self.$mainMobileNav = self.$mainSticky.find('.mobile-nav-wrap');
             self.prevScrollTop = $(window).scrollTop() || 0;
+            self.gnbStickyClass = {
+                fixed: 'header-fixed',
+                scrollDown: 'scroll-down'
+            };
+            self.skipActive = false;
         },
 
         _bindEvents: function(){
@@ -211,6 +221,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 } else{
                     $(this).find('.blind').text("접힘");
                 }
+            });
+
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
+            //GNB 스킵컨텐츠 포커스 됬을때, 벗어났을때 처리
+            $('#skipToContent').on('focusin', function(){
+                self.skipActive = true;
+                self.$scrollContainer.addClass('show-skip')
+            }).on('blur', function(){
+                self.skipActive = false;
+                self.$scrollContainer.removeClass('show-skip')
             });
             
             self._pcSetting();
@@ -284,10 +304,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _scroll: function(scrollTop){
             var self = this;
             var direction = scrollTop > self.prevScrollTop ? 1:-1;
+            var scrollMinRange = 15;
 
-            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
+            if( Math.abs(scrollTop - self.prevScrollTop) < scrollMinRange) {
                 return;
             }
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             self._mobileGnbSticky(scrollTop, direction)
         },
 
@@ -582,24 +604,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _mobileGnbSticky: function(scrollTop, direction){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
-            var $scrollContainer = $('body');
+            var scrollPointValue = self.$mainStickyHeader.outerHeight() + self.$mainMobileNav.outerHeight();
             
-
-            if( $scrollContainer.hasClass('is-main-sticky-header')) {
+            if( self.$scrollContainer.hasClass('is-main-sticky-header')) {
                 if( scrollTop > 0) {
-                    $scrollContainer.addClass('header-fixed')
+                    self.$scrollContainer.addClass(self.gnbStickyClass.fixed)
                 } else {
-                    $scrollContainer.removeClass('header-fixed')
+                    self.$scrollContainer.removeClass(self.gnbStickyClass.fixed)
                 }
 
-                if( scrollTop > 84) {
-                    if( direction === 1 ) {
-                        $scrollContainer.addClass('scroll-down')
+                if( scrollTop > scrollPointValue ) {
+                    if( direction === 1 && !self.skipActive) { 
+                        self.$scrollContainer.addClass(self.gnbStickyClass.scrollDown)
                     } else if (direction === -1) {
-                        $scrollContainer.removeClass('scroll-down')
+                        self.$scrollContainer.removeClass(self.gnbStickyClass.scrollDown)
                     }
                 } else {
-                    $scrollContainer.removeClass('scroll-down')
+                    self.$scrollContainer.removeClass(self.gnbStickyClass.scrollDown)
                 }
                 self.prevScrollTop = scrollTop;
             }
