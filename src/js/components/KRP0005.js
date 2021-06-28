@@ -1,9 +1,6 @@
 (function() {
 	var KRP0005 = {
 		init: function(){
-
-            console.log("krp005 init 초기화");
-
             var self = this;
             self.listData = null;
             self.setting();
@@ -53,8 +50,6 @@
                         chatUrl += ("&code="+pinCode);
                     }
 
-                    console.log("getChatPinCode %o",$chat);
-
                     $chat.attr('href',chatUrl);
                 });
             }
@@ -63,7 +58,7 @@
         bindEvents: function() {
             var self = this;
 
-            self.moreButton.off('click').on('click',function(e){
+            self.moreButton.on('click',function(e){
                 e.preventDefault();
                 var isOpen = self.$floatingWrap.hasClass('open');
                 if(isOpen) {
@@ -83,49 +78,45 @@
                 }
             });
 
-            // self.$KRP0005.off('click').on('click','div.floating-linker > a',function(e){
+            self.$KRP0005.on('click','div.floating-linker > a',function(e){
               
-            //     e.preventDefault();
-            //     var $div = $(this).parents('div.floating-linker');
+                e.preventDefault();
+                var $div = $(this).parents('div.floating-linker');
 
-            //     if ($div.hasClass('faq')){
-            //         console.log('faq');
-            //         window.open('/support/usage-guide-faq','_blank');
-            //         return;
-            //     }
+                if ($div.hasClass('faq')){
+                    window.open('/support/usage-guide-faq','_blank');
+                    return;
+                }
 
-            //     if($div.hasClass('chat')) {
-            //         console.log('chat');
-            //         //상담쳇
-            //     } else if($div.hasClass('recently')) {
-            //         console.log('recently');
-            //         //최근본 제품
-            //         if(!self.listData) {
-            //             self.requestData(true);
-            //         } else {
-            //             self.openPopup();
-            //         }
-            //     } else {
-            //         console.log('etc');
-            //         //
-            //         e.preventDefault();
-            //         var href = $(this).attr('href');
-            //         if(href && href.replace("#", "").length > 0) {
-            //             location.href = href;
-            //         }
-            //     }
-            // });
+                if($div.hasClass('chat')) {
+                    //상담쳇
+                } else if($div.hasClass('recently')) {
+                    //최근본 제품
+                    if(!self.listData) {
+                        self.requestData(true);
+                    } else {
+                        self.openPopup();
+                    }
+                } else {
+                    //
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    if(href && href.replace("#", "").length > 0) {
+                        location.href = href;
+                    }
+                }
+            });
 
-            self.$popup.off('click').on('click','.ui_modal_close',function(e){
+            self.$popup.on('click','.ui_modal_close',function(e){
                 e.preventDefault();
                 self.closePopup();
             });
 
-            $(window).off('floatingTopHide').on('floatingTopHide', function(e){
+            $(window).on('floatingTopHide', function(e){
                 self.$floatingWrap.removeClass('scroll');
             }); 
 
-            $(window).off('floatingTopShow').on('floatingTopShow', function(e){
+            $(window).on('floatingTopShow', function(e){
                 self.$floatingWrap.addClass('scroll');
             }); 
         },
@@ -251,7 +242,7 @@
                 });
     
                 KRP0005.init();
-
+    
                 $(document).trigger('appInit');
                 
             },100);
