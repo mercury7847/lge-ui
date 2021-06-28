@@ -78,38 +78,38 @@
                 }
             });
 
-            self.$KRP0005.off('click').on('click','div.floating-linker > a',function(e){
+            // self.$KRP0005.off('click').on('click','div.floating-linker > a',function(e){
               
-                e.preventDefault();
-                var $div = $(this).parents('div.floating-linker');
+            //     e.preventDefault();
+            //     var $div = $(this).parents('div.floating-linker');
 
-                if ($div.hasClass('faq')){
-                    console.log('faq');
-                    window.open('/support/usage-guide-faq','_blank');
-                    return;
-                }
+            //     if ($div.hasClass('faq')){
+            //         console.log('faq');
+            //         window.open('/support/usage-guide-faq','_blank');
+            //         return;
+            //     }
 
-                if($div.hasClass('chat')) {
-                    console.log('chat');
-                    //상담쳇
-                } else if($div.hasClass('recently')) {
-                    console.log('recently');
-                    //최근본 제품
-                    if(!self.listData) {
-                        self.requestData(true);
-                    } else {
-                        self.openPopup();
-                    }
-                } else {
-                    console.log('etc');
-                    //
-                    e.preventDefault();
-                    var href = $(this).attr('href');
-                    if(href && href.replace("#", "").length > 0) {
-                        location.href = href;
-                    }
-                }
-            });
+            //     if($div.hasClass('chat')) {
+            //         console.log('chat');
+            //         //상담쳇
+            //     } else if($div.hasClass('recently')) {
+            //         console.log('recently');
+            //         //최근본 제품
+            //         if(!self.listData) {
+            //             self.requestData(true);
+            //         } else {
+            //             self.openPopup();
+            //         }
+            //     } else {
+            //         console.log('etc');
+            //         //
+            //         e.preventDefault();
+            //         var href = $(this).attr('href');
+            //         if(href && href.replace("#", "").length > 0) {
+            //             location.href = href;
+            //         }
+            //     }
+            // });
 
             self.$popup.off('click').on('click','.ui_modal_close',function(e){
                 e.preventDefault();
