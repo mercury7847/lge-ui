@@ -1,6 +1,6 @@
 //통합앱 구축팀 요청...통합앱 식별 스크립트
 var isApp = function(){
-    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
+    return /lgeapp/i.test(navigator.userAgent);
 }
 
 /* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
