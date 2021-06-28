@@ -1,0 +1,10 @@
+<svg id="img_AirCleaner_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(20 3)">
+    <rect id="Rectangle" width="80" height="80" transform="translate(-20 -3)" fill="none"/>
+    <path id="Rectangle-2" data-name="Rectangle" d="M7.744,26H32.256A3.45,3.45,0,0,1,35.7,29.222L38,64H2L4.3,29.222A3.45,3.45,0,0,1,7.744,26ZM20,0a14,14,0,0,1,7.214,26h5.042A3.45,3.45,0,0,1,35.7,29.222L38,64H2L4.3,29.222A3.45,3.45,0,0,1,7.744,26h5.042A14,14,0,0,1,20,0Z" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="3" fill-rule="evenodd"/>
+    <path id="Oval" d="M20,20a6,6,0,1,0-6-6A6,6,0,0,0,20,20Z" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="3" fill-rule="evenodd"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M2,64H38L33.5,74H6.5Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" fill-rule="evenodd"/>
+    <line id="Path" x2="32" transform="translate(4.7 46.8)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <line id="Path-2" data-name="Path" x2="40" transform="translate(0 74)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

@@ -12,7 +12,6 @@
         <div class="hidden-sm"><!-- 210331 수정 [.hidden-sm 추가] -->
             @@include('./common/modules/flags.html', {
                 barType: true,
-                "flagDiscount" : true,
                 flags: ["베스트","신제품","캐시백"]
             })
             <div class="product-name">
@@ -170,7 +169,31 @@
                 </div>
             </div>
             <!-- // Sibling 정보 선택 -->
-            <!-- 일반제품 -->
+            
+            <!-- sibling 정보 팝업 선택 --> 
+            <!-- 20210609 스펙선택 추가-->
+            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0]">
+                <ul>
+                    <!-- 20210607 스펙선택 추가-->
+                    <li class="lists Spec">
+                        <div class="head">
+                            <dl class="price-info total">
+                                <dt class="text">스펙 선택</dt>
+                                <dd class="content">
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link popup"><span>OS / 메모리 / 저장장치 / 색상</span></a>
+                                    </div>
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //20210609 스펙선택 추가-->
+            <!-- //sibling 정보 팝업 선택 --> 
+
+            <!-- 일반제품 --> 
             <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2]">
                 <ul>
                     <li class="lists member">
@@ -274,7 +297,6 @@
                         </div>
                     </li>
                     <!-- //20210602 BTOCSITE-495 구매혜택 수정 -->
-                    
                     <li class="lists benefit">
                         <div class="head">
                             <dl class="price-info">
@@ -309,9 +331,9 @@
                                     </dl>
                                 </li>
                             </ul>
-                            <!-- 20210526 텍스트 문구 추가-->
+                            <!-- 20210531 문구 수정 -->
                             <p class="desc">구매혜택은 카드사에 따라 다르니, 아래 '자세히 보기'를 선택하여 조건을 확인하시기 바랍니다.</p>
-                            <!-- //20210526 텍스트 문구 추가-->
+                            <!-- //20210531 문구 수정 -->
                             <div class="btn-area">
                                 <a href="#" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
@@ -1211,6 +1233,6 @@
         <div class="btn-wing-experience">
             <a href="" class="btn-link"><span>윙 체험존 위치보기</span></a>
         </div>
-        <!-- // 210330 수정 [윙 체험존 위치 보기 추가] -->
+        <!-- // 210330 수정 [윙 체험존 위치 보기 추가] --> 
     </div>
 </div>

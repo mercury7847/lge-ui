@@ -1,0 +1,10 @@
+<svg id="img_Projector_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(6 22)">
+    <rect id="Rectangle" width="68" height="30" rx="3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    <g id="Group_3" data-name="Group 3" transform="translate(42 6)">
+      <circle id="Oval" cx="9" cy="9" r="9" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval-2" data-name="Oval" cx="3" cy="3" r="3" transform="translate(6 6)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+    <path id="Path" d="M0,0V5.767A2.233,2.233,0,0,0,2.016,7.989L1.936,8H54.064l-.08-.011A2.233,2.233,0,0,0,56,5.767V0" transform="translate(6 30)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+  </g>
+</svg>

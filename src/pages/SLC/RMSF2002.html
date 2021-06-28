@@ -70,13 +70,15 @@
                                 <ul class="tabs">
                                     <li class="on"><a href="#prod1">정수기<em class="blind">선택됨</em></a></li>
                                     <li><a href="#prod2">얼음정수기 냉장고</a></li>
-                                    <li><a href="#prod3">공기청정기</a></li>
-                                    <li><a href="#prod4">건조기</a></li>
-                                    <li><a href="#prod5">스타일러</a></li>
-                                    <li><a href="#prod6">전기레인지</a></li>
-                                    <li><a href="#prod7">식기세척기</a></li>
-                                    <li><a href="#prod8">안마의자</a></li>
-                                    <li><a href="#prod9">맥주제조기</a></li>
+                                    <!-- BTOCSITE-1624 210616 카테고리 위치 변경 -->
+                                    <li><a href="#prod3">맥주제조기</a></li>
+                                    <li><a href="#prod4">공기청정기</a></li>
+                                    <li><a href="#prod5">건조기</a></li>
+                                    <li><a href="#prod6">스타일러</a></li>
+                                    <li><a href="#prod7">전기레인지</a></li>
+                                    <li><a href="#prod8">식기세척기</a></li>
+                                    <li><a href="#prod9">안마의자</a></li>
+                                    <!-- // BTOCSITE-1624 210616 카테고리 위치 변경 -->
                                 </ul>
                             </div>
                             <!-- 201221 수정 [탭 내부 컨텐츠 전체 새로 적용] -->
@@ -206,8 +208,63 @@
                                 <!-- //210331 위치수정 -->
                             </div>
                             <!-- // 얼음정수기 냉장고 -->
-                            <!-- 공기청정기 -->
+                            <!-- BTOCSITE-1624 210616 카테고리 위치 변경 : id값 수정-->
+                            <!-- 맥주제조기 -->
                             <div id="prod3" class="tab-content csn-itr-cont" style="display:none;">
+                                <!-- 210331 위치수정 -->
+                                <div class="csn-itr-body">
+                                    <div class="csn-icon-list">
+                                        <!-- 210419 문구수정 -->
+                                        <ul>
+                                            @@loop('./common/modules/csn-icon-list-loop.html', [
+                                                {
+                                                    iconName : "csn9-1",
+                                                    title : "토탈 클리닝 서비스",
+                                                    desc : "방문 시마다 캡슐 장착부 및 맥주 추출구 포함 제품 내/외부를 청결하게 관리 해드립니다.",
+                                                },
+                                                {
+                                                    iconName : "csn9-2",
+                                                    title : "살균, 세척 서비스",
+                                                    desc : "알칼리 클리닝, 산 클리닝, 내부 온수 살균까지 주류업계의 클리닝 프로세스를 벤치마킹한 3단계 내부 세척으로 더욱 깨끗하게 사용할 수 있습니다.",
+                                                },
+                                                {
+                                                    iconName : "csn9-3",
+                                                    title : "필터 무상 교체",
+                                                    desc : "LG 홈브루에 장착되는 에어 필터를 교체주기에 따라 무상 교체 해드립니다.",
+                                                },
+                                                {
+                                                    iconName : "csn9-4",
+                                                    title : "무상 A/S 서비스",
+                                                    desc : "계약기간 5년동안 제품 고장으로 발생한 A/S 서비스를 무상으로 제공해드립니다.",
+                                                    bullet: [
+                                                        "고객 과실로 인한 제품 고장은 제외"
+                                                    ]
+                                                },
+                                            ])
+                                        </ul>
+                                        <!-- //210419 문구수정 -->
+                                    </div>
+                                </div>
+                                <div class="csn-itr-head">
+                                    <a href="#youtube9" data-control="modal" class="csn-video" title="LG전자 케어솔루션 디지털광고 맥주제조기 케어편 보기">
+                                        <img src="/lg5-common/images/SLC/img-video09.jpg" alt="" aria-hidden="true">
+                                    </a>
+                                    <div class="csn-prod-intro">
+                                        <p class="video-tit">LG전자 케어솔루션 디지털 광고<em>- 맥주제조기 케어 편</em></p>
+                                        <p class="desc">
+                                            이정은씨가 알려주는 식기세척기 케어 방법<br><br>
+                                            식기세척기, 케어는 어떡하죠<br>
+                                            어떡해요 할 땐 케어솔루션하세요.<br><br>
+                                            차원이 다른 전문가의 가전관리 서비스<br><br>
+                                            LG가전 전문가가 직접 케어해주는 케어솔루션으로<br>항상 새 식기세척기처럼-
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- //210331 위치수정 -->
+                            </div>
+                            <!-- // 맥주제조기 -->
+                            <!-- 공기청정기 -->
+                            <div id="prod4" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
@@ -269,7 +326,7 @@
                             </div>
                             <!-- // 공기청정기 -->
                             <!-- 건조기 -->
-                            <div id="prod4" class="tab-content csn-itr-cont" style="display:none;">
+                            <div id="prod5" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
@@ -324,7 +381,7 @@
                             </div>
                             <!-- // 건조기 -->
                             <!-- 스타일러 -->
-                            <div id="prod5" class="tab-content csn-itr-cont" style="display:none;">
+                            <div id="prod6" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
@@ -382,7 +439,7 @@
                             </div>
                             <!-- // 스타일러 -->
                             <!-- 전기레인지 -->
-                            <div id="prod6" class="tab-content csn-itr-cont" style="display:none;">
+                            <div id="prod7" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
@@ -447,7 +504,7 @@
                             </div>
                             <!-- // 전기레인지 -->
                             <!-- 식기세척기 -->
-                            <div id="prod7" class="tab-content csn-itr-cont" style="display:none;">
+                            <div id="prod8" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list size3">
@@ -515,7 +572,7 @@
                             </div>
                             <!-- // 식기세척기 -->
                             <!-- 안마의자 -->
-                            <div id="prod8" class="tab-content csn-itr-cont" style="display:none;">
+                            <div id="prod9" class="tab-content csn-itr-cont" style="display:none;">
                                 <!-- 210331 위치수정 -->
                                 <div class="csn-itr-body">
                                     <div class="csn-icon-list">
@@ -577,60 +634,7 @@
                                 <!-- //210331 위치수정 -->
                             </div>
                             <!-- // 안마의자 -->
-                            <!-- 맥주제조기 -->
-                            <div id="prod9" class="tab-content csn-itr-cont" style="display:none;">
-                                <!-- 210331 위치수정 -->
-                                <div class="csn-itr-body">
-                                    <div class="csn-icon-list">
-                                        <!-- 210419 문구수정 -->
-                                        <ul>
-                                            @@loop('./common/modules/csn-icon-list-loop.html', [
-                                                {
-                                                    iconName : "csn9-1",
-                                                    title : "토탈 클리닝 서비스",
-                                                    desc : "방문 시마다 캡슐 장착부 및 맥주 추출구 포함 제품 내/외부를 청결하게 관리 해드립니다.",
-                                                },
-                                                {
-                                                    iconName : "csn9-2",
-                                                    title : "살균, 세척 서비스",
-                                                    desc : "알칼리 클리닝, 산 클리닝, 내부 온수 살균까지 주류업계의 클리닝 프로세스를 벤치마킹한 3단계 내부 세척으로 더욱 깨끗하게 사용할 수 있습니다.",
-                                                },
-                                                {
-                                                    iconName : "csn9-3",
-                                                    title : "필터 무상 교체",
-                                                    desc : "LG 홈브루에 장착되는 에어 필터를 교체주기에 따라 무상 교체 해드립니다.",
-                                                },
-                                                {
-                                                    iconName : "csn9-4",
-                                                    title : "무상 A/S 서비스",
-                                                    desc : "계약기간 5년동안 제품 고장으로 발생한 A/S 서비스를 무상으로 제공해드립니다.",
-                                                    bullet: [
-                                                        "고객 과실로 인한 제품 고장은 제외"
-                                                    ]
-                                                },
-                                            ])
-                                        </ul>
-                                        <!-- //210419 문구수정 -->
-                                    </div>
-                                </div>
-                                <div class="csn-itr-head">
-                                    <a href="#youtube9" data-control="modal" class="csn-video" title="LG전자 케어솔루션 디지털광고 맥주제조기 케어편 보기">
-                                        <img src="/lg5-common/images/SLC/img-video09.jpg" alt="" aria-hidden="true">
-                                    </a>
-                                    <div class="csn-prod-intro">
-                                        <p class="video-tit">LG전자 케어솔루션 디지털 광고<em>- 맥주제조기 케어 편</em></p>
-                                        <p class="desc">
-                                            이정은씨가 알려주는 식기세척기 케어 방법<br><br>
-                                            식기세척기, 케어는 어떡하죠<br>
-                                            어떡해요 할 땐 케어솔루션하세요.<br><br>
-                                            차원이 다른 전문가의 가전관리 서비스<br><br>
-                                            LG가전 전문가가 직접 케어해주는 케어솔루션으로<br>항상 새 식기세척기처럼-
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- //210331 위치수정 -->
-                            </div>
-                            <!-- // 맥주제조기 -->
+                            <!-- // BTOCSITE-1624 210616 카테고리 위치 변경 : id값 수정 -->
                             <!-- // 201221 수정 [탭 내부 컨텐츠 전체 새로 적용] -->
                         </div>
 

@@ -48,18 +48,24 @@ var itemTmpl = '{{#each obj in list}}'+
     '{{/each}}'
 
 $(function(){
+
+    var $context = !!$('[data-hash="care"]').length ? $('[data-hash="care"]') : $(document);
+
     vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
 
         // 제품 코드 관리 부분
-        $('.ui_carousel_slider').vcCarousel({
+        $context.find('.ui_carousel_slider').vcCarousel({
             infinite: false,
             autoplay: false,
             slidesToScroll: 1,
-            slidesToShow: 1
+            slidesToShow: 1,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100
         });
 
         // 플로우배너
-        $('.ui_carousel_slider_banner').vcCarousel({
+        $context.find('.ui_carousel_slider_banner').vcCarousel({
             infinite: true,
             //autoplay: true,
             //autoplaySpeed: 2000,
@@ -69,6 +75,9 @@ $(function(){
             centerMode: true,
             centerPadding: '13.5%',
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -111,7 +120,7 @@ $(function(){
             ]
         });        
 
-        $('.ui_carousel_slider_banner2').vcCarousel({
+        $context.find('.ui_carousel_slider_banner2').vcCarousel({
             infinite: true,
             //autoplay: true,
             autoplaySpeed: 1800,
@@ -119,6 +128,9 @@ $(function(){
             slidesToScroll: 1,
             variableWidth : true,
             dots: false,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -172,28 +184,34 @@ $(function(){
 
             var breakpoint = window.breakpoint;    
             if(breakpoint.name == 'mobile'){    
-                $('.ui_carousel_m1_slider').vcCarousel({
+                $context.find('.ui_carousel_m1_slider').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $('.ui_carousel_m1_slider').vcCarousel('destroy');       
-                $('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
+                $context.find('.ui_carousel_m1_slider').vcCarousel('destroy');       
+                $context.find('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
             }    
         });
 
         $(window).trigger('breakpointchange.caresolution');
 
         // 케어솔루션 가이드
-        $('.care-guide-visual .ui_carousel_slider2').vcCarousel({
+        $context.find('.care-guide-visual .ui_carousel_slider2').vcCarousel({
             infinite: false,
             centerMode: true,
             //centerPadding: '25%',
             slidesToShow: 1,
             slidesToScroll: 1,
             variableWidth : true,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -228,7 +246,7 @@ $(function(){
             if(url) location.href = url;
         });
 
-        var careProductUrl = $('.care-recommended').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCareProductList.json';
+        var careProductUrl = $context.find('.care-recommended').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCareProductList.json';
 
         function requestTab(){
 
@@ -264,21 +282,21 @@ $(function(){
                     });
 
                     if(fArr.length == 0){
-                        $('.care-recommended').hide();
+                        $context.find('.care-recommended').hide();
                         return;
                     }
 
-                    $('.ui_product_tab').find('.tabs').html(vcui.template(tabTmpl, {list:fArr}));
-                    $('.ui_product_tab').after(vcui.template(tabContentTmpl, {list:fArr}));
+                    $context.find('.ui_product_tab').find('.tabs').html(vcui.template(tabTmpl, {list:fArr}));
+                    $context.find('.ui_product_tab').after(vcui.template(tabContentTmpl, {list:fArr}));
 
-                    $('.ui_product_tab').vcTab({selectors:{
+                    $context.find('.ui_product_tab').vcTab({selectors:{
                         prevButton:".ui_smooth_prev",
                         nextButton:".ui_smooth_next",
                         smoothScroll:'.ui_smooth_tab'
                     }});
                     /* 케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
 
-                    var care_cecommended = $('.care-recommended');
+                    var care_cecommended = $context.find('.care-recommended');
                     var care_slider = care_cecommended.find('.ui_product_carousel_slider');
                     var care_tabs = care_cecommended.find('.ui_smooth_tab .tabs');
                     var tab = {
@@ -331,11 +349,14 @@ $(function(){
                     }
 
                     /* //케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
-                    $('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
+                    $context.find('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
                         infinite: false,
                         slidesToShow: 4,
                         slidesToScroll: 4,
                         variableWidth : false,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100,
                         responsive: [
                             {
                                 breakpoint: 1200,
@@ -360,7 +381,7 @@ $(function(){
                 }                
 
             },function(err){
-                $('.care-recommended').hide();
+                $context.find('.care-recommended').hide();
             });    
 
         }

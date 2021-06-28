@@ -55,17 +55,28 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 $(document).triggerHandler('modallastbeforeclose');
             }
         },
-        _handleModalShow: function _handleModalShow(e) {
+        _handleModalShow: function _handleModalShow(e, opts) {
             var self = this,
                 $modal = $(e.currentTarget),
                 modal = $modal.vcModal('instance'),
                 zIndex = self.nextZIndex();
 
             if (!modal.$el.parent().hasClass('ui_modal_wrap')) {
-                modal.$el.wrap(self.templates.wrap);
+                if (opts.left != undefined){
+                    modal.$el.wrap(self.templates.wrap);
+                    modal.$el.parent().css('left', opts.left);
+                } else {
+                    modal.$el.wrap(self.templates.wrap);
+                }
                 modal.$el.before($(self.templates.dim).css('opacity', self.options.opacity));
             }
-            modal.$el && modal.$el.parent().css('zIndex', zIndex++);
+
+            if (opts.left != undefined){
+                modal.$el && modal.$el.parent().css('zIndex', zIndex++).css('left', opts.left);
+            } else {
+                modal.$el && modal.$el.parent().css('zIndex', zIndex++);
+            }
+            
 
             self.active = modal;
             self.add(modal);
@@ -390,7 +401,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 opts = self.options,
                 showEvent = $.Event('modalshow');
 
-            self.trigger(showEvent);
+            self.trigger(showEvent, opts);
             if (showEvent.isDefaultPrevented()) {
                 return;
             }

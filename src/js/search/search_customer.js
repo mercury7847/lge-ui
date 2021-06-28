@@ -110,7 +110,12 @@
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
+            '{{#if item.target == "popup"}}' + 
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            
+            '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            '{{/if}}' +
             '{{/each}}'+
         '</ul>';
 
@@ -628,16 +633,28 @@
 
             //검색버튼 검색
             requestSearchInput:function(value) {
+                //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
-                    self.openSearchInputLayer(false);
-                    var data = result.data;
-                    //검색어 저장
-                    self.$contentsSearch.attr('data-search-value',value);
-                    self.$contentsSearch.attr('data-search-force',false);
-                    var tab = self.getTabItembyCategoryID(data.category);
-                    self.sendSearchPage(tab.attr('href'),value,false);
+
+                lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    if(result.data && result.data.success == 'Y' && result.data.url) {
+                        if(result.data.linkTarget == 'self') {
+                            location.href = result.data.url;
+                        } else {
+                            window.open(result.data.url,'_blank');
+                        }
+                    } else {
+                        lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                            self.openSearchInputLayer(false);
+                            var data = result.data;
+                            //검색어 저장
+                            self.$contentsSearch.attr('data-search-value',value);
+                            self.$contentsSearch.attr('data-search-force',false);
+                            var tab = self.getTabItembyCategoryID(data.category);
+                            self.sendSearchPage(tab.attr('href'),value,false);
+                        });
+                    }
                 });
             },
 
@@ -807,8 +824,7 @@
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
                     */
-
-                    //서비스 링크
+                    //BTOCSITE-1339 서비스 링크
                     $('.service-link, .mobile-service-link').empty();
                     if(data.serviceLinkers && data.serviceLinkers.length){
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
