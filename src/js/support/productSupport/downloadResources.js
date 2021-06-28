@@ -108,6 +108,9 @@
             autoplay: false,
             slidesToScroll: 3,
             slidesToShow: 3,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 1024,

@@ -41,6 +41,9 @@
             slidesToShow: 2,
             slidesToScroll: 2,
             variableWidth : true,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -49,8 +52,7 @@
                         variableWidth : false,
                         dots: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
-                        
+                        slidesToScroll: 2,
                     }
                 },
                 {
@@ -60,7 +62,7 @@
                         variableWidth : true,
                         dots: true,
                         slidesToShow: 1, 
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
                     }
                 }
             ]
@@ -70,6 +72,9 @@
             infinite: false,
             slidesToShow: 2, 
             slidesToScroll: 2,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
