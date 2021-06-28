@@ -20,7 +20,7 @@
         display:none;
         position:fixed;
         top:0;
-        left:0;
+        //left:0;
         right:0;
         bottom:0;
         width:100%;
@@ -29,7 +29,8 @@
         backface-visibility:hidden;
         transform:translateZ(0);
         z-index:9000;
-        background:#fff;
+        //background:#fff;
+        background: transparent;        
         overflow: hidden;
         &.open{
             display:block;
@@ -68,7 +69,7 @@
                 .filter-btn-wrap {
                     right: 0;
                     left: auto;
-                    width:calc(100% - 20px);
+                    width:calc(100% - 20px);                    
                 }
             }
         }
@@ -79,11 +80,23 @@
         @media screen and (max-width: 1024px) {
             position:absolute;
             top:0;
-            width:100%;
+            right:-100%;
+            transition: right .5s;
+            //width:100%;            
+            width:260px;
             height:100%;
             overflow-y:auto;
             z-index:9000;
             background-color: #fff;
+        }
+    }
+
+    &.open {
+        .lay-fliter-con,
+        .lay-filter-con {
+            @media screen and (max-width: 1024px) {
+                right: 0;
+            }
         }
     }
     .fiter-head,
@@ -100,6 +113,7 @@
         @include tablet {
             position: fixed;
             z-index:20;
+            width:260px;
             height:48px;
             padding: 0 96px 0 16px;
             &::after {
@@ -122,10 +136,12 @@
         //}
     }
 
-    .plp-filter-wrap {
+    .plp-filter-wrap {        
+
         @media screen and (max-width: 1024px) {
             //padding:40px 20px 115px;
-            padding:48px 16px 135px;
+            //padding:48px 16px 135px;
+            padding:48px 16px;
         }
 
         .btn-reset {
@@ -203,6 +219,10 @@
                     @media screen and (max-width: 1024px) {
                         margin:0;
                         border-radius:inherit;
+
+                        &:last-child {
+                            border-bottom:0px;
+                        }
                     }
                     
                     .head {
@@ -230,8 +250,9 @@
                                 background-size: cover;
                                 transition: all .3s;
                                 @media screen and (max-width: 1024px) {
-                                    top:30px;
-                                    right:0;
+                                    //top:30px;                                    
+                                    top:34px; /* BTOCSITE-2161 */
+                                    right:0;                                    
                                 }
                             }
                         }
@@ -240,14 +261,16 @@
                             display:block;
                             padding:24px 0;
                             color:#000;
-                            @include font-small;
+                            @include font-small;                            
                             font-weight:$font-weight-bold;
                             word-break:break-all;
                             span {
                                 word-break:break-all;
                             }
                             @media screen and (max-width: 1024px) {
-                                padding:32px 0 24px;
+                                //padding:32px 0 24px;
+                                padding:32px 0 26px; /* BTOCSITE-2161 */
+                                font-size: 16px; /* BTOCSITE-2161 add */
                             }
                         }
                     }
@@ -444,6 +467,7 @@
         }
 
         .filter-btn-wrap {
+            display:none;
             position:fixed;
             left:0;
             bottom:0;
@@ -802,3 +826,13 @@
         }
     }
 }
+
+/* BTOCSITE-2161 :: dim 추가 */
+.dimmed {
+    display:none;
+    @media screen and (max-width: 1024px) {
+        display:block;
+        opacity: 0.3;
+    }
+}
+/* //BTOCSITE-2161 :: dim 추가 */
