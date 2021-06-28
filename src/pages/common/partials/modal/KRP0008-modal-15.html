@@ -15,9 +15,13 @@
                                 <div class="text">OS</div>
                                 <div class="select-option radio select">
                                     <div class="option-list" role="radiogroup">
-                                        <div role="radio" class="rdo-wrap btn-type2" title="Windows 10 Home">
+                                        <div role="radio" class="rdo-wrap btn-type2 " title="Windows 10 Home">
                                             <input type="radio" id="rdo0-1" name="rdo0" data-sibling-code="Win_10_home" data-sibling-group-code="16Z(D)90P_i7_OS" checked>
                                             <label for="rdo0-1">Windows 10 Home</label>
+                                        </div>
+                                        <div role="radio" class="rdo-wrap btn-type2 disabled" title="Windows 8 Home">
+                                            <input type="radio" id="rdo0-2" name="rdo0" data-sibling-code="Win_8_home" data-sibling-group-code="16Z(D)90P_i7_OS">
+                                            <label for="rdo0-2">Windows 8 Home</label>
                                         </div>
                                     </div>
                                 </div>
@@ -65,15 +69,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sibling-group">
-                            <div class="sibling-btn">
-                                <button type="button" class="btn ui_modal_close"><span>선택 완료</span></button> 
-                            </div>
-                        </div>
                     </div>
                     <!-- // Sibling 정보 선택 -->
                     <!--//20210607 스펙선택 추가 -->   
                 </div>
+                <!--2021-06-25 하단 버튼 마크업 수정 -->   
+                <footer class="pop-footer center sibling-footer">
+                    <div class="btn-group">
+                        <!-- 비활성화일때 disabled 속성 추가 -->
+                        <button type="button" class="btn size-l btn-sibling-select" disabled><span>선택 완료</span></button>
+                    </div>
+                </footer>
+                <!--//2021-06-25 하단 버튼 마크업 수정 -->   
             </div>
         </div>
     </section>

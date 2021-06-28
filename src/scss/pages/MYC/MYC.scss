@@ -988,3 +988,68 @@
         }
     }
 }
+
+
+
+/* 20210624 납부내역 : 팝업*/
+#popup-paymentHistory {
+    position: relative;
+    .pop-paymentArea {
+        position: relative;
+        .priceContent {
+            padding: 0 40px;
+            @include mobile {
+                padding: 0 40px 40px;
+            }
+            .priceList {
+                max-height: 450px;
+                overflow-y: auto;
+                margin-bottom: 40px;
+                @include mobile {
+                    max-height: 260px;
+                }
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid #ccc;
+                    padding: 15px 20px;
+                    .list-info {
+                        position: relative;
+                        h3 { position: relative; }
+                        span { position: relative; }
+                    }
+                    .list-price {
+                        position: relative;
+                    }
+                }
+            }
+            .priceTotal {
+                background-color: #ddd;
+                padding: 20px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom : 40px;
+                h4 { position: relative; }
+                p { position: relative; }
+            }
+            .priceTxt {
+                position: relative;
+                padding-left: 10px;
+                &::after {
+                    content: '';
+                    width: 3px;
+                    height: 3px;
+                    background-color: #000;
+                    border-radius: 100px;
+                    position: absolute;
+                    top: 7px;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+/* //20210624 납부내역 : 팝업*/

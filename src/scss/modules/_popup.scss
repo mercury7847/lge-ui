@@ -357,7 +357,7 @@
                                 position: relative;
                                 padding: 24px 40px 0;
                                 @include mobile {
-                                    padding: 20px 15px 0;
+                                    padding: 20px 15px 30px;
                                 }
                                 .sibling-select,
                                 .sibling-color {
@@ -549,23 +549,39 @@
                                     &:last-of-type {
                                         margin-right: 0;
                                     }
+
+                                    &.disabled {
+                                        input {
+                                            & + label {
+                                                border: 1px solid;
+                                                @include font($font-small,26px);
+                                                color: $color-gray-4;
+                                            }
+                                            &:checked {
+                                                & + label {
+                                                    color: $color-gray-4;
+                                                    border-color: $color-primary;
+                                                }
+                                            }
+                                        }
+                                    }
                                     input {
                                         & + label {
                                             width: auto;
                                             min-width: 60px;
-                                            padding: 3px 8px;
+                                            padding: 6px 14px;
                                             border-radius: 40px;
                                             border: 1px solid;
                                             @include font($font-small,26px);
-                                            color: $color-gray-1;
+                                            // color: $color-gray-1;
                                             @include mobile {
                                                 min-width: 55px;
                                                 font-size: 13px;
+                                                padding: 3px 14px;
                                             }
                                         }
                                         &:checked {
                                             & + label {
-                                                padding:3px 8px;
                                                 color: $color-primary;
                                             }
                                         }
@@ -622,6 +638,42 @@
             max-height:calc(100% - 122px);
             //max-height:none;
         }
+
+        .not-cancel-footer {                        
+            h2 {
+                font-size: 24px;
+                line-height: 34px;
+                font-weight: 700;
+            }
+            p { 
+                font-size:18px;
+                font-weight:600;
+                margin-top:24px;
+            }
+
+            .btn-group {
+                margin-top:32px;
+            }
+
+            @include mobile {
+                margin-top:24px;
+                h2 {
+                    font-size: 20px;
+                    line-height: 28px;
+                    font-weight: 700;
+                }
+                p {
+                    margin-top:12px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+
+                .btn-group {
+                    margin-top:24px;
+                }
+            }
+        }
+
         .tabs-wrap {
             &:first-child {
                 @include mobile {

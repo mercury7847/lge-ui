@@ -1,6 +1,6 @@
 //통합앱 구축팀 요청...통합앱 식별 스크립트
 var isApp = function(){
-    return /LGEAPP|lgeapp\/[0-9\.]+$/.test(navigator.userAgent);
+    return /lgeapp/i.test(navigator.userAgent);
 }
 
 /* goAppUrl : 앱실행및 해당 경로로 랜딩하는 함수
@@ -358,8 +358,8 @@ var goAppUrl = function(path) {
         _appDownloadPopup: function() {
             var enableUrl = [
                 '^/$', // 메인
-                '^/benefits/event/?', // 이벤트 페이지
-                '^/benefits/exhibitions/?' // 기획전 페이지
+               '^/benefits/event/?', // 이벤트 페이지
+               '^/benefits/exhibitions/?' // 기획전 페이지
             ];
 
             var isPopUp = enableUrl.some(function(element) {
@@ -985,13 +985,22 @@ var goAppUrl = function(path) {
         removeCompareProd: function(categoryId, id){
             var self = this;
 
+            console.log("removeCompareProd cat %o id %o",categoryId,id);
+
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
                 compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
-                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                if(compareStorage[categoryId]['data'].length == 0) {
+                    self.removeStorage(self.COMPARE_KEY, categoryId);
+                } else {
+                    var data = {};
+                        data[categoryId] = compareStorage[categoryId];
+                    self.setStorage(self.COMPARE_KEY, data, true, categoryId);
+                }
+                
             } else {
                 self.removeStorage(self.COMPARE_KEY, categoryId);
             }
@@ -1021,9 +1030,10 @@ var goAppUrl = function(path) {
             location.href = url;
         },
 
-        setStorage: function(key, value, isExtend){
+        setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
-            var storageData = storage? JSON.parse(storage) : {};        
+            var storageData = storage? JSON.parse(storage) : {};   
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };     
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
             if(isExtend) {
@@ -1032,8 +1042,8 @@ var goAppUrl = function(path) {
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
-            
-            $(window).trigger("changeStorageData");
+            if(name) data = $.extend(data, { 'name' : name});
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
             return storageData;
         },
@@ -1049,20 +1059,28 @@ var goAppUrl = function(path) {
         },
 
         removeStorage: function(key, name){    
+            var data = {};
             var returnValue;
+            var data = {  'state' : 'remove', 'key' : key  }
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 						
+                var storageData = storage? JSON.parse(storage) : {}; 		
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
+                data = $.extend(data, { 'name' : name});
             }else{
                 sessionStorage.removeItem(key);
                 returnValue =  null;
+                data = {  'state' : 'remove', 'key' : key  }
             }
             
-            $(window).trigger("changeStorageData");
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
+            console.log("removeStorage data %o",data)
+            
+            $(window).trigger(jQuery.Event("changeStorageData", data));
+           
             return returnValue;
         },
 

@@ -15,7 +15,7 @@
                                     <rect width="6" height="1.5" x="12" fill="#000" rx=".75"/>
                                 </g>
                                 <path stroke="#000" stroke-width="1.5" d="M1.5.75h31c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-31c-.828 0-1.5-.672-1.5-1.5v-15C0 1.422.672.75 1.5.75z" transform="translate(-128 -414) translate(128 414) translate(12 12) translate(3 9)"/>
-                            </g>
+                           </g>
                         </g>
                     </g>
                 </g>
@@ -23,3 +23,4 @@
         </g>
     </g>
 </svg>
+

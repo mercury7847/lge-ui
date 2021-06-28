@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_Printer_64" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke:#070203;stroke-linecap:round;stroke-width:3px}.cls-2{stroke-miterlimit:10}.cls-3{stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="ic">
+        <rect id="Rectangle" width="80" height="80" fill="none" rx="40"/>
+        <g id="img" transform="translate(245.925 -924.831)">
+            <g id="Group_147">
+                <path id="Path-99" d="M-215.48 995.831v-43.838" class="cls-2"/>
+                <path id="Rectangle-62" d="M-222.78 939.995h10.073a4.127 4.127 0 0 1 4.115 4.139v3.72a4.127 4.127 0 0 1-4.115 4.139h-9.66" class="cls-3"/>
+                <path id="Path_44" d="M-226.828 934.831h3.735v22.326h-3.735a11.13 11.13 0 0 1-11.1-11.163 11.13 11.13 0 0 1 11.1-11.163z" class="cls-3"/>
+            </g>
+            <g id="Group_148">
+                <path id="Path-99-2" d="M-196.371 973.986v21.845" class="cls-2"/>
+                <path id="Rectangle-62-2" d="M-189.483 973.986h-9.661a4.127 4.127 0 0 1-4.115-4.139v-3.719a4.127 4.127 0 0 1 4.115-4.139h9.661" class="cls-3"/>
+                <path id="Path_45" d="M-185.023 956.824h-3.735v22.326h3.735a11.131 11.131 0 0 0 11.1-11.163 11.131 11.131 0 0 0-11.1-11.163z" class="cls-3"/>
+            </g>
+        </g>
+    </g>
+</svg>
