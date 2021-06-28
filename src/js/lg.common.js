@@ -968,11 +968,12 @@ var goAppUrl = function(path) {
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[categoryId] == undefined){
-                compareStorage[categoryId] = [data];
+                var categoryName = lgkorUI.getHiddenInputData().categoryName;
+                compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
             } else{
-                var leng = compareStorage[categoryId].length;
+                var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
-                    compareStorage[categoryId].push(data);
+                    compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
                     return false;
@@ -988,11 +989,18 @@ var goAppUrl = function(path) {
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
-                compareStorage[categoryId] = vcui.array.filter(compareStorage[categoryId], function(item){
+                compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
                     return item['id'] != id;
                 });
 
-                self.setStorage(self.COMPARE_KEY, compareStorage, true);
+                if(compareStorage[categoryId]['data'].length == 0) {
+                    self.removeStorage(self.COMPARE_KEY, categoryId);
+                } else {
+                    var data = {};
+                        data[categoryId] = compareStorage[categoryId];
+                    self.setStorage(self.COMPARE_KEY, data, true, categoryId);
+                }
+                
             } else {
                 self.removeStorage(self.COMPARE_KEY, categoryId);
             }
@@ -1006,11 +1014,9 @@ var goAppUrl = function(path) {
 
         setCompapreCookie: function(categoryId){
             var self = this;
-
-            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
             var compareIDs = [];
-            for(var idx in compareStorage) compareIDs.push(compareStorage[idx].id);
-
+            var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
             var compareCookie = compareIDs.join("|");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
@@ -1024,9 +1030,10 @@ var goAppUrl = function(path) {
             location.href = url;
         },
 
-        setStorage: function(key, value, isExtend){
+        setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
-            var storageData = storage? JSON.parse(storage) : {};        
+            var storageData = storage? JSON.parse(storage) : {};   
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };     
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
             if(isExtend) {
@@ -1035,8 +1042,8 @@ var goAppUrl = function(path) {
                 storageData = value;
             }
             sessionStorage.setItem(key, JSON.stringify(storageData));
-            
-            $(window).trigger("changeStorageData");
+            if(name) data = $.extend(data, { 'name' : name});
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
             return storageData;
         },
@@ -1053,18 +1060,20 @@ var goAppUrl = function(path) {
 
         removeStorage: function(key, name){    
             var returnValue;
+            var data = {  'state' : 'remove', 'key' : key  }
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 						
+                var storageData = storage? JSON.parse(storage) : {}; 		
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
+                data = $.extend(data, { 'name' : name});
             }else{
                 sessionStorage.removeItem(key);
                 returnValue =  null;
             }
             
-            $(window).trigger("changeStorageData");
+            $(window).trigger(jQuery.Event("changeStorageData", data));
 
             return returnValue;
         },
