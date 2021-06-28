@@ -132,6 +132,9 @@
                 autoplay: false,
                 slidesToScroll: 4,
                 slidesToShow: 4,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -1363,7 +1366,8 @@ function validatePhone(value){
                     return validateNum10();
                 }
                 if( _length == 11) {
-                    if(rangeFlag(9500, 9999) || rangeFlag(1700, 1799)) {
+                    //BTOCSITE-1613: 11자리일때 중간4자리 유효범위 수정 9500 -> 9000
+                    if(rangeFlag(9000, 9999) || rangeFlag(1700, 1799)) {
                         return true;
                     } else {
                         return false;
@@ -1424,7 +1428,8 @@ function validatePhone(value){
             var $this = $(this),
                 value = $this.val();
             
-            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            //var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            var regex = /[0-9]/g;
             
             if (regex.test(value)) {
                 $this.val(value.replace(regex, ''));
