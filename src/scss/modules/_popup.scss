@@ -355,9 +355,27 @@
                             flex-wrap: wrap;
                             &[class*="cont"] {
                                 position: relative;
-                                padding: 24px 40px 0;
+                                padding: 24px 40px 30px;
+
+                                &:after {
+                                    content:"";
+                                    display: block;
+                                    position: absolute;
+                                    bottom:0;
+                                    left:40px;
+                                    right:40px;
+                                    height:1px;
+                                    background: #ddd;
+                                }
+
                                 @include mobile {
+                                    margin-bottom:30px;
                                     padding: 20px 15px 30px;
+
+                                    &:after {
+                                        left:15px;
+                                        right:15px;
+                                    }
                                 }
                                 .sibling-select,
                                 .sibling-color {
@@ -400,8 +418,7 @@
                                 }
                                 .sibling-color {
                                     position: relative;
-                                    border-bottom: 1px solid #ddd;
-                                    padding-bottom: 30px;
+                                    
                                 }
                                 .sibling-select:first-of-type {
                                     margin-top: 0;

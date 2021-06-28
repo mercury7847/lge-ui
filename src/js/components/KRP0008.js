@@ -1291,6 +1291,11 @@
                 }
             },
 
+            resize: function(){
+                var self = this;
+                self.resizePopup($('#specInfoPopup'), true)
+            },
+
             //팝업 버튼 이벤트
             bindPopupEvents: function() {
                 var self = this;
@@ -1426,8 +1431,33 @@
 
                     if( _modelPath != undefined && _modelPath != "") {
                         location.href = _modelPath;
+                    } else {
+                        self.$specInfoPopup.vcModal('hide')
                     }
                 })
+            },
+
+            resizePopup: function($target, footerFlag){
+                var $popup = $target;
+
+                var _minHeight= parseInt($popup.css('min-height'))
+                var $head = $popup.find('.pop-header');
+                var $cont = $popup.find('.pop-conts')
+                var $footer = $popup.find('.pop-footer');
+
+                var _headerHeight = $head.outerHeight();
+                var _contHeight = $cont.outerHeight();
+                var _footerHeight= $footer.outerHeight()
+
+                var _curPopupHeight = footerFlag ? _headerHeight + _contHeight + _footerHeight:_headerHeight + _contHeight;
+                
+                if( $popup.closest('.ui_modal_wrap').length){
+                    if( _minHeight > _curPopupHeight ) {
+                        $popup.css('min-height', _curPopupHeight);
+                    } else {
+                        return
+                    }
+                }
             },
 
             scrollMovedById: function(id){
@@ -2528,5 +2558,9 @@
                 $('html, body').animate({scrollTop:target_top}, 0);
             }
         }
+
+        $(this).on('resize', function(){
+            KRP0008.resize();
+        });
     });
 })();
