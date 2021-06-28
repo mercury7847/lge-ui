@@ -84,13 +84,16 @@
                 var $div = $(this).parents('div.floating-linker');
 
                 if ($div.hasClass('faq')){
+                    console.log('faq');
                     window.open('/support/usage-guide-faq','_blank');
                     return;
                 }
 
                 if($div.hasClass('chat')) {
+                    console.log('chat');
                     //상담쳇
                 } else if($div.hasClass('recently')) {
+                    console.log('recently');
                     //최근본 제품
                     if(!self.listData) {
                         self.requestData(true);
@@ -98,6 +101,7 @@
                         self.openPopup();
                     }
                 } else {
+                    console.log('etc');
                     //
                     e.preventDefault();
                     var href = $(this).attr('href');
