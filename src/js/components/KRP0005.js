@@ -58,7 +58,7 @@
         bindEvents: function() {
             var self = this;
 
-            self.moreButton.on('click',function(e){
+            self.moreButton.off('click').on('click',function(e){
                 e.preventDefault();
                 var isOpen = self.$floatingWrap.hasClass('open');
                 if(isOpen) {
@@ -78,7 +78,7 @@
                 }
             });
 
-            self.$KRP0005.on('click','div.floating-linker > a',function(e){
+            self.$KRP0005.off('click').on('click','div.floating-linker > a',function(e){
               
                 e.preventDefault();
                 var $div = $(this).parents('div.floating-linker');
@@ -107,16 +107,16 @@
                 }
             });
 
-            self.$popup.on('click','.ui_modal_close',function(e){
+            self.$popup.off('click').on('click','.ui_modal_close',function(e){
                 e.preventDefault();
                 self.closePopup();
             });
 
-            $(window).on('floatingTopHide', function(e){
+            $(window).off('floatingTopHide').on('floatingTopHide', function(e){
                 self.$floatingWrap.removeClass('scroll');
             }); 
 
-            $(window).on('floatingTopShow', function(e){
+            $(window).off('floatingTopShow').on('floatingTopShow', function(e){
                 self.$floatingWrap.addClass('scroll');
             }); 
         },
@@ -242,7 +242,7 @@
                 });
     
                 KRP0005.init();
-    
+
                 $(document).trigger('appInit');
                 
             },100);
