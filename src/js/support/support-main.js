@@ -209,7 +209,7 @@
                 el : {
                     slider : $context.find('.support-toggle-list-wrap')
                 },
-                config : {
+                config : { 
                     infinite: false,
                     autoplay: false,
                     dots : true,
