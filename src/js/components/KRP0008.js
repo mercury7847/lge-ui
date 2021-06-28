@@ -1418,7 +1418,7 @@
                     $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
                 })
 
-                self.$specInfoPopup.find('.sibling-btn button').on('click', function(e){
+                self.$specInfoPopup.find('.btn-sibling-select').on('click', function(e){
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
                     var $siblingCont = $currentPopup.find('.sibling-cont');
