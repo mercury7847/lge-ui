@@ -17,6 +17,15 @@
         display: inline-block;
     }
 }
+
+.mo-flex {
+    //display: none;
+    @include mobile {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .mo-h2{
     @include mobile {
         font-size:20px;
@@ -32,12 +41,6 @@
 }
 .select-wrap .ui-selectbox-wrap .ui-select-button .ui-select-text {
     color:#666;
-}
-
-.input-wrap input, .input-wrap textarea{
-    @include mobile{
-        border:1px solid #ddd;
-    }
 }
 .cont-wrap {
     overflow: hidden;
