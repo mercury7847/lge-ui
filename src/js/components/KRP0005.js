@@ -1,6 +1,9 @@
 (function() {
 	var KRP0005 = {
 		init: function(){
+
+            console.log("krp005 init 초기화");
+
             var self = this;
             self.listData = null;
             self.setting();
@@ -49,6 +52,8 @@
                     if(pinCode) {
                         chatUrl += ("&code="+pinCode);
                     }
+
+                    console.log("getChatPinCode %o",$chat);
 
                     $chat.attr('href',chatUrl);
                 });
