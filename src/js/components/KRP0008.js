@@ -595,26 +595,6 @@
                         $('#arPlayPop').vcModal({opener: this});
                     }
                 });
-                
-                //BTOCSITE-1376 사용설명서 팝업 열기
-                $('.item-manual.package').on('click', function(e){
-                    e.preventDefault();
-                    $('#modal-15').vcModal({opener: this});
-                })
-                
-                //BTOCSITE-1376 사용설명서 팝업 푸터 닫기버튼
-                $('#modal-15').on('.pop-footer .btn').on('click', function(e){
-                    var _self = this;
-                    var $modal = $('#modal-15');
-                    var $radio = $modal.find('.model-list input:radio');
-
-                    if( !$radio.filter(':checked').length ) {
-                        var msgTxt = '제품을 선택해주세요';
-                        lgkorUI.alert("", {title: msgTxt}, _self);
-                    } else {
-                        location.href = $radio.filter(':checked').data('model-path');
-                    }
-                })
 
                 $(window).on('appNotInstall', function(e){
                     $('#arPlayPop').vcModal({opener: e.currentTarget});
@@ -639,7 +619,7 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        var isShow = lgkorUI.isShowDate('20210601','20210701')
+                        var isShow = lgkorUI.isShowDate('20210601','20210901')
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
@@ -1438,7 +1418,7 @@
                     $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
                 })
 
-                self.$specInfoPopup.find('.sibling-btn button').on('click', function(e){
+                self.$specInfoPopup.find('.btn-sibling-select').on('click', function(e){
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
                     var $siblingCont = $currentPopup.find('.sibling-cont');

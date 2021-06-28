@@ -239,6 +239,7 @@ var appInit = function() {
     }
 };
 
+
 function ChatbotAppClose(type) {
     // 앱에서 호출될경우
     if(isApp()) {
@@ -257,6 +258,7 @@ function ChatbotAppClose(type) {
         }
     }
 }
+
 
 // 스와이프 적용일때 분기 처리
 $(document).ready(function(){
