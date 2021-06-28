@@ -974,6 +974,9 @@
                 margin-top:24px;
                 @include mobile {
                     margin-top:0;
+                    & + .info-accordion-wrap {
+                        margin-top:12px;
+                    }
                 }
                 .lists {
                     padding: 0 24px;
