@@ -3,6 +3,15 @@ $(window).ready(function(){
 
     $('.KRP0015').buildCommonUI();
     ;(function($, _$){      
+        var compareSelect = 
+            '<div class="select-wrap">'+
+            ' <select class="ui_selectbox" id="compareSelect" name="compareSelect" title="비교하기 카테고리 선택">'+
+            '{{#each item in list}}'+
+            '<option value="{{item.value}}" {{item.selected}}>{{item.label}}</option> '+
+            '{{/each}}'+
+            '</select>'+
+            '</div>';
+
         var itemTemplate =             
             '<div class="item-inner" data-id="{{id}}">'+
             '   <span class="img-area">'+
@@ -34,7 +43,7 @@ $(window).ready(function(){
             $('.btn-compare').on('click', function(e){
                 e.preventDefault();
 
-                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var categoryId = $('.ui_selectbox').length === 0 ? lgkorUI.getHiddenInputData().categoryId : $('.ui_selectbox').vcSelectbox('value');
                 lgkorUI.setCompapreCookie(categoryId);
 
                 //비교하기 비우기
@@ -50,8 +59,8 @@ $(window).ready(function(){
 
             $('.sticy-compare .list-inner li').on('click', '.btn-close', function(e){
                 e.preventDefault();
-
-                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var $uiSelectbox = $('.ui_selectbox');
+                var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
                 var id = $(this).siblings('.item-inner').data("id");
                 lgkorUI.removeCompareProd(categoryId, id);
             });
@@ -63,24 +72,69 @@ $(window).ready(function(){
                 else closeCompareBox();
             });
 
+            var compareCate = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            // 세션스토리지에 이전 데이터 형식이면 초기화 한다.
+            for(var i in compareCate) {   
+                if(vcui.isArray(compareCate[i]) || !compareCate[i].categoryName) {
+                    lgkorUI.removeStorage(lgkorUI.COMPARE_KEY);
+                    break;
+                }
+            }
+
             setCompares();
             setCompareStatus();
-            _$(window).on("changeStorageData", function(){
-                setCompares();
-                setCompareStatus();
+            _$(window).on("changeStorageData", function(e){
+                setCompares(e.name || null);
+                setCompareStatus(e.name || null);
             }).on("excessiveCompareStorage", function(){
                 addToastAlert('excessive');
                 updateCompareButton();
             });
         }
-        function setCompares(){         
-            var categoryId = lgkorUI.getHiddenInputData().categoryId;
+        function setCompares(id){         
+            if(id) {
+                var categoryId = id 
+            } else {
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            }
+ 
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
             var isCompare = vcui.isEmpty(storageCompare);
+            var compareCate = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+
+            // 카테고리가 1개이상이면 selectbox 붙힌다
+            if (Object.keys(compareCate).length > 1) {
+                var selectData = {
+                    'list': []
+                }
+                Object.keys(compareCate).map(function (key) {
+                    var selected = '';
+                    if (categoryId == key) selected = 'selected';
+                    selectData['list'].push({
+                        'label': compareCate[key].categoryName,
+                        'value': key,
+                        'selected': selected
+                    });
+                });
+
+                if ($('.sticy-compare .select-wrap').length > 0) {
+                    $('.sticy-compare .select-wrap').remove();
+                }
+
+                $('.sticy-compare .compare-title').after(vcui.template(compareSelect, selectData))
+                $('.sticy-compare').addClass('cate-select');
+                $('.ui_selectbox').vcSelectbox().on('change', function () {
+
+                    var categoryId = $(this).val();
+                    setCompares(categoryId);
+                    setCompareStatus(categoryId);
+                })
+            }
+
             if(!isCompare){
                 //console.log("### storageCompare ###", storageCompare)
                 if(!vcui.isEmpty(storageCompare)){
-                    var ids = vcui.array.map(storageCompare, function(item){
+                    var ids = vcui.array.map(storageCompare['data'], function(item){
                         return item.id;
                     }).join('|');
                     
@@ -88,26 +142,34 @@ $(window).ready(function(){
                         compareIds = ids;
                         //console.log("### setCompares render ###", compareIds)
                         $('.sticy-compare .list-inner li').empty();
-                        for(i in storageCompare){
-                            //console.log("storageCompare[i]['id']:",storageCompare[i]['id'])
+                        storageCompare['data'].forEach(function(item,i){ 
+                            //console.log("item['id']:",item['id'])
                             list = $('.sticy-compare .list-inner li').eq(i);                    
-                            listItem = vcui.template(itemTemplate, storageCompare[i]);
+                            listItem = vcui.template(itemTemplate, item);
                             list.html(listItem);
-                        }
+                        });
                     }
                 }
             }
 
-            var leng = !storageCompare ? "0" : storageCompare.length;
+            var leng = !storageCompare ? "0" : storageCompare.data.length;
             var $count = $('div.compare-title div.count');
             $count.text(leng + "/" + lgkorUI.getCompareLimit());
             updateCompareButton();
         }
 
-        function setCompareStatus(){
-            var categoryId = lgkorUI.getHiddenInputData().categoryId;
+        function setCompareStatus(id){
+            var $uiSelectbox = $('.ui_selectbox');
+
+            if(id) {
+                var categoryId = id 
+            } else {
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            }
+
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
-            var leng = !storageCompare ? 0 : storageCompare.length;
+
+            var leng = !storageCompare ? 0 : storageCompare.data.length;
             if(leng){
                 //0329 1개 이상이면 열기로 바뀜
                 var limit = 1;
@@ -115,7 +177,6 @@ $(window).ready(function(){
                 if(_$('.KRP0015').css('display') == 'none'){
                     var height = _$('.KRP0015').outerHeight(true);
                     _$('.KRP0015').css({display:'block', y:height});
-
                     if(leng < limit) closeCompareBox();
                     else{
                         if(isFirstOpen){
@@ -136,7 +197,19 @@ $(window).ready(function(){
 
                 isInitChecked = true;
             } else{
-                hideCompareBox();
+                var removeOption = $uiSelectbox.find('option').filter("[value="+categoryId+"]");
+
+                if(removeOption.length > 0) removeOption.remove();
+                if( $uiSelectbox.find('option').length === 1) {
+                    $('.sticy-compare').removeClass('cate-select');
+                    $uiSelectbox.parent().remove();
+                }
+
+                if(lgkorUI.getHiddenInputData().categoryId === categoryId) {
+                    hideCompareBox();
+                } else {
+                    setCompares();
+                }
 
                 if(isInitChecked){
                     isInitChecked = false;
@@ -192,7 +265,16 @@ $(window).ready(function(){
         }
 
         function setClearCompare(){
-            var categoryId = lgkorUI.getHiddenInputData().categoryId;
+            var $uiSelectbox = $('.ui_selectbox');
+            var categoryId = $uiSelectbox.length === 0 ? lgkorUI.getHiddenInputData().categoryId : $uiSelectbox.vcSelectbox('value');
+            var removeOption = $uiSelectbox.find('option').filter("[value="+categoryId+"]");
+
+            if(removeOption.length > 0) removeOption.remove();
+            if( $uiSelectbox.find('option').length === 1) {
+                $('.sticy-compare').removeClass('cate-select');
+                $uiSelectbox.parent().remove();
+            }
+
             lgkorUI.initCompareProd(categoryId);
         }
 

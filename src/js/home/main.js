@@ -980,30 +980,6 @@ $(function () {
     $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
-    /* 20210503 : 모바일앱 다운로드 팝업 */
-   if (vcui.detect.isMobileDevice && !isApp()) {
-        var layer_id = '#mobile-close-popup';
-        var el = $(layer_id);
-        if (el.size() === 0) { return false; }
-        var cookie_name = '__LGAPP_DLOG__';
-
-        if (vcui.Cookie.get(cookie_name) === '') {
-            vcui.modal(layer_id, open);
-            var checkbox = $('#check-today');
-            var download_btn = $('#lg__app-download');
-            download_btn.on('click', function () {
-                goAppUrl();
-                
-                return;
-            });
-            el.find('.ui_modal_close').one('click', function () {
-                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
-                return;
-            });
-        }
-    }
-    /* //20210503 : 모바일앱 다운로드 팝업 */
-
     function setActivePlayByScroll(){
         // BTOCSITE-740
         if (!vcui.detect.isMobileDevice) return;
