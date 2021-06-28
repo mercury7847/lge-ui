@@ -31,7 +31,7 @@
                             '<td>{{item.discountPrice}}</td>'+
                             '<td>'+
                                 '<p>{{item.paymentPrice}}</p>'+
-                                '<button type="button" class="btn border size payMentBtn"><span>자세히 보기</span></button>'+
+                                '<button type="button" class="btn-link size payMentBtn"><span>자세히</span></button>'+
                             '</td>'+
                         '</tr>'+
                     '{{/each}}'+
@@ -109,6 +109,7 @@
                         $(this).on('click', function(){
                             //console.log("팝업이 클릭");
                             //console.log(index);
+
                             var totalTaxes = 0;
                             var listPopTemplate =   
                             '<div class="pop-paymentArea">'+                          
@@ -138,6 +139,9 @@
                             //console.log(result.data.paymentPop[index].totalCardPrice);
                             var payTotalprice = result.data.paymentPop[index].totalCardPrice;
                             result.data.paymentPop[index].totalCardPrice = vcui.number.addComma(payTotalprice);
+
+                            var tetessss = result.data.paymentPop[index].testlist[index].cardPrice;
+                            result.data.paymentPop[index].testlist[index].cardPrice = vcui.number.addComma(tetessss);
 
 
                             var listPop = vcui.template(listPopTemplate, result.data.paymentPop[index]);
