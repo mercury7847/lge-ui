@@ -450,14 +450,14 @@
                 self.codesSortArry = [];
                 self.pdpUniqTitle = [];
                 self.receivedSiblingData = [];
-                self.$siblingWrap = $('.sibling-option');
-                self.$siblingCont = self.$siblingWrap.find('.sibling-cont');
+                self.$specInfoPopup = $('#specInfoPopup'); /* 20210607 스펙선택 추가 */
+                self.$siblingCont = self.$specInfoPopup.find('.sibling-cont');
+                self.$siblingBtnComp = self.$specInfoPopup.find('.btn-sibling-select');
             },
 
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
-                self.$specInfoPopup = $('#specInfoPopup'); /* 20210607 스펙선택 추가 */
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -1366,16 +1366,11 @@
                             }
                         });
                     })
-
-                    //console.log("curModel" , curModel)
-                    
                     var curModelArryOnly = curModel.filter(function(v){
                         if( v!= null && v.length ==1 ) {
                             return true;
                         }
                     })
-                    
-                    //console.log("curModelArryOnlyCheck", curModelArryOnly)
                     
                     if( curModelArryOnly && curModelArryOnly.length == 1) {
                         uniqModelArray = curModelArryOnly[0];
@@ -1386,20 +1381,15 @@
                             });
                         });
                     }
-                    //console.log("uniqModelArray", uniqModelArray)
-                    //console.log("uniqModelArray[0]", uniqModelArray[0])
-
                     //필터링된 모델값이 하나일 경우
                     if( uniqModelArray.length > 0 ) {
-                        if( uniqModelArray.length == 1) {
-                            self.requestSiblingData(uniqModelArray[0], _self)
-                        }  else {
-                            //필터링된 모델값이 여러개일 경우
-                            //console.log('length :: ' + uniqModelArray.length)
-                            self.requestSiblingData(uniqModelArray[0], _self)
-                        }
-                    } else {
-                        //console.log(uniqModelArray)
+                        self.requestSiblingData(uniqModelArray[0], _self)
+                        // if( uniqModelArray.length == 1) {
+                        //     self.requestSiblingData(uniqModelArray[0], _self)
+                        // }  else {
+                        //     //필터링된 모델값이 여러개일 경우
+                        //     self.requestSiblingData(uniqModelArray[0], _self)
+                        // }
                     }
                 });
 
@@ -1411,8 +1401,10 @@
                     self.$specInfoPopup.on('modalshown', function(){
                         var $this = $(this);
                         var $siblingCont = $this.find('.sibling-cont');
- 
-                        $this.data('init-content', $siblingCont.html());
+                        
+                        if( !$this.data('init-content') ) {
+                            $this.data('init-content', $siblingCont.html());
+                        }
                     })
                 });
                 
@@ -1422,7 +1414,7 @@
                     var $currentPopup = $this.closest('#specInfoPopup');
                     $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
                 })
-
+                //BTOCSITE-44 스펙선택(시블링레이어) 선택완료
                 self.$specInfoPopup.find('.btn-sibling-select').on('click', function(e){
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
@@ -1438,6 +1430,7 @@
             },
 
             resizePopup: function($target, footerFlag){
+                //BTOCSITE-44 스펙선택(시블링레이어) 팝업 리사이즈 높이값 조정
                 var $popup = $target;
 
                 var _minHeight= parseInt($popup.css('min-height'))
@@ -2429,80 +2422,76 @@
                     $dm.removeClass('compare-select');
                 }
             },
-            drawSiblingTemplate: function(models, modelId){
-                //템플릿 그리기
+            setCurrentSiblingModel: function(data, modelId){
+                ////BTOCSITE-44 스펙선택(시블링레이어) 옵션 활성화 비활성화 체크, 최종 모델값 필터링
                 var self = this;
-                var optionHTML = "";
-                var currentIndexArry = []
-                var modelFilter = models.filter(function(v){
-                    return v.modelId == modelId
-                })
+                if( data ) {
+                    var $optionList = self.$siblingCont.find('.option-list');
+                    var optionLength = $optionList.length;
+                    var siblingModels = data.siblingModels;
+                    var modelFilteringArray = [];
+                    var currentSiblingArray = [];
 
-                modelFilter.forEach(function(v, i){
-                    var currentCodeIndex = 0;
-                     self.codesSortArry[i][1].forEach(function(arryValue, arryIndex){
-                        if( arryValue.siblingCode == v.siblingCode) currentCodeIndex = arryIndex
-                    })
-                    currentIndexArry.push(currentCodeIndex);
-                })
-
-                // console.log(self.codesSortArry)
-                // console.log(currentIndexArry)
-
-                self.codesSortArry.forEach(function(v, i){
-                    // console.log("currentIndexArry[i]", currentIndexArry[i])
-                    // console.log(v[1][0].siblingType == "COLOR" ? v[1][currentIndexArry[i]].siblingValue : "")
-                    var templateItem = {
-                        optionIndex: i,
-                        pdpTitle: v[0],
-                        itemList: v[1],
-                        currentCheckIndex: currentIndexArry[i],
-                        colorValue: v[1][0].siblingType == "COLOR" ? v[1][currentIndexArry[i]].siblingValue : ""
-                    }
-                    //console.log("templateItem :::", templateItem)
-                    optionHTML += vcui.template(siblingTemplate, templateItem); 
-                })
-
-                self.$siblingCont.attr('data-model-path', modelFilter[0].modelUrlPath);
-
-                $(optionHTML).find('.option-list').each(function(i){
-                    if( $(this).closest('.select-option.color').length ) {
-                        var $colorText = $(this).closest('.sibling-color').find('.color-text');
-                        var _currentColor = $(this).find('.chk-wrap-colorchip').eq(currentIndexArry[i]).attr('title');
-                        //console.log(_currentColor)
-                        $colorText.text(_currentColor);
-                    }
-                })
-                
-                self.$siblingCont.empty().append($(optionHTML));
-            },
-            drawSiblingOptionList: function(data, modelId){
-                var self = this;
-
-                //console.log("DATA #### ", data)
-                self.$siblingCont.data('current-model', modelId);
-                self.$siblingCont.attr('data-current-model', modelId);
-
-                //siblingCodes 템플릿용 그룹화
-                // console.log("data@@@@@")
-                // console.log(data)
-                self.pdpUniqTitle = data.siblingCodes.map(function(v, i){return v.pdpTitle;}).filter(function(item, pos, self) {
-                    return self.indexOf(item) == pos;
-                });
-
-                self.getSiblingCodes(self.pdpUniqTitle);
-                data.siblingCodes.forEach(function(v,i){
-                    //console.log('data siblingsCodes :::' , v)
-                    self.codesSortArry.forEach(function(sortValue, sortIdx){
-                        if( v.pdpTitle == sortValue[0]) {
-                            self.codesSortArry[sortIdx][1].push(v);
+                    self.$siblingCont.find('.option-list').each(function(optionIndex){
+                        var $optionList = $(this);
+                        var $radio = $optionList.find('input:radio');
+                        var radioLength = $radio.length;
+                        
+                        if( optionIndex == 0 ) {
+                            modelFilteringArray[optionIndex] = [];
                         }
-                    })
-                })
-                //siblingCodes 템플릿용 그룹화 END
+                        $radio.each(function(radioIndex){
+                            var $this = $(this);
+                            var _checked = $this.prop('checked');
+                            var _siblingCode = $this.data('sibling-code');
+                            var currentFindModel = [];
+                            
+                            if( optionIndex == 0) {
+                                currentFindModel = siblingModels.filter(function(model){
+                                    return model.siblingCode == _siblingCode;
+                                })
+                            } else {
+                                var modelsId = modelFilteringArray[optionIndex-1].map(function(model){
+                                    return model.modelId
+                                });
+                                if( radioIndex == 0) {
+                                    modelFilteringArray[optionIndex] = [];
+                                }
+                                currentFindModel = siblingModels.filter(function(siblingModel){
+                                    return modelsId.indexOf(siblingModel.modelId) > -1
+                                })
+                                currentFindModel = currentFindModel.filter(function(model){
+                                    return model.siblingCode == _siblingCode;
+                                })
+                            }
+                            
+                            if( currentFindModel.length == 0) {
+                                $this.closest('.rdo-wrap').addClass('disabled');
+                            } else {
+                                $this.closest('.rdo-wrap').removeClass('disabled');
+                            }
 
-                self.drawSiblingTemplate(data.siblingModels, modelId); //그룹화된 siblingsCodes를 템플릿으로 그리기
-                
+                            if( _checked ) {
+                                modelFilteringArray[optionIndex] = currentFindModel;
+                            }
+
+                            if( radioIndex == radioLength-1 && optionIndex == optionLength-1 ) {
+                                currentSiblingArray = modelFilteringArray[optionIndex]
+                            }
+                        });
+                    });
+                    var currentSiblingModel = currentSiblingArray.filter(function(model){
+                        return model.modelId == modelId
+                    })
+
+                    if( currentSiblingModel.length ) {
+                        self.$siblingCont.attr('data-model-path', currentSiblingModel[0].modelUrlPath);
+                        self.$siblingBtnComp.prop('disabled', false)
+                    } else {
+                        self.$siblingCont.removeAttr('data-model-path');
+                        self.$siblingBtnComp.prop('disabled', true)
+                    }
+                }
             },
             getSiblingCodes: function(uniqTitleArray){
                 var self = this;
@@ -2520,16 +2509,16 @@
                 
                 console.log("request MODEL ID ::: ", modelId)
                 if( ajaxUrl && ajaxUrl != "" ) {
-                    lgkorUI.showLoading();
+                    // lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(ajaxUrl, {modelId: modelId}, function(resultData) {
                         if( resultData.status == "success" && resultData.data) {
                             self.defaultSiblingDataFlag = false;
                             self.receivedSiblingData = resultData.data;
-                            self.drawSiblingOptionList(resultData.data[0], modelId)
-                            lgkorUI.hideLoading();
+                            self.setCurrentSiblingModel(resultData.data[0], modelId)
+                            // lgkorUI.hideLoading();
                         } else {
                             if( resultData.message ) {
-                                lgkorUI.hideLoading();
+                                // lgkorUI.hideLoading();
                                 lgkorUI.alert("", {
                                     title: resultData.message,
                                     ok: function(el) {
