@@ -106,7 +106,7 @@
             '</div>' +
         '</div>' +
     '</a></li>';
-    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
+    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -276,6 +276,20 @@
                     "discounted_price":(item.price && item.price > 0) ? item.price : "",
                     "brand":"LG",
                     "category":item.superCategoryName + "/" + item.categoryName
+                }
+                return JSON.stringify(param);
+            },
+            makeAdditionalGAData: function(item) {
+                var param = {
+                    "model_name":item.title,
+                    "model_id":item.model_id,
+                    "model_sku":item.sku,
+                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "rental_price":(item.rental_price && item.rental_price > 0) ? item.carePrice : "",
+                    "price":(item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
+                    "discounted_price":(item.price && item.price > 0) ? item.price : "",
+                    "brand":"LG",
+                    "category":item.category
                 }
                 return JSON.stringify(param);
             },
@@ -696,16 +710,28 @@
 
             //검색버튼 검색
             requestSearchInput:function(value) {
+                //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
-                    self.openSearchInputLayer(false);
-                    var data = result.data;
-                    //검색어 저장
-                    self.$contentsSearch.attr('data-search-value',value);
-                    self.$contentsSearch.attr('data-search-force',false);
-                    var tab = self.getTabItembyCategoryID(data.category);
-                    self.sendSearchPage(tab.attr('href'),value,false);
+                
+                lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    if(result.data && result.data.success == 'Y' && result.data.url) {
+                        if(result.data.linkTarget == 'self') {
+                            location.href = result.data.url;
+                        } else {
+                            window.open(result.data.url,'_blank');
+                        }
+                    } else {
+                        lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
+                            self.openSearchInputLayer(false);
+                            var data = result.data;
+                            //검색어 저장
+                            self.$contentsSearch.attr('data-search-value',value);
+                            self.$contentsSearch.attr('data-search-force',false);
+                            var tab = self.getTabItembyCategoryID(data.category);
+                            self.sendSearchPage(tab.attr('href'),value,false);
+                        });
+                    }
                 });
             },
 
@@ -860,6 +886,7 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            item.ga = self.makeAdditionalGAData(item);
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;

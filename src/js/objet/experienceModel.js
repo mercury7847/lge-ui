@@ -3652,21 +3652,14 @@
         ]
     }
 
-
-
-
-
-
-
-
     $(document).ready(function() {
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
-                if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-                    location.reload();
-                }
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                location.reload();
             }
-            //초기셋팅
+        }
+        //초기셋팅
         modelSimulator.init();
 
         $(document).on("click", function(e) {
@@ -3698,6 +3691,39 @@
         $(window).on("scroll", function() {
             simulPositionAutoMove();
         });
+
+        
+
+        /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
+        var $objLocation = location.pathname;
+        var $objHeader = $('.header');
+        var $objBreadcrb = $('.breadcrumb');
+        var $objContent = $('.model_experience');
+        var $objTopNavi = $('.brand-wrap');
+        var $objMyPickBtn = $('.myPick');
+        var $objFooter = $('footer');
+
+        if($objContent.attr('data-page-type') === 'COMMON') {
+            //console.log("common");
+        }
+        if($objContent.attr('data-page-type') === 'NEWBEST') {
+            console.log("NEWBEST");
+            $objHeader.hide();
+            $objBreadcrb.hide();
+            $objTopNavi.hide();
+            $objMyPickBtn.hide();
+            $objFooter.hide();
+        }
+        if($objContent.attr('data-page-type') === 'HIMART') {
+            console.log("HIMART");
+            $objHeader.hide();
+            $objBreadcrb.hide();
+            $objTopNavi.hide();
+            $objMyPickBtn.hide();
+            $objFooter.hide();
+        }
+        /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+
 
         //추천조합 열기
         $(".proposeModel").on("click", function() {
@@ -4092,15 +4118,21 @@
                     }
                 };
                 var desc = '';
-                obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                let popLoginCheck = $("meta[name='login']").attr("content");
-                // console.log("popLoginCheck", popLoginCheck);
-                if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
-                    desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
-                } else {
-                    desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+
+                /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
+                if($objContent.attr('data-page-type') === 'COMMON') {
+                    obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                    let popLoginCheck = $("meta[name='login']").attr("content");
+                    // console.log("popLoginCheck", popLoginCheck);
+                    if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
+                        desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    } else {
+                        desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                    }
+                    lgkorUI.confirm(desc, obj);
                 }
-                lgkorUI.confirm(desc, obj);
+                /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+
                 modelSimulator.mobileStep(".simul_step3");
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
@@ -5575,6 +5607,7 @@
                     _thisModel.push(myPickSet.myPickConfig[i]);
                 }
             }
+            
             setTimeout(function() {
                 if (_thisModel.length > 0) {
                     let imgCate;
@@ -5698,20 +5731,19 @@
                     contHtml += '</div>';
 
                     $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(contHtml);
-                    $(".color_my_pick").slideDown() //.addClass("is_active");
-                    setTimeout(function() {
-                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
-                    }, 10);
-
                 } else {
                     let nodataHtml = '<div class="swiper-slide nodata"><span class="comment">나만의 조합을 만들어 저장해 보세요.</span></div>';
                     $(".color_my_pick .color_my_pick_body .swiper-wrapper").html(nodataHtml);
-                    $(".color_my_pick").slideDown() //.addClass("is_active");
-                    setTimeout(function() {
-                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
-                    }, 10);
-
                 }
+                $(".color_my_pick").stop().slideDown() //.addClass("is_active");
+                if( window.innerWidth < 768) {
+                    $('html, body').stop().animate({
+                        scrollTop: $('.simul_body').offset().top - $('.objetcollection-tabs').outerHeight()
+                    })
+                }
+                setTimeout(function() {
+                  slideWrapAutoSize(".color_my_pick .color_my_pick_body");
+                }, 10);
             }, 10);
 
 
@@ -5722,12 +5754,12 @@
         //추천제품 닫기
         closeProposeModel: function() {
             //$(".color_best").aremoveClass("is_active");
-            $(".color_best").slideUp(); //.addClass("is_active");
+            $(".color_best").stop().slideUp(); //.addClass("is_active");
         },
         //나의오브제 닫기
         closeMyPickModel: function() {
             //$(".color_best").aremoveClass("is_active");
-            $(".color_my_pick").slideUp(); //.addClass("is_active");
+            $(".color_my_pick").stop().slideUp(); //.addClass("is_active");
         },
         //pdp에서 넘어왔을때 해당 제품 스텝2로 셋팅
         pdpProductStep: function(modelCode) {

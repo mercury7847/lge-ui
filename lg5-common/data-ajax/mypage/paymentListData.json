@@ -41,6 +41,138 @@
                 "paymentPrice": "88,800원"
             }
         ],
+        "paymentPop":[
+            {
+                "tnNumber": "5",
+                "testlist":[
+                    {
+                        "cardName": "멤버십 포인트",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "25000"
+                    }
+                ],
+                "totalCardPrice" : "22000"
+            },
+            {
+                "tnNumber": "4",
+                "testlist":[
+                    {
+                        "cardName": "멤버십 포인트",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "삼성카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    }
+                ],
+                "totalCardPrice" : "12000"
+            },
+            {
+                "tnNumber": "3",
+                "testlist":[
+                    {
+                        "cardName": "신한카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "11000"
+                    },
+                    {
+                        "cardName": "우리은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "24000"
+                    },
+                    {
+                        "cardName": "하나은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "11000"
+                    }
+                ],
+                "totalCardPrice" : "63000"
+            },
+            {
+                "tnNumber": "2",
+                "testlist":[
+                    {
+                        "cardName": "삼성카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "신한카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "1000"
+                    },
+                    {
+                        "cardName": "우리은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "2000"
+                    },
+                    {
+                        "cardName": "하나은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "11000"
+                    }
+                ],
+                "totalCardPrice" : "10000"
+            },
+            {
+                "tnNumber": "1",
+                "testlist":[
+                    {
+                        "cardName": "멤버십 포인트",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "삼성카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "신한카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "1000"
+                    },
+                    {
+                        "cardName": "우리은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "2000"
+                    },
+                    {
+                        "cardName": "하나은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "11000"
+                    },
+                    {
+                        "cardName": "멤버십 포인트",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "삼성카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "5000"
+                    },
+                    {
+                        "cardName": "신한카드",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "1000"
+                    },
+                    {
+                        "cardName": "우리은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "25000"
+                    },
+                    {
+                        "cardName": "하나은행",
+                        "cardNumber" : "1234-1234-1234-1234",
+                        "cardPrice" : "11000"
+                    }
+                ],
+                "totalCardPrice" : "222000"
+            }
+        ],
         "periodSortSelect": "AA",
         "periodSortList":[
             {
@@ -61,7 +193,7 @@
             }
         ],
         "description":[
-            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
+            "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
             "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
         ]
     }

@@ -50,7 +50,8 @@
                             <!-- 내역 -->
                             <div class="section-wrap">
                                 <!-- [2021.01.21] 데이터 없을 경우 아래 <div class="sects">은 삭제하면 안됩니다. display:none; 처리만 해주세요-->
-                                <div class="no-data"><p>검색된 결과가 없습니다.</p></div>
+
+                                <!-- <div class="no-data"><p>검색된 결과가 없습니다.</p></div> -->
                                 <div class="sects" style="display:none;">
                                     <!-- sorting -->
                                     <div class="list-sorting">
@@ -73,12 +74,13 @@
 
                                     <!-- table -->
                                     <!-- [12.01 수정] .tb-scroll 으로 DOM 감싸기 -->
-                                    <div class="tb-scroll">
+                                    <!-- <div class="tb-scroll">
                                         <div class="tb_row tb-row-bl">
                                             <table>
                                                 <caption>연차별 납부내역을 회차, 납부일, 청구금액, 할인금액, 납부금액순으로 안내</caption>
                                                 <colgroup>
                                                     <col style="width:12%">
+                                                    <col>
                                                     <col>
                                                     <col>
                                                     <col>
@@ -91,6 +93,7 @@
                                                         <th scope="col">청구금액</th>
                                                         <th scope="col">할인금액</th>
                                                         <th scope="col">납부금액</th>
+                                                        <th scope="col">결제정보</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -100,6 +103,7 @@
                                                         <td>88,800원</td>
                                                         <td>0원</td>
                                                         <td>88,800원</td>
+                                                        <td>자세히보기</td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
@@ -107,6 +111,7 @@
                                                         <td>88,800원</td>
                                                         <td>0원</td>
                                                         <td>88,800원</td>
+                                                        <td>자세히보기</td>
                                                     </tr>
                                                     <tr>
                                                         <td>1</td>
@@ -114,17 +119,18 @@
                                                         <td>88,800원</td>
                                                         <td>0원</td>
                                                         <td>88,800원</td>
+                                                        <td>자세히보기</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- // [12.01 수정] .tb-scroll 으로 DOM 감싸기 -->
                                     <!-- // table -->
 
                                     @@include('./common/modules/bullet-list.html', {
                                         "bulletTxt" : [
-                                            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
+                                            "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
                                             "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
                                         ]
                                     })
@@ -135,9 +141,16 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- // mypage -->
         </div>
+
+        <!-- 계약서 발급 신청 -->
+        @@include('./common/popup/ACCF7027_pop.html', {
+            popupID: 'popup-paymentHistory'
+        })
+        <!-- 계약서 발급 신청-->
         
         @@include('./common/footer.html')
     </div>

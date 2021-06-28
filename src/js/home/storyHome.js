@@ -112,28 +112,33 @@
 
     history.scrollRestoration = 'manual';
 
+    var $context = !!$('[data-hash="story"]').length ? $('[data-hash="story"]') : $(document);
+
     function init(){      
-        STORY_LIST_URL = $('.contents.story-main').data("storyList");
-        IS_LOGIN = $('.contents.story-main').data("loginflag");
-        STORY_URL = $('.contents.story-main').data("storyUrl");
-        TAG_MANAGER_URL = $('.contents.story-main').data("tagMngUrl");
-        LOGIN_URL = $('.contents.story-main').data("loginUrl");
+        STORY_LIST_URL = $context.find('.contents.story-main').data("storyList");
+        IS_LOGIN = $context.find('.contents.story-main').data("loginflag");
+        STORY_URL = $context.find('.contents.story-main').data("storyUrl");
+        TAG_MANAGER_URL = $context.find('.contents.story-main').data("tagMngUrl");
+        LOGIN_URL = $context.find('.contents.story-main').data("loginUrl");
 
         vcui.require(['ui/carousel', "ui/sticky"], function () {
-            $('.story-review .slide-controls').hide();
-            console.log($('.story-review .indi-wrap'))
+            $context.find('.story-review .slide-controls').hide();
+            //console.log($('.story-review .indi-wrap'))
             $(window).on('breakpointchange', function(e){
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){ 
-                    $('.story-review').find('.indi-wrap').show();
-                    $('.story-review').vcCarousel({
+                    $context.find('.story-review').find('.indi-wrap').show();
+                    $context.find('.story-review').vcCarousel({
                         variableWidth: true,
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }else if(breakpoint.name == 'pc'){   
-                    $('.story-review').find('.indi-wrap').hide();
-                    $('.story-review').vcCarousel('destroy');
+                    $context.find('.story-review').find('.indi-wrap').hide();
+                    $context.find('.story-review').vcCarousel('destroy');
                 }    
             });
             $(window).trigger('breakpointchange');
@@ -145,10 +150,10 @@
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
                 if(storyUserHeight){
-                    $('#content').find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
+                    $context.find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
                 }
                 if(storyNewHeight){
-                    $('#content').find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
+                    $context.find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
                 }
 
                 if(storyHomeScrollTop) {
@@ -158,7 +163,7 @@
 
             loadStoryList('new_story', 1, 'NewStory');
 
-            $('.user_story').hide();
+            $context.find('.user_story').hide();
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, 'UserStory');
             } 
@@ -177,7 +182,7 @@
             resize();
         });
 
-        $('.story-section').on('click', '.btn-moreview', function(e){
+        $context.find('.story-section').on('click', '.btn-moreview', function(e){
             e.preventDefault();
 
             var section = $(this).closest('.story-section');
@@ -185,12 +190,12 @@
 
             if(section.hasClass('user_story')){
                 if(page == 1){
-                    userHeight = $('#content').find('.user_story > .inner > .flexbox-wrap').height();
+                    userHeight = $context.find('#content').find('.user_story > .inner > .flexbox-wrap').height();
                 }
                 loadStoryList('user_story', page+1, "UserStory");
             } else{
                 if(page == 1){
-                    newsHeight = $('#content').find('.new_story > .inner > .flexbox-wrap').height();
+                    newsHeight = $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
                 }
                 loadStoryList('new_story', page+1, 'NewStory');
             }
@@ -198,13 +203,13 @@
             e.preventDefault();
 
             if(IS_LOGIN == "Y"){
-                var userlistbox = $('.user_story').find('.flexbox-wrap');
+                var userlistbox = $context.find('.user_story').find('.flexbox-wrap');
                 if(userlistbox.children().length > 0){
-                    $('.user_story').find('.story-title-area').show();
-                    $('.user_story').show();
+                    $context.find('.user_story').find('.story-title-area').show();
+                    $context.find('.user_story').show();
                     setRepositionTagBox($('.user_story'));
                 } else{
-                    $('.tag-subscribe-story').show();
+                    $context.find('.tag-subscribe-story').show();
                 }
             }
             
@@ -214,8 +219,8 @@
             } else{
                 loadStoryList('user_story', 1, 'UserStory');
 
-                $('.new_story').show();
-                setRepositionTagBox($('.new_story'));
+                $context.find('.new_story').show();
+                setRepositionTagBox($context.find('.new_story'));
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -227,21 +232,26 @@
             requestTagMngPop(this);
         });
 
-        $('#popup-tagMnger').on('click', '.btn-group button', function(e){
+        console.log(232323)
+
+        $(document).on('click', '#popup-tagMnger .btn-group button', function(e){
             e.preventDefault();
 
             var ajaxurl = $(this).data("submitUrl");
+            console.log("button ajaxurl", ajaxurl)
             setTagMngOK(ajaxurl);
-        }).on('change', 'input[type=checkbox]', function(){
+        })
+        $(document).on('change', '#popup-tagMnger input[type=checkbox]', function(){
+            console.log(444)
             setTagMngChecked();
         });
 
         $(window).on('floatingTopHide', function(e){
-            $('.floating-wrap .easy-path').removeClass('scroll');
+            $context.find('.floating-wrap .easy-path').removeClass('scroll');
         }); 
 
         $(window).on('floatingTopShow', function(e){
-            $('.floating-wrap .easy-path').addClass('scroll');
+            $context.find('.floating-wrap .easy-path').addClass('scroll');
         }); 
 
         $(document).on('click', 'a', function(e){
@@ -255,8 +265,8 @@
                 }else{
 
                     if(window.sessionStorage){  
-                        var user = userHeight>0? userHeight : $('#content').find('.user_story > .inner > .flexbox-wrap').height();
-                        var news = newsHeight>0? newsHeight : $('#content').find('.new_story > .inner > .flexbox-wrap').height();
+                        var user = userHeight>0? userHeight : $context.find('#content').find('.user_story > .inner > .flexbox-wrap').height();
+                        var news = newsHeight>0? newsHeight : $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
                         var scrollTop = $('html,body').scrollTop();
 
                         if(scrollTop > parseInt(user)+parseInt(news)){
@@ -273,6 +283,7 @@
     }
 
     function setTagMngChecked(){
+        console.log("$context.find('#popup-tagMnger').find('.btn-group button').length", $('#popup-tagMnger').find('.btn-group button').length)
         $('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
 
         setTagMngCount();
@@ -295,6 +306,8 @@
 
     function setTagMngOK(ajaxurl){
         lgkorUI.showLoading();
+        
+        console.log("ajaxurl", ajaxurl)
 
         var sendata = {tag:[]}
         $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
@@ -304,6 +317,8 @@
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
             lgkorUI.hideLoading();
+            
+            console.log("result", result)
 
             $('#popup-tagMnger').vcModal('close');
 
@@ -325,7 +340,7 @@
     function requestTagMngPop(dm){
         if(IS_LOGIN == "Y"){
             lgkorUI.requestAjaxData(TAG_MANAGER_URL, null, function(result){
-                $('#popup-tagMnger').empty().html(result).vcModal({opener:$(dm)});
+                $context.find('#popup-tagMnger').empty().html(result).vcModal({opener:$(dm)});
     
                 addTagMngInitData();
             }, null, "html");
@@ -381,6 +396,7 @@
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
         lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
+
             if(result.data.loginUrl){
                 location.href = result.data.loginUrl;
 
@@ -413,13 +429,13 @@
 
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
 
-                $('.user_story').find('.story-title-area').hide();
+                $context.find('.user_story').find('.story-title-area').hide();
             } else{
                 viewMode = "listMode";
 
                 sectionItem.find('.inner h2.title').show();
 
-                $('.user_story').find('.story-title-area').show();
+                $context.find('.user_story').find('.story-title-area').show();
             }
             
             if(result.data.storyList && result.data.storyList.length > 0){
@@ -440,7 +456,7 @@
                 if(page == 1){ 
                     if(IS_LOGIN == "Y"){
                         if(viewMode == "listMode" && sectioname == "user_story"){
-                            $('.tag-subscribe-story').empty().hide();
+                            $context.find('.tag-subscribe-story').empty().hide();
 
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
@@ -450,24 +466,24 @@
                         if(sectioname == "new_story"){
                             //$('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                             /* 20210518 추가 */
-                            $('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                            $context.find('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                             /* //20210518 추가 */
-                            $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                            $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                         }
                     }
 
                     if(viewMode == "selectTagMode"){
                         if(sectioname == "new_story"){
-                            $('.user_story').hide();
-                        } else $('.new_story').hide();
+                            $context.find('.user_story').hide();
+                        } else $context.find('.new_story').hide();
 
-                        $('.tag-subscribe-story').hide();
+                        $context.find('.tag-subscribe-story').hide();
                     }
                 }
 
                 if(sectioname == "new_story"){
                     if(IS_LOGIN == "Y"){
-                        var userlistbox = $('.user_story').find('.flexbox-wrap');
+                        var userlistbox = $context.find('.user_story').find('.flexbox-wrap');
                         if(userlistbox.children().length > 0){
                             if(viewMode == "selectTagMode") sectionItem.find('.inner h2.title').hide();
                             else sectionItem.find('.inner h2.title').show();
@@ -477,7 +493,7 @@
                     }
                 } else{
 
-                    $('.new_story').find('.inner h2.title').show();
+                    $context.find('.new_story').find('.inner h2.title').show();
                 }
                 
                 setRepositionTagBox(sectionItem);
@@ -485,14 +501,19 @@
                 if(sectioname == "user_story"){ 
                     // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags})); 
                     /* 20210518 추가 */    
-                    $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                    $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                     /* //20210518 추가 */
-                    $('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                    $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
 
-                    $('.new_story').find('.inner h2.title').hide();
+                    $context.find('.new_story').find('.inner h2.title').hide();
                 }
                 sectionItem.hide();
             }
+            // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
+            if (typeof(mainSwiper) !== 'undefined'){
+                mainSwiper.swiper.updateAutoHeight();
+            }
+        
         });
     }
 
@@ -590,8 +611,8 @@
     }
 
     function resize(){
-        setRepositionTagBox($('.user_story'));
-        setRepositionTagBox($('.new_story'));
+        setRepositionTagBox($context.find('.user_story'));
+        setRepositionTagBox($context.find('.new_story'));
     }
 
     $(document).ready(function(){

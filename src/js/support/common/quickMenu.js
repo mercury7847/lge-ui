@@ -14,7 +14,7 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             }
             
             self._setting();
-            self._bindEvent();
+            self._bindEvent();            
         },
         _setting: function setting() {
             var self = this;
