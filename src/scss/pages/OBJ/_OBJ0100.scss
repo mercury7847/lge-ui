@@ -1281,6 +1281,16 @@
                     }
                 }
                 &.list12 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/aircon_02.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-aircon-hover_02.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list13 {
                     background: #eae9e7 url("/lg5-common/images/OBJ/main/aircon.png") no-repeat center center;
                     @include mobile {
                         background-size: 90%;
