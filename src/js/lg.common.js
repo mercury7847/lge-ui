@@ -662,6 +662,7 @@ var goAppUrl = function(path) {
                 // }, 200));
                 ///////////////////////////////////////////////////////////////////////
 
+                
                 //공통 js-pop a태그 처리...
                 $doc.off('click').on('click', '.js-popup', function(e){
                     e.preventDefault();
