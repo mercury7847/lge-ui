@@ -24,18 +24,17 @@
                     $(popupId).vcModal({opener: this});
                 }
             })
-            
+
             //BTOCSITE-1376 사용설명서 팝업 푸터 닫기버튼
-            self.$selectPopup.find('.pop-footer .btn').on('click', function(e){
+            $('.popup-package-model').find('.pop-footer .btn').on('click', function(e){
                 var _self = this;
-                self.packageSelect(_self)
+                var $targetPopup = $(this).closest('.popup-package-model')
+                self.packageSelect(_self, $targetPopup)
             })
         },
-        packageSelect: function(alertTarget){
+        packageSelect: function(alertTarget, $targetPopup){
             //BTOCSITE-1376 사용설명서 팝업 푸터 닫기버튼 클릭시 실행 이벤트
-            var self = this;
-            var $radio = self.$selectPopup.find('.model-list input:radio');
-
+            var $radio = $targetPopup.find('.model-list input:radio');
             if( !$radio.filter(':checked').length ) {
                 var msgTxt = '제품을 선택해주세요';
                 lgkorUI.alert("", {title: msgTxt}, alertTarget);
@@ -45,9 +44,9 @@
         }
     };
 
-$(document).ready(function(){
-    if(!document.querySelector('.KRP0013')) return false;
-    $('.KRP0013').buildCommonUI();
-    KRP0013.init();
-});
+    $(document).ready(function(){
+        if(!document.querySelector('.KRP0013')) return false;
+        $('.KRP0013').buildCommonUI();
+        KRP0013.init();
+    });
 })();
