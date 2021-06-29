@@ -82,6 +82,15 @@ header {
         background-color: $color-bg-wt;
         position: relative;
         z-index: 99;
+        &:before {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: $color-border;
+            content: '';
+        }
         .tabs-wrap {
             max-width: 1380px + 80px;
             margin: 0 auto;
@@ -89,25 +98,6 @@ header {
             text-align: left;
             @include mobile {
                 padding-top: 32px;
-            }
-            &:before {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                height: 1px;
-                background: $color-border;
-                content: '';
-            }
-            @include pc {
-                padding-right: 40px;
-                padding-left: 40px;
-            }
-            @media screen and (min-width:(1380px + 80px)) {
-                &:before {
-                    right: 40px;
-                    left: 40px;
-                }
             }
             .tabs {
                 @include mobile {
@@ -225,6 +215,57 @@ header {
             border-color: inherit;
             background-image: none;
             color: inherit;
+        }
+    }
+
+    .banner-wrap {
+        display: flex;
+        position: relative;
+        //align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 100%;
+        height: 800px;
+        padding: 60px 270px 0;
+        background: #f4f4f4;
+        .text-wrap {
+            flex: 1 0 auto;
+            max-width: 35.313vw;
+            margin-top: 125px;
+            .title {
+                &-en {
+                    font-size: 100px;
+                    font-family: Inter;
+                    font-weight: bold;
+                    line-height: 1.8;
+                    color: #101010;
+                }
+                &-kr {
+                    margin-top: 10px;
+                    font-size: 64px;
+                    font-weight: bold;
+                    line-height: 1.19;
+                    color: #000;
+                }
+                &-sub {
+                    margin-top: 20px;
+                    font-size: 22px;
+                    font-weight: normal;
+                    line-height: 1.55;
+                    color: #000;
+                }
+            }
+            .desc {
+                margin-top: 20px;
+                font-size: 12px;
+                line-height: 1.5;
+                color: #666;
+            }
+        }
+        > img {
+            align-self: baseline;
+            width: 29.010vw;
+            height: auto;
         }
     }
 }
