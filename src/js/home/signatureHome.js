@@ -639,14 +639,16 @@ $(function() {
         // 접근성 탭 이동시 화면처리
         $(document).on('focusin', function(e){
 
+            /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
             if($.contains($('.signature-wrap')[0], e.target)){
                 currentPage = pageLens;
                 currentStep = stepLens;
-            }else if($.contains($('.signature-hero')[0], e.target)){
-                // currentPage = 0;
-                // currentStep = 0;
             }
-
+            // else if($.contains($('.signature-hero')[0], e.target)){
+            //     // currentPage = 0;
+            //     // currentStep = 0;
+            // }
+            /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         });
 
         //전시기록 더보기...
