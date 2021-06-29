@@ -33,7 +33,7 @@
                         <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="input-wrap">
-                                <input type="text" value="" id="inp01" class="inq-name">
+                                <input type="text" name="userName" value="" id="inp01" class="inq-name">
                             </div>
                         </dd>
                     </dl>
@@ -41,13 +41,13 @@
                         <dt class="tit"><label for="inp02" class="req">휴대전화번호<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                                <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" name="phonePrefix">
                                     <option value="010" class="">010</option>
                                     <option value="" class=""></option>
                                 </select>
                             </div>
                             <div class="phone-input-wrap input-wrap">
-                                <input type="text" id="inp02" value="" placeholder="'-' 없이 숫자만 입력">
+                                <input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력">
                             </div>
                         </dd>
                     </dl>
@@ -59,7 +59,7 @@
                                     <input type="text" id="inp03" placeholder="이메일을 입력하세요." name="userEmail" value="" data-required="true">
                                 </div>
                                 <div class="select-wrap">
-                                    <select class="ui_selectbox" id="select2" title="전체 카테고리 선택">
+                                    <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" name="emailProvider">
                                         <option value="" class="">직접입력</option>
                                         <option value="naver.com" class="">naver.com</option>
                                         <option value="gmail.com" class="">gmail.com</option>
@@ -442,8 +442,8 @@
                                     </table>
                                 </div>
                                 <div class="btn-wrap pc-only">
-                                    <button type="button" class="btn gray"><span>온라인 견적 문의 내역 조회</span></button>
-                                    <button type="button" class="btn"><span>온라인 견적 문의하기</span></button>
+                                    <button type="button" class="btn gray confirmBtn"><span>온라인 견적 문의 내역 조회</span></button>
+                                    <button type="button" class="btn inqueryBtn"><span>온라인 견적 문의하기</span></button>
                                 </div>
                             </div>
                             
@@ -453,8 +453,8 @@
                 </div>
             </div>
             <div class="btn-wrap mo-only">
-                <button type="button" class="btn gray mo"><span>문의 내역 조회</span></button>
-                <button type="button" class="btn mo"><span>온라인 견적 문의하기</span></button>
+                <button type="button" class="btn gray mo confirmBtn"><span>문의 내역 조회</span></button>
+                <button type="button" class="btn mo inqueryBtn"><span>온라인 견적 문의하기</span></button>
             </div>
         </div>
 
@@ -474,6 +474,10 @@
     </div>
     <!-- //210226 플로팅버튼 추가 -->
 </div>
+
+<!-- <script src="/lg5-common/js/support-common.min.js"></script> -->
+<script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
+<script src="/lg5-common/js/store/systemAircon.min.js"></script>
 
 </body>
 </html>
