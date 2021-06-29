@@ -282,6 +282,32 @@
                 height:640px;
                 .slide-conts {
                     height:640px;
+                    .signatureVisualTextArea {
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(0px, -50%);
+                        right: 0;
+                        left: 0;
+                        z-index: 2;
+                        text-align: center;
+                        color:#fff;
+                        p {
+                            position: relative;
+                        }
+                        .btn-group{
+                            &.youtube-box {
+                                position: relative;
+                                a {
+                                    border-color: #fff!important;
+                                    background-image: none;
+                                    color: #fff; 
+                                    &:hover {
+                                        border-color: #da0f47!important;
+                                    }
+                                }
+                            }
+                        } 
+                    }
                     .bg {
                         background-size:cover;
                         
