@@ -13,7 +13,7 @@
                     '{{# if (typeof date != "undefined" || date != "") { #}}' +
                     '<li>{{date}}</li>' +
                     '{{# } #}}' +
-                    // start 210621 BTOCSITE-1902 start-사용설명서의 OS 정보 노출 요청 추가
+                    // start 210621 BTOCSITE-1902 사용설명서의 OS 정보 노출 요청 추가
                     '{{# if (os != "") { #}}' +
                     '<li>OS</li>' +
                     '{{# } #}}' +
