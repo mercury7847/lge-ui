@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_beauty_80" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke:#070203;stroke-linecap:round;stroke-width:3px}.cls-2{stroke-miterlimit:10}.cls-3{stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="Group_177" transform="translate(107.647 -917.931)">
+        <path id="Rectangle-61" fill="none" d="M0 0H80V80H0z" transform="translate(-107.647 917.931)"/>
+        <g id="Group_176">
+            <g id="Group_175">
+                <g id="Group_174">
+                    <g id="Group_173">
+                        <path id="Path-99" d="M-32.347 952.016h-9.1" class="cls-2"/>
+                        <path id="Path-99-2" d="M-32.347 963.847h-9.1" class="cls-2"/>
+                    </g>
+                    <path id="Path_88" d="M-55.254 939.474H-97.3a5.664 5.664 0 0 0-5.648 5.679v26.337a4.885 4.885 0 0 0 4.872 4.9h42.822z" class="cls-3"/>
+                    <path id="Path_89" d="M-55.254 970h8.154a5.664 5.664 0 0 0 5.648-5.68v-13.559a4.885 4.885 0 0 0-4.871-4.9h-8.933z" class="cls-3"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
