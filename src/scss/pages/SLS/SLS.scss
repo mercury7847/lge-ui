@@ -340,8 +340,8 @@ br.pc {
             @include mobile{ //210629
                 width: calc(33.33% - 18px);
             }
-            @media screen and (max-width:280px){
-                width: calc(33% - 10px);
+            @media screen and (max-width:361px){
+                width: calc(33.33% - 10px);
             }
 
             > span, 
@@ -366,15 +366,19 @@ br.pc {
                     background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                     //210629
                     @media screen and (max-width:1024px) {
-                        right:-3px; 
-                        bottom:30px;
+                        right:-5px;
+                        bottom:21px;
                         width:16px;
                         height:16px;
                         background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
                     }
+                    @include mobile{
+                        right:3px; 
+                        bottom:21px;
+                    }
                     @media screen and (max-width :280px){
                         right:30px;
-                        bottom:9px;
+                        bottom:5px;
                     }
                     //210629
                 }
@@ -387,7 +391,7 @@ br.pc {
                 }
                 @media screen and (max-width: 1024px){
                 //@include mobile {
-                    padding:90px 3px 30px;
+                    padding:80px 3px 20px;
                     margin: 0;
                     text-align: center;
                     max-width:100px;
@@ -396,16 +400,17 @@ br.pc {
                 }
                 //210629
                 @include mobile{
-                    padding:90px 10px 30px;
+                    padding:80px 10px 20px;
                     max-width:90px;
                     font-size:12px;
                     line-height:20px;
                 }
                 @media screen and (max-width: 334px){
-                    padding: 90px 5px 30px;
+                    padding: 80px 5px 20px;
                 }
                 @media screen and (max-width: 280px){
-                    padding: 90px 0 30px;
+                    padding: 80px 0 20px;
+                    max-width:79px;
                 }
                 //210629
                 &:before {
@@ -501,6 +506,28 @@ br.pc {
                 }
             }
         }
+        //210629
+        li:nth-child(1), li:nth-child(2){
+            > a {
+                &:after{
+                    @media screen and (max-width: 1024px){
+                        right:5px;
+                        bottom:22px;
+                    }
+
+                    @include mobile{
+                        right:9px;
+                        bottom:21px;
+                    }
+
+                    @media screen and (max-width :280px){
+                        right:30px;
+                        bottom:5px;
+                    }
+                }
+            }
+        }
+        //210629
     }
     /* 210531 케어솔루션 홈 버튼 로그인후 버튼 영역 */
     .link-list.list02 {
@@ -511,19 +538,39 @@ br.pc {
                     bottom:30px;
                 }
                 @media screen and (max-width: 1024px){
-                    right:-13px;
-                    bottom:30px;
+                    right:-5px;
+                    bottom:22px;
                 }
                 @include mobile{
-                    right:-5px; //210629
-                    bottom:30px; //210629
+                    right:3px; //210629
+                    bottom:21px; //210629
                 }
                 @media screen and (max-width :280px){
                     right:30px; //210629
-                    bottom:9px; //210629
+                    bottom:5px; //210629
                 }
             }
         }
+        //210629
+        li:nth-child(1), li:nth-child(2) {
+            a:after{
+                @media screen and (max-width: 1024px){
+                    right:-10px;
+                    bottom:22px;
+                }
+
+                @include mobile{
+                    right:-2px; //210629
+                    bottom:21px; //210629
+                }
+
+                @media screen and (max-width :280px){
+                    right:30px; //210629
+                    bottom:5px; //210629
+                }
+            }
+        }
+        //210629
     }
 }
 
