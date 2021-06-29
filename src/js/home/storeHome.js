@@ -527,9 +527,17 @@ $(function(){
                     var iconPath = '';                    
                     if(subCategoryId){
                         if( item['title'] == "케어용품/소모품") {
-                            iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
+                            }
                         } else {
-                            iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
+                            }
                         }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
