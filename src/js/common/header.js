@@ -57,13 +57,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     lastFix : true
                 });
 
-                $(window).on('load', function(){
-                    $(this).on('scroll', function(){
-                        var _scrollTop = $(this).scrollTop();
-                        self._scroll(_scrollTop)
-                    });
+                $(window).on('scroll', function(){
+                    var _scrollTop = $(this).scrollTop();
+                    self._scroll(_scrollTop)
                 });
-
+                // $(window).on('load', function(){
+                // });
             });
 
             var gotourl = self.$el.data('gotoUrl');

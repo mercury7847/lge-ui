@@ -1,0 +1,766 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+
+.pc-only {
+    display: inline-block;
+    @include mobile {
+        display:none;
+    }
+}
+
+.mo-only {
+    display: none;
+    @include mobile {
+        display: inline-block;
+    }
+}
+
+.mo-flex {
+    //display: none;
+    @include mobile {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.mo-h2{
+    @include mobile {
+        font-size:20px;
+    }
+}
+.c-gray {
+    color:#aaa;
+    font-weight: 500;
+}
+.c-darkgray{
+    color:#666;
+    font-weight:300;
+}
+.select-wrap .ui-selectbox-wrap .ui-select-button .ui-select-text {
+    color:#666;
+}
+.cont-wrap {
+    overflow: hidden;
+    width:100%;
+    @include mobile {
+        padding:0 16px;
+    }
+    .form-wrap {
+        max-width: 1380px;
+        margin:0 auto;
+        padding:10px 0 0;
+        .form-head {
+            text-align: center;
+            margin-bottom: 100px;
+            padding-top:14px;
+            @include mobile{
+                padding-top:0;
+                margin-bottom:32px;
+            }
+            h2{
+            font-size:24px;
+                @include mobile{
+                    line-height: 33px;
+                }
+            }
+            .desc{
+                width: 100%;
+                max-width: 479px;
+                margin: 12px auto;
+                text-align: center;
+                font-size:16px;
+                line-height: 26px;
+                word-break: keep-all;
+                @include mobile{
+                    font-size:14px;
+                    line-height: 22px;
+                }
+            }
+        }
+        .bdb{
+            border-bottom:2px solid #000;
+            padding-bottom:15px;
+        }
+        .reqchk{
+            font-size:14px;
+            padding-top: 20px;
+        }
+        .reqchk::before{
+            content:"*";            
+            display: inline-block;
+            margin-left: 1px;
+            margin-right:2px;
+            color: #EC455A;
+            font-size: inherit;
+            line-height: inherit;
+            vertical-align: top;
+        }
+        .forms {
+            margin-top:20px;
+            .conts {
+                @include mobile{
+                    display: flex;
+                }
+                .input-wrap{
+                    width: 100%;
+                }
+                .select-wrap {
+                    width:160px;
+                    margin:0;
+                    @include mobile{
+                        width: 106px;
+                    }
+                }
+                .phone-input-wrap {
+                    width:320px;
+                    height:48px;
+                    display: inline-block;
+                    margin: 0 0 0 4px;
+                    input {
+                        margin:0 0 0 8px;
+                    }
+                    @include mobile{
+                        display: flex;
+                        width: 211px;
+                    }
+                }
+                .phone-input-wrap::before{
+                    content:"";
+                    width: 5px;
+                    height:1px;
+                    background-color: #000;
+                    display: inline-block;
+                    position: relative;
+                    top:50%;
+                    left:0;
+                    transform:translateY(-50%);
+                    @include mobile{
+                        left:2px;
+                    }
+                    
+                }
+                .email-conts-wrap {
+                    @include mobile{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .email-input-wrap {
+                        width: 320px;
+                        display: inline-block;
+                        margin-right:8px;
+                        @include mobile{
+                            width: 100%;
+                            display: block;
+                            text-align: center;
+                        }
+                    }
+                    .select-wrap{
+                        @include mobile{
+                            width: 100%;
+                            display: block;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+                .addr-box-wrap{
+                    @include mobile{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .sub-forms-wrap{
+            .sub-forms.bdn{
+                border-bottom: 0;
+            }
+            .sub-forms.subbox{
+                border-bottom:1px solid #ddd;
+                padding-bottom:36px;
+            }
+            .sub-forms{                
+                .inner{
+                    padding-top: 80px;
+                    display: flex;
+                    justify-content: flex-start;
+                    @include mobile{
+                        padding-top:55px;
+                        flex-direction: column;
+                    }
+                    .tit{
+                       @include mobile{
+                        //모바일
+                       }
+                    }
+                    .desc{
+                        padding:5px 0;
+                        margin-left:16px;
+                        @include mobile{
+                            font-size:14px;
+                            line-height: 22px;
+                            margin-left:0;
+                        }
+                    }
+                    
+                }
+                .tit-head{
+                    margin-top:36px;
+                    p.desc{
+                        font-size:16px;
+                        font-weight: normal;
+                        line-height: 26px;
+                        margin:16px 0 12px;
+                        @include mobile{
+                            font-size:14px;
+                            line-height: 22px;
+                        }
+                    }
+                    h2{
+                        @include mobile{
+                            font-size:18px;
+                        }
+                    }
+                }
+                .tit-center{
+                    width:100%;
+                    margin: 16px 0 0;
+                    border-radius: 8px;
+                    border: 1px solid #dddddd;
+                    .txt-wrap{
+                        font-size:14px;
+                        padding:25px 24px 20px 24px;
+                        line-height:24px;
+                        border-bottom: 1px solid #dddddd;
+                        height: 84px;
+                        overflow-y: scroll;
+                        @include mobile{
+                            font-size:12px;
+                            line-height: 20px;
+                            font-weight: 100;
+                            height: 95px;
+                            padding:10px;
+                            
+                        }
+                    }
+                    .btn-agree{
+                        padding:17px 24px;
+                        @include mobile{
+                            padding:14px 20px 14px 16px;
+                        }
+                    }
+                }
+                .table-wrap{
+                    .tb_row {
+                        table{
+                            thead{
+                                th{
+                                    @include mobile{
+                                        font-size:13px;
+                                        font-weight: normal;
+                                    }
+                                }
+                            }
+                            tbody{
+                                td{
+                                    @include mobile{
+                                        font-size:13px;
+                                        font-weight: normal;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .btn-wrap.pc-only{
+                    width: 100%;
+                    margin-top:64px;
+                    text-align: center;
+                    button:first-child{
+                        margin-right:8px;
+                    }                    
+                }
+                
+                .forms.dl1{
+                    margin-top:36px;
+                    .tit{
+                        padding:0;
+                    }
+                    .conts{
+                        .box{
+                            .prd-name{
+                                input{
+                                    @include mobile{
+                                        font-size:14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .forms.dl2{
+                    .tit{
+                        padding:0;
+                    }
+                    .conts{
+                        @include mobile{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .rdo-wrap{
+                            margin:12px 0;
+                        }
+                    }
+                }
+                .forms{
+                    .box{
+                        .prd-name{
+                            input#inp05{
+                                width:100%;
+                            }
+                        }
+                    }
+                }
+                .sub-forms-box{
+                    margin-top:36px;
+                    .tit{
+                        @include mobile{
+                            font-size: 18px;
+                        }
+                    }
+                    .forms{
+                        @include mobile{
+                            margin-top: 20px;
+                        }
+                    }
+                    .forms.dl1{
+                        .chk-wrap{
+                            margin-top: 10px;
+                        }
+                    }
+                    .forms.dl2{
+                        
+                        .tit{
+                            padding-top:20px;
+                            @include mobile{
+                                padding-top: 0;
+                            }
+                        }
+                        .conts{
+                            @include mobile{
+                                display: block;
+                                width: 100%;
+                            }
+                            .chk-wrap{
+                                @include mobile{
+                                    width: calc(50% - 5px);
+                                    float: left;
+                                }
+                                padding-top: 10px;
+                                label{
+                                    padding-top: 10px;
+                                }
+                                label::after{
+                                    top:12px;
+                                }
+                            }
+                            .set2{
+                                width:320px;
+                                display: inline-block;
+                                .tit{
+                                    text-align: right;
+                                    padding:10px;
+                                    label{
+                                        font-weight: 300;
+                                    }
+                                    label.m2{
+                                        position: absolute;
+                                        right:0;
+                                        top:0;
+
+                                    }
+                                    @include mobile{
+                                        text-align: left;
+                                        padding:0;
+                                    }
+                                }
+                                .conts{
+                                    @include mobile{
+                                    }
+                                    .input-wrap {
+                                        width: 100%;
+                                        max-width: 160px;
+                                        @include mobile{
+                                            display: flex;
+                                            max-width: 320px;
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                    .forms.dl3{
+                        .tit{
+                            padding: 0;
+                            @include mobile{
+                                
+                            }
+                            label{
+                                @include mobile{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    color: #aaa;
+                                    font-weight: 500;
+                                }
+                                span{
+                                    font-weight: normal;
+                                    font-size: 14px;
+                                    @include mobile{
+                                        margin:-22px 0 0 10px;
+                                        display: flex;
+                                        align-items: center;
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                        }
+                        .conts{
+                            .company-box-wrap{
+                                @include mobile{
+                                    display: flex;
+                                    width: 100%;
+                                    flex-direction: column;
+                                }
+                                .select-wrap{
+                                    margin-right:8px;
+                                    @include mobile{
+                                    width: 100%;   
+                                    }
+                                }
+                                .conts-wrap{
+                                    height: 40px;
+                                    display: flex;
+                                    @include mobile{
+                                        height:100%;
+                                        display: block;
+                                    }
+                                    .input-wrap{
+                                        padding:10px 0;
+                                        display: flex;
+                                        align-items: center;
+                                        @include mobile{
+                                            width: 100%;
+                                            display: block;
+                                            padding:0;
+                                            margin-top: 10px;
+                                        }
+                                        input{
+                                            margin-right:8px;
+                                            color:#666;
+                                            @include mobile{
+                                                margin-bottom:10px;
+                                            }
+                                        }
+                                        input:nth-child(n+2){                                            
+                                            @include mobile{
+                                                display: block;
+                                                width: calc(50% - 4px);
+                                                float: left;
+                                                margin-bottom: 0;
+                                            }
+                                        }
+                                        input:last-child{
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                            .prod-box-wrap{
+                                
+                                @include mobile{
+                                    display: block;
+                                }
+                                .chk-wrap{
+                                    @include mobile{
+                                        margin-top:18px;
+                                        width: 50%;
+                                        
+                                        input:nth-child(n+2){                                            
+                                            @include mobile{
+                                                display: block;
+                                                width: 50%;
+                                                float: left;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .forms.dl4{
+                        .conts{
+                            .select-wrap{
+                                margin-right:8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .rdo-wrap input + label {
+        margin-right:30px;
+    }
+    .chk-wrap input + label {
+        margin-right:30px;
+        @include mobile{
+            
+        }
+    }
+    .chk-wrap input + label:nth-child(2n) {
+        @include mobile{
+            margin-right:10px;
+        }
+    }
+    .chk-wrap input + label:nth-child(2n-1) {
+        @include mobile{
+            margin-right:15px;
+        }
+    }
+}
+
+.btn-wrap.mo-only{
+    display: none;
+    @include mobile{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top:60px ;
+        .btn.mo{
+            @include mobile {
+                width: 50%;
+                border-radius: 0;
+                padding:16px 10px;
+                font-size:15px;
+                font-weight: normal;
+
+            }
+        }
+    }
+}
+
+/*온라인 견적 문의내역 조회*/
+.inquiry-search{
+    @include mobile{
+        padding-bottom:100vh;
+    }
+    .form-wrap{
+        .form-head{
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*온라인 견적 문의 내역 조회 결과*/
+.inquiry-area{   
+    @include mobile{
+        padding-bottom:100px;
+    } 
+    .form-wrap{
+        @include mobile{
+            padding:0;
+        }
+        .form-head{
+            margin-bottom: 65px;
+            @include mobile{
+                margin-bottom: 32px;
+            }
+            .desc{
+                max-width: 430px;
+            }
+        }
+        .task-num{
+            border-top: 1px solid #666;
+            background: #f4f4f4;
+            font-size:16px;
+            line-height: 26px;
+            padding:18px 16px;
+            @include mobile{
+                padding:13px 12px;
+                font-size:13px;
+                margin-bottom:35px;
+            }
+        }
+        h2.tit{
+            margin-top:50px;
+            @include mobile{
+                margin-top:40px;
+                font-size:18px;
+                margin-bottom:10px;
+            }
+        }
+        .sub {
+            margin-top:50px;
+            @include mobile{
+                margin-top:20px;
+            }
+        }
+        .forms{
+            @include mobile{
+                display: flex;
+                align-items: center;
+                margin-top:0;
+            }
+            .tit{
+                @include mobile{
+                    flex-basis: 50%;
+                }
+            }
+
+            .conts{
+                .input-text{
+                    height: 48px;
+                    padding: 10px 15px;
+                    @include mobile{
+                        flex-basis: 100%;
+                        padding:10px 0;
+                        
+                    }
+                    input{
+                        width:80%;
+                        @include mobile{
+                            font-size:14px;
+                            width: 100%;
+                            display: inline-block;
+                            max-width: 200px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: normal;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.form-wrap .forms {
+    margin-top:0;
+}
+
+
+
+/* 검색바 */
+.KRP0031 {
+	.btn-delete {
+		position:absolute;
+		top:50%;
+		right:54px;
+		width:20px;
+		height:20px;
+		margin-top:-10px;
+		background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+	
+		@include mobile {
+			right: 68px;
+		}
+	}
+	.btn-search {
+		position:absolute;
+		top:0;
+		right:0;
+		width:54px;
+		height:48px;
+		background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;
+	
+		@include mobile {
+			width:68px;
+			height:46px;
+		}
+	}
+
+	.search-wrap {
+		text-align:center;
+		padding:48px 0 24px;
+		@include mobile {
+            padding:24px 16px 16px;
+		}
+		.search-box {
+			display:inline-block;
+			position:relative;
+			width:443px;
+			text-align:left;
+			@include mobile {
+				display:block;
+				width:100%;
+			}
+		}
+		.search-input {
+			position:relative;
+			width:443px;
+			margin:0 auto;
+			text-align:left;
+			input[type=text] {
+				width:100%;
+				padding:11px 80px 11px 24px;
+				@include font-medium;
+				border-radius:24px;
+				border:0 none;
+				background:#fff;
+				box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+				// text-transform:uppercase;
+			}
+			
+			@include mobile {
+				width:100%;
+			}
+		}
+		.search-more {
+			position:absolute;
+			left:calc(100% + 16px);
+			top:23px;
+			white-space:nowrap;
+			transform:translateY(-50%);
+			@include mobile {
+				position:static;
+				margin-top:16px;
+				text-align:center;
+				transform:translateY(0);
+			}
+			.btn {
+				min-width:64px;
+				padding:3px 11px 3px 32px;
+				border-radius:16px;
+				@include font-small;
+				border-color:#000;
+				background:transparent;
+				color:#000;
+			}
+		}
+		.search-error {
+			display:none;
+			margin-top:6px;
+			color:#f00;
+			@include font-small;
+			vertical-align:top;
+			&::before {
+				content:' ';
+				display:inline-block;
+				width:20px;
+				height:20px;
+				margin:2px 4px 0 0;
+				background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
+				vertical-align:top;
+				@include mobile {
+					margin-top:1px;
+				}
+			}
+		}
+	}
+}

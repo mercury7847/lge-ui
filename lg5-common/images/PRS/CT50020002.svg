@@ -1,32 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="img_IT_64" width="64" height="64" viewBox="0 0 64 64">
-    <defs>
-        <style>
-            .cls-1,.cls-3,.cls-4{fill:none}.cls-3,.cls-4{stroke-width:1.5px;stroke:#0a0607;stroke-linecap:round}.cls-3{stroke-miterlimit:10}.cls-4{stroke-linejoin:round}
-        </style>
-    </defs>
-    <path id="Rectangle" d="M0 0H64V64H0z" class="cls-1" transform="translate(0 0)"/>
-    <g id="GENDER_64" transform="translate(1093.088 -1284.695)">
-        <path id="Rectangle-61-6" d="M0 0H40V40H0z" class="cls-1" transform="translate(-1081.088 1296.694)"/>
-        <g id="circle_128-6">
-            <path id="Path_51" d="M-1061.088 1284.695a32 32 0 0 1 32 32 32 32 0 0 1-32 32 32 32 0 0 1-32-32 32 32 0 0 1 32-32z" class="cls-1"/>
-            <path id="Path_52" fill="none" stroke="#070203" stroke-miterlimit="10" stroke-width="1.5px" d="M-1061.088 1285.445a31.25 31.25 0 0 1 31.25 31.25 31.25 31.25 0 0 1-31.25 31.25 31.25 31.25 0 0 1-31.25-31.25 31.25 31.25 0 0 1 31.25-31.25z"/>
-        </g>
-        <g id="img-6">
-            <g id="head-2">
-                <g id="그룹_137">
-                    <g id="그룹_135"/>
-                    <g id="그룹_136"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g stroke="#000" stroke-width="1.5" transform="translate(-727 -818) translate(128 414) translate(0 404) translate(599)">
+                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+                        </g>
+                        <g>
+                            <g>
+                                <g transform="translate(-727 -818) translate(128 414) translate(0 404) translate(599) translate(12 12) translate(4 8)">
+                                    <rect width="32" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="1.5"/>
+                                    <rect width="6" height="1.5" x="13" y="16" fill="#000" rx=".75"/>
+                                    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 25.5L16.044 23.5 23 25.5M16 20.28L16 23.28"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </g>
-                <g id="그룹_138">
-                    <path id="Rectangle-62-6" d="M-1068.013 1321.743v2.971a1.262 1.262 0 0 1-1.256 1.266h-.4a1.261 1.261 0 0 1-1.257-1.265v-2.971" class="cls-4"/>
-                    <path id="패스_40" d="M-1075.088 1306.15v14.063a1.41 1.41 0 0 0 1.405 1.415h8.426a1.409 1.409 0 0 0 1.4-1.415v-14.063z" class="cls-4"/>
-                    <path id="패스_41" d="M-1065.491 1306.036v-4.425a1.41 1.41 0 0 0-1.4-1.415h-5.151a1.409 1.409 0 0 0-1.4 1.415v4.425" class="cls-4"/>
-                </g>
-            </g>
-            <g id="line-2">
-                <path id="패스_42" d="M-1069.47 1326.336v1.595a5.743 5.743 0 0 0 5.72 5.764 5.743 5.743 0 0 0 5.721-5.764v-12.495" class="cls-4"/>
-                <path id="패스_43" d="M-1058.029 1315.847v-.488a5.741 5.741 0 0 1 5.72-5.763 5.741 5.741 0 0 1 5.72 5.763v18.336" class="cls-4"/>
             </g>
         </g>
     </g>
 </svg>
+
+

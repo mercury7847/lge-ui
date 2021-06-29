@@ -355,9 +355,27 @@
                             flex-wrap: wrap;
                             &[class*="cont"] {
                                 position: relative;
-                                padding: 24px 40px 0;
+                                padding: 24px 40px 30px;
+
+                                &:after {
+                                    content:"";
+                                    display: block;
+                                    position: absolute;
+                                    bottom:0;
+                                    left:40px;
+                                    right:40px;
+                                    height:1px;
+                                    background: #ddd;
+                                }
+
                                 @include mobile {
-                                    padding: 20px 15px 0;
+                                    margin-bottom:30px;
+                                    padding: 20px 15px 30px;
+
+                                    &:after {
+                                        left:15px;
+                                        right:15px;
+                                    }
                                 }
                                 .sibling-select,
                                 .sibling-color {
@@ -400,8 +418,7 @@
                                 }
                                 .sibling-color {
                                     position: relative;
-                                    border-bottom: 1px solid #ddd;
-                                    padding-bottom: 30px;
+                                    
                                 }
                                 .sibling-select:first-of-type {
                                     margin-top: 0;
@@ -549,23 +566,39 @@
                                     &:last-of-type {
                                         margin-right: 0;
                                     }
+
+                                    &.disabled {
+                                        input {
+                                            & + label {
+                                                border: 1px solid;
+                                                @include font($font-small,26px);
+                                                color: $color-gray-4;
+                                            }
+                                            &:checked {
+                                                & + label {
+                                                    color: $color-gray-4;
+                                                    border-color: $color-primary;
+                                                }
+                                            }
+                                        }
+                                    }
                                     input {
                                         & + label {
                                             width: auto;
                                             min-width: 60px;
-                                            padding: 3px 8px;
+                                            padding: 6px 14px;
                                             border-radius: 40px;
                                             border: 1px solid;
                                             @include font($font-small,26px);
-                                            color: $color-gray-1;
+                                            // color: $color-gray-1;
                                             @include mobile {
                                                 min-width: 55px;
                                                 font-size: 13px;
+                                                padding: 3px 14px;
                                             }
                                         }
                                         &:checked {
                                             & + label {
-                                                padding:3px 8px;
                                                 color: $color-primary;
                                             }
                                         }

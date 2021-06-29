@@ -234,6 +234,12 @@
                     }
                 }
             }
+
+            /* 20210624 납부내역 : 버튼*/
+            .payMentBtn {
+                font-size: 14px;
+            }
+            /* //20210624 납부내역 : 버튼*/
         }
         
         .btn-moreview {
@@ -996,15 +1002,22 @@
     position: relative;
     .pop-paymentArea {
         position: relative;
+        .pop-header {
+            margin: 0 40px 22px 40px;
+            @include mobile {
+                margin: 0 16px 22px 16px;
+            }
+        }
         .priceContent {
             padding: 0 40px;
             @include mobile {
-                padding: 0 40px 40px;
+                margin-bottom: 50px;
+                padding: 0 16px;
             }
             .priceList {
                 max-height: 450px;
                 overflow-y: auto;
-                margin-bottom: 40px;
+                margin-bottom: 24px;
                 @include mobile {
                     max-height: 260px;
                 }
@@ -1012,32 +1025,63 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    border-bottom: 1px solid #ccc;
+                    border-bottom: 1px solid #ddd;
                     padding: 15px 20px;
+                    &:first-of-type {
+                        border-top: 1px solid #ddd;
+                    }
                     .list-info {
                         position: relative;
-                        h3 { position: relative; }
-                        span { position: relative; }
+                        h3 {
+                            font-size: 16px;
+                            font-weight: normal;
+                            margin-bottom: 7px;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                        span { 
+                            font-size: 14px;
+                            color: #666;
+                        }
                     }
                     .list-price {
-                        position: relative;
+                        font-size: 16px;
+                        font-weight: 500;
+                        @include mobile {
+                            font-size: 14px;
+                        }
                     }
                 }
             }
             .priceTotal {
-                background-color: #ddd;
-                padding: 20px;
+                background-color: #f4f4f4;
+                padding: 25px;
                 border-radius: 10px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom : 40px;
-                h4 { position: relative; }
-                p { position: relative; }
+                margin-bottom : 35px;
+                @include mobile {
+                    margin-bottom : 25px;
+                }
+                h4 {
+                    @include mobile {
+                        font-size: 14px;
+                    }
+                }
+                p {
+                    font-size: 24px;
+                    font-weight: 500;
+                    @include mobile {
+                        font-size: 20px;
+                    }
+                }
             }
             .priceTxt {
                 position: relative;
                 padding-left: 10px;
+                font-size: 14px;
                 &::after {
                     content: '';
                     width: 3px;

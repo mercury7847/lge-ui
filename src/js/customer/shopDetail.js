@@ -1,4 +1,3 @@
-
 ;(function(){
 
     function init(){
@@ -41,6 +40,9 @@
             slidesToShow: 2,
             slidesToScroll: 2,
             variableWidth : true,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -49,8 +51,10 @@
                         variableWidth : false,
                         dots: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
-                        
+                        slidesToScroll: 2,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     }
                 },
                 {
@@ -60,7 +64,10 @@
                         variableWidth : true,
                         dots: true,
                         slidesToShow: 1, 
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     }
                 }
             ]
@@ -70,6 +77,9 @@
             infinite: false,
             slidesToShow: 2, 
             slidesToScroll: 2,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [
                 {
                     breakpoint: 10000,
@@ -82,7 +92,10 @@
                         variableWidth : false,
                         dots: true,
                         slidesToShow: 1, 
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     }
                 }
             ]
@@ -90,15 +103,24 @@
 
         $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
             e.preventDefault();
-
-            if(isApp() && vcui.detect.isIOS){ 
+            if(isApp() && vcui.detect.isIOS){
                 var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
-                window.close();
+                window.close();	
             }
-           
+
         });
+        // $('.cont-wrap [data-close]').on('click', function(e){
+        //     e.preventDefault();
+            	
+        //    if(isApp() && vcui.detect.isIOS){ 
+        //         var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+        //         webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        //     } else {
+        //         window.close();
+        //     }
+        // });
 
         // $('.cont-wrap [data-close]').on('click', function(e){
         //     e.preventDefault();
