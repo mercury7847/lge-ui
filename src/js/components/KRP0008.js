@@ -549,16 +549,17 @@
                 //BTOCSITE-1376 사용설명서 팝업 열기
                 $('.item-manual.package').on('click', function(e){
                     e.preventDefault();
-                    $('#modal-15').vcModal({opener: this});
+                    $('#modal-16').vcModal({opener: this});
                 })
                 
                 //BTOCSITE-1376 사용설명서 팝업 푸터 닫기버튼
-                $('#modal-15').on('.pop-footer .btn').on('click', function(e){
+                $('#modal-16').on('.pop-footer .btn').on('click', function(e){
                     var _self = this;
-                    var $modal = $('#modal-15');
+                    var $modal = $('#modal-16');
                     var $radio = $modal.find('.model-list input:radio');
 
                     if( !$radio.filter(':checked').length ) {
+                        console.log('no data');
                         var msgTxt = '제품을 선택해주세요';
                         lgkorUI.alert("", {title: msgTxt}, _self);
                     } else {
