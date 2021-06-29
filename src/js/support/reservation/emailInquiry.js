@@ -249,11 +249,12 @@
                 self.reset();
             });
 
-            $('.desc-btn').find('button').on('click', function(e){
+            $('.desc-btn').find('button[data-sub-category-name]').on('click', function(e){
                 var $this = $(this);
                 var _subCategory = $this.data('sub-category-name').trim()
 
                 if( _subCategory == "케어용품/소모품" || _subCategory == "구매문의") {
+                    
                     $('#orderNo').show();
                     $('#partNo').show();
                 }
