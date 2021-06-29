@@ -1,4 +1,5 @@
 (function() {
+
     var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
