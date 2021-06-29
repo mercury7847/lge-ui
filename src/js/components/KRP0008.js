@@ -1384,12 +1384,6 @@
                     //필터링된 모델값이 하나일 경우
                     if( uniqModelArray.length > 0 ) {
                         self.requestSiblingData(uniqModelArray[0], _self)
-                        // if( uniqModelArray.length == 1) {
-                        //     self.requestSiblingData(uniqModelArray[0], _self)
-                        // }  else {
-                        //     //필터링된 모델값이 여러개일 경우
-                        //     self.requestSiblingData(uniqModelArray[0], _self)
-                        // }
                     }
                 });
 
@@ -1425,6 +1419,7 @@
                         location.href = _modelPath;
                     } else {
                         self.$specInfoPopup.vcModal('hide')
+                        $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
                     }
                 })
             },
@@ -2507,7 +2502,7 @@
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
                 
-                console.log("request MODEL ID ::: ", modelId)
+                // console.log("request MODEL ID ::: ", modelId)
                 if( ajaxUrl && ajaxUrl != "" ) {
                     // lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(ajaxUrl, {modelId: modelId}, function(resultData) {
@@ -2517,6 +2512,10 @@
                             self.setCurrentSiblingModel(resultData.data[0], modelId)
                             // lgkorUI.hideLoading();
                         } else {
+                            self.defaultSiblingDataFlag = true;
+                            self.receivedSiblingData = [];
+                            self.setCurrentSiblingModel(siblingList[0], modelId)
+
                             if( resultData.message ) {
                                 // lgkorUI.hideLoading();
                                 lgkorUI.alert("", {
