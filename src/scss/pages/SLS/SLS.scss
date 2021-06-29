@@ -299,7 +299,7 @@ br.pc {
     .tit-wrap {
         margin-bottom: 48px;
         @include mobile {
-            margin-bottom: 44px;
+            margin-bottom: 25px;
         }
     }
     .link-list {
@@ -308,7 +308,7 @@ br.pc {
         font-size: 0;
         @media screen and (max-width: 1024px){
         //@include mobile {
-            margin-top: 50px;
+            // margin-top: 50px;
             padding: 20px 0  ;
             text-align: center;
         }
