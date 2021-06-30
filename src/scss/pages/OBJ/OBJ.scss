@@ -225,47 +225,93 @@ header {
         justify-content: space-between;
         overflow: hidden;
         width: 100%;
-        height: 800px;
-        padding: 60px 270px 0;
+        height: auto;
         background: #f4f4f4;
-        .text-wrap {
-            flex: 1 0 auto;
-            max-width: 35.313vw;
-            margin-top: 125px;
-            .title {
-                &-en {
-                    font-size: 100px;
-                    font-family: Inter;
-                    font-weight: bold;
-                    line-height: 1.8;
-                    color: #101010;
-                }
-                &-kr {
-                    margin-top: 10px;
-                    font-size: 64px;
-                    font-weight: bold;
-                    line-height: 1.19;
-                    color: #000;
-                }
-                &-sub {
-                    margin-top: 20px;
-                    font-size: 22px;
-                    font-weight: normal;
-                    line-height: 1.55;
-                    color: #000;
-                }
-            }
-            .desc {
-                margin-top: 20px;
-                font-size: 12px;
-                line-height: 1.5;
-                color: #666;
-            }
-        }
-        > img {
-            align-self: baseline;
-            width: 29.010vw;
+        @include mobile {
+            justify-content: center;
             height: auto;
+            flex-wrap: wrap;
+            padding: 30px 16px 0;
+        }
+        .banner-inner {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1460px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 60px 40px 0;
+            .text-wrap {
+                // float: left;
+                // width: calc(100% - 557px);
+                // margin-top: 125px;
+                flex: 1 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 37.344vw;
+	            padding-right: 5.521vw; 
+                @include mobile {
+                    max-width: 100%;
+                    margin-top: 0;
+                }
+                .title {
+                    margin-bottom: 30px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    line-height: 1.13;
+                    color: #000;
+                    @media screen and (min-width:768px) and (max-width:1200px) {
+                        font-size: 25px;
+                    }
+                    @include mobile {
+                        font-size: 17px;
+                        line-height: 1.35;
+                    }
+                }
+                .logo-obj {
+                    display: flex;
+                    align-content: center;
+                    >img {
+                        @media screen and (min-width:768px) and (max-width:1200px) {
+                            width: 100%;
+                        }
+                        @include mobile {
+                            width: 70.556vw;
+                        }
+                    }
+                }
+                .desc {
+                    margin-top: 20px;
+                    font-size: 12px;
+                    line-height: 1.5;
+                    color: #666;
+                    @include mobile {
+                        width: 62.778vw;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .product-img {
+                // float: right;
+                // width: 557px;
+                display: flex;
+                align-content: flex-end;
+                flex: 1 1 auto;
+                width: 29.010vw;
+                @include mobile {
+                    width: 53.889vw;
+                    margin-top: 35px;
+                }
+                img {
+                    align-self: baseline;
+                    // width: 29.010vw;
+                    width: 100%;
+                    height: auto;
+                    @include mobile {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }
