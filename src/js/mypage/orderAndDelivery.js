@@ -2221,6 +2221,30 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+<<<<<<< HEAD
+=======
+
+                // BTOCSITE-1775
+                var isAllCancelDisable = true;  // 모두 취소 불가능
+                productList.forEach(function( data ){                    
+                    if (data.itemCancelAbleYn == "Y"){
+                        isAllCancelDisable = false;
+                    }
+                });
+
+                if (isAllCancelDisable == true){
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
+                    $('#popup-cancel').find('#cancel_desc').hide();
+                    $('#popup-cancel').find('.pop-footer').hide();
+                    $('#popup-cancel').find('.not-cancel-footer').show();
+                } else {
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);                    
+                    $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('.pop-footer').show();
+                    $('#popup-cancel').find('.not-cancel-footer').hide();
+                }
+                // //BTOCSITE-1775
+>>>>>>> be4af3d5a (수정)
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
