@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_beauty_64" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-1,.cls-3,.cls-4{fill:none}.cls-3,.cls-4{stroke-width:1.5px;stroke:#070203;stroke-linecap:round}.cls-3{stroke-miterlimit:10}.cls-4{stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle-61" d="M0 0H40V40H0z" class="cls-1" transform="translate(11.999 12)"/>
+    <g id="circle_128" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5px">
+        <rect width="64" height="64" stroke="none" rx="32"/>
+        <rect width="62.5" height="62.5" x=".75" y=".75" class="cls-1" rx="31.25"/>
+    </g>
+    <g id="Group_172" transform="translate(119.647 -905.931)">
+        <path id="Rectangle-61-2" d="M0 0H40V40H0z" class="cls-1" transform="translate(-107.647 917.931)"/>
+        <g id="Group_171" transform="translate(-104.298 928.703)">
+            <g id="Group_168" transform="translate(30.749 6.271)">
+                <path id="Path-99" d="M-36.9 952.016h-4.551" class="cls-3" transform="translate(41.449 -952.016)"/>
+                <path id="Path-99-2" d="M-36.9 963.847h-4.551" class="cls-3" transform="translate(41.449 -957.932)"/>
+            </g>
+            <path id="Path_86" d="M-79.1 939.474h-21.023a2.832 2.832 0 0 0-2.824 2.839v13.169a2.443 2.443 0 0 0 2.436 2.45H-79.1z" class="cls-4" transform="translate(102.948 -939.474)"/>
+            <path id="Path_87" d="M-55.254 957.932h4.078a2.832 2.832 0 0 0 2.824-2.84v-6.779a2.442 2.442 0 0 0-2.435-2.449h-4.467z" class="cls-4" transform="translate(79.101 -942.668)"/>
+        </g>
+    </g>
+</svg>

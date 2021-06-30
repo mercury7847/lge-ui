@@ -522,14 +522,22 @@ $(function(){
 
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
-                    var categoryId = item['categoryId'];
+                    var subCategoryId = item['categoryId'];
                     var gnbId = item['gnbId'];
                     var iconPath = '';                    
-                    if(categoryId){
-                        if (vcui.detect.isMobileDevice){
-                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
+                    if(subCategoryId){
+                        if( item['title'] == "케어용품/소모품") {
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
+                            }
                         } else {
-                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
+                            }
                         }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
