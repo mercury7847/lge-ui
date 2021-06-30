@@ -1,6 +1,5 @@
 (function() {
 
-    var addressFinder = new AddressFind();
     $(window).ready(function() {
         var b2cOnline = {
             init: function() {
@@ -9,23 +8,18 @@
           
 
                 self.setting();
-                // self.bindEvents();
+                self.bindEvents();
 
                 // self.requestSelectData();
             },
 
             setting: function() {
                 var self = this;
+                self.addressFinder = new AddressFind();
                 self.$form = $('div.cont-wrap .form-wrap');
-                
-                // self.$contWrap = $('div.cont-wrap');
-                // self.$formWrap = self.$contWrap.find('.form-wrap');
-                // self.$categorySelect = self.$formWrap.find('#categorySelect');
-                // self.$areaSelect = self.$formWrap.find('#areaSelect');
-                // self.$branchSelect = self.$formWrap.find('#branchSelect');
-                // self.$inputReceipt = self.$formWrap.find('#inputReceipt');
-                // self.$inputReceipt.attr("autocomplete","off");
-                // self.$inquiryButton = self.$formWrap.find('#inquiryButton');
+               
+                self.$addressFindButton = self.$form.find('.addr-box-wrap .btn');
+
 
                 console.log('setting');
 
@@ -77,7 +71,21 @@
 
                 //주소 찾기 버튼
                 self.$addressFindButton.on('click', function(e) {
-                    self.addressFind.open();
+
+                    console.log("주소 버튼 %o",e.target);
+                    var $btn = $(e.target);
+                    var $zipCode = $btn.closest('.addr-box-wrap').find(".addr1");
+                    var $address = $btn.closest('.addr-box-wrap').find(".addr2");
+
+
+               console.log("btn %o %o",$btn,$btn.closest('.addr-box-wrap'));
+                    self.addressFinder.open(function(data) { 
+                        console.log("data %o",data);
+                        console.log("주소 버튼 %o %o", $zipCode,$address);
+                        var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+                        $zipCode.val(data.zonecode);
+                        $address.val(address);
+                    }); 
                 })
 
 
