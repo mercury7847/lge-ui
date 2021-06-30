@@ -1,4 +1,5 @@
 (function() {
+    
     var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
@@ -2427,6 +2428,12 @@
                     var modelFilteringArray = [];
                     var currentSiblingArray = [];
 
+                    var enableSiblingValue = siblingModels.filter(function(model){
+                        return model.modelId == modelId
+                    })[0].enableSiblingValue
+
+                    // console.log("currentModelIdArray[0]", enableSiblingValue)
+
                     self.$siblingCont.find('.option-list').each(function(optionIndex){
                         var $optionList = $(this);
                         var $radio = $optionList.find('input:radio');
@@ -2459,12 +2466,18 @@
                                     return model.siblingCode == _siblingCode;
                                 })
                             }
-                            
-                            if( currentFindModel.length == 0) {
-                                $this.closest('.rdo-wrap').addClass('disabled');
-                            } else {
+
+                            if( enableSiblingValue.indexOf(_siblingCode) > -1 ) {
                                 $this.closest('.rdo-wrap').removeClass('disabled');
+                            } else {
+                                $this.closest('.rdo-wrap').addClass('disabled');
                             }
+                            
+                            // if( currentFindModel.length == 0) {
+                            //     $this.closest('.rdo-wrap').addClass('disabled');
+                            // } else {
+                            //     $this.closest('.rdo-wrap').removeClass('disabled');
+                            // }
 
                             if( _checked ) {
                                 modelFilteringArray[optionIndex] = currentFindModel;
