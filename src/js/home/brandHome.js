@@ -24,16 +24,32 @@
     });
 
     vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
-        
-        $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx){
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        var $thinqMain = $('.ui_wide_slider');
+        $thinqMain.vcCarousel('destroy').vcCarousel({
+            autoplay: true,
+            autoplaySpped: 5000,
+            infinite: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            swipeToSlide: true,
+            
+            dotsSelector: '.ui_wideslider_dots',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: false,
+            touchThreshold: 100,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150
+        });
+        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
+        $('.install-wrap .ui_carousel_slider').on('carouselbeforechange', function(e, carousel, index, nextIdx){
             var $items = $device.find('.screen-slider > li');
             var xp = -428;
-           if(nextIdx < index) xp = 428;
-           $items.eq(index).css({x:0, opacity:1}).transit({x:xp});
-           $items.eq(nextIdx).css({x:-xp, opacity:1}).transit({x:0});
-
-
+            if(nextIdx < index) xp = 428;
+            $items.eq(index).css({x:0, opacity:1}).transit({x:xp});
+            $items.eq(nextIdx).css({x:-xp, opacity:1}).transit({x:0});
         }).vcCarousel({
             infinite: false,
             slidesToShow: 1,
@@ -103,7 +119,15 @@
                     }
                 }
             ]
-        }); 
+        });
+
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        var $thinqSlideNum = $thinqMain.find('.slide-conts');
+        var $thinqSlideLength = $thinqMain.find('.custom-indi-wrap')
+        if($thinqSlideNum.length === 1) {
+            $thinqSlideLength.hide();
+        }
+        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         
         var isApplication = isApp();
         var $window   = $(window);
@@ -130,14 +154,14 @@
         });
 
         // 화면 100% 채우기
-        $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        //$('html,body').css({'overflow':'hidden', 'height':'100%'}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
 
         // 모달이후 overflow :visible 문제 해결
         $('body').addClass('ignore-overflow-hidden');
 
 
-        $('#fixed-wrap').children().css({'overflow':'hidden'});
-        $('.container').css({'overflow':'visible', 'height':'auto'});     
+        //$('#fixed-wrap').children().css({'overflow':'hidden'}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
+        //$('.container').css({'overflow':'visible', 'height':'auto'}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
         
         $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
@@ -230,7 +254,7 @@
             $('html').addClass('sceneMoving');                    
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;                    
-            $scenes.removeClass('active').eq(idx).addClass('active');
+            //$scenes.removeClass('active').eq(idx).addClass('active'); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
@@ -582,8 +606,8 @@
 
 
             stepLens = wheelArr.length-1;                    
-            $contentWrap.css({'overflow':'auto','height':winHeight});
-            $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            //$contentWrap.css({'overflow':'auto','height':winHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
+            //$('.contents').css({'overflow':'hidden', 'height':totalHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
 
             if(page!==undefined){
                 currentPage = page;
@@ -848,16 +872,32 @@
             }      
         });
 
-         // 접근성 탭 이동시 화면처리
-         $(document).on('focusin', function(e){
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        var $thinq = $contentWrap.find('.thinq-tabs');
+        var $thinqOffsetTop = $thinq.offset().top;
 
+        $window.scroll(function(){
+            if($window.scrollTop() >= $thinqOffsetTop) {
+                $contentWrap.addClass('active on');
+            } else {
+                $contentWrap.removeClass('active on');
+            }
+        });
+        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+
+        // 접근성 탭 이동시 화면처리
+        $(document).on('focusin', function(e){
+
+            /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
             if($.contains($('.thinq-wrap')[0], e.target)){
                 currentPage = pageLens;
                 currentStep = stepLens;
-            }else if($.contains($('.thinq-hero')[0], e.target)){
-                // currentPage = 0;
-                // currentStep = 0;
             }
+            // else if($.contains($('.signature-hero')[0], e.target)){
+            //     // currentPage = 0;
+            //     // currentStep = 0;
+            // }
+            /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         });
 
