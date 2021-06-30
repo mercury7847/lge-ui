@@ -292,6 +292,7 @@ br.pc {
     }
 }
 
+
 // 케어솔루션 링크
 .care-home-link {
     max-width: 1380px;
@@ -337,7 +338,7 @@ br.pc {
                     border: solid 4px #da0f47; 
                 }
             }
-            @include mobile{ //210629
+            @include mobile{ //210630
                 width: calc(33.33% - 18px);
             }
             @media screen and (max-width:361px){
@@ -364,7 +365,7 @@ br.pc {
                     width:32px;
                     height:32px;
                     background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
-                    //210629
+                    //210630
                     @media screen and (max-width:1024px) {
                         right:-5px;
                         bottom:21px;
@@ -380,7 +381,7 @@ br.pc {
                         right:30px;
                         bottom:5px;
                     }
-                    //210629
+                    //210630
                 }
                 @include pc {
                     &:hover {
@@ -398,7 +399,7 @@ br.pc {
                     font-size:16px;
                     line-height:24px;
                 }
-                //210629
+                //210630
                 @include mobile{
                     padding:80px 10px 20px;
                     max-width:90px;
@@ -412,7 +413,7 @@ br.pc {
                     padding: 80px 0 20px;
                     max-width:79px;
                 }
-                //210629
+                //210630
                 &:before {
                     display: inline-block;
                     content: '';
@@ -506,7 +507,7 @@ br.pc {
                 }
             }
         }
-        //210629
+        //210630
         li:nth-child(1), li:nth-child(2){
             > a {
                 &:after{
@@ -527,9 +528,9 @@ br.pc {
                 }
             }
         }
-        //210629
+        //210630
     }
-    /* 210629 케어솔루션 홈 버튼 로그인후 버튼 영역 */
+    /* 210630 케어솔루션 홈 버튼 로그인후 버튼 영역 */
     .link-list.list02 {
         li {
             a:after{
@@ -542,16 +543,16 @@ br.pc {
                     bottom:22px;
                 }
                 @include mobile{
-                    right:3px; //210629
-                    bottom:21px; //210629
+                    right:3px; //210630
+                    bottom:21px; //210630
                 }
                 @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
+                    right:30px; //210630
+                    bottom:5px; //210630
                 }
             }
         }
-        //210629
+        //210630
         li:nth-child(1), li:nth-child(2) {
             a:after{
                 @media screen and (max-width: 1024px){
@@ -560,19 +561,20 @@ br.pc {
                 }
 
                 @include mobile{
-                    right:-2px; //210629
-                    bottom:21px; //210629
+                    right:-2px; //210630
+                    bottom:21px; //210630
                 }
 
                 @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
+                    right:30px; //210630
+                    bottom:5px; //210630
                 }
             }
         }
-        //210629
+        //210630
     }
 }
+
 
 // 플로우배너
 .care-flowbanner {
