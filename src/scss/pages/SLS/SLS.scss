@@ -365,20 +365,37 @@ br.pc {
                     height:32px;
                     background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
                     //210629
-                    @media screen and (max-width:1024px) {
+                    // @media screen and (max-width:1024px) {
+                    //     right:-5px;
+                    //     bottom:21px;
+                    //     width:16px;
+                    //     height:16px;
+                    //     background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+                    // }
+                    // @include mobile{
+                    //     right:3px; 
+                    //     bottom:21px;
+                    // }
+                    // @media screen and (max-width :305px){
+                    //     right:30px;
+                    //     bottom:5px;
+                    // }
+
+                    @media screen and (max-width:1207px){
                         right:-5px;
-                        bottom:21px;
-                        width:16px;
-                        height:16px;
-                        background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+                        bottom:30px;
+                    }
+                    @media screen and (max-width: 1024px){
+                        right:-5px;
+                        bottom:22px;
                     }
                     @include mobile{
-                        right:3px; 
-                        bottom:21px;
+                        right:3px; //210629
+                        bottom:21px; //210629
                     }
                     @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
+                        right:30px; //210629
+                        bottom:5px; //210629
                     }
                     //210629
                 }
@@ -511,68 +528,25 @@ br.pc {
             > a {
                 &:after{
                     @media screen and (max-width: 1024px){
-                        right:5px;
+                        right:-10px;
                         bottom:22px;
                     }
-
+    
                     @include mobile{
-                        right:7px;
-                        bottom:21px;
+                        right:-2px; //210629
+                        bottom:21px; //210629
                     }
-
+    
                     @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
+                        right:30px; //210629
+                        bottom:5px; //210629
                     }
                 }
             }
         }
         //210629
     }
-    /* 210531 케어솔루션 홈 버튼 로그인후 버튼 영역 */
-    .link-list.list02 {
-        li {
-            a:after{
-                @media screen and (max-width:1207px){
-                    right:-5px;
-                    bottom:30px;
-                }
-                @media screen and (max-width: 1024px){
-                    right:-5px;
-                    bottom:22px;
-                }
-                @include mobile{
-                    right:3px; //210629
-                    bottom:21px; //210629
-                }
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
-                }
-            }
-        }
-        //210629
-        li:nth-child(1), li:nth-child(2) {
-            a:after{
-                @media screen and (max-width: 1024px){
-                    right:-10px;
-                    bottom:22px;
-                }
-
-                @include mobile{
-                    right:-2px; //210629
-                    bottom:21px; //210629
-                }
-
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
-                }
-            }
-        }
-        //210629
-    }
-}
+    
 
 // 플로우배너
 .care-flowbanner {
