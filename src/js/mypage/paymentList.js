@@ -32,7 +32,7 @@
                             '<td>{{item.discountPrice}}</td>'+
                             '<td>'+
                                 '<p>{{item.paymentPrice}}</p>'+
-                                '<button type="button" class="btn-link size payMentBtn" data-pay="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}"><span>자세히</span></button>'+
+                                '<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}"><span>자세히</span></button>'+
                             '</td>'+
                         '</tr>'+
                     '{{/each}}'+
