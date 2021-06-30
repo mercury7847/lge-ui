@@ -445,6 +445,7 @@ body {
             }
             & + div {
                 margin-top: 10px;
+                display:none;   // BTOCSITE-2403
             }
             &.disabled {
                 & > p {
