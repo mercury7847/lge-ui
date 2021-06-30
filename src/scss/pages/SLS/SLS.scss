@@ -542,7 +542,7 @@ br.pc {
                     bottom:22px;
                 }
                 @include mobile{
-                    right:3px; //210629
+                    right:-3px; //210629
                     bottom:21px; //210629
                 }
                 @media screen and (max-width :305px){
