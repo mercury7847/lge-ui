@@ -663,7 +663,7 @@ var goAppUrl = function(path) {
 
                 
                 //공통 js-pop a태그 처리...
-                $doc.off('click').on('click', '.js-popup', function(e){
+                $doc.off('click.jsPop').on('click.jsPop', '.js-popup', function(e){
                     e.preventDefault();
 
                     var target = this.getAttribute('href'),
