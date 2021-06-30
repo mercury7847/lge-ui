@@ -51,13 +51,12 @@
             '<option value="{{option.value}}"{{#if option.value == periodSortSelect}} selected{{/if}}>{{option.name}}</option>'+
         '{{/each}}';
 
-
-        
     function init(){
         setting();
         bindEvents();
         
         loadPaymentList();
+        //loadPaymentDetail();
     }
 
     function setting(){
@@ -75,7 +74,6 @@
             loadPaymentList(idx);
         });
     }
-
 
     function loadPaymentList(idx){
         lgkorUI.showLoading();
@@ -98,7 +96,16 @@
                     //console.log("데이타값이 있으면");
                     $('.section-wrap .sects').show();
                     var list = vcui.template(listTableTemplate, result.data);
+
                     $('.section-wrap .sects').append(list);
+                    var payOpenbtn = $('.payMentBtn');
+                    payOpenbtn.each(function(index){
+                        $(this).on('click', function(){
+                            //console.log(index);
+                            loadPaymentDetail();
+                        });
+                    });
+
     
                     $('.sort-select-wrap select').empty();
     
@@ -112,58 +119,102 @@
             }
             lgkorUI.hideLoading();
         });
+    }
 
-        lgkorUI.requestAjaxData(PAYMENT_DETAIL_DATA, sendata, function(result){
+    function loadPaymentDetail(){
+        lgkorUI.showLoading();
+        lgkorUI.requestAjaxData(PAYMENT_DETAIL_DATA, {}, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
-                var payOpenbtn = $('.payMentBtn');
-            
-                payOpenbtn.each(function(index){
-                    $(this).on('click', function(){
-                        //console.log("팝업이 클릭");
-                        //console.log(index);
-
-                        var totalTaxes = 0;
-                        var listPopTemplate =   
-                        '<div class="pop-paymentArea">'+                          
-                            '<header class="pop-header">'+
-                                '<h1 class="tit"><span>{{turnNumber}}회차 결제 정보</span></h1>'+
-                            '</header>'+
-                            '<div class="priceContent">'+
-                                '<ul class="priceList">'+
-                                    '{{#each popDetail in paymentDetailList}}'+
-                                    '<li>'+
-                                        '<div class="list-info">'+
-                                            '<h3>{{popDetail.receiptBankCodeNm}}</h3>'+
-                                            '<span>{{popDetail.receiptBankAccountNo}}</span>'+
-                                        '</div>'+
-                                        '<div class="list-price">{{popDetail.paymentPrice}}원</div>'+
-                                    '</li>'+
-                                    '{{/each}}'+
-                                '</ul>'+
-                                '<div class="priceTotal">'+
-                                    '<h4>총계</h4>'+
-                                    '<p>{{totalPrice}}원</p>'+
+                var listPopTemplate =   
+                '<div class="pop-paymentArea">'+                          
+                    '<header class="pop-header">'+
+                        '<h1 class="tit"><span>{{turnNumber}}회차 결제 정보</span></h1>'+
+                    '</header>'+
+                    '<div class="priceContent">'+
+                        '<ul class="priceList">'+
+                            '{{#each popDetail in paymentDetailList}}'+
+                            '<li>'+
+                                '<div class="list-info">'+
+                                    '<h3>{{popDetail.receiptBankCodeNm}}</h3>'+
+                                    '<span>{{popDetail.receiptBankAccountNo}}</span>'+
                                 '</div>'+
-                                '<p class="priceTxt">본 회차에 해당되는 결제 정보가 표시됩니다.</p>'+
-                            '</div>'+
-                        '</div>';
+                                '<div class="list-price">{{popDetail.paymentPrice}}원</div>'+
+                            '</li>'+
+                            '{{/each}}'+
+                        '</ul>'+
+                        '<div class="priceTotal">'+
+                            '<h4>총계</h4>'+
+                            '<p>{{totalPrice}}원</p>'+
+                        '</div>'+
+                        '<p class="priceTxt">본 회차에 해당되는 결제 정보가 표시됩니다.</p>'+
+                    '</div>'+
+                '</div>';
 
-                        //var payTotalprice = result.data.paymentPop[index].totalCardPrice;
-                        //result.data.paymentPop[index].totalCardPrice = vcui.number.addComma(payTotalprice);
+                //var payTotalprice = result.data.paymentPop[index].totalCardPrice;
+                //result.data.paymentPop[index].totalCardPrice = vcui.number.addComma(payTotalprice);
 
-                        //var $cardPri = result.data.paymentDetailList[index].cardPrice;
-                        //result.data.paymentDetailList[index].cardPrice = vcui.number.addComma($cardPri);
+                //var $cardPri = result.data.paymentDetailList[index].cardPrice;
+                //result.data.paymentDetailList[index].cardPrice = vcui.number.addComma($cardPri);
 
-                        var listPop = vcui.template(listPopTemplate, result.data);
-                        $('#popup-paymentHistory .pop-paymentArea').remove();
-                        $('#popup-paymentHistory').prepend(listPop);
-                        $('#popup-paymentHistory').vcModal();
-                    });
-                });
+                var listPop = vcui.template(listPopTemplate, result.data);
+                $('#popup-paymentHistory .pop-paymentArea').remove();
+                $('#popup-paymentHistory').prepend(listPop);
+                $('#popup-paymentHistory').vcModal();
             }
             lgkorUI.hideLoading();
         });
     }
+
+
+
+    // function loadPaymentDetail(){
+    //     lgkorUI.showLoading();
+    //     lgkorUI.requestAjaxData(PAYMENT_DETAIL_DATA, {}, function(result){
+    //         if(lgkorUI.stringToBool(result.data.success)){
+    //             var payOpenbtn = $('.payMentBtn');
+    //             payOpenbtn.each(function(index){
+    //                 $(this).on('click', function(){
+    //                     var listPopTemplate =   
+    //                     '<div class="pop-paymentArea">'+                          
+    //                         '<header class="pop-header">'+
+    //                             '<h1 class="tit"><span>{{turnNumber}}회차 결제 정보</span></h1>'+
+    //                         '</header>'+
+    //                         '<div class="priceContent">'+
+    //                             '<ul class="priceList">'+
+    //                                 '{{#each popDetail in paymentDetailList}}'+
+    //                                 '<li>'+
+    //                                     '<div class="list-info">'+
+    //                                         '<h3>{{popDetail.receiptBankCodeNm}}</h3>'+
+    //                                         '<span>{{popDetail.receiptBankAccountNo}}</span>'+
+    //                                     '</div>'+
+    //                                     '<div class="list-price">{{popDetail.paymentPrice}}원</div>'+
+    //                                 '</li>'+
+    //                                 '{{/each}}'+
+    //                             '</ul>'+
+    //                             '<div class="priceTotal">'+
+    //                                 '<h4>총계</h4>'+
+    //                                 '<p>{{totalPrice}}원</p>'+
+    //                             '</div>'+
+    //                             '<p class="priceTxt">본 회차에 해당되는 결제 정보가 표시됩니다.</p>'+
+    //                         '</div>'+
+    //                     '</div>';
+
+    //                     //var payTotalprice = result.data.paymentPop[index].totalCardPrice;
+    //                     //result.data.paymentPop[index].totalCardPrice = vcui.number.addComma(payTotalprice);
+
+    //                     //var $cardPri = result.data.paymentDetailList[index].cardPrice;
+    //                     //result.data.paymentDetailList[index].cardPrice = vcui.number.addComma($cardPri);
+
+    //                     var listPop = vcui.template(listPopTemplate, result.data);
+    //                     $('#popup-paymentHistory .pop-paymentArea').remove();
+    //                     $('#popup-paymentHistory').prepend(listPop);
+    //                     $('#popup-paymentHistory').vcModal();
+    //                 });
+    //             });
+    //         }
+    //         lgkorUI.hideLoading();
+    //     });
+    // }
 
 
     $(window).load(function(){
