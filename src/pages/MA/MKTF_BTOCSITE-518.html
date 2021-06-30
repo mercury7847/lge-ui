@@ -21,435 +21,438 @@
         <div class="contents sysaircon-form-wrap">            
             <div class="cont-wrap">
                 <div class="form-wrap">
-                    <div class="form-head">
-                        <h2 class="headTitle">가정용 시스템에어컨 <span class="mo-flex">온라인 견적</span></h2>
-                        <p class="desc">간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다.
-                            문의하신 견적은 마케팅 담당자가 연락 드린 후 상세하게 안내해 드립니다.
-                            </p>
-                    </div>
-                    <h2 class="title bdb mo-h2">개인정보(필수사항)</h2>
-                    <p class="reqchk">필수 입력 사항</p>
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="input-wrap">
-                                <input type="text" name="userName" value="" id="inp01" class="inq-name" data-required="true">
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp02" class="req">휴대전화번호<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" name="phonePrefix">
-                                    <option value="010" class="">010</option>
-                                    <option value="" class=""></option>
-                                </select>
-                            </div>
-                            <div class="phone-input-wrap input-wrap">
-                                <input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true">
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp03" class="req">이메일<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="email-conts-wrap">
-                                <div class="email-input-wrap input-wrap">
-                                    <input type="text" id="inp03" placeholder="이메일을 입력하세요." name="userEmail" value="" data-required="true">
+                    <form action="./" method="post" id="systemAirconForm" name="systemAirconForm">
+                        <div class="form-head">
+                            <h2 class="headTitle">가정용 시스템에어컨 <span class="mo-flex">온라인 견적</span></h2>
+                            <p class="desc">간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다.
+                                문의하신 견적은 마케팅 담당자가 연락 드린 후 상세하게 안내해 드립니다.
+                                </p>
+                        </div>
+                        <h2 class="title bdb mo-h2">개인정보(필수사항)</h2>
+                        <p class="reqchk">필수 입력 사항</p>
+                        <dl class="forms">
+                            <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="input-wrap">
+                                    <input type="text" name="userName" value="" id="inp01" class="inq-name" data-required="true">
                                 </div>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit"><label for="inp02" class="req">휴대전화번호<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
                                 <div class="select-wrap">
-                                    <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" name="emailProvider">
-                                        <option value="" class="">직접입력</option>
-                                        <option value="naver.com" class="">naver.com</option>
-                                        <option value="gmail.com" class="">gmail.com</option>
+                                    <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" name="phonePrefix">
+                                        <option value="010" class="">010</option>
+                                        <option value="" class=""></option>
                                     </select>
                                 </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp04" class="req">주소<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="addr-box-wrap">
-                                <div class="box">
-                                    <div class="input-wrap">
-                                        <input type="text" class="addr1" value="" placeholder="우편번호" name="addr1" disabled data-required="true">
+                                <div class="phone-input-wrap input-wrap">
+                                    <input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true">
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit"><label for="inp03" class="req">이메일<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="email-conts-wrap">
+                                    <div class="email-input-wrap input-wrap">
+                                        <input type="text" id="inp03" placeholder="이메일을 입력하세요." name="userEmail" value="" data-required="true">
                                     </div>
-                                    <div class="cell">
-                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" name="emailProvider">
+                                            <option value="">직접입력</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="input-wrap">
-                                    <input type="text" class="addr2" value="" placeholder="기본 주소" name="addr2" disabled data-required="true">
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" value="" placeholder="상세 주소 입력" name="addr3" data-required="true">
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    
-                    <div class="sub-forms-wrap">
-                        <div class="sub-forms subbox">
-                            <div class="inner bdb">
-                                <h1 class="tit mo-h2">시스템에어컨 설치정보(선택사항)</h2>
-                                <div class="desc">하기 사항을 입력해주시면 보다 정확한 상담이 가능합니다.</div>
-                            </div>
-                            <dl class="forms dl1">
-                                <dt class="tit"><label for="inp05">문의 제품</label></dt>
-                                <dd class="conts">
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit"><label for="inp04" class="req">주소<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <div class="addr-box-wrap">
                                     <div class="box">
-                                        <div class="prd-name">
-                                            <input type="text" value="LG 주거용 멀티 올인원 (M-Q0720C2S)" id="inp05" name="prdtit">
+                                        <div class="input-wrap">
+                                            <input type="text" class="addr1" value="" placeholder="우편번호" name="addr1" disabled data-required="true">
+                                        </div>
+                                        <div class="cell">
+                                            <button type="button" class="btn"><span>주소 찾기</span></button>
                                         </div>
                                     </div>
-                                </dd>
-                            </dl>
-                            <dl class="forms dl2">
-                                <dt class="tit"><label for="rdo1-1">신규/교체여부</label></dt>
-                                <dd class="conts">
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                        <label for="rdo1-1">에어컨 신규 설치/신규 건물</label>
-                                    </span>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-2" name="rdo1">
-                                        <label for="rdo1-2">에어컨 신규/기존 건물</label>
-                                    </span>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-3" name="rdo1">
-                                        <label for="rdo1-3">에어컨 교체 설치</label>
-                                    </span>
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="sub-forms subbox">
-                            <div class=sub-forms-box>
-                                <h1 class="tit">설치 현장 정보</h2>
-                                <dl class="forms dl1">
-                                    <dt class="tit"><label for="inp06" class="req">주소<span class="blind">필수입력</span></label></dt>
-                                    <dd class="conts">
-                                        <div class="addr-box-wrap">
-                                            <div class="box">
-                                                <div class="input-wrap">
-                                                    <input type="text" class="addr1" value="" placeholder="우편번호" name="plc-addr1" disabled data-required="true">
-                                                </div>
-                                                <div class="cell">
-                                                    <button type="button" class="btn"><span>주소 찾기</span></button>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrap">
-                                                <input type="text" class="addr2" value="" placeholder="기본 주소" name="plc-addr2" disabled data-required="true">
-                                            </div>
-                                            <div class="input-wrap">
-                                                <input type="text" value="" placeholder="상세 주소 입력" name="plc-addr3" data-required="true">
-                                            </div>
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                                <label for="chk1-1">기본 주소와 동일</label>
-                                            </span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <dl class="forms dl2">
-                                    <dt class="tit"><label for="chk2-1">유형</label></dt>
-                                    <dd class="conts">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk2-1" name="chk1" checked>
-                                            <label for="chk2-1">아파트</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk2-2" name="chk2">
-                                            <label for="chk2-2">단독주택</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk2-3" name="chk3">
-                                            <label for="chk2-3">빌라</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk2-4" name="chk4">
-                                            <label for="chk2-4">기타</label>
-                                        </span>
-                                        <dl class="forms set2">
-                                            <dt class="tit"><label for="inp07" class="">전용면적</label></dt>
-                                            <dd class="conts">
-                                                <div class="input-wrap">
-                                                    <input type="text" value="㎡" id="inp07" style="text-align: right;">
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                    </dd>
-                                </dl>
-                                <dl class="forms">
-                                    <dt class="tit"><label for="inp08">설치 수량</label></dt>
-                                    <dd class="conts">
-                                        <div class="input-wrap">
-                                            <input type="text" value="" placeholder="실내기 요청 수량" id="inp08">
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <dl class="forms dl4">
-                                    <dt class="tit"><label for="inp09">설치시점</label></dt>
-                                    <dd class="conts">
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="select3" class="year" title="전체 카테고리 선택">
-                                                <option value="" class="">년</option>
-                                                <option value="2021년" class="">2021년</option>
-                                                <option value="2020년" class="">2020년</option>
-                                            </select>
-                                        </div>
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="select4" class="month" title="전체 카테고리 선택">
-                                                <option value="" class="">월</option>
-                                                <option value="1월" class="">1월</option>
-                                                <option value="2월" class="">2월</option>
-                                                <option value="3월" class="">3월</option>
-                                                <option value="4월" class="">4월</option>
-                                                <option value="5월" class="">5월</option>
-                                                <option value="6월" class="">6월</option>
-                                                <option value="7월" class="">7월</option>
-                                                <option value="8월" class="">8월</option>
-                                                <option value="9월" class="">9월</option>
-                                                <option value="10월" class="">10월</option>
-                                                <option value="11월" class="">11월</option>
-                                                <option value="12월" class="">12월</option>
-                                            </select>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
+                                    <div class="input-wrap">
+                                        <input type="text" class="addr2" value="" placeholder="기본 주소" name="addr2" disabled data-required="true">
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" value="" placeholder="상세 주소 입력" name="addr3" data-required="true">
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
                         
-                        <div class="sub-forms subbox">
-                            <div class=sub-forms-box>
-                                <h1 class="tit">기존 사용 제품</h2>
-                                <dl class="forms dl2">
-                                    <dt class="tit"><label for="chk3-1">제품종류</label></dt>
+                        <div class="sub-forms-wrap">
+                            <div class="sub-forms subbox">
+                                <div class="inner bdb">
+                                    <h1 class="tit mo-h2">시스템에어컨 설치정보(선택사항)</h2>
+                                    <div class="desc">하기 사항을 입력해주시면 보다 정확한 상담이 가능합니다.</div>
+                                </div>
+                                <dl class="forms dl1">
+                                    <dt class="tit"><label for="inp05">문의 제품</label></dt>
                                     <dd class="conts">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk3-1" name="chk1" checked>
-                                            <label for="chk3-1">시스템에어컨(천장형)</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk3-2" name="chk2">
-                                            <label for="chk3-2">스탠드 (2in1포함)</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk3-3" name="chk3">
-                                            <label for="chk3-3">벽걸이형</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk3-4" name="chk4">
-                                            <label for="chk3-4">없음</label>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                <dl class="forms dl2">
-                                    <dt class="tit"><label for="chk4-1">브랜드</label></dt>
-                                    <dd class="conts">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk4-1" name="chk1" checked>
-                                            <label for="chk4-1">엘지</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk4-2" name="chk2">
-                                            <label for="chk4-2">삼성</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk4-3" name="chk3">
-                                            <label for="chk4-3">캐리어</label>
-                                        </span>
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk4-4" name="chk4">
-                                            <label for="chk4-4">기타</label>
-                                        </span>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="sub-forms" style="border-bottom:0;">
-                            <div class="sub-forms-box">
-                                <dl class="forms dl4">
-                                    <dt class="tit"><label for="inp10">상담 요청 일자</label></dt>
-                                    <dd class="conts">
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
-                                                <option value="" class="">년</option>
-                                                <option value="2021년" class="">2021년</option>
-                                                <option value="2020년" class="">2020년</option>
-                                            </select>
-                                        </div>
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="select6" class="month" title="전체 카테고리 선택">
-                                                <option value="" class="">월</option>
-                                                <option value="1월" class="">1월</option>
-                                                <option value="2월" class="">2월</option>
-                                                <option value="3월" class="">3월</option>
-                                                <option value="4월" class="">4월</option>
-                                                <option value="5월" class="">5월</option>
-                                                <option value="6월" class="">6월</option>
-                                                <option value="7월" class="">7월</option>
-                                                <option value="8월" class="">8월</option>
-                                                <option value="9월" class="">9월</option>
-                                                <option value="10월" class="">10월</option>
-                                                <option value="11월" class="">11월</option>
-                                                <option value="12월" class="">12월</option>
-                                            </select>
-                                        </div>
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="select7" class="date" title="전체 카테고리 선택">
-                                                <option value="" class="">일</option>
-                                                <option value="1일" class="">1일</option>
-                                                <option value="2일" class="">2일</option>
-                                                <option value="3일" class="">3일</option>
-                                                <option value="4일" class="">4일</option>
-                                                <option value="5일" class="">5일</option>
-                                                <option value="6일" class="">6일</option>
-                                                <option value="7일" class="">7일</option>
-                                                <option value="8일" class="">8일</option>
-                                                <option value="9일" class="">9일</option>
-                                                <option value="10일" class="">10일</option>
-                                                <option value="11일" class="">11일</option>
-                                                <option value="12일" class="">12일</option>
-                                                <option value="13일" class="">13일</option>
-                                                <option value="14일" class="">14일</option>
-                                                <option value="15일" class="">15일</option>
-                                                <option value="16일" class="">16일</option>
-                                                <option value="17일" class="">17일</option>
-                                                <option value="18일" class="">18일</option>
-                                                <option value="19일" class="">19일</option>
-                                                <option value="20일" class="">20일</option>
-                                                <option value="21일" class="">21일</option>
-                                                <option value="22일" class="">22일</option>
-                                                <option value="23일" class="">23일</option>
-                                                <option value="24일" class="">24일</option>
-                                                <option value="25일" class="">25일</option>
-                                                <option value="26일" class="">26일</option>
-                                                <option value="27일" class="">27일</option>
-                                                <option value="28일" class="">28일</option>
-                                                <option value="29일" class="">29일</option>
-                                                <option value="30일" class="">30일</option>
-                                                <option value="31일" class="">31일</option>
-                                            </select>
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <dl class="forms dl4">
-                                    <dt class="tit pc-only"><label for="inp11">추가 문의 사항</label></dt>
-                                    <dt class="tit mo-only"><label for="inp11">전달 사항</label></dt>
-                                    <dd class="conts">
-                                        <div class="input-wrap">
-                                            <input type="textarea" class="text-box" value="" placeholder="문의 및 요청사항 입력" id="inp11">
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <dl class="forms dl3">
-                                    <dt class="tit"><label for="inp12" class="c-gray">연결 사원 정보<span><br>내부 직원 연결시</span></label></dt>
-                                    <dd class="conts">
-                                        <div class="company-box-wrap">
-                                            <div class="conts-wrap">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
-                                                        <option value="" class="">회사선택</option>
-                                                        <option value="" class="">회사1</option>
-                                                        <option value="" class="">회사2</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" value="지점명" name="">
-                                                    <input type="text" value="이름" name="">
-                                                    <input type="text" value="사번" name="">
-                                                </div>
+                                        <div class="box">
+                                            <div class="prd-name">
+                                                <input type="text" value="LG 주거용 멀티 올인원 (M-Q0720C2S)" id="inp05" name="prdtit">
                                             </div>
                                         </div>
                                     </dd>
                                 </dl>
-                                <dl class="forms dl3">
-                                    <dt class="tit"><label for="chk5-1" class="c-gray">연결 제품 정보</label></dt>
+                                <dl class="forms dl2">
+                                    <dt class="tit"><label for="rdo1-1">신규/교체여부</label></dt>
                                     <dd class="conts">
-                                        <div class="prod-box-wrap">
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk5-1" name="chk1" checked>
-                                                <label for="chk5-1">시스템에어컨(천장형)</label>
-                                            </span>
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk5-2" name="chk2">
-                                                <label for="chk5-2">사이니지</label>
-                                            </span>
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk5-3" name="chk3">
-                                                <label for="chk5-3">의료용 모니터</label>
-                                            </span>
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk5-4" name="chk4">
-                                                <label for="chk5-4">기타</label>
-                                            </span>
-                                        </div>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                            <label for="rdo1-1">에어컨 신규 설치/신규 건물</label>
+                                        </span>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo1-2" name="rdo1">
+                                            <label for="rdo1-2">에어컨 신규/기존 건물</label>
+                                        </span>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo1-3" name="rdo1">
+                                            <label for="rdo1-3">에어컨 교체 설치</label>
+                                        </span>
                                     </dd>
                                 </dl>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="sub-forms-wrap">
-                        <div class="sub-forms bdn">
-                            <div class="inner bdb">
-                                <h1 class="tit pc-only">견적 문의를 위한 약관 동의</h1>
-                                <h2 class="tit mo-h2 mo-only">약관 동의</h2>
-                            </div>
-                            <div class="tit-head">
-                                <h2 class="tit">견적 문의를 위한 약관 동의</strong>
-                            </div>
-                            <div class="tit-center">
-                                <div class="txt-wrap">
-                                    <p class="c-darkgray">다만, 수집 목적 또는 제공 받은 목적이 달성된 경우에도 하기와 같이 상법, 국세기본법 등 관련 법령 규정에 의한 거래 관련 권리 의무 관계의 확인 등을 이유로 일정기간 보유하여야 할 필요가 있을 경우에는 일정기간 보유합니다.<br>
-                                        이경우 회사는 보관하는 개인정보를 그 보관의 목적으로만 이용함 보전 기간은 아래와 같습니다.</p>
-                                </div>
-                                <div class="btn-agree">
-                                    <span class="chk-wrap">
-                                        <input type="checkbox" id="chk6-1" name="chk1" data-required="true">
-                                        <label for="chk6-1">개인정보 수집 및 이용에 동의합니다. (필수)</label>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-forms bdn">
-                            <div class="tit-head">
-                                <h2 class="tit">필수 위탁 고지</strong>
-                                <p class="desc">LG전자는 개인정보 취급업무 중 서비스 제공에 필요한 필수적 업무를 아래와 같이 외부 전문업체에 위착하여 운영하고 있으며, 해당 업체는 서비스 이행을 위한 목적으로만 사용됩니다.</p>
-                            </div>
-                            <div class="table-wrap">
-                                <div class="tb_row tb-row-bl">
-                                    <table>
-                                        <caption></caption>
-                                        <colgroup>
-                                            <col style="width:50%">
-                                            <col style="width:50%">
-                                        </colgroup>
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">위탁업체</th>
-                                            <th scope="col">위탁업무 내용</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>LG CNS</td>
-                                            <td>시스템 관리, 홈페이지 운영관리</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="btn-wrap pc-only">
-                                    <button type="button" class="btn gray confirmBtn"><span>온라인 견적 문의 내역 조회</span></button>
-                                    <button type="button" class="btn inqueryBtn"><span>온라인 견적 문의하기</span></button>
+                            <div class="sub-forms subbox">
+                                <div class=sub-forms-box>
+                                    <h1 class="tit">설치 현장 정보</h2>
+                                    <dl class="forms dl1">
+                                        <dt class="tit"><label for="inp06" class="req">주소<span class="blind">필수입력</span></label></dt>
+                                        <dd class="conts">
+                                            <div class="addr-box-wrap">
+                                                <div class="box">
+                                                    <div class="input-wrap">
+                                                        <input type="text" class="addr1" value="" placeholder="우편번호" name="plc-addr1" disabled data-required="true">
+                                                    </div>
+                                                    <div class="cell">
+                                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                    </div>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" class="addr2" value="" placeholder="기본 주소" name="plc-addr2" disabled data-required="true">
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" value="" placeholder="상세 주소 입력" name="plc-addr3" data-required="true">
+                                                </div>
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk1-1" name="chk1" checked>
+                                                    <label for="chk1-1">기본 주소와 동일</label>
+                                                </span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl2">
+                                        <dt class="tit"><label for="chk2-1">유형</label></dt>
+                                        <dd class="conts">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk2-1" name="chk1" checked>
+                                                <label for="chk2-1">아파트</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk2-2" name="chk2">
+                                                <label for="chk2-2">단독주택</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk2-3" name="chk3">
+                                                <label for="chk2-3">빌라</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk2-4" name="chk4">
+                                                <label for="chk2-4">기타</label>
+                                            </span>
+                                            <dl class="forms set2">
+                                                <dt class="tit"><label for="inp07" class="">전용면적</label></dt>
+                                                <dd class="conts">
+                                                    <div class="input-wrap">
+                                                        <input type="text" value="㎡" id="inp07" style="text-align: right;">
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="inp08">설치 수량</label></dt>
+                                        <dd class="conts">
+                                            <div class="input-wrap">
+                                                <input type="text" value="" placeholder="실내기 요청 수량" id="inp08">
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl4">
+                                        <dt class="tit"><label for="inp09">설치시점</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select3" class="year" title="전체 카테고리 선택">
+                                                    <option value="" class="">년</option>
+                                                    <option value="2021년" class="">2021년</option>
+                                                    <option value="2020년" class="">2020년</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select4" class="month" title="전체 카테고리 선택">
+                                                    <option value="" class="">월</option>
+                                                    <option value="1월" class="">1월</option>
+                                                    <option value="2월" class="">2월</option>
+                                                    <option value="3월" class="">3월</option>
+                                                    <option value="4월" class="">4월</option>
+                                                    <option value="5월" class="">5월</option>
+                                                    <option value="6월" class="">6월</option>
+                                                    <option value="7월" class="">7월</option>
+                                                    <option value="8월" class="">8월</option>
+                                                    <option value="9월" class="">9월</option>
+                                                    <option value="10월" class="">10월</option>
+                                                    <option value="11월" class="">11월</option>
+                                                    <option value="12월" class="">12월</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
                                 </div>
                             </div>
                             
+                            <div class="sub-forms subbox">
+                                <div class=sub-forms-box>
+                                    <h1 class="tit">기존 사용 제품</h2>
+                                    <dl class="forms dl2">
+                                        <dt class="tit"><label for="chk3-1">제품종류</label></dt>
+                                        <dd class="conts">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk3-1" name="chk1" checked>
+                                                <label for="chk3-1">시스템에어컨(천장형)</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk3-2" name="chk2">
+                                                <label for="chk3-2">스탠드 (2in1포함)</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk3-3" name="chk3">
+                                                <label for="chk3-3">벽걸이형</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk3-4" name="chk4">
+                                                <label for="chk3-4">없음</label>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl2">
+                                        <dt class="tit"><label for="chk4-1">브랜드</label></dt>
+                                        <dd class="conts">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk4-1" name="chk1" checked>
+                                                <label for="chk4-1">엘지</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk4-2" name="chk2">
+                                                <label for="chk4-2">삼성</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk4-3" name="chk3">
+                                                <label for="chk4-3">캐리어</label>
+                                            </span>
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk4-4" name="chk4">
+                                                <label for="chk4-4">기타</label>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="sub-forms" style="border-bottom:0;">
+                                <div class="sub-forms-box">
+                                    <dl class="forms dl4">
+                                        <dt class="tit"><label for="inp10">상담 요청 일자</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
+                                                    <option value="" class="">년</option>
+                                                    <option value="2021년" class="">2021년</option>
+                                                    <option value="2020년" class="">2020년</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select6" class="month" title="전체 카테고리 선택">
+                                                    <option value="" class="">월</option>
+                                                    <option value="1월" class="">1월</option>
+                                                    <option value="2월" class="">2월</option>
+                                                    <option value="3월" class="">3월</option>
+                                                    <option value="4월" class="">4월</option>
+                                                    <option value="5월" class="">5월</option>
+                                                    <option value="6월" class="">6월</option>
+                                                    <option value="7월" class="">7월</option>
+                                                    <option value="8월" class="">8월</option>
+                                                    <option value="9월" class="">9월</option>
+                                                    <option value="10월" class="">10월</option>
+                                                    <option value="11월" class="">11월</option>
+                                                    <option value="12월" class="">12월</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select7" class="date" title="전체 카테고리 선택">
+                                                    <option value="" class="">일</option>
+                                                    <option value="1일" class="">1일</option>
+                                                    <option value="2일" class="">2일</option>
+                                                    <option value="3일" class="">3일</option>
+                                                    <option value="4일" class="">4일</option>
+                                                    <option value="5일" class="">5일</option>
+                                                    <option value="6일" class="">6일</option>
+                                                    <option value="7일" class="">7일</option>
+                                                    <option value="8일" class="">8일</option>
+                                                    <option value="9일" class="">9일</option>
+                                                    <option value="10일" class="">10일</option>
+                                                    <option value="11일" class="">11일</option>
+                                                    <option value="12일" class="">12일</option>
+                                                    <option value="13일" class="">13일</option>
+                                                    <option value="14일" class="">14일</option>
+                                                    <option value="15일" class="">15일</option>
+                                                    <option value="16일" class="">16일</option>
+                                                    <option value="17일" class="">17일</option>
+                                                    <option value="18일" class="">18일</option>
+                                                    <option value="19일" class="">19일</option>
+                                                    <option value="20일" class="">20일</option>
+                                                    <option value="21일" class="">21일</option>
+                                                    <option value="22일" class="">22일</option>
+                                                    <option value="23일" class="">23일</option>
+                                                    <option value="24일" class="">24일</option>
+                                                    <option value="25일" class="">25일</option>
+                                                    <option value="26일" class="">26일</option>
+                                                    <option value="27일" class="">27일</option>
+                                                    <option value="28일" class="">28일</option>
+                                                    <option value="29일" class="">29일</option>
+                                                    <option value="30일" class="">30일</option>
+                                                    <option value="31일" class="">31일</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl4">
+                                        <dt class="tit pc-only"><label for="inp11">추가 문의 사항</label></dt>
+                                        <dt class="tit mo-only"><label for="inp11">전달 사항</label></dt>
+                                        <dd class="conts">
+                                            <div class="input-wrap">
+                                                <input type="textarea" class="text-box" value="" placeholder="문의 및 요청사항 입력" id="inp11">
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl3">
+                                        <dt class="tit"><label for="inp12" class="c-gray">연결 사원 정보<span><br>내부 직원 연결시</span></label></dt>
+                                        <dd class="conts">
+                                            <div class="company-box-wrap">
+                                                <div class="conts-wrap">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
+                                                            <option value="" class="">회사선택</option>
+                                                            <option value="" class="">회사1</option>
+                                                            <option value="" class="">회사2</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" value="지점명" name="">
+                                                        <input type="text" value="이름" name="">
+                                                        <input type="text" value="사번" name="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms dl3">
+                                        <dt class="tit"><label for="chk5-1" class="c-gray">연결 제품 정보</label></dt>
+                                        <dd class="conts">
+                                            <div class="prod-box-wrap">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk5-1" name="chk1" checked>
+                                                    <label for="chk5-1">시스템에어컨(천장형)</label>
+                                                </span>
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk5-2" name="chk2">
+                                                    <label for="chk5-2">사이니지</label>
+                                                </span>
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk5-3" name="chk3">
+                                                    <label for="chk5-3">의료용 모니터</label>
+                                                </span>
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk5-4" name="chk4">
+                                                    <label for="chk5-4">기타</label>
+                                                </span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="sub-forms-wrap">
+                            <div class="sub-forms bdn">
+                                <div class="inner bdb">
+                                    <h1 class="tit pc-only">견적 문의를 위한 약관 동의</h1>
+                                    <h2 class="tit mo-h2 mo-only">약관 동의</h2>
+                                </div>
+                                <div class="tit-head">
+                                    <h2 class="tit">견적 문의를 위한 약관 동의</strong>
+                                </div>
+                                <div class="tit-center">
+                                    <div class="txt-wrap">
+                                        <p class="c-darkgray">다만, 수집 목적 또는 제공 받은 목적이 달성된 경우에도 하기와 같이 상법, 국세기본법 등 관련 법령 규정에 의한 거래 관련 권리 의무 관계의 확인 등을 이유로 일정기간 보유하여야 할 필요가 있을 경우에는 일정기간 보유합니다.<br>
+                                            이경우 회사는 보관하는 개인정보를 그 보관의 목적으로만 이용함 보전 기간은 아래와 같습니다.</p>
+                                    </div>
+                                    <div class="btn-agree">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="agreePrivacyCheck" name="agreePrivacyCheck" data-required="true">
+                                            <label for="agreePrivacyCheck">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-forms bdn">
+                                <div class="tit-head">
+                                    <h2 class="tit">필수 위탁 고지</strong>
+                                    <p class="desc">LG전자는 개인정보 취급업무 중 서비스 제공에 필요한 필수적 업무를 아래와 같이 외부 전문업체에 위착하여 운영하고 있으며, 해당 업체는 서비스 이행을 위한 목적으로만 사용됩니다.</p>
+                                </div>
+                                <div class="table-wrap">
+                                    <div class="tb_row tb-row-bl">
+                                        <table>
+                                            <caption></caption>
+                                            <colgroup>
+                                                <col style="width:50%">
+                                                <col style="width:50%">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">위탁업체</th>
+                                                <th scope="col">위탁업무 내용</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>LG CNS</td>
+                                                <td>시스템 관리, 홈페이지 운영관리</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="btn-wrap pc-only">
+                                        <button type="button" class="btn gray confirmBtn"><span>온라인 견적 문의 내역 조회</span></button>
+                                        <button type="button" class="btn inqueryBtn"><span>온라인 견적 문의하기</span></button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+    
                         </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="btn-wrap mo-only">

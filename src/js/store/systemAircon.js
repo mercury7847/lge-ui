@@ -2,6 +2,7 @@
 
     $(window).ready(function() {
         var b2cOnline = {
+            validation : null,
             init: function() {
                 var self = this;
 
@@ -16,9 +17,10 @@
             setting: function() {
                 var self = this;
                 self.addressFinder = new AddressFind();
-                self.$form = $('div.cont-wrap .form-wrap');
-               
-                self.$addressFindButton = self.$form.find('.addr-box-wrap .btn');
+                self.$container = $('.container');
+                self.$inqueryBtn = self.$container.find('.inqueryBtn');
+                self.$confirmBtn = self.$container.find('.confirmBtn');
+                self.$addressFindBtn = self.$container.find('.addr-box-wrap .btn');
 
 
                 console.log('setting');
@@ -38,18 +40,21 @@
                         required: true,
                         errorMsg: "이메일을 입력하세요.",
                         msgTarget: '.err-block'
+                    },
+                    agreePrivacyCheck : {
+                        required : true,
+                        msgTarget : ".err-block"
                     }
                 };
                 vcui.require(['ui/validation'], function () {
                     self.validation = new vcui.ui.Validation('div.cont-wrap .form-wrap',{register:register});
-                    self.validation.on('change', function(e,target){
-                        var parent = $(this).parent().parent();
-                        var errBlock = parent.find('.err-block:eq(0)');
-                        if(errBlock.length > 0) {
-                            errBlock.hide();
-                        } else {
-                            errBlock = parent.parent().find('.err-block:eq(0)');
-                            errBlock.hide();
+                    self.validation.on('nextfocus', function(e,$target){
+
+                        console.log("target %o",$target);
+                        if($target.attr('name') == 'addr1' || $target.attr('name') == 'plc-addr1'){
+                            setTimeout(function () {
+                                $target.closest('.addr-box-wrap').find('.btn').focus();
+                            }, 10);                        
                         }
                     });
                 });
@@ -60,17 +65,39 @@
                 console.log('bindEvents');
 
                 // 온라인 견적 문의내역 조회
-                self.$form.find('.confirmBtn').on('click', function() {
-                    requestConfirm();
+                self.$confirmBtn.on('click', function() {
+               
+
+                    lgkorUI.confirm("작성하신 내용이 초기화 된 후<br>온라인견적 문의 내역 조회 페이지로<br>이동됩니다. 이동 하시겠습니까?", {
+                        title: "",
+                        cancelBtnName: "취소",
+                        okBtnName: "확인",
+                        ok: function(){
+                            console.log('내역조회 화면으로 이동');
+                            // takebackOk();
+                        }
+                    });
+
+
+
                 });
 
                 // 온라인 견적 문의하기
-                self.$form.find('.inqueryBtn').on('click', function() {
-                    requestInquery();
-                });
+                self.$inqueryBtn.on('click', function(){
+                    self.validation.validate();
+                    var validationResult = self.validation.validate().success;
 
+                    console.log('validationResult %o', validationResult);
+
+                    if( validationResult ) {
+                        self.requestData(self.validation.getAllValues());
+
+                        console.log('폼 서브밋 %o', validationResult);
+                       // self.$form.find('#systemAirconForm').submit();
+                    }
+                });
                 //주소 찾기 버튼
-                self.$addressFindButton.on('click', function(e) {
+                self.$addressFindBtn.on('click', function(e) {
 
                     console.log("주소 버튼 %o",e.target);
                     var $btn = $(e.target);
@@ -87,72 +114,48 @@
                         $address.val(address);
                     }); 
                 })
-
-
-
             },
 
-            requestInquery: function() {
+            requestData: function(param) {
+                var self = this;
+                var ajaxUrl = self.$formWrap.attr('data-receipt-url');
+        
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxDataPost(url, param, function(result) {
+                    var data = result.data;
+    
+                    if (data.resultFlag == 'Y') {
+                        lgkorUI.hideLoading();
+                        
+                        lgkorUI.alert("", {
+                            title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.',
+                            ok: function (){
+
+                                console.log('온라인 견적 문의 하기 얼럿 이후 동작');
+
+                            }
+
+                        });
+
+                        // self.$container.find('#systemAirconForm').submit();
+                    }
+                }, 'POST');
 
             },
-            // requestSelectData: function() {
-            //     var self = this;
-            //     var ajaxUrl = self.$formWrap.attr('data-select-url');
-            //     lgkorUI.showLoading();
-            //     lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
-            //         var data = result.data;
-            //         areaData = data.area;
-            //         branchData = data.branch;
-            //         var arr = data.category instanceof Array ? data.category : [];
-            //         self.$categorySelect.find('option:not(:eq(0))').remove();
-            //         if(arr.length > 0) {
-            //             arr.forEach(function(item, index) {
-            //                 self.$categorySelect.append(vcui.template(localOptTemplate, item));
-            //             });
-            //         }
-            //         self.$categorySelect.vcSelectbox('update');
-
-            //         self.$areaSelect.find('option:not(:eq(0))').remove();
-            //         self.$areaSelect.vcSelectbox('update');
-            //         self.$branchSelect.find('option:not(:eq(0))').remove();
-            //         self.$branchSelect.vcSelectbox('update');
-            //     });
+            // openAlert: function(alert) {
+            //     //알림
+            //     var obj ={title: alert.title,
+            //         typeClass: '',
+            //         cancelBtnName: alert.cancelBtnName,
+            //         okBtnName: alert.okBtnName,
+            //         ok: function (){}
+            //     };
+            //     var desc = alert.desc ? alert.desc : null;
+            //     if(desc) {
+            //         obj.typeClass = 'type2'
+            //     }
+            //     lgkorUI.alert(desc, obj);
             // },
-
-            // requestData: function(param) {
-            //     var self = this;
-            //     var ajaxUrl = self.$formWrap.attr('data-receipt-url');
-            //     lgkorUI.showLoading();
-            //     lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, param, function(result) {
-            //         var data = result.data;
-            //         if(lgkorUI.stringToBool(data.success)) {
-            //             if(data.alert) {
-            //                 self.openAlert(result.data.alert);
-            //             }
-            //             self.$categorySelect.vcSelectbox('selectedIndex',0,true);
-            //             self.$inputReceipt.val('');
-            //         } else {
-            //             if(data.alert) {
-            //                 self.openAlert(result.data.alert);
-            //             }
-            //         }
-            //     },"POST",null);
-            // },
-
-            openAlert: function(alert) {
-                //알림
-                var obj ={title: alert.title,
-                    typeClass: '',
-                    cancelBtnName: alert.cancelBtnName,
-                    okBtnName: alert.okBtnName,
-                    ok: function (){}
-                };
-                var desc = alert.desc ? alert.desc : null;
-                if(desc) {
-                    obj.typeClass = 'type2'
-                }
-                lgkorUI.alert(desc, obj);
-            },
         };
 
         b2cOnline.init();                
