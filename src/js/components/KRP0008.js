@@ -403,8 +403,8 @@
                     dots: false,
                     buildDots: false,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    touchThreshold: 100,
-                    speed: 150
+                    speed: 150,
+                    touchThreshold: 100
                 });
                 //self.$pdpMobileVisual.show();
             },
@@ -573,7 +573,8 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        $('.cardDiscount').show();
+                        var isShow = lgkorUI.isShowDate('20210601','20210901')
+                        if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
                     } else {
