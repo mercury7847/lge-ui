@@ -10,14 +10,14 @@
                 "discountPrice": "0",
                 "receiptBankCodeNm": "신한카드",
                 "paymentPrice": "5,000",
-                "receiptBankAccountNo": "1233"
+                "receiptBankAccountNo": ""
             },
             {
                 "chargePrice": "16,900",
                 "discountPrice": "0",
                 "receiptBankCodeNm": "삼성카드",
                 "paymentPrice": "5,000",
-                "receiptBankAccountNo": "1234"
+                "receiptBankAccountNo": ""
             }
         ]
     },
