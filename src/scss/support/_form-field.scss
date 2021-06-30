@@ -4,11 +4,15 @@
 .btn-group {
     margin:64px auto 0;
     @include mobile {
-        margin-top: 32px;
         padding: 0 16px;
     }
 }
-
+.btn-group.bestshop {
+    @include mobile {
+        margin: 0 !important;
+        padding: 0 !important;
+    }  
+} // 210622 추가
 .btn-delete {
     position:absolute;
     top:50%;

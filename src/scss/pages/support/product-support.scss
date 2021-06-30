@@ -388,11 +388,6 @@
                 & > li {
                     position:relative;
                     display:inline;
-                    // start - 210621 추가
-                    &:nth-child(2) {
-                        margin-right: 15px;
-                    }
-                    // end - 210621 추가
                     &:after {
                         content:'';
                         display:inline-block;
@@ -401,12 +396,6 @@
                         margin:7px 8px 0;
                         background:#ddd;
                     }
-                    // start - 210621 추가
-                    &:nth-child(2)::after {
-                        width:0;
-                        height:0;
-                    }
-                    // end - 210621 추가
                     &:last-child {
                         margin:0;
                         padding:0;
