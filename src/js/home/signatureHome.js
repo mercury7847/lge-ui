@@ -9,6 +9,7 @@ $(function() {
     });
 
     vcui.require(['ui/carousel','ui/lazyLoaderSwitch','libs/jquery.transit.min'], function () {     
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigMain = $('.ui_wide_slider');
         $sigMain.vcCarousel('destroy').vcCarousel({
             autoplay: true,
@@ -26,6 +27,7 @@ $(function() {
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             speed: 150
         });
+        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         var $sigTheme = $('.signature-theme .ui_carousel_slider');
         $sigTheme.vcCarousel({
@@ -55,10 +57,9 @@ $(function() {
         $('body').vcLazyLoaderSwitch('reload',$sigTheme);
         $('body').vcLazyLoaderSwitch('reload',$sigShowRoom);
         
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigSlideNum = $sigMain.find('.slide-conts');
         var $sigSlideLength = $sigMain.find('.custom-indi-wrap')
-
-        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         if($sigSlideNum.length === 1) {
             $sigSlideLength.hide();
         }
@@ -75,23 +76,13 @@ $(function() {
         var currentStep = 0;
         var currentPage = 0;
         var touchSy = 0;
-        var $scenes = $('.signature-hero').children().add('.signature-wrap'); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
+        var $scenes = $('.signature-hero').children().add('.signature-wrap');
         var stepLens = 0;
-        var pageLens = $scenes.length -1; //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
+        var pageLens = $scenes.length -1;
         var posArr = [];
         var wheelArr = [];
         var regex = /^data-step-(-?\d*)/;
 
-        var $stkTab = $contentWrap.find('.signature-tabs');
-        var $stkTabOffsetTop = $stkTab.offset().top;
-
-        $window.scroll(function(){
-            if($window.scrollTop() >= $stkTabOffsetTop) {
-                $contentWrap.addClass('active on');
-            } else {
-                $contentWrap.removeClass('active on');
-            }
-        });
 
         // 웨일 결합처리
         $('.foot-cont').find('.menu-opener').on('click', function(e){
@@ -594,8 +585,8 @@ $(function() {
             posArr.push(10000);
 
             stepLens = wheelArr.length-1;                    
-            //$contentWrap.css({'overflow':'auto','height':winHeight});
-            //$('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            //$contentWrap.css({'overflow':'auto','height':winHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
+            //$('.contents').css({'overflow':'hidden', 'height':totalHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
 
             if(page!==undefined){
                 currentPage = page;
@@ -617,14 +608,6 @@ $(function() {
             $('html,body').scrollTop(pageLens*winHeight);
             $contentWrap.scrollTop(0); 
         });
-
-        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-        var $sigTab = $('.sigTabMoveBtn');
-        $sigTab.on('click', function(){
-            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
-        })
-
-        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         $(document).on('click', 'a', function(e){
             
@@ -650,6 +633,24 @@ $(function() {
                 }
             }      
         });
+
+        /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        var $stkTab = $contentWrap.find('.signature-tabs');
+        var $stkTabOffsetTop = $stkTab.offset().top;
+
+        $window.scroll(function(){
+            if($window.scrollTop() >= $stkTabOffsetTop) {
+                $contentWrap.addClass('active on');
+            } else {
+                $contentWrap.removeClass('active on');
+            }
+        });
+
+        var $sigTab = $('.sigTabMoveBtn');
+        $sigTab.on('click', function(){
+            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
+        })
+        /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         // 접근성 탭 이동시 화면처리
         $(document).on('focusin', function(e){
