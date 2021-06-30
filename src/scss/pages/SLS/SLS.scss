@@ -364,30 +364,17 @@ br.pc {
                     width:32px;
                     height:32px;
                     background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
-                    //210629
-                    // @media screen and (max-width:1024px) {
-                    //     right:-5px;
-                    //     bottom:21px;
-                    //     width:16px;
-                    //     height:16px;
-                    //     background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
-                    // }
-                    // @include mobile{
-                    //     right:3px; 
-                    //     bottom:21px;
-                    // }
-                    // @media screen and (max-width :305px){
-                    //     right:30px;
-                    //     bottom:5px;
-                    // }
-
                     @media screen and (max-width:1207px){
                         right:-5px;
                         bottom:30px;
                     }
-                    @media screen and (max-width: 1024px){
+                    //210629
+                    @media screen and (max-width:1024px) {
                         right:-5px;
-                        bottom:22px;
+                        bottom:21px;
+                        width:16px;
+                        height:16px;
+                        background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
                     }
                     @include mobile{
                         right:3px; //210629
@@ -546,7 +533,8 @@ br.pc {
         }
         //210629
     }
-    
+    /* 210531 케어솔루션 홈 버튼 로그인후 버튼 영역 */
+}
 
 // 플로우배너
 .care-flowbanner {
