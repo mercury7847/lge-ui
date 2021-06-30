@@ -2113,20 +2113,20 @@
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
 
                 // BTOCSITE-1775
-                var isAllCancelAbleNo = true;
+                var isAllCancelDisable = true;  // 모두 취소 불가능
                 productList.forEach(function( data ){                    
                     if (data.itemCancelAbleYn == "Y"){
-                        isAllCancelAbleNo = false;
+                        isAllCancelDisable = false;
                     }
                 });
 
-                if (isAllCancelAbleNo == true){
+                if (isAllCancelDisable == true){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
-                    $('#popup-cancel').find('.not-cancel-footer').show();                    
+                    $('#popup-cancel').find('.not-cancel-footer').show();
                 } else {
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);                    
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
