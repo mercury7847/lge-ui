@@ -14,7 +14,8 @@ var appInit = function() {
     //console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
-            APPalarmChkIcon(); //210701 알림메시지 카운트 chk 뱃지 추가
+             //210701 알림메시지 카운트 chk 뱃지 추가
+             APPalarmChkIcon();
             if ($("#floatBox .btn-app-ar").length > 0){
                 return;
             }
@@ -231,7 +232,6 @@ var appInit = function() {
                     count = "99+";
                 }
                 $target.html(count);
-                console.log("알람체크테스트"+$alarmChk);
             }else{
                 $alarmChk.addClass("active");
             }
@@ -249,7 +249,7 @@ var appInit = function() {
 // 210701 알람체크 아이콘
 function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
-    var html;
+    var html = "";
     html += "<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
     $mobNavBtn.append(html);
 }
