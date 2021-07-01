@@ -17,6 +17,12 @@
         display: inline-block;
     }
 }
+br.m{
+    display:none;
+    @include mobile{
+        display: block;
+    }
+}
 
 .mo-flex {
     //display: none;
@@ -86,6 +92,11 @@
         .reqchk{
             font-size:14px;
             padding-top: 20px;
+            @include mobile{
+                font-size:13px;
+                padding-top: 10px;
+                padding-bottom:15px;
+            }
         }
         .reqchk::before{
             content:"*";            
@@ -110,7 +121,7 @@
                     width:160px;
                     margin:0;
                     @include mobile{
-                        width: 100%; //210629
+                        // width: 100%; //210629
                     }
                 }
                 .phone-input-wrap {
@@ -393,7 +404,7 @@
                                         max-width: 160px;
                                         @include mobile{
                                             display: flex;
-                                            max-width: 320px;
+                                            max-width: 100%;
                                         }
                                     }
 
