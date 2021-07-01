@@ -351,6 +351,10 @@
             height:calc(100% - 122px);
             max-height:calc(100% - 122px);
             //max-height:none;
+            &.is-bottom-expire {
+                height:calc(100% - 186px);
+                max-height:calc(100% - 186px);
+            }
         }
         .tabs-wrap {
             &:first-child {
