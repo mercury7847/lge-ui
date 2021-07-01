@@ -328,7 +328,9 @@
             }
             .result-info {
                 .info-text {
+                    width:100%;
                     padding-top: 0;
+                    padding-right:0;
                 }
                 @include mobile {
                     .info-text {
@@ -443,23 +445,15 @@
         }
         
         .desc {
-            display: -webkit-box;
-            max-width: 680px;
-            max-height: 52px;
             margin-bottom: 6px;
-            text-overflow: clip;
-            //text-overflow:ellipsis;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow:hidden;
-            @include font($font-medium,26px);
+            @include textEllipsisClamp(1);
+            @include font($font-medium,24px);
             color: $color-default;
             @include mobile {
-                max-height: 44px;
                 @include font(13px,21px);
             }
         }
-        
+
         .review-info {
             display: inline-block;
             margin-right: 12px;
@@ -746,6 +740,18 @@
     &.care-list {
         > li .result-info .info-text {
             display: block;
+        }
+    }
+}
+
+
+// IE10 and IE11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .result-list {
+        & > li {
+            .desc {
+                white-space: nowrap;
+            }
         }
     }
 }
