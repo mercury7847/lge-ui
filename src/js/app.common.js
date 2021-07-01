@@ -12,9 +12,9 @@ MOBILE:     /mobile/.test(ua)
 */
 var appInit = function() {
     //console.log('앱 스크립트 시작');
-    APPalarmChkIcon(); //210701 알림메시지 카운트 chk 뱃지 추가
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
+            APPalarmChkIcon(); //210701 알림메시지 카운트 chk 뱃지 추가
             if ($("#floatBox .btn-app-ar").length > 0){
                 return;
             }
