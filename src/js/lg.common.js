@@ -85,6 +85,40 @@ var goAppUrl = function(path) {
         '   </div>\n'+
         '</article>';
 
+    var mainPopupInit = 
+    '<article id="main-init-popup" class="popup-wrap small app-popup-init" style="max-width:600px">' + 
+    '<header class="pop-header">' + 
+        '<h1 class="tit"><span>안내</span></h1>' + 
+    '</header>' + 
+    '<section class="pop-conts align-center">' + 
+        '<section class="section">' + 
+            '<div class="headline">' + 
+                '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
+            '</div>' + 
+            '<div class="text-cont">' + 
+                '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 <br>' + 
+                '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, <br>' + 
+                '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 <br>' + 
+                '완료하였습니다. <br><br>' + 
+
+                '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' + 
+                '자세한 내용은 당사 홈페이지의 공고를 참조하시기 바랍니다.' +
+            '</div>' + 
+            '<div class="btn-wrap">' + 
+                '<a href="https://www.lge.co.kr/uploads/company/investment/notice/21_division.pdf" target="_blank" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
+            '</div>' + 
+        '</section>' + 
+    '</section>' + 
+	'<div class="pop-footer check-type align-between">' + 
+        '<span class="chk-wrap" data-role="today-cookie-check">' + 
+            '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
+            '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' + 
+        '</span>' + 
+        '<button type="button" class="btn pink btn-main-pop-close"><span>닫기</span></button>' + 
+    '</div>' + 
+    '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' + 
+'</article>';
+
 
 
     var confirmTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="confirm">\n'+
@@ -381,6 +415,28 @@ var goAppUrl = function(path) {
                             
                             el.find('.ui_modal_close').one('click', function () {
                                 vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                                $('html, body').css('overflow', '');
+                                return;
+                            });
+                        }
+                        
+                    }
+                }
+
+                if (!isApp()) {
+                    var cookie_InitPopName = '__LG_MAIN_REPORT_POPUP_INIT';
+                    if (vcui.Cookie.get(cookie_InitPopName) === '' && (location.pathname === "/" || location.pathname === "") ) {
+                        if($('#main-init-popup').size() === 0 && !!vcui.modal) {
+                            $('body').append(vcui.template(mainPopupInit));
+                            $('#main-init-popup').vcModal('show');
+                            
+                            $(document).on('click', '#main-init-popup .btn-main-pop-close', function (e) {
+                                var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
+                                
+                                if( _expireChecked ) {
+                                    vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
+                                }
+                                $('#main-init-popup').vcModal('hide');
                                 $('html, body').css('overflow', '');
                                 return;
                             });
