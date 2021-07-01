@@ -17,6 +17,12 @@
         display: inline-block;
     }
 }
+br.m{
+    display:none;
+    @include mobile{
+        display: block;
+    }
+}
 
 .mo-flex {
     //display: none;
@@ -31,9 +37,8 @@
         font-size:20px;
     }
 }
-.c-gray {
+.form-wrap .forms .tit label.c-gray {
     color:#aaa;
-    font-weight: 500;
 }
 .c-darkgray{
     color:#666;
@@ -87,6 +92,11 @@
         .reqchk{
             font-size:14px;
             padding-top: 20px;
+            @include mobile{
+                font-size:13px;
+                padding-top: 10px;
+                padding-bottom:15px;
+            }
         }
         .reqchk::before{
             content:"*";            
@@ -111,36 +121,17 @@
                     width:160px;
                     margin:0;
                     @include mobile{
-                        width: 106px;
+                        // width: 100%; //210629
                     }
                 }
                 .phone-input-wrap {
                     width:320px;
                     height:48px;
                     display: inline-block;
-                    margin: 0 0 0 4px;
-                    input {
-                        margin:0 0 0 8px;
-                    }
                     @include mobile{
                         display: flex;
-                        width: 211px;
+                        width: 100%; //210629
                     }
-                }
-                .phone-input-wrap::before{
-                    content:"";
-                    width: 5px;
-                    height:1px;
-                    background-color: #000;
-                    display: inline-block;
-                    position: relative;
-                    top:50%;
-                    left:0;
-                    transform:translateY(-50%);
-                    @include mobile{
-                        left:2px;
-                    }
-                    
                 }
                 .email-conts-wrap {
                     @include mobile{
@@ -151,7 +142,6 @@
                     .email-input-wrap {
                         width: 320px;
                         display: inline-block;
-                        margin-right:8px;
                         @include mobile{
                             width: 100%;
                             display: block;
@@ -394,10 +384,13 @@
                                         max-width: 160px;
                                         @include mobile{
                                             display: flex;
-                                            max-width: 320px;
+                                            max-width: 100%;
                                         }
                                     }
 
+                                }
+                                @include mobile{
+                                    width: 100%; //210629
                                 }
                             }
                         }
@@ -505,7 +498,24 @@
                         .conts{
                             .select-wrap{
                                 margin-right:8px;
+                                //210629
+                                @include mobile{
+                                    width: 106px;
+                                }
+                                //210629
                             }
+                            //210629
+                            .input-wrap{
+                                .text-box{
+                                    padding-top:20px;
+                                    padding-bottom:100px;
+                                    @include mobile{
+                                        padding-top:20px;
+                                        padding-bottom:120px;
+                                    }
+                                }
+                            }
+                            //210629
                         }
                     }
                 }
