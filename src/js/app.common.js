@@ -219,11 +219,17 @@ var appInit = function() {
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
             var $alarmChk = $(".mobile-nav-button .count");
+            var $moBtn = $(".mobile-nav-button");
             var count;
             if($target.length > 0){
                 $target.removeClass("active");
                 $alarmChk.removeClass("active");
                 count = cnt;
+
+                if($moBtn.hasClass("active")==true){
+                    $alarmChk.removeClass("active");
+                }
+                
                 if(cnt > 0){
                     $target.addClass("active");
                     $alarmChk.addClass("active");
@@ -233,10 +239,12 @@ var appInit = function() {
                 }
                 $target.html(count);
                 //console.log("알람체크테스트"+$alarmChk);
+                
             }else{
                 $alarmChk.removeClass("active");
             }
         }
+
 
         LGEAPPsetArBarcode();
         $(window).on({
@@ -252,7 +260,7 @@ function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
     html += "<span class='count active'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
-    $mobNavBtn.appendTo(html);
+    $mobNavBtn.append(html);
 }
 
 function ChatbotAppClose(type) {
