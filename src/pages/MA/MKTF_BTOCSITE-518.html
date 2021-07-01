@@ -21,7 +21,7 @@
         <div class="contents sysaircon-form-wrap">            
             <div class="cont-wrap">
                 <div class="form-wrap">
-                    <form action="./" method="post" id="systemAirconForm" name="systemAirconForm">
+                    <form action="./" method="post" id="systemAirconForm" name="systemAirconForm" data-inquery-url="/html/MA/MKTF_BTOCSITE-518-inquiry.html">
                         <div class="form-head">
                             <h2 class="headTitle">가정용 시스템에어컨 <span class="mo-flex">온라인 견적</span></h2>
                             <p class="desc">간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다.
@@ -34,21 +34,15 @@
                             <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
                                 <div class="input-wrap">
-                                    <input type="text" name="userName" value="" id="inp01" class="inq-name" data-required="true">
+                                    <input type="text" name="userName" value="" id="inp01" class="inq-name" data-format="koreng" data-required="true">
                                 </div>
                             </dd>
                         </dl>
                         <dl class="forms">
                             <dt class="tit"><label for="inp02" class="req">휴대전화번호<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
-                                <div class="select-wrap">
-                                    <select class="ui_selectbox" id="select1" title="전체 카테고리 선택" name="phonePrefix">
-                                        <option value="010" class="">010</option>
-                                        <option value="" class=""></option>
-                                    </select>
-                                </div>
                                 <div class="phone-input-wrap input-wrap">
-                                    <input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true">
+                                    <input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="10" maxlength="11">
                                 </div>
                             </dd>
                         </dl>
@@ -58,13 +52,6 @@
                                 <div class="email-conts-wrap">
                                     <div class="email-input-wrap input-wrap">
                                         <input type="text" id="inp03" placeholder="이메일을 입력하세요." name="userEmail" value="" data-required="true">
-                                    </div>
-                                    <div class="select-wrap">
-                                        <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" name="emailProvider">
-                                            <option value="">직접입력</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                        </select>
                                     </div>
                                 </div>
                             </dd>
@@ -443,8 +430,8 @@
                                         </table>
                                     </div>
                                     <div class="btn-wrap pc-only">
-                                        <button type="button" class="btn gray confirmBtn"><span>온라인 견적 문의 내역 조회</span></button>
-                                        <button type="button" class="btn inqueryBtn"><span>온라인 견적 문의하기</span></button>
+                                        <button type="button" class="btn gray inqueryBtn"><span>온라인 견적 문의 내역 조회</span></button>
+                                        <button type="button" class="btn estimateBtn"><span>온라인 견적 문의하기</span></button>
                                     </div>
                                 </div>
                                 
@@ -456,8 +443,8 @@
                 </div>
             </div>
             <div class="btn-wrap mo-only">
-                <button type="button" class="btn gray mo confirmBtn"><span>문의 내역 조회</span></button>
-                <button type="button" class="btn mo inqueryBtn"><span>온라인 견적 문의하기</span></button>
+                <button type="button" class="btn gray mo inqueryBtn"><span>문의 내역 조회</span></button>
+                <button type="button" class="btn mo estimateBtn"><span>온라인 견적 문의하기</span></button>
             </div>
         </div>
 
@@ -479,7 +466,7 @@
 </div>
 
 
-<!-- <script src="/lg5-common/js/support-common.min.js"></script> -->
+<script src="/lg5-common/js/support-common.min.js"></script>
 <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
 <script src="/lg5-common/js/store/systemAircon.min.js"></script>
 
