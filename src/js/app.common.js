@@ -232,8 +232,9 @@ var appInit = function() {
                     count = "99+";
                 }
                 $target.html(count);
+                //console.log("알람체크테스트"+$alarmChk);
             }else{
-                $alarmChk.addClass("active");
+                $alarmChk.removeClass("active");
             }
         }
 
@@ -250,7 +251,7 @@ var appInit = function() {
 function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
-    html += "<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
+    html += "<span class='count active'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
     $mobNavBtn.append(html);
 }
 
