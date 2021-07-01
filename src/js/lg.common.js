@@ -374,11 +374,13 @@ var goAppUrl = function(path) {
                 self._preloadComponents();
             }
 
+            self._mobileInitPopup(); //2021-07-01 긴급 반영건
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
+            
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
-            self._mobileInitPopup(); //2021-07-01 긴급 반영건
+            
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -435,27 +437,29 @@ var goAppUrl = function(path) {
                 return location.pathname.match(new RegExp(element,"g"))
             });
 
-            if (!isApp()) {
-                var cookie_InitPopName = '__LG_MAIN_REPORT_POPUP_INIT';
-                if (vcui.Cookie.get(cookie_InitPopName) === '' && isPopUp ) {
-                    if($('#main-init-popup').size() === 0 && !!vcui.modal) {
-                        $('body').append(vcui.template(mainPopupInit));
-                        $('#main-init-popup').vcModal('show');
-                        
-                        $(document).on('click', '#main-init-popup .btn-main-pop-close', function (e) {
-                            var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
+            $(function() {
+                if (!isApp()) {
+                    var cookie_InitPopName = '__LG_MAIN_REPORT_POPUP_INIT';
+                    if (vcui.Cookie.get(cookie_InitPopName) === '' && isPopUp ) {
+                        if($('#main-init-popup').size() === 0 && !!vcui.modal) {
+                            $('body').append(vcui.template(mainPopupInit));
+                            $('#main-init-popup').vcModal('show');
                             
-                            if( _expireChecked ) {
-                                vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
-                            }
-                            $('#main-init-popup').vcModal('hide');
-                            $('html, body').css('overflow', '');
-                            return;
-                        });
+                            $(document).on('click', '#main-init-popup .btn-main-pop-close', function (e) {
+                                var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
+                                
+                                if( _expireChecked ) {
+                                    vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
+                                }
+                                $('#main-init-popup').vcModal('hide');
+                                $('html, body').css('overflow', '');
+                                return;
+                            });
+                        }
+                        
                     }
-                    
                 }
-            }
+            });
         },
 
 
