@@ -119,20 +119,6 @@ var appInit = function() {
                 }
             }
 
-            //알림함 Count 표시
-            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정 */
-            if (/iPhone|iPad|iPod/i.test(agent)) {
-                var obj = new Object();
-                obj.command = "getUncheckedPushCount";
-                obj.callback ="LGEAPPalarmCount";
-                var jsonString= JSON.stringify(obj);
-                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            }else if(/Android/i.test(agent)) {
-                android.getUncheckedPushCount("LGEAPPalarmCount");
-            }else{
-                //console.log("Count Update");
-            }
-
             //알림함 버튼 이벤트  
             $(".app-alarm-button").on({
                 click : function(){
@@ -148,6 +134,20 @@ var appInit = function() {
                     }
                 }
             });
+
+            //알림함 Count 표시
+            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정 */
+            if (/iPhone|iPad|iPod/i.test(agent)) {
+                var obj = new Object();
+                obj.command = "getUncheckedPushCount";
+                obj.callback ="LGEAPPalarmCount";
+                var jsonString= JSON.stringify(obj);
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            }else if(/Android/i.test(agent)) {
+                android.getUncheckedPushCount("LGEAPPalarmCount");
+            }else{
+                //console.log("Count Update");
+            }
         }
 
         //제품등록 페이지 탭
@@ -219,11 +219,17 @@ var appInit = function() {
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
             var $alarmChk = $(".mobile-nav-button .count");
+            var $moBtn = $(".mobile-nav-button");
             var count;
             if($target.length > 0){
                 $target.removeClass("active");
                 $alarmChk.removeClass("active");
                 count = cnt;
+
+                if($moBtn.hasClass("active")==true){
+                    $alarmChk.removeClass("active");
+                }
+                
                 if(cnt > 0){
                     $target.addClass("active");
                     $alarmChk.addClass("active");
@@ -233,10 +239,12 @@ var appInit = function() {
                 }
                 $target.html(count);
                 //console.log("알람체크테스트"+$alarmChk);
+                
             }else{
                 $alarmChk.removeClass("active");
             }
         }
+
 
         LGEAPPsetArBarcode();
         $(window).on({
@@ -252,7 +260,7 @@ function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
     html += "<span class='count active'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
-    $mobNavBtn.html(html);
+    $mobNavBtn.append(html);
 }
 
 function ChatbotAppClose(type) {
