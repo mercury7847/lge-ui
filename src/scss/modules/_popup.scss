@@ -479,13 +479,17 @@
                                 .chk-wrap-colorchip {
                                     width: 40px;
                                     height: 40px;
+                                    margin-top:8px;
                                     @include mobile {
                                         width: 34px;
                                         height: 34px;
+                                        margin-top:3px;
                                     }
                                     &:not(:last-child) {
-                                        margin-top:8px;
                                         margin-right: 8px;
+                                        @include mobile {
+                                            margin-right:3px;
+                                        }
                                     }
                                     input {
                                         & + label {
