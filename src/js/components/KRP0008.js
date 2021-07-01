@@ -23,40 +23,40 @@
         '</a>' +
     '</li>';
 
-    var siblingTemplate = 
-        '<div class="{{#if itemList[0].siblingType=="COLOR"}}sibling-color {{#else}}sibling-select{{/if}}">' + 
-            '{{#if itemList[0].siblingType=="COLOR"}}' +
-                '<div class="sibling-colorHead">' + 
-                    '<div class="text">{{pdpTitle}}</div>' +
-                    '<div class="color-text"><span>{{colorValue}}</span></div>' + 
-                '</div>' + 
-                '{{#else}}' + 
-                '<div class="text">{{pdpTitle}}</div>' +
-            '{{/if}}' + 
-            '<div class="select-option radio {{#if itemList[0].siblingType=="COLOR"}}color{{#else}}select{{/if}}">' + 
-                '<div class="option-list" role="radiogroup">' + 
-                '{{#each (item, index) in itemList}}'+ 
-                    '{{#if item.siblingType=="COLOR"}}' +
-                        '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" title="{{item.siblingValue}}">' + 
-                        '{{#else}}' + 
-                        '<div role="radio" class="rdo-wrap btn-type2" title="{{item.siblingValue}}">' + 
-                    '{{/if}}' + 
+    // var siblingTemplate = 
+    //     '<div class="{{#if itemList[0].siblingType=="COLOR"}}sibling-color {{#else}}sibling-select{{/if}}">' + 
+    //         '{{#if itemList[0].siblingType=="COLOR"}}' +
+    //             '<div class="sibling-colorHead">' + 
+    //                 '<div class="text">{{pdpTitle}}</div>' +
+    //                 '<div class="color-text"><span>{{colorValue}}</span></div>' + 
+    //             '</div>' + 
+    //             '{{#else}}' + 
+    //             '<div class="text">{{pdpTitle}}</div>' +
+    //         '{{/if}}' + 
+    //         '<div class="select-option radio {{#if itemList[0].siblingType=="COLOR"}}color{{#else}}select{{/if}}">' + 
+    //             '<div class="option-list" role="radiogroup">' + 
+    //             '{{#each (item, index) in itemList}}'+ 
+    //                 '{{#if item.siblingType=="COLOR"}}' +
+    //                     '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" title="{{item.siblingValue}}">' + 
+    //                     '{{#else}}' + 
+    //                     '<div role="radio" class="rdo-wrap btn-type2" title="{{item.siblingValue}}">' + 
+    //                 '{{/if}}' + 
 
-                            '{{#if index === currentCheckIndex}}' +
-                            '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}" checked>' + 
-                            '{{#else}}' + 
-                            '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}">' + 
-                            '{{/if}}' + 
-                            '{{#if item.siblingType=="COLOR"}}' +
-                                '<label for="rdo-option-{{optionIndex}}-{{index}}"><span class="blind">{{item.siblingValue}}</span></label>' + 
-                                '{{#else}}' + 
-                                '<label for="rdo-option-{{optionIndex}}-{{index}}">{{item.siblingValue}}</label>' + 
-                            '{{/if}}' + 
-                        '</div>' + 
-                '{{/each}}'
-            '</div>' + 
-        '</div>' + 
-    '</div>';
+    //                         '{{#if index === currentCheckIndex}}' +
+    //                         '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}" checked>' + 
+    //                         '{{#else}}' + 
+    //                         '<input type="radio" id="rdo-option-{{optionIndex}}-{{index}}" name="rdo-option-{{optionIndex}}" data-sibling-code="{{item.siblingCode}}" data-sibling-group-code="{{item.siblingGroup_code}}">' + 
+    //                         '{{/if}}' + 
+    //                         '{{#if item.siblingType=="COLOR"}}' +
+    //                             '<label for="rdo-option-{{optionIndex}}-{{index}}"><span class="blind">{{item.siblingValue}}</span></label>' + 
+    //                             '{{#else}}' + 
+    //                             '<label for="rdo-option-{{optionIndex}}-{{index}}">{{item.siblingValue}}</label>' + 
+    //                         '{{/if}}' + 
+    //                     '</div>' + 
+    //             '{{/each}}'
+    //         '</div>' + 
+    //     '</div>' + 
+    // '</div>';
 
     //$(window).ready(function(){
         //if(!document.querySelector('.KRP0008')) return false;
@@ -1374,17 +1374,30 @@
                     })
                     
                     if( curModelArryOnly && curModelArryOnly.length == 1) {
+                        //console.log('무조건 하나')
                         uniqModelArray = curModelArryOnly[0];
                     } else {
+                        //console.log('하나가 아니면?')
+                        
+                        curModel = curModel.filter(function(v){
+                            return v.length > 0
+                        });
+                        //console.log("curModel", curModel)
                         uniqModelArray = curModel.reduce(function (a, arr) {
+                            //console.log("a", a)
                             return a.filter(function (num) {
                                 return arr.includes(num);
                             });
                         });
                     }
+//                     console.log("uniqModelArray[0]", uniqModelArray[0])
+                    
                     //필터링된 모델값이 하나일 경우
                     if( uniqModelArray.length > 0 ) {
                         self.requestSiblingData(uniqModelArray[0], _self)
+                    } else {
+                        self.$specInfoPopup.find('.btn-sibling-select').prop('disabled', true);
+                        self.$specInfoPopup.find('.sibling-cont').removeAttr('data-current-model data-model-path')
                     }
                 });
 
