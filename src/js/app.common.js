@@ -228,11 +228,10 @@ var appInit = function() {
                 if(cnt > 99){
                     count = "99+";
                 }
-                if(cnt < 0){
-                    $alarmChk.removeClass("active");
-                }
                 $target.html(count);
                 console.log("알람체크테스트"+$alarmChk);
+            }else{
+                $alarmChk.addClass("active");
             }
         }
 

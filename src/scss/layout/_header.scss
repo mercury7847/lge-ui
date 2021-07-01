@@ -1397,14 +1397,15 @@
             }
         }
     }
+    //210701
     .count{
         position: absolute;
-        top: -5px;
-        left: 10px;
+        top: 2px;
+        left: 18px;
         display: none;
         min-width: 14px;
         height: 14px;
-        padding: 2px 4px;
+        padding: 2px 2px;
         border-radius: 8px;
         background-color: $color-primary;
         font-weight: 700;
@@ -1416,6 +1417,7 @@
     .count.active {
         display: block;
     }
+    //210701
 }
 
 .login-mobile {
