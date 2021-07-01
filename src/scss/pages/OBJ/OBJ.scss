@@ -230,7 +230,6 @@ header {
         @include mobile {
             justify-content: center;
             height: auto;
-            flex-wrap: wrap;
             padding: 30px 16px 0;
         }
         .banner-inner {
@@ -240,6 +239,9 @@ header {
             margin: 0 auto;
             width: 100%;
             padding: 60px 40px 0;
+            @include mobile {
+                flex-wrap: wrap;
+            }
             .text-wrap {
                 // float: left;
                 // width: calc(100% - 557px);
@@ -279,6 +281,17 @@ header {
                             width: 70.556vw;
                         }
                     }
+                }
+                .model-name {
+                    margin-top: 30px;
+                    font-size: 18px;
+                    line-height: 1.56;
+                    font-weight: 500;
+                    color: #000000;
+                }
+                .btn {
+                    width: 132px;
+                    margin-top: 12px;
                 }
                 .desc {
                     margin-top: 20px;
