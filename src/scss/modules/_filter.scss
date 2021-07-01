@@ -58,6 +58,13 @@
                     left: 0;
                     z-index: 10;
                 }
+                /* BTOCSITE-2161 */
+                @media screen and (max-width: 1024px) {
+                    &:before {
+                        display:none;
+                    }
+                }
+                /* //BTOCSITE-2161 */
                 .lay-fliter-con,
                 .lay-filter-con {
                     @media screen and (max-width: 1024px) {
