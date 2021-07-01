@@ -559,9 +559,10 @@
                                 }
                                 .rdo-wrap.btn-type2 {
                                     margin-right: 8px;
-                                    margin-bottom: 0;
+                                    margin-bottom: 8px;
                                     @include mobile {
                                         margin-right: 3px;
+                                        margin-bottom: 3px;
                                     }
                                     &:last-of-type {
                                         margin-right: 0;
