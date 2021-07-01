@@ -3653,6 +3653,10 @@
     }
 
     $(document).ready(function() {
+
+        /* TEST */
+        $('.model_experience').attr('data-page-type', 'HIMART');
+
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
@@ -3702,6 +3706,7 @@
         var $objTopNavi = $('.brand-wrap');
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
+        var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
@@ -3713,6 +3718,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+            $step3.hide();  // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
             console.log("HIMART");
@@ -3721,6 +3727,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+            $step3.hide();  // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
@@ -4328,6 +4335,8 @@
 
         if (completed == "Y") {
             modelSimulator.stepThree();
+        } else {
+            alert('선택완료안됨');
         }
     }
 
@@ -5132,6 +5141,14 @@
                 }
             }
             resultModelPriceCheck(modelPriceArry); //개발쪽에 가격 산출을 위한 모델코드를 넘김 //함수로 반환받아야 함
+            /* BTOCSITE-1582 */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                //return;
+                
+            }
+            /* //BTOCSITE-1582 */
+            
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
@@ -6150,6 +6167,14 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 }
 //스텝3 비교하기에 나오는 가격 노출되는 함수 //개발에서 함수로 반환해줌
 function resultModelPrice(price) {
+    /* BTOCSITE-1582 */
+    var $objContent = $('.model_experience');
+    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+        alert('견적확인결과' + price);
+        $(".simul_step3 .btn_check_price").trigger('click');
+    }
+    /* //BTOCSITE-1582 */
+
     let priceLeng = price.length;
     setTimeout(function() {
         $(".tb_compare").css("visibility", "visible");
