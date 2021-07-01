@@ -452,6 +452,9 @@ var goAppUrl = function(path) {
                                     vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
                                 }
                                 $('#main-init-popup').vcModal('hide');
+                                if( window.innerWidth < 768 && vcui.detect.isMobileDevice) {
+                                    $('html, body').css('overflow', '');
+                                }
                                 return;
                             });
                         }
