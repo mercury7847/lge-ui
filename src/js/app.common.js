@@ -12,6 +12,7 @@ MOBILE:     /mobile/.test(ua)
 */
 var appInit = function() {
     //console.log('앱 스크립트 시작');
+    APPalarmChkIcon(); //210701 알림메시지 카운트 chk 뱃지 추가
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
             if ($("#floatBox .btn-app-ar").length > 0){
@@ -213,6 +214,7 @@ var appInit = function() {
         }
 
         //알림함 Count 표시
+        // 210701 수정
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
             var $alarmChk = $(".mobile-nav-button .count");
@@ -244,6 +246,13 @@ var appInit = function() {
     }
 };
 
+// 210701 알람체크 아이콘
+function APPalarmChkIcon(){
+    var $mobNavBtn = $(".mobile-nav-button");
+    var html;
+    html += "<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
+    $mobNavBtn.append(html);
+}
 
 function ChatbotAppClose(type) {
     // 앱에서 호출될경우
@@ -263,8 +272,6 @@ function ChatbotAppClose(type) {
         }
     }
 }
-
-
 // 스와이프 적용일때 분기 처리
 $(document).ready(function(){
     var isSwipe = !!$('#sw_con').length;
