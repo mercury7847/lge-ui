@@ -226,6 +226,7 @@ header {
         overflow: hidden;
         width: 100%;
         height: auto;
+        max-height: 800px;
         background: #f4f4f4;
         @include mobile {
             justify-content: center;
@@ -310,7 +311,9 @@ header {
                 display: flex;
                 align-content: flex-end;
                 flex: 1 1 auto;
-                width: 29.010vw;
+                // width: 29.167vw;
+                width: auto;
+                height: 100%;
                 @include mobile {
                     width: 53.889vw;
                     margin-top: 35px;
@@ -318,8 +321,8 @@ header {
                 img {
                     align-self: baseline;
                     // width: 29.010vw;
-                    width: 100%;
-                    height: auto;
+                    width: auto;
+                    height: 100%;
                     @include mobile {
                         width: 100%;
                     }
