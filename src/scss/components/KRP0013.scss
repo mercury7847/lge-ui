@@ -204,9 +204,12 @@
         padding: 24px 40px 20px;
         max-height: 479px;
         @include mobile {
-            height: calc(100vh - 124px);
-            max-height: calc(100vh - 124px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             padding: 20px 16px 54px;
+			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+			
         }
         .desc {
             padding-bottom: 30px;
@@ -335,4 +338,10 @@
     }
 }
 
-
+.bottomFixCulculateArea {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	bottom: env(safe-area-inset-bottom);
+	bottom: constant(safe-area-inset-bottom);
+}
