@@ -86,11 +86,11 @@ var goAppUrl = function(path) {
         '</article>';
 
     var mainPopupInit = 
-    '<article id="main-init-popup" class="popup-wrap small app-popup-init" style="max-width:600px">' + 
+    '<article id="main-init-popup" class="popup-wrap full app-popup-init"  style="max-width:600px">' + 
     '<header class="pop-header">' + 
         '<h1 class="tit"><span>안내</span></h1>' + 
     '</header>' + 
-    '<section class="pop-conts align-center">' + 
+    '<section class="pop-conts align-center is-bottom-expire">' + 
         '<section class="section">' + 
             '<div class="headline">' + 
                 '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
