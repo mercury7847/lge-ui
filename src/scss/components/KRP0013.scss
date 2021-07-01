@@ -9,7 +9,7 @@
 		background-color: #fff;
 	}
 
-    .support-box {
+	.support-box {
 		max-width: 1380px + 80px;
 		margin: 0 auto;
 		padding:0 40px;
@@ -186,16 +186,16 @@
 
 // 패키지 모델 팝업
 .popup-package-model {
-    width: 678px;
-    min-height: auto;
-    max-height: 696px;
-    @include mobile {
-        width: 100%;
-        height: auto;
-        max-height: 100vh;
-    }
-    .pop-header {
-        padding: 28px 0 15px;
+	width: 678px;
+	min-height: auto;
+	max-height: 696px;
+	@include mobile {
+		width: 100%;
+		height: auto;
+		max-height: 100vh;
+	}
+	.pop-header {
+		padding: 28px 0 15px;
 		@include mobile {
 			padding: 28px 0 10px;
 		}
@@ -204,9 +204,12 @@
         padding: 24px 40px 20px;
         max-height: 479px;
         @include mobile {
-            height: calc(100vh - 124px);
-            max-height: calc(100vh - 124px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             padding: 20px 16px 54px;
+			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+			
         }
         .desc {
             padding-bottom: 30px;
@@ -333,4 +336,14 @@
             }
         }
     }
+}
+
+.bottomFixCulculateArea {
+	@include mobile {
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		bottom: env(safe-area-inset-bottom);
+		bottom: constant(safe-area-inset-bottom);
+	}
 }
