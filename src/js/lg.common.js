@@ -53,7 +53,7 @@ var goAppUrl = function(path) {
     };
 
     // BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가 - 해당 요건으로인해 스크립트로 이동
-    var appDownloadTmpl = 
+    var appDownloadTmpl =
         '<article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">\n'+
         '    <section class="pop-conts align-center">\n'+
         '        <section class="section">\n'+
@@ -84,40 +84,40 @@ var goAppUrl = function(path) {
         '   </div>\n'+
         '</article>';
 
-        var mainPopupInit = 
-        '<article id="main-init-popup" class="popup-wrap full app-popup-init" style="max-width:600px">' + 
-        '<header class="pop-header">' + 
-            '<h1 class="tit"><span>안내</span></h1>' + 
-        '</header>' + 
-        '<section class="pop-conts align-center is-bottom-expire">' + 
-            '<section class="section">' + 
-                '<div class="headline">' + 
-                    '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
-                '</div>' + 
-                '<div class="text-cont">' + 
-                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 <br>' + 
-                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, <br>' + 
-                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 <br>' + 
-                    '완료하였습니다. <br><br>' + 
+        var mainPopupInit =
+        '<article id="main-init-popup" class="popup-wrap full app-popup-init" style="max-width:600px">' +
+        '<header class="pop-header">' +
+            '<h1 class="tit"><span>안내</span></h1>' +
+        '</header>' +
+        '<section class="pop-conts align-center is-bottom-expire">' +
+            '<section class="section">' +
+                '<div class="headline">' +
+                    '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' +
+                '</div>' +
+                '<div class="text-cont">' +
+                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 <br>' +
+                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, <br>' +
+                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 <br>' +
+                    '완료하였습니다. <br><br>' +
 
-                    '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' + 
+                    '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' +
                     '자세한 내용은 당사 홈페이지의 공고를 참조하시기 바랍니다.' +
-                '</div>' + 
-                '<div class="btn-wrap">' + 
-                    '<a href="https://www.lge.co.kr/uploads/company/investment/notice/21_division.pdf" target="_blank" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
-                '</div>' + 
-            '</section>' + 
-        '</section>' + 
-        '<div class="pop-footer check-type align-between">' + 
-            '<span class="chk-wrap" data-role="today-cookie-check">' + 
-                '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
-                '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' + 
-            '</span>' + 
-            '<button type="button" class="btn pink btn-main-pop-close"><span>닫기</span></button>' + 
-        '</div>' + 
-        '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' + 
+                '</div>' +
+                '<div class="btn-wrap">' +
+                    '<a href="https://www.lge.co.kr/uploads/company/investment/notice/21_division.pdf" target="_blank" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' +
+                '</div>' +
+            '</section>' +
+        '</section>' +
+        '<div class="pop-footer check-type align-between">' +
+            '<span class="chk-wrap" data-role="today-cookie-check">' +
+                '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' +
+                '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' +
+            '</span>' +
+            '<button type="button" class="btn pink btn-main-pop-close"><span>닫기</span></button>' +
+        '</div>' +
+        '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' +
     '</article>';
-        
+
 
     var confirmTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="confirm">\n'+
         '   {{#if title}}'+
@@ -356,8 +356,8 @@ var goAppUrl = function(path) {
         SEARCH_AUTOCOMPLETE_MIN_LENGTH: 1, // 검색 자동 완성 기능 실행 최소 글자수
         SEARCH_AUTOCOMPLETE_TIMER: 300, // 검색 자동 완성 기능 키보드 클릭 타이머
         DOMAIN_LIST:["www.lge.co.kr", 'wwwstg.lge.co.kr', 'wwwdev50.log.co.kr'],
-        CONTEXT_AREA: null,      
-        init: function( $context ){            
+        CONTEXT_AREA: null,
+        init: function( $context ){
             var self = this;
 
             self._bindErrBackEvent();
@@ -399,7 +399,7 @@ var goAppUrl = function(path) {
                 return location.pathname.match(new RegExp(element,"g"))
             })
 
-            
+
 
             $(function() {
                 if (vcui.detect.isMobileDevice && !isApp()) {
@@ -413,14 +413,14 @@ var goAppUrl = function(path) {
                                 goAppUrl();
                                 return;
                             });
-                            
+
                             el.find('.ui_modal_close').one('click', function () {
                                 vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
                                 $('html, body').css('overflow', '');
                                 return;
                             });
                         }
-                        
+
                     }
                 }
             });
@@ -441,18 +441,21 @@ var goAppUrl = function(path) {
                         if($('#main-init-popup').size() === 0 && !!vcui.modal) {
                             $('body').append(vcui.template(mainPopupInit));
                             $('#main-init-popup').vcModal('show');
-                            
+
                             $(document).on('click', '#main-init-popup .btn-main-pop-close', function (e) {
                                 var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
-                                
+
                                 if( _expireChecked ) {
                                     vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
                                 }
                                 $('#main-init-popup').vcModal('hide');
+                                if( window.innerWidth < 768 && vcui.detect.isMobileDevice) {
+                                    $('html, body').css('overflow', '');
+                                }
                                 return;
                             });
                         }
-                        
+
                     }
                 }
             });
@@ -693,8 +696,8 @@ var goAppUrl = function(path) {
                         }
                     }
                 });
-                
-                if (!!lgkorUI.CONTEXT_AREA){                 
+
+                if (!!lgkorUI.CONTEXT_AREA){
                     $('header.header').vcHeader(); //헤더 모듈 적용...
                     lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
 
@@ -706,7 +709,7 @@ var goAppUrl = function(path) {
 
                     $('body').buildCommonUI();
                 }
-                
+
     
                 $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
@@ -1064,7 +1067,7 @@ var goAppUrl = function(path) {
                         data[categoryId] = compareStorage[categoryId];
                     self.setStorage(self.COMPARE_KEY, data, true, categoryId);
                 }
-                
+
             } else {
                 self.removeStorage(self.COMPARE_KEY, categoryId);
             }
@@ -1096,8 +1099,8 @@ var goAppUrl = function(path) {
 
         setStorage: function(key, value, isExtend, name){
             var storage = sessionStorage.getItem(key);
-            var storageData = storage? JSON.parse(storage) : {};   
-            var data = { 'state' : 'set', 'key' : key, 'value' : value };     
+            var storageData = storage? JSON.parse(storage) : {};
+            var data = { 'state' : 'set', 'key' : key, 'value' : value };
             //Internet Explorer 불가
             //storageData = Object.assign(storageData, value);
             if(isExtend) {
@@ -1127,7 +1130,7 @@ var goAppUrl = function(path) {
             var data = {  'state' : 'remove', 'key' : key  }
             if(name){
                 var storage = sessionStorage.getItem(key);
-                var storageData = storage? JSON.parse(storage) : {}; 		
+                var storageData = storage? JSON.parse(storage) : {};
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
                 returnValue =  storageData;
@@ -2310,21 +2313,21 @@ var goAppUrl = function(path) {
          * @param {String} endTime - 종료일
          * @param {String} nowTime - 현재시간 ( 서버 타임 넘어올경우, 나머지는 로컬타임 )
          * @returns {Boolean} true  - 행사중
-         * @returns {Boolean} false - 행사기간 지남 
-         * URL 파라미터형식 
+         * @returns {Boolean} false - 행사기간 지남
+         * URL 파라미터형식
          * ?dateTest=변경할 시간,행사 시작일,행사 종료일
-         * ?dateTest=20200808,20200801,20200807 
+         * ?dateTest=20200808,20200801,20200807
          * 날짜 형식 : 년월일시분초 ex> 20200820 or 20200820230159
          */
          isShowDate: function(startTime, endTime, nowTime) {
             var self = this;
             var dateTest = self.getParameterByName("dateTest").split(",").filter(Boolean); // 테스트용 dateTest 파라미터 체크
-            var debug = self.getParameterByName("debug"); 
-        
+            var debug = self.getParameterByName("debug");
+
             // 날짜 셋팅
             var setDate = function(time) {
                 var limitTime = null;
-            
+
                 if (!time) {
                     limitTime = new Date();
                 } else {
@@ -2332,13 +2335,13 @@ var goAppUrl = function(path) {
                     if (!regex.test(time)) {
                       throw ("error : 형식 에러");
                     }
-            
+
                     if (typeof time === 'number') {
                         time = time + '';
                     }
-            
+
                     if (time.length < 8)  throw ("error : 형식 에러")
-            
+
                     var year = time.slice(0, 4);
                     var month = time.slice(4, 6);
                     var day = time.slice(6, 8);
@@ -2346,13 +2349,13 @@ var goAppUrl = function(path) {
                     var hours = time.slice(8, 10) || '00';
                     var minutes = time.slice(10, 12) || '00';
                     var second = time.slice(12, 14) || '00';
-            
+
                     limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second);
                 }
 
                 return limitTime.getTime();
             };
-            
+
             var printDate = function(time) {
                 return new Date(time - new Date().getTimezoneOffset() * 60000).toISOString().replace('T',' ').slice(0,-5)
             };
