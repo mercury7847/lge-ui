@@ -131,7 +131,7 @@ var appInit = function() {
                 //console.log("Count Update");
             }
 
-            //알림함 버튼 이벤트
+            //알림함 버튼 이벤트  
             $(".app-alarm-button").on({
                 click : function(){
                     if (/iPhone|iPad|iPod/i.test(agent)) {
@@ -215,17 +215,24 @@ var appInit = function() {
         //알림함 Count 표시
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
+            var $alarmChk = $(".mobile-nav-button .count");
             var count;
             if($target.length > 0){
                 $target.removeClass("active");
+                $alarmChk.removeClass("active");
                 count = cnt;
                 if(cnt > 0){
                     $target.addClass("active");
+                    $alarmChk.addClass("active");
                 }
                 if(cnt > 99){
                     count = "99+";
                 }
+                if(cnt < 0){
+                    $alarmChk.removeClass("active");
+                }
                 $target.html(count);
+                console.log("알람체크테스트"+$alarmChk);
             }
         }
 
