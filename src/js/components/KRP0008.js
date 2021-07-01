@@ -1378,10 +1378,9 @@
                         uniqModelArray = curModelArryOnly[0];
                     } else {
                         //console.log('하나가 아니면?')
-                        
-                        curModel = curModel.filter(function(v){
-                            return v.length > 0
-                        });
+                        // curModel = curModel.filter(function(v){
+                        //     return v.length > 0
+                        // });
                         //console.log("curModel", curModel)
                         uniqModelArray = curModel.reduce(function (a, arr) {
                             //console.log("a", a)
