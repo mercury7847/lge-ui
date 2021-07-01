@@ -252,7 +252,7 @@ function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
     html += "<span class='count active'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
-    $mobNavBtn.append(html);
+    $mobNavBtn.html(html);
 }
 
 function ChatbotAppClose(type) {
