@@ -215,33 +215,27 @@ var appInit = function() {
         }
 
         //알림함 Count 표시
-        // 210701 수정
+        // 210701 알람체크 N뱃지 아이콘
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
             var $alarmChk = $(".mobile-nav-button .count");
-            var $moBtn = $(".mobile-nav-button");
             var count;
             if($target.length > 0){
-                $target.removeClass("active");
-                $alarmChk.removeClass("active");
+                $target.removeClass("chk");
+                $alarmChk.removeClass("chk");
                 count = cnt;
-
-                if($moBtn.hasClass("active")==true){
-                    $alarmChk.removeClass("active");
-                }
                 
                 if(cnt > 0){
-                    $target.addClass("active");
-                    $alarmChk.addClass("active");
+                    $target.addClass("chk");
+                    $alarmChk.addClass("chk");
                 }
                 if(cnt > 99){
                     count = "99+";
                 }
                 $target.html(count);
-                //console.log("알람체크테스트"+$alarmChk);
                 
             }else{
-                $alarmChk.removeClass("active");
+                $alarmChk.removeClass("chk");
             }
         }
 
@@ -255,11 +249,11 @@ var appInit = function() {
     }
 };
 
-// 210701 알람체크 아이콘
+// 210701 알람체크 N뱃지 아이콘
 function APPalarmChkIcon(){
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
-    html += "<span class='count active'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
+    html += "<span class='count chk'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
     $mobNavBtn.append(html);
 }
 
