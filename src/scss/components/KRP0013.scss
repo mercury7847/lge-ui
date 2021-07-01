@@ -9,7 +9,7 @@
 		background-color: #fff;
 	}
 
-    .support-box {
+	.support-box {
 		max-width: 1380px + 80px;
 		margin: 0 auto;
 		padding:0 40px;
@@ -186,16 +186,16 @@
 
 // 패키지 모델 팝업
 .popup-package-model {
-    width: 678px;
-    min-height: auto;
-    max-height: 696px;
-    @include mobile {
-        width: 100%;
-        height: auto;
-        max-height: 100vh;
-    }
-    .pop-header {
-        padding: 28px 0 15px;
+	width: 678px;
+	min-height: auto;
+	max-height: 696px;
+	@include mobile {
+		width: 100%;
+		height: auto;
+		max-height: 100vh;
+	}
+	.pop-header {
+		padding: 28px 0 15px;
 		@include mobile {
 			padding: 28px 0 10px;
 		}
