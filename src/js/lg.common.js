@@ -86,7 +86,7 @@ var goAppUrl = function(path) {
         '</article>';
 
     var mainPopupInit = 
-    '<article id="main-init-popup" class="popup-wrap small app-popup-init" style="max-width:600px">' + 
+    '<article id="main-init-popup" class="popup-wrap full app-popup-init" style="max-width:600px">' + 
     '<header class="pop-header">' + 
         '<h1 class="tit"><span>안내</span></h1>' + 
     '</header>' + 
