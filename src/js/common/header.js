@@ -643,6 +643,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$hamburger.removeClass('active');                                  
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
 
+                //210701 햄버거메뉴 N 뱃지 추가
+                $(".mobile-nav-button .count").addClass("chk");
+                console.log( "true!!");
+                //210701
+
                 setTimeout(function(){
                     replaceText.text("메뉴 열기");
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
@@ -653,6 +658,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             } else{
                 self.$hamburger.addClass('active');
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
+
+                //210701 햄버거메뉴 N 뱃지 추가
+                $(".mobile-nav-button .count").removeClass("chk");
+                //210701
+                
                 replaceText.text("메뉴 닫기");
                 
                 self.$dimmed.show();   

@@ -78,7 +78,6 @@
             <span class="line-3"></span>
             <span class="blind">메뉴 열기</span>
             <span class="mobile-nav-close"><span class="blind">닫기</span></span>
-            <span class="mobile-nav-close"><span class="blind">메뉴 열기</span></span>
         </button>
         <div class="header-bottom" role="navigation">
             <!-- Mobile 로그인 영역 -->
@@ -88,6 +87,7 @@
                     <div class="btn-mypage after-login">
                         <a href="/my-page"><span class="blind">마이페이지<em>로그인중</em></span></a>
                     </div>
+                    <button type="button" class="app-settings-button mapExclusive"><span class="blind">앱 설정 열기</span></button>
                 </div>
                 <div class="login-info after-login">
                     <a href="/my-page" class="text"><span></span>님 안녕하세요.</a>
@@ -97,6 +97,7 @@
                     <div class="btn-logout">
                         <a href="/sso/api/Logout"><span>로그아웃</span></a>
                     </div>
+                    <button type="button" class="app-settings-button mapExclusive"><span class="blind">앱 설정 열기</span></button>
                 </div>
             </div>
             <div class="nav-wrap">
@@ -1855,8 +1856,7 @@
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
 <!-- Mobile 메인 메뉴 -->
 <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
-<!-- 210609 수정  data-story-url="url" 추가 -->
-<div class="mobile-nav-wrap" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
+<div class="mobile-nav-wrap" id="mobileNav">
     <ul class="nav">
         <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
         <li><a href="#home" class="nav-item on" >홈</a></li>

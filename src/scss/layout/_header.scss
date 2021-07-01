@@ -1397,7 +1397,7 @@
             }
         }
     }
-    //210701
+    //210701 앱 알람아이콘 N 뱃지 추가
     .count{
         position: absolute;
         top: 2px;
@@ -1414,10 +1414,10 @@
         color: $color-white;
         text-align: center;
     }
-    .count.active {
+    .count.chk {
         display: block;
     }
-    //210701
+    //210701 앱 알람아이콘 N 뱃지 추가
 }
 
 .login-mobile {
