@@ -54,7 +54,7 @@ var goAppUrl = function(path) {
 
     // BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가 - 해당 요건으로인해 스크립트로 이동
     var appDownloadTmpl = 
-        '<article id="mobile-close-popup" class="popup-wrap small app-popup-init appMobile-pop">\n'+
+        '<article id="mobile-close-popup" class="popup-wrap  full app-popup-init appMobile-pop">\n'+
         '    <section class="pop-conts align-center">\n'+
         '        <section class="section">\n'+
         '            <div class="appMobile-pop-content">\n'+
