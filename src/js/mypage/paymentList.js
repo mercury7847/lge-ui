@@ -100,9 +100,13 @@
                     $('.section-wrap .sects').append(list);
                     var payOpenbtn = $('.payMentBtn');
                     payOpenbtn.each(function(index){
-                        $(this).on('click', function(){
+                        $(this).on('click', function(e){
                             //console.log(index);
-                            loadPaymentDetail();
+
+                            console.log("this %o data %o ",$(this),$(this).data())//개발에 파라미터 던지는 확인
+
+             
+                            loadPaymentDetail($(this).data());
                         });
                     });
 
@@ -121,9 +125,9 @@
         });
     }
 
-    function loadPaymentDetail(){
+    function loadPaymentDetail( param ){
         lgkorUI.showLoading();
-        lgkorUI.requestAjaxData(PAYMENT_DETAIL_DATA, {}, function(result){
+        lgkorUI.requestAjaxData(PAYMENT_DETAIL_DATA, param, function(result){
             if(lgkorUI.stringToBool(result.data.success)){
                 var listPopTemplate =   
                 '<div class="pop-paymentArea">'+                          
