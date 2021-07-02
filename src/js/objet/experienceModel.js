@@ -1251,12 +1251,13 @@
         //추천조합
     proposeSet = {
             proposeConfig: [
+                {
                     defaultCode: "M620AAA351",
                     modelCode: "M620FBB351S",
                     door1: "D620TT-FBT",
                     door2: "D620BB-FBT",
                     door3: "D620BB-FBT",
-                    door4: "",
+                    door4: ""
                 },
                 {
                     defaultCode: "M620AAA351",
