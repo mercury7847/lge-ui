@@ -21,8 +21,8 @@
 <!-- <script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator.js"></script> -->
 <!-- <script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator_mobi.js"></script> -->
 
-<!-- BTOCSITE-2153: body overflow-x:hidden 추가 -->
-<body style="overflow-x: hidden;">
+
+<body>
     <div class="wrap">
         @@include('./common/header.html')
 
@@ -43,6 +43,7 @@
                     </div>
                 </div>
 
+                <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
                 <div class="banner-wrap">
                     <div class="banner-inner">
                         <div class="text-wrap">
@@ -51,21 +52,23 @@
                                 <img src="/lg5-common/images/OBJ/logo/rf-logo.svg" alt="냉장고 제품 이미지">        
                             </div>
                             <p class="model-name">대표모델 : W821SGS453</p>
-                            <button type="button" class="btn size-m"><span>더 많은 모델 보기</span></button>
+                            <a href="/object-collection?subCateId=CT50022005" class="btn border size-m"><span>더 많은 모델 보기</span></a>
                             <p class="desc">사용된 모든 이미지는 이해를 돕기 위한 연출된 이미지로 실제와 다를 수 있습니다.</p>
                         </div>
                         <div class="product-img">
-                            <!-- <img src="/lg5-common/images/OBJ/main/rf-banner.png" alt="냉장고 제품 이미지"> -->
-                            <img src="/lg5-common/images/OBJ/main/rf_cut_image.png" alt="냉장고 제품 이미지">
+                            <img class="only_mobile" src="/lg5-common/images/OBJ/main/rf_cut_image_mo.png" alt="냉장고 제품 이미지">
+                            <img class="only_pc" src="/lg5-common/images/OBJ/main/rf_cut_image.png" alt="냉장고 제품 이미지">
                         </div>
                     </div> 
                 </div>
 
-                <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
-                <!-- <div class="iframe-area">
-                    <iframe src="https://wwwdev50.lge.co.kr/microwaves-and-ovens/ml32ew1?dpType=overViewNoSpec" class="pdp-wrap" scrolling="no" frameborder="0" width="100%" height="6000px;"></iframe>
-                </div> -->
-                <div class="iframe-area" style="position:relative; overflow:hidden; width:calc(100% + 18px); height:100vh;"><iframe id="pdpIframeContent" src="https://wwwstg.lge.co.kr/microwaves-and-ovens/ml32ew1?dpType=overViewNoSpec" class="pdp-wrap" scrolling="yes" frameborder="0" style="position:absolute; width:100%; top:0; left:0; height:100%;"></iframe></div>
+                <div class="iframe-wrap">
+                    <div class="iframe-area">
+                        <iframe id="pdpIframeContent" src="/refrigerators/w821sgs453?dpType=overViewNoSpec" class="pdp-wrap" scrolling="yes" frameborder="0" style="position:absolute; width:100%; top:0; left:0; height:100%;">
+                        </iframe>
+                    </div>
+                </div>
+                    
                 <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
 
             </div>

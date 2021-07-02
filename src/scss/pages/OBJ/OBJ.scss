@@ -219,6 +219,7 @@ header {
     }
 
     .banner-wrap {
+        z-index: 10;
         display: flex;
         position: relative;
         //align-items: center;
@@ -228,25 +229,20 @@ header {
         height: auto;
         max-height: 800px;
         background: #f4f4f4;
-        @include mobile {
-            justify-content: center;
-            height: auto;
-            padding: 30px 16px 0;
-        }
         .banner-inner {
             display: flex;
             justify-content: space-between;
             max-width: 1460px;
             margin: 0 auto;
             width: 100%;
-            padding: 60px 40px 0;
+            padding: 0 40px;
             @include mobile {
                 flex-wrap: wrap;
+                justify-content: center;
+                height: auto;
+                padding: 30px 16px 0;
             }
             .text-wrap {
-                // float: left;
-                // width: calc(100% - 557px);
-                // margin-top: 125px;
                 flex: 1 0 auto;
                 display: flex;
                 flex-direction: column;
@@ -254,11 +250,11 @@ header {
                 width: 37.344vw;
 	            padding-right: 5.521vw; 
                 @include mobile {
-                    max-width: 100%;
+                    width: 100%;
                     margin-top: 0;
                 }
                 .title {
-                    margin-bottom: 30px;
+                    margin-bottom: 35px;
                     font-size: 30px;
                     font-weight: bold;
                     line-height: 1.13;
@@ -267,6 +263,7 @@ header {
                         font-size: 25px;
                     }
                     @include mobile {
+                        margin-bottom: 15px;
                         font-size: 17px;
                         line-height: 1.35;
                     }
@@ -289,19 +286,29 @@ header {
                     line-height: 1.56;
                     font-weight: 500;
                     color: #000000;
+                    @include mobile {
+                        margin-top: 15px;
+                        font-size: 14px;
+                        line-height: 1.29;
+                    }
                 }
                 .btn {
                     width: 132px;
                     margin-top: 12px;
+                    @include mobile {
+                        width: 124px;
+                        height: 34px;
+                        padding: 6px 14px;
+                    }
                 }
                 .desc {
                     margin-top: 20px;
-                    font-size: 12px;
-                    line-height: 1.5;
+                    font-size: 14px;
+                    line-height: 1.29;
                     color: #666;
                     @include mobile {
                         width: 62.778vw;
-                        margin-top: 10px;
+                        margin-top: 15px;
                     }
                 }
             }
@@ -310,24 +317,33 @@ header {
                 // width: 557px;
                 display: flex;
                 align-content: flex-end;
-                flex: 1 1 auto;
+                flex: 0 1 auto;
                 // width: 29.167vw;
                 width: auto;
                 height: 100%;
                 @include mobile {
                     width: 53.889vw;
+                    height: auto;
+                    flex-grow: 0;
                     margin-top: 35px;
                 }
                 img {
                     align-self: baseline;
                     // width: 29.010vw;
-                    width: auto;
+                    width: 100%;
                     height: 100%;
-                    @include mobile {
-                        width: 100%;
-                    }
                 }
             }
+        }
+    }
+    .iframe-wrap {
+        overflow: hidden; 
+        width: 100%;
+        .iframe-area {
+            position:relative; 
+            overflow:hidden; 
+            width:calc(100% + 18px); 
+            height:100vh;
         }
     }
 }
