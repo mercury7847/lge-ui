@@ -712,14 +712,16 @@
 
         });
 
-        
+        // 탭이동 이벤트 처리
+        var $stkTab = $contentWrap.find('.thinq-tabs');
+        var $stkTabOffsetTop = $stkTab.offset().top;
         $('.thinq-tabs .ui_tab').on('tabchange', function(e, data){
 
             $contentWrap.scrollTop(0); 
             $contentWrap.off('scroll.app');  
             $contentWrap.off('scroll.lifestyle');
 
-            $('html, body').scrollTop(pageLens*winHeight);
+            $('html, body').stop().animate({scrollTop:$stkTabOffsetTop});
 
 
             $device.css('top', '');
@@ -889,10 +891,10 @@
         $(document).on('focusin', function(e){
 
             /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-            if($.contains($('.thinq-wrap')[0], e.target)){
-                currentPage = pageLens;
-                currentStep = stepLens;
-            }
+            // if($.contains($('.thinq-wrap')[0], e.target)){
+            //     currentPage = pageLens;
+            //     currentStep = stepLens;
+            // }
             // else if($.contains($('.signature-hero')[0], e.target)){
             //     // currentPage = 0;
             //     // currentStep = 0;

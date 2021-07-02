@@ -589,7 +589,10 @@ header {
     position: relative;
     z-index: 1;
 }
-
+.brand-wrap.objet-wrap {
+    position: relative;
+    // overflow: hidden;
+}
 .brand-wrap.objet-wrap.fixed_link_tab {
     height: auto !important;
 }
