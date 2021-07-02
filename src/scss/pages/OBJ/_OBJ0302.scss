@@ -1330,6 +1330,45 @@ h2.title {
                 }
             }
         }
+        /* BTOCSITE-1582 */
+        dl {
+            height: 100%;
+            text-align: center;
+            dt {
+                text-align: left;
+                font-size: 18px;
+                color: #222222;
+                font-weight: 700;
+                @include mobile {
+                    height: 50px;
+                    padding: 18px 0 18px 20px;
+                    font-size: 14px;
+                }
+            }
+            dd {
+                position: relative;
+                height: calc(100% - 38px);
+                padding: 20px 7.5% 120px 7.5%;
+                margin-top: 20px;
+                border-radius: 7px;
+                background: #fff;
+                @include mobile {
+                    margin-top: 0px;
+                    padding: 25px 15px 120px 15px;
+                }
+
+                .price_info {
+                    .btn_purchase {
+                        position: absolute;
+                        bottom: 50px;
+                        left: 7.5%;
+                        right: 7.5%;
+                        width: 85%;
+                    }
+                }
+            }
+        }
+        /* //BTOCSITE-1582 */
     }
     .total_result_price {
         position: absolute;
@@ -1923,3 +1962,9 @@ h2.title {
 .mCSB_scrollTools {
     width: 4px !important;
 }
+
+/* BTOCSITE-1582 */
+#quick_buy {
+    display:none;
+}
+/* //BTOCSITE-1582 */
