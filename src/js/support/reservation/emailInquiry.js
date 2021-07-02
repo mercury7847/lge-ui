@@ -284,7 +284,7 @@
                     self.$rcptNoBox.show();
                 }
             });
-
+ 
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
                 var result = validation.validate();
