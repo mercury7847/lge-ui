@@ -251,10 +251,14 @@ var appInit = function() {
 
 // 210701 알람체크 N뱃지 아이콘
 function APPalarmChkIcon(){
+    var $target = $(".app-alarm-button .app-alarm-count");
     var $mobNavBtn = $(".mobile-nav-button");
     var html = "";
     html += "<span class='count chk'><span class='blind'>알림메시지 카운트 존재시</span>N<span>";
+
+    if($target.length > 0){
     $mobNavBtn.append(html);
+    }
 }
 
 function ChatbotAppClose(type) {

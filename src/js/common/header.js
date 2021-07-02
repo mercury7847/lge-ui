@@ -642,7 +642,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 self.$hamburger.removeClass('active');                                  
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-
+            
                 setTimeout(function(){
                     replaceText.text("메뉴 열기");
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
