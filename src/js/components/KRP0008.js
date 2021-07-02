@@ -2477,19 +2477,21 @@
                                 currentFindModel = currentFindModel.filter(function(model){
                                     return model.siblingCode == _siblingCode;
                                 })
-                            }
+                            }   
 
-                            if( enableSiblingValue.indexOf(_siblingCode) > -1 ) {
-                                $this.closest('.rdo-wrap').removeClass('disabled');
-                            } else {
-                                $this.closest('.rdo-wrap').addClass('disabled');
-                            }
-                            
-                            // if( currentFindModel.length == 0) {
-                            //     $this.closest('.rdo-wrap').addClass('disabled');
-                            // } else {
+                            //해당 모델의 enableSiblingCodes 값으로 활성화 비활성화
+                            // if( enableSiblingValue.indexOf(_siblingCode) > -1 ) {
                             //     $this.closest('.rdo-wrap').removeClass('disabled');
+                            // } else {
+                            //     $this.closest('.rdo-wrap').addClass('disabled');
                             // }
+                            
+                            //루프로 활성화 비활성화
+                            if( currentFindModel.length == 0) {
+                                $this.closest('.rdo-wrap').addClass('disabled');
+                            } else {
+                                $this.closest('.rdo-wrap').removeClass('disabled');
+                            }
 
                             if( _checked ) {
                                 modelFilteringArray[optionIndex] = currentFindModel;
