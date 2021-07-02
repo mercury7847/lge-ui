@@ -377,6 +377,7 @@
     var PAYMENT_METHOD_CONFIRM;
     var INFO_MODIFY_CONFIRM;
     var ARS_AGREE_URL;
+    var ARS_AGREE_CHECK_URL;    // BTOCSITE-98 add
     var PAYMENT_SAVE_URL;
 
     var PAGE_TYPE_LIST = "orderListPage";
@@ -465,6 +466,7 @@
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        ARS_AGREE_CHECK_URL = $('.contents.mypage').data('arsAgreeCheckUrl');
         PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
 
         txtMasking = new vcui.helper.TextMasking();
@@ -677,6 +679,10 @@
             e.preventDefault();
 
             setArsAgreeConfirm();
+        }).on('click', '.arsAgreeRequestCheck', function(e){
+            e.preventDefault();
+
+            arsAgreeConfirmCheck();
         }).on('change', 'input[name=selfClearingAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -1717,7 +1723,26 @@
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
 
             arsAgree = result.data.success;
+            /* BTOCSITE-98 */
+            if (vcui.detect.isIOS){
+                $('.arsAgreeRequestCheck').show();
+            } else {
+                $('.arsAgreeRequestCheck').hide();
+            }
+            /* //BTOCSITE-98 */
+            
         }, ajaxMethod, null, true);
+    }
+    // ARS 출금동의요청 체크 :: BTOCSITE-98 add
+    function arsAgreeConfirmCheck(){
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
+            console.log('출금동의요청 체크 결과', result);
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+            
+        }, ajaxMethod, null, true);
+        
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
@@ -1727,7 +1752,7 @@
         bankValidation.setValues(bankInfo);
 
         paymentBlockInit();
-    }
+    }    
     //납부변경 초기화...
     function paymentBlockInit(){        
         paymentMethodConfirm = "N";

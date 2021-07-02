@@ -258,6 +258,17 @@
                 }
             }
         }
+        /* BTOCSITE-98 */
+        .btn.red {
+            background-color: #da0f47;
+        }
+        .icon-ars + .icon-ars {
+            margin-left:20px;
+        }
+        .arsAgreeRequestCheck {
+            display:none;
+        }
+        /* //BTOCSITE-98 */
         @include clearfix;
         .tit {
             position:relative;
