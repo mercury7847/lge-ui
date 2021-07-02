@@ -117,6 +117,20 @@ var appInit = function() {
                 LGEquickMenuPosPush = function(bool){
                     $('#floatBox .floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
                 }
+            }            
+
+            //알림함 Count 표시
+            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정 */
+            if (/iPhone|iPad|iPod/i.test(agent)) {
+                var obj = new Object();
+                obj.command = "getUncheckedPushCount";
+                obj.callback ="LGEAPPalarmCount";
+                var jsonString= JSON.stringify(obj);
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            }else if(/Android/i.test(agent)) {
+                android.getUncheckedPushCount("LGEAPPalarmCount");
+            }else{
+                //console.log("Count Update");
             }
 
             //알림함 버튼 이벤트  
@@ -134,20 +148,6 @@ var appInit = function() {
                     }
                 }
             });
-
-            //알림함 Count 표시
-            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정 */
-            if (/iPhone|iPad|iPod/i.test(agent)) {
-                var obj = new Object();
-                obj.command = "getUncheckedPushCount";
-                obj.callback ="LGEAPPalarmCount";
-                var jsonString= JSON.stringify(obj);
-                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            }else if(/Android/i.test(agent)) {
-                android.getUncheckedPushCount("LGEAPPalarmCount");
-            }else{
-                //console.log("Count Update");
-            }
         }
 
         //제품등록 페이지 탭
@@ -249,6 +249,7 @@ var appInit = function() {
 
 // 210701 알람체크 N뱃지 아이콘
 function APPalarmChkIcon(){
+    var $target = $(".app-alarm-button .app-alarm-count");
     var $mobNavBtn = $(".mobile-nav-button");
         if(!$mobNavBtn.find('.count').length) {
             $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
@@ -282,7 +283,3 @@ $(document).ready(function(){
         appInit();
     }
 });
-
-
-
-
