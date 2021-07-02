@@ -3655,7 +3655,7 @@
     $(document).ready(function() {
 
         /* TEST */
-        $('.model_experience').attr('data-page-type', 'HIMART');
+        //$('.model_experience').attr('data-page-type', 'HIMART');
 
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
@@ -4336,7 +4336,7 @@
         if (completed == "Y") {
             modelSimulator.stepThree();
         } else {
-            alert('선택완료안됨');
+            //alert('선택완료안됨');
         }
     }
 
