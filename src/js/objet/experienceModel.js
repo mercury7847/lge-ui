@@ -3656,7 +3656,7 @@
     $(document).ready(function() {
 
         /* TEST */
-        $('.model_experience').attr('data-page-type', 'HIMART');
+        //$('.model_experience').attr('data-page-type', 'HIMART');
 
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
@@ -3708,9 +3708,11 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
+        var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
+            $quickbuy.hide();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             console.log("NEWBEST");
@@ -3720,6 +3722,7 @@
             $objMyPickBtn.hide();
             $objFooter.hide();
             $step3.hide();  // BTOCSITE-1582 add
+            $quickbuy.show();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
             console.log("HIMART");
@@ -3729,6 +3732,7 @@
             $objMyPickBtn.hide();
             $objFooter.hide();
             $step3.hide();  // BTOCSITE-1582 add
+            $quickbuy.show();   // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
@@ -4140,8 +4144,15 @@
                     lgkorUI.confirm(desc, obj);
                 }
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-
-                modelSimulator.mobileStep(".simul_step3");
+                /* BTOCSITE-1582 */
+                //var $objContent = $('.model_experience');
+                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                    
+                } else {
+                    modelSimulator.mobileStep(".simul_step3");    
+                }
+                /* //BTOCSITE-1582 */
+                
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
@@ -4159,12 +4170,19 @@
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
             let purchaseData = [];
+            /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
                 }
             });
-            //console.log(purchaseData);
+            */
+           $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+                if (!$(this).hasClass("sum")) {
+                    purchaseData.push($(this).attr("data-default-code"));
+                }
+            });
+            console.log('purchaseData', purchaseData);
 
 
 
@@ -5149,10 +5167,12 @@
                 
             }
             /* //BTOCSITE-1582 */
-            
+
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+            
+            
         },
         //견적확인하기
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
@@ -5211,6 +5231,16 @@
             let sumSlide = $(".total_price_info_body .swiper-wrapper .swiper-slide");
             //console.log('idx', idx);
             //console.log('sumSlide.length', sumSlide.length);
+            /* BTOCSITE-1582 */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
+                //priceSumList.appendSlide(priceHtml);
+                console.log('priceSumList', priceSumList);
+                $(priceSumList.$el[0]).hide();
+            }
+            /* //BTOCSITE-1582 */
+
             if (sumSlide.length > 0) {
                 if (sumSlide.length > idx) {
                     priceSumList.removeSlide(idx);
@@ -5221,6 +5251,7 @@
             } else {
                 priceSumList.appendSlide(priceHtml);
             }
+            
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
