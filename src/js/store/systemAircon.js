@@ -15,6 +15,7 @@
                 self.$estimateBtn    = self.$container.find('.estimateBtn');
                 self.$inqueryBtn     = self.$container.find('.inqueryBtn');
                 self.$addressFindBtn = self.$container.find('.addr-box-wrap .btn');
+                self.$defaultAddress = self.$container.find('#defaultAddress');
 
             // systemAirconForm validation
             var register = {
@@ -87,7 +88,30 @@
                         $zipCode.val(data.zonecode);
                         $address.val(address);
                 }); 
-            })
+            });
+
+            // 기본 주소와 동일
+            self.$defaultAddress.on('change', function(e){
+                if(this.checked) {
+                    console.log("체크");
+                    var addr1 = $('input[name="addr1"]').val();
+                    var addr2 = $('input[name="addr2"]').val();
+                    var addr3 = $('input[name="addr3"]').val();
+
+                    if(addr1 == '' || addr2 == '' || addr3 == ''){
+                        self.$addressFindBtn.eq(0).focus();
+                    } else {
+                        $('input[name="plc-addr1"]').val(addr1);
+                        $('input[name="plc-addr2"]').val(addr2);
+                        $('input[name="plc-addr3"]').val(addr3);
+                    }
+                } else {
+                    console.log("체크 해제");
+                    $('input[name="plc-addr1"]').val('');
+                    $('input[name="plc-addr2"]').val('');
+                    $('input[name="plc-addr3"]').val('');
+                }
+            });
         },
     };
     var b2cOnlineSearch = {
