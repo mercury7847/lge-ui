@@ -1250,7 +1250,7 @@
         }
         //추천조합
     proposeSet = {
-            proposeConfig: [{
+            proposeConfig: [
                     defaultCode: "M620AAA351",
                     modelCode: "M620FBB351S",
                     door1: "D620TT-FBT",
@@ -1897,8 +1897,8 @@
                 },
                 {
                     defaultCode: "X320AA",
-                    modelCode: "X320SMS",
-                    door1: "B320TT-SMT",
+                    modelCode: "X320MMS",
+                    door1: "B320TT-MMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -1958,7 +1958,7 @@
                 {
                     defaultCode: "Y320AA",
                     modelCode: "Y320SSS",
-                    door1: "B320TT-SSR",
+                    door1: "B320TT-SSV",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -1973,8 +1973,8 @@
                 },
                 {
                     defaultCode: "Y320AA",
-                    modelCode: "Y320SMS",
-                    door1: "B320TT-SMT",
+                    modelCode: "Y320MMS",
+                    door1: "B320TT-MMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -2034,7 +2034,7 @@
                 {
                     defaultCode: "Z320AA",
                     modelCode: "Z320SSS",
-                    door1: "B320TT-SSR",
+                    door1: "B320TT-SSV",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -2049,8 +2049,8 @@
                 },
                 {
                     defaultCode: "Z320AA",
-                    modelCode: "Z320SMS",
-                    door1: "B320TT-SMT",
+                    modelCode: "Z320MMS",
+                    door1: "B320TT-MMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -3655,7 +3655,7 @@
     $(document).ready(function() {
 
         /* TEST */
-        //$('.model_experience').attr('data-page-type', 'HIMART');
+        $('.model_experience').attr('data-page-type', 'HIMART');
 
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
