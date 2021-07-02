@@ -2018,19 +2018,19 @@ var go_shop_model = "";
                 var scrollbar = window.Scrollbar;
                 if(window.Scrollbar.has(targetSideBarArea)){
                     var scrollx = window.Scrollbar.get(targetSideBarArea).offset.x;
-					window.Scrollbar.get(targetSideBarArea).destroy();
+                    window.Scrollbar.get(targetSideBarArea).destroy();
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, {});
-					var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
-					scrollbar.scrollLeft = left;
-						//window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
-					
+                    var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
+                    scrollbar.scrollLeft = left;
+                        //window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
+                    
                 }else{
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, { });
                 }
             }
-			*/
+            */
             if (targetSideBarArea !== null && window.Scrollbar) {
                 if (window.Scrollbar.has(targetSideBarArea)) {
 
@@ -2145,7 +2145,7 @@ var go_shop_model = "";
             // 인기조합 선택 부 (s)
             /*
             ex Html
-			    <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
+                <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
              */
 
             var targetSideBarFavArea = (typeof document.querySelector('[data-simulator-sidebar-fav-area]') !== 'undefined') ?

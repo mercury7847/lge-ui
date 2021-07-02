@@ -83,17 +83,20 @@
                             <!-- 2021.1.27 data-submit-url 추가-->
                             <!-- 2021.1.28 ata-prepayment-checked-url 추가-->
                             <!-- 2021.02.04 data-msg-send-url 추가 문자발송 동의 -->
+                            <!-- BTOCSITE-98 data-ars-agree-check-url ARS출금동의 체크 url 추가 -->
                             <div class="accordion-section ui_accordion requestRentalForm" 
                                 data-single-open="false" 
                                 data-open-index="[0]"
                                 data-credit-inquire-url="/lg5-common/data-ajax/caresolution/requestCreditInquire.json" 
                                 data-install-abled-url="/lg5-common/data-ajax/caresolution/requestInstallAbled.json"
                                 data-card-abled-url="/lg5-common/data-ajax/caresolution/requestCardAbled.json"
-                                data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
+                                data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"                                
+                                data-ars-agree-check-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
                                 data-submit-url="/lg5-common/data-ajax/caresolution/requestRentalSubmit.json"
                                 data-prepayment-checked-url="/lg5-common/data-ajax/caresolution/requestPrepaymentChecked.json"
                                 data-msg-send-url=""
                             >
+                            <!-- //BTOCSITE-98 data-ars-agree-check-url ARS출금동의 체크 url 추가 -->
                             <!-- 
                                 ##데이터 관리 돔속성에서 히든인풋으로 바꿨습니다. 
                                 createCertify : 휴대폰 본인인증 유무 (휴대폰 본인인증 유무에 따라 Y/N)
@@ -733,6 +736,9 @@
                                                     <dd class="conts">
                                                         <div class="btn-wrap">
                                                             <button class="btn bg-type size icon-ars arsAgreeRequest" disabled><span>ARS 출금 동의 신청</span></button>
+                                                            <!-- BTOCSITE-98 -->
+                                                            <button class="btn bg-type size red icon-ars arsAgreeRequestCheck" ><span>ARS 출금 동의 확인</span></button>
+                                                            <!-- //BTOCSITE-98 -->
                                                         </div>
                                                         @@include('./common/modules/bullet-list.html', {
                                                             "bulletTxt" : [
