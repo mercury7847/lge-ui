@@ -19,6 +19,7 @@ $(function() {
             pauseOnFocus: false,
             swipeToSlide: true,
             
+            dots: true,
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -602,13 +603,6 @@ $(function() {
             
         }    
         
-        // 탭이동 이벤트 처리
-        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){   
-            //오류 처리
-            $('html,body').scrollTop(pageLens*winHeight);
-            $contentWrap.scrollTop(0); 
-        });
-
         $(document).on('click', 'a', function(e){
             
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
@@ -620,24 +614,21 @@ $(function() {
                     
                     e.preventDefault();
 
-                    var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
-                    if($compareTarget[0] != e.currentTarget) {
-                        if(currentPage !== pageLens){
-                            moveScene(pageLens,stepLens,0);
-                        }                        
-                        $('.signature-tabs .ui_tab').vcTab('selectByName', href);
-                        if(href == '#content'){
-                            $('.signature-tabs .ui_tab').find('a').eq(0).focus();
-                        }
-                    }
+                    // var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
+                    // if($compareTarget[0] != e.currentTarget) {
+                    //     if(currentPage !== pageLens){
+                    //         moveScene(pageLens,stepLens,0);
+                    //     }                        
+                    //     $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                    //     if(href == '#content'){
+                    //         $('.signature-tabs .ui_tab').find('a').eq(0).focus();
+                    //     }
+                    // }
                 }
             }      
         });
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-        var $stkTab = $contentWrap.find('.signature-tabs');
-        var $stkTabOffsetTop = $stkTab.offset().top;
-
         $window.scroll(function(){
             if($window.scrollTop() >= $stkTabOffsetTop) {
                 $contentWrap.addClass('active on');
@@ -650,16 +641,26 @@ $(function() {
         $sigTab.on('click', function(){
             $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
         })
+
+        // 탭이동 이벤트 처리
+        var $stkTab = $contentWrap.find('.signature-tabs');
+        var $stkTabOffsetTop = $stkTab.offset().top;
+        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){   
+            //오류 처리
+            // $('html,body').scrollTop(pageLens*winHeight);
+            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
+            $contentWrap.scrollTop(0); 
+        });
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         // 접근성 탭 이동시 화면처리
         $(document).on('focusin', function(e){
 
             /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-            if($.contains($('.signature-wrap')[0], e.target)){
-                currentPage = pageLens;
-                currentStep = stepLens;
-            }
+            // if($.contains($('.signature-wrap')[0], e.target)){
+            //     currentPage = pageLens;
+            //     currentStep = stepLens;
+            // }
             // else if($.contains($('.signature-hero')[0], e.target)){
             //     // currentPage = 0;
             //     // currentStep = 0;

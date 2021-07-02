@@ -235,11 +235,19 @@
                 }
             }
 
-            /* 20210624 납부내역 : 버튼*/
-            .payMentBtn {
-                font-size: 14px;
+            .tb_row {
+                table {
+                    td {
+                        padding: 15px 24px;
+                        /* 20210624 납부내역 : 버튼*/
+                        .payMentBtn {
+                            font-size: 14px;
+                            margin-right: -14px;
+                        }
+                        /* //20210624 납부내역 : 버튼*/
+                    }
+                }
             }
-            /* //20210624 납부내역 : 버튼*/
         }
         
         .btn-moreview {

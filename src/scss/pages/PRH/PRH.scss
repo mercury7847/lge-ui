@@ -495,6 +495,81 @@
                             }
                         }
                     }
+                    .slide-con-area {
+                        position: absolute;
+                        top: 120px;
+                        left: 0;
+                        right: 0;
+                        bottom: 120px;
+                        width: 1614px;
+                        margin: 0 auto;
+                        padding: 0 50px;
+                        transform: translateX(0);
+                        .content_thinQ {
+                            max-width: 731px;
+                            text-align: left;
+                            .cont1_q {
+                                // transform: translateY(100px);
+                                // transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                                color: #fff;
+                                font-weight: 700;
+                                @include font(52px, 70px);
+                                .logo, img {
+                                    float: none;
+                                    width: 245px;
+                                    padding: 0;
+                                    margin-top: -10px;
+                                }
+                            }
+                            .cont2_q {
+                                // transform: translateY(150px);
+                                // transition: transform 0.5s ease-in-out 0.7s, opacity 0.3s ease-in-out 0.7s;
+                                margin-top: 24px;
+                                color: #fff;
+                                font-weight: 700;
+                                @include font($font-large-1, 30px);
+                                .logo {
+                                    float: none;
+                                    width: 90px;
+                                    padding: 0;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            position: absolute;
+                            top: 50%;
+                            transform: translate(0px, -50%);
+                            right: 0;
+                            left: 0;
+                            bottom: 0;
+                            width: auto;
+                            padding: 0;
+                            display: flex;
+                            align-content: center;
+                            justify-content: center;
+                            align-items: center;
+                            .content_thinQ {
+                                max-width: none;
+                                text-align: center;
+                                .cont1_q {
+                                    font-size: 25px;
+                                    line-height: 35px;
+                                    .logo,img {
+                                        width: 124px;
+                                        height: 23px;
+                                        margin-top: -4px;
+                                    }
+                                }
+            
+                                .cont2_q {
+                                    margin-top: 10px;
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                    line-height: 22px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
