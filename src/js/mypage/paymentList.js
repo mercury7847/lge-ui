@@ -162,7 +162,14 @@
                 
                 //반복문 마스킹 forEach 따로 선언
                 result.data.paymentDetailList.forEach(function(item){ 
-                    item.receiptBankAccountNo = txtMasking.card(item.receiptBankAccountNo)
+                    if (item.billType === "BANK") {
+                        item.receiptBankAccountNo = txtMasking.substr(item.receiptBankAccountNo, 4);
+                    } 
+                    
+                    if (item.billType === "CARD") {
+                        item.receiptBankAccountNo = txtMasking.card(item.receiptBankAccountNo);
+                    } 
+
                 });
 
                 // console.log(result.data.paymentDetailList);
