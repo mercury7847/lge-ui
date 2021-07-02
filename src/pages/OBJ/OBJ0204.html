@@ -68,6 +68,14 @@
                         </iframe>
                     </div>
                 </div>
+
+                <script>
+
+                    (function() {
+                        if(!parent.document.location.href.match('/lg-objet-collection')) $('.banner-wrap_obj').hide();
+                    })();
+                    
+                </script>
                     
                 <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
 
