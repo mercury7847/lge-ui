@@ -4336,7 +4336,7 @@
         if (completed == "Y") {
             modelSimulator.stepThree();
         } else {
-            alert('선택완료안됨');
+            //alert('선택완료안됨');
         }
     }
 
