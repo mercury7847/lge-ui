@@ -654,8 +654,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$hamburger.addClass('active');
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 replaceText.text("메뉴 닫기");
-                
-                self.$dimmed.show();   
+                self.$dimmed.show();
             }
 
         },
