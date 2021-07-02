@@ -1700,6 +1700,7 @@
     }
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
+        alert('출금동의 신청');
         var chk = paymentConfirmYN();
         if(!chk) return;
 
@@ -1723,6 +1724,7 @@
             /* BTOCSITE-98 */
             if (vcui.detect.isIOS){
                 $('.arsAgreeRequestCheck').show();
+                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             } else {
                 CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 arsAgree = result.data.success;
@@ -1736,8 +1738,8 @@
     function arsAgreeConfirmCheck(){
         lgkorUI.showLoading();
 
-        CTI_REQUEST_KEY = "";
-        arsAgree = "N";
+        //CTI_REQUEST_KEY = "";
+        //arsAgree = "N";
 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
             //console.log('출금동의요청 체크 결과', result);
