@@ -1719,14 +1719,13 @@
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
-
-            CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-
-            arsAgree = result.data.success;
+            
             /* BTOCSITE-98 */
             if (vcui.detect.isIOS){
                 $('.arsAgreeRequestCheck').show();
             } else {
+                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                arsAgree = result.data.success;
                 $('.arsAgreeRequestCheck').hide();
             }
             /* //BTOCSITE-98 */
@@ -1735,11 +1734,19 @@
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     function arsAgreeConfirmCheck(){
+        lgkorUI.showLoading();
+
+        CTI_REQUEST_KEY = "";
+        arsAgree = "N";
+
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
-            console.log('출금동의요청 체크 결과', result);
+            //console.log('출금동의요청 체크 결과', result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
+
+            CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            arsAgree = result.data.success;
             
         }, ajaxMethod, null, true);
         
