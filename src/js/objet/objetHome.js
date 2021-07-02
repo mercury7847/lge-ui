@@ -662,6 +662,16 @@ $(function() {
 
         // });
 
+        // 탭이동 이벤트 처리
+        var $stkTab = $contentWrap.find('.objetcollection-tabs');
+        var $stkTabOffsetTop = $stkTab.offset().top;
+        $('.objetcollection-tabs .ui_tab').on('tabchange', function(e, data){   
+            //오류 처리
+            // $('html,body').scrollTop(pageLens*winHeight);
+            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
+            $contentWrap.scrollTop(0); 
+        });
+
 
         // $('.thinq-tabs .ui_tab').on('tabchange', function(e, data) {
 
