@@ -221,12 +221,12 @@ var appInit = function() {
             var $alarmChk = $(".mobile-nav-button .count");
             var count;
             if($target.length > 0){
-                $target.removeClass("chk");
+                $target.removeClass("active");
                 $alarmChk.removeClass("chk");
                 count = cnt;
                 
                 if(cnt > 0){
-                    $target.addClass("chk");
+                    $target.addClass("active");
                     $alarmChk.addClass("chk");
                 }
                 if(cnt > 99){
