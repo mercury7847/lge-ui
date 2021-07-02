@@ -25,7 +25,7 @@ gulp.task("browser-sync", () => {
             baseDir: dist
         },
         port: 3010,
-        startPath: "./guide/",
+        startPath: "./",
         middleware: [
             function(req, res, next) {
                 if (/\.json|\.txt|\.html/.test(req.url) && req.method.toUpperCase() == 'POST') {
@@ -37,9 +37,14 @@ gulp.task("browser-sync", () => {
             // BTOCSITE-27 swipe 테스트용 
             function(req, res, next){
                 let lastseq = req.url.split('/').pop();
-                if (lastseq == 'story' || lastseq == 'store' || lastseq == 'support' || lastseq == 'care-solutions' || lastseq == ''){                    
-                    res.setHeader('Content-Type', 'text/html');
-                    res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
+                
+                if (lastseq == 'story' || lastseq == 'store' || lastseq == 'support' || lastseq == 'care-solutions' || req.url == '/'){                    
+                    console.log('req url', req.url);
+                    console.log('lastseq', lastseq);
+                    if (req.url !== '/guide' && req.url !== '/guide/'){
+                        //res.setHeader('Content-Type', 'text/html');
+                        res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
+                    }
                 }
                 next();
             }
