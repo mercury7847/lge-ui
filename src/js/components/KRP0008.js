@@ -454,6 +454,7 @@
                 self.$specInfoPopup = $('#specInfoPopup'); /* 20210607 스펙선택 추가 */
                 self.$siblingCont = self.$specInfoPopup.find('.sibling-cont');
                 self.$siblingBtnComp = self.$specInfoPopup.find('.btn-sibling-select');
+                self.siblingCurrentModel = "";
             },
 
             popUpDataSetting: function() {
@@ -1340,63 +1341,35 @@
                     var $colorWrap = $this.closest('.sibling-color');
                     var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
                     var currentSiblingCode = $this.closest('.chk-wrap-colorchip').attr('title');
-                    var curModel = []
-                    var currentModelValue = [];
-                    var models, uniqModelArray;
+                    var models;
+
+                    self.siblingCurrentModel = "";
 
                     if( $colorChip.length ) {
                         $colorWrap.find('.sibling-colorHead .color-text span').text(currentSiblingCode);
                     }
-                    self.$siblingCont.find('.select-option input:radio').filter(':checked').each(function(i){
-                        var $rdo = $(this);
-                        currentModelValue.push({
-                            siblingCode: $rdo.attr('data-sibling-code'),
-                            siblingGroup_code: $rdo.attr('data-sibling-group-code')
-                        })
-                    })  
-                    if( siblingList && siblingList[0].siblingModels && self.defaultSiblingDataFlag) {
-                        models= siblingList[0].siblingModels;
-                    } else if(!self.defaultSiblingDataFlag && self.receivedSiblingData.length ){
+
+                    if(self.receivedSiblingData.length > 0 && self.receivedSiblingData[0].siblingModels && self.defaultSiblingDataFlag ) {
                         models= self.receivedSiblingData[0].siblingModels;
-                    }
-                    currentModelValue.forEach(function(v, i){
-                        curModel[i] = [];
-                        models.forEach(function(model){
-                            if( v.siblingGroupCode == model.siblingGroup_code && v.siblingCode == model.siblingCode) {
-                                curModel[i].push(model.modelId)
-                            }
-                        });
-                    })
-                    var curModelArryOnly = curModel.filter(function(v){
-                        if( v!= null && v.length ==1 ) {
-                            return true;
-                        }
-                    })
-                    
-                    if( curModelArryOnly && curModelArryOnly.length == 1) {
-                        //console.log('무조건 하나')
-                        uniqModelArray = curModelArryOnly[0];
                     } else {
-                        //console.log('하나가 아니면?')
-                        // curModel = curModel.filter(function(v){
-                        //     return v.length > 0
-                        // });
-                        //console.log("curModel", curModel)
-                        uniqModelArray = curModel.reduce(function (a, arr) {
-                            //console.log("a", a)
-                            return a.filter(function (num) {
-                                return arr.includes(num);
-                            });
-                        });
+                        models= siblingList[0].siblingModels;
                     }
-//                     console.log("uniqModelArray[0]", uniqModelArray[0])
-                    
-                    //필터링된 모델값이 하나일 경우
-                    if( uniqModelArray.length > 0 ) {
-                        self.requestSiblingData(uniqModelArray[0], _self)
+
+                    self.$siblingCont.find('.option-list').each(function(optionIndex){
+                        var $this = $(this);
+                        var $radio = $this.find('input:radio');
+
+                        $radio.each(function(i){
+                            self.setSiblingOptionCheck(this, optionIndex, models)
+                        });
+                    });
+
+                    // console.log("self.siblingCurrentModel", self.siblingCurrentModel)
+
+                    if( self.siblingCurrentModel ) {
+                        self.requestSiblingData(self.siblingCurrentModel)
                     } else {
-                        self.$specInfoPopup.find('.btn-sibling-select').prop('disabled', true);
-                        self.$specInfoPopup.find('.sibling-cont').removeAttr('data-current-model data-model-path')
+                        self.$siblingBtnComp.prop('disabled', true)
                     }
                 });
 
@@ -1422,7 +1395,7 @@
                     $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
                 })
                 //BTOCSITE-44 스펙선택(시블링레이어) 선택완료
-                self.$specInfoPopup.find('.btn-sibling-select').on('click', function(e){
+                self.$siblingBtnComp.on('click', function(e){
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
                     var $siblingCont = $currentPopup.find('.sibling-cont');
@@ -2430,87 +2403,58 @@
                     $dm.removeClass('compare-select');
                 }
             },
-            setCurrentSiblingModel: function(data, modelId){
-                ////BTOCSITE-44 스펙선택(시블링레이어) 옵션 활성화 비활성화 체크, 최종 모델값 필터링
+            setSiblingOptionCheck: function(target, currentIndex, modelsData){
+                //BTOCSITE-44 시블링레이어 : 시블링 옵션 버튼 활성화/비활성화, 선택 모델 찾기
                 var self = this;
-                if( data ) {
-                    var $optionList = self.$siblingCont.find('.option-list');
-                    var optionLength = $optionList.length;
-                    var siblingModels = data.siblingModels;
-                    var modelFilteringArray = [];
-                    var currentSiblingArray = [];
+                var $target = $(target);
+                var $siblingCont = $('.sibling-cont');
+                var $optionList = $siblingCont.find('.option-list');
+                var currentSiblingCode = $target.attr('data-sibling-code');
+                var checkedOptionArray = [];
+                var checkd = $target.prop('checked')
 
-                    var enableSiblingValue = siblingModels.filter(function(model){
-                        return model.modelId == modelId
-                    })[0].enableSiblingValue
+                $optionList.each(function(optionIndex){
+                    if( optionIndex === currentIndex) return;
+                    var $this = $(this);
 
-                    // console.log("currentModelIdArray[0]", enableSiblingValue)
-
-                    self.$siblingCont.find('.option-list').each(function(optionIndex){
-                        var $optionList = $(this);
-                        var $radio = $optionList.find('input:radio');
-                        var radioLength = $radio.length;
-                        
-                        if( optionIndex == 0 ) {
-                            modelFilteringArray[optionIndex] = [];
-                        }
-                        $radio.each(function(radioIndex){
-                            var $this = $(this);
-                            var _checked = $this.prop('checked');
-                            var _siblingCode = $this.data('sibling-code');
-                            var currentFindModel = [];
-                            
-                            if( optionIndex == 0) {
-                                currentFindModel = siblingModels.filter(function(model){
-                                    return model.siblingCode == _siblingCode;
-                                })
-                            } else {
-                                var modelsId = modelFilteringArray[optionIndex-1].map(function(model){
-                                    return model.modelId
-                                });
-                                if( radioIndex == 0) {
-                                    modelFilteringArray[optionIndex] = [];
-                                }
-                                currentFindModel = siblingModels.filter(function(siblingModel){
-                                    return modelsId.indexOf(siblingModel.modelId) > -1
-                                })
-                                currentFindModel = currentFindModel.filter(function(model){
-                                    return model.siblingCode == _siblingCode;
-                                })
-                            }
-
-                            if( enableSiblingValue.indexOf(_siblingCode) > -1 ) {
-                                $this.closest('.rdo-wrap').removeClass('disabled');
-                            } else {
-                                $this.closest('.rdo-wrap').addClass('disabled');
-                            }
-                            
-                            // if( currentFindModel.length == 0) {
-                            //     $this.closest('.rdo-wrap').addClass('disabled');
-                            // } else {
-                            //     $this.closest('.rdo-wrap').removeClass('disabled');
-                            // }
-
-                            if( _checked ) {
-                                modelFilteringArray[optionIndex] = currentFindModel;
-                            }
-
-                            if( radioIndex == radioLength-1 && optionIndex == optionLength-1 ) {
-                                currentSiblingArray = modelFilteringArray[optionIndex]
-                            }
+                    var $checkedRadio = $this.find('input:radio:checked');
+                    var radioSiblingCode = $checkedRadio.attr('data-sibling-code');
+        
+                    if( checkedOptionArray.length == 0 ) {
+                        checkedOptionArray = modelsData.filter(function(v){
+                            return v.siblingCode == radioSiblingCode
                         });
-                    });
-                    var currentSiblingModel = currentSiblingArray.filter(function(model){
-                        return model.modelId == modelId
-                    })
-
-                    if( currentSiblingModel.length ) {
-                        self.$siblingCont.attr('data-model-path', currentSiblingModel[0].modelUrlPath);
-                        self.$siblingBtnComp.prop('disabled', false)
                     } else {
-                        self.$siblingCont.removeAttr('data-model-path');
-                        self.$siblingBtnComp.prop('disabled', true)
+                        var modelId = checkedOptionArray.map(function(model){
+                            return model.modelId
+                        });    
+                        checkedOptionArray = modelsData.filter(function(siblingModel){
+                            return modelId.indexOf(siblingModel.modelId) > -1
+                        }).filter(function(model){
+                            return model.siblingCode == radioSiblingCode;
+                        })
                     }
+                });
+            
+                var currentModelId = checkedOptionArray.map(function(model){
+                    return model.modelId
+                });    
+                checkedOptionArray = modelsData.filter(function(siblingModel){
+                    return currentModelId.indexOf(siblingModel.modelId) > -1
+                }).filter(function(model){
+                    return model.siblingCode == currentSiblingCode;
+                })
+                if( checkedOptionArray.length > 0) {
+                    $target.closest('[role="radio"]').removeClass('disabled')
+
+                    if( checkd ) {
+                        // console.log($optionList.length, $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length);
+                        if( $optionList.length === $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length) {
+                            self.siblingCurrentModel = checkedOptionArray[0].modelId;
+                        }
+                    }
+                } else {
+                    $target.closest('[role="radio"]').addClass('disabled')
                 }
             },
             getSiblingCodes: function(uniqTitleArray){
@@ -2523,7 +2467,8 @@
                     self.codesSortArry[i][1] = [];
                 })
             },
-            requestSiblingData: function(modelId, target){
+            requestSiblingData: function(modelId){
+                //BTOCSITE-44 시블링레이어 model request
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
                 
@@ -2534,22 +2479,22 @@
                         if( resultData.status == "success" && resultData.data) {
                             self.defaultSiblingDataFlag = false;
                             self.receivedSiblingData = resultData.data;
-                            self.setCurrentSiblingModel(resultData.data[0], modelId)
+
+                            var currentPath = resultData.data[0].siblingModels.filter(function(v){
+                                return v.modelId == modelId
+                            })[0].modelUrlPath;
+
+                            // console.log(currentPath)
+
+                            // console.log("resultData.data[0].siblingModels", resultData.data[0].siblingModels)
+                            //self.setCurrentSiblingModel(resultData.data[0], modelId)
                             // lgkorUI.hideLoading();
+                            self.$siblingCont.attr('data-model-path', currentPath)
+                            self.$siblingBtnComp.prop('disabled', false)
                         } else {
                             self.defaultSiblingDataFlag = true;
                             self.receivedSiblingData = [];
-                            self.setCurrentSiblingModel(siblingList[0], modelId)
-
-                            if( resultData.message ) {
-                                // lgkorUI.hideLoading();
-                                lgkorUI.alert("", {
-                                    title: resultData.message,
-                                    ok: function(el) {
-                                        
-                                    }
-                                }, target);
-                            }
+                            self.$siblingBtnComp.prop('disabled', true)
                         }
                     });
                 }

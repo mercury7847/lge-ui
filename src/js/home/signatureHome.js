@@ -19,6 +19,7 @@ $(function() {
             pauseOnFocus: false,
             swipeToSlide: true,
             
+            dots: true,
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
             slidesToScroll: 1,
