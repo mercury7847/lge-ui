@@ -10347,7 +10347,7 @@
     .objet_select_slider .carousel-item.active {
         z-index: 999 !important;
     }
-    .container .text {
+    .container div:not('.objet-pdp-area') .text {
         position: absolute;
         left: 24px;
         bottom: 24px;
