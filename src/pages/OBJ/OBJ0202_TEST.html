@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
+                <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 /  USP url 호출-->
                 <div class="banner-wrap_obj">
                     <div class="banner-inner">
                         <div class="text-wrap">
@@ -63,17 +63,20 @@
                 </div>
 
                 <!-- 
-                냉장고 : https://www.lge.co.kr/object-collection/x320gb?dpType=overViewNoSpec 
-                김치냉장고 : https://www.lge.co.kr/object-collection/z330gss151s?dpType=overViewNoSpec 
-                광파 오븐 :     https://wwwstg.lge.co.kr/microwaves-and-ovens/ml32ew1?dpType=overViewNoSpec 
-                식기세척기 : https://www.lge.co.kr/object-collection/dubj2ga?dpType=overViewNoSpec 
+                냉장고 :         /object-collection/m870fbs451?dpType=overViewNoSpec 
+                컨버터블패키지 : /object-collection/x320gb?dpType=overViewNoSpec 
+                김치냉장고 :     /object-collection/z330gss151s?dpType=overViewNoSpec 
+                식기세척기 :     /object-collection/dubj2ga?dpType=overViewNoSpec 
+                광파 오븐 :      /microwaves-and-ovens/ml32ew1?dpType=overViewNoSpec  // ui 오류 있음
+                정수기   :       /object-collection/wd503agb?dpType=overViewNoSpec 
+                워시타워 :       /object-collection/w16eg?dpType=overViewNoSpec 
+                스타일러 :       /object-collection/s5boc?dpType=overViewNoSpec 
+                청소기   :       /object-collection/ao9571wkt?dpType=overViewNoSpec 
+                에어컨   :       /object-collection/fq25lbnba1?dpType=overViewNoSpec 
                 -->
                 <div class="objet-pdp-area" data-pdp-url="/object-collection/z330gss151s?dpType=overViewNoSpec"></div>
 
-                <style>
-                      .microwaves_202103 .title .info { width:auto;  }
-                      .microwaves_202103 #animate4_3 { margin-top:60px;  }
-                </style>
+
                 <script>
                     (function() {
                         var OBJETPDP = {
@@ -89,10 +92,10 @@
                                     method: 'GET',
                                     url : href,
                                     dataType : 'html',
-                                    success : function( _template ){
+                                    success : function( html ){
                                         self.$objetPdpArea.hide();
                                         var tmp = '',content = '', script = [], link = [];
-                                            tmp = $('<div style="display:none;">').append(_template);
+                                            tmp = $('<div style="display:none;">').append(html);
                                             tmp.find('script[src],link[href]').each(function(){
                                                 switch(this.tagName.toLowerCase()) {
                                                     case "link" :  
@@ -107,12 +110,11 @@
                                                     break;
                                                 }
                                             });
-    
-                                            self.$objetPdpArea.append(link)
-                                                                .append(tmp.find('.iw_viewport-wrapper'))
-                                                                .append(script);
 
-                                            console.log("success end");
+                                            self.$objetPdpArea.append(link)
+                                                            .append(tmp.find('.iw_viewport-wrapper'))
+                                                            .append(script);
+                                            tmp = null;
                                     },
                                     error : function(error){
                                         self.$objetPdpArea.hide();
@@ -120,10 +122,19 @@
                                     },
                                     complete: function(){
                                         setTimeout(function() {
-                                            console.log('보이기');
                                                 self.$objetPdpArea.show();
+                                                vcui.require([ 
+                                                        'ui/lazyLoaderSwitch',
+                                                        'ui/lazyLoader'
+                                                    ], 
+                                                    function() {
+                                                        $('body').vcLazyLoaderSwitch('reload', self.$objetPdpArea);
+                                                        // self.$objetPdpArea.vcLazyLoaderSwitch();
+                                                        self.$objetPdpArea.vcLazyLoader({
+                                                            range : 100
+                                                        });
+                                                });
                                             },100);
-                                        console.log('컴플릿');
                                     }
                                 });
                             }
@@ -131,11 +142,10 @@
 
                         $(document).ready(function(){
                             OBJETPDP.init();
-	                    });
+                        });
                     })();
                     </script>
-                    
-                <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
+                    <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 /  USP url 호출-->
 
             </div>
         </div>
