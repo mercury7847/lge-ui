@@ -30,8 +30,8 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.largestPosition = 0;
             self.$items = $(self.options.selector+"[data-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
-            
 
+            self.$items.hide();
             self._bindEvents();
         },
 
@@ -79,6 +79,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
                             if (self.options.useFade) {
                                 $el.stop().animate({ opacity: 1 });
                             }
+                            $el.show();
                         });
                         return false;
                     }
