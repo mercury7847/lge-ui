@@ -4192,8 +4192,8 @@
                 }
             });            
             
-            console.log('selectedModelData', selectedModelData);
-            console.log('purchaseData', purchaseData);
+            //console.log('selectedModelData', selectedModelData);
+            //console.log('purchaseData', purchaseData);
 
 
 
@@ -4217,7 +4217,7 @@
                     }
                 }
             }
-            console.log(purchaseData);
+            //console.log(purchaseData);
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 datasend(0, selectedModelData.defaultCode, purchaseData);
             } else {
