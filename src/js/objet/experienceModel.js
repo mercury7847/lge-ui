@@ -5829,16 +5829,9 @@
                         scrollTop: $('.simul_body').offset().top - $('.objetcollection-tabs').outerHeight()
                     })
                 }
-<<<<<<< HEAD
-                    setTimeout(function() {
-                        slideWrapAutoSize(".color_my_pick .color_my_pick_body");
-                    }, 10);
-                
-=======
                 setTimeout(function() {
                   slideWrapAutoSize(".color_my_pick .color_my_pick_body");
                 }, 10);
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
             }, 10);
 
 
@@ -6251,8 +6244,6 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 }
 //스텝3 비교하기에 나오는 가격 노출되는 함수 //개발에서 함수로 반환해줌
 function resultModelPrice(price) {
-<<<<<<< HEAD
-=======
     /* BTOCSITE-1582 */
     var $objContent = $('.model_experience');
     if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
@@ -6261,7 +6252,6 @@ function resultModelPrice(price) {
     }
     /* //BTOCSITE-1582 */
 
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
     let priceLeng = price.length;
     setTimeout(function() {
         $(".tb_compare").css("visibility", "visible");
