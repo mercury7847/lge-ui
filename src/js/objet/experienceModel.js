@@ -3697,11 +3697,8 @@
             simulPositionAutoMove();
         });
 
-<<<<<<< HEAD
-=======
         
 
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
         var $objLocation = location.pathname;
         var $objHeader = $('.header');
@@ -3710,17 +3707,12 @@
         var $objTopNavi = $('.brand-wrap');
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
-<<<<<<< HEAD
-        if($objContent.attr('data-page-type') === 'COMMON') {
-            //console.log("common");
-=======
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             console.log("NEWBEST");
@@ -3729,11 +3721,8 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-<<<<<<< HEAD
-=======
             $step3.hide();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
             console.log("HIMART");
@@ -3742,18 +3731,12 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-<<<<<<< HEAD
-        }
-        /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-
-=======
             $step3.hide();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
 
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         //추천조합 열기
         $(".proposeModel").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
@@ -4180,12 +4163,6 @@
                         desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                     }
                     lgkorUI.confirm(desc, obj);
-<<<<<<< HEAD
-                }
-                /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-
-                modelSimulator.mobileStep(".simul_step3");
-=======
                 }
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
                 /* BTOCSITE-1582 */
@@ -4197,7 +4174,6 @@
                 }
                 /* //BTOCSITE-1582 */
                 
->>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
