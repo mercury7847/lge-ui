@@ -89,7 +89,7 @@
             period: period
         }
         //210705 추가 요청사항 : paymentID가 있을때만 노출
-        if(sendata.paymentID){
+        if(sendata.paymentID) {
             lgkorUI.requestAjaxData(PAYMENT_LIST_DATA, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
                     //console.log("데이타값을 불러와서 success로 떨어져서 데이터값이");
@@ -128,10 +128,10 @@
                 }
                 lgkorUI.hideLoading();
             });
-        }else{
+        } else {
             console.log("paymentId 없음");
         }
-        //
+        // 210705 추가 요청사항
     }
 
     function loadPaymentDetail( param ){
