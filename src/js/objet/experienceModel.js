@@ -3656,7 +3656,7 @@
     $(document).ready(function() {
 
         /* TEST */
-        $('.model_experience').attr('data-page-type', 'HIMART');
+        //$('.model_experience').attr('data-page-type', 'HIMART');
 
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
