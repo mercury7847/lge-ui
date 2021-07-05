@@ -4169,6 +4169,14 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
+            if (completedCheck() == false){
+                let desc = "";
+                let obj = {
+                    title: '모든 컬러 선택 완료 후 <br />구매하시기 바랍니다.'
+                };
+                lgkorUI.alert(desc, obj);
+                return;
+            }
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4177,12 +4185,15 @@
                 }
             });
             */
-           $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
                 }
-            });
-            console.log('purchaseData', purchaseData);
+            });            
+            
+            //console.log('selectedModelData', selectedModelData);
+            //console.log('purchaseData', purchaseData);
 
 
 
@@ -4207,7 +4218,12 @@
                 }
             }
             //console.log(purchaseData);
-            purchaseFn(purchaseData);
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                datasend(0, selectedModelData.defaultCode, purchaseData);
+            } else {
+                purchaseFn(purchaseData);
+            }
+            
 
         });
         //툴팁
@@ -4354,7 +4370,9 @@
 
         if (completed == "Y") {
             modelSimulator.stepThree();
+            return true;
         } else {
+            return false;
             //alert('선택완료안됨');
         }
     }
@@ -5167,7 +5185,6 @@
                 
             }
             /* //BTOCSITE-1582 */
-
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
@@ -6202,7 +6219,7 @@ function resultModelPrice(price) {
     /* BTOCSITE-1582 */
     var $objContent = $('.model_experience');
     if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-        alert('견적확인결과' + price);
+        //alert('견적확인결과' + price);
         $(".simul_step3 .btn_check_price").trigger('click');
     }
     /* //BTOCSITE-1582 */
