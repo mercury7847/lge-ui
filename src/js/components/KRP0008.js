@@ -1394,6 +1394,8 @@
                         
                         if( !$this.data('init-content') ) {
                             $this.data('init-content', $siblingCont.html());
+                            $this.data('init-select-disabled', $this.find('.btn-sibling-select').prop('disabled'));
+                            
                         }
                     })
                 });
@@ -1403,6 +1405,7 @@
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
                     $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
+                    $currentPopup.find('.btn-sibling-select').prop('disabled', $currentPopup.data('init-select-disabled'));
                 })
                 //BTOCSITE-44 스펙선택(시블링레이어) 선택완료
                 self.$siblingBtnComp.on('click', function(e){
