@@ -1338,16 +1338,14 @@
                 self.$siblingCont.on('change', '.select-option input:radio',function(){
                     var _self = this;
                     var $this = $(_self);
-                    var $colorWrap = $this.closest('.sibling-color');
-                    var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
-                    var currentSiblingCode = $this.closest('.chk-wrap-colorchip').attr('title');
+                    var $colorWrap = self.$siblingCont.find('.sibling-color');
+                    // var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
+                    
                     var models;
 
                     self.siblingCurrentModel = "";
 
-                    if( $colorChip.length ) {
-                        $colorWrap.find('.sibling-colorHead .color-text span').text(currentSiblingCode);
-                    }
+                    
 
                     if(self.receivedSiblingData.length > 0 && self.receivedSiblingData[0].siblingModels && self.defaultSiblingDataFlag ) {
                         models= self.receivedSiblingData[0].siblingModels;
@@ -1364,7 +1362,16 @@
                         });
                     });
 
-                    // console.log("self.siblingCurrentModel", self.siblingCurrentModel)
+                    // console.log("self.sib    lingCurrentModel", self.siblingCurrentModel)
+                    if( $colorWrap.length ) {
+                        var currentSiblingCode = $colorWrap.find('.chk-wrap-colorchip').has('input:checked').attr('title');
+                        if( $colorWrap.find('.chk-wrap-colorchip.disabled input:radio:checked').length) {
+                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode + ' (색상없음)');
+                        } else {
+                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode);
+                        }
+
+                    }
 
                     if( self.siblingCurrentModel ) {
                         self.requestSiblingData(self.siblingCurrentModel)
@@ -2292,24 +2299,6 @@
             openModalFromHtml: function(html) {
                 $('#pdp-modal').html(html).vcModal();
             },
-
-
-            //선택된 옵션으로 모델 데이타 가져오기
-            //링크로 바뀌어서 안씀
-            /*
-            requestSelectOption: function(param) {
-                var self = this;
-                var ajaxUrl = self.$pdpInfo.attr('data-select-url');
-                param.id = self.$pdpInfo.attr('data-id');
-                lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                    var data = result.data;
-                    self.$pdpInfo.attr('data-pid',data.productId);
-                    self.$pdpInfo.attr('data-price',data.price);
-                    self.$pdpInfoProductDetailInfo.find('.sku').text(data.sku);
-                });
-            },
-            */
-
             //선택된 옵션으로 케어쉽 가격 가져오기
             requestSelectCareOption: function($dom) {
                 var self = this;
@@ -2449,7 +2438,8 @@
 
                     if( checkd ) {
                         // console.log($optionList.length, $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length);
-                        if( $optionList.length === $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length) {
+                        var checkedRadioLength = $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length;
+                        if( $optionList.length === checkedRadioLength ) {
                             self.siblingCurrentModel = checkedOptionArray[0].modelId;
                         }
                     }
@@ -2457,22 +2447,11 @@
                     $target.closest('[role="radio"]').addClass('disabled')
                 }
             },
-            getSiblingCodes: function(uniqTitleArray){
-                var self = this;
-
-                self.codesSortArry = [];
-                uniqTitleArray.forEach(function(v, i){
-                    self.codesSortArry[i] = [];
-                    self.codesSortArry[i][0] = v;
-                    self.codesSortArry[i][1] = [];
-                })
-            },
             requestSiblingData: function(modelId){
                 //BTOCSITE-44 시블링레이어 model request
                 var self = this;
                 var ajaxUrl = self.$pdpInfo.attr('data-sibling-ajax');
-                
-                // console.log("request MODEL ID ::: ", modelId)
+
                 if( ajaxUrl && ajaxUrl != "" ) {
                     // lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(ajaxUrl, {modelId: modelId}, function(resultData) {
@@ -2483,11 +2462,6 @@
                             var currentPath = resultData.data[0].siblingModels.filter(function(v){
                                 return v.modelId == modelId
                             })[0].modelUrlPath;
-
-                            // console.log(currentPath)
-
-                            // console.log("resultData.data[0].siblingModels", resultData.data[0].siblingModels)
-                            //self.setCurrentSiblingModel(resultData.data[0], modelId)
                             // lgkorUI.hideLoading();
                             self.$siblingCont.attr('data-model-path', currentPath)
                             self.$siblingBtnComp.prop('disabled', false)
