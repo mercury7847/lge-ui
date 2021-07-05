@@ -2759,14 +2759,14 @@
 			background-position:-48px -192px;
 		}
 	}
+	&.white_gray {
+		& input + label:before {
+			background-position:-72px -192px;
+		}
+	}
 	&.gray_black {
 		& input + label:before {
 			background-position:-96px -192px;
-		}
-	}
-	&.white_gray {
-		& input + label:before {
-			background-position:-48px -192px;
 		}
 	}
 	&.manhattan_manhattan {
