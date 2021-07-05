@@ -1338,16 +1338,14 @@
                 self.$siblingCont.on('change', '.select-option input:radio',function(){
                     var _self = this;
                     var $this = $(_self);
-                    var $colorWrap = $this.closest('.sibling-color');
-                    var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
-                    var currentSiblingCode = $this.closest('.chk-wrap-colorchip').attr('title');
+                    var $colorWrap = self.$siblingCont.find('.sibling-color');
+                    // var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
+                    
                     var models;
 
                     self.siblingCurrentModel = "";
 
-                    if( $colorChip.length ) {
-                        $colorWrap.find('.sibling-colorHead .color-text span').text(currentSiblingCode);
-                    }
+                    
 
                     if(self.receivedSiblingData.length > 0 && self.receivedSiblingData[0].siblingModels && self.defaultSiblingDataFlag ) {
                         models= self.receivedSiblingData[0].siblingModels;
@@ -1364,7 +1362,16 @@
                         });
                     });
 
-                    // console.log("self.siblingCurrentModel", self.siblingCurrentModel)
+                    // console.log("self.sib    lingCurrentModel", self.siblingCurrentModel)
+                    if( $colorWrap.length ) {
+                        var currentSiblingCode = $colorWrap.find('.chk-wrap-colorchip').has('input:checked').attr('title');
+                        if( $colorWrap.find('.chk-wrap-colorchip.disabled input:radio:checked').length) {
+                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode + ' (색상없음)');
+                        } else {
+                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode);
+                        }
+
+                    }
 
                     if( self.siblingCurrentModel ) {
                         self.requestSiblingData(self.siblingCurrentModel)
