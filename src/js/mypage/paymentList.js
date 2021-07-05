@@ -174,7 +174,7 @@
                     } 
                     
                     if (item.billType === "CARD") {
-                        item.receiptBankAccountNo = txtMasking.substr(item.receiptBankAccountNo);
+                        item.receiptBankAccountNo = txtMasking.card(item.receiptBankAccountNo);
                     } 
 
                 });
