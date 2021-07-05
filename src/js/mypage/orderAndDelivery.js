@@ -1651,7 +1651,6 @@
 
         paymentMethodConfirm = "N";
         arsAgree = "N";
-        $('.arsAgreeRequestCheck').hide();
     }
     //나이스 콜백 -인증실패
     function fnNiceFail(msg){
@@ -1772,6 +1771,7 @@
 
         //CTI_REQUEST_KEY = "";
         //arsAgree = "N";
+
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
             //console.log('출금동의요청 체크 결과', result);
             lgkorUI.alert(result.data.alert.desc, {
@@ -1782,15 +1782,6 @@
             arsAgree = result.data.success;
             
         }, ajaxMethod, null, true);
-        
-        lgkorUI.requestAjaxData(ARS_AGREE_CHECK_URL, {}, function(result){
-            lgkorUI.alert(result.data.alert.desc, {
-                title: result.data.alert.title
-            });
-
-            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-            arsAgree = result.data.success;
-        });
         
     }
     //납부 정보변경 취소...
@@ -1806,7 +1797,6 @@
     function paymentBlockInit(){        
         paymentMethodConfirm = "N";
         arsAgree = "N";
-        $('.arsAgreeRequestCheck').hide();
         
         $('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked', false);
         $('.monthly-payment-modify').find('input[name=pointUseAgree]').prop('checked', false);
