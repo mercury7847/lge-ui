@@ -335,7 +335,7 @@
         }
         /* //20210601 구매혜택 팝업 conts수정 */
 
-        /* 20210607 스펙선택 추가 */
+        /* 20210607 스펙선택 추가 */ 
         &.sibling-pop {
             padding: 0;
             .process-info {
@@ -355,9 +355,27 @@
                             flex-wrap: wrap;
                             &[class*="cont"] {
                                 position: relative;
-                                padding: 24px 40px 0;
+                                padding: 24px 40px 30px;
+
+                                &:after {
+                                    content:"";
+                                    display: block;
+                                    position: absolute;
+                                    bottom:0;
+                                    left:40px;
+                                    right:40px;
+                                    height:1px;
+                                    background: #ddd;
+                                }
+
                                 @include mobile {
-                                    padding: 20px 15px 0;
+                                    margin-bottom:30px;
+                                    padding: 20px 15px 30px;
+
+                                    &:after {
+                                        left:15px;
+                                        right:15px;
+                                    }
                                 }
                                 .sibling-select,
                                 .sibling-color {
@@ -366,8 +384,14 @@
                                     .sibling-colorHead {
                                         display: flex;
                                         width: 100%;
+                                        font-size: 16px;
                                         align-items: center;
                                         margin-bottom: 20px;
+                                        &.disabled {
+                                            .color-text {
+                                                color:$color-gray-2
+                                            }
+                                        }
                                         @include mobile {
                                             margin-bottom: 10px;
                                         }
@@ -399,9 +423,7 @@
                                 }
                                 .sibling-color {
                                     position: relative;
-                                    border-bottom: 1px solid #ddd;
-                                    margin-bottom: 30px;
-                                    padding-bottom: 30px;
+                                    
                                 }
                                 .sibling-select:first-of-type {
                                     margin-top: 0;
@@ -462,13 +484,17 @@
                                 .chk-wrap-colorchip {
                                     width: 40px;
                                     height: 40px;
+                                    margin-top:8px;
                                     @include mobile {
                                         width: 34px;
                                         height: 34px;
+                                        margin-top:3px;
                                     }
                                     &:not(:last-child) {
-                                        margin-top:8px;
                                         margin-right: 8px;
+                                        @include mobile {
+                                            margin-right:3px;
+                                        }
                                     }
                                     input {
                                         & + label {
@@ -521,6 +547,12 @@
                                             border-left: 2px solid #000;
                                         }
                                     }
+                                    &.white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
+                                        }
+                                    }
                                 }
                                 .color-text {
                                     margin-top: 8px;
@@ -536,30 +568,47 @@
                                 }
                                 .rdo-wrap.btn-type2 {
                                     margin-right: 8px;
-                                    margin-bottom: 0;
+                                    margin-bottom: 8px;
                                     @include mobile {
                                         margin-right: 3px;
+                                        margin-bottom: 3px;
                                     }
                                     &:last-of-type {
                                         margin-right: 0;
+                                    }
+
+                                    &.disabled {
+                                        input {
+                                            & + label {
+                                                border: 1px solid;
+                                                @include font($font-small,26px);
+                                                color: $color-gray-4;
+                                            }
+                                            &:checked {
+                                                & + label {
+                                                    color: $color-gray-4;
+                                                    border-color: $color-primary;
+                                                }
+                                            }
+                                        }
                                     }
                                     input {
                                         & + label {
                                             width: auto;
                                             min-width: 60px;
-                                            padding: 3px 8px;
+                                            padding: 6px 14px;
                                             border-radius: 40px;
                                             border: 1px solid;
                                             @include font($font-small,26px);
-                                            color: $color-gray-1;
+                                            // color: $color-gray-1;
                                             @include mobile {
                                                 min-width: 55px;
                                                 font-size: 13px;
+                                                padding: 3px 14px;
                                             }
                                         }
                                         &:checked {
                                             & + label {
-                                                padding:3px 8px;
                                                 color: $color-primary;
                                             }
                                         }
@@ -573,6 +622,7 @@
                     }
                     .sibling-group {
                         padding: 0 30px 40px 30px;
+                        margin-top: 30px;
                         @include mobile {
                             padding-bottom: 0;
                             padding: 0;
@@ -614,11 +664,48 @@
             height:calc(100% - 122px);
             max-height:calc(100% - 122px);
             //max-height:none;
+            
             &.is-bottom-expire {
                 height:calc(100% - 154px);
                 max-height:calc(100% - 154px);
             }
         }
+
+        .not-cancel-footer {                        
+            h2 {
+                font-size: 24px;
+                line-height: 34px;
+                font-weight: 700;
+            }
+            p { 
+                font-size:18px;
+                font-weight:600;
+                margin-top:24px;
+            }
+
+            .btn-group {
+                margin-top:32px;
+            }
+
+            @include mobile {
+                margin-top:24px;
+                h2 {
+                    font-size: 20px;
+                    line-height: 28px;
+                    font-weight: 700;
+                }
+                p {
+                    margin-top:12px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+
+                .btn-group {
+                    margin-top:24px;
+                }
+            }
+        }
+
         .tabs-wrap {
             &:first-child {
                 @include mobile {
