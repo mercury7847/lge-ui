@@ -1366,7 +1366,7 @@
                     if( $colorWrap.length ) {
                         var currentSiblingCode = $colorWrap.find('.chk-wrap-colorchip').has('input:checked').attr('title');
                         if( $colorWrap.find('.chk-wrap-colorchip.disabled input:radio:checked').length) {
-                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode + ' (색상없음)');
+                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode + ' (선택불가)');
                         } else {
                             $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode);
                         }
