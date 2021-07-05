@@ -130,6 +130,7 @@
             });
         } else {
             console.log("paymentId 없음");
+            lgkorUI.hideLoading();
         }
         // 210705 추가 요청사항
     }
