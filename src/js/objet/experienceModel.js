@@ -3890,7 +3890,11 @@
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');    
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                $quickbuy.hide();
+                if ($(this).data().childcate == 'Y'){
+                    $quickbuy.hide();
+                } else {
+                    $quickbuy.show();
+                }
             } else {
 
             }
