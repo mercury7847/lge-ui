@@ -1975,7 +1975,7 @@
                 {
                     defaultCode: "Y320AA",
                     modelCode: "Y320MMS",
-                    door1: "B320TT-MMT",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -2051,7 +2051,7 @@
                 {
                     defaultCode: "Z320AA",
                     modelCode: "Z320MMS",
-                    door1: "B320TT-MMT",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -3656,7 +3656,7 @@
     $(document).ready(function() {
 
         /* TEST */
-        //$('.model_experience').attr('data-page-type', 'HIMART');
+        $('.model_experience').attr('data-page-type', 'HIMART');
 
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
@@ -3722,7 +3722,7 @@
             $objMyPickBtn.hide();
             $objFooter.hide();
             $step3.hide();  // BTOCSITE-1582 add
-            $quickbuy.show();   // BTOCSITE-1582 add
+            //$quickbuy.show();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
             console.log("HIMART");
@@ -3732,7 +3732,7 @@
             $objMyPickBtn.hide();
             $objFooter.hide();
             $step3.hide();  // BTOCSITE-1582 add
-            $quickbuy.show();   // BTOCSITE-1582 add
+            //$quickbuy.show();   // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
@@ -3860,6 +3860,9 @@
                     $(".myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
                     totalResulPrice();
+                    /* BTOCSITE-1582 add */
+                    $('#quick_buy').hide();
+                    /* //BTOCSITE-1582 add */
                 }
             };
             var desc = '';
@@ -3882,6 +3885,17 @@
             modelSimulator.closeProposeModel();
             modelSimulator.childModel($(this));
             modelSimulator.maxCountCheck();
+
+            /* BTOCSITE-1582 add */
+            var $objContent = $('.model_experience');
+            var $quickbuy = $('#quick_buy');    
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                $quickbuy.show();
+            } else {
+
+            }
+            /* //BTOCSITE-1582 add */
+            
         });
 
         //제품선택 탭이벤트
@@ -6083,6 +6097,12 @@
                 pickerPosition = $(".color_sel_wrap .swiper-wrapper").css("transform");
             }, 500);
 
+            /* BTOCSITE-1582 add */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                $('#quick_buy').show();
+            }
+            /* //BTOCSITE-1582 add */
         }
     }
     $(window).load(function() {
