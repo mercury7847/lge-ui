@@ -234,6 +234,19 @@
     </dd>
     </dl>
     <!--// STEP 2 -->
+    <!-- BTOCSITE-1582 add :: 결제버튼 추가 -->
+    <div class="total_price_info_wrap" id="quick_buy">
+        <div class="total_price_info_body">
+            <dl>
+                <dd>
+                    <div class="price_info">
+                        <button class="btn btn_purchase"><span>구매하기</span></button>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- //BTOCSITE-1582 add -->
     <!-- STEP 3 -->
     <dl class="simul_step simul_step3">
         <dt>
@@ -359,14 +372,9 @@
         function myPickBtnFn() {}
         $(document).ready(function() {
 
-            $(window).load(function() { //pdp유입 제품
-                //modelSimulator.pdpProductStep("M870GSB451S");
-                modelSimulator.pdpProductStep("M870FBB451S");
-                //modelSimulator.pdpProductStep("Z330FSS151S");
-                //modelSimulator.pdpProductStep("Y320MWS");
-            });
+            modelSimulator.pdpProductStep("M870FBB451S");
         });
-
+        
         //]]>
     </script>
     <script type="text/javascript">

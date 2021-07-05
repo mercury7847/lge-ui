@@ -101,9 +101,9 @@ img{
 		// BTOCSITE-740 start
 		@include mobile {			
 			height: 500px;
-			&+.scene {
-				margin-top:12px;
-			}
+			// &+.scene {
+			// 	margin-top:12px;
+			// }
 		}
 		// BTOCSITE-740 end
 		/*
@@ -1379,9 +1379,9 @@ img{
 						}
 					}
 				}
-				& + .scene {
-					margin-top: 28px;
-				}
+				// & + .scene {
+				// 	margin-top: 28px;
+				// }
 			}
 		}
 	}
