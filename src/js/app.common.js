@@ -230,12 +230,9 @@ var appInit = function() {
             }
 
             // 210701 알람체크 N뱃지 아이콘
-            if(count) {
-                var $mobNavBtn = $(".mobile-nav-button");
-                    if(!$mobNavBtn.find('.count').length) {
-                        $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
-                    }
-            }
+            var $mobNavBtn = $(".mobile-nav-button");
+            if(count && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
+            else  $mobNavBtn.find('.count').remove();
         }
 
 
