@@ -1250,13 +1250,14 @@
         }
         //추천조합
     proposeSet = {
-            proposeConfig: [{
+            proposeConfig: [
+                {
                     defaultCode: "M620AAA351",
                     modelCode: "M620FBB351S",
                     door1: "D620TT-FBT",
                     door2: "D620BB-FBT",
                     door3: "D620BB-FBT",
-                    door4: "",
+                    door4: ""
                 },
                 {
                     defaultCode: "M620AAA351",
@@ -1897,8 +1898,8 @@
                 },
                 {
                     defaultCode: "X320AA",
-                    modelCode: "X320SMS",
-                    door1: "B320TT-SMT",
+                    modelCode: "X320MMS",
+                    door1: "B320TT-MMT",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -1958,7 +1959,7 @@
                 {
                     defaultCode: "Y320AA",
                     modelCode: "Y320SSS",
-                    door1: "B320TT-SSR",
+                    door1: "B320TT-SSV",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -1973,7 +1974,7 @@
                 },
                 {
                     defaultCode: "Y320AA",
-                    modelCode: "Y320SMS",
+                    modelCode: "Y320MMS",
                     door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
@@ -2034,7 +2035,7 @@
                 {
                     defaultCode: "Z320AA",
                     modelCode: "Z320SSS",
-                    door1: "B320TT-SSR",
+                    door1: "B320TT-SSV",
                     door2: "",
                     door3: "",
                     door4: "",
@@ -2049,7 +2050,7 @@
                 },
                 {
                     defaultCode: "Z320AA",
-                    modelCode: "Z320SMS",
+                    modelCode: "Z320MMS",
                     door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
@@ -3652,21 +3653,18 @@
         ]
     }
 
-
-
-
-
-
-
-
     $(document).ready(function() {
+
+        /* TEST */
+        //$('.model_experience').attr('data-page-type', 'HIMART');
+
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
-                if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-                    location.reload();
-                }
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                location.reload();
             }
-            //초기셋팅
+        }
+        //초기셋팅
         modelSimulator.init();
 
         $(document).on("click", function(e) {
@@ -3699,6 +3697,11 @@
             simulPositionAutoMove();
         });
 
+<<<<<<< HEAD
+=======
+        
+
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
         var $objLocation = location.pathname;
         var $objHeader = $('.header');
@@ -3707,8 +3710,17 @@
         var $objTopNavi = $('.brand-wrap');
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
+<<<<<<< HEAD
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
+=======
+        var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
+        var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
+
+        if($objContent.attr('data-page-type') === 'COMMON') {
+            //console.log("common");
+            $quickbuy.hide();   // BTOCSITE-1582 add
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             console.log("NEWBEST");
@@ -3717,6 +3729,11 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+<<<<<<< HEAD
+=======
+            $step3.hide();  // BTOCSITE-1582 add
+            //$quickbuy.show();   // BTOCSITE-1582 add
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
             console.log("HIMART");
@@ -3725,9 +3742,18 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+<<<<<<< HEAD
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
+=======
+            $step3.hide();  // BTOCSITE-1582 add
+            //$quickbuy.show();   // BTOCSITE-1582 add
+        }
+        /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+
+
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
         //추천조합 열기
         $(".proposeModel").on("click", function() {
             let modelCode = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model_code");
@@ -3851,6 +3877,9 @@
                     $(".myPick").addClass("border");
                     modelSimulator.mobileStep(".simul_step1");
                     totalResulPrice();
+                    /* BTOCSITE-1582 add */
+                    $('#quick_buy').hide();
+                    /* //BTOCSITE-1582 add */
                 }
             };
             var desc = '';
@@ -3873,6 +3902,17 @@
             modelSimulator.closeProposeModel();
             modelSimulator.childModel($(this));
             modelSimulator.maxCountCheck();
+
+            /* BTOCSITE-1582 add */
+            var $objContent = $('.model_experience');
+            var $quickbuy = $('#quick_buy');    
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                $quickbuy.show();
+            } else {
+
+            }
+            /* //BTOCSITE-1582 add */
+            
         });
 
         //제품선택 탭이벤트
@@ -4133,10 +4173,24 @@
                         desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
                     }
                     lgkorUI.confirm(desc, obj);
+<<<<<<< HEAD
                 }
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
                 modelSimulator.mobileStep(".simul_step3");
+=======
+                }
+                /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
+                /* BTOCSITE-1582 */
+                //var $objContent = $('.model_experience');
+                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                    
+                } else {
+                    modelSimulator.mobileStep(".simul_step3");    
+                }
+                /* //BTOCSITE-1582 */
+                
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
@@ -4153,13 +4207,31 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
+            if (completedCheck() == false){
+                let desc = "";
+                let obj = {
+                    title: '모든 컬러 선택 완료 후 <br />구매하시기 바랍니다.'
+                };
+                lgkorUI.alert(desc, obj);
+                return;
+            }
             let purchaseData = [];
+            /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
                 }
             });
-            //console.log(purchaseData);
+            */
+            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+                if (!$(this).hasClass("sum")) {
+                    purchaseData.push($(this).attr("data-default-code"));
+                }
+            });            
+            
+            //console.log('selectedModelData', selectedModelData);
+            //console.log('purchaseData', purchaseData);
 
 
 
@@ -4184,7 +4256,12 @@
                 }
             }
             //console.log(purchaseData);
-            purchaseFn(purchaseData);
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                datasend(0, selectedModelData.defaultCode, purchaseData);
+            } else {
+                purchaseFn(purchaseData);
+            }
+            
 
         });
         //툴팁
@@ -4331,6 +4408,10 @@
 
         if (completed == "Y") {
             modelSimulator.stepThree();
+            return true;
+        } else {
+            return false;
+            //alert('선택완료안됨');
         }
     }
 
@@ -5135,9 +5216,18 @@
                 }
             }
             resultModelPriceCheck(modelPriceArry); //개발쪽에 가격 산출을 위한 모델코드를 넘김 //함수로 반환받아야 함
+            /* BTOCSITE-1582 */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                //return;
+                
+            }
+            /* //BTOCSITE-1582 */
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+            
+            
         },
         //견적확인하기
         priceCheck: function(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo) {
@@ -5196,6 +5286,16 @@
             let sumSlide = $(".total_price_info_body .swiper-wrapper .swiper-slide");
             //console.log('idx', idx);
             //console.log('sumSlide.length', sumSlide.length);
+            /* BTOCSITE-1582 */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
+                //priceSumList.appendSlide(priceHtml);
+                console.log('priceSumList', priceSumList);
+                $(priceSumList.$el[0]).hide();
+            }
+            /* //BTOCSITE-1582 */
+
             if (sumSlide.length > 0) {
                 if (sumSlide.length > idx) {
                     priceSumList.removeSlide(idx);
@@ -5206,6 +5306,7 @@
             } else {
                 priceSumList.appendSlide(priceHtml);
             }
+            
             $(".total_price_info_wrap").attr("data-sum-active", "Y");
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
@@ -5744,10 +5845,16 @@
                         scrollTop: $('.simul_body').offset().top - $('.objetcollection-tabs').outerHeight()
                     })
                 }
+<<<<<<< HEAD
                     setTimeout(function() {
                         slideWrapAutoSize(".color_my_pick .color_my_pick_body");
                     }, 10);
                 
+=======
+                setTimeout(function() {
+                  slideWrapAutoSize(".color_my_pick .color_my_pick_body");
+                }, 10);
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
             }, 10);
 
 
@@ -6021,6 +6128,12 @@
                 pickerPosition = $(".color_sel_wrap .swiper-wrapper").css("transform");
             }, 500);
 
+            /* BTOCSITE-1582 add */
+            var $objContent = $('.model_experience');
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                $('#quick_buy').show();
+            }
+            /* //BTOCSITE-1582 add */
         }
     }
     $(window).load(function() {
@@ -6154,6 +6267,17 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 }
 //스텝3 비교하기에 나오는 가격 노출되는 함수 //개발에서 함수로 반환해줌
 function resultModelPrice(price) {
+<<<<<<< HEAD
+=======
+    /* BTOCSITE-1582 */
+    var $objContent = $('.model_experience');
+    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+        //alert('견적확인결과' + price);
+        $(".simul_step3 .btn_check_price").trigger('click');
+    }
+    /* //BTOCSITE-1582 */
+
+>>>>>>> 62ab65252a74bff2742f9aa999892cc765c46a7c
     let priceLeng = price.length;
     setTimeout(function() {
         $(".tb_compare").css("visibility", "visible");
