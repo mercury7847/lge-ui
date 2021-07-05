@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/common.css" />
 
+
+<!-- -S- BTOCSITE-2153 0707 마크업 원복 -->
 <script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/common.js"></script>
 <script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/common_mobi.js"></script>
 <script src="/lg5-common/temp_OBJ/js/fontfaceobserver.js"></script>
@@ -18,8 +20,10 @@
 <script src="/lg5-common/temp_OBJ/js/rellax.min.js"></script>
 <script src="/lg5-common/temp_OBJ/js/modernsizr.js" type="text/javascript"></script>
 <script src="/lg5-common/temp_OBJ/js/materialize.js" type="text/javascript"></script>
-<script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/collection_oven.js"></script>
-<script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/collection_oven_mobi.js"></script>
+<!-- <script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator.js"></script> -->
+<!-- <script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator_mobi.js"></script> -->
+<!-- -E- BTOCSITE-2153 0707 마크업 원복 -->
+
 
 <body>
     <div class="wrap">
@@ -35,644 +39,54 @@
                             <li class="on"><a href="/html/OBJ/OBJ0100.html?objet-cont2">제품</a></li>
                             <li><a href="/html/OBJ/OBJ0100.html?objet-cont3">체험</a></li>
                             <li><a href="/html/OBJ/OBJ0100.html?objet-cont4">갤러리</a></li>
-                            <li><a href="/html/OBJ/OBJ0100.html?objet-cont5">브랜드 스토리</a></li>
+                            <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 USP 수정 : 브랜드 스토리 탭 숨김 -->
+                            <!-- <li><a href="/html/OBJ/OBJ0100.html?objet-cont5">브랜드 스토리</a></li> -->
+                            <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 USP 수정 : 브랜드 스토리 탭 숨김 -->
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="objet_detail oven only_pc">
-                <div id="collection_div">
-                    <div class="collect_tab">
-                        <ul>
-                            <li><button type="button" class="collection_div"><span class="active">Overview</span></button></li>
-                            <li><button type="button" class="co_design"><span>Design</span></button></li>
-                            <li><button type="button" class="co_function"><span>Function</span></button></li>
-                            <li><button type="button" class="co_gallery"><span>Gallery</span></button></li>
-                        </ul>
-                        <div class="c_tab_bg"></div>
-                    </div>
-                    <div class="refrigerator_detail detail tab_ct active" id="co_overview">
-                        <div class="title">
-                            <p class="subject">Oven</p>
-                            <p class="subject2">광파오븐</p>
-                            <p class="ct">처음 만나는 공간인테리어 가전 <br />LG 오브제컬렉션 광파오븐</p>
-                            <p class="noti">사용된 모든 이미지는 이해를 돕기 위한 연출된 이미지로 실제와 다를 수 있습니다.</p>
-                        </div>
-                        <div class="ref-width washers">
-                            <div class="ref-img"><img src="/lg5-common/images/OBJ/detail/img-oven-big.png" alt="" id="refImg" /></div>
-                        </div>
-                    </div>
-                    <div class="ref-design washers tab_ct" id="co_design">
-                        <div class="collc_info03 oven_design_bg">
-                            <p class="title">Design</p>
-                        </div>
-                        <div class="collec_info04 conv">
-                            <div class="ct_width scr-ev">
-                                <div class="co_txStyle03">고운 안개를 닮아 부드러운 감성</div>
+
+                <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
+                <!-- -S- BTOCSITE-2153 0707 마크업 원복 -->
+                <!-- <div class="banner-wrap_obj">
+                    <div class="banner-inner">
+                        <div class="text-wrap">
+                            <h2 class="title">공간인테리어 가전</h2>                        
+                            <div class="logo-obj">
+                                <img src="/lg5-common/images/OBJ/logo/ovens-logo.svg" alt="광파오븐 제품 이미지">        
                             </div>
-                            <div class="fenix-bx">
-                                <p>Mist Glass <br />Material</p>
-                                <div class="img-fenix">
-                                </div>
-                                <div class="fenix-list">
-                                    <div class="fenix-st washers rellax" data-rellax-speed="6">
-                                        <div class="img-overflow2">
-                                            <p class="img">
-                                                <img src="/lg5-common/images/OBJ/detail/images-detail-material-palette-nature-beige.png" alt="" /></p>
-                                            <p class="material-name">Mist Beige</p>
-                                            <p class="name">미스트 베이지</p>
-                                            <p class="ct">공간에 은은하게 어우러지는 <br />미스트 베이지 컬러</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btn-fenix">
-                                <button type="button" onClick="location.href='/lg-objet-collection/material'"><span>View Material</span></button>
-                            </div>
+                            <p class="model-name">대표모델 : ML32EW1</p>
+                            <a href="/object-collection?subCateId=CT50022010" class="btn border size-m"><span>더 많은 모델 보기</span></a>
+                            <p class="desc">사용된 모든 이미지는 이해를 돕기 위한 연출된 이미지로 실제와 다를 수 있습니다.</p>
                         </div>
-                        <div class="conv_info05 ref2 oven">
-                            <ul>
-                                <li class="Cstyle01">
-                                    <div class="co-style">
-                                        <p class="style-type">Interior Style</p>
-                                        <p class="name">가전으로 공간을 <br />아름답게</p>
-                                        <p class="ct">미스트 베이지, 실버, 그린 세가지 컬러의 모던하고 심플한 <br />디자인으로 주방 인테리어를 조화롭게 연출해 보세요.</p>
-                                        <div class="img">
-                                            <div class="img-overflow parallexBlock07" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="Cstyle02">
-                                    <div class="co-style">
-                                        <p class="name">색깔있게 <br />또, 감각적으로</p>
-                                        <div class="img">
-                                            <div class="img-overflow parallexBlock08" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="Cstyle03">
-                                    <div class="co-style">
-                                        <p class="name">인테리어를 <br />완성하다</p>
-                                        <div class="img">
-                                            <div class="img-overflow parallexBlock09" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="product-img">
+                            <img class="only_mobile" src="/lg5-common/images/OBJ/main/ovens_cut_image_mo.png" alt="광파오븐 제품 이미지">
+                            <img class="only_pc" src="/lg5-common/images/OBJ/main/ovens_cut_image.png" alt="광파오븐 제품 이미지">
                         </div>
-                    </div>
-                    <div class="ref-function tab_ct" id="co_function">
-                        <div class="collc_info03 oven oven_func_bg">
-                            <p class="title">Function</p>
-                            <div id="design_function" class="vidio-v">
-                                <video autoplay muted loop>
-                                  <source src="/lg5-common/images/OBJ/detail/video/oven/co_oven_cover_02.mp4" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-                            </div>
-                        </div>
-                        <div class="washers_info">
-                            <div class="ct_width">
-                                <p class="sub-title">인버터로 시간/전기료 줄이고</p>
-                                <p class="title2 type02">더 적은 에너지로 <br />더 맛있는 조리</p>
-                                <p class="oven-q type02">스마트 인버터란?</p>
-                                <p class="oven-a">마그네트론의 출력을 효과적으로 <br />조절하여 균일한 조리/해동은 기본, <br />에너지를 절약해주는 기술</p>
-                            </div>
-                            <div class="washers-image">
-                                <img src="/lg5-common/images/OBJ/detail/img-oven-info01.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="collc_info08">
-                            <div class="ct_width ovenarea01">
-                                <p class="title">광파오븐<br />1대로<br />다양하게</p>
-                                <div class="collec-ct01 cct">
-                                    <div class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-oven-function-01.png" alt="" />
-                                    </div>
-                                    <p class="subj">오븐</p>
-                                    <p class="ct">광파가열을 채용한 광파오븐으로 맛있는 <br />오븐치킨 요리가 가능합니다.</p>
-                                </div>
-                                <div class="collec-ct02 cct">
-                                    <div class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-rf-function-hidden-button.png" alt="" />
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">전기그릴</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">노릇노릇 고르게 굽는 구이의 제맛을 느낄 수 <br />있는 기능입니다.</p>
-                                </div>
-                                <div class="collec-ct03 cct">
-                                    <div class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-rf-function-hidden-space.png" alt="" />
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">식품건조</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">식품의 수분을 제거하여 오래 저장을 할 수 <br />있습니다.</p>
-                                </div>
-                                <div class="collec-ct04 cct">
-                                    <div class="img">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail/img-oven-function05.png" alt="" />
-                                        </div>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">웰빙 발효기능</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">미세한 온도제어로 빵 발효, 요구르트, <br />식혜까지 다양한 발효요리가 가능합니다.</p>
-                                </div>
-                                <div class="collec-ct05 cct">
-                                    <div class="img"><img src="/lg5-common/images/OBJ/detail/img-oven-function06.png" alt="" />
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">건강 튀김(에어프라이어)</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">적은 기름으로 열풍 조리하여 바삭바삭 맛있는 <br />튀김요리가 가능합니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="washers_info">
-                            <div class="ct_width">
-                                <p class="sub-title">광파듀얼히터로 맛과 영양 살리고</p>
-                                <p class="title2">더 강력해진 출력 <br />광파듀얼히터</p>
-                                <p class="oven-q">내부</p>
-                                <p class="oven-a">빠른 발열 속도와 강한 열 집중, <br />멀티 광파듀얼히터로 더 빠르고 맛있게</p>
-                            </div>
-                            <div class="washers-image">
-                                <img src="/lg5-common/images/OBJ/detail/img-oven-info02.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="collc_info08">
-                            <div class="ct_width ovenHight">
-                                <p class="title">스마트<br />인버터<br />시스템</p>
-                                <div class="collec-ct01 cct">
-                                    <div class="img-overflow3" data-type="content" data-speed="5">
-                                        <div class="img">
-                                            <div class="img-overflow parallexImg10" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                        <p class="subj wow fadeInUp" data-wow-delay="0.5s">오븐</p>
-                                        <p class="ct wow fadeInUp" data-wow-delay="0.5s">광파가열을 채용한 광파오븐으로 맛있는 <br />오븐치킨 요리가 가능합니다.</p>
-                                    </div>
-                                </div>
-                                <div class="collec-ct02 cct">
-                                    <div class="img-overflow3" data-type="content" data-speed="4">
-                                        <div class="img">
-                                            <div class="img-overflow parallexImg11" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                        <p class="subj wow fadeInUp" data-wow-delay="0.5s">전기그릴</p>
-                                        <p class="ct wow fadeInUp" data-wow-delay="0.5s">노릇노릇 고르게 굽는 구이의 제맛을 느낄 수 <br />있는 기능입니다.</p>
-                                    </div>
-                                </div>
-                                <div class="collec-ct03 cct">
-                                    <div class="img-overflow3" data-type="content" data-speed="5">
-                                        <div class="img">
-                                            <div class="img-overflow parallexImg12" data-type="background" data-speed="15">
-                                            </div>
-                                        </div>
-                                        <p class="subj wow fadeInUp" data-wow-delay="0.5s">식품건조</p>
-                                        <p class="ct wow fadeInUp" data-wow-delay="0.5s">식품의 수분을 제거하여 오래 저장을 할 수 <br />있습니다.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="oven_info">
-                            <div class="ct_width">
-                                <p class="sub-title">멀티 클린</p>
-                                <p class="title2">멀티 클린 기능</p>
-                                <p class="title-ct">다양한 청소 기능으로 손이 닿지않는 조리실 깊숙한 곳까지 <br />깨끗하고 편리하게 청소하세요.</p>
-                            </div>
-                            <div class="oven-image mt60">
-                                <img src="/lg5-common/images/OBJ/detail/img-oven-info04.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="lastwashers">
-                            <div class="ct_width type02">
-                                <p class="sub-title">요리부터 청소까지 터치로 OK</p>
-                                <p class="title2">직관적인 디스플레이와 <br />팝업다이얼</p>
-                                <p class="ct">보기쉬운 한글 메뉴와 팝업 다이얼로 더 쉽고 편리하게 조작하세요.</p>
-                            </div>
-                            <div class="washers-image2">
-                                <img src="/lg5-common/images/OBJ/detail/img-oven-info03.jpg" width="1300" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collec_gallery oven" id="co_gallery">
-                        <div class="collc_info03 oven_gallery_bg">
-                            <p class="title">Gallery</p>
-                        </div>
-                        <div class="collc_gallery_div">
-                            <ul>
-                                <li><img src="/lg5-common/images/OBJ/detail/img-oven-gallery01.jpg" alt="" /></li>
-                                <li><img src="/lg5-common/images/OBJ/detail/img-oven-gallery02.jpg" alt="" /></li>
-                            </ul>
-                        </div>
-                        <div class="collc_gallery2">
-                            <img src="/lg5-common/images/OBJ/detail/img-oven-gallery03.jpg" />
-                        </div>
-                    </div>
-                    <div class="lg_Technology">
-                        <strong class="st-title">LG만의 기술력과 편의기능</strong>
-                        <div class="tech-bx">
-                            <ul>
-                                <li>
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-lgoven-smart-01.jpg" alt="" /></p>
-                                    <p class="ct">레시피 검색으로 쉽고 빠른 조리</p>
-                                </li>
-                                <li>
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-lgoven-smart-02.jpg" alt="" /></p>
-                                    <p class="ct">광파오븐 앱을 통해 거실에서 TV를 <br />시청하며 여유롭게 오븐 모니터링</p>
-                                </li>
-                                <li>
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail/images-detail-lgoven-smart-03.jpg" alt="" /></p>
-                                    <p class="ct">오븐 사용 중 종료, 조리 조치 사항이 <br />발생할 경우 스마트 폰으로 메시지를 발송</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tech-bg"></div>
-                    </div>
-                    <div class="other-link">
-                        <a href="/lg-objet-collection?objet-cont2" class="btn border" target="_blank">제품 보러가기 </a>
-                    </div>
-                    <div id="prd-other">
-                        <div class="prd-other-title">
-                            <strong class="st-title">다른 제품도 둘러보세요</strong>
-                            <div class="btn-other">
-                                <button type="button" class="btn-type01" onClick="location.href='/lg-objet-collection?objet-cont2'"><span>자세히 알아보기</span></button>
-                            </div>
-                        </div>
-                        <div class="scroll-prd swiper-container2">
-                            <div class="scroll-area swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_refrigerator">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Refrigerator</p>
-                                        <p class="subj2">냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_refrigerator2">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Kimchi Refrigerator</p>
-                                        <p class="subj2">김치냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_convertible">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Convertible Refrigerator</p>
-                                        <p class="subj2">컨버터블 냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_washtower">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-wr-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-wr-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-wr-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Wash Tower</p>
-                                        <p class="subj2">워시타워</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_styler">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-styler-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-styler-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-styler-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Styler</p>
-                                        <p class="subj2">스타일러</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_waterpurifier">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-water-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-water-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-water-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Water Purifier</p>
-                                        <p class="subj2">정수기</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_Dishwashers">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-dish-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-dish-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-dish-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Dishwashers</p>
-                                        <p class="subj2">식기세척기</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-button-next obj-swiper-button-next"></div>
-                            <div class="swiper-button-prev obj-swiper-button-prev"></div>
-                        </div>
+                    </div> 
+                </div> -->
+
+                <!-- -S- BTOCSITE-2153 210705 오브제컬렉션 제품 상세 아이프레임 수정 -->
+                <div class="iframe-wrap">
+                    <div class="iframe-area">
+                        <iframe id="pdpIframeContent" src="/microwaves-and-ovens/ml32ew1?dpType=overViewNoSpec" class="pdp-wrap" scrolling="yes" frameborder="0" style="width:100%; height:100%;">
+                        </iframe>
                     </div>
                 </div>
-                <div id="collection_simul">
-                    <div class="collect-bt">
-                        <p class="exp">Experience</p>
-                        <p class="txt">나만의 공간을<br />직접 만들어보세요.</p>
-                        <a href="/lg-objet-collection/simulator" class="btn border w">체험하기</a>
-                    </div>
-                    <div id="cTVideo" class="vidio-v">
-                        <video autoplay loop muted>
-                          <source src="/lg5-common/images/OBJ/detail/video/simul/simulator-bg.mp4" type="video/mp4">
-                          Your browser does not support HTML5 video.
-                        </video>
-                    </div>
-                </div>
-            </div>
-            <div class="objet_detail oven only_mobile">
-                <div id="collection_divM">
-                    <div class="collect_tab">
-                        <ul>
-                            <li><button type="button" class="collection_divM"><span class="active">Overview</span></button></li>
-                            <li><button type="button" class="co_designM"><span>Design</span></button></li>
-                            <li><button type="button" class="co_functionM"><span>Function</span></button></li>
-                            <li><button type="button" class="co_galleryM"><span>Gallery</span></button></li>
-                        </ul>
-                        <div class="c_tab_bg"></div>
-                    </div>
-                    <div class="refrigerator_detail detail tab_ct active" id="co_overviewM">
-                        <div class="title">
-                            <p class="subject">Oven</p>
-                            <p class="subject2">광파오븐</p>
-                            <p class="ct">처음 만나는 공간인테리어 가전 <br />LG 오브제컬렉션 광파오븐</p>
-                            <p class="noti">사용된 모든 이미지는 이해를 돕기 위한 <br />연출된 이미지로 실제와 다를 수 있습니다.</p>
-                        </div>
-                        <div class="ref-width oven">
-                            <div class="ref-img "><img src="/lg5-common/images/OBJ/detail_m/img-oven-big.png" alt="" id="refImgM" /></div>
-                        </div>
-                    </div>
-                    <div class="ref-design oven tab_ct" id="co_designM">
-                        <div class="collc_info03">
-                            <p class="title">Design</p>
-                        </div>
-                        <div class="collec_info04 conv washer">
-                            <div class="ct_width scr-ev">
-                                <div class="co_txStyle03">고운 안개를 닮아<br />부드러운 감성</div>
-                            </div>
-                            <div class="fenix-bx">
-                                <p>Mist Glass <br />Material</p>
-                                <div class="img-fenix">
-                                </div>
-                                <div class="fenix-list">
-                                    <div class="fenix-bo washers oven">
-                                        <div class="img-overflow2">
-                                            <div class="img">
-                                                <img src="/lg5-common/images/OBJ/detail_m/images-detail-material-palette-nature-beige.png" alt="" />
-                                            </div>
-                                            <p class="material-name">Mist Beige</p>
-                                            <p class="name">미스트 베이지</p>
-                                            <p class="ct">공간에 은은하게 어우<br />러지는 미스트 베이지 <br />컬러</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btn-fenix">
-                                <button type="button" onClick="location.href='/lg-objet-collection/material'"><span>자세히 알아보기</span></button>
-                            </div>
-                        </div>
-                        <div class="conv_info05 oven">
-                            <ul>
-                                <li class="Cstyle01">
-                                    <div class="co-style">
-                                        <p class="style-type">Interior Style</p>
-                                        <p class="name">가전으로 공간을 <br />아름답게</p>
-                                        <p class="ct">미스트 베이지, 실버, 그린 세가지 컬러의 모던하고 <br />심플한 디자인으로 주방 인테리어를 <br />조화롭게 연출해 보세요.</p>
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-style01.jpg" alt="" /></p>
-                                    </div>
-                                </li>
-                                <li class="Cstyle02">
-                                    <div class="co-style">
-                                        <p class="name">색깔있게 <br />또, 감각적으로</p>
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-style02.jpg" alt="" /></p>
-                                    </div>
-                                </li>
-                                <li class="Cstyle03">
-                                    <div class="co-style">
-                                        <p class="name">인테리어를 <br />완성하다</p>
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-style03.jpg" alt="" /></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="ref-function tab_ct" id="co_functionM">
-                        <div class="collc_info03 oven">
-                            <p class="title">Function</p>
-                        </div>
-                        <div class="washers_info oven">
-                            <div class="ct_width type02">
-                                <p class="sub-title">인버터로 시간/전기료 줄이고</p>
-                                <p class="title2">더 적은 에너지로 <br />더 맛있는 조리</p>
-                                <p class="oven-q">스마트 인버터란?</p>
-                                <p class="oven-a">마그네트론의 출력을 효과적으로 <br />조절하여 균일한 조리/해동은 기본, <br />에너지를 절약해주는 기술</p>
-                            </div>
-                        </div>
-                        <div class="collc_info08">
-                            <div class="ct_width ovenarea01">
-                                <p class="title">광파오븐<br />1대로<br />다양하게</p>
-                                <div class="collec-ct01 cct rightcct ovenimg">
-                                    <div class="img-overflow">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-funtion01.png" alt="" />
-                                        </div>
-                                    </div>
-                                    <p class="subj">오븐</p>
-                                    <p class="ct">광파가열을 채용한 광파오븐으로 맛<br />있는 오븐치킨 요리가 가능합니다.</p>
-                                </div>
-                                <div class="collec-ct02 cct ovenimg">
-                                    <div class="img-overflow">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-function02.png" alt="" />
-                                        </div>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">전기그릴</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">노릇노릇 고르게 굽는 구이의 제맛<br />을 느낄 수 있는 기능입니다.</p>
-                                </div>
-                                <div class="collec-ct03 cct rightcct ovenimg">
-                                    <div class="img-overflow">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-function03.png" alt="" />
-                                        </div>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">식품건조</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">식품의 수분을 제거하여 오래 저장<br />을 할 수 있습니다.</p>
-                                </div>
-                                <div class="collec-ct04 cct ovenimg">
-                                    <div class="img-overflow">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-function05.png" alt="" /></div>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">웰빙 발효기능</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">미세한 온도제어로 빵 발효, 요구르<br />트, 식혜까지 다양한 발효요리가 가<br />능합니다.</p>
-                                </div>
-                                <div class="collec-ct05 cct rightcct ovenimg">
-                                    <div class="img-overflow">
-                                        <div class="img"><img src="/lg5-common/images/OBJ/detail_m/img-oven-function06.png" alt="" /></div>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">건강 튀김(에어프라이어)</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">적은 기름으로 열풍 조리하여 바삭<br />바삭 맛있는 튀김요리가 가능합니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collc_info08">
-                            <div class="ct_width ct_h01">
-                                <p class="title">스마트 <br />인버터 <br />시스템</p>
-                                <div class="collec-ct01 cct rightcct">
-                                    <div class="img-overflow">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-oven-function-01.png" alt="" /></p>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">오븐</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">광파가열을 채용한 광파오븐으로 맛있는<br />오븐치킨 요리가 가능합니다.</p>
-                                </div>
-                                <div class="collec-ct02 cct wow">
-                                    <div class="img-overflow">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-rf-function-hidden-button.png" alt="" /></p>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">전기그릴</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">노릇노릇 고르게 굽는 구이의 제맛을 느낄 수 있는 기능입니다.</p>
-                                </div>
-                                <div class="collec-ct03 cct rightcct">
-                                    <div class="img-overflow">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-rf-function-hidden-space.png" alt="" /></p>
-                                    </div>
-                                    <p class="subj wow fadeInUp" data-wow-delay="0.5s">식품건조</p>
-                                    <p class="ct wow fadeInUp" data-wow-delay="0.5s">식품의 수분을 제거하여 오래 저장을 할 수 있습니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="washers_info washer-new-height">
-                            <div class="ct_width">
-                                <p class="sub-title">광파듀얼히터로 맛과 영양 살리고</p>
-                                <p class="title2">더 강력해진 출력 <br />광파듀얼히터</p>
-                                <p class="oven-q">내부</p>
-                                <p class="oven-a">빠른 발열 속도와 강한 열 집중, <br />멀티 광파듀얼히터로 더 빠르고 맛있게</p>
-                            </div>
-                            <div class="washers-image">
-                                <img src="/lg5-common/images/OBJ/detail_m/img-oven-info02.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="washers_info pdt80" style="height: auto;">
-                            <div class="ct_width type03" style="top: 0px;">
-                                <p class="sub-title">요리부터 청소까지 터치로 OK</p>
-                                <p class="title2">직관적인 디스플레이와 팝업다이얼</p>
-                                <p class="ct">보기쉬운 한글 메뉴와 팝업 다이얼로 더 쉽고 편리하게 조작하세요.</p>
-                            </div>
-                            <div class="washers-image mt50">
-                                <img src="/lg5-common/images/OBJ/detail_m/img-oven-info03.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="oven_info">
-                            <div class="ct_width">
-                                <p class="sub-title">멀티 클린</p>
-                                <p class="title2">멀티 클린 기능</p>
-                                <p class="title-ct">다양한 청소 기능으로 손이 닿지않는 조리실 깊숙한 곳까지 <br />깨끗하고 편리하게 청소하세요.</p>
-                            </div>
-                            <div class="oven-image mt40">
-                                <img src="/lg5-common/images/OBJ/detail_m/img-noven-info-04.png" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collec_gallery oven" id="co_galleryM">
-                        <div class="collc_info03">
-                            <p class="title">Gallery</p>
-                        </div>
-                        <div class="collc_gallery_div">
-                            <ul>
-                                <li><img src="/lg5-common/images/OBJ/detail_m/img-oven-gallery01.jpg" alt="" /></li>
-                                <li><img src="/lg5-common/images/OBJ/detail_m/img-oven-gallery02.jpg" alt="" /></li>
-                            </ul>
-                        </div>
-                        <div class="collc_gallery2">
-                            <img src="/lg5-common/images/OBJ/detail_m/bg-oven-gallery02.png" />
-                        </div>
-                    </div>
-                    <div class="lg_Technology">
-                        <strong class="st-title">LG만의 기술력과 편의기능</strong>
-                        <div class="tech-bx swiper-container">
-                            <ul class="swiper-wrapper">
-                                <li class="swiper-slide">
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-oven-smart-01.jpg" alt="" /></p>
-                                    <p class="ct">레시피 검색으로 쉽고 빠른 조리</p>
-                                </li>
-                                <li class="swiper-slide">
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-oven-smart-02.jpg" alt="" /></p>
-                                    <p class="ct">광파오븐 앱을 통해 거실에서 TV를 <br />시청하며 여유롭게 오븐 모니터링</p>
-                                </li>
-                                <li class="swiper-slide">
-                                    <p class="img"><img src="/lg5-common/images/OBJ/detail_m/images-detail-oven-smart-03.jpg" alt="" /></p>
-                                    <p class="ct">오븐 사용 중 종료, 조리 조치 사항이 <br />발생할 경우 스마트 폰으로 메시지를 발송</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tech-bg"></div>
-                    </div>
-                    <div class="other-link">
-                        <a href="/lg-objet-collection?objet-cont2" class="btn border" target="_blank">제품 보러가기 </a>
-                    </div>
-                    <div id="prd-otherM">
-                        <div class="prd-other-title">
-                            <strong class="st-title">다른 제품도 둘러보세요</strong>
-                            <div class="btn-other">
-                                <button type="button" class="btn-type01" onClick="location.href='/lg-objet-collection?objet-cont2'"><span>자세히 알아보기</span></button>
-                            </div>
-                        </div>
-                        <div class="scroll-prd swiper-container2">
-                            <div class="scroll-area swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_refrigerator">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Refrigerator</p>
-                                        <p class="subj2">냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_refrigerator2">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-kim-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Kimchi Refrigerator</p>
-                                        <p class="subj2">김치냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_convertible">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-rf-con-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Convertible Refrigerator</p>
-                                        <p class="subj2">컨버터블 냉장고</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_washtower">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-wr-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-wr-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-wr-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Wash Tower</p>
-                                        <p class="subj2">워시타워</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_styler">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-styler-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-styler-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-styler-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Styler</p>
-                                        <p class="subj2">스타일러</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_waterpurifier">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-water-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-water-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-water-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Water Purifier</p>
-                                        <p class="subj2">정수기</p>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="/lg-objet-collection/collection_Dishwashers">
-                                        <p class="img"><img src="/lg5-common/images/OBJ/detail/images-co-detail-related-dish-normal.png" onMouseOver="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-dish-hover.png'" onMouseOut="this.src='/lg5-common/images/OBJ/detail/images-co-detail-related-dish-normal.png'"
-                                                alt="" /></p>
-                                        <p class="subj">Dishwashers</p>
-                                        <p class="subj2">식기세척기</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="collection_simulM">
-                    <div class="collect-bt">
-                        <p class="exp">Experience</p>
-                        <p class="txt">나만의 공간을<br />직접 만들어보세요.</p>
-                        <a href="/lg-objet-collection/simulator" class="btn border w">체험하기</a>
-                    </div>
-                </div>
+
+                <!-- <script>
+
+                    (function() {
+                        if(!parent.document.location.href.match('/lg-objet-collection')) $('.banner-wrap_obj').hide();
+                    })();
+                    
+                </script> -->
+                <!-- -E- BTOCSITE-2153 0707 마크업 원복 -->
+
+                <!-- -E- //BTOCSITE-2153 210705 오브제컬렉션 제품 상세 아이프레임 수정 -->
+                    
+                <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
+
             </div>
         </div>
         @@include('./common/footer.html')
@@ -682,8 +96,6 @@
         @@include('./common/partials/KRP0004.html')
         <!-- // component / Scroll to the top -->
     </div>
-
-
 
 
     <script type="text/javascript">
@@ -756,6 +168,7 @@
         });
         //]]>
     </script>
+
 </body>
 
 </html>
