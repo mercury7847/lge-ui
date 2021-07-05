@@ -387,6 +387,11 @@
                                         font-size: 16px;
                                         align-items: center;
                                         margin-bottom: 20px;
+                                        &.disabled {
+                                            .color-text {
+                                                color:$color-gray-2
+                                            }
+                                        }
                                         @include mobile {
                                             margin-bottom: 10px;
                                         }
