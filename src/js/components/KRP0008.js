@@ -1364,11 +1364,14 @@
 
                     // console.log("self.sib    lingCurrentModel", self.siblingCurrentModel)
                     if( $colorWrap.length ) {
+                        var $colorHead = $colorWrap.find('.sibling-colorHead');
                         var currentSiblingCode = $colorWrap.find('.chk-wrap-colorchip').has('input:checked').attr('title');
                         if( $colorWrap.find('.chk-wrap-colorchip.disabled input:radio:checked').length) {
-                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode + ' (선택불가)');
+                            $colorHead.addClass('disabled')
+                            $colorHead.find('.color-text span').html(currentSiblingCode + ' (선택불가)');
                         } else {
-                            $colorWrap.find('.sibling-colorHead .color-text span').html(currentSiblingCode);
+                            $colorHead.removeClass('disabled')
+                            $colorHead.find('.color-text span').html(currentSiblingCode);
                         }
 
                     }
