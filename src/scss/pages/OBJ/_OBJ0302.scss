@@ -1966,8 +1966,10 @@ h2.title {
 /* BTOCSITE-1582 */
 #quick_buy {
     position:relative;
+    border-top: 1px solid #dddddd;
     display:none;
 
+    /*
     &:before {
         position: absolute;
         content: '';
@@ -1981,5 +1983,10 @@ h2.title {
             right: 15px;
         }
     }
+    */
+}
+
+.simul_step.simul_step3 {
+    border-top: 1px solid #dddddd;
 }
 /* //BTOCSITE-1582 */
