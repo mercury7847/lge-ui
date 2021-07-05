@@ -1899,7 +1899,7 @@
                 {
                     defaultCode: "X320AA",
                     modelCode: "X320MMS",
-                    door1: "B320TT-MMT",
+                    door1: "B320TT-SMT",
                     door2: "",
                     door3: "",
                     door4: "",
