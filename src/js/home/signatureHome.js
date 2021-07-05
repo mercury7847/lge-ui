@@ -8,7 +8,7 @@ $(function() {
         }
     });
 
-    vcui.require(['ui/carousel','ui/lazyLoaderSwitch','libs/jquery.transit.min'], function () {     
+    vcui.require(['ui/carousel','ui/lazyLoaderSwitch','libs/jquery.transit.min'], function () {
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigMain = $('.ui_wide_slider');
         $sigMain.vcCarousel('destroy').vcCarousel({
@@ -18,7 +18,6 @@ $(function() {
             pauseOnHover: false,
             pauseOnFocus: false,
             swipeToSlide: true,
-            
             dots: true,
             dotsSelector: '.ui_wideslider_dots',
             slidesToShow: 1,
@@ -57,7 +56,7 @@ $(function() {
         });
         $('body').vcLazyLoaderSwitch('reload',$sigTheme);
         $('body').vcLazyLoaderSwitch('reload',$sigShowRoom);
-        
+
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigSlideNum = $sigMain.find('.slide-conts');
         var $sigSlideLength = $sigMain.find('.custom-indi-wrap')
@@ -71,9 +70,9 @@ $(function() {
         var $contentWrap = $('.signature-wrap');
         var aniSpeed = vcui.detect.isMobile? 500 : 800;
         var wheelAniInterval = null;
-        var wheelInterval = null;            
+        var wheelInterval = null;
         var canScroll = true;
-        var winHeight = $window.height();            
+        var winHeight = $window.height();
         var currentStep = 0;
         var currentPage = 0;
         var touchSy = 0;
@@ -98,14 +97,14 @@ $(function() {
 
         //$('.signature-hero').children().css({'overflow':'hidden'}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
         //$('.container').css({'overflow':'visible', 'height':'auto'});     //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
-        
+
         $('.next-arr').on('click', 'a', function(e){
             e.preventDefault();
             var step = $(e.currentTarget).data('currentStep');
             if(step) currentStep = step;
             wheelScene(1);
         });
-        
+
 
         $('.next-arr a:eq(0)').focusin(function(e){
             $window.trigger('floatingTop');
@@ -132,26 +131,26 @@ $(function() {
             moveScene(currentPage,currentStep,0);
 
 
-        });     
+        });
 
         // element 애니메이션 스탭
         function moveStep(step){
 
-            if(!canScroll) return;  
+            if(!canScroll) return;
             if(currentStep == step) return;
-            canScroll = false; 
+            canScroll = false;
 
             var arr = wheelArr[step];
-            if(!vcui.isArray(arr)){ 
+            if(!vcui.isArray(arr)){
                 currentStep = step;
                 //console.log(currentStep);
                 canScroll = true;
-                return; 
+                return;
             }
 
             for(var i =0; i<arr.length; i++){
                 var item = arr[i];
-                var $target = $(item.target);  
+                var $target = $(item.target);
 
                 var isDisplay;
                 var obj = $.extend({}, item.transit);
@@ -164,7 +163,7 @@ $(function() {
                 if(isDisplay!==undefined && isDisplay!=='none'){
                     $target.css('display',isDisplay);
                 }
-                
+
                 if(i==0){
                     $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
@@ -173,24 +172,24 @@ $(function() {
                         currentStep = step;
                         canScroll = true;
 
-                    });  
+                    });
                 }else{
                     $target.transit(obj, aniSpeed, function(){
                         if(isDisplay==='none'){
                             $target.css('display',isDisplay);
                         }
-                    });  
-                }                               
+                    });
+                }
             }
         }
 
         // 휠 애니메이션 스탭
         function wheelScene(delta) {
 
-            if(!canScroll) return; 
+            if(!canScroll) return;
             var nextStep = (delta < 0) ? -1 : 1;
             nextStep = nextStep + currentStep;
-            nextStep = Math.max(Math.min(nextStep, stepLens), 0);                   
+            nextStep = Math.max(Math.min(nextStep, stepLens), 0);
             if(currentStep == nextStep) return;
 
             var arr = wheelArr[nextStep];
@@ -201,12 +200,12 @@ $(function() {
                     moveStep(nextStep);
                 }else{
                     moveScene(pageId, nextStep);
-                }                        
+                }
 
             }else{
                 moveScene(arr, nextStep);
             }
-            
+
         }
 
 
@@ -216,15 +215,15 @@ $(function() {
         // 씬으로 이동
         function moveScene(idx, step, speed){
 
-            if(!canScroll) return;  
-            canScroll = false;   
-            $contentWrap.scrollTop(0); 
+            if(!canScroll) return;
+            canScroll = false;
+            $contentWrap.scrollTop(0);
 
-            $('html').addClass('sceneMoving');                    
+            $('html').addClass('sceneMoving');
             if ( speed == undefined ) speed = aniSpeed;
-            var scrollTopData = winHeight * idx;                    
+            var scrollTopData = winHeight * idx;
             //$scenes.removeClass('active').eq(idx).addClass('active'); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
-            
+
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
                 if(! $('html').hasClass('sceneMoving')){
@@ -236,7 +235,7 @@ $(function() {
 
                 $html.stop(true).animate({
                     scrollTop: scrollTopData
-                }, speedTime, 'easeInOutQuart',  function() { 
+                }, speedTime, 'easeInOutQuart',  function() {
                     canScroll = true;
 
 
@@ -250,14 +249,14 @@ $(function() {
                         if(hasTop){
                             $(window).trigger('floatingTopShow');
                             $('.floating-menu.top').removeClass('call-yet');
-                        }                        
+                        }
                     }
 
-                    currentPage = idx;     
-                    moveStep(step);          
+                    currentPage = idx;
+                    moveStep(step);
                     $('html').removeClass('sceneMoving');
                     //$scenes.removeClass('on').eq(idx).addClass('on'); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
-                    
+
                     /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
                     /*
                     $scenes.each(function() {
@@ -266,7 +265,7 @@ $(function() {
                                 $(this).find('video')[0].play();
                             }else {
                                 $(this).find('video')[0].pause();
-                                $(this).find('video')[0].currentTime = 0;							
+                                $(this).find('video')[0].currentTime = 0;
                             }
                         }
                     });
@@ -275,7 +274,7 @@ $(function() {
                 });
             }, 100);
 
-        } 
+        }
 
 
 
@@ -287,8 +286,8 @@ $(function() {
 
             document.addEventListener('wheel', function(e){
 
-                var open = $('#layerSearch').hasClass('open');           
-                if(!open){    
+                var open = $('#layerSearch').hasClass('open');
+                if(!open){
                     var curTime = new Date().getTime();
                     if(typeof prevTime !== 'undefined'){
                         var timeDiff = curTime-prevTime;
@@ -303,10 +302,10 @@ $(function() {
                                     wheelScene(e.deltaY);
                                 }
                             }
-                        }                    
-                    }            
-                    prevTime = curTime; 
-                }               
+                        }
+                    }
+                    prevTime = curTime;
+                }
 
             });
         }
@@ -315,7 +314,7 @@ $(function() {
         lgkorUI.showAppBottomMenuOver(true);
         lgkorUI.setEnableAppScrollBottomMenu(false);
 
-        
+
         $('.container').on('touchstart touchend touchcancel', function(e) {
 
             var data = _getEventPoint(e);
@@ -347,14 +346,14 @@ $(function() {
                     } else if (touchSy - data.y < -80) {
                         wheelScene(-1);
                     }
-                }    
-                
+                }
+
             }
         });
 
-        
+
         function _stringToObj(str){
-            
+
             var regex = /(.*)\:(.*)/;
             var arr = str.replace(/ /gi, "").split(',');
             var obj = {};
@@ -385,7 +384,7 @@ $(function() {
                     return i;
                 }
             }
-            return 0;                
+            return 0;
         }
 
 
@@ -427,7 +426,7 @@ $(function() {
             var $target   = $(video||this),
                 $wrap     = $target.closest('.img'),
                 // $image    = $wrap.find('img'),
-                // loaded    = $target.data('loaded'),                    
+                // loaded    = $target.data('loaded'),
                 videoAttr = $target.data('options') || 'autoplay loop playsinline muted',
                 $sources  = $target.find('source'),
                 oVideo;
@@ -439,7 +438,7 @@ $(function() {
 
             // 비디오 요소 생성.
             var createVideoObject = function() {
-                
+
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                 if ( !extArr.length ) return false;
 
@@ -454,7 +453,7 @@ $(function() {
                         $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
                     }
                 }
-                    
+
                 if ( $target.data('alt') != null ) {
                     $('<p>').text($target.data('alt')).appendTo($video);
                 }
@@ -501,39 +500,39 @@ $(function() {
             wheelAniInterval = null;
             wheelInterval = null;
             $('html, body').stop(true);
-            $('html').removeClass('sceneMoving'); 
-            canScroll = true;    
+            $('html').removeClass('sceneMoving');
+            canScroll = true;
             winWidth = $window.width();
             winHeight = $window.height();
 
             posArr = [];
             wheelArr = [];
-                        
+
             var $prevTarget = $('.container').prevAll(':not(#layerSearch):visible:first');
-            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height(); 
+            var prevAllHeight = $prevTarget.offset().top + $prevTarget.height();
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
 
             /*
-            $scenes.each(function(i) {                        
+            $scenes.each(function(i) {
                 var arr = [];
                 $(this).find('*').each(function(j){
                     var attributeIndex = 0;
-                    var attributesLength = this.attributes.length;   
+                    var attributesLength = this.attributes.length;
                     var cssVal = null;
 
                     for (; attributeIndex < attributesLength; attributeIndex++) {
                         var attr = this.attributes[attributeIndex];
                         var match = attr.name.match(regex);
-                        if(match === null) continue;                                
+                        if(match === null) continue;
                         if(attributeIndex==1) cssVal = _stringToObj(attr.value);
                         arr.push({
                             sort : match[1],
                             target : this,
                             transit : _stringToObj(attr.value),
-                            pageId : i                                 
-                        });                                
+                            pageId : i
+                        });
                     }
                     if(cssVal) $(this).css(cssVal);
 
@@ -546,9 +545,9 @@ $(function() {
                 if(arr.length>0){
                     var fArr = [arr[0]];
                     for(var k=0; k<arr.length; k++){
-                        var obj1 = arr[k];  
-                        var obj2 = arr[k+1];  
-                        if(obj2){                            
+                        var obj1 = arr[k];
+                        var obj2 = arr[k+1];
+                        if(obj2){
                             if( obj1.sort !== obj2.sort){
                                 wheelArr.push(fArr);
                                 fArr = [obj2];
@@ -561,13 +560,13 @@ $(function() {
                     }
                 }else{
                     wheelArr.push(i);
-                }   
-                
+                }
+
 
                 if(i==0){
-                    itemHeight = winHeight-prevAllHeight;   
+                    itemHeight = winHeight-prevAllHeight;
                 }else{
-                    itemHeight = winHeight;    
+                    itemHeight = winHeight;
                 }
                 allHeight += itemHeight;
 
@@ -579,13 +578,13 @@ $(function() {
                 $(this).find('.img > .video').each(function() {
                     updateVideo(this);
                 });
-                            
-            });  
+
+            });
             */
 
             posArr.push(10000);
 
-            stepLens = wheelArr.length-1;                    
+            stepLens = wheelArr.length-1;
             //$contentWrap.css({'overflow':'auto','height':winHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
             //$('.contents').css({'overflow':'hidden', 'height':totalHeight}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
 
@@ -599,36 +598,46 @@ $(function() {
                 currentStep = _findStep(currentPage);
                 setBeforeCss(currentStep);
                 moveScene(currentPage,currentStep,0);
-            }   
-            
-        }    
-        
+            }
+
+        }
+
+        // 탭이동 이벤트 처리
+        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){
+            //오류 처리
+            $('html,body').scrollTop(pageLens*winHeight);
+            $contentWrap.scrollTop(0);
+        });
+
         $(document).on('click', 'a', function(e){
-            
+
             var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
 
             if(href == '#' || href == '#n'){
                 e.preventDefault();
             }else{
-                if (href && /^(#|\.)\w+/.test(href)) {    
-                    
+                if (href && /^(#|\.)\w+/.test(href)) {
+
                     e.preventDefault();
 
-                    // var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
-                    // if($compareTarget[0] != e.currentTarget) {
-                    //     if(currentPage !== pageLens){
-                    //         moveScene(pageLens,stepLens,0);
-                    //     }                        
-                    //     $('.signature-tabs .ui_tab').vcTab('selectByName', href);
-                    //     if(href == '#content'){
-                    //         $('.signature-tabs .ui_tab').find('a').eq(0).focus();
-                    //     }
-                    // }
+                    var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
+                    if($compareTarget[0] != e.currentTarget) {
+                        if(currentPage !== pageLens){
+                            moveScene(pageLens,stepLens,0);
+                        }
+                        $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                        if(href == '#content'){
+                            $('.signature-tabs .ui_tab').find('a').eq(0).focus();
+                        }
+                    }
                 }
-            }      
+            }
         });
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        var $stkTab = $contentWrap.find('.signature-tabs');
+        var $stkTabOffsetTop = $stkTab.offset().top;
+
         $window.scroll(function(){
             if($window.scrollTop() >= $stkTabOffsetTop) {
                 $contentWrap.addClass('active on');
@@ -641,26 +650,16 @@ $(function() {
         $sigTab.on('click', function(){
             $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
         })
-
-        // 탭이동 이벤트 처리
-        var $stkTab = $contentWrap.find('.signature-tabs');
-        var $stkTabOffsetTop = $stkTab.offset().top;
-        $('.signature-tabs .ui_tab').on('tabchange', function(e, data){   
-            //오류 처리
-            // $('html,body').scrollTop(pageLens*winHeight);
-            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
-            $contentWrap.scrollTop(0); 
-        });
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         // 접근성 탭 이동시 화면처리
         $(document).on('focusin', function(e){
 
             /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-            // if($.contains($('.signature-wrap')[0], e.target)){
-            //     currentPage = pageLens;
-            //     currentStep = stepLens;
-            // }
+            if($.contains($('.signature-wrap')[0], e.target)){
+                currentPage = pageLens;
+                currentStep = stepLens;
+            }
             // else if($.contains($('.signature-hero')[0], e.target)){
             //     // currentPage = 0;
             //     // currentStep = 0;
@@ -684,7 +683,7 @@ $(function() {
             e.preventDefault();
 
             var $span = $(this).find('span').eq(0);
-            var toggleTxt = $(this).data('toggleTxt');            
+            var toggleTxt = $(this).data('toggleTxt');
             var txt = $span.text();
             $(this).data('toggleTxt', txt);
 
@@ -724,7 +723,7 @@ $(function() {
 
         });
 
-        
+
         window.resizeScene = render;
 
     });
