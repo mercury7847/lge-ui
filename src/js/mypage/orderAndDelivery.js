@@ -1716,12 +1716,13 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
         arsAgree = "N";
+        /* 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
             
-            /* BTOCSITE-98 */
+            // BTOCSITE-98 add
             if (vcui.detect.isIOS){
                 $('.arsAgreeRequestCheck').show();
                 CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
@@ -1730,9 +1731,39 @@
                 arsAgree = result.data.success;
                 $('.arsAgreeRequestCheck').hide();
             }
-            /* //BTOCSITE-98 */
+            // //BTOCSITE-98 add
             
-        }, ajaxMethod, null, true);
+        }, ajaxMethod, null, true); */
+
+        $.ajax({
+            method : ajaxMethod,
+            url : ARS_AGREE_URL,
+            data : sendata,
+            success : function(result){
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+                alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
+                // BTOCSITE-98 add
+                if (vcui.detect.isIOS){
+                    $('.arsAgreeRequestCheck').show();
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                } else {
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                    arsAgree = result.data.success;
+                    $('.arsAgreeRequestCheck').hide();
+                }
+                // //BTOCSITE-98 add
+            },
+            error : function(){
+
+            },
+            complete : function(){
+                lgkorUI.hideLoading();
+            }
+        });
+        
+
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     function arsAgreeConfirmCheck(){
