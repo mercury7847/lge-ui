@@ -1755,10 +1755,11 @@
                 }
                 // //BTOCSITE-98 add
             },
-            error : function(){
-
+            error : function(error){
+                alert('error');
             },
             complete : function(){
+                alert('complete');
                 lgkorUI.hideLoading();
             }
         });
