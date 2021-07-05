@@ -2430,15 +2430,23 @@
                         })
                     }
                 });
-            
-                var currentModelId = checkedOptionArray.map(function(model){
-                    return model.modelId
-                });    
-                checkedOptionArray = modelsData.filter(function(siblingModel){
-                    return currentModelId.indexOf(siblingModel.modelId) > -1
-                }).filter(function(model){
-                    return model.siblingCode == currentSiblingCode;
-                })
+                
+                if( checkedOptionArray.length > 0 ){
+                    var currentModelId = checkedOptionArray.map(function(model){
+                        return model.modelId
+                    });    
+                    checkedOptionArray = modelsData.filter(function(siblingModel){
+                        return currentModelId.indexOf(siblingModel.modelId) > -1
+                    }).filter(function(model){
+                        return model.siblingCode == currentSiblingCode;
+                    })
+                } else {
+                    checkedOptionArray = modelsData.filter(function(model){
+                        return model.siblingCode == currentSiblingCode;
+                    })
+                    //console.log("checkedOptionArray", checkedOptionArray)
+                }
+                
                 if( checkedOptionArray.length > 0) {
                     $target.closest('[role="radio"]').removeClass('disabled')
 
