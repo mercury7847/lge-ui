@@ -4,7 +4,7 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip_210622.png');
+		background-image:url('/lg5-common/images/colorchip/colorchip_210705.png');
 		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 	}
@@ -2757,6 +2757,21 @@
 	&.gray_white {
 		& input + label:before {
 			background-position:-48px -192px;
+		}
+	}
+	&.gray_black {
+		& input + label:before {
+			background-position:-96px -192px;
+		}
+	}
+	&.white_gray {
+		& input + label:before {
+			background-position:-48px -192px;
+		}
+	}
+	&.manhattan_manhattan {
+		& input + label:before {
+			background-position:-120px -192px;
 		}
 	}
 	&.quartz_silver {
