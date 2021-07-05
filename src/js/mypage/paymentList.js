@@ -87,45 +87,52 @@
         var sendata = {
             paymentID: paymentID,
             period: period
-        }
-        lgkorUI.requestAjaxData(PAYMENT_LIST_DATA, sendata, function(result){
-            if(lgkorUI.stringToBool(result.data.success)){
-                //console.log("데이타값을 불러와서 success로 떨어져서 데이터값이");
-                $('.section-wrap .sects').find('.tb-scroll').remove();
-                $('.section-wrap .sects').find('.bullet-list').remove();
-                $('.section-wrap').find('.no-data').remove();
-
-                if(result.data.paymentList && result.data.paymentList.length > 0){
-                    //console.log("데이타값이 있으면");
-                    $('.section-wrap .sects').show();
-                    var list = vcui.template(listTableTemplate, result.data);
-
-                    $('.section-wrap .sects').append(list);
-                    var payOpenbtn = $('.payMentBtn');
-                    payOpenbtn.each(function(index){
-                        $(this).on('click', function(e){
-                            //console.log(index);
-
-                            console.log("this %o data %o ",$(this),$(this).data())//개발에 파라미터 던지는 확인
-
-             
-                            loadPaymentDetail($(this).data());
+        }        
+        //210705 추가 요청사항 : paymentID가 있을때만 노출
+        if(sendata.paymentID) {
+            lgkorUI.requestAjaxData(PAYMENT_LIST_DATA, sendata, function(result){
+                if(lgkorUI.stringToBool(result.data.success)){
+                    //console.log("데이타값을 불러와서 success로 떨어져서 데이터값이");
+                    $('.section-wrap .sects').find('.tb-scroll').remove();
+                    $('.section-wrap .sects').find('.bullet-list').remove();
+                    $('.section-wrap').find('.no-data').remove();
+    
+                    if(result.data.paymentList && result.data.paymentList.length > 0){
+                        //console.log("데이타값이 있으면");
+                        $('.section-wrap .sects').show();
+                        var list = vcui.template(listTableTemplate, result.data);
+    
+                        $('.section-wrap .sects').append(list);
+                        var payOpenbtn = $('.payMentBtn');
+                        payOpenbtn.each(function(index){
+                            $(this).on('click', function(e){
+                                //console.log(index);
+    
+                                console.log("this %o data %o ",$(this),$(this).data())//개발에 파라미터 던지는 확인
+    
+                 
+                                loadPaymentDetail($(this).data());
+                            });
                         });
-                    });
-
     
-                    $('.sort-select-wrap select').empty();
-    
-                    var options = vcui.template(periodOptionTemplate, result.data);
-                    $('.sort-select-wrap select').append(options).vcSelectbox('update');
-                } else{
-                    //console.log("데이터값이 없으면");
-                    $('.section-wrap .sects').hide();
-                    $('.section-wrap').append('<div class="no-data"><p>검색된 결과가 없습니다.</p></div>');
+        
+                        $('.sort-select-wrap select').empty();
+        
+                        var options = vcui.template(periodOptionTemplate, result.data);
+                        $('.sort-select-wrap select').append(options).vcSelectbox('update');
+                    } else{
+                        //console.log("데이터값이 없으면");
+                        $('.section-wrap .sects').hide();
+                        $('.section-wrap').append('<div class="no-data"><p>검색된 결과가 없습니다.</p></div>');
+                    }
                 }
-            }
+                lgkorUI.hideLoading();
+            });
+        } else {
+            //console.log("paymentId 없음");
             lgkorUI.hideLoading();
-        });
+        }
+        // 210705 추가 요청사항
     }
 
     function loadPaymentDetail( param ){
