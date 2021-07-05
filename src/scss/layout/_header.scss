@@ -1364,6 +1364,25 @@
             padding-top: 60px;
             background-color: #fff;
         }
+
+        //210701 앱 알람아이콘 N 뱃지 추가
+        .count{
+            position: absolute;
+            top: 2px;
+            left: 18px;
+            display: block;
+            min-width: 14px;
+            height: 14px;
+            padding: 2px 2px;
+            border-radius: 8px;
+            background-color: $color-primary;
+            font-weight: 700;
+            font-size: 10px;
+            line-height: 10px;
+            color: $color-white;
+            text-align: center;
+        }
+        //210701 앱 알람아이콘 N 뱃지 추가
     }
 
     &.active {
@@ -1395,8 +1414,15 @@
                     padding-bottom:60px;
                 }
             }
+            //210701 앱 알람아이콘 N 뱃지 추가
+            .count {
+                display: none;
+            }
+            //210701 앱 알람아이콘 N 뱃지 추가
+
         }
     }
+
 }
 
 .login-mobile {
@@ -1637,8 +1663,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                right: 30px;
-                // right: 60px; 210621 앱 알림함 아이콘 추가에 따른 my-page 아이콘 위치 조정 원복처리 
+                // right: 30px;
+                right: 60px; //210621 앱 알림함 아이콘 추가에 따른 my-page 아이콘 위치 조정 원복처리 
             }
         }
         .KRP0005,
