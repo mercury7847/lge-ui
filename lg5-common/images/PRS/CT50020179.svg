@@ -1,28 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g stroke="#000" stroke-width="1.5" transform="translate(-128 -4155) translate(128 414) translate(0 3741)">
-                            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
-                        </g>
-                        <g>
-                            <g transform="translate(-128 -4155) translate(128 414) translate(0 3741) translate(12 12) translate(8 2)">
-                                <g transform="translate(12 1)">
-                                    <path fill="#000" d="M0 0H11V18H0z"/>
-                                    <rect width="7" height="12" x="2" y="3" fill="#444" stroke="#000" stroke-width="1.5" rx="1.5"/>
-                                </g>
-                                <path fill="#E1D0B6" d="M1 19H12V35H1zM12 19H23V35H12z"/>
-                                <path fill="#5B7D83" d="M1 1H12V18H1z"/>
-                                <path stroke="#000" stroke-width="1.5" d="M22.5.75h-21c-.207 0-.395.084-.53.22-.136.135-.22.323-.22.53v33c0 .207.084.395.22.53.135.136.323.22.53.22h21c.207 0 .395-.084.53-.22.136-.135.22-.323.22-.53v-33c0-.207-.084-.395-.22-.53-.135-.136-.323-.22-.53-.22z"/>
-                                <rect width="24" height="1.5" y="18" fill="#000" rx=".75"/>
-                                <path stroke="#000" stroke-linecap="round" stroke-width="1.5" d="M12 1L12 35"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
+<svg xmlns="http://www.w3.org/2000/svg" id="img_signature_AirConditioner_64" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="Circle_64">
+        <g id="Rectangle" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5px">
+            <rect width="64" height="64" stroke="none" rx="32"/>
+            <rect width="62.5" height="62.5" x=".75" y=".75" rx="31.25"/>
+        </g>
+    </g>
+    <g id="img_signature_AirConditioner_40" transform="translate(12 12)">
+        <g id="ic" transform="translate(11.5 2)">
+            <rect id="Rectangle-2" width="16" height="36" fill="#aaa" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5px" rx="2" transform="translate(0.5)"/>
+            <circle id="Oval" cx="4.5" cy="4.5" r="4.5" class="cls-3" transform="translate(4 3.5)"/>
+            <circle id="Oval-2" cx="1" cy="1" r="1" class="cls-3" transform="translate(7.5 17)"/>
+            <circle id="Oval-3" cx="2" cy="2" r="2" fill="#d1d1d1" transform="translate(6.5 6)"/>
         </g>
     </g>
 </svg>
