@@ -4177,11 +4177,14 @@
                 }
             });
             */
-           $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
                 }
-            });
+            });            
+            
+            console.log('selectedModelData', selectedModelData);
             console.log('purchaseData', purchaseData);
 
 
@@ -4206,8 +4209,13 @@
                     }
                 }
             }
-            //console.log(purchaseData);
-            purchaseFn(purchaseData);
+            console.log(purchaseData);
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                datasend(0, selectedModelData.defaultCode, purchaseData);
+            } else {
+                purchaseFn(purchaseData);
+            }
+            
 
         });
         //툴팁
