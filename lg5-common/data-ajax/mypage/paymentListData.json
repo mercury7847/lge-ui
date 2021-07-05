@@ -1,68 +1,127 @@
 {
-    "ssoCheckUrl": null,
-    "status": "success",
-    "message": null,
-    "data": {
+    "data":
+    {
+        "periodSortSelect": "2",
         "success": "Y",
+        "periodSortList": [
+        {
+            "name": "전체",
+            "value": "ALL"
+        },
+        {
+            "name": "2년차",
+            "value": "2"
+        },
+        {
+            "name": "1년차",
+            "value": "1"
+        }],
+        "description": [
+            "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
+            "고객님의 무상할인 회차는 3, 5, 6 회차 입니다."
+        ],
         "paymentList": [
-            {
-                "turnNumber": "5",
-                "paymentDate": "2020.09.10",
-                "chargePrice": "88,800원",
-                "discountPrice": "0원",
-                "paymentPrice": "88,800원"
-            },
-            {
-                "turnNumber": "4",
-                "paymentDate": "2020.09.10",
-                "chargePrice": "88,800원",
-                "discountPrice": "0원",
-                "paymentPrice": "88,800원"
-            },
-            {
-                "turnNumber": "3",
-                "paymentDate": "2020.09.10",
-                "chargePrice": "88,800원",
-                "discountPrice": "0원",
-                "paymentPrice": "88,800원"
-            },
-            {
-                "turnNumber": "2",
-                "paymentDate": "2020.09.10",
-                "chargePrice": "88,800원",
-                "discountPrice": "10,000원",
-                "paymentPrice": "78,800원"
-            },
-            {
-                "turnNumber": "1",
-                "paymentDate": "2020.09.10",
-                "chargePrice": "88,800원",
-                "discountPrice": "0원",
-                "paymentPrice": "88,800원"
-            }
-        ],
-        "periodSortSelect": "AA",
-        "periodSortList":[
-            {
-                "value": "ALL",
-                "name": "전체"
-            },
-            {
-                "value": "AA",
-                "name": "1년차"
-            },
-            {
-                "value": "BB",
-                "name": "2년차"
-            },
-            {
-                "value": "CC",
-                "name": "3년차"
-            }
-        ],
-        "description":[
-            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다.",
-            "고객님의 무상할인 회차는 3, 5, 6회차 입니다."
-        ]
-    }
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "23",
+            "accountReceivableId": "323382528",
+            "paymentDate": "2019.02.25",
+            "paymentPrice": "0"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "22",
+            "accountReceivableId": "321656995",
+            "paymentDate": "2019.02.07",
+            "paymentPrice": "10,000"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "21",
+            "accountReceivableId": "320973643",
+            "paymentDate": "2018.12.27",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "20",
+            "accountReceivableId": "319635511",
+            "paymentDate": "2018.11.27",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "19",
+            "accountReceivableId": "318390235",
+            "paymentDate": "2018.10.11",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "18",
+            "accountReceivableId": "317096358",
+            "paymentDate": "2018.09.11",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "17",
+            "accountReceivableId": "316078873",
+            "paymentDate": "2018.08.13",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "16",
+            "accountReceivableId": "314138058",
+            "paymentDate": "2018.07.11",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "15",
+            "accountReceivableId": "313413611",
+            "paymentDate": "2018.06.12",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "14",
+            "accountReceivableId": "312549467",
+            "paymentDate": "2018.05.11",
+            "paymentPrice": "16,900"
+        },
+        {
+            "contLineSeq": "11547765",
+            "chargePrice": "16,900",
+            "discountPrice": "0",
+            "turnNumber": "13",
+            "accountReceivableId": "311105301",
+            "paymentDate": "2018.04.11",
+            "paymentPrice": "16,900"
+        }]
+    },
+    "message": null,
+    "ssoCheckUrl": null,
+    "status": "success"
 }
