@@ -802,9 +802,26 @@
             }
         }
         .result-list-wrap {
-            @include mobile {
-                padding-bottom: 21px;
+            // [S] BTOCSITE-2059
+            .btn-area {
+                margin-top: 32px;
+                text-align: center;
+                .btn-link {
+                    &.btn-moreview {
+                        display: inline-block;
+                        padding: 7px 14px;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+                @include mobile {
+                    margin-top: 24px;
+                }
             }
+            // [E] BTOCSITE-2059
         }
     }
     .result-area {
