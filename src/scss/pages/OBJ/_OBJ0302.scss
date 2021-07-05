@@ -1965,6 +1965,21 @@ h2.title {
 
 /* BTOCSITE-1582 */
 #quick_buy {
+    position:relative;
     display:none;
+
+    &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 40px;
+        right: 40px;
+        height: 1px;
+        background: #dddddd;
+        @include mobile {
+            left: 15px;
+            right: 15px;
+        }
+    }
 }
 /* //BTOCSITE-1582 */

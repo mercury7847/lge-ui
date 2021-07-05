@@ -4169,6 +4169,14 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
+            if (completedCheck() == false){
+                let desc = "";
+                let obj = {
+                    title: '모든 컬러 선택 완료 후 <br />구매하시기 바랍니다.'
+                };
+                lgkorUI.alert(desc, obj);
+                return;
+            }
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4362,7 +4370,9 @@
 
         if (completed == "Y") {
             modelSimulator.stepThree();
+            return true;
         } else {
+            return false;
             //alert('선택완료안됨');
         }
     }
@@ -6209,7 +6219,7 @@ function resultModelPrice(price) {
     /* BTOCSITE-1582 */
     var $objContent = $('.model_experience');
     if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-        alert('견적확인결과' + price);
+        //alert('견적확인결과' + price);
         $(".simul_step3 .btn_check_price").trigger('click');
     }
     /* //BTOCSITE-1582 */
