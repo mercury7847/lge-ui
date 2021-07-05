@@ -170,13 +170,13 @@
 	            $(".only_pc .collec_info01 .co_txStyle01").fadeOut();
 	        }
 
-	        if (scrollE >= 300) {
-	            $(".only_pc .ref-img").addClass("scroll");
-	            $(".only_pc .ref-img img").attr("src", $(".ref-img img").attr("src").replace(/img-ref-big\.png$/, 'img-ref.png'));
-	        } else {
-	            $(".only_pc .ref-img").removeClass("scroll");
-	            $(".only_pc .ref-img img").attr("src", $(".ref-img img").attr("src").replace(/img-ref\.png$/, 'img-ref-big.png'));
-	        }
+	        // if (scrollE >= 300) {
+	        //     $(".only_pc .ref-img").addClass("scroll");
+	        //     $(".only_pc .ref-img img").attr("src", $(".ref-img img").attr("src").replace(/img-ref-big\.png$/, 'img-ref.png'));
+	        // } else {
+	        //     $(".only_pc .ref-img").removeClass("scroll");
+	        //     $(".only_pc .ref-img img").attr("src", $(".ref-img img").attr("src").replace(/img-ref\.png$/, 'img-ref-big.png'));
+	        // }
 
 	        var fadeStart = 500,
 	            fadeUntil = 700,
