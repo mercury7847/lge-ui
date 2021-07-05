@@ -441,12 +441,6 @@ header {
             @include mobile {
                 padding-top: 32px;
             }
-            @media screen and (min-width:(1380px + 80px)) {
-                &:before {
-                    right: 40px;
-                    left: 40px;
-                }
-            }
             .tabs {
                 @include mobile {
                     padding: 0 16px;
