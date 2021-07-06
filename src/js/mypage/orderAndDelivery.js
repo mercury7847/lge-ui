@@ -1739,6 +1739,7 @@
             method : ajaxMethod,
             url : ARS_AGREE_URL,
             data : sendata,
+            async : false,
             success : function(result){
                 /*
                 lgkorUI.alert(result.data.alert.desc, {
