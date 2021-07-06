@@ -1710,7 +1710,7 @@
             return;
         }
 
-        //lgkorUI.showLoading();
+        lgkorUI.showLoading();
 
         CTI_REQUEST_KEY = "";
 
@@ -1741,11 +1741,11 @@
             data : sendata,
             async : false,
             success : function(result){
-                /*
+                
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
-                alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
+                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
                     $('.arsAgreeRequestCheck').show();
@@ -1755,7 +1755,7 @@
                     arsAgree = result.data.success;
                     $('.arsAgreeRequestCheck').hide();
                 }
-                */
+                
                 // //BTOCSITE-98 add
             },
             error : function(error){
@@ -1763,16 +1763,11 @@
             },
             complete : function(){
                 //alert('complete');
-                //lgkorUI.hideLoading();
+                lgkorUI.hideLoading();
             }
         });
 
-        lgkorUI.alert('DESCRIPTION', {
-            title: '타이틀값'
-        });
-
-        $('.arsAgreeRequestCheck').show();
-        
+        //$('.arsAgreeRequestCheck').show();
 
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
