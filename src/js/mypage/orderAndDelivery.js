@@ -1747,12 +1747,11 @@
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
-                    $('.arsAgreeRequestCheck').show();
+                    $('.arsAgreeRequestCheck').attr('disabled', false);
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-                    arsAgree = result.data.success;
-                    $('.arsAgreeRequestCheck').hide();
+                    arsAgree = result.data.success;                    
                 }
                 
                 // //BTOCSITE-98 add
@@ -1843,6 +1842,8 @@
 
     function renderPage(){
 
+        alert('orderAndDelivery render');
+
         if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
         else setOrderListContents();
 
@@ -1893,7 +1894,8 @@
 
         /* BTOCSITE-98 add */
         if (vcui.detect.isIOS){
-            $('.arsAgreeRequestCheck').show();
+            $('.arsAgreeRequestCheck').attr('disabled', true).show();
+            $('#iostxt').show();
         }
 
     }
