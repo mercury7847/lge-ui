@@ -1700,7 +1700,7 @@
     }
     //ARS출금동의 신청...
     function setArsAgreeConfirm(){
-        alert('출금동의 신청');
+        //alert('출금동의 신청');
         var chk = paymentConfirmYN();
         if(!chk) return;
 
@@ -1710,7 +1710,7 @@
             return;
         }
 
-        lgkorUI.showLoading();
+        //lgkorUI.showLoading();
 
         CTI_REQUEST_KEY = "";
 
@@ -1740,6 +1740,7 @@
             url : ARS_AGREE_URL,
             data : sendata,
             success : function(result){
+                /*
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
@@ -1753,16 +1754,23 @@
                     arsAgree = result.data.success;
                     $('.arsAgreeRequestCheck').hide();
                 }
+                */
                 // //BTOCSITE-98 add
             },
             error : function(error){
-                alert('error');
+                //alert('error');
             },
             complete : function(){
-                alert('complete');
-                lgkorUI.hideLoading();
+                //alert('complete');
+                //lgkorUI.hideLoading();
             }
         });
+
+        lgkorUI.alert('DESCRIPTION', {
+            title: '타이틀값'
+        });
+
+        $('.arsAgreeRequestCheck').show();
         
 
     }
