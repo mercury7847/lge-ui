@@ -1,10 +1,50 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {packages:["corechart"]});
+	google.charts.setOnLoadCallback(drawChart);
+	var data, options, chart;
+	function drawChart() {
+		data = google.visualization.arrayToDataTable([
+		['',  'Amount'],
+		['2018',  656],
+		['2019',  402],
+		['2020',  457]
+		]);
+
+		options = {
+		pieHole: 0.66,
+		pieSliceText: 'value',
+		chartArea: {width: '100%', height: '70%'},
+		slices: {
+			0: { color: '#000000'},
+			1: { color: '#aaaaaa'},
+			2: { color: '#e81953'}
+		},
+		legend:{position: 'bottom', alignment: 'center'}
+		};
+		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+		chart.draw(data, options);
+	}
+	$(window).resize(function() {
+		chart.draw(data, options);
+	});
+</script>
+<style>
+    .chart-wrap {position: relative;width:520px;height:380px;margin:0 auto;}
+    .chart-wrap .chartarea{width:100%;height:100%;}
+    .chart-wrap .overlayarea{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);text-align:center;font-size:24px;font-weight:bold;}
+    @media screen and (max-width: 767px){
+      .chart-wrap{width:100%;height:71.42vw}
+      .chart-wrap .overlayarea{font-size:5vw;}
+    }
+</style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="#">지속 가능 경영</a></li>
-		<li><a href="#">추진 활동</a></li>
+		<li><a href="/company/sustainable/esgLeadership">지속 가능 경영</a></li>
+		<li><a href="/company/promot/system">추진 활동</a></li>
 		<li><strong>정도경영</strong></li>
 	</ul>
 </div>
@@ -27,59 +67,59 @@
 			<div class="tabs-wrap border-type left ui_tab">
 				<ul class="tabs">
 					<li>
-						<a href="#">기업개요</a>
+						<a href="/company/sustainable/esgLeadership">기업개요</a>
 						<ul class="tabs-over">
-							<li><a href="#">ESG 리더십</a></li>
-							<li><a href="#">ESG 방향성</a></li>
-							<li><a href="#">코로나 19 대응</a></li>
-							<li><a href="#">이해관계자 참여</a></li>
-							<li><a href="#">지속가능경영 정책</a></li>
-							<li><a href="#">중대성 평가</a></li>
+							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
+							<li><a href="/company/sustainable/covid19">코로나 19 대응</a></li>
+							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
+							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
+							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#">환경</a>
+						<a href="/company/sustainable/businessplace">환경</a>
 						<ul class="tabs-over">
-							<li><a href="#">(부정적) 환경영향 <br> Zero 사업장</a></li>
-							<li><a href="#">미래세대를 위한 제품과 서비스</a></li>
+							<li><a href="/company/sustainable/businessplace">(부정적) 환경영향 <br> Zero 사업장</a></li>
+							<li><a href="/company/sustainable/productsServices">미래세대를 위한 <br>제품과 서비스</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#">사회</a>
+						<a href="/company/sustainable/workplace">사회</a>
 						<ul class="tabs-over">
-							<li><a href="#">(모두를 위한) <br> 지속가능한 일터</a></li>
-							<li><a href="#">포용적 사회를 위한 <br> 균형적 성장</a></li>
+							<li><a href="/company/sustainable/workplace">(모두를 위한) <br> 지속가능한 일터</a></li>
+							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#">지배구조</a>
+						<a href="/company/sustainable/director">지배구조</a>
 						<ul class="tabs-over">
-							<li><a href="#">이사회</a></li>
-							<li><a href="#">위원회</a></li>
+							<li><a href="/company/sustainable/director">이사회</a></li>
+							<li><a href="/company/sustainable/committee">위원회</a></li>
 						</ul>
 					</li>
 					<li class="on">
-						<a href="#">추진활동<em class="blind">선택됨</em></a>
+						<a href="/company/promot/system">추진활동<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
-							<li><a href="#">정도경영</a></li>
-							<li><a href="#">컴플라이언스</a></li>
-							<li><a href="#">공정거래</a></li>
-							<li><a href="#">안전&middot;보건</a></li>
-							<li><a href="#">환경</a></li>
-							<li><a href="#">협력회사</a></li>
-							<li><a href="#">고객</a></li>
-							<li><a href="#">정보보호</a></li>
-							<li><a href="#">구성원</a></li>
-							<li><a href="#">사회공헌</a></li>
+							<li><a href="/company/promot/system">정도경영</a></li>
+							<li><a href="/company/promot/compliance">컴플라이언스</a></li>
+							<li><a href="/company/promot/fairtrade">공정거래</a></li>
+							<li><a href="/company/promot/safetyHealth">안전&middot;보건</a></li>
+							<li><a href="/company/promot/environment">환경</a></li>
+							<li><a href="/company/promot/partner">협력회사</a></li>
+							<li><a href="/company/promot/client">고객</a></li>
+							<li><a href="/company/promot/infoProtection">정보보호</a></li>
+							<li><a href="/company/promot/member">구성원</a></li>
+							<li><a href="/company/promot/contribution">사회공헌</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#">성과 및 데이터</a>
+						<a href="/company/sustainable/data">성과 및 데이터</a>
 						<ul class="tabs-over">
-							<li><a href="#">지속가능경영 데이터</a></li>
-							<li><a href="#">프레임워크 <br> & 이니셔티브</a></li>
-							<li><a href="#">ESG 평가</a></li>
-							<li><a href="#">다운로드</a></li>
+							<li><a href="/company/sustainable/data">지속가능경영 데이터</a></li>
+							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 이니셔티브</a></li>
+							<li><a href="/company/sustainable/esgEvaluation">ESG 평가</a></li>
+							<li><a href="/company/sustainable/download">다운로드</a></li>
 						</ul>	
 					</li>
 				</ul>
@@ -97,16 +137,16 @@
 	<div class="com-tabs">
 		<div class="tabs-wrap btn-type left ui_tab">
 			<ul class="tabs">
-				<li class="on"><a href="#">정도경영<em class="blind">선택됨</em></a></li>
-				<li><a href="#">컴플라이언스</a></li>
-				<li><a href="#">공정거래</a></li>
-				<li><a href="#">안전&middot;보건</a></li>
-				<li><a href="#">환경</a></li>
-				<li><a href="#">협력회사</a></li>
-				<li><a href="#">고객</a></li>
-				<li><a href="#">정보보호</a></li>
-				<li><a href="#">구성원</a></li>
-				<li><a href="#">사회공헌</a></li>
+				<li class="on"><a href="/company/promot/system">정도경영<em class="blind">선택됨</em></a></li>
+				<li><a href="/company/promot/compliance">컴플라이언스</a></li>
+				<li><a href="/company/promot/fairtrade">공정거래</a></li>
+				<li><a href="/company/promot/safetyHealth">안전&middot;보건</a></li>
+				<li><a href="/company/promot/environment">환경</a></li>
+				<li><a href="/company/promot/partner">협력회사</a></li>
+				<li><a href="/company/promot/client">고객</a></li>
+				<li><a href="/company/promot/infoProtection">정보보호</a></li>
+				<li><a href="/company/promot/member">구성원</a></li>
+				<li><a href="/company/promot/contribution">사회공헌</a></li>
 			</ul>
 		</div>
 	</div>
@@ -163,8 +203,12 @@
 				</ul>
 				<div class="graph ofn">
 					<span class="only_pc txt_rt">(단위: 건)</span>
-					<img class="only_pc" src="/kr/images/company/promot/img-promot-offense-pc.png" alt="">
-					<img class="only_mo" src="/kr/images/company/promot/img-promot-offense-mo.png" alt="">
+					<!--<img class="only_pc" src="/kr/images/company/promot/img-promot-offense-pc.png" alt="">
+					<img class="only_mo" src="/kr/images/company/promot/img-promot-offense-mo.png" alt="">-->
+						<div class="chart-wrap">
+							<div class="chartarea" id="donutchart"></div>
+							<div class="overlayarea">위반행위 <br>제보 접수</div>
+						</div>
 					<div class="blind">
 						<strong>위반행위 제보접수</strong>
 						<ul>
