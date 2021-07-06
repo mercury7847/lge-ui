@@ -9,6 +9,10 @@ function MainSwiper( ID ){
     this.currentHash = window.location.hash;
     this.loadQUE = [];
     this.isLoading = false;
+    this.isFirstLoad = true;
+    this.firstPathName = location.pathname;
+    this.firstSearch = location.search;
+    
 
     this.hashToUrl = {
         '#home' : 'home',
@@ -275,12 +279,18 @@ MainSwiper.prototype = {
                     }
 
                     if(self.ablePushState) {
-                        history.pushState({}, '', hash);      
+                        if (!self.isFirstLoad){
+                            history.pushState({}, '', hash);
+                        }
+                        
                         self.switchQuickMenu( hash );  
                         self.ablePushState = false;
                     }
 
                     self.isLoading = false;
+
+                    if (self.isFirstLoad) self.isFirstLoad = false;
+
                     self.getContent();
 
                     setTimeout(function(){

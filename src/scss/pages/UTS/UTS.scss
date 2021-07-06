@@ -717,11 +717,13 @@
                             display: none;
                         }
                         .tit {
-                            padding: 48px 0 16px;
+                            //padding: 48px 0 16px;
+                            padding-bottom: 16px;   //BTOCSITE-2161
                         }
                     }
                     .plp-filter-wrap {
-                        padding:88px 16px 150px;
+                        //padding:88px 16px 150px;
+                        padding:88px 16px 48px;   //BTOCSITE-2161
                         .btn-reset,
                         .filter-close {
                             top: 44px;
@@ -800,9 +802,26 @@
             }
         }
         .result-list-wrap {
-            @include mobile {
-                padding-bottom: 21px;
+            // [S] BTOCSITE-2059
+            .btn-area {
+                margin-top: 32px;
+                text-align: center;
+                .btn-link {
+                    &.btn-moreview {
+                        display: inline-block;
+                        padding: 7px 14px;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+                @include mobile {
+                    margin-top: 24px;
+                }
             }
+            // [E] BTOCSITE-2059
         }
     }
     .result-area {
@@ -1472,6 +1491,7 @@
         //position: relative;
         top: 0;
         left: 0;
+        z-index:0;  // BTOCSITE-2161 
         .ico-filter {
             top: 0;
             width: auto;

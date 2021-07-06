@@ -7,10 +7,6 @@
 .contents.unmanned-store-wrap {
     @import "unmanned-store";
 }
-// 시네빔 0622
-.contents.cinebeam-zone-wrap {
-	@import "cinebeam-zone"; 
-}
 // 온라인견적요청서 0624
 .contents.sysaircon-form-wrap {
     @import "sysaircon-form";
@@ -105,9 +101,9 @@ img{
 		// BTOCSITE-740 start
 		@include mobile {			
 			height: 500px;
-			&+.scene {
-				margin-top:12px;
-			}
+			// &+.scene {
+			// 	margin-top:12px;
+			// }
 		}
 		// BTOCSITE-740 end
 		/*
@@ -1383,9 +1379,9 @@ img{
 						}
 					}
 				}
-				& + .scene {
-					margin-top: 28px;
-				}
+				// & + .scene {
+				// 	margin-top: 28px;
+				// }
 			}
 		}
 	}

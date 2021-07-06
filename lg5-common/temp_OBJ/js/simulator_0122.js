@@ -2092,7 +2092,7 @@ var go_shop_model = "";
             // 인기조합 선택 부 (s)
             /*
             ex Html
-			    <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
+                <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
              */
 
             var targetSideBarFavArea = (typeof document.querySelector('[data-simulator-sidebar-fav-area]') !== 'undefined') ?

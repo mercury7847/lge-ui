@@ -26,8 +26,8 @@
                     </div>
                     <section class="component KRP0031">
                         <div class="search-wrap">
-                            <form action="/html/UTS/SERF9007.html" method="GET" id="searchForm" target="_blank" novalidate>
-                                <input type="hidden" name="force" value="false">
+                            <!-- BTOCSITE-518 20210706 수정 사항 START -->
+                            <form id="searchForm" data-inquery-result = "/b2cOnlineInquireResult" > 
                                 <div class="search-box">
                                     <div class="search-input">
                                         <input type="text" name="search" id="searchKeyword" class="ui_input_clearbutton" placeholder="접수번호를 입력하세요" minlength="2" autocomplete="off" data-clear-button="button.btn-delete" data-required="true" data-error-msg="접수번호를 입력하세요">
@@ -36,6 +36,7 @@
                                     </div>
                                 </div>	
                             </form>
+                            <!-- BTOCSITE-518 20210706 수정 사항 END-->    
                         </div><!-- //.search-wrap-->
                     </section>
                 </div>
@@ -58,5 +59,9 @@
     <!-- //210226 플로팅버튼 추가 -->
 </div>
 
+
+<script src="/lg5-common/js/support-common.min.js"></script>
+<script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
+<script src="/lg5-common/js/store/systemAircon.min.js"></script>
 </body>
 </html>
