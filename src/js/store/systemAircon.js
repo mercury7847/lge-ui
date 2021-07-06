@@ -52,6 +52,8 @@
 
             // 온라인 견적 문의내역 조회
             self.$inqueryBtn.on('click', function() {
+
+                console.log("문의 내역조회 %o", self.$form.data('inqueryUrl') );
                 lgkorUI.confirm("작성하신 내용이 초기화 된 후<br>온라인견적 문의 내역 조회 페이지로<br>이동됩니다. 이동 하시겠습니까?", {
                     title: "",
                     cancelBtnName: "취소",
@@ -148,21 +150,11 @@
         bindEvents : function() {
             var self = this;
                 self.$searchBtn.on('click',function(){
-
-                    var ajaxUrl = self.$form.data('inqueryUrl');
-                    var param = self.validation.getAllValues();
                     var validationResult = self.validation.validate().success;
-
-                    if( validationResult && ajaxUrl) {
-                         console.log("조회 진입 %o %o",ajaxUrl, param);
-                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                                console.log("조회 %o",result);
-                            if(result.data) {
-                                var url = self.$form.data('inqueryResult');
-                                if(url) location.href =  url;
-                            }
-                        });
-    
+                    if( validationResult) {
+                        var param = self.validation.getAllValues();
+                        var url = self.$form.data('inqueryResult');
+                        if(url) location.href =  url+'?estimationId='+param.estimationId;
                     }
                 });
         },
