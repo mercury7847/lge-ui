@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+.only_pc {display:block!important}
+.only_mo {display:none!important}
+img.only_pc {max-width:100%; margin:0 auto}
+img.only_mo {width:100%; max-width:100%; margin:0 auto}
+/* .company .pd0 {padding:0} */
+.company .mgt {margin-top:24px!important}
+.company .mgtL {margin-top:30px!important}
+.company .mt30 {margin-top:30px!important}
+.company .mt0 {margin-top:0!important}
+.company a.pink {color:#da0f47; text-decoration:underline}
+.company .com-text.noLine::before {display:none}
+
+/* 컨텐츠 영역 */
+.company .tabs-contents > .com-text {padding-left:0; padding-right:0}
+.company .com-section {position:relative; max-width:1460px;margin:0 auto; padding:60px 0}
+.company .com-section + .com-section {padding-top:0}
+.company .text + .text {margin-top:20px}
+.com-title .text {word-break:keep-all}
+.company .tit.h3 {font-size:32px; font-weight:bold; line-height:1.5; text-align:center}
+.company .tit.h4 {font-size:18px; font-weight:bold; line-height:1.56}
+.company .tit ~ .tit.h4 {margin-top:30px}
+.company .tit + .desc {display:block; margin-top:12px; color:#000; font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
+.company .center {text-align:center}
+.company .thumb {width:100%; margin-top:24px}
+.company .thumb + .accordion-wrap {margin-top:60px}
+.company .graph.ofn {padding-top:40px}
+.company .graph.ofn .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
+.company .graph.ofn img.only_mo {padding-left:19px}
+.company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
+.company .linkArea .tit {font-size:18px; text-align:center}
+.company .linkArea .desc {margin-top:12px; text-align:center}
+.company .linkArea .desc a {font-size:14px; text-underline-offset:1px}
+.pop-conts .tit {font-size:18px; font-weight:bold; line-height:1.44}
+.company .boxArea {padding:60px; border-radius:8px; border:1px solid #ddd}
+.company .boxArea .sect + .sect {margin-top:30px; padding-top:30px; border-top:1px dashed #ddd}
+.company .boxArea .sect > ul {margin-top:12px; margin-left:27px}
+.company .boxArea .sect .text {margin-top:12px}
+.company .infoBox {max-width:912px; margin:30px auto 0; padding:40px 60px; border-radius:8px; background-color:#fff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
+.company .infoBox > ul > li + li {margin-top:20px}
+.company .infoBox > ul > li em {display:inline-block; min-width:60px; margin-right:40px; color:#000; font-size:16px; font-weight:bold; line-height:1.5}
+.company .infoBox > ul > li span {position:relative; display:inline-block; color:#000; font-size:16px; line-height:1.5}
+.company .infoBox > ul > li span::before {content:''; display:block; position:absolute; width:1px; height:14px; background-color:#ddd; top:calc(50% - 7px); left:-21px}
+.company .btnArea {margin-top:30px; text-align:center}
+
+.company .hisArea {max-width:912px; margin:0 auto}
+.company .hisArea .title .tit {font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
+.company .hisArea .title .text {margin-top:20px; font-size:16px; line-height:1.5; text-align:center}
+.company .hisArea .hisList {margin-top:30px; padding:30px 0; border-top:1px solid #ddd}
+.company .hisArea .hisList > ul > li + li {margin-top:15px}
+.company .hisArea .hisList > ul > li em {display:inline-block; margin-right:70px; font-size:20px; font-weight:bold; line-height:30px}
+.company .hisArea .hisList > ul > li span {display:inline-block; font-size:16px; line-height:30px}
+
+.company .ceoArea {position:relative}
+.company .ceoArea .bg {height:480px; border-radius:8px; overflow: hidden}
+.company .ceoArea .bg span {width:100%; height:100%; display:block; background-position:center center; background-size:auto 100%; background-repeat:no-repeat}
+.company .ceoArea .txt {position:absolute; top:130px; left:234px; color:#fff}
+.company .ceoArea .txt .name em {display:block; font-size:22px; line-height:32px}
+.company .ceoArea .txt .name strong {display:block; font-size:32px; line-height:48px}
+.company .ceoArea .txt .name span {display:block; margin-top:10px; font-size:20px; line-height:30px}
+.company .ceoArea .txt .msg {margin-top:38px; font-size:16px; line-height:1.5}
+
+/* 탭 형식 */
+.company .tabs-wrap.l-type .tabs > li {padding:0}
+.company .tabs-wrap.l-type .tabs > li + li {margin-left:8px}
+.company .tabs-wrap.l-type .tabs > li a {padding:12px; border:1px solid #ddd; border-radius:8px; color:#000; font-size:16px; font-weight:normal; line-height:24px}
+.company .tabs-wrap.l-type .tabs > li.on a {border-color:#da0f47; color:#da0f47}
+
+.company .com-tabs .tabs-wrap.bar-type .tabs {margin-top:16px}
+.company .com-tabs .tabs-wrap.bar-type .tabs > li + li {margin-left:12px; padding-left:12px}
+.company .com-tabs .tabs-wrap.bar-type .tabs > li a {font-size:15px}
+.company .com-tabs .tabs-wrap.bar-type .tabs > li.on a {text-decoration:underline; text-underline-offset:1px}
+
+/* ul 형식 */
+ul.bull > li {position:relative; padding-left:9px; font-size:16px; text-align:left; line-height:1.56}
+ul.bull > li.emp {font-weight:500}
+ul.bull > li + li {margin-top:6px}
+ul.bull > li::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
+ul.bull > li.mt30 {margin-top:30px}
+ul.bull > li > strong {display:block; margin-bottom:20px}
+ul.bull > li > span.bold {font-weight:bold}
+ul.bull > li .tb_row,
+ul.bull > li .tb-col {margin-left:-9px}
+
+ul.bull.m > li + li {margin-top:0}
+ul.bull.m > li::before {width:2px; height:2px; top:11px}
+
+.company ul.ico_list {display:flex; justify-content:space-between}
+.company ul.ico_list > li {width:100%; text-align:center}
+.company ul.ico_list.t3 > li {width:33.3333%}
+.company ul.ico_list > li + li {border-left:1px dashed #ddd}
+.company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 18px}
+.company ul.ico_list > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
+.company ul.ico_list > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li strong {display:block; margin-bottom:12px}
+.company ul.ico_list > li strong > em {font-weight:normal}
+.company ul.ico_list > li span {display:block}
+
+.company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
+.company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
+.company ul.dwn_list > li button.border.dwn {position:absolute; min-width:initial; top:50%; right:30px; transform:translateY(-50%); padding:5px 12px; font-size:14px; line-height:20px}
+
+.company ul.card_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
+.company ul.card_list > li {border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
+.company ul.card_list > li .photo {width:100%; height:auto; padding-bottom:87%}
+.company ul.card_list > li .photo.photo_01 {background:#ddd url(/kr/images/company/investor/img-director_photo_01.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_02 {background:#ddd url(/kr/images/company/investor/img-director_photo_02.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_03 {background:#ddd url(/kr/images/company/investor/img-director_photo_03.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_04 {background:#ddd url(/kr/images/company/investor/img-director_photo_04_pc.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_05 {background:#ddd url(/kr/images/company/investor/img-director_photo_05_pc.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_06 {background:#ddd url(/kr/images/company/investor/img-director_photo_06_pc.png) no-repeat center / contain}
+.company ul.card_list > li .photo.photo_07 {background:#ddd url(/kr/images/company/investor/img-director_photo_07_pc.png) no-repeat center / contain}
+.company ul.card_list > li .infoArea .sect + .sect {margin-top:19.5px; padding-top:19.5px; border-top:1px dashed #ddd}
+.company ul.card_list > li .infoArea .sect ul > li {display:flex; justify-content:flex-start; align-items:flex-start; font-size:16px; line-height:24px}
+.company ul.card_list > li .infoArea .sect ul > li + li {margin-top:10px}
+.company ul.card_list > li .infoArea .sect ul > li em {display:block; min-width:74px; margin-right:12px; font-weight:bold}
+.company ul.card_list > li .infoArea .sect ul > li span {display:block}
+.company ul.card_list.L > li {width:calc(33.3333% - 16px); min-height:980px}
+.company ul.card_list.L > li .infoArea {padding:30px}
+.company ul.card_list.L > li .infoArea .sect .name {font-size:28px; font-weight:bold; line-height:40px}
+.company ul.card_list.L > li .infoArea .sect .job {font-size:18px; line-height:26px}
+.company ul.card_list.S > li {display:flex; width:calc(50% - 12px); min-height:317px}
+.company ul.card_list.S > li:nth-child(3),
+.company ul.card_list.S > li:nth-child(4) {margin-top:24px}
+.company ul.card_list.S > li .photo {width:210px; height:100%; padding:0}
+.company ul.card_list.S > li .infoArea {flex:auto; padding:24px}
+.company ul.card_list.S > li .infoArea .sect .name {font-size:24px; font-weight:bold; line-height:35px}
+.company ul.card_list.S > li .infoArea .sect .job {margin-top:4px; font-size:16px; line-height:24px}
+.company ul.card_list.S > li .infoArea .sect + .sect {margin-top:11.5px; padding-top:11.5px}
+.company ul.card_list.S > li .infoArea .sect ul > li {font-size:14px; line-height:23px}
+.company ul.card_list.S > li .infoArea .sect ul > li + li {margin-top:7px}
+.company ul.card_list.S > li .infoArea .sect ul > li em {min-width:68px; margin-right:25px}
+
+.company .tit + ul.col {margin-top:10px}
+.company ul.col {padding:0}
+.company ul.col.col2 {column-count:2}
+.company ul.col li {color:#000; font-size:16px; line-height:24px}
+.company ul.col li + li {margin-top:6px}
+
+.company ul.dash li {color:#000; font-size:16px; line-height:24px}
+.company ul.dash > li + li {margin-top:6px}
+.company ul.dash > li ul {padding-left:10px}
+.company ul.dash > li ul li {margin-top:2px; padding-left:10px; line-height:26px; text-indent:-10px}
+
+.company ul.m_cardList {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
+.company ul.m_cardList > li {display:flex; width:calc(33.3333% - 16px); height:206px; border-radius:8px; box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
+.company ul.m_cardList > li:nth-child(4),
+.company ul.m_cardList > li:nth-child(5),
+.company ul.m_cardList > li:nth-child(6) {margin-top:24px}
+.company ul.m_cardList > li .photo {width:160px; height:100%}
+.company ul.m_cardList > li .photo_01 {background:#ddd url(/kr/images/company/info/img-management-director-photo_01.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_02 {background:#ddd url(/kr/images/company/info/img-management-director-photo_02.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_03 {background:#ddd url(/kr/images/company/info/img-management-director-photo_03.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_04 {background:#ddd url(/kr/images/company/info/img-management-director-photo_04.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_05 {background:#ddd url(/kr/images/company/info/img-management-director-photo_05.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_06 {background:#ddd url(/kr/images/company/info/img-management-director-photo_06.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_07 {background:#ddd url(/kr/images/company/info/img-management-director-photo_07.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_08 {background:#ddd url(/kr/images/company/info/img-management-director-photo_08.png) no-repeat center / contain}
+.company ul.m_cardList > li .photo_09 {background:#ddd url(/kr/images/company/info/img-management-director-photo_09.png) no-repeat center / contain}
+.company ul.m_cardList > li .infoArea {width:calc(100% - 160px); padding:24px; background-color:#fff}
+.company ul.m_cardList > li .infoArea .job {margin-top:30px; font-size:16px; line-height:24px}
+.company ul.m_cardList > li .infoArea .name {margin-top:5px; font-size:24px; font-weight:bold; line-height:32px}
+.company ul.m_cardList > li .infoArea .eng {margin-top:12px; font-size:14px; line-height:20px; word-break:keep-all}
+
+/* 팝업 */
+.popup-wrap.popup-company .thumb {margin:40px 0}
+.popup-wrap.popup-company .thumb .iconArea {display:flex; justify-content:center}
+.popup-wrap.popup-company .thumb .iconArea i {display:block; width:80px; height:80px; margin:0 auto}
+.popup-wrap.popup-company .thumb .iconArea i.ico-train_01 {background:url(/kr/images/company/icon/ico-promot-training_01.png) no-repeat 50% 50%; background-size:80px 80px}
+.popup-wrap.popup-company .thumb .desc {margin-top:12px; font-size:16px; line-height:1.5; text-align:center}
+.popup-wrap.popup-company .box {display:flex; justify-content:space-between; padding:24px; border-radius:6px; background-color:#f4f4f4}
+.popup-wrap.popup-company .box span {font-weight:bold}
+.popup-wrap.popup-company .pop-conts::-webkit-scrollbar {width:24px}
+.popup-wrap.popup-company .pop-conts::-webkit-scrollbar-thumb {border:8px solid transparent; border-radius:16px; background-clip:padding-box; background-color:#aaa}
+.popup-wrap.popup-company .pop-conts::-webkit-scrollbar-track {background-color:transparent}
+.popup-wrap.popup-company .pop-conts .imgArea {width:100%; margin-bottom:30px}
+.popup-wrap.popup-company .pop-conts .imgArea img {width:100%; vertical-align:top}
+.popup-wrap.popup-company .pop-conts .tit {word-break:keep-all}
+.popup-wrap.popup-company .pop-conts .tit + ul {margin-top:12px}
+.popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
+.popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
+.popup-wrap.popup-company .pop-conts .tb_row {margin-top:24px}
+.popup-wrap.popup-company .pop-conts .tb-row-bl table thead tr {border-bottom:1px solid #d8d8d8}
+.popup-wrap.popup-company .pop-conts .tb_row,
+.popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
+.popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
+.popup-wrap.popup-company .pop-conts .tb_row .tbl_info.lt,
+.popup-wrap.popup-company .pop-conts .tb-col .tbl_info.lt {text-align:left}
+.popup-wrap.popup-company .pop-conts .tb_row .tbl_info.rt,
+.popup-wrap.popup-company .pop-conts .tb-col .tbl_info.rt {text-align:right}
+.popup-wrap.popup-company .pop-conts .tb_row table tbody th {padding:24px; border-bottom:1px solid#ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
+.popup-wrap.popup-company .pop-conts .tb_row table td.bold {font-weight:bold}
+
+/* 아코디언 영역 */
+.company .tit + .accordion-wrap {margin-top:24px}
+.company .accordion-wrap.btmBtn > ul > .lists {margin-top:0; border-radius:8px; box-shadow:2px 4px 12px 0 rgb(0 0 0 / 16%); z-index:5}
+.company .accordion-wrap.btmBtn > ul > .lists + .lists {margin-top:40px}
+.company .accordion-wrap > ul > .lists.on .head .accord-btn {padding-top:62px; /*padding-bottom:28px*/}
+.company .accordion-wrap > ul > .lists .head .accord-btn::after {width:24px; height:24px; top:calc(50% - 12px); margin:0; border:0; background:url(/lg5-common/images/icons/btn-down-16-black.svg) center no-repeat; background-size:20px 20px}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:20px; line-height:1.5}
+.company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn .title {font-weight:bold}
+.company .accordion-wrap > ul > .lists .noCont {padding:18px 20px}
+.company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0 60px; border-top:1px solid #000; border-bottom:1px solid #ddd; color:#000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding-bottom:0; border-bottom:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb_row,
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tbl_info + table {margin-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img {display:block; width:100%; max-width:576px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5}
+.accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .btn-link {margin-top:30px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea {border-top:1px solid #000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea ul li {font-size:14px; line-height:22px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:40px 0; text-align:center}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:154px}
+.company .accordion-wrap.btmBtn > ul > .lists .btn.menu-opener {position:relative}
+.company .accordion-wrap.btmBtn > ul > .lists .btn.menu-opener::after {content:''; display:inline-block; width:20px; height:20px; margin-left:4px; margin-top:4px; background:url(/lg5-common/images/icons/icon-arrow-accor.svg) center no-repeat; background-size:20px 20px; vertical-align:top; transition:all .3s}
+.company .accordion-wrap.btmBtn > ul > .lists.on .btn.menu-opener::after {transform:rotate(180deg)}
+.company .accordion-wrap.btmBtn > ul > .lists .btn.border:active:hover::after,
+.company .accordion-wrap.btmBtn > ul > .lists .btn.border:focus:hover::after,
+.company .accordion-wrap.btmBtn > ul > .lists .btn.border:hover::after {background:url(/kr/images/company/icon/icon-arrow-accor-white.svg) center no-repeat!important; background-size:20px 20px!important}
+
+/* 테이블 */
+.company .com-text.tbl {padding-bottom:0}
+.company .com-text.tbl + .com-text::before {display:none}
+.company .tb_row {margin-top:24px}
+.company .tb_row,
+.company .tb_row .tb-col {position:relative}
+.company .tb-row-bl .tbl_info,
+.company .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
+.company .tb_row .tbl_info.abs,
+.company .tbl_info.abs {position:absolute; right:0; top:-36px}
+.company .tb-row-bl .tbl_info.lt,
+.company .tb-col .tbl_info.lt {text-align:left}
+.company .tb-row-bl .tbl_info.rt,
+.company .tb-col .tbl_info.rt {text-align:right}
+.company .tb-row-bl .tbl_info.btm,
+.company .tb-col .tbl_info.btm {margin-top:12px; margin-bottom:0}
+.company .tb-row-bl .tbl_info.btm ul,
+.company .tb-col .tbl_info.btm ul {color:#666; line-height:22px}
+.company .tb_row .tbl_info.btm p,
+.company .tb-col .tbl_info.btm p {color:#000}
+.company .tb_row .tbl_info.btm p > span,
+.company .tb-col .tbl_info.btm p > span {display:inline-block}
+.company .tb_row .tbl_info.btm p > span + span,
+.company .tb-col .tbl_info.btm p > span + span {position:relative; margin-left:13px}
+.company .tb_row .tbl_info.btm p > span + span::before,
+.company .tb-col .tbl_info.btm p > span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; top:calc(50% - 5px); left:-6.5px; background-color:#ddd}
+.company .tb_row .tbl_select,
+.company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
+.company .tb-row-bl table thead tr {border-bottom:1px solid #d8d8d8}
+.company .tb-row-bl table thead tr:first-child th {border-top:1px solid #666}
+.company .tb-row-bl table thead th {border-top:0}
+.company .tb-row-bl table tbody th {padding:24px; border-bottom:1px solid#ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
+.company .tb-row-bl table td.bold {font-weight:bold}
+.company .tb-row-bl table th.bo_l,
+.company .tb-row-bl table td.bo_l {border-left:1px solid #ddd!important}
+
+/* 정관 */
+.artTxt p {font-size:16px; line-height:1.63}
+.artTxt h2.tit {margin-bottom:12px; font-size:18px; font-weight:bold; line-height:1.56}
+.artTxt h2.tit ~ h2.tit {margin-top:40px}
+
+/* 모바일 */
+@media screen and (max-width:767px){
+  .only_pc {display:none!important}
+  .only_mo {display:block!important}
+  .company .mgt {margin-top:12px!important}
+  .company .mgtL {margin-top:20px!important}
+  .company .com-section {margin:0 16px; padding:30px 0 60px}
+  .company .com-text.noLine_m::before {display:none}
+  .company .tit.h3 {font-size:20px; line-height:1.4}
+  .company .tit + .desc {margin-top:6px; font-size:16px}
+  
+  .company .btnArea .btn.border.nml {padding:12 19px; font-size:13px; line-height:18px}
+
+  .company .tabs-wrap.l-type {text-align:center}
+  .company .tabs-wrap.l-type .tabs > li a {font-size:14px; line-height:20px}
+
+  .company .com-tabs .tabs-wrap.bar-type .tabs {margin-top:5px; margin-bottom:15px}
+  .company .com-tabs .tabs-wrap.bar-type .tabs > li + li {margin-left:12px; padding-left:12px}
+  .company .com-tabs .tabs-wrap.bar-type .tabs > li a {font-size:14px; line-height:20px}
+  
+  .company .thumb.thumb1 {height:auto}
+  .company .thumb.thumb2 {height:auto}
+  .company .thumb.thumb1 > span {height:0; padding-bottom:166%}
+  .company .thumb.thumb2 > span {height:0; padding-bottom:96%}
+
+  .company .thumb > span {background-size:contain}
+  .company .accordion-wrap > ul > .lists {border-radius:8px}
+  .company .accordion-wrap > ul > .lists .head .accord-btn {padding:18px 56px 18px 20px}
+  .company .accordion-wrap > ul > .lists .noCont .tit {font-size:16px}
+  .company .accordion-wrap > ul > .lists.on .head .accord-btn {padding-top:30px; /*padding-bottom:24px*/}
+  .company .accordion-wrap > ul > .lists .head .accord-btn::after {right:20px}
+  .company .accordion-wrap > ul > .lists.on .head .accord-btn::after {margin-top:6px}
+  .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:16px}
+  .company .accordion-wrap.btmBtn > ul > .lists + .lists {margin-top:20px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-right:20px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0; border-bottom:0}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding:20px 0}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {font-size:15px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li + li {margin-top:0}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li ul li {margin-top:8px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:5px 0}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:130px; padding:8px 0; font-size:14px; font-weight:normal}
+  
+  .company .tb_row {margin-top:0}
+  .company .tb_row .tbl_info,
+  .company .tb-col .tbl_info,
+  .company .tb_row .tbl_info.abs,
+  .company .tb-col .tbl_info.abs {position:relative; top:0; margin-bottom:10px; font-size:12px; line-height:1.33}
+  .company .tb-row-bl .tbl_info.btm,
+  .company .tb-col .tbl_info.btm {font-size:12px}
+  .company .tb-row-bl .tbl_info.btm p,
+  .company .tb-col .tbl_info.btm p {margin-bottom:4px; line-height:1.45}
+  .company .tb-row-bl .tbl_info.btm ul,
+  .company .tb-col .tbl_info.btm ul {line-height:1.33}
+  .company .tb_row table thead th,
+  .company .tb-col table thead th {font-size:13px; font-weight:normal}
+  .company .tb_row table tbody th,
+  .company .tb_row table tbody td,
+  .company .tb-col table tbody th,
+  .company .tb-col table tbody td {padding:16px 12px; font-size:13px; line-height:20px}
+  .company .tb_row table tbody th,
+  .company .tb-col table tbody th {text-align:left}
+  
+  .company .graph.ofn {padding-top:8px}
+  .company .linkArea {padding:24px 0}
+  .company .linkArea .tit {font-size:16px}
+  .company .linkArea .desc {margin-top:6px}
+
+  .company ul.ico_list {flex-direction:column}
+  .company ul.ico_list.t3 > li {width:100%}
+  .company ul.ico_list > li + li {margin-top:40px; border:0}
+  .company ul.ico_list > li .iconArea {margin:0 auto 8px}
+  
+  ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
+  ul.bull > li + li {margin-top:8px}
+  ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
+  ul.bull > li > strong {margin-bottom:10px}
+  ul.bull > li .tb_row,
+  ul.bull > li .tb-col {margin-left:-8px}
+  
+  .company ul.bull li ul.dwn_list {flex-direction:column}
+  .company ul.dwn_list > li {width:100%; padding:22px 100px 22px 15px; font-size:14px; line-height:1.57}
+  .company ul.dwn_list > li button.border.dwn {min-width:81px; height:34px; right:15px; font-size:13px}
+  
+  .company ul.card_list {margin-top:24px}
+  .company ul.card_list.L > li,
+  .company ul.card_list.S > li {flex-direction:column; width:100%; min-height:auto}
+  .company ul.card_list.L > li + li,
+  .company ul.card_list.S > li + li {margin-top:12px!important}
+  .company ul.card_list.L > li .photo,
+  .company ul.card_list.S > li .photo {width:100%; height:auto; padding-bottom:64%}
+  .company ul.card_list > li .photo.photo_04 {background:#ddd url(/kr/images/company/investor/img-director_photo_04_mo.png) no-repeat center / contain}
+  .company ul.card_list > li .photo.photo_05 {background:#ddd url(/kr/images/company/investor/img-director_photo_05_mo.png) no-repeat center / contain}
+  .company ul.card_list > li .photo.photo_06 {background:#ddd url(/kr/images/company/investor/img-director_photo_06_mo.png) no-repeat center / contain}
+  .company ul.card_list > li .photo.photo_07 {background:#ddd url(/kr/images/company/investor/img-director_photo_07_mo.png) no-repeat center / contain}
+  .company ul.card_list.L > li .infoArea,
+  .company ul.card_list.S > li .infoArea {padding:15px 20px}
+  .company ul.card_list.L > li .infoArea .sect + .sect,
+  .company ul.card_list.S > li .infoArea .sect + .sect {margin-top:14.5px; padding-top:14.5px}
+  .company ul.card_list.L > li .infoArea .sect .name,
+  .company ul.card_list.S > li .infoArea .sect .name {font-size:20px; line-height:1.4}
+  .company ul.card_list.L > li .infoArea .sect .job,
+  .company ul.card_list.S > li .infoArea .sect .job {font-size:15px; line-height:22px}
+  .company ul.card_list.L > li .infoArea .sect ul > li,
+  .company ul.card_list.S > li .infoArea .sect ul > li {font-size:14px; line-height:22px}
+  .company ul.card_list.L > li .infoArea .sect ul > li + li,
+  .company ul.card_list.S > li .infoArea .sect ul > li + li {margin-top:7px}
+  .company ul.card_list.L > li .infoArea .sect ul > li em,
+  .company ul.card_list.S > li .infoArea .sect ul > li em {min-width:65px; margin-right:10px}
+
+  .company ul.col li {font-size:14px; line-height:22px}
+
+  .company ul.dash > li ul li {padding-left:7.5px; text-indent:-7.5px}
+
+  .company ul.m_cardList {margin-top:20px}
+  .company ul.m_cardList > li {width:100%; height:150px}
+  .company ul.m_cardList > li + li {margin-top:12px!important}
+  .company ul.m_cardList > li .photo {width:118px; height:100%}
+  .company ul.m_cardList > li .infoArea {width:calc(100% - 118px); padding:15px}
+  .company ul.m_cardList > li .infoArea .job {margin-top:10px; font-size:14px; line-height:22px}
+  .company ul.m_cardList > li .infoArea .name {margin-top:0; font-size:18px; line-height:28px}
+  .company ul.m_cardList > li .infoArea .eng {margin-top:10px; font-size:14px; line-height:22px}
+
+  .popup-wrap.popup-company .thumb {margin:20px 0 25px}
+  .popup-wrap.popup-company .thumb .desc {margin-top:8px; font-size:14px; line-height:1.57}
+  .popup-wrap.popup-company .box {padding:16px 20px; font-size:14px; line-height:1.57}
+  .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:8px}
+  .popup-wrap.popup-company .pop-conts .tb-row-bl .tbl_info,
+  .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:10px}
+
+  .artTxt p {font-size:14px; line-height:1.57}
+  .artTxt h2.tit ~ h2.tit {margin-top:20px}
+
+  .company .infoBox {padding:30px 20px}
+  .company .infoBox > ul > li em {display:block; margin:0}
+  .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
+  .company .infoBox > ul > li span::before {display:none}
+
+  .company .hisArea .title .tit {font-size:16px}
+  .company .hisArea .title .text {margin-top:15px}
+  .company .hisArea .hisList {margin-top:20px; padding:20px 0}
+  .company .hisArea .hisList > ul > li {display:flex; align-items:flex-start}
+  .company .hisArea .hisList > ul > li + li {margin-top:18px}
+  .company .hisArea .hisList > ul > li em {margin-right:20px; font-size:15px; line-height:22px}
+  .company .hisArea .hisList > ul > li span {font-size:14px; line-height:22px}
+
+  .company .ceoArea {width:calc(100% + 32px); margin-left:-16px}
+  .company .ceoArea .bg {height:auto; border-radius:0}
+  .company .ceoArea .bg span {height:auto; padding-bottom:128%; background-size:100%}
+  .company .ceoArea .txt {width:100%; top:40px; left:50%; transform:translateX(-50%); text-align:center}
+  .company .ceoArea .txt .name em {font-size:12px; line-height:17px}
+  .company .ceoArea .txt .name strong {font-size:20px; line-height:30px}
+  .company .ceoArea .txt .name span {margin-top:5px; font-size:12px; line-height:20px}
+  .company .ceoArea .txt .msg {margin-top:15px; font-size:12px; line-height:20px}
+}
