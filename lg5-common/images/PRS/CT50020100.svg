@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_Life_64" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-3{stroke-width:1.5px;stroke:#0a0607;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle" d="M0 0H64V64H0z" class="cls-1" transform="translate(0 0)"/>
+    <g id="hose_64" transform="translate(946.664 -1284.695)">
+        <path id="Rectangle-61-4" d="M0 0H40V40H0z" class="cls-1" transform="translate(-934.664 1296.695)"/>
+        <g id="circle_128-4">
+            <path id="Path_55" d="M-914.664 1284.695a32 32 0 0 1 32 32 32 32 0 0 1-32 32 32 32 0 0 1-32-32 32 32 0 0 1 32-32z" class="cls-1"/>
+            <path id="Path_56" fill="none" stroke="#070203" stroke-miterlimit="10" stroke-width="1.5px" d="M-914.664 1285.445a31.25 31.25 0 0 1 31.25 31.25 31.25 31.25 0 0 1-31.25 31.25 31.25 31.25 0 0 1-31.25-31.25 31.25 31.25 0 0 1 31.25-31.25z"/>
+        </g>
+        <g id="img-4">
+            <g id="line">
+                <ellipse id="Oval-17" cx="13.355" cy="13.2" class="cls-3" rx="13.355" ry="13.2" transform="translate(-923.874 1304.295)"/>
+                <ellipse id="Oval-17-2" cx="10.016" cy="9.9" class="cls-3" rx="10.016" ry="9.9" transform="translate(-920.535 1307.595)"/>
+                <ellipse id="Oval-17-3" cx="6.677" cy="6.6" class="cls-3" rx="6.677" ry="6.6" transform="translate(-917.196 1310.895)"/>
+            </g>
+            <g id="head">
+                <path id="Rectangle-62-3" d="M-924.041 1305.092h8.73" class="cls-3"/>
+                <path id="Rectangle-62-4" d="M-920.535 1308.732h-3.578" class="cls-3"/>
+                <g id="그룹_145">
+                    <path id="Rectangle-47" d="M-926.074 1310.35a1.2 1.2 0 0 1-1.2-1.2l.015-4.769a1.2 1.2 0 0 1 1.21-1.189h.65a1.2 1.2 0 0 1 1.2 1.2l-.014 4.769a1.2 1.2 0 0 1-1.21 1.189z" class="cls-3"/>
+                    <path id="Rectangle-62-5" d="M-927.581 1308.755l-2.7-.407a1.379 1.379 0 0 1-1.384-1.374v-.437a1.379 1.379 0 0 1 1.391-1.367l2.7-.388" class="cls-3"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

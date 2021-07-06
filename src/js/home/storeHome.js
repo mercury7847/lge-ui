@@ -16,14 +16,17 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   </div>\n'+
     '{{/each}}';
 
+//-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
-    '                       <li data-category-id="{{obj.categoryId}}">\n'+
-    '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
-    '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
-    '                               <span class="txt">{{obj.title}}</span>\n'+
-    '                           </a>\n'+
-    '                       </li>\n'+
-    '                   {{/each}}'
+    '<li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
+'        <a href="{{obj.linkPath}}" class="slide-box">\n'+
+'             <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
+'             <span class="txt">{{obj.title}}</span>\n'+
+'        </a>\n'+
+'   </li>\n'+
+'   {{/each}}'
+
+//-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
 var bestRankBuyProductTmpl =
     '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
@@ -484,6 +487,7 @@ $(function(){
             //console.log(err);
         }
 
+        //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
         function buildSubCatagoryTab(result, categoryId){
 
             var data = result.data;
@@ -491,13 +495,22 @@ $(function(){
 
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
-                    var categoryId = item['categoryId'];
+                    var subCategoryId = item['categoryId'];
+                    var gnbId = item['gnbId'];
                     var iconPath = '';                    
-                    if(categoryId){
-                        if (vcui.detect.isMobileDevice){
-                            iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId +'.svg';
+                    if(subCategoryId){
+                        if( item['title'] == "케어용품/소모품") {
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
+                            }
                         } else {
-                            iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
+                            }
                         }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
@@ -505,6 +518,7 @@ $(function(){
                     item['iconPath'] = iconPath;
                     return item;
                 });
+
 
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
                 $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
@@ -544,12 +558,14 @@ $(function(){
                 $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
+                    var gnbId = null;
 
                     if(e.type=='tabinit'){
 
                         categoryId = arr[0].categoryId;
-                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
-                            buildSubCatagoryTab(e, categoryId);
+                        gnbId = arr[0].gnbId;
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
+                            buildSubCatagoryTab(e, categoryId, gnbId);
                         }, errorRequest);
 
                     }else if(e.type=='tabbeforechange'){
@@ -561,10 +577,11 @@ $(function(){
                         e.preventDefault();
 
                         categoryId = arr[data.selectedIndex].categoryId;
+                        gnbId = arr[data.selectedIndex].gnbId;
 
-                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
-                            buildSubCatagoryTab(e, categoryId);
-                            $context.find('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
+                            buildSubCatagoryTab(e, categoryId, gnbId);
+                            $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
                             $(data.content).transit({opacity:1});
 
                         }, errorRequest);
@@ -599,6 +616,7 @@ $(function(){
                 $(window).trigger('breakpointchange.category');
             }
         }
+        //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
         // 많이 구매하는 제품 화면 렌더링
         function buildRankBuyProduct(result){
