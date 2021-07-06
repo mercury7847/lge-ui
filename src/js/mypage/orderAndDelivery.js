@@ -1699,8 +1699,7 @@
         });
     }
     //ARS출금동의 신청...
-    function setArsAgreeConfirm(){
-        //alert('출금동의 신청');
+    function setArsAgreeConfirm(){        
         var chk = paymentConfirmYN();
         if(!chk) return;
 
@@ -1766,9 +1765,6 @@
                 lgkorUI.hideLoading();
             }
         });
-
-        //$('.arsAgreeRequestCheck').show();
-
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     function arsAgreeConfirmCheck(){

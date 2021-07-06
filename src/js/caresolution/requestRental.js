@@ -1134,7 +1134,7 @@ console.log(sendata)
         lgkorUI.showLoading();
 
         setInputData('arsAgree', "N");
-
+        /*
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -1142,6 +1142,36 @@ console.log(sendata)
 
             setInputData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
+        */
+        $.ajax({
+            method : ajaxMethod,
+            url : ARS_AGREE_URL,
+            data : {},
+            async : false,
+            success : function(result){
+                
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
+                // BTOCSITE-98 add
+                if (vcui.detect.isIOS){
+                    $('.arsAgreeRequestCheck').show();                    
+                } else {                                        
+                    $('.arsAgreeRequestCheck').hide();
+                }
+                setInputData('arsAgree', result.data.success);
+                
+                // //BTOCSITE-98 add
+            },
+            error : function(error){
+                //alert('error');
+            },
+            complete : function(){
+                //alert('complete');
+                lgkorUI.hideLoading();
+            }
+        });
     }
 
     function changePrevisitRequest(abled){
