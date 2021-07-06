@@ -541,7 +541,7 @@
         sendata.confirmType = sendPaymentMethod;
 
         setHiddenData('arsAgree', "N");
-        
+        /*
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -551,6 +551,38 @@
 
             setHiddenData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
+        */
+        $.ajax({
+            method : ajaxMethod,
+            url : ARS_AGREE_URL,
+            data : sendata,
+            async : false,
+            success : function(result){                
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+                
+                // BTOCSITE-98 add
+                if (vcui.detect.isIOS){
+                    $('.arsAgreeRequestCheck').show();
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                } else {
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+                    $('.arsAgreeRequestCheck').hide();
+                }
+                
+                setHiddenData('arsAgree', result.data.success);
+                
+                // //BTOCSITE-98 add
+            },
+            error : function(error){
+                //alert('error');
+            },
+            complete : function(){
+                //alert('complete');
+                lgkorUI.hideLoading();
+            }
+        });
     }
 
     //납부 정보변경 취소...
