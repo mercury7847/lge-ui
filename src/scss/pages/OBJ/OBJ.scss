@@ -692,6 +692,13 @@ header {
             margin: 0 auto;
         }
     }
+    .uspImg-wrap {
+        max-width: 1600px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+        }
+    }
 }
 
 .btn.border.w {
