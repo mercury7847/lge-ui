@@ -252,7 +252,7 @@
 .support-home {
     overflow:hidden;
     padding-bottom:100px;
-    /* BTOCSITE-1433 - App> 고객지원 Main, pinch out 기능 제공 */
+      /* BTOCSITE-1433 - App> 고객지원 Main, pinch out 기능 제공 */
     .slick-slider{
         touch-action: auto;
     }
@@ -330,6 +330,9 @@
             max-width:100%;
             margin:0 auto;
             background-image: linear-gradient(92deg, #9c86e7, #ff537c 97%);
+            @include mobile {
+                display:none; //0625
+            }
         }
         &-inner {
             position: relative;
@@ -385,7 +388,6 @@
                 }
             }
         }
-
     }
 
 
@@ -512,7 +514,7 @@
         }
 
         @include mobile {
-            padding:24px 16px;
+            padding:33px 16px 24px; //0625
         }
     }
 
@@ -533,7 +535,7 @@
                     color:#fff;
                     font-weight:bold;
                     line-height:1.6;
-                    text-shadow: #000 1px 1px 18px;
+                    text-shadow: 0px 1px 20px rgba(0, 0, 0, .5); //0625
                 }
                 .btn-list-toggle {
                     display: inline-block;
@@ -736,6 +738,7 @@
 
         @include mobile {
             .support-list {
+                padding:0 0 60px; //0625
                 width:100%;
                 max-width:calc(100vw - 32px);
                 opacity:1;
@@ -743,13 +746,15 @@
 
                 .list-header {
                     .list-tit {
-                        font-size:27px;
+                        font-size:25px; //0625
+                        line-height: 32px; //0625
                     }
                 }
                 
                 ul {
                     max-width:336px;
                     width:100%;
+                    margin: 18px auto 0; //0625
                     > li {
                         a {
                             font-size:13px;
@@ -761,7 +766,7 @@
             }
 
             .slick-dots {
-                bottom:80px;
+                bottom:33px; //0625
             }
         }
     }
@@ -1277,14 +1282,17 @@
 
         @include mobile {
             overflow:hidden;
-            padding:24px 16px;
+            padding:33px 16px 24px; //0625
+            justify-content: flex-start; //0625
 
             .had-pd-inner {
                 padding:0;
             }
             .headline {
                 .tit {
-                    font-size:20px;
+                    font-size:18px; //0625
+                    line-height:23px; //0625
+                    margin-bottom: 10px; //0625
                     .user-name {
                         display: block;
                     }
@@ -1428,6 +1436,9 @@
                         right:12px;
                     }
                 }
+                .slick-dots {
+                    bottom:-24px; //0625
+                }
             }
         }
     }
@@ -1454,7 +1465,7 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc02.jpg") no-repeat center top; /* 0528 이미지변경 */
+                background: url("/lg5-common/images/CS/img-support-main-hero-pc03.jpg") no-repeat center top; //0625
                 background-size: cover;
             }
         }
@@ -1470,13 +1481,13 @@
 
             
             .hero-container {
-                height:460px;
+                height:370px; //0625
                 // background: none;
 
                 &:before {
-                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo02.jpg"); /* 0528 이미지변경 */
+                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo03.jpg"); //0625
                     background-size:cover;
-                    background-position:bottom center;
+                    background-position:center center; //0625
                 }
             }
 

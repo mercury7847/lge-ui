@@ -56,6 +56,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     slidesToScroll: 1,
                     lastFix : true
                 });
+
+                $(window).on('scroll', function(){
+                    var _scrollTop = $(this).scrollTop();
+                    self._scroll(_scrollTop)
+                });
+                // $(window).on('load', function(){
+                // });
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -136,6 +143,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
 
+            
         },
 
         _bindEvents: function(){
@@ -270,6 +278,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             }
+        },
+
+        _scroll: function(scrollTop){
+            var self = this;
+            var direction = scrollTop > self.prevScrollTop ? 1:-1;
+
+            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
+                return;
+            }
+            self._mobileGnbSticky(scrollTop, direction)
         },
 
         _arrowState: function(){
@@ -510,7 +528,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
         _mobileSetting: function(){
             var self = this;
-
+            var isSwipe = !!$('#sw_con').length;
+            
+            
+            if( isSwipe ) {
+                $('body').addClass('is-main-sticky-header');
+            }
+            
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
             self.$mobileNaviWrapper.find('img').remove();
             self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
@@ -550,6 +574,43 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }).on('accordioncollapse', function(e, data){
                 $(data.content).find('.ui_gnb_accordion').vcAccordion("collapseAll");
             });
+
+            self._setStoryUpdateCheck();
+
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
+            self.prevScrollTop = $(window).scrollTop() || 0;
+
+            $('.is-main-sticky-header #skipToContent').on('focusin', function(){
+                $('.is-main-sticky-header').addClass('show-skip')
+            }).on('blur', function(){
+                $('.is-main-sticky-header').removeClass('show-skip')
+            });
+        },
+
+        _mobileGnbSticky: function(scrollTop, direction){
+            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
+            var self = this;
+            var $scrollContainer = $('body');
+            
+
+            if( $scrollContainer.hasClass('is-main-sticky-header')) {
+                if( scrollTop > 0) {
+                    $scrollContainer.addClass('header-fixed')
+                } else {
+                    $scrollContainer.removeClass('header-fixed')
+                }
+
+                if( scrollTop > 84) {
+                    if( direction === 1 ) {
+                        $scrollContainer.addClass('scroll-down')
+                    } else if (direction === -1) {
+                        $scrollContainer.removeClass('scroll-down')
+                    }
+                } else {
+                    $scrollContainer.removeClass('scroll-down')
+                }
+                self.prevScrollTop = scrollTop;
+            }
         },
 
         _mypageOver: function(){
@@ -593,8 +654,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$hamburger.addClass('active');
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 replaceText.text("메뉴 닫기");
-                
-                self.$dimmed.show();   
+                self.$dimmed.show();
             }
 
         },
@@ -608,7 +668,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$hamburger.removeClass('active');
 
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-        }
+        },
+        _setStoryUpdateCheck: function(){
+            var $mobileNav = $('.mobile-nav-wrap');
+            var $list = $mobileNav.find('li');
+            var $storyList = $list.eq(2);
+
+            var ajaxUrl = $mobileNav.data('storyUrl');
+
+            if(ajaxUrl) {
+                lgkorUI.requestAjaxData(ajaxUrl,{},function(resultData){
+                    var data = resultData.data;
+                    if( data > 0 && resultData.status=== "success") $storyList.addClass('icon-update')
+                })
+            }
+        },
     });
 
     return Header;

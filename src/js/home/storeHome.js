@@ -1,3 +1,4 @@
+
 var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
 '       <a href="#{{obj.categoryId}}">{{obj.categoryName}}</a>\n'+
@@ -16,14 +17,16 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
     '   </div>\n'+
     '{{/each}}';
 
+//-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
-    '                       <li data-category-id="{{obj.categoryId}}">\n'+
+'                       <li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
     '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
     '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
     '                           </a>\n'+
     '                       </li>\n'+
     '                   {{/each}}'
+//-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
 var bestRankBuyProductTmpl =
     '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
@@ -64,26 +67,9 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '{{/each}}';
 
 var exhibitionTmpl = '{{#each obj in list}}\n'+
-    '   <li class="slide-conts ui_carousel_slide">\n'+
-    '       <div class="slide-box">\n'+
-    '           <div class="inner">\n'+
-    '               <div class="img">\n'+
-    '                   <img src=""'+
-    '                   alt="{{obj.imageAlt}}"'+
-    '                   data-pc-src="{{obj.pcImagePath}}"'+ 
-    '                   data-m-src="{{obj.mobileImagePath}}">'+
-    '               </div>\n'+
-    '               <div class="product-info {{obj.textClass}}">\n'+
-    '                   <p class="tit">{{#raw obj.title}}</p>\n'+
-    '                   <div class="date">{{obj.date}}</div>\n'+
-    '                   <a href="{{obj.modelUrlPath}}" class="btn border">자세히 보기</a>\n'+
-    '               </div>\n'+
-    '               <div class="product-list">\n'+
-    '                   <ul>{{#raw obj.productList}}</ul>\n'+
-    '               </div>\n'+                       
-    '           </div>\n'+
-    '       </div>\n'+
-    '   </li>\n'+
+    '   <div class="product-list">\n'+
+    '       <ul><li>{{#raw obj.productList}}</li></ul>\n'+
+    '   </div>\n'+
     '{{/each}}';
 
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
@@ -154,6 +140,39 @@ $(function(){
         var obj = vcui.uri.parseQuery(parseUrl.query);
         return name? obj[name] : obj;
     }
+    
+    function getEcProduct(item){
+        var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
+
+        function getCategoryName(){
+            if( item.subCategoryName != "" && item.subCategoryName != "undefined") {
+                return item.superCategoryName + "/" + item.categoryName + "/" + item.subCategoryName
+            } else {
+                return item.superCategoryName + "/" + item.categoryName; 
+            }
+        }
+
+        var currentEcValue = {
+            "model_name": displayName.trim(),
+            "model_id": item.modelId,					
+            "model_sku": item.modelName,					 
+            "model_gubun": item.modelGubunName		
+        }
+
+        if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
+            currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
+        }
+
+        if( item.obssellingprice != undefined  && item.obssellingprice !== null && item.obssellingprice !== "") {
+            currentEcValue.discounted_price = vcui.number.addComma(item.obssellingprice)
+        }
+
+        currentEcValue.brand=  "LG";
+        currentEcValue.category= getCategoryName()
+
+        return currentEcValue;
+    }
+
 
     function getEcProduct(item){
         var displayName = item.modelDisplayName.replace(/(<([^>]+)>)/ig,"");
@@ -187,39 +206,58 @@ $(function(){
         return currentEcValue;
     }
 
-    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+    var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
-        $('.ui_lifestyle_list').vcCarousel({
+    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
+        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
+            autoplay: true,
+            autoplaySpped: 5000,
+            infinite: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            swipeToSlide: true,
+            
+            dotsSelector: '.ui_wideslider_dots',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: false,
+            touchThreshold: 100,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150
+        });
+
+
+        /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
+        $context.find('.ui_lifestyle_list').vcCarousel({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100,
             responsive: [{
                 breakpoint: 100000,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                }
-            },{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]                
+                settings: { slidesToShow: 4, slidesToScroll: 1, }
+            }, { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }]
         });
+        /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
+
 
         $(window).on('breakpointchange.lifestyle', function(e){
 
             var breakpoint = window.breakpoint;    
             if(breakpoint.name == 'mobile'){                    
-                $('.ui_product_lifestyle').vcCarousel({
+                $context.find('.ui_product_lifestyle').vcCarousel({
                     infinite: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1                        
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
                 });
                 
             }else if(breakpoint.name == 'pc'){    
-                $('.ui_product_lifestyle').vcCarousel('destroy');                            
+                $context.find('.ui_product_lifestyle').vcCarousel('destroy');
             }    
         })
 
@@ -267,13 +305,12 @@ $(function(){
         
         // 직접관리하는 영역 끝
 
-        
-        var storeCategoryTabUrl = $('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
-        var storeSubCategoryTabUrl = $('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
-        var storeRankBuyProductUrl = $('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
-        var storeExhibitionProductUrl = $('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
-        var storeNewRecommendProductUrl = $('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
-        var exhibitionModelId = $('.ui_exhib_carousel').data('modelId');
+        var storeCategoryTabUrl = $context.find('.ui_category_tab').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCategoryTab.json';
+        var storeSubCategoryTabUrl = $context.find('.ui_category_tab_contents').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeSubCategoryTab.json';
+        var storeRankBuyProductUrl = $context.find('.ui_buy_product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
+        var storeExhibitionProductUrl = $context.find('.ui_exhib_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeExhibition.json';
+        var storeNewRecommendProductUrl = $context.find('.ui_new_product_carousel').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeNewRecommendProduct.json';
+        var exhibitionModelId = $context.find('.ui_exhib_carousel').data('modelId');
         var exhibitionModelIdArr = exhibitionModelId? exhibitionModelId.split('|') : '';
         var newExhibitionLocal = [];
 
@@ -339,7 +376,7 @@ $(function(){
                     if(list[index]){
                         
                         var newHtml = vcui.template(newFullItemTmpl, list[index]);
-                        var $track = $('.ui_new_product_carousel').find('.ui_carousel_track');
+                        var $track = $context.find('.ui_new_product_carousel').find('.ui_carousel_track');
                         var $appendTarget = $track.find('.ui_carousel_slide').eq(item);
                         if($appendTarget[0]) $appendTarget.after(newHtml);
                     }
@@ -351,17 +388,20 @@ $(function(){
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
 
-                        $('.ui_new_product_carousel').vcCarousel({
+                        $context.find('.ui_new_product_carousel').vcCarousel({
                             infinite: false,
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             variableWidth: true,
-                            lastFix: true
+                            lastFix: true,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 150,
+                            touchThreshold: 100
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
                         
-                        $('.ui_new_product_carousel').vcCarousel('destroy');
+                        $context.find('.ui_new_product_carousel').vcCarousel('destroy');
                     }    
                 })
 
@@ -380,14 +420,17 @@ $(function(){
                 var breakpoint = window.breakpoint;    
                 if(breakpoint.name == 'mobile'){    
                     
-                    $('.ui_recom_carousel').vcCarousel('destroy');
+                    $context.find('.ui_recom_carousel').vcCarousel('destroy');
                     
                 }else if(breakpoint.name == 'pc'){   
                     
-                    $('.ui_recom_carousel').vcCarousel({
+                    $context.find('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }    
             })
@@ -402,7 +445,6 @@ $(function(){
             var data = result.data;
             if(data && data.data){
                 var arr = data.data;
-
                 var nArr = vcui.array.map(newExhibitionLocal, function(item, index){
                     var nObj = item;
                     var codesArr = nObj['modelId']? nObj['modelId'].split(',') : '';
@@ -435,18 +477,36 @@ $(function(){
                         return item;
                     });
 
-                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});;
+                    /* 20210615 추천 기획전 구조변경 */
+                    nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
+                    //var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
+                    /* //20210615 추천 기획전 구조변경 */
+
                     return nObj;
                 });
 
-                var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-                $('.ui_exhib_carousel').find('.ui_carousel_track').html(exhibitionStr);
-                $('.ui_exhib_carousel').vcCarousel();
+                //console.log(nArr )
+                $('.ui_exhib_carousel .product-listCont').each(function(i,v) {
+                    //console.log(i,v)
+                    if(nArr[i]) {
+                        $(this).find('ul').html(nArr[i].productList );
+                    } 
+                    
+                })
 
-                $('body').vcLazyLoaderSwitch('reload', $('.ui_exhib_carousel'));
-                
+                /* 20210615 추천 기획전 구조변경 */
+                // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
+              
+                // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
+                /* //20210615 추천 기획전 구조변경 */
+                $context.find('.ui_exhib_carousel').vcCarousel({
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
+                });
+
+                $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
             }
-            
         }
 
 
@@ -454,6 +514,7 @@ $(function(){
             //console.log(err);
         }
 
+        //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
         function buildSubCatagoryTab(result, categoryId){
 
             var data = result.data;
@@ -461,10 +522,23 @@ $(function(){
 
                 var arr = data.data;
                 arr = vcui.array.map(arr, function(item,index){
-                    var categoryId = item['categoryId'];
+                    var subCategoryId = item['categoryId'];
+                    var gnbId = item['gnbId'];
                     var iconPath = '';                    
-                    if(categoryId){
-                        iconPath = '/lg5-common/images/PRS/'+ categoryId +'.svg';
+                    if(subCategoryId){
+                        if( item['title'] == "케어용품/소모품") {
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
+                            }
+                        } else {
+                            if (vcui.detect.isMobileDevice){
+                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
+                            } else {
+                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
+                            }
+                        }
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -473,7 +547,20 @@ $(function(){
                 });
 
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
-                $('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
+                $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
+
+                // 4개 이하일때 중앙정렬
+                if (arr.length < 4){
+                    $context.find('#'+categoryId).find('.ui_sub_category').css({
+                        'justify-content' : 'center'
+                    });
+                } else {
+                    /*
+                    $context.find('#'+categoryId).find('.ui_sub_category').css({
+                        'justify-content' : ''
+                    });
+                    */
+                }
 
             }
 
@@ -490,19 +577,21 @@ $(function(){
                 var tabStr = vcui.template(categoryTabTmpl, {list:arr});
                 var tabContentStr = vcui.template(categoryEmptyTabContentsTmpl, {list:arr});
 
-                $('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
-                $('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
+                $context.find('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
+                $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
 
-                $('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){    
+                $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
+                    var gnbId = null;
 
                     if(e.type=='tabinit'){
 
                         categoryId = arr[0].categoryId;
-                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
-                            buildSubCatagoryTab(e, categoryId);
+                        gnbId = arr[0].gnbId;
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
+                            buildSubCatagoryTab(e, categoryId, gnbId);
                         }, errorRequest);
 
                     }else if(e.type=='tabbeforechange'){
@@ -514,14 +603,14 @@ $(function(){
                         e.preventDefault();
 
                         categoryId = arr[data.selectedIndex].categoryId;
+                        gnbId = arr[data.selectedIndex].gnbId;
 
-                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{categoryId:categoryId}, function(e){
-                            buildSubCatagoryTab(e, categoryId);
+                        lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
+                            buildSubCatagoryTab(e, categoryId, gnbId);
                             $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
                             $(data.content).transit({opacity:1});
 
                         }, errorRequest);
-                    
                         
                     }else{
                         $(data.content).transit({opacity:1});
@@ -529,29 +618,33 @@ $(function(){
                 }).vcTab();
 
 
-                $('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
+                $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
                 $(window).on('breakpointchange.category', function(e){
 
                     var breakpoint = window.breakpoint;    
                     if(breakpoint.name == 'mobile'){    
-                        $('.ui_category_carousel').vcCarousel({
+                        $context.find('.ui_category_carousel').vcCarousel({
                             infinite: true,
                             variableWidth : false,
                             dots: true,
                             slidesToShow: 3,
-                            slidesToScroll: 3
+                            slidesToScroll: 3,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 150,
+                            touchThreshold: 100
                         });
 
                         
                     }else if(breakpoint.name == 'pc'){    
-                        $('.ui_category_carousel').vcCarousel('destroy');                            
+                        $context.find('.ui_category_carousel').vcCarousel('destroy');
                     }    
                 })
 
                 $(window).trigger('breakpointchange.category');
             }
         }
+        //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
         // 많이 구매하는 제품 화면 렌더링
         function buildRankBuyProduct(result){
@@ -585,7 +678,7 @@ $(function(){
                     var bestObj = $.extend(true,rankBuyProductLocal,sortArr[0]);
                     bestObj.ecProduct = JSON.stringify(getEcProduct(bestObj));
                     var bestRankBuyProductHtml = vcui.template(bestRankBuyProductTmpl, bestObj);
-                    $('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
+                    $context.find('.ui_buy_product').find('.best').html(bestRankBuyProductHtml);
 
                     if(window.breakpoint && window.breakpoint.name){
 
@@ -603,9 +696,9 @@ $(function(){
                         item.ecProduct = JSON.stringify(getEcProduct(item));
                     })
                     var rankBuyProductHtml = vcui.template(rankBuyProductTmpl, {list:sortArr});
-                    $('.ui_buy_product').find('.list').html(rankBuyProductHtml);   
+                    $context.find('.ui_buy_product').find('.list').html(rankBuyProductHtml);
     
-                    $('body').vcLazyLoaderSwitch('reload', $('.ui_buy_product'));
+                    $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_buy_product'));
 
                 }
             }

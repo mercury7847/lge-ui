@@ -14,10 +14,20 @@
         .tabs-wrap {
             text-align:left;
             &.border-type {
-                max-width:1380px;
+                max-width:1460px;
                 margin:0 auto;
+                padding:0 40px;
+                &:before {
+                    left:40px;
+                    right:40px;
+                }
                 @include mobile {
                     padding:0;
+
+                    &:before {
+                        left:0;
+                        right:0;
+                    }
                 }
             }
         }

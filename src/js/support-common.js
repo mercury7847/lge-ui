@@ -1,8 +1,12 @@
 ;(function(global){
     if(!global['lgkorUI']) global['lgkorUI'] = {};
+
+    function getLoginFlag(){
+        return $('html').data('login') == 'Y' || $('.support-home').data('login') == 'Y' ? true : false;
+    }
     
     var csUI = {
-        isLogin: $('html').data('login') == 'Y' ? true : false,
+        isLogin: getLoginFlag(),
         cookie: {
             setCookie: function(cookieName, value, expire, deleteCookie) {
                 var cookieText;
@@ -128,6 +132,9 @@
                 autoplay: false,
                 slidesToScroll: 4,
                 slidesToShow: 4,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -1387,9 +1394,29 @@ function validatePhone(value){
         return false;
     }
 }
+
 (function($){
     vcui.require(['support/common/quickMenu.min'], function() {
-        $('#quickMenu').vcQuickMenu();
+        var isSwipe = !!$('#sw_con').length;
+
+        if (isSwipe && $('#floatBox').length == 0){
+            $('.swiper-container').after('<div id="floatBox"></div>');
+        }
+        
+        if (isSwipe && $('#floatBox').find('#quickMenu').length < 1){
+            var quickMenu = $('#quickMenu').remove();
+            // preload 대응 현재 슬라이드가 고객지원이 아닐때는 숨김처리
+            if ($('.swiper-slide-active').data().hash !== 'support'){
+                $(quickMenu).hide();
+            }
+            $('#floatBox').append(quickMenu);
+            $('#quickMenu').vcQuickMenu();
+        }
+
+        if (isSwipe == false){
+            $('#quickMenu').vcQuickMenu();
+        }
+        
     });
 
     function commonInit(){
@@ -1401,7 +1428,8 @@ function validatePhone(value){
             var $this = $(this),
                 value = $this.val();
             
-            var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            //var regex = /(^[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z])|[^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]|([^가-힣ㄱ-ㅎㅏ-ㅣㄱ-ㅎ가-힣ㅏ-ㅣㆍ ᆢa-zA-Z]$)/g;
+            var regex = /[0-9]/g;
             
             if (regex.test(value)) {
                 $this.val(value.replace(regex, ''));

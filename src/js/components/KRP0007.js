@@ -69,7 +69,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT")}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -168,7 +168,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
@@ -220,7 +220,9 @@
     
                     //스토리지에 저장된 필터 체크
                     //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
-                    var storageFilters = {};//lgkorUI.getStorage(storageName);
+                    // var storageFilters = {};//lgkorUI.getStorage(storageName);
+                    //BTOCSITE 1842 - 2021-07-02 상품에서 뒤로가기시 스토리지에 저장된 필터체크 다시 활성화
+                    var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
 
                     var change = false;
@@ -869,6 +871,11 @@
                     "category": getEcCategoryName(item) 
                 }
                 item.ecProduct = JSON.stringify(ecProduct);
+                // item.isShow = true;
+                // console.log("item %o",item);
+
+                item.isShow = lgkorUI.isShowDate('20210601','20210901')
+                
                 return vcui.template(productItemTemplate, item);
             },
 
@@ -928,25 +935,23 @@
             },
 
             //비교하기 저장 유무 체크...
-            setCompares:function(){
+            setCompares: function () {
                 var self = this;
-
                 var compare = self.$productList.find('li .product-compare a');
                 compare.removeClass('on');
-                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                if (!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
                 else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
-                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
-                    //if(!vcui.isEmpty(storageCompare[categoryId]))
-                    for(var i in storageCompare[categoryId]){
-                        var modelID = storageCompare[categoryId][i]['id'];
+                    storageCompare['data'].forEach(function (item) {
+                        var modelID = item['id'];
                         compare = self.$productList.find('li .product-compare a[data-id=' + modelID + ']');
                         compare.addClass('on');
                         compare.find('.blind').text('선택됨');
-                    }
+                    });
                 }
             },
 

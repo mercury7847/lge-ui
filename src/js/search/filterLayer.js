@@ -89,6 +89,7 @@ var FilterLayer = (function() {
                 self.resetFilter(self.resetData, self.firstLoadTrigger);
             }
         });
+        
     }
 
     //public
@@ -109,13 +110,17 @@ var FilterLayer = (function() {
 
         _bindEvents: function() {
             var self = this;
+            console.log()
 
             // 필터 아코디언 오픈시 슬라이더 업데이트
             self.$layFilter.on('accordionexpand', '.ui_filter_accordion',function(e,data){
                 if(data.content.find('.ui_filter_slider').length > 0) {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
-                }   
+                }
             });
+            self.$layFilter.on()
+            
+            // self.$openFilterDefault();
 
             // 필터안 체크박스 이벤트 처리
             self.$layFilter.on('change', '.ui_filter_accordion input', function(e){
@@ -135,6 +140,7 @@ var FilterLayer = (function() {
             // 모바일 필터박스 열기
             $('div.btn-filter a').on('click', function(e){
                 e.preventDefault();
+                
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
@@ -149,6 +155,17 @@ var FilterLayer = (function() {
 
             // 모바일 필터박스 닫기
             $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                e.preventDefault();
+                self.$layFilter.removeClass('open');
+                
+                lgkorUI.removeHistoryBack(self.cid);
+
+                $('html, body').css({
+                    overflow:"visible"
+                });
+            });
+            // BTOCSITE-2161 :: dim 클릭시 모바일 필터박스 닫기
+            self.$layFilter.find('.dimmed').on('click', function(e){
                 e.preventDefault();
                 self.$layFilter.removeClass('open');
                 
@@ -249,6 +266,19 @@ var FilterLayer = (function() {
             }
 
             self._filterBindCustomEvents();
+        },
+
+        //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
+        _filterDefaultOpen:function () {
+            var $searchTab = $('.contents.search .search-tabs-wrap .tabs');
+            var $list = $searchTab.find('li');
+            var $currentList = $list.filter('.on');
+            var labelName = $currentList.attr('data-label');
+
+            if( labelName == "케어용품/소모품" || labelName == "제품" || labelName == "고객지원") {
+                var $category = $('.contents.search .ui_filter_accordion');
+                $category.vcAccordion("expandAll");
+            }
         },
 
         _filterUnbindCustomEvents: function() {
@@ -469,6 +499,7 @@ var FilterLayer = (function() {
             self.$layFilter.find('div.btn-reset button').hide();
 
             //for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
+            self._filterDefaultOpen();
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
@@ -748,6 +779,7 @@ var FilterLayer = (function() {
                 $pa.vcAccordion('expand',idx,false);
             });
         }
+
     }
     return FilterLayer;
 })();

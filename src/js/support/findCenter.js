@@ -608,6 +608,8 @@ function moveConsultPage() {
                     keywords = {
                         latitude:self.latitude,
                         longitude:self.longitude
+                        ,pSi:self.pSi, // 210614 추가
+                        pGu:self.pGu  // 210614 추가
                     };    
                     break;
                 case 'current':
@@ -669,6 +671,8 @@ function moveConsultPage() {
 
                 self.searchResultMode = true;
                 self.schReaultTmplID = "localSearch";
+                self.pSi = self.$citySelect.val(); // 210614 추가
+                self.pGu = self.$boroughSelect.val(); // 210614 추가
                 
                 self.searchAddressToCoordinate(trim, callback);
             }

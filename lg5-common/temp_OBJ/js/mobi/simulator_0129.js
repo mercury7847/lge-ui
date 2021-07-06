@@ -157,34 +157,34 @@ var go_shop_model = "";
                     {
                         name: 'FENIX',
                         colors: [
-                            { name: '페닉스<br />보타닉', colorChip: 'color_01fn_botanic.png', colorCode: 'fn_botanic' },
-                            { name: '페닉스<br />샌드', colorChip: 'color_01fn_sand.png', colorCode: 'fn_sand' },
-                            { name: '페닉스<br />스톤', colorChip: 'color_01fn_stone.png', colorCode: 'fn_stone' },
+                            { name: '보타닉', colorChip: 'color_01fn_botanic.png', colorCode: 'fn_botanic' },
+                            { name: '샌드', colorChip: 'color_01fn_sand.png', colorCode: 'fn_sand' },
+                            { name: '스톤', colorChip: 'color_01fn_stone.png', colorCode: 'fn_stone' },
                         ],
                     },
                     {
                         name: '솔리드',
                         colors: [
-                            { name: '솔리드<br />맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
-                            { name: '솔리드<br />실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
-                            { name: '솔리드<br />그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
+                            { name: '맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
+                            { name: '실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
+                            { name: '그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
                         ],
                     },
                     {
                         name: '미스트',
                         colors: [
-                            { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
-                            { name: '미스트<br />핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
-                            { name: '미스트<br />민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
-                            { name: '미스트<br />실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                            { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
+                            { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
+                            { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
                         ],
                     },
                     {
                         name: '네이쳐',
                         colors: [
-                            { name: '네이쳐<br />그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
-                            { name: '네이쳐<br />블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
-                            { name: '네이쳐<br />화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
+                            { name: '그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
+                            { name: '블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
+                            { name: '화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
                         ],
                     },
                 ],
@@ -273,34 +273,34 @@ var go_shop_model = "";
                     {
                         name: 'FENIX',
                         colors: [
-                            { name: '페닉스<br />보타닉', colorChip: 'color_01fn_botanic.png', colorCode: 'fn_botanic' },
-                            { name: '페닉스<br />샌드', colorChip: 'color_01fn_sand.png', colorCode: 'fn_sand' },
-                            { name: '페닉스<br />스톤', colorChip: 'color_01fn_stone.png', colorCode: 'fn_stone' },
+                            { name: '보타닉', colorChip: 'color_01fn_botanic.png', colorCode: 'fn_botanic' },
+                            { name: '샌드', colorChip: 'color_01fn_sand.png', colorCode: 'fn_sand' },
+                            { name: '스톤', colorChip: 'color_01fn_stone.png', colorCode: 'fn_stone' },
                         ],
                     },
                     {
                         name: '솔리드',
                         colors: [
-                            { name: '솔리드<br />맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
-                            { name: '솔리드<br />실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
-                            { name: '솔리드<br />그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
+                            { name: '맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
+                            { name: '실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
+                            { name: '그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
                         ],
                     },
                     {
                         name: '미스트',
                         colors: [
-                            { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
-                            { name: '미스트<br />핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
-                            { name: '미스트<br />민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
-                            { name: '미스트<br />실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                            { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
+                            { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
+                            { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
                         ],
                     },
                     {
                         name: '네이쳐',
                         colors: [
-                            { name: '네이쳐<br />그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
-                            { name: '네이쳐<br />블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
-                            { name: '네이쳐<br />화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
+                            { name: '그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
+                            { name: '블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
+                            { name: '화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
                         ],
                     },
                 ],
@@ -378,26 +378,26 @@ var go_shop_model = "";
                 supportedSurface: [{
                         name: '솔리드',
                         colors: [
-                            { name: '솔리드<br />맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
-                            { name: '솔리드<br />실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
-                            { name: '솔리드<br />그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
+                            { name: '맨해튼 미드나잇', colorChip: 'color_02st_black.png', colorCode: 'st_black' },
+                            { name: '실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
+                            { name: '그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
                         ],
                     },
                     {
                         name: '미스트',
                         colors: [
-                            { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
-                            { name: '미스트<br />핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
-                            { name: '미스트<br />민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
-                            { name: '미스트<br />실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                            { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
+                            { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
+                            { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
                         ],
                     },
                     {
                         name: '네이쳐',
                         colors: [
-                            { name: '네이쳐<br />그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
-                            { name: '네이쳐<br />블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
-                            { name: '네이쳐<br />화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
+                            { name: '그레이', colorChip: 'color_04nm_gray.png', colorCode: 'nm_gray' },
+                            { name: '블랙', colorChip: 'color_04nm_black.png', colorCode: 'nm_black' },
+                            { name: '화이트', colorChip: 'color_04nm_white.png', colorCode: 'nm_white' },
                         ],
                     },
                 ],
@@ -429,14 +429,14 @@ var go_shop_model = "";
                 supportedSurface: [{
                         name: '솔리드',
                         colors: [
-                            { name: '솔리드<br />실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
-                            { name: '솔리드<br />그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
+                            { name: '실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
+                            { name: '그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
                         ],
                     },
                     {
                         name: '네이쳐',
                         colors: [
-                            { name: '네이쳐<br />베이지', colorChip: 'color_04nm_beige.png', colorCode: 'nm_beige' },
+                            { name: '베이지', colorChip: 'color_04nm_beige.png', colorCode: 'nm_beige' },
                         ],
                     },
                 ],
@@ -468,14 +468,14 @@ var go_shop_model = "";
                 supportedSurface: [{
                         name: '솔리드',
                         colors: [
-                            { name: '솔리드<br />실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
-                            { name: '솔리드<br />그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
+                            { name: '실버', colorChip: 'color_02st_silver.png', colorCode: 'st_silver' },
+                            { name: '그린', colorChip: 'color_02st_green.png', colorCode: 'st_green' },
                         ],
                     },
                     {
                         name: '미스트',
                         colors: [
-                            { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                            { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
                         ],
                     },
                 ],
@@ -506,8 +506,8 @@ var go_shop_model = "";
                 supportedSurface: [{
                     name: '카밍',
                     colors: [
-                        { name: '카밍<br />그린', colorChip: 'color-04-calm-green.png', colorCode: 'calm_green' },
-                        { name: '카밍<br />베이지', colorChip: 'color-04-calm-beige.png', colorCode: 'calm_beige' },
+                        { name: '그린', colorChip: 'color-04-calm-green.png', colorCode: 'calm_green' },
+                        { name: '베이지', colorChip: 'color-04-calm-beige.png', colorCode: 'calm_beige' },
                     ],
                 }, ],
             },
@@ -533,6 +533,9 @@ var go_shop_model = "";
                             { colorCode: 'nm_green', filename: 'appliances/wash/wt_door01_04nm_green.png' },
                             { colorCode: 'nm_beige', filename: 'appliances/wash/wt_door01_04nm_beige.png' },
                             { colorCode: 'nm_pink', filename: 'appliances/wash/wt_door01_04nm_pink.png' },
+                            { colorCode: 'nm_redwood', filename: 'appliances/wash/wt_door01_nature_redwood.png' },
+                            { colorCode: 'nm_claybrown', filename: 'appliances/wash/wt_door01_nature_claybrown.png' },
+                            // 210615 wash Top - Surface colorCode 신규 추가
                         ],
                     },
                     {
@@ -545,15 +548,21 @@ var go_shop_model = "";
                             { colorCode: 'nm_green', filename: 'appliances/wash/wt_door02_04nm_green.png' },
                             { colorCode: 'nm_beige', filename: 'appliances/wash/wt_door02_04nm_beige.png' },
                             { colorCode: 'nm_pink', filename: 'appliances/wash/wt_door02_04nm_pink.png' },
+                            { colorCode: 'nm_redwood', filename: 'appliances/wash/wt_door02_nature_redwood.png' },
+                            { colorCode: 'nm_claybrown', filename: 'appliances/wash/wt_door02_nature_claybrown.png' },
+                            // 210615 wash Bottom - Surface colorCode 신규 추가
                         ],
                     },
                 ],
                 supportedSurface: [{
                     name: '네이쳐',
                     colors: [
-                        { name: '네이쳐<br />그린', colorChip: 'color_04nm_green.png', colorCode: 'nm_green' },
-                        { name: '네이쳐<br />베이지', colorChip: 'color_04nm_beige.png', colorCode: 'nm_beige' },
-                        { name: '네이쳐<br />핑크', colorChip: 'color_04nm_pink.png', colorCode: 'nm_pink' },
+                        { name: '그린', colorChip: 'color_04nm_green.png', colorCode: 'nm_green' },
+                        { name: '베이지', colorChip: 'color_04nm_beige.png', colorCode: 'nm_beige' },
+                        { name: '핑크', colorChip: 'color_04nm_pink.png', colorCode: 'nm_pink' },
+                        { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'nm_redwood' },
+                        { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'nm_claybrown' },
+                        // 210615 워시타워 - Surface colors name 신규 추가
                     ],
                 }, ],
             },
@@ -583,8 +592,8 @@ var go_shop_model = "";
                 supportedSurface: [{
                     name: '카밍',
                     colors: [
-                        { name: '카밍<br />그린', colorChip: 'color-04-calm-green.png', colorCode: 'calm_green' },
-                        { name: '카밍<br />베이지', colorChip: 'color-04-calm-beige.png', colorCode: 'calm_beige' },
+                        { name: '그린', colorChip: 'color-04-calm-green.png', colorCode: 'calm_green' },
+                        { name: '베이지', colorChip: 'color-04-calm-beige.png', colorCode: 'calm_beige' },
                     ],
                 }, ],
             },
@@ -609,13 +618,19 @@ var go_shop_model = "";
                     Surface: [
                         { colorCode: 'mg_green', filename: 'appliances/styler/styler_03mg_green.png' },
                         { colorCode: 'mg_beige', filename: 'appliances/styler/styler_03mg_beige.png' },
+                        { colorCode: 'mg_redwood', filename: 'appliances/styler/styler_mist_redwood.png' },
+                        { colorCode: 'mg_claybrown', filename: 'appliances/styler/styler_mist_clay brown.png' },
+                        // 210615 styler - Surface colorCode 신규 추가
                     ],
                 }, ],
                 supportedSurface: [{
                     name: '미스트',
                     colors: [
-                        { name: '미스트<br />그린', colorChip: 'color_03mg_green.png', colorCode: 'mg_green' },
-                        { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                        { name: '그린', colorChip: 'color_03mg_green.png', colorCode: 'mg_green' },
+                        { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                        { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'mg_redwood' },
+                        { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'mg_claybrown' },
+                        // 210615 styler - colors 신규 추가
                     ],
                 }, ],
             },
@@ -645,8 +660,8 @@ var go_shop_model = "";
                 supportedSurface: [{
                     name: '미스트',
                     colors: [
-                        //{ name : '미스트<br />그린', colorChip : 'color_03mg_green.png', colorCode : 'mg_green'},
-                        { name: '미스트<br />베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
+                        //{ name : '그린', colorChip : 'color_03mg_green.png', colorCode : 'mg_green'},
+                        { name: '베이지', colorChip: 'color_03mg_beige.png', colorCode: 'mg_beige' },
                     ],
                 }, ],
             }
@@ -1937,9 +1952,9 @@ var go_shop_model = "";
             <div class="select_objet_item">
                <p class="name">Fenix<button type="button" class="btn-Tooltip">Tooltip</button></p>
                 <ul>
-                    <li><button type="button" class="btn-objet active">페닉스<br />보타닉</button></li>
-                 <li><button type="button" class="btn-objet">페닉스<br />샌드</button></li>
-                    <li><button type="button" class="btn-objet">페닉스<br />스톤</button></li>
+                    <li><button type="button" class="btn-objet active">보타닉</button></li>
+                 <li><button type="button" class="btn-objet">샌드</button></li>
+                    <li><button type="button" class="btn-objet">스톤</button></li>
                 </ul>
             </div>
             */
@@ -2003,19 +2018,19 @@ var go_shop_model = "";
                 var scrollbar = window.Scrollbar;
                 if(window.Scrollbar.has(targetSideBarArea)){
                     var scrollx = window.Scrollbar.get(targetSideBarArea).offset.x;
-					window.Scrollbar.get(targetSideBarArea).destroy();
+                    window.Scrollbar.get(targetSideBarArea).destroy();
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, {});
-					var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
-					scrollbar.scrollLeft = left;
-						//window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
-					
+                    var left = targetSideBarArea.querySelector('.active') ? targetSideBarArea.querySelector('.active').offsetParent.offsetLeft : 0;
+                    scrollbar.scrollLeft = left;
+                        //window.Scrollbar.get(targetSideBarArea).scrollTo(scrollx, 0, 0);
+                    
                 }else{
                     targetSideBarArea.innerHTML = outputHtml;
                     scrollbar.init(targetSideBarArea, { });
                 }
             }
-			*/
+            */
             if (targetSideBarArea !== null && window.Scrollbar) {
                 if (window.Scrollbar.has(targetSideBarArea)) {
 
@@ -2130,7 +2145,7 @@ var go_shop_model = "";
             // 인기조합 선택 부 (s)
             /*
             ex Html
-			    <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
+                <li><button type="button" class="btn-favo btn-name01" data-id="name01">Name01</button></li>
              */
 
             var targetSideBarFavArea = (typeof document.querySelector('[data-simulator-sidebar-fav-area]') !== 'undefined') ?

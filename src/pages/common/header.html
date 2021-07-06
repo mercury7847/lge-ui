@@ -82,26 +82,19 @@
         <div class="header-bottom" role="navigation">
             <!-- Mobile 로그인 영역 -->
             <div class="login-mobile">
-                <!-- 로그인 전 -->
                 <div class="login-info before-login">
-                    <a href="#" class="text">로그인해주세요.</a>
-                    <!-- 210331 수정 [모바일 마이페이지 버튼 추가] -->
-                    <div class="btn-mypage">
-                        <a href="#"><span class="blind">마이페이지</span></a>
+                    <a href="/sso/api/Login" class="text">로그인해주세요</a>
+                    <div class="btn-mypage after-login">
+                        <a href="/my-page"><span class="blind">마이페이지<em>로그인중</em></span></a>
                     </div>
-                    <!-- // 210331 수정 [모바일 마이페이지 버튼 추가] -->
                 </div>
-                <!-- 로그인 후 -->
                 <div class="login-info after-login">
-                    <a href="#" class="text"><span>이엘지</span>님 안녕하세요.</a><!-- 210326 수정 [마침표 추가] -->
-                    <!-- 210324 수정 [모바일 마이페이지 버튼 추가] -->
-                    <div class="btn-mypage">
-                        <a href="#"><span class="blind">마이페이지</span></a>
+                    <a href="/my-page" class="text"><span></span>님 안녕하세요.</a>
+                    <div class="btn-mypage after-login">
+                        <a href="/my-page"><span class="blind">마이페이지<em>로그인중</em></span></a>
                     </div>
-                    <!-- // 210324 수정 [모바일 마이페이지 버튼 추가] -->
-                    <!-- 210305 수정 [로그아웃 버튼 추가] -->
                     <div class="btn-logout">
-                        <a href="#"><span>로그아웃</span></a>
+                        <a href="/sso/api/Logout"><span>로그아웃</span></a>
                     </div>
                 </div>
             </div>
@@ -1233,7 +1226,8 @@
                             </div>
                             <!-- //Category Layer -->
                         </li>
-                        <li>
+                        <!-- 210608 컨텐츠 업데이트 표기 클래스 추가  -->
+                        <li class="icon-update">
                             <!-- [D] [1Depth] Click, Hover - .active 추가 -->
                             <a href="#" class="nav-item">스토리</a>
                             <!-- Category Layer -->
@@ -1860,13 +1854,16 @@
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
 <!-- Mobile 메인 메뉴 -->
 <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
-<div class="mobile-nav-wrap">
+<!-- 210609 수정  data-story-url="url" 추가 -->
+<div class="mobile-nav-wrap" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
     <ul class="nav">
-        <li><a href="#n" class="nav-item on">홈</a></li>
-        <li><a href="#n" class="nav-item">스토어</a></li>
-        <li><a href="#n" class="nav-item">스토리</a></li>
-        <li><a href="#n" class="nav-item">고객지원</a></li>
-        <li><a href="#n" class="nav-item">케어솔루션</a></li>
+        <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
+        <li><a href="#home" class="nav-item on" >홈</a></li>
+        <li><a href="#store" class="nav-item" >스토어</a></li>
+        <li><a href="#story" class="nav-item" >스토리</a></li>
+        <li><a href="#support" class="nav-item" >고객지원</a></li>
+        <li><a href="#care-solutions" class="nav-item" >케어솔루션</a></li>
+        <!-- //BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
     </ul>
 </div>
 }

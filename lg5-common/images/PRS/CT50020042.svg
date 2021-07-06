@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_AirCare_64" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-1,.cls-3,.cls-4{fill:none}.cls-4{stroke-miterlimit:10}.cls-3,.cls-4{stroke-width:1.5px;stroke:#0a0607;stroke-linecap:round}.cls-3{stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle" d="M0 0H64V64H0z" class="cls-1" transform="translate(0 0)"/>
+    <g id="FILTER_64" transform="translate(873.452 -1284.695)">
+        <path id="Rectangle-61-3" d="M0 0H40V40H0z" class="cls-1" transform="translate(-861.452 1296.695)"/>
+        <g id="circle_128-3">
+            <path id="Path_57" d="M-841.452 1284.695a32 32 0 0 1 32 32 32 32 0 0 1-32 32 32 32 0 0 1-32-32 32 32 0 0 1 32-32z" class="cls-1"/>
+            <path id="Path_58" fill="none" stroke="#070203" stroke-miterlimit="10" stroke-width="1.5px" d="M-841.452 1285.445a31.25 31.25 0 0 1 31.25 31.25 31.25 31.25 0 0 1-31.25 31.25 31.25 31.25 0 0 1-31.25-31.25 31.25 31.25 0 0 1 31.25-31.25z"/>
+        </g>
+        <g id="img-3">
+            <path id="Rectangle-84" d="M-855.455 1302.436a1.746 1.746 0 0 1 1.75-1.741h24.5a1.746 1.746 0 0 1 1.75 1.741v29.018a1.745 1.745 0 0 1-1.749 1.741h-24.5a1.746 1.746 0 0 1-1.75-1.741z" class="cls-3"/>
+            <path id="Rectangle-84-2" d="M-851.661 1306.208a1.745 1.745 0 0 1 1.75-1.741h16.916a1.745 1.745 0 0 1 1.75 1.741v21.474a1.745 1.745 0 0 1-1.75 1.741h-16.916a1.745 1.745 0 0 1-1.75-1.741z" class="cls-3"/>
+            <g id="그룹_146">
+                <path id="Stroke_3-22" d="M-851.012 1309.376h19.118" class="cls-4"/>
+                <path id="Stroke_3-22-2" d="M-851.012 1314.423h19.118" class="cls-4"/>
+                <path id="Stroke_3-22-3" d="M-851.012 1319.468h19.118" class="cls-4"/>
+                <path id="Stroke_3-22-4" d="M-851.012 1324.514h19.118" class="cls-4"/>
+            </g>
+            <path id="Stroke_3-22-5" d="M-841.455 1329.213v-24.536" class="cls-4"/>
+        </g>
+    </g>
+</svg>

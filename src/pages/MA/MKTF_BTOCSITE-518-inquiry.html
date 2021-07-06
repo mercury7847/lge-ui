@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 210330 스키티챗JS 추가 -->
+    @@include('./common/head.html', {
+        pageCSS: ["MA/MA"],
+        pageJS: ["components/KRP0005"],
+        pageTitle: "온라인 견적 문의 내역 조회 | LG전자",
+        pageDesc: "온라인 견적문의 등록 시 e-mail로 발송 받은 접수번호를 입력하여 견적 내역을 조회하실 수 있습니다."
+    })
+    <!-- //210330 스키티챗JS 추가 -->
+    <!-- pageCSS: ["STC/STC"], -->
+<body>
+<div class="wrap">
+    <!-- 210311_H1추가 -->
+    @@include('./common/header.html', {
+        hiddenTitle: "온라인 견적 문의 내역 조회" 
+    })
+    <!-- //210311_H1추가 -->    
+    <div class="container">
+        <div class="contents sysaircon-form-wrap">
+            <div class="cont-wrap inquiry-search">
+                <div class="form-wrap">
+                    <div class="form-head">
+                        <h2 class="headTitle">온라인 견적 문의 내역 조회</h2>
+                        <p class="desc">온라인 견적문의 등록 시 e-mail로 발송 받은 접수번호를 입력하여 견적 내역을 조회하실 수 있습니다.</p>
+                    </div>
+                    <section class="component KRP0031">
+                        <div class="search-wrap">
+                            <form action="/html/MA/MKTF_BTOCSITE-518-inquiryResult.html" method="GET" id="searchForm" target="_blank" novalidate>
+                                <input type="hidden" name="force" value="false">
+                                <div class="search-box">
+                                    <div class="search-input">
+                                        <input type="text" name="search" id="searchKeyword" class="ui_input_clearbutton" placeholder="접수번호를 입력하세요" minlength="2" autocomplete="off" data-clear-button="button.btn-delete" data-required="true" data-error-msg="접수번호를 입력하세요">
+                                        <button type="button" class="btn-delete"><span class="blind">검색어 삭제</span></button>
+                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                    </div>
+                                </div>	
+                            </form>
+                        </div><!-- //.search-wrap-->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include('./common/footer.html')
+    <!-- 210226 플로팅버튼 추가 -->
+    <!-- @@include('./common/footer.html') -->
+    <div class="floating-wrap">
+        <!-- 210330 스키티챗 추가 -->
+        <!-- component / Sticky chat -->
+        @@include('./common/partials/KRP0005.html')
+        <!-- // component / Sticky chat -->
+        <!-- //210330 스키티챗 추가 -->
+        <!-- component / Scroll to the top -->
+        @@include('./common/partials/KRP0004.html')
+        <!-- // component / Scroll to the top -->
+    </div>
+    <!-- //210226 플로팅버튼 추가 -->
+</div>
+
+
+<script src="/lg5-common/js/support-common.min.js"></script>
+<script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
+<script src="/lg5-common/js/store/systemAircon.min.js"></script>
+</body>
+</html>

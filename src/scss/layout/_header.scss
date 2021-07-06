@@ -109,6 +109,20 @@
             > li {
                 display: inline-block;
                 border-top: 0;
+                &.icon-update {
+                    .nav-item {
+                        &:before {
+                            position: absolute;
+                            top: 6px;
+                            right: 2px;
+                            width: 4px;
+                            height: 4px;
+                            border-radius: 2px;
+                            background-color: #da0f47;
+                            content: '';    
+                        }
+                    }
+                }
             }
             .nav-item {
                 padding: 6px 6px 8px;
@@ -611,6 +625,20 @@
             vertical-align: top;
             &:last-child {
                 padding-right: 0;
+            }
+            &.icon-update {
+                .nav-item {
+                    &:before {
+                        position: absolute;
+                        top: 5px;
+                        right: -5px;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 2px;
+                        background-color: #da0f47;
+                        content: '';    
+                    }
+                }
             }
         }
 
@@ -1336,6 +1364,25 @@
             padding-top: 60px;
             background-color: #fff;
         }
+
+        //210701 앱 알람아이콘 N 뱃지 추가
+        .count{
+            position: absolute;
+            top: 2px;
+            left: 18px;
+            display: block;
+            min-width: 14px;
+            height: 14px;
+            padding: 2px 2px;
+            border-radius: 8px;
+            background-color: $color-primary;
+            font-weight: 700;
+            font-size: 10px;
+            line-height: 10px;
+            color: $color-white;
+            text-align: center;
+        }
+        //210701 앱 알람아이콘 N 뱃지 추가
     }
 
     &.active {
@@ -1367,8 +1414,15 @@
                     padding-bottom:60px;
                 }
             }
+            //210701 앱 알람아이콘 N 뱃지 추가
+            .count {
+                display: none;
+            }
+            //210701 앱 알람아이콘 N 뱃지 추가
+
         }
     }
+
 }
 
 .login-mobile {
@@ -1430,7 +1484,7 @@
         .app-alarm-button{
             display:none;
             position:absolute;
-            right:33px;
+            right:33px; // 210621 앱 알림함 아이콘 추가 원복처리
             top:-2px;
             width:29px;
             height:36px;
@@ -1609,8 +1663,8 @@ html {
     &.app {
         .login-mobile {
             .btn-mypage {
-                right: 30px;
-                //right: 66px;
+                // right: 30px;
+                right: 60px; //210621 앱 알림함 아이콘 추가에 따른 my-page 아이콘 위치 조정 원복처리 
             }
         }
         .KRP0005,
@@ -1700,7 +1754,8 @@ html {
         .floating-wrap {
             //노치 있음
             &.app-LGEAPP-in {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1711,7 +1766,8 @@ html {
             }
             //노치 없음
             &.app-LGEAPP-io {
-                bottom:79px;
+                //bottom:79px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
                     bottom:24px;
@@ -1722,14 +1778,74 @@ html {
             }
             //안드로이드
             &.app-LGEAPP {
-                bottom:84px;
+                //bottom:84px;
+                bottom:24px;
                 z-index:10;
                 &.app-chng-pos {
-                    bottom:84px;
+                    //bottom:84px;
+                    bottom:24px;
                 }
                 &.app-chng-push-pos {
                     bottom:24px;
                 }
+            }
+        }
+    }
+}
+
+
+//BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
+.is-main-sticky-header {
+    .wrap {
+        padding-top:84px;
+    }
+
+    .header,
+    .mobile-nav-wrap {
+        position: fixed;
+        left:0;
+        width:100%; 
+        background: #fff;
+        //transition:transform .4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        // transition:transform .3s ease-in;
+    }
+    .header {
+        top:0;
+        z-index:100;
+        &:before {
+            content:"";
+            display: block;
+            position: absolute;
+            top:-3px;
+            left:0;
+            width:100%;
+            height:5px;
+            background: #fff;
+        }
+    }
+    .mobile-nav-wrap {
+        top:45px;
+        z-index:99;
+        border-top:1px solid #fff;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &.show-skip {
+        .mobile-nav-wrap {
+            top:97px;
+        }
+    }
+
+    &.scroll-down {
+        .header,
+        .mobile-nav-wrap {
+            transform: translateY(-43px);
+        }
+
+        &.show-skip {
+            .header,
+            .mobile-nav-wrap {
+                transform: translateY(0);
             }
         }
     }

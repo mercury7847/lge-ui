@@ -377,7 +377,15 @@
 
             window.infoWindowDetail = function(url){
                 var width = self.windowWidth < 1070 ? self.windowWidth : 1070;
-                void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+
+                if(isApp() && vcui.detect.isIOS){ 
+                       var jsonString = JSON.stringify({'url':'https://'+window.LGEAPPHostName+url,'command':'openInAppBrowser'});
+                       webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    void(window.open(url, "_blank", "width=" + width + ", height=" + self.windowHeight + ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
+                }
+
+                
             }
 
             self.$optionContainer.on('click', '.btn-sel', function(e){
@@ -736,9 +744,9 @@
             var resultLen = 0;
 
             if(keywords.searchType =='local'){
-
+                var searchCity = self.$citySelect.find('option:selected').text();
                 var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
-                    return keywords.searchCity!==''? xsearch(item.shopAdress, keywords.searchCity).length > 0 : false;
+                    return keywords.searchCity!==''? xsearch(item.shopAdress, searchCity).length > 0 : false;
                 });
                 nArr = vcui.array.filter(nArr, function(item,index){
                     return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
