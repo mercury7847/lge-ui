@@ -57,9 +57,9 @@
                     cancelBtnName: "취소",
                     okBtnName: "확인",
                     ok: function(){
-                        console.log('내역조회 화면으로 이동');
                         self.$form[0].reset();
-                        location.href = self.$form.data('inqueryUrl');
+                        var url  =  self.$form.data('inqueryUrl');
+                        if(url) location.href = url;
                     }
                 });
             });
@@ -67,12 +67,15 @@
             // 온라인 견적 문의하기
             self.$estimateBtn.on('click', function(){
                 var validationResult = self.validation.validate().success;
-
+                
                 if( validationResult ) {
-                    lgkorUI.alert("", {
-                        title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.',
-                        ok: function (){
-                            self.$form.submit();
+                    var ajaxUrl = self.$form.data('estimateUrl');
+                    var param = self.validation.getAllValues();
+                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                        if(result.data.status === 'success') {
+                            lgkorUI.alert("", {
+                                title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.'
+                            });
                         }
                     });
                 }
@@ -123,7 +126,6 @@
         },
         setting : function() {
             var self = this;
-                self.addressFinder   = new AddressFind();
                 self.$container      = $('.container');
                 self.$form           = self.$container.find('#searchForm');
                 self.$searchBtn    = self.$container.find('.btn-search');
@@ -146,10 +148,21 @@
         bindEvents : function() {
             var self = this;
                 self.$searchBtn.on('click',function(){
+
+                    var ajaxUrl = self.$form.data('inqueryUrl');
+                    var param = self.validation.getAllValues();
                     var validationResult = self.validation.validate().success;
 
-                    if( validationResult ) {
-                        self.$form.submit();
+                    if( validationResult && ajaxUrl) {
+                         console.log("조회 진입 %o %o",ajaxUrl, param);
+                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                                console.log("조회 %o",result);
+                            if(result.data) {
+                                var url = self.$form.data('inqueryResult');
+                                if(url) location.href =  url;
+                            }
+                        });
+    
                     }
                 });
         },
