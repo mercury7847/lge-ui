@@ -564,11 +564,10 @@
                 
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
-                    $('.arsAgreeRequestCheck').show();
+                    $('.arsAgreeRequestCheck').attr('disabled', false);
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 } else {
-                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
-                    $('.arsAgreeRequestCheck').hide();
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                                        
                 }
                 
                 setHiddenData('arsAgree', result.data.success);
