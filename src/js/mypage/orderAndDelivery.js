@@ -1891,11 +1891,6 @@
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
 
 
-        /* BTOCSITE-98 add */
-        if (vcui.detect.isIOS){
-            $('.arsAgreeRequestCheck').show();
-        }
-
     }
 
     //주문정보 렌더링...
