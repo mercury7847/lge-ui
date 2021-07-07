@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_Filter_80" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none;stroke:#070203;stroke-linecap:round;stroke-width:3px}.cls-1{stroke-linejoin:round}.cls-2{stroke-miterlimit:10}
+        </style>
+    </defs>
+    <g id="img_Filter" transform="translate(387.696 -925.344)">
+        <path id="Rectangle-84" d="M-375.7 935.826a3.491 3.491 0 0 1 3.5-3.482h49a3.491 3.491 0 0 1 3.5 3.482v58.035a3.491 3.491 0 0 1-3.5 3.483h-49a3.491 3.491 0 0 1-3.5-3.483z" class="cls-1"/>
+        <path id="Rectangle-84-2" d="M-368.113 943.37a3.491 3.491 0 0 1 3.5-3.482h33.833a3.491 3.491 0 0 1 3.5 3.482v42.947a3.491 3.491 0 0 1-3.5 3.482h-33.833a3.491 3.491 0 0 1-3.5-3.482z" class="cls-1"/>
+        <g id="Group_146">
+            <path id="Stroke_3-22" d="M-366.815 949.706h38.237" class="cls-2"/>
+            <path id="Stroke_3-22-2" d="M-366.815 959.8h38.237" class="cls-2"/>
+            <path id="Stroke_3-22-3" d="M-366.815 969.889h38.237" class="cls-2"/>
+            <path id="Stroke_3-22-4" d="M-366.815 979.981h38.237" class="cls-2"/>
+        </g>
+        <path id="Stroke_3-22-5" d="M-347.7 989.379v-49.071" class="cls-2"/>
+    </g>
+    <path id="Rectangle" fill="none" d="M0 0H80V80H0z"/>
+</svg>

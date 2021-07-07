@@ -136,6 +136,9 @@
                     arrows : true,
                     slidesToScroll: 3,
                     slidesToShow: 3,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
                     responsive: [
                         {
                             breakpoint: 1920,
@@ -206,12 +209,15 @@
                 el : {
                     slider : $context.find('.support-toggle-list-wrap')
                 },
-                config : {
+                config : { 
                     infinite: false,
                     autoplay: false,
                     dots : true,
                     swipe : true,
                     arrows : false,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
                     slidesToScroll: 1,
                     slidesToShow: 1
                 }
@@ -225,7 +231,10 @@
                     autoplay: true,
                     slidesToScroll: 1,
                     slidesToShow: 1,
-                    vertical:true
+                    vertical:true,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100
                 },
             },
             main_service : {
@@ -240,6 +249,9 @@
                     dots : false,
                     arrows : false,
                     draggable : false, 
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
                     responsive: [
                         {
                             breakpoint: 9999,
@@ -305,6 +317,9 @@
                     autoplay: false,
                     slidesToScroll: 1,
                     slidesToShow: 2,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
                     responsive: [
                         {
                             breakpoint: 1920,
@@ -342,6 +357,9 @@
                     slidesToScroll: 4,
                     slidesToShow: 4,
                     appendDots : '.awards .slick-dot-container',
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
                     responsive: [
                         {
                             breakpoint: 1460,

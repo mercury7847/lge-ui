@@ -350,7 +350,10 @@
             padding:32px 16px 60px;
             height:calc(100% - 122px);
             max-height:calc(100% - 122px);
-            //max-height:none;
+            &.is-bottom-expire {
+                height:calc(100% - 154px);
+                max-height:calc(100% - 154px);
+            }
         }
         .tabs-wrap {
             &:first-child {

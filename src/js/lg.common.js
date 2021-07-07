@@ -83,6 +83,39 @@ var goAppUrl = function(path) {
         '       <button type="button" class="btn ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '   </div>\n'+
         '</article>';
+        var mainPopupInit = 
+        '<article id="main-init-popup" class="popup-wrap full app-popup-init" style="max-width:600px">' + 
+        '<header class="pop-header">' + 
+            '<h1 class="tit"><span>안내</span></h1>' + 
+        '</header>' + 
+        '<section class="pop-conts align-center is-bottom-expire">' + 
+            '<section class="section">' + 
+                '<div class="headline">' + 
+                    '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
+                '</div>' + 
+                '<div class="text-cont">' + 
+                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 <br>' + 
+                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, <br>' + 
+                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 <br>' + 
+                    '완료하였습니다. <br><br>' + 
+
+                    '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' + 
+                    '자세한 내용은 당사 홈페이지의 공고를 참조하시기 바랍니다.' +
+                '</div>' + 
+                '<div class="btn-wrap">' + 
+                    '<a href="https://www.lge.co.kr/uploads/company/investment/notice/21_division.pdf" target="_blank" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
+                '</div>' + 
+            '</section>' + 
+        '</section>' + 
+        '<div class="pop-footer check-type align-between">' + 
+            '<span class="chk-wrap" data-role="today-cookie-check">' + 
+                '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
+                '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' + 
+            '</span>' + 
+            '<button type="button" class="btn pink btn-main-pop-close"><span>닫기</span></button>' + 
+        '</div>' + 
+        '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' + 
+    '</article>';
 
 
 
@@ -343,6 +376,7 @@ var goAppUrl = function(path) {
             self._createMainWrapper();
             self._switchLinker();
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
+            self._mobileInitPopup(); //2021-07-01 긴급반영건
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -383,6 +417,41 @@ var goAppUrl = function(path) {
                             el.find('.ui_modal_close').one('click', function () {
                                 vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
                                 $('html, body').css('overflow', '');
+                                return;
+                            });
+                        }
+                        
+                    }
+                }
+            });
+        },
+        _mobileInitPopup: function(){
+            var enableUrl = [
+                '^/$', // 메인
+            ];
+
+            var isPopUp = enableUrl.some(function(element) {
+                return location.pathname.match(new RegExp(element,"g"))
+            });
+
+            $(function() {
+                if (!isApp()) {
+                    var cookie_InitPopName = '__LG_MAIN_REPORT_POPUP_INIT';
+                    if (vcui.Cookie.get(cookie_InitPopName) === '' && isPopUp ) {
+                        if($('#main-init-popup').size() === 0 && !!vcui.modal) {
+                            $('body').append(vcui.template(mainPopupInit));
+                            $('#main-init-popup').vcModal('show');
+                            
+                            $(document).on('click', '#main-init-popup .btn-main-pop-close', function (e) {
+                                var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
+                                
+                                if( _expireChecked ) {
+                                    vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
+                                }
+                                $('#main-init-popup').vcModal('hide');
+                                if( window.innerWidth < 768 && vcui.detect.isMobileDevice) {
+                                    $('html, body').css('overflow', '');
+                                }
                                 return;
                             });
                         }
@@ -662,8 +731,9 @@ var goAppUrl = function(path) {
                 // }, 200));
                 ///////////////////////////////////////////////////////////////////////
 
+                
                 //공통 js-pop a태그 처리...
-                $doc.on('click', '.js-popup', function(e){
+                $doc.off('click.jsPop').on('click.jsPop', '.js-popup', function(e){
                     e.preventDefault();
 
                     var target = this.getAttribute('href'),
@@ -2238,6 +2308,88 @@ var goAppUrl = function(path) {
                 }, 3000);
                 location.href = iosScheme;
             }
+        },
+
+        /**
+         * 기간일 설정
+         * @param {String} startTime - 시작일
+         * @param {String} endTime - 종료일
+         * @param {String} nowTime - 현재시간 ( 서버 타임 넘어올경우, 나머지는 로컬타임 )
+         * @returns {Boolean} true  - 행사중
+         * @returns {Boolean} false - 행사기간 지남 
+         * URL 파라미터형식 
+         * ?dateTest=변경할 시간,행사 시작일,행사 종료일
+         * ?dateTest=20200808,20200801,20200807 
+         * 날짜 형식 : 년월일시분초 ex> 20200820 or 20200820230159
+         */
+         isShowDate: function(startTime, endTime, nowTime) {
+            var self = this;
+            var dateTest = self.getParameterByName("dateTest").split(",").filter(Boolean); // 테스트용 dateTest 파라미터 체크
+            var debug = self.getParameterByName("debug"); 
+        
+            // 날짜 셋팅
+            var setDate = function(time) {
+                var limitTime = null;
+            
+                if (!time) {
+                    limitTime = new Date();
+                } else {
+                    var regex = /^[0-9]*$/g;
+                    if (!regex.test(time)) {
+                      throw ("error : 형식 에러");
+                    }
+            
+                    if (typeof time === 'number') {
+                        time = time + '';
+                    }
+            
+                    if (time.length < 8)  throw ("error : 형식 에러")
+            
+                    var year = time.slice(0, 4);
+                    var month = time.slice(4, 6);
+                    var day = time.slice(6, 8);
+                    // 시간, 분 체크 필요시 사용
+                    var hours = time.slice(8, 10) || '00';
+                    var minutes = time.slice(10, 12) || '00';
+                    var second = time.slice(12, 14) || '00';
+            
+                    limitTime = new Date(year+'/'+month+'/'+day+' '+hours+':'+minutes+':'+second);
+                }
+
+                return limitTime.getTime();
+            };
+            
+            var printDate = function(time) {
+                return new Date(time - new Date().getTimezoneOffset() * 60000).toISOString().replace('T',' ').slice(0,-5)
+            };
+
+            try {
+                nowTime   = setDate(dateTest.length == 0 ? nowTime   : dateTest[0]);  // 현재시간
+                startTime = setDate(dateTest.length <= 1 ? startTime : dateTest[1]);  // 행사 시작일
+                endTime   = setDate(dateTest.length <= 1 ? endTime   : dateTest[2]);  // 행사 종료일
+            } catch (e) {
+                console.log(e);
+                return false;
+            }
+
+            if(debug === 'y') {
+
+                console.log('dateTest %o',dateTest);
+                console.log(
+                    "행사기간 : %o ~ %o"
+                    ,printDate(startTime)
+                    ,printDate(endTime)
+                );
+
+                console.log(
+                    "현재날짜 : %o 결과값 :  %o"
+                    , printDate(nowTime)
+                    , nowTime >= startTime && nowTime < endTime ? "행사중" :"행사 종료"
+                );
+
+            }
+
+            return nowTime >= startTime && nowTime < endTime ? true : false;
         },
     }
 

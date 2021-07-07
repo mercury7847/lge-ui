@@ -577,6 +577,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 slidesToScroll: 3,
                 slidesToShow: 3,
                 infinite: false,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
                 responsive: [
                     {
                         breakpoint: 10000,
@@ -683,6 +686,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             infinite: false,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 150,
+                            touchThreshold: 100,
                             responsive: [
                                 {
                                     breakpoint: 10000,

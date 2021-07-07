@@ -215,6 +215,13 @@
             self.$stepInput.find('#inquiryTitle').val('');
             self.$stepInput.find('#inquiryContent').val('');
 
+
+            //BTOCSITE-2409 [긴급] 이메일문의 > 특정 문의 시 컬럼 추가
+            $('#orderNo').hide();
+            $('#orderNo').find('input').val('')
+            $('#partNo').hide();
+            $('#partNo').find('input').val('')
+
             if (!isLogin) {
                 self.$stepInput.find('#userName').val('');
                 self.$stepInput.find('#userEmail').val('');
@@ -243,6 +250,18 @@
                 }
             }).on('reset', function() {
                 self.reset();
+            });
+
+            //BTOCSITE-2409 [긴급] 이메일문의 > 특정 문의 시 컬럼 추가
+            $('.desc-btn').find('button[data-sub-category-name]').on('click', function(e){
+                var $this = $(this);
+                var _subCategory = $this.data('sub-category-name').trim()
+
+                if( _subCategory == "케어용품/소모품" || _subCategory == "구매문의") {
+                    
+                    $('#orderNo').show();
+                    $('#partNo').show();
+                }
             });
 
             // 문의 유형 선택 시
