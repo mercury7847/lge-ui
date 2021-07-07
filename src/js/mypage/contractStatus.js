@@ -533,6 +533,15 @@
             sendPaymentMethod = sendata.confirmType;
 
             setHiddenData('paymentMethodConfirm', result.data.success);
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setHiddenData('arsAgree', "N");
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
+
+
         }, ajaxMethod);
     }
 
