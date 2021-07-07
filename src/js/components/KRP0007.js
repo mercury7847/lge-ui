@@ -232,7 +232,9 @@
 
                         if(Object.keys(storageFilterData).length) change = true;
                         else{
-                            if(firstSortType != storageFilters.sortType) change = true;
+                            if(firstSortType != storageFilters.sortType) {
+                                change = true
+                            };
                         }
 
                         for(key in filterData) {
@@ -244,8 +246,7 @@
                     var hash = location.hash.replace("#","");
                     if(hash && hash.length == 8) {
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
-                         self.savedPLPSortData = lgkorUI.getStorage(storageName);
-                        //  console.log("self.savedPLPSortData", self.savedPLPSortData)
+                        
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
@@ -259,11 +260,14 @@
                             //토탈 카운트 복수
                             self.setTotalCount(self.savedPLPData.totalCount);
                             //필터 셀렉트박스 change
-                            // console.log("self.savedPLPData.listData.sortType", self.savedPLPData)
-                            if( self.savedPLPSortData &&  self.savedPLPSortData.sortType ) {
-                                console.log("self.savedPLPSortData.sortType", self.savedPLPSortData.sortType)
-                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPSortData.sortType, true);    
+                            
+                            console.log("self.savedPLPData", self.savedPLPData)
+                            if( self.savedPLPData.sortType) {
+                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    
+                                console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)
                             }
+                            
+                            
                             //PDP아이템을 눌렀을 경우 이동
                             var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
                             if($li.length > 0) {
@@ -575,9 +579,11 @@
                     //location.hash = categoryId;
                 //}
 
+                var currentSortType = data.sortType;
+
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
-                    
+
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.savedPLPData.totalCount = totalCount;
                     self.setTotalCount(totalCount);
@@ -587,6 +593,7 @@
                         self.savedPLPData.listData = [];
                         self.savedPLPData.pagination = {page:0, totalCount:0};
                         self.savedPLPData.isNew = true;
+                        self.savedPLPData.sortType = currentSortType;
                     }
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
