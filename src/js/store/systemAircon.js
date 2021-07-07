@@ -78,6 +78,7 @@
                     })
     
                     param = $.extend(param,radioChk);
+                    // console.log("param %o",param);
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                         if(result.data.status === 'success') {
                             lgkorUI.alert("", {
@@ -131,8 +132,8 @@
         },
         setting : function() {
             var self = this;
-                self.$container      = $('.container');
-                self.$form           = self.$container.find('#searchForm');
+                self.$container    = $('.container');
+                self.$form         = self.$container.find('#searchForm');
                 self.$searchBtn    = self.$container.find('.btn-search');
             
                 var register = {
