@@ -1865,6 +1865,8 @@
     }
 
     function renderPage(){
+
+        
         if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
         else setOrderListContents();
 
