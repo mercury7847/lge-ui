@@ -1132,6 +1132,7 @@ console.log(sendata)
             if (vcui.detect.isIOS){
                 setInputData('arsAgree', "N");                
                 arsAgreeConfirm = "N";
+                $('.arsAgreeRequestCheck').attr('disabled', true);
             }
             /* //BTOSCITE-98 add */
         }, ajaxMethod);
@@ -1172,6 +1173,7 @@ console.log(sendata)
             if (vcui.detect.isIOS){
                 setInputData('arsAgree', "N");
                 arsAgreeConfirm = "N";
+                $('.arsAgreeRequestCheck').attr('disabled', true);
             }
             /* //BTOSCITE-98 add */
         }, ajaxMethod);
