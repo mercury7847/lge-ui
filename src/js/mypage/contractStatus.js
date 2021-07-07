@@ -540,11 +540,18 @@
     var arsCallingInterval = null;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
+        if (vcui.detect.isIOS){
+            lgkorUI.showLoading();
+        }
+
         isClickedarsAgreeConfirmBtn = true;
         $('.arsAgreeRequest').attr('disabled', true);
         clearTimeout(arsCallingInterval);
         arsCallingInterval = setTimeout(function(){
             $('.arsAgreeRequest').attr('disabled', false);
+            if (vcui.detect.isIOS){
+                lgkorUI.hideLoading();
+            }
         }, 5000);
         /* //BTOCSITE-98 add */
 

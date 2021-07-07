@@ -1731,10 +1731,17 @@
         /* BTOCSITE-98 add */
         isClickedarsAgreeConfirmBtn = true;
 
+        if (vcui.detect.isIOS){
+            lgkorUI.showLoading();
+        }
+
         $('.arsAgreeRequest').attr('disabled', true);
         clearTimeout(arsCallingInterval);
         arsCallingInterval = setTimeout(function(){
             $('.arsAgreeRequest').attr('disabled', false);
+            if (vcui.detect.isIOS){
+                lgkorUI.hideLoading();
+            }
         }, 5000);
         /* //BTOCSITE-98 add */
 
