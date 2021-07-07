@@ -551,6 +551,14 @@
         sendata.confirmType = sendPaymentMethod;
 
         setHiddenData('arsAgree', "N");
+
+        // BTOCSITE-98 add
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+        } else {
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+        }
         /*
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
@@ -574,7 +582,7 @@
                 
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
-                    $('.arsAgreeRequestCheck').attr('disabled', false);
+                    //$('.arsAgreeRequestCheck').attr('disabled', false);
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
