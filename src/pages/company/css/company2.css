@@ -112,6 +112,30 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .recruit-link .desc {margin-top:20px; font-size:16px; line-height:24px}
 .company .recruit-link .btn {margin-top:26px; min-width:109px; padding:11px 24px}
 
+.company ul.job_position {display:flex; justify-content:center; margin-top:30px}
+.company ul.job_position > li {width:150px; height:150px; margin:0 40px; border-radius:50%}
+.company ul.job_position > li:nth-child(1) {background-color:#666}
+.company ul.job_position > li:nth-child(2) {background-color:#000}
+.company ul.job_position > li:nth-child(3) {background-color:#da0f47}
+.company ul.job_position > li + li {position:relative}
+.company ul.job_position > li + li::before {content:''; display:block; position:absolute; width:80px; height:1px; top:calc(50% - 0.5px); left:-80px; border-top:1px dashed #ddd}
+.company ul.job_position > li em {display:block; margin-top:40px; color:rgba(255,255,255,0.8); font-size:16px; line-height:24px; text-align:center}
+.company ul.job_position > li span {display:block; margin-top:8px; color:#fff; font-size:18px; line-height:26px; text-align:center}
+.company ul.job_pay {display:flex; justify-content:space-between; margin-top:30px}
+.company ul.job_pay > li {width:calc(33.3333% - 16px); padding:30px 0; border-radius:8px; background-color:#f4f4f4; text-align:center}
+.company ul.job_pay > li i {display:block; width:80px; height:80px; margin:0 auto}
+.company ul.job_pay > li i.ico_01 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
+.company ul.job_pay > li i.ico_02 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
+.company ul.job_pay > li i.ico_03 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
+.company ul.job_pay > li .name {font-size:20px; font-weight:bold; line-height:1.5}
+.company ul.job_pay > li em {display:block; color:#666; font-size:16px; line-height:26px}
+.company ul.job_pay > li .desc {margin-top:15px; font-size:16px; line-height:24px}
+.company ul.welfare > li {position:relative; min-height:140px; padding:30px 30px 30px 140px}
+.company ul.welfare > li + li {margin-top:-1px; border-top:1px dashed #ddd}
+.company ul.welfare > li i {position:absolute; display:block; width:80px; height:80px; left:30px; top:30px}
+.company ul.welfare > li .name {font-size:18px; font-weight:800; line-height:26px}
+.company ul.welfare > li .desc {margin-top:12px; font-size:16px; line-height:24px}
+
 /* 탭 형식 */
 .company .tabs-wrap.l-type .tabs > li {padding:0}
 .company .tabs-wrap.l-type .tabs > li + li {margin-left:8px}
@@ -300,6 +324,12 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:active:hover::after,
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:focus:hover::after,
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:hover::after {background:url(/kr/images/company/icon/icon-arrow-accor-white.svg) center no-repeat!important; background-size:20px 20px!important}
+
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {display:block; padding-top:60px; padding-bottom:60px}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title {font-weight:500}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title_sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
+.company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
+.company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub + .btnArea {margin-top:10px; padding-top:0}
 
 /* 테이블 */
 .company .com-text.tbl {padding-bottom:0}
@@ -546,4 +576,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .recruit-link .tit {font-size:18px; line-height:26px}
   .company .recruit-link .desc {margin-top:8px; font-size:14px; line-height:20px}
   .company .recruit-link .btn {min-width:90px; padding:8px 0; font-size:13px}
+
+  .company ul.job_position {margin-top:15px}
 }
