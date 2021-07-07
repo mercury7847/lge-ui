@@ -70,9 +70,17 @@
 }
 .sect-box.align-right{
     text-align: right;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        text-align: left;
+    }
 }
 .sect-box.align-center{
     text-align: center;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        text-align: left;
+    }
 }
 
 .app-popup-init .btn-wrap.align-left{
@@ -80,9 +88,17 @@
 }
 .app-popup-init .btn-wrap.align-right{
     justify-content: flex-end;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        justify-content: flex-start;
+    }
 }
 .app-popup-init .btn-wrap.align-center{
     justify-content: center;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        justify-content: flex-start;
+    }
 }
 
 .app-popup-init .btn-wrap.align-left li {
@@ -91,8 +107,17 @@
 
 .app-popup-init .btn-wrap.align-right li {
     margin-left:16px;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        margin-right:16px;
+    }
 }
 
 .app-popup-init .btn-wrap.align-center li {
     margin:0 8px;
+    //210708 추가 모바일일경우엔 항상 좌측정렬
+    @include mobile{
+        margin:0;
+        margin-right:16px;
+    }
 }
