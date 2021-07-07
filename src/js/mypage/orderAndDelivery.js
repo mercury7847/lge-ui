@@ -102,6 +102,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -163,6 +164,7 @@
                         '<div class="col col2">'+
                             '<div class="state-box">'+
                                 '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                                //'{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">{{listData.itemCancelAbleMassege}}</p>{{/if}}'+
                                 '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                                 '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                                 '<div class="state-btns">'+
@@ -419,7 +421,7 @@
     var popBankInfo = {};
     var popBankConfirm = false;
     var paymentMethodConfirm;
-    var arsAgree;
+    var arsAgree = "N";
 
     var START_DATE, END_DATE, SELECT_PERIOD;
 
@@ -1354,14 +1356,15 @@
         /* BTOCSITE-98 add */
         if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
 
-            if (isClickedarsAgreeConfirmBtn == false){
+            //if (isClickedarsAgreeConfirmBtn == false){
+            if (arsAgree !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 신청해주세요"
                 });
                 return false;
             }
 
-            if (isClickedarsAgreeConfirmCheckBtn == false){
+            if (arsAgreeConfirm !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
                 });
@@ -1754,6 +1757,7 @@
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
             $('.arsAgreeRequestCheck').attr('disabled', false);
+            arsAgreeConfirm = "N";
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
         } else {
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
@@ -1797,6 +1801,7 @@
                     //$('.arsAgreeRequestCheck').attr('disabled', false);
                     arsAgree = result.data.success;
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                    arsAgreeConfirm = "N";
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                     arsAgree = result.data.success;                    
@@ -1835,6 +1840,10 @@
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             arsAgreeConfirm = result.data.success;
+
+            if (arsAgreeConfirm == "N"){
+                arsAgree = "N";
+            }
             
         }, ajaxMethod, null, true);
         
@@ -1896,6 +1905,8 @@
     }
 
     function renderPage(){
+
+
         if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
         else setOrderListContents();
 
@@ -2237,6 +2248,27 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+
+                // BTOCSITE-1775
+                var isAllCancelDisable = true;  // 모두 취소 불가능
+                productList.forEach(function( data ){                    
+                    if (data.itemCancelAbleYn == "Y"){
+                        isAllCancelDisable = false;
+                    }
+                });
+
+                if (isAllCancelDisable == true){
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
+                    $('#popup-cancel').find('#cancel_desc').hide();
+                    $('#popup-cancel').find('.pop-footer').hide();
+                    $('#popup-cancel').find('.not-cancel-footer').show();
+                } else {
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);                    
+                    $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('.pop-footer').show();
+                    $('#popup-cancel').find('.not-cancel-footer').hide();
+                }
+                // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
