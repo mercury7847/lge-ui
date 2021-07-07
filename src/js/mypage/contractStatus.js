@@ -40,7 +40,7 @@
 
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
-    var arsAgreeConfirm = '';
+    var arsAgreeConfirm = 'N';
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -704,7 +704,7 @@
             return false;
         }
 
-        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+        if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
             lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
             });

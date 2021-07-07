@@ -436,7 +436,7 @@
 
     var sendPaymentMethod;
 
-    var arsAgreeConfirm = ""; //BTOCSITE-98 add
+    var arsAgreeConfirm = "N"; //BTOCSITE-98 add
 
     var ajaxMethod = "GET";
 
@@ -1349,7 +1349,7 @@
             return false;
         }
         // BTOCSITE-98 add
-        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+        if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
             lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
             });
@@ -1807,7 +1807,7 @@
         lgkorUI.showLoading();
 
         //CTI_REQUEST_KEY = "";
-        //arsAgree = "N";
+        arsAgreeConfirm = "N";
 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
             //console.log('출금동의요청 체크 결과', result);
