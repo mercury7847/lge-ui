@@ -377,6 +377,7 @@
     var PAYMENT_METHOD_CONFIRM;
     var INFO_MODIFY_CONFIRM;
     var ARS_AGREE_URL;
+    var ARS_AGREE_CHECK_URL;    // BTOCSITE-98 add
     var PAYMENT_SAVE_URL;
 
     var PAGE_TYPE_LIST = "orderListPage";
@@ -435,6 +436,8 @@
 
     var sendPaymentMethod;
 
+    var arsAgreeConfirm = ""; //BTOCSITE-98 add
+
     var ajaxMethod = "GET";
 
     function init(){
@@ -465,6 +468,7 @@
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        ARS_AGREE_CHECK_URL = $('.contents.mypage').data('arsAgreeCheckUrl');
         PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
 
         txtMasking = new vcui.helper.TextMasking();
@@ -677,6 +681,10 @@
             e.preventDefault();
 
             setArsAgreeConfirm();
+        }).on('click', '.arsAgreeRequestCheck', function(e){
+            e.preventDefault();
+
+            arsAgreeConfirmCheck();
         }).on('change', 'input[name=selfClearingAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -1340,6 +1348,16 @@
             
             return false;
         }
+        // BTOCSITE-98 add
+        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+            });
+            
+            return false;
+        }
+
+        
 
         if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
@@ -1693,7 +1711,16 @@
         });
     }
     //ARS출금동의 신청...
+    var arsCallingInterval = null;
     function setArsAgreeConfirm(){
+        /* BTOCSITE-98 add */
+        $('.arsAgreeRequest').attr('disabled', true);
+        clearTimeout(arsCallingInterval);
+        arsCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequest').attr('disabled', false);
+        }, 5000);
+        /* //BTOCSITE-98 add */
+
         var chk = paymentConfirmYN();
         if(!chk) return;
 
@@ -1709,15 +1736,90 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
         arsAgree = "N";
+
+        // BTOCSITE-98 add
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+        } else {
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            //arsAgree = result.data.success;                    
+        }
+
+        /* 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+            
+            // BTOCSITE-98 add
+            if (vcui.detect.isIOS){
+                $('.arsAgreeRequestCheck').show();
+                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            } else {
+                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                arsAgree = result.data.success;
+                $('.arsAgreeRequestCheck').hide();
+            }
+            // //BTOCSITE-98 add
+            
+        }, ajaxMethod, null, true); */
+
+        $.ajax({
+            method : ajaxMethod,
+            url : ARS_AGREE_URL,
+            data : sendata,
+            async : false,
+            success : function(result){                
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
+                // BTOCSITE-98 add
+                if (vcui.detect.isIOS){
+                    //$('.arsAgreeRequestCheck').attr('disabled', false);
+                    arsAgree = result.data.success;
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                } else {
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                    arsAgree = result.data.success;                    
+                }                
+                // //BTOCSITE-98 add
+            },
+            error : function(error){
+                //alert('error');
+            },
+            complete : function(){
+                //alert('complete');
+                lgkorUI.hideLoading();
+            }
+        });
+    }
+    // ARS 출금동의요청 체크 :: BTOCSITE-98 add
+    var arsConfirmCallingInterval = null;
+    function arsAgreeConfirmCheck(){
+        $('.arsAgreeRequestCheck').attr('disabled', true);
+        clearTimeout(arsConfirmCallingInterval);
+        arsConfirmCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+        }, 3000);
+
+        lgkorUI.showLoading();
+
+        //CTI_REQUEST_KEY = "";
+        //arsAgree = "N";
+
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
+            //console.log('출금동의요청 체크 결과', result);
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-
-            arsAgree = result.data.success;
+            arsAgreeConfirm = result.data.success;
+            
         }, ajaxMethod, null, true);
+        
     }
     //납부 정보변경 취소...
     function savePaymentInfoCancel(){
@@ -1727,7 +1829,7 @@
         bankValidation.setValues(bankInfo);
 
         paymentBlockInit();
-    }
+    }    
     //납부변경 초기화...
     function paymentBlockInit(){        
         paymentMethodConfirm = "N";
@@ -1776,7 +1878,6 @@
     }
 
     function renderPage(){
-
         if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
         else setOrderListContents();
 
@@ -1823,6 +1924,14 @@
         leng = CARE_LIST.length;
         cnt = leng ? "(" + leng + ")" : "";
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+
+
+        /* BTOCSITE-98 add */
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', true).show();
+            $('#iostxt').show();
+        }
+
     }
 
     //주문정보 렌더링...

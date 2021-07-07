@@ -10,6 +10,7 @@
     var PAYMENT_METHOD_CONFIRM;
     var PAYMENT_SAVE_URL;
     var ARS_AGREE_URL;
+    var ARS_AGREE_CHECK_URL;
     var REQUEST_CONTRACT_URL;
     var MEMPOINT_DEDUCT_URL;
     var REQUSET_CARD_URL;
@@ -39,6 +40,8 @@
 
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
+    var arsAgreeConfirm = '';
+
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
@@ -46,6 +49,7 @@
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
+        ARS_AGREE_CHECK_URL = $('.contents.mypage').data('arsAgreeCheckUrl');
         REQUEST_CONTRACT_URL = $('.contents.mypage').data('requestContractUrl');
         MEMPOINT_DEDUCT_URL = $('.contents.mypage').data('mempointDeductUrl');
         REQUSET_CARD_URL = $('.contents.mypage').data('requestCardUrl');
@@ -62,6 +66,11 @@
                     mypage.find('.no-data').html("<p>" + nodata + "<br>케어솔루션 계약시 제휴카드를 신청하시면 더욱 편리한 이용이 가능합니다.</p>");
                 }
                 requestPartnerCardYn = ""
+            }
+            /* BTOCSITE-98 add */
+            if (vcui.detect.isIOS){
+                $('.arsAgreeRequestCheck').attr('disabled', true).show();
+                $('#iostxt').show();
             }
         });
     }
@@ -171,6 +180,9 @@
             e.preventDefault();
 
             setArsAgreeConfirm();
+        }).on('click', '.arsAgreeRequestCheck', function(e){
+            e.preventDefault();
+            arsAgreeConfirmCheck();
         }).on('change', 'input[name=selfClearingAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk){
@@ -522,7 +534,16 @@
     }
 
     //ARS출금동의 신청...
+    var arsCallingInterval = null;
     function setArsAgreeConfirm(){
+        /* BTOCSITE-98 add */
+        $('.arsAgreeRequest').attr('disabled', true);
+        clearTimeout(arsCallingInterval);
+        arsCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequest').attr('disabled', false);
+        }, 5000);
+        /* //BTOCSITE-98 add */
+
         var chk = paymentConfirmYN();
         if(!chk) return;
 
@@ -541,7 +562,15 @@
         sendata.confirmType = sendPaymentMethod;
 
         setHiddenData('arsAgree', "N");
-        
+
+        // BTOCSITE-98 add
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+        } else {
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+        }
+        /*
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -551,6 +580,64 @@
 
             setHiddenData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
+        */
+        $.ajax({
+            method : ajaxMethod,
+            url : ARS_AGREE_URL,
+            data : sendata,
+            async : false,
+            success : function(result){                
+                lgkorUI.alert(result.data.alert.desc, {
+                    title: result.data.alert.title
+                });
+                
+                // BTOCSITE-98 add
+                if (vcui.detect.isIOS){
+                    //$('.arsAgreeRequestCheck').attr('disabled', false);
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                } else {
+                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+                }
+                
+                setHiddenData('arsAgree', result.data.success);
+                
+                // //BTOCSITE-98 add
+            },
+            error : function(error){
+                //alert('error');
+            },
+            complete : function(){
+                //alert('complete');
+                lgkorUI.hideLoading();
+            }
+        });
+    }
+    // ARS 출금동의요청 체크 :: BTOCSITE-98 add
+    var arsConfirmCallingInterval = null;
+    function arsAgreeConfirmCheck(){
+        $('.arsAgreeRequestCheck').attr('disabled', true);
+        clearTimeout(arsConfirmCallingInterval);
+        arsConfirmCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+        }, 3000);
+
+        lgkorUI.showLoading();
+
+        //CTI_REQUEST_KEY = "";
+        arsAgreeConfirm = "N";
+
+        lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
+            //console.log('출금동의요청 체크 결과', result);
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            arsAgreeConfirm = result.data.success;
+            
+            
+        }, ajaxMethod, null, true);
+        
     }
 
     //납부 정보변경 취소...
@@ -616,6 +703,16 @@
             
             return false;
         }
+
+        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+            });
+            
+            return false;
+        }
+
+        
 
         if(!paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
