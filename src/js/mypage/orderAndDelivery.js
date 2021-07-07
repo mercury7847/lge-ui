@@ -436,6 +436,8 @@
 
     var sendPaymentMethod;
 
+    var arsAgreeConfirm = ""; //BTOCSITE-98 add
+
     var ajaxMethod = "GET";
 
     function init(){
@@ -1346,6 +1348,16 @@
             
             return false;
         }
+        // BTOCSITE-98 add
+        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+            });
+            
+            return false;
+        }
+
+        
 
         if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
@@ -1766,6 +1778,7 @@
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
                     //$('.arsAgreeRequestCheck').attr('disabled', false);
+                    arsAgree = result.data.success;
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
@@ -1803,7 +1816,7 @@
             });
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-            arsAgree = result.data.success;
+            arsAgreeConfirm = result.data.success;
             
         }, ajaxMethod, null, true);
         

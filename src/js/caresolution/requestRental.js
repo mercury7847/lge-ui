@@ -54,6 +54,8 @@
 
     var isBeforeUnload = true;
 
+    var arsAgreeConfirm = ''; // BTOCSITE-98 add
+
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
             /* BTOCSITE-98 */
@@ -777,6 +779,13 @@
             })
             return false;
         }
+        // BTOCSITE-98 add
+        if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+            })
+            return false;
+        }
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
         if(!chk){
@@ -1189,6 +1198,7 @@ console.log(sendata)
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
                 setInputData('arsAgree', result.data.success);                
                 
+                
             },
             error : function(error){
                 //alert('error');
@@ -1212,7 +1222,7 @@ console.log(sendata)
         lgkorUI.showLoading();
 
         //CTI_REQUEST_KEY = "";
-        //arsAgree = "N";
+        arsAgreeConfirm = "";
 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
             //console.log('출금동의요청 체크 결과', result);
@@ -1222,6 +1232,7 @@ console.log(sendata)
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             //arsAgree = result.data.success;
+            arsAgreeConfirm = result.data.success;
             
         }, ajaxMethod, null, true);
         
