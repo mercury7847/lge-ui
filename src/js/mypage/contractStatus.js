@@ -532,7 +532,16 @@
     }
 
     //ARS출금동의 신청...
+    var arsCallingInterval = null;
     function setArsAgreeConfirm(){
+        /* BTOCSITE-98 add */
+        $('.arsAgreeRequest').attr('disabled', true);
+        clearTimeout(arsCallingInterval);
+        arsCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequest').attr('disabled', false);
+        }, 5000);
+        /* //BTOCSITE-98 add */
+
         var chk = paymentConfirmYN();
         if(!chk) return;
 
