@@ -205,6 +205,26 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company ul.m_cardList > li .infoArea .name {margin-top:5px; font-size:24px; font-weight:bold; line-height:32px}
 .company ul.m_cardList > li .infoArea .eng {margin-top:12px; font-size:14px; line-height:20px; word-break:keep-all}
 
+.company ul.loca_list {display:flex; flex-wrap:wrap; justify-content:space-between}
+.company ul.loca_list > li {position:relative; display:inline-block; width:calc(50% - 12px); min-height:294px; padding:38px 40px; border-radius:8px; background-color:#fff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
+.company ul.loca_list > li + li {margin-top:24px}
+.company ul.loca_list > li:nth-child(2) {margin-top:0}
+.company ul.loca_list > li .top {padding-bottom:16px; border-bottom:1px solid #ddd}
+.company ul.loca_list > li .top .tit {font-size:24px; font-weight:bold; line-height:1.5}
+.company ul.loca_list > li .cont {margin-top:32px}
+.company ul.loca_list > li .cont .addr em {display:block; margin-bottom:8px; font-size:16px; font-weight:bold; line-height:1.5}
+.company ul.loca_list > li .cont .addr span {display:inline-block; font-size:14px; line-height:22px}
+.company ul.loca_list > li .cont .addr span + span {position:relative; margin-left:10px; padding-left:11px}
+.company ul.loca_list > li .cont .addr span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; left:0; top:calc(50% - 5px); background-color:#ddd}
+.company ul.loca_list > li .cont .call {margin-top:25px}
+.company ul.loca_list > li .cont .call em {display:block; margin-bottom:8px; font-size:16px; font-weight:bold; line-height:1.5}
+.company ul.loca_list > li .cont .call span {display:inline-block; font-size:14px; line-height:22px}
+.company ul.loca_list > li .cont .call span + span {position:relative; margin-left:10px; padding-left:11px}
+.company ul.loca_list > li .cont .call span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; left:0; top:calc(50% - 5px); background-color:#ddd}
+.company ul.loca_list > li .btnArea {position:absolute; top:40px; right:40px; margin:0}
+.company ul.loca_list > li .btnArea button {min-width:79px; height:32px; padding:0 10px; font-size:14px; line-height:30px}
+.company ul.loca_list > li .btnArea button + button {margin-left:8px}
+
 /* 팝업 */
 .popup-wrap.popup-company .thumb {margin:40px 0}
 .popup-wrap.popup-company .thumb .iconArea {display:flex; justify-content:center}
@@ -434,6 +454,23 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.m_cardList > li .infoArea .job {margin-top:10px; font-size:14px; line-height:22px}
   .company ul.m_cardList > li .infoArea .name {margin-top:0; font-size:18px; line-height:28px}
   .company ul.m_cardList > li .infoArea .eng {margin-top:10px; font-size:14px; line-height:22px}
+
+  .company ul.loca_list > li {width:100%; min-height:315px; padding:32px 16px}
+  .company ul.loca_list > li + li {margin-top:12px!important}
+  .company ul.loca_list > li .top {padding-bottom:8px}
+  .company ul.loca_list > li .top .tit {font-size:20px; line-height:29px}
+  .company ul.loca_list > li .cont {margin-top:20px}
+  .company ul.loca_list > li .cont .addr {min-height:72px}
+  .company ul.loca_list > li .cont .addr em {margin-bottom:5px; font-size:15px; line-height:22px}
+  .company ul.loca_list > li .cont .addr span {display:block}
+  .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
+  .company ul.loca_list > li .cont .addr span + span::before {display:none}
+  .company ul.loca_list > li .cont .call {margin-top:24px}
+  .company ul.loca_list > li .cont .call em {margin-bottom:5px; font-size:15px; line-height:22px}
+  .company ul.loca_list > li .cont .call span + span {margin-left:6px}
+  .company ul.loca_list > li .btnArea {position:static; margin-top:14px; text-align:center}
+  .company ul.loca_list > li .btnArea button {min-width:83px; min-height:34px; padding:0 15px; font-size:13px}
+  .company ul.loca_list > li .btnArea button + button {margin-left:6px}
 
   .popup-wrap.popup-company .thumb {margin:20px 0 25px}
   .popup-wrap.popup-company .thumb .desc {margin-top:8px; font-size:14px; line-height:1.57}
