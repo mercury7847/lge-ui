@@ -102,6 +102,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -163,6 +164,7 @@
                         '<div class="col col2">'+
                             '<div class="state-box">'+
                                 '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                                //'{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">{{listData.itemCancelAbleMassege}}</p>{{/if}}'+
                                 '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                                 '{{#if listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                                 '<div class="state-btns">'+
@@ -419,7 +421,7 @@
     var popBankInfo = {};
     var popBankConfirm = false;
     var paymentMethodConfirm;
-    var arsAgree;
+    var arsAgree = "N";
 
     var START_DATE, END_DATE, SELECT_PERIOD;
 
@@ -437,6 +439,8 @@
     var sendPaymentMethod;
 
     var arsAgreeConfirm = "N"; //BTOCSITE-98 add
+    var isClickedarsAgreeConfirmBtn = false;    // BTOCSITE-98 add
+    var isClickedarsAgreeConfirmCheckBtn = false;    // BTOCSITE-98 add
 
     var ajaxMethod = "GET";
 
@@ -1341,23 +1345,34 @@
             return false;
         }
 
-        if(arsAgree == "N"){
+        if(arsAgree == "N" && !vcui.detect.isIOS){
             lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 신청해주세요."
             });
             
             return false;
         }
-        // BTOCSITE-98 add
-        if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
-            lgkorUI.alert("",{
-                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
-            });
-            
-            return false;
-        }
-
         
+        /* BTOCSITE-98 add */
+        if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
+
+            //if (isClickedarsAgreeConfirmBtn == false){
+            if (arsAgree !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 신청해주세요"
+                });
+                return false;
+            }
+
+            if (arsAgreeConfirm !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+                });
+                return false;
+            }
+            
+        }
+        /* //BTOCSITE-98 add */
 
         if(!$('.monthly-payment-modify').find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
@@ -1708,16 +1723,32 @@
             sendPaymentMethod = sendata.confirmType;
 
             paymentMethodConfirm = result.data.success;
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                arsAgree = "N";
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         });
     }
     //ARS출금동의 신청...
     var arsCallingInterval = null;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
+        isClickedarsAgreeConfirmBtn = true;
+
+        if (vcui.detect.isIOS){
+            lgkorUI.showLoading();
+        }
+
         $('.arsAgreeRequest').attr('disabled', true);
         clearTimeout(arsCallingInterval);
         arsCallingInterval = setTimeout(function(){
             $('.arsAgreeRequest').attr('disabled', false);
+            if (vcui.detect.isIOS){
+                lgkorUI.hideLoading();
+            }
         }, 5000);
         /* //BTOCSITE-98 add */
 
@@ -1740,6 +1771,7 @@
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
             $('.arsAgreeRequestCheck').attr('disabled', false);
+            arsAgreeConfirm = "N";
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
         } else {
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
@@ -1770,16 +1802,20 @@
             url : ARS_AGREE_URL,
             data : sendata,
             async : false,
-            success : function(result){                
-                lgkorUI.alert(result.data.alert.desc, {
-                    title: result.data.alert.title
-                });
+            success : function(result){
+                if ( !vcui.detect.isIOS ){
+                    lgkorUI.alert(result.data.alert.desc, {
+                        title: result.data.alert.title
+                    });
+                }             
+                
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
                     //$('.arsAgreeRequestCheck').attr('disabled', false);
                     arsAgree = result.data.success;
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                    arsAgreeConfirm = "N";
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                     arsAgree = result.data.success;                    
@@ -1798,6 +1834,7 @@
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     var arsConfirmCallingInterval = null;
     function arsAgreeConfirmCheck(){
+        isClickedarsAgreeConfirmCheckBtn = true;
         $('.arsAgreeRequestCheck').attr('disabled', true);
         clearTimeout(arsConfirmCallingInterval);
         arsConfirmCallingInterval = setTimeout(function(){
@@ -1817,6 +1854,10 @@
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             arsAgreeConfirm = result.data.success;
+
+            if (arsAgreeConfirm == "N"){
+                arsAgree = "N";
+            }
             
         }, ajaxMethod, null, true);
         
@@ -1878,6 +1919,8 @@
     }
 
     function renderPage(){
+
+
         if(TAB_FLAG == TAB_FLAG_RECORD) setRecordContents();
         else setOrderListContents();
 
@@ -2219,6 +2262,27 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
+
+                // BTOCSITE-1775
+                var isAllCancelDisable = true;  // 모두 취소 불가능
+                productList.forEach(function( data ){                    
+                    if (data.itemCancelAbleYn == "Y"){
+                        isAllCancelDisable = false;
+                    }
+                });
+
+                if (isAllCancelDisable == true){
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
+                    $('#popup-cancel').find('#cancel_desc').hide();
+                    $('#popup-cancel').find('.pop-footer').hide();
+                    $('#popup-cancel').find('.not-cancel-footer').show();
+                } else {
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);                    
+                    $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('.pop-footer').show();
+                    $('#popup-cancel').find('.not-cancel-footer').hide();
+                }
+                // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";

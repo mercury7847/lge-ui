@@ -54,7 +54,10 @@
 
     var isBeforeUnload = true;
 
-    var arsAgreeConfirm = ''; // BTOCSITE-98 add
+    var arsAgree = 'N';   // BTOCSITE-98 add
+    var arsAgreeConfirm = 'N';   // BTOCSITE-98 add
+    var isClickedarsAgreeConfirmBtn = false;    // BTOCSITE-98 add
+    var isClickedarsAgreeConfirmCheckBtn = false;    // BTOCSITE-98 add
 
     function init(){    
         vcui.require(['ui/checkboxAllChecker', 'ui/accordion', 'ui/modal', 'ui/validation', 'ui/calendar'], function () {
@@ -773,19 +776,31 @@
         if(!chk) return false;
 
         chk = getInputData('arsAgree');
-        if(chk !== "Y"){
+        if(chk !== "Y" && !vcui.detect.isIOS){
             lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 신청해주세요"
-            })
+            });
             return false;
         }
-        // BTOCSITE-98 add
+        /* BTOCSITE-98 add */
         if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
-            lgkorUI.alert("",{
-                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
-            })
-            return false;
+
+            if (chk !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 신청해주세요"
+                });
+                return false;
+            }
+
+            if (arsAgreeConfirm !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+                });
+                return false;
+            }
+            
         }
+        /* //BTOCSITE-98 add */
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
         if(!chk){
@@ -1112,6 +1127,13 @@ console.log(sendata)
             } else{
                 cardInputData = {};
             }
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setInputData('arsAgree', "N");                
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         }, ajaxMethod);
     }
     //납부계좌확인...
@@ -1145,6 +1167,13 @@ console.log(sendata)
             } else{
                 bankInputData = {};
             }
+            
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setInputData('arsAgree', "N");
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         }, ajaxMethod);
     }
 
@@ -1152,10 +1181,19 @@ console.log(sendata)
     var arsCallingInterval = null;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
+        isClickedarsAgreeConfirmBtn = true;
+        
+        if (vcui.detect.isIOS){
+            lgkorUI.showLoading();
+        }
+        
         $('.arsAgreeRequest').attr('disabled', true);
         clearTimeout(arsCallingInterval);
         arsCallingInterval = setTimeout(function(){
             $('.arsAgreeRequest').attr('disabled', false);
+            if (vcui.detect.isIOS){
+                lgkorUI.hideLoading();
+            }
         }, 5000);
         /* //BTOCSITE-98 add */
 
@@ -1172,6 +1210,7 @@ console.log(sendata)
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
             $('.arsAgreeRequestCheck').attr('disabled', false);
+            arsAgreeConfirm = "N";
         } else {                                      
             //$('.arsAgreeRequestCheck').hide();
         }
@@ -1191,14 +1230,14 @@ console.log(sendata)
             data : {},
             async : false,
             success : function(result){
+                if ( !vcui.detect.isIOS ){
+                    lgkorUI.alert(result.data.alert.desc, {
+                        title: result.data.alert.title
+                    });
+                }
                 
-                lgkorUI.alert(result.data.alert.desc, {
-                    title: result.data.alert.title
-                });
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
                 setInputData('arsAgree', result.data.success);                
-                
-                
             },
             error : function(error){
                 //alert('error');
@@ -1212,7 +1251,8 @@ console.log(sendata)
 
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     var arsConfirmCallingInterval = null;
-    function arsAgreeConfirmCheck(){        
+    function arsAgreeConfirmCheck(){
+        isClickedarsAgreeConfirmCheckBtn = true;     
         $('.arsAgreeRequestCheck').attr('disabled', true);
         clearTimeout(arsConfirmCallingInterval);
         arsConfirmCallingInterval = setTimeout(function(){
@@ -1233,6 +1273,10 @@ console.log(sendata)
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             //arsAgree = result.data.success;
             arsAgreeConfirm = result.data.success;
+
+            if (arsAgreeConfirm == "N"){
+                setInputData('arsAgree', "N");
+            }
             
         }, ajaxMethod, null, true);
         

@@ -40,7 +40,10 @@
 
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
+    var arsAgree = 'N';
     var arsAgreeConfirm = 'N';
+    var isClickedarsAgreeConfirmBtn = false;
+    var isClickedarsAgreeConfirmCheckBtn = false;
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -530,6 +533,15 @@
             sendPaymentMethod = sendata.confirmType;
 
             setHiddenData('paymentMethodConfirm', result.data.success);
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setHiddenData('arsAgree', "N");
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
+
+
         }, ajaxMethod);
     }
 
@@ -537,10 +549,18 @@
     var arsCallingInterval = null;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
+        if (vcui.detect.isIOS){
+            lgkorUI.showLoading();
+        }
+
+        isClickedarsAgreeConfirmBtn = true;
         $('.arsAgreeRequest').attr('disabled', true);
         clearTimeout(arsCallingInterval);
         arsCallingInterval = setTimeout(function(){
             $('.arsAgreeRequest').attr('disabled', false);
+            if (vcui.detect.isIOS){
+                lgkorUI.hideLoading();
+            }
         }, 5000);
         /* //BTOCSITE-98 add */
 
@@ -565,7 +585,8 @@
 
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
-            $('.arsAgreeRequestCheck').attr('disabled', false);
+            $('.arsAgreeRequestCheck').attr('disabled', false);            
+            arsAgreeConfirm = "N";
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
         } else {
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
@@ -586,11 +607,13 @@
             url : ARS_AGREE_URL,
             data : sendata,
             async : false,
-            success : function(result){                
-                lgkorUI.alert(result.data.alert.desc, {
-                    title: result.data.alert.title
-                });
-                
+            success : function(result){         
+                if (!vcui.detect.isIOS){
+                    lgkorUI.alert(result.data.alert.desc, {
+                        title: result.data.alert.title
+                    });
+                }
+
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
                     //$('.arsAgreeRequestCheck').attr('disabled', false);
@@ -599,8 +622,7 @@
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
                 }
                 
-                setHiddenData('arsAgree', result.data.success);
-                
+                setHiddenData('arsAgree', result.data.success);                
                 // //BTOCSITE-98 add
             },
             error : function(error){
@@ -615,6 +637,7 @@
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     var arsConfirmCallingInterval = null;
     function arsAgreeConfirmCheck(){
+        isClickedarsAgreeConfirmCheckBtn = true;
         $('.arsAgreeRequestCheck').attr('disabled', true);
         clearTimeout(arsConfirmCallingInterval);
         arsConfirmCallingInterval = setTimeout(function(){
@@ -634,7 +657,10 @@
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             arsAgreeConfirm = result.data.success;
-            
+
+            if (arsAgreeConfirm !== "Y"){
+                setHiddenData('arsAgree' , 'N');                
+            }            
             
         }, ajaxMethod, null, true);
         
@@ -696,7 +722,7 @@
             return false;
         }
 
-        if(getHiddenData("arsAgree") == "N"){
+        if(getHiddenData("arsAgree") == "N" && !vcui.detect.isIOS){
             lgkorUI.alert("",{
                 title: "자동결제를 위해 ARS 출금동의 신청해주세요."
             });
@@ -704,15 +730,25 @@
             return false;
         }
 
+        /* BTOCSITE-98 add */
         if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
-            lgkorUI.alert("",{
-                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
-            });
-            
-            return false;
-        }
 
-        
+            if (getHiddenData("arsAgree") !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 신청해주세요"
+                });
+                return false;
+            }
+
+            if (arsAgreeConfirm !== "Y"){
+                lgkorUI.alert("",{
+                    title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+                });
+                return false;
+            }
+            
+        }
+        /* //BTOCSITE-98 add */
 
         if(!paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
