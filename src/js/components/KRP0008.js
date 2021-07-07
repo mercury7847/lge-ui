@@ -1339,13 +1339,9 @@
                     var _self = this;
                     var $this = $(_self);
                     var $colorWrap = self.$siblingCont.find('.sibling-color');
-                    // var $colorChip = $colorWrap.find('.chk-wrap-colorchip');
-                    
                     var models;
 
                     self.siblingCurrentModel = "";
-
-                    
 
                     if(self.receivedSiblingData.length > 0 && self.receivedSiblingData[0].siblingModels && self.defaultSiblingDataFlag ) {
                         models= self.receivedSiblingData[0].siblingModels;
@@ -1362,7 +1358,32 @@
                         });
                     });
 
-                    // console.log("self.sib    lingCurrentModel", self.siblingCurrentModel)
+                    var optionSelectModels = [];
+
+                    self.$siblingCont.find('.option-list').each(function(i){
+                        var currentSiblingCode = $(this).find('input:radio').filter(':checked').attr('data-sibling-code')
+                        if( i == 0) {
+                            optionSelectModels = models.filter(function(model){
+                                return model.siblingCode === currentSiblingCode
+                            })
+                        } else {
+                            var modelIds = optionSelectModels.map(function(model){
+                                return model.modelId
+                            });
+                            optionSelectModels = models.filter(function(model){
+                                return modelIds.indexOf(model.modelId) > -1
+                            }).filter(function(model){
+                                return model.siblingCode == currentSiblingCode
+                            })
+                        }
+                    })
+
+                    if( optionSelectModels[0] ) {
+                        self.siblingCurrentModel = optionSelectModels[0].modelId;     
+                    } else {
+                        self.siblingCurrentModel = '';
+                    }
+                    
                     if( $colorWrap.length ) {
                         var $colorHead = $colorWrap.find('.sibling-colorHead');
                         var currentSiblingCode = $colorWrap.find('.chk-wrap-colorchip').has('input:checked').attr('title');
@@ -1379,6 +1400,7 @@
                     if( self.siblingCurrentModel ) {
                         self.requestSiblingData(self.siblingCurrentModel)
                     } else {
+                        self.$siblingCont.removeAttr('data-model-path')
                         self.$siblingBtnComp.prop('disabled', true)
                     }
                 });
@@ -1404,7 +1426,7 @@
                 self.$specInfoPopup.find('.btn-close').on('click', function(e){
                     var $this = $(this);
                     var $currentPopup = $this.closest('#specInfoPopup');
-                    $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
+                    $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-model-path');
                     $currentPopup.find('.btn-sibling-select').prop('disabled', $currentPopup.data('init-select-disabled'));
                 })
                 //BTOCSITE-44 스펙선택(시블링레이어) 선택완료
@@ -1417,8 +1439,8 @@
                     if( _modelPath != undefined && _modelPath != "") {
                         location.href = _modelPath;
                     } else {
-                        self.$specInfoPopup.vcModal('hide')
-                        $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-current-model data-model-path');
+                        $currentPopup.vcModal('hide')
+                        $currentPopup.find('.sibling-cont').empty().append($currentPopup.data('init-content')).removeAttr('data-model-path');
                     }
                 })
             },
@@ -2444,19 +2466,10 @@
                     checkedOptionArray = modelsData.filter(function(model){
                         return model.siblingCode == currentSiblingCode;
                     })
-                    //console.log("checkedOptionArray", checkedOptionArray)
                 }
                 
                 if( checkedOptionArray.length > 0) {
                     $target.closest('[role="radio"]').removeClass('disabled')
-
-                    if( checkd ) {
-                        // console.log($optionList.length, $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length);
-                        var checkedRadioLength = $optionList.find('[role=radio]:not(.disabled) input:radio:checked').length;
-                        if( $optionList.length === checkedRadioLength ) {
-                            self.siblingCurrentModel = checkedOptionArray[0].modelId;
-                        }
-                    }
                 } else {
                     $target.closest('[role="radio"]').addClass('disabled')
                 }
@@ -2482,6 +2495,7 @@
                         } else {
                             self.defaultSiblingDataFlag = true;
                             self.receivedSiblingData = [];
+                            self.$siblingCont.removeAttr('data-model-path', currentPath)
                             self.$siblingBtnComp.prop('disabled', true)
                         }
                     });
