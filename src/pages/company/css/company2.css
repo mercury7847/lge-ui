@@ -26,6 +26,21 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .center {text-align:center}
 .company .thumb {width:100%; margin-top:24px}
 .company .thumb.ci {margin:60px 0}
+.company .thumb.ci .only_pc img {max-width:100%; margin:0 auto}
+.company .thumb.ci .only_mo img {width:100%; max-width:100%; margin:0 auto}
+.company .thumb.ci .tooltipArea {position:relative}
+.company .thumb.ci .tooltipArea .tooltips {position:absolute; left:0; right:0; top:0; bottom:0}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap {position:absolute; width:100%; height:100%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-icon {position:absolute; width:25%; height:25%; z-index:50}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.new .tooltip-icon {top:2%; right:50%; transform:translateX(-30%); background:url(/kr/images/company/info/ico-tooltip_black.svg) no-repeat; background-size:28%; background-position:center 90%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.beau .tooltip-icon {top:50%; left:-2%; transform:translateY(-50%); background:url(/kr/images/company/info/ico-tooltip_black.svg) no-repeat; background-size:28%; background-position:center 75%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.ease .tooltip-icon {bottom:2%; right:50%; transform:translateX(-25%); background:url(/kr/images/company/info/ico-tooltip_black.svg) no-repeat; background-size:28%; background-position:center 78%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.pro .tooltip-icon {top:2%; left:50%; transform:translateX(30%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 90%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.ref .tooltip-icon {top:50%; right:-2%; transform:translateY(-50%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 75%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.base .tooltip-icon {bottom:2%; left:50%; transform:translateX(22%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 78%}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%)}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; line-height:20px}
 .company .thumb + .accordion-wrap {margin-top:60px}
 .company .graph.ofn {padding-top:40px}
 .company .graph.ofn .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
