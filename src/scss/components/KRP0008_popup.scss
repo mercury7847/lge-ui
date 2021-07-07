@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+// 210707 - 에어컨 필터 구매전 주의사항 팝업
+.app-popup-init {    
+    .pop-conts{
+        padding-top: 25px;
+        @include mobile{
+            font-size: 15px;
+            line-height: 23px;
+        }
+        .section{
+            .sect-box{
+                .text-head{
+                    .title{
+                        font-size:28px;
+                        line-height: 1.36;
+                        @include mobile{
+                            font-style: 24px;
+                        }
+                    }
+                    .sub-title{
+                        margin: 10px 0;
+                        font-size:24px;
+                        line-height:1.42;
+                        font-weight: bold;   
+                        @include mobile{
+                            font-size:20px;
+                            line-height: 1.4;
+                        }                     
+                    }
+                }
+                .btn-wrap{
+                    display: flex;
+                    @include mobile{
+                        display: inline-block;   
+                    }
+                    li{
+                        @include mobile{
+                            margin-bottom: 15px;
+                        }
+                    }
+                }
+            }
+            .img-wrap{
+                width: 100%;
+                border-radius: 8px;
+                border:1px solid #dfdfdf;
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                img {
+                    max-width: 377px;
+                    @include mobile{
+                        max-width: 280px;
+                    }
+                }
+                @include mobile{
+                    border-radius: 10px;
+                }
+            }
+        } 
+    }
+}
+
+/* 텍스트 정렬 */
+.sect-box.align-left{
+    text-align: left;
+}
+.sect-box.align-right{
+    text-align: right;
+}
+.sect-box.align-center{
+    text-align: center;
+}
+
+.app-popup-init .btn-wrap.align-left{
+    justify-content: flex-start;
+}
+.app-popup-init .btn-wrap.align-right{
+    justify-content: flex-end;
+}
+.app-popup-init .btn-wrap.align-center{
+    justify-content: center;
+}
+
+.app-popup-init .btn-wrap.align-left li {
+    margin-right:16px;
+}
+
+.app-popup-init .btn-wrap.align-right li {
+    margin-left:16px;
+}
+
+.app-popup-init .btn-wrap.align-center li {
+    margin:0 8px;
+}
