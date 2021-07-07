@@ -1728,6 +1728,7 @@
             if (vcui.detect.isIOS){
                 arsAgree = "N";
                 arsAgreeConfirm = "N";
+                $('.arsAgreeRequestCheck').attr('disabled', true);
             }
             /* //BTOSCITE-98 add */
         });

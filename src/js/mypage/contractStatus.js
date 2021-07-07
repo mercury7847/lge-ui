@@ -538,6 +538,7 @@
             if (vcui.detect.isIOS){
                 setHiddenData('arsAgree', "N");
                 arsAgreeConfirm = "N";
+                $('.arsAgreeRequestCheck').attr('disabled', true);
             }
             /* //BTOSCITE-98 add */
 
