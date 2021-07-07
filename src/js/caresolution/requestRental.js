@@ -240,7 +240,7 @@
 
         /* BTOCSITE-98 add */
         if (vcui.detect.isIOS){
-            $('.arsAgreeRequestCheck').attr('disabled', true).css({'display' : ''});
+            $('.arsAgreeRequestCheck').attr('disabled', true).show();
             $('#iostxt').show();
         }
 
