@@ -40,6 +40,7 @@
 
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
+    var arsAgree = 'N';
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
@@ -568,7 +569,8 @@
 
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
-            $('.arsAgreeRequestCheck').attr('disabled', false);
+            $('.arsAgreeRequestCheck').attr('disabled', false);            
+            arsAgreeConfirm = "N";
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
         } else {
             //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
@@ -604,8 +606,7 @@
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
                 }
                 
-                setHiddenData('arsAgree', result.data.success);
-                
+                setHiddenData('arsAgree', result.data.success);                
                 // //BTOCSITE-98 add
             },
             error : function(error){
@@ -640,7 +641,10 @@
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             arsAgreeConfirm = result.data.success;
-            
+
+            if (arsAgreeConfirm !== "Y"){
+                setHiddenData('arsAgree' , 'N');                
+            }            
             
         }, ajaxMethod, null, true);
         
@@ -713,14 +717,14 @@
         /* BTOCSITE-98 add */
         if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
 
-            if (isClickedarsAgreeConfirmBtn == false){
+            if (getHiddenData("arsAgree") !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 신청해주세요"
                 });
                 return false;
             }
 
-            if (isClickedarsAgreeConfirmCheckBtn == false){
+            if (arsAgreeConfirm !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
                 });
