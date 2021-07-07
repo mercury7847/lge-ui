@@ -40,6 +40,8 @@
 
     var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
 
+    var arsAgreeConfirm = '';
+
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
@@ -622,7 +624,7 @@
         lgkorUI.showLoading();
 
         //CTI_REQUEST_KEY = "";
-        //arsAgree = "N";
+        arsAgreeConfirm = "N";
 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_CHECK_URL, 180000, {}, function(result){
             //console.log('출금동의요청 체크 결과', result);
@@ -631,6 +633,7 @@
             });
 
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            arsAgreeConfirm = result.data.success;
             
             
         }, ajaxMethod, null, true);
@@ -700,6 +703,16 @@
             
             return false;
         }
+
+        if(arsAgreeConfirm == "N" && vcui.detect.isIOS){
+            lgkorUI.alert("",{
+                title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
+            });
+            
+            return false;
+        }
+
+        
 
         if(!paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked')){
             lgkorUI.alert("",{
