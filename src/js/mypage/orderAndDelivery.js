@@ -1783,7 +1783,14 @@
         });
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
+    var arsConfirmCallingInterval = null;
     function arsAgreeConfirmCheck(){
+        $('.arsAgreeRequestCheck').attr('disabled', true);
+        clearTimeout(arsConfirmCallingInterval);
+        arsConfirmCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+        }, 3000);
+
         lgkorUI.showLoading();
 
         //CTI_REQUEST_KEY = "";

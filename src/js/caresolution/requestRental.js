@@ -1163,7 +1163,7 @@ console.log(sendata)
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
             $('.arsAgreeRequestCheck').attr('disabled', false);
-        } else {                                        
+        } else {                                      
             //$('.arsAgreeRequestCheck').hide();
         }
         
@@ -1201,7 +1201,14 @@ console.log(sendata)
     }
 
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
-    function arsAgreeConfirmCheck(){
+    var arsConfirmCallingInterval = null;
+    function arsAgreeConfirmCheck(){        
+        $('.arsAgreeRequestCheck').attr('disabled', true);
+        clearTimeout(arsConfirmCallingInterval);
+        arsConfirmCallingInterval = setTimeout(function(){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+        }, 3000);        
+
         lgkorUI.showLoading();
 
         //CTI_REQUEST_KEY = "";
