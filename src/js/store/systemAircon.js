@@ -52,8 +52,6 @@
 
             // 온라인 견적 문의내역 조회
             self.$inqueryBtn.on('click', function() {
-
-                console.log("문의 내역조회 %o", self.$form.data('inqueryUrl') );
                 lgkorUI.confirm("작성하신 내용이 초기화 된 후<br>온라인견적 문의 내역 조회 페이지로<br>이동됩니다. 이동 하시겠습니까?", {
                     title: "",
                     cancelBtnName: "취소",
@@ -179,11 +177,9 @@
                     }
                 });
         },
-        
     }
     
     $(window).ready(function() {
-        
         if($('#systemAirconForm').length) b2cOnline.init(); 
         if($('#searchForm').length) b2cOnlineSearch.init(); 
 
