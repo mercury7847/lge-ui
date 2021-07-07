@@ -140,6 +140,7 @@ var FilterLayer = (function() {
             // 모바일 필터박스 열기
             $('div.btn-filter a').on('click', function(e){
                 e.preventDefault();
+                
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
 
@@ -154,6 +155,17 @@ var FilterLayer = (function() {
 
             // 모바일 필터박스 닫기
             $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                e.preventDefault();
+                self.$layFilter.removeClass('open');
+                
+                lgkorUI.removeHistoryBack(self.cid);
+
+                $('html, body').css({
+                    overflow:"visible"
+                });
+            });
+            // BTOCSITE-2161 :: dim 클릭시 모바일 필터박스 닫기
+            self.$layFilter.find('.dimmed').on('click', function(e){
                 e.preventDefault();
                 self.$layFilter.removeClass('open');
                 

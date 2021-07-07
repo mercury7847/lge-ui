@@ -717,11 +717,13 @@
                             display: none;
                         }
                         .tit {
-                            padding: 48px 0 16px;
+                            //padding: 48px 0 16px;
+                            padding-bottom: 16px;   //BTOCSITE-2161
                         }
                     }
                     .plp-filter-wrap {
-                        padding:88px 16px 150px;
+                        //padding:88px 16px 150px;
+                        padding:88px 16px 48px;   //BTOCSITE-2161
                         .btn-reset,
                         .filter-close {
                             top: 44px;
@@ -1472,6 +1474,7 @@
         //position: relative;
         top: 0;
         left: 0;
+        z-index:0;  // BTOCSITE-2161 
         .ico-filter {
             top: 0;
             width: auto;
