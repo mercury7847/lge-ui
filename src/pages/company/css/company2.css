@@ -125,14 +125,41 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.job_pay > li {width:calc(33.3333% - 16px); padding:30px 0; border-radius:8px; background-color:#f4f4f4; text-align:center}
 .company ul.job_pay > li i {display:block; width:80px; height:80px; margin:0 auto}
 .company ul.job_pay > li i.ico_01 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
-.company ul.job_pay > li i.ico_02 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
-.company ul.job_pay > li i.ico_03 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_01.svg) no-repeat center / contain}
+.company ul.job_pay > li i.ico_02 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_02.svg) no-repeat center / contain}
+.company ul.job_pay > li i.ico_03 {background:url(/kr/images/company/recruit/ico-recruit-job_pay_03.svg) no-repeat center / contain}
 .company ul.job_pay > li .name {font-size:20px; font-weight:bold; line-height:1.5}
 .company ul.job_pay > li em {display:block; color:#666; font-size:16px; line-height:26px}
 .company ul.job_pay > li .desc {margin-top:15px; font-size:16px; line-height:24px}
 .company ul.welfare > li {position:relative; min-height:140px; padding:30px 30px 30px 140px}
 .company ul.welfare > li + li {margin-top:-1px; border-top:1px dashed #ddd}
 .company ul.welfare > li i {position:absolute; display:block; width:80px; height:80px; left:30px; top:30px}
+
+.company ul.welfare > li i.wel_01_01 {background:url(/kr/images/company/recruit/ico-recruit-welfare_01_01.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_01_02 {background:url(/kr/images/company/recruit/ico-recruit-welfare_01_02.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_01_03 {background:url(/kr/images/company/recruit/ico-recruit-welfare_01_03.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_01_04 {background:url(/kr/images/company/recruit/ico-recruit-welfare_01_04.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_01_05 {background:url(/kr/images/company/recruit/ico-recruit-welfare_01_05.svg) no-repeat center / contain}
+
+.company ul.welfare > li i.wel_02_01 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_01.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_02 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_02.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_03 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_03.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_04 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_04.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_05 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_05.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_06 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_06.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_07 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_07.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_08 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_08.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_02_09 {background:url(/kr/images/company/recruit/ico-recruit-welfare_02_09.svg) no-repeat center / contain}
+
+.company ul.welfare > li i.wel_03_01 {background:url(/kr/images/company/recruit/ico-recruit-welfare_03_01.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_03_02 {background:url(/kr/images/company/recruit/ico-recruit-welfare_03_02.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_03_03 {background:url(/kr/images/company/recruit/ico-recruit-welfare_03_03.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_03_04 {background:url(/kr/images/company/recruit/ico-recruit-welfare_03_04.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_03_05 {background:url(/kr/images/company/recruit/ico-recruit-welfare_03_05.svg) no-repeat center / contain}
+
+.company ul.welfare > li i.wel_04_01 {background:url(/kr/images/company/recruit/ico-recruit-welfare_04_01.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_04_02 {background:url(/kr/images/company/recruit/ico-recruit-welfare_04_02.svg) no-repeat center / contain}
+.company ul.welfare > li i.wel_04_03 {background:url(/kr/images/company/recruit/ico-recruit-welfare_04_03.svg) no-repeat center / contain}
+
 .company ul.welfare > li .name {font-size:18px; font-weight:800; line-height:26px}
 .company ul.welfare > li .desc {margin-top:12px; font-size:16px; line-height:24px}
 
@@ -326,6 +353,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:hover::after {background:url(/kr/images/company/icon/icon-arrow-accor-white.svg) center no-repeat!important; background-size:20px 20px!important}
 
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {display:block; padding-top:60px; padding-bottom:60px}
+.company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title {font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title_sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
