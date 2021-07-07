@@ -54,7 +54,8 @@
 
     var isBeforeUnload = true;
 
-    var arsAgreeConfirm = '';   // BTOCSITE-98 add
+    var arsAgree = 'N';   // BTOCSITE-98 add
+    var arsAgreeConfirm = 'N';   // BTOCSITE-98 add
     var isClickedarsAgreeConfirmBtn = false;    // BTOCSITE-98 add
     var isClickedarsAgreeConfirmCheckBtn = false;    // BTOCSITE-98 add
 
@@ -784,14 +785,14 @@
         /* BTOCSITE-98 add */
         if(arsAgreeConfirm !== "Y" && vcui.detect.isIOS){
 
-            if (isClickedarsAgreeConfirmBtn == false){
+            if (chk !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 신청해주세요"
                 });
                 return false;
             }
 
-            if (isClickedarsAgreeConfirmCheckBtn == false){
+            if (arsAgreeConfirm !== "Y"){
                 lgkorUI.alert("",{
                     title: "자동결제를 위해 ARS 출금동의 확인 버튼을 클릭해 주세요"
                 });
@@ -1188,6 +1189,7 @@ console.log(sendata)
         // BTOCSITE-98 add
         if (vcui.detect.isIOS){
             $('.arsAgreeRequestCheck').attr('disabled', false);
+            arsAgreeConfirm = "N";
         } else {                                      
             //$('.arsAgreeRequestCheck').hide();
         }
@@ -1215,8 +1217,6 @@ console.log(sendata)
                 
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
                 setInputData('arsAgree', result.data.success);                
-                
-                
             },
             error : function(error){
                 //alert('error');
@@ -1252,6 +1252,10 @@ console.log(sendata)
             CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
             //arsAgree = result.data.success;
             arsAgreeConfirm = result.data.success;
+
+            if (arsAgreeConfirm == "N"){
+                setInputData('arsAgree', "N");
+            }
             
         }, ajaxMethod, null, true);
         
