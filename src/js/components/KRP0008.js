@@ -2454,6 +2454,7 @@
                 });
                 
                 if( checkedOptionArray.length > 0 ){
+                    // console.log('checkedOptionArray 있음!', checkedOptionArray)
                     var currentModelId = checkedOptionArray.map(function(model){
                         return model.modelId
                     });    
@@ -2463,9 +2464,12 @@
                         return model.siblingCode == currentSiblingCode;
                     })
                 } else {
-                    checkedOptionArray = modelsData.filter(function(model){
-                        return model.siblingCode == currentSiblingCode;
-                    })
+                    // console.log('checkedOptionArray 없음!', checkedOptionArray)
+                    if( currentIndex == 0) {
+                        checkedOptionArray = modelsData.filter(function(model){
+                            return model.siblingCode == currentSiblingCode;
+                        })    
+                    }
                 }
                 
                 if( checkedOptionArray.length > 0) {
