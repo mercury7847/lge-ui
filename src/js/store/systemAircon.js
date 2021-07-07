@@ -154,7 +154,7 @@
                     if( validationResult) {
                         var param = self.validation.getAllValues();
                         var url = self.$form.data('inqueryResult');
-                        if(url) location.href =  url+'?estimationId='+param.estimationId;
+                        if(url) location.href =  url+'?'+ $.param( param );
                     }
                 });
         },
