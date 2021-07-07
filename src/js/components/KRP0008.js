@@ -1,6 +1,6 @@
 (function() {
     
-    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
+    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}" data-model-name="{{modelName}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
             '<dd class="content">' +
@@ -634,6 +634,11 @@
                         $('.care-solution-info').show();
                     }
                     history.replaceState({},"",url);
+                    self.replaceModelName(data);
+                });
+
+                self.$pdpInfoTab.on("tabchange", function(e, data){
+                    self.replaceModelName(data);
                 });
 
                 //모바일 수상내역 버튼
@@ -1479,6 +1484,22 @@
             },
 
             //PDP SIDE 관련
+
+            //구매/렌탈 탭 변경에 따른 모델명 변경
+            replaceModelName: function(data) {
+
+                // var self = this;
+                var index = data.selectedIndex;
+                var $tabs = $('.option-tabs .careTab');
+                var $tabList = $tabs.find('li');
+                var modelName = $tabList.eq(index).find('a').attr('data-model-name');
+
+                $('.product-detail-info .hidden-sm .sku').text(modelName)
+                $('.breadcrumb ul li:last-child strong').text(modelName)
+
+                //초기화면에서 모델네임이 다른경우에만 모델네임 바꿔주기 = if로 다를때만 
+                
+            },
 
             //제휴카드 리스트 정리 펑션
             makeAssociatedCardListData: function(cardListData) {
@@ -2454,7 +2475,6 @@
                 });
                 
                 if( checkedOptionArray.length > 0 ){
-                    // console.log('checkedOptionArray 있음!', checkedOptionArray)
                     var currentModelId = checkedOptionArray.map(function(model){
                         return model.modelId
                     });    
@@ -2464,12 +2484,9 @@
                         return model.siblingCode == currentSiblingCode;
                     })
                 } else {
-                    // console.log('checkedOptionArray 없음!', checkedOptionArray)
-                    if( currentIndex == 0) {
-                        checkedOptionArray = modelsData.filter(function(model){
-                            return model.siblingCode == currentSiblingCode;
-                        })    
-                    }
+                    checkedOptionArray = modelsData.filter(function(model){
+                        return model.siblingCode == currentSiblingCode;
+                    })
                 }
                 
                 if( checkedOptionArray.length > 0) {
