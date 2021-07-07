@@ -484,4 +484,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .ci_download .tit {font-size:18px; line-height:26px}
   .company .ci_download .desc {margin-top:8px; font-size:14px; line-height:20px}
   .company .ci_download .btn {min-width:90px; padding:8px 0; font-size:13px}
+
+  .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .btn-close {top:12px; right:12px}
 }
