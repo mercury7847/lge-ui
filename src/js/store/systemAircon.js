@@ -150,12 +150,34 @@
         bindEvents : function() {
             var self = this;
                 self.$searchBtn.on('click',function(){
-                    var validationResult = self.validation.validate().success;
-                    if( validationResult) {
-                        var param = self.validation.getAllValues();
-                        var url = self.$form.data('inqueryResult');
-                        if(url) location.href =  url+'?'+ $.param( param );
-                    }
+                    var ajaxUrl = self.$form.data('inquireNum');
+
+           
+                    var param = self.validation.getAllValues();
+
+               
+                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                            console.log("result %o",result);
+                            if(result.status === "error") {
+                                lgkorUI.alert("", {
+                                    title: '접수번호가 일치하지 않습니다. <br>다시 확인해주세요.'
+                                });
+
+                            } else {
+                           
+                                var url = self.$form.data('inqueryResult');
+                                if(url) location.href =  url+'?'+ $.param( param );
+
+
+                            }
+
+                          
+
+
+                        });
+
+                 
+
                 });
         },
         
