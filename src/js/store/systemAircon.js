@@ -69,10 +69,17 @@
             // 온라인 견적 문의하기
             self.$estimateBtn.on('click', function(){
                 var validationResult = self.validation.validate().success;
-                
+
                 if( validationResult ) {
                     var ajaxUrl = self.$form.data('estimateUrl');
                     var param = self.validation.getAllValues();
+
+                    var radioChk = {}
+                    self.$form.find("input[type='radio']:checked").each(function(){
+                        radioChk[this.name] = this.value;
+                    })
+    
+                    param = $.extend(param,radioChk);
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                         if(result.data.status === 'success') {
                             lgkorUI.alert("", {
@@ -98,7 +105,6 @@
             // 기본 주소와 동일
             self.$defaultAddress.on('change', function(e){
                 if(this.checked) {
-                    console.log("체크");
                     var addr1 = $('input[name="addr1"]').val();
                     var addr2 = $('input[name="addr2"]').val();
                     var addr3 = $('input[name="addr3"]').val();
@@ -111,7 +117,6 @@
                         $('input[name="plc-addr3"]').val(addr3);
                     }
                 } else {
-                    console.log("체크 해제");
                     $('input[name="plc-addr1"]').val('');
                     $('input[name="plc-addr2"]').val('');
                     $('input[name="plc-addr3"]').val('');
@@ -147,37 +152,31 @@
                 });
 
         },
+        openAlert : function() {
+            lgkorUI.alert("", {
+                title: '접수번호가 일치하지 않습니다. <br>다시 확인해주세요.'
+            });
+        },
         bindEvents : function() {
             var self = this;
                 self.$searchBtn.on('click',function(){
                     var ajaxUrl = self.$form.data('inquireNum');
-
-           
                     var param = self.validation.getAllValues();
-
                
-                        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                            console.log("result %o",result);
-                            if(result.status === "error") {
-                                lgkorUI.alert("", {
-                                    title: '접수번호가 일치하지 않습니다. <br>다시 확인해주세요.'
-                                });
-
-                            } else {
-                           
+                    if( validationResult && ajaxUrl) {
+                        lgkorUI.requestAjaxDataFailCheck(ajaxUrl, param, function(result) {
+                            if(result.status === "success") {
                                 var url = self.$form.data('inqueryResult');
                                 if(url) location.href =  url+'?'+ $.param( param );
-
-
+                            } else {
+                                self.openAlert();
                             }
-
-                          
-
-
+                        },function(fail) {
+                            self.openAlert();
                         });
-
-                 
-
+                    } else {
+                        self.openAlert();
+                    }
                 });
         },
         
