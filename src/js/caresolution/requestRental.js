@@ -1150,6 +1150,14 @@ console.log(sendata)
         lgkorUI.showLoading();
 
         setInputData('arsAgree', "N");
+
+        // BTOCSITE-98 add
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+        } else {                                        
+            //$('.arsAgreeRequestCheck').hide();
+        }
+        
         /*
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, {}, function(result){            
             lgkorUI.alert(result.data.alert.desc, {
@@ -1169,16 +1177,9 @@ console.log(sendata)
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
-                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
-                // BTOCSITE-98 add
-                if (vcui.detect.isIOS){
-                    $('.arsAgreeRequestCheck').attr('disabled', false);
-                } else {                                        
-                    //$('.arsAgreeRequestCheck').hide();
-                }
-                setInputData('arsAgree', result.data.success);
+                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
+                setInputData('arsAgree', result.data.success);                
                 
-                // //BTOCSITE-98 add
             },
             error : function(error){
                 //alert('error');

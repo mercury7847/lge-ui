@@ -1715,6 +1715,16 @@
 
         var sendata = sendPaymentMethod == METHOD_CARD ? cardValidation.getValues() : bankValidation.getValues();
         arsAgree = "N";
+
+        // BTOCSITE-98 add
+        if (vcui.detect.isIOS){
+            $('.arsAgreeRequestCheck').attr('disabled', false);
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+        } else {
+            //CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+            //arsAgree = result.data.success;                    
+        }
+
         /* 
         lgkorUI.requestAjaxDataAddTimeout(ARS_AGREE_URL, 180000, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
@@ -1739,21 +1749,19 @@
             url : ARS_AGREE_URL,
             data : sendata,
             async : false,
-            success : function(result){
-                
+            success : function(result){                
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
                 //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);
                 // BTOCSITE-98 add
                 if (vcui.detect.isIOS){
-                    $('.arsAgreeRequestCheck').attr('disabled', false);
+                    //$('.arsAgreeRequestCheck').attr('disabled', false);
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                 } else {
                     CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
                     arsAgree = result.data.success;                    
-                }
-                
+                }                
                 // //BTOCSITE-98 add
             },
             error : function(error){
