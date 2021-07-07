@@ -2221,8 +2221,6 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
-<<<<<<< HEAD
-=======
 
                 // BTOCSITE-1775
                 var isAllCancelDisable = true;  // 모두 취소 불가능
@@ -2244,7 +2242,6 @@
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
                 // //BTOCSITE-1775
->>>>>>> be4af3d5a (수정)
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
