@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID : "KRP0008"
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#main-init-popup" data-control="modal" class="btn"><span>에어컨 필터 구매 전 주의사항 팝업_left</span></button><br><br>
+    </div>
+
+
+    <!-- 모바일 사업 종료-->
+    <article id="main-init-popup" class="popup-wrap middle app-popup-init">
+        <header class="pop-header">
+            <h1 class="tit"><span>에어컨 필터 구매 전 주의사항</span></h1>
+        </header>
+        <section class="pop-conts align-center">
+            <section class="section">
+                <div class="sect-box align-left">
+                    <div class="text-head">
+                        <h1 class="title">에어컨 필터 구매 전 주의사항을 꼭 확인하세요!</h1>
+                        <p class="sub-title">실제 착장된 소모품을 반드시 확인하세요.</p>
+                    </div>
+                    
+                    <div class="text-cont"><!-- 210419 수정 [오타 수정] -->
+                        제품의 색상 및 사이즈는 실제와 약간 다를 수 있습니다. 제품의 외관 및 사양, 가격 등은 제품
+개량을 위해 사전 예고 없이 변경 될 수 있으며 본 상품번호와 호환되는 다른 상품으로 배송될 
+수 있으니 참고 바랍니다.
+                    </div><!-- // 210419 수정 [오타 수정] -->
+                    <ul class="btn-wrap align-left">
+                        <li><button type="button" onclick="window.open('')" class="btn full border size-m"><span>Button 01</span></button></li>
+                        <li><button type="button" onclick="window.open('')" class="btn full border size-m"><span>Button 02</span></button></li>
+                        <li><button type="button" onclick="window.open('')" class="btn full border size-m"><span>Button 03</span></button></li>
+                    </ul>
+                </div>
+    
+                <div class="img-wrap">
+                    <img src="/lg5-common/images/KRP0008/img_mobile.jpg" alt="팝업이미지">
+                </div>
+            </section>
+        </section>
+        <!-- 2021.03.08 footer 태그 div로 수정 -->
+        <div class="pop-footer check-type align-between">
+            <!-- <span class="chk-wrap" data-role="today-cookie-check">
+                <input type="checkbox" id="check-today" name="today">
+                <label for="check-today">오늘 하루 그만 보기</label>
+            </span>
+            <button type="button" class="btn pink btn-close"><span>닫기</span></button> -->
+        </div>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 모바일 사업 종료 -->
+</body>
+</html>

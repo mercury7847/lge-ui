@@ -730,6 +730,10 @@
                         .text {
                             padding-top: 0;
                         }
+                        // 210702
+                        @include mobile{
+                            flex-direction: row;
+                        }
                     }
                     .text {
                         flex: none;
@@ -738,6 +742,10 @@
                         padding-top: 5px;
                         padding-right: 24px;
                         @include font-small;
+                        //210702
+                        @include mobile{
+                            flex-grow:2;
+                        }
                     }
                     &:first-child {
                         margin-top: 0;
@@ -843,6 +851,10 @@
                 }
                 .text-option {
                     @include font-small;
+                    //210702
+                    @include mobile{
+                        flex-grow: 2;
+                    }
                 }
                 .my-objet {
                     a {
@@ -877,6 +889,50 @@
                         // margin:24px -16px 0;
                         a {
                             border-radius:0;
+                        }
+                    }
+                }
+                /* 210702 */
+                .notice-wrap {
+                    margin-top:32px;
+                    @include mobile{
+                        margin-top:24px;
+                    }
+                    .notice-box {
+                        a {
+                            display:block;
+                            width:100%;
+                            height:50px;
+                            padding:12px 0;
+                            border-radius:8px;
+                            background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
+                            color:#fff;
+                            font-size:16px;
+                            font-weight:700;
+                            line-height:26px;
+                            text-align:center;
+                            span {
+                                position:relative;
+                                padding-right:22px;
+                                &:after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:5px;
+                                    right:0;
+                                    width:16px;
+                                    height:16px;
+                                    background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+                                    background-size:16px;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            margin:0 -16px;
+                            // margin:24px -16px 0;
+                            a {
+                                border-radius:0;
+                                font-weight: normal;
+                            }
                         }
                     }
                 }
@@ -3186,3 +3242,6 @@
 @import "../pages/UTC/OBSF9039";
 
 @import "KRP0008_CS";
+
+//210702 에어컨 필터 구매 전 주의사항 팝업 관련 css 파일
+@import "KRP0008_popup";
