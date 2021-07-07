@@ -98,21 +98,23 @@
                                     </dd>
                                 </dl>
                                 <dl class="forms dl2">
+                                    <!-- BTOCSITE-518 20210707 수정 START -->
                                     <dt class="tit"><label for="rdo1-1">신규/교체여부</label></dt>
                                     <dd class="conts">
                                         <span class="rdo-wrap">
-                                            <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                            <input type="radio" id="rdo1-1" name="rdo1" checked value="A">
                                             <label for="rdo1-1">에어컨 신규 설치/신규 건물</label>
                                         </span>
                                         <span class="rdo-wrap">
-                                            <input type="radio" id="rdo1-2" name="rdo1">
+                                            <input type="radio" id="rdo1-2" name="rdo1" value="B">
                                             <label for="rdo1-2">에어컨 신규/기존 건물</label>
                                         </span>
                                         <span class="rdo-wrap">
-                                            <input type="radio" id="rdo1-3" name="rdo1">
+                                            <input type="radio" id="rdo1-3" name="rdo1" value="C">
                                             <label for="rdo1-3">에어컨 교체 설치</label>
                                         </span>
                                     </dd>
+                                    <!-- BTOCSITE-518 20210707 수정 END -->
                                 </dl>
                             </div>
                             <div class="sub-forms subbox">
@@ -137,9 +139,10 @@
                                                     <input type="text" value="" placeholder="상세 주소 입력" name="plc-addr3" data-required="true">
                                                 </div>
                                                 <span class="chk-wrap">
-                                                    <!--  BTOCSITE-518 20110702 수정 -->
-                                                    <input type="checkbox" id="defaultAddress" name="chk1">
+                                                    <!--  BTOCSITE-518 20210707 START -->
+                                                    <input type="checkbox" id="defaultAddress" name="defaultAddress">
                                                     <label for="defaultAddress">기본 주소와 동일</label>
+                                                     <!--  BTOCSITE-518 20210707 END -->
                                                 </span>
                                             </div>
                                         </dd>
@@ -148,20 +151,20 @@
                                         <dt class="tit"><label for="chk2-1">유형</label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-1" name="chk1" checked>
-                                                <label for="chk2-1">아파트</label>
+                                                <input type="checkbox" id="chk1-1" name="chk1" checked value="A">
+                                                <label for="chk1-1">아파트</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-2" name="chk2">
-                                                <label for="chk2-2">단독주택</label>
+                                                <input type="checkbox" id="chk1-2" name="chk1" value="B">
+                                                <label for="chk1-2">단독주택</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-3" name="chk3">
-                                                <label for="chk2-3">빌라</label>
+                                                <input type="checkbox" id="chk1-3" name="chk1" value="C">
+                                                <label for="chk1-3">빌라</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-4" name="chk4">
-                                                <label for="chk2-4">기타</label>
+                                                <input type="checkbox" id="chk1-4" name="chk1" value="D">
+                                                <label for="chk1-4">기타</label>
                                             </span>
                                             <dl class="forms set2">
                                                 <dt class="tit"><label for="inp07" class="">전용면적</label></dt>
@@ -220,19 +223,19 @@
                                         <dt class="tit"><label for="chk3-1">제품종류</label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-1" name="chk1" checked>
+                                                <input type="checkbox" id="chk2-1" name="chk2" checked value="A">
                                                 <label for="chk3-1">시스템에어컨(천장형)</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-2" name="chk2">
+                                                <input type="checkbox" id="chk2-2" name="chk2" value="B">
                                                 <label for="chk3-2">스탠드 (2in1포함)</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-3" name="chk3">
+                                                <input type="checkbox" id="chk2-3" name="chk2" value="C">
                                                 <label for="chk3-3">벽걸이형</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-4" name="chk4">
+                                                <input type="checkbox" id="chk2-4" name="chk2" value="D">
                                                 <label for="chk3-4">없음</label>
                                             </span>
                                         </dd>
@@ -241,20 +244,20 @@
                                         <dt class="tit"><label for="chk4-1">브랜드</label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk4-1" name="chk1" checked>
-                                                <label for="chk4-1">엘지</label>
+                                                <input type="checkbox" id="chk3-1" name="chk3" checked value="A">
+                                                <label for="chk3-1">엘지</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk4-2" name="chk2">
-                                                <label for="chk4-2">삼성</label>
+                                                <input type="checkbox" id="chk3-2" name="chk3" value="B">
+                                                <label for="chk3-2">삼성</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk4-3" name="chk3">
-                                                <label for="chk4-3">캐리어</label>
+                                                <input type="checkbox" id="chk3-3" name="chk3" value="C">
+                                                <label for="chk3-3">캐리어</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk4-4" name="chk4">
-                                                <label for="chk4-4">기타</label>
+                                                <input type="checkbox" id="chk3-4" name="chk3" value="D">
+                                                <label for="chk3-4">기타</label>
                                             </span>
                                         </dd>
                                     </dl>
