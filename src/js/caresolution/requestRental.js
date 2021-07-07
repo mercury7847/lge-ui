@@ -1127,6 +1127,13 @@ console.log(sendata)
             } else{
                 cardInputData = {};
             }
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setInputData('arsAgree', "N");                
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         }, ajaxMethod);
     }
     //납부계좌확인...
@@ -1160,6 +1167,13 @@ console.log(sendata)
             } else{
                 bankInputData = {};
             }
+            
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                setInputData('arsAgree', "N");
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         }, ajaxMethod);
     }
 

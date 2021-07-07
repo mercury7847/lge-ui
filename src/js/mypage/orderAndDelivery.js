@@ -1723,6 +1723,13 @@
             sendPaymentMethod = sendata.confirmType;
 
             paymentMethodConfirm = result.data.success;
+
+            /* BTOSCITE-98 add */
+            if (vcui.detect.isIOS){
+                arsAgree = "N";
+                arsAgreeConfirm = "N";
+            }
+            /* //BTOSCITE-98 add */
         });
     }
     //ARS출금동의 신청...
