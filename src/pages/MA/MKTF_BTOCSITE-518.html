@@ -36,7 +36,9 @@
                             <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
                                 <div class="input-wrap">
-                                    <input type="text" name="userName" value="" id="inp01" class="inq-name" data-format="koreng" data-required="true">
+                                    <!--  BTOCSITE-518 20210707 START -->
+                                    <input type="text" id="inp01"  name="userName" class="inq-name" value="" placeholder="이름을 입력하세요." data-format="koreng" data-required="true">
+                                    <!--  BTOCSITE-518 20210707 END -->
                                 </div>
                             </dd>
                         </dl>
@@ -229,19 +231,19 @@
                                         <dt class="tit"><label for="chk2-1">제품종류</label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-1" name="chk2" checked value="A">
+                                                <input type="radio" id="chk2-1" name="chk2" checked value="A">
                                                 <label for="chk2-1">시스템에어컨(천장형)</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-2" name="chk2" value="B">
+                                                <input type="radio" id="chk2-2" name="chk2" value="B">
                                                 <label for="chk2-2">스탠드 (2in1포함)</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-3" name="chk2" value="C">
+                                                <input type="radio" id="chk2-3" name="chk2" value="C">
                                                 <label for="chk2-3">벽걸이형</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk2-4" name="chk2" value="D">
+                                                <input type="radio" id="chk2-4" name="chk2" value="D">
                                                 <label for="chk2-4">없음</label>
                                             </span>
                                         </dd>
@@ -250,19 +252,19 @@
                                         <dt class="tit"><label for="chk3-1">브랜드</label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-1" name="chk3" checked value="A">
+                                                <input type="radio" id="chk3-1" name="chk3" checked value="A">
                                                 <label for="chk3-1">엘지</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-2" name="chk3" value="B">
+                                                <input type="radio" id="chk3-2" name="chk3" value="B">
                                                 <label for="chk3-2">삼성</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-3" name="chk3" value="C">
+                                                <input type="radio" id="chk3-3" name="chk3" value="C">
                                                 <label for="chk3-3">캐리어</label>
                                             </span>
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk3-4" name="chk3" value="D">
+                                                <input type="radio" id="chk3-4" name="chk3" value="D">
                                                 <label for="chk3-4">기타</label>
                                             </span>
                                         </dd>
@@ -355,6 +357,7 @@
                                             <div class="company-box-wrap">
                                                 <div class="conts-wrap">
                                                     <div class="select-wrap">
+                                                        <!--  BTOCSITE-518 20210707 START -->
                                                         <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
                                                             <option value="">회사선택</option>
                                                             <option value="BEST SHOP">BEST SHOP</option>
@@ -362,6 +365,7 @@
                                                             <option value="하이텔레서비스">하이텔레서비스</option>
                                                             <option value="기타">기타</option>
                                                         </select>
+                                                        <!--  BTOCSITE-518 20210707 END -->
                                                     </div>
                                                     <div class="input-wrap">
                                                         <input type="text" value="지점명" name="">
@@ -378,19 +382,19 @@
                                         <dd class="conts">
                                             <div class="prod-box-wrap">
                                                 <span class="chk-wrap">
-                                                    <input type="checkbox" id="chk4-1" name="chk4" checked value="A">
+                                                    <input type="radio" id="chk4-1" name="chk4" checked value="A">
                                                     <label for="chk4-1">시스템에어컨(천장형)</label>
                                                 </span>
                                                 <span class="chk-wrap">
-                                                    <input type="checkbox" id="chk4-2" name="chk4" value="B">
+                                                    <input type="radio" id="chk4-2" name="chk4" value="B">
                                                     <label for="chk4-2">사이니지</label>
                                                 </span>
                                                 <span class="chk-wrap">
-                                                    <input type="checkbox" id="chk4-3" name="chk4" value="C">
+                                                    <input type="radio" id="chk4-3" name="chk4" value="C">
                                                     <label for="chk4-3">의료용 모니터</label>
                                                 </span>
                                                 <span class="chk-wrap">
-                                                    <input type="checkbox" id="chk4-4" name="chk4" value="D">
+                                                    <input type="radio" id="chk4-4" name="chk4" value="D">
                                                     <label for="chk4-4">기타</label>
                                                 </span>
                                             </div>
