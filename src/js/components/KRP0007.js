@@ -38,38 +38,10 @@
             '</div>' +
         '</div>' +
         '<div class="product-contents">' +
-        /*
-            '{{#if siblings}}'+
-                '{{#each sibling in siblings}}'+
-                '<div class="product-option ui_smooth_scrolltab {{sibling.siblingType}}">' +
-                    '<div class="ui_smooth_tab">' +
-                        '<ul class="option-list" role="radiogroup">' +
-                            '{{#each item in sibling.siblingModels}}'+
-                                '<li>'+
-                                    '<div role="radio" class="{{#if sibling.siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id="{{categoryId}}" id="product-{{sibling.siblingType}}-{{item.modelId}}" name="nm_{{sibling.siblingType}}_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                                        '{{#if sibling.siblingType=="color"}}'+
-                                            '<label for="product-{{sibling.siblingType}}-{{item.modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
-                                        '{{#else}}'+
-                                            '<label for="product-{{sibling.siblingType}}-{{item.modelId}}">{{item.siblingValue}}</label>'+
-                                        '{{/if}}'+
-                                    '</div>'+
-                                '</li>'+
-                            '{{/each}}' +
-                        '</ul>' +
-                    '</div>' +
-                    '<div class="scroll-controls ui_smooth_controls">' +
-                        '<button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>' +
-                        '<button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>' +
-                    '</div>' +
-                '</div>' +
-                '{{/each}}'+
-            '{{/if}}'+
-            */
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (isShowPrice > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -168,7 +140,7 @@
     $(document).ready(function(){
         if(!document.querySelector('.KRP0007')) return false;
 
-        $('.KRP0007').buildCommonUI();
+        $('.KRP0007').buildCommonUI(); 
 
         //04-06 app에서 plp진입시 메뉴 내려달라는 수정사항에 의해 추가
         lgkorUI.showAppBottomMenu(false);
@@ -220,7 +192,9 @@
     
                     //스토리지에 저장된 필터 체크
                     //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
-                    var storageFilters = {};//lgkorUI.getStorage(storageName);
+                    // var storageFilters = {};//lgkorUI.getStorage(storageName);
+                    //BTOCSITE 1842 - 2021-07-02 상품에서 뒤로가기시 스토리지에 저장된 필터체크 다시 활성화
+                    var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
 
                     var change = false;
@@ -254,6 +228,15 @@
                             self.setPageData(self.savedPLPData.pagination);
                             //토탈 카운트 복수
                             self.setTotalCount(self.savedPLPData.totalCount);
+                            //필터 셀렉트박스 change
+                            
+                            //console.log("self.savedPLPData", self.savedPLPData)
+                            if( self.savedPLPData.sortType) {
+                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    
+                                //console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)
+                            }
+                            
+                            
                             //PDP아이템을 눌렀을 경우 이동
                             var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
                             if($li.length > 0) {
@@ -565,6 +548,8 @@
                     //location.hash = categoryId;
                 //}
 
+                var currentSortType = data.sortType;
+
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
                     
@@ -577,6 +562,7 @@
                         self.savedPLPData.listData = [];
                         self.savedPLPData.pagination = {page:0, totalCount:0};
                         self.savedPLPData.isNew = true;
+                        self.savedPLPData.sortType = currentSortType;
                     }
 
                     var arr = (data.productList && data.productList instanceof Array) ? data.productList : [];
@@ -869,7 +855,15 @@
                     "category": getEcCategoryName(item) 
                 }
                 item.ecProduct = JSON.stringify(ecProduct);
+                // item.isShow = true;
+                if( typeof item.obsSellingPriceNumber == "string") {
+                    item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
+                } else {
+                    item.isShowPrice = item.obsSellingPriceNumber;
+                }
                 item.isShow = lgkorUI.isShowDate('20210601','20210901')
+                //console.log("item %o",item);
+                
                 return vcui.template(productItemTemplate, item);
             },
 
