@@ -576,6 +576,8 @@
                 if (self.isLoading) return; //BTOCSITE-2150 add
                 self.isLoading = true;  //BTOCSITE-2150 add
 
+                lgkorUI.showLoading();  //BTOCSITE-2150 add
+
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 //if(!isHash) {
                     data.categoryId = categoryId;
@@ -638,6 +640,7 @@
                     }
 
                     self.isLoading = false; // BTOCSITE-2150 add
+                    lgkorUI.hideLoading();  // BTOCSITE-2150 add
                 });
             },
 
