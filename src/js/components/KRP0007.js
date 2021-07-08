@@ -530,8 +530,6 @@
                             self.$btnMore.trigger('click');
 
                             console.log('more click');
-
-                            //$(window).scrollTop((productContainer.offset().top + productContainer.height()) - $(window).height());
                         }
                     }
                 });
@@ -568,6 +566,9 @@
 
             requestSearch: function(data, isNew){
                 var self = this;
+
+                if (self.isLoading) return; //BTOCSITE-2150 add
+                self.isLoading = true;  //BTOCSITE-2150 add
 
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 //if(!isHash) {
@@ -632,6 +633,8 @@
                         self.$btnMore.hide();
                         self.$listSorting.hide();
                     }
+
+                    self.isLoading = false; // BTOCSITE-2150 add                    
                 });
             },
 
