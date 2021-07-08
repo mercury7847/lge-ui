@@ -426,6 +426,15 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub + .btnArea {margin-top:10px; padding-top:0}
 
+.company .accordion-wrap.lgway {margin-top:30px}
+.company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b {padding-bottom:0; border-bottom:0}
+.company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:40px; padding-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li + li {margin-top:40px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit {margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text {margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text + .text {margin:0}
+
 /* 테이블 */
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
@@ -549,6 +558,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
   .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; color:#666; font-size:14px; line-height:22px; word-break:normal}
   .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
+
+  .company .accordion-wrap.lgway {margin-top:15px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li + li {margin-top:18px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit {font-size:15px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text {font-size:14px; line-height:22px}
+  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
+  .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:10px}
   
   .company .tb_row {margin-top:0}
   .company .tb_row .tbl_info,
