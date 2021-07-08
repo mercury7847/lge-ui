@@ -83,20 +83,21 @@ var goAppUrl = function(path) {
         '       <button type="button" class="btn ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '   </div>\n'+
         '</article>';
-        var mainPopupInit = 
-        '<article id="main-init-popup" class="popup-wrap full app-popup-init" style="max-width:600px">' + 
+
+    var mainPopupInit = 
+    '<article id="main-init-popup" class="popup-wrap small main-init-popup"  style="max-width:600px">' + 
         '<header class="pop-header">' + 
             '<h1 class="tit"><span>안내</span></h1>' + 
         '</header>' + 
-        '<section class="pop-conts align-center is-bottom-expire">' + 
+        '<section class="pop-conts">' + 
             '<section class="section">' + 
                 '<div class="headline">' + 
                     '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
                 '</div>' + 
                 '<div class="text-cont">' + 
-                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 <br>' + 
-                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, <br>' + 
-                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 <br>' + 
+                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 ' + 
+                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, ' + 
+                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 ' + 
                     '완료하였습니다. <br><br>' + 
 
                     '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' + 
@@ -112,7 +113,7 @@ var goAppUrl = function(path) {
                 '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
                 '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' + 
             '</span>' + 
-            '<button type="button" class="btn pink btn-main-pop-close"><span>닫기</span></button>' + 
+            '<button type="button" class="btn pink btn-main-pop-close size"><span>닫기</span></button>' + 
         '</div>' + 
         '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' + 
     '</article>';
