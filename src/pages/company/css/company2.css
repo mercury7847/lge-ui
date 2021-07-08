@@ -24,6 +24,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tit.only {margin-top:60px}
 .company .tit.h3 + .desc {display:block; margin-top:12px; color:#000; font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
 .company .tit > em {font-weight:normal}
+.company .text.indent {padding-left:18px; text-indent:-18px}
 .company .center {text-align:center}
 .company .thumb {width:100%; margin-top:24px}
 .company .thumb.ci {margin:60px 0}
@@ -401,6 +402,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb_row .tb-col {position:relative}
 .company .tb-row-bl .tbl_info,
 .company .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
+.company .tb-row-bl .tbl_info.g,
+.company .tb-col .tbl_info.g {color:#666}
 .company .tb-row-bl .tbl_info.s,
 .company .tb-col .tbl_info.s {margin-bottom:12px}
 .company .tb_row .tbl_info.abs,
