@@ -1,4 +1,3 @@
-
 (function() {
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -1882,10 +1881,10 @@
     function arsAgreeConfirmCheck(){
         isClickedarsAgreeConfirmCheckBtn = true;
         $('.arsAgreeRequestCheck').attr('disabled', true);
-        clearTimeout(arsConfirmCallingInterval);
-        arsConfirmCallingInterval = setTimeout(function(){
-            $('.arsAgreeRequestCheck').attr('disabled', false);
-        }, 3000);
+        // clearTimeout(arsConfirmCallingInterval);
+        // arsConfirmCallingInterval = setTimeout(function(){
+        //     $('.arsAgreeRequestCheck').attr('disabled', false);
+        // }, 3000);
 
         lgkorUI.showLoading();
 
@@ -2308,7 +2307,6 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
-
                 // BTOCSITE-1775
                 var isAllCancelDisable = true;  // 모두 취소 불가능
                 productList.forEach(function( data ){                    

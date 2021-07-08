@@ -98,8 +98,6 @@
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
-        console.log("setting 몇번 %o",step3Block);
-
         contractUserPhone = getInputData("contractUserDefaultPhone");
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
@@ -484,7 +482,6 @@
             e.preventDefault();
             setBankAbledConfirm();
         }).on('click', '.arsAgreeRequest', function(e){
-            console.log("arsAgreeRequest click");
             e.preventDefault();
             setArsAgreeConfirm();
         }).on('click', '.arsAgreeRequestCheck', function(e){
@@ -701,7 +698,6 @@
         } 
 
 
-        console.log("setStep2Validation:", completed)
 
         return completed;
     }
@@ -1110,7 +1106,7 @@
             cardNumber: step3Block.find('input[name=paymentCardNumber]').data('realData'),
             cardPeriod: step3Block.find('input[name=paymentCardPeriod]').data('realData')
         }
-console.log(sendata)
+
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
@@ -1233,7 +1229,6 @@ console.log(sendata)
        if(vcui.detect.isIOS) {
 
         if(!iosAgreeCallCheck ) {
-            console.log("iso call check");
             iosAgreeCallCheck = true;
             setTimeout(function (){
                 $.ajax({
@@ -1249,20 +1244,15 @@ console.log(sendata)
                         }
                         
                         //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);     
-                        
-                        console.log('success %o',result);
                         setInputData('arsAgree', result.data.success);    
-                        
                         iosAgreeCallCheck = false;
                     },
                     error : function(error){
                         //alert('error');
-                        console.log('error %o',error);
                         iosAgreeCallCheck = false;
                     },
                     complete : function(){
                         //alert('complete');
-                        console.log('compleate');
                         lgkorUI.hideLoading();
                         iosAgreeCallCheck = false;
                     }
@@ -1283,15 +1273,12 @@ console.log(sendata)
                         });
                     }
                     
-                    //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);    
-                    console.log('result.data.CTI_REQUEST_KEY %o', result.data.CTI_REQUEST_KEY);            
+                    //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);           
                     setInputData('arsAgree', result.data.success);                
                 },
                 error : function(error){
-                    console.log("error");
                 },
                 complete : function(){
-                   console.log("complete");
                     lgkorUI.hideLoading();
                 }
             });
@@ -1303,10 +1290,10 @@ console.log(sendata)
     function arsAgreeConfirmCheck(){
         isClickedarsAgreeConfirmCheckBtn = true;     
         $('.arsAgreeRequestCheck').attr('disabled', true);
-        clearTimeout(arsConfirmCallingInterval);
-        arsConfirmCallingInterval = setTimeout(function(){
-            $('.arsAgreeRequestCheck').attr('disabled', false);
-        }, 3000);        
+//         clearTimeout(arsConfirmCallingInterval);
+//         arsConfirmCallingInterval = setTimeout(function(){
+//             $('.arsAgreeRequestCheck').attr('disabled', false);
+//         }, 3000);        
 
         lgkorUI.showLoading();
 
