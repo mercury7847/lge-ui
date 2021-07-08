@@ -187,6 +187,7 @@
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
+                self.isLoading = false; // BTOCSITE-2150 add
                 
                 self.setting();
                 self.bindEvents();
@@ -515,7 +516,7 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param) {
+                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
                         self.requestSearch(param, false);
                     }
                 });
@@ -525,6 +526,20 @@
                         self.cateWrapStatus();
                     })
                 }
+
+                /* BTOCSITE-2150 add */
+                $(window).on('scroll.more', function(e){
+                    //console.log('window.scrollTop', $(window).scrollTop());
+                    var productContainer = $('.product-items');
+                    if (productContainer.offset().top + productContainer.height() <= $(window).scrollTop() + $(window).height()){
+                        console.log('scroll more');
+                        if (self.isLoading == false){
+                            self.$btnMore.trigger('click');
+                            console.log('more click');
+                        }
+                    }
+                });
+                /* //BTOCSITE-2150 add */
             },
 
             setPageData: function(param) {
@@ -533,7 +548,8 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        self.$btnMore.show();
+                        //self.$btnMore.show();
+                        self.$btnMore.hide();   // BTOCSITE-2150 add
                     } else {
                         //더이상 없다
                         self.$btnMore.hide();
@@ -556,6 +572,10 @@
 
             requestSearch: function(data, isNew){
                 var self = this;
+
+                if (self.isLoading) return; //BTOCSITE-2150 add
+                self.isLoading = true;  //BTOCSITE-2150 add
+
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 //if(!isHash) {
                     data.categoryId = categoryId;
@@ -616,6 +636,8 @@
                         self.$btnMore.hide();
                         self.$listSorting.hide();
                     }
+
+                    self.isLoading = false; // BTOCSITE-2150 add
                 });
             },
 
