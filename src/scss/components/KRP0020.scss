@@ -4,6 +4,11 @@
 
 
 .KRP0020 {
+    /* BTOCSITE-2150 add */
+    @include mobile {
+        display:none;
+    }
+    /* //BTOCSITE-2150 add */
     .component-inner { 
         .evt-bnr {
             @include clearfix;
