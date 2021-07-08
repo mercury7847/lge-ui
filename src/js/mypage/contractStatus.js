@@ -548,6 +548,7 @@
 
     //ARS출금동의 신청...
     var arsCallingInterval = null;
+    var iosAgreeCallCheck = false;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
         if (vcui.detect.isIOS){
@@ -603,37 +604,79 @@
             setHiddenData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
         */
-        $.ajax({
-            method : ajaxMethod,
-            url : ARS_AGREE_URL,
-            data : sendata,
-            async : false,
-            success : function(result){         
-                if (!vcui.detect.isIOS){
-                    lgkorUI.alert(result.data.alert.desc, {
-                        title: result.data.alert.title
+        if(vcui.detect.isIOS) {
+            if(!iosAgreeCallCheck ) {
+                iosAgreeCallCheck = true;
+                setTimeout(function (){
+                    $.ajax({
+                        method : ajaxMethod,
+                        url : ARS_AGREE_URL,
+                        data : sendata,
+                        async : false,
+                        success : function(result){         
+                            if (!vcui.detect.isIOS){
+                                lgkorUI.alert(result.data.alert.desc, {
+                                    title: result.data.alert.title
+                                });
+                            }
+            
+                            // BTOCSITE-98 add
+                            if (vcui.detect.isIOS){
+                                //$('.arsAgreeRequestCheck').attr('disabled', false);
+                                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                            } else {
+                                CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+                            }
+                            
+                            setHiddenData('arsAgree', result.data.success);                
+                            // //BTOCSITE-98 add
+                            iosAgreeCallCheck = false;
+                        },
+                        error : function(error){
+                            //alert('error');
+                            iosAgreeCallCheck = false;
+                        },
+                        complete : function(){
+                            //alert('complete');
+                            lgkorUI.hideLoading();
+                            iosAgreeCallCheck = false;
+                        }
                     });
-                }
-
-                // BTOCSITE-98 add
-                if (vcui.detect.isIOS){
-                    //$('.arsAgreeRequestCheck').attr('disabled', false);
-                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
-                } else {
-                    CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
-                }
-                
-                setHiddenData('arsAgree', result.data.success);                
-                // //BTOCSITE-98 add
-            },
-            error : function(error){
-                //alert('error');
-            },
-            complete : function(){
-                //alert('complete');
-                lgkorUI.hideLoading();
+                },1000);
             }
-        });
+        } else {
+            $.ajax({
+                method : ajaxMethod,
+                url : ARS_AGREE_URL,
+                data : sendata,
+                async : false,
+                success : function(result){         
+                    if (!vcui.detect.isIOS){
+                        lgkorUI.alert(result.data.alert.desc, {
+                            title: result.data.alert.title
+                        });
+                    }
+    
+                    // BTOCSITE-98 add
+                    if (vcui.detect.isIOS){
+                        //$('.arsAgreeRequestCheck').attr('disabled', false);
+                        CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;
+                    } else {
+                        CTI_REQUEST_KEY = result.data.CTI_REQUEST_KEY;                    
+                    }
+                    
+                    setHiddenData('arsAgree', result.data.success);                
+                    // //BTOCSITE-98 add
+                },
+                error : function(error){
+                    //alert('error');
+                },
+                complete : function(){
+                    //alert('complete');
+                    lgkorUI.hideLoading();
+                }
+            });
+        }
     }
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
     var arsConfirmCallingInterval = null;
