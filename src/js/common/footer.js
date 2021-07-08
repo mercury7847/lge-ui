@@ -70,6 +70,9 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     });
                 });
 
+                console.log('footer itemList', itemList);
+                console.log('footer toggleList', toggleList);
+
 
                 var elements = "";
                 elements += '<ul class="link-wrap ui_footer_accordion">';
