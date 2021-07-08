@@ -207,7 +207,7 @@
                     "model_name":item.title,
                     "model_id":item.model_id,
                     "model_sku":item.sku,
-                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "model_gubun":item.model_gubun,
                     "rental_price":(item.rental_price && item.rental_price > 0) ? item.carePrice : "",
                     "price":(item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
                     "discounted_price":(item.price && item.price > 0) ? item.price : "",
