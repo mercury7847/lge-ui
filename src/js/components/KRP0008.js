@@ -1,6 +1,6 @@
 (function() {
     
-    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}" data-model-name="{{modelName}}">' +
+    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
             '<dd class="content">' +
