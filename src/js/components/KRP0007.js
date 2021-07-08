@@ -158,8 +158,7 @@
                 self.savedPLPData = {};
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
-                self.savedPLPData.isNew = false;
-                self.isLoading = false; // BTOCSITE-2150 add
+                self.savedPLPData.isNew = false;                
                 
                 self.setting();
                 self.bindEvents();
@@ -502,7 +501,7 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
+                    if(param) {
                         self.requestSearch(param, false);
                     }
                 });
@@ -517,7 +516,7 @@
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
                     var productContainer = self.$productList;
-                    if (productContainer.offset().top + productContainer.height() <= $(window).scrollTop() + $(window).height()){
+                    if ((productContainer.offset().top + productContainer.height()) /2 <= $(window).scrollTop() + $(window).height()){
 
                         console.log('scroll more');
                         
@@ -527,12 +526,12 @@
                         console.log('page' , page);
                         console.log('totalCount' , totalCount);
 
-                        if (self.isLoading == false && page < totalCount){
+                        if ( page < totalCount ){
                             self.$btnMore.trigger('click');
 
                             console.log('more click');
 
-                            $(window).scrollTop((productContainer.offset().top + productContainer.height()) - $(window).height());
+                            //$(window).scrollTop((productContainer.offset().top + productContainer.height()) - $(window).height());
                         }
                     }
                 });
@@ -569,11 +568,6 @@
 
             requestSearch: function(data, isNew){
                 var self = this;
-
-                if (self.isLoading) return; //BTOCSITE-2150 add
-                self.isLoading = true;  //BTOCSITE-2150 add
-
-                lgkorUI.showLoading();  //BTOCSITE-2150 add
 
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 //if(!isHash) {
@@ -638,9 +632,6 @@
                         self.$btnMore.hide();
                         self.$listSorting.hide();
                     }
-
-                    self.isLoading = false; // BTOCSITE-2150 add
-                    lgkorUI.hideLoading();  // BTOCSITE-2150 add
                 });
             },
 
