@@ -3,12 +3,15 @@
 @import "../components-app";
 
 // 210707 - 에어컨 필터 구매전 주의사항 팝업
-.app-popup-init {    
+.app-popup-init {
     .pop-conts{
         padding-top: 25px;
         @include mobile{
             font-size: 15px;
             line-height: 23px;
+            padding-bottom:10px;
+            height: calc(100% - 82px);
+            max-height: calc(100% - 80px);
         }
         .section{
             .sect-box{
@@ -17,7 +20,7 @@
                         font-size:28px;
                         line-height: 1.36;
                         @include mobile{
-                            font-style: 24px;
+                            font-size: 24px;
                         }
                     }
                     .sub-title{
@@ -29,6 +32,13 @@
                             font-size:20px;
                             line-height: 1.4;
                         }                     
+                    }
+                }
+                .text-cont{
+                    @include mobile{
+                        font-size:15px;
+                        line-height: 1.53;
+                        font-weight: normal;
                     }
                 }
                 .btn-wrap{
@@ -61,6 +71,12 @@
                 }
             }
         } 
+    }
+    .pop-footer{
+        padding:25px 0;
+        @include mobile{
+            display: none;
+        }
     }
 }
 
@@ -103,21 +119,21 @@
 
 .app-popup-init .btn-wrap.align-left li {
     margin-right:16px;
+    @include mobile{
+        margin:0;
+    }
 }
 
 .app-popup-init .btn-wrap.align-right li {
     margin-left:16px;
-    //210708 추가 모바일일경우엔 항상 좌측정렬
     @include mobile{
-        margin-right:16px;
+        margin:0;
     }
 }
 
 .app-popup-init .btn-wrap.align-center li {
     margin:0 8px;
-    //210708 추가 모바일일경우엔 항상 좌측정렬
     @include mobile{
         margin:0;
-        margin-right:16px;
     }
 }
