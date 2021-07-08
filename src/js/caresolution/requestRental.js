@@ -1231,34 +1231,65 @@ console.log(sendata)
 
         if(!iosAgreeCallCheck ) {
             console.log("iso call check");
+
             iosAgreeCallCheck = true;
-            $.ajax({
-                method : ajaxMethod,
-                url : ARS_AGREE_URL,
-                data : {},
-                async : false,
-                success : function(result){
-                    if ( !vcui.detect.isIOS ){
-                        lgkorUI.alert(result.data.alert.desc, {
-                            title: result.data.alert.title
+            setTimeout(function() {
+                $.ajax({
+                    method : ajaxMethod,
+                    url : ARS_AGREE_URL,
+                    data : {},
+                    async : false,
+                    success : function(result){
+                        if ( !vcui.detect.isIOS ){
+                            lgkorUI.alert(result.data.alert.desc, {
+                                title: result.data.alert.title
+                            });
+                        }
+                        
+                        //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
+                        setInputData('arsAgree', result.data.success);    
+                        $.ajax({
+                            method : ajaxMethod,
+                            url : ARS_AGREE_URL,
+                            data : {},
+                            async : false,
+                            success : function(result){
+                                if ( !vcui.detect.isIOS ){
+                                    lgkorUI.alert(result.data.alert.desc, {
+                                        title: result.data.alert.title
+                                    });
+                                }
+                                
+                                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
+                                setInputData('arsAgree', result.data.success);    
+                                
+                                iosAgreeCallCheck = false;
+                            },
+                            error : function(error){
+                                //alert('error');
+                                iosAgreeCallCheck = false;
+                            },
+                            complete : function(){
+                                //alert('complete');
+                                lgkorUI.hideLoading();
+                                iosAgreeCallCheck = false;
+                            }
                         });
+            
+                    },
+                    error : function(error){
+                        //alert('error');
+                        iosAgreeCallCheck = false;
+                    },
+                    complete : function(){
+                        //alert('complete');
+                        lgkorUI.hideLoading();
+                        iosAgreeCallCheck = false;
                     }
-                    
-                    //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
-                    setInputData('arsAgree', result.data.success);    
-                    
-                    iosAgreeCallCheck = false;
-                },
-                error : function(error){
-                    //alert('error');
-                    iosAgreeCallCheck = false;
-                },
-                complete : function(){
-                    //alert('complete');
-                    lgkorUI.hideLoading();
-                    iosAgreeCallCheck = false;
-                }
-            });
+                });
+    
+                
+            }, 1000);
 
         }
 
