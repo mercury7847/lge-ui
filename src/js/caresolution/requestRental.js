@@ -98,6 +98,8 @@
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
+        console.log("setting 몇번 %o",step3Block);
+
         contractUserPhone = getInputData("contractUserDefaultPhone");
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
@@ -418,7 +420,7 @@
         });
 
 
-        step3Block.on('change', 'input[name=cardApplication]', function(){
+        step3Block.off('click').off('change').on('change', 'input[name=cardApplication]', function(){
             var chk = $(this).val();
             if(chk == "Y"){
                 step3Block.find('input[name=cardApplyaAgree]').prop('checked', false);
@@ -482,6 +484,7 @@
             e.preventDefault();
             setBankAbledConfirm();
         }).on('click', '.arsAgreeRequest', function(e){
+            console.log("arsAgreeRequest click");
             e.preventDefault();
             setArsAgreeConfirm();
         }).on('click', '.arsAgreeRequestCheck', function(e){
