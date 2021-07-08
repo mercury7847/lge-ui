@@ -2484,17 +2484,11 @@
                         return model.siblingCode == currentSiblingCode;
                     })
                 } else {
-<<<<<<< HEAD
-                    checkedOptionArray = modelsData.filter(function(model){
-                        return model.siblingCode == currentSiblingCode;
-                    })
-=======
                     if( currentIndex == 0) {
                         checkedOptionArray = modelsData.filter(function(model){
                             return model.siblingCode == currentSiblingCode;
                         })    
                     }
->>>>>>> BTOCSITE-44_2-dev
                 }
                 
                 if( checkedOptionArray.length > 0) {
