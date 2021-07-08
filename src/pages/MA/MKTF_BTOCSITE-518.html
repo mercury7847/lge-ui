@@ -55,7 +55,7 @@
                             <dd class="conts">
                                 <div class="email-conts-wrap">
                                     <div class="email-input-wrap input-wrap">
-                                        <input type="text" id="inp03" placeholder="이메일을 입력하세요." name="userEmail" value="" data-required="true">
+                                        <input type="text" id="inp03" name="userEmail" value="" placeholder="이메일을 입력하세요."  data-required="true">
                                     </div>
                                 </div>
                             </dd>
@@ -66,17 +66,17 @@
                                 <div class="addr-box-wrap">
                                     <div class="box">
                                         <div class="input-wrap">
-                                            <input type="text" class="addr1" value="" placeholder="우편번호" name="addr1" disabled data-required="true">
+                                            <input type="text" class="addr1" name="addr1" value="" placeholder="우편번호"  disabled data-required="true">
                                         </div>
                                         <div class="cell">
                                             <button type="button" class="btn"><span>주소 찾기</span></button>
                                         </div>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text" class="addr2" value="" placeholder="기본 주소" name="addr2" disabled data-required="true">
+                                        <input type="text" class="addr2" name="addr2" value="" placeholder="기본 주소"  disabled data-required="true">
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text" value="" placeholder="상세 주소 입력" name="addr3" data-required="true">
+                                        <input type="text"name="addr3"  value="" placeholder="상세 주소 입력"  data-required="true">
                                     </div>
                                 </div>
                             </dd>
@@ -128,17 +128,17 @@
                                             <div class="addr-box-wrap">
                                                 <div class="box">
                                                     <div class="input-wrap">
-                                                        <input type="text" class="addr1" value="" placeholder="우편번호" name="plc-addr1" disabled data-required="true">
+                                                        <input type="text" class="addr1" name="plc-addr1" value="" placeholder="우편번호"  disabled data-required="true">
                                                     </div>
                                                     <div class="cell">
                                                         <button type="button" class="btn"><span>주소 찾기</span></button>
                                                     </div>
                                                 </div>
                                                 <div class="input-wrap">
-                                                    <input type="text" class="addr2" value="" placeholder="기본 주소" name="plc-addr2" disabled data-required="true">
+                                                    <input type="text" class="addr2" name="plc-addr2" value="" placeholder="기본 주소"  disabled data-required="true">
                                                 </div>
                                                 <div class="input-wrap">
-                                                    <input type="text" value="" placeholder="상세 주소 입력" name="plc-addr3" data-required="true">
+                                                    <input type="text" name="plc-addr3" value="" placeholder="상세 주소 입력"  data-required="true">
                                                 </div>
                                                 <span class="chk-wrap">
                                                     <!--  BTOCSITE-518 20210707 START -->
@@ -173,7 +173,7 @@
                                                 <dt class="tit"><label for="inp07" class="">전용면적</label></dt>
                                                 <dd class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text" value="㎡" id="inp07" style="text-align: right;">
+                                                        <input type="text"  id="inp07" name="inp07" value="㎡" style="text-align: right;">
                                                     </div>
                                                 </dd>
                                             </dl>
@@ -184,7 +184,9 @@
                                         <dt class="tit"><label for="inp08">설치 수량</label></dt>
                                         <dd class="conts">
                                             <div class="input-wrap">
-                                                <input type="text" value="" placeholder="실내기 요청 수량" id="inp08">
+                                                  <!--  BTOCSITE-518 20210708 START -->
+                                                <input type="text" id="inp08" name="inp08" value="" placeholder="실내기 요청 수량" >
+                                                  <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                         </dd>
                                     </dl>
@@ -192,17 +194,18 @@
                                         <dt class="tit"><label for="inp09">설치시점</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <!--  BTOCSITE-518 20210707 START -->
-                                                <select class="ui_selectbox" id="select3" class="year" title="전체 카테고리 선택">
+                                                <!--  BTOCSITE-518 20210708 START -->
+                                                <select class="ui_selectbox" id="select3" name="select3" class="year" title="전체 카테고리 선택">
                                                     <option value="" class="">년</option>
                                                     <option value="2021년" class="">2021년</option>
                                                     <option value="2022년" class="">2022년</option>
                                                     <option value="2023년" class="">2023년</option>
                                                 </select>
-                                                <!--  BTOCSITE-518 20210707 END -->
+                                                <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select4" class="month" title="전체 카테고리 선택">
+                                                  <!--  BTOCSITE-518 20210708 START -->
+                                                <select class="ui_selectbox" id="select4" name="select4" class="month" title="전체 카테고리 선택">
                                                     <option value="" class="">월</option>
                                                     <option value="1월" class="">1월</option>
                                                     <option value="2월" class="">2월</option>
@@ -217,6 +220,7 @@
                                                     <option value="11월" class="">11월</option>
                                                     <option value="12월" class="">12월</option>
                                                 </select>
+                                                  <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                         </dd>
                                     </dl>
@@ -278,17 +282,18 @@
                                         <dt class="tit"><label for="inp10">상담 요청 일자</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <!--  BTOCSITE-518 20210707 START -->
-                                                <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
+                                                <!--  BTOCSITE-518 20210708 START -->
+                                                <select class="ui_selectbox" id="select5" name="select5" class="year" title="전체 카테고리 선택">
                                                     <option value="" class="">년</option>
                                                     <option value="2021년" class="">2021년</option>
                                                     <option value="2022년" class="">2022년</option>
                                                     <option value="2023년" class="">2023년</option>
                                                 </select>
-                                                <!--  BTOCSITE-518 20210707 END -->
+                                                <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select6" class="month" title="전체 카테고리 선택">
+                                                  <!--  BTOCSITE-518 20210708 START -->
+                                                <select class="ui_selectbox" id="select6" name="select6" class="month" title="전체 카테고리 선택">
                                                     <option value="" class="">월</option>
                                                     <option value="1월" class="">1월</option>
                                                     <option value="2월" class="">2월</option>
@@ -303,9 +308,11 @@
                                                     <option value="11월" class="">11월</option>
                                                     <option value="12월" class="">12월</option>
                                                 </select>
+                                                  <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select7" class="date" title="전체 카테고리 선택">
+                                                <!--  BTOCSITE-518 20210708 START -->
+                                                <select class="ui_selectbox" id="select7" name="select7" class="date" title="전체 카테고리 선택">
                                                     <option value="" class="">일</option>
                                                     <option value="1일" class="">1일</option>
                                                     <option value="2일" class="">2일</option>
@@ -339,6 +346,7 @@
                                                     <option value="30일" class="">30일</option>
                                                     <option value="31일" class="">31일</option>
                                                 </select>
+                                                <!--  BTOCSITE-518 20210708 END -->
                                             </div>
                                         </dd>
                                     </dl>
@@ -346,9 +354,11 @@
                                         <dt class="tit pc-only"><label for="inp11">추가 문의 사항</label></dt>
                                         <dt class="tit mo-only"><label for="inp11">전달 사항</label></dt>
                                         <dd class="conts">
+                                            <!--  BTOCSITE-518 20210708 START -->
                                             <div class="input-wrap">
-                                                <input type="textarea" class="text-box" value="" placeholder="문의 및 요청사항 입력" id="inp11">
+                                                <input type="textarea" class="text-box" id="inp11" name="inp11" value="" placeholder="문의 및 요청사항 입력" >
                                             </div>
+                                            <!--  BTOCSITE-518 20210708 END -->
                                         </dd>
                                     </dl>
                                     <dl class="forms dl3">
@@ -357,15 +367,15 @@
                                             <div class="company-box-wrap">
                                                 <div class="conts-wrap">
                                                     <div class="select-wrap">
-                                                        <!--  BTOCSITE-518 20210707 START -->
-                                                        <select class="ui_selectbox" id="select5" class="year" title="전체 카테고리 선택">
+                                                        <!--  BTOCSITE-518 20210708 START -->
+                                                        <select class="ui_selectbox" id="select8" name="select8" class="year" title="전체 카테고리 선택">
                                                             <option value="">회사선택</option>
                                                             <option value="BEST SHOP">BEST SHOP</option>
                                                             <option value="하이엠솔루텍">하이엠솔루텍</option>
                                                             <option value="하이텔레서비스">하이텔레서비스</option>
                                                             <option value="기타">기타</option>
                                                         </select>
-                                                        <!--  BTOCSITE-518 20210707 END -->
+                                                        <!--  BTOCSITE-518 20210708 END -->
                                                     </div>
                                                     <div class="input-wrap">
                                                         <input type="text" value="지점명" name="">
