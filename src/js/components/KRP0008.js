@@ -2467,7 +2467,7 @@
                             return model.modelId
                         });    
                         checkedOptionArray = modelsData.filter(function(siblingModel){
-                            return modelId.indexOf(siblingModel.modelId) > -1
+                            return modelId.indexOf(siblingModel.modelId) > -1 
                         }).filter(function(model){
                             return model.siblingCode == radioSiblingCode;
                         })
