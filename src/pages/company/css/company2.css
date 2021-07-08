@@ -13,6 +13,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .mt0 {margin-top:0!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-text.noLine::before {display:none}
+.company .com-text.noLine_p::before {display:none}
 
 /* 컨텐츠 영역 */
 .company .tabs-contents > .com-text {padding-left:0; padding-right:0}
@@ -208,7 +209,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .lgway_outline dl dd {margin-top:10px; font-size:14px; line-height:22px}
 .company ul.lgway_first > li {display:flex; justify-content:space-between; align-items:center}
 .company ul.lgway_first > li + li {margin-top:120px}
-.company ul.lgway_first > li .thumb {width:57.6%; height:auto; margin:0; padding-bottom:30.7%; background:#ddd; border-radius:8px}
+.company ul.lgway_first > li .thumb {width:57.6%; height:auto; margin-top:0; padding-bottom:30.7%; background:#f4f4f4; border-radius:8px}
 .company ul.lgway_first > li .desc {width:32.4%}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
@@ -487,6 +488,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .mgtL {margin-top:20px!important}
   .company .com-section {margin:0 16px; padding:30px 0 60px}
   .company .com-text.noLine_m::before {display:none}
+  .company .com-text.noLine_p::before {display:block}
   .company .tit.h3 {font-size:20px; line-height:1.4}
   .company .tit.only {margin-top:30px}
   .company .com-title + .tit.only {margin-top:60px}
@@ -750,4 +752,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .stock_number .num {padding-right:5px}
 
   .company .graph.lgway {margin-top:15px}
-}
+  .company ul.lgway_first > li {flex-direction:column}
+  .company ul.lgway_first > li:nth-child(odd) {flex-direction:column-reverse}
+  .company ul.lgway_first > li + li {margin-top:60px}
+  .company ul.lgway_first > li .thumb {width:100%; height:auto; margin:0!important; padding-bottom:100%}
+  .company ul.lgway_first > li .desc {width:100%; margin-bottom:15px}
