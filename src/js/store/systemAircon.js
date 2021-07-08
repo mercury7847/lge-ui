@@ -76,6 +76,8 @@
                     self.$form.find("input[type='radio']:checked").each(function(){
                         radioChk[this.name] = this.value;
                     })
+
+                    radioChk['isApp']= isApp() ? 'M' : 'W';
     
                     param = $.extend(param,radioChk);
                     console.log("param %o",param);
