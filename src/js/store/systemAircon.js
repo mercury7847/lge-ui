@@ -78,9 +78,11 @@
                     })
     
                     param = $.extend(param,radioChk);
-                    // console.log("param %o",param);
+                    console.log("param %o",param);
                     lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                        if(result.data.status === 'success') {
+
+                        console.log("result %o",result);
+                        if(result.ResultCode === 'success') {
                             lgkorUI.alert("", {
                                 title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.'
                             });
@@ -151,9 +153,9 @@
                 });
 
         },
-        openAlert : function() {
+        openAlert : function(msg) {
             lgkorUI.alert("", {
-                title: '접수번호가 일치하지 않습니다. <br>다시 확인해주세요.'
+                title: msg
             });
         },
         bindEvents : function() {
@@ -169,13 +171,13 @@
                                 var url = self.$form.data('inqueryResult');
                                 if(url) location.href =  url+'?'+ $.param( param );
                             } else {
-                                self.openAlert();
+                                self.openAlert('접수번호가 일치하지 않습니다. <br>다시 확인해주세요.');
                             }
                         },function(fail) {
-                            self.openAlert();
+                            self.openAlert('접수번호가 일치하지 않습니다. <br>다시 확인해주세요.');
                         });
                     } else {
-                        self.openAlert();
+                        self.openAlert('접수번호를 입력해주세요');
                     }
                 });
         },
