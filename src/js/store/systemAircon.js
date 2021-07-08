@@ -159,6 +159,7 @@
         bindEvents : function() {
             var self = this;
                 self.$searchBtn.on('click',function(){
+                    var validationResult = self.validation.validate().success;
                     var ajaxUrl = self.$form.data('inquireNum');
                     var param = self.validation.getAllValues();
                
