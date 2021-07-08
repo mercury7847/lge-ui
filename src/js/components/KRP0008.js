@@ -1,6 +1,6 @@
 (function() {
     
-    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
+    var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}" data-model-name="{{modelName}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
             '<dd class="content">' +
@@ -94,6 +94,10 @@
                 } else {
                     self.prepare();
                 }
+
+                //BTOCSITE-841 페이지 로드시 활성화탭의 model-name으로 브레드크럼 & sku 변경
+                var activeTabIndex = $('.option-tabs .tabs li.on').index()
+                self.replaceModelName(activeTabIndex);
             },
 
             prepare: function() {
@@ -633,6 +637,9 @@
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
                     }
+
+                    //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
+                    self.replaceModelName(index);
                     history.replaceState({},"",url);
                 });
 
@@ -1479,6 +1486,20 @@
             },
 
             //PDP SIDE 관련
+
+            //BTOCSITE-841 구매/렌탈 탭 변경에 따른 모델명 변경
+            replaceModelName: function(index) {                
+                var $tabs = $('.option-tabs .careTab');
+                var $tabList = $tabs.find('li');
+                var modelName = $tabList.eq(index).find('a').attr('data-model-name');
+                var $sku = $('.product-detail-info .hidden-sm .sku');
+                var $breadcrumb = $('.breadcrumb ul li:last-child strong');
+
+                if (modelName !== "" && modelName != undefined) {
+                    if( $breadcrumb.text() != modelName ) $breadcrumb.text(modelName)
+                    if( $sku.text() != modelName ) $sku.text(modelName)
+                }
+            },
 
             //제휴카드 리스트 정리 펑션
             makeAssociatedCardListData: function(cardListData) {
@@ -2454,7 +2475,6 @@
                 });
                 
                 if( checkedOptionArray.length > 0 ){
-                    // console.log('checkedOptionArray 있음!', checkedOptionArray)
                     var currentModelId = checkedOptionArray.map(function(model){
                         return model.modelId
                     });    
@@ -2464,12 +2484,9 @@
                         return model.siblingCode == currentSiblingCode;
                     })
                 } else {
-                    // console.log('checkedOptionArray 없음!', checkedOptionArray)
-                    if( currentIndex == 0) {
-                        checkedOptionArray = modelsData.filter(function(model){
-                            return model.siblingCode == currentSiblingCode;
-                        })    
-                    }
+                    checkedOptionArray = modelsData.filter(function(model){
+                        return model.siblingCode == currentSiblingCode;
+                    })
                 }
                 
                 if( checkedOptionArray.length > 0) {
