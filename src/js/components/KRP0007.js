@@ -158,7 +158,8 @@
                 self.savedPLPData = {};
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
-                self.savedPLPData.isNew = false;                
+                self.savedPLPData.isNew = false;
+                self.isLoading = false; // BTOCSITE-2150 add
                 
                 self.setting();
                 self.bindEvents();
@@ -501,7 +502,7 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param) {
+                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
                         self.requestSearch(param, false);
                     }
                 });
@@ -515,8 +516,8 @@
                 /* BTOCSITE-2150 add */
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
-                    var productContainer = self.$productList;
-                    if ((productContainer.offset().top + productContainer.height()) /2 <= $(window).scrollTop() + $(window).height()){
+                    var productContainer = $('.product-items');
+                    if ((productContainer.offset().top + productContainer.height()) / 2 <= $(window).scrollTop() + $(window).height()){
 
                         console.log('scroll more');
                         
@@ -526,7 +527,7 @@
                         console.log('page' , page);
                         console.log('totalCount' , totalCount);
 
-                        if ( page < totalCount ){
+                        if (self.isLoading == false && page < totalCount){
                             self.$btnMore.trigger('click');
 
                             console.log('more click');
