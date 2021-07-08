@@ -46,6 +46,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; line-height:20px}
 .company .thumb + .accordion-wrap {margin-top:60px}
+
 .company .graph.ofn {padding-top:40px}
 .company .graph.ofn .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
@@ -205,6 +206,12 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .lgway_outline dl {padding:29px 0}
 .company .lgway_outline dl dt {font-size:18px; font-weight:bold; line-height:27px}
 .company .lgway_outline dl dd {margin-top:10px; font-size:14px; line-height:22px}
+.company ul.lgway_first > li {display:flex; justify-content:space-between; align-items:center}
+.company ul.lgway_first > li + li {margin-top:120px}
+.company ul.lgway_first > li .thumb {width:57.6%; height:auto; margin:0; padding-bottom:30.7%; background:#ddd; border-radius:8px}
+.company ul.lgway_first > li .desc {width:32.4%}
+.company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
+.company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
