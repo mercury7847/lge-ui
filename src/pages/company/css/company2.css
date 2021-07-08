@@ -14,7 +14,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 /* 컨텐츠 영역 */
 .company .tabs-contents > .com-text {padding-left:0; padding-right:0}
-.company .com-section {position:relative; max-width:1460px;margin:0 auto; padding:60px 0}
+.company .com-section {position:relative; max-width:1460px; margin:0 auto; padding:60px 0}
 .company .com-section + .com-section {padding-top:0}
 .company .text + .text {margin-top:20px}
 .com-title .text {word-break:keep-all}
@@ -174,7 +174,25 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.caring > li:nth-child(4) .step > span {background-color:#da0f47; color:#fff}
 .company ul.caring > li .desc {margin-top:20px; font-size:16px; line-height:24px; text-align:center}
 
+.company .share_price table {margin-bottom:30px}
+.company .share_price table td {padding:39px 24px; text-align:center}
+.company .share_price table tr:first-child td {border-color:#ddd}
+.company .share_price table td p {display:flex; justify-content:space-between; max-width:268px; margin:0 auto; font-size:24px; font-weight:500}
+.company .share_price table td .price_up_L {position:relative; padding-left:36px; font-size:48px; font-weight:bold}
+.company .share_price table td .price_up_L::before {content:''; display:block; position:absolute; width:24px; height:21px; left:0; top:calc(50% - 1px); background:url(/kr/images/company/icon/ico-price_up.svg) no-repeat center / contain}
+.company .share_price table td .price_down_L {position:relative; padding-left:36px; font-size:48px; font-weight:bold}
+.company .share_price table td .price_down_L::before {content:''; display:block; position:absolute; width:24px; height:21px; left:0; top:calc(50% - 1px); background:url(/kr/images/company/icon/ico-price_down.svg) no-repeat center / contain}
+.company .share_price table td .price_up_s {position:relative; padding-left:21px; color:#ff0000; font-size:28px; font-weight:bold}
+.company .share_price table td .price_up_s::before {content:''; display:block; position:absolute; width:13px; height:12px; left:0; top:calc(50% - 1px); background:url(/kr/images/company/icon/ico-price_up.svg) no-repeat center / contain}
+.company .share_price table td .price_down_s {position:relative; padding-left:21px; color:#0000ff; font-size:28px; font-weight:bold}
+.company .share_price table td .price_down_s::before {content:''; display:block; position:absolute; width:13px; height:12px; left:0; top:calc(50% - 1px); background:url(/kr/images/company/icon/ico-price_down.svg) no-repeat center / contain}
+.company .share_price table td .percent_up {color:#ff0000; font-size:28px; font-weight:bold}
+.company .share_price table td .percent_up::before {content:'+'}
+.company .share_price table td .percent_down {color:#0000ff; font-size:28px; font-weight:bold}
+.company .share_price table td .percent_down::before {content:'-'}
+
 /* 탭 형식 */
+.company .com-tabs.stock {margin-bottom:30px}
 .company .tabs-wrap.l-type .tabs > li {padding:0}
 .company .tabs-wrap.l-type .tabs > li + li {margin-left:8px}
 .company .tabs-wrap.l-type .tabs > li a {padding:12px; border:1px solid #ddd; border-radius:8px; color:#000; font-size:16px; font-weight:normal; line-height:24px}
@@ -184,6 +202,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .com-tabs .tabs-wrap.bar-type .tabs > li + li {margin-left:12px; padding-left:12px}
 .company .com-tabs .tabs-wrap.bar-type .tabs > li a {font-size:15px}
 .company .com-tabs .tabs-wrap.bar-type .tabs > li.on a {text-decoration:underline; text-underline-offset:1px}
+
+.company 
 
 /* ul 형식 */
 ul.bull > li {position:relative; padding-left:9px; font-size:16px; text-align:left; line-height:1.56}
@@ -442,7 +462,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
   .company .tabs-wrap.l-type {text-align:center}
   .company .tabs-wrap.l-type .tabs > li a {font-size:14px; line-height:20px}
-
+  .company .com-tabs.stock {margin-bottom:30px}
+  .company .com-tabs.stock .tabs-wrap.l-type {text-align:left}
+  .company .com-tabs.stock .tabs-wrap.l-type .tabs {padding:0}
+  
   .company .com-tabs .tabs-wrap.bar-type .tabs {margin-top:5px; margin-bottom:15px}
   .company .com-tabs .tabs-wrap.bar-type .tabs > li + li {margin-left:12px; padding-left:12px}
   .company .com-tabs .tabs-wrap.bar-type .tabs > li a {font-size:14px; line-height:20px}
@@ -669,4 +692,17 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
   .company ul.caring > li .step > span {font-size:15px}
   .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
+
+  .company .share_price table td {padding:21px 12px}
+  .company .share_price table td p {max-width:122px; font-size:14px}
+  .company .share_price table td .price_up_L {padding-left:15.5px; font-size:24px}
+  .company .share_price table td .price_up_L::before {width:11.5px; height:10.5px}
+  .company .share_price table td .price_down_L {padding-left:15.5px; font-size:24px}
+  .company .share_price table td .price_down_L::before {width:11.5px; height:10.5px}
+  .company .share_price table td .price_up_s {padding-left:9px; font-size:15px}
+  .company .share_price table td .price_up_s::before {width:7px; height:6.5px}
+  .company .share_price table td .price_down_s {padding-left:9px; font-size:15px}
+  .company .share_price table td .price_down_s::before {width:7px; height:6.5px}
+  .company .share_price table td .percent_up {font-size:15px}
+  .company .share_price table td .percent_down {font-size:15px}
 }
