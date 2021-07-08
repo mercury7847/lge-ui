@@ -8,7 +8,7 @@
     <div class="wrap">
         <!-- 210311_H1추가 -->
         @@include('./common/header.html', {
-            hiddenTitle: "통합검색" 
+            hiddenTitle: "통합검색"
         })
         <!-- //210311_H1추가 -->
 
@@ -382,9 +382,6 @@
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">제품/케어솔루션</h2>
-                                <div class="btn-area">
-                                    <a href="#product" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list product-list">
@@ -442,14 +439,16 @@
                                     ])
                                 </ul>
                             </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#product" class="btn-link btn-moreview"><span>제품 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div> <!-- // 제품-->
 
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">이벤트/기획전</h2>
-                                <div class="btn-area">
-                                    <a href="#event" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list event-list">
@@ -472,14 +471,16 @@
                                     ])
                                 </ul>
                             </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#event" class="btn-link btn-moreview"><span>이벤트/기획전 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div> <!-- // 이벤트 기획전-->
 
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">스토리</h2>
-                                <div class="btn-area">
-                                    <a href="#story" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list story-list">
@@ -507,14 +508,16 @@
                                     ])
                                 </ul>
                             </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#story" class="btn-link btn-moreview"><span>스토리 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div> <!-- // 스토리-->
 
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">케어용품/소모품</h2>
-                                <div class="btn-area">
-                                    <a href="#additional" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list care-list">
@@ -548,14 +551,16 @@
                                     ])
                                 </ul>
                             </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#additional" class="btn-link btn-moreview"><span>케어용품/소모품 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div> <!-- // 케어용품, 소모품-->
 
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">센터/매장</h2>
-                                <div class="btn-area">
-                                    <a href="#shop" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list shop-list">
@@ -598,14 +603,16 @@
                                     ])
                                 </ul>
                             </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#shop" class="btn-link btn-moreview"><span>센터/매장 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div> <!-- // 센터, 매장-->
 
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">고객지원</h2>
-                                <div class="btn-area">
-                                    <a href="#customer" class="btn-link"><span>더보기</span></a>
-                                </div>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list support-list">
@@ -640,7 +647,7 @@
                                             "cs" : true,
                                             "InfoText" : ["2020.11.03", "ver 7.7PHV1", "통합 드라이버 설치 프로그램"],
                                             "btnB" : ["다운로드 1118.4MB"]
-                                            
+
                                         }, {
                                             "itemClass" : "",
                                             "itemLink" : true,
@@ -649,13 +656,18 @@
                                             "cs" : true,
                                             "InfoText" : ["2020.11.03", "조회수 5,692"],
                                             "videoB" : true
-                                            
+
                                         }
                                     ])
                                 </ul>
                             </div>
-                        </div> 
-                        
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#customer" class="btn-link btn-moreview"><span>고객지원 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                        </div>
+
                         <div class="result-list-wrap list-no-data">
                             <div class="list-head">
                                 <h2 class="title">이런 제품 어떠세요?</h2>
@@ -716,7 +728,7 @@
                             </div>
                         </div>
 
-                        
+
                         <!-- // 고객지원-->
                     </div>
                 </div>
