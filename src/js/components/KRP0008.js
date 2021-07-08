@@ -94,6 +94,10 @@
                 } else {
                     self.prepare();
                 }
+
+                //BTOCSITE-841 페이지 로드시 활성화탭의 model-name으로 브레드크럼 & sku 변경
+                var activeTabIndex = $('.option-tabs .tabs li.on').index()
+                self.replaceModelName(activeTabIndex);
             },
 
             prepare: function() {
@@ -633,12 +637,10 @@
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
                     }
-                    history.replaceState({},"",url);
-                    self.replaceModelName(data);
-                });
 
-                self.$pdpInfoTab.on("tabchange", function(e, data){
-                    self.replaceModelName(data);
+                    //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
+                    self.replaceModelName(index);
+                    history.replaceState({},"",url);
                 });
 
                 //모바일 수상내역 버튼
@@ -1485,20 +1487,18 @@
 
             //PDP SIDE 관련
 
-            //구매/렌탈 탭 변경에 따른 모델명 변경
-            replaceModelName: function(data) {
-
-                // var self = this;
-                var index = data.selectedIndex;
+            //BTOCSITE-841 구매/렌탈 탭 변경에 따른 모델명 변경
+            replaceModelName: function(index) {                
                 var $tabs = $('.option-tabs .careTab');
                 var $tabList = $tabs.find('li');
                 var modelName = $tabList.eq(index).find('a').attr('data-model-name');
+                var $sku = $('.product-detail-info .hidden-sm .sku');
+                var $breadcrumb = $('.breadcrumb ul li:last-child strong');
 
-                $('.product-detail-info .hidden-sm .sku').text(modelName)
-                $('.breadcrumb ul li:last-child strong').text(modelName)
-
-                //초기화면에서 모델네임이 다른경우에만 모델네임 바꿔주기 = if로 다를때만 
-                
+                if (modelName !== "" && modelName != undefined) {
+                    if( $breadcrumb.text() != modelName ) $breadcrumb.text(modelName)
+                    if( $sku.text() != modelName ) $sku.text(modelName)
+                }
             },
 
             //제휴카드 리스트 정리 펑션
