@@ -518,9 +518,18 @@
                     //console.log('window.scrollTop', $(window).scrollTop());
                     var productContainer = $('.product-items');
                     if (productContainer.offset().top + productContainer.height() <= $(window).scrollTop() + $(window).height()){
+
                         console.log('scroll more');
-                        if (self.isLoading == false){
+                        
+                        var page = Number(lgkorUI.getHiddenInputData('page'));
+                        var totalCount = Number(lgkorUI.getHiddenInputData('totalCount'));
+
+                        console.log('page' , page);
+                        console.log('totalCount' , totalCount);
+
+                        if (self.isLoading == false && page < totalCount){
                             self.$btnMore.trigger('click');
+
                             console.log('more click');
                         }
                     }
@@ -537,7 +546,7 @@
                         //self.$btnMore.show();
                         self.$btnMore.hide();   // BTOCSITE-2150 add
                     } else {
-                        //더이상 없다
+                        //더이상 없다                        
                         self.$btnMore.hide();
                     }
 
