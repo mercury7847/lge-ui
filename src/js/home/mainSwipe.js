@@ -181,7 +181,8 @@ MainSwiper.prototype = {
             //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
-            var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
+            
+            var isCarouselList = !!$(e.target).closest('.ui_carousel_slider').not('.ui_product_carousel_slider').length;
             //var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
