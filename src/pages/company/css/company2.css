@@ -240,7 +240,7 @@ ul.bull > li .tb-col {margin-left:-9px}
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
-.company ul.ico_list {display:flex; justify-content:space-between}
+.company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
 .company ul.ico_list > li {width:100%; text-align:center}
 .company ul.ico_list.t3 > li {width:33.3333%}
 .company ul.ico_list > li + li {border-left:1px dashed #ddd}
@@ -252,6 +252,21 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company ul.ico_list > li strong {display:block; margin-bottom:12px}
 .company ul.ico_list > li strong > em {font-weight:normal}
 .company ul.ico_list > li span {display:block}
+
+.company ul.ico_list.line {margin-top:60px}
+.company ul.ico_list.line > li {min-height:254px; padding:30px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_list.line.t6 > li {width:calc(33.3333% - 16px)}
+.company ul.ico_list.line.t6 > li:nth-child(4),
+.company ul.ico_list.line.t6 > li:nth-child(5),
+.company ul.ico_list.line.t6 > li:nth-child(6) {margin-top:24px}
+.company ul.ico_list.line > li + li {border:1px solid #ddd}
+.company ul.ico_list.line > li .iconArea {margin-bottom:12px}
+.company ul.ico_list > li .iconArea i.ico-prop_01 {background:url(/kr/images/company/icon/ico-info-lgway-proper_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-prop_02 {background:url(/kr/images/company/icon/ico-info-lgway-proper_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-prop_03 {background:url(/kr/images/company/icon/ico-info-lgway-proper_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-prop_04 {background:url(/kr/images/company/icon/ico-info-lgway-proper_04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-prop_05 {background:url(/kr/images/company/icon/ico-info-lgway-proper_05.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-prop_06 {background:url(/kr/images/company/icon/ico-info-lgway-proper_06.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -577,6 +592,11 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.ico_list.t3 > li {width:100%}
   .company ul.ico_list > li + li {margin-top:40px; border:0}
   .company ul.ico_list > li .iconArea {margin:0 auto 8px}
+
+  .company ul.ico_list.line {margin-top:30px}
+  .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px; border-radius:4px}
+  .company ul.ico_list.line > li + li {margin-top:15px!important}
+  .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
   
   ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
   ul.bull > li + li {margin-top:8px}
