@@ -420,7 +420,7 @@
         });
 
 
-        step3Block.off('click').off('change').on('change', 'input[name=cardApplication]', function(){
+        step3Block.on('change', 'input[name=cardApplication]', function(){
             var chk = $(this).val();
             if(chk == "Y"){
                 step3Block.find('input[name=cardApplyaAgree]').prop('checked', false);
