@@ -1231,7 +1231,7 @@ console.log(sendata)
 
         if(!iosAgreeCallCheck ) {
             console.log("iso call check");
-
+            iosAgreeCallCheck = true;
             $.ajax({
                 method : ajaxMethod,
                 url : ARS_AGREE_URL,
@@ -1247,16 +1247,16 @@ console.log(sendata)
                     //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
                     setInputData('arsAgree', result.data.success);    
                     
-                    iosAgreeCallCheck = true;
+                    iosAgreeCallCheck = false;
                 },
                 error : function(error){
                     //alert('error');
-                    iosAgreeCallCheck = true;
+                    iosAgreeCallCheck = false;
                 },
                 complete : function(){
                     //alert('complete');
                     lgkorUI.hideLoading();
-                    iosAgreeCallCheck = true;
+                    iosAgreeCallCheck = false;
                 }
             });
 
