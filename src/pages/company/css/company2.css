@@ -398,6 +398,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb_row .tb-col {position:relative}
 .company .tb-row-bl .tbl_info,
 .company .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
+.company .tb-row-bl .tbl_info.s,
+.company .tb-col .tbl_info.s {margin-bottom:12px}
 .company .tb_row .tbl_info.abs,
 .company .tbl_info.abs {position:absolute; right:0; top:-36px}
 .company .tb-row-bl .tbl_info.lt,
@@ -522,6 +524,11 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .tb-col.middle table th {text-align:center}
   .company .tb_row.keepAll table th,
   .company .tb-col.keepAll table th {word-break:keep-all}
+  .company .tb_row.keepAll table td,
+  .company .tb-col.keepAll table td {word-break:keep-all}
+  
+  .company .tb-row-bl .tbl_info.s,
+  .company .tb-col .tbl_info.s {margin-bottom:10px}
   .company .tb_row .tbl_info .exc,
   .company .tb-col .tbl_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
   .company .tb_row .tbl_info .exc::before,
