@@ -516,7 +516,7 @@
                 /* BTOCSITE-2150 add */
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
-                    var productContainer = $('.product-items');
+                    var productContainer = self.$productList;
                     if (productContainer.offset().top + productContainer.height() <= $(window).scrollTop() + $(window).height()){
 
                         console.log('scroll more');
@@ -531,6 +531,8 @@
                             self.$btnMore.trigger('click');
 
                             console.log('more click');
+
+                            $(window).scrollTop((productContainer.offset().top + productContainer.height()) - $(window).height());
                         }
                     }
                 });
