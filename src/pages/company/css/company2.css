@@ -163,6 +163,17 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.welfare > li .name {font-size:18px; font-weight:800; line-height:26px}
 .company ul.welfare > li .desc {margin-top:12px; font-size:16px; line-height:24px}
 
+.company ul.caring {display:flex; margin-top:30px; justify-content:center}
+.company ul.caring > li .step {margin:0 58px; border:1px dashed #ddd; border-radius:50%}
+.company ul.caring > li + li > .step {position:relative}
+.company ul.caring > li + li > .step::before {content:''; display:block; position:absolute; width:32px; height:32px; top:calc(50% - 16px); left:calc(-50% + 16px); background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
+.company ul.caring > li .step > span {display:block; width:130px; height:130px; margin:14px; border-radius:50%; font-size:18px; line-height:130px; text-align:center}
+.company ul.caring > li:nth-child(1) .step > span {background-color:#e4e4e4; color:#000}
+.company ul.caring > li:nth-child(2) .step > span {background-color:#666; color:#fff}
+.company ul.caring > li:nth-child(3) .step > span {background-color:#000; color:#fff}
+.company ul.caring > li:nth-child(4) .step > span {background-color:#da0f47; color:#fff}
+.company ul.caring > li .desc {margin-top:20px; font-size:16px; line-height:24px; text-align:center}
+
 /* 탭 형식 */
 .company .tabs-wrap.l-type .tabs > li {padding:0}
 .company .tabs-wrap.l-type .tabs > li + li {margin-left:8px}
@@ -385,6 +396,18 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb-col .tbl_info.btm p > span + span {position:relative; margin-left:13px}
 .company .tb_row .tbl_info.btm p > span + span::before,
 .company .tb-col .tbl_info.btm p > span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; top:calc(50% - 5px); left:-6.5px; background-color:#ddd}
+
+.company .tb_row.middle table th,
+.company .tb-col.middle table th {vertical-align:middle}
+.company .tb_row table td strong,
+.company .tb-col table td strong {font-weight:bold}
+.company .tb_row table td .point,
+.company .tb-col table td .point {color:#da0f47}
+.company .tb_row .tbl_info .exc,
+.company .tb-col .tbl_info .exc {position:relative; display:block; padding-left:27px; font-size:16px}
+.company .tb_row .tbl_info .exc::before,
+.company .tb-col .tbl_info .exc::before {content:''; display:block; position:absolute; left:0; top:0; width:24px; height:24px; background:url(/kr/images/company/icon/ico-c-exclama_pc.svg) no-repeat center / contain}
+
 .company .tb_row .tbl_select,
 .company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
 .company .tb-row-bl table thead tr {border-bottom:1px solid #d8d8d8}
@@ -393,7 +416,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb-row-bl table tbody th {padding:24px; border-bottom:1px solid#ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
 .company .tb-row-bl table td.bold {font-weight:bold}
 .company .tb-row-bl table th.bo_l,
-.company .tb-row-bl table td.bo_l {border-left:1px solid #ddd!important}
+.company .tb-row-bl table td.bo_l,
+.company .tb-col table th.bo_l,
+.company .tb-col table td.bo_l {border-left:1px solid #ddd!important}
 
 /* 정관 */
 .artTxt p {font-size:16px; line-height:1.63}
@@ -470,6 +495,14 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .tb-col table tbody td {padding:16px 12px; font-size:13px; line-height:20px}
   .company .tb_row table tbody th,
   .company .tb-col table tbody th {text-align:left}
+  .company .tb_row.middle table th,
+  .company .tb-col.middle table th {text-align:center}
+  .company .tb_row.keepAll table th,
+  .company .tb-col.keepAll table th {word-break:keep-all}
+  .company .tb_row .tbl_info .exc,
+  .company .tb-col .tbl_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
+  .company .tb_row .tbl_info .exc::before,
+  .company .tb-col .tbl_info .exc::before {content:''; display:block; position:absolute; left:0; top:2px; width:16px; height:16px; background:url(/kr/images/company/icon/ico-c-exclama_mo.svg) no-repeat center / contain}
   
   .company .graph.ofn {padding-top:8px}
   .company .linkArea {padding:24px 0}
@@ -629,4 +662,11 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.welfare > li i {left:0; top:15px}
   .company ul.welfare > li .name {font-size:15px; line-height:22px}
   .company ul.welfare > li .desc {margin-top:5px; font-size:14px; line-height:22px}
+
+  .company ul.caring {flex-direction:column; margin-top:15px}
+  .company ul.caring > li + li {margin-top:66px}
+  .company ul.caring > li .step {width:160px; margin:0 auto}
+  .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
+  .company ul.caring > li .step > span {font-size:15px}
+  .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
 }
