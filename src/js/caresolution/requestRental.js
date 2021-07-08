@@ -1231,9 +1231,8 @@ console.log(sendata)
 
         if(!iosAgreeCallCheck ) {
             console.log("iso call check");
-
             iosAgreeCallCheck = true;
-            setTimeout(function() {
+            setTimeout(function (){
                 $.ajax({
                     method : ajaxMethod,
                     url : ARS_AGREE_URL,
@@ -1246,51 +1245,26 @@ console.log(sendata)
                             });
                         }
                         
-                        //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
+                        //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);     
+                        
+                        console.log('success %o',result);
                         setInputData('arsAgree', result.data.success);    
-                        $.ajax({
-                            method : ajaxMethod,
-                            url : ARS_AGREE_URL,
-                            data : {},
-                            async : false,
-                            success : function(result){
-                                if ( !vcui.detect.isIOS ){
-                                    lgkorUI.alert(result.data.alert.desc, {
-                                        title: result.data.alert.title
-                                    });
-                                }
-                                
-                                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
-                                setInputData('arsAgree', result.data.success);    
-                                
-                                iosAgreeCallCheck = false;
-                            },
-                            error : function(error){
-                                //alert('error');
-                                iosAgreeCallCheck = false;
-                            },
-                            complete : function(){
-                                //alert('complete');
-                                lgkorUI.hideLoading();
-                                iosAgreeCallCheck = false;
-                            }
-                        });
-            
+                        
+                        iosAgreeCallCheck = false;
                     },
                     error : function(error){
                         //alert('error');
+                        console.log('error %o',error);
                         iosAgreeCallCheck = false;
                     },
                     complete : function(){
                         //alert('complete');
+                        console.log('compleate');
                         lgkorUI.hideLoading();
                         iosAgreeCallCheck = false;
                     }
                 });
-    
-                
             }, 1000);
-
         }
 
        } else {
