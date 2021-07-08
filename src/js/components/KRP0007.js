@@ -516,8 +516,8 @@
                 /* BTOCSITE-2150 add */
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
-                    var productContainer = $('.product-items');
-                    if ((productContainer.offset().top + productContainer.height()) / 2 <= $(window).scrollTop() + $(window).height()){
+                    var productContainer = self.$productList;
+                    if ((productContainer.offset().top + productContainer.height()) / 1.5 <= $(window).scrollTop() + $(window).height()){
 
                         console.log('scroll more');
                         
