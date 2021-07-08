@@ -517,7 +517,7 @@
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
                     var productContainer = $('.product-items');
-                    if (productContainer.offset().top + productContainer.height() <= $(window).scrollTop() + $(window).height()){
+                    if ((productContainer.offset().top + productContainer.height()) / 2 <= $(window).scrollTop() + $(window).height()){
 
                         console.log('scroll more');
                         
