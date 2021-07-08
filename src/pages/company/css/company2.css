@@ -355,7 +355,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {display:block; padding-top:60px; padding-bottom:60px}
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title {font-weight:500}
-.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title_sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub + .btnArea {margin-top:10px; padding-top:0}
 
@@ -410,6 +410,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .com-text.noLine_m::before {display:none}
   .company .tit.h3 {font-size:20px; line-height:1.4}
   .company .tit.only {margin-top:30px}
+  .company .com-title + .tit.only {margin-top:60px}
   .company .tit.h3 + .desc {margin-top:6px; font-size:16px}
   
   .company .btnArea .btn.border.nml {padding:12 19px; font-size:13px; line-height:18px}
@@ -443,6 +444,12 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li ul li {margin-top:8px}
   .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:5px 0}
   .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:130px; padding:8px 0; font-size:14px; font-weight:normal}
+
+  .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {padding:29px 58px 29px 20px}
+  .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:20px}
+  .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
+  .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; color:#666; font-size:14px; line-height:22px; word-break:normal}
+  .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
   
   .company .tb_row {margin-top:0}
   .company .tb_row .tbl_info,
@@ -600,10 +607,26 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.rec_type > li + li {margin-top:40px}
   .company ul.rec_type > li .type_thumb {width:200px; height:200px; margin:0 auto}
   .company ul.rec_type > li p {margin-top:20px; font-size:18px; line-height:26px}
-  .company .recruit-link {width:calc(100% - 32px); margin:20px 16px; padding:55px 0}
+  .company .recruit-link {width:calc(100% - 32px); margin:30px 16px; padding:55px 0}
   .company .recruit-link .tit {font-size:18px; line-height:26px}
   .company .recruit-link .desc {margin-top:8px; font-size:14px; line-height:20px}
   .company .recruit-link .btn {min-width:90px; padding:8px 0; font-size:13px}
 
-  .company ul.job_position {margin-top:15px}
+  .company ul.job_position {flex-direction:column; margin-top:15px}
+  .company ul.job_position > li {margin:0 auto}
+  .company ul.job_position > li + li {margin-top:15px}
+  .company ul.job_position > li + li::before {width:1px; height:15px; top:-15px; left:calc(50% - 0.5px); border-top:0; border-left:1px dashed #ddd}
+  .company ul.job_position > li em {margin-top:50px; font-size:14px; line-height:22px}
+  .company ul.job_position > li span {margin-top:5px; font-size:15px; line-height:22px}
+  .company ul.job_pay {flex-direction:column}
+  .company ul.job_pay > li {width:100%; padding:15px 0 14px}
+  .company ul.job_pay > li + li {margin-top:15px}
+  .company ul.job_pay > li .name {margin-top:7px; font-size:16px; line-height:24px}
+  .company ul.job_pay > li em {font-size:14px; line-height:22px}
+  .company ul.job_pay > li .desc {margin-top:6px; font-size:14px; line-height:22px}
+  .company ul.welfare > li {min-height:auto; padding:15px 20px 14px 100px}
+  .company ul.welfare > li:last-child {border-bottom:1px dashed #ddd}
+  .company ul.welfare > li i {left:0; top:15px}
+  .company ul.welfare > li .name {font-size:15px; line-height:22px}
+  .company ul.welfare > li .desc {margin-top:5px; font-size:14px; line-height:22px}
 }
