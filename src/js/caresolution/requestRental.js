@@ -1181,6 +1181,7 @@ console.log(sendata)
 
     //ARS출금동의 신청...
     var arsCallingInterval = null;
+    var iosAgreeCallCheck = false;
     function setArsAgreeConfirm(){
         /* BTOCSITE-98 add */
         isClickedarsAgreeConfirmBtn = true;
@@ -1226,29 +1227,67 @@ console.log(sendata)
             setInputData('arsAgree', result.data.success);
         }, ajaxMethod, null, true);
         */
-        $.ajax({
-            method : ajaxMethod,
-            url : ARS_AGREE_URL,
-            data : {},
-            async : false,
-            success : function(result){
-                if ( !vcui.detect.isIOS ){
-                    lgkorUI.alert(result.data.alert.desc, {
-                        title: result.data.alert.title
-                    });
+       if(vcui.detect.isIOS) {
+
+        if(!iosAgreeCallCheck ) {
+            console.log("iso call check");
+
+            $.ajax({
+                method : ajaxMethod,
+                url : ARS_AGREE_URL,
+                data : {},
+                async : false,
+                success : function(result){
+                    if ( !vcui.detect.isIOS ){
+                        lgkorUI.alert(result.data.alert.desc, {
+                            title: result.data.alert.title
+                        });
+                    }
+                    
+                    //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
+                    setInputData('arsAgree', result.data.success);    
+                    
+                    iosAgreeCallCheck = true;
+                },
+                error : function(error){
+                    //alert('error');
+                    iosAgreeCallCheck = true;
+                },
+                complete : function(){
+                    //alert('complete');
+                    lgkorUI.hideLoading();
+                    iosAgreeCallCheck = true;
                 }
-                
-                //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);                
-                setInputData('arsAgree', result.data.success);                
-            },
-            error : function(error){
-                //alert('error');
-            },
-            complete : function(){
-                //alert('complete');
-                lgkorUI.hideLoading();
-            }
-        });
+            });
+
+        }
+
+       } else {
+            $.ajax({
+                method : ajaxMethod,
+                url : ARS_AGREE_URL,
+                data : {},
+                async : false,
+                success : function(result){
+                    if ( !vcui.detect.isIOS ){
+                        lgkorUI.alert(result.data.alert.desc, {
+                            title: result.data.alert.title
+                        });
+                    }
+                    
+                    //alert('result.data.CTI_REQUEST_KEY', result.data.CTI_REQUEST_KEY);    
+                    console.log('result.data.CTI_REQUEST_KEY %o', result.data.CTI_REQUEST_KEY);            
+                    setInputData('arsAgree', result.data.success);                
+                },
+                error : function(error){
+                    console.log("error");
+                },
+                complete : function(){
+                   console.log("complete");
+                    lgkorUI.hideLoading();
+                }
+            });
+       }
     }
 
     // ARS 출금동의요청 체크 :: BTOCSITE-98 add
