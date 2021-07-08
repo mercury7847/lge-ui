@@ -135,6 +135,13 @@
     &.full {
         max-width:912px;
         @include mobile {
+            position: fixed !important;
+            left:0 !important;
+            top:0 !important;
+            margin-left:0 !important;
+            transform:none !important;
+            margin-top:0 !important;
+            min-height:auto !important;
             max-width:100%;
         }
     }
