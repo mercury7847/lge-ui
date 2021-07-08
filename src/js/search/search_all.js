@@ -94,14 +94,14 @@
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="desc"><span>{{#raw desc}}</span></div>' +
-                    // '<div class="info-btm">' +
-                    //     '{{#if hash && hash.length>0}}' +
-                    //         '<div class="text hashtag-wrap">' +
-                    //             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                    //         '</div>' +
-                    //     '{{/if}}' +
-                    //     '<span class="text date"><span>{{date}}</span>' +
-                    // '</div>' +
+                    '<div class="info-btm">' +
+                        '{{#if hash && hash.length>0}}' +
+                            '<div class="text hashtag-wrap">' +
+                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                            '</div>' +
+                        '{{/if}}' +
+                        '<span class="text date"><span>{{date}}</span>' +
+                    '</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +
