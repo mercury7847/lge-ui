@@ -4,6 +4,8 @@
 .only_mo {display:none!important}
 img.only_pc {max-width:100%; margin:0 auto}
 img.only_mo {width:100%; max-width:100%; margin:0 auto}
+.only_pc > img {max-width:100%; margin:0 auto}
+.only_mo > img {width:100%; max-width:100%; margin:0 auto}
 /* .company .pd0 {padding:0} */
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
@@ -47,6 +49,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .graph.ofn {padding-top:40px}
 .company .graph.ofn .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
+
 .company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
@@ -196,6 +199,12 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .stock_number {margin-bottom:60px; font-size:48px; font-weight:bold; line-height:70px; text-align:center}
 .company .stock_number .num {padding-right:10px; color:#da0f47}
+
+.company .graph.lgway {margin-top:60px}
+.company .lgway_outline dl + dl {margin-top:-1px; border-top:1px dashed #ddd}
+.company .lgway_outline dl {padding:29px 0}
+.company .lgway_outline dl dt {font-size:18px; font-weight:bold; line-height:27px}
+.company .lgway_outline dl dd {margin-top:10px; font-size:14px; line-height:22px}
 
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
@@ -732,4 +741,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
   .company .stock_number {margin-bottom:12px; font-size:24px; line-height:35px}
   .company .stock_number .num {padding-right:5px}
+
+  .company .graph.lgway {margin-top:15px}
 }
