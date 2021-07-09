@@ -19,6 +19,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tabs-contents > .com-text {padding-left:0; padding-right:0}
 .company .com-section {position:relative; max-width:1460px; margin:0 auto; padding:60px 0}
 .company .com-section + .com-section {padding-top:0}
+.company .com-stock {position:relative; max-width:1100px; margin:0 auto; padding:60px 0}
 .company .text + .text {margin-top:20px}
 .com-title .text {word-break:keep-all}
 .company .tit.h3 {margin-bottom:0; font-size:32px; font-weight:bold; line-height:1.5; text-align:center}
@@ -78,7 +79,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .hisArea .hisList > ul > li span {display:inline-block; font-size:16px; line-height:30px}
 
 .company .ceoArea {position:relative}
-.company .ceoArea .bg {height:480px; border-radius:8px; overflow: hidden}
+.company .ceoArea .bg {height:480px; border-radius:8px; overflow:hidden}
 .company .ceoArea .bg span {width:100%; height:100%; display:block; background-position:center center; background-size:auto 100%; background-repeat:no-repeat}
 .company .ceoArea .txt {position:absolute; top:130px; left:234px; color:#fff}
 .company .ceoArea .txt .name em {display:block; font-size:22px; line-height:32px}
@@ -183,6 +184,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.caring > li:nth-child(4) .step > span {background-color:#da0f47; color:#fff}
 .company ul.caring > li .desc {margin-top:20px; font-size:16px; line-height:24px; text-align:center}
 
+.company .current_iframe{width:100%;height:800px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
+.company .time_iframe{width:100%; height:970px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
+.company .date_iframe{width:100%; height:970px; clear:both;overflow-x:hidden; padding:0; margin:0; border-width:0}
+.company .foreigner_iframe{width:100%; height:600px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
 .company .share_price table {margin-bottom:30px}
 .company .share_price table td {padding:39px 24px; text-align:center}
 .company .share_price table tr:first-child td {border-color:#ddd}
@@ -318,7 +323,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company ul.dash > li ul li {margin-top:2px; padding-left:10px; line-height:26px; text-indent:-10px}
 
 .company ul.m_cardList {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
-.company ul.m_cardList > li {display:flex; width:calc(33.3333% - 16px); height:206px; border-radius:8px; box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
+.company ul.m_cardList > li {display:flex; width:calc(33.3333% - 16px); height:206px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
 .company ul.m_cardList > li:nth-child(4),
 .company ul.m_cardList > li:nth-child(5),
 .company ul.m_cardList > li:nth-child(6) {margin-top:24px}
@@ -473,6 +478,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb-col.middle table th {vertical-align:middle}
 .company .tb_row table td strong,
 .company .tb-col table td strong {font-weight:bold}
+.company .tb_row table th strong.m,
+.company .tb-col table th strong.m {font-weight:500}
+.company .tb_row table td strong.m,
+.company .tb-col table td strong.m {font-weight:500}
 .company .tb_row table td .point,
 .company .tb-col table td .point {color:#da0f47}
 .company .tb_row .tbl_info .exc,
@@ -504,7 +513,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.rec_type > li {width:calc(25% - 1.23vw)}
   .company ul.rec_type > li .type_thumb {width:22vw; height:22vw}
   .company ul.caring > li + li > .step::before{left:calc(-3.5vw - 16px)}
-  .company ul.caring > li .step{margin: 0 3.5vw;}
+  .company ul.caring > li .step{margin:0 3.5vw}
 }
 
 /* 모바일 */
@@ -779,6 +788,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.caring > li .step > span {font-size:15px}
   .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
 
+  .company .current_iframe {height:1500px}
+  .company .date_iframe {height:950px}
   .company .share_price table td {padding:21px 12px}
   .company .share_price table td p {max-width:122px; font-size:14px}
   .company .share_price table td .price_up_L {padding-left:15.5px; font-size:24px}
