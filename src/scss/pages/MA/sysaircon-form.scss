@@ -432,14 +432,27 @@ br.m{
                                     }
                                 }
                                 .conts{
+
                                     @include mobile{
                                     }
                                     .input-wrap {
                                         width: 100%;
-                                        max-width: 160px;
+                                        max-width: 200px;
                                         @include mobile{
                                             display: flex;
                                             max-width: 100%;
+                                        }
+
+                                        input { 
+                                            width:80%; margin-right:10px;
+                                            text-align: right;
+                                        }
+                                        .unit {
+                                            height:100%;
+                                            font-size: 16px;
+                                            display:inline-block;
+                                            line-height:48px;
+
                                         }
                                     }
 
