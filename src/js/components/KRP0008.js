@@ -1489,7 +1489,7 @@
 
             //BTOCSITE-841 구매/렌탈 탭 변경에 따른 모델명 변경
             replaceModelName: function(index) {                
-                var $tabs = $('.option-tabs .careTab');
+                var $tabs = $('.option-tabs .tabs');
                 var $tabList = $tabs.find('li');
                 var modelName = $tabList.eq(index).find('a').attr('data-model-name');
                 var $sku = $('.product-detail-info .hidden-sm .sku');
