@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<style>
+.slide-history .slide-conts .img{text-align: center;}
+.slide-history .slide-conts .img img {max-width: 100%;padding-bottom:72px;}
+.slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: 22px;opacity:0.5;}
+.slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: 22px;opacity:0.5;}
+@media screen and (max-width:767px){
+.slide-history .slide-wrap.carousel-type.carousel-1 .slide-conts{margin: 0 16px;}
+}
+</style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -73,76 +82,228 @@
 		<p class="text">혁신과 도전의 역사를 소개합니다.</p>
 	</div>
 
-	<div class="slider">
-		
-		<img src="/kr/images/company/info/img-history-slide_01.png" alt="슬라이드 이미지1">
-		<img src="/kr/images/company/info/img-history-slide_02.png" alt="슬라이드 이미지2">
-		<img src="/kr/images/company/info/img-history-slide_03.png" alt="슬라이드 이미지3">
-		
-	</div>
-	
-	<!-- 슬라이더 안에 넣을 텍스트 컨텐츠 (이 부분 css는 미리 해놓았습니다.) -->
-	<div class="titArea">
-		<p class="tit h3">2010 - 현재</p>
-		<p class="desc">흔들리지 않고 서장하기 위한 사업과 체질의 고도화</p>
-	</div>
-				<!-- 가운데 이 부분이 사진 넣을 부분 -->
-	<div class="hisArea">
-		<div class="title">
-			<p class="tit">고도화의 시기</p>
-			<p class="text">LG전자는 '글로벌 기업 LG'를 넘어 어떤 위기에도 흔들리지 않고 성장하는 기업이 되기 위해, 제조업 본연의 체질을 다지면서도,<br>변화하는 세상을 앞서 준비하며, 구성원 모두가 오늘도 새 역사를 만들어 나가고 있습니다.</p>
-		</div>
-		<div class="hisList">
-			<ul>
-				<li>
-					<em>2021</em>
-					<span>LG전자 ESG위원회, 내부거래위원회 신설</span>
-				</li>
-				<li>
-					<em>2020</em>
-					<span>세계 최초 롤러블(Rollable) TV LG 시그니처 올레드 R 출시</span>
-				</li>
-				<li>
-					<em>2019</em>
-					<span>마이크로소프트와 MS와 인공지능 자율주행 SW개발을 위한 업무협약 (MOU) 체결</span>
-				</li>
-				<li>
-					<em>2018</em>
-					<span>캐나다 토론토에 ‘토론토 인공지능연구소(Toronto AI Lab)’ 설립</span>
-				</li>
-				<li>
-					<em>2017</em>
-					<span>LG전자 창원 R&D 센터 준공</span>
-				</li>
-				<li>
-					<em>2016</em>
-					<span>초프리미엄 브랜드 ‘LG SIGNATURE’ 출시</span>
-				</li>
-				<li>
-					<em>2015</em>
-					<span>세계 최초 트윈워시 세탁기 출시</span>
-				</li>
-				<li>
-					<em>2014</em>
-					<span>웹OS탑재 LG 스마트TV 출시, 메르세데스 벤츠와 ‘미래 자동차‘ 핵심 부품 개발 협력</span>
-				</li>
-				<li>
-					<em>2013</em>
-					<span>세계 최대 105형 곡면 울트라HD TV 개발, 7월 VC사업본부(현 VS사업본부) 출범</span>
-				</li>
-				<li>
-					<em>2012</em>
-					<span>세계 최대 84형 UD 시네마 3D 스마트 TV 출시</span>
-				</li>
-				<li>
-					<em>2011</em>
-					<span>트롬 스타일러 국내 출시, LTE 표준 핵심 특허 보유 세계 1위</span>
-				</li>
-				<li>
-					<em>2010</em>
-					<span>세계 최초 듀얼코어 스마트폰 옵티머스 2X 출시</span>
-				</li>
-			</ul>
+	<div class="slide-history">
+		<div class="slide-wrap carousel-type carousel-1 ui_carousel_1_slider">
+			<div class="slide-content ui_carousel_list">
+				<div class="slide-track ui_carousel_track">
+					<!--  slide -->
+					<div class="slide-conts ui_carousel_slide">
+						<div class="titArea">
+							<p class="tit h3">2010 - 현재</p>
+							<p class="desc">흔들리지 않고 서장하기 위한 사업과 체질의 고도화</p>
+						</div>
+						<div class="img">
+							<img src="/kr/images/company/info/img-history-slide_01.png" alt="슬라이드 이미지1">
+						</div>
+						<div class="hisArea">
+							<div class="title">
+								<p class="tit">고도화의 시기</p>
+								<p class="text">LG전자는 '글로벌 기업 LG'를 넘어 어떤 위기에도 흔들리지 않고 성장하는 기업이 되기 위해, 제조업 본연의 체질을 다지면서도,<br>변화하는 세상을 앞서 준비하며, 구성원 모두가 오늘도 새 역사를 만들어 나가고 있습니다.</p>
+							</div>
+							<div class="hisList">
+								<ul>
+									<li>
+										<em>2021</em>
+										<span>LG전자 ESG위원회, 내부거래위원회 신설</span>
+									</li>
+									<li>
+										<em>2020</em>
+										<span>세계 최초 롤러블(Rollable) TV LG 시그니처 올레드 R 출시</span>
+									</li>
+									<li>
+										<em>2019</em>
+										<span>마이크로소프트와 MS와 인공지능 자율주행 SW개발을 위한 업무협약 (MOU) 체결</span>
+									</li>
+									<li>
+										<em>2018</em>
+										<span>캐나다 토론토에 ‘토론토 인공지능연구소(Toronto AI Lab)’ 설립</span>
+									</li>
+									<li>
+										<em>2017</em>
+										<span>LG전자 창원 R&D 센터 준공</span>
+									</li>
+									<li>
+										<em>2016</em>
+										<span>초프리미엄 브랜드 ‘LG SIGNATURE’ 출시</span>
+									</li>
+									<li>
+										<em>2015</em>
+										<span>세계 최초 트윈워시 세탁기 출시</span>
+									</li>
+									<li>
+										<em>2014</em>
+										<span>웹OS탑재 LG 스마트TV 출시, 메르세데스 벤츠와 ‘미래 자동차‘ 핵심 부품 개발 협력</span>
+									</li>
+									<li>
+										<em>2013</em>
+										<span>세계 최대 105형 곡면 울트라HD TV 개발, 7월 VC사업본부(현 VS사업본부) 출범</span>
+									</li>
+									<li>
+										<em>2012</em>
+										<span>세계 최대 84형 UD 시네마 3D 스마트 TV 출시</span>
+									</li>
+									<li>
+										<em>2011</em>
+										<span>트롬 스타일러 국내 출시, LTE 표준 핵심 특허 보유 세계 1위</span>
+									</li>
+									<li>
+										<em>2010</em>
+										<span>세계 최초 듀얼코어 스마트폰 옵티머스 2X 출시</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- // slide -->
+					<!--  slide -->
+					<div class="slide-conts ui_carousel_slide">
+						<div class="titArea">
+							<p class="tit h3">2010 - 현재</p>
+							<p class="desc">흔들리지 않고 서장하기 위한 사업과 체질의 고도화</p>
+						</div>
+						<div class="img">
+							<img src="/kr/images/company/info/img-history-slide_02.png" alt="슬라이드 이미지1">
+						</div>
+						<div class="hisArea">
+							<div class="title">
+								<p class="tit">고도화의 시기</p>
+								<p class="text">LG전자는 '글로벌 기업 LG'를 넘어 어떤 위기에도 흔들리지 않고 성장하는 기업이 되기 위해, 제조업 본연의 체질을 다지면서도,<br>변화하는 세상을 앞서 준비하며, 구성원 모두가 오늘도 새 역사를 만들어 나가고 있습니다.</p>
+							</div>
+							<div class="hisList">
+								<ul>
+									<li>
+										<em>2021</em>
+										<span>LG전자 ESG위원회, 내부거래위원회 신설</span>
+									</li>
+									<li>
+										<em>2020</em>
+										<span>세계 최초 롤러블(Rollable) TV LG 시그니처 올레드 R 출시</span>
+									</li>
+									<li>
+										<em>2019</em>
+										<span>마이크로소프트와 MS와 인공지능 자율주행 SW개발을 위한 업무협약 (MOU) 체결</span>
+									</li>
+									<li>
+										<em>2018</em>
+										<span>캐나다 토론토에 ‘토론토 인공지능연구소(Toronto AI Lab)’ 설립</span>
+									</li>
+									<li>
+										<em>2017</em>
+										<span>LG전자 창원 R&D 센터 준공</span>
+									</li>
+									<li>
+										<em>2016</em>
+										<span>초프리미엄 브랜드 ‘LG SIGNATURE’ 출시</span>
+									</li>
+									<li>
+										<em>2015</em>
+										<span>세계 최초 트윈워시 세탁기 출시</span>
+									</li>
+									<li>
+										<em>2014</em>
+										<span>웹OS탑재 LG 스마트TV 출시, 메르세데스 벤츠와 ‘미래 자동차‘ 핵심 부품 개발 협력</span>
+									</li>
+									<li>
+										<em>2013</em>
+										<span>세계 최대 105형 곡면 울트라HD TV 개발, 7월 VC사업본부(현 VS사업본부) 출범</span>
+									</li>
+									<li>
+										<em>2012</em>
+										<span>세계 최대 84형 UD 시네마 3D 스마트 TV 출시</span>
+									</li>
+									<li>
+										<em>2011</em>
+										<span>트롬 스타일러 국내 출시, LTE 표준 핵심 특허 보유 세계 1위</span>
+									</li>
+									<li>
+										<em>2010</em>
+										<span>세계 최초 듀얼코어 스마트폰 옵티머스 2X 출시</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- // slide -->
+					<!--  slide -->
+					<div class="slide-conts ui_carousel_slide">
+						<div class="titArea">
+							<p class="tit h3">2010 - 현재</p>
+							<p class="desc">흔들리지 않고 서장하기 위한 사업과 체질의 고도화</p>
+						</div>
+						<div class="img">
+							<img src="/kr/images/company/info/img-history-slide_03.png" alt="슬라이드 이미지1">
+						</div>
+						<div class="hisArea">
+							<div class="title">
+								<p class="tit">고도화의 시기</p>
+								<p class="text">LG전자는 '글로벌 기업 LG'를 넘어 어떤 위기에도 흔들리지 않고 성장하는 기업이 되기 위해, 제조업 본연의 체질을 다지면서도,<br>변화하는 세상을 앞서 준비하며, 구성원 모두가 오늘도 새 역사를 만들어 나가고 있습니다.</p>
+							</div>
+							<div class="hisList">
+								<ul>
+									<li>
+										<em>2021</em>
+										<span>LG전자 ESG위원회, 내부거래위원회 신설</span>
+									</li>
+									<li>
+										<em>2020</em>
+										<span>세계 최초 롤러블(Rollable) TV LG 시그니처 올레드 R 출시</span>
+									</li>
+									<li>
+										<em>2019</em>
+										<span>마이크로소프트와 MS와 인공지능 자율주행 SW개발을 위한 업무협약 (MOU) 체결</span>
+									</li>
+									<li>
+										<em>2018</em>
+										<span>캐나다 토론토에 ‘토론토 인공지능연구소(Toronto AI Lab)’ 설립</span>
+									</li>
+									<li>
+										<em>2017</em>
+										<span>LG전자 창원 R&D 센터 준공</span>
+									</li>
+									<li>
+										<em>2016</em>
+										<span>초프리미엄 브랜드 ‘LG SIGNATURE’ 출시</span>
+									</li>
+									<li>
+										<em>2015</em>
+										<span>세계 최초 트윈워시 세탁기 출시</span>
+									</li>
+									<li>
+										<em>2014</em>
+										<span>웹OS탑재 LG 스마트TV 출시, 메르세데스 벤츠와 ‘미래 자동차‘ 핵심 부품 개발 협력</span>
+									</li>
+									<li>
+										<em>2013</em>
+										<span>세계 최대 105형 곡면 울트라HD TV 개발, 7월 VC사업본부(현 VS사업본부) 출범</span>
+									</li>
+									<li>
+										<em>2012</em>
+										<span>세계 최대 84형 UD 시네마 3D 스마트 TV 출시</span>
+									</li>
+									<li>
+										<em>2011</em>
+										<span>트롬 스타일러 국내 출시, LTE 표준 핵심 특허 보유 세계 1위</span>
+									</li>
+									<li>
+										<em>2010</em>
+										<span>세계 최초 듀얼코어 스마트폰 옵티머스 2X 출시</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- // slide -->
+				</div>
+			</div>
+			<div class="slide-controls">
+				<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+				<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+			</div>
+			<div class="indi-wrap">
+				<ul class="indi-conts ui_carousel_dots">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
