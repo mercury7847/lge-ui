@@ -453,6 +453,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.cont_view_more > ul > .lists.on .head .accord-btn .title.close {display:block!important}
 .company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn .title.close {font-weight:normal; opacity:1; text-shadow:none}
 .company .accordion-wrap.cont_view_more > ul > .lists .accord-cont {padding:80px 0 0 0}
+.company .accordion-wrap.cont_view_more > ul > .lists .accord-cont .section + .section {margin-top:30px}
 
 /* 테이블 */
 .company .com-text.tbl {padding-bottom:0}
