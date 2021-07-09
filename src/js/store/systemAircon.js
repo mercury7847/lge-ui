@@ -46,7 +46,13 @@
                 });
             });
         },
+        goInquery:function() {
+            var self = this;
+            self.$form[0].reset();
+            var url  =  self.$form.data('inqueryUrl');
+            if(url) location.href = url;
 
+        },
         bindEvents: function() {
             var self = this;
 
@@ -57,9 +63,7 @@
                     cancelBtnName: "취소",
                     okBtnName: "확인",
                     ok: function(){
-                        self.$form[0].reset();
-                        var url  =  self.$form.data('inqueryUrl');
-                        if(url) location.href = url;
+                        self.goInquery();
                     }
                 });
             });
@@ -85,7 +89,10 @@
                         console.log("result %o",result);
                         if(result.ResultCode === 'success') {
                             lgkorUI.alert("", {
-                                title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.'
+                                title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.',
+                                ok: function(){
+                                    self.goInquery();
+                                }
                             });
                         }
                     },true);
