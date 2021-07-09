@@ -4951,10 +4951,9 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        //210707 소재명 제거
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                                        //210707 소재명 제거
                                         colorHtml += '  </button>';
                                         colorHtml += '</li>';
                                         colorSelBodyHtml += colorHtml;
@@ -5021,10 +5020,9 @@
                         let colorHtml = '<li>';
                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        //210707 소재명 제거
+                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                        //210707 소재명 제거
                         colorHtml += '  </button>';
                         colorHtml += '</li>';
                         colorSelBodyHtml += colorHtml;
@@ -5090,10 +5088,9 @@
                                 let colorHtml = '<li>';
                                 colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                 colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                //210707 소재명 제거
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                                 // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                 colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                                //210707 소재명 제거
                                 colorHtml += '  </button>';
                                 colorHtml += '</li>';
                                 colorSelBodyHtml += colorHtml;
@@ -5523,7 +5520,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         if (_doorInfoMaterial[0] == "F") {
@@ -5723,7 +5720,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml2 += '<li>';
@@ -5879,7 +5876,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml += '<li>';
@@ -6080,7 +6077,8 @@
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='0']").css("display", "inline-block");
                 setTimeout(function() {
                     slideWrapAutoSize(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont");
-                    // $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
+                    
+                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").siblings().removeClass("on");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").addClass("on");
                     let subIdx = $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper .swiper-slide.on").index();
