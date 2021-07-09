@@ -1880,10 +1880,10 @@
     function arsAgreeConfirmCheck(){
         isClickedarsAgreeConfirmCheckBtn = true;
         $('.arsAgreeRequestCheck').attr('disabled', true);
-        clearTimeout(arsConfirmCallingInterval);
-        arsConfirmCallingInterval = setTimeout(function(){
-            $('.arsAgreeRequestCheck').attr('disabled', false);
-        }, 3000);
+        // clearTimeout(arsConfirmCallingInterval);
+        // arsConfirmCallingInterval = setTimeout(function(){
+        //     $('.arsAgreeRequestCheck').attr('disabled', false);
+        // }, 3000);
 
         lgkorUI.showLoading();
 
