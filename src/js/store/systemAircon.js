@@ -81,15 +81,14 @@
     
                     param = $.extend(param,radioChk);
                     console.log("param %o",param);
-                    lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                         console.log("result %o",result);
                         if(result.ResultCode === 'success') {
                             lgkorUI.alert("", {
                                 title: '온라인 견적 문의가 접수 되었습니다.<br>담당자가 확인후 연락 드릴<br>예정입니다.'
                             });
                         }
-                    });
+                    },true);
                 }
             });
             //주소 찾기 버튼
