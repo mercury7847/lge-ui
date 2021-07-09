@@ -683,6 +683,9 @@
                             &::before {
                                 display: none;
                             }
+                            &.retalCareOn {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -883,6 +886,7 @@
                 @include clearfix;
                 .text {
                     float: left;
+                    font-weight:bold;
                     @include font-small;
                     .btn-link {
                         @include font-small;
@@ -970,6 +974,9 @@
                 margin-top:24px;
                 @include mobile {
                     margin-top:0;
+                    & + .info-accordion-wrap {
+                        margin-top:12px;
+                    }
                 }
                 .lists {
                     padding: 0 24px;
@@ -1089,7 +1096,7 @@
                         &.on .btn-toggle {
                             top: 12px;
                         }
-
+                        
                         /* 20210602 BTOCSITE-495 추가 */
                         .price-info {
                             &.info-Mb {
@@ -1100,7 +1107,42 @@
                             }
                         }
                         /* //20210602 BTOCSITE-495 추가 */
+                        .select-info {
+                            .select-text {
+                                font-weight: 700;
+                            }
+                        }
+                            
                     }
+                    /* 20210607 스펙선택 추가 */ 
+                    &.Spec { 
+                        padding:14px 24px;
+                        background: #fff;
+                        border:1px solid #aaa;
+                        .price-info {
+                            padding-right: 0;
+                            .content {
+                                width: 320px;
+                                @include mobile{
+                                    width: 80%; 
+                                }
+                                .btn-area {
+                                    margin-top: 0 !important;
+                                    .btn-link {
+                                        text-decoration: none;
+                                        display: block !important;
+                                        width: 100%;
+                                        position: relative;
+                                    }
+                                }
+                            }
+                        }
+
+                        @include mobile {
+                            padding:14px 12px;
+                        }
+                    }
+                    /* //20210607 스펙선택 추가 */
                 }
                 &.care-solution-payment-info {
                     margin-top: 24px;
@@ -2095,6 +2137,9 @@
                             display: flex;
                             align-items: center;
                             &::before {
+                                display: none;
+                            }
+                            &.retalCareOn {
                                 display: none;
                             }
                         }
