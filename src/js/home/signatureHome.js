@@ -85,9 +85,9 @@ $(function() {
 
 
         // 웨일 결합처리
-        $('.foot-cont').find('.menu-opener').on('click', function(e){
-            $('html,body').scrollTop(pageLens*winHeight);
-        });
+        // $('.foot-cont').find('.menu-opener').on('click', function(e){
+        //     $('html,body').scrollTop(pageLens*winHeight);
+        // });
 
         // 화면 100% 채우기
         //$('html,body').css({'overflow':'hidden', 'height':'100%'});   //20210629 BTOCSITE-1519 : 히어로배너 구조 변경
@@ -616,21 +616,28 @@ $(function() {
             if(href == '#' || href == '#n'){
                 e.preventDefault();
             }else{
-                if (href && /^(#|\.)\w+/.test(href)) {
-
-                    e.preventDefault();
-
+                if (href && /^(#|\.)\w+/.test(href)) {                    
                     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
                     if($compareTarget[0] != e.currentTarget) {
-                        if(currentPage !== pageLens){
-                            moveScene(pageLens,stepLens,0);
-                        }
                         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
-                        if(href == '#content'){
-                            $('.signature-tabs .ui_tab').find('a').eq(0).focus();
-                        }
                     }
-                }
+                } 
+
+                // if (href && /^(#|\.)\w+/.test(href)) {
+
+                //     e.preventDefault();
+
+                //     var $compareTarget = $('.signature-tabs .ui_tab').find('a[href="'+href+'"]');
+                //     if($compareTarget[0] != e.currentTarget) {
+                //         if(currentPage !== pageLens){
+                //             moveScene(pageLens,stepLens,0);
+                //         }
+                //         $('.signature-tabs .ui_tab').vcTab('selectByName', href);
+                //         if(href == '#content'){
+                //             $('.signature-tabs .ui_tab').find('a').eq(0).focus();
+                //         }
+                //     }
+                // }
             }
         });
 
@@ -698,7 +705,8 @@ $(function() {
             }
 
             //웨일 처리
-            $('html,body').scrollTop(pageLens*winHeight);
+            $('html,body').scrollTop($('.signature-tabs .ui_tab').offset().top)
+            
         });
 
 
