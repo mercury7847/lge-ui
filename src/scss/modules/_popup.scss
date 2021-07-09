@@ -334,6 +334,319 @@
             padding:48px 40px 40px;
         }
         /* //20210601 구매혜택 팝업 conts수정 */
+
+        /* 20210607 스펙선택 추가 */ 
+        &.sibling-pop {
+            padding: 0;
+            .process-info {
+                .info-box {
+                    padding: 0;
+                    border-radius: 0;
+                    background-color: #fff;
+                    p {
+                        @include font-medium;
+                    }
+                    .sibling-option {
+                        margin-bottom: 0px;
+                        > [class*="sibling-"] {
+                            display: flex;
+                            //justify-content: space-between;
+                            width: 100%;
+                            flex-wrap: wrap;
+                            &[class*="cont"] {
+                                position: relative;
+                                padding: 24px 40px 30px;
+
+                                &:after {
+                                    content:"";
+                                    display: block;
+                                    position: absolute;
+                                    bottom:0;
+                                    left:40px;
+                                    right:40px;
+                                    height:1px;
+                                    background: #ddd;
+                                }
+
+                                @include mobile {
+                                    margin-bottom:30px;
+                                    padding: 20px 15px 30px;
+
+                                    &:after {
+                                        left:15px;
+                                        right:15px;
+                                    }
+                                }
+                                .sibling-select,
+                                .sibling-color {
+                                    width: 100%;
+                                    margin-top: 30px;
+                                    .sibling-colorHead {
+                                        display: flex;
+                                        width: 100%;
+                                        font-size: 16px;
+                                        align-items: center;
+                                        margin-bottom: 20px;
+                                        &.disabled {
+                                            .color-text {
+                                                color:$color-gray-2
+                                            }
+                                        }
+                                        @include mobile {
+                                            margin-bottom: 10px;
+                                        }
+                                        .text {
+                                            width: auto;
+                                            margin-bottom: 0;
+                                            margin-right: 35px;
+                                            @include mobile {
+                                                margin-right: 0px;
+                                            }
+                                        }
+                                        .color-text {
+                                            color:#da0f47;
+                                            font-weight: 700;
+                                            @include mobile {
+                                                font-size: 14px;
+                                                margin-left: 10px;
+                                            }
+                                        }
+                                    }
+                                    @include pc {
+                                        .text {
+                                            margin-top: 0px;
+                                        }
+                                    }
+                                    @include mobile {
+                                        text-align: left;
+                                    }
+                                }
+                                .sibling-color {
+                                    position: relative;
+                                    
+                                }
+                                .sibling-select:first-of-type {
+                                    margin-top: 0;
+                                }
+                                .sibling-text {
+                                    margin-top: 24px;
+                                    .text {
+                                        padding-top: 0;
+                                    }
+                                }
+                                .text {
+                                    flex: none;
+                                    display: block;
+                                    width: 100%;
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    font-weight: 700;
+                                    margin-bottom: 8px;
+                                }
+                                &:first-child {
+                                    margin-top: 0;
+                                }
+                            }
+                            
+                        }
+                        
+                        @include mobile {
+                            padding: 0 0 0px;
+                            border-bottom: 0;
+                            > [class*="sibling-"] {
+                                flex-direction: column;
+                                justify-content: left;
+                                align-content: flex-start;
+                                .text {
+                                    text-align: left;
+                                    width: auto;
+                                    margin-bottom: 8px;
+                                    padding-right: 0;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                        .select-option {
+                            .option-list {
+                                margin-top:0;
+                                margin-right: 15px;
+                                &:last-of-type {
+                                    margin-right: 0;
+                                }
+                                @include mobile {
+                                    margin-top:0;
+                                    margin-right: 10px;
+                                }
+                            }
+                            &.color {
+                                flex: auto;
+                                display: flex;
+                                .chk-wrap-colorchip {
+                                    width: 40px;
+                                    height: 40px;
+                                    margin-top:8px;
+                                    @include mobile {
+                                        width: 34px;
+                                        height: 34px;
+                                        margin-top:3px;
+                                    }
+                                    &:not(:last-child) {
+                                        margin-right: 8px;
+                                        @include mobile {
+                                            margin-right:3px;
+                                        }
+                                    }
+                                    input {
+                                        & + label {
+                                            @include mobile {
+                                                width: 34px;
+                                                height: 34px;
+                                            }
+                                            &:before {
+                                                top: 0;
+                                                left: 0;
+                                                width: 40px;
+                                                height: 40px;
+                                                border: 0;
+                                                background-size: 144px auto;
+                                                @include mobile {
+                                                    width: 34px;
+                                                    height: 34px;
+                                                }
+                                            }
+                                            &:after {
+                                                display: none;
+                                            }
+                                        }
+                                        &:checked {
+                                            & + label {
+                                                &:after {
+                                                    display: block;
+                                                    @include calc(top,50%, -10px);
+                                                    @include calc(left,50%, 5px);
+                                                    width: 20px;
+                                                    height: 13px;
+                                                    border: 0;
+                                                    border-bottom: 2px solid #fff;
+                                                    border-left: 2px solid #fff;
+                                                    border-radius: 0;
+                                                    transform: rotate(-45deg);
+                                                    @include mobile {
+                                                        top: calc( 50% - 8px);
+                                                        left: calc( 50% - 8px);
+                                                        width: 17px;
+                                                        height: 11px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.snow_white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
+                                        }
+                                    }
+                                    &.white {
+                                        & input + label::after {
+                                            border-bottom: 2px solid #000;
+                                            border-left: 2px solid #000;
+                                        }
+                                    }
+                                }
+                                .color-text {
+                                    margin-top: 8px;
+                                    color:#da0f47;
+                                    @include font-x-small;
+                                    font-weight:700;
+                                }
+                            }
+                            &.select {
+                                .option-list {
+                                    margin-right: 0;
+                                    margin-bottom: 0;
+                                }
+                                .rdo-wrap.btn-type2 {
+                                    margin-right: 8px;
+                                    margin-bottom: 8px;
+                                    @include mobile {
+                                        margin-right: 3px;
+                                        margin-bottom: 3px;
+                                    }
+                                    &:last-of-type {
+                                        margin-right: 0;
+                                    }
+
+                                    &.disabled {
+                                        input {
+                                            & + label {
+                                                border: 1px solid;
+                                                @include font($font-small,26px);
+                                                color: $color-gray-4;
+                                            }
+                                            &:checked {
+                                                & + label {
+                                                    color: $color-gray-4;
+                                                    border-color: $color-primary;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    input {
+                                        & + label {
+                                            width: auto;
+                                            min-width: 60px;
+                                            padding: 6px 14px;
+                                            border-radius: 40px;
+                                            border: 1px solid;
+                                            @include font($font-small,26px);
+                                            // color: $color-gray-1;
+                                            @include mobile {
+                                                min-width: 55px;
+                                                font-size: 13px;
+                                                padding: 3px 14px;
+                                            }
+                                        }
+                                        &:checked {
+                                            & + label {
+                                                color: $color-primary;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .text-option {
+                            @include font-small;
+                        }
+                    }
+                    .sibling-group {
+                        padding: 0 30px 40px 30px;
+                        margin-top: 30px;
+                        @include mobile {
+                            padding-bottom: 0;
+                            padding: 0;
+                        }
+                        .sibling-btn {
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            @include mobile {
+                                position: relative;
+                            }
+                            .btn {
+                                width: 192px;
+                                @include mobile {
+                                    width: 100%;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /* //20210607 스펙선택 추가 */
         &.no-footer {
             max-height:576px + 130px;
             padding-bottom:48px;
@@ -350,11 +663,43 @@
             padding:32px 16px 60px;
             height:calc(100% - 122px);
             max-height:calc(100% - 122px);
-            &.is-bottom-expire {
-                height:calc(100% - 154px);
-                max-height:calc(100% - 154px);
+        }
+
+        .not-cancel-footer {                        
+            h2 {
+                font-size: 24px;
+                line-height: 34px;
+                font-weight: 700;
+            }
+            p { 
+                font-size:18px;
+                font-weight:600;
+                margin-top:24px;
+            }
+
+            .btn-group {
+                margin-top:32px;
+            }
+
+            @include mobile {
+                margin-top:24px;
+                h2 {
+                    font-size: 20px;
+                    line-height: 28px;
+                    font-weight: 700;
+                }
+                p {
+                    margin-top:12px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+
+                .btn-group {
+                    margin-top:24px;
+                }
             }
         }
+
         .tabs-wrap {
             &:first-child {
                 @include mobile {
