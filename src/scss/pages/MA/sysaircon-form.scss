@@ -234,6 +234,49 @@ br.m{
                             padding:10px;
                             
                         }
+
+                        /* B2C 4.0 약관동의 */
+                        .policy_box {
+                            h4 {
+                                font-size: 16px;
+                                font-weight: normal;
+                                color: #333;
+                            }
+        
+                            h5 {
+                                margin-top: 35px;
+                                padding-top: 37px;
+                                font-size: 16px;
+                                font-weight: normal;
+                                color: #333;
+                                border-top: 1px solid #ccc;
+                            }
+        
+                            p {
+                                color: #333;
+                                line-height: 1.714;
+                                margin-top:12px; 
+                            }
+
+                            ul,ol {
+                                list-style-image: none;
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+                                font-weight:normal;
+                            }
+
+                            ol {
+                                margin-top: 19px;
+                            }
+
+                            table {
+                                margin: 20px 0 25px;
+                                tr {
+                                    td { text-align:left; }
+                                }
+                            }
+                        }
                     }
                     .btn-agree{
                         padding:17px 24px;
@@ -558,6 +601,9 @@ br.m{
 .btn-wrap.mo-only{
     display: none;
     @include mobile{
+        position:fixed;
+        z-index:108;
+        bottom:0;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -709,7 +755,7 @@ br.m{
 
 	.search-wrap {
 		text-align:center;
-		padding:48px 0 24px;
+		padding:48px 0 220px;
 		@include mobile {
             padding:24px 16px 16px;
 		}

@@ -36,9 +36,9 @@
                             <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
                             <dd class="conts">
                                 <div class="input-wrap">
-                                    <!--  BTOCSITE-518 20210708 START -->
-                                    <input type="text" id="inp01"  name="userName" class="inq-name" value="" placeholder="이름을 입력하세요." data-format="koreng" data-required="true">
-                                    <!--  BTOCSITE-518 20210708 END -->
+                                    <!--  BTOCSITE-518 20210709 START -->
+                                    <input type="text" id="inp01"  name="userName" class="inq-name" value="" maxlength="100" placeholder="이름을 입력하세요." data-format="koreng" data-required="true">
+                                    <!--  BTOCSITE-518 20210709 END -->
                                 </div>
                             </dd>
                         </dl>
@@ -55,7 +55,9 @@
                             <dd class="conts">
                                 <div class="email-conts-wrap">
                                     <div class="email-input-wrap input-wrap">
-                                        <input type="text" id="inp03" name="userEmail" value="" placeholder="이메일을 입력하세요."  data-required="true">
+                                        <!--  BTOCSITE-518 20210709 START -->
+                                        <input type="text" id="inp03" name="userEmail" value="" maxlength="200" placeholder="이메일을 입력하세요."  data-required="true">
+                                        <!--  BTOCSITE-518 20210709 END -->
                                     </div>
                                 </div>
                             </dd>
@@ -76,7 +78,9 @@
                                         <input type="text" class="addr2" name="addr2" value="" placeholder="기본 주소"  disabled data-required="true">
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text"name="addr3"  value="" placeholder="상세 주소 입력"  data-required="true">
+                                         <!--  BTOCSITE-518 20210709 START -->
+                                        <input type="text"name="addr3"  value="" maxlength="300" placeholder="상세 주소 입력"  data-required="true">
+                                         <!--  BTOCSITE-518 20210709 END -->
                                     </div>
                                 </div>
                             </dd>
@@ -138,7 +142,9 @@
                                                     <input type="text" class="addr2" name="plc-addr2" value="" placeholder="기본 주소"  disabled data-required="true">
                                                 </div>
                                                 <div class="input-wrap">
-                                                    <input type="text" name="plc-addr3" value="" placeholder="상세 주소 입력"  data-required="true">
+                                                     <!--  BTOCSITE-518 20210709 START -->
+                                                    <input type="text" name="plc-addr3" value="" maxlength="300" placeholder="상세 주소 입력"  data-required="true">
+                                                     <!--  BTOCSITE-518 20210709 END -->
                                                 </div>
                                                 <span class="chk-wrap">
                                                     <!--  BTOCSITE-518 20210707 START -->
@@ -173,7 +179,9 @@
                                                 <dt class="tit"><label for="inp07" class="">전용면적</label></dt>
                                                 <dd class="conts">
                                                     <div class="input-wrap">
-                                                        <input type="text"  id="inp07" name="inp07" value="㎡" style="text-align: right;">
+                                                         <!--  BTOCSITE-518 20210709 START -->
+                                                        <input type="text"  id="inp07" name="inp07" placeholder="㎡" style="text-align: right;" maxlength="20" inputmode="numeric">
+                                                         <!--  BTOCSITE-518 20210709 END -->
                                                     </div>
                                                 </dd>
                                             </dl>
@@ -184,9 +192,9 @@
                                         <dt class="tit"><label for="inp08">설치 수량</label></dt>
                                         <dd class="conts">
                                             <div class="input-wrap">
-                                                  <!--  BTOCSITE-518 20210708 START -->
-                                                <input type="text" id="inp08" name="inp08" value="" placeholder="실내기 요청 수량" >
-                                                  <!--  BTOCSITE-518 20210708 END -->
+                                                  <!--  BTOCSITE-518 20210709 START -->
+                                                <input type="text" id="inp08" name="inp08" value="" placeholder="실내기 요청 수량" maxlength="10" inputmode="numeric">
+                                                  <!--  BTOCSITE-518 20210709 END -->
                                             </div>
                                         </dd>
                                     </dl>
@@ -354,11 +362,11 @@
                                         <dt class="tit pc-only"><label for="inp11">추가 문의 사항</label></dt>
                                         <dt class="tit mo-only"><label for="inp11">전달 사항</label></dt>
                                         <dd class="conts">
-                                            <!--  BTOCSITE-518 20210708 START -->
+                                            <!--  BTOCSITE-518 20210709 START -->
                                             <div class="input-wrap">
-                                                <input type="textarea" class="text-box" id="inp11" name="inp11" value="" placeholder="문의 및 요청사항 입력" >
+                                                <textarea id="inp11" name="inp11" maxlength="4000" placeholder="문의 및 요청사항 입력"></textarea>
                                             </div>
-                                            <!--  BTOCSITE-518 20210708 END -->
+                                            <!--  BTOCSITE-518 20210709 END -->
                                         </dd>
                                     </dl>
                                     <dl class="forms dl3">
@@ -378,9 +386,11 @@
                                                         <!--  BTOCSITE-518 20210708 END -->
                                                     </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" placeholder="지점명" name="managerBranch" value="">
-                                                        <input type="text" placeholder="이름" name="managerName" value="">
-                                                        <input type="text" placeholder="사번" name="managerNumber" value="">
+                                                        <!--  BTOCSITE-518 20210709 START -->
+                                                        <input type="text" placeholder="지점명" name="managerBranch" value="" maxlength="50">
+                                                        <input type="text" placeholder="이름" name="managerName" value="" maxlength="100">
+                                                        <input type="text" placeholder="사번" name="managerNumber" value="" maxlength="100">
+                                                        <!--  BTOCSITE-518 20210709 START -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -415,7 +425,311 @@
                             </div>
                         </div>
     
+                        <!--  BTOCSITE-518 20210709 START -->
                         <div class="sub-forms-wrap">
+                            <!-- 개인정보 수집 및 이용 동의 -->
+                            <div class="sub-forms bdn">
+                                <div class="inner bdb">
+                                    <h1 class="tit pc-only">약관 동의</h1>
+                                    <h2 class="tit mo-h2 mo-only">약관 동의</h2>
+                                </div>
+                                <div class="tit-head">
+                                    <h2 class="tit">* 개인정보 수집 및 이용 동의</strong>
+                                </div>
+                                <div class="tit-center">
+                                    <div class="txt-wrap">
+                                        <div class="policy_box">
+                                            <h4>개인정보 수집 및 이용 동의</h4>
+                                            <p>LG전자는(이하 ‘회사‘)  소식지 제공, 이벤트, 신제품 안내 등 각종 광고성 정보 전달 서비스 제공이나 고객의 요청으로 견적 상담 요청 시 이를 위하여 이용자로부터 아래와 같은 개인정보를 수집, 이용하고 있습니다. </p>
+                                            <h5>1. 개인정보 처리 항목 및 수집 방법</h5>
+                                            <p>회사는 기본적으로 원활한 서비스 제공과 혜택 제공을 위해 개인정보를 수집하고 있으며, 다음의 목적 이외 용도로는 처리하지 않습니다.</p>
+                                            <ol>
+                                               <li>
+                                                  (1) 수집하는 개인정보 항목 및 수집 목적
+                                                <div class="table-wrap">
+                                                    <div class="tb_row tb-row-bl">
+                                                        <table class="witac_work">
+                                                            <caption>개인정보 처리 항목 및 수집 방법의 수집 항목, 목적</caption>
+                                                            <thead>
+                                                               <tr>
+                                                                  <th scope="col">수집 항목</th>
+                                                                  <th scope="col">수집 목적</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <ul>
+                                                                        <li>[일반] 이메일, 이름, 전화번호, 회사 주소</li>
+                                                                        <li>[마케팅 활동] 이메일, 수신, 개봉 기록,업종, 관심 제품군</li>
+                                                                     </ul>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p>소식지 서비스 제공,  이벤트, 신제품 안내 등 광고성 정보 전달 </p>
+                                                                  </td>
+                                                               </tr>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p>[온라인 견적 서비스 요청] 상호/법인명, 사업자등록번호, 대표자명,<br class="onW"> 사업장주소, 대표전화번호, 담당자명, 휴대전화번호, 이메일, 업종, 제품설치지역</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p>B2B기업 이용자의 온라인 견적 요청 상담</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                    </div>
+                                                </div>
+                                                  <ul>
+                                                     <li>※ 기명처리된 정보는 통계작성, 과학적 연구, 공익적 기록 보전 등을 위하여정보주체의 동의 없이 처리할 수 있습니다.</li>
+                                                     <li>
+                                                        <p>※ 이용자의 명함에서 수집된 정보는 아래와 같은 목적으로 사용할 수 있습니다.</p>
+                                                        <ul>
+                                                           <li>- 이용자의 문의에 대한 응답을 제공 </li>
+                                                           <li>- 새로운 제품 및 서비스를 개발, 개선하기 위해 이용자의 제품 및 서비스에 대한사용 및 구매 방식 등을 분석</li>
+                                                           <li>- 필요 시, 개인정보 보호 정책의 중대한 변경사항을 이용자에게 통지 </li>
+                                                           <li>-  법적 의무 및 규제 요구 사항을 준수하기 위해  내부 기록 보관 </li>
+                                                        </ul>
+                                                     </li>
+                                                     <li>
+                                                        <p>※ 이용자가 명시적으로 마케팅 정보를 수신하기로 합의한 경우, 이용자의 정보를다음과 같은 목적으로 사용합니다.</p>
+                                                        <ul>
+                                                           <li>- 당사 또는 기타 제3자의 특별행사, 업데이트된 정보 및 기타 신제품 또는 서비스에 대한 안내나 관련 홍보 자료 제공 </li>
+                                                           <li>- 이용자의 관심사나 관련성을 고려한 광고성 정보 제공</li>
+                                                        </ul>
+                                                     </li>
+                                                     <li>※ 본 개인정보 보호정책에 부합하는 목적으로 이용자가 다른 방법으로 당사에 제공하는 정보와 귀하의 명함에서 얻은 정보를 연계하여 이용할 수 있습니다.</li>
+                                                     <li>※ 기타 계약이 체결, 유지, 이행, 관리, 행사참여, 판촉/마케팅 활동 등으로 추가로 개인정보를 수집할 수 있습니다. 단, 이때는 해당 페이지에 개인정보의 수집 목적, 수집 항목, 보유 기간을 별도 고지하며 추가 동의를 받습니다. </li>
+                                                  </ul>
+                                               </li>
+                                               <li>
+                                                  (2) 수집방법
+                                                  <ul>
+                                                     <li>- 대표사이트 내 견적 요청, 소식지 신청 등 서비스 신청 동의 고객에 대한 정보 수집</li>
+                                                     <li>- 이용자의 명함을 통해 이름, 회사 주소, 전화번호, 이메일 및 기타 정보를 수집</li>
+                                                     <li>- 이벤트나 오프라인 행사 등을 통해 이용자의 서면 통한 수집</li>
+                                                     <li>- 로그 분석 프로그램을 통한 자동 수집 </li>
+                                                     <li>- 쿠키(Cookie)에 의한 정보 수집  </li>
+                                                  </ul>
+                                               </li>
+                                            </ol>
+                                            <h5>2. 개인정보 처리 및 보유 기간 </h5>
+                                            <p>서비스 제공에 대한 수신거부 시점까지 보관, 활용하며, 수집 및 이용 목적이 달성된 후 또는 이용자의 동의 철회 요구 시에는 해당 정보를 지체 없이 파기합니다. </p>
+                                            <p>- 보유 기간 : 개인정보 수집 및 이용 동의로부터 2년, 기간 초과 시 동의 절차 재진행 (미동의 시 , 즉시 파기)   </p>
+                                            <p><strong class="c-c9">다만, 수집목적 또는 제공 받은 목적이 달성된 경우에도 하기와 같이 상법, 국세기본법 등 관련 법령 규정에 의한 거래 관련</strong> 권리 의무 관계의 확인 등을 이유로 일정기간 보유하여야 할 필요가 있을 경우에는 일정기간 보유합니다. 이 경우 회사는 보관하는 개인정보를 그 보관의 목적으로만 이용하며 보존 기간은 아래와 같습니다.</p>
+                                            <ul>
+                                               <li>- 상법 등 법령의 규정에 의하여 보존할 필요성이 있는 경우</li>
+                                               <li>- 계약 또는 청약철회 등에 관한 기록 : 5년</li>
+                                               <li>- 대금결제 및 재화 등의 공급에 관한 기록 : 5년</li>
+                                               <li>- 소비자 불만 또는 분쟁처리에 관한 기록 : 3년</li>
+                                            </ul>
+                                            <h5 id="witac_3">3. 동의 거부 권리 </h5>
+                                            <p>본 안내에 따른 개인정보 수집, 이용에 대하여 동의를 거부하실 권리가 있습니다. 다만, 개인 정보 수집 이용에 동의하지 않으실 경우 본 서비스를 이용하실 수 없습니다. </p>
+                                         </div>
+                                    </div>
+                                    <div class="btn-agree">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="agreePrivacyCheck1" name="agreePrivacyCheck1" data-required="true">
+                                            <label for="agreePrivacyCheck1">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 개인정보 제3자 제공 동의 -->
+                            <div class="sub-forms bdn">
+                                <div class="tit-head">
+                                    <h2 class="tit">* 개인정보 제3자 제공 동의</strong>
+                                </div>
+                                <div class="tit-center">
+                                    <div class="txt-wrap">
+                                        <div class="policy_box">
+                                            <h4>개인정보 처리 위탁</h4>
+                                            <p>LG전자 주식회사 (이하 ‘LG전자‘)는 이용자의 개인정보를 아래와 같이 제3자에게 제공하는 것에 관하여 안내하고 동의여부를 확인하고자 합니다.</p>
+                                            <h5>1. 개인정보 제3자 제공</h5>
+                                            <p>LG전자 주식회사 (이하 ‘LG전자‘)는 아래와 같은 경우를 제외하고 이용자의 동의가 있거나 관련 법령에 특별한 규정이 있는 경우 등을 제외하고는 이용자의 개인정보를 제3자에게 제공하지 않습니다.</p>
+                                            <ol>
+                                               <li>
+                                                  (1) 필수적으로 제공하는 정보
+                                                <div class="table-wrap">
+                                                    <div class="tb_row tb-row-bl">
+                                                        <table>
+                                                            <caption>개인정보 제공 받는 자, 목적, 항목, 보유기간</caption>
+                                                            <colgroup>
+                                                               <col width="20%">
+                                                               <col width="20%">
+                                                               <col width="30%">
+                                                               <col width="30%">
+                                                            </colgroup>
+                                                            <thead>
+                                                               <tr>
+                                                                  <th scope="col">제공 받는 자</th>
+                                                                  <th scope="col">제공목적</th>
+                                                                  <th scope="col">제공하는 항목</th>
+                                                                  <th scope="col">보유기간</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p>* LG전자 전문점<br>&nbsp;&nbsp;&nbsp;<a href="#none" onclick="window.open('/kr/business/asset/images/common/estimateRenewal-popup.html', 'window','height=720px, width=660px'); return false;">[전체 보기]</a></p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p>제품 및 견적 상담</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p>사업체명, 대표자명, 사업자등록번호, 사업장주소, 대표전화번호, 담당자명, 이메일, 휴대폰번호, 업종, 제품설치지역</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p>개인정보 이용 목적 달성 시(서비스 이용 시)까지. 단, 관계법령에서 일정 기간 동안 정보보관 의무를 부과하는 경우 해당 기간 동안 보유</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+
+                                                    </div>
+                                                </div>
+
+                                                  <p>※ LG전자 전문점은 LG전자의 제품을 판매하는 유통채널로써 자사와 직접 거래 게약을 맺고 LG전자 제품의 판매, 배송, 수리 업무를 대행하는 거래선임</p>
+                                               </li>
+                                            </ol>
+                                            <h5 class="bdt_none">2. 개인정보 처리 위탁</h5>
+                                            <p>LG전자 주식회사 (이하 ‘LG전자‘)는 이용자의 개인정보를 아래와 같이 제3자에게 제공하는 것에 관하여 안내하고 동의 여부를 확인하고자 합니다.</p>
+                                            <ol>
+                                               <li>
+                                                  (1) 수탁자 및 이용 목적
+                                                  <p>LG전자는 개인정보 취급 업무 중 서비스 제공에 필요한 필수적 업무를 아래와 같이 외부 전문업체에 위탁하여 운영하고 있으며, 해당업체는 서비스 이행을 목적으로만 사용됩니다.</p>
+                                                    <div class="table-wrap">
+                                                        <div class="tb_row tb-row-bl">
+
+                                                            <table>
+                                                                <caption>개인정보 처리 항목 및 수집 방법의 수집 항목, 목적</caption>
+                                                                <thead>
+                                                                   <tr>
+                                                                      <th scope="col">위탁업체 (수탁자)</th>
+                                                                      <th scope="col">위탁 업무 내용</th>
+                                                                   </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                   <tr>
+                                                                      <td>
+                                                                         <ul>
+                                                                            <li>LG CNS</li>
+                                                                            <li>골든플래닛</li>
+                                                                            <li>인텔리코드</li>
+                                                                         </ul>
+                                                                      </td>
+                                                                      <td>
+                                                                         <p>시스템 관리, 서비스 제공 및 운영관리</p>
+                                                                      </td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                      <td>
+                                                                         <ul>
+                                                                            <li>Salesforce.com(www.salesforce.com),<br>Oracle(www.oracle.com) 등</li>
+                                                                            <li>마케팅 자동화툴(MAT)</li>
+                                                                            <li>서비스 제공 업체</li>
+                                                                         </ul>
+                                                                      </td>
+                                                                      <td>
+                                                                         <ul>
+                                                                            <li>클라우드서버, 당사 전자 시스템 운영,</li>
+                                                                            <li>유지, 기타 관리 서비스(데이터 처리, 이해,</li>
+                                                                            <li>고객 서비스 데이터 유지 및 분석)</li>
+                                                                         </ul>
+                                                                      </td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                      <td>
+                                                                         <p>케이티엠하우스</p>
+                                                                      </td>
+                                                                      <td>
+                                                                         <p>모바일 상품권 발송</p>
+                                                                      </td>
+                                                                   </tr>
+                                                                </tbody>
+                                                             </table>
+
+                                                        </div>
+                                                    </div>
+
+                                                  <p>※ Salesforce.com, Oracle과 같은 마케팅 자동화툴(Marketing Automation Tool, 이하 ‘MAT’) 서비스 업체는 당사의 전자 시스템이나 클라우드 서버를 유지하고 당사에 기타 관리 서비스를 제공하는 서비스 제공업체, 에이전트 또는 독립 계약자를 의미함</p>
+                                               </li>
+                                            </ol>
+                                            <p>위 제3자 제공에 대해 거부할 수 있으며, 거부하는 경우 개인정보가 제3자에게 제공되지 않습니다. 다만, 거부 시 서비스 이용이 제한됩니다.</p>
+                                         </div>
+                                    </div>
+                                    <div class="btn-agree">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="agreePrivacyCheck2" name="agreePrivacyCheck2" data-required="true">
+                                            <label for="agreePrivacyCheck2">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- LG전자 마케팅 정보 수신 동의 -->
+                            <div class="sub-forms bdn">
+                                <div class="tit-head">
+                                    <h2 class="tit">* LG전자 마케팅 정보 수신 동의</strong>
+                                </div>
+                                <div class="tit-center">
+                                    <div class="txt-wrap">
+                                        <div class="policy_box">
+                                            <h4>LG전자 마케팅 정보 수신 동의 </h4>
+                                            <p>LG전자 주식회사 (이하 ‘LG전자‘)는 개인정보보호법 및 정보통신망이용촉진 및 정보보호등에 관한 법률 등 관계법령에 따라 광고성 정보를 전송하기 위해 이용자의 사전 수신 동의를 받고 있습니다. 본 내용은 LG전자 회원 서비스가 적용되는 개별서비스의 마케팅 수신동의를 포함하고 있으며, 마케팅 정보 수신 동의 시 개별서비스의 마케팅 수신에 일괄 동의한 것으로 처리됩니다.</p>
+                                            <ol>
+                                               <li>
+                                                  <strong class="c-c9">1. 전송방법</strong>
+                                                  <p>마케팅 정보 전송 방법은 LG전자의 각 개별서비스에서 정한 방식에 따라 전송됩니다.</p>
+                                               </li>
+                                               <li>
+                                                  <strong class="c-c9">2. 전송내용</strong>
+                                                  <p>발송되는 마케팅 정보는 수신자에게 LG전자 및 개별서비스에서 제공하는 혜택(포인트, 쿠폰 등) 정보, 각종 이벤트, 신규 상품 관련 소식 등 광고성 정보로 관련 법의 규정을 준수하여 발송됩니다. 단, 광고성 정보 이외에 의무적으로 안내 되어야 하는 정보성 내용은 수신동의 여부와 무관하게 제공됩니다.</p>
+                                               </li>
+                                               <li>
+                                                  <strong class="c-c9">3. 수집항목</strong>
+                                                  <p>- 이메일, 이름, 전화번호, 회사 주소  </p>
+                                               </li>
+                                               <li>
+                                                  <strong class="c-c9">4. 이용목적</strong>
+                                                  <p>소식지 서비스 제공, 신제품 및 이벤트 안내, 이벤트 경품/사은품 제공, 할인행사, 고객 맞춤 마케팅/판촉 등 관련 이메일 및 SMS 등 발송</p>
+                                               </li>
+                                               <li>
+                                                  <strong class="c-c9">5. 철회안내</strong>
+                                                  <p>수신동의 이후에라도 언제든지 동의를 철회할 수 있으며, 수신을 동의하지 않아도 회사가 제공하는 기본적인 서비스를 이용하실 수 있습니다. 다만 수신 거부할 경우 신규 서비스나 상품 관련 소식 등의 마케팅 정보를 제공받지 못할 수 있습니다.</p>
+                                               </li>
+                                               <li>
+                                                  <strong class="c-c9">6. 수신동의 변경 및 보유기간</strong>
+                                                  <p>- 보유기간 :마케팅 정보 수신 동의로부터 2년, 기간 초과 시 동의 절차 재 진행 (미동의 시 , 즉시 파기)</p>
+                                               </li>
+                                            </ol>
+                                            <p>LG전자 정보수정 페이지에서 개별서비스의 마케팅 수신동의를 변경(동의/철회)할 수 있으며, 동의일로부터 회원 탈퇴 혹은 마케팅 수신 동의 해제 시까지 광고성 정보 전달을 위하여 보유ㆍ이용 됩니다.  </p>
+                                         </div>
+                                    </div>
+                                    <div class="btn-agree">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="agreePrivacyCheck3" name="agreePrivacyCheck3" data-required="true">
+                                            <label for="agreePrivacyCheck3">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PC 버튼 영역-->
+                            <div class="sub-forms bdn">
+                                <div class="table-wrap">
+                                    <div class="btn-wrap pc-only">
+                                        <button type="button" class="btn gray inqueryBtn"><span>온라인 견적 문의 내역 조회</span></button>
+                                        <button type="button" class="btn estimateBtn"><span>온라인 견적 문의하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PC 버튼 영역 // -->
+                        </div>
+                        <!--  BTOCSITE-518 20210709 END -->
+
+
+                        <!-- BTOCSITE-518 추후 변동사항위해 코드 보관 -->
+                        <!-- <div class="sub-forms-wrap">
                             <div class="sub-forms bdn">
                                 <div class="inner bdb">
                                     <h1 class="tit pc-only">견적 문의를 위한 약관 동의</h1>
@@ -469,11 +783,8 @@
                                         <button type="button" class="btn estimateBtn"><span>온라인 견적 문의하기</span></button>
                                     </div>
                                 </div>
-                                
                             </div>
-    
-                        </div>
-
+                        </div> -->
                     </form>
                 </div>
             </div>
