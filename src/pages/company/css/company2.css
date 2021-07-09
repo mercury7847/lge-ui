@@ -48,8 +48,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; line-height:20px}
 .company .thumb + .accordion-wrap {margin-top:60px}
 
+.company .tit + .graph {margin-top:50px}
 .company .graph.ofn {padding-top:40px}
-.company .graph.ofn .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
+.company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
 
 .company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
@@ -229,7 +230,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 /* ul 형식 */
 ul.bull > li {position:relative; padding-left:9px; font-size:16px; text-align:left; line-height:1.56}
 ul.bull > li.emp {font-weight:500}
-ul.bull > li + li {margin-top:6px}
+ul.bull > li + li {margin-top:6px!important}
 ul.bull > li::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
 ul.bull > li.mt30 {margin-top:30px}
 ul.bull > li > strong {display:block; margin-bottom:20px}
@@ -374,7 +375,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
 .popup-wrap.popup-company .pop-conts .tb_row {margin-top:24px}
-.popup-wrap.popup-company .pop-conts .tb-row-bl table thead tr {border-bottom:1px solid #d8d8d8}
+.popup-wrap.popup-company .pop-conts .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
 .popup-wrap.popup-company .pop-conts .tb_row,
 .popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
 .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
@@ -429,33 +430,35 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.lgway {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b {padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:40px; padding-top:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li + li {margin-top:40px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit {margin:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text {margin:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:12px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text + .text {margin:0}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li + li {margin-top:40px}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {margin:0}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text {margin:0}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:12px}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text + .text {margin:0}
 
 /* 테이블 */
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
-.company .tb_row {margin-top:24px}
 .company .tb_row,
 .company .tb_row .tb-col {position:relative}
-.company .tb-row-bl .tbl_info,
+.company .tbl_tit {margin-bottom:20px; font-size:18px; font-weight:bold; line-height:1.56}
+.company .tit ~ .tbl_tit {margin-top:30px}
+.company .tbl_info.abs2 {position:absolute; right:0; top:-34px}
+.company .tb_row .tbl_info,
 .company .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
-.company .tb-row-bl .tbl_info.g,
+.company .tb_row .tbl_info.g,
 .company .tb-col .tbl_info.g {color:#666}
-.company .tb-row-bl .tbl_info.s,
+.company .tb_row .tbl_info.s,
 .company .tb-col .tbl_info.s {margin-bottom:12px}
 .company .tb_row .tbl_info.abs,
-.company .tbl_info.abs {position:absolute; right:0; top:-36px}
-.company .tb-row-bl .tbl_info.lt,
+.company .tbl_info.abs {position:absolute; right:0; top:-34px}
+.company .tb_row .tbl_info.lt,
 .company .tb-col .tbl_info.lt {text-align:left}
-.company .tb-row-bl .tbl_info.rt,
+.company .tb_row .tbl_info.rt,
 .company .tb-col .tbl_info.rt {text-align:right}
-.company .tb-row-bl .tbl_info.btm,
+.company .tb_row .tbl_info.btm,
 .company .tb-col .tbl_info.btm {margin-top:12px; margin-bottom:0}
-.company .tb-row-bl .tbl_info.btm ul,
+.company .tb_row .tbl_info.btm ul,
 .company .tb-col .tbl_info.btm ul {color:#666; line-height:22px}
 .company .tb_row .tbl_info.btm p,
 .company .tb-col .tbl_info.btm p {color:#000}
@@ -479,13 +482,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
 .company .tb_row .tbl_select,
 .company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
-.company .tb-row-bl table thead tr {border-bottom:1px solid #d8d8d8}
-.company .tb-row-bl table thead tr:first-child th {border-top:1px solid #666}
-.company .tb-row-bl table thead th {border-top:0}
-.company .tb-row-bl table tbody th {padding:24px; border-bottom:1px solid#ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
-.company .tb-row-bl table td.bold {font-weight:bold}
-.company .tb-row-bl table th.bo_l,
-.company .tb-row-bl table td.bo_l,
+.company .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
+.company .tb_row table thead tr:first-child th {border-top:1px solid #666}
+.company .tb_row table thead th {border-top:0}
+.company .tb_row table tbody th {padding:24px; border-bottom:1px solid#ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
+.company .tb_row table td.bold {font-weight:bold}
+.company .tb_row table th.bo_l,
+.company .tb_row table td.bo_l,
 .company .tb-col table th.bo_l,
 .company .tb-col table td.bo_l {border-left:1px solid #ddd!important}
 
@@ -560,23 +563,26 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
 
   .company .accordion-wrap.lgway {margin-top:15px}
-  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li + li {margin-top:18px}
-  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit {font-size:15px}
-  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .text {font-size:14px; line-height:22px}
-  .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
+  .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li + li {margin-top:18px}
+  .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {font-size:15px}
+  .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text {font-size:14px; line-height:22px}
+  .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
   .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:10px}
   
-  .company .tb_row {margin-top:0}
+  .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
+  .company .tbl_info.abs2 {top:-22px}
   .company .tb_row .tbl_info,
-  .company .tb-col .tbl_info,
+  .company .tb-col .tbl_info {margin-bottom:10px; font-size:12px; line-height:16px}
   .company .tb_row .tbl_info.abs,
-  .company .tb-col .tbl_info.abs {position:relative; top:0; margin-bottom:10px; font-size:12px; line-height:1.33}
-  .company .tb-row-bl .tbl_info.btm,
+  .company .tb-col .tbl_info.abs {position:relative; top:0}
+  .company .tb_row .tbl_info.btm,
   .company .tb-col .tbl_info.btm {font-size:12px}
-  .company .tb-row-bl .tbl_info.btm p,
+  .company .tb_row .tbl_info.btm p,
   .company .tb-col .tbl_info.btm p {margin-bottom:4px; line-height:1.45}
-  .company .tb-row-bl .tbl_info.btm ul,
+  .company .tb_row .tbl_info.btm ul,
   .company .tb-col .tbl_info.btm ul {line-height:1.33}
+  .company .tb_row table colgroup,
+  .company .tb-col table colgroup {display:none}
   .company .tb_row table thead th,
   .company .tb-col table thead th {font-size:13px; font-weight:normal}
   .company .tb_row table tbody th,
@@ -592,14 +598,16 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company .tb_row.keepAll table td,
   .company .tb-col.keepAll table td {word-break:keep-all}
   
-  .company .tb-row-bl .tbl_info.s,
+  .company .tb_row .tbl_info.s,
   .company .tb-col .tbl_info.s {margin-bottom:10px}
   .company .tb_row .tbl_info .exc,
   .company .tb-col .tbl_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
   .company .tb_row .tbl_info .exc::before,
   .company .tb-col .tbl_info .exc::before {content:''; display:block; position:absolute; left:0; top:2px; width:16px; height:16px; background:url(/kr/images/company/icon/ico-c-exclama_mo.svg) no-repeat center / contain}
   
+  .company .tit + .graph {margin-top:12px}
   .company .graph.ofn {padding-top:8px}
+  .company .graph .txt_rt {font-size:12px; line-height:16px}
   .company .linkArea {padding:24px 0}
   .company .linkArea .tit {font-size:16px}
   .company .linkArea .desc {margin-top:6px}
@@ -615,7 +623,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
   
   ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
-  ul.bull > li + li {margin-top:8px}
+  ul.bull > li + li {margin-top:8px!important}
   ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
   ul.bull > li > strong {margin-bottom:10px}
   ul.bull > li .tb_row,
@@ -687,7 +695,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
   .popup-wrap.popup-company .thumb .desc {margin-top:8px; font-size:14px; line-height:1.57}
   .popup-wrap.popup-company .box {padding:16px 20px; font-size:14px; line-height:1.57}
   .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:8px}
-  .popup-wrap.popup-company .pop-conts .tb-row-bl .tbl_info,
+  .popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
   .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:10px}
 
   .artTxt p {font-size:14px; line-height:1.57}
