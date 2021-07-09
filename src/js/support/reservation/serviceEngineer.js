@@ -718,7 +718,7 @@
 
                 // 20210610 세척서비스 증상 선택시 팝업 띄움
                 var topicName = $(this).data('topicName');
-                var alertMsg = '가전 세척 서비스는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';
+                var alertMsg = '가전 <span class="point">세척 서비스</span>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';
 
                 if( topicName === "세척서비스" ){
                     $(this).prop('checked', false);
