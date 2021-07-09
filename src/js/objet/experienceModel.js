@@ -4951,10 +4951,9 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        //210707 소재명 제거
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                                        //210707 소재명 제거
                                         colorHtml += '  </button>';
                                         colorHtml += '</li>';
                                         colorSelBodyHtml += colorHtml;
@@ -5021,10 +5020,9 @@
                         let colorHtml = '<li>';
                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        //210707 소재명 제거
+                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                        //210707 소재명 제거
                         colorHtml += '  </button>';
                         colorHtml += '</li>';
                         colorSelBodyHtml += colorHtml;
@@ -5090,10 +5088,9 @@
                                 let colorHtml = '<li>';
                                 colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                 colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                //210707 소재명 제거
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                                 // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                 colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                                //210707 소재명 제거
                                 colorHtml += '  </button>';
                                 colorHtml += '</li>';
                                 colorSelBodyHtml += colorHtml;
@@ -5523,7 +5520,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         if (_doorInfoMaterial[0] == "F") {
@@ -5723,7 +5720,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml2 += '<li>';
@@ -5879,7 +5876,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //210707 레드우드,클레이브라운 컬러코드 추가
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml += '<li>';
