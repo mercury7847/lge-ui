@@ -6077,8 +6077,8 @@
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='0']").css("display", "inline-block");
                 setTimeout(function() {
                     slideWrapAutoSize(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont");
-                    
-                    $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
+                    // BTOCSITE-2944 오브제컬렉션 체험하기 탭이동 수정 2021-07-09
+                    // $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").siblings().removeClass("on");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").addClass("on");
                     let subIdx = $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper .swiper-slide.on").index();
