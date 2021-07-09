@@ -10,7 +10,7 @@
 </div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">재무하이라이트</h2>
+		<h2 class="title">투자자정보</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -96,8 +96,8 @@
 	<div class="com-tabs">
 		<div class="tabs-wrap bar-type ui_tab left">
 			<ul class="tabs">
-				<li><a href="#tab1">재무하이라이트</a></li>
-				<li class="on"><a href="#tab2">재무상태표<em class="blind">선택됨</em></a></li>
+				<li class="on"><a href="#tab1">재무하이라이트<em class="blind">선택됨</em></a></li>
+				<li><a href="#tab2">재무상태표</a></li>
 				<li><a href="#tab3">손익계산서</a></li>
 				<li><a href="#tab4">현금흐름표</a></li>
 			</ul>
@@ -328,6 +328,7 @@
 				</div>
 				<p class="tit">연도별 재무상태표</p>
 				<div class="tb_row tb-row-col">
+					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>연도별 재무상태표</caption>
 						<thead>
@@ -387,86 +388,166 @@
 			</div>
 
 			<div class="com-text">
-				<p class="tit">연도별 재무상태표</p>
+				<p class="tit">분기별 재무상태표</p>
 				<p class="tit tbl_tit">2020년</p>
 				<div class="tb_row tb-row-col">
 					<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>2020년 재무상태표</caption>
-						<colgroup>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-						</colgroup>
 						<thead>
 							<tr>
-								<th scope="col"></th>
-								<th scope="col">`20.1Q</th>
-								<th scope="col">`20.2Q</th>
-								<th scope="col">`20.3Q</th>
-								<th scope="col">`20.4Q</th>
-
+								<th scope="col">구분</th>
+								<th scope="col">2020년 4분기</th>
+								<th scope="col">2020년 3분기</th>
+								<th scope="col">2020년 2분기</th>
+								<th scope="col">2020년 1분기</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row">자산</th>
-								<td><span>455,702</span></td>
-								<td><span>447,702</span></td>
-								<td><span>493,960</span></td>
-								<td><span>482,042</span></td>
+								<th scope="row"><strong class="m">자산</strong></th>
+								<td><strong class="m">482,042</strong></td>
+								<td><strong class="m">493,960</strong></td>
+								<td><strong class="m">447,702</strong></td>
+								<td><strong class="m">455,702</strong></td>
 
 							</tr>
 							<tr>
-								<th scope="row"><span>- 유동자산</span></th>
-								<td>204,982</td>
-								<td>199,050</td>
-								<td>244,921</td>
+								<th scope="row">유동자산</th>
 								<td>232,394</td>
+								<td>244,921</td>
+								<td>199,050</td>
+								<td>204,982</td>
 
 							</tr>
 							<tr>
-								<th scope="row"><span>- 비유동자산</span></th>
-								<td>250,720</td>
-								<td>248,652</td>
-								<td>249,039</td>
+								<th scope="row">비유동자산</th>
 								<td>249,648</td>
+								<td>249,039</td>
+								<td>248,652</td>
+								<td>250,720</td>
 
 							</tr>
 							<tr>
-								<th scope="row">부채</th>
-								<td><span>281,795</span></td>
-								<td><span>274,114</span></td>
-								<td><span>316,240</span></td>
-								<td><span>306,621</span></td>
+								<th scope="row"><strong class="m">부채</strong></th>
+								<td><strong class="m">306,621</strong></td>
+								<td><strong class="m">316,240</strong></td>
+								<td><strong class="m">274,114</strong></td>
+								<td><strong class="m">281,795</strong></td>
 							</tr>
 							<tr>
-								<th scope="row"><span>- 유동부채</span></th>
-								<td>171,509</td>
-								<td>163,609</td>
-								<td>203,256</td>
+								<th scope="row">유동부채</th>
 								<td>202,075</td>
+								<td>203,256</td>
+								<td>163,609</td>
+								<td>171,509</td>
 							</tr>
 							<tr>
-								<th scope="row"><span>- 비유동부채</span></th>
-								<td>110,286</td>
-								<td>110,505</td>
-								<td>112,984</td>
+								<th scope="row">비유동부채</th>
 								<td>104,546</td>
-
+								<td>112,984</td>
+								<td>110,505</td>
+								<td>110,286</td>
 							</tr>
 							<tr>
 								<th scope="row">자본</th>
-								<td><span>173,907</span></td>
-								<td><span>173,588</span></td>
-								<td><span>177,720</span></td>
-								<td><span>175,421</span></td>
+								<td><strong class="m">175,421</strong></td>
+								<td><strong class="m">177,720</strong></td>
+								<td><strong class="m">173,588</strong></td>
+								<td><strong class="m">173,907</strong></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+
+				<div class="accordion-wrap ui_accordion cont_view_more" data-single-open="true"><!-- cont_view_more 클래스 추가함 -->
+					<ul>
+						<li class="lists">
+							<div class="head">
+								<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+									<span class="title open">지난 자료 보기</span>
+									<span class="title close" style="display:none">지난 자료 닫기</span>
+									<span class="blind ui_accord_text">내용 더 보기</span>
+								</a>
+							</div>
+							<div class="accord-cont ui_accord_content" style="display:none;">
+								<div class="txtArea">
+									<p class="tit tbl_tit">2020년</p>
+									<div class="tb_row tb-row-col">
+										<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
+										<table>
+											<caption>2020년 재무상태표</caption>
+											<thead>
+												<tr>
+													<th scope="col">구분</th>
+													<th scope="col">2020년 4분기</th>
+													<th scope="col">2020년 3분기</th>
+													<th scope="col">2020년 2분기</th>
+													<th scope="col">2020년 1분기</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row"><strong class="m">자산</strong></th>
+													<td><strong class="m">482,042</strong></td>
+													<td><strong class="m">493,960</strong></td>
+													<td><strong class="m">447,702</strong></td>
+													<td><strong class="m">455,702</strong></td>
+
+												</tr>
+												<tr>
+													<th scope="row">유동자산</th>
+													<td>232,394</td>
+													<td>244,921</td>
+													<td>199,050</td>
+													<td>204,982</td>
+
+												</tr>
+												<tr>
+													<th scope="row">비유동자산</th>
+													<td>249,648</td>
+													<td>249,039</td>
+													<td>248,652</td>
+													<td>250,720</td>
+
+												</tr>
+												<tr>
+													<th scope="row"><strong class="m">부채</strong></th>
+													<td><strong class="m">306,621</strong></td>
+													<td><strong class="m">316,240</strong></td>
+													<td><strong class="m">274,114</strong></td>
+													<td><strong class="m">281,795</strong></td>
+												</tr>
+												<tr>
+													<th scope="row">유동부채</th>
+													<td>202,075</td>
+													<td>203,256</td>
+													<td>163,609</td>
+													<td>171,509</td>
+												</tr>
+												<tr>
+													<th scope="row">비유동부채</th>
+													<td>104,546</td>
+													<td>112,984</td>
+													<td>110,505</td>
+													<td>110,286</td>
+												</tr>
+												<tr>
+													<th scope="row">자본</th>
+													<td><strong class="m">175,421</strong></td>
+													<td><strong class="m">177,720</strong></td>
+													<td><strong class="m">173,588</strong></td>
+													<td><strong class="m">173,907</strong></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 
