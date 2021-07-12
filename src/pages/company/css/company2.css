@@ -513,6 +513,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
 .company .tb_row.middle table th,
 .company .tb-col.middle table th {vertical-align:middle}
+.company .tb_row table .txt_l,
+.company .tb-col table .txt_l {text-align:left}
+.company .tb_row table .txt_c,
+.company .tb-col table .txt_c {text-align:center}
 .company .tb_row table td strong,
 .company .tb-col table td strong {font-weight:bold}
 .company .tb_row table td .point,
@@ -523,9 +527,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb-col .tbl_info .exc {position:relative; display:block; padding-left:27px; font-size:16px}
 .company .tb_row .tbl_info .exc::before,
 .company .tb-col .tbl_info .exc::before {content:''; display:block; position:absolute; left:0; top:0; width:24px; height:24px; background:url(/kr/images/company/icon/ico-c-exclama_pc.svg) no-repeat center / contain}
+.company .tb_row table .txt_l,
+.company .tb-col table .txt_l {text-align:left}
 
+.company .tbl_select.m-type {max-width:444px; margin:0 auto 30px}
 .company .tb_row .tbl_select,
 .company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
+.company .tabs-contents + .tabs-contents {margin-top:30px}
 .company .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
 .company .tb_row table thead tr:first-child th {border-top:1px solid #666}
 .company .tb_row table thead th {border-top:0}
