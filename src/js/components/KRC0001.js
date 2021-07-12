@@ -7,7 +7,7 @@
 		'<div class="list-contents-wrap ui_carousel_slider">'+
 			'<ul class="items unit-list ui_carousel_track">'+
 				'{{#each item in productList}}'+
-				'<li class="js-model ui_carousel_slide" data-id="{{item.modelId}}" data-sku="{{item.sku}}">' +
+				'<li class="js-model ui_carousel_slide" data-id="{{item.modelId}}" data-sku="{{item.sku}}" data-test="sssss">' +
 					'<div class="item">' +
 						'<div class="product-image">' +
 							'<a href="{{item.modelUrlPath}}"><img data-lazy="{{item.mediumImageAddr}}" alt="{{item.imageAltText}}" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
