@@ -1731,4 +1731,10 @@ html.modal-open {
         display:none;
     }
 }
+
+.mo-only-zero-top {
+    @include mobile {
+        padding-top: 0px;
+    }
+}
 /* //BTOCSITE-2150 add */
