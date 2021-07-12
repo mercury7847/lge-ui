@@ -20,7 +20,7 @@
             '<div class="btn-link-area">'+
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-                '{{/if}}'+
+                '{{/if}}'+                
                 '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
             '{{#if isDetailViewBtn}}'+
@@ -101,6 +101,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -2306,7 +2307,27 @@
                 $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
-                
+
+                // BTOCSITE-1775
+                var isAllCancelDisable = true;  // 모두 취소 불가능
+                productList.forEach(function( data ){                    
+                    if (data.itemCancelAbleYn == "Y"){
+                        isAllCancelDisable = false;
+                    }
+                });
+
+                if (isAllCancelDisable == true){
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
+                    $('#popup-cancel').find('#cancel_desc').hide();
+                    $('#popup-cancel').find('.pop-footer').hide();
+                    $('#popup-cancel').find('.not-cancel-footer').show();
+                } else {
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);                    
+                    $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('.pop-footer').show();
+                    $('#popup-cancel').find('.not-cancel-footer').hide();
+                }
+                // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
