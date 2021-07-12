@@ -565,8 +565,9 @@
                         /* BTOCSITE-2150 add */
                         if (!self.isMobileSize) {
                             self.$btnMore.show();
+                        } else {
+                            self.$btnMore.hide();
                         }
-                        self.$btnMore.hide();
                         /* //BTOCSITE-2150 add */
                     } else {
                         //더이상 없다                        
