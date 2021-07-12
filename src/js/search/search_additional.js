@@ -66,7 +66,9 @@
             '{{/if}}' +
         '</div>' +
     '</div></li>';
-    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}">' +
+
+    //BTOCSITE-1101 GA data-ec-product 삽입
+    var additionalItemTemplate = '<li><a href="{{url}}" class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
             '<div class="info-text">' +
@@ -197,6 +199,20 @@
                     "discounted_price":(item.price && item.price > 0) ? item.price : "",
                     "brand":"LG",
                     "category":item.superCategoryName + "/" + item.categoryName
+                }
+                return JSON.stringify(param);
+            },
+            makeAdditionalGAData: function(item) {
+                var param = {
+                    "model_name":item.title,
+                    "model_id":item.model_id,
+                    "model_sku":item.sku,
+                    "model_gubun":item.model_gubun,
+                    "rental_price":(item.rental_price && item.rental_price > 0) ? item.carePrice : "",
+                    "price":(item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
+                    "discounted_price":(item.price && item.price > 0) ? item.price : "",
+                    "brand":"LG",
+                    "category":item.category
                 }
                 return JSON.stringify(param);
             },
@@ -745,6 +761,7 @@
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
+                            item.ga = self.makeAdditionalGAData(item) //BTOCSITE-1101 GA data-ec-product 삽입
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
