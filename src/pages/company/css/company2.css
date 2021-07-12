@@ -12,6 +12,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .mt30 {margin-top:30px!important}
 .company .mt60 {margin-top:60px!important}
 .company .mt0 {margin-top:0!important}
+.company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
@@ -575,6 +576,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .only_mo {display:block!important}
     .company .mgt {margin-top:12px!important}
     .company .mgtL {margin-top:20px!important}
+    .company .mb32 {margin-bottom:0!important}
     .company .com-section {margin:0 16px; padding:30px 0 60px}
     .company .com-text.noLine_m::before {display:none}
     .company .com-text.noLine_p::before {display:block}
@@ -651,6 +653,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .tb-col .tbl_info.btm ul {line-height:1.33}
     .company .tb_row table colgroup,
     .company .tb-col table colgroup {display:none}
+    .company .tb_row.colgrp table colgroup,
+    .company .tb-col.colgrp table colgroup {display:table-column-group}
     .company .tb_row table thead th,
     .company .tb-col table thead th {font-size:13px; font-weight:normal}
     .company .tb_row table tbody th,
