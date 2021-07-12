@@ -641,6 +641,14 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .tb-col.middle table th {padding:16px 0; text-align:center}
     .company .tb_row.middle table td,
     .company .tb-col.middle table td {padding:16px 0}
+    .company .tb_row.pd table th,
+    .company .tb-col.pd table th {padding:16px 12px!important}
+    .company .tb_row.pd table td,
+    .company .tb-col.pd table td {padding:16px 12px!important}
+    .company .tb_row table th.pd0,
+    .company .tb-col table th.pd0,
+    .company .tb_row table td.pd0,
+    .company .tb-col table td.pd0 {padding:16px 0!important}
     .company .tb_row.keepAll table th,
     .company .tb-col.keepAll table th {word-break:keep-all}
     .company .tb_row.keepAll table td,
