@@ -516,7 +516,7 @@
 
                 /* BTOCSITE-2150 add */
 
-                $(window).on('breakpointchange', function(e, data){
+                $(window).on('breakpointchange.mobileSizeCheck', function(e, data){
                     if (data.isMobile){
                         self.isMobileSize = true;
                     } else {
