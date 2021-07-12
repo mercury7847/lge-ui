@@ -1718,3 +1718,17 @@ html.modal-open {
         margin-top:-6px;
     }
 }
+
+/* BTOCSITE-2150 add */
+.pc-only {
+    @include mobile {
+        display:none;
+    }
+}
+
+.mo-only {
+    @include pc {
+        display:none;
+    }
+}
+/* //BTOCSITE-2150 add */

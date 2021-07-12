@@ -160,7 +160,7 @@
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
                 self.isLoading = false; // BTOCSITE-2150 add
-                self.isMobileSize = false;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
+                self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
                 self.bindEvents();
@@ -519,8 +519,10 @@
                 $(window).on('breakpointchange.mobileSizeCheck', function(e, data){
                     if (data.isMobile){
                         self.isMobileSize = true;
+                        //$(window).scrollTop(0); // 사전 로딩 오작동 방지용
                     } else {
                         self.isMobileSize = false;
+                        self.$btnMore.show();
                     }
                 });
                 
@@ -555,8 +557,12 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        //self.$btnMore.show();
-                        self.$btnMore.hide();   // BTOCSITE-2150 add
+                        /* BTOCSITE-2150 add */
+                        if (!self.isMobileSize) {
+                            self.$btnMore.show();
+                        }
+                        self.$btnMore.hide();
+                        /* //BTOCSITE-2150 add */
                     } else {
                         //더이상 없다                        
                         self.$btnMore.hide();
