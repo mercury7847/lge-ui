@@ -115,7 +115,6 @@
 
 
 
-
 							/* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 							function getEcCategoryName(item){
 								if( item.subCategoryName == "" || item.subCategoryName == undefined) {
@@ -131,12 +130,12 @@
 								"model_sku": item.modelName, 
 								"model_gubun": item.modelGubunName,
 								"price": vcui.number.addComma(item.obsOriginalPrice), 
-								"discounted_price": vcui.number.addComma(item.obssellingprice), 
+								// "discounted_price": vcui.number.addComma(item.obssellingprice), 
 								"brand": "LG",
 								"category": getEcCategoryName(item),
 								"ct_id": item.subCategoryId
 							}
-							// console.log(item.obssellingprice);
+							//console.log(item.obsOriginalPrice);
 							item.ecProduct = JSON.stringify(ecProduct);
 							/* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 						}
@@ -146,8 +145,6 @@
 						self.setCarousel($("#"+listID).find('.ui_carousel_slider'));
 						if($("#"+listID).index()) $("#"+listID).hide();
 					});
-
-					console.log("ssss")
 				}
 			});
 
