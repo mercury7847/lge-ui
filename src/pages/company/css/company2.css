@@ -462,11 +462,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.lgway {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b {padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:40px; padding-top:0}
-.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li + li {margin-top:40px}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:40px}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li > ul {padding-left:18px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {margin:0}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text {margin:0}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:12px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text + .text {margin:0}
+.company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .pl {padding-left:8px; text-indent:-8px}
 
 /* 자료 더보기 영역 */
 .company .cont_view_more {padding:60px 0}
@@ -627,7 +629,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
 
     .company .accordion-wrap.lgway {margin-top:15px}
-    .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li + li {margin-top:18px}
+    .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:18px}
+    .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li > ul + .text {margin-top:18px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {font-size:15px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text {font-size:14px; line-height:22px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
