@@ -289,6 +289,21 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .dwn_all .titArea .btn.dwn_all {padding:5px 12px; font-size:14px; line-height:20px}
 .company .dwn_all ul.dwn_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:-12px}
 
+.company .ir_pt .tit {font-size:18px; font-weight:bold; line-height:1.56}
+.company .ir_pt ul.ir_ptList {margin-top:20px}
+.company .ir_pt ul.ir_ptList > li {display:flex; justify-content:space-between; align-items:center; width:100%; padding:30px 47px 30px 40px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
+.company .ir_pt ul.ir_ptList > li + li {margin-top:18px}
+.company .ir_pt ul.ir_ptList > li .desc {display:flex; font-size:16px; line-height:24px}
+.company .ir_pt ul.ir_ptList > li .desc strong {display:block; font-weight:bold}
+.company .ir_pt ul.ir_ptList > li .desc span {position:relative; display:block; margin-left:30px; padding-left:31px}
+.company .ir_pt ul.ir_ptList > li .desc span::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
+.company .ir_pt ul.ir_ptList > li ul.btn_list {display:flex}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li {display:flex}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li + li {position:relative; margin-left:30px; padding-left:31px}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li + li::before{content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li .btn {min-width:81px; padding:5px 11px; font-size:14px; line-height:20px}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li .btn + .btn {margin-left:10px}
+
 .company ul.card_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
 .company ul.card_list > li {border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
 .company ul.card_list > li .photo {width:100%; height:auto; padding-bottom:87%}
@@ -541,6 +556,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.rec_type > li .type_thumb {width:22vw; height:22vw}
     .company ul.caring > li + li > .step::before{left:calc(-3.5vw - 16px)}
     .company ul.caring > li .step{margin:0 3.5vw}
+
+    .company .ir_pt ul.ir_ptList > li {flex-direction:column}
+    .company .ir_pt ul.ir_ptList > li .btn_list {padding-top:20px}
 }
 
 /* 모바일 */
@@ -688,6 +706,17 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:4px}
     .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px; border-radius:4px; font-size:16px}
     .company ul.dwn_list.sales > li img {width:calc(100% + 32px); margin:-16px 0 15px -16px}
+
+    .company .ir_pt ul.ir_ptList > li {flex-direction:column; padding:19px 20px 20px}
+    .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
+    .company .ir_pt ul.ir_ptList > li .desc {flex-direction:column; padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
+    .company .ir_pt ul.ir_ptList > li .desc span {margin:8px 0 0; padding:0}
+    .company .ir_pt ul.ir_ptList > li .desc span::before {display:none}
+    .company .ir_pt ul.ir_ptList > li .btn_list {flex-direction:column; padding:20px 8px 0; border-top:1px solid #ddd}
+    .company .ir_pt ul.ir_ptList > li .btn_list li + li {margin:15px 0 0!important; padding:0!important}
+    .company .ir_pt ul.ir_ptList > li .btn_list li + li::before {display:none!important}
+    .company .ir_pt ul.ir_ptList > li .btn_list li .btn {height:34px; font-size:13px}
+    .company .ir_pt ul.ir_ptList > li .btn_list li .btn + .btn {min-width:131px}
     
     .company ul.card_list {margin-top:24px}
     .company ul.card_list.L > li,
