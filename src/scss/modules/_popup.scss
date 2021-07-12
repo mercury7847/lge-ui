@@ -51,6 +51,9 @@
                 display: block;
                 margin-top: 12px;
             }
+            .point {
+                color: $color-primary;
+            }
         }
     }
     .laypop {
@@ -135,7 +138,7 @@
     &.full {
         max-width:912px;
         @include mobile {
-            max-width:100%;
+            max-width:100%;            
         }
     }
     &.full-sm {
