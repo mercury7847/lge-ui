@@ -3,12 +3,7 @@
 @import "../components-app";
 
 
-.KRP0020 {
-    /* BTOCSITE-2150 add */
-    @include mobile {
-        display:none;
-    }
-    /* //BTOCSITE-2150 add */
+.KRP0020 {    
     .component-inner { 
         .evt-bnr {
             @include clearfix;
