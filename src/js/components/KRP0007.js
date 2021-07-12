@@ -160,6 +160,7 @@
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
                 self.isLoading = false; // BTOCSITE-2150 add
+                self.isMobileSize = false;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
                 self.bindEvents();
@@ -514,8 +515,19 @@
                 }
 
                 /* BTOCSITE-2150 add */
+
+                $(window).on('breakpointchange', function(e, data){
+                    if (data.isMobile){
+                        self.isMobileSize = true;
+                    } else {
+                        self.isMobileSize = false;
+                    }
+                });
+                
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
+                    if (!self.isMobileSize) return;
+                    
                     var productContainer = self.$productList;
                     if ((productContainer.offset().top + productContainer.height()) / 1.5 <= $(window).scrollTop() + $(window).height()){
 
