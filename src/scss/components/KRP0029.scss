@@ -3,12 +3,6 @@
 @import "../components-app";
 
 .KRP0029 {
-	/* BTOCSITE-2150 add */
-	@include mobile {
-		display:none;
-	}
-	/* //BTOCSITE-2150 add */
-	
 	.component-inner {
 		@include mobile {
 			padding:0;

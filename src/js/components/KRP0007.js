@@ -160,6 +160,7 @@
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
                 self.isLoading = false; // BTOCSITE-2150 add
+                self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
                 self.bindEvents();
@@ -514,23 +515,41 @@
                 }
 
                 /* BTOCSITE-2150 add */
+
+                $(window).on('breakpointchange.mobileSizeCheck', function(e, data){
+                    if (data.isMobile){
+                        self.isMobileSize = true;
+                        //$(window).scrollTop(0); // 사전 로딩 오작동 방지용
+                    } else {
+                        self.isMobileSize = false;
+
+                        let page = Number(lgkorUI.getHiddenInputData('page'));
+                        let totalCount = Number(lgkorUI.getHiddenInputData('totalCount'));
+                        if (page < totalCount) {
+                            self.$btnMore.show();
+                        }
+                    }
+                });
+                
                 $(window).on('scroll.more', function(e){
                     //console.log('window.scrollTop', $(window).scrollTop());
+                    if (!self.isMobileSize) return;
+                    
                     var productContainer = self.$productList;
                     if ((productContainer.offset().top + productContainer.height()) / 1.5 <= $(window).scrollTop() + $(window).height()){
 
-                        console.log('scroll more');
+                        //console.log('scroll more');
                         
                         var page = Number(lgkorUI.getHiddenInputData('page'));
                         var totalCount = Number(lgkorUI.getHiddenInputData('totalCount'));
 
-                        console.log('page' , page);
-                        console.log('totalCount' , totalCount);
+                        //console.log('page' , page);
+                        //console.log('totalCount' , totalCount);
 
                         if (self.isLoading == false && page < totalCount){
                             self.$btnMore.trigger('click');
 
-                            console.log('more click');
+                            //console.log('more click');
                         }
                     }
                 });
@@ -543,8 +562,13 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        //self.$btnMore.show();
-                        self.$btnMore.hide();   // BTOCSITE-2150 add
+                        /* BTOCSITE-2150 add */
+                        if (!self.isMobileSize) {
+                            self.$btnMore.show();
+                        } else {
+                            self.$btnMore.hide();
+                        }
+                        /* //BTOCSITE-2150 add */
                     } else {
                         //더이상 없다                        
                         self.$btnMore.hide();
@@ -877,7 +901,7 @@
                     }
                     return curValue;
                 }
-
+                /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 var ecProduct = {
                     "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
                     "model_id": item.modelId,
@@ -886,9 +910,14 @@
                     "price": vcui.number.addComma(item.obsOriginalPrice), 
                     "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
                     "brand": "LG",
-                    "category": getEcCategoryName(item) 
+                    "category": getEcCategoryName(item),
+                    "ct_id": item.subCategoryId
                 }
+                /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 item.ecProduct = JSON.stringify(ecProduct);
+                //console.log("-------------------------------");
+                //console.log(item.subCategoryId);
+
                 // item.isShow = true;
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
