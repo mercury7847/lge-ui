@@ -352,7 +352,7 @@
             max-height:calc(100% - 122px);
             //max-height:none;
         }
-
+        /* BTOCSITE-1775 add */
         .not-cancel-footer {                        
             h2 {
                 font-size: 24px;
@@ -387,6 +387,7 @@
                 }
             }
         }
+        /* //BTOCSITE-1775 add */
 
         .tabs-wrap {
             &:first-child {
