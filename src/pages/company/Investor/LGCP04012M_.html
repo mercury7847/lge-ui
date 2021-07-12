@@ -84,10 +84,10 @@
 	<div class="com-tabs">
 		<div class="tabs-wrap btn-type left">
 			<ul class="tabs">
-				<li><a href="/company/investor/highlight">재무하이라이트</a></li>
-				<li><a href="/company/investor/auditReport">감사/검토보고서</a></li>
-				<li><a href="/company/investor/businessReport">사업보고서</a></li>
-				<li class="on"><a href="/company/investor/salesReport">영업보고서<em class="blind">선택됨</em></a></li>
+				<li><a href="">재무하이라이트</a></li>
+				<li><a href="">감사/검토보고서</a></li>
+				<li><a href="">사업보고서</a></li>
+				<li class="on"><a href="">영업보고서<em class="blind">선택됨</em></a></li>
 				<li><a href="">신용등급</a></li>
 			</ul>
 		</div>
@@ -113,36 +113,41 @@
 			</li>
 		</ul>
 
-		<div class="cont_view_more">
-			<div class="btnArea">
-				<a href="#" class="btn border">
-					<span class="open">지난 자료 보기</span>
-					<!-- <span class="close">지난 자료 닫기</span> -->
-				</a>
-			</div>
-			<div class="content">
-				
-				<div class="section">
-					<ul class="dwn_list sales">
-						<li>
-							<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
-							<span>2017년 영업보고서</span>
-							<button type="button" class="btn border dwn"><span>다운로드</span></button>
-						</li>
-						<li>
-							<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
-							<span>2016년 영업보고서</span>
-							<button type="button" class="btn border dwn"><span>다운로드</span></button>
-						</li>
-						<li>
-							<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
-							<span>2015년 영업보고서</span>
-							<button type="button" class="btn border dwn"><span>다운로드</span></button>
-						</li>
-					</ul>
-				</div>
+		<div class="accordion-wrap ui_accordion cont_view_more" data-single-open="true"><!-- cont_view_more 클래스 추가함 -->
+			<ul>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title open">지난 자료 보기</span>
+							<span class="title close" style="display:none">지난 자료 닫기</span>
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						
+						<div class="section">
+							<ul class="dwn_list sales">
+								<li>
+									<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
+									<span>2017년 영업보고서</span>
+									<button type="button" class="btn border dwn"><span>다운로드</span></button>
+								</li>
+								<li>
+									<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
+									<span>2016년 영업보고서</span>
+									<button type="button" class="btn border dwn"><span>다운로드</span></button>
+								</li>
+								<li>
+									<img src="/kr/images/company/investor/img-investor-salesReport_thumbnail.png" alt="영업보고서 썸네일 이미지">
+									<span>2015년 영업보고서</span>
+									<button type="button" class="btn border dwn"><span>다운로드</span></button>
+								</li>
+							</ul>
+						</div>
 
-			</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 

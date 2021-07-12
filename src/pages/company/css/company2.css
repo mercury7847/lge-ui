@@ -452,19 +452,16 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:12px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text + .text {margin:0}
 
-/* 자료 더보기 아코디언 */
-.company .accordion-wrap.cont_view_more {padding:60px 0}
-.company .accordion-wrap.cont_view_more > ul > .lists {border:0; border-radius:0; box-shadow:none}
-.company .accordion-wrap.cont_view_more > ul > .lists .head {text-align:center}
-.company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px}
-.company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
-.company .accordion-wrap.cont_view_more > ul > .lists.on .head .accord-btn::after {transform:rotate(0); background:url(/lg5-common/images/icons/btn-minus-16.svg) no-repeat center / contain}
-.company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn .title {font-size:14px; line-height:20px}
-.company .accordion-wrap.cont_view_more > ul > .lists.on .head .accord-btn .title.open {display:none}
-.company .accordion-wrap.cont_view_more > ul > .lists.on .head .accord-btn .title.close {display:block!important}
-.company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn .title.close {font-weight:normal; opacity:1; text-shadow:none}
-.company .accordion-wrap.cont_view_more > ul > .lists .accord-cont {padding:80px 0 0}
-.company .accordion-wrap.cont_view_more > ul > .lists .accord-cont .section + .section {margin-top:30px}
+/* 자료 더보기 영역 */
+.company .cont_view_more {padding:60px 0}
+.company .cont_view_more .btnArea {text-align:center}
+.company .cont_view_more .btnArea .btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px; font-size:14px; line-height:20px}
+.company .cont_view_more .btnArea .btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
+.company .cont_view_more .btnArea .btn:hover::after {background:url(/kr/images/company/icon/btn-plus-16-white.svg) no-repeat center / contain}
+.company .cont_view_more .btnArea .btn.on::after {background:url(/lg5-common/images/icons/btn-minus-16.svg) no-repeat center / contain}
+.company .cont_view_more .btnArea .btn.on:hover::after {background:url(/kr/images/company/icon/btn-minus-16-white.svg) no-repeat center / contain}
+.company .cont_view_more .content {padding:80px 0 0}
+.company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
 .company .com-text.tbl {padding-bottom:0}
@@ -608,11 +605,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
     .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:10px}
 
-    .company .accordion-wrap.cont_view_more {margin-top:40px; padding:0}
-    .company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn {padding:0 19px 0 39px}
-    .company .accordion-wrap.cont_view_more > ul > .lists .head .accord-btn .title {font-size:13px; line-height:41px}
-    .company .accordion-wrap.cont_view_more > ul > .lists.on .head .accord-btn::after {margin-top:0}
-    .company .accordion-wrap.cont_view_more > ul > .lists .accord-cont {padding:50px 0 0}
+    .company .cont_view_more {margin-top:40px; padding:0}
+    .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
+    .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
+    .company .cont_view_more .content {padding:50px 0 0}
     
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tit + .tbl_tit {margin-top:12px}
