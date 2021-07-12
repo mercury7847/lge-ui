@@ -859,7 +859,7 @@
                     }
                     return curValue;
                 }
-
+                /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 var ecProduct = {
                     "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
                     "model_id": item.modelId,
@@ -868,9 +868,14 @@
                     "price": vcui.number.addComma(item.obsOriginalPrice), 
                     "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
                     "brand": "LG",
-                    "category": getEcCategoryName(item) 
+                    "category": getEcCategoryName(item),
+                    "ct_id": item.subCategoryId
                 }
+                /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 item.ecProduct = JSON.stringify(ecProduct);
+                //console.log("-------------------------------");
+                //console.log(item.subCategoryId);
+
                 // item.isShow = true;
                 // console.log("item %o",item);
 
