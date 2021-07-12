@@ -60,18 +60,18 @@
 	.tbl-top .fr{float: right;}
 	strong {color:red}
 	header, footer, .mobile-nav-wrap{display:none;}
-	</style>
+</style>
 	
-	<script type="text/javascript">
-		$(function(){
-			$(".table colgroup").prepend("<col width='50px' />");
-			$(".table thead tr").prepend("<th scope='col'>No</th>");
-			for(i=0; i <= $(".table tbody tr").length; i++)
-				$(".table tbody tr:nth-child("+ i+")").prepend("<td class='tac'>"+i+"</td>");
-			$(".table tbody td:nth-last-child(2), .table tbody td:nth-last-child(4), .table tbody td:nth-last-child(5)").addClass("tac");
-		});
-	</script>
-	<div class="wrap">
+<script type="text/javascript">
+	$(function(){
+		$(".table colgroup").prepend("<col width='50px' />");
+		$(".table thead tr").prepend("<th scope='col'>No</th>");
+		for(i=0; i <= $(".table tbody tr").length; i++)
+			$(".table tbody tr:nth-child("+ i+")").prepend("<td class='tac'>"+i+"</td>");
+		$(".table tbody td:nth-last-child(2), .table tbody td:nth-last-child(4), .table tbody td:nth-last-child(5)").addClass("tac");
+	});
+</script>
+<div class="wrap">
 	<div class="tit">퍼블리싱 현황판</div>
 	<!--<div class="tbl-top">
 		<div class="fl">
@@ -384,7 +384,7 @@
 				<td>Tab</td>
 				<td>LGCP04005T</td>
 				<td><a href="/company/investor/management" target="_blank">management</a></td>
-				<td>작업중</td>
+				<td>2021-07-09</td>
 				<td></td>
 			</tr>
 			<tr>
@@ -545,20 +545,20 @@
 			</tr>
 			<tr>
 				<td rowspan="2">IR행사</td>
-				<td>일정</td>
-				<td></td>
-				<td>Html</td>
-				<td>LGCP04022M</td>
-				<td><a href="/company/investor/schedule" target="_blank"></a></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
 				<td>실적발표</td>
 				<td></td>
 				<td>Html</td>
 				<td>LGCP04023M</td>
 				<td><a href="/company/investor/presentation" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>주주총회</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04022M</td>
+				<td><a href="/company/investor/generalMeeting" target="_blank"></a></td>
 				<td></td>
 				<td></td>
 			</tr>
@@ -896,4 +896,4 @@
 			</tr>
 		</tbody>
 	</table>
-	</div>
+</div>
