@@ -26,6 +26,12 @@
 		chart.draw(data, options);
 	}
 	$(window).resize(function() {
+		if ($(window).width() < 767) {
+			options.legend.textStyle.fontSize="12";
+		}
+		else{
+			options.legend.textStyle.fontSize="16";
+		}
 		chart.draw(data, options);
 	});
 </script>

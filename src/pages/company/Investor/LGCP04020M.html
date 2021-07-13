@@ -26,6 +26,12 @@
 		chart.draw(data, options);
 	}
 	$(window).resize(function() {
+		if ($(window).width() < 767) {
+			options.legend.textStyle.fontSize="12";
+		}
+		else{
+			options.legend.textStyle.fontSize="16";
+		}
 		chart.draw(data, options);
 	});
 </script>
@@ -160,7 +166,7 @@
 
 	<div class="com-text noLine">
 		<p class="tit">발행 주식수<em>(2020년 12월 31일 기준)</em></p>
-		<p class="stock_number mgt"><span class="num">180,833,805</span>주</p>
+		<p class="stock_number mgt"><span class="num">180,833,806</span>주</p>
 		<div class="tb_row tb-row-bl middle th_g">
 			<table>
 				<caption>발행주식 주주현황</caption>
