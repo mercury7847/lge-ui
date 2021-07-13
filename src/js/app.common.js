@@ -11,6 +11,7 @@ WINDOWS:    /windows/.test(navigator.userAgent.toLowerCase()),
 MOBILE:     /mobile/.test(ua)
 */
 var appInit = function() {
+    var agent = navigator.userAgent;
     //console.log('앱 스크립트 시작');
     if (LGEAPPHostName != "cmsdev50.lge.co.kr" && LGEAPPHostName != "cms50.lge.co.kr") {
         if (isApp()) {
@@ -21,6 +22,7 @@ var appInit = function() {
             //헤더 앱 설정 버튼
             $('.mapExclusive').addClass('active');
             $('.mapExclusiveDss').hide();
+            $('.app-alarm-button').css('right','30px'); // 210621 앱 알림함 아이콘 추가 원복처리 
             $(".app-settings-button").on({
                 click : function() {
                     document.location.href="/mobile-app/option";
@@ -86,7 +88,6 @@ var appInit = function() {
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
-                var agent = navigator.userAgent;
                 if(agent.indexOf("LGEAPP-in") != -1) {
                     //노치 있음
                     $("#floatBox .floating-wrap").addClass("app-LGEAPP-in");
@@ -114,10 +115,10 @@ var appInit = function() {
                 LGEquickMenuPosPush = function(bool){
                     $('#floatBox .floating-wrap').removeClass('app-chng-pos').addClass('app-chng-push-pos');
                 }
-            }
+            }            
 
             //알림함 Count 표시
-            /*
+            /* 210621 알람아이콘 롤백처리 -> 추후 오픈 예정 */
             if (/iPhone|iPad|iPod/i.test(agent)) {
                 var obj = new Object();
                 obj.command = "getUncheckedPushCount";
@@ -129,9 +130,8 @@ var appInit = function() {
             }else{
                 //console.log("Count Update");
             }
-            */
 
-            //알림함 버튼 이벤트
+            //알림함 버튼 이벤트  
             $(".app-alarm-button").on({
                 click : function(){
                     if (/iPhone|iPad|iPod/i.test(agent)) {
@@ -213,6 +213,7 @@ var appInit = function() {
         }
 
         //알림함 Count 표시
+        // 210701 알람체크 N뱃지 아이콘
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
             var count;
@@ -227,7 +228,13 @@ var appInit = function() {
                 }
                 $target.html(count);
             }
+
+            // 210701 알람체크 N뱃지 아이콘
+            var $mobNavBtn = $(".mobile-nav-button");
+            if(count && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
+            else  $mobNavBtn.find('.count').remove();
         }
+
 
         LGEAPPsetArBarcode();
         $(window).on({
@@ -257,8 +264,6 @@ function ChatbotAppClose(type) {
         }
     }
 }
-
-
 // 스와이프 적용일때 분기 처리
 $(document).ready(function(){
     var isSwipe = !!$('#sw_con').length;
@@ -268,7 +273,3 @@ $(document).ready(function(){
         appInit();
     }
 });
-
-
-
-
