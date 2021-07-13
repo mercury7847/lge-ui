@@ -216,14 +216,13 @@ var appInit = function() {
         // 210701 알람체크 N뱃지 아이콘
         LGEAPPalarmCount = function(cnt){
             var $target = $(".app-alarm-button .app-alarm-count");
-            var count;
+            var count = cnt;
             if($target.length > 0){
                 $target.removeClass("active");
-                count = cnt;
-                if(cnt > 0){
+                if(count > 0){
                     $target.addClass("active");
                 }
-                if(cnt > 99){
+                if(count > 99){
                     count = "99+";
                 }
                 $target.html(count);
@@ -235,7 +234,7 @@ var appInit = function() {
                 $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
             } else {
                 $mobNavBtn.find('.count').remove();
-            } 
+            }
         }
 
 
