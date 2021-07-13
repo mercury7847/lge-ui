@@ -12,6 +12,7 @@ function MainSwiper( ID ){
     this.isFirstLoad = true;
     this.firstPathName = location.pathname;
     this.firstSearch = location.search;
+    this.isSwiped = true;   // BTOCSITE-2947 add :: 직접 터치하여 스와이프가 되었는지 여부
     
 
     this.hashToUrl = {
@@ -39,7 +40,7 @@ function MainSwiper( ID ){
 }
 
 MainSwiper.prototype = {
-    init : function(){       
+    init : function(){
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
@@ -49,14 +50,14 @@ MainSwiper.prototype = {
         var self = this;
         var mainSwiper =  this;        
         var hash = mainSwiper.getLastSegmentByUrl();
-        var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );
+        var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );        
 
         this.swiper = new Swiper('#sw_con', {
             autoHeight : true,
             observer : true,
             slidesPerView : 1,
             slidesPerColumn : 1,
-            initialSlide : idx,
+            //initialSlide : idx,
             /*
             hashNavigation : {
                 watchState: true
@@ -67,16 +68,19 @@ MainSwiper.prototype = {
                     $('#sw_con .swiper-slide').data('isLoaded', false);
                   //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
-                'init' : function(swiper){                    
+                'init' : function(swiper){   
+                    self.isSwiped = false;    // BTOCSITE-2947 add
+
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
                         mainSwiper.loadContent( currentSlide,true );
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
-                    } 
+                    }
                     
                     else {
                         swiper.animating = false;
+                        self.isSwiped = false;    // BTOCSITE-2947 add
                         swiper.slideTo( idx );
                         swiper.animating = true;
                         /*
@@ -92,7 +96,8 @@ MainSwiper.prototype = {
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
                 'slideChange' : function(swiper){
-                    console.log('swiper', swiper);
+                    console.log('slidechange arguments', arguments);
+                    console.log('swiper.isSwiped', self.isSwiped);
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
@@ -158,7 +163,8 @@ MainSwiper.prototype = {
                 }
                 /*
                 'transitionEnd' : function(swiper){
-                    console.log(" self.ablePushState %o", self.ablePushState );
+                    console.log("transitionEnd swiper", swiper );
+                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     var hash = '/' + $(currentSlide).data().hash;
                     if (hash == '/home'){
@@ -170,10 +176,11 @@ MainSwiper.prototype = {
                         self.switchQuickMenu( hash );  
                         self.ablePushState = false;
                     }
-        
+                    
                     
                 }
                 */
+                
             }
         });
 
@@ -329,7 +336,8 @@ MainSwiper.prototype = {
         $('meta[name="twitter:card"]').attr('content' , pageData.meta['twitter:card']);
 
         // GA 커스텀 이벤트 실행
-        if (!!self.customEventActionString && typeof(dataLayer) !== 'undefined'){
+        /*
+        if (!!self.customEventActionString && typeof(dataLayer) !== 'undefined' && self.isSwiped == true){
             dataLayer.push({
                 'event': 'customEvent',				
                 'customEventCategory': '스와이프',				
@@ -337,7 +345,18 @@ MainSwiper.prototype = {
             });
 
             //console.log('dataLayer push!@!@!@', dataLayer);
+        } else {
+            self.isSwiped = true;    // BTOCSITE-2947 add
         }
+        */
+
+
+        if (self.isSwiped == true){
+            console.log('dataLayer push!@!@!@', self.customEventActionString);    
+        } else {
+            self.isSwiped = true;    // BTOCSITE-2947 add
+        }
+        
     },
     setMobileNav : function(){
         var self = this;
@@ -345,6 +364,7 @@ MainSwiper.prototype = {
         $tabs.on('click', function( e ){ 
             e.preventDefault();           
             var idx = $tabs.index(this);            
+            self.isSwiped = false;    // BTOCSITE-2947 add
             self.swiper.slideTo(idx);
         });
     },
@@ -354,6 +374,7 @@ MainSwiper.prototype = {
             //console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
+            mainSwiper.isSwiped = false;    // BTOCSITE-2947 add
             self.swiper.slideTo(idx);            
         });
     },
@@ -371,7 +392,7 @@ MainSwiper.prototype = {
         var hash = '';
         var lastSeq = this.getLastSegmentByUrl();
         if (!!this.urlToHash[ lastSeq ] == false ){
-            // 파라미터가 붙어있을때
+            // BTOCSITE-2947 :: 파라미터가 붙어있을때
             if ( lastSeq.split('?').length > 1 ){
                 hash = this.urlToHash[ lastSeq.split('?')[0] ]
             } else {
