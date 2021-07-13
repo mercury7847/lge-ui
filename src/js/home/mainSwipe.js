@@ -9,6 +9,10 @@ function MainSwiper( ID ){
     this.currentHash = window.location.hash;
     this.loadQUE = [];
     this.isLoading = false;
+    this.isFirstLoad = true;
+    this.firstPathName = location.pathname;
+    this.firstSearch = location.search;
+    
 
     this.hashToUrl = {
         '#home' : 'home',
@@ -88,6 +92,7 @@ MainSwiper.prototype = {
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
                 'slideChange' : function(swiper){
+                    console.log('swiper', swiper);
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
@@ -275,12 +280,18 @@ MainSwiper.prototype = {
                     }
 
                     if(self.ablePushState) {
-                        history.pushState({}, '', hash);      
+                        if (!self.isFirstLoad){
+                            history.pushState({}, '', hash);
+                        }
+                        
                         self.switchQuickMenu( hash );  
                         self.ablePushState = false;
                     }
 
                     self.isLoading = false;
+
+                    if (self.isFirstLoad) self.isFirstLoad = false;
+
                     self.getContent();
 
                     setTimeout(function(){
