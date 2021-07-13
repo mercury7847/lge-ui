@@ -749,7 +749,7 @@ br.m{
 		background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
 	
 		@include mobile {
-			right: 68px;
+			right: 50px;
 		}
 	}
 	.btn-search {
@@ -761,7 +761,7 @@ br.m{
 		background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;
 	
 		@include mobile {
-			width:68px;
+			width:50px;
 			height:46px;
 		}
 	}
@@ -796,6 +796,9 @@ br.m{
 				background:#fff;
 				box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
 				// text-transform:uppercase;
+                @include mobile {
+                    padding:11px 84px 11px 24px;
+                }
 			}
 			
 			@include mobile {

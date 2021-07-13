@@ -8,7 +8,7 @@
 			'<ul class="items unit-list ui_carousel_track">'+
 				'{{#each item in productList}}'+
 				'<li class="js-model ui_carousel_slide" data-id="{{item.modelId}}" data-sku="{{item.sku}}">' +
-					'<div class="item">' +
+					'<div class="item" data-ec-product="{{item.ecProduct}}">' +
 						'<div class="product-image">' +
 							'<a href="{{item.modelUrlPath}}"><img data-lazy="{{item.mediumImageAddr}}" alt="{{item.imageAltText}}" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this)"></a>' +
 						'</div>' +
@@ -112,6 +112,32 @@
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 							item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
 							item.salesModelName = (item.salesModelName && item.salesModelName.length > 0) ? item.salesModelName : item.salesModelCode + '.' + item.salesSuffixCode;
+
+
+
+							/* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+							function getEcCategoryName(item){
+								if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+									return item.superCategoryName + "/" + item.categoryName 
+								} else {
+									return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+								}
+							}
+		
+							var ecProduct = {
+								"model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+								"model_id": item.modelId,
+								"model_sku": item.modelName, 
+								"model_gubun": item.modelGubunName,
+								"price": vcui.number.addComma(item.obsOriginalPrice), 
+								// "discounted_price": vcui.number.addComma(item.obssellingprice), 
+								"brand": "LG",
+								"category": getEcCategoryName(item),
+								"ct_id": item.subCategoryId
+							}
+							//console.log(item.obsOriginalPrice);
+							item.ecProduct = JSON.stringify(ecProduct);
+							/* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 						}
 
 						var lists = vcui.template(KRC0001_listItemTemplate, data);

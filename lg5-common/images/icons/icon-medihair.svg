@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="FRONT_VIEW" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none;stroke:#000}.cls-1{stroke-linecap:round;stroke-linejoin:round}.cls-2{stroke-miterlimit:10}
+        </style>
+    </defs>
+    <g id="그룹_19" transform="translate(-793.941 -563.666)">
+        <path id="선_4" d="M0 0L1.906 0" class="cls-1" transform="translate(804.988 572.207)"/>
+        <path id="Oval" d="M805.949 567.24c4.435 0 7.271 2.741 8.014 5.57.564 2.15-3.6 1.65-8.031 1.65s-8.475.476-8.031-1.65c.499-2.383 3.977-5.57 8.048-5.57z" class="cls-2"/>
+        <g id="그룹_18">
+            <g id="그룹_17">
+                <path id="패스_28" d="M802.886 581.862a3.075 3.075 0 0 1 .294 2.23" class="cls-1"/>
+                <path id="패스_29" d="M809.02 581.862a3.191 3.191 0 0 0-.281 2.23" class="cls-1"/>
+            </g>
+            <path id="패스_30" d="M805.945 574.511c-1.85 0-3.626.087-5 .012a5.876 5.876 0 0 0-.309 1.874c0 3.106 2.38 6.778 5.317 6.778s5.318-3.672 5.318-6.778a5.882 5.882 0 0 0-.306-1.865c-1.387.068-3.178-.021-5.02-.021z" class="cls-2"/>
+            <path id="패스_31" d="M811.132 575.143s.389 4.058 2.562 6.113a4.761 4.761 0 0 1-4.345.406" class="cls-1"/>
+            <path id="패스_32" d="M800.749 575.143s-.388 4.058-2.561 6.113a4.761 4.761 0 0 0 4.345.406" class="cls-1"/>
+        </g>
+    </g>
+    <path id="Rectangle" fill="none" d="M0 0H24V24H0z"/>
+</svg>

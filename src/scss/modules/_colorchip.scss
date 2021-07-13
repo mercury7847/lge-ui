@@ -4,7 +4,7 @@
 	// 	background-size:400px;
 	// }
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip/colorchip_210705.png');
+		background-image:url('/lg5-common/images/colorchip/colorchip_210708.png');
 		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 	}
@@ -2780,6 +2780,19 @@
 			background-position:-24px -192px;
 		}
 	}
+
+	/* BTOCSITE-2758 시블링 컬러칩코드 추가요청 */
+	&.nature-green_pink{
+		& input + label:before {
+			background-position: 0 -216px;
+		}
+	}
+	&.nature-pink_green {
+		& input + label:before {
+			background-position:-24px -216px;
+		}
+	}
+	/* //BTOCSITE-2758 시블링 컬러칩코드 추가요청 */
 }
 
 
