@@ -71,6 +71,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .infoBox > ul > li span {position:relative; display:inline-block; color:#000; font-size:16px; line-height:1.5}
 .company .infoBox > ul > li span::before {content:''; display:block; position:absolute; width:1px; height:14px; background-color:#ddd; top:calc(50% - 7px); left:-21px}
 .company .btnArea {margin-top:30px; text-align:center}
+.company .slide-introduce .slide-conts .img {margin-top:30px}
 
 .company .hisArea {max-width:912px; margin:0 auto}
 .company .hisArea .title .tit {font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
@@ -79,6 +80,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .hisArea .hisList > ul > li + li {margin-top:15px}
 .company .hisArea .hisList > ul > li em {display:inline-block; margin-right:70px; font-size:20px; font-weight:bold; line-height:30px}
 .company .hisArea .hisList > ul > li span {display:inline-block; font-size:16px; line-height:30px}
+.company .slide-history .slide-conts .img {margin-top:30px}
 
 .company .ceoArea {position:relative}
 .company .ceoArea .bg {height:480px; border-radius:8px; overflow:hidden}
@@ -482,6 +484,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
+.company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
 .company .tb_row,
@@ -517,9 +520,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb_row.middle table th,
 .company .tb-col.middle table th {vertical-align:middle}
 .company .tb_row table .txt_l,
-.company .tb-col table .txt_l {text-align:left}
+.company .tb-col table .txt_l {text-align:left!important}
 .company .tb_row table .txt_c,
-.company .tb-col table .txt_c {text-align:center}
+.company .tb-col table .txt_c {text-align:center!important}
 .company .tb_row table td strong,
 .company .tb-col table td strong {font-weight:bold}
 .company .tb_row table td .point,
@@ -536,7 +539,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tbl_select.m-type {max-width:444px; margin:0 auto 30px}
 .company .tb_row .tbl_select,
 .company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
-.company .tabs-contents + .tabs-contents {margin-top:30px}
 .company .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
 .company .tb_row table thead tr:first-child th {border-top:1px solid #666}
 .company .tb_row table thead th {border-top:0}
@@ -639,7 +641,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
     .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
     .company .cont_view_more .content {padding:50px 0 0}
-    
+
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tit + .tbl_tit {margin-top:12px}
     .company .tbl_info.abs2 {top:-22px}
@@ -804,7 +806,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
-
+    .company .slide-introduce .slide-conts .text {font-size:14px; line-height:22px}
+    
     .company .hisArea .title .tit {font-size:16px}
     .company .hisArea .title .text {margin-top:15px}
     .company .hisArea .hisList {margin-top:20px; padding:20px 0}
@@ -812,6 +815,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .hisArea .hisList > ul > li + li {margin-top:18px}
     .company .hisArea .hisList > ul > li em {margin-right:20px; font-size:15px; line-height:22px}
     .company .hisArea .hisList > ul > li span {font-size:14px; line-height:22px}
+    .company .slide-history .slide-conts .text {font-size:14px; line-height:22px}
 
     .company .ceoArea {width:calc(100% + 32px); margin-left:-16px}
     .company .ceoArea .bg {height:auto; border-radius:0}
@@ -893,6 +897,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .share_price table td .percent_up {font-size:15px}
     .company .share_price table td .percent_down {font-size:15px}
 
+    .company .com-stock {margin:0 16px}
     .company .stock_number {margin-bottom:12px; font-size:24px; line-height:35px}
     .company .stock_number .num {padding-right:5px}
 
