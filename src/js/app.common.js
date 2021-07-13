@@ -229,10 +229,10 @@ var appInit = function() {
                 $target.html(count);
             }
 
-            // 210701 알람체크 N뱃지 아이콘
-            var $mobNavBtn = $(".mobile-nav-button");
-            if(count && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
-            else  $mobNavBtn.find('.count').remove();
+            // 210713 알람체크 N뱃지 아이콘 롤백
+            // var $mobNavBtn = $(".mobile-nav-button");
+            // if(count && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
+            // else  $mobNavBtn.find('.count').remove();
         }
 
 
