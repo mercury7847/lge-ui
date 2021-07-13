@@ -111,7 +111,7 @@ var goAppUrl = function(path) {
         '<div class="pop-footer check-type align-between">' + 
             '<span class="chk-wrap" data-role="today-cookie-check">' + 
                 '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
-                '<label for="init-popup-check-today">오늘 하루 그만 보기</label>' + 
+                '<label for="init-popup-check-today">7일동안 보지 않기</label>' + 
             '</span>' + 
             '<button type="button" class="btn pink btn-main-pop-close size"><span>닫기</span></button>' + 
         '</div>' + 
@@ -447,7 +447,7 @@ var goAppUrl = function(path) {
                                 var _expireChecked = $('#main-init-popup').find('.check-type input:checkbox').prop('checked');
                                 
                                 if( _expireChecked ) {
-                                    vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 1, "path": '/'});
+                                    vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 7, "path": '/'});
                                 }
                                 $('#main-init-popup').vcModal('hide');
                                 if( window.innerWidth < 768 && vcui.detect.isMobileDevice) {
