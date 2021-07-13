@@ -386,6 +386,12 @@ var goAppUrl = function(path) {
             if (!!$context){
                 return $.Deferred().resolve($context.data());
             }
+            
+            // BTOCSITE-3057 청약 신청화면에서 사이트 이탈 시 로딩 수정
+            $(window).on("beforeunload",function(){
+
+                self.hideLoading()
+            });
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
