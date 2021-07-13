@@ -386,6 +386,12 @@ var goAppUrl = function(path) {
             if (!!$context){
                 return $.Deferred().resolve($context.data());
             }
+
+            // a link form 태그 있을경우 시스템 얼럿 처리
+            $(window).on("beforeunload",function(){
+
+                self.hideLoading()
+            });
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
