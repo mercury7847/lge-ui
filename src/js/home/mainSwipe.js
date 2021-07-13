@@ -95,9 +95,7 @@ MainSwiper.prototype = {
 
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
-                'slideChange' : function(swiper){
-                    console.log('slidechange arguments', arguments);
-                    console.log('swiper.isSwiped', self.isSwiped);
+                'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
@@ -336,7 +334,6 @@ MainSwiper.prototype = {
         $('meta[name="twitter:card"]').attr('content' , pageData.meta['twitter:card']);
 
         // GA 커스텀 이벤트 실행
-        /*
         if (!!self.customEventActionString && typeof(dataLayer) !== 'undefined' && self.isSwiped == true){
             dataLayer.push({
                 'event': 'customEvent',				
@@ -348,15 +345,6 @@ MainSwiper.prototype = {
         } else {
             self.isSwiped = true;    // BTOCSITE-2947 add
         }
-        */
-
-
-        if (self.isSwiped == true){
-            console.log('dataLayer push!@!@!@', self.customEventActionString);    
-        } else {
-            self.isSwiped = true;    // BTOCSITE-2947 add
-        }
-        
     },
     setMobileNav : function(){
         var self = this;
