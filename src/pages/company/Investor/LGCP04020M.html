@@ -12,21 +12,39 @@
 			['외국인 투자자',  38]
 		]);
 		options = {
-			pieHole: 0.66,
+			pieHole: 0.6,
 			pieSliceText: 'percent',
-			chartArea: {width: '100%', height: '80%',top:'2%'},
+			chartArea: {width: '100%', height: '80%',top:'4%'},
 			slices: {
-				0: { color: '#000000'},
-				1: { color: '#aaaaaa'},
-				2: { color: '#e81953'}
+				0: { color: '#000000', offset: 0.01},
+				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000', auraColor: '#fff', auraOpacity:0.5,}},
+				2: { color: '#e81953', offset: 0.01}
+			},
+			pieSliceTextStyle : {
+				fontSize: '16',
+				bold:true
 			},
 			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}}
 		};
+        checkSize();
 		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 		chart.draw(data, options);
 	}
+	function checkSize() {
+		if ($(window).width() < 767) {
+			options.pieHole=0.6;
+			options.legend.textStyle.fontSize="3.33vw";
+			options.pieSliceTextStyle.fontSize="3.33vw";
+		}
+		else{
+			options.pieHole=0.56;
+			options.legend.textStyle.fontSize="16";
+			options.pieSliceTextStyle.fontSize="16";
+		}
+	}
 	$(window).resize(function() {
-		chart.draw(data, options);
+        checkSize();
+		chart.delay(500).draw(data, options);
 	});
 </script>
 <style>
@@ -160,7 +178,7 @@
 
 	<div class="com-text noLine">
 		<p class="tit">발행 주식수<em>(2020년 12월 31일 기준)</em></p>
-		<p class="stock_number mgt"><span class="num">180,833,805</span>주</p>
+		<p class="stock_number mgt"><span class="num">180,833,806</span>주</p>
 		<div class="tb_row tb-row-bl middle th_g">
 			<table>
 				<caption>발행주식 주주현황</caption>
