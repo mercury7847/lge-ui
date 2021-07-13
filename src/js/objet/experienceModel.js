@@ -4951,7 +4951,7 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거) 
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
                                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                         colorHtml += '  </button>';
