@@ -615,6 +615,8 @@
                     var index = data.selectedIndex;
                     var url = location.pathname;
                     var param = vcui.uri.parseQuery(location.search);
+                    var iconStore = $('.info-bottom .link-area .reservation.store-counsel');
+                    var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
                     var n = 0;
                     for(key in param) {
                         if(key != "dpType") {
@@ -629,6 +631,8 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        iconStore.show();
+                        iconRental.hide();
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -636,6 +640,8 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        iconStore.hide();
+                        iconRental.show();
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경

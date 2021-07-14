@@ -1615,16 +1615,18 @@
                             
                         }
                         &.reservation {
+                            border:1px solid red;
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
-                            &.medihair-experience {
-                                background: url('/lg5-common/images/icons/icon-medihair.svg') no-repeat 0 center;
-                            }
-                            &.cinebeam-experience {
-                                background: url('/lg5-common/images/icons/icon-cinebeam.svg') no-repeat 0 center;
-                            }
+                            
                             &.rental-counsel {
                                 background: url('/lg5-common/images/icons/icon-rental.svg') no-repeat 0 center;
                             }
+                            // &.medihair-experience {
+                            //     background: url('/lg5-common/images/icons/icon-medihair.svg') no-repeat 0 center;
+                            // }
+                            // &.cinebeam-experience {
+                            //     background: url('/lg5-common/images/icons/icon-cinebeam.svg') no-repeat 0 center;
+                            // }
                         }
                         &.find-store {
                             margin-left: 16px;
