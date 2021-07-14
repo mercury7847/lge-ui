@@ -215,26 +215,30 @@ var appInit = function() {
         //알림함 Count 표시
         // 210701 알람체크 N뱃지 아이콘
         LGEAPPalarmCount = function(cnt){
+            // 숫자 아닌경우 타입 예외 처리 2021-07-14
+            var count = cnt || 0;
+
+            if(typeof cnt !== 'number') {
+                count = /^\d+$/.test(cnt) ? Number(cnt) : 0;
+            }
+            
             var $target = $(".app-alarm-button .app-alarm-count");
-            var count;
+
             if($target.length > 0){
                 $target.removeClass("active");
-                count = cnt;
-                if(cnt > 0){
+                
+                if(count > 0){
                     $target.addClass("active");
                 }
-                if(cnt > 99){
-                    count = "99+";
-                }
-                $target.html(count);
+
+                $target.html(count > 99 ? '99+' : count);
             }
 
             // 210701 알람체크 N뱃지 아이콘
             var $mobNavBtn = $(".mobile-nav-button");
-            if(count && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
+            if(count > 0 && !$mobNavBtn.find('.count').length) $mobNavBtn.append("<span class='count'><span class='blind'>알림메시지 카운트 존재시</span>N<span>");
             else  $mobNavBtn.find('.count').remove();
         }
-
 
         LGEAPPsetArBarcode();
         $(window).on({

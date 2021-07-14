@@ -659,7 +659,12 @@
                         self.$listSorting.hide();
                     }
 
-                    self.isLoading = false; // BTOCSITE-2150 add                    
+                    /* BTOCSITE-2150 add */
+                    self.isLoading = false; 
+                    if (isNew){
+                        $(window).scrollTop($('.KRP0007').offset().top);
+                    }
+                    /* //BTOCSITE-2150 add */
                 });
             },
 
