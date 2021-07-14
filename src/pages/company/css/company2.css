@@ -16,6 +16,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
+.company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 
 /* 컨텐츠 영역 */
 .company .tabs-contents > .com-text {padding-left:0; padding-right:0}
@@ -27,6 +28,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tit.h3 {margin-bottom:0; font-size:32px; font-weight:bold; line-height:1.5; text-align:center}
 .company .tit.h4 {font-size:18px; font-weight:bold; line-height:1.56}
 .company .tit ~ .tit.h4 {margin-top:30px}
+.company .tit.h4 + .text {margin-top:18px}
+.company .tit.h4 + .bull {margin-top:20px}
 .company .tit.only {margin-top:60px}
 .company .tit.h3 + .desc {display:block; margin-top:12px; color:#000; font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
 .company .tit > em {font-weight:normal}
@@ -224,6 +227,13 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
+.company .compGrp img.only_pc + img.only_pc {margin-top:40px}
+.company .compGrp img.only_mo + img.only_mo {margin-top:20px}
+.company .hone {position:relative; padding-left:12px}
+.company .hone::before {content:''; display:block; position:absolute; width:2.4px; height:2.4px; top:10.8px; left:0; border-radius:50%; background-color:#000}
+.company .hone strong {display:block}
+
+
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
 .company .tabs-wrap.l-type .tabs > li {padding:0}
@@ -287,10 +297,15 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company ul.dwn_list.sales > li img {width:calc(100% + 60px); margin:-30px 0 30px -30px; vertical-align:top}
 .company ul.dwn_list.sales > li .btn.dwn {position:static; display:block; margin:12px auto 0; transform:translateY(0)}
 
+.company .dwn_all::after {content:''; display:block; clear:both}
 .company .dwn_all .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px}
 .company .dwn_all .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56}
 .company .dwn_all .titArea .btn.dwn_all {padding:5px 12px; font-size:14px; line-height:20px}
-.company .dwn_all ul.dwn_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:-12px}
+.company .dwn_all ul.dwn_list {float:left; width:calc(50% - 12px)}
+.company .dwn_all ul.dwn_list + ul.dwn_list {margin-left:24px}
+.company .dwn_all ul.dwn_list > li {width:100%}
+.company .dwn_all ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
+.company .dwn_all ul.dwn_list.item2 > li {width:calc(50% - 12px)}
 
 .company .ir_pt .tit {font-size:18px; font-weight:bold; line-height:1.56}
 .company .ir_pt ul.ir_ptList {margin-top:20px}
@@ -587,6 +602,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .tit.only {margin-top:30px}
     .company .com-title + .tit.only {margin-top:60px}
     .company .tit.h3 + .desc {margin-top:6px; font-size:16px}
+    .company .tit.h4 {font-size:15px; line-height:22px}
+    .company .tit ~ .tit.h4 {margin-top:15px}
+    .company .tit.h4 + .text {margin-top:10px}
+    .company .tit.h4 + .bull {margin-top:10px}
     
     .company .btnArea .btn.border.nml {padding:12 19px; font-size:13px; line-height:18px}
 
@@ -707,7 +726,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
     
     ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
-    ul.bull > li + li {margin-top:8px!important}
     ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
     ul.bull > li > strong {margin-bottom:10px}
     ul.bull > li .tb_row,
@@ -719,6 +737,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .dwn_all .titArea {align-items:center; margin-bottom:10px}
     .company .dwn_all .titArea .tit {font-size:15px; line-height:22px}
     .company .dwn_all ul.dwn_list > li .btn.dwn_all {height:34px; font-size:13px}
+    .company .dwn_all ul.dwn_list {float:left; width:100%}
+    .company .dwn_all ul.dwn_list + ul.dwn_list {margin:0}
+    .company .dwn_all ul.dwn_list.item2 {flex-direction:column}
+    .company .dwn_all ul.dwn_list.item2 > li {width:100%}
     .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:4px}
     .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px; border-radius:4px; font-size:16px}
     .company ul.dwn_list.sales > li img {width:calc(100% + 32px); margin:-16px 0 15px -16px}
@@ -908,4 +930,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.lgway_first > li .thumb {width:100%; height:auto; margin:0!important; padding-bottom:100%}
     .company ul.lgway_first > li .desc {width:100%; margin-bottom:15px}
 
+    .company .text.hone {margin-top:12px}
+    .company .hone {padding-left:9px}
+    .company .hone::before {width:2px; height:2px; top:9px}
 }  
