@@ -2059,7 +2059,6 @@
                 var ajaxUrl;
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-                    alert('self.loginCheckEnd' + self.loginCheckEnd.toString());
                     if(self.loginCheckEnd) {                        
                         if(lgkorUI.stringToBool(loginFlag)) {
                             ajaxUrl = self.$pdpInfo.attr('data-rental-url');
