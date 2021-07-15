@@ -3922,7 +3922,7 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
-        var $step3Shop = $('.simul_step3_newbhimart'); //210714 BTOCSITE-2346 add 
+        var $step3Shop = $('.simul_step3_newbhimart'); //210714 추가 BTOCSITE-2346 add 
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
