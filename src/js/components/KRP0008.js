@@ -98,6 +98,9 @@
                 //BTOCSITE-841 페이지 로드시 활성화탭의 model-name으로 브레드크럼 & sku 변경
                 var activeTabIndex = $('.option-tabs .tabs li.on').index()
                 self.replaceModelName(activeTabIndex);
+
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+                self.bindRentalPopupEvents();
             },
 
             prepare: function() {
@@ -223,7 +226,11 @@
                 //PDP 인포
                 self.$pdpInfo = $('div.pdp-info-area');
                 self.$mobilePdpInfo = $('div.mobile-pdp-info');
-                self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+                self.$pdpInfoWrap = $('div.pdp-wrap .pdp-info-area');
+                self.$pdpInfoProductDetailInfo = self.$pdpInfoWrap.find('.product-detail-info');
+                self.$packageButton = self.$pdpInfoProductDetailInfo.find('.info-bottom .link-area ul rental-counsel a');
+
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
                 //self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
                 self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
@@ -258,7 +265,7 @@
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
 
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
-                
+
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
                 var selectRtModelSeq = null;
@@ -459,6 +466,34 @@
                 self.$siblingCont = self.$specInfoPopup.find('.sibling-cont');
                 self.$siblingBtnComp = self.$specInfoPopup.find('.btn-sibling-select');
                 self.siblingCurrentModel = "";
+            },
+
+            //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+            bindRentalPopupEvents: function() {
+                var self = this;
+                self.$packageButton.on('click', function(e){
+                    var $this = $(this);
+                    if( $this.hasClass('package')) {
+                        e.preventDefault();
+                        var popupId = $this.attr('href');
+                        $(popupId).vcModal({opener: this});
+                    }
+                })
+                
+                $('.popup-package-model').find('.pop-footer .btn').on('click', function(e){
+                    var _self = this;
+                    var $targetPopup = $(this).closest('.popup-package-model')
+                    self.packageSelect(_self, $targetPopup)
+                })
+            },
+            packageSelect: function(alertTarget, $targetPopup){          
+                var $radio = $targetPopup.find('.model-list input:radio');
+                if( !$radio.filter(':checked').length ) {
+                    var msgTxt = '제품을 선택해주세요';
+                    lgkorUI.alert("", {title: msgTxt}, alertTarget);
+                } else {
+                    location.href = $radio.filter(':checked').data('model-path');
+                }
             },
 
             popUpDataSetting: function() {
@@ -962,7 +997,11 @@
                     $li.data('quantity',quantity);
                     var $total = $li.find('span.price').contents()[1];
                     var price = $li.data('price');
-                    price = price ? vcui.string.replaceAll(price,",","") : "0"; 
+                            price = price || "0"; 
+                    if(typeof price === 'string') {
+                        price = vcui.string.replaceAll(price,",","");
+                    }
+
                     $total.textContent = (vcui.number.addComma(price*quantity) + '원');
 
                     var $paymentAmount = self.$pdpInfoAdditionalPurchase.siblings('.payment-amount');
@@ -1911,7 +1950,12 @@
                     $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
                         var quantity = $(item).data('quantity');
                         var price = $(item).data('price');
-                        price = price ? vcui.string.replaceAll(price,",","") : "0"; 
+                            price = price || "0";
+                        
+                        if(typeof price === 'string'){
+                            price = vcui.string.replaceAll(price,",","") ;
+                        }
+
                         if(quantity && price) {
                             totalAdditional += (quantity * price);
                         }
