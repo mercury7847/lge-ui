@@ -3922,6 +3922,7 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
+        var $step3Shop = $('.simul_step3_newbhimart'); //210714 BTOCSITE-2346 add 
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
@@ -3935,7 +3936,8 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3.show();  // BTOCSITE-1582 add
+            $step3Shop.show(); //210714 BTOCSITE-2346 add 
+            //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
@@ -3945,7 +3947,8 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3.show();  // BTOCSITE-1582 add
+            $step3Shop.show(); //210714 BTOCSITE-2346 add
+            //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
