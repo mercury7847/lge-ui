@@ -69,6 +69,7 @@
             var searchInput = self.$searchWrap.find('input').val();
             //var searchType = self.$selectbox.vcSelectbox('selectedOption').value;
             var searchCategory = self.$tab.find('li:nth-child(1) a').attr('href').replace("#", "");
+
             /* BTOCSITE-2851 :: hash 값이 있을때 해당 카테고리 불러오기 */
             if (!!window.location.hash){                
                 var $selectedTab = self.$tab.find('li a[href="' + window.location.hash + '"]');
@@ -77,6 +78,7 @@
                 }
             }
             /* //BTOCSITE-2851 :: hash 값이 있을때 해당 카테고리 불러오기 */
+            
             
             var postData = {'input':searchInput, 'category':searchCategory, 'page':'1'}
             self.requestData(postData);
