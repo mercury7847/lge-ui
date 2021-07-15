@@ -6,6 +6,7 @@ img.only_pc {max-width:100%; margin:0 auto}
 img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .only_pc > img {display:block; max-width:100%; margin:0 auto}
 .only_mo > img {display:block; width:100%; max-width:100%; margin:0 auto}
+.company .mg0 {margin:0!important}
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
 .company .mt30 {margin-top:30px!important}
@@ -76,6 +77,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .btnArea {margin-top:30px; text-align:center}
 .company .slide-introduce .slide-conts .img {width:100%; height:480px; margin-top:30px}
 .company .slide-introduce .slide-conts .img > span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+.company .slide-introduce .slide-conts .text {padding:0 60px}
 
 .company .hisArea {max-width:912px; margin:0 auto}
 .company .hisArea .title .tit {font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
@@ -275,6 +277,7 @@ ul.bull > li > strong {display:block; margin-bottom:20px}
 ul.bull > li > span.bold {font-weight:bold}
 ul.bull > li .tb_row,
 ul.bull > li .tb-col {margin-left:-9px}
+ul.bull.mgtL > li + li {margin-top:30px!important}
 
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
@@ -330,7 +333,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .ir_pt ul.ir_ptList {margin-top:20px}
 .company .ir_pt ul.ir_ptList > li {display:flex; justify-content:space-between; align-items:center; width:100%; padding:30px 47px 30px 40px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
 .company .ir_pt ul.ir_ptList > li + li {margin-top:18px}
-.company .ir_pt ul.ir_ptList > li .desc {display:flex; font-size:16px; line-height:24px}
+.company .ir_pt ul.ir_ptList > li .desc {display:flex; font-size:16px; line-height:26px}
 .company .ir_pt ul.ir_ptList > li .desc strong {display:block; font-weight:bold}
 .company .ir_pt ul.ir_ptList > li .desc span {position:relative; display:block; margin-left:30px; padding-left:31px}
 .company .ir_pt ul.ir_ptList > li .desc span::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
@@ -340,6 +343,21 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li + li::before{content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li .btn {min-width:81px; padding:5px 11px; font-size:14px; line-height:20px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li .btn + .btn {margin-left:10px}
+
+.company .sus_dwn_list {width:100%; border:1px solid #ddd; border-radius:8px; overflow:hidden}
+.company .sus_dwn_list .thumb {width:100%; margin:0; padding-top:30px; background-color:#f4f4f4; text-align:center}
+.company .sus_dwn_list .thumb img {vertical-align:top}
+.company .sus_dwn_list .cont {padding:30px}
+.company .sus_dwn_list .cont .name {font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .sus_dwn_list .cont .name em {display:block; margin-top:2px; color:#666; font-size:14px; font-weight:normal; line-height:24px; text-align:center}
+.company .sus_dwn_list .cont .desc {margin:18px 0 24px; font-size:16px; line-height:24px; text-align:center}
+.company .sus_dwn_list .cont .btn_list {margin:12px 0 10px; text-align:center}
+.company .sus_dwn_list .cont .btn_list .btn {min-width:87px; min-height:40px; padding:0 16px; font-size:14px}
+.company .sus_dwn_list .cont .btn_list .btn + .btn {margin-left:6px}
+.company .rpt_dwnArea {position:relative; margin-top:24px}
+.company .rpt_dwnArea .report_select {position:absolute; right:0; top:-34px}
+.company ul.dwn_list.env {display:flex; justify-content:space-between}
+.company ul.dwn_list.env li {margin-top:0}
 
 .company ul.card_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
 .company ul.card_list > li {border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14); overflow:hidden}
@@ -494,6 +512,11 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub + .btnArea {margin-top:10px; padding-top:0}
+
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-left:185px}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {position:absolute; width:100px; height:65px; top:60px; left:60px; margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb img {width:100%; vertical-align:top}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tit_thumb table {margin:0}
 
 .company .accordion-wrap.lgway {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b {padding-bottom:0; border-bottom:0}
@@ -657,9 +680,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0; border-bottom:0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding:20px 0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {font-size:15px}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .btn-link {margin-top:15px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li + li {margin-top:0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li ul li {margin-top:8px}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:5px 0}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:130px; padding:8px 0; font-size:14px; font-weight:normal}
 
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {padding:29px 58px 29px 20px}
@@ -667,6 +691,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; color:#666; font-size:14px; line-height:22px; word-break:normal}
     .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
+    
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-right:50px}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {width:70px; height:45px; top:29px; left:20px}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title {display:block; width:100%; height:45px; margin-bottom:10px; padding-left:80px}
 
     .company .accordion-wrap.lgway {margin-top:15px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:18px}
@@ -750,6 +778,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     ul.bull > li > strong {margin-bottom:10px}
     ul.bull > li .tb_row,
     ul.bull > li .tb-col {margin-left:-8px}
+    ul.bull.mgtL > li + li {margin-top:20px!important}
     
     .company ul.bull li ul.dwn_list {flex-direction:column}
     .company ul.dwn_list > li {width:100%; padding:22px 100px 22px 15px; font-size:14px; line-height:1.57}
@@ -775,6 +804,18 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .ir_pt ul.ir_ptList > li .btn_list li + li::before {display:none!important}
     .company .ir_pt ul.ir_ptList > li .btn_list li .btn {height:34px; font-size:13px}
     .company .ir_pt ul.ir_ptList > li .btn_list li .btn + .btn {min-width:131px}
+
+    .company .rpt_dwnArea .report_select {top:-24px}
+    .company .sus_dwn_list .thumb img {width:100%}
+    .company .sus_dwn_list .cont {padding:15px}
+    .company .sus_dwn_list .cont .name {font-size:16px; line-height:24px}
+    .company .sus_dwn_list .cont .name em {font-size:13px; line-height:20px}
+    .company .sus_dwn_list .cont .desc {margin:10px 0 10px; font-size:14px; line-height:22px}
+    .company .sus_dwn_list .cont .btn_list {margin:10px 0 0}
+    .company .sus_dwn_list .cont .btn_list .btn {min-width:84px; min-height:34px; padding:0; font-size:13px}
+    .company ul.dwn_list.env {flex-direction:column}
+    .company ul.dwn_list.env > li {width:100% }
+    .company ul.dwn_list.env > li + li {margin-top:14px}
     
     .company ul.card_list {margin-top:24px}
     .company ul.card_list.L > li,
@@ -848,9 +889,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
-    .company .slide-introduce .slide-conts .img {width:calc(100% + 24px); height:auto; margin-left:-12px}
+    .company .slide-introduce .slide-conts .img {height:auto}
     .company .slide-introduce .slide-conts .img > span {padding-bottom:73%}
-    .company .slide-introduce .slide-conts .text {font-size:14px; line-height:22px}
+    .company .slide-introduce .slide-conts .text {padding:0; font-size:14px; line-height:22px}
     
     .company .hisArea .title .tit {font-size:16px}
     .company .hisArea .title .text {margin-top:15px}
