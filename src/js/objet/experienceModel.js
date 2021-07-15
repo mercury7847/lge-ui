@@ -6199,6 +6199,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     for (let i = 0; i < priceLeng; i++) {
         
         // console.log("price[i]", price[i])
+        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
+        /*
         if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
             price.forEach(function(v, i){
@@ -6208,6 +6210,7 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
             })
             
         } 
+        */
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);
