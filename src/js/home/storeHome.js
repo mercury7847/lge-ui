@@ -28,8 +28,9 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
 
 //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
+//많이 구매하는 제품 - 1개
 var bestRankBuyProductTmpl =
-    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}">\n'+
+    '<a href="{{modelUrlPath}}" data-model-id="{{modelId}}" data-ec-product="{{ecProduct}}">\n'+
     '   <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '   <span class="bg ui_bg_switch"'+ 
     '       style="background-image:url();"'+ 
@@ -48,9 +49,10 @@ var bestRankBuyProductTmpl =
     '   </div>\n'+
     '</a>';
 
+//많이 구매하는 제품 - 4개
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '       <div class="flag"><span class="num">{{obj.num}}</span></div>\n'+
     '       <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '       <div class="product-info">\n'+
@@ -74,9 +76,10 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '{{/each}}';
 /* //20210615 추천 기획전 구조변경 */
 
+//추천 기획전 : 제품 슬라이드
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-ec-product="{{obj.ecProduct_s}}">\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
@@ -86,14 +89,12 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '                       <div class="original">\n'+
     '                           {{#if obj.obsOriginalPrice}}'+
     '                               <em class="blind">기존가격</em>\n'+
-    '                               <span class="price">{{#raw obj.obsOriginalPrice}}</span>\n'+
-    '                           {{/if}}'+
+    '                               <span class="price">{{#raw obj.obsOriginalPrice}}</span>{{/if}}\n'+
     '                       </div>\n'+
     '                       <div class="total">\n'+
-    '                           {{#if obj.totalPrice}}'+
+    '                           {{#if obj.totalPrice}}\n'+
     '                               <em class="blind">판매가격</em>\n'+
-    '                               <span class="price">{{#raw obj.totalPrice}}</span>\n'+
-    '                           {{/if}}'+
+    '                               <span class="price">{{#raw obj.totalPrice}}</span>{{/if}}\n'+
     '                       </div>\n'+
     '                   </div>\n'+
     '               {{/if}}\n'+
@@ -102,9 +103,9 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   </li>\n'+
     '{{/each}}';
 
-
+//새로운 제품, 놓치지 마세요 - 이미지 배경
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
-    '   <div class="slide-box">\n'+
+    '   <div class="slide-box" data-ec-product="{{ecProduct}}">\n'+
     '       <div class="img"><img src="{{fullImagePath}}" alt="{{modelDisplayName}}"></div>\n'+    
     '       <div class="product-area">\n'+
     '           <div class="product-contents">\n'+
@@ -154,12 +155,28 @@ $(function(){
             }
         }
 
+        /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+        function getEcCategoryName(item){
+            if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                return item.superCategoryName + "/" + item.categoryName 
+            } else {
+                return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+            }
+        }
+
         var currentEcValue = {
             "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
-            "model_gubun": item.modelGubunName		
+            "model_gubun": item.modelGubunName,
+            "ct-id": item.modelGubunName,
+            "price": vcui.number.addComma(item.obsOriginalPrice), 
+            "discounted_price": vcui.number.addComma(item.totalPrice), 
+            "brand": "LG",
+            "category": getEcCategoryName(item),
+            "ct_id": item.subCategoryId
         }
+        /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 
         if( item.obsOriginalPrice != undefined && item.obsOriginalPrice !== null && item.obsOriginalPrice !== "" ) {
             currentEcValue.price = vcui.number.addComma(item.obsOriginalPrice)
@@ -310,10 +327,8 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
-                    
-
-                    var newTempEcProduct = getEcProduct(item);
-                    item.ecProduct = JSON.stringify(newTempEcProduct);
+                    //var newTempEcProduct = getEcProduct(item);
+                    //item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
@@ -344,6 +359,29 @@ $(function(){
                         item['reviewsCount'] = vcui.number.addComma(parseInt(item['reviewsCount']));
                     }
 
+                    
+                    /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+                    function getEcCategoryName(item){
+                        if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                            return item.superCategoryName + "/" + item.categoryName 
+                        } else {
+                            return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                        }
+                    }
+                    var ecProduct = {
+                        "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+                        "model_id": item.modelId,
+                        "model_sku": item.modelName, 
+                        "model_gubun": item.modelGubunName,
+                        "price": vcui.number.addComma(item.obsOriginalPrice), 
+                        "discounted_price": vcui.number.addComma(item.obssellingprice), 
+                        "brand": "LG",
+                        "category": getEcCategoryName(item),
+                        "ct_id": item.subCategoryId
+                    }
+                    /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+                    item.ecProduct = JSON.stringify(ecProduct);
+                    //item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     return item;
                 });
@@ -370,7 +408,10 @@ $(function(){
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             variableWidth: true,
-                            lastFix: true
+                            lastFix: true,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 150,
+                            touchThreshold: 100
                         });
                         
                     }else if(breakpoint.name == 'pc'){   
@@ -401,7 +442,10 @@ $(function(){
                     $context.find('.ui_recom_carousel').vcCarousel({
                         infinite: true,
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
                     });
                 }    
             })
@@ -411,7 +455,7 @@ $(function(){
         }
         
         // 추천 기획전 렌더링
-        function buildExhibit(result){
+        function buildExhibit(result, item){
 
             var data = result.data;
             if(data && data.data){
@@ -445,14 +489,36 @@ $(function(){
                         item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
                         // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
+                        /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+                        function getEcCategoryName(item){
+                            if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                                return item.superCategoryName + "/" + item.categoryName 
+                            } else {
+                                return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                            }
+                        }
+                        var ecProduct_s = {
+                            "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
+                            "model_id": item.modelId,
+                            "model_sku": item.modelName, 
+                            "model_gubun": item.modelGubunName,
+                            "price": vcui.number.addComma(item.obsOriginalPrice), 
+                            "discounted_price": vcui.number.addComma(item.totalPrice), 
+                            "brand": "LG",
+                            "category": getEcCategoryName(item),
+                            "ct_id": item.subCategoryId
+                        }
+                        // console.log("---------------------");
+                        // console.log(ecProduct_s);
+                        item.ecProduct_s = JSON.stringify(ecProduct_s);
+                        /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+
                         return item;
                     });
 
                     /* 20210615 추천 기획전 구조변경 */
                     nObj['productList'] = vcui.template(exhibitionProductTmpl, {list : list});
-                    var exhibitionStr = vcui.template(exhibitionTmpl, { list: nArr });
                     /* //20210615 추천 기획전 구조변경 */
-
                     return nObj;
                 });
 
@@ -604,7 +670,10 @@ $(function(){
                             variableWidth : false,
                             dots: true,
                             slidesToShow: 3,
-                            slidesToScroll: 3
+                            slidesToScroll: 3,
+                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                            speed: 150,
+                            touchThreshold: 100
                         });
 
                         
