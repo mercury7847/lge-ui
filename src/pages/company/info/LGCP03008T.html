@@ -1,13 +1,31 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
-.slide-history .slide-conts .img{text-align: center;}
-.slide-history .slide-conts .img img {max-width: 100%;padding-bottom:72px;}
-.slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: 22px;opacity:0.5;}
-.slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: 22px;opacity:0.5;}
-@media screen and (max-width:767px){
-.slide-history .slide-wrap.carousel-type.carousel-1 .slide-conts{margin: 0 16px;}
-}
-</style>
+	@media screen and (max-width:767px){
+		.company .slide-history{overflow: hidden;margin: 0 -16px;}
+		.company .slide-wrap {overflow: visible !important;}
+		.company .slide-history .slide-conts{padding: 0 16px;}
+		.company .slide-history .slide-conts .img {margin-bottom:48px;}
+		.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(71.1vw + 73px);}
+		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: 0px;}
+		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: 0px;}
+		.company .slide-wrap .slide-controls {top: calc(41vw + 48px);}
+	}
+	@media screen and (min-width:768px){
+		.company .slide-history {overflow: hidden;}
+		.company .slide-history .slide-wrap{width: 1024px;margin: 0 auto;}
+		.company .slide-history .slide-conts .img {margin-bottom:72px;text-align:center;}
+		.company .slide-history .slide-content{overflow: visible !important;}
+		.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: 630px;}
+		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
+		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
+		.company .slide-wrap .slide-controls {top: 370px;}
+	}
+	</style>
+	<script>
+	$(document).ready(function() {	
+		$('.slide-history .slide-wrap').vcCarousel({infinite: true});
+	});
+	</script>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -75,7 +93,7 @@
 	</div>
 
 	<div class="slide-history">
-		<div class="slide-wrap carousel-type carousel-1 ui_carousel_1_slider">
+		<div class="slide-wrap carousel-type">
 			<div class="slide-content ui_carousel_list">
 				<div class="slide-track ui_carousel_track">
 					<!--  slide -->
