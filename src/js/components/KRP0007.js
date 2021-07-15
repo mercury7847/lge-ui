@@ -159,6 +159,8 @@
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
+                self.isLoading = false; // BTOCSITE-2150 add
+                self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
                 self.bindEvents();
@@ -204,7 +206,9 @@
 
                         if(Object.keys(storageFilterData).length) change = true;
                         else{
-                            if(firstSortType != storageFilters.sortType) change = true;
+                            if(firstSortType != storageFilters.sortType) {
+                                change = true
+                            };
                         }
 
                         for(key in filterData) {
@@ -216,6 +220,7 @@
                     var hash = location.hash.replace("#","");
                     if(hash && hash.length == 8) {
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
+                        
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
@@ -498,7 +503,7 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param) {
+                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
                         self.requestSearch(param, false);
                     }
                 });
@@ -508,6 +513,47 @@
                         self.cateWrapStatus();
                     })
                 }
+
+                /* BTOCSITE-2150 add */
+
+                $(window).on('breakpointchange.mobileSizeCheck', function(e, data){
+                    if (data.isMobile){
+                        self.isMobileSize = true;
+                        //$(window).scrollTop(0); // 사전 로딩 오작동 방지용
+                    } else {
+                        self.isMobileSize = false;
+
+                        let page = Number(lgkorUI.getHiddenInputData('page'));
+                        let totalCount = Number(lgkorUI.getHiddenInputData('totalCount'));
+                        if (page < totalCount) {
+                            self.$btnMore.show();
+                        }
+                    }
+                });
+                
+                $(window).on('scroll.more', function(e){
+                    //console.log('window.scrollTop', $(window).scrollTop());
+                    if (!self.isMobileSize) return;
+                    
+                    var productContainer = self.$productList;
+                    if ((productContainer.offset().top + productContainer.height()) / 1.5 <= $(window).scrollTop() + $(window).height()){
+
+                        //console.log('scroll more');
+                        
+                        var page = Number(lgkorUI.getHiddenInputData('page'));
+                        var totalCount = Number(lgkorUI.getHiddenInputData('totalCount'));
+
+                        //console.log('page' , page);
+                        //console.log('totalCount' , totalCount);
+
+                        if (self.isLoading == false && page < totalCount){
+                            self.$btnMore.trigger('click');
+
+                            //console.log('more click');
+                        }
+                    }
+                });
+                /* //BTOCSITE-2150 add */
             },
 
             setPageData: function(param) {
@@ -516,9 +562,15 @@
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
                     if (page < totalCount) {
-                        self.$btnMore.show();
+                        /* BTOCSITE-2150 add */
+                        if (!self.isMobileSize) {
+                            self.$btnMore.show();
+                        } else {
+                            self.$btnMore.hide();
+                        }
+                        /* //BTOCSITE-2150 add */
                     } else {
-                        //더이상 없다
+                        //더이상 없다                        
                         self.$btnMore.hide();
                     }
 
@@ -539,6 +591,10 @@
 
             requestSearch: function(data, isNew){
                 var self = this;
+
+                if (self.isLoading) return; //BTOCSITE-2150 add
+                self.isLoading = true;  //BTOCSITE-2150 add
+
                 var ajaxUrl = self.$section.attr('data-prod-list');
                 //if(!isHash) {
                     data.categoryId = categoryId;
@@ -552,7 +608,7 @@
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
-                    
+
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.savedPLPData.totalCount = totalCount;
                     self.setTotalCount(totalCount);
@@ -602,6 +658,13 @@
                         self.$btnMore.hide();
                         self.$listSorting.hide();
                     }
+
+                    /* BTOCSITE-2150 add */
+                    self.isLoading = false; 
+                    if (isNew){
+                        $(window).scrollTop($('.KRP0007').offset().top);
+                    }
+                    /* //BTOCSITE-2150 add */
                 });
             },
 
@@ -923,12 +986,11 @@
             },
 
             //비교하기 저장 유무 체크...
-            setCompares:function(){
+            setCompares: function () {
                 var self = this;
-
                 var compare = self.$productList.find('li .product-compare a');
                 compare.removeClass('on');
-                if(!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
+                if (!compare.find('.blind').length) compare.append('<span class="blind">선택안됨</span>');
                 else compare.find('.blind').text('선택안됨');
 
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
