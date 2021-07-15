@@ -4,9 +4,8 @@
 .only_mo {display:none!important}
 img.only_pc {max-width:100%; margin:0 auto}
 img.only_mo {width:100%; max-width:100%; margin:0 auto}
-.only_pc > img {max-width:100%; margin:0 auto}
-.only_mo > img {width:100%; max-width:100%; margin:0 auto}
-/* .company .pd0 {padding:0} */
+.only_pc > img {display:block; max-width:100%; margin:0 auto}
+.only_mo > img {display:block; width:100%; max-width:100%; margin:0 auto}
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
 .company .mt30 {margin-top:30px!important}
@@ -16,6 +15,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
+.company .com-text.pt60 {padding-top:0}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 
 /* 컨텐츠 영역 */
@@ -229,10 +229,28 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .compGrp img.only_pc + img.only_pc {margin-top:40px}
 .company .compGrp img.only_mo + img.only_mo {margin-top:20px}
+.company .compGrp img {display:block; max-width:100%; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
 .company .hone::before {content:''; display:block; position:absolute; width:2.4px; height:2.4px; top:10.8px; left:0; border-radius:50%; background-color:#000}
 .company .hone strong {display:block}
-
+.company ul.compBox {display:flex; flex-wrap:wrap; margin-top:20px}
+.company ul.compBox > li {width:calc(25% - 18px); border:1px solid #ddd; border-radius:8px; overflow:hidden}
+.company ul.compBox > li + li {margin-left:24px}
+.company ul.compBox > li:nth-child(5) {margin-left:0}
+.company ul.compBox > li:nth-child(n+5) {margin-top:24px}
+.company ul.compBox > li .num {border-bottom:1px solid #ddd; background-color:#f4f4f4; color:#da0f47; font-size:18px; font-weight:bold; text-align:center}
+.company ul.compBox > li p {padding:20px; font-size:16px; line-height:24px; text-align:center}
+.company ul.compBox > li p strong {display:block; font-weight:bold}
+.company ul.compStep {display:flex}
+.company ul.compStep > li {width:calc(25% - 18px); min-height:377px}
+.company ul.compStep > li + li {margin-left:24px}
+.company ul.compStep > li .tit {position:relative; display:flex; align-items:center; justify-content:center; width:100%; height:80px; margin-bottom:12px; border-radius:8px 0 0 8px; background-color:#e4e4e4; font-size:18px; font-weight:bold; line-height:27px}
+.company ul.compStep > li .tit::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; right:-18px; border-top:40px solid transparent; border-bottom:40px solid transparent; border-left:18px solid #e4e4e4}
+.company ul.compStep > li:last-child .tit {border-radius:8px; background-color:#da0f47; color:#fff}
+.company ul.compStep > li:last-child .tit::after {display:none}
+.company ul.compStep > li ul.cont {height:calc(100% - 92px); border:1px solid #ddd; border-radius:8px}
+.company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:0 10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
+.company ul.compStep > li ul.cont > li:nth-child(4) {border:0}
 
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
@@ -598,6 +616,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .com-section {margin:0 16px; padding:30px 0 60px}
     .company .com-text.noLine_m::before {display:none}
     .company .com-text.noLine_p::before {display:block}
+    .company .com-text.pt60 {padding-top:30px}
     .company .tit.h3 {font-size:20px; line-height:1.4}
     .company .tit.only {margin-top:30px}
     .company .com-title + .tit.only {margin-top:60px}
@@ -933,4 +952,17 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .text.hone {margin-top:12px}
     .company .hone {padding-left:9px}
     .company .hone::before {width:2px; height:2px; top:9px}
+    .company ul.compBox {flex-direction:column; margin-top:10px}
+    .company ul.compBox > li {display:flex; width:100%; margin:12px 0 0 0!important}
+    .company ul.compBox > li .num {display:flex; align-items:center; justify-content:center; min-width:104px; height:auto; border:0; font-size:15px; line-height:22px}
+    .company ul.compBox > li p {width:auto; font-size:14px; line-height:22px}
+    .company .compGrp img {width:100%; max-width:100%; margin:0 auto}
+    .company ul.compStep {flex-direction:column}
+    .company ul.compStep > li {display:flex; width:100%; min-height:auto}
+    .company ul.compStep > li + li {margin:36px 0 0 0}
+    .company ul.compStep > li .tit {width:80px; height:auto; margin:0 8px 0 0; padding:10px; border-radius:8px 8px 0 0; font-size:15px; line-height:24px; text-align:center}
+    .company ul.compStep > li .tit::after {bottom:-18px; left:0; border-top:18px solid #e4e4e4; border-right:40px solid transparent; border-bottom:none; border-left:40px solid transparent;}
+    .company ul.compStep > li ul.cont {width:calc(100% - 88px); height:auto; padding:11px 20px}
+    .company ul.compStep > li ul.cont li {display:block; height:auto; padding:7px 0; font-size:14px; line-height:22px; text-align:left}
+    .company ul.compStep > li ul.cont li:last-child {border:0}
 }  
