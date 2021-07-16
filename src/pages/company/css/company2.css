@@ -627,6 +627,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.caring > li + li > .step::before{left:calc(-3.5vw - 16px)}
     .company ul.caring > li .step{margin:0 3.5vw}
 
+    .company .ir_pt ul.ir_ptList > li {flex-direction:column}
     .company .ir_pt ul.ir_ptList > li .btn_list {padding-top:20px}
 }
 
@@ -794,7 +795,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px; border-radius:4px; font-size:16px}
     .company ul.dwn_list.sales > li img {width:calc(100% + 32px); margin:-16px 0 15px -16px}
 
-    .company .ir_pt ul.ir_ptList > li {flex-direction:column; padding:19px 20px 20px}
+    .company .ir_pt ul.ir_ptList > li {padding:19px 20px 20px}
     .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
     .company .ir_pt ul.ir_ptList > li .desc {flex-direction:column; padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
     .company .ir_pt ul.ir_ptList > li .desc span {margin:8px 0 0; padding:0}
