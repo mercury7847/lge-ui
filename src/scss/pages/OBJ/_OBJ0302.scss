@@ -1990,3 +1990,27 @@ h2.title {
     border-top: 1px solid #dddddd;
 }
 /* //BTOCSITE-1582 */
+
+/* BTOCSITE-2852 add */
+.panel_guide {
+    padding:20px;
+    border:1px solid #666;
+    line-height:2.35;
+    margin-top:20px;
+
+    .strong {
+        text-align: left;
+        font-size: 18px;
+        color: #222222;
+        font-weight: 700;
+    }
+
+    .desc {
+        text-align: left;
+        font-size: 16px;
+        color: #222222;
+        font-weight: 400;
+    }
+
+}
+/* //BTOCSITE-2852 add */
