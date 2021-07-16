@@ -700,8 +700,8 @@
                     color: $color-white;
                     .card-title {
                         max-height: 99px;
-                        font-size: $font-large-4;
-                        line-height: 52px;
+                        font-size: 30px; //210716 BTOCSITE-3024
+                        line-height: 38px; //210716 BTOCSITE-3024
                     }
                     @include mobile {
                         .card-title {
