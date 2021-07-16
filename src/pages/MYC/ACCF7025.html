@@ -272,6 +272,7 @@
                                             <button type="button" class="btn border size contract-btn"><span>계약서 발급신청</span></button>
                                         </div>
                                     </div>
+                                     <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 START -->
                                     <div class="section-inner contract-info">
                                         @@include('./common/modules/dl-infolist.html', {
                                             "addClass": true,
@@ -279,12 +280,14 @@
                                                 { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)", "fieldName": "modelName" },
                                                 { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>", "fieldName": "contractID" },
                                                 { "dt" : "계약기간", "dd" : "1년(2020.09.01)", "fieldName": "period" },
+                                                { "dt" : "의무사용기간", "dd" : "3년(2020.04.18 ~ 2023.04.17)", "fieldName": "dutyPeriod" },
                                                 { "dt" : "설치일", "dd" : "2020.09.01", "fieldName": "installDate" },
                                                 { "dt" : "설치장소", "dd" : "가정", "fieldName": "installPlace" },
                                                 { "dt" : "무상할인회차", "dd" : "3, 5, 6회차", "fieldName": "saleTurn" },
                                             ]
                                         })
                                     </div>
+                                     <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 END -->
                                 </div>
                                 <!-- // 계약 정보 -->
 
