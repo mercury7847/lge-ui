@@ -1,31 +1,40 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
-	@media screen and (max-width:767px){
-		.company .slide-history{overflow: hidden;margin: 0 -16px;}
-		.company .slide-wrap {overflow: visible !important;}
-		.company .slide-history .slide-conts{padding: 0 16px;}
-		.company .slide-history .slide-conts .img {margin-bottom:48px;}
-		.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(71.1vw + 73px);}
-		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: 0px;}
-		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: 0px;}
-		.company .slide-wrap .slide-controls {top: calc(41vw + 48px);}
-	}
-	@media screen and (min-width:768px){
-		.company .slide-history {overflow: hidden;}
-		.company .slide-history .slide-wrap{width: 1024px;margin: 0 auto;}
-		.company .slide-history .slide-conts .img {margin-bottom:72px;text-align:center;}
-		.company .slide-history .slide-content{overflow: visible !important;}
-		.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: 630px;}
-		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
-		.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
-		.company .slide-wrap .slide-controls {top: 370px;}
-	}
-	</style>
-	<script>
-	$(document).ready(function() {	
-		$('.slide-history .slide-wrap').vcCarousel({infinite: true});
-	});
-	</script>
+/* 슬라이더 mo */
+@media screen and (max-width:767px){
+	.company .slide-history{overflow: hidden;}
+	.company .slide-history .slide-wrap {overflow: visible !important;}
+	.company .slide-history .slide-conts{padding: 0 4.44vw;}
+	.company .slide-history .slide-conts .img {margin-bottom:48px;}
+	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
+	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
+	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(67vw + 90px);}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
+	.company .slide-wrap .slide-controls {top: calc(38vw + 58px);}
+	.company .slide-history .slide-conts .img {height:auto}
+	.company .slide-history .slide-conts .img span {padding-bottom:73%;display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+}
+/* 슬라이더 pc */
+@media screen and (min-width:768px){
+	.company .slide-history .slide-wrap{width: 1024px;margin: 0 auto;}
+	.company .slide-history .slide-conts .img {margin-bottom:72px;}
+	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
+	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
+	.company .slide-history .slide-content{overflow: visible !important;}
+	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: 630px;}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
+	.company .slide-history .slide-wrap .slide-controls {top: 360px;}
+	.company .slide-history .slide-conts .img {width:100%; height:480px; margin-top:30px}
+	.company .slide-history .slide-conts .img span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+}
+</style>
+<script>
+$(document).ready(function() {	
+	$('.slide-history .slide-wrap').vcCarousel({infinite: true});
+});
+</script>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -103,7 +112,8 @@
 							<p class="desc">흔들리지 않고 성장하기 위한 사업과 체질의 고도화</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_01.png" alt="슬라이드 이미지1">
+							<!--<img src="/kr/images/company/info/img-history-slide_01.png" alt="슬라이드 이미지1">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-history-slide_01.png" data-m-src="/kr/images/company/info/img-introduce-slide-01_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -172,7 +182,8 @@
 							<p class="desc">글로벌 일등을 향한 LG전자의 비상</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_02.png" alt="슬라이드 이미지2">
+							<!--<img src="/kr/images/company/info/img-history-slide_02.png" alt="슬라이드 이미지2">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-history-slide_02.png" data-m-src="/kr/images/company/info/img-introduce-slide-01_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -213,7 +224,8 @@
 							<p class="desc">미래의 얼굴, 디지털 LG</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_03.png" alt="슬라이드 이미지3">
+							<!--<img src="/kr/images/company/info/img-history-slide_03.png" alt="슬라이드 이미지3">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-history-slide_03.png" data-m-src="/kr/images/company/info/img-introduce-slide-01_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -262,7 +274,8 @@
 							<p class="desc">시련을 뚫고 미래로</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_04.png" alt="슬라이드 이미지4">
+							<!--<img src="/kr/images/company/info/img-history-slide_04.png" alt="슬라이드 이미지4">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-introduce-slide-01_pc.png" data-m-src="/kr/images/company/info/img-introduce-slide-01_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -299,7 +312,8 @@
 							<p class="desc">기술의 힘으로 세계의 문 앞에 서다</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_05.png" alt="슬라이드 이미지5">
+							<!--<img src="/kr/images/company/info/img-history-slide_05.png" alt="슬라이드 이미지5">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-introduce-slide-02_pc.png" data-m-src="/kr/images/company/info/img-introduce-slide-02_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -344,7 +358,8 @@
 							<p class="desc">전자산업으로 일궈낸 풍요</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_06.png" alt="슬라이드 이미지6">
+							<!--<img src="/kr/images/company/info/img-history-slide_06.png" alt="슬라이드 이미지6">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-introduce-slide-03_pc.png" data-m-src="/kr/images/company/info/img-introduce-slide-03_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
@@ -389,7 +404,8 @@
 							<p class="desc">느티나무의 거대한 꿈</p>
 						</div>
 						<div class="img">
-							<img src="/kr/images/company/info/img-history-slide_07.png" alt="슬라이드 이미지7">
+							<!--<img src="/kr/images/company/info/img-history-slide_07.png" alt="슬라이드 이미지7">-->
+							<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-introduce-slide-04_pc.png" data-m-src="/kr/images/company/info/img-introduce-slide-04_mo.png" aria-hidden="hidden"></span>
 						</div>
 						<div class="hisArea">
 							<div class="title">
