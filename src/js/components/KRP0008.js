@@ -271,6 +271,72 @@
                 var rentalSelectBoxIndex3 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
+
+
+                    rentalInfo = [
+                        {
+                            "years3TotAmt": 29900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 100000,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 29900,
+                            "caresolutionSalesCodeSuffix": "WD502AW.AKOR",
+                            "years2TotAmt": 29900,
+                            "years6TotAmt": 0,
+                            "rtFreePeriod": "3",
+                            "rtModelSeq": "161505",
+                            "dutyTerm": "3",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "Y",
+                            "contractTerm": "5",
+                            "years5TotAmt": 22900,
+                            "years4TotAmt": 27900,
+                            "freeMonth": 1
+                        },
+                        {
+                            "years3TotAmt": 32900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 0,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 32900,
+                            "caresolutionSalesCodeSuffix": "WD502AW.AKOR",
+                            "years2TotAmt": 32900,
+                            "years6TotAmt": 0,
+                            "rtFreePeriod": "3",
+                            "rtModelSeq": "161506",
+                            "dutyTerm": "3",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "N",
+                            "contractTerm": "5",
+                            "years5TotAmt": 22900,
+                            "years4TotAmt": 27900,
+                            "freeMonth": 1
+                        },
+                        {
+                            "years3TotAmt": 31900,
+                            "visitPer": "0",
+                            "rtRgstFeePre": 100000,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 31900,
+                            "caresolutionSalesCodeSuffix": "WD502AS.AKOR",
+                            "years2TotAmt": 31900,
+                            "years6TotAmt": 0,
+                            "rtFreePeriod": "3,6,9",
+                            "rtModelSeq": "161383",
+                            "dutyTerm": "1",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "N",
+                            "contractTerm": "2",
+                            "years5TotAmt": 24900,
+                            "years4TotAmt": 29900,
+                            "freeMonth": 3
+                        }
+                    ];
+
+                    console.log("rentalinfo %o",rentalInfo);
                     //test data
                     //rentalInfo = [{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543180","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543181","dutyTerm":"4","representChargeFlag":"Y","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543182","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3}];
                     var rentalPriceData = {};
@@ -303,6 +369,8 @@
                         }
                     });
                     self.rentalInfoData = rentalPriceData;
+
+                    console.log("self.rentalInfoData %o",self.rentalInfoData);
                 }
 
                 //최초 기본값 찾기
@@ -833,6 +901,8 @@
 
                 //구매/예약/렌탈
                 self.$pdpInfo.find('div.purchase-button a:not(.cart)').on('click', function(e) {
+
+                    console.log("렌탈신청 이벤트");
                     e.preventDefault();
                     var $this = $(this);
                     if(preOrderFlag) {
@@ -873,6 +943,8 @@
                 });
 
                 self.$productBuyOptionTab.on("tabbeforechange", function(e, data){
+
+                    console.log("tabbeforechange 111");
                     var index = data.selectedIndex;
                     var optionParent = self.$pdpInfoProductDetailInfo.find('div.option-contents:eq('+index+')');
                     var btnTitle = optionParent.find('.payment-amount div.purchase-button a:not(.cart) span').text();
@@ -1215,12 +1287,16 @@
 
                 //렌탈 케어솔루션 계약기간
                 if(self.$caresolutionRentalInfoSelectBox.length > 0) {
-                    //가입비 선택
+
+                    
+                    //계약기간
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
                         var value = $(this).vcSelectbox('selectedOption').value;
                         self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],0, true);
                     });
+
+
                     //의무사용기간 선택
                     self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
@@ -1228,15 +1304,29 @@
                         self.rentalInfoBoxUpdate(1, $(this));
                         self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
                     });
+
                     //방문주기 선택 - 화면 가격 정보 갱신
                     self.$caresolutionRentalInfoSelectBox.eq(2).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
+                        // var $li =  $(this).parents('li');
+                        // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
+                        // self.updateRentalInfoPrice(itemData);
+                        self.rentalInfoBoxUpdate(2, $(this));
+                        self.rentalInfoSelectBoxUpdate(3,itemData,0, true);
+                    });
+
+                    //가입비 선택
+                    self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
+                        var value = $(this).vcSelectbox('selectedOption').value;
+                        var itemData = $(selectOption).data('item');
                         var $li =  $(this).parents('li');
                         $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
                         self.updateRentalInfoPrice(itemData);
-                        self.rentalInfoBoxUpdate(2, $(this));
+                        self.rentalInfoBoxUpdate(3, $(this));
                     });
+
+
                 };
 
                 //케어십 계약기간
