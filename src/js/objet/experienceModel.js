@@ -11,18 +11,8 @@
                         typeName: "얼음정수기",
                         typ: "refrigerator1",
                         typModel: [{
-                            name: "노크온 매직스페이스",
+                            name: "얼음정수기냉장고",
                             defaultCode: "W821AAA453",
-                            subModel: [{
-                                modelCode: "W821AAA463",
-                                magicSpace: 1,
-                                energy: 3,
-                                knockOn: true,
-                                voiceChk : "X",
-                                defaultPrice: "1,000,000",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            }],
                             leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_W821AAA453.png",
                             simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_W821AAA453.png",
                             defaultPrice: "1,000,000",
@@ -31,7 +21,6 @@
                             magicSpace: 1,
                             energy: 3,
                             knockOn: true,
-                            voiceChk : "O",
                             door: {
                                 count: 3,
                                 door1: {
@@ -52,148 +41,6 @@
                                     name: "하단(우)",
                                     code: "D870BB",
                                     defaultPrice: "100,000",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                }
-                            },
-                            doorColorData: [{
-                                doorMaterial: {
-                                    name: "페닉스",
-                                    enName: "FENIX",
-                                    code: "F",
-                                    desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                    doorColor: [{
-                                        name: "보타닉",
-                                        code: "BT",
-                                        mixingCode: "FBT"
-
-                                    }, {
-                                        name: "샌드",
-                                        code: "SD",
-                                        mixingCode: "FSD"
-                                    }, {
-                                        name: "스톤",
-                                        code: "ST",
-                                        mixingCode: "FST"
-                                    }]
-                                }
-
-                            }, {
-                                doorMaterial: {
-                                    name: "솔리드",
-                                    enName: "Solid Metal",
-                                    code: "S",
-                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                    doorColor: [{
-                                        name: "맨해튼 미드나잇",
-                                        code: "MT",
-                                        mixingCode: "SMT"
-                                    }, {
-                                        name: "실버",
-                                        code: "SV",
-                                        mixingCode: "SSV"
-                                    }, {
-                                        name: "그린",
-                                        code: "GR",
-                                        mixingCode: "SGR"
-                                    }]
-                                }
-                            }, {
-                                doorMaterial: {
-                                    name: "미스트",
-                                    enName: "Mist Glass",
-                                    code: "G",
-                                    desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                    doorColor: [{
-                                        name: "베이지",
-                                        code: "BE",
-                                        mixingCode: "GBE"
-                                    }, {
-                                        name: "핑크",
-                                        code: "PK",
-                                        mixingCode: "GPK"
-                                    }, {
-                                        name: "민트",
-                                        code: "MN",
-                                        mixingCode: "GMN"
-                                    }, {
-                                        name: "실버",
-                                        code: "SV",
-                                        mixingCode: "GSV"
-                                    }, {
-                                        name: "레드우드",
-                                        code: "RD",
-                                        mixingCode: "GRD"
-                                    }, {
-                                        name: "클레이 브라운",
-                                        code: "CL",
-                                        mixingCode: "GCL"
-                                    }]
-                                }
-                            }, {
-                                doorMaterial: {
-                                    name: "네이쳐",
-                                    enName: "Nature Metal",
-                                    code: "M",
-                                    desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                    doorColor: [{
-                                        name: "그레이",
-                                        code: "GY",
-                                        mixingCode: "MGY"
-                                    }, {
-                                        name: "블랙",
-                                        code: "BK",
-                                        mixingCode: "MBK"
-                                    }, {
-                                        name: "화이트",
-                                        code: "WH",
-                                        mixingCode: "MWH"
-                                    }]
-                                }
-                            }]
-                        },{
-                            name: "매직 스페이스",
-                            defaultCode: "W821AAA153",
-                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_W821AAA153.png",
-                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_W821AAA153.png",
-                            defaultPrice: "1,000,000",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                            magicSpace: 1,
-                            energy: 3,
-                            knockOn: true,
-                            voiceChk : "",
-                            door: {
-                                count: 4,
-                                door1: {
-                                    name: "얼음정수기 상단(좌)",
-                                    code: "D870JT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door2: {
-                                    name: "상단(우)",
-                                    code: "D870TT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door3: {
-                                    name: "하단(좌)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door4: {
-                                    name: "하단(우)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
                                     memberDiscount: "0",
                                     directDiscount: "0",
                                 }
@@ -442,7 +289,7 @@
                                         directDiscount: "0",
                                     }
                                     /*, {
-                                                                    modelCode: "M870AAA451",
+                                                                    modelCode: "M870AAA452",
                                                                     magicSpace: 1,
                                                                     energy: 2,
                                                                     knockOn: true,
@@ -495,6 +342,7 @@
                                             name: "보타닉",
                                             code: "BT",
                                             mixingCode: "FBT"
+
                                         }, {
                                             name: "샌드",
                                             code: "SD",
@@ -582,305 +430,7 @@
                                         }]
                                     }
                                 }]
-                            }, 
-                            /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 (210714 주석해제) start */
-                              {
-                                name: "매직 스페이스",
-                                defaultCode: "M871AAA151",
-                                subModel: [{
-                                    modelCode: "M871AAA252",
-                                    magicSpace: 2,
-                                    energy: 2,
-                                    knockOn: false,
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                }],
-                                leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
-                                simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                                magicSpace: 1,
-                                energy: 1,
-                                knockOn: false,
-                                door: {
-                                    count: 4,
-                                    door1: {
-                                        name: "상단(좌)",
-                                        code: "D870TT",
-                                        defaultPrice: "0",
-                                        memberDiscount: "0",
-                                        directDiscount: "0",
-                                    },
-                                    door2: {
-                                        name: "상단(우)",
-                                        code: "D870TT",
-                                        defaultPrice: "0",
-                                        memberDiscount: "0",
-                                        directDiscount: "0",
-                                    },
-                                    door3: {
-                                        name: "하단(좌)",
-                                        code: "D870BB",
-                                        defaultPrice: "0",
-                                        memberDiscount: "0",
-                                        directDiscount: "0",
-                                    },
-                                    door4: {
-                                        name: "하단(우)",
-                                        code: "D870BB",
-                                        defaultPrice: "0",
-                                        memberDiscount: "0",
-                                        directDiscount: "0",
-                                    }
-                                },
-                                doorColorData: [{
-                                    doorMaterial: {
-                                        name: "페닉스",
-                                        enName: "FENIX",
-                                        code: "F",
-                                        desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                        doorColor: [{
-                                            name: "보타닉",
-                                            code: "BT",
-                                            mixingCode: "FBT"
-                                        }, {
-                                            name: "샌드",
-                                            code: "SD",
-                                            mixingCode: "FSD"
-                                        }, {
-                                            name: "스톤",
-                                            code: "ST",
-                                            mixingCode: "FST"
-                                        }]
-                                    }
-
-                                }, {
-                                    doorMaterial: {
-                                        name: "솔리드",
-                                        enName: "Solid Metal",
-                                        code: "S",
-                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                        doorColor: [{
-                                            name: "맨해튼 미드나잇",
-                                            code: "MT",
-                                            mixingCode: "SMT"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "SSV"
-                                        }, {
-                                            name: "그린",
-                                            code: "GR",
-                                            mixingCode: "SGR"
-                                        }]
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "미스트",
-                                        enName: "Mist Glass",
-                                        code: "G",
-                                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                        doorColor: [{
-                                            name: "베이지",
-                                            code: "BE",
-                                            mixingCode: "GBE"
-                                        }, {
-                                            name: "핑크",
-                                            code: "PK",
-                                            mixingCode: "GPK"
-                                        }, {
-                                            name: "민트",
-                                            code: "MN",
-                                            mixingCode: "GMN"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "GSV"
-                                        }, {
-                                            name: "레드우드",
-                                            code: "RD",
-                                            mixingCode: "GRD"
-                                        }, {
-                                            name: "클레이 브라운",
-                                            code: "CL",
-                                            mixingCode: "GCL"
-                                        }]
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "네이쳐",
-                                        enName: "Nature Metal",
-                                        code: "M",
-                                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                        doorColor: [{
-                                            name: "그레이",
-                                            code: "GY",
-                                            mixingCode: "MGY"
-                                        }, {
-                                            name: "블랙",
-                                            code: "BK",
-                                            mixingCode: "MBK"
-                                        }, {
-                                            name: "화이트",
-                                            code: "WH",
-                                            mixingCode: "MWH"
-                                        }]
-                                    }
-                                }]
-                            },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210714 주석해제) */
-                              {
-                            name: "베이직",
-                            defaultCode: "M871AAA041",
-                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
-                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                            magicSpace: 0,
-                            energy: 1,
-                            knockOn: false,
-                            door: {
-                                count: 4,
-                                door1: {
-                                    name: "상단(좌)",
-                                    code: "D870TT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door2: {
-                                    name: "상단(우)",
-                                    code: "D870TT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door3: {
-                                    name: "하단(좌)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door4: {
-                                    name: "하단(우)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                }
-
-                            },
-                            doorColorData: [
-                                /* 210714 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 start
-                                {
-                                    doorMaterial: {
-                                        name: "페닉스",
-                                        enName: "FENIX",
-                                        code: "F",
-                                        desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                        doorColor: [{
-                                            name: "보타닉",
-                                            code: "BT",
-                                            mixingCode: "FBT"
-
-                                        }, {
-                                            name: "샌드",
-                                            code: "SD",
-                                            mixingCode: "FSD"
-                                        }, {
-                                            name: "스톤",
-                                            code: "ST",
-                                            mixingCode: "FST"
-                                        }]
-                                    }
-
-                                },210714 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 end */
-                                {
-                                    doorMaterial: {
-                                        name: "솔리드",
-                                        enName: "Solid Metal",
-                                        code: "S",
-                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                        doorColor: [{
-                                            name: "맨해튼 미드나잇",
-                                            code: "MT",
-                                            mixingCode: "SMT"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "SSV"
-                                        }, {
-                                            name: "그린",
-                                            code: "GR",
-                                            mixingCode: "SGR"
-                                        }]
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "미스트",
-                                        enName: "Mist Glass",
-                                        code: "G",
-                                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                        doorColor: [{
-                                            name: "베이지",
-                                            code: "BE",
-                                            mixingCode: "GBE"
-                                        }, {
-                                            name: "핑크",
-                                            code: "PK",
-                                            mixingCode: "GPK"
-                                        }, {
-                                            name: "민트",
-                                            code: "MN",
-                                            mixingCode: "GMN"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "GSV"
-                                        },{
-                                            name: "레드우드",
-                                            code: "RD",
-                                            mixingCode: "GRD"
-                                        }, {
-                                            name: "클레이 브라운",
-                                            code: "CL",
-                                            mixingCode: "GCL"
-                                        }]
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "네이쳐",
-                                        enName: "Nature Metal",
-                                        code: "M",
-                                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                        doorColor: [{
-                                            name: "그레이",
-                                            code: "GY",
-                                            mixingCode: "MGY"
-                                        }, {
-                                            name: "블랙",
-                                            code: "BK",
-                                            mixingCode: "MBK"
-                                        }, {
-                                            name: "화이트",
-                                            code: "WH",
-                                            mixingCode: "MWH"
-                                        }]
-                                    }
-                                }]
-                            },
-                              {
+                            }, {
                                 name: "빌트인 타입",
                                 defaultCode: "M620AAA351",
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
@@ -1015,6 +565,290 @@
                                     }
                                 }]
                             }
+                            /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 start */
+                            /*, {
+                                                                               name: "매직 스페이스",
+                                                                               defaultCode: "M871AAA151",
+                                                                               subModel: [{
+                                                                                   modelCode: "M871AAA041",
+                                                                                   magicSpace: 2,
+                                                                                   energy: 1,
+                                                                                   knockOn: false,
+                                                                                   defaultPrice: "0",
+                                                                                   memberDiscount: "0",
+                                                                                   directDiscount: "0",
+                                                                               }, {
+                                                                                   modelCode: "M871AAA252",
+                                                                                   magicSpace: 2,
+                                                                                   energy: 2,
+                                                                                   knockOn: false,
+                                                                                   defaultPrice: "0",
+                                                                                   memberDiscount: "0",
+                                                                                   directDiscount: "0",
+                                                                               }],
+                                                                               leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
+                                                                               simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
+                                                                               defaultPrice: "0",
+                                                                               memberDiscount: "0",
+                                                                               directDiscount: "0",
+                                                                               magicSpace: 1,
+                                                                               energy: 1,
+                                                                               knockOn: false,
+                                                                               door: {
+                                                                                   count: 4,
+                                                                                   door1: {
+                                                                                       name: "상단(좌)",
+                                                                                       code: "D870TT",
+                                                                                       defaultPrice: "0",
+                                                                                       memberDiscount: "0",
+                                                                                       directDiscount: "0",
+                                                                                   },
+                                                                                   door2: {
+                                                                                       name: "상단(우)",
+                                                                                       code: "D870TT",
+                                                                                       defaultPrice: "0",
+                                                                                       memberDiscount: "0",
+                                                                                       directDiscount: "0",
+                                                                                   },
+                                                                                   door3: {
+                                                                                       name: "하단(좌)",
+                                                                                       code: "D870BB",
+                                                                                       defaultPrice: "0",
+                                                                                       memberDiscount: "0",
+                                                                                       directDiscount: "0",
+                                                                                   },
+                                                                                   door4: {
+                                                                                       name: "하단(우)",
+                                                                                       code: "D870BB",
+                                                                                       defaultPrice: "0",
+                                                                                       memberDiscount: "0",
+                                                                                       directDiscount: "0",
+                                                                                   }
+                                                                               },
+                                                                               doorColorData: [{
+                                                                                   doorMaterial: {
+                                                                                       name: "페닉스",
+                                                                                       enName: "FENIX",
+                                                                                       code: "F",
+                                                                                       desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                                                                       descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                                                                       doorColor: [{
+                                                                                           name: "보타닉",
+                                                                                           code: "BT",
+                                                                                           mixingCode: "FBT"
+
+                                                                                       }, {
+                                                                                           name: "샌드",
+                                                                                           code: "SD",
+                                                                                           mixingCode: "FSD"
+                                                                                       }, {
+                                                                                           name: "스톤",
+                                                                                           code: "ST",
+                                                                                           mixingCode: "FST"
+                                                                                       }]
+                                                                                   }
+
+                                                                               }, {
+                                                                                   doorMaterial: {
+                                                                                       name: "솔리드",
+                                                                                       enName: "Solid Metal",
+                                                                                       code: "S",
+                                                                                       desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                                                                       descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                                                                       doorColor: [{
+                                                                                           name: "맨해튼 미드나잇",
+                                                                                           code: "MT",
+                                                                                           mixingCode: "SMT"
+                                                                                       }, {
+                                                                                           name: "실버",
+                                                                                           code: "SV",
+                                                                                           mixingCode: "SSV"
+                                                                                       }, {
+                                                                                           name: "그린",
+                                                                                           code: "GR",
+                                                                                           mixingCode: "SGR"
+                                                                                       }]
+                                                                                   }
+                                                                               }, {
+                                                                                   doorMaterial: {
+                                                                                       name: "미스트",
+                                                                                       enName: "Mist Glass",
+                                                                                       code: "G",
+                                                                                       desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                                                                       descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                                                                       doorColor: [{
+                                                                                           name: "베이지",
+                                                                                           code: "BE",
+                                                                                           mixingCode: "GBE"
+                                                                                       }, {
+                                                                                           name: "핑크",
+                                                                                           code: "PK",
+                                                                                           mixingCode: "GPK"
+                                                                                       }, {
+                                                                                           name: "민트",
+                                                                                           code: "MN",
+                                                                                           mixingCode: "GMN"
+                                                                                       }, {
+                                                                                           name: "실버",
+                                                                                           code: "SV",
+                                                                                           mixingCode: "GSV"
+                                                                                       }]
+                                                                                   }
+                                                                               }, {
+                                                                                   doorMaterial: {
+                                                                                       name: "네이쳐",
+                                                                                       enName: "Nature Metal",
+                                                                                       code: "M",
+                                                                                       desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                                                                       descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                                                                       doorColor: [{
+                                                                                           name: "그레이",
+                                                                                           code: "GY",
+                                                                                           mixingCode: "MGY"
+                                                                                       }, {
+                                                                                           name: "블랙",
+                                                                                           code: "BK",
+                                                                                           mixingCode: "MBK"
+                                                                                       }, {
+                                                                                           name: "화이트",
+                                                                                           code: "WH",
+                                                                                           mixingCode: "MWH"
+                                                                                       }]
+                                                                                   }
+                                                                               }]
+                                                                           }       매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end*/
+                            /*, {
+                                                    name: "베이직",
+                                                    defaultCode: "M871AAA041",
+                                                    leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
+                                                    simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
+                                                    defaultPrice: "0",
+                                                    memberDiscount: "0",
+                                                    directDiscount: "0",
+                                                    door: {
+                                                        count: 4,
+                                                        door1: {
+                                                            name: "상단(좌)",
+                                                            code: "D870TT",
+                                                            defaultPrice: "0",
+                                                            memberDiscount: "0",
+                                                            directDiscount: "0",
+                                                        },
+                                                        door2: {
+                                                            name: "상단(우)",
+                                                            code: "D870TT",
+                                                            defaultPrice: "0",
+                                                            memberDiscount: "0",
+                                                            directDiscount: "0",
+                                                        },
+                                                        door3: {
+                                                            name: "하단(좌)",
+                                                            code: "D870BB",
+                                                            defaultPrice: "0",
+                                                            memberDiscount: "0",
+                                                            directDiscount: "0",
+                                                        },
+                                                        door4: {
+                                                            name: "하단(우)",
+                                                            code: "D870BB",
+                                                            defaultPrice: "0",
+                                                            memberDiscount: "0",
+                                                            directDiscount: "0",
+                                                        }
+
+                                                    },
+                                                    doorColorData: [{
+                                                        doorMaterial: {
+                                                            name: "페닉스",
+                                                            enName: "FENIX",
+                                                            code: "F",
+                                                            desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                                            descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                                            doorColor: [{
+                                                                name: "보타닉",
+                                                                code: "BT",
+                                                                mixingCode: "FBT"
+
+                                                            }, {
+                                                                name: "샌드",
+                                                                code: "SD",
+                                                                mixingCode: "FSD"
+                                                            }, {
+                                                                name: "스톤",
+                                                                code: "ST",
+                                                                mixingCode: "FST"
+                                                            }]
+                                                        }
+
+                                                    }, {
+                                                        doorMaterial: {
+                                                            name: "솔리드",
+                                                            enName: "Solid Metal",
+                                                            code: "S",
+                                                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                                            doorColor: [{
+                                                                name: "맨해튼 미드나잇",
+                                                                code: "MT",
+                                                                mixingCode: "SMT"
+                                                            }, {
+                                                                name: "실버",
+                                                                code: "SV",
+                                                                mixingCode: "SSV"
+                                                            }, {
+                                                                name: "그린",
+                                                                code: "GR",
+                                                                mixingCode: "SGR"
+                                                            }]
+                                                        }
+                                                    }, {
+                                                        doorMaterial: {
+                                                            name: "미스트",
+                                                            enName: "Mist Glass",
+                                                            code: "G",
+                                                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                                            doorColor: [{
+                                                                name: "베이지",
+                                                                code: "BE",
+                                                                mixingCode: "GBE"
+                                                            }, {
+                                                                name: "핑크",
+                                                                code: "PK",
+                                                                mixingCode: "GPK"
+                                                            }, {
+                                                                name: "민트",
+                                                                code: "MN",
+                                                                mixingCode: "GMN"
+                                                            }, {
+                                                                name: "실버",
+                                                                code: "SV",
+                                                                mixingCode: "GSV"
+                                                            }]
+                                                        }
+                                                    }, {
+                                                        doorMaterial: {
+                                                            name: "네이쳐",
+                                                            enName: "Nature Metal",
+                                                            code: "M",
+                                                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                                            doorColor: [{
+                                                                name: "그레이",
+                                                                code: "GY",
+                                                                mixingCode: "MGY"
+                                                            }, {
+                                                                name: "블랙",
+                                                                code: "BK",
+                                                                mixingCode: "MBK"
+                                                            }, {
+                                                                name: "화이트",
+                                                                code: "WH",
+                                                                mixingCode: "MWH"
+                                                            }]
+                                                        }
+                                                    }]
+                                                }*/
                         ]
                     }]
                 },
@@ -1119,14 +953,6 @@
                                 name: "실버",
                                 code: "SV",
                                 mixingCode: "GSV"
-                            }, {
-                                name: "레드우드",
-                                code: "RD",
-                                mixingCode: "GRD"
-                            }, {
-                                name: "클레이 브라운",
-                                code: "CL",
-                                mixingCode: "GCL"
                             }]
                         }
                     }, {
@@ -1219,14 +1045,6 @@
                                     name: "실버",
                                     code: "SV",
                                     mixingCode: "GSV"
-                                }, {
-                                    name: "레드우드",
-                                    code: "RD",
-                                    mixingCode: "GRD"
-                                }, {
-                                    name: "클레이 브라운",
-                                    code: "CL",
-                                    mixingCode: "GCL"
                                 }]
                             }
                         }, {
@@ -1313,14 +1131,6 @@
                                     name: "실버",
                                     code: "SV",
                                     mixingCode: "GSV"
-                                }, {
-                                    name: "레드우드",
-                                    code: "RD",
-                                    mixingCode: "GRD"
-                                }, {
-                                    name: "클레이 브라운",
-                                    code: "CL",
-                                    mixingCode: "GCL"
                                 }]
                             }
                         }, {
@@ -1407,14 +1217,6 @@
                                     name: "실버",
                                     code: "SV",
                                     mixingCode: "GSV"
-                                }, {
-                                    name: "레드우드",
-                                    code: "RD",
-                                    mixingCode: "GRD"
-                                }, {
-                                    name: "클레이 브라운",
-                                    code: "CL",
-                                    mixingCode: "GCL"
                                 }]
                             }
                         }, {
@@ -1683,20 +1485,6 @@
                     door2: "D620BB-GBE",
                     door3: "D620BB-GBE",
                     door4: "",
-                },{
-                    defaultCode: "M620AAA351",
-                    modelCode: "M620GRC351S",
-                    door1: "D620TT-GRD",
-                    door2: "D620BB-GCL",
-                    door3: "D620BB-GCL",
-                    door4: "",
-                },{
-                    defaultCode: "M620AAA351",
-                    modelCode: "M620GCB351S",
-                    door1: "D620TT-GCL",
-                    door2: "D620BB-GBE",
-                    door3: "D620BB-GBE",
-                    door4: "",
                 }, {
                     defaultCode: "M870AAA451",
                     modelCode: "M870FBB451S",
@@ -1907,27 +1695,14 @@
                     door3: "D870BB-GBE",
                     door4: "",
                 }, {
-                    defaultCode: "M870AAA451",
-                    modelCode: "M870GRC451S",
-                    door1: "D870TT-GRD",
-                    door2: "D870BB-GCL",
-                    door3: "D870BB-GCL",
-                    door4: "",
-                },{
-                    defaultCode: "M870AAA451",
-                    modelCode: "M870GCB451S",
-                    door1: "D870TT-GCL",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                },{
                     defaultCode: "M871AAA551",
                     modelCode: "M871FBB551S",
                     door1: "D870TT-FBT",
                     door2: "D870BB-FBT",
                     door3: "D870BB-FBT",
                     door4: "",
-                },{
+                },
+                {
                     defaultCode: "M871AAA551",
                     modelCode: "M871FSS551S",
                     door1: "D870TT-FSD",
@@ -1941,7 +1716,8 @@
                     door2: "D870BB-FST",
                     door3: "D870BB-FST",
                     door4: "",
-                },{
+                },
+                {
                     defaultCode: "M871AAA551",
                     modelCode: "M871FBS551S",
                     door1: "D870TT-FBT",
@@ -1977,7 +1753,8 @@
                     door2: "D870BB-SSV",
                     door3: "D870BB-SSV",
                     door4: "",
-                },{
+                },
+                {
                     defaultCode: "M871AAA551",
                     modelCode: "M871SMM551S",
                     door1: "D870TT-SMT",
@@ -2768,234 +2545,6 @@
                     door3: "D870BB-GBE",
                     door4: "",
                 }, {
-                    defaultCode: "W821AAA453",
-                    modelCode: "W821GRC453S",
-                    door1: "D870JT-GRD",
-                    door2: "D870BB-GCL",
-                    door3: "D870BB-GCL",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA453",
-                    modelCode: "W821GCB453S",
-                    door1: "D870JT-GCL",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FBB153S",
-                    door1: "D870JT-FBT",
-                    door2: "D870TT-FBT",
-                    door3: "D870BB-FBT",
-                    door4: "D870BB-FBT",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FSS153S",
-                    door1: "D870JT-FSD",
-                    door2: "D870TT-FSD",
-                    door3: "D870BB-FSD",
-                    door4: "D870BB-FSD",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FTT153S",
-                    door1: "D870JT-FST",
-                    door2: "D870TT-FST",
-                    door3: "D870BB-FST",
-                    door4: "D870BB-FST",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FBS153S",
-                    door1: "D870JT-FBT",
-                    door2: "D870TT-FBT",
-                    door3: "D870BB-FSD",
-                    door4: "D870BB-FSD",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FBT153S",
-                    door1: "D870JT-FBT",
-                    door2: "D870TT-FBT",
-                    door3: "D870BB-FST",
-                    door4: "D870BB-FST",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FTS153S",
-                    door1: "D870JT-FST",
-                    door2: "D870TT-FST",
-                    door3: "D870BB-FSD",
-                    door4: "D870BB-FSD",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SGG153S",
-                    door1: "D870JT-SGR",
-                    door2: "D870TT-SGR",
-                    door3: "D870BB-SGR",
-                    door4: "D870BB-SGR",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SSS153S",
-                    door1: "D870JT-SSV",
-                    door2: "D870TT-SSV",
-                    door3: "D870BB-SSV",
-                    door4: "D870BB-SSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SMM153S",
-                    door1: "D870JT-SMT",
-                    door2: "D870TT-SMT",
-                    door3: "D870BB-SMT",
-                    door4: "D870BB-SMT",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SGS153",
-                    door1: "D870JT-SGR",
-                    door2: "D870TT-SGR",
-                    door3: "D870BB-SSV",
-                    door4: "D870BB-SSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SSG153S",
-                    door1: "D870JT-SSV",
-                    door2: "D870TT-SSV",
-                    door3: "D870BB-SGR",
-                    door4: "D870BB-SGR",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SMS153S",
-                    door1: "D870JT-SMT",
-                    door2: "D870TT-SMT",
-                    door3: "D870BB-SSV",
-                    door4: "D870BB-SSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MBB153S",
-                    door1: "D870JT-MBK",
-                    door2: "D870TT-MBK",
-                    door3: "D870BB-MBK",
-                    door4: "D870BB-MBK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MGG153S",
-                    door1: "D870JT-MGY",
-                    door2: "D870TT-MGY",
-                    door3: "D870BB-MGY",
-                    door4: "D870BB-MGY",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MWW153S",
-                    door1: "D870JT-MWH",
-                    door3: "D870BB-MWH",
-                    door4: "D870BB-MWH",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MBG153S",
-                    door1: "D870JT-MBK",
-                    door3: "D870BB-MGY",
-                    door4: "D870BB-MGY",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MWG153S",
-                    door1: "D870JT-MWH",
-                    door3: "D870BB-MGY",
-                    door4: "D870BB-MGY",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MGB153S",
-                    door1: "D870JT-MGY",
-                    door2: "D870TT-MGY",
-                    door3: "D870BB-MBK",
-                    door4: "D870BB-MBK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MGW153S",
-                    door1: "D870JT-MGY",
-                    door2: "D870TT-MGY",
-                    door3: "D870BB-MWH",
-                    door4: "D870BB-MWH",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GBB153",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GBM153S",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GMN",
-                    door4: "D870BB-GMN",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GBP153S",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GPK",
-                    door4: "D870BB-GPK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GBS153S",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GSV",
-                    door4: "D870BB-GSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSS153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GSV",
-                    door4: "D870BB-GSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSB153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSM153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GMN",
-                    door4: "D870BB-GMN",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSP153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GPK",
-                    door4: "D870BB-GPK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GMB153S",
-                    door1: "D870JT-GMN",
-                    door2: "D870TT-GMN",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GPB153",
-                    door1: "D870JT-GPK",
-                    door2: "D870TT-GPK",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GRC153S",
-                    door1: "D870JT-GRD",
-                    door2: "D870TT-GRD",
-                    door3: "D870BB-GCL",
-                    door4: "D870BB-GCL",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GCB153S",
-                    door1: "D870JT-GCL",
-                    door2: "D870TT-GCL",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                },{
                     defaultCode: "M871AAA151",
                     modelCode: "M871FBB151S",
                     door1: "D870TT-FBT",
@@ -3082,10 +2631,10 @@
                 }, {
                     defaultCode: "M871AAA151",
                     modelCode: "M871SMS151S",
-                    door1: "D870TT-SMT",
-                    door2: "D870TT-SMT",
-                    door3: "D870BB-SSV",
-                    door4: "D870BB-SSV",
+                    door1: "D870TT-SSV",
+                    door2: "D870TT-SSV",
+                    door3: "D870BB-SMT",
+                    door4: "D870BB-SMT",
                 }, {
                     defaultCode: "M871AAA151",
                     modelCode: "M871MBB151S",
@@ -3205,39 +2754,11 @@
                     door2: "D870TT-GPK",
                     door3: "D870BB-GBE",
                     door4: "D870BB-GBE",
-                },{
-                    defaultCode: "M871AAA151",
-                    modelCode: "M871GRC151S",
-                    door1: "D870TT-GRD",
-                    door2: "D870TT-GRD",
-                    door3: "D870BB-GCL",
-                    door4: "D870BB-GCL",
-                },{
-                    defaultCode: "M871AAA151",
-                    modelCode: "M871GCB151S",
-                    door1: "D870TT-GCL",
-                    door2: "D870TT-GCL",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
                 }, {
                     defaultCode: "M871AAA041",
                     modelCode: "M871GPB041",
                     door1: "D870TT-GPK",
                     door2: "D870TT-GPK",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "M871AAA041",
-                    modelCode: "M871GRC041S",
-                    door1: "D870TT-GRD",
-                    door2: "D870TT-GRD",
-                    door3: "D870BB-GCL",
-                    door4: "D870BB-GCL",
-                }, {
-                    defaultCode: "M871AAA041",
-                    modelCode: "M871GCB041S",
-                    door1: "D870TT-GCL",
-                    door2: "D870TT-GCL",
                     door3: "D870BB-GBE",
                     door4: "D870BB-GBE",
                 }
@@ -4211,7 +3732,6 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
-        var $step3Shop = $('.simul_step3_newbhimart'); //210714 추가 BTOCSITE-2346 add 
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
@@ -4225,8 +3745,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3Shop.show(); //210714 BTOCSITE-2346 add 
-            //$step3.show();  // BTOCSITE-1582 add
+            $step3.hide();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
@@ -4236,8 +3755,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3Shop.show(); //210714 BTOCSITE-2346 add
-            //$step3.show();  // BTOCSITE-1582 add
+            $step3.hide();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
@@ -4556,7 +4074,7 @@
             completedCheck();
         });
 
-        //기능가격 비교 선택 [210714 다시보기]
+        //기능가격 비교 선택
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
@@ -5187,6 +4705,7 @@
                                                     doorLocation = "JT";
                                                     doorKLocation = "얼음정수기 상단(좌)";
                                                 }
+
                                                 doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                             } else if (k == 1) {
                                                 doorDirection = "LB";
@@ -5608,26 +5127,19 @@
                                 let mainMagicSpace = _typModel[j].magicSpace;
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
-                                let mainVoiceChk = _typModel[j].voiceChk;
                                 let mainPrice = _typModel[j].defaultPrice;
                                 tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                                 tblHtml += '        <colgroup>';
-                                tblHtml += '            <col style="width:30.5%">';
-                                if(mainVoiceChk != undefined && mainVoiceChk != ""){
-                                tblHtml += '            <col style="width:13%">';
-                                }
-                                tblHtml += '            <col style="width:16%">';
-                                tblHtml += '            <col style="width:16%">';
-                                tblHtml += '            <col style="width:24.5%">';
+                                tblHtml += '            <col style="width:34%">';
+                                tblHtml += '            <col style="width:20.5%">';
+                                tblHtml += '            <col style="width:20.5%">';
+                                tblHtml += '            <col style="width:25%">';
                                 tblHtml += '        </colgroup>';
                                 tblHtml += '        <thead>';
                                 tblHtml += '            <tr>';
                                 tblHtml += '                <th scope="col">모델명</th>';
-                                if(mainVoiceChk != undefined && mainVoiceChk != ""){
-                                    tblHtml += '            <th scope="col">음성인식</th>';
-                                }
                                 tblHtml += '                <th scope="col">매직스페이스</th>';
                                 tblHtml += '                <th scope="col">에너지 효율</th>';
                                 tblHtml += '                <th scope="col">가격</th>';
@@ -5638,9 +5150,6 @@
                                 modelPriceArry.push(modelCode);
                                 tblHtml += '<tr class="is_active">';
                                 tblHtml += '    <td><span>' + modelCode + '</span></td>';
-                                if(mainVoiceChk != undefined && mainVoiceChk != ""){
-                                tblHtml += '    <td>' + mainVoiceChk + '</td>';
-                                }
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
                                 tblHtml += '    <td><span></span>원</td>';
@@ -5651,15 +5160,11 @@
                                         let subCode = _subModel[k].modelCode;
                                         let subMagicSpace = _subModel[k].magicSpace;
                                         let subEnergy = _subModel[k].energy;
-                                        let subVoiceChk = _subModel[k].voiceChk
                                         let subKnockOn = _subModel[k].knockOn;
                                         let subPrice = _subModel[k].defaultPrice;
                                         modelPriceArry.push(subCode);
                                         tblHtml += '<tr>';
                                         tblHtml += '    <td><span>' + subCode + '</span></td>';
-                                        if(subVoiceChk != undefined && subVoiceChk != ""){
-                                            tblHtml += '    <td>' + subVoiceChk + '</td>';
-                                        }
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
                                         tblHtml += '    <td><span></span>원</td>';
