@@ -878,6 +878,17 @@
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
             else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+
+            // 의무 사용기간 포맷 변경
+            if(data.contractInfo.dutyPeriod) {
+                var dutyPeriod = data.contractInfo.dutyPeriod.split(" ");
+                    dutyPeriod.push(vcui.date.calcDate(dutyPeriod[1].replace(/\./g,'-'), '+'+dutyPeriod[0].replace('년','y'), 'yyyy.MM.dd'));
+
+                    data.contractInfo.dutyPeriod = dutyPeriod[0]+'('+dutyPeriod[1]+' ~ '+dutyPeriod[2]+')';
+                    console.log("의무사용기간 %o",data.contractInfo);
+            }
+
+
             changeFieldValue('contract-info', data.contractInfo);
     
             info = {
