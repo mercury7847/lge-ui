@@ -223,10 +223,11 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .lgway_outline dl {padding:29px 0}
 .company .lgway_outline dl dt {font-size:18px; font-weight:bold; line-height:27px}
 .company .lgway_outline dl dd {margin-top:10px; font-size:14px; line-height:22px}
-.company ul.lgway_first > li {display:flex; justify-content:space-between; align-items:center}
+.company ul.lgway_first > li {display:flex; align-items:center}
+.company ul.lgway_first > li:nth-child(2n) {justify-content:flex-end}
 .company ul.lgway_first > li + li {margin-top:120px}
-.company ul.lgway_first > li .thumb {width:57.6%; height:auto; margin-top:0; padding-bottom:30.7%; background:#f4f4f4; border-radius:8px}
-.company ul.lgway_first > li .desc {width:32.4%}
+.company ul.lgway_first > li .thumb {width:auto; margin-top:0; border-radius:8px}
+.company ul.lgway_first > li .desc {}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
@@ -504,7 +505,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.btmBtn > ul > .lists.on .btn.menu-opener::after {transform:rotate(180deg)}
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:active:hover::after,
 .company .accordion-wrap.btmBtn > ul > .lists .btn.border:focus:hover::after,
-.company .accordion-wrap.btmBtn > ul > .lists .btn.border:hover::after {background:url(/kr/images/company/icon/icon-arrow-accor-white.svg) center no-repeat!important; background-size:20px 20px!important}
+.company .accordion-wrap.btmBtn > ul > .lists .btn.border:hover::after {background:url(/kr/images/company/icon/icon-arrow-accor-white.svg) center no-repeat!important; background-size:20px 20px!important; transition:background ease-in-out .15s}
 
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {display:block; padding-top:60px; padding-bottom:60px}
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:40px}
@@ -534,9 +535,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .cont_view_more .btnArea {text-align:center}
 .company .cont_view_more .btnArea .btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px; font-size:14px; line-height:20px}
 .company .cont_view_more .btnArea .btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
-.company .cont_view_more .btnArea .btn:hover::after {background:url(/kr/images/company/icon/btn-plus-16-white.svg) no-repeat center / contain}
-.company .cont_view_more .btnArea .btn.on::after {background:url(/lg5-common/images/icons/btn-minus-16.svg) no-repeat center / contain}
-.company .cont_view_more .btnArea .btn.on:hover::after {background:url(/kr/images/company/icon/btn-minus-16-white.svg) no-repeat center / contain}
+.company .cont_view_more .btnArea .btn:hover::after,
+.company .cont_view_more .btnArea .btn:focus::after,
+.company .cont_view_more .btnArea .btn:active::after {background:url(/kr/images/company/icon/btn-plus-16-white.svg) no-repeat center / contain; transition:background ease-in-out .15s}
+.company .cont_view_more .btnArea .btn.on::after {background:url(/lg5-common/images/icons/btn-minus-16.svg) no-repeat center / contain; transition:background ease-in-out .15s}
+.company .cont_view_more .btnArea .btn.on:hover::after,
+.company .cont_view_more .btnArea .btn.on:focus::after,
+.company .cont_view_more .btnArea .btn.on:active::after {background:url(/kr/images/company/icon/btn-minus-16-white.svg) no-repeat center / contain; transition:background ease-in-out .15s}
 .company .cont_view_more .content {padding:80px 0 0}
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
@@ -991,8 +996,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.lgway_first > li {flex-direction:column}
     .company ul.lgway_first > li:nth-child(odd) {flex-direction:column-reverse}
     .company ul.lgway_first > li + li {margin-top:60px}
-    .company ul.lgway_first > li .thumb {width:100%; height:auto; margin:0!important; padding-bottom:100%}
+    .company ul.lgway_first > li .thumb {width:100%; margin:0!important}
     .company ul.lgway_first > li .desc {width:100%; margin-bottom:15px}
+    .company ul.lgway_first > li .desc .text {margin-top:12px}
 
     .company .text.hone {margin-top:12px}
     .company .hone {padding-left:9px}
