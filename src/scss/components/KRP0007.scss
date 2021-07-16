@@ -224,12 +224,56 @@
     .plp-list-wrap {
         max-width:1380px + 80;
         margin:48px auto 0;
+        margin-top: 0;
         padding: 0 40px;
+        .productGlossary {
+            // display: none;
+            position: relative;
+            max-width: 1460px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            .productGlo-cont {
+                position: relative;
+                h3 {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                }
+                p {
+                    font-size: 16px;
+                    color: #666;
+                    line-height: 26px;
+                    margin-bottom: 10px;
+                }
+            }
+            button {
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                &.btn-close {
+                    width: 24px;
+                    height: 24px;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 24px;
+                        height: 24px;
+                        background: url(/lg5-common/images/icons/btn-close-32.svg) no-repeat;
+                        background-size: 24px;
+                    }
+                }
+            }
+        }
+        
         @include clearfix;
 
         @include mobile {
             max-width: 100%;
-            margin-top:40px;
+            margin-top:15px;
             padding: 0 16px 50px;
 
         }
