@@ -227,7 +227,6 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.lgway_first > li:nth-child(2n) {justify-content:flex-end}
 .company ul.lgway_first > li + li {margin-top:120px}
 .company ul.lgway_first > li .thumb {width:auto; margin-top:0; border-radius:8px}
-.company ul.lgway_first > li .desc {}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
@@ -255,6 +254,31 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.compStep > li ul.cont {height:calc(100% - 92px); border:1px solid #ddd; border-radius:8px}
 .company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:0 10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
 .company ul.compStep > li ul.cont > li:nth-child(4) {border:0}
+
+.company .dwn_all.board .titArea {margin-bottom:24px}
+.company .dwn_all.board .titArea .tit {font-size:22px; line-height:32px}
+.company .tb_row.board-type table {border-top:1px solid #666}
+.company .tb_row.board-type .board-tit p.new {margin-right:12px; color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
+.company .tb_row.board-type table td.dwn > a,
+.company .tb_row.board-type table td.dwn > button {display:block; width:24px; height:24px; margin:0 auto; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
+
+.company .board-view-wrap .board-view .board-view-head {padding:25px 0 16px; border-bottom:1px solid #666}
+.company .board-view-wrap .board-view .board-view-head .new {color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
+.company .board-view-wrap .board-view .board-view-head .head-title {font-size:32px; font-weight:bold; line-height:52px}
+.company .board-view-wrap .board-view .board-view-head ul.head-infos {display:flex; margin-top:8px}
+.company .board-view-wrap .board-view .board-view-head ul.head-infos > li {font-size:14px; line-height:24px}
+.company .board-view-wrap .board-view .board-view-head ul.head-infos > li + li {position:relative; margin-left:9px; padding-left:9px}
+.company .board-view-wrap .board-view .board-view-head ul.head-infos > li + li::before {content:''; display:block; position:absolute; width:1px; height:10px; top:calc(50% - 5px); left:-0.5px; background-color:#ddd}
+.company .board-view-wrap .board-view .board-view-sub {padding:12px 0; border-bottom:1px solid #ddd; text-align:right}
+.company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {top:32px; right:0; left:auto; padding:32px}
+.company .board-view-wrap .board-view .board-view-body {padding:24px}
+.company .board-view-wrap .board-navi {border-top:1px solid #ddd; border-bottom:1px solid #ddd}
+.company .board-view-wrap .board-navi .navi {display:block; padding:24px}
+.company .board-view-wrap .board-navi .navi + .navi {border-top:1px solid #ddd}
+.company .board-view-wrap .board-navi .navi-label {display:inline-block; margin-right:64px; color:#666; font-size:16px; line-height:24px}
+.company .board-view-wrap .board-navi .navi-desc {display:inline-block; color:#000; font-size:16px; line-height:24px}
+.company .board-view-wrap .btnArea {margin-top:60px}
+/* 컨텐츠영역 끝 */
 
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
@@ -531,7 +555,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .pl {padding-left:8px; text-indent:-8px}
 
 /* 자료 더보기 영역 */
-.company .cont_view_more {padding:60px 0}
+.company .cont_view_more {padding:60px 0 0}
 .company .cont_view_more .btnArea {text-align:center}
 .company .cont_view_more .btnArea .btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px; font-size:14px; line-height:20px}
 .company .cont_view_more .btnArea .btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
@@ -1016,4 +1040,26 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.compStep > li ul.cont {width:calc(100% - 88px); height:auto; padding:11px 20px}
     .company ul.compStep > li ul.cont li {display:block; height:auto; padding:7px 0; font-size:14px; line-height:22px; text-align:left}
     .company ul.compStep > li ul.cont li:last-child {border:0}
+
+    .company .dwn_all.board .titArea {margin-bottom:12px}
+    .company .dwn_all.board .titArea .tit {font-size:18px}
+    .company .tb_row.board-type .board-tit {margin-bottom:8px}
+    .company .tb_row.board-type .board-tit p.new {margin:0 0 6px; line-height:20px}
+    .company .tb_row.board-type table tr {padding:15px 12px 10px}
+    .company .tb_row.board-type table td {padding:0}
+    .company .tb_row.board-type.download table tr {position:relative; padding-right:70px}
+    .company .tb_row.board-type table td.dwn {position:absolute; right:12px; top:calc(50% - 12px)}
+    .company .tb_row.board-type table td.dwn + td {margin-left:0; padding-left:0}
+    .company .tb_row.board-type table td.dwn + td::before {display:none}
+
+    .company .board-view-wrap .board-view .board-view-head .head-title {font-size:24px; line-height:34px}
+    .company .board-view-wrap .board-view .board-view-head ul.head-infos > li {font-size:13px; line-height:20px}
+    .company .board-view-wrap .board-view .board-view-sub {padding:8px 0}
+    .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {width:100%; top:50%; transform:translateY(-50%); padding:24px}
+    .company .board-view-wrap .board-view .board-view-body {padding:24px 0}
+    .company .board-view-wrap .board-navi .navi {display:flex; padding:15px 0 15px 12px}
+    .company .board-view-wrap .board-navi .navi-label {min-width:42px; margin-right:24px; font-size:14px; line-height:22px}
+    .company .board-view-wrap .board-navi .navi-desc {font-size:14px; line-height:22px; word-break:break-all}
+    .company .board-view-wrap .btnArea {margin-top:40px}
+    .company .board-view-wrap .btnArea .btn {width:100%}
 }  
