@@ -883,8 +883,7 @@
             // 의무 사용기간 포맷 변경
             if(data.contractInfo.dutyPeriod) {
                 var dutyPeriod = data.contractInfo.dutyPeriod.split(" ");
-                    dutyPeriod.push(vcui.date.calcDate(dutyPeriod[1].replace(/\./g,'-'), '+'+dutyPeriod[0].replace('년','y'), 'yyyy.MM.dd'));
-
+                    dutyPeriod.push(vcui.date.calcDate(dutyPeriod[1].replace(/\./g,'-'), '+'+(365*Number(dutyPeriod[0].replace('년','')))+'d', 'yyyy.MM.dd'));
                     data.contractInfo.dutyPeriod = dutyPeriod[0]+'('+dutyPeriod[1]+' ~ '+dutyPeriod[2]+')';
                     console.log("의무사용기간 %o",data.contractInfo);
             }
