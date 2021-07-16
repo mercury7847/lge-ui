@@ -341,7 +341,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
 .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between}
 .company ul.dwn_list.sales > li {width:calc(33.3333% - 16px); padding:30px; border:1px solid #ddd; box-shadow:none; font-size:20px; text-align:center; overflow:hidden}
-.company ul.dwn_list.sales > li img {width:calc(100% + 60px); margin:-30px 0 30px -30px; vertical-align:top}
+.company ul.dwn_list.sales > li .thumb {width:calc(100% + 60px); margin:-30px 0 30px -30px; padding-top:30px; background-color:#f4f4f4; overflow:hidden}
+.company ul.dwn_list.sales > li .thumb img {width:53%; max-width:232px; vertical-align:top; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
 .company ul.dwn_list.sales > li .btn.dwn {position:static; display:block; margin:12px auto 0; transform:translateY(0)}
 
 .company .dwn_all::after {content:''; display:block; clear:both}
@@ -370,8 +371,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li .btn + .btn {margin-left:10px}
 
 .company .sus_dwn_list {width:100%; border:1px solid #ddd; border-radius:8px; overflow:hidden}
-.company .sus_dwn_list .thumb {width:100%; margin:0; padding-top:30px; background-color:#f4f4f4; text-align:center}
-.company .sus_dwn_list .thumb img {vertical-align:top}
+.company .sus_dwn_list .thumb {width:100%; margin:0; padding-top:30px; background-color:#f4f4f4; text-align:center; overflow:hidden}
+.company .sus_dwn_list .thumb img {vertical-align:top; box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14)}
 .company .sus_dwn_list .cont {padding:30px}
 .company .sus_dwn_list .cont .name {font-size:20px; font-weight:bold; line-height:30px; text-align:center}
 .company .sus_dwn_list .cont .name em {display:block; margin-top:2px; color:#666; font-size:14px; font-weight:normal; line-height:24px; text-align:center}
@@ -821,8 +822,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .dwn_all ul.dwn_list.item2 {flex-direction:column}
     .company .dwn_all ul.dwn_list.item2 > li {width:100%}
     .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:4px}
-    .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px; border-radius:4px; font-size:16px}
-    .company ul.dwn_list.sales > li img {width:calc(100% + 32px); margin:-16px 0 15px -16px}
+    .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px 8px; border-radius:4px; font-size:16px}
+    .company ul.dwn_list.sales > li .thumb {width:calc(100% + 32px); margin:-16px 0 14px -16px; padding-top:11px}
+    .company ul.dwn_list.sales > li .thumb img {min-width:83px}
 
     .company .ir_pt ul.ir_ptList > li {padding:19px 20px 20px}
     .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
@@ -836,7 +838,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .ir_pt ul.ir_ptList > li .btn_list li .btn + .btn {min-width:131px}
 
     .company .rpt_dwnArea .report_select {top:-24px}
-    .company .sus_dwn_list .thumb img {width:100%}
+    .company .sus_dwn_list .thumb {padding-top:15px}
+    .company .sus_dwn_list .thumb img {width:40%; min-width:131px}
     .company .sus_dwn_list .cont {padding:15px}
     .company .sus_dwn_list .cont .name {font-size:16px; line-height:24px}
     .company .sus_dwn_list .cont .name em {font-size:13px; line-height:20px}
