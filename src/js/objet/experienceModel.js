@@ -18,7 +18,7 @@
                                 magicSpace: 1,
                                 energy: 3,
                                 knockOn: true,
-                                voiceChk : "X",
+                                voiceChk : "O",
                                 defaultPrice: "1,000,000",
                                 memberDiscount: "0",
                                 directDiscount: "0",
@@ -31,7 +31,7 @@
                             magicSpace: 1,
                             energy: 3,
                             knockOn: true,
-                            voiceChk : "O",
+                            voiceChk : "X",
                             door: {
                                 count: 3,
                                 door1: {
@@ -4226,7 +4226,7 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
-        var $step3Shop = $('.simul_step3_newbhimart'); //210714 추가 BTOCSITE-2346 add 
+        var $step3Shop = $('.simul_step.simul_step3_newbhimart'); //210714 추가 BTOCSITE-2346 add 
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
 
         if($objContent.attr('data-page-type') === 'COMMON') {
@@ -4240,6 +4240,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+            $step3.hide(); //210714 BTOCSITE-2346 add 
             $step3Shop.show(); //210714 BTOCSITE-2346 add 
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
@@ -4251,6 +4252,7 @@
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
+            $step3.hide(); //210714 BTOCSITE-2346 add 
             $step3Shop.show(); //210714 BTOCSITE-2346 add
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add

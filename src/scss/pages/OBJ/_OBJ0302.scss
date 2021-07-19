@@ -336,7 +336,7 @@ h2.title {
                     }
                 }
                 &[data-model_code="W821AAA153"] {
-                    //매직 스페이스 210714 BTOCSITE-2346W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
+                    //매직 스페이스 210714 BTOCSITE-2346 W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
                     .model_door {
                         &[data-door-direction="LT"] {
                             width: 49.1%;
@@ -344,6 +344,7 @@ h2.title {
                             left: .5%;
                             top: .3%;
                         }
+                        //매직 스페이스 210714 BTOCSITE-2346 - "RT" 위치 변경
                         &[data-door-direction="RT"] {
                             width: 49.1%;
                             height: 53.8%;
