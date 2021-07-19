@@ -3786,7 +3786,11 @@
         });
         //추천조합 선택
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
-            let modelName = $(this).find(">span").text();
+            /* BTOCSITE-3032 add */
+            var modelCode = $(this).data().modelCode;
+            var defaultModelCode = $(this).data().modelDefaultCode;
+            /* //BTOCSITE-3032 add */
+            //let modelName = $(this).find(">span").text();
             $(this).find(".mini_model_wrap .mini_model").each(function() {
                 let idx = $(this).index();
                 let idxImg = $(this).html();
@@ -3798,7 +3802,7 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode });    // BTOCSITE-3032 modify
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -6241,6 +6245,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     for (let i = 0; i < priceLeng; i++) {
         
         // console.log("price[i]", price[i])
+        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
+        /*
         if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
             price.forEach(function(v, i){
@@ -6250,6 +6256,7 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
             })
             
         } 
+        */
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);
