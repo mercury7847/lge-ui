@@ -920,6 +920,7 @@
                         $list_ul.empty();
                         var $div = $("<div/>");
                         arr.forEach(function(item, index) {
+                            if(index > 1) return;
                             if(!item.hash) {
                                 item.hash = [];
                             }
@@ -933,7 +934,7 @@
                         noData = false;
 
                         var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
-                        if($btnLink.length > 0 && count < 5) {
+                        if($btnLink.length > 0 && count < 2) {
                             $btnLink.hide();
                         } else {
                             $btnLink.show();
