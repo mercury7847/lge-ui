@@ -730,6 +730,10 @@
                         .text {
                             padding-top: 0;
                         }
+                        // 210702
+                        @include mobile{
+                            flex-direction: row;
+                        }
                     }
                     .text {
                         flex: none;
@@ -738,6 +742,10 @@
                         padding-top: 5px;
                         padding-right: 24px;
                         @include font-small;
+                        //210702
+                        @include mobile{
+                            flex-grow:2;
+                        }
                     }
                     &:first-child {
                         margin-top: 0;
@@ -843,6 +851,10 @@
                 }
                 .text-option {
                     @include font-small;
+                    //210702
+                    @include mobile{
+                        flex-grow: 2;
+                    }
                 }
                 .my-objet {
                     a {
@@ -877,6 +889,50 @@
                         // margin:24px -16px 0;
                         a {
                             border-radius:0;
+                        }
+                    }
+                }
+                /* 210702 */
+                .notice-wrap {
+                    margin-top:32px;
+                    @include mobile{
+                        margin-top:24px;
+                    }
+                    .notice-box {
+                        a {
+                            display:block;
+                            width:100%;
+                            height:50px;
+                            padding:12px 0;
+                            border-radius:8px;
+                            background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
+                            color:#fff;
+                            font-size:16px;
+                            font-weight:700;
+                            line-height:26px;
+                            text-align:center;
+                            span {
+                                position:relative;
+                                padding-right:22px;
+                                &:after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:5px;
+                                    right:0;
+                                    width:16px;
+                                    height:16px;
+                                    background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+                                    background-size:16px;
+                                }
+                            }
+                        }
+                        @include mobile {
+                            margin:0 -16px;
+                            // margin:24px -16px 0;
+                            a {
+                                border-radius:0;
+                                font-weight: normal;
+                            }
                         }
                     }
                 }
@@ -1113,6 +1169,7 @@
                             }
                         }
                             
+<<<<<<< HEAD
                     }
                     /* 20210607 스펙선택 추가 */ 
                     &.Spec { 
@@ -1142,6 +1199,32 @@
                             padding:14px 12px;
                         }
                     }
+=======
+                    }
+                    /* 20210607 스펙선택 추가 */ 
+                    &.Spec { 
+                        background: #fff;
+                        border:1px solid #aaa;
+                        .price-info {
+                            padding-right: 0;
+                            .content {
+                                width: 320px;
+                                @include mobile{
+                                    width: 80%; 
+                                }
+                                .btn-area {
+                                    margin-top: 0 !important;
+                                    .btn-link {
+                                        text-decoration: none;
+                                        display: block !important;
+                                        width: 100%;
+                                        position: relative;
+                                    }
+                                }
+                            }
+                        }
+                    }
+>>>>>>> c8f1f75f6bf04d579cd261d4371890b67642f1ea
                     /* //20210607 스펙선택 추가 */
                 }
                 &.care-solution-payment-info {
@@ -1163,20 +1246,19 @@
                     }
                 }
                 .desc {
-                    /* 210531 : 디스크립션 영역 패딩 적용 */
-                    &::before {
+                    &::before{
                         content: '※';
                         display: inline-block;
                         margin-left: -14px;
                         margin-right: 2px;
                     }
                     padding-left: 12px;
-                    /* //210531 : 디스크립션 영역 패딩 적용 */
                     margin-top: 12px;
                     // padding-right: 28px;
                     @include font-x-small;
                     word-break: keep-all;
                 }
+<<<<<<< HEAD
                 .btn-area {	
                     // outline: 1px solid red;	
                     /* BTOCSITE-324 : MARGIN조정 */	
@@ -1189,6 +1271,20 @@
                     .btn-link {	
                         @include font-small;	
                     }	
+=======
+                .btn-area {
+                    // outline: 1px solid red;
+                    /* BTOCSITE-324 : MARGIN조정 */
+                    margin-top: 12px;
+                    @include mobile{
+                        margin-top: 6px;
+                    }
+                    /* //BTOCSITE-324 : MARGIN조정 */
+                    text-align: right;
+                    .btn-link {
+                        @include font-small;
+                    }
+>>>>>>> c8f1f75f6bf04d579cd261d4371890b67642f1ea
                 }
             }
         }
@@ -1556,6 +1652,10 @@
                         line-height: 24px;
                         @include mobile {
                             font-size: 13px;
+                        }
+                        a:active{
+                            background-color: inherit;
+                            
                         }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
@@ -2244,8 +2344,9 @@
             margin-top: 24px;
             font-size: 0;
             .btn {
-                &:nth-child(2) {
-                    margin-left: 8px;
+                margin-left: 8px;
+                &:first-child {
+                    margin-left: 0;
                 }
             }
         }
@@ -3189,3 +3290,6 @@
 @import "../pages/UTC/OBSF9039";
 
 @import "KRP0008_CS";
+
+//210702 에어컨 필터 구매 전 주의사항 팝업 관련 css 파일
+@import "KRP0008_popup";
