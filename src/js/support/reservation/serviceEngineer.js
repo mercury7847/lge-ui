@@ -359,10 +359,8 @@
                 result;
 
             var productCode = $('#productCode').val();
-
-            if ($('[name=bdType]:checked').val() == 4) {
-                productCode = 'CRB';
-            }
+            // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+            productCode = self.getbdTypeParam();
 
             param = $.extend(param, {
                 topic: $('input[name=topic]:checked').val(),
@@ -415,6 +413,15 @@
                 });
             }
         },
+        getbdTypeParam: function(){
+            // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+            var self = this;
+            if ($('[name=bdType]:checked').val() == 0 && self.$bdTypeBox.data('current-product-code') != '' && self.$bdTypeBox.data('current-product-code') != undefined) {
+                return self.$bdTypeBox.data('current-product-code');
+            } else {
+                return $('#productCode').val()
+            }
+        },
         requestTime: function() {
             var self = this,
                 url = $('.calendar-area').data('timeUrl'),
@@ -422,10 +429,8 @@
                 result;
 
             var productCode = $('#productCode').val();
-
-            if ($('[name=bdType]:checked').val() == 4) {
-                productCode = 'CRB';
-            }
+            // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+            productCode = self.getbdTypeParam();
 
             param = $.extend(param, {
                 topic: $('input[name=topic]:checked').val(),
@@ -542,8 +547,9 @@
         requestComplete: function() {
             var self = this;
 
-            if ($('[name=bdType]:checked').val() == 4) {
-                $('#productCode').val('CRB');
+            // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+            if ($('[name=bdType]:checked').val() == 0 && self.$bdTypeBox.data('current-product-code') != '' && self.$bdTypeBox.data('current-product-code') != undefined) {
+                $('#productCode').val(self.$bdTypeBox.data('current-product-code'));
             }
 
             var url = self.$submitForm.data('ajax');
@@ -600,7 +606,7 @@
                 self.$subTopicBox.hide();
                 self.$solutionsBanner.hide();
                 self.$fanBox.hide();
-                self.$bdTypeBox.hide();
+                self.$bdTypeBox.hide().data('product-code', '');
                 self.$tvPositionBox.hide();
                 self.$installTypeBox.hide();
                 self.$addFanBox.hide();
@@ -658,13 +664,14 @@
                     });
                     
                     // 에어컨 > 시스템 에어컨 OR 창문형/이동식 선택 시
+                    // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
                     if (data.category == 'CT50019183') {
                         if (data.subCategory == "CT50019259"){
                             self.$fanBox.show();
-                            self.$bdTypeBox.show();
+                            self.$bdTypeBox.show().data('current-product-code', 'CRB')                         
                         } else if (data.subCategory != "CT50019229") {
                             self.$fanBox.show();
-                            self.$bdTypeBox.hide();
+                            self.$bdTypeBox.hide().data('current-product-code', '');
                         }
                     }
                     
@@ -815,10 +822,8 @@
                     param;
 
                 var productCode = $('#productCode').val();
-
-                if ($('[name=bdType]:checked').val() == 4) {
-                    productCode = 'CRB';
-                }
+                // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+                productCode = self.getbdTypeParam();
 
                 param = {
                     serviceType: $('#serviceType').val(),
@@ -843,10 +848,8 @@
                     param;
 
                 var productCode = $('#productCode').val();
-
-                if ($('[name=bdType]:checked').val() == 4) {
-                    productCode = 'CRB';
-                }
+                // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+                productCode = self.getbdTypeParam();
 
                 param = {
                     serviceType: $('#serviceType').val(),
@@ -901,10 +904,8 @@
                     param;
 
                 var productCode = $('#productCode').val();
-
-                if ($('[name=bdType]:checked').val() == 4) {
-                    productCode = 'CRB';
-                }
+                // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+                productCode = self.getbdTypeParam();
 
                 param = {
                     serviceType: $('#serviceType').val(),
