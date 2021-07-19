@@ -268,61 +268,171 @@
 
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
+                var selectContractTerm = null;
                 var selectRtModelSeq = null;
                 var selectRtRgstFeePre = null
                 var selectDutyTerm = null;
+                var selectVisitTerm = null;
 
                 var rentalSelectBoxIndex1 = 0;
                 var rentalSelectBoxIndex2 = 0;
                 var rentalSelectBoxIndex3 = 0;
+                var rentalSelectBoxIndex4 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
+
+                    console.log("rentalinfo %o",rentalInfo);
                     //test data
-                    //rentalInfo = [{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543180","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543181","dutyTerm":"4","representChargeFlag":"Y","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3},{"years3TotAmt":36900,"visitPer":"3","rtRgstFeePre":0,"freeMonthDisplayYn":"Y","rentalCareType":"R","years1TotAmt":36900,"caresolutionSalesCodeSuffix":"WD503AS.AKOR","years2TotAmt":36900,"years6TotAmt":0,"rtFreePeriod":"13,25,37","rtModelSeq":"1543182","dutyTerm":"3","representChargeFlag":"N","contractTerm":"5","years5TotAmt":31900,"years4TotAmt":31900,"freeMonth":3}];
+                    // rentalInfo = [
+                    //     {
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "Y",
+
+                    //         "contractTerm": "5",
+                    //         "dutyTerm": "3",
+                    //         "freeMonth": 1,
+                    //         "visitPer": "3",
+
+                    //         "years1TotAmt": 29951,
+                    //         "years2TotAmt": 29951,
+                    //         "years3TotAmt": 29951,
+                    //         "years4TotAmt": 27951,
+                    //         "years5TotAmt": 22951,
+                    //         "years6TotAmt": 0,
+
+                    //         "rtRgstFeePre": 100000,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "caresolutionSalesCodeSuffix": "WD502AW.AKOR",
+                    //         "rtFreePeriod": "3",
+                    //         "rtModelSeq": "161505",
+                    //     },
+                    //     {
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+
+                    //         "contractTerm": "5",
+                    //         "dutyTerm": "3",
+                    //         "freeMonth": 1,
+                    //         "visitPer": "3",
+
+                    //         "years1TotAmt": 32952,
+                    //         "years2TotAmt": 32952,
+                    //         "years3TotAmt": 32952,
+                    //         "years4TotAmt": 27952,
+                    //         "years5TotAmt": 22952,
+                    //         "years6TotAmt": 0,
+
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "caresolutionSalesCodeSuffix": "WD502AW.AKOR",
+                    //         "rtFreePeriod": "3",
+                    //         "rtModelSeq": "161506",
+                    //     },
+                    //     {
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+
+                    //         "contractTerm": "2",
+                    //         "dutyTerm": "1",
+                    //         "freeMonth": 3,
+                    //         "visitPer": "0",
+
+                    //         "years1TotAmt": 31921,
+                    //         "years2TotAmt": 31921,
+                    //         "years3TotAmt": 31921,
+                    //         "years4TotAmt": 29921,
+                    //         "years5TotAmt": 24921,
+                    //         "years6TotAmt": 0,
+
+                    //         "rtRgstFeePre": 100000,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "caresolutionSalesCodeSuffix": "WD502AS.AKOR",
+                    //         "rtFreePeriod": "3,6,9",
+                    //         "rtModelSeq": "161383",
+
+                    //     },
+                    //     {
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+
+
+                    //         "contractTerm": "2",
+                    //         "dutyTerm": "3",
+                    //         "freeMonth": 3,
+                    //         "visitPer": "0",
+
+                    //         "years1TotAmt": 31922,
+                    //         "years2TotAmt": 31922,
+                    //         "years3TotAmt": 31922,
+                    //         "years4TotAmt": 29922,
+                    //         "years5TotAmt": 24922,
+                    //         "years6TotAmt": 0,
+
+                    //         "rtRgstFeePre": 100000,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "caresolutionSalesCodeSuffix": "WD502AS.AKOR",
+                    //         "rtFreePeriod": "3,6,9",
+                    //         "rtModelSeq": "161383",
+                    //     }
+                    // ];
                     var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
-                        //가입비
+
+                        // 1. 계약기간 
+                        var contractTerm = ("" + item.contractTerm);
+                        var dutyTerm     = ("" + item.dutyTerm) ;
+                        var visitPerKey  = item.freeMonth+'회/'+item.visitPer+'개월';
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
-                        //의무사용 기간
-                        var dutyTerm = item.dutyTerm;
-                        //방문
-                        //var visitPer = item.visitPer;
 
-                        var dataByFee = rentalPriceData[rtRgstFeePre];
-                        if(!dataByFee) {
-                            dataByFee = {};
-                        }
+                        // 데이터 재정렬
+                        var dataByDuty = rentalPriceData[contractTerm] || {};
+                        var dataByVisit = dataByDuty[dutyTerm] || {};
+                        var dataByFee = dataByVisit[visitPerKey] || [];
+                            dataByFee.push(item);
 
-                        var dataByDuty = dataByFee[dutyTerm];
-                        if(!dataByDuty) {
-                            dataByDuty = [];
-                        }
-                        dataByDuty.push(item);
 
-                        dataByFee[dutyTerm] = dataByDuty;
-                        rentalPriceData[rtRgstFeePre] = dataByFee;
+                        dataByVisit[visitPerKey] = dataByFee; // 세번째 갑
+                        dataByDuty[dutyTerm] = dataByVisit; // 두번째 갑
+                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 갑
 
                         if(item.representChargeFlag == "Y") {
                             selectRtModelSeq = item.rtModelSeq;
-                            selectRtRgstFeePre = rtRgstFeePre;
+                            selectContractTerm = item.contractTerm;
                             selectDutyTerm = dutyTerm;
+                            selectVisitTerm =  item.freeMonth+'회/'+item.visitPer+'개월';
+                            selectRtRgstFeePre = rtRgstFeePre;
+                            
                         }
+
                     });
                     self.rentalInfoData = rentalPriceData;
+
+                    console.log("self.rentalInfoData %o",self.rentalInfoData);
                 }
 
                 //최초 기본값 찾기
                 if(selectRtModelSeq) {
+
+                    // 기본 계약 기간 찾기
                     var array = Object.keys(self.rentalInfoData);
                     for (var i = 0, len = array.length; i < len; i++) {
-                        if(array[i] == selectRtRgstFeePre) {
+                        if(array[i] == selectContractTerm) {
                             rentalSelectBoxIndex1 = i;
                             break;
                         }
                     }
 
-                    var dataByFee = self.rentalInfoData[selectRtRgstFeePre];
-                    var array = Object.keys(dataByFee);
+                    console.log("rentalSelectBoxIndex1 %o",rentalSelectBoxIndex1);
+
+
+                    // 의무사용기간 찾기
+                    var dataByDuty = self.rentalInfoData[selectContractTerm];
+                    var array = Object.keys(dataByDuty);
+                    console.log("array %o selectDutyTerm %o",array,selectDutyTerm);
                     for (var i = 0, len = array.length; i < len; i++) {
                         if(array[i] == selectDutyTerm) {
                             rentalSelectBoxIndex2 = i;
@@ -330,34 +440,66 @@
                         }
                     }
 
-                    var array = dataByFee[selectDutyTerm];
+                    console.log("rentalSelectBoxIndex2 %o",rentalSelectBoxIndex2);
+
+                    // 방문주기 착기
+                    var dataByVisit = dataByDuty[selectDutyTerm];
+                    console.log("dataByVisit %o",dataByVisit);
+                    var array = Object.keys(dataByVisit);
                     for (var i = 0, len = array.length; i < len; i++) {
-                        if(array[i].representChargeFlag == "Y") {
+                        if(array[i] == selectVisitTerm) {
                             rentalSelectBoxIndex3 = i;
                             break;
                         }
                     }
+
+                    console.log("rentalSelectBoxIndex3 %o",rentalSelectBoxIndex3);
+
+                    // 가입비선납 할인 찾기
+                    var array = dataByVisit[selectVisitTerm];
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i].representChargeFlag == "Y") {
+                            rentalSelectBoxIndex4 = i;
+                            break;
+                        }
+                    }
+
+                    console.log("rentalSelectBoxIndex4 %o",rentalSelectBoxIndex4);
                 }
 
 
                 //렌탈 케어솔루션 계약기간
                 self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
                 if(self.rentalInfoData && self.$caresolutionRentalInfoSelectBox.length > 0) {
-                    //가입비 세팅
+                    
+                    //게약기간 세팅
                     self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,rentalSelectBoxIndex1,false);
 
                     //의무사용기간 세팅
-                    var firstKey = Object.keys(self.rentalInfoData)[rentalSelectBoxIndex1];
-                    var dutyTermData = self.rentalInfoData[firstKey];
+                    var key = Object.keys(self.rentalInfoData)[rentalSelectBoxIndex1];
+                    var dutyTermData = self.rentalInfoData[key];
+
+                    console.log("dutyTermData %o %o %o",rentalSelectBoxIndex1, self.rentalInfoData,dutyTermData);
                     if(dutyTermData) {
                         self.rentalInfoSelectBoxUpdate(1,dutyTermData,rentalSelectBoxIndex2,false);
 
                         //방문주기
-                        firstKey = Object.keys(dutyTermData)[rentalSelectBoxIndex2];
-                        var visitPerData = dutyTermData[firstKey]
+                        key = Object.keys(dutyTermData)[rentalSelectBoxIndex2];
+                        var visitPerData = dutyTermData[key]
                         if(visitPerData) {
-                            self.updateRentalInfoPrice(visitPerData[rentalSelectBoxIndex3]);
                             self.rentalInfoSelectBoxUpdate(2,visitPerData,rentalSelectBoxIndex3,true);
+
+                            // 가입비 선납 할인
+                            key = Object.keys(visitPerData)[rentalSelectBoxIndex3];
+                            var FreePrePerData = visitPerData[key]
+                            
+                    console.log("FreePrePerData %o %o %o",rentalSelectBoxIndex3, self.rentalInfoData,FreePrePerData);
+
+                            if(FreePrePerData) {
+
+                            self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
+                            self.rentalInfoSelectBoxUpdate(3,FreePrePerData,rentalSelectBoxIndex4,true);
+                            }
                         }
                     }
                 }
@@ -873,6 +1015,8 @@
 
                 //구매/예약/렌탈
                 self.$pdpInfo.find('div.purchase-button a:not(.cart)').on('click', function(e) {
+
+                    console.log("렌탈신청 이벤트");
                     e.preventDefault();
                     var $this = $(this);
                     if(preOrderFlag) {
@@ -913,6 +1057,8 @@
                 });
 
                 self.$productBuyOptionTab.on("tabbeforechange", function(e, data){
+
+                    console.log("tabbeforechange 111");
                     var index = data.selectedIndex;
                     var optionParent = self.$pdpInfoProductDetailInfo.find('div.option-contents:eq('+index+')');
                     var btnTitle = optionParent.find('.payment-amount div.purchase-button a:not(.cart) span').text();
@@ -1175,16 +1321,21 @@
 
                 //케어솔루션 이용요금 
                 self.$pdpInfoCareSiblingOption.on('click','dl.price-info a.btn-link.popup', function(e) {
+
+                    console.log("이용요금");
                     e.preventDefault();
                     
                     var $paymentAmount = self.$pdpInfoCareSiblingOption.siblings('.payment-amount');
+
+                    console.log("$paymentAmount %o %o",$paymentAmount,$paymentAmount.data('careData'));
+
                     var cardData = $paymentAmount.data('cardData');
                     var carePrice = parseInt($paymentAmount.data('carePrice'));
                     var careData = $paymentAmount.data('careData');
 
                     var $title = self.$caresolutionInfoPopup.find('.tit-wrap.type2:eq(0)');
                     if(careData && careData.dutyTerm && $title.length > 0) {
-                        $title.find('.h2-tit').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 5년')
+                        $title.find('.h2-tit').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 '+careData.contractTerm+'년')
                     }
 
                     var $careLi = self.$caresolutionInfoPopup.find('.fee-info-wrap dl:eq(0)');
@@ -1258,29 +1409,59 @@
                 });
 
                 //렌탈 케어솔루션 계약기간
+
+
                 if(self.$caresolutionRentalInfoSelectBox.length > 0) {
-                    //가입비 선택
+
+                    console.log(self.$caresolutionRentalInfoSelectBox);
+                    //계약기간
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
+
+                        console.log("계약기간 변경");
                         var value = $(this).vcSelectbox('selectedOption').value;
                         self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],0, true);
                     });
+
+
                     //의무사용기간 선택
                     self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
+                        
+                        console.log("의무사용기간 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
                         self.rentalInfoBoxUpdate(1, $(this));
                         self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
                     });
+
                     //방문주기 선택 - 화면 가격 정보 갱신
                     self.$caresolutionRentalInfoSelectBox.eq(2).on('change', function(e,data){
+                        console.log("방문주기 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
-                        var $li =  $(this).parents('li');
-                        $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
-                        self.updateRentalInfoPrice(itemData);
+                        // var $li =  $(this).parents('li');
+                        // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
+                        // self.updateRentalInfoPrice(itemData);
                         self.rentalInfoBoxUpdate(2, $(this));
+                        self.rentalInfoSelectBoxUpdate(3,itemData,0, true);
                     });
+
+                    //가입비 선택
+                    self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
+                        console.log("가입비 변경");
+
+                        var selectOption = $(this).vcSelectbox('selectedOption');
+                        var itemData = $(selectOption).data('item');
+                        // var $li =  $(this).parents('li');
+                        // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
+
+                        console.log("change itemdata %o",itemData);
+                        console.log("change itemdata %o",$(this));
+                        self.updateRentalInfoPrice(itemData);
+                        self.rentalInfoBoxUpdate(3, $(this));
+                    });
+
+
                 };
 
                 //케어십 계약기간
@@ -1653,12 +1834,12 @@
                     $selectBox.empty();
                     if(selectData instanceof Array) {
                         selectData.forEach(function(item, index){
-                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtRgstFeePre,"title":vcui.number.addComma(item.rtRgstFeePre)+"원","json":JSON.stringify(item)})); // 가입비
                         });
                     } else {
                         for(key in selectData) {
-                            if(selectBoxIndex == 0) {
-                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":vcui.number.addComma(key)+"원","json":null}));
+                            if(selectBoxIndex == 2) {
+                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
                             } else {
                                 $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
                             }
@@ -1681,6 +1862,10 @@
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
             updateRentalInfoPrice: function(selectRentalInfoData) {
+
+                console.log("selectRentalInfoData %o",selectRentalInfoData);
+
+
                 var self = this;
                 self.selectRentalInfoData = selectRentalInfoData;
                 var carePrice = parseInt(selectRentalInfoData.years1TotAmt);
@@ -1696,6 +1881,7 @@
                     monthPrice = 0;
                 }
                 //월 이용요금
+
                 var $priceInfo = self.$pdpInfoCareSiblingOption.find('dl.price-info span.price');
                 $priceInfo.html('<span class="sub-text">(1년차 월 요금 기준)</span>' + vcui.number.addComma(monthPrice) + '원' + (selectRentalInfoData.freeMonth ? ('<em class="desc">무상할인(' + selectRentalInfoData.freeMonth + '개월)</em>') : ''));
 
@@ -1703,8 +1889,12 @@
                 var careData = {
                     "rtModelSeq":selectRentalInfoData.rtModelSeq,
                     "caresolutionSalesCodeSuffix":selectRentalInfoData.caresolutionSalesCodeSuffix,
-                    "dutyTerm":selectRentalInfoData.dutyTerm
+                    "dutyTerm":selectRentalInfoData.dutyTerm,
+                    "contractTerm":selectRentalInfoData.contractTerm
                 }
+
+                console.log("selectRentalInfoData.dutyTerm %o",selectRentalInfoData.dutyTerm);
+
                 //결헙하여 할인받기 링크용 값 추가
                 $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
 
