@@ -382,6 +382,7 @@
                     var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
 
+                        item.freeMonth = item.freeMonth || 0;
                         // 1. 계약기간 
                         var contractTerm = ("" + item.contractTerm);
                         var dutyTerm     = ("" + item.dutyTerm) ;
@@ -1856,7 +1857,7 @@
             rentalInfoBoxUpdate: function(index, $selectBox) {
                 var selectedValue = $selectBox.vcSelectbox('selectedOption');
                 var parent = $selectBox.parents('li.lists');
-                var findLi = parent.find('.article-box li:eq('+ (index+1) + ') span');
+                var findLi = parent.find('.article-box li:eq('+ (index) + ') span');
                 findLi.text(selectedValue.text);
             },
 
