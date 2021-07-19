@@ -735,10 +735,11 @@ $(function(){
 						</div>
 						<div id="tab2020" class="tabs-contents" style="display:block;">
 							<table>
-								<caption>2020년 의사회 활동 목록. 회차, 개최일자, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
+								<caption>2020년 의사회 활동 목록. 회차, 개최일자, 구분, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
 								<colgroup>
 									<col class="col-count">
 									<col class="col-date">
+									<col class="col-count">
 									<col class="col-cont">
 									<col class="col-name">
 									<col class="col-name">
@@ -750,6 +751,7 @@ $(function(){
 									<tr>
 										<th scope="col" rowspan="4">회차</th>
 										<th scope="col" rowspan="4">개최일자</th>
+										<th scope="col" rowspan="4">구분</th>
 										<th scope="col" rowspan="4">의안내용</th>
 										<th scope="col" colspan="5">사외이사 등의 성명</th>
 									</tr>
@@ -773,9 +775,10 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th rowspan="2">9</th>
-										<td rowspan="2">'20.12.23</td>
-										<td>1. 분할계획서 승인의 건</td>
+										<th scope="row" rowspan="10">1</th>
+										<td rowspan="10">'20.01.29</td>
+										<td rowspan="8">승인</td>
+										<td>1. 제18기 재무제표 및 영업보고서 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -783,7 +786,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. JV설립을 위한 자회사 지분 매각 승인의 건</td>
+										<td class="bo_l">2. '20년 사업계획 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -791,41 +794,15 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<th rowspan="10">8</th>
-										<td rowspan="10">'20.11.26</td>
-										<td>1. '21년 특수관계인과의 거래 총액 한도 승인의 건***</td>
-										<td>&nbsp;</td>
+										<td class="bo_l">3. '20년 특수관계인과의 거래총액한도 승인의 건*</td>
+										<td>-</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. '21년 계열사 등과의 자기거래 승인의 건***</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. '21년 계열사와의 상품&middot;용역거래 승인의 건***</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 부동산 임대차계약 승인의 건***</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">5. '21년 집행임원 정기인사 승인의 건</td>
+										<td class="bo_l">4. '20년 연간 차입한도 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -833,7 +810,23 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">6. 자문역 계약 유지 승인의 건</td>
+										<td class="bo_l">5. 계열사 등과의 자기거래 승인의 건(연간 실적/계획)*</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">6. 집행임원 인사관리 규정 개정 승인의 건</td>
+										<td>반대</td>
+										<td>반대</td>
+										<td>반대</td>
+										<td>반대</td>
+										<td>반대</td>
+									</tr>
+									<tr>
+										<td class="bo_l">7. 사외이사후보추천위원회 위원 선임의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -841,7 +834,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">7. 퇴임임원에 대한 처우 일시 지급 승인의 건</td>
+										<td class="bo_l">8. 집행임원 선임의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -849,103 +842,27 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. '19년 4/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
-										<td class="bo_l">1. '20년 별정직 임원 영입 현황 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td class="bo_l">2. 내부회계관리제도 운영실태 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. '20년 집행임원 징계 결과 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th rowspan="2">7</th>
-										<td rowspan="2">'20.10.29</td>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '20년 3/4분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th rowspan="4">6</th>
-										<td rowspan="4">'20.07.28</td>
-										<td>1. 계열사와의 상품&middot;용역 거래 승인의 건**</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '20년 2/4분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 계열사 등과의 자기거래 반기실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th rowspan="2">5</th>
-										<td rowspan="2">'20.04.28</td>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '20년 1/4분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th rowspan="6">4</th>
-										<td rowspan="6">'20.03.26</td>
-										<td>1. 대표이사 선임의 건</td>
+										<th scope="row">2</th>
+										<td>'20.02.07</td>
+										<td>승인</td>
+										<td>1. 주식 양수도 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -953,48 +870,9 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. 경영위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. '20년 이사 보수 집행 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 집행임원 특별상여금 지급 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">5. 상근 고문/자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">6. 고문위촉 및 퇴임임원에 대한 처우 일시 지급 승인의 건 </td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<th rowspan="11">3</th>
-										<td rowspan="11">'20.02.28</td>
+										<th scope="row" rowspan="10">3</th>
+										<td rowspan="10">'20.02.28</td>
+										<td rowspan="8">승인</td>
 										<td>1. 정기 주주총회 소집 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1004,11 +882,11 @@ $(function(){
 									</tr>
 									<tr>
 										<td class="bo_l">2. 정기 주주총회 회의목적사항 승인의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
 										<td class="bo_l">(1) 제18기 재무제표 승인의 건</td>
@@ -1059,43 +937,27 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. 내부회계관리제도 운영실태 평가 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
 										<td class="bo_l">2. 준법통제체제 운영실태 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
-										<th>2</th>
-										<td>'20.02.07</td>
-										<td>1. 주식 양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<th rowspan="11">1</th>
-										<td rowspan="11">'20.01.29</td>
-										<td>1. 제18기 재무제표 및 영업보고서 승인의 건</td>
+										<th scope="row" rowspan="6">4</th>
+										<td rowspan="6">'20.03.26</td>
+										<td rowspan="6">승인</td>
+										<td>1. 대표이사 선임의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1103,7 +965,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. '20년 사업계획 승인의 건</td>
+										<td class="bo_l">2. 경영위원회 위원 선임의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1111,15 +973,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">3. '20년 특수관계인과의 거래총액한도 승인의 건*</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. '20년 연간 차입한도 승인의 건</td>
+										<td class="bo_l">3. '20년 이사 보수 집행 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1127,23 +981,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">5. 계열사 등과의 자기거래 승인의 건(연간 실적/계획)*</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">6. 집행임원 인사관리 규정 개정 승인의 건</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-									</tr>
-									<tr>
-										<td class="bo_l">7. 사외이사후보추천위원회 위원 선임의 건</td>
+										<td class="bo_l">4. 집행임원 특별상여금 지급 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1151,7 +989,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">8. 집행임원 선임의 건</td>
+										<td class="bo_l">5. 상근 고문/자문역 위촉 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1159,28 +997,157 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td class="bo_l">6. 고문위촉 및 퇴임임원에 대한 처우 일시 지급 승인의 건 </td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">1. '19년 4/4 분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="row">5</th>
+										<td>'20.04.28</td>
+										<td>보고</td>
+										<td>1. '20년 1/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. 내부회계관리제도 운영실태 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="row" rowspan="3">6</th>
+										<td rowspan="3">'20.07.28</td>
+										<td>승인</td>
+										<td>1. 계열사와의 상품&middot;용역 거래 승인의 건**</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. '20년 2/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 계열사 등과의 자기거래 반기실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row">7</th>
+										<td>'20.10.29</td>
+										<td>보고</td>
+										<td>1. '20년 3/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="9">8</th>
+										<td rowspan="9">'20.11.26</td>
+										<th rowspan="7">승인</th>
+										<td>1. '21년 특수관계인과의 거래 총액 한도 승인의 건***</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. '21년 계열사 등과의 자기거래 승인의 건***</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. '21년 계열사와의 상품&middot;용역거래 승인의 건***</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">4. 부동산 임대차계약 승인의 건***</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">5. '21년 집행임원 정기인사 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">6. 자문역 계약 유지 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">7. 퇴임임원에 대한 처우 일시 지급 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td class="bo_l">1. '20년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. '20년 집행임원 징계 결과 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="2">9</th>
+										<td rowspan="2">'20.12.23</td>
+										<td rowspan="2">승인</td>
+										<td>1. 분할계획서 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. JV설립을 위한 자회사 지분 매각 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
 									</tr>
 								</tbody>
 							</table>
@@ -1194,10 +1161,11 @@ $(function(){
 						</div>
 						<div id="tab2019" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2019년 이사회 활동 목록. 회차, 개최일자, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
+								<caption>2019년 이사회 활동 목록. 회차, 개최일자, 구분, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
 								<colgroup>
 									<col class="col-count">
 									<col class="col-date">
+									<col class="col-count">
 									<col class="col-cont">
 									<col class="col-name">
 									<col class="col-name">
@@ -1209,6 +1177,217 @@ $(function(){
 									<tr>
 										<th scope="col" rowspan="4">회차</th>
 										<th scope="col" rowspan="4">개최일자</th>
+										<th scope="col" rowspan="4">구분</th>
+										<th scope="col" rowspan="4">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">(출석율:<br>0%)</th>
+										<th scope="col">(출석율:<br>100%)</th>
+										<th scope="col">(출석율:<br>100%)</th>
+										<th scope="col">(출석율:<br>100%)</th>
+										<th scope="col">(출석율:<br>100%)</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col" colspan="5">찬반여부</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row" rowspan="11">1</th>
+										<td rowspan="11">'19.01.29</td>
+										<td rowspan="9">승인</td>
+										<td>1. 제17기 재무제표 및 영업보고서 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. '19년 사업계획 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. '19년 특수관계인과의 거래총액한도 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">4. '19년 연간 차입한도 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">5. 이사 등의 자기거래 승인의 건 (연간 실적ㆍ계획)</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">6. 감사위원회 규정 개정 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">7. 사외이사후보추천위원회 규정 개정 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">8. 내부회계관리규정 개정 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">9. 사외이사후보추천위원회 위원 선임의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. '18년	4/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 내부회계관리제도 운영실태 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="9">2</th>
+										<td rowspan="9">'19.02.18</td>
+										<td rowspan="7">승인</td>
+										<td>1. 정기	주주총회 소집 결의의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 정기 주주총회 상정의안 결의의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">(1) 제17기 재무제표 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">(2) 정관 개정 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">(3) 이사 선임의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">(4) 감사위원회 위원 선임의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">(5) 이사 보수 한도 승인의 건</td>
+										<td>불출석</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table><br><br>
+							<table>
+								<caption>2019년 이사회 활동 목록. 회차, 개최일자, 구분, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
+								<colgroup>
+									<col class="col-count">
+									<col class="col-date">
+									<col class="col-count">
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="4">회차</th>
+										<th scope="col" rowspan="4">개최일자</th>
+										<th scope="col" rowspan="4">구분</th>
 										<th scope="col" rowspan="4">의안내용</th>
 										<th scope="col" colspan="5">사외이사 등의 성명</th>
 									</tr>
@@ -1232,192 +1411,9 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th rowspan="6">7</th>
-										<td rowspan="6">'19.11.28</td>
-										<td>1. LG상표 사용계약 갱신 승인의 건(**)</td>
-										<td>- (**)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. LG트윈타워 임대차계약 갱신 승인의 건(**)</td>
-										<td>- (**)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. '19년 집행임원 정기 인사 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '19년 별정직 임원 영입 현황 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. '19년 집행임원 징계 결과 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th rowspan="5">6</th>
-										<td rowspan="5">'19.10.29</td>
-										<td>1. 집행임원 선임 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 퇴임 임원에 대한 처우 일시 지급 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '19년 3/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th rowspan="5">5</th>
-										<td rowspan="5">'19.07.23</td>
-										<td>1. 부동산 매각 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 주식 양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 이사 등의 자기거래 승인의 건 (신규 한도 설정)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">. '19년 2/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th rowspan="6">4</th>
-										<td rowspan="6">'19.04.29</td>
-										<td>1. 집행임원 특별상여 지급기준 변경 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. '19년 집행임원 특별상여 (단기) 목표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 상근 자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '19년 1/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th rowspan="10">3</th>
+										<th scope="row" rowspan="10">3</th>
 										<td rowspan="10">'19.03.15</td>
+										<td rowspan="10">승인</td>
 										<td>1. 대표이사 선임의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -1497,114 +1493,44 @@ $(function(){
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
-								</tbody>
-							</table><br><br>
-							<table>
-								<caption>2019년 이사회 활동 목록. 회차, 개최일자, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
-								<colgroup>
-									<col class="col-count">
-									<col class="col-date">
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
 									<tr>
-										<th scope="col" rowspan="4">회차</th>
-										<th scope="col" rowspan="4">개최일자</th>
-										<th scope="col" rowspan="4">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">(출석율:<br>0%)</th>
-										<th scope="col">(출석율:<br>100%)</th>
-										<th scope="col">(출석율:<br>100%)</th>
-										<th scope="col">(출석율:<br>100%)</th>
-										<th scope="col">(출석율:<br>100%)</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col" colspan="5">찬반여부</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th rowspan="10">2</th>
-										<td rowspan="10">'19.02.18</td>
-										<td>1. 정기	주주총회 소집 결의의 건&nbsp;</td>
-										<td>불출석</td>
+										<th scope="row" rowspan="5">4</th>
+										<td rowspan="5">'19.04.29</td>
+										<td rowspan="4">승인</td>
+										<td>1. 집행임원 특별상여 지급기준 변경 승인의 건</td>
+										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. 정기 주주총회 상정의안 결의의 건</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="bo_l">&nbsp;(1) 제17기 재무제표 승인의 건</td>
-										<td>불출석</td>
+										<td class="bo_l">2. '19년 집행임원 특별상여 (단기) 목표 승인의 건</td>
+										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&nbsp;(2) 정관 개정 승인의 건</td>
-										<td>불출석</td>
+										<td class="bo_l">3. 상근 자문역 위촉 승인의 건</td>
 										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&nbsp;(3) 이사 선임의 건</td>
-										<td>불출석</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&nbsp;(4) 감사위원회 위원 선임의 건</td>
-										<td>불출석</td>
+										<td class="bo_l">4. 자문역 계약 유지 승인의 건</td>
 										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&nbsp;(5) 이사 보수 한도 승인의 건</td>
-										<td>불출석</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. 내부회계관리제도  운영실태 평가 보고의 건&nbsp;</td>
+										<td class="bo_l">보고</td>
+										<td>1. '19년 1/4분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -1612,7 +1538,35 @@ $(function(){
 										<td>-</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
+										<th scope="row" rowspan="4">5</th>
+										<td rowspan="4">'19.07.23</td>
+										<td rowspan="3">승인</td>
+										<td>1. 부동산 매각 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 주식 양수도 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. 이사 등의 자기거래 승인의 건 (신규 한도 설정)</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">보고</td>
+										<td>1. '19년 2/4분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -1620,89 +1574,35 @@ $(function(){
 										<td>-</td>
 									</tr>
 									<tr>
-										<th rowspan="12">1</th>
-										<td rowspan="12">'19.01.29</td>
-										<td>1. 제17기 재무제표 및 영업보고서 승인의 건</td>
-										<td>불출석</td>
+										<th scope="row" rowspan="4">6</th>
+										<td rowspan="4">'19.10.29</td>
+										<td rowspan="3">승인</td>
+										<td>1. 집행임원 선임 승인의 건</td>
 										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. '19년 사업계획 승인의 건</td>
-										<td>불출석</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">3. '19년 특수관계인과의 거래총액한도 승인의 건</td>
-										<td>불출석</td>
+										<td class="bo_l">2. 자문역 계약 유지 승인의 건</td>
 										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. '19년 연간 차입한도 승인의 건</td>
-										<td>불출석</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">5. 이사 등의 자기거래 승인의 건 (연간 실적ㆍ계획)</td>
-										<td>불출석</td>
+										<td class="bo_l">3. 퇴임 임원에 대한 처우 일시 지급 승인의 건</td>
 										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">6. 감사위원회 규정 개정 승인의 건</td>
-										<td>불출석</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">7. 사외이사후보추천위원회 규정 개정 승인의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">8. 내부회계관리규정 개정 승인의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">9. 사외이사후보추천위원회 위원 선임의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. '18년	4/4 분기 경영실적 보고의 건</td>
+										<td class="bo_l">보고</td>
+										<td>1. '19년 3/4분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -1710,7 +1610,43 @@ $(function(){
 										<td>-</td>
 									</tr>
 									<tr>
-										<td class="bo_l">2. 내부회계관리제도 운영실태 보고의 건</td>
+										<th scope="row" rowspan="5">7</th>
+										<td rowspan="5">'19.11.28</td>
+										<td rowspan="3">승인</td>
+										<td>1. LG상표 사용계약 갱신 승인의 건(**)</td>
+										<td>- (**)</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. LG트윈타워 임대차계약 갱신 승인의 건(**)</td>
+										<td>- (**)</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. '19년 집행임원 정기 인사 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. '19년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. '19년 집행임원 징계 결과 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -1722,10 +1658,11 @@ $(function(){
 						</div>
 						<div id="tab2018" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 이사회 활동 목록. 회차, 개최일자, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
+								<caption>2018년 이사회 활동 목록. 회차, 개최일자, 구분, 의안내용, 사외이사 등의 성명, 찬반여부</caption>
 								<colgroup>
 									<col class="col-count">
 									<col class="col-date">
+									<col class="col-count">
 									<col class="col-cont">
 									<col class="col-name">
 									<col class="col-name">
@@ -1737,6 +1674,7 @@ $(function(){
 									<tr>
 										<th scope="col" rowspan="4">회차</th>
 										<th scope="col" rowspan="4">개최일자</th>
+										<th scope="col" rowspan="4">구분</th>
 										<th scope="col" rowspan="4">의안내용</th>
 										<th scope="col" colspan="5">사외이사 등의 성명</th>
 									</tr>
@@ -1760,432 +1698,9 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th scope="row" rowspan="4">9</th>
-										<td rowspan="4">18.12.21</td>
-										<td>1. 집행임원 징계해임 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 집행임원 선임 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. LG Fuel Cell Systems 사업 청산 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="5">8</th>
-										<td rowspan="5">18.11.28</td>
-										<td>1. LG 상표 사용계약 갱신 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. LG트윈타워 임대차계약 갱신 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. `19년 집행임원 정기 인사 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">[보고]</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. `18년 별정직 임원 영입 현황 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="7">7</th>
-										<td rowspan="7">18.10.23</td>
-										<td>1. JV 설립에 따른 지분취득 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 터키법인 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 아르헨티나법인 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 집행임원 인사 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">5. 자문역 계약 유지 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. `18년 3/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="5">6</th>
-										<td rowspan="5">18.07.24</td>
-										<td>1. LG Fuel Cell Systems 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 자문역 계약 유지 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. `18년 2/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 이사 등의 자기거래 실적 보고의 건(반기 실적보고)	</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="3">5</th>
-										<td rowspan="3">17.05.29</td>
-										<td>1. 주식양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 영업양수도 승인의 건</td>
-										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="6">4</th>
-										<td rowspan="6">18.04.26</td>
-										<td>1. 자회사 지급 보증 승인의 件</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 주식 양수도 승인의 件</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 주주간 계약 체결 승인의 건</td>
-										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. `18년 1/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<th scope="row" rowspan="10">3</th>
-										<td rowspan="10">18.03.16</td>
-										<td>1. 이사회 의장 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">2. 대표이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">3. 경영위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">4. 집행임원 인사관리 규정 개정 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">5. `18년 이사 보수 집행 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">6. 집행임원 특별상여금 지급재원 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">7. 상근 고문/자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">8. `18년 집행임원 특별상여 (단기) 목표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">9. LG Electronics FundⅠ 출자 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td class="bo_l">10. LG트윈타워 임대차계약 승인의 건</td>
-										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<th rowspan="11">2</th>
-										<td rowspan="11">18.02.22</td>
-										<td>1. 정기 주주총회 소집 결의의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>	
-									</tr>
-									<tr>
-										<td class="bo_l">2. 정기 주주총회 상정의안 결의의 건</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>					
-									</tr>
-									<tr>
-										<td class="bo_l">(1) 제16기 재무제표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">(2) 이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">(3) 감사위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">(4) 이사 보수 한도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">3. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td class="bo_l">1. 내부회계관리제도 운영실태 평가 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>								
-									</tr>
-									<tr>
-										<td class="bo_l">3. CSR활동 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>								
-									</tr>
-									<tr>
-										<th rowspan="13">1</th>
-										<td rowspan="13">18.01.23</td>
+										<th scope="row" rowspan="12">1</th>
+										<td rowspan="12">18.01.23</td>
+										<td rowspan="10">승인</td>
 										<td>1. 제16기 재무제표 및 영업보고서 승인의 건</td>
 										<td>찬성</td>
 										<td>찬성</td>
@@ -2266,14 +1781,7 @@ $(function(){
 										<td>찬성</td>
 									</tr>
 									<tr>
-										<td class="bo_l">&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
 										<td class="bo_l">1. `17년 4/4 분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
@@ -2289,48 +1797,438 @@ $(function(){
 										<td>-</td>
 										<td>-</td>
 									</tr>
+									<tr>
+										<th scope="row" rowspan="10">2</th>
+										<td rowspan="10">18.02.22</td>
+										<td rowspan="7">승인</td>
+										<td>1. 정기 주주총회 소집 결의의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>	
+									</tr>
+									<tr>
+										<td class="bo_l">2. 정기 주주총회 상정의안 결의의 건</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>					
+									</tr>
+									<tr>
+										<td class="bo_l">(1) 제16기 재무제표 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">(2) 이사 선임의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">(3) 감사위원회 위원 선임의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">(4) 이사 보수 한도 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">3. 자문역 계약 유지 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>								
+									</tr>
+									<tr>
+										<td rowspan="3" class="bo_l">보고</td>
+										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>								
+									</tr>
+									<tr>
+										<td class="bo_l">3. CSR활동 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>								
+									</tr>
+									<tr>
+										<th scope="row" rowspan="10">3</th>
+										<td rowspan="10">18.03.16</td>
+										<td rowspan="10">승인</td>
+										<td>1. 이사회 의장 선임의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 대표이사 선임의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. 경영위원회 위원 선임의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">4. 집행임원 인사관리 규정 개정 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">5. `18년 이사 보수 집행 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">6. 집행임원 특별상여금 지급재원 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">7. 상근 고문/자문역 위촉 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">8. `18년 집행임원 특별상여 (단기) 목표 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">9. LG Electronics FundⅠ 출자 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">10. LG트윈타워 임대차계약 승인의 건</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="5">4</th>
+										<td rowspan="5">18.04.26</td>
+										<td rowspan="4">승인</td>
+										<td>1. 자회사 지급 보증 승인의 件</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 주식 양수도 승인의 件</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. 주주간 계약 체결 승인의 건</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">4. 자문역 계약 유지 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">보고</td>
+										<td class="bo_l">1. `18년 1/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="3">5</th>
+										<td rowspan="3">17.05.29</td>
+										<td rowspan="3">승인</td>
+										<td>1. 주식양수도 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 영업양수도 승인의 건</td>
+										<td>-</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. 자문역 계약 유지 승인의 건</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="4">6</th>
+										<td rowspan="4">18.07.24</td>
+										<td rowspan="2">승인</td>
+										<td>1. LG Fuel Cell Systems 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 자문역 계약 유지 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td rowspan="2" class="bo_l">보고</td>
+										<td>1. `18년 2/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 이사 등의 자기거래 실적 보고의 건(반기 실적보고)</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="6">7</th>
+										<td rowspan="6">18.10.23</td>
+										<td rowspan="5">승인</td>
+										<td>1. JV 설립에 따른 지분취득 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 터키법인 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. 아르헨티나법인 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">4. 집행임원 인사 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">5. 자문역 계약 유지 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">보고</td>
+										<td>1. `18년 3/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="4">8</th>
+										<td rowspan="4">18.11.28</td>
+										<td rowspan="3">승인</td>
+										<td>1. LG 상표 사용계약 갱신 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. LG트윈타워 임대차계약 갱신 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">3. `19년 집행임원 정기 인사 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">보고</td>
+										<td>1. `18년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="3">9</th>
+										<td rowspan="3">18.12.21</td>
+										<td rowspan="2">승인</td>
+										<td>1. 집행임원 징계해임 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">2. 집행임원 선임 승인의 건</td>
+										<td>불참</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+										<td>찬성</td>
+									</tr>
+									<tr>
+										<td class="bo_l">보고</td>
+										<td>1. LG Fuel Cell Systems 사업 청산 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
+
 				<div class="only_mo">
-					<div class="tb_row tb-row-bl">
+					<div class="tb_row tb-row-bl middle pd th_g">
 						<div class="tbl_select">
 							<div class="sort-select-wrap tabs-selectbox">
 								<select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
-									<option value="tab20209">2020년 9회차</option>
-									<option value="tab20208">2020년 8회차</option>
-									<option value="tab20207">2020년 7회차</option>
-									<option value="tab20206">2020년 6회차</option>
-									<option value="tab20205">2020년 5회차</option>
-									<option value="tab20204">2020년 4회차</option>
-									<option value="tab20203">2020년 3회차</option>
-									<option value="tab20202">2020년 2회차</option>
 									<option value="tab20201">2020년 1회차</option>
-									<option value="tab20197">2019년 7회차</option>
-									<option value="tab20196">2019년 6회차</option>
-									<option value="tab20195">2019년 5회차</option>
-									<option value="tab20194">2019년 4회차</option>
-									<option value="tab20193">2019년 3회차</option>
-									<option value="tab20192">2019년 2회차</option>
+									<option value="tab20202">2020년 2회차</option>
+									<option value="tab20203">2020년 3회차</option>
+									<option value="tab20204">2020년 4회차</option>
+									<option value="tab20205">2020년 5회차</option>
+									<option value="tab20206">2020년 6회차</option>
+									<option value="tab20207">2020년 7회차</option>
+									<option value="tab20208">2020년 8회차</option>
+									<option value="tab20209">2020년 9회차</option>
 									<option value="tab20191">2019년 1회차</option>
-									<option value="tab20189">2018년 9회차</option>
-									<option value="tab20188">2018년 8회차</option>
-									<option value="tab20187">2018년 7회차</option>
-									<option value="tab20186">2018년 6회차</option>
-									<option value="tab20185">2018년 5회차</option>
-									<option value="tab20184">2018년 4회차</option>
-									<option value="tab20183">2018년 3회차</option>
-									<option value="tab20182">2018년 2회차</option>
+									<option value="tab20192">2019년 2회차</option>
+									<option value="tab20193">2019년 3회차</option>
+									<option value="tab20194">2019년 4회차</option>
+									<option value="tab20195">2019년 5회차</option>
+									<option value="tab20196">2019년 6회차</option>
+									<option value="tab20197">2019년 7회차</option>
 									<option value="tab20181">2018년 1회차</option>
+									<option value="tab20182">2018년 2회차</option>
+									<option value="tab20183">2018년 3회차</option>
+									<option value="tab20184">2018년 4회차</option>
+									<option value="tab20185">2018년 5회차</option>
+									<option value="tab20186">2018년 6회차</option>
+									<option value="tab20187">2018년 7회차</option>
+									<option value="tab20188">2018년 8회차</option>
+									<option value="tab20189">2018년 9회차</option>
 								</select>
 							</div>
 						</div>
-
-						<div id="tab20209" class="tabs-contents" style="display:block;">
+						<div id="tab20201" class="tabs-contents" style="display:block;">
 							<table>
-								<caption>2020년 9회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2020년 1회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -2354,7 +2252,10 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th>1. 분할계획서 승인의 건</th>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 제18기 재무제표 및 영업보고서 승인의 건</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
@@ -2362,23 +2263,93 @@ $(function(){
 										<td>O</td>
 									</tr>
 									<tr>
-										<th>2. JV설립을 위한 자회사 지분 매각 승인의 건</th>
+										<td>2. '20년 사업계획 승인의 건</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 									</tr>
+									<tr>
+										<td>3. '20년 특수관계인과의 거래총액한도 승인의 건*</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>4. '20년 연간 차입한도 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. 계열사 등과의 자기거래 승인의 건(연간 실적/계획)*</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 집행임원 인사관리 규정 개정 승인의 건</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+									</tr>
+									<tr>
+										<td>7. 사외이사후보추천위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>8. 집행임원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '19년 4/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 내부회계관리제도 운영실태 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 12월 13일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2020년 1월 29일 개최</span><span>전원 출석률 100%</span></p>
+								<ul>
+									<li>* 3호, 5호 안건: 권영수 이사 의결권 제한</li>
+								</ul>
 							</div>
 						</div>
-						<div id="tab20208" class="tabs-contents" style="display:none;">
+						<div id="tab20202" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2020년 8회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2020년 2회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -2402,92 +2373,329 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th>1. '21년 특수관계인과의 거래 총액 한도 승인의 건***</th>
-										<td>&nbsp;</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<th>2. '21년 계열사 등과의 자기거래 승인의 건***</th>
-										<td>&nbsp;</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-									</tr>
-									<tr>
-										<th>3. '21년 계열사와의 상품&middot;용역거래 승인의 건***</th>
-										<td>&nbsp;</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-									</tr>
-									<tr>
-										<th>4. 부동산 임대차계약 승인의 건***</th>
-										<td>&nbsp;</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-									</tr>
-									<tr>
-										<th>5. '21년 집행임원 정기인사 승인의 건</th>
+										<td>1. 주식 양수도 승인의 건</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
-									</tr>
-									<tr>
-										<th>6. 자문역 계약 유지 승인의 건</th>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-									</tr>
-									<tr>
-										<th>7. 퇴임임원에 대한 처우 일시 지급 승인의 건</th>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-										<td>O</td>
-									</tr>
-									<tr>
-										<th>&lsqb;보고&rsqb;</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th>1. '20년 별정직 임원 영입 현황 보고의 건</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<th>2. '20년 집행임원 징계 결과 보고의 건</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 11월 26일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2020년 2월 07일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20203" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2020년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 정기 주주총회 소집 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 정기 주주총회 회의목적사항 승인의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>(1) 제18기 재무제표 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(2) 정관 개정 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(3) 이사 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(4) 감사위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(5) 이사 보수 한도 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 준법통제체제 운영실태 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2020년 2월 28일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20204" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2020년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 대표이사 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 경영위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. '20년 이사 보수 집행 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>4. 집행임원 특별상여금 지급 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. 상근 고문/자문역 위촉 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 고문위촉 및 퇴임임원에 대한 처우 일시 지급 승인의 건 </td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2020년 3월 26일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20205" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2020년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '20년 1/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2020년 4월 28일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20206" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2020년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 계열사와의 상품&middot;용역 거래 승인의 건**</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '20년 2/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 계열사 등과의 자기거래 반기실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2020년 7월 28일 개최</span><span>전원 출석률 100%</span></p>
 								<ul>
-									<li>*** 1호, 2호, 3호, 4호 안건: 권영수 이사 의결권 제한</li>
+									<li>** 1호 안건: 권영수 이사 의결권 제한</li>
 								</ul>
 							</div>
 						</div>
@@ -2517,20 +2725,15 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th>&lsqb;보고&rsqb;</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">보고</th>
 									</tr>
 									<tr>
-										<th>1. '20년 3/4분기 경영실적 보고의 건</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>1. '20년 3/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 								</tbody>
 							</table>
@@ -2539,9 +2742,9 @@ $(function(){
 								<p><span>2020년 10월 29일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
-						<div id="tab20206" class="tabs-contents" style="display:none;">
+						<div id="tab20208" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2020년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2020년 8회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -2565,50 +2768,96 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<th>1. 계열사와의 상품&middot;용역 거래 승인의 건**</th>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. '21년 특수관계인과의 거래 총액 한도 승인의 건***</td>
+										<td>-</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 										<td>O</td>
 									</tr>
 									<tr>
-										<th>&lsqb;보고&rsqb;</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>2. '21년 계열사 등과의 자기거래 승인의 건***</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<th>1. '20년 2/4분기 경영실적 보고의 건</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>3. '21년 계열사와의 상품&middot;용역거래 승인의 건***</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<th>2. 계열사 등과의 자기거래 반기실적 보고의 건</th>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>4. 부동산 임대차계약 승인의 건***</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. '21년 집행임원 정기인사 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>7. 퇴임임원에 대한 처우 일시 지급 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '20년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. '20년 집행임원 징계 결과 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 7월 28일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2020년 11월 26일 개최</span><span>전원 출석률 100%</span></p>
 								<ul>
-									<li>** 1호 안건: 권영수 이사 의결권 제한</li>
+									<li>*** 1호, 2호, 3호, 4호 안건: 권영수 이사 의결권 제한</li>
 								</ul>
 							</div>
 						</div>
-						<div id="tab20205" class="tabs-contents" style="display:none;">
+						<div id="tab20209" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2020년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2020년 9회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -2632,917 +2881,29 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>1. '20년 1/4분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 4월 28일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20204" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2020년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+										<td>1. 분할계획서 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 대표이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 경영위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. '20년 이사 보수 집행 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>4. 집행임원 특별상여금 지급 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>5. 상근 고문/자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>6. 고문위촉 및 퇴임임원에 대한 처우 일시 지급 승인의 건 </td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>2. JV설립을 위한 자회사 지분 매각 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 3월 26일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20203" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2020년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 정기 주주총회 소집 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 정기 주주총회 회의목적사항 승인의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>(1) 제18기 재무제표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>(2) 정관 개정 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>(3) 이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>(4) 감사위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>(5) 이사 보수 한도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>2. 준법통제체제 운영실태 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 2월 28일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20202" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2020년 2회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 주식 양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 2월 07일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20201" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2020년 1회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 제18기 재무제표 및 영업보고서 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. '20년 사업계획 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. '20년 특수관계인과의 거래총액한도 승인의 건*</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>4. '20년 연간 차입한도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>5. 계열사 등과의 자기거래 승인의 건(연간 실적/계획)*</td>
-										<td>&nbsp;</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>6. 집행임원 인사관리 규정 개정 승인의 건</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-										<td>반대</td>
-									</tr>
-									<tr>
-										<td>7. 사외이사후보추천위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>8. 집행임원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. '19년 4/4 분기 경영실적 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>2. 내부회계관리제도 운영실태 보고의 건</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2020년 1월 29일 개최</span><span>전원 출석률 100%</span></p>
-								<ul>
-									<li>* 3호, 5호 안건: 권영수 이사 의결권 제한</li>
-								</ul>
-							</div>
-						</div>
-						<div id="tab20197" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 7회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. LG상표 사용계약 갱신 승인의 건(**)</td>
-										<td>- (**)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. LG트윈타워 임대차계약 갱신 승인의 건(**)</td>
-										<td>- (**)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. '19년 집행임원 정기 인사 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. '19년 별정직 임원 영입 현황 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td>2. '19년 집행임원 징계 결과 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 11월 28일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20196" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 집행임원 선임 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 퇴임 임원에 대한 처우 일시 지급 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. '19년 3/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 10월 29일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20195" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 부동산 매각 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 주식 양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 이사 등의 자기거래 승인의 건 (신규 한도 설정)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>. '19년 2/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 7월 23일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20194" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 집행임원 특별상여 지급기준 변경 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. '19년 집행임원 특별상여 (단기) 목표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 상근 자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>4. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. '19년 1/4분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 4월 29일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20193" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">권영수</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-										<th scope="col">이상구</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 대표이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 경영위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 집행임원 인사관리 규정 개정 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>4. '19년 이사 보수 집행 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>5. 집행임원 특별상여금 지급재원 승인의 건(*)</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>6. 상근 고문/자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>7. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>8. 이사회 운영 관련 규정 개정 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>9. 항공기 지분 매입 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>10. 이사회 의장 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 3월 15일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20192" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2019년 2회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 정기	주주총회 소집 결의의 건&nbsp;</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 정기 주주총회 상정의안 결의의 건</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>&nbsp;(1) 제17기 재무제표 승인의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&nbsp;(2) 정관 개정 승인의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&nbsp;(3) 이사 선임의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&nbsp;(4) 감사위원회 위원 선임의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&nbsp;(5) 이사 보수 한도 승인의 건</td>
-										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. 내부회계관리제도  운영실태 평가 보고의 건&nbsp;</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td>2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2019년 2월 18일 개최</span><span>전원 출석률 80%</span></p>
+								<p><span>2020년 12월 13일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
 						<div id="tab20191" class="tabs-contents" style="display:none;">
@@ -3571,84 +2932,82 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
 										<td>1. 제17기 재무제표 및 영업보고서 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>2. '19년 사업계획 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>3. '19년 특수관계인과의 거래총액한도 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>4. '19년 연간 차입한도 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>5. 이사 등의 자기거래 승인의 건 (연간 실적ㆍ계획)</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>6. 감사위원회 규정 개정 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>7. 사외이사후보추천위원회 규정 개정 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>8. 내부회계관리규정 개정 승인의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>9. 사외이사후보추천위원회 위원 선임의 건</td>
 										<td>불출석</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">보고</th>
 									</tr>
 									<tr>
 										<td>1. '18년	4/4 분기 경영실적 보고의 건</td>
@@ -3673,9 +3032,9 @@ $(function(){
 								<p><span>2019년 1월 29일 개최</span><span>전원 출석률 80%</span></p>
 							</div>
 						</div>
-						<div id="tab20189" class="tabs-contents" style="display:none;">
+						<div id="tab20192" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 9회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2019년 2회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -3699,31 +3058,77 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<td>1. 집행임원 징계해임 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>2. 집행임원 선임 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 정기	주주총회 소집 결의의 건-</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<td>2. 정기 주주총회 상정의안 결의의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 									<tr>
-										<td>1. LG Fuel Cell Systems 사업 청산 보고의 건</td>
+										<td>(1) 제17기 재무제표 승인의 건</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(2) 정관 개정 승인의 건</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(3) 이사 선임의 건</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(4) 감사위원회 위원 선임의 건</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>(5) 이사 보수 한도 승인의 건</td>
+										<td>불출석</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. 내부회계관리제도  운영실태 평가 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 준법통제기준의 준수 여부 점검 결과 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -3734,12 +3139,12 @@ $(function(){
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 12월 21일 개최</span><span>전원 출석률 80%</span></p>
+								<p><span>2019년 2월 18일 개최</span><span>전원 출석률 80%</span></p>
 							</div>
 						</div>
-						<div id="tab20188" class="tabs-contents" style="display:none;">
+						<div id="tab20193" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 8회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2019년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -3754,64 +3159,107 @@ $(function(){
 										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
 									</tr>
 									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
+										<th class="bo_l" scope="col">권영수</th>
 										<th scope="col">최준근</th>
 										<th scope="col">김대형</th>
 										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>1. LG 상표 사용계약 갱신 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>2. LG트윈타워 임대차계약 갱신 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 대표이사 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>3. `19년 집행임원 정기 인사 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>2. 경영위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>[보고]</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td>3. 집행임원 인사관리 규정 개정 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>1. `18년 별정직 임원 영입 현황 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
+										<td>4. '19년 이사 보수 집행 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. 집행임원 특별상여금 지급재원 승인의 건(*)</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 상근 고문/자문역 위촉 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>7. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>8. 이사회 운영 관련 규정 개정 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>9. 항공기 지분 매입 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>10. 이사회 의장 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 11월 28일 개최</span><span>전원 출석률 80%</span></p>
+								<p><span>2019년 3월 15일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
-						<div id="tab20187" class="tabs-contents" style="display:none;">
+						<div id="tab20194" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 7회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2019년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -3826,272 +3274,54 @@ $(function(){
 										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
 									</tr>
 									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
+										<th class="bo_l" scope="col">권영수</th>
 										<th scope="col">최준근</th>
 										<th scope="col">김대형</th>
 										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>1. JV 설립에 따른 지분취득 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>2. 터키법인 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 집행임원 특별상여 지급기준 변경 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>3. 아르헨티나법인 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>2. '19년 집행임원 특별상여 (단기) 목표 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>4. 집행임원 인사 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>5. 자문역 계약 유지 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. `18년 3/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 10월 23일 개최</span><span>전원 출석률 80%</span></p>
-							</div>
-						</div>
-						<div id="tab20186" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2018년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. LG Fuel Cell Systems 유상증자 참여 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 자문역 계약 유지 승인의 건</td>
-										<td>불참</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. `18년 2/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td>2. 이사 등의 자기거래 실적 보고의 건(반기 실적보고)	</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 7월 24일 개최</span><span>전원 출석률 80%</span></p>
-							</div>
-						</div>
-						<div id="tab20185" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2018년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 주식양수도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 영업양수도 승인의 건</td>
-										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="tbl_info btm">
-								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 5월 29일 개최</span><span>전원 출석률 100%</span></p>
-							</div>
-						</div>
-						<div id="tab20184" class="tabs-contents" style="display:none;">
-							<table>
-								<caption>2018년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
-								<colgroup>
-									<col class="col-cont">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-									<col class="col-name">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col" rowspan="2">의안내용</th>
-										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
-									</tr>
-									<tr>
-										<th class="bo_l" scope="col">구본준</th>
-										<th scope="col">이창우</th>
-										<th scope="col">최준근</th>
-										<th scope="col">김대형</th>
-										<th scope="col">백용호</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1. 자회사 지급 보증 승인의 件</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>2. 주식 양수도 승인의 件</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>3. 주주간 계약 체결 승인의 건</td>
-										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>3. 상근 자문역 위촉 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
 										<td>4. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">보고</th>
 									</tr>
 									<tr>
-										<td>1. `18년 1/4 분기 경영실적 보고의 건</td>
+										<td>1. '19년 1/4분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -4102,12 +3332,230 @@ $(function(){
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 4월 26일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2019년 4월 29일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
-						<div id="tab20183" class="tabs-contents" style="display:none;">
+						<div id="tab20195" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2019년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 부동산 매각 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 주식 양수도 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 이사 등의 자기거래 승인의 건 (신규 한도 설정)</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '19년 2/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2019년 7월 23일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20196" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2019년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 집행임원 선임 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 퇴임 임원에 대한 처우 일시 지급 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '19년 3/4분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2019년 10월 29일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20197" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2019년 7회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">권영수</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+										<th scope="col">이상구</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. LG상표 사용계약 갱신 승인의 건(**)</td>
+										<td class="pd0">- (**)</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. LG트윈타워 임대차계약 갱신 승인의 건(**)</td>
+										<td class="pd0">- (**)</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. '19년 집행임원 정기 인사 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. '19년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. '19년 집행임원 징계 결과 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2019년 11월 28일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20181" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 1회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -4131,90 +3579,112 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<td>1. 이사회 의장 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>2. 대표이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 제16기 재무제표 및 영업보고서 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>3. 경영위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>2. `18년 사업계획 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>4. 집행임원 인사관리 규정 개정 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>5. `18년 이사 보수 집행 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>6. 집행임원 특별상여금 지급재원 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>7. 상근 고문/자문역 위촉 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>8. `18년 집행임원 특별상여 (단기) 목표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>9. LG Electronics FundⅠ 출자 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>10. LG트윈타워 임대차계약 승인의 건</td>
+										<td>3. `18년 특수관계인과의 거래총액한도 승인의 건</td>
 										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>4. `18년 연간 차입한도 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. 해외생산법인과의 로열티 거래 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 이사 등의 자기거래 승인의 건 (연간 실적&middot;계획)</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>7. 사외이사후보추천위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>8. 준법지원인 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>9. 집행임원 선임 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>10. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. `17년 4/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 내부회계관리제도 운영실태 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 3월 16일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2018년 1월 23일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
 						<div id="tab20182" class="tabs-contents" style="display:none;">
@@ -4243,68 +3713,66 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
 										<td>1. 정기 주주총회 소집 결의의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>	
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>	
 									</tr>
 									<tr>
 										<td>2. 정기 주주총회 상정의안 결의의 건</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>					
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>					
 									</tr>
 									<tr>
 										<td>(1) 제16기 재무제표 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>								
 									</tr>
 									<tr>
 										<td>(2) 이사 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>								
 									</tr>
 									<tr>
 										<td>(3) 감사위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>								
 									</tr>
 									<tr>
 										<td>(4) 이사 보수 한도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>								
 									</tr>
 									<tr>
 										<td>3. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>								
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>								
 									</tr>
 									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
+										<th scope="col" colspan="6">보고</th>
 									</tr>
 									<tr>
 										<td>1. 내부회계관리제도 운영실태 평가 보고의 건</td>
@@ -4337,9 +3805,9 @@ $(function(){
 								<p><span>2018년 2월 22일 개최</span><span>전원 출석률 100%</span></p>
 							</div>
 						</div>
-						<div id="tab20181" class="tabs-contents" style="display:none;">
+						<div id="tab20183" class="tabs-contents" style="display:none;">
 							<table>
-								<caption>2018년 1회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<caption>2018년 3회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
 								<colgroup>
 									<col class="col-cont">
 									<col class="col-name">
@@ -4363,103 +3831,160 @@ $(function(){
 								</thead>
 								<tbody>
 									<tr>
-										<td>1. 제16기 재무제표 및 영업보고서 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>2. `18년 사업계획 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 이사회 의장 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>3. `18년 특수관계인과의 거래총액한도 승인의 건</td>
+										<td>2. 대표이사 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 경영위원회 위원 선임의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>4. 집행임원 인사관리 규정 개정 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. `18년 이사 보수 집행 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>6. 집행임원 특별상여금 지급재원 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>7. 상근 고문/자문역 위촉 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>8. `18년 집행임원 특별상여 (단기) 목표 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>9. LG Electronics FundⅠ 출자 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>10. LG트윈타워 임대차계약 승인의 건</td>
 										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 3월 16일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20184" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 4회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
 									</tr>
 									<tr>
-										<td>4. `18년 연간 차입한도 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
 									</tr>
 									<tr>
-										<td>5. 해외생산법인과의 로열티 거래 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>1. 자회사 지급 보증 승인의 件</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>6. 이사 등의 자기거래 승인의 건 (연간 실적&middot;계획)</td>
+										<td>2. 주식 양수도 승인의 件</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 주주간 계약 체결 승인의 건</td>
 										<td>-</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>7. 사외이사후보추천위원회 위원 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<td>4. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
 									</tr>
 									<tr>
-										<td>8. 준법지원인 선임의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
+										<th scope="col" colspan="6">보고</th>
 									</tr>
 									<tr>
-										<td>9. 집행임원 선임 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>10. 자문역 계약 유지 승인의 건</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-										<td>찬성</td>
-									</tr>
-									<tr>
-										<td>&lsqb;보고&rsqb;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>1. `17년 4/4 분기 경영실적 보고의 건</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-									</tr>
-									<tr>
-										<td>2. 내부회계관리제도 운영실태 보고의 건</td>
+										<td>1. `18년 1/4 분기 경영실적 보고의 건</td>
 										<td>-</td>
 										<td>-</td>
 										<td>-</td>
@@ -4470,12 +3995,366 @@ $(function(){
 							</table>
 							<div class="tbl_info btm">
 								<p><span>O : 찬성</span><span>X : 반대</span></p>
-								<p><span>2018년 1월 23일 개최</span><span>전원 출석률 100%</span></p>
+								<p><span>2018년 4월 26일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20185" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 5회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 주식양수도 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 영업양수도 승인의 건</td>
+										<td>-</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 자문역 계약 유지 승인의 건</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 5월 29일 개최</span><span>전원 출석률 100%</span></p>
+							</div>
+						</div>
+						<div id="tab20186" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 6회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. LG Fuel Cell Systems 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 자문역 계약 유지 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. `18년 2/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>2. 이사 등의 자기거래 실적 보고의 건(반기 실적보고)	</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 7월 24일 개최</span><span>전원 출석률 80%</span></p>
+							</div>
+						</div>
+						<div id="tab20187" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 7회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. JV 설립에 따른 지분취득 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 터키법인 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. 아르헨티나법인 유상증자 참여 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>4. 집행임원 인사 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>5. 자문역 계약 유지 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. `18년 3/4 분기 경영실적 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 10월 23일 개최</span><span>전원 출석률 80%</span></p>
+							</div>
+						</div>
+						<div id="tab20188" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 8회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. LG 상표 사용계약 갱신 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. LG트윈타워 임대차계약 갱신 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>3. `19년 집행임원 정기 인사 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>1. `18년 별정직 임원 영입 현황 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 11월 28일 개최</span><span>전원 출석률 80%</span></p>
+							</div>
+						</div>
+						<div id="tab20189" class="tabs-contents" style="display:none;">
+							<table>
+								<caption>2018년 9회차 의사회 활동 목록. 의안내용, 사외이사 등의 성명 및 찬반여부</caption>
+								<colgroup>
+									<col class="col-cont">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+									<col class="col-name">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">의안내용</th>
+										<th scope="col" colspan="5">사외이사 등의 성명 및 찬반여부</th>
+									</tr>
+									<tr>
+										<th class="bo_l" scope="col">구본준</th>
+										<th scope="col">이창우</th>
+										<th scope="col">최준근</th>
+										<th scope="col">김대형</th>
+										<th scope="col">백용호</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="col" colspan="6">승인</th>
+									</tr>
+									<tr>
+										<td>1. 집행임원 징계해임 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<td>2. 집행임원 선임 승인의 건</td>
+										<td>불참</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+										<td>O</td>
+									</tr>
+									<tr>
+										<th scope="col" colspan="6">보고</th>
+									</tr>
+									<tr>
+										<td>1. LG Fuel Cell Systems 사업 청산 보고의 건</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="tbl_info btm">
+								<p><span>O : 찬성</span><span>X : 반대</span></p>
+								<p><span>2018년 12월 21일 개최</span><span>전원 출석률 80%</span></p>
 							</div>
 						</div>
 					</div>
 				</div>
-
+				
 			</div>
 		</div>
 

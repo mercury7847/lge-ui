@@ -272,6 +272,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .board-view .board-view-sub {padding:12px 0; border-bottom:1px solid #ddd; text-align:right}
 .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {top:32px; right:0; left:auto; padding:32px}
 .company .board-view-wrap .board-view .board-view-body {padding:24px}
+.company .board-view-wrap .board-view .board-view-body .view-content > img {display:block; margin:0 auto}
 .company .board-view-wrap .board-navi {border-top:1px solid #ddd; border-bottom:1px solid #ddd}
 .company .board-view-wrap .board-navi .navi {display:block; padding:24px}
 .company .board-view-wrap .board-navi .navi + .navi {border-top:1px solid #ddd}
@@ -571,6 +572,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
+.company colgroup col.p25 {width:25%}
+.company colgroup col.p20 {width:20%}
 .company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
@@ -740,6 +743,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
     .company .cont_view_more .content {padding:50px 0 0}
 
+    /* 테이블 */
+    .company colgroup col.m40 {width:40%!important}
+    .company colgroup col.m20 {width:20%!important}
+    .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tit + .tbl_tit {margin-top:12px}
     .company .tbl_info.abs2 {top:-22px}
@@ -769,6 +776,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .tb-col.pd table th {padding:16px 10px!important}
     .company .tb_row.pd table td,
     .company .tb-col.pd table td {padding:16px 10px!important}
+    .company .tb_row.pd2 table th,
+    .company .tb-col.pd2 table th {padding:16px 12px!important}
+    .company .tb_row.pd2 table td,
+    .company .tb-col.pd2 table td {padding:16px 12px!important}
     .company .tb_row table th.pd0,
     .company .tb-col table th.pd0,
     .company .tb_row table td.pd0,
@@ -1056,6 +1067,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .board-view-wrap .board-view .board-view-sub {padding:8px 0}
     .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {width:100%; top:50%; transform:translateY(-50%); padding:24px}
     .company .board-view-wrap .board-view .board-view-body {padding:24px 0}
+    .company .board-view-wrap .board-view .board-view-body .view-content > img {width:100%; max-width:100%}
     .company .board-view-wrap .board-navi .navi {display:flex; padding:15px 0 15px 12px}
     .company .board-view-wrap .board-navi .navi-label {min-width:42px; margin-right:24px; font-size:14px; line-height:22px}
     .company .board-view-wrap .board-navi .navi-desc {font-size:14px; line-height:22px; word-break:break-all}
