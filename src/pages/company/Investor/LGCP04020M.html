@@ -22,9 +22,10 @@
 			},
 			pieSliceTextStyle : {
 				fontSize: '16',
-				bold:true
+				bold:true,
+				fontName:'Noto Sans'
 			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}}
+			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16',fontName:'Noto Sans'}}
 		};
         checkSize();
 		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -188,7 +189,7 @@
 				<caption>발행주식 주주현황</caption>
 				<thead>
 					<tr>
-						<th scope="row">&nbsp;</th>
+						<th scope="row">구분</th>
 						<th scope="row">2020년</th>
 						<th scope="row">2019년</th>
 						<th scope="row">2018년</th>
