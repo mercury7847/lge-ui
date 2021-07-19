@@ -60,13 +60,16 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-        '           {{#if siblingFee.length > 0}}'+
-        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
-        '                   <dt>가입비</dt>'+
+
+        '           {{#if siblingContractPeriod.length > 0}}'+
+        // '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
+        '                   <dt>계약기간</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="1" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
-        '                           {{#each item in siblingFee}}'+
+        // '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod">'+
+        '                           {{#each item in siblingContractPeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
@@ -74,12 +77,15 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
+
         '           {{#if siblingUsePeriod.length > 0}}'+
-        '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
+        // '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        // '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod">'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -89,11 +95,13 @@
         '               </dl>'+
         '           {{/if}}'+
         '           {{#if siblingVisitCycle.length > 0}}'+
-        '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
+        // '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        // '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle">'+
         '                           {{#each item in siblingVisitCycle}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectVisitCycleID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -102,6 +110,29 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
+
+
+        '           {{#if siblingFee.length > 0}}'+
+        // '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
+        '                   <dt>가입비</dt>'+
+        '                   <dd>'+
+        '                       <div class="sort-select-wrap">'+
+        // '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee">'+
+        '                           {{#each item in siblingFee}}'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
+        '                   </dd>'+
+        '               </dl>'+
+        '           {{/if}}'+      
+
+
+
+
+
         '           </div>'+
         '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
         '           <div class="txt-info price-info">'+
@@ -366,7 +397,7 @@
             addPutItem(this);
         }).on('change', '.info-wrap select', function(e){
             e.preventDefault();
-
+            console.log("change");
             changeItemOptions(this);
         });
 
@@ -679,9 +710,10 @@
             blockID: idx
         }
 
-        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
+        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
         if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
         if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -693,6 +725,8 @@
             
             var blockID = result.data.blockID;
 
+            console.log("_priceStatusUrl %o result.data %o",_priceStatusUrl,result.data);
+
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
@@ -700,6 +734,7 @@
 
             if(sendata.tabID == 0){
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
@@ -786,6 +821,8 @@
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
+            console.log("item list %o", _currentItemList[i]);
+
             if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
             else{
                 if(getTabID() == 0) _currentItemList[i].modelUrlPath += "?dpType=careTab";
