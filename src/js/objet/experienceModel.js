@@ -851,7 +851,7 @@
                                             name: "실버",
                                             code: "SV",
                                             mixingCode: "GSV"
-                                        },{
+                                        }, {
                                             name: "레드우드",
                                             code: "RD",
                                             mixingCode: "GRD"
