@@ -40,11 +40,12 @@
 				flex:1;
 			}
 			.tooltip-wrap.share {
-				position: relative;
+				
 				height:auto;
 				padding:16px 4px 24px;
 
 				@include mobile {
+					position: relative;
 					padding:4px 4px 24px;
 				}
 			}
