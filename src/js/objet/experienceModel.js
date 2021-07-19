@@ -4242,7 +4242,6 @@
             $objFooter.hide();
             $step3.hide(); //210714 BTOCSITE-2346 add 
             $step3Shop.show(); //210714 BTOCSITE-2346 add 
-            console.log("newbest" + $step3Shop);
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
@@ -4255,7 +4254,6 @@
             $objFooter.hide();
             $step3.hide(); //210714 BTOCSITE-2346 add 
             $step3Shop.show(); //210714 BTOCSITE-2346 add
-            console.log("himart" + $step3Shop);
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
         }
