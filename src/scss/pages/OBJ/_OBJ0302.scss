@@ -1993,25 +1993,47 @@ h2.title {
 
 /* BTOCSITE-2852 add */
 .panel_guide {
-    padding:20px;
-    border:1px solid #666;
-    line-height:2.35;
+    padding:16px 24px;
+    border:1px solid #ddd;
+    border-radius: 8px;
+    line-height:24px;
     margin-top:20px;
     width:99.9%;
+    font-size: 14px;
+
+    @include mobile {
+        font-size: 13px;
+        line-height: 21px;
+        margin-top:0px;
+    }
 
     .strong {
-        text-align: left;
-        font-size: 18px;
+        text-align: left;        
         color: #222222;
         font-weight: 700;
     }
 
     .desc {
-        text-align: left;
-        font-size: 16px;
+        text-align: left;        
         color: #222222;
         font-weight: 400;
     }
 
+    .more {        
+        float:right;
+        font-size:14px;
+        @include mobile {
+            display:inline-block;
+            float:none;
+            font-size:13px;
+            margin-top:15px;
+            line-height:21px;
+        }
+    }
+
+}
+
+.panel_guide + dd {
+    margin-top:24px !important;
 }
 /* //BTOCSITE-2852 add */
