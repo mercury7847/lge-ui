@@ -112,6 +112,14 @@
                                         name: "실버",
                                         code: "SV",
                                         mixingCode: "GSV"
+                                    }, {
+                                        name: "레드우드",
+                                        code: "RD",
+                                        mixingCode: "GRD"
+                                    }, {
+                                        name: "클레이 브라운",
+                                        code: "CL",
+                                        mixingCode: "GCL"
                                     }]
                                 }
                             }, {
@@ -390,6 +398,14 @@
                                             name: "실버",
                                             code: "SV",
                                             mixingCode: "GSV"
+                                        }, {
+                                            name: "레드우드",
+                                            code: "RD",
+                                            mixingCode: "GRD"
+                                        }, {
+                                            name: "클레이 브라운",
+                                            code: "CL",
+                                            mixingCode: "GCL"
                                         }]
                                     }
                                 }, {
@@ -516,6 +532,14 @@
                                             name: "실버",
                                             code: "SV",
                                             mixingCode: "GSV"
+                                        }, {
+                                            name: "레드우드",
+                                            code: "RD",
+                                            mixingCode: "GRD"
+                                        }, {
+                                            name: "클레이 브라운",
+                                            code: "CL",
+                                            mixingCode: "GCL"
                                         }]
                                     }
                                 }, {
@@ -4895,7 +4919,9 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                         colorHtml += '  </button>';
                                         colorHtml += '</li>';
                                         colorSelBodyHtml += colorHtml;
@@ -4962,7 +4988,9 @@
                         let colorHtml = '<li>';
                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                         colorHtml += '  </button>';
                         colorHtml += '</li>';
                         colorSelBodyHtml += colorHtml;
@@ -5028,7 +5056,9 @@
                                 let colorHtml = '<li>';
                                 colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                 colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                 colorHtml += '  </button>';
                                 colorHtml += '</li>';
                                 colorSelBodyHtml += colorHtml;
@@ -5453,7 +5483,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         if (_doorInfoMaterial[0] == "F") {
@@ -5648,7 +5683,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml2 += '<li>';
@@ -5799,7 +5839,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml += '<li>';
