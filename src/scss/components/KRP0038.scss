@@ -29,6 +29,18 @@
 	&.bg-white {
 		background-color: #fff;
 	}
+	// BTOCSITE-3270 공유하기 타입 추가 2021-07-19
+	&.share-type {
+		.component-inner {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			.heading-box {
+				flex:1;
+			}
+		}
+	}
 	.component-inner {
 		.heading-box {
 			padding:16px 0 64px;
