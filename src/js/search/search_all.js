@@ -934,7 +934,7 @@
                         noData = false;
 
                         var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
-                        if($btnLink.length > 0 && count < 2) { //BTOCSITE-3128 스토리 노출 건 4개에서 2개로 변경
+                        if($btnLink.length > 0 && count < 3) { //BTOCSITE-3128 스토리 노출 건 4개에서 2개로 변경
                             $btnLink.hide();
                         } else {
                             $btnLink.show();
