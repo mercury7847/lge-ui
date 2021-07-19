@@ -70,7 +70,7 @@
         // '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
         '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod">'+
         '                           {{#each item in siblingContractPeriod}}'+
-        '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectContractPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
