@@ -41,6 +41,11 @@
 			}
 			.tooltip-wrap.share {
 				position: relative;
+				padding:16px 4px 24px;
+
+				@include mobile {
+					padding:4px 4px 24px;
+				}
 			}
 		}
 	}
