@@ -350,7 +350,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .dwn_all .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px}
 .company .dwn_all .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56}
 .company .dwn_all .titArea .btn.dwn_all {padding:5px 12px; font-size:14px; line-height:20px}
-.company .dwn_all ul.dwn_list {float:left; width:calc(50% - 12px)}
+.company .dwn_all ul.dwn_list {float:left; width:calc(50% - 12px); margin-top:-14px}
 .company .dwn_all ul.dwn_list + ul.dwn_list {margin-left:24px}
 .company .dwn_all ul.dwn_list > li {width:100%}
 .company .dwn_all ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
@@ -558,7 +558,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
 /* 자료 더보기 영역 */
 .company .cont_view_more {padding:60px 0 0}
-.company .cont_view_more .btnArea {text-align:center}
+.company .cont_view_more .btnArea {margin:0; text-align:center}
 .company .cont_view_more .btnArea .btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px; font-size:14px; line-height:20px}
 .company .cont_view_more .btnArea .btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
 .company .cont_view_more .btnArea .btn:hover::after,
@@ -645,7 +645,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 .company .tb_row table td.bo_l,
 .company .tb-col table th.bo_l,
 .company .tb-col table td.bo_l {border-left:1px solid #ddd!important}
-
+.company .tb-col table tr:first-child th,
+.company .tb-col table tr:first-child td {border-top:1px solid #ddd}
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
 /* 정관 */
@@ -925,7 +926,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .artTxt p {font-size:14px; line-height:1.57}
     .artTxt h2.tit ~ h2.tit {margin-top:20px}
 
-    .company .infoBox {padding:30px 20px}
+    .company .infoBox {margin:40px auto; padding:30px 20px}
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
