@@ -313,12 +313,42 @@ h2.title {
                 // 210714 BTOCSITE-2346 - W821AAA463 추가 
                 &[data-model_code="W821AAA453"],
                 &[data-model_code="W821AAA463"] {
-                    //얼음정수기냉장고
+                    //노크온 매직스페이스
                     .model_door {
                         &[data-door-direction="LT"] {
                             width: 49.1%;
                             height: 53.8%;
                             left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="LB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            left: .5%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="RB"] {
+                            width: 49.1%;
+                            height: 41.8%;
+                            right: .5%;
+                            top: 56.5%;
+                        }
+                    }
+                }
+                &[data-model_code="W821AAA153"] {
+                    //매직 스페이스 210714 BTOCSITE-2346 W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        //매직 스페이스 210714 BTOCSITE-2346 - "RT" 위치 변경
+                        &[data-door-direction="RT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            right: .5%;
                             top: .3%;
                         }
                         &[data-door-direction="LB"] {
@@ -407,6 +437,7 @@ h2.title {
                         }
                     }
                 }
+                
                 &[data-model_code="M871AAA252"],
                 &[data-model_code="M871AAA151"],
                 &[data-model_code="M871AAA152"] {
@@ -1727,9 +1758,10 @@ h2.title {
                 }
             }
         }
-        // 210714 BTOCSITE-2364 M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
+        // 210714 BTOCSITE-2364 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
         &[data-model-default-code="M871AAA151"],
-        &[data-model-default-code="M871AAA041"] {
+        &[data-model-default-code="M871AAA041"],
+        &[data-model-default-code="W821AAA153"] {
             .mini_model_wrap {
                 .mini_model {
                     &:nth-child(1) {

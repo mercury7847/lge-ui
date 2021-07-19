@@ -234,19 +234,6 @@
     </dd>
     </dl>
     <!--// STEP 2 -->
-    <!-- BTOCSITE-1582 add :: 결제버튼 추가 -->
-    <div class="total_price_info_wrap" id="quick_buy">
-        <div class="total_price_info_body">
-            <dl>
-                <dd>
-                    <div class="price_info">
-                        <button class="btn btn_purchase"><span>구매하기</span></button>
-                    </div>
-                </dd>
-            </dl>
-        </div>
-    </div>
-    <!-- //BTOCSITE-1582 add -->
     <!-- STEP 3 -->
     <dl class="simul_step simul_step3">
         <dt>
@@ -271,8 +258,9 @@
         </dd>
     </dl>
     <!--// STEP 3 -->
-    <!-- STEP 3 newbest & himart. -->
-    <dl class="simul_step simul_step3_newbhimart" style="display: none;">
+
+    <!-- STEP 3 newbest & himart. S - 210719 BTOCSITE-2346-->
+    <dl class="simul_step simul_step3_newbhimart">
         <dt>
             <div class="simul_tit">
                 <span class="step">STEP 3.</span>
@@ -295,7 +283,24 @@
             -->
         </dd>
     </dl>
-    <!--// STEP 3 newbest & himart-->
+    <!--// STEP 3 newbest & himart E - 210719 BTOCSITE-2346-->
+
+    <!-- BTOCSITE-1582 add :: 결제버튼 추가 -->
+    <!-- BTOCSITE-2346 add :: 버튼 위치 변경 - newbest & himart 용 -->
+    <div class="total_price_info_wrap" id="quick_buy">
+        <div class="total_price_info_body">
+            <dl>
+                <dd>
+                    <div class="price_info">
+                        <button class="btn btn_purchase"><span>구매하기</span></button>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- //BTOCSITE-2346 add :: 버튼 위치 변경 - newbest & himart 용 -->
+    <!-- //BTOCSITE-1582 add -->
+
     <!-- 합계 -->
     <div data-sum-active="N" class="total_price_info_wrap">
         <div class="total_price_info_body">
@@ -304,15 +309,17 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide">
+                    <!--<div class="swiper-slide">
+                                    
                                     <dl data-cate="" data-door-default-code="">
                                         <dt>노크온 그래프트 아이스</dt>
-                                        <!--BTOCSITE-2852 add :: 안내문구 추가 -->
+                                        <!-- BTOCSITE-2852 add :: 안내문구 추가 
                                         <div class="panel_guide">
                                             <p class="strong" >패널만 교체 가능한 거 아세요?</p>
                                             <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>
                                         </div>
-                                        <!--//BTOCSITE-2852 add :: 안내문구 추가 -->
+                                        //BTOCSITE-2852 add :: 안내문구 추가 -->
+                                        <!--
                                         <dd>
                                             <div class="price_info">
                                                 <ul class="product_list">
@@ -341,7 +348,9 @@
                                             </div>
                                         </dd>
                                     </dl>
-                                </div> 
+                                </div>-->
+                            
+                                
 
 
                 </div>
