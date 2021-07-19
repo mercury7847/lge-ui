@@ -1,3 +1,30 @@
+
+<script type="text/javascript">
+	var imgMo = "/kr/images/company/info/overseas/img-mobile.png";
+	var imgPc = "/kr/images/company/info/overseas/img-default.png";
+	$(document).ready(function() {	
+		checkSize();
+	});
+	$(window).resize(function() {
+        checkSize();
+	});
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			$(".overseas .img-overseas img").attr("src", imgMo);
+			$(".overseas area").attr("onmouseover","");
+			$(".overseas area").attr("onmouseout","");
+		}
+		else{
+			$(".overseas .img-overseas img").attr("src", imgPc);
+			$(".overseas area").each(function(){
+				var _this = $(this);
+				_this.attr("onmouseover",_this.data("onmouseover"));
+				_this.attr("onmouseout", _this.data("onmouseout"));
+			});
+		}
+	}
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
 .overseas{position: relative;}
@@ -49,11 +76,11 @@
 	</section>
 	<!-- // hiro image -->
 	<div class="ui_sticky">
-		<div class="com-tabs">
+		<div class="com-tabs" id="com-tabs01">
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/info/introduce">기업소개</a>
+						<a href="/company/info/introduce#com-tabs01">기업소개</a>
 					</li>
 					<li>
 						<a href="/company/info/outline">LG WAY</a>
@@ -65,16 +92,16 @@
 						</ul>
 					</li>
 					<li>
-						<a href="/company/info/history">역사</a>
+						<a href="/company/info/history#com-tabs01">역사</a>
 					</li>
 					<li>
-						<a href="/company/info/management">경영진</a>
+						<a href="/company/info/management#com-tabs01">경영진</a>
 					</li>
 					<li>
-						<a href="/company/info/ci">브랜드</a>
+						<a href="/company/info/ci#com-tabs01">브랜드</a>
 					</li>
 					<li class="on">
-						<a href="/company/info/domestic">사업장<em class="blind">선택됨</em></a>
+						<a href="/company/info/domestic#com-tabs01">사업장<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/domestic">국내사업장</a></li>
 							<li><a href="/company/info/overseas">해외사업장</a></li>
@@ -92,11 +119,11 @@
 		<p class="text">LG전자의 사업장을 소개합니다.</p>
 	</div>
 
-	<div class="com-tabs">
+	<div class="com-tabs" id="com-tabs02">
 		<div class="tabs-wrap btn-type left">
 			<ul class="tabs">
-				<li><a href="/company/info/domestic">국내사업장</a></li>
-				<li class="on"><a href="/company/info/overseas">해외사업장<em class="blind">선택됨</em></a></li>
+				<li><a href="/company/info/domestic#com-tabs02">국내사업장</a></li>
+				<li class="on"><a href="/company/info/overseas#com-tabs02">해외사업장<em class="blind">선택됨</em></a></li>
 			</ul>
 		</div>
 	</div>
@@ -108,7 +135,7 @@
 		<div class="overseas">
 			<map name="pc-map">
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="ASIA & PACIFIC" coords="381,183,333,224,311,263,279,291,480,561,716,613,759,565,617,183" onmouseover="overseas.src='/kr/images/company/info/overseas/img-asiapacific.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="ASIA & PACIFIC" coords="381,183,333,224,311,263,279,291,480,561,716,613,759,565,617,183" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-asiapacific.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">ASIA & PACIFIC</span>
 						<span class="country-list">
@@ -171,7 +198,7 @@
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="LATIN AMERICA" coords="1106,399,1210,399,1334,468,1199,710,1106,710" onmouseover="overseas.src='/kr/images/company/info/overseas/img-latinamerica.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="LATIN AMERICA" coords="1106,399,1210,399,1334,468,1199,710,1106,710" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-latinamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">LATIN AMERICA</span>
 						<span class="country-list">
@@ -210,7 +237,7 @@
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="EUROPE" coords="275,30,272,135,219,241,108,281,14,279,0,0" onmouseover="overseas.src='/kr/images/company/info/overseas/img-europe.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="EUROPE" coords="275,30,272,135,219,241,108,281,14,279,0,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-europe.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">EUROPE</span>
 						<span class="country-list">
@@ -284,7 +311,7 @@
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="MIDDLE EAST & AFRICA" coords="2,303,30,282,183,282,183,241,321,242,303,268,277,293,254,513,125,559,1,381" onmouseover="overseas.src='/kr/images/company/info/overseas/img-middleeastafrica.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="MIDDLE EAST & AFRICA" coords="2,303,30,282,183,282,183,241,321,242,303,268,277,293,254,513,125,559,1,381" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-middleeastafrica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">MIDDLE EAST & AFRICA</span>
 						<span class="country-list">
@@ -343,7 +370,7 @@
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="NORTH AMERICA" coords="1110,0,780,119,780,256,1070,400,1180,399,1400,192,1400,0" onmouseover="overseas.src='/kr/images/company/info/overseas/img-northamerica.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="NORTH AMERICA" coords="1110,0,780,119,780,256,1070,400,1180,399,1400,192,1400,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-northamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">NORTH AMERICA</span>
 						<span class="country-list">
@@ -370,7 +397,7 @@
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="RUSSIA & CIS" coords="773,113,654,217,611,177,379,180,309,241,230,238,232,190,280,112,277,22,707,21" onmouseover="overseas.src='/kr/images/company/info/overseas/img-russiacis.png'" onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="RUSSIA & CIS" coords="773,113,654,217,611,177,379,180,309,241,230,238,232,190,280,112,277,22,707,21" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-russiacis.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
 					<span class="tooltip-box">
 						<span class="tit">RUSSIA & CIS</span>
 						<span class="country-list">

@@ -2,7 +2,6 @@
 <style>
 /* 슬라이더 mo */
 @media screen and (max-width:767px){
-	.company .slide-history{overflow: hidden;}
 	.company .slide-history .slide-wrap {overflow: visible !important;}
 	.company .slide-history .slide-conts{padding: 0 4.44vw;}
 	.company .slide-history .slide-conts .img {margin-bottom:48px;}
@@ -43,7 +42,7 @@ $(document).ready(function() {
 		<li><strong>역사</strong></li>
 	</ul>
 </div>
-<div class="container company">
+<div class="container company" style="overflow:hidden">
 	<div class="page-header">
 		<h2 class="title">기업정보</h2>
 	</div>
@@ -58,11 +57,11 @@ $(document).ready(function() {
 	</section>
 	<!-- // hiro image -->
 	<div class="ui_sticky">
-		<div class="com-tabs">
+		<div class="com-tabs" id="com-tabs01">
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/info/introduce">기업소개</a>
+						<a href="/company/info/introduce#com-tabs01">기업소개</a>
 					</li>
 					<li>
 						<a href="/company/info/outline">LG WAY</a>
@@ -74,16 +73,16 @@ $(document).ready(function() {
 						</ul>
 					</li>
 					<li class="on">
-						<a href="/company/info/history">역사<em class="blind">선택됨</em></a>
+						<a href="/company/info/history#com-tabs01">역사<em class="blind">선택됨</em></a>
 					</li>
 					<li>
-						<a href="/company/info/management">경영진</a>
+						<a href="/company/info/management#com-tabs01">경영진</a>
 					</li>
 					<li>
-						<a href="/company/info/ci">브랜드</a>
+						<a href="/company/info/ci#com-tabs01">브랜드</a>
 					</li>
 					<li>
-						<a href="/company/info/domestic">사업장</a>
+						<a href="/company/info/domestic#com-tabs01">사업장</a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/domestic">국내사업장</a></li>
 							<li><a href="/company/info/overseas">해외사업장</a></li>
