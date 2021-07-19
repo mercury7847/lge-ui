@@ -112,6 +112,14 @@
                                         name: "실버",
                                         code: "SV",
                                         mixingCode: "GSV"
+                                    }, {
+                                        name: "레드우드",
+                                        code: "RD",
+                                        mixingCode: "GRD"
+                                    }, {
+                                        name: "클레이 브라운",
+                                        code: "CL",
+                                        mixingCode: "GCL"
                                     }]
                                 }
                             }, {
@@ -390,6 +398,14 @@
                                             name: "실버",
                                             code: "SV",
                                             mixingCode: "GSV"
+                                        }, {
+                                            name: "레드우드",
+                                            code: "RD",
+                                            mixingCode: "GRD"
+                                        }, {
+                                            name: "클레이 브라운",
+                                            code: "CL",
+                                            mixingCode: "GCL"
                                         }]
                                     }
                                 }, {
@@ -516,6 +532,14 @@
                                             name: "실버",
                                             code: "SV",
                                             mixingCode: "GSV"
+                                        }, {
+                                            name: "레드우드",
+                                            code: "RD",
+                                            mixingCode: "GRD"
+                                        }, {
+                                            name: "클레이 브라운",
+                                            code: "CL",
+                                            mixingCode: "GCL"
                                         }]
                                     }
                                 }, {
@@ -3762,7 +3786,11 @@
         });
         //추천조합 선택
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
-            let modelName = $(this).find(">span").text();
+            /* BTOCSITE-3032 add */
+            var modelCode = $(this).data().modelCode;
+            var defaultModelCode = $(this).data().modelDefaultCode;
+            /* //BTOCSITE-3032 add */
+            //let modelName = $(this).find(">span").text();
             $(this).find(".mini_model_wrap .mini_model").each(function() {
                 let idx = $(this).index();
                 let idxImg = $(this).html();
@@ -3774,7 +3802,7 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName });
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode });    // BTOCSITE-3032 modify
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -4895,7 +4923,9 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                         colorHtml += '  </button>';
                                         colorHtml += '</li>';
                                         colorSelBodyHtml += colorHtml;
@@ -4962,7 +4992,9 @@
                         let colorHtml = '<li>';
                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                         colorHtml += '  </button>';
                         colorHtml += '</li>';
                         colorSelBodyHtml += colorHtml;
@@ -5028,7 +5060,9 @@
                                 let colorHtml = '<li>';
                                 colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                 colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>';
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                 colorHtml += '  </button>';
                                 colorHtml += '</li>';
                                 colorSelBodyHtml += colorHtml;
@@ -5457,7 +5491,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         if (_doorInfoMaterial[0] == "F") {
@@ -5652,7 +5691,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml2 += '<li>';
@@ -5803,7 +5847,12 @@
                                 _doorInfoKColor[j] = "그레이"
                             } else if (_doorInfoColor[j] == "BK") {
                                 _doorInfoKColor[j] = "블랙"
+                            } else if (_doorInfoColor[j] == "RD") {
+                                _doorInfoKColor[j] = "레드우드"
+                            } else if (_doorInfoColor[j] == "CL") {
+                                _doorInfoKColor[j] = "클레이 브라운"
                             }
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml += '<li>';
@@ -6200,6 +6249,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     for (let i = 0; i < priceLeng; i++) {
         
         // console.log("price[i]", price[i])
+        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
+        /*
         if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
             price.forEach(function(v, i){
@@ -6209,6 +6260,7 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
             })
             
         } 
+        */
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);
