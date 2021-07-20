@@ -99,6 +99,23 @@
                 var activeTabIndex = $('.option-tabs .tabs li.on').index()
                 self.replaceModelName(activeTabIndex);
 
+
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 스크립트 추가
+                var iconStore = $('.info-bottom .link-area .reservation.store-counsel');
+                var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
+                var $reservationLink = $('.info-bottom .link-area .reservation a');
+
+                if( activeTabIndex == 0) {
+                    iconStore.show();
+                    iconRental.hide();
+                } else {
+                    iconStore.hide();
+                    iconRental.show();
+                }
+
+                if( isApp() && $reservationLink.attr('data-app-link') != undefined && $reservationLink.attr('data-app-link') != '') {
+                    $reservationLink.attr('href', $reservationLink.attr('data-app-link'))
+                }
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
             },
