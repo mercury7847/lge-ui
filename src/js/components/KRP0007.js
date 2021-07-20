@@ -555,22 +555,17 @@
                 });
                 /* //BTOCSITE-2150 add */
 
-
-
                 /* BTOCSITE-2785 : 2021-07-14 add */
-                console.log("-----------------------------------------");
                 var $productG_content = $('.productGlossary');
                 var $productGBtn = $productG_content.find('button');
-                self.$categoryList = self.$categorySelect.find('.ui_smooth_tab ul');
-
-                $.each(firstFilterList, function(idx, item){
-                    var itemHTML = 
-                    '<li data-productTarget="s'+ idx +'">' + item.filterValueName + '</li>';
-                    //console.log(itemHTML);
-                    //self.$categoryList.append(itemHTML);
-                    //console.log(self.$categoryList.append(itemHTML));
-                    //console.log(item.filterValueName);
-                });
+                //self.$categoryList = self.$categorySelect.find('.ui_smooth_tab ul');
+                // $.each(firstFilterList, function(idx, item){
+                //     var itemHTML = 
+                //     '<li data-productTarget="s'+ idx +'">' + item.filterValueName + '</li>';
+                //     //self.$categoryList.append(itemHTML);
+                //     //console.log(self.$categoryList.append(itemHTML));
+                //     //console.log(item.filterValueName);
+                // });
 
                 self.$categorySelect.on('click', '.ui_smooth_tab ul li:not(:first)', function(){ 
                     if($(this).hasClass('on')){
