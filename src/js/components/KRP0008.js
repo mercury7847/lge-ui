@@ -103,7 +103,7 @@
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 스크립트 추가
                 var iconStore = $('.info-bottom .link-area .reservation.store-counsel');
                 var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
-                var $reservationLink = $('.info-bottom .link-area .reservation a');
+                var $reservationLink = $('.info-bottom .link-area [data-app-link]');
 
                 if( activeTabIndex == 0) {
                     iconStore.show();
@@ -113,8 +113,13 @@
                     iconRental.show();
                 }
 
-                if( isApp() && $reservationLink.attr('data-app-link') != undefined && $reservationLink.attr('data-app-link') != '') {
-                    $reservationLink.attr('href', $reservationLink.attr('data-app-link'))
+                if( isApp()) {
+                    $reservationLink.each(function(){
+                        var $this = $(this);
+                        if( $this.attr('data-app-link') != '') {
+                            $this.attr('href', $this.attr('data-app-link'))
+                        }
+                    });
                 }
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
@@ -404,8 +409,8 @@
                         var contractTerm = ("" + item.contractTerm);
                         var dutyTerm     = ("" + item.dutyTerm) ;
 
-                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음' : item.visitPer+'개월';
-                        var visitPerKey  = '1회 / '+visitPerTxt;
+                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음' : '1회 / '+item.visitPer+'개월';
+                        var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
 
                         // 데이터 재정렬
@@ -423,7 +428,7 @@
                             selectRtModelSeq = item.rtModelSeq;
                             selectContractTerm = item.contractTerm;
                             selectDutyTerm = dutyTerm;
-                            selectVisitTerm =  '1회 / '+visitPerTxt;
+                            selectVisitTerm =  visitPerTxt;
                             selectRtRgstFeePre = rtRgstFeePre;
                             
                         }

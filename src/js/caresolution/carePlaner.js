@@ -9,7 +9,7 @@
     // .module-type2 : 케어십_유상제품 모듈
     // .module-type3 : 케어십_보유제품 모듈
     // .module-type4 : 케어십_용역제품 모듈
-
+    // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
@@ -31,7 +31,6 @@
         '       {{#if moduleType == "module-type4"}}'+
         '           <p class="code-txt">{{modelDescription}}</p>'+
         '       {{/if}}'+
-
         '       {{#if purchaseInfo != null && purchaseInfo != undefined && purchaseInfo != ""}}'+
         '           <div class="txt-info">'+
         '           {{#each item in purchaseInfo}}'+
@@ -60,15 +59,12 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-
         '           {{#if siblingContractPeriod.length > 0}}'+
-        // '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
-        '               <dl>'+
+        '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>계약기간</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        // '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
-        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod">'+
+        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingContractPeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -77,15 +73,12 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-
         '           {{#if siblingUsePeriod.length > 0}}'+
-        // '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
-        '               <dl>'+
+        '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        // '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
-        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod">'+
+        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -95,13 +88,11 @@
         '               </dl>'+
         '           {{/if}}'+
         '           {{#if siblingVisitCycle.length > 0}}'+
-        // '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
-        '               <dl>'+
+        '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        // '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
-        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle">'+
+        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingVisitCycle}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectVisitCycleID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -110,16 +101,12 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-
-
         '           {{#if siblingFee.length > 0}}'+
-        // '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
-        '               <dl>'+
+        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>가입비</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        // '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
-        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee">'+
+        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingFee}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -128,11 +115,6 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+      
-
-
-
-
-
         '           </div>'+
         '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
         '           <div class="txt-info price-info">'+
@@ -752,6 +734,15 @@
             return item;
         });
         selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', selectIdx, false);
+
+        // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+        if(list.length === 1) {
+            selector.vcSelectbox('disabled',true);
+            selector.closest('dl').addClass("disabled");
+        } else {
+            selector.vcSelectbox('disabled',false);
+            selector.closest('dl').removeClass("disabled");
+        }
     }
 
     //색상 옵션 변경...
