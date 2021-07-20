@@ -1,5 +1,4 @@
 $(function() {
-
     $.extend( $.easing,{
         def: 'easeOutQuad',
         easeInOutQuart: function (x, t, b, c, d) {
@@ -605,8 +604,10 @@ $(function() {
         // 탭이동 이벤트 처리
         $('.signature-tabs .ui_tab').on('tabchange', function(e, data){
             //오류 처리
-            $('html,body').scrollTop(pageLens*winHeight);
-            $contentWrap.scrollTop(0);
+            /* 20210713 탭버튼 스크롤 이동 수정 */
+            //$('html,body').scrollTop($contentWrap);
+            //$contentWrap.scrollTop();
+            $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
         });
 
         $(document).on('click', 'a', function(e){
@@ -642,8 +643,8 @@ $(function() {
         });
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-        var $stkTab = $contentWrap.find('.signature-tabs');
-        var $stkTabOffsetTop = $stkTab.offset().top;
+        //var $stkTab = $contentWrap.find('.signature-tabs');
+        var $stkTabOffsetTop = $contentWrap.offset().top;
 
         $window.scroll(function(){
             if($window.scrollTop() >= $stkTabOffsetTop) {
@@ -657,16 +658,18 @@ $(function() {
         $sigTab.on('click', function(){
             $('html,body').stop().animate({scrollTop:$stkTabOffsetTop});
         })
+
+
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
         // 접근성 탭 이동시 화면처리
         $(document).on('focusin', function(e){
 
             /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
-            if($.contains($('.signature-wrap')[0], e.target)){
-                currentPage = pageLens;
-                currentStep = stepLens;
-            }
+            // if($.contains($('.signature-wrap')[0], e.target)){
+            //     currentPage = pageLens;
+            //     currentStep = stepLens;
+            // }
             // else if($.contains($('.signature-hero')[0], e.target)){
             //     // currentPage = 0;
             //     // currentStep = 0;
