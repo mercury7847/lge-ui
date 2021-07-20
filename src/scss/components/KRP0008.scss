@@ -1169,37 +1169,6 @@
                             }
                         }
                             
-<<<<<<< HEAD
-                    }
-                    /* 20210607 스펙선택 추가 */ 
-                    &.Spec { 
-                        padding:14px 24px;
-                        background: #fff;
-                        border:1px solid #aaa;
-                        .price-info {
-                            padding-right: 0;
-                            .content {
-                                width: 320px;
-                                @include mobile{
-                                    width: 80%; 
-                                }
-                                .btn-area {
-                                    margin-top: 0 !important;
-                                    .btn-link {
-                                        text-decoration: none;
-                                        display: block !important;
-                                        width: 100%;
-                                        position: relative;
-                                    }
-                                }
-                            }
-                        }
-
-                        @include mobile {
-                            padding:14px 12px;
-                        }
-                    }
-=======
                     }
                     /* 20210607 스펙선택 추가 */ 
                     &.Spec { 
@@ -1224,7 +1193,6 @@
                             }
                         }
                     }
->>>>>>> c8f1f75f6bf04d579cd261d4371890b67642f1ea
                     /* //20210607 스펙선택 추가 */
                 }
                 &.care-solution-payment-info {
@@ -1258,20 +1226,6 @@
                     @include font-x-small;
                     word-break: keep-all;
                 }
-<<<<<<< HEAD
-                .btn-area {	
-                    // outline: 1px solid red;	
-                    /* BTOCSITE-324 : MARGIN조정 */	
-                    margin-top: 12px;	
-                    @include mobile{	
-                        margin-top: 6px;	
-                    }	
-                    /* //BTOCSITE-324 : MARGIN조정 */	
-                    text-align: right;	
-                    .btn-link {	
-                        @include font-small;	
-                    }	
-=======
                 .btn-area {
                     // outline: 1px solid red;
                     /* BTOCSITE-324 : MARGIN조정 */
@@ -1284,7 +1238,6 @@
                     .btn-link {
                         @include font-small;
                     }
->>>>>>> c8f1f75f6bf04d579cd261d4371890b67642f1ea
                 }
             }
         }
