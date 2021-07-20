@@ -77,7 +77,7 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
 //추천 기획전 : 제품 슬라이드
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
-    '       <a href="{{obj.modelUrlPath}}" data-ec-product="{{obj.ecProduct_s}}">\n'+
+    '       <a href="{{obj.modelUrlPath}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '           <div class="img"><img src="{{obj.mediumImageAddr}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
@@ -304,7 +304,7 @@ $(function(){
             newExhibitionLocal.push(obj);
         }
 
-        // 새제품 추천 렌더링
+        // 새제품 렌더링
         function buildNewRecommend(result){
 
             var data = result.data;
@@ -316,7 +316,7 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
-                    //var newTempEcProduct = getEcProduct(item);
+                    var newTempEcProduct = getEcProduct(item);
 
                     if(obsOriginalPrice!==0){ 
                         item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
@@ -346,29 +346,11 @@ $(function(){
                     }
 
                     /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
-                    function getEcCategoryName(item){
-                        if( item.subCategoryName == "" || item.subCategoryName == undefined) {
-                            return item.superCategoryName + "/" + item.categoryName 
-                        } else {
-                            return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
-                        }
-                    }
-
-                    var ecProduct = {
-                        "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
-                        "model_id": item.modelId,
-                        "model_sku": item.modelName, 
-                        "model_gubun": item.modelGubunName,
-                        "price": vcui.number.addComma(item.obsOriginalPrice), 
-                        "discounted_price": vcui.number.addComma(item.obssellingprice), 
-                        "brand": "LG",
-                        "category": getEcCategoryName(item),
-                        "ct_id": item.subCategoryId
-                    }
+                    // 삭제
+                    //item.ecProduct = JSON.stringify(ecProduct);
                     /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 
-                    item.ecProduct = JSON.stringify(ecProduct);
-                    //item.ecProduct = JSON.stringify(newTempEcProduct);
+                    item.ecProduct = JSON.stringify(newTempEcProduct);
 
                     return item;
                 });
@@ -415,7 +397,7 @@ $(function(){
         }
 
 
-        // 제품 추천 렌더링
+        // 추천 렌더링
         function buildRecommend(){
 
             $(window).on('breakpointchange.recommend', function(e){
@@ -459,6 +441,7 @@ $(function(){
                         var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                         var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                         var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+                        var recommendTempProduct = getEcProduct(item);
 
                         if(obsOriginalPrice!==0){ 
                             item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
@@ -478,29 +461,10 @@ $(function(){
                         // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
                         /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
-                        function getEcCategoryName(item){
-                            if( item.subCategoryName == "" || item.subCategoryName == undefined) {
-                                return item.superCategoryName + "/" + item.categoryName 
-                            } else {
-                                return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
-                            }
-                        }
-
-                        var ecProduct_s = {
-                            "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
-                            "model_id": item.modelId,
-                            "model_sku": item.modelName, 
-                            "model_gubun": item.modelGubunName,
-                            "price": vcui.number.addComma(item.obsOriginalPrice), 
-                            "discounted_price": vcui.number.addComma(item.totalPrice), 
-                            "brand": "LG",
-                            "category": getEcCategoryName(item),
-                            "ct_id": item.subCategoryId
-                        }
-                        // console.log("---------------------");
-                        // console.log(ecProduct_s);
-                        item.ecProduct_s = JSON.stringify(ecProduct_s);
+                        // 삭제
+                        //item.ecProduct_s = JSON.stringify(ecProduct_s);
                         /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
+                        item.ecProduct = JSON.stringify(recommendTempProduct);
 
                         return item;
                     });
@@ -523,7 +487,7 @@ $(function(){
 
                 /* 20210615 추천 기획전 구조변경 */
                 // var exhibitionStr = vcui.template(exhibitionTmpl, {list : nArr});
-              
+            
                 // $('.ui_exhib_carousel').find('.product-listCont').html(exhibitionStr);
                 /* //20210615 추천 기획전 구조변경 */
                 $context.find('.ui_exhib_carousel').vcCarousel({
@@ -746,7 +710,7 @@ $(function(){
         // 새로운 제품, 놓치지 마세요
         lgkorUI.requestAjaxDataFailCheck(storeNewRecommendProductUrl, {}, buildNewRecommend, errorRequest);
         
-        buildRecommend();       
+        buildRecommend();
 
     });
 
