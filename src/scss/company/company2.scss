@@ -269,8 +269,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos > li {font-size:14px; line-height:24px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos > li + li {position:relative; margin-left:9px; padding-left:9px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos > li + li::before {content:''; display:block; position:absolute; width:1px; height:10px; top:calc(50% - 5px); left:-0.5px; background-color:#ddd}
-.company .board-view-wrap .board-view .board-view-sub {padding:12px 0; border-bottom:1px solid #ddd; text-align:right}
+.company .board-view-wrap .board-view .board-view-sub {padding:16px 0; border-bottom:1px solid #ddd; text-align:right}
+.company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share {width:24px; height:24px; padding:0}
 .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {top:32px; right:0; left:auto; padding:32px}
+.company .board-view-wrap .board-view .board-view-sub .dwn {display:inline-block; width:24px; height:24px; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size: 28px 28px;}
 .company .board-view-wrap .board-view .board-view-body {padding:24px}
 .company .board-view-wrap .board-view .board-view-body .view-content > img {display:block; margin:0 auto}
 .company .board-view-wrap .board-navi {border-top:1px solid #ddd; border-bottom:1px solid #ddd}
