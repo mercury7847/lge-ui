@@ -105,13 +105,13 @@
                 var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
                 var $reservationLink = $('.info-bottom .link-area [data-app-link]');
 
-                if( activeTabIndex == 0) {
-                    iconStore.show();
-                    iconRental.hide();
-                } else {
-                    iconStore.hide();
-                    iconRental.show();
-                }
+                // if( activeTabIndex == 0) {
+                //     iconStore.show();
+                //     iconRental.hide();
+                // } else {
+                //     iconStore.hide();
+                //     iconRental.show();
+                // }
 
                 if( isApp()) {
                     $reservationLink.each(function(){
