@@ -62,12 +62,14 @@ var FilterLayer = (function() {
             '</div>' +
         '</div>' +
     '</li>';
-
-    var filterCategoryTopTemplate = '<li><div class="rdo-wrap">' +
-        '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
-        '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'
-    '</div></li>'
-
+    /* BTOCSITE-2785 : add 2021-07-16 */
+    var filterCategoryTopTemplate = '<li data-productTarget="s{{index}}">' +
+            '<div class="rdo-wrap">' +
+                '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
+                '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'+
+            '</div>' +
+        '</li>';
+    /* //BTOCSITE-2785 : add 2021-07-16 */
     function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc) {
         var self = this;
         self.cid = vcui.getUniqId(8);

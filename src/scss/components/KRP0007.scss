@@ -47,6 +47,12 @@
                     //@media screen and (max-width: 1024px) {
                     //    @include font-large-2;
                     //}
+                    /* BTOCSITE-2785 : 2021-07-14 add */ 
+                    &:hover {
+                        background:#e4e4e4;
+                        border-radius:25px;
+                    }
+                    /* //BTOCSITE-2785 : 2021-07-14 add */ 
 
                     @include mobile {
                         padding:8px 12px;
@@ -221,7 +227,7 @@
         }
     }
 
-    /* BTOCSITE-2785 : 2021-07-14 add */
+    /* BTOCSITE-2785 : 2021-07-14 add */ 
     .KRP0007-product {
         margin-bottom: 48px;
         max-width: 1460px;
