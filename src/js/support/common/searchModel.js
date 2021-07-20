@@ -420,8 +420,24 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
                 var $this = $(this),
                     data = $this.data();
-
-                self.complete(data);
+                
+                /* BTOCSITE-3312 add :: 모델명을 몰라요 클릭시 팝업 추가 */
+                if (!!data.modelCode == false){
+                    var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';
+                    lgkorUI.confirm(alertMsg,{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = "/support/request-call-reservation";
+                        },
+                        cancel: function() {}
+                    });
+                } else {
+                    self.complete(data);
+                }                
+                /* //BTOCSITE-3312 add */                
             });
             
             // 모델명 선택 - 카테고리 선택
