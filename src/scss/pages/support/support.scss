@@ -35,6 +35,30 @@ label img {
 }
 
 .support {
+    // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+    .cause-desc {
+        margin-top:16px;
+
+        p {
+            position: relative;
+            padding-left:16px;
+            color:#f00;
+            font-size:14px;
+            line-height:1.4;
+            font-weight:bold;
+            &:before {
+                position: absolute;
+                top:0;
+                left:0;
+                content:"※";
+                display: inline-block;
+            }
+
+            @include mobile {
+                font-size:13px;
+            }
+        }
+    }
     .tooltip-wrap {
         &.share {
             .tooltip-box {
