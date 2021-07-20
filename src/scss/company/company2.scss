@@ -82,7 +82,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .hisArea {max-width:912px; margin:0 auto}
 .company .hisArea .title .tit {font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
 .company .hisArea .title .text {margin-top:20px; font-size:16px; line-height:1.5; text-align:center}
-.company .hisArea .hisList {margin-top:30px; padding:30px 0; border-top:1px solid #ddd}
+.company .hisArea .hisList {margin-top:30px; padding-top:30px; border-top:1px solid #ddd}
 .company .hisArea .hisList > ul > li + li {margin-top:15px}
 .company .hisArea .hisList > ul > li em {display:inline-block; margin-right:70px; font-size:20px; font-weight:bold; line-height:30px}
 .company .hisArea .hisList > ul > li span {display:inline-block; font-size:16px; line-height:30px}
@@ -940,7 +940,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     
     .company .hisArea .title .tit {font-size:16px}
     .company .hisArea .title .text {margin-top:15px}
-    .company .hisArea .hisList {margin-top:20px; padding:20px 0}
+    .company .hisArea .hisList {margin-top:20px; padding-top:20px}
     .company .hisArea .hisList > ul > li {display:flex; align-items:flex-start}
     .company .hisArea .hisList > ul > li + li {margin-top:18px}
     .company .hisArea .hisList > ul > li em {margin-right:20px; font-size:15px; line-height:22px}
@@ -969,7 +969,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .box.color > ul > li .info {display:inline-block; margin-top:8px; margin-left:0; text-align:left}
     .company .box.color > ul > li .info p {font-size:13px}
 
-    .company .ci_download {width:calc(100% - 32px); margin:20px 4.44vw; padding:55px 0}
+    .company .ci_download {width:calc(100% - 8.88vw); margin:20px 4.44vw; padding:55px 0}
     .company .ci_download .tit {font-size:18px; line-height:26px}
     .company .ci_download .desc {margin-top:8px; font-size:14px; line-height:20px}
     .company .ci_download .btn {min-width:90px; padding:8px 0; font-size:13px}
@@ -981,7 +981,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.rec_type > li + li {margin-top:40px}
     .company ul.rec_type > li .type_thumb {width:200px; height:200px; margin:0 auto}
     .company ul.rec_type > li p {margin-top:20px; font-size:18px; line-height:26px}
-    .company .recruit-link {width:calc(100% - 32px); margin:30px 4.44vw; padding:55px 0}
+    .company .recruit-link {width:calc(100% - 8.88vw); margin:30px 4.44vw; padding:55px 0}
     .company .recruit-link .tit {font-size:18px; line-height:26px}
     .company .recruit-link .desc {margin-top:8px; font-size:14px; line-height:20px}
     .company .recruit-link .btn {min-width:90px; padding:8px 0; font-size:13px}
@@ -1027,7 +1027,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .share_price table td .percent_up {font-size:15px}
     .company .share_price table td .percent_down {font-size:15px}
 
-    .company .com-stock {margin:0 16px; padding:45px 0 0}
+    .company .com-stock {margin:0 16px; padding:45px 60px}
     .company .stock_number {margin-bottom:12px; font-size:24px; line-height:35px}
     .company .stock_number .num {padding-right:5px}
 

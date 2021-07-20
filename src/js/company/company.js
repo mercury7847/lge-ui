@@ -31,7 +31,6 @@ $(document).ready(function() {
 	setTimeout(function(){
 		fcTabScrollLeft($('.border-type .tabs'));
 		fcTabScrollLeft($('.btn-type .tabs'));
-		fcTabScrollLeft($('.bar-type .tabs'));
 	}, 500);
 });
 

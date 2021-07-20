@@ -1,31 +1,4 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<style>
-/* 슬라이더 mo */
-@media screen and (max-width:767px){
-	.company .slide-introduce{margin: 0 -4.44vw;}
-	.company .slide-introduce .slide-wrap {overflow: visible !important;}
-	.company .slide-introduce .slide-conts{padding: 0 4.44vw;}
-	.company .slide-introduce .slide-conts .img {margin-bottom:48px;}
-	.company .slide-introduce .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
-	.company .slide-introduce .slide-conts.ui_carousel_current .intArea{opacity:1;}
-	.company .slide-introduce .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 50px);}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
-	.company .slide-wrap .slide-controls {top: calc(38vw + 0px);}
-}
-/* 슬라이더 pc */
-@media screen and (min-width:768px){
-	.company .slide-introduce .slide-wrap{width: 1024px;margin: 0 auto;}
-	.company .slide-introduce .slide-conts .img {margin-bottom:72px;}
-	.company .slide-introduce .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
-	.company .slide-introduce .slide-conts.ui_carousel_current .intArea{opacity:1;}
-	.company .slide-introduce .slide-content{overflow: visible !important;}
-	.company .slide-introduce .slide-wrap .indi-wrap{bottom: auto;top: 540px;}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
-	.company .slide-introduce .slide-wrap .slide-controls {top: 300px;}
-}
-</style>
 <script>
 $(document).ready(function() {	
 	$('.slide-introduce .slide-wrap').vcCarousel({infinite: true});

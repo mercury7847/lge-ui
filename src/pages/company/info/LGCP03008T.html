@@ -1,34 +1,4 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<style>
-/* 슬라이더 mo */
-@media screen and (max-width:767px){
-	.company .slide-history .slide-wrap {overflow: visible !important;}
-	.company .slide-history .slide-conts{padding: 0 4.44vw;}
-	.company .slide-history .slide-conts .img {margin-bottom:48px;}
-	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
-	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
-	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(62vw + 80px);}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
-	.company .slide-wrap .slide-controls {top: calc(38vw + 38px);}
-	.company .slide-history .slide-conts .img {height:auto}
-	.company .slide-history .slide-conts .img span {padding-bottom:73%;display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
-}
-/* 슬라이더 pc */
-@media screen and (min-width:768px){
-	.company .slide-history .slide-wrap{width: 1024px;margin: 0 auto;}
-	.company .slide-history .slide-conts .img {margin-bottom:72px;}
-	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
-	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
-	.company .slide-history .slide-content{overflow: visible !important;}
-	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: 630px;}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
-	.company .slide-history .slide-wrap .slide-controls {top: 360px;}
-	.company .slide-history .slide-conts .img {width:100%; height:480px; margin-top:30px}
-	.company .slide-history .slide-conts .img span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
-}
-</style>
 <script>
 $(document).ready(function() {	
 	$('.slide-history .slide-wrap').vcCarousel({infinite: true});

@@ -27,28 +27,33 @@
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
+/* 해외사업장 */
 .overseas{position: relative;}
 .country-list {display: block;}
 .country-list li{display: table;}
-.country-list .country{display: table-cell;font-weight: bold;color: #000000;}
-.country-list .country::before{content:'';display:inline-block;background-color:#000;border-radius: 100%;margin: 11px 5px 0 0;vertical-align: top;}
+.country-list .country{width:102px;display: table-cell;font-weight: bold;color: #000000;position: relative;}
+.country-list .country::before{content:'';display:inline-block;background-color:#000;border-radius: 100%;position: absolute;top: 11px;left: -8px;}
 .country-list .links{display: table-cell;font-weight: normal;line-height: 1.29;color: #000000;}
 .country-list .links::after{content:'';display:inline-block;width:16px;height:16px;background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat right top 3px;margin: -2px 0 0 3px;}
+/* 해외사업장 mo */
 @media screen and (max-width:767px){
+.overseas {margin-top:15px;}
 .overseas .img-overseas{overflow-x: scroll;width: 100%;}
 .country-list {margin-top:16px;margin-bottom:18px;}
 .country-list li{margin-bottom:14px;}
-.country-list .country{width:105px;font-size: 13px;}
+.country-list .country{font-size: 13px;}
 .country-list .country::before{width:2px;height:2px;}
 .country-list .links{font-size: 13px;}
 }
+/* 해외사업장 pc */
 @media screen and (min-width:768px){
+.overseas {margin-top:30px;}
 .overseas map {position:absolute; top: 100px;left: 110px;}
 .country-list {width: 1034px;display: block;margin-top:32px;margin-bottom:18px;}
-.country-list ul {display: inline-block;width: 33%;height: 260px;vertical-align: top;}
-.country-list ul+ul{border-left: dashed 1px #dddddd;padding-left:11px;}
+.country-list ul {display: inline-block;width: 33%;height: 260px;vertical-align: top;padding-left:10px;}
+.country-list ul+ul{border-left: dashed 1px #dddddd;padding-left:20px;}
 .country-list li{margin-bottom:23px;}
-.country-list .country{width:111px;font-size: 14px;}
+.country-list .country{font-size: 14px;}
 .country-list .country::before{width:3px;height:3px;}
 .country-list .links{font-size: 14px;}
 }
@@ -132,7 +137,11 @@
 
 	<div class="com-text">
 		<p class="tit">LG 전자 해외사업장</p>
-		<p class="text">LG전자는 각 지역에 약 130여개의 사업장을 운영하고 있으며, 약 76,000여명의 임직원이 함께 일하고 있습니다.</p>
+		<p class="text">
+			LG전자는 각 지역에 약 142여 개의 현지 법인을 설립해 운영하고 있으며  약 74,000여명의 임직원이 함께 일하고 있습니다.<br>
+			(아래의 지도를 선택하시면 해외사업장을 확인 하실수 있습니다)<br><br>
+			* 2020년 기준
+		</p>
 		
 		<div class="overseas">
 			<map name="pc-map">
@@ -231,8 +240,6 @@
 									<span class="country">Peru</span>
 									<span class="links"><a href="https://www.lg.com/pe" target="_blank" title="Peru 사업장 새창열림">LGEPR</a></span>
 								</li>
-							</ul>
-							<ul>
 							</ul>
 						</span>
 						<button type="button" class="btn-close"><span class="blind">닫기</span></button>
@@ -389,11 +396,6 @@
 									<span class="country">United States</span>
 									<span class="links"><a href="https://www.lg.com/us" target="_blank" title="United States 사업장 새창열림">Zenith Electronics Corporation of Pennsylvania, ZENITH, LGEMR, LGEUS, LGEMU, LGEAI</a></span>
 								</li>
-							</ul>
-							<ul>
-							</ul>
-							<ul>
-							</ul>
 						</span>
 						<button type="button" class="btn-close"><span class="blind">닫기</span></button>
 					</span>
@@ -420,10 +422,6 @@
 									<span class="country">Latvia</span>
 									<span class="links"><a href="https://www.lg.com/lv" target="_blank" title="Latvia 사업장 새창열림">LGELV</a></span>
 								</li>
-							</ul>
-							<ul>
-							</ul>
-							<ul>
 							</ul>
 						</span>
 						<button type="button" class="btn-close"><span class="blind">닫기</span></button>

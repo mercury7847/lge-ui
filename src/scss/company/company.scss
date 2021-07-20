@@ -43,7 +43,7 @@ br.pc{display:block;}
 .company .sustainable-download .tit {font-size: 24px;font-weight: bold;line-height: 1.42;color: #ffffff;}
 .company .sustainable-download .tit + .desc {margin-top: 20px;font-size: 16px;font-weight: normal;line-height: 1.63;color: #ffffff;}
 .company .sustainable-download .btn{margin-top: 26px;background: transparent;border: solid 1px #fafafa;}
-                                                                                                                                 
+
 @media screen and (max-width: 767px){
 br.mo{display:block;}
 br.pc{display:none;}
@@ -71,7 +71,7 @@ br.pc{display:none;}
 .com-title .text {margin-top: 20px;font-size: 15px;line-height: 1.53;}
 .com-text{padding: 30px 0 30px;margin: 0 4.44vw;}
 .com-text .tit{font-size: 18px;line-height: 1.44;}
-.com-text .text {margin-top: 20px;font-size: 14px;line-height: 1.53;}
+.com-text .text {margin-top: 12px;font-size: 14px;line-height: 1.53;}
 .com-title + .com-text{padding-top:60px;}
 /* 정관 리스트 mo */
 .articles-list{margin: 15px 0 0;}
@@ -83,4 +83,59 @@ br.pc{display:none;}
 .company .sustainable-download .tit {font-size: 18px;}
 .company .sustainable-download .desc {margin-top: 8px;font-size: 14px;font-weight: normal;}
 .company .sustainable-download .btn{margin-top: 25px;font-size: 13px;padding: 9px 20px;}
+}
+
+
+/* 기업소개 슬라이더 mo */
+@media screen and (max-width:767px){
+	.company .slide-introduce{margin: 0 -4.44vw;}
+	.company .slide-introduce .slide-wrap {overflow: visible !important;}
+	.company .slide-introduce .slide-conts{padding: 0 4.44vw;}
+	.company .slide-introduce .slide-conts .img {margin-bottom:48px;}
+	.company .slide-introduce .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
+	.company .slide-introduce .slide-conts.ui_carousel_current .intArea{opacity:1;}
+	.company .slide-introduce .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 40px);}
+	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
+	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
+	.company .slide-wrap .slide-controls {top: calc(32vw + 40px);}
+}
+/* 기업소개 슬라이더 pc */
+@media screen and (min-width:768px){
+	.company .slide-introduce .slide-wrap{width: 1024px;margin: 0 auto;}
+	.company .slide-introduce .slide-conts .img {margin-bottom:72px;}
+	.company .slide-introduce .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
+	.company .slide-introduce .slide-conts.ui_carousel_current .intArea{opacity:1;}
+	.company .slide-introduce .slide-content{overflow: visible !important;}
+	.company .slide-introduce .slide-wrap .indi-wrap{bottom: auto;top: 540px;}
+	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
+	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
+	.company .slide-introduce .slide-wrap .slide-controls {top: 300px;}
+}
+/* 역사 슬라이더 mo */
+@media screen and (max-width:767px){
+	.company .slide-history .slide-wrap {overflow: visible !important;}
+	.company .slide-history .slide-conts{padding: 0 4.44vw;}
+	.company .slide-history .slide-conts .img {margin-bottom:48px;}
+	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
+	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
+	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 69px);}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
+	.company .slide-wrap .slide-controls {top: calc(32vw + 69px);}
+	.company .slide-history .slide-conts .img {height:auto}
+	.company .slide-history .slide-conts .img span {padding-bottom:73%;display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+}
+/* 역사 슬라이더 pc */
+@media screen and (min-width:768px){
+	.company .slide-history .slide-wrap{width: 1024px;margin: 0 auto;}
+	.company .slide-history .slide-conts .img {margin-bottom:72px;}
+	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
+	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
+	.company .slide-history .slide-content{overflow: visible !important;}
+	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: 630px;}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: -24px;}
+	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: -24px;}
+	.company .slide-history .slide-wrap .slide-controls {top: 360px;}
+	.company .slide-history .slide-conts .img {width:100%; height:480px; margin-top:30px}
+	.company .slide-history .slide-conts .img span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
 }
