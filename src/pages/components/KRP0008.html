@@ -207,36 +207,377 @@
         <!-- // text-block-middle -->
 
 
-        <!-- text-block-bottom -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
-            },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-            },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-02.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-02.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "font-color":"text-black",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                }
-            }
-        })
-        <!-- // text-block-bottom -->
+                    <div class="pdp-wrap"> <!-- pdp-info-area 영역 내용 없을 경우 pdp-center 클래스 적용 -->
+                        <!-- 210331 수정 [모바일 타이틀 영역 추가] -->
+                        <div class="mobile-pdp-info visible-sm">
+                            <div class="product-detail-info">
+                                @@include('./common/modules/flags.html', {
+                                barType: true,
+                                "flagDiscount" : true,
+                                flags: ["베스트","신제품","캐시백"]
+                                })
+                                <!-- 210421 <div class="product-cover"> 감싸기 -->
+                                <div class="product-cover">
+                                    <div class="product-name">
+                                        <h2 class="name">LG 올레드 갤러리 TV</h2>
+                                        <!-- 공유하기 -->
+                                        <div class="product-share">
+                                            @@include('./common/modules/tooltip.html', {
+                                            "share" : true,
+                                            "fixed" : "fixed-right",
+                                            "type" : "include",
+                                            "page" : "tooltip-share"
+                                            })
+                                        </div>
+                                        <!-- // 공유하기 -->
+                                    </div>
+                                    <div class="sku">OLED77GXKNA</div>
+                                    <!-- 리뷰 별점 영역 -->
+                                    <div class="review-info">
+                                        <div class="star-rating-wrap">
+                                            <a href="#pdp_review">
+                                                <div class="star-inner">
+                                                    <div class="star-rating" style="width:60%;">
+                                                        <span class="blind">현재 별점 : 4.4</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <span class="scope">4.4(리뷰 8)</span>
+                                        </div>
+                                        <!-- 2021-02-25 크레마 리뷰 -->
+                                        <div class="crema-product-reviews-score"
+                                            data-product-code="75NANO99KNB"
+                                            data-format="{{{stars}}} {{{score}}}(리뷰 {{{reviews_count}}})"
+                                            data-star-style="multiple"
+                                        >
+                                        </div>
+                                        <!-- //2021-02-25 크레마 리뷰 -->
+                                    </div>
+                                    <!-- // 리뷰 별점 영역 -->
+                                    <div class="pdp-more-info">
+                                        <div class="inner">
+                                            <!-- 210421 문구수정 -->
+                                            <a href="#" class="btn-link popup" role="button">
+                                                수상내역 보기 <span class="blind">수상내역 팝업 열림</span>
+                                            </a>
+                                            <!-- //210421 문구수정 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //210421 <div class="product-cover"> 감싸기 -->
+                            </div>
+                        </div>
+                        <!-- // 210331 수정 [모바일 타이틀 영역 추가] -->
+
+                        <!-- component -->
+                       @@include('./common/partials/KRP0008-image.html')
+                        <!-- // component -->
+
+                        <!-- component -->
+                       @@include('./common/partials/KRP0008-info.html')
+                        <!-- // component -->
+                    </div>
+
+                    <!-- 케어솔루션 서비스 안내 -->
+                    <div class="care-solution-info">
+                        <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 START -->
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "총 계약기간 동안 상품의 소유권은 '회사'에게 있습니다.",
+                                "분실료 기준 : 상품판매가-{(상품판매가÷총 계약기간(개월 수))×사용개월수}, 파손의 경우 분실료의 50%",
+                                "의무 사용기간 내에 해지 시 위약금 등 비용이 발생할 수 있으며 의무 사용기간이 경과하였더라도, 계약기간 이내에 해지할 경우 철거료 등 부대비용이 일부 발생할 수 있습니다.",
+                                "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다.",
+                                "제휴 카드의 전월 실적에 따라 케어솔루션 월요금이 청구할인됩니다.",
+                                "케어솔루션 계약기간 종료 후에는 케어십을 이용하실 수 있습니다."
+                            ]
+                            <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 END -->
+                        <div class="btn-area">
+                            <a href="#n" class="btn dark-gray size"><span>혜택 자세히 보기</span></a>
+                            <a href="#n" class="btn dark-gray size"><span>케어솔루션 서비스 안내</span></a>
+                        </div>
+                    </div>
+                    <!-- 케어솔루션 서비스 안내 -->
+
+                    <!-- toast-meassage -->
+                    @@include('./common/modules/toast-message.html', {
+                        "messageArr": [
+                            {"message" : "이미 추가된 제품입니다."},
+                            {"message" : "비교함에 등록되었습니다."},
+                            {"message" : "케어솔루션/케어십 장바구니에 추가되었습니다."}
+                        ]
+                    })
+
+                </section>
+                <!-- //component KRP0008 -->
+
+                <!-- <article id="pdp-modal" class="popup-wrap small pop-award">
+                </article> -->
+
+                <!-- 수상내역 팝업 -->
+                <article id="awardPopup" class="popup-wrap small pop-award">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>수상내역</span></h1>
+                    </header>
+                    <section class="pop-conts">
+                        <div class="awards-wrap">
+                            <ul class="awards-list">
+                                <li>
+                                    <span class="image">
+                                        <img data-src="/lg5-common/images/KRP0008/img-award-01.jpg" alt="">
+                                    </span>
+                                    <span class="text">TV 2년 연속 국가고객만족도(NCSI) TV 부문 1위 </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="http://www.google.com"><span>더 많은 수상내역 보기</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 구매혜택 자세히보기 -->
+                <article id="benefitInfoPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>구매혜택</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_15_content">
+                        <div class="layer-benefit">
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info total">
+                                        <dt class="text">판매가</dt>
+                                        <dd class="content">
+                                            <strong class="price">1,990,000원</strong>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="additional">
+                                <h2 class="title"><span>추가할인</span></h2>
+                                <div class="membership">
+                                    <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                        <ul>
+                                            <li class="lists cash-back">
+                                                <div class="head" role="heading">
+                                                    <span class="text">캐시백</span>
+                                                    <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false"><span class="blind">내용 더보기</span></a>
+                                                    <span class="content"><span class="price">-136,900원</span></span>
+                                                </div>
+                                                <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
+                                                    <div class="info-box">
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">행사기간 : 11월 3일~11월 30일 결제 완료</li>
+                                                            <li class="b-txt">대상 카드 : 신한카드, 우리카드 (캐시백)<br>*씨티카드(캐시백 또는 청구할인)</li>
+                                                            <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.<br>*단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- 로그인 전 -->
+                                    <dl class="price-info point">
+                                        <dt class="text">멤버십 포인트</dt>
+                                        <dd class="content">
+                                            <div class="point-confirm">
+                                                <div class="btn-box">
+                                                    <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
+                                                    <span class="won">원</span>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- 로그인 후 -->
+                                    <dl class="price-info point member">
+                                        <dt class="text">멤버십 포인트</dt>
+                                        <dd class="content">
+                                            <div class="point-confirm">
+                                                <div class="btn-box">
+                                                    <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
+                                                    <span class="won">원</span>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                        <ul>
+                                            <li class="lists">
+                                                <div class="head" role="heading">
+                                                    <span class="text">카드 혜택</span>
+                                                    <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_c1rrlg2pl0" aria-controls="accord_content_c1rrlg2pl0" aria-expanded="false"><span class="blind">내용 더보기</span></a>
+                                                </div>
+                                                <div class="ui_accord_content" id="accord_content_c1rrlg2pl0" role="region" aria-labelledby="accord_toggle_c1rrlg2pl0" style="display: none;">
+                                                    <div class="info-box">
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">국민카드 : 무이자 6개월 / 7% 청구할인</li>
+                                                            <li class="b-txt">신한카드 : 7% 청구할인</li>
+                                                            <li class="b-txt">현대카드 : 무이자 6개월</li>
+                                                            <li class="b-txt">삼성카드 : 5% 청구할인</li>
+                                                            <li class="b-txt">하나카드 : 무이자3개월 / 5% 청구할인</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <dl class="price-info">
+                                    <dt class="text">최대 할인 금액</dt>
+                                    <dd class="content">
+                                        <small class="discount-rate">38%</small>
+                                        <span class="price">656,900원</span>
+                                    </dd>
+                                </dl>
+                                <dl class="price-info total-payment">
+                                    <dt class="text">최대 혜택 적용 시</dt>
+                                    <dd class="content">
+                                        <span class="price">1,233,000원</span>
+                                    </dd>
+                                </dl>
+                                <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.<br>
+                                    또한, 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.</p>
+                            </div>
+                            <div class="total-point">
+                                <dl class="price-info">
+                                    <dt class="text">멤버십포인트적립</dt>
+                                    <dd class="content">
+                                        <span class="price">64,000P</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#"><span>더 많은 혜택 보기</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+                <!-- 케어십 이용요금 자세히보기 -->
+                <article id="careshipInfoPopup" class="popup-wrap">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>케어십 할인 혜택</span></h1>
+                    </header>
+                    <section class="pop-conts no-footer" id="modal_19_content">
+                        <div class="layer-monthly-payment">
+                            <h2 class="small-title"><span>의무 사용기간 1년</span></h2>
+                            <div class="payment-info">
+                                <ul class="info-list">
+                                    <li>
+                                        <dl>
+                                            <dt>예상 이용 요금</dt>
+                                            <dd>월 19,900원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>제휴카드 [신한] LG전자 렌탈애(愛)]</dt>
+                                            <dd class="discount">-13,000원</dd>
+                                        </dl>
+                                    </li>
+                                    <li class="total-payment">
+                                        <dl>
+                                            <dt>최적 혜택가격</dt>
+                                            <dd>월 6,600원</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2 class="small-title"><span>연차별 납부금액</span></h2>
+                            <div class="tb_row">
+                                <table>
+                                    <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부금액 안내</caption>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col style="">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">연차 (납부회차)</th>
+                                        <th scope="col">납부금액</th>
+                                        <th scope="col">비고</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1년차 (1~12회차)</td>
+                                        <td>19,900원</td>
+                                        <td>6,12 무상할인</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2년차 (13~24회차)</td>
+                                        <td>19,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3년차 (25~36회차)</td>
+                                        <td>36,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4년차 (37~48회차)</td>
+                                        <td>13,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5년차 (49~60회차)</td>
+                                        <td>13,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btm_info">
+                                    <dl>
+                                        <dt>무상할인 적용회차 (2회)</dt>
+                                        <dd>납부 월 회차 : <span class="point">6,12회차</span> 월 납부 금액 할인 (0원)</dd>
+                                    </dl>
+                                    <p>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</p>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <a href="#" class="btn dark-gray size ui_modal_close">제휴카드 할인 혜택 자세히 보기</a>
+                            </div>
+                            <div class="notice-box">
+                            <dl class="bullet-list top-border">
+                                <dt class="b-tit">케어십 안내</dt>
+                                <dd class="b-txt">케어십 요금은 대표요금제 기준이며, 요금제에 따라 제공되는 혜택이 다를 수 있습니다.</dd>
+                                <dd class="b-txt">해지의사가 없을시, 1년 단위로 자동 연장됩니다.</dd>
+                            </dl>
+                            </div>
+                        </div>
+                    </section>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>                    
+                </article>
 
 
         <!-- brand-logo-image -->

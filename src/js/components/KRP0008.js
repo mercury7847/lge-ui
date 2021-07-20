@@ -386,7 +386,9 @@
                         // 1. 계약기간 
                         var contractTerm = ("" + item.contractTerm);
                         var dutyTerm     = ("" + item.dutyTerm) ;
-                        var visitPerKey  = item.freeMonth+'회/'+item.visitPer+'개월';
+
+                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음' : item.visitPer+'개월';
+                        var visitPerKey  = '1회 / '+visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
 
                         // 데이터 재정렬
@@ -404,7 +406,7 @@
                             selectRtModelSeq = item.rtModelSeq;
                             selectContractTerm = item.contractTerm;
                             selectDutyTerm = dutyTerm;
-                            selectVisitTerm =  item.freeMonth+'회/'+item.visitPer+'개월';
+                            selectVisitTerm =  '1회 / '+visitPerTxt;
                             selectRtRgstFeePre = rtRgstFeePre;
                             
                         }
