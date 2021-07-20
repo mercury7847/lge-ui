@@ -558,9 +558,10 @@
                 //     //console.log(item.filterValueName);
                 // });
 
-                self.$categorySelect.on('click', '.ui_smooth_tab ul li:not(:first)', function(){ 
+                self.$categorySelect.on('click', '.ui_smooth_tab ul li', function(){ 
                     if($(this).hasClass('on')){
                         $productG_content.not('.cont_' + $(this).attr('data-productTarget')).hide();
+                        //$productG_content.not('.cont_' + $(this).eq(0)).hide();
                         $('.cont_' + $(this).attr('data-productTarget')).slideDown(200);
                     }
                 });
