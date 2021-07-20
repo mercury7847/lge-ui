@@ -310,7 +310,7 @@ h2.title {
                         }
                     }
                 }
-                // 210714 BTOCSITE-2346 - W821AAA463 추가 
+                // 210719 BTOCSITE-2346 - W821AAA463 추가 
                 &[data-model_code="W821AAA453"],
                 &[data-model_code="W821AAA463"] {
                     //노크온 매직스페이스
@@ -336,7 +336,7 @@ h2.title {
                     }
                 }
                 &[data-model_code="W821AAA153"] {
-                    //매직 스페이스 210714 BTOCSITE-2346 W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
+                    //매직 스페이스 210719 BTOCSITE-2346 W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
                     .model_door {
                         &[data-door-direction="LT"] {
                             width: 49.1%;
@@ -344,7 +344,7 @@ h2.title {
                             left: .5%;
                             top: .3%;
                         }
-                        //매직 스페이스 210714 BTOCSITE-2346 - "RT" 위치 변경
+                        //매직 스페이스 210719 BTOCSITE-2346 - "RT" 위치 변경
                         &[data-door-direction="RT"] {
                             width: 49.1%;
                             height: 53.8%;
@@ -469,7 +469,7 @@ h2.title {
                         }
                     }
                 }
-                // 210714 BTOCSITE-2346 start
+                // 210719 BTOCSITE-2346 start
                 &[data-model_code="M871AAA041"],
                 &[data-model_code="M871AAA042"] {
                     //베이직
@@ -500,7 +500,7 @@ h2.title {
                         }
                     }
                 }
-                // 210714 BTOCSITE-2346 end
+                // 210719 BTOCSITE-2346 end
                 &[data-model_code="Z330AAA151"],
                 &[data-model_code="Z330AAA152"] {
                     //김치냉장고
@@ -1758,7 +1758,7 @@ h2.title {
                 }
             }
         }
-        // 210714 BTOCSITE-2364 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
+        // 210719 BTOCSITE-2364 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
         &[data-model-default-code="M871AAA151"],
         &[data-model-default-code="M871AAA041"],
         &[data-model-default-code="W821AAA153"] {

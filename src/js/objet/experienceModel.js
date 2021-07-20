@@ -11,7 +11,7 @@
                         typeName: "얼음정수기",
                         typ: "refrigerator1",
                         typModel: [{
-                            name: "노크온 매직스페이스", //210716 BTOCSITE-2346 제품 추가 - 제품명 수정
+                            name: "노크온 매직스페이스", //210719 BTOCSITE-2346 제품 추가 - 제품명 수정
                             defaultCode: "W821AAA453",
                             subModel: [{
                                 modelCode: "W821AAA463",
@@ -132,7 +132,7 @@
                                         code: "CL",
                                         mixingCode: "GCL"
                                     }]
-                                    //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                    //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                 }
                             }, {
                                 doorMaterial: {
@@ -156,7 +156,7 @@
                                     }]
                                 }
                             }]
-                        },{ //210716 BTOCSITE-2346 제품 추가 - 얼정냉 > 매직 스페이스(신규제품)
+                        },{ //210719 BTOCSITE-2346 제품 추가 - 얼정냉 > 매직 스페이스(신규제품)
                             name: "매직 스페이스",
                             defaultCode: "W821AAA153",
                             leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_W821AAA153.png",
@@ -275,7 +275,7 @@
                                         code: "CL",
                                         mixingCode: "GCL"
                                     }]
-                                    //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                    //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                 }
                             }, {
                                 doorMaterial: {
@@ -561,7 +561,7 @@
                                             code: "CL",
                                             mixingCode: "GCL"
                                         }]
-                                        //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                     }
                                 }, {
                                     doorMaterial: {
@@ -586,7 +586,7 @@
                                     }
                                 }]
                             }, 
-                            /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 (210714 주석해제) start */
+                            /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 (210719 주석해제) start */
                               {
                                 name: "매직 스페이스",
                                 defaultCode: "M871AAA151",
@@ -713,7 +713,7 @@
                                             code: "CL",
                                             mixingCode: "GCL"
                                         }]
-                                        //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                     }
                                 }, {
                                     doorMaterial: {
@@ -737,7 +737,7 @@
                                         }]
                                     }
                                 }]
-                            },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210714 주석해제) */
+                            },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210719 주석해제) */
                               {
                             name: "베이직",
                             defaultCode: "M871AAA041",
@@ -782,7 +782,7 @@
 
                             },
                             doorColorData: [
-                                /* 210714 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 start
+                                /* 210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 start
                                 {
                                     doorMaterial: {
                                         name: "페닉스",
@@ -806,7 +806,7 @@
                                         }]
                                     }
 
-                                },210714 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 end */
+                                },210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 end */
                                 {
                                     doorMaterial: {
                                         name: "솔리드",
@@ -860,7 +860,7 @@
                                             code: "CL",
                                             mixingCode: "GCL"
                                         }]
-                                        //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                     }
                                 }, {
                                     doorMaterial: {
@@ -996,7 +996,7 @@
                                             code: "CL",
                                             mixingCode: "GCL"
                                         }]
-                                        //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                                     }
                                 }, {
                                     doorMaterial: {
@@ -1134,7 +1134,7 @@
                                 code: "CL",
                                 mixingCode: "GCL"
                             }]
-                            //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                            //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                         }
                     }, {
                         doorMaterial: {
@@ -1235,7 +1235,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -1330,7 +1330,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -1425,7 +1425,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210716 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -1481,7 +1481,7 @@
             ]
         }
         //추천조합
-        //210716 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청_신규컬러 추천조합제품 추가 - S
+        //210719 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청_신규컬러 추천조합제품 추가 - S
     proposeSet = {
             proposeConfig: [
                 {
@@ -3257,7 +3257,7 @@
                 }
             ]
         }
-        //210716 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청_신규컬러 추천조합제품 추가 - E
+        //210719 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청_신규컬러 추천조합제품 추가 - E
         //나의오브제
     myPickSet = {
         myPickConfig: [
@@ -4226,36 +4226,51 @@
         var $objMyPickBtn = $('.myPick');
         var $objFooter = $('footer');
         var $step3 = $('.simul_step.simul_step3');  // BTOCSITE-1582 add
-        var $step3Shop = $('.simul_step.simul_step3_newbhimart'); //210714 추가 BTOCSITE-2346 add 
         var $quickbuy = $('#quick_buy');    // BTOCSITE-1582 add
+
+        //210719 추가 BTOCSITE-2346 
+        var $step3Tit = $('.simul_step.simul_step3 .simul_tit > .tit');
+        var $step3Etc = $('.simul_step.simul_step3 dd .etc_area');
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
-            console.log("NEWBEST");
+            //console.log("NEWBEST");
             $objHeader.hide();
             $objBreadcrb.hide();
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3.hide(); //210714 BTOCSITE-2346 add 
-            $step3Shop.show(); //210714 BTOCSITE-2346 add 
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
+            
+            //start - 210719 BTOCSITE-2346 add
+            $quickbuy.show();
+            $step3.show();
+            $step3Tit.html("특성 비교하여 모델 정하기");
+            $step3Etc.hide();
+            $quickbuy.css('border-top','0');
+            // end - 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
-            console.log("HIMART");
+            // console.log("HIMART");
             $objHeader.hide();
             $objBreadcrb.hide();
             $objTopNavi.hide();
             $objMyPickBtn.hide();
             $objFooter.hide();
-            $step3.hide(); //210714 BTOCSITE-2346 add 
-            $step3Shop.show(); //210714 BTOCSITE-2346 add
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
+            
+            //start - 210719 BTOCSITE-2346 add
+            $quickbuy.show();
+            $step3.show();
+            $step3Tit.html("특성 비교하여 모델 정하기");
+            $step3Etc.hide();
+            $quickbuy.css('border-top','0');
+            // end - 210719 BTOCSITE-2346 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
@@ -4411,7 +4426,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            var $quickbuy = $('#quick_buy');    
+            var $quickbuy = $('#quick_buy');
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
@@ -4573,7 +4588,7 @@
             completedCheck();
         });
 
-        //기능가격 비교 선택 [210714 다시보기]
+        //기능가격 비교 선택 [210719 다시보기]
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
@@ -4671,7 +4686,13 @@
                     ok: function() {
                         // console.log("saveInfo", saveInfo);
                         myPickSave(saveInfo);
-                        modelSimulator.mobileStep(".simul_step3");
+                        //210719 BTOCSITE-2346 CASE별 분기 처리 - S
+                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                            modelSimulator.mobileStep(".simul_step3");
+                        } else {
+                            modelSimulator.mobileStep(".simul_step3");
+                        }
+                        //210719 BTOCSITE-2346 CASE별 분기 처리 - E
                         setTimeout(function() {
                             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                         }, 500);
@@ -4695,7 +4716,7 @@
                 /* BTOCSITE-1582 */
                 //var $objContent = $('.model_experience');
                 if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                    
+                    modelSimulator.mobileStep(".simul_step3");
                 } else {
                     modelSimulator.mobileStep(".simul_step3");    
                 }
@@ -5229,13 +5250,13 @@
                                                 doorDirection = "LT";
                                                 doorLocation = "TT";
                                                 doorKLocation = "상단(좌)";
-                                                //210716 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 제품 추가 - S
+                                                //210719 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 제품 추가 - S
                                                 if (code == "W821AAA153") {
                                                     doorDirection = "LT";
                                                     doorLocation = "JT";
                                                     doorKLocation = "얼음정수기 상단(좌)";
                                                 }
-                                                //210716 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 제품 추가 - E
+                                                //210719 BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 제품 추가 - E
                                                 doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
                                             } else if (k == 1) {
                                                 doorDirection = "RT";
@@ -5424,7 +5445,7 @@
                                         let colorHtml = '<li>';
                                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
                                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                         colorHtml += '  </button>';
@@ -5493,7 +5514,7 @@
                         let colorHtml = '<li>';
                         colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                         colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
                         // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                         colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                         colorHtml += '  </button>';
@@ -5561,7 +5582,7 @@
                                 let colorHtml = '<li>';
                                 colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
                                 colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (소재명 제거)
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
                                 // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
                                 colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
                                 colorHtml += '  </button>';
@@ -5828,7 +5849,7 @@
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
                 //priceSumList.appendSlide(priceHtml);
-                console.log('priceSumList', priceSumList);
+                //console.log('priceSumList', priceSumList);
                 $(priceSumList.$el[0]).hide();
             }
             /* //BTOCSITE-1582 */
@@ -6007,7 +6028,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         if (_doorInfoMaterial[0] == "F") {
@@ -6207,7 +6228,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml2 += '<li>';
@@ -6363,7 +6384,7 @@
                             } else if (_doorInfoColor[j] == "CL") {
                                 _doorInfoKColor[j] = "클레이 브라운"
                             }
-                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 2021-07-09 (레드우드,클레이브라운 컬러코드 추가)
+                            //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (레드우드,클레이브라운 컬러코드 추가)
                         }
 
                         contHtml += '<li>';
@@ -6564,7 +6585,7 @@
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont .swiper-wrapper .swiper-slide[data-typ-filter='0']").css("display", "inline-block");
                 setTimeout(function() {
                     slideWrapAutoSize(".model_choice_area .model_sub_tab_wrap .model_sub_tab_cont");
-                    // BTOCSITE-2944 오브제컬렉션 체험하기 탭이동 수정 2021-07-09
+                    // BTOCSITE-2944 오브제컬렉션 체험하기 탭이동 수정 210709
                     // $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").attr("disabled", true);
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").siblings().removeClass("on");
                     $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head .swiper-wrapper [data-model-typ='" + _modelCate2 + "']").closest(".swiper-slide").addClass("on");
