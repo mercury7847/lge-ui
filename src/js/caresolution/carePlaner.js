@@ -62,13 +62,13 @@
         '           {{/if}}'+
 
         '           {{#if siblingContractPeriod.length > 0}}'+
-        '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
-        // '               <dl>'+
+        // '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>계약기간</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
-        // '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod">'+
+        // '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod">'+
         '                           {{#each item in siblingContractPeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -79,13 +79,13 @@
         '           {{/if}}'+
 
         '           {{#if siblingUsePeriod.length > 0}}'+
-        '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
-        // '               <dl>'+
+        // '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
-        // '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod">'+
+        // '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod">'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -95,13 +95,13 @@
         '               </dl>'+
         '           {{/if}}'+
         '           {{#if siblingVisitCycle.length > 0}}'+
-        '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
-        // '               <dl>'+
+        // '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
-        // '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle">'+
+        // '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="3" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle">'+
         '                           {{#each item in siblingVisitCycle}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectVisitCycleID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
@@ -113,13 +113,13 @@
 
 
         '           {{#if siblingFee.length > 0}}'+
-        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
-        // '               <dl>'+
+        // '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
+        '               <dl>'+
         '                   <dt>가입비</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
-        // '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee">'+
+        // '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee">'+
         '                           {{#each item in siblingFee}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
