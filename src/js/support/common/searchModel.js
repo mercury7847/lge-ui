@@ -423,14 +423,14 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
                 /* BTOCSITE-3312 add :: 모델명을 몰라요 클릭시 팝업 추가 */
                 if (!!data.modelCode == false){
-                    var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';
+                    var alertMsg = '서비스 접수 확인 문자의 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 으로 사진 업로드 하시면 정확하고 신속한 서비스가 가능 합니다.<br><br>모델명 입력을 건너뛰기 하시겠습니까?';
                     lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
                         title:'',
                         okBtnName: '네',
                         cancelBtnName: '아니요',
                         ok: function() {
-                            location.href = "/support/request-call-reservation";
+                            self.complete(data);
                         },
                         cancel: function() {}
                     });
