@@ -663,6 +663,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 
     .company .ir_pt ul.ir_ptList > li {flex-direction:column}
     .company .ir_pt ul.ir_ptList > li .btn_list {padding-top:20px}
+
+    .company ul.card_list.S > li {flex-direction:column; width:calc(50% - 12px); min-height:auto}
+    .company ul.card_list.S > li .photo {width:100%; height:auto; padding-bottom:64%}
+    .company ul.card_list > li .photo.photo_04 {background:#ddd url(/kr/images/company/investor/img-director_photo_04_mo.png) no-repeat center / contain}
+    .company ul.card_list > li .photo.photo_05 {background:#ddd url(/kr/images/company/investor/img-director_photo_05_mo.png) no-repeat center / contain}
+    .company ul.card_list > li .photo.photo_06 {background:#ddd url(/kr/images/company/investor/img-director_photo_06_mo.png) no-repeat center / contain}
+    .company ul.card_list > li .photo.photo_07 {background:#ddd url(/kr/images/company/investor/img-director_photo_07_mo.png) no-repeat center / contain}
 }
 
 /* 모바일 */
@@ -863,12 +870,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.card_list.S > li {flex-direction:column; width:100%; min-height:auto}
     .company ul.card_list.L > li + li,
     .company ul.card_list.S > li + li {margin-top:12px!important}
-    .company ul.card_list.L > li .photo,
-    .company ul.card_list.S > li .photo {width:100%; height:auto; padding-bottom:64%}
-    .company ul.card_list > li .photo.photo_04 {background:#ddd url(/kr/images/company/investor/img-director_photo_04_mo.png) no-repeat center / contain}
-    .company ul.card_list > li .photo.photo_05 {background:#ddd url(/kr/images/company/investor/img-director_photo_05_mo.png) no-repeat center / contain}
-    .company ul.card_list > li .photo.photo_06 {background:#ddd url(/kr/images/company/investor/img-director_photo_06_mo.png) no-repeat center / contain}
-    .company ul.card_list > li .photo.photo_07 {background:#ddd url(/kr/images/company/investor/img-director_photo_07_mo.png) no-repeat center / contain}
+    .company ul.card_list.L > li .photo {width:100%; height:auto; padding-bottom:64%}
     .company ul.card_list.L > li .infoArea,
     .company ul.card_list.S > li .infoArea {padding:15px 20px}
     .company ul.card_list.L > li .infoArea .sect + .sect,
