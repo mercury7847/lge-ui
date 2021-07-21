@@ -708,13 +708,15 @@ var goAppUrl = function(path) {
                 
                 if (!!lgkorUI.CONTEXT_AREA){                 
                     $('header.header').vcHeader(); //헤더 모듈 적용...
-                    lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
+                    //lgkorUI.CONTEXT_AREA.find('footer').vcFooter(); //푸터모듈 적용...
+                    lgkorUI.CONTEXT_AREA.find('footer:not(.pop-footer)').vcFooter();
 
                     lgkorUI.CONTEXT_AREA.buildCommonUI();
 
                 } else {
                     $('header.header').vcHeader(); //헤더 모듈 적용...
-                    $('footer').vcFooter(); //푸터모듈 적용...
+                    //$('footer').vcFooter();
+                    $('footer:not(.pop-footer)').vcFooter();
 
                     $('body').buildCommonUI();
                 }
