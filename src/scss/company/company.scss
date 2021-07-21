@@ -34,10 +34,10 @@ br.pc{display:block;}
 .com-text .text{word-break: keep-all;margin-top: 24px;font-size: 16px;font-weight: normal;line-height: 1.56;color: #000000;}
 /* 정관 리스트 mo */
 .articles-list{margin-top: 24px;font-size:0;}
-.articles-list li{width:calc(50% - 12px);font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;border: 1px solid;border-color: #f2f2f2 #f1f1f1 #e4e4e4 #f0f0f0;box-shadow: 1px 6px 16px 0 rgb(0 0 0 / 14%);margin-bottom:16px;border-radius: 8px;background:url("/kr/images/company/investor/icon-articles-arr.png") right 30px center no-repeat;background-size: 24px;display: inline-block;}
+.articles-list li{width:calc(50% - 12px);font-size: 16px;line-height: 1.63;color: #000000;border: 1px solid;border-color: #f2f2f2 #f1f1f1 #e4e4e4 #f0f0f0;box-shadow: 1px 6px 16px 0 rgb(0 0 0 / 14%);margin-bottom:16px;border-radius: 8px;background:url("/kr/images/company/investor/icon-articles-arr.png") right 30px center no-repeat;background-size: 24px;display: inline-block;}
 .articles-list li:nth-child(2n){margin-left:24px;}
 .articles-list li a,
-.articles-list li button{display:block;padding:30px;width: 100%;text-align: left;}
+.articles-list li button{display:block;padding:30px;width: 100%;text-align: left;font-weight: bold;}
 /* pdf 다운로드 영역 */
 .company .sustainable-download {text-align: center;word-break: keep-all;padding: 52.3px 0 61px;background-image: linear-gradient(134deg, #a58bee 33%, #f86791 67%);margin:42px 0 60px;}
 .company .sustainable-download .tit {font-size: 24px;font-weight: bold;line-height: 1.42;color: #ffffff;}
@@ -76,7 +76,8 @@ br.pc{display:none;}
 /* 정관 리스트 mo */
 .articles-list{margin: 15px 0 0;}
 .articles-list li{width:100%;font-size: 14px;line-height: 1.57;margin-bottom:12px;background-position: right 15px center;}
-.articles-list li a{padding:22px 15px;}
+.articles-list li a,
+.articles-list li button{padding:22px 15px;}
 .articles-list li:nth-child(2n){margin-left:0;}
 /* pdf 다운로드 영역 mo */
 .company .sustainable-download {padding: 55px 0;background-image: linear-gradient(131deg, #a58bee -8%, #f86791 108%);margin:16px 0 30px;}
