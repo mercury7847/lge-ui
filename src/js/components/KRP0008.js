@@ -1294,7 +1294,7 @@
 
                     var $title = self.$caresolutionInfoPopup.find('.tit-wrap.type2:eq(0)');
                     if(careData && careData.dutyTerm && $title.length > 0) {
-                        $title.find('.h2-tit').text('의무사용기간 ' + careData.dutyTerm + '년/계약기간 '+careData.contractTerm+'년')
+                        $title.find('.h2-tit').text('계약기간 ' + careData.contractTerm + '년/의무사용기간 '+ careData.dutyTerm +'년')
                     }
 
                     var $careLi = self.$caresolutionInfoPopup.find('.fee-info-wrap dl:eq(0)');
@@ -1804,6 +1804,10 @@
                             }
                         }
                     }
+
+
+                    console.log("selectIndex %o %o",$selectBox,selectIndex);
+
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
 
@@ -1864,6 +1868,7 @@
                 //꼭 확인하세요 부분 케어솔루션 총요금 업데이트
                 var selectInfoData = selectRentalInfoData;
 
+     
                 var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
                 
                 var infoTotal = 0;
@@ -1928,8 +1933,8 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? ('원('+selectInfoData.visitPer+'개월 방문 기준)') : '원(대표요금제 기준)'));
-
+                var visitPerTxt = selectInfoData.visitPer === '0' ? '원(방문없음 기준)' : '원('+selectInfoData.visitPer+'개월 방문 기준)';
+                $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? visitPerTxt : '원(대표요금제 기준)'));
                 $paymentAmount.data('popupData',popupData);
             },
 
