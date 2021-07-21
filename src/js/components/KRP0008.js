@@ -106,7 +106,7 @@
                         e.preventDefault();
                         var appUrl = $(this).attr('data-app-link');
                         if(vcui.detect.isIOS){
-                            var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl});
+                            var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'bottombar_show': 'Y'});
                             webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                         } else {
                             void android.openLinkOut(appUrl);
