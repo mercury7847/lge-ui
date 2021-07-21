@@ -1318,19 +1318,30 @@
                         $btmInfo.find('dd').append($bulletList);
                         $btmInfo.find('dd').append($btn);
 
-                        var $table = self.$careshipInfoPopup.find('div.tb_row table tbody tr');
 
-                        $table.each(function(idx,obj){
-                            var key = (idx+1)+"";
-                            var data = popupData[key];
-                            var $tr = $(obj);
-                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price) + "원");
-                            if(data.free.length > 0) {
-                                $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
-                            } else {
-                                $tr.find('td:eq(2)').text("");
-                            }
-                        });
+                        // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                        var $tbody = self.$careshipInfoPopup.find('div.tb_row table tbody');
+                            $tbody.empty();
+                        var trTemplate =  '{{#each (item, idx) in list}}'+
+                                          '<tr>' +
+                                          '<td>{{idx}}년차 ({{(idx-1)*12+1}}~{{(idx*12)}}회차)</td>' +
+                                          '<td>{{item.price}}</td>' +
+                                          '<td>{{item.free}}</td>' +
+                                          '</tr>'+
+                                          '{{/each}}';
+
+                        var obj = { list : {} };
+                        for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                            obj.list[i] = popupData[i];
+                            obj.list[i].price = vcui.number.addComma(obj.list[i].price) +  "원";
+                            obj.list[i].free = (obj.list[i].free.length > 0) ?  obj.list[i].free.join(",") + " 무상할인" : "";
+                        }
+
+                        $tbody.append(vcui.template(trTemplate,obj));
+
+
+
+
                     }
 
                     self.$careshipInfoPopup.vcModal({opener: this});
@@ -1406,20 +1417,26 @@
                         }
                         $btmInfo.find('dd').append($bulletList);
                         $btmInfo.find('dd').append($btn);
-                        
-                        var $table = self.$caresolutionInfoPopup.find('div.tb_row table tbody tr');
 
-                        $table.each(function(idx,obj){
-                            var key = (idx+1)+"";
-                            var data = popupData[key];
-                            var $tr = $(obj);
-                            $tr.find('td:eq(1)').text(vcui.number.addComma(data.price) + "원");
-                            if(data.free.length > 0) {
-                                $tr.find('td:eq(2)').text(data.free.join(",") + " 무상할인");
-                            } else {
-                                $tr.find('td:eq(2)').text("");
-                            }
-                        });
+                        // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                        var $tbody = self.$caresolutionInfoPopup.find('div.tb_row table tbody');
+                            $tbody.empty();
+                        var trTemplate =  '{{#each (item, idx) in list}}'+
+                                          '<tr>' +
+                                          '<td>{{idx}}년차 ({{(idx-1)*12+1}}~{{(idx*12)}}회차)</td>' +
+                                          '<td>{{item.price}}</td>' +
+                                          '<td>{{item.free}}</td>' +
+                                          '</tr>'+
+                                          '{{/each}}';
+
+                        var obj = { list : {} };
+                        for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                            obj.list[i] = popupData[i];
+                            obj.list[i].price = vcui.number.addComma(obj.list[i].price) +  "원";
+                            obj.list[i].free = (obj.list[i].free.length > 0) ?  obj.list[i].free.join(",") + " 무상할인" : "";
+                        }
+
+                        $tbody.append(vcui.template(trTemplate,obj));
                     }
 
                     self.$caresolutionInfoPopup.vcModal({opener: this});
@@ -1472,8 +1489,7 @@
                         // var $li =  $(this).parents('li');
                         // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
 
-                        console.log("change itemdata %o",itemData);
-                        console.log("change itemdata %o",$(this));
+                        console.log("가입비 선택 change itemdata %o",itemData);
                         self.updateRentalInfoPrice(itemData);
                         self.rentalInfoBoxUpdate(3, $(this));
                     });
@@ -1883,10 +1899,6 @@
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
             updateRentalInfoPrice: function(selectRentalInfoData) {
-
-                console.log("selectRentalInfoData %o",selectRentalInfoData);
-
-
                 var self = this;
                 self.selectRentalInfoData = selectRentalInfoData;
                 var carePrice = parseInt(selectRentalInfoData.years1TotAmt);
@@ -1902,7 +1914,6 @@
                     monthPrice = 0;
                 }
                 //월 이용요금
-
                 var $priceInfo = self.$pdpInfoCareSiblingOption.find('dl.price-info span.price');
                 $priceInfo.html('<span class="sub-text">(1년차 월 요금 기준)</span>' + vcui.number.addComma(monthPrice) + '원' + (selectRentalInfoData.freeMonth ? ('<em class="desc">무상할인(' + selectRentalInfoData.freeMonth + '개월)</em>') : ''));
 
@@ -1914,8 +1925,6 @@
                     "contractTerm":selectRentalInfoData.contractTerm
                 }
 
-                console.log("selectRentalInfoData.dutyTerm %o",selectRentalInfoData.dutyTerm);
-
                 //결헙하여 할인받기 링크용 값 추가
                 $('#rentalCarePlanerSale').data('add',selectRentalInfoData.rtModelSeq);
 
@@ -1925,68 +1934,32 @@
                 //
                 //꼭 확인하세요 부분 케어솔루션 총요금 업데이트
                 var selectInfoData = selectRentalInfoData;
-
-     
                 var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
-                
                 var infoTotal = 0;
+
+                // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                 var popupData = {
                     "rtFreePeriod":selectInfoData.rtFreePeriod,
                     "rtFreePeriodCount":rtFreePeriod.length,
-                    "1":{},
-                    "2":{},
-                    "3":{},
-                    "4":{},
-                    "5":{}
                 };
 
-                for(var y=1;y<6;y++){
-                    var price = 0;
-                    switch(y) {
-                        case 1:
-                            price = selectInfoData.years1TotAmt;
-                            break;
-                        case 2:
-                            price = selectInfoData.years2TotAmt;
-                            break;
-                        case 3:
-                            price = selectInfoData.years3TotAmt;
-                            break;
-                        case 4:
-                            price = selectInfoData.years4TotAmt;
-                            break;
-                        case 5:
-                            price = selectInfoData.years5TotAmt;
-                            break;
-                        default:
-                            break;
-                    }
-
+                for(var y=1;y<=selectInfoData.contractTerm;y++){
+                    var key = y+"";
+                    if(!popupData[key]) popupData[key] = {}
+                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
                     if(price) {
-                        var key = y+"";
                         popupData[key].price = price;
                         popupData[key].free = [];
                         infoTotal += (price * 12);
                     }
                 }
-                
-                //2021-04-06 할인계산 제거
+
                 rtFreePeriod.forEach(function(item, index){
-                    if(item <= 12 && selectInfoData.years1TotAmt) {
-                        //infoTotal -= selectInfoData.years1TotAmt;
-                        popupData["1"].free.push(item);
-                    } else if(item <= 24 && selectInfoData.years2TotAmt) {
-                        //infoTotal -= selectInfoData.years2TotAmt;
-                        popupData["2"].free.push(item);
-                    } else if(item <= 36 && selectInfoData.years3TotAmt) {
-                        //infoTotal -= selectInfoData.years3TotAmt;
-                        popupData["3"].free.push(item);
-                    } else if(item <= 48 && selectInfoData.years4TotAmt) {
-                        //infoTotal -= selectInfoData.years4TotAmt;
-                        popupData["4"].free.push(item);
-                    } else if(item <= 60 && selectInfoData.years5TotAmt) {
-                        //infoTotal -= selectInfoData.years5TotAmt;
-                        popupData["5"].free.push(item);
+                    for(var y=1;y<=selectInfoData.contractTerm;y++){
+                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                            popupData[y+""].free.push(item);
+                            break;
+                        }
                     }
                 });
 
@@ -2028,66 +2001,32 @@
 
                 //케어십 할인 혜택 이용요금 팝업용 데이타
                 var selectInfoData = selectCareshipInfoData;
-
                 var rtFreePeriod = selectInfoData.rtFreePeriod ? selectInfoData.rtFreePeriod.split(',') : [];
-                
                 var infoTotal = 0;
+
+                // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                 var popupData = {
                     "rtFreePeriod":selectInfoData.rtFreePeriod,
                     "rtFreePeriodCount":rtFreePeriod.length,
-                    "1":{},
-                    "2":{},
-                    "3":{},
-                    "4":{},
-                    "5":{},
-                    "6":{}
                 };
 
-                for(var y=1;y<7;y++){
-                    var price = 0;
-                    switch(y) {
-                        case 1:
-                            price = selectInfoData.years1TotAmt;
-                            break;
-                        case 2:
-                            price = selectInfoData.years2TotAmt;
-                            break;
-                        case 3:
-                            price = selectInfoData.years3TotAmt;
-                            break;
-                        case 4:
-                            price = selectInfoData.years4TotAmt;
-                            break;
-                        case 5:
-                            price = selectInfoData.years5TotAmt;
-                            break;
-                        case 6:
-                            price = selectInfoData.years6TotAmt;
-                            break;
-                        default:
-                            break;
-                    }
-
+                for(var y=1;y<=selectInfoData.contractTerm;y++){
+                    var key = y+"";
+                    if(!popupData[key]) popupData[key] = {}
+                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
                     if(price) {
-                        var key = y+"";
                         popupData[key].price = price;
                         popupData[key].free = [];
+                        infoTotal += (price * 12);
                     }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
-                    if(item <= 12) {
-                        popupData["1"].free.push(item);
-                    } else if(item <= 24) {
-                        popupData["2"].free.push(item);
-                    } else if(item <= 36) {
-                        popupData["3"].free.push(item);
-                    } else if(item <= 48) {
-                        popupData["4"].free.push(item);
-                    } else if(item <= 60) {
-                        popupData["5"].free.push(item);
-                    } else if(item <= 70) {
-                        popupData["6"].free.push(item);
+                    for(var y=1;y<=selectInfoData.contractTerm;y++){
+                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                            popupData[y+""].free.push(item);
+                            break;
+                        }
                     }
                 });
 
