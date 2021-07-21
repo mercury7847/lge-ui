@@ -31,7 +31,7 @@ br.pc{display:block;}
 .com-text {padding: 60px 40px 60px;max-width: 1460px;margin: 0 auto;position: relative;}
 .com-text + .com-text::before{display: block;content: "";position: absolute;top: 0;width: calc(100% - 80px);height:1px;background-color:#dddddd;}
 .com-text .tit{font-size: 22px;font-weight: bold;line-height: 1.45;color: #000000;}
-.com-text .text{word-break: keep-all;margin-top: 24px;font-size: 16px;font-weight: normal;line-height: 1.56;color: #000000;}
+.com-text .text{word-break: keep-all;margin-top: 24px;font-size: 16px;font-weight: normal;line-height: 26px;color: #000000;}
 /* 정관 리스트 mo */
 .articles-list{margin-top: 24px;font-size:0;}
 .articles-list li{width:calc(50% - 12px);font-size: 16px;line-height: 1.63;color: #000000;border: 1px solid;border-color: #f2f2f2 #f1f1f1 #e4e4e4 #f0f0f0;box-shadow: 1px 6px 16px 0 rgb(0 0 0 / 14%);margin-bottom:16px;border-radius: 8px;background:url("/kr/images/company/investor/icon-articles-arr.png") right 30px center no-repeat;background-size: 24px;display: inline-block;}
