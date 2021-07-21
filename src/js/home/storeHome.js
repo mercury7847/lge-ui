@@ -162,17 +162,24 @@ $(function(){
             }
         }
 
+        function getCategoryClass(item){
+            if( item.subCategoryId == "" || item.subCategoryId == undefined) {
+                return item.categoryId
+            } else {
+                return item.subCategoryId
+            }
+        }
+
         var currentEcValue = {
             "model_name": displayName.trim(),
             "model_id": item.modelId,					
             "model_sku": item.modelName,					 
             "model_gubun": item.modelGubunName,
-            "ct-id": item.modelGubunName,
             "price": vcui.number.addComma(item.obsOriginalPrice), 
             "discounted_price": vcui.number.addComma(item.totalPrice), 
             "brand": "LG",
             "category": getEcCategoryName(item),
-            "ct_id": item.subCategoryId
+            "ct_id": getCategoryClass(item)
         }
         /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
 
