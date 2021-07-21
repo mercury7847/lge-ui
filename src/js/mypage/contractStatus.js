@@ -888,7 +888,18 @@
                 $('.contract-info .dutyPeriod').hide();
 
                 // 케어십 - 계약기간 표시형식 변경
-                data.contractInfo.period =  data.contractInfo.period +' ~ ';
+                data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
+                
+                '<dl class="bullet-list nomargin-top">' +
+                '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
+                '</dl>';
+
+
+
+
+
+
+
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경
