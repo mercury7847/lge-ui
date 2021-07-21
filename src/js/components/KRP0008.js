@@ -117,7 +117,10 @@
                     $reservationLink.each(function(){
                         var $this = $(this);
                         if( $this.attr('data-app-link') != '' && $this.attr('data-app-link') != undefined) {
-                            $this.attr('href', $this.attr('data-app-link'))
+                            $this.attr({
+                                'href': $this.attr('data-app-link'),
+                                'target' : '_blank'
+                            })
                         }
                     });
                 }
