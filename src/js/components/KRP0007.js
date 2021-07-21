@@ -185,9 +185,21 @@
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
-                        if(param) {
+                        if(param) {                            
                             self.requestSearch(param, true);
                         }
+
+                        /* BTOCSITE-2785 : 2021-07-14 add */
+                        var tempArray = [];
+                        for (var key in param){
+                            tempArray.push(key);
+                        }
+
+                        var $selectedInput = $('input[value='+ param[tempArray[0]] +']');
+                        $selectedInput.closest('li').trigger('click');
+                        //console.log('selectedInput', $selectedInput.closest('li'));
+                        //console.log('pp', param[tempArray[0]]);
+                        /* //BTOCSITE-2785 : 2021-07-14 add */
                     });
     
                     self.filterLayer.updateFilter(savedFilterArr);
@@ -546,10 +558,13 @@
                 });	
                 /* //BTOCSITE-2150 add */
 
+
+
+
                 /* BTOCSITE-2785 : 2021-07-14 add */
                 var $productG_content = $('.productGlossary');
                 var $productGBtn = $productG_content.find('button');
-                //self.$categoryList = self.$categorySelect.find('.ui_smooth_tab ul');
+                //self.$categoryList = self.$categorySelect.find('.ui_smooth_tab ul li');
                 // $.each(firstFilterList, function(idx, item){
                 //     var itemHTML = 
                 //     '<li data-productTarget="s'+ idx +'">' + item.filterValueName + '</li>';
@@ -557,8 +572,11 @@
                 //     //console.log(self.$categoryList.append(itemHTML));
                 //     //console.log(item.filterValueName);
                 // });
+                
 
                 self.$categorySelect.on('click', '.ui_smooth_tab ul li', function(){ 
+                    //console.log("클릭");
+                    $(this).addClass('on');
                     if($(this).hasClass('on')){
                         $productG_content.not('.cont_' + $(this).attr('data-productTarget')).hide();
                         //$productG_content.not('.cont_' + $(this).eq(0)).hide();
@@ -567,7 +585,10 @@
                 });
                 $productGBtn.on('click', function(){
                     $productG_content.not('.cont_' + $(this).attr('data-productTarget')).slideUp(200);
+                    $(this).removeClass('on');
                 });
+
+                //self.$categorySelect.find('.ui_smooth_tab ul li').trigger('click');
                 /* //BTOCSITE-2785 : 2021-07-14 add */
             },
 
