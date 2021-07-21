@@ -282,7 +282,6 @@
                 return JSON.stringify(param);
             },
             makeAdditionalGAData: function(item) {
-
                 var param = {
                     "model_name":item.title,
                     "model_id":item.model_id,
@@ -921,6 +920,7 @@
                         $list_ul.empty();
                         var $div = $("<div/>");
                         arr.forEach(function(item, index) {
+                            if(index > 1) return; //BTOCSITE-3128 스토리 노출 건 4개에서 2개로 변경
                             if(!item.hash) {
                                 item.hash = [];
                             }
@@ -934,7 +934,7 @@
                         noData = false;
 
                         var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
-                        if($btnLink.length > 0 && count < 5) {
+                        if($btnLink.length > 0 && count < 3) { //BTOCSITE-3128 스토리 노출 건 4개에서 2개로 변경
                             $btnLink.hide();
                         } else {
                             $btnLink.show();
