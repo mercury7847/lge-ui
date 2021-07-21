@@ -446,7 +446,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
 
                 /* BTOCSITE-3316 add :: 출장 예약 페이지일때 센터 예약 유도 카테고리 선택시 팝업 추가 */
-                var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) < 0;
+                var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) > 0;
                 
                 //console.log('indexof',self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory));
                 if (isRecommendVisitCategory && self.isEngineerReservation){
