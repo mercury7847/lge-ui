@@ -89,7 +89,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             },
             summary: {
                 tit: '서비스이용을 위해 제품을 선택해 주세요.'
-            }
+            },
+            // BTOCSITE-3316 add :: 소형가전, IT 제품 선택시 안내 팝업 나올 카테고리 데이터 추가
+            recommendVisitCenterCategoryArray : [ 'CT50019022', 'CT50019564', 'CT50019585', 'CT50019602', 'CT50019616', 'CT50019631', 'CT50019340', 'CT50019400', 'CT50019380', 'CT50019360', 'CT50019421', 'CT50019527', 'CT50019543', 'CT50019558', 'CT50019696', 'CT50019709', 'CT50019873', 'CT50019890', 'CT50019904' ]
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -438,10 +440,34 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         },
                         cancel: function() {}
                     });
-                } else {
-                    self.complete(data);
-                }                
-                /* //BTOCSITE-3312 add */                
+                    return;                   
+                }         
+                /* //BTOCSITE-3312 add */
+
+
+                /* BTOCSITE-3316 add :: 출장 예약 페이지일때 센터 예약 유도 카테고리 선택시 팝업 추가 */
+                var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) < 0;
+                
+                //console.log('indexof',self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory));
+                if (isRecommendVisitCategory && self.isEngineerReservation){
+                    var alertMsg = '고객님, 선택하신 제품은 <strong class="point">센터 방문 예약 서비스</strong>를 이용하시면 보다 신속하고 정확하게 서비스 이용이 가능합니다.<br><br>센터 방문 예약 접수를 도와 드릴까요?';
+                    lgkorUI.confirm(alertMsg,{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = 'support/visit-center-reservation';                            
+                        },
+                        cancel: function() {
+                            self.complete(data);
+                        }
+                    });
+                    return;
+                }
+                /* //BTOCSITE-3316 add */
+
+                self.complete(data);
             });
             
             // 모델명 선택 - 카테고리 선택
