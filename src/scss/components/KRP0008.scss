@@ -1475,18 +1475,9 @@
             }
             // <-- 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
             .rental-banner {
-                font-size:14px;
-                width:100%;
-                height:100%;
-                border:2px solid #da0f47;
-                border-radius: 8px;
-                padding: 10px;
-                .title {
-                    color: #da0f47;
-                    margin-bottom:10px;
+                img {
+                    width:100%;
                 }
-               
-                div { margin:3px 0;}
             }
             // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 //-->
         }
