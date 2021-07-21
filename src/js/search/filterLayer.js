@@ -264,6 +264,8 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
                     self.triggerFilterChangeEvent();
+
+                    //console.log('li' , $(e.currentTarget).closest('li').trigger('click'));
                 });
             }
 
