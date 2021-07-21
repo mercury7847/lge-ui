@@ -234,7 +234,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .compGrp img.only_mo + img.only_mo {margin-top:20px}
 .company .compGrp img {display:block; max-width:100%; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
-.company .hone::before {content:''; display:block; position:absolute; width:2.4px; height:2.4px; top:10.8px; left:0; border-radius:50%; background-color:#000}
+.company .hone::before {content:''; display:block; position:absolute; width:3px; height:3px; top:10.5px; left:0; border-radius:50%; background-color:#000}
 .company .hone strong {display:block}
 .company ul.compBox {display:flex; flex-wrap:wrap; margin-top:20px}
 .company ul.compBox > li {width:calc(25% - 18px); border:1px solid #ddd; border-radius:8px; overflow:hidden}
@@ -283,7 +283,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .btnArea {margin-top:60px}
 
 .company .comp_wrap {position:relative; display:flex; padding-top:31px}
-.company .comp_wrap img {display:block; width:327px; max-width:327px; height:210px; margin:24px 30px 0 0}
+.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0}
 .company .comp_wrap .textArea .tit {position:absolute; top:0; left:0}
 /* 컨텐츠 영역 끝 */
 
@@ -1046,7 +1046,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.lgway_first > li .desc .text {margin-top:12px}
 
     .company .text.hone {margin-top:12px}
-    .company .hone {padding-left:9px}
+    .company .hone {padding-left:10px}
     .company .hone::before {width:2px; height:2px; top:9px}
     .company ul.compBox {flex-direction:column; margin-top:10px}
     .company ul.compBox > li {display:flex; width:100%; margin:12px 0 0 0!important}
