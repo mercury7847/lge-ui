@@ -228,47 +228,28 @@
                                     <!-- 에어컨 > 시스템 에어컨 or 창문형/이동식 선택 시 -->
                                     <div class="section-box" id="bdTypeBox" style="display:none">
                                         <h3 class="sub-tit req">추가정보 - 건물유형</h3>
-                                        <div class="rdo-list-wrap w-auto">
+                                        <!-- BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 : 마크업 변경-->
+                                        <div class="rdo-list-wrap w-full">
                                             <ul class="rdo-list">
                                                 <li>
                                                     <span class="rdo-wrap">
                                                         <input type="radio" name="bdType" id="bdType01" value="0" data-error-msg="건물유형을 선택해주세요." data-required="true" required>
-                                                        <label for="bdType01">상가, 사무실</label>
+                                                        <label for="bdType01">주거공간 : 아파트, 빌라, 주택, 원룸 / 주상복합(주택)</label>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span class="rdo-wrap">
                                                         <input type="radio" name="bdType" id="bdType02" value="1">
-                                                        <label for="bdType02">호텔, 모텔, 콘도, 펜션</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" name="bdType" id="bdType03" value="2">
-                                                        <label for="bdType03">학교, 관공서</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" name="bdType" id="bdType04" value="3">
-                                                        <label for="bdType04">오피스텔</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" name="bdType" id="bdType05" value="4">
-                                                        <label for="bdType05">아파트, 빌라, 주택, 원룸</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" name="bdType" id="bdType06" value="5">
-                                                        <label for="bdType06">기타</label>
+                                                        <label for="bdType02">상업공간 : 상가, 사업장, 사무실  / 호텔, 모텔, 콘도, 펜션 / 학교, 관공서 / 오피스텔(주거포함) / 주상복합 (상가) /  기타(종교시설, 기숙사, 군대막사, 창고, 시설물 등.. )</label>
                                                     </span>
                                                 </li>
                                             </ul>
                                             <p class="err-msg bd-type-msg"></p>
+                                            <div class="cause-desc">
+                                                <p>신속한 A/S를 위해서 정확한 선택 부탁 드립니다. <br>사용 장소가 잘못 선택된 경우 서비스가 지연될 수 있습니다.</p>
+                                            </div>
                                         </div>
+                                        <!-- //BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 : 마크업 변경-->
                                     </div>
 
                                     <div class="section-box" id="fanBox" style="display:none">
