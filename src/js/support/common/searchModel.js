@@ -457,7 +457,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         okBtnName: '네',
                         cancelBtnName: '아니요',
                         ok: function() {
-                            location.href = 'support/visit-center-reservation';                            
+                            location.href = '/support/visit-center-reservation';                            
                         },
                         cancel: function() {
                             self.complete(data);
