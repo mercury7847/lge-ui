@@ -1621,25 +1621,27 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: flex-end;
+                    margin: -19px 0 0 -16px !important; //BTOCSITE-2551 - 2017-07-20
                     font-size: 0;
+                    @include mobile {
+                        margin: -17px 0 0 -10px !important; //BTOCSITE-2551 - 2017-07-20
+                    }
                     > li {
                         display: inline-block;
+                        margin: 19px 0 0 16px !important; //BTOCSITE-2551 - 2017-07-20
                         padding-left: 28px;
                         font-size: 14px;
                         line-height: 24px;
-                        &:nth-child(3) {
-                            margin-top: 19px;
-                            
-                            @include mobile {
-                                margin-top: 15px;
-                            }
-                        }
                         @include mobile {
+                            margin: 17px 0 0 10px !important; //BTOCSITE-2551 - 2017-07-20
                             font-size: 13px;
+                            > a {
+                                letter-spacing: -0.5px; //BTOCSITE-2551 - 2017-07-20
+                            }
                         }
                         a:active{
                             background-color: inherit;
-                            
+
                         }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;

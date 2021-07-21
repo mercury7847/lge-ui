@@ -103,24 +103,24 @@
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 스크립트 추가
                 var iconStore = $('.info-bottom .link-area .reservation.store-counsel');
                 var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
-                var $reservationLink = $('.info-bottom .link-area [data-app-link]');
+                var $reservationLink = $('.info-bottom .link-area .reservation a');
 
-                if( activeTabIndex == 0) {
-                    iconStore.show();
-                    iconRental.hide();
-                } else {
-                    iconStore.hide();
-                    iconRental.show();
-                }
+                // if( activeTabIndex == 0) {
+                //     iconStore.show();
+                //     iconRental.hide();
+                // } else {
+                //     iconStore.hide();
+                //     iconRental.show();
+                // }
 
-                if( isApp()) {
-                    $reservationLink.each(function(){
-                        var $this = $(this);
-                        if( $this.attr('data-app-link') != '') {
-                            $this.attr('href', $this.attr('data-app-link'))
-                        }
-                    });
-                }
+                // if( isApp()) {
+                //     $reservationLink.each(function(){
+                //         var $this = $(this);
+                //         if( $this.attr('data-app-link') != '' && $this.attr('data-app-link') != undefined) {
+                //             $this.attr('href', $this.attr('data-app-link'))
+                //         }
+                //     });
+                // }
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
             },

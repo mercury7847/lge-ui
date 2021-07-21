@@ -1,211 +1,328 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./common/head.html', {
-    componentID: "KRC0015",
-    isJScompile: true,
-    pageTitle: "000000"
-})
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
+    @@include('./common/head.html', {
+        componentID: "KRP0008",
+        isJScompile: true
+    })
+    <script src="/lg5-common/js/components/KRP0015.min.js"></script>
 <body>
-<div class="wrap">
-    <div class="container">
+    <script>
+        // 로그인 유무
+        var loginFlag = true;
 
-        <!-- component KRC0015 -->
+        // 제품 가격
+        // 2021-02-05 오타수정
+        var productPrice = 20;
 
-        <!-- Hero type -->
-        @@include('./common/partials/KRC0015-hero_test.html', {
-            "common": {
-                "zero": "",
-                "bg-color": ""
+        // 2021-02-19 모델네임
+        var modelName = "modelName";
+
+        // 2021-02-26 모델구분
+        var modelGubun = "1";
+
+        //2021-02-15 추가
+        var careshipOnlyFlag = "Y";
+
+        //사전예약 제품
+        var preOrderFlag = true;
+
+        //케어십 필수 제품 체크
+        var careRequire = false;
+
+        //수질관리 제품 케어십 필수 체크
+        var waterCareRequire = false;
+
+        //전시 매장 찾기 가능 여부
+        var outletStockFlag = "N";
+
+        //카트, 찜하기,비교하기, 구매하기등 에 필요한 데이타
+        var sendData = {
+            "modelId":"MD08045024",
+            "sku": "OLED65CXGNA.AKR",
+            "typeFlag" : "",
+            "rtSeq" : "",
+            "requireCare" : "N",
+            "wishListId" : "",
+            "wishItemId" : "",
+            "categoryId" : "CT50000025",
+            "id": "MD08045024",
+            "productName": "LG 올레드 AI <sup>ThinQ</sup>",
+            "productID": "MD08045024",
+            "productImg": "/kr/images/tvs/md08045024/md08045024-350x350.jpg",
+            "productAlt": "LG 올레드 AI <sup>ThinQ</sup>"
+        };
+
+
+        // 수상내역 팝업데이타
+        var awards = [
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "TV 2년 연속 국가고객만족도(NCSI) TV 부문 1위",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-01.jpg"
             },
-            "title": {
-                "font-class1": "font-regular",
-                "font-class2": "font-underline",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "REDDOT Design Awards 2019 수상",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-02.jpg"
             },
-            "carousel": {
-                "type": "hero-banner",
-                "item1": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "boxAlign" : "box-align-left",
-                    "font-color":"text-white",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                },
-                "item2": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "boxAlign" : "box-align-left",
-                    "font-color":"text-white",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                },
-                "item3": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-right",
-                    "align-class2":"align-middle",
-                    "boxAlign" : "box-align-right",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                },
-                "item4": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-right",
-                    "align-class2":"align-top",
-                    "boxAlign" : "box-align-right",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold"
-                },
-                "item5": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-center",
-                    "align-class2":"align-top",
-                    "boxAlign" : "box-align-right",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                },
-                "item6": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "boxAlign" : "box-align-right",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                },
-                "item7": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-center",
-                    "align-class2":"align-middle",
-                    "boxAlign" : "box-align-center",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                }
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "초단초점 HU80KA 2019 대한민국 퍼스트브랜드 대상 수상",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-03.jpg"
+            },
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "TV 2년 연속 국가고객만족도(NCSI) TV 부문 1위",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-01.jpg"
+            },
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "REDDOT Design Awards 2019 수상",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-02.jpg"
+            },
+            {
+                "storyPdpThumbnailPath": "/lg5-common/images/KRP0008/",
+                "storyTitle": "초단초점 HU80KA 2019 대한민국 퍼스트브랜드 대상 수상",
+                "storyPdpThumbnailAltText": "1",
+                "storyPdpThumbnailServerName": "img-award-03.jpg"
             }
-        })
-        <!-- // Hero type -->
+        ];
 
-
-        <!-- text-wide -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont-multi_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
+        //케어십 가격정보
+        var careShipInfo = [
+        {
+                "years3TotAmt": 29900,
+                "visitPer": "2",  // 방문
+                "rtRgstFeePre": 100000,    // 가입비
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 29900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 29900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161126",
+                "dutyTerm": "3", // 의무
+                "representChargeFlag": "Y",
+                "contractTerm": "3", // 계약
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 2
             },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-            },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-02.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-02.jpg",
-                    "visual3":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual4":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "font-color":"text-black",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                }
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "5",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161133",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 5
             }
-        })
-        <!-- // non-hero -->
-        <!-- // text-wide -->
+        ];
 
-
-        <!-- text-block-top -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
+        //렌탈 가격정보
+        var rentalInfo = [
+            {
+                "years3TotAmt": 29900,
+                "visitPer": "3",  // 방문
+                "rtRgstFeePre": 100000,    // 가입비
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 29900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 29900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161126",
+                "dutyTerm": "3", // 의무
+                "representChargeFlag": "Y",
+                "contractTerm": "3", // 계약
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
             },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "1",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161133",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
             },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "font-color":"text-white",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                }
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "2",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161134",
+                "dutyTerm": "3",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 27900,
+                "visitPer": "4",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 27900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 27900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "161135",
+                "dutyTerm": "5",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 24900,
+                "visitPer": "5",
+                "rtRgstFeePre": 100000,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 24900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 24900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "162125",
+                "dutyTerm": "6",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 24900,
+                "freeMonth": 1
+            },
+            {
+                "years3TotAmt": 32900,
+                "visitPer": "6",
+                "rtRgstFeePre": 0,
+                "freeMonthDisplayYn": "Y",
+                "rentalCareType": "R",
+                "years1TotAmt": 32900,
+                "caresolutionSalesCodeSuffix": "WD501AW.AKOR",
+                "years2TotAmt": 32900,
+                "years6TotAmt": 0,
+                "rtFreePeriod": "3",
+                "rtModelSeq": "1457284",
+                "dutyTerm": "5",
+                "representChargeFlag": "N",
+                "contractTerm": "5",
+                "years5TotAmt": 22900,
+                "years4TotAmt": 27900,
+                "freeMonth": 1
             }
-        })
-        <!-- non-hero -->
-        <!-- // text-block-top -->
-
-
-        <!-- text-block-middle -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
+        ];
+        
+        //렌탈 케어솔루션 제휴카드 리스트 정보
+        var rentalAssociatedCardList = [
+            {
+                "cardNameCode":"cid00001",
+                "cardSubName":"LG전자 베스트렌탈",
+                "defaultPrice":"default",
+                "cardName":"우리카드",
+                "simpleReqFlag":"Y", //간편신청카드
+                "maxSalePrice":110000
             },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
+            {
+                "cardNameCode":"cid00002",
+                "cardSubName":"LG전자 렌탈애",
+                "defaultPrice":"",
+                "cardName":"신한카드",
+                "simpleReqFlag":"N", //개별신청카드
+                "maxSalePrice":19000
             },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-02.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-02.jpg",
-                    "align-class1":"align-left",
-                    "align-class2":"align-middle",
-                    "width-class":"type-wide",
-                    "font-color":"text-black",
-                    "font-class1":"font-regular",
-                    "font-class2":""
-                }
+            {
+                "cardNameCode":"cid00003",
+                "cardSubName":"테스트카드",
+                "defaultPrice":"Y",
+                "cardName":"신한카드",
+                "simpleReqFlag":"N",
+                "maxSalePrice":100000
             }
-        })
-        <!-- // text-block-middle -->
+        ];
 
+        //케어십 제휴카드 리스트 정보
+        var careshipAssociatedCardList = [
+        {
+                "cardNameCode":"cid00004",
+                "cardSubName":"LG전자 베스트렌탈",
+                "defaultPrice":"default",
+                "cardName":"우리카드",
+                "simpleReqFlag":"N",
+                "maxSalePrice":110000
+            },
+            {
+                "cardNameCode":"cid00005",
+                "cardSubName":"LG전자 렌탈애",
+                "defaultPrice":"",
+                "cardName":"신한카드",
+                "simpleReqFlag":"Y",
+                "maxSalePrice":19000
+            },
+            {
+                "cardNameCode":"cid00006",
+                "cardSubName":"테스트카드",
+                "defaultPrice":"Y",
+                "cardName":"신한카드",
+                "simpleReqFlag":"Y",
+                "maxSalePrice":100000
+            }
+        ];
+
+    </script>
+<!-- /mkt/ajax/product/retrieveModelRewardInfo -->
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+
+            <div class="component-wrap full">
+                <!-- component KRP0008 -->
+                <section class="component KRP0008" aria-label="{category명} product detail" data-consumables="false">
+                    <!-- 2021.2.15 categoryId 을 가져오기 위한 부분 -->
+                    <div class="hidden-input-group">
+                        <input type="hidden" name="categoryId" value="test_categoryID">
+                    </div>
 
                     <div class="pdp-wrap"> <!-- pdp-info-area 영역 내용 없을 경우 pdp-center 클래스 적용 -->
                         <!-- 210331 수정 [모바일 타이틀 영역 추가] -->
@@ -584,104 +701,357 @@
                     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>                    
                 </article>
 
+                <!-- 케어솔루션 이용요금 자세히보기 -->
+                <article id="caresolutionInfoPopup" class="popup-wrap">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>케어솔루션 할인 혜택</span></h1>
+                    </header>
+                    <section class="pop-conts no-footer" id="modal_16_content">
+                        <div class="layer-monthly-payment">
+                            <h2 class="small-title"><span>의무 사용기간 3년/계약기간 5년</span></h2>
+                            <div class="payment-info">
+                                <ul class="info-list">
+                                    <li>
+                                        <dl>
+                                            <dt>예상 이용 요금</dt>
+                                            <dd>월 36,900원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>제휴카드 [신한] LG전자 렌탈애(愛)]</dt>
+                                            <dd class="discount">-23,000원</dd>
+                                        </dl>
+                                    </li>
+                                    <li class="total-payment">
+                                        <dl>
+                                            <dt>최적 혜택가격</dt>
+                                            <dd>월 13,900원</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2 class="small-title"><span>연차별 월 요금</span></h2>
+                            <div class="tb_row">
+                                <table>
+                                    <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부금액 안내</caption>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col style="">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">연차 (납부회차)</th>
+                                        <th scope="col">납부금액</th>
+                                        <th scope="col">비고</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1년차 (1~12회차)</td>
+                                        <td>36,900원</td>
+                                        <td>3,6,9,12 무상할인</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2년차 (13~24회차)</td>
+                                        <td>36,900원</td>
+                                        <td>15,18 무상할인</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3년차 (25~36회차)</td>
+                                        <td>36,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4년차 (37~48회차)</td>
+                                        <td>13,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5년차 (49~60회차)</td>
+                                        <td>13,900원</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btm_info">
+                                    <dl>
+                                        <dt>무상할인 적용회차 (6회)</dt>
+                                        <dd>납부 월 회차 : <span class="point">3,6,9,12,15,18 회차</span> 월 납부 금액 할인 (0원)</dd>
+                                    </dl>
+                                    <p>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다. </p>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <a href="#" class="btn dark-gray size ui_modal_close">제휴카드 할인 혜택 자세히 보기</a>
+                            </div>
+                            <div class="notice-box">
+                            <dl class="bullet-list top-border">
+                                <dt class="b-tit">케어솔루션 안내</dt>
+                                <dd class="b-txt">케어솔루션 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.</dd>
+                                <dd class="b-txt">5년 동안 무상 A/S(계약 기간 내)</dd>
+                                <dd class="b-txt">초기구입비용 0원(60개월 분할 납부)</dd>
+                            </dl>
+                            </div>
+                        </div>
+                    </section>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
-        <!-- brand-logo-image -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
-            },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-            },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-center",
-                    "align-class2":"align-middle",
-                    "width-class":"type-narrow",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                }
-            }
-        })
-        <!-- // brand-logo-image -->
+                <!-- 구매신청 케어쉽 필수 상품 안내 -->
+                <article id="careRequireBuyPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>제품 구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_19_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
+                                    <ul class="process-list">
+                                        <li><span>케어십 신청</span></li>
+                                        <li><span>제품주문</span></li>
+                                        <li><span>완료</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#청약신청화면주소"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
+                <!-- 케어쉽 필수 상품 안내 (static)-->
+                <article id="careRequirePopup" class="popup-wrap small" data-link-url="#청약신청화면주소">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>제품 구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_19_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
+                                    <!-- <ul class="process-list">
+                                        <li><span>케어십 신청</span></li>
+                                        <li><span>제품주문</span></li>
+                                        <li><span>완료</span></li>
+                                    </ul> -->
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
-        <!-- Animation component -->
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-ani.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
-            },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-            },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-01.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-01.jpg",
-                    "align-class1":"align-center",
-                    "align-class2":"align-middle",
-                    "width-class":"type-narrow",
-                    "boxAlign" : "box-align-center",
-                    "font-color":"text-white",
-                    "font-class1":"font-bold",
-                    "font-class2":""
-                }
-            }
-        })
-        <!-- // Animation component -->
+                <!-- 수질관리 케어쉽 필수 상품 안내(static) -->
+                <article id="waterCareRequirePopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_16_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십신청이 필수 선택입니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
+                <!-- 회원 구매 안내(로그인 하기)(static) -->
+                <article id="loginPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit" id="modal_16_title"><span>회원 구매 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_16_content">
+                        <div class="layer-careship">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>사전예약 제품으로 구매를 위해서는 LG전자 통합 로그인이 필요합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close" data-link-url="#로그인주소"><span>로그인 확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
-        <!-- non-hero -->
-        @@include('./common/partials/KRC0015-cont_test.html', {
-            "common": {
-                "zero": "zero-top",
-                "bg-color": ""
-            },
-            "title": {
-                "align-class":"align-center",
-                "font-class1": "font-regular",
-                "font-class2": "",
-                "eyebrow": "test공백포함 20자 이내로 작성 권장합니다.",
-                "headline": "<h2>공백포함 35자 이내로 헤드라인 타이틀 작성 권장합니다.</h2>",
-                "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-            },
-            "carousel": {
-                "type": "type-etc",
-                "item": {
-                    "visual1":"/lg5-common/images/KRC0015/@img-1920x640-02.jpg",
-                    "visual2":"/lg5-common/images/KRC0015/@img-720x920-02.jpg",
-                    "align-class1":"align-right",
-                    "align-class2":"align-top",
-                    "width-class":"type-wide",
-                    "font-color":"text-black",
-                    "font-class1":"font-regular-italic",
-                    "font-class2":"font-underline"
-                }
-            }
-        })
+                <!-- 사전 예약 제품 구매 안내 (static) -->
+                <article id="preOrderPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>사전 예약 제품 안내</span></h1>
+                    </header>
+                    <section class="pop-conts" id="modal_19_content">
+                        <div class="layer-pre-order">
+                            <div class="process-info">
+                                <div class="info-box">
+                                    <p>선택하신 제품은 사전 예약 제품입니다.</p>
+                                    <ul class="process-list">
+                                        <li><span>사전예약 선결제</span></li>
+                                        <li><span>입고 및 배송 시작 안내</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="bullet-list">
+                                    <li class="b-txt">사전예약 제품은 선결제 후 제품이 입고되는 시점에 배송일정이 결정됩니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="pop-footer center" ui-modules="Footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+                        </div>
+                    </footer>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
 
-        <!-- //component KRC0015 -->
+                <!-- pdp-data -->
+                <div id="pdp-data">
+                    <div>
+                        <input type="hidden" name="type" value="360"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value="https://www.youtube.com/embed/6BnPTCtzHlo"/>
+                        <input type="hidden" name="videoUrl" value="https://www.youtube.com/embed/LDocqNKcW0c"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="animation"/>
+                        <input type="hidden" name="imagePdp" value=""/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value="mp4"/>
+                        <input type="hidden" name="adUrl" value="/lg5-common/videos/Highlight_backround.mp4"/>
+                        <input type="hidden" name="videoUrl" value="/lg5-common/videos/signature_rain_view.mp4"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="video"/>
+                        <input type="hidden" name="imagePdp" value=""/>
+                        <input type="hidden" name="imageMobile" value=""/>
+                        <input type="hidden" name="imagePC" value=""/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value="https://www.youtube.com/embed/6BnPTCtzHlo"/>
+                        <input type="hidden" name="videoUrl" value="https://www.youtube.com/embed/LDocqNKcW0c"/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                    <div>
+                        <input type="hidden" name="type" value="image"/>
+                        <input type="hidden" name="imagePdp" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imageMobile" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="imagePC" value="/lg5-common/images/KRP0008/@sample-img.jpg"/>
+                        <input type="hidden" name="alt" value="LG 올레드 갤러리 TV"/>
+                        <input type="hidden" name="videoType" value=""/>
+                        <input type="hidden" name="adUrl" value=""/>
+                        <input type="hidden" name="videoUrl" value=""/>
+                        <input type="hidden" name="linkName" value="65UK6300PUE"/>
+                    </div>
+                </div>
 
+            </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0015.html')
+            <!-- // component -->
+        </div>
+        @@include('./common/footer.html')
     </div>
-</div>
 </body>
 </html>
