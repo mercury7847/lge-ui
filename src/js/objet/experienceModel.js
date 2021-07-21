@@ -4323,7 +4323,7 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                //BTOCSITE-2346 210721 수정 - start
+                //BTOCSITE-2346 210721 수정 - start 
                 if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
                     $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode}); 
                 } else {
