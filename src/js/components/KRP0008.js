@@ -113,17 +113,30 @@
                 //     iconRental.show();
                 // }
 
-                if( isApp()) {
-                    $reservationLink.each(function(){
-                        var $this = $(this);
-                        if( $this.attr('data-app-link') != '' && $this.attr('data-app-link') != undefined) {
-                            $this.attr({
-                                'href': $this.attr('data-app-link'),
-                                'target' : '_blank'
-                            })
+                $(document).on('click', '[data-app-link]', function(e){
+                    if( isApp()) {
+                        e.preventDefault();
+                        var appUrl = $(this).attr('data-app-link');
+                        if(vcui.detect.isIOS){
+                            var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openLinkOut(appUrl);
                         }
-                    });
-                }
+                    }
+                })
+
+                // if( isApp()) {
+                //     $reservationLink.each(function(){
+                //         var $this = $(this);
+                //         if( $this.attr('data-app-link') != '' && $this.attr('data-app-link') != undefined) {
+                //             $this.attr({
+                //                 'href': $this.attr('data-app-link'),
+                //                 'target' : '_blank'
+                //             })
+                //         }
+                //     });
+                // }
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
             },
