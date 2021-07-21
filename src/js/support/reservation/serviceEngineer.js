@@ -735,7 +735,7 @@
                 }
                 */
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
-                var alertMsg = '일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.';
+                var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
                 if( topicName === "세척서비스" ){
                     $(this).prop('checked', false);
                     lgkorUI.alert(alertMsg);
