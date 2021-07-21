@@ -5873,7 +5873,7 @@
             priceHtml += '      <dt>' + modelName + '</dt>';
             priceHtml += '      <div class="panel_guide">';
             priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
-            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
+            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" target="_blank" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
             priceHtml += '      </div>';
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';
@@ -6941,7 +6941,7 @@ function resultModelPrice(price) {
 }
 //제품이 여러개 였을 경우 각각의 가격을 합산해서 뿌려줌
 function totalResulPrice() {
-    setTimeout(function() {
+    setTimeout(function() { 
         let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
         let totalPrice = 0;
         if (resultLeng == 0) {
