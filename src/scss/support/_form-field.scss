@@ -739,6 +739,16 @@
             }
         }
     }
+    //BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
+    &.w-full {
+        .rdo-list {
+            li {
+                display: block;
+                width:100%;
+                padding-top:10px;
+            }
+        }
+    }
     @include tablet {
         &.thumb-type {
             .rdo-list li {
