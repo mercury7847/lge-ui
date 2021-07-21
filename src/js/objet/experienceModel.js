@@ -6941,7 +6941,7 @@ function resultModelPrice(price) {
 }
 //제품이 여러개 였을 경우 각각의 가격을 합산해서 뿌려줌
 function totalResulPrice() {
-    setTimeout(function() {
+    setTimeout(function() { 
         let resultLeng = $(".total_price_info_body .swiper-wrapper .swiper-slide").length;
         let totalPrice = 0;
         if (resultLeng == 0) {
