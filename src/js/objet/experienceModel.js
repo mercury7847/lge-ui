@@ -4323,7 +4323,13 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode });    // BTOCSITE-3032 modify
+                //BTOCSITE-2346 210721 수정 - start
+                if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode}); 
+                } else {
+                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode}); 
+                }
+                //BTOCSITE-2346 210721 수정 - end
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -4668,7 +4674,14 @@
             let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
             let idx = $this.index();
             let modelCate = $this.attr("data-model-cate");
-            let defaultModel = $this.attr("data-model_code");
+            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - start
+            let defaultModel = "";
+            if($this.attr("data-best") == "Y"){
+              defaultModel = $this.attr("data-best-code");
+            } else {
+              defaultModel = $this.attr("data-model_code");                           
+            }
+            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - end
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
@@ -4798,10 +4811,7 @@
             }
             //console.log(purchaseData);
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                // BTOCSITE-2346 210721 수정
-                if(!!selectedModelData.defaultCode ? selectedModelData.defaultCode : ''){
                 datasend(0, !!selectedModelData.defaultCode ? selectedModelData.defaultCode : '', purchaseData);
-                }
             } else {
                 purchaseFn(purchaseData);
             }
