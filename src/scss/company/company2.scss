@@ -297,6 +297,38 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ceo_date {font-size:18px; line-height:28px; text-align:center}
 .company .ceo_sign {margin-top:24px; margin-bottom:18px; font-size:20px; line-height:30px; text-align:center}
 .company .ceo_sign img {display:inline-block}
+.company .esgWay_wrap {position:relative}
+.company .esgWay_wrap img {position:absolute; display:block; max-width:327px; height:210px; top:0; left:0}
+.company .esgWay_wrap .text {padding-left:367px}
+.company .esgWay_wrap .text:last-of-type {padding-left:0}
+.company .esgWay_vision .titArea {margin-top:24px}
+.company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
+.company .esgWay_vision .titArea em {display:block; margin-top:12px; font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .esgWay_vision .contArea {position:relative; margin-top:30px; padding-top:60px}
+.company .esgWay_vision .contArea::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 307px); border-left:307px solid transparent; border-right:307px solid transparent; border-bottom:30px solid #f4f4f4}
+.company .esgWay_vision .contArea .tit.h4 {margin-bottom:19px}
+.company .esgWay_vision .contArea .box {border:1px solid #ddd; border-radius:8px; overflow:hidden}
+.company .esgWay_vision .contArea .box .title {min-height:106px; padding:24px 8px; color:#fff; font-size:18px; line-height:28px; text-align:center}
+.company .esgWay_vision .contArea .box .title strong {display:block; font-weight:bold}
+.company .esgWay_vision .contArea .box .title span {display:block}
+.company .esgWay_vision .contArea .box .text {margin-top:0; padding:22px 24px; text-align:center}
+.company .esgWay_vision .contArea .box ul.bull > li {padding-left:12px}
+.company .esgWay_vision .contArea .strategy {display:flex; justify-content:space-between}
+.company .esgWay_vision .contArea .strategy .box {width:calc(50% - 12px); border:0}
+.company .esgWay_vision .contArea .strategy .box .title {border:1px solid #da0f47; border-radius:8px 8px 0 0; background-color:#da0f47}
+.company .esgWay_vision .contArea .strategy .box .text {border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision .contArea .task {display:flex; justify-content:space-between}
+.company .esgWay_vision .contArea .task .box {width:calc(25% - 18px); border:0}
+.company .esgWay_vision .contArea .task .box .title {border:1px solid #666; border-radius:8px 8px 0 0; background-color:#666}
+.company .esgWay_vision .contArea .task .box .text {min-height:122px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision .contArea .goal {display:flex; justify-content:space-between}
+.company .esgWay_vision .contArea .goal .box {width:calc(25% - 18px); min-height:382px; padding:23px 20px}
+.company .esgWay_vision .contArea .base .box {padding:22px 24px}
+.company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between}
+.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(33.3333% - 27px); padding-left:12px}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:40px}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li::after {content:''; display:block; position:absolute; width:1px; height:100%; top:0; left:-41px; border-left:1px dashed #ddd}
+.company .esgWay_vision .contArea .base .box ul.bull > li strong {margin-bottom:0}
 /* 컨텐츠 영역 끝 */
 
 /* 탭 형식 */
@@ -325,6 +357,9 @@ ul.bull.mgtL > li + li {margin-top:30px!important}
 
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
+
+ul.bull > li.star {color:#da0f47}
+ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0; color:#da0f47}
 
 .company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
 .company ul.ico_list > li {width:100%; text-align:center}
@@ -692,6 +727,10 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company ul.card_list > li .photo.photo_07 {background:#ddd url(/kr/images/company/investor/img-director_photo_07_mo.png) no-repeat center / contain}
 }
 
+@media screen and (max-width:826px) {
+    .company .esgWay_wrap .text:nth-of-type(2) {margin-top:48px; padding-left:0}
+}
+
 /* 모바일 */
 @media screen and (max-width:767px){
     .only_pc {display:none!important}
@@ -711,7 +750,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .tit ~ .tit.h4 {margin-top:15px}
     .company .tit.h4 + .text {margin-top:10px}
     .company .tit.h4 + .bull {margin-top:10px}
-    .company .mt22_mo {margin-top:22px}
     
     .company .btnArea .btn.border.nml {padding:12 19px; font-size:13px; line-height:18px}
 
@@ -1113,4 +1151,6 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .ceo_date {font-size:14px; line-height:22px}
     .company .ceo_sign {margin-top:8px; margin-bottom:14px; font-size:14px; line-height:22px}
     .company .ceo_sign img {width:84px}
+    .company .esgWay_wrap img {position:static; width:100%; max-width:100%; height:auto; margin-top:12px}
+    .company .esgWay_wrap .text {margin-top:22px!important; padding-left:0}
 }  
