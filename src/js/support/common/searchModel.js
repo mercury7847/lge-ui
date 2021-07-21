@@ -108,8 +108,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     productCode: self.$el.find('#productCode').val()
                 }
             });
-            console.log(self.options);
+            //console.log(self.options);
+            //console.log('self.$el', self.$el);
 
+            // BTOCSITE-3312 add :: 출장예약페이지인지 확인
+            self.isEngineerReservation = self.$el.hasClass('service-engineer');
+            
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
             self.$stepInquiry = self.$el.find('#stepInquiryType');
@@ -421,8 +425,8 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var $this = $(this),
                     data = $this.data();
                 
-                /* BTOCSITE-3312 add :: 모델명을 몰라요 클릭시 팝업 추가 */
-                if (!!data.modelCode == false){
+                /* BTOCSITE-3312 add :: 출장예약 페이지일때 모델명을 몰라요 클릭시 팝업 추가 */
+                if (!!data.modelCode == false && self.isEngineerReservation){
                     var alertMsg = '서비스 접수 확인 문자의 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 으로 사진 업로드 하시면 정확하고 신속한 서비스가 가능 합니다.<br><br>모델명 입력을 건너뛰기 하시겠습니까?';
                     lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
