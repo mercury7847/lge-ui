@@ -45,45 +45,45 @@ br.pc{display:block;}
 .company .sustainable-download .btn{margin-top: 26px;background: transparent;border: solid 1px #fafafa;}
 
 @media screen and (max-width: 767px){
-br.mo{display:block;}
-br.pc{display:none;}
-.container{padding-bottom:30px;}
-.container .page-header{padding-bottom:13px;}
-.hiro-wrap .visual-area{height: auto;}
-.hiro-wrap .visual-area .bg{height: 0;padding-bottom: 133.33%;background-size: cover;}
-.hiro-wrap .text-area {top: 40px;}
-.hiro-wrap .text {padding: 0 4.44vw;font-size: 16px;line-height: 24px;width: auto;}
-.com-tabs {margin-bottom:15px;padding: 0;}
-.com-tabs #com-tabs02{position:absolute;top: -65px;}
-.com-tabs .tabs-wrap{padding-left:0; padding-right:0;}
-.com-tabs .tabs-wrap:before{left:0; right:0;}
-.com-tabs .tabs-wrap .tabs>li{padding:0;}
-.com-tabs .tabs-wrap.btn-type .tabs>li>a{font-size:15px; padding:6px 0;}
-.com-tabs .tabs-wrap.btn-type .tabs>li+li{margin-left:20px;}
-.com-tabs .tabs-wrap.border-type .tabs{overflow-x: auto;overflow-y: hidden;}
-.com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {bottom: 0px;}
-.com-tabs .tabs>li:hover .tabs-over{display:none;}
-.com-tabs .tabs-wrap.btn-type{padding-top:14px;}
-.com-text + .com-text::before{width:100%;}
-/* 서브타이틀 영역 mo */
-.com-title{padding: 30px 4.44vw 60px;border-bottom:12px solid #f4f4f4;}
-.com-title .img {height: 73.17vw;}
-.com-title .text {margin-top: 20px;font-size: 15px;line-height: 1.53;}
-.com-text{padding: 30px 0 30px;margin: 0 4.44vw;}
-.com-text .tit{font-size: 18px;line-height: 1.44;}
-.com-text .text {margin-top: 12px;font-size: 14px;line-height: 1.53;}
-.com-title + .com-text{padding-top:60px;}
-/* 정관 리스트 mo */
-.articles-list{margin: 15px 0 0;}
-.articles-list li{width:100%;font-size: 14px;line-height: 1.57;margin-bottom:12px;background-position: right 15px center;}
-.articles-list li a,
-.articles-list li button{padding:22px 15px;}
-.articles-list li:nth-child(2n){margin-left:0;}
-/* pdf 다운로드 영역 mo */
-.company .sustainable-download {padding: 55px 0;background-image: linear-gradient(131deg, #a58bee -8%, #f86791 108%);margin:16px 0 30px;}
-.company .sustainable-download .tit {font-size: 18px;}
-.company .sustainable-download .desc {margin-top: 8px;font-size: 14px;font-weight: normal;}
-.company .sustainable-download .btn{margin-top: 25px;font-size: 13px;padding: 9px 20px;}
+	br.mo{display:block;}
+	br.pc{display:none;}
+	.container{padding-bottom:30px;}
+	.container .page-header{padding-bottom:13px;}
+	.hiro-wrap .visual-area{height: auto;}
+	.hiro-wrap .visual-area .bg{height: 0;padding-bottom: 133.33%;background-size: cover;}
+	.hiro-wrap .text-area {top: 40px;}
+	.hiro-wrap .text {padding: 0 4.44vw;font-size: 16px;line-height: 24px;width: auto;}
+	.com-tabs {margin-bottom:15px;padding: 0;}
+	.com-tabs #com-tabs02{position:absolute;top: -65px;}
+	.com-tabs .tabs-wrap{padding-left:0; padding-right:0;}
+	.com-tabs .tabs-wrap:before{left:0; right:0;}
+	.com-tabs .tabs-wrap .tabs>li{padding:0;}
+	.com-tabs .tabs-wrap.btn-type .tabs>li>a{font-size:15px; padding:6px 0;}
+	.com-tabs .tabs-wrap.btn-type .tabs>li+li{margin-left:20px;}
+	.com-tabs .tabs-wrap.border-type .tabs{overflow-x: auto;overflow-y: hidden;}
+	.com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {bottom: 0px;}
+	.com-tabs .tabs>li:hover .tabs-over{display:none;}
+	.com-tabs .tabs-wrap.btn-type{padding-top:14px;}
+	.com-text + .com-text::before{width:100%;}
+	/* 서브타이틀 영역 mo */
+	.com-title{padding: 30px 4.44vw 60px;border-bottom:12px solid #f4f4f4;}
+	.com-title .img {height: 73.17vw;}
+	.com-title .text {margin-top: 20px;font-size: 15px;line-height: 1.53;}
+	.com-text{padding: 30px 0 30px;margin: 0 4.44vw;}
+	.com-text .tit{font-size: 18px;line-height: 1.44;}
+	.com-text .text {margin-top: 12px;font-size: 14px;line-height: 1.53;}
+	.com-title + .com-text{padding-top:60px;}
+	/* 정관 리스트 mo */
+	.articles-list{margin: 15px 0 0;}
+	.articles-list li{width:100%;font-size: 14px;line-height: 1.57;margin-bottom:12px;background-position: right 15px center;}
+	.articles-list li a,
+	.articles-list li button{padding:22px 15px;}
+	.articles-list li:nth-child(2n){margin-left:0;}
+	/* pdf 다운로드 영역 mo */
+	.company .sustainable-download {padding: 55px 0;background-image: linear-gradient(131deg, #a58bee -8%, #f86791 108%);margin:16px 0 30px;}
+	.company .sustainable-download .tit {font-size: 18px;}
+	.company .sustainable-download .desc {margin-top: 8px!important;font-size: 14px!important;font-weight: normal!important;}
+	.company .sustainable-download .btn{margin-top: 25px;font-size: 13px;padding: 9px 20px;}
 }
 
 

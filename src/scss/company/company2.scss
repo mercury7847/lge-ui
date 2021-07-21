@@ -17,11 +17,12 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
 .company .com-text.pt60 {padding-top:0}
+.company .com-text.pt0 {padding-top:0}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 
 /* 컨텐츠 영역 */
-.company .tabs-contents > .com-text {padding-left:0; padding-right:0}
-.company .com-section {position:relative; max-width:1460px; margin:0 auto; padding:60px 0}
+// .company .tabs-contents > .com-text {padding-left:0; padding-right:0}
+.company .com-section {position:relative; max-width:1460px; margin:0 auto; padding:60px 40px 60px}
 .company .com-section + .com-section {padding-top:0}
 .company .com-stock {position:relative; max-width:1100px; margin:0 auto; padding:60px 0}
 .company .text + .text {margin-top:20px}
@@ -93,9 +94,11 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ceoArea .bg span {width:100%; height:100%; display:block; background-position:center center; background-size:auto 100%; background-repeat:no-repeat}
 .company .ceoArea .txt {position:absolute; top:130px; left:234px; color:#fff}
 .company .ceoArea .txt .name em {display:block; font-size:22px; line-height:32px}
-.company .ceoArea .txt .name strong {display:block; font-size:32px; line-height:48px}
+.company .ceoArea .txt .name strong {display:block; font-size:32px; font-weight:bold; line-height:48px}
 .company .ceoArea .txt .name span {display:block; margin-top:10px; font-size:20px; line-height:30px}
 .company .ceoArea .txt .msg {margin-top:38px; font-size:16px; line-height:1.5}
+.company .ceoArea.esg .txt {top:166px}
+.company .ceoArea.esg .txt .msg {margin-top:40px; font-size:20px; font-weight:bold; line-height:30px}
 
 .company .grpInfo {display:flex; justify-content:center; margin-top:24px}
 .company .grpInfo p {position:relative; margin-right:25px; font-size:14px; line-height:20px}
@@ -285,6 +288,15 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .comp_wrap {position:relative; display:flex; padding-top:31px}
 .company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0}
 .company .comp_wrap .textArea .tit {position:absolute; top:0; left:0}
+
+.company .ceo_msg .text {margin-top:0; font-size:18px; line-height:28px}
+.company .ceo_msg .msg_box {margin:58px 0; padding:58px; border:1px solid #ddd; border-radius:8px}
+.company .ceo_msg .msg_box ul li .tit {font-size:18px; line-height:28px}
+.company .ceo_msg .msg_box ul li .text {margin-top:10px; font-size:16px; line-height:26px}
+.company .ceo_msg .msg_box ul li + li {margin-top:29px; padding-top:28px; border-top:1px dashed #ddd}
+.company .ceo_date {font-size:18px; line-height:28px; text-align:center}
+.company .ceo_sign {margin-top:24px; margin-bottom:18px; font-size:20px; line-height:30px; text-align:center}
+.company .ceo_sign img {display:inline-block}
 /* 컨텐츠 영역 끝 */
 
 /* 탭 형식 */
@@ -961,6 +973,8 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .ceoArea .txt .name strong {font-size:20px; line-height:30px}
     .company .ceoArea .txt .name span {margin-top:5px; font-size:12px; line-height:20px}
     .company .ceoArea .txt .msg {margin-top:15px; font-size:12px; line-height:20px}
+    .company .ceoArea.esg .txt {top:60px}
+    .company .ceoArea.esg .txt .msg {margin-top:14px; font-size:15px; line-height:1.53}
 
     .company .thumb.ci {margin:20px 0 30px}
     .company .box.ci {margin-top:20px}
@@ -1089,4 +1103,13 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .comp_wrap img {width:100%; max-width:100%; height:auto; margin:0}
     .company .comp_wrap .textArea {margin-top:15px}
     .company .comp_wrap .textArea .tit {position:static}
+
+    .company .ceo_msg .text {font-size:14px; line-height:22px}
+    .company .ceo_msg .msg_box {margin:34px 0; padding:19px}
+    .company .ceo_msg .msg_box ul li .tit {font-size:14px; line-height:22px}
+    .company .ceo_msg .msg_box ul li .text {font-size:14px; line-height:22px}
+    .company .ceo_msg .msg_box ul li + li {margin-top:15px; padding-top:14px}
+    .company .ceo_date {font-size:14px; line-height:22px}
+    .company .ceo_sign {margin-top:8px; margin-bottom:14px; font-size:14px; line-height:22px}
+    .company .ceo_sign img {width:84px}
 }  
