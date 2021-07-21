@@ -281,7 +281,11 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .board-navi .navi-label {display:inline-block; margin-right:64px; color:#666; font-size:16px; line-height:24px}
 .company .board-view-wrap .board-navi .navi-desc {display:inline-block; color:#000; font-size:16px; line-height:24px}
 .company .board-view-wrap .btnArea {margin-top:60px}
-/* 컨텐츠영역 끝 */
+
+.company .comp_wrap {position:relative; display:flex; padding-top:31px}
+.company .comp_wrap img {display:block; width:327px; max-width:327px; height:210px; margin:24px 30px 0 0}
+.company .comp_wrap .textArea .tit {position:absolute; top:0; left:0}
+/* 컨텐츠 영역 끝 */
 
 /* 탭 형식 */
 .company .com-tabs.stock {margin-bottom:30px}
@@ -1027,7 +1031,7 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .share_price table td .percent_up {font-size:15px}
     .company .share_price table td .percent_down {font-size:15px}
 
-    .company .com-stock {margin:0 16px; padding:45px 60px}
+    .company .com-stock {margin:0 4.44vw; padding:45px 0 60px}
     .company .stock_number {margin-bottom:12px; font-size:24px; line-height:35px}
     .company .stock_number .num {padding-right:5px}
 
@@ -1078,4 +1082,9 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
     .company .board-view-wrap .board-navi .navi-desc {font-size:14px; line-height:22px; word-break:break-all}
     .company .board-view-wrap .btnArea {margin-top:40px}
     .company .board-view-wrap .btnArea .btn {width:100%}
+
+    .company .comp_wrap {flex-direction:column; padding-top:0}
+    .company .comp_wrap img {width:100%; max-width:100%; height:auto; margin:0}
+    .company .comp_wrap .textArea {margin-top:15px}
+    .company .comp_wrap .textArea .tit {position:static}
 }  
