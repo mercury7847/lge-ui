@@ -716,10 +716,33 @@
 
             if(sendata.tabID == 0){
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+
+                var o = result.data.siblingUsePeriod;
+
+                var selectUserPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectUserPeriodID = o[selectUserPeriodID].siblingCode;
+
+                var o = result.data.siblingVisitCycle;
+                var selectVisitCycleID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectVisitCycleID = o[selectVisitCycleID].siblingCode;
+
+                var o = result.data.siblingFee;
+                var selectFeeID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectFeeID = o[selectFeeID].siblingCode;
+
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
-                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
             }
         });
     }
