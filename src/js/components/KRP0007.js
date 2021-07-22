@@ -196,7 +196,7 @@
                         }
 
                         var $selectedInput = $('.rdo-wrap input[value='+ param[tempArray[0]] +']');
-                        console.log('pp', param[tempArray[0]]);
+                        //console.log('pp', param[tempArray[0]]);
                         $selectedInput.closest('li').trigger('click');
                         //console.log('selectedInput', $selectedInput.closest('li'));
                         
