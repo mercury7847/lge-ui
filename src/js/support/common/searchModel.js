@@ -404,7 +404,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 }
 
                 /* BTOCSITE-3316 add :: 출장 예약 페이지일때 센터 예약 유도 카테고리 선택시 팝업 추가 */
-                var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) > 0;
+                var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) > -1;
                 
                 if (isRecommendVisitCategory && self.isEngineerReservation){
                     var alertMsg = '고객님, 선택하신 제품은 <strong class="point">센터 방문 예약 서비스</strong>를 이용하시면 보다 신속하고 정확하게 서비스 이용이 가능합니다.<br><br>센터 방문 예약 접수를 도와 드릴까요?';
