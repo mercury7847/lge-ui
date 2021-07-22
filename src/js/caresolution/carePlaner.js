@@ -9,7 +9,7 @@
     // .module-type2 : 케어십_유상제품 모듈
     // .module-type3 : 케어십_보유제품 모듈
     // .module-type4 : 케어십_용역제품 모듈
-
+    // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
@@ -31,7 +31,6 @@
         '       {{#if moduleType == "module-type4"}}'+
         '           <p class="code-txt">{{modelDescription}}</p>'+
         '       {{/if}}'+
-
         '       {{#if purchaseInfo != null && purchaseInfo != undefined && purchaseInfo != ""}}'+
         '           <div class="txt-info">'+
         '           {{#each item in purchaseInfo}}'+
@@ -60,13 +59,13 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-        '           {{#if siblingFee.length > 0}}'+
-        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
-        '                   <dt>가입비</dt>'+
+        '           {{#if siblingContractPeriod.length > 0}}'+
+        '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
+        '                   <dt>계약기간</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="1" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
-        '                           {{#each item in siblingFee}}'+
+        '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingContractPeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
@@ -102,6 +101,20 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
+        '           {{#if siblingFee.length > 0}}'+
+        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
+        '                   <dt>가입비</dt>'+
+        '                   <dd>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingFee}}'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
+        '                   </dd>'+
+        '               </dl>'+
+        '           {{/if}}'+      
         '           </div>'+
         '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
         '           <div class="txt-info price-info">'+
@@ -679,9 +692,10 @@
             blockID: idx
         }
 
-        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
+        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
         if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
         if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -700,9 +714,34 @@
 
             if(sendata.tabID == 0){
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
-                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
+
+                // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                var o = result.data.siblingUsePeriod;
+
+                var selectUserPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectUserPeriodID = o[selectUserPeriodID].siblingCode;
+
+                var o = result.data.siblingVisitCycle;
+                var selectVisitCycleID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectVisitCycleID = o[selectVisitCycleID].siblingCode;
+
+                var o = result.data.siblingFee;
+                var selectFeeID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectFeeID = o[selectFeeID].siblingCode;
+
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
             }
         });
     }
@@ -717,6 +756,15 @@
             return item;
         });
         selector.vcSelectbox('update', list).vcSelectbox('selectedIndex', selectIdx, false);
+
+        // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+        if(list.length === 1) {
+            selector.vcSelectbox('disabled',true);
+            selector.closest('dl').addClass("disabled");
+        } else {
+            selector.vcSelectbox('disabled',false);
+            selector.closest('dl').removeClass("disabled");
+        }
     }
 
     //색상 옵션 변경...
