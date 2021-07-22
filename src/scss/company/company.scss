@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .col-lg-12 {padding: 0;}
 br.mo{display:none;}
+br.ta{display:none;}
 br.pc{display:block;}
 .container{padding-bottom:60px;}
 .container .page-header{padding-bottom:24px;}
@@ -44,6 +45,7 @@ br.pc{display:block;}
 .company .sustainable-download .tit + .desc {margin-top: 20px;font-size: 16px;font-weight: normal;line-height: 1.63;color: #ffffff;}
 .company .sustainable-download .btn{margin-top: 26px;background: transparent;border: solid 1px #fafafa;}
 
+/* 모바일 */
 @media screen and (max-width: 767px){
 	br.mo{display:block;}
 	br.pc{display:none;}
@@ -86,6 +88,10 @@ br.pc{display:block;}
 	.company .sustainable-download .btn{margin-top: 25px;font-size: 13px;padding: 9px 20px;}
 }
 
+/* 타블렛 */
+@media (max-width: 1459px) and (min-width: 768px){
+	br.ta{display:block;}
+}
 
 /* 기업소개 슬라이더 mo */
 @media screen and (max-width:767px){

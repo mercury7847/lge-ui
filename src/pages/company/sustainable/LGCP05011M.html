@@ -7,22 +7,34 @@
 
 	function drawChart() {
 		data = google.visualization.arrayToDataTable([
-		['', '참석', { role: 'annotation' }, { role: 'style' } ,'불참', { role: 'annotation' }, { role: 'style' }],
-		['평균', 90.47, '90.47%', null, 9.53, '9.53%', null],
-		['사내이사', 77.8, '77.80%', null, 22.2, '22.2%', null],
-		['사외이사', 100, '100%', null, 0, '0%', null]
+		['', '참석', { role: 'annotation' } ,'불참', { role: 'annotation' }],
+		['평균', 90.47, '90.47%', 9.53, '9.53%'],
+		['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
+		['사외이사', 100, '100%', 0, '0%']
 		]);
 		options = {
-		colors: ['#e81953', '#000000'],
-		vAxis:{format: 'short', minValue:'0', maxValue: '100'},
-		bar: { groupWidth: '35%' },
-		annotations: {textStyle: {fontSize: '12', bold:true}},
-		legend: {position: 'bottom', textStyle: {fontSize: '16'}},
+			colors: ['#e81953', '#000000'],
+			vAxis:{format: 'short', minValue:'0', maxValue: '100'},
+			bar: { groupWidth: '35%' },
+			annotations: {textStyle: {fontSize: '12', bold:true},stem:{color :'none'}},
+			legend: {position: 'bottom', textStyle: {fontSize: '16'}},
+			fontName:'Noto Sans'
 		};
+		checkSize();
 		chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 		chart.draw(data, options);
 	}
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			options.legend.textStyle.fontSize="12";
+		}
+		else{
+			options.legend.textStyle.fontSize="16";
+		}
+	}
 	$(window).resize(function() {
+		checkSize();
 		chart.draw(data, options);
 	});
 </script>

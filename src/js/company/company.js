@@ -1,11 +1,12 @@
 $(document).ready(function() {
+
     // 아코디언 닫기 버튼
 	$(".accordion-wrap .menu-close").on('click', function(e){
 		var heada = $(this).parent().parent().parent().find(".head a");
 		heada.trigger("click");
-		var scrollPosition = heada.offset().top;
-		scrollPosition = scrollPosition - 100;
-		$('html, body').stop().animate({scrollTop: scrollPosition}, 500);
+		//var scrollPosition = heada.offset().top;
+		//scrollPosition = scrollPosition - 100;
+		//$('html, body').stop().animate({scrollTop: scrollPosition}, 500);
     });
 
 	//팝업 오픈
@@ -27,10 +28,12 @@ $(document).ready(function() {
 		}
     });
   
-	// 탭 슬라이드
 	setTimeout(function(){
+		// 탭 슬라이드
 		fcTabScrollLeft($('.border-type .tabs'));
 		fcTabScrollLeft($('.btn-type .tabs'));
+		// 첫번째 아코디언 열기
+		$($(".accordion-wrap .head a")[0]).trigger("click");
 	}, 500);
 });
 
