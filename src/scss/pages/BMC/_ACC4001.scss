@@ -50,14 +50,14 @@
         }
     }
     .benefits {
-        margin-top:-170px;
-        padding:190px 32px 64px;
+        //margin-top:-170px; //210716 BTOCSITE-3023
+        padding:48px 32px; //210716 BTOCSITE-3023
         border-radius: 8px;
         background-color:#f4f4f4;
         font-size:0;
         @include mobile {
-            margin:-120px -16px 0;
-            padding:116px 16px 40px;
+            margin:0 -16px; //210716 BTOCSITE-3023
+            padding:40px 16px; //210716 BTOCSITE-3023
         }
         .dls {
             display:inline-block;
