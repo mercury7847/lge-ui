@@ -3,7 +3,7 @@
     "status": "success",
     "message": null,
     "data": {
-        "userInfo":{
+        "userInfo": {
             "user": {
                 "name": "이엘지",
                 "phoneNumber": "01087650989",
@@ -20,9 +20,10 @@
             }
         },
         "contractInfo": {
+            "contractType": "C",
             "modelName": "냉장고(RD5QWERFCV)",
             "contractID": "132412907",
-            "period": "1년(2020.09.01)",
+            "period": "2020.09.01",
             "installDate": "2020.09.01",
             "installPlace": "회사",
             "saleTurn": "3, 6, 9회차",
@@ -42,14 +43,14 @@
                 "cardNumber": "1234567891234567",
                 "cardPeriod": "0922"
             },
-            "bankInfo":{
+            "bankInfo": {
                 "bankUser": "이엘오",
                 "bankName": "엘지은행",
                 "bankValue": "222",
                 "bankNumber": "99999005431259988"
             }
         },
-        "memberPointInfo":{
+        "memberPointInfo": {
             "isAgree": false,
             "deductType": "deduct",
             "userPoint": 990000,
