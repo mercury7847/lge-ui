@@ -196,7 +196,7 @@
                         }
 
                         var $selectedInput = $('.rdo-wrap input[value='+ param[tempArray[0]] +']');
-                        console.log('pp', param[tempArray[0]]);
+                        //console.log('pp', param[tempArray[0]]);
                         $selectedInput.closest('li').trigger('click');
                         //console.log('selectedInput', $selectedInput.closest('li'));
                         
@@ -204,17 +204,6 @@
                     });
     
                     self.filterLayer.updateFilter(savedFilterArr);
-
-                    /* BTOCSITE-2785 : 2021-07-14 add */
-                    var tempArray = [];
-                    for (var key in firstEnableFilter){
-                        tempArray.push(key);
-                    }
-
-                    var $selectedInput = $('.rdo-wrap input[value='+ firstEnableFilter[tempArray[0]] +']');
-                    $selectedInput.closest('li').trigger('click');
-                    /* //BTOCSITE-2785 : 2021-07-14 add */
-                    
     
                     //스토리지에 저장된 필터 체크
                     //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
@@ -222,6 +211,16 @@
                     //BTOCSITE 1842 - 2021-07-02 상품에서 뒤로가기시 스토리지에 저장된 필터체크 다시 활성화
                     var storageFilters = lgkorUI.getStorage(storageName);
                     var filterData = firstEnableFilter ? firstEnableFilter : {};
+
+                    /* BTOCSITE-2785 : 2021-07-14 add */
+                    var tempArray = [];
+                    for (var key in filterData){
+                        tempArray.push(key);
+                    }
+
+                    var $selectedInput = $('.rdo-wrap input[value='+ filterData[tempArray[0]] +']');
+                    $selectedInput.closest('li').trigger('click');
+                    /* //BTOCSITE-2785 : 2021-07-14 add */
 
                     var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
