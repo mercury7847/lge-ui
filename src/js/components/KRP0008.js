@@ -23,6 +23,19 @@
         '</a>' +
     '</li>';
 
+    // 20210722 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+    var trTemplate =  '{{#each (item, idx) in list}}'+
+                        '<tr>' +
+                        '{{#if idx == Object.keys(list).length  && idx > 5 }}'+
+                        '<td>{{idx}}년차 이후({{(idx-1)*12+1}}회차~)</td>' +
+                        '{{#else}}'+
+                        '<td>{{idx}}년차 ({{(idx-1)*12+1}}~{{(idx*12)}}회차)</td>' +
+                        '{{/if}}'+
+                        '<td>{{item.price}}</td>' +
+                        '<td>{{item.free}}</td>' +
+                        '</tr>'+
+                      '{{/each}}';
+
     // var siblingTemplate = 
     //     '<div class="{{#if itemList[0].siblingType=="COLOR"}}sibling-color {{#else}}sibling-select{{/if}}">' + 
     //         '{{#if itemList[0].siblingType=="COLOR"}}' +
@@ -1322,13 +1335,6 @@
                         // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                         var $tbody = self.$careshipInfoPopup.find('div.tb_row table tbody');
                             $tbody.empty();
-                        var trTemplate =  '{{#each (item, idx) in list}}'+
-                                          '<tr>' +
-                                          '<td>{{idx}}년차 ({{(idx-1)*12+1}}~{{(idx*12)}}회차)</td>' +
-                                          '<td>{{item.price}}</td>' +
-                                          '<td>{{item.free}}</td>' +
-                                          '</tr>'+
-                                          '{{/each}}';
 
                         var obj = { list : {} };
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
@@ -1421,13 +1427,6 @@
                         // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                         var $tbody = self.$caresolutionInfoPopup.find('div.tb_row table tbody');
                             $tbody.empty();
-                        var trTemplate =  '{{#each (item, idx) in list}}'+
-                                          '<tr>' +
-                                          '<td>{{idx}}년차 ({{(idx-1)*12+1}}~{{(idx*12)}}회차)</td>' +
-                                          '<td>{{item.price}}</td>' +
-                                          '<td>{{item.free}}</td>' +
-                                          '</tr>'+
-                                          '{{/each}}';
 
                         var obj = { list : {} };
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
@@ -1435,6 +1434,8 @@
                             obj.list[i].price = vcui.number.addComma(obj.list[i].price) +  "원";
                             obj.list[i].free = (obj.list[i].free.length > 0) ?  obj.list[i].free.join(",") + " 무상할인" : "";
                         }
+
+                        console.log("obj %o", Object.keys(obj.list).length)
 
                         $tbody.append(vcui.template(trTemplate,obj));
                     }
@@ -1453,16 +1454,13 @@
 
                         console.log("계약기간 변경");
                         var value = $(this).vcSelectbox('selectedOption').value;
-                        self.rentalInfoBoxUpdate(0, $(this));
-
                         var array = Object.keys(self.rentalInfoData[value]);
                         var max = array.reduce( function (previous, current) { 
                             return previous > current ? previous:current;
                         });
                         var selectIndex = array.indexOf(max);
 
-                        console.log("max %o",max);
-
+                        self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],selectIndex, true);
 
                     });
@@ -1474,8 +1472,20 @@
                         console.log("의무사용기간 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
+     
+                        var array = Object.keys(itemData).map(function(item){
+                            if(item =='방문없음') item = 0;
+                            else item = item.replace('1회 / ','').replace('개월','');
+                            return Number(item);
+                        });
+                        var max =array.reduce( function (previous, current) { 
+                            return previous > current ? previous:current;
+                        });
+
+                        var selectIndex = array.indexOf(max);
+
                         self.rentalInfoBoxUpdate(1, $(this));
-                        self.rentalInfoSelectBoxUpdate(2,itemData,0, true);
+                        self.rentalInfoSelectBoxUpdate(2,itemData,selectIndex, true);
                     });
 
                     //방문주기 선택 - 화면 가격 정보 갱신
@@ -1483,11 +1493,18 @@
                         console.log("방문주기 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
-                        // var $li =  $(this).parents('li');
-                        // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
-                        // self.updateRentalInfoPrice(itemData);
+
+                        var array = itemData.map(function(item){
+                            return item.rtRgstFeePre;
+                        });
+                        var max =array.reduce( function (previous, current) { 
+                            return previous > current ? previous:current;
+                        });
+
+                        var selectIndex = array.indexOf(max);
+
                         self.rentalInfoBoxUpdate(2, $(this));
-                        self.rentalInfoSelectBoxUpdate(3,itemData,0, true);
+                        self.rentalInfoSelectBoxUpdate(3,itemData,selectIndex, true);
                     });
 
                     //가입비 선택
