@@ -4238,6 +4238,7 @@
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
+            $step3Td.css("text-align","right");
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             //console.log("NEWBEST");
@@ -4307,11 +4308,16 @@
         });
         //추천조합 선택
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
-            /* BTOCSITE-3032 add */
+            /* 
+            BTOCSITE-3032 add
             var modelCode = $(this).data().modelCode;
             var defaultModelCode = $(this).data().modelDefaultCode;
-            /* //BTOCSITE-3032 add */
-            //let modelName = $(this).find(">span").text();
+            BTOCSITE-3032 add 
+            */
+            
+            // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+            let modelName = $(this).find(">span").text();
+            
             $(this).find(".mini_model_wrap .mini_model").each(function() {
                 let idx = $(this).index();
                 let idxImg = $(this).html();
@@ -4323,7 +4329,8 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode });    // BTOCSITE-3032 modify
+                // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName});
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -4599,7 +4606,7 @@
             completedCheck();
         });
 
-        //기능가격 비교 선택 [210719 다시보기]
+        //기능가격 비교 선택
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
@@ -4667,13 +4674,14 @@
             modelCheckdone();
             let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
             let idx = $this.index();
-            let modelCate = $this.attr("data-model-cate");
+            let modelCate = $this.attr("data-model-cate");                        
             let defaultModel = $this.attr("data-model_code");
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
-            let saveInfo = [];
+            let saveInfo = [];            
             saveInfo.push(defaultModel);
+            
             $this.find(".door_wrap .model_door").each(function() {
                 let info = [];
                 info.push($(this).attr("data-door-direction"));
@@ -4756,7 +4764,9 @@
                 };
                 lgkorUI.alert(desc, obj);
                 return;
-            }
+            }          
+
+
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4765,7 +4775,8 @@
                 }
             });
             */
-            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            
+                            
             $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
@@ -4797,11 +4808,17 @@
                 }
             }
             //console.log(purchaseData);
+            // BTOCSITE-2346 추천제품 정보값 변경 - 210721
+            // var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            var selectedModelData = '';
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+            selectedModelData = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            }
+
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                // BTOCSITE-2346 210721 수정
-                if(!!selectedModelData.defaultCode ? selectedModelData.defaultCode : ''){
-                datasend(0, !!selectedModelData.defaultCode ? selectedModelData.defaultCode : '', purchaseData);
-                }
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
+                datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
                 purchaseFn(purchaseData);
             }
@@ -5673,9 +5690,11 @@
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                                 tblHtml += '        <colgroup>';
                                 tblHtml += '            <col style="width:30.5%">';
+                                // S - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 if(mainVoiceChk != undefined && mainVoiceChk != ""){
                                 tblHtml += '            <col style="width:13%">';
                                 }
+                                // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '            <col style="width:16%">';
                                 tblHtml += '            <col style="width:16%">';
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
@@ -5687,9 +5706,11 @@
                                 tblHtml += '        <thead>';
                                 tblHtml += '            <tr>';
                                 tblHtml += '                <th scope="col">모델명</th>';
+                                // S - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 if(mainVoiceChk != undefined && mainVoiceChk != ""){
                                     tblHtml += '            <th scope="col">음성인식</th>';
                                 }
+                                // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '                <th scope="col">매직스페이스</th>';
                                 tblHtml += '                <th scope="col">에너지 효율</th>';
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
@@ -5755,27 +5776,17 @@
                 tblHtml += '    <table>';
                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                 tblHtml += '        <colgroup>';
-                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '            <col style="width:50%">';
                 tblHtml += '            <col style="width:50%">';
-                }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                tblHtml += '            <col style="width:100%">';
-                }
                 tblHtml += '        </colgroup>';
                 tblHtml += '        <thead>';
-                if ($objContent.attr('data-page-type') === 'COMMON'){
-                    tblHtml += '            <tr>';
-                    tblHtml += '                <th scope="col">모델명</th>';
-                    tblHtml += '                <th scope="col">가격</th>';
-                    tblHtml += '            </tr>';
-                }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                    tblHtml += '            <tr>';
-                    tblHtml += '                <th scope="col">모델명</th>';
-                    tblHtml += '            </tr>';
-                }
+                tblHtml += '            <tr>';
+                tblHtml += '                <th scope="col">모델명</th>';
+                tblHtml += '                <th scope="col">가격</th>';
+                tblHtml += '            </tr>';
                 tblHtml += '        </thead>';
                 tblHtml += '        <tbody>';
+                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
                 if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
@@ -5784,10 +5795,10 @@
                 } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td style="display:none"></td>';
+                tblHtml += '    <td>-</td>';
                 tblHtml += '</tr>';
                 }
-                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
                 tblHtml += '</div>';
@@ -5801,29 +5812,17 @@
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                         tblHtml += '        <colgroup>';
-                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '            <col style="width:50%">';
                         tblHtml += '            <col style="width:50%">';
-                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
-                        tblHtml += '            <col style="width:50%">';
-                        tblHtml += '            <col style="width:50%">';
-                        }
                         tblHtml += '        </colgroup>';
                         tblHtml += '        <thead>';
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '            <tr>';
                         tblHtml += '                <th scope="col">모델명</th>';
                         tblHtml += '                <th scope="col">가격</th>';
                         tblHtml += '            </tr>';
-                        }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
-                        tblHtml += '            <tr>';
-                        tblHtml += '                <th scope="col">모델명</th>';
-                        tblHtml += '                <th scope="col">가격</th>';
-                        tblHtml += '            </tr>';
-                        }
                         tblHtml += '        </thead>';
                         tblHtml += '        <tbody>';
+                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
@@ -5835,7 +5834,7 @@
                         tblHtml += '    <td>-</td>';
                         tblHtml += '</tr>';
                         }
-                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
                         tblHtml += '</div>';
@@ -5864,10 +5863,10 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
-            }
-            priceArry.push(defaultModel);
+            
+            
+            priceArry.push(defaultModel);                            
+            
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
@@ -6853,8 +6852,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     for (let i = 0; i < priceLeng; i++) {
         
         // console.log("price[i]", price[i])
-        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
-        /*
+        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제 
+        // BTOCSITE-2346 - 210721 패널 가격 적용되도록 원복
         if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
             price.forEach(function(v, i){
@@ -6863,8 +6862,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
                 }
             })
             
-        } 
-        */
+            
+        }
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);
