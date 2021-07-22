@@ -325,10 +325,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .esgWay_vision .contArea .goal .box {width:calc(25% - 18px); min-height:382px; padding:23px 20px}
 .company .esgWay_vision .contArea .base .box {padding:22px 24px}
 .company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between}
-.company .esgWay_vision .contArea .base .box ul.bull > li {width:25%; padding-left:12px}
-.company .esgWay_vision .contArea .base .box ul.bull > li:nth-child(2) {width:50%}
-.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:40px}
-.company .esgWay_vision .contArea .base .box ul.bull > li + li::after {content:''; display:block; position:absolute; width:1px; height:100%; top:0; left:-40px; border-left:1px dashed #ddd}
+.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 12px)}
+.company .esgWay_vision .contArea .base .box ul.bull > li:nth-child(2) {width:calc(50% + 24px)}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; border-left:1px dashed #ddd}
 .company .esgWay_vision .contArea .base .box ul.bull > li strong {margin-bottom:0}
 /* 컨텐츠 영역 끝 */
 
