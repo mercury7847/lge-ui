@@ -195,14 +195,26 @@
                             tempArray.push(key);
                         }
 
-                        var $selectedInput = $('input[value='+ param[tempArray[0]] +']');
+                        var $selectedInput = $('.rdo-wrap input[value='+ param[tempArray[0]] +']');
+                        console.log('pp', param[tempArray[0]]);
                         $selectedInput.closest('li').trigger('click');
                         //console.log('selectedInput', $selectedInput.closest('li'));
-                        //console.log('pp', param[tempArray[0]]);
+                        
                         /* //BTOCSITE-2785 : 2021-07-14 add */
                     });
     
                     self.filterLayer.updateFilter(savedFilterArr);
+
+                    /* BTOCSITE-2785 : 2021-07-14 add */
+                    var tempArray = [];
+                    for (var key in firstEnableFilter){
+                        tempArray.push(key);
+                    }
+
+                    var $selectedInput = $('.rdo-wrap input[value='+ firstEnableFilter[tempArray[0]] +']');
+                    $selectedInput.closest('li').trigger('click');
+                    /* //BTOCSITE-2785 : 2021-07-14 add */
+                    
     
                     //스토리지에 저장된 필터 체크
                     //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
