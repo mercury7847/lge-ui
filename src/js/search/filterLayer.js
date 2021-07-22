@@ -59,15 +59,17 @@ var FilterLayer = (function() {
                     '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
                     '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
-            '</div>' +
+            '</div>' + 
         '</div>' +
     '</li>';
-
-    var filterCategoryTopTemplate = '<li><div class="rdo-wrap">' +
-        '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
-        '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'
-    '</div></li>'
-
+    /* BTOCSITE-2785 : add 2021-07-16 */
+    var filterCategoryTopTemplate = '<li data-productTarget="s{{index}}">' +
+            '<div class="rdo-wrap">' +
+                '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
+                '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'+
+            '</div>' +
+        '</li>';
+    /* //BTOCSITE-2785 : add 2021-07-16 */
     function FilterLayer($targetFilter, $categorySelect, $listSorting, $targetFilterButton, unfoldFlagName, filterChangeEventFunc) {
         var self = this;
         self.cid = vcui.getUniqId(8);
@@ -262,6 +264,8 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
                     self.triggerFilterChangeEvent();
+
+                    //console.log('li' , $(e.currentTarget).closest('li').trigger('click'));
                 });
             }
 

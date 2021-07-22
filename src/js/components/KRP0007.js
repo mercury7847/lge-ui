@@ -41,7 +41,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (isShowPrice > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -159,7 +159,7 @@
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
-                self.isLoading = false; // BTOCSITE-2150 add	
+                self.isLoading = false; // BTOCSITE-2150 add
                 self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
@@ -185,12 +185,36 @@
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
-                        if(param) {
+                        if(param) {                            
                             self.requestSearch(param, true);
                         }
+
+                        /* BTOCSITE-2785 : 2021-07-14 add */
+                        var tempArray = []; 
+                        for (var key in param){
+                            tempArray.push(key);
+                        }
+
+                        var $selectedInput = $('.rdo-wrap input[value='+ param[tempArray[0]] +']');
+                        console.log('pp', param[tempArray[0]]);
+                        $selectedInput.closest('li').trigger('click');
+                        //console.log('selectedInput', $selectedInput.closest('li'));
+                        
+                        /* //BTOCSITE-2785 : 2021-07-14 add */
                     });
     
                     self.filterLayer.updateFilter(savedFilterArr);
+
+                    /* BTOCSITE-2785 : 2021-07-14 add */
+                    var tempArray = [];
+                    for (var key in firstEnableFilter){
+                        tempArray.push(key);
+                    }
+
+                    var $selectedInput = $('.rdo-wrap input[value='+ firstEnableFilter[tempArray[0]] +']');
+                    $selectedInput.closest('li').trigger('click');
+                    /* //BTOCSITE-2785 : 2021-07-14 add */
+                    
     
                     //스토리지에 저장된 필터 체크
                     //페이지에 선언된 필터와 비교해서 합침 // 전체항목이 생기면서 제거
@@ -206,8 +230,8 @@
 
                         if(Object.keys(storageFilterData).length) change = true;
                         else{
-                            if(firstSortType != storageFilters.sortType) {	
-                                change = true	
+                            if(firstSortType != storageFilters.sortType) {
+                                change = true
                             };
                         }
 
@@ -220,6 +244,7 @@
                     var hash = location.hash.replace("#","");
                     if(hash && hash.length == 8) {
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
+                        
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
@@ -232,13 +257,15 @@
                             self.setPageData(self.savedPLPData.pagination);
                             //토탈 카운트 복수
                             self.setTotalCount(self.savedPLPData.totalCount);
-                            //필터 셀렉트박스 change	
-                            	
-                            //console.log("self.savedPLPData", self.savedPLPData)	
-                            if( self.savedPLPData.sortType) {	
-                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    	
-                                //console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)	
+                            //필터 셀렉트박스 change
+                            
+                            //console.log("self.savedPLPData", self.savedPLPData)
+                            if( self.savedPLPData.sortType) {
+                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    
+                                //console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)
                             }
+                            
+                            
                             //PDP아이템을 눌렀을 경우 이동
                             var $li = self.$productList.find('li[data-uniq-id="' + hash + '"]:eq(0)');
                             if($li.length > 0) {
@@ -500,8 +527,8 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify	
-                        self.requestSearch(param, false);	
+                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
+                        self.requestSearch(param, false);
                     }
                 });
 
@@ -545,6 +572,39 @@
                     }	
                 });	
                 /* //BTOCSITE-2150 add */
+
+
+
+
+                /* BTOCSITE-2785 : 2021-07-14 add */
+                var $productG_content = $('.productGlossary');
+                var $productGBtn = $productG_content.find('button');
+                //self.$categoryList = self.$categorySelect.find('.ui_smooth_tab ul li');
+                // $.each(firstFilterList, function(idx, item){
+                //     var itemHTML = 
+                //     '<li data-productTarget="s'+ idx +'">' + item.filterValueName + '</li>';
+                //     //self.$categoryList.append(itemHTML);
+                //     //console.log(self.$categoryList.append(itemHTML));
+                //     //console.log(item.filterValueName);
+                // });
+                
+
+                self.$categorySelect.on('click', '.ui_smooth_tab ul li', function(){ 
+                    //console.log("클릭");
+                    $(this).addClass('on');
+                    if($(this).hasClass('on')){
+                        $productG_content.not('.cont_' + $(this).attr('data-productTarget')).hide();
+                        //$productG_content.not('.cont_' + $(this).eq(0)).hide();
+                        $('.cont_' + $(this).attr('data-productTarget')).slideDown(200);
+                    }
+                });
+                $productGBtn.on('click', function(){
+                    $productG_content.not('.cont_' + $(this).attr('data-productTarget')).slideUp(200);
+                    $(this).removeClass('on');
+                });
+
+                //self.$categorySelect.find('.ui_smooth_tab ul li').trigger('click');
+                /* //BTOCSITE-2785 : 2021-07-14 add */
             },
 
             setPageData: function(param) {
@@ -552,17 +612,17 @@
                 if(param && param.page && param.totalCount) {
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
-                    if (page < totalCount) {	
-                        /* BTOCSITE-2150 add */	
-                        if (!self.isMobileSize) {	
-                            self.$btnMore.show();	
-                        } else {	
-                            self.$btnMore.hide();	
-                        }	
-                        /* //BTOCSITE-2150 add */	
-                    } else {	
-                        //더이상 없다                        	
-                        self.$btnMore.hide();	
+                    if (page < totalCount) {
+                        /* BTOCSITE-2150 add */
+                        if (!self.isMobileSize) {
+                            self.$btnMore.show();
+                        } else {
+                            self.$btnMore.hide();
+                        }
+                        /* //BTOCSITE-2150 add */
+                    } else {
+                        //더이상 없다                        
+                        self.$btnMore.hide();
                     }
 
                     lgkorUI.setHiddenInputData({
@@ -583,7 +643,7 @@
             requestSearch: function(data, isNew){
                 var self = this;
 
-                if (self.isLoading) return; //BTOCSITE-2150 add	
+                if (self.isLoading) return; //BTOCSITE-2150 add
                 self.isLoading = true;  //BTOCSITE-2150 add
 
                 var ajaxUrl = self.$section.attr('data-prod-list');
@@ -599,7 +659,7 @@
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
-                    
+
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.savedPLPData.totalCount = totalCount;
                     self.setTotalCount(totalCount);
@@ -915,9 +975,13 @@
                 //console.log(item.subCategoryId);
 
                 // item.isShow = true;
-                // console.log("item %o",item);
-
+                if( typeof item.obsSellingPriceNumber == "string") {
+                    item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
+                } else {
+                    item.isShowPrice = item.obsSellingPriceNumber;
+                }
                 item.isShow = lgkorUI.isShowDate('20210601','20210901')
+                //console.log("item %o",item);
                 
                 return vcui.template(productItemTemplate, item);
             },

@@ -38,7 +38,7 @@
                     white-space:nowrap;
                     overflow:hidden;
                 }
-                .rdo-wrap input+label {
+                .rdo-wrap input+label { 
                     padding:8px 16px;
                     color:#000;
                     font-weight:700;
@@ -47,6 +47,12 @@
                     //@media screen and (max-width: 1024px) {
                     //    @include font-large-2;
                     //}
+                    /* BTOCSITE-2785 : 2021-07-14 add */ 
+                    &:hover {
+                        background:#e4e4e4;
+                        border-radius:25px;
+                    }
+                    /* //BTOCSITE-2785 : 2021-07-14 add */ 
 
                     @include mobile {
                         padding:8px 12px;
@@ -221,17 +227,108 @@
         }
     }
 
+    /* BTOCSITE-2785 : 2021-07-14 add */ 
+    .KRP0007-product {
+        margin-bottom: 48px;
+        max-width: 1460px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 40px;
+        .productGlossary {
+            display: none;
+            position: relative;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            .productGlo-cont {
+                position: relative;
+                h3 {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                }
+                p {
+                    font-size: 16px;
+                    color: #666;
+                    line-height: 26px;
+                    margin-bottom: 10px;
+                }
+                .btn-link {
+                    font-size: 13px;
+                }
+            }
+            button {
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                &.btn-close {
+                    width: 24px;
+                    height: 24px;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 24px;
+                        height: 24px;
+                        background: url(/lg5-common/images/icons/btn-close-32.svg) no-repeat;
+                        background-size: 24px;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 0;
+                
+            .productGlossary {
+                padding: 15px;
+                .productGlo-cont {
+                    h3 {
+                        font-size: 15px;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        font-size: 13px;
+                        line-height: 21px;
+                    }
+                }
+                button {
+                    top: 10px;
+                    right: 15px;
+                    &.btn-close {
+                        width: 24px;
+                        height: 24px;
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 24px;
+                            height: 24px;
+                            background: url(/lg5-common/images/icons/btn-close-32.svg) no-repeat;
+                            background-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* //BTOCSITE-2785 : 2021-07-14 add */
+
     .plp-list-wrap {
         max-width:1380px + 80;
         margin:48px auto 0;
         padding: 0 40px;
+        
+        
+        
         @include clearfix;
 
         @include mobile {
             max-width: 100%;
-            margin-top:40px;
-            padding: 0 16px 50px;
-
+            margin-top: 40px;
+            padding: 0 16px 50px; 
         }
         .lay-filter {
             margin-top:0;
