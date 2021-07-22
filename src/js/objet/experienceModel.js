@@ -4307,11 +4307,16 @@
         });
         //추천조합 선택
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
-            /* BTOCSITE-3032 add */
+            /* 
+            BTOCSITE-3032 add
             var modelCode = $(this).data().modelCode;
             var defaultModelCode = $(this).data().modelDefaultCode;
-            /* //BTOCSITE-3032 add */
-            //let modelName = $(this).find(">span").text();
+            BTOCSITE-3032 add 
+            */
+            
+            // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+            let modelName = $(this).find(">span").text();
+            
             $(this).find(".mini_model_wrap .mini_model").each(function() {
                 let idx = $(this).index();
                 let idxImg = $(this).html();
@@ -4323,13 +4328,8 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                //BTOCSITE-2346 210721 수정 - start 
-                if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode}); 
-                } else {
-                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode}); 
-                }
-                //BTOCSITE-2346 210721 수정 - end
+                // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName});
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -4605,7 +4605,7 @@
             completedCheck();
         });
 
-        //기능가격 비교 선택 [210719 다시보기]
+        //기능가격 비교 선택
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
@@ -4673,20 +4673,14 @@
             modelCheckdone();
             let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
             let idx = $this.index();
-            let modelCate = $this.attr("data-model-cate");
-            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - start
-            let defaultModel = "";
-            if($this.attr("data-best") == "Y"){
-              defaultModel = $this.attr("data-best-code");
-            } else {
-              defaultModel = $this.attr("data-model_code");                           
-            }
-            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - end
+            let modelCate = $this.attr("data-model-cate");                        
+            let defaultModel = $this.attr("data-model_code");
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
-            let saveInfo = [];
+            let saveInfo = [];            
             saveInfo.push(defaultModel);
+            
             $this.find(".door_wrap .model_door").each(function() {
                 let info = [];
                 info.push($(this).attr("data-door-direction"));
@@ -4769,7 +4763,9 @@
                 };
                 lgkorUI.alert(desc, obj);
                 return;
-            }
+            }          
+
+
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4778,7 +4774,8 @@
                 }
             });
             */
-            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            
+                            
             $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
                     purchaseData.push($(this).attr("data-default-code"));
@@ -4810,8 +4807,17 @@
                 }
             }
             //console.log(purchaseData);
+            // BTOCSITE-2346 추천제품 정보값 변경 - 210721
+            // var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            var selectedModelData = '';
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+            selectedModelData = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            }
+
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                datasend(0, !!selectedModelData.defaultCode ? selectedModelData.defaultCode : '', purchaseData);
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
+                datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
                 purchaseFn(purchaseData);
             }
@@ -5874,10 +5880,10 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
-            }
-            priceArry.push(defaultModel);
+            
+            
+            priceArry.push(defaultModel);                            
+            
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
@@ -6863,8 +6869,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     for (let i = 0; i < priceLeng; i++) {
         
         // console.log("price[i]", price[i])
-        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
-        /*
+        // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제 
+        // BTOCSITE-2346 - 210721 패널 가격 적용되도록 원복
         if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
             price.forEach(function(v, i){
@@ -6873,8 +6879,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
                 }
             })
             
-        } 
-        */
+            
+        }
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);
