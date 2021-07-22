@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0039",
+    isJScompile: true
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+
+            <!-- component KRP0020 -->
+            <div class="component-wrap">
+                <!--
+                    [component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+                -->
+                <!-- KRP0020 변형 테스트  -->
+                <section class="component KRP0039">
+                    <div class="component-inner">
+                        <div class="evt-bnr">
+                            <h2 class="tit">테스트 타이틀</h2>
+                        
+                            <div class="box-list event-type">
+                                <ul class="box-list-inner">
+                                    @@loop('./common/modules/list-box.html', [
+                                    
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event02.jpg",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event03.jpg",                
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"                
+                                        }
+                                    ])
+                                </ul>
+                            </div> 
+                            <!-- cta -->
+                            <div class="btn-box">
+                                <a href="#none" class="btn border size-m" data-link-area="event-exhibition-cta" data-link-name="{link text}"><span>button</span></a>
+                            </div>
+                            <!-- // cta -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- //component KRP0020 -->
+		</div>
+    </div>
+</body>
+</html>

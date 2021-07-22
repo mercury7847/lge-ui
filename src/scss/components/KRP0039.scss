@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0020 {    
+    .component-inner { 
+        .evt-bnr {
+            @include clearfix;
+            .tit {
+                font-size:32px;
+                line-height:42px;
+                font-weight:700;
+                text-align:center;
+                @include mobile {
+                    font-size:24px;
+                    line-height:33px;
+                }
+                &.title-h1 {
+                    @include title-h1;
+                }
+                &.title-h2 {
+                    @include title-h2;
+                }
+                &.title-h3 {
+                    @include title-h3;
+                }
+                &.title-h4 {
+                    @include title-h4;
+                }
+                &.title-h5 {
+                    @include title-h5;
+                }
+                &.title-h6 {
+                    @include title-h6;
+                }
+            }
+            .category {
+                margin-top:16px;
+                font-size:18px;
+                line-height:28px;
+                text-align:center;
+                @include mobile {
+                    margin-top:6px;
+                    font-size:15px;
+                    line-height:23px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            .btn-text {
+                display:none;
+                float:right;
+                margin-top:16px;
+                @include mobile {
+                    position:relative;
+                    margin-top:-18px;
+                    z-index:10;
+                }
+            }
+            .slide-wrap {
+                position:relative;
+                margin-top:32px;
+                padding-bottom:36px;
+                @include mobile {
+                    margin:24px -16px 0;
+                    padding-bottom:32px;
+                }
+                .slide-content {
+                    margin:0 -12px;
+                    @include mobile {
+                        margin:-8px 0;
+                        padding:0 10px;
+                    }
+
+                    .slide-track {
+                        display:flex;
+                        flex-wrap:wrap;
+                        padding:16px 0;
+                        @include mobile {
+                            padding:8px 0;
+                        }
+                    }
+
+                    .slide-conts {
+                        float:left;
+                        width:33.3%;
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                    .conts-wrap {
+                        height:100%;
+                        margin:0 12px;
+                        // margin:16px 12px;
+                        border-radius:8px;
+                        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                        overflow:hidden;
+                        @include mobile {
+                            margin:0 6px;
+                            border-radius:8px;
+                            box-shadow:1px 2px 8px 0 rgba(#000, .14);
+                        }
+                        .evt {
+                            position:relative;
+                            background:#fff;
+                            
+                            overflow:hidden;
+                            @include mobile {
+                                border-radius:8px;
+                            }
+                            .evt-link {
+                                display:block;
+                            }
+                            .thumb {
+                                display:block;
+                                position:relative;
+                                height:330px;
+                                // border-radius:8px;
+                                overflow:hidden;
+                                @include mobile {
+                                    height:230px;
+                                    border-radius:0;
+                                }
+                                img {
+                                    position:absolute;
+                                    top:50%;
+                                    left:50%;
+                                    transform:translate(-50%, -50%);
+                                    width:100%;
+                                    height:auto;
+                                    vertical-align:top;
+                                }
+                                .event-end {
+                                    position:absolute;
+                                    top:0;
+                                    right:0;
+                                    bottom:0;
+                                    left:0;
+                                    z-index:10;
+                                    background:rgba(0, 0, 0, 0.5);
+                                    em {
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                        color:#fff;
+                                        font-size:32px;
+                                        font-weight:700;
+                                        line-height:52px;
+                                        text-align:center;
+                                    }
+                                }
+                                > .flag-wrap {
+                                    position:absolute;
+                                    top:24px;
+                                    left:24px;
+                                    @include mobile {
+                                        top:20px;
+                                        left:20px;
+                                    }
+                                }
+                            }
+                            .event-info {
+                                padding:24px 32px 42px;
+                                @include mobile {
+                                    padding:16px 20px 24px;
+                                }
+                                .flag-wrap {
+                                    margin-bottom:4px;
+                                    .flag {
+                                        &::after {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:1px;
+                                            height:10px;
+                                            margin-top:6px;
+                                            margin-left:4px;
+                                            background:#ddd;
+                                            vertical-align:top;
+                                        }
+                                        &:last-child {
+                                            &::after {
+                                                display:none;
+                                            }
+                                        }
+                                    }
+                                }
+                                .tit {
+                                    // min-height:60px;
+                                    max-height:60px;
+                                    color:#000;
+                                    font-size:20px;
+                                    line-height:30px;
+                                    font-weight:700;
+                                    text-align:left;
+                                    @include textEllipsisClamp(2);
+                                    @include mobile {
+                                        min-height:48px;
+                                        max-height:48px;
+                                        font-size:16px;
+                                        line-height:24px;
+                                    }
+                                }
+                                .date {
+                                    height:24px;
+                                    margin-top:8px;
+                                    color:#000;
+                                    font-size:14px;
+                                    line-height:24px;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    white-space:nowrap;
+                                    @include mobile {
+                                        height:21px;
+                                        margin-top:8px;
+                                        font-size:13px;
+                                        line-height:21px;
+                                    }
+                                }
+                            }
+                            .end-flag {
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                width:60px;
+                                height:60px;
+                                padding:10px 0 10px 5px;
+                                border-radius:0 4px 0 4px;
+                                background-image:linear-gradient(#F04E3E, #EC455A);
+                                color:#fff;
+                                font-size:12px;
+                                letter-spacing:5px;
+                                line-height:20px;
+                                text-align:center;
+                                z-index:10;
+                                @include mobile {
+                                    width:48px;
+                                    height:48px;
+                                    padding:8px 0 8px 4px;
+                                    font-size:10px;
+                                    line-height:16px;
+                                    letter-spacing:4px;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                .indi-wrap {
+                    bottom:0;
+                }
+
+                .btn-arrow {
+                    position:absolute;
+                    top:calc((100% - 36px) / 2);
+                    transform:translateY(-50%);
+                    &.prev {
+                        left:4px;
+                    }
+                    &.next {
+                        right:4px;
+                    }
+                }
+            }
+        }
+    }
+    .box-list.event-type {
+		.box-list-inner .lists .list-inner .info .tit {
+			max-height:30px;
+			-webkit-line-clamp:1;
+		}
+	}
+}
