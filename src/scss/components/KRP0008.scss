@@ -957,6 +957,12 @@
                         color: $color-gray-5;
                         @include text-through($color-gray-5);
                     }
+                    /* 20210721 BTOCSITE-2743 PDP, 주문서 > 안내문구 추가요청 (소모품 리셀 및 소모품샵 사칭 대응) */
+                    .line-original {
+                        margin-right: 6px;
+                        @include font-small;
+                        color: $color-gray-5;
+                    }
                     .price {
                         @include font-small;
                         & + .price {
