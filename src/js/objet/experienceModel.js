@@ -4617,25 +4617,32 @@
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
                 let colorMix = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code").substring(4, 7);
                 let mxiCode = modelCode.replace("AAA", colorMix);
-                if (mxiCode == "M871FBS551") {
-                    mxiCode = "M871FBS551S";
-                } else if (mxiCode == "M620FBS351S") {
-                    mxiCode = "M620FBS351"
-                } else if (mxiCode == "M871SMS551") {
-                    mxiCode = "M871SMS551S";
-                } else if (mxiCode == "M620SMS351S") {
-                    mxiCode = "M620SMS351";
-                } else if (mxiCode == "M871MWW551") {
-                    mxiCode = "M871MWW551S";
-                } else if (mxiCode == "M620MWW351S") {
-                    mxiCode = "M620MWW351";
-                } else if (mxiCode == "M870FBS451S") {
-                    mxiCode = "M870FBS451";
-                } else if (mxiCode == "M870SMS451") {
-                    mxiCode = "M870SMS451S";
-                } else if (mxiCode == "M870MWW451") {
-                    mxiCode = "M870MWW451S";
+
+                // S - 210723 BTOCSITE-2346 일부 모델 각각 하드코딩처리하여 적용한 내용 일괄 S 적용되도록 변경
+                let colorChk = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code").substring(10);
+                // if (mxiCode == "M871FBS551") {
+                //     mxiCode = "M871FBS551S";
+                // } else if (mxiCode == "M620FBS351S") {
+                //     mxiCode = "M620FBS351"
+                // } else if (mxiCode == "M871SMS551") {
+                //     mxiCode = "M871SMS551S";
+                // } else if (mxiCode == "M620SMS351S") {
+                //     mxiCode = "M620SMS351";
+                // } else if (mxiCode == "M871MWW551") {
+                //     mxiCode = "M871MWW551S";
+                // } else if (mxiCode == "M620MWW351S") {
+                //     mxiCode = "M620MWW351";
+                // } else if (mxiCode == "M870FBS451S") {
+                //     mxiCode = "M870FBS451";
+                // } else if (mxiCode == "M870SMS451") {
+                //     mxiCode = "M870SMS451S";
+                // } else if (mxiCode == "M870MWW451") {
+                //     mxiCode = "M870MWW451S";
+                // }
+                if(colorChk === "S"){
+                    mxiCode = mxiCode + colorChk;
                 }
+                // E - 210723 BTOCSITE-2346 일부 모델 각각 분기처리하여 적용하던 내용 일괄 S 적용되도록 변경
                 $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code", mxiCode);
             }
         });
@@ -4766,7 +4773,9 @@
                 return;
             }          
 
-
+            // S - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
+            let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
+            //console.log("변수체크, 모델코드 : "+modelCode);
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4775,13 +4784,16 @@
                 }
             });
             */
-            
-                            
-            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+
+            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function(index) {
                 if (!$(this).hasClass("sum")) {
+                    if(index == 0) {
+                       purchaseData.push($(this).attr("data-default-code",modelCode));
+                    }
                     purchaseData.push($(this).attr("data-default-code"));
                 }
-            });            
+            });
+            // E - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             
             //console.log('selectedModelData', selectedModelData);
             //console.log('purchaseData', purchaseData);
