@@ -59,7 +59,7 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-        '           {{#if siblingContractPeriod.length > 0}}'+
+        '           {{#if typeof siblingContractPeriod !== "undefined" && siblingContractPeriod.length > 0}}'+
         '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>계약기간</dt>'+
         '                   <dd>'+
@@ -692,7 +692,7 @@
             blockID: idx
         }
 
-        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
+        if(getTabID() == 0 && optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
         if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
         if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
         if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
@@ -739,7 +739,7 @@
 
                 selectFeeID = o[selectFeeID].siblingCode;
 
-                setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
+                if(getTabID() == 0) setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
