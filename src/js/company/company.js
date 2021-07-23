@@ -33,16 +33,17 @@ $(document).ready(function() {
 		fcTabScrollLeft($('.border-type .tabs'));
 		fcTabScrollLeft($('.btn-type .tabs'));
 		// 첫번째 아코디언 열기
-		fcOpenAccordion();
+		$(".accordion-wrap").each(function(index){
+			$(this).find("li.lists:first-child").find("a.accord-btn").trigger("click");
+		});
+		// 아코디언 클릭한 높이로 이동
+		$(".accordion-wrap li.lists a").on('click', function(e){
+			var scrollPosition = $(this).offset().top;
+			scrollPosition = scrollPosition - 100;
+			$('html, body').stop().animate({scrollTop: scrollPosition}, 500);
+		});
 	}, 500);
 });
-
-// 첫번째 아코디언 열기
-function fcOpenAccordion(){
-	$(".accordion-wrap").each(function(index){
-		$(this).find("li.lists:first-child").find("a.accord-btn").trigger("click");
-	});
-}
 
 // 탭 슬라이드 위치 이동
 function fcTabScrollLeft(tab){
