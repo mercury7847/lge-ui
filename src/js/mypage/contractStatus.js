@@ -862,6 +862,7 @@
         }
     }
 
+    // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     function setContractInfo(data){
         mypage.find(".no-data").remove();
         if(data != undefined && data != "" && data != null){
@@ -878,6 +879,34 @@
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
             else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+
+            // contractType - R :케어솔루션 C : 케어십
+            if(data.contractInfo.contractType === 'C') {
+                // 케어십 - 의무사용기간 숨김
+                $('.contract-info .dutyPeriod').hide();
+
+                // 케어십 - 계약기간 표시형식 변경
+                data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
+                
+                '<dl class="bullet-list nomargin-top">' +
+                '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
+                '</dl>';
+
+
+
+
+
+
+
+            }
+
+            // 렌탈케어 - 의무 사용기간 포맷 변경
+            if(data.contractInfo.dutyPeriod && data.contractInfo.contractType === 'R') {
+                var dutyPeriod = data.contractInfo.dutyPeriod.split(" ");
+                    dutyPeriod.push(vcui.date.calcDate(dutyPeriod[1].replace(/\./g,'-'), '+'+(365*Number(dutyPeriod[0].replace('년','')))+'d', 'yyyy.MM.dd'));
+                    data.contractInfo.dutyPeriod = dutyPeriod[0]+'('+dutyPeriod[1]+' ~ '+dutyPeriod[2]+')';
+            }
+
             changeFieldValue('contract-info', data.contractInfo);
     
             info = {
