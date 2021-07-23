@@ -379,7 +379,7 @@
             addPutItem(this);
         }).on('change', '.info-wrap select', function(e){
             e.preventDefault();
-            console.log("change");
+
             changeItemOptions(this);
         });
 
@@ -692,7 +692,7 @@
             blockID: idx
         }
 
-        if(getTabID() == 0 && optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
+        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
         if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
         if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
         if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
@@ -707,8 +707,6 @@
             
             var blockID = result.data.blockID;
 
-            console.log("_priceStatusUrl %o result.data %o",_priceStatusUrl,result.data);
-
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
@@ -717,6 +715,7 @@
             if(sendata.tabID == 0){
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
 
+                // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                 var o = result.data.siblingUsePeriod;
 
                 var selectUserPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
@@ -739,7 +738,7 @@
 
                 selectFeeID = o[selectFeeID].siblingCode;
 
-                if(getTabID() == 0) setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
@@ -835,8 +834,6 @@
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
-            console.log("item list %o", _currentItemList[i]);
-
             if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
             else{
                 if(getTabID() == 0) _currentItemList[i].modelUrlPath += "?dpType=careTab";
