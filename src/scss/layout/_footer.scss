@@ -465,6 +465,21 @@ footer {
                                     }
                                 }
                             }
+                            &.sns4 {
+                                &:before {
+                                    background-image:url('/lg5-common/images/icons/icon-sns5.svg');
+                                }
+                            }
+                            &.sns5 {
+                                &:before {
+                                    background-image:url('/lg5-common/images/icons/icon-sns1.svg');
+                                }
+                            }
+                            &.sns6 {
+                                &:before {
+                                    background-image:url('/lg5-common/images/icons/icon-sns4.svg');
+                                }
+                            }
                         }
                     }
                 }
