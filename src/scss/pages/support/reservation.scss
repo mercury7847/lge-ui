@@ -1032,6 +1032,11 @@
 .evt-banner-3216 {
     max-height:220px;
     margin:0px;
+    margin-bottom:126px;
+
+    @include mobile {
+        margin-bottom:87px;
+    }
 
     img {
         width:100%;
