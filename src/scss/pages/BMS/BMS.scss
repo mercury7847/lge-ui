@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// common
+
+@import "../../components/KRC0015";
+@import "../../components/KRC0029";
+@import "../../components/KRC0032";
+@import "../../components/KRP0039";
+
+body{background: green;}

@@ -2,7 +2,6 @@
 
 @import "../components-app";
 .KRP0039 {    
-    background: blue;
     .component-inner { 
         .evt-bnr {
             @include clearfix;
@@ -20,12 +19,14 @@
         }
     }
     .box-list.event-type {
+        margin-top:49px;
 		.box-list-inner .lists .list-inner .info .tit {
-			// max-height:30px;
 			@include textEllipsisClamp(2);
 		}
 	}
     .btn-area{
         text-align: center;
+        margin-top:32px;
+        margin-bottom:40px;
     }
 }
