@@ -4775,7 +4775,6 @@
 
             // S - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
-            //console.log("변수체크, 모델코드 : "+modelCode);
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4788,7 +4787,9 @@
             $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function(index) {
                 if (!$(this).hasClass("sum")) {
                     if(index == 0) {
-                       purchaseData.push($(this).attr("data-default-code",modelCode));
+                       $(this).attr("data-default-code",modelCode);
+                    } else {
+                       $(this).attr("data-default-code");
                     }
                     purchaseData.push($(this).attr("data-default-code"));
                 }
