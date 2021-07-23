@@ -59,7 +59,7 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-        '           {{#if siblingContractPeriod.length > 0}}'+
+        '           {{#if typeof siblingContractPeriod !== "undefined" && siblingContractPeriod.length > 0}}'+
         '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>계약기간</dt>'+
         '                   <dd>'+

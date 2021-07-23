@@ -151,6 +151,14 @@
                                     @include mobile {
                                         width:69%;
                                     }
+
+                                    // BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                                    dl.bullet-list {
+                                        dd {
+                                            width:100%;
+                                            max-width:100%;
+                                        }
+                                    }
                                 }
                             }
                         }
