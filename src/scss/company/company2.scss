@@ -286,7 +286,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .board-view .board-view-sub {padding:16px 0; border-bottom:1px solid #ddd; text-align:right}
 .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share {width:24px; height:24px; padding:0}
 .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {top:32px; right:0; left:auto; padding:32px}
-.company .board-view-wrap .board-view .board-view-sub .dwn {display:inline-block; width:24px; height:24px; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size: 28px 28px;}
+.company .board-view-wrap .board-view .board-view-sub .dwn {display:inline-block; width:24px; height:24px; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
 .company .board-view-wrap .board-view .board-view-body {padding:24px}
 .company .board-view-wrap .board-view .board-view-body .view-content > img {display:block; margin:0 auto}
 .company .board-view-wrap .board-navi {border-top:1px solid #ddd; border-bottom:1px solid #ddd}
@@ -353,30 +353,29 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
-.company .slide-covid19 .slide-wrap{width: 1024px;margin: 0 auto;}
-.company .slide-covid19 .slide-conts .img {width:100%; height:480px; margin-top:30px; margin-bottom:72px;}
+.company .slide-covid19 .slide-wrap{width:1024px; margin:0 auto}
+.company .slide-covid19 .slide-conts .img {width:100%; height:480px; margin-top:30px; margin-bottom:72px}
 .company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; border-radius:8px; background-repeat:no-repeat; background-position:center; background-size:cover}
-.company .slide-covid19 .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
-.company .slide-covid19 .slide-conts.ui_carousel_current .intArea{opacity:1;}
-// .company .slide-covid19 .slide-content{overflow: visible !important;}
-.company .slide-covid19 .slide-wrap .indi-wrap{bottom: auto;top: 540px;}
-.company .slide-covid19 .slide-wrap.carousel-type .slide-controls {top:calc(50% - 24px);}
-.company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.prev { left: -24px;}
-.company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.next { right: -24px;}
-.company .slide-covid19 .slide-wrap .slide-controls {top: 300px;}
+.company .slide-covid19 .slide-conts .intArea{text-align:center;opacity:0;transition:1s}
+.company .slide-covid19 .slide-conts.ui_carousel_current .intArea{opacity:1}
+.company .slide-covid19 .slide-wrap .indi-wrap{bottom:auto;top:540px}
+.company .slide-covid19 .slide-wrap.carousel-type .slide-controls {top:calc(50% - 24px)}
+.company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:-24px}
+.company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
+.company .slide-covid19 .slide-wrap .slide-controls {top:300px}
 
 @media screen and (max-width:767px){
-    .company .slide-covid19{margin: 0 -4.44vw;}
-    .company .slide-covid19 .slide-wrap {overflow: visible !important;}
-    .company .slide-covid19 .slide-conts{padding: 0 4.44vw;}
-    .company .slide-covid19 .slide-conts .img {margin-bottom:48px;}
-    .company .slide-covid19 .slide-conts .intArea{text-align: center;opacity:0;transition: 1s;}
-    .company .slide-covid19 .slide-conts.ui_carousel_current .intArea{opacity:1;}
-    .company .slide-covid19 .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 40px);}
-    .company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
-    .company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
-    .company .slide-wrap .slide-controls {top: calc(32vw + 40px);}
-    .company .slide-covid19 .slide-conts .img {height: auto;margin-top: 20px;}
+    .company .slide-covid19{margin:0 -4.44vw}
+    .company .slide-covid19 .slide-wrap {overflow:visible !important}
+    .company .slide-covid19 .slide-conts{padding:0 4.44vw}
+    .company .slide-covid19 .slide-conts .img {margin-bottom:48px}
+    .company .slide-covid19 .slide-conts .intArea{text-align:center;opacity:0;transition:1s}
+    .company .slide-covid19 .slide-conts.ui_carousel_current .intArea{opacity:1}
+    .company .slide-covid19 .slide-wrap .indi-wrap{bottom:auto;top:calc(64vw + 40px)}
+    .company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:calc(3.33vw - 14px)}
+    .company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:calc(3.33vw - 14px)}
+    .company .slide-wrap .slide-controls {top:calc(32vw + 40px)}
+    .company .slide-covid19 .slide-conts .img {height:auto;margin-top:20px}
     .company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; padding-bottom:73%; background-repeat:no-repeat; background-position:center; background-size:contain}
     .company .slide-covid19 .slide-conts .text {padding:0 60px}
 }
@@ -513,7 +512,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.card_list > li .infoArea .career {padding-top:24px; border-top:1px dashed #ddd}
 .company ul.card_list > li .infoArea .career > strong {font-size:14px; font-weight:bold; line-height:20px}
 .company ul.card_list > li .infoArea .career > strong + ul {margin-top:8px}
-.company ul.card_list > li .infoArea .career > ul li {font-size:14px; line-height:24px}
+.company ul.card_list > li .infoArea .career > ul li {padding-left:25px; font-size:14px; line-height:24px; text-indent:-25px}
 .company ul.card_list > li .infoArea .career > ul li > span {font-weight:500}
 
 .company .tit + ul.col {margin-top:10px}
@@ -678,17 +677,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 .company .accordion-wrap.sustain {margin-top:38px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit {margin-top:0; margin-bottom:10px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li {line-height:26px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li:first-child > .tit {margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li + li {margin-top:4px!important}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul > li {margin-left:8px; text-indent:-8px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul + ul {margin-top:6px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .text {margin-top:10px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea strong {margin-top:0; margin-bottom:6px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li {line-height:26px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li + li {margin-top:60px; padding-top:60px; border-top:1px dashed #ddd}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li > .tit {margin-top:0; font-size:22px; line-height:32px; text-align:center}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li strong {display:block; margin-top:6px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li ul.bull {margin-left:12px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li > ul > li + li {margin-top:30px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea strong {margin-top:0; margin-bottom:5px}
 
 /* 자료 더보기 영역 */
 .company .cont_view_more {padding:60px 0 0}
@@ -764,8 +760,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb_row .tbl_select,
 .company .tb-col .tbl_select {margin-bottom:12px; text-align:right}
 .company .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
-.company .tb_row table{position:relative;}
-.company .tb_row table::before {content:'';display:block;position:absolute;left:0;right:0;top:0;background:#666;height:1px;}
+.company .tb_row table{position:relative}
+.company .tb_row table::before {content:'';display:block;position:absolute;left:0;right:0;top:0;background:#666;height:1px}
 .company .tb_row table thead th {border-top:0}
 .company .tb_row table tbody th {padding:24px; border-bottom:1px solid #ddd; color:#000; font-size:16px; font-weight:normal; line-height:26px; text-align:center}
 .company .tb_row table th.bold,
@@ -785,8 +781,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
 /* 정관 */
-.artTxt p {font-size:16px; line-height:1.63;word-break: keep-all;}
-.artTxt h2.tit {margin-bottom:12px; font-size:18px; font-weight:bold; line-height:1.56;word-break: keep-all;}
+.artTxt p {font-size:16px; line-height:1.63;word-break:keep-all}
+.artTxt h2.tit {margin-bottom:12px; font-size:18px; font-weight:bold; line-height:1.56;word-break:keep-all}
 .artTxt h2.tit ~ h2.tit {margin-top:40px}
 
 /* Tablet */
@@ -878,10 +874,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain {margin-top:0}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.mgtL {margin-top:15px!important}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:20px}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li ul.bull {margin-left:0}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li + li {margin-top:24px; padding-top:24px}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.depth_3 > li > .tit {font-size:18px; line-height:27px}
-
+    
     .company .cont_view_more {margin-top:40px; padding:0}
     .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
     .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
@@ -1183,7 +1176,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compStep > li {display:flex; width:100%; min-height:auto}
     .company ul.compStep > li + li {margin:36px 0 0 0}
     .company ul.compStep > li .tit {width:80px; height:auto; margin:0 8px 0 0; padding:10px; border-radius:8px 8px 0 0; font-size:15px; line-height:24px; text-align:center}
-    .company ul.compStep > li .tit::after {bottom:-18px; left:0; border-top:18px solid; border-right:40px solid transparent; border-bottom:none; border-left:40px solid transparent!important;}
+    .company ul.compStep > li .tit::after {bottom:-18px; left:0; border-top:18px solid; border-right:40px solid transparent; border-bottom:none; border-left:40px solid transparent!important}
     .company ul.compStep > li:nth-child(1) .tit::after {border-top-color:#ddd}
     .company ul.compStep > li:nth-child(2) .tit::after {border-top-color:#aaa}
     .company ul.compStep > li:nth-child(3) .tit::after {border-top-color:#666}
