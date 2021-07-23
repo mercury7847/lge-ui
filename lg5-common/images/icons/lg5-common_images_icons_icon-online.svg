@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_online_48" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="Rectangle" fill="none" d="M0 0H48V48H0z"/>
+    <g id="그룹_604" transform="translate(-846.126 -606.901)">
+        <g id="그룹_603">
+            <g id="W">
+                <path id="Path-2" d="M861.564 623.528l3.2 9.029 3.323-9.029 3.691 9.029 2.83-9.029" class="cls-2"/>
+                <path id="Path-3" d="M862.879 627.039H860.4" class="cls-2"/>
+                <path id="Path-4" d="M876.925 627.039h-2.478" class="cls-2"/>
+            </g>
+            <g id="Group-12">
+                <path id="Combined-Shape" d="M883.877 632.408a1.5 1.5 0 0 1 2.1-.21l2.517 2.249a1.5 1.5 0 0 1 .221 2.11l-.008.011-10.157 11.447-6.393 2.076 1.546-6.214z" class="cls-2"/>
+                <path id="Path-3-2" d="M0 0L4.731 4.138" class="cls-2" transform="translate(873.82 643.877)"/>
+            </g>
+            <path id="Shape" d="M868.288 646.673h-12.375a1.53 1.53 0 0 1-1.5-1.5v-28.5a1.53 1.53 0 0 1 1.5-1.5h25.5a1.542 1.542 0 0 1 1.5 1.5v11.084" class="cls-2"/>
+        </g>
+        <path id="사각형_15" d="M0 0H10.211V1.799H0z" class="cls-2" transform="translate(863.558 615.173)"/>
+    </g>
+</svg>

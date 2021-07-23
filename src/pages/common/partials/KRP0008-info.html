@@ -220,7 +220,9 @@
                                     </dl>
                                 </li>
                             </ul>
+                            <!-- 20210526 텍스트 문구 추가-->
                             <p class="desc">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>
+                            <!-- //20210526 텍스트 문구 추가-->
                         </div>
                     </li>
 
@@ -1232,11 +1234,35 @@
         <div class="info-bottom">
             <div class="link-area">
                 <ul>
-                    <li class="reservation">
-                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">매장 상담 신청</a>
+                    <!-- BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
+                    <!-- 구매탭 : 매장 상담 신청 -->
+                    <li class="reservation store-counsel">
+                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">매장 상담 예약</a>
                     </li>
+                    <!-- 렌탈탭 : 렌탈 전화상담 예약 -->
+                    <!-- <li class="reservation rental-counsel">
+                        <a href="#rentalCounselPop" class="package" data-control="modal"><span>렌탈 전화상담 예약</span></a>
+                    </li> -->
                     <li class="find-store"><a href="http://google.com">전시 매장 찾기</a></li>
+                    <!-- 메디헤어 체험존 -->
+                    <li class="reservation medihair-experience">
+                        <a href="#" target="_blank" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">메디헤어 체험존</a>
+                    </li>
+                    <!-- 시네빔 체험존 -->
+                    <!-- <li class="reservation cinebeam-experience">
+                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">시네빔 체험존</a>
+                    </li> -->
+                    <!-- 윙 체험존 -->
+                    <!-- <li class="reservation wing-experience">
+                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">윙 체험존</a>
+                    </li>  -->
+                    <!-- 온라인 견적 문의 -->
+                    <!-- <li class="reservation online-counsel">
+                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">온라인견적 문의</a>
+                    </li>  -->
+                    <!-- //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
                 </ul>
+
             </div>
             <div class="product-compare">
                 <span class="chk-wrap chk-sm">
@@ -1253,3 +1279,9 @@
         <!-- // 210330 수정 [윙 체험존 위치 보기 추가] -->
     </div>
 </div>
+
+<!-- BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 - 팝업 노출 -->
+@@include('./common/partials/modal/rentalCounselPop.html', {
+	popupID: 'rentalCounselPop'
+})
+<!--//BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 - 팝업 노출 -->
