@@ -29,14 +29,22 @@ $(document).ready(function() {
     });
   
 	setTimeout(function(){
-		// 탭 슬라이드
+		// 탭 슬라이드 위치 이동
 		fcTabScrollLeft($('.border-type .tabs'));
 		fcTabScrollLeft($('.btn-type .tabs'));
 		// 첫번째 아코디언 열기
-		$($(".accordion-wrap .head a")[0]).trigger("click");
+		fcOpenAccordion();
 	}, 500);
 });
 
+// 첫번째 아코디언 열기
+function fcOpenAccordion(){
+	$(".accordion-wrap").each(function(index){
+		$(this).find("li.lists:first-child").find("a.accord-btn").trigger("click");
+	});
+}
+
+// 탭 슬라이드 위치 이동
 function fcTabScrollLeft(tab){
 	var totalWidth = -20;
 	var liWidth = 0;
