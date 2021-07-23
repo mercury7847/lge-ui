@@ -99,6 +99,22 @@
                 var activeTabIndex = $('.option-tabs .tabs li.on').index()
                 self.replaceModelName(activeTabIndex);
 
+
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 스크립트 추가
+                $(document).on('click', '[data-app-link]', function(e){
+                    if( isApp()) {
+                        e.preventDefault();
+                        var appUrl = $(this).attr('data-app-link');
+                        if(vcui.detect.isIOS){
+                            var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openLinkOut(appUrl);
+                        }
+                    }
+                })
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+                self.bindRentalPopupEvents();
             },
 
             prepare: function() {
@@ -230,6 +246,11 @@
                 self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingOption = self.$specInfoPopup.find('.sibling-option'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingColorText = $('.chk-wrap-colorchip'); //20210607 스펙선택 추가
+
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+                self.$pdpInfoWrap = $('div.pdp-wrap .pdp-info-area');
+                self.$pdpInfoProductDetailInfo = self.$pdpInfoWrap.find('.product-detail-info');
+                self.$packageButton = self.$pdpInfoProductDetailInfo.find('.info-bottom .link-area ul rental-counsel a');
                 
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
@@ -584,6 +605,34 @@
                 self.$siblingCont = self.$specInfoPopup.find('.sibling-cont');
                 self.$siblingBtnComp = self.$specInfoPopup.find('.btn-sibling-select');
                 self.siblingCurrentModel = "";
+            },
+
+             //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+             bindRentalPopupEvents: function() {
+                var self = this;
+                self.$packageButton.on('click', function(e){
+                    var $this = $(this);
+                    if( $this.hasClass('package')) {
+                        e.preventDefault();
+                        var popupId = $this.attr('href');
+                        $(popupId).vcModal({opener: this});
+                    }
+                })
+                
+                $('.popup-package-model').find('.pop-footer .btn').on('click', function(e){
+                    var _self = this;
+                    var $targetPopup = $(this).closest('.popup-package-model')
+                    self.packageSelect(_self, $targetPopup)
+                })
+            },
+            packageSelect: function(alertTarget, $targetPopup){          
+                var $radio = $targetPopup.find('.model-list input:radio');
+                if( !$radio.filter(':checked').length ) {
+                    var msgTxt = '제품을 선택해주세요';
+                    lgkorUI.alert("", {title: msgTxt}, alertTarget);
+                } else {
+                    location.href = $radio.filter(':checked').data('model-path');
+                }
             },
 
             popUpDataSetting: function() {
