@@ -488,10 +488,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list.env {display:flex; justify-content:space-between}
 .company ul.dwn_list.env li {margin-top:0}
 
-.company ul.card_list {display:flex; flex-wrap:wrap; justify-content:flex-start}
-.company ul.card_list + ul.card_list {margin-top:36px; margin-right:-24px}
-.company ul.card_list > li {width:327px; min-height:500px; margin-right:24px; margin-bottom:24px; padding:8px 30px 40px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
-.company ul.card_list > li .photo {display:flex; flex-direction:column; justify-content:center; width:calc(100% + 10px); min-height:142px}
+.company ul.card_list {display:flex}
+.company ul.card_list + ul.card_list {margin-top:36px; margin-bottom:-24px}
+.company ul.card_list > li {width:327px; min-height:500px; margin-bottom:24px; padding:8px 30px 40px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
+.company ul.card_list > li + li {margin-left:24px}
+.company ul.card_list  + ul.card_list > li {width:calc(25% - 18px)}
+.company ul.card_list > li .photo {display:flex; flex-direction:column; justify-content:center; width:calc(100% + 10px); min-height:142px; padding-right:110px}
 .company ul.card_list > li .photo.photo_01 {background:url(/kr/images/company/investor/img-director_photo_new_01.png) no-repeat center; background-size:150px; background-position:100% center}
 .company ul.card_list > li .photo.photo_02 {background:url(/kr/images/company/investor/img-director_photo_new_02.png) no-repeat center; background-size:150px; background-position:100% center}
 .company ul.card_list > li .photo.photo_03 {background:url(/kr/images/company/investor/img-director_photo_new_03.png) no-repeat center; background-size:150px; background-position:100% center}
@@ -499,9 +501,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.card_list > li .photo.photo_05 {background:url(/kr/images/company/investor/img-director_photo_new_05.png) no-repeat center; background-size:150px; background-position:100% center}
 .company ul.card_list > li .photo.photo_06 {background:url(/kr/images/company/investor/img-director_photo_new_06.png) no-repeat center; background-size:150px; background-position:100% center}
 .company ul.card_list > li .photo.photo_07 {background:url(/kr/images/company/investor/img-director_photo_new_07.png) no-repeat center; background-size:150px; background-position:100% center}
-.company ul.card_list > li .photo .name {font-size:24px; font-weight:bold; line-height:35px}
+.company ul.card_list > li .photo .name {font-size:24px; font-weight:bold; line-height:35px; word-break:keep-all}
 .company ul.card_list > li .photo .name + .job {margin-top:6px}
-.company ul.card_list > li .photo .job {font-size:14px; line-height:20px}
+.company ul.card_list > li .photo .job {font-size:14px; line-height:20px; word-break:keep-all}
 .company ul.card_list > li .infoArea {border-top:1px solid #ddd}
 .company ul.card_list > li .infoArea .info {min-height:140px; padding:24px 0}
 .company ul.card_list:nth-of-type(2) > li .infoArea .info {min-height:160px}
@@ -512,7 +514,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.card_list > li .infoArea .career {padding-top:24px; border-top:1px dashed #ddd}
 .company ul.card_list > li .infoArea .career > strong {font-size:14px; font-weight:bold; line-height:20px}
 .company ul.card_list > li .infoArea .career > strong + ul {margin-top:8px}
-.company ul.card_list > li .infoArea .career > ul li {padding-left:25px; font-size:14px; line-height:24px; text-indent:-25px}
+.company ul.card_list > li .infoArea .career > ul li {font-size:14px; line-height:24px; word-break:keep-all}
+.company ul.card_list > li .infoArea .career > ul li.pl {padding-left:25px; text-indent:-25px}
 .company ul.card_list > li .infoArea .career > ul li > span {font-weight:500}
 
 .company .tit + ul.col {margin-top:10px}
@@ -794,6 +797,22 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .ir_pt ul.ir_ptList > li {flex-direction:column}
     .company .ir_pt ul.ir_ptList > li .btn_list {padding-top:20px}
+
+    .company ul.card_list > li {width:calc(33.3333% - 16px)}
+    .company ul.card_list > li .photo .name {font-size:20px; line-height:30px}
+}
+
+@media screen and (max-width:1120px){
+    .company ul.card_list + ul.card_list {flex-wrap:wrap; justify-content:space-between; margin-bottom:0}
+    .company ul.card_list + ul.card_list > li {width:calc(50% - 12px); margin:0}
+    .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
+    .company ul.card_list > li .photo .job {font-size:13px}
+}
+
+@media screen and (max-width:860px){
+    .company ul.card_list:first-of-type > li {padding-top:40px; padding-bottom:40px}
+    .company ul.card_list:first-of-type > li .photo {justify-content:flex-start; height:198px; padding-right:0; background-position:100% 100%}
+    .company ul.card_list > li .infoArea .info ul li {flex-direction:column}
 }
 
 /* 모바일 */
@@ -856,7 +875,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {padding:29px 58px 29px 20px}
     .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:20px}
     .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
-    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; color:#666; font-size:14px; line-height:22px; word-break:normal}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; font-size:14px; line-height:22px; word-break:normal}
     .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
     
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-right:50px}
@@ -996,18 +1015,21 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company ul.card_list {flex-direction:column}
     .company ul.card_list + ul.card_list {margin-top:20px; margin-right:0}
-    .company ul.card_list > li {width:100%; min-height:auto; margin-bottom:0; padding:4px 20px 27px}
-    .company ul.card_list > li + li {margin-left:0; margin-top:20px}
+    .company ul.card_list > li {width:100%!important; min-height:auto; margin-bottom:0; padding:4px 20px 27px!important}
+    .company ul.card_list > li + li {margin-top:20px!important; margin-left:0}
     .company ul.card_list > li .photo {width:100%; min-height:130px; background-size:137.5px!important}
+    .company ul.card_list:first-of-type > li .photo {justify-content:center; height:auto; background-position:100% center}
     .company ul.card_list > li .photo .name {font-size:20px;line-height:30px}
     .company ul.card_list > li .photo .job {font-size:13px; line-height:20px}
     .company ul.card_list > li .infoArea .info {min-height:auto; padding:20px 0}
     .company ul.card_list:nth-of-type(2) > li .infoArea .info {min-height:auto}
+    .company ul.card_list > li .infoArea .info ul li {flex-direction:row}
     .company ul.card_list > li .infoArea .info ul li em {min-width:60px; margin-right:24px; font-size:13px}
     .company ul.card_list > li .infoArea .info ul li span {font-size:13px}
     .company ul.card_list > li .infoArea .career {padding-top:19px}
     .company ul.card_list > li .infoArea .career > strong {font-size:13px}
     .company ul.card_list > li .infoArea .career > ul li {font-size:13px; line-height:21px}
+
 
     .company ul.col li {font-size:14px; line-height:22px}
     .company ul.col.col3 {column-count:initial}
@@ -1068,7 +1090,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .hisArea .hisList > ul > li span {font-size:14px; line-height:22px}
     .company .slide-history .slide-conts .text {font-size:14px; line-height:22px}
 
-    .company .ceoArea {width:calc(100% + 32px); margin-left:-16px}
+    .company .ceoArea {width:calc(100% + 32px); margin-left:-4.44vw}
     .company .ceoArea .bg {height:auto; border-radius:0}
     .company .ceoArea .bg span {height:auto; padding-bottom:128%; background-size:100%}
     .company .ceoArea .txt {width:100%; top:40px; left:50%; transform:translateX(-50%); text-align:center}
@@ -1204,7 +1226,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .board-view-wrap .board-view .board-view-body .view-content > img {width:100%; max-width:100%}
     .company .board-view-wrap .board-navi .navi {display:flex; padding:15px 0 15px 12px}
     .company .board-view-wrap .board-navi .navi-label {min-width:42px; margin-right:24px; font-size:14px; line-height:22px}
-    .company .board-view-wrap .board-navi .navi-desc {font-size:14px; line-height:22px; word-break:break-all}
+    .company .board-view-wrap .board-navi .navi-desc {font-size:14px; line-height:22px}
     .company .board-view-wrap .btnArea {margin-top:40px}
     .company .board-view-wrap .btnArea .btn {width:100%}
 
