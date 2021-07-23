@@ -1030,15 +1030,28 @@
 
 /* BTOCSITE-3318 add :: 회원가입 이벤트 배너 추가 */
 .evt-banner-3318 {
-    background: url('/lg5-common/images/CS/banner/210722_evtbanner.jpg');
-    background-position: center 15%;
-    background-size: cover;
-    height:220px;
+    max-height:220px;
+    margin:0px;
 
-    @include mobile {
-        background: url('/lg5-common/images/CS/banner/210722_evtbanner_m.jpg');
-        background-size: cover;
-        height:170px;
+    img {
+        width:100%;
+        height:auto;
+    }
+    .only_desktop {
+        display:block;  
+        max-height:220px;
+        @include mobile {
+            display:none;
+        }
+    }
+
+    .only_mobile {
+        display:none;
+        max-height:300px;
+        @include mobile {
+            display:block;
+        }         
+        
     }
 }
 /* //BTOCSITE-3318 add :: 회원가입 이벤트 배너 추가 */
