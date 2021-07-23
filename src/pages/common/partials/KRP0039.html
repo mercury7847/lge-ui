@@ -12,9 +12,10 @@
                 <h2 class="tit">@@eventExhibitionTitle</h2>                        
                 <div class="box-list event-type">
                     <ul class="box-list-inner">
-                        @@loop('./common/modules/list-box.html', [                       
+                        @@loop('./common/modules/list-box-test.html', [                       
                             {
                                 "img" : "dummy/@img-event01.jpg",
+                                "imgAlt" : "imgAlt 입니다",
                                 "title-hd" : "이벤트 제목",
                                 "title" : "2020 NEW 올레드와 함께하는 홈라이프",
                                 "date-hd" : "이벤트 기간",
@@ -22,13 +23,15 @@
                             },
                             {
                                 "img" : "dummy/@img-event02.jpg",
+                                "imgAlt" : "imgAlt 입니다",
                                 "title-hd" : "이벤트 제목",
                                 "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!  LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
                                 "date-hd" : "이벤트 기간",
                                 "date" : "2020.08.01~2020.09.30"
                             },
                             {
-                                "img" : "dummy/@img-event03.jpg",                
+                                "img" : "dummy/@img-event03.jpg",    
+                                "imgAlt" : "imgAlt 입니다",            
                                 "title-hd" : "이벤트 제목",
                                 "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
                                 "date-hd" : "이벤트 기간",
@@ -38,9 +41,11 @@
                     </ul>
                 </div> 
                 <!-- cta -->
+                @@if (context.title) {
                 <div class="btn-area btm">
                     <a href="@@ctaBtnLink" class="btn border" data-link-area="event-exhibition-cta"><span>@@btnName</span></a>
                 </div>
+                }
                 <!-- // cta -->
             </div>
         </div>
