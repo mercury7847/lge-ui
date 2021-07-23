@@ -1278,18 +1278,14 @@
                         var $tbody = self.$careshipInfoPopup.find('div.tb_row table tbody');
                             $tbody.empty();
 
-                        var obj = { list : {} };
-                        for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            obj.list[i] = popupData[i];
-                            obj.list[i].price = vcui.number.addComma(obj.list[i].price) +  "원";
-                            obj.list[i].free = (obj.list[i].free.length > 0) ?  obj.list[i].free.join(",") + " 무상할인" : "";
-                        }
-
-                        $tbody.append(vcui.template(trTemplate,obj));
-
-
-
-
+                            var list = {};
+                            for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
+    
+                            $tbody.append(vcui.template(trTemplate, { 'list' : list }));
                     }
 
                     self.$careshipInfoPopup.vcModal({opener: this});
@@ -1370,16 +1366,14 @@
                         var $tbody = self.$caresolutionInfoPopup.find('div.tb_row table tbody');
                             $tbody.empty();
 
-                        var obj = { list : {} };
+                        var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            obj.list[i] = popupData[i];
-                            obj.list[i].price = vcui.number.addComma(obj.list[i].price) +  "원";
-                            obj.list[i].free = (obj.list[i].free.length > 0) ?  obj.list[i].free.join(",") + " 무상할인" : "";
+                            list[i] = {};
+                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
                         }
 
-                        console.log("obj %o", Object.keys(obj.list).length)
-
-                        $tbody.append(vcui.template(trTemplate,obj));
+                        $tbody.append(vcui.template(trTemplate, { 'list' : list }));
                     }
 
                     self.$caresolutionInfoPopup.vcModal({opener: this});
