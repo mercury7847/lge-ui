@@ -46,7 +46,7 @@
 			fontSize:"16"
 		};
 		dataCombo01 = google.visualization.arrayToDataTable([
-			['year', 'ROA(%)', 'ROE(%)', '영업이익률(%)', '차임금비율(%)', '매출액증가율(%)', 'EPS(억원)', {role: 'style'}],
+			['year', 'ROA', 'ROE', '영업이익률', '차임금비율', '매출액증가율', 'EPS(억원)', {role: 'style'}],
 			['2020', 1.8, 3.8, 6.0, 54.2, 10.0, 6666, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
 			['2019', 1.2, 2.2, 3.1, 48.4, 1.6, 4085, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
 			['2018', 5.6, 9.0, 8.0, 30.7, 9.7, 18812, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
@@ -61,7 +61,7 @@
 				5: {targetAxisIndex: 1, color: '#000000'},
 			},
 			vAxes: {
-				0: {maxValue:60},
+				0: {maxValue:60, format:'#\'%\''},
 				1: {maxValue:30000} 
 			},
 			legend: {position: 'top', maxLines: 3},
@@ -222,6 +222,11 @@
 			optionsCombo04.chartArea.width="85%";
 			optionsCombo01.chartArea.width="75%";
 			optionsCombo01.chartArea.right="15%";
+			if (windowWidth < 500) {
+				optionsCombo01.fontSize="11";
+			}else if (windowWidth < 400) {
+				optionsCombo01.fontSize="10";
+			}
 		}
 		else{
 			optionsColumn.fontSize="16";
