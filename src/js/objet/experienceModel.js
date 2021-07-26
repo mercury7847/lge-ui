@@ -591,13 +591,13 @@
                                 name: "매직 스페이스",
                                 defaultCode: "M871AAA151",
                                 subModel: [{
-                                    modelCode: "M871AAA252",
-                                    magicSpace: 2,
-                                    energy: 2,
-                                    knockOn: false,
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
+                                        modelCode: "M871AAA252",
+                                        magicSpace: 2,
+                                        energy: 2,
+                                        knockOn: false,
+                                        defaultPrice: "0",
+                                        memberDiscount: "0",
+                                        directDiscount: "0",
                                 }],
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
                                 simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
@@ -4961,7 +4961,14 @@
             }
         });
         let slideWrapW = (slideW * slideLeng);
-        $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);
+        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+        let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');
+        if(subPickChkBasic.hasClass("is_selected") == true){
+            $(slideTarget).find(".swiper-wrapper").css("width", "580px");
+        }else{
+            $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
+        }
+        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         modelSubTabCont = new Swiper(slideTarget, {
             slidesPerView: 'auto',
             freeMode: true,
@@ -5775,9 +5782,9 @@
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
                                         //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
-                                        tblHtml += '    <td>' + mainEnergy + '등급</td>';
+                                        tblHtml += '    <td>' + subEnergy + '등급</td>';
                                         } else {
-                                        tblHtml += '    <td style="text-align:center;">' + mainEnergy + '등급</td>';
+                                        tblHtml += '    <td style="text-align:center;">' + subEnergy + '등급</td>';
                                         }
                                         //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                         // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
