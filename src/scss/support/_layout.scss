@@ -179,7 +179,8 @@
     
             .form-infos {
                 &.first-type {
-                    margin-top:-47px;
+                    //margin-top:-47px;
+                    margin-top:0px; // BTOCSITE-3216 add
                 }
             }
         }
