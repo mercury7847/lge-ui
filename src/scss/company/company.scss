@@ -105,7 +105,7 @@ br.pc{display:block;}
 	.company .slide-introduce .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 40px);}
 	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
 	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
-	.company .slide-wrap .slide-controls {top: calc(32vw + 40px);}
+	.company .slide-introduce .slide-wrap .slide-controls {top: calc(32vw + 30px);}
 }
 /* 기업소개 슬라이더 pc */
 @media screen and (min-width:768px){
@@ -121,16 +121,17 @@ br.pc{display:block;}
 }
 /* 역사 슬라이더 mo */
 @media screen and (max-width:767px){
+	.company .slide-history{margin: 0 -4.44vw;}
 	.company .slide-history .slide-wrap {overflow: visible !important;}
 	.company .slide-history .slide-conts{padding: 0 4.44vw;}
 	.company .slide-history .slide-conts .img {margin-bottom:48px;}
 	.company .slide-history .slide-conts .hisArea{opacity:0;transition: 1s;}
 	.company .slide-history .slide-conts.ui_carousel_current .hisArea{opacity:1;}
-	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 69px);}
+	.company .slide-history .slide-wrap .indi-wrap{bottom: auto;top: calc(64vw + 99px);}
 	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left: calc(3.33vw - 14px);}
 	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right: calc(3.33vw - 14px);}
-	.company .slide-wrap .slide-controls {top: calc(32vw + 69px);}
-	.company .slide-history .slide-conts .img {height:auto}
+	.company .slide-history .slide-wrap .slide-controls {top: calc(32vw + 79px);}
+	.company .slide-history .slide-conts .img {height:auto;}
 	.company .slide-history .slide-conts .img span {padding-bottom:73%;display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
 }
 /* 역사 슬라이더 pc */
