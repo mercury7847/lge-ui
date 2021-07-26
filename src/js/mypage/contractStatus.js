@@ -126,6 +126,7 @@
             },
             paymentCardNumber: {
                 required: true,
+                pattern: /^[0-9]+$/,
                 errorMsg: "신용카드의 카드번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
@@ -146,6 +147,7 @@
             },
             paymentBankNumber: {
                 required: true,
+                pattern: /^[0-9]+$/,
                 errorMsg: "계좌번호를 정확히 입력해주세요.",
                 msgTarget: '.err-block'
             }
@@ -893,21 +895,14 @@
                 '<dl class="bullet-list nomargin-top">' +
                 '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
                 '</dl>';
-
-
-
-
-
-
-
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경
             if(data.contractInfo.dutyPeriod && data.contractInfo.contractType === 'R') {
+                $('.contract-info .dutyPeriod').show();
                 var dutyPeriod = data.contractInfo.dutyPeriod.split(" ");
                     dutyPeriod.push(vcui.date.calcDate(dutyPeriod[1].replace(/\./g,'-'), '+'+(365*Number(dutyPeriod[0].replace('년','')))+'d', 'yyyy.MM.dd'));
                     data.contractInfo.dutyPeriod = dutyPeriod[0]+'('+dutyPeriod[1]+' ~ '+dutyPeriod[2]+')';
-                    console.log("의무사용기간 %o",data.contractInfo);
             }
 
             changeFieldValue('contract-info', data.contractInfo);

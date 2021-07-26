@@ -12,13 +12,12 @@
             }
             <div class="product-image" aria-hidden="true">
                 @@if(!context.singleImage) {
-                @@include('./common/partials/KRP0007-carousel.html', {
-                    "slideArr" : [
-                        {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
-                        {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
-                    ]
-                })
-                }
+                    @@include('./common/partials/KRP0007-carousel.html', {
+                        "slideArr" : [
+                            {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
+                            {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
+                        ]
+                    })
                 <!-- 20210527 추가 -->
                 @@if (context.flagDiscount) {
                     <span class="flag cardDiscount">신한카드 5% 청구할인</span>
@@ -138,7 +137,7 @@
                     @@for ( var i=0; i < benefit.length; i++ ) {
                     <span class="flag">`+benefit[i]+`</span>
                     }
-                </div>
+                </div> 
                 }
                 @@if (context.hashtag) {
                 <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
