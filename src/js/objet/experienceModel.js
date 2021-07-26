@@ -5882,7 +5882,12 @@
                 
             }
             /* //BTOCSITE-1582 */
+
+            //S - 210726 BTOCSITE-2346 구매하기 버튼 클릭 후, data값 없을때 가격비교하기 영역(step3) 없어지는 결함 존재하여 값있을때만 tblHtml 그리도록 변경
+            if(tblHtml != undefined && tblHtml != ""){
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
+            }
+            //E - 210726 BTOCSITE-2346 구매하기 버튼 클릭 후, data값 없을때 가격비교하기 영역(step3) 없어지는 결함 존재하여 값있을때만 tblHtml 그리도록 변경
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
             
