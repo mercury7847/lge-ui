@@ -17,7 +17,7 @@
                                 "img" : "dummy/@img-event01.jpg",
                                 "imgAlt" : "imgAlt 입니다",
                                 "title-hd" : "이벤트 제목",
-                                "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                "title" : "LG Objet Collection과 함께하는 한마음 동행세일 이벤트",
                                 "linkTarget" : "_blank",
                                 "date-hd" : "이벤트 기간",
                                 "date" : "2020.08.01~2020.09.30"
@@ -41,18 +41,19 @@
                         ])
                     </ul>
                 </div> 
-                <!-- cta -->             
-                <div class="btn-area btm">
-                @@if (!context.ctaBtnTarget) {
-                    <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta">
-                }
-                @@if (context.ctaBtnTarget) {
-                    <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta" target="@@ctaBtnTarget">
-                }
-                        <span>@@ctaBtnName</span>
-                    </a>
-                </div>
-
+                <!-- cta -->
+                @@if (context.ctaBtnName){
+                    <div class="btn-area">
+                    @@if (!context.ctaBtnTarget) {
+                        <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta">
+                    }
+                    @@if (context.ctaBtnTarget) {
+                        <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta" target="@@ctaBtnTarget">
+                    }
+                            <span>@@ctaBtnName</span>
+                        </a>
+                    </div>
+                }       
                 <!-- // cta -->
             </div>
         </div>

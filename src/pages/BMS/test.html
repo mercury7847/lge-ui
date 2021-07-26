@@ -3,84 +3,78 @@
     @@include('./common/head.html', {
         pageCSS: ["BMS/BMS"],
         pageJS: [
-            "home/membership-event", "components/KRP0015"
+            "components/KRC0015"
         ],
         pageTitle: "이벤트/멤버십 | LG전자",
         pageDesc: "이벤트/멤버십 페이지 description 필요",
+        componentID: "KRC0015",
+        isJScompile: true
     })
 <body>
 <div class="wrap">
     @@include('./common/header.html', {
         "mobileCase": "main",
-        hiddenTitle: "이벤트/멤버십"
+        hiddenTitle: "이벤트/멤버십 페이지 hiddenTitle 필요"
     })
 
     <main class="container">
-        <div class="contents event-membership">
+        <div class="contents membership-event">
             <div class="sub-main">
-                <!-- Hero type -->
-                @@include('./common/partials/KRC0015-hero.html', {
-                    "common": {
-                        "zero": "zero-top zero-btm",
-                        "bg-color": "bg-white"  
-                    },
-                    "title": {
-                        "font-class1": "font-regular",
-                        "font-class2": "font-underline",
-                        "eyebrow": "공백포함 20자 이내로 작성 권장합니다.",
-                        "headline": "<h2> LG전자 고객만을 위해<br>준비한&nbsp;특별한 서비스 및 혜택을 드립니다</h2>",
-                        "copy":"바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다.바디 카피 공백포함 100자 이내로 작성 권장합니다."
-                    },
-                    "carousel": {
-                        "type": "hero-banner",
-                        "item1": {
-                            "visual1":"/kr/images/membership_event/img-hero.jpg",
-                            "visual2":"/kr/images/membership_event/img-hero-m.jpg",
-                            "align-class1":"align-left",
-                            "align-class2":"align-top",
-                            "width-class":"stage-full",
-                            "boxAlign" : "box-align-left",
-                            "font-color":"text-white",
-                            "font-class1":"font-regular",
-                            "font-class2":""
-                        }
+            <!-- text-block-middle -->
+            <!-- non-hero -->
+            @@include('./common/partials/KRC0015-cont-BMS.html', {
+                "common": {
+                    "zero": "zero-top zero-btm",
+                    "bg-color": "bg-white",
+                    "stage-size" : "stage-full"
+                },
+                "title": {
+                    "align-class":"align-center",
+                    "font-class1": "font-regular",
+                    "font-class2": "",
+                    "eyebrow": "",
+                    "headline": "<h2>LG전자 고객만을 위해<br>준비한&nbsp;특별한 서비스 및 혜택을 드립니다</h2>",
+                    "copy":""
+                },
+                "carousel": {
+                    "type": "type-hero",
+                    "item": {
+                        "visual1":"/lg5-common/images/BMS/@img-1920x640-01.jpg",
+                        "visual2":"/lg5-common/images/BMS/@img-720x920-01.jpg",
+                        "align-class1":"align-left",
+                        "align-class2":"align-top",
+                        "width-class":"type-wide",
+                        "font-color":"text-black",
+                        "font-class1":"font-regular",
+                        "font-class2":""
                     }
-                })
-                <!-- // Hero type -->
+                }
+            })
+            
+            <!-- // text-block-middle -->
+               
                 <!-- 신규생성 컴포넌트 영역(이벤트/기획전) 시작 -->
                      <!-- component -->
                     @@include('./common/partials/KRP0039.html', {
-                        zero: "zero-top zero-btm",
+                        zero: "zero-btm",
+                        eventExhibitionTitle: "다양한 이벤트를 만나보세요",
+                        ctaBtnLink: "testlink.html",
+                        ctaBtnName: "이벤트 더보기"
+                    })
+                    <!-- // component -->
+                     <!-- component -->
+                     @@include('./common/partials/KRP0039.html', {
+                        zero: "zero-btm",
                         eventExhibitionTitle: "최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출, 2줄 초과시 말줄임 처리 최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출, 2줄 초과시 말줄임 처리최대 2줄 노출",
                         ctaBtnLink: "testlink.html",
-                        btnName: "이벤트 더보기"
+                        ctaBtnName: "기획전 더보기"
                     })
                     <!-- // component -->
                 <!-- 신규생성 컴포넌트 영역(이벤트/기획전) 끝 -->
-                <!-- Non Carousel -->
-                <!-- Hero type -->
-                @@include('./common/partials/KRC0029-one.html', {
-                    "common": {
-                        "marginTop": "",
-                        "marginBtm": ""
-                    },
-                    "carousel": {
-                        "item1": {
-                            "visual1":"/lg5-common/images/KRC0029/@thumb.jpg",
-                            "visual2":"/lg5-common/images/KRC0029/@thumb-m.jpg",
-                            "align-class1":"align-left",
-                            "align-class2":"align-middle",
-                            "boxAlign" : "box-align-left",
-                            "width-class":"type-wide",
-                            "font-color":"",
-                            "font-class1":"font-regular",
-                            "font-class2":""
-                        }
-                    }
-                })
-                <!-- // Non Carousel -->
+                
                 <!-- component-wrap -->
                 @@include('./common/partials/KRC0032.html', {
+                    "zero": "zero-btm",
                     stageSize : "stage-medium"
                 })
                 <!-- //component-wrap -->

@@ -22,6 +22,9 @@
         margin-top:49px;
 		.box-list-inner .lists .list-inner .info .tit {
 			@include textEllipsisClamp(2);
+            min-height:59px;
+            max-height:59px;
+            text-align:left;
 		}
 	}
     .btn-area{
