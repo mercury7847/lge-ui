@@ -469,6 +469,7 @@ h2.title {
                         }
                     }
                 }
+
                 // 210719 BTOCSITE-2346 start
                 &[data-model_code="M871AAA041"],
                 &[data-model_code="M871AAA042"] {
@@ -1758,8 +1759,9 @@ h2.title {
                 }
             }
         }
-        // 210719 BTOCSITE-2364 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
+        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
         &[data-model-default-code="M871AAA151"],
+        &[data-model-default-code="M871AAA252"],
         &[data-model-default-code="M871AAA041"],
         &[data-model-default-code="W821AAA153"] {
             .mini_model_wrap {
@@ -1800,6 +1802,7 @@ h2.title {
             }
         }
     }
+
     &[data-cate="refrigerator_kimchi"] {
         .mini_model_wrap {
             background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
