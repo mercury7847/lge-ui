@@ -183,15 +183,6 @@
                     margin-top:0px; // BTOCSITE-3216 add
                 }
             }
-            /* BTOCSITE-3216 add */
-            .step-box:first {
-                .form-infos {
-                    &.first-type {
-                        margin-top:-47px;                        
-                    }
-                }
-            }
-            /* // BTOCSITE-3216 add */
         }
         .step-box {
             &.active {
