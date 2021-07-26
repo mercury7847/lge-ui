@@ -14,9 +14,10 @@
 		]);
 		options = {
 			colors: ['#e81953', '#000000'],
-			vAxis:{format: 'short', minValue:'0', maxValue: '100'},
-			bar: { groupWidth: '35%' },
-			annotations: {textStyle: {fontSize: '12', bold:true},stem:{color :'none'}},
+			vAxis:{format: 'short', minValue:'0', maxValue: '110'},
+			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
+			bar: { groupWidth: '20%' },
+			annotations: {textStyle: {fontSize: '12', bold:true},stem:{color :'none', length:'0'}},
 			legend: {position: 'bottom', textStyle: {fontSize: '16'}},
 			fontName:'Noto Sans'
 		};
@@ -39,10 +40,14 @@
 	});
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:900px;height:400px;margin:0 auto;}
+	.googlechart-wrap {position: relative;width:940px;height:480px;margin:0 auto;}
+	.googlechart-wrap::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
 	.googlechart-wrap .chartarea{width:100%;height:100%;}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:44.44vw}
+		.googlechart-wrap{width:100%;height:60vw}
+	}
+	@media screen and (max-width: 419px){
+		.googlechart-wrap::before{height:14%;}
 	}
 </style>
 <div class="breadcrumb">
