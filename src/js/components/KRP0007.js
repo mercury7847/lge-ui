@@ -270,7 +270,11 @@
                                     history.scrollRestoration = 'manual';
                                 }
                                 //마지막에 클릭한 아이템으로 이동
-                                $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
+                                $('.plp-item').last().find('.slide-conts').last().find('img').on('load', function(){
+                                    // console.log('마지막이미지 ')
+                                    $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
+                                });
+                                // $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
                             }
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
