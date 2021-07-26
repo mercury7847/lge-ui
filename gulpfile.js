@@ -61,6 +61,8 @@ gulp.task('html', () => gulp
         basepath: src + '/pages/'
     }))
     .pipe(gulp.dest(dist + '/html/'))
+    .pipe(browserSync.reload({ stream : true }))
+
 );
 
 //guide page 파일생성...
@@ -72,6 +74,7 @@ gulp.task('guide:html', () => gulp
         basepath: '@file'
     }))
     .pipe(gulp.dest(dist + '/guide/'))
+    .pipe(browserSync.reload({ stream : true }))
 );
 gulp.task("guide:images", () => gulp
     .src(src + "/guide/guide/images/**")
@@ -387,11 +390,11 @@ gulp.task('clean', function() {
 gulp.task("watch", ["browser-sync"], () => {
 
     // Watch html files
-    gulp.watch(src + "/pages/**/*.html", ["html"]).on('change', browserSync.reload);
-    gulp.watch(src + "/pages/**/**/*.html", ["html"]).on('change', browserSync.reload);
+    gulp.watch(src + "/pages/**/*.html", ["html"])
+    gulp.watch(src + "/pages/**/**/*.html", ["html"])
 
     // Watch guide files
-    gulp.watch(src + '/guide/**/*.html', ["guide:html"]).on('change', browserSync.reload);
+    gulp.watch(src + '/guide/**/*.html', ["guide:html"])
     gulp.watch(src + "/guide/guide/images/**", ["guide:images"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/guide/css/**", ["guide:css"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/guide/js/**", ["guide:js"]).on('change', browserSync.reload);
@@ -445,4 +448,3 @@ gulp.task('server-build', ["concat-js"], function() {
 
 
 gulp.task("default", ["watch"]); // Default gulp task
-
