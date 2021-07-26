@@ -1590,6 +1590,7 @@ h2.title {
             background: #dddddd;
         }
         .swiper-wrapper {
+            width:580px; //210726 BTOCSITE-2346 추천조합 제품 추가로 인한 간격 수정
             .swiper-slide {
                 width: auto;
                 &+.swiper-slide {
