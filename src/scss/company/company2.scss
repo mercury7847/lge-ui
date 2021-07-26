@@ -236,8 +236,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
-.company .compGrp img.only_pc + img.only_pc {margin-top:40px}
-.company .compGrp img.only_mo + img.only_mo {margin-top:20px}
+.company .compGram img.only_pc + img.only_pc {margin-top:40px}
+.company .compGram img.only_mo + img.only_mo {margin-top:20px}
 .company .compGrp img {display:block; width:383px; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
 .company .hone::before {content:''; display:block; position:absolute; width:3px; height:3px; top:10.5px; left:0; border-radius:50%; background-color:#000}
@@ -296,9 +296,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .board-navi .navi-desc {display:inline-block; color:#000; font-size:16px; line-height:24px}
 .company .board-view-wrap .btnArea {margin-top:60px}
 
-.company .comp_wrap {position:relative; display:flex; padding-top:31px}
+.company .comp_wrap {position:relative; display:flex}
 .company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0}
-.company .comp_wrap .textArea .tit {position:absolute; top:0; left:0}
 
 .company .ceo_msg .text {margin-top:0; font-size:18px; line-height:28px}
 .company .ceo_msg .msg_box {margin:58px 0; padding:58px; border:1px solid #ddd; border-radius:8px}
@@ -1230,10 +1229,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .board-view-wrap .btnArea {margin-top:40px}
     .company .board-view-wrap .btnArea .btn {width:100%}
 
-    .company .comp_wrap {flex-direction:column; padding-top:0}
+    .company .comp_wrap {flex-direction:column; margin-top:12px}
     .company .comp_wrap img {width:100%; max-width:100%; height:auto; margin:0}
-    .company .comp_wrap .textArea {margin-top:15px}
-    .company .comp_wrap .textArea .tit {position:static}
 
     .company .ceo_msg .text {font-size:14px; line-height:22px}
     .company .ceo_msg .msg_box {margin:34px 0; padding:19px}
