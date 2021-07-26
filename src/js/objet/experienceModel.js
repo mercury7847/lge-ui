@@ -594,7 +594,7 @@
                                         modelCode: "M871AAA252",
                                         magicSpace: 2,
                                         energy: 2,
-                                        knockOn: true,
+                                        knockOn: false,
                                         defaultPrice: "0",
                                         memberDiscount: "0",
                                         directDiscount: "0",
