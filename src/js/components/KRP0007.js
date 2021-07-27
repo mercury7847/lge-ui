@@ -61,15 +61,6 @@
                         '</a>' +
                     '</div>' +
                     '<ul class="spec-info">' +
-                            // 20210727
-                            '{{#if (model.cTypeCount > 0 && subCategoryId == "CT50000070" )}}' +
-                            '<li>{{model.cTypeCount}}</li>' +
-                            '<li>{{subCategoryId}}</li>' +
-                            '<li>형태 : 노크온 매직스페이스</li>' +
-                            '<li>패턴 : 미드나잇</li>' +
-                            '<li><span class="care-option">케어십 가능</span></li>'+'{{/if}}'
-                        // 20210727
-                        +
                         '{{#if firstBulletName}}<li>{{firstBulletName}}</li>{{/if}}'+
                         '{{#if showBulletFeatures}}' +
                             '{{#each item in showBulletFeatures}}' +
