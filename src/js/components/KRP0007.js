@@ -713,7 +713,8 @@
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
                     if (isNew){
-                        $(window).scrollTop($('.KRP0007').offset().top);
+                        //$(window).scrollTop($('.KRP0007').offset().top);
+                        $('html, body').animate({scrollTop: $('.KRP0007').offset().top}, 300);
                     }
                     /* //BTOCSITE-2150 add */
                 });
