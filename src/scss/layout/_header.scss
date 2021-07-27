@@ -282,9 +282,10 @@
     padding-left: 42px;
     a {
         display: block;
-        width: 76px;
-        height: 21px;
-        background-image: url("/lg5-common/images/header/logo.svg");
+        width: 100px;
+        height: 29px;
+        background-image: url("/lg5-common/images/header/lg_logo.svg");
+        background-size:100% 100%;
     }
 
     @include mobile {
@@ -292,10 +293,9 @@
         padding-top: 0;
         padding-left: 0;
         a {
-            width: 70px;
-            height: 18px;
-            background-image: url("/lg5-common/images/header/logo-m.svg");
-            background-size: 100% 100%;
+            width: calc(209px/2);
+            height: calc(55px/2);
+            background-image: url("/lg5-common/images/header/lg_logo-m.svg");
         }
     }
 
