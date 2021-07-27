@@ -63,6 +63,17 @@
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
 
+            /* BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리 */
+            var params = location.search.replace('?','').split('&');
+            var paramObj = {};
+            params.forEach(function( data ){
+                var dataArray = data.split('=');
+                paramObj[ dataArray[0] ] = dataArray[1];
+            });
+            
+            self.isRentalCarePath = !!paramObj['rentalCare'] && paramObj['rentalCare'] == 'y' ? true : false;
+            /* //BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리 */
+
             var register = {
                 privcyCheck: {
                     msgTarget: '.err-block'
@@ -162,7 +173,12 @@
                 self.$calendarDate.calendar({inputTarget:'#date'});
                 self.$calendarTime.timeCalendar({inputTarget:'#time'});
 
-                self.$cont.vcSearchModel(); 
+                self.$cont.vcSearchModel();
+
+                // BTOCSITE-3629 add
+                if (self.isRentalCarePath){
+                    $('input[value="HWIST000003"]').trigger('click');
+                }
             });
         },
         nextInputStep: function() {
