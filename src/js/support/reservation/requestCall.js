@@ -204,7 +204,7 @@
                 self.setTopic(resultData);
                 self.setCalendar(resultData);
                 
-                self.nextInputStep();
+                self.nextInputStep();                
 
                 // BTOCSITE-3629 add
                 if (self.isRentalCarePath){
@@ -212,6 +212,7 @@
                 }
 
                 lgkorUI.hideLoading();
+                
             });
         },
         setTopic: function(data) {
