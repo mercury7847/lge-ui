@@ -97,7 +97,7 @@ $(function () {
             
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
-                $slider.addClass('on ssssssssssssss');
+                $slider.addClass('on');
                 $(this).find('.flow-bar-wrap').hide();
             }else{
                 $(this).find('.flow-bar-wrap').show();
@@ -146,7 +146,7 @@ $(function () {
 
             var $slider = $(this).find('.ui_carousel_slide:not(ui_carousel_cloned)');
             if($slider.length <= carousel.slidesToShow){
-                $slider.addClass('on zzzzzzzzzz');  
+                $slider.addClass('on');  
                 $(this).find('.flow-bar-wrap').hide();
             }else{
                 $(this).find('.flow-bar-wrap').show();
@@ -351,11 +351,10 @@ $(function () {
 
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             if(!isOnlyMobileDevice){                
-                return;
+                //if(!canScroll) return; 
             } else {
-                if(!canScroll) return; 
                 return;
-            }     
+            }    
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */      
             
             var nextIndex = (delta < 0) ? -1 : 1;
@@ -507,7 +506,6 @@ $(function () {
         if(!isOnlyMobileDevice){
 
             /* 메인테스트*/
-            /*
             document.addEventListener('wheel', function(e){
 
                 var open = $('#layerSearch').hasClass('open');           
@@ -532,7 +530,6 @@ $(function () {
                 }       
     
             });
-            */
         }
         
         
@@ -545,42 +542,41 @@ $(function () {
         // BTOCSITE-27
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
-      
-                var data = _getEventPoint(e);
-                if (e.type == 'touchstart') {
-                    touchSy = data.y;
-                } else {
-    
-                    // if (touchSy - data.y > 80) {
-                    //     // console.log('down');
-                    //     lgkorUI.showAppBottomMenu(false);
-    
-                    // } else if (touchSy - data.y < -80) {
-                    //     // console.log('up');
-                    //     lgkorUI.showAppBottomMenu(true);
-                    // }
-                    
-                    if(currentPage == maxLens){
-                        if(wheelInterval) clearTimeout(wheelInterval);
-                        wheelInterval = setTimeout(function(){
-                            var st = $contentWrap.scrollTop();
-                            if(st<=0 && touchSy - data.y < -80){
-                                wheelScene(-1);
-                            }
-                        }, 100);
-    
-                    }else{
-    
-                        if (touchSy - data.y > 80) {
-                            wheelScene(1);
-                        } else if (touchSy - data.y < -80) {
+
+            var data = _getEventPoint(e);
+            if (e.type == 'touchstart') {
+                touchSy = data.y;
+            } else {
+
+                // if (touchSy - data.y > 80) {
+                //     // console.log('down');
+                //     lgkorUI.showAppBottomMenu(false);
+
+                // } else if (touchSy - data.y < -80) {
+                //     // console.log('up');
+                //     lgkorUI.showAppBottomMenu(true);
+                // }
+                
+                if(currentPage == maxLens){
+                    if(wheelInterval) clearTimeout(wheelInterval);
+                    wheelInterval = setTimeout(function(){
+                        var st = $contentWrap.scrollTop();
+                        if(st<=0 && touchSy - data.y < -80){
                             wheelScene(-1);
                         }
-                    } 
-                      
+                    }, 100);
+
+                }else{
+
+                    if (touchSy - data.y > 80) {
+                        wheelScene(1);
+                    } else if (touchSy - data.y < -80) {
+                        wheelScene(-1);
+                    }
+                } 
                     
-                }
-        
+                
+            }
         });
         
         /*
@@ -1038,7 +1034,6 @@ $(function () {
         scenes.each(function(){
             var self = $(this);
             var video = self.find('video');
-            //var rwrerer = video.parent('.only-mobile');
             var image = self.find('.img img');
 
             self.on('active.scroll', function(e, scrollTop){
