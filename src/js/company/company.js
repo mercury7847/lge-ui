@@ -43,6 +43,20 @@ $(document).ready(function() {
 			$('html, body').stop().animate({scrollTop: scrollPosition}, 500);
 		});
 	}, 500);
+	
+	// 지난자료버튼
+	$("#btnContViewMore").on('click', function() {
+		if ($("#contViewMore").css("display") == 'none') {
+			$("#contViewMore").css("display", "");
+			$("#btnContViewMore span").html("지난 자료 닫기");
+			$("#btnContViewMore").attr("class", "btn on border");
+		} else {
+			$("#contViewMore").css("display", "none");
+			$("#btnContViewMore span").html("지난 자료 열기");
+			$("#btnContViewMore").attr("class", "btn border");
+		}
+	});
+	
 });
 
 // 탭 슬라이드 위치 이동
