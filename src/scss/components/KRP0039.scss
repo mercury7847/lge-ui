@@ -1,7 +1,8 @@
+// BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 start
 @charset "UTF-8";
 
 @import "../components-app";
-.KRP0039 {    
+.KRP0039 {
     .component-inner { 
         .evt-bnr {
             @include clearfix;
@@ -20,16 +21,41 @@
     }
     .box-list.event-type {
         margin-top:49px;
-		.box-list-inner .lists .list-inner .info .tit {
-			@include textEllipsisClamp(2);
-            min-height:59px;
-            max-height:59px;
-            text-align:left;
-		}
+        @include mobile {
+            margin-top:40px;
+        }
+		.box-list-inner .lists .list-inner .info {
+            .tit {
+                @include textEllipsisClamp(2);
+                min-height:59px;
+                max-height:59px;
+                text-align:left;
+                @include mobile {
+                    min-height:23px;
+                    max-height:47px;
+                }
+            }
+            .date {                
+                @include mobile {
+                    height: 16px;
+                }
+            }
+
+        } 
 	}
     .btn-area{
         text-align: center;
         margin-top:32px;
         margin-bottom:40px;
+        @include mobile {
+            margin-bottom: 0;
+        }
+        .btn.border.size-m {
+            @include mobile {
+                padding: 12px 20px !important;
+                border-radius: 21px !important;
+            }
+        }
     }
 }
+// BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 end
