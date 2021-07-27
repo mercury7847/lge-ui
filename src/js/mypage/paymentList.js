@@ -33,7 +33,12 @@
                             '<td>{{item.discountPrice}}원</td>'+
                             '<td>'+
                                 '<p>{{item.paymentPrice}}원</p>'+
-                                '{{#if item.paymentPrice != 0 }}<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}"><span>자세히</span></button>{{/if}}'+
+                                //'{{#if item.paymentPrice != 0 }}<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}"><span>자세히</span></button>{{/if}}'+
+                                '{{#if (item.paymentPrice != 0 && testFlag == "N") || (item.paymentPrice != 0 && testFlag == "Y" && testUserFlag == "Y")}}'+
+                                    '<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}">'+
+                                        '<span>자세히</span>'+
+                                    '</button>'+
+                                '{{/if}}'+
                             '</td>'+
                         '</tr>'+
                     '{{/each}}'+
@@ -100,6 +105,7 @@
                     if(result.data.paymentList && result.data.paymentList.length > 0){
                         //console.log("데이타값이 있으면");
                         $('.section-wrap .sects').show();
+
                         var list = vcui.template(listTableTemplate, result.data);
     
                         $('.section-wrap .sects').append(list);
@@ -110,7 +116,6 @@
     
                                 console.log("this %o data %o ",$(this),$(this).data())//개발에 파라미터 던지는 확인
     
-                 
                                 loadPaymentDetail($(this).data());
                             });
                         });
