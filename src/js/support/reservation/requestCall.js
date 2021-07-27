@@ -174,11 +174,6 @@
                 self.$calendarTime.timeCalendar({inputTarget:'#time'});
 
                 self.$cont.vcSearchModel();
-
-                // BTOCSITE-3629 add
-                if (self.isRentalCarePath){
-                    $('input[value="HWIST000003"]').trigger('click');
-                }
             });
         },
         nextInputStep: function() {
@@ -210,6 +205,11 @@
                 self.setCalendar(resultData);
                 
                 self.nextInputStep();
+
+                // BTOCSITE-3629 add
+                if (self.isRentalCarePath){
+                    $('input[value="HWIST000003"]').trigger('click');
+                }
 
                 lgkorUI.hideLoading();
             });
