@@ -1,0 +1,1189 @@
+<style type="text/css">
+	/* reset */
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button{margin:0; padding:0; border:0 none;}
+	body,th,td,input,select,textarea,button {font-size:12px; line-height:1.5; font-family:'돋움',dotum,sans-serif; color:#666;}
+	
+	article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary, time {display:block;}
+	h1,h2,h3,h4,h5,h6{font-family:"맑은 고딕", "Malgun Gothic"; font-weight:normal;}
+	img, fieldset{border:0 none; vertical-align:middle;}
+	iframe{overflow-x:hidden; overflow-y:hidden; margin:0; padding:0; border:0 none;}
+	dl,ul,ol,menu,li {list-style:none;}
+	blockquote, q {quotes:none;}
+	blockquote:before, blockquote:after ,q:before, q:after {content:''; content:none;}
+	input, select, textarea, label, button{vertical-align:middle;}
+	label, button{cursor:pointer;}
+	button {border:0 none; background-color:transparent; cursor:pointer;}
+	table{border-collapse:collapse; border-spacing:0;margin-bottom:20px;}
+	
+	caption {visibility:hidden; overflow:hidden; display:none;}
+	legend{position:absolute; top:0; left:0; width:0; height:0; overflow:hidden; visibility:hidden; font-size:0; line-height:0;}
+	
+	table {width:100%;min-width: 1200px;}
+	.tit {height:20px; font-size:18px; font-weight:bold; padding:15px 0 10px; text-align:center;}
+	th {height:23px; background-color:#cdcdcd; border:1px solid #b5b5b5; padding:2px 5px 3px; text-align:center; color:#000;}
+	td {border-bottom:1px solid #c9c9c9; border-right:1px solid #c9c9c9; height:15px; padding:2px 10px 3px; font-size:12px; word-break:break-all;}
+	td.first {border-right:1px solid #c9c9c9; border-bottom:2px solid #c9c9c9; font-weight:bold;}
+	td.last {border-bottom:2px solid #c9c9c9;}
+	td:first-child{border-left:1px solid #c9c9c9;}
+	
+	a{color:#000; text-decoration:none;}
+	a:hover,a:active,a:focus{color:#000; text-decoration:underline;}
+	.wrap{/*width:1200px;*/ white-space: nowrap;overflow-x: scroll;}
+	.font_01 {color:#a1a1a1;}
+	.font_02 {font-weight:bold;}
+	.font_03 {color:#00f;}
+	.font_04 {color:#f00;}
+	.font_05{color:#909; font-weight:bold;}
+	.gride table{border:none;}
+	.del td{text-decoration:line-through; color:#ababab; background: #f1f1f1;}
+	.del td:last-child{text-decoration: none;}
+	.del td.txt{color:#666; text-decoration:none;}
+	.dec{text-align:right; width:1705px;}
+	.point_bg{background:#FF9;}
+	.type_guide{padding:10px; background:#ac1846;  text-align:center; font-size:14px; font-weight:bold;}
+	.type_guide a {color:#fff;}
+	.red {background:#666;}
+	.red > td {color:#CCC;}
+	.yellow {color:yellow}
+	.new {background:yellow;}
+	tr.modify { background:#e2f1ff; }
+	tr.modify td { color:#002446;}
+	tr.hr td { border-top:5px solid #c9c9c9;}
+	span.ico {display:inline-block; font-size:10px; font-family:Myriad, Verdana; line-height:1; padding:4px; background:#666; color:#fff; border-radius:3px;}
+	span.ico.ing { background:#30F;}
+	span.ico.done { background:#C0C;}
+	span.ico.modify { background:#C39;}
+	.tac{text-align: center;}
+	.tbl-top{line-height: 26px;}
+	.tbl-top:after{display: block; content: ''; clear: both;}
+	.tbl-top .fl{float: left;}
+	.tbl-top .fr{float: right;}
+	strong {color:red}
+	header, footer, .mobile-nav-wrap{display:none;}
+</style>
+	
+<script type="text/javascript">
+	$(function(){
+		$(".table colgroup").prepend("<col width='50px' />");
+		$(".table thead tr").prepend("<th scope='col'>No</th>");
+		for(i=0; i <= $(".table tbody tr").length; i++)
+			$(".table tbody tr:nth-child("+ i+")").prepend("<td class='tac'>"+i+"</td>");
+		$(".table tbody td:nth-last-child(2), .table tbody td:nth-last-child(4), .table tbody td:nth-last-child(5)").addClass("tac");
+	});
+</script>
+<div class="wrap">
+	<div class="tit">퍼블리싱 현황판</div>
+	<!--<div class="tbl-top">
+		<div class="fl">
+	
+		</div>
+		<div class="fr">
+			<span>추가된 부분</span>
+			<strong>변경된 부분</strong>
+		</div>
+	</div>-->
+	<div class="tbl-top">
+		<div class="fl">00 메인</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="3">회사소개 메인</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP01001M</td>
+				<td>
+					<a href="/company/sian/v6_pc" target="_blank">PC</a> |
+					<a href="/company/sian/v6_mo" target="_blank">MO</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- <tr>
+				<td rowspan="3">회사소개 메인</td>
+				<td>A</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP01001M</td>
+				<td>
+					<a href="/company/sian/apc" target="_blank">PC</a> |
+					<a href="/company/sian/amo" target="_blank">MO</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP01001M</td>
+				<td>
+					<a href="/company/sian/bpc" target="_blank">PC</a> |
+					<a href="/company/sian/bmo" target="_blank">MO</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP01001M</td>
+				<td>
+					<a href="/company/sian/cpc" target="_blank">PC</a> |
+					<a href="/company/sian/cmo" target="_blank">MO</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr> -->
+		</tbody>
+	</table>
+	<div class="tbl-top">
+		<div class="fl">01 기업정보</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>기업소개</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03001M</td>
+				<td><a href="/company/info/introduce" target="_blank">introduce</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="4">LG WAY</td>
+				<td>개요</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03002M</td>
+				<td><a href="/company/info/outline" target="_blank">outline</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>일등LG</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03003M</td>
+				<td><a href="/company/info/firstplacelg" target="_blank">firstplacelg</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>정도경영</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03004M</td>
+				<td><a href="/company/info/proper" target="_blank">proper</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>윤리규범</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03005M</td>
+				<td><a href="/company/info/ethics" target="_blank">ethics</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>역사</td>
+				<td></td>
+				<td></td>
+				<td>Tab</td>
+				<td>LGCP03008T</td>
+				<td><a href="/company/info/history" target="_blank">history</a></td>
+				<td>2021-07-21</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>경영진</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03009M</td>
+				<td><a href="/company/info/management" target="_blank">management</a></td>
+				<td>2021-07-07</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>브랜드</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03010M</td>
+				<td><a href="/company/info/ci" target="_blank">ci</a></td>
+				<td>2021-07-07</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">사업장</td>
+				<td>국내사업장</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03011M</td>
+				<td><a href="/company/info/domestic" target="_blank">domestic</a></td>
+				<td>2021-07-07</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>해외사업장</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP03012M</td>
+				<td><a href="/company/info/overseas" target="_blank">overseas</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="tbl-top">
+		<div class="fl">02 인재채용</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>인재상</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP07001M</td>
+				<td><a href="/company/recruit/type" target="_blank">type</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>인사제도</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP07002M</td>
+				<td><a href="/company/recruit/hr" target="_blank">hr</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>인재육성</td>
+				<td></td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP07003M</td>
+				<td><a href="/company/recruit/foster" target="_blank">foster</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>채용공고</td>
+				<td></td>
+				<td></td>
+				<td>OutLink
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="tbl-top">
+		<div class="fl">03 투자자정보</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="7">경영정보</td>
+				<td>기업지배구조</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04001M</td>
+				<td><a href="/company/investor/corporateGovernance" target="_blank">corporateGovernance</a></td>
+				<td>2021-07-05</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>정관</td>
+				<td></td>
+				<td>Tab<br>Popup</td>
+				<td>LGCP04002T<br>LGCP04028P</td>
+				<td><a href="/company/investor/articles" target="_blank">articles</a></td>
+				<td>2021-06-29</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="4">이사회</td>
+				<td>구성</td>
+				<td>Tab</td>
+				<td>LGCP04003T</td>
+				<td><a href="/company/investor/management" target="_blank">management</a></td>
+				<td>2021-07-05</td>
+				<td>2021-07-23 디자인 변경 완료</td>
+			</tr>
+			<tr>
+				<td>권한</td>
+				<td>Tab</td>
+				<td>LGCP04004T</td>
+				<td><a href="/company/investor/management" target="_blank">management</a></td>
+				<td>2021-06-30</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>활동</td>
+				<td>Tab</td>
+				<td>LGCP04005T</td>
+				<td><a href="/company/investor/management" target="_blank">management</a></td>
+				<td>2021-07-09</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>소위원회</td>
+				<td>Tab</td>
+				<td>LGCP04006T</td>
+				<td><a href="/company/investor/management" target="_blank">management</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>ESG 평가</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04007M</td>
+				<td><a href="/company/investor/esgEvaluation" target="_blank">esgEvaluation</a></td>
+				<td>2021-07-19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="9">재무정보</td>
+				<td rowspan="4">재무하이라이트</td>
+				<td>재무하이라이트</td>
+				<td>Tab</td>
+				<td>LGCP04008T</td>
+				<td><a href="/company/investor/highlight" target="_blank">highlight</a></td>
+				<td>2021-07-23</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>재무상태표</td>
+				<td>Tab</td>
+				<td>LGCP04009T</td>
+				<td><a href="/company/investor/highlight" target="_blank">highlight</a></td>
+				<td>2021-07-23</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>손익계산서</td>
+				<td>Tab</td>
+				<td>LGCP04026T</td>
+				<td><a href="/company/investor/highlight" target="_blank">highlight</a></td>
+				<td>2021-07-23</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>현금흐름표</td>
+				<td>Tab</td>
+				<td>LGCP04027T</td>
+				<td><a href="/company/investor/highlight" target="_blank">highlight</a></td>
+				<td>2021-07-23</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>감사/검토보고서</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04010M</td>
+				<td><a href="/company/investor/auditReport" target="_blank">auditReport</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>사업보고서</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04011M</td>
+				<td><a href="/company/investor/businessReport" target="_blank">businessReport</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>영업보고서</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04012M</td>
+				<td><a href="/company/investor/salesReport" target="_blank">salesReport</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">신용등급</td>
+				<td>국내 신용등급</td>
+				<td>Tab</td>
+				<td>LGCP04013T</td>
+				<td><a href="/company/investor/creditrating" target="_blank">creditrating</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>해외 신용등급</td>
+				<td>Tab</td>
+				<td>LGCP04014T</td>
+				<td><a href="/company/investor/creditrating" target="_blank">creditrating</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="7">주식정보</td>
+				<td rowspan="4">주가정보</td>
+				<td>현재가</td>
+				<td>board</td>
+				<td>LGCP04015B</td>
+				<td><a href="/company/investor/price" target="_blank">price</a></td>
+				<td>2021-07-09</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>시간대별 주가</td>
+				<td>board</td>
+				<td>LGCP04016B</td>
+				<td><a href="/company/investor/price" target="_blank">price</a></td>
+				<td>2021-07-09</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>일자별 주가</td>
+				<td>board</td>
+				<td>LGCP04017B</td>
+				<td><a href="/company/investor/price" target="_blank">price</a></td>
+				<td>2021-07-09</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>외국인 지분 동향</td>
+				<td>board</td>
+				<td>LGCP04018B</td>
+				<td><a href="/company/investor/price" target="_blank">price</a></td>
+				<td>2021-07-09</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>발행주식현황</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04019M</td>
+				<td><a href="/company/investor/issued" target="_blank">issued</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>주주현황</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04020M</td>
+				<td><a href="/company/investor/shareholder" target="_blank">shareholder</a></td>
+				<td>2021-07-08</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>배당정책/현황</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04021M</td>
+				<td><a href="/company/investor/dividend" target="_blank">dividend</a></td>
+				<td>2021-07-08</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">IR행사</td>
+				<td>실적발표</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04023M</td>
+				<td><a href="/company/investor/presentation" target="_blank">presentation</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>주주총회</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP04022M</td>
+				<td><a href="/company/investor/generalMeeting" target="_blank">generalMeeting</a></td>
+				<td>2021-07-12</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="4">공시/전자공고</td>
+				<td rowspan="2">공시</td>
+				<td>게시판</td>
+				<td>board</td>
+				<td>LGCP04024B</td>
+				<td><a href="/company/investor/disclosure" target="_blank">disclosureList</a></td>
+				<td>2021-07-19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>상세</td>
+				<td>board</td>
+				<td>LGCP04029B</td>
+				<td><a href="/company/investor/disclosureView" target="_blank">disclosureView</a></td>
+				<td>2021-07-19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">전자공고</td>
+				<td>게시판</td>
+				<td>board</td>
+				<td>LGCP04025B</td>
+				<td><a href="/company/investor/announce" target="_blank">announceList</a></td>
+				<td>2021-07-19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>상세</td>
+				<td>board</td>
+				<td>LGCP04030B</td>
+				<td><a href="/company/investor/announceView" target="_blank">announceView</a></td>
+				<td>2021-07-19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="1">Contact IR</td>
+				<td></td>
+				<td></td>
+				<td>OutLink</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="tbl-top">
+		<div class="fl">04 준법경영</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="2">개요</td>
+				<td>LG전자의 준법경영</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08001M</td>
+				<td><a href="/company/compliance/compliance" target="_blank">compliance</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>조직체계</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08002M</td>
+				<td><a href="/company/compliance/organization" target="_blank">organization</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="5">LG전자 행동강령</td>
+				<td>고객에 대한 정직과 성실</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08003M</td>
+				<td><a href="/company/compliance/honesty" target="_blank">honesty</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>바람직한 근무환경</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08004M</td>
+				<td><a href="/company/compliance/environment" target="_blank">environment</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>공정경쟁</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08005M</td>
+				<td><a href="/company/compliance/fairCompetition" target="_blank">fairCompetition</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>지역사회에 대한 책임</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08006M</td>
+				<td><a href="/company/compliance/responsibility" target="_blank">responsibility</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>주주가치 제고</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08007M</td>
+				<td><a href="/company/compliance/increase" target="_blank">increase</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">Compliance Program</td>
+				<td>의의</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08008M</td>
+				<td><a href="/company/compliance/significance" target="_blank">significance</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>LG전자의 Compliance Program</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP08009M</td>
+				<td><a href="/company/compliance/program" target="_blank">program</a></td>
+				<td>2021-07-15</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="tbl-top">
+		<div class="fl">05 지속가능경영</div>
+		<div class="fr"></div>
+	</div>
+	<table class="table">
+		<caption>퍼블리싱 메뉴 구조</caption>
+		<colgroup>
+			<col style="width:100px" />
+			<col style="width:130px" />
+			<col style="width:150px" />
+			<col style="width:70px" />
+			<col style="width:100px" />
+			<col style="width:170px" />
+			<col style="width:90px" />
+			<col style="width:auto;" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">Depth 1</th>
+				<th scope="col">Depth 2</th>
+				<th scope="col">Depth 3</th>
+				<th scope="col">Type</th>
+				<th scope="col">화면ID</th>
+				<th scope="col">파일명</th>
+				<th scope="col">완료일</th>
+				<th scope="col">Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="7">기업개요</td>
+				<td>ESG 리더십</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05001M</td>
+				<td><a href="/company/sustainable/esgLeadership" target="_blank">esgLeadership</a></td>
+				<td>2021-07-23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>ESG 방향성</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05002M</td>
+				<td><a href="/company/sustainable/esgWay" target="_blank">esgWay</a></td>
+				<td>2021-07-23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>코로나19 대응</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05003M</td>
+				<td><a href="/company/sustainable/covid19" target="_blank">covid19</a></td>
+				<td>2021-07-23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>이해관계자 참여</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05004M</td>
+				<td><a href="/company/sustainable/participate" target="_blank">participate</a></td>
+				<td>2021-07-23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>지속가능경영 정책</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05005M</td>
+				<td><a href="/company/sustainable/policy" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">중대성 평가</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05006M</td>
+				<td><a href="/company/sustainable/estimate" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>이슈 Pool 리스트</td>
+				<td>Popup</td>
+				<td>LGCP05051P</td>
+				<td><a href="/company/sustainable/estimate" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">환경</td>
+				<td>부정적 환경영향 Zero 사업장</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05007M</td>
+				<td><a href="/company/sustainable/businessplace" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>미래세대를 위한 제품과 서비스</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05008M</td>
+				<td><a href="/company/sustainable/productsServices" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">사회</td>
+				<td>모두를 위한 지속가능한 일터</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05009M</td>
+				<td><a href="/company/sustainable/workplace" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>포용적 사회를 위한 균형적 성장</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05010M</td>
+				<td><a href="/company/sustainable/balancedGrowth" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">지배구조</td>
+				<td>이사회 개요</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05011M</td>
+				<td><a href="/company/sustainable/director" target="_blank">director</a></td>
+				<td>2021-07-03</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>위원회 개요</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05012M</td>
+				<td><a href="/company/sustainable/committee" target="_blank">committee</a></td>
+				<td>2021-07-03</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="23">추진활동</td>
+				<td rowspan="2">정도경영 개요</td>
+				<td>위반행위 제보 시스템</td>
+				<td>Tab</td>
+				<td>LGCP05013T</td>
+				<td><a href="/company/promot/system" target="_blank">system</a></td>
+				<td>2021-06-28</td>
+				<td>구글차트</td>
+			</tr>
+			<tr>
+				<td>리스크 예방 시스템</td>
+				<td>Tab</td>
+				<td>LGCP05014T</td>
+				<td><a href="/company/promot/system" target="_blank">system</a></td>
+				<td>2021-06-28</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="3">컴플라이언스 개요</td>
+				<td>리스크 관리</td>
+				<td>Tab</td>
+				<td>LGCP05017T</td>
+				<td><a href="/company/promot/compliance" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>준법교육</td>
+				<td>Tab</td>
+				<td>LGCP05018T</td>
+				<td><a href="/company/promot/compliance" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>제보 채널 운영</td>
+				<td>Tab</td>
+				<td>LGCP05019T</td>
+				<td><a href="/company/promot/compliance" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>공정거래</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05022M</td>
+				<td><a href="/company/promot/fairtrade" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>안전&middot;보건</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05023M</td>
+				<td><a href="/company/promot/safetyHealth" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>환경</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05048M</td>
+				<td><a href="/company/promot/environment" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="2">협력회사</td>
+				<td>상생협력 추진</td>
+				<td>Tab</td>
+				<td>LGCP05025T</td>
+				<td><a href="/company/promot/partner" target="_blank">partner</a></td>
+				<td>2021-06-29</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>분쟁광물 관리</td>
+				<td>Tab</td>
+				<td>LGCP05049T</td>
+				<td><a href="/company/promot/partner" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="4">고객</td>
+				<td>고객만족서비스</td>
+				<td>Tab</td>
+				<td>LGCP05027T</td>
+				<td><a href="/company/promot/client" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>서비스 엔지니어 역량</td>
+				<td>Tab</td>
+				<td>LGCP05028T</td>
+				<td><a href="/company/promot/client" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>사례보기</td>
+				<td>Popup</td>
+				<td>LGCP05029P</td>
+				<td><a href="/company/promot/client" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>고객만족도</td>
+				<td>Tab</td>
+				<td>LGCP05030T</td>
+				<td><a href="/company/promot/client" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="3">정보보호</td>
+				<td>개인정보보호</td>
+				<td>Tab</td>
+				<td>LGCP05031T</td>
+				<td><a href="/company/promot/infoProtection" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>정보보안</td>
+				<td>Tab</td>
+				<td>LGCP05032T</td>
+				<td><a href="/company/promot/infoProtection" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>제품보안</td>
+				<td>Tab</td>
+				<td>LGCP05033T</td>
+				<td><a href="/company/promot/infoProtection" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="5">구성원</td>
+				<td>인사관리 제도 개선</td>
+				<td>Tab</td>
+				<td>LGCP05034T</td>
+				<td><a href="/company/promot/member" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>조직문화 개선</td>
+				<td>Tab</td>
+				<td>LGCP05050T</td>
+				<td><a href="/company/promot/member" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>인재육성</td>
+				<td>Tab</td>
+				<td>LGCP05035T</td>
+				<td><a href="/company/promot/member" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>협력사 교육지원활동</td>
+				<td>Tab</td>
+				<td>LGCP05036T</td>
+				<td><a href="/company/promot/member" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>임직원 교육체계</td>
+				<td>Tab</td>
+				<td>LGCP05037T</td>
+				<td><a href="/company/promot/member" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>사회공헌</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05038T</td>
+				<td><a href="/company/promot/contribution" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="8">성과 및 데이터</td>
+				<td rowspan="4">지속가능경영 데이터</td>
+				<td>경제</td>
+				<td>Tab</td>
+				<td>LGCP05039T</td>
+				<td><a href="/company/sustainable/data" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>환경</td>
+				<td>Tab</td>
+				<td>LGCP05040T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>사회</td>
+				<td>Tab</td>
+				<td>LGCP05041T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>기타 성과</td>
+				<td>Tab</td>
+				<td>LGCP05042T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="3">프레임워크 & 이니셔티브</td>
+				<td>GRI</td>
+				<td>Tab</td>
+				<td>LGCP05043T</td>
+				<td><a href="/company/sustainable/frameworkInitiatives" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>SASB</td>
+				<td>Tab</td>
+				<td>LGCP05044T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>TCFD</td>
+				<td>Tab</td>
+				<td>LGCP05045T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>다운로드</td>
+				<td></td>
+				<td>Html</td>
+				<td>LGCP05047T</td>
+				<td><a href="/sustainable/" target="_blank"></a></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
