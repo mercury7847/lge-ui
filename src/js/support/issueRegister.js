@@ -6,7 +6,7 @@
         var isMobile = vcui.detect.isMobileDevice;
 
         vcui.require([
-            'ui/imageFileInput'
+            'ui/imageFileInput'            
         ], function() {    
             $('.ui_imageinput').vcImageFileInput({
                 individualFlag: true,
@@ -78,5 +78,7 @@
                 lgkorUI.hideLoading();
             }, 'POST');
         });
+        // BTOCSITE-3429 add :: 모델 찾기 팝업 추가
+        lgkorUI.searchModelName();
     });
 })();
