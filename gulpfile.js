@@ -175,7 +175,8 @@ gulp.task("scripts", () => {
         "jsCompile:homebrew",
         "jsCompile:event",
         "jsCompile:home",
-        "jsCompile:objet"
+        "jsCompile:objet",
+        "jsCompile:company"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -326,6 +327,16 @@ gulp.task("jsCompile:objet", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
 );
+/* 회사소개 추가 2021-07-26 */
+gulp.task("jsCompile:company", () => gulp
+		.src(src + "/js/company/**/*")
+		.pipe(sourcemaps.init())
+		.pipe(terser())
+		//.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+		.pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+		.pipe(sourcemaps.write('./maps'))
+		.pipe(gulp.dest(dist + sourceFolder + "/js/company/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
@@ -414,6 +425,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/event/**", ["jsCompile:event"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/company/**", ["jsCompile:company"]).on('change', browserSync.reload);	// 회사소개 추가 2021-07-26
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
