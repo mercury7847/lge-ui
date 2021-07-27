@@ -587,6 +587,32 @@
                     });
 
 
+                    // 20210727 BTOCSITE-3577 고객지원 > Main 의 출장서비스 예약 영역에 제품 설치/철거 예약 탭 및 내용 추가
+                    self.el.container.find('.btn-installDemolition').on('click', function(){
+                        var _self = this;
+                        var href = $(this).data("href");
+                        var target = $(this).data("target");
+
+                        lgkorUI.confirm( "제품 이전 설치/철거 서비스는 전문업체인 (주)엘액스판토스 홈페이지를 통해 예액이 가능합니다.",{
+                            typeClass:'type2',
+                            title:'',
+                            okBtnName: '네',
+                            cancelBtnName: '아니요',
+                            ok: function() {
+                                if(href)  {
+                                    if(target) {
+                                        window.open(href, '_blank');
+                                    } else {
+                                        location.href = href;
+                                    }
+                                } 
+                            }
+                        });
+
+                    });
+
+
+
                     self.el.container.find('.btn-address').on('click', function() { 
                         self.addressFinder.open(function(data) { 
                             var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
