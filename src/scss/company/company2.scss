@@ -30,7 +30,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tit.h3 {margin-bottom:0; font-size:32px; font-weight:bold; line-height:1.5; text-align:center}
 .company .tit.h4 {font-size:18px; font-weight:bold; line-height:1.56}
 .company .tit ~ .tit.h4 {margin-top:30px}
-.company .tit.h4.mt {margin-top:30px}
+.company .tit.mt {margin-top:30px!important}
 .company .tit.h4 + .text {margin-top:18px}
 .company .tit.h4 + .bull {margin-top:20px}
 .company .tit.only {margin-top:60px}
@@ -349,6 +349,23 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.partic_list > li + li .box {border-top:1px dashed #ddd}
 .company ul.partic_list > li .box .tit {font-size:18px; font-weight:bold; line-height:26px}
 .company ul.partic_list > li .box ul.bull {margin-top:20px}
+
+.company .acco_thumb {position:relative; margin-bottom:58px; border-radius:8px}
+.company .acco_thumb.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-01-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-02-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-03-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb .inner {padding:64px}
+.company .acco_thumb .top .tit {margin-bottom:24px; font-size:24px; font-weight:bold; line-height:36px}
+.company .acco_thumb .content {display:none; padding-right:50%}
+.company .acco_thumb .content.on {display:block}
+.company .acco_thumb .content .footnotes {margin-top:10px; color:#666; font-size:16px; line-height:26px}
+.company .acco_thumb .content .footnotes sup {margin-right:3px}
+.company .acco_thumb sup {font-size:50%}
+.company .acco_thumb .view_more {position:absolute; display:block; width:36px; height:36px; bottom:-18px; left:calc(50% - 18px); background:url(/kr/images/company/icon/ico-plus-bg_black.svg) no-repeat center; background-size:36px 36px; font-size:0; text-indent:-9999em; overflow:hidden}
+.company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:36px 36px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -411,13 +428,29 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
 .company ul.ico_list > li {width:100%; text-align:center}
 .company ul.ico_list.t3 > li {width:33.3333%}
+.company ul.ico_list.t10 > li {width:20%; margin:0!important; padding-bottom:20px; text-indent:0!important}
+.company ul.ico_list.t10 > li + li:nth-child(6) {border-left:0}
+.company ul.ico_list.t10 > li + li:nth-child(n + 6) {padding-bottom:0; padding-top:20px; border-top:1px dashed #ddd}
 .company ul.ico_list > li + li {border-left:1px dashed #ddd}
 .company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 18px}
+.company ul.ico_list.t10 > li .iconArea {margin:0 auto 12px}
 .company ul.ico_list > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_list > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-monitor {background:url(/kr/images/company/icon/ico-monitor.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-pc {background:url(/kr/images/company/icon/ico-desktop_pc.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-aircon {background:url(/kr/images/company/icon/ico-aircon.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-dryer {background:url(/kr/images/company/icon/ico-dryer.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-fridge {background:url(/kr/images/company/icon/ico-fridge.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-dish {background:url(/kr/images/company/icon/ico-dishwasher.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-washing {background:url(/kr/images/company/icon/ico-washing_machine.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-dehum {background:url(/kr/images/company/icon/ico-dehumidifier.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-setTop {background:url(/kr/images/company/icon/ico-set_top_box.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-airclean {background:url(/kr/images/company/icon/ico-air_cleaner.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li strong {display:block; margin-bottom:12px}
+.company ul.ico_list > li span + strong {margin-bottom:0!important}
+.company ul.ico_list.t10 > li strong {margin-top:0!important}
 .company ul.ico_list > li strong > em {font-weight:normal}
 .company ul.ico_list > li span {display:block}
 
@@ -617,8 +650,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tbl_info + table {margin-top:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img {display:block; width:100%; max-width:576px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img {display:block; width:100%; max-width:576px; border-radius:8px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
 .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .btn-link {margin-top:30px}
@@ -679,13 +712,33 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain {margin-top:38px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit {margin-top:0; margin-bottom:10px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li {line-height:26px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li:first-child > .tit {margin-top:0}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li + li {margin-top:4px!important}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul > li {margin-left:8px; text-indent:-8px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul + ul {margin-top:6px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .text {margin-top:10px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea strong {margin-top:0; margin-bottom:5px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull.stit > li strong {margin-top:30px; margin-bottom:12px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {position:relative; display:flex; justify-content:space-between}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .footnotes {margin-top:10px; color:#666; font-size:14px; line-height:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .footnotes sup {margin-right:3px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea sup {font-size:50%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li strong {display:block; margin-top:0!important; margin-bottom:10px!important; font-size:18px; font-weight:500; line-height:28px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li > ul li + li {margin-top:4px!important}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {display:flex; justify-content:space-between; margin-top:12px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:33.3333%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {border-left:1px dashed #ddd}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {display:block; width:340px; margin:0 auto; border-radius:8px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li p {margin-top:12px; font-size:18px; font-weight:500; line-height:26px; text-align:center}
 
 /* 자료 더보기 영역 */
 .company .cont_view_more {padding:60px 0 0}
@@ -703,6 +756,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
+.company colgroup col.p58 {width:58%}
+.company colgroup col.p29 {width:29%}
 .company colgroup col.p25 {width:25%}
 .company colgroup col.p20 {width:20%}
 .company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
@@ -798,6 +853,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.card_list > li {width:calc(33.3333% - 16px)}
     .company ul.card_list > li .photo .name {font-size:20px; line-height:30px}
+
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 img + img {margin-top:20px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
 }
 
 @media screen and (max-width:1120px){
@@ -830,7 +889,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .tit.h3 + .desc {margin-top:6px; font-size:16px}
     .company .tit.h4 {font-size:15px; line-height:22px}
     .company .tit ~ .tit.h4 {margin-top:15px}
-    .company .tit.h4.mt {margin-top:15px}
+    .company .tit.mt {margin-top:15px!important}
     .company .tit.h4 + .text {margin-top:10px}
     .company .tit.h4 + .bull {margin-top:10px}
     
@@ -891,6 +950,13 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain {margin-top:0}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.mgtL {margin-top:15px!important}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:20px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull.stit > li strong {margin-top:15px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {flex-direction:column}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li {width:100%; padding:20px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li + li {margin-top:10px!important}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li strong {font-size:15px; line-height:23px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li {line-height:20px!important}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li + li {margin-top:8px!important}
     
     .company .cont_view_more {margin-top:40px; padding:0}
     .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
@@ -900,6 +966,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     /* 테이블 */
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m20 {width:20%!important}
+    .company colgroup col.m50 {width:50%!important}
+    .company colgroup col.m25 {width:25%!important}
     .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tit + .tbl_tit {margin-top:12px}
@@ -957,6 +1025,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.ico_list {flex-direction:column}
     .company ul.ico_list.t3 > li {width:100%}
+    .company ul.ico_list.t10 {flex-direction:row}
+    .company ul.ico_list.t10 > li {width:50%; padding:10px 0!important}
+    .company ul.ico_list.t10 > li + li {border-top:1px dashed #ddd}
+    .company ul.ico_list.t10 > li:nth-child(2) {border-top:0}
+    .company ul.ico_list.t10 > li:nth-child(2n) {border-left:1px dashed #ddd!important}
+    .company ul.ico_list.t10 > li .iconArea {margin:0 auto}
     .company ul.ico_list > li + li {margin-top:40px; border:0}
     .company ul.ico_list > li .iconArea {margin:0 auto 8px}
 
@@ -1264,4 +1338,18 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.partic_list > li + li {margin-top:12px}
     .company ul.partic_list > li + li .box {border:0}
     .company ul.partic_list > li .box ul.bull {margin-top:10px}
+
+    .company .acco_thumb {margin-bottom:32px}
+    .company .acco_thumb.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-01-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-02-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-03-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb .inner {padding:32px 20px}
+    .company .acco_thumb .top .tit {margin-bottom:12px; font-size:16px; line-height:24px}
+    .company .acco_thumb .content {padding-right:0}
+    .company .acco_thumb .content .footnotes {margin-top:20px; font-size:12px; line-height:20px}
+    .company .acco_thumb .view_more {width:24px; height:24px; bottom:-12px; left:calc(50% - 12px); background-size:24px 24px}
+    .company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:24px 24px}
 }
