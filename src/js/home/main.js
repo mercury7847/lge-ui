@@ -351,10 +351,11 @@ $(function () {
 
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             if(!isOnlyMobileDevice){                
-                //if(!canScroll) return; 
-            } else {
                 return;
-            }    
+            } else {
+                if(!canScroll) return; 
+                return;
+            }     
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */      
             
             var nextIndex = (delta < 0) ? -1 : 1;
@@ -507,7 +508,6 @@ $(function () {
 
             /* 메인테스트*/
             document.addEventListener('wheel', function(e){
-
                 var open = $('#layerSearch').hasClass('open');           
                 if(!open){    
                     var curTime = new Date().getTime();
@@ -528,7 +528,6 @@ $(function () {
                     }            
                     prevTime = curTime; 
                 }       
-    
             });
         }
         
@@ -542,41 +541,39 @@ $(function () {
         // BTOCSITE-27
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
-
-            var data = _getEventPoint(e);
-            if (e.type == 'touchstart') {
-                touchSy = data.y;
-            } else {
-
-                // if (touchSy - data.y > 80) {
-                //     // console.log('down');
-                //     lgkorUI.showAppBottomMenu(false);
-
-                // } else if (touchSy - data.y < -80) {
-                //     // console.log('up');
-                //     lgkorUI.showAppBottomMenu(true);
-                // }
-                
-                if(currentPage == maxLens){
-                    if(wheelInterval) clearTimeout(wheelInterval);
-                    wheelInterval = setTimeout(function(){
-                        var st = $contentWrap.scrollTop();
-                        if(st<=0 && touchSy - data.y < -80){
+      
+                var data = _getEventPoint(e);
+                if (e.type == 'touchstart') {
+                    touchSy = data.y;
+                } else {
+    
+                    // if (touchSy - data.y > 80) {
+                    //     // console.log('down');
+                    //     lgkorUI.showAppBottomMenu(false);
+    
+                    // } else if (touchSy - data.y < -80) {
+                    //     // console.log('up');
+                    //     lgkorUI.showAppBottomMenu(true);
+                    // }
+                    
+                    if(currentPage == maxLens){
+                        if(wheelInterval) clearTimeout(wheelInterval);
+                        wheelInterval = setTimeout(function(){
+                            var st = $contentWrap.scrollTop();
+                            if(st<=0 && touchSy - data.y < -80){
+                                wheelScene(-1);
+                            }
+                        }, 100);
+    
+                    }else{
+    
+                        if (touchSy - data.y > 80) {
+                            wheelScene(1);
+                        } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    }, 100);
-
-                }else{
-
-                    if (touchSy - data.y > 80) {
-                        wheelScene(1);
-                    } else if (touchSy - data.y < -80) {
-                        wheelScene(-1);
-                    }
-                } 
-                    
-                
-            }
+                    } 
+                }
         });
         
         /*
@@ -1034,6 +1031,7 @@ $(function () {
         scenes.each(function(){
             var self = $(this);
             var video = self.find('video');
+            //var rwrerer = video.parent('.only-mobile');
             var image = self.find('.img img');
 
             self.on('active.scroll', function(e, scrollTop){
