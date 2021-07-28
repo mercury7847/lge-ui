@@ -188,19 +188,6 @@
                         if(param) {                            
                             self.requestSearch(param, true);
                         }
-
-                        /* BTOCSITE-2785 : 2021-07-14 add */
-                        var tempArray = [];
-                        for (var key in param){
-                            tempArray.push(key);
-                        }
-
-                        var $selectedInput = $('.rdo-wrap input[value='+ param[tempArray[0]] +']');
-                        //console.log('pp', param[tempArray[0]]);
-                        $selectedInput.closest('li').trigger('click');
-                        //console.log('selectedInput', $selectedInput.closest('li'));
-                        
-                        /* //BTOCSITE-2785 : 2021-07-14 add */
                     });
     
                     self.filterLayer.updateFilter(savedFilterArr);
