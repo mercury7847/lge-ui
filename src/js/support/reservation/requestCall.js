@@ -208,7 +208,7 @@
 
                 // BTOCSITE-3629 add
                 if (self.isRentalCarePath){
-                    $('input[value="HWIST000003"]').trigger('click');
+                    $('input[data-topic-name="렌탈/케어 관련"]').trigger('click');
                 }
 
                 lgkorUI.hideLoading();
