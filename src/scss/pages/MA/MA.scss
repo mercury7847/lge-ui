@@ -213,7 +213,7 @@ img{
 				background-size:cover;
 				&.video {
 					overflow: hidden;
-					padding: 0 30px;
+					// padding: 0 30px;
 					// height: 650px;
 					@include mobile {
 						padding: 0 0px;
@@ -248,9 +248,9 @@ img{
 					}
 				}
 			}
-			@media screen and (max-width: 1700px) {
+			@media screen and (max-width: 1760px) {
 				> a {
-					height: 39.63414634146341vw;
+					height: 34.43181818181818vw;
 				}
 			}
 
@@ -774,7 +774,7 @@ img{
 							}
 							@include mobile {
 								width:100%;
-								height:390px;
+								height:300px;
 								.slide-box {
 									.text-area {
 										top:32px;
@@ -788,7 +788,7 @@ img{
 						width:100%;
 						height:440px;
 						@include mobile {
-							height:390px;
+							height:300px;
 							padding:0 6px;
 						}
 						.slide-box {
