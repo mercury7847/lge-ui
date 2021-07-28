@@ -457,9 +457,9 @@ var goAppUrl = function(path) {
                                     vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 7, "path": '/'});
                                 }
                                 $('#main-init-popup').vcModal('hide');
-                                if( window.innerWidth < 768 && vcui.detect.isMobileDevice) {
-                                    $('html, body').css('overflow', '');
-                                }
+                                /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+                                $('html, body').css('overflow', '');
+                                /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
                                 return;
                             });
                         }
