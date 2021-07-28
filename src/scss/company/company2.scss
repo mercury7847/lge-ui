@@ -857,9 +857,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 img + img {margin-top:20px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
+
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {flex-direction:column; justify-content:center}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:100%}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {margin-top:12px; border-left:0}
 }
 
 @media screen and (max-width:1120px){
+    .company colgroup col.m50 {width:50%!important}
+    .company colgroup col.m25 {width:25%!important}
     .company ul.card_list + ul.card_list {flex-wrap:wrap; justify-content:space-between; margin-bottom:0}
     .company ul.card_list + ul.card_list > li {width:calc(50% - 12px); margin:0}
     .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
@@ -966,8 +972,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     /* 테이블 */
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m20 {width:20%!important}
-    .company colgroup col.m50 {width:50%!important}
-    .company colgroup col.m25 {width:25%!important}
     .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tit + .tbl_tit {margin-top:12px}
