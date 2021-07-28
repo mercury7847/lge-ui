@@ -202,9 +202,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.caring > li .desc {margin-top:20px; font-size:16px; line-height:24px; text-align:center}
 .company ul.cmSystem {display:flex; margin-top:30px; justify-content:center}
 .company ul.cmSystem > li {min-width:20%}
+.company ul.cmSystem > li + li {position:relative}
+.company ul.cmSystem > li + li::before {content:''; display:block; position:absolute; width:32px; height:32px; top:72px; left:-16px; background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
 .company ul.cmSystem > li .step {width:160px; margin:0 auto; border:1px dashed #ddd; border-radius:50%}
-.company ul.cmSystem > li + li > .step {position:relative}
-.company ul.cmSystem > li + li > .step::before {content:''; display:block; position:absolute; width:32px; height:32px; top:calc(50% - 16px); left:-74px; background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
 .company ul.cmSystem > li .step > span {display:block; width:130px; height:130px; margin:14px; border-radius:50%; color:#000; font-size:18px; line-height:130px; text-align:center}
 .company ul.cmSystem > li:nth-child(1) .step > span {background-color:rgba(170,170,170,0.2)}
 .company ul.cmSystem > li:nth-child(2) .step > span {background-color:rgba(170,170,170,0.4)}
@@ -499,6 +499,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
 .company ul.dwn_list > li .btn.dwn {position:absolute; min-width:initial; top:50%; right:30px; transform:translateY(-50%); padding:5px 12px; font-size:14px; line-height:20px}
 
+.company ul.dwn_list.select {display:flex; justify-content:space-between}
+
 .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between}
 .company ul.dwn_list.sales > li {width:calc(33.3333% - 16px); padding:30px; border:1px solid #ddd; box-shadow:none; font-size:20px; text-align:center; overflow:hidden}
 .company ul.dwn_list.sales > li .thumb {width:calc(100% + 60px); margin:-30px 0 30px -30px; padding-top:30px; background-color:#f4f4f4; overflow:hidden}
@@ -772,6 +774,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {display:block; width:340px; margin:0 auto; border-radius:8px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li p {margin-top:12px; font-size:18px; font-weight:500; line-height:26px; text-align:center}
 
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.dash_list {}
+
 /* 자료 더보기 영역 */
 .company .cont_view_more {padding:60px 0 0}
 .company .cont_view_more .btnArea {margin:0; text-align:center}
@@ -871,6 +875,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb-col table tr:first-child td {border-top:1px solid #ddd}
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
+.tb_row.thmb .tbl_thumb > ul {display:flex; background-color:#f4f4f4}
+.tb_row.thmb .tbl_thumb > ul > li {flex:1; height:220px}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(3) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_02.png) no-repeat 50% 100%}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(4) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_03.png) no-repeat 50% 100%}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(5) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_04.png) no-repeat 50% 100%}
+.tb_row.thmb table {margin-top:0!important}
+.tb_row.thmb table::before {display:none}
+.tb_row.thmb table thead th {background-color:#da0f47; color:#fff; border:0}
+.tb_row.thmb table tbody td {vertical-align:top}
+
 /* 정관 */
 .artTxt p {font-size:16px; line-height:1.63;word-break:keep-all}
 .artTxt h2.tit {margin-bottom:12px; font-size:18px; font-weight:bold; line-height:1.56;word-break:keep-all}
@@ -905,6 +920,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list + ul.card_list > li {width:calc(50% - 12px); margin:0}
     .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
     .company ul.card_list > li .photo .job {font-size:13px}
+    
+    .company ul.cmSystem {flex-direction:column; margin-top:15px}
+    .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
+    .company ul.cmSystem > li + li {margin-top:28px}
+    .company ul.cmSystem > li .step {width:104px; height:104px; margin:0 12px 0 0}
+    .company ul.cmSystem > li + li::before {width:24px; height:24px; top:-28px; left:40px; background:url(/lg5-common/images/icons/btn-down-16-black.svg) no-repeat 50% / contain}
+    .company ul.cmSystem > li .step > span {width:84px; height:84px; margin:9px; font-size:15px; line-height:85px}
+    .company ul.cmSystem > li ul {margin:0; padding:0}
+    .company ul.cmSystem > li ul li + li {margin-top:2px!important}
 }
 
 @media screen and (max-width:860px){
@@ -976,7 +1000,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:20px}
     .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {margin-top:5px; font-size:14px; line-height:22px; word-break:normal}
-    .company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:5px}
     
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-right:50px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {width:70px; height:45px; top:29px; left:20px}
@@ -1286,14 +1309,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
     .company ul.caring > li .step > span {font-size:15px}
     .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
-    .company ul.cmSystem {flex-direction:column; margin-top:15px}
-    .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
-    .company ul.cmSystem > li + li {margin-top:28px}
-    .company ul.cmSystem > li .step {width:104px; height:104px; margin:0 12px 0 0}
-    .company ul.cmSystem > li + li .step::before {width:24px; height:24px; top:-29px; left:calc(50% - 12px); background:url(/lg5-common/images/icons/btn-down-16-black.svg) no-repeat 50% / contain}
-    .company ul.cmSystem > li .step > span {width:84px; height:84px; margin:9px; font-size:15px; line-height:85px}
-    .company ul.cmSystem > li ul {margin:0; padding:0}
-    .company ul.cmSystem > li ul li + li {margin-top:2px!important}
 
     .company .current_iframe {height:1500px}
     .company .date_iframe {height:950px}
