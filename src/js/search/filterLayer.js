@@ -59,7 +59,7 @@ var FilterLayer = (function() {
                     '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
                     '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
-            '</div>' + 
+            '</div>' +
         '</div>' +
     '</li>';
     /* BTOCSITE-2785 : add 2021-07-16 */
