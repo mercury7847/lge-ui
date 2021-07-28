@@ -388,10 +388,11 @@
 
                             <!-- 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
                             <form id="reservInquiryForm" action="https://wwwdev50.lge.co.kr/support/service-inquiry-reservation-status/single" method="POST">
-                                <input type="hidden" name="userName" id="userName" value="홍길동">
-                                <input type="hidden" name="phoneNo" id="phoneNo" value="01043432121">
+                                <input type="hidden" name="userName1" id="userName1" value="홍길동">
+                                <!-- <input type="hidden" name="phoneNo" id="phoneNo" value="01043432121"> -->
                                 <input type="hidden" name="number" id="number" value="">
-                                <!-- <input type="hidden" name="clothFlag" id="clothFlag" value="clothFlag"> -->
+                                <input type="hidden" name="clothFlag" id="clothFlag" value="clothFlag">
+                                <input type="hidden" name="listFlag" id="listFlag" value="listFlag">
                             </form>
                             <!-- //2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
                             <div class="headline">
@@ -414,7 +415,8 @@
                                     </a>
                                 </div>
                                 <div class="item-list">
-                                    <a href="#">
+                                    <!-- 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
+                                    <a href="#" data-reception-number="S20006828124">
                                         <div class="item-cont">
                                             <strong class="item-date">신청일시 2019.10.10 15:30</strong>
                                             <span>출장서비스 예약내역</span>
