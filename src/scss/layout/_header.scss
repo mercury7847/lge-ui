@@ -274,9 +274,11 @@
     padding-left: 42px;
     a {
         display: block;
-        width: 76px;
-        height: 21px;
-        background-image: url("/lg5-common/images/header/logo.svg");
+        width: 100px;
+        height: 29px;
+        background-image: url("/lg5-common/images/header/lg_logo.svg");
+        background-size:100% 100%;
+
     }
 
     @include mobile {
@@ -284,10 +286,9 @@
         padding-top: 0;
         padding-left: 0;
         a {
-            width: 70px;
-            height: 18px;
-            background-image: url("/lg5-common/images/header/logo-m.svg");
-            background-size: 100% 100%;
+            width: calc(209px/2);
+            height: calc(55px/2);
+            background-image: url("/lg5-common/images/header/lg_logo-m.svg");
         }
     }
 
@@ -1365,7 +1366,7 @@
             background-color: #fff;
         }
 
-        //210714 앱 알람아이콘 N 뱃지 추가        
+        //210714 앱 알람아이콘 N 뱃지 추가
         .count{
             position: absolute;
             top: 2px;
@@ -1414,11 +1415,10 @@
                     padding-bottom:60px;
                 }
             }
-            //210714 앱 알람아이콘 N 뱃지 추가
+            // 210714 알람체크 N뱃지 아이콘 
             .count {
                 display: none;
             }
-            //210714 앱 알람아이콘 N 뱃지 추가
 
         }
     }
