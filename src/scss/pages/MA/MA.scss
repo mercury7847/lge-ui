@@ -248,7 +248,7 @@ img{
 					}
 				}
 			}
-			@media screen and (max-width: 1640px) {
+			@media screen and (max-width: 1700px) {
 				> a {
 					height: 39.63414634146341vw;
 				}
@@ -274,7 +274,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 390px !important;
+						min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
@@ -1270,7 +1270,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 390px !important;
+						min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
