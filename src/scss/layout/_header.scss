@@ -60,15 +60,11 @@
 }
 
 .header {
-    // 2021-07-26
     position:relative;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
     @include mobile {
         border-bottom: 0;
         margin-bottom: 0px;
     }
-     // 2021-07-26
 }
 
 .header-wrap {
