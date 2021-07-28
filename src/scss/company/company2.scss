@@ -190,7 +190,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.welfare > li .desc {margin-top:12px; font-size:16px; line-height:24px}
 
 .company ul.caring {display:flex; margin-top:30px; justify-content:center}
-.company ul.caring > li .step {margin:0 58px; border:1px dashed #ddd; border-radius:50%}
+.company ul.caring > li {min-width:276px}
+.company ul.caring > li .step {width:160px; margin:0 auto; border:1px dashed #ddd; border-radius:50%}
 .company ul.caring > li + li > .step {position:relative}
 .company ul.caring > li + li > .step::before {content:''; display:block; position:absolute; width:32px; height:32px; top:calc(50% - 16px); left:-74px; background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
 .company ul.caring > li .step > span {display:block; width:130px; height:130px; margin:14px; border-radius:50%; font-size:18px; line-height:130px; text-align:center}
@@ -199,6 +200,19 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.caring > li:nth-child(3) .step > span {background-color:#000; color:#fff}
 .company ul.caring > li:nth-child(4) .step > span {background-color:#da0f47; color:#fff}
 .company ul.caring > li .desc {margin-top:20px; font-size:16px; line-height:24px; text-align:center}
+.company ul.cmSystem {display:flex; margin-top:30px; justify-content:center}
+.company ul.cmSystem > li {min-width:20%}
+.company ul.cmSystem > li .step {width:160px; margin:0 auto; border:1px dashed #ddd; border-radius:50%}
+.company ul.cmSystem > li + li > .step {position:relative}
+.company ul.cmSystem > li + li > .step::before {content:''; display:block; position:absolute; width:32px; height:32px; top:calc(50% - 16px); left:-74px; background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
+.company ul.cmSystem > li .step > span {display:block; width:130px; height:130px; margin:14px; border-radius:50%; color:#000; font-size:18px; line-height:130px; text-align:center}
+.company ul.cmSystem > li:nth-child(1) .step > span {background-color:rgba(170,170,170,0.2)}
+.company ul.cmSystem > li:nth-child(2) .step > span {background-color:rgba(170,170,170,0.4)}
+.company ul.cmSystem > li:nth-child(3) .step > span {background-color:rgba(170,170,170,0.6)}
+.company ul.cmSystem > li:nth-child(4) .step > span {background-color:rgba(170,170,170,0.8)}
+.company ul.cmSystem > li:nth-child(5) .step > span {background-color:rgba(170,170,170,1.0)}
+.company ul.cmSystem > li ul {margin-top:20px; padding-right:16px}
+.company ul.cmSystem > li ul li {word-break:keep-all}
 
 .company .current_iframe{width:100%;height:800px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
 .company .time_iframe{width:100%; height:970px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
@@ -416,7 +430,7 @@ ul.bull > li.mt30 {margin-top:30px}
 ul.bull > li > strong {display:block; margin-bottom:20px}
 ul.bull > li > span.bold {font-weight:bold}
 ul.bull > li .tb_row,
-ul.bull > li .tb-col {margin-left:-9px}
+ul.bull > li .tb-col {margin-left:-12px}
 ul.bull.mgtL > li + li {margin-top:30px!important}
 
 ul.bull.m > li + li {margin-top:0}
@@ -428,6 +442,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
 .company ul.ico_list > li {width:100%; text-align:center}
 .company ul.ico_list.t3 > li {width:33.3333%}
+.company ul.ico_list.t4 > li {width:25%; padding:0 20px}
 .company ul.ico_list.t10 > li {width:20%; margin:0!important; padding-bottom:20px; text-indent:0!important}
 .company ul.ico_list.t10 > li + li:nth-child(6) {border-left:0}
 .company ul.ico_list.t10 > li + li:nth-child(n + 6) {padding-bottom:0; padding-top:20px; border-top:1px dashed #ddd}
@@ -435,6 +450,24 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 18px}
 .company ul.ico_list.t10 > li .iconArea {margin:0 auto 12px}
 .company ul.ico_list > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
+.company ul.ico_list > li strong {display:block; margin-bottom:12px; line-height:26px}
+.company ul.ico_list > li span + strong {margin-bottom:0!important}
+.company ul.ico_list.t10 > li strong {margin-top:0!important}
+.company ul.ico_list > li strong > em {font-weight:normal}
+.company ul.ico_list > li span {display:block; line-height:26px}
+
+.company ul.ico_list.line {margin-top:60px}
+.company ul.ico_list.line > li {min-height:254px; padding:30px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_list.line.t6 > li {width:calc(33.3333% - 16px)}
+.company ul.ico_list.line.t6 > li:nth-child(4),
+.company ul.ico_list.line.t6 > li:nth-child(5),
+.company ul.ico_list.line.t6 > li:nth-child(6) {margin-top:24px}
+.company ul.ico_list.line.t3 > li {width:calc(33.3333% - 24px); padding:30px 20px}
+.company ul.ico_list.line.t3 > li + li {position:relative}
+.company ul.ico_list.line.t3 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
+.company ul.ico_list.line.t3 > li strong {font-size:18px; font-weight:500; line-height:26px}
+.company ul.ico_list.line > li + li {border:1px solid #ddd}
+.company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 .company ul.ico_list > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
@@ -448,23 +481,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-dehum {background:url(/kr/images/company/icon/ico-dehumidifier.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-setTop {background:url(/kr/images/company/icon/ico-set_top_box.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-airclean {background:url(/kr/images/company/icon/ico-air_cleaner.svg) no-repeat 50% 50%; background-size:80px 80px}
-.company ul.ico_list > li strong {display:block; margin-bottom:12px}
-.company ul.ico_list > li span + strong {margin-bottom:0!important}
-.company ul.ico_list.t10 > li strong {margin-top:0!important}
-.company ul.ico_list > li strong > em {font-weight:normal}
-.company ul.ico_list > li span {display:block}
-
-.company ul.ico_list.line {margin-top:60px}
-.company ul.ico_list.line > li {min-height:254px; padding:30px; border:1px solid #ddd; border-radius:8px}
-.company ul.ico_list.line.t6 > li {width:calc(33.3333% - 16px)}
-.company ul.ico_list.line.t6 > li:nth-child(4),
-.company ul.ico_list.line.t6 > li:nth-child(5),
-.company ul.ico_list.line.t6 > li:nth-child(6) {margin-top:24px}
-.company ul.ico_list.line.t3 > li {width:calc(33.3333% - 24px); padding:30px 20px}
-.company ul.ico_list.line.t3 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50% / background-size:20px}
-.company ul.ico_list.line.t3 > li strong {font-size:18px; font-weight:500; line-height:26px}
-.company ul.ico_list.line > li + li {border:1px solid #ddd}
-.company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 .company ul.ico_list > li .iconArea i.ico-prop_01 {background:url(/kr/images/company/icon/ico-info-lgway-proper_01.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-prop_02 {background:url(/kr/images/company/icon/ico-info-lgway-proper_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-prop_03 {background:url(/kr/images/company/icon/ico-info-lgway-proper_03.svg) no-repeat 50% 50%; background-size:80px 80px}
@@ -474,6 +490,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-min-eval_01 {background:url(/kr/images/company/icon/ico-min-eval_01.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-min-eval_02 {background:url(/kr/images/company/icon/ico-min-eval_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-min-eval_03 {background:url(/kr/images/company/icon/ico-min-eval_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-shee-01 {background:url(/kr/images/company/icon/ico-shee-01.png) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-shee-02 {background:url(/kr/images/company/icon/ico-shee-02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-shee-03 {background:url(/kr/images/company/icon/ico-shee-03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-shee-04 {background:url(/kr/images/company/icon/ico-shee-04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -653,7 +673,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap > ul > .lists .noCont {padding:18px 20px}
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0 60px; border-top:1px solid #000; border-bottom:1px solid #ddd; color:#000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb_row,
@@ -666,10 +686,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
 .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit.h4 {margin-top:40px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4.mt {margin-top:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .btn-link {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea {border-top:1px solid #000}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea ul li {font-size:14px; line-height:22px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:40px 0; text-align:center}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {margin-top:0; margin-bottom:28px; text-align:center}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:154px}
 .company .accordion-wrap.btmBtn > ul > .lists .btn.menu-opener {position:relative}
 .company .accordion-wrap.btmBtn > ul > .lists .btn.menu-opener::after {content:''; display:inline-block; width:20px; height:20px; margin-left:4px; margin-top:4px; background:url(/lg5-common/images/icons/icon-arrow-accor.svg) center no-repeat; background-size:20px 20px; vertical-align:top; transition:all .3s}
@@ -682,8 +704,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub {padding-bottom:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .title {font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
-.company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub {padding-top:10px; padding-bottom:0; border-bottom:0}
-.company .accordion-wrap.btmBtn > ul > .lists .txtArea.tit_sub + .btnArea {margin-top:10px; padding-top:0}
 
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-left:185px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {position:absolute; width:100px; height:65px; top:60px; left:60px; margin:0}
@@ -691,8 +711,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tit_thumb table {margin:0}
 
 .company .accordion-wrap.lgway {margin-top:30px}
-.company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b {padding-bottom:0; border-bottom:0}
-.company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:40px; padding-top:0}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:40px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li > ul {padding-left:18px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {margin:0}
@@ -727,6 +745,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li:first-child > .tit {margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.mg20 > li + li {margin-top:20px!important}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul > li {margin-left:8px; text-indent:-8px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull > li > ul + ul {margin-top:6px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .text {margin-top:10px}
@@ -736,6 +755,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {max-width:576px; margin:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:912px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {margin:0 auto}
@@ -940,13 +962,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:16px}
     .company .accordion-wrap.btmBtn > ul > .lists + .lists {margin-top:20px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-right:20px}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0; border-bottom:0}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding:20px 0}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0 30px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {font-size:15px}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4 ~ .tit.h4 {margin-top:20px}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4.mt {margin-top:20px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .btn-link {margin-top:15px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li + li {margin-top:0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .plusArea > ul > li ul li {margin-top:8px}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {padding:0}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea {margin-bottom:0}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn {min-width:130px; padding:8px 0; font-size:14px; font-weight:normal}
 
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub {padding:29px 58px 29px 20px}
@@ -965,7 +988,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit {font-size:15px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .text {font-size:14px; line-height:22px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea ul li .tit + .text {margin-top:10px}
-    .company .accordion-wrap.btmBtn > ul > .lists .txtArea.nob_b + .btnArea {margin-top:10px}
 
     .company .accordion-wrap.sustain {margin-top:0}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.mgtL {margin-top:15px!important}
@@ -985,6 +1007,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
     .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
     .company .cont_view_more .content {padding:50px 0 0}
+
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-bottom:18px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
 
     /* 테이블 */
     .company colgroup col.m40 {width:40%!important}
@@ -1048,19 +1074,25 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.ico_list {flex-direction:column}
     .company ul.ico_list.t3 > li {width:100%}
+    .company ul.ico_list.t4 > li {width:100%}
     .company ul.ico_list.t10 {flex-direction:row}
     .company ul.ico_list.t10 > li {width:50%; padding:10px 0!important}
     .company ul.ico_list.t10 > li + li {border-top:1px dashed #ddd}
     .company ul.ico_list.t10 > li:nth-child(2) {border-top:0}
     .company ul.ico_list.t10 > li:nth-child(2n) {border-left:1px dashed #ddd!important}
     .company ul.ico_list.t10 > li .iconArea {margin:0 auto}
-    .company ul.ico_list > li + li {margin-top:40px; border:0}
+    .company ul.ico_list > li + li {margin-top:20px; padding-top:20px; border-top:1px dashed #ddd; border-left:0}
     .company ul.ico_list > li .iconArea {margin:0 auto 8px}
+    .company ul.ico_list > li strong {margin-bottom:6px; font-size:14px; line-height:22px}
+    .company ul.ico_list > li span {font-size:14px; line-height:22px}
 
     .company ul.ico_list.line {margin-top:30px}
     .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px; border-radius:4px}
     .company ul.ico_list.line > li + li {margin-top:15px!important}
     .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
+    .company ul.ico_list.line.t3 > li + li {margin-top:36px!important}
+    .company ul.ico_list.line.t3 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
+    .company ul.ico_list.line.t3 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
     
     ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
     ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
@@ -1254,6 +1286,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
     .company ul.caring > li .step > span {font-size:15px}
     .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
+    .company ul.cmSystem {flex-direction:column; margin-top:15px}
+    .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
+    .company ul.cmSystem > li + li {margin-top:28px}
+    .company ul.cmSystem > li .step {width:104px; height:104px; margin:0 12px 0 0}
+    .company ul.cmSystem > li + li .step::before {width:24px; height:24px; top:-29px; left:calc(50% - 12px); background:url(/lg5-common/images/icons/btn-down-16-black.svg) no-repeat 50% / contain}
+    .company ul.cmSystem > li .step > span {width:84px; height:84px; margin:9px; font-size:15px; line-height:85px}
+    .company ul.cmSystem > li ul {margin:0; padding:0}
+    .company ul.cmSystem > li ul li + li {margin-top:2px!important}
 
     .company .current_iframe {height:1500px}
     .company .date_iframe {height:950px}
