@@ -205,3 +205,21 @@ br.pc{display:block;}
 .workplace_chart .bullet-list .b-tit{font-size: 14px;line-height: 1.57;text-align:center;font-weight: 500;margin-bottom: 8px;}
 .workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 1.57;}
 }
+  
+/* 지속가능경영 정책 */
+.pdfdwn_list{font-size: 0;margin-top: 12px;}
+.pdfdwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:40px 60px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14);display:inline-block;vertical-align: top;}
+.pdfdwn_list > li:nth-child(2n+1) {margin-right:24px}
+.pdfdwn_list .pdfdwn_tit{ color:#000; font-size:18px; line-height:26px; font-weight:bold;}
+.pdfdwn_list .pdfdwn_items {margin-top:20px;}
+.pdfdwn_list .pdfdwn_select{width: calc(100% - 86px);display: inline-block;}
+.pdfdwn_list .pdfdwn_btn {width: 100%;border: solid 1px #000000; font-size: 14px;font-weight: 500;background: #fff;padding: 10px 0;border-radius: 8px;color:#000;}
+.pdfdwn_list .pdfdwn_select + .pdfdwn_btn {width: 76px;min-width: 76px;margin-left: 10px;}
+@media screen and (max-width: 767px){
+	.pdfdwn_list > li {width:100%;padding:20px 15px;}
+	.pdfdwn_list > li:nth-child(2n+1) {margin-right:0}
+	.pdfdwn_list .pdfdwn_tit{font-size:16px;}
+	.pdfdwn_list .pdfdwn_items {margin-top:10px;}
+	.pdfdwn_list .pdfdwn_select{width: calc(100% - 82px)}
+	.pdfdwn_list .pdfdwn_select + .pdfdwn_btn {margin-left: 6px;}
+}
