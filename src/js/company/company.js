@@ -27,6 +27,19 @@ $(document).ready(function() {
 			$(".company .tabs-contents").addClass("on").show();
 		}
     });
+
+	// 환경 사회 더보기
+	$(".view_more").on('click', function(e){
+		var _this = $(this);
+		if(_this.hasClass("on")){
+			$(this).removeClass("on").html("ejqhrl");
+			$(this).parent().find(".content").removeClass("on")
+		}else{
+			$(this).addClass("on").html("닫기");
+			$(this).parent().find(".content").addClass("on")
+		}
+    });
+	
   
 	setTimeout(function(){
 		// 탭 슬라이드 위치 이동
