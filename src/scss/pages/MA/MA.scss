@@ -268,7 +268,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				> a {
-					height: 104.342894vw;
+					height: 114.08083441981746vw;
 					.text-link {
 						top: 37px;
 						right: 32px;
@@ -353,6 +353,16 @@ img{
 					}
 				}
 				
+			}
+			@media screen and (max-width: 414px){
+				> a {
+					height: 110.020834vw;
+				}
+			}
+			@media screen and (max-width: 375px){
+				> a {
+					height: 108.970834vw;
+				}
 			}
 		}
 		// ////2021-07-23 pc 여기서부터 시작
@@ -1271,9 +1281,6 @@ img{
 				height:auto;
 				padding: 16px;
 				background: none !important;
-				a {
-					height: 104.342894vw;
-				}
 				.img {
 					width: 100% !important;
 					height: auto !important;
