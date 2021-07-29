@@ -74,6 +74,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
 
+
 .company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
@@ -661,18 +662,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:12px}
 .popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
-.popup-wrap.popup-company .pop-conts .tb_row {margin-top:24px}
-.popup-wrap.popup-company .pop-conts .tb_row table thead tr {border-bottom:1px solid #d8d8d8}
-.popup-wrap.popup-company .pop-conts .tb_row,
-.popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
-.popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:24px; font-size:14px; line-height:24px}
-.popup-wrap.popup-company .pop-conts .tb_row .tbl_info.lt,
-.popup-wrap.popup-company .pop-conts .tb-col .tbl_info.lt {text-align:left}
-.popup-wrap.popup-company .pop-conts .tb_row .tbl_info.rt,
-.popup-wrap.popup-company .pop-conts .tb-col .tbl_info.rt {text-align:right}
-.popup-wrap.popup-company .pop-conts .tb_row table tbody th {padding:24px; border-bottom:1px solid #ddd; color:#000; font-weight:normal; line-height:26px; text-align:center}
-.popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; line-height:21px}
-.popup-wrap.popup-company .pop-conts .tb_row table td.bold {font-weight:bold}
+.popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
 .popup-wrap.popup-company .pop-conts.no-footer {margin-bottom:48px; padding-bottom:0}
 
 /* 아코디언 영역 */
@@ -688,7 +678,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tbl {padding-bottom:0; border-bottom:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb_row,
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
@@ -773,7 +762,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {display:block; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
@@ -821,6 +810,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company colgroup col.p29 {width:29%}
 .company colgroup col.p25 {width:25%}
 .company colgroup col.p20 {width:20%}
+.company colgroup col.p33 {width:33.3333%}
 .company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
