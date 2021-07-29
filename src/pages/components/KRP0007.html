@@ -166,14 +166,34 @@
                    @@include('./common/partials/KRP0007-cate.html')
                     <!-- // component -->
 
+                    <!-- BTOCSITE-2785 : add 2021-07-16 --> 
+                    <div class="KRP0007-product">
+                        <div class="cont_s1 productGlossary">
+                            <div class="productGlo-cont">
+                                <h3>올레드TV란</h3>
+                                <p>올레드TV란 스스로 빛을 내 백라이트가 필요 없어 매우 얇고, 필요한 곳에만 스스로 빛을 내 무한대의<br/> 명암비, 우수한 색 재현이 가능합니다.</p>
+                                <a href="#n" class="btn-link">OLED TV와 LCD TV의 차이, LIVE LG에서 비교하기</a>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
+
+                        <div class="cont_s2 productGlossary">
+                            <div class="productGlo-cont">
+                                <h3>올레드TV란 test</h3>
+                                <p>올레드TV란 스스로 빛을 내 백라이트가 필요 없어 매우 얇고, 필요한 곳에만 스스로 빛을 내 무한대의<br/> 명암비, 우수한 색 재현이 가능합니다.</p>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
+                    </div>
+                    <!-- //BTOCSITE-2785 : add 2021-07-16 -->
+
                     <div class="plp-list-wrap">
                         <!-- component -->
                         <!-- 210323 문구수정 -->
                         @@include('./common/modules/list-filter.html', {
                             "btmLink" : [
                                 {"text" : "나에게 맞는<br>케어솔루션 제품 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
-                                {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
-                                {"text" : "온라인 견적", "img" : "/lg5-common/images/icons/ic-main-online.svg"}
+                                {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"}
                             ],
                             "select" : [
                                     {"option" : "추천순", "default":'value="popular"'},
@@ -750,7 +770,7 @@
                                 <!-- // 210407 수정 [데이터 없는 케이스 추가] -->
                                 
                             </div>
-
+ 
                             <!-- 210310 수정 [배너 누락 추가] -->
                             <div class="mobile-service-link">
                                 <ul>
