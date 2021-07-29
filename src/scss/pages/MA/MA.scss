@@ -254,6 +254,15 @@ img{
 				}
 			}
 
+			@media screen and (max-width: 1023px) {
+				.text-cont {
+					> h3 {
+						font-size: 30px;
+						line-height: 40px;
+					}
+				}
+			}
+
 			@include mobile {
 				height:auto;
 				padding: 16px;
