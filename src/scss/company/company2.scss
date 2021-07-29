@@ -291,6 +291,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .compGram img.only_pc + img.only_pc {margin-top:40px}
 .company .compGram img.only_mo + img.only_mo {margin-top:20px}
+.company .compGram > img {margin-left:auto!important; margin-right:auto!important}
 .company .compGrp img {display:block; width:383px; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
 .company .hone::before {content:''; display:block; position:absolute; width:3px; height:3px; top:10.5px; left:0; border-radius:50%; background-color:#000}
