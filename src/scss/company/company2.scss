@@ -335,7 +335,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ceo_sign img {display:inline-block}
 .company .esgWay_wrap {position:relative}
 .company .esgWay_wrap::after {content:''; display:block; clear:both}
-.company .esgWay_wrap img {float:left; display:block; max-width:327px!important; height:210px!important; margin-right:30px!important}
+.company .esgWay_wrap img {float:left; display:block; max-width:327px; height:210px; margin-right:30px}
 .company .esgWay_wrap .text + .text {margin-top:24px}
 .company .esgWay_vision .titArea {margin-top:24px}
 .company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
@@ -693,8 +693,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tbl_info + table {margin-top:0}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img {display:block; width:100%; max-width:576px; border-radius:8px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .esgWay_wrap img {max-width:416px; height:270px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .esgWay_wrap img {max-width:416px; height:270px; margin-right:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
 .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
