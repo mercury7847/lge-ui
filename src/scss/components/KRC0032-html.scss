@@ -711,7 +711,20 @@
         line-height: 29px;
     }
 }
-
+@media screen and (max-width: 768px) {
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area.align-top {
+        top: 10.25%;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .title h2 {
+        font-size: 33px;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .banner-txt {
+           margin-top: 8px;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .banner-btn {
+        margin-top: 15px;
+    }
+}
 @media screen and (max-width: 767px) {
     .KRC0032.KRC0032-html-membership .usp-banner-wrap {
         padding-bottom: 0 !important;
@@ -721,5 +734,80 @@
     }
     .component-wrap.zero-btm .component.KRC0032.KRC0032-html-membership .component-box {
         padding-bottom: 0 !important;
-    }   
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area{
+        position: absolute !important;
+        top:0 !important; 
+        left:0 !important;
+        padding-top:34px !important;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area.box-align-center .inner {
+        margin-left: auto !important;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .title h2 {
+        font-size: 27px;
+        line-height: 38px;
+        text-align: center;
+        padding-left:30px; 
+        padding-right:30px;
+     }
+     .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .banner-txt {
+        font-size: 15px;
+        line-height: 1.53;
+        margin-top: 11px;
+        text-align: center;
+    }
+    .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .banner-btn {
+        text-align: center;
+        margin-top: 21px;    
+        .btn.border{ 
+            padding:8px 46px 9px 38px !important;
+            border-radius: 23px !important;   
+            span{
+                font-size:14px !important;
+                line-height:14px;  
+            }
+        }
+        .btn.border.arrow:after {
+              margin-top: -9px;
+        }
+    }
+    .KRC0032-html-banner .usp-banner-wrap .carousel-box .text-area{
+        position: absolute !important;
+        position: absolute !important;
+        top:50% !important; 
+        right:26px !important;
+        left:auto !important;
+        width:39% !important;
+        height:100px !important;
+        padding:0 !important;
+        margin-top:-50px;
+    }
+    .KRC0032-html-banner .usp-banner-wrap .carousel-box .text-area .inner {
+        margin-left: auto !important;
+        position: relative;
+        width:100%; 
+        height:100%;
+    }
+    .KRC0032-html-banner .usp-banner-wrap .carousel-box .text-area .inner .text-block{
+       width:100%; 
+        height:100%;
+    }
+    .KRC0032-html-banner .usp-banner-wrap .carousel-box .text-area .title{
+        width:100%; 
+        height:100%;
+        display:table;
+    }
+
+    .KRC0032-html-banner .usp-banner-wrap .carousel-box .text-area .title h2 {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        width:100%; 
+        height:100%;
+        display:table-cell;
+        vertical-align: middle;
+        span{
+            display:block;
+        }
+    }
 }
