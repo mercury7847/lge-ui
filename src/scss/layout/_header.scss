@@ -70,7 +70,7 @@
 .header-wrap {
     max-width: (1680px + 80px);
     margin: 0 auto;
-    padding-bottom: 16px;
+    // padding-bottom: 16px; //BTOCSITE-1937 스프레드메뉴 수
     @include mobile {
         max-width: 100%;
         padding: 0 16px;
@@ -495,8 +495,7 @@
     overflow: hidden;
     font-size: 0;
     white-space: nowrap;
-
-    padding-left: 28px;
+    padding-left: 42px; //BTOCSITE-1937 스프레드 메뉴 수정
 
     @include mobile {
         padding-left: 0;
@@ -508,10 +507,14 @@
 .nav-brand-gate {
     display: inline-block;
     vertical-align: top;
+    margin-left:24px;//BTOCSITE-1937 스프레드 메뉴 수정
     @include pc {
         .title {
             display: none;
         }
+    }
+    @include mobile { 
+        margin-left:0; //BTOCSITE-1937 스프레드 메뉴 수정
     }
 
     .brand-link {
@@ -627,6 +630,10 @@
             display: inline-block;
             padding-left: 24px;
             vertical-align: top;
+            //BTOCSITE-1937 스프레드 메뉴 수정
+            &:first-child {
+                padding-left:0;
+            }
             &:last-child {
                 padding-right: 0;
             }
@@ -670,10 +677,10 @@
     .nav-item {
         position: relative;
         display: block;
-        padding: 4px 0;
+        padding: 4px 0 12px; //BTOCSITE-1937 스프레드 메뉴 수정
         font-weight: 500;
         font-size: $font-medium;
-        line-height: 26px;
+        line-height: 24px; //BTOCSITE-1937 스프레드 메뉴 수정
         vertical-align: top;
 
         .icon-nav {
@@ -692,7 +699,17 @@
             &:focus,
             &.active {
                 font-weight: 700;
-                @include text-underline(7px,$color-default);
+                // @include text-underline(7px,$color-default);
+				//BTOCSITE-1937 스프레드 메뉴 수정
+                &:after {
+                    content:"";
+                    position: absolute;
+                    bottom:0;
+                    left:0;
+                    width:100%;
+                    height:4px;
+                    background: #000;
+                }
                 .icon-nav {
                     transform: rotate(135deg);
                 }
@@ -818,10 +835,11 @@
 
         .nav-category-inner {
             position: absolute;
-            top: 110px;
+            top: 100px;//BTOCSITE-1937 스프레드 메뉴 수정
             left: 0;
             right: 0;
             z-index: 103;
+            border-top:1px solid #ddd;//BTOCSITE-1937 스프레드 메뉴 수정
             background-color: #fff;
         }
         .nav-category-wrap {
@@ -962,7 +980,10 @@
     .category-banner {
         position: relative;
         &.ui_carousel_slider {
+            overflow:hidden;
+            max-height:472px;
             padding-bottom: 34px;
+            box-sizing: border-box;
         }
         .indi-wrap {
             position: absolute;
@@ -1002,7 +1023,9 @@
             //display: none;
             .btn-arrow {
                 position: absolute;
-                top: 6.563vw;
+                // top: 6.563vw;
+                top: calc(50% - 37px); //BTOCSITE-1937 스프레드 메뉴 수정
+                transform:translateY(-50%); //BTOCSITE-1937 스프레드 메뉴 수정
                 box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 &:before {
                     background-image: url('/lg5-common/images/icons/btn-arr-32x32.svg');
@@ -1598,6 +1621,86 @@
                 line-height: 21px;
             }
         }
+    }
+}
+
+//BTOCSITE-1937
+.super-category-nav {
+    &.swiper-container {
+        text-align: left;
+        max-width:1760px;
+        margin:0 auto;
+        padding:25px 40px 0;
+        touch-action:pan-y;
+        position:relative;
+        overflow:hidden;
+        list-style:none;
+        z-index:1;
+
+        .swiper-notification {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: -1000;
+        }
+
+        .swiper-wrapper, 
+        .swiper-slide {
+            transform:translate3d(0px, 0,0);
+        }
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height:100%;
+            z-index:1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box;
+        }
+        .swiper-slide {
+            flex-shrink: 0;
+            display: inline-block;
+            position: relative;
+            width:auto;
+            margin-left:16px;
+            padding-bottom:2px;
+            transition-property: transform;
+    
+            &:first-child {
+                margin-left:0;
+            }
+            a {
+                display: inline-block;
+                font-size:14px;
+                line-height:20px;
+                font-weight:500;
+                color:#666;
+            }
+
+            &.on {
+                a {
+                    color:#000;
+                }
+                &:before {
+                    content:"";
+                    position: absolute;
+                    display: block;
+                    height:2px;
+                    left:0;
+                    width:100%;
+                    bottom:0;
+                    background: #000;
+                }
+            }
+        }
+    }
+}
+.super-category-content {
+    display: none;
+    &.on {
+        display: block;
     }
 }
 
