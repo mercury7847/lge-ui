@@ -120,6 +120,8 @@ var res = {
 				"KRP0036_PDP Caresolution Contents[KRP0047]" : ["/html/components/KRP0036.html","","검수완료"],
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
+				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
+				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""],
 			}
 		},
 		// "Component" : {
