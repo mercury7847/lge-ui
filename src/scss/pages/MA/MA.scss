@@ -259,7 +259,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				> a {
-					height: auto;
+					height: 104.342894vw;
 					.text-link {
 						top: 37px;
 						right: 32px;
@@ -274,7 +274,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 300px !important;
+						// min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
@@ -1261,7 +1261,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				a {
-					//position: relative; 
+					height: 104.342894vw;
 				}
 				.img {
 					width: 100% !important;
@@ -1271,7 +1271,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 300px !important;
+						// min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;

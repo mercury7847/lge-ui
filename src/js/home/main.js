@@ -660,7 +660,7 @@ $(function () {
             // window.innerWidth < 768
             // vcui.detect.isMobileDevice && window.innerWidth < 768
             /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-            if(window.innerWidth < 768){
+            if(window.innerWidth < 768 || isMobileDevice){
                 posterSrc = $target.data('posterMSrc') || $target.data('posterSrc');
                 src = $target.data('mSrc') || $target.data('src');
                 //console.log("mobile")
