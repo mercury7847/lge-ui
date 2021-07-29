@@ -67,11 +67,11 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        /* BTOCSITE-3404 */
-                        '{{#if lastBulletName}}<li>{{lastBulletName}}' +
-                        '{{#if (subCategoryId == "CT50000070")}}<span class="care-n">,</span><span class="redcare-option">&nbsp&nbsp&nbsp1년&nbsp&nbsp무상케어</span>{{/if}}' +
-                        '</li>{{/if}}'+
-                        /* BTOCSITE-3404 */
+                    /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                    '{{#if lastBulletName}}<li>{{lastBulletName}}' +
+                    '{{#if (subCategoryId == "CT50000070")}}<span class="care-n">,</span><span class="redcare-option">1년 무상케어</span>{{/if}}' +
+                    '</li>{{/if}}'+
+                    /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                     '</ul>' +
                 '</div>' +
             '</div>' +

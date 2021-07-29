@@ -213,7 +213,7 @@ img{
 				background-size:cover;
 				&.video {
 					overflow: hidden;
-					padding: 0 30px;
+					// padding: 0 30px;
 					// height: 650px;
 					@include mobile {
 						padding: 0 0px;
@@ -248,9 +248,9 @@ img{
 					}
 				}
 			}
-			@media screen and (max-width: 1640px) {
+			@media screen and (max-width: 1760px) {
 				> a {
-					height: 36.93181818181818vw;
+					height: 34.43181818181818vw;
 				}
 			}
 
@@ -259,7 +259,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				> a {
-					height: auto;
+					height: 104.342894vw;
 					.text-link {
 						top: 37px;
 						right: 32px;
@@ -274,7 +274,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 390px !important;
+						// min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
@@ -298,10 +298,11 @@ img{
 					position: relative;
 					top: auto;
 					left: 0;
-					margin-top: 13px;
-					padding: 0 10px;
+					margin-top: -1px;
+					padding: 13px 10px 0 10px;
 					text-align: left;
 					margin-bottom: 12px;
+					background-color: #fff;
 					.title {
 						overflow: hidden;
 						max-height: 58px;
@@ -774,7 +775,7 @@ img{
 							}
 							@include mobile {
 								width:100%;
-								height:390px;
+								height:300px;
 								.slide-box {
 									.text-area {
 										top:32px;
@@ -788,7 +789,7 @@ img{
 						width:100%;
 						height:440px;
 						@include mobile {
-							height:390px;
+							height:300px;
 							padding:0 6px;
 						}
 						.slide-box {
@@ -1260,7 +1261,7 @@ img{
 				padding: 16px;
 				background: none !important;
 				a {
-					//position: relative; 
+					height: 104.342894vw;
 				}
 				.img {
 					width: 100% !important;
@@ -1270,7 +1271,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 390px !important;
+						// min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
@@ -1294,8 +1295,11 @@ img{
 					position: relative;
 					top: auto;
 					left: 0;
-					margin-top: 13px;
-					padding: 0 10px;
+					margin-top: -1px;
+					padding: 13px 10px 0 10px;
+					text-align: left;
+					margin-bottom: 12px;
+					background-color: #fff;
 					.title {
 						overflow: hidden;
 						max-height: 58px;
