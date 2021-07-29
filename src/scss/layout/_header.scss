@@ -497,6 +497,13 @@
     white-space: nowrap;
     padding-left: 42px; //BTOCSITE-1937 스프레드 메뉴 수정
 
+    //BTOCSITE-1937 스프레드 메뉴 수정
+    @include pc {
+        &.is-horizon-scroll {
+            padding-left:62px;
+        }
+    }
+
     @include mobile {
         padding-left: 0;
         ul.nav {
@@ -835,7 +842,7 @@
 
         .nav-category-inner {
             position: absolute;
-            top: 100px;//BTOCSITE-1937 스프레드 메뉴 수정
+            top: 105px;//BTOCSITE-1937 스프레드 메뉴 수정
             left: 0;
             right: 0;
             z-index: 103;
@@ -981,7 +988,6 @@
         position: relative;
         &.ui_carousel_slider {
             overflow:hidden;
-            max-height:472px;
             padding-bottom: 34px;
             box-sizing: border-box;
         }
@@ -1102,7 +1108,7 @@
         height: 34px;
         &:after {
             position: absolute;
-            top: 1px;
+            top: 5px;
             width: 32px;
             height: 32px;
             border-radius: 16px;

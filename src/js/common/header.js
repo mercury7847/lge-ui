@@ -302,9 +302,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(navwrapwidth < brandwidth + navwidth){
                 self.$leftArrow.show();
                 self.$rightArrow.show();
+                $('.nav-wrap').addClass('is-horizon-scroll')
             } else{
                 self.$leftArrow.hide();
                 self.$rightArrow.hide();
+                $('.nav-wrap').removeClass('is-horizon-scroll')
             }
         },
 
@@ -364,7 +366,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     } else {
                         self._addCarousel(categoryLayer.find('.ui_carousel_slider'));
                     }
-                    // categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+                    categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
                 }
 
                 //BTOCSITE-1937 스프레드 메뉴 수정
@@ -390,7 +392,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                     superNavSwiper.update();
                                 }
                             })
-                            
                         }
                     } else {
                         self._setOver(idx, -1);
@@ -442,6 +443,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if( !$parent.hasClass('on')) {
                     $parent.addClass('on').siblings().removeClass('on');
                     $($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
+                    $($currentContent).find('.ui_carousel_slider').vcCarousel('update')
                 }
             });
 
