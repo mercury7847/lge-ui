@@ -226,7 +226,7 @@ br.pc{display:block;}
 
 /* LG전자 ESG */
 .esgLinkArea {width: calc(50% - 12px);display: inline-block;vertical-align: top;margin-top:30px;}
-.esgLinkArea:nth-child(2n+1){margin-left:12px;}
+.esgLinkArea:nth-child(2n){margin-left:20px;}
 .esgLinkArea .esgTit{position:relative;font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;padding-left:12px;}
 .esgLinkArea .esgTit::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
 .esgLinkArea .esgGoto{position:relative;margin-top:18px;padding: 30px 130px 30px 30px;border-radius: 8px;box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);display: block;}
@@ -267,4 +267,14 @@ br.pc{display:block;}
 .esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 1.57;}
 .esgPerformanceArea .esgTit{font-size: 18px;line-height: 1.44;}
 .esgPerformanceArea .esgDetail{font-size: 14px;line-height: 1.57;}
+}
+
+/* 정보보호 */
+.esgCertified{margin-top:30px;}
+.esgCertified li{width:49%;display:inline-block;vertical-align: top;}
+.esgCertified img{max-width:350px;    width: 100%;}
+@media screen and (max-width: 767px){
+.esgCertified{margin-top:15px;}
+.esgCertified li{width:100%;display:block;}
+.esgCertified li+li{margin-top:12px;}
 }
