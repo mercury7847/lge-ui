@@ -223,3 +223,48 @@ br.pc{display:block;}
 	.pdfdwn_list .pdfdwn_select{width: calc(100% - 82px)}
 	.pdfdwn_list .pdfdwn_select + .pdfdwn_btn {margin-left: 6px;}
 }
+
+/* LG전자 ESG */
+.esgLinkArea {width: calc(50% - 12px);display: inline-block;vertical-align: top;margin-top:30px;}
+.esgLinkArea:nth-child(2n+1){margin-left:12px;}
+.esgLinkArea .esgTit{position:relative;font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;padding-left:12px;}
+.esgLinkArea .esgTit::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
+.esgLinkArea .esgGoto{position:relative;margin-top:18px;padding: 30px 130px 30px 30px;border-radius: 8px;box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);display: block;}
+.esgLinkArea .esgText{font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;}
+.esgLinkArea .esgBtn{font-size: 14px;font-weight: 500;line-height: 1.71;color: #000000;border-radius: 15px;border: solid 1px #000000;position: absolute;top: 50%;right: 30px;transform: translateY(-50%);padding: 3px 12px;}
+.esgPerformancetit {position: relative;margin-top:30px;padding-left:12px;font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;}
+.esgPerformancetit::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
+.esgPerformanceArea {border-radius: 8px;border: solid 1px #dddddd;padding:30px 0;margin-top:20px;text-align: center;}
+.esgPerformanceArea li{width:26%;min-height:182px;display: inline-block;vertical-align: top;}
+.esgPerformanceArea li + li{border-left: dashed 1px #dddddd;}
+.esgPerformanceArea .esgIcon {margin: 0 auto 10px;width: 80px;height: 80px;}
+.esgPerformanceArea p {text-align: center;color: #000000;}
+.esgPerformanceArea .esgEyebrow{font-size: 16px;line-height: 1.63;font-weight: bold;}
+.esgPerformanceArea .esgTit{font-size: 24px;line-height: 1.42;font-weight: bold;margin-top:6px;}
+.esgPerformanceArea .esgDetail{font-size: 16px;line-height: 1.63;font-weight: normal;}
+.esgPerformanceArea i{background:no-repeat 50% 50%; background-size:80px 80px;display: block;width: 100%;height: 100%;}
+.esgPerformanceArea i.ico-esglg01 {background-image:url(/kr/images/company/icon/ico-esglg01.png);}
+.esgPerformanceArea i.ico-esglg02 {background-image:url(/kr/images/company/icon/ico-esglg02.png);}
+.esgPerformanceArea i.ico-esglg03 {background-image:url(/kr/images/company/icon/ico-esglg03.png);}
+.esgPerformanceArea i.ico-esglg04 {background-image:url(/kr/images/company/icon/ico-esglg04.png);}
+.esgPerformanceArea i.ico-esglg05 {background-image:url(/kr/images/company/icon/ico-esglg05.png);}
+.esgPerformanceArea i.ico-esglg06 {background-image:url(/kr/images/company/icon/ico-esglg06.png);}
+.esgPerformanceArea i.ico-esglg07 {background-image:url(/kr/images/company/icon/ico-esglg07.png);}
+.esgPerformanceArea i.ico-esglg08 {background-image:url(/kr/images/company/icon/ico-esglg08.png);}
+.esgPerformanceArea i.ico-esglg09 {background-image:url(/kr/images/company/icon/ico-esglg09.png);}
+@media screen and (max-width:767px){
+.esgLinkArea{width:100%;}
+.esgLinkArea:nth-child(2n+1){margin-left:0;}
+.esgLinkArea .esgTit{font-size: 14px;line-height: 1.57;}
+.esgLinkArea .esgGoto{margin-top:14px;padding: 29px 130px 29px 15px;}
+.esgLinkArea .esgText{font-size: 14px;line-height: 1.57;}
+.esgLinkArea .esgBtn{font-size: 13px;line-height: 1.62;padding: 5px 15px;}
+.esgPerformancetit{margin-top:20px;}
+.esgPerformanceArea {margin-top:15px;padding:0;}
+.esgPerformanceArea li{width:100%;padding:20px;}
+.esgPerformanceArea li + li{border-left-width:0;border-top: dashed 1px #dddddd;}
+.esgPerformanceArea .esgIcon {margin: 0 auto 5px;}
+.esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 1.57;}
+.esgPerformanceArea .esgTit{font-size: 18px;line-height: 1.44;}
+.esgPerformanceArea .esgDetail{font-size: 14px;line-height: 1.57;}
+}
