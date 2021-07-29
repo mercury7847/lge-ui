@@ -74,11 +74,21 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .graph.ofn {padding-top:40px}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
-.company ul.ofn_links {display:flex; margin-top:12px; }
+.company ul.ofn_links {display:flex; flex-wrap:wrap; margin:6px 0}
+.company ul.ofn_links li {margin:6px 0}
 .company ul.ofn_links li + li {margin-left:10px}
-.company ul.ofn_links li a {display:block; min-width:142px}
+.company ul.ofn_links li .btn {display:block; min-width:142px; height:40px; padding:7px 16px; font-size:14px; line-height:24px}
+.company .risk_system {max-width:912px; margin:30px auto 0}
+.company .risk_system .item {display:flex}
+.company .risk_system .item + .item {margin-top:12px}
+.company .risk_system .item .item_tit {display:flex; justify-content:center; align-items:center; width:36%; min-width:80px; max-width:327px; min-height:78px; margin-right:12px; padding:25px 10px; border-radius:8px; color:#fff; font-size:18px; font-weight:bold; line-height:28px; text-align:center; word-break:keep-all}
+.company .risk_system .item:nth-of-type(1) .item_tit {background-color:#000}
+.company .risk_system .item:nth-of-type(2) .item_tit {background-color:#da0f47}
+.company .risk_system .item .item_txt {width:calc(64% - 12px)}
+.company .risk_system .item .item_txt p {display:flex; align-items:center; padding:26px 20px; border:1px solid #ddd; border-radius:8px; font-size:16px; line-height:26px; word-break:keep-all}
+.company .risk_system .item .item_txt p + p {margin-top:12px}
 
-.company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
+.company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
 .company .linkArea .desc a {font-size:14px; text-underline-offset:1px}
@@ -339,7 +349,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ceo_sign img {display:inline-block}
 .company .esgWay_wrap {position:relative}
 .company .esgWay_wrap::after {content:''; display:block; clear:both}
-.company .esgWay_wrap img {float:left; display:block; max-width:327px; height:210px; margin-right:30px}
+.company .esgWay_wrap img {float:left; display:block; max-width:327px; height:210px; margin-right:30px; border-radius:8px}
 .company .esgWay_wrap .text + .text {margin-top:24px}
 .company .esgWay_vision .titArea {margin-top:24px}
 .company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
@@ -483,14 +493,19 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
+.company .ofn_iconBox {max-width:1146px; margin:0 auto; padding:40px 20px; border-radius:8px; background-color:#f4f4f4}
 .company .ofn_iconBox ul {display:flex}
-.company .ofn_iconBox ul > li {display:flex; justify-content:center; align-items:center; flex:1; width:25%}
-.company .ofn_iconBox ul > li + li::before {content:'+'; display:block; color:#666; font-size:16px; line-height:26px}
-.company .ofn_iconBox ul > li .iconArea i {display:block}
-.company .ofn_iconBox ul > li .txtArea span {display:block; font-size:16px; line-height:26px}
-.company .ofn_iconBox ul > li .txtArea span + span {margin-top:6px}
-.company .ofn_iconBox ul > li .txtArea strong {font-weight:bold}
-.company .ofn_iconBox ul > li .txtArea strong.emp {font-size:24px; line-height:26px}
+.company .ofn_iconBox ul > li {display:flex; justify-content:center; align-items:center; width:27%; padding-left:12px}
+.company .ofn_iconBox ul > li:last-child {width:19%}
+.company .ofn_iconBox ul > li + li {position:relative}
+.company .ofn_iconBox ul > li + li::before {content:'+'; display:block; position:absolute; width:9px; left:-4.5px; color:#666; font-size:16px; line-height:26px}
+.company .ofn_iconBox ul > li:last-child:before {content:'='}
+.company .ofn_iconBox ul > li .iconArea i {display:block; width:80px; height:80px}
+.company .ofn_iconBox ul > li .descArea {margin-left:12px}
+.company .ofn_iconBox ul > li .descArea span {display:block; font-size:16px; line-height:26px}
+.company .ofn_iconBox ul > li .descArea span + span {margin-top:6px}
+.company .ofn_iconBox ul > li .descArea strong {font-weight:bold}
+.company .ofn_iconBox ul > li .descArea strong.emp {font-size:24px; line-height:26px}
 .company .ofn_iconBox ul > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
 .company .ofn_iconBox ul > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
 .company .ofn_iconBox ul > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
@@ -1073,6 +1088,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     /* 테이블 */
     .company colgroup col.m40 {width:40%!important}
+    .company colgroup col.m30 {width:30%!important}
     .company colgroup col.m20 {width:20%!important}
     .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
@@ -1127,9 +1143,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .tit + .graph {margin-top:12px}
     .company .graph.ofn {padding-top:8px}
     .company .graph .txt_rt {font-size:12px; line-height:16px}
-    .company .linkArea {padding:24px 0}
+    .company .linkArea {margin-top:15px; padding:24px 0}
     .company .linkArea .tit {font-size:16px}
     .company .linkArea .desc {margin-top:6px}
+    .company .risk_system {margin-top:15px}
+    .company .risk_system .item .item_tit {width:27.7%; margin-right:8px}
+    .company .risk_system .item .item_tit span {font-size:15px; line-height:23px}
+    .company .risk_system .item .item_txt {width:calc(72.3% - 8px)}
+    .company .risk_system .item .item_txt p {min-height:78px; padding:20px 15px; font-size:14px; line-height:22px}
+    .company ul.ofn_links {width:calc(100% + 8px); margin-left:-8px}
+    .company ul.ofn_links li {width:50%; margin:0!important}
+    .company ul.ofn_links li .btn {min-width:50%; height:auto; margin:3px 4px; padding:10px 0; font-size:13px; line-height:21px}
 
     .company ul.ico_list {flex-direction:column}
     .company ul.ico_list.t3 > li {width:100%}
@@ -1144,6 +1168,16 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.ico_list > li .iconArea {margin:0 auto 8px}
     .company ul.ico_list > li strong {margin-bottom:6px; font-size:14px; line-height:22px}
     .company ul.ico_list > li span {font-size:14px; line-height:22px}
+
+    .company .ofn_iconBox {padding:0 20px}
+    .company .ofn_iconBox ul {flex-direction:column}
+    .company .ofn_iconBox ul > li {flex-direction:column; width:100%; padding:20px}
+    .company .ofn_iconBox ul > li:last-child {display:none}
+    .company .ofn_iconBox ul > li + li {border-top:1px dashed #ddd}
+    .company .ofn_iconBox ul > li + li::before {display:none}
+    .company .ofn_iconBox ul > li .descArea {margin:0}
+    .company .ofn_iconBox ul > li .descArea span {font-size:14px; line-height:26px; text-align:center}
+    .company .ofn_iconBox ul > li .descArea span + span {margin-top:0}
 
     .company ul.ico_list.line {margin-top:30px}
     .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px; border-radius:4px}
