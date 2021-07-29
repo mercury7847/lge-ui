@@ -59,7 +59,7 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
-        '           {{#if siblingContractPeriod.length > 0}}'+
+        '           {{#if typeof siblingContractPeriod !== "undefined" && siblingContractPeriod.length > 0}}'+
         '               <dl {{#if siblingContractPeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>계약기간</dt>'+
         '                   <dd>'+
@@ -379,7 +379,7 @@
             addPutItem(this);
         }).on('change', '.info-wrap select', function(e){
             e.preventDefault();
-            console.log("change");
+
             changeItemOptions(this);
         });
 
@@ -707,8 +707,6 @@
             
             var blockID = result.data.blockID;
 
-            console.log("_priceStatusUrl %o result.data %o",_priceStatusUrl,result.data);
-
             _currentItemList[blockID]["rtModelSeq"] = result.data["rtModelSeq"];
             _currentItemList[blockID]["monthlyPrice"] = result.data["monthPrice"];
 
@@ -716,10 +714,34 @@
 
             if(sendata.tabID == 0){
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
+
+                // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                var o = result.data.siblingUsePeriod;
+
+                var selectUserPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectUserPeriodID = o[selectUserPeriodID].siblingCode;
+
+                var o = result.data.siblingVisitCycle;
+                var selectVisitCycleID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectVisitCycleID = o[selectVisitCycleID].siblingCode;
+
+                var o = result.data.siblingFee;
+                var selectFeeID = Object.keys(o).reduce(function (previous, current) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+
+                selectFeeID = o[selectFeeID].siblingCode;
+
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
-                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
+                setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
             }
         });
     }
@@ -812,8 +834,6 @@
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
-            console.log("item list %o", _currentItemList[i]);
-
             if(!_currentItemList[i].modelUrlPath) _currentItemList[i].modelUrlPath = "";
             else{
                 if(getTabID() == 0) _currentItemList[i].modelUrlPath += "?dpType=careTab";

@@ -591,13 +591,13 @@
                                 name: "매직 스페이스",
                                 defaultCode: "M871AAA151",
                                 subModel: [{
-                                    modelCode: "M871AAA252",
-                                    magicSpace: 2,
-                                    energy: 2,
-                                    knockOn: false,
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
+                                        modelCode: "M871AAA252",
+                                        magicSpace: 2,
+                                        energy: 2,
+                                        knockOn: false,
+                                        defaultPrice: "0",
+                                        memberDiscount: "0",
+                                        directDiscount: "0",
                                 }],
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA151.png",
                                 simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA151.png",
@@ -2136,6 +2136,20 @@
                     door2: "D870BB-GBE",
                     door3: "D870BB-GBE",
                     door4: "",
+                },{
+                    defaultCode: "M871AAA551",
+                    modelCode: "M871GRC551S",
+                    door1: "D870TT-GRD",
+                    door2: "D870BB-GCL",
+                    door3: "D870BB-GCL",
+                    door4: "",
+                }, {
+                    defaultCode: "M871AAA551",
+                    modelCode: "M871GCB551S",
+                    door1: "D870TT-GCL",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
                 },
                 {
                     defaultCode: "X320AA",
@@ -2793,6 +2807,223 @@
                     door3: "D870BB-GBE",
                     door4: "",
                 }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FBB463S",
+                    door1: "D870JT-FBT",
+                    door2: "D870BB-FBT",
+                    door3: "D870BB-FBT",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FSS463S",
+                    door1: "D870JT-FSD",
+                    door2: "D870BB-FSD",
+                    door3: "D870BB-FSD",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FTT463S",
+                    door1: "D870JT-FST",
+                    door2: "D870BB-FST",
+                    door3: "D870BB-FST",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FBS463S",
+                    door1: "D870JT-FBT",
+                    door2: "D870BB-FSD",
+                    door3: "D870BB-FSD",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FBT463S",
+                    door1: "D870JT-FBT",
+                    door2: "D870BB-FST",
+                    door3: "D870BB-FST",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821FTS463S",
+                    door1: "D870JT-FST",
+                    door2: "D870BB-FSD",
+                    door3: "D870BB-FSD",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SGG463S",
+                    door1: "D870JT-SGR",
+                    door2: "D870BB-SGR",
+                    door3: "D870BB-SGR",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SSS463S",
+                    door1: "D870JT-SSV",
+                    door2: "D870BB-SSV",
+                    door3: "D870BB-SSV",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SMM463S",
+                    door1: "D870JT-SMT",
+                    door2: "D870BB-SMT",
+                    door3: "D870BB-SMT",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SGS463",
+                    door1: "D870JT-SGR",
+                    door2: "D870BB-SSV",
+                    door3: "D870BB-SSV",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SSG463S",
+                    door1: "D870JT-SSV",
+                    door2: "D870BB-SGR",
+                    door3: "D870BB-SGR",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821SMS463S",
+                    door1: "D870JT-SMT",
+                    door2: "D870BB-SSV",
+                    door3: "D870BB-SSV",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MBB463S",
+                    door1: "D870JT-MBK",
+                    door2: "D870BB-MBK",
+                    door3: "D870BB-MBK",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MGG463S",
+                    door1: "D870JT-MGY",
+                    door2: "D870BB-MGY",
+                    door3: "D870BB-MGY",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MWW463S",
+                    door1: "D870JT-MWH",
+                    door2: "D870BB-MWH",
+                    door3: "D870BB-MWH",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MBG463S",
+                    door1: "D870JT-MBK",
+                    door2: "D870BB-MGY",
+                    door3: "D870BB-MGY",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MWG463S",
+                    door1: "D870JT-MWH",
+                    door2: "D870BB-MGY",
+                    door3: "D870BB-MGY",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MGB463S",
+                    door1: "D870JT-MGY",
+                    door2: "D870BB-MBK",
+                    door3: "D870BB-MBK",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821MGW463S",
+                    door1: "D870JT-MGY",
+                    door2: "D870BB-MWH",
+                    door3: "D870BB-MWH",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GBB463",
+                    door1: "D870JT-GBE",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GBM463S",
+                    door1: "D870JT-GBE",
+                    door2: "D870BB-GMN",
+                    door3: "D870BB-GMN",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GBP463S",
+                    door1: "D870JT-GBE",
+                    door2: "D870BB-GPK",
+                    door3: "D870BB-GPK",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GBS463S",
+                    door1: "D870JT-GBE",
+                    door2: "D870BB-GSV",
+                    door3: "D870BB-GSV",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GSS463S",
+                    door1: "D870JT-GSV",
+                    door2: "D870BB-GSV",
+                    door3: "D870BB-GSV",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GSB463S",
+                    door1: "D870JT-GSV",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GSM463S",
+                    door1: "D870JT-GSV",
+                    door2: "D870BB-GMN",
+                    door3: "D870BB-GMN",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GSP463S",
+                    door1: "D870JT-GSV",
+                    door2: "D870BB-GPK",
+                    door3: "D870BB-GPK",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GMB463S",
+                    door1: "D870JT-GMN",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GPB463",
+                    door1: "D870JT-GPK",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GRC463S",
+                    door1: "D870JT-GRD",
+                    door2: "D870BB-GCL",
+                    door3: "D870BB-GCL",
+                    door4: "",
+                }, {
+                    defaultCode: "W821AAA463",
+                    modelCode: "W821GCB463S",
+                    door1: "D870JT-GCL",
+                    door2: "D870BB-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "",
+                }, {
                     defaultCode: "W821AAA153",
                     modelCode: "W821FBB153S",
                     door1: "D870JT-FBT",
@@ -3006,6 +3237,216 @@
                     defaultCode: "W821AAA153",
                     modelCode: "W821GCB153S",
                     door1: "D870JT-GCL",
+                    door2: "D870TT-GCL",
+                    door3: "D870BB-GBE",
+                    door4: "D870BB-GBE",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FBB252S",
+                    door1: "D870TT-FBT",
+                    door2: "D870TT-FBT",
+                    door3: "D870BB-FBT",
+                    door4: "D870BB-FBT",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FSS252S",
+                    door1: "D870TT-FSD",
+                    door2: "D870TT-FSD",
+                    door3: "D870BB-FSD",
+                    door4: "D870BB-FSD",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FTT252S",
+                    door1: "D870TT-FST",
+                    door2: "D870TT-FST",
+                    door3: "D870BB-FST",
+                    door4: "D870BB-FST",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FBS252S",
+                    door1: "D870TT-FBT",
+                    door2: "D870TT-FBT",
+                    door3: "D870BB-FSD",
+                    door4: "D870BB-FSD",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FBT252S",
+                    door1: "D870TT-FBT",
+                    door2: "D870TT-FBT",
+                    door3: "D870BB-FST",
+                    door4: "D870BB-FST",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871FTS252S",
+                    door1: "D870TT-FST",
+                    door2: "D870TT-FST",
+                    door3: "D870BB-FSD",
+                    door4: "D870BB-FSD",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SGG252S",
+                    door1: "D870TT-SGR",
+                    door2: "D870TT-SGR",
+                    door3: "D870BB-SGR",
+                    door4: "D870BB-SGR",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SSS252S",
+                    door1: "D870TT-SSV",
+                    door2: "D870TT-SSV",
+                    door3: "D870BB-SSV",
+                    door4: "D870BB-SSV",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SMM252S",
+                    door1: "D870TT-SMT",
+                    door2: "D870TT-SMT",
+                    door3: "D870BB-SMT",
+                    door4: "D870BB-SMT",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SGS252",
+                    door1: "D870TT-SGR",
+                    door2: "D870TT-SGR",
+                    door3: "D870BB-SSV",
+                    door4: "D870BB-SSV",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SSG252S",
+                    door1: "D870TT-SSV",
+                    door2: "D870TT-SSV",
+                    door3: "D870BB-SGR",
+                    door4: "D870BB-SGR",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871SMS252S",
+                    door1: "D870TT-SMT",
+                    door2: "D870TT-SMT",
+                    door3: "D870BB-SSV",
+                    door4: "D870BB-SSV",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MBB252S",
+                    door1: "D870TT-MBK",
+                    door2: "D870TT-MBK",
+                    door3: "D870BB-MBK",
+                    door4: "D870BB-MBK",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MGG252S",
+                    door1: "D870TT-MGY",
+                    door2: "D870TT-MGY",
+                    door3: "D870BB-MGY",
+                    door4: "D870BB-MGY",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MWW252S",
+                    door1: "D870TT-MWH",
+                    door2: "D870TT-MWH",
+                    door3: "D870BB-MWH",
+                    door4: "D870BB-MWH",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MBG252S",
+                    door1: "D870TT-MBK",
+                    door2: "D870TT-MBK",
+                    door3: "D870BB-MGY",
+                    door4: "D870BB-MGY",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MWG252S",
+                    door1: "D870TT-MWH",
+                    door2: "D870TT-MWH",
+                    door3: "D870BB-MGY",
+                    door4: "D870BB-MGY",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871MGB252S",
+                    door1: "D870TT-MGY",
+                    door2: "D870TT-MGY",
+                    door3: "D870BB-MBK",
+                    door4: "D870BB-MBK",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GBB252",
+                    door1: "D870TT-GBE",
+                    door2: "D870TT-GBE",
+                    door3: "D870BB-GBE",
+                    door4: "D870BB-GBE",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GBM252S",
+                    door1: "D870TT-GBE",
+                    door2: "D870TT-GBE",
+                    door3: "D870BB-GMN",
+                    door4: "D870BB-GMN",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GBP252S",
+                    door1: "D870TT-GBE",
+                    door2: "D870TT-GBE",
+                    door3: "D870BB-GPK",
+                    door4: "D870BB-GPK",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GBS252S",
+                    door1: "D870TT-GBE",
+                    door2: "D870TT-GBE",
+                    door3: "D870BB-GSV",
+                    door4: "D870BB-GSV",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GSS252S",
+                    door1: "D870TT-GSV",
+                    door2: "D870TT-GSV",
+                    door3: "D870BB-GSV",
+                    door4: "D870BB-GSV",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GSB252S",
+                    door1: "D870TT-GSV",
+                    door2: "D870TT-GSV",
+                    door3: "D870BB-GBE",
+                    door4: "D870BB-GBE",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GSM252S",
+                    door1: "D870TT-GSV",
+                    door2: "D870TT-GSV",
+                    door3: "D870BB-GMN",
+                    door4: "D870BB-GMN",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GSP252S",
+                    door1: "D870TT-GSV",
+                    door2: "D870TT-GSV",
+                    door3: "D870BB-GPK",
+                    door4: "D870BB-GPK",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GMB252S",
+                    door1: "D870TT-GMN",
+                    door2: "D870TT-GMN",
+                    door3: "D870BB-GBE",
+                    door4: "D870BB-GBE",
+                }, {
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GPB252",
+                    door1: "D870TT-GPK",
+                    door2: "D870TT-GPK",
+                    door3: "D870BB-GBE",
+                    door4: "D870BB-GBE",
+                },{
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GRC252S",
+                    door1: "D870TT-GRD",
+                    door2: "D870TT-GRD",
+                    door3: "D870BB-GCL",
+                    door4: "D870BB-GCL",
+                },{
+                    defaultCode: "M871AAA252",
+                    modelCode: "M871GCB252S",
+                    door1: "D870TT-GCL",
                     door2: "D870TT-GCL",
                     door3: "D870BB-GBE",
                     door4: "D870BB-GBE",
@@ -4231,13 +4672,14 @@
         var $quickbuyInfoBody = $('#quick_buy .total_price_info_body');
         var $step3Tit = $('.simul_step.simul_step3 .simul_tit > .tit');
         var $step3Etc = $('.simul_step.simul_step3 dd .etc_area');
-        var $step3Td = $('.compare_sel_model_area .tb_compare table tbody tr td:last-child');
+        //var $step3Td = $('.compare_sel_model_area .tb_compare table tbody tr td:last-child');
         //210719 추가 BTOCSITE-2346 - E
         
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
+            //$step3Td.css("text-align","right"); // 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             //console.log("NEWBEST");
@@ -4256,7 +4698,7 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
-            $step3Td.css("text-align","center");
+            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
@@ -4276,7 +4718,7 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
-            $step3Td.css("text-align","center");
+            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
@@ -4307,11 +4749,16 @@
         });
         //추천조합 선택
         $(document).on("click", ".color_best .btn_propose_model_sel", function() {
-            /* BTOCSITE-3032 add */
+            /* 
+            BTOCSITE-3032 add
             var modelCode = $(this).data().modelCode;
             var defaultModelCode = $(this).data().modelDefaultCode;
-            /* //BTOCSITE-3032 add */
-            //let modelName = $(this).find(">span").text();
+            BTOCSITE-3032 add 
+            */
+            
+            // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+            let modelName = $(this).find(">span").text();
+            
             $(this).find(".mini_model_wrap .mini_model").each(function() {
                 let idx = $(this).index();
                 let idxImg = $(this).html();
@@ -4323,13 +4770,8 @@
                     "data-door-text": $(this).attr("data-k-materlal") + " " + $(this).attr("data-k-color")
                 });
                 $(".simul_wrap .model_set_wrap[data-model-editing='Y'] .sel_model_set .door_wrap .model_door:eq(" + idx + ") .door_img").html(idxImg);
-                //BTOCSITE-2346 210721 수정 - start 
-                if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelCode}); 
-                } else {
-                    $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": defaultModelCode}); 
-                }
-                //BTOCSITE-2346 210721 수정 - end
+                // BTOCSITE-2346 기존 형태로 원복 - data-best-code 추천조합 모델명 들어가도록 변경 - 210721
+                $(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr({ "data-best": "Y", "data-best-code": modelName});
             });
             $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
             $(".model_choice_area .model_sub_tab_wrap .btn_model_sub_pick").prop("disabled", true);
@@ -4605,7 +5047,7 @@
             completedCheck();
         });
 
-        //기능가격 비교 선택 [210719 다시보기]
+        //기능가격 비교 선택
         $(document).on("click", ".compare_sel_model_area .tb_compare tbody tr", function() {
             $(this).siblings().removeClass("is_active");
             $(this).addClass("is_active");
@@ -4616,25 +5058,32 @@
             if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
                 let colorMix = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code").substring(4, 7);
                 let mxiCode = modelCode.replace("AAA", colorMix);
-                if (mxiCode == "M871FBS551") {
-                    mxiCode = "M871FBS551S";
-                } else if (mxiCode == "M620FBS351S") {
-                    mxiCode = "M620FBS351"
-                } else if (mxiCode == "M871SMS551") {
-                    mxiCode = "M871SMS551S";
-                } else if (mxiCode == "M620SMS351S") {
-                    mxiCode = "M620SMS351";
-                } else if (mxiCode == "M871MWW551") {
-                    mxiCode = "M871MWW551S";
-                } else if (mxiCode == "M620MWW351S") {
-                    mxiCode = "M620MWW351";
-                } else if (mxiCode == "M870FBS451S") {
-                    mxiCode = "M870FBS451";
-                } else if (mxiCode == "M870SMS451") {
-                    mxiCode = "M870SMS451S";
-                } else if (mxiCode == "M870MWW451") {
-                    mxiCode = "M870MWW451S";
+
+                // S - 210723 BTOCSITE-2346 일부 모델 각각 하드코딩처리하여 적용한 내용 일괄 S 적용되도록 변경
+                let colorChk = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code").substring(10);
+                // if (mxiCode == "M871FBS551") {
+                //     mxiCode = "M871FBS551S";
+                // } else if (mxiCode == "M620FBS351S") {
+                //     mxiCode = "M620FBS351"
+                // } else if (mxiCode == "M871SMS551") {
+                //     mxiCode = "M871SMS551S";
+                // } else if (mxiCode == "M620SMS351S") {
+                //     mxiCode = "M620SMS351";
+                // } else if (mxiCode == "M871MWW551") {
+                //     mxiCode = "M871MWW551S";
+                // } else if (mxiCode == "M620MWW351S") {
+                //     mxiCode = "M620MWW351";
+                // } else if (mxiCode == "M870FBS451S") {
+                //     mxiCode = "M870FBS451";
+                // } else if (mxiCode == "M870SMS451") {
+                //     mxiCode = "M870SMS451S";
+                // } else if (mxiCode == "M870MWW451") {
+                //     mxiCode = "M870MWW451S";
+                // }
+                if(colorChk === "S"){
+                    mxiCode = mxiCode + colorChk;
                 }
+                // E - 210723 BTOCSITE-2346 일부 모델 각각 분기처리하여 적용하던 내용 일괄 S 적용되도록 변경
                 $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code", mxiCode);
             }
         });
@@ -4673,20 +5122,14 @@
             modelCheckdone();
             let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
             let idx = $this.index();
-            let modelCate = $this.attr("data-model-cate");
-            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - start
-            let defaultModel = "";
-            if($this.attr("data-best") == "Y"){
-              defaultModel = $this.attr("data-best-code");
-            } else {
-              defaultModel = $this.attr("data-model_code");                           
-            }
-            // BTOCSITE-2346 수정 추천제품형 or 자유형일때 다르게 모델값 적용되도록 변경 210721 - end
+            let modelCate = $this.attr("data-model-cate");                        
+            let defaultModel = $this.attr("data-model_code");
             let defaultPrice = $this.attr("data-model-price");
             let modelName = $this.find(".model_name").text();
             let doorInfo = [];
-            let saveInfo = [];
+            let saveInfo = [];            
             saveInfo.push(defaultModel);
+            
             $this.find(".door_wrap .model_door").each(function() {
                 let info = [];
                 info.push($(this).attr("data-door-direction"));
@@ -4769,7 +5212,10 @@
                 };
                 lgkorUI.alert(desc, obj);
                 return;
-            }
+            }          
+
+            // S - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
+            let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let purchaseData = [];
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
@@ -4778,17 +5224,31 @@
                 }
             });
             */
-            var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
-            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function() {
+
+            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function(index) {
                 if (!$(this).hasClass("sum")) {
+                    if(index == 0) {
+                       $(this).attr("data-default-code",modelCode);
+                    } else {
+                       $(this).attr("data-default-code");
+                    }
                     purchaseData.push($(this).attr("data-default-code"));
                 }
-            });            
+            });
+            // E - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             
             //console.log('selectedModelData', selectedModelData);
             //console.log('purchaseData', purchaseData);
 
-
+            // S - 210722 BTOCSITE-2346 추천제품 정보값 변경
+            // var selectedModelData = $('.total_price_info_wrap .swiper-slide').find(">dl").eq(0).data();
+            var selectedModelData = '';
+            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
+                selectedModelData = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
+            } else {
+                selectedModelData = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
+            }
+            // E - 210722 BTOCSITE-2346 추천제품 정보값 변경
             for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
                 if (purchaseData[0] == proposeSet.proposeConfig[i].modelCode) {
                     purchaseData = [];
@@ -4810,8 +5270,11 @@
                 }
             }
             //console.log(purchaseData);
+
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                datasend(0, !!selectedModelData.defaultCode ? selectedModelData.defaultCode : '', purchaseData);
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
+                datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
                 purchaseFn(purchaseData);
             }
@@ -4939,7 +5402,14 @@
             }
         });
         let slideWrapW = (slideW * slideLeng);
-        $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);
+        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+        let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');
+        if(subPickChkBasic.hasClass("is_selected") == true){
+            $(slideTarget).find(".swiper-wrapper").css("width", "580px");
+        }else{
+            $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
+        }
+        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         modelSubTabCont = new Swiper(slideTarget, {
             slidesPerView: 'auto',
             freeMode: true,
@@ -5676,16 +6146,18 @@
                                 let mainMagicSpace = _typModel[j].magicSpace;
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
-                                let mainVoiceChk = _typModel[j].voiceChk;
+                                let mainVoiceChk = _typModel[j].voiceChk; //210719 BTOCSITE-2346 음석인식 변수 추가
                                 let mainPrice = _typModel[j].defaultPrice;
                                 tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                                 tblHtml += '        <colgroup>';
                                 tblHtml += '            <col style="width:30.5%">';
+                                // S - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 if(mainVoiceChk != undefined && mainVoiceChk != ""){
                                 tblHtml += '            <col style="width:13%">';
                                 }
+                                // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '            <col style="width:16%">';
                                 tblHtml += '            <col style="width:16%">';
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
@@ -5697,9 +6169,11 @@
                                 tblHtml += '        <thead>';
                                 tblHtml += '            <tr>';
                                 tblHtml += '                <th scope="col">모델명</th>';
+                                // S - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 if(mainVoiceChk != undefined && mainVoiceChk != ""){
                                     tblHtml += '            <th scope="col">음성인식</th>';
                                 }
+                                // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '                <th scope="col">매직스페이스</th>';
                                 tblHtml += '                <th scope="col">에너지 효율</th>';
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
@@ -5718,7 +6192,13 @@
                                 tblHtml += '    <td>' + mainVoiceChk + '</td>';
                                 }
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
+                                //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
+                                } else {
+                                tblHtml += '    <td style="text-align:center;">' + mainEnergy + '등급</td>';
+                                }
+                                //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td><span></span>원</td>';
@@ -5741,7 +6221,13 @@
                                             tblHtml += '    <td>' + subVoiceChk + '</td>';
                                         }
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
+                                        //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                        if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
+                                        } else {
+                                        tblHtml += '    <td style="text-align:center;">' + subEnergy + '등급</td>';
+                                        }
+                                        //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                         // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td><span></span>원</td>';
@@ -5765,27 +6251,17 @@
                 tblHtml += '    <table>';
                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                 tblHtml += '        <colgroup>';
-                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '            <col style="width:50%">';
                 tblHtml += '            <col style="width:50%">';
-                }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                tblHtml += '            <col style="width:100%">';
-                }
                 tblHtml += '        </colgroup>';
                 tblHtml += '        <thead>';
-                if ($objContent.attr('data-page-type') === 'COMMON'){
-                    tblHtml += '            <tr>';
-                    tblHtml += '                <th scope="col">모델명</th>';
-                    tblHtml += '                <th scope="col">가격</th>';
-                    tblHtml += '            </tr>';
-                }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                    tblHtml += '            <tr>';
-                    tblHtml += '                <th scope="col">모델명</th>';
-                    tblHtml += '            </tr>';
-                }
+                tblHtml += '            <tr>';
+                tblHtml += '                <th scope="col">모델명</th>';
+                tblHtml += '                <th scope="col">가격</th>';
+                tblHtml += '            </tr>';
                 tblHtml += '        </thead>';
                 tblHtml += '        <tbody>';
+                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
                 if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
@@ -5794,10 +6270,10 @@
                 } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td style="display:none"></td>';
+                tblHtml += '    <td style="text-align:center;">-</td>';
                 tblHtml += '</tr>';
                 }
-                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
                 tblHtml += '</div>';
@@ -5811,29 +6287,17 @@
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                         tblHtml += '        <colgroup>';
-                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '            <col style="width:50%">';
                         tblHtml += '            <col style="width:50%">';
-                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
-                        tblHtml += '            <col style="width:50%">';
-                        tblHtml += '            <col style="width:50%">';
-                        }
                         tblHtml += '        </colgroup>';
                         tblHtml += '        <thead>';
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '            <tr>';
                         tblHtml += '                <th scope="col">모델명</th>';
                         tblHtml += '                <th scope="col">가격</th>';
                         tblHtml += '            </tr>';
-                        }else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
-                        tblHtml += '            <tr>';
-                        tblHtml += '                <th scope="col">모델명</th>';
-                        tblHtml += '                <th scope="col">가격</th>';
-                        tblHtml += '            </tr>';
-                        }
                         tblHtml += '        </thead>';
                         tblHtml += '        <tbody>';
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
@@ -5842,10 +6306,10 @@
                         } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
-                        tblHtml += '    <td>-</td>';
+                        tblHtml += '    <td style="text-align:center;">-</td>';
                         tblHtml += '</tr>';
                         }
-                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
                         tblHtml += '</div>';
@@ -5859,7 +6323,12 @@
                 
             }
             /* //BTOCSITE-1582 */
+
+            //S - 210726 BTOCSITE-2346 구매하기 버튼 클릭 후, data값 없을때 가격비교하기 영역(step3) 없어지는 결함 존재하여 값있을때만 tblHtml 그리도록 변경
+            if(tblHtml != undefined && tblHtml != ""){
             $(".compare_sel_model_area").addClass("is_active").html(tblHtml);
+            }
+            //E - 210726 BTOCSITE-2346 구매하기 버튼 클릭 후, data값 없을때 가격비교하기 영역(step3) 없어지는 결함 존재하여 값있을때만 tblHtml 그리도록 변경
             $(".simul_step3 .etc_area").addClass("is_active");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
             
@@ -5874,10 +6343,10 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") == "Y") {
-                defaultModel = $(".model_set_wrap[data-model-editing='Y']").attr("data-best-code");
-            }
-            priceArry.push(defaultModel);
+            
+            
+            priceArry.push(defaultModel);                            
+            
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
@@ -6864,17 +7333,16 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
         
         // console.log("price[i]", price[i])
         // BTOCSITE-2989 :: 추천모델일때 패널 가격 빼서 보여주는 부분 삭제
-        /*
-        if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
+        // if( $('.model_set_wrap').attr('data-best') == "Y" && i == 0) {
             
-            price.forEach(function(v, i){
-                if( i > 0) {
-                    price[0] -= v;
-                }
-            })
+        //     price.forEach(function(v, i){
+        //         if( i > 0) {
+        //             price[0] -= v;
+        //         }
+        //     })
             
-        } 
-        */
+            
+        // }
 
         $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
         sumPrice += parseInt(price[i]);

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_manual_MO_128" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+        </style>
+    </defs>
+    <path id="Rectangle" fill="none" d="M0 0H24V24H0z"/>
+    <g id="ic" transform="translate(4.5 2.625)">
+        <path id="Path" d="M0 15.375V1.5A1.5 1.5 0 0 1 1.5 0h12.375a1.5 1.5 0 0 1 1.5 1.5v11.625" class="cls-2" transform="translate(0)"/>
+        <path id="Path-2" d="M15.375 4.5H2.438A2.349 2.349 0 0 1 0 2.25 2.349 2.349 0 0 1 2.438 0h12.937" class="cls-2" transform="translate(0 13.125)"/>
+        <path id="Line" d="M0 1h12.375" class="cls-2" transform="translate(3 14.563)"/>
+        <g id="Group_18" transform="translate(3.5 2.375)">
+            <g id="Oval" fill="none" stroke="none">
+                <path d="M4.25 0A4.25 4.25 0 1 1 0 4.25 4.25 4.25 0 0 1 4.25 0z"/>
+                <path fill="#000" d="M4.25 1C2.458 1 1 2.458 1 4.25S2.458 7.5 4.25 7.5 7.5 6.042 7.5 4.25 6.042 1 4.25 1m0-1C6.597 0 8.5 1.903 8.5 4.25S6.597 8.5 4.25 8.5 0 6.597 0 4.25 1.903 0 4.25 0z"/>
+            </g>
+            <g id="Group_17" transform="translate(3.928 2.212)">
+                <circle id="Oval-2" cx=".321" cy=".321" r=".321" fill="#da0f47" stroke="#000" transform="translate(0 0)"/>
+                <path id="Line-2" d="M1 0v2.269" class="cls-2" transform="translate(-0.679 1.806)"/>
+            </g>
+        </g>
+    </g>
+</svg>
