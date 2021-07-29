@@ -303,11 +303,15 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.compStep > li:nth-child(1) .tit::after {border-left-color:#ddd}
 .company ul.compStep > li:nth-child(2) .tit::after {border-left-color:#aaa}
 .company ul.compStep > li:nth-child(3) .tit::after {border-left-color:#666}
-.company ul.compStep > li:nth-child(4) .tit::after {border-left-color:#000}
 .company ul.compStep > li:last-child .tit::after {display:none}
 .company ul.compStep > li ul.cont {height:calc(100% - 92px); border:1px solid #ddd; border-radius:8px}
-.company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:0 10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
+.company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
 .company ul.compStep > li ul.cont > li:nth-child(4) {border:0}
+
+.company ul.compStep.esg > li .tit {margin-top:0!important; background-color:#e4e4e4; color:#000}
+.company ul.compStep.esg > li:last-child .tit {background-color:#da0f47; color:#fff}
+.company ul.compStep.esg > li .tit::after {border-left-color:#e4e4e4}
+.company ul.compStep.esg > li ul.cont {margin-top:0!important}
 
 .company .dwn_all.board .titArea {margin-bottom:24px}
 .company .dwn_all.board .titArea .tit {font-size:22px; line-height:32px}
@@ -404,6 +408,11 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .acco_thumb .content .footnotes {margin-top:10px; color:#666; font-size:16px; line-height:26px}
 .company .acco_thumb .view_more {position:absolute; display:block; width:36px; height:36px; bottom:-18px; left:calc(50% - 18px); background:url(/kr/images/company/icon/ico-plus-bg_black.svg) no-repeat center; background-size:36px 36px; font-size:0; text-indent:-9999em; overflow:hidden}
 .company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:36px 36px}
+
+.company .survey_box {padding:38px 40px; border-radius:8px; background-color:#f4f4f4}
+.company ul.bull > li .survey_box {width:calc(100% + 12px); margin-left:-12px; margin-top:20px; margin-bottom:30px}
+.company .survey_box .s_tit {font-size:16px; font-weight:bold; line-height:26px}
+.company .survey_box .s_text {margin-top:10px; font-size:16px; line-height:26px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -713,7 +722,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .esgWay_wrap img {max-width:416px; height:270px; margin-right:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
-.accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit.h4 {margin-top:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4.mt {margin-top:40px}
@@ -771,6 +780,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 .company .accordion-wrap.sustain {margin-top:38px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit {margin-top:0; margin-bottom:10px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li {line-height:26px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:30px}
@@ -790,7 +800,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {display:block; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {display:block; margin-left:auto; margin-right:auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
@@ -1430,6 +1440,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compStep > li ul.cont li {display:block; height:auto; padding:7px 0; font-size:14px; line-height:22px; text-align:left}
     .company ul.compStep > li ul.cont li:last-child {border:0}
 
+    .company ul.compStep.esg > li .tit {margin-bottom:0!important}
+    .company ul.compStep.esg > li .tit::after {border-top-color:#e4e4e4}
+
     .company .dwn_all.board .titArea {margin-bottom:12px}
     .company .dwn_all.board .titArea .tit {font-size:18px}
     .company .tb_row.board-type .board-tit {margin-bottom:8px}
@@ -1502,4 +1515,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .acco_thumb .content .footnotes {margin-top:20px; line-height:20px}
     .company .acco_thumb .view_more {width:24px; height:24px; bottom:-12px; left:calc(50% - 12px); background-size:24px 24px}
     .company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:24px 24px}
+
+    .company .survey_box {padding:19px 20px}
+    .company ul.bull > li .survey_box {width:calc(100% + 8px); margin-left:-8px; margin-top:10px; margin-bottom:15px}
+    .company .survey_box .s_tit {font-size:14px; line-height:22px}
+    .company .survey_box .s_text {margin-top:4px; font-size:14px; line-height:22px}
 }
