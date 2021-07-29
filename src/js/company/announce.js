@@ -1,24 +1,23 @@
 (function() {
-	var dartUrl;
-	if (vcui.detect.isMobile) {
-		dartUrl = 'http://m.dart.fss.or.kr/html_mdart/MD1007.html?rcpNo=';
-	} else {
-		dartUrl = 'http://dart.fss.or.kr/dsaf001/main.do?rcpNo=';
-	}
     var listItemTemplate =
-	     '<tr>'
+		 '<tr>'
 		+	'<td class="board-tit">'
-		+		'<a href="'+ dartUrl +'{{rceptNo}}" target="_blank">'
+		+		'<a href="/company/investor/announceView?anncmNo={{announcementNo}}">'
 		+			'{{#if (isNew == "Y")}}'
 		+				'<p class="new">NEW</p>'
 		+			'{{/if}}'
-		+			'<p>{{corpName}}(주) {{reportNm}}</p>'
+		+			'<p>{{announcementTitle}}</p>'
 		+		'</a>'
 		+	'</td>'
-		+	'<td>{{rceptDt}}</td>'
+		+	'<td class="dwn">'
+		+		'{{#if (attachFileUrl)}}'
+		+			'<a href="{{attachFileUrl}}" target="_blank" title="{{announcementTitle}}.pdf 다운로드"></a>'
+		+		'{{/if}}'
+		+	'</td>'
+		+	'<td>{{createDate}}</td>'
+		+	'<td>{{viewCount}}{{#if (viewCount == "0")}}0{{/if}}</td>'
 		+'</tr>';
-
-    var disclosure = {
+    var announce = {
         init: function() {
             var self = this;
             vcui.require(['ui/pagination'], function () {
@@ -30,9 +29,9 @@
 
         setting: function() {
             var self = this;
-            	$contents = $('.com-text');
-            self.$disclosureList = $contents.find('#disclosureList');
-            self.$pagination = $contents.find('.pagination').vcPagination();
+            	$contents = $('div.com-text');
+            self.$announceList = $contents.find('#announceList');
+            self.$pagination = $contents.find('div.pagination').vcPagination();
             self.$nodata = $contents.find('#no-data');
         },
 
@@ -49,7 +48,7 @@
 
         requestData:function(param) {
             var self = this;
-            var ajaxUrl = '/company/investor/disclosureList.lgajax';
+            var ajaxUrl = '/company/investor/announceList.lgajax';
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
@@ -60,8 +59,9 @@
                 self.params.page = param.pagination.page;
                 //페이지
                 self.$pagination.vcPagination('setPageInfo',param.pagination);
+
                 var arr = data.listData instanceof Array ? data.listData : [];
-                var listbody = self.$disclosureList;
+                var listbody = self.$announceList
                 listbody.empty();
                 
                 if(arr.length > 0) {
@@ -70,10 +70,9 @@
                     arr.forEach(function(item, index) {
                         listbody.append(vcui.template(listItemTemplate, item));
                     });
-                    self.$disclosureList.show();
-                    
+                    self.$announceList.show();
                 } else {
-                    self.$disclosureList.hide();
+                    self.$announceList.hide();
                     self.$pagination.hide();
                     self.$nodata.show();
                 }
@@ -81,8 +80,8 @@
             });
         }
     };
-    
-    $(document).ready(function(){
-    	disclosure.init();
+
+    $(document).ready(function() {
+        announce.init();
     });
 })();
