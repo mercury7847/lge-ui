@@ -618,6 +618,8 @@ img{
 					height:154px;
 					padding:48px 32px;
 					font-size:0;
+					display: flex;
+    				align-items: center;
 					@include mobile {
 						height:176px;
 						padding:40px 30px 40px 108px;
