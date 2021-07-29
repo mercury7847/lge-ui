@@ -151,14 +151,6 @@
                                     @include mobile {
                                         width:69%;
                                     }
-
-                                    // BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
-                                    dl.bullet-list {
-                                        dd {
-                                            width:100%;
-                                            max-width:100%;
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -239,6 +231,23 @@
                     margin-left:20.4%;
                     @include mobile {
                         margin-left:0;
+                    }
+                }
+            }
+
+            .tb_row {
+                table {
+                    td {
+                        padding: 15px 24px;
+                        /* 20210624 납부내역 : 버튼*/
+                        .payMentBtn {
+                            font-size: 14px;
+                            margin-right: -14px;
+                        }
+                        /* //20210624 납부내역 : 버튼*/
+                        @include mobile {
+                            padding: 15px 10px;
+                        }
                     }
                 }
             }
@@ -996,3 +1005,106 @@
         }
     }
 }
+
+
+
+/* 20210624 납부내역 : 팝업*/
+#popup-paymentHistory {
+    position: relative;
+    .pop-paymentArea {
+        position: relative;
+        .pop-header {
+            margin: 0 40px 22px 40px;
+            @include mobile {
+                margin: 0 16px 22px 16px;
+            }
+        }
+        .priceContent {
+            padding: 0 40px;
+            @include mobile {
+                margin-bottom: 50px;
+                padding: 0 16px;
+            }
+            .priceList {
+                max-height: 305px;
+                overflow-y: auto;
+                margin-bottom: 24px;
+                @include mobile {
+                    max-height: 260px;
+                }
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid #ddd;
+                    padding: 15px 20px;
+                    &:first-of-type {
+                        border-top: 1px solid #ddd;
+                    }
+                    .list-info {
+                        position: relative;
+                        h3 {
+                            font-size: 16px;
+                            font-weight: normal;
+                            margin-bottom: 7px;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                        span { 
+                            font-size: 14px;
+                            color: #666;
+                        }
+                    }
+                    .list-price {
+                        font-size: 16px;
+                        font-weight: 500;
+                        @include mobile {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            .priceTotal {
+                background-color: #f4f4f4;
+                padding: 25px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom : 35px;
+                @include mobile {
+                    margin-bottom : 25px;
+                }
+                h4 {
+                    @include mobile {
+                        font-size: 14px;
+                    }
+                }
+                p {
+                    font-size: 24px;
+                    font-weight: 500;
+                    @include mobile {
+                        font-size: 20px;
+                    }
+                }
+            }
+            .priceTxt {
+                position: relative;
+                padding-left: 10px;
+                font-size: 14px;
+                &::after {
+                    content: '';
+                    width: 3px;
+                    height: 3px;
+                    background-color: #000;
+                    border-radius: 100px;
+                    position: absolute;
+                    top: 7px;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+/* //20210624 납부내역 : 팝업*/

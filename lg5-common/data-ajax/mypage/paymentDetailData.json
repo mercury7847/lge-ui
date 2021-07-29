@@ -1,0 +1,94 @@
+{
+    "data":
+    {
+        "totalPrice": "16,900",
+        "success": "Y",
+        "turnNumber": "22",
+        "paymentDetailList": [
+	        {
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+            {
+	            "chargePrice": "16,900",
+	            "billType": "CARD",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "삼성카드",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        },
+			{
+	            "chargePrice": "16,900",
+	            "billType": "BANK",
+	            "discountPrice": "0",
+	            "settlementMethod": "02",
+	            "receiptBankCodeNm": "우체국",
+	            "paymentPrice": "16,900",
+	            "receiptBankAccountNo": "1234123412341234"
+	        }
+    	]
+    },
+    "message": null,
+    "ssoCheckUrl": null,
+    "status": "success"
+}
