@@ -55,8 +55,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.pro .tooltip-icon {top:2%; left:50%; transform:translateX(30%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 90%}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.ref .tooltip-icon {top:50%; right:-2%; transform:translateY(-50%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 75%}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.base .tooltip-icon {bottom:2%; left:50%; transform:translateX(22%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 78%}
-.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%)}
-.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; line-height:20px}
 .company .thumb + .accordion-wrap {margin-top:60px}
 
@@ -66,9 +66,22 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-icon {position:absolute; width:38%; height:20%; right:0; bottom:0; z-index:50; background:none}
 .company .tooltipArea.social .tooltips .tooltip-wrap.carbon .tooltip-icon {top:48%; left:50%; transform:translateX(-100%)}
 .company .tooltipArea.social .tooltips .tooltip-wrap.youth .tooltip-icon {top:48%; left:50%}
-.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%)}
-.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
+.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
 .company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; font-weight:normal; line-height:20px}
+
+.company .tooltipArea.estim {position:relative}
+.company .tooltipArea.estim .tooltips {position:absolute; left:0; right:0; top:0; bottom:0}
+.company .tooltipArea.estim .tooltips .tooltip-wrap {position:absolute; width:100%; height:100%}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-icon {position:absolute; width:54px; height:54px; z-index:50; background:url(/kr/images/company/icon/ico-tooltip_b_black.svg) no-repeat center; background-size:24px 24px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_01 .tooltip-icon {top:calc(50% - 58px); left:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_02 .tooltip-icon {top:calc(50% - 58px); right:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_03 .tooltip-icon {bottom:0; left:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:10px; font-size:13px; font-weight:normal; line-height:20px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text > strong {display:block; margin-bottom:6px}
+
 
 .company .tit + .graph {margin-top:50px}
 .company .graph.ofn {padding-top:40px}
@@ -413,6 +426,31 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.bull > li .survey_box {width:calc(100% + 12px); margin-left:-12px; margin-top:20px; margin-bottom:30px}
 .company .survey_box .s_tit {font-size:16px; font-weight:bold; line-height:26px}
 .company .survey_box .s_text {margin-top:10px; font-size:16px; line-height:26px}
+
+.company .estim_process {max-width:1122px; margin:30px auto 0}
+.company .estim_process ul > li {display:flex; align-items:center}
+.company .estim_process ul > li + li {margin-top:46px}
+.company .estim_process ul > li .item_num {position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; width:150px; height:150px; margin-right:60px; border:1px solid #000; border-radius:50%; text-align:center}
+.company .estim_process ul > li + li .item_num::before {content:''; display:block; position:absolute; width:1px; height:44px; top:-45px; left:74px; border-left:1px dashed #ddd}
+.company .estim_process ul > li .item_num em {display:block; font-size:16px; font-weight:bold; line-height:26px}
+.company .estim_process ul > li .item_num span {display:block; font-size:18px; font-weight:bold; line-height:28px}
+.company .estim_process ul > li:last-child .item_num {border-color:#da0f47; color:#da0f47}
+.company .estim_process ul > li .item_desc {display:flex; flex-direction:column; justify-content:center; align-items:flex-start; width:calc(100% - 210px); min-height:150px}
+.company .estim_process ul > li .item_desc .tit {margin:0}
+.company .estim_process ul > li .item_desc .text {margin-top:20px}
+.company .estim_process ul > li .item_desc .btn-link {display:block; margin-top:12px}
+
+.company .feed_box .box_tit {width:100%; margin-top:20px; padding:15px 0; border-radius:8px; background-color:#000; color:#fff; font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .feed_box .box_tit.g {background-color:#666}
+.company .feed_box .feed_list {margin-top:12px}
+.company .feed_box .feed_list > ul {display:flex; justify-content:space-between}
+.company .feed_box .feed_list > ul > li {width:calc(25% - 18px); padding:28px 25px; border:1px solid #ddd; border-radius:8px}
+.company .feed_box .feed_list > ul > li.wide {width:calc(50% - 12px)}
+.company .feed_box .feed_list > ul > li .titArea {display:flex; align-items:center; min-height:56px}
+.company .feed_box .feed_list > ul > li .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56; text-align:center; word-break:keep-all}
+
+.company .estim_grp {margin-bottom:30px}
+.company .estim_grp > img {display:block; margin:0 auto}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -505,6 +543,20 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t4 > li strong {font-size:18px; font-weight:500; line-height:26px}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
+
+.company ul.ico_grid {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px}
+.company ul.ico_grid > li {padding:30px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_grid.t4 > li {width:calc(25% - 18px); padding:30px 10px}
+.company ul.ico_grid > li .iconArea {width:80px; height:80px;margin:0 auto 12px}
+.company ul.ico_grid > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
+.company ul.ico_grid > li .iconArea i.ico-estim-01 {background:url(/kr/images/company/icon/ico-estim-01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-02 {background:url(/kr/images/company/icon/ico-estim-02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-03 {background:url(/kr/images/company/icon/ico-estim-03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-04 {background:url(/kr/images/company/icon/ico-estim-04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li > strong {display:block; font-size:18px; font-weight:500; line-height:28px; text-align:center}
+.company ul.ico_grid > li .b_box {max-width:180px; margin:12px auto 0; padding:11px 0; background-color:#f4f4f4; border-radius:50px; text-align:center}
+.company ul.ico_grid > li .b_box em {display:inline-block; font-size:24px; font-weight:bold}
+.company ul.ico_grid > li .b_box span {display:inline-block; font-size:18px}
 
 .company .ofn_iconBox {max-width:1146px; margin:0 auto; padding:40px 20px; border-radius:8px; background-color:#f4f4f4}
 .company .ofn_iconBox ul {display:flex}
@@ -722,13 +774,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_pc {margin-right:30px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_mo {margin-right:15px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb_row,
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tbl_info + table {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .esgWay_wrap img {max-width:416px; height:270px; margin-right:30px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0; margin-right:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
@@ -808,7 +862,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {display:block; margin-left:auto; margin-right:auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
@@ -1207,6 +1260,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.ico_list.line.t4 > li + li {margin-top:36px!important}
     .company ul.ico_list.line.t4 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
     .company ul.ico_list.line.t4 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
+
+    .company ul.ico_grid {margin-top:8px}
+    .company ul.ico_grid.t4 > li {width:calc(50% - 4px); padding:15px 15px 44px}
+    .company ul.ico_grid.t4 > li:nth-child(n + 3) {margin-top:8px}
+    .company ul.ico_grid.t4 > li .iconArea {margin-bottom:5px}
+    .company ul.ico_grid.t4 > li > strong {font-size:14px; line-height:22px}
+    .company ul.ico_grid.t4 > li .b_box {width:120px; margin-top:5px; padding:10px 0}
+    .company ul.ico_grid.t4 > li .b_box em {font-size:16px}
+    .company ul.ico_grid.t4 > li .b_box span {font-size:13px}
     
     ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
     ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
@@ -1531,4 +1593,22 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.bull > li .survey_box {width:calc(100% + 8px); margin-left:-8px; margin-top:10px; margin-bottom:15px}
     .company .survey_box .s_tit {font-size:14px; line-height:22px}
     .company .survey_box .s_text {margin-top:4px; font-size:14px; line-height:22px}
+    
+    .company .estim_process {width:100%; max-width:100%; margin-top:15px}
+    .company .estim_process ul > li {max-height:164px; min-height:164px; align-items:flex-start}
+    .company .estim_process ul > li + li {margin-top:0}
+    .company .estim_process ul > li .item_num {width:104px; height:104px; margin-right:12px}
+    .company .estim_process ul > li + li .item_num::before {height:58px; top:-60px; left:51px}
+    .company .estim_process ul > li .item_num em {font-size:12px; line-height:20px}
+    .company .estim_process ul > li .item_num span {font-size:15px; line-height:23px}
+    .company .estim_process ul > li .item_desc {width:calc(100% - 116px); min-height:104px; justify-content:center}
+    .company .estim_process ul > li .item_desc .tit {margin:0; font-size:15px; line-height:23px}
+    .company .estim_process ul > li .item_desc .text {margin-top:8px; font-size:14px; line-height:22px}
+    .company .estim_process ul > li .item_desc .btn-link {margin-top:6px}
+    .company .estim_process ul > li:last-child {max-height:250px}
+
+    .company .feed_box .box_tit {margin-top:10px; padding:12px 0; font-size:16px; line-height:24px}
+
+    .company .estim_grp {margin-bottom:15px}
+    .company .estim_grp > img {width:100%; max-width:100%}
 }
