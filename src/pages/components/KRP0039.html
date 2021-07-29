@@ -1,0 +1,37 @@
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 start -->
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0039",
+    isJScompile: false
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+            <!-- component KRP0039 이벤트 -->
+            @@include('./common/partials/KRP0039.html', {
+                "zero": "zero-btm",
+                "eventExhibitionTitle": "다양한 이벤트를 만나보세요 ",
+                "titleHd" : "event",
+                "ctaUse" : "Yes",
+                "ctaBtnLink": "testlink.html",
+                "ctaBtnName": "이벤트 더보기",
+                "ctaBtnTarget": "_self"
+            })
+            <!-- // component -->
+            <!-- component KRP0039 기획전 -->
+            @@include('./common/partials/KRP0039.html', {
+                "zero": "",
+                "eventExhibitionTitle": "특별한 기획전을 만나보세요",
+                "titleHd": "exhibition",
+                "ctaUse" : "Yes",
+                "ctaBtnLink": "testlink.html",
+                "ctaBtnName": "기획전 더보기",
+                "ctaBtnTarget": "_self"
+            })
+            <!-- // component -->
+		</div>
+    </div>
+</body>
+</html>
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 end -->
