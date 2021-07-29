@@ -121,7 +121,7 @@ var res = {
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
 				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
-				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""],
+				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""]
 			}
 		},
 		// "Component" : {
@@ -306,6 +306,10 @@ var res = {
 				//"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
 			"이벤트/멤버십(BMC)" : {
+				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
+				"이벤트/멤버십(BMS)" : {
+					"홈(서브메인샘플페이지)" : ["/html/BMS/BMS-BTOCSITE-1814.html","",""],
+				},
 				"이벤트" : {
 					// "리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
