@@ -341,7 +341,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .btnArea {margin-top:60px}
 
 .company .comp_wrap {position:relative; display:flex}
-.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0}
+.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0; border-radius:8px}
 
 .company .ceo_msg .text {margin-top:0; font-size:18px; line-height:28px}
 .company .ceo_msg .msg_box {margin:58px 0; padding:58px; border:1px solid #ddd; border-radius:8px}
@@ -499,6 +499,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t3 > li + li {position:relative}
 .company ul.ico_list.line.t3 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
 .company ul.ico_list.line.t3 > li strong {font-size:18px; font-weight:500; line-height:26px}
+.company ul.ico_list.line.t4 > li {width:calc(25% - 27px); padding:30px 20px}
+.company ul.ico_list.line.t4 > li + li {position:relative}
+.company ul.ico_list.line.t4 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
+.company ul.ico_list.line.t4 > li strong {font-size:18px; font-weight:500; line-height:26px}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
@@ -542,6 +546,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-shee-02 {background:url(/kr/images/company/icon/ico-shee-02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-shee-03 {background:url(/kr/images/company/icon/ico-shee-03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-shee-04 {background:url(/kr/images/company/icon/ico-shee-04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_01 {background:url(/kr/images/company/icon/ico-risk_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_02 {background:url(/kr/images/company/icon/ico-risk_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_03 {background:url(/kr/images/company/icon/ico-risk_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_04 {background:url(/kr/images/company/icon/ico-risk_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -1190,12 +1198,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .ofn_iconBox ul > li .descArea span + span {margin-top:0}
 
     .company ul.ico_list.line {margin-top:30px}
-    .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px; border-radius:4px}
+    .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px}
     .company ul.ico_list.line > li + li {margin-top:15px!important}
     .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
     .company ul.ico_list.line.t3 > li + li {margin-top:36px!important}
     .company ul.ico_list.line.t3 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
     .company ul.ico_list.line.t3 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
+    .company ul.ico_list.line.t4 > li + li {margin-top:36px!important}
+    .company ul.ico_list.line.t4 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
+    .company ul.ico_list.line.t4 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
     
     ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
     ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
