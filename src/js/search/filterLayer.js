@@ -760,7 +760,7 @@ var FilterLayer = (function() {
                             $pa.vcAccordion('expand',index,false);
                             //$pa.vcAccordion('setOption','useAnimate',true);
                         }
-                    }
+                    } 
                 });
 
                 closeIndex.forEach(function(item, index) {

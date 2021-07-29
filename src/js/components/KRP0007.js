@@ -29,7 +29,7 @@
                             //'<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지" style="opacity:0;"></a>' +
                             '</div>' +
                         '{{/each}}'+
-                    '</div>' +
+                    '</div>' + 
                 '</div>' +
                 '<div class="slide-controls">' +
                     '<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>' +
