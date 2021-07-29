@@ -35,7 +35,7 @@ function MainSwiper( ID ){
         'home', 'store', 'story', 'support', 'care-solutions'
     ];
 
-    if(vcui.detect.isMobileDevice && window.innerWidth < 768){
+    if(vcui.detect.isMobileDevice){
         this.init();
     }
     
