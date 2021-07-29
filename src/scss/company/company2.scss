@@ -22,6 +22,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 /* 컨텐츠 영역 */
 .company .footnotes {margin-top:10px; color:#666; font-size:14px; line-height:24px}
+.company .bull .footnotes{margin-top:0;}
 .company sup {margin-right:3px}
 .company sup {font-size:50%}
 .company .com-section {position:relative; max-width:1460px; margin:0 auto; padding:60px 40px 60px}
@@ -73,7 +74,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .graph.ofn {padding-top:40px}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
-
+.company ul.ofn_links {display:flex; margin-top:12px; }
+.company ul.ofn_links li + li {margin-left:10px}
+.company ul.ofn_links li a {display:block; min-width:142px}
 
 .company .linkArea {margin:40px 0; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea .tit {font-size:18px; text-align:center}
@@ -479,9 +482,19 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t3 > li strong {font-size:18px; font-weight:500; line-height:26px}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
-.company ul.ico_list > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
-.company ul.ico_list > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
-.company ul.ico_list > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
+
+.company .ofn_iconBox ul {display:flex}
+.company .ofn_iconBox ul > li {display:flex; justify-content:center; align-items:center; flex:1; width:25%}
+.company .ofn_iconBox ul > li + li::before {content:'+'; display:block; color:#666; font-size:16px; line-height:26px}
+.company .ofn_iconBox ul > li .iconArea i {display:block}
+.company .ofn_iconBox ul > li .txtArea span {display:block; font-size:16px; line-height:26px}
+.company .ofn_iconBox ul > li .txtArea span + span {margin-top:6px}
+.company .ofn_iconBox ul > li .txtArea strong {font-weight:bold}
+.company .ofn_iconBox ul > li .txtArea strong.emp {font-size:24px; line-height:26px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
+
 .company ul.ico_list > li .iconArea i.ico-monitor {background:url(/kr/images/company/icon/ico-monitor.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-pc {background:url(/kr/images/company/icon/ico-desktop_pc.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-aircon {background:url(/kr/images/company/icon/ico-aircon.svg) no-repeat 50% 50%; background-size:80px 80px}
@@ -769,10 +782,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li strong {display:block; margin-top:0!important; margin-bottom:10px!important; font-size:18px; font-weight:500; line-height:28px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li > ul li + li {margin-top:4px!important}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {display:flex; justify-content:space-between; margin-top:12px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:340px; margin-left:0!important; text-indent:0!important}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {position:relative; margin-left:0}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:-61px; border-left:1px dashed #ddd}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {display:block; width:340px; margin:0 auto; border-radius:8px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {margin-left:0!important; text-indent:0!important;}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {position:relative;}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:0; border-left:1px dashed #ddd}
+@media screen and (min-width:768px){
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+1){width:31.74%;padding-right:4.76%;}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+2){width:36.5%;padding-right:4.76%;padding-left:4.76%;}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+3){width:31.74%;padding-left:4.76%;}
+}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {display:block; width:100%; margin:0 auto; border-radius:8px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li p {margin-top:12px; font-size:18px; font-weight:500; line-height:26px; text-align:center}
 
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull li > ul.dash_list {width:calc(100% + 12px); margin-left:-12px}
@@ -920,11 +938,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 img + img {margin-top:20px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
-
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {flex-direction:column; justify-content:center}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:100%}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {margin-top:12px}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {display:none}
 }
 
 @media screen and (max-width:1120px){
@@ -1038,6 +1051,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li {line-height:20px!important}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li + li {margin-top:8px!important}
 
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {flex-direction:column; justify-content:center}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:100%}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {margin-top:12px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {display:none}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {width:100%; max-width:100%}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li .tit {margin-top:10px!important; margin-bottom:0; font-size:15px; line-height:23px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li .text {margin-top:6px; font-size:14px; line-height:22px}
