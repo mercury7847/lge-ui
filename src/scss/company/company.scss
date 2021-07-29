@@ -20,7 +20,7 @@ br.pc{display:block;}
 .com-tabs .tabs-wrap.border-type .tabs>li>a {padding-bottom: 8px;}
 .com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {height:4px;}
 .com-tabs .tabs>li:hover .tabs-over{display:block;}
-.com-tabs .tabs-over{display:none;position:absolute;background-color: #ffffff;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);width:138px;border-radius: 4px;padding:4px 0;left: calc(50% - 69px);top: 44px;}
+.com-tabs .tabs-over{display:none;position:absolute;background-color: #ffffff;box-shadow: 0 4px 12px 0 rgba(0,0,0,0.14);width:138px;border-radius: 4px;padding:4px 0;left: calc(50% - 69px);top: 44px;}
 .com-tabs .tabs-over::before{display: block;content: "";position: absolute;width: 134px;height: 4px;top: -4px;}
 .com-tabs .tabs-over>li{text-align: center;}
 .com-tabs .tabs-over>li:hover{background-color: #f4f4f4;}
@@ -35,7 +35,7 @@ br.pc{display:block;}
 .com-text .text{word-break: keep-all;margin-top: 24px;font-size: 16px;font-weight: normal;line-height: 26px;color: #000000;}
 /* 정관 리스트 mo */
 .articles-list{margin-top: 24px;font-size:0;}
-.articles-list li{width:calc(50% - 12px);font-size: 16px;line-height: 1.63;color: #000000;border: 1px solid;border-color: #f2f2f2 #f1f1f1 #e4e4e4 #f0f0f0;box-shadow: 1px 6px 16px 0 rgb(0 0 0 / 14%);margin-bottom:16px;border-radius: 8px;background:url("/kr/images/company/investor/icon-articles-arr.png") right 30px center no-repeat;background-size: 24px;display: inline-block;}
+.articles-list li{width:calc(50% - 12px);font-size: 16px;line-height: 1.63;color: #000000;border: 1px solid;border-color: #f2f2f2 #f1f1f1 #e4e4e4 #f0f0f0;box-shadow: 1px 6px 16px 0 rgba(0,0,0,0.14);margin-bottom:16px;border-radius: 8px;background:url("/kr/images/company/investor/icon-articles-arr.png") right 30px center no-repeat;background-size: 24px;display: inline-block;}
 .articles-list li:nth-child(2n){margin-left:24px;}
 .articles-list li a,
 .articles-list li button{display:block;padding:30px;width: 100%;text-align: left;font-weight: bold;}
