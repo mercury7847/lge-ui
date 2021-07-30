@@ -586,6 +586,28 @@
                         }
                     });
 
+                    // 20210727 BTOCSITE-3577 고객지원 > Main 의 출장서비스 예약 영역에 제품 설치/철거 예약 탭 및 내용 추가
+                    self.el.container.find('.btn-installDemolition').on('click', function(){
+                        var _self = this;
+                        var href = $(this).data("href");
+                        var target = $(this).data("target");
+
+                        lgkorUI.confirm( "제품 이전 설치/철거 서비스는 <b>전문업체인</b><br> <b>(주)엘엑스판토스 홈페이지를 통해 예약이<br> 가능합니다.</b><br><br><b>(주)엘엑스판토스로 이동 하시겠습니까?</b>",{
+                            typeClass:'type2',
+                            title:'',
+                            okBtnName: '네',
+                            cancelBtnName: '아니요',
+                            ok: function() {
+                                if(href)  {
+                                    if(target) {
+                                        window.open(href, '_blank');
+                                    } else {
+                                        location.href = href;
+                                    }
+                                } 
+                            }
+                        });
+                    });
 
                     self.el.container.find('.btn-address').on('click', function() { 
                         self.addressFinder.open(function(data) { 
@@ -743,6 +765,27 @@
 
                     self.validateInit();
                     
+                    // 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가
+                    $(document).on('click', '.reserv-inquiry-slider .item-list a', function(e){
+                        var $this = $(this);
+                        var currentData = $this.data();
+                        var $form = $this.closest('.rersv-wrap').find('#reservInquiryForm');
+
+                        e.preventDefault();
+
+                        if( currentData ) {
+                            $.each(currentData, function(key, value){
+                                if( value ) {
+                                    if( key == 'username') {
+                                        $form.find('#username1').val(value)
+                                    } else {
+                                        $form.find('#' + key).val(value)
+                                    }
+                                }
+                            })
+                        }
+                        $form.submit();
+                    })
                 }
             },
             init : function(){

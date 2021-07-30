@@ -1,6 +1,8 @@
 {
     "data":
     {
+        "testFlag": "Y",
+        "testUserFlag": "Y",
         "periodSortSelect": "2",
         "success": "Y",
         "periodSortList": [
@@ -16,10 +18,7 @@
             "name": "1년차",
             "value": "1"
         }],
-        "description": [
-            "월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다.",
-            "고객님의 무상할인 회차는 3, 5, 6 회차 입니다."
-        ],
+        "description": ["월요금 무상할인 혜택을 받으신 회차는 납부 내역에서 제외됩니다."],
         "paymentList": [
         {
             "contLineSeq": "11547765",

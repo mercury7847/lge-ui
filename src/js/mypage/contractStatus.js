@@ -865,7 +865,6 @@
         }
     }
 
-    // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     function setContractInfo(data){
         mypage.find(".no-data").remove();
 

@@ -24,7 +24,7 @@
     @include mobile {
         display: inline-block;
     }
-}
+} 
 
 .unmanned-store-head {
     position: relative;
@@ -333,6 +333,89 @@
         max-width: 1380px + 80px;
         margin: 0 auto;
         padding: 0 40px;
+
+        //BTOCSITE-3289 무인매장 이용가이드 이북 제작 및 업로드 요청 - start
+        .content-tab-head {
+            position: relative;
+
+            @include mobile {
+                text-align: center;
+
+                .tabs-wrap {
+                    .tabs {
+                        overflow-x:hidden;
+                        margin:0 auto;
+                        > li {
+                            width:46vw;
+                            a {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .btn-experience-guide {
+                display: inline-block;
+                position: absolute;
+                right:0;
+                top:50%;
+                font-size:0;
+                transform:translateY(-50%);
+                z-index:1;
+
+                
+
+                &:before {
+                    content:"";
+                    display: inline-block;
+                    width:24px;
+                    height:24px;
+                    margin-right:4px;
+                    vertical-align: middle;
+                    background: url('/lg5-common/images/MA/unmanned-store/img_manual_MO_128.svg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+                &:after {
+                    content:"";
+                    display: inline-block;
+                    width:16px;
+                    height:16px;
+                    margin-left:4px;
+                    vertical-align: middle;
+                    background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+
+                
+                span {
+                    display: inline-block;
+                    font-size:16px;
+                    font-weight:bold;
+                    color:#000;
+                    padding-bottom:2px;
+                    line-height:1.2;
+                    vertical-align:middle;
+                    @include text-underline(0, #000);
+                }
+
+                @include mobile {
+                    position: static;
+                    transform:none;
+                    margin-bottom:45px;
+
+                    span {
+                        font-size:14px;
+                    }
+                }  
+                
+            }
+
+             
+        }
+        //BTOCSITE-3289 무인매장 이용가이드 이북 제작 및 업로드 요청 - end
+
+
         .service-title {
             margin-bottom: 64px;
             @include font(40px,56px);
@@ -342,7 +425,7 @@
             max-width: 100%;
             padding: 0px;
             .service-title {
-                margin-bottom: 32px;
+                margin-bottom: 16px; //BTOCSITE-3289 무인매장 이용가이드 이북 제작 및 업로드 요청
                 @include font(27px,38px);
             }
         }

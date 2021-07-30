@@ -1,0 +1,28 @@
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 start -->
+<li class="lists">
+    <div class="list-inner">
+        @@if (!context.imgLinkTarget) {
+            <a href="@@imgLink">
+        }
+        @@if (context.imgLinkTarget) {
+            <a href="@@imgLink" target="@@imgLinkTarget">
+        }
+                <span class="thumb">
+                    <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">       
+                </span>
+                <p class="hidden">graphic description : @@accessibility</p>
+            </a>
+            <div class="info">                  
+                @@if (!context.titleLinkTarget) {
+                    <a href="@@titleLink" class="tit">
+                }
+                @@if (context.titleLinkTarget) {
+                    <a href="@@titleLink" class="tit" target="@@titleLinkTarget">
+                }
+                        <span class="blind">@@title-hd</span>@@title
+                     </a>
+                <p class="date"><span class="blind">@@date-hd</span>@@date</p>       
+            </div>
+    </div>
+</li>
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 end -->
