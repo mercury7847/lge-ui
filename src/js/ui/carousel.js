@@ -1435,7 +1435,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 self.focusHandler();
 
                 self.buildPlayButton();
-                self.buildAccessbility.call(self);  // BTOCSITE-2596
+                self.buildAccessbility();
 
 
             }
