@@ -1708,6 +1708,10 @@
     &.on {
         display: block;
     }
+
+    .ui_carousel_hidden {
+        display: none;
+    }
 }
 
 /* 통합검색 레이어팝업 */

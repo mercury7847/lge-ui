@@ -68,7 +68,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var gotourl = self.$el.data('gotoUrl');
             var cancelurl = self.$el.data('cancelUrl');
 
-            console.log("self.$el", self.$el)
             self.$el.find('.before-login a').each(function(idx, item){
                 var href = $(item).attr('href');
                 var exist = href.indexOf(cancelurl);
@@ -138,6 +137,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
+            self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
+            self.$mobileNaviWrapper.find('img').remove();
+            self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
             self.$headerBottom = self.$el.find('.header-bottom');            
@@ -392,19 +394,47 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                 }
                             })
                         }
+                        // //BTOCSITE-1937 스프레드 메뉴 수정
+                        // $superCategoryContent.each(function(){
+                        //     var $content = $(this);
+                        //     var $firstAnchor = $content.find('a, button').filter(':visible').first();
+                        //     var $lastAnchor = $content.find('a, button').filter(':visible').last();
+
+                        //     $firstAnchor.off('keydown.superContentFirstKey').on('keydown.superContentFirstKey', function(e){
+                        //         if( e.keyCode == 9 && e.shiftKey) {
+                        //             if( $('[href="#' + $content.attr('id') + '"]').length ) {
+                        //                 e.preventDefault();
+                        //                 $('[href="#' + $content.attr('id') + '"]').focus();
+                        //             }
+                        //         }
+                        //     })
+
+                        //     $lastAnchor.off('keydown.superContentLastKey').on('keydown.superContentLastKey', function(e){
+                        //         if( e.keyCode == 9 && !e.shiftKey) {
+                        //             var $currentAnchor = $('[href="#' + $content.attr('id') + '"]');
+
+                        //             console.log("$currentAnchor", $currentAnchor.parent().next())
+                        //             var $nextSlide = $currentAnchor.parent().next('.swiper-slide');
+                        //             if( $nextSlide.length ) {
+                        //                 e.preventDefault();
+                        //                 $nextSlide.find('a').focus();
+                        //             }
+                        //         }
+                        //     })
+                        // });
                     }
                     self._setOver(idx, 0);
                 });
 
                 //BTOCSITE-1937 스프레드 메뉴 수정
-                $(item).find('.super-category-nav > ul >li').each(function(cdx, child){
-                    $(child).on('click', '> a', function(e){
-                        e.preventDefault();
-                        self._setOver(idx, cdx);
-                    });
+                // $(item).find('.super-category-nav > ul >li').each(function(cdx, child){
+                //     $(child).on('mouseover focus', '> a', function(e){
+                //         e.preventDefault();
+                //         self._setOver(idx, cdx);
+                //     });
 
-                    self._addCarousel($(item).find('.super-category-content').find('.ui_carousel_slider'));
-                });
+                //     self._addCarousel($(item).find('.super-category-content').find('.ui_carousel_slider'));
+                // });
             });
 
             // self.$pcNaviWrapper.data('initWidth', self.$pcNaviWrapper.outerWidth(true));
@@ -431,8 +461,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
             })
 
-            $(document).on('click', '.nav:not(.ui_gnb_accordion) .super-category-nav .swiper-slide a', function(e){
+            //BTOCSITE-1937 스프레드 메뉴 수정
+            $(document).on('mouseover focus', '.nav:not(.ui_gnb_accordion) .super-category-nav .swiper-slide a', function(e){
                 var $this = $(this);
+                var $navInner = $this.closest('.nav-category-inner');
                 var $currentContent = $this.attr('href');
                 var $parent = $this.parent();
 
@@ -440,11 +472,35 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 
                 if( !$parent.hasClass('on')) {
                     $parent.addClass('on').siblings().removeClass('on');
-                    $($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
-                    $($currentContent).find('.ui_carousel_slider').vcCarousel('update')
+                    $navInner.find($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
+                    $navInner.find($currentContent).find('.ui_carousel_slider').vcCarousel('update')
                 }
             });
 
+            //BTOCSITE-1937 스프레드 메뉴 수정
+            var $superCategoryNav =$('.nav').not('ui_gnb_accordion').find('.super-category-nav');
+            var $superCategoryContent = $('.nav').not('ui_gnb_accordion').find('.super-category-content');
+
+            //BTOCSITE-1937 스프레드 메뉴 수정
+            $superCategoryNav.find('a').on('keydown', function(e){
+                var $this = $(this);
+                var $navInner = $this.closest('.nav-category-inner');
+                var $currentContent = $this.attr('href');
+                var $parent = $this.closest('.swiper-slide');
+
+                if( e.keyCode == 9 && !e.shiftKey) {
+                    e.preventDefault();
+
+                    $navInner.find($currentContent).find('a').first().focus();
+                } else if( e.keyCode == 9 && e.shiftKey) {
+                    if( $parent.prev('.swiper-slide').length) {
+                        e.preventDefault();
+
+                        $parent.prev('.swiper-slide').find('a').focus();
+                    }
+                }
+            })
+            
             self.$leftArrow.on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
@@ -560,11 +616,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             if( isSwipe ) {
                 $('body').addClass('is-main-sticky-header');
-            }
-
-            self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
-            self.$mobileNaviWrapper.find('img').remove();
-            self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
+            }            
 
             //BTOCSITE-1937 스프레드 메뉴 수정
             self.$mobileNaviItems.each(function(idx, item){
