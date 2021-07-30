@@ -500,6 +500,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             })
+
+            //BTOCSITE-1937 스프레드 메뉴 수정
+            $superCategoryNav.each(function(){
+                var $this = $(this);
+                var $firstAnchor = $this.find('a').first();
+
+                $firstAnchor.on('keydown', function(e){
+                    var $currentContent = $(this).closest('.super-category-content');
+                    var $currentNav = $('[href="#' + $currentContent.attr('id') + '"]')
+
+                    if( e.keyCode == 9 && e.shiftKey) {
+                        e.preventDefault();
+                        $currentNav.focus()
+                    }
+                });
+            });
+          
             
             self.$leftArrow.on('click', function(e){
                 e.preventDefault();
