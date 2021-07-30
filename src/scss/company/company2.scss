@@ -457,6 +457,11 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .estim_grp {margin-bottom:30px}
 .company .estim_grp > img {display:block; margin:0 auto}
+
+.company ul.esg_logos {display:flex; flex-wrap:wrap; justify-content:space-between; margin-bottom:-20px}
+.company ul.esg_logos > li {display:flex; justify-content:center; align-items:center; width:calc(25% - 18px); height:100px; margin-bottom:20px; border:1px solid #ddd; border-radius:8px; font-size:20px; font-weight:bold; line-height:30px; text-align:center; overflow:hidden}
+.company ul.esg_logos > li > img {max-width:100%}
+.company ul.esg_logos > li > span {word-break:break-word}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -1048,6 +1053,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.cmSystem > li .step > span {width:84px; height:84px; margin:9px; font-size:15px; line-height:85px}
     .company ul.cmSystem > li ul {margin:0; padding:0}
     .company ul.cmSystem > li ul li + li {margin-top:2px!important}
+
+    .company ul.esg_logos > li {width:calc(50% - 12px)}
 }
 
 @media screen and (max-width:860px){
@@ -1618,4 +1625,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .estim_grp {margin-bottom:15px}
     .company .estim_grp > img {width:100%; max-width:100%}
+
+    .company ul.esg_logos {margin-bottom:-10px}
+    .company ul.esg_logos > li {width:calc(50% - 8px); height:50px; min-height:50px; margin-bottom:10px; padding:0 10px}
+    .company ul.esg_logos > li > span {font-size:13px; line-height:21px}
+    .company ul.esg_logos > li > img {height:100%}
 }
