@@ -394,60 +394,24 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                 }
                             })
                         }
-                        // //BTOCSITE-1937 스프레드 메뉴 수정
-                        // $superCategoryContent.each(function(){
-                        //     var $content = $(this);
-                        //     var $firstAnchor = $content.find('a, button').filter(':visible').first();
-                        //     var $lastAnchor = $content.find('a, button').filter(':visible').last();
-
-                        //     $firstAnchor.off('keydown.superContentFirstKey').on('keydown.superContentFirstKey', function(e){
-                        //         if( e.keyCode == 9 && e.shiftKey) {
-                        //             if( $('[href="#' + $content.attr('id') + '"]').length ) {
-                        //                 e.preventDefault();
-                        //                 $('[href="#' + $content.attr('id') + '"]').focus();
-                        //             }
-                        //         }
-                        //     })
-
-                        //     $lastAnchor.off('keydown.superContentLastKey').on('keydown.superContentLastKey', function(e){
-                        //         if( e.keyCode == 9 && !e.shiftKey) {
-                        //             var $currentAnchor = $('[href="#' + $content.attr('id') + '"]');
-
-                        //             console.log("$currentAnchor", $currentAnchor.parent().next())
-                        //             var $nextSlide = $currentAnchor.parent().next('.swiper-slide');
-                        //             if( $nextSlide.length ) {
-                        //                 e.preventDefault();
-                        //                 $nextSlide.find('a').focus();
-                        //             }
-                        //         }
-                        //     })
-                        // });
                     }
                     self._setOver(idx, 0);
                 });
-
-                //BTOCSITE-1937 스프레드 메뉴 수정
-                // $(item).find('.super-category-nav > ul >li').each(function(cdx, child){
-                //     $(child).on('mouseover focus', '> a', function(e){
-                //         e.preventDefault();
-                //         self._setOver(idx, cdx);
-                //     });
-
-                //     self._addCarousel($(item).find('.super-category-content').find('.ui_carousel_slider'));
-                // });
             });
 
             // self.$pcNaviWrapper.data('initWidth', self.$pcNaviWrapper.outerWidth(true));
 
             $('.nav-wrap .nav-inner').on('mouseover', function(e){
-                self._removeOutTimeout();
-
-                
+                self._removeOutTimeout();                
             });
+
+
+            var $superContentLastAnchor = null;
 
             //BTOCSITE-1937 스프레드 메뉴 수정
             $('header').on('mouseleave', function(){
                 self._setOut();
+                $superContentLastAnchor = null
                 if( $('.nav:not(.ui_gnb_accordion) .super-category-nav').hasClass('swiper-container-initialized')) {
                     superNavSwiper.destroy();
                 }
@@ -456,10 +420,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //BTOCSITE-1937 스프레드 메뉴 수정
             $('.nav-category-inner').on('mouseleave',function(){
                 self._setOut();
+                $superContentLastAnchor = null
                 if( $('.nav:not(.ui_gnb_accordion) .super-category-nav').hasClass('swiper-container-initialized')) {
                     superNavSwiper.destroy();
                 }
             })
+
+            
 
             //BTOCSITE-1937 스프레드 메뉴 수정
             $(document).on('mouseover focus', '.nav:not(.ui_gnb_accordion) .super-category-nav .swiper-slide a', function(e){
@@ -474,6 +441,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     $parent.addClass('on').siblings().removeClass('on');
                     $navInner.find($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
                     $navInner.find($currentContent).find('.ui_carousel_slider').vcCarousel('update')
+
+                    $superContentLastAnchor = $navInner.find($currentContent).find('a, button').last();
                 }
             });
 
@@ -516,6 +485,22 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 });
             });
+
+
+            if( $superContentLastAnchor != null) {
+                $superContentLastAnchor.on('keydown', function(e){
+                    var $currentContent = $(this).closest('.super-category-content');
+                    var $currentNav = $('[href="#' + $currentContent.attr('id') + '"]')
+    
+                    if( e.keyCode == 9 && e.shiftKey) {
+                        if( $currentNav.closest('.swiper-slide').next('.swiper-slide').length) {
+                            e.preventDefault();
+                            $currentNav.closest('.swiper-slide').next('.swiper-slide').find('a').first().focus()
+                            console.log(1111)
+                        }
+                    }
+                });
+            }
           
             
             self.$leftArrow.on('click', function(e){
