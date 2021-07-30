@@ -21,11 +21,7 @@
 		height:auto;
 	}
 	// BTOCSITE-3800 제품 리뷰 하단 문구 추가 요청 start
-	.cont-wrap.review-wrap{
-		background:blue;
-	}
 	.review-info-text{
-		background:red;
 		padding-left:44px;
 		.bullet-list{
 			margin-top:5px !important;
@@ -48,7 +44,6 @@
 	}
 	@media screen and (max-width: 767px){
 		.review-info-text{
-			background:green;
 			padding-left:0;
 			.bullet-list{
 				margin-top:4px !important;
