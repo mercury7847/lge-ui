@@ -61,10 +61,6 @@
 
 .header {
     position:relative;
-    @include mobile {
-        border-bottom: 0;
-        margin-bottom: 0px;
-    }
 }
 
 .header-wrap {
@@ -96,7 +92,7 @@
     padding: 18px 0;
 
     @include mobile {
-        padding:10px 0 11px;
+        padding: 10px 0 11px;
     }
 }
 
@@ -1369,7 +1365,7 @@
             background-color: #fff;
         }
 
-        //210701 앱 알람아이콘 N 뱃지 추가
+        //210704 앱 알람아이콘 N 뱃지 추가
         .count{
             position: absolute;
             top: 2px;
@@ -1386,7 +1382,7 @@
             color: $color-white;
             text-align: center;
         }
-        //210701 앱 알람아이콘 N 뱃지 추가
+        //210704 앱 알람아이콘 N 뱃지 추가
     }
 
     &.active {
@@ -1418,11 +1414,11 @@
                     padding-bottom:60px;
                 }
             }
-            //210701 앱 알람아이콘 N 뱃지 추가
+            // 210714 알람체크 N뱃지 아이콘 
             .count {
                 display: none;
             }
-            //210701 앱 알람아이콘 N 뱃지 추가
+
 
         }
     }
