@@ -2,7 +2,7 @@
     var listItemTemplate =
 		 '<tr>'
 		+	'<td class="board-tit">'
-		+		'<a href="/company/investor/announceView?anncmNo={{announcementNo}}">'
+		+		'<a href="/company/investor/announceView?anncmNo={{announcementNo}}&page={{page}}">'
 		+			'{{#if (isNew == "Y")}}'
 		+				'<p class="new">NEW</p>'
 		+			'{{/if}}'
@@ -42,6 +42,7 @@
             self.$pagination.on('page_click', function(e, data) {
                 var param = {'page':data}
                 self.requestData(param);
+                history.replaceState(null, '', '?page=' + data);
                 document.preventDefault();
             });
         },
