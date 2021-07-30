@@ -378,7 +378,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     e.preventDefault();
                     
                     if( $superNav.length ) {                        
-                        self._setOver(idx, 0);
                         $superNav.find('.swiper-slide').removeClass('on')
                         $superNav.find('.swiper-slide').eq(0).addClass('on');
                         $superContent.removeClass('on');
@@ -393,9 +392,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                 }
                             })
                         }
-                    } else {
-                        self._setOver(idx, -1);
                     }
+                    self._setOver(idx, 0);
                 });
 
                 //BTOCSITE-1937 스프레드 메뉴 수정
