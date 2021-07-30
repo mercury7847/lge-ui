@@ -1,4 +1,258 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<!--<script type="text/javascript" src="/kr/images/company/investorhighlight.js"></script>-->
+<script type="text/javascript">
+	google.charts.load("current", {packages:["corechart"]});
+	google.charts.setOnLoadCallback(drawChart);
+	var dataSubsidy, chartSubsidy;
+	var dataMale, chartMale, optionsMale;
+	var dataFemale, chartFemale;
+	var dataLong01, chartLong01, containerLong01, optionsLong;
+	var dataLong02, chartLong02, containerLong02;
+	var dataLong03, chartLong03, containerLong03;
+	var dataLong04, chartLong04;
+	var dataShort01, chartShort01, optionsShort;
+	var dataShort02, chartShort02;
+	var dataShort03, chartShort03;
+	var dataShort04, chartShort04;
+	function drawChart() {
+		dataSubsidy = google.visualization.arrayToDataTable([
+			['year', '세금 감면 및 공제', '투자 지원, R&D 지원, 기타 지원 등'],
+			['2020', 951, 6855],
+			['2019', 152, 7450],
+			['2018', 32, 8734],
+		]);
+		dataMale = google.visualization.arrayToDataTable([
+			['year', '사무직', '기술직'],
+			['2020', 166, 106],
+			['2019', 169, 103],
+			['2018', 181, 117],
+		]);
+		dataFemale = google.visualization.arrayToDataTable([
+			['year', '사무직', '기술직'],
+			['2020', 166, 106],
+			['2019', 169, 103],
+			['2018', 181, 117],
+		]);
+		dataLong01 = google.visualization.arrayToDataTable([
+			['year', 'LNG도시가스 (한국)', 'LNG 도시가스 (해외)', '석탄 (한국)', '석탄 (해외)', '기타 (한국)', '기타 (해외)', '소계'],
+			['2020', 879, 741, 0, 0, 74, 658, 2352 ],
+			['2019', 827, 772, 0, 0, 72, 534, 2205 ],
+			['2018', 1243, 538, 0, 0, 117, 441, 2339 ],
+		]);
+		dataLong02 = google.visualization.arrayToDataTable([
+			['year', '태양열', '풍력', '바이오메스', '기타', '소계'],
+			['2020', 5.5, 0.0, 0.0, 79.0, 84.5],
+			['2019', 5.4, 0.0, 0.0, 62.0, 67.4],
+			['2018', 0.7, 0.0, 0.0, 16.7, 17.5],
+		]);
+		dataLong03 = google.visualization.arrayToDataTable([
+			['year', '전기 (한국)', '전기 (해외)', '스팀 (한국)', '스팀 (해외)'],
+			['2020', 3239, 2643, 394, 3],
+			['2019', 2946, 2664, 395, 6],
+			['2018', 3902, 2315, 450, 35],
+		]);
+		dataLong04 = google.visualization.arrayToDataTable([
+			['year', '재활용수', '사내처리시설 처리', '사외처리시설 및 기타 처리'],
+			['2020', 541.0, 4863.0, 11.0],
+			['2019', 175.0, 4978.0, 8.7],
+			['2018', 223.0, 6256.0, 10.6],
+		]);
+		dataShort01 = google.visualization.arrayToDataTable([
+			['year', '한국', '해외', '총계'],
+			['2020', 37.2, 21.8, 59.0],
+			['2019', 29.7, 58.5, 88.1],
+			['2018', 20.9, 34.5, 55.4],
+		]);
+		dataShort02 = google.visualization.arrayToDataTable([
+			['year', '한국', '해외', '총계'],
+			['2020', 0.0, 3.4, 3.4 ],
+			['2019', 0.2, 12.8, 13.0],
+			['2018', 5.8, 32.5, 38.3],
+		]);
+		dataShort03 = google.visualization.arrayToDataTable([
+			['year', '한국', '해외', '총계'],
+			['2020', 265.5, 187.0, 452.5 ],
+			['2019', 8.9, 106.5, 115.4 ],
+			['2018', 18.0, 3.7, 21.7 ],
+		]);
+		dataShort04 = google.visualization.arrayToDataTable([
+			['year', '한국', '해외', '총계'],
+			['2020', 11.0, 35.0, 46.0 ],
+			['2019', 7.6, 61.9, 69.5 ],
+			['2018', 7.5, 57.9, 65.4 ],
+		]);
+		optionsLong = {
+			vAxis:{format: 'decimal'},
+			legend: {position: 'top',maxLines: 3},
+			bar: { groupWidth: '50%' },
+			series: {
+				0: { color: '#e81953'},
+				1: { color: '#e81954'},
+				2: { color: '#e81955' },
+				3: { color: '#000000' },
+				4: { color: '#000001' },
+				5: { color: '#000002'},
+				6: { color: '#666666'}
+			},
+			chartArea: {width: '90%',right:'0%'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		optionsShort = {
+			vAxis:{format: 'decimal'},
+			legend: {position: 'top',maxLines: 3},
+			bar: { groupWidth: '50%' },
+			series: {
+				0: { color: '#e81953'},
+				1: { color: '#000000' },
+				2: { color: '#666666'}
+			},
+			chartArea: {width: '90%',right:'0%'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		checkSize();
+		chartSubsidy = new google.visualization.ColumnChart(document.getElementById("chartSubsidy"));
+		chartMale = new google.visualization.ColumnChart(document.getElementById("chartMale"));
+		chartFemale = new google.visualization.ColumnChart(document.getElementById("chartFemale"));
+		containerLong01 = document.getElementById("chartLong01");
+		chartLong01 = new google.visualization.ColumnChart(containerLong01);
+		containerLong02 = document.getElementById("chartLong02");
+		chartLong02 = new google.visualization.ColumnChart(containerLong02);
+		containerLong03 = document.getElementById("chartLong03");
+		chartLong03 = new google.visualization.ColumnChart(containerLong03);
+		chartLong04 = new google.visualization.ColumnChart(document.getElementById("chartLong04"));
+		chartShort01 = new google.visualization.ColumnChart(document.getElementById("chartShort01"));
+		chartShort02 = new google.visualization.ColumnChart(document.getElementById("chartShort02"));
+		chartShort03 = new google.visualization.ColumnChart(document.getElementById("chartShort03"));
+		chartShort04 = new google.visualization.ColumnChart(document.getElementById("chartShort04"));
+		
+		google.visualization.events.addListener(chartLong01, 'ready', function () {
+			var observer = new MutationObserver(function () {
+				containerLong01.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				containerLong02.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				containerLong03.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				Array.prototype.forEach.call(containerLong01.getElementsByTagName('rect'), function(rect) {
+					if (rect.getAttribute('fill') === '#e81954') {
+						rect.setAttribute('fill', 'url(#pattern-splite1)');
+					}
+					else if (rect.getAttribute('fill') === '#e81955') {
+						rect.setAttribute('fill', 'url(#pattern-dashed1)');
+					}
+					else if (rect.getAttribute('fill') === '#000001') {
+						rect.setAttribute('fill', 'url(#pattern-splite2)');
+					}
+					else if (rect.getAttribute('fill') === '#000002') {
+						rect.setAttribute('fill', 'url(#pattern-dashed2)');
+					}
+					else if (rect.getAttribute('fill') === '#666666') {
+						rect.setAttribute('fill', 'url(#pattern-circle)');
+					}
+				});
+				Array.prototype.forEach.call(containerLong02.getElementsByTagName('rect'), function(rect) {
+					if (rect.getAttribute('fill') === '#e81954') {
+						rect.setAttribute('fill', 'url(#pattern-splite1)');
+					}
+					else if (rect.getAttribute('fill') === '#e81955') {
+						rect.setAttribute('fill', 'url(#pattern-dashed1)');
+					}
+					else if (rect.getAttribute('fill') === '#000001') {
+						rect.setAttribute('fill', 'url(#pattern-splite2)');
+					}
+					else if (rect.getAttribute('fill') === '#000002') {
+						rect.setAttribute('fill', 'url(#pattern-dashed2)');
+					}
+					else if (rect.getAttribute('fill') === '#666666') {
+						rect.setAttribute('fill', 'url(#pattern-circle)');
+					}
+				});
+				Array.prototype.forEach.call(containerLong03.getElementsByTagName('rect'), function(rect) {
+					if (rect.getAttribute('fill') === '#e81954') {
+						rect.setAttribute('fill', 'url(#pattern-splite1)');
+					}
+					else if (rect.getAttribute('fill') === '#e81955') {
+						rect.setAttribute('fill', 'url(#pattern-dashed1)');
+					}
+					else if (rect.getAttribute('fill') === '#000001') {
+						rect.setAttribute('fill', 'url(#pattern-splite2)');
+					}
+					else if (rect.getAttribute('fill') === '#000002') {
+						rect.setAttribute('fill', 'url(#pattern-dashed2)');
+					}
+					else if (rect.getAttribute('fill') === '#666666') {
+						rect.setAttribute('fill', 'url(#pattern-circle)');
+					}
+				});
+			});
+			observer.observe(containerLong01, {
+				childList: true,
+				subtree: true
+			});
+		});
+		chartSubsidy.draw(dataShort01, optionsShort);
+		chartMale.draw(dataShort01, optionsShort);
+		chartFemale.draw(dataShort01, optionsShort);
+	}
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			optionsLong.fontSize="12";
+			optionsShort.fontSize="12";
+		}
+		else{
+			optionsLong.fontSize="16";
+			optionsShort.fontSize="16";
+		}
+	}
+	$(window).resize(function() {
+		checkSize();
+		if($("#tab1").css("display")=="block"){
+			chartSubsidy.draw(dataShort01, optionsShort);
+			chartMale.draw(dataShort01, optionsShort);
+			chartFemale.draw(dataShort01, optionsShort);
+		}
+		else if($("#tab2").css("display")=="block"){
+			chartLong01.draw(dataLong01, optionsLong);
+			chartLong02.draw(dataLong02, optionsLong);
+			chartLong03.draw(dataLong03, optionsLong);
+			chartLong04.draw(dataLong04, optionsShort);
+			chartShort01.draw(dataShort01, optionsShort);
+			chartShort02.draw(dataShort02, optionsShort);
+			chartShort03.draw(dataShort03, optionsShort);
+			chartShort04.draw(dataShort04, optionsShort);
+		}
+	});
+	$(document).ready(function() {
+		$("a[href='#tab1']").on('click', function(e){
+			setTimeout(function(){
+				chartSubsidy.draw(dataShort01, optionsShort);
+				chartMale.draw(dataShort01, optionsShort);
+				chartFemale.draw(dataShort01, optionsShort);
+			}, 500);
+		});
+		$("a[href='#tab2']").on('click', function(e){
+			setTimeout(function(){
+				chartLong01.draw(dataLong01, optionsLong);
+				chartLong02.draw(dataLong02, optionsLong);
+				chartLong03.draw(dataLong03, optionsLong);
+				chartLong04.draw(dataLong04, optionsShort);
+				chartShort01.draw(dataShort01, optionsShort);
+				chartShort02.draw(dataShort02, optionsShort);
+				chartShort03.draw(dataShort03, optionsShort);
+				chartShort04.draw(dataShort04, optionsShort);
+			}, 500);
+		});
+	});
+</script>
+<style>
+	.googlechart-wrap {position: relative;max-width:940px;margin:0 auto;}
+	.googlechart-wrap .chartarea {height:600px;}
+	@media screen and (max-width: 767px){
+		.googlechart-wrap{width:100%;}
+		.googlechart-wrap .chartarea {height:90vw;}
+	}
+</style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -106,7 +360,7 @@
 	<div class="com-tabs">
 		<div class="tabs-wrap bar-type ui_tab left">
 			<ul class="tabs">
-				<li class="on"><a href="#tab1">구성<em class="blind">경제</em></a></li>
+				<li class="on"><a href="#tab1">경제<em class="blind">선택됨</em></a></li>
 				<li><a href="#tab2">환경</a></li>
 				<li><a href="#tab3">사회</a></li>
 				<li><a href="#tab4">기타</a></li>
@@ -121,7 +375,7 @@
 		<div class="com-text">
 			<p class="tit tbl_tit">요약 연결손익계산서</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">
-				<div class="tbl_info rt">(기준: 백 만원)</div>
+				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
 					<caption>요약 연결손익계산서 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
 					<colgroup>
@@ -416,6 +670,9 @@
 				</table>
 			</div>
 			<p class="tit mt60">정부 지원 보조금 수혜 실적(한국)</p>
+			<div class="googlechart-wrap">
+				<div class="chartarea" id="chartSubsidy"></div>
+			</div>
 			<!-- 구글차트 -->
 		</div>
 		<div class="com-text">
@@ -473,8 +730,22 @@
 				</table>
 			</div>
 			<p class="tit">성별 최저임금 대비 신입사원 임금 비율(한국)</p>
-			<p class="tit tbl_tit">1) 남성</p>
-			<p class="tit tbl_tit">2) 여성</p>
+			
+			<ul class="pc2mo1">
+				<li>
+					<p class="tit tbl_tit">1) 남성</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartMale"></div>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">2) 여성</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartFemale"></div>
+					</div>
+				</li>
+			</ul>
+			
 			<!-- 구글차트2 -->
 			<p class="tit">협력회사로부터 직접 구매한 금액</p>
 			<p class="tit tbl_tit">1) 지역별</p>
@@ -648,8 +919,17 @@
 		<div class="com-text">
 			<p class="tit">조직 에너지 사용량</p>
 			<p class="tit tbl_tit">1) 재생 불가능 원료</p>
+			<div class="googlechart-wrap">
+				<div class="chartarea" id="chartLong01"></div>
+			</div>
 			<p class="tit tbl_tit">2) 재생 에너지</p>
+			<div class="googlechart-wrap">
+				<div class="chartarea" id="chartLong02"></div>
+			</div>
 			<p class="tit tbl_tit">3) 에너지 구매</p>
+			<div class="googlechart-wrap">
+				<div class="chartarea" id="chartLong03"></div>
+			</div>
 			<!-- 구글차트3 -->
 			<p class="footnotes">
 				※ 검증 대상 사업장<br>
@@ -660,14 +940,14 @@
 				※ 검증 현황: 제3자 검증 완료(냉매 탈루 배출량 제외)<br>
 				※ 2019년 해외데이터 검증지연으로 2021년 최종확인되어 정정공시함
 			</p>
-			<p class="tit">온실가스 배출량(Scope 1, 2)</p>
+			<p class="tit mt30">온실가스 배출량(Scope 1, 2)</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">
 				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
 				<table>
 					<caption>온실가스 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:30%;">
-						<col style="width:10%;">
+						<col style="width:25%;">
+						<col style="width:15%;">
 						<col style="width:20%;">
 						<col style="width:20%;">
 						<col style="width:20%;">
@@ -682,7 +962,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<th scope="row" rowspan="2" colspan="2">직접 온실가스 배출량 (Scope1)</th>
+							<th scope="row" rowspan="2">직접 온실가스 배출량 (Scope1)</th>
 							<td>한국</td>
 							<td>294</td>
 							<td>466</td>
@@ -695,7 +975,7 @@
 							<td>135</td>
 						</tr>
 						<tr>
-							<th scope="row" rowspan="2" colspan="2"></th>
+							<th scope="row" rowspan="2">간접 온실가스 배출량 (Scope2)</th>
 							<td>한국</td>
 							<td>382</td>
 							<td>385</td>
@@ -737,13 +1017,13 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">온실가스 배출량(Scope 3)</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">
+			<div class="tb_row tb-row-bl middle keepAll">
 				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
 				<table>
 					<caption>온실가스 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:30%;">
-						<col style="width:10%;">
+						<col style="width:25%;">
+						<col style="width:15%;">
 						<col style="width:20%;">
 						<col style="width:20%;">
 						<col style="width:20%;">
@@ -758,7 +1038,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<th scope="row" rowspan="3" colspan="2">직접 온실가스 배출량 (Scope3)</th>
+							<th scope="row" rowspan="3">직접 온실가스 배출량 (Scope3)</th>
 							<td>출장</td>
 							<td>20,692</td>
 							<td>58,337</td>
@@ -785,15 +1065,37 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">대기 오염물질 배출량</p>
-			<p class="tit tbl_tit">1) NOx (질소산화물)</p>
-			<p class="tit tbl_tit">2) SOx (황산화물)</p>
-			<p class="tit tbl_tit">3) VOCs (휘발성 유기화합물)</p>
-			<p class="tit tbl_tit">4) 분진</p>
+			<ul class="pc2mo1">
+				<li>
+					<p class="tit tbl_tit">1) NOx (질소산화물)</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartShort01"></div>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">2) SOx (황산화물)</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartShort02"></div>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">3) VOCs (휘발성 유기화합물)</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartShort03"></div>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">4) 분진</p>
+					<div class="googlechart-wrap">
+						<div class="chartarea" id="chartShort04"></div>
+					</div>
+				</li>
+			</ul>
 			<!-- 구글차트4 -->
 		</div>
 		<div class="com-text">
 			<p class="tit">유형과 처리방법에 따른 폐기물 배출량</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">
+			<div class="tb_row tb-row-bl middle keepAll">
 				<div class="tbl_info rt abs2">(기준: 톤)</div>
 				<table>
 					<caption>유형과 처리방법에 따른 폐기물 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -822,13 +1124,13 @@
 							<td>1,060</td>
 						</tr>
 						<tr>
-							<td class="bo_l">소각</td>
+							<td class="bo_l" colspan="2">소각</td>
 							<td>670</td>
 							<td>633</td>
 							<td>927</td>
 						</tr>
 						<tr>
-							<td class="bo_l">매립</td>
+							<td class="bo_l" colspan="2">매립</td>
 							<td>-</td>
 							<td>853</td>
 							<td>66</td>
@@ -854,7 +1156,7 @@
 							<td class="bold_m">131,908</td>
 						</tr>
 						<tr>
-							<th scope="row" rowspan="3">소각</th>
+							<th scope="row" rowspan="3" class="bo_l">소각</th>
 							<td>국내</td>
 							<td>6,776</td>
 							<td>7.197</td>
@@ -873,7 +1175,7 @@
 							<td class="bold_m">10,957</td>
 						</tr>
 						<tr>
-							<th scope="row" rowspan="3">매립</th>
+							<th scope="row" rowspan="3" class="bo_l">매립</th>
 							<td>국내</td>
 							<td>174</td>
 							<td>202</td>
@@ -892,7 +1194,7 @@
 							<td class="bold_m">31,712</td>
 						</tr>
 						<tr>
-							<th scope="row" rowspan="3" class="bold_m">총계</th>
+							<th scope="row" rowspan="3" class="bo_l bold_m">총계</th>
 							<td>국내</td>
 							<td>59,856</td>
 							<td>48,805</td>
@@ -919,18 +1221,142 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">중대한 화학물질 유출</p>
-			<p class="tit tbl_tit">1) 유출 건수</p>
+			<ul class="pc2mo1">
+				<li>
+					<p class="tit tbl_tit">1) 유출 건수</p>
+					<div class="tb_row tb-row-bl middle keepAll pd">  
+						<div class="tbl_info rt abs2">(단위: 건)</div>
+						<table>
+							<caption>유출 건수 표, 2020년, 2019년, 2018년</caption>
+							<colgroup>
+								<col style="width:33%;">
+								<col style="width:33%;">
+								<col style="width:33%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">2020년</th>
+									<th scope="col">2019년</th>
+									<th scope="col">2018년</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">2) 유출량</p>
+					<div class="tb_row tb-row-bl middle keepAll pd">  
+						<div class="tbl_info rt abs2">(단위: 톤)</div>
+						<table>
+							<caption>유출량 표, 2020년, 2019년, 2018년</caption>
+							<colgroup>
+								<col style="width:33%;">
+								<col style="width:33%;">
+								<col style="width:33%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">2020년</th>
+									<th scope="col">2019년</th>
+									<th scope="col">2018년</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+			<p class="tit mt30">환경법규 위반</p>
+			<ul class="pc2mo1">
+				<li>
+					<p class="tit tbl_tit">1) 벌금의 재무적 가치</p>
+					<div class="tb_row tb-row-bl middle keepAll pd">  
+						<div class="tbl_info rt abs2">(단위: 원)</div>
+						<table>
+							<caption>벌금의 재무적 가치 표, 2020년, 2019년, 2018년</caption>
+							<colgroup>
+								<col style="width:33%;">
+								<col style="width:33%;">
+								<col style="width:33%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">2020년</th>
+									<th scope="col">2019년</th>
+									<th scope="col">2018년</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<p class="tit tbl_tit">2) 비금전적 제재 건수</p>
+					<div class="tb_row tb-row-bl middle keepAll pd">  
+						<div class="tbl_info rt abs2">(단위: 건)</div>
+						<table>
+							<caption>비금전적 제재 건수 표, 2020년, 2019년, 2018년</caption>
+							<colgroup>
+								<col style="width:33%;">
+								<col style="width:33%;">
+								<col style="width:33%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">2020년</th>
+									<th scope="col">2019년</th>
+									<th scope="col">2018년</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="footnotes">
+						※ 규모 1천만 원 이상의 벌금 대상 집계(사업보고서 기준)
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="com-text">
+			<p class="tit">공급원별 용수 유입량</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
-				<div class="tbl_info rt abs2">(단위: 건)</div>
+				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
 				<table>
-					<caption>유출 건수 표, 2020년, 2019년, 2018년</caption>
+					<caption>공급원별 용수 유입량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:33%;">
-						<col style="width:33%;">
-						<col style="width:33%;">
+						<col style="width:40%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
 					</colgroup>
 					<thead>
 						<tr>
+							<th scope="col">구분</th>
 							<th scope="col">2020년</th>
 							<th scope="col">2019년</th>
 							<th scope="col">2018년</th>
@@ -938,51 +1364,82 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
+							<td>표층수</td>
+							<td>N/A</td>
+							<td>N/A</td>
+							<td>N/A</td>
+						</tr>
+						<tr>
+							<td>지하수</td>
+							<td>1,091</td>
+							<td>1,162</td>
+							<td>1,433</td>
+						</tr>
+						<tr>
+							<td>다른 조직으로부터의 폐수</td>
+							<td>198</td>
+							<td>207</td>
+							<td>223</td>
+						</tr>
+						<tr>
+							<td>상수도 또는 기타 물 공급시스템</td>
+							<td>11,553</td>
+							<td>11,031</td>
+							<td>10,850</td>
+						</tr>
+						<tr>
+							<td>상수</td>
+							<td>6,554</td>
+							<td>4,635</td>
+							<td>4,487</td>
+						</tr>
+						<tr>
+							<td>공업용수</td>
+							<td>4,999</td>
+							<td>6,396</td>
+							<td>6,363</td>
+						</tr>
+						<tr>
+							<td>소계</td>
+							<td>12,842</td>
+							<td>12,400</td>
+							<td>12,506</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="tit tbl_tit">1) 유출 건수</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">  
-				<div class="tbl_info rt abs2">(단위: 건)</div>
-				<table>
-					<caption>유출 건수 표, 2020년, 2019년, 2018년</caption>
-					<colgroup>
-						<col style="width:33%;">
-						<col style="width:33%;">
-						<col style="width:33%;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">2020년</th>
-							<th scope="col">2019년</th>
-							<th scope="col">2018년</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-					</tbody>
-				</table>
+			<p class="footnotes">
+				※ 대상 사업장: 한국 9곳(생산, R&D 사업장), 해외 30곳(생산사업장)<br>※ Scope2 (간접 물사용량) 제외
+			</p>
+		</div>
+		<div class="com-text">
+			<p class="tit">폐수 처리</p>
+			<div class="googlechart-wrap">
+				<div class="chartarea" id="chartLong04"></div>
 			</div>
-			<p class="tit tbl_tit">2) 유출량</p>
+			<!-- 구글차트 -->
+			<p class="footnotes">
+				* 2019년 사내처리시설 처리는 사이언스 파크 데이터 단위 오류로 정정공시함<br>
+				* 2019년 사외처리 데이터는 구미A1 공장 데이터 오류로 재산정함<br>
+				* 2018년 사외처리 시설 및 기타처리는 단위 오류로 공시되어 정정공시함 
+			</p>
+		</div>
+		<div class="com-text">
+			<p class="tit">수질 오염물질 배출량</p>
+			<p class="tit tbl_tit">1) 폐수 배출량 (사내처리 시설에 한함)</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
 				<div class="tbl_info rt abs2">(단위: 톤)</div>
 				<table>
-					<caption>유출량 표, 2020년, 2019년, 2018년</caption>
+					<caption>폐수 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:33%;">
-						<col style="width:33%;">
-						<col style="width:33%;">
+						<col style="width:40%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
 					</colgroup>
 					<thead>
 						<tr>
+							<th scope="col">구분</th>
 							<th scope="col">2020년</th>
 							<th scope="col">2019년</th>
 							<th scope="col">2018년</th>
@@ -990,25 +1447,43 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
+							<td>국내</td>
+							<td>4,794,068</td>
+							<td>4,978,806</td>
+							<td>5,437,589</td>
+						</tr>
+						<tr>
+							<td>해외</td>
+							<td>1,841,194</td>
+							<td>1,640,443</td>
+							<td>818,768</td>
+						</tr>
+						<tr>
+							<td>총계</td>
+							<td>6,635,262</td>
+							<td>6,619,250</td>
+							<td>6,256,357</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="tit tbl_tit">1) 유출 건수</p>
+			<p class="footnotes">
+			</p>
+			<p class="tit tbl_tit">2) 폐수 수질</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
-				<div class="tbl_info rt abs2">(단위: 건)</div>
+				<div class="tbl_info rt abs2">(단위: 톤)</div>
 				<table>
-					<caption>유출 건수 표, 2020년, 2019년, 2018년</caption>
+					<caption>폐수 수질 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:33%;">
-						<col style="width:33%;">
-						<col style="width:33%;">
+						<col style="width:25%;">
+						<col style="width:15%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
 					</colgroup>
 					<thead>
 						<tr>
+							<th scope="col" colspan="2">구분</th>
 							<th scope="col">2020년</th>
 							<th scope="col">2019년</th>
 							<th scope="col">2018년</th>
@@ -1016,22 +1491,90 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
+							<th scope="row" rowspan="3">COD</th>
+							<td>국내</td>
+							<td>32.0</td>
+							<td>44.8 </td>
+							<td>48.9</td>
+						</tr>
+						<tr>
+							<td class="bo_l">해외</td>
+							<td>265.0</td>
+							<td>444.0</td>
+							<td>141.0</td>
+						</tr>
+						<tr>
+							<td class="bo_l bold_m">총계</td>
+							<td class="bold_m">297.0</td>
+							<td class="bold_m">488.8</td>
+							<td class="bold_m">189.9</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">SS</th>
+							<td>국내</td>
+							<td>21.0</td>
+							<td>26.4</td>
+							<td>24.6</td>
+						</tr>
+						<tr>
+							<td class="bo_l">해외</td>
+							<td>46.0</td>
+							<td>51.0</td>
+							<td>59.0</td>
+						</tr>
+						<tr>
+							<td class="bo_l bold_m">총계</td>
+							<td class="bold_m">67.0</td>
+							<td class="bold_m">77.4</td>
+							<td class="bold_m">83.6</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">T-N</th>
+							<td>국내</td>
+							<td>82.0</td>
+							<td>116.2</td>
+							<td>141.7</td>
+						</tr>
+						<tr>
+							<td class="bo_l">해외</td>
+							<td>11.9</td>
+							<td>9.3</td>
+							<td>2.9</td>
+						</tr>
+						<tr>
+							<td class="bo_l bold_m">총계</td>
+							<td class="bold_m">93.9</td>
+							<td class="bold_m">125.5</td>
+							<td class="bold_m">144.6</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">T-P</th>
+							<td>국내</td>
+							<td>1.0</td>
+							<td>2.1</td>
+							<td>1.3</td>
+						</tr>
+						<tr>
+							<td class="bo_l">해외</td>
+							<td>3.9</td>
+							<td>3.1</td>
+							<td>0.8</td>
+						</tr>
+						<tr>
+							<td class="bo_l bold_m">총계</td>
+							<td class="bold_m">4.9</td>
+							<td class="bold_m">5.2</td>
+							<td class="bold_m">2.1</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<div class="com-text">
-			<p class="tit"></p>
-		</div>
-		<div class="com-text">
-			<p class="tit"></p>
-		</div>
-		<div class="com-text">
-			<p class="tit"></p>
+			<p class="footnotes">
+				* 2019년 폐수 배출량 해외데이터 정정: 테네시 사업장, 태주 사업장 데이터 정정<br>
+				* 2019년 폐수 수질 해외데이터 정정<br>
+				- COD: 따우바떼 데이터 산정 오류<br>
+				- SS/T-N/T-P: 천진, 테네시 사업장 생산량 증가에 대한 데이터 미반영분 정정공시함 
+			</p>
 		</div>
 	</div>
 	<div id="tab3" class="tabs-contents">
@@ -1058,4 +1601,28 @@
 		<p class="desc">ESG 데이터 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>
 	</div>
+	<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+		<pattern id="pattern-splite1" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;" />
+			<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #e81953;" />
+		</pattern>
+		<pattern id="pattern-splite2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;" />
+			<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #000000;" />
+		</pattern>
+		<pattern id="pattern-dashed1" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
+			<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;" />
+			<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #e81953;" />
+			<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #e81953;" />
+		</pattern>
+		<pattern id="pattern-dashed2" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(0
+		)">
+			<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;" />
+			<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #000000;" />
+			<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #000000;" />
+		</pattern>
+		<pattern id="pattern-circle" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<circle cx="5" cy="5" r="6" style="stroke: #e81953; fill: none; stroke-width:10;" />
+		</pattern>
+	</svg>
 </div>

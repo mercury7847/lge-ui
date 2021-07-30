@@ -271,10 +271,18 @@ br.pc{display:block;}
 
 /* 정보보호 */
 .esgCertified{margin-top:30px;}
-.esgCertified li{width:49%;display:inline-block;vertical-align: top;}
-.esgCertified img{max-width:350px;    width: 100%;}
+.esgCertified li{width:49%;display:inline-block;vertical-align: top;text-align: center;}
+.esgCertified img{max-width:350px;width: 100%;}
 @media screen and (max-width: 767px){
 .esgCertified{margin-top:15px;}
 .esgCertified li{width:100%;display:block;}
 .esgCertified li+li{margin-top:12px;}
+}
+
+/* 성과 및 데이터 */
+.pc2mo1 li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
+.pc2mo1 li:nth-child(2n){margin-left:20px;}
+@media screen and (max-width: 767px){
+.pc2mo1 li{width:100%;display:block;margin-top:12px;}
+.pc2mo1 li:nth-child(2n){margin-top:12px;margin-left:0}
 }
