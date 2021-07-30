@@ -133,7 +133,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             animation: 'ui-spinner-line-fade-quick', //'ui-spinner-line-fade-default', //ui-spinner-line-fade-more, ui-spinner-line-fade-quick
             rotate: 0,      // The rotation offset
             direction: 1,   // 1: clockwise, -1: counterclockwise
-            speed: 1.3,     // Rounds per second
+            speed: 2.3,     // Rounds per second
             zIndex: 2e9,    // The z-index (defaults to 2000000000)
             className: 'ui-spinner', // The CSS class to assign to the spinner
             msgClassName: 'ui-spinner-msg', // The CSS class to assign to the spinner message
@@ -212,7 +212,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
                     width: (opts.length + opts.width),
                     height: opts.width ,
                     //background: getColor(opts.fadeColor,i),
-                    background: '#fff', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    background: '#dcdae1', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     borderRadius: borderRadius,
                     transformOrigin: 'left',
                     //transform: "rotate(" + degrees + "deg) translateX(" + opts.radius + "px)" //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
