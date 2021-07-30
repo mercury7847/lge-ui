@@ -61,6 +61,8 @@ gulp.task('html', () => gulp
         basepath: src + '/pages/'
     }))
     .pipe(gulp.dest(dist + '/html/'))
+    .pipe(browserSync.reload({ stream : true }))
+
 );
 
 //guide page 파일생성...
@@ -72,6 +74,7 @@ gulp.task('guide:html', () => gulp
         basepath: '@file'
     }))
     .pipe(gulp.dest(dist + '/guide/'))
+    .pipe(browserSync.reload({ stream : true }))
 );
 gulp.task("guide:images", () => gulp
     .src(src + "/guide/guide/images/**")
@@ -180,7 +183,8 @@ gulp.task("scripts", () => {
         "jsCompile:homebrew",
         "jsCompile:event",
         "jsCompile:home",
-        "jsCompile:objet"
+        "jsCompile:objet",
+        "jsCompile:company"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -331,6 +335,16 @@ gulp.task("jsCompile:objet", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
 );
+/* 회사소개 추가 2021-07-26 */
+gulp.task("jsCompile:company", () => gulp
+		.src(src + "/js/company/**/*")
+		.pipe(sourcemaps.init())
+		.pipe(terser())
+		//.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+		.pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+		.pipe(sourcemaps.write('./maps'))
+		.pipe(gulp.dest(dist + sourceFolder + "/js/company/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
@@ -387,11 +401,11 @@ gulp.task('clean', function() {
 gulp.task("watch", ["browser-sync"], () => {
 
     // Watch html files
-    gulp.watch(src + "/pages/**/*.html", ["html"]).on('change', browserSync.reload);
-    gulp.watch(src + "/pages/**/**/*.html", ["html"]).on('change', browserSync.reload);
+    gulp.watch(src + "/pages/**/*.html", ["html"]);
+    gulp.watch(src + "/pages/**/**/*.html", ["html"]);
 
     // Watch guide files
-    gulp.watch(src + '/guide/**/*.html', ["guide:html"]).on('change', browserSync.reload);
+    gulp.watch(src + '/guide/**/*.html', ["guide:html"]);
     gulp.watch(src + "/guide/guide/images/**", ["guide:images"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/guide/css/**", ["guide:css"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/guide/js/**", ["guide:js"]).on('change', browserSync.reload);
@@ -419,6 +433,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/event/**", ["jsCompile:event"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/company/**", ["jsCompile:company"]).on('change', browserSync.reload);	// 회사소개 추가 2021-07-26
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
@@ -445,4 +460,3 @@ gulp.task('server-build', ["concat-js"], function() {
 
 
 gulp.task("default", ["watch"]); // Default gulp task
-

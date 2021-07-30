@@ -67,7 +67,11 @@
                                 '<li>{{#raw item.specText}}</li>' +
                             '{{/each}}' +
                         '{{/if}}' +
-                        '{{#if lastBulletName}}<li>{{lastBulletName}}</li>{{/if}}'+
+                    /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                    '{{#if lastBulletName}}<li>{{lastBulletName}}' +
+                    '{{#if (subCategoryId == "CT50000070")}}<span class="care-n">,</span><span class="redcare-option">1년 무상케어</span>{{/if}}' +
+                    '</li>{{/if}}'+
+                    /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                     '</ul>' +
                 '</div>' +
             '</div>' +
@@ -270,7 +274,11 @@
                                     history.scrollRestoration = 'manual';
                                 }
                                 //마지막에 클릭한 아이템으로 이동
-                                $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
+                                $('.plp-item').last().find('.slide-conts').last().find('img').on('load', function(){
+                                    // console.log('마지막이미지 ')
+                                    $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
+                                });
+                                // $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
                             }
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
@@ -709,7 +717,8 @@
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
                     if (isNew){
-                        $(window).scrollTop($('.KRP0007').offset().top);
+                        //$(window).scrollTop($('.KRP0007').offset().top);
+                        $('html, body').animate({scrollTop: $('.KRP0007').offset().top}, 300);
                     }
                     /* //BTOCSITE-2150 add */
                 });
@@ -928,6 +937,14 @@
                 item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
 
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
+
+                // 20210728 BTOCSITE-3608 매장 키오스크 LGE.COM 노출 개선 요청 
+                var kiosk = lgkorUI.getParameterByName("kiosk");
+                if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
+                    item.modelUrlPath += '&kiosk='+kiosk;
+                }
+                console.log("item.modelUrlPath %o",item.modelUrlPath);
+
                 //console.log("### item.siblingType ###", item.siblingType);
 
                 function getEcCategoryName(item){

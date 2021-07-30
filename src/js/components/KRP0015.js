@@ -151,7 +151,7 @@ $(window).ready(function(){
                 }
             }
 
-            var leng = !storageCompare ? "0" : storageCompare.data.length;
+            var leng = isCompare ? "0" : storageCompare.data.length;
             var $count = $('div.compare-title div.count');
             $count.text(leng + "/" + lgkorUI.getCompareLimit());
             updateCompareButton();
@@ -167,8 +167,9 @@ $(window).ready(function(){
             }
 
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+            var isCompare = vcui.isEmpty(storageCompare);
 
-            var leng = !storageCompare ? 0 : storageCompare.data.length;
+            var leng = isCompare ? 0 : storageCompare.data.length;
             if(leng){
                 //0329 1개 이상이면 열기로 바뀜
                 var limit = 1;
@@ -286,7 +287,11 @@ $(window).ready(function(){
             }
         }
 
-        init();
+        // BTOCSITE-3547 [컴포넌트오류]WCMS에서 KRC0025 컴포넌트 케러셀 적용 시 미리보기에서 하단으로 펼쳐짐오류
+        if(location.host.indexOf('cms') === -1) {
+            init();
+        }
+        
     })(
         function (selector){
             return $('.KRP0015').find(selector); 
