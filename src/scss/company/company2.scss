@@ -165,27 +165,25 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ci_download .desc {margin-top:20px; font-size:16px; line-height:24px}
 .company .ci_download .btn {margin-top:26px; min-width:109px; padding:11px 24px}
 
+.company .lgway_link {margin-top:39px; text-align:center}
+.company .lgway_link .text {margin-top:0}
+.company .lgway_link .btn-link {margin-top:10px}
 .company ul.rec_type {display:flex; justify-content:space-between; margin-top:60px}
 .company ul.rec_type > li {width:calc(25% - 18px)}
 .company ul.rec_type > li .type_thumb {display:block; width:100%; height:327px; border-radius:50%; overflow:hidden}
-.company ul.rec_type > li:nth-child(1) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_01.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(2) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_02.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(3) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_03.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(4) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_04.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(1) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_01_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(2) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_02_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(3) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_03_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(4) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_04_new.png) no-repeat center / cover}
 .company ul.rec_type > li p {margin-top:40px; font-size:22px; line-height:1.45; text-align:center}
-.company .recruit-link {max-width:1380px; margin:60px auto; padding:50px 0 60px; border-radius:8px; background-color:#f4f4f4; text-align:center}
-.company .recruit-link .tit {font-size:24px; font-weight:bold; line-height:36px}
-.company .recruit-link .desc {margin-top:20px; font-size:16px; line-height:24px}
-.company .recruit-link .btn {margin-top:26px; min-width:109px; padding:11px 24px}
 
-.company ul.job_position {display:flex; justify-content:center; margin-top:30px}
-.company ul.job_position > li {width:150px; height:150px; margin:0 40px; border-radius:50%}
-.company ul.job_position > li:nth-child(1) {background-color:#666}
-.company ul.job_position > li:nth-child(2) {background-color:#000}
-.company ul.job_position > li:nth-child(3) {background-color:#da0f47}
+.company ul.job_position {display:flex; justify-content:center; align-items:flex-end; max-width:678px; height:150px; margin:30px auto 0}
+.company ul.job_position > li {display:flex; flex-direction:column; justify-content:flex-end; width:33.3333%; padding:16px}
+.company ul.job_position > li:nth-child(1) {height:60%; border-radius:8px 0 0 8px; background-color:#666}
+.company ul.job_position > li:nth-child(2) {height:80%; border-radius:8px 0 0 0; background-color:#000}
+.company ul.job_position > li:nth-child(3) {height:100%; border-radius:8px 8px 8px 0; background-color:#da0f47}
 .company ul.job_position > li + li {position:relative}
-.company ul.job_position > li + li::before {content:''; display:block; position:absolute; width:80px; height:1px; top:calc(50% - 0.5px); left:-80px; border-top:1px dashed #ddd}
-.company ul.job_position > li em {display:block; margin-top:40px; color:rgba(255,255,255,0.8); font-size:16px; line-height:24px; text-align:center}
+.company ul.job_position > li em {display:block; color:rgba(255,255,255,0.8); font-size:16px; line-height:24px; text-align:center}
 .company ul.job_position > li span {display:block; margin-top:8px; color:#fff; font-size:18px; line-height:26px; text-align:center}
 .company ul.job_pay {display:flex; justify-content:space-between; margin-top:30px}
 .company ul.job_pay > li {position:relative; width:calc(33.3333% - 16px); padding:30px; border-radius:8px; background-color:#f4f4f4; text-align:center}
@@ -254,6 +252,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.cmSystem > li:nth-child(5) .step > span {background-color:rgba(170,170,170,1.0)}
 .company ul.cmSystem > li ul {margin-top:20px; padding-right:16px}
 .company ul.cmSystem > li ul li {word-break:keep-all}
+
+.company .recruit_info {margin-top:26px}
+.company .recruit_info .exc {position:relative; display:block; padding-left:27px; font-size:16px}
+.company .recruit_info .exc::before {content:''; display:block; position:absolute; left:0; top:0; width:24px; height:24px; background:url(/kr/images/company/icon/ico-c-exclama_pc.svg) no-repeat center / contain}
 
 .company .current_iframe{width:100%;height:800px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
 .company .time_iframe{width:100%; height:970px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
@@ -1431,22 +1433,21 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .btn-close {top:12px; right:12px}
     
+    .company .lgway_link {margin-top:20px}
+    .company .lgway_link .btn-link {margin-top:5px}
     .company ul.rec_type {flex-direction:column; margin-top:40px}
     .company ul.rec_type > li {width:100%}
     .company ul.rec_type > li + li {margin-top:40px}
     .company ul.rec_type > li .type_thumb {width:200px; height:200px; margin:0 auto}
     .company ul.rec_type > li p {margin-top:20px; font-size:18px; line-height:26px}
-    .company .recruit-link {width:calc(100% - 8.88vw); margin:30px 4.44vw; padding:55px 0}
-    .company .recruit-link .tit {font-size:18px; line-height:26px}
-    .company .recruit-link .desc {margin-top:8px; font-size:14px; line-height:20px}
-    .company .recruit-link .btn {min-width:90px; padding:8px 0; font-size:13px}
 
-    .company ul.job_position {flex-direction:column; margin-top:15px}
-    .company ul.job_position > li {margin:0 auto}
-    .company ul.job_position > li + li {margin-top:15px}
-    .company ul.job_position > li + li::before {width:1px; height:15px; top:-15px; left:calc(50% - 0.5px); border-top:0; border-left:1px dashed #ddd}
-    .company ul.job_position > li em {margin-top:50px; font-size:14px; line-height:22px}
-    .company ul.job_position > li span {margin-top:5px; font-size:15px; line-height:22px}
+    .company ul.job_position {margin-top:15px; height:124px}
+    .company ul.job_position > li {width:100%; padding:15px}
+    .company ul.job_position > li:nth-child(1) {border-radius:8px 0 0 4px}
+    .company ul.job_position > li:nth-child(2) {border-radius:8px 0 0 0}
+    .company ul.job_position > li:nth-child(3) {border-radius:8px 4px 4px 0}
+    .company ul.job_position > li em {font-size:14px; line-height:22px}
+    .company ul.job_position > li span {margin-top:0; font-size:15px; line-height:22px}
     .company ul.job_pay {flex-direction:column}
     .company ul.job_pay > li {width:100%; padding:15px 0 14px}
     .company ul.job_pay > li + li {margin-top:15px}
@@ -1455,7 +1456,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.job_pay > li em {font-size:14px; line-height:22px}
     .company ul.job_pay > li .desc {margin-top:6px; font-size:14px; line-height:22px}
     .company ul.welfare > li {min-height:auto; padding:15px 20px 14px 100px}
-    .company ul.welfare > li:last-child {border-bottom:1px dashed #ddd}
     .company ul.welfare > li i {left:0; top:15px}
     .company ul.welfare > li .name {font-size:15px; line-height:22px}
     .company ul.welfare > li .desc {margin-top:5px; font-size:14px; line-height:22px}
@@ -1466,6 +1466,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
     .company ul.caring > li .step > span {font-size:15px}
     .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
+
+    .company .recruit_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
+    .company .recruit_info .exc::before {content:''; display:block; position:absolute; left:0; top:2px; width:16px; height:16px; background:url(/kr/images/company/icon/ico-c-exclama_mo.svg) no-repeat center / contain}
 
     .company .current_iframe {height:1500px}
     .company .date_iframe {height:950px}
