@@ -385,6 +385,16 @@
                     </div>
                     <div class="section-col">
                         <div class="rersv-wrap reserv-inquiry view-type">
+
+                            <!-- 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
+                            <form id="reservInquiryForm" action="https://wwwdev50.lge.co.kr/support/service-inquiry-reservation-status/single" method="POST">
+                                <input type="hidden" name="userName1" id="userName1" value="홍길동">
+                                <!-- <input type="hidden" name="phoneNo" id="phoneNo" value="01043432121"> -->
+                                <input type="hidden" name="number" id="number" value="">
+                                <input type="hidden" name="clothFlag" id="clothFlag" value="clothFlag">
+                                <input type="hidden" name="listFlag" id="listFlag" value="listFlag">
+                            </form>
+                            <!-- //2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
                             <div class="headline">
                                 <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
                                 <a href="#" class="btn-link">더보기</a>
@@ -393,7 +403,8 @@
                             <!-- 조회 결과가 있는 경우 -->
                             <div class="reserv-inquiry-slider">
                                 <div class="item-list">
-                                    <a href="">
+                                    <!-- 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
+                                    <a href="#" data-reception-number="S20006828124">
                                         <div class="item-cont">
                                             <strong class="item-date">상담일시 2019.10.10 15:30</strong>
                                             <span>접수번호 S20006828124 </span>
@@ -404,7 +415,8 @@
                                     </a>
                                 </div>
                                 <div class="item-list">
-                                    <a href="">
+                                    <!-- 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가 -->
+                                    <a href="#" data-reception-number="S20006828124">
                                         <div class="item-cont">
                                             <strong class="item-date">신청일시 2019.10.10 15:30</strong>
                                             <span>출장서비스 예약내역</span>
@@ -419,7 +431,7 @@
                                     </a>
                                 </div>
                                 <div class="item-list">
-                                    <a href="">
+                                    <a href="#">
                                         <div class="item-cont">
                                             <strong class="item-date">신청일시 2019.10.10 15:30</strong>
                                             <span>출장서비스 예약내역</span>
