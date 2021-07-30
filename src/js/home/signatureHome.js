@@ -7,7 +7,7 @@ $(function() {
         }
     });
 
-    vcui.require(['ui/carousel','ui/lazyLoaderSwitch','libs/jquery.transit.min'], function () {
+        // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigMain = $('.ui_wide_slider');
         $sigMain.vcCarousel('destroy').vcCarousel({
@@ -28,33 +28,38 @@ $(function() {
         });
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
-        var $sigTheme = $('.signature-theme .ui_carousel_slider');
-        $sigTheme.vcCarousel({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            lazyLoad:'progressive'
-        });
+        // <-- 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
+        vcui.require(['ui/lazyLoaderSwitch'], function () {
 
-        var $sigShowRoom = $('.signature-showroom .ui_carousel_slider');
-        $sigShowRoom.vcCarousel({
-            settings: "unslick",
-            lazyLoad:'progressive',
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: "unslick"
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
+            var $sigTheme = $('.signature-theme .ui_carousel_slider');
+            $sigTheme.vcCarousel({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                lazyLoad:'progressive'
+            });
+    
+            var $sigShowRoom = $('.signature-showroom .ui_carousel_slider');
+            $sigShowRoom.vcCarousel({
+                settings: "unslick",
+                lazyLoad:'progressive',
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: "unslick"
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
                     }
-                }
-            ]
+                ]
+            });
+            $('body').vcLazyLoaderSwitch('reload',$sigTheme);
+            $('body').vcLazyLoaderSwitch('reload',$sigShowRoom);
         });
-        $('body').vcLazyLoaderSwitch('reload',$sigTheme);
-        $('body').vcLazyLoaderSwitch('reload',$sigShowRoom);
+        // --> 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $sigSlideNum = $sigMain.find('.slide-conts');
@@ -310,8 +315,8 @@ $(function() {
         }
 
         // 앱 하단 메뉴 컨트롤
-        lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
+        // lgkorUI.showAppBottomMenuOver(true);
+        // lgkorUI.setEnableAppScrollBottomMenu(false);
 
 
         $('.container').on('touchstart touchend touchcancel', function(e) {
@@ -737,6 +742,5 @@ $(function() {
 
         window.resizeScene = render;
 
-    });
 });
     
