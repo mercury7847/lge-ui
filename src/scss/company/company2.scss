@@ -55,8 +55,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.pro .tooltip-icon {top:2%; left:50%; transform:translateX(30%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 90%}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.ref .tooltip-icon {top:50%; right:-2%; transform:translateY(-50%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 75%}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap.base .tooltip-icon {bottom:2%; left:50%; transform:translateX(22%); background:url(/kr/images/company/info/ico-tooltip_pink.svg) no-repeat; background-size:28%; background-position:center 78%}
-.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%)}
-.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; line-height:20px}
 .company .thumb + .accordion-wrap {margin-top:60px}
 
@@ -66,9 +66,22 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-icon {position:absolute; width:38%; height:20%; right:0; bottom:0; z-index:50; background:none}
 .company .tooltipArea.social .tooltips .tooltip-wrap.carbon .tooltip-icon {top:48%; left:50%; transform:translateX(-100%)}
 .company .tooltipArea.social .tooltips .tooltip-wrap.youth .tooltip-icon {top:48%; left:50%}
-.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%)}
-.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .tit {display:block; font-size:13px; font-weight:bold; line-height:20px}
+.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
 .company .tooltipArea.social .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:14px; font-size:13px; font-weight:normal; line-height:20px}
+
+.company .tooltipArea.estim {position:relative}
+.company .tooltipArea.estim .tooltips {position:absolute; left:0; right:0; top:0; bottom:0}
+.company .tooltipArea.estim .tooltips .tooltip-wrap {position:absolute; width:100%; height:100%}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-icon {position:absolute; width:54px; height:54px; z-index:50; background:url(/kr/images/company/icon/ico-tooltip_b_black.svg) no-repeat center; background-size:24px 24px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_01 .tooltip-icon {top:calc(50% - 58px); left:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_02 .tooltip-icon {top:calc(50% - 58px); right:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap.feed_03 .tooltip-icon {bottom:0; left:calc(25% - 27px)}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:10px; font-size:13px; font-weight:normal; line-height:20px}
+.company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text > strong {display:block; margin-bottom:6px}
+
 
 .company .tit + .graph {margin-top:50px}
 .company .graph.ofn {padding-top:40px}
@@ -89,6 +102,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .risk_system .item .item_txt p + p {margin-top:12px}
 
 .company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
+.company .linkArea.grdt {background-image:linear-gradient(133deg, #a58bee 36%, #f86791 61%)}
+.company .linkArea.grdt p {color:#fff}
+.company .linkArea.grdt p .btn-link {color:#fff}
+.company .linkArea.grdt p .btn-link::after {background:url(/lg5-common/images/icons/btn-arr-16-white.svg) center no-repeat}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
 .company .linkArea .desc a {font-size:14px; text-underline-offset:1px}
@@ -148,27 +165,25 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ci_download .desc {margin-top:20px; font-size:16px; line-height:24px}
 .company .ci_download .btn {margin-top:26px; min-width:109px; padding:11px 24px}
 
+.company .lgway_link {margin-top:39px; text-align:center}
+.company .lgway_link .text {margin-top:0}
+.company .lgway_link .btn-link {margin-top:10px}
 .company ul.rec_type {display:flex; justify-content:space-between; margin-top:60px}
 .company ul.rec_type > li {width:calc(25% - 18px)}
 .company ul.rec_type > li .type_thumb {display:block; width:100%; height:327px; border-radius:50%; overflow:hidden}
-.company ul.rec_type > li:nth-child(1) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_01.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(2) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_02.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(3) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_03.png) no-repeat center / cover}
-.company ul.rec_type > li:nth-child(4) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_04.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(1) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_01_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(2) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_02_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(3) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_03_new.png) no-repeat center / cover}
+.company ul.rec_type > li:nth-child(4) .type_thumb {background:url(/kr/images/company/recruit/img-rec-type-thumb_04_new.png) no-repeat center / cover}
 .company ul.rec_type > li p {margin-top:40px; font-size:22px; line-height:1.45; text-align:center}
-.company .recruit-link {max-width:1380px; margin:60px auto; padding:50px 0 60px; border-radius:8px; background-color:#f4f4f4; text-align:center}
-.company .recruit-link .tit {font-size:24px; font-weight:bold; line-height:36px}
-.company .recruit-link .desc {margin-top:20px; font-size:16px; line-height:24px}
-.company .recruit-link .btn {margin-top:26px; min-width:109px; padding:11px 24px}
 
-.company ul.job_position {display:flex; justify-content:center; margin-top:30px}
-.company ul.job_position > li {width:150px; height:150px; margin:0 40px; border-radius:50%}
-.company ul.job_position > li:nth-child(1) {background-color:#666}
-.company ul.job_position > li:nth-child(2) {background-color:#000}
-.company ul.job_position > li:nth-child(3) {background-color:#da0f47}
+.company ul.job_position {display:flex; justify-content:center; align-items:flex-end; max-width:678px; height:150px; margin:30px auto 0}
+.company ul.job_position > li {display:flex; flex-direction:column; justify-content:flex-end; width:33.3333%; padding:16px}
+.company ul.job_position > li:nth-child(1) {height:60%; border-radius:8px 0 0 8px; background-color:#666}
+.company ul.job_position > li:nth-child(2) {height:80%; border-radius:8px 0 0 0; background-color:#000}
+.company ul.job_position > li:nth-child(3) {height:100%; border-radius:8px 8px 8px 0; background-color:#da0f47}
 .company ul.job_position > li + li {position:relative}
-.company ul.job_position > li + li::before {content:''; display:block; position:absolute; width:80px; height:1px; top:calc(50% - 0.5px); left:-80px; border-top:1px dashed #ddd}
-.company ul.job_position > li em {display:block; margin-top:40px; color:rgba(255,255,255,0.8); font-size:16px; line-height:24px; text-align:center}
+.company ul.job_position > li em {display:block; color:rgba(255,255,255,0.8); font-size:16px; line-height:24px; text-align:center}
 .company ul.job_position > li span {display:block; margin-top:8px; color:#fff; font-size:18px; line-height:26px; text-align:center}
 .company ul.job_pay {display:flex; justify-content:space-between; margin-top:30px}
 .company ul.job_pay > li {position:relative; width:calc(33.3333% - 16px); padding:30px; border-radius:8px; background-color:#f4f4f4; text-align:center}
@@ -238,6 +253,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.cmSystem > li ul {margin-top:20px; padding-right:16px}
 .company ul.cmSystem > li ul li {word-break:keep-all}
 
+.company .recruit_info {margin-top:26px}
+.company .recruit_info .exc {position:relative; display:block; padding-left:27px; font-size:16px}
+.company .recruit_info .exc::before {content:''; display:block; position:absolute; left:0; top:0; width:24px; height:24px; background:url(/kr/images/company/icon/ico-c-exclama_pc.svg) no-repeat center / contain}
+
 .company .current_iframe{width:100%;height:800px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
 .company .time_iframe{width:100%; height:970px; clear:both; overflow-x:hidden; padding:0; margin:0; border-width:0}
 .company .date_iframe{width:100%; height:970px; clear:both;overflow-x:hidden; padding:0; margin:0; border-width:0}
@@ -303,11 +322,15 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.compStep > li:nth-child(1) .tit::after {border-left-color:#ddd}
 .company ul.compStep > li:nth-child(2) .tit::after {border-left-color:#aaa}
 .company ul.compStep > li:nth-child(3) .tit::after {border-left-color:#666}
-.company ul.compStep > li:nth-child(4) .tit::after {border-left-color:#000}
 .company ul.compStep > li:last-child .tit::after {display:none}
 .company ul.compStep > li ul.cont {height:calc(100% - 92px); border:1px solid #ddd; border-radius:8px}
-.company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:0 10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
+.company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
 .company ul.compStep > li ul.cont > li:nth-child(4) {border:0}
+
+.company ul.compStep.esg > li .tit {margin-top:0!important; background-color:#e4e4e4; color:#000}
+.company ul.compStep.esg > li:last-child .tit {background-color:#da0f47; color:#fff}
+.company ul.compStep.esg > li .tit::after {border-left-color:#e4e4e4}
+.company ul.compStep.esg > li ul.cont {margin-top:0!important}
 
 .company .dwn_all.board .titArea {margin-bottom:24px}
 .company .dwn_all.board .titArea .tit {font-size:22px; line-height:32px}
@@ -316,8 +339,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tb_row.board-type table td.dwn > a,
 .company .tb_row.board-type table td.dwn > button {display:block; width:24px; height:24px; margin:0 auto; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
 
-.company .board-view-wrap .board-view .board-view-head {padding:25px 0 16px; border-bottom:1px solid #666}
-.company .board-view-wrap .board-view .board-view-head .new {color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
+.company .board-view-wrap .board-view .board-view-head {padding:0 0 16px; border-bottom:1px solid #666}
+.company .board-view-wrap .board-view .board-view-head .new {color:#da0f47; font-size:12px; font-weight:bold; line-height:20px}
 .company .board-view-wrap .board-view .board-view-head .head-title {font-size:32px; font-weight:bold; line-height:52px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos {display:flex; margin-top:8px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos > li {font-size:14px; line-height:24px}
@@ -337,7 +360,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .btnArea {margin-top:60px}
 
 .company .comp_wrap {position:relative; display:flex}
-.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0}
+.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0; border-radius:8px}
 
 .company .ceo_msg .text {margin-top:0; font-size:18px; line-height:28px}
 .company .ceo_msg .msg_box {margin:58px 0; padding:58px; border:1px solid #ddd; border-radius:8px}
@@ -404,6 +427,36 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .acco_thumb .content .footnotes {margin-top:10px; color:#666; font-size:16px; line-height:26px}
 .company .acco_thumb .view_more {position:absolute; display:block; width:36px; height:36px; bottom:-18px; left:calc(50% - 18px); background:url(/kr/images/company/icon/ico-plus-bg_black.svg) no-repeat center; background-size:36px 36px; font-size:0; text-indent:-9999em; overflow:hidden}
 .company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:36px 36px}
+
+.company .survey_box {padding:38px 40px; border-radius:8px; background-color:#f4f4f4}
+.company ul.bull > li .survey_box {width:calc(100% + 12px); margin-left:-12px; margin-top:20px; margin-bottom:30px}
+.company .survey_box .s_tit {font-size:16px; font-weight:bold; line-height:26px}
+.company .survey_box .s_text {margin-top:10px; font-size:16px; line-height:26px}
+
+.company .estim_process {max-width:1122px; margin:30px auto 0}
+.company .estim_process ul > li {display:flex; align-items:center}
+.company .estim_process ul > li + li {margin-top:46px}
+.company .estim_process ul > li .item_num {position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; width:150px; height:150px; margin-right:60px; border:1px solid #000; border-radius:50%; text-align:center}
+.company .estim_process ul > li + li .item_num::before {content:''; display:block; position:absolute; width:1px; height:44px; top:-45px; left:74px; border-left:1px dashed #ddd}
+.company .estim_process ul > li .item_num em {display:block; font-size:16px; font-weight:bold; line-height:26px}
+.company .estim_process ul > li .item_num span {display:block; font-size:18px; font-weight:bold; line-height:28px}
+.company .estim_process ul > li:last-child .item_num {border-color:#da0f47; color:#da0f47}
+.company .estim_process ul > li .item_desc {display:flex; flex-direction:column; justify-content:center; align-items:flex-start; width:calc(100% - 210px); min-height:150px}
+.company .estim_process ul > li .item_desc .tit {margin:0}
+.company .estim_process ul > li .item_desc .text {margin-top:20px}
+.company .estim_process ul > li .item_desc .btn-link {display:block; margin-top:12px}
+
+.company .feed_box .box_tit {width:100%; margin-top:20px; padding:15px 0; border-radius:8px; background-color:#000; color:#fff; font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .feed_box .box_tit.g {background-color:#666}
+.company .feed_box .feed_list {margin-top:12px}
+.company .feed_box .feed_list > ul {display:flex; justify-content:space-between}
+.company .feed_box .feed_list > ul > li {width:calc(25% - 18px); padding:28px 25px; border:1px solid #ddd; border-radius:8px}
+.company .feed_box .feed_list > ul > li.wide {width:calc(50% - 12px)}
+.company .feed_box .feed_list > ul > li .titArea {display:flex; align-items:center; min-height:56px}
+.company .feed_box .feed_list > ul > li .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56; text-align:center; word-break:keep-all}
+
+.company .estim_grp {margin-bottom:30px}
+.company .estim_grp > img {display:block; margin:0 auto}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -490,8 +543,26 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t3 > li + li {position:relative}
 .company ul.ico_list.line.t3 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
 .company ul.ico_list.line.t3 > li strong {font-size:18px; font-weight:500; line-height:26px}
+.company ul.ico_list.line.t4 > li {width:calc(25% - 27px); padding:30px 20px}
+.company ul.ico_list.line.t4 > li + li {position:relative}
+.company ul.ico_list.line.t4 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
+.company ul.ico_list.line.t4 > li strong {font-size:18px; font-weight:500; line-height:26px}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
+
+.company ul.ico_grid {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px}
+.company ul.ico_grid > li {padding:30px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_grid.t4 > li {width:calc(25% - 18px); padding:30px 10px}
+.company ul.ico_grid > li .iconArea {width:80px; height:80px;margin:0 auto 12px}
+.company ul.ico_grid > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
+.company ul.ico_grid > li .iconArea i.ico-estim-01 {background:url(/kr/images/company/icon/ico-estim-01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-02 {background:url(/kr/images/company/icon/ico-estim-02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-03 {background:url(/kr/images/company/icon/ico-estim-03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li .iconArea i.ico-estim-04 {background:url(/kr/images/company/icon/ico-estim-04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_grid > li > strong {display:block; font-size:18px; font-weight:500; line-height:28px; text-align:center}
+.company ul.ico_grid > li .b_box {max-width:180px; margin:12px auto 0; padding:11px 0; background-color:#f4f4f4; border-radius:50px; text-align:center}
+.company ul.ico_grid > li .b_box em {display:inline-block; font-size:24px; font-weight:bold}
+.company ul.ico_grid > li .b_box span {display:inline-block; font-size:18px}
 
 .company .ofn_iconBox {max-width:1146px; margin:0 auto; padding:40px 20px; border-radius:8px; background-color:#f4f4f4}
 .company .ofn_iconBox ul {display:flex}
@@ -533,6 +604,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-shee-02 {background:url(/kr/images/company/icon/ico-shee-02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-shee-03 {background:url(/kr/images/company/icon/ico-shee-03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-shee-04 {background:url(/kr/images/company/icon/ico-shee-04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_01 {background:url(/kr/images/company/icon/ico-risk_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_02 {background:url(/kr/images/company/icon/ico-risk_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_03 {background:url(/kr/images/company/icon/ico-risk_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-risk_04 {background:url(/kr/images/company/icon/ico-risk_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -705,15 +780,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_pc {margin-top:30px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_mo {margin-top:15px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb_row,
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tb-col {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea table {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tbl_info + table {margin-top:0}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .esgWay_wrap img {max-width:416px; height:270px; margin-right:30px}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .comp_wrap img {max-width:416px; height:270px; margin-top:0; margin-right:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {margin-top:12px; margin-bottom:12px; font-size:18px; line-height:1.5; word-break:keep-all}
-.accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:20px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit ~ .tit.h4 {margin-top:40px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4.mt {margin-top:40px}
@@ -771,6 +848,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 .company .accordion-wrap.sustain {margin-top:38px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit {margin-top:0; margin-bottom:10px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit + ul {margin-top:12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li {line-height:26px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .tit ~ .tit {margin-top:30px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li > .tit {margin-top:30px}
@@ -790,7 +868,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea img {display:block; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
@@ -1180,12 +1257,24 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .ofn_iconBox ul > li .descArea span + span {margin-top:0}
 
     .company ul.ico_list.line {margin-top:30px}
-    .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px; border-radius:4px}
+    .company ul.ico_list.line > li {width:100%!important; min-height:auto; padding:15px}
     .company ul.ico_list.line > li + li {margin-top:15px!important}
     .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
     .company ul.ico_list.line.t3 > li + li {margin-top:36px!important}
     .company ul.ico_list.line.t3 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
     .company ul.ico_list.line.t3 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
+    .company ul.ico_list.line.t4 > li + li {margin-top:36px!important}
+    .company ul.ico_list.line.t4 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
+    .company ul.ico_list.line.t4 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
+
+    .company ul.ico_grid {margin-top:8px}
+    .company ul.ico_grid.t4 > li {width:calc(50% - 4px); padding:15px 15px 44px}
+    .company ul.ico_grid.t4 > li:nth-child(n + 3) {margin-top:8px}
+    .company ul.ico_grid.t4 > li .iconArea {margin-bottom:5px}
+    .company ul.ico_grid.t4 > li > strong {font-size:14px; line-height:22px}
+    .company ul.ico_grid.t4 > li .b_box {width:120px; margin-top:5px; padding:10px 0}
+    .company ul.ico_grid.t4 > li .b_box em {font-size:16px}
+    .company ul.ico_grid.t4 > li .b_box span {font-size:13px}
     
     ul.bull > li {padding-left:8px; font-size:14px; line-height:1.57}
     ul.bull > li::before {width:2px; height:2px; background-color:#000; top:10px}
@@ -1344,22 +1433,21 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .btn-close {top:12px; right:12px}
     
+    .company .lgway_link {margin-top:20px}
+    .company .lgway_link .btn-link {margin-top:5px}
     .company ul.rec_type {flex-direction:column; margin-top:40px}
     .company ul.rec_type > li {width:100%}
     .company ul.rec_type > li + li {margin-top:40px}
     .company ul.rec_type > li .type_thumb {width:200px; height:200px; margin:0 auto}
     .company ul.rec_type > li p {margin-top:20px; font-size:18px; line-height:26px}
-    .company .recruit-link {width:calc(100% - 8.88vw); margin:30px 4.44vw; padding:55px 0}
-    .company .recruit-link .tit {font-size:18px; line-height:26px}
-    .company .recruit-link .desc {margin-top:8px; font-size:14px; line-height:20px}
-    .company .recruit-link .btn {min-width:90px; padding:8px 0; font-size:13px}
 
-    .company ul.job_position {flex-direction:column; margin-top:15px}
-    .company ul.job_position > li {margin:0 auto}
-    .company ul.job_position > li + li {margin-top:15px}
-    .company ul.job_position > li + li::before {width:1px; height:15px; top:-15px; left:calc(50% - 0.5px); border-top:0; border-left:1px dashed #ddd}
-    .company ul.job_position > li em {margin-top:50px; font-size:14px; line-height:22px}
-    .company ul.job_position > li span {margin-top:5px; font-size:15px; line-height:22px}
+    .company ul.job_position {margin-top:15px; height:124px}
+    .company ul.job_position > li {width:100%; padding:15px}
+    .company ul.job_position > li:nth-child(1) {border-radius:8px 0 0 4px}
+    .company ul.job_position > li:nth-child(2) {border-radius:8px 0 0 0}
+    .company ul.job_position > li:nth-child(3) {border-radius:8px 4px 4px 0}
+    .company ul.job_position > li em {font-size:14px; line-height:22px}
+    .company ul.job_position > li span {margin-top:0; font-size:15px; line-height:22px}
     .company ul.job_pay {flex-direction:column}
     .company ul.job_pay > li {width:100%; padding:15px 0 14px}
     .company ul.job_pay > li + li {margin-top:15px}
@@ -1368,7 +1456,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.job_pay > li em {font-size:14px; line-height:22px}
     .company ul.job_pay > li .desc {margin-top:6px; font-size:14px; line-height:22px}
     .company ul.welfare > li {min-height:auto; padding:15px 20px 14px 100px}
-    .company ul.welfare > li:last-child {border-bottom:1px dashed #ddd}
     .company ul.welfare > li i {left:0; top:15px}
     .company ul.welfare > li .name {font-size:15px; line-height:22px}
     .company ul.welfare > li .desc {margin-top:5px; font-size:14px; line-height:22px}
@@ -1379,6 +1466,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.caring > li + li .step::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
     .company ul.caring > li .step > span {font-size:15px}
     .company ul.caring > li .desc {margin-top:9px; font-size:14px; line-height:22px}
+
+    .company .recruit_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
+    .company .recruit_info .exc::before {content:''; display:block; position:absolute; left:0; top:2px; width:16px; height:16px; background:url(/kr/images/company/icon/ico-c-exclama_mo.svg) no-repeat center / contain}
 
     .company .current_iframe {height:1500px}
     .company .date_iframe {height:950px}
@@ -1429,6 +1519,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compStep > li ul.cont {width:calc(100% - 88px); height:auto; padding:11px 20px}
     .company ul.compStep > li ul.cont li {display:block; height:auto; padding:7px 0; font-size:14px; line-height:22px; text-align:left}
     .company ul.compStep > li ul.cont li:last-child {border:0}
+
+    .company ul.compStep.esg > li .tit {margin-bottom:0!important}
+    .company ul.compStep.esg > li .tit::after {border-top-color:#e4e4e4}
 
     .company .dwn_all.board .titArea {margin-bottom:12px}
     .company .dwn_all.board .titArea .tit {font-size:18px}
@@ -1502,4 +1595,27 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .acco_thumb .content .footnotes {margin-top:20px; line-height:20px}
     .company .acco_thumb .view_more {width:24px; height:24px; bottom:-12px; left:calc(50% - 12px); background-size:24px 24px}
     .company .acco_thumb .view_more.on {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:24px 24px}
+
+    .company .survey_box {padding:19px 20px}
+    .company ul.bull > li .survey_box {width:calc(100% + 8px); margin-left:-8px; margin-top:10px; margin-bottom:15px}
+    .company .survey_box .s_tit {font-size:14px; line-height:22px}
+    .company .survey_box .s_text {margin-top:4px; font-size:14px; line-height:22px}
+    
+    .company .estim_process {width:100%; max-width:100%; margin-top:15px}
+    .company .estim_process ul > li {max-height:164px; min-height:164px; align-items:flex-start}
+    .company .estim_process ul > li + li {margin-top:0}
+    .company .estim_process ul > li .item_num {width:104px; height:104px; margin-right:12px}
+    .company .estim_process ul > li + li .item_num::before {height:58px; top:-60px; left:51px}
+    .company .estim_process ul > li .item_num em {font-size:12px; line-height:20px}
+    .company .estim_process ul > li .item_num span {font-size:15px; line-height:23px}
+    .company .estim_process ul > li .item_desc {width:calc(100% - 116px); min-height:104px; justify-content:center}
+    .company .estim_process ul > li .item_desc .tit {margin:0; font-size:15px; line-height:23px}
+    .company .estim_process ul > li .item_desc .text {margin-top:8px; font-size:14px; line-height:22px}
+    .company .estim_process ul > li .item_desc .btn-link {margin-top:6px}
+    .company .estim_process ul > li:last-child {max-height:250px}
+
+    .company .feed_box .box_tit {margin-top:10px; padding:12px 0; font-size:16px; line-height:24px}
+
+    .company .estim_grp {margin-bottom:15px}
+    .company .estim_grp > img {width:100%; max-width:100%}
 }
