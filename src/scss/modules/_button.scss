@@ -27,6 +27,17 @@
         background-image: none;
         color: $color-white;
     }
+    // 20210727 BTOCSITE-3577 고객지원 > Main 의 출장서비스 예약 영역에 제품 설치/철거 예약 탭 및 내용 추가
+    &.black {
+        border-color: #000;
+        background: #000;
+        color: $color-white;
+        &:hover {
+            background: #000;
+            color: $color-white;
+        }
+
+    }
     &.gray {
         border-color: #ededed;
         background: #ededed;
