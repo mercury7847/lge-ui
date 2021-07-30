@@ -23,7 +23,8 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             cssElement.appendChild(textNode);
         
             keyFrames = '@'+keyFramePrefixes[i]+'keyframes ui-spinner-line-fade-quick{' +
-            '0%,39%,100% {opacity:0.25;} ' +
+            //'0%,39%,100% {opacity:0.25;} ' +
+            '0%,39%,100% {opacity:0;} ' +
             '40% {opacity:1;}' +
             '}';
             textNode = document.createTextNode(keyFrames);
@@ -116,12 +117,17 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
     var Spinner = core.ui('Spinner', /** @lends vcui.ui.Spinner# */{
         bindjQuery: 'spinner',
         defaults: {
-            lines: 8,   // The number of lines to draw
-            length: 8, // The length of each line
-            width: 8,  // The line thickness
-            radius: 16, // The radius of the inner circle
+            //lines: 8,   // The number of lines to draw
+            lines: 3,   // The number of lines to draw //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+            //length: 8, // The length of each line
+            length: 0, // The length of each line //높을수록 길이가 길어진다 //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+            //width: 8,  // The line thickness
+            width: 34,  // The line thickness //크기 //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+            //radius: 16, // The radius of the inner circle
+            radius: 4, // The radius of the inner circle //낮을수록 모인다
             scale: 1.0, // Scales overall size of the spinner
-            corners: 0.8,       // Corner roundness (0..1)
+            //corners: 0.8,       // Corner roundness (0..1)
+            corners: 1,       // Corner roundness (0..1) //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
             color: '#ffffff',   // CSS color or array of colors
             fadeColor: 'transparent', // CSS color or array of colors
             animation: 'ui-spinner-line-fade-quick', //'ui-spinner-line-fade-default', //ui-spinner-line-fade-more, ui-spinner-line-fade-quick
@@ -133,7 +139,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             msgClassName: 'ui-spinner-msg', // The CSS class to assign to the spinner message
             top: '50%',     // Top position relative to parent
             left: '50%',    // Left position relative to parent
-            shadow: '0 0 2px 2px #000000', // Box-shadow for the lines
+            //shadow: '0 0 2px 2px #000000', // Box-shadow for the lines //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
             position: 'fixed',           // Element positioning
             msg:'' // message
             
@@ -164,7 +170,8 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
                 zIndex: opts.zIndex,
                 left: opts.left,
                 top: opts.top,
-                transform: "scale(" + opts.scale + ")",
+                //transform: "scale(" + opts.scale + ")", 
+                transform: 'translate(-95px, -50px)', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
             });
 
             if(opts.className) self.$contents.addClass(opts.className);
@@ -196,28 +203,32 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             var shadows = parseBoxShadow(shadow);
             for (var i = 0; i < opts.lines; i++) {
                 var degrees = ~~(360 / opts.lines * i + opts.rotate); // Math.floor()
+                var $newLeft = i * 77 + 'px'
 
                 var $backgroundLine = $('<div></div>').css({
                     position: 'absolute',
                     top: -opts.width / 2,
+                    left: $newLeft,
                     width: (opts.length + opts.width),
-                    height: opts.width,
-                    background: getColor(opts.fadeColor,i),
+                    height: opts.width ,
+                    //background: getColor(opts.fadeColor,i),
+                    background: '#fff', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     borderRadius: borderRadius,
                     transformOrigin: 'left',
-                    transform: "rotate(" + degrees + "deg) translateX(" + opts.radius + "px)"
+                    //transform: "rotate(" + degrees + "deg) translateX(" + opts.radius + "px)" //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                 });
 
 
                 var delay = i * opts.direction / opts.lines / opts.speed;
                 delay -= 1 / opts.speed; // so initial animation state will include trail
-                var $line = $('<div></div>').css({
+                var $line = $('<div class="kkkk"></div>').css({
                     width: '100%',
                     height: '100%',
-                    background: getColor(opts.color, i),
+                    //background: getColor(opts.color, i), //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     borderRadius: borderRadius,
                     boxShadow: normalizeShadow(shadows, degrees),
                     animation: 1 / opts.speed + "s linear " + delay + "s infinite " + opts.animation,
+                    background: '#da0f47'
                 });
                 $backgroundLine.append($line);
                 self.$contents.append($backgroundLine);
@@ -228,8 +239,11 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
                 var $msg = $('<div>' + opts.msg + '</div>').css({
                     position: 'absolute',
                     top: (opts.radius + opts.length + opts.width),
-                    left: -200,//-(opts.radius + opts.length + opts.width),
-                    width: 400,//(opts.radius + opts.length + opts.width)*2,
+                    //left: -200,//-(opts.radius + opts.length + opts.width),
+                    left: '50%', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    //width: 400,//(opts.radius + opts.length + opts.width)*2,
+                    width: '300',//(opts.radius + opts.length + opts.width)*2,
+                    marginLeft: '-55px', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     color:getColor(opts.color, 0)
                 });
                 
