@@ -102,6 +102,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .risk_system .item .item_txt p + p {margin-top:12px}
 
 .company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
+.company .linkArea.grdt {background-image:linear-gradient(133deg, #a58bee 36%, #f86791 61%)}
+.company .linkArea.grdt p {color:#fff}
+.company .linkArea.grdt p .btn-link {color:#fff}
+.company .linkArea.grdt p .btn-link::after {background:url(/lg5-common/images/icons/btn-arr-16-white.svg) center no-repeat}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
 .company .linkArea .desc a {font-size:14px; text-underline-offset:1px}
@@ -333,8 +337,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tb_row.board-type table td.dwn > a,
 .company .tb_row.board-type table td.dwn > button {display:block; width:24px; height:24px; margin:0 auto; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
 
-.company .board-view-wrap .board-view .board-view-head {padding:25px 0 16px; border-bottom:1px solid #666}
-.company .board-view-wrap .board-view .board-view-head .new {color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
+.company .board-view-wrap .board-view .board-view-head {padding:0 0 16px; border-bottom:1px solid #666}
+.company .board-view-wrap .board-view .board-view-head .new {color:#da0f47; font-size:12px; font-weight:bold; line-height:20px}
 .company .board-view-wrap .board-view .board-view-head .head-title {font-size:32px; font-weight:bold; line-height:52px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos {display:flex; margin-top:8px}
 .company .board-view-wrap .board-view .board-view-head ul.head-infos > li {font-size:14px; line-height:24px}
