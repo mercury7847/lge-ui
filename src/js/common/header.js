@@ -356,6 +356,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 infinite: false
             }
 
+            var $superContentLastAnchor = null;
+
             self.$pcNavItems.each(function(idx, item){              
                 var categoryLayer = $(item).find('> .nav-category-layer');
 
@@ -385,6 +387,20 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         $superContent.removeClass('on');
                         $superContent.eq(0).addClass('on');
 
+                        $superContentLastAnchor = $superContent.eq(0).find('a, button').not('.ui_carousel_hidden').last();
+                        console.log("$superContentLastAnchor", $superContentLastAnchor)
+                        $superContentLastAnchor.off('keydown.lastAnchor').on('keydown.lastAnchor', function(e){
+                            var $currentContent = $(this).closest('.super-category-content');
+                            var $currentNav = $('[href="#' + $currentContent.attr('id') + '"]')
+            
+                            if( e.keyCode == 9 && !e.shiftKey) {
+                                if( $currentNav.closest('.swiper-slide').next('.swiper-slide').length) {
+                                    e.preventDefault();
+                                    $currentNav.closest('.swiper-slide').next('.swiper-slide').find('a').first().focus()
+                                }
+                            }
+                        });
+
                         if( window.innerWidth > 767 && window.innerWidth < 1024) {
                             vcui.require(['libs/swiper-bundle.min'], function (){
                                 if( !$('.super-category-nav').hasClass('swiper-container-initialized')) {
@@ -406,7 +422,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
 
-            var $superContentLastAnchor = null;
+            
 
             //BTOCSITE-1937 스프레드 메뉴 수정
             $('header').on('mouseleave', function(){
@@ -414,6 +430,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $superContentLastAnchor = null
                 if( $('.nav:not(.ui_gnb_accordion) .super-category-nav').hasClass('swiper-container-initialized')) {
                     superNavSwiper.destroy();
+                    if( $superContentLastAnchor != null) {
+                        $superContentLastAnchor.off('keydown.lastAnchor')
+                        $superContentLastAnchor = null;
+                    }
                 }
             })
             
@@ -423,6 +443,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $superContentLastAnchor = null
                 if( $('.nav:not(.ui_gnb_accordion) .super-category-nav').hasClass('swiper-container-initialized')) {
                     superNavSwiper.destroy();
+                    if( $superContentLastAnchor != null) {
+                        $superContentLastAnchor.off('keydown.lastAnchor')
+                        $superContentLastAnchor = null;
+                    }
                 }
             })
 
@@ -442,13 +466,24 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     $navInner.find($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
                     $navInner.find($currentContent).find('.ui_carousel_slider').vcCarousel('update')
 
-                    $superContentLastAnchor = $navInner.find($currentContent).find('a, button').last();
+                    $superContentLastAnchor = $navInner.find($currentContent).find('a, button').not('.ui_carousel_hidden').last();
+                    console.log("$superContentLastAnchor", $superContentLastAnchor)
+                    $superContentLastAnchor.off('keydown.lastAnchor').on('keydown.lastAnchor', function(e){
+                        var $currentContent = $(this).closest('.super-category-content');
+                        var $currentNav = $('[href="#' + $currentContent.attr('id') + '"]')
+        
+                        if( e.keyCode == 9 && !e.shiftKey) {
+                            if( $currentNav.closest('.swiper-slide').next('.swiper-slide').length) {
+                                e.preventDefault();
+                                $currentNav.closest('.swiper-slide').next('.swiper-slide').find('a').first().focus()
+                            }
+                        }
+                    });
                 }
             });
 
             //BTOCSITE-1937 스프레드 메뉴 수정
-            var $superCategoryNav =$('.nav').not('ui_gnb_accordion').find('.super-category-nav');
-            var $superCategoryContent = $('.nav').not('ui_gnb_accordion').find('.super-category-content');
+            var $superCategoryNav =$('.nav').not('ui_gnb_accordion').find('.super-category-nav');            
 
             //BTOCSITE-1937 스프레드 메뉴 수정
             $superCategoryNav.find('a').on('keydown', function(e){
@@ -485,23 +520,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 });
             });
-
-
-            if( $superContentLastAnchor != null) {
-                $superContentLastAnchor.on('keydown', function(e){
-                    var $currentContent = $(this).closest('.super-category-content');
-                    var $currentNav = $('[href="#' + $currentContent.attr('id') + '"]')
-    
-                    if( e.keyCode == 9 && e.shiftKey) {
-                        if( $currentNav.closest('.swiper-slide').next('.swiper-slide').length) {
-                            e.preventDefault();
-                            $currentNav.closest('.swiper-slide').next('.swiper-slide').find('a').first().focus()
-                            console.log(1111)
-                        }
-                    }
-                });
-            }
-          
+           
             
             self.$leftArrow.on('click', function(e){
                 e.preventDefault();
