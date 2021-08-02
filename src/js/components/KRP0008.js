@@ -654,6 +654,8 @@
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
+
+                self.$mainInitPopup = $('#main-init-popup'); //BTOCSITE-1025 : add 20210802 
             },
 
             bindProductEvents: function() {
@@ -1082,14 +1084,17 @@
                 });
 
                 
+                //팝업 BTOCSITE-1025 : add 20210802 
+                self.$pdpInfo.on('click','.notice-wrap .notice-box a', function(e) {
+                    e.preventDefault();
+                    self.$mainInitPopup.vcModal({opener: this});
+                });
                 
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
                     self.$benefitInfoPopup.vcModal({opener: this});
                 });
-
-              
 
                 //소모품 추가구매
                 self.$pdpInfoAdditionalPurchase.on('click','div.selectbox-list a', function(e){
