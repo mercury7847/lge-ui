@@ -246,9 +246,11 @@
 
                     var hash = location.hash.replace("#","");
                     var savedData = lgkorUI.getStorage(hash);
-                    if(savedData && savedData.search) {
-                        if(savedData.href) self.scrollHref = savedData.href;
-                    }
+                    // BTOCSITE-2216
+                    if(savedData && savedData.href) self.scrollHref = savedData.href;
+                    // if(savedData && savedData.search) {
+                    //     if(savedData.href) self.scrollHref = savedData.href;
+                    // }
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
@@ -1093,8 +1095,14 @@
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        $(window).scrollTop(self.scrollHref);
-                        self.scrollHref = null;
+                        console.log('scroll!!!!')
+                        // $(window).scrollTop(self.scrollHref);
+
+                        // BTOCSITE-2216
+                        $('.result-list').last().find('img').last().on('load', function(){
+                            $(window).scrollTop(self.scrollHref);
+                            self.scrollHref = null;
+                        });
                     }
                 });
             },
