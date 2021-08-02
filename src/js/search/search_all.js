@@ -1099,7 +1099,7 @@
                         // $(window).scrollTop(self.scrollHref);
 
                         // BTOCSITE-2216
-                        $('.result-list').last().find('img').last().on('load', function(){
+                        $('.result-list img').last().on('load', function(){
                             $(window).scrollTop(self.scrollHref);
                             self.scrollHref = null;
                         });
