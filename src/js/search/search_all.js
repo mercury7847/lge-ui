@@ -1097,11 +1097,13 @@
                     if(self.scrollHref) {
                         console.log('scroll!!!!')
                         // $(window).scrollTop(self.scrollHref);
+                        $('html, body').scrollTop(0);
 
                         // BTOCSITE-2216
                         $('.result-list img').last().on('load', function(){
-                            $(window).scrollTop(self.scrollHref);
-                            self.scrollHref = null;
+                                    $('html,body').stop().animate({scrollTop: self.scrollHref});
+//                             $(window).scrollTop(self.scrollHref);
+//                             self.scrollHref = null;
                         });
                     }
                 });
