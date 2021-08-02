@@ -34,7 +34,7 @@
                             '<td>'+
                                 '<p>{{item.paymentPrice}}원</p>'+
                                 //'{{#if item.paymentPrice != 0 }}<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}"><span>자세히</span></button>{{/if}}'+
-                                '{{#if (item.paymentPrice != 0 && testFlag == "N") || (item.paymentPrice != 0 && testFlag == "Y" && testUserFlag == "Y")}}'+
+                                '{{#if item.paymentPrice != 0}}'+
                                     '<button type="button" class="btn-link size payMentBtn" data-contLineSeq="{{item.contLineSeq}}" data-accountReceivableId="{{item.accountReceivableId}}" data-turnNumber="{{item.turnNumber}}">'+
                                         '<span>자세히</span>'+
                                     '</button>'+
