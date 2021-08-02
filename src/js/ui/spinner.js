@@ -133,7 +133,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             animation: 'ui-spinner-line-fade-quick', //'ui-spinner-line-fade-default', //ui-spinner-line-fade-more, ui-spinner-line-fade-quick
             rotate: 0,      // The rotation offset
             direction: 1,   // 1: clockwise, -1: counterclockwise
-            speed: 1.3,     // Rounds per second
+            speed: 2.3,     // Rounds per second
             zIndex: 2e9,    // The z-index (defaults to 2000000000)
             className: 'ui-spinner', // The CSS class to assign to the spinner
             msgClassName: 'ui-spinner-msg', // The CSS class to assign to the spinner message
@@ -159,19 +159,19 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
 
             self.stop();
 
-            self.$contents = $('<div></div>');        
+            self.$contents = $('<div class="loading_con"></div>');        
             self.$contents.attr('role', 'progressbar');
 
             // var yp = (opts.msg && opts.msg != '')? 'calc('+opts.top+' - 20px)' : opts.top;
             
             self.$contents.css({
                 position: opts.position,
-                width: 0,
+                //width: 0, //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                 zIndex: opts.zIndex,
                 left: opts.left,
                 top: opts.top,
                 //transform: "scale(" + opts.scale + ")", 
-                transform: 'translate(-95px, -50px)', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                transform: 'translate(0, -50px)', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
             });
 
             if(opts.className) self.$contents.addClass(opts.className);
@@ -203,16 +203,16 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             var shadows = parseBoxShadow(shadow);
             for (var i = 0; i < opts.lines; i++) {
                 var degrees = ~~(360 / opts.lines * i + opts.rotate); // Math.floor()
-                var $newLeft = i * 77 + 'px'
+                //var $newLeft = i * 22 + 'px'
 
-                var $backgroundLine = $('<div></div>').css({
-                    position: 'absolute',
-                    top: -opts.width / 2,
-                    left: $newLeft,
-                    width: (opts.length + opts.width),
-                    height: opts.width ,
+                var $backgroundLine = $('<div class="loading_dot"></div>').css({
+                    //position: 'absolute', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    //top: -opts.width / 2, //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    //left: $newLeft, //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    //width: (opts.length + opts.width), //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    //height: opts.width , //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     //background: getColor(opts.fadeColor,i),
-                    background: '#fff', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    background: '#dcdae1', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     borderRadius: borderRadius,
                     transformOrigin: 'left',
                     //transform: "rotate(" + degrees + "deg) translateX(" + opts.radius + "px)" //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
@@ -221,7 +221,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
 
                 var delay = i * opts.direction / opts.lines / opts.speed;
                 delay -= 1 / opts.speed; // so initial animation state will include trail
-                var $line = $('<div class="kkkk"></div>').css({
+                var $line = $('<div></div>').css({
                     width: '100%',
                     height: '100%',
                     //background: getColor(opts.color, i), //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
@@ -238,12 +238,12 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
 
                 var $msg = $('<div>' + opts.msg + '</div>').css({
                     position: 'absolute',
-                    top: (opts.radius + opts.length + opts.width),
+                    //top: (opts.radius + opts.length + opts.width), //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     //left: -200,//-(opts.radius + opts.length + opts.width),
                     left: '50%', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     //width: 400,//(opts.radius + opts.length + opts.width)*2,
                     width: '300',//(opts.radius + opts.length + opts.width)*2,
-                    marginLeft: '-55px', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                    marginLeft: '-150px', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
                     color:getColor(opts.color, 0)
                 });
                 
