@@ -765,6 +765,27 @@
 
                     self.validateInit();
                     
+                    // 2021-07-27 BTOCSITE-3604 문의/예약 조회 GET 을 POST로 변경 : 추가
+                    $(document).on('click', '.reserv-inquiry-slider .item-list a', function(e){
+                        var $this = $(this);
+                        var currentData = $this.data();
+                        var $form = $this.closest('.rersv-wrap').find('#reservInquiryForm');
+
+                        e.preventDefault();
+
+                        if( currentData ) {
+                            $.each(currentData, function(key, value){
+                                if( value ) {
+                                    if( key == 'username') {
+                                        $form.find('#username1').val(value)
+                                    } else {
+                                        $form.find('#' + key).val(value)
+                                    }
+                                }
+                            })
+                        }
+                        $form.submit();
+                    })
                 }
             },
             init : function(){
