@@ -7,16 +7,12 @@
 .contents.unmanned-store-wrap {
     @import "unmanned-store";
 }
-
-// 시네빔 0622
-.contents.cinebeam-zone-wrap {
-    @import "cinebeam-zone";
-}
-
 // 온라인견적요청서 0624
 .contents.sysaircon-form-wrap {
     @import "sysaircon-form";
 }
+
+
 
 // 메인
 /* 앱용 */
@@ -33,7 +29,7 @@
 .only-mobile{
 
 	display:none;
-	
+
 	@include mobile {
 
 		display:block;		
@@ -72,13 +68,34 @@ img{
 }
 /* //클래스별이미지분기 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .main-wrap {
 	// max-width:1920px;
 	margin:0 auto;
-	//background-color:#f4f4f4;
-	// padding-bottom:120px;
+	padding-top: 20px;
+    border-top: 1px solid #ddd;
 	@include mobile {
 		// padding-bottom:171px;
+		padding-top: 0px;
+		border-top: 0;
 	}
 	.video-poster {
 		overflow: hidden;
@@ -99,228 +116,256 @@ img{
 			transform: translate(-50%, -50%);
 		}
 	}
+
+	// 2021-07-23 여기서 부터 수정
 	.scene {
 		position:relative;
-		width:100%;
+		width: 100%;
 		// height:100%;
-		height:100vh;
-		overflow:hidden;
+		// height:100vh;
+		max-height: 100%;
+		overflow: hidden;
 		// BTOCSITE-740 start
 		@include mobile {			
 			height: 500px;
-			&+.scene {
-				margin-top:12px;
-			}
+			// &+.scene {
+			// 	margin-top:12px;
+			// }
 		}
-		// BTOCSITE-740 end
-		/*
-		&:first-child {
-			height:calc(100vh - 84px);
-		}
-		*/
-		&:nth-child(2) {
-			.text-link {
-				//top:280px;
-				//right:auto;
-				// left:140px;
-			}
-		}
-		// &:nth-child(3) {
-		// 	.text-link {
-		// 		top:280px;
-		// 		right:auto;
-		// 		left:140px;
-		// 		transform:translateY(5%) !important;
-		// 		@include mobile {
-		// 			top: 164px;
-		// 			right: auto;
-		// 			left: 16px;
-		// 			transform:translateY(1%) !important;
-		// 		}
-		// 	}
-		// }
-		> a {
-			display:block;
-			height:100%;
-		}
-		.opac {
-			opacity:.7;
-		}
-		.img {
-			position:relative;
-			// width:1920px;
-			// height:1080px;
 
-			// BTOCSITE-740 start
-			&.only-mobile{
-
-				display:none;
-				
-				@include mobile {
-			
-					display:block;		
-			
+		// 2021-07-23 pc 여기서부터 시작
+		&.scene-renew {
+			position: relative;
+			width: 100%;
+			max-width: 1760px;
+			background-color: #fff;
+    		margin: 0 auto;
+			padding:0 30px;
+			> a {
+				display: block;
+				height: 100%;
+				width: 100%;
+				height: 650px;
+				&.scene-cond {
+					background-color: #8ea7c2;
 				}
-			}
-			
-			&.only-desktop{
-			
-				display:block;
-				
-				@include mobile {
-			
-					display:none;		
-			
-				}
-			}
-			// BTOCSITE-740 end
-
-			img {
-				position:absolute;
-				top:50%;
-				left:50%;
-				width:100%;
-				height:auto;
-				transform:translate(-50%,-50%);
-				-webkit-transform:translate(-50%,-50%);
-				@include mobile {
-					// width:auto;
-					top:50%;
-					left:50%;
-					height:auto;
-					transform:translate(-50%,-50%);;
-					-webkit-transform:translate(-50%,-50%);;
-				}
-			}
-
-			display:block;
-			width:100%;
-			height:100%;
-			background-position:center center;
-			background-repeat:no-repeat;
-			background-size:cover;
-			&:before {
-				content:' ';
-				position:absolute;
-				right:0;
-				bottom:0;
-				left:0;
-				z-index:1;
-				height:560px;
-				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 23%, #000000);
-				opacity:.5;
-				@include mobile {
-					height:360px;
-				}
-			}
-
-			&.video {
-				@include mobile {
-					width: 100% !important;
-					margin-left: 0 !important;
-					video {
-						width: 100%;
-					}
-				}
-			}
-		}
-		.text-cont {
-			position:absolute;
-			transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
-			top:120px;
-			left:140px;
-			z-index:2;
-			> p {
-				color:#fff !important;
-				font-size:56px;
-				font-weight:700;
-				line-height:74px;
-			}
-			@include mobile {
-				top:60px;
-				left:16px;
-				> p {
-					font-size:34px;
-					line-height:44px;
-				}
-			}
-		}
-		.text-link {
-			position:absolute;
-			transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out; 
-			right:120px;
-			bottom:120px;
-			z-index:2;
-			> .a {
-				display:block;
-				position:relative;
-				padding-right:69px;
-				color:#fff !important;
-				font-size:56px;
-				font-weight:700;
-				line-height:74px;
-				text-align:right;
-				&:after {
-					content:' ';
-					display:block;
-					position:absolute;
-					right:0;
-					bottom:2px;
-					width:64px;
-					height:64px;
-					background:url('/lg5-common/images/MA/icon-arr-64x64.svg') no-repeat 0 0;
-				}
-				&.sub{
-					font-size:40px;
-					line-height:56px;
-					padding-right:40px;
-					&:after {
-						content:' ';
-						display:block;
-						position:absolute;
-						right:0;
-						bottom:8px;
-						width:40px;
-						height:40px;
-						background:url('/lg5-common/images/MA/icon-arr-40x40.svg') no-repeat 0 0;
-						transform: rotate(-90deg);
-					}
-				}
-			}
-			@include mobile {
-				right:16px;
-				bottom:160px;
-				> .a {
-					padding-right:24px;
-					font-size:24px;
-					line-height:33px;
-					&:after {
-						bottom:5px;
-						width:22px;
-						height:22px;
-						background-size:22px;
-					}
-
-					&.sub{
-						font-size:20px;
-						line-height:28px;
-						padding-right:12px;
-						&:after {
-							content:' ';
-							display:block;
-							position:absolute;
-							right:-10px;
-							bottom:3px;
-							background:url('/lg5-common/images/MA/icon-arr-64x64.svg') no-repeat 0 0;
-							width: 22px;
-							height: 22px;
-							background-size: 22px;
-							transform: rotate(0deg);
+				.text-link {
+					position: absolute;
+					top: 36px;
+					right: 65px;
+					z-index: 2;
+					max-width: 260px;
+					max-height: 80px;
+					.bi-svg {
+						padding-right: 0;
+						line-height: normal;
+						font-size: 0;
+						img {
+							width: 100%;
 						}
 					}
 				}
 			}
+			.opac {
+				opacity:.7;
+			}
+			.img {
+				position:relative;
+				&.only-mobile{
+					display:none;
+					@include mobile {
+						display:block;		
+					}
+				}
+				
+				&.only-desktop{
+					display:block;
+					@include mobile {
+						display:none;		
+					}
+				}
+				// BTOCSITE-740 end
+				img {
+					position:absolute;
+					top:50%;
+					left:50%;
+					width:100%;
+					height:auto;
+					transform:translate(-50%,-50%);
+					-webkit-transform:translate(-50%,-50%);
+					@include mobile {
+						top:50%;
+						left:50%;
+						height:auto;
+						transform:translate(-50%,-50%);;
+						-webkit-transform:translate(-50%,-50%);;
+					}
+				}
+	
+				display:block;
+				width:100%;
+				height:100%;
+				background-position:center center;
+				background-repeat:no-repeat;
+				background-size:cover;
+				&.video {
+					overflow: hidden;
+					// padding: 0 30px;
+					// height: 650px;
+					@include mobile {
+						padding: 0 0px;
+						width: 100% !important;
+						margin-left: 0 !important;
+						video {
+							width: 100%;
+						}
+					}
+				}
+			}
+			.text-cont {
+				text-align: center;
+				padding: 15px 0 100px 0;
+				> h3 {
+					font-size: 40px;
+					line-height: 50px;
+					margin-bottom: 10px;
+				}
+				> p {
+					font-size: 16px;
+    				font-weight: 400;
+					margin-bottom: 20px;
+					line-height: 22px;
+				}
+				.btn-wrap {
+					a {
+						margin: 0 4px;
+						line-height: 24px;
+						padding: 12px 0px;
+						width: 122px;
+					}
+				}
+			}
+			@media screen and (max-width: 1760px) {
+				> a {
+					height: 34.43181818181818vw;
+				}
+			}
+
+			@media screen and (max-width: 1023px) {
+				.text-cont {
+					> h3 {
+						font-size: 30px;
+						line-height: 40px;
+					}
+				}
+			}
+
+			@include mobile {
+				height:auto;
+				padding: 16px;
+				background: none !important;
+				> a {
+					// height: 114.08083441981746vw;
+					height: 100%;
+					.text-link {
+						top: 37px;
+						right: 32px;
+						max-height: 45px;
+					}
+				}
+				.img {
+					width: 100% !important;
+					height: auto !important;
+					margin: 0 !important;
+					overflow: hidden;
+					&.video {
+						// position: static;
+						height: auto !important;
+						// min-height: 300px !important;
+						video {
+							position: relative !important;
+							height: auto;
+							top: 0 !important;
+							left: 0 !important;
+							transform: none !important;
+						}
+					}
+					&:before {
+						display: none;
+					}
+					img {
+						position: relative;
+						top: 0;
+						left: 0;
+						height: auto;
+						transform: none;
+					}
+				}
+				.text-cont {
+					position: relative;
+					top: auto;
+					left: 0;
+					margin-top: -1px;
+					padding: 13px 10px 0 10px;
+					text-align: left;
+					margin-bottom: 12px;
+					background-color: #fff;
+					.title {
+						overflow: hidden;
+						max-height: 58px;
+						font-size: 24px;
+						line-height: 1.21;
+						color: #000 !important;
+					}
+					.desc {
+						overflow: hidden;
+						margin-top: 9px;
+						font-size: 13px;
+						line-height: 1.38;
+						color: #000 !important;
+						font-weight: 400;
+						margin-bottom: 10px;
+					}
+					.btn-wrap {
+						margin-top: 10px;
+						margin-left: 0px;
+						a {
+							height: 36px;
+							padding: 8px 0;
+							line-height: 15px;
+							min-width: 94px;
+							width: 94px;
+							&.size-main {
+								margin-right: 2px;
+								border-radius: 21px;
+								line-height: 16px;
+								&:first-of-type {
+									margin-left: 0;
+								}
+								> span {
+									font-size: 13px;
+									font-weight: 500;
+								}
+							}
+						}
+					}
+				}
+				
+			}
+			// @media screen and (max-width: 414px){
+			// 	> a {
+			// 		height: 110.020834vw;
+			// 	}
+			// }
+			// @media screen and (max-width: 375px){
+			// 	> a {
+			// 		height: 108.970834vw;
+			// 	}
+			// }
 		}
+		// ////2021-07-23 pc 여기서부터 시작
+
+		
 		&.fc-black { //밝은 배경
 			.text-cont {
 				> p {
@@ -337,62 +382,7 @@ img{
 				}
 			}
 		}
-		.counter {
-			position:absolute;
-			//right:120px;
-			right:50%;
-			transform: translateX(50%);
-			bottom:48px;
-			z-index:2;
-			color:rgba(#fff, .5);
-			@include mobile {
-				display:none;
-				// right:24px;
-				bottom:32px;
-			}
-			.num {
-				font-size:14px;
-				line-height:24px;
-				@include mobile {
-					font-size:16px;
-					line-height:24px;
-				}
-			}
-		}
-		.next-arr {
-			display:block;
-			position:absolute;
-			right:0;
-			bottom:0;
-			left:0;
-			z-index:2;
-			padding-bottom:12px;
-			// left:50%;
-			// transform:translateX(-50%);
-			.arr {
-				display:block;
-				width:32px;
-				height:32px;
-				margin:0 auto;
-				background:url('/lg5-common/images/MA/icon-arr-32x32.svg') no-repeat 0 0;
-				animation: arr 1s infinite;
-			}
-			@include mobile {
-				display:none;
-				width:100%;
-				right:0;
-				bottom:0;
-				left:0;
-				padding:5px 0;
-				// background-color:rgba(#000, .4);
-				transform:none;
-				.arr {
-					width:100%;
-					background-size:24px;
-					background-position:center 5px;
-				}
-			}
-		}
+		
 		@keyframes arr {
 			0% {
 				transform:translateY(0);
@@ -404,61 +394,22 @@ img{
 				transform:translateY(0);
 			}
 		}
-		&.active {
-			
-			.img {
-
-			}
-			.text-cont {
-				transition-delay: 0s;
-				opacity : 0;
-				transform:translateY(50%);
-
-			}
-			.text-link {
-				transition-delay: 0s;
-				opacity : 0;
-				transform:translateY(30%);
-
-			}
-			.counter {
-
-			}
-			.next-arr {
-				
-			}
-		}
-		&.on {
-			
-			.img {
-
-			}
-			.text-cont {
-				transition-delay: 0.3s;
-				opacity : 1;
-				transform:translateY(0);
-
-			}
-			.text-link {
-				transition-delay: 0.5s;
-				opacity : 1;
-				transform:translateY(0);
-
-			}
-			.counter {
-
-			}
-			.next-arr {
-				
-			}
-
-			// &:nth-child(3) {
-			// 	.text-link {
-			// 		transform:translateY(0) !important;
-			// 	}
-			// }
-		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/* 2021-07-23 공통 컨텐츠*/
 	.section-cover {
 		background-color:#fff;
 		footer {
@@ -477,12 +428,20 @@ img{
 	}
 	.section {
 		max-width:1460px;
+		&:first-of-type {
+			margin-top:20px;
+		}
 		margin:120px auto 0;
 		padding:0 40px;
 		.slide-controls {
 			display:none;
 		}
 		@include mobile {
+			&:first-of-type {
+				margin-top:44px;
+			}
+			margin-top:60px;
+			padding:0 16px;
 			.slide-wrap {
 				padding-bottom:32px;
 				.indi-wrap {
@@ -518,8 +477,6 @@ img{
 			}
 		}
 		@include mobile {
-			margin-top:60px;
-			padding:0 16px;
 			.tit-wrap {
 				margin-bottom:24px;
 				.tit {
@@ -669,6 +626,8 @@ img{
 					height:154px;
 					padding:48px 32px;
 					font-size:0;
+					display: flex;
+    				align-items: center;
 					@include mobile {
 						height:176px;
 						padding:40px 30px 40px 108px;
@@ -835,7 +794,7 @@ img{
 							}
 							@include mobile {
 								width:100%;
-								height:390px;
+								height:300px;
 								.slide-box {
 									.text-area {
 										top:32px;
@@ -849,7 +808,7 @@ img{
 						width:100%;
 						height:440px;
 						@include mobile {
-							height:390px;
+							height:300px;
 							padding:0 6px;
 						}
 						.slide-box {
@@ -1297,6 +1256,21 @@ img{
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 20210616 메인 컨텐츠 리뉴얼
 .mdevice {
 	@include mobile {
@@ -1305,8 +1279,9 @@ img{
 				height:auto;
 				padding: 16px;
 				background: none !important;
-				a {
-					//position: relative;
+				> a {
+					height: 874.92px;
+    				height: 112.95045632333769vw
 				}
 				.img {
 					width: 100% !important;
@@ -1316,7 +1291,7 @@ img{
 					&.video {
 						// position: static;
 						height: auto !important;
-						min-height: 390px !important;
+						// min-height: 300px !important;
 						video {
 							position: relative !important;
 							height: auto;
@@ -1340,8 +1315,11 @@ img{
 					position: relative;
 					top: auto;
 					left: 0;
-					margin-top: 13px;
-					padding: 0 10px;
+					margin-top: -1px;
+					padding: 13px 10px 0 10px;
+					text-align: left;
+					margin-bottom: 12px;
+					background-color: #fff;
 					.title {
 						overflow: hidden;
 						max-height: 58px;
@@ -1389,6 +1367,46 @@ img{
 				// & + .scene {
 				// 	margin-top: 28px;
 				// }
+			}
+		}
+	}
+	@media screen and (max-width: 620px) {
+		.main-wrap {
+			.scene-renew {
+				> a {
+					height: 111.90322580645163vw
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 530px) {
+		.main-wrap {
+			.scene-renew {
+				> a {
+					height: 592px;
+					height: 110.19811320754717vw;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 414px) {
+		.main-wrap {
+			.scene-renew {
+				> a {
+					height: 455px;
+					height: 109.90338164251207vw;
+				}
+			}
+		}
+		
+	}
+	@media screen and (max-width: 375px) {
+		.main-wrap {
+			.scene-renew {
+				> a {
+					height: 407px;
+					height: 108.53333333333333vw;
+				}
 			}
 		}
 	}
