@@ -1,5 +1,5 @@
 (function() {
-    
+
     var additionalItemTemplate = '<li data-id="{{id}}" data-quantity="1" data-price="{{price}}">' +
         '<dl class="price-info">' +
             '<dt class="text">{{title}}</dt>' +
@@ -253,16 +253,17 @@
                 //PDP 인포
                 self.$pdpInfo = $('div.pdp-info-area');
                 self.$mobilePdpInfo = $('div.mobile-pdp-info');
-                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
-                self.$pdpInfoWrap = $('div.pdp-wrap .pdp-info-area');
-                self.$pdpInfoProductDetailInfo = self.$pdpInfoWrap.find('.product-detail-info');
-                self.$packageButton = self.$pdpInfoProductDetailInfo.find('.info-bottom .link-area ul rental-counsel a');
-
+                self.$pdpInfoProductDetailInfo = self.$pdpInfo.find('.product-detail-info');
                 self.$productBuyOptionTab = self.$pdpInfoProductDetailInfo.find('.ui_tab:eq(0)');
                 //self.$pdpInfoSiblingOption = self.$pdpInfo.find('.sibling-option');
                 self.$specInfoPopup = $('#specInfoPopup'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingOption = self.$specInfoPopup.find('.sibling-option'); //20210607 스펙선택 추가
                 self.$pdpInfoSiblingColorText = $('.chk-wrap-colorchip'); //20210607 스펙선택 추가
+
+                //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+                self.$pdpInfoWrap = $('div.pdp-wrap .pdp-info-area');
+                self.$pdpInfoProductDetailInfo = self.$pdpInfoWrap.find('.product-detail-info');
+                self.$packageButton = self.$pdpInfoProductDetailInfo.find('.info-bottom .link-area ul rental-counsel a');
                 
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
@@ -292,7 +293,7 @@
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
 
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
-
+                
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
                 var selectContractTerm = null;
@@ -307,8 +308,6 @@
                 var rentalSelectBoxIndex4 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
-
-                    console.log("rentalinfo %o",rentalInfo);
                     //test data
                     // rentalInfo = [
                     //     {
@@ -440,13 +439,10 @@
 
                     });
                     self.rentalInfoData = rentalPriceData;
-
-                    console.log("self.rentalInfoData %o",self.rentalInfoData);
                 }
 
                 //최초 기본값 찾기
                 if(selectRtModelSeq) {
-
                     // 기본 계약 기간 찾기
                     var array = Object.keys(self.rentalInfoData);
                     for (var i = 0, len = array.length; i < len; i++) {
@@ -456,13 +452,9 @@
                         }
                     }
 
-                    console.log("rentalSelectBoxIndex1 %o",rentalSelectBoxIndex1);
-
-
                     // 의무사용기간 찾기
                     var dataByDuty = self.rentalInfoData[selectContractTerm];
                     var array = Object.keys(dataByDuty);
-                    console.log("array %o selectDutyTerm %o",array,selectDutyTerm);
                     for (var i = 0, len = array.length; i < len; i++) {
                         if(array[i] == selectDutyTerm) {
                             rentalSelectBoxIndex2 = i;
@@ -470,11 +462,8 @@
                         }
                     }
 
-                    console.log("rentalSelectBoxIndex2 %o",rentalSelectBoxIndex2);
-
                     // 방문주기 착기
                     var dataByVisit = dataByDuty[selectDutyTerm];
-                    console.log("dataByVisit %o",dataByVisit);
                     var array = Object.keys(dataByVisit);
                     for (var i = 0, len = array.length; i < len; i++) {
                         if(array[i] == selectVisitTerm) {
@@ -482,8 +471,6 @@
                             break;
                         }
                     }
-
-                    console.log("rentalSelectBoxIndex3 %o",rentalSelectBoxIndex3);
 
                     // 가입비선납 할인 찾기
                     var array = dataByVisit[selectVisitTerm];
@@ -493,23 +480,19 @@
                             break;
                         }
                     }
-
-                    console.log("rentalSelectBoxIndex4 %o",rentalSelectBoxIndex4);
                 }
 
 
                 //렌탈 케어솔루션 계약기간
                 self.$caresolutionRentalInfoSelectBox = self.$pdpInfoCareSiblingOption.find('div.info-accordion-wrap .ui_selectbox');
                 if(self.rentalInfoData && self.$caresolutionRentalInfoSelectBox.length > 0) {
-                    
-                    //게약기간 세팅
+                    //가입비 세팅
                     self.rentalInfoSelectBoxUpdate(0,self.rentalInfoData,rentalSelectBoxIndex1,false);
 
                     //의무사용기간 세팅
                     var key = Object.keys(self.rentalInfoData)[rentalSelectBoxIndex1];
                     var dutyTermData = self.rentalInfoData[key];
 
-                    console.log("dutyTermData %o %o %o",rentalSelectBoxIndex1, self.rentalInfoData,dutyTermData);
                     if(dutyTermData) {
                         self.rentalInfoSelectBoxUpdate(1,dutyTermData,rentalSelectBoxIndex2,false);
 
@@ -523,10 +506,7 @@
                             key = Object.keys(visitPerData)[rentalSelectBoxIndex3];
                             var FreePrePerData = visitPerData[key]
                             
-                    console.log("FreePrePerData %o %o %o",rentalSelectBoxIndex3, self.rentalInfoData,FreePrePerData);
-
                             if(FreePrePerData) {
-
                             self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
                             self.rentalInfoSelectBoxUpdate(3,FreePrePerData,rentalSelectBoxIndex4,true);
                             }
@@ -640,8 +620,8 @@
                 self.siblingCurrentModel = "";
             },
 
-            //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
-            bindRentalPopupEvents: function() {
+             //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
+             bindRentalPopupEvents: function() {
                 var self = this;
                 self.$packageButton.on('click', function(e){
                     var $this = $(this);
@@ -822,8 +802,6 @@
                     var index = data.selectedIndex;
                     var url = location.pathname;
                     var param = vcui.uri.parseQuery(location.search);
-                    var iconStore = $('.info-bottom .link-area .reservation.store-counsel');
-                    var iconRental = $('.info-bottom .link-area .reservation.rental-counsel');
                     var n = 0;
                     for(key in param) {
                         if(key != "dpType") {
@@ -838,8 +816,6 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
-                        iconStore.show();
-                        iconRental.hide();
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -847,8 +823,6 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
-                        iconStore.hide();
-                        iconRental.show();
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -1045,8 +1019,6 @@
 
                 //구매/예약/렌탈
                 self.$pdpInfo.find('div.purchase-button a:not(.cart)').on('click', function(e) {
-
-                    console.log("렌탈신청 이벤트");
                     e.preventDefault();
                     var $this = $(this);
                     if(preOrderFlag) {
@@ -1087,8 +1059,6 @@
                 });
 
                 self.$productBuyOptionTab.on("tabbeforechange", function(e, data){
-
-                    console.log("tabbeforechange 111");
                     var index = data.selectedIndex;
                     var optionParent = self.$pdpInfoProductDetailInfo.find('div.option-contents:eq('+index+')');
                     var btnTitle = optionParent.find('.payment-amount div.purchase-button a:not(.cart) span').text();
@@ -1173,7 +1143,7 @@
                     $li.data('quantity',quantity);
                     var $total = $li.find('span.price').contents()[1];
                     var price = $li.data('price');
-                            price = price || "0"; 
+                    price = price || "0"; 
                     if(typeof price === 'string') {
                         price = vcui.string.replaceAll(price,",","");
                     }
@@ -1336,14 +1306,14 @@
                         var $tbody = self.$careshipInfoPopup.find('div.tb_row table tbody');
                             $tbody.empty();
 
-                            var list = {};
-                            for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                                list[i] = {};
-                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
-                            }
-    
-                            $tbody.append(vcui.template(trTemplate, { 'list' : list }));
+                        var list = {};
+                        for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                            list[i] = {};
+                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                        }
+
+                        $tbody.append(vcui.template(trTemplate, { 'list' : list }));
                     }
 
                     self.$careshipInfoPopup.vcModal({opener: this});
@@ -1351,20 +1321,16 @@
 
                 //케어솔루션 이용요금 
                 self.$pdpInfoCareSiblingOption.on('click','dl.price-info a.btn-link.popup', function(e) {
-
-                    console.log("이용요금");
                     e.preventDefault();
                     
                     var $paymentAmount = self.$pdpInfoCareSiblingOption.siblings('.payment-amount');
-
-                    console.log("$paymentAmount %o %o",$paymentAmount,$paymentAmount.data('careData'));
-
                     var cardData = $paymentAmount.data('cardData');
                     var carePrice = parseInt($paymentAmount.data('carePrice'));
                     var careData = $paymentAmount.data('careData');
 
                     var $title = self.$caresolutionInfoPopup.find('.tit-wrap.type2:eq(0)');
                     if(careData && careData.dutyTerm && $title.length > 0) {
+                        // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                         $title.find('.h2-tit').text('계약기간 ' + careData.contractTerm + '년/의무사용기간 '+ careData.dutyTerm +'년')
                     }
 
@@ -1438,15 +1404,10 @@
                 });
 
                 //렌탈 케어솔루션 계약기간
-
-
+                 // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
                 if(self.$caresolutionRentalInfoSelectBox.length > 0) {
-
-                    console.log(self.$caresolutionRentalInfoSelectBox);
-                    //계약기간
+                    //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
-
-                        console.log("계약기간 변경");
                         var value = $(this).vcSelectbox('selectedOption').value;
                         var array = Object.keys(self.rentalInfoData[value]);
                         var max = array.reduce( function (previous, current) { 
@@ -1456,14 +1417,9 @@
 
                         self.rentalInfoBoxUpdate(0, $(this));
                         self.rentalInfoSelectBoxUpdate(1,self.rentalInfoData[value],selectIndex, true);
-
                     });
-
-
                     //의무사용기간 선택
                     self.$caresolutionRentalInfoSelectBox.eq(1).on('change', function(e,data){
-                        
-                        console.log("의무사용기간 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
      
@@ -1481,10 +1437,8 @@
                         self.rentalInfoBoxUpdate(1, $(this));
                         self.rentalInfoSelectBoxUpdate(2,itemData,selectIndex, true);
                     });
-
                     //방문주기 선택 - 화면 가격 정보 갱신
                     self.$caresolutionRentalInfoSelectBox.eq(2).on('change', function(e,data){
-                        console.log("방문주기 변경");
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
 
@@ -1503,19 +1457,11 @@
 
                     //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
-                        console.log("가입비 변경");
-
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
-                        // var $li =  $(this).parents('li');
-                        // $li.find('dl.text-box:eq(0) dd.content').text(itemData.contractTerm+'년');
-
-                        console.log("가입비 선택 change itemdata %o",itemData);
                         self.updateRentalInfoPrice(itemData);
                         self.rentalInfoBoxUpdate(3, $(this));
                     });
-
-
                 };
 
                 //케어십 계약기간
@@ -1880,6 +1826,7 @@
             },
 
             //렌탈 케어솔루션 계약기간 셀렉트박스 갱신 펑션
+            // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
             rentalInfoSelectBoxUpdate: function(selectBoxIndex, selectData, selectIndex, changeEvent) {
                 var self = this;
                 var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
@@ -1899,10 +1846,6 @@
                             }
                         }
                     }
-
-
-                    console.log("selectIndex %o %o",$selectBox,selectIndex);
-
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
 
@@ -1919,6 +1862,7 @@
             },
 
             //렌탈 케어솔루션 계약기간 선택에 따른 가격정보 변경
+            // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
             updateRentalInfoPrice: function(selectRentalInfoData) {
                 var self = this;
                 self.selectRentalInfoData = selectRentalInfoData;
@@ -1991,6 +1935,7 @@
             },
 
             //케어십 계약기간 선택에 따른 가격정보 변경
+            // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
             updateCareshipInfoPrice: function(selectCareshipInfoData) {
                 var self = this;
                 if(!selectCareshipInfoData) return;
@@ -2122,12 +2067,12 @@
                     $additionalPurchase.find('ul.additional-list li').each(function(idx, item){
                         var quantity = $(item).data('quantity');
                         var price = $(item).data('price');
-                            price = price || "0";
+                        price = price || "0";
                         
                         if(typeof price === 'string'){
                             price = vcui.string.replaceAll(price,",","") ;
                         }
-
+ 
                         if(quantity && price) {
                             totalAdditional += (quantity * price);
                         }
@@ -2281,7 +2226,8 @@
                 var ajaxUrl;
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-                    if(self.loginCheckEnd) {                        
+
+                    if(self.loginCheckEnd) {
                         if(lgkorUI.stringToBool(loginFlag)) {
                             ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                             var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
