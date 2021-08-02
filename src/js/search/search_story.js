@@ -859,8 +859,14 @@
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        $(window).scrollTop(self.scrollHref);
-                        self.scrollHref = null;
+                        // $(window).scrollTop(self.scrollHref);
+                        // self.scrollHref = null;
+                        // BTOCSITE-2216
+                        $('html, body').scrollTop(0);
+                        $('.result-list img').last().on('load', function(){
+                            $('html,body').stop().animate({scrollTop: self.scrollHref});
+                            self.scrollHref = null;
+                        });
                     }
                 });
             },
