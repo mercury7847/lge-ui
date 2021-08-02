@@ -1,5 +1,4 @@
 $(function () {
-            
     $.extend( $.easing,{
         def: 'easeOutQuad',
         easeInOutQuart: function (x, t, b, c, d) {
@@ -74,13 +73,15 @@ $(function () {
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
         // 플로우배너
-
+        
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
         // 화면 100% 채우기
-        if (!isOnlyMobileDevice){
-            $('html,body').css({'overflow':'hidden', 'height':'100%'});
-        }
+        /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+        // if (!isOnlyMobileDevice){
+        //     $('html,body').css({'overflow':'hidden', 'height':'100%'});
+        // }
+        /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
         
         $('body').addClass('ignore-overflow-hidden');
 
@@ -219,7 +220,7 @@ $(function () {
         if (isOnlyMobileDevice){
             //$scenes.eq(0).css('height', 'calc(100vh - 84px)');
         } else {
-            $scenes.eq(0).css('height', 'calc(100vh - 110px)');
+            //$scenes.eq(0).css('height', 'calc(100vh - 110px)'); //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23
         }
         
 
@@ -232,20 +233,22 @@ $(function () {
         
         $context.find('.container').css({'overflow':'visible', 'height':'auto'});     
         
-        if ( !isOnlyMobileDevice ){            
-            $context.find('.next-arr').on('click', 'a', function(e){
-                e.preventDefault();
-                wheelScene(1);
-            });
-        } else {
-            // BTOCSITE-740 
-            /*
-            $('.scene').addClass('active');
-            setTimeout(function(){
-                $('.scene').eq(0).addClass('on');
-            },500);
-            */
-        }
+        /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+        // if ( !isOnlyMobileDevice ){            
+        //     $context.find('.next-arr').on('click', 'a', function(e){
+        //         e.preventDefault();
+        //         wheelScene(1);
+        //     });
+        // } else {
+        //     // BTOCSITE-740 
+        //     /*
+        //     $('.scene').addClass('active');
+        //     setTimeout(function(){
+        //         $('.scene').eq(0).addClass('on');
+        //     },500);
+        //     */
+        // }
+        /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
         
 
@@ -312,11 +315,13 @@ $(function () {
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
         
         var maxScale = 110;
-        if (!isOnlyMobileDevice){
-            $scenes.find('.img img').css({
-                width: maxScale + '%'
-            });
-        }
+        /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+        // if (!isOnlyMobileDevice){
+        //     $scenes.find('.img img').css({
+        //         width: maxScale + '%'
+        //     });
+        // }
+        /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
         
         
 
@@ -344,11 +349,14 @@ $(function () {
 
         function wheelScene(delta) {
 
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             if(!isOnlyMobileDevice){                
-                if(!canScroll) return; 
-            } else {
                 return;
-            }           
+            } else {
+                if(!canScroll) return; 
+                return;
+            }     
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */      
             
             var nextIndex = (delta < 0) ? -1 : 1;
             nextIndex = nextIndex + currentPage;
@@ -361,10 +369,12 @@ $(function () {
 
             stopVisualAnim();
 
-            if(!isOnlyMobileDevice){                
-                if(!canScroll) return;  
-                canScroll = false;   
-            }
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // if(!isOnlyMobileDevice){                
+            //     if(!canScroll) return;  
+            //     canScroll = false;   
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
             if ( $('html').attr('canscroll') == 'false' ){
                 return;
@@ -376,19 +386,22 @@ $(function () {
             if ( speed == undefined ) speed = aniSpeed;
             var scrollTopData = winHeight * idx;
 
-            if (!isOnlyMobileDevice){
-                $scenes.removeClass('active').eq(idx).addClass('active');
-            }
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // if (!isOnlyMobileDevice){
+            //     $scenes.removeClass('active').eq(idx).addClass('active');
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             
             
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
             wheelAniInterval = setTimeout(function() {
-
-                if(!isOnlyMobileDevice){
-                    if(! $('html').hasClass('sceneMoving')){
-                        return false;
-                    }
-                }
+                /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+                // if(!isOnlyMobileDevice){
+                //     if(! $('html').hasClass('sceneMoving')){
+                //         return false;
+                //     }
+                // }
+                /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
                 var speedTime = currentPage<idx? parseInt(speed) : parseInt(speed)-200;
                 speedTime = Math.max(0,speedTime);
@@ -457,18 +470,20 @@ $(function () {
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
-                    if (!isOnlyMobileDevice){
-                        $scenes.each(function() {
-                            if ( $(this).find('video').length != 0 ) {
-                                if ( $(this).hasClass('on') ) {
-                                    $(this).find('video')[0].play();
-                                }else {
-                                    $(this).find('video')[0].pause();
-                                    $(this).find('video')[0].currentTime = 0;							
-                                }
-                            }
-                        });
-                    }
+                    /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+                    // if (!isOnlyMobileDevice){
+                    //     $scenes.each(function() {
+                    //         if ( $(this).find('video').length != 0 ) {
+                    //             if ( $(this).hasClass('on') ) {
+                    //                 $(this).find('video')[0].play();
+                    //             }else {
+                    //                 $(this).find('video')[0].pause();
+                    //                 $(this).find('video')[0].currentTime = 0;							
+                    //             }
+                    //         }
+                    //     });
+                    // }
+                    /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
                     playVisualAnim();
 
@@ -492,9 +507,7 @@ $(function () {
         if(!isOnlyMobileDevice){
 
             /* 메인테스트*/
-            
             document.addEventListener('wheel', function(e){
-
                 var open = $('#layerSearch').hasClass('open');           
                 if(!open){    
                     var curTime = new Date().getTime();
@@ -515,9 +528,7 @@ $(function () {
                     }            
                     prevTime = curTime; 
                 }       
-    
             });
-
         }
         
         
@@ -568,7 +579,6 @@ $(function () {
             }
         });
         
-        
         /*
         var wrapTouchSy = 0;
         
@@ -592,8 +602,6 @@ $(function () {
         });
         */
 
-        
-        
         function _getEventPoint(ev, type) {
             var e = ev.originalEvent || ev;
             if (type === 'end'|| ev.type === 'touchend') e = e.changedTouches && e.changedTouches[0] || e;
@@ -605,7 +613,6 @@ $(function () {
             };
         }
         
-        
         function _setCenterImage (target, boxW, boxH, targetW, targetH) {
 
             var rate, newW, newH;
@@ -615,13 +622,14 @@ $(function () {
             newW = Math.max(boxW, Math.round(targetW*rate));
             newH = Math.max(boxH, Math.round(targetH*rate));
 
-
-            $(target).css({
-                width: newW,
-                height: newH,
-                marginLeft: (boxW-newW)/2,
-                marginTop: (boxH-newH)/2
-            });
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // $(target).css({
+            //     width: newW,
+            //     height: newH,
+            //     marginLeft: (boxW-newW)/2,
+            //     marginTop: (boxH-newH)/2
+            // });
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
         }
 
         function _findIdx(py){
@@ -633,13 +641,10 @@ $(function () {
             return 0;                
         }
 
-
         // 비디오 태그 처리
-
         function updateVideo(video) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
             //if(isMobileDevice) return;
-
 
             var isAndroid = vcui.detect.isAndroid;
 
@@ -655,19 +660,27 @@ $(function () {
             var src = $target.data('src');
             var posterSrc = $target.data('posterSrc');
 
-            if(isMobileDevice){
+            // window.innerWidth < 768
+            // vcui.detect.isMobileDevice && window.innerWidth < 768
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            if(window.innerWidth < 768 || isMobileDevice){
                 posterSrc = $target.data('posterMSrc') || $target.data('posterSrc');
                 src = $target.data('mSrc') || $target.data('src');
-            }
+                //console.log("mobile")
+            } 
+            // else {
+            //     posterSrc = $target.data('posterSrc') || $target.data('posterSrc');
+            //     src = $target.data('src') || $target.data('src');
+            //     //console.log("pc")
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
             if(posterSrc){
                 videoAttr += " poster='"+posterSrc+"'";
             }
 
-
             // 비디오 요소 생성.
             var createVideoObject = function() {
-                
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                 // var regExp = "\.(mp4|webm|ogv)";
                 // console.log(src, src.match(regExp));
@@ -702,7 +715,10 @@ $(function () {
                     'min-height': '100%',
                     'top': '50%',
                     'left': '50%',
-                    'transform': 'translate(-50%,-50%)'
+                    'transform': 'translate(-50%,-50%)',
+                    '-webkit-transform': 'translateX(-50%) translateY(-50%)',
+                    // 2021-07-23 수정 width: 100%로 수정
+                    'width': '100%'
                 })
                 oVideo   = $video[0];
                 /*
@@ -716,7 +732,9 @@ $(function () {
 
                 $video.on('loadeddata', function(e) {
                     $video.data('loaded', true);
+                    //$(this).addClass('is-loaded111');
                     $wrap.trigger('videoLoaded');
+                    //$wrap.trigger('imgLoaded');
                     //oVideo.play();
                 }).trigger('load');
                 
@@ -727,9 +745,6 @@ $(function () {
         }
 
         // 렌더링
-
-
-
         var render = function(idx){
 
             if(wheelAniInterval) clearTimeout(wheelAniInterval);
@@ -766,15 +781,17 @@ $(function () {
 
                 allHeight += itemHeight;
                 posArr.push(allHeight);
-                if (!isOnlyMobileDevice){
-                    $(this).height(itemHeight);
-                }
+                /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+                // if (!isOnlyMobileDevice){
+                //     $(this).height(itemHeight);
+                // }
                 
                 // var imageSize = {
                 //     //<img data-natural-width = '1980' data-natural-height = '1080'>
                 //     width : $(this).find('img').data('naturalWidth')? $(this).find('img').data('naturalWidth') : 720,//1920, 
                 //     height : $(this).find('img').data('naturalHeight')? $(this).find('img').data('naturalHeight') : 1285,//1285 1476 1080
                 // };
+                /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
                 var imageSize = {
                     //<img data-natural-width = '1980' data-natural-height = '1080'>
@@ -791,66 +808,69 @@ $(function () {
                         updateVideo(this);
                     });
                 }
-                
                 totalHeight += itemHeight;
             });
 
             setActivePlayByScroll();
 
-            /* 메인 테스트 */            
-            if(vcui.detect.isIOS) {
-                /*
-                if($contentWrap.hasClass('active')) {
-                    $contentWrap.css({'overflow':'auto','height':winHeight});
-                } else {
-                    $contentWrap.css({'overflow':'','height':winHeight});
-                }
-                */
-            } else {
-                if (!isOnlyMobileDevice){
-                    $contentWrap.css({'overflow':'auto','height':winHeight});
-                }
-            }
-            /*
-            if (!isOnlyMobileDevice){
-                $('.contents').css({'overflow':'hidden', 'height':totalHeight});
-            }
-            */
+            /* 메인 테스트 */    
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */        
+            // if(vcui.detect.isIOS) {
+            //     if($contentWrap.hasClass('active')) {
+            //         $contentWrap.css({'overflow':'auto','height':winHeight});
+            //     } else {
+            //         $contentWrap.css({'overflow':'','height':winHeight});
+            //     }
+            // } else {
+            //     if (!isOnlyMobileDevice){
+            //         $contentWrap.css({'overflow':'auto','height':winHeight});
+            //     }
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // if (!isOnlyMobileDevice){
+            //     $('.contents').css({'overflow':'hidden', 'height':totalHeight});
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             
-            
-            if(idx!==undefined){
-                if ( !isOnlyMobileDevice ){
-                    currentPage = idx;
-                    moveScene(currentPage,0);
-                } else {
-                    //$('.scene').eq(0).addClass('on');
-                }
-            }else{
-                if ( !isOnlyMobileDevice ){
-                    setTimeout(function(){
-                        currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
-                        moveScene(currentPage,0);
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // if(idx!==undefined){
+            //     if ( !isOnlyMobileDevice ){
+            //         currentPage = idx;
+            //         moveScene(currentPage,0);
+            //     } else {
+            //         //$('.scene').eq(0).addClass('on');
+            //     }
+            // }else{
+            //     if ( !isOnlyMobileDevice ){
+            //         setTimeout(function(){
+            //             currentPage = currentPage>0? currentPage : _findIdx($('html, body').scrollTop());
+            //             moveScene(currentPage,0);
     
-                        if(window.sessionStorage){ 
-                            var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
-                            if(lgeMainScrollTop){
-                                $contentWrap.scrollTop(lgeMainScrollTop);                            
-                            }
-                            window.sessionStorage.removeItem('lgeMainScrollTop');
-                        }
+            //             if(window.sessionStorage){ 
+            //                 var lgeMainScrollTop = window.sessionStorage.getItem('lgeMainScrollTop');
+            //                 if(lgeMainScrollTop){
+            //                     $contentWrap.scrollTop(lgeMainScrollTop);                            
+            //                 }
+            //                 window.sessionStorage.removeItem('lgeMainScrollTop');
+            //             }
     
-                    }, 100);
-                }
-            }
+            //         }, 100);
+            //     }
+            // }
+            /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
             
         }
 
         $window.on('floatingTop', function(){
             //render(0);
             currentPage = 0;
-            if (!isOnlyMobileDevice){
-                moveScene(currentPage,0);
-            }
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+            // if (!isOnlyMobileDevice){
+            //     moveScene(currentPage,0);
+            // }
+            /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
         });
         
         if(isApplication){
@@ -980,9 +1000,35 @@ $(function () {
     $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
     $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
 
+    /* 20210503 : 모바일앱 다운로드 팝업 */
+    /*
+    if (vcui.detect.isMobileDevice && !isApp()) {
+        var layer_id = '#mobile-close-popup';
+        var el = $(layer_id);
+        if (el.size() === 0) { return false; }
+        var cookie_name = '__LGAPP_DLOG__';
+
+        if (vcui.Cookie.get(cookie_name) === '') {
+            vcui.modal(layer_id, open);
+            var checkbox = $('#check-today');
+            var download_btn = $('#lg__app-download');
+            download_btn.on('click', function () {
+                goAppUrl();
+                
+                return;
+            });
+            el.find('.ui_modal_close').one('click', function () {
+                vcui.Cookie.set(cookie_name, 'hide', {"expires": 1, "path": '/'});
+                return;
+            });
+        }
+    }
+    */
+    /* //20210503 : 모바일앱 다운로드 팝업 */
+
     function setActivePlayByScroll(){
         // BTOCSITE-740
-        if (!vcui.detect.isMobileDevice) return;
+        //if (!vcui.detect.isMobileDevice) return; //2021-07-23
 
         var sceneActiveQue = [];
         var scenes = $context.find('.scene');
@@ -990,10 +1036,12 @@ $(function () {
         scenes.each(function(){
             var self = $(this);
             var video = self.find('video');
+            //var rwrerer = video.parent('.only-mobile');
             var image = self.find('.img img');
-            
+
             self.on('active.scroll', function(e, scrollTop){
-                var gnbHeight = 84;
+                // var gnbHeight = 84;
+                var gnbHeight = 110;
                 var top = self.offset().top;
                 //var sceneHeight = self.height();
                 var sceneHeight = 500;
@@ -1039,13 +1087,16 @@ $(function () {
                         */
                     }
                     
-                    if (!!video.length){
+                    /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
+                    if (!!video.length && !video.get(0).paused){
+                    // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){
+                        //console.log('reset video')
                         video.get(0).pause();
                         video.get(0).currentTime = 0;
                     }
-                    
+                    /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
                 }        
-            });            
+            });     
         });
 
         var scrollInterval = null;
@@ -1096,17 +1147,35 @@ $(function () {
 
                 sceneActiveQue.forEach(function( scene, idx ){
                     var video = $(scene.el).find('video');
+                    var sewewe = $(scene.el).find('.only-mobile').find('video'); 
+
                     if ( scene.hiActiveView == true ){
-                        if (!!video.length && video.get(0).currentTime == 0){
-                            video.get(0).play();
+                        //console.log('true', scene.hiActiveView);
+                        if (!!video.length ){
+                        // if (!!video.length && video.get(0).currentTime == 0 && video.hasClass('is-loaded111')){ //class 체크 if
+                            video.get(0).play(); //처음 플레이
+                        }
+
+                        if(window.innerWidth < 768){
+                            sewewe.get(0).play();
+                            //console.log("mobile---");
+                        } else {
+                            sewewe.get(0).pause();
+                            sewewe.get(0).currentTime = 0;
+                            //console.log("pc---");
                         }
                     }
                     if ( scene.hiActiveView == false ){
+                        //console.log('false', scene.hiActiveView);
                         if (!!video.length){
+                        // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){ //class 체크 if
                             video.get(0).pause();
-                            video.get(0).currentTime = 0;
+                            video.get(0).currentTime = 0;                            
                         }
-                    }                    
+                    }
+                    
+                    
+        
                 });
                 //console.log('hiActiveView', hiActiveView);
                 /*
@@ -1122,7 +1191,6 @@ $(function () {
         setTimeout(function(){
             $(window).trigger('scroll.videoPlay');
         }, 50);
-
 
         // 플로팅 버튼 AR 관련 
         if (vcui.detect.isMobileDevice){
@@ -1198,9 +1266,5 @@ $(function () {
                 }
             });
         }
-
-        
-        
     }
-    
 });

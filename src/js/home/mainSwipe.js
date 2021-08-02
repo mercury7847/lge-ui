@@ -35,7 +35,9 @@ function MainSwiper( ID ){
         'home', 'store', 'story', 'support', 'care-solutions'
     ];
 
-    this.init();
+    if(vcui.detect.isMobileDevice){
+        this.init();
+    }
     
 }
 
@@ -187,6 +189,7 @@ MainSwiper.prototype = {
             //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
+            
             var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
             //var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
