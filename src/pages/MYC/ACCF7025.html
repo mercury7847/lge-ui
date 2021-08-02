@@ -276,12 +276,12 @@
                                     </div>
                                      <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 START -->
                                     <div class="section-inner contract-info">
-                                        <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 : 계약기간 노출형식 : 년수(시작일 ~ 종료일)로 수정  -->
+                                        <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 - 계약기간 노출형식 : 년수(시작일 ~ 종료일) 로 변경  -->
                                         @@include('./common/modules/dl-infolist.html', {
                                             "addClass": true,
                                             "list" : [
                                                 { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)", "fieldName": "modelName" },
-                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>", "fieldName": "contractID" },                                                
+                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>111해지상담 신청</a>", "fieldName": "contractID" },                                                
                                                 { "dt" : "계약기간", "dd" : "1년(2020.09.01 ~ 2021.10.31)", "fieldName": "period" },
                                                 { "dt" : "의무사용기간", "dd" : "3년(2020.04.18 ~ 2023.04.17)", "fieldName": "dutyPeriod" },
                                                 { "dt" : "설치일", "dd" : "2020.09.01", "fieldName": "installDate" },
@@ -538,7 +538,8 @@
                                 <!-- 210202 수정 -->
                                 <!-- 2021.2.9 -->
                                 <!-- 멤버십 포인트 -->
-                                <div class="sects">
+                                <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 : 비노출 처리를 위한 .member-point-info 추가 -->
+                                <div class="sects member-point-info">
                                     <div class="tit-wrap type2">
                                         <h4 class="tit">멤버십 포인트</h4>
                                         <div class="flt-cont">
