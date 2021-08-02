@@ -552,6 +552,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t4 > li + li {position:relative}
 .company ul.ico_list.line.t4 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
 .company ul.ico_list.line.t4 > li strong {font-size:18px; font-weight:500; line-height:26px}
+.company ul.ico_list.line.t4 > li strong em {display:block; font-weight:normal}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
@@ -613,6 +614,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-risk_02 {background:url(/kr/images/company/icon/ico-risk_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-risk_03 {background:url(/kr/images/company/icon/ico-risk_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-risk_04 {background:url(/kr/images/company/icon/ico-risk_04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_01 {background:url(/kr/images/company/icon/ico-tcfd_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_02 {background:url(/kr/images/company/icon/ico-tcfd_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_03 {background:url(/kr/images/company/icon/ico-tcfd_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -1003,6 +1008,19 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb-col table tr:first-child td {border-top:1px solid #ddd}
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
+.company .tb_row table th.pd0_p,
+.company .tb-col table th.pd0_p,
+.company .tb_row table td.pd0_p,
+.company .tb-col table td.pd0_p {padding:16px 0!important}
+.company .tb_row table th.pd_p,
+.company .tb-col table th.pd_p,
+.company .tb_row table td.pd_p,
+.company .tb-col table td.pd_p {padding:16px 10px!important}
+.company .tb_row.keepAll_p table th,
+.company .tb-col.keepAll_p table th {word-break:keep-all}
+.company .tb_row.keepAll_p table td,
+.company .tb-col.keepAll_p table td {word-break:keep-all}
+
 .tb_row.thmb .tbl_thumb > ul {display:flex; background-color:#f4f4f4}
 .tb_row.thmb .tbl_thumb > ul > li {flex:1; height:220px; margin:20px 20px 0}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%}
@@ -1173,7 +1191,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     /* 테이블 */
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m30 {width:30%!important}
+    .company colgroup col.m25 {width:25%!important}
     .company colgroup col.m20 {width:20%!important}
+    .company colgroup col.m15 {width:15%!important}
+    .company colgroup col.m10 {width:10%!important}
     .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tbl_tit.mos {font-size:14px; line-height:20px}
