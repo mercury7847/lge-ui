@@ -783,7 +783,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn .title {font-weight:bold}
 .company .accordion-wrap > ul > .lists .noCont {padding:18px 20px}
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-left:60px; padding-right:60px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_pc {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_mo {margin-top:15px}
@@ -1111,7 +1111,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap > ul > .lists.on .head .accord-btn::after {margin-top:6px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:16px}
     .company .accordion-wrap.btmBtn > ul > .lists + .lists {margin-top:20px}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-right:20px}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-left:20px; padding-right:20px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0 30px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {font-size:15px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4 ~ .tit.h4 {margin-top:20px}
