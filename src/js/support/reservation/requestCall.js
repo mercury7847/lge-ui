@@ -63,7 +63,7 @@
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
 
-            /* BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리 */
+            /* BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리  */
             var params = location.search.replace('?','').split('&');
             var paramObj = {};
             params.forEach(function( data ){
@@ -72,7 +72,7 @@
             });
             
             self.isRentalCarePath = !!paramObj['rentalCare'] && paramObj['rentalCare'] == 'y' ? true : false;
-            /* //BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리 */
+            /* //BTOCSITE-3629 add :: 렌탈케어링크 파라메터 분리  */
 
             var register = {
                 privcyCheck: {
@@ -206,7 +206,7 @@
                 
                 self.nextInputStep();
 
-                // BTOCSITE-3629 add
+                // BTOCSITE-3629  add
                 if (self.isRentalCarePath){
                     $('input[data-topic-name="렌탈/케어 관련"]').trigger('click');
                 }
