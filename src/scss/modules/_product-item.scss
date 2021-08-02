@@ -469,6 +469,12 @@
                 font-weight: 700;
                 font-size: $font-large-1;
                 line-height: 30px;
+                // 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
+                &.disabled {
+                    background-image: url('/lg5-common/images/icons/btn-cart-32-gray.svg');
+                    cursor: default;
+                }
+                // 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
             }
             .original {
                 position: relative;
@@ -486,6 +492,12 @@
                     background-color: #616161;
                     content: '';
                 }
+                // 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
+                &.disabled {
+                    background-image: url('/lg5-common/images/icons/btn-cart-32-gray.svg');
+                    cursor: default;
+                }
+                // 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
             }
             .discount {
                 font-weight: 700;
