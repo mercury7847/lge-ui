@@ -831,6 +831,22 @@
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
 
+                    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+                    $('.service-link').find('.js-popup').on('click', function(e){
+                        if( isApp()) {
+                            e.preventDefault();
+                            var appUrl = $(this).attr('data-app-link');
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl});
+                                // , 'titlebar_show': 'Y'
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openNewWebview(appUrl);
+                            }
+                        }
+                    });
+                    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+
                     //noData 체크
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
