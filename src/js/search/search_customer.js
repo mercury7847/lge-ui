@@ -835,7 +835,7 @@
                     $('.service-link').find('.js-popup').on('click', function(e){
                         if( isApp()) {
                             e.preventDefault();
-                            var appUrl = $(this).attr('data-app-link');
+                            var appUrl = $(this).attr('href');
                             if(vcui.detect.isIOS){
                                 var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl});
                                 // , 'titlebar_show': 'Y'
