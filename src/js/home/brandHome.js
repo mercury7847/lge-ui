@@ -22,8 +22,8 @@
             return -c/2 * ((t-=2)*t*t*t - 2) + b;
         }
     });
-
-    vcui.require(['ui/carousel','libs/jquery.transit.min'], function () {     
+  
+        // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $thinqMain = $('.ui_wide_slider');
         $thinqMain.vcCarousel('destroy').vcCarousel({
@@ -338,8 +338,8 @@
         }
 
         // 앱 하단 메뉴 컨트롤
-        lgkorUI.showAppBottomMenuOver(true);
-        lgkorUI.setEnableAppScrollBottomMenu(false);
+        // lgkorUI.showAppBottomMenuOver(true);
+        // lgkorUI.setEnableAppScrollBottomMenu(false);
 
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
@@ -947,6 +947,5 @@
 
          
 
-    });
 });
     

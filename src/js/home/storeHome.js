@@ -199,8 +199,9 @@ $(function(){
 
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
-    vcui.require(['ui/tab', 'ui/lazyLoaderSwitch', 'ui/carousel'], function () {
-        $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
+        // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
+        $context.find('.ui_wide_slider').vcCarousel('destroy')
+        .vcCarousel({
             autoplay: true,
             autoplaySpped: 5000,
             infinite: true,
@@ -718,8 +719,5 @@ $(function(){
         lgkorUI.requestAjaxDataFailCheck(storeNewRecommendProductUrl, {}, buildNewRecommend, errorRequest);
         
         buildRecommend();
-
-    });
-
 
 });
