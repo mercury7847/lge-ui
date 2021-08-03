@@ -885,7 +885,7 @@
             // else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
 
             // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청            
-            // contractType - R :케어솔루션 C09 : 케어십 C00 : 무상케어십
+            // contractType - //R :케어솔루션 C : 케어십  ==> R :케어솔루션 C09 : 케어십 C00 : 무상케어십
             // 무상케어십일때 해지상담 신청 버튼 비노출 
             if(data.contractInfo.contractType != 'C00'){
                 data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
@@ -896,7 +896,6 @@
                 // 케어십 - 계약기간 표시형식 변경
                 // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 - 계약기간 노출형식 : 년수(시작일 ~ 종료일) 로 변경
                 // data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
-                
                 '<dl class="bullet-list nomargin-top">' +
                 '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
                 '</dl>';
