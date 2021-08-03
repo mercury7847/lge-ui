@@ -424,13 +424,30 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .esgWay_vision .contArea .task .box .text {min-height:122px; border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision .contArea .goal {display:flex; justify-content:space-between}
 .company .esgWay_vision .contArea .goal .box {width:calc(25% - 18px); min-height:382px; padding:23px 20px}
-.company .esgWay_vision .contArea .base .box {padding:22px 24px}
-.company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between}
-.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 16px)}
+.company .esgWay_vision .contArea .base .box {border:0; border-radius:0}
+.company .esgWay_vision .contArea .base .box .title {border:1px solid #666; border-radius:8px 8px 0 0; background-color:#666}
+.company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between; padding:22px 24px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 36px)}
 .company .esgWay_vision .contArea .base .box ul.bull > li:nth-child(2) {width:calc(50% + 32px)}
-.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; padding-left:40px; border-left:1px dashed #ddd}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:20px; padding-left:40px; border-left:1px dashed #ddd}
 .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {left:31px}
 .company .esgWay_vision .contArea .base .box ul.bull > li strong {margin-bottom:0}
+
+.company .esgWay_vision_subs {display:flex; justify-content:space-between; max-width:912px; margin:0 auto}
+.company .esgWay_vision_subs .before {display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px}
+.company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+.company .esgWay_vision_subs .before .box .cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision_subs .after {position:relative; display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .after::before {content:''; display:block; position:absolute; width:0; height:0; top:calc(50% - 110px); left:-76px; border-left:30px solid #f4f4f4; border-top:110px solid transparent; border-bottom:110px solid transparent}
+.company .esgWay_vision_subs .after .box + .box {margin-top:12px}
+.company .esgWay_vision_subs .after .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#da0f47; color:#fff; font-size:18px}
+.company .esgWay_vision_subs .after .box:last-of-type .e_tit {border-radius:8px 8px 0 0}
+.company .esgWay_vision_subs .box ul.cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision_subs .box ul.cont li {position:relative; font-size:16px; line-height:26px}
+.company .esgWay_vision_subs .box ul.cont li + li {margin-top:4px}
+.company .esgWay_vision_subs .box ul.cont li::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:11.5px; left:-12px}
+
 .company ul.partic_list {position:relative; max-width:1146px; margin:0 auto}
 .company ul.partic_list::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:155px; border-bottom:10px solid #666; border-left:8.5px solid transparent; border-right:8.5px solid transparent}
 .company ul.partic_list::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; left:155px; border-top:10px solid #666; border-left:8.5px solid transparent; border-right:8.5px solid transparent}
@@ -1644,11 +1661,28 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .esgWay_vision .contArea {position:relative; margin-top:19px; padding-top:35px}
     .company .esgWay_vision .contArea .tit.h4 {margin-bottom:10px}
     .company .esgWay_vision .contArea::before {left:calc(50% - 131px); border-left:131px solid transparent; border-right:131px solid transparent; border-bottom:20px solid #f4f4f4}
-    .company .esgWay_vision .contArea .base .box {padding:18px 20px; font-size:14px; line-height:22px}
+    .company .esgWay_vision .contArea .base .box {width:100%; font-size:14px; line-height:22px}
+    .company .esgWay_vision .contArea .base .box .title {width:100%; min-height:70px; padding:12px; border-radius:8px 8px 0 0; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
+    .company .esgWay_vision .contArea .base .box .title strong {font-weight:normal}
     .company .esgWay_vision .contArea .base .box ul.bull {flex-direction:column}
     .company .esgWay_vision .contArea .base .box ul.bull > li {width:100%!important; padding:0 0 0 8px}
-    .company .esgWay_vision .contArea .base .box ul.bull > li + li {margin-top:13px!important; padding:12px 0 0 8px; border-left:0; border-top:1px dashed #ddd}
+    .company .esgWay_vision .contArea .base .box ul.bull > li + li {margin-top:13px!important; margin-left:0; padding:12px 0 0 8px; border-left:0; border-top:1px dashed #ddd}
     .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {width:2px; height:2px; left:0; top:22px}
+    
+    .company .esgWay_vision_subs {flex-direction:column; max-width:100%; width:100%}
+    .company .esgWay_vision_subs .before {width:100%}
+    .company .esgWay_vision_subs .before .box .e_tit {height:48px; font-size:15px}
+    .company .esgWay_vision_subs .before .box + .box {margin-top:12px}
+    .company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+    .company .esgWay_vision_subs .before .box .cont {padding:11px 15px 11px 28px}
+    .company .esgWay_vision_subs .after {width:100%; margin-top:20px; padding-top:30px}
+    .company .esgWay_vision_subs .after::before {top:0; left:calc(50% - 55px); border-top:15px solid #f4f4f4; border-left:55px solid transparent; border-right:55px solid transparent; border-bottom:0}
+    .company .esgWay_vision_subs .after .box + .box {margin-top:12px}
+    .company .esgWay_vision_subs .after .box .e_tit {height:48px; font-size:15px}
+    .company .esgWay_vision_subs .box ul.cont {padding:11px 15px 11px 28px}
+    .company .esgWay_vision_subs .box ul.cont li {font-size:14px; line-height:22px}
+    .company .esgWay_vision_subs .box ul.cont li::before {content:''; display:block; position:absolute; width:2px; height:2px; background-color:#000; border-radius:50%; top:10px; left:-9px}
+    
     .company ul.partic_list {width:100%; max-width:100%; padding:41px 0}
     .company ul.partic_list::before {left:calc(50% - 108px); border-bottom:29px solid #f4f4f4; border-left:108px solid transparent; border-right:108px solid transparent}
     .company ul.partic_list::after {left:calc(50% - 108px); border-top:29px solid #f4f4f4; border-left:108px solid transparent; border-right:108px solid transparent}
