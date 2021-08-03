@@ -841,7 +841,7 @@
                                 // , 'titlebar_show': 'Y'
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                             } else {
-                                void android.openNewWebview(appUrl);
+                                android.openNewWebview(appUrl);
                             }
                         }
                     });
