@@ -20,7 +20,7 @@
     }
 
     .map-container {
-        // BTOCSITE-3617 : Thinq_cs 파라메타 있을때 비노출
+        // BTOCSITE-3617 : Thinq_cs 파라메타 있을때 방문예약 버튼 비노출
         &.Thinq_cs .btnVisit {
             display:none;
         }

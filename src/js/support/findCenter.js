@@ -141,6 +141,7 @@ function moveConsultPage() {
 
             self._resize();
 
+            // BTOCSITE-3617 : Thinq_cs 파라메타 있을때 방문예약 버튼 비노출
             if( lgkorUI.getParameterByName("Thinq_cs") == 'y') {
                 self.$container.addClass('Thinq_cs');
             }
