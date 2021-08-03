@@ -882,7 +882,7 @@
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
-            // else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>2222해지상담 신청</a>";
+            // else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
 
             // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청            
             // contractType - R :케어솔루션 C09 : 케어십 C00 : 무상케어십
