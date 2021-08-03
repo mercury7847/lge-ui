@@ -938,7 +938,6 @@
                 if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
                     item.modelUrlPath += '&kiosk='+kiosk;
                 }
-                console.log("item.modelUrlPath %o",item.modelUrlPath);
 
                 //console.log("### item.siblingType ###", item.siblingType);
 
