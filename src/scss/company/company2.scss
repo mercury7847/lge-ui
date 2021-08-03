@@ -849,6 +849,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap > ul > .lists .head .accord-btn::after {width:24px; height:24px; top:calc(50% - 12px); margin:0; border:0; background:url(/lg5-common/images/icons/btn-down-16-black.svg) center no-repeat; background-size:20px 20px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:20px; line-height:1.5}
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn .title {font-weight:bold}
+.company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_sub .title {font-weight:bold}
 .company .accordion-wrap > ul > .lists .noCont {padding:18px 20px}
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-left:60px; padding-right:60px}
