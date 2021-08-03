@@ -832,7 +832,7 @@
                     }
 
                     /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
-                    $('.service-link').find('.js-popup').on('click', function(e){
+                    $('.mobile-service-link').on('click', '.js-popup', function(e){
                         if( isApp()) {
                             e.preventDefault();
                             var appUrl = $(this).attr('href');
