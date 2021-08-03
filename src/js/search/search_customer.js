@@ -837,7 +837,7 @@
                             e.preventDefault();
                             var appUrl = $(this).attr('href');
                             if(vcui.detect.isIOS){
-                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl});
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
                                 // , 'titlebar_show': 'Y'
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                             } else {
