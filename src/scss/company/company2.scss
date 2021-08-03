@@ -18,7 +18,37 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .com-text.noLine_p::before {display:none}
 .company .com-text.pt60 {padding-top:0}
 .company .com-text.pt0 {padding-top:0}
+.company .com-text.pb0 {padding-bottom:0}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
+
+/* search 서치 검색 */
+.company .cmp_search {position:relative; max-width:1380px; margin:48px auto 0; z-index:50}
+.company .cmp_search .cmp_search_inner {position:relative; padding:40px 0; border-radius:8px; background-color:#f4f4f4}
+.company .cmp_search .cmp_sch_wrap {max-width:800px; margin:0 auto; border:1px solid #ddd; border-radius:8px; background-color:#fff; overflow:hidden}
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap {position:relative}
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_input {display:block; width:100%; padding:11px 102px 11px 30px; color:#000; font-size:16px; line-height:24px}
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_input:active,
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_input:focus {background-color:#e8f0fe}
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_delete {position:absolute; width:24px; height:24px; top:calc(50% - 12px); right:66px; background:url(/kr/images/company/icon/btn-cmp-sch-delete.svg) no-repeat center; background-size:24px 24px}
+.company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_btn {position:absolute; width:36px; height:48px; top:-1px; right:24px; background:url(/kr/images/company/icon/btn-cmp-search.svg) no-repeat center; background-size:24px 24px}
+.company .cmp_search .cmp_sch_result_wrap.active {display:block}
+.company .cmp_search .cmp_sch_result_wrap {display:none; position:absolute; width:800px; top:90px; left:calc(50% - 400px)}
+.company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list {width:100%; background-color:#fff; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
+.company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul {padding:0 30px}
+.company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li {width:100%; padding:12px 0}
+.company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li a {display:block; font-size:16px; line-height:24px}
+.company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li a .cmp_sch_word {color:#da0f47; font-weight:bold}
+@media screen and (max-width:767px){
+    .company .cmp_search {margin-top:24px}
+    .company .cmp_search .cmp_search_inner {padding:30px 4.44vw; border-radius:0}
+    .company .cmp_search .cmp_sch_wrap {width:100%; max-width:100%}
+    .company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_input {padding:11px 92px 11px 16px; font-size:14px; line-height:22px}
+    .company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_delete {right:56px}
+    .company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap .cmp_sch_btn {height:46px; right:10px}
+    .company .cmp_search .cmp_sch_result_wrap {width:calc(100% - 8.88vw); left:50%; transform:translateX(-50%); top:79px}
+    .company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li a {font-size:14px; line-height:22px}
+}
+
 
 /* 컨텐츠 영역 */
 .company .footnotes {margin-top:10px; color:#666; font-size:14px; line-height:24px}
@@ -81,7 +111,6 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
 .company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:10px; font-size:13px; font-weight:normal; line-height:20px}
 .company .tooltipArea.estim .tooltips .tooltip-wrap .tooltip-box .text > strong {display:block; margin-bottom:6px}
-
 
 .company .tit + .graph {margin-top:50px}
 .company .graph.ofn {padding-top:40px}
@@ -395,13 +424,30 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .esgWay_vision .contArea .task .box .text {min-height:122px; border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision .contArea .goal {display:flex; justify-content:space-between}
 .company .esgWay_vision .contArea .goal .box {width:calc(25% - 18px); min-height:382px; padding:23px 20px}
-.company .esgWay_vision .contArea .base .box {padding:22px 24px}
-.company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between}
-.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 16px)}
+.company .esgWay_vision .contArea .base .box {border:0; border-radius:0}
+.company .esgWay_vision .contArea .base .box .title {border:1px solid #666; border-radius:8px 8px 0 0; background-color:#666}
+.company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between; padding:22px 24px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 36px)}
 .company .esgWay_vision .contArea .base .box ul.bull > li:nth-child(2) {width:calc(50% + 32px)}
-.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; padding-left:40px; border-left:1px dashed #ddd}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:20px; padding-left:40px; border-left:1px dashed #ddd}
 .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {left:31px}
 .company .esgWay_vision .contArea .base .box ul.bull > li strong {margin-bottom:0}
+
+.company .esgWay_vision_subs {display:flex; justify-content:space-between; max-width:912px; margin:0 auto}
+.company .esgWay_vision_subs .before {display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px}
+.company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+.company .esgWay_vision_subs .before .box .cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision_subs .after {position:relative; display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .after::before {content:''; display:block; position:absolute; width:0; height:0; top:calc(50% - 110px); left:-76px; border-left:30px solid #f4f4f4; border-top:110px solid transparent; border-bottom:110px solid transparent}
+.company .esgWay_vision_subs .after .box + .box {margin-top:12px}
+.company .esgWay_vision_subs .after .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#da0f47; color:#fff; font-size:18px}
+.company .esgWay_vision_subs .after .box:last-of-type .e_tit {border-radius:8px 8px 0 0}
+.company .esgWay_vision_subs .box ul.cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
+.company .esgWay_vision_subs .box ul.cont li {position:relative; font-size:16px; line-height:26px}
+.company .esgWay_vision_subs .box ul.cont li + li {margin-top:4px}
+.company .esgWay_vision_subs .box ul.cont li::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:11.5px; left:-12px}
+
 .company ul.partic_list {position:relative; max-width:1146px; margin:0 auto}
 .company ul.partic_list::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:155px; border-bottom:10px solid #666; border-left:8.5px solid transparent; border-right:8.5px solid transparent}
 .company ul.partic_list::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; left:155px; border-top:10px solid #666; border-left:8.5px solid transparent; border-right:8.5px solid transparent}
@@ -420,6 +466,13 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb .inner {padding:64px}
 .company .acco_thumb .top .tit {margin-bottom:24px; font-size:24px; font-weight:bold; line-height:36px}
 .company .acco_thumb .content {display:none; padding-right:50%}
@@ -457,6 +510,20 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .estim_grp {margin-bottom:30px}
 .company .estim_grp > img {display:block; margin:0 auto}
+
+.company ul.esg_logos {display:flex; flex-wrap:wrap; justify-content:space-between; margin-bottom:-20px}
+.company ul.esg_logos > li {display:flex; justify-content:center; align-items:center; width:calc(25% - 18px); height:100px; margin-bottom:20px; border:1px solid #ddd; border-radius:8px; font-size:20px; font-weight:bold; line-height:30px; text-align:center; overflow:hidden}
+.company ul.esg_logos > li > img {max-width:100%}
+.company ul.esg_logos > li > span {word-break:break-word}
+
+.company .risk_man {max-width:1146px; margin:0 auto}
+.company .risk_man .r_tit {font-size:24px; font-weight:bold; line-height:36px; text-align:center}
+.company .risk_man .r_tit.pink {color:#da0f47}
+.company .risk_man ul.r_box {position:relative; margin:30px 0; padding:60px 0}
+.company .risk_man ul.r_box::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 357px); border-left:357px solid transparent; border-right:357px solid transparent; border-bottom:30px solid #ddd}
+.company .risk_man ul.r_box::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; left:calc(50% - 357px); border-left:357px solid transparent; border-right:357px solid transparent; border-top:30px solid #ddd}
+.company .risk_man ul.r_box > li {padding:28px 30px; border:1px solid #000; border-radius:8px; font-size:16px; line-height:26px}
+.company .risk_man ul.r_box > li + li {margin-top:30px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -547,6 +614,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t4 > li + li {position:relative}
 .company ul.ico_list.line.t4 > li + li::before {content:''; display:block; position:absolute; width:20px; height:36px; top:calc(50% - 18px); left:-28px; background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat 50%; background-size:20px}
 .company ul.ico_list.line.t4 > li strong {font-size:18px; font-weight:500; line-height:26px}
+.company ul.ico_list.line.t4 > li strong.bold {font-weight:bold}
+.company ul.ico_list.line.t4 > li strong em {display:block; font-weight:normal}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
 .company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
@@ -577,9 +646,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .ofn_iconBox ul > li .descArea span + span {margin-top:6px}
 .company .ofn_iconBox ul > li .descArea strong {font-weight:bold}
 .company .ofn_iconBox ul > li .descArea strong.emp {font-size:24px; line-height:26px}
-.company .ofn_iconBox ul > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.png) no-repeat 50% 50%; background-size:80px 80px}
-.company .ofn_iconBox ul > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.png) no-repeat 50% 50%; background-size:80px 80px}
-.company .ofn_iconBox ul > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.png) no-repeat 50% 50%; background-size:80px 80px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_01 {background:url(/kr/images/company/icon/ico-promot-offense_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_02 {background:url(/kr/images/company/icon/ico-promot-offense_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company .ofn_iconBox ul > li .iconArea i.ico-off_03 {background:url(/kr/images/company/icon/ico-promot-offense_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.ico_list > li .iconArea i.ico-monitor {background:url(/kr/images/company/icon/ico-monitor.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-pc {background:url(/kr/images/company/icon/ico-desktop_pc.svg) no-repeat 50% 50%; background-size:80px 80px}
@@ -608,6 +677,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-risk_02 {background:url(/kr/images/company/icon/ico-risk_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-risk_03 {background:url(/kr/images/company/icon/ico-risk_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-risk_04 {background:url(/kr/images/company/icon/ico-risk_04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_01 {background:url(/kr/images/company/icon/ico-tcfd_01.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_02 {background:url(/kr/images/company/icon/ico-tcfd_02.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_03 {background:url(/kr/images/company/icon/ico-tcfd_03.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -778,7 +851,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn .title {font-weight:bold}
 .company .accordion-wrap > ul > .lists .noCont {padding:18px 20px}
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
-.company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-right:67px}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-left:60px; padding-right:60px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_pc {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_mo {margin-top:15px}
@@ -861,7 +934,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.bull.stit > li strong {margin-top:30px; margin-bottom:12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {position:relative; display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {max-width:576px; margin:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {display:block; max-width:576px; margin:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {display:block; max-width:576px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:912px; margin:0 auto}
@@ -998,6 +1072,19 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb-col table tr:first-child td {border-top:1px solid #ddd}
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
+.company .tb_row table th.pd0_p,
+.company .tb-col table th.pd0_p,
+.company .tb_row table td.pd0_p,
+.company .tb-col table td.pd0_p {padding:16px 0!important}
+.company .tb_row table th.pd_p,
+.company .tb-col table th.pd_p,
+.company .tb_row table td.pd_p,
+.company .tb-col table td.pd_p {padding:16px 10px!important}
+.company .tb_row.keepAll_p table th,
+.company .tb-col.keepAll_p table th {word-break:keep-all}
+.company .tb_row.keepAll_p table td,
+.company .tb-col.keepAll_p table td {word-break:keep-all}
+
 .tb_row.thmb .tbl_thumb > ul {display:flex; background-color:#f4f4f4}
 .tb_row.thmb .tbl_thumb > ul > li {flex:1; height:220px; margin:20px 20px 0}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%}
@@ -1048,6 +1135,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.cmSystem > li .step > span {width:84px; height:84px; margin:9px; font-size:15px; line-height:85px}
     .company ul.cmSystem > li ul {margin:0; padding:0}
     .company ul.cmSystem > li ul li + li {margin-top:2px!important}
+
+    .company ul.esg_logos > li {width:calc(50% - 12px)}
 }
 
 @media screen and (max-width:860px){
@@ -1104,7 +1193,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap > ul > .lists.on .head .accord-btn::after {margin-top:6px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn .title {font-size:16px}
     .company .accordion-wrap.btmBtn > ul > .lists + .lists {margin-top:20px}
-    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-right:20px}
+    .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-top:0; padding-left:20px; padding-right:20px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:20px 0 30px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit {font-size:15px}
     .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea .tit.h4 ~ .tit.h4 {margin-top:20px}
@@ -1162,11 +1251,18 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-bottom:18px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:576px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {max-width:100%; width:100%}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {max-width:100%; width:100%}
 
     /* 테이블 */
+    .company .over_tbl {overflow-x:scroll}
+    .company .over_tbl table {max-width:767px; width:767px}
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m30 {width:30%!important}
+    .company colgroup col.m25 {width:25%!important}
     .company colgroup col.m20 {width:20%!important}
+    .company colgroup col.m15 {width:15%!important}
+    .company colgroup col.m10 {width:10%!important}
     .company colgroup col.m_auto {width:auto!important}
     .company .tbl_tit {margin-bottom:10px; font-size:15px; line-height:22px}
     .company .tbl_tit.mos {font-size:14px; line-height:20px}
@@ -1261,10 +1357,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.ico_list.line > li + li {margin-top:15px!important}
     .company ul.ico_list.line > li .iconArea {margin-bottom:8px}
     .company ul.ico_list.line.t3 > li + li {margin-top:36px!important}
-    .company ul.ico_list.line.t3 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
+    .company ul.ico_list.line.t3 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #f4f4f4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
     .company ul.ico_list.line.t3 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
     .company ul.ico_list.line.t4 > li + li {margin-top:36px!important}
-    .company ul.ico_list.line.t4 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #e4e4e4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
+    .company ul.ico_list.line.t4 > li + li::before {width:0; height:0; top:-24px; left:calc(50% - 62px); border-top:12px solid #f4f4f4; border-left:62px solid transparent; border-right:62px solid transparent; background:none}
     .company ul.ico_list.line.t4 > li strong {margin-bottom:10px; font-size:15px; line-height:23px}
 
     .company ul.ico_grid {margin-top:8px}
@@ -1565,11 +1661,28 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .esgWay_vision .contArea {position:relative; margin-top:19px; padding-top:35px}
     .company .esgWay_vision .contArea .tit.h4 {margin-bottom:10px}
     .company .esgWay_vision .contArea::before {left:calc(50% - 131px); border-left:131px solid transparent; border-right:131px solid transparent; border-bottom:20px solid #f4f4f4}
-    .company .esgWay_vision .contArea .base .box {padding:18px 20px; font-size:14px; line-height:22px}
+    .company .esgWay_vision .contArea .base .box {width:100%; font-size:14px; line-height:22px}
+    .company .esgWay_vision .contArea .base .box .title {width:100%; min-height:70px; padding:12px; border-radius:8px 8px 0 0; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
+    .company .esgWay_vision .contArea .base .box .title strong {font-weight:normal}
     .company .esgWay_vision .contArea .base .box ul.bull {flex-direction:column}
     .company .esgWay_vision .contArea .base .box ul.bull > li {width:100%!important; padding:0 0 0 8px}
-    .company .esgWay_vision .contArea .base .box ul.bull > li + li {margin-top:13px!important; padding:12px 0 0 8px; border-left:0; border-top:1px dashed #ddd}
+    .company .esgWay_vision .contArea .base .box ul.bull > li + li {margin-top:13px!important; margin-left:0; padding:12px 0 0 8px; border-left:0; border-top:1px dashed #ddd}
     .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {width:2px; height:2px; left:0; top:22px}
+    
+    .company .esgWay_vision_subs {flex-direction:column; max-width:100%; width:100%}
+    .company .esgWay_vision_subs .before {width:100%}
+    .company .esgWay_vision_subs .before .box .e_tit {height:48px; font-size:15px}
+    .company .esgWay_vision_subs .before .box + .box {margin-top:12px}
+    .company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+    .company .esgWay_vision_subs .before .box .cont {padding:11px 15px 11px 28px}
+    .company .esgWay_vision_subs .after {width:100%; margin-top:20px; padding-top:30px}
+    .company .esgWay_vision_subs .after::before {top:0; left:calc(50% - 55px); border-top:15px solid #f4f4f4; border-left:55px solid transparent; border-right:55px solid transparent; border-bottom:0}
+    .company .esgWay_vision_subs .after .box + .box {margin-top:12px}
+    .company .esgWay_vision_subs .after .box .e_tit {height:48px; font-size:15px}
+    .company .esgWay_vision_subs .box ul.cont {padding:11px 15px 11px 28px}
+    .company .esgWay_vision_subs .box ul.cont li {font-size:14px; line-height:22px}
+    .company .esgWay_vision_subs .box ul.cont li::before {content:''; display:block; position:absolute; width:2px; height:2px; background-color:#000; border-radius:50%; top:10px; left:-9px}
+    
     .company ul.partic_list {width:100%; max-width:100%; padding:41px 0}
     .company ul.partic_list::before {left:calc(50% - 108px); border-bottom:29px solid #f4f4f4; border-left:108px solid transparent; border-right:108px solid transparent}
     .company ul.partic_list::after {left:calc(50% - 108px); border-top:29px solid #f4f4f4; border-left:108px solid transparent; border-right:108px solid transparent}
@@ -1589,6 +1702,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_08 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-08-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb .inner {padding:32px 20px}
     .company .acco_thumb .top .tit {margin-bottom:12px; font-size:16px; line-height:24px}
     .company .acco_thumb .content {padding-right:0}
@@ -1618,4 +1739,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .estim_grp {margin-bottom:15px}
     .company .estim_grp > img {width:100%; max-width:100%}
+
+    .company ul.esg_logos {margin-bottom:-10px}
+    .company ul.esg_logos > li {width:calc(50% - 8px); height:50px; min-height:50px; margin-bottom:10px; padding:0 10px}
+    .company ul.esg_logos > li > span {font-size:13px; line-height:21px}
+    .company ul.esg_logos > li > img {height:100%}
+
+    .company .risk_man {max-width:100%; width:100%}
+    .company .risk_man .r_tit {font-size:16px; line-height:24px}
+    .company .risk_man ul.r_box {margin:15px 0; padding:43px 0}
+    .company .risk_man ul.r_box::before {left:calc(50% - 164px); border-left:164px solid transparent; border-right:164px solid transparent; border-bottom:28px solid #ddd}
+    .company .risk_man ul.r_box::after {left:calc(50% - 164px); border-left:164px solid transparent; border-right:164px solid transparent; border-top:28px solid #ddd}
+    .company .risk_man ul.r_box > li {padding:14px 15px; font-size:14px; line-height:22px}
+    .company .risk_man ul.r_box > li + li {margin-top:15px}
 }

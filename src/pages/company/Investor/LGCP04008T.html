@@ -106,6 +106,9 @@
 		google.visualization.events.addListener(chartColumn01, 'ready', function () {
 			var observer = new MutationObserver(function () {
 				containerColumn01.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				containerColumn02.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				containerColumn03.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+				containerColumn04.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				Array.prototype.forEach.call(containerColumn01.getElementsByTagName('rect'), function(rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
@@ -123,15 +126,6 @@
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
-			});
-			observer.observe(containerColumn01, {
-				childList: true,
-				subtree: true
-			});
-		});
-		google.visualization.events.addListener(chartColumn02, 'ready', function () {
-			var observer = new MutationObserver(function () {
-				containerColumn02.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				Array.prototype.forEach.call(containerColumn02.getElementsByTagName('rect'), function(rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
@@ -149,15 +143,6 @@
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
-			});
-			observer.observe(containerColumn02, {
-				childList: true,
-				subtree: true
-			});
-		});
-		google.visualization.events.addListener(chartColumn03, 'ready', function () {
-			var observer = new MutationObserver(function () {
-				containerColumn03.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				Array.prototype.forEach.call(containerColumn03.getElementsByTagName('rect'), function(rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
@@ -175,15 +160,6 @@
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
-			});
-			observer.observe(containerColumn03, {
-				childList: true,
-				subtree: true
-			});
-		});
-		google.visualization.events.addListener(chartCombo04, 'ready', function () {
-			var observer = new MutationObserver(function () {
-				containerCombo04.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				Array.prototype.forEach.call(containerCombo04.getElementsByTagName('rect'), function(rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
@@ -202,7 +178,7 @@
 					}
 				});
 			});
-			observer.observe(containerCombo04, {
+			observer.observe(containerColumn01, {
 				childList: true,
 				subtree: true
 			});
@@ -251,23 +227,23 @@
 		}
 	});
 	$(document).ready(function() {
-		$("a[href='#tab1'").on('click', function(e){
+		$("a[href='#tab1']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn01.draw(dataColumn01, optionsColumn);
 				chartCombo01.draw(dataCombo01, optionsCombo01);
 			}, 500);
 		});
-		$("a[href='#tab2'").on('click', function(e){
+		$("a[href='#tab2']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn02.draw(dataColumn02, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab3'").on('click', function(e){
+		$("a[href='#tab3']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn03.draw(dataColumn03, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab4'").on('click', function(e){
+		$("a[href='#tab4']").on('click', function(e){
 			setTimeout(function(){
 				chartCombo04.draw(dataCombo04, optionsCombo04);
 			}, 500);
