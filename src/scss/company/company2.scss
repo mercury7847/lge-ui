@@ -378,7 +378,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .dwn_all.board .titArea {margin-bottom:24px}
 .company .dwn_all.board .titArea .tit {font-size:22px; line-height:32px}
-.company .tb_row.board-type table {border-top:1px solid #666}
+.company .tb_row.board-type .tbl_add {display:flex; justify-content:space-between; margin-bottom:10px}
+.company .tb_row.board-type .tbl_add .item_num {font-size:14px; font-weight:bold; line-height:24px}
+.company .tb_row.board-type .tbl_add .item_num > em {padding-left:5px; color:#da0f47}
+.company .tb_row.board-type .tbl_add .item_select .sort-select-wrap .ui-selectbox-wrap .ui-selectbox-list {left:auto; right:0; transform:translateX(0)}
 .company .tb_row.board-type .board-tit p.new {margin-right:12px; color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
 .company .tb_row.board-type table td.dwn > a,
 .company .tb_row.board-type table td.dwn > button {display:block; width:24px; height:24px; margin:0 auto; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
@@ -1682,10 +1685,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compStep.esg > li .tit {margin-bottom:0!important}
     .company ul.compStep.esg > li .tit::after {border-top-color:#e4e4e4}
 
-    .company .dwn_all.board .titArea {margin-bottom:12px}
+    .company .dwn_all.board .titArea {margin-bottom:30px}
     .company .dwn_all.board .titArea .tit {font-size:18px}
     .company .tb_row.board-type .board-tit {margin-bottom:8px}
     .company .tb_row.board-type .board-tit p.new {margin:0 0 6px; line-height:20px}
+    .company .tb_row.board-type table {border-top:0}
+    .company .tb_row.board-type table::before {border-top:2px solid #666}
     .company .tb_row.board-type table tr {padding:15px 12px 10px}
     .company .tb_row.board-type table td {padding:0}
     .company .tb_row.board-type.download table tr {position:relative; padding-right:70px}
