@@ -615,6 +615,8 @@ ul.bull > li {position:relative; padding-left:12px; font-size:16px; text-align:l
 ul.bull > li.emp {font-weight:500}
 ul.bull > li + li {margin-top:6px!important}
 ul.bull > li::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
+ul.bull.no_bull > li {padding-left:0}
+ul.bull.no_bull > li::before {display:none}
 ul.bull > li.mt30 {margin-top:30px}
 ul.bull > li > strong {display:block; margin-bottom:20px}
 ul.bull > li > span.bold {font-weight:bold}
@@ -727,7 +729,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-tcfd_03 {background:url(/kr/images/company/icon/ico-tcfd_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
-.company ul.bull li ul.dwn_list {display:flex; justify-content:space-between; margin-left:-9px}
+.company ul.bull li ul.dwn_list {display:flex; justify-content:space-between}
 .company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
 .company ul.dwn_list > li .btn.dwn {position:absolute; min-width:initial; top:50%; right:30px; transform:translateY(-50%); padding:5px 12px; font-size:14px; line-height:20px}
 
