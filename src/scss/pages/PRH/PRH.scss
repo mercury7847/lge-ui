@@ -284,8 +284,8 @@
                     height:640px;
                     .signatureVisualTextArea {
                         position: absolute;
-                        top: 50%;
-                        transform: translate(0px, -50%);
+                        top: 70px; //BTOCSITE-3831
+                        // transform: translate(0px, -50%);//BTOCSITE-3831
                         right: 0;
                         left: 0;
                         z-index: 2;
@@ -325,6 +325,9 @@
                                 }
                             }
                         } 
+                        @include mobile {
+                            top:60px; //BTOCSITE-3831
+                        }
                     }
                     .bg {
                         background-size:cover;
