@@ -243,15 +243,15 @@ br.pc{display:block;}
 .esgPerformanceArea .esgTit{font-size: 24px;line-height: 1.42;font-weight: bold;margin-top:6px;}
 .esgPerformanceArea .esgDetail{font-size: 16px;line-height: 1.63;font-weight: normal;}
 .esgPerformanceArea i{background:no-repeat 50% 50%; background-size:80px 80px;display: block;width: 100%;height: 100%;}
-.esgPerformanceArea i.ico-esglg01 {background-image:url(/kr/images/company/icon/ico-esglg01.png);}
-.esgPerformanceArea i.ico-esglg02 {background-image:url(/kr/images/company/icon/ico-esglg02.png);}
-.esgPerformanceArea i.ico-esglg03 {background-image:url(/kr/images/company/icon/ico-esglg03.png);}
-.esgPerformanceArea i.ico-esglg04 {background-image:url(/kr/images/company/icon/ico-esglg04.png);}
-.esgPerformanceArea i.ico-esglg05 {background-image:url(/kr/images/company/icon/ico-esglg05.png);}
-.esgPerformanceArea i.ico-esglg06 {background-image:url(/kr/images/company/icon/ico-esglg06.png);}
-.esgPerformanceArea i.ico-esglg07 {background-image:url(/kr/images/company/icon/ico-esglg07.png);}
-.esgPerformanceArea i.ico-esglg08 {background-image:url(/kr/images/company/icon/ico-esglg08.png);}
-.esgPerformanceArea i.ico-esglg09 {background-image:url(/kr/images/company/icon/ico-esglg09.png);}
+.esgPerformanceArea i.ico-esglg01 {background-image:url(/kr/images/company/icon/ico-esglg01.svg);}
+.esgPerformanceArea i.ico-esglg02 {background-image:url(/kr/images/company/icon/ico-esglg02.svg);}
+.esgPerformanceArea i.ico-esglg03 {background-image:url(/kr/images/company/icon/ico-esglg03.svg);}
+.esgPerformanceArea i.ico-esglg04 {background-image:url(/kr/images/company/icon/ico-esglg04.svg);}
+.esgPerformanceArea i.ico-esglg05 {background-image:url(/kr/images/company/icon/ico-esglg05.svg);}
+.esgPerformanceArea i.ico-esglg06 {background-image:url(/kr/images/company/icon/ico-esglg06.svg);}
+.esgPerformanceArea i.ico-esglg07 {background-image:url(/kr/images/company/icon/ico-esglg07.svg);}
+.esgPerformanceArea i.ico-esglg08 {background-image:url(/kr/images/company/icon/ico-esglg08.svg);}
+.esgPerformanceArea i.ico-esglg09 {background-image:url(/kr/images/company/icon/ico-esglg09.svg);}
 @media screen and (max-width:767px){
 .esgLinkArea{width:100%;}
 .esgLinkArea:nth-child(2n+1){margin-left:0;}
@@ -271,10 +271,18 @@ br.pc{display:block;}
 
 /* 정보보호 */
 .esgCertified{margin-top:30px;}
-.esgCertified li{width:49%;display:inline-block;vertical-align: top;}
-.esgCertified img{max-width:350px;    width: 100%;}
+.esgCertified li{width:49%;display:inline-block;vertical-align: top;text-align: center;}
+.esgCertified img{max-width:350px;width: 100%;}
 @media screen and (max-width: 767px){
 .esgCertified{margin-top:15px;}
 .esgCertified li{width:100%;display:block;}
 .esgCertified li+li{margin-top:12px;}
+}
+
+/* 성과 및 데이터 */
+.pc2mo1 li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
+.pc2mo1 li:nth-child(2n){margin-left:20px;}
+@media screen and (max-width: 767px){
+.pc2mo1 li{width:100%;display:block;margin-top:12px;}
+.pc2mo1 li:nth-child(2n){margin-top:12px;margin-left:0}
 }

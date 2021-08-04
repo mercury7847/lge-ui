@@ -111,7 +111,7 @@
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
             '{{#if item.target == "popup"}}' + 
-            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text btn-target-link"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
             
             '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
@@ -831,6 +831,36 @@
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
 
+                    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+                    $(document).on('click', '.btn-target-link', function(e){
+                        var target = this.getAttribute('href'),
+                            popupWidth = parseInt(this.getAttribute('data-width')),
+                            popupHeight = parseInt(this.getAttribute('data-height')),
+                            screenWidth = parseInt(screen.width),
+                            screenHeight = parseInt(screen.height),
+                            intLeft = Math.floor((screenWidth - popupWidth) / 2),
+                            intTop = Math.floor((screenHeight - popupHeight) / 2);
+            
+                        if (intLeft < 0) intLeft = 0;
+                        if (intTop < 0) intTop = 0;
+
+                        e.preventDefault();
+                        
+                        if( isApp()) {
+                            var appUrl = $(this).attr('href');
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
+                                // , 'titlebar_show': 'Y'
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openNewWebview(appUrl);
+                            }
+                        } else {
+                            window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
+                        }
+                    })
+                    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+
                     //noData 체크
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
@@ -904,8 +934,14 @@
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        $(window).scrollTop(self.scrollHref);
-                        self.scrollHref = null;
+                        // $(window).scrollTop(self.scrollHref);
+                        // self.scrollHref = null;
+                        // BTOCSITE-2216
+                        $('html, body').scrollTop(0);
+                        $('.result-list img').last().on('load', function(){
+                            $('html,body').stop().animate({scrollTop: self.scrollHref});
+                            self.scrollHref = null;
+                        });
                     }
                 });
             },
