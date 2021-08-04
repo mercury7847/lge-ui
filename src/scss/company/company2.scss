@@ -147,6 +147,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea.grdt {background-image:linear-gradient(133deg, #a58bee 36%, #f86791 61%)}
+.company .linkArea.grdt.mg_5 {margin-top:0}
 .company .linkArea.grdt p {display:flex; justify-content:center; color:#fff}
 .company .linkArea.grdt p .btn-link {display:block; color:#fff}
 .company .linkArea.grdt p .btn-link + .btn-link {margin-left:24px}
@@ -571,6 +572,13 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .thumb.lg_motif {margin-top:60px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
 .company .thumb.lg_motif > img {display:block; margin:0 auto; padding:60px 0}
+.company ul.lg_motif_list {display:flex; justify-content:space-between; margin-top:30px}
+.company ul.lg_motif_list > li {width:calc(33.3333% - 16px)}
+.company ul.lg_motif_list > li .m_tit {font-size:18px; font-weight:bold; line-height:28px}
+.company ul.lg_motif_list > li .m_box {margin-top:20px; padding:38px 40px; background-color:#f4f4f4; border-radius:8px}
+.company ul.lg_motif_list > li .m_box > img {width:100%}
+.company ul.lg_motif_list > li .m_box span {display:block; font-size:14px; font-weight:500; line-height:24px}
+.company ul.lg_motif_list > li .m_box p {margin-top:24px; font-size:14px; line-height:24px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -1395,8 +1403,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .graph.ofn {padding-top:8px}
     .company .graph .txt_rt {font-size:12px; line-height:16px}
     .company .linkArea {margin-top:15px; padding:24px 0}
+    .company .linkArea.grdt {background-image:linear-gradient(138deg, #a58bee 20%, #f86791 76%)}
+    .company .linkArea.grdt.mg_5 {margin-top:-5px}
     .company .linkArea .tit {font-size:16px}
     .company .linkArea .desc {margin-top:6px}
+    .company .linkArea .desc a {font-size:13px; line-height:22px}
+    .company .linkArea.grdt p .btn-link + .btn-link {margin-left:12px}
     .company .risk_system {margin-top:15px}
     .company .risk_system .item .item_tit {width:27.7%; margin-right:8px}
     .company .risk_system .item .item_tit span {font-size:15px; line-height:23px}
@@ -1850,4 +1862,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .thumb.lg_motif > img {width:100%; max-width:100%; padding:30px 20px}
     .company .thumb.lg_motif {margin-top:30px}
+    .company ul.lg_motif_list {flex-direction:column; margin-top:15px}
+    .company ul.lg_motif_list > li {width:100%}
+    .company ul.lg_motif_list > li + li {margin-top:15px}
+    .company ul.lg_motif_list > li .m_tit {font-size:15px; line-height:23px}
+    .company ul.lg_motif_list > li .m_box {margin-top:10px; padding:18px 20px}
+    .company ul.lg_motif_list > li .m_box span {font-size:13px; line-height:22px}
+    .company ul.lg_motif_list > li .m_box p {margin-top:12px}
 }
