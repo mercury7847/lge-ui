@@ -84,9 +84,11 @@ $(document).ready(function() {
 function fcVideoPlay(){
 	var videoSection = $(".videoSection");
 	var windowWidth = $(window).width();
-	videoSection.addClass("play");
-	$(".videoSection .videoTit").hide();
-	$(".videoSection .videoPlayBtn").hide();
+	$(".videoStopImage").hide();
+	$(".videoText").hide();
+	setTimeout(function(){
+		$(".videoText").removeClass("on").show();
+	}, 5000);
 	if (windowWidth < 767) {
 		$(".videoSection .only_mo video").get(0).currentTime = 0;
 		$(".videoSection .only_mo video").get(0).play();
@@ -95,11 +97,12 @@ function fcVideoPlay(){
 		$(".videoSection .only_pc video").get(0).currentTime = 0;
 		$(".videoSection .only_pc video").get(0).play();
 	}
+	
+	
 }
 function fcVideoStop(){
-	$(".videoSection").removeClass("play");
-	$(".videoSection .videoTit").delay(500).fadeIn(200);
-	$(".videoSection .videoPlayBtn").delay(1300).fadeIn(200);
+	$(".videoStopImage").fadeIn(1000);
+	$(".videoText").addClass("on");
 	$(".videoSection .only_pc video").get(0).pause();
 	$(".videoSection .only_mo video").get(0).pause();
 }
@@ -107,12 +110,15 @@ function fcVideoStop(){
 <style>
 .company .videoSection{width: 100%;height:640px;position: relative;overflow:hidden;}
 .company .videoSection .videoPoster{position: absolute;max-width: inherit;max-width:1920px;height:640px;left: 50%;transform: translateX(-50%);}
-.company .videoSection .videoText{position: absolute;width: 100%;text-align:center;transform: translateY(-50%);top: 50%;padding-bottom: 100px;/*transition: all 0.4s ease;*/}
+.company .videoSection .videoText{position: absolute;width: 100%;text-align:center;transform: translateY(-50%);top: 50%;padding-bottom: 100px;}
 .company .videoSection .videoTit{font-size: 32px;font-weight: bold;line-height: 1.63;color: #000000;}
-.company .videoSection .videoPlayBtn{width:80px;height:80px;position: absolute;bottom: 0;left: calc(50% - 40px);}
-.company .videoSection .videoStopImage{display: block;width: 100%;height: 100%;background-position: center center;background-repeat: no-repeat;background-size: cover;position: absolute;max-width: 1920px;left: 50%;transform: translateX(-50%);}
-.company .videoSection.play .videoStopImage {opacity: 0;}
-/*.company .videoSection.t0 {transition: 0s;}*/
+.company .videoSection .step{opacity: 0;filter: blur(6px);}
+.company .videoSection .step01{transition: 1s;transition-delay: 1s;}
+.company .videoSection .step02{transition: 1s;transition-delay: 2s;}
+.company .videoSection .videoPlayBtn{opacity: 0;transition: 1s;transition-delay: 3s;width:80px;height:80px;position: absolute;bottom: 0;left: calc(50% - 40px);}
+.company .videoSection .videoStopImage{display:none;width: 100%;height: 100%;background-position: center center;background-repeat: no-repeat;background-size: cover;position: absolute;max-width: 1920px;left: 50%;transform: translateX(-50%);}
+.company .videoSection .videoText.on .step{opacity:1;filter: blur(0);}
+.company .videoSection .videoText.on .videoPlayBtn{opacity:1;filter: blur(0);}
 @media screen and (max-width: 767px){
 .company .videoSection{height:90.55vw;}
 .company .videoSection .videoPoster{width:100%;height:90.55vw;}
@@ -124,18 +130,21 @@ function fcVideoStop(){
 <div class="container company">
 	<section class="videoSection">
 		<div class="only_pc">
-			<video playsinline="" muted="" poster="/kr/images/company/main/img-video01-pc.jpg" class="videoPoster">
-				<source src="/kr/images/company/main/pc_v2.mp4" type="video/mp4"><p>LG전자 회사소개 동영상</p>
+			<video playsinline="" muted="" poster="/kr/images/company/main/img-video03-pc.png" class="videoPoster">
+				<source src="/kr/images/company/main/pc_v3.mp4" type="video/mp4"><p>LG전자 회사소개 동영상</p>
 			</video>
 		</div>
 		<div class="only_mo">
-			<video playsinline="" muted="" poster="/kr/images/company/main/img-video01-mo.jpg" class="videoPoster">
+			<video playsinline="" muted="" poster="/kr/images/company/main/img-video03-mo.png" class="videoPoster">
 				<source src="/kr/images/company/main/mo_v2.mp4" type="video/mp4"><p>LG전자 회사소개 동영상</p>
 			</video>
 		</div>
 		<span class="videoStopImage ui_bg_switch" data-pc-src="/kr/images/company/main/img-video01-pc.jpg" data-m-src="/kr/images/company/main/img-video01-mo.jpg" aria-hidden="hidden"></span>
 		<div class="videoText">
-			<h2 class="videoTit">앞선기술과 <br class="mo">새로운 혁신으로<br>고객의 미래와 <br class="mo">함께 나아갑니다</h2>
+			<h2 class="videoTit">
+				<span class="step step01">앞선 기술과 <br class="mo">새로운 혁신으로</span><br>
+				<span class="step step02">고객의 미래와 <br class="mo">함께 나아갑니다</span>
+			</h2>
 			<img src="/kr/images/company/main/play_btn.svg" alt="재생" class="videoPlayBtn" />
 		</div>
 	</section>
