@@ -28,7 +28,7 @@ br.pc{display:block;}
 .com-title {padding: 60px 40px 60px;max-width: 1460px;margin: 0 auto;}
 .com-title .img {height:480px;border-radius: 8px;overflow: hidden;}
 .com-title .img span {width: 100%;height: 100%;display: block;background-position: center center;background-size: auto 100%;background-repeat: no-repeat;}
-.com-title .text{text-align: center;margin-top: 24px;font-size: 18px;font-weight: normal;line-height: 1.56;color: #000000;}
+.com-title .text{text-align: center;margin-top: 40px;font-size: 18px;font-weight: normal;line-height: 1.56;color: #000000;}
 .com-text {padding: 60px 40px 60px;max-width: 1460px;margin: 0 auto;position: relative;}
 .com-text + .com-text::before{display: block;content: "";position: absolute;top: 0;width: calc(100% - 80px);height:1px;background-color:#dddddd;}
 .com-text .tit{font-size: 22px;font-weight: bold;line-height: 1.45;color: #000000;}

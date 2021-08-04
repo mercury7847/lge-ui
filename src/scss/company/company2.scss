@@ -147,8 +147,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea.grdt {background-image:linear-gradient(133deg, #a58bee 36%, #f86791 61%)}
-.company .linkArea.grdt p {color:#fff}
-.company .linkArea.grdt p .btn-link {color:#fff}
+.company .linkArea.grdt p {display:flex; justify-content:center; color:#fff}
+.company .linkArea.grdt p .btn-link {display:block; color:#fff}
+.company .linkArea.grdt p .btn-link + .btn-link {margin-left:24px}
 .company .linkArea.grdt p .btn-link::after {background:url(/lg5-common/images/icons/btn-arr-16-white.svg) center no-repeat}
 .company .linkArea .tit {font-size:18px; text-align:center}
 .company .linkArea .desc {margin-top:12px; text-align:center}
@@ -567,6 +568,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .webcastArea ul.bar li > span {min-width:122px}
 .company .webcastArea ul.bar li > span + span {position:relative; margin-left:14px; padding-left:13px}
 .company .webcastArea ul.bar li > span + span::before {content:''; display:block; position:absolute; width:1px; height:14px; top:calc(50% - 7px); left:0; background-color:#ddd}
+
+.company .thumb.lg_motif {margin-top:60px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
+.company .thumb.lg_motif > img {display:block; margin:0 auto; padding:60px 0}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -741,7 +745,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list.sales > li .thumb img {width:53%; max-width:232px; vertical-align:top; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
 .company ul.dwn_list.sales > li .btn.dwn {position:static; display:block; margin:12px auto 0; transform:translateY(0)}
 
-
+.company .dwn_all + .dwn_all {margin-top:30px}
 .company .dwn_all::after {content:''; display:block; clear:both}
 .company .dwn_all .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px}
 .company .dwn_all .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56}
@@ -755,6 +759,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .dwn_all .dwn_type2 {float:left; width:calc(50% - 12px)}
 .company .dwn_all .dwn_type2 + .dwn_type2 {margin-left:24px}
 .company .dwn_all .dwn_type2 ul.dwn_list {float:none; width:100%; margin-top:0}
+
+.company .text.dwn {margin-top:40px}
 
 .company .ir_pt .tit {font-size:18px; font-weight:bold; line-height:1.56}
 .company .ir_pt ul.ir_ptList {margin-top:20px}
@@ -1469,6 +1475,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .dwn_all .dwn_type2 {width:100%}
     .company .dwn_all .dwn_type2 + .dwn_type2 {margin-top:30px; margin-left:0}
 
+    .company .text.dwn {margin-top:30px; font-size:13px; line-height:22px}
+
     .company .ir_pt ul.ir_ptList > li {padding:19px 20px 20px}
     .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
     .company .ir_pt ul.ir_ptList > li .desc {flex-direction:column; padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
@@ -1839,4 +1847,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .webcastArea ul.bar li > span + span::before {height:10px; top:calc(50% - 5px)}
     .popup-wrap.popup-company .pop-conts table th,
     .popup-wrap.popup-company .pop-conts table td {padding:16px 12px; font-size:13px; line-height:22px}
+
+    .company .thumb.lg_motif > img {width:100%; max-width:100%; padding:30px 20px}
+    .company .thumb.lg_motif {margin-top:30px}
 }
