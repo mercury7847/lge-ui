@@ -5,7 +5,7 @@
     "data": {
         "userInfo": {
             "user": {
-                "name": "이엘지",
+                "name": "이엘지테스트",
                 "phoneNumber": "01087650989",
                 "telephoneNumber": "01023442345",
                 "email": "",
@@ -20,13 +20,13 @@
             }
         },
         "contractInfo": {
-            "contractType": "C",
-            "modelName": "냉장고(RD5QWERFCV)",
-            "contractID": "132412907",
-            "period": "2020.09.01",
-            "installDate": "2020.09.01",
-            "installPlace": "회사",
-            "saleTurn": "3, 6, 9회차",
+            "contractType": "C00",
+            "modelName": "식기세척기(DFB22MR)",
+            "contractID": "20228961",
+            "period": "5년(2021.03.23 ~ 2026.03.22)",
+            "installDate": "2021.03.23",
+            "installPlace": "사무실",
+            "saleTurn": "3, 13, 25, 37, 49, 60회차",
             "cancelConsultUrl": "https://wwwdev50.lge.co.kr/"
         },
         "paymentInfo": {
