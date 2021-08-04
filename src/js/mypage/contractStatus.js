@@ -893,7 +893,7 @@
             if(data.contractInfo.contractType === 'C09' || data.contractInfo.contractType === 'C00' ) {
                 // 케어십, 무상케어십 - 의무사용기간 숨김
                 $('.contract-info .dutyPeriod').hide();
-                // 캐어십일떄 기간 계약기간 노출 형식 : 시작일 ~ 
+                // 케어십일떄 기간 계약기간 노출 형식 : 시작일 ~ 
                 if(data.contractInfo.contractType === 'C09'){
                     data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
                     '<dl class="bullet-list nomargin-top">' +
