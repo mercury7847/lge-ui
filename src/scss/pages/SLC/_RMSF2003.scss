@@ -681,7 +681,7 @@ br.pc-only {
                 .txt {
                     position:relative;
                     display:table-cell;
-                    width:60%;
+                    width:88%; //BTOCSITE-3829
                     padding:0 20px 0 0;
                     @include font-medium;
                     vertical-align:middle;
