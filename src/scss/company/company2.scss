@@ -322,8 +322,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .share_price table td .percent_down {color:#0000ff; font-size:28px; font-weight:bold}
 .company .share_price table td .percent_down::before {content:'-'}
 
-.company .stock_tit {margin-bottom:4px; font-size:24px; line-height:35px; text-align:center}
-.company .stock_tit > em {color:#666; font-size:20px; line-height:35px}
+.company .stock_tit {margin-bottom:4px; font-size:18px; line-height:28px; text-align:center}
+.company .stock_tit > em {padding-left:5px; color:#666}
 .company .stock_number {margin-bottom:40px; font-size:48px; font-weight:bold; line-height:70px; text-align:center}
 .company .stock_number .num {padding-right:10px; color:#da0f47}
 
@@ -739,6 +739,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list.sales > li .thumb img {width:53%; max-width:232px; vertical-align:top; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
 .company ul.dwn_list.sales > li .btn.dwn {position:static; display:block; margin:12px auto 0; transform:translateY(0)}
 
+
 .company .dwn_all::after {content:''; display:block; clear:both}
 .company .dwn_all .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px}
 .company .dwn_all .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56}
@@ -748,6 +749,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .dwn_all ul.dwn_list > li {width:100%}
 .company .dwn_all ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
 .company .dwn_all ul.dwn_list.item2 > li {width:calc(50% - 12px)}
+
+.company .dwn_all .dwn_type2 {float:left; width:calc(50% - 12px)}
+.company .dwn_all .dwn_type2 + .dwn_type2 {margin-left:24px}
+.company .dwn_all .dwn_type2 ul.dwn_list {float:none; width:100%; margin-top:0}
 
 .company .ir_pt .tit {font-size:18px; font-weight:bold; line-height:1.56}
 .company .ir_pt ul.ir_ptList {margin-top:20px}
@@ -1459,6 +1464,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.dwn_list.sales > li .thumb {width:calc(100% + 32px); margin:-16px 0 14px -16px; padding-top:11px}
     .company ul.dwn_list.sales > li .thumb img {min-width:83px}
 
+    .company .dwn_all .dwn_type2 {width:100%}
+    .company .dwn_all .dwn_type2 + .dwn_type2 {margin-top:30px; margin-left:0}
+
     .company .ir_pt ul.ir_ptList > li {padding:19px 20px 20px}
     .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
     .company .ir_pt ul.ir_ptList > li .desc {flex-direction:column; padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
@@ -1648,8 +1656,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .share_price table td .percent_down {font-size:15px}
 
     .company .com-stock {margin:0 4.44vw; padding:45px 0 60px}
-    .company .stock_tit {margin-top:15px; margin-bottom:0; font-size:20px; line-height:30px}
-    .company .stock_tit > em {font-size:15px; line-height:30px}
+    .company .stock_tit {margin-top:15px; margin-bottom:0; font-size:15px; line-height:23px}
     .company .stock_number {margin-bottom:30px; font-size:27px; line-height:40px}
     .company .stock_number .num {padding-right:5px}
 
