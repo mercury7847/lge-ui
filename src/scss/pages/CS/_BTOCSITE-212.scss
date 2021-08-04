@@ -176,8 +176,8 @@
             margin-top: 6px;
             justify-content: space-between;
             > li {
-                width:100%;
-                width: 49%;
+                // width: 49%; //BTOCSTIE-4039
+                width:100%; //BTOCSTIE-4039
                 padding:0;
                 margin-left: 0;
                 margin-top: 8px;
