@@ -59,13 +59,11 @@
                                         <dt class="tit"><label for="contractInfo">계약정보 선택</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 start -->
                                                 <select class="ui_selectbox" id="contractInfo" name="contractInfo">
-                                                    <option value="RH9WGANR|12345678">식기세척기 (RH9WGANR) 계약번호 (20228961)</option>
-                                                    <option value="RG8WGGFC|34563245">냉장고 (RD5QWERFCV) 계약번호 (132412907)</option>
+                                                    <option value="RH9WGANR|12345678">건조기 (RH9WGANR) 계약번호 (12345678)</option>
+                                                    <option value="RG8WGGFC|34563245">세탁기 (RG8WGGFC) 계약번호 (34563245)</option>
                                                     <option value="RA3WQWER|67673323">에어컨 (RA3WQWER) 계약번호 (67673323)</option>
                                                 </select>
-                                                <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 end -->
                                             </div>
                                         </dd>
                                     </dl>
@@ -275,14 +273,12 @@
                                         </div>
                                     </div>
                                      <!-- BTOCSITE-2537 [UI]케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 START -->
-                                    <div class="section-inner contract-info">
-                                        <!-- BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 - 계약기간 노출형식 : 년수(시작일 ~ 종료일) 로 변경  -->
-                                        @@include('./common/modules/dl-infolist.html', {
+                                    <div class="section-inner contract-info">@@include('./common/modules/dl-infolist.html', {
                                             "addClass": true,
                                             "list" : [
                                                 { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)", "fieldName": "modelName" },
-                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>111해지상담 신청</a>", "fieldName": "contractID" },                                                
-                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01 ~ 2021.10.31)", "fieldName": "period" },
+                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>", "fieldName": "contractID" },
+                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01)", "fieldName": "period" },
                                                 { "dt" : "의무사용기간", "dd" : "3년(2020.04.18 ~ 2023.04.17)", "fieldName": "dutyPeriod" },
                                                 { "dt" : "설치일", "dd" : "2020.09.01", "fieldName": "installDate" },
                                                 { "dt" : "설치장소", "dd" : "가정", "fieldName": "installPlace" },
