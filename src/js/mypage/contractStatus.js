@@ -893,21 +893,16 @@
             if(data.contractInfo.contractType === 'C09' || data.contractInfo.contractType === 'C00' ) {
                 // 케어십, 무상케어십 - 의무사용기간 숨김
                 $('.contract-info .dutyPeriod').hide();
-                // 케어십일떄 기간 계약기간 노출 형식 : 시작일 ~ 
+                
+                // 케어십 - 계약기간 표시형식 변경
                 if(data.contractInfo.contractType === 'C09'){
                     data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
                     '<dl class="bullet-list nomargin-top">' +
                     '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
                     '</dl>';
-                } else{
-                    // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 - 계약기간 노출형식 : 년수(시작일 ~ 종료일) 
-                    '<dl class="bullet-list nomargin-top">' +
-                    '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
-                    '</dl>';
                 }
             }
-            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청 
-            // 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 
+            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 
             if( data.contractInfo.contractType === 'C00' ) {
                 $('.contract-btn').hide();
                 $('.sects.payment.viewer').hide();
