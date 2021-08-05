@@ -1125,8 +1125,16 @@
                                 name: "실버",
                                 code: "SV",
                                 mixingCode: "GSV"
+                            }, {
+                                name: "레드우드",
+                                code: "RD",
+                                mixingCode: "GRD"
+                            }, {
+                                name: "클레이 브라운",
+                                code: "CL",
+                                mixingCode: "GCL"
                             }]
-                            //210719 BTOCSITE-2346 신규 컬러 미적용 - 레드우드,클레이브라운
+                            //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
                         }
                     }, {
                         doorMaterial: {
@@ -2800,242 +2808,11 @@
                     door4: "",
                 }, {
                     defaultCode: "W821AAA463",
-                    modelCode: "W821FBB463S",
-                    door1: "D870JT-FBT",
-                    door2: "D870BB-FBT",
-                    door3: "D870BB-FBT",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821FSS463S",
-                    door1: "D870JT-FSD",
-                    door2: "D870BB-FSD",
-                    door3: "D870BB-FSD",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821FTT463S",
-                    door1: "D870JT-FST",
-                    door2: "D870BB-FST",
-                    door3: "D870BB-FST",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821FBS463S",
-                    door1: "D870JT-FBT",
-                    door2: "D870BB-FSD",
-                    door3: "D870BB-FSD",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821FBT463S",
-                    door1: "D870JT-FBT",
-                    door2: "D870BB-FST",
-                    door3: "D870BB-FST",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821FTS463S",
-                    door1: "D870JT-FST",
-                    door2: "D870BB-FSD",
-                    door3: "D870BB-FSD",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821SGG463S",
-                    door1: "D870JT-SGR",
-                    door2: "D870BB-SGR",
-                    door3: "D870BB-SGR",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821SSS463S",
-                    door1: "D870JT-SSV",
-                    door2: "D870BB-SSV",
-                    door3: "D870BB-SSV",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821SMM463S",
-                    door1: "D870JT-SMT",
-                    door2: "D870BB-SMT",
-                    door3: "D870BB-SMT",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821SGS463",
-                    door1: "D870JT-SGR",
-                    door2: "D870BB-SSV",
-                    door3: "D870BB-SSV",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821SSG463S",
-                    door1: "D870JT-SSV",
-                    door2: "D870BB-SGR",
-                    door3: "D870BB-SGR",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
                     modelCode: "W821SMS463S",
                     door1: "D870JT-SMT",
                     door2: "D870BB-SSV",
                     door3: "D870BB-SSV",
                     door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MBB463S",
-                    door1: "D870JT-MBK",
-                    door2: "D870BB-MBK",
-                    door3: "D870BB-MBK",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MGG463S",
-                    door1: "D870JT-MGY",
-                    door2: "D870BB-MGY",
-                    door3: "D870BB-MGY",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MWW463S",
-                    door1: "D870JT-MWH",
-                    door2: "D870BB-MWH",
-                    door3: "D870BB-MWH",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MBG463S",
-                    door1: "D870JT-MBK",
-                    door2: "D870BB-MGY",
-                    door3: "D870BB-MGY",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MWG463S",
-                    door1: "D870JT-MWH",
-                    door2: "D870BB-MGY",
-                    door3: "D870BB-MGY",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MGB463S",
-                    door1: "D870JT-MGY",
-                    door2: "D870BB-MBK",
-                    door3: "D870BB-MBK",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821MGW463S",
-                    door1: "D870JT-MGY",
-                    door2: "D870BB-MWH",
-                    door3: "D870BB-MWH",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GBB463",
-                    door1: "D870JT-GBE",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GBM463S",
-                    door1: "D870JT-GBE",
-                    door2: "D870BB-GMN",
-                    door3: "D870BB-GMN",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GBP463S",
-                    door1: "D870JT-GBE",
-                    door2: "D870BB-GPK",
-                    door3: "D870BB-GPK",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GBS463S",
-                    door1: "D870JT-GBE",
-                    door2: "D870BB-GSV",
-                    door3: "D870BB-GSV",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GSS463S",
-                    door1: "D870JT-GSV",
-                    door2: "D870BB-GSV",
-                    door3: "D870BB-GSV",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GSB463S",
-                    door1: "D870JT-GSV",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GSM463S",
-                    door1: "D870JT-GSV",
-                    door2: "D870BB-GMN",
-                    door3: "D870BB-GMN",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GSP463S",
-                    door1: "D870JT-GSV",
-                    door2: "D870BB-GPK",
-                    door3: "D870BB-GPK",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GMB463S",
-                    door1: "D870JT-GMN",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GPB463",
-                    door1: "D870JT-GPK",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GRC463S",
-                    door1: "D870JT-GRD",
-                    door2: "D870BB-GCL",
-                    door3: "D870BB-GCL",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA463",
-                    modelCode: "W821GCB463S",
-                    door1: "D870JT-GCL",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FBB153S",
-                    door1: "D870JT-FBT",
-                    door2: "D870TT-FBT",
-                    door3: "D870BB-FBT",
-                    door4: "D870BB-FBT",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FSS153S",
-                    door1: "D870JT-FSD",
-                    door2: "D870TT-FSD",
-                    door3: "D870BB-FSD",
-                    door4: "D870BB-FSD",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821FTT153S",
-                    door1: "D870JT-FST",
-                    door2: "D870TT-FST",
-                    door3: "D870BB-FST",
-                    door4: "D870BB-FST",
                 }, {
                     defaultCode: "W821AAA153",
                     modelCode: "W821FBS153S",
@@ -3045,25 +2822,11 @@
                     door4: "D870BB-FSD",
                 }, {
                     defaultCode: "W821AAA153",
-                    modelCode: "W821FBT153S",
-                    door1: "D870JT-FBT",
-                    door2: "D870TT-FBT",
-                    door3: "D870BB-FST",
-                    door4: "D870BB-FST",
-                }, {
-                    defaultCode: "W821AAA153",
                     modelCode: "W821FTS153S",
                     door1: "D870JT-FST",
                     door2: "D870TT-FST",
                     door3: "D870BB-FSD",
                     door4: "D870BB-FSD",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821SGG153S",
-                    door1: "D870JT-SGR",
-                    door2: "D870TT-SGR",
-                    door3: "D870BB-SGR",
-                    door4: "D870BB-SGR",
                 }, {
                     defaultCode: "W821AAA153",
                     modelCode: "W821SSS153S",
@@ -3087,13 +2850,6 @@
                     door4: "D870BB-SSV",
                 }, {
                     defaultCode: "W821AAA153",
-                    modelCode: "W821SSG153S",
-                    door1: "D870JT-SSV",
-                    door2: "D870TT-SSV",
-                    door3: "D870BB-SGR",
-                    door4: "D870BB-SGR",
-                }, {
-                    defaultCode: "W821AAA153",
                     modelCode: "W821SMS153S",
                     door1: "D870JT-SMT",
                     door2: "D870TT-SMT",
@@ -3108,13 +2864,6 @@
                     door4: "D870BB-MBK",
                 }, {
                     defaultCode: "W821AAA153",
-                    modelCode: "W821MGG153S",
-                    door1: "D870JT-MGY",
-                    door2: "D870TT-MGY",
-                    door3: "D870BB-MGY",
-                    door4: "D870BB-MGY",
-                }, {
-                    defaultCode: "W821AAA153",
                     modelCode: "W821MWW153S",
                     door1: "D870JT-MWH",
                     door2: "D870TT-MWH",
@@ -3122,16 +2871,9 @@
                     door4: "D870BB-MWH",
                 }, {
                     defaultCode: "W821AAA153",
-                    modelCode: "W821MBG153S",
+                    modelCode: "W821MBG153S", //SUSPENDED상태(PLP로 이동 TEST) 210805 BTOCSITE-2346
                     door1: "D870JT-MBK",
                     door2: "D870TT-MBK",
-                    door3: "D870BB-MGY",
-                    door4: "D870BB-MGY",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821MWG153S",
-                    door1: "D870JT-MWH",
-                    door2: "D870TT-MWH",
                     door3: "D870BB-MGY",
                     door4: "D870BB-MGY",
                 }, {
@@ -3157,60 +2899,11 @@
                     door4: "D870BB-GBE",
                 }, {
                     defaultCode: "W821AAA153",
-                    modelCode: "W821GBM153S",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GMN",
-                    door4: "D870BB-GMN",
-                }, {
-                    defaultCode: "W821AAA153",
                     modelCode: "W821GBP153S",
                     door1: "D870JT-GBE",
                     door2: "D870TT-GBE",
                     door3: "D870BB-GPK",
                     door4: "D870BB-GPK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GBS153S",
-                    door1: "D870JT-GBE",
-                    door2: "D870TT-GBE",
-                    door3: "D870BB-GSV",
-                    door4: "D870BB-GSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSS153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GSV",
-                    door4: "D870BB-GSV",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSB153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSM153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GMN",
-                    door4: "D870BB-GMN",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GSP153S",
-                    door1: "D870JT-GSV",
-                    door2: "D870TT-GSV",
-                    door3: "D870BB-GPK",
-                    door4: "D870BB-GPK",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GMB153S",
-                    door1: "D870JT-GMN",
-                    door2: "D870TT-GMN",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
                 }, {
                     defaultCode: "W821AAA153",
                     modelCode: "W821GPB153",
@@ -3225,13 +2918,6 @@
                     door2: "D870TT-GRD",
                     door3: "D870BB-GCL",
                     door4: "D870BB-GCL",
-                }, {
-                    defaultCode: "W821AAA153",
-                    modelCode: "W821GCB153S",
-                    door1: "D870JT-GCL",
-                    door2: "D870TT-GCL",
-                    door3: "D870BB-GBE",
-                    door4: "D870BB-GBE",
                 }, {
                     defaultCode: "M871AAA252",
                     modelCode: "M871FBB252S",
@@ -4664,12 +4350,14 @@
         var $quickbuyInfoBody = $('#quick_buy .total_price_info_body');
         var $step3Tit = $('.simul_step.simul_step3 .simul_tit > .tit');
         var $step3Etc = $('.simul_step.simul_step3 dd .etc_area');
+        //var $step3Td = $('.compare_sel_model_area .tb_compare table tbody tr td:last-child');
         //210719 추가 BTOCSITE-2346 - E
         
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
+            //$step3Td.css("text-align","right"); // 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             //console.log("NEWBEST");
@@ -4688,6 +4376,7 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
+            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
@@ -4707,28 +4396,11 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
+            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
-        // S - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
-        if($objContent.attr('data-page-type') === 'ETLAND') {
-            // console.log("ETLAND");
-            $objHeader.hide();
-            $objBreadcrb.hide();
-            $objTopNavi.hide();
-            $objMyPickBtn.hide();
-            $objFooter.hide();
-            //$step3.show();  // BTOCSITE-1582 add
-            //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.show();
-            $step3.show();
-            $step3Tit.html("특성 비교하여 모델 정하기");
-            $step3Etc.hide();
-            $quickbuy.css("border-top","0");
-            $quickbuyInfoBody.css("padding","0");
-        }
-        // E - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
 
         //추천조합 열기
         $(".proposeModel").on("click", function() {
@@ -4892,7 +4564,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ // 210805 BTOCSITE-3487 전자랜드 추가
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
@@ -4938,7 +4610,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -5160,7 +4832,7 @@
                         // console.log("saveInfo", saveInfo);
                         myPickSave(saveInfo);
                         //210719 BTOCSITE-2346 CASE별 분기 처리 - S
-                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                             modelSimulator.mobileStep(".simul_step3");
                         } else {
                             modelSimulator.mobileStep(".simul_step3");
@@ -5188,7 +4860,7 @@
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
                 /* BTOCSITE-1582 */
                 //var $objContent = $('.model_experience');
-                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                     modelSimulator.mobileStep(".simul_step3");
                 } else {
                     modelSimulator.mobileStep(".simul_step3");    
@@ -5277,10 +4949,10 @@
             }
             //console.log(purchaseData);
 
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
-                // BTOCSITE-2346 newbest, himart, etland(전자랜드)일 경우 datasend 데이터 전달값 변경 - 210721 - start
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
                 datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
-                // BTOCSITE-2346 newbest, himart, etland(전자랜드)일 경우 datasend 데이터 전달값 변경 - 210721 - end
+                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
                 purchaseFn(purchaseData);
             }
@@ -6166,11 +5838,11 @@
                                 // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '            <col style="width:16%">';
                                 tblHtml += '            <col style="width:16%">';
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '            <col style="width:24.5%">';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '        </colgroup>';
                                 tblHtml += '        <thead>';
                                 tblHtml += '            <tr>';
@@ -6182,11 +5854,11 @@
                                 // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '                <th scope="col">매직스페이스</th>';
                                 tblHtml += '                <th scope="col">에너지 효율</th>';
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '                <th scope="col">가격</th>';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '            </tr>';
                                 tblHtml += '        </thead>';
                                 tblHtml += '        <tbody>';
@@ -6198,18 +5870,18 @@
                                 tblHtml += '    <td>' + mainVoiceChk + '</td>';
                                 }
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
-                                //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
+                                //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
                                 } else {
                                 tblHtml += '    <td style="text-align:center;">' + mainEnergy + '등급</td>';
                                 }
-                                //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td><span></span>원</td>';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '</tr>';
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -6227,18 +5899,18 @@
                                             tblHtml += '    <td>' + subVoiceChk + '</td>';
                                         }
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
-                                        //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
+                                        //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
                                         } else {
                                         tblHtml += '    <td style="text-align:center;">' + subEnergy + '등급</td>';
                                         }
-                                        //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
-                                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                        //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td><span></span>원</td>';
                                         }
-                                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
+                                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                         tblHtml += '</tr>';
                                     }
                                 }
@@ -6267,19 +5939,19 @@
                 tblHtml += '            </tr>';
                 tblHtml += '        </thead>';
                 tblHtml += '        <tbody>';
-                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시 )
+                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
                 if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
                 tblHtml += '    <td><span></span>원</td>';
                 tblHtml += '</tr>';
-                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
                 tblHtml += '    <td style="text-align:center;">-</td>';
                 tblHtml += '</tr>';
                 }
-                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
+                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
                 tblHtml += '</div>';
@@ -6303,19 +5975,19 @@
                         tblHtml += '            </tr>';
                         tblHtml += '        </thead>';
                         tblHtml += '        <tbody>';
-                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
                         tblHtml += '    <td><span></span>원</td>';
                         tblHtml += '</tr>';
-                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
                         tblHtml += '    <td style="text-align:center;">-</td>';
                         tblHtml += '</tr>';
                         }
-                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
                         tblHtml += '</div>';
@@ -6324,7 +5996,7 @@
             }
             resultModelPriceCheck(modelPriceArry); //개발쪽에 가격 산출을 위한 모델코드를 넘김 //함수로 반환받아야 함
             /* BTOCSITE-1582 */
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 //return;
                 
             }
@@ -6403,7 +6075,7 @@
             //console.log('sumSlide.length', sumSlide.length);
             /* BTOCSITE-1582 */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
                 //priceSumList.appendSlide(priceHtml);
                 //console.log('priceSumList', priceSumList);
@@ -7254,7 +6926,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -7395,7 +7067,7 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 function resultModelPrice(price) {
     /* BTOCSITE-1582 */
     var $objContent = $('.model_experience');
-    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
         //alert('견적확인결과' + price);
         $(".simul_step3 .btn_check_price").trigger('click');
     }
