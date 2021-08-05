@@ -1,3 +1,8 @@
+if ('scrollRestoration' in history) {
+    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
+    history.scrollRestoration = 'manual';
+}
+
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -170,8 +175,6 @@
 
                     self.updateBasicData();
                 });
-
-                $('footer').addClass('show');
             },
 
             getCategoryFromFilter: function(filterData) {
