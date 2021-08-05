@@ -66,7 +66,7 @@
         '                       <div class="sort-select-wrap">'+
         '                           <select class="ui_selectbox" data-combo-id="1" id="contractPeriodSet-{{modelId}}" title="계약기간 선택" data-sibling-type="siblingContractPeriod" {{#if siblingContractPeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingContractPeriod}}'+
-        '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectContractPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -716,26 +716,29 @@
                 var listBlock = $prodListContainer.find('> ul.inner > li.item').eq(blockID);
 
                 // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
-                var o = result.data.siblingUsePeriod;
+                var o = result.data.siblingContractPeriod;
+                var selectContractPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
+                    return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                });
+                selectContractPeriodID = o[selectContractPeriodID].siblingCode;
 
+
+                var o = result.data.siblingUsePeriod;
                 var selectUserPeriodID = Object.keys(o).reduce(function (previous, current,currentIndex) {
                     return o[previous].siblingCode > o[current].siblingCode ? previous:current;
                 });
-
                 selectUserPeriodID = o[selectUserPeriodID].siblingCode;
 
                 var o = result.data.siblingVisitCycle;
                 var selectVisitCycleID = Object.keys(o).reduce(function (previous, current) {
                     return o[previous].siblingCode > o[current].siblingCode ? previous:current;
                 });
-
                 selectVisitCycleID = o[selectVisitCycleID].siblingCode;
 
                 var o = result.data.siblingFee;
                 var selectFeeID = Object.keys(o).reduce(function (previous, current) {
                     return o[previous].siblingCode > o[current].siblingCode ? previous:current;
                 });
-
                 selectFeeID = o[selectFeeID].siblingCode;
 
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
