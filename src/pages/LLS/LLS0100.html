@@ -72,29 +72,31 @@
                         <h3 class="lls-sec__head--title">최신 하이라이트</h3>
                     </div>
                     <div class="lls-sec__content">
-                        <div class="swiper-container recently-highlight-slider">
-                            <div class="swiper-wrapper"> 
-                                @@for ( var i=0; i < 9; i++ ) {
-                                <div class="swiper-slide slide-item">
-                                    <a href="">
-                                        <div class="slide-thumb-area">
-                                            <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
-                                            <span class="slide-item-time">18:00</span>
-                                        </div>
-                                        <div class="slide-cont-area">
-                                            <strong class="slide-title">
-                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                            </strong>
-                                        </div>
-                                    </a>
+                        <div class="swiper-cover">
+                            <div class="swiper-container recently-highlight-slider">
+                                <div class="swiper-wrapper">
+                                    @@for ( var i=0; i < 9; i++ ) {
+                                    <div class="swiper-slide slide-item">
+                                        <a href="">
+                                            <div class="slide-thumb-area">
+                                                <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
+                                                <span class="slide-item-time">18:00</span>
+                                            </div>
+                                            <div class="slide-cont-area">
+                                                <strong class="slide-title">
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                </strong>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    }
                                 </div>
-                                }
+                                <div class="swiper-pagination"></div>
+                                <button class="swiper-button-prev"><span class="blind">이전</span></button>
+                                <button class="swiper-button-next"><span class="blind">다음</span></button>
                             </div>
-                            <div class="swiper-pagination"></div>
-                            <button class="swiper-button-prev"><span class="blind">이전</span></button>
-                            <button class="swiper-button-next"><span class="blind">다음</span></button>
                         </div>
                     </div>
                 </div>
@@ -106,27 +108,29 @@
                         <h3 class="lls-sec__head--title">방송에 나온 그 제품</h3>
                     </div>
                     <div class="lls-sec__content">
-                        <div class="swiper-container onbroad-product-slider">
-                            <div class="swiper-wrapper">
-                                @@for ( var i=0; i < 9; i++ ) {
-                                <div class="swiper-slide slide-item">
-                                    <a href="">
-                                        <div class="slide-thumb-area">
-                                            <img src="/lg5-common/images/LLS/img-lls-broad-product-dummy01.jpg" alt="">
-                                        </div>
-                                        <div class="slide-cont-area">
-                                            <strong class="slide-title">
-                                                LG 코드제로 A9S 오브제 컬렉션
-                                                LG 코드제로 A9S 오브제 컬렉션
-                                            </strong>
-                                        </div>
-                                    </a>
+                        <div class="swiper-cover">
+                            <div class="swiper-container onbroad-product-slider">
+                                <div class="swiper-wrapper">
+                                    @@for ( var i=0; i < 9; i++ ) {
+                                    <div class="swiper-slide slide-item">
+                                        <a href="">
+                                            <div class="slide-thumb-area">
+                                                <img src="/lg5-common/images/LLS/img-lls-broad-product-dummy01.jpg" alt="">
+                                            </div>
+                                            <div class="slide-cont-area">
+                                                <strong class="slide-title">
+                                                    LG 코드제로 A9S 오브제 컬렉션
+                                                    LG 코드제로 A9S 오브제 컬렉션
+                                                </strong>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    }
                                 </div>
-                                }
+                                <div class="swiper-pagination"></div>
+                                <button class="swiper-button-prev"><span class="blind">이전</span></button>
+                                <button class="swiper-button-next"><span class="blind">다음</span></button>
                             </div>
-                            <div class="swiper-pagination"></div>
-                            <button class="swiper-button-prev"><span class="blind">이전</span></button>
-                            <button class="swiper-button-next"><span class="blind">다음</span></button>
                         </div>
                     </div>
                 </div>
@@ -171,6 +175,7 @@
             <!-- // component / Scroll to the top -->
         </div>
         <!-- //210226 플로팅버튼 추가 -->
+        @@include('./common/footer.html')
     </div>
     
 </body>
