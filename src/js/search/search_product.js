@@ -1,3 +1,8 @@
+if ('scrollRestoration' in history) {
+    // Back off, browser, I got this...
+    history.scrollRestoration = 'manual';
+}
+
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
