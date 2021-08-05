@@ -29,7 +29,7 @@
                             //'<a href="{{modelUrlPath}}"><img data-lazy="{{image}}" alt="{{imageAltText}} {{idx + 1}}번 이미지" style="opacity:0;"></a>' +
                             '</div>' +
                         '{{/each}}'+
-                    '</div>' + 
+                    '</div>' +
                 '</div>' +
                 '<div class="slide-controls">' +
                     '<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>' +
@@ -163,7 +163,7 @@
                 self.savedPLPData.listData = [];
                 self.savedPLPData.pagination = {page:0, totalCount:0};
                 self.savedPLPData.isNew = false;
-                self.isLoading = false; // BTOCSITE-2150 add
+                self.isLoading = false; // BTOCSITE-2150 add	
                 self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
                 
                 self.setting();
@@ -189,7 +189,7 @@
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
-                        if(param) {                            
+                        if(param) {
                             self.requestSearch(param, true);
                         }
 
@@ -233,8 +233,8 @@
 
                         if(Object.keys(storageFilterData).length) change = true;
                         else{
-                            if(firstSortType != storageFilters.sortType) {
-                                change = true
+                            if(firstSortType != storageFilters.sortType) {	
+                                change = true	
                             };
                         }
 
@@ -260,12 +260,12 @@
                             self.setPageData(self.savedPLPData.pagination);
                             //토탈 카운트 복수
                             self.setTotalCount(self.savedPLPData.totalCount);
-                            //필터 셀렉트박스 change
-                            
-                            //console.log("self.savedPLPData", self.savedPLPData)
-                            if( self.savedPLPData.sortType) {
-                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    
-                                //console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)
+                            //필터 셀렉트박스 change	
+                            	
+                            //console.log("self.savedPLPData", self.savedPLPData)	
+                            if( self.savedPLPData.sortType) {	
+                                self.$listSorting.find('.ui_selectbox').vcSelectbox('value', self.savedPLPData.sortType, true);    	
+                                //console.log("self.savedPLPData.sortType", self.savedPLPData.sortType)	
                             }
                             
                             
@@ -530,8 +530,8 @@
 
                     var hiddenData = lgkorUI.getHiddenInputData();
                     param.page = parseInt(hiddenData.page) + 1;
-                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify
-                        self.requestSearch(param, false);
+                    if(param && self.isLoading == false) {  // BTOCSITE-2150 modify	
+                        self.requestSearch(param, false);	
                     }
                 });
 
@@ -615,17 +615,17 @@
                 if(param && param.page && param.totalCount) {
                     var page = parseInt(param.page);
                     var totalCount = parseInt(param.totalCount);
-                    if (page < totalCount) {
-                        /* BTOCSITE-2150 add */
-                        if (!self.isMobileSize) {
-                            self.$btnMore.show();
-                        } else {
-                            self.$btnMore.hide();
-                        }
-                        /* //BTOCSITE-2150 add */
-                    } else {
-                        //더이상 없다                        
-                        self.$btnMore.hide();
+                    if (page < totalCount) {	
+                        /* BTOCSITE-2150 add */	
+                        if (!self.isMobileSize) {	
+                            self.$btnMore.show();	
+                        } else {	
+                            self.$btnMore.hide();	
+                        }	
+                        /* //BTOCSITE-2150 add */	
+                    } else {	
+                        //더이상 없다                        	
+                        self.$btnMore.hide();	
                     }
 
                     lgkorUI.setHiddenInputData({
@@ -646,7 +646,7 @@
             requestSearch: function(data, isNew){
                 var self = this;
 
-                if (self.isLoading) return; //BTOCSITE-2150 add
+                if (self.isLoading) return; //BTOCSITE-2150 add	
                 self.isLoading = true;  //BTOCSITE-2150 add
 
                 var ajaxUrl = self.$section.attr('data-prod-list');
@@ -662,7 +662,7 @@
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                     var data = result.data[0];
-
+                    
                     var totalCount = data.productTotalCount ? data.productTotalCount : 0;
                     self.savedPLPData.totalCount = totalCount;
                     self.setTotalCount(totalCount);
@@ -936,6 +936,13 @@
                 item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
 
                 item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
+
+                // 20210728 BTOCSITE-3608 매장 키오스크 LGE.COM 노출 개선 요청 
+                var kiosk = lgkorUI.getParameterByName("kiosk");
+                if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
+                    item.modelUrlPath += '&kiosk='+kiosk;
+                }
+
                 //console.log("### item.siblingType ###", item.siblingType);
 
                 function getEcCategoryName(item){
