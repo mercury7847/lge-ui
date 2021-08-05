@@ -636,6 +636,7 @@ ul.bull > li > span.bold {font-weight:bold}
 ul.bull > li .tb_row,
 ul.bull > li .tb-col {margin-left:-12px}
 ul.bull.mgtL > li + li {margin-top:30px!important}
+ul.bull > li ul.pl {padding-left:12px}
 
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
@@ -1342,7 +1343,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {max-width:100%; width:100%}
 
     /* 테이블 */
-    .company .over_tbl {overflow-x:scroll}
+    .company .over_tbl {overflow-x:scroll; overflow-y:hidden}
     .company .over_tbl table {max-width:767px; width:767px}
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m30 {width:30%!important}
