@@ -32,8 +32,9 @@
 							<!-- 이벤트 리스트 컴포넌트와 돔구조 싱크 맞춤 -->
 							<div class="box-list event-type">
 								@@if ( !context.eventPage ) {
+								<!-- BTOCSITE-3367 마이페이지 > 활동 관리 > 참여 이벤트 : 당첨자발표일 노출관련 "winViewFlag" : "Y", "winViewFlag" : "N", -->
 								<ul class="box-list-inner">
-									@@loop('./common/modules/list-box.html', [
+									@@loop('./common/modules/list-box-event.html', [
 										{
 											"img" : "dummy/@img-event01.jpg",
 											
@@ -46,7 +47,8 @@
 											"title-hd" : "이벤트 제목",
 											"title" : "2020 NEW 올레드와 함께하는 홈라이프",
 											"date-hd" : "이벤트 기간",
-											"date" : "당첨자 발표 예정일 : 매월 15일"
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+											"winViewFlag" : "Y",
 										},
 										{
 											"img" : "dummy/@img-event02.jpg",
@@ -60,7 +62,8 @@
 											"title-hd" : "이벤트 제목",
 											"title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
 											"date-hd" : "이벤트 기간",
-											"date" : "당첨자 발표 예정일 : 매월 15일"
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+											"winViewFlag" : "N",
 										},
 										{
 											"img" : "dummy/@img-event03.jpg",
@@ -75,7 +78,7 @@
 											"title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
 											"date-hd" : "이벤트 기간",
 											"date" : "당첨자 발표 예정일 : 매월 15일",
-				
+											"winViewFlag" : "N",
 											"endEvent" : true,
 				
 											"btnOnly" : "당첨자 발표"
@@ -92,7 +95,8 @@
 											"title-hd" : "이벤트 제목",
 											"title" : "2020 NEW 올레드와 함께하는 홈라이프",
 											"date-hd" : "이벤트 기간",
-											"date" : "당첨자 발표 예정일 : 매월 15일"
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+											"winViewFlag" : "Y",
 										},
 										{
 											"img" : "dummy/@img-event02.jpg",
@@ -106,7 +110,8 @@
 											"title-hd" : "이벤트 제목",
 											"title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
 											"date-hd" : "이벤트 기간",
-											"date" : "당첨자 발표 예정일 : 매월 15일"
+											"date" : "당첨자 발표 예정일 : 매월 15일",
+											"winViewFlag" : "Y",
 										},
 										{
 											"img" : "dummy/@img-event03.jpg",
@@ -121,6 +126,7 @@
 											"title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
 											"date-hd" : "이벤트 기간",
 											"date" : "당첨자 발표 예정일 : 매월 15일",
+											"winViewFlag" : "Y",
 				
 											"endEvent" : true,
 				
