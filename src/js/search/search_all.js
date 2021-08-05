@@ -222,6 +222,7 @@
                 self.uniqId = vcui.getUniqId(8);
                 
                 //vcui.require(['ui/tab'], function () {
+                    $(window).scrollTop(0); //BTOCSITE-2216
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
@@ -1096,12 +1097,18 @@
 
                     if(self.scrollHref) {
                         // $(window).scrollTop(self.scrollHref);
+                        // self.scrollHref = null;
                         // BTOCSITE-2216
-                        $('html, body').scrollTop(0);
-                        $('.result-list img').last().on('load', function(){
+                        
+                        if( $('.result-list img').last().length ) {
+                            $('.result-list img').last().on('load', function(){
+                                $('html,body').stop().animate({scrollTop: self.scrollHref});
+                                self.scrollHref = null;
+                            });
+                        } else {
                             $('html,body').stop().animate({scrollTop: self.scrollHref});
                             self.scrollHref = null;
-                        });
+                        }
                     }
                 });
             },
