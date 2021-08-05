@@ -105,6 +105,8 @@
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
+
+                $(window).scrollTop(0); //BTOCSITE-2216
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
@@ -866,11 +868,15 @@
                         // $(window).scrollTop(self.scrollHref);
                         // self.scrollHref = null;
                         // BTOCSITE-2216
-                        $('html, body').scrollTop(0);
-                        $('.result-list img').last().on('load', function(){
+                        if( $('.result-list img').last().length ) {
+                            $('.result-list img').last().on('load', function(){
+                                $('html,body').stop().animate({scrollTop: self.scrollHref});
+                                self.scrollHref = null;
+                            });
+                        } else {
                             $('html,body').stop().animate({scrollTop: self.scrollHref});
                             self.scrollHref = null;
-                        });
+                        }
                     }
                 });
             },
