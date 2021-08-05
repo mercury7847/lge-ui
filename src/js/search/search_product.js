@@ -205,6 +205,8 @@
 
                     self.updateBasicData();
                 });
+
+                $('footer').addClass('show');
             },
 
             getCategoryFromFilter: function(filterData) {
