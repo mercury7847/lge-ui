@@ -2792,21 +2792,25 @@
                     door2: "D870BB-GBE",
                     door3: "D870BB-GBE",
                     door4: "",
-                }, {
-                    defaultCode: "W821AAA453",
-                    modelCode: "W821GRC453S",
-                    door1: "D870JT-GRD",
-                    door2: "D870BB-GCL",
-                    door3: "D870BB-GCL",
-                    door4: "",
-                }, {
-                    defaultCode: "W821AAA453",
-                    modelCode: "W821GCB453S",
-                    door1: "D870JT-GCL",
-                    door2: "D870BB-GBE",
-                    door3: "D870BB-GBE",
-                    door4: "",
-                }, {
+                },
+                // BTOCSITE-2346 210806 신규컬러 제품 추천조합 제외 - S
+                // , {
+                //     defaultCode: "W821AAA453",
+                //     modelCode: "W821GRC453S",
+                //     door1: "D870JT-GRD",
+                //     door2: "D870BB-GCL",
+                //     door3: "D870BB-GCL",
+                //     door4: "",
+                // }, {
+                //     defaultCode: "W821AAA453",
+                //     modelCode: "W821GCB453S",
+                //     door1: "D870JT-GCL",
+                //     door2: "D870BB-GBE",
+                //     door3: "D870BB-GBE",
+                //     door4: "",
+                // }, 
+                // BTOCSITE-2346 210806 신규컬러 제품 추천조합 제외 - E
+                {
                     defaultCode: "W821AAA463",
                     modelCode: "W821SMS463S",
                     door1: "D870JT-SMT",
