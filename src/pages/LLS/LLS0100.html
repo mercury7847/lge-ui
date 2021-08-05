@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
+<link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
 @@include('./common/head.html', { 
     pageCSS: ["LLS/LLS"],
     pageJS: ["libs/swiper-bundle", "LLS/LLS"]
 })
-<link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -59,12 +59,13 @@
                     </div>
                     <div class="lls-sec__content">
                         <div class="swiper-container recently-highlight-slider">
-                            <div class="swiper-wrapper">
+                            <div class="swiper-wrapper"> 
                                 @@for ( var i=0; i < 9; i++ ) {
                                 <div class="swiper-slide slide-item">
                                     <a href="">
                                         <div class="slide-thumb-area">
                                             <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
+                                            <span class="slide-item-time">18:00</span>
                                         </div>
                                         <div class="slide-cont-area">
                                             <strong class="slide-title">
