@@ -71,6 +71,7 @@
                     arr.forEach(function(item, index) {
                         listbody.append(vcui.template(listItemTemplate, item));
                     });
+                    $('.tbl_add .item_num em').text(data.totalCount);
                     self.$announceList.show();
                 } else {
                     self.$announceList.hide();
