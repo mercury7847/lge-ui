@@ -1,5 +1,5 @@
 if ('scrollRestoration' in history) {
-    // Back off, browser, I got this...
+    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
     history.scrollRestoration = 'manual';
 }
 
@@ -210,8 +210,6 @@ if ('scrollRestoration' in history) {
 
                     self.updateBasicData();
                 });
-
-                $('footer').addClass('show');
             },
 
             getCategoryFromFilter: function(filterData) {
