@@ -268,6 +268,8 @@
 
                     self.updateBasicData();
                 //});
+
+                $('footer').addClass('show');
             },
 
             makeProductGAData: function(item) {
