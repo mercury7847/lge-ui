@@ -1125,16 +1125,8 @@
                                 name: "실버",
                                 code: "SV",
                                 mixingCode: "GSV"
-                            }, {
-                                name: "레드우드",
-                                code: "RD",
-                                mixingCode: "GRD"
-                            }, {
-                                name: "클레이 브라운",
-                                code: "CL",
-                                mixingCode: "GCL"
                             }]
-                            //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                            //210719 BTOCSITE-2346 신규 컬러 미적용 - 레드우드,클레이브라운
                         }
                     }, {
                         doorMaterial: {
@@ -1235,7 +1227,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -1330,7 +1322,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -1425,7 +1417,7 @@
                                     code: "CL",
                                     mixingCode: "GCL"
                                 }]
-                                //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
                             }
                         }, {
                             doorMaterial: {
@@ -4672,14 +4664,12 @@
         var $quickbuyInfoBody = $('#quick_buy .total_price_info_body');
         var $step3Tit = $('.simul_step.simul_step3 .simul_tit > .tit');
         var $step3Etc = $('.simul_step.simul_step3 dd .etc_area');
-        //var $step3Td = $('.compare_sel_model_area .tb_compare table tbody tr td:last-child');
         //210719 추가 BTOCSITE-2346 - E
         
 
         if($objContent.attr('data-page-type') === 'COMMON') {
             //console.log("common");
             $quickbuy.hide();   // BTOCSITE-1582 add
-            //$step3Td.css("text-align","right"); // 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'NEWBEST') {
             //console.log("NEWBEST");
@@ -4698,7 +4688,6 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
-            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         if($objContent.attr('data-page-type') === 'HIMART') {
@@ -4718,11 +4707,28 @@
             $step3Etc.hide();
             $quickbuy.css("border-top","0");
             $quickbuyInfoBody.css("padding","0");
-            //$step3Td.css("text-align","center");
             // end - 210719 BTOCSITE-2346 add
         }
         /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
 
+        // S - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
+        if($objContent.attr('data-page-type') === 'ETLAND') {
+            // console.log("ETLAND");
+            $objHeader.hide();
+            $objBreadcrb.hide();
+            $objTopNavi.hide();
+            $objMyPickBtn.hide();
+            $objFooter.hide();
+            //$step3.show();  // BTOCSITE-1582 add
+            //$quickbuy.show();   // BTOCSITE-1582 add
+            $quickbuy.show();
+            $step3.show();
+            $step3Tit.html("특성 비교하여 모델 정하기");
+            $step3Etc.hide();
+            $quickbuy.css("border-top","0");
+            $quickbuyInfoBody.css("padding","0");
+        }
+        // E - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
 
         //추천조합 열기
         $(".proposeModel").on("click", function() {
@@ -4886,7 +4892,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ // 210805 BTOCSITE-3487 전자랜드 추가
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
@@ -4932,7 +4938,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -5154,7 +5160,7 @@
                         // console.log("saveInfo", saveInfo);
                         myPickSave(saveInfo);
                         //210719 BTOCSITE-2346 CASE별 분기 처리 - S
-                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                             modelSimulator.mobileStep(".simul_step3");
                         } else {
                             modelSimulator.mobileStep(".simul_step3");
@@ -5182,7 +5188,7 @@
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
                 /* BTOCSITE-1582 */
                 //var $objContent = $('.model_experience');
-                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                     modelSimulator.mobileStep(".simul_step3");
                 } else {
                     modelSimulator.mobileStep(".simul_step3");    
@@ -5271,10 +5277,10 @@
             }
             //console.log(purchaseData);
 
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
-                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+                // BTOCSITE-2346 newbest, himart, etland(전자랜드)일 경우 datasend 데이터 전달값 변경 - 210721 - start
                 datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
-                // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
+                // BTOCSITE-2346 newbest, himart, etland(전자랜드)일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
                 purchaseFn(purchaseData);
             }
@@ -6160,11 +6166,11 @@
                                 // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '            <col style="width:16%">';
                                 tblHtml += '            <col style="width:16%">';
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '            <col style="width:24.5%">';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 tblHtml += '        </colgroup>';
                                 tblHtml += '        <thead>';
                                 tblHtml += '            <tr>';
@@ -6176,11 +6182,11 @@
                                 // E - 210719 BTOCSITE-2346 음성인식 컬럼 추가
                                 tblHtml += '                <th scope="col">매직스페이스</th>';
                                 tblHtml += '                <th scope="col">에너지 효율</th>';
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '                <th scope="col">가격</th>';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 tblHtml += '            </tr>';
                                 tblHtml += '        </thead>';
                                 tblHtml += '        <tbody>';
@@ -6192,18 +6198,18 @@
                                 tblHtml += '    <td>' + mainVoiceChk + '</td>';
                                 }
                                 tblHtml += '    <td>' + mainMagicSpace + '개</td>';
-                                //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td>' + mainEnergy + '등급</td>';
                                 } else {
                                 tblHtml += '    <td style="text-align:center;">' + mainEnergy + '등급</td>';
                                 }
-                                //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
-                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td><span></span>원</td>';
                                 }
-                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                 tblHtml += '</tr>';
                                 if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
                                     let _subModel = _typModel[j].subModel;
@@ -6221,18 +6227,18 @@
                                             tblHtml += '    <td>' + subVoiceChk + '</td>';
                                         }
                                         tblHtml += '    <td>' + subMagicSpace + '개</td>';
-                                        //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
+                                        //S - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td>' + subEnergy + '등급</td>';
                                         } else {
                                         tblHtml += '    <td style="text-align:center;">' + subEnergy + '등급</td>';
                                         }
-                                        //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart)
-                                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                        //E - 210722 BTOCSITE-2346 에너지 효율 등급 text-align:center로 수정(newbest, himart, etland(전자랜드))
+                                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                         if ($objContent.attr('data-page-type') === 'COMMON'){
                                         tblHtml += '    <td><span></span>원</td>';
                                         }
-                                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 미노출)
                                         tblHtml += '</tr>';
                                     }
                                 }
@@ -6261,19 +6267,19 @@
                 tblHtml += '            </tr>';
                 tblHtml += '        </thead>';
                 tblHtml += '        <tbody>';
-                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
+                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시 )
                 if ($objContent.attr('data-page-type') === 'COMMON'){
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
                 tblHtml += '    <td><span></span>원</td>';
                 tblHtml += '</tr>';
-                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
+                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
                 tblHtml += '<tr class="is_active">';
                 tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
                 tblHtml += '    <td style="text-align:center;">-</td>';
                 tblHtml += '</tr>';
                 }
-                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
                 tblHtml += '        </tbody>';
                 tblHtml += '    </table>';
                 tblHtml += '</div>';
@@ -6297,19 +6303,19 @@
                         tblHtml += '            </tr>';
                         tblHtml += '        </thead>';
                         tblHtml += '        <tbody>';
-                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
                         if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
                         tblHtml += '    <td><span></span>원</td>';
                         tblHtml += '</tr>';
-                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
+                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
                         tblHtml += '    <td style="text-align:center;">-</td>';
                         tblHtml += '</tr>';
                         }
-                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest, himart, etland(전자랜드)에선 "-" 표시)
                         tblHtml += '        </tbody>';
                         tblHtml += '    </table>';
                         tblHtml += '</div>';
@@ -6318,7 +6324,7 @@
             }
             resultModelPriceCheck(modelPriceArry); //개발쪽에 가격 산출을 위한 모델코드를 넘김 //함수로 반환받아야 함
             /* BTOCSITE-1582 */
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 //return;
                 
             }
@@ -6397,7 +6403,7 @@
             //console.log('sumSlide.length', sumSlide.length);
             /* BTOCSITE-1582 */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
                 //priceSumList.appendSlide(priceHtml);
                 //console.log('priceSumList', priceSumList);
@@ -7248,7 +7254,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -7389,7 +7395,7 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
 function resultModelPrice(price) {
     /* BTOCSITE-1582 */
     var $objContent = $('.model_experience');
-    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){
+    if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
         //alert('견적확인결과' + price);
         $(".simul_step3 .btn_check_price").trigger('click');
     }
