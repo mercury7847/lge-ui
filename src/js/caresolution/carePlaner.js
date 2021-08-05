@@ -77,7 +77,7 @@
         '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
-        '                       <div class="sort-select-wrap"> '+
+        '                       <div class="sort-select-wrap">'+
         '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
@@ -886,13 +886,6 @@
             if(dl.hasClass('open')) dl.removeClass('open');
         })
 
-        /*
-         *BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
-         * 임시 처리 - 추수 수정 예정
-        $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
-            $(this).trigger('change')
-        })
-         */
     }
 
     //담기...
