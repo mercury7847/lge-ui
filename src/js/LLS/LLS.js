@@ -34,11 +34,18 @@ var lls = {
         */
     },
     heroSlider: function(){
+        var $heroSwiper = $('.hero-slider');
+        var $playControl = $heroSwiper.find('.swiper-play-controls');
+        var $btnPlay = $playControl.find('.btn-play');
+
         var heroSwiper = new Swiper('.hero-slider', {
             loop:true,
             slidesPerView:1,
             observer: true,
             observeParents: true,
+            autoplay: {
+                delay: 5000,
+            },
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
@@ -47,8 +54,34 @@ var lls = {
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
+            },
+            on: {
+                init: function(){
+                    $btnPlay.addClass('stop');
+                }
             }
         });
+
+        $btnPlay.on('click', function(e){
+            var $this = $(this);
+            var $alt = $this.find('.blind');
+            var playTxt = $alt.data('playText');
+            var stopTxt = $alt.data('stopText');
+
+            e.preventDefault();
+
+            if( $heroSwiper.hasClass('swiper-container-initialized') ) {
+                if( $this.hasClass('stop')) {
+                    $this.removeClass('stop')
+                    heroSwiper.autoplay.stop();
+                    $alt.text(playTxt);
+                } else {
+                    $this.addClass('stop')
+                    heroSwiper.autoplay.start();
+                    $alt.text(stopTxt);
+                }
+            }
+        })
     },
     highlightSlider: function(){
         var highlightSwiper = new Swiper('.recently-highlight-slider', {
