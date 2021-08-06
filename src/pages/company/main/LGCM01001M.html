@@ -1,0 +1,286 @@
+<link rel="stylesheet" href="/kr/images/company/company.css">
+<link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/company.js"></script>
+<style>
+.company .sections{padding:120px 40px;text-align: center;}
+.company .sections + .sections{border-top:16px solid #f4f4f4;}
+.company .sectionTit {font-size: 32px;font-weight: bold;line-height: 1.63;color: #000000;}
+.company .btn-link{margin-top:20px;}
+.company .sections ul {width: 100%;font-size:0;max-width: 1380px;margin: 60px auto 0;}
+.company .sections li{display:inline-block;text-align:left;vertical-align: top;}
+.company .sections span.bg{display: block;width: 100%;height: 100%;background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.company .wayList li{width:calc(25% - 18px);}
+.company .wayList li + li{margin-left:24px;}
+.company .wayListImg{width:327px;height:327px;display:block;overflow: hidden;border-radius: 8px;max-width: 100%;}
+.company .wayListTit{font-size: 24px;font-weight: bold;line-height: 1.42;color: #000000;margin-top:24px;word-break: keep-all;}
+.company .wayListDesc{font-size: 16px;font-weight: normal;line-height: 1.63;color: #000000;margin-top:10px;word-break: keep-all;}
+.company .nowList li{width:calc(50% - 12px)}
+.company .nowList li:nth-child(4n+1){margin-bottom:60px;}
+.company .nowList li:nth-child(4n+2){margin-bottom:60px;margin-left:24px;}
+.company .nowList li:nth-child(4n+4){margin-left:24px;}
+.company .nowListImg{width:678px;height:360px;display:block;overflow: hidden;border-radius: 8px;max-width: 100%;}
+.company .nowListTit {font-size: 24px;font-weight: bold;line-height: 1.42;color: #000000;margin-top:24px;word-break: keep-all;}
+.company .nowListDesc {font-size: 16px;font-weight: normal;line-height: 1.63;color: #000000;margin-top:10px;word-break: keep-all;}
+.company .nowListBtn {font-size: 14px;font-weight: 500;line-height: 1.71;color: #000000;border-radius: 20px;padding: 7px 16px;display: inline-block;margin-top:24px;border: 1px solid #000;}
+.company .newsList li{width:calc(50% - 12px);box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14);overflow: hidden;border-radius: 8px;}
+.company .newsList li + li{margin-left:24px;}
+.company .newsListImg {width:234px;height:234px;display:inline-block;vertical-align: top;max-width: 100%;}
+.company .newsListText {display: inline-block;width: 444px;height: 234px;padding: 65px 40px 0 40px;vertical-align: top;}
+.company .newsListTit{font-size: 22px;font-weight: bold;line-height: 1.45;color: #000000;word-break: keep-all;}
+.company .newsListDate{font-size: 16px;font-weight: normal;line-height: 1.63;color: #000000;margin-top:10px;}
+@media (max-width: 1459px) and (min-width: 768px){
+.company .sections ul{max-width:inherit;}
+.company .wayListImg{width:22.39vw;height:22.39vw;}
+.company .nowListImg {width:46.43vw;height:24.65vw;}
+.company .newsListImg {width:16.02vw;height:16.02vw;}
+.company .newsListText {width:calc(100% - 16.02vw);height:16.02vw;padding: 4.45vw 2.73vw 0 2.73vw;}
+.company .newsListTit{font-size: 1.50vw;}
+.company .newsListDate{font-size: 1.09vw;}
+}
+@media screen and (max-width: 767px){
+.company .sections{padding:60px 4.44vw;}
+.company .sections + .sections{border-top-width:12px;}
+.company .sectionTit {font-size: 20px;line-height: 1.4;}
+.company .btn-link{margin-top:10px;}
+.company .sections ul {margin-top:30px;width:91.11vw}
+.company .nowListTit {font-size: 18px;line-height: 1.44;margin-top:15px;}
+.company .nowListDesc  {font-size: 14px;line-height: 1.57;}
+.company .wayList li{width:44.44vw}
+.company .wayList li:nth-child(4n+1){margin-bottom:30px;}
+.company .wayList li:nth-child(4n+2){margin-bottom:30px;margin-left:2.22vw;}
+.company .wayList li:nth-child(4n+3){margin-left:0;}
+.company .wayList li:nth-child(4n+4){margin-left:2.22vw;}
+.company .wayListImg{width:44.44vw;height:44.44vw;}
+.company .wayListTit{font-size: 18px;line-height: 1.44;margin-top:15px;}
+.company .wayListDesc{font-size: 14px;line-height: 1.57;}
+.company .nowList li{width: 91.11vw;}
+.company .nowList li:nth-child(4n+1){margin-bottom:40px;}
+.company .nowList li:nth-child(4n+2){margin-bottom:40px;margin-left:0px;}
+.company .nowList li:nth-child(4n+3){margin-bottom:40px;}
+.company .nowList li:nth-child(4n+4){margin-left:0px;}
+.company .nowListImg {width: 91.11vw;height:48.33vw;}
+.company .nowListBtn {font-size: 13px;line-height: 1.63;border-radius: 17px;padding: 5px 16px;margin-top:10px;}
+.company .newsList li{width: 91.11vw;}
+.company .newsList li:nth-child(4n+1){margin-left:0;margin-bottom:4.44vw;}
+.company .newsList li:nth-child(4n+2){margin-left:0;}
+.company .newsListImg {width:31.11vw;height:31.11vw;}
+.company .newsListText {display: inline-block;width: 60vw;height:31.11vw;padding: 7.22vw 5.55vw 0 5.55vw;}
+.company .newsListTit{font-size: 3.33vw;line-height: 5.55vw;}
+.company .newsListDate{font-size: 3.05vw;line-height: 5.27vw;margin-top:6px;}
+}
+</style>
+<script>
+$(document).ready(function() {
+	setTimeout(function(){
+		fcVideoPlay();
+	}, 500);
+	$(".videoSection video").bind("ended", function() {
+		fcVideoStop();
+	});
+	$(".videoSection .videoPlayBtn").on('click', function(){
+		fcVideoPlay();
+	});
+});
+function fcVideoPlay(){
+	var videoSection = $(".videoSection");
+	var windowWidth = $(window).width();
+	$(".videoStopImage").hide();
+	$(".videoText").hide();
+	setTimeout(function(){
+		$(".videoText").removeClass("on").show();
+	}, 5000);
+	if (windowWidth < 767) {
+		$(".videoSection .only_mo video").get(0).currentTime = 0;
+		$(".videoSection .only_mo video").get(0).play();
+	}
+	else{
+		$(".videoSection .only_pc video").get(0).currentTime = 0;
+		$(".videoSection .only_pc video").get(0).play();
+	}
+	
+	
+}
+function fcVideoStop(){
+	$(".videoStopImage").fadeIn(1000);
+	$(".videoText").addClass("on");
+	$(".videoSection .only_pc video").get(0).pause();
+	$(".videoSection .only_mo video").get(0).pause();
+}
+</script>
+<style>
+.company .videoSection{width: 100%;height:640px;position: relative;overflow:hidden;}
+.company .videoSection .videoPoster{position: absolute;max-width: inherit;max-width:1920px;height:640px;left: 50%;transform: translateX(-50%);}
+.company .videoSection .videoText{position: absolute;width: 100%;text-align:center;transform: translateY(-50%);top: 50%;padding-bottom: 100px;}
+.company .videoSection .videoTit{font-size: 32px;font-weight: bold;line-height: 1.63;color: #000000;}
+.company .videoSection .step{opacity: 0;filter: blur(6px);}
+.company .videoSection .step01{transition: 1s;transition-delay: 1s;}
+.company .videoSection .step02{transition: 1s;transition-delay: 2s;}
+.company .videoSection .videoPlayBtn{opacity: 0;transition: 1s;transition-delay: 3s;width:80px;height:80px;position: absolute;bottom: 0;left: calc(50% - 40px);}
+.company .videoSection .videoStopImage{display:none;width: 100%;height: 100%;background-position: center center;background-repeat: no-repeat;background-size: cover;position: absolute;max-width: 1920px;left: 50%;transform: translateX(-50%);}
+.company .videoSection .videoText.on .step{opacity:1;filter: blur(0);}
+.company .videoSection .videoText.on .videoPlayBtn{opacity:1;filter: blur(0);}
+@media screen and (max-width: 767px){
+.company .videoSection{height:90.55vw;}
+.company .videoSection .videoPoster{width:100%;height:90.55vw;}
+.company .videoSection .videoText{padding-bottom: 50px;}
+.company .videoSection .videoTit{font-size: 20px;line-height: 1.4;}
+.company .videoSection .videoPlayBtn{width:40px;height:40px;left: calc(50% - 20px);}
+}
+</style>
+<div class="container company">
+	<section class="videoSection">
+		<div class="only_pc">
+			<video playsinline="" muted="" poster="/kr/images/company/main/img-video03-pc.png" class="videoPoster">
+				<source src="/kr/images/company/main/pc.mp4" type="video/mp4"><p>LG전자 회사소개 동영상</p>
+			</video>
+		</div>
+		<div class="only_mo">
+			<video playsinline="" muted="" class="videoPoster">
+				<source src="/kr/images/company/main/mo.mp4" type="video/mp4"><p>LG전자 회사소개 동영상</p>
+			</video>
+		</div>
+		<span class="videoStopImage ui_bg_switch" data-pc-src="/kr/images/company/main/img-video01-pc.jpg" data-m-src="/kr/images/company/main/img-video01-mo.jpg" aria-hidden="hidden"></span>
+		<div class="videoText">
+			<h2 class="videoTit">
+				<span class="step step01">앞선 기술과 <br class="mo">새로운 혁신으로</span><br>
+				<span class="step step02">고객의 미래와 <br class="mo">함께 나아갑니다</span>
+			</h2>
+			<img src="/kr/images/company/main/play_btn.svg" alt="재생" class="videoPlayBtn" />
+		</div>
+	</section>
+	<section class="sections">
+		<h2 class="sectionTit">LG전자는 전자, 가전 분야의<br class="mo"> 혁신적인 기술로<br> 세계적인 일류기업 자리를 지켜나가도록 <br class="mo">최선을 다하겠습니다.</h2>
+		<ul class="wayList">
+			<li>
+				<a href="/company/info/outline">
+					<span class="wayListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-way01-pc.jpg" data-m-src="/kr/images/company/main/img-way01-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="wayListText">
+						<p class="wayListTit">LG WAY</p>
+						<p class="wayListDesc">LG 고유의 경영철학이자, <br class="mo">LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다.</p>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/sustainable/esgLeadership">
+					<span class="wayListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-way02-pc.jpg" data-m-src="/kr/images/company/main/img-way02-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="wayListText">
+						<p class="wayListTit">ESG 리더십</p>
+						<p class="wayListDesc">고객의 신뢰를 받는 브랜드로서 입지를 강화하고 지속가능한 성과를 창출하도록 성장을 지속합니다.</p>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/sustainable/businessplace">
+					<span class="wayListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-way03-pc.jpg" data-m-src="/kr/images/company/main/img-way03-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="wayListText">
+						<p class="wayListTit">환경</p>
+						<p class="wayListDesc">경영활동과 사업장 운영이 환경에 미치는 부정적 영향을 Zero화 하고 미래세대를 위한 제품과 서비스를 위해 노력하고 있습니다.</p>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/sustainable/socialContribution">
+					<span class="wayListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-way04-pc.jpg" data-m-src="/kr/images/company/main/img-way04-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="wayListText">
+						<p class="wayListTit">사회공헌</p>
+						<p class="wayListDesc">'더 나은 삶을 함께 만드는 기업' 이라는 사회공헌 비전을 가지고 다양한 사회공헌 활동을 수행하고 있습니다.</p>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<section class="sections">
+		<h2 class="sectionTit">LG전자는 고객을 위한 가치창조와<br>인간존중의 경영을 실현합니다.</h2>
+		<ul class="nowList">
+			<li>
+				<a href="/company/info/introduce">
+					<span class="nowListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-now01-pc.jpg" data-m-src="/kr/images/company/main/img-now01-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="nowListText">
+						<p class="nowListTit">기업정보</p>
+						<p class="nowListDesc">전자, 가전 분야의 혁신적인 기술로 전 세계 140여개국 시장을 선도하는 기업입니다.</p>
+						<span class="nowListBtn">더 알아보기</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/sustainable/esgLg">
+					<span class="nowListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-now02-pc.jpg" data-m-src="/kr/images/company/main/img-now02-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="nowListText">
+						<p class="nowListTit">지속가능경영</p>
+						<p class="nowListDesc">정도경영을 내재화하고 글로벌 기업시민으로서의 사회적 책무를 다하기 위해 노력을 하고 있습니다.</p>
+						<span class="nowListBtn">더 알아보기</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/investor/corporateGovernance">
+					<span class="nowListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-now03-pc.jpg" data-m-src="/kr/images/company/main/img-now03-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="nowListText">
+						<p class="nowListTit">투자자정보</p>
+						<p class="nowListDesc">미래 성장성과 수익성 증대를 위해 안정적이고 장기적인 성장 전략을 추진하고 있습니다.</p>
+						<span class="nowListBtn">더 알아보기</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/company/compliance/compliance">
+					<span class="nowListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-now04-pc.jpg" data-m-src="/kr/images/company/main/img-now04-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="nowListText">
+						<p class="nowListTit">준법경영</p>
+						<p class="nowListDesc">기업 활동 전반에 기본 경영방침으로 삼아 고객의 신뢰와 기업경쟁력을 갖추고 있습니다.</p>
+						<span class="nowListBtn">더 알아보기</span>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<section class="sections">
+		<h2 class="sectionTit">LIVE LG의 새로운 뉴스를 만나보세요.</h2>
+		<a href="#" class="btn-link">새로운 뉴스 바로가기</a>
+		<ul  class="newsList">
+			<li>
+				<a href="#">
+					<span class="newsListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-news01-pc.jpg" data-m-src="/kr/images/company/main/img-news01-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="newsListText">
+						<p class="newsListTit">LG전자, 2030년 탄소중립 이어 2050년 재생에너지 100% 전환</p>
+						<p class="newsListDate">2021.07.21</p>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span class="newsListImg">
+						<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/main/img-news02-pc.jpg" data-m-src="/kr/images/company/main/img-news02-mo.jpg" aria-hidden="hidden"></span>
+					</span>
+					<span class="newsListText">
+						<p class="newsListTit">LG전자, 국제로봇학회서 실내외 통합배송로봇 첫 공개</p>
+						<p class="newsListDate">2021.07.13</p>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<div class="sustainable-download">
+		<p class="tit">인재채용</p>
+		<p class="desc">항상 재밌고 끝없는 기회의 LG전자가 <br class="mo">더 나은 세상을 위해 도전하길 기다립니다!</p>
+		<a href="/company/recruit/type" class="btn"><span>바로가기</span></a>
+	</div>
+</div>

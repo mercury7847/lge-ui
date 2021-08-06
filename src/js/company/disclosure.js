@@ -15,6 +15,7 @@
 		+			'<p>{{corpName}}(주) {{reportNm}}</p>'
 		+		'</a>'
 		+	'</td>'
+		+	'<td>{{flrNm}}</td>'
 		+	'<td>{{rceptDt}}</td>'
 		+'</tr>';
 
@@ -41,7 +42,9 @@
 
             //페이지
             self.$pagination.on('page_click', function(e, data) {
-                var param = {'page':data}
+                var param = {'page':data
+                			,'pblntf_ty':$('#select1').val()}
+                
                 self.requestData(param);
                 document.preventDefault();
             });
@@ -70,6 +73,7 @@
                     arr.forEach(function(item, index) {
                         listbody.append(vcui.template(listItemTemplate, item));
                     });
+                    $('.tbl_add .item_num em').text(data.totalCount);
                     self.$disclosureList.show();
                     
                 } else {
