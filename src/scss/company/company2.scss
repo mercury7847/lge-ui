@@ -745,7 +745,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between}
-.company ul.dwn_list > li {position:relative; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
+.company ul.dwn_list > li {position:relative; display:flex; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
 .company ul.dwn_list > li .btn.dwn {position:absolute; min-width:initial; top:50%; right:30px; transform:translateY(-50%); padding:5px 12px; font-size:14px; line-height:20px}
 
 .company ul.dwn_list.select {display:flex; justify-content:space-between}
@@ -768,7 +768,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .dwn_all ul.dwn_list.item2 > li {width:calc(50% - 12px)}
 
 .company .dwn_all .dwn_type2 {float:left; width:calc(50% - 12px)}
-.company .dwn_all .dwn_type2 + .dwn_type2 {margin-left:24px}
+.company .dwn_all .dwn_type2:nth-of-type(2n) {margin-left:24px}
+.company .dwn_all .dwn_type2:nth-of-type(n + 3) {margin-top:30px}
 .company .dwn_all .dwn_type2 ul.dwn_list {float:none; width:100%; margin-top:0}
 
 .company .text.dwn {margin-top:40px}
@@ -1146,10 +1147,22 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb_row table td.bo_l,
 .company .tb-col table th.bo_l,
 .company .tb-col table td.bo_l {border-left:1px solid #ddd!important}
+.company .tb_row table tr.bo_dash th,
+.company .tb_row table tr.bo_dash td,
+.company .tb-col table tr.bo_dash th,
+.company .tb-col table tr.bo_dash td {border-bottom:1px dashed #e4e4e4!important}
+.company .tb_row table th.gray,
+.company .tb_row table td.gray,
+.company .tb-col table th.gray,
+.company .tb-col table td.gray {color:#666}
 .company .tb-col table tr:first-child th,
 .company .tb-col table tr:first-child td {border-top:1px solid #ddd}
 .company .th_g table tbody th {background-color:#f4f4f4; color:#666; font-weight:500}
 
+.company .tb_row table th.v_top,
+.company .tb-col table th.v_top,
+.company .tb_row table td.v_top,
+.company .tb-col table td.v_top {vertical-align:top}
 .company .tb_row table th.pd0_p,
 .company .tb-col table th.pd0_p,
 .company .tb_row table td.pd0_p,
