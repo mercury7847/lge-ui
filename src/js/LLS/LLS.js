@@ -1,7 +1,8 @@
 var lls = {
     init: function(){
         var self = this;
-
+        
+        self.backgroundSwitch();
         self.settings();
         self.bindEvent();
         self.heroSlider();
@@ -11,9 +12,24 @@ var lls = {
     settings: function(){
         var self = this;
         self.$llsMain = $('.lls-main');
+
+        self.$highSection = self.$llsMain.find('.recently-highlight');
+        self.$highSlider = self.$highSection.find('.recently-highlight-slider');
+
+
         self.$eventSection = self.$llsMain.find('.event-announced');
         self.$eventList = self.$eventSection.find('.event-item-list');
         self.$eventAnchor = self.$eventList.find('.item-list-anchor');
+    },
+    backgroundSwitch: function(){
+        var $switch = $('.ui_background_switch');
+
+        $switch.each(function(idx, item){
+            var pcSrc = $(item).data('pcSrc');
+            var moSrc = $(item).data('moSrc');
+            var currentSrc =  window.innerWidth < 768 ? moSrc : pcSrc;
+            $(item).css('background-image', 'url(' + currentSrc + ')')
+        })
     },
     bindEvent: function(){
         var self = this;
@@ -22,16 +38,19 @@ var lls = {
             e.preventDefault();
             self.requestModal(this);
         });
+
+        self.$highSlider.find('.slide-item a').on('click', function(e){
+            if( !vcui.detect.isMobileDevice ) {
+                e.preventDefault();
+                $('#appInstallGuidePopup').vcModal({opener:$(this)});
+            }
+        });
+        
     },
     requestModal: function(dm) {
         var _self = this;
         var ajaxUrl = $(dm).attr('href');
         window.open(ajaxUrl,'','width=912,height=760,scrollbars=yes');
-        /*
-        lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
-            _self.openModalFromHtml(result);
-        }, null, "html");
-        */
     },
     heroSlider: function(){
         var $heroSwiper = $('.hero-slider');
@@ -144,5 +163,23 @@ var lls = {
 
 $(function(){
     lls.init();
-    console.log(111)
+    
+
+    var prevWindowSize = window.innerWidth;
+
+    $(window).on('resize', function(){
+        //모바일 사이즈로 변할때 한번만.
+        if( window.innerWidth < 768 && prevWindowSize >= 768) {
+            lls.backgroundSwitch();
+            prevWindowSize = window.innerWidth;
+            console.log('mo size')
+        }
+
+        //PC 사이즈로 변할때 한번만.
+        if( window.innerWidth >= 768 && prevWindowSize < 768) {
+            lls.backgroundSwitch();
+            prevWindowSize = window.innerWidth;
+            console.log('pc size')
+        }
+    });
 });

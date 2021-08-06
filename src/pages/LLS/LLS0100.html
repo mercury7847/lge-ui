@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="app">
 <link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
 @@include('./common/head.html', { 
     pageCSS: ["LLS/LLS"],
@@ -18,32 +18,72 @@
                 <div class="hero-wrap">
                     <div class="hero-slider swiper-container">
                         <div class="swiper-wrapper">
-                            @@for ( var i=0; i < 5; i++ ) {
-                                <div class="swiper-slide hero-item">
-                                    <a href="">
-                                        <span class="hero-item-bg ui_bg_switch" 
-                                            data-pc-src="/lg5-common/images/LLS/img-lls-hero-banner01.jpg" 
-                                            data-m-src="/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg" 
-                                            aria-hidden="hidden" 
-                                            data-current-image="/lg5-common/images/LLS/img-lls-hero-banner01.jpg" 
-                                            style="background-image: url(&quot;/lg5-common/images/LLS/img-lls-hero-banner01.jpg&quot;);">
-                                        </span>
-                                        <div class="hero-item-content">
-                                            <!-- 라이브 진행표시 flag -->
-                                            <!-- 라이브 중 class: live-now -->
-                                            <div class="hero-item-flag live-now">
-                                                <div class="flag-title">
-                                                    <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">지금 라이브중</span>
-                                                </div>
-                                                <div class="flag-time">7월13일 19:00</div>
+                            <div class="swiper-slide hero-item">
+                                <a href="#">
+                                    <span class="hero-item-bg ui_background_switch" 
+                                        data-pc-src="/lg5-common/images/LLS/img-lls-hero-banner01.jpg" 
+                                        data-mo-src="/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg" 
+                                        aria-hidden="hidden" ></span>
+                                    <div class="hero-item-content">
+                                        <!-- 라이브 진행표시 flag -->
+                                        <!-- 라이브 중 class: live-now -->
+                                        <div class="hero-item-flag live-now">
+                                            <div class="flag-title">
+                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">지금 라이브중</span>
                                             </div>
-                                            <!-- 라이브 진행표시 flag -->
-                                            <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                            <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                            <div class="flag-time">7월13일 19:00</div>
                                         </div>
-                                    </a>
-                                </div>
-                            }
+                                        <!-- 라이브 진행표시 flag -->
+                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide hero-item">
+                                <a href="#">
+                                    <span class="hero-item-bg ui_background_switch" 
+                                        data-pc-src="/lg5-common/images/LLS/img-lls-hero-banner01.jpg" 
+                                        data-mo-src="/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg" 
+                                        aria-hidden="hidden" ></span>
+                                    <div class="hero-item-content">
+                                        <!-- 라이브 진행표시 flag -->
+                                        <!-- 라이브 중 class: live-now -->
+                                        <div class="hero-item-flag">
+                                            <div class="flag-title">
+                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
+                                            </div>
+                                            <div class="flag-time">7월13일 19:00</div>
+                                        </div>
+                                        <!-- 라이브 진행표시 flag -->
+                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+
+                            <div class="swiper-slide hero-item">
+                                <a href="#">
+                                    <span class="hero-item-bg ui_background_switch" 
+                                        data-pc-src="/lg5-common/images/LLS/img-lls-hero-banner01.jpg" 
+                                        data-mo-src="/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg" 
+                                        aria-hidden="hidden" ></span>
+                                    <div class="hero-item-content">
+                                        <!-- 라이브 진행표시 flag -->
+                                        <!-- 라이브 중 class: live-now -->
+                                        <div class="hero-item-flag">
+                                            <div class="flag-title">
+                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
+                                            </div>
+                                            <div class="flag-time">7월13일 19:00</div>
+                                        </div>
+                                        <!-- 라이브 진행표시 flag -->
+                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                    </div>
+                                </a>
+                            </div>
+                            
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-play-controls">
@@ -57,7 +97,7 @@
                 </div>
                 <!-- 상단 히어로 영역 -->
 
-                <!-- 알림받기 -->
+                <!-- 알림받기 : 앱일 경우에만 노출 -->
                 <div class="lls-push">
                     <div class="push-inner">
                         <strong class="push-title">라이브 소식을 미리 받아보세요!</strong>
@@ -179,6 +219,10 @@
         </div>
         <!-- //210226 플로팅버튼 추가 -->
         @@include('./common/footer.html')
+
+        @@include('./LLS/LLS0100-modal-01.html', {
+            "popupID": "appInstallGuidePopup"
+        })
     </div>
     
 </body>

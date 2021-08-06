@@ -23,9 +23,8 @@
     .swiper-button {
         &-next,
         &-prev {
-            width:48px;
-            height:48px;
-            padding:4px;
+            width:40px;
+            height:40px;
             
             &:after {
                 content:"";
@@ -37,7 +36,9 @@
                 border-radius:100%;
                 box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.14);
             }
-            
+        }
+        &-disabled {
+            pointer-events: auto;
         }
 
         &-prev {
@@ -162,6 +163,10 @@
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: auto 100%;
+
+                @include mobile {
+                    background-size: 100% 100%;
+                }
             }
             &-flag {
                 position: relative;
@@ -283,6 +288,67 @@
 
     .lls-push {
         display: none;
+        background: rgb(242,195,124);
+        background: linear-gradient(90deg, rgba(242,195,124,1) 7%, rgba(254,63,109,1) 100%);
+
+        .push {
+            &-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding:0 16px;
+
+                @include pc {
+                    max-width:1460px;
+                    margin:0 auto;
+                    padding:0 40px;
+                }
+
+                .btn-lls-push {
+                    display: inline-block;
+                    position: relative;
+                    padding:0 13px;
+                    color:#fff;
+                    font-size:13px;
+                    font-weight:500;
+                    line-height:34px;
+                    border-radius:21px;
+                    border:1px solid #fff;
+                    &:before {
+                        content:"";
+                        display: inline-block;
+                        width:16px;
+                        height:16px;
+                        margin-right:6px;
+                        vertical-align: middle;
+                        background: url('/lg5-common/images/LLS/icon_btn_live-32.svg') no-repeat 100% 100%;
+                        background-size: 100% 100%;
+                    }
+
+                    @include pc {
+                        line-height:50px;
+                        font-size:16px;
+                        border-radius:30px;
+
+                        &:before {
+                            width:24px;
+                            height:24px;
+                        }
+                    }
+                }
+            }
+            &-title {
+              font-size:14px;
+              font-weight:bold;
+              line-height:50px;
+              color:#fff;
+
+              @include pc {
+                  font-size:20px;
+                  line-height:80px;
+              }
+            }
+        }
     }
     
     .lls-sec {
@@ -615,6 +681,158 @@
     .lls-main {
         .lls-push {
             display: block;
+        }
+    }
+}
+
+.app-install-guide {
+    max-width:678px !important;
+    .app-guide-box {
+        display: flex;
+        align-items: center;
+
+        .guide {
+            &-thumb {
+                flex:none;
+                width:64px;
+                height:64px;
+        
+                img {
+                    width:100%;
+                }
+            }
+            &-content {
+                margin-left:31px;
+            }
+            &-title {
+                display: block;
+                font-size:20px;
+                font-weight:bold;
+                color:#000;
+                line-height:1.5;
+            }
+            &-desc {
+                font-size:16px;
+                color:#000;
+                line-height:1.63;
+            }
+
+            @include mobile {
+                &-content {
+                    margin-left:16px;
+                }
+                &-title {
+                    font-size:16px;
+                }
+                &-desc {
+                    font-size:13px;
+                }
+            }
+        }
+    }
+
+    .app-qr-box {
+        margin-top:48px;
+
+        @include mobile {
+            margin-top:30px;
+        }
+
+        .qr-box {
+            &-row {
+                display: flex;
+            }
+            &-col {
+                flex:1;
+                padding:16px 24px 24px;
+                text-align: center;
+                background: #f4f4f4;
+                border-radius: 8px;
+                & + .qr-box-col {
+                    margin-left:17px;
+                }
+
+                @include mobile {
+                    padding:12px 16px;
+
+                    & + .qr-box-col {
+                        margin-left:12px;
+                    }
+                }
+            }
+        }
+
+        .qr-title {
+            display: block;
+            margin-bottom:16px;
+            font-size:0;
+            text-align: center;
+            &:before {
+                content:"";
+                display: inline-block;
+                margin-right:8px;
+                vertical-align: middle;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 100% 100%;
+            }
+
+            &.android {
+                &:before {
+                    width:22px;
+                    height:24px;
+                    background-image: url('/lg5-common/images/LLS/icon-android.png');
+                }
+            }
+            &.ios {
+                &:before {
+                    width:21px;
+                    height:24px;
+                    background-image: url('/lg5-common/images/LLS/icon-apple.png');
+                }
+            }
+            span {
+                display: inline-block;
+                font-size:14px;
+                line-height:24px;
+                font-weight:bold;
+                color:#000;
+                vertical-align: middle;
+            }
+
+
+            @include mobile {
+                margin-bottom:12px;
+
+                &:before {
+                    margin-right:4px;
+                }
+
+                &.android {
+                    &:before {
+                        width:16px;
+                        height:18px;
+                    }
+                }
+                &.ios {
+                    &:before {
+                        width:15px;
+                        height:17px;
+                    }
+                }
+                span {
+                    font-size:13px;
+                    line-height:24px;
+                }
+            }
+        }
+
+        .qr-img {
+            max-width:80px;
+            margin:0 auto;
+            img {
+                width:100%;
+            }
         }
     }
 }
