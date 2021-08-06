@@ -1091,7 +1091,8 @@
         var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productNameEN = listData[dataID].productList[prodID].productNameEN.split(".")[0];
 
-        var keyName = listData[dataID].productList[prodID].modelType.indexOf("G") > -1 ? "mktModelCd" : "parts";
+        //2021-08-06 - BTOCSITE-4140
+        var keyName = listData[dataID].productList[prodID].modelType.indexOf("A") > -1 ? "parts" : "mktModelCd";
 
         lgkorUI.confirm('이메일 배송 문의를 위해서는 개인정보 수집 및 이용에<br>동의 하셔야 이용 가능합니다.<br>동의 하시겠습니까?',{
             typeClass:'type2',
