@@ -1,362 +1,4 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
-<!--<script type="text/javascript" src="/kr/images/company/investorhighlight.js"></script>-->
-<script type="text/javascript">
-	google.charts.load("current", {packages:["corechart"]});
-	google.charts.setOnLoadCallback(drawChart);
-	var dataSubsidy, chartSubsidy, optionsSubsidy;
-	var dataMale, chartMale, optionsBar;
-	var dataFemale, chartFemale;
-	var dataLong01, chartLong01, containerLong01, optionsPattern;
-	var dataLong02, chartLong02, containerLong02;
-	var dataLong03, chartLong03, containerLong03;
-	var dataLong04, chartLong04;
-	var dataShort01, chartShort01, optionsShort;
-	var dataShort02, chartShort02;
-	var dataShort03, chartShort03;
-	var dataShort04, chartShort04;
-	var datatWoker01, chartWoker01, optionsStacked;
-	var dataWoker02, chartWoker02;
-	var dataMember01, chartMember01, options0to1;
-	var dataMember02, chartMember01;
-
-	function drawChart() {
-		dataSubsidy = google.visualization.arrayToDataTable([
-			['year', '세금 감면 및 공제', '투자 지원, R&D 지원, 기타 지원 등'],
-			['2020', 951, 6855],
-			['2019', 152, 7450],
-			['2018', 32, 8734],
-		]);
-		dataMale = google.visualization.arrayToDataTable([
-			['year', '사무직', {role: 'annotation'}, '기술직', {role: 'annotation'}],
-			['2020', 166, '166%', 106, '106%'],
-			['2019', 169, '169%', 103, '103%'],
-			['2018', 181, '181%', 117, '117%']
-		]);
-		dataFemale = google.visualization.arrayToDataTable([
-			['year', '사무직', {role: 'annotation'}, '기술직', {role: 'annotation'}],
-			['2020', 166, '166%', 106, '106%'],
-			['2019', 169, '169%', 103, '103%'],
-			['2018', 181, '181%', 117, '117%']
-		]);
-		dataLong01 = google.visualization.arrayToDataTable([
-			['year', 'LNG도시가스 (한국)', 'LNG 도시가스 (해외)', '석탄 (한국)', '석탄 (해외)', '기타 (한국)', '기타 (해외)', '소계'],
-			['2020', 879, 741, 0, 0, 74, 658, 2352 ],
-			['2019', 827, 772, 0, 0, 72, 534, 2205 ],
-			['2018', 1243, 538, 0, 0, 117, 441, 2339 ],
-		]);
-		dataLong02 = google.visualization.arrayToDataTable([
-			['year', '태양열', '풍력', '바이오메스', '기타', '소계'],
-			['2020', 5.5, 0.0, 0.0, 79.0, 84.5],
-			['2019', 5.4, 0.0, 0.0, 62.0, 67.4],
-			['2018', 0.7, 0.0, 0.0, 16.7, 17.5],
-		]);
-		dataLong03 = google.visualization.arrayToDataTable([
-			['year', '전기 (한국)', '전기 (해외)', '스팀 (한국)', '스팀 (해외)'],
-			['2020', 3239, 2643, 394, 3],
-			['2019', 2946, 2664, 395, 6],
-			['2018', 3902, 2315, 450, 35],
-		]);
-		dataLong04 = google.visualization.arrayToDataTable([
-			['year', '재활용수', '사내처리시설 처리', '사외처리시설 및 기타 처리'],
-			['2020', 541.0, 4863.0, 11.0],
-			['2019', 175.0, 4978.0, 8.7],
-			['2018', 223.0, 6256.0, 10.6],
-		]);
-		dataShort01 = google.visualization.arrayToDataTable([
-			['year', '한국', '해외', '총계'],
-			['2020', 37.2, 21.8, 59.0],
-			['2019', 29.7, 58.5, 88.1],
-			['2018', 20.9, 34.5, 55.4],
-		]);
-		dataShort02 = google.visualization.arrayToDataTable([
-			['year', '한국', '해외', '총계'],
-			['2020', 0.0, 3.4, 3.4 ],
-			['2019', 0.2, 12.8, 13.0],
-			['2018', 5.8, 32.5, 38.3],
-		]);
-		dataShort03 = google.visualization.arrayToDataTable([
-			['year', '한국', '해외', '총계'],
-			['2020', 265.5, 187.0, 452.5 ],
-			['2019', 8.9, 106.5, 115.4 ],
-			['2018', 18.0, 3.7, 21.7 ],
-		]);
-		dataShort04 = google.visualization.arrayToDataTable([
-			['year', '한국', '해외', '총계'],
-			['2020', 11.0, 35.0, 46.0 ],
-			['2019', 7.6, 61.9, 69.5 ],
-			['2018', 7.5, 57.9, 65.4 ],
-		]);
-		datatWoker01 = google.visualization.arrayToDataTable([
-			['year', '남성', '여성'],
-			['2020', 59108, 14864 ],
-			['2019', 58682, 14420],
-			['2018', 56657, 15047],
-		]);
-		datatWoker02 = google.visualization.arrayToDataTable([
-			['year', '남성', '여성'],
-			['2020', 1544, 374],
-			['2019', 569, 302],
-			['2018', 515, 393],
-		]);
-		datatMember01 = google.visualization.arrayToDataTable([
-			['year', '남성', '여성'],
-			['2020', 1, 1],
-			['2019', 1, 1],
-			['2018', 1, 1],
-		]);
-		datatMember02 = google.visualization.arrayToDataTable([
-			['year', '사무직', '기술직'],
-			['2020', 1, 1],
-			['2019', 1, 1],
-			['2018', 1, 1],
-		]);
-		optionsSubsidy = {
-			vAxis:{format: 'decimal'},
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			legendArea: {top:'0%'},
-			bar: { groupWidth: '35%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#000000' },
-				2: { color: '#666666'}
-			},
-			chartArea: {width: '90%',right:'0%',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		optionsBar = {
-			vAxis:{format: 'decimal', minValue:0, maxValue:200},
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			bar: { groupWidth: '50%' },
-			annotations: {textStyle: {bold:true, color: '#000'},stem:{color :'none'}},
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#000000' },
-				2: { color: '#666666'}
-			},
-			chartArea: {width: '90%',right:'0%',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		optionsPattern = {
-			vAxis:{format: 'decimal'},
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			bar: { groupWidth: '50%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#e81954'},
-				2: { color: '#e81955' },
-				3: { color: '#000000' },
-				4: { color: '#000001' },
-				5: { color: '#000002'},
-				6: { color: '#666666'}
-			},
-			chartArea: {width: '90%',right:'0%',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		optionsShort = {
-			vAxis:{format: 'decimal'},
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			bar: { groupWidth: '50%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#000000' },
-				2: { color: '#666666'}
-			},
-			chartArea: {width: '90%',right:'0%',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		optionsStacked = {
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			bar: { groupWidth: '30%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#000000' },
-				2: { color: '#666666'}
-			},
-			chartArea: {width: '85%',right:'0',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16",
-			isStacked: "percent",
-		};
-		options0to1 = {
-			vAxis:{format: 'decimal', minValue:0, maxValue:1},
-			legend: {position: 'top',alignment:'center',maxLines: 3},
-			bar: { groupWidth: '50%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#000000'}
-			},
-			chartArea: {width: '90%',right:'0%',height:'80%', bottom:'4%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		checkSize();
-		chartSubsidy = new google.visualization.ColumnChart(document.getElementById("chartSubsidy"));
-		chartMale = new google.visualization.ColumnChart(document.getElementById("chartMale"));
-		chartFemale = new google.visualization.ColumnChart(document.getElementById("chartFemale"));
-		containerLong01 = document.getElementById("chartLong01");
-		chartLong01 = new google.visualization.ColumnChart(containerLong01);
-		containerLong02 = document.getElementById("chartLong02");
-		chartLong02 = new google.visualization.ColumnChart(containerLong02);
-		containerLong03 = document.getElementById("chartLong03");
-		chartLong03 = new google.visualization.ColumnChart(containerLong03);
-		chartLong04 = new google.visualization.ColumnChart(document.getElementById("chartLong04"));
-		chartShort01 = new google.visualization.ColumnChart(document.getElementById("chartShort01"));
-		chartShort02 = new google.visualization.ColumnChart(document.getElementById("chartShort02"));
-		chartShort03 = new google.visualization.ColumnChart(document.getElementById("chartShort03"));
-		chartShort04 = new google.visualization.ColumnChart(document.getElementById("chartShort04"));
-		chartWoker01 = new google.visualization.ColumnChart(document.getElementById("chartWoker01"));
-		chartWoker02 = new google.visualization.ColumnChart(document.getElementById("chartWoker02"));
-		chartMember01 = new google.visualization.ColumnChart(document.getElementById("chartMember01"));
-		chartMember02 = new google.visualization.ColumnChart(document.getElementById("chartMember02"));
-		google.visualization.events.addListener(chartLong01, 'ready', function () {
-			var observer = new MutationObserver(function () {
-				containerLong01.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				containerLong02.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				containerLong03.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				Array.prototype.forEach.call(containerLong01.getElementsByTagName('rect'), function(rect) {
-					if (rect.getAttribute('fill') === '#e81954') {
-						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
-						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
-						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
-						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
-						rect.setAttribute('fill', 'url(#pattern-circle)');
-					}
-				});
-				Array.prototype.forEach.call(containerLong02.getElementsByTagName('rect'), function(rect) {
-					if (rect.getAttribute('fill') === '#e81954') {
-						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
-						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
-						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
-						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
-						rect.setAttribute('fill', 'url(#pattern-circle)');
-					}
-				});
-				Array.prototype.forEach.call(containerLong03.getElementsByTagName('rect'), function(rect) {
-					if (rect.getAttribute('fill') === '#e81954') {
-						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
-						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
-						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
-						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
-						rect.setAttribute('fill', 'url(#pattern-circle)');
-					}
-				});
-			});
-			observer.observe(containerLong01, {
-				childList: true,
-				subtree: true
-			});
-		});
-		chartSubsidy.draw(dataSubsidy, optionsSubsidy);
-		chartMale.draw(dataMale, optionsBar);
-		chartFemale.draw(dataFemale, optionsBar);
-
-	}
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			optionsSubsidy.bar.groupWidth = '50%';
-			optionsSubsidy.fontSize="12";
-			optionsBar.fontSize="12";
-			optionsPattern.fontSize="10";
-			optionsShort.fontSize="12";
-			optionsStacked.fontSize="12";
-			optionsStacked.chartArea.width='90%';
-			options0to1.fontSize="12";
-		}
-		else{
-			optionsSubsidy.bar.groupWidth = '35%';
-			optionsSubsidy.fontSize="16";
-			optionsBar.fontSize="16";
-			optionsPattern.fontSize="16";
-			optionsShort.fontSize="16";
-			optionsStacked.fontSize="16";
-			optionsStacked.chartArea.width='85%';
-			options0to1.fontSize="16";
-		}
-	}
-	$(window).resize(function() {
-		checkSize();
-		if($("#tab1").css("display")=="block"){
-			chartSubsidy.draw(dataSubsidy, optionsSubsidy);
-			chartMale.draw(dataMale, optionsBar);
-			chartFemale.draw(dataFemale, optionsBar);
-		}
-		else if($("#tab2").css("display")=="block"){
-			chartLong01.draw(dataLong01, optionsPattern);
-			chartLong02.draw(dataLong02, optionsPattern);
-			chartLong03.draw(dataLong03, optionsPattern);
-			chartLong04.draw(dataLong04, optionsShort);
-			chartShort01.draw(dataShort01, optionsShort);
-			chartShort02.draw(dataShort02, optionsShort);
-			chartShort03.draw(dataShort03, optionsShort);
-			chartShort04.draw(dataShort04, optionsShort);
-		}
-		else if($("#tab3").css("display")=="block"){
-			chartWoker01.draw(datatWoker01, optionsStacked);
-			chartWoker02.draw(datatWoker02, optionsStacked);
-			chartMember01.draw(datatMember01, options0to1);
-			chartMember02.draw(datatMember02, options0to1);
-		}
-	});
-	$(document).ready(function() {
-		$("a[href='#tab1']").on('click', function(e){
-			setTimeout(function(){
-				chartSubsidy.draw(dataSubsidy, optionsSubsidy);
-				chartMale.draw(dataMale, optionsBar);
-				chartFemale.draw(dataFemale, optionsBar);
-			}, 500);
-		});
-		$("a[href='#tab2']").on('click', function(e){
-			setTimeout(function(){
-				chartLong01.draw(dataLong01, optionsPattern);
-				chartLong02.draw(dataLong02, optionsPattern);
-				chartLong03.draw(dataLong03, optionsPattern);
-				chartLong04.draw(dataLong04, optionsShort);
-				chartShort01.draw(dataShort01, optionsShort);
-				chartShort02.draw(dataShort02, optionsShort);
-				chartShort03.draw(dataShort03, optionsShort);
-				chartShort04.draw(dataShort04, optionsShort);
-			}, 500);
-		});
-		$("a[href='#tab3']").on('click', function(e){
-			setTimeout(function(){
-				chartWoker01.draw(datatWoker01, optionsStacked);
-				chartWoker02.draw(datatWoker02, optionsStacked);
-				chartMember01.draw(datatMember01, options0to1);
-				chartMember02.draw(datatMember02, options0to1);
-			}, 500);
-		});
-	});
-</script>
 <style>
 	.com-text .tit + .tit.h4{margin-top:24px;}
 	.com-text .tit + .tb_row{margin-top:32px;}
@@ -493,9 +135,9 @@
 			<p class="tit">ESG 데이터</p>
 			<p class="text">LG전자는 경제, 사회, 환경 영역의 ESG 성과와 기타 성과를 투명하게 공시하고 있습니다. </p>
 		</div>
-		<div class="com-text">
-			<p class="tit h4">요약 연결손익계산서</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">
+		<div class="com-text tbl">
+			<p class="tit">요약 연결손익계산서</p>
+			<div class="tb_row tb-row-bl middle pd">
 				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
 					<caption>요약 연결손익계산서 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
@@ -591,16 +233,16 @@
 			</div>
 			<p class="tit mt60">요약 연결재무상태표</p>
 			<p class="tit h4">1) 자산</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">
+			<div class="tb_row tb-row-bl middle pd over_tbl">
 				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
 					<caption>연결재무상태 자산 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
 					<colgroup>
-						<col style="width:15%;">
-						<col style="width:25%;">
-						<col style="width:20%;">
-						<col style="width:20%;">
-						<col style="width:20%;">
+						<col style="width:28%">
+						<col style="width:12%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -677,7 +319,7 @@
 				</table>
 			</div>
 			<p class="tit h4">2) 부채</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">
+			<div class="tb_row tb-row-bl middle pd">
 				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
 					<caption>연결재무상태 부채 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
@@ -718,7 +360,7 @@
 				</table>
 			</div>
 			<p class="tit h4">3) 자본</p>
-			<div class="tb_row tb-row-bl middle keepAll pd">  
+			<div class="tb_row tb-row-bl middle pd">  
 				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
 					<caption>연결재무상태 자본 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
@@ -791,20 +433,47 @@
 				</table>
 			</div>
 			<p class="tit mt60">정부 지원 보조금 수혜 실적(한국)</p>
-			<div class="graph">
-				<span class="txt_rt">(단위 : 억 원)</span>
-				<div class="googlechart-wrap">
-					<div class="chartarea" id="chartSubsidy"></div>
-				</div>
+			<div class="tb_row tb-row-bl middle pd keepAll">
+				<div class="tbl_info rt abs2">(단위: 억원)</div>
+				<table>
+					<caption>정부 지원 보조금 수혜 실적(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:40%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">세금 감면 및 공제</th>
+							<td>951</td>
+							<td>152</td>
+							<td>32</td>
+						</tr>
+						<tr>
+							<th scope="row">투자지원, R&D지원, 기타 지원 등</th>
+							<td>6,855</td>
+							<td>7,450</td>
+							<td>8,734</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<!-- 구글차트 -->
 		</div>
 		<div class="com-text">
 			<p class="tit">조직의 확정급여형 연금제도 채무 충당(한국)</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
 				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
 				<table>
-					<caption>연결재무상태 자본 표, 구분, 제19기 2020, 제18기 2019, 제17기 2018</caption>
+					<caption>연결재무상태 자본 표, 구분, 제19기(2020), 제18기(2019), 제17기(2018)</caption>
 					<colgroup>
 						<col style="width:32%;">
 						<col style="width:8%;">
@@ -816,9 +485,9 @@
 						<tr>
 							<th scope="col">구분</th>
 							<th scope="col">단위</th>
-							<th scope="col">제19기(2020년)</th>
-							<th scope="col">제18기(2019년)</th>
-							<th scope="col">제17기(2018년)</th>
+							<th scope="col">제19기(2020)</th>
+							<th scope="col">제18기(2019)</th>
+							<th scope="col">제17기(2018)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -856,27 +525,55 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">성별 최저임금 대비 신입사원 임금 비율(한국)</p>
-			<ul class="pc2mo1">
-				<li>
-					<p class="tit h4">1) 남성</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : %)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartMale"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">2) 여성</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : %)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartFemale"></div>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<!-- 구글차트2 -->
+			<div class="tb_row tb-row-bl middle pd keepAll">
+				<div class="tbl_info rt abs2">(단위: %)</div>
+				<table>
+					<caption>성별 최저임금 대비 신입사원 임금 비율(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:25%;">
+						<col style="width:15%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" colspan="2">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" rowspan="2">남성 신입사원</th>
+							<th scope="row">사무직</th>
+							<td>166</td>
+							<td>169</td>
+							<td>181</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">기술직</th>
+							<td>106</td>
+							<td>103</td>
+							<td>117</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="2">여성 신입사원</th>
+							<th scope="row">사무직</th>
+							<td>166</td>
+							<td>169</td>
+							<td>181</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">기술직</th>
+							<td>106</td>
+							<td>103</td>
+							<td>117</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">협력회사로부터 직접 구매한 금액</p>
@@ -976,7 +673,7 @@
 		<div class="com-text noLine pt60">
 			<p class="tit">주요법인 구매 금액</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
-				<div class="tbl_info rt abs2">(기준: 백 만원)</div>
+				<div class="tbl_info rt abs2">(기준: 조 원)</div>
 				<table>
 					<caption>주요법인 구매 금액 표, 구분, 2020년 총 구매, 2020년 현지 구매</caption>
 					<colgroup>
@@ -1059,27 +756,130 @@
 		<div class="com-text">
 			<p class="tit">조직 에너지 사용량</p>
 			<p class="tit h4">1) 재생 불가능 원료</p>
-			<div class="graph">
-				<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-				<div class="googlechart-wrap">
-					<div class="chartarea" id="chartLong01"></div>
-				</div>
+			<!-- 20210806 테이블 수정 시작 -->
+			<div class="tb_row tb-row-bl middle mgt over_tbl">
+				<div class="tbl_info rt abs2">(단위: TJ)</div>
+				<table>
+					<caption>조직 에너지 사용량 표, 구분, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:25%">
+						<col style="width:15%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" colspan="2">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" rowspan="7">재생 불가능 연료</th>
+							<th scope="row">LNG도시가스<br>(한국)</th>
+							<td>879</td>
+							<td>827</td>
+							<td>1,243</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">LNG도시가스<br>(해외)</th>
+							<td>741</td>
+							<td>772</td>
+							<td>538</td>
+						</tr>
+						<!-- //20210806 테이블 수정 종료 -->
+						<tr>
+							<th scope="row" class="bo_l">석탄(한국)</th>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">석탄(해외)</th>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">기타(한국)</th>
+							<td>74</td>
+							<td>72</td>
+							<td>117</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">기타(해외)</th>
+							<td>658</td>
+							<td>534</td>
+							<td>441</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">소계</th>
+							<td class="bold_m">2,352</td>
+							<td class="bold_m">2,205</td>
+							<td class="bold_m">2,339</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="5">재생에너지</th>
+							<th scope="row">태양열</th>
+							<td>5.5</td>
+							<td>5.4</td>
+							<td>0.7</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">풍력</th>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">바이오메스</th>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">기타</th>
+							<td>79</td>
+							<td>62</td>
+							<td>16.7</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">소계</th>
+							<td class="bold_m">84.5</td>
+							<td class="bold_m">67.4</td>
+							<td class="bold_m">17.5</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="4">에너지 rnao</th>
+							<th scope="row">전기(한국)</th>
+							<td>3,239</td>
+							<td>2,946</td>
+							<td>3,902</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">전기(해외)</th>
+							<td>2,643</td>
+							<td>2,664</td>
+							<td>2,315</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">스팀(한국)</th>
+							<td>394</td>
+							<td>395</td>
+							<td>450</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">스팀(해외)</th>
+							<td>3</td>
+							<td>6</td>
+							<td>35</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<p class="tit h4">2) 재생 에너지</p>
-			<div class="graph">
-				<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-				<div class="googlechart-wrap">
-					<div class="chartarea" id="chartLong02"></div>
-				</div>
-			</div>
-			<p class="tit h4">3) 에너지 구매</p>
-			<div class="graph">
-				<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-				<div class="googlechart-wrap">
-					<div class="chartarea" id="chartLong03"></div>
-				</div>
-			</div>
-			<!-- 구글차트3 -->
 			<p class="footnotes">
 				※ 검증 대상 사업장<br>
 				- 한국:  LG전자 운영 상 통제 하에 있는 한국 사업장<br>
@@ -1093,7 +893,7 @@
 		<div class="com-text">
 			<p class="tit">온실가스 배출량(Scope 1, 2)</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">
-				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
+				<div class="tbl_info rt abs2">(기준: 천 tCO<sub>2</sub>eq)</div>
 				<table>
 					<caption>온실가스 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -1168,8 +968,8 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">온실가스 배출량(Scope 3)</p>
-			<div class="tb_row tb-row-bl middle keepAll">
-				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
+			<div class="tb_row tb-row-bl middle pd">
+				<div class="tbl_info rt abs2">(기준: tCO<sub>2</sub>eq)</div>
 				<table>
 					<caption>온실가스 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -1212,51 +1012,111 @@
 				<div class="tbl_info btm footnotes">*검증 현황: 임차건물, 임직원 출장 배출량 제3자 검증완료<br>*임차건물에 대한 배출량 삭제사유: CDP 검증항목에서 제외함</div>
 			</div>
 		</div>
-		<div class="com-text">
+		<div class="com-text tbl">
 			<p class="tit">대기 오염물질 배출량</p>
-			<ul class="pc2mo1">
-				<li>
-					<p class="tit h4">1) NOx (질소산화물)</p>
-					<div class="graph">
-						<span class="txt_rt">(단위: 톤)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartShort01"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">2) SOx (황산화물)</p>
-					<div class="graph">
-						<span class="txt_rt">(단위: 톤)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartShort02"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">3) VOCs (휘발성 유기화합물)</p>
-					<div class="graph">
-						<span class="txt_rt">(단위: 톤)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartShort03"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">4) 분진</p>
-					<div class="graph">
-						<span class="txt_rt">(단위: 톤)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartShort04"></div>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<!-- 구글차트4 -->
+			<div class="tb_row tb-row-bl middle pd">
+				<div class="tbl_info rt abs2">(단위 : 톤)</div>
+				<table>
+					<caption>대기 오염물질 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:25%;">
+						<col style="width:15%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" colspan="2">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" rowspan="3">NOx(질소산화물)</th>
+							<th scope="row">한국</th>
+							<td>37.2</td>
+							<td>29.7</td>
+							<td>20.9</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">해외</th>
+							<td>21.8</td>
+							<td>58.5</td>
+							<td>34.5</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">총계</th>
+							<td class="bold_m">59.0</td>
+							<td class="bold_m">88.1</td>
+							<td class="bold_m">55.4</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">SOx(황산화물)</th>
+							<th scope="row">한국</th>
+							<td>0</td>
+							<td>0.2</td>
+							<td>5.8</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">해외</th>
+							<td>3.4</td>
+							<td>12.8</td>
+							<td>32.5</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">총계</th>
+							<td class="bold_m">3.4</td>
+							<td class="bold_m">13.0</td>
+							<td class="bold_m">38.3</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">VOCs(휘발성 유기화합물)</th>
+							<th scope="row">한국</th>
+							<td>265.5</td>
+							<td>8.9</td>
+							<td>18.0</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">해외</th>
+							<td>187.0</td>
+							<td>106.5</td>
+							<td>3.7</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">총계</th>
+							<td class="bold_m">452.5</td>
+							<td class="bold_m">115.4</td>
+							<td class="bold_m">21.7</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="3">분진</th>
+							<th scope="row">한국</th>
+							<td>11.0</td>
+							<td>7.6</td>
+							<td>7.5</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">해외</th>
+							<td>35.0</td>
+							<td>61.9</td>
+							<td>57.9</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">총계</th>
+							<td class="bold_m">46.0</td>
+							<td class="bold_m">69.5</td>
+							<td class="bold_m">65.4</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="com-text">
 			<p class="tit">유형과 처리방법에 따른 폐기물 배출량</p>
-			<div class="tb_row tb-row-bl middle keepAll">
+			<div class="tb_row tb-row-bl middle keepAll pd over_tbl">
 				<div class="tbl_info rt abs2">(기준: 톤)</div>
 				<table>
 					<caption>유형과 처리방법에 따른 폐기물 배출량 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -1297,7 +1157,7 @@
 							<td>66</td>
 						</tr>
 						<tr>
-							<th scope="row" rowspan="12">처리방법에 따른<br>전체 폐기물 배출 총량 <br>(무해) **</th>
+							<th scope="row" rowspan="12">처리방법에 따른<br>전체 폐기물 배출 총량 <br>(일반 폐기물)</th>
 							<th scope="row" rowspan="3">재활용</th>
 							<td>국내</td>
 							<td>52,906</td>
@@ -1503,7 +1363,7 @@
 		<div class="com-text">
 			<p class="tit">공급원별 용수 유입량</p>
 			<div class="tb_row tb-row-bl middle keepAll pd">  
-				<div class="tbl_info rt abs2">(기준: 톤, CO2eq)</div>
+				<div class="tbl_info rt abs2">(기준: 톤, CO<sub>2</sub>eq)</div>
 				<table>
 					<caption>공급원별 용수 유입량 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -1570,13 +1430,46 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">폐수 처리</p>
-			<div class="graph">
-				<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-				<div class="googlechart-wrap">
-					<div class="chartarea" id="chartLong04"></div>
-				</div>
+			<div class="tb_row tb-row-bl middle pd">
+				<div class="tbl_info rt abs2">(단위: 천 톤)</div>
+				<table>
+					<caption>폐수 처리 표, 구분, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:40%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">재활용수</th>
+							<td>541</td>
+							<td>175</td>
+							<td>223</td>
+						</tr>
+						<tr>
+							<th scope="row">사내처리시설 처리</th>
+							<td>4,863</td>
+							<td>4,978</td>
+							<td>6,256</td>
+						</tr>
+						<tr>
+							<th scope="row">사외처리시설 및 기타 처리</th>
+							<td>11.0</td>
+							<td>8.7</td>
+							<td>10.6</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<!-- 구글차트 -->
 			<p class="footnotes">
 				* 2019년 사내처리시설 처리는 사이언스 파크 데이터 단위 오류로 정정공시함<br>
 				* 2019년 사외처리 데이터는 구미A1 공장 데이터 오류로 재산정함<br>
@@ -1741,7 +1634,7 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">지역별 구성원 수</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle">
 				<div class="tbl_info rt abs2">(기준: 명)</div>
 				<table>
 					<caption>지역별 구성원 수 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -1832,33 +1725,63 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">고용 계약별 구성원 수</p>
-			<ul class="pc2mo1">
-				<li>
-					<p class="tit h4">1) 정규직</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : 명)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartWoker01"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">2) 계약직</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : 명)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartWoker02"></div>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<!-- 구글차트 -->
+			<div class="tb_row tb-row-bl middle">
+				<div class="tbl_info rt abs2">(단위: 명)</div>
+				<table>
+					<caption>고용 계약별 구성원 수 표, 구성원, 2020년, 2019년, 2018년</caption>
+					<colgroup>
+						<col style="width:16.6666%;">
+						<col style="width:16.6666%;">
+						<col style="width:16.6666%;">
+						<col style="width:16.6666%;">
+						<col style="width:16.6666%;">
+						<col style="width:16.6666%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" colspan="3">구성원</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" rowspan="4">고용 계약 현황</th>
+							<th scope="row" rowspan="2">정규직</th>
+							<th scope="row">남성</th>
+							<td>59,106</td>
+							<td>58,682</td>
+							<td>56,657</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">여성</th>
+							<td>14,864</td>
+							<td>14,420</td>
+							<td>15,047</td>
+						</tr>
+						<tr>
+							<th scope="row" rowspan="2" class="bo_l">계약직</th>
+							<th scope="row">남성</th>
+							<td>1,544</td>
+							<td>569</td>
+							<td>515</td>
+						</tr>
+						<tr>
+							<th scope="row" class="bo_l">여성</th>
+							<td>374</td>
+							<td>302</td>
+							<td>393</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		
 		<div class="com-text noLine pt60">
 			<p class="tit">신규 채용과 이직</p>
 			<p class="tit h4">1) 연령별 신규 채용</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>연령별 신규 채용 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -1899,7 +1822,7 @@
 				</table>
 			</div>
 			<p class="tit h4">2) 성별 신규 채용</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>성별 신규 채용 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -1934,7 +1857,7 @@
 				</table>
 			</div>
 			<p class="tit h4">3) 연령별 이직</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>연령별 이직 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -1975,7 +1898,7 @@
 				</table>
 			</div>
 			<p class="tit h4">4) 성별 이직</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>성별 이직 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2012,7 +1935,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">자발적 퇴직인원 수 및 퇴직율 현황(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>자발적 퇴직인원 수 및 퇴직율 현황(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2057,7 +1980,7 @@
 		<div class="com-text">
 			<p class="tit">거버넌스 및 구성원 다양성</p>
 			<p class="tit h4">1) 이사회 구성 비율 (성별)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: %)</div>
 				<table>
 					<caption>이사회 구성 비율 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2093,7 +2016,7 @@
 				<div class="tbl_info btm footnotes"><sup>1)</sup> 2021년 여성사외이사 1인 선임</div>
 			</div>
 			<p class="tit h4">2) 구성원</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명)</div>
 				<table>
 					<caption>구성원 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2151,7 +2074,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">장애인 근로현황</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명)</div>
 				<table>
 					<caption>장애인 근로현황 표, 구분, 단위, 2020년, 2019년, 2018년</caption>
@@ -2223,7 +2146,7 @@
 		<div class="com-text">
 			<p class="tit">육아휴직 사용 및 복귀 현황(한국)</p>
 			<p class="tit h4">1) 육아휴직을 사용한 구성원</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명)</div>
 				<table>
 					<caption>육아휴직을 사용한 구성원 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2258,7 +2181,7 @@
 				</table>
 			</div>
 			<p class="tit h4">2) 육아휴직 종료 후 복귀한 구성원</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>육아휴직 종료 후 복귀한 구성원 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2293,7 +2216,7 @@
 				</table>
 			</div>
 			<p class="tit h4">3) 육아휴직 종료 후 복귀하여 12개월 근속한 구성원</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>이사회 구성 비율 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2330,21 +2253,20 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">구성원 평균 교육 시간</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
+				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
-					<caption>구성원 평균 교육 시간 표, 구분, 단위, 2020년, 2019년, 2018년</caption>
+					<caption>구성원 평균 교육 시간 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col" colspan="2">구분</th>
-							<th scope="col">단위</th>
 							<th scope="col">2020년</th>
 							<th scope="col">2019년</th>
 							<th scope="col">2018년</th>
@@ -2354,7 +2276,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">한국</th>
 							<th>여성</th>
-							<td rowspan="2">시간</td>
 							<td>48.1</td>
 							<td>63.7</td>
 							<td>65.0</td>
@@ -2368,7 +2289,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">해외</th>
 							<th>여성</th>
-							<td rowspan="2">시간</td>
 							<td>12.7</td>
 							<td>16.3</td>
 							<td>15.4</td>
@@ -2382,7 +2302,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">전체</th>
 							<th>여성</th>
-							<td rowspan="2">시간</td>
 							<td>24.9</td>
 							<td>33.0</td>
 							<td>33.4</td>
@@ -2399,21 +2318,20 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">직군별 평균 교육 시간</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
+				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
-					<caption>직군별 평균 교육 시간 표, 구분, 단위, 2020년, 2019년, 2018년</caption>
+					<caption>직군별 평균 교육 시간 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
-						<col style="width:13.3%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
+						<col style="width:20%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col" colspan="2">구분</th>
-							<th scope="col">단위</th>
 							<th scope="col">2020년</th>
 							<th scope="col">2019년</th>
 							<th scope="col">2018년</th>
@@ -2423,7 +2341,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">한국</th>
 							<th>사무직</th>
-							<td rowspan="2">시간</td>
 							<td>56.5</td>
 							<td>68.6</td>
 							<td>78.4</td>
@@ -2437,7 +2354,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">해외</th>
 							<th>사무직</th>
-							<td rowspan="2">시간</td>
 							<td>20.8</td>
 							<td>23.9</td>
 							<td>21.9</td>
@@ -2451,7 +2367,6 @@
 						<tr>
 							<th socpe="row" rowspan="2">전체</th>
 							<th>사무직</th>
-							<td rowspan="2">시간</td>
 							<td>41.3</td>
 							<td>50.4</td>
 							<td>55.2</td>
@@ -2468,7 +2383,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">연령별 평균 교육 시간</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
 					<caption>연령별 평균 교육 시간 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2641,7 +2556,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">직급별 평균 교육 시간</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
 					<caption>직급별 평균 교육 시간 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2776,7 +2691,7 @@
 		</div>
 		<div class="com-text">
 			<p class="tit">과정별 평균 교육 시간(Offline)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
 					<caption>과정별 평균 교육 시간 Offline 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2859,7 +2774,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">과정별 평균 교육 시간(Online)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 시간)</div>
 				<table>
 					<caption>과정별 평균 교육 시간 Online 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2942,7 +2857,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">원주민의 권리 침해사고 건수와 취해진 조치</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>원주민의 권리 침해사고 건수와 취해진 조치 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -2973,7 +2888,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">부패 위험을 평가한 사업장의 수와 비율</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 개(%))</div>
 				<table>
 					<caption>부패 위험을 평가한 사업장의 수와 비율 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3004,7 +2919,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">반부패 정책 및 절차에 관한 공지와 교육</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd over_tbl">
 				<table>
 					<caption>반부패 정책 및 절차에 관한 공지와 교육 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -3061,7 +2976,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">확인된 부패 사례와 이에 대한 조치</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>확인된 부패 사례와 이에 대한 조치 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3104,7 +3019,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">조직의 인권 영향 평가 대상 사업장</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<table>
 					<caption>조직의 인권 영향 평가 대상 사업장 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -3150,39 +3065,8 @@
 			<div class="tbl_info btm footnotes">* 글로벌 생산사업장 대상으로 평가</div>
 		</div>
 		<div class="com-text noLine pt60">
-			<p class="tit"></p>
-			<div class="tb_row tb-row-bl">
-				<div class="tbl_info rt abs2">(단위: 건)</div>
-				<table>
-					<caption> 표, 구분, 2020년, 2019년, 2018년</caption>
-					<colgroup>
-						<col style="width:40%">
-						<col style="width:20%">
-						<col style="width:20%">
-						<col style="width:20%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">구분</th>
-							<th scope="col">2020년</th>
-							<th scope="col">2019년</th>
-							<th scope="col">2018년</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th socpe="row"></th>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="com-text noLine pt60">
 			<p class="tit">인권 정책 및 절차에 관한 구성원 교육(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd over_tbl">
 				<table>
 					<caption>인권 정책 및 절차에 관한 구성원 교육(한국) 표, 구분, 단위, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -3237,7 +3121,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">인권 정책 및 절차에 관한 훈련을 받은 보안요원의 비율(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 명(%))</div>
 				<table>
 					<caption>인권 정책 및 절차에 관한 훈련을 받은 보안요원의 비율(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3268,7 +3152,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">조직의 차별 사건 및 이에 대한 시정조치(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>조직의 차별 사건 및 이에 대한 시정조치(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3297,9 +3181,9 @@
 				</table>
 			</div>
 		</div>
-		<div class="com-text">
+		<div class="com-text noLine pt60">
 			<p class="tit">고객 개인정보 보호 위반 개인정보 분실 사실이 입증된 불만 건수(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>고객 개인정보 보호 위반 개인정보 분실 사실이 입증된 불만 건수(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3342,7 +3226,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">제품 및 서비스의 안전보건 영향 평가</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>제품 및 서비스의 안전보건 영향 평가 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3373,7 +3257,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">제품 및 서비스의 안전보건 영향에 관한 규정 위반 사건</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>제품 및 서비스의 안전보건 영향에 관한 규정 위반 사건 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3477,7 +3361,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">지역사회 참여, 영향 평가 그리고 발전 프로그램 운영</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<table>
 					<caption>지역사회 참여, 영향 평가 그리고 발전 프로그램 운영 표, 구분, 단위, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -3545,7 +3429,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">사회 영향 평가를 통해 스크리닝된 신규 협력회사(한국)</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: %)</div>
 				<table>
 					<caption>사회 영향 평가를 통해 스크리닝된 신규 협력회사(한국) 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3576,31 +3460,56 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">정기적 성과 평가 및 경력 개발 리뷰를 받은 구성원 비율</p>
-			<ul class="pc2mo1">
-				<li>
-					<p class="tit h4">1) 성별</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : %)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartMember01"></div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<p class="tit h4">2) 분류</p>
-					<div class="graph">
-						<span class="txt_rt">(단위 : %)</span>
-						<div class="googlechart-wrap">
-							<div class="chartarea" id="chartMember02"></div>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<!-- 구글차트 -->
+			<div class="tb_row tb-row-bl middle pd keepAll">
+				<div class="tbl_info rt abs2">(단위: %)</div>
+				<table>
+					<caption>정기적 성과 평가 및 경력 개발 리뷰를 받은 구성원 비율 표</caption>
+					<colgroup>
+						<col style="width:40%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+						<col style="width:20%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">구분</th>
+							<th scope="col">2020년</th>
+							<th scope="col">2019년</th>
+							<th scope="col">2018년</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">남성</th>
+							<td>100</td>
+							<td>100</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<th scope="row">여성</th>
+							<td class="bold_m">100</td>
+							<td class="bold_m">100</td>
+							<td class="bold_m">100</td>
+						</tr>
+						<tr>
+							<th scope="row">사무직</th>
+							<td>100</td>
+							<td>100</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<th scope="row">기술직</th>
+							<td>100</td>
+							<td>100</td>
+							<td>100</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">주요 사업장의 현지 출신 인력 현황</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption>주요 사업장의 현지 출신 인력 현황 표, 단위, 구분, 2020년, 2019년, 2018년</caption>
@@ -3648,7 +3557,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">공급망 내 부정적인 사회 영향과 이에 대한 시행 조치</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd keepAll">
 				<table>
 					<caption>공급망 내 부정적인 사회 영향과 이에 대한 시행 조치 표, 구분, 2020년, 2019년, 2018년</caption>
 					<colgroup>
@@ -3793,7 +3702,7 @@
 		</div>
 		<div class="com-text noLine pt60">
 			<p class="tit">재해 발생 현황</p>
-			<div class="tb_row tb-row-bl">
+			<div class="tb_row tb-row-bl middle pd">
 				<div class="tbl_info rt abs2">(단위: 건)</div>
 				<table>
 					<caption> 표, 구분, 2020년, 2019년, 2018년</caption>
@@ -3862,7 +3771,7 @@
 			<p class="tit">ESG 데이터</p>
 			<p class="text">LG전자는 경제, 사회, 환경 영역의 ESG 성과와 기타 성과를 투명하게 공시하고 있습니다.</p>
 		</div>
-		<div class="com-text">
+		<div class="com-text tbl">
 			<p class="tit">SHEE&middot;품질 인증현황</p>
 			<div class="only_pc">
 				<div class="tb_row tb-row-bl mgtL">
