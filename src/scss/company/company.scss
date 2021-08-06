@@ -194,6 +194,7 @@ br.pc{display:block;}
 .workplace_chart .items+.items{border-left: dashed 1px#dddddd;}
 .workplace_chart .inner{margin:0 auto;width:350px;}
 .workplace_chart .img{display:inline-block;width:130px;height:130px;}
+.workplace_chart .img img {width:100%;}
 .workplace_chart .bullet-list{padding-left:40px;display: inline-block;vertical-align: top;}
 .workplace_chart .bullet-list .b-tit{font-size: 16px;line-height: 1.63;color: #000000;margin-bottom: 12px;}
 .workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 1.63;color: #000000;}
@@ -216,6 +217,7 @@ br.pc{display:block;}
 .pdfdwn_list .pdfdwn_items {margin-top:20px;}
 .pdfdwn_list .pdfdwn_select{width: calc(100% - 86px);display: inline-block;}
 .pdfdwn_list .pdfdwn_btn {width: 100%;border: solid 1px #000000; font-size: 14px;font-weight: 500;background: #fff;padding: 10px 0;border-radius: 8px;color:#000;}
+.pdfdwn_list .pdfdwn_btn:hover{border-color: #da0f47;background: #da0f47;color: #fff;}
 .pdfdwn_list .pdfdwn_select + .pdfdwn_btn {width: 76px;min-width: 76px;margin-left: 10px;}
 @media screen and (max-width: 767px){
 	.pdfdwn_list > li {width:100%;padding:20px 15px;}
@@ -287,4 +289,28 @@ br.pc{display:block;}
 @media screen and (max-width: 767px){
 .pc2mo1 li{width:100%;display:block;margin-top:12px;}
 .pc2mo1 li:nth-child(2n){margin-top:12px;margin-left:0}
+}
+
+/* 포용적 사회를 위한 균형 있는 성장 - 건강관리 가전 기술 개발 */
+.technology_list{font-size: 0;border-bottom:1px solid #dddddd;}
+.technology_list li{display: inline-block;vertical-align: top;}
+.technology_list .technology_img{display:block;width: 100%;height:187px;background-color:#dddddd;}
+.technology_list .technology_img img{width: auto !important;height: 100%;transform: translateX(-50%);margin:0 0 0 50% !important;max-width: inherit !important;border: 0 !important;}
+.technology_list .technology_tit{display:block;width: 100%;height:55px;padding: 14px 0px;background-color: #da0f47;font-size: 16px;font-weight: 500;line-height: 1.63;text-align: center;color: #ffffff;}
+.technology_list .technology_text{display:block;width: 100%;min-height: 176px;padding: 20px 20px;font-size: 16px;line-height: 1.63;color: #000000;}
+@media screen and (min-width: 1460px){
+	.technology_list li{width:25%;}
+	.technology_list li:nth-child(4n+1) .technology_text{border-right:1px solid #dddddd;}
+	.technology_list li:nth-child(4n+2) .technology_text{border-right:1px solid #dddddd;}
+	.technology_list li:nth-child(4n+3) .technology_text{border-right:1px solid #dddddd;}
+	.technology_list .technology_text{height:176px;}
+}
+@media (max-width: 1459px){
+	.technology_list li{width:50%;}
+	.technology_list li:nth-child(2n+1) .technology_text{border-right:1px solid #dddddd;}
+}
+@media screen and (max-width: 767px){
+	.technology_list .technology_img{height:190px;}
+	.technology_list .technology_tit{font-size: 14px;height:52px;padding: 12px 0px;}
+	.technology_list .technology_text{font-size: 14px;}
 }

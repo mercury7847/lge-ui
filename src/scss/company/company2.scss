@@ -12,6 +12,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .mt30 {margin-top:30px!important}
 .company .mt60 {margin-top:60px!important}
 .company .mt0 {margin-top:0!important}
+.company .mt40 {margin-top:40px!important}
 .company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-text.noLine::before {display:none}
@@ -636,6 +637,7 @@ ul.bull > li > span.bold {font-weight:bold}
 ul.bull > li .tb_row,
 ul.bull > li .tb-col {margin-left:-12px}
 ul.bull.mgtL > li + li {margin-top:30px!important}
+ul.bull > li ul.pl {padding-left:12px}
 
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
@@ -1014,7 +1016,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {display:block; max-width:576px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:912px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
@@ -1342,7 +1344,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {max-width:100%; width:100%}
 
     /* 테이블 */
-    .company .over_tbl {overflow-x:scroll}
+    .company .over_tbl {overflow-x:scroll; overflow-y:hidden}
     .company .over_tbl table {max-width:767px; width:767px}
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m30 {width:30%!important}
@@ -1573,6 +1575,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:8px}
     .popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
     .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:10px}
+    .popup-wrap.popup-company .pop-conts.no-footer{height: calc(100vh - 113px);max-height: calc(100vh - 113px);}
 
     .artTxt p {font-size:14px; line-height:1.57}
     .artTxt h2.tit ~ h2.tit {margin-top:20px}
