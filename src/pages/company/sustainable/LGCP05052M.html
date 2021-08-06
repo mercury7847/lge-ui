@@ -1,9 +1,111 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	var dataColumn, optionsColumn, chartColumn;
+	var dataDonut, optionsDonut, chartDonut;
+
+	function drawChart() {
+		dataColumn = google.visualization.arrayToDataTable([
+		['', '임원사회공헌기금', { role: 'annotation' } ,'임직원사회공헌기금', { role: 'annotation' }],
+		['2021', 381, '381', 290, '290'],
+		['2020', 364, '364', 365, '365'],
+		['2019', 334, '334', 243, '243']
+		]);
+		optionsColumn = {
+			colors: ['#e81953', '#000000'],
+			vAxis:{format: '', minValue:'0', maxValue: '600'},
+			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
+			bar: { groupWidth: '30%' },
+			annotations: {alwaysOutside: true,textStyle: {fontSize:13, bold:true},stem:{color :'none', length:'0'}},
+			legend: {position: 'bottom'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		dataDonut = google.visualization.arrayToDataTable([
+			['',  'Amount', {role: 'tooltip'}],
+			['개최',  9, '개최\n9건'],
+			['승인사항',  32, '승인사항\n32건'],
+			['보고사항',  10, '보고사항\n10건']
+		]);
+		optionsDonut = {
+			pieSliceText: 'value',
+			chartArea: {width: '100%', height: '80%',top:'4%'},
+			slices: {
+				0: { color: '#000000', offset: 0.01},
+				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
+				2: { color: '#e81953', offset: 0.01}
+			},
+			pieSliceTextStyle : {
+				fontSize: '16',
+				bold:true
+			},
+			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
+			fontName:'Noto Sans'
+		};
+		setTimeout(function(){
+			checkSize();
+			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
+			chartColumn.draw(dataColumn, optionsColumn);
+			chartDonut.draw(dataDonut, optionsDonut);
+		}, 1000);
+	}
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			optionsDonut.legend.textStyle.fontSize="12";
+			optionsDonut.pieSliceTextStyle.fontSize= "12";
+			optionsColumn.fontSize="12";
+		}
+		else{
+			optionsDonut.legend.textStyle.fontSize="16";
+			optionsDonut.pieSliceTextStyle.fontSize="16";
+			optionsColumn.fontSize="16";
+		}
+	}
+	$(window).resize(function() {
+		/* 화면사이즈가 변하면 차트를 그려줌 */
+		if($(".accordion-wrap li.lists:first-child").hasClass("on")){
+			checkSize();
+			setTimeout(function(){
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut.draw(dataDonut, optionsDonut);
+			}, 100);
+		}
+	});
+	$(document).ready(function() {
+		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
+		$(".accordion-wrap li.lists:first-child").on('click', function(e){
+			checkSize();
+			setTimeout(function(){
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut.draw(dataDonut, optionsDonut);
+			}, 100);
+		});
+	});
+</script>
+<style>
+	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
+	.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
+	.googlechart-wrap .columnchart {height:480px;}
+	.googlechart-wrap .donutchart {height:370px;}
+	@media screen and (max-width: 767px){
+		.googlechart-wrap{width:100%;}
+		.googlechart-wrap.over100::before{height:7%;}
+		.googlechart-wrap .columnchart {height:53vw;}
+		.googlechart-wrap .donutchart {height:71.11vw}
+	}
+	@media screen and (max-width: 425px){
+		.googlechart-wrap.over100::before{height:14%;}
+	}
+</style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/sustainable/esgLg">지속 가능 경영</a></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
 		<li><a href="/company/sustainable/workplace">사회</a></li>
 		<li><strong>사회공헌</strong></li>
 	</ul>
@@ -28,17 +130,15 @@
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/sustainable/esgLg#com-tabs01">LG전자 ESG</a>
-					</li>
-					<li>
-						<a href="/company/sustainable/esgLeadership#com-tabs01">기업개요</a>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
-							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
-							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
-							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
 							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
-							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
 							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
 					<li>
@@ -77,9 +177,11 @@
 						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
-							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 표준</a></li>
-							<li><a href="/company/sustainable/download">보고서 다운로드</a></li>
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
 						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
 					</li>
 				</ul>
 			</div>
@@ -213,6 +315,11 @@
 								</li>
 							</ul>
 							<p class="tit">3) 사회공헌 기금 조성</p>
+							<div class="googlechart-wrap over100">
+								<div class="chartarea columnchart" id="columnchart"></div>
+								<div class="blind">
+								</div>
+							</div>
 							<!-- 구글차트 -->
 						</div>
 						<div class="btnArea">
