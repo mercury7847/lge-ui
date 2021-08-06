@@ -45,6 +45,7 @@ var lls = {
             observeParents: true,
             autoplay: {
                 delay: 5000,
+                disableOnInteraction: false
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -85,27 +86,57 @@ var lls = {
     },
     highlightSlider: function(){
         var highlightSwiper = new Swiper('.recently-highlight-slider', {
-            loop:true,
-            slidesPerView:5,
-            slidesPerGroup:5, 
+            slidesPerView: "auto",
+            slidesPerGroup:2, 
             observer: true,
             observeParents: true,
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.recently-highlight .swiper-button-next',
+                prevEl: '.recently-highlight .swiper-button-prev',
+            },
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                  slidesPerView: "auto",
+                  slidesPerGroup:2, 
+                },
+                // when window width is >= 640px
+                768: {
+                  slidesPerView: 3,
+                  slidesPerGroup:3,
+                },
+                1025: {
+                    slidesPerView:5,
+                    slidesPerGroup:5, 
+                }
             }
         })
     },
     onbroadProductSlider: function(){
         var productSwiper = new Swiper('.onbroad-product-slider', {
-            loop:true,
-            slidesPerView:5,
-            slidesPerGroup:5, 
+            slidesPerView: "auto",
+            slidesPerGroup:1, 
             observer: true,
             observeParents: true,
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.onbroad-product .swiper-button-next',
+                prevEl: '.onbroad-product .swiper-button-prev',
+            },
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                  slidesPerView: "auto",
+                  slidesPerGroup:1, 
+                },
+                // when window width is >= 640px
+                768: {
+                  slidesPerView: 3,
+                  slidesPerGroup:3,
+                },
+                1025: {
+                    slidesPerView:5,
+                    slidesPerGroup:5, 
+                }
             }
         })
     }
