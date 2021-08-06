@@ -1,3 +1,8 @@
+if ('scrollRestoration' in history) {
+    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
+    history.scrollRestoration = 'manual';
+}
+
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -107,6 +112,7 @@
         '</div>' +
     '</div></li>';
 
+    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
@@ -118,12 +124,14 @@
             '{{/if}}' +
             '{{/each}}'+
         '</ul>';
+    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
 
     $(window).ready(function() {
         var search = {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
+                $(window).scrollTop(0); //BTOCSITE-2216
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
@@ -937,11 +945,15 @@
                         // $(window).scrollTop(self.scrollHref);
                         // self.scrollHref = null;
                         // BTOCSITE-2216
-                        $('html, body').scrollTop(0);
-                        $('.result-list img').last().on('load', function(){
+                        if( $('.result-list img').last().length ) {
+                            $('.result-list img').last().on('load', function(){
+                                $('html,body').stop().animate({scrollTop: self.scrollHref});
+                                self.scrollHref = null;
+                            });
+                        } else {
                             $('html,body').stop().animate({scrollTop: self.scrollHref});
                             self.scrollHref = null;
-                        });
+                        }
                     }
                 });
             },
