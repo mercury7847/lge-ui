@@ -78,6 +78,10 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .thumb.ci {margin:60px 0}
 .company .thumb.ci .only_pc img {max-width:100%; margin:0 auto}
 .company .thumb.ci .only_mo img {width:100%; max-width:100%; margin:0 auto}
+
+.company .ci_ul {display:flex; justify-content:space-between}
+.company .ci_ul > li {width:calc(33.3333% - 16px)}
+
 .company .thumb.ci .tooltipArea {position:relative}
 .company .thumb.ci .tooltipArea .tooltips {position:absolute; left:0; right:0; top:0; bottom:0}
 .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap {position:absolute; width:100%; height:100%}
@@ -126,7 +130,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tooltipArea.md_moArea .tooltips .tooltip-wrap.tool_05 .tooltip-icon {top:80%; right:9.44vw}
 .company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box {top:50%; left:0; right:0; transform:translateY(-50%); padding:24px}
 .company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box .tit {display:block; padding-right:24px; font-size:13px; font-weight:bold; line-height:20px}
-.company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box .text {display:block; margin-top:10px; font-size:13px; font-weight:normal; line-height:20px}
+.company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box .text > ul li {display:block; margin-top:10px; font-size:14px; font-weight:normal; line-height:22px}
 .company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box .text > strong {display:block; margin-bottom:6px}
 
 .company .tit + .graph {margin-top:50px}
@@ -360,16 +364,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company ul.compStep {display:flex}
 .company ul.compStep > li {width:calc(25% - 18px); min-height:377px}
 .company ul.compStep > li + li {margin-left:24px}
-.company ul.compStep > li .tit {position:relative; display:flex; align-items:center; justify-content:center; width:100%; height:80px; margin-bottom:12px; border-radius:8px 0 0 8px; font-size:18px; font-weight:bold; line-height:27px}
-.company ul.compStep > li:nth-child(1) .tit {background-color:#ddd}
-.company ul.compStep > li:nth-child(2) .tit {background-color:#aaa}
-.company ul.compStep > li:nth-child(3) .tit {background-color:#666; color:#fff}
-.company ul.compStep > li:nth-child(4) .tit {background-color:#000; color:#fff}
+.company ul.compStep > li .tit {position:relative; display:flex; align-items:center; justify-content:center; width:100%; height:80px; margin-bottom:12px; border-radius:8px 0 0 8px; background-color:#ddd; font-size:18px; font-weight:bold; line-height:27px}
 .company ul.compStep > li:last-child .tit {border-radius:8px}
-.company ul.compStep > li .tit::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; right:-18px; border-top:40px solid transparent; border-bottom:40px solid transparent; border-left:18px solid}
-.company ul.compStep > li:nth-child(1) .tit::after {border-left-color:#ddd}
-.company ul.compStep > li:nth-child(2) .tit::after {border-left-color:#aaa}
-.company ul.compStep > li:nth-child(3) .tit::after {border-left-color:#666}
+.company ul.compStep > li .tit::after {content:''; display:block; position:absolute; width:0; height:0; bottom:0; right:-18px; border-top:40px solid transparent; border-bottom:40px solid transparent; border-left:18px solid #ddd}
 .company ul.compStep > li:last-child .tit::after {display:none}
 .company ul.compStep > li ul.cont {height:calc(100% - 92px); border:1px solid #ddd; border-radius:8px}
 .company ul.compStep > li ul.cont > li {display:flex; align-items:center; justify-content:center; height:25%; padding:10px; border-bottom:1px dashed #ddd; font-size:16px; line-height:24px; text-align:center}
@@ -837,10 +834,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tit + ul.col {margin-top:10px}
 .company ul.col {padding:0}
 .company ul.col.col2 {column-count:2; column-gap:25px}
-.company ul.col.col3 {column-count:3}
 .company ul.col li {color:#000; font-size:16px; line-height:24px}
 .company ul.col li + li {margin-top:6px}
-.company ul.col.col3 li + li {margin-left:24px}
 
 .company ul.flex {display:flex; flex-wrap:wrap; justify-content:space-between}
 .company ul.flex.col2 > li {width:calc(50% - 12px)}
@@ -851,15 +846,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dash > li ul {padding-left:10px}
 .company ul.dash > li ul li {margin-top:2px; padding-left:10px; line-height:26px; text-indent:-10px}
 
-.company ul.m_cardList {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:30px}
-.company ul.m_cardList.t5 {justify-content:flex-start}
-.company ul.m_cardList.t5 > li:nth-child(2) {margin-left:24px}
-.company ul.m_cardList.t5 > li:nth-child(3) {margin-left:24px}
-.company ul.m_cardList.t5 > li:nth-child(5) {margin-left:24px}
-.company ul.m_cardList > li {display:flex; width:calc(33.3333% - 16px); height:206px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
-.company ul.m_cardList > li:nth-child(4),
-.company ul.m_cardList > li:nth-child(5),
-.company ul.m_cardList > li:nth-child(6) {margin-top:24px}
+.company ul.m_cardList {display:flex; flex-wrap:wrap; margin-top:30px}
+.company ul.m_cardList > li {display:flex; width:calc(33.3333% - 16px); max-width:444px; height:206px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
+.company ul.m_cardList > li + li {margin-left:24px}
+.company ul.m_cardList > li:nth-child(4) {margin-left:0}
+.company ul.m_cardList > li:nth-child(n + 4) {margin-top:24px}
 .company ul.m_cardList > li .photo {width:160px; height:100%}
 .company ul.m_cardList > li .photo_01 {background:#ddd url(/kr/images/company/info/img-management-director-photo_01.png) no-repeat center / contain}
 .company ul.m_cardList > li .photo_02 {background:#ddd url(/kr/images/company/info/img-management-director-photo_02.png) no-repeat center / contain}
@@ -1015,12 +1006,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {display:block; max-width:576px; margin:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {display:block; max-width:576px; margin:0 auto}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px; width:100%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {border-radius:8px; background-color:#f4f4f4}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {max-width:510px; width:100%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px; width:100%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box {display:flex; justify-content:space-between}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box {width:calc(100% + 12px); margin-left:-12px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.box > li {width:calc(25% - 18px); margin:0!important; padding:29px 20px; border:1px solid #ddd; border-radius:8px; text-indent:0!important; word-break:keep-all}
@@ -1209,7 +1202,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 img + img {margin-top:20px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
 }
-
+@media screen and (max-width:1170px){
+    .company ul.m_cardList > li {width:calc(50% - 12px); max-width:50%}
+    .company ul.m_cardList > li:nth-child(3),
+    .company ul.m_cardList > li:nth-child(5) {margin-top:24px; margin-left:0}
+    .company ul.m_cardList > li:nth-child(4) {margin-left:24px}
+}
 @media screen and (max-width:1120px){
     .company colgroup col.m50 {width:50%!important}
     .company colgroup col.m25 {width:25%!important}
@@ -1231,19 +1229,25 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 }
 
 @media screen and (max-width:952px){
-    .company ul.m_cardList > li {width:calc(50% - 12px)}
-    .company ul.m_cardList > li:nth-child(3) {margin-top:24px}
-    .company ul.m_cardList.t5 > li:nth-child(3) {margin-left:0; margin-right:24px}
-    .company ul.m_cardList.t5 > li:nth-child(5) {margin-left:0; margin-right:24px}
     .company .man_directors {margin-top:20px; border:0}
     .company .man_directors .md_pcArea {display:none}
     .company .man_directors .md_moArea {display:block}
+    .company .man_directors .md_moArea .md_mo_thumb {max-width:260px; margin:0 auto}
+
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {display:none!important}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_mo {display:block!important; max-width:280px}
 }
 
 @media screen and (max-width:860px){
     .company ul.card_list:first-of-type > li {padding-top:40px; padding-bottom:40px}
     .company ul.card_list:first-of-type > li .photo {justify-content:flex-start; height:198px; padding-right:0; background-position:100% 100%}
     .company ul.card_list > li .infoArea .info ul li {flex-direction:column}
+
+    .company ul.m_cardList > li {width:100%; max-width:100%; margin-left:0!important}
+    .company ul.m_cardList > li + li {margin-top:24px}
+
+    .company .graph.lgway1 > .only_pc {display:none!important}
+    .company .graph.lgway1 > .only_mo {display:block!important; width:100%; max-width:508px; margin:0 auto}
 }
 
 /* 모바일 */
@@ -1267,6 +1271,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .tit.h4 + .text {margin-top:10px}
     .company .tit.h4 + .bull {margin-top:10px}
     .company .center_p {text-align:left}
+    .company .w328 {width:100%; max-width:328px; margin:0 auto}
     
     .company .footnotes {margin-top:4px; font-size:12px; line-height:16px}
     .company .btnArea .btn.border.nml {padding:12 19px; font-size:13px; line-height:18px}
@@ -1548,8 +1553,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 
     .company ul.col li {font-size:14px; line-height:22px}
-    .company ul.col.col3 {column-count:initial}
-    .company ul.col.col3 li + li {margin-left:0; margin-top:30px}
     .company ul.flex.col2 > li {width:100%}
     .company ul.flex.col2 > li + li {margin-top:30px}
 
@@ -1557,7 +1560,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.m_cardList {margin-top:20px}
     .company ul.m_cardList > li {width:100%; height:150px}
-    .company ul.m_cardList.t5 > li {margin-left:0!important; margin-right:0!important}
     .company ul.m_cardList > li + li {margin-top:12px!important}
     .company ul.m_cardList > li .photo {width:118px; height:100%}
     .company ul.m_cardList > li .infoArea {width:calc(100% - 118px); padding:15px}
@@ -1640,7 +1642,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .ci_download .desc {margin-top:8px; font-size:14px; line-height:20px}
     .company .ci_download .btn {min-width:90px; padding:8px 0; font-size:13px}
     
+    .company .thumb.ci .tooltipArea {width:100%; max-width:328px; margin:0 auto}
     .company .thumb.ci .tooltipArea .tooltips .tooltip-wrap .tooltip-box .btn-close {top:12px; right:12px}
+    .company .ci_ul {flex-direction:column}
+    .company .ci_ul > li {width:100%}
+    .company .ci_ul > li + li {margin-top:30px}
     
     .company .lgway_link {margin-top:20px}
     .company .lgway_link .btn-link {margin-top:5px}
@@ -1700,6 +1706,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .stock_number .num {padding-right:5px}
 
     .company .graph.lgway {margin-top:15px}
+    .company .graph.lgway2 > img {max-width:328px}
     .company ul.lgway_first > li {flex-direction:column}
     .company ul.lgway_first > li:nth-child(odd) {flex-direction:column-reverse}
     .company ul.lgway_first > li + li {margin-top:60px}
@@ -1719,11 +1726,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compStep > li {display:flex; width:100%; min-height:auto}
     .company ul.compStep > li + li {margin:36px 0 0 0}
     .company ul.compStep > li .tit {width:80px; height:auto; margin:0 8px 0 0; padding:10px; border-radius:8px 8px 0 0; font-size:15px; line-height:24px; text-align:center}
-    .company ul.compStep > li .tit::after {bottom:-18px; left:0; border-top:18px solid; border-right:40px solid transparent; border-bottom:none; border-left:40px solid transparent!important}
-    .company ul.compStep > li:nth-child(1) .tit::after {border-top-color:#ddd}
-    .company ul.compStep > li:nth-child(2) .tit::after {border-top-color:#aaa}
-    .company ul.compStep > li:nth-child(3) .tit::after {border-top-color:#666}
-    .company ul.compStep > li:nth-child(4) .tit::after {border-top-color:#000}
+    .company ul.compStep > li .tit::after {bottom:-18px; left:0; border-top:18px solid #ddd; border-right:40px solid transparent; border-bottom:none; border-left:40px solid transparent!important}
     .company ul.compStep > li ul.cont {width:calc(100% - 88px); height:auto; padding:11px 20px}
     .company ul.compStep > li ul.cont li {display:block; height:auto; padding:7px 0; font-size:14px; line-height:22px; text-align:left}
     .company ul.compStep > li ul.cont li:last-child {border:0}
