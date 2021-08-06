@@ -2,7 +2,7 @@
     var listItemTemplate =
 		 '<tr>'
 		+	'<td class="board-tit">'
-		+		'<a href="/company/investor/announceView?anncmNo={{announcementNo}}&page={{page}}">'
+		+		'<a href="/company/investor/announceView?anncmNo={{announcementNo}}&page={{page}}#com-tabs02">'
 		+			'{{#if (isNew == "Y")}}'
 		+				'<p class="new">NEW</p>'
 		+			'{{/if}}'
