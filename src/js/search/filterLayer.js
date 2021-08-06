@@ -317,7 +317,6 @@ var FilterLayer = (function() {
         },
 
         getDataFromFilter: function() {
-            console.log(1);
             var self = this;
             var $btnFilter = self.$targetFilterButton;
             
@@ -394,7 +393,6 @@ var FilterLayer = (function() {
             } else {
                 $btnFilter.removeClass('applied');
                 $btnFilter.find('a span').text('옵션필터');
-                console.log(2);
                 self.$layFilter.find('div.btn-reset button').hide();
             }
 
