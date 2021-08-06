@@ -77,6 +77,12 @@
                 }
                 .flag-wrap {
                     margin-bottom:2px;
+
+                    &.bg-type {
+                      .flag {
+                        height:auto; //BTOCSITE-4039
+                      }
+                    }
                 }
                 .tit {
                     margin-bottom:8px;
