@@ -57,19 +57,20 @@ $(document).ready(function() {
 		});
 	}, 500);
 	
-	// 지난자료버튼
-	$("#btnContViewMore").on('click', function() {
-		if ($("#contViewMore").css("display") == 'none') {
-			$("#contViewMore").css("display", "");
-			$("#btnContViewMore span").html("지난 자료 닫기");
-			$("#btnContViewMore").attr("class", "btn on border");
+	// 지난자료보기
+	$(".cont_view_more>.content").css("display", "none");
+	$(".cont_view_more>.btnArea>.btn").on('click', function(e) {
+		if ($(".cont_view_more>.content").css("display") == 'none') {
+			$(".cont_view_more>.content").css("display", "");
+			$(".cont_view_more>.btnArea span").attr("class", "close").text("지난 자료 닫기");
+			$(".cont_view_more>.btnArea>.btn").addClass("on");
 		} else {
-			$("#contViewMore").css("display", "none");
-			$("#btnContViewMore span").html("지난 자료 열기");
-			$("#btnContViewMore").attr("class", "btn border");
+			$(".cont_view_more>.content").css("display", "none");
+			$(".cont_view_more>.btnArea span").attr("class", "open").text("지난 자료 열기");
+			$(".cont_view_more>.btnArea>.btn").removeClass("on");
 		}
+		e.preventDefault();
 	});
-	
 });
 
 // 탭 슬라이드 위치 이동
