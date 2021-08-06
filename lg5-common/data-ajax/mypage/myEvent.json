@@ -1,67 +1,70 @@
 {
-    "status":"success",
-    "message":null,
-    "param":{
-        "pagination":{
-            "page":"2",
-            "totalCount":"23"
+    "status": "success",
+    "message": null,
+    "param": {
+        "pagination": {
+            "page": "2",
+            "totalCount": "23"
         }
     },
-    "data":[
+    "data": [
         {
-            "eventID":"item0001",
-            "url":"/lg5-common/images/dummy/@img-event01.jpg",
-            "imageUrl":"/lg5-common/images/dummy/@img-event01.jpg",
-            "imageAlt":"2020 NEW 올레드와 함께하는 라이프",
-            "title":"2020 NEW 올레드와 함께하는 라이프1",
-            "categoryFlag":[
+            "eventID": "item0001",
+            "url": "/lg5-common/images/dummy/@img-event01.jpg",
+            "imageUrl": "/lg5-common/images/dummy/@img-event01.jpg",
+            "imageAlt": "2020 NEW 올레드와 함께하는 라이프",
+            "title": "2020 NEW 올레드와 함께하는 라이프1",
+            "categoryFlag": [
                 "프로젝터",
                 "TV"
             ],
-            "eventFlag":[
+            "eventFlag": [
                 "매장",
                 "구매혜택"
             ],
-            "date":"당첨자 발표예정일 : 매월 15일",
-            "endEvent":false,
-            "showEndEventUrl":false,
-            "endEventUrl":null
+            "date": "당첨자 발표예정일 : 매월 15일",
+            "winViewFlag": "Y",
+            "endEvent": false,
+            "showEndEventUrl": false,
+            "endEventUrl": null
         },
         {
-            "eventID":"item0002",
-            "url":"#",
-            "imageUrl":"/lg5-common/images/dummy/@img-event03.jpg",
-            "imageAlt":"LG 시네빔으로 즐기는 왓챠 콘텐츠!",
-            "title":"LG 시네빔으로 즐기는 왓챠 콘텐츠!2",
-            "categoryFlag":[
+            "eventID": "item0002",
+            "url": "#",
+            "imageUrl": "/lg5-common/images/dummy/@img-event03.jpg",
+            "imageAlt": "LG 시네빔으로 즐기는 왓챠 콘텐츠!",
+            "title": "LG 시네빔으로 즐기는 왓챠 콘텐츠!2",
+            "categoryFlag": [
                 "프로젝터"
             ],
-            "eventFlag":[
+            "eventFlag": [
                 "사은품",
                 "온라인"
             ],
-            "date":"당첨자 발표예정일 : 매월 16일",
-            "endEvent":false,
-            "showEndEventUrl":true,
-            "endEventUrl":null
+            "date": "당첨자 발표예정일 : 매월 16일",
+            "winViewFlag": "Y",
+            "endEvent": false,
+            "showEndEventUrl": true,
+            "endEventUrl": null
         },
         {
-            "eventID":"item0003",
-            "url":"#",
-            "imageUrl":"/lg5-common/images/dummy/@img-event02.jpg",
-            "imageAlt":"LG 에어컨 창문 잠금장치 신청 이벤트",
-            "title":"LG 에어컨 창문 잠금장치 신청 이벤트3",
-            "categoryFlag":[
+            "eventID": "item0003",
+            "url": "#",
+            "imageUrl": "/lg5-common/images/dummy/@img-event02.jpg",
+            "imageAlt": "LG 에어컨 창문 잠금장치 신청 이벤트",
+            "title": "LG 에어컨 창문 잠금장치 신청 이벤트3",
+            "categoryFlag": [
                 "에어컨"
             ],
-            "eventFlag":[
+            "eventFlag": [
                 "온라인",
                 "사은품"
             ],
-            "date":"당첨자 발표예정일 : 매월 17일",
-            "endEvent":true,
-            "showEndEventUrl":true,
-            "endEventUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
+            "date": "당첨자 발표예정일 : 매월 17일",
+            "winViewFlag": "N",
+            "endEvent": true,
+            "showEndEventUrl": true,
+            "endEventUrl": "/lg5-common/data-ajax/caresolution/caresolutionTip.html"
         }
     ]
 }
