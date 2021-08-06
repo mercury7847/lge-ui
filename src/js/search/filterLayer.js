@@ -317,6 +317,7 @@ var FilterLayer = (function() {
         },
 
         getDataFromFilter: function() {
+            console.log(1);
             var self = this;
             var $btnFilter = self.$targetFilterButton;
             
@@ -393,6 +394,7 @@ var FilterLayer = (function() {
             } else {
                 $btnFilter.removeClass('applied');
                 $btnFilter.find('a span').text('옵션필터');
+                console.log(2);
                 self.$layFilter.find('div.btn-reset button').hide();
             }
 
@@ -735,18 +737,18 @@ var FilterLayer = (function() {
             var arr = data instanceof Array ? data : [];
             if(foldFlag && arr.length > 0) {
                 var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
-
+                // BTOCSITE-2847 PLP > 상세필터 동작오류 start
                 //열려있지만 체크된 값이 없는 항목 체크
-                var closeIndex = [];
-                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');
-                $li.each(function(idx, findDm) {
-                    var $findDm = $(findDm);
-                    if($findDm.find('input:checked').length < 1) {
-                        var index = $findDm.index();
-                        closeIndex.push(index);
-                    }
-                });
-
+                // var closeIndex = [];
+                // var $li = $list_ul.find('>li:not(.filter-slider-tag).on');
+                // $li.each(function(idx, findDm) {
+                //     var $findDm = $(findDm);
+                //     if($findDm.find('input:checked').length < 1) {
+                //         var index = $findDm.index();
+                //         closeIndex.push(index);
+                //     }
+                // });
+                // BTOCSITE-2847 PLP > 상세필터 동작오류 end
                 var $pa =  $list_ul.parents('.ui_filter_accordion');
                 arr.forEach(function(item, index) {
                     var isOpen = lgkorUI.stringToBool(item[self.unfoldFlagName]);
