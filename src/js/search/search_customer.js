@@ -112,6 +112,7 @@ if ('scrollRestoration' in history) {
         '</div>' +
     '</div></li>';
 
+    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
@@ -123,6 +124,7 @@ if ('scrollRestoration' in history) {
             '{{/if}}' +
             '{{/each}}'+
         '</ul>';
+    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
 
     $(window).ready(function() {
         var search = {
