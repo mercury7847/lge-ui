@@ -20,7 +20,8 @@ function MainSwiper( ID ){
         '#store' : 'store',
         '#story' : 'story',
         '#support' : 'support',
-        '#care-solutions' : 'care-solutions'
+        '#care-solutions' : 'care-solutions',
+        '#membership-event' : 'membership-event' // BTOCSITE-1814
     };
 
     this.urlToHash = {
@@ -28,16 +29,15 @@ function MainSwiper( ID ){
         'store' : '#store',
         'story' : '#story',
         'support' : '#support',
-        'care-solutions' : '#care-solutions'
+        'care-solutions' : '#care-solutions',
+        'membership-event' : '#membership-event' // BTOCSITE-1814
     };
 
     this.hashArray = [
-        'home', 'store', 'story', 'support', 'care-solutions'
+        'home', 'store', 'story', 'support', 'care-solutions','membership-event'  // BTOCSITE-1814 
     ];
 
-    if(vcui.detect.isMobileDevice){
-        this.init();
-    }
+    this.init();
     
 }
 

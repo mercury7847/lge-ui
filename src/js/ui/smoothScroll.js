@@ -195,7 +195,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var opts = self.options;
 
             self.$wrapper = self.$el.css('user-select', 'none');
-            self.isBadAndroid = /Android /.test(window.navigator.appVersion) && !/Chrome\/\d/.test(window.navigator.appVersion);
+            // self.isBadAndroid = /Android /.test(window.navigator.appVersion) && !/Chrome\/\d/.test(window.navigator.appVersion);
+            self.isMobile = core.detect.isMobile;
             self.translateZ = opts.HWCompositing && browser.hasPerspective ? ' translateZ(0)' : '';
             opts.useTransition = browser.hasTransition && opts.useTransition;
             opts.useTransform = browser.hasTransform && opts.useTransform;
@@ -460,10 +461,11 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 case 'mousewheel':
                 case 'DOMMouseScroll':
                     self._wheel(e);
-                    break;
-                //case 'click':
-                //    me._click(e);
-                //    break;
+                break;
+                case 'click':
+                    // BTOCSITE-1814 이동중인경우 click 취소
+                    if(self.moved) return false;
+                break;
             }
         },
 
@@ -570,7 +572,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self.y = y;
 
             
-            self.triggerHandler('smoothscrollmove', { x: self.x, y: self.y });
+            self.triggerHandler('smoothscrollmove', { 
+                x: self.x, 
+                y: self.y,
+                isStart: self.x === 0,
+                isEnd: self.x === self.maxScrollX
+            });
         },
 
         resetPosition: function resetPosition(time) {
@@ -672,7 +679,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             if (el && el.tagName && self.options.preventDefaultException.tagName.test(el.tagName)) {
-                return true;
+                // BTOCSITE-1814 모바일 이고 preventDefaultException tag가 A 태그인경우 예외처리
+                if( self.isMobile && el.tagName === 'A') {
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
                 return false;
             }

@@ -771,6 +771,28 @@
                                                 <div class="slide-controls"><button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button><button type="button"
                                                         class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button></div>
                                             </div>
+                                            <div class="column">
+                                                <ul class="category">
+                                                    <li><a href="/care-accessories/water-ionizer?main=Y" class="category-item" target="_self"
+                                                            data-contents="케어용품/소모품-이온수기/정수기">이온수기/정수기</a>
+                                                        <ul class="sub-category">
+                                                            <li><a href="/care-accessories/water-ionizer" target="_self">이온수기</a></li>
+                                                            <li><a href="/care-accessories/water-purifier" target="_self">정수기</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="/care-accessories/gas-range?main=Y" class="category-item" target="_self" data-contents="케어용품/소모품-조리기기">조리기기</a>
+                                                        <ul class="sub-category">
+                                                            <li><a href="/care-accessories/light-wave-oven-range" target="_self">광파오븐레인지</a></li>
+                                                            <li><a href="/care-accessories/gas-oven-range" target="_self">가스오븐레인지</a></li>
+                                                            <li><a href="/care-accessories/electric-range" target="_self">전자레인지</a></li>
+                                                            <li><a href="/care-accessories/gas-range" target="_self">가스레인지</a></li>
+                                                            <li><a href="/care-accessories/electric-cooker" target="_self">전기레인지</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="/care-accessories/dishwasher" class="category-item" target="_self" data-contents="케어용품/소모품-식기세척기">식기세척기</a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- <div class="column category-banner ui_carousel_slider"></div> -->
                                         </div>
                                     </div>
                                     <div class="nav-category-wrap super-category-content" id="storeSubCategory10">
@@ -1521,21 +1543,40 @@
 
 <!-- 20210104 모바일 메뉴 돔 이동 -->
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
-<!-- Mobile 메인 메뉴 -->
-<!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
-<!-- 210609 수정  data-story-url="url" 추가 -->
-<div class="mobile-nav-wrap" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
-    <ul class="nav">
-        <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
-        <li><a href="#home" class="nav-item on" >홈</a></li>
-        <li><a href="#store" class="nav-item" >스토어</a></li>
-        <li><a href="#story" class="nav-item" >스토리</a></li>
-        <li><a href="#support" class="nav-item" >고객지원</a></li>
-        <li><a href="#care-solutions" class="nav-item" >케어솔루션</a></li>
-        <!-- //BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
-    </ul>
-</div>
-}
+    <!-- pc 반응형 모바일 메인 gnd -->
+    @@if (context.isSwipe !== "y" || context.isSwipe === undefined) {
+        <div class="mobile-nav-wrap ">
+            <ul class="nav">
+                <li><a href="/" class="nav-item on">홈</a></li>
+                <li><a href="/store" class="nav-item">스토어</a></li>
+                <li><a href="story" class="nav-item">스토리</a></li>
+                <li><a href="/support" class="nav-item">고객지원</a></li>
+                <li><a href="/care-solutions" class="nav-item">렌탈/케어</a></li>
+                <li><a href="/membership-event" class="nav-item">이벤트/멤버십</a></li>
+            </ul>
+        </div>
+    }
+
+
+    <!-- 모바일 스왕이프 메인 gnd -->
+    @@if (context.isSwipe === "y") {
+        <!-- Mobile 메인 메뉴 -->
+        <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
+        <!-- 210609 수정  data-story-url="url" 추가 -->
+        <div class="mobile-nav-wrap" id="mobileNav" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
+            <ul class="nav">
+                <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
+                <li><a href="#home" class="nav-item on" >홈</a></li>
+                <li><a href="#store" class="nav-item" >스토어</a></li>
+                <li><a href="#story" class="nav-item" >스토리</a></li>
+                <li><a href="#support" class="nav-item" >고객지원</a></li>
+                <li><a href="#care-solutions" class="nav-item" >렌탈/케어</a></li>
+                <li><a href="#membership-event" class="nav-item" >이벤트/멤버십</a></li>
+                <!-- //BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
+            </ul>
+        </div>
+    }
+} 
 
 @@if (context.mobileCase === "all" || context.mobileCase === undefined) {
 <!-- Mobile Sub Menu Header -->

@@ -61,12 +61,16 @@
 
 .header {
     position:relative;
+    @include mobile {
+        border-bottom: 0;
+        margin-bottom: 0px;
+    }
 }
 
 .header-wrap {
     max-width: (1680px + 80px);
     margin: 0 auto;
-    // padding-bottom: 16px; //BTOCSITE-1937 스프레드메뉴 수
+    /* padding-bottom: 16px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     @include mobile {
         max-width: 100%;
         padding: 0 16px;
@@ -98,17 +102,53 @@
 
 @include mobile {
     .mobile-nav-wrap {
-        //padding: 0 10px;
+        position:relative;
         font-size: 0;
+
+        // BTOCSITE-1814 이벤트탭 추가
+
+		&:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            width: 40px;
+            height: 100%;
+            content: '';
+            display:none;
+
+        }
+        &:before {
+            left: 0;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.5), #ffffff);
+        }
+        &:after {
+            right: 0;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        }
+
+      
+        &.left:before,  
+        &.right:after {
+            display:block;
+        }
+
+
+
         .nav {
-            //margin-top: 14px;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
+            height:37px;
+            overflow:hidden;
+            white-space: nowrap;
+            // display: table;
+            display:flex;
             border-bottom: 1px solid $color-border;
             > li {
                 display: inline-block;
                 border-top: 0;
+                margin: 0 10px;
+                &:first-child {
+                    margin-left:18px;
+                }
                 &.icon-update {
                     .nav-item {
                         &:before {
@@ -125,7 +165,7 @@
                 }
             }
             .nav-item {
-                padding: 6px 6px 8px;
+                padding: 6px 0 8px;
                 font-weight: 500;
                 @include font($font-medium - 1,23px);
                 color: $color-gray-1;
@@ -141,11 +181,12 @@
                         position: absolute;
                         top: auto;
                         bottom: -1px;
-                        right: 6px;
-                        left: 6px;
-                        width: auto;
+                        right: 0;
+                        left: 0;
+                        width: 100%;
                         height: 4px;
                         background-color: $color-default;
+                        transform: rotate(0);
                     }
                 }
             }
@@ -491,9 +532,9 @@
     overflow: hidden;
     font-size: 0;
     white-space: nowrap;
-    padding-left: 42px; //BTOCSITE-1937 스프레드 메뉴 수정
+    padding-left: 42px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
 
-    //BTOCSITE-1937 스프레드 메뉴 수정
+    /* BTOCSITE-1937 스프레드 메뉴 수정 */
     @include pc {
         &.is-horizon-scroll {
             padding-left:62px;
@@ -510,14 +551,14 @@
 .nav-brand-gate {
     display: inline-block;
     vertical-align: top;
-    margin-left:24px;//BTOCSITE-1937 스프레드 메뉴 수정
+    margin-left:24px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     @include pc {
         .title {
             display: none;
         }
     }
     @include mobile { 
-        margin-left:0; //BTOCSITE-1937 스프레드 메뉴 수정
+        margin-left:0; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     }
 
     .brand-link {
@@ -633,7 +674,7 @@
             display: inline-block;
             padding-left: 24px;
             vertical-align: top;
-            //BTOCSITE-1937 스프레드 메뉴 수정
+            /* BTOCSITE-1937 스프레드 메뉴 수정 */
             &:first-child {
                 padding-left:0;
             }
@@ -680,10 +721,10 @@
     .nav-item {
         position: relative;
         display: block;
-        padding: 4px 0 12px; //BTOCSITE-1937 스프레드 메뉴 수정
+        padding: 4px 0 12px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
         font-weight: 500;
         font-size: $font-medium;
-        line-height: 24px; //BTOCSITE-1937 스프레드 메뉴 수정
+        line-height: 24px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
         vertical-align: top;
 
         .icon-nav {
@@ -702,8 +743,9 @@
             &:focus,
             &.active {
                 font-weight: 700;
-                // @include text-underline(7px,$color-default);
-				//BTOCSITE-1937 스프레드 메뉴 수정
+                /* BTOCSITE-1937 스프레드 메뉴 수정 : 삭제 */
+                /* @include text-underline(7px,$color-default); */
+				/* BTOCSITE-1937 스프레드 메뉴 수정 : 삭제*/
                 &:after {
                     content:"";
                     position: absolute;
@@ -743,6 +785,7 @@
                     & + .nav-category-layer {
                         display: block;
                     }
+                    
                     &:after {
                         transform: rotate(0);
                     }
@@ -838,11 +881,11 @@
 
         .nav-category-inner {
             position: absolute;
-            top: 105px;//BTOCSITE-1937 스프레드 메뉴 수정
+            top: 105px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
             left: 0;
             right: 0;
             z-index: 103;
-            border-top:1px solid #ddd;//BTOCSITE-1937 스프레드 메뉴 수정
+            border-top:1px solid #ddd; /* BTOCSITE-1937 스프레드 메뉴 수정 */
             background-color: #fff;
         }
         .nav-category-wrap {
@@ -891,7 +934,7 @@
                     }
                 }
                 @media screen and (max-width: 1240px) {
-                    min-width: 33.33%;
+                    width: 33.33%;
                     &.additional-category {
                         right: 0;
                         width: inherit;
@@ -1025,9 +1068,9 @@
             //display: none;
             .btn-arrow {
                 position: absolute;
-                // top: 6.563vw;
-                top: calc(50% - 37px); //BTOCSITE-1937 스프레드 메뉴 수정
-                transform:translateY(-50%); //BTOCSITE-1937 스프레드 메뉴 수정
+                
+                top: calc(50% - 37px); /* BTOCSITE-1937 스프레드 메뉴 수정 */
+                transform:translateY(-50%);  /* BTOCSITE-1937 스프레드 메뉴 수정 */
                 box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 &:before {
                     background-image: url('/lg5-common/images/icons/btn-arr-32x32.svg');
@@ -1394,7 +1437,7 @@
             background-color: #fff;
         }
 
-        //210704 앱 알람아이콘 N 뱃지 추가
+        //210701 앱 알람아이콘 N 뱃지 추가
         .count{
             position: absolute;
             top: 2px;
@@ -1411,7 +1454,7 @@
             color: $color-white;
             text-align: center;
         }
-        //210704 앱 알람아이콘 N 뱃지 추가
+        //210701 앱 알람아이콘 N 뱃지 추가
     }
 
     &.active {
@@ -1443,11 +1486,11 @@
                     padding-bottom:60px;
                 }
             }
-            // 210714 알람체크 N뱃지 아이콘 
+            //210701 앱 알람아이콘 N 뱃지 추가
             .count {
                 display: none;
             }
-
+            //210701 앱 알람아이콘 N 뱃지 추가
 
         }
     }
@@ -1626,7 +1669,7 @@
     }
 }
 
-//BTOCSITE-1937
+/* BTOCSITE-1937 스프레드 메뉴 수정 start */
 .super-category-nav {
     &.swiper-container {
         text-align: left;
@@ -1709,6 +1752,7 @@
         display: none !important;
     }
 }
+/* BTOCSITE-1937 스프레드 메뉴 수정 end */
 
 /* 통합검색 레이어팝업 */
 @import "../pages/UTS/SERF9001";

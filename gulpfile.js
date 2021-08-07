@@ -36,15 +36,20 @@ gulp.task("browser-sync", () => {
             },
             // BTOCSITE-27 swipe 테스트용 
             function(req, res, next){
-                let lastseq = req.url.split('/').pop();
+                let lastseq = req.url == '/' ? '/' : req.url.split('/').pop();
                 
-                if (lastseq == 'story' || lastseq == 'store' || lastseq == 'support' || lastseq == 'care-solutions' || req.url == '/'){                    
-                    console.log('req url', req.url);
-                    console.log('lastseq', lastseq);
-                    if (req.url !== '/guide' && req.url !== '/guide/'){
-                        //res.setHeader('Content-Type', 'text/html');
-                        res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
-                    }
+                switch(lastseq) {
+                    case '/' :
+                    case 'story' :
+                    case 'store' :
+                    case 'support' :
+                    case 'care-solutions' :
+                    case 'membership-event' : // BTOCSITE-1814 이벤트탭 추가
+                        if (req.url !== '/guide' && req.url !== '/guide/'){
+                            //res.setHeader('Content-Type', 'text/html');
+                            res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
+                        }
+                    break;
                 }
                 next();
             }
