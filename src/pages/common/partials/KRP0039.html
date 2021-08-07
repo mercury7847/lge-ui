@@ -1,0 +1,146 @@
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 start -->
+<div class="component-wrap @@zero">
+    <!--
+        [component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component-inner 하위 옵션]
+        1. eventExhibitionTitle : 타이틀명 직접 입력 필요,최대 2줄 노출, 2줄 초과시 말줄임 처리 됨
+
+        [box-list-inner 하위 옵션]
+        1. img : 썸네일 이미지 출력
+        2. imgAlt : 이미지 사용 시, Alt Text 입력 필요
+        3. accessibility : 웹 접근성 준수를 위해 Hidden Text로 우회해야하는 경우 Accessibility Description 영역 활용
+        4. imgLink : 선택 시, 상세 link로 이동
+        5. imgLinkTarget : _self or _blank
+        6. title-hd: 이벤트 제목 or 기획전 제목(blind 처리 되는 영역으로 제목을 안내하는 부분, titleHd 값에 따라 변경됨)
+        7. title: 어드민에 등록된 타이틀이  출력되는 부분
+        8. titleLink: 선택 시, 상세 link로 이동
+        9. titleLinkTarget:  _self or _blank
+        10. date-hd : 이벤트 기간 or 기획전 기간(blind 처리 되는 영역으로 제목을 안내하는 부분, titleHd 값에 따라 변경됨)
+        11. date : 어드민에 등록된 기간 출력 (시작일 ~ 종료일)
+
+        [cta 영역 - btn-area 하위 옵션]
+        1. ctaUse :  사용여부  "Yes" 일때만 노출 됨 
+        2. ctaBtnLink : 입력된  link url 
+        3. ctaBtnTarget : _self or _blank
+        4. ctaBtnName :  직접입력된 버튼명
+
+    -->
+    <!-- KRP0039  -->
+    <section class="component KRP0039">
+        <div class="component-inner">
+            <div class="evt-bnr">
+                <h2 class="tit">@@eventExhibitionTitle</h2>                  
+                <div class="box-list event-type">
+                    <ul class="box-list-inner">
+                        @@if (context.titleHd === "event") {
+                                @@loop('./common/modules/list-box-thum-title.html', [                       
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_self",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LGE.COM MEET YOU 이벤트 모음",
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_self",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event02.jpg",
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_blank",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "neAR you 이벤트(AR체험)", 
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_blank",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event03.jpg",    
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_blank",            
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LGE.COM 7월 혜택 모음",
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_blank",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"                
+                                }
+                            ])
+                        }
+                        @@if (context.titleHd === "exhibition") {
+                            @@loop('./common/modules/list-box-thum-title.html', [                       
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_self",
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG Objet Collection과 함께하는 한마음 동행세일 이벤트",
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_self",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event02.jpg",
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_blank",
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 주방가전 고객감사 특집전", 
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_blank",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event03.jpg",    
+                                    "imgAlt" : "imgAlt 입니다",
+                                    "accessibility" : "Accessibility Description 영역 입니다",
+                                    "imgLink" : "#n",
+                                    "imgLinkTarget" : "_blank",            
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "삶의 여유를 만드는 육아맘의 선택",
+                                    "titleLink" : "#n",
+                                    "titleLinkTarget" : "_blank",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"                
+                                }
+                            ])
+                        }
+                    </ul>
+                </div> 
+                <!-- cta -->
+                @@if (context.ctaUse === "Yes"){
+                    <div class="btn-area">
+                    @@if (!context.ctaBtnTarget) {
+                        <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta">
+                    }
+                    @@if (context.ctaBtnTarget) {
+                        <a href="@@ctaBtnLink" class="btn border size-m" data-link-area="event-exhibition-cta" target="@@ctaBtnTarget">
+                    }
+                            <span>@@ctaBtnName</span>
+                        </a>
+                    </div>
+                }       
+                <!-- // cta -->
+            </div>
+        </div>
+    </section>
+</div>
+<!-- //component KRP0039 -->
+<!-- BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 end -->

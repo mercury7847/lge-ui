@@ -172,7 +172,38 @@ var _PAGE_DATA = {
                 "exhibition_type": null
             }
         }
+    },
+
+
+    'membership-event' : {
+        'meta' : {
+            'title' : '이벤트/멤버십',
+            'description' : 'LG전자 멤버십 이벤트 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+            'og:locale' : 'ko_KR',
+            'og:site_name' : 'LG전자',
+            'og:type' : 'website',
+            'og:title' : '이벤트/멤버십',
+            'og:description' : 'LG전자 멤버십 이벤트 페이지입니다. LG 제품 사용 문의, 서비스 상담, 매장 찾기, 고객 제안 및 불만 기타 사항들의 신속한 처리를 위한 방법을 안내 드립니다.',
+            'og:url' : 'https://wwwdev50.lge.co.kr/membership-event',
+            'og:image' : 'https://wwwdev50.lge.co.kr/lg5-common/images/common/share/share-default.jpg',
+            'twitter:card' : 'summary',
+            'canonical' : 'https://wwwdev50.lge.co.kr/membership-event'            
+        },
+        'digitalData' : {
+            'pageInfo' : {
+                "content_depth1": "멤버십 이벤트",
+                "content_depth2": null,
+                "content_depth3": null,
+                "content_depth4": null,
+                "content_depth5": null,
+                "event_page_category1": null,
+                "event_page_category2": null,
+                "event_page_category3": null,
+                "exhibition_type": null
+            }
+        }
     }
+
 };
 
     </script>
@@ -184,6 +215,7 @@ var _PAGE_DATA = {
         @@include('./common/header.html', {
             "pageCase": "main",
             "mobileCase": "main",
+            "isSwipe": "y",
             hiddenTitle: "엘지이닷컴"
         })
 		<div class="container">            
@@ -196,6 +228,7 @@ var _PAGE_DATA = {
                     <div class="swiper-slide" data-href="/html/MA-include/OBS5001_content.html" data-hash="story" ></div>
                     <div class="swiper-slide" data-href="/html/MA-include/CSRF6001_content.html" data-hash="support" ></div>
                     <div class="swiper-slide" data-href="/html/MA-include/MKTF2001_content.html" data-hash="care-solutions"></div>
+                    <div class="swiper-slide" data-href="/html/MA-include/BMS_BTOCSITE_1814_content.html" data-hash="membership-event"></div> <!-- BTOCSITE-1814 -->
                 </div>
             </div>
             <!-- //BTOCSITE-27 상단 퀵메뉴 스와이프 처리 -->

@@ -120,6 +120,8 @@ var res = {
 				"KRP0036_PDP Caresolution Contents[KRP0047]" : ["/html/components/KRP0036.html","","검수완료"],
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
+				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
+				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""]
 			}
 		},
 		// "Component" : {
@@ -307,6 +309,10 @@ var res = {
 				//"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
 			"이벤트/멤버십(BMC)" : {
+				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
+				"이벤트/멤버십(BMS)" : {
+					"홈(서브메인샘플페이지)" : ["/html/BMS/BMS-BTOCSITE-1814.html","",""],
+				},
 				"이벤트" : {
 					// "리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
@@ -406,7 +412,8 @@ var res = {
 					"위치정보제공동의 팝업" : ["/html/CS/CSRF6098.html","","검수완료"],
 					"현재위치정보 팝업" : ["/html/CS/CSRF6099.html","","검수완료"],
 					"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"],
-					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""]
+					"매장상담 신청완료" : ["/html/CS/CSRF6044.html","",""],
+					"제품 카탈로그" : ["/html/CS/BTOCSITE-212.html","",""]
 				},
 				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]
@@ -448,7 +455,9 @@ var res = {
 					"오픈소문내기이벤트" : ["/html/BMC/MKT4002_04.html","",""],
 					"이벤트관련(레이어팝업)" : ["/html/BMC/MKT4002_04_pop.html","",""]
 				},
-				"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"]
+				"보유제품이벤트" : ["/html/BMC/MKT4002_14.html","","검수완료"],
+				"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
+				"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=yes","검수완료"]
 			},
 			"Exhibitions" : {
 				"06. 오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],
@@ -462,9 +471,9 @@ var res = {
 			},
 			"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","","검수완료"]
 		}
-	},
-	"LGE" : {
-		"이벤트" : {
+		},
+		"LGE" : {
+			"이벤트" : {
 			"05" : {
 				"룸앤TV 제품등록 이벤트" : ["/html/BMC/2021/05/0511_roomntv/roomntv_pop.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
 				"에어컨 검색 이벤트" : ["/html/BMC/2021/05/0511_aircon_search/aircon_search_pop.html","_blank:width=912,height=760,scrollbars=1","검수완료"],
@@ -475,7 +484,7 @@ var res = {
 			}
 		},
 		"기획전" : {
-			"내가만드는LG전자기획전" : ["/html/BMC/EVENT_210428/EVENT_210428.html","",""]
-		}
+				"내가만드는LG전자기획전" : ["/html/BMC/EVENT_210428/EVENT_210428.html","",""]
+			}
 	},
 }
