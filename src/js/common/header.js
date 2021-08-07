@@ -147,7 +147,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next'); 
    
-            // BTOCSITE-1814 
+            // BTOCSITE-1814
+
             // pc 상태
             // if(!vcui.detect.isMobile) {
             //     var href = ""+location.href;
