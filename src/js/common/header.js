@@ -148,6 +148,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next'); 
    
             // BTOCSITE-1814 
+
+
+                // pc에서 선택 클래스 삽입
+
+                console.log(vcui.detect);
+
             // pc 상태
             if(!vcui.detect.isMobile) {
                 var href = ""+location.href;
