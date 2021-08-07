@@ -150,34 +150,34 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             // BTOCSITE-1814
 
             // pc 상태
-            // if(!vcui.detect.isMobile) {
-            //     var href = ""+location.href;
-            //     $('.mobile-nav-wrap').find('a.nav-item').removeClass('on');
-            //     $('.mobile-nav-wrap').find('a.nav-item').each(function() {
-            //         if(href == this.href) $(this).addClass('on');
-            //     })
-            // }
+            if(!vcui.detect.isMobile) {
+                var href = ""+location.href;
+                $('.mobile-nav-wrap').find('a.nav-item').removeClass('on');
+                $('.mobile-nav-wrap').find('a.nav-item').each(function() {
+                    if(href == this.href) $(this).addClass('on');
+                })
+            }
 
 
-            // $('.mobile-nav-wrap').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
-            // $('.mobile-nav-wrap').on('smoothscrollmove',function(e,data){
+            $('.mobile-nav-wrap').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
+            $('.mobile-nav-wrap').on('smoothscrollmove',function(e,data){
 
-            //     if(!data) {
-            //         var data = {
-            //             x:0,y:0,
-            //             isStart : true,
-            //             isEnd : false
+                if(!data) {
+                    var data = {
+                        x:0,y:0,
+                        isStart : true,
+                        isEnd : false
 
-            //         }
-            //     }
+                    }
+                }
 
-            //     if(!data.isStart && !data.isEnd) {
-            //         $(this).addClass('left right')
-            //     } else {
-            //         $(this).removeClass(data.isStart ? 'left' : 'right').addClass(data.isStart ? 'right' : 'left' )
-            //     }
+                if(!data.isStart && !data.isEnd) {
+                    $(this).addClass('left right')
+                } else {
+                    $(this).removeClass(data.isStart ? 'left' : 'right').addClass(data.isStart ? 'right' : 'left' )
+                }
              
-            // }).trigger('smoothscrollmove')
+            }).trigger('smoothscrollmove')
 
 
         },
