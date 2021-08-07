@@ -103,7 +103,10 @@
 @include mobile {
     .mobile-nav-wrap {
         position:relative;
+        overflow:auto;
         font-size: 0;
+        -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 
         // BTOCSITE-1814 이벤트탭 추가
 
@@ -133,14 +136,18 @@
             display:block;
         }
 
+        &::-webkit-scrollbar {
+            display: none;
 
+
+          }
 
         .nav {
             height:37px;
             overflow:hidden;
             white-space: nowrap;
-            // display: table;
-            display:flex;
+            display: table;
+            // display:flex;
             border-bottom: 1px solid $color-border;
             > li {
                 display: inline-block;
