@@ -56,16 +56,34 @@ var lls = {
         var $heroSwiper = $('.hero-slider');
         var $playControl = $heroSwiper.find('.swiper-play-controls');
         var $btnPlay = $playControl.find('.btn-play');
+        var liveTid = 0;
+        var speed = 1000;
+
+        function liveCheck($target, start, end){
+            var date = new Date();
+            var $flag = $target.find('.hero-item-flag');
+            var $flagText = $flag.find('.flag-title-text');
+
+            if( date >= new Date(start) && date <= new Date(end)) {
+                console.log(222)
+                $flag.addClass('live-now')
+                $flag.find('.flag-title-text').text($flagText.data('liveText'))
+            } else {
+                console.log(111)
+                $flag.removeClass('live-now')
+                $flag.find('.flag-title-text').text($flagText.data('expectedText'))
+            }
+        }
 
         var heroSwiper = new Swiper('.hero-slider', {
             loop:true,
             slidesPerView:1,
             observer: true,
             observeParents: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
+            // autoplay: {
+            //     delay: 5000,
+            //     disableOnInteraction: false
+            // },
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
@@ -76,8 +94,19 @@ var lls = {
                 prevEl: '.swiper-button-prev',
             },
             on: {
-                init: function(){
+                init: function(swiper){
                     $btnPlay.addClass('stop');
+                    
+                    var $currentSlide = $(swiper.slides[swiper.activeIndex]);
+                    var $flag = $currentSlide.find('.hero-item-flag');
+                    var liveStartTime = $flag.attr('data-live-start')
+                    var liveEndTime = $flag.attr('data-live-end');
+                    
+
+                    clearInterval(liveTid)
+                    liveTid = setInterval(function(){
+                        liveCheck($currentSlide, liveStartTime, liveEndTime)
+                    }, speed)
                 }
             }
         });
