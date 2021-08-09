@@ -513,7 +513,7 @@ $(function(){
             //console.log(err);
         }
 
-        //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
+        //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gnbId값 추가
         function buildSubCatagoryTab(result, categoryId){
 
             var data = result.data;
@@ -579,14 +579,12 @@ $(function(){
                 $context.find('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
                 $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
-
                 $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
                     var gnbId = null;
 
                     if(e.type=='tabinit'){
-
                         categoryId = arr[0].categoryId;
                         gnbId = arr[0].gnbId;
                         lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
@@ -616,6 +614,20 @@ $(function(){
                     }
                 }).vcTab();
 
+                /* BTOCSITE-3067 선택된 tab & 카테고리명 불러오기 - 210806 */
+                if(!!window.location.hash){
+                    var $selectedTab = $context.find('.module-box.cnt01 .ui_category_tab > .tabs > li a[href="' + window.location.hash +'"]');
+
+                    if ($selectedTab.length > 0){
+                        var $list = $selectedTab.closest('li');
+                        var currentIndex = $list.index();
+                        $context.find('.module-box.cnt01 .ui_category_tab').vcTab('select',currentIndex);
+                    }
+                }else{
+                    categoryId = arr[0].categoryId;
+                }
+                /* //BTOCSITE-3067 선택된 tab & 카테고리명 불러오기 - 210806 */
+                
 
                 $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
