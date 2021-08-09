@@ -353,17 +353,19 @@
             .care {
                 display: inline-block; //BTOCSITE-3404 210809 추가
                 .text {
-                    // display: inline-block;
-                    // position: relative;
-                    // margin-right: 6px;
-                    // padding-right: 6px;
+                    /* BTOCSITE-3404 210809 수정 */
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 6px;
+                    padding-right: 6px;
+                    /* // BTOCSITE-3404 210809 수정 */
                     @include font($font-small,24px);
                     &:last-child {
                         margin-right: 16px;
                         padding-right: 16px;
                     }
                     &:not(:last-child):before {
-                        //display: inline-block; 210809 수정
+                        display: inline-block; //210809 수정
                         position: absolute;
                         top: 50%;
                         right: 0;
@@ -430,8 +432,6 @@
                             background: #ddd;
                             @include mobile{
                                 content: ',';
-                                width:0;
-                                height: 0;
                             }
                         }
                     }
