@@ -265,8 +265,8 @@ img{
 				padding: 16px;
 				background: none !important;
 				> a {
-					// height: 114.08083441981746vw;
-					height: 100%;
+					height: 111.21251629726206vw;
+					// height: 100%; /* 원본 */
 					.text-link {
 						top: 37px;
 						right: 32px;
@@ -352,16 +352,21 @@ img{
 				}
 				
 			}
-			// @media screen and (max-width: 414px){
-			// 	> a {
-			// 		height: 110.020834vw;
-			// 	}
-			// }
-			// @media screen and (max-width: 375px){
-			// 	> a {
-			// 		height: 108.970834vw;
-			// 	}
-			// }
+			@media screen and (max-width: 740px){
+				> a {
+					height: 106.212516vw;
+				}
+			}
+			@media screen and (max-width: 450px){
+				> a {
+					height: 103.112516vw;
+				}
+			}
+			@media screen and (max-width: 375px){
+				> a {
+					height: 101.102516vw;
+				}
+			}
 		}
 		// ////2021-07-23 pc 여기서부터 시작
 
