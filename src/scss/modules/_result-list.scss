@@ -354,9 +354,9 @@
                 display: inline-block; //BTOCSITE-3404 210809 추가
                 .text {
                     display: inline-block;
-                    //position: relative;
-                    //margin-right: 6px;
-                    //padding-right: 6px;
+                    position: relative; //BTOCSITE-3404 210809 수정
+                    margin-right: 6px;  //BTOCSITE-3404 210809 수정
+                    padding-right: 6px; //BTOCSITE-3404 210809 수정
                     @include font($font-small,24px);
                     &:last-child {
                         margin-right: 16px;
