@@ -359,8 +359,8 @@
                     padding-right: 6px;
                     @include font($font-small,24px);
                     &:last-child {
-                        margin-right: 16px;
-                        padding-right: 16px;
+                        margin-right: 6px;
+                        padding-right: 6px;
                     }
                     &:not(:last-child):before {
                         display: inline-block;
@@ -405,17 +405,17 @@
                     }
                 }
                 /* BTOCSITE-3404 210809 추가 */
-                // .care-n {
-                //     @include font($font-small,24px);
-                //     line-height:13px;
-                //     //position: absolute;
-                //     @include mobile {
-                //         display: inline-block;
-                //         margin-left: 0;
-                //         padding-left: 0;
-                //         @include font($font-x-small,20px);
-                //     }
-                // }
+                .care-n {
+                    @include font($font-small,24px);
+                    line-height:13px;
+                    //position: absolute;
+                    @include mobile {
+                        display: inline-block;
+                        margin-left: 0;
+                        padding-left: 0;
+                        @include font($font-x-small,20px);
+                    }
+                }
                 .redcare-option {
                     margin-right:6px;
                     padding-right:6px;
