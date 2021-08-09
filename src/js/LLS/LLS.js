@@ -96,13 +96,13 @@ var lls = {
             on: {
                 init: function(swiper){
                     $btnPlay.addClass('stop');
-                    
+                },
+                slideChange: function(swiper){
                     var $currentSlide = $(swiper.slides[swiper.activeIndex]);
                     var $flag = $currentSlide.find('.hero-item-flag');
                     var liveStartTime = $flag.attr('data-live-start')
                     var liveEndTime = $flag.attr('data-live-end');
                     
-
                     clearInterval(liveTid)
                     liveTid = setInterval(function(){
                         liveCheck($currentSlide, liveStartTime, liveEndTime)
