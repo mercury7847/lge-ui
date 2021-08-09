@@ -17,7 +17,7 @@
 			colors: ['#e81953', '#000000'],
 			vAxis:{format: '#\'%\'', minValue:'0', maxValue: '110'},
 			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
-			bar: { groupWidth: '30%' },
+			bar: { groupWidth: '25%' },
 			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
 			legend: {position: 'bottom'},
 			fontName:'Noto Sans',
@@ -30,6 +30,7 @@
 			['보고사항',  10, '보고사항\n10건']
 		]);
 		optionsDonut = {
+			pieHole: 0.6,
 			pieSliceText: 'value',
 			chartArea: {width: '100%', height: '80%',top:'4%'},
 			slices: {
@@ -55,14 +56,18 @@
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
+			optionsDonut.pieHole=0.6;
 			optionsDonut.legend.textStyle.fontSize="12";
-			optionsDonut.pieSliceTextStyle.fontSize= "12";
+			optionsDonut.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
 			optionsColumn.fontSize="12";
+			optionsColumn.bar.groupWidth= '30%';
 		}
 		else{
+			optionsDonut.pieHole=0.56;
 			optionsDonut.legend.textStyle.fontSize="16";
 			optionsDonut.pieSliceTextStyle.fontSize="16";
 			optionsColumn.fontSize="16";
+			optionsColumn.bar.groupWidth= '25%';
 		}
 	}
 	$(window).resize(function() {
@@ -607,7 +612,7 @@
 								</div>
 							</div>
 							<div class="tb_row tb-row-bl">
-								<div class="tbl_info rt abs2">(단위: 회, 건, 2020년 기준)</div>
+								<div class="tbl_info rt">(단위: 회, 건, 2020년 기준)</div>
 								<table>
 									<caption>이사회 활동</caption>
 									<colgroup>
@@ -661,7 +666,7 @@
 								</div>
 							</div>
 							<div class="tb_row tb-row-bl">
-								<div class="tbl_info rt abs2">(단위: %, 2020년 기준)</div>
+								<div class="tbl_info rt">(단위: %, 2020년 기준)</div>
 								<table>
 									<caption>이사회 참석</caption>
 									<colgroup>

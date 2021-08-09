@@ -1,0 +1,1621 @@
+<link rel="stylesheet" href="/kr/images/company/company2.css">
+<script>
+/*$(".cmp_sch_delete").hide();
+$(".cmp_sch_result_wrap").removeClass("active");*/
+$(document).ready(function() {
+	/* 검색어 입력 */
+	$(".cmp_sch_input").on('keydown', function(e){
+		var _val = $(".cmp_sch_input").val();
+		if(_val.length > 0){
+			$(".cmp_sch_delete").show();
+			$(".cmp_sch_result_wrap").addClass("active");
+		}
+		else{
+			$(".cmp_sch_delete").hide();
+			$(".cmp_sch_result_wrap").removeClass("active");
+		}
+	});
+
+	/* 검색어 삭제 */
+	$(".cmp_sch_delete").on('click', function(e){
+		$(".cmp_sch_input").val("");
+		$(".cmp_sch_result_wrap").removeClass("active");
+		$(".cmp_sch_delete").hide();
+	});
+
+	/* 이동 */
+	$(".cmp_sch_result_wrap a").on('click', function(e){
+		e.preventDefault();
+
+		/* 검색 리스트 삭제 */
+		$(".cmp_sch_result_wrap").removeClass("active");
+
+		/* 마크 제거 */
+		fcRemoveMark();
+
+		/* 마크 추가 */
+		var number = $(this).attr("href");
+		var td0 = $(number+" td:nth-child(1)");
+		var td1 = $(number+" td:nth-child(2)");
+		td0.html("<mark>"+td0.html()+"</mark>");
+		td1.html("<mark>"+td1.html()+"</mark>");
+
+		/* 스크롤 이동 */
+		var _top = $(number).offset().top;
+		$('html, body').scrollTop(_top - 300);
+	});
+
+});
+function fcRemoveMark(){
+	/* 마크 제거 */
+	$("table mark").each(function(){
+		var _this = $(this).parent();
+		_this.html(_this.html().replace("<mark>","").replace("</mark>",""));
+	});
+}
+</script>
+<style>
+	.cmp_search {display:none;}
+</style>
+<div class="breadcrumb">
+	<ul>
+		<li><a href="/">홈</a></li>
+		<li><a href="/company">회사소개</a></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/sustainable/data">성과 및 데이터</a></li>
+		<li><strong>GRI, SASB, TCFD index</strong></li>
+	</ul>
+</div>
+<div class="container company">
+	<div class="page-header">
+		<h2 class="title">지속가능경영</h2>
+	</div>
+	<!-- hiro image -->
+	<section class="hiro-wrap">
+		<div class="visual-area">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
+		</div>
+		<div class="text-area">
+			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
+		</div>
+	</section>
+	<!-- // hiro image -->
+	<div class="ui_sticky">
+		<div class="com-tabs">
+			<div id="com-tabs01"></div>
+			<div class="tabs-wrap border-type left">
+				<ul class="tabs">
+					<li>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
+							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
+							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/businessplace#com-tabs01">환경</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/businessplace">부정적 환경영향 <br> Zero 사업장</a></li>
+							<li><a href="/company/sustainable/productsServices">미래세대를 위한 <br>제품과 서비스</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/workplace#com-tabs01">사회</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/workplace">모두를 위한 <br> 지속가능한 일터</a></li>
+							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
+							<li><a href="/company/sustainable/socialContribution">사회공헌</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
+					</li>
+					<li>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
+						<ul class="tabs-over">
+							<li><a href="/company/promot/system">정도경영 개요</a></li>
+							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
+							<li><a href="/company/promot/fairtrade">공정거래</a></li>
+							<li><a href="/company/promot/safetyHealth">안전&middot;환경</a></li>
+							<li><a href="/company/promot/partner">협력회사</a></li>
+							<li><a href="/company/promot/minerals">분쟁광물</a></li>
+							<li><a href="/company/promot/client">고객</a></li>
+							<li><a href="/company/promot/infoProtection">정보보호</a></li>
+							<li><a href="/company/promot/member">구성원</a></li>
+						</ul>
+					</li>
+					<li class="on">
+						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터<em class="blind">선택됨</em></a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="com-title">
+		<div class="img">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-data-hero-02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-data-hero-02-mo.jpg" aria-hidden="hidden"></span>
+		</div>
+		<p class="text">올바른 성과 측정은 중요한 첫 걸음입니다. <br>LG전자는 성과 측정을 토대로 문제점과 개선사항을 파악하고 적극 수렴하여 지속 발전을 향해 나아가겠습니다.</p>
+	</div>
+
+	<div class="com-tabs">
+		<div id="com-tabs02"></div>
+		<div class="tabs-wrap btn-type left">
+			<ul class="tabs">
+				<li><a href="/company/sustainable/data#com-tabs02">ESG 데이터</a></li>
+				<li class="on"><a href="/company/sustainable/frameworkIndex#com-tabs02">GRI, SASB, TCFD index<em class="blind">선택됨</em></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="com-tabs">
+		<div class="tabs-wrap bar-type ui_tab left">
+			<ul class="tabs">
+				<li class="on"><a href="#tab1">GRI<em class="blind">선택됨</em></a></li>
+				<li><a href="#tab2">SASB</a></li>
+				<li><a href="#tab3">TCFD</a></li>
+			</ul>
+		</div>
+
+		<div id="tab1" class="tabs-contents">
+			<div class="com-text pb0">
+				<p class="tit">GRI, SASB, TCFD index</p>
+				<p class="text">LG전자는 GRI(Global Reporting Initiative), SASB(Sustainable Account Standards Board) 및 TCFD(Task Force on Climate-related Financial Disclosures) 프레임워크를 기반으로 ESG 데이터를 공개하고 있습니다.</p>
+			</div>
+
+			<div class="cmp_search">
+				<div class="cmp_search_inner">
+					<div class="cmp_sch_wrap">
+						<div class="cmp_sch_inp_wrap">
+							<form role="search" action="">
+								<input type="search" class="cmp_sch_input" placeholder="검색어를 입력해주세요. (예: 지표번호 or 지표명)" title="검색어 입력">
+							</form>
+							<button type="button" class="cmp_sch_delete" style="display:none;"><span class="blind">검색어 삭제</span></button>
+							<button type="button" class="cmp_sch_btn"><span class="blind">검색</span></button>
+						</div>
+					</div>
+					<div class="cmp_sch_result_wrap"><!-- active 클래스 추가 -->
+						<div class="cmp_keyword_list">
+							<ul>
+								<li><a href="#number-205-1">205-1 사업장 <span class="cmp_sch_word">부패</span> 위험 평가</a></li>
+								<li><a href="#number-205-2">205-2 반<span class="cmp_sch_word">부패</span> 정책 및 절차에 관한 공지와 훈련</a></li>
+								<li><a href="#number-205-3">205-3 확인된 <span class="cmp_sch_word">부패</span> 사례와 이에 대한 조치</a></li>
+								<li><a href="#number-206-1">206-1 공정거래</a></li>
+								<!-- <li><a href="#"><span class="cmp_sch_word"></span></a></li>
+								<li><a href="#"><span class="cmp_sch_word"></span></a></li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="com-text noLine">
+				<p class="tit">공통 표준(Universal Standards)</p>
+				<div class="tb_row tb-row-bl mgt">
+					<table>
+						<caption>공통 표준(Universal Standards) 표, 정보공개 항목, 보고 내용</caption>
+						<colgroup>
+							<col style="width:8%" class="m25">
+							<col style="width:28.4%" class="m25">
+							<col style="width:41.9%" class="m25">
+							<col style="width:21.7%" class="m25">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">정보공개 항목</th>
+								<th scope="col" colspan="2">보고 내용</th>
+							</tr>
+							<tr>
+								<th scope="col">지표번호</th>
+								<th scope="col">지표명</th>
+								<th scope="col">내용</th>
+								<th scope="col">보고</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>102-01</td>
+								<td>조직 명칭</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-02</td>
+								<td>대표 브랜드, 제품 및 서비스</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-03</td>
+								<td>본사의 위치</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-04</td>
+								<td>사업 지역</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-05</td>
+								<td>소유 구조 특성 및 법적 형태</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-06</td>
+								<td>시장 영역</td>
+								<td>&nbsp;</td>
+								<td>사업보고서 참조</td>
+							</tr>
+							<tr>
+								<td>102-07</td>
+								<td>조직의 규모</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-08</td>
+								<td>임직원 및 근로자에 대한 정보</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-09</td>
+								<td>조직의 공급망</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-10</td>
+								<td>조직 및 공급망의 중대한 변화</td>
+								<td>&nbsp;</td>
+								<td>MC사업 철수(&rsquo;21, 4월)</td>
+							</tr>
+							<tr>
+								<td>102-11</td>
+								<td>사전예방 원칙 및 접근</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-12</td>
+								<td>외부 이니셔티브</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-13</td>
+								<td>협회 멤버쉽</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-14</td>
+								<td>최고 의사 결정권자 성명서</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-16</td>
+								<td>가치, 원칙, 표준, 행동강령</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-18</td>
+								<td>지배구조</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-19</td>
+								<td>권한위임</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-40</td>
+								<td>조직과 관련 있는 이해관계자 집단 리스트</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-41</td>
+								<td>단체협약</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-42</td>
+								<td>이해관계자 파악 및 선정</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-43</td>
+								<td>이해관계자 참여 방식</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-44</td>
+								<td>이해관계자 참여를 통해 제기된 핵심 주제와 관심사</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-45</td>
+								<td>조직의 연결 재무제표 포함된 범위</td>
+								<td>&nbsp;</td>
+								<td>사업보고서 참조</td>
+							</tr>
+							<tr>
+								<td>102-46</td>
+								<td>보고 내용 및 토픽의 경계 정의</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-47</td>
+								<td>Material Topic 리스트</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-48</td>
+								<td>정보의 재기술</td>
+								<td>&nbsp;</td>
+								<td>재기술 사항 없음</td>
+							</tr>
+							<tr>
+								<td>102-49</td>
+								<td>보고의 변화</td>
+								<td>&nbsp;</td>
+								<td>MC사업 철수(&rsquo;21, 4월)</td>
+							</tr>
+							<tr>
+								<td>102-50</td>
+								<td>보고 기간</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-51</td>
+								<td>가장 최근 보고 일자</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-52</td>
+								<td>보고 주기</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-53</td>
+								<td>보고서에 대한 문의처</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-54</td>
+								<td>GRI Standards에 따른 보고 방식</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-55</td>
+								<td>GRI 인덱스</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>102-56</td>
+								<td>외부 검증</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="com-text noLine pt60">
+				<p class="tit">특정 주제 표준(Topic Specific Standards)</p>
+				<div class="tb_row tb-row-bl middle mgt">
+					<table>
+						<caption>특정 주제 표준(Topic Specific Standards) 표, 정보공개 항목, 보고 내용</caption>
+						<colgroup>
+							<col style="width:13.6%" class="m20">
+							<col style="width:8%" class="m20">
+							<col style="width:35%" class="m30">
+							<col style="width:21.7%" class="m15">
+							<col style="width:21.7%" class="m15">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="3">정보공개 항목</th>
+								<th scope="col" colspan="2">보고 내용</th>
+							</tr>
+							<tr>
+								<th scope="col">보고 주제</th>
+								<th scope="col">지표번호</th>
+								<th scope="col">지표명</th>
+								<th scope="col">내용</th>
+								<th scope="col">보고</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="4">경제성과</th>
+								<td>201-1</td>
+								<td>직접적인 경제적 가치의 창출과 배분</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">201-2</td>
+								<td>기후변화의 재무적 영향과 사업에 대한 위험과 기회</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">201-3</td>
+								<td>조직의 확정급여형 연금제도 채무 충당</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">201-4</td>
+								<td>정부 지원 보조금 수혜</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">시장현황</th>
+								<td>202-1</td>
+								<td>사업장의 현지 법정최저임금 대비 신입사원 임금 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">202-2</td>
+								<td>주요 사업장의 현지 출신 고위 관리자 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">조달관행</th>
+								<td>204-1</td>
+								<td>사업장의 현지 법정최저임금 대비 신입사원 임금 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr id="number-205-1">
+								<th scope="row" rowspan="3">반부패</th>
+								<td>205-1</td>
+								<td>사업장 부패 위험 평가</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr id="number-205-2">
+								<td class="bo_l">205-2</td>
+								<td>반부패 정책 및 절차에 관한 공지와 훈련</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr id="number-205-3">
+								<td class="bo_l">205-3</td>
+								<td>확인된 부패 사례와 이에 대한 조치</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr id="number-206-1">
+								<th scope="row">공정거래</th>
+								<td>206-1</td>
+								<td>경쟁저해행위, 독과점 등 불공정한 거래행위</td>
+								<td>&nbsp;</td>
+								<td>사업보고서 참조</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">원부자재</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">301-3</td>
+								<td>제품 및 포장재 재생 원료</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">에너지</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">302-1</td>
+								<td>조직 내부의 에너지 소비</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">용수</th>
+								<td>303-1</td>
+								<td>공급원별 취수량</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">303-3</td>
+								<td>용수 재활용 및 재사용</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="6">배출</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">305-1</td>
+								<td>직접 온실가스 배출량(Scope 1)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">305-2</td>
+								<td>간접 온실가스 배출량(Scope 2)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">305-3</td>
+								<td>기타 간접 온실가스 배출량(Scope 3)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">305-4</td>
+								<td>온실가스 배출 집약도</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">305-7</td>
+								<td>질소산화물, 황산화물 그리고 다른 주요 대기 배출</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="3">폐기물</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">306-3</td>
+								<td>폐기물 발생</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">306-4</td>
+								<td>유형과 처리방법에 따른 폐기물</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">환경법규 준수</th>
+								<td>307-1</td>
+								<td>환경법규 위반</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="3">고용</th>
+								<td>401-1</td>
+								<td>신규채용과 이직</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">401-2</td>
+								<td>정규직 직원 대상의 보상</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">401-3</td>
+								<td>육아휴직</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="4">안전보건</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">403-1</td>
+								<td>노사공동 안전보건위원회가 대표하는 전체 근로자 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">403-2</td>
+								<td>부상 유형, 부상 발생률, 업무상 질병 발생률 등</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">403-3</td>
+								<td>노동조합과의 정식 협약 대상인 안전보건 사항</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="4">교육</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">404-1</td>
+								<td>임직원 1인당 평균 교육 시간</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">404-2</td>
+								<td>임직원 역량 강화 및 전환 지원을 위한 프로그램</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">404-3</td>
+								<td>정기적 성과 및 경력 개발 리뷰를 받은 임직원 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">다양성</th>
+								<td>405-1</td>
+								<td>거버넌스 기구 및 임직원 다양성</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">405-2</td>
+								<td>남성 대비 여성의 기본급 및 보상 비율</td>
+								<td>&nbsp;</td>
+								<td>사업보고서 참조</td>
+							</tr>
+							<tr>
+								<th scope="row">차별금지</th>
+								<td>406-1</td>
+								<td>차별 사건 및 이에 대한 조치</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">아동노동</th>
+								<td>408-1</td>
+								<td>아동노동 발생 위험이 높은 사업장 및 협력회사</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">강제노동</th>
+								<td>409-1</td>
+								<td>강제노동 발생 위험이 높은 사업장 및 협력회사</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">보안관행</th>
+								<td>410-1</td>
+								<td>사업 관련 인권 정책 및 절차를 교육받은 보안요원 비율</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">원주민</th>
+								<td>411-1</td>
+								<td>원주민 권리 침해사고 수와 이에 대한 조치</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="3">인권평가</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">412-1</td>
+								<td>인권영향 평가 혹은 인권검토 대상 사업장</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">412-2</td>
+								<td>사업과 관련된 인권 정책 및 절차에 관한 임직원 교육</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="3">지역사회</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">413-1</td>
+								<td>지역사회 참여, 영향 평가, 발전 프로그램 운영</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">413-2</td>
+								<td>지역사회 실질/잠재 부정적 영향이 존재하는 사업장</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="3">협력회사 사회 평가</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">414-1</td>
+								<td>사회적 영향 평가를 통해 스크리닝된 신규 협력회사</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">414-2</td>
+								<td>공급망 내 부정적인 사회 영향과 이에 대한 시행조치</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">고객 안전보건</th>
+								<td>416-1</td>
+								<td>제품 및 서비스군의 안전보건 영향 평가</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">416-2</td>
+								<td>제품 및 서비스의 안전보건 영향에 관한 규정 위반</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">마케팅 및 라벨링</th>
+								<td>417-2</td>
+								<td>제품 및 서비스 정보 라벨링 관련 규정 위반</td>
+								<td>&nbsp;</td>
+								<td>2020년 위반사건 없음<br>(사업보고서 참조)</td>
+							</tr>
+							<tr>
+								<td class="bo_l">417-3</td>
+								<td>마케팅 커뮤니케이션 관련 규정 위반</td>
+								<td>&nbsp;</td>
+								<td>2020년 위반사건 없음<br>(사업보고서 참조)</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">정보보호</th>
+								<td>103</td>
+								<td>접근방법(Management Approach)</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">418-1</td>
+								<td>고객개인정보보호 위반 및 고객정보 분실 관련 불만</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">법률준수</th>
+								<td>419-1</td>
+								<td>사회적, 경제적 영역의 법률 및 규제 위반</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="tab2" class="tabs-contents">
+			<div class="com-text pb0">
+				<p class="tit">GRI, SASB, TCFD index</p>
+				<p class="text">LG전자는 GRI(Global Reporting Initiative), SASB(Sustainable Account Standards Board) 및 TCFD(Task Force on Climate-related Financial Disclosures) 프레임워크를 기반으로 ESG 데이터를 공개하고 있습니다.</p>
+			</div>
+
+			<!-- <div class="cmp_search">
+				<div class="cmp_search_inner">
+					<div class="cmp_sch_wrap">
+						<div class="cmp_sch_inp_wrap">
+							<form role="search" action="">
+								<input type="search" class="cmp_sch_input" placeholder="검색어를 입력해주세요." title="검색어 입력">
+							</form>
+							<button type="button" class="cmp_sch_delete"><span class="blind">검색어 삭제</span></button>
+							<button type="button" class="cmp_sch_btn"><span class="blind">검색</span></button>
+						</div>
+					</div>
+					<div class="cmp_sch_result_wrap active">
+						<div class="cmp_keyword_list">
+							<ul>
+								<li><a href="#">206-1 공정<span class="cmp_sch_word">거래</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<div class="com-text noLine">
+				<p class="tit">SASB (Sustainability Accounting Standards Board)</p>
+				<p class="text">SASB(Sustainability Accounting Standards Board, 지속가능성 회계기준위원회)기준은 2011년 발족한 미국 지속가능성 회계기준 위원회가 발표한 산업별 지속가능성 회계기준입니다. <br class="pc">SASB 기준은 최초로 각 산업별 특수성을 고려하여 재무적으로 중요도가 높은 지속 가능성 정보들을 &lsquo;지속가능한 산업 분류체계(SICS)&rsquo;에 따라 총 11개 영역 77개 산업별로 체계화하였습니다. <br class="pc">LG전자는 SASB 기준의 도입을 적극 지지하여 재무적으로 중요한 영향을 미칠 가능성이 높은 Technology & Communications 영역 Hardware 산업의 지속가능성 정보를 2020년부터 공개하고 있습니다.</p>
+			</div>
+
+			<div class="com-text">
+				<p class="tit">SASB 정보공개지표</p>
+				<div class="tb_row tb-row-bl middle pd mgt over_tbl">
+					<table>
+						<caption>SASB 정보공개지표, 구분, 측정지표, 카테고리, 단위, 코드, 보고내용, Contents</caption>
+						<colgroup>
+							<col style="width:12%">
+							<col style="width:20%">
+							<col style="width:12%">
+							<col style="width:10%">
+							<col style="width:14%">
+							<col style="width:20%">
+							<col style="width:auto">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">구분</th>
+								<th scope="col">측정지표</th>
+								<th scope="col">카테고리</th>
+								<th scope="col">단위</th>
+								<th scope="col">코드</th>
+								<th scope="col">보고내용</th>
+								<th scope="col">Contents</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">제품 보안</th>
+								<td>제품에서 데이터 보안 위험을 식별하고 해결하기 위한 접근 방식</td>
+								<td>논의 및 분석</td>
+								<td>n/a</td>
+								<td>TC-HW-230a.1</td>
+								<td>개인정보 보호 및 제품 보안</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">임직원 다양성 & 포용성</th>
+								<td>(1)경영진, (2)기술 직원, (3)기타 모든 직원의 성별 및 인종/민족 구성 비율</td>
+								<td rowspan="7">정량지표</td>
+								<td rowspan="4">%</td>
+								<td>TC-HW-330a.1</td>
+								<td>지속가능경영 성과 데이터</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="4">제품 수명 주기 관리</th>
+								<td>IEC 62474 발화성 물질을 포함하는 상품의 매출액 내 포함 비율</td>
+								<td>TC-HW-410a.1</td>
+								<td>-</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">EPEAT 등록 요건, 또는 이에 상응하는 요건을 충족하는 제품의 매출액내 포함 비율</td>
+								<td>TC-HW-410a.2</td>
+								<td rowspan="2">미래세대를 위한 제품과 서비스</td>
+								<td rowspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">ENERGY STAR 기준을 충족하는 제품의 매출액내 포함 비율</td>
+								<td>TC-HW-410a.3</td>
+							</tr>
+							<tr>
+								<td class="bo_l">수명 만료 제품 및 전자폐기물 회수 중량, 재활용률</td>
+								<td>톤, %</td>
+								<td>TC-HW-410a.4</td>
+								<td>미래세대를 위한 제품과 서비스</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">공급망 관리</th>
+								<td>(a) 모든 시설 및 (b) 고위험 시설에 의한 RBA Validated Audit Process(VAP) 또는 동급 시설에서 감사한 1차 공급업체  시설의 비율</td>
+								<td rowspan="2">%</td>
+								<td>TC-HW-430a.1</td>
+								<td>모두를 위한 지속가능한 일터</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bo_l">1차 공급업체의 (1) RBA Validated Audit Process(VAP) 또는 동급업체와의 부적합율 및 (2) (a)우선순위 부적합성 및 (b) 기타 부적합성에 대한 관련 시정조치율</td>
+								<td>TC-HW-430a.2</td>
+								<td>모두를 위한 지속가능한 일터</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">원자재 조달</th>
+								<td>중요 원자재 사용과 관련된 리스크 관리 설명</td>
+								<td>논의 및 분석</td>
+								<td>n/a</td>
+								<td>TC-HW-430a.3</td>
+								<td>모두를 위한 지속가능한 일터</td>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div id="tab3" class="tabs-contents">
+			<div class="com-text pb0">
+				<p class="tit">GRI, SASB, TCFD index</p>
+				<p class="text">LG전자는 GRI(Global Reporting Initiative), SASB(Sustainable Account Standards Board) 및 TCFD(Task Force on Climate-related Financial Disclosures) 프레임워크를 기반으로 ESG 데이터를 공개하고 있습니다.</p>
+			</div>
+
+			<!-- <div class="cmp_search">
+				<div class="cmp_search_inner">
+					<div class="cmp_sch_wrap">
+						<div class="cmp_sch_inp_wrap">
+							<form role="search" action="">
+								<input type="search" class="cmp_sch_input" placeholder="검색어를 입력해주세요." title="검색어 입력">
+							</form>
+							<button type="button" class="cmp_sch_delete"><span class="blind">검색어 삭제</span></button>
+							<button type="button" class="cmp_sch_btn"><span class="blind">검색</span></button>
+						</div>
+					</div>
+					<div class="cmp_sch_result_wrap active">
+						<div class="cmp_keyword_list">
+							<ul>
+								<li><a href="#">206-1 공정<span class="cmp_sch_word">거래</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<div class="com-text noLine">
+				<p class="tit">TCFD Report</p>
+				<p class="tit h4">기후변화 이슈와 국제사회의 역할</p>
+				<p class="text">지구온난화로 인한 기상이변의 강도가 높아지고 발생 빈도가 증가하면서 기후변화가 우리 사회의 큰 위협으로 인식되기 시작하였습니다. 세계경제포럼(World Economic Forum)에서는 &lsquo;Global Risk Report 2021&rsquo; 발행을 통해 최근 코로나19 팬데믹으로 인한 감염병 이슈(Infectious Disease)와 함께 기상이변(Extreme Weather) 및 기후변화 대응 실패(Climate Action Failure) 등 기후변화 관련 이슈를 2021년 가장 위협적인 글로벌 이슈로 선정하기도 하였습니다.</p>
+				<p class="text">국제사회는 1992년 리우데자네이루에서 열린 정상회의에서 각국 정상이 기후변화 협약에 서명한 이래 지난 수십년간 그 중요성을 강조하며 논의와 협약을 지속해오고 있습니다. 2015년 12월에는 유엔 기후변화 회의에서 채택된 파리협정(Paris Agreement)을 통해 지구 평균 온도 상승폭을 산업화 이전 수준 대비 2℃ 이하로 유지하고 1.5℃까지 제한하는 구체적인 감축 목표를 설정하였습니다. 또한, 기후변화 관련 정부간 협의체인 IPCC(International Panel of Climate Change)는 제 5차 평가보고서를 통해 지구 평균기온 상승을 2℃ 이하로 유지하려면 2050년까지 2010년 기준 전 세계 온실가스 배출량의 40~70%를 줄여야 한다는 연구결과를 발표하였습니다.</p>
+				<p class="text">이처럼 전 세계가 대응하고자 노력하고 있는 기후변화 이슈는 기상이변뿐만 아니라 우리 사회의 에너지 이용, 산업 내 생산 및 수송방식 등 글로벌 경제, 사회 구조 전반에도 큰 변화를 야기하고 있습니다. 이러한 변화에 대응하고 기후변화 위기를 극복하기 위해 각국 정부에서는 다양한 정책과 제도를 도입하고 있으며, 기업들 역시 이에 발맞춰 탄소 배출량 저감, 재생에너지 사용, 저탄소 녹색기술의 개발 및 투자 등 사회, 경제, 무역 구조의 변화에 대응하기 위한 노력을 지속하고 있습니다.</p>
+				<p class="text">LG전자는 기후변화를 다른 누군가가 아닌 &lsquo;우리&rsquo;가 책임지고 해결해야 할 핵심 이슈로 인식하고 이를 위한 방향성 및 전략을 수립하여 목표 달성을 위해 노력하고 있습니다. 2021년부터는 국제사회의 요구에 따라 TCFD 권고안에 부합하는 기후변화 관련 정보를 지속가능경영보고서를 통해 공개하고 있으며, 지속적으로 보완하여 투명하게 공개해 나갈 계획입니다.</p>
+				<div class="survey_box mgtL">
+					<p class="s_tit">&middot; TCFD (Task Force on Climate-related Financial Disclosures)</p>
+					<p class="s_text">TCFD는 G20 재무장관과 중앙은행 총재들의 위임을 받은 금융안정위원회(Financial Stability Board)가 자발적이고 일관성 있는 기후 관련 정보공개를 요구하기 위해 설립한 태스크포스입니다. TCFD는 2017년 기후 관련 재무적 영향에 대한 정보공개 권고안(Recommendations)을 발표하였습니다. 권고안은 기후변화와 관련하여 조직이 직면한 위험 및 기회요소를 식별하고 이를 관리하기 위한 프로세스, 지표, 목표 등을 상세하게 공개하도록 요구하고 있습니다.</p>
+				</div>
+				<ul class="ico_list line t4 mgtL">
+					<li>
+						<div class="iconArea">
+							<i class="ico-tcfd_01"></i>
+						</div>
+						<strong class="bold">지배구조<em>(governance)</em></strong>
+						<ul class="bull">
+							<li>기후변화와 관련된 위험과 기회에 대한 이사회의 감독</li>
+							<li>기후변화와 관련된 위험과 기회를 평가하고 관리하는 경영진의 역할</li>
+						</ul>
+					</li>
+					<li>
+						<div class="iconArea">
+							<i class="ico-tcfd_02"></i>
+						</div>
+						<strong class="bold">전략<em>(Strategy)</em></strong>
+						<ul class="bull">
+							<li>조직이 단/중/장기간에 걸쳐 파악한 기후변화와 관련 위험과 기회</li>
+							<li>기후변화 관련 위험과 기회가 사업, 전략 및 재무 계획에 미치는 영향</li>
+							<li>기후변화 관련 시나리오를 고려한 조직 전략의 회복탄력성</li>
+						</ul>
+					</li>
+					<li>
+						<div class="iconArea">
+							<i class="ico-tcfd_03"></i>
+						</div>
+						<strong class="bold">위험관리<em>(Risk Management)</em></strong>
+						<ul class="bull">
+							<li>기후변화와 관련된 위험 식별 및 평가를 위한 조직의 프로세스</li>
+							<li>기후변화와 관련된 위험 관리를 위한 조직의 프로세스</li>
+							<li>기후변화 관련 위험 식별, 평가, 관리 프로세스의 조직 위험 관리 통합</li>
+						</ul>
+					</li>
+					<li>
+						<div class="iconArea">
+							<i class="ico-tcfd_04"></i>
+						</div>
+						<strong class="bold">관리지표 및 목표<em>(Metrics and Targets)</em></strong>
+						<ul class="bull">
+							<li>기후변화 위험과 기회를 평가하기 위한 지표</li>
+							<li>Scope 1, 2, 3 온실가스 배출량 및 관련 위험</li>
+							<li>기후변화 관련 위험과 기회 및 목표 대비 성과 관리 대상</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="com-text">
+				<p class="tit">지배구조(Governance)</p>
+				<p class="text">LG전자는 2021년 4월 이사회 산하 ESG 위원회를 신설하여 기후변화를 포함한 ESG 전반의 경영활동과 방향성을 검토 및 감독하고 있습니다.</p>
+				<div class="thumb">
+					<img class="only_pc" src="/kr/images/company/sustainable/img-framework-governance-diagram-01-pc.png" alt="">
+					<img class="only_mo" src="/kr/images/company/sustainable/img-framework-governance-diagram-01-mo.png" alt="">
+					<div class="blind">
+						<ul>
+							<li>이사회</li>
+							<li>ESG위원회</li>
+							<li>전사 경영회의</li>
+							<li>CFO</li>
+							<li>이해관계자 자문단</li>
+							<li>간사:대외협력담당(CSR팀)</li>
+							<li>본사 ESG 협의체</li>
+							<li>사업본부 / 사업부</li>
+						</ul>
+					</div>
+				</div>
+				<p class="tit h4">1) 기후변화 리스크와 기회에 대한 이사회 차원의 감독</p>
+				<p class="text">LG전자는 2021년 5월 이사회 산하 ESG위원회를 설립하였습니다. ESG위원회는 기후변화를 포함한 환경(Environmental), 사회(Social), 지배구조(Governance) 전반의 방향성과 이를 달성하기 위한 목표에 대해 검토하고 의사 결정하는 역할을 담당하고 있습니다. 사외이사 4인과 사내이사 1인으로 구성된 ESG 위원회는 중점 분야 중 하나로 기후변화 대응을 포함한 환경/안전 영역을 삼고 있습니다. 반기 1회 정기회의를 개최하며, 필요 시 임시 회의를 소집하여 논의된 결과는 정기적으로 이사회에 보고하고 있습니다. 향후 경영진의 ESG 경영활동에 대한 관리 및 감독 기능을 지속적으로 수행해 나갈 계획입니다.</p>
+				<p class="tit h4">2) 기후변화 관련 리스크와 기회를 평가하고 관리하는 경영진의 역할</p>
+				<p class="text">LG전자의 경영진은 기후변화가 LG전자 경영 전반, 더 나아가 국제 사회에 영향을 미칠 수 있는 중요한 사안임을 인식하고 기후변화 관련 리스크와 기회를 지속적으로 검토하고 있습니다. 특히, CEO를 위원장으로 모든 경영진(CFO, CHO, CTO, CSO)이 참여하여 전사 안전환경 및 기후변화 관련 이슈를 검토하는 안전환경위원회를 구성하여 기후변화 관련 리스크와 기회를 점검하고 있습니다. 이 밖에도 위원회는 중장기 온실가스 감축목표 수립과 주요 대규모 감축사업에 대한 투자결정 등 기후변화 이슈와 관련된 주요한 사항에 대한 의사결정을 수행하고 있으며, 위원회를 통해 결정된 사항은 기업 정책으로 반영하여 시행하고 있습니다.</p>
+			</div>
+
+			<div class="com-text tbl">
+				<p class="tit">전략(Strategy)</p>
+				<p class="text">LG전자는 기후변화로 인한 영향을 크게 사업적 영향과 사회적 인식 측면의 평판 영향으로 구분하고 있습니다. 사업적 영향은 기후변화 리스크로 인한 영향이 프로젝트 중단에 상응하는 재정적 영향을 미칠 수 있는 위험으로 정의되며, 발생 가능한 재정적 손실, 인명 피해 등의 항목별 사전 대응 전략을 수립하여 관리하고 있습니다. <br>평판 위험은 기후변화와 관련하여 기업 이미지 타격과 법적 제재 및 갈등으로 인한 재정적 손실이 발생하는 위험으로 정의됩니다. 특히, 소비재를 주력 상품으로 하는 LG전자는 법적 제재나 분쟁에 따른 기업 이미지 하락이 매출 부진과 감소로 이어질 수 있기에 평판 위험을 주요한 영향으로 분류하고 있습니다.</p>
+				<div class="tb_row tb-row-bl keepAll_p middle pd mgt over_tbl">
+					<table>
+						<caption>전략(Strategy) 표, 리스크 구분, 리스크 내용, 재무영향, 분류, LG전자 대응 방향성</caption>
+						<colgroup>
+							<col style="width:10%">
+							<col style="width:6%">
+							<col style="width:6%">
+							<col style="width:20%">
+							<col style="width:9%">
+							<col style="width:9%">
+							<col style="width:40%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="3">리스크 구분</th>
+								<th scope="col">리스크 내용</th>
+								<th scope="col">재무영향</th>
+								<th scope="col">분류</th>
+								<th scope="col">LG전자 대응 방향성</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="6" class="pd0_p">전환 리스크<br>(Transition Risk)</th>
+								<th scope="row" rowspan="2">정책<br>(Regulation)</th>
+								<th scope="row" class="pd0_p">현행<br>(Current)</th>
+								<td class="txt_l">- 배출권 구매 비용 증가<br>- 온실가스 배출 부채 증가</td>
+								<td>High</td>
+								<td>단기</td>
+								<td class="txt_l">LG전자는 국가 탄소배출권 거래대상 기업으로 온실가스 감축 목표 달성을 위한 온실가스 배출과 에너지 사용 보고 의무를 준수하고 있습니다. 각 사업부문 및 시설관리팀에서는 기후변화로 인한 보유 자산의 위험 평가를 수행하고 있으며, 본사 안전환경담당은 평가 결과를 통해 전사적인 정책 리스크를 검토 및 관리하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="pd0_p bo_l">신규<br>(Emerging)</th>
+								<td class="txt_l">신규 정책 미대응으로 인한 사업 운영 위험 발생</td>
+								<td>High</td>
+								<td>단기</td>
+								<td class="txt_l">국내외 기후변화 관련 규제는 지속적으로 강화되는 추세에 있으며, LG전자는 다수의 해외사업장을 운영하고 있어 해외 국가에서 등장하는 새로운 규제들은 사업 전략이나 운영간 큰 위험을 초래할 수 있습니다. 이에 ESG 위원회에서는 사업 운영간 영향을 받을 수 있는 신규 정책들을 모니터링하여 지속적으로 검토 및 관리하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2" class="bo_l">법률(Legal)</th>
+								<td class="txt_l">- 법률 미준수로 인한 브랜드 이미지 하락<br>-매출 감소 및 거래 악영향</td>
+								<td>High</td>
+								<td>단기</td>
+								<td class="txt_l">기후변화 등 환경 관련 소송을 포함한 법적 문제는 LG전자의 명성과 브랜드 이미지에 심각한 영향을 미칠 수 있습니다. 이에 LG전자는 법적 요건을 충족하기 위해 ESG 위원회를 중심으로 기후변화 관련 주요 법적 위험 사항에 대해 논의하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2" class="bo_l">기술(Technology)</th>
+								<td class="txt_l">이전 및 신기술 개발 실패로 인한 지출 증가</td>
+								<td>High</td>
+								<td>장기</td>
+								<td class="txt_l">에너지 효율이 높은 저탄소 친환경 제품에 대한 고객 니즈 확대와 함께 이러한 수요를 충족하기 위한 기술 역시 빠르게 변화하고 있습니다. LG전자는 이처럼 기후변화 대응 관련 기술 이전 또는 신기술 개발의 실패로 인해 발생할 수 있는 위험 요소들을 지속적으로 관리하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2" class="bo_l">시장(Market)</th>
+								<td class="txt_l">요구 미충족으로 인한 거래 악영향</td>
+								<td>High</td>
+								<td>중기</td>
+								<td class="txt_l">최근 시장 내 고객, 바이어들로부터 탄소배출과 재생 에너지 사용에 대한 정보 공개 요구가 증가하고 있습니다. 구매자 요구사항의 미충족은 비즈니스 기회의 상실로 이어질 수 있는 위험 요소입니다. LG전자는 이러한 시장의 요구를 적극적으로 반영하고자 각 개별 사업부서에서 관련 위험 평가를 실시하고 있으며, ESG 위원회를 통해 전사 차원의 위험요소를 관리하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2" class="bo_l">평판(Reputation)</th>
+								<td class="txt_l">평판 하락으로 인한 투자유치 실패 및 거래 악영향</td>
+								<td>High</td>
+								<td>장기</td>
+								<td class="txt_l">기후변화 관련 LG전자의 평판 하락은 기후변화 대응을 중요한 투자 요소로 인식하는 투자자들의 기대에 부응하지 못하는 결과를 낳아 조직의 자본조달 능력에 악영향을 미칠 수 있습니다. 이에 LG전자는 적극적으로 기후변화 대응 활동을 추진 및 성과를 관리하고 있으며 이를 통해 대외적인 평판 위험을 관리하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2" class="pd0_p">물리 리스크<br>(Physical Risk)</th>
+								<th scope="row" colspan="2">급성(Acute)</th>
+								<td class="txt_l">자산 피해로 인한 비용 지출</td>
+								<td>Medium</td>
+								<td>단기</td>
+								<td class="txt_l">기후변화로 인한 자연재해 발생 빈도와 강도가 증가하고 있으며, 특히 열대성 사이클론과 같은 자연 재해는 단시간에 조직의 생산 시설, 건물 등 자산에 직접적인 피해를 줄 수 있습니다. LG전자는 이러한 급성 물리 위험에 대응하기 위해 각 사업장별 위험 평가를 정기적으로 수행하고 있습니다.</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2" class="bo_l">만성(Chronic)</th>
+								<td class="txt_l">사업 운용간 지출 비용 상승</td>
+								<td>Medium</td>
+								<td>장기</td>
+								<td class="txt_l">만성적인 물리적 위험은 사업 운영간 비용 상승을 초래할 수 있습니다. 예를 들어 지구온난화로 인해 LG전자 사업장 일대의 온도가 상승하면 일정한 온도 유지를 위해 시설 내 추가적인 에너지 사용이 필요하며, 이로 인해 추가적인 운영비 상승 및 탄소 배출을 초래할 수 있습니다. LG전자는 장기적인 물리적 리스크, 특히 비용 상승을 초래하는 위험 요소에 대해 개별 사업부서에서 1차적으로 관리하며, ESG 위원회를 통해 전사적 차원의 논의를 진행하고 있습니다.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="tit h4">기후변화 시나리오</p>
+				<p class="text">기후변화로 인해 발생할 수 있는 리스크와 LG전자에 미칠 수 있는 영향을 이해하기 위해 LG전자는 2100년도에 지구의 평균 온도가 2°C 또는 4°C 올라간다는 전제 하에 지구온난화 시나리오를 두 가지로 구분하여 영향도를 분석하고 각 시나리오에 맞는 대응 전략을 수립하고 있습니다.</p>
+				<div class="only_pc">
+					<div class="tb_row tb-row-bl mgt">
+						<table>
+							<caption>기후변화 시나리오 표, 항목명, 내용, LG전자 영향 및 대응</caption>
+							<colgroup>
+								<col style="width:22%">
+								<col style="width:32%">
+								<col style="width:auto">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">항목명</th>
+									<th scope="col">내용</th>
+									<th scope="col">LG전자 영향 및 대응</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">2 °C 시나리오</th>
+									<td class="txt_l">본 시나리오는 2100년도까지 인류의 화석연료 사용 등으로 인해 대기중 GHG농도를 CO<sub>2</sub>당 약 450ppm수준으로 제한하는 것입니다 (에너지 에이전시 450 시나리오) IEA<sup>1)</sup>는 지구평균기온상승 2 °C 이하 억제를 위해 2030년까지 국제사회가 신속하고도 차별화된 감축 수단을 활용할 것을 제안하고 있습니다. <br>규제적 측면에서 한국을 포함한 OECD국가들 중심으로 배출권거래제가 도입되었으며, 2020년 이후 OECD 국가 이외 주요국 (중국, 브라질, 러시아 등) 도 동참할 것으로 전망합니다. <br>또한 다양한 분야의 탄소저감을 위한 투자가 많아질 것이며 특히 효율개선, 재생에너지 및 원자력 등 화석에너지를 대체하는 에너지 발전원이 확대될 것으로 전망합니다. <br>그리고 선진국과 개도국의 탄소 저감 투자에 있어 OECD국가들 48%, 비OECD주요국 30%, 기타국가에서 18% 비중을 차지할 것으로 전망합니다.</td>
+									<td class="txt_l v_top">
+										<ul>
+											<li>- 글로벌 15여 개 국가에 위치한 LG전자의 생산지에 대한 규제 리스크가 강화될 것으로 예상(탄소세, 탄소국경조정세, 배출권거래제 등)</li>
+											<li>- 글로벌 공급망을 통해 생산되는 LG전자의 제품 원자재 가격 상승의 리스크 예상</li>
+											<li>- 에너지 효율에 대한 니즈가 높아지고, 가전제품 에너지 효율 경쟁력 확보를 위해 지속적인 R&D 투자와 신제품 출시 필요</li>
+											<li>- 재생에너지 수요 증가로 인한 LG전자의 태양광 전지 사업 활성화 기회 요소 포착</li>
+											<li>- LG전자는 2030년까지 탄소배출량 50% 감축 목표를 달성할 것이며, 이러한 목표가 IEA450 시나리오에 충분히 부합하는지 여부는 SBTi<sup>2)</sup> 를 통해 검토 예정</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">4 °C 시나리오</th>
+									<td class="txt_l">본 시나리오는 현재의 인류가 기후변화 대응 정책이나 노력이 충분치 않으며, 신속하게 도전적인 목표와 전략을 추진하지 못할 경우 야기되는 지구온난화의 결과로써 치명적인 재난을 예상할 수 있습니다. <br>특히, 4°C 시나리오에서는 지구온난화로 인한 물리 리스크에 주목할 것이며, 해수면 상승에 다른 해안지역 사업장 피해, 지역별 수자원 고갈, 심각한 풍수해 등 글로벌 생산법인 및 공급망에 미칠 수 있는 피해에 대해 면밀한 검토와 사전적 적응 능력을 향상시키는 데 많은 자원을 투입해야 할 것입니다.</td>
+									<td class="txt_l v_top">
+										<ul>
+											<li>- 글로벌 생산기지 및 공급망의 지속가능성을 위해 환경 변화 적응력을 높일 수 있는 사업 포트폴리오 점검 및 사업전략 변화 검토</li>
+											<li>- 심각한 자연재해에 따른 물리적 위험 대응 능력을 위한 투자 강화</li>
+											<li>- 2030 탄소중립(LG전자 목표) 이외 추가적인 자구적 노력 필요</li>
+											<li>- 정책 변화, 고객 인식 개선 등 사회적 변화에 기여할 수 있는 대외 커뮤니케이션 강화</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="tbl_info btm">
+							<ul>
+								<li><sup>1)</sup>IEA: International Energy Agency</li>
+								<li><sup>2)</sup>SBTi: Science Based Targets initiative</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="only_mo">
+					<div class="tb_row tb-row-bl th_g middle pd mgt">
+						<table>
+							<caption>기후변화 시나리오 표, 2 °C 시나리오, 4 °C 시나리오, 내용, LG전자 영향 및 대응</caption>
+							<colgroup>
+								<col style="width:20%">
+								<col style="width:80%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="col" colspan="2">2 °C 시나리오</th>
+								</tr>
+								<tr>
+									<th scope="row">내용</th>
+									<td class="txt_l">본 시나리오는 2100년도까지 인류의 화석연료 사용 등으로 인해 대기중 GHG농도를 CO<sub>2</sub>당 약 450ppm수준으로 제한하는 것입니다 (from Energy Agency&rsquo;s 450 Scenario) IEA<sup>1)</sup>는 지구평균기온상승 2 °C 이하 억제를 위해 2030년까지 국제사회가 신속하고도 차별화된 감축 수단을 활용할 것을 제안하고 있습니다. <br>규제적 측면에서 한국을 포함한 OECD국가들 중심으로 배출권거래제가 도입되었으며, 2020년 이후 OECD 국가 이외 주요국 (중국, 브라질, 러시아 등) 도 동참할 것으로 전망합니다. <br>또한 다양한 분야의 탄소저감을 위한 투자가 많아질 것이며 특히 효율개선, 재생에너지 및 원자력 등 화석에너지를 대체하는 에너지 발전원이 확대될 것으로 전망합니다. <br>그리고 선진국과 개도국의 탄소 저감 투자에 있어 OECD국가들 48%, 비OECD주요국 30%, 기타국가에서 18% 비중을 차지할 것으로 전망합니다.</td>
+								</tr>
+								<tr>
+									<th scope="row">LG전자 영향 및 대응</th>
+									<td class="txt_l">
+										<ul>
+											<li>- 글로벌 15여 개 국가에 위치한 LG전자의 생산지에 대한 규제 리스크가 강화될 것으로 예상(탄소세, 탄소국경조정세, 배출권거래제 등)</li>
+											<li>- 글로벌 공급망을 통해 생산되는 LG전자의 제품 원자재 가격 상승의 리스크 예상</li>
+											<li>- 에너지 효율에 대한 니즈가 높아지고, 가전제품 에너지 효율 경쟁력 확보를 위해 지속적인 R&D 투자와 신제품 출시 필요</li>
+											<li>- 재생에너지 수요 증가로 인한 LG전자의 태양광 전지 사업 활성화 기회 요소 포착</li>
+											<li>- LG전자는 2030년까지 탄소배출량 50% 감축 목표를 달성할 것이며, 이러한 목표가 IEA450 시나리오에 충분히 부합하는지 여부는 SBTi<sup>2)</sup> 를 통해 검토 예정</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="col" colspan="2">4 °C 시나리오</th>
+								</tr>
+								<tr>
+									<th scope="row">내용</th>
+									<td class="txt_l">본 시나리오는 현재의 인류가 기후변화 대응 정책이나 노력이 충분치 않으며, 신속하게 도전적인 목표와 전략을 추진하지 못할 경우 야기되는 지구온난화의 결과로써 치명적인 재난을 예상할 수 있습니다. <br>특히, 4°C 시나리오에서는 지구온난화로 인한 물리 리스크에 주목할 것이며, 해수면 상승에 다른 해안지역 사업장 피해, 지역별 수자원 고갈, 심각한 풍수해 등 글로벌 생산법인 및 공급망에 미칠 수 있는 피해에 대해 면밀한 검토와 사전적 적응 능력을 향상시키는 데 많은 자원을 투입해야 할 것입니다.</td>
+								</tr>
+								<tr>
+									<th scope="row">LG전자 영향 및 대응</th>
+									<td class="txt_l">
+										<ul>
+											<li>- 글로벌 생산기지 및 공급망의 지속가능성을 위해 환경 변화 적응력을 높일 수 있는 사업 포트폴리오 점검 및 사업전략 변화 검토</li>
+											<li>- 심각한 자연재해에 따른 물리적 위험 대응 능력을 위한 투자 강화</li>
+											<li>- 2030 탄소중립(LG전자 목표) 이외 추가적인 자구적 노력 필요</li>
+											<li>- 정책 변화, 고객 인식 개선 등 사회적 변화에 기여할 수 있는 대외 커뮤니케이션 강화</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="com-text">
+				<p class="tit">위험관리(Risk Management)</p>
+				<p class="text">LG전자의 기후변화 관련 위험은 전사 ESG 협의체 주관으로 하향식(Top-down) 및 상향식(Bottom-up)  접근 방식을 통해 파악되며, 전사 리스크 관리 프로세스에 통합 관리되고 있습니다.</p>
+				<div class="risk_man mgtL">
+					<p class="r_tit pink">상향식 식별 및 평가</p>
+					<ul class="r_box">
+						<li>LG전자는 매월 사업장별로 정기 진단을 실시해 자산 관리 기준에서 기후 관련 위험을 파악하고 평가합니다. 사업부별 에너지환경 관리팀은 연간 에너지 절감 목표 및 온실가스 배출목표를 내부안전 환경기준에 따라 수립하여 목표를 달성합니다. 매월 에너지 소비량 및 배출량을 계산하고 목표물 검토 및 이행결과 등을 통해 성과평가를 실시합니다.</li>
+						<li>LG전자 ESG 협의체는 정기적으로 기후변화 관련 단기적 위험 및 10년 동안의 분석을 통한 장기적 위험을 함께 파악하여 평가하고 있습니다. 이를 위해 시장과 최고 경영자들은 한국 ETS<sup>1)</sup>에 대한 준수 위험 및 재무 위험 분석 결과를 논의하고, 제안된 보고서에 따른 리스크 완화 방안을 협의하였습니다. 협의체에서는 2030년까지 한국 ETS에 대한 10년 이상의 중장기 전망과 관련 리스크를 평가하고 있으며, 보다 체계적이고 지속가능한 전략을 수립하기 위해 2018년부터 2030년까지의 온실가스 감축 중장기 전략을 수립하였습니다. ESG 협의체에서 논의된 주요 쟁점은 CEO 및 주요 경영진에게 보고되며, 이후 추후 방향과 최종 결정이 내려집니다. <p class="footnotes"><sup>1)</sup>ETS: Emissions Trading Systems</p></li>
+					</ul>
+					<p class="r_tit">하향식 위험 식별 및 평가</p>
+				</div>
+			</div>
+
+			<div class="com-text">
+				<p class="tit">관리지표 및 목표(Metrics and Targets)</p>
+				<p class="text">LG전자는 기후변화 대응을 위해 에너지 사용량, 온실가스 배출량을 지속적으로 관리하고 있으며, 중장기 목표를 설정하여 이를 달성하기 위해 노력하고 있습니다.</p>
+				<p class="tit h4">1) 조직 에너지 사용량</p>
+				<div class="tb_row tb-row-bl middle pd mgt over_tbl">
+					<div class="tbl_info rt abs2">(단위: TJ)</div>
+					<table>
+						<caption>조직 에너지 사용량 표, 구분, 2020년, 2019년, 2018년</caption>
+						<colgroup>
+							<col style="width:28%">
+							<col style="width:12%">
+							<col style="width:20%">
+							<col style="width:20%">
+							<col style="width:20%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">구분</th>
+								<th scope="col">2020년</th>
+								<th scope="col">2019년</th>
+								<th scope="col">2018년</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="7">재생 불가능 연료</th>
+								<th scope="row">LNG도시가스(한국)</th>
+								<td>879</td>
+								<td>827</td>
+								<td>1,243</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">LNG도시가스(해외)</th>
+								<td>741</td>
+								<td>772</td>
+								<td>538</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">석탄(한국)</th>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">석탄(해외)</th>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">기타(한국)</th>
+								<td>74</td>
+								<td>72</td>
+								<td>117</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">기타(해외)</th>
+								<td>658</td>
+								<td>534</td>
+								<td>441</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">소계</th>
+								<td class="bold_m">2,352</td>
+								<td class="bold_m">2,205</td>
+								<td class="bold_m">2,339</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="5">재생에너지</th>
+								<th scope="row">태양열</th>
+								<td>5.5</td>
+								<td>5.4</td>
+								<td>0.7</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">풍력</th>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">바이오메스</th>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">기타</th>
+								<td>79</td>
+								<td>62</td>
+								<td>16.7</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">소계</th>
+								<td class="bold_m">84.5</td>
+								<td class="bold_m">67.4</td>
+								<td class="bold_m">17.5</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="4">에너지 구매</th>
+								<th scope="row">전기(한국)</th>
+								<td>3,239</td>
+								<td>2,946</td>
+								<td>3,902</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">전기(해외)</th>
+								<td>2,643</td>
+								<td>2,664</td>
+								<td>2,315</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">스팀(한국)</th>
+								<td>394</td>
+								<td>395</td>
+								<td>450</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">스팀(해외)</th>
+								<td>3</td>
+								<td>6</td>
+								<td>35</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="footnotes">
+					<ul>
+						<li>
+							<span>※ 검증 대상 사업장</span>
+							<ul>
+								<li>- 한국 :  LG전자 운영 상 통제 하에 있는 한국 사업장</li>
+								<li>- 해외:  LG전자 해외 생산 사업장(32개)</li>
+							</ul>
+						</li>
+						<li>※ 검증 대상 에너지: 사업장 내의 연소 설비 사용 및 외부 공급 전력, 열 사용</li>
+						<li>※ 에너지 사용량 계산: 순발열량 기준이며 스팀은 한국 폐열회수 스팀사용량 포함</li>
+						<li>※ 검증 현황: 제3자 검증 완료(냉매 탈루 배출량 제외)</li>
+						<li>※ 2019년 해외데이터 검증지연으로 2021년 최종확인되어 정정공시함</li>
+					</ul>
+				</div>
+				<p class="tit h4">2) 온실가스 배출량(Scope 1, 2)</p>
+				<div class="tb_row tb-row-bl middle pd mgt">
+					<div class="tbl_info rt abs2">(단위: 천 tCO<sub>2</sub>eq)</div>
+					<table>
+						<caption>온실가스 배출량(Scope 1, 2) 표, 구분, 2020년, 2019년, 2018년</caption>
+						<colgroup>
+							<col style="width:28%">
+							<col style="width:12%">
+							<col style="width:20%">
+							<col style="width:20%">
+							<col style="width:20%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">구분</th>
+								<th scope="col">2020년</th>
+								<th scope="col">2019년</th>
+								<th scope="col">2018년</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="2">직접 온실가스 배출량 (Scope1)</th>
+								<th scope="row">한국</th>
+								<td>294</td>
+								<td>466</td>
+								<td>650</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">해외</th>
+								<td>146</td>
+								<td>137</td>
+								<td>135</td>
+							</tr>
+							<tr>
+								<th scope="row" rowspan="2">간접 온실가스 배출량 (Scope2)</th>
+								<th scope="row">한국</th>
+								<td>382</td>
+								<td>385</td>
+								<td>391</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">해외</th>
+								<td>472</td>
+								<td>481</td>
+								<td>461</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">총계(Scope1 + Scope2)</th>
+								<td>1,294</td>
+								<td>1,469</td>
+								<td>1,637</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">온실가스 배출 집약도(원단위)</th>
+								<td>2.05/ 천억 원</td>
+								<td>2.12/ 천억 원</td>
+								<td>2.68/ 천억 원</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="tbl_info btm">
+						<ul>
+							<li>
+								<span>※ 검증 대상 사업장</span>
+								<ul>
+									<li>- 한국 :  LG전자 운영 상 통제 하에 있는 한국 사업장</li>
+									<li>- 해외 :  LG전자 해외 생산 사업장(32개)</li>
+								</ul>
+							</li>
+							<li>
+								<span>※ 검증 원칙과 기준</span>
+								<ul>
+									<li>- 한국 : 온실가스 배출권 거래제의 배출량 보고 및 인증에 관한 지침, 온실가스 거래제 운영을 위한 검증지침</li>
+									<li>- 해외 : ISO 14064-3:2006 (온실가스 – 제 3부 : 온실가스 선언에 대한 타당성 평가 및 검증을 위한 사용 규칙 및 지침)</li>
+								</ul>
+							</li>
+							<li>
+								<span>※ 검증 방식</span>
+								<ul>
+									<li>- 한국 : LG전자 온실가스 배출량 및 에너지 사용량 명세서,  LG전자 온실가스 데이터 관리 및 수집, 배출량 산정 및 보고 프로세스</li>
+									<li>- 해외 : LG전자 온실가스 배출량 보고서,  LG전자 온실가스 데이터 관리 및 수집, 배출량 산정 보고 및 프로세스</li>
+								</ul>
+							</li>
+							<li>※ 2019년 제3자 해외 배출량 검증과정에서 데이터 수정사항을 발행하여 원단위 정정공시함</li>
+						</ul>
+					</div>
+				</div>
+
+				<p class="tit h4">3) 온실가스 배출량(Scope 3)</p>
+				<div class="tb_row tb-row-bl middle pd mgt">
+					<div class="tbl_info rt abs2">(단위: tCO<sub>2</sub>eq)</div>
+					<table>
+						<caption>온실가스 배출량(Scope 3) 표, 구분, 2020년, 2019년, 2018년</caption>
+						<colgroup>
+							<col style="width:28%">
+							<col style="width:12%">
+							<col style="width:20%">
+							<col style="width:20%">
+							<col style="width:20%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">구분</th>
+								<th scope="col">2020년</th>
+								<th scope="col">2019년</th>
+								<th scope="col">2018년</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="3">간접 온실가스 배출량 (Scope3)</th>
+								<th scope="row">출장</th>
+								<td>20,692</td>
+								<td>58,337</td>
+								<td>60,853</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">사용단계</th>
+								<td>58,976,000</td>
+								<td>33,290,000</td>
+								<td>36,185,980</td>
+							</tr>
+							<tr>
+								<th scope="row" class="bo_l">사내협력사(한국)</th>
+								<td>5,067</td>
+								<td>9,137</td>
+								<td>6,319</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="tbl_info btm">
+						<ul>
+							<li>※ 검증 현황: 임차건물, 임직원 출장 배출량 제3자 검증완료</li>
+							<li>※ 임차건물에 대한 배출량 삭제사유: CDP 검증항목에서 제외함</li>
+						</ul>
+					</div>
+				</div>
+
+				<p class="tit h4">4) 2030 탄소중립 목표</p>
+				<ul class="bull">
+					<li>
+						<span class="bold">2030년까지 17년 배출량 대비 50% 절대량 감축</span>
+						<ul>
+							<li>공정가스 감축을 위해 감축설비 투자 지속(최초 투자시점은 2015년이었으며, 매년 투자 규모 늘리고 있음)</li>
+							<li>향후 SF6 사용량 증가에 따른 설비 투자 지속 계획(현재 SF6(F가스) 감축 효율은 매년 90% 이상 유지 중)</li>
+						</ul>
+					</li>
+					<li>
+						<span class="bold">UN 감축 프로젝트 참여를 통한 온실가스 저감</span>
+						<ul>
+							<li>인도에 냉장고/에어컨 등 LG전자의 고효율 제품을 확대 보급하여, 사용단계 배출량 감축 기여</li>
+							<li>UN으로부터 감축 실적에 대한 인증 및 인증서 확보 중</li>
+						</ul>
+					</li>
+					<li>
+						<span class="bold">재생에너지 확대</span>
+						<ul>
+							<li>2050년까지 재생에너지 100% 전환할 계획<br>특히, LG전자의 북미 지역 전체 2021년 내 100% 전환, 글로벌 생산법인은 2025년까지 100% 전환(한국 제외)</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="sustainable-download">
+		<p class="tit">GRI, SASB, TCFD index 다운로드</p>
+		<p class="desc">GRI, SASB, TCFD index 페이지의 내용을 한번에 확인하세요~</p>
+		<a href="#" class="btn"><span>PDF 다운로드</span></a>
+	</div>
+</div>

@@ -3,15 +3,32 @@
 <script type="text/javascript">
 	google.charts.load("current", {packages:["corechart"]});
 	google.charts.setOnLoadCallback(drawChart);
-	var data, options, chart;
+	var dataDonut, optionsDonut, chartDonut;
+	var dataColumn, optionsColumn, chartColumn;
 	function drawChart() {
-		data = google.visualization.arrayToDataTable([
-			['',  'Amount'],
-			['2018',  656],
-			['2019',  402],
-			['2020',  457]
+		dataColumn = google.visualization.arrayToDataTable([
+			['', '', { role: 'annotation' } ,'', { role: 'annotation' }],
+			['2020', 457, ' 457 ', null, null],
+			['2019', null, null, 656, ' 656 '],
+			['2018', null, null, 402, ' 402 ']
 		]);
-		options = {
+		optionsColumn = {
+			colors: ['#e81953', '#000000'],
+			vAxis:{minValue:'0', maxValue: '700'},
+			chartArea: {width: '90%',right:'0%', height: '80%',top:'4%'},
+			bar: { groupWidth: '20%' },
+			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
+			legend: {position: 'none'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		dataDonut = google.visualization.arrayToDataTable([
+			['',  'Amount'],
+			['민원',  350],
+			['부정비리',  52],
+			['기타',  55]
+		]);
+		optionsDonut = {
 			pieHole: 0.6,
 			pieSliceText: 'value',
 			chartArea: {width: '100%', height: '80%',top:'4%'},
@@ -28,37 +45,49 @@
 			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16',fontName:'Noto Sans'}}
 		};
         checkSize();
-		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-		chart.draw(data, options);
+		chartColumn = new google.visualization.ColumnChart(document.getElementById('chartColumn'));
+		chartDonut = new google.visualization.PieChart(document.getElementById('chartDonut'));
+		chartColumn.draw(dataColumn, optionsColumn);
+		chartDonut.draw(dataDonut, optionsDonut);
 	}
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			options.pieHole=0.6;
-			options.legend.textStyle.fontSize="12";
-			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
+			optionsDonut.pieHole=0.6;
+			optionsDonut.legend.textStyle.fontSize="12";
+			optionsDonut.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
+			optionsColumn.fontSize="12";
+			optionsColumn.bar.groupWidth= '25%';
 		}
 		else{
-			options.pieHole=0.56;
-			options.legend.textStyle.fontSize="16";
-			options.pieSliceTextStyle.fontSize="16";
+			optionsDonut.pieHole=0.56;
+			optionsDonut.legend.textStyle.fontSize="16";
+			optionsDonut.pieSliceTextStyle.fontSize="16";
+			optionsColumn.fontSize="16";
+			optionsColumn.bar.groupWidth= '18%';
 		}
 	}
 	$(window).resize(function() {
 		checkSize();
-		chart.draw(data, options);
 		setTimeout(function(){ 
-			chart.draw(data, options);
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut.draw(dataDonut, optionsDonut);
 		}, 100);
 	});
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:520px;height:370px;margin:0 auto;}
-	.googlechart-wrap .chartarea{width:100%;height:100%;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;font-size:24px;font-weight:bold;}
+	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
+	.googlechart-wrap .chartColumn {height:480px;}
+	.googlechart-wrap .chartDonut {height:370px;}
+	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;line-height: 1.2;}
+	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
+	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:71.11vw}
-		.googlechart-wrap .overlayarea{font-size:5vw;}
+		.googlechart-wrap{width:100%;}
+		.googlechart-wrap .chartColumn {height:53vw;}
+		.googlechart-wrap .chartDonut {height:71.11vw}
+		.googlechart-wrap .overlayarea .small {font-size:3.5vw;}
+		.googlechart-wrap .overlayarea .big {font-size:6.25vw;font-weight:bold;}
 	}
 </style>
 <div class="breadcrumb">
@@ -210,6 +239,10 @@
 		</ul>
 		<p class="tit h4">1) 위반행위 제보 접수 추이</p>
 		<div class="graph ofn">
+			<span class="txt_rt">(단위: 건)</span>
+			<div class="googlechart-wrap">
+				<div class="chartarea chartColumn" id="chartColumn"></div>
+			</div>
 			<!-- 구글차트 -->
 		</div>
 		<div class="tb_row tb-row-bl">
@@ -229,36 +262,30 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>402</td>
-						<td>656</td>
 						<td>457</td>
+						<td>656</td>
+						<td>402</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p class="tit h4">2) 2020년 위반행위 제보 유형</p>
 		<div class="graph ofn">
-			<span class="only_pc txt_rt">(단위: 건)</span>
+			<span class="txt_rt">(단위: 건)</span>
 			<div class="googlechart-wrap">
-				<div class="chartarea" id="donutchart"></div>
-				<div class="overlayarea">위반행위 제보 유형</div>
+				<div class="chartarea chartDonut" id="chartDonut"></div>
+				<div class="overlayarea">
+					<span class="small">위반 행위<br>제보 유형</span>
+					<span class="big">457건</span>
+				</div>
 			</div>
 			<div class="blind">
-				<span>위반행위 제보 유형</span>
+				<span>위반 행위 제보 접수 추이</span>
 				<strong>457건</strong>
 				<ul>
-					<li>
-						<span>2020</span>
-						<p>457</p>
-					</li>
-					<li>
-						<span>2019</span>
-						<p>656</p>
-					</li>
-					<li>
-						<span>2018</span>
-						<p>402</p>
-					</li>
+					<li>민원(고객불만, 협력회사 고충) 350건</li>
+					<li>부정비리 52건</li>
+					<li>기타(HR 위반, 불공정거래 등) 55 건</li>
 				</ul>
 			</div>
 		</div>
