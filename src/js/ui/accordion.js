@@ -104,15 +104,15 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 var id = core.string.random(10);
 
                 $btn.attr({
-                    // 'id': 'accrod_toggle_' + id, 210809 BTOCSITE-4154 뷰저블 쿼리셀렉터 이슈 해결
-                    // 'aria-controls': 'accord_content_' + id,  210809 BTOCSITE-4154 뷰저블 쿼리셀렉터 이슈 해결
+                    'id': 'accrod_toggle_' + id,
+                    'aria-controls': 'accord_content_' + id,
                     'aria-expanded': $btn.attr('aria-expanded') === 'true'
                 }).parent().attr('role', 'heading');
 
                 $content.attr({
-                    // 'id': 'accord_content_' + id, 210809 BTOCSITE-4154 뷰저블 쿼리셀렉터 이슈 해결
-                    'role': 'region'
-                    // 'aria-labelledby': 'accord_toggle_' + id 210809 BTOCSITE-4154 뷰저블 쿼리셀렉터 이슈 해결
+                    'id': 'accord_content_' + id,
+                    'role': 'region',
+                    'aria-labelledby': 'accord_toggle_' + id
                 });
             });
         },
