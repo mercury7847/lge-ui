@@ -38,6 +38,7 @@
 		}
 		// 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
 	}
+	// 20210809 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
 	&.bg-type {
 		.flag {
 			height:24px;
@@ -54,13 +55,17 @@
 		}
 	}
 	&.bar-type {
+		margin-left: -10px;
 		.flag {
 			min-width: auto;
-			margin: 0;
+			margin:0;
 			padding: 0;
 			border: 0;
 			font-size: $font-x-small;
 			line-height: 22px;
+			&:first-child{
+				margin-left: 10px;
+			}
 			&:not(:first-child) {
 				&:before {
 					display: inline-block;
@@ -72,6 +77,22 @@
 					content: '';
 				}
 			}
+			&.cardDiscount{
+				background-color: $color-primary;
+				font-weight: 500;
+				color: #fff;
+				padding: 0 5px;
+				border-radius: 2px;
+				height: 18px;
+				line-height: 18px;
+				&:before {
+					display: none !important;
+				}
+			}
+			&+.cardDiscount{
+				margin-left:10px;
+			}
+			// 20210809 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
 		}
 	}
 	&.box-type {
@@ -107,49 +128,49 @@
 }
 
 /* 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정*/
-
-.event-flag-wrap{
-	display: flex;
-	align-items: center;
-	&.bar-type {
-		.flag {
-			min-width: auto;
-			margin: 0;
-			padding: 0;
-			border: 0;
-			@include font-x-small;
-			color:#da0f47;
-			line-height: 22px;
-			margin-right: 10px;
-			font-weight: 700;
-			&:not(:first-child) {
-				&:before {
-					display: inline-block;
-					width: 1px;
-					height: 10px;
-					margin: 0 6px;
-					background-color: $color-border;
-					vertical-align: -1px;
-					content: '';
-				}
-			}
-			&.cardDiscount {
-				background-color: #da0f4d;
-				font-weight: 500;
-				color: #fff;
-				padding: 0 5px;
-				border-radius: 2px;
-				height: 18px;
-				display: flex;
-				align-items: center;
-				font-size: $font-x-small;
-				&::before {
-					display: none;
-				}
-			}
-		}
-	}
-}
+//
+//.event-flag-wrap{
+//	display: flex;
+//	align-items: center;
+//	&.bar-type {
+//		.flag {
+//			min-width: auto;
+//			margin: 0;
+//			padding: 0;
+//			border: 0;
+//			@include font-x-small;
+//			color:#da0f47;
+//			line-height: 22px;
+//			margin-right: 10px;
+//			font-weight: 700;
+//			&:not(:first-child) {
+//				&:before {
+//					display: inline-block;
+//					width: 1px;
+//					height: 10px;
+//					margin: 0 6px;
+//					background-color: $color-border;
+//					vertical-align: -1px;
+//					content: '';
+//				}
+//			}
+//			&.cardDiscount {
+//				background-color: #da0f4d;
+//				font-weight: 500;
+//				color: #fff;
+//				padding: 0 5px;
+//				border-radius: 2px;
+//				height: 18px;
+//				display: flex;
+//				align-items: center;
+//				font-size: $font-x-small;
+//				&::before {
+//					display: none;
+//				}
+//			}
+//		}
+//	}
+//}
 /* 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정*/
 // design flag
 .big-flag {
