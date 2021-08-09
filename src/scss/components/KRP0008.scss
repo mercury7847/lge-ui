@@ -900,7 +900,7 @@
             .notice-wrap {
                 margin-top:32px;
                 @include mobile{
-                    margin-top:24px;
+                    margin:24px 0; // BTOCSITE-1024 2021-08-09 수정
                 }
                 .notice-box {
                     a {
