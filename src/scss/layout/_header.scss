@@ -986,6 +986,13 @@
                         padding-right: 18px;
                         @include font-small;
                         color: #111;
+                        
+                        //BTOCSITE-1937
+                        &:hover, &:focus {
+                            @include pc {
+                                text-decoration: underline;
+                            }
+                        }
                         &[target='_blank'] {
                             background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
                             @include mobile {
@@ -1102,7 +1109,7 @@
                 white-space: normal;
                 .text {
                     font-weight: 700;
-                    @include font-medium;
+                    @include font-large; //BTOCSITE-1937
                     @include textEllipsisClamp(2);
                 }
             }
@@ -1677,7 +1684,7 @@
     &.swiper-container {
         text-align: left;
         max-width:1760px;
-        margin:0 auto;
+        margin:0 auto 6px;
         padding:25px 40px 0;
         touch-action:pan-y;
         position:relative;
@@ -1730,6 +1737,7 @@
             &.on {
                 a {
                     color:#000;
+                    font-weight:700;
                 }
                 &:before {
                     content:"";
