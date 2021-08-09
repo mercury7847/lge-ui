@@ -80,10 +80,10 @@ var lls = {
             slidesPerView:1,
             observer: true,
             observeParents: true,
-            // autoplay: {
-            //     delay: 5000,
-            //     disableOnInteraction: false
-            // },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
@@ -97,17 +97,18 @@ var lls = {
                 init: function(swiper){
                     $btnPlay.addClass('stop');
                 },
-                slideChange: function(swiper){
-                    var $currentSlide = $(swiper.slides[swiper.activeIndex]);
-                    var $flag = $currentSlide.find('.hero-item-flag');
-                    var liveStartTime = $flag.attr('data-live-start')
-                    var liveEndTime = $flag.attr('data-live-end');
+                // slideChange: function(swiper){
+                //     var $currentSlide = $(swiper.slides[swiper.activeIndex]);
+                //     var $flag = $currentSlide.find('.hero-item-flag');
+                //     var liveStartTime = $flag.attr('data-live-start')
+                //     var liveEndTime = $flag.attr('data-live-end');
                     
-                    clearInterval(liveTid)
-                    liveTid = setInterval(function(){
-                        liveCheck($currentSlide, liveStartTime, liveEndTime)
-                    }, speed)
-                }
+                //     liveCheck($currentSlide, liveStartTime, liveEndTime)
+                //     clearInterval(liveTid)
+                //     liveTid = setInterval(function(){
+                //         liveCheck($currentSlide, liveStartTime, liveEndTime)
+                //     }, speed)
+                // }
             }
         });
 
