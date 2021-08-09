@@ -7,6 +7,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .only_pc > img {display:block; max-width:100%; margin:0 auto}
 .only_mo > img {display:block; width:100%; max-width:100%; margin:0 auto}
 .company .mg0 {margin:0!important}
+.company .mt12 {margin-top:12px!important}
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
 .company .mt30 {margin-top:30px!important}
@@ -15,6 +16,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .mt40 {margin-top:40px!important}
 .company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
+.company .com-title + .com-text::before {content:'';display:block; position:absolute; top:0; width:calc(100% - 80px); height:1px; background-color:#dddddd}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
 .company .com-text.pt60 {padding-top:0}
@@ -454,8 +456,12 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .esgWay_vision_subs {display:flex; justify-content:space-between; max-width:912px; margin:0 auto}
 .company .esgWay_vision_subs .before {display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .before .box + .box {margin-top:12px}
 .company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px}
-.company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+.company .esgWay_vision_subs .before .box.goal {position:relative}
+.company .esgWay_vision_subs .before .box.goal::before {content:''; display:block; position:absolute; width:0; height:0; top:-180px; left:calc(50% - 8px); border-bottom:10px solid #aaa; border-left:8px solid transparent; border-right:8px solid transparent}
+.company .esgWay_vision_subs .before .box.goal::after {content:''; display:block; position:absolute; width:1px; height:168px; top:-170px; left:calc(50% - 0.5px); background-color:#aaa}
+.company .esgWay_vision_subs .before .box.goal .e_tit {background-color:#000; border-radius:8px 8px 0 0}
 .company .esgWay_vision_subs .before .box .cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision_subs .after {position:relative; display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
 .company .esgWay_vision_subs .after::before {content:''; display:block; position:absolute; width:0; height:0; top:calc(50% - 110px); left:-76px; border-left:30px solid #f4f4f4; border-top:110px solid transparent; border-bottom:110px solid transparent}
@@ -908,7 +914,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
 .popup-wrap.popup-company .pop-conts.no-footer {margin-bottom:48px; padding-bottom:0}
 .popup-wrap.popup-company .pop-conts table th,
-.popup-wrap.popup-company .pop-conts table td {padding:24px 26px}
+.popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd}
 
 /* 아코디언 영역 */
 .company .tit + .accordion-wrap {margin-top:24px}
@@ -923,6 +929,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap > ul > .lists .noCont .tit {font-size:20px; line-height:1.5; font-weight:500}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont {padding-left:60px; padding-right:60px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea {padding:40px 0; border-top:1px solid #000; color:#000}
+.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img {border-radius:8px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_pc {margin-top:30px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea img.only_mo {margin-top:15px}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea + .txtArea {padding-top:0; border-top:0}
@@ -1006,9 +1013,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {display:block; max-width:576px; margin:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {display:block; max-width:576px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 ul.thumb_name {display:flex; justify-content:space-between; max-width:576px; margin:0 auto; padding:0 3%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {margin-top:12px; font-size:18px; line-height:28px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px; width:100%}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {border-radius:8px; background-color:#f4f4f4}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {max-width:510px; width:100%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {padding:40px; border-radius:8px; background-color:#f4f4f4}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {display:block; max-width:510px; width:100%; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 6%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
@@ -1039,7 +1049,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li + li {margin-top:15px}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li .thmb {width:100%; padding-bottom:48%; border-radius:8px 8px 0 0; background:#ddd url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100% / contain; overflow:hidden}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li:nth-child(1) .thmb {width:100%; height:139px; border-radius:8px 8px 0 0; background:#ddd url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100% / contain; overflow:hidden}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li:nth-child(2) .thmb {width:100%; height:139px; border-radius:8px 8px 0 0; background:#ddd url(/kr/images/company/sustainable/img-balancedGrowth_product_02.png) no-repeat 50% 100% / contain; overflow:hidden}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li:nth-child(3) .thmb {width:100%; height:139px; border-radius:8px 8px 0 0; background:#ddd url(/kr/images/company/sustainable/img-balancedGrowth_product_03.png) no-repeat 50% 100% / contain; overflow:hidden}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li:nth-child(4) .thmb {width:100%; height:139px; border-radius:8px 8px 0 0; background:#ddd url(/kr/images/company/sustainable/img-balancedGrowth_product_04.png) no-repeat 50% 100% / contain; overflow:hidden}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li .name {position:relative; padding:15px 20px; border:1px solid #ddd; border-radius:0 0 8px 8px; background-color:#fff; overflow:hidden}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li .name p {padding-right:20%; font-size:16px; font-weight:bold; line-height:24px; word-break:keep-all}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pop_box > ul > li .name button {position:absolute; right:20px; top:calc(50% - 12px); width:24px; height:24px; background:url(/kr/images/company/icon/ico-tooltip_b_black.svg) no-repeat center; background-size:24px 24px}
@@ -1170,11 +1183,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb-col.keepAll_p table td {word-break:keep-all}
 
 .tb_row.thmb .tbl_thumb > ul {display:flex; background-color:#f4f4f4}
-.tb_row.thmb .tbl_thumb > ul > li {flex:1; height:220px; margin:20px 20px 0}
-.tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%}
-.tb_row.thmb .tbl_thumb > ul > li:nth-child(3) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_02.png) no-repeat 50% 100%}
-.tb_row.thmb .tbl_thumb > ul > li:nth-child(4) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_03.png) no-repeat 50% 100%}
-.tb_row.thmb .tbl_thumb > ul > li:nth-child(5) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_04.png) no-repeat 50% 100%}
+.tb_row.thmb .tbl_thumb > ul > li {flex:1; height:200px}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%; background-size:contain}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(3) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_02.png) no-repeat 50% 100%; background-size:contain}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(4) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_03.png) no-repeat 50% 100%; background-size:contain}
+.tb_row.thmb .tbl_thumb > ul > li:nth-child(5) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_04.png) no-repeat 50% 100%; background-size:contain}
 .tb_row.thmb table {margin-top:0!important}
 .tb_row.thmb table::before {display:none}
 .tb_row.thmb table thead th {background-color:#da0f47; color:#fff; border:0}
@@ -1248,6 +1261,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .graph.lgway1 > .only_pc {display:none!important}
     .company .graph.lgway1 > .only_mo {display:block!important; width:100%; max-width:508px; margin:0 auto}
+
+    .company .esgWay_vision_subs .before .box.goal::before {top:-152px}
+    .company .esgWay_vision_subs .before .box.goal::after {height:140px; top:-142px}
 }
 
 /* 모바일 */
@@ -1360,6 +1376,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {max-width:100%; width:100%}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {max-width:100%; width:100%}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {font-size:12px; line-height:20px}
 
     /* 테이블 */
     .company .over_tbl {overflow-x:scroll; overflow-y:hidden}
@@ -1790,7 +1807,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .esgWay_vision_subs .before {width:100%}
     .company .esgWay_vision_subs .before .box .e_tit {height:48px; font-size:15px}
     .company .esgWay_vision_subs .before .box + .box {margin-top:12px}
-    .company .esgWay_vision_subs .before .box:last-of-type .e_tit {background-color:#000; border-radius:8px 8px 0 0}
+    .company .esgWay_vision_subs .before .box.goal {margin-top:30px}
+    .company .esgWay_vision_subs .before .box.goal::before {top:-24.5px; left:calc(50% - 6px); border-bottom:6.5px solid #aaa; border-left:6px solid transparent; border-right:6px solid transparent}
+    .company .esgWay_vision_subs .before .box.goal::after {height:18px; top:-18px}
     .company .esgWay_vision_subs .before .box .cont {padding:11px 15px 11px 28px}
     .company .esgWay_vision_subs .after {width:100%; margin-top:20px; padding-top:30px}
     .company .esgWay_vision_subs .after::before {top:0; left:calc(50% - 55px); border-top:15px solid #f4f4f4; border-left:55px solid transparent; border-right:55px solid transparent; border-bottom:0}
