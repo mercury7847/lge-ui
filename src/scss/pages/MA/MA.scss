@@ -27,24 +27,16 @@
 }
 // BTOCSITE-740 start
 .only-mobile{
-
 	display:none;
-
 	@include mobile {
-
 		display:block;		
-
 	}
 }
 
 .only-desktop{
-
 	display:block;
-	
 	@include mobile {
-
 		display:none;		
-
 	}
 }
 // BTOCSITE-740 end
@@ -171,19 +163,19 @@ img{
 			}
 			.img {
 				position:relative;
-				&.only-mobile{
-					display:none;
-					@include mobile {
-						display:block;		
-					}
-				}
+				// &.only-mobile{
+				// 	display:none;
+				// 	@include mobile {
+				// 		display:block;		
+				// 	}
+				// }
 				
-				&.only-desktop{
-					display:block;
-					@include mobile {
-						display:none;		
-					}
-				}
+				// &.only-desktop{
+				// 	display:block;
+				// 	@include mobile {
+				// 		display:none;		
+				// 	}
+				// }
 				// BTOCSITE-740 end
 				img {
 					position:absolute;
@@ -208,6 +200,12 @@ img{
 				background-position:center center;
 				background-repeat:no-repeat;
 				background-size:cover;
+				&.only-desktop{
+					display:block !important;		
+				}
+				&.only-mobile{
+					display:none !important;
+				}
 				&.video {
 					overflow: hidden;
 					// padding: 0 30px;
@@ -216,6 +214,7 @@ img{
 						padding: 0 0px;
 						width: 100% !important;
 						margin-left: 0 !important;
+						height: auto !important;
 						video {
 							width: 100%;
 						}
@@ -278,13 +277,19 @@ img{
 					height: auto !important;
 					margin: 0 !important;
 					overflow: hidden;
+					&.only-desktop{
+						display:none !important;		
+					}
+					&.only-mobile{
+						display:block !important;
+					}
 					&.video {
 						// position: static;
-						height: 100% !important;
+						// height: auto !important;
 						// min-height: 300px !important;
 						video {
 							position: relative !important;
-							height: 100%;
+							height: auto;
 							top: 0 !important;
 							left: 0 !important;
 							transform: none !important;
@@ -1285,12 +1290,12 @@ img{
 				}
 				.img {
 					width: 100% !important;
-					height: auto !important;
+					height: 100% !important;
 					margin: 0 !important;
 					overflow: hidden;
 					&.video {
 						// position: static;
-						height: 100% !important;
+						// height: 100% !important;
 						// min-height: 300px !important;
 						video {
 							position: relative !important;
@@ -1298,6 +1303,9 @@ img{
 							top: 0 !important;
 							left: 0 !important;
 							transform: none !important;
+						}
+						img {
+							height: 100% !important;
 						}
 					}
 					&:before {
