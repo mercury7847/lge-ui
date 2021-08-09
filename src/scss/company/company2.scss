@@ -1,9 +1,12 @@
 @charset "UTF-8";
 
+img {image-rendering:-webkit-optimize-contrast; transform:translateZ(0); backface-visibility:hidden}
 .only_pc {display:block!important}
 .only_mo {display:none!important}
 img.only_pc {max-width:100%; margin:0 auto}
 img.only_mo {width:100%; max-width:100%; margin:0 auto}
+img.m327 {max-width:327px!important}
+img.m383 {max-width:383px!important}
 .only_pc > img {display:block; max-width:100%; margin:0 auto}
 .only_mo > img {display:block; width:100%; max-width:100%; margin:0 auto}
 .company .mg0 {margin:0!important}
@@ -26,7 +29,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .text > a {text-decoration:underline}
 
 /* search 서치 검색 */
-.company .cmp_search {position:relative; max-width:1380px; margin:48px auto 0; z-index:50}
+.company .cmp_search {display:none; position:relative; max-width:1380px; margin:48px auto 0; z-index:50}
 .company .cmp_search .cmp_search_inner {position:relative; padding:40px 0; border-radius:8px; background-color:#f4f4f4}
 .company .cmp_search .cmp_sch_wrap {max-width:800px; margin:0 auto; border:1px solid #ddd; border-radius:8px; background-color:#fff; overflow:hidden}
 .company .cmp_search .cmp_sch_wrap .cmp_sch_inp_wrap {position:relative}
@@ -136,7 +139,6 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .tooltipArea.md_moArea .tooltips .tooltip-wrap .tooltip-box .text > strong {display:block; margin-bottom:6px}
 
 .company .tit + .graph {margin-top:50px}
-.company .graph.ofn {padding-top:40px}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
 .company .graph.ofn img.only_mo {padding-left:19px}
 .company ul.ofn_links {display:flex; flex-wrap:wrap; margin:6px 0}
@@ -351,6 +353,7 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 
 .company .compGram img.only_pc + img.only_pc {margin-top:40px}
 .company .compGram img.only_mo + img.only_mo {margin-top:20px}
+.company .compGram img {border-radius:0!important}
 .company .compGrp img {display:block; width:383px; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
 .company .hone::before {content:''; display:block; position:absolute; width:3px; height:3px; top:10.5px; left:0; border-radius:50%; background-color:#000}
@@ -410,7 +413,9 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .board-view-wrap .btnArea {margin-top:60px}
 
 .company .comp_wrap {position:relative; display:flex}
-.company .comp_wrap img {display:block; max-width:327px; height:210px; margin:24px 30px 0 0; border-radius:8px}
+.company .comp_wrap img {display:block; width:328px; max-height:210px; margin:24px 30px 0 0; border-radius:8px}
+.company .comp_wrap > .text {width:calc(100% - 352px)}
+.company .comp_wrap > .textArea {width:calc(100% - 352px)}
 
 .company .ceo_msg .text {margin-top:0; font-size:18px; line-height:28px}
 .company .ceo_msg .msg_box {margin:58px 0; padding:58px; border:1px solid #ddd; border-radius:8px}
@@ -422,7 +427,8 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .ceo_sign img {display:inline-block}
 .company .esgWay_wrap {position:relative}
 .company .esgWay_wrap::after {content:''; display:block; clear:both}
-.company .esgWay_wrap img {float:left; display:block; max-width:327px; height:210px; margin-right:30px; border-radius:8px}
+.company .esgWay_wrap img {float:left; display:block; width:328px; max-height:210px; margin-right:30px; border-radius:8px}
+.company .esgWay_wrap > .text {width:calc(100% - 352px)}
 .company .esgWay_wrap .text + .text {margin-top:24px}
 .company .esgWay_vision .titArea {margin-top:24px}
 .company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
@@ -457,10 +463,14 @@ img.only_mo {width:100%; max-width:100%; margin:0 auto}
 .company .esgWay_vision_subs {display:flex; justify-content:space-between; max-width:912px; margin:0 auto}
 .company .esgWay_vision_subs .before {display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
 .company .esgWay_vision_subs .before .box + .box {margin-top:12px}
-.company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px}
+.company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px; line-height:28px; text-align:center}
 .company .esgWay_vision_subs .before .box.goal {position:relative}
 .company .esgWay_vision_subs .before .box.goal::before {content:''; display:block; position:absolute; width:0; height:0; top:-180px; left:calc(50% - 8px); border-bottom:10px solid #aaa; border-left:8px solid transparent; border-right:8px solid transparent}
 .company .esgWay_vision_subs .before .box.goal::after {content:''; display:block; position:absolute; width:1px; height:168px; top:-170px; left:calc(50% - 0.5px); background-color:#aaa}
+@media screen and (max-width:887px){
+    .company .esgWay_vision_subs .before .box.goal::before {top:-160px}
+    .company .esgWay_vision_subs .before .box.goal::after {height:148px; top:-150px}
+}
 .company .esgWay_vision_subs .before .box.goal .e_tit {background-color:#000; border-radius:8px 8px 0 0}
 .company .esgWay_vision_subs .before .box .cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision_subs .after {position:relative; display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
@@ -1013,12 +1023,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:calc(50% - 0.5px); border-left:1px dashed #ddd}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 > img {display:block; max-width:576px; margin:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 > img {display:block; max-width:576px; margin:0 auto}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 ul.thumb_name {display:flex; justify-content:space-between; max-width:576px; margin:0 auto; padding:0 3%}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {margin-top:12px; font-size:18px; line-height:28px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 ul.thumb_name {display:flex; justify-content:space-between; max-width:576px; margin:0 auto; padding:0 1.6%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {margin-top:12px; font-size:18px; font-weight:500; line-height:28px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px; width:100%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {padding:40px; border-radius:8px; background-color:#f4f4f4}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {display:block; max-width:510px; width:100%; margin:0 auto}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 6%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 2.4%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
@@ -1229,7 +1239,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
     .company ul.card_list > li .photo .job {font-size:13px}
     
-    .company ul.cmSystem {flex-direction:column; margin-top:15px}
+    .company ul.cmSystem {flex-direction:column; width:100%; max-width:416px; margin:15px auto 0}
     .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
     .company ul.cmSystem > li + li {margin-top:28px}
     .company ul.cmSystem > li .step {width:104px; height:104px; margin:0 12px 0 0}
@@ -1249,6 +1259,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {display:none!important}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_mo {display:block!important; max-width:280px}
+
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pdt_list.only_pc {display:none!important}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .pdt_list.only_mo {display:block!important}
 }
 
 @media screen and (max-width:860px){
@@ -1355,8 +1368,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li {line-height:20px!important}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul li ul.box > li ul.bull li + li {margin-top:8px!important}
 
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {flex-direction:column; justify-content:center}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:100%}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list {flex-direction:column; align-items:center}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {width:100%; max-width:327px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {margin-top:12px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {display:none}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li img {width:100%; max-width:100%}
@@ -1777,7 +1790,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .board-view-wrap .btnArea .btn {width:100%}
 
     .company .comp_wrap {flex-direction:column; margin-top:12px}
-    .company .comp_wrap img {width:100%; max-width:100%; height:auto; margin:0}
+    .company .comp_wrap img {width:100%; max-width:100%; max-height:100%; margin:0}
 
     .company .ceo_msg .text {font-size:14px; line-height:22px}
     .company .ceo_msg .msg_box {margin:34px 0; padding:19px}
@@ -1787,7 +1800,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .ceo_date {font-size:14px; line-height:22px}
     .company .ceo_sign {margin-top:8px; margin-bottom:14px; font-size:14px; line-height:22px}
     .company .ceo_sign img {width:84px}
-    .company .esgWay_wrap img {float:none; width:100%; max-width:100%; height:auto; margin-left:0; margin-top:12px}
+    .company .esgWay_wrap img {float:none; width:100%; max-width:100%; max-height:100%; margin-left:0; margin-top:12px}
     .company .esgWay_wrap .text {margin-top:22px!important; padding-left:0}
     .company .esgWay_vision .titArea {margin-top:24px}
     .company .esgWay_vision .titArea .v_tit {font-size:20px; line-height:30px}
