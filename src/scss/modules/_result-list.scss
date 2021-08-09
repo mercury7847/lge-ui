@@ -428,7 +428,7 @@
                         display: inline-block;
                         @include font($font-x-small,20px);
                         &:after{
-                            background:none;
+                            background:#fff;
                         }
                         &:before{
                             display:inline-block;
