@@ -1,8 +1,3 @@
-if ('scrollRestoration' in history) {
-    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
-    history.scrollRestoration = 'manual';
-}
-
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -33,9 +28,9 @@ if ('scrollRestoration' in history) {
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                        /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                         '<div class="info-btm">' +
-                            '<div class="text care">'+
+                            '<div class="care">'+
                             '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
                             '{{#if (subCategoryId == "CT50000070")}}<span class="care-n">,</span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
                             '</div>'+
@@ -232,7 +227,6 @@ if ('scrollRestoration' in history) {
                 self.uniqId = vcui.getUniqId(8);
                 
                 //vcui.require(['ui/tab'], function () {
-                    $(window).scrollTop(0); //BTOCSITE-2216
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
@@ -257,11 +251,9 @@ if ('scrollRestoration' in history) {
 
                     var hash = location.hash.replace("#","");
                     var savedData = lgkorUI.getStorage(hash);
-                    // BTOCSITE-2216
-                    if(savedData && savedData.href) self.scrollHref = savedData.href;
-                    // if(savedData && savedData.search) {
-                    //     if(savedData.href) self.scrollHref = savedData.href;
-                    // }
+                    if(savedData && savedData.search) {
+                        if(savedData.href) self.scrollHref = savedData.href;
+                    }
 
                     //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                     var value = self.$contentsSearch.attr('data-search-value');
@@ -1106,19 +1098,8 @@ if ('scrollRestoration' in history) {
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        // $(window).scrollTop(self.scrollHref);
-                        // self.scrollHref = null;
-                        // BTOCSITE-2216
-                        
-                        if( $('.result-list img').last().length ) {
-                            $('.result-list img').last().on('load', function(){
-                                $('html,body').stop().animate({scrollTop: self.scrollHref});
-                                self.scrollHref = null;
-                            });
-                        } else {
-                            $('html,body').stop().animate({scrollTop: self.scrollHref});
-                            self.scrollHref = null;
-                        }
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
                     }
                 });
             },

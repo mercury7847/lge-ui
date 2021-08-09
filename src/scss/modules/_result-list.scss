@@ -350,101 +350,91 @@
             @include mobile {
                 margin-top: 6px;
             }
-            // BTOCSITE-3404 210809 수정
-            .text {
-                display: inline-block;
-                .careflag {
-                display: inline-block;
-                }
-                //position: relative;
-                //margin-right: 6px;
-                //padding-right: 6px;
-                @include font($font-small,24px);
-                &:last-child {
-                    margin-right: 16px;
-                    padding-right: 16px;
-                }
-                &:not(:last-child):before {
+            .care {
+                display: inline-block; //BTOCSITE-3404 210809 추가
+                .text {
                     display: inline-block;
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                    content: '';
-                    width: 1px;
-                    height: 12px;
-                    transform: translate(-50%, -50%);
-                    background: #ddd;
-                }
-                @include mobile {
-                    display: block; 
-                    margin-left: 0;
-                    padding-left: 0;
-                    @include font($font-x-small,20px);
-                    &:before,
+                    //position: relative;
+                    //margin-right: 6px;
+                    //padding-right: 6px;
+                    @include font($font-small,24px);
+                    &:last-child {
+                        margin-right: 16px;
+                        padding-right: 16px;
+                    }
                     &:not(:last-child):before {
-                        display: none;
-                    }
-                    &.date {
                         display: inline-block;
-                        font-size: 13px;
-                        line-height: 21px;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        content: '';
+                        width: 1px;
+                        height: 12px;
+                        transform: translate(-50%, -50%);
+                        background: #ddd;
                     }
-                    &.date + .hashtag-wrap {
-                        display: inline-block;
-                        margin-left: 4px;
-                        padding-left: 4px;
-                        &:before {
+                    @include mobile {
+                        display: block; 
+                        margin-left: 0;
+                        padding-left: 0;
+                        @include font($font-x-small,20px);
+                        &:before,
+                        &:not(:last-child):before {
+                            display: none;
+                        }
+                        &.date {
                             display: inline-block;
+                            font-size: 13px;
+                            line-height: 21px;
+                        }
+                        &.date + .hashtag-wrap {
+                            display: inline-block;
+                            margin-left: 4px;
+                            padding-left: 4px;
+                            &:before {
+                                display: inline-block;
+                            }
                         }
                     }
-                }
-                &.model {
-                    max-height: 24px;
-                    @include textEllipsisClamp(1);
-                    @include mobile {
-                        max-height: 20px;
+                    &.model {
+                        max-height: 24px;
+                        @include textEllipsisClamp(1);
+                        @include mobile {
+                            max-height: 20px;
+                        }
                     }
-                }
-            }
-            .care-n {
-                @include font($font-small,24px);
-                line-height:13px;
-                //position: absolute;
-                @include mobile {
-                    display: inline-block;
-                    margin-left: 0;
-                    padding-left: 0;
-                    @include font($font-x-small,20px);
-                }
-            }
-            .redcare-option {
-                margin-left: 4px;
-                margin-top: 6px;
-                @include font($font-small,24px);
-                line-height:13px;
-                color: #DA0F47;
-                @include mobile {
-                    display: inline-block;
-                    margin-left: 2px;
-                    padding-left: 0;
-                    @include font($font-x-small,20px);
-                }
-                //@include mobile {
-                //    position: static;
-                //    height: auto;
-                //    margin-right: 6px;
-                //    padding: 0;
-                //    border-radius: 0;
-                //    border: 0;
-                //    font-size: 13px;
-                //    line-height: 13px;
-                //}
-                &:last-child {
-                    margin-right: 0;
+                    /* BTOCSITE-3404 210809 추가 */
+                    .care-n {
+                        @include font($font-small,24px);
+                        line-height:13px;
+                        //position: absolute;
+                        @include mobile {
+                            display: inline-block;
+                            margin-left: 0;
+                            padding-left: 0;
+                            @include font($font-x-small,20px);
+                        }
+                    }
+                    .redcare-option {
+                        margin-left: 4px;
+                        margin-top: 6px;
+                        @include font($font-small,24px);
+                        line-height:13px;
+                        color: #DA0F47;
+                        @include mobile {
+                            display: inline-block;
+                            margin-left: 2px;
+                            padding-left: 0;
+                            @include font($font-x-small,20px);
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                    /* //BTOCSITE-3404 210809 추가 */
                 }
             }
         }
-        // BTOCSITE-3404 210809 수정
         .hashtag-wrap {
             display: inline-block;
             .hashtag {
