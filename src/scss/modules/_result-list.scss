@@ -353,7 +353,7 @@
             .care {
                 display: inline-block; //BTOCSITE-3404 210809 추가
                 .text {
-                    display: inline-block;
+                    // display: inline-block;
                     // position: relative;
                     // margin-right: 6px;
                     // padding-right: 6px;
@@ -363,7 +363,7 @@
                         padding-right: 16px;
                     }
                     &:not(:last-child):before {
-                        display: inline-block;
+                        //display: inline-block; 210809 수정
                         position: absolute;
                         top: 50%;
                         right: 0;
@@ -405,6 +405,9 @@
                     }
                     /* BTOCSITE-3404 210809 추가 */
                     .care-n {
+                        position: relative;
+                        padding-right:16px;
+                        margin-right:16px;
                         @include font($font-small,24px);
                         line-height:13px;
                         //position: absolute;
@@ -414,7 +417,25 @@
                             padding-left: 0;
                             @include font($font-x-small,20px);
                         }
+                        // 210809 추가 BTOCSITE-3404
+                        &:before{
+                            display: inline-block; 
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            content: '';
+                            width: 1px;
+                            height: 12px;
+                            transform: translate(-50%, -50%);
+                            background: #ddd;
+                            @include mobile{
+                                content: ',';
+                                width:0;
+                                height: 0;
+                            }
+                        }
                     }
+                    
                     .redcare-option {
                         margin-left: 4px;
                         margin-top: 6px;
