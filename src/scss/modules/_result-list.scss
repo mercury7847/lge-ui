@@ -424,22 +424,6 @@
                     color: #DA0F47;
                     position:relative;
                     display:inline-block;
-                    @include mobile {
-                        display: inline-block;
-                        @include font($font-x-small,20px);
-                        &:after{
-                            background:#fff;
-                        }
-                        &:before{
-                            display:inline-block;
-                            content: ',';
-                            background:none;
-                            margin-right: 8px;
-                        }
-                    }
-                    // &:last-child {
-                    //     margin-right: 0;
-                    // }
                     &:after{
                         display: inline-block;
                         position: absolute;
@@ -451,6 +435,22 @@
                         transform: translate(-50%, -50%);
                         background: #ddd;
                     }
+                    @include mobile {
+                        display: inline-block;
+                        @include font($font-x-small,20px);
+                        &:after{
+                            background:none;
+                        }
+                        &:before{
+                            display:inline-block;
+                            content: ',';
+                            background:none;
+                            margin-right: 8px;
+                        }
+                    }
+                    // &:last-child {
+                    //     margin-right: 0;
+                    // }
                 }
 
                 
