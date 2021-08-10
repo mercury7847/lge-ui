@@ -610,6 +610,59 @@ img.m383 {max-width:383px!important}
 .company .home_appliances > ul > li .home_box .home_text {height:calc(100% - 245px); padding:22px 24px; border-left:1px solid #ddd; font-size:16px; line-height:26px; word-break:keep-all}
 .company .home_appliances > ul > li:nth-child(1) .home_box:first-of-type .home_text {border-left:0}
 .company .home_appliances > ul > li:nth-child(3) .home_box:first-of-type .home_text {border-left:0}
+
+.company .esg_diagram {width:100%; max-width:912px; margin:0 auto}
+.company .esg_diagram > ul {position:relative; display:flex; flex-direction:column; align-items:flex-end}
+.company .esg_diagram > ul::after {content:''; display:block; position:absolute; width:1px; top:80px; bottom:80px; right:calc(25% - 6px); background-color:#aaa; z-index:-1}
+.company .esg_diagram > ul > li {position:relative; width:calc(50% - 12px)}
+.company .esg_diagram > ul > li.esg {position:absolute; left:0}
+.company .esg_diagram > ul > li.esg::after {content:''; display:block; position:absolute; height:1px; width:100%; left:50%; top:calc(50% - 0.5px); background-color:#aaa; z-index:-1}
+.company .esg_diagram > ul > li.esg + li {margin-top:0}
+.company .esg_diagram > ul > li.esg > p {display:flex; justify-content:center; align-items:center; width:215px; height:215px; margin:0 auto; border-radius:50%; background-color:#da0f47; font-size:22px; line-height:32px}
+.company .esg_diagram > ul > li + li {margin-top:55px}
+.company .esg_diagram > ul > li > p {display:flex; justify-content:center; align-items:center; width:100%; height:80px; border-radius:8px; background-color:#000; color:#fff; font-size:18px; font-weight:500; line-height:28px; word-break:keep-all}
+.company .esg_diagram > ul > li > .rpt {position:absolute; left:50%; transform:translateX(-50%); display:block; margin:13.5px 0; padding:0 5px; background-color:#fff; font-size:18px; line-height:28px; text-align:center}
+.company .esg_diagram > ul > li.gray::after {content:''; display:block; position:absolute; height:1px; width:calc(100% + 36px); right:50%; bottom:-27px; background-color:#aaa; z-index:-1}
+.company .esg_diagram > ul > li.gray > p {background-color:#666}
+.company .esg_diagram > ul > li.gray > ul {display:flex; justify-content:space-between; position:absolute; width:100%; height:215px; top:0; left:calc(-100% - 24px)}
+.company .esg_diagram > ul > li.gray > ul > li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); height:100%; padding:5px; border-radius:8px; background-color:#ddd}
+.company .esg_diagram > ul > li.gray > ul > li > p {color:#000; font-size:18px; font-weight:500; line-height:28px; text-align:center; word-break:keep-all}
+.company .esg_diagram > ul > li.wt > p {border:1px solid #000; background-color:#fff; color:#000}
+@media screen and (max-width:767px){
+    .company .esg_diagram > ul::after {top:48px; bottom:48px; right:calc(25% - 3px)}
+    .company .esg_diagram > ul > li {width:calc(50% - 6px)}
+    .company .esg_diagram > ul > li + li {margin-top:36px}
+    .company .esg_diagram > ul > li.esg > p {width:130px; height:130px; font-size:15px; line-height:23px}
+    .company .esg_diagram > ul > li > p {height:48px; font-size:15px; line-height:23px}
+    .company .esg_diagram > ul > li > .rpt {margin:6.5px 0; font-size:14px; line-height:22px}
+    .company .esg_diagram > ul > li.gray::after {bottom:-18.5px}
+    .company .esg_diagram > ul > li.gray > ul {height:132px; left:calc(-100% - 12px)}
+    .company .esg_diagram > ul > li.gray > ul > li > p {font-size:14px; line-height:22px}
+}
+
+.company .esg_c_box {padding:40px; border-radius:8px; background-color:#f4f4f4}
+.company .esg_c_box > ul.climate > li + li {margin-top:30px}
+.company .esg_c_box > ul.climate > li > strong {position:relative; display:block; margin-bottom:12px; padding-left:12px}
+.company .esg_c_box > ul.climate > li > strong::before {content:''; display:block; position:absolute; width:3px; height:3px; left:0; top:10.5px; border-radius:50%; background-color:#000}
+.company .esg_c_box ul.climate_box {display:flex; justify-content:space-between}
+.company .esg_c_box ul.climate_box > li {width:calc(33.3333% - 24px)}
+.company .esg_c_box ul.climate_box > li + li {position:relative}
+.company .esg_c_box ul.climate_box > li + li::after {content:''; display:block; position:absolute; width:20px; height:36px; left:-28px; top:calc(50% - 18px); background:url(/kr/images/company/icon/ico-arrow-right-gray-br2.svg) no-repeat center}
+.company .esg_c_box ul.climate_box > li .c_tit {padding:25px 5px; border-radius:8px 8px 0 0; color:#fff; font-size:18px; font-weight:bold; line-height:28px; text-align:center}
+.company .esg_c_box ul.climate_box > li:nth-child(1) .c_tit {background-color:#666}
+.company .esg_c_box ul.climate_box > li:nth-child(2) .c_tit {background-color:#000}
+.company .esg_c_box ul.climate_box > li:nth-child(3) .c_tit {background-color:#da0f47}
+.company .esg_c_box ul.climate_box > li .c_text {height:calc(100% - 78px); padding:23px 18px; border:1px solid #ddd; border-radius:0 0 8px 8px; background-color:#fff; font-size:16px; line-height:26px; text-align:center}
+@media screen and (max-width:990px){
+    .company .esg_c_box {padding:20px}
+    .company .esg_c_box ul.climate_box {flex-direction:column}
+    .company .esg_c_box ul.climate_box > li {width:100%}
+    .company .esg_c_box ul.climate_box > li + li {margin-top:40px}
+    .company .esg_c_box ul.climate_box > li + li::after {width:0; height:0; top:-27.5px; left:calc(50% - 55px); border-top:15px solid #aaa; border-left:55px solid transparent; border-right:55px solid transparent; background:none}
+    .company .esg_c_box ul.climate_box > li .c_tit {padding:12.5px 5px; font-size:15px; line-height:23px}
+    .company .esg_c_box ul.climate_box > li .c_text {padding:12px 5px; font-size:14px; line-height:22px}
+}
+
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
