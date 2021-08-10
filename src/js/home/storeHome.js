@@ -624,7 +624,7 @@ $(function(){
                         $context.find('.module-box.cnt01 .ui_category_tab').vcTab('select',currentIndex);
                         /* BTOCISTE-3067 mobile일때 tab위치 조정 - 210810 */
                         setTimeout(function(){
-                            $('.ui_category_tab').vcSmoothScroll('scrollToActive');    
+                            $('.ui_category_tab').vcSmoothScroll('scrollToActive');
                         }, 200)
                         /* BTOCISTE-3067 mobile일때 tab위치 조정 - 210810 */
                     }
