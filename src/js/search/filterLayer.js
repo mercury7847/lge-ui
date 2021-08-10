@@ -502,7 +502,7 @@ var FilterLayer = (function() {
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
             // BTOCSITE-2847 PLP > 상세필터 동작오류 start
-            self.$layFilter.find('.btn-filter.applied').removeClass('applied');
+            $('.result-area .btn-filter.applied').removeClass('applied');
             // BTOCSITE-2847 PLP > 상세필터 동작오류 end
             
             //for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
