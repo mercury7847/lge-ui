@@ -630,8 +630,6 @@ $(function(){
                         }, 200)
                         /* BTOCISTE-3067 mobile일때 tab위치 조정 - 210810 */
                     }
-                }else{
-                    categoryId = arr[0].categoryId;
                 }
                 /* //BTOCSITE-3067 선택된 tab & 카테고리명 불러오기 - 210806 */
 
