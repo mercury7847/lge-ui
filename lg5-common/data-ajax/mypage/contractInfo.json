@@ -24,10 +24,13 @@
             "contDtlType": "C00",
             "modelName": "식기세척기(DFB22MR)",
             "contractID": "20228961",
-            "period": "5년(2021.03.23 ~ 2026.03.22)",
+            "contStartDate": "2021.03.23",
+            "contEndDate": "2024.03.22",
+            "period": "2017.11.10",
             "installDate": "2021.03.23",
             "installPlace": "사무실",
             "saleTurn": "3, 13, 25, 37, 49, 60회차",
+            "dutyPeriod": "",
             "cancelConsultUrl": "https://wwwdev50.lge.co.kr/"
         },
         "paymentInfo": {
