@@ -20,6 +20,7 @@ img.m383 {max-width:383px!important}
 .company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-title + .com-text::before {content:'';display:block; position:absolute; top:0; width:calc(100% - 80px); height:1px; background-color:#dddddd}
+.company #com-tabs02 + .com-text::before {content:'';display:block; position:absolute; top:0; width:calc(100% - 80px); height:1px; background-color:#dddddd}
 .company .com-text.noLine::before {display:none}
 .company .com-text.noLine_p::before {display:none}
 .company .com-text.pt60 {padding-top:0}
@@ -27,6 +28,7 @@ img.m383 {max-width:383px!important}
 .company .com-text.pb0 {padding-bottom:0}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 .company .text > a {text-decoration:underline}
+.company .btn_fileDown {text-decoration:none}
 
 /* search 서치 검색 */
 .company .cmp_search {display:none; position:relative; max-width:1380px; margin:48px auto 0; z-index:50}
@@ -428,7 +430,6 @@ img.m383 {max-width:383px!important}
 .company .esgWay_wrap {position:relative}
 .company .esgWay_wrap::after {content:''; display:block; clear:both}
 .company .esgWay_wrap img {float:left; display:block; width:328px; max-height:210px; margin-right:30px; border-radius:8px}
-.company .esgWay_wrap > .text {width:calc(100% - 352px)}
 .company .esgWay_wrap .text + .text {margin-top:24px}
 .company .esgWay_vision .titArea {margin-top:24px}
 .company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
@@ -1071,6 +1072,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .cont_view_more {padding:60px 0 0}
 .company .cont_view_more .btnArea {margin:0; text-align:center}
 .company .cont_view_more .btnArea .btn {position:relative; display:inline-block; padding:9px 15px 9px 35px; border:1px solid #000; border-radius:24px; font-size:14px; line-height:20px}
+.company .cont_view_more .btnArea .btn > .open,
+.company .cont_view_more .btnArea .btn > .close {font-size:14px; font-weight:normal; line-height:20px; opacity:1; text-shadow:none}
+.company .cont_view_more .btnArea .btn:hover > span,
+.company .cont_view_more .btnArea .btn:focus > span,
+.company .cont_view_more .btnArea .btn:active > span {color:#fff}
 .company .cont_view_more .btnArea .btn::after {content:''; display:block; position:absolute; width:16px; height:16px; left:16px; top:calc(50% - 8px); background:url(/lg5-common/images/icons/btn-plus-16.svg) no-repeat center / contain}
 .company .cont_view_more .btnArea .btn:hover::after,
 .company .cont_view_more .btnArea .btn:focus::after,
@@ -1381,6 +1387,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company .cont_view_more {margin-top:40px; padding:0}
     .company .cont_view_more .btnArea .btn {padding:0 19px 0 39px; font-size:13px; line-height:41px}
+    .company .cont_view_more .btnArea .btn > .open,
+    .company .cont_view_more .btnArea .btn > .close {font-size:13px; line-height:41px}
     .company .cont_view_more .btnArea .btn.on::after {margin-top:0}
     .company .cont_view_more .content {padding:50px 0 0}
 
