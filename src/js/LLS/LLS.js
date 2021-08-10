@@ -2,8 +2,8 @@ var lls = {
     init: function(){
         var self = this;
         
-        self.backgroundSwitch();
         self.settings();
+        //self.backgroundSwitch();
         self.bindEvent();
         self.heroSlider();
         self.highlightSlider();
@@ -12,7 +12,7 @@ var lls = {
     settings: function(){
         var self = this;
         self.$llsMain = $('.lls-main');
-
+        self.$switch = self.$llsMain.find('.ui_background_switch')
         self.$pushBtn = self.$llsMain.find('.btn-lls-push');
         self.pushBtn = null;
         self.$highSection = self.$llsMain.find('.recently-highlight');
@@ -21,11 +21,12 @@ var lls = {
         self.$eventSection = self.$llsMain.find('.event-announced');
         self.$eventList = self.$eventSection.find('.event-item-list');
         self.$eventAnchor = self.$eventList.find('.item-list-anchor');
+        self.$appInstallPopup = $('#appInstallGuidePopup');
     },
     backgroundSwitch: function(){
-        var $switch = $('.ui_background_switch');
+        var self = this;
 
-        $switch.each(function(idx, item){
+        self.$switch.each(function(idx, item){
             var pcSrc = $(item).data('pcSrc');
             var moSrc = $(item).data('moSrc');
             var currentSrc =  window.innerWidth < 768 ? moSrc : pcSrc;
@@ -34,11 +35,6 @@ var lls = {
     },
     bindEvent: function(){
         var self = this;
-        
-        self.$eventAnchor.on('click', function(e){
-            e.preventDefault();
-            self.requestModal(this);
-        });
 
         function LGEPushSetting(flag){
             var msg = {
@@ -68,6 +64,7 @@ var lls = {
             }
         }
 
+        //앱 알림받기 버튼
         self.$pushBtn.on('click', function(e){
             var _self = this;
 
@@ -95,11 +92,19 @@ var lls = {
             
         });
 
+
+        //최신 하이라이트 목록 클릭시 모바일 기기가 아니면 앱설치 팝업 활성화
         self.$highSlider.find('.slide-item a').on('click', function(e){
             if( !vcui.detect.isMobileDevice ) {
                 e.preventDefault();
-                $('#appInstallGuidePopup').vcModal({opener:$(this)});
+                self.$appInstallPopup.vcModal({opener:$(this)});
             }
+        });
+
+        //이벤트 당첨자 발표 목록 클릭시 당첨자 발표 목록 윈도우팝업
+        self.$eventAnchor.on('click', function(e){
+            e.preventDefault();
+            self.requestModal(this);
         });
         
     },
@@ -109,6 +114,7 @@ var lls = {
         window.open(ajaxUrl,'','width=912,height=760,scrollbars=yes');
     },
     heroSlider: function(){
+        //히어로 배너 슬라이드
         var $heroSwiper = $('.hero-slider');
         var $playControl = $heroSwiper.find('.swiper-play-controls');
         var $btnPlay = $playControl.find('.btn-play');
@@ -188,6 +194,7 @@ var lls = {
         })
     },
     highlightSlider: function(){
+        //최신 하이라이트 슬라이드
         var highlightSwiper = new Swiper('.recently-highlight-slider', {
             slidesPerView: "auto",
             slidesPerGroup:2, 
@@ -216,6 +223,7 @@ var lls = {
         })
     },
     onbroadProductSlider: function(){
+        //방송에 나온 그 제품 슬라이드
         var productSwiper = new Swiper('.onbroad-product-slider', {
             slidesPerView: "auto",
             slidesPerGroup:1, 
@@ -248,7 +256,7 @@ var lls = {
 $(function(){
     lls.init();
     
-
+    //화면 리사이즈시 pc or mobile로 바뀔때 한번씩만 이벤트 실행
     // var prevWindowSize = window.innerWidth;
 
     // $(window).on('resize', function(){
