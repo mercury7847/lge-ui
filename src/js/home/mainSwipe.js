@@ -21,7 +21,7 @@ function MainSwiper( ID ){
         '#story' : 'story',
         '#support' : 'support',
         '#care-solutions' : 'care-solutions',
-        '#membership-event' : 'membership-event' // BTOCSITE-1814
+        '#benefits' : 'benefits' // BTOCSITE-1814
     };
 
     this.urlToHash = {
@@ -30,11 +30,11 @@ function MainSwiper( ID ){
         'story' : '#story',
         'support' : '#support',
         'care-solutions' : '#care-solutions',
-        'membership-event' : '#membership-event' // BTOCSITE-1814
+        'benefits' : '#benefits' // BTOCSITE-1814
     };
 
     this.hashArray = [
-        'home', 'store', 'story', 'support', 'care-solutions','membership-event'  // BTOCSITE-1814 
+        'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
     ];
 
     this.init();
