@@ -614,6 +614,8 @@ $(function(){
                     }
                 }).vcTab();
 
+                $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
+
                 /* BTOCSITE-3067 선택된 tab & 카테고리명 불러오기 - 210806 */
                 if(!!window.location.hash){
                     var $selectedTab = $context.find('.module-box.cnt01 .ui_category_tab > .tabs > li a[href="' + window.location.hash +'"]');
@@ -632,9 +634,6 @@ $(function(){
                     categoryId = arr[0].categoryId;
                 }
                 /* //BTOCSITE-3067 선택된 tab & 카테고리명 불러오기 - 210806 */
-                
-
-                $context.find('.module-box.cnt01 .ui_category_tab.ui_smooth_scroll').vcSmoothScroll('refresh');
 
                 $(window).on('breakpointchange.category', function(e){
 
