@@ -438,6 +438,8 @@
                     @include mobile {
                         display: inline-block;
                         @include font($font-x-small,20px);
+                        margin-right: 3px;
+                        padding-right: 3px;
                         &:after{
                             background:none;
                         }
