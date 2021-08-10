@@ -910,12 +910,13 @@
                     data.contractInfo.period =  '<div>'+ periodYear +'년 ('+data.contractInfo.contStartDate  +' ~ ' + data.contractInfo.contEndDate +')</div>';
                 }
             }
-            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 
+            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 , 무상할인회차
             if( data.contractInfo.contDtlType === 'C00' ) {
                 $('.contract-btn').hide();
                 $('.sects.payment.viewer').hide();
                 $('.member-point-info').hide();
                 $('.tooltip-wrap').hide();
+                $('.saleTurn').hide();
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경
