@@ -1,4 +1,71 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	var dataColumn01, chartColumn01, optionsColumn;
+	var dataColumn02, chartColumn02;
+
+	function drawChart() {
+		dataColumn01 = google.visualization.arrayToDataTable([
+			['', '', { role: 'annotation' }, {role: 'style'}],
+			['2020', 95.2, ' 95.2% ', 'fill-color: #e81953'],
+			['2019', 93.0, ' 93.0% ', 'fill-color: #000000'],
+			['2018', 93.3, ' 93.3% ', 'fill-color: #000000']
+		]);
+		dataColumn02 = google.visualization.arrayToDataTable([
+			['', '', { role: 'annotation' }, {role: 'style'}],
+			['2020', 64.1, ' 64.1% ', 'fill-color: #e81953'],
+			['2019', 68.4, ' 68.4% ', 'fill-color: #000000'],
+			['2018', 68.3, ' 68.3% ', 'fill-color: #000000']
+		]);
+
+		optionsColumn = {
+			colors: ['#e81953', '#000000'],
+			vAxis:{minValue:'0', maxValue: '110'},
+			chartArea: {width: '60%',right:'20%', height: '90%',top:'-5%'},
+			bar: { groupWidth: '25%' },
+			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
+			legend: {position: 'none'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		chartColumn01 = new google.visualization.ColumnChart(document.getElementById("chartColumn01"));
+		chartColumn02 = new google.visualization.ColumnChart(document.getElementById("chartColumn02"));
+	}
+	$(window).resize(function() {
+		/* 화면사이즈가 변하면 차트를 그려줌 */
+		if($(".accordion-wrap li.lists:nth-child(3)").hasClass("on")){
+			setTimeout(function(){
+				chartColumn01.draw(dataColumn01, optionsColumn);
+				chartColumn02.draw(dataColumn02, optionsColumn);
+			}, 100);
+		}
+	});
+	$(document).ready(function() {
+		/* 세번째 아코디언이 열린 다음에 차트를 그려줌 */
+		$(".accordion-wrap li.lists:nth-child(3)").on('click', function(e){
+			setTimeout(function(){
+				chartColumn01.draw(dataColumn01, optionsColumn);
+				chartColumn02.draw(dataColumn02, optionsColumn);
+			}, 100);
+		});
+	});
+</script>
+<style>
+.googlechart-wrap {position: relative;max-width:600px;margin:-8% auto 0;z-index: -1;}
+.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
+.googlechart-wrap .chartarea {height:400px;}
+@media screen and (max-width: 767px){
+	.googlechart-wrap{width:100%;margin-top:-8%;}
+	.googlechart-wrap.over100::before{height:8%;}
+	.googlechart-wrap .chartarea {height:53vw;}
+}
+@media screen and (max-width: 425px){
+	.googlechart-wrap{margin-top:-14%;}
+	.googlechart-wrap.over100::before{height:14%;}
+}
+</style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -262,7 +329,7 @@
 							</ul>
 							<p class="tit">2) 엔지니어 e-기술올림픽 개최 – 중앙아시아</p>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/promot/img-client-thumb-01.png" alt="엔지니어 e-기술올림픽 개최">
+								<img src="/kr/images/company/promot/img-client-thumb-01.png" alt="엔지니어 e-기술올림픽 개최" style="height:auto;">
 								<div class="textArea">
 									<p class="text hone">코로나19 영향으로 온라인 기술올림픽으로 실시</p>
 									<p class="text hone">온라인 경연 및 유튜브 라이브 시상식으로 진행이 되면서 다수의 경연 참석자, 다수의 Global 동시간 시청자를 확보하여 시공간의 한계를 넘는 새로운 시도</p>
@@ -301,17 +368,69 @@
 									<ul>
 										<li>- 서비스를 경험한 고객을 대상으로 문자를 발송 후 회신하는 방식으로 만족도 조사</li>
 									</ul>
-									<img class="only_pc" src="/kr/images/company/promot/img-client06-pc.png" alt="">
-									<img class="only_mo" src="/kr/images/company/promot/img-client06-mo.png" alt="">
-									<!-- 구글차트 -->
+									<ul class="pc2mo1">
+										<li>
+											<div class="graph">
+												<span class="txt_rt">(단위 : 고객만족도, %)</span>
+												<div class="googlechart-wrap over100">
+													<div class="chartarea" id="chartColumn01"></div>
+													<div class="blind">
+														<ul>
+															<li>
+																<span>고객만족도 - 한국</span>
+																<ul>
+																	<li>95.2%</li>
+																	<li>93.0%</li>
+																	<li>92.9%</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!-- 구글차트 -->
+										</li>
+										<li>
+											<ul class="satisfactionArea">
+												<li><img src="/kr/images/company/promot/img-infoprotection04-pc.png" alt="국제 인증"><p>한국 국가서비스 대상</p></li>
+												<li><img src="/kr/images/company/promot/img-infoprotection05-pc.png" alt="국내 인증"><p>한국 국가서비스 대상</p></li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 								<li><span class="bold">해외</span>
 									<ul>
 										<li>- 서비스를 경험한 고객에게 유선으로 서비스 만족수준을 조사</li>
 									</ul>
-									<img class="only_pc" src="/kr/images/company/promot/img-client07-pc.png" alt="">
-									<img class="only_mo" src="/kr/images/company/promot/img-client07-mo.png" alt="">
-									<!-- 구글차트 -->
+									<ul class="pc2mo1">
+										<li>
+											<div class="graph">
+												<span class="txt_rt">(단위 : 고객만족도, %)</span>
+												<div class="googlechart-wrap over100">
+													<div class="chartarea" id="chartColumn02"></div>
+													<div class="blind">
+														<ul>
+															<li>
+																<span>고객만족도 - 해외</span>
+																<ul>
+																	<li>64.1%</li>
+																	<li>68.4%</li>
+																	<li>68.3%</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!-- 구글차트 -->
+										</li>
+										<li>
+											<ul class="satisfactionArea">
+												<li><img src="/kr/images/company/promot/img-infoprotection04-pc.png" alt="국제 인증"><p>Korea Service Grand Prix</p></li>
+												<li><img src="/kr/images/company/promot/img-infoprotection05-pc.png" alt="국내 인증"><p>No.1 in KS-SQI<br>(Korean Standard-Service<br>Quality Index)</p></li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</div>

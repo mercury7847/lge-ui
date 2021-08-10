@@ -9,28 +9,28 @@
 	var dataColumn04, chartColumn04;
 	function drawChart() {
 		dataColumn01 = google.visualization.arrayToDataTable([
-			['year', '인증', '진행중', '미인증'],
-			['2020', 34, 0, 1],
-			['2019', 36, 0, 0],
-			['2018', 36, 0, 0],
+			['year', '인증', {role:'annotation'}, '진행중', {role:'annotation'}, '미인증', {role:'annotation'}],
+			['2020', 34, '34', 0, '0', 1, '1'],
+			['2019', 36, '36', 0, '0', 0, '0'],
+			['2018', 36, '36', 0, '0', 0, '0'],
 		]);
 		dataColumn02 = google.visualization.arrayToDataTable([
-			['year', '인증', '진행중', '미인증'],
-			['2020', 53, 6, 24],
-			['2019', 73, 0, 10],
-			['2018', 72, 1, 6],
+			['year', '인증', {role:'annotation'}, '진행중', {role:'annotation'}, '미인증', {role:'annotation'}],
+			['2020', 53, '53', 6, '', 24, ''],
+			['2019', 73, '73', 0, '0', 10, ''],
+			['2018', 72, '72', 1, '1', 6, ''],
 		]);
 		dataColumn03 = google.visualization.arrayToDataTable([
-			['year', '인증', '진행중', '미인증'],
-			['2020', 40, 1, 4],
-			['2019', 39, 1, 0],
-			['2018', 40, 0, 2],
+			['year', '인증', {role:'annotation'}, '진행중', {role:'annotation'}, '미인증', {role:'annotation'}],
+			['2020', 40, '40', 1, '1', 4, '4'],
+			['2019', 39, '39', 1, '1', 0, '0'],
+			['2018', 40, '40', 0, '0', 2, '2'],
 		]);
 		dataColumn04 = google.visualization.arrayToDataTable([
-			['year', '인증', '진행중', '미인증'],
-			['2020', 103, 1, 7],
-			['2019', 102, 0, 11],
-			['2018', 99, 3, 26],
+			['year', '인증', {role:'annotation'}, '진행중', {role:'annotation'}, '미인증', {role:'annotation'}],
+			['2020', 103, '103', 1, '1', 7, '7'],
+			['2019', 102, '102', 0, '0', 11, '11'],
+			['2018', 99, '99', 3, '3', 26, '26'],
 		]);
 		options = {
 			series: {
@@ -39,6 +39,7 @@
 				2: {targetAxisIndex: 0, color: '#000000', type: 'line', pointSize: 14, pointShape: 'square'}
 			},
 			legend: {position: 'bottom', maxLines: 3},
+			vAxis:{minValue:'0', maxValue: '100'},
 			chartArea: {width: '90%',right:'0%', top:'4%'},
 			fontName:'Noto Sans',
 			fontSize:"16"

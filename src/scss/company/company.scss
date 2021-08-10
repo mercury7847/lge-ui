@@ -256,9 +256,10 @@ br.pc{display:block;}
 .esgPerformanceArea i.ico-esglg07 {background-image:url(/kr/images/company/icon/ico-esglg07.svg);}
 .esgPerformanceArea i.ico-esglg08 {background-image:url(/kr/images/company/icon/ico-esglg08.svg);}
 .esgPerformanceArea i.ico-esglg09 {background-image:url(/kr/images/company/icon/ico-esglg09.svg);}
+
 @media screen and (max-width:767px){
 .esgLinkArea{width:100%;}
-.esgLinkArea:nth-child(2n+1){margin-left:0;}
+.esgLinkArea:nth-child(2n){margin-left:0;}
 .esgLinkArea .esgTit{font-size: 14px;line-height: 1.57;}
 .esgLinkArea .esgGoto{margin-top:14px;padding: 29px 130px 29px 15px;}
 .esgLinkArea .esgText{font-size: 14px;line-height: 1.57;}
@@ -284,11 +285,11 @@ br.pc{display:block;}
 }
 
 /* 성과 및 데이터 */
-.pc2mo1 li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
-.pc2mo1 li:nth-child(2n){margin-left:20px;}
+.pc2mo1 > li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
+.pc2mo1 > li:nth-child(2n){margin-left:20px;}
 @media screen and (max-width: 767px){
-.pc2mo1 li{width:100%;display:block;margin-top:12px;}
-.pc2mo1 li:nth-child(2n){margin-top:12px;margin-left:0}
+.pc2mo1 > li{width:100%;display:block;margin-top:12px;}
+.pc2mo1 > li:nth-child(2n){margin-top:12px;margin-left:0}
 }
 
 /* 포용적 사회를 위한 균형 있는 성장 - 건강관리 가전 기술 개발 */
@@ -334,4 +335,18 @@ br.pc{display:block;}
 .goalsArea .goalsTit {font-size: 15px;line-height: 1.53;margin-top:2px;font-weight: 500;}
 .goalsArea .goalsDetail {display:block;width: 100%;margin-left:0;margin-top:10px;height: auto;}
 .goalsArea .bull{transform: translateY(0);top:0;position: inherit;}
+}
+
+/* 고객만족도 조사 */
+.satisfactionArea{text-align: center;height:380px;float: right;margin-left: 20px;padding-top: 40px;}
+.satisfactionArea li{max-width: calc(50% - 25px);display:inline-block;vertical-align: top;text-align: center;}
+.satisfactionArea li + li{margin-left:40px;}
+.satisfactionArea img{max-width:240px;width: 100%;border-radius: 0 !important;}
+.satisfactionArea p {margin-top:12px;font-size: 16px;line-height: 1.63;}
+@media screen and (max-width: 767px){
+	.satisfactionArea{height:auto;float: inherit;margin-left: 0;padding-top: 0;}
+	.satisfactionArea li{max-width: calc(50% - 30px);}
+	.satisfactionArea li + li{margin-left:25px;}
+	.satisfactionArea img{max-width: 32vw;}
+	.satisfactionArea p {margin-top:6px;}
 }
