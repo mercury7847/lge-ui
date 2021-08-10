@@ -6,12 +6,13 @@
 	var data, options, chart;
 	function drawChart() {
 		data = google.visualization.arrayToDataTable([
-			['',  'Amount', {role: 'tooltip'}],
-			['국내해외영업직군',  89, '국내해외영업직군\n89명'],
+			['',  '', {role: 'tooltip'}],
+			['국내해외영업직군',  1249, '국내해외영업직군\n1249명'],
 			['해외 PM',  290, '해외 PM\n290명'],
-			['해외법인 조직책임자', 1249, '해외법인 조직책임자\n1249명']
+			['해외법인 조직책임자', 89, '해외법인 조직책임자\n89명']
 		]);
 		options = {
+			pieHole: 0.62,
 			pieSliceText: 'value',
 			chartArea: {width: '100%', height: '80%',top:'4%'},
 			slices: {
@@ -34,7 +35,7 @@
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
 			options.legend.textStyle.fontSize="12";
-			options.pieSliceTextStyle.fontSize="12";
+			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
 		}
 		else{
 			options.legend.textStyle.fontSize="16";
@@ -216,7 +217,7 @@
 							</ul>
 							<p class="tit h4">3) 컴플라이언스 프로그램 사이클</p>
 							<div class="compGrp mgt">
-								<img class="m383" src="/kr/images/company/compliance/img-compliance-program-cycle.png" alt="">
+								<!--<img class="m383" src="/kr/images/company/compliance/img-compliance-program-cycle_new_02.png" alt="">-->
 								<div class="blind">
 									<p>Compliance Program Cycle</p>
 									<ul>
@@ -231,9 +232,9 @@
 									<li>
 										<p class="tit"><span>식별 및 평가</span></p>
 										<ul class="cont">
-											<li>법 규재 동향조사</li>
+											<li>법 규제 동향조사</li>
 											<li>주요 위반 및 제재 동향 모니터링</li>
-											<li>Emerging리스크 센싱 <br class="pc">및 리스크 Pool 관리</li>
+											<li>이머징 리스크 센싱 <br class="pc">및 리스크 풀 관리</li>
 											<li>리스크 관리수준 평가 실시</li>
 										</ul>
 									</li>
@@ -258,8 +259,8 @@
 									<li>
 										<p class="tit"><span>보고</span></p>
 										<ul class="cont">
-											<li>준법통제기준 이사회 보고</li>
 											<li>컴플라이언스 협의체</li>
+											<li>준법통제기준 이사회 보고</li>
 											<li>외부 공시</li>
 										</ul>
 									</li>
@@ -327,7 +328,7 @@
 									<div class="tb_row tb-row-bl middle">
 										<div class="tbl_info rt abs">(단위: 명, 2020년 기준)</div>
 										<table>
-											<caption>구분, 전체, 국내, 해외</caption>
+											<caption>구분, 전체, 한국, 해외</caption>
 											<colgroup>
 												<col style="width:25%">
 												<col style="width:25%">
@@ -338,7 +339,7 @@
 												<tr>
 													<th scope="col">구분</th>
 													<th scope="col">전체</th>
-													<th scope="col">국내</th>
+													<th scope="col">한국</th>
 													<th scope="col">해외</th>
 												</tr>
 											</thead>
@@ -411,7 +412,7 @@
 									</thead>
 									<tbody>
 										<tr>
-											<th scope="row" rowspan="2">국내</th>
+											<th scope="row" rowspan="2">한국</th>
 											<td>이수대상자</td>
 											<td>29,304</td>
 											<td>29,845</td>
@@ -561,7 +562,7 @@
 		</div>
 	</div>
 	
-	<div class="sustainable-download">
+	<div class="sustainable-download only_pc">
 		<p class="tit">컴플라이언스 개요 PDF 다운로드</p>
 		<p class="desc">컴플라이언스 개요 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>
