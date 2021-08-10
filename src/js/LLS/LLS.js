@@ -13,9 +13,10 @@ var lls = {
         var self = this;
         self.$llsMain = $('.lls-main');
 
+        self.$pushBtn = self.$llsMain.find('.btn-lls-push');
+        self.pushBtn = null;
         self.$highSection = self.$llsMain.find('.recently-highlight');
         self.$highSlider = self.$highSection.find('.recently-highlight-slider');
-
 
         self.$eventSection = self.$llsMain.find('.event-announced');
         self.$eventList = self.$eventSection.find('.event-item-list');
@@ -33,10 +34,57 @@ var lls = {
     },
     bindEvent: function(){
         var self = this;
-
+        
         self.$eventAnchor.on('click', function(e){
             e.preventDefault();
             self.requestModal(this);
+        });
+
+        function LGEPushSetting(flag, target){
+            var msg = {
+                flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
+                flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
+            }
+            if( flag == "Y" ) {
+                lgkorUI.alert("", {
+                    title: msg.flagY,
+                    ok: function(el) {
+                        if( vcui.detect.isIOS ) {
+
+                        } else {
+                            
+                        }
+                    }
+                }, self.pushBtn);
+            } else {
+                lgkorUI.alert("", {
+                    title: msg.flagN,
+                    okBtnName: "기기 알림 켜기",
+                    ok: function(el) {
+                        
+                    }
+                }, self.pushBtn);
+            }
+        }
+
+        self.$pushBtn.on('click', function(e){
+            var _self = this;
+
+            self.pushBtn = _self;
+            e.preventDefault();
+
+            if( isApp() ) {
+                if(vcui.detect.isIOS){
+                    var obj = new Object();
+                    obj.command = "getPushStatus";
+                    obj.callback ="LGEPushSetting";
+                    var jsonString= JSON.stringify(obj);
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    android.getPushActive("LGEPushSetting");
+                }
+            }
+            
         });
 
         self.$highSlider.find('.slide-item a').on('click', function(e){
@@ -65,11 +113,9 @@ var lls = {
             var $flagText = $flag.find('.flag-title-text');
 
             if( date >= new Date(start) && date <= new Date(end)) {
-                console.log(222)
                 $flag.addClass('live-now')
                 $flag.find('.flag-title-text').text($flagText.data('liveText'))
             } else {
-                console.log(111)
                 $flag.removeClass('live-now')
                 $flag.find('.flag-title-text').text($flagText.data('expectedText'))
             }
