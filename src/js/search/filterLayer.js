@@ -501,7 +501,10 @@ var FilterLayer = (function() {
 
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
-
+            // BTOCSITE-2847 PLP > 상세필터 동작오류 start
+            self.$layFilter.find('.btn-filter.applied').removeClass('applied');
+            // BTOCSITE-2847 PLP > 상세필터 동작오류 end
+            
             //for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
             self._filterDefaultOpen();
         },
@@ -614,9 +617,9 @@ var FilterLayer = (function() {
                         }
                     } else {
                         //check or radio
-                        var item = data[key];
+                        var item = data[key];                        
                         item.forEach(function(val, index) {
-                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');
+                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');                       
                             if(findDm.length > 0) {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
@@ -628,6 +631,7 @@ var FilterLayer = (function() {
                                 //$pa.vcAccordion('setOption','useAnimate',true);
                                 */
                             }
+
                         });
 
                         //check top Category
