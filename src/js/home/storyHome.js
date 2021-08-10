@@ -46,7 +46,7 @@
                                 '<div class="tag-wrap">'+
                                     '<ul class="tags">'+
                                         '{{#each item in tagList}}'+           
-                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}">#{{item.tagName}}</a></li>'+
+                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{#raw title}}">#{{item.tagName}}</a></li>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
                                         '{{/each}}'+
                                     '</ul>'+
                                 '</div>'+
@@ -64,7 +64,7 @@
                 '<li>'+
                     '<div class="tag">'+
                         '<span class="text">#{{item.tagName}}</span>'+
-                        '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}"><span>구독</span></button>'+
+                        '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{item.tagName}}"><span>구독</span></button>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>'+
                 '</li>'+        
                 '{{/each}}'+
@@ -231,8 +231,6 @@
             
             requestTagMngPop(this);
         });
-
-        console.log(232323)
 
         $(document).on('click', '#popup-tagMnger .btn-group button', function(e){
             e.preventDefault();

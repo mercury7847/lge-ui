@@ -24,7 +24,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}" {{#if idx==0}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -40,7 +40,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -56,7 +56,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -736,17 +736,17 @@ var FilterLayer = (function() {
             if(foldFlag && arr.length > 0) {
                 var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
                 
-                //열려있지만 체크된 값이 없는 항목 체크
-                var closeIndex = [];
-                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');
-                $li.each(function(idx, findDm) {
-                    var $findDm = $(findDm);
-                    if($findDm.find('input:checked').length < 1) {
-                        var index = $findDm.index();
-                        // BTOCSITE-2847 PLP > 상세필터 동작오류 start
-                        //closeIndex.push(index);
-                         // BTOCSITE-2847 PLP > 상세필터 동작오류 end
-                    }
+                //열려있지만 체크된 값이 없는 항목 체크	
+                var closeIndex = [];	
+                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');	
+                $li.each(function(idx, findDm) {	
+                    var $findDm = $(findDm);	
+                    if($findDm.find('input:checked').length < 1) {	
+                        var index = $findDm.index();	
+                        // BTOCSITE-2847 PLP > 상세필터 동작오류 start	
+                        //closeIndex.push(index);	
+                         // BTOCSITE-2847 PLP > 상세필터 동작오류 end	
+                    }	
                 });
                 var $pa =  $list_ul.parents('.ui_filter_accordion');
                 arr.forEach(function(item, index) {

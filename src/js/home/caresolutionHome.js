@@ -39,7 +39,7 @@ var itemTmpl = '{{#each obj in list}}'+
     '                   {{#if obj.years1TotAmt}}'+
     '                       <p class="price">{{#raw obj.years1TotAmt}}</p>\n'+
     '                   {{/if}}'+
-    '                   <button type="button" class="btn border ui_care_detail_btn" data-url="{{obj.modelUrlPath}}"><span>자세히 보기</span></button>\n'+
+    '                   <button type="button" class="btn border ui_care_detail_btn" data-url="{{obj.modelUrlPath}}" data-contents="{{obj.modelDisplayName}}"><span>자세히 보기</span></button>\n'+
     '               </div>\n'+
     '           </div>\n'+
     '       </div>\n'+

@@ -805,10 +805,10 @@
                 //var $title = self.$myProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
                     //$title.find('.tit').text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
-                    self.$myProductTab.text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
+                    self.$myProductTab.text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')').attr('data-contents', '보유 제품 목록'); //BTOCSITE-1057 : data-contents 추가 2021-08-09;
                 } else {
                     //$title.find('.tit').text('보유 제품 목록');
-                    self.$myProductTab.text('보유 제품 목록');
+                    self.$myProductTab.text('보유 제품 목록').attr('data-contents', '보유 제품 목록'); //BTOCSITE-1057 : data-contents 추가 2021-08-09;
                 }
 
                 var arr = data.listData instanceof Array ? data.listData : [];
@@ -851,10 +851,10 @@
                 //var $title = self.$registProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
                     //$title.find('.tit').text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
-                    self.$registProductTab.text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
+                    self.$registProductTab.text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')').attr('data-contents', '등록 가능 제품'); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 } else {
                     //$title.find('.tit').text('등록 가능 제품');
-                    self.$registProductTab.text('등록 가능 제품');
+                    self.$registProductTab.text('등록 가능 제품').attr('data-contents', '등록 가능 제품'); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 }
 
                 self.setPageData(param.pagination);

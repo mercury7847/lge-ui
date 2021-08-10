@@ -1,10 +1,10 @@
 (function() {
     //최근검색어
-    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
+    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}" data-contents="최근 검색어">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}" data-contents="인기 검색어">{{index}}.{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //추천태그
-    var recommendItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
+    var recommendItemTemplate = '<li><a href="#{{text}}" data-contents="추천태그" class="rounded"><span class="text">#{{text}}</span></a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
 
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';

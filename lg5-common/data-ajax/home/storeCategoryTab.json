@@ -1,41 +1,59 @@
 {
-    "status":"success",
-    "message":"",
-    "data": {
-        "success": "Y",
-        "data" : [
-            {
-                "categoryId": "category1",
-                "categoryName": "TV/AV"               
-            },
-            {
-                "categoryId": "category2",
-                "categoryName": "IT"                
-            },
-            {
-                "categoryId": "category3",
-                "categoryName": "주방가전"
-            },
-            {
-                "categoryId": "category4",
-                "categoryName": "생활가전"
-            },
-            {
-                "categoryId": "category5",
-                "categoryName": "에어컨/에어케어"
-            },
-            {
-                "categoryId": "category6",
-                "categoryName": "모바일"
-            },
-            {
-                "categoryId": "category7",
-                "categoryName": "뷰티/의료기기"          
-            },
-            {
-                "categoryId": "category8",
-                "categoryName": "LG Objet Collection"
-            }
-        ]    
-    }
+    "data":
+    {
+        "data": [
+        {
+            "gnbId": "NV00011403",
+            "categoryName": "TV/AV",
+            "categoryId": "CT50000024"
+        },
+        {
+            "gnbId": "NV00011404",
+            "categoryName": "IT",
+            "categoryId": "CT50000045"
+        },
+        {
+            "gnbId": "NV00011405",
+            "categoryName": "주방가전",
+            "categoryId": "CT50000064"
+        },
+        {
+            "gnbId": "NV00011406",
+            "categoryName": "생활가전",
+            "categoryId": "CT50000100"
+        },
+        {
+            "gnbId": "NV00011407",
+            "categoryName": "에어컨/에어케어",
+            "categoryId": "CT50000130"
+        },
+        {
+            "gnbId": "NV00011408",
+            "categoryName": "모바일",
+            "categoryId": "CT50000003"
+        },
+        {
+            "gnbId": "NV00011409",
+            "categoryName": "뷰티/의료기기",
+            "categoryId": "CT50000152"
+        },
+        {
+            "gnbId": "NV00012544",
+            "categoryName": "LG SIGNATURE",
+            "categoryId": "CT50019001"
+        },
+        {
+            "gnbId": "NV00012545",
+            "categoryName": "LG Objet Collection",
+            "categoryId": "CT50019002"
+        },
+        {
+            "gnbId": "NV00012400",
+            "categoryName": "케어용품/소모품",
+            "categoryId": "CT50020000"
+        }],
+        "success": "Y"
+    },
+    "message": null,
+    "status": "success"
 }
