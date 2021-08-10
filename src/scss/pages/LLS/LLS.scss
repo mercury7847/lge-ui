@@ -7,8 +7,22 @@
     overflow:hidden;
     padding-bottom:146px;
 
+    .only-pc {
+        display: block !important;
+    }
+    .only-mo {
+        display: none !important;
+    }
+
     @include mobile {
         padding-bottom:77px;
+
+        .only-pc {
+            display: none !important;
+        }
+        .only-mo {
+            display: block !important;
+        }
     }
 
     .swiper-cover {

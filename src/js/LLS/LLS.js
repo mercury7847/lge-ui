@@ -40,7 +40,7 @@ var lls = {
             self.requestModal(this);
         });
 
-        function LGEPushSetting(flag, target){
+        function LGEPushSetting(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
@@ -50,9 +50,10 @@ var lls = {
                     title: msg.flagY,
                     ok: function(el) {
                         if( vcui.detect.isIOS ) {
-
+                            var jsonString= JSON.stringify({"command": "setMkt", "value": "Y"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                         } else {
-                            
+                            android.setAdPushActive("Y")
                         }
                     }
                 }, self.pushBtn);
@@ -61,7 +62,7 @@ var lls = {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
                     ok: function(el) {
-                        
+                        location.href = '/mobile-app/option'
                     }
                 }, self.pushBtn);
             }
@@ -76,13 +77,20 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    obj.command = "getPushStatus";
-                    obj.callback ="LGEPushSetting";
+                    obj.command = "setMkt";
+                    obj.value = "Y";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.getPushActive("LGEPushSetting");
+                    android.setAdPushActive("Y");
                 }
+
+                lgkorUI.alert("", {
+                    title: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
+                    ok: function(el) {
+                        
+                    }
+                }, _self);
             }
             
         });
@@ -241,21 +249,21 @@ $(function(){
     lls.init();
     
 
-    var prevWindowSize = window.innerWidth;
+    // var prevWindowSize = window.innerWidth;
 
-    $(window).on('resize', function(){
-        //모바일 사이즈로 변할때 한번만.
-        if( window.innerWidth < 768 && prevWindowSize >= 768) {
-            lls.backgroundSwitch();
-            prevWindowSize = window.innerWidth;
-            console.log('mo size')
-        }
+    // $(window).on('resize', function(){
+    //     //모바일 사이즈로 변할때 한번만.
+    //     if( window.innerWidth < 768 && prevWindowSize >= 768) {
+    //         lls.backgroundSwitch();
+    //         prevWindowSize = window.innerWidth;
+    //         console.log('mo size')
+    //     }
 
-        //PC 사이즈로 변할때 한번만.
-        if( window.innerWidth >= 768 && prevWindowSize < 768) {
-            lls.backgroundSwitch();
-            prevWindowSize = window.innerWidth;
-            console.log('pc size')
-        }
-    });
+    //     //PC 사이즈로 변할때 한번만.
+    //     if( window.innerWidth >= 768 && prevWindowSize < 768) {
+    //         lls.backgroundSwitch();
+    //         prevWindowSize = window.innerWidth;
+    //         console.log('pc size')
+    //     }
+    // });
 });
