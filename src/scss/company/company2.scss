@@ -435,42 +435,46 @@ img.m383 {max-width:383px!important}
 .company .esgWay_vision .titArea .v_tit {color:#da0f47; font-size:32px; font-weight:bold; line-height:46px; text-align:center}
 .company .esgWay_vision .titArea em {display:block; margin-top:12px; font-size:20px; font-weight:bold; line-height:30px; text-align:center}
 .company .esgWay_vision .contArea {position:relative; margin-top:30px; padding-top:60px}
-.company .esgWay_vision .contArea::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 307px); border-left:307px solid transparent; border-right:307px solid transparent; border-bottom:30px solid #f4f4f4}
-.company .esgWay_vision .contArea .tit.h4 {margin-bottom:19px}
+.company .esgWay_vision .contArea::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 357px); border-left:357px solid transparent; border-right:357px solid transparent; border-bottom:30px solid #f4f4f4}
+.company .esgWay_vision .contArea .tit.h4 {margin-bottom:10px}
 .company .esgWay_vision .contArea .box {border:1px solid #ddd; border-radius:8px; overflow:hidden}
 .company .esgWay_vision .contArea .box .title {min-height:106px; padding:24px 8px; color:#fff; font-size:18px; line-height:28px; text-align:center}
 .company .esgWay_vision .contArea .box .title strong {display:block; font-weight:bold}
+.company .esgWay_vision .contArea .box .title .label {width:36px; margin:0 auto 4px; border-radius:50%; background-color:#fff; color:#da0f47; line-height:36px; text-align:center}
 .company .esgWay_vision .contArea .box .title span {display:block}
 .company .esgWay_vision .contArea .box .text {margin-top:0; padding:22px 24px; text-align:center}
 .company .esgWay_vision .contArea .strategy {display:flex; justify-content:space-between}
 .company .esgWay_vision .contArea .strategy .box {width:calc(50% - 12px); border:0}
-.company .esgWay_vision .contArea .strategy .box .title {border:1px solid #da0f47; border-radius:8px 8px 0 0; background-color:#da0f47}
+.company .esgWay_vision .contArea .strategy .box .title {padding:20px 8px; border-radius:8px 8px 0 0; background-color:#da0f47}
 .company .esgWay_vision .contArea .strategy .box .text {border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision .contArea .task {display:flex; justify-content:space-between}
 .company .esgWay_vision .contArea .task .box {width:calc(25% - 18px); border:0}
-.company .esgWay_vision .contArea .task .box .title {border:1px solid #666; border-radius:8px 8px 0 0; background-color:#666}
+.company .esgWay_vision .contArea .task .box .title {border-radius:8px 8px 0 0; background-color:#666}
 .company .esgWay_vision .contArea .task .box .text {min-height:122px; border:1px solid #ddd; border-radius:0 0 8px 8px}
 .company .esgWay_vision .contArea .goal {display:flex; justify-content:space-between}
 .company .esgWay_vision .contArea .goal .box {width:calc(25% - 18px); min-height:325px; padding:23px 20px}
 .company .esgWay_vision .contArea .base .box {border:0; border-radius:0}
-.company .esgWay_vision .contArea .base .box .title {border:1px solid #666; border-radius:8px 8px 0 0; background-color:#666}
+.company .esgWay_vision .contArea .base .box .title {border-radius:8px 8px 0 0; background-color:#da0f47}
 .company .esgWay_vision .contArea .base .box ul.bull {display:flex; justify-content:space-between; padding:22px 24px; border:1px solid #ddd; border-radius:0 0 8px 8px}
-.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 36px)}
+.company .esgWay_vision .contArea .base .box ul.bull > li {width:calc(25% - 36px); padding-right:12px}
 .company .esgWay_vision .contArea .base .box ul.bull > li:nth-child(2) {width:calc(50% + 32px)}
-.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:20px; padding-left:40px; border-left:1px dashed #ddd}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li {position:relative; margin-left:20px; padding-left:40px}
 .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {left:31px}
+.company .esgWay_vision .contArea .base .box ul.bull > li + li::after {content:''; display:block; position:absolute; width:0; height:0; left:-14px; top:calc(50% - 29px); border-left:14px solid #f4f4f4; border-top:29px solid transparent; border-bottom:29px solid transparent}
 .company .esgWay_vision .contArea .base .box ul.bull > li strong {margin-bottom:0}
 
 .company .esgWay_vision_subs {display:flex; justify-content:space-between; max-width:912px; margin:0 auto}
-.company .esgWay_vision_subs .before {display:flex; flex-direction:column; justify-content:space-between; width:calc(50% - 58px)}
-.company .esgWay_vision_subs .before .box + .box {margin-top:12px}
+.company .esgWay_vision_subs .before {display:flex; flex-direction:column; width:calc(50% - 58px)}
+.company .esgWay_vision_subs .before .boxs {height:calc(100% - 46px); display:flex; flex-direction:column; justify-content:space-between}
+.company .esgWay_vision_subs .e_tit_area {margin-bottom:20px}
+.company .esgWay_vision_subs .e_tit_area .e_tit {color:#da0f47; font-size:18px; font-weight:bold; line-height:26px; text-align:center}
 .company .esgWay_vision_subs .before .box .e_tit {display:flex; justify-content:center; align-items:center; width:100%; height:78px; border-radius:8px; background-color:#666; color:#fff; font-size:18px; line-height:28px; text-align:center}
 .company .esgWay_vision_subs .before .box.goal {position:relative}
-.company .esgWay_vision_subs .before .box.goal::before {content:''; display:block; position:absolute; width:0; height:0; top:-180px; left:calc(50% - 8px); border-bottom:10px solid #aaa; border-left:8px solid transparent; border-right:8px solid transparent}
-.company .esgWay_vision_subs .before .box.goal::after {content:''; display:block; position:absolute; width:1px; height:168px; top:-170px; left:calc(50% - 0.5px); background-color:#aaa}
-@media screen and (max-width:887px){
-    .company .esgWay_vision_subs .before .box.goal::before {top:-160px}
-    .company .esgWay_vision_subs .before .box.goal::after {height:148px; top:-150px}
+.company .esgWay_vision_subs .before .box.goal::before {content:''; display:block; position:absolute; width:0; height:0; top:-156px; left:calc(50% - 8px); border-bottom:10px solid #aaa; border-left:8px solid transparent; border-right:8px solid transparent}
+.company .esgWay_vision_subs .before .box.goal::after {content:''; display:block; position:absolute; width:1px; height:146px; top:-146px; left:calc(50% - 0.5px); background-color:#aaa}
+@media screen and (max-width:794px){
+    .company .esgWay_vision_subs .before .box.goal::before {top:-104px}
+    .company .esgWay_vision_subs .before .box.goal::after {height:94px; top:-94px}
 }
 .company .esgWay_vision_subs .before .box.goal .e_tit {background-color:#000; border-radius:8px 8px 0 0}
 .company .esgWay_vision_subs .before .box .cont {padding:22px 30px 22px 42px; border:1px solid #ddd; border-radius:0 0 8px 8px}
@@ -539,10 +543,10 @@ img.m383 {max-width:383px!important}
 .company .feed_box .box_tit.g {background-color:#666}
 .company .feed_box .feed_list {margin-top:12px}
 .company .feed_box .feed_list > ul {display:flex; justify-content:space-between}
-.company .feed_box .feed_list > ul > li {width:calc(25% - 18px); padding:28px 25px; border:1px solid #ddd; border-radius:8px}
-.company .feed_box .feed_list > ul > li.wide {width:calc(50% - 12px)}
-.company .feed_box .feed_list > ul > li .titArea {display:flex; align-items:center; min-height:56px}
-.company .feed_box .feed_list > ul > li .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56; text-align:center; word-break:keep-all}
+.company .feed_box .feed_list > ul > li {width:calc(33.3333% - 16px); padding:20px 25px; border:1px solid #ddd; border-radius:8px}
+.company .feed_box .feed_list > ul > li .titArea {margin-bottom:19px; padding-bottom:20px; border-bottom:1px dashed #ddd}
+.company .feed_box .feed_list > ul > li .titArea .tit {margin-bottom:4px; font-size:18px; font-weight:bold; line-height:28px; text-align:center; word-break:keep-all}
+.company .feed_box .feed_list > ul > li .titArea .desc {font-size:16px; line-height:26px; text-align:center}
 
 .company .estim_grp {margin-bottom:30px}
 .company .estim_grp > img {display:block; margin:0 auto}
@@ -595,6 +599,17 @@ img.m383 {max-width:383px!important}
 .company ul.lg_motif_list > li .m_box > img {width:100%}
 .company ul.lg_motif_list > li .m_box span {display:block; font-size:14px; font-weight:500; line-height:24px}
 .company ul.lg_motif_list > li .m_box p {margin-top:24px; font-size:14px; line-height:24px}
+
+.company .home_appliances > ul {display:flex; flex-wrap:wrap; border-bottom:1px solid #ddd}
+.company .home_appliances > ul > li {display:flex; flex-wrap:wrap; width:50%}
+.company .home_appliances > ul > li .home_box {width:50%}
+.company .home_appliances > ul > li .home_box .home_thumb {width:100%; height:190px; background-color:#f4f4f4}
+.company .home_appliances > ul > li .home_box .home_thumb img {display:block; height:100%; margin:0 auto}
+.company .home_appliances > ul > li .home_box .home_tit {min-height:55px; padding:14.5px 4px; background-color:#da0f47}
+.company .home_appliances > ul > li .home_box .home_tit span {display:block; color:#fff; font-size:16px; font-weight:500; line-height:26px; text-align:center}
+.company .home_appliances > ul > li .home_box .home_text {height:calc(100% - 245px); padding:22px 24px; border-left:1px solid #ddd; font-size:16px; line-height:26px; word-break:keep-all}
+.company .home_appliances > ul > li:nth-child(1) .home_box:first-of-type .home_text {border-left:0}
+.company .home_appliances > ul > li:nth-child(3) .home_box:first-of-type .home_text {border-left:0}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -996,7 +1011,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.esgway_vision > ul > .lists.on .head .accord-btn {padding-top:0}
 .company .accordion-wrap.esgway_vision > ul > .lists .head .accord-btn::after {top:auto; bottom:-12px; left:calc(50% - 12px); background:url(/kr/images/company/icon/ico-plus-bg_black.svg) no-repeat center; background-size:24px 24px}
 .company .accordion-wrap.esgway_vision > ul > .lists.on .head .accord-btn::after {background:url(/kr/images/company/icon/ico-minus-bg_black.svg) no-repeat center; background-size:24px 24px}
-.company .accordion-wrap.esgway_vision > ul > .lists .head .accord-btn .title {width:calc(100% + 2px); max-height:none; margin:-1px 0 0 -1px; padding:12px; border-radius:8px 8px 0 0; background-color:#da0f47; color:#fff; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
+.company .accordion-wrap.esgway_vision > ul > .lists .head .accord-btn .title {width:calc(100% + 2px); max-height:none; margin:-1px 0 0 -1px; padding:40px 10px 10px; border-radius:8px 8px 0 0; background-color:#da0f47; color:#fff; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
+.company .accordion-wrap.esgway_vision > ul > .lists .head .accord-btn .label {position:absolute; display:block; width:28px; top:10px; left:calc(50% - 14px); border-radius:50%; background-color:#fff; color:#da0f47; font-size:15px; font-weight:bold; line-height:28px; text-align:center}
 .company .accordion-wrap.esgway_vision > ul > .lists .head .accord-btn .sub {display:block; padding:12px 12px 20px; font-size:14px; line-height:22px; text-align:center}
 .company .accordion-wrap.esgway_vision > ul > .lists .accord-cont {padding:0 18px 22px}
 .company .accordion-wrap.esgway_vision > ul > .lists .accord-cont .content .sect {padding-top:12px; border-top:1px dashed #ddd; color:#000}
@@ -1255,6 +1271,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.cmSystem > li ul li + li {margin-top:2px!important}
 
     .company ul.esg_logos > li {width:calc(50% - 12px)}
+
+    .company .home_appliances > ul > li {width:100%}
+    .company .home_appliances > ul > li .home_box .home_tit {min-height:52px}
+    .company .home_appliances > ul > li .home_box .home_tit span {font-size:14px; line-height:22px}
+    .company .home_appliances > ul > li .home_box .home_text {padding:16px; border-left:0; font-size:14px; line-height:22px}
+    .company .home_appliances > ul > li .home_box +.home_box .home_text {border-left:1px solid #ddd}
 }
 
 @media screen and (max-width:952px){
@@ -1280,9 +1302,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .graph.lgway1 > .only_pc {display:none!important}
     .company .graph.lgway1 > .only_mo {display:block!important; width:100%; max-width:508px; margin:0 auto}
-
-    .company .esgWay_vision_subs .before .box.goal::before {top:-152px}
-    .company .esgWay_vision_subs .before .box.goal::after {height:140px; top:-142px}
+}
+@media screen and (max-width:520px){
+    .company .home_appliances > ul > li .home_box .home_tit {display:flex; justify-content:center; align-items:center}
+    .company .home_appliances > ul > li:nth-child(3) .home_box .home_tit {min-height:73px}
+    .company .home_appliances > ul > li:nth-child(3) .home_box .home_text {height:calc(100% - 167px)}
+}
+@media screen and (max-width:421px){
+    .company .home_appliances > ul > li:nth-child(4) .home_box .home_tit {min-height:73px}
+    .company .home_appliances > ul > li:nth-child(4) .home_box .home_text {height:calc(100% - 167px)}
 }
 
 /* 모바일 */
@@ -1815,18 +1843,21 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .esgWay_vision .titArea .v_tit {font-size:20px; line-height:30px}
     .company .esgWay_vision .titArea em {margin-top:9px; font-size:16px; line-height:24px}
     .company .esgWay_vision .contArea {position:relative; margin-top:19px; padding-top:35px}
-    .company .esgWay_vision .contArea .tit.h4 {margin-bottom:10px}
     .company .esgWay_vision .contArea::before {left:calc(50% - 131px); border-left:131px solid transparent; border-right:131px solid transparent; border-bottom:20px solid #f4f4f4}
     .company .esgWay_vision .contArea .base .box {width:100%; font-size:14px; line-height:22px}
-    .company .esgWay_vision .contArea .base .box .title {width:100%; min-height:70px; padding:12px; border-radius:8px 8px 0 0; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
+    .company .esgWay_vision .contArea .base .box .title {width:100%; min-height:70px; padding:10px; border-radius:8px 8px 0 0; font-size:15px; font-weight:normal; line-height:23px; text-align:center}
     .company .esgWay_vision .contArea .base .box .title strong {font-weight:normal}
+    .company .esgWay_vision .contArea .base .box .title .label {width:28px; margin:0 auto 2px; font-size:15px; font-weight:bold; line-height:28px}
     .company .esgWay_vision .contArea .base .box ul.bull {flex-direction:column}
     .company .esgWay_vision .contArea .base .box ul.bull > li {width:100%!important; padding:0 0 0 8px}
     .company .esgWay_vision .contArea .base .box ul.bull > li + li {margin-top:13px!important; margin-left:0; padding:12px 0 0 8px; border-left:0; border-top:1px dashed #ddd}
     .company .esgWay_vision .contArea .base .box ul.bull > li + li::before {width:2px; height:2px; left:0; top:22px}
+    .company .esgWay_vision .contArea .base .box ul.bull > li + li::after {display:none}
     
     .company .esgWay_vision_subs {flex-direction:column; max-width:100%; width:100%}
     .company .esgWay_vision_subs .before {width:100%}
+    .company .esgWay_vision_subs .e_tit_area {margin-bottom:10px}
+    .company .esgWay_vision_subs .e_tit_area .e_tit {font-size:15px; line-height:22px}
     .company .esgWay_vision_subs .before .box .e_tit {height:48px; font-size:15px}
     .company .esgWay_vision_subs .before .box + .box {margin-top:12px}
     .company .esgWay_vision_subs .before .box.goal {margin-top:30px}
@@ -1930,4 +1961,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.lg_motif_list > li .m_box {margin-top:10px; padding:18px 20px}
     .company ul.lg_motif_list > li .m_box span {font-size:13px; line-height:22px}
     .company ul.lg_motif_list > li .m_box p {margin-top:12px}
+
+    .company .home_appliances > ul > li .home_box .home_thumb {height:95px}
+    .company .home_appliances > ul > li .home_box .home_tit {font-size:14px; line-height:22px}
+    .company .home_appliances > ul > li .home_box .home_text {height:calc(100% - 147px); font-size:14px; line-height:22px}
 }
