@@ -107,10 +107,11 @@
 
         // BTOCSITE-1814 이벤트탭 추가
         border-bottom: 1px solid $color-border;
+        overflow: visible !important;
 		&:before,
         &:after {
             position: absolute;
-            top: 0;
+            top: 1px;
             z-index: 1;
             width: 40px;
             height: 100%;
@@ -141,7 +142,7 @@
 
         .nav {
             height:37px;
-            overflow:hidden;
+            // overflow:hidden;
             white-space: nowrap;
             // display: table;
             display:flex;
