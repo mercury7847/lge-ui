@@ -1,7 +1,13 @@
 function moveDetail(el, detailUrl, windowHeight) {
     var id = $(el).attr("href").replace("#", "");
+    var currentUrl = detailUrl+"-"+id; //BTOCSITE-3617 센터 찾기 메뉴 및 센터 정보 상세 페이지 분기 개발 요청
     lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
-    window.open(detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+
+    //BTOCSITE-3617 센터 찾기 메뉴 및 센터 정보 상세 페이지 분기 개발 요청
+    if( lgkorUI.getParameterByName("Thinq_cs") == 'y') {
+        currentUrl = currentUrl + "?Thinq_cs=y";
+    }
+    window.open(currentUrl, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
 }
 
 function moveConsultPage() {
@@ -134,6 +140,10 @@ function moveConsultPage() {
             self.$searchResultContainer = $('.result-list-box');
 
             self._resize();
+
+            if( lgkorUI.getParameterByName("Thinq_cs") == 'y') {
+                self.$container.addClass('Thinq_cs');
+            }
             
             vcui.require(['ui/centerMap'], function () {
                 lgkorUI.requestAjaxData(self.configUrl, {}, function(result){
@@ -204,7 +214,7 @@ function moveConsultPage() {
                             '       {{# } #}}' +
                             '       <div class="btn-group">'+
                             '           {{#if typeof consultUrl != "undefined"}}'+
-                            '           <a href="{{consultUrl}}" class="btn size" onclick="moveConsultPage();" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
+                            '           <a href="{{consultUrl}}" class="btn size btnVisit" onclick="moveConsultPage();" target="_blank" title="새창으로 열림 - {{shopName}}">방문 예약</a>'+
                             '           {{/if}}'+
                             '           <a href="#{{shopID}}" class="btn size detail-view" onclick="moveDetail(this, \''+self.detailUrl+'\', '+self.windowHeight+');" title="새창으로 열림 - {{shopName}}">상세 보기</a>'+
                             '       </div>'+
@@ -279,8 +289,16 @@ function moveConsultPage() {
         _openWindowPop : function(target){
             var self = this;
             var id = $(target).attr("href").replace("#", "");
+            var currentUrl = self.detailUrl+"-"+id; //BTOCSITE-3617 센터 찾기 메뉴 및 센터 정보 상세 페이지 분기 개발 요청
             lgkorUI.setAcecounter('www.lge.co.kr/acecount/centerDetailClick.do', '/acecount/centerDetailClickm.do');
-            window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+
+
+            //BTOCSITE-3617 센터 찾기 메뉴 및 센터 정보 상세 페이지 분기 개발 요청
+            if( lgkorUI.getParameterByName("Thinq_cs") == 'y') {
+                currentUrl = currentUrl + "?Thinq_cs=y";
+            }
+
+            window.open(currentUrl, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
         },
 
         _bindEvents: function(){

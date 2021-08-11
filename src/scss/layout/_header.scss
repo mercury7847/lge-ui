@@ -70,7 +70,7 @@
 .header-wrap {
     max-width: (1680px + 80px);
     margin: 0 auto;
-    padding-bottom: 16px;
+    /* padding-bottom: 16px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     @include mobile {
         max-width: 100%;
         padding: 0 16px;
@@ -96,23 +96,63 @@
     padding: 18px 0;
 
     @include mobile {
-        padding:10px 0 11px;
+        padding: 10px 0 11px;
     }
 }
 
 @include mobile {
     .mobile-nav-wrap {
-        //padding: 0 10px;
+        position:relative;
         font-size: 0;
+
+        // BTOCSITE-1814 이벤트탭 추가
+        border-bottom: 1px solid $color-border;
+		&:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            width: 40px;
+            height: 100%;
+            content: '';
+            display:none;
+
+        }
+        &:before {
+            left: 0;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+        }
+        &:after {
+            right: 0;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        }
+
+      
+        &.left:before,  
+        &.right:after {
+            display:block;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+
+
+          }
+
         .nav {
-            //margin-top: 14px;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            border-bottom: 1px solid $color-border;
+            height:37px;
+            overflow:hidden;
+            white-space: nowrap;
+            // display: table;
+            display:flex;
+            // border-bottom: 1px solid $color-border;
             > li {
                 display: inline-block;
                 border-top: 0;
+                margin: 0 10px;
+                &:first-child {
+                    margin-left:18px;
+                }
                 &.icon-update {
                     .nav-item {
                         &:before {
@@ -129,7 +169,7 @@
                 }
             }
             .nav-item {
-                padding: 6px 6px 8px;
+                padding: 6px 0 8px;
                 font-weight: 500;
                 @include font($font-medium - 1,23px);
                 color: $color-gray-1;
@@ -145,11 +185,12 @@
                         position: absolute;
                         top: auto;
                         bottom: -1px;
-                        right: 6px;
-                        left: 6px;
-                        width: auto;
+                        right: 0;
+                        left: 0;
+                        width: 100%;
                         height: 4px;
                         background-color: $color-default;
+                        transform: rotate(0);
                     }
                 }
             }
@@ -495,8 +536,14 @@
     overflow: hidden;
     font-size: 0;
     white-space: nowrap;
+    padding-left: 42px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
 
-    padding-left: 28px;
+    /* BTOCSITE-1937 스프레드 메뉴 수정 */
+    @include pc {
+        &.is-horizon-scroll {
+            padding-left:62px;
+        }
+    }
 
     @include mobile {
         padding-left: 0;
@@ -508,10 +555,14 @@
 .nav-brand-gate {
     display: inline-block;
     vertical-align: top;
+    margin-left:24px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     @include pc {
         .title {
             display: none;
         }
+    }
+    @include mobile { 
+        margin-left:0; /* BTOCSITE-1937 스프레드 메뉴 수정 */
     }
 
     .brand-link {
@@ -627,6 +678,10 @@
             display: inline-block;
             padding-left: 24px;
             vertical-align: top;
+            /* BTOCSITE-1937 스프레드 메뉴 수정 */
+            &:first-child {
+                padding-left:0;
+            }
             &:last-child {
                 padding-right: 0;
             }
@@ -670,10 +725,10 @@
     .nav-item {
         position: relative;
         display: block;
-        padding: 4px 0;
-        font-weight: 500;
+        padding: 4px 0 12px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
+        font-weight: 500; /* BTOCSITE-1937 스프레드 메뉴 수정 */
         font-size: $font-medium;
-        line-height: 26px;
+        line-height: 24px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
         vertical-align: top;
 
         .icon-nav {
@@ -692,7 +747,18 @@
             &:focus,
             &.active {
                 font-weight: 700;
-                @include text-underline(7px,$color-default);
+                /* BTOCSITE-1937 스프레드 메뉴 수정 : 삭제 */
+                /* @include text-underline(7px,$color-default); */
+				/* BTOCSITE-1937 스프레드 메뉴 수정 : 삭제*/
+                &:after {
+                    content:"";
+                    position: absolute;
+                    bottom:0;
+                    left:0;
+                    width:100%;
+                    height:4px;
+                    background: #000;
+                }
                 .icon-nav {
                     transform: rotate(135deg);
                 }
@@ -723,6 +789,7 @@
                     & + .nav-category-layer {
                         display: block;
                     }
+                    
                     &:after {
                         transform: rotate(0);
                     }
@@ -818,10 +885,11 @@
 
         .nav-category-inner {
             position: absolute;
-            top: 110px;
+            top: 105px; /* BTOCSITE-1937 스프레드 메뉴 수정 */
             left: 0;
             right: 0;
             z-index: 103;
+            border-top:1px solid #ddd; /* BTOCSITE-1937 스프레드 메뉴 수정 */
             background-color: #fff;
         }
         .nav-category-wrap {
@@ -870,7 +938,7 @@
                     }
                 }
                 @media screen and (max-width: 1240px) {
-                    min-width: 33.33%;
+                    width: 33.33%;
                     &.additional-category {
                         right: 0;
                         width: inherit;
@@ -919,6 +987,13 @@
                         padding-right: 18px;
                         @include font-small;
                         color: #111;
+                        
+                        //BTOCSITE-1937
+                        &:hover, &:focus {
+                            @include pc {
+                                text-decoration: underline;
+                            }
+                        }
                         &[target='_blank'] {
                             background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right top 5px;
                             @include mobile {
@@ -962,7 +1037,9 @@
     .category-banner {
         position: relative;
         &.ui_carousel_slider {
+            overflow:hidden;
             padding-bottom: 34px;
+            box-sizing: border-box;
         }
         .indi-wrap {
             position: absolute;
@@ -975,7 +1052,7 @@
             }
             .ui_carousel_play {
                 position: absolute;
-                top: -3px;
+                top: 3px;
                 right: 0;
                 .btn-play {
                     position: relative;
@@ -1002,7 +1079,9 @@
             //display: none;
             .btn-arrow {
                 position: absolute;
-                top: 6.563vw;
+                
+                top: calc(50% - 37px); /* BTOCSITE-1937 스프레드 메뉴 수정 */
+                transform:translateY(-50%);  /* BTOCSITE-1937 스프레드 메뉴 수정 */
                 box-shadow:2px 4px 16px 0 rgba(#000, .14);
                 &:before {
                     background-image: url('/lg5-common/images/icons/btn-arr-32x32.svg');
@@ -1031,7 +1110,7 @@
                 white-space: normal;
                 .text {
                     font-weight: 700;
-                    @include font-medium;
+                    @include font-large; //BTOCSITE-1937
                     @include textEllipsisClamp(2);
                 }
             }
@@ -1079,7 +1158,7 @@
         height: 34px;
         &:after {
             position: absolute;
-            top: 1px;
+            top: 5px;
             width: 32px;
             height: 32px;
             border-radius: 16px;
@@ -1600,6 +1679,91 @@
         }
     }
 }
+
+/* BTOCSITE-1937 스프레드 메뉴 수정 start */
+.super-category-nav {
+    &.swiper-container {
+        text-align: left;
+        max-width:1760px;
+        margin:0 auto 6px;
+        padding:25px 40px 0;
+        touch-action:pan-y;
+        position:relative;
+        overflow:hidden;
+        list-style:none;
+        z-index:1;
+
+        .swiper-notification {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: -1000;
+        }
+
+        .swiper-wrapper, 
+        .swiper-slide {
+            transform:translate3d(0px, 0,0);
+        }
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height:100%;
+            z-index:1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box;
+        }
+        .swiper-slide {
+            flex-shrink: 0;
+            display: inline-block;
+            position: relative;
+            width:auto;
+            margin-left:16px;
+            padding-bottom:2px;
+            transition-property: transform;
+    
+            &:first-child {
+                margin-left:0;
+            }
+            a {
+                display: inline-block;
+                font-size:14px;
+                line-height:20px;
+                font-weight:500;
+                color:#666;
+            }
+
+            &.on {
+                a {
+                    color:#000;
+                }
+                &:before {
+                    content:"";
+                    position: absolute;
+                    display: block;
+                    height:2px;
+                    left:0;
+                    width:100%;
+                    bottom:0;
+                    background: #000;
+                }
+            }
+        }
+    }
+}
+.super-category-content {
+    display: none;
+    &.on {
+        display: block;
+    }
+
+    .ui_carousel_hidden {
+        display: none !important;
+    }
+}
+/* BTOCSITE-1937 스프레드 메뉴 수정 end */
 
 /* 통합검색 레이어팝업 */
 @import "../pages/UTS/SERF9001";

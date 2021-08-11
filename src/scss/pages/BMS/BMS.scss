@@ -10,4 +10,74 @@
 @import "../../components/KRP0039";
 @import "../../components/KRC0032-html";
 
+.event-membership {
+    border-top: 1px solid #ddd;
+    .slide-wrap.hero-banner .slide-content .slide-track, .slide-wrap.hero-banner .slide-content .slide-conts {
+        height: 640px;
+    }
+    .KRC0015 .align-top.text-area .text-wrap {
+        padding-top: 102px;
+    }
+    .KRC0015 .box-align-left .text-wrap .inner {
+        margin-left: -111px;
+    }
+    .KRC0015 .title * {
+        font-size: 56px;
+        line-height: 74px;
+        font-weight: 700;
+    }
+    .component.KRC0015{
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 1920px){
+    .event-membership .KRC0015 .box-align-left .text-wrap .inner {
+        margin-left: auto;
+    }
+
+}
+
+@media screen and (max-width: 767px){
+    .event-membership{
+        .KRC0015 .align-top.text-area .text-wrap {
+            padding-top:36px;
+        }
+        .slide-wrap.hero-banner .slide-content .slide-track, .slide-wrap.hero-banner .slide-content .slide-conts {
+            height: 326px !important;
+        }
+        .component-wrap.bg-white .component .fc-black, .component-wrap.bg-white .component .fc-black p {
+            font-size: 25px;
+            line-height: 32px;
+            text-align: center;
+            br{
+                display: none;
+            }
+            span{
+                display: block;
+                font-size: 25px;
+                line-height: 32px;
+            }
+        }
+        .component.KRC0015{
+            margin-bottom: 0;
+        }
+    }
+    .KRC0015 .hero-banner .visual-area img.mobile{
+        width: 100% !important;
+        height:auto !important;
+    }
+    .sub-main.event-membership {
+        padding-bottom: 10px !important;
+        border-top:none;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .KRC0015 .hero-banner .visual-area img.mobile{
+        height:100% !important;
+    }
+
+}
+
 // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 :  신규작성 end

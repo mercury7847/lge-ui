@@ -36,15 +36,20 @@ gulp.task("browser-sync", () => {
             },
             // BTOCSITE-27 swipe 테스트용 
             function(req, res, next){
-                let lastseq = req.url.split('/').pop();
+                let lastseq = req.url == '/' ? '/' : req.url.split('/').pop();
                 
-                if (lastseq == 'story' || lastseq == 'store' || lastseq == 'support' || lastseq == 'care-solutions' || req.url == '/'){                    
-                    console.log('req url', req.url);
-                    console.log('lastseq', lastseq);
-                    if (req.url !== '/guide' && req.url !== '/guide/'){
-                        //res.setHeader('Content-Type', 'text/html');
-                        res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
-                    }
+                switch(lastseq) {
+                    case '/' :
+                    case 'story' :
+                    case 'store' :
+                    case 'support' :
+                    case 'care-solutions' :
+                    case 'membership-event' : // BTOCSITE-1814 이벤트탭 추가
+                        if (req.url !== '/guide' && req.url !== '/guide/'){
+                            //res.setHeader('Content-Type', 'text/html');
+                            res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
+                        }
+                    break;
                 }
                 next();
             }
@@ -184,6 +189,7 @@ gulp.task("scripts", () => {
         "jsCompile:event",
         "jsCompile:home",
         "jsCompile:objet",
+        "jsCompile:lls",
         "jsCompile:company"
     ]);
 });
@@ -335,6 +341,17 @@ gulp.task("jsCompile:objet", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/objet/"))
 );
+
+// lls 추가 2021-08-04
+gulp.task("jsCompile:lls", () => gulp
+    .src(src + "/js/lls/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(terser())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/lls/"))
+);
 /* 회사소개 추가 2021-07-26 */
 gulp.task("jsCompile:company", () => gulp
 		.src(src + "/js/company/**/*")
@@ -433,6 +450,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/event/**", ["jsCompile:event"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/home/**", ["jsCompile:home"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/lls/**", ["jsCompile:lls"]).on('change', browserSync.reload); // lls 추가 2021-08-04
     gulp.watch(src + "/js/company/**", ["jsCompile:company"]).on('change', browserSync.reload);	// 회사소개 추가 2021-07-26
 
     //static

@@ -20,7 +20,8 @@ function MainSwiper( ID ){
         '#store' : 'store',
         '#story' : 'story',
         '#support' : 'support',
-        '#care-solutions' : 'care-solutions'
+        '#care-solutions' : 'care-solutions',
+        '#benefits' : 'benefits' // BTOCSITE-1814
     };
 
     this.urlToHash = {
@@ -28,16 +29,15 @@ function MainSwiper( ID ){
         'store' : '#store',
         'story' : '#story',
         'support' : '#support',
-        'care-solutions' : '#care-solutions'
+        'care-solutions' : '#care-solutions',
+        'benefits' : '#benefits' // BTOCSITE-1814
     };
 
     this.hashArray = [
-        'home', 'store', 'story', 'support', 'care-solutions'
+        'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
     ];
 
-    if(vcui.detect.isMobileDevice){
-        this.init();
-    }
+    this.init();
     
 }
 
@@ -127,6 +127,17 @@ MainSwiper.prototype = {
                     
 
                     mainSwiper.currentIdx = swiper.activeIndex;
+                    // 20100811 BTOCSITE-1814 
+                    mainSwiper.$tabs.parent().removeClass('on').eq(swiper.activeIndex).addClass('on');
+                    mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+                    $('#mobileNav').vcSmoothScroll("scrollToActive");
+                    if(swiper.activeIndex === 0 ) {
+                         $('#mobileNav').vcSmoothScroll("scrollTo",0,0);
+                    }
+                    if(swiper.activeIndex === swiper.slides.length -1) {
+                       $('#mobileNav').vcSmoothScroll("scrollTo",window.innerWidth - self.$el.find('ul').width() ,0);
+                    }
+                    //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
@@ -190,7 +201,7 @@ MainSwiper.prototype = {
 
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
             
-            var isCarouselList = !!$(e.target).closest('.ui_carousel_slider').not('.ui_product_carousel_slider').length;
+            var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
             //var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;

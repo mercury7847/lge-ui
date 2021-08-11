@@ -1,12 +1,17 @@
+if ('scrollRestoration' in history) {
+    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
+    history.scrollRestoration = 'manual';
+}
+
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
     //최근검색어
-    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
+    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}" data-contents="최근 검색어">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //연관검색어
-    var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var relatedItemTemplate = '<li><a href="#{{text}}" data-contents="연관 검색어">{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}" data-contents="인기 검색어">{{index}}.{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
@@ -27,8 +32,13 @@
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
+                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                         '<div class="info-btm">' +
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                            '<div class="care">'+
+                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
+                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
+                            '</div>'+
+                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                             '<div class="text hashtag-wrap">' +
                                 '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                             '</div>' +
@@ -112,6 +122,7 @@
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
+                $(window).scrollTop(0); //BTOCSITE-2216
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
@@ -891,8 +902,19 @@
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        $(window).scrollTop(self.scrollHref);
-                        self.scrollHref = null;
+                        // $(window).scrollTop(self.scrollHref);
+                        // self.scrollHref = null;
+                        // BTOCSITE-2216
+                        if( $('.result-list img').last().length ) {
+                            $('.result-list img').last().on('load', function(){
+                                $('html,body').stop().animate({scrollTop: self.scrollHref});
+                                self.scrollHref = null;
+                            });
+                        } else {
+                            $('html,body').stop().animate({scrollTop: self.scrollHref});
+                            self.scrollHref = null;
+                        }
+ 
                     }
                 });
             },

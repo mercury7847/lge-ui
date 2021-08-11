@@ -6,11 +6,20 @@
                 '{{#if endEvent}}<span class="event-end"><em>종료된 이벤트</em></span>{{/if}}' +
                 '<span class="flag-wrap bg-type">{{#each item in categoryFlag}}<span class="flag"><span class="blind">제품 카테고리</span>{{item}}</span>{{/each}}</span>' +
             '</span>' +
+            // BTOCSITE-3367 마이페이지 > 활동 관리 > 참여 이벤트 : 당첨자발표일 노출관련 "winViewFlag" : "Y", "winViewFlag" : "N"
             '<div class="info">' +
                 '<div class="flag-wrap bar-type">{{#each item in eventFlag}}<span class="flag"><span class="blind">이벤트 구분</span>{{item}}</span>{{/each}}</div>' +
                 '<p class="tit"><span class="blind">이벤트 제목</span>{{title}}</p>' +
-                '<p class="date"><span class="blind">이벤트 기간</span>{{date}}</p>' +
+                '<p class="date"><span class="blind">이벤트 기간</span>'+
+                '{{#if winViewFlag === "Y"}}'+
+                '<p class="date">{{date}}</p>'+
+                '{{/if}}'+
+                '{{#if winViewFlag === "N"}}'+
+                '<p class="date"></p>'+
+                '{{/if}}'+
+                +'</p>' +
             '</div>' +
+            // BTOCSITE-3367 마이페이지 > 활동 관리 > 참여 이벤트 : 당첨자발표일 노출관련 "winViewFlag" : "Y", "winViewFlag" : "N"
         '</a>' +
         '{{#if showEndEventUrl}}<a href="{{#if endEventUrl}}{{endEventUrl}}{{#else}}#{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
     '</div></li>'

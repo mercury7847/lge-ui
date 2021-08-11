@@ -1,19 +1,76 @@
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {packages:["corechart"]});
+	google.charts.setOnLoadCallback(drawChart);
+	var data, options, chart;
+	function drawChart() {
+		data = google.visualization.arrayToDataTable([
+			['',  '', {role: 'tooltip'}],
+			['국내해외영업직군',  1249, '국내해외영업직군\n1249명'],
+			['해외 PM',  290, '해외 PM\n290명'],
+			['해외법인 조직책임자', 89, '해외법인 조직책임자\n89명']
+		]);
+		options = {
+			pieHole: 0.62,
+			pieSliceText: 'value',
+			chartArea: {width: '100%', height: '80%',top:'4%'},
+			slices: {
+				0: { color: '#000000', offset: 0},
+				1: { color: '#aaaaaa', offset: 0, textStyle :{ color: '#000'}},
+				2: { color: '#e81953', offset: 0}
+			},
+			pieSliceTextStyle : {
+				fontSize: '16',
+				bold:true
+			},
+			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
+			fontName:'Noto Sans'
+		};
+        checkSize();
+		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+		/*chart.draw(data, options);*/
+	}
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			options.legend.textStyle.fontSize="12";
+			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
+		}
+		else{
+			options.legend.textStyle.fontSize="16";
+			options.pieSliceTextStyle.fontSize="16";
+		}
+	}
+	$(window).resize(function() {
+        checkSize();
+		chart.draw(data, options);
+		setTimeout(function(){
+			chart.draw(data, options);
+		}, 100);
+	});$(document).ready(function() {
+		/* 두번째 아코디언이 열린 다음에 차트를 그려줌 */
+		$(".accordion-wrap li.lists:nth-child(2)").on('click', function(e){
+			checkSize();
+			setTimeout(function(){
+				chart.draw(data, options);
+			}, 100);
+		});
+	});
+</script>
 <style>
 	.googlechart-wrap {position: relative;width:520px;height:370px;margin:0 auto;}
 	.googlechart-wrap .chartarea{width:100%;height:100%;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;font-size:24px;font-weight:bold;}
 	@media screen and (max-width: 767px){
 		.googlechart-wrap{width:100%;height:71.11vw}
-		.googlechart-wrap .overlayarea{font-size:5vw;}
 	}
 </style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/sustainable/esgLg">지속 가능 경영</a></li>
-		<li><a href="/company/promot/system">ESG 추진 활동</a></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/promot/system">ESG 팩트북</a></li>
 		<li><strong>컴플라이언스 개요</strong></li>
 	</ul>
 </div>
@@ -24,7 +81,7 @@
 	<!-- hiro image -->
 	<section class="hiro-wrap">
 		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/promot/img-sustainable-hero-pc.jpg" data-m-src="/kr/images/company/promot/img-sustainable-hero-mo.jpg" aria-hidden="hidden"></span>
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
 		</div>
 		<div class="text-area">
 			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
@@ -37,17 +94,15 @@
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/sustainable/esgLg#com-tabs01">LG전자 ESG</a>
-					</li>
-					<li>
-						<a href="/company/sustainable/esgLeadership#com-tabs01">기업개요</a>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
-							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
-							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
-							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
 							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
-							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
 							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
 					<li>
@@ -62,13 +117,14 @@
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/workplace">모두를 위한 <br> 지속가능한 일터</a></li>
 							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
+							<li><a href="/company/sustainable/socialContribution">사회공헌</a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
 					</li>
 					<li class="on">
-						<a href="/company/promot/system#com-tabs01">ESG 추진활동<em class="blind">선택됨</em></a>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
@@ -85,9 +141,11 @@
 						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
-							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 표준</a></li>
-							<li><a href="/company/sustainable/download">보고서 다운로드</a></li>
-						</ul>	
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
 					</li>
 				</ul>
 			</div>
@@ -105,8 +163,8 @@
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
 			<ul class="tabs">
-				<li class="on"><a href="/company/promot/system#com-tabs02">정도경영 개요<em class="blind">선택됨</em></a></li>
-				<li><a href="/company/promot/compliance#com-tabs02">컴플라이언스 개요</a></li>
+				<li><a href="/company/promot/system#com-tabs02">정도경영 개요</a></li>
+				<li class="on"><a href="/company/promot/compliance#com-tabs02">컴플라이언스 개요<em class="blind">선택됨</em></a></li>
 				<li><a href="/company/promot/fairtrade#com-tabs02">공정거래</a></li>
 				<li><a href="/company/promot/safetyHealth#com-tabs02">안전&middot;환경</a></li>
 				<li><a href="/company/promot/partner#com-tabs02">협력회사</a></li>
@@ -114,425 +172,386 @@
 				<li><a href="/company/promot/client#com-tabs02">고객</a></li>
 				<li><a href="/company/promot/infoProtection#com-tabs02">정보보호</a></li>
 				<li><a href="/company/promot/member#com-tabs02">구성원</a></li>
-				<li><a href="/company/promot/contribution#com-tabs02">사회공헌</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="com-text">
-		<p class="tit">정도경영</p>
-		<div class="esgWay_wrap">
-			<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="">
-			<p class="text">정도경영은 시장에서 정당하게 승부하자는 LG만의 고유한 행동양식으로, 선언적 윤리규범과 실천지침에 구체화되어 LG인들의 사고와 행동의 기반을 형성하고 있습니다. LG전자의 전 임직원 및 협력회사는 정도경영을 내재화하고 글로벌 기업시민으로서의 사회적 책무를 다하기 위해 관련 상담, 교육, 홍보활동 등 다양한 노력을 하고 있습니다.</p>
-		</div>
-	</div>
-	
-	<div class="com-text">
-		<p class="tit">윤리규범</p>
-		<ul class="bull mgt">
-			<li>LG전자는 1994년 윤리규범을 제정하여 전 임직원이 준수할 정도경영의 기본방향을 제시</li>
-			<li>고객을 위한 가치 창조와 인간존중의 경영을 기반으로 선언적 윤리강령인 ‘윤리규범’ 전문과 구체적인 행동원칙을 담은 ‘윤리규범 실천지침’으로 구성</li>
-			<li>2020년까지 총 6차례에 걸쳐 개정하여 윤리규범 관련 규정과 구체적인 하부 실천지침을 강화</li>
-			<li>LG전자 윤리규범은 전 임직원의 숙지를 위해 140여 개의 현지법인에 배포 및 공유</li>
-		</ul>
-		<div class="linkArea">
-			<p class="tit">LG전자 윤리규범</p>
-			<p class="desc"><a href="#" class="btn-link">자세히 보기</a></p>
-		</div>
-	</div>
-
-	<div class="com-text">
-		<p class="tit">위반행위 제보 시스템</p>
-		<ul class="bull mgt">
-			<li>
-				<span>임직원의 정도경영 위반 행위를 신고할 수 있는 익명 기반 제보 시스템을 운영하여 임직원의 업무 수행시 투명성과 책임성을 더욱 강화</span>
-				<ul class="ofn_links">
-					<li><a href="https://ethics.lg.co.kr/main/en.do" class="btn border" target="_blank" title="새 창 열림">정도경영 포탈</a></li>
-					<li><a href="http://ethics.lg.co.kr" class="btn border" target="_blank" title="새 창 열림">사이버 신문고</a></li>
-					<li><a href="" class="btn border" target="_blank" title="새 창 열림">모바일 제보 시스템</a></li>
-					<li><a href="" class="btn border" target="_blank" title="새 창 열림">협력회사 상생마당</a></li>
-				</ul>
-			</li>
-			<li>제보시스템을 통해 접수된 제보는 모두 내부 제보자 보호 규정에 의해 철저히 보장하고 있으며, 부정비리에 관련된 사항은 조사 후 사실로 확인된 경우 사안의 경중에 따라 징계 조치</li>
-		</ul>
-		<p class="tit h4">1) 위반행위 제보 접수 추이</p>
-		<div class="graph ofn">
-			<!-- 구글차트 -->
-		</div>
-		<div class="tb_row tb-row-bl">
-			<table>
-				<caption>위반행위 제보 접수 추이 표, 2020년, 2019년, 2018년</caption>
-				<colgroup>
-					<col style="width:33.3333%">
-					<col style="width:33.3333%">
-					<col style="width:33.3333%">
-				</colgroup>
-				<thead>
-					<tr>
-						<th scope="col">2020년</th>
-						<th scope="col">2019년</th>
-						<th scope="col">2018년</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>402</td>
-						<td>656</td>
-						<td>457</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<p class="tit h4">2) 2020년 위반행위 제보 유형</p>
-		<div class="graph ofn">
-			<span class="only_pc txt_rt">(단위: 건)</span>
-			<div class="googlechart-wrap">
-				<div class="chartarea" id="donutchart"></div>
-				<div class="overlayarea">위반행위 제보 유형</div>
-			</div>
-			<div class="blind">
-				<span>위반행위 제보 유형</span>
-				<strong>457건</strong>
-				<ul>
-					<li>
-						<span>2020</span>
-						<p>457</p>
-					</li>
-					<li>
-						<span>2019</span>
-						<p>656</p>
-					</li>
-					<li>
-						<span>2018</span>
-						<p>402</p>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="ofn_iconBox">
-			<ul>
-				<li>
-					<div class="iconArea">
-						<i class="ico-off_01"></i>
-					</div>
-					<div class="descArea">
-						<span>민원</span>
-						<span><strong>350건</strong> (76.6%)</span>
-					</div>
-				</li>
-				<li>
-					<div class="iconArea">
-						<i class="ico-off_02"></i>
-					</div>
-					<div class="descArea">
-						<span>부정비리</span>
-						<span><strong>52건</strong> (11.4%)</span>
-					</div>
-				</li>
-				<li>
-					<div class="iconArea">
-						<i class="ico-off_03"></i>
-					</div>
-					<div class="descArea">
-						<span>기타</span>
-						<span><strong>55건</strong> (12.0%)</span>
-					</div>
-				</li>
-				<li>
-					<div class="descArea">
-						<span><strong class="emp">457건</strong> (100%)</span>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="com-text">
-		<p class="tit">리스크 예방 시스템</p>
+		<p class="tit">컴플라이언스</p>
+		<p class="text">LG전자는 컴플라이언스 리스크 관리 체계와 담당 조직을 구축하고 목표 설정 및 철저한 성과 관리를 통해 준법경영을 실천하고자 노력하고 있습니다. 또한, 컴플라이언스 자율점검 서베이(Survey), 준법교육 등 임직원의 준법경영 내재화를 위한 다양한 프로그램을 실시하고 있으며, 건전하고 투명한 기업 문화 조성을 위해 컴플라이언스 관련 제보 채널을 상시 운영하고 있습니다.</p>
 		<div class="accordion-wrap ui_accordion btmBtn sustain mgt" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
 					<div class="head">
 						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">정도경영 리스크 예방 시스템 및 프로세스 구축</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="title line2">리스크 관리</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
+							<p class="tit h4">1) 컴플라이언스 리스크 관리 체계</p>
 							<ul class="bull">
-								<li>정도경영 리스크 사전 예방 및 정도경영 의식 체질화를 목표로 정도경영 리스크 진단 시스템을 구축하여 운영</li>
-								<li>채권, 경비, 가격성 판촉비 등의 업무에 대해 업무부서와 진단부서가 공동으로 관리할 수 있는 Two-Track 프로세스 정립</li>
-								<li>머신러닝, AI 등의 최신기술을 도입하여 각각의 리스크별 모니터링 체계를 구축</li>
+								<li>CEO 직속으로 준법사무국을 운영하고, 산하 조직과 전문인력을 확충하여 책임있는 준법경영 지원</li>
+								<li>준법경영팀: 글로벌 규제 동향 및 컴플라이언스 자문 제공 등 법률&middot;정책 지원, 사내 규정 및 제도 개선, 준법 점검 등을 통한 컴플라이언스 리스크에 대한 Legal Solution 제공</li>
+								<li>준법감시팀: 컴플라이언스 프로그램 설계 및 운영, 이머징 리스크 센싱, 리스크 수준 모니터링 및 업무 프로세스 개선, 준법의식 제고 활동 등을 통한 컴플라이언스 리스크 예방 및 개선</li>
+								<li>준법조사팀: 국내외 수시&middot;정기 점검을 통한 컴플라이언스 리스크 발생 가능성 최소화</li>
 							</ul>
-							<p class="tit h4 mt">2020년 자체진단 조치 현황</p>
-							<div class="graph ofn">
-								<span class="only_pc txt_rt">(단위: 건)</span>
-								<!-- 구글차트 -->
-							</div>
-							<div class="tb_row tb-row-bl middle">
-								<table>
-									<caption>구분, 건수, 비율(%) </caption>
-									<colgroup>
-										<col class="p33 m40">
-										<col class="p33 m30">
-										<col class="p33 m30">
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">구분</th>
-											<th scope="col">건수</th>
-											<th scope="col">비율(%)</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">중징계</th>
-											<td>58</td>
-											<td>50</td>
-										</tr>
-										<tr>
-											<th scope="row">경징계</th>
-											<td>45</td>
-											<td>38.8</td>
-										</tr>
-										<tr>
-											<th scope="row">징계해고&middot;권고사직</th>
-											<td>113</td>
-											<td>11.2</td>
-										</tr>
-										<tr>
-											<th scope="row" class="bold_m">합계</th>
-											<td class="bold_m">116</td>
-											<td class="bold_m">100</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
-					</div>
-				</li>
-				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">정도경영 전담 상담실 운영</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
-					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea">
-							<p class="tit">전담 상담실 운영</p>
-							<ul class="bull">
+							<p class="tit h4">2) 컴플라이언스 리스크 관리 목표 및 계획</p>
+							<ul class="bull mg20">
 								<li>
-									<span>상담 채널: 임직원이 정도경영 실천과 관련하여 궁금한 사항을 적극적으로 문의할 수 있도록 다양한 상담 채널을 통한 1:1 정도경영 상담실 운영</span>
+									<strong>중장기 목표</strong>
 									<ul>
-										<li>- 사내 인트라넷을 활용한 온라인 시스템 (챗봇 시스템 등)</li>
-										<li>- 유선 전화 상담</li>
-										<li>- e-mail 상담</li>
-									</ul>
-								</li>
-								<li>상담비밀 보장: 상담 내용은 비공개의 원칙으로 상담자 및 상담 내용의 비밀을 보장하고, 상담자의 판단에 따라 공개 가능</li>
-								<li>교육 및 공유: 지속적인 질문사항들은 사례화하여 국내외 각종 교육 프로그램 또는 온라인 채널을 통해 전 임직원에게 공유함</li>
-							</ul>
-							<p class="tit h4">2020년 정도경영 전담 상담실 문의내용</p>
-							<div class="graph ofn">
-								<!-- 구글차트 -->
-							</div>
-							<div class="tb_row tb-row-bl middle">
-								<table>
-									<caption>구분, 건수, 비율(%)</caption>
-									<colgroup>
-										<col class="p33 m40">
-										<col class="p33 m30">
-										<col class="p33 m30">
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">구분</th>
-											<th scope="col">건수</th>
-											<th scope="col">비율(%)</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>윤리규범 해석</td>
-											<td>30</td>
-											<td>22.6</td>
-										</tr>
-										<tr>
-											<td>경조금 지급 및 수수</td>
-											<td>4</td>
-											<td>3.0</td>
-										</tr>
-										<tr>
-											<td>선물 수취 시 처리절차, 이해상충 관련</td>
-											<td>24</td>
-											<td>18.0</td>
-										</tr>
-										<tr>
-											<td>경비처리</td>
-											<td>37</td>
-											<td>27.8</td>
-										</tr>
-										<tr>
-											<td>기타</td>
-											<td>38</td>
-											<td>28.6</td>
-										</tr>
-										<tr>
-											<td class="bold">합계</td>
-											<td>133</td>
-											<td>100</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
-					</div>
-				</li>
-				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">전사 정도경영 교육 및 홍보 활동</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
-					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea">
-							<p class="tit h4">1) 전사 정도경영 교육 및 홍보 활동</p>
-							<ul class="bull">
-								<li>
-									<span>LG전자는 정도경영이 임직원의 사고와 행동의 기반이 될 수 있도록 정기적으로 교육 및 홍보활동을 수행</span>
-									<ul>
-										<li>- 교육: 국내외 임직원 대상 집합 교육 및 온라인 교육을 실시하고, 정도경영 자체 진단에서 노출된 위반 사항을 사례화하여 사내 게시판 및 정도경영 포털을 통해 전 임직원에게 교육 또는 공유</li>
+										<li>- 컴플라이언스 리스크 조기 센싱 및 선제적 대응체계 구축</li>
+										<li>- 컴플라이언스 범위 및 운영 고도화</li>
+										<li>- 현장 중심의 자율관리체제 구축</li>
 									</ul>
 								</li>
 								<li>
-									<span>2021년에는 동영상 및 웹툰, 해외 온라인 교재를 개발하는 등 교육채널을 다양화하여 임직원이 보다 쉽게 정도경영을 이해할 수 있도록 함</span>
+									<strong>추진계획</strong>
 									<ul>
-										<li>- 홍보: 정도경영 사례 및 관련 기사를 ‘정도경영 뉴스레터＇를 통해 정기적으로 배포하는 등 전 임직원의 정도경영 인식제고 활동을 지속으로 추진</li>
-										<li>- 설문: 협력회사 및 임직원 대상의 정도경영 설문을 정기적으로 실시하여 불공정 행위의 재발을 방지하고 개선방향 수립에 이를 활용함</li>
+										<li>- 법&middot;규제, 국제표준, 이해관계자 요구사항 등 대내외 이슈 모니터링 및 대응 강화</li>
+										<li>- 현장 리스크 자체개선활동 성과 평가 및 맞춤형 컴플라이언스 컨설팅 제공</li>
 									</ul>
 								</li>
 							</ul>
-							<p class="tit h4">2) 정도경영 집합 및 온라인 교육 이수 현황</p>
-							<div class="tb_row tb-row-bl middle">
-								<div class="tbl_info rt abs">* (단위: 명)</div>
-								<table>
-									<caption>구분, 2020년</caption>
-									<colgroup>
-										<col style="width:50%">
-										<col style="width:50%">
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">구분</th>
-											<th scope="col">2020년</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">온라인</th>
-											<td>15,715</td>
-										</tr>
-										<tr>
-											<th scope="row">집합</th>
-											<td>3,506</td>
-										</tr>
-										<tr>
-											<th scope="row">전체</th>
-											<td>19,221</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<p class="tit h4">3) 직장 내 괴롭힘/성희롱 예방교육 현황</p>
-							<div class="tb_row tb-row-bl middle">
-								<div class="tbl_info rt abs">* (단위: 명)</div>
-								<table>
-									<caption>연도, 교육 이수 인원</caption>
-									<colgroup>
-										<col style="width:50%">
-										<col style="width:50%">
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">연도</th>
-											<th scope="col">교육 이수 인원</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>2020년</td>
-											<td>2,292</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="tbl_info btm">*신규편입 및 취약 조직 대상</div>
-							</div>
-						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
-					</div>
-				</li>
-				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">제보자 보호 및 부정비리 신고 포상 제도</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
-					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea">
-							<ul class="bull">
-								<li>제보자 보호 규정을 제정 및 준수하며, 부정비리 신고 포상 제도를 운영하여 부정비리 행위 근절을 위해 노력</li>
-								<li>제보자 최우선 보호 원칙: 제보자에 대해서는 동의 없이 그 신분을 노출하거나 암시하는 어떠한 정보도 공개하지 않으며, 제보 내용에 대한 조사는 엄격한 비밀준수를 서약한 제한된 인원에 의해 수행</li>
-								<li>
-									<span>부정비리 신고 포상제도:</span>
+							<p class="tit h4">3) 컴플라이언스 프로그램 사이클</p>
+							<div class="compGrp mgt">
+								<!--<img class="m383" src="/kr/images/company/compliance/img-compliance-program-cycle_new_02.png" alt="">-->
+								<div class="blind">
+									<p>Compliance Program Cycle</p>
 									<ul>
-										<li>- 임직원의 정도경영 준수를 더욱 강화하고, 고객 가치를 훼손하는 부정비리 행위를 근절하기 위해 LG전자 임직원 및 외부 일반인을 대상으로 부정비리 신고 포상제도 시행</li>
-										<li>- 부정비리행위 내용과 관련 증거자료를 제출하여 LG전자에 신고를 접수하며, 긴급을 요하는 부정비리 사항의 경우 증거자료 없이 사실관계만으로도 신고 가능</li>
+										<li>Risk Reporting</li>
+										<li>Risk Identification</li>
+										<li>Risk Assessment</li>
+										<li>Risk Mitigation</li>
+										<li>Risk Monitoring</li>
 									</ul>
-								</li>
-							</ul>
-						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
-					</div>
-				</li>
-				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">자진 신고 제도 운영</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
-					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea">
-							<p class="text">LG전자는 윤리규정에 따라 선물, 금품 등의 사례 수수를 일체 금하고 있으며, 수수한 경우 자진 신고 제도에 따라 처리</p>
-							<div class="risk_system">
-								<div class="item">
-									<div class="item_tit"><span>신고 및 반송 조치</span></div>
-									<div class="item_txt">
-										<p>불가피하게 수수한 경우 자진 신고 및 반송하도록 조치함</p>
-									</div>
 								</div>
-								<div class="item">
-									<div class="item_tit"><span>반송 불가능한 경우</span></div>
-									<div class="item_txt">
-										<p>사회복지시설 등에 물품을 기증한 후, 자사 윤리규범 안내 및 협조 당부 서신과 기증 증빙 서류를 이해관계자 및 소속회사 대표자에게 송부</p>
-										<p>기증이 어려운 물품의 경우 사내 경매 실시 후, 경매 수익 전액을 사회공헌에 활용함</p>
-									</div>
+								<ul class="compStep esg mgt">
+									<li>
+										<p class="tit"><span>식별 및 평가</span></p>
+										<ul class="cont">
+											<li>법 규제 동향조사</li>
+											<li>주요 위반 및 제재 동향 모니터링</li>
+											<li>이머징 리스크 센싱 <br class="pc">및 리스크 풀 관리</li>
+											<li>리스크 관리수준 평가 실시</li>
+										</ul>
+									</li>
+									<li>
+										<p class="tit"><span>개선</span></p>
+										<ul class="cont">
+											<li>온/오프라인 준법교육</li>
+											<li>업무 정책 및 프로세스</li>
+											<li>준법자문 및 컨설팅 제공</li>
+											<li>이해관계자 요구사항 대응</li>
+										</ul>
+									</li>
+									<li>
+										<p class="tit"><span>점검</span></p>
+										<ul class="cont">
+											<li>준법 점검 실시</li>
+											<li>리스크 관리활동 점검</li>
+											<li>준법 핵심성과지표 운영</li>
+											<li>임직원 준법자율점검</li>
+										</ul>
+									</li>
+									<li>
+										<p class="tit"><span>보고</span></p>
+										<ul class="cont">
+											<li>컴플라이언스 협의체</li>
+											<li>준법통제기준 이사회 보고</li>
+											<li>외부 공시</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<p class="tit h4">4) 컴플라이언스 리스크 관리 조직</p>
+							<div class="compGram mgt">
+								<img class="only_pc" src="/kr/images/company/compliance/img-compliance-lisk-graph_01_pc.png" alt="">
+								<img class="only_mo m327" src="/kr/images/company/compliance/img-compliance-lisk-graph_01_mo.png" alt="">
+								<div class="blind">
+									<ul>
+										<li>
+											<span>HQ</span>
+											<p>준법사무국</p>
+										</li>
+										<li>
+											<span>사업본부</span>
+											<p>Compliance Manager</p>
+										</li>
+										<li>
+											<span>법인</span>
+										</li>
+										<li>
+											<span>사업부</span>
+											<ul>
+												<li>
+													<span>Compliance Manager</span>
+													<ul>
+														<li>Risk Owner</li>
+														<li>Risk Owner</li>
+														<li>Risk Owner</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li>본사 준법 사무국</li>
+										<li>
+											<span>Compliance Manager</span>
+											<p>각 사업장 Compliance Program을 운영하고 준법통제업무를 지원하는 담당자</p>
+										</li>
+										<li>
+											<span>본사 Risk Owner</span>
+											<p>Compliance Risk 별 본사주관부서</p>
+										</li>
+										<li>
+											<span>현장 Risk Owner</span>
+											<p>Compliance Risk 별 각 사업장 담당자</p>
+										</li>
+									</ul>
 								</div>
 							</div>
+							<p class="tit h4">5) 컴플라이언스 자율점검 서베이 실시</p>
+							<ul class="bull mg20">
+								<li>
+									<strong>전사 중점관리대상 리스크에 대한 임직원의 준수 수준을 자율적으로 점검</strong>
+									<div class="survey_box">
+										<p class="s_tit">관리대상</p>
+										<p class="s_text">뇌물수수, 차별, 성희롱, 개인정보, 경쟁정보, 경쟁사접촉 담합, 지적재산권, 내부거래, 광고, 품질</p>
+									</div>
+								</li>
+								<li>
+									<strong>컴플라이언스 자율점검 서베이</strong>
+									<div class="tb_row tb-row-bl middle">
+										<div class="tbl_info rt abs">(단위: 명, 2020년 기준)</div>
+										<table>
+											<caption>구분, 전체, 한국, 해외</caption>
+											<colgroup>
+												<col style="width:25%">
+												<col style="width:25%">
+												<col style="width:25%">
+												<col style="width:25%">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">구분</th>
+													<th scope="col">전체</th>
+													<th scope="col">한국</th>
+													<th scope="col">해외</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">대상자</th>
+													<td>48,105</td>
+													<td>29,304</td>
+													<td>18,801</td>
+												</tr>
+												<tr>
+													<th scope="row">이수자</th>
+													<td>45,574</td>
+													<td>27,531</td>
+													<td>18,043</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
+						</div>
+					</div>
+				</li>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title line2">준법교육</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						<div class="txtArea">
+							<p class="tit h4">1) 맞춤형 온라인 준법교육 제공</p>
+							<ul class="bull">
+								<li>임직원의 업무환경에 최적화된 교육 제공을 위해 직군별 세분화된 교육 과정을 구성하고, 북미지역과 영국의 경우 지역 이슈를 반영한 특화 과정을 운영</li>
+								<li>외부 컴플라이언스 교육 전문기관과 협업하여 과정 개발 운영</li>
+								<li>한국어, 영어, 중국어, 스페인어, 포르투갈어, 일본어 총 6개 언어로 교육 제공</li>
+								<li>교육 이수자를 대상으로 온라인 준법실천서약(조직 책임자용, 일반 임직원용) 실시</li>
+							</ul>
+							<p class="tit h4">2) 공정거래 심화교육과정 개설</p>
+								<div class="googlechart-wrap">
+									<div class="chartarea" id="donutchart"></div>
+								</div>
+							<!-- 구글차트 -->
+							<div class="survey_box">
+								<p class="s_tit">국내외 해외영업직군 임직원 대상 공정거래 컴플라이언스 리스크에 대한 온라인 심화교육과정 현황</p>
+								<p class="s_text">총 1,628명 이수</p>
+							</div>
+							<p class="tit h4">3) 온라인 준법교육 결과</p>
+							<div class="tb_row tb-row-bl middle">
+								<div class="tbl_info rt abs">(단위: 명)</div>
+								<table>
+									<caption>구분, 2020년, 2019년, 2018년</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col style="width:20%">
+										<col style="width:20%">
+										<col style="width:20%">
+										<col style="width:20%">
+									</colgroup>
+									<thead>
+										<th scope="col" colspan="2">구분</th>
+										<th scope="col">2020년</th>
+										<th scope="col">2019년</th>
+										<th scope="col">2018년</th>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row" rowspan="2">한국</th>
+											<td>이수대상자</td>
+											<td>29,304</td>
+											<td>29,845</td>
+											<td>29,715</td>
+										</tr>
+										<tr>
+											<td class="bo_l">이수자</td>
+											<td>27,531</td>
+											<td>27,578</td>
+											<td>27,342</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="2">해외</th>
+											<td>이수대상자</td>
+											<td>18,801</td>
+											<td>18,417</td>
+											<td>18,253</td>
+										</tr>
+										<tr>
+											<td class="bo_l">이수자</td>
+											<td>18,043</td>
+											<td>16,389</td>
+											<td>15,807</td>
+										</tr>
+										<tr>
+											<th class="bold_m" scope="row" rowspan="2">비율</th>
+											<td class="bold_m">이수대상자</td>
+											<td class="bold_m">48,105</td>
+											<td class="bold_m">48,262</td>
+											<td class="bold_m">47,968</td>
+										</tr>
+										<tr>
+											<td class="bo_l bold_m">이수자</td>
+											<td class="bold_m">45,574</td>
+											<td class="bold_m">43,967</td>
+											<td class="bold_m">43,149</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p class="tit h4">4) 오프라인 준법교육 과정 현황</p>
+							<div class="tb_row tb-row-bl middle">
+								<div class="tbl_info rt abs">(단위: 명)</div>
+								<table>
+									<caption>구분, 2020년, 2019년, 2018년</caption>
+									<colgroup>
+										<col style="width:20%">
+										<col style="width:20%">
+										<col style="width:20%">
+										<col style="width:20%">
+									</colgroup>
+									<thead>
+										<th scope="col">구분</th>
+										<th scope="col">2020년</th>
+										<th scope="col">2019년</th>
+										<th scope="col">2018년</th>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">신입팀장/리더 교육</th>
+											<td>201(5)</td>
+											<td>148(9)</td>
+											<td>140(7)</td>
+										</tr>
+										<tr>
+											<th scope="row">해외주재원 리더십교육</th>
+											<td>154(5)</td>
+											<td>165(6)</td>
+											<td>210(6)</td>
+										</tr>
+										<tr>
+											<th scope="row">신임사업가 교육</th>
+											<td>31(2)</td>
+											<td>32(1)</td>
+											<td>-</td>
+										</tr>
+										<tr>
+											<th scope="row">파견 관리 담당 온보딩 교육</th>
+											<td>24(2)</td>
+											<td>8(1)</td>
+											<td>-</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="tbl_info btm">
+									<ul>
+										<li>*오프라인 교육은 코로나19 상황을 고려하여 대부분 화상교육으로 대체 진행함</li>
+										<li>*괄호 안의 숫자는 교육 진행 횟수를 의미함</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
+						</div>
+					</div>
+				</li>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title line2">제보 채널 운영</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						<div class="txtArea">
+							<p class="tit h4">컴플라이언스 관련 제보 채널 운영</p>
+							<ul class="bull">
+								<li>
+									<span>그룹 신문고(http://ethics.lg.co.kr)를 통한 통합 핫라인 운영</span>
+									<ul>
+										<li>- 부정비리 및 불법행위, 금품 및 편의 수수, 향응 및 접대, 성희롱 신고</li>
+										<li>- 제보유형: 이해관계자로부터 사례를 받는 행위, 협력회사에 대한 부당지분 참여, 협력회사 선정의 투명성 결여, 회사 자산의 불법&middot;부당 사용, 문서&middot;계수의 조작 및 허위보고 등</li>
+									</ul>
+								</li>
+							</ul>
+							<p class="tit h4">법령 자문제공 및 사내전파</p>
+							<ul class="bull">
+								<li>국내외 주요 법률과 규제를 분석하여 컴플라이언스 자문 및 업무 가이드 제공</li>
+								<li>법령의 제&middot;개정 현황을 수시로 모니터링하고, 주요 사안에 대한 주의사항 공유 및 설명회 진행</li>
+							</ul>
+							<p class="tit h4">반부패 컴플라이언스 활동 강화</p>
+							<ul class="bull">
+								<li>모든 구성원이 원칙과 기준에 따라 공정하고 투명하게 업무를 처리하고, 특히 뇌물 수수 등 부정한 방법으로 사업을 획득하거나 유지하는 부정부패 행위를 일체 금함</li>
+								<li>
+									<span>다음을 통해 임직원의 반부패 인식 제고 및 관련 법규제 위반사례 발생 방지 노력</span>
+									<ul>
+										<li>- 각 사업장 리스크 발생 가능성 및 영향도 자율평가 실시</li>
+										<li>- 관련 행동강령의 임직원 준수여부 자율점검 실시</li>
+										<li>- 전사 임직원 대상 온라인 교육 및 준법실천서약 징구</li>
+									</ul>
+								</li>
+							</ul>
+							<p class="tit h4">컴플라이언스 위원회</p>
+							<ul class="bull">
+								<li>컴플라이언스에 대한 리더의 의지를 확고히 다지고 조직 내 준법문화 확산을 도모</li>
+								<li>국가별 주요 법규제 및 제재동향을 살펴보고 현장의 실질적인 이슈 및 리스크를 논의</li>
+								<li>현장 컴플라이언스 위원회를 통해 연간 컴플라이언스 리스크 개선활동 계획을 수립하고 진척사항을 수시 공유</li>
+							</ul>
 						</div>
 						<div class="btnArea">
 							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
@@ -543,9 +562,9 @@
 		</div>
 	</div>
 	
-	<div class="sustainable-download">
-		<p class="tit">정도경영 개요 PDF 다운로드</p>
-		<p class="desc">정도경영 개요 페이지의 내용을 한번에 확인하세요~</p>
+	<div class="sustainable-download only_pc">
+		<p class="tit">컴플라이언스 개요 PDF 다운로드</p>
+		<p class="desc">컴플라이언스 개요 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>
 	</div>
 </div>

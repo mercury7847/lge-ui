@@ -667,6 +667,13 @@ br.pc-only {
             @include mobile {
                 padding:0 16px;
             }
+            &.before-login {
+                .inner {
+                    .txt {
+                        width:88%; //BTOCSITE-3829
+                    }
+                }
+            }
             .inner {
                 display:table;
                 width:100%;

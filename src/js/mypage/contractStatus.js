@@ -882,19 +882,41 @@
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
-            else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            // else data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
 
-            // contractType - R :케어솔루션 C : 케어십
-            if(data.contractInfo.contractType === 'C') {
-                // 케어십 - 의무사용기간 숨김
+            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청            
+            // contractType - R :케어솔루션 C : 케어십 
+            // contDtlType - C00 : 무상케어십
+            // 무상케어십일때 해지상담 신청 버튼 비노출 
+            if(data.contractInfo.contDtlType != 'C00'){
+                data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelConsultUrl + "' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+            } 
+            if(data.contractInfo.contractType === 'C' || data.contractInfo.contDtlType === 'C00' ) {
+                // 케어십, 무상케어십 - 의무사용기간 숨김
                 $('.contract-info .dutyPeriod').hide();
-
-                // 케어십 - 계약기간 표시형식 변경
-                data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
                 
-                '<dl class="bullet-list nomargin-top">' +
-                '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
-                '</dl>';
+                // 케어십 - 계약기간 표시형식 변경
+                if(data.contractInfo.contractType === 'C' && data.contractInfo.contDtlType != 'C00'){
+                    data.contractInfo.period =  '<div>'+data.contractInfo.period +' ~ </div>' + 
+                    '<dl class="bullet-list nomargin-top">' +
+                    '<dd class="b-txt">케어십 계약기간은 1년이며, 계약기간 만료 시점에 계약 해지 의사가 없을 시 최초 계약 기간만큼 자동 연장됩니다.</dd>' +
+                    '</dl>';
+                } 
+                // 계약기간 노출형식 : 년수(시작일 ~ 종료일)
+                else {
+                    var startArry = data.contractInfo.contStartDate.split('.');
+                    var endArry = data.contractInfo.contEndDate.split('.');
+                    var periodYear = endArry[0] - startArry[0];
+                    data.contractInfo.period =  '<div>'+ periodYear +'년 ('+data.contractInfo.contStartDate  +' ~ ' + data.contractInfo.contEndDate +')</div>';
+                }
+            }
+            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 , 무상할인회차
+            if( data.contractInfo.contDtlType === 'C00' ) {
+                $('.contract-btn').hide();
+                $('.sects.payment.viewer').hide();
+                $('.member-point-info').hide();
+                $('.tooltip-wrap').hide();
+                $('.saleTurn').hide();
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경

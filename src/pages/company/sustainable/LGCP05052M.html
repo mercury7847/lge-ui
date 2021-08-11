@@ -1,0 +1,395 @@
+<link rel="stylesheet" href="/kr/images/company/company2.css">
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	var dataColumn, optionsColumn, chartColumn;
+	var dataDonut, optionsDonut, chartDonut;
+
+	function drawChart() {
+		dataColumn = google.visualization.arrayToDataTable([
+		['', '임원사회공헌기금', { role: 'annotation' } ,'임직원사회공헌기금', { role: 'annotation' }],
+		['2021', 381, '381', 290, '290'],
+		['2020', 364, '364', 365, '365'],
+		['2019', 334, '334', 243, '243']
+		]);
+		optionsColumn = {
+			colors: ['#e81953', '#000000'],
+			vAxis:{format: '', minValue:'0', maxValue: '600'},
+			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
+			bar: { groupWidth: '30%' },
+			annotations: {alwaysOutside: true,textStyle: {fontSize:13, bold:true},stem:{color :'none', length:'0'}},
+			legend: {position: 'bottom'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		dataDonut = google.visualization.arrayToDataTable([
+			['',  'Amount', {role: 'tooltip'}],
+			['개최',  9, '개최\n9건'],
+			['승인사항',  32, '승인사항\n32건'],
+			['보고사항',  10, '보고사항\n10건']
+		]);
+		optionsDonut = {
+			pieSliceText: 'value',
+			chartArea: {width: '100%', height: '80%',top:'4%'},
+			slices: {
+				0: { color: '#000000', offset: 0.01},
+				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
+				2: { color: '#e81953', offset: 0.01}
+			},
+			pieSliceTextStyle : {
+				fontSize: '16',
+				bold:true
+			},
+			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
+			fontName:'Noto Sans'
+		};
+		setTimeout(function(){
+			checkSize();
+			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
+			chartColumn.draw(dataColumn, optionsColumn);
+			chartDonut.draw(dataDonut, optionsDonut);
+		}, 1000);
+	}
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			optionsDonut.legend.textStyle.fontSize="12";
+			optionsDonut.pieSliceTextStyle.fontSize= "12";
+			optionsColumn.fontSize="12";
+		}
+		else{
+			optionsDonut.legend.textStyle.fontSize="16";
+			optionsDonut.pieSliceTextStyle.fontSize="16";
+			optionsColumn.fontSize="16";
+		}
+	}
+	$(window).resize(function() {
+		/* 화면사이즈가 변하면 차트를 그려줌 */
+		if($(".accordion-wrap li.lists:first-child").hasClass("on")){
+			checkSize();
+			setTimeout(function(){
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut.draw(dataDonut, optionsDonut);
+			}, 100);
+		}
+	});
+	$(document).ready(function() {
+		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
+		$(".accordion-wrap li.lists:first-child").on('click', function(e){
+			checkSize();
+			setTimeout(function(){
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut.draw(dataDonut, optionsDonut);
+			}, 100);
+		});
+	});
+</script>
+<style>
+	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
+	.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
+	.googlechart-wrap .columnchart {height:480px;}
+	.googlechart-wrap .donutchart {height:370px;}
+	@media screen and (max-width: 767px){
+		.googlechart-wrap{width:100%;}
+		.googlechart-wrap.over100::before{height:7%;}
+		.googlechart-wrap .columnchart {height:53vw;}
+		.googlechart-wrap .donutchart {height:71.11vw}
+	}
+	@media screen and (max-width: 425px){
+		.googlechart-wrap.over100::before{height:14%;}
+	}
+</style>
+<div class="breadcrumb">
+	<ul>
+		<li><a href="/">홈</a></li>
+		<li><a href="/company">회사소개</a></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/sustainable/workplace">사회</a></li>
+		<li><strong>사회공헌</strong></li>
+	</ul>
+</div>
+<div class="container company">
+	<div class="page-header">
+		<h2 class="title">지속가능경영</h2>
+	</div>
+	<!-- hiro image -->
+	<section class="hiro-wrap">
+		<div class="visual-area">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
+		</div>
+		<div class="text-area">
+			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
+		</div>
+	</section>
+	<!-- // hiro image -->
+	<div class="ui_sticky">
+		<div class="com-tabs">
+			<div id="com-tabs01"></div>
+			<div class="tabs-wrap border-type left">
+				<ul class="tabs">
+					<li>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
+							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
+							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/businessplace#com-tabs01">환경</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/businessplace">부정적 환경영향 <br> Zero 사업장</a></li>
+							<li><a href="/company/sustainable/productsServices">미래세대를 위한 <br>제품과 서비스</a></li>
+						</ul>
+					</li>
+					<li class="on">
+						<a href="/company/sustainable/workplace#com-tabs01">사회<em class="blind">선택됨</em></a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/workplace">모두를 위한 <br> 지속가능한 일터</a></li>
+							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
+							<li><a href="/company/sustainable/socialContribution">사회공헌</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
+					</li>
+					<li>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
+						<ul class="tabs-over">
+							<li><a href="/company/promot/system">정도경영 개요</a></li>
+							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
+							<li><a href="/company/promot/fairtrade">공정거래</a></li>
+							<li><a href="/company/promot/safetyHealth">안전&middot;환경</a></li>
+							<li><a href="/company/promot/partner">협력회사</a></li>
+							<li><a href="/company/promot/minerals">분쟁광물</a></li>
+							<li><a href="/company/promot/client">고객</a></li>
+							<li><a href="/company/promot/infoProtection">정보보호</a></li>
+							<li><a href="/company/promot/member">구성원</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
+						<ul class="tabs-over">
+							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="com-title">
+		<div class="img">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-workplace-hero-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-workplace-hero-mo.jpg" aria-hidden="hidden"></span>
+		</div>
+		<p class="text">“더 나은 삶을 함께 만드는 기업”을 사회공헌 비전으로 삼고 “따뜻한 기술, 신뢰의 파트너십, 함께하는 나눔”을 위해 노력합니다.</p>
+	</div>
+	
+	<div class="com-tabs">
+		<div id="com-tabs02"></div>
+		<div class="tabs-wrap btn-type left">
+			<ul class="tabs">
+				<li><a href="/company/sustainable/workplace#com-tabs02">모두를 위한 지속가능한 일터</a></li>
+				<li><a href="/company/sustainable/balancedGrowth#com-tabs02">포용적 사회를 위한 균형적 성장</a></li>
+				<li class="on"><a href="/company/sustainable/socialContribution#com-tabs02">사회공헌<em class="blind">선택됨</em></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="com-text">
+		<p class="tit">사회공헌</p>
+		<p class="text">LG전자는 지역사회를 넘어 국제사회의 지속가능성에 기여하고자 ‘더 나은 삶을 함께 만드는 기업’이라는 사회공헌 비전을 가지고 다양한 사회공헌 활동들을 수행하고 있습니다.<br>특히, 지속가능발전목표(Sustainable Development Goals)라는 국제사회의 약속과 목표 달성을 위한 책임을 다하고자 ‘따뜻한 기술’, ‘신뢰의 파트너십’, 함께하는 나눔’이라는 3대 사회공헌 세부목표를 수립하였습니다. 자사의 제품과 기술을 활용한 차별화된 서비스가치 제공, 지역사회에 대한 이해가 높고 전문성이 높은 다양한 기관들과의 협력, 도움이 필요한 지역사회 곳곳에서 임직원이 직접 참여하는 나눔 실천을 통해 LG전자의 사회공헌 활동이 지역사회의 사회적 이슈에 대해 보다 많은 가치를 창출하기 위해 노력하고 있습니다.</p>
+	</div>
+
+	<!-- acco 1 -->
+	<div class="com-text">
+		<div class="acco_thumb social bg_04">
+			<div class="inner">
+				<div class="top">
+					<p class="tit">전략목표: 글로벌 지속가능성 영향 확대</p>
+					<ul class="bull">
+						<li>국제사회와 함께 글로벌 지속가능성에 긍정적 영향 확대</li>
+					</ul>
+				</div>
+				<div class="content on"><!-- 클래스 on 추가 -->
+					<p class="text">LG전자는 지역사회 문제 해결, 개발도상국 소외계층 인재 양성, 임직원의 자발적 나눔 활동 참여 확대를 통하여 국제사회와 함께 글로벌 지속가능성에 긍정적 영향 확대를 위한 노력을 지속하겠습니다. <br>미래지향적인 기술을 결합한 친환경 제품을 제공함으로써 고객의 건강한 라이프스타일을 보장하고 있습니다. 이 밖에도 우리 사회의 균형있는 성장을 위해 ‘순환경제’와 ‘미래세대:청년’이라는 주제로 다양한 사회공헌 활동을 추진하고 있습니다.</p>
+				</div>
+				<button type="button" class="view_more on">더보기</button><!-- 클래스 on 추가 -->
+			</div>
+		</div>
+		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
+			<ul>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title line2">사회공헌 추진제도</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						<div class="txtArea">
+							<p class="tit">1) 임원 사회공헌 기금 운영</p>
+							<p class="text">2004년에 시작된 임원 사회공헌 기금은 한국임원들이 자발적으로 매월 급여의 0.5%를 공제하여 사회공헌 활동을 위한 기금으로 적립한 것으로, 2019년부터는 해외 주재 임원들도 참여하여 총 임원의 82% 이상이 참여하고 있습니다. LG전자는 임원들이 적립한 기금에 50%를 매칭 그랜트로 기부하여 국내외에서 다양한 활동을 전개하고 있습니다. <br>본 기금은 상하반기 임원기금 운영위원회 (위원장 1명, 위원 5명)를 통해 활동의 적절성을 판단하여 지원하고 있으며, 2020년에는 레바논 베이루트항 폭발사건 기부를 포함하여, 이란/에티오피아 코로나 긴급지원, 콩고민주공화국 태양광 충전 휴대용 배터리 보급사업, 나이지리아 무료 세탁방, 에티오피아 콜레라 백신보급 사업, LG 앰배서더 챌린지 사업 등을 지원하였습니다.</p>
+							<ul class="bull mgtL">
+								<li>
+									<strong>사회공헌 기금 조성</strong>
+									<div class="tb_row tb-row-bl middle pd keepAll">
+										<div class="tbl_info rt abs2">(단위: 백만원)</div>
+										<table>
+											<caption>사회공헌 기금 조성 표, 구분, 2020, 2019, 2018</caption>
+											<colgroup>
+												<col class="p25 m40">
+												<col class="p25 m20">
+												<col class="p25 m20">
+												<col class="p25 m20">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">구분</th>
+													<th scope="col">2020</th>
+													<th scope="col">2019</th>
+													<th scope="col">2018</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">임원사회공헌기금</th>
+													<td>381</td>
+													<td>364</td>
+													<td>334</td>
+												</tr>
+												<tr>
+													<th scope="row">임직원 사회 공헌 기금</th>
+													<td>290</td>
+													<td>365</td>
+													<td>243</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+							</ul>
+							<p class="tit">2) 임직원 봉사단</p>
+							<p class="text">임직원 봉사단은 2010년부터 LG전자 임직원들의 재능을 활용하여 지역사회에 환원하는 활동을 수행하고 있습니다. 사회복지시설 제품점검 및 무상 수리, 비영리단체를 위한 대화형 챗봇 개발 등 재능 기부 활동을 실천하고 있으며 코로나19로 인해 활동이 어려운 경우 봉사기관에서 필요한 물품을 기부하는 방법으로 활동을 지속하고 있습니다. 2020년에는 총 71개의 임직원 봉사단이 봉사활동에 참여하여 나눔을 실천하였습니다.</p>
+							<ul class="bull mgtL">
+								<li>
+									<strong>연도별 임직원 봉사단 참여 수(한국)</strong>
+									<div class="tb_row tb-row-bl middle pd keepAll">
+										<div class="tbl_info rt abs2">(단위: 명)</div>
+										<table>
+											<caption>연도별 임직원 봉사단 참여 수(한국) 표, 구분, 2020, 2019, 2018</caption>
+											<colgroup>
+												<col class="p25 m40">
+												<col class="p25 m20">
+												<col class="p25 m20">
+												<col class="p25 m20">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">구분</th>
+													<th scope="col">2020</th>
+													<th scope="col">2019</th>
+													<th scope="col">2018</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">봉사단원 수</th>
+													<td>708</td>
+													<td>692</td>
+													<td>843</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+							</ul>
+							<p class="tit">3) 사회공헌 기금 조성</p>
+							<div class="googlechart-wrap over100">
+								<div class="chartarea columnchart" id="columnchart"></div>
+								<div class="blind">
+								</div>
+							</div>
+							<!-- 구글차트 -->
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
+						</div>
+					</div>
+				</li>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title line2">제품연계 사회공헌 활동</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						<div class="txtArea">
+							<p class="tit">1) LG ComeHome Challenge</p>
+							<p class="text">코로나19로 지구촌 곳곳에서 락다운 및 재택근무가 지속됨에 따라 집에 머무는 시간이 늘어나면서 안전하고 건강한 생활 유지를 위한 집의 소중함이 더욱 커지게 되었습니다. LG전자는 이러한 뉴노멀 시대에 집에 머무는 시간을 더욱 건강하게 시간을 보낼 수 있다는 취지로 집의 소중함 및 가치를 담은 영상을 올리는 캠페인을 25개국에서 진행하였습니다. 집에서 누리는 소소한 행복을 짧은 영상으로 찍어서 공유하면, LG전자는 주거 환경이 열악한 인도, 베트남, 케냐의 저소득층에 집을 새로 지어주고, 해비타트와 함께 공동 생활 커뮤니티 센터(공동주방, 공동화장실, 배수로 등)을 조성하며 위생교육을 진행하는 캠페인을 실시하였습니다. 캠페인에 참여한 소비자들은 자사의 홈페이지에서 해비타트 명의의 참여 확인증을 발급받을 수 있고, 지구 반대편에서 어려움을 겪고 있는 사람들의 주거환경 개선 결과를 확인할 수 있습니다. 본 캠페인은 바이럴 조회 수 446백만, 소셜 액션 (좋아요, 댓글, 공유) 2백만, 해시태그 참여 2천여 건 이상의 참여를 가져왔으며, 국내외에서 180여 건 이상의 보도자료가 게재되었습니다. 코로나 상황이 지속되는 2021년에도 집의 소중함을 담은 본 캠페인을 지속할 예정입니다.</p>
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
+						</div>
+					</div>
+				</li>
+				<li class="lists">
+					<div class="head">
+						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+							<span class="title line2">지역사회 지원 프로그램</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="blind ui_accord_text">내용 더 보기</span>
+						</a>
+					</div>
+					<div class="accord-cont ui_accord_content" style="display:none;">
+						<div class="txtArea">
+							<p class="tit">1) 지역사회 지원 프로그램(해외)</p>
+							<p class="tit h4">1. 에티오피아 콜레라 백신접종</p>
+							<div class="esgWay_wrap">
+								<img src="/kr/images/company/sustainable/img-socialContribution-program-acco-thumb-01.png" alt="에티오피아 콜레라 백신접종 사진">
+								<p class="text">LG전자는 2010년부터 2015년까지 에티오피아에서 콜레라 백신접종 캠페인(운영기관: IVI, 국제백신연구소)을 실시하였습니다. 2019년 말부터 현지에서 콜레라가 재창궐함에 따라 LG전자는 국제백신연구소와 MOU를 체결하여 2021년부터 3년간 가격이 저렴하고 운반이 용이한 경구형 백신을 4만여 명에게 접종할 계획입니다.</p>
+							</div>
+							<p class="tit h4">2. 에티오피아 참전용사마을 주거개선 (희망마을)</p>
+							<div class="esgWay_wrap">
+								<img src="/kr/images/company/sustainable/img-socialContribution-program-acco-thumb-02.png" alt="에티오피아 참전용사촌 주거개선 착공식">
+								<p class="text">LG전자는 한국사회복지공동모금회, 해비타트와 함께 에티오피아에 있는 참전용사마을 주거개선 사업을 착수하였습니다. 이를 위해 2021년부터 2023년까지 총 7억 원의 예산으로 참전용사 가정 및 저소득층 주택 개보수, 공동 주방/화장실 건축, 배수로 설치 및 공동 샤워장 설치 등을 진행합니다. 또한, 참전용사 후손들이 다니고 있는 학교에 화장실, 식수시설 및 IT 시설을 만들어 주는 사업을 진행하며 청년 및 여성들의 자립을 위한 ICT 직업교육을 현지 LG-KOICA 직업훈련학교와 연계하여 진행하고 있습니다. 특히, 현지에서 수요가 높은 전자기기 수리과정 내 세부과정인 CCTV, 카메라 수리 및 유지보수 과목에 대한 교육을 실시하고 있으며, 이를 통해 실질적인 가계소득 창출에 기여할 것을 기대하고 있습니다.</p>
+							</div>
+							<p class="tit h4">3. LG 앰배서더 챌린지</p>
+							<div class="esgWay_wrap">
+								<img src="/kr/images/company/sustainable/img-socialContribution-program-acco-thumb-03.png" alt="LG 앰배서더 챌린지">
+								<p class="text">LG전자는 방글라데시를 시작으로 2017 년부터 '지역 사회 문제 해결'을 지원하기 위해 공모전 프로그램을 운영하고 있습니다. LG 전자는이 프로그램을 통해 고객과 주민들이 제출 한 지역 문제 해결 방안을 선정하고, 선정 된 사람을 LG 앰배서더로 선정하여 LG 전자의 지원을 받아 이러한 지역 사회 문제 해결 활동을 추진하고 있습니다. 특히 지역 사회의 고민을 잘 알고 있고 해결책을 가지고 있지만 직접 구현하기 어려운 주민들을 지원하여 해결책과 희망을 제공하기 위해 노력하고 있습니다. 또한 2020 년부터 LG 앰배서더 프로그램을 5 개국으로 확대하여 전 세계 더 많은 주민들에게 기회를 제공하고 있습니다.</p>
+							</div>
+							<p class="tit">2) 지역사회 지원 프로그램(국내)</p>
+							<p class="tit h4">1. 농어촌 1사1촌 자매 결연</p>
+							<p class="text">LG전자는 농어촌 1사1촌 자매결연을 통해 함께 성장할 수 있는 방법을 고민하여 정기적인 도농교류 및 농촌지역 활력화에 기여하고 있습니다. 2020년에는 경북 영양과 전남 해남에서 재배된 배추로 만든 김장김치를 구입하여 지역 사회복지시설 및 서울 종로, 남대문 지역 쪽방촌 800가구에 기부하였습니다. 또, 마을공동시설 리모델링 및 가전제품을 지원하고 있으며, 자매결연 마을의 소외계층 가운데 대학교에 입학하는 학생들에게 노트북을 전달하였습니다. 이 외에도 농번기나 일손이 필요한 시기에 봉사활동은 물론 지진, 홍수 등 재해 발생 시 복구활동에 적극적으로 참여하고 있습니다. 앞으로도 LG전자는 전국에 위치한 사업장과 연계하여 1사1촌 자매결연 마을을 지속 확대할 예정이며, 농어촌 지역사회와 지속적인 상생협력을 추진할 계획입니다.</p>
+							<p class="tit h4">2. 1사1병영</p>
+							<div class="esgWay_wrap">
+								<img src="/kr/images/company/sustainable/img-socialContribution-program-acco-thumb-04.png" alt="1사1병영 위문금 전달">
+								<p class="text">2015년 제3공수특전여단과 자매결연을 맺고 매년 국군장병들의 노고에 감사와 격려의 마음을 담아 위문금 및 필요 제품을 지원하고 있습니다. 앞으로 LG전자는 지속가능한 협업을 위해 1사1병영 캠페인에 적극 동참하며 지속적으로 군과의 협력 및 교류에 앞장서겠습니다.</p>
+							</div>
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="sustainable-download only_pc">
+		<p class="tit">사회공헌 PDF 다운로드</p>
+		<p class="desc">사회공헌 페이지의 내용을 한번에 확인하세요~</p>
+		<a href="#" class="btn"><span>PDF 다운로드</span></a>
+	</div>
+</div>

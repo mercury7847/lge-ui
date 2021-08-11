@@ -746,15 +746,15 @@
         margin-left: auto !important;
     }
     .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .title h2 {
-        font-size: 27px;
-        line-height: 38px;
+        font-size: 27px !important;
+        line-height: 38px !important;
         text-align: center;
         padding-left:30px; 
         padding-right:30px;
      }
      .KRC0032-html-membership .usp-banner-wrap .carousel-box .text-area .banner-txt {
-        font-size: 15px;
-        line-height: 1.53;
+        font-size: 15px !important;
+        line-height: 1.53 !important;
         margin-top: 11px;
         text-align: center;
     }
@@ -807,8 +807,17 @@
         height:100%;
         display:table-cell;
         vertical-align: middle;
+        text-align: left;
+        br{
+            display: block;
+        }
         span{
             display:block;
+            font-size: 14px !important;
+            line-height: 22px !important;
+        }
+        .KRC0032-html-banner-wrap {
+            padding-bottom: 0 !important;
         }
     }
 }

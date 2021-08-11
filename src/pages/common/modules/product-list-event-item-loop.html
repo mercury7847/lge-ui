@@ -1,0 +1,345 @@
+@@if (!context.banner) {
+    <li>
+        <div class="item @@itemClass">
+            @@if (context.imageFlags) {
+            <div class="badge">
+                <div class="flag-wrap image-type left">
+                    @@for ( var i=0; i < imageFlags.length; i++ ) {
+                    <span class="big-flag"><img data-pc-src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" data-m-src="/lg5-common/images/dummy/m-flag-60x66-`+imageFlags[i].num+`.png" src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" alt="`+imageFlags[i].alt+`"></span>
+                    }
+                </div>
+            </div>
+            }
+            <div class="product-image" aria-hidden="true">
+                @@if(!context.singleImage) {
+                    @@include('./common/partials/KRP0007-carousel.html', {
+                        "slideArr" : [
+                            {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
+                            {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
+                        ]
+                    })
+            }
+                @@if(context.singleImage) {
+                    <a href="#">
+                        <img src="@@singleImage" alt="LG DIOS 노크온 매직스페이스"><!-- 210421 웹접근성 수정 [alt 제공] -->
+                    </a>
+                }
+            </div>
+            <div class="product-contents">
+                @@if (context.optionColor) {
+                <div class="product-option color ui_smooth_scrolltab"> <!-- 2020-11-26 -->
+                    <div class="ui_smooth_tab"> <!-- 2020-11-26 -->
+                        <ul class="option-list" role="radiogroup">
+                            @@for (var i = 0; i < context.colorSet.length; i++) {
+                            <li>
+                                <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
+                                    <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+` value="MD08045006"> <!-- 2021.2.10 vlaue=modelId 추가-->
+                                    <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
+                                </div>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="scroll-controls ui_smooth_controls"> <!-- 2020-11-26 -->
+                        <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                        <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                    </div>
+                </div>
+                }
+                @@if (context.optionText) {
+                <div class="product-option text ui_smooth_scrolltab"> <!-- 2020-11-26 -->
+                    <div class="ui_smooth_tab"> <!-- 2020-11-26 -->
+                        <ul class="option-list" role="radiogroup">
+                            @@for (var i = 0; i < context.textSet.length; i++) {
+                            <li>
+                                <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
+                                    <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
+                                    <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
+                                </div>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="scroll-controls ui_smooth_controls"> <!-- 2020-11-26 -->
+                        <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                        <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                    </div>
+                </div>
+                }
+                <div class="product-info">
+                    <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정 -->
+                    <div class="event-flag-wrap bar-type">
+                        <span class="flag">신제품</span>
+                        <span class="flag cardDiscount">신한카드 5% 청구할인</span>
+                    </div>
+                    <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정 -->
+                    <div class="product-name">
+                        <a href="#">LG DIOS 노크온 매직스페이스</a>
+                    </div>
+                    @@if (!context.nonSku) {
+                    <div class="sku">S833MC85Q</div>
+                    }
+                    @@if (context.review) {
+                    <div class="review-info">
+                        <a href="#">
+                            @@if (context.isReview) {
+                            <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                            <div class="average-rating"><span class="blind">평점</span>4.2</div>
+                            <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                            }
+                            @@if (!context.isReview) {
+                            <div class="star"><span class="blind">리뷰없음</span></div>
+                            <div class="average-rating"><span class="blind">평점</span>0</div>
+                            <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
+                            }
+                        </a>
+                    </div>
+                    }
+                </div>
+                @@if (context.benefit) {
+                <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+                <div class="flag-wrap bar-type">
+                    @@for ( var i=0; i < benefit.length; i++ ) {
+                    <span class="flag">`+benefit[i]+`</span>
+                    }
+                </div> 
+                }
+                @@if (context.hashtag) {
+                <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+                <div class="hashtag-wrap">
+                    <span class="hashtag">#여름가전</span>
+                    <span class="hashtag">#가전</span>
+                </div>
+                }
+            </div>
+            @@if (context.wish) {
+            <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+            <div class="product-wish">
+                <span class="chk-wish-wrap">
+                    <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
+                    <label for="@@wish.id"><span class="blind">찜하기</span></label>
+                </span>
+            </div>
+            }
+            @@if (context.price) {
+            <div class="price-area">
+                @@if (context.originalPrice) {
+                <div class="original">
+                    <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
+                <div class="total">
+                    <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
+            </div>
+            }
+            @@if (context.singleButton) {
+            <div class="product-bottom">
+                @@if (context.singleButton.price) {
+                <div class="price-area">
+                    @@if (context.singleButton.originalPrice) {
+                    <div class="original">
+                        <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="total">
+                        <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">4,420,000<em>원</em></span>
+                    </div>
+                </div>
+                }
+                @@if (context.singleButton.carePrice) {
+                <div class="price-area">
+                    <div class="total-price">
+                        <em class="blind">최대 혜택가격</em>
+                        <span class="price"><em>월</em> 32,900<em>원</em></span>
+                    </div>
+                    <span class="small-text">(3개월/1회 방문)</span>
+                </div>
+                }
+                <div class="product-button single">
+                    <a href="#n" class="btn border">@@singleButton.button</a>
+                </div>
+            </div>
+            }
+            @@if (context.doubleButton) {
+            <div class="product-bottom">
+                @@if (context.doubleButton.price) {
+                <div class="price-area">
+                    @@if (context.doubleButton.originalPrice) {
+                    <div class="original">
+                        <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="total">
+                        <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">4,420,000<em>원</em></span>
+                    </div>
+                </div>
+                }
+                <!-- 20210126 장바구니 버튼 분리 -->
+                <div class="product-button double">
+                    @@if(context.doubleButton.button) {
+                        <!-- 210330 수정 [렌탈 장바구니 삭제 / 자세히보기 버튼 추가] -->
+                        @@for ( var i=0; i < doubleButton.button.length; i++ ) {
+                        <a href="#n" class="btn border">`+doubleButton.button[i]+`</a>
+                        }
+                    }
+                </div>
+                <!-- // 장바구니 버튼 분리 -->
+            </div>
+            }
+            @@if (context.bottom) {
+            <div class="product-bottom">
+                @@if (context.bottom.price) {
+                <div class="price-area">
+                    @@if (context.bottom.originalPrice) {
+                    <div class="original">
+                        <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="total">
+                        <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">4,420,000<em>원</em></span>
+                    </div>
+                </div>
+                }
+                @@if (context.bottom.carePrice) {
+                <!-- 210219 수정 [케어솔루션 케이스 추가] -->
+                <div class="price-area care">
+                    <div class="total-price">
+                        <em class="text">기본 월 요금</em>
+                        <span class="price"><em>월</em> 40,900<em>원</em></span>
+                    </div>
+                    <span class="small-text">(3개월/1회 방문)</span>
+                </div>
+                }
+                @@if (context.bottom.benefit) {
+                <!-- 210406 수정 [플래그 수정 / 돔 위치 이동]-->
+                <div class="flag-wrap icon-type">
+                    @@for ( var i=0; i < bottom.benefit.length; i++ ) {
+                    <span class="flag `+bottom.benefit[i].icon+`">`+bottom.benefit[i].text+`</span>
+                    }
+                </div>
+                <!-- // 210406 수정 [플래그 수정 / 돔 위치 이동]-->
+                }
+                <div class="btn-area-wrap">
+                    <div class="wishlist">
+                        <span class="chk-wish-wrap large">
+                            <input type="checkbox" id="@@bottom.wish.id" name="@@bottom.wish.name" @@bottom.wish.checked>
+                            <label for="@@bottom.wish.id"><span class="blind">찜하기</span></label>
+                        </span>
+                    </div>
+                    <div class="cart">
+                        <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정 -->
+                        <!-- 비활성화 시 .disabled 추가 -->
+                        <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"  ><span class="blind">장바구니 담기</span></a>
+                        <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정 -->
+                    </div>
+                    <div class="btn-area">
+                        <a href="#n" class="btn border size-m">@@bottom.button</a>
+                    </div>
+                </div>
+            </div>
+            }
+            @@if (context.eventItem) {
+            <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가 -->
+            <div class="product-bottom">
+                @@if (context.eventItem.benefit) {
+                <div class="flag-wrap bar-type" >
+                    @@for ( var i=0; i < eventItem.benefit.length; i++ ) {
+                    <span class="flag">`+eventItem.benefit[i]+`</span>
+                    }
+                </div>
+                }
+                @@if (context.eventItem.price) {
+                <div class="price-area">
+                    @@if (context.eventItem.originalPrice) {
+                    <div class="original" >
+                        <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="total" >
+                        <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                        <span class="price">4,420,000<em>원</em></span>
+                    </div>
+                </div>
+                }
+                <!-- 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정 -->
+                <div class="btn-area-wrap">
+                    @@if (context.eventItem.cartDisabled) { 
+                        <div class="cart">
+                            <!-- 비활성화 시 .disabled 추가 -->
+                            <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <a href="#n" class="btn-cart disabled" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
+                        </div>
+                    } 
+                    @@if (!context.eventItem.cartDisabled) { 
+                        <div class="cart">
+                            <!-- 비활성화 시 .disabled 추가 -->
+                            <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
+                        </div>
+                    } 
+                    <div class="btn-area">
+                        <a href="#n" class="btn border size-m">@@eventItem.button</a>
+                    </div>
+                </div>
+            </div>
+            }
+            @@if (context.ar) {
+            <!-- 210323 추가 [AR체험 버튼 추가] -->
+            <div class="product-ar">
+                <a href="#"><span>AR 체험</span></a>
+            </div>
+            <!-- // 210323 추가 [AR체험 버튼 추가] -->
+            }
+            @@if (context.compare) {
+            <div class="product-compare">
+                @@compare
+            </div>
+            }
+        </div>
+    </li>
+    }
+    @@if (context.banner) {
+    <li class="item-banner @@banner.moduleType">
+        <!-- 210407 CMS 동기화 -->
+        <div class="item">
+            <a href="#">
+                @@include('./common/modules/flags.html', {
+                    borderType: true,
+                    flags: [
+                        "제품관리팁"
+                    ]
+                })
+                <!-- 210412 수정 [피시,모바일 이미지 소스 분리] -->
+                <div class="product-image">
+                    <img src="@@banner.pcVisual" class="pc-only" alt="">
+                    <img src="@@banner.moVisual" class="mo-only" alt="">
+                </div>
+                <!-- 210412 수정 [피시,모바일 이미지 소스 분리] -->
+                <div class="banner-contents">
+                    <div class="inner">
+                        <div class="banner-info">
+                            <div class="title">@@banner.title</div>
+                            @@if(context.banner.copy) {
+                            <div class="sub-copy">@@banner.copy</div>
+                            }
+                        </div>
+                        <div class="banner-button">
+                            <span class="btn border">@@banner.button</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- //210407 CMS 동기화 -->
+    </li>
+    }

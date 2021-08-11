@@ -30,14 +30,14 @@
 		]);
 		optionsColumn = {
 			vAxis:{format: 'decimal'},
-			legend: {position: 'top',maxLines: 3},
+			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
 			bar: { groupWidth: '50%' },
 			series: {
 				0: { color: '#e81953'},
 				1: { color: '#e81954'},
-				2: { color: '#e81955' },
-				3: { color: '#000000' },
-				4: { color: '#000001' },
+				2: { color: '#e81955'},
+				3: { color: '#000000'},
+				4: { color: '#000001'},
 				5: { color: '#000002'},
 				6: { color: '#666666'}
 			},
@@ -64,28 +64,27 @@
 				0: {maxValue:60, format:'#\'%\''},
 				1: {maxValue:30000} 
 			},
-			legend: {position: 'top', maxLines: 3},
+			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
 			bar: { groupWidth: '20%' },
 			chartArea: {width: '80%',right:'10%'},
 			fontName:'Noto Sans',
         };
 		dataCombo04 = google.visualization.arrayToDataTable([
-			['year', '영업활동', '투자활동', {role: 'style'}, '재무활동', {role: 'style'}, '기초현금', '현금증감', '기말현금'],
-			['2020', 47774, 46286, 'stroke-color: #e81953; stroke-width: 2; fill-color: #ffffff', -23145, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff', -9939, 11725, 58963],
-			['2019', 42704, 36892, 'stroke-color: #e81953; stroke-width: 2; fill-color: #ffffff', -20833, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff', -11170, 5070, 47774],
-			['2018', 33506, 45416, 'stroke-color: #e81953; stroke-width: 2; fill-color: #ffffff', -44203, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff', 8193, 9198, 42704],
-			
+			['year', '영업활동', '투자활동', '재무활동', '기초현금', '현금증감', '기말현금'],
+			['2020', 46286, -23145, -9939, 47774, 11725, 58963],
+			['2019', 36892, -20833, -11170, 42704, 5070, 47774],
+			['2018', 45416, -44203, 8193, 33506, 9198, 42704],
 		]);
 		optionsCombo04 = {
 			series: {
-				0: {color: '#e81954'},
-				1: {color: '#e81953'},
-				2: {color: '#000000'},
+				0: {color: '#e81955'},
+				1: {color: '#000001'},
+				2: {color: '#e81954'},
 				3: {color: '#e81953', type: 'line', pointSize: 12, pointShape: 'circle'},
 				4: {color: '#000000', type: 'line', pointSize: 14, pointShape: 'square'},
 				5: {color: '#008182', type: 'line', pointSize: 14, pointShape: 'diamond'},
 			},
-			legend: {position: 'top', maxLines: 3},
+			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
 			bar: { groupWidth: '20%' },
 			isStacked: true,
 			chartArea: {width: '90%',right:'0%'},
@@ -186,19 +185,19 @@
 				containerCombo04.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				Array.prototype.forEach.call(containerCombo04.getElementsByTagName('rect'), function(rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
+						rect.setAttribute('stroke', '#e81953');
+						rect.setAttribute('stroke-width', '2');
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
 					}
 					else if (rect.getAttribute('fill') === '#e81955') {
-						rect.setAttribute('fill', 'url(#pattern-dashed1)');
+						rect.setAttribute('stroke', '#e81953');
+						rect.setAttribute('stroke-width', '2');
+						rect.setAttribute('fill', 'none');
 					}
 					else if (rect.getAttribute('fill') === '#000001') {
-						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
-						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
-						rect.setAttribute('fill', 'url(#pattern-circle)');
+						rect.setAttribute('stroke', '#000000');
+						rect.setAttribute('stroke-width', '2');
+						rect.setAttribute('fill', 'none');
 					}
 				});
 			});
@@ -251,23 +250,23 @@
 		}
 	});
 	$(document).ready(function() {
-		$("a[href='#tab1'").on('click', function(e){
+		$("a[href='#tab1']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn01.draw(dataColumn01, optionsColumn);
 				chartCombo01.draw(dataCombo01, optionsCombo01);
 			}, 500);
 		});
-		$("a[href='#tab2'").on('click', function(e){
+		$("a[href='#tab2']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn02.draw(dataColumn02, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab3'").on('click', function(e){
+		$("a[href='#tab3']").on('click', function(e){
 			setTimeout(function(){
 				chartColumn03.draw(dataColumn03, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab4'").on('click', function(e){
+		$("a[href='#tab4']").on('click', function(e){
 			setTimeout(function(){
 				chartCombo04.draw(dataCombo04, optionsCombo04);
 			}, 500);

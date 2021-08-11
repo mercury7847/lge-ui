@@ -1,12 +1,17 @@
+if ('scrollRestoration' in history) {
+    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
+    history.scrollRestoration = 'manual';
+}
+
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
     //최근검색어
-    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
+    var recentItemTemplate = '<li><span class="box"><a href="#{{text}}" data-contents="최근 검색어">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //연관검색어
-    var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var relatedItemTemplate = '<li><a href="#{{text}} data-contents="연관 검색어"">{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //인기검색어
-    var popularItemTemplate = '<li><a href="#{{text}}">{{index}}.{{text}}</a></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}" data-contents="인기 검색어">{{index}}.{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     
     var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
@@ -27,8 +32,13 @@
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
+                        /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                         '<div class="info-btm">' +
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                            '<div class="care">'+
+                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
+                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
+                            '</div>'+
+                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                             '<div class="text hashtag-wrap">' +
                                 '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                             '</div>' +
@@ -107,23 +117,26 @@
         '</div>' +
     '</div></li>';
 
+    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
             '{{#if item.target == "popup"}}' + 
-            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text btn-target-link"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
             
             '{{#else}}' +
             '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
             '{{/if}}' +
             '{{/each}}'+
         '</ul>';
+    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
 
     $(window).ready(function() {
         var search = {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
+                $(window).scrollTop(0); //BTOCSITE-2216
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
@@ -831,6 +844,36 @@
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
 
+                    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+                    $(document).on('click', '.btn-target-link', function(e){
+                        var target = this.getAttribute('href'),
+                            popupWidth = parseInt(this.getAttribute('data-width')),
+                            popupHeight = parseInt(this.getAttribute('data-height')),
+                            screenWidth = parseInt(screen.width),
+                            screenHeight = parseInt(screen.height),
+                            intLeft = Math.floor((screenWidth - popupWidth) / 2),
+                            intTop = Math.floor((screenHeight - popupHeight) / 2);
+            
+                        if (intLeft < 0) intLeft = 0;
+                        if (intTop < 0) intTop = 0;
+
+                        e.preventDefault();
+                        
+                        if( isApp()) {
+                            var appUrl = $(this).attr('href');
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
+                                // , 'titlebar_show': 'Y'
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openNewWebview(appUrl);
+                            }
+                        } else {
+                            window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
+                        }
+                    })
+                    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+
                     //noData 체크
                     if(noData) {
                         if(data.noDataList && (data.noDataList instanceof Array)) {
@@ -904,8 +947,18 @@
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        $(window).scrollTop(self.scrollHref);
-                        self.scrollHref = null;
+                        // $(window).scrollTop(self.scrollHref);
+                        // self.scrollHref = null;
+                        // BTOCSITE-2216
+                        if( $('.result-list img').last().length ) {
+                            $('.result-list img').last().on('load', function(){
+                                $('html,body').stop().animate({scrollTop: self.scrollHref});
+                                self.scrollHref = null;
+                            });
+                        } else {
+                            $('html,body').stop().animate({scrollTop: self.scrollHref});
+                            self.scrollHref = null;
+                        }
                     }
                 });
             },

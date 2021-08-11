@@ -1,0 +1,108 @@
+<li class="lists">
+    <div class="list-inner">
+        <a href="#n">
+            <span class="thumb">
+                @@if (context.img) {
+                    <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
+                }
+                @@if ( context.endEvent ) {
+                <span class="event-end">
+                    <em>종료된 이벤트</em>
+                </span>
+                }
+                @@if (context.videoBtn) {
+                    <span class="see-video">영상 보기</span>
+                }
+                @@if (context.flagN1) {
+                    @@include('./common/modules/flags.html', {
+                        bgType:true,
+                        flags:[
+                            "<span class='blind'>@@flag1</span>@@flag1-1",
+                            "<span class='blind'>@@flag2</span>@@flag2-1"
+                        ]
+                    })
+                }
+                @@if ( context.flagArr ) {
+                <span class="flag-wrap bg-type">
+                    @@for ( var j=0; j < flagArr.length; j++ ) {
+                    <span class="flag"><span class="blind">`+flagArr[j].blind+`</span>`+flagArr[j].txt+`</span>
+                    }
+                </span>
+                }
+            </span>
+            <div class="info">
+                @@if (context.flagInfo1) {
+                    @@include('./common/modules/flags.html', {
+                        barType:true,
+                        flags:[
+                            "<span class='blind'>@@flagInf1</span>@@flagInf1-1",
+                            "<span class='blind'>@@flagInf2</span>@@flagInf2-1"
+                        ]
+                    })
+                }
+                @@if(context.flagInfo2) {
+                    @@include('./common/modules/flags.html', {
+                        barType:true,
+                        flags:[
+                            "<span class='blind'>@@flagInf1</span>@@flagInf1-1"
+                        ]
+                    })
+                }
+                @@if (context.title) {
+                    <p class="tit"><span class="blind">@@title-hd</span>@@title</p>
+                } 
+                @@if (context.title2) {
+                    <p class="tit2"><span class="blind">@@title-hd</span>@@title2</p>
+                } 
+                
+                @@if (context.pdNum) {
+                <p class="pd-num"><span class="blind">@@pdNum-hd</span>@@pdNum</p>
+                }
+                <!-- BTOCSITE-3367 마이페이지 > 활동 관리 > 참여 이벤트 : 당첨자발표일 노출관련  -->
+                @@if (context.winViewFlag === "Y") {
+                <p class="date"><span class="blind">@@date-hd</span>@@date</p>
+                }
+                @@if (context.winViewFlag === "N") {
+                }
+                <!-- BTOCSITE-3367 마이페이지 > 활동 관리 > 참여 이벤트 : 당첨자발표일 노출관련  -->
+                @@if (context.hashtag) {
+                <div class="hashtag">
+                    @@for (var i=0; i < context.hashtag.length; i++) {
+                        <span class="`+hashtag[i].on+`">`+hashtag[i].tag+`</span>
+                    }
+                </div>
+                }
+                @@if (context.copy) {
+                <p class="copy">@@copyText</p>
+                }
+                @@if (context.category) {
+                    @@if ( !context.twoLine ) {
+                    <div class="category">
+                    }
+                    @@if ( context.twoLine ) {
+                    <div class="category twoLine">
+                    }    
+                        @@for (var i=0; i < context.category.length; i++) {
+                        <ol>
+                            <li>`+category[i].txt1+`</li>
+                            <li>`+category[i].txt2+`</li>
+                        </ol>
+                    }
+                    </div>    
+                }
+                @@if (context.desc) {
+                    <p class="desc">@@desc</p>
+                }
+                
+            </div>
+        </a>
+        @@if (context.btn) {
+        <div class="btn-area btm">
+            <a href="#" class="btn bd-gray"><span>@@btnName</span></a>
+        </div>
+        }
+        @@if ( context.btnOnly ) {
+        <a href="/html/BMC/MKT4007.html" class="btn-link"><span>@@btnOnly</span></a>
+        }
+    </div>
+</li>

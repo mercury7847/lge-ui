@@ -20,6 +20,11 @@
     }
 
     .map-container {
+        // BTOCSITE-3617 : Thinq_cs 파라메타 있을때 비노출
+        &.Thinq_cs .btnVisit {
+            display:none;
+        }
+
         .store-list-wrap {
             position:absolute;
             top:0;

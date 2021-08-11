@@ -892,47 +892,50 @@
                         }
                     }
                 }
-                /* 210702 */
-                .notice-wrap {
-                    margin-top:32px;
-                    @include mobile{
-                        margin-top:24px;
-                    }
-                    .notice-box {
-                        a {
-                            display:block;
-                            width:100%;
-                            height:50px;
-                            padding:12px 0;
-                            border-radius:8px;
-                            background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
-                            color:#fff;
-                            font-size:16px;
-                            font-weight:700;
-                            line-height:26px;
-                            text-align:center;
-                            span {
-                                position:relative;
-                                padding-right:22px;
-                                &:after {
-                                    content:' ';
-                                    position:absolute;
-                                    top:5px;
-                                    right:0;
-                                    width:16px;
-                                    height:16px;
-                                    background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
-                                    background-size:16px;
-                                }
+                
+            }
+
+            /* 210702 */
+            // BTOCSITE-1025 : 스토어 > 케어용품/소모품의 컴포넌트 기능  추가 및 Front 화면 수정 2021-08-02
+            .notice-wrap {
+                margin-top:32px;
+                @include mobile{
+                    margin:24px 0; // BTOCSITE-1024 2021-08-09 수정
+                }
+                .notice-box {
+                    a {
+                        display:block;
+                        width:100%;
+                        height:50px;
+                        padding:12px 0;
+                        border-radius:8px;
+                        background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
+                        color:#fff;
+                        font-size:16px;
+                        font-weight:700;
+                        line-height:26px;
+                        text-align:center;
+                        span {
+                            position:relative;
+                            padding-right:22px;
+                            &:after {
+                                content:' ';
+                                position:absolute;
+                                top:5px;
+                                right:0;
+                                width:16px;
+                                height:16px;
+                                background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+                                background-size:16px;
                             }
                         }
-                        @include mobile {
-                            margin:0 -16px;
-                            // margin:24px -16px 0;
-                            a {
-                                border-radius:0;
-                                font-weight: normal;
-                            }
+                    }
+                    @include mobile {
+                        margin:0 -16px;
+                        // margin:24px -16px 0;
+                        a {
+                            border-radius:0;
+                            font-weight: normal;
                         }
                     }
                 }
@@ -1176,8 +1179,9 @@
                         }
                             
                     }
-                    /* 20210607 스펙선택 추가 */ 
-                    &.Spec { 
+                    /* 20210607 스펙선택 추가 */
+                    &.Spec {
+                        padding:14px 24px;
                         background: #fff;
                         border:1px solid #aaa;
                         .price-info {
@@ -1552,8 +1556,7 @@
                         }
                     }
                     /* //클래스별이미지분기 */
-                    
-                }
+                }     
             }
             // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 //-->
         }
@@ -1655,7 +1658,7 @@
                         }
                         a:active{
                             background-color: inherit;
-
+                            
                         }
                         &.reservation {
                             background: url('/lg5-common/images/icons/icon-location-24.svg') no-repeat 0 center;
@@ -3308,25 +3311,25 @@
 
 @import "KRP0008_CS";
 
-//210702 에어컨 필터 구매 전 주의사항 팝업 관련 css 파일
+//210702 에어컨 필터 구매 전 주의사항 팝업 관련 css 파일	
 @import "KRP0008_popup";
 
 
 // 패키지 모델 팝업
 .popup-package-model {
-	width: 678px;
-	min-height: auto;
-	max-height: 696px;
-	@include mobile {
-		width: 100%;
-		height: auto;
-		max-height: 100vh;
-	}
-	.pop-header {
-		padding: 28px 0 15px;
-		@include mobile {
-			padding: 28px 0 10px;
-		}
+    width: 678px;
+    min-height: auto;
+    max-height: 696px;
+    @include mobile {
+        width: 100%;
+        height: auto;
+        max-height: 100vh;
+    }
+    .pop-header {
+        padding: 28px 0 15px;
+        @include mobile {
+            padding: 28px 0 10px;
+        }
     }
     .pop-conts {
         padding: 24px 40px 20px;
@@ -3335,9 +3338,9 @@
             height: calc(100vh - 120px);
             max-height: calc(100vh - 120px);
             padding: 20px 16px 54px;
-			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
-			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
-			
+            padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+            padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+
         }
         .desc {
             padding-bottom: 30px;
@@ -3364,8 +3367,8 @@
                     &.btn-type2 input + label {
                         display: flex;
                         width: 100% !important;
-                        padding: 11px 50px;  
-                        border-radius: 8px;                  
+                        padding: 11px 50px;
+                        border-radius: 8px;
                         border-width:0;
                         position: relative;
                         &:before {
@@ -3377,7 +3380,7 @@
                             content:"";
                             display: block;
                             border:1px solid #000;
-                            border-radius: 8px;  
+                            border-radius: 8px;
                         }
                         @include mobile {
                             padding: 15px 17px;
@@ -3423,7 +3426,7 @@
                         color: #000;
                         // border: 2px solid #da0f47; 
                         &:before {
-                            border: 2px solid #da0f47; 
+                            border: 2px solid #da0f47;
                         }
                     }
                 }
@@ -3431,7 +3434,7 @@
                     .rdo-wrap {
                         &.btn-type2 input + label {
                             &:before {
-                                border: 2px solid #da0f47; 
+                                border: 2px solid #da0f47;
                             }
                         }
                     }
@@ -3442,7 +3445,7 @@
     .pop-footer {
         padding: 20px 48px 50px;
         @include mobile {
-            padding: 0;    
+            padding: 0;
         }
         .btn {
             min-width: 140px;

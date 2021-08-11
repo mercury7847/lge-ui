@@ -12,6 +12,7 @@
         <div class="hidden-sm"><!-- 210331 수정 [.hidden-sm 추가] -->
             @@include('./common/modules/flags.html', {
                 barType: true,
+                "flagDiscount" : true,
                 flags: ["베스트","신제품","캐시백"]
             })
             <div class="product-name">
@@ -167,19 +168,25 @@
                         <span>등록된 제조사정보 노출</span>
                     </div>
                 </div>
-                <!-- 주의사항 210702 -->
-                <div class="notice-wrap">
-                    <div class="notice-box">
-                        <a href="#"><span>에어컨 필터 구매 전 주의사항</span></a>
-                    </div>
-                </div>
-                <!-- 주의사항 210702 -->
             </div>
-            <!-- // Sibling 정보 선택 -->
+
+
+
+            <!-- 210702 BTOCSITE-1025 에어컨 필터 구매 전 주의사항 버튼 추가 -->
+            <!-- BTOCSITE-1025 : 스토어 > 케어용품/소모품의 컴포넌트 기능  추가 및 Front 화면 수정 2021-08-02 -->
+            <div class="notice-wrap">	
+                <div class="notice-box">	
+                    <a href="#"><span>에어컨 필터 구매 전 주의사항</span></a>	
+                </div>	
+            </div>
+            <!-- //BTOCSITE-1025 : 스토어 > 케어용품/소모품의 컴포넌트 기능  추가 및 Front 화면 수정 2021-08-02 -->
+            <!-- //210702 BTOCSITE-1025 에어컨 필터 구매 전 주의사항 버튼 추가 -->
+
             
-            <!-- sibling 정보 팝업 선택 --> 
-            <!-- 20210609 스펙선택 추가-->
-            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0]">
+
+            <!-- // Sibling 정보 선택 -->
+            <!-- 일반제품 -->
+            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2,3]">
                 <ul>
                     <!-- 20210607 스펙선택 추가-->
                     <li class="lists Spec">
@@ -195,14 +202,7 @@
                             
                         </div>
                     </li>
-                </ul>
-            </div>
-            <!-- //20210609 스펙선택 추가-->
-            <!-- //sibling 정보 팝업 선택 --> 
-
-            <!-- 일반제품 --> 
-            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2]">
-                <ul>
+                    <!-- //20210607 스펙선택 추가 -->
                     <li class="lists member">
                         <div class="head">
                             <dl class="price-info total">
@@ -243,7 +243,9 @@
                                     </dl>
                                 </li>
                             </ul>
+                            <!-- 20210526 텍스트 문구 추가-->
                             <p class="desc">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>
+                            <!-- //20210526 텍스트 문구 추가-->
                         </div>
                     </li>
 
@@ -312,6 +314,7 @@
                         </div>
                     </li>
                     <!-- //20210602 BTOCSITE-495 구매혜택 수정 -->
+                    
                     <li class="lists benefit">
                         <div class="head">
                             <dl class="price-info">
@@ -346,9 +349,9 @@
                                     </dl>
                                 </li>
                             </ul>
-                            <!-- 20210531 문구 수정 -->
-                            <p class="desc">구매혜택은 카드사에 따라 다르니, 아래 '자세히 보기'를 선택하여 조건을 확인하시기 바랍니다.</p>
-                            <!-- //20210531 문구 수정 -->
+                            <!-- 20210526 텍스트 문구 추가-->
+                            <p class="desc">구매혜택은 카드사에 따라 다르니, 아래 '자세히 보기'를 클릭하여조건을 확인하시기 바랍니다.</p>
+                            <!-- //20210526 텍스트 문구 추가-->
                             <div class="btn-area">
                                 <a href="#" class="btn-link popup"><span>자세히보기</span></a>
                             </div>
@@ -1080,8 +1083,6 @@
                     <div class="rental-banner">
                         <img src="/kr/pdp-common/rental_banner_pc.png" class="pc" alt="Tip : 케어솔루션 신규 요금제 출시">
                         <img src="/kr/pdp-common/rental_banner_m.png" class="mobile" alt="Tip : 케어솔루션 신규 요금제 출시">
-
-
                     </div>
                     <!-- // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 -->
                     <!-- 2021-02-05 클래스 추가 -->
@@ -1289,6 +1290,7 @@
                     </li>  -->
                     <!-- //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
                 </ul>
+
             </div>
             <div class="product-compare">
                 <span class="chk-wrap chk-sm">
@@ -1299,15 +1301,12 @@
         </div>
         <!-- // 비교하기 + 하단 아웃 링크 -->
         <!-- 210330 수정 [윙 체험존 위치 보기 추가] -->
-        <!-- BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
-        <!-- <div class="btn-wing-experience">
+        <div class="btn-wing-experience">
             <a href="" class="btn-link"><span>윙 체험존 위치보기</span></a>
-        </div> -->
-        <!-- //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
-        <!-- // 210330 수정 [윙 체험존 위치 보기 추가] --> 
+        </div>
+        <!-- // 210330 수정 [윙 체험존 위치 보기 추가] -->
     </div>
 </div>
-
 
 <!-- BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 - 팝업 노출 -->
 @@include('./common/partials/modal/rentalCounselPop.html', {

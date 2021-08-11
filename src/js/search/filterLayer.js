@@ -2,7 +2,7 @@ var FilterLayer = (function() {
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}" class="filter-slider-tag">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -16,7 +16,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -24,7 +24,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.filterValueId}}" id="rdo-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}" {{#if idx==0}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="rdo-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -32,7 +32,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span></span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -40,7 +40,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.topFilterDisplayName}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="color-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="color-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -48,7 +48,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span></span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -56,7 +56,7 @@ var FilterLayer = (function() {
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -501,6 +501,9 @@ var FilterLayer = (function() {
 
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
+            // BTOCSITE-2847 PLP > 상세필터 동작오류 start	
+            $('.result-area .btn-filter.applied').removeClass('applied');	
+            // BTOCSITE-2847 PLP > 상세필터 동작오류 end
 
             //for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
             self._filterDefaultOpen();
@@ -614,9 +617,9 @@ var FilterLayer = (function() {
                         }
                     } else {
                         //check or radio
-                        var item = data[key];
+                        var item = data[key];                        
                         item.forEach(function(val, index) {
-                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');
+                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');                       
                             if(findDm.length > 0) {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
@@ -628,6 +631,7 @@ var FilterLayer = (function() {
                                 //$pa.vcAccordion('setOption','useAnimate',true);
                                 */
                             }
+
                         });
 
                         //check top Category
@@ -735,18 +739,19 @@ var FilterLayer = (function() {
             var arr = data instanceof Array ? data : [];
             if(foldFlag && arr.length > 0) {
                 var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
-
-                //열려있지만 체크된 값이 없는 항목 체크
-                var closeIndex = [];
-                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');
-                $li.each(function(idx, findDm) {
-                    var $findDm = $(findDm);
-                    if($findDm.find('input:checked').length < 1) {
-                        var index = $findDm.index();
-                        closeIndex.push(index);
-                    }
+                
+                //열려있지만 체크된 값이 없는 항목 체크	
+                var closeIndex = [];	
+                var $li = $list_ul.find('>li:not(.filter-slider-tag).on');	
+                $li.each(function(idx, findDm) {	
+                    var $findDm = $(findDm);	
+                    if($findDm.find('input:checked').length < 1) {	
+                        var index = $findDm.index();	
+                        // BTOCSITE-2847 PLP > 상세필터 동작오류 start	
+                        //closeIndex.push(index);	
+                         // BTOCSITE-2847 PLP > 상세필터 동작오류 end	
+                    }	
                 });
-
                 var $pa =  $list_ul.parents('.ui_filter_accordion');
                 arr.forEach(function(item, index) {
                     var isOpen = lgkorUI.stringToBool(item[self.unfoldFlagName]);

@@ -32,7 +32,7 @@
 							'{{/if}}'+	
 						'</div>' +
 						'{{#if item.checkPriceFlag}}'+
-							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.salesModelName}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}">장바구니에 담기</a></div>' +
+							'<div class="product-button"><a href="#" class="btn border requestCart-btn" data-id="{{item.modelId}}" data-model-name="{{item.salesModelName}}" data-rtSeq="{{item.rtModelSeq}}" data-type-flag="{{item.bizType}}" data-contents="{{#raw item.modelDisplayName}}">장바구니에 담기</a></div>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
 						'{{/if}}'+	
 					'</div>' +
 				'</li>'+
@@ -130,11 +130,12 @@
 								"model_sku": item.modelName, 
 								"model_gubun": item.modelGubunName,
 								"price": vcui.number.addComma(item.obsOriginalPrice), 
-								// "discounted_price": vcui.number.addComma(item.obssellingprice), 
+								"discounted_price": vcui.number.addComma(item.obsSellingPrice), 
 								"brand": "LG",
 								"category": getEcCategoryName(item),
 								"ct_id": item.subCategoryId
 							}
+
 							//console.log(item.obsOriginalPrice);
 							item.ecProduct = JSON.stringify(ecProduct);
 							/* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */

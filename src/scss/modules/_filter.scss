@@ -637,6 +637,8 @@
         position: relative;
         min-height: 76px;
         border-bottom: 1px solid #ddd;
+        // BTOCSITE-2847 PLP > 상세필터 동작오류 : [QA]모니터링항목 : 59번
+        z-index: 0;
         @include mobile {
             min-height: 65px;
         }

@@ -217,7 +217,9 @@
         var isSwipe = !!$('#sw_con').length;
 
         if (isSwipe && $('#floatBox').length == 0){
-            $('.swiper-container').after('<div id="floatBox"></div>');
+            //$('.swiper-container').after('<div id="floatBox"></div>');
+            // 20210810 BTOCSITE-1814
+            $('#sw_con').after('<div id="floatBox"></div>');
         }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){

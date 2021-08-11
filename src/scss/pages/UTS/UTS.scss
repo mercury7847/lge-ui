@@ -16,6 +16,7 @@
     }
 }
 
+
 // 통합검색
 .contents.search {
     //&:after {
@@ -701,6 +702,7 @@
         //    }
         //}
         @include mobile {
+            min-height:60vh; //BTOCSITE-2216
             margin-top: 32px;
             padding: 0 20px 60px;
             border-top: 0;

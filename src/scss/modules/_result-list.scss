@@ -350,57 +350,114 @@
             @include mobile {
                 margin-top: 6px;
             }
-            .text {
-                display: inline-block;
-                position: relative;
-                margin-right: 6px;
-                padding-right: 6px;
-                @include font($font-small,24px);
-                &:last-child {
-                    margin-right: 0;
-                    padding-right: 0;
-                }
-                &:not(:last-child):before {
+            .care {
+                display: inline-block; //BTOCSITE-3404 210809 추가
+                .text {
                     display: inline-block;
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                    content: '';
-                    width: 1px;
-                    height: 12px;
-                    transform: translate(-50%, -50%);
-                    background: #ddd;
-                }
-                @include mobile {
-                    display: block; 
-                    margin-left: 0;
-                    padding-left: 0;
-                    @include font($font-x-small,20px);
-                    &:before,
+                    position: relative; //BTOCSITE-3404 210809 수정
+                    margin-right: 6px;  
+                    padding-right: 6px;
+                    @include font($font-small,24px);
+                    &:last-child {
+                        margin-right: 6px;
+                        padding-right: 6px;
+                    }
                     &:not(:last-child):before {
-                        display: none;
-                    }
-                    &.date {
                         display: inline-block;
-                        font-size: 13px;
-                        line-height: 21px;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        content: '';
+                        width: 1px;
+                        height: 12px;
+                        transform: translate(-50%, -50%);
+                        background: #ddd;
                     }
-                    &.date + .hashtag-wrap {
+                    @include mobile {
                         display: inline-block;
-                        margin-left: 4px;
-                        padding-left: 4px;
-                        &:before {
+                        margin-right: 0;  
+                        padding-right: 0;
+                        @include font($font-x-small,20px);
+                        &:before,
+                        &:not(:last-child):before {
+                            display: none;
+                        }
+                        &.date {
                             display: inline-block;
+                            font-size: 13px;
+                            line-height: 21px;
+                        }
+                        &.date + .hashtag-wrap {
+                            display: inline-block;
+                            margin-left: 4px;
+                            padding-left: 4px;
+                            &:before {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    &.model {
+                        max-height: 24px;
+                        @include textEllipsisClamp(1);
+                        @include mobile {
+                            max-height: 20px;
                         }
                     }
                 }
-                &.model {
-                    max-height: 24px;
-                    @include textEllipsisClamp(1);
+                /* BTOCSITE-3404 210809 추가 */
+                .care-n {
+                    @include font($font-small,24px);
+                    line-height:13px;
+                    //position: absolute;
                     @include mobile {
-                        max-height: 20px;
+                        display: inline-block;
+                        margin-left: 0;
+                        padding-left: 0;
+                        @include font($font-x-small,20px);
                     }
                 }
+                .redcare-option {
+                    margin-right:9px;
+                    padding-right:9px;
+                    @include font($font-small,24px);
+                    line-height:13px;
+                    color: #DA0F47;
+                    position:relative;
+                    display:inline-block;
+                    &:after{
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        right:0;
+                        content: '';
+                        width: 1px;
+                        height: 12px;
+                        transform: translate(-50%, -50%);
+                        background: #ddd;
+                    }
+                    @include mobile {
+                        display: inline-block;
+                        @include font($font-x-small,20px);
+                        margin-right: 3px;
+                        padding-right: 3px;
+                        &:after{
+                            background:none;
+                        }
+                        &:before{
+                            display:inline-block;
+                            content: ',';
+                            background:none;
+                            margin-right: 8px;
+                            color:#000;
+                        }
+                    }
+                    // &:last-child {
+                    //     margin-right: 0;
+                    // }
+                }
+
+                
+                /* //BTOCSITE-3404 210809 추가 */
             }
         }
         .hashtag-wrap {
@@ -431,8 +488,7 @@
             @include font-small;
             vertical-align: top;
         }
-        
-        .hashtag-wrap + .careflag {
+        .hashtag-wrap + .careflag  {
             @include mobile {
                 display: block;
                 margin-left: 0 !important;
