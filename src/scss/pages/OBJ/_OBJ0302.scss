@@ -1056,9 +1056,9 @@ h2.title {
                 >dd {
                     .compare_sel_model_area {
                         display: none;
-                        padding: 0 40px;
+                        padding: 0 15px; //BTOCSITE-2346 210811 - step3 padding 값 수정
                         @include mobile {
-                            padding: 0 15px;
+                            padding: 0 5px; //BTOCSITE-2346 210811 - step3 padding 값 수정
                         }
                         &.is_active {
                             display: block;
@@ -1128,13 +1128,19 @@ h2.title {
                                                     padding: 0;
                                                 }
                                             }
+                                            @media screen and (max-width:899px) {
+                                                font-size: 13px; //BTOCSITE-2346 210811 - step3 태블릿 테이블 글자크기 수정
+                                            }
                                             @include mobile {
-                                                font-size: 13px;
+                                                font-size: 12px; //BTOCSITE-2346 210811 - step3 테이블 글자크기 수정
                                             }
                                             span {
                                                 position: relative;
                                                 display: inline-block;
                                                 padding: 0 30px;
+                                                @media screen and (max-width:899px) {
+                                                    padding: 0 22px; //BTOCSITE-2346 210811 - step3 태블릿 간격 수정
+                                                }
                                             }
                                         }
                                     }
@@ -1163,6 +1169,15 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811
+                            .btn{
+                                @media screen and (max-width: 360px) {
+                                    margin-left:0;
+                                    margin-bottom:10px;
+                                    width:100%;
+                                }
+                            }
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811
                             .btn+.btn {
                                 margin-left: 7px;
                             }
