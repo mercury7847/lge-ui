@@ -20,7 +20,7 @@ var categoryEmptyTabContentsTmpl = '{{#each obj in list}}\n'+
 //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
     '                       <li data-category-id="{{obj.categoryId}}" data-gnb-id="{{obj.gnbId}}">\n'+
-    '                           <a href="{{obj.linkPath}}" class="slide-box" data-contents="{{obj.categoryName}}">\n'+
+    '                           <a href="{{obj.linkPath}}" class="slide-box">\n'+
     '                               <i><img src="{{obj.iconPath}}" alt=""></i>\n'+
     '                               <span class="txt">{{obj.title}}</span>\n'+
     '                           </a>\n'+
@@ -514,7 +514,7 @@ $(function(){
         }
 
         //-S- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gnbId값 추가
-        function buildSubCatagoryTab(result, categoryId){
+        function buildSubCatagoryTab(result, categoryId, gnbId, categoryName){
 
             var data = result.data;
             if(data && data.data){
@@ -548,6 +548,14 @@ $(function(){
                 var tabContentStr = vcui.template(categoryTabContentsTmpl, {list:arr});
                 $context.find('#'+categoryId).find('.ui_sub_category').html(tabContentStr);
 
+                /* BTOCSITE-1057 : data-contents 추가 2021-08-09 */
+                $context.find('#'+categoryId).find('.ui_sub_category li a').attr('data-contents', categoryName);
+                // console.log("gnbId :", '#'+gnbId);
+                // console.log("categoryName :", '#'+categoryName);
+                // console.log("categoryId :", '#'+categoryId);
+                // console.log(tabContentStr);
+                /* //BTOCSITE-1057 : data-contents 추가 2021-08-09 */
+
                 // 4개 이하일때 중앙정렬
                 if (arr.length < 4){
                     $context.find('#'+categoryId).find('.ui_sub_category').css({
@@ -579,7 +587,6 @@ $(function(){
                 $context.find('.module-box.cnt01 .ui_category_tab_contents').empty().html(tabContentStr);
                 $context.find('.module-box.cnt01 .ui_category_tab > .tabs').empty().html(tabStr);
 
-
                 $context.find('.module-box.cnt01 .ui_category_tab').on('tabbeforechange tabchange tabinit', function(e, data){
                     
                     var categoryId = null;
@@ -589,8 +596,9 @@ $(function(){
 
                         categoryId = arr[0].categoryId;
                         gnbId = arr[0].gnbId;
+                        categoryName = arr[0].categoryName; //BTOCSITE-1057 : data-contents 추가 2021-08-09
                         lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
-                            buildSubCatagoryTab(e, categoryId, gnbId);
+                            buildSubCatagoryTab(e, categoryId, gnbId, categoryName); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                         }, errorRequest);
 
                     }else if(e.type=='tabbeforechange'){
@@ -603,9 +611,10 @@ $(function(){
 
                         categoryId = arr[data.selectedIndex].categoryId;
                         gnbId = arr[data.selectedIndex].gnbId;
+                        categoryName = arr[data.selectedIndex].categoryName; //BTOCSITE-1057 : data-contents 추가 2021-08-09
 
                         lgkorUI.requestAjaxDataFailCheck(storeSubCategoryTabUrl,{"categoryId":categoryId, "gnbId":gnbId}, function(e){
-                            buildSubCatagoryTab(e, categoryId, gnbId);
+                            buildSubCatagoryTab(e, categoryId, gnbId, categoryName); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                             $('.module-box.cnt01 .ui_category_tab').vcTab('select', data.selectedIndex, true );
                             $(data.content).transit({opacity:1});
 
