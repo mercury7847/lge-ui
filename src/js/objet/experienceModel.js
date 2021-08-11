@@ -7033,17 +7033,20 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
         if (i == (priceLeng - 1)) {
             let memberDiscountSum = 0;
             let directDiscountSum = 0;
-            if( $('.model_set_wrap').attr('data-best') == "Y" ) {
-                memberDiscountSum = memberDiscount[0];
-                directDiscountSum = directDiscount[0];
-            } else {
+
+            // BTOCSITE-2346 견적 금액 오류 처리 - 추천조합모델가격 적용 안되도록 기본모델로 적용되도록 변경 - 210811 START
+            // if( $('.model_set_wrap').attr('data-best') == "Y" ) {
+            //     memberDiscountSum = memberDiscount[0];
+            //     directDiscountSum = directDiscount[0];
+            // } else {
                 for (let j = 0; j < memberDiscount.length; j++) {
                     memberDiscountSum += parseInt(memberDiscount[j]);
                 }
                 for (let j = 0; j < directDiscount.length; j++) {
                     directDiscountSum += parseInt(directDiscount[j]);
                 }
-            }
+            // }
+            // BTOCSITE-2346 견적 금액 오류 처리 - 추천조합모델가격 적용 안되도록 기본모델로 적용되도록 변경 - 210811 END
             setTimeout(function() {
                 let resultDuiscount = parseInt(memberDiscountSum) + parseInt(directDiscountSum);
                 let resultSum = parseInt(sumPrice) - parseInt(resultDuiscount);
