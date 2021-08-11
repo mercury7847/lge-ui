@@ -1965,6 +1965,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .comp_wrap {flex-direction:column; margin-top:12px}
     .company .comp_wrap img {width:100%; max-width:100%; max-height:100%; margin:0}
     .company .comp_wrap > .textArea {width:100%}
+    .company .comp_wrap > .text {width:100%}
 
     .company .ceo_msg .text {font-size:14px; line-height:22px}
     .company .ceo_msg .msg_box {margin:34px 0; padding:19px}
@@ -2108,5 +2109,4 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .privacy_list > ul > li + li {margin-top:12px}
     .company .privacy_list > ul > li .p_tit {min-height:48px; padding:12.5px 5px; font-size:15px; line-height:23px}
     .company .privacy_list > ul > li .p_text {padding:18px 20px}
-
 }
