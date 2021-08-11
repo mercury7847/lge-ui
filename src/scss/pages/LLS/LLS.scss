@@ -2,6 +2,7 @@
 
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
+@import "../../modules/slick";
 
 .lls-main {
     overflow:hidden;
@@ -25,112 +26,17 @@
         }
     }
 
-    .swiper-cover {
-        overflow: hidden;
-
-        @include mobile {
-            overflow:visible;
-            margin:0 -16px;
-        }
+    .slick-slide {
+        white-space: normal;
     }
 
-    .swiper-button {
-        &-next,
-        &-prev {
-            width:40px;
-            height:40px;
-            
-            &:after {
-                content:"";
-                width:40px;
-                height:40px;
-                background-size: 100% 100%;
-                background-position: center center;
-                background-repeat: no-repeat;
-                border-radius:100%;
-                box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.14);
-            }
-        }
-        &-disabled {
-            display: none;
-            pointer-events: auto;
-        }
-
-        &-prev {
-            left:0;
-            &:after {
-                background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg);
-            }
-        }
-        &-next {
-            right:0;
-            &:after {
-                background-image: url(/lg5-common/images/icons/btn-arr-40x40-rt.svg);
-            }
-        }
-    }
-
-    .swiper-button-controls {
-        @include mobile {
-            display: none;
-        }
-    }
-
-    .swiper-button-controls {
-        position: absolute;
-        top:50%;
-        left:50%;
-        width:100%;
-        height:0;
-        transform:translate(-50%, -50%);
-        z-index:1;
-    }
-    
     .hero {
         &-wrap {
+            position: relative;
             max-width:1920px;
             margin:0 auto;
-        }
-        &-slider {
-            position: relative;
 
-            .swiper-pagination {
-                display: flex;
-                bottom:24px;
-                left:50%;
-                width:100%;
-                max-width:1460px;
-                padding:0 40px;
-                transform:translateX(-50%);
-                
-                &-bullet {
-                    flex:1;
-                    border-radius:0;
-                    height:3px;
-                    opacity:0.4;
-                    background: #fff;
-
-                    &-active {
-                        opacity:1;
-                    }
-
-                    & + .swiper-pagination-bullet {
-                        margin-left:29px;
-                    }
-                }
-
-                @include mobile {
-                    bottom:20px;
-                    padding:0 16px;
-
-                    &-bullet {
-                        & + .swiper-pagination-bullet {
-                            margin-left:10px;
-                        }
-                    }
-                }
-            }
-            .swiper-play-controls {
+            .play-controls {
                 position: absolute;
                 bottom:43px;
                 left:50%;
@@ -141,28 +47,85 @@
                 text-align: right;
                 font-size:0;
                 z-index:1;
-
+    
                 .btn-play {
                     display: inline-block;
                     width:24px;
                     height:24px;
                     background: url(/lg5-common/images/icons/btn-carousel-hero-play.svg) no-repeat 0 0;
                     background-size: 100% 100%;
-
+    
                     &.stop {
                         background-image: url(/lg5-common/images/icons/btn-carousel-hero-pause.svg);
                     }
                 }
-
+    
                 @include mobile {
                     bottom:39px;
                     padding:0 16px;
                 }
             }
-            .swiper-button-controls {                
+            .slide-button-controls {
+                position: absolute;
+                top:50%;
+                left:50%;
+                width:100%;
                 max-width:1748px;
+                height:0;
+                transform:translateX(-50%);
+                text-align: right;
+                font-size:0;
+                z-index:1;
+            }
+        }
+        
+        &-slider {
+            position: relative;
+            overflow:hidden;
+            height:640px;
+
+            @include mobile {
+                height:102vw;
+            }
+
+            .slick-dots {
+                display: flex;
+                bottom:24px;
+                left:50%;
+                width:100%;
+                max-width:1460px;
+                padding:0 40px;
+                transform:translateX(-50%);
+
+                > li {
+                    flex:1;
+                    & + li {
+                        margin-left:29px;
+                    }
+                    &.slick-active {
+                        button {
+                            opacity:1;
+                        }
+                    }
+
+                    button {
+                        width:100%;
+                        border-radius:0;
+                        height:3px;
+                        opacity:0.4;
+                        background: #fff;
+                    }
+                }
+                
                 @include mobile {
-                    display: none;
+                    bottom:20px;
+                    padding:0 16px;
+
+                    > li {
+                        & + li {
+                            margin-left:10px;
+                        }
+                    }
                 }
             }
             
@@ -295,6 +258,7 @@
                 }
             }
         }
+        
     }
 
     .lls-push {
@@ -393,11 +357,10 @@
 
     .recently-highlight {
         &-slider {
+            white-space: nowrap;
             margin-left:-10px;
             margin-right:-10px;
-            .swiper-wrapper {
-                font-size:0;
-            }
+            
             .slide {
                 &-item {
                     display: inline-block;
@@ -432,10 +395,12 @@
                     margin-top:24px;
                 }
                 &-title {
+                    $lineHeight:1.56;
                     display: block;
+                    height:($lineHeight*2)+em;
                     font-size:18px;
                     font-weight:500;
-                    line-height:1.56;
+                    line-height:$lineHeight;
     
                     @include textClipClamp(2);
                 }
@@ -445,7 +410,12 @@
                 overflow: visible;
                 margin-left:0;
                 margin-right:0;
-                padding:0 11px;
+
+                .slick-list {
+                    overflow:visible;
+                    margin:0 -5px;
+                    padding-right:16px;
+                }
                 
                 .slide {
                     &-item {
@@ -453,6 +423,10 @@
                         padding:0 5px;
                     }
                     &-thumb-area {
+                        img {
+                            width:100%;
+                            max-width:100%;
+                        }
                         .slide-item-time {
                             left:10px;
                             bottom:10px;
@@ -471,15 +445,25 @@
                 }
             }
         }
-        .swiper-button {
-            &-controls {
-                top:42.6199%;
-            }
-            &-prev {
-                left:-24px;
-            }
-            &-next {
-                right:-24px;
+        .slide-button-controls {
+            position: absolute;
+            top:42.6199%;
+            left:0;
+            width:100%;
+            max-width:1380px;
+            height:0;
+            transform:none;
+            text-align: right;
+            font-size:0;
+            z-index:1;
+
+            .slick-arrow {
+                &.slick-prev {
+                    left:-19px;
+                }
+                &.slick-next {
+                    right:-19px;
+                }
             }
         }
     }
@@ -495,14 +479,10 @@
             }
         }
         &-slider {
-            overflow:visible;
-            margin-left:-10px;
-            margin-right:-10px;
-            .swiper-wrapper {
-                font-size:0;
-                position: relative;
-                margin:0;
-                padding:10px 0 15px;
+            white-space: nowrap;
+            .slick-list {
+                margin:-5px -10px 0;
+                padding:5px 0 15px;
             }
             .slide {
                 &-item {
@@ -530,7 +510,9 @@
                     margin-top:12px;
                 }
                 &-title {
+                    $lineHeight:1.56;
                     display: block;
+                    height:($lineHeight*2)+em;
                     font-size:18px;
                     font-weight:500;
                     line-height:1.56;
@@ -540,9 +522,10 @@
             }
 
             @include mobile {
-                margin-left:0;
-                margin-right:0;
-                padding:0 11px;
+                .slick-list {
+                    overflow:visible;
+                    margin:-5px -5px 0;
+                }
                 .slide {
                     &-item {
                         width:37.5vw !important;
@@ -564,19 +547,25 @@
                 }
             }
         }
-        .swiper-cover {
-            @include pc {
-                position: relative;
-                margin:0 -10px;
-                padding:0 10px;
-            }
-        }
-        .swiper-button {
-            &-prev {
-                left:-24px;
-            }
-            &-next {
-                right:-24px;
+        .slide-button-controls {
+            position: absolute;
+            top:calc(50% - 10px);
+            left:50%;
+            width:100%;
+            max-width:1380px;
+            height:0;
+            transform:translateX(-50%);
+            text-align: right;
+            font-size:0;
+            z-index:1;
+
+            .slick-arrow {
+                &.slick-prev {
+                    left:-24px;
+                }
+                &.slick-next {
+                    right:-24px;
+                }
             }
         }
     }

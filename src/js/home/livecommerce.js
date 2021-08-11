@@ -15,8 +15,16 @@ var lls = {
         self.$switch = self.$llsMain.find('.ui_background_switch')
         self.$pushBtn = self.$llsMain.find('.btn-lls-push');
         self.pushBtn = null;
+
+        self.$heroWrap = self.$llsMain.find('.hero-wrap');
+        self.$heroSwiper = self.$heroWrap.find('.hero-slider');
+        self.$playBtn = self.$heroWrap.find('.play-controls .btn-play');
+
         self.$highSection = self.$llsMain.find('.recently-highlight');
         self.$highSlider = self.$highSection.find('.recently-highlight-slider');
+
+        self.$onbroad = self.$llsMain.find('.onbroad-product');
+        self.$onbroadSlider = self.$onbroad.find('.onbroad-product-slider');
 
         self.$eventSection = self.$llsMain.find('.event-announced');
         self.$eventList = self.$eventSection.find('.event-item-list');
@@ -95,9 +103,13 @@ var lls = {
 
         //최신 하이라이트 목록 클릭시 모바일 기기가 아니면 앱설치 팝업 활성화
         self.$highSlider.find('.slide-item a').on('click', function(e){
-            if( !vcui.detect.isMobileDevice ) {
+            if( self.$highSlider.hasClass('swipping')) {
                 e.preventDefault();
-                self.$appInstallPopup.vcModal({opener:$(this)});
+            } else {
+                if( !vcui.detect.isMobileDevice ) {
+                    e.preventDefault();
+                    self.$appInstallPopup.vcModal({opener:$(this)});
+                }
             }
         });
 
@@ -115,9 +127,8 @@ var lls = {
     },
     heroSlider: function(){
         //히어로 배너 슬라이드
-        var $heroSwiper = $('.hero-slider');
-        var $playControl = $heroSwiper.find('.swiper-play-controls');
-        var $btnPlay = $playControl.find('.btn-play');
+        var self = this;
+        
         var liveTid = 0;
         var speed = 1000;
 
@@ -135,149 +146,113 @@ var lls = {
             }
         }
 
-        var heroSwiper = new Swiper('.hero-slider', {
-            loop:true,
-            slidesPerView:1,
-            observer: true,
-            observeParents: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                init: function(swiper){
-                    $btnPlay.addClass('stop');
+        self.$heroSwiper.slick({
+            dots: true,
+            infinite: true,
+            arrows: true,
+            autoplay:true,
+            autoplaySpeed: 5000,
+            prevArrow: self.$heroWrap.find('.slick-prev'),
+            nextArrow: self.$heroWrap.find('.slick-next')
+        })
 
-                    var realSwiperCount = $(swiper.$el).find('.swiper-slide').not('.swiper-slide-duplicate').length;
-
-                    if( realSwiperCount > 1) {
-                        swiper.allowTouchMove = true;
-                    } else {
-                        swiper.allowTouchMove = false;
-                    }
-                }
-                // slideChange: function(swiper){
-                //     var $currentSlide = $(swiper.slides[swiper.activeIndex]);
-                //     var $flag = $currentSlide.find('.hero-item-flag');
-                //     var liveStartTime = $flag.attr('data-live-start')
-                //     var liveEndTime = $flag.attr('data-live-end');
-                    
-                //     liveCheck($currentSlide, liveStartTime, liveEndTime)
-                //     clearInterval(liveTid)
-                //     liveTid = setInterval(function(){
-                //         liveCheck($currentSlide, liveStartTime, liveEndTime)
-                //     }, speed)
-                // }
-            }
-        });
-
-        $btnPlay.on('click', function(e){
+        self.$playBtn.addClass('stop').find('.blind').text(self.$playBtn.find('.blind').attr('data-stop-text'));
+        self.$playBtn.on('click', function(e){
             var $this = $(this);
-            var $alt = $this.find('.blind');
-            var playTxt = $alt.data('playText');
-            var stopTxt = $alt.data('stopText');
-
-            e.preventDefault();
-
-            if( $heroSwiper.hasClass('swiper-container-initialized') ) {
-                if( $this.hasClass('stop')) {
-                    $this.removeClass('stop')
-                    heroSwiper.autoplay.stop();
-                    $alt.text(playTxt);
-                } else {
-                    $this.addClass('stop')
-                    heroSwiper.autoplay.start();
-                    $alt.text(stopTxt);
-                }
+            var $text = $this.find('.blind');
+            if( $(this).hasClass('stop') ) {
+                $this.removeClass('stop')
+                $heroSwiper.slick('slickPause')
+                $text.text($text.attr('data-play-text'))
+            } else {
+                $this.addClass('stop')
+                $heroSwiper.slick('slickPlay')
+                $text.text($text.attr('data-stop-text'))
             }
         })
     },
     highlightSlider: function(){
         //최신 하이라이트 슬라이드
-        var highlightSwiper = new Swiper('.recently-highlight-slider', {
-            slidesPerView: "auto",
-            slidesPerGroup:2, 
-            observer: true,
-            observeParents: true,
-            navigation: {
-                nextEl: '.recently-highlight .swiper-button-next',
-                prevEl: '.recently-highlight .swiper-button-prev',
-            },
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                  slidesPerView: "auto",
-                  slidesPerGroup:2, 
+        var self = this;
+
+        self.$highSlider.slick({
+            arrows: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            infinite:false,
+            variableWidth:false,
+            prevArrow: self.$highSection.find('.slick-prev'),
+            nextArrow: self.$highSection.find('.slick-next'),
+            responsive: [
+                {
+                  breakpoint: 1200,
+                  settings: {
+                    arrows:true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    variableWidth:false
+                  }
                 },
-                // when window width is >= 640px
-                768: {
-                  slidesPerView: 3,
-                  slidesPerGroup:3,
-                },
-                1025: {
-                    slidesPerView:5,
-                    slidesPerGroup:5, 
+                {
+                  breakpoint: 768,
+                  settings: {
+                    arrows:false,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    variableWidth:true,
+                    outerEdgeLimit: true,
+                  }
                 }
-            },
-            on: {
-                breakpoint: function(swiper, breakpointParams){
-                    var realSwiperCount = $(swiper.$el).find('.swiper-slide').not('.swiper-slide-duplicate').length;
-                    if( realSwiperCount > breakpointParams.slidesPerGroup) {
-                        swiper.allowTouchMove = true;
-                    } else {
-                        swiper.allowTouchMove = false;
-                    }
-                }
-            }
+            ]
         })
+        self.$highSlider.on('swipe', function(slick, dir){
+            self.$highSlider.addClass('swipping')
+        })
+        self.$highSlider.on('afterChange', function(slick, currentSlide){
+            self.$highSlider.removeClass('swipping')
+        })
+
+        self.$highSlider.find('a').on('click', function(e){
+            if( self.$highSlider.hasClass('swipping')) {
+                e.preventDefault()
+                return;
+            }
+        });
     },
     onbroadProductSlider: function(){
+        var self = this;
+
         //방송에 나온 그 제품 슬라이드
-        var productSwiper = new Swiper('.onbroad-product-slider', {
-            slidesPerView: "auto",
-            slidesPerGroup:1, 
-            observer: true,
-            observeParents: true,
-            navigation: {
-                nextEl: '.onbroad-product .swiper-button-next',
-                prevEl: '.onbroad-product .swiper-button-prev',
-            },
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                  slidesPerView: "auto",
-                  slidesPerGroup:1, 
+        self.$onbroadSlider.slick({
+            arrows: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            infinite:false,
+            variableWidth:false,
+            outerEdgeLimit: true,
+            prevArrow: self.$onbroad.find('.slick-prev'),
+            nextArrow: self.$onbroad.find('.slick-next'),
+            responsive: [
+                {
+                  breakpoint: 1200,
+                  settings: {
+                    arrows:true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    variableWidth:false
+                  }
                 },
-                // when window width is >= 640px
-                768: {
-                  slidesPerView: 3,
-                  slidesPerGroup:3,
-                },
-                1025: {
-                    slidesPerView:5,
-                    slidesPerGroup:5, 
+                {
+                  breakpoint: 768,
+                  settings: {
+                    arrows:false,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    variableWidth:true,
+                    outerEdgeLimit: true,
+                  }
                 }
-            },
-            on: {
-                breakpoint: function(swiper, breakpointParams){
-                    var realSwiperCount = $(swiper.$el).find('.swiper-slide').not('.swiper-slide-duplicate').length;
-                    
-                    if( realSwiperCount > breakpointParams.slidesPerGroup) {
-                        swiper.allowTouchMove = true;
-                    } else {
-                        swiper.allowTouchMove = false;
-                    }
-                }
-            }
+            ]
         })
     }
 }

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko" class="app">
-<link type="text/css" rel="stylesheet" href="/lg5-common/js/libs/swiper-bundle.css">
+<html lang="ko">
 @@include('./common/head.html', { 
     pageCSS: ["LLS/LLS"],
-    pageJS: ["libs/swiper-bundle", "home/livecommerce"],
+    pageJS: ["libs/slick", "home/livecommerce"],
     pageTitle: "LGE LIVE SHOW 엘라 SHOW | LG전자",
-    pageDesc: "LGE LIVE SHOW 엘라 SHOW"
+    pageDesc: "LGE LIVE SHOW 엘라 SHOW",
 })
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
-        @@include('./common/header.html', { hiddenTitle : "LGE LIVE SHOW 엘라 SHOW" })
+        @@include('./common/header.html', { hiddenTitle : "LGE LIVE SHOW 엘라 SHOW", pageCase:"main"})
         <!-- //210311_H1추가 -->
 
         <div class="container">
@@ -18,83 +17,79 @@
             <div class="contents lls-main">
                 <!-- 상단 히어로 영역 -->
                 <div class="hero-wrap">
-                    <div class="hero-slider swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide hero-item">
-                                <a href="#">
-                                    <!-- pc 이미지 -->
-                                    <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
-                                    <!-- mo 이미지 -->
-                                    <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
-                                    <div class="hero-item-content">
-                                        <!-- 라이브 진행표시 flag -->
-                                        <!-- 라이브 중 class: live-now -->
-                                        <div class="hero-item-flag live-now">
-                                            <div class="flag-title">
-                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">지금 라이브중</span>
-                                            </div>
-                                            <div class="flag-time">7월13일 19:00</div>
+                    <div class="hero-slider">
+                        <div class="hero-item">
+                            <a href="#">
+                                <!-- pc 이미지 -->
+                                <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
+                                <!-- mo 이미지 -->
+                                <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
+                                <div class="hero-item-content">
+                                    <!-- 라이브 진행표시 flag -->
+                                    <!-- 라이브 중 class: live-now -->
+                                    <div class="hero-item-flag live-now">
+                                        <div class="flag-title">
+                                            <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">지금 라이브중</span>
                                         </div>
-                                        <!-- 라이브 진행표시 flag -->
-                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                        <div class="flag-time">7월13일 19:00</div>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide hero-item">
-                                <a href="#">
-                                    <!-- pc 이미지 -->
-                                    <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
-                                    <!-- mo 이미지 -->
-                                    <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
-                                    <div class="hero-item-content">
-                                        <!-- 라이브 진행표시 flag -->
-                                        <!-- 라이브 중 class: live-now -->
-                                        <div class="hero-item-flag">
-                                            <div class="flag-title">
-                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
-                                            </div>
-                                            <div class="flag-time">7월13일 19:00</div>
+                                    <!-- 라이브 진행표시 flag -->
+                                    <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                    <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="hero-item">
+                            <a href="#">
+                                <!-- pc 이미지 -->
+                                <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
+                                <!-- mo 이미지 -->
+                                <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
+                                <div class="hero-item-content">
+                                    <!-- 라이브 진행표시 flag -->
+                                    <!-- 라이브 중 class: live-now -->
+                                    <div class="hero-item-flag">
+                                        <div class="flag-title">
+                                            <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
                                         </div>
-                                        <!-- 라이브 진행표시 flag -->
-                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                        <div class="flag-time">7월13일 19:00</div>
                                     </div>
-                                </a>
-                            </div>
-                            
+                                    <!-- 라이브 진행표시 flag -->
+                                    <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                    <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                </div>
+                            </a>
+                        </div>
+                        
 
-                            <div class="swiper-slide hero-item">
-                                <a href="#">
-                                    <!-- pc 이미지 -->
-                                    <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
-                                    <!-- mo 이미지 -->
-                                    <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
-                                    <div class="hero-item-content">
-                                        <!-- 라이브 진행표시 flag -->
-                                        <!-- 라이브 중 class: live-now -->
-                                        <div class="hero-item-flag">
-                                            <div class="flag-title">
-                                                <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
-                                            </div>
-                                            <div class="flag-time">7월13일 19:00</div>
+                        <div class="hero-item">
+                            <a href="#">
+                                <!-- pc 이미지 -->
+                                <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
+                                <!-- mo 이미지 -->
+                                <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
+                                <div class="hero-item-content">
+                                    <!-- 라이브 진행표시 flag -->
+                                    <!-- 라이브 중 class: live-now -->
+                                    <div class="hero-item-flag">
+                                        <div class="flag-title">
+                                            <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
                                         </div>
-                                        <!-- 라이브 진행표시 flag -->
-                                        <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                        <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                        <div class="flag-time">7월13일 19:00</div>
                                     </div>
-                                </a>
-                            </div>
-                            
+                                    <!-- 라이브 진행표시 flag -->
+                                    <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                    <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-play-controls">
-                            <button class="btn-play"><span class="blind" data-play-text="재생" data-stop-text="정지">정지</span></button>
-                        </div>
-                        <div class="swiper-button-controls">
-                            <button class="swiper-button-prev"><span class="blind">이전</span></button>
-                            <button class="swiper-button-next"><span class="blind">다음</span></button>
-                        </div>
+                    </div>
+                    <div class="play-controls">
+                        <button class="btn-play stop"><span class="blind" data-play-text="재생" data-stop-text="정지">정지</span></button>
+                    </div>
+                    <div class="slide-button-controls">
+                        <button class="slick-arrow slick-prev"><span class="blind">이전</span></button>
+                        <button class="slick-arrow slick-next"><span class="blind">다음</span></button>
                     </div>
                 </div>
                 <!-- 상단 히어로 영역 -->
@@ -114,11 +109,10 @@
                         <h3 class="lls-sec__head--title">최신 하이라이트</h3>
                     </div>
                     <div class="lls-sec__content">
-                        <div class="swiper-cover">
-                            <div class="swiper-container recently-highlight-slider">
-                                <div class="swiper-wrapper">
-                                    @@for ( var i=0; i < 9; i++ ) {
-                                    <div class="swiper-slide slide-item">
+                        <div class="slide-cover">
+                            <div class="recently-highlight-slider">
+                                @@for ( var i=0; i < 10; i++ ) {
+                                    <div class="slide-item">
                                         <a href="">
                                             <div class="slide-thumb-area">
                                                 <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
@@ -133,13 +127,12 @@
                                             </div>
                                         </a>
                                     </div>
-                                    }
-                                </div>
+                                }
                             </div>
-                        </div>
-                        <div class="swiper-button-controls">
-                            <button class="swiper-button-prev"><span class="blind">이전</span></button>
-                            <button class="swiper-button-next"><span class="blind">다음</span></button>
+                            <div class="slide-button-controls">
+                                <button class="slick-arrow slick-prev"><span class="blind">이전</span></button>
+                                <button class="slick-arrow slick-next"><span class="blind">다음</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,31 +144,28 @@
                         <h3 class="lls-sec__head--title">방송에 나온 그 제품</h3>
                     </div>
                     <div class="lls-sec__content">
-                        <div class="swiper-cover">
-                            <div class="swiper-container onbroad-product-slider">
-                                <div class="swiper-wrapper">
-                                    @@for ( var i=0; i < 9; i++ ) {
-                                    <div class="swiper-slide slide-item">
-                                        <a href="">
-                                            <div class="slide-thumb-area">
-                                                <img src="/lg5-common/images/LLS/img-lls-broad-product-dummy01.jpg" alt="">
-                                            </div>
-                                            <div class="slide-cont-area">
-                                                <strong class="slide-title">
-                                                    LG 코드제로 A9S 오브제 컬렉션
-                                                    LG 코드제로 A9S 오브제 컬렉션
-                                                </strong>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    }
+                        <div class="slide-cover">
+                            <div class="onbroad-product-slider">
+                                @@for ( var i=0; i < 9; i++ ) {
+                                <div class="slide-item">
+                                    <a href="">
+                                        <div class="slide-thumb-area">
+                                            <img src="/lg5-common/images/LLS/img-lls-broad-product-dummy01.jpg" alt="">
+                                        </div>
+                                        <div class="slide-cont-area">
+                                            <strong class="slide-title">
+                                                LG 코드제로 A9S 오브제 컬렉션
+                                                LG 코드제로 A9S 오브제 컬렉션
+                                            </strong>
+                                        </div>
+                                    </a>
                                 </div>
-                                
+                                }
                             </div>
-                        </div>
-                        <div class="swiper-button-controls">
-                            <button class="swiper-button-prev"><span class="blind">이전</span></button>
-                            <button class="swiper-button-next"><span class="blind">다음</span></button>
+                            <div class="slide-button-controls">
+                                <button class="slick-arrow slick-prev"><span class="blind">이전</span></button>
+                                <button class="slick-arrow slick-next"><span class="blind">다음</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
