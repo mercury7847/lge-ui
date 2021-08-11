@@ -127,6 +127,17 @@ MainSwiper.prototype = {
                     
 
                     mainSwiper.currentIdx = swiper.activeIndex;
+                    // 20100811 BTOCSITE-1814 
+                    mainSwiper.$tabs.parent().removeClass('on').eq(swiper.activeIndex).addClass('on');
+                    mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+                    $('#mobileNav').vcSmoothScroll("scrollToActive");
+                    if(swiper.activeIndex === 0 ) {
+                         $('#mobileNav').vcSmoothScroll("scrollTo",0,0);
+                    }
+                    if(swiper.activeIndex === swiper.slides.length -1) {
+                       $('#mobileNav').vcSmoothScroll("scrollTo",window.innerWidth - self.$el.find('ul').width() ,0);
+                    }
+                    //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 

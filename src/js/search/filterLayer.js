@@ -617,9 +617,9 @@ var FilterLayer = (function() {
                         }
                     } else {
                         //check or radio
-                        var item = data[key];
+                        var item = data[key];                        
                         item.forEach(function(val, index) {
-                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');
+                            var findDm = self.$layFilter.find('.ui_filter_accordion input[value="'+val+'"]');                       
                             if(findDm.length > 0) {
                                 selectedFilter = true;
                                 findDm.prop('checked', true);
@@ -631,6 +631,7 @@ var FilterLayer = (function() {
                                 //$pa.vcAccordion('setOption','useAnimate',true);
                                 */
                             }
+
                         });
 
                         //check top Category

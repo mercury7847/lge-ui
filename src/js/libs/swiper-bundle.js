@@ -1816,6 +1816,11 @@
 
     width = width - parseInt($el.css('padding-left') || 0, 10) - parseInt($el.css('padding-right') || 0, 10);
     height = height - parseInt($el.css('padding-top') || 0, 10) - parseInt($el.css('padding-bottom') || 0, 10);
+
+    if ( ! Number.isNaN ){ 
+      Number.isNaN = function isNaN ( value ){  return value !== value;  };
+    } 
+
     if (Number.isNaN(width)) width = 0;
     if (Number.isNaN(height)) height = 0;
     extend(swiper, {

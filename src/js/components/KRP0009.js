@@ -64,16 +64,19 @@ $(window).ready(function(){
 
             //jsw
             //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
-            $(window).on('changeButton.KRP0009', function(e,data){
+             $(window).on('changeButton.KRP0009', function(e,data){
                 //var btn = $component.find("a.extra-menu");
                 var btn = $component.find("#extraBtn");
-                if(data) {
+                if(data && data.title != "") {
                     btn.find('span').text(data.title);
                     if(data.disabled) {
                         btn.addClass('disabled');
                     } else {
                         btn.removeClass('disabled')
                     }
+                    btn.show();
+                }else{
+                    btn.hide(); // BTOCSITE-1997 210810 추가
                 }
             });
 
