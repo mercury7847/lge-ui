@@ -127,6 +127,13 @@ MainSwiper.prototype = {
                     
 
                     mainSwiper.currentIdx = swiper.activeIndex;
+                    // 20100811 BTOCSITE-1814 
+                    mainSwiper.$tabs.parent().removeClass('on').eq
+                    (swiper.activeIndex).addClass('on');
+                    mainSwiper.$tabs.removeClass('on').eq
+                    (swiper.activeIndex).addClass('on');
+                    $('#mobileNav').vcSmoothScroll("scrollToActive");
+                    //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
