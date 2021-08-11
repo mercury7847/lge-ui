@@ -162,11 +162,11 @@ var lls = {
             var $text = $this.find('.blind');
             if( $(this).hasClass('stop') ) {
                 $this.removeClass('stop')
-                $heroSwiper.slick('slickPause')
+                self.$heroSwiper.slick('slickPause')
                 $text.text($text.attr('data-play-text'))
             } else {
                 $this.addClass('stop')
-                $heroSwiper.slick('slickPlay')
+                self.$heroSwiper.slick('slickPlay')
                 $text.text($text.attr('data-stop-text'))
             }
         })
