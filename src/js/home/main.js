@@ -1162,14 +1162,14 @@ $(function () {
                             video.get(0).play(); //처음 플레이
                         }
 
-                        if(window.innerWidth < 768){
-                            sewewe.get(0).play();
-                            //console.log("mobile---");
-                        } else {
-                            sewewe.get(0).pause();
-                            sewewe.get(0).currentTime = 0;
-                            //console.log("pc---");
-                        }
+                        // if(window.innerWidth < 768){
+                        //     sewewe.get(0).play();
+                        //     //console.log("mobile---");
+                        // } else {
+                        //     sewewe.get(0).pause();
+                        //     sewewe.get(0).currentTime = 0;
+                        //     //console.log("pc---");
+                        // }
                     }
                     if ( scene.hiActiveView == false ){
                         //console.log('false', scene.hiActiveView);
