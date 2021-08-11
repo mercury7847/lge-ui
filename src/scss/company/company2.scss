@@ -31,6 +31,11 @@ img.m350 {max-width:350px!important}
 .company .text > a {text-decoration:underline}
 .company .btn_fileDown {text-decoration:none}
 
+.fixed-menu {position:sticky; position:-webkit-sticky; top:73px; top:auto; z-index:1}
+@media screen and (max-width:767px){
+    .fixed-menu{top:66px}
+}
+
 /* search 서치 검색 */
 .company .cmp_search {display:none; position:relative; max-width:1380px; margin:48px auto 0; z-index:50}
 .company .cmp_search .cmp_search_inner {position:relative; padding:40px 0; border-radius:8px; background-color:#f4f4f4}
