@@ -31,7 +31,224 @@ label img {
                 }
             }
         }
+
     }
+    // BTOCSITE-1198 챗봇 상담 메뉴 추가 요청
+    .csn-ars-bottom {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        //margin:-40px 0 40px;
+        //padding:48px 40px 60px;
+        background:#f4f4f4;
+        text-align:center;
+        @include mobile {
+            padding-top: 30px;
+            padding-bottom: 50px;
+            //margin:0 0 60px;
+            //padding:40px 20px;
+        }
+        .tit {
+            font-weight:700;
+            margin-bottom: 20px;
+            @include font($font-large-2,34px);
+            @include mobile {
+                margin-bottom: 14px;
+                @include font($font-large-1,28px);
+            }
+        }
+        .desc-bold {
+            margin-top: 6px;
+            font-weight:700;
+            @include font-medium;
+            @include mobile {
+                margin-top: 4px;
+                font-weight:700;
+            }
+        }
+        .desc {
+            margin-top: 6px;
+            @include font-medium;
+            @include mobile {
+                margin-top: 4px;
+            }
+        }
+        .bullet-list {
+            margin-top: 8px;
+            @include mobile {
+                margin-top: 6px;
+            }
+        }
+        .call {
+            margin:12px 0 24px;
+            color:$color-primary;
+            @include font-large-1;
+            font-weight:700;
+        }
+        .btn.border {
+            margin-top:24px;
+        }
+    }
+    .csn-ars-white-top {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        //margin:-40px 0 40px;
+        //padding:48px 40px 60px;
+        text-align:center;
+        @include mobile {
+            margin-top: 60px;
+            margin-bottom: 60px;
+            //margin:0 0 60px;
+            //padding:40px 20px;
+        }
+    }
+
+    .csn-ars-white-bottom {
+        margin-top: 100px;
+        //margin:-40px 0 40px;
+        //padding:48px 40px 60px;
+        text-align:center;
+        @include mobile {
+            margin-top: 60px;
+            //margin:0 0 60px;
+            //padding:40px 20px;
+        }
+        .tit {
+            font-weight:700;
+            margin-bottom: 16px;
+            @include font($font-large-2,34px);
+            @include mobile {
+                margin-bottom: 14px;
+                @include font($font-large-1,28px);
+            }
+        }
+        .desc-bold {
+            margin-top: 6px;
+            font-weight:700;
+            @include font-medium;
+            @include mobile {
+                margin-top: 4px;
+                font-weight:700;
+            }
+        }
+        .desc-lighter {
+            margin-top: 6px;
+            font-weight: 200;
+            font-size: $font-medium;
+            line-height: 26px;
+            @include mobile {
+                font-size : $font-medium - 2;
+                line-height: 22px;
+                margin-top: 4px;
+                font-weight: 200;
+            }
+        }
+        .desc {
+            margin-top: 6px;
+            @include font-medium;
+            @include mobile {
+                margin-top: 4px;
+            }
+        }
+        .bullet-list {
+            margin-top: 8px;
+            @include mobile {
+                margin-top: 6px;
+            }
+        }
+        .call {
+            margin:12px 0 24px;
+            color:$color-primary;
+            @include font-large-1;
+            font-weight:700;
+        }
+        .btn.border {
+            margin-top:24px;
+        }
+    }
+    .membership-benefit {
+        display:table;
+        width:calc(100% + 48px);
+        //margin:80px -24px 0;
+        padding: 0;
+        table-layout:fixed;
+        border-collapse:separate;
+        border-spacing:24px 0;
+        background: none;
+        @include mobile {
+            display:block;
+            width:auto;
+            height: auto;
+            margin:60px -16px 0;
+            padding:32px 16px 0;
+            border-top:12px solid #f4f4f4;
+            border-radius: 0;
+        }
+        .box {
+            display:table-cell;
+            padding:32px 40px;
+            border-radius:8px;
+            box-shadow:2px 4px 16px 0 rgba(#000, .14);
+            @include mobile {
+                display:block;
+                margin-top:12px;
+                padding:24px 20px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            dl {
+                &::before {
+                    content:' ';
+                    display:block;
+                    width:64px;
+                    height:64px;
+                    margin-bottom:24px;
+                    @include mobile {
+                        margin-bottom:16px;
+                    }
+                }
+                dt {
+                    text-align: center;
+                    color:#000;
+                    @include font-large-2;
+                    font-weight:700;
+                }
+                dd {
+                    text-align: center;
+                    margin-top:8px;
+                    color:#767676;
+                    @include font-medium;
+                    @include mobile {
+                        margin-top:6px;
+                    }
+                }
+                .box-dd {
+                    text-align: center;
+                    margin-top: 30px;
+                    color:#767676;
+                    @include font-medium;
+                    @include mobile {
+                        margin-top:6px;
+                    }
+                }
+            }
+            &.membership {
+                dl::before {
+                    background:url("/lg5-common/images/icons/icon-img01-64.svg") center no-repeat;
+                }
+            }
+            &.card-benefit {
+                dl::before {
+                    background:url("/lg5-common/images/icons/icon-img03-64.svg") center no-repeat;
+                }
+            }
+        }
+        .slide-box {
+            text-align: center;
+        }
+    }
+
+    // BTOCSITE-1198 챗봇 상담 메뉴 추가 요청
 }
 
 .support {
