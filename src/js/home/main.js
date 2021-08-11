@@ -639,7 +639,7 @@ $(function () {
         }
 
         // 비디오 태그 처리
-        function updateVideo(video) {
+        function updateVideo(video, index) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
             //if(isMobileDevice) return;
 
@@ -673,7 +673,11 @@ $(function () {
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
             if(posterSrc){
-                videoAttr += " poster='"+posterSrc+"'";
+                if(index>0) {
+                    videoAttr += " poster='"+posterSrc+"' preload='metadata'";
+                }else {
+                    videoAttr += " preload='auto'";
+                }
             }
 
             // 비디오 요소 생성.
@@ -799,10 +803,10 @@ $(function () {
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
-                if(!$(this).hasClass('section-cover')){
+                if(!$(this).hasClass('section-cover')) {
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
-                    $(this).find('.img > .video').each(function() {
-                        updateVideo(this);
+                    $(this).find('.img.only-' + (vcui.detect.isMobileDevice ? "mobile" : "desktop") + ' > .video').each(function () {
+                        updateVideo(this, i);
                     });
                 }
                 totalHeight += itemHeight;
@@ -1162,14 +1166,14 @@ $(function () {
                             video.get(0).play(); //처음 플레이
                         }
 
-                        // if(window.innerWidth < 768){
-                        //     sewewe.get(0).play();
-                        //     //console.log("mobile---");
-                        // } else {
-                        //     sewewe.get(0).pause();
-                        //     sewewe.get(0).currentTime = 0;
-                        //     //console.log("pc---");
-                        // }
+                        if(window.innerWidth < 768){
+                            sewewe.get(0).play();
+                            //console.log("mobile---");
+                        } else {
+                            sewewe.get(0).pause();
+                            sewewe.get(0).currentTime = 0;
+                            //console.log("pc---");
+                        }
                     }
                     if ( scene.hiActiveView == false ){
                         //console.log('false', scene.hiActiveView);
