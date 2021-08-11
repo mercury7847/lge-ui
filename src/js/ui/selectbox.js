@@ -261,7 +261,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         },
 
         templates: {
-            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>',
+            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" data-contents="" title="">{{#raw html}}</a></div>',
             list: '<div class="ui-selectbox-list" id="{{cid}}_menu"><div class="ui-select-scrollarea"></div></div>',
             scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + 
             '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + 
@@ -358,9 +358,19 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 }
                 self.isShown = isOpen;
                 var atitle = self.attrTitle == undefined ? "" : self.attrTitle;
-                self.$label.find('.ui-select-button').attr('title', atitle + (isOpen ? ' 닫기' : ' 열기'));
+                var $aTitleLastText = self.attrTitle.substr(0, atitle.length - 2); //BTOCSITE-1057 : data-contents 추가 2021-08-09
 
-                self.triggerHandler('selectboxtoggle');
+                self.$label.find('.ui-select-button').attr('title', atitle + (isOpen ? ' 닫기' : ' 열기'));
+                self.$label.find('.ui-select-button').attr('data-contents', $aTitleLastText); //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                //self.attrTitle.substr(0, atitle.length - 2);
+
+                //atitle.charAt(0, -1);
+                
+                //console.log(self.attrTitle, self.attrTitle.length);
+                //console.log($aTitleLastText);
+                //console.log(self.$label.find('.ui-select-button').attr('data-contents', atitle));
+
+                self.triggerHandler(self.attrTitle);
             });
 
             self.$el.on('change', function () {
