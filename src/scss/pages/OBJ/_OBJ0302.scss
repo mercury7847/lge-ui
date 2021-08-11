@@ -1171,16 +1171,18 @@ h2.title {
                             text-align: center;
                             // BTOCSITE-2346 mobile 버튼 css수정 210811
                             .btn{
-                                @media screen and (max-width: 360px) {
-                                    margin-left:0;
+                                @media screen and (max-width: 845px) {
                                     margin-bottom:10px;
                                     width:100%;
                                 }
                             }
-                            // BTOCSITE-2346 mobile 버튼 css수정 210811
                             .btn+.btn {
                                 margin-left: 7px;
+                                @media screen and (max-width: 845px) {
+                                    margin-left:0;
+                                }
                             }
+                             // BTOCSITE-2346 mobile 버튼 css수정 210811
                         }
                     }
                 }
