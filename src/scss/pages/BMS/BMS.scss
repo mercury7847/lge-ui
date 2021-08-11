@@ -10,7 +10,7 @@
 @import "../../components/KRP0039";
 @import "../../components/KRC0032-html";
 
-.event-membership{
+.event-membership {
     border-top: 1px solid #ddd;
     .slide-wrap.hero-banner .slide-content .slide-track, .slide-wrap.hero-banner .slide-content .slide-conts {
         height: 640px;
@@ -20,6 +20,14 @@
     }
     .KRC0015 .box-align-left .text-wrap .inner {
         margin-left: -111px;
+    }
+    .KRC0015 .title * {
+        font-size: 56px;
+        line-height: 74px;
+        font-weight: 700;
+    }
+    .component.KRC0015{
+        margin-bottom: 40px;
     }
 }
 
@@ -50,6 +58,9 @@
                 font-size: 25px;
                 line-height: 32px;
             }
+        }
+        .component.KRC0015{
+            margin-bottom: 0;
         }
     }
     .KRC0015 .hero-banner .visual-area img.mobile{
