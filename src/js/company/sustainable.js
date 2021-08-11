@@ -68,7 +68,7 @@
 			await (async function() {
 				lgkorUI.hideLoading();
 				await html2canvas($('body')[0]).then(function(canvas) {
-					if (canvas.height < bodyHeight || true) {
+					if (canvas.height < bodyHeight) {
 						$('body').css('padding-bottom', (Number($('body').css('padding-bottom').replace(/[^0-9]/g, "")) + bodyHeight - Number(canvas.height)) + 'px');
 					}
 				});
