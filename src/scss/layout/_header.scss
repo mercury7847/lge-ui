@@ -106,33 +106,33 @@
         font-size: 0;
 
         // BTOCSITE-1814 이벤트탭 추가
-        border-bottom: 1px solid $color-border;
-        overflow: visible !important;
-		&:before,
-        &:after {
-            position: absolute;
-            top: 1px;
-            z-index: 1;
-            width: 40px;
-            height: 100%;
-            content: '';
-            display:none;
+        // border-bottom: 1px solid $color-border;
+        // overflow: visible !important;
+		// &:before,
+        // &:after {
+        //     position: absolute;
+        //     top: 1px;
+        //     z-index: 1;
+        //     width: 40px;
+        //     height: 100%;
+        //     content: '';
+        //     display:none;
 
-        }
-        &:before {
-            left: 0;
-            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
-        }
-        &:after {
-            right: 0;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
-        }
+        // }
+        // &:before {
+        //     left: 0;
+        //     background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+        // }
+        // &:after {
+        //     right: 0;
+        //     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        // }
 
       
-        &.left:before,  
-        &.right:after {
-            display:block;
-        }
+        // &.left:before,  
+        // &.right:after {
+        //     display:block;
+        // }
 
         &::-webkit-scrollbar {
             display: none;
@@ -292,6 +292,34 @@
                 font-size: 16px;
                 line-height: 24px;
             }
+        }
+    }
+    // BTOCSITE-1814 이벤트탭 추가 : 메인일때만 적용해야 하는부분 
+    #mobileNav {
+        border-bottom: 1px solid $color-border;
+        overflow: visible !important;
+		&:before,
+        &:after {
+            position: absolute;
+            top: 1px;
+            z-index: 1;
+            width: 40px;
+            height: 100%;
+            content: '';
+            display:none;
+
+        }
+        &:before {
+            left: 0;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+        }
+        &:after {
+            right: 0;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        }
+        &.left:before,  
+        &.right:after {
+            display:block;
         }
     }
 }
