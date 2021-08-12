@@ -52,18 +52,15 @@
                             }
                         </ul>
                     </div><!-- 210311 수정 [.ui_smooth_scroll 돔 추가] -->
-                    <!-- @@if (context.extraMenu) { -->
+                    @@if (context.extraMenu) {
                     <div class="extra-area">
                         <!--  구매하기 버튼인 경우
                             data-model-id="MD000000" 추가
                         -->
-                        <!-- <a href="@@extraMenu.link-url" id="extraBtn" class="extra-menu btn @@extraMenu.style1 @@extraMenu.style2" data-link-area="pdp_tab_anchor-tab" data-link-name="{button name}">@@extraMenu.text</a> -->
-                        <a id="extraBtn" href="@@extraMenu.link-url" data-type="" class="extra-menu btn @@extraMenu.style1 @@extraMenu.style2" data-model-id="" data-link-area="pdp_tab_anchor-tab" data-link-name="{button name}">
-                            <span>@@extraMenu.text</span>
-                        </a>
+                        <a href="@@extraMenu.link-url" id="extraBtn" class="extra-menu btn @@extraMenu.style1 @@extraMenu.style2" data-link-area="pdp_tab_anchor-tab" data-link-name="{button name}">@@extraMenu.text</a>
                     </div>
                     <!-- 접근성 버튼 이동 -->
-                    <!-- } -->
+                    }
                 </div>
 				<!-- // 1. tab -->
 			</div>
