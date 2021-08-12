@@ -261,7 +261,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         },
 
         templates: {
-            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" data-contents="" title="">{{#raw html}}</a></div>',
+            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>',
             list: '<div class="ui-selectbox-list" id="{{cid}}_menu"><div class="ui-select-scrollarea"></div></div>',
             scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + 
             '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + 
@@ -370,7 +370,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 //console.log($aTitleLastText);
                 //console.log(self.$label.find('.ui-select-button').attr('data-contents', atitle));
 
-                self.triggerHandler(self.attrTitle);
+                self.triggerHandler('selectboxtoggle');
             });
 
             self.$el.on('change', function () {
