@@ -31,6 +31,7 @@ label img {
                 }
             }
         }
+
     }
 }
 
@@ -1313,5 +1314,110 @@ label img {
         max-height:none;
         height:auto;
         overflow:auto;
+    }
+}
+
+
+
+// BTOCSITE-1198 챗봇 상담 메뉴 추가 요청
+.chat-customer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: -24px;
+    @include mobile {
+        flex-wrap: wrap;
+        justify-content: initial;
+        padding: 0 16px;
+    }
+    .item {
+        flex: 1;
+        margin-left: 24px;
+        padding: 30px 25px;
+        border-radius: 8px;
+        border: solid 1px #ddd;
+        text-align: center;
+        .title {
+            position: relative;
+            display: block;
+            padding-top: 96px;
+            @include mobile {
+                padding-top: 63px;
+                font-size: 15px;
+            }
+            &::before {
+                content:"";
+                position: absolute;
+                top: 0;
+                left: 50%;
+                display: inline-block;
+                width: 80px;
+                height: 80px;
+                transform: translateX(-50%);
+                @include mobile {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+            &.icon-chat::before {
+                background: url(/lg5-common/images/CS/icon-chat.png) no-repeat 50% 50%;
+                background-size: cover;
+            }
+            &.icon-kakao::before {
+                background: url(/lg5-common/images/CS/icon-kakao.png) no-repeat 50% 50%;
+                background-size: cover;
+            }
+        }
+        .desc {
+            margin: 14px 0 30px;
+            font-size: 16px;
+            line-height: 1.57;
+            text-align: center;
+            @include mobile {
+                margin: 9px 0 18px;
+                font-size: 14px;
+            }
+            .only_pc {
+                @include tablet {
+                    display: none;
+                }
+            }
+        }
+        @include mobile {
+            flex: auto;
+            padding: 24px 25px;
+            & + .item {
+                margin-top: 32px;
+            }
+        }
+    }
+    .point {
+        color: $color-primary;
+    }
+    & ~ .bullet-list {
+        &.top-border {
+            margin: 40px 16px 0;
+        }
+    }
+}
+.chat-info-wrap {
+    margin-top: 70px;
+    text-align:center;
+    @include mobile {
+        margin-top: 40px;
+    }
+    .desc {
+        margin-top: 6px;
+        @include font-medium;
+        @include mobile {
+            margin-top: 4px;
+        }
+    }
+    .desc-bold {
+        margin-top: 6px;
+        font-weight:700;
+    }
+    .desc-thin {
+        margin-top: 10px;
+        @include font-small;
     }
 }
