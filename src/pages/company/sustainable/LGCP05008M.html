@@ -1,3 +1,26 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="//html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+	var digitalData = digitalData || {};
+	digitalData.pageInfo = {
+		"content_depth1": "회사소개",
+		"content_depth2": "회사소개|지속가능경영",
+		"content_depth3": "회사소개|지속가능경영|환경",
+		"content_depth4": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스",
+		"content_depth5": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스"
+	};
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <div class="breadcrumb">
 	<ul>
@@ -434,8 +457,32 @@
 							<ul class="bull stit">
 								<li>
 									<strong>재생 플라스틱 사용량</strong>
-									<!-- 구글차트 -->
-									-- 차트 영역 --
+									<!-- 그래프 -->
+									<div class="thumb w912">
+										<img class="only_pc" src="/kr/images/company/sustainable/img-PCR_PP-graph-pc.png" alt="재생 플라스틱 사용량 그래프">
+										<img class="only_mo" src="/kr/images/company/sustainable/img-PCR_PP-graph-mo.png" alt="재생 플라스틱 사용량 그래프">
+										<div class="blind">
+											<p>(단위: 톤)</p>
+											<ul>
+												<li>
+													<span>2020</span>
+													<p>11,149</p>
+												</li>
+												<li>
+													<span>2019</span>
+													<p>9,282</p>
+												</li>
+												<li>
+													<span>2018</span>
+													<p>11,130</p>
+												</li>
+												<li>
+													<span>2017</span>
+													<p>7,134</p>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<p class="tit">5) 그린 포장 개선 사례</p>
@@ -630,10 +677,78 @@
 							<p class="text">LG전자는 생산자 폐전기전자제품 회수 책임에 대한 ‘개별 생산자 책임(IPR: Individual Producer Responsibility)을 준수하며, 폐전기전자제품의 재활용 가능성을 높이고 폐기 과정의 매립 및 소각에 따른 환경영향을 저감하기 위한 노력을 지속하고 있습니다. 특히, LG전자는 제품 개발 단계에서부터 재활용성에 대한 평가를 실시하여 제품의 재활용 가능성을 향상시키기 위해 노력하고 있습니다.</p>
 							<p class="tit">3) 폐전기전자제품 무상 회수서비스(한국)</p>
 							<p class="text">LG전자는 지난 2003년부터 시행된 ‘생산자책임 재활용제도’에 적극 동참하여 폐전기전자제품의 무상 회수 서비스를 운영하고 있습니다. 고객으로부터 회수 신청을 접수 받은 후 설치 전문가가 직접 방문하여 무상으로 대형 폐전기전자제품을 회수하며, 소형 폐가전의 경우 LG전자 서비스센터의 전용 수거함을 통해 회수되고 있습니다. LG전자는 수거한 폐전기전자제품을 분해 및 분류 과정을 통해 원자재로 재활용, 자원순환에 기여하고 있습니다.</p>
-							<p class="tit">4) 2006년 이후 폐전기전자제품 지역별누적 회수.처리 연도별 실적</p>
-							<!-- 구글차트 -->
-							-- 차트 영역 --
-							<div class="footnotes">※ 일부 지역은 국가별로 회수실적을 보고하는 시기가 다르기 때문에, 보고서 발간 시 자료를 취득할 수 없는 경우 전년도 회수실적 또는 주변 국가의 회수율을 사용한 예측값을 보고함. 따라서 다음 연도 보고서 발간 시 소폭 조정될 가능성 있음</div>
+							<p class="tit">4) 2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적</p>
+							<!-- 그래프 -->
+							<div class="thumb w1142">
+								<img class="only_pc" src="/kr/images/company/sustainable/img-waste-electronics-graph-pc.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적">
+								<img class="only_mo" src="/kr/images/company/sustainable/img-waste-electronics-graph-mo.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적">
+								<div class="blind">
+									<p>(단위: 톤)</p>
+									<ul>
+										<li>
+											<span>2020</span>
+											<p>3,073,688</p>
+										</li>
+										<li>
+											<span>2019</span>
+											<p>2,661,571</p>
+										</li>
+										<li>
+											<span>2018</span>
+											<p>2,306,374</p>
+										</li>
+										<li>
+											<span>2017</span>
+											<p>2,306,374</p>
+										</li>
+										<li>
+											<span>2016</span>
+											<p>1,825,644</p>
+										</li>
+										<li>
+											<span>2015</span>
+											<p>1,606,872</p>
+										</li>
+										<li>
+											<span>2014</span>
+											<p>1,392,409</p>
+										</li>
+										<li>
+											<span>2013</span>
+											<p>1,179,351</p>
+										</li>
+										<li>
+											<span>2012</span>
+											<p>983,363</p>
+										</li>
+										<li>
+											<span>2011</span>
+											<p>806,899</p>
+										</li>
+										<li>
+											<span>2010</span>
+											<p>618,635</p>
+										</li>
+										<li>
+											<span>2009</span>
+											<p>409,726</p>
+										</li>
+										<li>
+											<span>2008</span>
+											<p>242,249</p>
+										</li>
+										<li>
+											<span>2007</span>
+											<p>134,114</p>
+										</li>
+										<li>
+											<span>2006</span>
+											<p>56,480</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footnotes">※ 일부 지역은 국가별로 회수실적을 보고하는 시기가 다르기 때문에, 보고서 발간 시 자료를 취득할 수 없는 경우 전년도 회수실적 또는 주변 국가의 회수율을 사용한 예측값을 보고함. <br>따라서 다음 연도 보고서 발간 시 소폭 조정될 가능성 있음</div>
 						</div>
 						<div class="btnArea">
 							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
@@ -673,8 +788,52 @@
 							<p class="tit">1) 태양광발전 부품 및 솔루션 확산</p>
 							<p class="text">LG전자는 고성능&middot;고품질의 태양광 모듈 제공 및 사업 포트폴리오 다변화를 통해 태양전지 사업 경쟁력을 확보하고 고객에게 지속적으로 에너지 사용에 대한 가치를 제공하고 있습니다. 특히, 제품 경쟁력 강화를 위해 모듈의 출력을 개선하고 있으며, 제품 원가 절감을 위한 다양한 활동을 통해 총원가를 개선해 나가고 있습니다.. 향후 LG전자는 태양광발전 부품 및 솔루션에 대한 비즈니스를 지속적으로 확대하고 관련 응용 제품 시장에도 진입하여 사업 포트폴리오를 다변화해 나갈 계획입니다.</p>
 							<p class="tit">2) 고출력 모듈 개발을 통한 발전량 개선</p>
-							<!-- 구글차트 -->
-							-- 차트 영역 --
+							<!-- 그래프 -->
+							<div class="thumb grpimg w674">
+								<div class="g_imgs">
+									<img class="only_pc" src="/kr/images/company/sustainable/img-modules-graph-pc.png" alt="고출력 모듈 개발을 통한 발전량 개선 그래프">
+									<img class="only_mo" src="/kr/images/company/sustainable/img-modules-graph-mo.png" alt="고출력 모듈 개발을 통한 발전량 개선 그래프">
+									<div class="blind">
+										<p>(60셀 모듈 최고출력 기준)</p>
+										<ul>
+											<li>
+												<span>2019</span>
+												<ul>
+													<li>345W(N타입 모듈)</li>
+													<li>375W(백컨택 모듈)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2020</span>
+												<ul>
+													<li>365W(N타입 모듈)</li>
+													<li>380W(백컨택 모듈)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2021</span>
+												<ul>
+													<li>395W(N타입 모듈)</li>
+													<li>405W(백컨택 모듈)</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="grp_info">
+									<p class="g_tit">2019~2021 <br class="pc">모듈 출력 개선</p>
+									<ul>
+										<li>
+											<span>N타입 모듈 출력 개선</span>
+											<strong>14.5%</strong>
+										</li>
+										<li>
+											<span>백컨 모듈 출력 개선</span>
+											<strong>8.0%</strong>
+										</li>
+									</ul>
+								</div>
+							</div>
 							<p class="tit">3) 건물 일체형 태양광 모듈(BIPV) 개발 및 사업화</p>
 							<p class="text">LG전자는 2020년 대한민국 정부가 시행한 제로에너지빌딩 의무화 정책에 부응하고 건물 옥상에 태양광 발전장치를 설치하는 형태의 한계점을 극복하여 에너지 자립률을 높이기 위해 건물 전체를 활용, 기존 태양광 모듈과 차별화된 건축 외장재 수준의 외관 및 다양한 색상 적용이 가능한 건물 일체형 태양광 모듈(BIPV)을 개발하였습니다. 해당 모듈은 양면 유리 구조 채용으로 높은 신뢰성과 내화성을 제공하며, 2021년 말 정식 출시되어 본격적인 사업화가 진행될 예정입니다. LG전자는 BIPV와 더불어 기존 DC(직류) 방식의 발전량 효율 문제를 개선한 AC(교류) 방식의 &lsquo;마이크로 인버터&lsquo;를 제공하고 있습니다.</p>
 							<p class="tit">4) AC(교류) 모듈 구성 및 장점</p>
@@ -692,7 +851,26 @@
 								</li>
 								<li>
 									<strong>기타 부속품</strong>
-									<p>게이트웨이(데이터 전송), 휴대폰(앱 모니터링), PC(웹 모니터링)</p>
+									<ul class="ico_list t3 ol_box">
+										<li>
+											<div class="iconArea">
+												<i class="ico-gateway"></i>
+											</div>
+											<span>게이트웨이<br>(데이터 전송)</span>
+										</li>
+										<li>
+											<div class="iconArea">
+												<i class="ico-phone"></i>
+											</div>
+											<span>휴대폰<br>(앱 모니터링)</span>
+										</li>
+										<li>
+											<div class="iconArea">
+												<i class="ico-monitor"></i>
+											</div>
+											<span>PC<br>(웹 모니터링)</span>
+										</li>
+									</ul>
 								</li>
 								<li>
 									<strong>AC모듈의 장점</strong>
