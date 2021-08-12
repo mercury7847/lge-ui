@@ -799,16 +799,17 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 ul.bull > li.star {color:#da0f47}
 ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0; color:#da0f47}
 
+.company ul.bull > li > ul.ico_list {width:calc(100% + 12px); margin-left:-12px}
 .company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
-.company ul.ico_list > li {width:100%; text-align:center}
+.company ul.ico_list.ol_box {padding:28px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_list > li {width:100%; text-align:center; margin-left:0!important; text-indent:0!important}
 .company ul.ico_list.t3 > li {width:33.3333%}
 .company ul.ico_list.t4 > li {width:25%; padding:0 20px}
 .company ul.ico_list.t10 > li {width:20%; margin:0!important; padding-bottom:20px; text-indent:0!important}
 .company ul.ico_list.t10 > li + li:nth-child(6) {border-left:0}
 .company ul.ico_list.t10 > li + li:nth-child(n + 6) {padding-bottom:0; padding-top:20px; border-top:1px dashed #ddd}
 .company ul.ico_list > li + li {border-left:1px dashed #ddd}
-.company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 18px}
-.company ul.ico_list.t10 > li .iconArea {margin:0 auto 12px}
+.company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 12px}
 .company ul.ico_list > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_list > li strong {display:block; margin-bottom:12px; line-height:26px}
 .company ul.ico_list > li span + strong {margin-bottom:0!important}
@@ -833,12 +834,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t4 > li strong.bold {font-weight:bold}
 .company ul.ico_list.line.t4 > li strong em {display:block; font-weight:normal}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
-.company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
 .company ul.ico_grid {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px}
 .company ul.ico_grid > li {padding:30px; border:1px solid #ddd; border-radius:8px}
 .company ul.ico_grid.t4 > li {width:calc(25% - 18px); padding:30px 10px}
-.company ul.ico_grid > li .iconArea {width:80px; height:80px;margin:0 auto 12px}
+.company ul.ico_grid > li .iconArea {width:80px; height:80px}
 .company ul.ico_grid > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_grid > li .iconArea i.ico-estim-01 {background:url(/kr/images/company/icon/ico-estim-01.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_grid > li .iconArea i.ico-estim-02 {background:url(/kr/images/company/icon/ico-estim-02.svg) no-repeat 50% 50%; background-size:80px 80px}
@@ -897,6 +897,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-tcfd_02 {background:url(/kr/images/company/icon/ico-tcfd_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-tcfd_03 {background:url(/kr/images/company/icon/ico-tcfd_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-gateway {background:url(/kr/images/company/icon/ico-gateway.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-phone {background:url(/kr/images/company/icon/ico-mobile-phone.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between}
 .company ul.dwn_list > li {position:relative; display:flex; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -1178,6 +1180,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 2.4%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 {margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 > img {width:100%; max-width:1142px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px; width:100%}
@@ -1648,6 +1652,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.ofn_links li .btn {min-width:50%; height:auto; margin:3px 4px; padding:10px 0; font-size:13px; line-height:21px}
 
     .company ul.ico_list {flex-direction:column}
+    .company ul.bull > li > ul.ico_list {width:calc(100% + 8px); margin-left:-8px}
     .company ul.ico_list.t3 > li {width:100%}
     .company ul.ico_list.t4 > li {width:100%}
     .company ul.ico_list.t10 {flex-direction:row}
