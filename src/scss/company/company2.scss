@@ -218,12 +218,13 @@ img.m350 {max-width:350px!important}
 .company .box.ci {margin-top:24px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color {margin-top:24px; padding:60px 0; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color > ul {display:flex; justify-content:center}
-.company .box.color > ul > li .chip {width:210px; height:210px; margin:0 70px; border-radius:50%; font-size:24px; font-weight:bold; text-align:center}
+.company .box.color > ul > li {width:33.3333%; max-width:350px}
+.company .box.color > ul > li .chip {width:210px; height:210px; margin:0 auto; border-radius:50%; font-size:24px; font-weight:bold; text-align:center}
 .company .box.color > ul > li .chip.red {background-color:#a50034; color:#fff}
 .company .box.color > ul > li .chip.gray {background-color:#6b6b6b; color:#fff}
 .company .box.color > ul > li .chip.white {background-color:#fff; box-sizing:border-box; border:1px solid #000; color:#000}
 .company .box.color > ul > li .chip span {line-height:210px}
-.company .box.color > ul > li .info {margin-top:20px; margin-left:70px}
+.company .box.color > ul > li .info {margin-top:20px; margin-left:20%}
 .company .box.color > ul > li .info p {font-size:14px; line-height:22px}
 .company .ci_download {max-width:1380px; margin:60px auto; padding:50px 0 60px; border-radius:8px; background-color:#f4f4f4; text-align:center}
 .company .ci_download .tit {font-size:24px; font-weight:bold; line-height:36px}
@@ -1393,6 +1394,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list > li {width:calc(33.3333% - 16px)}
     .company ul.card_list > li .photo .name {font-size:20px; line-height:30px}
 }
+@media screen and (max-width:1220px){
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; padding-left:0}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
+}    
 @media screen and (max-width:1170px){
     .company ul.m_cardList > li {width:calc(50% - 12px); max-width:50%}
     .company ul.m_cardList > li:nth-child(3),
@@ -1407,6 +1412,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
     .company ul.card_list > li .photo .job {font-size:13px}
     
+    .company .box.color {padding:60px 30px}
+    .company .box.color > ul {justify-content:space-between}
+    .company .box.color > ul > li {max-width:240px; align-items:flex-start}
+    .company .box.color > ul > li .info {margin-left:0; padding:0 12px}
+
     .company ul.cmSystem {flex-direction:column; width:100%; max-width:416px; margin:15px auto 0}
     .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
     .company ul.cmSystem > li + li {margin-top:28px}
@@ -1423,8 +1433,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .home_appliances > ul > li .home_box .home_tit span {font-size:14px; line-height:22px}
     .company .home_appliances > ul > li .home_box .home_text {padding:16px; border-left:0; font-size:14px; line-height:22px}
     .company .home_appliances > ul > li .home_box +.home_box .home_text {border-left:1px solid #ddd}
-}
-@media screen and (max-width:1120px){
+
     .company ul.rec_type > li p {margin-top:30px; font-size:18px}
 }
 @media screen and (max-width:952px){
@@ -1446,6 +1455,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.m_cardList > li {width:100%; max-width:100%; margin-left:0!important}
     .company ul.m_cardList > li + li {margin-top:24px}
+
+    .company .box.color {padding:20px 0}
+    .company .box.color > ul {flex-direction:column; align-items:center}
+    .company .box.color > ul > li {width:216px; text-align:center}
+    .company .box.color > ul > li + li {margin-top:20px}
+    .company .box.color > ul > li .chip {width:104px; height:104px; margin:0 auto; font-size:15px}
+    .company .box.color > ul > li .chip span {line-height:104px}
+    .company .box.color > ul > li .info {display:inline-block; width:100%; margin-top:8px; margin-left:0; padding:0; text-align:left}
+    .company .box.color > ul > li .info p {font-size:13px}
 
     .company .graph.lgway1 > .only_pc {display:none!important}
     .company .graph.lgway1 > .only_mo {display:block!important; width:100%; max-width:508px; margin:0 auto}
@@ -1872,14 +1890,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .box.ci {margin-top:20px}
     .company .text.ci {margin-top:8px}
     
-    .company .box.color {padding:20px 0}
-    .company .box.color > ul {flex-direction:column}
-    .company .box.color > ul > li {text-align:center}
-    .company .box.color > ul > li + li {margin-top:20px}
-    .company .box.color > ul > li .chip {width:104px; height:104px; margin:0 auto; font-size:15px}
-    .company .box.color > ul > li .chip span {line-height:104px}
-    .company .box.color > ul > li .info {display:inline-block; margin-top:8px; margin-left:0; text-align:left}
-    .company .box.color > ul > li .info p {font-size:13px}
 
     .company .ci_download {width:calc(100% - 8.88vw); margin:20px 4.44vw; padding:55px 0}
     .company .ci_download .tit {font-size:18px; line-height:26px}
