@@ -73,14 +73,14 @@ br.pc{display:block;}
 	/* 서브타이틀 영역 mo */
 	.com-title{padding: 30px 4.44vw 60px;border-bottom:12px solid #f4f4f4;}
 	.com-title .img {height: 73.17vw;}
-	.com-title .text {margin-top: 20px;font-size: 15px;line-height: 1.53;}
+	.com-title .text {margin-top: 20px;font-size: 15px;line-height: 23px;}
 	.com-text{padding: 30px 0 30px;margin: 0 4.44vw;}
 	.com-text .tit{font-size: 18px;line-height: 1.44;}
-	.com-text .text {margin-top: 12px;font-size: 14px;line-height: 1.57;}
+	.com-text .text {margin-top: 12px;font-size: 14px;line-height: 22px;}
 	.com-title + .com-text{padding-top:60px;}
 	/* 정관 리스트 mo */
 	.articles-list{margin: 15px 0 0;}
-	.articles-list li{width:100%;font-size: 14px;line-height: 1.57;margin-bottom:12px;background-position: right 15px center;}
+	.articles-list li{width:100%;font-size: 14px;line-height: 22px;margin-bottom:12px;background-position: right 15px center;}
 	.articles-list li a,
 	.articles-list li button{padding:22px 15px;}
 	.articles-list li:nth-child(2n){margin-left:0;}
@@ -205,8 +205,8 @@ br.pc{display:block;}
 .workplace_chart .inner{width:auto;}
 .workplace_chart .items .img{display:block;width:55.55vw;height:55.55vw;margin: 0 auto;}
 .workplace_chart .bullet-list{padding-left:0;width: 100%;}
-.workplace_chart .bullet-list .b-tit{font-size: 14px;line-height: 1.57;text-align:center;font-weight: 500;margin-bottom: 8px;}
-.workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 1.57;}
+.workplace_chart .bullet-list .b-tit{font-size: 14px;line-height: 22px;text-align:center;font-weight: 500;margin-bottom: 8px;}
+.workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 22px;}
 }
   
 /* 지속가능경영 정책 */
@@ -260,18 +260,18 @@ br.pc{display:block;}
 @media screen and (max-width:767px){
 .esgLinkArea{width:100%;}
 .esgLinkArea:nth-child(2n){margin-left:0;}
-.esgLinkArea .esgTit{font-size: 14px;line-height: 1.57;}
+.esgLinkArea .esgTit{font-size: 14px;line-height: 22px;}
 .esgLinkArea .esgGoto{margin-top:14px;padding: 29px 130px 29px 15px;}
-.esgLinkArea .esgText{font-size: 14px;line-height: 1.57;}
+.esgLinkArea .esgText{font-size: 14px;line-height: 22px;}
 .esgLinkArea .esgBtn{font-size: 13px;line-height: 1.62;padding: 5px 15px;}
 .esgPerformancetit{margin-top:20px;}
 .esgPerformanceArea {margin-top:15px;padding:0;}
 .esgPerformanceArea li{width:100%;padding:20px;}
 .esgPerformanceArea li + li{border-left-width:0;border-top: dashed 1px #dddddd;}
 .esgPerformanceArea .esgIcon {margin: 0 auto 5px;}
-.esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 1.57;}
+.esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 22px;}
 .esgPerformanceArea .esgTit{font-size: 18px;line-height: 1.44;}
-.esgPerformanceArea .esgDetail{font-size: 14px;line-height: 1.57;}
+.esgPerformanceArea .esgDetail{font-size: 14px;line-height: 22px;}
 }
 
 /* 정보보호 */
@@ -332,7 +332,7 @@ br.pc{display:block;}
 .goalsArea > li + li .goalsDetail:before{border-top-width:0;}
 .goalsArea .goalsSum {display:block;width: 104px;height: 104px;padding-top: 30px;margin:0 auto;padding-top: 15px;font-weight: normal;}
 .goalsArea .goalsNumber {font-size: 12px;line-height: 1.67;}
-.goalsArea .goalsTit {font-size: 15px;line-height: 1.53;margin-top:2px;font-weight: 500;}
+.goalsArea .goalsTit {font-size: 15px;line-height: 23px;margin-top:2px;font-weight: 500;}
 .goalsArea .goalsDetail {display:block;width: 100%;margin-left:0;margin-top:10px;height: auto;}
 .goalsArea .bull{transform: translateY(0);top:0;position: inherit;}
 }
