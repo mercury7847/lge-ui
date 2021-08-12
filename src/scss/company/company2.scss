@@ -839,7 +839,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_grid {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px}
 .company ul.ico_grid > li {padding:30px; border:1px solid #ddd; border-radius:8px}
 .company ul.ico_grid.t4 > li {width:calc(25% - 18px); padding:30px 10px}
-.company ul.ico_grid > li .iconArea {width:80px; height:80px}
+.company ul.ico_grid > li .iconArea {width:80px; height:80px; margin:0 auto 12px}
 .company ul.ico_grid > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_grid > li .iconArea i.ico-estim-01 {background:url(/kr/images/company/icon/ico-estim-01.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_grid > li .iconArea i.ico-estim-02 {background:url(/kr/images/company/icon/ico-estim-02.svg) no-repeat 50% 50%; background-size:80px 80px}
