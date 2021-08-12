@@ -435,7 +435,13 @@ var res = {
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","","검수완료"],
 					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=yes","검수완료"],
 				}
-			}
+			},
+			"엘라쇼(LLS)" : {
+				// "장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
+				// "장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
+				"메인(LLS)" : ["/html/LLS/LLS0100.html","",""],
+			},
+			
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
 			// "페이지3" : ["./html/gr/M.GR-7.html","","검수완료"]

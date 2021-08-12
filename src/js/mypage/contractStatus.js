@@ -917,6 +917,12 @@
                 $('.member-point-info').hide();
                 $('.tooltip-wrap').hide();
                 $('.saleTurn').hide();
+            } else {
+                $('.contract-btn').show();
+                $('.sects.payment.viewer').show();
+                $('.member-point-info').show();
+                $('.tooltip-wrap').show();
+                $('.saleTurn').show();
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경

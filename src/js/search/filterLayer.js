@@ -2,7 +2,7 @@ var FilterLayer = (function() {
     //필터 템플릿
     var filterSliderTemplate = '<li data-filterId="{{filterId}}" class="filter-slider-tag">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -16,7 +16,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterRadioTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -32,7 +32,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterColorTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span></span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -48,7 +48,7 @@ var FilterLayer = (function() {
     '</li>';
     var filterCheckboxTemplate = '<li data-filterId="{{filterId}}">' +
         '<div class="head">' +
-            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-contents="{{#raw filterGroupName}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 '<div class="tit">{{filterGroupName}}<span class="sel_num"><span class="blind">총 선택 갯수 </span></span></div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
@@ -501,10 +501,10 @@ var FilterLayer = (function() {
 
             //필터를 초기화 했으니 필터리셋버튼 숨김
             self.$layFilter.find('div.btn-reset button').hide();
-            // BTOCSITE-2847 PLP > 상세필터 동작오류 start
-            $('.result-area .btn-filter.applied').removeClass('applied');
+            // BTOCSITE-2847 PLP > 상세필터 동작오류 start	
+            $('.result-area .btn-filter.applied').removeClass('applied');	
             // BTOCSITE-2847 PLP > 상세필터 동작오류 end
-            
+
             //for(var idx in expands) self.$layFilter.find('.ui_filter_accordion').vcAccordion("expand", expands[idx]);
             self._filterDefaultOpen();
         },

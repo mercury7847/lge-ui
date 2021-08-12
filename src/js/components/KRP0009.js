@@ -64,10 +64,11 @@ $(window).ready(function(){
 
             //jsw
             //$(window).trigger("changeButton.KRP0009",{"title":btnTitle,"disabled":false});
+            // BTOCSITE-1997 렌탈 PDP페이지 탭영역 버튼 노출 수정 - 210812
              $(window).on('changeButton.KRP0009', function(e,data){
                 //var btn = $component.find("a.extra-menu");
                 var btn = $component.find("#extraBtn");
-                if(data && data.title != "") {
+                if(data && data.title != "" && data.title != undefined) {
                     btn.find('span').text(data.title);
                     if(data.disabled) {
                         btn.addClass('disabled');
@@ -79,6 +80,7 @@ $(window).ready(function(){
                     btn.hide(); // BTOCSITE-1997 210810 추가
                 }
             });
+            // BTOCSITE-1997 렌탈 PDP페이지 탭영역 버튼 노출 수정 - 210812
 
             //$component.find("a.extra-menu").on('click', function(e){
             $component.find("#extraBtn").on('click', function(e){
@@ -185,7 +187,6 @@ $(window).ready(function(){
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }
         }
-    
         init();
     })();
 })

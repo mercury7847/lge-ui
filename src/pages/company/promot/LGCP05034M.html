@@ -1,11 +1,34 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="//html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+	var digitalData = digitalData || {};
+	digitalData.pageInfo = {
+		"content_depth1": "회사소개",
+		"content_depth2": "회사소개|지속가능경영",
+		"content_depth3": "회사소개|지속가능경영|ESG 팩트북",
+		"content_depth4": "회사소개|지속가능경영|ESG 팩트북|구성원",
+		"content_depth5": "회사소개|지속가능경영|ESG 팩트북|구성원"
+	};
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/sustainable/esgLg">지속 가능 경영</a></li>
-		<li><a href="/company/promot/system">ESG 추진 활동</a></li>
-		<li><strong>고객</strong></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/promot/system">ESG 팩트북</a></li>
+		<li><strong>구성원</strong></li>
 	</ul>
 </div>
 <div class="container company">
@@ -28,17 +51,15 @@
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/sustainable/esgLg#com-tabs01">LG전자 ESG</a>
-					</li>
-					<li>
-						<a href="/company/sustainable/esgLeadership#com-tabs01">기업개요</a>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
-							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
-							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
-							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
 							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
-							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
 							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
 					<li>
@@ -60,7 +81,7 @@
 						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
 					</li>
 					<li class="on">
-						<a href="/company/promot/system#com-tabs01">ESG 추진활동<em class="blind">선택됨</em></a>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
@@ -77,9 +98,11 @@
 						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
-							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 표준</a></li>
-							<li><a href="/company/sustainable/download">보고서 다운로드</a></li>
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
 						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
 					</li>
 				</ul>
 			</div>
@@ -125,12 +148,12 @@
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
+						<div class="txtArea">
 							<p class="tit">1) 2021년 중점 추진 방향</p>
 							<p class="text">LG전자는 새로운 경영환경에서도 지속 성장할 수 있도록 일하는 방식과 제도에 변화를 추구하며, 모든 임직원이 각 분야에서 전문성을 발휘할 수 있도록 인사 및 육성제도를 운영하고 있습니다.</p>
 							<p class="tit">&middot; 평가보상</p>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="평가보상">
+								<img src="/kr/images/company/promot/img-member-thumb-01.png" alt="평가보상">
 								<div class="textArea">
 									<p class="text hone">실질적 성과 평가를 통한 성과 평가의 객관성 확보</p>
 									<p class="text hone">수시 평가 시스템 “워크톡” 활성화</p>
@@ -139,7 +162,7 @@
 							</div>
 							<p class="tit">&middot; 직급체계</p>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="직급체계">
+								<img src="/kr/images/company/promot/img-member-thumb-02.png" alt="직급체계">
 								<div class="textArea">
 									<p class="text hone">수평적, 창의적, 자율적 조직문화 구축을 위한 직급체계 단순화</p>
 									<p class="text hone">주도적, 능동적 조직을 위한 발탁 진급제도 지속 확대</p>
@@ -147,7 +170,7 @@
 							</div>
 							<p class="tit">&middot; 육성제도</p>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="육성제도">
+								<img src="/kr/images/company/promot/img-member-thumb-03.png" alt="육성제도">
 								<div class="textArea">
 									<p class="text hone">핵심인재 육성 강화</p>
 									<p class="text hone">개인별 맞춤형 교육 강화</p>
@@ -155,7 +178,7 @@
 							</div>
 							<p class="tit">&middot; 일과 삶의 균형</p>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="일과 삶의 균형">
+								<img src="/kr/images/company/promot/img-member-thumb-04.png" alt="일과 삶의 균형">
 								<div class="textArea">
 									<p class="text hone">회의/보고 문화 개선</p>
 									<p class="text hone">자율 복장 상시 실시</p>
@@ -259,7 +282,7 @@
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
+						<div class="txtArea">
 							<p class="tit">1) 조직문화 추진 방향</p>
 							<img class="only_pc" src="/kr/images/company/promot/img-member03-pc.png" alt="LG전자 글로벌 노동방침">
 							<img class="only_mo" src="/kr/images/company/promot/img-member03-mo.png" alt="LG전자 글로벌 노동방침">
@@ -366,7 +389,7 @@
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
+						<div class="txtArea">
 							<p class="tit">1) 인재육성 추진 방향</p>
 							<ul class="bull">
 								<li>사업의 지속적 성과와 미래 성장동력 창출을 위해 미래 사업가 및 핵심 인재육성, Digital Assessment 구축, L&D Transformation, 글로벌 비즈니스 역량 강화, DX 역량 확보, 자발적 현장 상시 학습 등을 강화</li>
@@ -412,7 +435,7 @@
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
+						<div class="txtArea">
 							<p class="tit">1) 국가인적자원개발 협력회사 컨소시엄</p>
 							<ul class="bull">
 								<li>국가인적자원개발 컨소시엄을 통해 사회적 기여 및 동반성장을 위한   협력사 교육지원활동을 2006년부터 실시</li>
@@ -458,24 +481,31 @@
 						</a>
 					</div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
+						<div class="txtArea">
 							<p class="tit">LG전자 임직원 교육체계</p>
-							<img class="only_pc" src="/kr/images/company/promot/img-member04-pc.png" alt="LG전자 임직원 교육체계">
-							<img class="only_mo" src="/kr/images/company/promot/img-member04-mo.png" alt="LG전자 임직원 교육체계">
-							<div class="blind">
-								<ul>
-									<li>인간존중: 인격적 대우</li>
-								</ul>
+							<div class="thumb only_pc">
+								<img src="/kr/images/company/promot/img-member04.png" alt="LG전자 임직원 교육체계">
+								<div class="footnotes">
+									<ul>
+										<li><sup>1)</sup> MVP: My Vision Planning</li>
+										<li><sup>2)</sup> EnDP: Entrepreneurship Development Program</li>
+										<li><sup>3)</sup> GLP: Global Leadership Pool</li>
+										<li><sup>4)</sup> EIP: Early Identified Pool</li>
+									</ul>
+								</div>
 							</div>
-							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="엔지니어 e-기술올림픽 개최">
+							<div class="recruit_info only_mo">
+								<p class="exc">LG전자 교육체계 도표는 PC에서 확인 가능합니다.</p>
+							</div>
+							<div class="comp_wrap mgt">
+								<img src="/kr/images/company/promot/img-member-thumb-05.png" alt="엔지니어 e-기술올림픽 개최">
 								<div class="textArea">
 									<p class="text hone"><strong>사내벤처 Poly Studio팀 디자인씽킹 W/S</strong></p>
 									<p class="text">– 아이디어 발산 </p>
 								</div>
 							</div><br>
 							<div class="comp_wrap">
-								<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="엔지니어 e-기술올림픽 개최">
+								<img src="/kr/images/company/promot/img-member-thumb-06.png" alt="엔지니어 e-기술올림픽 개최">
 								<div class="textArea">
 									<p class="text hone"><strong>온라인 디자인씽킹</strong></p>
 									<p class="text">– 고객인터뷰 실습</p>
@@ -491,7 +521,7 @@
 		</div>
 	</div>
 
-	<div class="sustainable-download">
+	<div class="sustainable-download only_pc">
 		<p class="tit">구성원 PDF 다운로드</p>
 		<p class="desc">구성원 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>

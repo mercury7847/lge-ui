@@ -1,11 +1,34 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="//html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+	var digitalData = digitalData || {};
+	digitalData.pageInfo = {
+		"content_depth1": "회사소개",
+		"content_depth2": "회사소개|지속가능경영",
+		"content_depth3": "회사소개|지속가능경영|ESG 경영 개요",
+		"content_depth4": "회사소개|지속가능경영|ESG 경영 개요|ESG 지향점",
+		"content_depth5": "회사소개|지속가능경영|ESG 경영 개요|ESG 지향점"
+	};
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/sustainable/esgLg">지속 가능 경영</a></li>
-		<li><a href="/company/sustainable/esgLeadership">기업개요</a></li>
-		<li><strong>ESG 방향성</strong></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/sustainable/overview">ESG 경영 개요</a></li>
+		<li><strong>ESG 지향점</strong></li>
 	</ul>
 </div>
 <div class="container company">
@@ -27,18 +50,16 @@
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li>
-						<a href="/company/sustainable/esgLg#com-tabs01">LG전자 ESG</a>
-					</li>
 					<li class="on">
-						<a href="/company/sustainable/esgLeadership#com-tabs01">기업개요<em class="blind">선택됨</em></a>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
-							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
-							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
-							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
 							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
-							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
 							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
 					<li>
@@ -60,7 +81,7 @@
 						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
 					</li>
 					<li>
-						<a href="/company/promot/system#com-tabs01">ESG 추진활동</a>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
@@ -77,9 +98,11 @@
 						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
-							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 표준</a></li>
-							<li><a href="/company/sustainable/download">보고서 다운로드</a></li>
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
 						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
 					</li>
 				</ul>
 			</div>
@@ -88,7 +111,7 @@
 
 	<div class="com-title">
 		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-info-location-hero-pc.png" data-m-src="/kr/images/company/info/img-info-location-hero-mo.png" aria-hidden="hidden"></span>
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-overview-hero-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-esglg-hero-mo.jpg" aria-hidden="hidden"></span>
 		</div>
 		<p class="text">LG전자는 경제&middot;환경&middot;사회 분야에서 책임과 역할을 다하고, <br class="pc">함께 성장할 수 있는 미래를 향해 <br class="mo">나아가겠습니다.</p>
 	</div>
@@ -97,12 +120,13 @@
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
 			<ul class="tabs">
-				<li><a href="/company/sustainable/esgLeadership#com-tabs02">ESG 리더십</a></li>
-				<li class="on"><a href="/company/sustainable/esgWay#com-tabs02">ESG 방향성<em class="blind">선택됨</em></a></li>
-				<li><a href="/company/sustainable/covid19#com-tabs02">코로나 19 대응</a></li>
+				<li><a href="/company/sustainable/overview#com-tabs02">Overview</a></li>
+				<li><a href="/company/sustainable/ceoMessage#com-tabs02">CEO 메시지</a></li>
+				<li class="on"><a href="/company/sustainable/esgWay#com-tabs02">ESG 지향점<em class="blind">선택됨</em></a></li>
+				<li><a href="/company/sustainable/policy#com-tabs02">ESG 정책</a></li>
 				<li><a href="/company/sustainable/participate#com-tabs02">이해관계자 참여</a></li>
-				<li><a href="/company/sustainable/policy#com-tabs02">지속가능경영 정책</a></li>
 				<li><a href="/company/sustainable/estimate#com-tabs02">중대성 평가</a></li>
+				<li><a href="/company/sustainable/covid19#com-tabs02">코로나19 대응</a></li>
 			</ul>
 		</div>
 	</div>
@@ -110,10 +134,10 @@
 	<div class="com-text">
 		<p class="tit">지속가능성을 위한 LG전자의 지향점</p>
 		<div class="esgWay_wrap">
-			<img src="/kr/images/company/compliance/img-compliance-honesty_01.png" alt="">
-			<p class="text">2018년 LG전자는 지속가능한 경영을 위한 방향성을 제시하고 이를 달성하기 위한 주요 목표를 수립하였습니다. <br class="pc">이후 LG전자는 수립한 목표 달성을 위한 노력을 지속하였으며, 매년 지속가능경영보고서를 통해 주요 추진 활동과 이행 성과를 이해관계자에게 <br class="pc">투명하게 공개하고 있습니다.</p>
-			<p class="text">2021년에는 지난 3년간의 성과를 점검하고 국제사회의 ESG 동향 및 트렌드 반영함과 동시에 이해관계자와 더욱 효과적인 커뮤니케이션을 지속하기 위해 기존 지향점을 개편하여 ESG 기반의 새로운 지향점을 수립하였습니다. 개편된 지향점은 LG 전자가 ESG 경영 추진과 지속가능성 확보를 위해 지향하는 바를 더욱 명확하게 표현하고 있으며, 내외부 현안을 고려하여 달성 가능한 구체적인 추진 목표를 설정하여 지속적인 성과 관리 및 이해관계자와의 <br class="pc">소통이 이루어질 수 있도록 하였습니다.</p>
-			<p class="text">LG전자의 ESG 경영은 과거에도, 현재에도, 미래에도 각기 다른 표현과 형태로 존재할 뿐 도달하고자 하는 목표와 그 본질은 동일합니다. <br class="pc">앞으로도 LG전자는 Life’s Good 이라는 ESG 비전하에 긍정적 환경가치를 극대화하고 모두가 함께하는 포용적 성장을 추구함으로써 회사와 우리 사회의 지속가능한 발전을 위해 힘쓰겠습니다.</p>
+			<img src="/kr/images/company/sustainable/img-esgWay-thumb_01.png" alt="">
+			<p class="text">2018년 LG전자는 지속가능경영을 위한 방향성을 제시하고 이를 달성하기 위한 주요 목표를 수립하였습니다. <br class="pc">이후 LG전자는 목표 달성을 위한 노력을 지속하였으며, 매년 지속가능경영보고서를 통해 주요 추진활동과 이행 성과를 이해관계자에게 투명하게 공개하고 있습니다.</p>
+			<p class="text">2021년에는 지난 3년간의 성과를 점검하고 국제사회의 ESG 동향 및 트렌드를 반영함과 동시에 이해관계자와 더욱 효과적인 커뮤니케이션을 지속하기 위해 기존 지향점을 개편하여 ESG 기반의 새로운 지향점을 수립하였습니다. 개편된 지향점은 LG전자가 ESG 경영 추진과 지속가능성 확보를 위해 지향하는 바를 더욱 명확하게 표현하고 있습니다. LG전자는 내외부 현안을 고려하고 달성 가능한 구체적인 전략목표를 설정하여 지속적인 성과 관리 및 이해관계자와의 소통이 이루어질 수 있도록 노력하고 있습니다.</p>
+			<p class="text">LG전자의 ESG 경영은 과거에도, 현재에도, 미래에도 각기 다른 표현과 형태로 존재할 뿐 도달하고자 하는 목표와 그 본질은 동일합니다. 앞으로도 Life’s Good(Toward a Better Life for All)이라는 ESG 비전 하에 긍정적 환경가치를 극대화하고 모두가 함께하는 포용적 성장을 추구함으로써 회사와 우리 사회의 지속가능한 발전을 위해 힘쓰겠습니다.</p>
 		</div>
 	</div>
 
@@ -121,30 +145,38 @@
 		<p class="tit">LG전자 ESG 지향점 주요 개편 사항</p>
 		<div class="esgWay_vision_subs mgt">
 			<div class="before">
-				<div class="box">
-					<p class="e_tit"><span>지속가능경영 지향점</span></p>
+				<div class="e_tit_area">
+					<p class="e_tit"><span>기존 지속가능경영 지향점(2018~2020)</span></p>
 				</div>
-				<div class="box">
-					<p class="e_tit"><span>추진 과제 및 목표</span></p>
-					<ul class="cont">
-						<li>지속가능경영 활동 및 성과 관리 체계 수립</li>
-						<li>중장기 관점 목표 수립</li>
-						<li>국제사회의 요구 기준인 UN SDGs 반영</li>
-					</ul>
+				<div class="boxs">
+					<div class="box">
+						<p class="e_tit"><span>지속가능경영 지향점</span></p>
+					</div>
+					<div class="box goal">
+						<p class="e_tit"><span>전략과제 및 목표</span></p>
+						<ul class="cont">
+							<li>지속가능경영 활동 및 성과 관리 체계 수립</li>
+							<li>중장기 관점 목표 수립</li>
+							<li>국제사회의 요구 기준인 UN SDGs 반영</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="after">
+				<div class="e_tit_area">
+					<p class="e_tit"><span>신규 ESG 지향점(2021~)</span></p>
+				</div>
 				<div class="box">
 					<p class="e_tit"><span>ESG 비전</span></p>
 				</div>
 				<div class="box">
-					<p class="e_tit"><span>전략 방향 (E/S)</span></p>
+					<p class="e_tit"><span>전략방향(E/S)</span></p>
 				</div>
 				<div class="box">
-					<p class="e_tit"><span>전략 과제 및 목표</span></p>
+					<p class="e_tit"><span>전략과제 및 목표</span></p>
 				</div>
 				<div class="box">
-					<p class="e_tit"><span>추진기반 (G)</span></p>
+					<p class="e_tit"><span>추진기반(G)</span></p>
 					<ul class="cont">
 						<li>산업내 글로벌 ESG 트렌드 반영</li>
 						<li>효과적 소통을 위한 직관적인 메시지 사용</li>
@@ -167,11 +199,11 @@
 					<p class="tit h4">전략방향</p>
 					<div class="strategy">
 						<div class="box">
-							<p class="title"><strong>긍정적 환경가치 +</strong><span>Toward a More Positive Extemality</span></p>
+							<p class="title"><strong class="label">E</strong><strong>긍정적 환경가치 +</strong><span>Toward a More Positive Extemality</span></p>
 							<p class="text">LG전자는 부정적 환경영향 감소를 넘어 긍정적 <br>영향을 확대하겠습니다.</p>
 						</div>
 						<div class="box">
-							<p class="title"><strong>포용적 사회가치 +</strong><span>Embracing Inclusive Society</span></p>
+							<p class="title"><strong class="label">S</strong><strong>포용적 사회가치 +</strong><span>Embracing an Inclusive Society</span></p>
 							<p class="text">LG전자는 모두가 함께하는 포용적 성장을 <br>추구 하겠습니다.</p>
 						</div>
 					</div>
@@ -237,6 +269,7 @@
 							<li class="lists">
 								<div class="head">
 									<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+										<span class="label">E</span>
 										<span class="title line2">긍정적 환경가치 + <br>Toward a More Positive Extemality</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 										<span class="sub">LG전자는 부정적 환경영향 감소를 넘어 긍정적 <br>영향을 확대하겠습니다.</span>
 										<span class="blind ui_accord_text">내용 더 보기</span>
@@ -282,7 +315,8 @@
 							<li class="lists">
 								<div class="head">
 									<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-										<span class="title line2">포용적 사회가치 + <br>Embracing Inclusive Society</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+										<span class="label">S</span>
+										<span class="title line2">포용적 사회가치 + <br>Embracing an Inclusive Society</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 										<span class="sub">LG전자는 모두가 함께하는 포용적 성장을 <br>추구하겠습니다.</span>
 										<span class="blind ui_accord_text">내용 더 보기</span>
 									</a>
@@ -328,6 +362,7 @@
 				<div class="base">
 					<div class="box">
 						<p class="title">
+							<strong class="label">G</strong>
 							<strong>신뢰받는 경영+</strong>
 							<span>Trustworthy Management</span>
 						</p>
@@ -342,7 +377,7 @@
 							</li>
 							<li>
 								<strong>ESG 경영 문화 조성</strong>
-								<span>체질 개선, ESG 내재화</span>
+								<span>체질개선, ESG 내재화</span>
 							</li>
 						</ul>
 					</div>
@@ -351,9 +386,9 @@
 		</div>
 	</div>
 
-	<div class="sustainable-download">
-		<p class="tit">ESG 방향성 PDF 다운로드</p>
-		<p class="desc">ESG 방향성 페이지의 내용을 한번에 확인하세요~</p>
+	<div class="sustainable-download only_pc">
+		<p class="tit">ESG 지향점 PDF 다운로드</p>
+		<p class="desc">ESG 지향점 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>
 	</div>
 </div>

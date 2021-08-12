@@ -73,14 +73,14 @@ br.pc{display:block;}
 	/* 서브타이틀 영역 mo */
 	.com-title{padding: 30px 4.44vw 60px;border-bottom:12px solid #f4f4f4;}
 	.com-title .img {height: 73.17vw;}
-	.com-title .text {margin-top: 20px;font-size: 15px;line-height: 1.53;}
+	.com-title .text {margin-top: 20px;font-size: 15px;line-height: 23px;}
 	.com-text{padding: 30px 0 30px;margin: 0 4.44vw;}
 	.com-text .tit{font-size: 18px;line-height: 1.44;}
-	.com-text .text {margin-top: 12px;font-size: 14px;line-height: 1.57;}
+	.com-text .text {margin-top: 12px;font-size: 14px;line-height: 22px;}
 	.com-title + .com-text{padding-top:60px;}
 	/* 정관 리스트 mo */
 	.articles-list{margin: 15px 0 0;}
-	.articles-list li{width:100%;font-size: 14px;line-height: 1.57;margin-bottom:12px;background-position: right 15px center;}
+	.articles-list li{width:100%;font-size: 14px;line-height: 22px;margin-bottom:12px;background-position: right 15px center;}
 	.articles-list li a,
 	.articles-list li button{padding:22px 15px;}
 	.articles-list li:nth-child(2n){margin-left:0;}
@@ -205,8 +205,8 @@ br.pc{display:block;}
 .workplace_chart .inner{width:auto;}
 .workplace_chart .items .img{display:block;width:55.55vw;height:55.55vw;margin: 0 auto;}
 .workplace_chart .bullet-list{padding-left:0;width: 100%;}
-.workplace_chart .bullet-list .b-tit{font-size: 14px;line-height: 1.57;text-align:center;font-weight: 500;margin-bottom: 8px;}
-.workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 1.57;}
+.workplace_chart .bullet-list .b-tit{font-size: 14px;line-height: 22px;text-align:center;font-weight: 500;margin-bottom: 8px;}
+.workplace_chart .bullet-list .b-txt{font-size: 14px;line-height: 22px;}
 }
   
 /* 지속가능경영 정책 */
@@ -256,21 +256,22 @@ br.pc{display:block;}
 .esgPerformanceArea i.ico-esglg07 {background-image:url(/kr/images/company/icon/ico-esglg07.svg);}
 .esgPerformanceArea i.ico-esglg08 {background-image:url(/kr/images/company/icon/ico-esglg08.svg);}
 .esgPerformanceArea i.ico-esglg09 {background-image:url(/kr/images/company/icon/ico-esglg09.svg);}
+
 @media screen and (max-width:767px){
 .esgLinkArea{width:100%;}
-.esgLinkArea:nth-child(2n+1){margin-left:0;}
-.esgLinkArea .esgTit{font-size: 14px;line-height: 1.57;}
+.esgLinkArea:nth-child(2n){margin-left:0;}
+.esgLinkArea .esgTit{font-size: 14px;line-height: 22px;}
 .esgLinkArea .esgGoto{margin-top:14px;padding: 29px 130px 29px 15px;}
-.esgLinkArea .esgText{font-size: 14px;line-height: 1.57;}
+.esgLinkArea .esgText{font-size: 14px;line-height: 22px;}
 .esgLinkArea .esgBtn{font-size: 13px;line-height: 1.62;padding: 5px 15px;}
 .esgPerformancetit{margin-top:20px;}
 .esgPerformanceArea {margin-top:15px;padding:0;}
 .esgPerformanceArea li{width:100%;padding:20px;}
 .esgPerformanceArea li + li{border-left-width:0;border-top: dashed 1px #dddddd;}
 .esgPerformanceArea .esgIcon {margin: 0 auto 5px;}
-.esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 1.57;}
+.esgPerformanceArea .esgEyebrow{font-size: 14px;line-height: 22px;}
 .esgPerformanceArea .esgTit{font-size: 18px;line-height: 1.44;}
-.esgPerformanceArea .esgDetail{font-size: 14px;line-height: 1.57;}
+.esgPerformanceArea .esgDetail{font-size: 14px;line-height: 22px;}
 }
 
 /* 정보보호 */
@@ -284,11 +285,11 @@ br.pc{display:block;}
 }
 
 /* 성과 및 데이터 */
-.pc2mo1 li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
-.pc2mo1 li:nth-child(2n){margin-left:20px;}
+.pc2mo1 > li{width:calc(50% - 12px);display:inline-block;vertical-align: top;margin-top:24px;}
+.pc2mo1 > li:nth-child(2n){margin-left:20px;}
 @media screen and (max-width: 767px){
-.pc2mo1 li{width:100%;display:block;margin-top:12px;}
-.pc2mo1 li:nth-child(2n){margin-top:12px;margin-left:0}
+.pc2mo1 > li{width:100%;display:block;margin-top:12px;}
+.pc2mo1 > li:nth-child(2n){margin-top:12px;margin-left:0}
 }
 
 /* 포용적 사회를 위한 균형 있는 성장 - 건강관리 가전 기술 개발 */
@@ -313,4 +314,39 @@ br.pc{display:block;}
 	.technology_list .technology_img{height:190px;}
 	.technology_list .technology_tit{font-size: 14px;height:52px;padding: 12px 0px;}
 	.technology_list .technology_text{font-size: 14px;}
+}
+
+/* 구성원 */
+.goalsArea {margin:12px auto 40px;max-width:876px;}
+.goalsArea > li {width:100%;}
+.goalsArea > li + li{margin-top:40px;}
+.goalsArea > li + li .goalsDetail:before{display:block;content:'';width:100%;border-top:1px dashed #dddddd;top: -20px;position: absolute;}
+.goalsArea .goalsSum {display:inline-block;border: solid 1px #da0f47;color: #da0f47;width: 150px;height: 150px;padding-top: 30px;border-radius: 100%;text-align: center;font-weight: bold;vertical-align: top;}
+.goalsArea .goalsNumber {display:block;font-size: 16px;line-height: 1.63;}
+.goalsArea .goalsTit {display:block;font-size: 18px;line-height: 1.56;margin-top:4px;}
+.goalsArea .goalsDetail {display:inline-block;width: calc(100% - 210px);height: 150px;vertical-align: top;margin-left: 53px;position: relative;}
+.goalsArea .bull {transform: translateY(-50%);top: 50%;position: absolute;}
+@media screen and (max-width: 767px){
+.goalsArea {margin:12px auto 20px;max-width:300px;}
+.goalsArea > li + li{margin-top:12px;}
+.goalsArea > li + li .goalsDetail:before{border-top-width:0;}
+.goalsArea .goalsSum {display:block;width: 104px;height: 104px;padding-top: 30px;margin:0 auto;padding-top: 15px;font-weight: normal;}
+.goalsArea .goalsNumber {font-size: 12px;line-height: 1.67;}
+.goalsArea .goalsTit {font-size: 15px;line-height: 23px;margin-top:2px;font-weight: 500;}
+.goalsArea .goalsDetail {display:block;width: 100%;margin-left:0;margin-top:10px;height: auto;}
+.goalsArea .bull{transform: translateY(0);top:0;position: inherit;}
+}
+
+/* 고객만족도 조사 */
+.satisfactionArea{text-align: center;height:380px;float: right;margin-left: 20px;padding-top: 40px;}
+.satisfactionArea li{max-width: calc(50% - 25px);display:inline-block;vertical-align: top;text-align: center;}
+.satisfactionArea li + li{margin-left:40px;}
+.satisfactionArea img{max-width:240px;width: 100%;border-radius: 0 !important;}
+.satisfactionArea p {margin-top:12px;font-size: 16px;line-height: 1.63;}
+@media screen and (max-width: 767px){
+	.satisfactionArea{height:auto;float: inherit;margin-left: 0;padding-top: 0;}
+	.satisfactionArea li{max-width: calc(50% - 30px);}
+	.satisfactionArea li + li{margin-left:25px;}
+	.satisfactionArea img{max-width: 32vw;}
+	.satisfactionArea p {margin-top:6px;}
 }

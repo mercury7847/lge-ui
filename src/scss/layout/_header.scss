@@ -106,31 +106,33 @@
         font-size: 0;
 
         // BTOCSITE-1814 이벤트탭 추가
-		&:before,
-        &:after {
-            position: absolute;
-            top: 0;
-            z-index: 1;
-            width: 40px;
-            height: 100%;
-            content: '';
-            display:none;
+        // border-bottom: 1px solid $color-border;
+        // overflow: visible !important;
+		// &:before,
+        // &:after {
+        //     position: absolute;
+        //     top: 1px;
+        //     z-index: 1;
+        //     width: 40px;
+        //     height: 100%;
+        //     content: '';
+        //     display:none;
 
-        }
-        &:before {
-            left: 0;
-            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.5), #ffffff);
-        }
-        &:after {
-            right: 0;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
-        }
+        // }
+        // &:before {
+        //     left: 0;
+        //     background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+        // }
+        // &:after {
+        //     right: 0;
+        //     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        // }
 
       
-        &.left:before,  
-        &.right:after {
-            display:block;
-        }
+        // &.left:before,  
+        // &.right:after {
+        //     display:block;
+        // }
 
         &::-webkit-scrollbar {
             display: none;
@@ -140,11 +142,11 @@
 
         .nav {
             height:37px;
-            overflow:hidden;
+            // overflow:hidden;
             white-space: nowrap;
             // display: table;
             display:flex;
-            border-bottom: 1px solid $color-border;
+            // border-bottom: 1px solid $color-border;
             > li {
                 display: inline-block;
                 border-top: 0;
@@ -187,7 +189,7 @@
                         right: 0;
                         left: 0;
                         width: 100%;
-                        height: 4px;
+                        height: 3px;
                         background-color: $color-default;
                         transform: rotate(0);
                     }
@@ -290,6 +292,34 @@
                 font-size: 16px;
                 line-height: 24px;
             }
+        }
+    }
+    // BTOCSITE-1814 이벤트탭 추가 : 메인일때만 적용해야 하는부분 
+    #mobileNav {
+        border-bottom: 1px solid $color-border;
+        overflow: visible !important;
+		&:before,
+        &:after {
+            position: absolute;
+            top: 1px;
+            z-index: 1;
+            width: 40px;
+            height: 100%;
+            content: '';
+            display:none;
+
+        }
+        &:before {
+            left: 0;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+        }
+        &:after {
+            right: 0;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+        }
+        &.left:before,  
+        &.right:after {
+            display:block;
         }
     }
 }

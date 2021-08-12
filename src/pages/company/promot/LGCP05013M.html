@@ -1,18 +1,65 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="//html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+	var digitalData = digitalData || {};
+	digitalData.pageInfo = {
+		"content_depth1": "회사소개",
+		"content_depth2": "회사소개|지속가능경영",
+		"content_depth3": "회사소개|지속가능경영|ESG 팩트북",
+		"content_depth4": "회사소개|지속가능경영|ESG 팩트북|정도경영 개요",
+		"content_depth5": "회사소개|지속가능경영|ESG 팩트북|정도경영 개요"
+	};
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
 	google.charts.load("current", {packages:["corechart"]});
 	google.charts.setOnLoadCallback(drawChart);
-	var data, options, chart;
+	var dataDonut01, chartDonut01, optionsDonut;
+	var dataDonut02, chartDonut02;
+	var dataColumn, optionsColumn, chartColumn;
 	function drawChart() {
-		data = google.visualization.arrayToDataTable([
-			['',  'Amount'],
-			['2018',  656],
-			['2019',  402],
-			['2020',  457]
+		dataColumn = google.visualization.arrayToDataTable([
+			['', '', { role: 'annotation' }, {role: 'style'}],
+			['2020', 457, ' 457 ', 'fill-color: #e81953'],
+			['2019', 656, ' 656 ', 'fill-color: #000000'],
+			['2018', 402, ' 402 ', 'fill-color: #000000']
 		]);
-		options = {
-			pieHole: 0.6,
+		optionsColumn = {
+			colors: ['#e81953', '#000000'],
+			vAxis:{minValue:'0', maxValue: '700'},
+			chartArea: {width: '80%',right:'10%', height: '80%',top:'4%'},
+			bar: { groupWidth: '20%' },
+			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
+			legend: {position: 'none'},
+			fontName:'Noto Sans',
+			fontSize:"16"
+		};
+		dataDonut01 = google.visualization.arrayToDataTable([
+			['',  'Amount'],
+			['민원',  350],
+			['부정비리',  52],
+			['기타',  55]
+		]);
+		dataDonut02 = google.visualization.arrayToDataTable([
+			['',  'Amount'],
+			['중징계',  58],
+			['경징계',  45],
+			['징계해고 권고사직',  113]
+		]);
+		optionsDonut = {
+			pieHole: 0.62,
 			pieSliceText: 'value',
 			chartArea: {width: '100%', height: '80%',top:'4%'},
 			slices: {
@@ -28,45 +75,64 @@
 			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16',fontName:'Noto Sans'}}
 		};
         checkSize();
-		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-		chart.draw(data, options);
+		chartColumn = new google.visualization.ColumnChart(document.getElementById('chartColumn'));
+		chartDonut01 = new google.visualization.PieChart(document.getElementById('chartDonut01'));
+		chartDonut02 = new google.visualization.PieChart(document.getElementById('chartDonut02'));
+		chartColumn.draw(dataColumn, optionsColumn);
+		chartDonut01.draw(dataDonut01, optionsDonut);
 	}
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			options.pieHole=0.6;
-			options.legend.textStyle.fontSize="12";
-			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
+			optionsDonut.legend.textStyle.fontSize="12";
+			optionsDonut.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
+			optionsColumn.bar.groupWidth= '18%';
 		}
 		else{
-			options.pieHole=0.56;
-			options.legend.textStyle.fontSize="16";
-			options.pieSliceTextStyle.fontSize="16";
+			optionsDonut.legend.textStyle.fontSize="16";
+			optionsDonut.pieSliceTextStyle.fontSize="16";
+			optionsColumn.bar.groupWidth= '10%';
 		}
 	}
 	$(window).resize(function() {
 		checkSize();
-		chart.draw(data, options);
 		setTimeout(function(){ 
-			chart.draw(data, options);
+				chartColumn.draw(dataColumn, optionsColumn);
+				chartDonut01.draw(dataDonut01, optionsDonut);
+				chartDonut02.draw(dataDonut02, optionsDonut);
 		}, 100);
+	});
+	$(document).ready(function() {
+		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
+		$(".accordion-wrap li.lists:first-child").on('click', function(e){
+			checkSize();
+			setTimeout(function(){
+				chartDonut02.draw(dataDonut02, optionsDonut);
+			}, 100);
+		});
 	});
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:520px;height:370px;margin:0 auto;}
-	.googlechart-wrap .chartarea{width:100%;height:100%;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;font-size:24px;font-weight:bold;}
+	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
+	.googlechart-wrap .chartColumn {height:480px;}
+	.googlechart-wrap .chartDonut {height:370px;}
+	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;line-height: 1.2;}
+	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
+	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:71.11vw}
-		.googlechart-wrap .overlayarea{font-size:5vw;}
+		.googlechart-wrap{width:100%;}
+		.googlechart-wrap .chartColumn {height:53vw;}
+		.googlechart-wrap .chartDonut {height:71.11vw}
+		.googlechart-wrap .overlayarea .small {font-size:3.5vw;}
+		.googlechart-wrap .overlayarea .big {font-size:6.25vw;font-weight:bold;}
 	}
 </style>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
 		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/sustainable/esgLg">지속 가능 경영</a></li>
-		<li><a href="/company/promot/system">ESG 추진 활동</a></li>
+		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
+		<li><a href="/company/promot/system">ESG 팩트북</a></li>
 		<li><strong>정도경영 개요</strong></li>
 	</ul>
 </div>
@@ -77,7 +143,7 @@
 	<!-- hiro image -->
 	<section class="hiro-wrap">
 		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/promot/img-sustainable-hero-pc.jpg" data-m-src="/kr/images/company/promot/img-sustainable-hero-mo.jpg" aria-hidden="hidden"></span>
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
 		</div>
 		<div class="text-area">
 			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
@@ -90,17 +156,15 @@
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
 					<li>
-						<a href="/company/sustainable/esgLg#com-tabs01">LG전자 ESG</a>
-					</li>
-					<li>
-						<a href="/company/sustainable/esgLeadership#com-tabs01">기업개요</a>
+						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
-							<li><a href="/company/sustainable/esgLeadership">ESG 리더십</a></li>
-							<li><a href="/company/sustainable/esgWay">ESG 방향성</a></li>
-							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
+							<li><a href="/company/sustainable/overview">Overview</a></li>
+							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
+							<li><a href="/company/sustainable/esgWay">ESG 지향점</a></li>
+							<li><a href="/company/sustainable/policy">ESG 정책</a></li>
 							<li><a href="/company/sustainable/participate">이해관계자 참여</a></li>
-							<li><a href="/company/sustainable/policy">지속가능경영 정책</a></li>
 							<li><a href="/company/sustainable/estimate">중대성 평가</a></li>
+							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
 					<li>
@@ -122,7 +186,7 @@
 						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
 					</li>
 					<li class="on">
-						<a href="/company/promot/system#com-tabs01">ESG 추진활동<em class="blind">선택됨</em></a>
+						<a href="/company/promot/system#com-tabs01">ESG 팩트북<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
@@ -139,9 +203,11 @@
 						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
-							<li><a href="/company/sustainable/frameworkInitiatives">프레임워크 <br> & 표준</a></li>
-							<li><a href="/company/sustainable/download">보고서 다운로드</a></li>
-						</ul>	
+							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
 					</li>
 				</ul>
 			</div>
@@ -175,7 +241,7 @@
 	<div class="com-text">
 		<p class="tit">정도경영</p>
 		<div class="esgWay_wrap">
-			<img src="/kr/images/company/sustainable/img-compliance-sample.png" alt="">
+			<img src="/kr/images/company/promot/img-system-thumb-01.png" alt="">
 			<p class="text">정도경영은 시장에서 정당하게 승부하자는 LG만의 고유한 행동양식으로, 선언적 윤리규범과 실천지침에 구체화되어 LG인들의 사고와 행동의 기반을 형성하고 있습니다. LG전자의 전 임직원 및 협력회사는 정도경영을 내재화하고 글로벌 기업시민으로서의 사회적 책무를 다하기 위해 관련 상담, 교육, 홍보활동 등 다양한 노력을 하고 있습니다.</p>
 		</div>
 	</div>
@@ -188,7 +254,7 @@
 			<li>2020년까지 총 6차례에 걸쳐 개정하여 윤리규범 관련 규정과 구체적인 하부 실천지침을 강화</li>
 			<li>LG전자 윤리규범은 전 임직원의 숙지를 위해 140여 개의 현지법인에 배포 및 공유</li>
 		</ul>
-		<div class="linkArea">
+		<div class="linkArea grdt">
 			<p class="tit">LG전자 윤리규범</p>
 			<p class="desc"><a href="/company/info/ethics" class="btn-link" target="_blank" title="새 창 열림">자세히 보기</a></p>
 		</div>
@@ -210,6 +276,10 @@
 		</ul>
 		<p class="tit h4">1) 위반행위 제보 접수 추이</p>
 		<div class="graph ofn">
+			<span class="txt_rt">(단위: 건)</span>
+			<div class="googlechart-wrap">
+				<div class="chartarea chartColumn" id="chartColumn"></div>
+			</div>
 			<!-- 구글차트 -->
 		</div>
 		<div class="tb_row tb-row-bl">
@@ -229,36 +299,31 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>402</td>
-						<td>656</td>
 						<td>457</td>
+						<td>656</td>
+						<td>402</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p class="tit h4">2) 2020년 위반행위 제보 유형</p>
 		<div class="graph ofn">
-			<span class="only_pc txt_rt">(단위: 건)</span>
+			<span class="txt_rt">(단위: 건)</span>
 			<div class="googlechart-wrap">
-				<div class="chartarea" id="donutchart"></div>
-				<div class="overlayarea">위반행위 제보 유형</div>
+				<div class="chartarea chartDonut" id="chartDonut01"></div>
+				<div class="overlayarea">
+					<span class="small">위반 행위<br>제보 유형</span>
+					<span class="big">457건</span>
+				</div>
 			</div>
+			<!-- 구글차트 -->
 			<div class="blind">
-				<span>위반행위 제보 유형</span>
+				<span>위반 행위 제보 접수 추이</span>
 				<strong>457건</strong>
 				<ul>
-					<li>
-						<span>2020</span>
-						<p>457</p>
-					</li>
-					<li>
-						<span>2019</span>
-						<p>656</p>
-					</li>
-					<li>
-						<span>2018</span>
-						<p>402</p>
-					</li>
+					<li>민원(고객불만, 협력회사 고충) 350건</li>
+					<li>부정비리 52건</li>
+					<li>기타(HR 위반, 불공정거래 등) 55 건</li>
 				</ul>
 			</div>
 		</div>
@@ -321,6 +386,22 @@
 							<p class="tit h4 mt">2020년 자체 진단 조치 현황</p>
 							<div class="graph ofn">
 								<span class="only_pc txt_rt">(단위: 건)</span>
+								<div class="googlechart-wrap">
+									<div class="chartarea chartDonut" id="chartDonut02"></div>
+									<div class="overlayarea">
+										<span class="small">합계</span>
+										<span class="big">100%(116)</span>
+									</div>
+								</div>
+								<div class="blind">
+									<span>위반 행위 제보 접수 추이</span>
+									<strong>457건</strong>
+									<ul>
+										<li>민원(고객불만, 협력회사 고충) 350건</li>
+										<li>부정비리 52건</li>
+										<li>기타(HR 위반, 불공정거래 등) 55 건</li>
+									</ul>
+								</div>
 								<!-- 구글차트 -->
 							</div>
 							<div class="tb_row tb-row-bl middle">
@@ -392,9 +473,10 @@
 							</ul>
 							<p class="tit h4">2020년 정도경영 전담 상담실 문의내용</p>
 							<div class="graph ofn">
-								<!-- 구글차트 -->
+								<img class="only_pc" src="/kr/images/company/promot/img-system-pc.png" alt="">
+								<img class="only_mo" src="/kr/images/company/promot/img-system-mo.png" alt="">
 							</div>
-							<div class="tb_row tb-row-bl middle">
+							<div class="tb_row tb-row-bl middle mgt">
 								<table>
 									<caption>구분, 건수, 비율(%)</caption>
 									<colgroup>
@@ -596,7 +678,7 @@
 		</div>
 	</div>
 	
-	<div class="sustainable-download">
+	<div class="sustainable-download only_pc">
 		<p class="tit">정도경영 개요 PDF 다운로드</p>
 		<p class="desc">정도경영 개요 페이지의 내용을 한번에 확인하세요~</p>
 		<a href="#" class="btn"><span>PDF 다운로드</span></a>

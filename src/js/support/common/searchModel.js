@@ -407,16 +407,11 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) > -1;
                 
                 if (isRecommendVisitCategory && self.isEngineerReservation){
-                    var alertMsg = '고객님, 선택하신 제품은 <strong class="point">센터 방문 예약 서비스</strong>를 이용하시면 보다 신속하고 정확하게 서비스 이용이 가능합니다.<br><br>센터 방문 예약 접수를 도와 드릴까요?';
-                    lgkorUI.confirm(alertMsg,{
-                        typeClass:'type2',
+                    //BTOCSITE-4376
+                    var alertMsg = '<h6 class="ui-alert-msg">고객님,<br> 출장 서비스가 지연되고 있습니다.<br><br> 선택하신 제품은 <strong class="point">센터 방문</strong> 하시면 보다 신속하게 서비스 가능합니다.</h6>';
+                    lgkorUI.alert(alertMsg,{
                         title:'',
-                        okBtnName: '네',
-                        cancelBtnName: '아니요',
                         ok: function() {
-                            location.href = '/support/visit-center-reservation';                            
-                        },
-                        cancel: function() {
                             self.updateSummary({
                                 product: [data.categoryName, data.subCategoryName]
                             });
@@ -464,16 +459,20 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
                 /* BTOCSITE-3312 add :: 출장예약 페이지일때 모델명을 몰라요 클릭시 팝업 추가 */
                 if (!!data.modelCode == false && self.isEngineerReservation){
-                    var alertMsg = '서비스 접수 확인 문자의 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 으로 사진 업로드 하시면 정확하고 신속한 서비스가 가능 합니다.<br><br>모델명 입력을 건너뛰기 하시겠습니까?';
+                    //var alertMsg = '서비스 접수 확인 문자의 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 으로 사진 업로드 하시면 정확하고 신속한 서비스가 가능 합니다.<br><br>모델명 입력을 건너뛰기 하시겠습니까?';
+                    //BTOCSITE-4410
+                    var alertMsg = '모델명을 입력하시면 신속 정확한 서비스가 가능 합니다.<br><br>접수 확인 문자 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 에서도 모델명 사진 업로드 가능<br><br>모델명을 입력 하시겠습니까?';
                     lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
                         title:'',
                         okBtnName: '네',
                         cancelBtnName: '아니요',
                         ok: function() {
-                            self.complete(data);
+                            //self.complete(data);
                         },
-                        cancel: function() {}
+                        cancel: function() {
+                            self.complete(data);
+                        }
                     });
                     return;                   
                 }         

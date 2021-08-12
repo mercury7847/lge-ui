@@ -639,7 +639,7 @@ $(function () {
         }
 
         // 비디오 태그 처리
-        function updateVideo(video) {
+        function updateVideo(video, index) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
             //if(isMobileDevice) return;
 
@@ -673,7 +673,11 @@ $(function () {
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
             if(posterSrc){
-                videoAttr += " poster='"+posterSrc+"'";
+                if(index>0) {
+                    videoAttr += " poster='"+posterSrc+"' preload='metadata'";
+                }else {
+                    videoAttr += " preload='auto'";
+                }
             }
 
             // 비디오 요소 생성.
@@ -799,10 +803,10 @@ $(function () {
 
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
 
-                if(!$(this).hasClass('section-cover')){
+                if(!$(this).hasClass('section-cover')) {
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
-                    $(this).find('.img > .video').each(function() {
-                        updateVideo(this);
+                    $(this).find('.img.only-' + (vcui.detect.isMobileDevice ? "mobile" : "desktop") + ' > .video').each(function () {
+                        updateVideo(this, i);
                     });
                 }
                 totalHeight += itemHeight;
@@ -954,6 +958,17 @@ $(function () {
     }
     window.loadAnimSourceComplete = loadAnimSourceComplete;
 
+    var placeholderImage = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI0MzJweCIgaGVpZ2h0PSI0MzJweCIgdmlld0JveD0iMCAwIDQzMiA0MzIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzMiA0MzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cmVjdCB5PSIxIiBmaWxsPSIjRjRGNEY0IiB3aWR0aD0iNDMyIiBoZWlnaHQ9IjQzMiIvPgo8Zz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0xMjIuMzgyLDIwMC45OWg2LjU4NXYyNy40MDhoMTMuMzQ4djUuNTE4aC0xOS45MzRWMjAwLjk5eiIvPgoJPHBhdGggZmlsbD0iI0FBQUFBQSIgZD0iTTE0NC4xODgsMjE3LjU4N2MwLTEwLjg1Nyw3LjAzLTE3LjIyLDE1Ljc5NS0xNy4yMmM0Ljc2MSwwLDguMDU0LDIuMDQ3LDEwLjE4OSw0LjIyN2wtMy41MTUsNC4xODIKCQljLTEuNjAyLTEuNTU3LTMuNDcxLTIuNzU4LTYuNDUyLTIuNzU4Yy01LjQ3MywwLTkuMjk5LDQuMjcxLTkuMjk5LDExLjM0NmMwLDcuMTYzLDMuMjkyLDExLjQ3OSw5Ljc0NCwxMS40NzkKCQljMS42MDIsMCwzLjIwNC0wLjQ0NSw0LjEzOC0xLjI0NnYtNi40OTZoLTUuODI5di01LjM4NGgxMS43MDJ2MTQuODYxYy0yLjIyNSwyLjE4LTYuMDk2LDMuOTYtMTAuNjc5LDMuOTYKCQlDMTUwLjk5NSwyMzQuNTM5LDE0NC4xODgsMjI4LjU3NiwxNDQuMTg4LDIxNy41ODd6Ii8+Cgk8cGF0aCBmaWxsPSIjQUFBQUFBIiBkPSJNMTc3LjIwNiwyMDAuOTloMjAuMjAxdjUuNDczaC0xMy42MTV2Ny42MDhoMTEuNTY4djUuNTE4aC0xMS41Njh2OC44MWgxNC4xMDR2NS41MThoLTIwLjY5VjIwMC45OXoiLz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0yMDMuMTQ5LDIzMC4yNjhjMC0yLjQwMiwxLjczNS00LjI3MSw0LjA0OS00LjI3MWMyLjM1OCwwLDQuMDk0LDEuODY5LDQuMDk0LDQuMjcxCgkJcy0xLjczNSw0LjI3MS00LjA5NCw0LjI3MUMyMDQuODg0LDIzNC41MzksMjAzLjE0OSwyMzIuNjcsMjAzLjE0OSwyMzAuMjY4eiIvPgoJPHBhdGggZmlsbD0iI0FBQUFBQSIgZD0iTTIxNi4zMjEsMjE3LjU4N2MwLTEwLjg1Nyw2Ljk4NS0xNy4yMiwxNS4zMDYtMTcuMjJjNC4xODMsMCw3LjUyLDIuMDAyLDkuNjU1LDQuMjI3bC0zLjQ3LDQuMTgyCgkJYy0xLjY0Ni0xLjYwMi0zLjU2LTIuNzU4LTYuMDUyLTIuNzU4Yy00Ljk4MywwLTguNzIxLDQuMjcxLTguNzIxLDExLjM0NmMwLDcuMTYzLDMuMzgyLDExLjQ3OSw4LjU4NywxMS40NzkKCQljMi44MDQsMCw1LjAyOC0xLjMzNSw2LjgwOC0zLjI0OGwzLjQ3MSw0LjA5NGMtMi43MTQsMy4xNTgtNi4yMjksNC44NS0xMC41LDQuODVDMjIzLjA4NCwyMzQuNTM5LDIxNi4zMjEsMjI4LjU3NiwyMTYuMzIxLDIxNy41ODcKCQl6Ii8+Cgk8cGF0aCBmaWxsPSIjQUFBQUFBIiBkPSJNMjQzLjI4OCwyMTcuMzE5YzAtMTAuNzIzLDYuMDA3LTE2Ljk1MiwxNC43MjktMTYuOTUyYzguNzIxLDAsMTQuNzI4LDYuMjczLDE0LjcyOCwxNi45NTIKCQlzLTYuMDA3LDE3LjIyLTE0LjcyOCwxNy4yMkMyNDkuMjk1LDIzNC41MzksMjQzLjI4OCwyMjcuOTk4LDI0My4yODgsMjE3LjMxOXogTTI2Ni4wMjUsMjE3LjMxOWMwLTcuMDc0LTMuMTE1LTExLjMwMS04LjAwOS0xMS4zMDEKCQljLTQuODk1LDAtOC4wMSw0LjIyNy04LjAxLDExLjMwMWMwLDcuMDMsMy4xMTUsMTEuNTI0LDguMDEsMTEuNTI0QzI2Mi45MSwyMjguODQ0LDI2Ni4wMjUsMjI0LjM1LDI2Ni4wMjUsMjE3LjMxOXoiLz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0yNzguNjY1LDIwMC45OWg3LjI5N2w1LjYwNiwxNS4zOTVjMC43MTIsMi4wNDYsMS4zMzUsNC4yMjcsMi4wMDMsNi4zNjNoMC4yMjIKCQljMC43MTItMi4xMzYsMS4yOTEtNC4zMTYsMi4wMDMtNi4zNjNsNS40NzMtMTUuMzk1aDcuMjk3djMyLjkyNmgtNi4wMDd2LTEzLjc0OWMwLTMuMTE0LDAuNDg5LTcuNjk3LDAuODAxLTEwLjgxMmgtMC4xNzgKCQlsLTIuNjcsNy43NDJsLTUuMDcyLDEzLjgzOGgtMy43ODJsLTUuMTE2LTEzLjgzOGwtMi42MjUtNy43NDJoLTAuMTc5YzAuMzEyLDMuMTE1LDAuODQ2LDcuNjk4LDAuODQ2LDEwLjgxMnYxMy43NDloLTUuOTE4VjIwMC45OXoKCQkiLz4KPC9nPgo8L3N2Zz4K"
+
+    document.addEventListener('readystatechange',function(){
+        if(document.readyState === 'complete') {
+            $context.find('[data-icon-anim-src]').each(function(index, el){
+                el.load = loadAnimSourceComplete(el)
+                el.src = el.dataset['iconAnimSrc']
+            })
+        }
+    })
+
     $context.find('.ui_ico_anim').each(function(idx, item){
         var leng = $(item).data('length');
         var patharr = $(item).find('img').attr('src').split("/");
@@ -980,7 +995,7 @@ $(function () {
                     if(i < 10) var num = "00" + i;
                     else if(i>9 && i < 100) num = "0" + i;
                     else num = i;
-                    $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
+                    $(item).append('<img src="'+placeholderImage+'" data-icon-anim-src="' + path + fn + num + '.png" alt="">');
                 }
             }
         } else{
@@ -988,7 +1003,7 @@ $(function () {
                 total++;
                 
                 num = i < 10 ? "0" + i : i;
-                $(item).append('<img onload="loadAnimSourceComplete(this)" src="' + path + fn + num + '.png" alt="">');
+                $(item).append('<img src="'+placeholderImage+'" data-icon-anim-src="' + path + fn + num + '.png" alt="">');
             }
         }
         $(item).data("loadTotal", total);
@@ -1183,9 +1198,7 @@ $(function () {
             //}, 500);
         });
         
-        setTimeout(function(){
-            $(window).trigger('scroll.videoPlay');
-        }, 50);
+        $(window).trigger('scroll.videoPlay');
 
         // 플로팅 버튼 AR 관련 
         if (isOnlyMobileDevice){
