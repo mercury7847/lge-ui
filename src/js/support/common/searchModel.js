@@ -407,16 +407,39 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var isRecommendVisitCategory = self.options.recommendVisitCenterCategoryArray.indexOf(data.subCategory) > -1;
                 
                 if (isRecommendVisitCategory && self.isEngineerReservation){
-                    var alertMsg = '고객님, 선택하신 제품은 <strong class="point">센터 방문 예약 서비스</strong>를 이용하시면 보다 신속하고 정확하게 서비스 이용이 가능합니다.<br><br>센터 방문 예약 접수를 도와 드릴까요?';
-                    lgkorUI.confirm(alertMsg,{
+                    //var alertMsg = '고객님, 선택하신 제품은 <strong class="point">센터 방문 예약 서비스</strong>를 이용하시면 보다 신속하고 정확하게 서비스 이용이 가능합니다.<br><br>센터 방문 예약 접수를 도와 드릴까요?';
+                    // lgkorUI.confirm(alertMsg,{
+                    //     typeClass:'type2',
+                    //     title:'',
+                    //     okBtnName: '네',
+                    //     cancelBtnName: '아니요',
+                    //     ok: function() {
+                    //         location.href = '/support/visit-center-reservation';                            
+                    //     },
+                    //     cancel: function() {
+                    //         self.updateSummary({
+                    //             product: [data.categoryName, data.subCategoryName]
+                    //         });
+                            
+                    //         self.$keywordBox.hide();
+            
+                    //         self.$modelBox.find('.keyword-search').show();
+                    //         self.$modelBox.find('#categorySelect').val(data.category);
+                    //         self.$modelBox.find('#categorySelect').vcSelectbox('update').trigger('change', [data.subCategory]);
+                    //         self.$modelPopup.data('category', data.category);
+                    //         self.$modelPopup.data('subCategory', data.subCategory);
+            
+                    //         self.$categoryBox.removeClass(opt.stepActiveClass);
+                    //         self.$modelBox.addClass(opt.stepActiveClass);
+                    //         self.focus(self.$selectedModelBar);
+                    //     }
+                    // });
+                    //BTOCSITE-4376
+                    var alertMsg = '고객님,<br> 출장 서비스가 지연되고 있습니다.<br><br> 선택하신 제품은 <strong class="point">센터 방문</strong> 하시면 보다 신속하게 서비스 가능합니다.';
+                    lgkorUI.alert(alertMsg,{
                         typeClass:'type2',
                         title:'',
-                        okBtnName: '네',
-                        cancelBtnName: '아니요',
                         ok: function() {
-                            location.href = '/support/visit-center-reservation';                            
-                        },
-                        cancel: function() {
                             self.updateSummary({
                                 product: [data.categoryName, data.subCategoryName]
                             });
