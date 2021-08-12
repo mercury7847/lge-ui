@@ -1175,6 +1175,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 ul.thumb_name {display:flex; justify-content:space-between; max-width:576px; margin:0 auto; padding:0 1.6%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {margin-top:12px; font-size:18px; font-weight:500; line-height:28px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px; width:100%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img {border-radius:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {padding:40px; border-radius:8px; background-color:#f4f4f4}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {display:block; max-width:510px; width:100%; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 2.4%}
@@ -1182,6 +1183,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 {margin-top:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 > img {width:100%; max-width:1142px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg {display:flex; justify-content:center; align-items:center; margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .g_imgs img {width:100%; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg.w674 > .g_imgs img {max-width:674px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info {flex:auto; width:100%; max-width:210px; margin-top:24px; margin-left:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info .g_tit {font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul {margin-top:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li {display:flex; flex-direction:column; align-items:center; padding:27px 0 22px; border:1px solid #ddd; border-radius:8px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li + li {margin-top:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li span {display:block; font-size:16px; font-weight:bold; line-height:26px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong {position:relative; display:inline-block; margin-top:16px; margin-bottom:0; padding-left:34px; color:#e81953; font-size:30px; font-weight:bold; line-height:44px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong::before {content:''; display:block; position:absolute; width:0; height:0; left:0; bottom:10px; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:15px solid #e81953}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px; width:100%}
@@ -1558,6 +1570,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-bottom:18px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 > img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg.w674 > .g_imgs img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg {flex-direction:column}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info {max-width:576px; margin-top:15px; margin-left:0}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info .g_tit {font-size:14px; line-height:22px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul {display:flex; justify-content:center; margin-top:8px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li {width:140px; padding:10px 5px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li + li {margin-top:0; margin-left:8px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li span {font-size:13px; line-height:22px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong {margin-top:6px; padding-left:17px; font-size:18px; line-height:26px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong::before {bottom:5px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:7.5px solid #e81953}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
