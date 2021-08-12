@@ -917,7 +917,11 @@
                 $('.member-point-info').hide();
                 $('.tooltip-wrap').hide();
                 $('.saleTurn').hide();
-            } else{
+            } else {
+                $('.contract-btn').show();
+                $('.sects.payment.viewer').show();
+                $('.member-point-info').show();
+                $('.tooltip-wrap').show();
                 $('.saleTurn').show();
             }
 
