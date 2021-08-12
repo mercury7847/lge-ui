@@ -358,10 +358,10 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 }
                 self.isShown = isOpen;
                 var atitle = self.attrTitle == undefined ? "" : self.attrTitle;
-                var $aTitleLastText = self.attrTitle.substr(0, atitle.length - 2); //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                // var $aTitleLastText = self.attrTitle.substr(0, atitle.length - 2); //BTOCSITE-1057 : data-contents 추가 2021-08-09
 
                 self.$label.find('.ui-select-button').attr('title', atitle + (isOpen ? ' 닫기' : ' 열기'));
-                self.$label.find('.ui-select-button').attr('data-contents', $aTitleLastText); //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                // self.$label.find('.ui-select-button').attr('data-contents', $aTitleLastText); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 //self.attrTitle.substr(0, atitle.length - 2);
 
                 //atitle.charAt(0, -1);
