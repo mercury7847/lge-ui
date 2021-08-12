@@ -1597,3 +1597,31 @@ if (!vcui.detect.isMobileDevice) {
     var _AceGID=(function(){var Inf=['co.kr','www.lgservice.co.kr,lgservice.co.kr,m.lgservice.co.kr,lge.co.kr,m.lge.co.kr,www.lge.co.kr','AZ3A66760','AM','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;if(_CI.join('.').indexOf(Inf[3])<0){ _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
     var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Mobile/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();    
 }
+
+$(document).on('click', '.btn-target-link', function(e){
+    var target = this.getAttribute('href'),
+        popupWidth = parseInt(this.getAttribute('data-width')),
+        popupHeight = parseInt(this.getAttribute('data-height')),
+        screenWidth = parseInt(screen.width),
+        screenHeight = parseInt(screen.height),
+        intLeft = Math.floor((screenWidth - popupWidth) / 2),
+        intTop = Math.floor((screenHeight - popupHeight) / 2);
+
+    if (intLeft < 0) intLeft = 0;
+    if (intTop < 0) intTop = 0;
+
+    e.preventDefault();
+
+    if( isApp()) {
+        var appUrl = $(this).attr('href');
+        if(vcui.detect.isIOS){
+            var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
+            // , 'titlebar_show': 'Y'
+            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+        } else {
+            android.openNewWebview(appUrl);
+        }
+    } else {
+        window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
+    }
+})
