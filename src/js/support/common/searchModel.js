@@ -435,9 +435,8 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                     //     }
                     // });
                     //BTOCSITE-4376
-                    var alertMsg = '고객님,<br> 출장 서비스가 지연되고 있습니다.<br><br> 선택하신 제품은 <strong class="point">센터 방문</strong> 하시면 보다 신속하게 서비스 가능합니다.';
+                    var alertMsg = '<h6 class="ui-alert-msg">고객님,<br> 출장 서비스가 지연되고 있습니다.<br><br> 선택하신 제품은 <strong class="point">센터 방문</strong> 하시면 보다 신속하게 서비스 가능합니다.</h6>';
                     lgkorUI.alert(alertMsg,{
-                        typeClass:'type2',
                         title:'',
                         ok: function() {
                             self.updateSummary({
