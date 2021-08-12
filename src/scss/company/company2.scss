@@ -1744,6 +1744,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.dwn_list.sales > li .thumb img {min-width:83px}
 
     .company .dwn_all .dwn_type2 ul.dwn_list > li {flex-direction:column; padding-right:15px}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span {text-align:center}
     .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; margin-top:8px; padding-left:0; text-align:center}
     .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
     .company .dwn_all .dwn_type2 ul.dwn_list > li .btn.dwn {position:static; top:auto; right:auto; transform:translateY(0); margin-top:18px}
