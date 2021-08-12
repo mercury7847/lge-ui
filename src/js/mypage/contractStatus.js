@@ -917,6 +917,8 @@
                 $('.member-point-info').hide();
                 $('.tooltip-wrap').hide();
                 $('.saleTurn').hide();
+            } else{
+                $('.saleTurn').show();
             }
 
             // 렌탈케어 - 의무 사용기간 포맷 변경
