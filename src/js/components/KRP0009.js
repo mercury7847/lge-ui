@@ -28,20 +28,6 @@ $(window).ready(function(){
 
             //0329 정승우 기본적으로 제일 처음 아이템 1개를 선택해 달라고 해서 작업
             $items.eq(0).addClass('active');
-
-            //BTOCSITE-1997 dpType, kisok 파라미터 chk용 - 210812
-            var param = getUrlParams();
-            var dpTypeChk = param.dpType;
-            var kisokChk = param.kisok;
-
-            if(dpTypeChk || kisokChk) {
-                //dpTypeChk 파라미터가 있을 때
-                $component.find("#extraBtn").show();
-            }else{
-                //dpTypeChk 파라미터가 없을 때
-                $component.find("#extraBtn").hide();
-            }
-            //BTOCSITE-1997 dpType, kisok 파라미터 chk용 - 210812
         }
 
         function setting(){
@@ -201,15 +187,6 @@ $(window).ready(function(){
                 $('html, body').stop().animate({scrollTop:movtop}, 200);
             }
         }
-
-        // BTOCSITE-1997 getParameter 처리 - 210812
-        function getUrlParams() {
-            var params = {};
-            window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
-            return params;
-        };
-        // BTOCSITE-1997 getParameter 처리 - 210812
-    
         init();
     })();
 })
