@@ -34,19 +34,11 @@ $(window).ready(function(){
             var dpTypeChk = param.dpType;
             var kisokChk = param.kisok;
 
-            if(dpTypeChk) {
+            if(dpTypeChk || kisokChk) {
                 //dpTypeChk 파라미터가 있을 때
                 $component.find("#extraBtn").show();
             }else{
                 //dpTypeChk 파라미터가 없을 때
-                $component.find("#extraBtn").hide();
-            }
-
-            if(kisokChk) {
-                //kisokChk 파라미터가 있을 때
-                $component.find("#extraBtn").show();
-            }else{
-                //kisokChk 파라미터가 없을 때
                 $component.find("#extraBtn").hide();
             }
             //BTOCSITE-1997 dpType, kisok 파라미터 chk용 - 210812
