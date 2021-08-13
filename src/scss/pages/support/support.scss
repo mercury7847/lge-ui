@@ -1395,7 +1395,10 @@ label img {
     }
     & ~ .bullet-list {
         &.top-border {
-            margin: 40px 16px 0;
+            margin: 40px 0 0;
+            @include mobile {
+                margin: 40px 16px 0;
+            }
         }
     }
 }
