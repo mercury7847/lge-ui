@@ -235,7 +235,7 @@ br.pc{display:block;}
 .esgLinkArea .esgTit::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
 .esgLinkArea .esgGoto{position:relative;margin-top:18px;padding: 30px 130px 30px 30px;border-radius: 8px;box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);display: block;}
 .esgLinkArea .esgText{font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;}
-.esgLinkArea .esgBtn{font-size: 14px;font-weight: 500;line-height: 1.71;color: #000000;border-radius: 15px;border: solid 1px #000000;position: absolute;top: 50%;right: 30px;transform: translateY(-50%);padding: 3px 12px;}
+.esgLinkArea .esgBtn{min-width:94px; font-size: 14px;position: absolute;top: 50%;right: 30px;transform: translateY(-50%);padding: 2px 0;}
 .esgPerformancetit {position: relative;margin-top:30px;padding-left:12px;font-size: 16px;font-weight: bold;line-height: 1.63;color: #000000;}
 .esgPerformancetit::before {content:''; display:block; position:absolute; width:3px; height:3px; background-color:#000; border-radius:50%; top:10.5px; left:0}
 .esgPerformanceArea {border-radius: 8px;border: solid 1px #dddddd;padding:30px 0;margin-top:20px;text-align: center;}
