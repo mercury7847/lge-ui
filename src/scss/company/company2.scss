@@ -1048,7 +1048,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.loca_list > li .cont .call span + span {position:relative; margin-left:10px; padding-left:11px}
 .company ul.loca_list > li .cont .call span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; left:0; top:calc(50% - 5px); background-color:#ddd}
 .company ul.loca_list > li .btnArea {position:absolute; top:40px; right:40px; margin:0}
-.company ul.loca_list > li .btnArea .btn {min-width:79px; height:32px; padding:0 10px; font-size:14px; line-height:30px}
+.company ul.loca_list > li .btnArea .btn {min-width:79px; padding:2px 10px; font-size:14px}
 .company ul.loca_list > li .btnArea .btn + .btn {margin-left:8px}
 
 /* 팝업 */
@@ -1069,7 +1069,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
 .popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
-.popup-wrap.popup-company .pop-conts.no-footer {margin-bottom:48px; padding-bottom:0}
+.popup-wrap.popup-company .pop-conts.no-footer {padding-bottom:60px}
 .popup-wrap.popup-company .pop-conts table th,
 .popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd}
 
@@ -1838,7 +1838,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.m_cardList > li .infoArea .name {margin-top:0; font-size:18px; line-height:28px}
     .company ul.m_cardList > li .infoArea .eng {margin-top:10px; font-size:14px; line-height:22px}
 
-    .company ul.loca_list > li {width:100%; min-height:315px; padding:32px 16px}
+    .company ul.loca_list > li {width:100%; min-height:315px; padding:32px 16px 64px 16px}
     .company ul.loca_list > li + li {margin-top:12px!important}
     .company ul.loca_list > li .top {padding-bottom:8px}
     .company ul.loca_list > li .top .tit {font-size:20px; line-height:29px}
@@ -1851,8 +1851,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.loca_list > li .cont .call {margin-top:24px}
     .company ul.loca_list > li .cont .call em {margin-bottom:5px; font-size:15px; line-height:22px}
     .company ul.loca_list > li .cont .call span + span {margin-left:6px}
-    .company ul.loca_list > li .btnArea {position:static; margin-top:14px; text-align:center}
-    .company ul.loca_list > li .btnArea .btn {min-width:83px; min-height:34px; padding:0 15px; font-size:13px}
+    .company ul.loca_list > li .btnArea {display:flex; left:50%; transform:translateX(-50%); bottom:32px; top:auto; right:auto}
+    .company ul.loca_list > li .btnArea .btn {min-width:83px; padding:4px 15px; font-size:13px}
     .company ul.loca_list > li .btnArea .btn + .btn {margin-left:6px}
 
     .popup-wrap.popup-company .thumb {margin:20px 0 25px}
@@ -1866,7 +1866,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .artTxt p {font-size:14px; line-height:1.57}
     .artTxt h2.tit ~ h2.tit {margin-top:20px}
 
-    .company .infoBox {margin:40px auto; padding:30px 20px}
+    .company .infoBox {margin:20px auto; padding:30px 20px}
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
