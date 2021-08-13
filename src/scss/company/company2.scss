@@ -14,10 +14,11 @@ img.m350 {max-width:350px!important}
 .company .mt12 {margin-top:12px!important}
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
-.company .mt30 {margin-top:30px!important}
 .company .mt60 {margin-top:60px!important}
-.company .mt0 {margin-top:0!important}
 .company .mt40 {margin-top:40px!important}
+.company .mt30 {margin-top:30px!important}
+.company .mt20 {margin-top:20px!important}
+.company .mt0 {margin-top:0!important}
 .company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-title + .com-text::before {content:'';display:block; position:absolute; top:0; width:calc(100% - 80px); height:1px; background-color:#dddddd}
@@ -30,6 +31,7 @@ img.m350 {max-width:350px!important}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 .company .text > a {text-decoration:underline}
 .company .btn_fileDown {text-decoration:none}
+.company .btn-link::after {top:auto; bottom:6px}
 
 .fixed-menu {position:sticky; position:-webkit-sticky; top:73px; top:auto; z-index:1}
 @media screen and (max-width:767px){
@@ -149,7 +151,6 @@ img.m350 {max-width:350px!important}
 
 .company .tit + .graph {margin-top:50px}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
-.company .graph.ofn img.only_mo {padding-left:19px}
 .company ul.ofn_links {display:flex; flex-wrap:wrap; margin:6px 0}
 .company ul.ofn_links li {margin:6px 0}
 .company ul.ofn_links li + li {margin-left:10px}
@@ -514,13 +515,13 @@ img.m350 {max-width:350px!important}
 .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb .inner {padding:64px}
 .company .acco_thumb .top .tit {margin-bottom:24px; font-size:24px; font-weight:bold; line-height:36px}
 .company .acco_thumb .content {display:none; padding-right:50%}
@@ -1254,7 +1255,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
-.company table {table-layout:fixed}
+// .company table {table-layout:fixed}
 .company table caption {position:static; width:0; height:0; margin:0; padding:0; font-size:0}
 .company colgroup col.auto {width:auto}
 .company colgroup col.p40 {width:40%}
@@ -1263,6 +1264,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company colgroup col.p25 {width:25%}
 .company colgroup col.p20 {width:20%}
 .company colgroup col.p33 {width:33.3333%}
+.company .tb_row th,
+.company .tb_row td,
+.company .tb-col th,
+.company .tb-col td {word-break:keep-all}
 .company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
@@ -1669,6 +1674,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .tb-col.keepAll table th {word-break:keep-all}
     .company .tb_row.keepAll table td,
     .company .tb-col.keepAll table td {word-break:keep-all}
+    .company .tb_row table td a,
+    .company .tb-col table td a {font-size:13px; line-height:20px}
+    .company .tb_row table td .btn-link::after,
+    .company .tb-col table td .btn-link::after {bottom:3px}
     
     .company .tb_row .tbl_info .exc,
     .company .tb-col .tbl_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
@@ -2080,14 +2089,13 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_08 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-08-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb .inner {padding:32px 20px}
     .company .acco_thumb .top .tit {margin-bottom:12px; font-size:16px; line-height:24px}
     .company .acco_thumb .content {padding-right:0}
