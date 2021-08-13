@@ -936,7 +936,8 @@
                 // 20210728 BTOCSITE-3608 매장 키오스크 LGE.COM 노출 개선 요청 
                 var kiosk = lgkorUI.getParameterByName("kiosk");
                 if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
-                    item.modelUrlPath += '&kiosk='+kiosk;
+                    item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
+                    item.modelUrlPath += 'kiosk='+kiosk;
                 }
 
                 //console.log("### item.siblingType ###", item.siblingType);
