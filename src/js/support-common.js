@@ -1598,7 +1598,7 @@ if (!vcui.detect.isMobileDevice) {
     var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Mobile/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();    
 }
 // BTOCSITE-1198 챗봇 상담 팝업
-$(document).on('click', '.btn-target-link', function(e){
+$(document).on('click', '.chat-customer .btn-target-link', function(e){
     var target = this.getAttribute('href'),
         popupWidth = parseInt(this.getAttribute('data-width')),
         popupHeight = parseInt(this.getAttribute('data-height')),
