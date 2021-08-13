@@ -8,6 +8,9 @@ $(function () {
     });
 
     var isOnlyMobileDevice = vcui.detect.isMobileDevice && window.innerWidth < 768
+    var isMobileScreen = function() {
+        return vcui.detect.isMobileDevice || window.innerWidth < 768
+    }
 
     var sceneTmpl =  '<div class="scene">\n'+
         '   <div class="img">\n'+
@@ -71,7 +74,7 @@ $(function () {
     
     var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
-    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
+    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch','libs/intersection-observer.min'], function () {
         // 플로우배너
         
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
@@ -530,7 +533,7 @@ $(function () {
         // BTOCSITE-27
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
-      
+            if(!isOnlyMobileDevice){
                 var data = _getEventPoint(e);
                 if (e.type == 'touchstart') {
                     touchSy = data.y;
@@ -561,8 +564,11 @@ $(function () {
                         } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    } 
+                    }
+
+
                 }
+            }
         });
         
         /*
@@ -627,6 +633,29 @@ $(function () {
             return 0;                
         }
 
+        var observerOption = {
+            root: null,
+            rootMargin: '10px',
+            threshold: []
+        }
+        for (var i=0; i<=1.0; i+= 0.01) {
+            observerOption.threshold.push(i);
+        }
+        var sceneIO = new IntersectionObserver(function(entries, observer) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.intersectionRatio > 0.7) {
+                    !entry.target.ended && entry.target.play()
+                } else if(entry.intersectionRatio === 0) {
+                    entry.target.currentTime = 0
+                } else {
+                    entry.target.pause()
+                }
+            })
+
+        }, observerOption)
+
         // 비디오 태그 처리
         function updateVideo(video, index) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
@@ -634,13 +663,13 @@ $(function () {
 
             var isAndroid = vcui.detect.isAndroid;
 
-            var $target   = $(video||this),
-                $wrap     = $target.closest('.img'),
+            var $target = $(video || this),
+                $wrap = $target.closest('.img'),
                 // $image    = $wrap.find('img'),
                 // loaded    = $target.data('loaded'),           
                 //videoAttr = $target.data('options') || 'autoplay playsinline muted',
                 videoAttr = $target.data('options') || 'playsinline muted',
-                $sources  = $target.find('source'),
+                $sources = $target.find('source'),
                 oVideo;
 
             var src = $target.data('src');
@@ -649,11 +678,11 @@ $(function () {
             // window.innerWidth < 768
             // vcui.detect.isMobileDevice && window.innerWidth < 768
             /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-            if(window.innerWidth < 768 || isMobileDevice){
+            if (window.innerWidth < 768 || isMobileDevice) {
                 posterSrc = $target.data('posterMSrc') || $target.data('posterSrc');
                 src = $target.data('mSrc') || $target.data('src');
                 //console.log("mobile")
-            } 
+            }
             // else {
             //     posterSrc = $target.data('posterSrc') || $target.data('posterSrc');
             //     src = $target.data('src') || $target.data('src');
@@ -661,56 +690,54 @@ $(function () {
             // }
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
-            if(posterSrc){
-                if(index>0) {
-                    videoAttr += " poster='"+posterSrc+"' preload='metadata'";
-                }else {
+            if (posterSrc) {
+                if (index > 0) {
+                    videoAttr += " poster='" + posterSrc + "' preload='metadata'";
+                } else {
                     videoAttr += " preload='auto'";
                 }
             }
 
             // 비디오 요소 생성.
-            var createVideoObject = function() {
+            var createVideoObject = function () {
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                 // var regExp = "\.(mp4|webm|ogv)";
                 // console.log(src, src.match(regExp));
 
-                if ( !extArr.length ) return false;
+                if (!extArr.length) return false;
 
-                var $video = $('<video '+ videoAttr +'></video>');
+                var $video = $('<video ' + videoAttr + '></video>');
 
                 for (var i = extArr.length - 1; i >= 0; i--) {
                     if (extArr[i] == 'mp4') {
-                        $('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
+                        $('<source>', {src: src + '.mp4', type: 'video/mp4', prependTo: $video});
                     } else if (extArr[i] == 'webm') {
-                        $('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
+                        $('<source>', {src: src + '.webm', type: 'video/webm', appendTo: $video});
                     } else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
-                        $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
+                        $('<source>', {src: src + '.ogv', type: 'video/ogg', appendTo: $video});
                     }
                 }
-                    
-                if ( $target.data('alt') != null ) {
+
+                if ($target.data('alt') != null) {
                     $('<p>').text($target.data('alt')).appendTo($video);
                 }
                 $video.data($target.data());
                 $target.replaceWith($video);
-                $video   = $wrap.find('video');
+                $video = $wrap.find('video');
                 $sources = $video.find('source');
 
                 $video.css({
-                    'position':'absolute',
-                    'width': 'auto !important',
-                    'height': 'auto !important',
-                    'min-width': '100%',
-                    'min-height': '100%',
+                    'position': 'absolute',
+                    'width': '100%',
+                    'height': '100%',
                     'top': '50%',
                     'left': '50%',
                     'transform': 'translate(-50%,-50%)',
-                    '-webkit-transform': 'translateX(-50%) translateY(-50%)',
-                    // 2021-07-23 수정 width: 100%로 수정
-                    'width': '100%'
+                    '-webkit-transform': 'translateX(-50%) translateY(-50%)'
                 })
-                oVideo   = $video[0];
+                oVideo = $video[0];
+                oVideo.dataset['sceneIndex'] = index
+                sceneIO.observe(oVideo)
                 /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {
@@ -720,18 +747,18 @@ $(function () {
                 */
                 $wrap.addClass('video');
 
-                $video.on('loadeddata', function(e) {
-                    $video.data('loaded', true);
-                    //$(this).addClass('is-loaded111');
-                    $wrap.trigger('videoLoaded');
-                    //$wrap.trigger('imgLoaded');
-                    //oVideo.play();
-                }).trigger('load');
-                
+                // $video.on('loadeddata', function (e) {
+                //     $video.data('loaded', true);
+                //     //$(this).addClass('is-loaded111');
+                //     $wrap.trigger('videoLoaded');
+                //     //$wrap.trigger('imgLoaded');
+                //     //oVideo.play();
+                // }).trigger('load');
+
             }
 
             createVideoObject();
-            
+
         }
 
         // 렌더링
@@ -755,7 +782,13 @@ $(function () {
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
-            
+
+            var renderVideo = function(index) {
+                $(this).find('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > .video').each(function () {
+                    updateVideo(this, index);
+                });
+            }
+
             $scenes.each(function(i) {
                 if(i==0){
                     //itemHeight = winHeight-prevAllHeight;
@@ -794,14 +827,12 @@ $(function () {
 
                 if(!$(this).hasClass('section-cover')) {
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
-                    $(this).find('.img.only-' + (vcui.detect.isMobileDevice ? "mobile" : "desktop") + ' > .video').each(function () {
-                        updateVideo(this, i);
-                    });
+                    renderVideo.apply(this, [i])
                 }
                 totalHeight += itemHeight;
             });
 
-            setActivePlayByScroll();
+            setActiveScroll();
 
             /* 메인 테스트 */    
             /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */        
@@ -926,172 +957,12 @@ $(function () {
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
 
-    function setActivePlayByScroll(){
+    function setActiveScroll(){
         // BTOCSITE-740
         //if (!vcui.detect.isMobileDevice) return; //2021-07-23
 
-        var sceneActiveQue = [];
-        var scenes = $context.find('.scene');
-
-        scenes.each(function(){
-            var self = $(this);
-            var video = self.find('video');
-            //var rwrerer = video.parent('.only-mobile');
-            var image = self.find('.img img');
-
-            self.on('active.scroll', function(e, scrollTop){
-                // var gnbHeight = 84;
-                var gnbHeight = 110;
-                var top = self.offset().top;
-                //var sceneHeight = self.height();
-                var sceneHeight = 500;
-                var winHeight = $(window).height();               
-                //if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){  // 영역이 완전히 보일떄 
-                if ( top >= (scrollTop + gnbHeight) - (sceneHeight /2) && (scrollTop + winHeight) - (sceneHeight /2) >= top ){  // 영역이 절반이상 보여질때 
-                    self.addClass('on');
-                    if (!!image.length){
-                        /*
-                        image.animate({
-                            'width' : '100%'
-                        });
-                        */
-                    }
-                    /*
-                    if (!!video.length){
-                        video.get(0).play();
-                    }
-                    */
-
-                    var viewHeight = 500; // 보여지는 영역 높이값
-                    
-                    // 배너가 화면보다 위에 있을떄
-                    if (top < scrollTop){
-                        viewHeight = (top + 500) - scrollTop;
-                    }
-                    // 배너가 화면보다 아래에 있을때
-                    if (top + 500 > scrollTop + winHeight){
-                        viewHeight = (scrollTop + winHeight) - top;
-                    }
-
-                    sceneActiveQue.push({
-                        'el' : self,
-                        'viewHeight' : viewHeight
-                    });
-                } else {
-                    self.removeClass('on');
-                    if (!!image.length){
-                        /*
-                        image.animate({
-                            'width' : '110%'
-                        });
-                        */
-                    }
-                    
-                    /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-                    if (!!video.length && !video.get(0).paused){
-                    // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){
-                        //console.log('reset video')
-                        video.get(0).pause();
-                        video.get(0).currentTime = 0;
-                    }
-                    /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-                }        
-            });     
-        });
-
-        var scrollInterval = null;
-
-        $(window).on('scroll.videoPlay', function(){
-            //clearTimeout(scrollInterval);
-            
-            //scrollInterval = setTimeout(function(){                
-                var scrollTop = $(window).scrollTop();
-                
-                //console.log('scrollTop', scrollTop);
-                
-                sceneActiveQue = [];
-
-                scenes.each(function(){
-                    $(this).trigger('active', scrollTop);
-                });
-                
-                var hiActiveView = null;    // 가장 많이 보이고있는 배너
-                sceneActiveQue.forEach(function( scene ){
-                    //console.log('activeScene viewHeight', scene.viewHeight);
-                    //console.log('activeScene el', scene.el);
-                    scene.hiActiveView = false;
-
-                    if (hiActiveView == null){
-                        hiActiveView = scene;
-                        scene.hiActiveView = true;
-                    } else {
-                        if (hiActiveView.viewHeight < scene.viewHeight ){
-                            hiActiveView = scene;
-                            scene.hiActiveView = true;
-                            if (sceneActiveQue.length > 0){
-                                sceneActiveQue[0].hiActiveView = false;
-                            }
-                        }
-
-                        if (hiActiveView.viewHeight == scene.viewHeight ){
-                            hiActiveView = scene;
-                            scene.hiActiveView = true;
-                            if (sceneActiveQue.length > 0){
-                                sceneActiveQue[0].hiActiveView = false;
-                            }
-                        }
-                    }
-                });
-
-                //console.log('########### sceneActiveQue ###########', sceneActiveQue);
-
-                sceneActiveQue.forEach(function( scene, idx ){
-                    var video = $(scene.el).find('video');
-                    var sewewe = $(scene.el).find('.only-mobile').find('video'); 
-
-                    if ( scene.hiActiveView == true ){
-                        //console.log('true', scene.hiActiveView);
-                        if (!!video.length ){
-                        // if (!!video.length && video.get(0).currentTime == 0 && video.hasClass('is-loaded111')){ //class 체크 if
-                            video.get(0).play(); //처음 플레이
-                        }
-
-                        if(window.innerWidth < 768){
-                            sewewe.get(0).play();
-                            //console.log("mobile---");
-                        } else {
-                            sewewe.get(0).pause();
-                            sewewe.get(0).currentTime = 0;
-                            //console.log("pc---");
-                        }
-                    }
-                    if ( scene.hiActiveView == false ){
-                        //console.log('false', scene.hiActiveView);
-                        if (!!video.length){
-                        // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){ //class 체크 if
-                            video.get(0).pause();
-                            video.get(0).currentTime = 0;                            
-                        }
-                    }
-                    
-                    
-        
-                });
-                //console.log('hiActiveView', hiActiveView);
-                /*
-                var video = $(hiActiveView.el).find('video');
-                console.log('video', video);
-                if (!!video.length){
-                    video.get(0).play();
-                }
-                */
-            //}, 500);
-        });
-        
-        $(window).trigger('scroll.videoPlay');
-
-        // 플로팅 버튼 AR 관련 
-        if (isOnlyMobileDevice){
+        // 플로팅 버튼 AR 관련
+        if (vcui.detect.isMobileDevice){
             var isApplication = isApp();
 
             setTimeout(function(){
