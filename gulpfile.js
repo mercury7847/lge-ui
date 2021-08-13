@@ -18,6 +18,18 @@ var src = "./src";
 var dist = './dist';
 var sourceFolder = "/lg5-common";
 
+var mainTemplate = {
+    'mo' : '/html/MA/MKTF1000_TEST.html',
+    'pc' : {
+        'main' : '/html/MA/MKTF1000.html',
+        'store' : '/html/PRS/MKTF1001.html',
+        'story' : '/html/STS/OBS5001.html',
+        'support' : '/html/CS/CSRF6001_non-member.html',
+        'care-solutions' : '/html/SLS/MKTF2001.html',
+        'benefits' :  '/html/BMS/BMS-BTOCSITE-1814.html'
+    } 
+}
+
 // Loads BrowserSync
 gulp.task("browser-sync", () => {
     browserSync.init({
@@ -36,18 +48,28 @@ gulp.task("browser-sync", () => {
             },
             // BTOCSITE-27 swipe 테스트용 
             function(req, res, next){
-                let lastseq = req.url == '/' ? '/' : req.url.split('/').pop();
+
+                var isIOS = !!req.headers['user-agent'].match(/(ipad|iphone)/i);
+                var isAndroid = !!req.headers['user-agent'].match(/android/i);
+                var isMobile =  isIOS || isAndroid;
+
+                let lastseq = req.url == '/' ? 'main' : req.url.split('/').pop();
                 
                 switch(lastseq) {
-                    case '/' :
-                    case 'story' :
+                    case 'main' :
                     case 'store' :
+                    case 'story' :
                     case 'support' :
                     case 'care-solutions' :
-                    case 'membership-event' : // BTOCSITE-1814 이벤트탭 추가
+                    case 'benefits' : // BTOCSITE-1814 이벤트탭 추가
                         if (req.url !== '/guide' && req.url !== '/guide/'){
                             //res.setHeader('Content-Type', 'text/html');
-                            res.end(fs.readFileSync(dist + '/html/MA/MKTF1000_TEST.html'));
+
+                            if(isMobile) {
+                                res.end(fs.readFileSync(dist + mainTemplate.mo));
+                            } else {
+                                res.end(fs.readFileSync(dist + mainTemplate.pc[lastseq]));  
+                            }
                         }
                     break;
                 }
