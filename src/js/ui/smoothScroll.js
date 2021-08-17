@@ -196,8 +196,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self.$wrapper = self.$el.css('user-select', 'none');
             // self.isBadAndroid = /Android /.test(window.navigator.appVersion) && !/Chrome\/\d/.test(window.navigator.appVersion);
-            self.isMobile = core.detect.isMobileDevice; // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
-            self.changeDevice = core.detect.isMobileDevice; // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
+            self.isMobile = core.detect.isMobileDevice || /Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1; // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
+            self.changeDevice = core.detect.isMobileDevice || /Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1; // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
             self.translateZ = opts.HWCompositing && browser.hasPerspective ? ' translateZ(0)' : '';
             opts.useTransition = browser.hasTransition && opts.useTransition;
             opts.useTransform = browser.hasTransform && opts.useTransform;
@@ -694,7 +694,9 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         },
 
         detectDevice: function detectDevice() {
-            return !!navigator.userAgent.match(/ipad|iphone|android/i);
+            // ipad os check
+            var ipad = /Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1; // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
+            return !!navigator.userAgent.match(/ipad|iphone|android/i) || ipad;
         },
 
         /***
@@ -742,7 +744,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             } 
 
             // preventDefaultException 엘리먼트가 있을경우 이벤트 초기화 한다.
-            if (self.preventDefaultException(e.target)) {
+            if (!self.isMobile || self.preventDefaultException(e.target)) {
                 e.preventDefault();
             }
 
