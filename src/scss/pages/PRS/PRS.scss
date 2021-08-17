@@ -1593,4 +1593,115 @@
 			}
 		}
 	}
+
+	//2021-08-17 BTOCSITE-4270 [UI] 스토어 홈 내에 "엘라쇼 홈"게이트웨이 추가
+	.content-banner {
+		max-width:1380px;
+		margin:100px auto 0;
+
+		@include mobile {
+			margin:40px auto 0;
+		}
+
+		.banner {
+			&-inner {
+				> a {
+					display: block;
+					position: relative;
+				}
+			}
+			&-bg {
+				position: relative;
+				background-repeat: no-repeat;
+
+				&.only-pc {
+					display: block !important;
+					height:200px;
+					background-size: auto 100%;
+					background-position: center center;
+				}
+				&.only-mo {
+					display: none !important;
+					height:66.6666vw;
+					// height:240px;
+					background-size: 100% auto;
+					background-position: bottom center;
+				}
+
+				img {
+					width:100%;
+				}
+
+				@include mobile {
+					&.only-pc {
+						display: none !important;
+					}
+					&.only-mo {
+						display: block !important;
+					}	
+				}
+			}
+			&-content {
+				display: flex;
+				flex-direction: column;
+				position: absolute;
+				top:0; 
+				left:0;
+				width:50%;
+				height:100%;
+				align-items:center;
+				justify-content: center;
+
+				@include mobile {
+					width:100%;
+					justify-content: flex-start;
+					padding:7.7777vw 20px 0;
+				}
+			}
+			&-desc {
+				font-size:18px;
+				font-weight:500;
+				color:#000;
+				line-height:1.56;
+
+				@include mobile {
+					font-size:14px;
+				}
+			}
+			&-title {
+				display: block;
+				position: relative;
+				font-size:40px;
+				line-height:1.4;
+				font-weight:bold;
+				color:#000;
+
+				> span {
+					display: inline-block;
+					vertical-align: middle;
+				}
+
+				&:after {
+					content:"";
+					display: inline-block;
+					width:40px;
+					height:40px;
+					margin-left:4px;
+					vertical-align: middle;
+					background: url("/lg5-common/images/PRS/img_shine_40.svg") no-repeat center center;
+					background-size:100% 100%;
+				}
+
+				@include mobile {
+					margin-top:7px;
+					font-size:27px;
+
+					&:after {
+						width:32px;
+						height:32px;
+					}
+				}
+			}
+		}
+	}
 }

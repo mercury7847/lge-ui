@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="img_shine_40" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path id="Rectangle_12" fill="none" d="M0 0H40V40H0z"/>
+    <path id="Path_352" d="M776.682 214.289l2.183-9.789 2.183 9.789 6.6 2.183-6.6 2.183-2.183 9.789-2.183-9.789-6.6-2.183z" class="cls-2" transform="translate(-764.865 -193.472)"/>
+    <path id="Path_353" d="M774.494 211.041l1.459-6.541 1.459 6.541 4.408 1.459-4.408 1.459-1.459 6.541-1.459-6.541-4.408-1.459z" class="cls-2" transform="translate(-747.307 -201.472)"/>
+</svg>
