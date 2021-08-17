@@ -29,11 +29,11 @@ $(window).ready(function(){
             //0329 정승우 기본적으로 제일 처음 아이템 1개를 선택해 달라고 해서 작업
             $items.eq(0).addClass('active');
             
-            //BTOCSITE-1997 210813 일반/렌탈 탭 있고 일반제품 판매 불가능일경우, 버튼 disabled 처리하여 버튼이벤트 동작 안하도록 변경
-            if($component.find("#extraBtn > span")[0].innerText == undefined || $component.find("#extraBtn > span")[0].innerText == "" ){
-               $component.find("#extraBtn").addClass("disabled");
-            }
-            //BTOCSITE-1997 210813 일반/렌탈 탭 있고 일반제품 판매 불가능일경우, 버튼 disabled 처리하여 버튼이벤트 동작 안하도록 변경
+            // //BTOCSITE-1997 210813 일반/렌탈 탭 있고 일반제품 판매 불가능일경우, 버튼 disabled 처리하여 버튼이벤트 동작 안하도록 변경
+            // if($component.find("#extraBtn > span")[0].innerText == undefined || $component.find("#extraBtn > span")[0].innerText == "" ){
+            //    $component.find("#extraBtn").addClass("disabled");
+            // }
+            // //BTOCSITE-1997 210813 일반/렌탈 탭 있고 일반제품 판매 불가능일경우, 버튼 disabled 처리하여 버튼이벤트 동작 안하도록 변경
         }
 
         function setting(){
