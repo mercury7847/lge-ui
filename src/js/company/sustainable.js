@@ -11,7 +11,6 @@
 			var self = this;
 			self.$sustainable = $('.sustainable-download');
 			self.$downloadBtn  = self.$sustainable.find('.btn');
-			self.$title = self.$sustainable.find('.tit');
 			
 			/* 모바일 PDF 다운로드 제한 */
 			self.mobileFlag = /Mobile|iP(hone|od)|Windows (CE|Phone)|Minimo|Opera M(obi|ini)|BlackBerry|Nokia/;
@@ -46,6 +45,14 @@
 		/* PDF 변환 다운로드 */
 		pdfDownload : async function() {
 			var self = this;
+			
+			/* PDF 파일명 */
+			var fileName = $('.sustainable-download .tit').text();
+			fileName = fileName.replace('PDF', '').replace('다운로드', '').trim();
+			if ($('.company > .com-tabs:eq(1) .tabs li.on a').contents()[0] != undefined) {
+				fileName = fileName + '(' + $('.company > .com-tabs:eq(1) .tabs li.on a').contents()[0].textContent + ')';
+			}
+			fileName += '.pdf';
 			
 			/* 변환부분 외 hide */
 			$('.com-text').parent().each(function(index, element) {
@@ -84,9 +91,6 @@
 			
 			/* PDF 생성*/
 			await html2canvas($('body')[0]).then(function(canvas) {
-				var title = self.$title.text();
-				title = title.replace('PDF', '').replace('다운로드', '').trim();
-				var filename = title + '.pdf';
 				var doc = new jsPDF('p', 'mm', 'a4');
 				var imgData = canvas.toDataURL('image/png');
 				var imgWidth = 210;
@@ -104,7 +108,7 @@
 					doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 					heightLeft -= pageHeight;
 				}
-				doc.save(filename);
+				doc.save(fileName);
 			});
 			lgkorUI.hideLoading();
 			document.location.reload();
