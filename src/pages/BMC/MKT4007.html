@@ -122,54 +122,71 @@
             })
             
         </section>
-        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        <button type="button" class="win-btn-close ui_modal_close" onclick="if($('#event-modal').length == 0) javascript:self.close()"><span class="blind">닫기</span></button>
     </article>
 
     <script>
+        // 이벤트 당첨자 발표 검색
         $(function () {
-            
-            vcui.require(['ui/validation'], function (Validation) {
-               
-				var validation = new Validation('.form-wrap');
-
-                $('#inp01').on('keydown', function(e){
-                    if(e.keyCode==13){
-                        $('#button-search').trigger('click');
-                    }
-                })
-
-                $('#button-search').on('click', function(){
-                    validation.validate();
-                    var value = $('#inp01').val();
-                    var result = 0;
-                    var dataTb = $('.table-cont:not(#searchResultTb)');
-                    var resultTb = dataTb.clone().attr('id', 'searchResultTb');
-                    $('table tbody tr', resultTb).remove();
-
-                    $('td.on', dataTb).removeClass('on');
-                    $('#searchResultTb').remove();
-                    $('.inner-contents').prepend(resultTb);
-                    $('.tb-tit', resultTb).text('당첨자 검색 결과');
-
-                    $('td.phone', dataTb).each(function(){
-                        var str = $(this).text();
-                        str = str.slice(-4);
-
-                        if(value == str){
-                        	$(this).addClass('on');
-                        	$(this).prev('.winner').addClass('on')
-                        	var searchRow = $(this).parent('tr').clone();
-                        	$('table tbody', resultTb).append(searchRow);
-                            result = result + 1;
-                        }
-                    });
-                    if(result == 0) {
-                        $('#searchResultTb tbody').html('<tr><td colspan="4">당첨되지 않으셨습니다.</td></tr>');
+            vcui.require(["ui/validation"], function (Validation) {
+                var validation = new Validation(".form-wrap");
+                $("#inp01").on("keydown", function (e) {
+                    if (e.keyCode == 13) {
+                        $("#button-search").trigger("click");
                     }
                 });
-            })
+
+                $("#button-search").on("click", function () {
+                    validation.validate();
+                    var value = $("#inp01").val();
+                    var result = 0;
+                    var dataTb = $(".table-cont:not(#searchResultTb)");
+                    var resultTb = dataTb.eq(0).clone().attr("id", "searchResultTb");
+                    var tbTh1 = resultTb.find("thead th:first-child").text(),
+                        tbTh3 = resultTb.find("thead th:nth-child(3)").text();
+                    var tbType = false;
+
+                    if (!value == "") {
+                        $("table tbody tr", resultTb).remove();
+                        if (tbTh1 == tbTh3) {
+                            tbType = true;
+                            $("table colgroup", resultTb).remove();
+                            $("table thead tr th:nth-child(2)", resultTb).nextAll().remove();
+                        }
+                        $("tr.on, td.on", dataTb).removeClass("on");
+                        $("#searchResultTb").remove();
+                        $(".inner-contents").prepend(resultTb);
+                        $(".tb-tit", resultTb).text("당첨자 검색 결과");
+
+                        $("td", dataTb).each(function () {
+                            var str = $(this).text();
+                            str = str.slice(-4);
+
+                            if (value == str) {
+                                if (tbType) {
+                                    $(this).addClass("on");
+                                    $(this).prev(".winner").addClass("on");
+                                    var searchRow = $(this).parent("tr").clone();
+                                    searchRow.find("td:not(.on)").remove();
+                                } else {
+                                    $(this).parent("tr").addClass("on");
+                                    var searchRow = $(this).parent("tr").clone();
+                                }
+                                $("table tbody", resultTb).append(searchRow);
+                                result = result + 1;
+                            }
+                        });
+                        if (result == 0) {
+                            $("#searchResultTb tbody").html('<tr><td colspan="4">당첨되지 않으셨습니다.</td></tr>');
+                        }
+                    } else {
+                        lgkorUI.alert("휴대전화번호를 입력해주세요.", {
+                            ok: function () {},
+                        });
+                    }
+                });
+            });
         });
-        
     </script>
 
 </body>
