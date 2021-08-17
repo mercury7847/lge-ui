@@ -158,8 +158,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     })
                 }
     
-                $('.mobile-nav-wrap.mainNav').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
-                // $('.mobile-nav-wrap.mainNav').vcSmoothScroll();
+                // $('.mobile-nav-wrap.mainNav').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
+                $('.mobile-nav-wrap.mainNav').vcSmoothScroll();
                 $('.mobile-nav-wrap.mainNav').on('smoothscrollmove',function(e,data){
     
                     if(!data) {
