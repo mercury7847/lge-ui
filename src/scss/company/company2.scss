@@ -1440,6 +1440,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.rec_type > li p {margin-top:30px; font-size:18px}
 }
+@media screen and (max-width:1024px){
+    .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
+    .company ul.loca_list > li .cont .addr span + span::before {display:none}
+}
 @media screen and (max-width:952px){
     .company .man_directors {margin-top:20px; border:0}
     .company .man_directors .md_pcArea {display:none}
@@ -1845,8 +1849,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.loca_list > li .cont .addr {min-height:72px}
     .company ul.loca_list > li .cont .addr em {margin-bottom:5px; font-size:15px; line-height:22px}
     .company ul.loca_list > li .cont .addr span {display:block}
-    .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
-    .company ul.loca_list > li .cont .addr span + span::before {display:none}
     .company ul.loca_list > li .cont .call {margin-top:24px}
     .company ul.loca_list > li .cont .call em {margin-bottom:5px; font-size:15px; line-height:22px}
     .company ul.loca_list > li .cont .call span + span {margin-left:6px}
