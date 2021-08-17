@@ -9,7 +9,7 @@ if ('scrollRestoration' in history) {
     //최근검색어
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}" data-contents="최근 검색어">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //연관검색어
-    var relatedItemTemplate = '<li><a href="#{{text}} data-contents="연관 검색어"">{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
+    var relatedItemTemplate = '<li><a href="#{{text}}" data-contents="연관 검색어"">{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //인기검색어
     var popularItemTemplate = '<li><a href="#{{text}}" data-contents="인기 검색어">{{index}}.{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
     //var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
