@@ -14,10 +14,11 @@ img.m350 {max-width:350px!important}
 .company .mt12 {margin-top:12px!important}
 .company .mgt {margin-top:24px!important}
 .company .mgtL {margin-top:30px!important}
-.company .mt30 {margin-top:30px!important}
 .company .mt60 {margin-top:60px!important}
-.company .mt0 {margin-top:0!important}
 .company .mt40 {margin-top:40px!important}
+.company .mt30 {margin-top:30px!important}
+.company .mt20 {margin-top:20px!important}
+.company .mt0 {margin-top:0!important}
 .company .mb32 {margin-bottom:32px!important}
 .company a.pink {color:#da0f47; text-decoration:underline}
 .company .com-title + .com-text::before {content:'';display:block; position:absolute; top:0; width:calc(100% - 80px); height:1px; background-color:#dddddd}
@@ -30,9 +31,10 @@ img.m350 {max-width:350px!important}
 .company .com-tabs .tabs-over > li.ls > a {letter-spacing:-0.5px}
 .company .text > a {text-decoration:underline}
 .company .btn_fileDown {text-decoration:none}
+.company .btn-link::after {top:auto; bottom:6px}
 
 .fixed-menu {position:sticky; position:-webkit-sticky; top:73px; top:auto; z-index:1}
-@media screen and (max-width:767px){
+@media screen and (max-width:768px){
     .fixed-menu{top:66px}
 }
 
@@ -149,7 +151,6 @@ img.m350 {max-width:350px!important}
 
 .company .tit + .graph {margin-top:50px}
 .company .graph .txt_rt {display:block; margin-bottom:10px; font-size:14px; line-height:20px; text-align:right}
-.company .graph.ofn img.only_mo {padding-left:19px}
 .company ul.ofn_links {display:flex; flex-wrap:wrap; margin:6px 0}
 .company ul.ofn_links li {margin:6px 0}
 .company ul.ofn_links li + li {margin-left:10px}
@@ -514,13 +515,13 @@ img.m350 {max-width:350px!important}
 .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-pc.png) no-repeat; background-position:100% 0; background-size:cover}
-.company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-pc.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
+.company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-pc-new.png) no-repeat; background-position:100% 0; background-size:cover}
 .company .acco_thumb .inner {padding:64px}
 .company .acco_thumb .top .tit {margin-bottom:24px; font-size:24px; font-weight:bold; line-height:36px}
 .company .acco_thumb .content {display:none; padding-right:50%}
@@ -1047,7 +1048,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.loca_list > li .cont .call span + span {position:relative; margin-left:10px; padding-left:11px}
 .company ul.loca_list > li .cont .call span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; left:0; top:calc(50% - 5px); background-color:#ddd}
 .company ul.loca_list > li .btnArea {position:absolute; top:40px; right:40px; margin:0}
-.company ul.loca_list > li .btnArea .btn {min-width:79px; height:32px; padding:0 10px; font-size:14px; line-height:30px}
+.company ul.loca_list > li .btnArea .btn {min-width:79px; padding:2px 10px; font-size:14px}
 .company ul.loca_list > li .btnArea .btn + .btn {margin-left:8px}
 
 /* 팝업 */
@@ -1068,7 +1069,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
 .popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
-.popup-wrap.popup-company .pop-conts.no-footer {margin-bottom:48px; padding-bottom:0}
 .popup-wrap.popup-company .pop-conts table th,
 .popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd}
 
@@ -1254,7 +1254,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .cont_view_more .content .section + .section {margin-top:30px}
 
 /* 테이블 */
-.company table {table-layout:fixed}
+// .company table {table-layout:fixed}
 .company table caption {position:static; width:0; height:0; margin:0; padding:0; font-size:0}
 .company colgroup col.auto {width:auto}
 .company colgroup col.p40 {width:40%}
@@ -1263,6 +1263,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company colgroup col.p25 {width:25%}
 .company colgroup col.p20 {width:20%}
 .company colgroup col.p33 {width:33.3333%}
+.company .tb_row th,
+.company .tb_row td,
+.company .tb-col th,
+.company .tb-col td {word-break:keep-all}
 .company .tabs-contents.on + .tabs-contents.on {margin-top:30px}
 .company .com-text.tbl {padding-bottom:0}
 .company .com-text.tbl + .com-text::before {display:none}
@@ -1435,6 +1439,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .home_appliances > ul > li .home_box +.home_box .home_text {border-left:1px solid #ddd}
 
     .company ul.rec_type > li p {margin-top:30px; font-size:18px}
+}
+@media screen and (max-width:1024px){
+    .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
+    .company ul.loca_list > li .cont .addr span + span::before {display:none}
 }
 @media screen and (max-width:952px){
     .company .man_directors {margin-top:20px; border:0}
@@ -1669,6 +1677,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .tb-col.keepAll table th {word-break:keep-all}
     .company .tb_row.keepAll table td,
     .company .tb-col.keepAll table td {word-break:keep-all}
+    .company .tb_row table td a,
+    .company .tb-col table td a {font-size:13px; line-height:20px}
+    .company .tb_row table td .btn-link::after,
+    .company .tb-col table td .btn-link::after {bottom:3px}
     
     .company .tb_row .tbl_info .exc,
     .company .tb-col .tbl_info .exc {position:relative; padding-left:20px; font-size:12px; line-height:20px}
@@ -1829,7 +1841,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.m_cardList > li .infoArea .name {margin-top:0; font-size:18px; line-height:28px}
     .company ul.m_cardList > li .infoArea .eng {margin-top:10px; font-size:14px; line-height:22px}
 
-    .company ul.loca_list > li {width:100%; min-height:315px; padding:32px 16px}
+    .company ul.loca_list > li {width:100%; min-height:315px; padding:32px 16px 64px 16px}
     .company ul.loca_list > li + li {margin-top:12px!important}
     .company ul.loca_list > li .top {padding-bottom:8px}
     .company ul.loca_list > li .top .tit {font-size:20px; line-height:29px}
@@ -1837,13 +1849,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.loca_list > li .cont .addr {min-height:72px}
     .company ul.loca_list > li .cont .addr em {margin-bottom:5px; font-size:15px; line-height:22px}
     .company ul.loca_list > li .cont .addr span {display:block}
-    .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
-    .company ul.loca_list > li .cont .addr span + span::before {display:none}
     .company ul.loca_list > li .cont .call {margin-top:24px}
     .company ul.loca_list > li .cont .call em {margin-bottom:5px; font-size:15px; line-height:22px}
     .company ul.loca_list > li .cont .call span + span {margin-left:6px}
-    .company ul.loca_list > li .btnArea {position:static; margin-top:14px; text-align:center}
-    .company ul.loca_list > li .btnArea .btn {min-width:83px; min-height:34px; padding:0 15px; font-size:13px}
+    .company ul.loca_list > li .btnArea {display:flex; left:50%; transform:translateX(-50%); bottom:32px; top:auto; right:auto}
+    .company ul.loca_list > li .btnArea .btn {min-width:83px; padding:4px 15px; font-size:13px}
     .company ul.loca_list > li .btnArea .btn + .btn {margin-left:6px}
 
     .popup-wrap.popup-company .thumb {margin:20px 0 25px}
@@ -1852,12 +1862,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:8px}
     .popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
     .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:10px}
-    .popup-wrap.popup-company .pop-conts.no-footer{height: calc(100vh - 113px);max-height: calc(100vh - 113px);}
+    .popup-wrap.popup-company .pop-conts.no-footer{height:calc(100vh - 113px); max-height:calc(100vh - 113px); padding-bottom:64px}
 
     .artTxt p {font-size:14px; line-height:1.57}
     .artTxt h2.tit ~ h2.tit {margin-top:20px}
 
-    .company .infoBox {margin:40px auto; padding:30px 20px}
+    .company .infoBox {margin:20px auto; padding:30px 20px}
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
@@ -2080,14 +2090,13 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .acco_thumb.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-mo.png) no-repeat; background-position:100% 0; background-size:cover}
-    .company .acco_thumb.social.bg_08 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-08-mo.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_01 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-01-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_02 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-02-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_03 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-03-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_04 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-04-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_05 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-05-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_06 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-06-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
+    .company .acco_thumb.social.bg_07 {background:url(/kr/images/company/sustainable/img-sustainable-acco-bg-social-07-mo-new.png) no-repeat; background-position:100% 0; background-size:cover}
     .company .acco_thumb .inner {padding:32px 20px}
     .company .acco_thumb .top .tit {margin-bottom:12px; font-size:16px; line-height:24px}
     .company .acco_thumb .content {padding-right:0}
