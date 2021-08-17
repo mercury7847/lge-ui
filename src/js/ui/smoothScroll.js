@@ -741,8 +741,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 }
             } 
 
-            // 초기 디바이스가 PC 이거나 preventDefaultException 엘리먼트가 있을경우 이베트 초기화 한다.
-            if (!self.isMobile || self.preventDefaultException(e.target)) {
+            // preventDefaultException 엘리먼트가 있을경우 이벤트 초기화 한다.
+            if (self.preventDefaultException(e.target)) {
                 e.preventDefault();
             }
 
