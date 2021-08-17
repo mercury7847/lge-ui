@@ -430,7 +430,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             switch (e.type) {
                 case 'mousedown':
                 case 'touchstart':
-                    self.changeDevice = self.detectDevice(); // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
+                    // self.changeDevice = self.detectDevice(); // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
                     self._start(e);
                     break;
                 case 'selectstart':
@@ -682,11 +682,12 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             if (el && el.tagName && self.options.preventDefaultException.tagName.test(el.tagName)) {
                 // BTOCSITE-1814 모바일 이고 preventDefaultException tag가 A 태그인경우 예외처리
-                if( self.isMobile && el.tagName === 'A') {
-                    return false;
-                } else {
-                    return true;
-                }
+                // if( self.isMobile && el.tagName === 'A') {
+                //     return false;
+                // } else {
+                //     return true;
+                // }
+                return true;
             } else {
                 return false;
             }
@@ -731,17 +732,17 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
 
             // BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가
-            if ( self.isMobile !== self.changeDevice) {
-                self.isMobile = self.changeDevice;
+            // if ( self.isMobile !== self.changeDevice) {
+            //     self.isMobile = self.changeDevice;
 
-                // 변경 디바이스가 PC 인경우 이벤트를 초기화 한다.
-                if(!self.isMobile) {
-                    e.preventDefault();
-                }
-            } 
+            //     // 변경 디바이스가 PC 인경우 이벤트를 초기화 한다.
+            //     if(!self.isMobile) {
+            //         e.preventDefault();
+            //     }
+            // } 
 
             // 초기 디바이스가 PC 이거나 preventDefaultException 엘리먼트가 있을경우 이베트 초기화 한다.
-            if (!self.isMobile || self.preventDefaultException(e.target)) {
+            if (self.preventDefaultException(e.target)) {
                 e.preventDefault();
             }
 
