@@ -48,11 +48,7 @@ gulp.task("browser-sync", () => {
             },
             // BTOCSITE-27 swipe 테스트용 
             function(req, res, next){
-
-                var isIOS = !!req.headers['user-agent'].match(/(ipad|iphone)/i);
-                var isAndroid = !!req.headers['user-agent'].match(/android/i);
-                var isMobile =  isIOS || isAndroid;
-
+                var isMobile = !!req.headers['user-agent'].match(/(ipad|iphone|android)/i);
                 let lastseq = req.url == '/' ? 'main' : req.url.split('/').pop();
                 
                 switch(lastseq) {
