@@ -886,9 +886,9 @@
 
 
         // BTOCSITE-3899 임시 처리
-        $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
-            $(this).trigger('change')
-        })
+        // $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
+        //     $(this).trigger('change')
+        // })
 
     }
 
