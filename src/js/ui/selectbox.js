@@ -141,7 +141,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             if (index < 0 && self.el.options.length > 0) {
                 self.el.selectedIndex = index = 0;
             }
-            self.attrTitle = self.$el.attr('title') || self.$el.attr('data-title');
+            self.attrTitle = self.$el.attr('title') || self.$el.attr('data-title') || '셀렉트박스';
 
             self.$selectbox.toggleClass('read', isReadonly && !isDisabled).toggleClass('disabled', isDisabled).toggleClass('warn', self.$el.is('[data-class*=warn]'));
 
@@ -261,7 +261,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         },
 
         templates: {
-            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" data-contents="" title="">{{#raw html}}</a></div>',
+            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>', //
             list: '<div class="ui-selectbox-list" id="{{cid}}_menu"><div class="ui-select-scrollarea"></div></div>',
             scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + 
             '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + 
@@ -358,19 +358,22 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 }
                 self.isShown = isOpen;
                 var atitle = self.attrTitle == undefined ? "" : self.attrTitle;
-                // var $aTitleLastText = self.attrTitle.substr(0, atitle.length - 2); //BTOCSITE-1057 : data-contents 추가 2021-08-09
-
                 self.$label.find('.ui-select-button').attr('title', atitle + (isOpen ? ' 닫기' : ' 열기'));
-                // self.$label.find('.ui-select-button').attr('data-contents', $aTitleLastText); //BTOCSITE-1057 : data-contents 추가 2021-08-09
-                //self.attrTitle.substr(0, atitle.length - 2);
-
-                //atitle.charAt(0, -1);
                 
+                /* BTOCSITE-1057 : data-contents 추가 2021-08-09 */
+                var $plpSelectDataContents = $('.component');
+
+                if ($plpSelectDataContents.hasClass("KRP0008")) {
+                    var $aTitleLastText = self.attrTitle.substr(0, atitle.length - 3); 
+                    self.$label.find('.ui-select-button').attr('data-contents', $aTitleLastText);
+                    //console.log("--------");
+                }
                 //console.log(self.attrTitle, self.attrTitle.length);
                 //console.log($aTitleLastText);
                 //console.log(self.$label.find('.ui-select-button').attr('data-contents', atitle));
+                /* //BTOCSITE-1057 : data-contents 추가 2021-08-09 */
 
-                self.triggerHandler(self.attrTitle);
+                self.triggerHandler('selectboxtoggle');
             });
 
             self.$el.on('change', function () {

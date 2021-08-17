@@ -1,0 +1,823 @@
+<!-- 로그인 툴팁 -->
+<!-- 2021.03.16 마크업 수정 -->
+<a href="" class="tooltip-login">
+    <div class="tooltip-inner">
+        <p><strong>회원전용 서비스</strong>로 더 편리하게 이용할 수 있어요. </p>
+        <span class="btn-link">로그인</span>
+        <button class="btn-tooltip-close"><span class="blind">접기</span></button>
+    </div>
+</a>
+<!-- //2021.03.16 마크업 수정 -->
+<!-- //로그인 툴팁 -->
+
+
+<!-- hero 영역 -->
+<div class="home-hero">
+    <div class="hero-container">
+        <div class="support-nav-container">
+            <div class="home-cont-top">
+                <h1 class="cont-top-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h1>
+                <a href="#" class="btn-fast-support">빠른 제품지원</a>
+            </div>
+            <div class="support-list-slider">
+
+                <div class="support-toggle-list-wrap" data-toggle-list="container">
+                    <div class="support-list product-support" data-toggle-list="wrap">
+                        <div class="list-header">
+                            <!-- 2021.06.29 문구 수정 -->
+                            <strong class="list-tit">직접 <span class="txt-highlight">해결</span>하는 <span class="txt-highlight">방법</span>을<br>알려드릴게요.</strong>
+                            <!-- //2021.06.29 문구 수정 -->
+                            <!-- 2021.03.30 버튼 문구 수정 -->
+                            <button class="btn-list-toggle" data-toggle-list="btn"><span
+                                    class="blind">문제점 해결방안 목록 펼치기</span></button>
+                            <!-- //2021.03.30 버튼 문구 수정 -->
+                        </div>
+                        <ul data-toggle-list="list" class="list-dir-col">
+                            <li><a href="">제품 문제 해결</a></li>
+                            <li><a href="">동영상 가이드</a></li>
+                            <li><a href="">드라이버/SW</a></li>
+                            <li><a href="">사용설명서</a></li>
+                        </ul>
+                    </div>
+                    <div class="support-list consult" data-toggle-list="wrap">
+                        <div class="list-header">
+                            <!-- 2021.06.29 문구 수정 -->
+                            <strong class="list-tit">서비스 및 제품 <span class="txt-highlight">궁금증</span>을<br><span class="txt-highlight">상담</span>해드릴게요.</strong>
+                            <!-- //2021.06.29 문구 수정 -->
+                            <!-- 2021.03.31 버튼 문구 수정 -->
+                            <button class="btn-list-toggle" data-toggle-list="btn"><span
+                                    class="blind">서비스 상담 목록 펼치기</span></button>
+                            <!-- //2021.03.31 버튼 문구 수정 -->
+                        </div>
+                        <ul data-toggle-list="list">
+                            <li><a href="">전화 상담 예약</a></li>
+                            <li><a href="">이메일 문의</a></li>
+                            <li><a href="">영상 상담 예약</a></li>
+                            <li><a href="">원격 상담 예약</a></li>
+                        </ul>
+                    </div>
+                    <div class="support-list reservation" data-toggle-list="wrap">
+                        <div class="list-header">
+                            <!-- 2021.06.29 문구 수정 -->
+                            <strong class="list-tit"><span class="txt-highlight">출장/방문 예약</span>을<br>도와드릴게요.</strong>
+                            <!-- 2021.03.31 버튼 문구 수정 -->
+                            <button class="btn-list-toggle" data-toggle-list="btn"><span
+                                    class="blind">출장/방문 예약 목록 펼치기</span></button>
+                            <!-- //2021.03.31 버튼 문구 수정 -->
+                        </div>
+                        <ul data-toggle-list="list">
+                            <li><a href="">출장 서비스 예약</a></li>
+                            <!-- <li><a href="https://move.pantos.com/mvinst/order.jsp" target="_blank">제품 설치/철거 예약</a></li> -->
+                            <li><a href="">센터 방문 예약</a></li>
+                            <li><a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=service"
+                                    target="_blank">매장 방문 예약</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 검색 -->
+    <div class="keyword-search ui_search"
+        data-search-url="/search/result/support?category=customer&force=false&search="
+        data-autocomplete-url="/lg5-common/data-ajax/support/main/searchAutoComplete.json">
+        <div class="search-box">
+            <div class="search-input">
+                <input type="text" id="search" class="ui_input_clearbutton"
+                    placeholder="검색어를 입력해주세요.(예:모델명, 증상 등)" title="검색어를 입력해주세요.(예:모델명, 증상 등)"
+                    autocomplete="off" data-clear-button="button.btn-delete"
+                    ui-modules="InputClearButton">
+                <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어
+                        삭제</span></button>
+                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+            </div>
+            <div class="search-layer">
+                <div class="autocomplete-box">
+                    <div class="keyword-list">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="model"></span>
+                                    <span class="category"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="no-keyword">입력하신 키워드와 일치하는<br>모델명이 없습니다.</p>
+                    </div>
+                </div>
+                <div class="keyword-box">
+                    <div class="recently-keyword">
+                        <strong class="tit">최근 검색어</strong>
+                        <div class="keyword-list">
+                            <ul>
+                                <!-- <li>
+                                    <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                                    <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
+                                </li> -->
+                            </ul>
+                            <p class="no-keyword">최근 검색어가 없습니다.</p>
+                        </div>
+                    </div>
+                    <div class="popular-keyword">
+                        <strong class="tit">인기 검색어</strong>
+                        <div class="keyword-list">
+                            <ul>
+                                <!-- <li>
+                                    <a href="#">최대 길이가 넘어가면 말줄임 표시가 최대 길이가 넘어가면 말줄임 표시가</a>
+                                </li> -->
+                            </ul>
+                            <p class="no-keyword">인기 검색어가 없습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //검색 -->
+
+    <!-- 공지사항 -->
+    <div class="home-notice" data-role="slide-container">
+        <div class="notice-inner">
+            <div class="notice-title">
+                <strong class="title">NOTICE</strong>
+            </div>
+            <div class="notice-list-wrap notice-slider" data-auto-type="button">
+                <div class="notice-list">
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
+                    </div>
+                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
+                    지속적으로
+                </div>
+                <div class="notice-list">
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
+                    </div>
+                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
+                    지속적으로
+                </div>
+                <div class="notice-list">
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
+                    </div>
+                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
+                    지속적으로
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //공지사항 -->
+</div>
+<!-- //hero 영역 -->
+
+
+
+<!-- 인기 컨텐츠 -->
+<div class="home-section popular-find" data-more="container">
+    <!-- 2021.02.19 데이터 속성 추가 -->
+    <div class="section-inner">
+        <div class="headline">
+            <a href="#" class="btn-solution-link">제품 문제해결</a>
+            <!-- 2021.03.03 br 삭제 -->
+            <h3 class="title">가장 많이 찾아본 콘텐츠에요.</h3>
+            <div class="list-filter">
+                <span>보유제품 기준</span>
+
+                <!-- 비로그인시 로그인창으로 이동 -->
+                <!-- 2021.02.22 data-href 속성값 추가 -->
+                <button class="btn-filter-toggle" data-href="/html/CS/CSRF6001_member.html"><span
+                        class="blind">보유 제품 목록 보기</span></button>
+            </div>
+        </div>
+
+        <!-- default list -->
+        <div class="solution-pd-content default-pd active" data-more="container">
+            <div class="popular-list-wrap">
+                <!-- default 리스트 3건 -->
+                @@for(var i = 0; i < 3; i++) { 
+                    <div class="item-list">
+                        <a href="#">
+                            <div class="item-category">
+                                <span class="category-thumb"><img
+                                        src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg"
+                                        alt=""></span>
+                                에어컨
+                            </div>
+
+                            <strong class="item-tit">
+                                Mode [모드별] 기능에 대해서
+                                알고 싶어요.
+                            </strong>
+
+                            @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                            "에어컨 > 3in1 2in1",
+                            "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                            ]
+                            })
+                        </a>
+                </div>
+                }
+
+                <!-- <div class="item-list">
+                        <a href="#">
+                            <div class="item-category">
+                                <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
+                                에어컨
+                            </div>
+                            
+                            <strong class="item-tit">
+                                Mode [모드별] 기능에 대해서 
+                                알고 싶어요.
+                            </strong>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "에어컨 > 3in1 2in1",
+                                    "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                                ]
+                            })
+                        </a>
+                    </div>
+
+                    <div class="item-list">
+                        <a href="#">
+                            <div class="item-category">
+                                <span class="category-thumb"><img src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg" alt=""></span>
+                                에어컨
+                            </div>
+                            
+                            <strong class="item-tit">
+                                Mode [모드별] 기능에 대해서 
+                                알고 싶어요.
+                            </strong>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "에어컨 > 3in1 2in1",
+                                    "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                                ]
+                            })
+                        </a>
+                    </div> -->
+                <!-- //default 리스트 3건 -->
+
+
+                <!-- 2021.02.19 히든 리스트 추가 -->
+                <!-- hidden 리스트 -->
+                @@for(var i = 0; i < 9; i++) { 
+                    <div class="item-list" data-more="hidden">
+                        <a href="#">
+                            <div class="item-category">
+                                <span class="category-thumb"><img
+                                        src="/lg5-common/images/icons/cate_icon_air-conditioners_w.svg"
+                                        alt=""></span>
+                                에어컨
+                            </div>
+
+                            <strong class="item-tit">
+                                Mode [모드별] 기능에 대해서
+                                알고 싶어요.
+                            </strong>
+
+                            @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                            "에어컨 > 3in1 2in1",
+                            "스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG 스마트기능/스마트진단 > LG ThinQ 사용LG ThinQ 사용LG",
+                            ]
+                            })
+                        </a>
+                    </div>
+                }
+                <!-- //hidden 리스트 -->
+            </div>
+            <!-- 2021.02.19 데이터 속성 추가 -->
+            <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
+        </div>
+        <!-- //default list -->
+    </div>
+</div>
+<!-- //인기 컨텐츠 -->
+
+<!-- BTOCSITE-4042 add :: 회원가입 이벤트 배너 추가 -->   
+<div class="home-section home-reservation">                           
+    <div class="banner-wrap evt-banner-4042">
+        <a class="only_desktop" title="회원 가입하고, 상담/서비스 예약하시면 추첨을 통해 경품도 드려요" href="#"><img src="/lg5-common/images/CS/banner/210722_evtbanner.jpg" /></a>
+        <a class="only_mobile" title="회원 가입하고, 상담/서비스 예약하시면 추첨을 통해 경품도 드려요" href="#"><img src="/lg5-common/images/CS/banner/210722_evtbanner_m.jpg" /></a>
+    </div>
+</div>  
+<!-- //BTOCSITE-4042 add :: 회원가입 이벤트 배너 추가 -->
+
+<!-- 출장 서비스 예약/결과조회 -->
+<div class="home-section home-reservation">
+    <div class="section-inner">
+        <div class="section-row">
+            <div class="section-col">
+                <div class="rersv-wrap service-reserv">
+                    <form action="./" method="post" id="serviceReservationForm" name="serviceReservationForm">
+                        <input type="hidden" id="userName" name="userName" value="">
+                        <input type="hidden" id="userPhoneNo" name="userPhoneNo" value="">
+                        <input type="hidden" id="userZipCode" name="userZipCode" value="">
+                        <input type="hidden" id="userAddress" name="userAddress" value="">
+                        <input type="hidden" id="userDetailAddress" name="userDetailAddress" value="">
+
+                        <div class="headline">
+                            <h3 class="title run-reserv">출장 서비스 예약</h3>
+                            <!-- 20210727 BTOCSITE-3577 고객지원 > Main 의 출장서비스 예약 영역에 제품 설치/철거 예약 탭 및 내용 추가 -->
+                            <button type="button" class="btn black size btn-installDemolition" data-href="https://www.lxpantos.com/kr/customer/lgapp.do" data-target="_blank"><span>제품 설치/철거 예약</span></button>
+                        </div>
+                        <div class="form-wrap">
+                            <div class="forms form-head">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="agreePrivacyCheck" name="agreePrivacyCheck"
+                                        value="Y" required data-required="true"
+                                        data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.">
+                                    <label for="agreePrivacyCheck">개인정보 수집 및 이용 동의</label>
+                                </span>
+                                <button type="button" class="btn-link" data-href="#agreePrivacyPopup"
+                                    data-control="modal"><span>전문보기</span></button>
+                                <div class="btm-more err-block">
+                                    <p class="err-msg"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <dl class="forms block-type">
+                                        <dt class="tit"><label for="serviceUserName" class="req">이름<span
+                                                    class="blind">필수입력</span></label></dt>
+                                        <dd class="conts">
+                                            <div class="input-wrap">
+                                                <!-- 2021.03.17 disabled 삭제 -->
+                                                <input type="text" id="serviceUserName" placeholder="이름 입력"
+                                                    value="" name="serviceUserName" data-required="true"
+                                                    required maxlength="30" data-format="koreng"
+                                                    data-error-msg="이름을 입력해주세요."
+                                                    data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="form-col">
+                                    <dl class="forms block-type">
+                                        <dt class="tit"><label for="servicePhoneNo" class="req">휴대폰번호<span
+                                                    class="blind">필수입력</span></label></dt>
+                                        <dd class="conts">
+                                            <div class="input-wrap">
+                                                <!-- 2021.03.17 disabled 삭제 -->
+                                                <input type="number" id="servicePhoneNo" placeholder="휴대폰번호 입력"
+                                                    value="" minlength="10" maxlength="11" name="servicePhoneNo"
+                                                    data-error-msg="휴대폰번호를 정확히 입력해주세요"
+                                                    data-pattern-msg="휴대폰번호를 정확히 입력해주세요" data-required="true"
+                                                    required>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <dl class="forms block-type">
+                                <dt class="tit"><label for="serviceZipCode">주소</label></dt>
+                                <dd class="conts">
+                                    <div class="address-box">
+                                        <div class="box">
+                                            <div class="input-wrap zip-code">
+                                                <input type="text" id="serviceZipCode" value=""
+                                                    placeholder="우편번호" disabled="">
+                                            </div>
+                                            <div class="cell">
+                                                <!-- 2021.03.30 title 속성 추가 -->
+                                                <button type="button" class="btn btn-address"
+                                                    title="새창으로 열림"><span>주소 찾기</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <!-- 2021.03.30 title 추가 -->
+                                            <input type="text" value="" id="serviceUserAddress"
+                                                name="serviceUserAddress" placeholder="주소" title="기본 주소"
+                                                data-error-msg="정확한 주소를 입력해주세요." disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <!-- 2021.03.30 title 추가 -->
+                                        <input type="text" value="" id="serviceDetailAddress"
+                                            name="serviceDetailAddress" title="상세 주소"
+                                            placeholder="단독주택 등일 경우 층수 또는 호수 등을 입력 하세요." disabled>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="btn-wrap">
+                            <!-- 2021.03.17 disabled 삭제 -->
+                            <button type="button" class="btn size-m btn-reservation"><span>예약하기</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="section-col">
+                <div class="rersv-wrap reserv-inquiry">
+                    <div class="headline">
+                        <h3 class="title inquiry-reserv">문의/예약 결과조회</h3>
+                    </div>
+                    <div class="form-wrap">
+
+                        <div class="forms form-head">
+                            <span class="rdo-wrap">
+                                <input type="radio" id="inquiryNumber" name="inquiryRdo" checked="" value="0">
+                                <label for="inquiryNumber">접수번호</label>
+                            </span>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="inquiryPhone" name="inquiryRdo" value="1">
+                                <label for="inquiryPhone">휴대폰번호 인증</label>
+                            </span>
+                        </div>
+
+                        <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
+                        <div class="toggle-forms active auth-type-no">
+                            <form action="/html/CS/CSRF6026.html" id="authDataForm1" method="POST"
+                                name="authDataForm1"
+                                data-ajax="/lg5-common/data-ajax/support/receptionDetailsSuccess.json">
+                                <dl class="forms block-type">
+                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                    <dt class="tit"><label for="userName1" class="req">이름<span
+                                                class="blind">필수입력</span></label></dt>
+                                    <dd class="conts">
+                                        <div class="input-wrap">
+                                            <input type="text" id="userName1" placeholder="이름 입력" value=""
+                                                name="userName1" data-required="true" required maxlength="30"
+                                                data-format="koreng" data-error-msg="이름을 입력해주세요."
+                                                data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="forms block-type">
+                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                    <dt class="tit"><label for="number" class="req">접수번호<span
+                                                class="blind">필수입력</span></label></dt>
+                                    <dd class="conts">
+                                        <div class="input-wrap">
+                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                            <input type="text" id="number" placeholder="접수번호 입력" value=""
+                                                maxlength="20" name="number" data-required="true"
+                                                data-error-msg="접수번호를 입력해주세요.">
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </form>
+                        </div>
+
+
+                        <!-- 접수번호 or 휴대폰 번호 인증 컨텐츠 전환 active class -->
+                        <div class="toggle-forms auth-type-phone">
+                            <form action="" id="authDataForm2" method="post" name="authDataForm2"
+                                data-auth-url="/lg5-common/data-ajax/support/authSuccess.json"
+                                data-sms-url="/lg5-common/data-ajax/support/authSendSuccess.json">
+                                <dl class="forms block-type">
+                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                    <dt class="tit"><label for="userName2" class="req">이름<span
+                                                class="blind">필수입력</span></label></dt>
+                                    <dd class="conts">
+                                        <div class="input-wrap">
+                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                            <input type="text" id="userName2" placeholder="이름 입력" value=""
+                                                name="userName2" data-required="true" required maxlength="30"
+                                                data-format="koreng" data-error-msg="이름을 입력해주세요."
+                                                data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요">
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="forms block-type">
+                                    <!-- 2021.02.18 id, name for 값 수정 -->
+                                    <dt class="tit"><label for="phoneNo" class="req">휴대폰번호<span
+                                                class="blind">필수입력</span></label></dt>
+                                    <dd class="conts">
+                                        <div class="box">
+                                            <div class="input-wrap">
+                                                <!-- 2021.02.18 id, name for 값 수정 -->
+                                                <input type="number" id="phoneNo" value=""
+                                                    placeholder="휴대폰번호 입력" minlength="10" maxlength="11"
+                                                    name="phoneNo" data-required="true"
+                                                    data-pattern-msg="정확한 휴대폰번호를 입력해주세요."
+                                                    data-error-msg="정확한 휴대폰번호를 입력해주세요.">
+                                            </div>
+                                            <div class="cell">
+                                                <button type="button" class="btn btn-auth-confirm"><span>인증 번호
+                                                        발송</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <!-- 2021.02.18 id, name for 값 수정 -->
+                                            <input type="number" id="authNo" name="authNo" title="인증번호 입력"
+                                                value="" placeholder="인증번호 입력" data-error-msg="인증번호를 입력해 주세요."
+                                                data-required="true" disabled required>
+                                        </div>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="btn-wrap">
+                        <button type="button" class="btn size-m btn-inquiry"><span>조회하기</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //출장 서비스 예약/결과조회 -->
+
+
+<!-- 로그인 박스 -->
+<div class="home-section home-login">
+    <div class="section-inner">
+        <h3 class="login-tit">회원전용 서비스로 <br>더 편리하게 이용해보세요.</h3>
+        <div class="login-useful-list">
+            <ul>
+                <li>내가 필요한 소모품을 알아서 안내해줘요.</li>
+                <li>보유제품을 기준으로 연관 콘텐츠를 보여줘요.</li>
+            </ul>
+        </div>
+        <div class="btn-wrap">
+            <a href="" class="btn-login">로그인</a>
+        </div>
+    </div>
+
+</div>
+<!-- //로그인 박스 -->
+
+<!-- 주요 서비스 -->
+<div class="common-banner main-service">
+    <div class="banner">
+        <h3 class="banner-tit">LG제품에 관련된 <br class="mo-only">주요 서비스를 확인하세요!</h3>
+
+        <!-- 2021.04.13 전체 수정 -->
+        <div class="main-service-slider">
+            <div class="main-list-wrap">
+                <div class="slide-item">
+                    <div class="item-thumb">
+                        <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
+                    </div>
+                    <div class="item-cont">
+                        <strong class="item-tit">
+                            새로운 소식을
+                            카드뉴스로
+                            만나보세요.
+                        </strong>
+                        <a href="#" class="item-link">카드뉴스</a>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="item-thumb">
+                        <img src="/lg5-common/images/CS/img_main_service02.jpg" alt="">
+                    </div>
+                    <div class="item-cont">
+                        <strong class="item-tit">
+                            가전제품
+                            얼마나 알고
+                            쓰세요?
+                        </strong>
+                        <a href="#" class="item-link">가전제품 생활의 팁</a>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service03.jpg" alt="">
+                    </div>
+                    <div class="item-cont">
+                        <strong class="item-tit">
+                            근처 서비스
+                            센터에서 A/S를
+                            받고 싶다면
+                        </strong>
+                        <a href="#" class="item-link">서비스 센터 찾기</a>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service04.jpg" alt="">
+                    </div>
+                    <div class="item-cont">
+                        <strong class="item-tit">
+                            내 제품에 딱맞는
+                            소모품 알아보기
+                        </strong>
+                        <a href="#" class="item-link">LG전자 소모품샵</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- //2021.04.13 전체 수정 -->
+    </div>
+</div>
+<!-- //주요 서비스 -->
+
+<!-- 관련 정보 -->
+<div class="common-banner related-pages">
+    <div class="banner" data-more="container">
+        <h3 class="banner-tit">LG제품에 관련된 <br class="mo-only">정보를 확인하세요!</h3>
+        <div class="page-list-wrap">
+            <div class="item-list">
+                <!-- default 노출 3개 -->
+                <div class="item">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <div class="item-thumb"><img src="/lg5-common/images/CS/img_related_pages02.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">의류건조기, <br>무상수리 <br>고객 게시판</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <div class="item-thumb"><img src="/lg5-common/images/CS/img_related_pages03.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">마이크로소프트 관련 <br>문제해결 방법</strong>
+                        </div>
+                    </a>
+                </div>
+                <!-- //default 노출 3개 -->
+
+
+                <!-- 숨겨진 목록 class hidden  -->
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="item hidden" data-more="hidden">
+                    <a href="#">
+                        <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
+                        </div>
+                        <div class="item-cont">
+                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                        </div>
+                    </a>
+                </div>
+                <!-- //숨겨진 목록 class hidden  -->
+            </div>
+        </div>
+        <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
+    </div>
+</div>
+<!-- //관련 정보 -->
+
+<!-- 수상 목록 -->
+<div class="common-banner awards">
+    <div class="banner">
+
+        <!-- 2021.04.13 전체 수정 -->
+        <div class="award-list-wrap award-slider" data-role="slide-container">
+            <div class="award-list" data-auto-type="dot">
+                <div class="slide-item">
+                    <a href="">
+                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
+                        </div>
+                        <div class="slide-text">
+                            2020 한국의 소비자 대상 <br>
+                            가전제품A/S 부문
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 국가 서비스 대상 <br>
+                            가전 A/S 부문
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 KS-SQI <br>
+                            가전 AS부문 1위
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
+                        <div class="slide-text">
+                            한국 서비스 품질 <br>
+                            우수 기업
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="slide-item">
+                    <a href="">
+                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
+                        </div>
+                        <div class="slide-text">
+                            2020 한국의 소비자 대상 <br>
+                            가전제품A/S 부문
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 국가 서비스 대상 <br>
+                            가전 A/S 부문
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 KS-SQI <br>
+                            가전 AS부문 1위
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
+                        <div class="slide-text">
+                            한국 서비스 품질 <br>
+                            우수 기업
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="slick-controls">
+                <div class="slick-dot-container"></div>
+            </div>
+        </div>
+        <!-- //2021.04.13 전체 수정 -->
+    </div>
+</div>
+<!-- //수상 목록 -->

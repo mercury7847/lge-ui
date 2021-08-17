@@ -1546,14 +1546,14 @@
 @@if (context.mobileCase === "all" || context.mobileCase === "main") {
     <!-- pc 반응형 모바일 메인 gnd -->
     @@if (context.isSwipe !== "y" || context.isSwipe === undefined) {
-        <div class="mobile-nav-wrap ">
+        <div class="mobile-nav-wrap mainNav"><!-- 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
             <ul class="nav">
-                <li><a href="/" class="nav-item on">홈</a></li>
+                <li><a href="/" class="nav-item">홈</a></li>
                 <li><a href="/store" class="nav-item">스토어</a></li>
                 <li><a href="story" class="nav-item">스토리</a></li>
                 <li><a href="/support" class="nav-item">고객지원</a></li>
                 <li><a href="/care-solutions" class="nav-item">렌탈/케어</a></li>
-                <li><a href="/benefits" class="nav-item">이벤트/멤버십</a></li>
+                <li><a href="/benefits" class="nav-item">이벤트/멤버십</a></li> <!-- 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
             </ul>
         </div>
     }
@@ -1564,7 +1564,7 @@
         <!-- Mobile 메인 메뉴 -->
         <!-- 210222 수정 [현재위치 활성화 상태 추가(.on)] -->
         <!-- 210609 수정  data-story-url="url" 추가 -->
-        <div class="mobile-nav-wrap" id="mobileNav" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json">
+        <div class="mobile-nav-wrap mainNav" id="mobileNav" data-story-url="/lg5-common/data-ajax/common/retrieveGnbStory.json"><!-- 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
             <ul class="nav">
                 <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
                 <li><a href="#home" class="nav-item on" >홈</a></li>
@@ -1572,9 +1572,7 @@
                 <li><a href="#story" class="nav-item" >스토리</a></li>
                 <li><a href="#support" class="nav-item" >고객지원</a></li>
                 <li><a href="#care-solutions" class="nav-item" >렌탈/케어</a></li>
-                <!-- 20210808 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
-                <li><a href="#membership-event" class="nav-item" >이벤트/멤버십</a></li>
-                <!-- 20210808 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 //-->
+                <li><a href="#benefits" class="nav-item" >이벤트/멤버십</a></li> <!-- 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
                 <!-- //BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
             </ul>
         </div>

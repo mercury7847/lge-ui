@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="Y">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '챗봇상담',
+                'pageDesc': 'LG전자는 고객님의 문의를 365일 24시간 지원하기 위해 챗봇 상담 서비스를 운영하고 있습니다.',
+            })
+
+            <div class="contents support">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="search-info">
+                            <p class="tit">챗봇 지원 서비스</p>
+                            <p class="desc">제품 검색 및 추천, 제품 문제 해결, 서비스 예약, 예약 확인/변경/취소, 서비스 센터 찾기 등 <br>
+                                챗봇 상담 중에 전문 상담사의 도움이 필요 하실 때는 “상담사”라고 입력 해주세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-customer">
+                        <div class="item">
+                            <strong class="title icon-chat">상담챗</strong>
+                            <p class="desc">제품 구매를 고민 중이세요? 사용 중인 제품에 문의가 있으세요? <br>LGE.COM 상담챗을 통해 상담을 받아보세요.</p>
+                            <a href="https://chat.lge.co.kr/kr/index.html?channel=lg_homepage" class="btn border size btn-target-link" title="새 창에서 열기" data-width="450" data-height="760" data-link-area="sticky_chat-chatbot_button" data-link-name=""><span>상담챗</span></a>
+                        </div>
+                        <div class="item">
+                            <strong class="title icon-kakao">카카오톡</strong>
+                            <p class="desc">카카오톡 채널에 친구 추가하시면 카카오톡으로 편리하게 <br class="only_pc">상담 받을 수 있어요.</p>
+                            <a href="http://pf.kakao.com/_eyUad/chat" class="btn border size"><span>카카오톡 상담</span></a>
+                        </div>
+                    </div>
+
+                    <div class="chat-info-wrap">
+                        <p class="desc">채팅 상담시 업무 시간</p>
+                        <p class="desc desc-bold">평일 09:00 ~ 18:00 (점심 시간 12:00 ~ 13:00)<br>토요일 09:00~ 13:00(일요일, 공휴일 휴무)</p>
+                        <p class="desc desc-thin">※ 업무 시간 이후 및 휴일에는 <span class="point">긴급 건</span>에 한해 전문 상담사가 도와 드리고 있습니다.</p>
+                    </div>
+
+                    @@include('./common/modules/bullet-list.html', {
+                        "topBorder" : true,
+                        "bulletTxt" : [
+                            "상담 시스템 및 상담실 운영 상황에 따라 운영 시간은 변경 될 수 있습니다.",
+                            "서비스 이용 시 상담 품질 향상을 위해 상담 내용은 저장되며 일부 상담 업무는 제한 될 수 있습니다.",
+                            "원활한 채팅 상담을 위해서는 개인정보 수집 동의 또는 로그인 절차가 필요합니다."
+                        ]
+                    })
+                </div>
+            </div>
+        </div>
+
+        @@include('./common/support/quick-menu.html')     
+        @@include('./common/footer.html')
+    </div>
+
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 

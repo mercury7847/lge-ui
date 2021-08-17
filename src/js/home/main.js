@@ -8,6 +8,9 @@ $(function () {
     });
 
     var isOnlyMobileDevice = vcui.detect.isMobileDevice && window.innerWidth < 768
+    var isMobileScreen = function() {
+        return vcui.detect.isMobileDevice || window.innerWidth < 768
+    }
 
     var sceneTmpl =  '<div class="scene">\n'+
         '   <div class="img">\n'+
@@ -71,7 +74,7 @@ $(function () {
     
     var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
-    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch'], function () {
+    vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch','libs/intersection-observer.min'], function () {
         // 플로우배너
         
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
@@ -279,14 +282,7 @@ $(function () {
                 }
 
                 if(!isBenefit){
-                    $context.find('.benefit-list-slide').on("carouselbeforechange", function(e, carousel, cIdx){
-                        clearInterval(animCtrlers[3]);
-                        animCtrlers[3] = null;
-                    }).on("carouselafterchange", function(e, carousel, index){
-                        var icons = carousel.$slides.eq(index).find('.ui_ico_anim');
-                        icons.data("isReady", true);
-                        setIconAnimCtrler(icons);
-                    }).vcCarousel({                        
+                    $context.find('.benefit-list-slide').vcCarousel({
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
@@ -462,11 +458,7 @@ $(function () {
                     });
                     
                     currentPage = idx;   
-                    /*
-                    if(currentPage == 5) startIconAnim();
-                    else stopIconAnim();
-                    */
-                    
+
                     $('html').removeClass('sceneMoving');
                     $scenes.removeClass('on').eq(idx).addClass('on');
 
@@ -541,7 +533,7 @@ $(function () {
         // BTOCSITE-27
         
         $('.container').on('touchstart touchend touchcancel', function(e) {
-      
+            if(!isOnlyMobileDevice){
                 var data = _getEventPoint(e);
                 if (e.type == 'touchstart') {
                     touchSy = data.y;
@@ -572,8 +564,11 @@ $(function () {
                         } else if (touchSy - data.y < -80) {
                             wheelScene(-1);
                         }
-                    } 
+                    }
+
+
                 }
+            }
         });
         
         /*
@@ -638,6 +633,29 @@ $(function () {
             return 0;                
         }
 
+        var observerOption = {
+            root: null,
+            rootMargin: '10px',
+            threshold: []
+        }
+        for (var i=0; i<=1.0; i+= 0.01) {
+            observerOption.threshold.push(i);
+        }
+        var sceneIO = new IntersectionObserver(function(entries, observer) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.intersectionRatio > 0.7) {
+                    !entry.target.ended && entry.target.play()
+                } else if(entry.intersectionRatio === 0) {
+                    entry.target.currentTime = 0
+                } else {
+                    entry.target.pause()
+                }
+            })
+
+        }, observerOption)
+
         // 비디오 태그 처리
         function updateVideo(video, index) {
             // BTOSCITE-740 모바일 화면 동영상 사용중지
@@ -645,13 +663,13 @@ $(function () {
 
             var isAndroid = vcui.detect.isAndroid;
 
-            var $target   = $(video||this),
-                $wrap     = $target.closest('.img'),
+            var $target = $(video || this),
+                $wrap = $target.closest('.img'),
                 // $image    = $wrap.find('img'),
                 // loaded    = $target.data('loaded'),           
                 //videoAttr = $target.data('options') || 'autoplay playsinline muted',
                 videoAttr = $target.data('options') || 'playsinline muted',
-                $sources  = $target.find('source'),
+                $sources = $target.find('source'),
                 oVideo;
 
             var src = $target.data('src');
@@ -660,11 +678,11 @@ $(function () {
             // window.innerWidth < 768
             // vcui.detect.isMobileDevice && window.innerWidth < 768
             /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-            if(window.innerWidth < 768 || isMobileDevice){
+            if (window.innerWidth < 768 || isMobileDevice) {
                 posterSrc = $target.data('posterMSrc') || $target.data('posterSrc');
                 src = $target.data('mSrc') || $target.data('src');
                 //console.log("mobile")
-            } 
+            }
             // else {
             //     posterSrc = $target.data('posterSrc') || $target.data('posterSrc');
             //     src = $target.data('src') || $target.data('src');
@@ -672,56 +690,54 @@ $(function () {
             // }
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
-            if(posterSrc){
-                if(index>0) {
-                    videoAttr += " poster='"+posterSrc+"' preload='metadata'";
-                }else {
+            if (posterSrc) {
+                if (index > 0) {
+                    videoAttr += " poster='" + posterSrc + "' preload='metadata'";
+                } else {
                     videoAttr += " preload='auto'";
                 }
             }
 
             // 비디오 요소 생성.
-            var createVideoObject = function() {
+            var createVideoObject = function () {
                 var extArr = $target.data('ext').toLowerCase().replace(/\s/g, '').split(',');
                 // var regExp = "\.(mp4|webm|ogv)";
                 // console.log(src, src.match(regExp));
 
-                if ( !extArr.length ) return false;
+                if (!extArr.length) return false;
 
-                var $video = $('<video '+ videoAttr +'></video>');
+                var $video = $('<video ' + videoAttr + '></video>');
 
                 for (var i = extArr.length - 1; i >= 0; i--) {
                     if (extArr[i] == 'mp4') {
-                        $('<source>', {src: src+'.mp4', type: 'video/mp4', prependTo: $video});
+                        $('<source>', {src: src + '.mp4', type: 'video/mp4', prependTo: $video});
                     } else if (extArr[i] == 'webm') {
-                        $('<source>', {src: src+'.webm', type: 'video/webm', appendTo: $video});
+                        $('<source>', {src: src + '.webm', type: 'video/webm', appendTo: $video});
                     } else if (extArr[i] == 'ogv' || extArr[i] == 'ogg') {
-                        $('<source>', {src: src+'.ogv', type: 'video/ogg', appendTo: $video});
+                        $('<source>', {src: src + '.ogv', type: 'video/ogg', appendTo: $video});
                     }
                 }
-                    
-                if ( $target.data('alt') != null ) {
+
+                if ($target.data('alt') != null) {
                     $('<p>').text($target.data('alt')).appendTo($video);
                 }
                 $video.data($target.data());
                 $target.replaceWith($video);
-                $video   = $wrap.find('video');
+                $video = $wrap.find('video');
                 $sources = $video.find('source');
 
                 $video.css({
-                    'position':'absolute',
-                    'width': 'auto !important',
-                    'height': 'auto !important',
-                    'min-width': '100%',
-                    'min-height': '100%',
+                    'position': 'absolute',
+                    'width': '100%',
+                    'height': '100%',
                     'top': '50%',
                     'left': '50%',
                     'transform': 'translate(-50%,-50%)',
-                    '-webkit-transform': 'translateX(-50%) translateY(-50%)',
-                    // 2021-07-23 수정 width: 100%로 수정
-                    'width': '100%'
+                    '-webkit-transform': 'translateX(-50%) translateY(-50%)'
                 })
-                oVideo   = $video[0];
+                oVideo = $video[0];
+                oVideo.dataset['sceneIndex'] = index
+                sceneIO.observe(oVideo)
                 /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {
@@ -731,18 +747,18 @@ $(function () {
                 */
                 $wrap.addClass('video');
 
-                $video.on('loadeddata', function(e) {
-                    $video.data('loaded', true);
-                    //$(this).addClass('is-loaded111');
-                    $wrap.trigger('videoLoaded');
-                    //$wrap.trigger('imgLoaded');
-                    //oVideo.play();
-                }).trigger('load');
-                
+                // $video.on('loadeddata', function (e) {
+                //     $video.data('loaded', true);
+                //     //$(this).addClass('is-loaded111');
+                //     $wrap.trigger('videoLoaded');
+                //     //$wrap.trigger('imgLoaded');
+                //     //oVideo.play();
+                // }).trigger('load');
+
             }
 
             createVideoObject();
-            
+
         }
 
         // 렌더링
@@ -766,7 +782,13 @@ $(function () {
             var totalHeight = winHeight;
             var itemHeight = winHeight;
             var allHeight = 0;
-            
+
+            var renderVideo = function(index) {
+                $(this).find('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > .video').each(function () {
+                    updateVideo(this, index);
+                });
+            }
+
             $scenes.each(function(i) {
                 if(i==0){
                     //itemHeight = winHeight-prevAllHeight;
@@ -805,14 +827,12 @@ $(function () {
 
                 if(!$(this).hasClass('section-cover')) {
                     _setCenterImage($(this).find('.img'), winWidth, itemHeight, imageSize.width, imageSize.height);
-                    $(this).find('.img.only-' + (vcui.detect.isMobileDevice ? "mobile" : "desktop") + ' > .video').each(function () {
-                        updateVideo(this, i);
-                    });
+                    renderVideo.apply(this, [i])
                 }
                 totalHeight += itemHeight;
             });
 
-            setActivePlayByScroll();
+            setActiveScroll();
 
             /* 메인 테스트 */    
             /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */        
@@ -913,105 +933,6 @@ $(function () {
         window.resizeScene = render;
     });
 
-    //메인 아이콘 애니매이션...
-    var animCtrlers = [];
-    var startIconAnim = function(){
-        $context.find('.ui_ico_anim').each(function(idx, item){
-            setIconAnimCtrler($(item));
-        });
-    }
-
-    var stopIconAnim = function(){
-        for(var idx in animCtrlers){
-            if(animCtrlers[idx] != null){
-                clearInterval(animCtrlers[idx]);
-                animCtrlers[idx] = null;
-            }
-        }
-    }
-
-    var setIconAnimCtrler = function(icons){
-        if(icons.data('isReady')){
-            var ctrlerIdx = icons.data('ctrlerIdx');
-            if(animCtrlers[ctrlerIdx] == null){
-                animCtrlers[ctrlerIdx] = setInterval(function(){
-                    var animIdx;
-                    var currentIdx = icons.data('animIdx');
-                    var total = icons.data('length');
-                    if(currentIdx == total-1) animIdx = 0;
-                    else animIdx = currentIdx+1;
-        
-                    icons.find('img').eq(currentIdx).hide();
-                    icons.find('img').eq(animIdx).show();
-                    icons.data('animIdx', animIdx);
-                }, 30);
-            }
-        }
-    }
-
-    var loadAnimSourceComplete = function(img){
-        var icons = $(img).parent();
-        var idx = icons.data("loadIdx") + 1;
-        icons.data("loadIdx", idx);
-
-        if(icons.data("loadIdx") == icons.data("loadTotal")) icons.data('isReady', true);
-    }
-    window.loadAnimSourceComplete = loadAnimSourceComplete;
-
-    var placeholderImage = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI0MzJweCIgaGVpZ2h0PSI0MzJweCIgdmlld0JveD0iMCAwIDQzMiA0MzIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzMiA0MzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cmVjdCB5PSIxIiBmaWxsPSIjRjRGNEY0IiB3aWR0aD0iNDMyIiBoZWlnaHQ9IjQzMiIvPgo8Zz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0xMjIuMzgyLDIwMC45OWg2LjU4NXYyNy40MDhoMTMuMzQ4djUuNTE4aC0xOS45MzRWMjAwLjk5eiIvPgoJPHBhdGggZmlsbD0iI0FBQUFBQSIgZD0iTTE0NC4xODgsMjE3LjU4N2MwLTEwLjg1Nyw3LjAzLTE3LjIyLDE1Ljc5NS0xNy4yMmM0Ljc2MSwwLDguMDU0LDIuMDQ3LDEwLjE4OSw0LjIyN2wtMy41MTUsNC4xODIKCQljLTEuNjAyLTEuNTU3LTMuNDcxLTIuNzU4LTYuNDUyLTIuNzU4Yy01LjQ3MywwLTkuMjk5LDQuMjcxLTkuMjk5LDExLjM0NmMwLDcuMTYzLDMuMjkyLDExLjQ3OSw5Ljc0NCwxMS40NzkKCQljMS42MDIsMCwzLjIwNC0wLjQ0NSw0LjEzOC0xLjI0NnYtNi40OTZoLTUuODI5di01LjM4NGgxMS43MDJ2MTQuODYxYy0yLjIyNSwyLjE4LTYuMDk2LDMuOTYtMTAuNjc5LDMuOTYKCQlDMTUwLjk5NSwyMzQuNTM5LDE0NC4xODgsMjI4LjU3NiwxNDQuMTg4LDIxNy41ODd6Ii8+Cgk8cGF0aCBmaWxsPSIjQUFBQUFBIiBkPSJNMTc3LjIwNiwyMDAuOTloMjAuMjAxdjUuNDczaC0xMy42MTV2Ny42MDhoMTEuNTY4djUuNTE4aC0xMS41Njh2OC44MWgxNC4xMDR2NS41MThoLTIwLjY5VjIwMC45OXoiLz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0yMDMuMTQ5LDIzMC4yNjhjMC0yLjQwMiwxLjczNS00LjI3MSw0LjA0OS00LjI3MWMyLjM1OCwwLDQuMDk0LDEuODY5LDQuMDk0LDQuMjcxCgkJcy0xLjczNSw0LjI3MS00LjA5NCw0LjI3MUMyMDQuODg0LDIzNC41MzksMjAzLjE0OSwyMzIuNjcsMjAzLjE0OSwyMzAuMjY4eiIvPgoJPHBhdGggZmlsbD0iI0FBQUFBQSIgZD0iTTIxNi4zMjEsMjE3LjU4N2MwLTEwLjg1Nyw2Ljk4NS0xNy4yMiwxNS4zMDYtMTcuMjJjNC4xODMsMCw3LjUyLDIuMDAyLDkuNjU1LDQuMjI3bC0zLjQ3LDQuMTgyCgkJYy0xLjY0Ni0xLjYwMi0zLjU2LTIuNzU4LTYuMDUyLTIuNzU4Yy00Ljk4MywwLTguNzIxLDQuMjcxLTguNzIxLDExLjM0NmMwLDcuMTYzLDMuMzgyLDExLjQ3OSw4LjU4NywxMS40NzkKCQljMi44MDQsMCw1LjAyOC0xLjMzNSw2LjgwOC0zLjI0OGwzLjQ3MSw0LjA5NGMtMi43MTQsMy4xNTgtNi4yMjksNC44NS0xMC41LDQuODVDMjIzLjA4NCwyMzQuNTM5LDIxNi4zMjEsMjI4LjU3NiwyMTYuMzIxLDIxNy41ODcKCQl6Ii8+Cgk8cGF0aCBmaWxsPSIjQUFBQUFBIiBkPSJNMjQzLjI4OCwyMTcuMzE5YzAtMTAuNzIzLDYuMDA3LTE2Ljk1MiwxNC43MjktMTYuOTUyYzguNzIxLDAsMTQuNzI4LDYuMjczLDE0LjcyOCwxNi45NTIKCQlzLTYuMDA3LDE3LjIyLTE0LjcyOCwxNy4yMkMyNDkuMjk1LDIzNC41MzksMjQzLjI4OCwyMjcuOTk4LDI0My4yODgsMjE3LjMxOXogTTI2Ni4wMjUsMjE3LjMxOWMwLTcuMDc0LTMuMTE1LTExLjMwMS04LjAwOS0xMS4zMDEKCQljLTQuODk1LDAtOC4wMSw0LjIyNy04LjAxLDExLjMwMWMwLDcuMDMsMy4xMTUsMTEuNTI0LDguMDEsMTEuNTI0QzI2Mi45MSwyMjguODQ0LDI2Ni4wMjUsMjI0LjM1LDI2Ni4wMjUsMjE3LjMxOXoiLz4KCTxwYXRoIGZpbGw9IiNBQUFBQUEiIGQ9Ik0yNzguNjY1LDIwMC45OWg3LjI5N2w1LjYwNiwxNS4zOTVjMC43MTIsMi4wNDYsMS4zMzUsNC4yMjcsMi4wMDMsNi4zNjNoMC4yMjIKCQljMC43MTItMi4xMzYsMS4yOTEtNC4zMTYsMi4wMDMtNi4zNjNsNS40NzMtMTUuMzk1aDcuMjk3djMyLjkyNmgtNi4wMDd2LTEzLjc0OWMwLTMuMTE0LDAuNDg5LTcuNjk3LDAuODAxLTEwLjgxMmgtMC4xNzgKCQlsLTIuNjcsNy43NDJsLTUuMDcyLDEzLjgzOGgtMy43ODJsLTUuMTE2LTEzLjgzOGwtMi42MjUtNy43NDJoLTAuMTc5YzAuMzEyLDMuMTE1LDAuODQ2LDcuNjk4LDAuODQ2LDEwLjgxMnYxMy43NDloLTUuOTE4VjIwMC45OXoKCQkiLz4KPC9nPgo8L3N2Zz4K"
-
-    document.addEventListener('readystatechange',function(){
-        if(document.readyState === 'complete') {
-            $context.find('[data-icon-anim-src]').each(function(index, el){
-                el.load = loadAnimSourceComplete(el)
-                el.src = el.dataset['iconAnimSrc']
-            })
-        }
-    })
-
-    $context.find('.ui_ico_anim').each(function(idx, item){
-        var leng = $(item).data('length');
-        var patharr = $(item).find('img').attr('src').split("/");
-        var pleng = patharr.length;
-        var path = "";
-        for(var j=0;j<pleng-1;j++){
-            path += patharr[j] + "/"
-        }
-        var fn = patharr[pleng-1].substr(0, 1);
-
-        animCtrlers[idx] = null;
-        $(item).data("ctrlerIdx", idx);
-        $(item).data("animIdx", 0);
-        $(item).data("loadIdx", 1);
-        $(item).data("isReady", false);
-        
-        var i, num;
-        var total = 0;
-        if(idx < 2){
-            for(i=1;i<leng;i+=2){
-                if(i < leng){
-                    total++;
-
-                    if(i < 10) var num = "00" + i;
-                    else if(i>9 && i < 100) num = "0" + i;
-                    else num = i;
-                    $(item).append('<img src="'+placeholderImage+'" data-icon-anim-src="' + path + fn + num + '.png" alt="">');
-                }
-            }
-        } else{
-            for(i=1;i<leng;i++){
-                total++;
-                
-                num = i < 10 ? "0" + i : i;
-                $(item).append('<img src="'+placeholderImage+'" data-icon-anim-src="' + path + fn + num + '.png" alt="">');
-            }
-        }
-        $(item).data("loadTotal", total);
-        $(item).data('length', total+1);
-    });
-    $context.find('.ui_ico_anim img').css({position:'absolute', display:'none'});
-    $context.find('.ui_ico_anim img:nth-child(1)').css({display:'block'});
-
     /* 20210503 : 모바일앱 다운로드 팝업 */
     if (vcui.detect.isMobileDevice && !isApp()) {
         var layer_id = '#mobile-close-popup';
@@ -1036,172 +957,12 @@ $(function () {
     }
     /* //20210503 : 모바일앱 다운로드 팝업 */
 
-    function setActivePlayByScroll(){
+    function setActiveScroll(){
         // BTOCSITE-740
         //if (!vcui.detect.isMobileDevice) return; //2021-07-23
 
-        var sceneActiveQue = [];
-        var scenes = $context.find('.scene');
-
-        scenes.each(function(){
-            var self = $(this);
-            var video = self.find('video');
-            //var rwrerer = video.parent('.only-mobile');
-            var image = self.find('.img img');
-
-            self.on('active.scroll', function(e, scrollTop){
-                // var gnbHeight = 84;
-                var gnbHeight = 110;
-                var top = self.offset().top;
-                //var sceneHeight = self.height();
-                var sceneHeight = 500;
-                var winHeight = $(window).height();               
-                //if ( top >= scrollTop && (scrollTop + winHeight) >= (top + sceneHeight) ){  // 영역이 완전히 보일떄 
-                if ( top >= (scrollTop + gnbHeight) - (sceneHeight /2) && (scrollTop + winHeight) - (sceneHeight /2) >= top ){  // 영역이 절반이상 보여질때 
-                    self.addClass('on');
-                    if (!!image.length){
-                        /*
-                        image.animate({
-                            'width' : '100%'
-                        });
-                        */
-                    }
-                    /*
-                    if (!!video.length){
-                        video.get(0).play();
-                    }
-                    */
-
-                    var viewHeight = 500; // 보여지는 영역 높이값
-                    
-                    // 배너가 화면보다 위에 있을떄
-                    if (top < scrollTop){
-                        viewHeight = (top + 500) - scrollTop;
-                    }
-                    // 배너가 화면보다 아래에 있을때
-                    if (top + 500 > scrollTop + winHeight){
-                        viewHeight = (scrollTop + winHeight) - top;
-                    }
-
-                    sceneActiveQue.push({
-                        'el' : self,
-                        'viewHeight' : viewHeight
-                    });
-                } else {
-                    self.removeClass('on');
-                    if (!!image.length){
-                        /*
-                        image.animate({
-                            'width' : '110%'
-                        });
-                        */
-                    }
-                    
-                    /* BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-                    if (!!video.length && !video.get(0).paused){
-                    // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){
-                        //console.log('reset video')
-                        video.get(0).pause();
-                        video.get(0).currentTime = 0;
-                    }
-                    /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-                }        
-            });     
-        });
-
-        var scrollInterval = null;
-
-        $(window).on('scroll.videoPlay', function(){
-            //clearTimeout(scrollInterval);
-            
-            //scrollInterval = setTimeout(function(){                
-                var scrollTop = $(window).scrollTop();
-                
-                //console.log('scrollTop', scrollTop);
-                
-                sceneActiveQue = [];
-
-                scenes.each(function(){
-                    $(this).trigger('active', scrollTop);
-                });
-                
-                var hiActiveView = null;    // 가장 많이 보이고있는 배너
-                sceneActiveQue.forEach(function( scene ){
-                    //console.log('activeScene viewHeight', scene.viewHeight);
-                    //console.log('activeScene el', scene.el);
-                    scene.hiActiveView = false;
-
-                    if (hiActiveView == null){
-                        hiActiveView = scene;
-                        scene.hiActiveView = true;
-                    } else {
-                        if (hiActiveView.viewHeight < scene.viewHeight ){
-                            hiActiveView = scene;
-                            scene.hiActiveView = true;
-                            if (sceneActiveQue.length > 0){
-                                sceneActiveQue[0].hiActiveView = false;
-                            }
-                        }
-
-                        if (hiActiveView.viewHeight == scene.viewHeight ){
-                            hiActiveView = scene;
-                            scene.hiActiveView = true;
-                            if (sceneActiveQue.length > 0){
-                                sceneActiveQue[0].hiActiveView = false;
-                            }
-                        }
-                    }
-                });
-
-                //console.log('########### sceneActiveQue ###########', sceneActiveQue);
-
-                sceneActiveQue.forEach(function( scene, idx ){
-                    var video = $(scene.el).find('video');
-                    var sewewe = $(scene.el).find('.only-mobile').find('video'); 
-
-                    if ( scene.hiActiveView == true ){
-                        //console.log('true', scene.hiActiveView);
-                        if (!!video.length ){
-                        // if (!!video.length && video.get(0).currentTime == 0 && video.hasClass('is-loaded111')){ //class 체크 if
-                            video.get(0).play(); //처음 플레이
-                        }
-
-                        if(window.innerWidth < 768){
-                            sewewe.get(0).play();
-                            //console.log("mobile---");
-                        } else {
-                            sewewe.get(0).pause();
-                            sewewe.get(0).currentTime = 0;
-                            //console.log("pc---");
-                        }
-                    }
-                    if ( scene.hiActiveView == false ){
-                        //console.log('false', scene.hiActiveView);
-                        if (!!video.length){
-                        // if (!!video.length && video.hasClass('is-loaded111') && !video.get(0).paused){ //class 체크 if
-                            video.get(0).pause();
-                            video.get(0).currentTime = 0;                            
-                        }
-                    }
-                    
-                    
-        
-                });
-                //console.log('hiActiveView', hiActiveView);
-                /*
-                var video = $(hiActiveView.el).find('video');
-                console.log('video', video);
-                if (!!video.length){
-                    video.get(0).play();
-                }
-                */
-            //}, 500);
-        });
-        
-        $(window).trigger('scroll.videoPlay');
-
-        // 플로팅 버튼 AR 관련 
-        if (isOnlyMobileDevice){
+        // 플로팅 버튼 AR 관련
+        if (vcui.detect.isMobileDevice){
             var isApplication = isApp();
 
             setTimeout(function(){

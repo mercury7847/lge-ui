@@ -218,12 +218,13 @@ img.m350 {max-width:350px!important}
 .company .box.ci {margin-top:24px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color {margin-top:24px; padding:60px 0; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color > ul {display:flex; justify-content:center}
-.company .box.color > ul > li .chip {width:210px; height:210px; margin:0 70px; border-radius:50%; font-size:24px; font-weight:bold; text-align:center}
+.company .box.color > ul > li {width:33.3333%; max-width:350px}
+.company .box.color > ul > li .chip {width:210px; height:210px; margin:0 auto; border-radius:50%; font-size:24px; font-weight:bold; text-align:center}
 .company .box.color > ul > li .chip.red {background-color:#a50034; color:#fff}
 .company .box.color > ul > li .chip.gray {background-color:#6b6b6b; color:#fff}
 .company .box.color > ul > li .chip.white {background-color:#fff; box-sizing:border-box; border:1px solid #000; color:#000}
 .company .box.color > ul > li .chip span {line-height:210px}
-.company .box.color > ul > li .info {margin-top:20px; margin-left:70px}
+.company .box.color > ul > li .info {margin-top:20px; margin-left:20%}
 .company .box.color > ul > li .info p {font-size:14px; line-height:22px}
 .company .ci_download {max-width:1380px; margin:60px auto; padding:50px 0 60px; border-radius:8px; background-color:#f4f4f4; text-align:center}
 .company .ci_download .tit {font-size:24px; font-weight:bold; line-height:36px}
@@ -799,16 +800,17 @@ ul.bull.m > li::before {width:2px; height:2px; top:11px}
 ul.bull > li.star {color:#da0f47}
 ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0; color:#da0f47}
 
+.company ul.bull > li > ul.ico_list {width:calc(100% + 12px); margin-left:-12px}
 .company ul.ico_list {display:flex; justify-content:space-between; flex-wrap:wrap}
-.company ul.ico_list > li {width:100%; text-align:center}
+.company ul.ico_list.ol_box {padding:28px; border:1px solid #ddd; border-radius:8px}
+.company ul.ico_list > li {width:100%; text-align:center; margin-left:0!important; text-indent:0!important}
 .company ul.ico_list.t3 > li {width:33.3333%}
 .company ul.ico_list.t4 > li {width:25%; padding:0 20px}
 .company ul.ico_list.t10 > li {width:20%; margin:0!important; padding-bottom:20px; text-indent:0!important}
 .company ul.ico_list.t10 > li + li:nth-child(6) {border-left:0}
 .company ul.ico_list.t10 > li + li:nth-child(n + 6) {padding-bottom:0; padding-top:20px; border-top:1px dashed #ddd}
 .company ul.ico_list > li + li {border-left:1px dashed #ddd}
-.company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 18px}
-.company ul.ico_list.t10 > li .iconArea {margin:0 auto 12px}
+.company ul.ico_list > li .iconArea {width:80px; height:80px; margin:0 auto 12px}
 .company ul.ico_list > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_list > li strong {display:block; margin-bottom:12px; line-height:26px}
 .company ul.ico_list > li span + strong {margin-bottom:0!important}
@@ -833,12 +835,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list.line.t4 > li strong.bold {font-weight:bold}
 .company ul.ico_list.line.t4 > li strong em {display:block; font-weight:normal}
 .company ul.ico_list.line > li + li {border:1px solid #ddd}
-.company ul.ico_list.line > li .iconArea {margin-bottom:12px}
 
 .company ul.ico_grid {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px}
 .company ul.ico_grid > li {padding:30px; border:1px solid #ddd; border-radius:8px}
 .company ul.ico_grid.t4 > li {width:calc(25% - 18px); padding:30px 10px}
-.company ul.ico_grid > li .iconArea {width:80px; height:80px;margin:0 auto 12px}
+.company ul.ico_grid > li .iconArea {width:80px; height:80px; margin:0 auto 12px}
 .company ul.ico_grid > li .iconArea i {display:block; width:100%; height:100%; margin:0 auto}
 .company ul.ico_grid > li .iconArea i.ico-estim-01 {background:url(/kr/images/company/icon/ico-estim-01.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_grid > li .iconArea i.ico-estim-02 {background:url(/kr/images/company/icon/ico-estim-02.svg) no-repeat 50% 50%; background-size:80px 80px}
@@ -897,6 +898,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-tcfd_02 {background:url(/kr/images/company/icon/ico-tcfd_02.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-tcfd_03 {background:url(/kr/images/company/icon/ico-tcfd_03.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-tcfd_04 {background:url(/kr/images/company/icon/ico-tcfd_04.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-gateway {background:url(/kr/images/company/icon/ico-gateway.svg) no-repeat 50% 50%; background-size:80px 80px}
+.company ul.ico_list > li .iconArea i.ico-phone {background:url(/kr/images/company/icon/ico-mobile-phone.svg) no-repeat 50% 50%; background-size:80px 80px}
 
 .company ul.bull li ul.dwn_list {display:flex; justify-content:space-between}
 .company ul.dwn_list > li {position:relative; display:flex; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
@@ -918,6 +921,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .dwn_all ul.dwn_list {float:left; width:calc(50% - 12px); margin-top:-14px}
 .company .dwn_all ul.dwn_list + ul.dwn_list {margin-left:24px}
 .company .dwn_all ul.dwn_list > li {width:100%}
+.company .dwn_all .dwn_type2 ul.dwn_list > li span > em {position:relative; padding-left:20px; font-weight:normal}
+.company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {content:''; display:block; position:absolute; width:1px; left:10px; top:4px; bottom:2px; background-color:#ddd}
 .company .dwn_all ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
 .company .dwn_all ul.dwn_list.item2 > li {width:calc(50% - 12px)}
 
@@ -1173,11 +1178,25 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w576 ul.thumb_name {display:flex; justify-content:space-between; max-width:576px; margin:0 auto; padding:0 1.6%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb ul.thumb_name > li {margin-top:12px; font-size:18px; font-weight:500; line-height:28px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img.only_pc {max-width:868px; width:100%}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic1 > img {border-radius:0}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box {padding:40px; border-radius:8px; background-color:#f4f4f4}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box > img {display:block; max-width:510px; width:100%; margin:0 auto}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.g_box ul.thumb_name {display:flex; justify-content:space-between; max-width:510px; margin:0 auto; padding:0 2.4%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-top:0; margin-bottom:36px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {width:100%; max-width:912px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 {margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 > img {width:100%; max-width:1142px; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg {display:flex; justify-content:center; align-items:center; margin-top:0}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .g_imgs img {width:100%; margin:0 auto}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg.w674 > .g_imgs img {max-width:674px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info {flex:auto; width:100%; max-width:210px; margin-top:24px; margin-left:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info .g_tit {font-size:20px; font-weight:bold; line-height:30px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul {margin-top:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li {display:flex; flex-direction:column; align-items:center; padding:27px 0 22px; border:1px solid #ddd; border-radius:8px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li + li {margin-top:24px}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li span {display:block; font-size:16px; font-weight:bold; line-height:26px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong {position:relative; display:inline-block; margin-top:16px; margin-bottom:0; padding-left:34px; color:#e81953; font-size:30px; font-weight:bold; line-height:44px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong::before {content:''; display:block; position:absolute; width:0; height:0; left:0; bottom:10px; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:15px solid #e81953}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px; width:100%}
@@ -1375,6 +1394,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list > li {width:calc(33.3333% - 16px)}
     .company ul.card_list > li .photo .name {font-size:20px; line-height:30px}
 }
+@media screen and (max-width:1220px){
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; padding-left:0}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
+}    
 @media screen and (max-width:1170px){
     .company ul.m_cardList > li {width:calc(50% - 12px); max-width:50%}
     .company ul.m_cardList > li:nth-child(3),
@@ -1389,6 +1412,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list + ul.card_list > li:nth-child(n + 3) {margin-top:24px}
     .company ul.card_list > li .photo .job {font-size:13px}
     
+    .company .box.color {padding:60px 30px}
+    .company .box.color > ul {justify-content:space-between}
+    .company .box.color > ul > li {max-width:240px; align-items:flex-start}
+    .company .box.color > ul > li .info {margin-left:0; padding:0 12px}
+
     .company ul.cmSystem {flex-direction:column; width:100%; max-width:416px; margin:15px auto 0}
     .company ul.cmSystem > li {display:flex; width:100%; min-height:110px}
     .company ul.cmSystem > li + li {margin-top:28px}
@@ -1405,8 +1433,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .home_appliances > ul > li .home_box .home_tit span {font-size:14px; line-height:22px}
     .company .home_appliances > ul > li .home_box .home_text {padding:16px; border-left:0; font-size:14px; line-height:22px}
     .company .home_appliances > ul > li .home_box +.home_box .home_text {border-left:1px solid #ddd}
-}
-@media screen and (max-width:1120px){
+
     .company ul.rec_type > li p {margin-top:30px; font-size:18px}
 }
 @media screen and (max-width:952px){
@@ -1428,6 +1455,15 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company ul.m_cardList > li {width:100%; max-width:100%; margin-left:0!important}
     .company ul.m_cardList > li + li {margin-top:24px}
+
+    .company .box.color {padding:20px 0}
+    .company .box.color > ul {flex-direction:column; align-items:center}
+    .company .box.color > ul > li {width:216px; text-align:center}
+    .company .box.color > ul > li + li {margin-top:20px}
+    .company .box.color > ul > li .chip {width:104px; height:104px; margin:0 auto; font-size:15px}
+    .company .box.color > ul > li .chip span {line-height:104px}
+    .company .box.color > ul > li .info {display:inline-block; width:100%; margin-top:8px; margin-left:0; padding:0; text-align:left}
+    .company .box.color > ul > li .info p {font-size:13px}
 
     .company .graph.lgway1 > .only_pc {display:none!important}
     .company .graph.lgway1 > .only_mo {display:block!important; width:100%; max-width:508px; margin:0 auto}
@@ -1554,6 +1590,17 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 {margin-bottom:18px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w912 > img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.w1142 > img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg.w674 > .g_imgs img {max-width:576px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg {flex-direction:column}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info {max-width:576px; margin-top:15px; margin-left:0}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info .g_tit {font-size:14px; line-height:22px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul {display:flex; justify-content:center; margin-top:8px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li {width:140px; padding:10px 5px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li + li {margin-top:0; margin-left:8px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li span {font-size:13px; line-height:22px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong {margin-top:6px; padding-left:17px; font-size:18px; line-height:26px}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.grpimg > .grp_info > ul > li strong::before {bottom:5px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:7.5px solid #e81953}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}
@@ -1648,6 +1695,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.ofn_links li .btn {min-width:50%; height:auto; margin:3px 4px; padding:10px 0; font-size:13px; line-height:21px}
 
     .company ul.ico_list {flex-direction:column}
+    .company ul.bull > li > ul.ico_list {width:calc(100% + 8px); margin-left:-8px}
     .company ul.ico_list.t3 > li {width:100%}
     .company ul.ico_list.t4 > li {width:100%}
     .company ul.ico_list.t10 {flex-direction:row}
@@ -1712,6 +1760,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px 8px; border-radius:4px; font-size:16px}
     .company ul.dwn_list.sales > li .thumb {width:calc(100% + 32px); margin:-16px 0 14px -16px; padding-top:11px}
     .company ul.dwn_list.sales > li .thumb img {min-width:83px}
+
+    .company .dwn_all .dwn_type2 ul.dwn_list > li {flex-direction:column; padding-right:15px}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span {text-align:center}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; margin-top:8px; padding-left:0; text-align:center}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
+    .company .dwn_all .dwn_type2 ul.dwn_list > li .btn.dwn {position:static; top:auto; right:auto; transform:translateY(0); margin-top:18px}
 
     .company .dwn_all .dwn_type2 {width:100%}
     .company .dwn_all .dwn_type2 + .dwn_type2 {margin-top:30px; margin-left:0}
@@ -1836,14 +1890,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .box.ci {margin-top:20px}
     .company .text.ci {margin-top:8px}
     
-    .company .box.color {padding:20px 0}
-    .company .box.color > ul {flex-direction:column}
-    .company .box.color > ul > li {text-align:center}
-    .company .box.color > ul > li + li {margin-top:20px}
-    .company .box.color > ul > li .chip {width:104px; height:104px; margin:0 auto; font-size:15px}
-    .company .box.color > ul > li .chip span {line-height:104px}
-    .company .box.color > ul > li .info {display:inline-block; margin-top:8px; margin-left:0; text-align:left}
-    .company .box.color > ul > li .info p {font-size:13px}
 
     .company .ci_download {width:calc(100% - 8.88vw); margin:20px 4.44vw; padding:55px 0}
     .company .ci_download .tit {font-size:18px; line-height:26px}

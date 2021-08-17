@@ -12,9 +12,6 @@
 			self.$sustainable = $('.sustainable-download');
 			self.$downloadBtn  = self.$sustainable.find('.btn');
 			self.$title = self.$sustainable.find('.tit');
-			self.$company = $('.company');
-			self.$comText = $('.com-text');
-			self.$accord = self.$comText.find('.accord-cont');
 			
 			/* 모바일 PDF 다운로드 제한 */
 			self.mobileFlag = /Mobile|iP(hone|od)|Windows (CE|Phone)|Minimo|Opera M(obi|ini)|BlackBerry|Nokia/;
@@ -49,17 +46,27 @@
 		/* PDF 변환 다운로드 */
 		pdfDownload : async function() {
 			var self = this;
+			
 			/* 변환부분 외 hide */
-			self.$accord.css('display', 'block');
-			var comTextClone = self.$comText.clone();
+			$('.com-text').parent().each(function(index, element) {
+				if ($(element).css('display') == 'none') {
+					$(element).remove();
+				}
+			});
+			$('.com-text .accord-cont').css('display', 'block');
+			$('.com-text .content').addClass('on');
+			$('.com-text .view_more').addClass('on');
+			$('.sustainable-download').remove();
+			var comTextClone = $('.com-text').clone();
 			$('body *').css('display', 'none');
-			self.$company.css('display', '');
-			var parentElement = self.$company.parent();
+			$('.company').css('display', '');
+			var parentElement = $('.company').parent();
 			while (parentElement.prop('tagName') != 'BODY') {
 				parentElement.css('display', "");
 				parentElement = parentElement.parent();
 			}
-			self.$company.prepend(comTextClone);
+			$('.company').prepend(comTextClone);
+			
 			$('html').scrollTop(0);
 			lgkorUI.showLoading();
 			

@@ -313,10 +313,13 @@ MainSwiper.prototype = {
 
                     self.getContent();
 
-                    setTimeout(function(){
-                        mainSwiper.swiper.updateAutoHeight();
-                        $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                    }, 500);
+
+                    vcui.require(['ui/lazyLoaderSwitch'], function (){
+                        setTimeout(function(){
+                            mainSwiper.swiper.updateAutoHeight();
+                            $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                        }, 500);
+                    });
                 });
             }
         });
