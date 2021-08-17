@@ -34,7 +34,7 @@ img.m350 {max-width:350px!important}
 .company .btn-link::after {top:auto; bottom:6px}
 
 .fixed-menu {position:sticky; position:-webkit-sticky; top:73px; top:auto; z-index:1}
-@media screen and (max-width:767px){
+@media screen and (max-width:768px){
     .fixed-menu{top:66px}
 }
 
@@ -1069,7 +1069,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company .pop-conts .com-text.tbl {padding-bottom:0}
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
 .popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
-.popup-wrap.popup-company .pop-conts.no-footer {padding-bottom:60px}
 .popup-wrap.popup-company .pop-conts table th,
 .popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd}
 
@@ -1861,7 +1860,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .popup-wrap.popup-company .pop-conts .tit + ul {margin-top:8px}
     .popup-wrap.popup-company .pop-conts .tb_row .tbl_info,
     .popup-wrap.popup-company .pop-conts .tb-col .tbl_info {margin-bottom:10px}
-    .popup-wrap.popup-company .pop-conts.no-footer{height: calc(100vh - 113px);max-height: calc(100vh - 113px);}
+    .popup-wrap.popup-company .pop-conts.no-footer{height:calc(100vh - 113px); max-height:calc(100vh - 113px); padding-bottom:64px}
 
     .artTxt p {font-size:14px; line-height:1.57}
     .artTxt h2.tit ~ h2.tit {margin-top:20px}
