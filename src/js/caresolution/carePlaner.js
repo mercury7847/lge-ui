@@ -711,10 +711,10 @@
 
         // BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
         // 파라메터 없을시 기본값 적용
-        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value || 0;
-        if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value || 0;
-        if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value || 0;
-        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value || 0;
+        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
+        if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
+        if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -887,11 +887,9 @@
         })
 
 
-        // BTOCSITE-3899 임시 처리
         // $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
         //     $(this).trigger('change')
         // })
-
     }
 
     //담기...
