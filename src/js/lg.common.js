@@ -1834,7 +1834,7 @@ var goAppUrl = function(path) {
             var modelName = {
                 options: {
                     text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
-                    imgPath: '/kr/support/images/find-model/model-smart-phone.jpg',
+                    imgPath: '/kr/support/images/find-model/model-multi-air.jpg', //210818 BTOCSITE-4574 3in1 이미지로 변경
                     imgAlt: '모델명 및 제조번호 확인 예시 사진'
                 },
                 init: function() {
