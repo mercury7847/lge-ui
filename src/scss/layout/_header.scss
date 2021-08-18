@@ -1715,6 +1715,8 @@
         overflow:hidden;
         list-style:none;
         z-index:1;
+        box-shadow:none !important;
+        border-radius:0 !important;
 
         .swiper-notification {
             position: absolute;
