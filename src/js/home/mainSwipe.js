@@ -277,6 +277,10 @@ MainSwiper.prototype = {
             return;
         }
 
+        $.ajaxSetup({
+            cache:true
+        });
+
         $.ajax({
             method: 'POST',
             url : href,
