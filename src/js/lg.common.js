@@ -7,8 +7,9 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
+    var weblink = path ? path : location.href;
     location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
+    
 }
 
 ;(function(global){
