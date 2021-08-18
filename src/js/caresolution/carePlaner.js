@@ -886,10 +886,13 @@
             if(dl.hasClass('open')) dl.removeClass('open');
         })
 
-
-        // $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
-        //     $(this).trigger('change')
-        // })
+        /*
+         *BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
+         * 임시 처리 - 추수 수정 예정
+        $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
+            $(this).trigger('change')
+        })
+         */
     }
 
     //담기...
