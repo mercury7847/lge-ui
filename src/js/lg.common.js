@@ -8,22 +8,7 @@ var isApp = function(){
 */
 var goAppUrl = function(path) {
     var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
-
-    if( vcui.detect.isIOS ) {
-        var clickedAt = +new Date;
-        setTimeout( function () { 
-            if (+new Date - clickedAt < 2000 ) { 
-                // 앱스토어 이동 
-                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
-            }
-        } ,1500);
-
-        setTimeout( function () { 
-            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
-        },0);
-    } else {
-        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
-    }
+    location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
 }
 
 ;(function(global){
