@@ -220,9 +220,9 @@ if ('scrollRestoration' in history) {
                     "model_id":item.modelId,
                     "model_sku":item.salesModelCode + '.' + item.salesSuffixCode,
                     "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
-                    "rental_price":(item.carePrice && item.carePrice > 0) ? item.carePrice : "",
-                    "price":(item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
-                    "discounted_price":(item.price && item.price > 0) ? item.price : "",
+                    "rental_price":(item.carePrice && item.carePrice > 0) ? ""+item.carePrice : "",
+                    "price":(item.originalPrice && item.originalPrice > 0) ? ""+item.originalPrice : "",
+                    "discounted_price":(item.price && item.price > 0) ? ""+item.price : "",
                     "brand":"LG",
                     "category":item.superCategoryName + "/" + item.categoryName
                 }
