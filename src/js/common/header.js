@@ -43,7 +43,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             lgkorUI.requestCartCount(self.$el.attr('data-cart-url'));
             
 
-            vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min', 'libs/swiper_v451.min'], function () {            
+            vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min'], function () {            
                 self._setting();
                 self._bindEvents();
                 self._resize();
@@ -453,14 +453,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         $superContentLastAnchor = $superContent.eq(0).find('a, button').not('.ui_carousel_hidden').last();
                         lastAnchorKeyEvent();
 
-                        if( window.innerWidth > 767 ) {
-                            setTimeout(function(){
+                        if( window.innerWidth > 767 && !vcui.detect.isMobile ) {
+                            vcui.require(['libs/swiper_v451.min'], function(){
                                 if( !$('.super-category-nav').hasClass('swiper-container-initialized')) {
                                     superNavSwiper = new Swiper('.nav:not(.ui_gnb_accordion) .super-category-nav', swiperConfig);
                                 } else {
                                     superNavSwiper.update();
                                 }
-                            }, 50)
+                            })
                         }
                     }
                     self._setOver(idx, 0);
