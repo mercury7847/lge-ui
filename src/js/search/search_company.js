@@ -1,8 +1,3 @@
-if ('scrollRestoration' in history) {
-    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
-    history.scrollRestoration = 'manual';
-}
-
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -32,13 +27,8 @@ if ('scrollRestoration' in history) {
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
-                        /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
                         '<div class="info-btm">' +
-                            '<div class="care">'+
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
-                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
-                            '</div>'+
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
                             '<div class="text hashtag-wrap">' +
                                 '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
                             '</div>' +
@@ -76,67 +66,49 @@ if ('scrollRestoration' in history) {
             '{{/if}}' +
         '</div>' +
     '</div></li>';
-    var customerProductItemTemplate = '<li><a href="{{url}}" class="item">' +
-        '<div class="result-thumb">' +
-            '<div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
-        '</div>' +
-        '<div class="result-info">' +
-            '<div class="info-text">' +
-                '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
-                '<div class="result-detail">' +
-                    '<div class="sku">{{#raw sku}}</div>' +
-                    '<div class="info-btm">' +
-                        '{{#each item in category}}<span class="text">{{item}}</span>{{/each}}' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-    '</a></li>'
-    var customerDownloadItemTemplate = '<li><div class="item">' +
-        '<div class="result-info">' +
-            '<div class="info-text">' +
-                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-                '<div class="result-tit">' +
-                    '<a href="{{url}}">{{#raw title}}</a>' +
-                    '<a href="{{url}}" class="cs">' +
-                        '<span class="cs-inner">' +
-                            '{{#each (item, index) in category}}{{#if index != 0}}>{{/if}}<span>{{item}}</span>{{/each}}' +
-                        '</span>' +
-                        '{{#if desc}}<span class="cs-inner">{{desc}}</span>{{/if}}' +
-                    '</a>' +
-                '</div>' +
-                '<div class="result-detail"><div class="info-btm">' +
-                    '<span class="text">{{date}}</span>' +
-                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
-                '</div></div>' +
-            '</div>' +
-            '{{#if linkItem}}<div class="btn-area">' +
-                '{{#each item in linkItem}}<button type="button" class="btn border size-m" data-file-url="{{item.url}}"><span>{{item.title}}</span></button>{{/each}}' +
-            '</div>{{/if}}' +
-            '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
-        '</div>' +
-    '</div></li>';
-
-    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
+    
+    var companyTemplate =
+    	'<li>'
+		+   '<a href="{{url}}" class="item">'
+		+		'<div class="result-info">'
+		+			'<div class="info-text">'
+		+				'<div class="flag-wrap bar-type"><span class="flag">{{flag}}</span></div>'
+		+				'{{#if title}}'
+		+					'<div class="result-tit"><strong>{{#raw title}}</strong></div>'
+		+				'{{/if}}'
+		+				'<div class="result-detail">'
+		+					'{{#if content}}'
+		+						'<div class="desc">'
+		+							'<span>{{#raw content}}</span>'
+		+						'</div>'
+		+					'{{/if}}'
+		+					'<div class="cs">'
+		+						'<span class="cs-inner">'
+		+							'<span>{{#raw breadcrumb}}</span>'
+		+						'</span>'
+		+					'</div>'
+		+				'</div>'
+		+			'</div>'
+		+		'</div>'
+		+	'</a>'
+		+'</li>';
+    
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
-            '{{#if item.target == "popup"}}' + 
-            '<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text btn-target-link"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
-            
-            '{{#else}}' +
-            '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
-            '{{/if}}' +
+            	'{{#if item.target == "popup"}}' + 
+            		'<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+        		'{{#else}}' +
+        			'<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+    			'{{/if}}' +
             '{{/each}}'+
         '</ul>';
-    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
-
+    
     $(window).ready(function() {
         var search = {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
-                $(window).scrollTop(0); //BTOCSITE-2216
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
@@ -149,12 +121,12 @@ if ('scrollRestoration' in history) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
-                            if(!category1) category1 = [];
-                            if(!category2) category2 = [];
-                            var diffCat = vcui.array.different(category1,category2);
-                            if(diffCat.length > 0) {
-                                if(category2 && category2.length > 0) {
-                                    data.filterData = JSON.stringify({"parentcatename":category2});
+                            if (!category1) category1 = [];
+                            if (!category2) category2 = [];
+                            var diffCat = vcui.array.different(category1, category2);
+                            if (diffCat.length > 0) {
+                                if (category2 && category2.length > 0) {
+                                	data.filterData = JSON.stringify({"category":category2});
                                 } else {
                                     data.filterData = "{}";
                                 }
@@ -164,11 +136,11 @@ if ('scrollRestoration' in history) {
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    var hash = location.hash.replace("#","");
+                    var hash = location.hash.replace("#", "");
                     var savedData = lgkorUI.getStorage(hash);
-                    if(savedData && savedData.search) {
+                    if (savedData && savedData.search) {
                         self.savedFilterData = JSON.parse(JSON.stringify(savedData));
-                        if(self.savedFilterData.filterData) {
+                        if (self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             var str;
                             for (key in filterData) {
@@ -177,15 +149,15 @@ if ('scrollRestoration' in history) {
                             }
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
-                        if(savedData.href) self.scrollHref = savedData.href;
-                        if(savedData.search) self.$inputSearch.val(savedData.search);
+                        if (savedData.href) self.scrollHref = savedData.href;
+                        if (savedData.search) self.$inputSearch.val(savedData.search);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                         var value = self.$contentsSearch.attr('data-search-value');
                         value = !value ? null : value.trim();
-                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                        if(!(!value)) {
+                        var force = lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if (!(!value)) {
                             //현재 선택된 카테고리 기준으로 검색
                             self.setinputSearchValue(value);
                             var filterQueryData = self.getListSortingData();
@@ -198,16 +170,16 @@ if ('scrollRestoration' in history) {
             },
 
             getCategoryFromFilter: function(filterData) {
-                if(!filterData) return null;
+                if (!filterData) return null;
                 var filterData = JSON.parse(filterData);
-                var category = filterData["parentcatename"];
+                var category = filterData["category"];
                 return category ? category : [];
             },
 
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
-                for(key in filterdata) {
+                for (key in filterdata) {
                     makeData[key] = filterdata[key].join("||");
                 }
                 data.filterData = JSON.stringify(makeData);
@@ -216,15 +188,15 @@ if ('scrollRestoration' in history) {
 
             makeProductGAData: function(item) {
                 var param = {
-                    "model_name":item.modelDisplayName,
-                    "model_id":item.modelId,
-                    "model_sku":item.salesModelCode + '.' + item.salesSuffixCode,
-                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
-                    "rental_price":(item.carePrice && item.carePrice > 0) ? ""+item.carePrice : "",
-                    "price":(item.originalPrice && item.originalPrice > 0) ? ""+item.originalPrice : "",
-                    "discounted_price":(item.price && item.price > 0) ? ""+item.price : "",
-                    "brand":"LG",
-                    "category":item.superCategoryName + "/" + item.categoryName
+                    "model_name" : item.modelDisplayName,
+                    "model_id" : item.modelId,
+                    "model_sku" : item.salesModelCode + '.' + item.salesSuffixCode,
+                    "model_gubun" : (item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "rental_price" : (item.carePrice && item.carePrice > 0) ? item.carePrice : "",
+                    "price" : (item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
+                    "discounted_price" : (item.price && item.price > 0) ? item.price : "",
+                    "brand" : "LG",
+                    "category" : item.superCategoryName + "/" + item.categoryName
                 }
                 return JSON.stringify(param);
             },
@@ -306,7 +278,7 @@ if ('scrollRestoration' in history) {
             getListSortingData: function() {
                 var self = this;
                 var data = {};
-                self.$listSorting.find('input').each(function(idx, el){
+                self.$listSorting.find('input').each(function(idx, el) {
                     switch(el.type) {
                         case "checkbox":
                             data[el.name] = el.checked ? "Y" : "N";
@@ -322,7 +294,7 @@ if ('scrollRestoration' in history) {
                     }
                 });
 
-                self.$listSorting.find('.ui_selectbox').each(function(idx, el){
+                self.$listSorting.find('.ui_selectbox').each(function(idx, el) {
                     data[el.name] = $(el).vcSelectbox('selectedOption').value;
                 });
                 return data;
@@ -469,22 +441,6 @@ if ('scrollRestoration' in history) {
                     self.requestSearch(postData);
                 });
 
-                //메뉴얼, 드라이버 등의 파일 다운로드
-                var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                $resultListWrap.on('click','div.btn-area button',function(e){
-                    var url = $(this).attr('data-file-url');
-                    if(!(!url)) {
-                        window.location = url;
-                        /*
-                        var a = document.createElement("a");
-                        a.href = url;
-                        document.body.appendChild(a); //firefox
-                        a.click();
-                        a.remove();
-                        */
-                    }
-                });
-
                 //검색 이동 로그 쌓기
                 $('ul.result-list').on('click', 'a', function(e){
                     self.sendLog(this);
@@ -521,7 +477,7 @@ if ('scrollRestoration' in history) {
                     "search":search
                 };
                 var ajaxUrl = self.$contentsSearch.data('logUrl');
-                if(ajaxUrl) {
+                if (ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, null, true);
                 }
             },
@@ -529,7 +485,7 @@ if ('scrollRestoration' in history) {
             _setScrollMoved: function() {
                 var self = this;
                 var scrolltop = $(window).scrollTop();
-                if((self.$contWrap.offset().top - 110) < scrolltop) {
+                if ((self.$contWrap.offset().top - 110) < scrolltop) {
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
@@ -760,15 +716,15 @@ if ('scrollRestoration' in history) {
 
                     //필터세팅
                     var filterShow = false;
-                    if(data.filterList && data.filterList.length > 0) {
+                    if (data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
-                        if(vcui.detect.isMobile){
+                        if (vcui.detect.isMobile) {
                             self.filterLayer.openFilterSectionAll(2);
                         }
                         
-                        if(self.savedFilterData && self.savedFilterData.filterData) {
+                        if (self.savedFilterData && self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             self.filterLayer.resetFilter(filterData);
                         }
@@ -776,10 +732,10 @@ if ('scrollRestoration' in history) {
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                    arr = self.checkArrayData(data.customer);
-                    count = self.checkCountData(data.customer);
-                    self.setTabCount(6, count);
-                    var subcount = self.checkSubCountData(data.customer);
+                    arr = self.checkArrayData(data.company);
+                    count = self.checkCountData(data.company);
+                    self.setTabCount(7, count);
+                    var subcount = self.checkSubCountData(data.company);
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
                     } else {
@@ -789,18 +745,16 @@ if ('scrollRestoration' in history) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            if(!item.hash) {
-                                item.hash = [];
-                            }
-                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            if(item.type=="product") {
-                                $list_ul.append(vcui.template(customerProductItemTemplate, item));
-                            } else {
-                                item.isVideo = !item.isVideo?false:true;
-                                item.linkItem = !item.linkItem ? [] : item.linkItem;
-                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                                $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
-                            }
+                        	item.flag = item.breadcrumb.substr(item.breadcrumb.lastIndexOf('>') + 1);
+                        	item.breadcrumb = vcui.string.replaceAll(item.breadcrumb, searchedValue, replaceText);
+                        	if (item.flag == item.title) {
+                        		item.title = '';
+                        	} else {
+                        		item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                        	}
+                        	item.content = vcui.string.replaceAll(item.content, searchedValue, replaceText);
+                        	
+                            $list_ul.append(vcui.template(companyTemplate, item));
                         });
                         $resultListWrap.show();
                         //self.$listSorting.show();
@@ -830,9 +784,9 @@ if ('scrollRestoration' in history) {
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
                     
-                    //회사소개
-                    count = self.checkCountData(data.company);
-                    self.setTabCount(7, count);
+                    //고객지원
+                    count = self.checkCountData(data.customer);
+                    self.setTabCount(6, count);
                     
                     //추천 제품
                     /*
@@ -843,40 +797,10 @@ if ('scrollRestoration' in history) {
                     */
                     //BTOCSITE-1339 서비스 링크
                     $('.service-link, .mobile-service-link').empty();
-                    if(data.serviceLinkers && data.serviceLinkers.length){
+                    if (data.serviceLinkers && data.serviceLinkers.length) {
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
-
-                    /* BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
-                    $(document).on('click', '.btn-target-link', function(e){
-                        var target = this.getAttribute('href'),
-                            popupWidth = parseInt(this.getAttribute('data-width')),
-                            popupHeight = parseInt(this.getAttribute('data-height')),
-                            screenWidth = parseInt(screen.width),
-                            screenHeight = parseInt(screen.height),
-                            intLeft = Math.floor((screenWidth - popupWidth) / 2),
-                            intTop = Math.floor((screenHeight - popupHeight) / 2);
-            
-                        if (intLeft < 0) intLeft = 0;
-                        if (intTop < 0) intTop = 0;
-
-                        e.preventDefault();
-                        
-                        if( isApp()) {
-                            var appUrl = $(this).attr('href');
-                            if(vcui.detect.isIOS){
-                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
-                                // , 'titlebar_show': 'Y'
-                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                            } else {
-                                android.openNewWebview(appUrl);
-                            }
-                        } else {
-                            window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
-                        }
-                    })
-                    /* //BTOCSITE-2378 : 상담챗 노출 닫기 버튼 2021-08-03 */
 
                     //noData 체크
                     if(noData) {
@@ -916,7 +840,6 @@ if ('scrollRestoration' in history) {
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
-                        //
                         //정렬 셀렉트 박스
                         self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
@@ -932,7 +855,6 @@ if ('scrollRestoration' in history) {
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
-                        //
                         self.$listSorting.find('.sort-select-wrap').show();
                     }
 
@@ -951,32 +873,22 @@ if ('scrollRestoration' in history) {
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        // $(window).scrollTop(self.scrollHref);
-                        // self.scrollHref = null;
-                        // BTOCSITE-2216
-                        if( $('.result-list img').last().length ) {
-                            $('.result-list img').last().on('load', function(){
-                                $('html,body').stop().animate({scrollTop: self.scrollHref});
-                                self.scrollHref = null;
-                            });
-                        } else {
-                            $('html,body').stop().animate({scrollTop: self.scrollHref});
-                            self.scrollHref = null;
-                        }
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
                     }
                 });
             },
 
             //연관검색어 더보기 버튼 노출 여부 체크
-            updateRelatedKeywordMoreButton:function () {
+            updateRelatedKeywordMoreButton : function() {
                 var self = this;
                 var $list_ul = self.$relatedKeywordList.find('ul');
                 var $li = $list_ul.find('>li:eq(0)');
-                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+                if ($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
                     self.$relatedKeywordMobileMoreButton.show();
                 } else {
                     self.$relatedKeywordMobileMoreButton.hide();
-                }    
+                }
             },
 
             //최근 검색어 삭제
@@ -999,8 +911,8 @@ if ('scrollRestoration' in history) {
             },
 
             //최근 검색어 추가
-            addRecentSearcheText:function(text) {
-                if(!text || text.length < 1) return;
+            addRecentSearcheText : function(text) {
+                if (!text || text.length < 1) return;
                 var self = this;
                 /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
@@ -1024,7 +936,7 @@ if ('scrollRestoration' in history) {
             },
 
             //최근 검색어 리스트 갱신
-            updateRecentSearchList:function() {
+            updateRecentSearchList : function() {
                 var self = this;
                 //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
@@ -1034,7 +946,7 @@ if ('scrollRestoration' in history) {
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
-                if(arr.length > 0) {
+                if (arr.length > 0) {
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
@@ -1047,7 +959,7 @@ if ('scrollRestoration' in history) {
             },
 
             //기초 데이타 갱신
-            updateBasicData:function() {
+            updateBasicData : function() {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.data('basicUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {

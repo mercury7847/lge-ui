@@ -215,7 +215,32 @@ if ('scrollRestoration' in history) {
             '{{#if isVideo}}<div class="video-info"><span class="hidden">동영상 포함</span></div>{{/if}}' +
         '</div>' +
     '</div></li>';
-
+    var companyTemplate =
+    	'<li>'
+		+   '<a href="{{url}}" class="item">'
+		+		'<div class="result-info">'
+		+			'<div class="info-text">'
+		+				'<div class="flag-wrap bar-type"><span class="flag">{{flag}}</span></div>'
+		+				'{{#if title}}'
+		+					'<div class="result-tit"><strong>{{#raw title}}</strong></div>'
+		+				'{{/if}}'
+		+				'<div class="result-detail">'
+		+					'{{#if content}}'
+		+						'<div class="desc">'
+		+							'<span>{{#raw content}}</span>'
+		+						'</div>'
+		+					'{{/if}}'
+		+					'<div class="cs">'
+		+						'<span class="cs-inner">'
+		+							'<span>{{#raw breadcrumb}}</span>'
+		+						'</span>'
+		+					'</div>'
+		+				'</div>'
+		+			'</div>'
+		+		'</div>'
+		+	'</a>'
+		+'</li>';
+    
     var searchBnrTemplate = '<a href="{{url}}" target="{{target}}">'+
         '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{#else}}광고배너{{/if}}" class="pc-only">' +
         '<img src="{{mobileImage}}" alt="{{#if desc}}{{desc}}{{#else}}광고배너{{/if}}" class="mo-only">' +
@@ -1034,6 +1059,39 @@ if ('scrollRestoration' in history) {
                                 item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
+                    } else {
+                        $resultListWrap.hide();
+                    }
+                    
+                	//회사소개
+                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(6)');
+                    arr = self.checkArrayData(data.company);
+                    count = self.checkCountData(data.company);
+                    self.setTabCount(7, count);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                        	item.flag = item.breadcrumb.substr(item.breadcrumb.lastIndexOf('>') + 1);
+                        	item.breadcrumb = vcui.string.replaceAll(item.breadcrumb, searchedValue, replaceText);
+                        	if (item.flag == item.title) {
+                        		item.title = '';
+                        	} else {
+                        		item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                        	}
+                        	item.content = vcui.string.replaceAll(item.content, searchedValue, replaceText);
+                        	
+                            $list_ul.append(vcui.template(companyTemplate, item));
                         });
                         $resultListWrap.show();
                         noData = false;
