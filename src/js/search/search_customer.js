@@ -816,7 +816,11 @@
                     //매장
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
-
+                    
+                    //회사소개
+                    count = self.checkCountData(data.company);
+                    self.setTabCount(7, count);
+                    
                     //추천 제품
                     /*
                     self.$recommendListBox.empty();

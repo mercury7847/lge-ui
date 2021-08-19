@@ -66,33 +66,44 @@
             '{{/if}}' +
         '</div>' +
     '</div></li>';
-    var storyItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
-        '<div class="result-thumb"><div><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}">{{#if isVideo}}<span class="video-play-btn"><span class="hidden">동영상</span></span>{{/if}}</div></div>' +
-        '<div class="result-info">' +
-            '<div class="info-text">' +
-                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-                '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
-                '<div class="result-detail">' +
-                    '<div class="desc"><span>{{#raw desc}}</span></div>' +
-                    // '<div class="info-btm">' +
-                    //     '{{#if hash && hash.length>0}}' +
-                    //         '<div class="text hashtag-wrap">' +
-                    //             '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                    //         '</div>' +
-                    //     '{{/if}}' +
-                    //     '<span class="text date"><span>{{date}}</span>' +
-                    // '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-    '</a></li>';
+    
+    var companyTemplate =
+    	'<li>'
+		+   '<a href="{{url}}" class="item item-type2">'
+		+		'<div class="result-info">'
+		+			'<div class="info-text">'
+		+				'<div class="flag-wrap bar-type"><span class="flag">{{flag}}</span></div>'
+		+				'{{#if title}}'
+		+					'<div class="result-tit"><strong>{{#raw title}}</strong></div>'
+		+				'{{/if}}'
+		+				'<div class="result-detail">'
+		+					'{{#if content}}'
+		+						'<div class="desc">'
+		+							'<span>{{#raw content}}</span>'
+		+						'</div>'
+		+					'{{/if}}'
+		+					'<div class="cs">'
+		+						'<span class="cs-inner">'
+		+							'<span>{{#raw breadcrumb}}</span>'
+		+						'</span>'
+		+					'</div>'
+		+				'</div>'
+		+			'</div>'
+		+		'</div>'
+		+	'</a>'
+		+'</li>';
+    
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
-            '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            	'{{#if item.target == "popup"}}' + 
+            		'<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+        		'{{#else}}' +
+        			'<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+    			'{{/if}}' +
             '{{/each}}'+
         '</ul>';
-
+    
     $(window).ready(function() {
         var search = {
             init: function() {
@@ -103,18 +114,19 @@
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
+
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
-                            if(!category1) category1 = [];
-                            if(!category2) category2 = [];
-                            var diffCat = vcui.array.different(category1,category2);
-                            if(diffCat.length > 0) {
-                                if(category2 && category2.length > 0) {
-                                    data.filterData = JSON.stringify({"category":category2});
+                            if (!category1) category1 = [];
+                            if (!category2) category2 = [];
+                            var diffCat = vcui.array.different(category1, category2);
+                            if (diffCat.length > 0) {
+                                if (category2 && category2.length > 0) {
+                                	data.filterData = JSON.stringify({"category":category2});
                                 } else {
                                     data.filterData = "{}";
                                 }
@@ -124,11 +136,11 @@
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    var hash = location.hash.replace("#","");
+                    var hash = location.hash.replace("#", "");
                     var savedData = lgkorUI.getStorage(hash);
-                    if(savedData && savedData.search) {
+                    if (savedData && savedData.search) {
                         self.savedFilterData = JSON.parse(JSON.stringify(savedData));
-                        if(self.savedFilterData.filterData) {
+                        if (self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             var str;
                             for (key in filterData) {
@@ -137,15 +149,15 @@
                             }
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
-                        if(savedData.href) self.scrollHref = savedData.href;
-                        if(savedData.search) self.$inputSearch.val(savedData.search);
+                        if (savedData.href) self.scrollHref = savedData.href;
+                        if (savedData.search) self.$inputSearch.val(savedData.search);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                         var value = self.$contentsSearch.attr('data-search-value');
                         value = !value ? null : value.trim();
-                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                        if(!(!value)) {
+                        var force = lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if (!(!value)) {
                             //현재 선택된 카테고리 기준으로 검색
                             self.setinputSearchValue(value);
                             var filterQueryData = self.getListSortingData();
@@ -158,7 +170,7 @@
             },
 
             getCategoryFromFilter: function(filterData) {
-                if(!filterData) return null;
+                if (!filterData) return null;
                 var filterData = JSON.parse(filterData);
                 var category = filterData["category"];
                 return category ? category : [];
@@ -167,7 +179,7 @@
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
-                for(key in filterdata) {
+                for (key in filterdata) {
                     makeData[key] = filterdata[key].join("||");
                 }
                 data.filterData = JSON.stringify(makeData);
@@ -176,15 +188,15 @@
 
             makeProductGAData: function(item) {
                 var param = {
-                    "model_name":item.modelDisplayName,
-                    "model_id":item.modelId,
-                    "model_sku":item.salesModelCode + '.' + item.salesSuffixCode,
-                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
-                    "rental_price":(item.carePrice && item.carePrice > 0) ? item.carePrice : "",
-                    "price":(item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
-                    "discounted_price":(item.price && item.price > 0) ? item.price : "",
-                    "brand":"LG",
-                    "category":item.superCategoryName + "/" + item.categoryName
+                    "model_name" : item.modelDisplayName,
+                    "model_id" : item.modelId,
+                    "model_sku" : item.salesModelCode + '.' + item.salesSuffixCode,
+                    "model_gubun" : (item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "rental_price" : (item.carePrice && item.carePrice > 0) ? item.carePrice : "",
+                    "price" : (item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
+                    "discounted_price" : (item.price && item.price > 0) ? item.price : "",
+                    "brand" : "LG",
+                    "category" : item.superCategoryName + "/" + item.categoryName
                 }
                 return JSON.stringify(param);
             },
@@ -266,7 +278,7 @@
             getListSortingData: function() {
                 var self = this;
                 var data = {};
-                self.$listSorting.find('input').each(function(idx, el){
+                self.$listSorting.find('input').each(function(idx, el) {
                     switch(el.type) {
                         case "checkbox":
                             data[el.name] = el.checked ? "Y" : "N";
@@ -282,12 +294,12 @@
                     }
                 });
 
-                self.$listSorting.find('.ui_selectbox').each(function(idx, el){
+                self.$listSorting.find('.ui_selectbox').each(function(idx, el) {
                     data[el.name] = $(el).vcSelectbox('selectedOption').value;
                 });
                 return data;
             },
-
+            
             sendSearchPage: function(searchUrl, search, force) {
                 if(searchUrl) {
                     var fi = searchUrl.indexOf('?');
@@ -465,7 +477,7 @@
                     "search":search
                 };
                 var ajaxUrl = self.$contentsSearch.data('logUrl');
-                if(ajaxUrl) {
+                if (ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, null, true);
                 }
             },
@@ -473,7 +485,7 @@
             _setScrollMoved: function() {
                 var self = this;
                 var scrolltop = $(window).scrollTop();
-                if((self.$contWrap.offset().top - 110) < scrolltop) {
+                if ((self.$contWrap.offset().top - 110) < scrolltop) {
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
@@ -593,7 +605,7 @@
                 //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
-                
+
                 lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
                     if(result.data && result.data.success == 'Y' && result.data.url) {
                         if(result.data.linkTarget == 'self') {
@@ -691,7 +703,7 @@
 
                     //nodata Test
                     //data.count = null;
-                    //data.story = null;
+                    //data.customer = null;
 
                     var noData = true;
                     var count = self.checkCountData(data);
@@ -704,15 +716,15 @@
 
                     //필터세팅
                     var filterShow = false;
-                    if(data.filterList && data.filterList.length > 0) {
+                    if (data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
-                        if(vcui.detect.isMobile){
+                        if (vcui.detect.isMobile) {
                             self.filterLayer.openFilterSectionAll(2);
                         }
                         
-                        if(self.savedFilterData && self.savedFilterData.filterData) {
+                        if (self.savedFilterData && self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             self.filterLayer.resetFilter(filterData);
                         }
@@ -720,10 +732,10 @@
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                    arr = self.checkArrayData(data.story);
-                    count = self.checkCountData(data.story);
-                    self.setTabCount(3, count);
-                    var subcount = self.checkSubCountData(data.story);
+                    arr = self.checkArrayData(data.company);
+                    count = self.checkCountData(data.company);
+                    self.setTabCount(7, count);
+                    var subcount = self.checkSubCountData(data.company);
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
                     } else {
@@ -732,16 +744,17 @@
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
-                        var $div = $("<div/>");
                         arr.forEach(function(item, index) {
-                            if(!item.hash) {
-                                item.hash = [];
-                            }
-                            item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                            item.isVideo = lgkorUI.stringToBool(item.isVideo);
-                            item.desc = vcui.string.replaceAll($div.html(item.desc).text(), searchedValue, replaceText); //html strip
-                            $list_ul.append(vcui.template(storyItemTemplate, item));
+                        	item.flag = item.breadcrumb.substr(item.breadcrumb.lastIndexOf('>') + 1);
+                        	item.breadcrumb = vcui.string.replaceAll(item.breadcrumb, searchedValue, replaceText);
+                        	if (item.flag == item.title) {
+                        		item.title = '';
+                        	} else {
+                        		item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                        	}
+                        	item.content = vcui.string.replaceAll(item.content, searchedValue, replaceText);
+                        	
+                            $list_ul.append(vcui.template(companyTemplate, item));
                         });
                         $resultListWrap.show();
                         //self.$listSorting.show();
@@ -759,22 +772,22 @@
                     count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
 
+                    //스토리
+                    count = self.checkCountData(data.story);
+                    self.setTabCount(3, count);
+
                     //이벤트
                     count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
 
-                    //센터매장
+                    //매장
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
-
+                    
                     //고객지원
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
                     
-                    //회사소개
-                    count = self.checkCountData(data.company);
-                    self.setTabCount(7, count);
-
                     //추천 제품
                     /*
                     self.$recommendListBox.empty();
@@ -782,10 +795,9 @@
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
                     */
-
-                    //서비스 링크
+                    //BTOCSITE-1339 서비스 링크
                     $('.service-link, .mobile-service-link').empty();
-                    if(data.serviceLinkers && data.serviceLinkers.length){
+                    if (data.serviceLinkers && data.serviceLinkers.length) {
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                     }
@@ -828,7 +840,6 @@
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
-                        //
                         //정렬 셀렉트 박스
                         self.$listSorting.find('.sort-select-wrap').hide();
                     } else {
@@ -844,7 +855,6 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
-                        //
                         self.$listSorting.find('.sort-select-wrap').show();
                     }
 
@@ -870,15 +880,15 @@
             },
 
             //연관검색어 더보기 버튼 노출 여부 체크
-            updateRelatedKeywordMoreButton:function () {
+            updateRelatedKeywordMoreButton : function() {
                 var self = this;
                 var $list_ul = self.$relatedKeywordList.find('ul');
                 var $li = $list_ul.find('>li:eq(0)');
-                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+                if ($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
                     self.$relatedKeywordMobileMoreButton.show();
                 } else {
                     self.$relatedKeywordMobileMoreButton.hide();
-                }    
+                }
             },
 
             //최근 검색어 삭제
@@ -901,8 +911,8 @@
             },
 
             //최근 검색어 추가
-            addRecentSearcheText:function(text) {
-                if(!text || text.length < 1) return;
+            addRecentSearcheText : function(text) {
+                if (!text || text.length < 1) return;
                 var self = this;
                 /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
@@ -926,17 +936,17 @@
             },
 
             //최근 검색어 리스트 갱신
-            updateRecentSearchList:function() {
+            updateRecentSearchList : function() {
                 var self = this;
                 //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
                 var searchedList = cookieValue ? cookieValue.split('|') : [];
                 //searchedList = vcui.array.reverse(searchedList);
-
+                
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
-                if(arr.length > 0) {
+                if (arr.length > 0) {
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
@@ -949,7 +959,7 @@
             },
 
             //기초 데이타 갱신
-            updateBasicData:function() {
+            updateBasicData : function() {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.data('basicUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
