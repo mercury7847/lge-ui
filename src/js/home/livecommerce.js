@@ -146,6 +146,10 @@ var lls = {
             }
         }
 
+        if(self.$heroSwiper.find('.hero-item').length > 1) {
+            self.$playBtn.addClass('active');
+        }
+
         self.$heroSwiper.slick({
             dots: true,
             infinite: true,
@@ -179,6 +183,7 @@ var lls = {
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
+            outerEdgeLimit: false,
             infinite:false,
             variableWidth:false,
             prevArrow: self.$highSection.find('.slick-prev'),
@@ -190,7 +195,8 @@ var lls = {
                     arrows:true,
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    variableWidth:false
+                    variableWidth:false,
+                    outerEdgeLimit: false,
                   }
                 },
                 {
@@ -221,6 +227,9 @@ var lls = {
     },
     onbroadProductSlider: function(){
         var self = this;
+        var defaultConfig = {
+
+        }
 
         //방송에 나온 그 제품 슬라이드
         self.$onbroadSlider.slick({
@@ -229,7 +238,7 @@ var lls = {
             slidesToScroll: 5,
             infinite:false,
             variableWidth:false,
-            outerEdgeLimit: true,
+            outerEdgeLimit: false,
             prevArrow: self.$onbroad.find('.slick-prev'),
             nextArrow: self.$onbroad.find('.slick-next'),
             responsive: [
