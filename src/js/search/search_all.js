@@ -205,7 +205,7 @@
     '</div></li>';
     var companyTemplate =
     	'<li>'
-		+   '<a href="{{url}}" class="item">'
+		+   '<a href="{{url}}" class="item item-type2">'
 		+		'<div class="result-info">'
 		+			'<div class="info-text">'
 		+				'<div class="flag-wrap bar-type"><span class="flag">{{flag}}</span></div>'
