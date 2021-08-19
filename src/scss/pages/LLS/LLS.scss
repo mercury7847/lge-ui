@@ -373,6 +373,8 @@
                 }
                 &-thumb-area {
                     position: relative;
+                    overflow:hidden;
+                    border-radius:8px;
 
                     .slide-item-time {
                         display: inline-block;
@@ -389,6 +391,7 @@
                     }
                     img {
                         width:100%;
+                        max-width:100%;
                     }
                 }
                 &-cont-area {
