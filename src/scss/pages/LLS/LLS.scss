@@ -49,11 +49,15 @@
                 z-index:1;
     
                 .btn-play {
-                    display: inline-block;
+                    display: none;
                     width:24px;
                     height:24px;
                     background: url(/lg5-common/images/icons/btn-carousel-hero-play.svg) no-repeat 0 0;
                     background-size: 100% 100%;
+
+                    &.active {
+                        display: inline-block;
+                    }
     
                     &.stop {
                         background-image: url(/lg5-common/images/icons/btn-carousel-hero-pause.svg);
