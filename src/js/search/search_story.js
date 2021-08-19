@@ -770,6 +770,10 @@
                     //고객지원
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
+                    
+                    //회사소개
+                    count = self.checkCountData(data.company);
+                    self.setTabCount(7, count);
 
                     //추천 제품
                     /*
