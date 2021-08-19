@@ -77,7 +77,7 @@
         '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
-        '                       <div class="sort-select-wrap">'+
+        '                       <div class="sort-select-wrap"> '+
         '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
