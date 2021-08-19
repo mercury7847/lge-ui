@@ -60,6 +60,11 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(surveyUrl, data, function(result) {
                         var data = result.data;
+                        //BTOCSITE-4254 210819 값초기화
+                        var $csaFlag = $('input[name=csaFlag]');
+                        var $rating = $('input[name=rating]');
+                        var $survCont = $('#surveyContent');
+                        //BTOCSITE-4254 210819 값초기화
 
                         if (data.resultFlag == 'Y') {
                             //$popup.vcModal('hide'); 210622 삭제
@@ -69,6 +74,16 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                             title: data.resultMessage
                         });
                         //lgkorUI.hideLoading(); 210622 삭제
+
+                        //BTOCSITE-4254 210819 값초기화
+                        
+                        data.content = "";
+                        data.rating = "";
+                        data.csaFlag = "";
+                        
+                        //BTOCSITE-4254 210819 값초기화
+
+
                     });
                 }
             });
