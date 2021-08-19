@@ -1526,11 +1526,15 @@
                 }
             }
         }
-
+        
         // 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
         .rental-banner {
             & ~ .care-sibling-option {
                 margin:0;
+            }
+
+            & ~ .care-sibling-option .info-accordion-wrap:first-child {
+                margin-top: 0;
             }
         }
 
@@ -2355,10 +2359,10 @@
 
             // <-- 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
             .rental-banner {
-                margin:16px 0 24px;
-                @include mobile {
-                    margin:14px 0 24px;
-                }
+                // margin:16px 0 24px;
+                // @include mobile {
+                //     margin:14px 0 24px;
+                // }
                 img {
                     width:100%;
                     /* 클래스별이미지분기 */
