@@ -454,7 +454,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         lastAnchorKeyEvent();
 
                         if( window.innerWidth > 767 && !vcui.detect.isMobile ) {
-                            vcui.require(['libs/swiper_v451.min'], function(){
+                            vcui.require(['libs/swiper_v4.min'], function(){
                                 if( !$('.super-category-nav').hasClass('swiper-container-initialized')) {
                                     superNavSwiper = new Swiper('.nav:not(.ui_gnb_accordion) .super-category-nav', swiperConfig);
                                 } else {
