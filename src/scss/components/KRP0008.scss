@@ -752,7 +752,7 @@
                     }
                 }
                 @include mobile {
-                    padding: 0 0 40px;
+                    padding: 0 0 24px;
                     > [class*="sibling-"] {
                         flex-direction: column;
                         justify-content: left;
@@ -1277,6 +1277,14 @@
                     }
                 }
             }
+
+            // BTOCSITE-3499 
+            & + .sibling-option,
+            & + .info-accordion-wrap {
+                @include mobile {
+                    margin-top: 32px;
+                }
+            }
         }
 
         .select-info {
@@ -1532,6 +1540,7 @@
         
         // 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
         .rental-banner {
+            margin:24px 0;
             & ~ .care-sibling-option {
                 margin:0;
             }
