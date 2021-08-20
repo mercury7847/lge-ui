@@ -770,6 +770,12 @@ img.m350 {max-width:350px!important}
 .company ul.thmb_pic2 > li .textArea .t_tit {position:relative; font-size:16px; font-weight:bold; line-height:26px}
 .company ul.thmb_pic2 > li .textArea .t_tit::before {content:''; display:block; position:absolute; width:3px; height:3px; top:11.5px; left:-8px; border-radius:50%; background-color:#000}
 .company ul.thmb_pic2 > li .textArea .t_text {margin-top:10px; font-size:16px; line-height:26px}
+
+.company .orga_way {width:624px; margin:0 auto 30px}
+.company .orga_way .o_tit {font-size:20px; font-weight:bold; line-height:28px; text-align:center}
+.company .orga_way > ul {position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px; padding-top:16px}
+.company .orga_way > ul::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 165px); border-bottom:28px solid #f4f4f4; border-left:165px solid transparent; border-right:165px solid transparent}
+.company .orga_way > ul li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); max-width:300px; min-height:90px; margin-top:24px; padding:18px 26px; border:1px solid #ddd; border-radius:8px; font-size:16px; font-weight:500; line-height:26px; text-align:center}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -2235,4 +2241,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.thmb_pic2 > li .textArea {margin-left:0; margin-top:15px}
     .company ul.thmb_pic2 > li .textArea .t_tit {font-size:14px; line-height:22px}
     .company ul.thmb_pic2 > li .textArea .t_text {font-size:14px; line-height:22px}
+
+    .company .orga_way {width:100%; max-width:576px}
+    .company .orga_way .o_tit {font-size:16px; line-height:23px}
+    .company .orga_way > ul {margin-top:10px}
+    .company .orga_way > ul::before {left:calc(50% - 82.5px); border-bottom:14px solid #f4f4f4; border-left:82.5px solid transparent; border-right:82.5px solid transparent}
+    .company .orga_way > ul li {width:calc(50% - 4px); min-width:140px; margin-top:8px; padding:16px 0; font-size:12px; line-height:20px!important}
 }
