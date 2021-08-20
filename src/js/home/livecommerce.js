@@ -146,6 +146,10 @@ var lls = {
             }
         }
 
+        if(self.$heroSwiper.find('.hero-item').length > 1) {
+            self.$playBtn.addClass('active');
+        }
+
         self.$heroSwiper.slick({
             dots: true,
             infinite: true,
