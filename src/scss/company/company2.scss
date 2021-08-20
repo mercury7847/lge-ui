@@ -348,7 +348,7 @@ img.m350 {max-width:350px!important}
 .company .share_price table td .percent_down::before {content:'-'}
 
 .company .stock_tit {margin-bottom:4px; font-size:18px; line-height:28px; text-align:center}
-.company .stock_tit > em {padding-left:5px; color:#666}
+.company .stock_tit > em {padding-left:5px; color:#666; font-size:14px}
 .company .stock_number {margin-bottom:40px; font-size:48px; font-weight:bold; line-height:70px; text-align:center}
 .company .stock_number .num {padding-right:10px; color:#da0f47}
 
@@ -392,8 +392,9 @@ img.m350 {max-width:350px!important}
 .company ul.compStep.esg > li .tit::after {border-left-color:#e4e4e4}
 .company ul.compStep.esg > li ul.cont {margin-top:0!important}
 
-.company .dwn_all.board .titArea {margin-bottom:24px}
-.company .dwn_all.board .titArea .tit {font-size:22px; line-height:32px}
+.company .dwn_all.board .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px}
+.company .dwn_all.board .titArea .tit {font-size:22px; font-weight:bold; line-height:32px}
+.company .dwn_all.board .btn.dwn_all {padding:5px 12px; font-size:14px; line-height:20px}
 .company .tb_row.board-type .tbl_add {display:flex; justify-content:space-between; margin-bottom:10px}
 .company .tb_row.board-type .tbl_add .item_num {font-size:14px; font-weight:bold; line-height:24px}
 .company .tb_row.board-type .tbl_add .item_num > em {padding-left:5px; color:#da0f47}
@@ -769,6 +770,13 @@ img.m350 {max-width:350px!important}
 .company ul.thmb_pic2 > li .textArea .t_tit {position:relative; font-size:16px; font-weight:bold; line-height:26px}
 .company ul.thmb_pic2 > li .textArea .t_tit::before {content:''; display:block; position:absolute; width:3px; height:3px; top:11.5px; left:-8px; border-radius:50%; background-color:#000}
 .company ul.thmb_pic2 > li .textArea .t_text {margin-top:10px; font-size:16px; line-height:26px}
+
+.company .orga_way {width:624px; margin:0 auto 30px}
+.company .orga_way .o_tit {font-size:20px; font-weight:bold; line-height:28px; text-align:center}
+.company .orga_way > ul {position:relative; display:flex; flex-wrap:wrap; margin-top:12px; padding-top:16px}
+.company .orga_way > ul::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 165px); border-bottom:28px solid #f4f4f4; border-left:165px solid transparent; border-right:165px solid transparent}
+.company .orga_way > ul li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); max-width:300px; min-height:90px; margin-top:24px; padding:18px 26px; border:1px solid #ddd; border-radius:8px; font-size:16px; font-weight:500; line-height:26px; text-align:center}
+.company .orga_way > ul li:nth-child(2n) {margin-left:24px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -934,9 +942,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.ico_list > li .iconArea i.ico-gateway {background:url(/kr/images/company/icon/ico-gateway.svg) no-repeat 50% 50%; background-size:80px 80px}
 .company ul.ico_list > li .iconArea i.ico-phone {background:url(/kr/images/company/icon/ico-mobile-phone.svg) no-repeat 50% 50%; background-size:80px 80px}
 
-.company ul.bull li ul.dwn_list {display:flex; justify-content:space-between}
-.company ul.dwn_list > li {position:relative; display:flex; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:30px 120px 30px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
-.company ul.dwn_list > li .btn.dwn {position:absolute; min-width:initial; top:50%; right:30px; transform:translateY(-50%); padding:5px 12px; font-size:14px; line-height:20px}
+.company ul.dwn_list {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:-14px}
+.company ul.dwn_list > li {display:flex; justify-content:space-between; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:26px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
+.company ul.dwn_list.btns2 > li {flex-wrap:wrap}
+.company ul.dwn_list > li > span {flex:auto}
+.company ul.dwn_list > li .btn.dwn {min-width:auto; padding:5px 12px; font-size:14px; line-height:20px}
+.company ul.dwn_list > li .btn_area {display:flex}
+.company ul.dwn_list > li .btn_area .btn.dwn {position:static; min-width:132px; top:auto; transform:translate(0)}
+.company ul.dwn_list > li .btn_area .btn.dwn + .btn.dwn {margin-left:10px}
 
 .company ul.dwn_list.select {display:flex; justify-content:space-between}
 
@@ -946,23 +959,18 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list.sales > li .thumb img {width:53%; max-width:232px; vertical-align:top; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
 .company ul.dwn_list.sales > li .btn.dwn {position:static; display:block; margin:12px auto 0; transform:translateY(0)}
 
-.company .dwn_all + .dwn_all {margin-top:30px}
-.company .dwn_all::after {content:''; display:block; clear:both}
-.company .dwn_all .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px}
-.company .dwn_all .titArea .tit {font-size:18px; font-weight:bold; line-height:1.56}
-.company .dwn_all .titArea .btn.dwn_all {padding:5px 12px; font-size:14px; line-height:20px}
-.company .dwn_all ul.dwn_list {float:left; width:calc(50% - 12px); margin-top:-14px}
-.company .dwn_all ul.dwn_list + ul.dwn_list {margin-left:24px}
-.company .dwn_all ul.dwn_list > li {width:100%}
-.company .dwn_all .dwn_type2 ul.dwn_list > li span > em {position:relative; padding-left:20px; font-weight:normal}
-.company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {content:''; display:block; position:absolute; width:1px; left:10px; top:4px; bottom:2px; background-color:#ddd}
-.company .dwn_all ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
-.company .dwn_all ul.dwn_list.item2 > li {width:calc(50% - 12px)}
+.company .audit_list:first-of-type {margin-top:24px}
+.company .audit_list + .audit_list {margin-top:30px}
+.company .audit_list .titArea {display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px}
+.company .audit_list .titArea .tit {font-size:18px; font-weight:bold; line-height:28px}
+.company .audit_list ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
+.company .audit_list ul.dwn_list.item2 > li {width:calc(50% - 12px)}
 
-.company .dwn_all .dwn_type2 {float:left; width:calc(50% - 12px)}
-.company .dwn_all .dwn_type2:nth-of-type(2n) {margin-left:24px}
-.company .dwn_all .dwn_type2:nth-of-type(n + 3) {margin-top:30px}
-.company .dwn_all .dwn_type2 ul.dwn_list {float:none; width:100%; margin-top:0}
+.company .audit_list.dwn_type2 {display:flex; justify-content:space-between}
+.company .audit_list.dwn_type2 .dwn_type2_inner {width:calc(50% - 12px)}
+.company .audit_list.dwn_type2 ul.dwn_list > li {width:100%}
+.company .audit_list.dwn_type2 ul.dwn_list > li span em {position:relative; margin-left:10px; padding-left:10px; font-weight:normal}
+.company .audit_list.dwn_type2 ul.dwn_list > li span em::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
 
 .company .text.dwn {margin-top:40px}
 
@@ -972,13 +980,13 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .ir_pt ul.ir_ptList > li + li {margin-top:18px}
 .company .ir_pt ul.ir_ptList > li .desc {display:flex; font-size:16px; line-height:26px}
 .company .ir_pt ul.ir_ptList > li .desc strong {display:block; font-weight:bold}
-.company .ir_pt ul.ir_ptList > li .desc span {position:relative; display:block; margin-left:10px; padding-left:11px}
+.company .ir_pt ul.ir_ptList > li .desc span {position:relative; display:block; margin-left:30px; padding-left:30px}
 .company .ir_pt ul.ir_ptList > li .desc span::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
 .company .ir_pt ul.ir_ptList > li ul.btn_list {display:flex}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li {display:flex}
-.company .ir_pt ul.ir_ptList > li ul.btn_list li + li {position:relative; margin-left:10px; padding-left:11px}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li + li {position:relative; margin-left:30px; padding-left:30px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li + li::before{content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
-.company .ir_pt ul.ir_ptList > li ul.btn_list li .btn {width:134px; min-width:81px; padding:5px 0; font-size:14px; line-height:20px}
+.company .ir_pt ul.ir_ptList > li ul.btn_list li .btn {width:132px; min-width:81px; padding:5px 0; font-size:14px; line-height:20px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li .btn + .btn {margin-left:8px}
 
 .company .sus_dwn_list {width:100%; border:1px solid #ddd; border-radius:8px; overflow:hidden}
@@ -1436,8 +1444,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.card_list > li .photo .name {font-size:20px; line-height:30px}
 }
 @media screen and (max-width:1220px){
-    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; padding-left:0}
-    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
+    .company .audit_list.dwn_type2 ul.dwn_list > li span em {display:block; margin-left:0; margin-top:9px; padding-left:0}
+    .company .audit_list.dwn_type2 ul.dwn_list > li span em::before {display:none}
 }    
 @media screen and (max-width:1170px){
     .company ul.m_cardList > li {width:calc(50% - 12px); max-width:50%}
@@ -1794,29 +1802,28 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     ul.bull > li .tb-col {margin-left:-8px}
     ul.bull.mgtL > li + li {margin-top:20px!important}
     
-    .company ul.bull li ul.dwn_list {flex-direction:column}
-    .company ul.dwn_list > li {width:100%; padding:22px 100px 22px 15px; font-size:14px; line-height:1.57}
-    .company ul.dwn_list > li .btn.dwn {min-width:81px; height:34px; right:15px; font-size:13px}
-    .company .dwn_all .titArea {align-items:center; margin-bottom:10px}
-    .company .dwn_all .titArea .tit {font-size:15px; line-height:22px}
-    .company .dwn_all ul.dwn_list > li .btn.dwn_all {height:34px; font-size:13px}
-    .company .dwn_all ul.dwn_list {float:left; width:100%}
-    .company .dwn_all ul.dwn_list + ul.dwn_list {margin:0}
-    .company .dwn_all ul.dwn_list.item2 {flex-direction:column}
-    .company .dwn_all ul.dwn_list.item2 > li {width:100%}
+    .company .audit_list:first-of-type {margin-top:12px}
+    .company .audit_list .titArea {align-items:center; margin-bottom:10px}
+    .company .audit_list .titArea .tit {font-size:15px; line-height:22px}
+    .company .audit_list ul.dwn_list.item2 {flex-direction:column}
+    .company .audit_list ul.dwn_list.item2 > li {width:100%}
+    .company .audit_list ul.dwn_list.btns2 > li {flex-direction:column}
+    .company ul.dwn_list > li {width:100%; padding:22px 15px; font-size:14px; line-height:1.57}
+    .company ul.dwn_list > li .btn.dwn {height:34px; padding:0 15px; font-size:13px}
+    .company ul.dwn_list > li .btn_area {margin-top:12px}
+    .company ul.dwn_list > li .btn_area .btn.dwn {min-width:123px}
+    .company ul.dwn_list > li .btn_area .btn.dwn + .btn.dwn {min-width:123px; margin-left:5px}
     .company ul.dwn_list.sales {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:4px}
     .company ul.dwn_list.sales > li {width:calc(50% - 4px); margin-top:8px; padding:15px 8px; border-radius:4px; font-size:16px}
     .company ul.dwn_list.sales > li .thumb {width:calc(100% + 32px); margin:-16px 0 14px -16px; padding-top:11px}
     .company ul.dwn_list.sales > li .thumb img {min-width:83px}
 
-    .company .dwn_all .dwn_type2 ul.dwn_list > li {flex-direction:column; padding-right:15px}
-    .company .dwn_all .dwn_type2 ul.dwn_list > li span {text-align:center}
-    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em {display:block; margin-top:8px; padding-left:0; text-align:center}
-    .company .dwn_all .dwn_type2 ul.dwn_list > li span > em::before {display:none}
-    .company .dwn_all .dwn_type2 ul.dwn_list > li .btn.dwn {position:static; top:auto; right:auto; transform:translateY(0); margin-top:18px}
-
-    .company .dwn_all .dwn_type2 {width:100%}
-    .company .dwn_all .dwn_type2 + .dwn_type2 {margin-top:30px; margin-left:0}
+    .company .audit_list.dwn_type2 {flex-direction:column}
+    .company .audit_list.dwn_type2 .dwn_type2_inner {width:100%}
+    .company .audit_list.dwn_type2 .dwn_type2_inner + .dwn_type2_inner {margin-top:30px}
+    .company .audit_list.dwn_type2 ul.dwn_list > li {flex-direction:column}
+    .company .audit_list.dwn_type2 ul.dwn_list > li span {text-align:center}
+    .company .audit_list.dwn_type2 ul.dwn_list > li .btn.dwn {margin-top:19px}
 
     .company .text.dwn {margin-top:30px; font-size:13px; line-height:22px}
 
@@ -2002,6 +2009,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .com-stock {margin:0 4.44vw; padding:45px 0 60px}
     .company .stock_tit {margin-top:15px; margin-bottom:0; font-size:15px; line-height:23px}
+    .company .stock_tit > em {font-size:13px}
     .company .stock_number {margin-bottom:30px; font-size:27px; line-height:40px}
     .company .stock_number .num {padding-right:5px}
 
@@ -2234,4 +2242,11 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.thmb_pic2 > li .textArea {margin-left:0; margin-top:15px}
     .company ul.thmb_pic2 > li .textArea .t_tit {font-size:14px; line-height:22px}
     .company ul.thmb_pic2 > li .textArea .t_text {font-size:14px; line-height:22px}
+
+    .company .orga_way {width:100%; max-width:576px}
+    .company .orga_way .o_tit {font-size:16px; line-height:23px}
+    .company .orga_way > ul {margin-top:10px}
+    .company .orga_way > ul::before {left:calc(50% - 82.5px); border-bottom:14px solid #f4f4f4; border-left:82.5px solid transparent; border-right:82.5px solid transparent}
+    .company .orga_way > ul li {width:calc(50% - 4px); min-width:140px; margin-top:8px; padding:16px 4px; font-size:12px; line-height:20px!important}
+    .company .orga_way > ul li:nth-child(2n) {margin-left:8px}
 }
