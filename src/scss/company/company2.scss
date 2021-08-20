@@ -773,9 +773,10 @@ img.m350 {max-width:350px!important}
 
 .company .orga_way {width:624px; margin:0 auto 30px}
 .company .orga_way .o_tit {font-size:20px; font-weight:bold; line-height:28px; text-align:center}
-.company .orga_way > ul {position:relative; display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:12px; padding-top:16px}
+.company .orga_way > ul {position:relative; display:flex; flex-wrap:wrap; margin-top:12px; padding-top:16px}
 .company .orga_way > ul::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 165px); border-bottom:28px solid #f4f4f4; border-left:165px solid transparent; border-right:165px solid transparent}
 .company .orga_way > ul li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); max-width:300px; min-height:90px; margin-top:24px; padding:18px 26px; border:1px solid #ddd; border-radius:8px; font-size:16px; font-weight:500; line-height:26px; text-align:center}
+.company .orga_way > ul li:nth-child(2n) {margin-left:24px}
 /* 컨텐츠 영역 끝 */
 
 // 슬라이드
@@ -2246,5 +2247,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .orga_way .o_tit {font-size:16px; line-height:23px}
     .company .orga_way > ul {margin-top:10px}
     .company .orga_way > ul::before {left:calc(50% - 82.5px); border-bottom:14px solid #f4f4f4; border-left:82.5px solid transparent; border-right:82.5px solid transparent}
-    .company .orga_way > ul li {width:calc(50% - 4px); min-width:140px; margin-top:8px; padding:16px 0; font-size:12px; line-height:20px!important}
+    .company .orga_way > ul li {width:calc(50% - 4px); min-width:140px; margin-top:8px; padding:16px 4px; font-size:12px; line-height:20px!important}
+    .company .orga_way > ul li:nth-child(2n) {margin-left:8px}
 }
