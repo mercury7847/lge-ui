@@ -391,6 +391,10 @@
 
                         self.$registMyProductMainPage.hide();
                         self.$modelCheckHelpPage.show();
+                        //BTOCSITE-4196
+                        if( self.$modelCheckHelpPage.find('.example-result').data('init-content') == undefined ) {
+                            self.$modelCheckHelpPage.find('.example-result').data('init-content', self.$modelCheckHelpPage.find('.example-result').html())
+                        }
                     });
                 } else {
                     /*
@@ -787,8 +791,13 @@
 
             //보유제품 직접 등록 팝업 뒤로가기
             self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
+                var initExampleContent = self.$modelCheckHelpPage.find('.example-result').data('initContent');
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();
+                //BTOCSITE-4196
+                self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)').vcSelectbox('selectedIndex', 0, true);
+                self.$modelCheckHelpPage.find('.example-result').html(initExampleContent)
+
             });
         },
 
