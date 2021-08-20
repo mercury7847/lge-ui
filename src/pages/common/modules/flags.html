@@ -13,9 +13,13 @@
     @@for ( var i=0; i < flags.length; i++ ) {
     <span class="flag">`+flags[i]+`</span>
     }
-    <!-- 20210527 추가 -->
+    <!-- BTOCSITE-4226 뱃지 생성 및 적용 요청 -->
     @@if (context.flagDiscount) {
         <span class="flag cardDiscount">신한카드 5% 청구할인</span>
     }
-    <!-- //20210527 추가 -->
+
+    @@if (context.flagNCSI) {
+        <span class="flag box" style="background:#239f5e; color:#fff; ">NCSI 1위 기념</span>
+    }
+    <!-- //BTOCSITE-4226 뱃지 생성 및 적용 요청 -->
 </div>
