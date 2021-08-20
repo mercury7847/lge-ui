@@ -126,6 +126,13 @@
         @include mobile {
             border-radius: 4px;
             .input-sch {
+                /* 2021.08.20 BTOCSITE-4643 : 통합검색 검색어 입력 진행 시 'X' 삭제 버튼과 문구가 겹침 */
+                .clear {
+                    input.txt {
+                        padding-right: 75px;
+                    }
+                }
+                /* //2021.08.20 BTOCSITE-4643 : 통합검색 검색어 입력 진행 시 'X' 삭제 버튼과 문구가 겹침 */
                 input.txt {
                     height: 46px;
                     padding-right: 22px;
