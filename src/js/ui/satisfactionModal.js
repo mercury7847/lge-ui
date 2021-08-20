@@ -29,6 +29,24 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
             }
         };
 
+        //BTOCSITE-4254 210820 입력값 초기화 reset함수 생성
+        function valueReset(regObj){
+            var regKeys = Object.keys(regObj);
+            var $ratingUI = $('.ui-rating-wrap');
+            var $score = $('.ui-select-label');
+            $ratingUI.find('a').removeClass('on');
+            $ratingUI.find('span.blind').remove();
+            $score.html('/5점');
+            regKeys.forEach(function(v, i){
+                $('input:text[name=' + v + ']').val("")
+                $('select[name=' + v + ']').val("")
+                $('input:radio[name=' + v + ']').prop('checked', false)
+                $('input:checkbox[name=' + v + ']').prop('checked', false)
+                $('textarea[name=' + v + ']').val("")
+            })
+        }
+        //BTOCSITE-4254 210820 입력값 초기화 reset함수 생성
+
         vcui.require(['ui/validation'], function () {
             var validation = new vcui.ui.CsValidation('.survey-pop', {register:register});
 
@@ -60,30 +78,16 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
                     lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(surveyUrl, data, function(result) {
                         var data = result.data;
-                        //BTOCSITE-4254 210819 값초기화
-                        var $csaFlag = $('input[name=csaFlag]');
-                        var $rating = $('input[name=rating]');
-                        var $survCont = $('#surveyContent');
-                        //BTOCSITE-4254 210819 값초기화
 
                         if (data.resultFlag == 'Y') {
                             //$popup.vcModal('hide'); 210622 삭제
+                            valueReset(register); //BTOCSITE-4254 210820 입력값 초기화
                         }
         
                         lgkorUI.alert("", {
                             title: data.resultMessage
                         });
                         //lgkorUI.hideLoading(); 210622 삭제
-
-                        //BTOCSITE-4254 210819 값초기화
-                        
-                        data.content = "";
-                        data.rating = "";
-                        data.csaFlag = "";
-                        
-                        //BTOCSITE-4254 210819 값초기화
-
-
                     });
                 }
             });
