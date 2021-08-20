@@ -472,29 +472,32 @@
                 }
             }
 
-            /* 20210527 할인카드 flag*/
+            /* <!-- 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 */
             .flag-wrap{
                 display: flex;
                 align-items: center;
+                flex-wrap: wrap;
                 &.bar-type {
                     .flag {
                         margin-right: 10px;
                         position: relative;
+                        &:last-child { margin:0; }
                         &::before {
                             position: absolute;
                             top: 7px;
                             left: -5px;
                             margin: 0;
                         }
-                        &.cardDiscount { 
+                        &.box { 
                             background-color: #da0f4d;
                             font-weight: 500;
                             color: #fff;
                             padding: 0 5px;
                             border-radius: 2px;
                             height: 18px;
-                            display: flex;
-                            align-items: center;
+                            margin-top:3px;
+                            margin-bottom:4px;
+
                             &::before {
                                 display: none;
                             }
@@ -502,7 +505,7 @@
                     }
                 }
             }
-            /* 20210527 할인카드 flag*/
+            /* 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 //--> */
         }
     }
 }
