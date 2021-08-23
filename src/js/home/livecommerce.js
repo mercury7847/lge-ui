@@ -66,7 +66,12 @@ var lls = {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
                     ok: function(el) {
-                        location.href = '/mobile-app/option'
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "goSetting"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openOSSetting();
+                        }
                     }
                 }, self.pushBtn);
             }
@@ -82,12 +87,13 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    obj.command = "setMkt";
-                    obj.value = "Y";
+                    //obj.command = "setMkt";
+                    obj.command = "getPushStatus";
+                    obj.callBack = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.setAdPushActive("Y");
+                    android.getOSPush(LGEPushSetting(flag))
                 }
 
                 lgkorUI.alert("", {
