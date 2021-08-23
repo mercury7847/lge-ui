@@ -16,6 +16,22 @@
         $('.tabs-scroll-wrap .tabs li').each(function(idx, item){
             self.tabClones.push($(item).clone())
         });
+
+        // BTOCSITE-3276 비교하기 > 스펙 항목 라인 안맞음
+        var $li = [];
+        $('#SP00014695 .list').each(function(idx,item){
+            $li[idx] =  $(this).find('li:eq(3) dd')
+            
+            if(idx === 1) {
+                if($li[0].height() !=  $li[1].height() ) {
+                    var height =  Math.max($li[0].height(), $li[1].height())
+                    $li[0].height(height);
+                    $li[1].height(height);
+                }
+            }
+        });
+
+
     }
 
     function bindEvents(){

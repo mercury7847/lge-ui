@@ -77,7 +77,7 @@
         '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
-        '                       <div class="sort-select-wrap">'+
+        '                       <div class="sort-select-wrap"> '+
         '                           <select class="ui_selectbox" data-combo-id="2" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
@@ -293,6 +293,10 @@
             eventBind();
 
             loadCategoryList();
+
+
+
+
         });
     }
 
@@ -591,9 +595,15 @@
             categoryID: getCategoryID(),
             sortID: getSortID()
         }
+
+        console.log("_prodListUrl %o",_prodListUrl);
+        console.log("requestData %o",requestData);
+
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_prodListUrl, requestData, function(result){
             lgkorUI.hideLoading();
             
+            console.log("result %o",result);
+
             if(!lgkorUI.stringToBool(result.data.success)){
                 lgkorUI.commonAlertHandler(result.data.alert);
                 return;
@@ -607,6 +617,9 @@
 
                 return item;
             });
+
+            console.log("_currentItemList %o",_currentItemList);
+
             var leng = _currentItemList.length;
             var div = leng/_showItemLength;
             var rest = leng%_showItemLength;
@@ -668,6 +681,8 @@
 
     //옵션 변경 시...
     function changeItemOptions(item){
+
+        console.log("item %o",item);
         var idx = $(item).closest('.prd-care-vertical').data('index')-1;
         var optionData = getOptionData(item);
 
@@ -683,6 +698,8 @@
     //색상 외 옵션 변경...
     function setChangeOptionChip(idx, optdata, comboId){
         lgkorUI.showLoading();
+
+        console.log("setChangeOptionChip %o",optdata);
         
         var sendata = {
             tabID: getTabID(),
@@ -694,10 +711,10 @@
 
         // BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
         // 파라메터 없을시 기본값 적용
-        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value || 0;
-        if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value || 0;
-        if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value || 0;
-        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value || 0;
+        if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
+        if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
+        if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -731,6 +748,8 @@
                 });
                 selectUserPeriodID = o[selectUserPeriodID].siblingCode;
 
+                console.log("selectUserPeriodID %o",selectUserPeriodID);
+
                 var o = result.data.siblingVisitCycle;
                 var selectVisitCycleID = Object.keys(o).reduce(function (previous, current) {
                     return o[previous].siblingCode > o[current].siblingCode ? previous:current;
@@ -751,6 +770,8 @@
         });
     }
     function setCliblingData(selector, list, selectId){
+
+        console.log("setCliblingData %o",list);
 
         var selectIdx = 0;
         var list = vcui.array.map(list, function(item, idx){
@@ -843,9 +864,14 @@
             else{
                 if(getTabID() == 0) _currentItemList[i].modelUrlPath += "?dpType=careTab";
             }
+
+
+            console.log("_currentItemList %o",_currentItemList[i]);
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
+
+
 
             if(anim) $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
@@ -863,11 +889,10 @@
         /*
          *BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
          * 임시 처리 - 추수 수정 예정
-         */
-
         $prodListContainer.find("> ul.inner select[data-combo-id='1']").each(function(){
             $(this).trigger('change')
         })
+         */
     }
 
     //담기...
@@ -1225,11 +1250,17 @@
     }
 
     function getOptionData(item){
+
+        console.log("getOptionData %o",item);
         var optgroup = $(item).closest('.prd-care-vertical').find('.info-wrap .opt-info')
         var optdata = {};
         var optstring = [];
+        console.log("optgroup %o",optgroup);
+
         optgroup.children().each(function(idx, opt){
             var selectItem = $(opt).find('.ui_selectbox').vcSelectbox('instance');
+
+           
             var selectValue = selectItem.value();
             var selectName = selectItem.text();
             var siblingType = selectItem.$el.data('siblingType');

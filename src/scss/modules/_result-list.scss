@@ -798,6 +798,22 @@
             display: block;
         }
     }
+    
+    &.company-list {
+        .item {
+            min-height: 142px;
+            @include mobile {
+                min-height: auto;
+            }
+            .result-info {
+                .info-text {
+                    @include mobile {
+                        padding-left:0
+					}
+				}
+            }
+        }
+    }
 }
 
 

@@ -44,11 +44,12 @@ var lls = {
     bindEvent: function(){
         var self = this;
 
-        function LGEPushSetting(flag){
+        LGEPushSetting = function(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
+            alert(flag)
             if( flag == "Y" ) {
                 lgkorUI.alert("", {
                     title: msg.flagY,
@@ -66,7 +67,12 @@ var lls = {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
                     ok: function(el) {
-                        location.href = '/mobile-app/option'
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "goSetting"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openOSSetting();
+                        }
                     }
                 }, self.pushBtn);
             }
@@ -82,12 +88,13 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    obj.command = "setMkt";
-                    obj.value = "Y";
+                    //obj.command = "setMkt";
+                    obj.command = "getPushStatus";
+                    obj.callBack = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.setAdPushActive("Y");
+                    android.getOSPush("LGEPushSetting")
                 }
 
                 lgkorUI.alert("", {
@@ -146,6 +153,10 @@ var lls = {
             }
         }
 
+        if(self.$heroSwiper.find('.hero-item').length > 1) {
+            self.$playBtn.addClass('active');
+        }
+
         self.$heroSwiper.slick({
             dots: true,
             infinite: true,
@@ -179,6 +190,7 @@ var lls = {
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
+            outerEdgeLimit: false,
             infinite:false,
             variableWidth:false,
             prevArrow: self.$highSection.find('.slick-prev'),
@@ -190,7 +202,8 @@ var lls = {
                     arrows:true,
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    variableWidth:false
+                    variableWidth:false,
+                    outerEdgeLimit: false,
                   }
                 },
                 {
@@ -221,6 +234,9 @@ var lls = {
     },
     onbroadProductSlider: function(){
         var self = this;
+        var defaultConfig = {
+
+        }
 
         //방송에 나온 그 제품 슬라이드
         self.$onbroadSlider.slick({
@@ -229,7 +245,7 @@ var lls = {
             slidesToScroll: 5,
             infinite:false,
             variableWidth:false,
-            outerEdgeLimit: true,
+            outerEdgeLimit: false,
             prevArrow: self.$onbroad.find('.slick-prev'),
             nextArrow: self.$onbroad.find('.slick-next'),
             responsive: [

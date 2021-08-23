@@ -15,7 +15,8 @@
 
 
     
-    <!-- BTOCSITE-27 서브메인 css preload -->   
+    <!-- BTOCSITE-27 서브메인 css preload -->  
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/BMS/BMS.min.css" />  <!-- BTOCSITE-1814 이벤트 탭추가 -->
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/PRS/PRS.min.css">
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/STS/STS.min.css" />
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support.min.css" />
@@ -174,10 +175,8 @@ var _PAGE_DATA = {
         }
     },
 
-
-     // <!-- 20210808 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 
-    // 20210809 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가: description 수정
-    'membership-event' : {
+    // 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가: description 수정
+    'benefits' : {
         'meta' : {
             'title' : '이벤트/멤버십',
             'description' : 'LG전자에서 진행되는 이벤트, 기획전, 카드 혜택 그리고 LG전자 멤버십까지 다양한 혜택 정보를 확인하실 수 있습니다.',
@@ -205,7 +204,7 @@ var _PAGE_DATA = {
             }
         }
     }
-    // 20210808 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가  //--> 
+    // 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가: description 수정
 
 
 };
@@ -232,7 +231,7 @@ var _PAGE_DATA = {
                     <div class="swiper-slide" data-href="/html/MA-include/OBS5001_content.html" data-hash="story" ></div>
                     <div class="swiper-slide" data-href="/html/MA-include/CSRF6001_content.html" data-hash="support" ></div>
                     <div class="swiper-slide" data-href="/html/MA-include/MKTF2001_content.html" data-hash="care-solutions"></div>
-                    <div class="swiper-slide" data-href="/html/MA-include/BMS_BTOCSITE_1814_content.html" data-hash="membership-event"></div> <!-- BTOCSITE-1814 -->
+                    <div class="swiper-slide" data-href="/html/MA-include/BMS_BTOCSITE_1814_content.html" data-hash="benefits"></div> <!-- 20210809 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가  -->
                 </div>
             </div>
             <!-- //BTOCSITE-27 상단 퀵메뉴 스와이프 처리 -->

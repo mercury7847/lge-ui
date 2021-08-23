@@ -106,39 +106,33 @@
         font-size: 0;
 
         // BTOCSITE-1814 이벤트탭 추가
-        // border-bottom: 1px solid $color-border;
-        // overflow: visible !important;
-		// &:before,
-        // &:after {
-        //     position: absolute;
-        //     top: 1px;
-        //     z-index: 1;
-        //     width: 40px;
-        //     height: 100%;
-        //     content: '';
-        //     display:none;
-
-        // }
-        // &:before {
-        //     left: 0;
-        //     background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
-        // }
-        // &:after {
-        //     right: 0;
-        //     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
-        // }
-
-      
-        // &.left:before,  
-        // &.right:after {
-        //     display:block;
-        // }
-
-        &::-webkit-scrollbar {
-            display: none;
-
-
-          }
+        &.mainNav {
+            border-bottom: 1px solid $color-border;
+            overflow: visible !important;
+            &:before,
+            &:after {
+                position: absolute;
+                top: 1px;
+                z-index: 1;
+                width: 40px;
+                height: 100%;
+                content: '';
+                display:none;
+    
+            }
+            &:before {
+                left: 0;
+                background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+            }
+            &:after {
+                right: 0;
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+            }
+            &.left:before,  
+            &.right:after {
+                display:block;
+            }
+        }
 
         .nav {
             height:37px;
@@ -159,7 +153,7 @@
                         &:before {
                             position: absolute;
                             top: 6px;
-                            right: 2px;
+                            right: -6px; //BTOCSITE-4602 
                             width: 4px;
                             height: 4px;
                             border-radius: 2px;
@@ -294,34 +288,6 @@
             }
         }
     }
-    // BTOCSITE-1814 이벤트탭 추가 : 메인일때만 적용해야 하는부분 
-    #mobileNav {
-        border-bottom: 1px solid $color-border;
-        overflow: visible !important;
-		&:before,
-        &:after {
-            position: absolute;
-            top: 1px;
-            z-index: 1;
-            width: 40px;
-            height: 100%;
-            content: '';
-            display:none;
-
-        }
-        &:before {
-            left: 0;
-            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
-        }
-        &:after {
-            right: 0;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
-        }
-        &.left:before,  
-        &.right:after {
-            display:block;
-        }
-    }
 }
 
 //@include mobile { //스크롤시 스티키 확인 후 삭제
@@ -370,6 +336,7 @@
 .utility {
     float: right;
     padding-right: 247px;
+    display:flex; // 회사소개 탑메뉴 추가
     @media screen and (min-width: 1760px) {
         padding-right: 242px;
     }
@@ -467,6 +434,68 @@
                 text-align: center;
             }
         }
+    }
+    // 회사소개 탑메뉴
+    .about-company {
+        position: relative;
+        margin-left: 24px;
+        &:before {
+            display: inline-block;
+            width: 1px;
+            height: 14px;
+            margin-right: 24px;
+            background-color: #ddd;
+            content: '';
+        }
+        @include mobile {
+            display: none;
+        }
+        > a {
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .about-company-layer {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: -6px;
+            max-width: 125px;
+            padding-top: 12px;
+            z-index: 104;
+            > ul {
+                padding: 4px 0;
+                border-radius: 4px;
+                background-color: #fff;
+                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+                li {
+                    > a {
+                        display: block;
+                        padding: 8px 24px;
+                        font-size: 14px;
+                        line-height:24px;
+                        text-align: center;
+                        &:hover {
+                            background-color:#f4f4f4
+                        }
+                    }
+                    > a.out_link {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 20px;
+                        i.go_out {
+                            display: block;
+                            width: 16px;
+                            height: 16px;
+                            margin-left: 4px;
+                            background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+                            background-size: 14px 14px
+                        }
+                    }   
+                }
+            }   
+        }
+        // 회사소개 탑메뉴 end
     }
 
     @include mobile {
@@ -1721,6 +1750,8 @@
         overflow:hidden;
         list-style:none;
         z-index:1;
+        box-shadow:none !important; //BTOCSITE-4602 
+        border-radius:0 !important; //BTOCSITE-4602 
 
         .swiper-notification {
             position: absolute;

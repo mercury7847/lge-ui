@@ -7,23 +7,9 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.href.replace(/https?:\/\//,'').replace(location.hostname,'');
-
-    if( vcui.detect.isIOS ) {
-        var clickedAt = +new Date;
-        setTimeout( function () { 
-            if (+new Date - clickedAt < 2000 ) { 
-                // 앱스토어 이동 
-                if(confirm('앱스토어로 이동합니다.')) location.href = 'https://itunes.apple.com/app/id1561079401?mt=8'; 
-            }
-        } ,1500);
-
-        setTimeout( function () { 
-            location.href = 'lgeapp://goto?weblink='+weblink; // 앱실행 
-        },0);
-    } else {
-        window.open('Intent://goto?weblink='+weblink+'#Intent;scheme=lgeapp;package=kr.co.lge.android;end;','_blank');
-    }
+    var weblink = path ? path : location.href;
+    location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
+    
 }
 
 ;(function(global){
@@ -393,6 +379,32 @@ var goAppUrl = function(path) {
 
                 self.hideLoading()
             });
+
+
+            // BTOCSITE-659
+            if(location.href.indexOf('/story/') > -1 ) self.addAWSStory();
+
+        },
+
+        // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : story 상세
+        addAWSStory: function () {
+               
+            // story 상세페잊 파라메터로 넘긴다
+            // /mkt/commonModule/addAWSStory.lgajax
+            // 파라미터
+            // itemId : storyurl (/story/only-and-best/all-in-one-generation)
+
+
+            var depth = location.pathname.split('/');
+            console.log('story %o',location.pathname);
+            console.log('story %o',depth);
+
+            if(depth.length === 4) {
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSStory.lgajax", {"itemId":location.href.replace(/https?:\/\//,'').replace(location.host,'')}, function(result) {
+                    console.log("result %o",result);
+                });
+
+            }
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
@@ -1849,7 +1861,7 @@ var goAppUrl = function(path) {
             var modelName = {
                 options: {
                     text: '제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.',
-                    imgPath: '/kr/support/images/find-model/model-smart-phone.jpg',
+                    imgPath: '/kr/support/images/find-model/model-multi-air.jpg', //210818 BTOCSITE-4574 3in1 이미지로 변경
                     imgAlt: '모델명 및 제조번호 확인 예시 사진'
                 },
                 init: function() {

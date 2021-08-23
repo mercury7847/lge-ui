@@ -391,6 +391,10 @@
 
                         self.$registMyProductMainPage.hide();
                         self.$modelCheckHelpPage.show();
+                        //BTOCSITE-4196
+                        if( self.$modelCheckHelpPage.find('.example-result').data('init-content') == undefined ) {
+                            self.$modelCheckHelpPage.find('.example-result').data('init-content', self.$modelCheckHelpPage.find('.example-result').html())
+                        }
                     });
                 } else {
                     /*
@@ -512,18 +516,34 @@
             });
 
             //제조번호 길이 체크
-            self.$snInput.on('input', function(e){
-                checkSerialSuccess = false;
-                if(e.target.value.length > 14){
-                    e.target.value = e.target.value.slice(0, 14);
-                }
-            })
+            //2021-08-17 BTOCSITE-4196 수정
+            // self.$snInput.on('input', function(e){
+            //     checkSerialSuccess = false;
+            //     if(e.target.value.length > 18){
+            //         e.target.value = e.target.value.slice(0, 18);
+            //     }
+            // })
 
             //제조번호 확인
+            //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
-                var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
-                checkSerialSuccess = serialRegex.test(self.$snInput.val());
-                if(checkSerialSuccess) {
+                // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
+                var minLengthFlag = self.$snInput.val().length >= 12 ? true: false;
+                
+                var currentVal = [];
+                var checkSerialSuccess = [];
+                var regexArry = [/^[0-9]+$/, /^[a-zA-Z0-9]+$/, /^[0-9]+$/];
+
+                currentVal[0] = self.$snInput.val().slice(undefined,3);
+                currentVal[1] = self.$snInput.val().slice(3,14);
+                currentVal[2] = self.$snInput.val().slice(14,18);
+
+                currentVal.forEach(function(v, i){
+                    if( v != "" ) {
+                        checkSerialSuccess.push(regexArry[i].test(v))
+                    }
+                })
+                if(minLengthFlag && checkSerialSuccess.indexOf(false) == -1) {
                     lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                 } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
@@ -771,8 +791,13 @@
 
             //보유제품 직접 등록 팝업 뒤로가기
             self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
+                var initExampleContent = self.$modelCheckHelpPage.find('.example-result').data('initContent');
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();
+                //BTOCSITE-4196
+                self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)').vcSelectbox('selectedIndex', 0, true);
+                self.$modelCheckHelpPage.find('.example-result').html(initExampleContent)
+
             });
         },
 

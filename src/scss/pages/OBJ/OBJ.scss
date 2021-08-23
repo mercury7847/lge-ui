@@ -118,6 +118,35 @@ header {
                                 }
                             } 
                         }
+                        //BTOCSITE-4355 히어로배너 하단 문구 추가 210823 - start
+                        .signatureVisualSubTextArea{
+                            .sub-text{
+                                position:relative;
+                                width: 100%;
+                                max-width:1410px;
+                                margin:0 auto;
+                                p{
+                                    position: absolute;
+                                    right:65px;
+                                    bottom:42px;
+                                    font-size: 14px;
+                                    line-height: 26px;
+                                    color:#fff;
+                                    @media screen and(max-width:1475px){
+                                        margin-right:25px;
+                                    }
+                                    @include mobile{
+                                        left:9px;
+                                        bottom:30px;
+                                        font-weight: normal;
+                                        font-size: 11px;
+                                        line-height: 13px;
+                                        margin-right:15px;
+                                    }
+                                }
+                            }
+                        }
+                        //BTOCSITE-4355 히어로배너 하단 문구 추가 210823 - end
                         .bg {
                             background-size:cover;
                             
@@ -293,7 +322,6 @@ header {
             .custom-indi-wrap {
                 bottom:24px;
                 right: 40px;
-                left: 40px;
                 .custom-indis {
                     max-width: (1380px + 30px);
                     .indis {
@@ -317,9 +345,6 @@ header {
                     @media screen and (max-width: (1460px + 30px)) {
                         right: 15px;
                         margin-right: 0;
-                        @include mobile {
-                            right: 0;
-                        }
                     }
                 }
             }
@@ -387,8 +412,19 @@ header {
                 // }
                 .custom-indi-wrap {
                     bottom:16px;
+                    //BTOCSITE-4355 start - 오브제컬렉션 히어로 배너 indicate바 위치 수정
+                    @include mobile{
+                        left:0;
+                        right:0;
+                    }
+                    //BTOCSITE-4355 end - 오브제컬렉션 히어로 배너 indicate바 위치 수정
                     .custom-indis {
                         max-width:100%;
+                        //BTOCSITE-4355 start - 오브제컬렉션 히어로 배너 indicate바 위치 수정
+                        @include mobile{
+                            max-width:calc(100% - 10px);
+                        }
+                        //BTOCSITE-4355 end - 오브제컬렉션 히어로 배너 indicate바 위치 수정
                         .indis {
                             li {
                                 padding: 0 5px;

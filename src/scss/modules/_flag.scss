@@ -54,8 +54,8 @@
 			//}
 		}
 	}
+	// 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 
 	&.bar-type {
-		margin-left: -10px;
 		.flag {
 			min-width: auto;
 			margin:0;
@@ -63,9 +63,6 @@
 			border: 0;
 			font-size: $font-x-small;
 			line-height: 22px;
-			&:first-child{
-				margin-left: 10px;
-			}
 			&:not(:first-child) {
 				&:before {
 					display: inline-block;
@@ -77,7 +74,8 @@
 					content: '';
 				}
 			}
-			&.cardDiscount{
+			&.cardDiscount,
+			&.box{
 				background-color: $color-primary;
 				font-weight: 500;
 				color: #fff;
@@ -88,9 +86,6 @@
 				&:before {
 					display: none !important;
 				}
-			}
-			&+.cardDiscount{
-				margin-left:10px;
 			}
 			// 20210809 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가
 		}
@@ -127,51 +122,6 @@
 	}
 }
 
-/* 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정*/
-//
-//.event-flag-wrap{
-//	display: flex;
-//	align-items: center;
-//	&.bar-type {
-//		.flag {
-//			min-width: auto;
-//			margin: 0;
-//			padding: 0;
-//			border: 0;
-//			@include font-x-small;
-//			color:#da0f47;
-//			line-height: 22px;
-//			margin-right: 10px;
-//			font-weight: 700;
-//			&:not(:first-child) {
-//				&:before {
-//					display: inline-block;
-//					width: 1px;
-//					height: 10px;
-//					margin: 0 6px;
-//					background-color: $color-border;
-//					vertical-align: -1px;
-//					content: '';
-//				}
-//			}
-//			&.cardDiscount {
-//				background-color: #da0f4d;
-//				font-weight: 500;
-//				color: #fff;
-//				padding: 0 5px;
-//				border-radius: 2px;
-//				height: 18px;
-//				display: flex;
-//				align-items: center;
-//				font-size: $font-x-small;
-//				&::before {
-//					display: none;
-//				}
-//			}
-//		}
-//	}
-//}
-/* 20210802 BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정*/
 // design flag
 .big-flag {
 	display:inline-block;
@@ -249,15 +199,22 @@
 }
 
 .flag-wrap.image-type {
-	width: 60px;
+	// 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 
 	.big-flag {
-		position: relative;
-		display: block;
-		height: 66px;
+		// position: relative;
+		// display: block;
+		width: 56px;
+		height: 58px;
 		padding: 0;
-		&:not(:first-child) {
-			margin-top: -10px;
+		// &:not(:first-child) {
+		// 	margin-top: -10px;
+		// }
+
+		@include mobile {
+			width:42px;
+			height:46px;
 		}
+
 		&:nth-child(1) {z-index: 14;}
 		&:nth-child(2) {z-index: 13;}
 		&:nth-child(3) {z-index: 12;}
@@ -267,16 +224,7 @@
 			max-width: 100%;
 		}
 	}
-	@include mobile {
-		width: 42px;
-		.big-flag {
-			&:not(:first-child) {
-				margin-top: -6px;
-			}
-			width:42px;
-			height:46px;
-		}
-	}
+
 	&.left {
 		.big-flag {
 			&:nth-child(1) {

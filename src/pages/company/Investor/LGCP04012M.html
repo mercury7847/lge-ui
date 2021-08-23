@@ -2,8 +2,8 @@
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
-		<li><a href="/company">회사소개</a></li>
-		<li><a href="/company/investor">투자자정보</a></li>
+		<li><a href="/company/main">회사소개</a></li>
+		<li><a href="/company/investor/corporateGovernance">투자자정보</a></li>
 		<li><a href="/company/investor/highlight">재무정보</a></li>
 		<li><strong>영업보고서</strong></li>
 	</ul>
@@ -56,7 +56,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="/company/investor/generalMeeting#com-tabs01">IR행사</a>
+						<a href="/company/investor/presentation#com-tabs01">IR행사</a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/presentation">실적발표</a></li>
 							<li><a href="/company/investor/generalMeeting">주주총회</a></li>
@@ -77,7 +77,7 @@
 
 	<div class="com-title">
 		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/investor/img-highlight-hero-pc.png" data-m-src="/kr/images/company/investor/img-highlight-hero-mo.png" aria-hidden="hidden"></span>
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/investor/img-highlight-hero-pc.jpg" data-m-src="/kr/images/company/investor/img-highlight-hero-mo.jpg" aria-hidden="hidden"></span>
 		</div>
 		<p class="text">기술혁신을 선도하는 글로벌 리더 LG전자로 <br class="mo">도약 하겠습니다.</p>
 	</div>
@@ -119,8 +119,10 @@
 			</div>
 			<div class="content">
 				<div class="section">
-					<div class="dwn_all">
-						<div class="dwn_type2">
+					<div class="audit_list dwn_type2"><!-- 08/20 | dwn_all -> audit_list 클래스명 변경 / dwn_type2 클래스 추가 -->
+
+						<!-- 08/20 | 연도별로 dwn_type2_inner 하나씩 추가 -->
+						<div class="dwn_type2_inner"><!-- 08/20 | dwn_type2_inner 클래스 추가 -->
 							<div class="titArea">
 								<p class="tit">2019년</p>
 							</div>
@@ -131,7 +133,8 @@
 								</li>
 							</ul>
 						</div>
-						<div class="dwn_type2">
+
+						<div class="dwn_type2_inner"><!-- 08/20 | dwn_type2_inner 클래스 추가 -->
 							<div class="titArea">
 								<p class="tit">2018년</p>
 							</div>
@@ -142,6 +145,7 @@
 								</li>
 							</ul>
 						</div>
+
 					</div>
 				</div>
 			</div>

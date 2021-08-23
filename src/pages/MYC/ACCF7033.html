@@ -543,11 +543,14 @@
                         </dd>
                     </dl>
                     <dl class="forms">
-                        <dt class="tit"><label for="inp02" class="req">제조번호(S/N)<span class="blind">필수입력</span></label></dt>
+                        <dt class="tit"><label for="inp02">제조번호(S/N)<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
                             <div class="box">
                                 <div class="input-wrap">
-                                    <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력" name='sn'>
+                                    <!-- 2021-08-17 BTOCSITE-4196 수정  minlength="12" maxlength="18" && 제조번호 확인 버튼 추가 -->
+                                    <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력" name='sn' minlength="12" maxlength="18">
+                                    <p class="link"><a href="#n" class="btn-link">제조번호(S/N) 확인 방법</a></p>
+                                    <!-- //2021-08-17 BTOCSITE-4196 수정 -->
                                 </div>
                                 <div class="cell">
                                     <!-- 210201 수정 -->
@@ -557,7 +560,8 @@
                             </div>
                         </dd>
                     </dl>
-                    <dl class="forms">
+                    <!-- 2021-08-17 BTOCSITE-4196 수정 삭제 -->
+                    <!-- <dl class="forms">
                         <dt class="tit"><label for="slt02">구매장소</label></dt>
                         <dd class="conts">
                             <div class="select-wrap">
@@ -570,12 +574,15 @@
                                 <input type="text" id="inp03" value="" placeholder="상세 구매처 명 입력" name='store2'>
                             </div>
                         </dd>
-                    </dl>
+                    </dl> -->
+                    <!-- //2021-08-17 BTOCSITE-4196 수정 삭제 -->
                 </div>
-                <dl class="bullet-list top-border">
+                <!-- 2021-08-17 BTOCSITE-4196 수정 삭제 -->
+                <!-- <dl class="bullet-list top-border">
                     <dt class="b-tit">확인하세요</dt>
                     <dd class="b-txt">제품 등록은 구매일 다음날부터 등록 가능하며 제품 등록 시 리워드가 포인트로 적립됩니다.</dd>
-                </dl>
+                </dl> -->
+                <!-- //2021-08-17 BTOCSITE-4196 수정 -->
             </section>
             <footer class="pop-footer center" ui-modules="Footer">
                 <div class="btn-group">

@@ -43,7 +43,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             lgkorUI.requestCartCount(self.$el.attr('data-cart-url'));
             
 
-            vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min', 'libs/swiper-bundle.min'], function () {            
+            vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min'], function () {            
                 self._setting();
                 self._bindEvents();
                 self._resize();
@@ -127,6 +127,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.outTimer = null;
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
+            self.$aboutCompany = self.$el.find(".about-company"); 		//210820 add about-company;
 
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
@@ -148,36 +149,37 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next'); 
    
             // BTOCSITE-1814
-
-            // pc 상태
-            if(!vcui.detect.isMobile) {
-                var href = ""+location.href;
-                $('.mobile-nav-wrap').find('a.nav-item').removeClass('on');
-                $('.mobile-nav-wrap').find('a.nav-item').each(function() {
-                    if(href == this.href) $(this).addClass('on');
-                })
-            }
-
-
-            $('.mobile-nav-wrap').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
-            $('.mobile-nav-wrap').on('smoothscrollmove',function(e,data){
-
-                if(!data) {
-                    var data = {
-                        x:0,y:0,
-                        isStart : true,
-                        isEnd : false
-
+            // pc 상태 on class 붙히는곳
+            vcui.require(['ui/smoothScroll'], function (){
+                if(!vcui.detect.isMobile) {
+                    var href = ""+location.href;
+                    $('.mobile-nav-wrap.mainNav').find('a.nav-item').removeClass('on');
+                    $('.mobile-nav-wrap.mainNav').find('a.nav-item').each(function() {
+                        if(href == this.href) $(this).addClass('on');
+                    })
+                }
+    
+                // $('.mobile-nav-wrap.mainNav').vcSmoothScroll({ preventDefaultException: { tagName: /^(A)$/i } });
+                $('.mobile-nav-wrap.mainNav').vcSmoothScroll();
+                $('.mobile-nav-wrap.mainNav').on('smoothscrollmove',function(e,data){
+    
+                    if(!data) {
+                        var data = {
+                            x:0,y:0,
+                            isStart : true,
+                            isEnd : false
+    
+                        }
                     }
-                }
-
-                if(!data.isStart && !data.isEnd) {
-                    $(this).addClass('left right')
-                } else {
-                    $(this).removeClass(data.isStart ? 'left' : 'right').addClass(data.isStart ? 'right' : 'left' )
-                }
-             
-            }).trigger('smoothscrollmove')
+    
+                    if(!data.isStart && !data.isEnd) {
+                        $(this).addClass('left right')
+                    } else {
+                        $(this).removeClass(data.isStart ? 'left' : 'right').addClass(data.isStart ? 'right' : 'left' )
+                    }
+                 
+                }).trigger('smoothscrollmove')
+            });
 
 
         },
@@ -206,6 +208,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
                 self._mypageOut();
             });
+            // [S] 210820 add about-company 
+            self.$aboutCompany.on("mouseover", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOver();
+            }).on("mouseout", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOut();
+            }),
+            // [E] 210820 add about-company
 
             self.$hamburger.on('click', function(e){
                 e.preventDefault();
@@ -452,8 +463,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         $superContentLastAnchor = $superContent.eq(0).find('a, button').not('.ui_carousel_hidden').last();
                         lastAnchorKeyEvent();
 
-                        if( window.innerWidth > 767 && window.innerWidth < 1024) {
-                            vcui.require(['libs/swiper-bundle.min'], function (){
+                        if( window.innerWidth > 767 && !vcui.detect.isMobile ) {
+                            vcui.require(['libs/swiper_v4.min'], function(){
                                 if( !$('.super-category-nav').hasClass('swiper-container-initialized')) {
                                     superNavSwiper = new Swiper('.nav:not(.ui_gnb_accordion) .super-category-nav', swiperConfig);
                                 } else {
@@ -756,6 +767,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
+        // [S] 210820 add about-company 
+        _aboutCompanyOver: function() {
+            this.$aboutCompany.find(".about-company-layer").show(),
+            this.$aboutCompany.find("> a").hasClass("on") || this.$aboutCompany.find("> a").addClass("on")
+        },
+        _aboutCompanyOut: function() {
+            this.$aboutCompany.find(".about-company-layer").hide(),
+            this.$aboutCompany.find("> a").hasClass("on") && this.$aboutCompany.find("> a").removeClass("on")
+        },     
+        // [E] 210820 add about-company
 
         _menuToggle: function(forceActive){
             var self = this,
