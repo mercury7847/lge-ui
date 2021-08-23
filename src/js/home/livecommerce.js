@@ -94,12 +94,7 @@ var lls = {
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     var androidPush = void android.getOSPush();
-                    lgkorUI.alert("", {
-                        title: androidPush,
-                        ok: function(el) {
-                            
-                        }
-                    }, self.pushBtn);
+                    alert(androidPush)
                     //LGEPushSetting(androidPush)
                 }
             }
