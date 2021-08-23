@@ -528,7 +528,7 @@
                 
                 var currentVal = [];
                 var checkSerialSuccess = [];
-                var regexArry = [/^\d/, /[\d\A-Za-z]/, /^\d/];
+                var regexArry = [/^\d$/g, /^[a-zA-Z0-9]$/g, /^\d$/g];
 
                 currentVal[0] = self.$snInput.val().slice(undefined,3);
                 currentVal[1] = self.$snInput.val().slice(3,14);
