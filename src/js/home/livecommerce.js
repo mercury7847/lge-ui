@@ -50,43 +50,32 @@ var lls = {
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
 
-            lgkorUI.alert("", {
-                title: flag,
-                ok: function(el) {
-                    if( vcui.detect.isIOS ) {
+            if( flag == "Y" ) {
+                lgkorUI.alert("", {
+                    title: msg.flagY,
+                    ok: function(el) {
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "setMkt", "value": "Y"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            android.setAdPushActive("Y")
+                        }
+                    }
+                }, self.pushBtn);
+            } else {
+                lgkorUI.alert("", {
+                    title: msg.flagN,
+                    okBtnName: "기기 알림 켜기",
+                    ok: function(el) {
+                        if( vcui.detect.isIOS ) {
                             var jsonString= JSON.stringify({"command": "goSetting"});
                             webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                         } else {
                             void android.openOSSetting();
                         }
-                }
-            }, self.pushBtn);
-            // if( flag == "Y" ) {
-            //     lgkorUI.alert("", {
-            //         title: msg.flagY,
-            //         ok: function(el) {
-            //             if( vcui.detect.isIOS ) {
-            //                 var jsonString= JSON.stringify({"command": "setMkt", "value": "Y"});
-            //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            //             } else {
-            //                 android.setAdPushActive("Y")
-            //             }
-            //         }
-            //     }, self.pushBtn);
-            // } else {
-            //     lgkorUI.alert("", {
-            //         title: msg.flagN,
-            //         okBtnName: "기기 알림 켜기",
-            //         ok: function(el) {
-            //             if( vcui.detect.isIOS ) {
-            //                 var jsonString= JSON.stringify({"command": "goSetting"});
-            //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            //             } else {
-            //                 void android.openOSSetting();
-            //             }
-            //         }
-            //     }, self.pushBtn);
-            // }
+                    }
+                }, self.pushBtn);
+            }
         }
 
         //앱 알림받기 버튼
@@ -104,7 +93,8 @@ var lls = {
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    void android.getOSPush("LGEPushSetting")
+                    var androidPush = void android.getOSPush();
+                    LGEPushSetting(androidPush)
                 }
             }
         });
