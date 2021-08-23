@@ -170,8 +170,7 @@
             console.log('story %o',depth);
 
             if(depth.length === 4) {
-                console.log('story 실행 %o',depth);
-                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSStory.lgajax", {"itemId":digitalData.productInfo}, function(result) {
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSStory.lgajax", {"itemId":location.href.replace(/https?:\/\//,'').replace(location.host,'')}, function(result) {
                     console.log("result %o",result);
                 });
 
