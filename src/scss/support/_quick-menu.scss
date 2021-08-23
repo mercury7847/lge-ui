@@ -318,6 +318,42 @@
                 display:block;
             }
         }
+
+        /* 추가 */
+        &.info-text {
+            position: relative;
+            .btn-expand {
+                width: auto;
+                border-radius: 40px;
+                transform: translateX(0);
+                z-index: 1;
+                // transition:all ease 0.5s;
+                .img {
+                    left: 100%;
+                    transform: translate(-120%, -50%);
+                    @include mobile {
+                        transform: translate(-134%, -50%);
+                    }
+                }
+                .history-info {
+                    visibility: visible;
+                    opacity: 1;
+                    margin-right: 70px;
+                    transition:all ease 0.5s;
+                    p {
+                        font-size: 14px;
+                    }
+                    @include mobile {
+                        padding-left: 24px;
+                        margin-right: 50px;
+                        p {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+        /* //추가 */
         @include mobile {
             &-list {
                 right:50px;

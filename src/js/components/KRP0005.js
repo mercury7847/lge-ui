@@ -2,177 +2,228 @@
 	var KRP0005 = {
 		init: function(){
             var self = this;
-            self._setting();
-            self._bindEvent();
+            self.listData = null;
+            self.setting();
+            self.bindEvents();
+
+            self.getChatPinCode();
+
+            var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
+            if(cookieValue) {
+                self.requestData(false);
+            } else {
+                //최근본 제품이 없으면 최근본 제품 버튼을 숨긴다
+                self.$KRP0005.find('.floating-linker.recently').hide();
+            }
 		},
 
-        _setting: function setting() {
-            var self = this;
-
-            self.$el = $('#quickMenu'); //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20
-            self.$topBtn = self.$el.find('.btn-top');
-
-            self.$service = self.$el.find('.service-menu');
-            self.$serviceBtn = self.$service.find('.btn-expand');
-            self.$history = self.$el.find('.history');
-            self.$historyBtn = self.$history.find('.btn-expand');
-            self.$closeBtn = self.$el.find('.btn-close');
-            self.$historyPopup = $('#history-popup');
-
-            ///퀵메뉴 쿠키 생성
-            if( lgkorUI.getCookie('accessPageFirst') != "done") {
-                lgkorUI.setCookie("accessPageFirst", "done", false, 365);
-            }
-
-            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
-            //모바일 디바이스 일때 고객센터 전화하기 배너 노출
-            var $serviceCenterBan = self.$service.find('.service-menu-list li.serviceCenter-call');
-            if (vcui.detect.isMobileDevice) {
-                $serviceCenterBan.show();
-            }
-        },
-        _altChange : function($target, boolean){
-            var $altText = $target.find('.blind');
-            var altValue = $altText.text();
-
-            if (!boolean) { //on 클래스가 있을때 (닫을때)
-                $altText.text(altValue.replace('닫기', '열기'));
-            } else { //on 클래스가 없을때 (열때)
-                $altText.text(altValue.replace('열기', '닫기'));
-            }
-        },
-        _changeService: function(flag) {
-            var self = this;
-            if (!flag) {
-                self.$service.removeClass('on');
-                self.$serviceBtn.attr('aria-expanded', false);
-                //self.$el.removeClass('dim');
-                self._altChange(self.$serviceBtn, false);
-            } else {
-                self.$history.removeClass('on');
-                self.$service.addClass('on');
-                self.$serviceBtn.attr('aria-expanded', true);
-                //self.$el.addClass('dim');
-                self._altChange(self.$serviceBtn, true);
-            }
-        },
-        _changeHistory: function(flag) {
-            var self = this;
+        setting: function() {
+            var self = this;		
             
-            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
-            if (self.$history.find('.history-list').length) {
-                if (flag) {
-                    self.$service.removeClass('on');
-                    self.$history.addClass('on');
-                    //self.$el.addClass('dim');
-                } else {
-                    self.$history.removeClass('on');
-                    //self.$el.removeClass('dim');
-                }
-            }
-        },
-        _bindEvent: function _bindEvent() {
+            self.$floatingWrap = $('.btn-floating-wrap');
+            self.$KRP0005 = $('.KRP0005.floating-menu');
+            self.moreButton = self.$KRP0005.find('.more-plus-linker a');
+
+            self.$popup = $('#KRP0032:eq(0)');
+            self.$list = self.$popup.find('div.lately-list ul');
+        },        
+
+        getChatPinCode: function() {
             var self = this;
+            var $chat = self.$KRP0005.find('div.floating-linker.chat a');
+            if($chat.length > 0) {
+                var ajaxUrl = self.$KRP0005.data('pincodeUrl');
+                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
 
-            self.$service.find('.solutions-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingSolutionsClick.do', '/acecount/floatingSolutionsClickm.do');
-            });
-            self.$service.find('.manuals-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingDriverClick.do', '/acecount/floatingDriverClickm.do');
-            });
-            self.$service.find('.center-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingCenterClick.do', '/acecount/floatingCenterClickm.do');
-            });
-            self.$service.find('.chatbot-btn').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingChatClick.do', '/acecount/floatingChatClickm.do');
-            });
-            self.$history.find('.history-list a').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', '/acecount/floatingModelClickm.do');
-            }); 
-            self.$historyPopup.find('.lately-list a').on('click', function() {
-                lgkorUI.setAcecounter('www.lge.co.kr/acecount/floatingModelClick.do', '/acecount/floatingModelClickm.do');
-            });
+                    var chatUrl = self.$KRP0005.data('chatUrl');
+                    var isApplication = isApp();
+                    chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
+                    if(pinCode) {
+                        chatUrl += ("&code="+pinCode);
+                    }
 
-            self.$serviceBtn.on('click', function() {
-                self._changeService($(this).parent().hasClass('on') ? false : true);
-            });
-
-            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
-            self.$historyBtn.on('click', function() {
-                self.$history.find('.history-list li').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
-                    self.$history.find('.history-list li:first-child a')[0].focus();
-                    self.$history.find('.btn-expand').focus();
+                    $chat.attr('href',chatUrl);
                 });
-                self._changeHistory(true);
-            });
+            }
+        },
 
-            self.$closeBtn.on('click', function() {
-                self._changeHistory(false);
-                self.$historyBtn.focus();
-            });
+        bindEvents: function() {
+            var self = this;
 
-            self.$topBtn.on('click', function (e) {
-                $('html, body').stop().animate({
-                    scrollTop: 0
-                }, 400);
-            });
-
-            $(document).on('click', function(e) {
-                if (!$(e.target).closest(self.$el).length) {
-                    self._changeService(false);
-                    self._changeHistory(false);
-                }
-            });
-
-            $(window).on('scroll resize', function(){
-                self._changeService(false);
-                self._changeHistory(false);
-
-                if ($(this).scrollTop() > 100) {
-                    self.$el.addClass('top');
+            self.moreButton.on('click',function(e){
+                e.preventDefault();
+                var isOpen = self.$floatingWrap.hasClass('open');
+                if(isOpen) {
+                    if(self.$popup.hasClass('open')) {
+                        //만약 최근본 제품 팝업이 열려 있으면 닫는다/
+                        self.closePopup();
+                    }
+                    self.$floatingWrap.removeClass('open');
+                    //닫기
+                    self.moreButton.attr('aria-expanded',false);
+                    self.moreButton.find('span').text('더보기 열기');
                 } else {
-                    self.$el.removeClass('top');
+                    self.$floatingWrap.addClass('open');
+                    //열기
+                    self.moreButton.attr('aria-expanded',true);
+                    self.moreButton.find('span').text('더보기 닫기');
                 }
             });
 
-            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
-            //self.$history.trigger('click');
-            setTimeout(function () {
-                self.$history.removeClass('info-text');
-            }, 2000);
-            //console.log("-------------------");
-            //console.log(self.$history);
-            
-            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
-            self.$history.hide();
+            self.$KRP0005.on('click','div.floating-linker > a',function(e){
+              
+                e.preventDefault();
+                var $div = $(this).parents('div.floating-linker');
 
-            var $findLocation_cs = window.location.href.toUpperCase().indexOf("CS"); //로컬 확인용
-            var $findLocation_support = window.location.href.toUpperCase().indexOf("support");
+                if ($div.hasClass('faq')){
+                    window.open('/support/usage-guide-faq','_blank');
+                    return;
+                }
 
-            if ($findLocation_cs > -1 || $findLocation_support > -1) {
-                self.$history.show();
+                if($div.hasClass('chat')) {
+                    //상담쳇
+                } else if($div.hasClass('recently')) {
+                    //최근본 제품
+                    if(!self.listData) {
+                        self.requestData(true);
+                    } else {
+                        self.openPopup();
+                    }
+                } else {
+                    //
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    if(href && href.replace("#", "").length > 0) {
+                        location.href = href;
+                    }
+                }
+            });
+
+            self.$popup.on('click','.ui_modal_close',function(e){
+                e.preventDefault();
+                self.closePopup();
+            });
+
+            $(window).on('floatingTopHide', function(e){
+                self.$floatingWrap.removeClass('scroll');
+            }); 
+
+            $(window).on('floatingTopShow', function(e){
+                self.$floatingWrap.addClass('scroll');
+            }); 
+        },
+
+        //최근본 제품 처리
+
+        //리스트 열기
+        openPopup: function() {
+            var self = this;
+            self.resetImage();
+            self.$popup.show();
+            self.$popup.removeClass('close');
+            self.$popup.addClass('open');
+
+            self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
+            if(!self.ignoreOverflowForce && vcui.detect.isMobile){
+                $('html, body').css({
+                    overflow:"hidden"
+                });
+            } 
+        },
+
+        //리스트 닫기
+        closePopup: function() {
+            var self = this;
+            self.$popup.addClass('close');
+            self.$popup.removeClass('open');
+            self.$popup.hide();
+
+            self.ignoreOverflowForce = $('body').hasClass('ignore-overflow-hidden');
+            if(!self.ignoreOverflowForce && vcui.detect.isMobile) {
+                
+                $('html, body').css({
+                    overflow:"visible"
+                });
+
+            } 
+        },
+
+        resetImage: function() {
+            var self = this;
+            var $img = self.$popup.find('img[data-temp-src]');
+            $img.each(function(idx,obj){
+                if(!obj.src.length || obj.src.length == "") {
+                    obj.src = obj.dataset.tempSrc;
+                }
+            });
+        },
+
+        //최근본 제품 리스트 가져오기
+        requestData: function(openPopup) {
+			var self = this;
+			var ajaxUrl = self.$popup.attr('data-list-url');
+
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null/*{"id":cookieValue}*/, function(result) {
+				var data = result.data;
+				var arr = data instanceof Array ? data : [];
+                self.listData = arr;
+				self.$list.empty();
+
+                var popuplistItemTemplate = '<li{{#if disabledReason}} class="disabled"{{/if}}>' +
+                    '<div class="img"><a href="{{modelUrlPath}}"><img data-temp-src="{{smallImageAddr}}" alt="{{imageAltText}}"></a></div>' +
+                    '<dl><a href="{{modelUrlPath}}"><dt>{{#raw modelDisplayName}}</dt><dd>{{#if disabledReason}}{{disabledReason}}{{#else}}{{#if price}}{{price}}원{{/if}}{{/if}}</dd></a></dl>' +
+                '</li>'
+
+				arr.forEach(function(item, index) {
+                    var price = item.obsSellingPrice ? (item.obsSellingPrice > 0 ? item.obsSellingPrice : null) : null;
+                    item.price = price ? vcui.number.addComma(price) : null;
+                    item.disabledReason = item.disabledReason && item.disabledReason.length > 0 ? item.disabledReason : null;
+					self.$list.append(vcui.template(popuplistItemTemplate, item));
+                });
+
+                self.checkNoData();
+                
+                if(openPopup) {
+                    self.openPopup();
+                }
+			});
+        },
+        
+        //최근본 제품 noData 체크
+        checkNoData: function() {
+            var self = this;
+            if(self.$list.find('li').length > 0) {
+                self.$KRP0005.find('.floating-linker.recently').show();
+            } else {
+                self.$KRP0005.find('.floating-linker.recently').hide();
             }
         }
-
 
 	};
 
     $(document).ready(function(){
-        //if(!document.querySelector('.KRP0005')) return false;
+        if(!document.querySelector('.KRP0005')) return false;
         //$('.KRP0005').buildCommonUI();
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
         var isSwipe = !!$('#sw_con').length;
 
         if (isSwipe && $('#floatBox').length == 0){
-            //$('.swiper-container').after('<div id="floatBox"></div>');
             // 20210810 BTOCSITE-1814
             $('#sw_con').after('<div id="floatBox"></div>');
         }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
             setTimeout(function(){
-                //console.log('krp0005 init');
+                console.log('krp0005 init');
                 var floatingWrap = $('.floating-wrap').remove();
                 var btnFloatingWrap = $('.btn-floating-wrap').remove();
                 $('#floatBox').append(btnFloatingWrap);
@@ -204,9 +255,6 @@
         }
         
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
-
-
-        //KRP0005.init();
         
     });
 })();

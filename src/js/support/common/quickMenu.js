@@ -48,13 +48,13 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
             if (!flag) {
                 self.$service.removeClass('on');
                 self.$serviceBtn.attr('aria-expanded', false);
-                self.$el.removeClass('dim');
+                //self.$el.removeClass('dim');
                 self._altChange(self.$serviceBtn, false);
             } else {
                 self.$history.removeClass('on');
                 self.$service.addClass('on');
                 self.$serviceBtn.attr('aria-expanded', true);
-                self.$el.addClass('dim');
+                //self.$el.addClass('dim');
                 self._altChange(self.$serviceBtn, true);
             }
         },
@@ -65,10 +65,10 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
                 if (flag) {
                     self.$service.removeClass('on');
                     self.$history.addClass('on');
-                    self.$el.addClass('dim');
+                    //self.$el.addClass('dim');
                 } else {
                     self.$history.removeClass('on');
-                    self.$el.removeClass('dim');
+                    //self.$el.removeClass('dim');
                 }
             }
         },
@@ -98,12 +98,15 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
                 self._changeService($(this).parent().hasClass('on') ? false : true);
             });
 
+            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
             self.$historyBtn.on('click', function() {
                 self.$history.find('.history-list li').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
                     self.$history.find('.history-list li:first-child a')[0].focus();
+                    self.$history.find('.btn-expand').focus();
                 });
                 self._changeHistory(true);
             });
+            /* //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
 
             self.$closeBtn.on('click', function() {
                 self._changeHistory(false);
@@ -133,6 +136,19 @@ vcui.define('support/common/quickMenu.min', ['jquery', 'vcui'], function ($, cor
                     self.$el.removeClass('top');
                 }
             });
+
+
+
+            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
+            //self.$history.trigger('click');
+            setTimeout(function () {
+                self.$history.removeClass('info-text');
+            }, 2000);
+            //console.log("-------------------");
+            //console.log(self.$history);
+            
+            /* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
+            //self.$history.hide();
         }
     });
 
