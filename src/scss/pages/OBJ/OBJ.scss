@@ -118,9 +118,35 @@ header {
                                 }
                             } 
                         }
+                        //BTOCSITE-4355 히어로배너 하단 문구 추가 210823
                         .signatureVisualSubTextArea{
-                            //BTOCSITE-4355
+                            .sub-text{
+                                position:relative;
+                                width: 100%;
+                                max-width:1410px;
+                                margin:0 auto;
+                                p{
+                                    position: absolute;
+                                    right:50px;
+                                    bottom:41px;
+                                    font-size: 14px;
+                                    line-height: 26px;
+                                    color:#fff;
+                                    @media screen and(max-width:1475px){
+                                        margin-right:40px;
+                                    }
+                                    @include mobile{
+                                        left:15px;
+                                        bottom:30px;
+                                        font-weight: 200;
+                                        font-size: 11px;
+                                        line-height: 13px;
+                                        margin-right:15px;
+                                    }
+                                }
+                            }
                         }
+                        //BTOCSITE-4355 히어로배너 하단 문구 추가 210823
                         .bg {
                             background-size:cover;
                             
@@ -321,7 +347,7 @@ header {
                         right: 15px;
                         margin-right: 0;
                         @include mobile {
-                            right: 0;
+                            right: -18px; //210823 수정 - BTOCSITE-4355
                         }
                     }
                 }
