@@ -1,186 +1,194 @@
-<!-- partials/components/KPP0005.html -->
-<div class="KRP0005 floating-menu cs-cst" style="display:none">
-	<div class="cs-cst-linker">
-		<a href="#" class="head-inner js-popup" title="Opens in a new window" data-width="344" data-height="553"
-			data-link-area="sticky_chat-chatbot_button" data-link-name="">
-			<span class="blind">고객 상담</span>
-		</a>
-	</div>
+<!-- 
+    서비스 메뉴
+    - 최초 진입시 펼침 상태 (dim) 클래스 추가)
+    - 재진입시 닫힘 상태 (dim 클래스 삭제) 
+-->
+<!-- BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+<div id="quickMenu" class="btn-floating-wrap quick-menu"> <!-- <div id="quickMenu" class="quick-menu dim"> -->
+    <ul class="quick-menu-list">
+        <!-- 
+            서비스 메뉴
+            - 최초 진입시 펼침 상태 (on 클래스 추가)
+            - 재진입시 닫힘 상태 (on 클래스 삭제)
+            - <li class="service-menu on"></li>
+        -->
+
+        <!-- BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+        <li class="service-menu">
+            <button type="button" class="btn-expand" aria-expanded="false"><span class="blind">서비스 메뉴 열기</span></button>
+            <ul class="service-menu-list">
+                <li>
+                    <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="js-popup chatbot-btn" title="새 창으로 열림" data-width="360" data-height="620" data-link-area="sticky_chat-chatbot_button" data-link-name="">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_customer-consultation.svg" alt="">
+                        </span>
+                        <span class="txt">상담챗</span>
+                    </a>
+                </li>
+                <!-- BTOCSITE-2958 추가 -->
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/visit-store-reservation" class="solutions-btn">
+                        <span class="img">
+                            <img src="/lg5-common/images/icons/img_shop_40.svg" alt="">
+                        </span>
+                        <span class="txt">매장 상담 예약</span>
+                    </a>
+                </li>
+                <!-- //BTOCSITE-2958 추가 -->
+                <!-- BTOCSITE-2958 추가 -->
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/solutions" class="">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_solutions.svg" alt="">
+                        </span>
+                        <span class="txt">제품 문제 해결</span>
+                    </a>
+                </li>
+                <!-- //BTOCSITE-2958 추가 -->
+                <!-- BTOCSITE-2958 삭제 -->
+                <!-- <li>
+                    <a href="https://wwwstg.lge.co.kr/support/product-manuals" class="manuals-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_product-drivers.svg" alt="">
+                        </span>
+                        <span class="txt">사용설명서/드라이버/SW</span>
+                    </a>
+                </li> -->
+                <!-- //BTOCSITE-2958 삭제 -->
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/find-service-center" class="center-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_find-center.svg" alt="">
+                        </span>
+                        <span class="txt">서비스 센터 찾기</span>
+                    </a>
+                </li>
+                <!-- mobile device 노출 영역-->
+                <li class="serviceCenter-call" style="display: none;">
+                    <a href="tel:15447777" class="tel-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_service-center.svg" alt="">
+                        </span>
+                        <span class="txt">고객센터 전화하기</span>
+                    </a>
+                </li>
+                <!-- // mobile device 노출 영역-->
+            </ul>
+        </li>
+        <!-- //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+
+        <!-- 검색 기록 0건 -->
+        <!-- 
+        <li class="history">
+            <button type="button" class="btn-expand" aria-expanded="false">
+                <span class="blind">고객지원 제품 검색 기록 열기</span>
+                <span class="count">0<span class="blind">건</span></span>
+                <span class="img">
+                    <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="">
+                </span>
+            </button>
+        </li> 
+        -->
+        <!-- BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+        <!-- 검색 기록 
+            - 최초 진입시 펼침 상태 (on 클래스 추가)
+            - 재진입시 닫힘 상태 (on 클래스 삭제) 
+            - <li class="history on">
+            
+            - 고객지원 페이지 진입시 클래스 history 태그 활성
+            - 고객지원 페이지에만 <li class="history info-text"> 태그 노출
+        -->
+        <li class="history info-text">
+            <button type="button" class="btn-expand" aria-expanded="false">
+                <span class="blind">고객지원 제품 검색 기록 열기</span>
+                <span class="count">5<span class="blind">건</span></span>
+                <span class="img">
+                    <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="">
+                </span>
+
+                <div class="history-info">
+                    <p>고객지원에서 찾아 본 제품</p>
+                </div>
+            </button>
+            <ul class="history-list">
+                <li>
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                        </span>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                        </span>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="#" target="_blank" title="제품 서비스 페이지 - 새창으로 열림">
+                        <span class="img">
+                            <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                        </span>
+                        <strong class="name">OLED65RXKNA</strong>
+                    </a>
+                </li> -->
+                <li>
+                    <a href="#history-popup" class="btn-more" data-control="modal"><span class="count">5<span class="blind">건</span></span>더보기</a>
+                </li>
+            </ul>
+            <button type="button" class="btn-close">
+                <span class="blind">고객지원 제품 검색 기록 닫기</span>
+            </button>
+        </li>
+        <!-- //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+    </ul>
+
+    <!--BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 : 삭제 -->
+    <!-- <button type="button" class="btn-top off"><span class="blind">맨 위로 이동</span></button> -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- history 최근 본 팝업 -->
+    <article id="history-popup" class="popup-wrap lately-popup">
+        <header class="pop-header">
+            <h1 class="tit"><span>최근 본 고객지원 제품</span></h1>
+        </header>
+        <section class="pop-conts support">
+            <div class="lately-list">
+                <ul>
+                    @@for (var i = 0; i < 10; i++) {
+                    <li>
+                        <a href="#" target="_blank" title="새창으로 열림">
+                            <div class="img">
+                                <img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg" alt="">
+                            </div>
+                            <dl>
+                                <dt>OLED65C1KNB (suffix 제외)</dt>
+                                <dd class="category">TV / 프로젝터 &gt; 울트라 HD</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </section>
+        <div class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+            </div>
+        </div>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
 </div>
-
-<!-- <div class="btn-type2" style="display:none">
-	<div class="KRP0005 floating-menu more-plus">
-		<div class="more-plus-linker open">
-			<a href="#" class="head-inner">
-				<span class="blind">더보기</span>
-			</a>
-		</div>
-	</div>
-	<div class="btn-inner open">
-		<div class="KRP0005 floating-menu chat">
-			<div class="chatbot-linker">
-				<a href="https://www.lgechat.com/us/index.html" class="head-inner js-popup" title="Opens in a new window" data-width="344" data-height="553" data-link-area="sticky_chat-chatbot_button" data-link-name="">
-					<span class="blind">LG Chatbot</span>
-				</a>
-			</div>
-		</div>
-		<div class="KRP0005 floating-menu cs-call">
-			<div class="cs-call-linker">
-				<a href="#" class="head-inner js-popup" title="Opens in a new window" data-width="344" data-height="553" data-link-area="sticky_chat-chatbot_button" data-link-name="">
-					<span class="blind">전문가 상담</span>
-				</a>
-			</div>
-		</div>
-		<div class="KRP0005 floating-menu btn3">
-			<div class="cs-call-linker">
-				<a href="#" class="head-inner">
-					<span class="blind">세번째 버튼</span>
-				</a>
-			</div>
-		</div>
-		<div class="KRP0005 floating-menu btn4">
-			<div class="cs-call-linker">
-				<a href="#" class="head-inner">
-					<span class="blind">네번째 버튼</span>
-				</a>
-			</div>
-		</div>
-	</div>
-</div> -->
-
-<!-- 210323 수정 [플로팅 버튼 수정] -->
-<!-- .more-plus-linker 클릭 시 .open 클래스 추가 -->
-<div class="btn-floating-wrap">
-	<div class="KRP0005 floating-menu more-plus" data-chat-url="http://st.lgechat.co.kr/kr/index.html"
-		data-pincode-url="/support/getPinCode.lgajax">
-		<div class="more-plus-linker">
-			<a href="#" class="head-inner">
-				<!-- 210423 웹접근성 수정 [텍스트 수정] -->
-				<!-- 210423 웹접근성 수정 [toggle text : 퀵메뉴 열기 / 퀵메뉴 닫기] -->
-				<span class="blind">퀵메뉴 열기</span>
-			</a>
-		</div>
-	</div>
-	<div class="btn-inner">
-		<div class="KRP0005 floating-menu floating-list">
-			<!-- 210423 웹접근성 수정 [순서 변경] -->
-			<!-- 매장 상담 예약 버튼 추가 및 순서 변경 : 2021-05-14 -->
-			<div class="floating-linker chat"> <a href="https://www.lgechat.com/us/index.html" class="head-inner js-popup" title="Opens in a new window" data-width="344" data-height="553" data-link-area="sticky_chat-chatbot_button" data-link-name=""> <span class="text">상담쳇</span> </a> </div>
-			<!--2021-07-23 플로팅 배너 - 마이컬렉션 제거-->
-			<!--<div class="floating-linker my-collection"> <a href="#" class="head-inner"> <span class="text">마이컬렉션</span> </a> </div>-->
-			<!--//2021-07-23 플로팅 배너 - 마이컬렉션 제거-->
-			<!-- <div class="floating-linker cs-cst"> <a href="#" class="head-inner js-popup" title="Opens in a new window" data-width="344" data-height="553" data-link-area="sticky_chat-chatbot_button" data-link-name=""> <span class="text">전화 상담</span> </a> </div> -->
-			<div class="floating-linker store-reservation"> <a href="/support/visit-store-reservation" class="head-inner"> <span class="text">매장 상담 예약</span> </a> </div>
-			<!-- 20210601 : FAQ 버튼 추가 -->
-			<div class="floating-linker faq"> <a href="#" class="head-inner" target="_blank" title="새창열림"> <span class="text">사이트 이용</span> </a> </div>
-			<!-- //20210601 : FAQ 버튼 추가 -->
-			<div class="floating-linker recently"> <a href="#" class="head-inner"> <span class="text">최근본</span> </a> </div>
-			<!-- //매장 상담 예약 버튼 추가 및 순서 변경 : 2021-05-14 -->
-			<!-- // 210423 웹접근성 수정 [순서 변경] -->
-		</div>
-	</div>
-</div>
-
-<div class="KRP0032 floating-menu lately">
-
-	<article id="KRP0032" class="popup-wrap lately-popup close"
-		data-list-url="/lg5-common/data-ajax/KRP0032/productData.json">
-		<header class="pop-header">
-			<h1 class="tit"><span>최근 본 제품</span></h1>
-		</header>
-		<section class="pop-conts">
-			<div class="lately-list">
-				<ul>
-					<!-- 210422 수정 [품절, 단종, 구매불가 메세지 추가] -->
-					<li class="disabled">
-						<div class="img"><a href="#n"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-									alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></a></div>
-						<dl>
-							<a href="#n">
-								<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-								<dd>일시 품절된 상품입니다.</dd>
-							</a>
-						</dl>
-					</li>
-					<li class="disabled">
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="제품명 최대 텍스트 2줄까지"></div>
-						<dl>
-							<dt>제품명 최대 텍스트 2줄까지</dt>
-							<dd>판매가 종료된 상품입니다.</dd>
-						</dl>
-					</li>
-					<li class="disabled">
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄 이상 넘어갈시 …처리 됩니다. 이상 넘어…최대 텍스트 2줄 이상 넘어갈시 …처리 됩니다. 이상 넘어…"></div>
-						<dl>
-							<dt>최대 텍스트 2줄 이상 넘어갈시 …처리 됩니다. 이상 넘어…최대 텍스트 2줄 이상 넘어갈시 …처리 됩니다. 이상 넘어…</dt>
-							<dd>본 상품은 LGE.COM에서 판매하지 않는 상품입니다.</dd>
-						</dl>
-					</li>
-					<!-- // 210422 수정 [품절, 단종, 구매불가 메세지 추가] -->
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-					<li>
-						<div class="img"><img src="/lg5-common/images/KRP0032/img-lately-96x96.jpg"
-								alt="최대 텍스트 2줄까지 공백포함 25자까지 권장합니다."></div>
-						<dl>
-							<dt>최대 텍스트 2줄까지 공백포함 25자까지 권장합니다.</dt>
-							<dd>3,490,000원</dd>
-						</dl>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-	</article>
-	<div class="lately-dim open"></div>
-	<!-- //210128 수정(위치이동) -->
-</div>
-<!-- // 210323 수정 [플로팅 버튼 수정] -->
+<!-- //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
