@@ -55,6 +55,9 @@
 	max-width:1226px;
 	margin:0 auto;
 	padding:0 40px;
+	@include mobile {
+		padding:40px 12px;
+	}
 }
 
 .stanbyme-reg{
@@ -172,47 +175,63 @@
 	}
 	.tbody {
 		position:relative;
-		display:table;
-		width:100%;
-		table-layout:fixed;
-		border-bottom:1px solid #ddd;
 		@include mobile {
 			padding:0 16px;
 			border-bottom:none;
 		}
 		.row {
 			position:relative;
+			display:table;
+			width:100%;
+			height:48px;
+			table-layout:fixed;
 			border-top:1px solid #ddd;
 			&:first-child {
 				border-top:none;
 			}
 			>div{
 				display:table-cell;
-				.col1{
-					position:relative;
-					.new{
-						position:absolute;
-						top:0;
-						left:0;
+				@include pc {
+					&.col1{
+						position:relative;
+						padding:15px 0;
+						.new{
+							position:absolute;
+							top:50%;
+							left:30px;
+							transform:translateY(-50%);
+						}
+						.tit{
+							display:inline-block;
+							padding:0 20px 0 90px;
+						}
 					}
-					p{
-						padding-left:30px;
+					&.col2,
+					&.col3,
+					&.col4{
+						display:table-cell;
+						vertical-align:middle;
+						text-align:center;
 					}
 				}
-			}
-		}
-		@include mobile {
-			display:block;
-			.col1{
-				display:block;
-				.new{
+				@include mobile {
 					display:block;
+					&.col1{
+						display:block;
+						width:100%;
+						.new{
+							display:block;
+						}
+						.tit{
+							display:inline-block;
+						}
+					}
+					&.col2,
+					&.col3,
+					&.col4{
+						display:inline-block;
+					}
 				}
-			}
-			.col2,
-			.col3,
-			.col4{
-				display:inline-block;
 			}
 		}
 	}
