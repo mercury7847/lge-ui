@@ -134,6 +134,16 @@
     &.open {
         .more-plus-linker {
             transform:rotate(225deg);
+            &:before {
+                content:' ';
+                display:block;
+                position:absolute;
+                top:50%;
+                left:50%;
+                background:url('/lg5-common/images/icons/icon-more-plus-x.png') no-repeat;
+                background-size:100%;
+                transform:translate(-50%, -50%);
+            }
         }
         .btn-inner {
             display: block;
@@ -354,11 +364,32 @@
                 background-image:url('/lg5-common/images/icons/img_shop_40.svg');
             }
         }
-         &.faq {
+        &.faq {
             a {
                 background-image:url('/lg5-common/images/icons/img_floatingfaq_40.svg');
             }
         }
+
+        /* BTOCSITE-2958 - 플로팅 배너 개선 2021-08-23 : 추가 */
+        &.product-troubleshooting {
+            a {
+                background-image:url('/lg5-common/images/icons/icon_floating_solutions.svg');
+                background-size: 40px;
+                @include mobile {
+                    background-size: 24px;
+                }
+            }
+        }
+        &.store-center {
+            a {
+                background-image:url('/lg5-common/images/icons/icon_find-center.svg');
+                background-size: 40px;
+                @include mobile {
+                    background-size: 24px;
+                }
+            }
+        }
+        /* BTOCSITE-2958 - 플로팅 배너 개선 2021-08-23 : 추가 */
     }
 	.chatbot-linker {
 		width:88px;
@@ -393,7 +424,8 @@
         border-radius:50%;
         background-image: linear-gradient(315deg, #fb5a72, #fa263e);
         background-color:#fa263e;
-        transition:opacity 0.8s ease-out, transform 0.3s ease-out;
+        background-size:100%;
+        //transition:opacity 0.8s ease-out, transform 0.3s ease-out;
         &:before {
             content:' ';
             display:block;
@@ -402,7 +434,7 @@
             left:50%;
             width:40px;
             height:40px;
-            background:url('/lg5-common/images/icons/icon-more-plus-x.png') no-repeat;
+            background:url('/lg5-common/images/icons/icon_img_floating_40.svg') no-repeat;
             background-size:100%;
             transform:translate(-50%, -50%);
         }
@@ -773,7 +805,7 @@
                 width:40px;
                 height:40px;
                 // transition:transform .3s ease-out;
-                background:url(/lg5-common/images/icons/img_floating_40.svg) no-repeat;
+                background:url('/lg5-common/images/icons/icon_img_floating_40.svg') no-repeat;
                 background-size:100%;
             }
         }
@@ -783,7 +815,7 @@
             }
             .btn-expand {
                 &::before {
-                    background:url(/lg5-common/images/icons/icon-more-plus-x.svg) no-repeat;
+                    background:url('/lg5-common/images/icons/icon-more-plus-x.svg') no-repeat;
                     transform:translate(-50%, -50%) rotate(135deg);
                     background-size:100%;
                 }
