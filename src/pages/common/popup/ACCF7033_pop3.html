@@ -17,7 +17,7 @@
                     <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
                         <!-- 210408 자동완성 수정 -->
-                        <div class="input-layer-wrap on"> <!-- 입력박스 선택시 on클래스 추가 -->
+                        <div class="input-layer-wrap"> <!-- 입력박스 선택시 on클래스 추가 -->
                             <div class="box">
                                 <div class="input-wrap">
                                     <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="cell">
                                 <!-- 210201 수정 -->
-                                <button type="button" class="btn"><span>시리얼 번호 확인</span></button>
+                                <button type="button" class="btn"><span>시리얼 번호 확인</span></button>
                                 <!-- //210201 수정 -->
                             </div>
                         </div>
@@ -135,17 +135,6 @@
                 </dl> -->
                 <!-- //2021-08-17 BTOCSITE-4196 수정 삭제 -->
             </div>
-            <!-- 210305 수정 [유의사항 문구 변경] -->
-            <!-- 210421 수정 [유의사항 문구 변경(삭제)] -->
-            @@include('./common/modules/bullet-list.html', {
-                "topBorder" : true,
-                "bulletTit" : "확인하세요",
-                "bulletTxt" : [
-                    "제품등록 후 리뷰를 작성하면 추가 포인트를 드립니다."
-                ]
-            })
-            <!-- // 210421 수정 [유의사항 문구 변경(삭제)] -->
-            <!-- // 210305 수정 [유의사항 문구 변경] -->
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
@@ -153,76 +142,6 @@
                 <button type="button" class="btn"><span>등록</span></button>
             </div>
         </footer>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </div>
-    <div class="page-change">
-        <header class="pop-header">
-            <h1 class="tit"><span>모델명 확인 방법</span></h1>
-        </header>
-        <!-- 210306 클래스 수정 -->
-        <section class="pop-conts academy-pop common-pop"><!-- [11.27 수정] .common-pop class 추가 -->
-        <!-- //210306 클래스 수정 -->
-            <p class="noti-txt">사용하시는 제품의 <em>모델명과 제조번호</em>를 확인해주세요.</p>
-            <div class="example-list">
-                <dl>
-                    <dt>모델명</dt>
-                    <dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
-                </dl>
-                <dl>
-                    <dt>제조번호</dt>
-                    <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
-                </dl>
-            </div>
-            <!-- 
-                1. 카테고리 선택 후 안내 메시지 {
-                    "text": "제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.",
-                    "imgPath": "/lg5-common/images/dummy/@img-example.jpg"
-                }
-    
-                2. 제품 이미지 없을 경우 {
-                    "text": "제품 이미지 준비중입니다.",
-                    "imgPath": "/lg5-common/images/img-nodata.svg"
-                }
-             -->
-            <div class="form-wrap category-select">
-                <dl class="forms">
-                    <dt class="tit"><label for="select1" class="req">카테고리 선택</label></dt>
-                    <dd class="conts">
-                        <div class="box">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox ul_select_target" name="cateSelect" id="select1" title="전체 카테고리 선택" data-ajax="/lg5-common/data-ajax/support/subCategoryOption.json" data-target="#select2">
-                                    <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                    <option value="세탁기/스타일러">세탁기/스타일러</option>
-                                    <option value="모바일">모바일</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" name="subCateSelect" id="select2" title="전체 카테고리 선택" disabled>
-                                    <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                </select>
-                            </div>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-            <div class="example-result">
-                <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
-                <!-- [11.27 수정] 샘플 이미지 DOM 수정 -->
-                <div class="img" aria-hidden="true">
-                    <img src="/lg5-common/images/dummy/@img-example.jpg" alt="모델명 및 제조번호 확인 예시 이미지">
-                </div>
-                <!-- // [11.27 수정] 샘플 이미지 DOM 수정 -->
-            </div>
-        </section>
-        <!-- 210223 추가 -->
-        <footer class="pop-footer center">
-            <div class="btn-group">
-                <button type="button" class="btn"><span>뒤로가기</span></button>
-            </div>
-        </footer>
-        <!-- //210223 추가 -->
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </div>
     <!-- //210225 수정 -->

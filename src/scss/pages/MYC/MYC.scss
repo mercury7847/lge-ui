@@ -1116,3 +1116,13 @@
     }
 }
 /* //20210624 납부내역 : 팝업*/
+
+
+// 2021-08-19 BTOCSITE-4196
+#registMyProductPopup {
+    .pop-conts {
+        @include pc {
+            min-height:480px;
+        }
+    }
+}
