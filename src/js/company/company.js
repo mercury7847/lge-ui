@@ -56,7 +56,7 @@ $(document).ready(function() {
 			$(".cont_view_more>.btnArea>.btn").addClass("on");
 		} else {
 			$(".cont_view_more>.content").css("display", "none");
-			$(".cont_view_more>.btnArea span").attr("class", "open").text("지난 자료 열기");
+			$(".cont_view_more>.btnArea span").attr("class", "open").text("지난 자료 보기");
 			$(".cont_view_more>.btnArea>.btn").removeClass("on");
 		}
 		e.preventDefault();

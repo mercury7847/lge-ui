@@ -430,7 +430,7 @@ img.m350 {max-width:350px!important}
 .company .tb_row.board-type .tbl_add .item_num {font-size:14px; font-weight:bold; line-height:24px}
 .company .tb_row.board-type .tbl_add .item_num > em {padding-left:5px; color:#da0f47}
 .company .tb_row.board-type .tbl_add .item_select .sort-select-wrap .ui-selectbox-wrap .ui-selectbox-list {left:auto; right:0; transform:translateX(0)}
-.company .tb_row.board-type .board-tit p.new {margin-right:12px; color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
+.company .tb_row.board-type .board-tit p.new {min-width:28px; margin-right:12px; color:#da0f47; font-size:12px; font-weight:bold; line-height:26px}
 .company .tb_row.board-type table td.dwn > a,
 .company .tb_row.board-type table td.dwn > button {display:block; width:24px; height:24px; margin:0 auto; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
 
@@ -997,8 +997,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .audit_list ul.dwn_list.item2 {display:flex; justify-content:space-between; width:100%}
 .company .audit_list ul.dwn_list.item2 > li {width:calc(50% - 12px)}
 
-.company .audit_list.dwn_type2 {display:flex; justify-content:space-between}
-.company .audit_list.dwn_type2 .dwn_type2_inner {width:calc(50% - 12px)}
+.company .audit_list.dwn_type2 {display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:0}
+.company .audit_list.dwn_type2 .dwn_type2_inner {width:calc(50% - 12px); margin-top:30px}
 .company .audit_list.dwn_type2 ul.dwn_list > li {width:100%}
 .company .audit_list.dwn_type2 ul.dwn_list > li span em {position:relative; margin-left:10px; padding-left:10px; font-weight:normal}
 .company .audit_list.dwn_type2 ul.dwn_list > li span em::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
