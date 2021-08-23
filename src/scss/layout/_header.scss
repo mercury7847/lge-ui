@@ -457,9 +457,10 @@
         .about-company-layer {
             display: none;
             position: absolute;
-            top: 32px;
+            top: 20px;
             left: -6px;
             max-width: 125px;
+            padding-top: 12px;
             z-index: 104;
             > ul {
                 padding: 4px 0;
@@ -476,21 +477,21 @@
                         &:hover {
                             background-color:#f4f4f4
                         }
-                        > a.out_link {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            padding-right: 20px;
-                            i.go_out {
-                                display: block;
-                                width: 16px;
-                                height: 16px;
-                                margin-left: 4px;
-                                background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
-                                background-size: 14px 14px
-                            }
-                        }
                     }
+                    > a.out_link {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 20px;
+                        i.go_out {
+                            display: block;
+                            width: 16px;
+                            height: 16px;
+                            margin-left: 4px;
+                            background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+                            background-size: 14px 14px
+                        }
+                    }   
                 }
             }   
         }
