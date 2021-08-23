@@ -131,7 +131,7 @@
 
 
                 // BTOCSITE-659 
-                addAWSPdpUp();
+                self.addAWSPdpUp();
             },
 
             prepare: function() {
