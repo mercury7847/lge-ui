@@ -93,7 +93,7 @@ var lls = {
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    var androidPush = void android.getOSPush();
+                    var androidPush = android.getOSPush();
                     alert(androidPush)
                     //LGEPushSetting(androidPush)
                 }
