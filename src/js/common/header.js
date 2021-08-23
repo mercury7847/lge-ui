@@ -126,6 +126,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.outTimer = null;
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
+            self.$aboutCompany = self.$el.find(".about-company"); 		//210820 add about-company;
 
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
@@ -172,6 +173,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 self._mypageOut();
             });
+            // [S] 210820 add about-company 
+            self.$aboutCompany.on("mouseover", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOver();
+            }).on("mouseout", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOut();
+            }),
+            // [E] 210820 add about-company
 
             self.$hamburger.on('click', function(e){
                 e.preventDefault();
@@ -630,6 +640,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
+        // [S] 210820 add about-company 
+        _aboutCompanyOver: function() {
+            this.$aboutCompany.find(".about-company-layer").show(),
+            this.$aboutCompany.find("> a").hasClass("on") || this.$aboutCompany.find("> a").addClass("on")
+        },
+        _aboutCompanyOut: function() {
+            this.$aboutCompany.find(".about-company-layer").hide(),
+            this.$aboutCompany.find("> a").hasClass("on") && this.$aboutCompany.find("> a").removeClass("on")
+        },     
+        // [E] 210820 add about-company
 
         _menuToggle: function(forceActive){
             var self = this,
