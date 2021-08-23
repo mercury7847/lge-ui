@@ -94,8 +94,7 @@ var lls = {
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     var androidPush = android.getOSPush();
-                    alert(androidPush)
-                    //LGEPushSetting(androidPush)
+                    LGEPushSetting(androidPush)
                 }
             }
         });
