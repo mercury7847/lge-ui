@@ -683,6 +683,7 @@
                             margin: 0;
                         }
                         // 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 
+                        &.cardDiscount,
                         &.box { 
                             background-color: #da0f4d;
                             font-weight: 500;
