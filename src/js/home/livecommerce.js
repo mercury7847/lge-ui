@@ -93,7 +93,7 @@ var lls = {
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.getOSPush(LGEPushSetting(flag))
+                    android.getOSPush("LGEPushSetting")
                 }
 
                 lgkorUI.alert("", {
