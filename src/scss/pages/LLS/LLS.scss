@@ -59,6 +59,10 @@
                         display: inline-block;
                     }
     
+                    &.active {
+                        display: inline-block;
+                    }
+    
                     &.stop {
                         background-image: url(/lg5-common/images/icons/btn-carousel-hero-pause.svg);
                     }
