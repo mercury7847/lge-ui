@@ -44,38 +44,49 @@ var lls = {
     bindEvent: function(){
         var self = this;
 
-        LGEPushSetting = function(flag){
+        function LGEPushSetting(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
-            alert(flag)
-            if( flag == "Y" ) {
-                lgkorUI.alert("", {
-                    title: msg.flagY,
-                    ok: function(el) {
-                        if( vcui.detect.isIOS ) {
-                            var jsonString= JSON.stringify({"command": "setMkt", "value": "Y"});
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            android.setAdPushActive("Y")
-                        }
-                    }
-                }, self.pushBtn);
-            } else {
-                lgkorUI.alert("", {
-                    title: msg.flagN,
-                    okBtnName: "기기 알림 켜기",
-                    ok: function(el) {
-                        if( vcui.detect.isIOS ) {
+
+            lgkorUI.alert("", {
+                title: flag,
+                ok: function(el) {
+                    if( vcui.detect.isIOS ) {
                             var jsonString= JSON.stringify({"command": "goSetting"});
                             webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                         } else {
                             void android.openOSSetting();
                         }
-                    }
-                }, self.pushBtn);
-            }
+                }
+            }, self.pushBtn);
+            // if( flag == "Y" ) {
+            //     lgkorUI.alert("", {
+            //         title: msg.flagY,
+            //         ok: function(el) {
+            //             if( vcui.detect.isIOS ) {
+            //                 var jsonString= JSON.stringify({"command": "setMkt", "value": "Y"});
+            //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            //             } else {
+            //                 android.setAdPushActive("Y")
+            //             }
+            //         }
+            //     }, self.pushBtn);
+            // } else {
+            //     lgkorUI.alert("", {
+            //         title: msg.flagN,
+            //         okBtnName: "기기 알림 켜기",
+            //         ok: function(el) {
+            //             if( vcui.detect.isIOS ) {
+            //                 var jsonString= JSON.stringify({"command": "goSetting"});
+            //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            //             } else {
+            //                 void android.openOSSetting();
+            //             }
+            //         }
+            //     }, self.pushBtn);
+            // }
         }
 
         //앱 알림받기 버튼
@@ -88,23 +99,14 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    //obj.command = "setMkt";
                     obj.command = "getPushStatus";
                     obj.callBack = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.getOSPush("LGEPushSetting")
+                    void android.getOSPush("LGEPushSetting")
                 }
-
-                lgkorUI.alert("", {
-                    title: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
-                    ok: function(el) {
-                        
-                    }
-                }, _self);
             }
-            
         });
 
 

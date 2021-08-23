@@ -977,7 +977,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.dwn_list > li {display:flex; justify-content:space-between; align-items:center; width:calc(50% - 12px); margin-top:14px; padding:26px 30px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); color:#000; font-size:16px; line-height:1.5; font-weight:bold}
 .company ul.dwn_list.btns2 > li {flex-wrap:wrap}
 .company ul.dwn_list > li > span {flex:auto}
-.company ul.dwn_list > li .btn.dwn {min-width:auto; padding:5px 12px; font-size:14px; line-height:20px}
+.company ul.dwn_list > li .btn.dwn {/* min-width:auto; */ padding:5px 12px; font-size:14px; line-height:20px}
 .company ul.dwn_list > li .btn_area {display:flex}
 .company ul.dwn_list > li .btn_area .btn.dwn {position:static; min-width:132px; top:auto; transform:translate(0)}
 .company ul.dwn_list > li .btn_area .btn.dwn + .btn.dwn {margin-left:10px}
