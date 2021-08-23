@@ -877,7 +877,10 @@
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 /* 20210527 추가 */
                 // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
-                item.obsSellingPriceNumber = (item.obsSellingPrice != null) ? item.obsSellingPrice : null;  
+                item.obsSellingPriceNumber =  item.obsSellingPrice || 0;  
+                if(typeof item.obsSellingPriceNumber === 'string') {
+                    item.obsSellingPriceNumber = Number(item.obsSellingPriceNumber.replace(/,/g,''));
+                }
                 // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
                 /* 20210527 추가 */
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
