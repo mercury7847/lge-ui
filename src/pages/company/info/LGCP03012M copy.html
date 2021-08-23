@@ -1,145 +1,49 @@
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0"
-		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
-		src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH" height="0" width="0"
-		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
-		src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T" height="0" width="0"
-		style="display:none;visibility:hidden"></iframe></noscript>
-<script
-	type="text/javascript">	var digitalData = digitalData || {}; digitalData.pageInfo = { "content_depth1": "회사소개", "content_depth2": "회사소개|기업정보", "content_depth3": "회사소개|기업정보|사업장", "content_depth4": "회사소개|기업정보|사업장|해외사업장", "content_depth5": "회사소개|기업정보|사업장|해외사업장" };</script>
-<script
-	type="text/javascript">	var imgMo = "/kr/images/company/info/overseas/img-mobile.png"; var imgPc = "/kr/images/company/info/overseas/img-default.png"; $(document).ready(function () { checkSize(); }); $(window).resize(function () { checkSize(); }); function checkSize() { var windowWidth = $(window).width(); if (windowWidth < 767) { $(".overseas .img-overseas img").attr("src", imgMo); $(".overseas area").attr("onmouseover", ""); $(".overseas area").attr("onmouseout", ""); } else { $(".overseas .img-overseas img").attr("src", imgPc); $(".overseas area").each(function () { var _this = $(this); _this.attr("onmouseover", _this.data("onmouseover")); _this.attr("onmouseout", _this.data("onmouseout")); }); } }</script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+	var digitalData = digitalData || {};
+	digitalData.pageInfo = {
+		"content_depth1": "회사소개",
+		"content_depth2": "회사소개|기업정보",
+		"content_depth3": "회사소개|기업정보|사업장",
+		"content_depth4": "회사소개|기업정보|사업장|해외사업장",
+		"content_depth5": "회사소개|기업정보|사업장|해외사업장"
+	};
+</script>
+<script type="text/javascript">
+	var imgMo = "/kr/images/company/info/overseas/img-mobile.png";
+	var imgPc = "/kr/images/company/info/overseas/img-default.png";
+	$(document).ready(function() {	
+		checkSize();
+	});
+	$(window).resize(function() {
+        checkSize();
+	});
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			$(".overseas .img-overseas img").attr("src", imgMo);
+			$(".overseas area").attr("onmouseover","");
+			$(".overseas area").attr("onmouseout","");
+		}
+		else{
+			$(".overseas .img-overseas img").attr("src", imgPc);
+			$(".overseas area").each(function(){
+				var _this = $(this);
+				_this.attr("onmouseover",_this.data("onmouseover"));
+				_this.attr("onmouseout", _this.data("onmouseout"));
+			});
+		}
+	}
+</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
-	/* 해외사업장 */
-	.overseas {
-		position: relative;
-	}
 
-	.country-list {
-		display: block;
-	}
-
-	.country-list li {
-		display: table;
-	}
-
-	.country-list .country {
-		width: 102px;
-		display: table-cell;
-		font-weight: bold;
-		color: #000000;
-		position: relative;
-	}
-
-	.country-list .country::before {
-		content: '';
-		display: inline-block;
-		background-color: #000;
-		border-radius: 100%;
-		position: absolute;
-		top: 11px;
-		left: -8px;
-	}
-
-	.country-list .links {
-		display: table-cell;
-		font-weight: normal;
-		line-height: 1.29;
-		color: #000000;
-	}
-
-	.country-list .links::after {
-		content: '';
-		display: inline-block;
-		width: 16px;
-		height: 16px;
-		background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat right top 3px;
-		margin: -2px 0 0 3px;
-	}
-
-	/* 해외사업장 mo */
-	@media screen and (max-width:767px) {
-		.overseas {
-			margin-top: 15px;
-		}
-
-		.overseas .img-overseas {
-			overflow-x: scroll;
-			width: 100%;
-		}
-
-		.country-list {
-			margin-top: 16px;
-			margin-bottom: 18px;
-		}
-
-		.country-list li {
-			margin-bottom: 14px;
-		}
-
-		.country-list .country {
-			font-size: 13px;
-		}
-
-		.country-list .country::before {
-			width: 2px;
-			height: 2px;
-		}
-
-		.country-list .links {
-			font-size: 13px;
-		}
-	}
-
-	/* 해외사업장 pc */
-	@media screen and (min-width:768px) {
-		.overseas {
-			margin-top: 30px;
-		}
-
-		.overseas map {
-			position: absolute;
-			top: 100px;
-			left: 110px;
-		}
-
-		.country-list {
-			width: 1034px;
-			display: block;
-			margin-top: 32px;
-			margin-bottom: 18px;
-		}
-
-		.country-list ul {
-			display: inline-block;
-			width: 33%;
-			height: 260px;
-			vertical-align: top;
-			padding-left: 10px;
-		}
-
-		.country-list ul+ul {
-			border-left: dashed 1px #dddddd;
-			padding-left: 20px;
-		}
-
-		.country-list li {
-			margin-bottom: 23px;
-		}
-
-		.country-list .country {
-			font-size: 14px;
-		}
-
-		.country-list .country::before {
-			width: 3px;
-			height: 3px;
-		}
-
-		.country-list .links {
-			font-size: 14px;
-		}
-	}
 </style>
 <div class="breadcrumb">
 	<ul>
@@ -152,22 +56,27 @@
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">기업정보</h2>
-	</div> <!-- hiro image -->
+	</div>
+	<!-- hiro image -->
 	<section class="hiro-wrap">
-		<div class="visual-area"> <span class="bg ui_bg_switch"
-				data-pc-src="/kr/images/company/info/img-companyInfo-hero-pc_new.jpg"
-				data-m-src="/kr/images/company/info/img-companyInfo-hero-mo_new.jpg" aria-hidden="hidden"></span> </div>
+		<div class="visual-area">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-companyInfo-hero-pc_new.jpg" data-m-src="/kr/images/company/info/img-companyInfo-hero-mo_new.jpg" aria-hidden="hidden"></span>
+		</div>
 		<div class="text-area">
 			<p class="text">LG전자는 혁신적인 제품과 차별화된 기술로<br>세계 시장을 선도합니다</p>
 		</div>
-	</section> <!-- // hiro image -->
+	</section>
+	<!-- // hiro image -->
 	<div class="ui_sticky">
 		<div class="com-tabs">
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li> <a href="/company/info/introduce#com-tabs01">기업소개</a> </li>
-					<li> <a href="/company/info/outline#com-tabs01">LG WAY</a>
+					<li>
+						<a href="/company/info/introduce#com-tabs01">기업소개</a>
+					</li>
+					<li>
+						<a href="/company/info/outline#com-tabs01">LG WAY</a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/outline">개요</a></li>
 							<li><a href="/company/info/firstplacelg">일등LG</a></li>
@@ -175,10 +84,17 @@
 							<li><a href="/company/info/ethics">윤리규범</a></li>
 						</ul>
 					</li>
-					<li> <a href="/company/info/history#com-tabs01">역사</a> </li>
-					<li> <a href="/company/info/management#com-tabs01">경영진·이사회</a> </li>
-					<li> <a href="/company/info/ci#com-tabs01">브랜드</a> </li>
-					<li class="on"> <a href="/company/info/domestic#com-tabs01">사업장<em class="blind">선택됨</em></a>
+					<li>
+						<a href="/company/info/history#com-tabs01">역사</a>
+					</li>
+					<li>
+						<a href="/company/info/management#com-tabs01">경영진&middot;이사회</a>
+					</li>
+					<li>
+						<a href="/company/info/ci#com-tabs01">브랜드</a>
+					</li>
+					<li class="on">
+						<a href="/company/info/domestic#com-tabs01">사업장<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/domestic">국내사업장</a></li>
 							<li><a href="/company/info/overseas">해외사업장</a></li>
@@ -188,11 +104,14 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="com-title">
-		<div class="img"> <span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-info-location-hero-pc.jpg"
-				data-m-src="/kr/images/company/info/img-info-location-hero-mo.jpg" aria-hidden="hidden"></span> </div>
+		<div class="img">
+			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-info-location-hero-pc.jpg" data-m-src="/kr/images/company/info/img-info-location-hero-mo.jpg" aria-hidden="hidden"></span>
+		</div>
 		<p class="text">LG전자의 사업장을 소개합니다.</p>
 	</div>
+
 	<div class="com-tabs">
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
@@ -202,9 +121,15 @@
 			</ul>
 		</div>
 	</div>
+
 	<div class="com-text">
 		<p class="tit">LG 전자 해외사업장</p>
-		<p class="text"> LG전자는 각 지역에 약 142여 개의 현지 법인을 설립해 운영하고 있으며 약 74,000여명의 임직원이 함께 일하고 있습니다.<br> (아래의 지도를 선택하시면 해외사업장을 확인 하실수 있습니다)<br><br> * 2020년 기준 </p>
+		<p class="text">
+			LG전자는 각 지역에 약 142여 개의 현지 법인을 설립해 운영하고 있으며  약 74,000여명의 임직원이 함께 일하고 있습니다.<br>
+			(아래의 지도를 선택하시면 해외사업장을 확인 하실수 있습니다)<br><br>
+			* 2020년 기준
+		</p>
+		
 		<div class="overseas only_pc">
 			<map name="pc-map">
 				<div class="tooltip-wrap">
@@ -781,5 +706,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 </div>

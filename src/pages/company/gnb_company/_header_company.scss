@@ -417,9 +417,10 @@
         .about-company-layer {
             display: none;
             position: absolute;
-            top: 32px;
+            top: 20px;
             left: -6px;
             max-width: 125px;
+            padding-top: 12px;
             z-index: 104;
             > ul {
                 padding: 4px 0;
