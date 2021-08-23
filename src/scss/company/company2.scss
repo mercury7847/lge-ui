@@ -33,9 +33,13 @@ img.m350 {max-width:350px!important}
 .company .btn_fileDown {text-decoration:none}
 .company .btn-link::after {top:auto; bottom:6px}
 
-.fixed-menu {position:sticky; position:-webkit-sticky; top:73px; top:auto; z-index:1}
-@media screen and (max-width:768px) {
-    .fixed-menu {top:66px}
+// 2depth fixed
+.tabs-wrap.act {position:fixed; left:0; top:73px; width:100%; background:#fff; z-index:100}
+@media screen and (min-width:1461px) {
+    .tabs-wrap.act {left:50%; margin-left:-730px}
+}
+@media screen and (max-width:767px) {
+    .tabs-wrap.act {top:66px}
 }
 
 /* search 서치 검색 */
@@ -67,18 +71,17 @@ img.m350 {max-width:350px!important}
 }
 
 /* 해외사업장 mo */
-.overseas_mo {width:100%; height:394px; margin-top:15px; overflow-x:scroll; overflow-y:hidden}
-.overseas_mo .tooltips {width:800px; height:100%; background:url(/kr/images/company/info/overseas/img-mobile.png) no-repeat 50%; background-size:100%}
-.overseas_mo .tooltips .tooltip-wrap {}
-.overseas_mo .tooltips .tooltip-wrap .tooltip-icon {position:absolute; background:none; z-index:50; background-color:rgba(0,0,0,0.4)}
-.overseas_mo .tooltips .tooltip-wrap.asia .tooltip-icon {width:142px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap.latin_a .tooltip-icon {width:147px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap.eur .tooltip-icon {width:97px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap.m_east .tooltip-icon {width:188px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap.north_a .tooltip-icon {width:154px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap.russia .tooltip-icon {width:130px; height:34px; top:; left:}
-.overseas_mo .tooltips .tooltip-wrap .tooltip-box {position:absolute; min-width:320px; max-width:327px; top:50%; left:50%; transform:translate(-50%,-50%); padding:24px}
-.overseas_mo .tooltips .tooltip-wrap .tooltip-box .tit {font-size:13px; line-height:20px}
+// .overseas_mo {width:100%; height:394px; margin-top:15px; overflow-x:scroll; overflow-y:hidden}
+// .overseas_mo .tooltips {width:800px; height:100%; background:url(/kr/images/company/info/overseas/img-mobile.png) no-repeat 50%; background-size:100%}
+// .overseas_mo .tooltips .tooltip-wrap .tooltip-icon {position:absolute; background:none; z-index:50; background-color:rgba(0,0,0,0.4)}
+// .overseas_mo .tooltips .tooltip-wrap.asia .tooltip-icon {width:142px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap.latin_a .tooltip-icon {width:147px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap.eur .tooltip-icon {width:97px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap.m_east .tooltip-icon {width:188px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap.north_a .tooltip-icon {width:154px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap.russia .tooltip-icon {width:130px; height:34px}
+// .overseas_mo .tooltips .tooltip-wrap .tooltip-box {position:absolute; min-width:320px; max-width:327px; top:50%; left:50%; transform:translate(-50%,-50%); padding:24px}
+// .overseas_mo .tooltips .tooltip-wrap .tooltip-box .tit {font-size:13px; line-height:20px}
 
 // .country-list {width:100%; margin-top:16px; margin-bottom:0}
 // .country-list ul {width:100%; height:auto; margin-bottom:-14px}

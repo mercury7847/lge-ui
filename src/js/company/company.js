@@ -98,3 +98,17 @@ function fcTabScrollLeft(tab){
 		tab.scrollLeft(scrollLeft);
 	}
 }
+
+// 2번째 탭 fixed
+$(function(){
+	$(window).scroll(function() {
+		var tarTab = $('#com-tabs02').closest('.com-tabs');
+		var tarTab2 = $('#com-tabs01').closest('.com-tabs').find('.tabs-wrap').innerHeight();
+		var scrollTabs02 = tarTab.offset().top - tarTab2;
+		if($(window).scrollTop() > scrollTabs02){
+			tarTab.find('.tabs-wrap').addClass("act");
+		}else{
+			tarTab.find('.tabs-wrap').removeClass("act");
+		}
+	});
+});
