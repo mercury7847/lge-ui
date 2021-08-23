@@ -128,6 +128,10 @@
                 })
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
+
+
+                // BTOCSITE-659 
+                addAWSPdpUp();
             },
 
             prepare: function() {
@@ -2692,6 +2696,17 @@
                         }
                     });
                 }
+            },
+            // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : pdp
+            addAWSPdpUp: function() {
+                // /mkt/commonModule/addAWSPdpUp.lgajax
+                // 파라미터
+                // itemId : SKU (OLED65A1MS.AKRG : salesmodelcode + surffixcode)
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSPdpUp.lgajax", {"itemId":digitalData.productInfo}, function(result) {
+
+
+                    console.log("result %o",result);
+                });
             }
         };
 
