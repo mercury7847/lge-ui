@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["CPR/CPR"],
+        pageJS: ["store/compareResult"],
+        pageTitle: "스탠바이미 클럽 | LG전자",
+        pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "스탠바이미 클럽" 
+        })
+
+        <div class="container">
+            <div class="contents stanbyme">
+                <div class="visual-wrap">
+                    <img data-pc-src="/lg5-common/images/STC/img-visual-dual01.jpg" data-m-src="/lg5-common/images/STC/img-visual-dual01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual-dual01.jpg">
+                    <div class="tit-wrap">
+                        <p class="tit">나만을 위한 프라이빗 스크린</p>
+                        <span class="txt">스탠바이미에 대한 다양한 의견과 아이디어를 나누는 
+                            소통의 공간 스탠바이미 클럽</span>
+                    </div>
+                </div>
+                <div class="inner">
+                    <div class="stanbyme-reg">
+                        <div class="sbm-qna">
+                            <p>스탠바이미에 대한 궁금증이나, 문의사항을 등록해 주세요.</p>
+                            <a href="#" class="btn"><span>등록하기</span></a>
+                        </div>
+                        <div class="sbm-review">
+                            <span>구매 리뷰를 남기실 건가요?</span>
+                            <a href="#n" class="btn-link">리뷰 등록</a>
+                        </div>
+                    </div>
+                    <div class="result-wrap">
+                        <div class="sorting-wrap">
+                            <div class="total">전체 <em id="count" class="count">86</em>건</div>
+                            <div class="sort-box">
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
+                                        <option value="등록순">최신순</option>
+                                        <option value="조회수">조회순</option>
+                                        <option value="조회수">댓글순</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tbl-board">
+                            <div class="thead">
+                                <span class="th col1">제목</span>
+                                <span class="th col2">작성자</span>
+                                <span class="th col3">등록일</span>
+                                <span class="th col4">조회</span>
+                            </div>
+                            <div class="tbody">
+                                <div class="row">
+                                    <div class="col1"><span class="new">NEW</span><p>배송날자가 지났는데 언제 받는건가요?</p><span class="count">[2]</span></div>
+                                    <div class="col2"><span>남*한</span></div>
+                                    <div class="col3"><span>2021.08.12</span></div>
+                                    <div class="col4"><span>272</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col1"><span class="new">NEW</span><p>도대체 언제 주는 건가요?</p><span class="count">[4]</span></div>
+                                    <div class="col2"><span>조*민</span></div>
+                                    <div class="col3"><span>2021.08.12</span></div>
+                                    <div class="col4"><span>129</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col1"><p>배송이 너무 너무 느리네요</p><span class="count">[1]</span></div>
+                                    <div class="col2"><span>이*숙</span></div>
+                                    <div class="col3"><span>2021.08.11</span></div>
+                                    <div class="col4"><span>456</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
