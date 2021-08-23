@@ -305,9 +305,277 @@
 			</div>
 			<div class="content">
 
-				<div class="section">
-					<!-- 08/20 | select 박스 구현 필요 -->
-					<!-- 08/20 | IR행사 > 주주총회 페이지의 select 구조로 가는 것 제안중 -->
+				<div class="tbl_select m-type">
+					<div class="select-wrap tabs-selectbox">
+						<select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+							<option value="">전체보기</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+							<option value="tab2018" selected>2018년</option>
+							<option value="tab2017">2017년</option>
+							<option value="tab2016">2016년</option>
+							<option value="tab2015">2015년</option>
+						</select>
+					</div>
+				</div>
+				
+				<div id="tab2018" class="tabs-contents" style="display:block;">
+					<div class="audit_list"><!-- 08/20 | dwn_all -> audit_list 클래스명 변경 -->
+						<div class="titArea">
+							<p class="tit">2018년</p>
+						</div>
+						<ul class="dwn_list btns2">
+							<li>
+								<span>연결 감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="tab2017" class="tabs-contents" style="display:block;">
+					<div class="audit_list"><!-- 08/20 | dwn_all -> audit_list 클래스명 변경 -->
+						<div class="titArea">
+							<p class="tit">2018년</p>
+						</div>
+						<ul class="dwn_list btns2">
+							<li>
+								<span>연결 감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="tab2016" class="tabs-contents" style="display:block;">
+					<div class="audit_list"><!-- 08/20 | dwn_all -> audit_list 클래스명 변경 -->
+						<div class="titArea">
+							<p class="tit">2018년</p>
+						</div>
+						<ul class="dwn_list btns2">
+							<li>
+								<span>연결 감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="tab2015" class="tabs-contents" style="display:block;">
+					<div class="audit_list"><!-- 08/20 | dwn_all -> audit_list 클래스명 변경 -->
+						<div class="titArea">
+							<p class="tit">2018년</p>
+						</div>
+						<ul class="dwn_list btns2">
+							<li>
+								<span>연결 감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>감사 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>3분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>반기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 연결 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+							<li>
+								<span>1분기 검토 보고서</span>
+								<div class="btn_area">
+									<button type="button" class="btn border dwn"><span>다운로드(KR)</span></button>
+									<button type="button" class="btn border dwn"><span>Download(EN)</span></button>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 
 			</div>
