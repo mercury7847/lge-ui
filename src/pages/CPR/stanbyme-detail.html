@@ -23,8 +23,8 @@
                                 </div>
                                 <h1 class="head-title">고객의 소리를 귀담아주세요!</h1>
                                 <ul class="head-infos">
-                                    <li>김*수</li>
-                                    <li>2021. 08. 11</li>
+                                    <li><span class="blind">작성자</span>김*수</li>
+                                    <li><span class="blind">등록일</span>2021. 08. 11</li>
                                     <li>조회수 148</li>
                                 </ul>
                             </div>
@@ -46,6 +46,7 @@
                                 <a href="#" class="btn"><span>수정하기</span></a>
                                 <a href="#" class="btn"><span>삭제하기</span></a>
                             </div>
+                            <!-- .comment-wrap s  -->
                             <div class="comment-wrap">
                                 <div class="result-wrap">
                                     <div class="sorting-wrap">
@@ -53,7 +54,90 @@
                                     </div>
                                 </div>
                                 <div class="comment-list">
-
+                                    <ul>
+                                        <li>
+                                            <div class="no-data">
+                                            첫 댓글을 남겨보세요.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="comment-content">
+                                                <div class="comment-content-head">
+                                                    <ul class="head-infos">
+                                                        <li><span class="blind">작성자</span>김*수</li>
+                                                        <li><span class="blind">작성일시</span>2021.08.11 18:34</li>
+                                                    </ul>
+                                                    <div class="link-box">
+                                                        <ul class="head-infos">
+                                                            <li>
+                                                                <a href="#">수정</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">삭제</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-text-wrap">
+                                                    <div class="comment-text">
+                                                    저도 안오고 있네요 답답해요.
+                                                    </div>
+                                                </div>
+                                                <div class="comment-modify">
+                                                    <div class="form-wrap">
+                                                        <div class="forms">
+                                                            <div class="conts">
+                                                                <div class="box">
+                                                                    <div class="text-form">   
+                                                                        <div class="input-wrap">
+                                                                            <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요. (500자 이하)&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될   수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="contentError"></textarea>
+                                                                            <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="cell">
+                                                                        <button type="button" class="btn btn-open">수정</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="btm-more err-block" style="display: block;">
+                                                                <p class="err-msg" id="contentError">내용을 입력해주세요.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="comment-content reply">
+                                                <div class="comment-content-head">
+                                                        <ul class="head-infos">
+                                                            <li><span class="blind">작성자</span>LG전자</li>
+                                                            <li><span class="blind">작성일시</span>2021.08.11 18:34</li>
+                                                        </ul>
+                                                </div>
+                                                <div class="comment-text-wrap">
+                                                    <div class="comment-text">
+                                                        주문폭주로 인해 배송이 지연되고 있는 점 다시한번 양해 부탁드립니다. 고객의 소리에 더욱 귀기울이는 엘지전자가 되겠습니다. 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="comment-content reply">
+                                                <div class="comment-content-head">
+                                                        <ul class="head-infos">
+                                                            <li><span class="blind">작성자</span>LG전자</li>
+                                                            <li><span class="blind">작성일시</span>2021.08.11 18:34</li>
+                                                        </ul>
+                                                </div>
+                                                <div class="comment-text-wrap">
+                                                    <div class="comment-text admin-delete">
+                                                        관리자에 의해 삭제된 글입니다.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 @@include('./common/support/pagination.html', {
                                     count: 5
@@ -61,32 +145,33 @@
                                 <div class="comment-write">
                                     <div class="form-wrap">
                                         <div class="forms">
-										    <div class="tit">
-										        <label for="txa_content" class="req">내용<span class="blind">필수항목</span></label>
-										    </div>
-										    <div class="conts">
-										        <div class="text-form">   
-										            <div class="input-wrap">
-										                <textarea name="content" id="txa_content" class="ui_textcontrol" placeholder="댓글을 작성해 주세요. (500자 이하)
-                                                        - 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될   수 있습니다.
-                                                        " maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="contentError"></textarea>
-										                <span id="txt-count2" class="inner-text"><em>0</em> / 1,000자</span>
-										            </div>
-										        </div>
-										        <div class="btm-more err-block" style="display: block;">
-										            <p class="err-msg" id="contentError">내용을 입력해주세요.</p>
-										        </div>
-										    </div>
-										</div>
+                                            <div class="conts">
+                                                <div class="box">
+                                                    <div class="text-form">   
+                                                        <div class="input-wrap">
+                                                            <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요. (500자 이하)&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될   수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="contentError"></textarea>
+                                                            <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <button type="button" class="btn btn-open">등록</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block" style="display: block;">
+                                                <p class="err-msg" id="contentError">내용을 입력해주세요.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- .comment-wrap e  -->
                         </div>
                         <!-- .stanbyme-detail-body e -->
                         <div class="stanbyme-detail-navi">
                             <a href="#" class="navi">
                                 <span class="navi-label">이전 글</span>
-                                <span class="navi-desc">이런 점을 좀 더 보완하면 완벽하지 않을까 합니다                                </span>
+                                <span class="navi-desc">이런 점을 좀 더 보완하면 완벽하지 않을까 합니다</span>
                             </a>
                             <a href="#" class="navi">
                                 <span class="navi-label">다음 글</span>
