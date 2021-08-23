@@ -379,6 +379,32 @@ var goAppUrl = function(path) {
 
                 self.hideLoading()
             });
+
+
+            // BTOCSITE-659
+            if(location.href.indexOf('/story/') > -1 ) self.addAWSStory();
+
+        },
+
+        // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : story 상세
+        addAWSStory: function () {
+               
+            // story 상세페잊 파라메터로 넘긴다
+            // /mkt/commonModule/addAWSStory.lgajax
+            // 파라미터
+            // itemId : storyurl (/story/only-and-best/all-in-one-generation)
+
+
+            var depth = location.pathname.split('/');
+            console.log('story %o',location.pathname);
+            console.log('story %o',depth);
+
+            if(depth.length === 4) {
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSStory.lgajax", {"itemId":location.href.replace(/https?:\/\//,'').replace(location.host,'')}, function(result) {
+                    console.log("result %o",result);
+                });
+
+            }
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
