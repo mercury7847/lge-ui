@@ -148,6 +148,7 @@ gulp.task("styles:server", () => gulp
 const concatNames = [
     src + "/js/common/footer.js",
     src + "/js/common/header.js",
+    src + "/js/common/statusbar.js",
     src + "/js/helper/gesture.js",
     src + "/js/helper/breakpointDispatcher.js",
     src + "/js/helper/sharer.js",

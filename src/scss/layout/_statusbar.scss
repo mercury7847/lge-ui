@@ -1,15 +1,12 @@
 @charset "UTF-8";
-
-.KRP0040 {
-    .mobile-bottom-status {
-        position:fixed;
-        bottom:0;
-        left:0;
-        width:100%;
-        height:70px;
-        background: #fff;
-        border-top:1px solid #ddd;
-    }
+.mobile-status-bar {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background: #fff;
+    border-top:1px solid #ddd;
 
     .mobile-status-list {
         display: flex;
@@ -60,6 +57,18 @@
             &.nav-anchor > a:before {
                 background-image: url("/lg5-common/images/icons/icon-status-menu.svg");    
             }
+        }
+    }
+}
+
+.mdevice {
+    .utility {
+        right:11px;
+    }
+    .mobile-nav-button {
+        display: none;
+        &.active {
+            display: block;
         }
     }
 }

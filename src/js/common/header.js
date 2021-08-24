@@ -722,6 +722,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }).on('blur', function(){
                 $('.is-main-sticky-header').removeClass('show-skip')
             });
+
+            self.$statusBar = $('div.mobile-status-bar');
+			self.$statusList = self.$statusBar.find('.mobile-status-list');
+
+            self.$statusList.find('.nav-anchor a').on('click', function(e){
+				e.preventDefault();
+
+				console.log(111)
+
+				$('.mobile-nav-button').trigger('click');
+			})
         },
 
         _mobileGnbSticky: function(scrollTop, direction){
