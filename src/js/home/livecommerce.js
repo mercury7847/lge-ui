@@ -44,11 +44,12 @@ var lls = {
     bindEvent: function(){
         var self = this;
 
-        function LGEPushSetting(flag){
+        LGEPushSetting = function(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
+
             if( flag == "Y" ) {
                 lgkorUI.alert("", {
                     title: msg.flagY,
@@ -62,11 +63,17 @@ var lls = {
                     }
                 }, self.pushBtn);
             } else {
+                alert(flag)
                 lgkorUI.alert("", {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
                     ok: function(el) {
-                        location.href = '/mobile-app/option'
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "goSetting"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openOSSetting();
+                        }
                     }
                 }, self.pushBtn);
             }
@@ -82,22 +89,15 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    obj.command = "setMkt";
-                    obj.value = "Y";
+                    obj.command = "getPushStatus";
+                    obj.callback = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.setAdPushActive("Y");
+                    var androidPush = android.getOSPush();
+                    LGEPushSetting(androidPush)
                 }
-
-                lgkorUI.alert("", {
-                    title: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
-                    ok: function(el) {
-                        
-                    }
-                }, _self);
             }
-            
         });
 
 
