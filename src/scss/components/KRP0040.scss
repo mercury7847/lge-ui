@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.KRP0040 {
+    .mobile-bottom-status {
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:70px;
+        background: #fff;
+        border-top:1px solid #ddd;
+    }
+
+    .mobile-status-list {
+        display: flex;
+
+        > li {
+            flex:1;
+
+            > a {
+                display: block;
+                position: relative;
+                text-align: center;
+                padding:10px 10px 17px;
+
+                &:before {
+                    display: block;
+                    content:"";
+                    width:24px;
+                    height:24px;
+                    margin:0 auto;
+                    background-position: center center;
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                }
+
+                span {
+                    display: block;
+                    margin-top:4px;
+                    font-size:11px;
+                    line-height:1.56;
+                    color:#000;
+                    font-weight:500;
+                    letter-spacing:-0.66px;
+                }
+            }
+
+            &.mypage > a:before {
+                background-image: url("/lg5-common/images/icons/icon-status-my.svg");    
+            }
+            &.chatbot > a:before {
+                background-image: url("/lg5-common/images/icons/icon-status-chat.svg");    
+            }
+            &.home > a:before {
+                background-image: url("/lg5-common/images/icons/icon-status-home.svg");    
+            }
+            &.my-collection > a:before {
+                background-image: url("/lg5-common/images/icons/icon-status-coll.svg");    
+            }
+            &.nav-anchor > a:before {
+                background-image: url("/lg5-common/images/icons/icon-status-menu.svg");    
+            }
+        }
+    }
+}
