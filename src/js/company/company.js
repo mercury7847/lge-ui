@@ -84,7 +84,7 @@ $(document).ready(function() {
 function fcOpenAccordion(){
 	if($(".tabs-contents .accordion-wrap").length > 0){
 		$(".tabs-contents .accordion-wrap li.lists:first-child").addClass('on');
-		$(".tabs-contents .accordion-wrap li.lists:first-child").find(".accord-cont.ui_accord_contentt").css('display','block');
+		$(".tabs-contents .accordion-wrap li.lists:first-child").find(".accord-cont.ui_accord_content").css('display','block');
 	}else{
 		$($(".accordion-wrap li.lists:first-child")[0]).addClass('on');
 		$($(".accordion-wrap li.lists:first-child")[0]).find(".accord-cont.ui_accord_content").css('display','block');
