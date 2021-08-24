@@ -137,7 +137,29 @@
         &-item {
             position: relative;
             height:640px;
-            
+            > a, 
+            > div {
+                display: block;
+                position: relative;
+                height:100%;
+            }
+
+            .default-banner {
+                .hero-item-content {
+                    padding-top:167px;
+                }
+                .hero-item-title, 
+                .hero-item-desc {
+                    color:#000;
+                }
+
+                @include mobile {
+                    .hero-item-content {
+                        padding-top:52px;
+                    }
+                }
+            }
+
             &-bg {
                 display: block;
                 position: relative;
@@ -201,6 +223,8 @@
                 transform:translateX(-50%);
                 padding:96px 40px 24px;
             }
+
+            
             &-title {
                 display: block;
                 font-size:52px;
