@@ -157,6 +157,23 @@
                     });       
                 }
             });
+
+            /* 2021.08.31 BTOCSITE-4357 : 스탠바이미 PDP 내 고객문의 Q&A 생성 요청 */
+            self.$completeBtns.find('.btn-modify').on('click', function() {
+                var result = validation.validate();
+
+                if (result.success == true) {    
+                    lgkorUI.confirm('', {
+                        title:'게시물을 수정하시겠습니까?',
+                        okBtnName: '예',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            self.requestComplete();
+                        }
+                    });       
+                }
+            });
+            /* //2021.08.31 BTOCSITE-4357 : 스탠바이미 PDP 내 고객문의 Q&A 생성 요청 */
         }
     }
 
