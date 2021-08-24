@@ -18,208 +18,192 @@
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <!--<script type="text/javascript" src="/kr/images/company/investorhighlight.js"></script>-->
 <script type="text/javascript">
-google.charts.load("current", {packages: ["corechart"]});
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-	var dataColumn = google.visualization.arrayToDataTable([
-		['', '매출액',  {role:'annotation'}],
-		['2018', 61.34, '61.34'],
-		['2019', 62.30, '62.30'],
-		['2020', 63.26, '63.26']
-	]);
-    var viewColumn = new google.visualization.DataView(dataColumn);
-    var columnOptions = {
-        title:{
-            position:'none'
-        },
-		fontName:'Noto Sans',
-        chartArea:{
-            width:'100%',
-            left:50,
-            right:0,
-            top:10,
-            bottom:40
-        },
-		height:330,
-        legend:{
-            position:'none'  
-         },
-        series:{          
-			0:{
-                color:'#DA0F47'
-            },
-        },
-        bar:{
-            groupWidth:'48',     
-        },
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
+	google.charts.setOnLoadCallback(drawChart);
 
-        annotations :{   
-            alwaysOutside:true,     
-            textStyle:{
-                fontSize:13,
-                bold: true,
-                auraColor: 'none'
-            },
-            stem:{
-                color:'none', 
-                length:'8'    
-            }
-        },
-        vAxis:{     
-            title:{
-                position:'none'
-            },
-			minValue:'0',
-            textStyle:{
-                fontSize:'14'
-            },
-            gridlines:{
-                color:'#dddddd'
-            },
-            minorGridlines:{
-                color:'#dddddd' 
-            }
-        },
-        hAxis:{         
-            title: {
-                position:'none'
-            },
-            textStyle: {
-                fontSize:'16',
-            }
-        },
-    };
-    
-	function checkSizeColumn() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			columnOptions.height = '240';
-			columnOptions.bar.groupWidth = '25';
-			columnOptions.vAxis.textStyle.fontSize = '13';
-			columnOptions.hAxis.textStyle.fontSize = '13';
-			columnOptions.annotations.textStyle.fontSize = '12';
-			columnOptions.annotations.stem.length = '5';
-		} else {
-			columnOptions.height = '360';
-			columnOptions.bar.groupWidth = '48';
-			columnOptions.vAxis.textStyle.fontSize = '14';
-			columnOptions.hAxis.textStyle.fontSize = '14';
-			columnOptions.annotations.textStyle.fontSize = '13';
-			columnOptions.annotations.stem.length = '8';
-		}
-	}
-	
-    var dataCombo = google.visualization.arrayToDataTable([
-		['', '영업이익', {role:'annotation'}, {role: 'style'}],
-		['2018', 2.70, '2.70', 'stroke-color: #DA0F47; stroke-width: 2; fill-color: #DA0F47'],
-		['2019', 2.44, '2.44', 'stroke-color: #DA0F47; stroke-width: 2; fill-color: #DA0F47'],
-		['2020', 3.19, '3.19', 'stroke-color: #DA0F47; stroke-width: 2; fill-color: #DA0F47']
-	]);
-    var viewCombo = new google.visualization.DataView(dataCombo);
-	var comboOptions = {
-		series: {
-			0: {
-				targetAxisIndex: 0,
-				color: '#DA0F47',
-				type: 'line',
-				pointSize: 12,
-				pointShape: 'circle'
+	function drawChart() {
+		var dataColumn = google.visualization.arrayToDataTable([
+			['', '매출액', {
+				role: 'annotation'
+			}],
+			['2020', 63.26, '63.26'],
+			['2019', 62.30, '62.30'],
+			['2018', 61.34, '61.34']
+		]);
+		var viewColumn = new google.visualization.DataView(dataColumn);
+		var columnOptions = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 330,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#e91953'
+				},
+			},
+			bar: {
+				groupWidth: '48',
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '14'
+				},
+				gridlines: {
+					color: '#dddddd'
+				},
+				minorGridlines: {
+					color: '#fff'
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+		};
+
+		function checkSizeColumn() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions.height = '240';
+				columnOptions.bar.groupWidth = '25';
+				columnOptions.vAxis.textStyle.fontSize = '13';
+				columnOptions.hAxis.textStyle.fontSize = '13';
+				columnOptions.annotations.textStyle.fontSize = '12';
+				columnOptions.annotations.stem.length = '5';
+			} else {
+				columnOptions.height = '360';
+				columnOptions.bar.groupWidth = '48';
+				columnOptions.vAxis.textStyle.fontSize = '14';
+				columnOptions.hAxis.textStyle.fontSize = '14';
+				columnOptions.annotations.textStyle.fontSize = '13';
+				columnOptions.annotations.stem.length = '8';
 			}
-		},
-		vAxes: {
-			0: {
-				minValue: 0,
-				maxValue: 4
-			}
-		},
-        vAxis:{       
-            title:{
-                position:'none'
-            },
-			minValue:'0',
-            textStyle:{
-                fontSize:'14',
-            },
-            gridlines:{
-                color:'#dddddd', 
-            },
-            minorGridlines:{
-                color:'#dddddd',  
-            }
-        },
-		legend: {
-			position: 'none'
-		},
-		chartArea: {
-			width: '100%',
-			left:50,
-            right:0,
-            top:10,
-            bottom:40
-		},
-		fontName: 'Noto Sans',
-	};
-	
-	function checkSizeCombo() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			comboOptions.fontSize = "12";
-			comboOptions.height = '240';
-		} else {
-			comboOptions.fontSize = "16";
-			comboOptions.height = '360';
 		}
+
+		var dataCombo = google.visualization.arrayToDataTable([
+			['', '영업이익', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
+			['2020', 3.19, '3.19', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
+			['2019', 2.44, '2.44', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
+			['2018', 2.70, '2.70', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953']
+		]);
+		var viewCombo = new google.visualization.DataView(dataCombo);
+		var comboOptions = {
+			series: {
+				0: {
+					targetAxisIndex: 0,
+					color: '#e91953',
+					type: 'line',
+					pointSize: 12,
+					pointShape: 'circle'
+				}
+			},
+			vAxes: {
+				0: {
+					minValue: 0,
+					maxValue: 4
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#dddddd',
+				},
+				minorGridlines: {
+					color: '#dddddd',
+				}
+			},
+			legend: {
+				position: 'none'
+			},
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			fontName: 'Noto Sans',
+		};
+
+		function checkSizeCombo() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				comboOptions.fontSize = "12";
+				comboOptions.height = '240';
+			} else {
+				comboOptions.fontSize = "16";
+				comboOptions.height = '360';
+			}
+		}
+
+		function resize() {
+			if ($("#tab1").css("display") == "block") {
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, columnOptions);
+
+				checkSizeCombo();
+				var chartCombo = new google.visualization.ColumnChart(document.getElementById("combochart"));
+				chartCombo.draw(viewCombo, comboOptions);
+			}
+		}
+
+		window.onload = resize();
+		window.onresize = resize;
 	}
-	
-    function resize() {
-    	if ($("#tab1").css("display") == "block") {
-			checkSizeColumn();
-	        var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
-	        chartColumn.draw(viewColumn, columnOptions);
-	        
-	        checkSizeCombo();
-	        var chartCombo = new google.visualization.ColumnChart(document.getElementById("combochart"));
-	        chartCombo.draw(viewCombo, comboOptions);
-    	}
-    }
-    
-    window.onload = resize();
-    window.onresize = resize;
-}
 </script>
 <style>
-#columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} 
-#combochart svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;} 
-#combochart svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;} 
-</style>
-<style>
-	.googlechart-wrap {
-		position: relative;
-		width: 940px;
-		margin: 0 auto;
+	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
+	@media screen and (max-width:768px){
+		.graph_dec {font-size:12px;line-height:20px;}
 	}
-
-	.googlechart-wrap .columnchart {
-		height: 600px;
-	}
-
-	.googlechart-wrap .combochart {
-		height: 500px;
-	}
-
-	@media screen and (max-width: 767px) {
-		.googlechart-wrap {
-			width: 100%;
-		}
-
-		.googlechart-wrap .columnchart {
-			height: 90vw;
-		}
-
-		.googlechart-wrap .combochart {
-			height: 70vw;
-		}
-	}
+	#columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} 
+	#combochart svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;} 
+	#combochart svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
 </style>
 <div class="breadcrumb">
 	<ul>
@@ -319,17 +303,13 @@ function drawChart() {
 			<h3 class="blind">재무하이라이트</h3>
 			<div class="com-text">
 				<!-- 그래프 영역 -->
-				<div class="graph">
-					<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-					<div class="googlechart-wrap">
-						<div class="chartarea columnchart" id="columnchart"></div>
-					</div>
+				<div class="graph" style="max-width:910px;margin:0 auto;">
+					<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
+					<div class="chart_area columnchart" id="columnchart"></div>
 				</div>
-				<div class="graph">
-					<span class="txt_rt">K-IFRS 연결기준 (단위 : 조원)</span>
-					<div class="googlechart-wrap">
-						<div class="chartarea combochart" id="combochart"></div>
-					</div>
+				<div class="graph" style="max-width:910px;margin:0 auto;">
+					<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
+					<div class="chart_area combochart" id="combochart"></div>
 				</div>
 				<div class="tb_row tb-row-bl mgt middle keepAll pd">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
@@ -977,7 +957,6 @@ function drawChart() {
 		<div id="tab4" class="tabs-contents" style="display:block;">
 			<h3 class="blind">현금흐름표</h3>
 			<div class="com-text">
-				</div>
 				<div class="tb_row tb-row-bl middle keepAll mgt">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
