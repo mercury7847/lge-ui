@@ -100,7 +100,7 @@ var lls = {
                     var obj = new Object();
                     obj.command = "getPushStatus";
                     //obj.callBack = "LGEPushSetting";
-                    obj.callBack = "testAlert";
+                    obj.callback = "testAlert";
                     var jsonString= JSON.stringify(obj);
                     // alert(webkit.messageHandlers.callbackHandler.postMessage(jsonString))
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
