@@ -50,6 +50,10 @@ var lls = {
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
 
+            if( vcui.detect.isIOS ) {
+                alert(flag);
+            }
+
             if( flag == "Y" ) {
                 lgkorUI.alert("", {
                     title: msg.flagY,
@@ -63,6 +67,7 @@ var lls = {
                     }
                 }, self.pushBtn);
             } else {
+                alert(flag)
                 lgkorUI.alert("", {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
