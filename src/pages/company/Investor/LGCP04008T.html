@@ -1,10 +1,9 @@
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
@@ -19,13 +18,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <!--<script type="text/javascript" src="/kr/images/company/investorhighlight.js"></script>-->
 <script type="text/javascript">
-	google.charts.load("current", {packages:["corechart"]});
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
 	google.charts.setOnLoadCallback(drawChart);
 	var dataColumn01, optionsColumn, chartColumn01, containerColumn01;
 	var dataColumn02, chartColumn02, containerColumn02;
 	var dataColumn03, chartColumn03, containerColumn03;
 	var dataCombo01, optionsCombo01, containerCombo01, chartCombo01;
 	var dataCombo04, optionsCombo04, containerCombo04, chartCombo04;
+
 	function drawChart() {
 		dataColumn01 = google.visualization.arrayToDataTable([
 			['year', '매출', '영업이익', '순이익', '자산', '부채', '자본'],
@@ -46,46 +48,120 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			['2018', 613417, 462607, 150810, 27033, 20086, 14728],
 		]);
 		optionsColumn = {
-			vAxis:{format: 'decimal'},
-			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
-			bar: { groupWidth: '50%' },
-			series: {
-				0: { color: '#e81953'},
-				1: { color: '#e81954'},
-				2: { color: '#e81955'},
-				3: { color: '#000000'},
-				4: { color: '#000001'},
-				5: { color: '#000002'},
-				6: { color: '#666666'}
+			vAxis: {
+				format: 'decimal'
 			},
-			chartArea: {width: '90%',right:'0%'},
-			fontName:'Noto Sans',
-			fontSize:"16"
+			legend: {
+				position: 'bottom',
+				alignment: 'center',
+				maxLines: 3
+			},
+			bar: {
+				groupWidth: '50%'
+			},
+			series: {
+				0: {
+					color: '#e81953'
+				},
+				1: {
+					color: '#e81954'
+				},
+				2: {
+					color: '#e81955'
+				},
+				3: {
+					color: '#000000'
+				},
+				4: {
+					color: '#000001'
+				},
+				5: {
+					color: '#000002'
+				},
+				6: {
+					color: '#666666'
+				}
+			},
+			chartArea: {
+				width: '90%',
+				right: '0%'
+			},
+			fontName: 'Noto Sans',
+			fontSize: "16"
 		};
 		dataCombo01 = google.visualization.arrayToDataTable([
-			['year', 'ROA', 'ROE', '영업이익률', '차임금비율', '매출액증가율', 'EPS(억원)', {role: 'style'}],
+			['year', 'ROA', 'ROE', '영업이익률', '차임금비율', '매출액증가율', 'EPS(억원)', {
+				role: 'style'
+			}],
 			['2020', 1.8, 3.8, 6.0, 54.2, 10.0, 6666, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
 			['2019', 1.2, 2.2, 3.1, 48.4, 1.6, 4085, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
 			['2018', 5.6, 9.0, 8.0, 30.7, 9.7, 18812, 'stroke-color: #000000; stroke-width: 2; fill-color: #ffffff'],
 		]);
 		optionsCombo01 = {
 			series: {
-				0: {targetAxisIndex: 0, color: '#e81953', type: 'line', pointSize: 12, pointShape: 'circle'},
-				1: {targetAxisIndex: 0, color: '#000000', type: 'line', pointSize: 14, pointShape: 'square'},
-				2: {targetAxisIndex: 0, color: '#008182', type: 'line', pointSize: 14, pointShape: 'diamond'},
-				3: {targetAxisIndex: 0, color: '#6735ea', type: 'line', pointSize: 16, pointShape: 'triangle'},
-				4: {targetAxisIndex: 0, color: '#ff9900', type: 'line', pointSize: 18, pointShape: 'star'},
-				5: {targetAxisIndex: 1, color: '#000000'},
+				0: {
+					targetAxisIndex: 0,
+					color: '#e81953',
+					type: 'line',
+					pointSize: 12,
+					pointShape: 'circle'
+				},
+				1: {
+					targetAxisIndex: 0,
+					color: '#000000',
+					type: 'line',
+					pointSize: 14,
+					pointShape: 'square'
+				},
+				2: {
+					targetAxisIndex: 0,
+					color: '#008182',
+					type: 'line',
+					pointSize: 14,
+					pointShape: 'diamond'
+				},
+				3: {
+					targetAxisIndex: 0,
+					color: '#6735ea',
+					type: 'line',
+					pointSize: 16,
+					pointShape: 'triangle'
+				},
+				4: {
+					targetAxisIndex: 0,
+					color: '#ff9900',
+					type: 'line',
+					pointSize: 18,
+					pointShape: 'star'
+				},
+				5: {
+					targetAxisIndex: 1,
+					color: '#000000'
+				},
 			},
 			vAxes: {
-				0: {maxValue:60, format:'#\'%\''},
-				1: {maxValue:30000} 
+				0: {
+					maxValue: 60,
+					format: '#\'%\''
+				},
+				1: {
+					maxValue: 30000
+				}
 			},
-			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
-			bar: { groupWidth: '20%' },
-			chartArea: {width: '80%',right:'10%'},
-			fontName:'Noto Sans',
-        };
+			legend: {
+				position: 'bottom',
+				alignment: 'center',
+				maxLines: 3
+			},
+			bar: {
+				groupWidth: '20%'
+			},
+			chartArea: {
+				width: '80%',
+				right: '10%'
+			},
+			fontName: 'Noto Sans',
+		};
 		dataCombo04 = google.visualization.arrayToDataTable([
 			['year', '영업활동', '투자활동', '재무활동', '기초현금', '현금증감', '기말현금'],
 			['2020', 46286, -23145, -9939, 47774, 11725, 58963],
@@ -94,19 +170,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		]);
 		optionsCombo04 = {
 			series: {
-				0: {color: '#e81955'},
-				1: {color: '#000001'},
-				2: {color: '#e81954'},
-				3: {color: '#e81953', type: 'line', pointSize: 12, pointShape: 'circle'},
-				4: {color: '#000000', type: 'line', pointSize: 14, pointShape: 'square'},
-				5: {color: '#008182', type: 'line', pointSize: 14, pointShape: 'diamond'},
+				0: {
+					color: '#e81955'
+				},
+				1: {
+					color: '#000001'
+				},
+				2: {
+					color: '#e81954'
+				},
+				3: {
+					color: '#e81953',
+					type: 'line',
+					pointSize: 12,
+					pointShape: 'circle'
+				},
+				4: {
+					color: '#000000',
+					type: 'line',
+					pointSize: 14,
+					pointShape: 'square'
+				},
+				5: {
+					color: '#008182',
+					type: 'line',
+					pointSize: 14,
+					pointShape: 'diamond'
+				},
 			},
-			legend: {position: 'bottom', alignment: 'center', maxLines: 3},
-			bar: { groupWidth: '20%' },
+			legend: {
+				position: 'bottom',
+				alignment: 'center',
+				maxLines: 3
+			},
+			bar: {
+				groupWidth: '20%'
+			},
 			isStacked: true,
-			chartArea: {width: '90%',right:'0%'},
-			fontName:'Noto Sans',
-        };
+			chartArea: {
+				width: '90%',
+				right: '0%'
+			},
+			fontName: 'Noto Sans',
+		};
 		checkSize();
 		containerColumn01 = document.getElementById("columnchart01");
 		chartColumn01 = new google.visualization.ColumnChart(containerColumn01);
@@ -118,24 +224,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		chartCombo01 = new google.visualization.ColumnChart(containerCombo01);
 		containerCombo04 = document.getElementById("combochart04");
 		chartCombo04 = new google.visualization.ColumnChart(containerCombo04);
-
 		google.visualization.events.addListener(chartColumn01, 'ready', function () {
 			var observer = new MutationObserver(function () {
 				containerColumn01.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				Array.prototype.forEach.call(containerColumn01.getElementsByTagName('rect'), function(rect) {
+				Array.prototype.forEach.call(containerColumn01.getElementsByTagName('rect'), function (rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
+					} else if (rect.getAttribute('fill') === '#e81955') {
 						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
+					} else if (rect.getAttribute('fill') === '#000001') {
 						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
+					} else if (rect.getAttribute('fill') === '#000002') {
 						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
+					} else if (rect.getAttribute('fill') === '#666666') {
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
@@ -148,20 +249,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		google.visualization.events.addListener(chartColumn02, 'ready', function () {
 			var observer = new MutationObserver(function () {
 				containerColumn02.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				Array.prototype.forEach.call(containerColumn02.getElementsByTagName('rect'), function(rect) {
+				Array.prototype.forEach.call(containerColumn02.getElementsByTagName('rect'), function (rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
+					} else if (rect.getAttribute('fill') === '#e81955') {
 						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
+					} else if (rect.getAttribute('fill') === '#000001') {
 						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
+					} else if (rect.getAttribute('fill') === '#000002') {
 						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
+					} else if (rect.getAttribute('fill') === '#666666') {
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
@@ -174,20 +271,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		google.visualization.events.addListener(chartColumn03, 'ready', function () {
 			var observer = new MutationObserver(function () {
 				containerColumn03.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				Array.prototype.forEach.call(containerColumn03.getElementsByTagName('rect'), function(rect) {
+				Array.prototype.forEach.call(containerColumn03.getElementsByTagName('rect'), function (rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
+					} else if (rect.getAttribute('fill') === '#e81955') {
 						rect.setAttribute('fill', 'url(#pattern-dashed1)');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
+					} else if (rect.getAttribute('fill') === '#000001') {
 						rect.setAttribute('fill', 'url(#pattern-splite2)');
-					}
-					else if (rect.getAttribute('fill') === '#000002') {
+					} else if (rect.getAttribute('fill') === '#000002') {
 						rect.setAttribute('fill', 'url(#pattern-dashed2)');
-					}
-					else if (rect.getAttribute('fill') === '#666666') {
+					} else if (rect.getAttribute('fill') === '#666666') {
 						rect.setAttribute('fill', 'url(#pattern-circle)');
 					}
 				});
@@ -200,18 +293,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		google.visualization.events.addListener(chartCombo04, 'ready', function () {
 			var observer = new MutationObserver(function () {
 				containerCombo04.getElementsByTagName('svg')[0].setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-				Array.prototype.forEach.call(containerCombo04.getElementsByTagName('rect'), function(rect) {
+				Array.prototype.forEach.call(containerCombo04.getElementsByTagName('rect'), function (rect) {
 					if (rect.getAttribute('fill') === '#e81954') {
 						rect.setAttribute('stroke', '#e81953');
 						rect.setAttribute('stroke-width', '2');
 						rect.setAttribute('fill', 'url(#pattern-splite1)');
-					}
-					else if (rect.getAttribute('fill') === '#e81955') {
+					} else if (rect.getAttribute('fill') === '#e81955') {
 						rect.setAttribute('stroke', '#e81953');
 						rect.setAttribute('stroke-width', '2');
 						rect.setAttribute('fill', 'none');
-					}
-					else if (rect.getAttribute('fill') === '#000001') {
+					} else if (rect.getAttribute('fill') === '#000001') {
 						rect.setAttribute('stroke', '#000000');
 						rect.setAttribute('stroke-width', '2');
 						rect.setAttribute('fill', 'none');
@@ -224,80 +315,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			});
 		});
 		chartColumn01.draw(dataColumn01, optionsColumn);
-		chartCombo01.draw(dataCombo01, optionsCombo01);
-		/*chartColumn02.draw(dataColumn02, optionsColumn);
-		chartColumn03.draw(dataColumn03, optionsColumn);
-		chartCombo04.draw(dataCombo04, optionsCombo04);*/
+		chartCombo01.draw(dataCombo01,
+		optionsCombo01); /*chartColumn02.draw(dataColumn02, optionsColumn);		chartColumn03.draw(dataColumn03, optionsColumn);		chartCombo04.draw(dataCombo04, optionsCombo04);*/
 	}
+
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			optionsColumn.fontSize="12";
-			optionsCombo01.fontSize="12";
-			optionsColumn.chartArea.width="85%";
-			optionsCombo04.chartArea.width="85%";
-			optionsCombo01.chartArea.width="75%";
-			optionsCombo01.chartArea.right="15%";
+			optionsColumn.fontSize = "12";
+			optionsCombo01.fontSize = "12";
+			optionsColumn.chartArea.width = "85%";
+			optionsCombo04.chartArea.width = "85%";
+			optionsCombo01.chartArea.width = "75%";
+			optionsCombo01.chartArea.right = "15%";
 			if (windowWidth < 500) {
-				optionsCombo01.fontSize="11";
-			}else if (windowWidth < 400) {
-				optionsCombo01.fontSize="10";
+				optionsCombo01.fontSize = "11";
+			} else if (windowWidth < 400) {
+				optionsCombo01.fontSize = "10";
 			}
-		}
-		else{
-			optionsColumn.fontSize="16";
-			optionsCombo01.fontSize="16";
-			optionsColumn.chartArea.width="90%";
-			optionsCombo04.chartArea.width="90%";
-			optionsCombo01.chartArea.width="80%";
-			optionsCombo01.chartArea.right="10%";
+		} else {
+			optionsColumn.fontSize = "16";
+			optionsCombo01.fontSize = "16";
+			optionsColumn.chartArea.width = "90%";
+			optionsCombo04.chartArea.width = "90%";
+			optionsCombo01.chartArea.width = "80%";
+			optionsCombo01.chartArea.right = "10%";
 		}
 	}
-	$(window).resize(function() {
+	$(window).resize(function () {
 		checkSize();
-		if($("#tab1").css("display")=="block"){
+		if ($("#tab1").css("display") == "block") {
 			chartColumn01.draw(dataColumn01, optionsColumn);
 			chartCombo01.draw(dataCombo01, optionsCombo01);
-		}else if($("#tab2").css("display")=="block"){
+		} else if ($("#tab2").css("display") == "block") {
 			chartColumn02.draw(dataColumn02, optionsColumn);
-		}else if($("#tab3").css("display")=="block"){
+		} else if ($("#tab3").css("display") == "block") {
 			chartColumn03.draw(dataColumn03, optionsColumn);
-		}else if($("#tab4").css("display")=="block"){
+		} else if ($("#tab4").css("display") == "block") {
 			chartCombo04.draw(dataCombo04, optionsCombo04);
 		}
 	});
-	$(document).ready(function() {
-		$("a[href='#tab1']").on('click', function(e){
-			setTimeout(function(){
+	$(document).ready(function () {
+		$("a[href='#tab1']").on('click', function (e) {
+			setTimeout(function () {
 				chartColumn01.draw(dataColumn01, optionsColumn);
 				chartCombo01.draw(dataCombo01, optionsCombo01);
 			}, 500);
 		});
-		$("a[href='#tab2']").on('click', function(e){
-			setTimeout(function(){
+		$("a[href='#tab2']").on('click', function (e) {
+			setTimeout(function () {
 				chartColumn02.draw(dataColumn02, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab3']").on('click', function(e){
-			setTimeout(function(){
+		$("a[href='#tab3']").on('click', function (e) {
+			setTimeout(function () {
 				chartColumn03.draw(dataColumn03, optionsColumn);
 			}, 500);
 		});
-		$("a[href='#tab4']").on('click', function(e){
-			setTimeout(function(){
+		$("a[href='#tab4']").on('click', function (e) {
+			setTimeout(function () {
 				chartCombo04.draw(dataCombo04, optionsCombo04);
 			}, 500);
 		});
 	});
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:940px;margin:0 auto;}
-	.googlechart-wrap .columnchart {height:600px;}
-	.googlechart-wrap .combochart {height:500px;}
-	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;}
-		.googlechart-wrap .columnchart {height:90vw;}
-		.googlechart-wrap .combochart {height:70vw;}
+	.googlechart-wrap {
+		position: relative;
+		width: 940px;
+		margin: 0 auto;
+	}
+
+	.googlechart-wrap .columnchart {
+		height: 600px;
+	}
+
+	.googlechart-wrap .combochart {
+		height: 500px;
+	}
+
+	@media screen and (max-width: 767px) {
+		.googlechart-wrap {
+			width: 100%;
+		}
+
+		.googlechart-wrap .columnchart {
+			height: 90vw;
+		}
+
+		.googlechart-wrap .combochart {
+			height: 70vw;
+		}
 	}
 </style>
 <div class="breadcrumb">
@@ -312,24 +420,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">투자자정보</h2>
-	</div>
-	<!-- hiro image -->
+	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
-		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/investor/img-finance-hero-pc.jpg" data-m-src="/kr/images/company/investor/img-finance-hero-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="visual-area"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/investor/img-finance-hero-pc.jpg"
+				data-m-src="/kr/images/company/investor/img-finance-hero-mo.jpg" aria-hidden="hidden"></span> </div>
 		<div class="text-area">
 			<p class="text">LG전자는 투명한 경영을 전개, <br>주주가치와 기업가치 극대화를<br class="mo"> 실현해 나가고 있습니다</p>
 		</div>
-	</section>
-	<!-- // hiro image -->
+	</section> <!-- // hiro image -->
 	<div class="ui_sticky">
 		<div class="com-tabs">
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li>
-						<a href="/company/investor/corporateGovernance#com-tabs01">경영정보</a>
+					<li> <a href="/company/investor/corporateGovernance#com-tabs01">경영정보</a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/corporateGovernance">기업지배구조</a></li>
 							<li><a href="/company/investor/articles">정관</a></li>
@@ -337,8 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/investor/esgEvaluation">ESG 평가</a></li>
 						</ul>
 					</li>
-					<li class="on">
-						<a href="/company/investor/highlight#com-tabs01">재무정보<em class="blind">선택됨</em></a>
+					<li class="on"> <a href="/company/investor/highlight#com-tabs01">재무정보<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/highlight">재무하이라이트</a></li>
 							<li><a href="/company/investor/auditReport">감사/검토보고서</a></li>
@@ -347,8 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/investor/creditrating">신용등급</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/investor/price#com-tabs01">주식정보</a>
+					<li> <a href="/company/investor/price#com-tabs01">주식정보</a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/price">주가정보</a></li>
 							<li><a href="/company/investor/issued">발행주식현황</a></li>
@@ -356,15 +459,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/investor/dividend">배당정책/현황</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/investor/presentation#com-tabs01">IR행사</a>
+					<li> <a href="/company/investor/presentation#com-tabs01">IR행사</a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/presentation">실적발표</a></li>
 							<li><a href="/company/investor/generalMeeting">주주총회</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/investor/disclosureList#com-tabs01">공시/전자공고</a>
+					<li> <a href="/company/investor/disclosureList#com-tabs01">공시/전자공고</a>
 						<ul class="tabs-over">
 							<li><a href="/company/investor/disclosureList">공시</a></li>
 							<li><a href="/company/investor/announceList">전자공고</a></li>
@@ -375,15 +476,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 		</div>
 	</div>
-
 	<div class="com-title">
-		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/investor/img-highlight-hero-pc.jpg" data-m-src="/kr/images/company/investor/img-highlight-hero-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="img"> <span class="bg ui_bg_switch" data-pc-src="/kr/images/company/investor/img-highlight-hero-pc.jpg"
+				data-m-src="/kr/images/company/investor/img-highlight-hero-mo.jpg" aria-hidden="hidden"></span> </div>
 		<p class="text">기술혁신을 선도하는 글로벌 리더 LG전자로 <br class="mo">도약 하겠습니다.</p>
 	</div>
-
-
 	<div class="com-tabs">
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
@@ -396,7 +493,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</ul>
 		</div>
 	</div>
-
 	<div class="com-tabs">
 		<div class="tabs-wrap bar-type ui_tab left">
 			<ul class="tabs">
@@ -406,14 +502,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<li><a href="#tab4">현금흐름표</a></li>
 			</ul>
 		</div>
-
 		<div id="tab1" class="tabs-contents" style="display:block;">
 			<h3 class="blind">재무하이라이트</h3>
 			<div class="com-text">
 				<!-- 그래프 영역 -->
 				<div class="graph">
-					<!--<img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_01.png" alt="">
-					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_01_mo.png" alt=""> -->
+					<!--<img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_01.png" alt="">					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_01_mo.png" alt=""> -->
 					<span class="txt_rt">K-IFRS 연결기준 (단위 : 억원)</span>
 					<div class="googlechart-wrap">
 						<div class="chartarea columnchart" id="columnchart01"></div>
@@ -478,162 +572,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</table>
 				</div>
 			</div>
-
-			<div class="com-text noLine">
-				<p class="tit">재무 비율</p>
-				<!-- 그래프 영역 -->
-				<div class="graph">
-					<!--<img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_02.png" alt="">
-					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_02_mo.png" alt="">-->
-					<div class="googlechart-wrap">
-						<div class="chartarea combochart" id="combochart01"></div>
-					</div>
-				</div>
-				<p class="tit tbl_tit">1) 안정성</p>
-				<div class="tb_row tb-row-bl middle keepAll pd">
-					<div class="tbl_info rt abs2">(단위 : %, 배)</div>
-					<table>
-						<caption>재무 비율 안정성 표, 구분, 2020, 2019, 2018</caption>
-						<colgroup>
-							<col class="p25 m40">
-							<col class="p25 m20">
-							<col class="p25 m20">
-							<col class="p25 m20">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">구분</th>
-								<th scope="col">2020</th>
-								<th scope="col">2019</th>
-								<th scope="col">2018</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">유동비율</th>
-								<td>129.3</td>
-								<td>132.7</td>
-								<td>166.2</td>
-							</tr>
-							<tr>
-								<th scope="row">부채비율</th>
-								<td>120.3</td>
-								<td>95.7</td>
-								<td>67.1</td>
-							</tr>
-							<tr>
-								<th scope="row">차입금비율</th>
-								<td>54.2</td>
-								<td>48.4</td>
-								<td>30.7</td>
-							</tr>
-							<tr>
-								<th scope="row">이자보상 비율(배)</th>
-								<td>9.0</td>
-								<td>4.3</td>
-								<td>16.6</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p class="tit tbl_tit">2) 성장성</p>
-				<div class="tb_row tb-row-bl middle keepAll pd">
-					<div class="tbl_info rt abs2">(단위 : %, 배)</div>
-					<table>
-						<caption>재무 비율 성장성 표, 구분, 2020, 2019, 2018</caption>
-						<colgroup>
-							<col class="p25 m40">
-							<col class="p25 m20">
-							<col class="p25 m20">
-							<col class="p25 m20">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">구분</th>
-								<th scope="col">2020</th>
-								<th scope="col">2019</th>
-								<th scope="col">2018</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">매출액 증가율</th>
-								<td>10.0</td>
-								<td>1.6</td>
-								<td>9.7</td>
-							</tr>
-							<tr>
-								<th scope="row">영업이익 증가율</th>
-								<td>117.8</td>
-								<td>-60.1</td>
-								<td>-23.3</td>
-							</tr>
-							<tr>
-								<th scope="row">EPS 증가율</th>
-								<td>63.2</td>
-								<td>-78.7</td>
-								<td>-24.3</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p class="tit tbl_tit">3) 수익성</p>
-				<div class="tb_row tb-row-bl middle keepAll pd">
-					<div class="tbl_info rt abs2">(단위 : %, 배)</div>
-					<table>
-						<caption>재무 비율 수익성 표, 구분, 2020, 2019, 2018</caption>
-						<colgroup>
-							<col class="p25 m40">
-							<col class="p25 m20">
-							<col class="p25 m20">
-							<col class="p25 m20">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">구분</th>
-								<th scope="col">2020</th>
-								<th scope="col">2019</th>
-								<th scope="col">2018</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">영업이익률 <br>(영업이익/매출액)</th>
-								<td>6.0</td>
-								<td>3.1</td>
-								<td>8.0</td>
-							</tr>
-							<tr>
-								<th scope="row">ROA <br>(당기순이익/평균자산총계)</th>
-								<td>1.8</td>
-								<td>1.2</td>
-								<td>5.6</td>
-							</tr>
-							<tr>
-								<th scope="row">ROE <br>(당기순이익/평균자본총계)</th>
-								<td>3.8</td>
-								<td>2.2</td>
-								<td>9.0</td>
-							</tr>
-							<tr>
-								<th scope="row">EPS(원) <br>(보통주 당기순이익<br class="mo">/가중<br class="pc">평균 유통보통주식수)</th>
-								<td>6,666</td>
-								<td>4,085</td>
-								<td>18,812</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
 		</div>
-
 		<div id="tab2" class="tabs-contents" style="display:block;">
 			<h3 class="blind">재무상태표</h3>
 			<div class="com-text">
 				<!-- 그래프 영역 -->
 				<div class="graph">
-					<!-- <img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_01.png" alt="">
-					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_01_mo.png" alt=""> -->
+					<!-- <img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_01.png" alt="">					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_01_mo.png" alt=""> -->
 					<span class="txt_rt">K-IFRS 연결기준 (단위 : 억원)</span>
 					<div class="googlechart-wrap">
 						<div class="chartarea columnchart" id="columnchart02"></div>
@@ -705,7 +650,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</table>
 				</div>
 			</div>
-
 			<div class="com-text noLine">
 				<p class="tit">분기별 재무상태표</p>
 				<p class="tit tbl_tit">2020년</p>
@@ -782,16 +726,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</tbody>
 					</table>
 				</div>
-
 				<div class="cont_view_more">
-					<div class="btnArea">
-						<a href="#" class="btn border">
-							<span class="open">지난 자료 보기</span>
-							<!-- <span class="close">지난 자료 닫기</span> -->
-						</a>
-					</div>
+					<div class="btnArea"> <a href="#" class="btn border"> <span class="open">지난 자료 보기</span>
+							<!-- <span class="close">지난 자료 닫기</span> --> </a> </div>
 					<div class="content">
-						
 						<div class="section">
 							<p class="tit tbl_tit">2019년</p>
 							<div class="tb_row tb-row-bl middle keepAll">
@@ -806,13 +744,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 										<col class="p20">
 									</colgroup>
 									<thead>
-									<tr>
-										<th scope="col">구분</th>
-										<th scope="col">2019년 4분기</th>
-										<th scope="col">2019년 3분기</th>
-										<th scope="col">2019년 2분기</th>
-										<th scope="col">2019년 1분기</th>
-									</tr>
+										<tr>
+											<th scope="col">구분</th>
+											<th scope="col">2019년 4분기</th>
+											<th scope="col">2019년 3분기</th>
+											<th scope="col">2019년 2분기</th>
+											<th scope="col">2019년 1분기</th>
+										</tr>
 									</thead>
 									<tbody>
 										<tr>
@@ -868,7 +806,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-
 						<div class="section">
 							<p class="tit tbl_tit">2018년</p>
 							<div class="tb_row tb-row-bl middle keepAll">
@@ -945,25 +882,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-					
 					</div>
 				</div>
-				
 			</div>
 		</div>
-
 		<div id="tab3" class="tabs-contents" style="display:block;">
 			<h3 class="blind">손익계산서</h3>
 			<div class="com-text">
-				<!-- 그래프 영역 -->
-				<div class="graph">
-					<!--<img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_01.png" alt="">
-					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_01_mo.png" alt="">-->
-					<span class="txt_rt">K-IFRS 연결기준 (단위 : 억원)</span>
-					<div class="googlechart-wrap">
-						<div class="chartarea columnchart" id="columnchart03"></div>
-					</div>
-				</div>
 				<p class="tit mt60">연도별 손익계산서</p>
 				<div class="tb_row tb-row-bl middle keepAll">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
@@ -1024,7 +949,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</table>
 				</div>
 			</div>
-
 			<div class="com-text noLine">
 				<p class="tit">분기별 손익계산서</p>
 				<p class="tit tbl_tit">2020년</p>
@@ -1094,16 +1018,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</tbody>
 					</table>
 				</div>
-
 				<div class="cont_view_more">
-					<div class="btnArea">
-						<a href="#" class="btn border">
-							<span class="open">지난 자료 보기</span>
-							<!-- <span class="close">지난 자료 닫기</span> -->
-						</a>
-					</div>
+					<div class="btnArea"> <a href="#" class="btn border"> <span class="open">지난 자료 보기</span>
+							<!-- <span class="close">지난 자료 닫기</span> --> </a> </div>
 					<div class="content">
-						
 						<div class="section">
 							<p class="tit tbl_tit">2019년</p>
 							<div class="tb_row tb-row-bl middle keepAll">
@@ -1173,7 +1091,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-
 						<div class="section">
 							<p class="tit tbl_tit">2018년</p>
 							<div class="tb_row tb-row-bl middle keepAll">
@@ -1243,25 +1160,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-					
 					</div>
 				</div>
-				
 			</div>
 		</div>
-
 		<div id="tab4" class="tabs-contents" style="display:block;">
 			<h3 class="blind">현금흐름표</h3>
 			<div class="com-text">
-				<!-- 그래프 영역 -->
-				<div class="graph">
-					<!--
-						<img class="only_pc" src="/kr/images/company/investor/img-investor-highlight-graph_02.png" alt="">
-					<img class="only_mo" src="/kr/images/company/investor/img-investor-highlight-graph_02_mo.png" alt="">
-					-->
-					<div class="googlechart-wrap">
-						<div class="chartarea combochart" id="combochart04"></div>
-					</div>
 				</div>
 				<div class="tb_row tb-row-bl middle keepAll mgt">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
@@ -1322,29 +1227,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</table>
 				</div>
 			</div>
-		</div>
-		<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
-			<pattern id="pattern-splite1" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-				<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;" />
-				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #e81953;" />
+		</div> <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+			<pattern id="pattern-splite1" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"
+				patternTransform="rotate(45)">
+				<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;"></rect>
+				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #e81953;"></rect>
 			</pattern>
-			<pattern id="pattern-splite2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-				<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;" />
-				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #000000;" />
+			<pattern id="pattern-splite2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"
+				patternTransform="rotate(45)">
+				<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;"></rect>
+				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #000000;"></rect>
 			</pattern>
-			<pattern id="pattern-dashed1" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
-				<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;" />
-				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #e81953;" />
-				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #e81953;" />
+			<pattern id="pattern-dashed1" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse"
+				patternTransform="rotate(0)">
+				<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;"></rect>
+				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #e81953;"></rect>
+				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #e81953;"></rect>
 			</pattern>
-			<pattern id="pattern-dashed2" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(0
-			)">
-				<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;" />
-				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #000000;" />
-				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #000000;" />
+			<pattern id="pattern-dashed2" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse"
+				patternTransform="rotate(0			)">
+				<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;"></rect>
+				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #000000;"></rect>
+				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #000000;"></rect>
 			</pattern>
-			<pattern id="pattern-circle" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-				<circle cx="5" cy="5" r="6" style="stroke: #e81953; fill: none; stroke-width:10;" />
+			<pattern id="pattern-circle" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"
+				patternTransform="rotate(45)">
+				<circle cx="5" cy="5" r="6" style="stroke: #e81953; fill: none; stroke-width:10;"></circle>
 			</pattern>
 		</svg>
 	</div>

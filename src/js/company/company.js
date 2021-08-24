@@ -8,6 +8,16 @@ $(document).ready(function() {
 		//$('html, body').stop().animate({scrollTop: scrollPosition}, 500);
     });
 
+		// 아코디언 열릴 때 위치 조정
+		$('.accordion-wrap li.lists .accord-btn').on('click', function(e) {
+			var tag = $(this).closest('.lists');
+	
+			setTimeout(function(){
+				var scrollPosition = tag.offset().top - 150; /* 150 : 상단 높이 인데 tab이 어떻게 걸릴지 몰라 숫치가 정확치 않음 */
+				$('html, body').stop().animate({scrollTop: scrollPosition}, 300);
+			}, 200);
+			});
+
 	//팝업 오픈
 	$("button[data-href]").on('click', function(e){
 		e.preventDefault();
@@ -72,11 +82,13 @@ $(document).ready(function() {
 
 // 첫번째 아코디언 열기
 function fcOpenAccordion(){
-  if($(".tabs-contents .accordion-wrap").length > 0){
-    $(".tabs-contents .accordion-wrap li.lists:first-child").find("a.accord-btn").trigger("click");
-  }else{
-    $($(".accordion-wrap li.lists:first-child")[0]).find("a.accord-btn").trigger("click");
-  }
+	if($(".tabs-contents .accordion-wrap").length > 0){
+		$(".tabs-contents .accordion-wrap li.lists:first-child").addClass('on');
+		$(".tabs-contents .accordion-wrap li.lists:first-child").find(".accord-cont.ui_accord_contentt").css('display','block');
+	}else{
+		$($(".accordion-wrap li.lists:first-child")[0]).addClass('on');
+		$($(".accordion-wrap li.lists:first-child")[0]).find(".accord-cont.ui_accord_content").css('display','block');
+	}	
 }
 
 // 탭 슬라이드 위치 이동
