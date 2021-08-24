@@ -44,11 +44,6 @@ var lls = {
     bindEvent: function(){
         var self = this;
 
-
-        testAlert = function(flag){
-            alert(flag)
-        }
-
         function LGEPushSetting(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
@@ -99,10 +94,8 @@ var lls = {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
                     obj.command = "getPushStatus";
-                    //obj.callBack = "LGEPushSetting";
-                    obj.callback = "testAlert";
+                    obj.callback = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
-                    // alert(webkit.messageHandlers.callbackHandler.postMessage(jsonString))
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     var androidPush = android.getOSPush();
