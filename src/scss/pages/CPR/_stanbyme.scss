@@ -266,4 +266,147 @@
 	}
 }
 
-// 등록
+// detail
+.stanbyme-detail{
+	padding-top: 64px;
+	padding-bottom: 120px;
+	&-head{
+		.head {
+			&-title {
+				font-weight:$font-weight-bold;
+				font-size:32px;
+				line-height:1.63;
+
+				@include mobile {
+					font-size:24px;
+				}
+			}
+			&-infos {
+				margin-top:8px;
+				display: inline-block;
+				@include clearfix;
+				> li {
+					float:left;
+					color:#000;
+					@include font-small;
+					font-weight:normal;
+					position:relative;
+					margin-left:8px;
+					padding-left:9px;
+					&:before {
+						content:'';
+						position:absolute;
+						left:0;
+						top:6px;
+						width:1px;
+						height:14px;
+						background:#ddd;
+					}
+				}
+				&:first-of-type {
+					> li {
+						&:first-child {
+							padding-left: 0;
+							margin-left: 0;
+							&::before {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&-body{
+		padding: 60px 0 120px;
+		.detail-content{
+			padding:0 24px;
+			p {
+				color:#000;
+				@include font-medium;
+			}
+			strong {
+				color:inherit;
+				font-size:inherit;
+				line-height:inherit;
+			}
+			.point {
+				color: #da0f47;
+			}
+			img {
+				max-width:100%;
+			}
+		}
+	}
+	&-navi{
+		.navi {
+            display:flex;
+            padding:24px;
+            font-size:0;
+            border-radius:4px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            @include clearfix;
+            &-label, &-desc, &-date, &-views {
+                display:inline-block;
+                @include font-medium;
+                vertical-align:middle;
+            }
+            &-label {
+                position: relative;
+                margin-right:64px;
+                color: #666;
+            }
+            &-desc {
+                color:#000;
+                font-weight:normal;
+                flex: 1;
+                @include textEllipsisClamp(2);
+            }
+            &-date,
+            &-views {
+                color: #767676;
+                margin-left: 64px;
+            }
+            &:last-child {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+        @include mobile {
+            padding: 0 16px;
+            .navi {
+                padding:16px 12px;
+                flex-wrap: wrap;
+                &-label {
+                    margin-right:24px;
+                }
+                &-desc {
+                    flex: auto;
+                    width: calc(100% - 70px);
+                }
+                &-date {
+                    margin:4px 0 0 64px;
+                }
+                &-views {
+                    position: relative;
+                    margin:4px 0 0 8px;
+                    padding-left:9px;
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 10px;
+                        position: absolute;
+                        background-color: #ddd;
+                        top: 6px;
+                        left: 0;
+                    }
+                }
+            }
+        }
+	}
+	.btn-group {
+		margin: 64px auto 0;
+	}
+	
+}
