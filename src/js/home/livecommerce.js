@@ -94,10 +94,10 @@ var lls = {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
                     obj.command = "getPushStatus";
-                    obj.callBack = "LGEPushSetting";
+                    //obj.callBack = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     alert(webkit.messageHandlers.callbackHandler.postMessage(jsonString))
-                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    //webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     var androidPush = android.getOSPush();
                     LGEPushSetting(androidPush)
