@@ -6,6 +6,7 @@
 
 .lls-main {
     overflow:hidden;
+    margin-top:-40px;
     padding-bottom:146px;
 
     .only-pc {
@@ -16,6 +17,7 @@
     }
 
     @include mobile {
+        margin-top:-8px;
         padding-bottom:77px;
 
         .only-pc {
