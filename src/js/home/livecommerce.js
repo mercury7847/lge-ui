@@ -63,7 +63,6 @@ var lls = {
                     }
                 }, self.pushBtn);
             } else {
-                alert(flag)
                 lgkorUI.alert("", {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
