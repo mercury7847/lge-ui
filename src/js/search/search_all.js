@@ -877,7 +877,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //제품/케어솔루션
-                    var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');
+                    var $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="product"]');
                     arr = self.checkArrayData(data.product);
                     count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
@@ -918,7 +918,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //케어용품/소모품
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(1)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="additional"]');
                     arr = self.checkArrayData(data.additional);  
                     count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
@@ -949,7 +949,7 @@ if ('scrollRestoration' in history) {
 
 
                     //스토리
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(2)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="story"]');
                     arr = self.checkArrayData(data.story);
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
@@ -982,7 +982,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //이벤트/기획전
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(3)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="event"]');
                     arr = self.checkArrayData(data.event); //
                     count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
@@ -1010,7 +1010,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //센터매장
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(4)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="shop"]');
                     arr = self.checkArrayData(data.shop);
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
@@ -1039,7 +1039,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //고객지원
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(5)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="customer"]');
                     arr = self.checkArrayData(data.customer);
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
@@ -1074,7 +1074,7 @@ if ('scrollRestoration' in history) {
                     }
                     
                 	//회사소개
-                    $resultListWrap = $searchResult.find('div.result-list-wrap:eq(6)');
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="company"]');
                     arr = self.checkArrayData(data.company);
                     count = self.checkCountData(data.company);
                     self.setTabCount(7, count);
