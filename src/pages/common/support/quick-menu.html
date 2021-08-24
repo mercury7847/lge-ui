@@ -3,50 +3,19 @@
     - 최초 진입시 펼침 상태 (dim) 클래스 추가)
     - 재진입시 닫힘 상태 (dim 클래스 삭제) 
 -->
-<div id="quickMenu" class="quick-menu dim">
+<div id="quickMenu" class="quick-menu">
     <ul class="quick-menu-list">
         <!-- 
             서비스 메뉴
             - 최초 진입시 펼침 상태 (on 클래스 추가)
-            - 재진입시 닫힘 상태 (on 클래스 삭제) 
+            - 재진입시 닫힘 상태 (on 클래스 삭제)
+            - <li class="service-menu on"></li>
         -->
-        <li class="service-menu on">
+
+        <!-- BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
+        <li class="service-menu info-text">
             <button type="button" class="btn-expand" aria-expanded="false"><span class="blind">서비스 메뉴 열기</span></button>
             <ul class="service-menu-list">
-                <li>
-                    <a href="https://wwwstg.lge.co.kr/support/solutions" class="solutions-btn">
-                        <span class="img">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_solutions.svg" alt="">
-                        </span>
-                        <span class="txt">제품 문제 해결</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wwwstg.lge.co.kr/support/product-manuals" class="manuals-btn">
-                        <span class="img">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_product-drivers.svg" alt="">
-                        </span>
-                        <span class="txt">사용설명서/드라이버/SW</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wwwstg.lge.co.kr/support/find-service-center" class="center-btn">
-                        <span class="img">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_find-center.svg" alt="">
-                        </span>
-                        <span class="txt">서비스 센터 찾기</span>
-                    </a>
-                </li>
-                <!-- mobile device 노출 영역-->
-                <li>
-                    <a href="tel:15447777" class="tel-btn">
-                        <span class="img">
-                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_service-center.svg" alt="">
-                        </span>
-                        <span class="txt">고객센터 전화하기</span>
-                    </a>
-                </li>
-                <!-- // mobile device 노출 영역-->
                 <li>
                     <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="js-popup chatbot-btn" title="새 창으로 열림" data-width="360" data-height="620" data-link-area="sticky_chat-chatbot_button" data-link-name="">
                         <span class="img">
@@ -55,8 +24,59 @@
                         <span class="txt">상담챗</span>
                     </a>
                 </li>
+
+                <!-- BTOCSITE-2958 추가 -->
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/visit-store-reservation" class="solutions-btn">
+                        <span class="img">
+                            <img src="/lg5-common/images/icons/img_shop_40.svg" alt="">
+                        </span>
+                        <span class="txt">매장 상담 예약</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/solutions" class="">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_solutions.svg" alt="">
+                        </span>
+                        <span class="txt">제품 문제 해결</span>
+                    </a>
+                </li>
+                <!-- //BTOCSITE-2958 추가 -->
+
+                <!-- BTOCSITE-2958 삭제 -->
+                <!-- <li>
+                    <a href="https://wwwstg.lge.co.kr/support/product-manuals" class="manuals-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_product-drivers.svg" alt="">
+                        </span>
+                        <span class="txt">사용설명서/드라이버/SW</span>
+                    </a>
+                </li> -->
+                <!-- //BTOCSITE-2958 삭제 -->
+
+                <li>
+                    <a href="https://wwwstg.lge.co.kr/support/find-service-center" class="center-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_find-center.svg" alt="">
+                        </span>
+                        <span class="txt">서비스 센터 찾기</span>
+                    </a>
+                </li>
+
+                <!-- mobile device 노출 영역-->
+                <li class="serviceCenter-call" style="display: none;">
+                    <a href="tel:15447777" class="tel-btn">
+                        <span class="img">
+                            <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_service-center.svg" alt="">
+                        </span>
+                        <span class="txt">고객센터 전화하기</span>
+                    </a>
+                </li>
+                <!-- // mobile device 노출 영역-->
             </ul>
         </li>
+        <!-- //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
 
         <!-- 검색 기록 0건 -->
         <!-- 
@@ -70,18 +90,26 @@
             </button>
         </li> 
         -->
-
+        <!-- BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
         <!-- 검색 기록 
             - 최초 진입시 펼침 상태 (on 클래스 추가)
             - 재진입시 닫힘 상태 (on 클래스 삭제) 
+            - <li class="history on">
+
+            - BTOCSITE-2958 info-text 안내문구 추가
         -->
-        <li class="history on">
+        <li class="history info-text">
             <button type="button" class="btn-expand" aria-expanded="false">
                 <span class="blind">고객지원 제품 검색 기록 열기</span>
                 <span class="count">5<span class="blind">건</span></span>
                 <span class="img">
                     <img src="https://wwwstg.lge.co.kr/kr/support/images/icon/icon_search-history.svg" alt="">
                 </span>
+                 <!-- BTOCSITE-2958 추가 -->
+                <div class="history-info">
+                    <p>고객지원에서 찾아 본 제품</p>
+                </div>
+                 <!-- //BTOCSITE-2958 추가 -->
             </button>
             <ul class="history-list">
                 <li>
@@ -116,6 +144,7 @@
                 <span class="blind">고객지원 제품 검색 기록 닫기</span>
             </button>
         </li>
+        <!-- //BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 -->
     </ul>
 
     <button type="button" class="btn-top off"><span class="blind">맨 위로 이동</span></button>

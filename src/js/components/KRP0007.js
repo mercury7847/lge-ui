@@ -7,9 +7,11 @@
             '<div class="badge">' +
                 '<div class="flag-wrap image-type left">'+
                     '{{#each badge in promotionBadges}}'+
-                        '<span class="big-flag">'+
-                            '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}" onError="lgkorUI.addImgErrorEvent(this);">'+
-                        '</span>'+
+                        '{{#if badge.badgeImgUrl}}'+
+                            '<span class="big-flag">'+
+                                '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}" onError="lgkorUI.addImgErrorEvent(this);">'+
+                            '</span>'+
+                        '{{/if}}'+
                     '{{/each}}'+
                 '</div>'+
             '</div>'+
@@ -42,6 +44,13 @@
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if promotionBadges}}'+
+                    '{{#each badge in promotionBadges}}'+
+                        '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
+                        '<span class="flag box" style="background:#{{badge.bgRgb}};color:#{{badge.textRgb}}">{{badge.badgeName}}</span>'+
+                        '{{/if}}'+
+                    '{{/each}}'+
+                '{{/if}}' +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-name">' +
@@ -868,7 +877,10 @@
                 item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
                 /* 20210527 추가 */
                 // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
-                item.obsSellingPriceNumber = (item.obsSellingPrice != null) ? item.obsSellingPrice : null;  
+                item.obsSellingPriceNumber =  item.obsSellingPrice || 0;  
+                if(typeof item.obsSellingPriceNumber === 'string') {
+                    item.obsSellingPriceNumber = Number(item.obsSellingPriceNumber.replace(/,/g,''));
+                }
                 // BTOSCITE-940 가격이 100원 이상일때 뱃지추가
                 /* 20210527 추가 */
                 item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;

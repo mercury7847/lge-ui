@@ -109,10 +109,11 @@
             width:56px;
             height:56px;
             border-radius:50%;
-            background-color:$color-primary;
+            background-image: linear-gradient(315deg,#fb5a72,#fa263e);
+            background-color: #fa263e;
             &:hover {
                 box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
-                background-image: linear-gradient(to top, #fb5a72, #fa263e);
+                background: $color-primary;
             }
             &:before {
                 content:'';
@@ -122,8 +123,8 @@
                 transform:translate(-50%, -50%) rotate(0);
                 width:40px;
                 height:40px;
-                transition:transform .3s ease-out;
-                background:url(/lg5-common/images/icons/icon-more-plus-x.svg) no-repeat;
+                //transition:transform .3s ease-out;
+                // background:url(/lg5-common/images/icons/icon-more-plus-x.svg) no-repeat;
                 background-size:100%;
             }
         }
@@ -264,11 +265,11 @@
             display:block;
             overflow:visible;
             z-index:10;
-            width:56px;
-            height:56px;
-            border-radius:50%;
-            box-shadow:0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
-            background:#fff;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
+            background: #fff;
             .img {
                 position:absolute;
                 top:50%;
@@ -318,6 +319,42 @@
                 display:block;
             }
         }
+
+        /* 추가 */
+        &.info-text {
+            position: relative;
+            .btn-expand {
+                width: auto;
+                border-radius: 40px;
+                transform: translateX(0);
+                z-index: 1;
+                // transition:all ease 0.5s;
+                .img {
+                    left: 100%;
+                    transform: translate(-120%, -50%);
+                    @include mobile {
+                        transform: translate(-134%, -50%);
+                    }
+                }
+                .history-info {
+                    visibility: visible;
+                    opacity: 1;
+                    margin-right: 70px;
+                    transition:all ease 0.5s;
+                    p {
+                        font-size: 14px;
+                    }
+                    @include mobile {
+                        padding-left: 24px;
+                        margin-right: 50px;
+                        p {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+        /* //추가 */
         @include mobile {
             &-list {
                 right:50px;

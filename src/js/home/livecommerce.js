@@ -49,6 +49,7 @@ var lls = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
+
             if( flag == "Y" ) {
                 lgkorUI.alert("", {
                     title: msg.flagY,
@@ -87,23 +88,15 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    //obj.command = "setMkt";
                     obj.command = "getPushStatus";
                     obj.callBack = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.getOSPush("LGEPushSetting")
+                    var androidPush = android.getOSPush();
+                    LGEPushSetting(androidPush)
                 }
-
-                lgkorUI.alert("", {
-                    title: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
-                    ok: function(el) {
-                        
-                    }
-                }, _self);
             }
-            
         });
 
 
