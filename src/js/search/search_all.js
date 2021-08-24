@@ -877,6 +877,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //제품/케어솔루션
+                    //BTOCSITE-3602
                     var $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="product"]');
                     arr = self.checkArrayData(data.product);
                     count = self.checkCountData(data.product);
@@ -918,6 +919,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //케어용품/소모품
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="additional"]');
                     arr = self.checkArrayData(data.additional);  
                     count = self.checkCountData(data.additional);
@@ -949,6 +951,7 @@ if ('scrollRestoration' in history) {
 
 
                     //스토리
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="story"]');
                     arr = self.checkArrayData(data.story);
                     count = self.checkCountData(data.story);
@@ -982,6 +985,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //이벤트/기획전
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="event"]');
                     arr = self.checkArrayData(data.event); //
                     count = self.checkCountData(data.event);
@@ -1010,6 +1014,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //센터매장
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="shop"]');
                     arr = self.checkArrayData(data.shop);
                     count = self.checkCountData(data.shop);
@@ -1039,6 +1044,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     //고객지원
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="customer"]');
                     arr = self.checkArrayData(data.customer);
                     count = self.checkCountData(data.customer);
@@ -1074,6 +1080,7 @@ if ('scrollRestoration' in history) {
                     }
                     
                 	//회사소개
+                    //BTOCSITE-3602
                     $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="company"]');
                     arr = self.checkArrayData(data.company);
                     count = self.checkCountData(data.company);
