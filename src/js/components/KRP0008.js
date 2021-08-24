@@ -2703,10 +2703,7 @@
                 // 파라미터
                 // itemId : SKU (OLED65A1MS.AKRG : salesmodelcode + surffixcode)
 
-                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSPdpUp.lgajax",  { "itemId":lgePdpSendData.sku}, 
-                function(result) {
-                    console.log("result %o",result);
-                });
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSPdpUp.lgajax",  { "itemId":lgePdpSendData.sku});
             }
         };
 
