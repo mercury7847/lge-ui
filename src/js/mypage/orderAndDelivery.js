@@ -2282,9 +2282,6 @@
             var getListData = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData : result.data.careListData;
             var productList = getListData[0].productList;
             var dataChk = $('#popup-cancel').hasClass('data-chk');
-            var dataChk2 = $('#popup-cancel').hasClass('data-cash');
-            console.log("데이터체크값 : "+ dataChk);
-            console.log("데이터현금값" + dataChk2);
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
@@ -2331,7 +2328,8 @@
                 
                 // BTOCSITE-1775
                 var isAllCancelDisable = true;  // 모두 취소 불가능
-                var isCashCheck = ""; //210824 BTOCSITE-4124
+                //210824 BTOCSITE-4124 - S
+                var isCashCheck = ""; 
                 productList.forEach(function( data ){
                     if (data.itemCancelAbleYn == "Y" && result.data.payment.paymentTypeName != "계좌이체"){
                         isAllCancelDisable = false;
@@ -2362,13 +2360,13 @@
                     $('#popup-cancel').find('.state-box > p.tit').html('<span class="blind">진행상태</span>결제완료');
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
-
                 } else {
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
+                //210824 BTOCSITE-4124 - S
                 // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
@@ -2541,6 +2539,7 @@
     function cancelOk(){
         var productList = [];
         var matchIds = [];
+        var chkData = $('#popup-cancel').hasClass('data-chk'); //210825 추가 BTOCSITE-4124
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
             var id = $(item).val();
@@ -2548,8 +2547,12 @@
 
             matchIds.push(id);
         });
-        
-        setCancelTakebackData('popup-cancel', productList, matchIds);
+                
+        if(chkData == true){
+            setCancelTakebackData2('popup-cancel', productList, matchIds);
+        }else{
+            setCancelTakebackData('popup-cancel', productList, matchIds);
+        }
     }
     //취소/반품 공통 SUBMIT...
     function setCancelTakebackData(popname, prodlist, matchIds){
@@ -2666,8 +2669,7 @@
                         });
                     }
                 } else{
-                    // BTOCSITE-4124 영역확인용 주석 - S 
-                    // BTOCSITE-4124 - 210823
+                    // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - S
                     if(result.data.msg == "VC1001"){
                         lgkorUI.alert("", {
                             title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.<br>주문취소 신청을 하시겠습니까? ",
@@ -2680,8 +2682,7 @@
                             }
                         });                       
                     }
-                    // BTOCSITE-4124 - 210823
-                    // BTOCSITE-4124 영역확인용 주석 - E
+                    // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
                     if(PAGE_TYPE == PAGE_TYPE_LIST){
                         var box = $('.box[data-id=' + dataId + ']');
                         box.find('.orderCancel-btn, .requestOrder-btn').remove();
@@ -2696,6 +2697,137 @@
             }
         });
     }
+
+    //BTOCSITE-4124 [취소신청팝업] 현금(가상계좌)로 결제 시, 입금했을 경우, 해당 대상자 전용 SUBMIT 210825
+    function setCancelTakebackData2(popname, prodlist, matchIds){
+        var popup = $('#'+popname);
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var dataId = popup.data('dataId');    
+        
+        var orderNumber = listData[dataId].orderNumber;
+        var requestNo = listData[dataId].requestNo;
+        var apiType = listData[dataId].apiType;
+
+        var memInfos = lgkorUI.getHiddenInputData();
+
+        var bankName = "";
+        var bankAccountNo = "";
+        var paymentUser = "";
+        var birthDt = "";
+        if(popup.data("isBank")){
+            bankName = popup.find('.bank-input-box select option:selected').val();
+            bankAccountNo = popup.find('.bank-input-box input').val();
+
+            paymentUser = popup.data('userName');
+
+            birthDt = popup.data('isBirthDt') ? popup.find('input[name=birthDt]').val() : "";
+        }
+
+        var reasonId = popname == "popup-cancel" ? "cancelReason" : "slt01";
+        var selectReason = popup.find('#'+reasonId + ' option:selected').val();
+        var writeReason = popup.find('textarea').val();
+        var reason = writeReason ? writeReason : selectReason;
+
+        var sendata = {
+            callType: popname == "popup-cancel" ? "ordercancel" : "orderreturn",
+
+            orderNumber: orderNumber,
+            requestNo: requestNo,
+            apiType: apiType,
+            tabFlag: TAB_FLAG,
+
+            paymentUser: paymentUser,
+            birthDt: birthDt,
+
+            bankName: bankName,
+            bankAccountNo: bankAccountNo,
+
+            reason: reason,
+
+            sendOrderNumber: memInfos.sendOrderNumber,
+            sendInquiryType: memInfos.sendInquiryType,
+            sendUserName: memInfos.sendUserName,
+            sendUserEmail: memInfos.sendUserEmail,
+            sendPhoneNumber: memInfos.sendPhoneNumber
+        }
+
+        var sendRealData;
+        if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+            sendRealData = sendata;
+            sendRealData.productList = JSON.stringify(prodlist)
+        } else{
+
+            var newProductList = {};
+            for(var idx in prodlist){
+                var ordernum = prodlist[idx].orderNumber;
+                if(!ordernum) ordernum = "noneOrderNumber";
+
+                var match = "";
+                for(var str in newProductList){
+                    if(ordernum == str){
+                        match = str;
+                        break;
+                    }
+                }
+    
+                if(match == ""){
+                    newProductList[ordernum] = [prodlist[idx]];
+                } else{
+                    newProductList[match].push(prodlist[idx]);
+                }
+            }
+    
+            var orderList = [];
+            for(var key in newProductList){
+                var clonedata = vcui.clone(sendata);
+                clonedata.orderNumber = key;
+                clonedata.productList = JSON.stringify(newProductList[key]);
+                orderList.push(clonedata);
+            }
+
+            sendRealData = {
+                orderList: JSON.stringify(orderList)
+            }
+        }
+        
+        lgkorUI.showLoading();
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
+            lgkorUI.hideLoading();
+
+            popup.vcModal('close');
+
+            if(result.status == "fail"){
+                lgkorUI.alert("", {
+                    title: result.message
+                });
+            } else{
+                if(result.data.success == "N"){
+                    if(result.data.alert){
+                        lgkorUI.alert("", {
+                            title: result.data.alert.title
+                        });
+                    } else{
+                        lgkorUI.alert("", {
+                            title: "취소신청에 실패하였습니다.<br>잠시 후 다시 시도해 주세요."
+                        });
+                    }
+                } else{                    
+                    if(PAGE_TYPE == PAGE_TYPE_LIST){
+                        var box = $('.box[data-id=' + dataId + ']');
+                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
+    
+                        var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수"
+                        for(var idx in matchIds){
+                            var block = box.find('.tbody .row').eq(matchIds[idx]);
+                            block.find('.col-table .col2 .state-box').empty().html('<p class="tit "><span class="blind">진행상태</span>' + resultMsg + '</p>');
+                        }
+                    } else reloadOrderInquiry();
+                }
+            }
+        });
+    }
+
 
     //영수증 발급내역...
     function setReceiptListPop(opener){
