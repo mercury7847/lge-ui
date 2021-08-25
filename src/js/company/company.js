@@ -132,7 +132,7 @@ $(function(){
 	});
 });
 
-var openInApp = function (url) {
+var openInApp = function (url, name, specs, replace) {
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {
 			  'command' : 'openInAppBrowser'
@@ -142,6 +142,6 @@ var openInApp = function (url) {
 		var jsonString = JSON.stringify(obj);
 		webkit.messageHandlers.callbackHandler.postMessage(jsonString);
 	} else {
-		window.open(url);
-	}	
+		window.open(url, name, specs, replace);
+	}
 }
