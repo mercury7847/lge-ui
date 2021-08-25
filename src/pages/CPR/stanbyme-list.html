@@ -14,23 +14,29 @@
         <div class="container">
             <div class="contents stanbyme">
                 <div class="visual-wrap">
-                    <img data-pc-src="/lg5-common/images/STC/img-visual-dual01.jpg" data-m-src="/lg5-common/images/STC/img-visual-dual01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual-dual01.jpg">
-                    <div class="tit-wrap">
-                        <p class="tit">나만을 위한 프라이빗 스크린</p>
-                        <span class="txt">스탠바이미에 대한 다양한 의견과 아이디어를 나누는 
-                            소통의 공간 스탠바이미 클럽</span>
-                    </div>
+                    @@include('./common/modules/main_carousel.html', {
+                        "slides" : [
+                            {
+                                "pcImg" : "/lg5-common/images/BMC/img-membership-hero.jpg",
+                                "mImg" : "/lg5-common/images/BMC/img-membership-hero-m.jpg",
+                                "title" : "나만을 위한 프라이빗 스크",
+                                "eyebrow" : "스탠바이미에 대한 다양한 의견과 아이디어를 나누는 
+                                소통의 공간 스탠바이미 클럽"
+                            }
+                        ]
+                    })
                 </div>
                 <div class="inner">
-                    <div class="stanbyme-reg">
+                    <div class="tit-wrap">
+                        <h3 class="tit">스탠바이미 클럽</h3>
                         <div class="sbm-qna">
                             <p>스탠바이미에 대한 궁금증이나, 문의사항을 등록해 주세요.</p>
-                            <a href="#" class="btn"><span>등록하기</span></a>
+                            <a href="#" class="btn ico-reg"><span>등록하기</span></a>
                         </div>
-                        <div class="sbm-review">
-                            <span>구매 리뷰를 남기실 건가요?</span>
-                            <a href="#n" class="btn-link">리뷰 등록</a>
-                        </div>
+                    </div>
+                    <div class="sbm-review">
+                        <strong>구매 리뷰를 남기실 건가요?</strong>
+                        <a href="#n" class="btn-link">리뷰 등록</a>
                     </div>
                     <div class="result-wrap">
                         <div class="sorting-wrap">
@@ -54,64 +60,64 @@
                             </div>
                             <div class="tbody">
                                 <div class="row">
-                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">배송날자가 지났는데 언제 받는건가요?</a><span class="count">[2]</span></p></div>
+                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">배송날자가 지났는데 언제 받는건가요?</a><span class="count">2</span></p></div>
                                     <div class="col2"><span>남*한</span></div>
                                     <div class="col3"><span>2021.08.12</span></div>
                                     <div class="col4"><span>272</span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">도대체 언제 주는 건가요?</a><span class="count">[4]</span></p></div>
+                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">연결되는 휴대폰 기종이 어떻게 되나요?</a><span class="count">4</span></p></div>
                                     <div class="col2"><span>조*민</span></div>
                                     <div class="col3"><span>2021.08.12</span></div>
                                     <div class="col4"><span>129</span></div>
                                 </div>
                                 <div class="row">
+                                    <div class="col1"><p class="tit"><a href="#">배송이 너무 너무 느리네요</a><span class="count">1</span></p></div>
+                                    <div class="col2"><span>이*숙</span></div>
+                                    <div class="col3"><span>2021.08.11</span></div>
+                                    <div class="col4"><span>456</span></div>
+                                </div> 
+                                <div class="row">
                                     <div class="col1"><p class="tit">관리자에 의해 삭제된 글입니다.</p></div>
-                                    <div class="col2"><span>남*한</span></div>
+                                    <div class="col2"><span>백*희</span></div>
                                     <div class="col3"><span>2021.08.12</span></div>
-                                    <div class="col4"><span>272</span></div>
+                                    <div class="col4"><span>1,272</span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col1"><p class="tit"><a href="#">배송이 너무 너무 느리네요</a><span class="count">[1]</span></p></div>
+                                    <div class="col1"><p class="tit"><a href="#">미러링이 안되서 아쉽네요</a><span class="count">3</span></p></div>
                                     <div class="col2"><span>이*숙</span></div>
                                     <div class="col3"><span>2021.08.11</span></div>
                                     <div class="col4"><span>456</span></div>
                                 </div> 
                                 <div class="row">
-                                    <div class="col1"><p class="tit"><a href="#">배송이 너무 너무 느리네요</a><span class="count">[1]</span></p></div>
-                                    <div class="col2"><span>이*숙</span></div>
-                                    <div class="col3"><span>2021.08.11</span></div>
-                                    <div class="col4"><span>456</span></div>
-                                </div> 
-                                <div class="row">
-                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">배송날자가 지났는데 언제 받는건가요?</a><span class="count">[2]</span></p></div>
+                                    <div class="col1"><p class="tit"><a href="#">다음 예약예정일은 언젠지 알수 있을까요?</a><span class="count">1</span></p></div>
                                     <div class="col2"><span>남*한</span></div>
                                     <div class="col3"><span>2021.08.11</span></div>
                                     <div class="col4"><span>272</span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col1"><span class="new">NEW</span><p class="tit"><a href="#">도대체 언제 주는 건가요?</a><span class="count">[4]</span></p></div>
+                                    <div class="col1"><p class="tit"><a href="#">배송은 언제 되는 걸까요?</a><span class="count">999+</span></p></div>
                                     <div class="col2"><span>조*민</span></div>
                                     <div class="col3"><span>2021.08.11</span></div>
                                     <div class="col4"><span>129</span></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col1"><p class="tit">관리자에 의해 삭제된 글입니다.</p></div>
-                                    <div class="col2"><span>남*한</span></div>
-                                    <div class="col3"><span>2021.08.11</span></div>
-                                    <div class="col4"><span>272</span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col1"><p class="tit"><a href="#">배송이 너무 너무 느리네요</a><span class="count">[1]</span></p></div>
+                                    <div class="col1"><p class="tit"><a href="#">AS는 무상으로 언제까지 받을 수 있을까요?</a><span class="count">12</span></p></div>
                                     <div class="col2"><span>이*숙</span></div>
                                     <div class="col3"><span>2021.08.11</span></div>
                                     <div class="col4"><span>456</span></div>
                                 </div> 
                                 <div class="row">
-                                    <div class="col1"><p class="tit"><a href="#">배송이 너무 너무 느리네요</a><span class="count">[1]</span></p></div>
+                                    <div class="col1"><p class="tit"><a href="#">스마트 티비와 연결도 가능한가요? 패드는 어떤 종류까지 연결가능할까요?</a><span class="count">31</span></p></div>
                                     <div class="col2"><span>이*숙</span></div>
                                     <div class="col3"><span>2021.08.11</span></div>
-                                    <div class="col4"><span>456</span></div>
+                                    <div class="col4"><span>1,230</span></div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col1"><p class="tit"><a href="#">IOS 연결이 잘 안되는것 같아요. 방법문의 드립니다.</a><span class="count">14</span></p></div>
+                                    <div class="col2"><span>강*미</span></div>
+                                    <div class="col3"><span>2021.08.11</span></div>
+                                    <div class="col4"><span>325</span></div>
                                 </div> 
                                 <!-- <div class="row">
                                     <div class="full">
