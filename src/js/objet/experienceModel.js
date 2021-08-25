@@ -738,10 +738,12 @@
                                     }
                                 }]
                             },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210719 주석해제) */
+                            
 
-                            /* 주영 베이지 삭제 */
+                            /* BTOCSITE-4470 : 모델 베이지 항목 삭제(원본 파일은 _bak 파일에서 확인) 2021-08-25 */
+                            
 
-                              {
+                            {
                                 name: "빌트인 타입",
                                 defaultCode: "M620AAA351",
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
