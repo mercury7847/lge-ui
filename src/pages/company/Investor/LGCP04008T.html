@@ -197,9 +197,12 @@
 	}
 </script>
 <style>
+	.graph_area::after {content:''; display:block; clear:both}
+	.graph_area .graph {float:left; width:50%; max-width:50%}
 	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
 	@media screen and (max-width:768px){
 		.graph_dec {font-size:12px;line-height:20px;}
+		.graph_area .graph {float:none; width:100%; max-width:100%; margin-top:60px}
 	}
 	#columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} 
 	#combochart svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;} 
@@ -303,13 +306,17 @@
 			<h3 class="blind">재무하이라이트</h3>
 			<div class="com-text">
 				<!-- 그래프 영역 -->
-				<div class="graph" style="max-width:910px;margin:0 auto;">
-					<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-					<div class="chart_area columnchart" id="columnchart"></div>
-				</div>
-				<div class="graph" style="max-width:910px;margin:0 auto;">
-					<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-					<div class="chart_area combochart" id="combochart"></div>
+				<div class="graph_area">
+					<div class="graph">
+						<p class="tit">매출액</p>
+						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
+						<div class="chart_area columnchart" id="columnchart"></div>
+					</div>
+					<div class="graph">
+						<p class="tit">영업이익</p>
+						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
+						<div class="chart_area combochart" id="combochart"></div>
+					</div>
 				</div>
 				<div class="tb_row tb-row-bl mgt middle keepAll pd">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
@@ -374,7 +381,7 @@
 		<div id="tab2" class="tabs-contents" style="display:block;">
 			<h3 class="blind">재무상태표</h3>
 			<div class="com-text">
-				<p class="tit mt60">연도별 재무상태표</p>
+				<p class="tit">연도별 재무상태표</p>
 				<div class="tb_row tb-row-bl middle keepAll">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
@@ -679,7 +686,7 @@
 		<div id="tab3" class="tabs-contents" style="display:block;">
 			<h3 class="blind">손익계산서</h3>
 			<div class="com-text">
-				<p class="tit mt60">연도별 손익계산서</p>
+				<p class="tit">연도별 손익계산서</p>
 				<div class="tb_row tb-row-bl middle keepAll">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
@@ -957,7 +964,8 @@
 		<div id="tab4" class="tabs-contents" style="display:block;">
 			<h3 class="blind">현금흐름표</h3>
 			<div class="com-text">
-				<div class="tb_row tb-row-bl middle keepAll mgt">
+				<p class="tit">현금흐름표</p>
+				<div class="tb_row tb-row-bl middle keepAll">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>재무 하이라이트 현금 흐름표, 구분, 2020, 2019, 2018</caption>
@@ -1020,7 +1028,7 @@
 			<pattern id="pattern-splite1" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"
 				patternTransform="rotate(45)">
 				<rect x="0" y="0" width="8" height="8" style="stroke: none; fill: #ffffff;"></rect>
-				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #e81953;"></rect>
+				<rect x="0" y="0" width="7" height="8" style="stroke: none; fill: #da0f47;"></rect>
 			</pattern>
 			<pattern id="pattern-splite2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"
 				patternTransform="rotate(45)">
@@ -1030,8 +1038,8 @@
 			<pattern id="pattern-dashed1" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse"
 				patternTransform="rotate(0)">
 				<rect x="0" y="0" width="2" height="2" style="stroke: none; fill: #ffffff;"></rect>
-				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #e81953;"></rect>
-				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #e81953;"></rect>
+				<rect x="0" y="0" width="1" height="2" style="stroke: none; fill: #da0f47;"></rect>
+				<rect x="0" y="0" width="2" height="1" style="stroke: none; fill: #da0f47;"></rect>
 			</pattern>
 			<pattern id="pattern-dashed2" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse"
 				patternTransform="rotate(0			)">
@@ -1041,7 +1049,7 @@
 			</pattern>
 			<pattern id="pattern-circle" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"
 				patternTransform="rotate(45)">
-				<circle cx="5" cy="5" r="6" style="stroke: #e81953; fill: none; stroke-width:10;"></circle>
+				<circle cx="5" cy="5" r="6" style="stroke: #da0f47; fill: none; stroke-width:10;"></circle>
 			</pattern>
 		</svg>
 	</div>
