@@ -235,7 +235,7 @@
         }
         @media screen and (max-width: 1024px) {
             // BTOCSITE-1716 스마트필터와 상세필터 합치기
-            display: block;
+            display: block !important;
             .inner {
                 max-width: 100%;
                 padding: 0;
