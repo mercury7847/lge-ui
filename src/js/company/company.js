@@ -81,15 +81,22 @@ $(document).ready(function() {
 });
 
 // 첫번째 아코디언 열기
+
 function fcOpenAccordion(){
 	if($(".tabs-contents .accordion-wrap").length > 0){
-		$(".tabs-contents .accordion-wrap li.lists:first-child").addClass('on');
-		$(".tabs-contents .accordion-wrap li.lists:first-child").find(".accord-cont.ui_accord_content").css('display','block');
+		setTimeout(function(){
+			$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
+			$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
+		}, 200);
 	}else{
-		$($(".accordion-wrap li.lists:first-child")[0]).addClass('on');
-		$($(".accordion-wrap li.lists:first-child")[0]).find(".accord-cont.ui_accord_content").css('display','block');
+		setTimeout(function(){
+			$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
+			$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
+		}, 200);
 	}	
 }
+
+
 
 // 탭 슬라이드 위치 이동
 function fcTabScrollLeft(tab){
@@ -125,7 +132,7 @@ $(function(){
 	});
 });
 
-var openInApp = function (url) {
+var openInApp = function (url, name, specs, replace) {
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {
 			  'command' : 'openInAppBrowser'
@@ -135,6 +142,6 @@ var openInApp = function (url) {
 		var jsonString = JSON.stringify(obj);
 		webkit.messageHandlers.callbackHandler.postMessage(jsonString);
 	} else {
-		window.open(url);
-	}	
+		window.open(url, name, specs, replace);
+	}
 }

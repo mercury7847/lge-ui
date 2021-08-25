@@ -3,14 +3,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
-
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
@@ -24,51 +22,102 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:['corechart']});
+	google.charts.load("current", {
+		packages: ['corechart']
+	});
 	google.charts.setOnLoadCallback(drawChart);
 	var dataColumn, optionsColumn, chartColumn;
 	var dataDonut, optionsDonut, chartDonut;
 
 	function drawChart() {
 		dataColumn = google.visualization.arrayToDataTable([
-		['', '참석', { role: 'annotation' } ,'불참', { role: 'annotation' }],
-		['평균', 90.47, '90.47%', 9.53, '9.53%'],
-		['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
-		['사외이사', 100, '100%', 0, '0%']
+			['', '참석', {
+				role: 'annotation'
+			}, '불참', {
+				role: 'annotation'
+			}],
+			['평균', 90.47, '90.47%', 9.53, '9.53%'],
+			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
+			['사외이사', 100, '100%', 0, '0%']
 		]);
 		optionsColumn = {
 			colors: ['#e81953', '#000000'],
-			vAxis:{format: '#\'%\'', minValue:'0', maxValue: '110'},
-			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
-			bar: { groupWidth: '25%' },
-			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
-			legend: {position: 'bottom'},
-			fontName:'Noto Sans',
-			fontSize:"16"
+			vAxis: {
+				format: '#\'%\'',
+				minValue: '0',
+				maxValue: '110'
+			},
+			chartArea: {
+				width: '90%',
+				right: '0%',
+				height: '80%',
+				top: '-5%'
+			},
+			bar: {
+				groupWidth: '25%'
+			},
+			annotations: {
+				textStyle: {
+					bold: true
+				},
+				stem: {
+					color: 'none',
+					length: '0'
+				}
+			},
+			legend: {
+				position: 'bottom'
+			},
+			fontName: 'Noto Sans',
+			fontSize: "16"
 		};
 		dataDonut = google.visualization.arrayToDataTable([
-			['',  'Amount', {role: 'tooltip'}],
-			['개최',  9, '개최\n9건'],
-			['승인사항',  32, '승인사항\n32건'],
-			['보고사항',  10, '보고사항\n10건']
+			['', 'Amount', {
+				role: 'tooltip'
+			}],
+			['개최', 9, '개최\n9건'],
+			['승인사항', 32, '승인사항\n32건'],
+			['보고사항', 10, '보고사항\n10건']
 		]);
 		optionsDonut = {
 			pieHole: 0.6,
 			pieSliceText: 'value',
-			chartArea: {width: '100%', height: '80%',top:'4%'},
+			chartArea: {
+				width: '100%',
+				height: '80%',
+				top: '4%'
+			},
 			slices: {
-				0: { color: '#000000', offset: 0.01},
-				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
-				2: { color: '#e81953', offset: 0.01}
+				0: {
+					color: '#000000',
+					offset: 0.01
+				},
+				1: {
+					color: '#aaaaaa',
+					offset: 0.01,
+					textStyle: {
+						color: '#000'
+					}
+				},
+				2: {
+					color: '#e81953',
+					offset: 0.01
+				}
 			},
-			pieSliceTextStyle : {
+			pieSliceTextStyle: {
 				fontSize: '16',
-				bold:true
+				bold: true
 			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
-			fontName:'Noto Sans'
+			legend: {
+				position: 'bottom',
+				alignment: 'center',
+				textStyle: {
+					fontSize: '16'
+				}
+			},
+			fontName: 'Noto Sans'
 		};
-		setTimeout(function(){
+		setTimeout(function () {
 			checkSize();
 			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -76,38 +125,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			chartDonut.draw(dataDonut, optionsDonut);
 		}, 1000);
 	}
+
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			optionsDonut.pieHole=0.6;
-			optionsDonut.legend.textStyle.fontSize="12";
-			optionsDonut.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
-			optionsColumn.fontSize="12";
-			optionsColumn.bar.groupWidth= '30%';
-		}
-		else{
-			optionsDonut.pieHole=0.56;
-			optionsDonut.legend.textStyle.fontSize="16";
-			optionsDonut.pieSliceTextStyle.fontSize="16";
-			optionsColumn.fontSize="16";
-			optionsColumn.bar.groupWidth= '25%';
+			optionsDonut.pieHole = 0.6;
+			optionsDonut.legend.textStyle.fontSize = "12";
+			optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+			optionsColumn.fontSize = "12";
+			optionsColumn.bar.groupWidth = '30%';
+		} else {
+			optionsDonut.pieHole = 0.56;
+			optionsDonut.legend.textStyle.fontSize = "16";
+			optionsDonut.pieSliceTextStyle.fontSize = "16";
+			optionsColumn.fontSize = "16";
+			optionsColumn.bar.groupWidth = '25%';
 		}
 	}
-	$(window).resize(function() {
+	$(window).resize(function () {
 		/* 화면사이즈가 변하면 차트를 그려줌 */
-		if($(".accordion-wrap li.lists:first-child").hasClass("on")){
+		if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
 			checkSize();
-			setTimeout(function(){
+			setTimeout(function () {
 				chartColumn.draw(dataColumn, optionsColumn);
 				chartDonut.draw(dataDonut, optionsDonut);
 			}, 100);
 		}
 	});
-	$(document).ready(function() {
+	$(document).ready(function () {
 		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:first-child").on('click', function(e){
+		$(".accordion-wrap li.lists:first-child").on('click', function (e) {
 			checkSize();
-			setTimeout(function(){
+			setTimeout(function () {
 				chartColumn.draw(dataColumn, optionsColumn);
 				chartDonut.draw(dataDonut, optionsDonut);
 			}, 100);
@@ -115,18 +164,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	});
 </script>
 <style>
-	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
-	.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
-	.googlechart-wrap .columnchart {height:480px;}
-	.googlechart-wrap .donutchart {height:370px;}
-	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;}
-		.googlechart-wrap.over100::before{height:7%;}
-		.googlechart-wrap .columnchart {height:53vw;}
-		.googlechart-wrap .donutchart {height:71.11vw}
+	.googlechart-wrap {
+		position: relative;
+		max-width: 900px;
+		margin: 0 auto;
 	}
-	@media screen and (max-width: 425px){
-		.googlechart-wrap.over100::before{height:14%;}
+
+	.googlechart-wrap.over100::before {
+		content: "";
+		display: block;
+		background: #ffffff;
+		width: 100%;
+		height: 8%;
+		position: absolute;
+		top: 0;
+		z-index: 1;
+	}
+
+	.googlechart-wrap .columnchart {
+		height: 480px;
+	}
+
+	.googlechart-wrap .donutchart {
+		height: 370px;
+	}
+
+	@media screen and (max-width: 767px) {
+		.googlechart-wrap {
+			width: 100%;
+		}
+
+		.googlechart-wrap.over100::before {
+			height: 7%;
+		}
+
+		.googlechart-wrap .columnchart {
+			height: 53vw;
+		}
+
+		.googlechart-wrap .donutchart {
+			height: 71.11vw
+		}
+	}
+
+	@media screen and (max-width: 425px) {
+		.googlechart-wrap.over100::before {
+			height: 14%;
+		}
 	}
 </style>
 <div class="breadcrumb">
@@ -141,24 +225,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">지속가능경영</h2>
-	</div>
-	<!-- hiro image -->
+	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
-		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="visual-area"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg"
+				data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span> </div>
 		<div class="text-area">
 			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
 		</div>
-	</section>
-	<!-- // hiro image -->
+	</section> <!-- // hiro image -->
 	<div class="ui_sticky">
 		<div class="com-tabs">
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li>
-						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
+					<li> <a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/overview">Overview</a></li>
 							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
@@ -169,31 +250,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/businessplace#com-tabs01">환경</a>
+					<li> <a href="/company/sustainable/businessplace#com-tabs01">환경</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/businessplace">부정적 환경영향 <br> Zero 사업장</a></li>
 							<li><a href="/company/sustainable/productsServices">미래세대를 위한 <br>제품과 서비스</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/workplace#com-tabs01">사회</a>
+					<li> <a href="/company/sustainable/workplace#com-tabs01">사회</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/workplace">모두를 위한 <br> 지속가능한 일터</a></li>
 							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
 							<li><a href="/company/sustainable/socialContribution">사회공헌</a></li>
 						</ul>
 					</li>
-					<li class="on">
-						<a href="/company/sustainable/director#com-tabs01">지배구조<em class="blind">선택됨</em></a>
-					</li>
-					<li>
-						<a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
+					<li class="on"> <a href="/company/sustainable/director#com-tabs01">지배구조<em class="blind">선택됨</em></a> </li>
+					<li> <a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
 							<li><a href="/company/promot/fairtrade">공정거래</a></li>
-							<li><a href="/company/promot/safetyHealth">안전&middot;환경</a></li>
+							<li><a href="/company/promot/safetyHealth">안전·환경</a></li>
 							<li><a href="/company/promot/partner">협력회사</a></li>
 							<li><a href="/company/promot/minerals">분쟁광물</a></li>
 							<li><a href="/company/promot/client">고객</a></li>
@@ -201,43 +277,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/promot/member">구성원</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
+					<li> <a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
 							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
-					</li>
+					<li> <a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a> </li>
 				</ul>
 			</div>
 		</div>
 	</div>
-
 	<div class="com-title">
-		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-d-hero-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-d-hero-mo.jpg" aria-hidden="hidden"></span>
-		</div>
-		<p class="text">LG전자는 투명한 지배구조 확립에 대한 글로벌 이해관계자의 요구와 기대를 파악하고<br>이사회 산하 위원회 운영과 이사 선임 프로세스를 통해 전문성, 독립성, 투명성 등 이사회 운영의 핵심 가치를 확보하고 있습니다.<br>또한, 이사회 운영 규정을 철저히 준수하여 견제와 감시 기능을 수행하고 이사회 중심의 책임 경영을 통해 주주의 권익 보호와 LG전자의 지속적인 성장을 도모하고 있습니다.</p>
+		<div class="img"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/sustainable/img-sustainable-d-hero-pc.jpg"
+				data-m-src="/kr/images/company/sustainable/img-sustainable-d-hero-mo.jpg" aria-hidden="hidden"></span> </div>
+		<p class="text">LG전자는 투명한 지배구조 확립에 대한 글로벌 이해관계자의 요구와 기대를 파악하고<br>이사회 산하 위원회 운영과 이사 선임 프로세스를 통해 전문성, 독립성, 투명성 등 이사회
+			운영의 핵심 가치를 확보하고 있습니다.<br>또한, 이사회 운영 규정을 철저히 준수하여 견제와 감시 기능을 수행하고 이사회 중심의 책임 경영을 통해 주주의 권익 보호와 LG전자의 지속적인 성장을 도모하고
+			있습니다.</p>
 	</div>
-
-	<div id="com-tabs02"></div>
-	<div class="com-text">
+	
+	<div class="com-text noLine">
 		<p class="tit">지배구조</p>
 		<p class="text">LG전자의 이사회와 이사회 산하 위원회는 ESG를 포함한 회사 경영 전략의 승인 등 주요 의사결정과 함께 운영 및 실적에 대한 관리, 감독 기능을 수행하고 있습니다.</p>
-
-		<div class="accordion-wrap ui_accordion btmBtn lgway" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
+		<div class="accordion-wrap ui_accordion btmBtn lgway" data-single-open="true">
+			<!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">이사회 구성 및 운영</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="sub">LG전자는 이사회 운영 규정을 철저히 준수하여 견제와 감시 기능을 수행하고, 책임 경영을 통해 주주 권익 보호와 회사의 지속가능한 성장을 도모하고 있습니다.</span>
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">이사회 구성 및 운영</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="sub">LG전자는 이사회 운영 규정을 철저히 준수하여 견제와
+								감시 기능을 수행하고, 책임 경영을 통해 주주 권익 보호와 회사의 지속가능한 성장을 도모하고 있습니다.</span> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
 							<p class="tit">1) 이사회 구성</p>
@@ -384,8 +455,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											</tbody>
 										</table>
 									</div>
-									<div class="only_mo tb-col middle pd mt20">
-										<strong class="bull">기타 비상무 이사</strong>
+									<div class="only_mo tb-col middle pd mt20"> <strong class="bull">기타 비상무 이사</strong>
 										<table>
 											<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 											<colgroup>
@@ -421,8 +491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											</tbody>
 										</table>
 									</div>
-									<div class="only_mo tb-col middle pd mt20">
-										<strong class="bull">사내 이사</strong>
+									<div class="only_mo tb-col middle pd mt20"> <strong class="bull">사내 이사</strong>
 										<table>
 											<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 											<colgroup>
@@ -480,128 +549,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 												</tr>
 											</tbody>
 										</table>
-									<div class="only_mo tb-col middle pd mt20">
-										<strong class="bull">사외 이사</strong>
-										<table>
-											<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
-											<colgroup>
-												<col style="width:25%">
-												<col>
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row" colspan="2">김대형</th>
-												</tr>
-												<tr>
-													<th scope="row">직위 / 주요 경력</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>前 GE Plastics China CFO</li>
-															<li>前 GE Plastics Asia/Pacific CFO</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">최근 선임</th>
-													<td class="bo_l">2019.03</td>
-												</tr>
-												<tr>
-													<th scope="row">비고</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>ESG 위원회</li>
-															<li>내부거래 위원회</li>
-															<li>감사위원회 위원장</li>
-															<li>사외이사후보추천위원회</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row" colspan="2">백용호</th>
-												</tr>
-												<tr>
-													<th scope="row">직위 / 주요 경력</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>前 공정거래위원장</li>
-															<li>現 이화여자대학교 정책과학대학원 교수</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">최근 선임</th>
-													<td class="bo_l">2020.03</td>
-												</tr>
-												<tr>
-													<th scope="row">비고</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>ESG 위원회</li>
-															<li>감사위원회</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row" colspan="2">이상구</th>
-												</tr>
-												<tr>
-													<th scope="row">직위 / 주요 경력</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>現 서울대학교 컴퓨터공학부 교수</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">최근 선임</th>
-													<td class="bo_l">2019.03</td>
-												</tr>
-												<tr>
-													<th scope="row">비고</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>ESG 위원회</li>
-															<li>내부거래위원회</li>
-															<li>사외이사후보추천위원회</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row" colspan="2">강수진</th>
-												</tr>
-												<tr>
-													<th scope="row">직위 / 주요 경력</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>前 서울/수원/대전지검 검사</li>
-															<li>現 고려대학교 법학전문대학원 교수</li>
-														</ul>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">최근 선임</th>
-													<td class="bo_l">2021.03</td>
-												</tr>
-												<tr>
-													<th scope="row">비고</th>
-													<td class="bo_l">
-														<ul class="bull m">
-															<li>ESG 위원회</li>
-															<li>내부거래위원회</li>
-															<li>감사위원회</li>
-														</ul>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+										<div class="only_mo tb-col middle pd mt20"> <strong class="bull">사외 이사</strong>
+											<table>
+												<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
+												<colgroup>
+													<col style="width:25%">
+													<col>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row" colspan="2">김대형</th>
+													</tr>
+													<tr>
+														<th scope="row">직위 / 주요 경력</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>前 GE Plastics China CFO</li>
+																<li>前 GE Plastics Asia/Pacific CFO</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">최근 선임</th>
+														<td class="bo_l">2019.03</td>
+													</tr>
+													<tr>
+														<th scope="row">비고</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>ESG 위원회</li>
+																<li>내부거래 위원회</li>
+																<li>감사위원회 위원장</li>
+																<li>사외이사후보추천위원회</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" colspan="2">백용호</th>
+													</tr>
+													<tr>
+														<th scope="row">직위 / 주요 경력</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>前 공정거래위원장</li>
+																<li>現 이화여자대학교 정책과학대학원 교수</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">최근 선임</th>
+														<td class="bo_l">2020.03</td>
+													</tr>
+													<tr>
+														<th scope="row">비고</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>ESG 위원회</li>
+																<li>감사위원회</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" colspan="2">이상구</th>
+													</tr>
+													<tr>
+														<th scope="row">직위 / 주요 경력</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>現 서울대학교 컴퓨터공학부 교수</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">최근 선임</th>
+														<td class="bo_l">2019.03</td>
+													</tr>
+													<tr>
+														<th scope="row">비고</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>ESG 위원회</li>
+																<li>내부거래위원회</li>
+																<li>사외이사후보추천위원회</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" colspan="2">강수진</th>
+													</tr>
+													<tr>
+														<th scope="row">직위 / 주요 경력</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>前 서울/수원/대전지검 검사</li>
+																<li>現 고려대학교 법학전문대학원 교수</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">최근 선임</th>
+														<td class="bo_l">2021.03</td>
+													</tr>
+													<tr>
+														<th scope="row">비고</th>
+														<td class="bo_l">
+															<ul class="bull m">
+																<li>ESG 위원회</li>
+																<li>내부거래위원회</li>
+																<li>감사위원회</li>
+															</ul>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
 								</li>
 							</ul>
 							<p class="tit mt40">2) 이사회 운영</p>
 							<ul class="bull">
 								<li>회사 운영에 중요한 경영사항 또는 경영진의 업무집행 등에 냉철한 평가와 활발한 의견 개진을 통해 경영 감독 기능 수행</li>
 								<li>이사회는 거시적 관점에서 신성장동력 발굴 및 발전방안을 모색하며, 경영진은 제품 개발, 전략 수립 등 전문적 역할 집중하여 주요 경영사항의 역할을 분담</li>
-								<li>사외이사제도를 통해 LG전자 외부  전문가에게 실질적인 모니터링과 경영 견제 기능을 부여하고, 경영참여 기회를 제공</li>
+								<li>사외이사제도를 통해 LG전자 외부 전문가에게 실질적인 모니터링과 경영 견제 기능을 부여하고, 경영참여 기회를 제공</li>
 							</ul>
 							<p class="tit mt40">3) 이사회 의장 선임</p>
 							<ul class="bull">
@@ -614,20 +682,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<div class="chartarea donutchart" id="donutchart"></div>
 								<div class="blind">
 									<ul>
-										<li>
-											<span>개최</span>
+										<li> <span>개최</span>
 											<ul>
 												<li>9회</li>
 											</ul>
 										</li>
-										<li>
-											<span>승인사항</span>
+										<li> <span>승인사항</span>
 											<ul>
 												<li>32건</li>
 											</ul>
 										</li>
-										<li>
-											<span>보고사항</span>
+										<li> <span>보고사항</span>
 											<ul>
 												<li>10건</li>
 											</ul>
@@ -665,22 +730,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<div class="chartarea columnchart" id="columnchart"></div>
 								<div class="blind">
 									<ul>
-										<li>
-											<span>평균</span>
+										<li> <span>평균</span>
 											<ul>
 												<li>90.47%(참석)</li>
 												<li>9.53%(불참)</li>
 											</ul>
 										</li>
-										<li>
-											<span>사내이사</span>
+										<li> <span>사내이사</span>
 											<ul>
 												<li>77.80%(참석)</li>
 												<li>22.20%(불참)</li>
 											</ul>
 										</li>
-										<li>
-											<span>사외이사</span>
+										<li> <span>사외이사</span>
 											<ul>
 												<li>100%(참석)</li>
 												<li>0(불참)</li>
@@ -715,20 +777,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">이사회 전문성 및 독립성</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="sub">LG전자는 투명한 지배구조에 대한 글로벌 이해관계자들의 요구와 기대를 인식하고 있으며, 이사회 산하 위원회의 운영과
-								투명한 이사 선임 과정을 통해 이사회 운영의 핵심 가치인 전문성, 독립성, 투명성을 확보하고 있습니다.</span>
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">이사회 전문성 및 독립성</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="sub">LG전자는 투명한 지배구조에 대한 글로벌
+								이해관계자들의 요구와 기대를 인식하고 있으며, 이사회 산하 위원회의 운영과 투명한 이사 선임 과정을 통해 이사회 운영의 핵심 가치인 전문성, 독립성, 투명성을 확보하고
+								있습니다.</span> <span class="blind ui_accord_text">내용 더 보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
 							<p class="tit">1) 이사회 전문성</p>
@@ -864,13 +922,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							</ul>
 							<p class="tit mt">4) 사외이사 독립성 결격 사유</p>
 							<ul class="bull">
-								<li>회사의 상무에 종사하는 이사, 집행임원 및 피용자 또는 최근 2년 이내  회사의 상무에 종사한 이사, 감사, 집행임원 및 피용자</li>
+								<li>회사의 상무에 종사하는 이사, 집행임원 및 피용자 또는 최근 2년 이내 회사의 상무에 종사한 이사, 감사, 집행임원 및 피용자</li>
 								<li>최대주주 본인, 배우자 및 직계 존비속</li>
 								<li>최대주주가 법인인 경우 법인의 이사, 감사, 집행임원 및 피용자</li>
 								<li>이사, 감사, 집행임원의 배우자 및 직계 존비속</li>
 								<li>회사의 모회사 또는 자회사의 이사, 감사, 집행임원 및 피용자</li>
-								<li>회사의 거래관계 등 중요한 이해관계에 있는  법인의 이사, 감사, 집행임원 및 피용자</li>
-								<li>회사의 이사, 집행임원 및 피용자가 이사, 집행임원 으로 있는 다른 회사의  이사, 감사, 집행임원 및 피용자</li>
+								<li>회사의 거래관계 등 중요한 이해관계에 있는 법인의 이사, 감사, 집행임원 및 피용자</li>
+								<li>회사의 이사, 집행임원 및 피용자가 이사, 집행임원 으로 있는 다른 회사의 이사, 감사, 집행임원 및 피용자</li>
 							</ul>
 							<p class="tit mt">5) 경영진 성과평가</p>
 							<ul class="bull">
@@ -904,43 +962,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</table>
 							</div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">신뢰받는 경영+</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="sub">LG전자는 ESG 전략방향에 따른 지속가능성의 실현을 위해 ESG 컴플라이언스 강화, ESG 의사결정 체계 구축, ESG 경영문화 조성이라는 3가지 요소를 기반으로
-								이해관계자들에게 신뢰받는 기업이 되고자 노력하고 있습니다.</span>
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle tit_sub" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">신뢰받는 경영+</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="sub">LG전자는 ESG 전략방향에 따른 지속가능성의 실현을
+								위해 ESG 컴플라이언스 강화, ESG 의사결정 체계 구축, ESG 경영문화 조성이라는 3가지 요소를 기반으로 이해관계자들에게 신뢰받는 기업이 되고자 노력하고 있습니다.</span>
+							<span class="blind ui_accord_text">내용 더 보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
-							<p class="text">LG전자는 2021년 ESG 지향점 개편을 통해 모두의 더 나은 삶을 위한 긍정적 환경가치 및 포용적 사회가치 증진을 주요 전략방향으로 삼고 이를 실현하기 위한 세부 과제를 수립하였습니다. 특히, 전략방향에 따른 과제의 성공적 수행을 위해 ESG 컴플라이언스 강화, 다양성, 합리성, 투명성을 추구하는 ESG 의사결정 체계 구축, ESG 경영문화 조성이라는 세 가지 요소를 ESG 지향점 달성을 위한 추진기반으로 제시하고 있습니다.</p>
+							<p class="text">LG전자는 2021년 ESG 지향점 개편을 통해 모두의 더 나은 삶을 위한 긍정적 환경가치 및 포용적 사회가치 증진을 주요 전략방향으로 삼고 이를 실현하기 위한
+								세부 과제를 수립하였습니다. 특히, 전략방향에 따른 과제의 성공적 수행을 위해 ESG 컴플라이언스 강화, 다양성, 합리성, 투명성을 추구하는 ESG 의사결정 체계 구축, ESG 경영문화
+								조성이라는 세 가지 요소를 ESG 지향점 달성을 위한 추진기반으로 제시하고 있습니다.</p>
 							<p class="tit mt">1) 이사회 산하 ESG 위원회 신설</p>
-							<p class="text">LG전자는 정관 제33조, 이사회 규정 제13조, 제14조에 따라 환경, 사회, 지배구조에 관한 ESG 경영 강화 및 장기적이고 지속가능한 성장 실현을 목적으로 2021년 4월 기존의 이사회 내 위원회(감사위원회, 경영위원회, 사외이사후보추천위원회) 이외에 ESG 위원회를 설치하여 운영하고 있습니다. ESG 위원회는 ESG 기본 정책 및 전략 수립, 관련 중장기 목표의 설정 등에 대한 결의 및 ESG 경영활동에 대한 계획과 이행 성과, 중대한 리스크 발생 및 대응에 관련된 사항을 감독하며 LG전자의 ESG 경영 구현을 위한 역할을 수행할 계획입니다.</p>
+							<p class="text">LG전자는 정관 제33조, 이사회 규정 제13조, 제14조에 따라 환경, 사회, 지배구조에 관한 ESG 경영 강화 및 장기적이고 지속가능한 성장 실현을 목적으로
+								2021년 4월 기존의 이사회 내 위원회(감사위원회, 경영위원회, 사외이사후보추천위원회) 이외에 ESG 위원회를 설치하여 운영하고 있습니다. ESG 위원회는 ESG 기본 정책 및 전략
+								수립, 관련 중장기 목표의 설정 등에 대한 결의 및 ESG 경영활동에 대한 계획과 이행 성과, 중대한 리스크 발생 및 대응에 관련된 사항을 감독하며 LG전자의 ESG 경영 구현을 위한
+								역할을 수행할 계획입니다.</p>
 							<div class="esg_diagram mgtL">
 								<ul>
 									<li class="esg">
 										<p><span>ESG위원회</span></p>
 									</li>
 									<li>
-										<p><span>이사회</span></p>
-										<em class="rpt"><span>정기보고</span></em>
+										<p><span>이사회</span></p> <em class="rpt"><span>정기보고</span></em>
 									</li>
 									<li>
-										<p><span>전사 경영회의</span></p>
-										<em class="rpt"><span>보고</span></em>
+										<p><span>전사 경영회의</span></p> <em class="rpt"><span>보고</span></em>
 									</li>
 									<li class="gray">
 										<p><span>CEO</span></p>
 										<ul>
-											<li><p>이해<br class="mo">관계자 자문단</p></li>
-											<li><p>간사: <br>대외협력<br class="mo">담당(CSR팀)</p></li>
+											<li>
+												<p>이해<br class="mo">관계자 자문단</p>
+											</li>
+											<li>
+												<p>간사: <br>대외협력<br class="mo">담당(CSR팀)</p>
+											</li>
 										</ul>
 									</li>
 									<li class="wt">
@@ -952,26 +1013,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</ul>
 							</div>
 							<p class="tit mt">2) ESG 문화 조성 및 확산</p>
-							<p class="text">LG전자는 구성원의 ESG에 대한 인식과 이해도 제고를 통해 자율적인 ESG경영을 주도하고 신뢰받는 기업으로 발돋움하고자 다양한 노력을 하고 있습니다. CSR Letter를 발전시켜 2020년부터는 ESG 관련 최신이슈를 선정하여 관련정보 및 업계 동향등을 소개하는 ‘CSR Talk’를 구성원에게 매월 제공하고, 사내 인트라넷(LG-LIFE)을 통해 LG 그룹사의 ESG 경영 현황을 뉴스레터, 강의 등 다양한 형태로 제공하고 있습니다. 이 밖에도 2021년 LG전자 분기조회 시 CFO가 직접 경영진을 대상으로 ESG의 필요성과 LG전자의 방향성 등에 대해 설명하고, ESG 관점에서 LG전자가 나아가야 할 방향성을 제시하는 등 전 임직원의 ESG 인식을 제고하고자 지속적으로 노력하고 있습니다.</p>
+							<p class="text">LG전자는 구성원의 ESG에 대한 인식과 이해도 제고를 통해 자율적인 ESG경영을 주도하고 신뢰받는 기업으로 발돋움하고자 다양한 노력을 하고 있습니다. CSR
+								Letter를 발전시켜 2020년부터는 ESG 관련 최신이슈를 선정하여 관련정보 및 업계 동향등을 소개하는 ‘CSR Talk’를 구성원에게 매월 제공하고, 사내 인트라넷(LG-LIFE)을
+								통해 LG 그룹사의 ESG 경영 현황을 뉴스레터, 강의 등 다양한 형태로 제공하고 있습니다. 이 밖에도 2021년 LG전자 분기조회 시 CFO가 직접 경영진을 대상으로 ESG의 필요성과
+								LG전자의 방향성 등에 대해 설명하고, ESG 관점에서 LG전자가 나아가야 할 방향성을 제시하는 등 전 임직원의 ESG 인식을 제고하고자 지속적으로 노력하고 있습니다.</p>
 							<div class="esg_c_box mgtL">
 								<ul class="climate">
-									<li>
-										<strong>2ºC, 지구 온도상승 한계점</strong>
-										<p class="text">지구의 온도는 최근 100년 동안 0.74 ºC가 올랐습니다. 지난 1만년간 1ºC 이상 변화가 없었던 것에 비하면 급격한 변화입니다. <br>현재와 같은 추세로 온실가스 배출이 계속될 경우 21세기말에는 평균기온이 3.7ºC까지 오를 수 있다고 합니다. <br>생태계를 보존하기 위한 기온 상승의 한계점은 2ºC라고 과학자들은 말합니다. <br>기후변화라는 환경문제가 점차 인류 생존을 위협하는 요소가 되어 감에 따라 범지구적 차원에서 해결을 위해 노력하고 있습니다.</p>
+									<li> <strong>2ºC, 지구 온도상승 한계점</strong>
+										<p class="text">지구의 온도는 최근 100년 동안 0.74 ºC가 올랐습니다. 지난 1만년간 1ºC 이상 변화가 없었던 것에 비하면 급격한 변화입니다. <br>현재와
+											같은 추세로 온실가스 배출이 계속될 경우 21세기말에는 평균기온이 3.7ºC까지 오를 수 있다고 합니다. <br>생태계를 보존하기 위한 기온 상승의 한계점은 2ºC라고
+											과학자들은 말합니다. <br>기후변화라는 환경문제가 점차 인류 생존을 위협하는 요소가 되어 감에 따라 범지구적 차원에서 해결을 위해 노력하고 있습니다.</p>
 									</li>
-									<li>
-										<strong>기후변화관련 국제사회 주요 협력</strong>
+									<li> <strong>기후변화관련 국제사회 주요 협력</strong>
 										<ul class="climate_box">
 											<li>
-												<p class="c_tit"><span>기후변화협약(&lsquo;92년, 리우)</span></p>
+												<p class="c_tit"><span>기후변화협약(‘92년, 리우)</span></p>
 												<p class="c_text"><span>온실가스 배출을 제한하기 위한 범세계적 첫 대응책</span></p>
 											</li>
 											<li>
-												<p class="c_tit"><span>교토의정서(&lsquo;97년, 교토)</span></p>
+												<p class="c_tit"><span>교토의정서(‘97년, 교토)</span></p>
 												<p class="c_text"><span>온실가스 감축에 대한 구체적 실행지침</span></p>
 											</li>
 											<li>
-												<p class="c_tit"><span>파리협정(&lsquo;15년, 파리)</span></p>
+												<p class="c_tit"><span>파리협정(‘15년, 파리)</span></p>
 												<p class="c_text"><span>모든 국가가 범지구적 기후변화 대응 노력에 참여</span></p>
 											</li>
 										</ul>
@@ -979,20 +1043,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</ul>
 							</div>
 							<p class="tit mt">3) ESG 컴플라이언스, 그리고 LG전자가 나아갈 방향</p>
-							<p class="text">시대와 환경의 변화에 따라 ESG와 관련된 법적 리스크가 증가하고 있으며, 그 중요성은 지속적으로 확대되고 있습니다. 이제 ESG는 과거의 권고 수준이 아니라 기업의 거래관계, 경제적 성과, 더 나아가 생존에까지 영향을 미치는 필수적 요소로 인식되고 있습니다. LG전자는 이를 위해 전 생산사업장 및 주요 협력회사를 대상으로 매년 ESG 관련 리스크를 파악하고 개선하기 위한 다양한 활동들을 수행하고 있습니다. 2021년 LG전자는 ESG 지향점 개편을 추진하였으며, 컴플라이언스 준수를 넘어선 ESG 경영을 추진하기 위해 계획과 방향성을 더욱 확고히 하였습니다. LG전자는 앞으로도 ESG가 법, 제도, 규제의 개념을 넘어 능동적이고 자발적인 조직의 문화로 잡을 수 있도록 성숙한 ESG 경영을 추진해 나갈 계획입니다.</p>
+							<p class="text">시대와 환경의 변화에 따라 ESG와 관련된 법적 리스크가 증가하고 있으며, 그 중요성은 지속적으로 확대되고 있습니다. 이제 ESG는 과거의 권고 수준이 아니라
+								기업의 거래관계, 경제적 성과, 더 나아가 생존에까지 영향을 미치는 필수적 요소로 인식되고 있습니다. LG전자는 이를 위해 전 생산사업장 및 주요 협력회사를 대상으로 매년 ESG 관련
+								리스크를 파악하고 개선하기 위한 다양한 활동들을 수행하고 있습니다. 2021년 LG전자는 ESG 지향점 개편을 추진하였으며, 컴플라이언스 준수를 넘어선 ESG 경영을 추진하기 위해 계획과
+								방향성을 더욱 확고히 하였습니다. LG전자는 앞으로도 ESG가 법, 제도, 규제의 개념을 넘어 능동적이고 자발적인 조직의 문화로 잡을 수 있도록 성숙한 ESG 경영을 추진해 나갈
+								계획입니다.</p>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
-
 	<div class="sustainable-download only_pc">
 		<p class="tit">지배구조 PDF 다운로드</p>
-		<p class="desc">지배구조 페이지의 내용을 한번에 확인하세요~</p>
-		<a href="#" class="btn"><span>PDF 다운로드</span></a>
+		<p class="desc">지배구조 페이지의 내용을 한번에 확인하세요~</p> <a href="#" class="btn"><span>PDF 다운로드</span></a>
 	</div>
 </div>
