@@ -48,23 +48,26 @@ img.m350 {max-width:350px!important}
 .chart_area.bar svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
 
 /* 차트 % 구조시 상단 지우기 (100%시 짤림) */
-#chart_div.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0;}
-#chart_div.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}
-#chart_div2.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0;}
-#chart_div2.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}
+.chart_area.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0;}
+.chart_area.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}
 
 /* 차트 범례 */
 .company .c_legend {display:flex; flex-wrap:wrap; justify-content:center}
 .company .c_legend .lgnd {display:flex; align-items:center; font-size:16px; line-height:26px}
 .company .c_legend .lgnd + .lgnd {position:relative; margin-left:60px; padding-left:60px}
 .company .c_legend .lgnd + .lgnd::before {content:''; display:block; position:absolute; width:1px; height:16px; top:5px; left:0; background-color:#ddd}
-.company .c_legend .lgnd > span {display:block; width:16px; height:15px; margin-left:18px}
+.company .c_legend .lgnd > span {display:block; width:16px; height:16px; margin-left:18px}
 .company .c_legend .lgnd > span.pink {background-color:#e81953}
 .company .c_legend .lgnd > span.blk {background-color:#000}
 .company .c_legend .lgnd > span.gray {background-color:#aaa}
+.company .c_legend .lgnd > span.d_gray {background-color:#666}
+.company .c_legend .lgnd > span.d_g_line {border:2px solid #666}
+.company .c_legend .lgnd > span.pink_dot {background:url(/kr/images/company/promot/img-bg-graph-legend-pinkDot.png) no-repeat center / contain}
+.company .c_legend .lgnd > span.g_line_pt {background:url(/kr/images/company/promot/img-bg-graph-legend-grayLinePattern.png) no-repeat center / contain}
 @media screen and (max-width:768px) {
-    .company .c_legend .lgnd {font-size:12px; line-height:20px}
-    .company .c_legend .lgnd + .lgnd {margin-left:18px!important; padding-left:0!important}
+    .company .c_legend {justify-content:flex-start}
+    .company .c_legend .lgnd {margin-right:18px; font-size:12px; line-height:20px}
+    .company .c_legend .lgnd + .lgnd {margin-left:0!important; padding-left:0!important}
     .company .c_legend .lgnd + .lgnd::before {display:none}
     .company .c_legend .lgnd > span {width:12px; height:12px; margin-left:12px}
 }
@@ -423,6 +426,7 @@ img.m350 {max-width:350px!important}
 .company ul.lgway_first > li:nth-child(odd) .thumb {margin-right:10%}
 .company ul.lgway_first > li:nth-child(even) .thumb {margin-left:10%}
 
+.company .compGrp {margin-top:24px}
 .company .compGrp img {display:block; width:383px; margin:0 auto}
 .company .hone {position:relative; padding-left:12px}
 .company .hone::before {content:''; display:block; position:absolute; width:3px; height:3px; top:10.5px; left:0; border-radius:50%; background-color:#000}
@@ -680,9 +684,9 @@ img.m350 {max-width:350px!important}
 .company .home_appliances > ul > li:nth-child(3) .home_box:first-of-type .home_text {border-left:0}
 
 .company .esg_diagram {width:100%; max-width:912px; margin:0 auto}
-.company .esg_diagram > ul {position:relative; display:flex; flex-direction:column; align-items:flex-end}
+.company .esg_diagram > ul {position:relative; display:flex; flex-direction:column; align-items:flex-end; z-index:0}
 .company .esg_diagram > ul::after {content:''; display:block; position:absolute; width:1px; top:80px; bottom:80px; right:calc(25% - 6px); background-color:#aaa; z-index:-1}
-.company .esg_diagram > ul > li {position:relative; width:calc(50% - 12px)}
+.company .esg_diagram > ul > li {position:relative; width:calc(50% - 12px); z-index:0}
 .company .esg_diagram > ul > li.esg {position:absolute; left:0}
 .company .esg_diagram > ul > li.esg::after {content:''; display:block; position:absolute; height:1px; width:100%; left:50%; top:calc(50% - 0.5px); background-color:#aaa; z-index:-1}
 .company .esg_diagram > ul > li.esg + li {margin-top:0}
@@ -1733,6 +1737,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     /* 테이블 */
     .company .over_tbl {overflow-x:scroll; overflow-y:hidden}
     .company .over_tbl table {max-width:768px; width:768px}
+    .company .over_tbl .tbl_info {max-width:768px; width:768px}
+    .company .over_tbl::-webkit-scrollbar {height:20px}
+    .company .over_tbl::-webkit-scrollbar-thumb {border:8px solid transparent; border-radius:16px; background-clip:padding-box; background-color:rgba(0,0,0,0.2)}
+    .company .over_tbl::-webkit-scrollbar-track {background-color:transparent}
     .company colgroup col.m40 {width:40%!important}
     .company colgroup col.m30 {width:30%!important}
     .company colgroup col.m25 {width:25%!important}
@@ -2094,6 +2102,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.compBox > li {display:flex; width:100%; margin:12px 0 0 0!important}
     .company ul.compBox > li .num {display:flex; align-items:center; justify-content:center; width:104px; height:auto; border:0; font-size:15px; line-height:22px}
     .company ul.compBox > li p {width:100%; font-size:14px; line-height:22px}
+    .company .compGrp {margin-top:20px; padding:0 20px}
     .company .compGrp img {width:100%; max-width:100%; margin:0 auto}
     .company ul.compStep {flex-direction:column}
     .company ul.compStep > li {display:flex; width:100%; min-height:auto}
