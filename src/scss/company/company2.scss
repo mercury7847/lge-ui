@@ -65,7 +65,6 @@ img.m350 {max-width:350px!important}
 .company .c_legend .lgnd > span.pink_dot {background:url(/kr/images/company/promot/img-bg-graph-legend-pinkDot.png) no-repeat center / contain}
 .company .c_legend .lgnd > span.g_line_pt {background:url(/kr/images/company/promot/img-bg-graph-legend-grayLinePattern.png) no-repeat center / contain}
 @media screen and (max-width:768px) {
-    .company .c_legend {justify-content:flex-start}
     .company .c_legend .lgnd {margin-right:18px; font-size:12px; line-height:20px}
     .company .c_legend .lgnd + .lgnd {margin-left:0!important; padding-left:0!important}
     .company .c_legend .lgnd + .lgnd::before {display:none}
@@ -817,7 +816,7 @@ img.m350 {max-width:350px!important}
 /* 컨텐츠 영역 끝 */
 
 /* 슬라이드 */
-.company .slide-covid19 .slide-wrap {width:1024px; margin:0 auto}
+.company .slide-covid19 .slide-wrap {width:100%; margin:0 auto}
 .company .slide-covid19 .slide-conts .img {width:100%; height:480px; margin-top:30px; margin-bottom:72px}
 .company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; border-radius:8px; background-repeat:no-repeat; background-position:center; background-size:cover}
 .company .slide-covid19 .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
