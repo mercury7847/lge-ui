@@ -287,6 +287,9 @@
 	padding-top: 64px;
 	padding-bottom: 120px;
 	&-head{
+		position: relative;
+		border-bottom: 1px solid $color-gray-1;
+		padding-bottom: 18px;
 		.head {
 			&-title {
 				font-weight:$font-weight-bold;
@@ -332,25 +335,35 @@
 				}
 			}
 		}
+		.btn-box{
+			display: inline-block;
+			position:absolute;
+			right:0;
+			bottom:0;
+			padding-bottom: 18px;
+			.btn+.btn{
+				margin-left: 4px;
+			}
+		}
 	}
 	&-body{
-		padding: 60px 0 120px;
+		padding: 60px 0 80px;
 		.detail-content{
-			padding:0 24px;
 			p {
-				color:#000;
-				@include font-medium;
+				color:$color-default;
+				font-size: $font-medium;
+				line-height: 26px;
 			}
 			strong {
 				color:inherit;
 				font-size:inherit;
 				line-height:inherit;
 			}
-			.point {
-				color: #da0f47;
-			}
-			img {
-				max-width:100%;
+			.img-wrap{
+				margin-top:40px;
+				img {
+					max-width:100%;
+				}
 			}
 		}
 	}
@@ -424,5 +437,45 @@
 	.btn-group {
 		margin: 64px auto 0;
 	}
-	
+}
+.comment{
+	&-head{
+		border-bottom: 1px solid $color-default;
+		padding-bottom: 11px;
+		.total{
+			position: relative;
+			padding-left: 32px;
+			color: $color-default;
+			font-size: $font-medium;
+			line-height: 26px;
+			&:before{
+				position: absolute;
+				top:0;
+				left:0;
+				width:24px;
+				height:24px;
+				background: url(/lg5-common/images/CPR/icon-reply_24.svg) 0 0 no-repeat;
+				background-size: 100% 100%;
+				content: '';
+			}
+		}
+	}
+	&-list{
+		ul{
+			>li{
+				&+li{
+					border-top:1px solid $color-border;
+				}
+				.no-comment{
+					padding: 80px 0;
+					p{
+						color:$color-default;
+						font-size: $font-medium  ;
+						line-height: 26px;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
 }
