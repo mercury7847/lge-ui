@@ -131,3 +131,17 @@ $(function(){
 		}
 	});
 });
+
+var openInApp = function (url) {
+	if (isApp() && vcui.detect.isIOS) {
+		var obj = {
+			  'command' : 'openInAppBrowser'
+			, 'url' : url
+			, 'bottombar_show' : 'Y'
+		};
+		var jsonString = JSON.stringify(obj);
+		webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+	} else {
+		window.open(url);
+	}	
+}
