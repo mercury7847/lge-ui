@@ -113,6 +113,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	});
 </script>
 <style>
+	.graph.pattern .c_legend {margin-top:24px}
+	.graph.pattern .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
 	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
 	.googlechart-wrap .chartColumn {height:480px;}
 	.googlechart-wrap .chartDonut {height:370px;}
@@ -120,6 +122,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
 	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;}
 	@media screen and (max-width: 767px){
+		.graph.pattern img {width:70%}
+		.graph.pattern .c_legend {padding:0 5%}
 		.googlechart-wrap{width:100%;}
 		.googlechart-wrap .chartColumn {height:53vw;}
 		.googlechart-wrap .chartDonut {height:71.11vw}
@@ -256,7 +260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</ul>
 		<div class="linkArea grdt">
 			<p class="tit">LG전자 윤리규범</p>
-			<p class="desc"><a href="/company/info/ethics" class="btn-link" target="_blank" title="새 창 열림">자세히 보기</a></p>
+			<p class="desc"><a href="/company/info/ethics" class="btn-link">자세히 보기</a></p>
 		</div>
 	</div>
 
@@ -448,9 +452,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li>교육 및 공유: 지속적인 질문사항들은 사례화하여 국내외 각종 교육 프로그램 또는 온라인 채널을 통해 전 임직원에게 공유함</li>
 							</ul>
 							<p class="tit h4">2020년 정도경영 전담 상담실 문의내용</p>
-							<div class="graph ofn">
+							<div class="graph ofn pattern">
 								<img class="only_pc" src="/kr/images/company/promot/img-system-graph-pc-new2.png" alt="윤리규범 해석(22.6%)/경조금 지급 및 수수(3.0%)/선물 수취 시 처리 절차, 이해상충 관련(18.0%)/경비처리(27.8%)/기타(28.6%)/Total 100%(133)">
 								<img class="only_mo" src="/kr/images/company/promot/img-system-graph-mo-new2.png" alt="윤리규범 해석(22.6%)/경조금 지급 및 수수(3.0%)/선물 수취 시 처리 절차, 이해상충 관련(18.0%)/경비처리(27.8%)/기타(28.6%)/Total 100%(133)">
+								<div class="c_legend">
+									<div class="lgnd">윤리규범 해석<span class="blk"></span></div>
+									<div class="lgnd">경조금 지급 및 수수<span class="d_gray"></span></div>
+									<div class="lgnd">선물 수취 시 처리절차, 이해상충 관련<span class="d_g_line"></span></div>
+									<div class="lgnd">경비처리<span class="pink_dot"></span></div>
+									<div class="lgnd">기타<span class="g_line_pt"></span></div>
+								</div>
 							</div>
 							<div class="tb_row tb-row-bl middle mgt">
 								<table>

@@ -24,104 +24,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:['corechart']});
-	google.charts.setOnLoadCallback(drawChart);
-	var dataColumn, optionsColumn, chartColumn;
-	var dataDonut, optionsDonut, chartDonut;
-
-	function drawChart() {
-		dataColumn = google.visualization.arrayToDataTable([
-		['', '임원사회공헌기금', { role: 'annotation' } ,'임직원사회공헌기금', { role: 'annotation' }],
+google.charts.load("current", {packages: ["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+		['사회공헌 기금 조성', '임원사회공헌기금',  {role:'annotation'}, '임직원사회공헌기금', {role:'annotation'}],
 		['2021', 381, '381', 290, '290'],
 		['2020', 364, '364', 365, '365'],
-		['2019', 334, '334', 243, '243']
-		]);
-		optionsColumn = {
-			colors: ['#e81953', '#000000'],
-			vAxis:{format: '', minValue:'0', maxValue: '600'},
-			chartArea: {width: '90%',right:'0%', height: '80%',top:'-5%'},
-			bar: { groupWidth: '30%' },
-			annotations: {alwaysOutside: true,textStyle: {fontSize:13, bold:true},stem:{color :'none', length:'0'}},
-			legend: {position: 'bottom'},
-			fontName:'Noto Sans',
-			fontSize:"16"
-		};
-		dataDonut = google.visualization.arrayToDataTable([
-			['',  'Amount', {role: 'tooltip'}],
-			['개최',  9, '개최\n9건'],
-			['승인사항',  32, '승인사항\n32건'],
-			['보고사항',  10, '보고사항\n10건']
-		]);
-		optionsDonut = {
-			pieSliceText: 'value',
-			chartArea: {width: '100%', height: '80%',top:'4%'},
-			slices: {
-				0: { color: '#000000', offset: 0.01},
-				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
-				2: { color: '#e81953', offset: 0.01}
-			},
-			pieSliceTextStyle : {
-				fontSize: '16',
-				bold:true
-			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
-			fontName:'Noto Sans'
-		};
-		setTimeout(function(){
-			checkSize();
-			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
-			chartColumn.draw(dataColumn, optionsColumn);
-			chartDonut.draw(dataDonut, optionsDonut);
-		}, 1000);
-	}
+		['2019', 334, '334', 243, '243'],
+	]);
+    var view = new google.visualization.DataView(data);
+    var columnOptions = {
+        title:{
+            position:'none'
+        },
+		fontName:'Noto Sans',
+        chartArea:{
+            width:'100%',
+            left:30,
+            right:0,
+            top:10,
+            bottom:40
+        },
+		height:300,
+        legend:{
+            position:'none'
+         },
+        series:{
+            0:{
+				color:'#000'
+            },
+			1:{
+                color:'#e91953'
+            },
+        },
+        bar:{
+            groupWidth:'88',
+			gap:8
+        },
+
+        annotations :{
+            alwaysOutside:true,
+            textStyle:{
+                fontSize:13,
+                bold: true,
+                auraColor: 'none'
+            },
+            stem:{
+                color:'none',
+                length:'8'
+            }
+        },
+        vAxis:{
+            title:{
+                position:'none'
+            },
+			maxValue:'500',
+			minValue:'0',
+            textStyle:{
+                fontSize:'14',
+            },
+            gridlines:{
+                color:'#ddd',
+				count :'6'
+            },
+            minorGridlines:{
+                color:'#fff',
+            },
+        },
+        hAxis:{
+            title: {
+                position:'none'
+            },
+            textStyle: {
+                fontSize:'16',
+            }
+        },
+    };
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			optionsDonut.legend.textStyle.fontSize="12";
-			optionsDonut.pieSliceTextStyle.fontSize= "12";
-			optionsColumn.fontSize="12";
-		}
-		else{
-			optionsDonut.legend.textStyle.fontSize="16";
-			optionsDonut.pieSliceTextStyle.fontSize="16";
-			optionsColumn.fontSize="16";
+			columnOptions.height = '200';
+			columnOptions.bar.groupWidth = '60';
+			columnOptions.bar.gap = '10'; 
+			columnOptions.vAxis.textStyle.fontSize = '13';
+			columnOptions.hAxis.textStyle.fontSize = '13';
+			columnOptions.annotations.textStyle.fontSize = '12';
+      columnOptions.annotations.stem.length = '5';
+		} else {
+			columnOptions.height = '300';
+			columnOptions.bar.groupWidth = '88';
+			columnOptions.bar.gap = '8'; 
+			columnOptions.vAxis.textStyle.fontSize = '14';
+			columnOptions.hAxis.textStyle.fontSize = '14';
+			columnOptions.annotations.textStyle.fontSize = '13';
+      columnOptions.annotations.stem.length = '8'
 		}
 	}
-	$(window).resize(function() {
-		/* 화면사이즈가 변하면 차트를 그려줌 */
-		if($(".accordion-wrap li.lists:first-child").hasClass("on")){
-			checkSize();
-			setTimeout(function(){
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
-		}
-	});
-	$(document).ready(function() {
-		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:first-child").on('click', function(e){
-			checkSize();
-			setTimeout(function(){
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
+
+	function resize() {
+		checkSize();
+        var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+        chart.draw(view, columnOptions);
+    }
+    window.onload = resize();
+    window.onresize = resize;
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+				chart.draw(view, columnOptions);
+			}, 500);
 		});
-	});
+}
 </script>
 <style>
-	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
-	.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
-	.googlechart-wrap .columnchart {height:480px;}
-	.googlechart-wrap .donutchart {height:370px;}
-	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;}
-		.googlechart-wrap.over100::before{height:7%;}
-		.googlechart-wrap .columnchart {height:53vw;}
-		.googlechart-wrap .donutchart {height:71.11vw}
-	}
-	@media screen and (max-width: 425px){
-		.googlechart-wrap.over100::before{height:14%;}
+	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
+	@media screen and (max-width:768px){
+		.graph_dec {font-size:12px;line-height:20px;}
 	}
 </style>
 <div class="breadcrumb">
@@ -459,17 +481,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li>국제사회와 함께 글로벌 지속가능성에 긍정적 영향 확대</li>
 					</ul>
 				</div>
-				<div class="content on"><!-- 클래스 on 추가 -->
+				<div class="content"><!-- 클래스 on 추가 -->
 					<p class="text">LG전자는 지역사회 문제 해결, 개발도상국 소외계층 인재 양성, 임직원의 자발적 나눔 활동 참여 확대를 통하여 국제사회와 함께 글로벌 지속가능성에 긍정적 영향 확대를 위한 노력을 지속하겠습니다. <br>미래지향적인 기술을 결합한 친환경 제품을 제공함으로써 고객의 건강한 라이프스타일을 보장하고 있습니다. 이 밖에도 우리 사회의 균형있는 성장을 위해 ‘순환경제’와 ‘미래세대:청년’이라는 주제로 다양한 사회공헌 활동을 추진하고 있습니다.</p>
 				</div>
-				<button type="button" class="view_more on">더보기</button><!-- 클래스 on 추가 -->
+				<button type="button" class="view_more">더보기</button><!-- 클래스 on 추가 -->
 			</div>
 		</div>
 		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">사회공헌 추진제도</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -553,9 +575,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</li>
 							</ul>
 							<p class="tit">3) 사회공헌 기금 조성</p>
-							<div class="googlechart-wrap over100">
-								<div class="chartarea columnchart" id="columnchart"></div>
-								<div class="blind">
+							<div class="graph">
+								<div style="max-width:910px;margin:0 auto;">
+									<p class="graph_dec">(단위: 억원)</p>
+									<div class="chart_area" id="chart_div"></div>
+								</div>
+								<div class="c_legend">
+									<p class="lgnd">임원사회공헌기금<span class="blk"></span></p>
+									<p class="lgnd">임직원사회공헌기금<span class="pink"></span></p>
 								</div>
 							</div>
 							<!-- 구글차트 -->
