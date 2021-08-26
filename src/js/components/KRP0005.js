@@ -209,8 +209,11 @@
 
 	};
 
+
+
+
     $(document).ready(function(){
-        if(!document.querySelector('.KRP0005')) return false;
+        // if(!document.querySelector('.KRP0005')) return false;
         //$('.KRP0005').buildCommonUI();
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
@@ -222,6 +225,8 @@
         }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
+
+
             setTimeout(function(){
                 console.log('krp0005 init');
                 var floatingWrap = $('.floating-wrap').remove();
@@ -246,7 +251,7 @@
     
                 $(document).trigger('appInit');
                 
-            },100);
+            },500);
         }
         
         // 스와이프 아닌 페이지
