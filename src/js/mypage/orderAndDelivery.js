@@ -2675,7 +2675,7 @@
     
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
                         if( result.data.msg == "VC1001") {
-                            resultMsg = result.data.listData.orderStatus.statusText;
+                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
                         }
 
                         for(var idx in matchIds){
