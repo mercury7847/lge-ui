@@ -132,6 +132,7 @@ $(function(){
 	});
 });
 
+// pdf 다운로드
 var openInApp = function (url, name, specs, replace) {
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {

@@ -93,7 +93,7 @@ br.pc {display:block}
 }
 
 /* 타블렛 */
-@media (max-width:1459px) and (min-width:768px) {
+@media (max-width:1459px) and (min-width:767px) {
 	br.ta {display:block}
 }
 
@@ -111,7 +111,7 @@ br.pc {display:block}
 	.company .slide-introduce .slide-wrap .slide-controls {top:calc(32vw + 30px)}
 }
 /* 기업소개 슬라이더 pc */
-@media screen and (min-width:768px) {
+@media screen and (min-width:767px) {
 	.company .slide-introduce .slide-wrap {width:1024px; margin:0 auto}
 	.company .slide-introduce .slide-conts .img {margin-bottom:72px}
 	.company .slide-introduce .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
@@ -138,7 +138,7 @@ br.pc {display:block}
 	.company .slide-history .slide-conts .img span {padding-bottom:73%; display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
 }
 /* 역사 슬라이더 pc */
-@media screen and (min-width:768px) {
+@media screen and (min-width:767px) {
 	.company .slide-history .slide-wrap {width:1024px; margin:0 auto}
 	.company .slide-history .slide-conts .img {margin-bottom:72px}
 	.company .slide-history .slide-conts .hisArea {opacity:0; transition:1s}
@@ -264,11 +264,11 @@ br.pc {display:block}
 @media screen and (max-width:767px) {
 	.esgLinkArea .esgTit {padding-left:8px; font-size:14px; line-height:22px}
 	.esgLinkArea .esgTit::before {top:10px; width:2px; height:2px}
-	.esgLinkArea ul.esgGoto > li {flex-direction:column; width:100%}
+	.esgLinkArea ul.esgGoto > li {flex-direction:column; align-items:flex-start; width:100%}
 	.esgLinkArea ul.esgGoto > li + li {margin-left:0; margin-top:20px}
 	.esgLinkArea ul.esgGoto > li .esgGoto_tit {margin-top:9px; font-size:14px; line-height:22px}
 	.esgLinkArea ul.esgGoto > li .esgBtn {margin-top:9px; padding:4px 15px; font-size:13px}
-	.esgLinkArea ul.esgGoto > li .esgThmb {width:100%}
+	.esgLinkArea ul.esgGoto > li .esgThmb {width:100%; max-width:100%}
 	.esgLinkArea ul.esgGoto > li .esgDesc {width:100%; max-width:327px; padding-left:0}
 	.esgPerformancetit {margin-top:20px; padding-left:8px; font-size:14px; line-height:22px}
 	.esgPerformancetit::before {width:2px; height:2px; top:10px}
