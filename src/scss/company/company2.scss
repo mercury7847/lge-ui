@@ -34,7 +34,7 @@ img.m350 {max-width:350px!important}
 .company .btn-link::after {top:auto; bottom:6px}
 
 /* 2depth fixed */
-.tabs-wrap.act {position:fixed; left:0; top:73px; width:100%; background:#fff; z-index:100}
+.tabs-wrap.act {position:fixed; left:0; top:72px; width:100%; background:#fff; z-index:80}
 @media screen and (min-width:1461px) {
     .tabs-wrap.act {left:50%; margin-left:-730px}
 }
@@ -59,7 +59,7 @@ img.m350 {max-width:350px!important}
 .company .c_legend .lgnd + .lgnd {position:relative; margin-left:60px; padding-left:60px}
 .company .c_legend .lgnd + .lgnd::before {content:''; display:block; position:absolute; width:1px; height:16px; top:5px; left:0; background-color:#ddd}
 .company .c_legend .lgnd > span {display:block; width:16px; height:16px; margin-left:18px}
-.company .c_legend .lgnd > span.pink {background-color:#e81953}
+.company .c_legend .lgnd > span.pink {background-color:#da0f47}
 .company .c_legend .lgnd > span.blk {background-color:#000}
 .company .c_legend .lgnd > span.gray {background-color:#aaa}
 .company .c_legend .lgnd > span.d_gray {background-color:#666}
@@ -280,7 +280,7 @@ img.m350 {max-width:350px!important}
 .company .grpInfo p + p {margin-left:25px}
 .company .grpInfo p i {display:block; position:absolute; width:12px; height:12px; top:5px; right:-22px}
 .company .grpInfo p i.blk {background-color:#000}
-.company .grpInfo p i.pnk {background-color:#e81953}
+.company .grpInfo p i.pnk {background-color:#da0f47}
 .company .box.ci {margin-top:24px; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color {margin-top:24px; padding:60px 0; border-radius:8px; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14); overflow:hidden}
 .company .box.color > ul {display:flex; justify-content:center}
@@ -1271,8 +1271,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li {display:flex; flex-direction:column; align-items:center; width:210px; padding:27px 0 22px; border:1px solid #ddd; border-radius:8px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li + li {margin-left:24px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li span {display:block; font-size:16px; font-weight:bold; line-height:26px; text-align:center}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong {position:relative; display:inline-block; margin-top:16px; margin-bottom:0; padding-left:34px; color:#e81953; font-size:30px; font-weight:bold; line-height:44px; text-align:center}
-.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong::before {content:''; display:block; position:absolute; width:0; height:0; left:0; bottom:10px; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:15px solid #e81953}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong {position:relative; display:inline-block; margin-top:16px; margin-bottom:0; padding-left:34px; color:#da0f47; font-size:30px; font-weight:bold; line-height:44px; text-align:center}
+.company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong::before {content:''; display:block; position:absolute; width:0; height:0; left:0; bottom:10px; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:15px solid #da0f47}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {display:block; margin-top:12px; font-size:16px; font-weight:normal; line-height:24px; text-align:center}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram {margin-top:20px}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .diagram > img.only_pc {max-width:1146px; width:100%}
@@ -1721,7 +1721,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li + li {margin-top:0; margin-left:8px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li span {font-size:13px; line-height:22px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong {margin-top:6px; padding-left:17px; font-size:18px; line-height:26px}
-    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong::before {bottom:5px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:7.5px solid #e81953}
+    .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .graph_modules > .grp_info > ul > li strong::before {bottom:5px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:7.5px solid #da0f47}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb strong {margin-top:6px; font-size:14px; line-height:22px}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2 {flex-direction:column; justify-content:center; align-items:center}
     .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea .thumb.pic2::before {display:none}

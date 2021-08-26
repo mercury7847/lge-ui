@@ -26,25 +26,32 @@
 		packages: ['corechart']
 	});
 	google.charts.setOnLoadCallback(drawChart);
+
 	function drawChart() {
 		var dataDonut = google.visualization.arrayToDataTable([
-			['', 'Amount', {role: 'tooltip'}],
+			['', 'Amount', {
+				role: 'tooltip'
+			}],
 			['개최', 9, '개최\n9건'],
 			['승인사항', 32, '승인사항\n32건'],
 			['보고사항', 10, '보고사항\n10건']
 		]);
 		var dataColumn = google.visualization.arrayToDataTable([
-			['', '참석', {role: 'annotation'}, '불참', {role: 'annotation'	}],
+			['', '참석', {
+				role: 'annotation'
+			}, '불참', {
+				role: 'annotation'
+			}],
 			['평균', 90.47, '90.47%', 9.53, '9.53%'],
 			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
 			['사외이사', 100, '100%', 0, '0%']
 		]);
-		
+
 		var viewDonut = new google.visualization.DataView(dataDonut);
 		var viewColumn = new google.visualization.DataView(dataColumn);
-		
+
 		var optionsDonut = {
-			pieHole: 0.6,
+			pieHole: 1,
 			pieSliceText: 'value',
 			chartArea: {
 				width: '100%',
@@ -64,7 +71,7 @@
 					}
 				},
 				2: {
-					color: '#e81953',
+					color: '#da0f47',
 					offset: 0.01
 				}
 			},
@@ -79,76 +86,91 @@
 					fontSize: '16'
 				}
 			},
-			fontName: 'Noto Sans'
+			fontName: 'Noto Sans',
+			enableInteractivity: false,
 		};
-		
+
 		var optionsColumn = {
-		        series:{
-		            0:{color:'#e91953'},
-					1:{color:'#000'}
-		        },
-				vAxis:{
-		            title:{position:'none'},
-					maxValue:'110',
-					minValue:'0',
-		            textStyle:{ fontSize:'14' },
-		            gridlines:{
-		                color:'#ddd',
-						count :'6'
-		            },
-		            minorGridlines:{ color:'#fff' },
-					format: "#'%'"
-		        },
-		        hAxis:{
-		            title: {position:'none'},
-		            textStyle: {fontSize:'16'}
-		        },
-		        chartArea:{ 
-		            width:'100%',
-		            left:50,
-		            right:0,
-		            top:0,
-		            bottom:40
-		        },
-		        bar:{
-		            groupWidth:'88',
-					gap:8 
-		        },
-		        annotations :{
-		            alwaysOutside:true,
-		            textStyle:{
-		                fontSize:13,
-		                bold: true,
-		                auraColor: 'none'
-		            },
-		            stem:{
-		                color:'none',
-		                length:'8' 
-		            }
-		        },
-				legend: {position: 'none'},
-				fontName: 'Noto Sans',
-				fontSize: "16"
-			};
-		
+			series: {
+				0: {
+					color: '#da0f47'
+				},
+				1: {
+					color: '#000'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14'
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff'
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16'
+				}
+			},
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			bar: {
+				groupWidth: '88',
+				gap: 8
+			},
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			legend: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			fontSize: "16"
+		};
+
 		var checkSizeDonut = function () {
-		    var windowWidth = $(window).width();
-		    if (windowWidth < 767) {
-		    	optionsDonut.pieHole = 0.6;
-				optionsDonut.legend.textStyle.fontSize = "12";
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsDonut.legend.textStyle.fontSize = "22";
 				optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
-		    } else {
-		    	optionsDonut.pieHole = 0.56;
-				optionsDonut.legend.textStyle.fontSize = "16";
-				optionsDonut.pieSliceTextStyle.fontSize = "16";
-		    }
-		}
+			} else {
+				optionsDonut.legend.textStyle.fontSize = "22";
+				optionsDonut.pieSliceTextStyle.fontSize = "22";
+			}
+		};
 		var checkSizeColumn = function () {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
 				optionsColumn.height = '200';
 				optionsColumn.bar.groupWidth = '60';
-				optionsColumn.bar.gap = '10'; 
+				optionsColumn.bar.gap = '10';
 				optionsColumn.vAxis.textStyle.fontSize = '13';
 				optionsColumn.vAxis.gridlines.minSpacing = '20';
 				optionsColumn.hAxis.textStyle.fontSize = '13';
@@ -157,115 +179,68 @@
 			} else {
 				optionsColumn.height = '300';
 				optionsColumn.bar.groupWidth = '88';
-				optionsColumn.bar.gap = '8'; 
+				optionsColumn.bar.gap = '8';
 				optionsColumn.vAxis.textStyle.fontSize = '14';
 				optionsColumn.vAxis.gridlines.minSpacing = '40';
 				optionsColumn.hAxis.textStyle.fontSize = '14';
 				optionsColumn.annotations.textStyle.fontSize = '13';
 				optionsColumn.annotations.stem.length = '8';
 			}
-		}
-		
+		};
+
 		var resize = function () {
 			if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
 				checkSizeDonut();
 				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
 				chartDonut.draw(viewDonut, optionsDonut);
-				
+
 				checkSizeColumn();
 				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
 				chartColumn.draw(viewColumn, optionsColumn);
 			}
-		}
-		
+		};
+
 		var init = function () {
-			setTimeout(function(){
+			setTimeout(function () {
 				checkSizeDonut();
 				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
 				chartDonut.draw(viewDonut, optionsDonut);
-				
+
 				checkSizeColumn();
 				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
 				chartColumn.draw(viewColumn, optionsColumn);
 			}, 500);
-			
-			$(".accordion-wrap li.lists:first-child").on('click', function() {
-				setTimeout(function() {
+
+			$(".accordion-wrap li.lists:first-child").on('click', function () {
+				setTimeout(function () {
 					resize();
 				}, 500);
 			});
-		}
-		
+		};
+
 		window.onload = init();
 		window.onresize = resize;
 	}
 </script>
 <style type="text/css">
-	.googlechart-wrap .overlayarea {
-		position:absolute;
-		top:42%;
-		left:50%;
-		transform:translate(-50%,-42%);
-		text-align:center;
-		font-size:24px;
-		font-weight:bold;
-	}
-	
 	@media screen and (max-width:767px) {
 		.googlechart-wrap .overlayarea { font-size:5vw; }
 	}
 	
-	.columnchart rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
-	.columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
-		
-	/* tooltip */	
-	div.google-visualization-tooltip {border:0;border-radius:10px;box-shadow:0 0 5px 5px rgba(0,0,0,0.1);line-height:24px;text-align:center;}
-	div.google-visualization-tooltip > ul > li {padding:0 10px;}
-	div.google-visualization-tooltip > ul > li:first-child > span {color:#000 !important;font-size:14px;font-weight:bold;line-height:24px;}
-	div.google-visualization-tooltip > ul > li:nth-child(2) {margin-top:-10px;}
-	div.google-visualization-tooltip > ul > li:nth-child(2) > span {color:#e81953 !important;font-size:14px;font-weight:normal !important;line-height:24px;}
-		
-	/* % 구조시 상단 지우기 (100%시 짤림) */
-	.columnchart svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1),
-	.columnchart svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}	
-</style>
-<style>
+	.donutchart + .c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
+	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	@media screen and (max-width: 767px){
+		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
+		.company .c_legend .lgnd > span {margin-left:4px!important}
+	}
 	.googlechart-wrap {
 		position: relative;
-		max-width: 900px;
+		max-width: 910px;
 		margin: 0 auto;
-	}
-
-	.googlechart-wrap .columnchart {
-		height: 480px;
 	}
 
 	.googlechart-wrap .donutchart {
 		height: 370px;
-	}
-
-	@media screen and (max-width: 767px) {
-		.googlechart-wrap {
-			width: 100%;
-		}
-
-		.googlechart-wrap.over100::before {
-			height: 7%;
-		}
-
-		.googlechart-wrap .columnchart {
-			height: 53vw;
-		}
-
-		.googlechart-wrap .donutchart {
-			height: 71.11vw
-		}
-	}
-
-	@media screen and (max-width: 425px) {
-		.googlechart-wrap.over100::before {
-			height: 14%;
-		}
 	}
 </style>
 <div class="breadcrumb">
@@ -352,7 +327,7 @@
 			있습니다.</p>
 	</div>
 	
-	<div class="com-text noLine">
+	<div class="com-text">
 		<p class="tit">지배구조</p>
 		<p class="text">LG전자의 이사회와 이사회 산하 위원회는 ESG를 포함한 회사 경영 전략의 승인 등 주요 의사결정과 함께 운영 및 실적에 대한 관리, 감독 기능을 수행하고 있습니다.</p>
 		<div class="accordion-wrap ui_accordion btmBtn lgway" data-single-open="true">
@@ -734,8 +709,12 @@
 							</ul>
 							<p class="tit mt40">4) 이사회 활동</p>
 							<div class="googlechart-wrap">
-								<div class="chartarea donutchart" id="donutchart"></div>
-								<div class="overlayarea">LG 전자</div>
+								<div class="chart_area donutchart" id="donutchart"></div>
+								<div class="c_legend">
+									<p class="lgnd">개최<span class="pink"></span></p>
+									<p class="lgnd">승인사항<span class="gray"></span></p>
+									<p class="lgnd">보고사항<span class="blk"></span></p>
+								</div>
 								<div class="blind">
 									<ul>
 										<li> <span>개최</span>
@@ -783,7 +762,11 @@
 							</div>
 							<p class="tit mt">5) 이사회 참석</p>
 							<div class="googlechart-wrap over100">
-								<div class="chartarea columnchart" id="columnchart"></div>
+								<div class="chart_area columnchart percent" id="columnchart"></div>
+								<div class="c_legend">
+									<p class="lgnd">참석<span class="pink"></span></p>
+									<p class="lgnd">불참<span class="blk"></span></p>
+								</div>
 								<div class="blind">
 									<ul>
 										<li> <span>평균</span>
