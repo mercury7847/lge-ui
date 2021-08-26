@@ -120,6 +120,7 @@ function fcTabScrollLeft(tab){
 
 // 2번째 탭 fixed
 $(function(){
+	if(!$('#com-tabs02').length)return;
 	$(window).scroll(function() {
 		var tarTab = $('#com-tabs02').closest('.com-tabs');
 		var tarTab2 = $('#com-tabs01').closest('.com-tabs').find('.tabs-wrap').innerHeight();
