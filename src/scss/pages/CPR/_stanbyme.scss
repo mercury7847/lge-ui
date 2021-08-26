@@ -286,8 +286,27 @@
 .stanbyme-detail{
 	padding-top: 64px;
 	padding-bottom: 150px;
+	position: relative;
+	@include mobile {
+		padding-top: 0;
+		padding-bottom:35px;
+	}
+	.btn-box{
+		display: inline-block;
+		position:absolute;
+		right:0;
+		top:141px;
+		padding-bottom: 18px;
+		.btn+.btn{
+			margin-left: 4px;
+		}
+		@include mobile {
+			position: static;
+			top:auto;
+			right:auto;
+		}
+	}
 	&-head{
-		position: relative;
 		border-bottom: 1px solid $color-gray-1;
 		padding-bottom: 18px;
 		.head {
@@ -333,16 +352,6 @@
 						}
 					}
 				}
-			}
-		}
-		.btn-box{
-			display: inline-block;
-			position:absolute;
-			right:0;
-			bottom:0;
-			padding-bottom: 18px;
-			.btn+.btn{
-				margin-left: 4px;
 			}
 		}
 	}
@@ -436,6 +445,9 @@
 	}
 	.btn-group {
 		margin: 64px auto 0;
+		@include mobile{
+			margin: 40px auto 0;
+		}
 	}
 }
 .comment{
