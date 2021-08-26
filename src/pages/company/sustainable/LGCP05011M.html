@@ -26,60 +26,24 @@
 		packages: ['corechart']
 	});
 	google.charts.setOnLoadCallback(drawChart);
-	var dataColumn, optionsColumn, chartColumn;
-	var dataDonut, optionsDonut, chartDonut;
-
 	function drawChart() {
-		dataColumn = google.visualization.arrayToDataTable([
-			['', '참석', {
-				role: 'annotation'
-			}, '불참', {
-				role: 'annotation'
-			}],
-			['평균', 90.47, '90.47%', 9.53, '9.53%'],
-			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
-			['사외이사', 100, '100%', 0, '0%']
-		]);
-		optionsColumn = {
-			colors: ['#e81953', '#000000'],
-			vAxis: {
-				format: '#\'%\'',
-				minValue: '0',
-				maxValue: '110'
-			},
-			chartArea: {
-				width: '90%',
-				right: '0%',
-				height: '80%',
-				top: '-5%'
-			},
-			bar: {
-				groupWidth: '25%'
-			},
-			annotations: {
-				textStyle: {
-					bold: true
-				},
-				stem: {
-					color: 'none',
-					length: '0'
-				}
-			},
-			legend: {
-				position: 'bottom'
-			},
-			fontName: 'Noto Sans',
-			fontSize: "16"
-		};
-		dataDonut = google.visualization.arrayToDataTable([
-			['', 'Amount', {
-				role: 'tooltip'
-			}],
+		var dataDonut = google.visualization.arrayToDataTable([
+			['', 'Amount', {role: 'tooltip'}],
 			['개최', 9, '개최\n9건'],
 			['승인사항', 32, '승인사항\n32건'],
 			['보고사항', 10, '보고사항\n10건']
 		]);
-		optionsDonut = {
+		var dataColumn = google.visualization.arrayToDataTable([
+			['', '참석', {role: 'annotation'}, '불참', {role: 'annotation'	}],
+			['평균', 90.47, '90.47%', 9.53, '9.53%'],
+			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
+			['사외이사', 100, '100%', 0, '0%']
+		]);
+		
+		var viewDonut = new google.visualization.DataView(dataDonut);
+		var viewColumn = new google.visualization.DataView(dataColumn);
+		
+		var optionsDonut = {
 			pieHole: 0.6,
 			pieSliceText: 'value',
 			chartArea: {
@@ -109,7 +73,7 @@
 				bold: true
 			},
 			legend: {
-				position: 'bottom',
+				position: 'none',
 				alignment: 'center',
 				textStyle: {
 					fontSize: '16'
@@ -117,68 +81,159 @@
 			},
 			fontName: 'Noto Sans'
 		};
-		setTimeout(function () {
-			checkSize();
-			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
-			chartColumn.draw(dataColumn, optionsColumn);
-			chartDonut.draw(dataDonut, optionsDonut);
-		}, 1000);
-	}
-
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			optionsDonut.pieHole = 0.6;
-			optionsDonut.legend.textStyle.fontSize = "12";
-			optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
-			optionsColumn.fontSize = "12";
-			optionsColumn.bar.groupWidth = '30%';
-		} else {
-			optionsDonut.pieHole = 0.56;
-			optionsDonut.legend.textStyle.fontSize = "16";
-			optionsDonut.pieSliceTextStyle.fontSize = "16";
-			optionsColumn.fontSize = "16";
-			optionsColumn.bar.groupWidth = '25%';
+		
+		var optionsColumn = {
+		        series:{
+		            0:{color:'#e91953'},
+					1:{color:'#000'}
+		        },
+				vAxis:{
+		            title:{position:'none'},
+					maxValue:'110',
+					minValue:'0',
+		            textStyle:{ fontSize:'14' },
+		            gridlines:{
+		                color:'#ddd',
+						count :'6'
+		            },
+		            minorGridlines:{ color:'#fff' },
+					format: "#'%'"
+		        },
+		        hAxis:{
+		            title: {position:'none'},
+		            textStyle: {fontSize:'16'}
+		        },
+		        chartArea:{ 
+		            width:'100%',
+		            left:50,
+		            right:0,
+		            top:0,
+		            bottom:40
+		        },
+		        bar:{
+		            groupWidth:'88',
+					gap:8 
+		        },
+		        annotations :{
+		            alwaysOutside:true,
+		            textStyle:{
+		                fontSize:13,
+		                bold: true,
+		                auraColor: 'none'
+		            },
+		            stem:{
+		                color:'none',
+		                length:'8' 
+		            }
+		        },
+				legend: {position: 'none'},
+				fontName: 'Noto Sans',
+				fontSize: "16"
+			};
+		
+		var checkSizeDonut = function () {
+		    var windowWidth = $(window).width();
+		    if (windowWidth < 767) {
+		    	optionsDonut.pieHole = 0.6;
+				optionsDonut.legend.textStyle.fontSize = "12";
+				optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+		    } else {
+		    	optionsDonut.pieHole = 0.56;
+				optionsDonut.legend.textStyle.fontSize = "16";
+				optionsDonut.pieSliceTextStyle.fontSize = "16";
+		    }
 		}
-	}
-	$(window).resize(function () {
-		/* 화면사이즈가 변하면 차트를 그려줌 */
-		if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
-			checkSize();
-			setTimeout(function () {
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
+		var checkSizeColumn = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsColumn.height = '200';
+				optionsColumn.bar.groupWidth = '60';
+				optionsColumn.bar.gap = '10'; 
+				optionsColumn.vAxis.textStyle.fontSize = '13';
+				optionsColumn.vAxis.gridlines.minSpacing = '20';
+				optionsColumn.hAxis.textStyle.fontSize = '13';
+				optionsColumn.annotations.textStyle.fontSize = '12';
+				optionsColumn.annotations.stem.length = '5';
+			} else {
+				optionsColumn.height = '300';
+				optionsColumn.bar.groupWidth = '88';
+				optionsColumn.bar.gap = '8'; 
+				optionsColumn.vAxis.textStyle.fontSize = '14';
+				optionsColumn.vAxis.gridlines.minSpacing = '40';
+				optionsColumn.hAxis.textStyle.fontSize = '14';
+				optionsColumn.annotations.textStyle.fontSize = '13';
+				optionsColumn.annotations.stem.length = '8';
+			}
 		}
-	});
-	$(document).ready(function () {
-		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:first-child").on('click', function (e) {
-			checkSize();
-			setTimeout(function () {
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
-		});
-	});
+		
+		var resize = function () {
+			if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
+				checkSizeDonut();
+				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
+				chartDonut.draw(viewDonut, optionsDonut);
+				
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, optionsColumn);
+			}
+		}
+		
+		var init = function () {
+			setTimeout(function(){
+				checkSizeDonut();
+				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
+				chartDonut.draw(viewDonut, optionsDonut);
+				
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, optionsColumn);
+			}, 500);
+			
+			$(".accordion-wrap li.lists:first-child").on('click', function() {
+				setTimeout(function() {
+					resize();
+				}, 500);
+			});
+		}
+		
+		window.onload = init();
+		window.onresize = resize;
+	}
 </script>
+<style type="text/css">
+	.googlechart-wrap .overlayarea {
+		position:absolute;
+		top:42%;
+		left:50%;
+		transform:translate(-50%,-42%);
+		text-align:center;
+		font-size:24px;
+		font-weight:bold;
+	}
+	
+	@media screen and (max-width:767px) {
+		.googlechart-wrap .overlayarea { font-size:5vw; }
+	}
+	
+	.columnchart rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
+	.columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
+		
+	/* tooltip */	
+	div.google-visualization-tooltip {border:0;border-radius:10px;box-shadow:0 0 5px 5px rgba(0,0,0,0.1);line-height:24px;text-align:center;}
+	div.google-visualization-tooltip > ul > li {padding:0 10px;}
+	div.google-visualization-tooltip > ul > li:first-child > span {color:#000 !important;font-size:14px;font-weight:bold;line-height:24px;}
+	div.google-visualization-tooltip > ul > li:nth-child(2) {margin-top:-10px;}
+	div.google-visualization-tooltip > ul > li:nth-child(2) > span {color:#e81953 !important;font-size:14px;font-weight:normal !important;line-height:24px;}
+		
+	/* % 구조시 상단 지우기 (100%시 짤림) */
+	.columnchart svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1),
+	.columnchart svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}	
+</style>
 <style>
 	.googlechart-wrap {
 		position: relative;
 		max-width: 900px;
 		margin: 0 auto;
-	}
-
-	.googlechart-wrap.over100::before {
-		content: "";
-		display: block;
-		background: #ffffff;
-		width: 100%;
-		height: 8%;
-		position: absolute;
-		top: 0;
-		z-index: 1;
 	}
 
 	.googlechart-wrap .columnchart {
@@ -680,6 +735,7 @@
 							<p class="tit mt40">4) 이사회 활동</p>
 							<div class="googlechart-wrap">
 								<div class="chartarea donutchart" id="donutchart"></div>
+								<div class="overlayarea">LG 전자</div>
 								<div class="blind">
 									<ul>
 										<li> <span>개최</span>
