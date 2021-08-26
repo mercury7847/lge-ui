@@ -64,7 +64,7 @@ img.m350 {max-width:350px!important}
 .company .c_legend .lgnd > span.d_g_line {border:2px solid #666}
 .company .c_legend .lgnd > span.pink_dot {background:url(/kr/images/company/promot/img-bg-graph-legend-pinkDot.png) no-repeat center / contain}
 .company .c_legend .lgnd > span.g_line_pt {background:url(/kr/images/company/promot/img-bg-graph-legend-grayLinePattern.png) no-repeat center / contain}
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .company .c_legend .lgnd {margin-right:18px; font-size:12px; line-height:20px}
     .company .c_legend .lgnd + .lgnd {margin-left:0!important; padding-left:0!important}
     .company .c_legend .lgnd + .lgnd::before {display:none}
@@ -89,7 +89,7 @@ img.m350 {max-width:350px!important}
 .company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li {width:100%; padding:12px 0}
 .company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li a {display:block; font-size:16px; line-height:24px}
 .company .cmp_search .cmp_sch_result_wrap .cmp_keyword_list > ul li a .cmp_sch_word {color:#da0f47; font-weight:bold}
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .company .cmp_search {margin-top:24px}
     .company .cmp_search .cmp_search_inner {padding:30px 4.44vw; border-radius:0}
     .company .cmp_search .cmp_sch_wrap {width:100%; max-width:100%}
@@ -120,7 +120,7 @@ img.m350 {max-width:350px!important}
 .country-list .country {display:block; margin-right:24px; font-size:13px}
 .country-list .country::before {width:2px; height:2px}
 .country-list .links {font-size:13px}
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .country-list {margin-top:16px; margin-bottom: 18px}
     .country-list li {margin-bottom:14px}
     .country-list .country {font-size:13px}
@@ -699,7 +699,7 @@ img.m350 {max-width:350px!important}
 .company .esg_diagram > ul > li.gray > ul > li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); height:100%; padding:5px; border-radius:8px; background-color:#ddd}
 .company .esg_diagram > ul > li.gray > ul > li > p {color:#000; font-size:18px; font-weight:500; line-height:28px; text-align:center; word-break:keep-all}
 .company .esg_diagram > ul > li.wt > p {border:1px solid #000; background-color:#fff; color:#000}
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .company .esg_diagram > ul::after {top:48px; bottom:48px; right:calc(25% - 3px)}
     .company .esg_diagram > ul > li {width:calc(50% - 6px)}
     .company .esg_diagram > ul > li + li {margin-top:36px}
@@ -827,7 +827,7 @@ img.m350 {max-width:350px!important}
 .company .slide-covid19 .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
 .company .slide-covid19 .slide-wrap .slide-controls {top:300px}
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .company .slide-covid19 {margin:0 -4.44vw}
     .company .slide-covid19 .slide-conts {padding:0 4.44vw}
     .company .slide-covid19 .slide-conts .img {margin-bottom:48px}
@@ -1284,7 +1284,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li {margin-left:0!important; text-indent:0!important}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li {position:relative}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li + li::before {content:''; display:block; position:absolute; width:1px; top:0; bottom:0; left:0; border-left:1px dashed #ddd}
-@media screen and (min-width:768px) {
+@media screen and (min-width:767px) {
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+1) {width:31.74%; padding-right:4.76%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+2) {width:36.5%; padding-right:4.76%; padding-left:4.76%}
 .company .accordion-wrap.sustain > ul > .lists .accord-cont .txtArea ul.dash_list > li:nth-child(3n+3) {width:31.74%; padding-left:4.76%}
@@ -1601,7 +1601,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 }
 
 /* 모바일 */
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .only_pc {display:none!important}
     .only_mo {display:block!important}
     .company .mgt {margin-top:12px!important}
@@ -1735,8 +1735,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     /* 테이블 */
     .company .over_tbl {overflow-x:scroll; overflow-y:hidden}
-    .company .over_tbl table {max-width:768px; width:768px}
-    .company .over_tbl .tbl_info {max-width:768px; width:768px}
+    .company .over_tbl table {max-width:767px; width:767px}
+    .company .over_tbl .tbl_info {max-width:767px; width:767px}
     .company .over_tbl::-webkit-scrollbar {height:20px}
     .company .over_tbl::-webkit-scrollbar-thumb {border:8px solid transparent; border-radius:16px; background-clip:padding-box; background-color:rgba(0,0,0,0.2)}
     .company .over_tbl::-webkit-scrollbar-track {background-color:transparent}
