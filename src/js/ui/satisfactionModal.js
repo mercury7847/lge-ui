@@ -34,15 +34,19 @@ vcui.define('ui/satisfactionModal', ['jquery', 'vcui'], function ($, core) {
             var regKeys = Object.keys(regObj);
             var $ratingUI = $('.ui-rating-wrap');
             var $score = $('.ui-select-label');
+            var $textLimit = $('#txt-count1');
             $ratingUI.find('a').removeClass('on');
             $ratingUI.find('span.blind').remove();
             $score.html('/5점');
+            $textLimit.html('<em>0</em> / 120자');
+            
             regKeys.forEach(function(v, i){
                 $('input:text[name=' + v + ']').val("")
                 $('select[name=' + v + ']').val("")
                 $('input:radio[name=' + v + ']').prop('checked', false)
                 $('input:checkbox[name=' + v + ']').prop('checked', false)
                 $('textarea[name=' + v + ']').val("")
+
             })
         }
         //BTOCSITE-4254 210820 입력값 초기화 reset함수 생성
