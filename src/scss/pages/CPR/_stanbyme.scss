@@ -298,17 +298,15 @@
 // detail
 .stanbyme-detail{
 	padding-top: 64px;
-	padding-bottom: 150px;
 	position: relative;
 	@include mobile {
-		padding-top: 0;
-		padding-bottom:35px;
+		padding-top: 32px;
 	}
 	.btn-box{
 		display: inline-block;
 		position:absolute;
 		right:0;
-		top:141px;
+		bottom:0;
 		padding-bottom: 18px;
 		.btn+.btn{
 			margin-left: 4px;
@@ -317,19 +315,38 @@
 			position: static;
 			top:auto;
 			right:auto;
+			display: block;
+			border-top:1px solid $color-border;
+			padding: 16px 0 60px 0;
+			text-align: center;
+		}
+		&.pc-only{
+			@include mobile{
+				display: none;
+			}
+		}
+		.mobile-only{
+			@include mobile{
+				display: block;
+			}
 		}
 	}
 	&-head{
 		border-bottom: 1px solid $color-gray-1;
 		padding-bottom: 18px;
+		position: relative;
+		@include mobile {
+			padding-bottom: 16px;
+		}
 		.head {
 			&-title {
 				font-weight:$font-weight-bold;
 				font-size:32px;
-				line-height:1.63;
+				line-height:52px;
 
 				@include mobile {
 					font-size:24px;
+					line-height: 30px;
 				}
 			}
 			&-infos {
@@ -370,11 +387,18 @@
 	}
 	&-body{
 		padding: 60px 0 80px;
+		@include mobile{
+			padding: 40px 0 40px;
+		}
 		.detail-content{
 			p {
 				color:$color-default;
 				font-size: $font-medium;
 				line-height: 26px;
+				@include mobile{
+					font-size: 14px;
+					line-height: 22px;
+				}
 			}
 			strong {
 				color:inherit;
@@ -382,7 +406,10 @@
 				line-height:inherit;
 			}
 			.img-wrap{
-				margin-top:40px;
+				margin-top: 40px;
+				@include mobile{
+					margin-top:24px;
+				}
 				img {
 					max-width:100%;
 				}
@@ -424,7 +451,8 @@
             }
         }
         @include mobile {
-            padding: 0 16px;
+            padding: 0;
+			margin-top: 60px;
             .navi {
                 padding:16px 12px;
                 flex-wrap: wrap;
@@ -460,6 +488,13 @@
 		margin: 64px auto 0;
 		@include mobile{
 			margin: 40px auto 0;
+			padding: 0;
+		}
+	}
+	.pagination{
+		margin-bottom: 48px;
+		@include mobile{
+			margin-bottom: 50px;
 		}
 	}
 }
@@ -467,6 +502,9 @@
 	&-head{
 		border-bottom: 1px solid $color-default;
 		padding-bottom: 11px;
+		@include mobile{
+			padding-bottom: 12px;
+		}
 		.total{
 			position: relative;
 			padding-left: 32px;
@@ -483,6 +521,19 @@
 				background-size: 100% 100%;
 				content: '';
 			}
+			@include mobile{
+				padding-left: 26px;
+				font-size: 14px;
+				line-height:20px;
+				&:before{
+					width:20px;
+					height:20px;
+					background-image:url(/lg5-common/images/CPR/icon_reply_40.svg);
+				}
+				em {
+					font-weight: 700;
+				}
+			}
 		}
 	}
 	&-list{
@@ -494,20 +545,108 @@
 				.no-comment{
 					padding: 80px 0;
 					p{
-						color:$color-default;
-						font-size: $font-medium  ;
+						color:$color-gray-1;
+						font-size: $font-medium ;
 						line-height: 26px;
 						text-align: center;
 					}
+					@include mobile{
+						padding: 60px 0;
+						p{
+							font-size: 14px;
+							line-height: 20px;
+						}
+					}
+				}
+				&:last-child {
+					border-bottom:1px solid $color-border;
 				}
 			}
 		}
 	}
 	&-content{
+		position: relative;
 		padding: 24px;
+		.comment-btn-box{
+			display: none;
+			position: absolute;
+			right:24px;
+			top:24px;
+			text-align: right;
+			.btn-text{
+				font-weight: 400;
+			}
+			.btn-text+.btn-text{
+				margin-left: 8px;
+				position: relative;
+				&:before{
+					content: '';
+					position: absolute;
+					left: -6px;
+					top: 50%;
+					width: 1px;
+					height: 10px;
+					margin-top: -5px;
+					background: $color-border;
+				}
+			}
+		}
+		&.my-commment{
+			.comment-btn-box{
+				display: inline-block;
+			}
+		}
+		.info-name{
+			font-size: 16px;
+			line-height: 24px;
+			font-weight: 500;
+			color: $color-default ;
+			padding-bottom: 4px;
+		}
+		.comment-text-wrap{
+			p {
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+		.info-date{
+			font-size: 14px;
+			line-height: 20px;
+			color: $color-gray-1;
+			padding-top: 16px;
+			.time{
+				margin-left: 8px;
+			}
+		}
+		&.admin-comment{
+			background: $color-bg;
+			.info-name{
+				padding-left: 57px;
+				position: relative;
+				&:before{
+					position: absolute;
+					top:0;
+					left:0;
+					content: '관리자';
+					display: inline-block;
+					width: 49px;
+					height: 24px;
+					padding: 3px 0 4px 0;
+					border-radius: 4px;
+					border: solid 1px $color-primary;
+					font-size: 12px;
+					color: $color-primary;
+					line-height: 17px;
+					text-align: center;
+				}
+			}
+		}
 	}
 	&-write{
 		height: 150px;
+		@include mobile{
+			height: 160px;
+		}
 		.form-wrap .forms .conts {
 			width: 100%;
 		}
@@ -516,6 +655,11 @@
 				height : 97px;
 				padding: 16px 24px 5px 16px;
 				line-height: 26px;
+				@include mobile{
+					height : 108px;
+					line-height: 20px;
+					padding: 12px 16px 5px 12px;
+				}
 				+ .inner-text{
 					width:auto;
 				}
@@ -524,7 +668,7 @@
 				}
 				&.valid{
 					&+.txt-count-box{
-						.comment-btn-box {
+						.comment-write-btn-box {
 							.btn-cancel{
 								display: inline-block !important;
 							}
@@ -539,10 +683,18 @@
 				&::placeholder {
 					color: #666 !important;
 					font-size:14px !important;
+					@include mobile{
+						font-size:13px !important;
+						line-height: 20px;
+					}
 				}
 				&:-ms-input-placeholder {
 				color: #666 !important;
 				font-size:14px !important;
+					@include mobile{
+						font-size:13px !important;
+						line-height: 20px;
+					}
 				}
 			}
 			.input-wrap{
@@ -553,6 +705,9 @@
 					border-radius: 0 0 8px 8px;
 					vertical-align: top;
 					text-align: right;
+					@include mobile{
+						padding: 5px 16px 12px 12px;
+					}
 					.inner-text{
 						display: inline-block;
 						width: auto;
@@ -562,8 +717,11 @@
 						line-height:32px;
 						text-align: right;
 						border:none;
+						@include mobile{
+							font-size:13px;
+						}
 					}
-					.comment-btn-box{
+					.comment-write-btn-box{
 						display: inline-block;
 						.btn {
 							height:auto;
@@ -649,4 +807,5 @@
 			}
 		}
 	}
+
 }

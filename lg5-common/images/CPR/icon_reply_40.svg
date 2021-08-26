@@ -1,0 +1,18 @@
+<svg id="img_reply_40" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+    <defs>
+        <style>
+            .cls-3{fill:#da0f47}
+        </style>
+    </defs>
+    <g id="img_floatingchat_40">
+        <path id="Area" style="fill:none" d="M0 0h40v40H0z"/>
+        <g id="ic" transform="translate(4.329 9.394)">
+            <path id="Rectangle" d="M31.346 5.118A5.118 5.118 0 0 0 26.228 0H5.118A5.118 5.118 0 0 0 0 5.118v12.794a5.118 5.118 0 0 0 5.118 5.118h7.037l5.39 3.77a.64.64 0 0 0 1.007-.524V23.03h7.676a5.118 5.118 0 0 0 5.118-5.118z" style="fill:#fff;stroke:#000;stroke-miterlimit:10;stroke-width:2px"/>
+            <g id="Group_2" data-name="Group 2" transform="translate(7.675 10.235)">
+                <circle id="Oval" class="cls-3" cx="1.599" cy="1.599" r="1.599"/>
+                <circle id="Oval-2" data-name="Oval" class="cls-3" cx="1.599" cy="1.599" r="1.599" transform="translate(6.397)"/>
+                <circle id="Oval-3" data-name="Oval" class="cls-3" cx="1.599" cy="1.599" r="1.599" transform="translate(12.794)"/>
+            </g>
+        </g>
+    </g>
+</svg>
