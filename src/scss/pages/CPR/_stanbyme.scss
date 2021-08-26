@@ -298,7 +298,7 @@
 // detail
 .stanbyme-detail{
 	padding-top: 64px;
-	padding-bottom: 120px;
+	padding-bottom: 150px;
 	&-head{
 		position: relative;
 		border-bottom: 1px solid $color-gray-1;
@@ -381,11 +381,11 @@
 		}
 	}
 	&-navi{
+		margin-top: 120px;
 		.navi {
             display:flex;
             padding:24px;
             font-size:0;
-            border-radius:4px;
             background-color: #fff;
             border-top: 1px solid #ddd;
             @include clearfix;
@@ -486,6 +486,152 @@
 						font-size: $font-medium  ;
 						line-height: 26px;
 						text-align: center;
+					}
+				}
+			}
+		}
+	}
+	&-content{
+		padding: 24px;
+	}
+	&-write{
+		height: 150px;
+		.form-wrap .forms .conts {
+			width: 100%;
+		}
+		.text-form {
+			textarea{
+				height : 97px;
+				padding: 16px 24px 5px 16px;
+				line-height: 26px;
+				+ .inner-text{
+					width:auto;
+				}
+				&:focus + .txt-count-box {
+					border-color: $color-primary ;
+				}
+				&.valid{
+					&+.txt-count-box{
+						.comment-btn-box {
+							.btn-cancel{
+								display: inline-block !important;
+							}
+							.btn-confirm{
+								border-color: $color-primary !important;
+								background-color: $color-primary !important;
+								color: #fff !important;
+							}
+						}
+					} 
+				}
+				&::placeholder {
+					color: #666 !important;
+					font-size:14px !important;
+				}
+				&:-ms-input-placeholder {
+				color: #666 !important;
+				font-size:14px !important;
+				}
+			}
+			.input-wrap{
+				.txt-count-box{
+					padding: 5px 24px 16px 16px;
+					border: 1px solid $color-border;
+					border-top: none;
+					border-radius: 0 0 8px 8px;
+					vertical-align: top;
+					text-align: right;
+					.inner-text{
+						display: inline-block;
+						width: auto;
+						padding: 0 12px 0 0;
+						vertical-align:bottom;
+						font-size: 14px;
+						line-height:32px;
+						text-align: right;
+						border:none;
+					}
+					.comment-btn-box{
+						display: inline-block;
+						.btn {
+							height:auto;
+							display: inline-block;
+							min-width:112px;
+							padding:11px 31px;
+							@include font-medium;
+							text-align: center;
+							vertical-align: top;
+							border: 1px solid #fa263e;
+							border-radius: 26px;
+							background-color:#fa263e;
+							background-image: linear-gradient(280deg, #fb5a72, #fa263e);
+							color:#fff;
+							font-weight:500;
+							@include mobile {
+								min-width:124px;
+								font-size:16px;
+								line-height:24px;
+								padding:15px 25px;
+								border-radius:28px;
+							}
+							&:hover,
+							&:focus,
+							&:active {
+								background-color:#fa263e;
+								background-image: none;
+								color: $color-white;
+							}
+							&.gray {
+								border-color: #ededed;
+								background: #ededed;
+								color: $color-gray-1;
+								&:hover {
+									background: #ededed;
+									color: $color-gray-1;
+								}
+							}
+							&.dark-gray {
+								border-color: #767676;
+								background: #767676;
+								color: $color-white;
+								&:hover {
+									background: #767676;
+									color: $color-white;
+								}
+							}
+							&:disabled,
+							&.disabled {
+								border-color:#ddd !important;
+								background:#f4f4f4;
+								color:$color-gray-4;
+								cursor:default;
+								&:hover,
+								&:focus,
+								&:active {
+									border-color:#ddd !important;
+									background:#f4f4f4;
+									color: $color-gray-4;
+								}
+							}
+							// 작은사이즈 버튼
+							&.size {
+								min-width:64px;
+								padding:3px 11px;
+								border-radius:16px;
+								@include font-small;
+								@include mobile {
+									padding:5px 15px;
+									line-height:22px;
+								}
+								&.mix {
+									padding:4px 12px;
+								}
+							}
+							&.btn-cancel{
+								display: none;
+								margin-right: 8px;
+							}
+						}
 					}
 				}
 			}
