@@ -38,6 +38,15 @@
             }
         }
     }
+    /* 2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 */
+    .contract-steps{
+        >ol{
+            .steps{
+                width:246px;
+            }
+        }
+    }
+    /* //2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 */
     .gy-info-box {
         padding:40px;
         border-radius:8px;
