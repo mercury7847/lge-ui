@@ -32,9 +32,9 @@
 			['', 'Amount', {
 				role: 'tooltip'
 			}],
-			['개최', 9, '개최\n9건'],
+			['보고사항', 10, '보고사항\n10건'],
 			['승인사항', 32, '승인사항\n32건'],
-			['보고사항', 10, '보고사항\n10건']
+			['개최', 9, '개최\n9건'],
 		]);
 		var dataColumn = google.visualization.arrayToDataTable([
 			['', '참석', {
@@ -42,7 +42,7 @@
 			}, '불참', {
 				role: 'annotation'
 			}],
-			['평균', 90.47, '90.47%', 9.53, '9.53%'],
+			['평균', 90.5, '90.5%', 9.53, '9.53%'],
 			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
 			['사외이사', 100, '100%', 0, '0%']
 		]);
@@ -710,6 +710,7 @@
 							<p class="tit mt40">4) 이사회 활동</p>
 							<div class="googlechart-wrap">
 								<div class="chart_area donutchart" id="donutchart"></div>
+								<!-- 구글차트 -->
 								<div class="c_legend">
 									<p class="lgnd">개최<span class="pink"></span></p>
 									<p class="lgnd">승인사항<span class="gray"></span></p>
@@ -763,6 +764,7 @@
 							<p class="tit mt">5) 이사회 참석</p>
 							<div class="googlechart-wrap over100">
 								<div class="chart_area columnchart percent" id="columnchart"></div>
+								<!-- 구글차트 -->
 								<div class="c_legend">
 									<p class="lgnd">참석<span class="pink"></span></p>
 									<p class="lgnd">불참<span class="blk"></span></p>
@@ -771,7 +773,7 @@
 									<ul>
 										<li> <span>평균</span>
 											<ul>
-												<li>90.47%(참석)</li>
+												<li>90.5%(참석)</li>
 												<li>9.53%(불참)</li>
 											</ul>
 										</li>
@@ -808,7 +810,7 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>90.47</td>
+											<td>90.5</td>
 											<td>77.80</td>
 											<td>100</td>
 										</tr>
