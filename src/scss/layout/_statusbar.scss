@@ -1,5 +1,6 @@
 @charset "UTF-8";
 .mobile-status-bar {
+    display: none;
     position:fixed;
     bottom:0;
     left:0;
@@ -10,6 +11,7 @@
 
     .mobile-status-list {
         display: flex;
+        height:100%;
 
         > li {
             flex:1;
@@ -62,6 +64,17 @@
 }
 
 .mdevice {
+    .wrap {
+        padding-bottom:70px;
+    }
+    .mobile-status-bar {
+        display:block;
+    }
+    &.app {
+        .mobile-status-bar {
+            display: none;
+        }
+    }
     .utility {
         right:11px;
     }
