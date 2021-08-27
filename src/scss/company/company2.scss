@@ -1016,10 +1016,9 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .ir_pt ul.ir_ptList {margin-top:20px}
 .company .ir_pt ul.ir_ptList > li {display:flex; justify-content:space-between; align-items:center; width:100%; padding:30px 47px 30px 40px; border-radius:8px; background-color:#ffffff; box-shadow:2px 4px 16px 0 rgba(0,0,0,0.14)}
 .company .ir_pt ul.ir_ptList > li + li {margin-top:18px}
-.company .ir_pt ul.ir_ptList > li .desc {display:flex; font-size:16px; line-height:26px}
+.company .ir_pt ul.ir_ptList > li .desc {font-size:16px; line-height:26px}
 .company .ir_pt ul.ir_ptList > li .desc strong {display:block; font-weight:bold}
-.company .ir_pt ul.ir_ptList > li .desc span {position:relative; display:block; margin-left:30px; padding-left:30px}
-.company .ir_pt ul.ir_ptList > li .desc span::before {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); left:0; background-color:#ddd}
+.company .ir_pt ul.ir_ptList > li .desc span {display:block; margin-top:8px; font-size:14px; line-height:22px}
 .company .ir_pt ul.ir_ptList > li ul.btn_list {display:flex}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li {display:flex}
 .company .ir_pt ul.ir_ptList > li ul.btn_list li + li {position:relative; margin-left:30px; padding-left:30px}
@@ -1901,9 +1900,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
     .company .ir_pt ul.ir_ptList > li {padding:19px 20px 20px}
     .company .ir_pt ul.ir_ptList > li + li {margin-top:14px}
-    .company .ir_pt ul.ir_ptList > li .desc {flex-direction:column; padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
-    .company .ir_pt ul.ir_ptList > li .desc span {margin:8px 0 0; padding:0}
-    .company .ir_pt ul.ir_ptList > li .desc span::before {display:none}
+    .company .ir_pt ul.ir_ptList > li .desc {padding-bottom:19px; font-size:14px; line-height:22px; text-align:center}
+    .company .ir_pt ul.ir_ptList > li .desc span {padding:0}
     .company .ir_pt ul.ir_ptList > li .btn_list {flex-direction:column; padding:20px 8px 0; border-top:1px solid #ddd}
     .company .ir_pt ul.ir_ptList > li .btn_list li + li {margin:15px 0 0!important; padding:0!important}
     .company .ir_pt ul.ir_ptList > li .btn_list li + li::before {display:none!important}
