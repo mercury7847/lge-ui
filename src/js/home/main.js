@@ -668,9 +668,9 @@ $(function () {
             if (index === 0) {
                 videoAttr += " preload='auto'";
             } else if(posterSrc) {
-                videoAttr += " poster='" + posterSrc + "' preload='metadata'";
+                videoAttr += " poster='" + posterSrc + "' preload='auto'";
             } else {
-                videoAttr += " preload='metadata'";
+                videoAttr += " preload='auto'";
             }
 
             // 비디오 요소 생성.
