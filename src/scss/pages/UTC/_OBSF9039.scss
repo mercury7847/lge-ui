@@ -8,9 +8,21 @@
             max-width:678px + 80px;
         }
     }
-    .section-wrap .sects > .tit-wrap {
-        border-bottom: 0;
-    }
+    /* 2021.08.27 BTOCSITE-4704 */
+    .section-wrap{
+        .sects:not(.buy-step-info){
+            > .tit-wrap {
+                border-bottom: 0;
+            }
+        }
+        .section-inner{
+            &.bt-line{
+                padding-bottom:48px;
+                border-bottom:1px solid #ddd;
+            }
+        }
+    } 
+    /* //2021.08.27 BTOCSITE-4704 */
     .welcome-joinus {
         display:table;
         width:100%;
@@ -38,6 +50,29 @@
             }
         }
     }
+    /* 2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 */
+    .contract-steps{
+        >ol{
+            .steps{
+                width:246px;
+                @include mobile {
+                    display:table;
+                    float:none;
+                    width:100%;
+                    height:96px;
+                    margin:0 0 32px;
+                    padding:16px;
+                    text-align:left;
+                    dl {
+                        display:table-cell;
+                        padding-left:80px;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
+    /* //2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 */
     .gy-info-box {
         padding:40px;
         border-radius:8px;

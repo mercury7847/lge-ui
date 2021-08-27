@@ -148,10 +148,12 @@
         var regex = /^data-step-(-?\d*)/;
         var $html = (vcui.detect.isSafari || vcui.detect.isMobileDevice) ? $('body') : $('html, body');
 
-        // 웨일 결합처리
-        $('.foot-cont').find('.menu-opener').on('click', function(e){
-            $('html,body').scrollTop(pageLens*winHeight);
-        });
+        /* BTOCSITE-4657 하단 메뉴 전체보기 클릭시 상단 화면으로 이동 되는 오류 2021-08-25 */
+            // 웨일 결합처리
+            // $('.foot-cont').find('.menu-opener').on('click', function(e){
+            //     $('html,body').scrollTop(pageLens*winHeight);
+            // });
+        /* //BTOCSITE-4657 하단 메뉴 전체보기 클릭시 상단 화면으로 이동 되는 오류 2021-08-25 */
 
         // 화면 100% 채우기
         //$('html,body').css({'overflow':'hidden', 'height':'100%'}); //20210629 BTOCSITE-1519 : 히어로배너 구조 변경

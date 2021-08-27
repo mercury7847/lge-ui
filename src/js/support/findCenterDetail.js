@@ -148,7 +148,7 @@
             $('.searchRoad-btn').attr("href", searchRoadUrl);
 
             $('.map').vcCenterMap({
-                keyID: 'vsay0tnzme',
+                keyID: 'ca0xg7ikh5', //BTOCSITE-4933 센터찾기 client ID 수정
                 latitude : latitude,
                 longitude: longitude,
                 zoom:17

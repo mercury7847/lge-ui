@@ -24,111 +24,294 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:["corechart"]});
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
 	google.charts.setOnLoadCallback(drawChart);
-	var dataDonut01, chartDonut01, optionsDonut;
-	var dataDonut02, chartDonut02;
-	var dataColumn, optionsColumn, chartColumn;
+
 	function drawChart() {
-		dataColumn = google.visualization.arrayToDataTable([
-			['', '', { role: 'annotation' }, {role: 'style'}],
-			['2020', 457, ' 457 ', 'fill-color: #e81953'],
+		var dataColumn = google.visualization.arrayToDataTable([
+			['위반 행위 제보 접수 추이', '접수', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
+			['2020', 457, ' 457 ', 'fill-color: #da0f47'],
 			['2019', 656, ' 656 ', 'fill-color: #000000'],
 			['2018', 402, ' 402 ', 'fill-color: #000000']
 		]);
-		optionsColumn = {
-			colors: ['#e81953', '#000000'],
-			vAxis:{minValue:'0', maxValue: '700'},
-			chartArea: {width: '80%',right:'10%', height: '80%',top:'4%'},
-			bar: { groupWidth: '20%' },
-			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
-			legend: {position: 'none'},
-			fontName:'Noto Sans',
-			fontSize:"16"
+		var dataDonut01 = google.visualization.arrayToDataTable([
+			['', 'Amount'],
+			['민원', 350],
+			['부정비리', 52],
+			['기타', 55]
+		]);
+		var dataDonut02 = google.visualization.arrayToDataTable([
+			['', 'Amount'],
+			['중징계', 58],
+			['경징계', 45],
+			['징계해고 권고사직', 13]
+		]);
+
+		var viewColumn = new google.visualization.DataView(dataColumn);
+		var viewDonut01 = new google.visualization.DataView(dataDonut01);
+		var viewDonut02 = new google.visualization.DataView(dataDonut02);
+
+		var optionsColumn = {
+			title: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				}
+			},
+			height: 420,
+			colors: ['#da0f47', '#000000'],
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '14'
+				},
+				gridlines: {
+					color: '#ddd'
+				},
+				minorGridlines: {
+					color: '#fff'
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			bar: {
+				groupWidth: '40'
+			},
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			legend: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			fontSize: "16"
 		};
-		dataDonut01 = google.visualization.arrayToDataTable([
-			['',  'Amount'],
-			['민원',  350],
-			['부정비리',  52],
-			['기타',  55]
-		]);
-		dataDonut02 = google.visualization.arrayToDataTable([
-			['',  'Amount'],
-			['중징계',  58],
-			['경징계',  45],
-			['징계해고 권고사직',  13]
-		]);
-		optionsDonut = {
+		var optionsDonut01 = {
 			pieHole: 0.62,
 			pieSliceText: 'value',
-			chartArea: {width: '100%', height: '80%',top:'4%'},
+			chartArea: {
+				width: '100%',
+				height: '80%',
+				top: '4%'
+			},
 			slices: {
-				0: { color: '#000000', offset: 0.01},
-				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
-				2: { color: '#e81953', offset: 0.01}
+				0: {
+					color: '#da0f47',
+					offset: 0.01
+				},
+				1: {
+					color: '#000',
+					offset: 0.01,
+				},
+				2: {
+					color: '#aaa',
+					offset: 0.01
+				}
 			},
-			pieSliceTextStyle : {
+			pieSliceTextStyle: {
 				fontSize: '16',
-				bold:true,
-				fontName:'Noto Sans'
+				bold: true,
+				fontName: 'Noto Sans'
 			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16',fontName:'Noto Sans'}}
+			legend: {
+				position: 'none'
+			},
+			enableInteractivity: false
 		};
-        checkSize();
-		chartColumn = new google.visualization.ColumnChart(document.getElementById('chartColumn'));
-		chartDonut01 = new google.visualization.PieChart(document.getElementById('chartDonut01'));
-		chartDonut02 = new google.visualization.PieChart(document.getElementById('chartDonut02'));
-		chartColumn.draw(dataColumn, optionsColumn);
-		chartDonut01.draw(dataDonut01, optionsDonut);
+		var optionsDonut02 = {
+			pieHole: 0.62,
+			pieSliceText: 'value',
+			chartArea: {
+				width: '100%',
+				height: '80%',
+				top: '4%'
+			},
+			slices: {
+				0: {
+					color: '#da0f47',
+					offset: 0.01
+				},
+				1: {
+					color: '#000',
+					offset: 0.01,
+				},
+				2: {
+					color: '#aaa',
+					offset: 0.01
+				}
+			},
+			pieSliceTextStyle: {
+				fontSize: '16',
+				bold: true,
+				fontName: 'Noto Sans'
+			},
+			legend: {
+				position: 'none'
+			},
+			enableInteractivity: false
+		};
+
+		var checkSizeColumn = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsColumn.height = '240';
+				optionsColumn.bar.groupWidth = '25';
+				optionsColumn.vAxis.textStyle.fontSize = '13';
+				optionsColumn.hAxis.textStyle.fontSize = '13';
+				optionsColumn.annotations.textStyle.fontSize = '12';
+				optionsColumn.annotations.stem.length = '5';
+			} else {
+				optionsColumn.height = '420';
+				optionsColumn.bar.groupWidth = '40';
+				optionsColumn.vAxis.textStyle.fontSize = '14';
+				optionsColumn.hAxis.textStyle.fontSize = '14';
+				optionsColumn.annotations.textStyle.fontSize = '13';
+				optionsColumn.annotations.stem.length = '8';
+			}
+		};
+		var checkSizeDonut01 = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsDonut01.pieHole = 0.6;
+				optionsDonut01.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+			} else {
+				optionsDonut01.pieHole = 0.56;
+				optionsDonut01.pieSliceTextStyle.fontSize = "16";
+			}
+		};
+		var checkSizeDonut02 = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsDonut02.pieHole = 0.6;
+				optionsDonut02.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+			} else {
+				optionsDonut02.pieHole = 0.56;
+				optionsDonut02.pieSliceTextStyle.fontSize = "16";
+			}
+		};
+
+		var resize = function () {
+			checkSizeColumn();
+			var chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+			chartColumn.draw(viewColumn, optionsColumn);
+
+			checkSizeDonut01();
+			var chartDonut01 = new google.visualization.PieChart(document.getElementById('donutchart01'));
+			chartDonut01.draw(viewDonut01, optionsDonut01);
+
+			if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
+				checkSizeDonut02();
+				var chartDonut02 = new google.visualization.PieChart(document.getElementById('donutchart02'));
+				chartDonut02.draw(viewDonut02, optionsDonut02);
+			}
+		};
+
+		var init = function () {
+			setTimeout(function () {
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, optionsColumn);
+
+				checkSizeDonut01();
+				var chartDonut01 = new google.visualization.PieChart(document.getElementById('donutchart01'));
+				chartDonut01.draw(viewDonut01, optionsDonut01);
+
+				checkSizeDonut02();
+				var chartDonut02 = new google.visualization.PieChart(document.getElementById('donutchart02'));
+				chartDonut02.draw(viewDonut02, optionsDonut02);
+			}, 500);
+
+			$(".accordion-wrap li.lists:first-child").on('click', function () {
+				setTimeout(function () {
+					resize();
+				}, 500);
+			});
+		};
+
+		window.onload = init();
+		window.onresize = resize;
 	}
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			optionsDonut.legend.textStyle.fontSize="12";
-			optionsDonut.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
-			optionsColumn.bar.groupWidth= '18%';
-		}
-		else{
-			optionsDonut.legend.textStyle.fontSize="16";
-			optionsDonut.pieSliceTextStyle.fontSize="16";
-			optionsColumn.bar.groupWidth= '10%';
-		}
-	}
-	$(window).resize(function() {
-		checkSize();
-		setTimeout(function(){ 
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut01.draw(dataDonut01, optionsDonut);
-				chartDonut02.draw(dataDonut02, optionsDonut);
-		}, 100);
-	});
-	$(document).ready(function() {
-		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:first-child").on('click', function(e){
-			checkSize();
-			setTimeout(function(){
-				chartDonut02.draw(dataDonut02, optionsDonut);
-			}, 100);
-		});
-	});
 </script>
 <style>
+	.graph_dec {font-size:14px;line-height:24px;text-align:right}
+	.graph.pie {
+		position:relative;
+		width:520px;
+		height:370px;
+		margin:0 auto;
+	}
+	.graph.pie .chart_area {width:100%; height:100%}
+	.graph.pie .overlayarea {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center}
+	.graph.pie .overlayarea span {font-size:20px; line-height:30px}
+	.graph.pie .overlayarea strong {display:block; font-size:32px; font-weight:bold}
+	/* .googlechart-wrap .chart_area {
+		width:100%;
+		height:100%;
+	}
+	.googlechart-wrap .overlayarea {
+		position:absolute;
+		top:42%;
+		left:50%;
+		transform:translate(-50%,-42%);
+		text-align:center;
+		font-size:24px;
+		font-weight:bold;
+	}
+	@media screen and (max-width:767px) {
+		.googlechart-wrap {
+			width:100%;
+			height:71.11vw;
+		}
+		.googlechart-wrap .overlayarea { font-size:5vw; }
+	}
+	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
+	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;} */
 	.graph.pattern .c_legend {margin-top:24px}
 	.graph.pattern .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	.googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
-	.googlechart-wrap .chartColumn {height:480px;}
-	.googlechart-wrap .chartDonut {height:370px;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;line-height: 1.2;}
-	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
-	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;}
+	/* .googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
+	.googlechart-wrap .columnchart {height:480px;}
+	.googlechart-wrap .donutchart {height:370px;} */
 	@media screen and (max-width: 767px){
+		.graph_dec {font-size:12px; line-height:20px}
 		.graph.pattern img {width:70%}
-		.graph.pattern .c_legend {padding:0 5%}
-		.googlechart-wrap{width:100%;}
-		.googlechart-wrap .chartColumn {height:53vw;}
-		.googlechart-wrap .chartDonut {height:71.11vw}
+		/* .googlechart-wrap{width:100%;}
+		.googlechart-wrap .columnchart {height:53vw;}
+		.googlechart-wrap .donutchart {height:71.11vw}
 		.googlechart-wrap .overlayarea .small {font-size:3.5vw;}
-		.googlechart-wrap .overlayarea .big {font-size:6.25vw;font-weight:bold;}
+		.googlechart-wrap .overlayarea .big {font-size:6.25vw;font-weight:bold;} */
 	}
 </style>
 <div class="breadcrumb">
@@ -280,23 +463,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</ul>
 		<p class="tit h4">1) 위반행위 제보 접수 추이</p>
 		<div class="graph ofn">
-			<div class="googlechart-wrap">
-				<span class="txt_rt">(단위: 건)</span>
-				<div class="chartarea chartColumn" id="chartColumn"></div>
+			<div style="max-width:910px;margin:0 auto;">
+				<p class="graph_dec">(단위: 건)</p>
+				<div class="chart_area bar" id="columnchart"></div>
 			</div>
 			<!-- 구글차트 -->
 		</div>
 		<p class="tit h4">2) 2020년 위반행위 제보 유형</p>
-		<div class="graph ofn">
-			<div class="googlechart-wrap">
-				<span class="txt_rt">(단위: 건)</span>
-				<div class="chartarea chartDonut" id="chartDonut01"></div>
-				<div class="overlayarea">
-					<span class="small">위반 행위<br>제보 유형</span>
-					<span class="big">457건</span>
-				</div>
-			</div>
+		<div class="graph pie">
+			<p class="graph_dec">(단위: 건)</p>
+			<div class="chart_area donutchart" id="donutchart01"></div>
 			<!-- 구글차트 -->
+			<div class="overlayarea">
+				<span>위반행위 제보 유형</span>
+				<strong>457건</strong>
+			</div>
 			<div class="blind">
 				<span>위반 행위 제보 접수 추이</span>
 				<strong>457건</strong>
@@ -367,7 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<div class="graph ofn">
 								<span class="only_pc txt_rt">(단위: 건)</span>
 								<div class="googlechart-wrap">
-									<div class="chartarea chartDonut" id="chartDonut02"></div>
+									<div class="chart_area donutchart" id="donutchart02"></div>
 									<div class="overlayarea">
 										<span class="small">합계</span>
 										<span class="big">100%(116)</span>

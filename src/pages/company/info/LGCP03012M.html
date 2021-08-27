@@ -14,38 +14,18 @@
 		"content_depth5": "회사소개|기업정보|사업장|해외사업장"
 	};
 </script>
-<script type="text/javascript">
-	var imgMo = "/kr/images/company/info/overseas/img-mobile.png";
-	var imgPc = "/kr/images/company/info/overseas/img-default.png";
-	$(document).ready(function () {
-		checkSize();
-	});
-	$(window).resize(function () {
-		checkSize();
-	});
-
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			$(".overseas .img-overseas img").attr("src", imgMo);
-			$(".overseas area").attr("onmouseover", "");
-			$(".overseas area").attr("onmouseout", "");
-		} else {
-			$(".overseas .img-overseas img").attr("src", imgPc);
-			$(".overseas area").each(function () {
-				var _this = $(this);
-				_this.attr("onmouseover", _this.data("onmouseover"));
-				_this.attr("onmouseout", _this.data("onmouseout"));
-			});
-		}
-	}
-</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
-	/* 해외사업장 */
-	.overseas .tooltip-wrap .tooltip-box {
-		z-index:89;
+	.img-overseas img {
+		width: auto;
+		max-width: 100%;
+		height: auto;
 	}
+
+	.overseas .tooltip-wrap .tooltip-box {
+		z-index: 79;
+	}
+
 	.overseas {
 		position: relative;
 	}
@@ -92,15 +72,33 @@
 		margin: -2px 0 0 3px;
 	}
 
-	/* 해외사업장 mo */
 	@media screen and (max-width:767px) {
 		.overseas {
 			margin-top: 15px;
 		}
 
 		.overseas .img-overseas {
-			overflow-x: scroll;
-			width: 100%;
+			overflow-x: auto;
+		}
+
+		.overseas .img-overseas::-webkit-scrollbar {
+			height: 20px
+		}
+
+		.overseas .img-overseas::-webkit-scrollbar-thumb {
+			border: 8px solid transparent;
+			border-radius: 16px;
+			background-clip: padding-box;
+			background-color: rgba(0, 0, 0, 0.2)
+		}
+
+		.overseas .img-overseas::-webkit-scrollbar-track {
+			background-color: transparent
+		}
+
+		.overseas .img-overseas img {
+			width: 800px;
+			max-width: initial;
 		}
 
 		.country-list {
@@ -126,7 +124,6 @@
 		}
 	}
 
-	/* 해외사업장 pc */
 	@media screen and (min-width:768px) {
 		.overseas {
 			margin-top: 30px;
@@ -244,8 +241,8 @@
 		<div class="overseas"> <map name="pc-map">
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="ASIA & PACIFIC"
 						coords="381,183,333,224,311,263,279,291,480,561,716,613,759,565,617,183"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-asiapacific.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-asiapacific.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">ASIA & PACIFIC</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Australia</span> <span class="links"><a href="https://www.lg.com/au"
@@ -281,8 +278,8 @@
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="LATIN AMERICA"
 						coords="1106,399,1210,399,1334,468,1199,710,1106,710"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-latinamerica.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-latinamerica.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">LATIN AMERICA</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Argentina</span> <span class="links"><a href="https://www.lg.com/ar"
@@ -303,8 +300,8 @@
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="EUROPE"
 						coords="275,30,272,135,219,241,108,281,14,279,0,0"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-europe.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-europe.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">EUROPE</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Austria</span> <span class="links"><a href="https://www.lg.com/at"
@@ -344,8 +341,8 @@
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="MIDDLE EAST & AFRICA"
 						coords="2,303,30,282,183,282,183,241,321,242,303,268,277,293,254,513,125,559,1,381"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-middleeastafrica.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-middleeastafrica.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">MIDDLE EAST & AFRICA</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Algeria</span> <span class="links"><a href="https://www.lg.com/"
@@ -379,8 +376,8 @@
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="NORTH AMERICA"
 						coords="1110,0,780,119,780,256,1070,400,1180,399,1400,192,1400,0"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-northamerica.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-northamerica.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">NORTH AMERICA</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Canada</span> <span class="links"><a href="https://www.lg.com/ca"
@@ -393,8 +390,8 @@
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="RUSSIA & CIS"
 						coords="773,113,654,217,611,177,379,180,309,241,230,238,232,190,280,112,277,22,707,21"
-						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-russiacis.png'"
-						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'" /> <span
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-russiacis.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
 						class="tooltip-box"> <span class="tit">RUSSIA & CIS</span> <span class="country-list">
 							<ul>
 								<li> <span class="country">Kazakhstan</span> <span class="links"><a href="https://www.lg.com/kz"
@@ -408,8 +405,41 @@
 							</ul>
 						</span> <button type="button" class="btn-close"><span class="blind">닫기</span></button> </span> </div>
 			</map>
-			<div class="img-overseas"> <img src="/kr/images/company/info/overseas/img-default.png" name="overseas"
-					usemap="#pc-map" alt="해외 사업장 지도"> </div>
+			<div class="img-overseas">
+				<img src="/kr/images/company/info/overseas/img-overseas-default-map.png" name="overseas" usemap="#pc-map"
+					alt="해외 사업장 지도" width="1380" height="657"><!-- 21.08.26 : width height 추가 - width height 가 들어가야 하네요 -->
+			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="/kr/images/company/jquery.rwdImageMaps.js"></script>
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		$('.img-overseas img[usemap]').rwdImageMaps();
+		checkSize();
+	});
+
+	/* var imgMo = "/kr/images/company/info/overseas/img-mobile.png"; */
+	/* var imgPc = "/kr/images/company/info/overseas/img-overseas-default-map.png"; */
+
+	/* $(window).resize(function () {
+		checkSize();
+	}); */
+
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			/* $(".overseas .img-overseas img").attr("src", imgMo); */
+			$(".overseas area").attr("onmouseover", "");
+			$(".overseas area").attr("onmouseout", "");
+		} else {
+			/* $(".overseas .img-overseas img").attr("src", imgPc); */
+			$(".overseas area").each(function () {
+				var _this = $(this);
+				_this.attr("onmouseover", _this.data("onmouseover"));
+				_this.attr("onmouseout", _this.data("onmouseout"));
+			});
+		}
+	}
+</script>
