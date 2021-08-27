@@ -668,9 +668,9 @@ $(function () {
             if (index === 0) {
                 videoAttr += " preload='auto'";
             } else if(posterSrc) {
-                videoAttr += " poster='" + posterSrc + "' preload='auto'";
+                videoAttr += " poster='" + posterSrc + "' preload='metadata'";
             } else {
-                videoAttr += " preload='auto'";
+                videoAttr += " preload='metadata'";
             }
 
             // 비디오 요소 생성.
@@ -701,7 +701,7 @@ $(function () {
                 $video.data($target.data());
                 $video.data('sceneIndex', index)
 
-                $video[0].addEventListener('canplay', function(){
+                $video[0].addEventListener('loadedmetadata', function(){
                     $video[0].muted = true
                     // $video[0].play()
                     sceneIO.observe($video[0])
