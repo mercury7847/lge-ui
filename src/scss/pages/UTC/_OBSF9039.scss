@@ -8,13 +8,21 @@
             max-width:678px + 80px;
         }
     }
-    /* 2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 (.section-wrap .sects > .tit-wrap 삭제) */
-    .section-inner{
-        &.bt-line{
-            padding-bottom:48px;
-            border-bottom:1px solid #ddd;
+    /* 2021.08.27 BTOCSITE-4704 */
+    .section-wrap{
+        .sects:not(.buy-step-info){
+            > .tit-wrap {
+                border-bottom: 0;
+            }
         }
-    }
+        .section-inner{
+            &.bt-line{
+                padding-bottom:48px;
+                border-bottom:1px solid #ddd;
+            }
+        }
+    } 
+    /* //2021.08.27 BTOCSITE-4704 */
     .welcome-joinus {
         display:table;
         width:100%;
