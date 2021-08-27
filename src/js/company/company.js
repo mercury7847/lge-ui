@@ -88,15 +88,15 @@ $(document).ready(function() {
 	
 	//SHEE 정책 다운로드
 	if ($('#select_shee').val() == '') {
-		$("#btn_shee").attr("disabled", true);
+		$("#btn_shee").addClass("disabled").attr("disabled", true);
 	} else {
-		$("#btn_shee").attr("disabled", false);
+		$("#btn_shee").removeClass("disabled").attr("disabled", false);
 	}
 	$('#select_shee').on("change", function() {
 		if ($('#select_shee').val() == '') {
-			$("#btn_shee").attr("disabled", true);
+			$("#btn_shee").addClass("disabled").attr("disabled", true);
 		} else {
-			$("#btn_shee").attr("disabled", false);
+			$("#btn_shee").removeClass("disabled").attr("disabled", false);
 		}
 	});
 	$('#btn_shee').on("click", function() {

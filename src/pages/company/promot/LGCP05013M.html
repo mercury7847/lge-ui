@@ -31,26 +31,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 	function drawChart() {
 		var dataColumn = google.visualization.arrayToDataTable([
-			['위반 행위 제보 접수 추이', '접수', {
+			['위반행위 제보 접수 추이', '접수', {
 				role: 'annotation'
 			}, {
 				role: 'style'
 			}],
 			['2020', 457, ' 457 ', 'fill-color: #da0f47'],
 			['2019', 656, ' 656 ', 'fill-color: #000000'],
-			['2018', 402, ' 402 ', 'fill-color: #000000']
+			['2018', 402, ' 402 ', 'fill-color: #000000'],
 		]);
 		var dataDonut01 = google.visualization.arrayToDataTable([
 			['', 'Amount'],
-			['민원', 350],
-			['부정비리', 52],
-			['기타', 55]
+			['부정비리(HR, 불공정거래 등)', 52],
+			['기타', 55],
+			['민원(고객불만, 협력회사 고충)', 350],
 		]);
 		var dataDonut02 = google.visualization.arrayToDataTable([
 			['', 'Amount'],
-			['중징계', 58],
 			['경징계', 45],
-			['징계해고 권고사직', 13]
+			['징계해고 권고사직', 13],
+			['중징계', 58],
 		]);
 
 		var viewColumn = new google.visualization.DataView(dataColumn);
@@ -129,15 +129,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			},
 			slices: {
 				0: {
-					color: '#da0f47',
+					color: '#000',
 					offset: 0.01
 				},
 				1: {
-					color: '#000',
+					color: '#aaa',
 					offset: 0.01,
 				},
 				2: {
-					color: '#aaa',
+					color: '#da0f47',
 					offset: 0.01
 				}
 			},
@@ -161,15 +161,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			},
 			slices: {
 				0: {
-					color: '#da0f47',
+					color: '#000',
 					offset: 0.01
 				},
 				1: {
-					color: '#000',
+					color: '#aaa',
 					offset: 0.01,
 				},
 				2: {
-					color: '#aaa',
+					color: '#da0f47',
 					offset: 0.01
 				}
 			},
@@ -267,51 +267,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <style>
 	.graph_dec {font-size:14px;line-height:24px;text-align:right}
-	.graph.pie {
-		position:relative;
-		width:520px;
-		height:370px;
-		margin:0 auto;
-	}
+	.graph.pie {position:relative; max-width:910px; height:394px; margin:0 auto 20px; margin-top:0; padding-top:24px}
+	.graph.pie .c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
+	.graph.pie .graph_dec {position:absolute; top:0; right:0}
 	.graph.pie .chart_area {width:100%; height:100%}
-	.graph.pie .overlayarea {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center}
-	.graph.pie .overlayarea span {font-size:20px; line-height:30px}
-	.graph.pie .overlayarea strong {display:block; font-size:32px; font-weight:bold}
-	/* .googlechart-wrap .chart_area {
-		width:100%;
-		height:100%;
-	}
-	.googlechart-wrap .overlayarea {
-		position:absolute;
-		top:42%;
-		left:50%;
-		transform:translate(-50%,-42%);
-		text-align:center;
-		font-size:24px;
-		font-weight:bold;
-	}
-	@media screen and (max-width:767px) {
-		.googlechart-wrap {
-			width:100%;
-			height:71.11vw;
-		}
-		.googlechart-wrap .overlayarea { font-size:5vw; }
-	}
-	.googlechart-wrap .overlayarea .small {font-size:20px;display:block;}
-	.googlechart-wrap .overlayarea .big {font-size:32px;font-weight:bold;display:block;} */
+	.graph.pie .overlayarea {position:absolute; top:48%; left:50%; transform:translate(-50%,-50%); text-align:center}
+	.graph.pie .overlayarea span {display:block; font-size:20px; line-height:24px}
+	.graph.pie .overlayarea strong {display:block; margin-top:5px!important; margin-bottom:0!important; font-size:32px; font-weight:bold; line-height:32px}
+	.graph.pie .overlayarea span strong {margin-top:0!important; margin-bottom:5px!important}
 	.graph.pattern .c_legend {margin-top:24px}
 	.graph.pattern .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	/* .googlechart-wrap {position: relative;max-width:900px;margin:0 auto;}
-	.googlechart-wrap .columnchart {height:480px;}
-	.googlechart-wrap .donutchart {height:370px;} */
 	@media screen and (max-width: 767px){
 		.graph_dec {font-size:12px; line-height:20px}
-		.graph.pattern img {width:70%}
-		/* .googlechart-wrap{width:100%;}
-		.googlechart-wrap .columnchart {height:53vw;}
-		.googlechart-wrap .donutchart {height:71.11vw}
-		.googlechart-wrap .overlayarea .small {font-size:3.5vw;}
-		.googlechart-wrap .overlayarea .big {font-size:6.25vw;font-weight:bold;} */
+		.graph.pattern img {width:70%; max-width:200px}
+		.graph.pie {width:100%; height:76vw}
+		.graph.pie .overlayarea span {font-size:14px; line-height:22px}
+		.graph.pie .overlayarea strong {font-size:24px; line-height:24px}
+	}
+	@media screen and (max-width: 491px){
+		.graph.pie.pie1 {margin-bottom:40px}
+		.graph.pie.pie1 .c_legend {bottom:-12px}
 	}
 </style>
 <div class="breadcrumb">
@@ -466,25 +441,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div style="max-width:910px;margin:0 auto;">
 				<p class="graph_dec">(단위: 건)</p>
 				<div class="chart_area bar" id="columnchart"></div>
+				<!-- 구글차트 -->
 			</div>
-			<!-- 구글차트 -->
+			<div class="blind">
+				<span>위반행위 제보 접수 추이</span>
+				<ul>
+					<li>2020년 457건</li>
+					<li>2019년 656건</li>
+					<li>2028년 402건</li>
+				</ul>
+			</div>
 		</div>
 		<p class="tit h4">2) 2020년 위반행위 제보 유형</p>
-		<div class="graph pie">
+		<div class="graph pie pie1">
 			<p class="graph_dec">(단위: 건)</p>
 			<div class="chart_area donutchart" id="donutchart01"></div>
 			<!-- 구글차트 -->
 			<div class="overlayarea">
-				<span>위반행위 제보 유형</span>
+				<span>위반행위 <br>제보 유형</span>
 				<strong>457건</strong>
 			</div>
+			<div class="c_legend">
+				<p class="lgnd">민원(고객불만, 협력회사 고충)<span class="pink"></span></p>
+				<p class="lgnd">부정비리<span class="blk"></span></p>
+				<p class="lgnd">기타(HR 위반, 불공정거래 등)<span class="gray"></span></p>
+			</div>
 			<div class="blind">
-				<span>위반 행위 제보 접수 추이</span>
-				<strong>457건</strong>
+				<span>2020년 위반행위 제보 유형(457건)</span>
 				<ul>
-					<li>민원(고객불만, 협력회사 고충) 350건</li>
-					<li>부정비리 52건</li>
-					<li>기타(HR 위반, 불공정거래 등) 55 건</li>
+					<li>민원(고객불만, 협력회사 고충)(350건)</li>
+					<li>부정비리(52건)</li>
+					<li>기타(HR 위반, 불공정거래 등)(55건)</li>
 				</ul>
 			</div>
 		</div>
@@ -545,25 +532,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li>머신러닝, AI 등의 최신기술을 도입하여 각각의 리스크별 모니터링 체계를 구축</li>
 							</ul>
 							<p class="tit h4 mt">2020년 자체 진단 조치 현황</p>
-							<div class="graph ofn">
-								<span class="only_pc txt_rt">(단위: 건)</span>
-								<div class="googlechart-wrap">
-									<div class="chart_area donutchart" id="donutchart02"></div>
-									<div class="overlayarea">
-										<span class="small">합계</span>
-										<span class="big">100%(116)</span>
-									</div>
+							<div class="graph pie">
+								<p class="graph_dec">(단위: 건)</p>
+								<div class="chart_area donutchart" id="donutchart02"></div>
+								<!-- 구글차트 -->
+								<div class="overlayarea">
+									<span>합계<strong>100%</strong>(116)</span>
+								</div>
+								<div class="c_legend">
+									<p class="lgnd">중징계<span class="pink"></span></p>
+									<p class="lgnd">경징계<span class="blk"></span></p>
+									<p class="lgnd">징계해고&middot;권고사직<span class="gray"></span></p>
 								</div>
 								<div class="blind">
-									<span>위반 행위 제보 접수 추이</span>
-									<strong>457건</strong>
+									<span>2020년 자체 진단 조치 현황</span>
+									<strong>합계 100%(116건)</strong>
 									<ul>
-										<li>민원(고객불만, 협력회사 고충) 350건</li>
-										<li>부정비리 52건</li>
-										<li>기타(HR 위반, 불공정거래 등) 55 건</li>
+										<li>중징계 50%(58건)</li>
+										<li>경징계 38.8%(45건)</li>
+										<li>징계해고&middot;권고사직 11.2%(13건)</li>
 									</ul>
 								</div>
-								<!-- 구글차트 -->
 							</div>
 							<div class="tb_row tb-row-bl middle">
 								<table>
