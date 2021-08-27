@@ -2944,43 +2944,7 @@
             }
         }
     }
-
-    /* BTOCSITE-4042 add :: 회원가입 이벤트 배너 추가 */
-    .evt-banner-4042 {
-        position: relative;
-        max-width: 1460px;
-        margin: 0 auto;
-        padding: 0 40px;
-        margin-bottom:126px;
-
-        @include mobile {
-            margin-bottom:60px;
-            padding: 0 16px;
-        }
-
-        img {
-            width:100%;
-            height:auto;
-        }
-        .only_desktop {
-            display:block;  
-            max-height:220px;
-            @include mobile {
-                display:none;
-            }
-        }
-
-        .only_mobile {
-            display:none;
-            max-height:300px;
-            @include mobile {
-                display:block;
-            }         
-            
-        }
-    }
-    /* //BTOCSITE-4042 add :: 회원가입 이벤트 배너 추가 */
-    }
+}
 
 .mobile .support-home .had-pd-container .had-pd-slider .item-card .card-back-cont {
     &::-webkit-scrollbar {
