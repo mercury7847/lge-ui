@@ -658,3 +658,111 @@
         }
     }
 }
+
+
+//BTOCSITE-1967 모바일 웹하단바 - start
+.mdevice {
+    &:not(.app) {
+        $statusBarHeight: 70px;
+        .floating-wrap {
+            bottom:(48px + 70px);
+
+            @include mobile {
+                bottom:(24px + 70px);
+            }
+        }
+        .floating-menu {
+            &.more-plus {
+                bottom:(48px + $statusBarHeight);
+                @include mobile {
+                    bottom:(24px + $statusBarHeight);
+                }
+            }
+            &.top {
+                bottom:(48px + $statusBarHeight);
+                @include mobile {
+                    bottom:(24px + $statusBarHeight);
+                }
+            }
+            &.floating-list {
+                bottom:(122px + $statusBarHeight);
+                @include mobile {
+                    bottom:(74px + $statusBarHeight)
+                }
+            }
+            &.chat {
+                bottom:(112px+72px+12px + $statusBarHeight);
+        
+                @include mobile {
+                    bottom:(144px + $statusBarHeight);
+                }
+            }
+            &.cs-call {
+                bottom:(112px+172px + $statusBarHeight);
+                @include mobile {
+                    bottom:(232px + $statusBarHeight);
+                }
+            }
+            &.btn3 {
+                bottom:(460px + $statusBarHeight);
+                @include mobile {
+                    bottom:(407px + $statusBarHeight);
+                }
+            }
+            &.btn4 {
+                bottom:(548px + $statusBarHeight);
+                @include mobile {
+                    bottom:(495px + $statusBarHeight);
+                }
+            }
+            &.lately {
+                bottom:(255px + $statusBarHeight);
+                
+                @include mobile {
+                    bottom:(160px + $statusBarHeight);
+                }
+            }
+            &.cs-cst {
+                bottom:(120px + $statusBarHeight);
+                @include mobile {
+                    bottom:(92px + $statusBarHeight);
+                }
+            }
+        }
+
+        .btn-type2 {
+            .floating-menu.chat {
+                bottom:(284px + $statusBarHeight);
+                @include mobile {
+                    bottom:(231px + $statusBarHeight);
+                }
+            }
+            .floating-menu.cs-call {
+                bottom:(372px + $statusBarHeight);
+                @include mobile {
+                    bottom:(319px + $statusBarHeight);
+                }
+            }
+        }
+
+        .btn-floating-wrap {
+            &.scroll {
+                .floating-menu.more-plus {
+                    bottom:(120px + $statusBarHeight);
+                }
+                .floating-list {
+                    bottom:(192px + $statusBarHeight);
+                }
+                @include mobile {
+                    .floating-menu.more-plus {
+                        bottom:(74px + $statusBarHeight);
+                    }
+                    .floating-list {
+                        bottom:(60px + 24px + 40px + $statusBarHeight);
+                    }
+                }
+            }
+        }
+    }
+}
+//BTOCSITE-1967 모바일 웹하단바 - end

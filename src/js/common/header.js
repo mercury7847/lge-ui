@@ -723,15 +723,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $('.is-main-sticky-header').removeClass('show-skip')
             });
 
+            //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
             self.$statusBar = $('div.mobile-status-bar');
 			self.$statusList = self.$statusBar.find('.mobile-status-list');
-
+            
             self.$statusList.find('.nav-anchor a').on('click', function(e){
 				e.preventDefault();
 
-				console.log(111)
-
-				$('.mobile-nav-button').trigger('click');
+				console.log('aaaa')
+				self.$hamburger.trigger('click');
 			})
         },
 

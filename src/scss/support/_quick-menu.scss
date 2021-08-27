@@ -307,6 +307,7 @@
                 // right: 64px;
                 // width: 200px;
                 opacity:0;
+                font-size:0; //BTOCSITE-1967
                 // transition:all ease 0.5s;
             }
         }
@@ -458,7 +459,13 @@
 }
 
 .mobile:not(.app) {
+    $statusBarHeight: 70px;
     .quick-menu {
+        bottom: (48px + $statusBarHeight);
+
+        @include mobile {
+            bottom:(24px + $statusBarHeight);
+        }
         &:before {
             content:"";
             background:transparent;
