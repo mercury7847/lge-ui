@@ -38,7 +38,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-			['재생 플라스틱 사용량', '년도',  {role:'annotation'}],
+			['재생 플라스틱 사용량', '사용량', {
+				role: 'annotation'
+			}],
 			['2020', 11149, '11,149'],
 			['2019', 9282, '9,282'],
 			['2018', 11030, '11,030'],
@@ -48,67 +50,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		var view = new google.visualization.DataView(data);
 
 		var columnOptions = {
-				title:{
-						position:'none'
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 330,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
 				},
-		fontName:'Noto Sans',
-				chartArea:{
-						width:'100%',
-						left:50,
-						right:0,
-						top:10,
-						bottom:40
-				},
-		height:330,
-				legend:{
-						position:'none'
-				},
-				series:{
-			0:{
-								color:'#da0f47'
-						},
-				},
-				bar:{
-						groupWidth:'48',
-				},
+			},
+			bar: {
+				groupWidth: '48',
+			},
 
-				annotations :{
-						alwaysOutside:true,
-						textStyle:{
-								fontSize:13,
-								bold: true,
-								auraColor: 'none'
-						},
-						stem:{
-								color:'none',
-								length:'8'
-						}
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
 				},
-				vAxis:{
-						title:{
-								position:'none'
-						},
-			minValue:'0',
-						textStyle:{
-								fontSize:'14',
-						},
-						gridlines:{
-								color:'#ddd',
-						},
-						minorGridlines:{
-								color:'#fff',
-						}
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
 				},
-				hAxis:{
-						title: {
-								position:'none'
-						},
-						textStyle: {
-								fontSize:'16',
-						}
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
 				},
+				gridlines: {
+					color: '#ddd',
+				},
+				minorGridlines: {
+					color: '#fff',
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
 		};
-		
+
 		function checkSize() {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
@@ -129,7 +131,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		}
 
 		var data2 = google.visualization.arrayToDataTable([
-			['2006년 이후 폐전자제품 누적 회수/처리 지역별 실적 : 한국', '년도',  {role:'annotation'}, {role:'style'}],
+			['2006년 이후 폐전자제품 누적 회수/처리 지역별 실적 : 한국', '', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
 			['2020', 3073688, '3,073,688', '#da0f47'],
 			['2019', 2661571, '2,661,571', '#000'],
 			['2018', 2306374, '2,306,374', '#000'],
@@ -145,231 +151,232 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			['2008', 242249, '242,249', '#000'],
 			['2007', 134114, '134,114', '#000'],
 			['2006', 56480, '56,480', '#000']
-    ]);
+		]);
 
-    var view2 = new google.visualization.DataView(data2);
-	
-    var barOptions2 = {
-        title:{
-            position:'none'
-        },
-		fontName:'Noto Sans',
-        chartArea:{
-            width:'100%',
-            left:50,
-            right:0,
-            top:10,
-            bottom:40
-        },
-		height:500,
-        legend:{
-            position:'none'
-         },
-        series:{
-            0:{
-				color:'#da0f47'
-            }
-        },
-        bar:{
-            groupWidth:'16',
-        },
+		var view2 = new google.visualization.DataView(data2);
 
-        annotations :{
-            alwaysOutside:true,
-            textStyle:{
-                fontSize:13,
-                bold: true,
-                auraColor: 'none'
-            },
-            stem:{
-                color:'none',
-                length:'8'
-            }
-        },
-        vAxis:{
-            title:{
-                position:'none'
-            },
-            textStyle:{
-                fontSize:'14',
-            }
-        },
-        hAxis:{
-            title: {
-                position:'none'
-            },
-			minValue:'0',
-            textStyle: {
-                fontSize:'16',
-            },
-            gridlines:{
-                color:'#ddd',
-				count :'6'
-            },
-            minorGridlines:{
-                color:'#fff',
-            },
-        },
-    };
-	
-	function checkSize2() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			barOptions2.height = '380';
-			barOptions2.bar.groupWidth = "8";
-			barOptions2.vAxis.textStyle.fontSize ='10';
-			barOptions2.hAxis.textStyle.fontSize ='10';
-			barOptions2.annotations.textStyle.fontSize ='10';
-      barOptions2.annotations.stem.length = '5';
-		} else {
-			barOptions2.height = '500';
-			barOptions2.bar.groupWidth = "16";
-			barOptions2.vAxis.textStyle.fontSize ='14';
-			barOptions2.hAxis.textStyle.fontSize ='14';
-			barOptions2.annotations.textStyle.fontSize ='13';
-      barOptions2.annotations.stem.length = '5';
+		var barOptions2 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 500,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				}
+			},
+			bar: {
+				groupWidth: '16',
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '14',
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '16',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+			},
+		};
+
+		function checkSize2() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				barOptions2.height = '380';
+				barOptions2.bar.groupWidth = "8";
+				barOptions2.vAxis.textStyle.fontSize = '10';
+				barOptions2.hAxis.textStyle.fontSize = '10';
+				barOptions2.annotations.textStyle.fontSize = '10';
+				barOptions2.annotations.stem.length = '5';
+			} else {
+				barOptions2.height = '500';
+				barOptions2.bar.groupWidth = "16";
+				barOptions2.vAxis.textStyle.fontSize = '14';
+				barOptions2.hAxis.textStyle.fontSize = '14';
+				barOptions2.annotations.textStyle.fontSize = '13';
+				barOptions2.annotations.stem.length = '5';
+			}
 		}
-	}
 
-	var data3 = google.visualization.arrayToDataTable([
-		['고출력 모듈 개발을 통한 발전량 개선', 'N타입 모듈',  {role:'annotation'}, '백컨택모듈', {role:'annotation'}],
-		['2021', 395, '395w', 405, '405w'],
-		['2020', 365, '365w', 380, '380w'],
-		['2019', 345, '345w', 375, '375w'],
-	]);
-    var view3 = new google.visualization.DataView(data3);
-    var columnOptions3 = {
-        title:{
-            position:'none'
-        },
-		fontName:'Noto Sans',
-        chartArea:{
-            width:'100%',
-            left:30,
-            right:0,
-            top:10,
-            bottom:40
-        },
-		height:500,
-        legend:{
-            position:'none'
-         },
-        series:{
-            0:{
-				color:'#000'
-            },
-			1:{
-                color:'#da0f47'
-            },
-        },
-        bar:{
-            groupWidth:'88',
-			gap:8
-        },
+		var data3 = google.visualization.arrayToDataTable([
+			['고출력 모듈 개발을 통한 발전량 개선', 'N타입 모듈', {
+				role: 'annotation'
+			}, '백컨택모듈', {
+				role: 'annotation'
+			}],
+			['2021', 390, '390w', 400, '400w'],
+			['2020', 370, '370w', 385, '385w'],
+			['2019', 350, '350w', 380, '380w'],
+		]);
+		var view3 = new google.visualization.DataView(data3);
+		var columnOptions3 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 30,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 500,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#000'
+				},
+				1: {
+					color: '#da0f47'
+				},
+			},
+			bar: {
+				groupWidth: '88',
+				gap: 8
+			},
 
-        annotations :{
-            alwaysOutside:true,
-            textStyle:{
-                fontSize:13,
-                bold: true,
-                auraColor: 'none'
-            },
-            stem:{
-                color:'none',
-                length:'8'
-            }
-        },
-        vAxis:{
-            title:{
-                position:'none'
-            },
-			maxValue:'450',
-			minValue:'0',
-            textStyle:{
-                fontSize:'14',
-            },
-            gridlines:{
-                color:'#ddd',
-				count :'10'
-            },
-            minorGridlines:{
-                color:'#fff',
-            },
-        },
-        hAxis:{
-            title: {
-                position:'none'
-            },
-            textStyle: {
-                fontSize:'16',
-            }
-        },
-        tooltip: {
-            isHtml: true
-        }
-    };
-	
-	function checkSize3() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			columnOptions3.height = '335';
-			columnOptions3.bar.groupWidth = '60';
-			columnOptions3.bar.gap = '10'; 
-			columnOptions3.vAxis.textStyle.fontSize = '13';
-			columnOptions3.hAxis.textStyle.fontSize = '13';
-			columnOptions3.annotations.textStyle.fontSize = '12';
-			columnOptions3.annotations.stem.length = '5';
-		} else {
-			columnOptions3.height = '500';
-			columnOptions3.bar.groupWidth = '88';
-			columnOptions3.bar.gap = '8'; 
-			columnOptions3.vAxis.textStyle.fontSize = '14';
-			columnOptions3.hAxis.textStyle.fontSize = '14';
-			columnOptions3.annotations.textStyle.fontSize = '13';
-			columnOptions3.annotations.stem.length = '8';
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '450',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '10'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+		};
+
+		function checkSize3() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions3.height = '335';
+				columnOptions3.bar.groupWidth = '60';
+				columnOptions3.bar.gap = '10';
+				columnOptions3.vAxis.textStyle.fontSize = '13';
+				columnOptions3.hAxis.textStyle.fontSize = '13';
+				columnOptions3.annotations.textStyle.fontSize = '12';
+				columnOptions3.annotations.stem.length = '5';
+			} else {
+				columnOptions3.height = '500';
+				columnOptions3.bar.groupWidth = '88';
+				columnOptions3.bar.gap = '8';
+				columnOptions3.vAxis.textStyle.fontSize = '14';
+				columnOptions3.hAxis.textStyle.fontSize = '14';
+				columnOptions3.annotations.textStyle.fontSize = '13';
+				columnOptions3.annotations.stem.length = '8';
+			}
 		}
-	}
 
-	function resize() {
-		checkSize();
-		var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
-		chart.draw(view, columnOptions);
-
-		checkSize2();
-		var chart2 = new google.visualization.BarChart(document.getElementById("chart_div2"));
-    chart2.draw(view2, barOptions2);
-
-		checkSize3();
-		var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
-		chart3.draw(view3, columnOptions3);
-	}
-	window.onload = resize();
-	window.onresize = resize;
-
-	$(".draw_chart_div").on('click', function (e) {
-		setTimeout(function () {
+		function resize() {
 			checkSize();
 			var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
 			chart.draw(view, columnOptions);
-		}, 500);
-	});
 
-	$(".draw_chart_div2").on('click', function (e) {
-		setTimeout(function () {
 			checkSize2();
 			var chart2 = new google.visualization.BarChart(document.getElementById("chart_div2"));
 			chart2.draw(view2, barOptions2);
-		}, 500);
-	});
 
-	$(".draw_chart_div3").on('click', function (e) {
-		setTimeout(function () {
 			checkSize3();
 			var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
 			chart3.draw(view3, columnOptions3);
-		}, 500);
-	});
-}
+		}
+		window.onload = resize();
+		window.onresize = resize;
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+				chart.draw(view, columnOptions);
+			}, 500);
+		});
+
+		$(".draw_chart_div2").on('click', function (e) {
+			setTimeout(function () {
+				checkSize2();
+				var chart2 = new google.visualization.BarChart(document.getElementById("chart_div2"));
+				chart2.draw(view2, barOptions2);
+			}, 500);
+		});
+
+		$(".draw_chart_div3").on('click', function (e) {
+			setTimeout(function () {
+				checkSize3();
+				var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
+				chart3.draw(view3, columnOptions3);
+			}, 500);
+		});
+	}
 </script>
 <div class="breadcrumb">
 	<ul>
@@ -887,33 +894,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<ul class="bull stit">
 								<li>
 									<strong>재생 플라스틱 사용량</strong>
-									<!-- 그래프 -->
 									<div class="thumb">
 										<div style="max-width:910px;margin:0 auto;">
 											<p class="graph_dec">(단위: 톤)</p>
 											<div class="chart_area" id="chart_div"></div>
-										</div>
-										<!-- 구글차트 -->
-										<div class="blind">
-											<p>(단위: 톤)</p>
-											<ul>
-												<li>
-													<span>2020</span>
-													<p>11,149</p>
-												</li>
-												<li>
-													<span>2019</span>
-													<p>9,282</p>
-												</li>
-												<li>
-													<span>2018</span>
-													<p>11,130</p>
-												</li>
-												<li>
-													<span>2017</span>
-													<p>7,134</p>
-												</li>
-											</ul>
+											<!-- 구글차트 -->
+											<div class="blind">
+												<p>(단위: 톤)</p>
+												<ul>
+													<li>
+														<span>2020</span>
+														<p>11,149</p>
+													</li>
+													<li>
+														<span>2019</span>
+														<p>9,282</p>
+													</li>
+													<li>
+														<span>2018</span>
+														<p>11,030</p>
+													</li>
+													<li>
+														<span>2017</span>
+														<p>7,134</p>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</li>
@@ -1111,15 +1117,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit">3) 폐전기전자제품 무상 회수서비스(한국)</p>
 							<p class="text">LG전자는 지난 2003년부터 시행된 ‘생산자책임 재활용제도’에 적극 동참하여 폐전기전자제품의 무상 회수 서비스를 운영하고 있습니다. 고객으로부터 회수 신청을 접수 받은 후 설치 전문가가 직접 방문하여 무상으로 대형 폐전기전자제품을 회수하며, 소형 폐가전의 경우 LG전자 서비스센터의 전용 수거함을 통해 회수되고 있습니다. LG전자는 수거한 폐전기전자제품을 분해 및 분류 과정을 통해 원자재로 재활용, 자원순환에 기여하고 있습니다.</p>
 							<p class="tit">4) 2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적</p>
-							<!-- 그래프 -->
 							<div style="max-width:1140px;margin:0 auto;">
 								<p class="graph_dec">(단위: 톤)</p>
 								<div class="chart_area bar" id="chart_div2"></div>
-							</div>
-							<!-- 구글차트 -->
-							<div class="thumb w1142">
-								<!-- <img class="only_pc" src="/kr/images/company/sustainable/img-waste-electronics-graph-pc.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적">
-								<img class="only_mo" src="/kr/images/company/sustainable/img-waste-electronics-graph-mo.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적"> -->
+								<!-- 구글차트 -->
 								<div class="blind">
 									<p>(단위: 톤)</p>
 									<ul>
@@ -1226,11 +1227,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit">1) 태양광발전 부품 및 솔루션 확산</p>
 							<p class="text">LG전자는 고성능&middot;고품질의 태양광 모듈 제공 및 사업 포트폴리오 다변화를 통해 태양전지 사업 경쟁력을 확보하고 고객에게 지속적으로 에너지 사용에 대한 가치를 제공하고 있습니다. 특히, 제품 경쟁력 강화를 위해 모듈의 출력을 개선하고 있으며, 제품 원가 절감을 위한 다양한 활동을 통해 총원가를 개선해 나가고 있습니다. 향후 LG전자는 태양광발전 부품 및 솔루션에 대한 비즈니스를 지속적으로 확대하고 관련 응용 제품 시장에도 진입하여 사업 포트폴리오를 다변화해 나갈 계획입니다.</p>
 							<p class="tit">2) 고출력 모듈 개발을 통한 발전량 개선</p>
-							<!-- 구글차트 -->
 							<div class="graph_modules">
 								<div style="max-width:675px; margin:0 auto">
 									<p class="graph_dec">(60셀 모듈 최고출력 기준)</p>
 									<div class="chart_area percent" id="chart_div3"></div>
+									<!-- 구글차트 -->
+									<div class="blind">
+										<ul>
+											<li>
+												<span>2021</span>
+												<ul>
+													<li>390W(N타입 모듈)</li>
+													<li>400W(백컨택 모듈)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2020</span>
+												<ul>
+													<li>370W(N타입 모듈)</li>
+													<li>385W(백컨택 모듈)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2019</span>
+												<ul>
+													<li>350W(N타입 모듈)</li>
+													<li>380W(백컨택 모듈)</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<div class="grp_info">
 									<div class="c_legend">
