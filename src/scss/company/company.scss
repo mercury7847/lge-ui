@@ -15,7 +15,7 @@ br.pc {display:block}
 .com-tabs .tabs-wrap {padding:0 40px; margin:0 auto; max-width:1460px}
 .com-tabs .tabs-wrap:before {left:40px; right:40px}
 .com-tabs .tabs-wrap.border-type {padding-top:33px}
-// .com-tabs .tabs-wrap.border-type .tabs {overflow:visible}
+.com-tabs .tabs-wrap.border-type .tabs {overflow:visible}
 .com-tabs .tabs-wrap.border-type .tabs>li {position:relative}
 .com-tabs .tabs-wrap.border-type .tabs>li>a {padding-bottom:8px}
 .com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {height:4px}
@@ -46,6 +46,10 @@ br.pc {display:block}
 .company .sustainable-download .btn {margin-top:26px; background:transparent; border:solid 1px #fafafa}
 .company .sustainable-download .btn + .btn {margin-left:17px}
 
+@media screen and (max-width:880px) {
+	.com-tabs .tabs-wrap.border-type .tabs {overflow-x:auto; overflow-y:hidden}
+	.com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {bottom:0px}
+}
 /* 모바일 */
 @media screen and (max-width:767px) {
 	br.mo {display:block}
@@ -217,7 +221,13 @@ br.pc {display:block}
 .pdfdwn_list .pdfdwn_items {margin-top:20px}
 .pdfdwn_list .pdfdwn_select {width:calc(100% - 86px); display:inline-block}
 .pdfdwn_list .pdfdwn_btn {width:100%; border:solid 1px #000000; font-size:14px; font-weight:500; background:#fff; padding:10px 0; border-radius:8px; color:#000}
-.pdfdwn_list .pdfdwn_btn:hover {border-color:#da0f47; background:#da0f47; color:#fff}
+.pdfdwn_list .pdfdwn_btn:hover,
+.pdfdwn_list .pdfdwn_btn:focus,
+.pdfdwn_list .pdfdwn_btn:active {border-color:#da0f47; background:#da0f47; color:#fff}
+.pdfdwn_list .pdfdwn_btn.disabled,
+.pdfdwn_list .pdfdwn_btn.disabled:hover,
+.pdfdwn_list .pdfdwn_btn.disabled:focus,
+.pdfdwn_list .pdfdwn_btn.disabled:active {border-color:#ddd!important; background:#f4f4f4; color:#aaa}
 .pdfdwn_list .pdfdwn_select + .pdfdwn_btn {width:76px; min-width:76px; margin-left:10px}
 @media screen and (max-width:767px) {
 	.pdfdwn_list > li {width:100%; padding:20px 15px}

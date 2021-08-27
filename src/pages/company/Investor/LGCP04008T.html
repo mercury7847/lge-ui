@@ -51,7 +51,7 @@
 			},
 			series: {
 				0: {
-					color: '#e91953'
+					color: '#da0f47'
 				},
 			},
 			bar: {
@@ -120,16 +120,16 @@
 			}, {
 				role: 'style'
 			}],
-			['2020', 3.19, '3.19', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
-			['2019', 2.44, '2.44', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
-			['2018', 2.70, '2.70', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953']
+			['2020', 3.19, '3.19', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47'],
+			['2019', 2.44, '2.44', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47'],
+			['2018', 2.70, '2.70', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47']
 		]);
 		var viewCombo = new google.visualization.DataView(dataCombo);
 		var comboOptions = {
 			series: {
 				0: {
 					targetAxisIndex: 0,
-					color: '#e91953',
+					color: '#da0f47',
 					type: 'line',
 					pointSize: 12,
 					pointShape: 'circle'
@@ -199,14 +199,12 @@
 <style>
 	.graph_area::after {content:''; display:block; clear:both}
 	.graph_area .graph {float:left; width:50%; max-width:50%}
+	.graph_area .graph .tit {margin-bottom:10px}
 	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
-	@media screen and (max-width:768px){
+	@media screen and (max-width:767px){
 		.graph_dec {font-size:12px;line-height:20px;}
 		.graph_area .graph {float:none; width:100%; max-width:100%; margin-top:60px}
 	}
-	#columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} 
-	#combochart svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;} 
-	#combochart svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
 </style>
 <div class="breadcrumb">
 	<ul>
@@ -310,12 +308,12 @@
 					<div class="graph">
 						<p class="tit">매출액</p>
 						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-						<div class="chart_area columnchart" id="columnchart"></div>
+						<div class="chart_area columnchart bar" id="columnchart"></div>
 					</div>
 					<div class="graph">
 						<p class="tit">영업이익</p>
 						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-						<div class="chart_area combochart" id="combochart"></div>
+						<div class="chart_area combochart bar2" id="combochart"></div>
 					</div>
 				</div>
 				<div class="tb_row tb-row-bl mgt middle keepAll pd">

@@ -120,6 +120,7 @@ function fcTabScrollLeft(tab){
 
 // 2번째 탭 fixed
 $(function(){
+	if(!$('#com-tabs02').length)return;
 	$(window).scroll(function() {
 		var tarTab = $('#com-tabs02').closest('.com-tabs');
 		var tarTab2 = $('#com-tabs01').closest('.com-tabs').find('.tabs-wrap').innerHeight();
@@ -134,6 +135,10 @@ $(function(){
 
 // pdf 다운로드
 var openInApp = function (url, name, specs, replace) {
+	var parser = document.createElement('a');
+	parser.href = url;
+	url = parser.href;
+	
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {
 			  'command' : 'openInAppBrowser'
@@ -145,4 +150,4 @@ var openInApp = function (url, name, specs, replace) {
 	} else {
 		window.open(url, name, specs, replace);
 	}
-}
+};
