@@ -2351,11 +2351,14 @@ $input: (chk, rdo);
             }
             &.ui-calendar-prev {
                 left:32px;
+                //BTOCSITE-5008
                 width:32px;
                 height:32px;
                 -webkit-transform: translate3d(0,0,0);
+                overflow: hidden;
                 @include mobile {
                     left:34px;
+                    //BTOCSITE-5008
                     width:24px;
                     height:24px;
                 }
@@ -2365,10 +2368,13 @@ $input: (chk, rdo);
             }
             &.ui-calendar-next {
                 right:32px;
+                //BTOCSITE-5008
                 width:32px;
                 height:32px;
+                overflow: hidden;
                 @include mobile {
                     right:34px;
+                    //BTOCSITE-5008
                     width:24px;
                     height:24px;
                 }
