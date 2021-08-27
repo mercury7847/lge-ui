@@ -135,6 +135,10 @@ $(function(){
 
 // pdf 다운로드
 var openInApp = function (url, name, specs, replace) {
+	var parser = document.createElement('a');
+	parser.href = url;
+	url = parser.href;
+	
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {
 			  'command' : 'openInAppBrowser'
@@ -146,4 +150,4 @@ var openInApp = function (url, name, specs, replace) {
 	} else {
 		window.open(url, name, specs, replace);
 	}
-}
+};
