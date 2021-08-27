@@ -6,7 +6,7 @@
  *  https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
  */
-vcui.define('libs/intersection-observer', [], function ($, core) {
+vcui.define('libs/intersection-observer.min', [], function ($, core) {
     "use strict";
 
 // Exit early if we're not running in a browser.

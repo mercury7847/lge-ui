@@ -9,15 +9,37 @@
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
-        @@include('./common/header.html', { hiddenTitle : "LGE LIVE SHOW 엘라 SHOW"})
+        @@include('./common/header.html', { hiddenTitle : "엘라쇼"})
         <!-- //210311_H1추가 -->
 
         <div class="container">
+
+            <!-- 2021-08-24 page header 추가 -->
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "엘라쇼"
+            })
+            <!-- //2021-08-24 page header 추가 -->
+            
             <!-- 엘라쇼 -->
             <div class="contents lls-main">
                 <!-- 상단 히어로 영역 -->
                 <div class="hero-wrap">
                     <div class="hero-slider">
+                        <!-- 2021-08-24 배너 0개시 디폴트 배너추가 -->
+                        <div class="hero-item">
+                            <div class="default-banner">
+                                <!-- pc 이미지 -->
+                                <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-default.jpg)' aria-hidden="true"></span>
+                                <!-- mo 이미지 -->
+                                <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-default-m.jpg)' aria-hidden="true"></span>
+                                <div class="hero-item-content">
+                                    <strong class="hero-item-title"><span class="only-pc">엘라쇼 </span>라이브로 즐기는 <br>LGE.COM</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //2021-08-24 배너 0개시 디폴트 배너추가 -->
+
+
                         <div class="hero-item">
                             <a href="#">
                                 <!-- pc 이미지 -->
@@ -34,8 +56,9 @@
                                         <div class="flag-time">7월13일 19:00</div>
                                     </div>
                                     <!-- 라이브 진행표시 flag -->
-                                    <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                    <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
+                                    <!-- 2021-08-25 타이틀 or 디스크립션 어드민 컬러 추가 style="color:해당 RGB or 컬러코드"-->
+                                    <strong class="hero-item-title" style="color:#ff0000">LGE LIVE SHOW <br> 엘라 SHOW</strong>
+                                    <div class="hero-item-desc" style="color:#ff0000">인공지능 로봇청소기 특별한 혜택</div>
                                 </div>
                             </a>
                         </div>
@@ -60,29 +83,9 @@
                                 </div>
                             </a>
                         </div>
-                        
 
-                        <div class="hero-item">
-                            <a href="#">
-                                <!-- pc 이미지 -->
-                                <span class="hero-item-bg only-pc" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01.jpg)' aria-hidden="true"></span>
-                                <!-- mo 이미지 -->
-                                <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-banner01-m.jpg)' aria-hidden="true"></span>
-                                <div class="hero-item-content">
-                                    <!-- 라이브 진행표시 flag -->
-                                    <!-- 라이브 중 class: live-now -->
-                                    <div class="hero-item-flag">
-                                        <div class="flag-title">
-                                            <span class="flag-title-text" data-live-text="지금 라이브중" data-expected-text="라이브 예정">라이브 예정</span>
-                                        </div>
-                                        <div class="flag-time">7월13일 19:00</div>
-                                    </div>
-                                    <!-- 라이브 진행표시 flag -->
-                                    <strong class="hero-item-title">LGE LIVE SHOW <br> 엘라 SHOW</strong>
-                                    <div class="hero-item-desc">인공지능 로봇청소기 특별한 혜택</div>
-                                </div>
-                            </a>
-                        </div>
+
+                        
                     </div>
                     <div class="play-controls">
                         <button class="btn-play stop"><span class="blind" data-play-text="재생" data-stop-text="정지">정지</span></button>

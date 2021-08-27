@@ -1,17 +1,23 @@
 @charset "UTF-8";
 
+/* BTOCSITE-2958 : 플로팅 배너(퀵메뉴) 공통 파일로 변경 2021-08-20 */
 .quick-menu {
     position:fixed;
-    right:48px;
-    bottom:48px;
-    z-index:100;
+    right: 48px;
+    bottom: 48px;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
     @include mobile {
-        right:20px;
+        right:17px;
         bottom:24px;
     }
     &-list {
         transform:translateY(72px);    
-        transition:transform 0.5s ease-out; 
+        transition:transform 0.3s ease-out; 
         & > li + li {
             margin-top:16px;
         }
@@ -45,10 +51,16 @@
             background-image:url('/lg5-common/images/icons/icon-top-new-active.svg');
         }
         @include mobile {
-            width:40px;
-            height:40px;
-            margin-top:10px;
-            background-size:24px;
+            width: 40px;
+            height: 40px;
+            margin-top: 10px;
+            background-size: 32px;
+        }
+    }
+    .quick-menu-list {
+        li {
+            display: flex;
+            justify-content: flex-end;
         }
     }
     &.top {
@@ -73,8 +85,8 @@
                 a {
                     display:block;
                     position:relative;
-                    width:276px;
-                    padding:14px 68px 14px 28px;
+                    width:209px;
+                    padding: 14px 68px 14px 28px;
                     border:1px solid $color-white;
                     border-radius:28px;
                     box-shadow:0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
@@ -109,10 +121,10 @@
             width:56px;
             height:56px;
             border-radius:50%;
-            background-image: linear-gradient(315deg,#fb5a72,#fa263e);
+            background-image: linear-gradient(315deg, #fb5a72, #fa263e);
             background-color: #fa263e;
             &:hover {
-                box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
+                // box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
                 background: $color-primary;
             }
             &:before {
@@ -123,8 +135,8 @@
                 transform:translate(-50%, -50%) rotate(0);
                 width:40px;
                 height:40px;
-                //transition:transform .3s ease-out;
-                // background:url(/lg5-common/images/icons/icon-more-plus-x.svg) no-repeat;
+                // transition:transform .3s ease-out;
+                background:url('/lg5-common/images/icons/icon_img_floating_40.svg') no-repeat;
                 background-size:100%;
             }
         }
@@ -134,7 +146,9 @@
             }
             .btn-expand {
                 &::before {
+                    background:url('/lg5-common/images/icons/icon-more-plus-x.svg') no-repeat;
                     transform:translate(-50%, -50%) rotate(135deg);
+                    background-size:100%;
                 }
             }
         }
@@ -144,8 +158,8 @@
                 li {
                     margin-bottom:10px;
                     a {
-                        width:220px;
-                        padding:8px 35px 8px 15px;
+                        width: 155px;
+                        padding: 8px 35px 8px 15px;
                     }
                     .img {
                         right:8px;
@@ -162,8 +176,8 @@
                 width:40px;
                 height:40px;
                 &:before {
-                    width:24px;
-                    height:24px;
+                    width:32px;
+                    height:32px;
                 }
             }
         }
@@ -171,6 +185,7 @@
 
     .history {
         position:relative;
+        display: none;
         &-list {
             display:table;
             table-layout:fixed;
@@ -265,11 +280,13 @@
             display:block;
             overflow:visible;
             z-index:10;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
-            background: #fff;
+            width:56px;
+            height:56px;
+            border-radius:50%;
+            box-shadow:0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
+            background:#fff;
+            transition:all ease 0.5s;
+            z-index: 2;
             .img {
                 position:absolute;
                 top:50%;
@@ -282,45 +299,64 @@
                     height:100%;
                 }
             }
+            .history-info{
+                visibility: hidden;
+                padding-left: 32px;
+                // position: absolute;
+                // top: 0;
+                // right: 64px;
+                // width: 200px;
+                opacity:0;
+                // transition:all ease 0.5s;
+            }
         }
         .btn-close {
-            display:none;
-            position:relative;
-            z-index:10;
-            width:56px;
-            height:56px;
-            border-radius:50%;
-            box-shadow:0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
+            display: none;
+            position: relative;
+            z-index: 10;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            box-shadow: 0.1px 4px 11px 0 rgba(0, 0, 0, 0.15);
             background:#fff;
             &::before {
                 content: '';
-                position:absolute;
-                left:50%;
-                top:50%;
-                transform:translate(-50%, -50%);
-                width:40px;
-                height:40px;
-                background:url(/lg5-common/images/icons/icon-history-close.svg) no-repeat;
-                background-size:100%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 40px;
+                height: 40px;
+                background: url(/lg5-common/images/icons/icon-history-close.svg) no-repeat;
+                background-size: 100%;
             }
         }
+        // .history-info{
+        //     visibility: hidden;
+        //     position: absolute;
+        //     top: 0;
+        //     right: 64px;
+        //     width: 300px;
+        //     opacity:0;
+        //     transition:all ease 0.5s;
+        //     background-color: #fb5a72;
+            
+        // }
         &.on {
             .history-list {
-                visibility:visible;
+                visibility: visible;
                 li {
-                    opacity:1;
-                    transform:translateX(0);
+                    opacity: 1;
+                    transform: translateX(0);
                 }
             }
             .btn-expand {
-                display:none;
+                display: none;
             }
             .btn-close {
-                display:block;
+                display: block;
             }
         }
-
-        /* 추가 */
         &.info-text {
             position: relative;
             .btn-expand {
@@ -333,7 +369,7 @@
                     left: 100%;
                     transform: translate(-120%, -50%);
                     @include mobile {
-                        transform: translate(-134%, -50%);
+                        transform: translate(-112%, -50%);
                     }
                 }
                 .history-info {
@@ -354,7 +390,6 @@
                 }
             }
         }
-        /* //추가 */
         @include mobile {
             &-list {
                 right:50px;
@@ -397,16 +432,16 @@
                 width:40px;
                 height:40px;
                 .img {
-                    width:24px;
-                    height:24px;
+                    width: 32px;
+                    height: 32px;
                 }
             }
             .btn-close {
                 width:40px;
                 height:40px;
                 &::before {
-                    width:24px;
-                    height:24px;
+                    width: 34px;
+                    height: 34px;
                 }
             }
         }
@@ -447,4 +482,3 @@
         }
     }
 }
-

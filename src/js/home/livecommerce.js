@@ -44,14 +44,10 @@ var lls = {
     bindEvent: function(){
         var self = this;
 
-        function LGEPushSetting(flag){
+        LGEPushSetting = function(flag){
             var msg = {
                 flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
-            }
-
-            if( vcui.detect.isIOS ) {
-                alert(flag);
             }
 
             if( flag == "Y" ) {
@@ -67,7 +63,6 @@ var lls = {
                     }
                 }, self.pushBtn);
             } else {
-                alert(flag)
                 lgkorUI.alert("", {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
@@ -94,10 +89,9 @@ var lls = {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
                     obj.command = "getPushStatus";
-                    //obj.callBack = "LGEPushSetting";
+                    obj.callback = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
-                    alert(webkit.messageHandlers.callbackHandler.postMessage(jsonString))
-                    //webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
                     var androidPush = android.getOSPush();
                     LGEPushSetting(androidPush)

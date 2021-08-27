@@ -3,14 +3,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <script src="/lg5-common/js/company/sustainable.min.js" type="text/babel" data-presets="es2015,stage-2"></script>
-
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
@@ -22,6 +20,239 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
+<style>
+	.graph_dec {font-size:14px;line-height:24px;text-align:right;}	
+	@media screen and (max-width:768px){
+			.graph_dec {font-size:12px;line-height:20px;}	
+	}
+</style>
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['LG전자 글로벌 재생에너지 확대 계획', '년도', {
+				role: 'annotation'
+			}],
+			['2020', 4, '4%'],
+			['2025', 18, '18%'],
+			['2030', 46, '46%'],
+			['2040', 70, '70%'],
+			['2050', 100, '100%'],
+		]);
+
+		var view = new google.visualization.DataView(data);
+		
+		var columnOptions = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 40,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			height: 330,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#e91953'
+				},
+			},
+			bar: {
+				groupWidth: '48',
+			},
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			}
+		};
+
+		function checkSize() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions.height = '240';
+				columnOptions.bar.groupWidth = '25';
+				columnOptions.vAxis.textStyle.fontSize = '13';
+				columnOptions.hAxis.textStyle.fontSize = '13';
+				columnOptions.annotations.textStyle.fontSize = '12';
+				columnOptions.annotations.stem.length = '5';
+			} else {
+				columnOptions.height = '360';
+				columnOptions.bar.groupWidth = '48';
+				columnOptions.vAxis.textStyle.fontSize = '14';
+				columnOptions.hAxis.textStyle.fontSize = '14';
+				columnOptions.annotations.textStyle.fontSize = '13';
+				columnOptions.annotations.stem.length = '8';
+			}
+		}
+
+		var data2 = google.visualization.arrayToDataTable([
+			['무공해차 전환 목표', '년도', {
+				role: 'annotation'
+			}],
+			['2021년~2025년', 90, '90%'],
+			['2026년~2028년', 96, '96%'],
+			['2009년~2030년', 100, '100%'],
+		]);
+
+		var view2 = new google.visualization.DataView(data2);
+
+		var columnOptions2 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 40,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			height: 330,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#e91953'
+				},
+			},
+			bar: {
+				groupWidth: '48',
+			},
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			}
+		};
+
+		function checkSize2() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions2.height = '240';
+				columnOptions2.bar.groupWidth = '25';
+				columnOptions2.vAxis.textStyle.fontSize = '13';
+				columnOptions2.hAxis.textStyle.fontSize = '11';
+				columnOptions2.annotations.textStyle.fontSize = '12';
+				columnOptions2.annotations.stem.length = '5';
+			} else {
+				columnOptions2.height = '360';
+				columnOptions2.bar.groupWidth = '48';
+				columnOptions2.vAxis.textStyle.fontSize = '14';
+				columnOptions2.hAxis.textStyle.fontSize = '14';
+				columnOptions2.annotations.textStyle.fontSize = '13';
+				columnOptions2.annotations.stem.length = '8';
+			}
+		}
+
+		function resize() {
+			checkSize();
+			var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+			chart.draw(view, columnOptions);
+
+			checkSize2();
+			var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
+			chart2.draw(view2, columnOptions2);
+		}
+		window.onload = resize();
+		window.onresize = resize;
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+				chart.draw(view, columnOptions);
+			}, 500);
+		});
+		
+		$(".draw_chart_div2").on('click', function (e) {
+			setTimeout(function () {
+				checkSize2();
+				var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
+				chart2.draw(view2, columnOptions2);
+			}, 500);
+		});
+	}
+</script>
 <div class="breadcrumb">
 	<ul>
 		<li><a href="/">홈</a></li>
@@ -34,24 +265,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">지속가능경영</h2>
-	</div>
-	<!-- hiro image -->
+	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
-		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="visual-area"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/sustainable/img-sustainable-hero_02-pc.jpg"
+				data-m-src="/kr/images/company/sustainable/img-sustainable-hero_02-mo.jpg" aria-hidden="hidden"></span> </div>
 		<div class="text-area">
 			<p class="text">LG전자는 기업의 가치를 창출하여<br> 사회에 기여할 수 있도록 고민하고 실천합니다</p>
 		</div>
-	</section>
-	<!-- // hiro image -->
+	</section> <!-- // hiro image -->
 	<div class="ui_sticky">
 		<div class="com-tabs">
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li>
-						<a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
+					<li> <a href="/company/sustainable/overview#com-tabs01">ESG 경영 개요</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/overview">Overview</a></li>
 							<li><a href="/company/sustainable/ceoMessage">CEO 메시지</a></li>
@@ -62,31 +290,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/sustainable/covid19">코로나19 대응</a></li>
 						</ul>
 					</li>
-					<li class="on">
-						<a href="/company/sustainable/businessplace#com-tabs01">환경<em class="blind">선택됨</em></a>
+					<li class="on"> <a href="/company/sustainable/businessplace#com-tabs01">환경<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/businessplace">부정적 환경영향 <br> Zero 사업장</a></li>
 							<li><a href="/company/sustainable/productsServices">미래세대를 위한 <br>제품과 서비스</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/workplace#com-tabs01">사회</a>
+					<li> <a href="/company/sustainable/workplace#com-tabs01">사회</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/workplace">모두를 위한 <br> 지속가능한 일터</a></li>
 							<li><a href="/company/sustainable/balancedGrowth">포용적 사회를 위한 <br> 균형적 성장</a></li>
 							<li><a href="/company/sustainable/socialContribution">사회공헌</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/director#com-tabs01">지배구조</a>
-					</li>
-					<li>
-						<a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
+					<li> <a href="/company/sustainable/director#com-tabs01">지배구조</a> </li>
+					<li> <a href="/company/promot/system#com-tabs01">ESG 팩트북</a>
 						<ul class="tabs-over">
 							<li><a href="/company/promot/system">정도경영 개요</a></li>
 							<li><a href="/company/promot/compliance">컴플라이언스 개요</a></li>
 							<li><a href="/company/promot/fairtrade">공정거래</a></li>
-							<li><a href="/company/promot/safetyHealth">안전&middot;환경</a></li>
+							<li><a href="/company/promot/safetyHealth">안전·환경</a></li>
 							<li><a href="/company/promot/partner">협력회사</a></li>
 							<li><a href="/company/promot/minerals">분쟁광물</a></li>
 							<li><a href="/company/promot/client">고객</a></li>
@@ -94,44 +317,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/promot/member">구성원</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
+					<li> <a href="/company/sustainable/data#com-tabs01">성과 및 데이터</a>
 						<ul class="tabs-over">
 							<li><a href="/company/sustainable/data">ESG 데이터</a></li>
 							<li><a href="/company/sustainable/frameworkIndex">GRI, SASB, <br>TCFD index</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a>
-					</li>
+					<li> <a href="/company/sustainable/download#com-tabs01">지속가능경영 보고서</a> </li>
 				</ul>
 			</div>
 		</div>
 	</div>
-
 	<div class="com-title">
-		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/sustainable/img-sustainable-businessplace-hero-pc.jpg" data-m-src="/kr/images/company/sustainable/img-sustainable-businessplace-hero-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="img"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/sustainable/img-sustainable-businessplace-hero-pc.jpg"
+				data-m-src="/kr/images/company/sustainable/img-sustainable-businessplace-hero-mo.jpg"
+				aria-hidden="hidden"></span> </div>
 		<p class="text">LG전자는 운영 전 영역에 걸쳐 탄소 중립을 추구하며 <br class="mo">자원순환 경제에 기여하는 기업을 지향 합니다.</p>
 	</div>
-	
 	<div class="com-tabs">
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
 			<ul class="tabs">
-				<li class="on"><a href="/company/sustainable/businessplace#com-tabs02">부정적 환경영향 Zero 사업장<em class="blind">선택됨</em></a></li>
+				<li class="on"><a href="/company/sustainable/businessplace#com-tabs02">부정적 환경영향 Zero 사업장<em
+							class="blind">선택됨</em></a></li>
 				<li><a href="/company/sustainable/productsServices#com-tabs02">미래세대를 위한 제품과 서비스</a></li>
 			</ul>
 		</div>
 	</div>
-
 	<div class="com-text">
 		<p class="tit">부정적 환경영향 Zero 사업장</p>
-		<p class="text">산업의 발전과 기술의 발달은 오늘날 인류의 편리하고 풍요로운 삶을 가능하게 하였습니다. 하지만, 이러한 성장의 과정 속에서 놓치고 있었던 환경에 대한 부정적 영향은 이제 우리 삶의 질을 넘어 생존을 위협하는 단계로 접어들고 있습니다. 2021년 2월 UN의 ‘Making Peace with Nature’라는 보고서에는 인류의 활동과 자연 착취로 인해 기후변화, 생물다양성 훼손, 환경오염 리스크가 발생하고 있으며, <br class="pc">이를 해결하기 위한 공동의 노력이 필요하다고 언급하고 있습니다. 환경문제는 이제 전 세계의 공감대를 형성하고 있으며, 인류가 추구해야 할 최우선의 가치로 인식되고 있습니다. <br>LG전자 역시 국제사회를 구성하고 있는 일원으로서 기후변화, 환경오염 등의 문제에 대한 심각성을 인지하고 있으며, 이에 대응하기 위한 움직임에 적극적으로 동참하고자 합니다. <br class="pc">경영활동과 사업장 운영이 환경에 미치는 부정적 영향을 Zero화 하고 더 나아가 긍정적 영향을 확대할 수 있도록 최선을 다하겠습니다.</p>
-	</div>
-
-	<!-- acco 1 -->
+		<p class="text">산업의 발전과 기술의 발달은 오늘날 인류의 편리하고 풍요로운 삶을 가능하게 하였습니다. 하지만, 이러한 성장의 과정 속에서 놓치고 있었던 환경에 대한 부정적 영향은 이제 우리 삶의
+			질을 넘어 생존을 위협하는 단계로 접어들고 있습니다. 2021년 2월 UN의 ‘Making Peace with Nature’라는 보고서에는 인류의 활동과 자연 착취로 인해 기후변화, 생물다양성 훼손,
+			환경오염 리스크가 발생하고 있으며, <br class="pc">이를 해결하기 위한 공동의 노력이 필요하다고 언급하고 있습니다. 환경문제는 이제 전 세계의 공감대를 형성하고 있으며, 인류가 추구해야 할
+			최우선의 가치로 인식되고 있습니다. <br>LG전자 역시 국제사회를 구성하고 있는 일원으로서 기후변화, 환경오염 등의 문제에 대한 심각성을 인지하고 있으며, 이에 대응하기 위한 움직임에 적극적으로
+			동참하고자 합니다. <br class="pc">경영활동과 사업장 운영이 환경에 미치는 부정적 영향을 Zero화 하고 더 나아가 긍정적 영향을 확대할 수 있도록 최선을 다하겠습니다.</p>
+	</div> <!-- acco 1 -->
 	<div class="com-text">
 		<div class="acco_thumb bg_01">
 			<div class="inner">
@@ -142,25 +363,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li>청정개발체제(CDM) 사업을 확대하여 외부에서의 탄소 감축활동을 통해 탄소중립 실현(~2030)</li>
 					</ul>
 				</div>
-				<div class="content"><!-- 클래스 on 추가 -->
-					<p class="text">LG전자는 제품 생산 단계에서 발생되는 온실가스 배출량을 2030년까지 2017년 대비 50% 감축하기 위해 생산 공정 내 에너지 고효율 설비 및 탄소 배출량 감축 장치 도입을 확대하고 있습니다. <br>또한, 개발도상국에 기술과 자본을 투자하여 온실가스 배출량 감축목표 달성에 활용할 수 있는 청정 개발체제  사업에 적극 참여함으로써 탄소 배출권을 지속적으로 확보하고 있습니다. <br>이 외에도 재생에너지 사용을 확대하기 위한 태양광 사업을 강화하고 고효율 냉동기 및 에너지관리시스템(EMS) 등 자체 B2B 솔루션도 적극 활용하여 온실가스 배출량 저감에 기여하고 있습니다. LG전자는 2030년까지 탄소중립을 실현하기 위해 각 사업장에서 적극적으로 온실가스 배출량을 감축하고 CDM<sup>1)</sup> 사업 확대를 통해 기후변화로 인한 글로벌 이슈 해결에 적극 동참할 것입니다.</p>
+				<div class="content">
+					<!-- 클래스 on 추가 -->
+					<p class="text">LG전자는 제품 생산 단계에서 발생되는 온실가스 배출량을 2030년까지 2017년 대비 50% 감축하기 위해 생산 공정 내 에너지 고효율 설비 및 탄소 배출량 감축 장치
+						도입을 확대하고 있습니다. <br>또한, 개발도상국에 기술과 자본을 투자하여 온실가스 배출량 감축목표 달성에 활용할 수 있는 청정 개발체제 사업에 적극 참여함으로써 탄소 배출권을 지속적으로
+						확보하고 있습니다. <br>이 외에도 재생에너지 사용을 확대하기 위한 태양광 사업을 강화하고 고효율 냉동기 및 에너지관리시스템(EMS) 등 자체 B2B 솔루션도 적극 활용하여 온실가스 배출량
+						저감에 기여하고 있습니다. LG전자는 2030년까지 탄소중립을 실현하기 위해 각 사업장에서 적극적으로 온실가스 배출량을 감축하고 CDM<sup>1)</sup> 사업 확대를 통해 기후변화로 인한
+						글로벌 이슈 해결에 적극 동참할 것입니다.</p>
 					<p class="footnotes"><sup>1)</sup>CDM: Clean Development Mechanism</p>
-				</div>
-				<button type="button" class="view_more">더보기</button><!-- 클래스 on 추가 -->
+				</div> <button type="button" class="view_more">더보기</button><!-- 클래스 on 추가 -->
 			</div>
 		</div>
-		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
+		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true">
+			<!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">탄소중립 2030 달성 전략 실행</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">탄소중립 2030 달성 전략 실행</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea tbl">
-							<p class="text">LG전자는 2030년까지 탄소중립을 달성하고자 탄소 배출량 저감 기술에 투자하고 있으며 상쇄 배출권을 확보하는 등 외부 탄소 감축활동을 적극적으로 추진하고 있습니다.</p>
+							<p class="text">LG전자는 2030년까지 탄소중립을 달성하고자 탄소 배출량 저감 기술에 투자하고 있으며 상쇄 배출권을 확보하는 등 외부 탄소 감축활동을 적극적으로 추진하고
+								있습니다.</p>
 							<div class="tb_row tb-row-bl mgt">
 								<table>
 									<caption>LG전자 온실가스 배출량에 대한 탄소중립 (Carbon Neutral) 달성 (~2030)</caption>
@@ -184,7 +409,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											<td>
 												<p class="tit">외부 감축 프로젝트 추진</p>
 												<ul class="bull m">
-													<li>LG전자의 고효율 가전제품 및 에너지 솔루션을 활용한 감축 프로그램 (Carbon-offsetting program)으로부터 상쇄 배출권을 확보하여 온실가스 배출 상쇄</li>
+													<li>LG전자의 고효율 가전제품 및 에너지 솔루션을 활용한 감축 프로그램 (Carbon-offsetting program)으로부터 상쇄 배출권을 확보하여 온실가스 배출
+														상쇄</li>
 												</ul>
 											</td>
 										</tr>
@@ -215,41 +441,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 							</div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">글로벌 탄소 배출량</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">글로벌 탄소 배출량</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
-							<p class="tit">글로벌 탄소 배출량 현황 및 목표<br class="mo">(한국+해외 배출량)</p>
-							<img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart01-pc.png" alt="">
-							<img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart01-mo.png" alt="">
-							<!-- 구글차트 -->
+						<div class="txtArea">
+							<p class="tit">글로벌 탄소 배출량 현황 및 목표<br class="mo">(한국+해외 배출량)</p> <img class="only_pc"
+								src="/kr/images/company/sustainable/img-businessplace-chart01-pc.png" alt=""> <img class="only_mo"
+								src="/kr/images/company/sustainable/img-businessplace-chart01-mo.png" alt=""> <!-- 구글차트 -->
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">가치사슬 전반의 탄소중립 추구</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">가치사슬 전반의 탄소중립 추구</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea tbl">
 							<p class="tit">부품조달, 생산 및 고객 사용단계를 고려한 가치사슬 전반의 탄소중립추구</p>
-							<p class="text">LG전자는 도전적인 목표를 수립함으로써 탄소중립의 목표와 지향점에 차별화를 두었습니다. 2021년에는 탄소중립 30% 달성(생산단계 감축 55만 톤, 재생 에너지 전환으로 3만 톤 감축) 목표로 글로벌 사업장에 대한 탄소중립을 위해 노력하고 있습니다.</p>
+							<p class="text">LG전자는 도전적인 목표를 수립함으로써 탄소중립의 목표와 지향점에 차별화를 두었습니다. 2021년에는 탄소중립 30% 달성(생산단계 감축 55만 톤, 재생 에너지
+								전환으로 3만 톤 감축) 목표로 글로벌 사업장에 대한 탄소중립을 위해 노력하고 있습니다.</p>
 							<div class="tb_row tb-row-bl mgt only_pc">
 								<table>
 									<caption>생산단계 탄소저감, UN 감축 프로젝트, SF6 저감활동</caption>
@@ -267,9 +487,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									</thead>
 									<tbody>
 										<tr>
-											<td class="txt_l v_top">LG전자는 솔라 공정 개선을 통해 공정가스 배출량 저감 테스트를 진행하고 있습니다. 공정 내 SF<sub>6</sub> (육불화황) 사용량 약 20%를 절감하였으며 솔라공정 가스 저감 설비의 신규 설치를 검토, 연간 15만 톤의 추가감축을 목표로 하고 있습니다.이 밖에도 2021년 고효율 UT 설비투자 등 탄소펀드 투자 효율검증을 실시하여 생산단계 탄소저감을 위해 노력할 것입니다.</td>
-											<td class="txt_l v_top">LG전자는 탄소 감축량 산정을 위한 시장평균효율 데이터를 구축하고 있으며 인도 정부로부터 인도 에어컨 프로젝트의 승인을 받는 과제를 수행하고 있습니다. UN 승인 취득을 목표로 하며 대상 제품 및 국가 확대에 대한 검토 또한 추진하고 있습니다.</td>
-											<td class="txt_l v_top">LG전자는 온실가스 감축과 탄소중립을 위해 SF<sub>6</sub>(육불화황) 저감 활동을 추진하고 있습니다. 2021년 스크러버 신규 설비를 4대 증설하여 솔라공정 가스 처리 시설에서 발생하는 온실가스를 제거하기 위해 노력하고 있습니다. BS본부 구미사업장에 총 35대의 스크러버를 운영하고 있으며 연간 배출권 감축 효과는 약 40만톤으로 연평균 약 90% 이상의 처리 효율을 유지하고 있습니다.</td>
+											<td class="txt_l v_top">LG전자는 솔라 공정 개선을 통해 공정가스 배출량 저감 테스트를 진행하고 있습니다. 공정 내 SF<sub>6</sub> (육불화황)
+												사용량 약 20%를 절감하였으며 솔라공정 가스 저감 설비의 신규 설치를 검토, 연간 15만 톤의 추가감축을 목표로 하고 있습니다.이 밖에도 2021년 고효율 UT 설비투자
+												등 탄소펀드 투자 효율검증을 실시하여 생산단계 탄소저감을 위해 노력할 것입니다.</td>
+											<td class="txt_l v_top">LG전자는 탄소 감축량 산정을 위한 시장평균효율 데이터를 구축하고 있으며 인도 정부로부터 인도 에어컨 프로젝트의 승인을 받는 과제를
+												수행하고 있습니다. UN 승인 취득을 목표로 하며 대상 제품 및 국가 확대에 대한 검토 또한 추진하고 있습니다.</td>
+											<td class="txt_l v_top">LG전자는 온실가스 감축과 탄소중립을 위해 SF<sub>6</sub>(육불화황) 저감 활동을 추진하고 있습니다. 2021년 스크러버
+												신규 설비를 4대 증설하여 솔라공정 가스 처리 시설에서 발생하는 온실가스를 제거하기 위해 노력하고 있습니다. BS본부 구미사업장에 총 35대의 스크러버를 운영하고 있으며
+												연간 배출권 감축 효과는 약 40만톤으로 연평균 약 90% 이상의 처리 효율을 유지하고 있습니다.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -284,54 +509,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<tbody>
 										<tr>
 											<th scope="row">생산단계 탄소저감</th>
-											<td>LG전자는 솔라 공정 개선을 통해 공정가스 배출량 저감 테스트를 진행하고 있습니다. 공정 내 SF<sub>6</sub> (육불화황) 사용량 약 20%를 절감하였으며 솔라공정 가스 저감 설비의 신규를 검토, 연간 15만 톤의 추가감축을 목표로 하고 있습니다.이 밖에도 2021년 고효율 UT 설비투자 등 탄소펀드 투자 효율검증을 실시하여 생산단계 탄소저감을 위해 노력할 것입니다.</td>
+											<td>LG전자는 솔라 공정 개선을 통해 공정가스 배출량 저감 테스트를 진행하고 있습니다. 공정 내 SF<sub>6</sub> (육불화황) 사용량 약 20%를 절감하였으며
+												솔라공정 가스 저감 설비의 신규를 검토, 연간 15만 톤의 추가감축을 목표로 하고 있습니다.이 밖에도 2021년 고효율 UT 설비투자 등 탄소펀드 투자 효율검증을 실시하여
+												생산단계 탄소저감을 위해 노력할 것입니다.</td>
 										</tr>
 										<tr>
 											<th scope="row">UN 감축 프로젝트</th>
-											<td>LG전자는 탄소 감축량 산정을 위한 시장평균효율 데이터를 구축하고 있으며 인도 정부로부터 인도 에어컨 프로젝트의 승인을 받는 과제를 수행하고 있습니다. UN 승인 취득을 목표로 하며 대상 제품 및 국가 확대에 대한 검토 또한 추진하고 있습니다.</td>
+											<td>LG전자는 탄소 감축량 산정을 위한 시장평균효율 데이터를 구축하고 있으며 인도 정부로부터 인도 에어컨 프로젝트의 승인을 받는 과제를 수행하고 있습니다. UN 승인 취득을
+												목표로 하며 대상 제품 및 국가 확대에 대한 검토 또한 추진하고 있습니다.</td>
 										</tr>
 										<tr>
 											<th scope="row">SF<sub>6</sub> 저감활동</th>
-											<td>LG전자는 온실가스 감축과 탄소중립을 위해 SF<sub>6</sub>(육불화황) 저감 활동을 추진하고 있습니다. 2021년 스크러버 신규 설비를 4대 증설하여 솔라공정 가스 처리 시설에서 발생하는 온실가스를 제거하기 위해 노력하고 있습니다. BS본부 구미사업장에 총 35대의 스크러버를 운영하고 있으며 연간 배출권 감축 효과는 약 40만톤으로 연평균 약 90% 이상의 처리 효율을 유지하고 있습니다.</td>
+											<td>LG전자는 온실가스 감축과 탄소중립을 위해 SF<sub>6</sub>(육불화황) 저감 활동을 추진하고 있습니다. 2021년 스크러버 신규 설비를 4대 증설하여 솔라공정
+												가스 처리 시설에서 발생하는 온실가스를 제거하기 위해 노력하고 있습니다. BS본부 구미사업장에 총 35대의 스크러버를 운영하고 있으며 연간 배출권 감축 효과는 약
+												40만톤으로 연평균 약 90% 이상의 처리 효율을 유지하고 있습니다.</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">기타 활동</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">기타 활동</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
 							<p class="tit">1) 에너지경영시스템(ISO 50001) 인증</p>
-							<p class="text">에너지의 효율적 사용과 관련 비용 절감을 위해 ‘에너지경영시스템(ISO 50001)’ 국제 표준을 도입하여 에너지경영 체계를 고도화하고 있습니다. LG전자 한국 전 생산사업장은 에너지경영시스템 인증을 획득하였습니다. 해외사업장에서도 에너지경영시스템 도입을 확산 중에 있으며, 매년 재심사를 통해 인증을 관리 및 유지하고 있습니다.</p>
+							<p class="text">에너지의 효율적 사용과 관련 비용 절감을 위해 ‘에너지경영시스템(ISO 50001)’ 국제 표준을 도입하여 에너지경영 체계를 고도화하고 있습니다. LG전자 한국
+								전 생산사업장은 에너지경영시스템 인증을 획득하였습니다. 해외사업장에서도 에너지경영시스템 도입을 확산 중에 있으며, 매년 재심사를 통해 인증을 관리 및 유지하고 있습니다.</p>
 							<p class="tit">2) 탄소비용(Carbon Pricing) 책정</p>
-							<p class="text">에너지 절감 및 온실가스 감축 활동과 관련하여 사업기회를 포착하고 리스크를 발굴하며, 내부거래를 위한 탄소의 가치를 정량적으로 책정한 ‘내부탄소비용’을 적용하고 있습니다. ‘내부탄소비용’을 통해 LG전자에서 발생하는 환경부담을 재무가치로 정확하게 측정할 수 있으며, 이는 향후 온실가스 감축 투자에 대한 합리적 의사결정에 기여할 것입니다.</p>
+							<p class="text">에너지 절감 및 온실가스 감축 활동과 관련하여 사업기회를 포착하고 리스크를 발굴하며, 내부거래를 위한 탄소의 가치를 정량적으로 책정한 ‘내부탄소비용’을 적용하고
+								있습니다. ‘내부탄소비용’을 통해 LG전자에서 발생하는 환경부담을 재무가치로 정확하게 측정할 수 있으며, 이는 향후 온실가스 감축 투자에 대한 합리적 의사결정에 기여할 것입니다.</p>
 							<p class="tit">3) 탄소회계(Carbon Accounting) 도입</p>
-							<p class="text">‘일반기업 회계기준 제33장 온실가스 배출권과 배출부채’에 따라 한국 정부로부터 할당받은 온실가스 배출권과 LG전자의 배출량을 분기별로 분석하고 있으며, 초과 배출량 발생 시 비용(배출부채)을 연결재무상태표에 반영하고 있습니다.</p>
+							<p class="text">‘일반기업 회계기준 제33장 온실가스 배출권과 배출부채’에 따라 한국 정부로부터 할당받은 온실가스 배출권과 LG전자의 배출량을 분기별로 분석하고 있으며, 초과
+								배출량 발생 시 비용(배출부채)을 연결재무상태표에 반영하고 있습니다.</p>
 							<p class="tit">4) 온실가스 배출량 측정, 보고 및 검증</p>
-							<p class="text">LG전자는 ‘저탄소 녹색성장 기본법’ 제42조 제6항에 따른 관리 대상 기업으로서 동법 제44조에 따라 한국 전체 사업장의 온실가스 배출량과 에너지 사용량에 대해 제3자 검증 후 배출량 명세서를 정부에 적기 제출하고 다양한 이해관계자에게 정보를 투명하게 공개하고 있습니다. 또한, LG전자 글로벌 생산사업장을 대상으로 온실가스 인벤토리 구축을 완료하고, 매년 온실가스 배출량을 공개하고 있습니다.</p>
-							<p class="text">*TCFD(Task Force on Climate-related Financial Disclosures) 기준에 따라 기후변화 대응에 대한 별도의 레포트를 발행함</p>
-							<a class="btn-link" href="/company/sustainable/data">TCFD Report 바로가기</a>
+							<p class="text">LG전자는 ‘저탄소 녹색성장 기본법’ 제42조 제6항에 따른 관리 대상 기업으로서 동법 제44조에 따라 한국 전체 사업장의 온실가스 배출량과 에너지 사용량에 대해
+								제3자 검증 후 배출량 명세서를 정부에 적기 제출하고 다양한 이해관계자에게 정보를 투명하게 공개하고 있습니다. 또한, LG전자 글로벌 생산사업장을 대상으로 온실가스 인벤토리 구축을
+								완료하고, 매년 온실가스 배출량을 공개하고 있습니다.</p>
+							<p class="text">*TCFD(Task Force on Climate-related Financial Disclosures) 기준에 따라 기후변화 대응에 대한 별도의 레포트를 발행함
+							</p> <a class="btn-link" href="/company/sustainable/data">TCFD Report 바로가기</a>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 			</ul>
 		</div>
-	</div>
-	<!-- acco 2 -->
+	</div> <!-- acco 2 -->
 	<div class="com-text noLine">
 		<div class="acco_thumb bg_02">
 			<div class="inner">
@@ -343,61 +573,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</ul>
 				</div>
 				<div class="content">
-					<p class="text">재생에너지로의 에너지 전환은 사용되는 에너지원의 변화 이외에도 산업 내 비즈니스를 포함한 경영 전반을 획기적으로 변화시키고 있습니다. LG전자는 2050년까지 재생에너지 전환율 100% 달성을 목표로 하는 ‘글로벌 재생에너지 확대 계획’을 수립하였으며, 이를 통해 국제사회의 에너지전환 흐름을 선도하고 재생에너지 관련 국내외 정책과 이해관계자의 니즈에 적극적으로 대응하고자 합니다.</p>
-				</div>
-				<button type="button" class="view_more">더보기</button>
+					<p class="text">재생에너지로의 에너지 전환은 사용되는 에너지원의 변화 이외에도 산업 내 비즈니스를 포함한 경영 전반을 획기적으로 변화시키고 있습니다. LG전자는 2050년까지 재생에너지
+						전환율 100% 달성을 목표로 하는 ‘글로벌 재생에너지 확대 계획’을 수립하였으며, 이를 통해 국제사회의 에너지전환 흐름을 선도하고 재생에너지 관련 국내외 정책과 이해관계자의 니즈에 적극적으로
+						대응하고자 합니다.</p>
+				</div> <button type="button" class="view_more">더보기</button>
 			</div>
 		</div>
-		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
+		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true">
+			<!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">재생에너지 확대</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle draw_chart_div" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">재생에너지 확대</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
-							<p class="text">RE100이란 Renewable Energy 100의 약자로 기업 사용 전력의 100%를 재생에너지로 대체하기 위한 글로벌 이니셔티브를 의미합니다. 다수의 글로벌 기업들은 이미 RE100 참여를 공개적으로 선언하였으며, 최근에는 해당 기업들과 거래하는 기업들에게도 RE100에 참여하도록 요구하고 있습니다. LG전자 역시 고효율 태양광 패널을 활용한 재생에너지 발전 및 사용을 확대하고, 재생에너지 구매를 위한 녹색요금제, REC(Renewable Energy Credit) 구매, 제3자 PPA(Power Purchase Agreement) 등 적용 가능한 옵션을 다각도로 검토하는 등 2050년까지 재생에너지 사용 100%를 달성하기 위한 중장기 계획을 수립중입니다. 향후 LG전자는 이를 기반으로 국내외 사업장이 위치한 국가의 현행법과 사업장 현황을 고려하여 재생에너지 확대를 위해 지속적으로 노력할 계획입니다.</p>
+						<div class="txtArea">
+							<p class="text">RE100이란 Renewable Energy 100의 약자로 기업 사용 전력의 100%를 재생에너지로 대체하기 위한 글로벌 이니셔티브를 의미합니다. 다수의 글로벌
+								기업들은 이미 RE100 참여를 공개적으로 선언하였으며, 최근에는 해당 기업들과 거래하는 기업들에게도 RE100에 참여하도록 요구하고 있습니다. LG전자 역시 고효율 태양광 패널을 활용한
+								재생에너지 발전 및 사용을 확대하고, 재생에너지 구매를 위한 녹색요금제, REC(Renewable Energy Credit) 구매, 제3자 PPA(Power Purchase
+								Agreement) 등 적용 가능한 옵션을 다각도로 검토하는 등 2050년까지 재생에너지 사용 100%를 달성하기 위한 중장기 계획을 수립중입니다. 향후 LG전자는 이를 기반으로 국내외
+								사업장이 위치한 국가의 현행법과 사업장 현황을 고려하여 재생에너지 확대를 위해 지속적으로 노력할 계획입니다.</p>
 							<p class="tit mt">LG전자 글로벌 재생에너지 확대 계획</p>
-							<img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart02-pc.png" alt="">
-							<img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart02-mo.png" alt="">
-							<!-- 구글차트 -->
+							<!-- <img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart02-pc.png" alt="">    <img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart02-mo.png" alt=""> -->
+							<div style="max-width:920px;margin:0 auto;">
+								<p class="graph_dec">(재생에너지 전환율(%) = 연도별 재생에너지 사용량 + 글로벌 전기 총 사용량)</p>
+								<div class="chart_area percent" id="chart_div"></div>
+							</div> <!-- 구글차트 -->
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">K-EV100 선언 및 이행(한국)</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle draw_chart_div2" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">K-EV100 선언 및 이행(한국)</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
-							<p class="text">2021년 4월 LG전자는 환경부에서 주관하는 ‘한국형 무공해차 전환(K-EV100)’ 캠페인에 동참하여 2030년까지 당사가 보유 또는 임차한 업무용 차량 100%를 전기, 수소 등을 활용한 무공해 차량으로 전환할 것을 선언하였습니다. 당사는 K-EV100 선언을 시작으로 사용하는 친환경 차량 비율을 점진적으로 확대하고, 단순히 업무용 차량을 친환경 차량으로 전환하는 것을 넘어, 기업 경영의 작은 부분부터 탄소중립 사회의 실현을 위해 고민하고 노력해 나갈 계획입니다.</p>
+						<div class="txtArea">
+							<p class="text">2021년 4월 LG전자는 환경부에서 주관하는 ‘한국형 무공해차 전환(K-EV100)’ 캠페인에 동참하여 2030년까지 당사가 보유 또는 임차한 업무용 차량
+								100%를 전기, 수소 등을 활용한 무공해 차량으로 전환할 것을 선언하였습니다. 당사는 K-EV100 선언을 시작으로 사용하는 친환경 차량 비율을 점진적으로 확대하고, 단순히 업무용
+								차량을 친환경 차량으로 전환하는 것을 넘어, 기업 경영의 작은 부분부터 탄소중립 사회의 실현을 위해 고민하고 노력해 나갈 계획입니다.</p>
 							<p class="tit mt">무공해자 전환 목표</p>
-							<img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart03-pc-new.png" alt="">
-							<img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart03-mo.png" alt="">
-							<!-- 구글차트 -->
-							<div class="thumb pic2">
-								<img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_01.jpg" alt="">
-								<img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_02.jpg" alt="">
-							</div>
+							<!--<img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart03-pc-new.png" alt="">							    <img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart03-mo.png" alt="">-->
+							<div style="max-width:910px;margin:0 auto;">
+								<p class="graph_dec">(전환율)</p>
+								<div class="chart_area percent" id="chart_div2"></div>
+							</div> <!-- 구글차트 -->
+							<div class="thumb pic2"> <img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_01.jpg"
+									alt=""> <img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_02.jpg" alt=""> </div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 			</ul>
 		</div>
-	</div>
-	<!-- acco 3 -->
+	</div> <!-- acco 3 -->
 	<div class="com-text noLine">
 		<div class="acco_thumb bg_03">
 			<div class="inner">
@@ -408,78 +641,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</ul>
 				</div>
 				<div class="content">
-					<p class="text">LG전자는 2030년까지 전 세계 생산사업장에서 발생되는 폐기물의 재활용률 95% 달성을 목표로 환경시설에 대한 지속적인 투자와 폐기물 처리 프로세스 개선을 위해 노력하고 있습니다. 폐기물을 친환경적으로 처리하고 생산자원으로 재사용하기 위해 각 사업장과 LG전자 전체의 폐기물 처리 실적을 관리하고 있으며, 폐기물 재활용 과정을 모니터링하고 있습니다. 또한, 재생 가능한 원료 사용을 확대하여 재활용 가능한 제품의 범위를 확장하고, 제품의 환경영향을 최소화하였습니다.</p>
-				</div>
-				<button type="button" class="view_more">더보기</button>
+					<p class="text">LG전자는 2030년까지 전 세계 생산사업장에서 발생되는 폐기물의 재활용률 95% 달성을 목표로 환경시설에 대한 지속적인 투자와 폐기물 처리 프로세스 개선을 위해
+						노력하고 있습니다. 폐기물을 친환경적으로 처리하고 생산자원으로 재사용하기 위해 각 사업장과 LG전자 전체의 폐기물 처리 실적을 관리하고 있으며, 폐기물 재활용 과정을 모니터링하고 있습니다.
+						또한, 재생 가능한 원료 사용을 확대하여 재활용 가능한 제품의 범위를 확장하고, 제품의 환경영향을 최소화하였습니다.</p>
+				</div> <button type="button" class="view_more">더보기</button>
 			</div>
 		</div>
-		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true"><!-- btmBtn 클래스 추가함 -->
+		<div class="accordion-wrap ui_accordion btmBtn sustain" data-single-open="true">
+			<!-- btmBtn 클래스 추가함 -->
 			<ul>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">사업장 폐기물 재활용 확대</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">사업장 폐기물 재활용 확대</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
-							<p class="text">LG전자는 한국 사업장에서 발생하는 폐기물과 관련하여 회수 운송 체계를 구축하고 재활용 기술을 지속적으로 연구하는 등 효율성을 향상시키고 있습니다. 또한, 재활용 부과금 Zero, 이슈 Zero화를 목표로 폐가전 회수량 증대 및 리스크 제거를 위한 자원순환 프로그램을 추진하고 있습니다. 2020년 LG전자의 글로벌 폐기물 발생량 중 약 61.5%는 해외에서 발생한 폐기물로 해외 생산사업장 폐기물의 단순 매립을 지양하고 재활용을 지속적으로 확대하고 있습니다. 이 밖에도 LG전자는 생산과정 및 재활용 체계를 지속적으로 개선하여 폐기물 발생량 감축 및 재생원료 사용을 확대하고 있습니다.</p>
+							<p class="text">LG전자는 한국 사업장에서 발생하는 폐기물과 관련하여 회수 운송 체계를 구축하고 재활용 기술을 지속적으로 연구하는 등 효율성을 향상시키고 있습니다. 또한, 재활용
+								부과금 Zero, 이슈 Zero화를 목표로 폐가전 회수량 증대 및 리스크 제거를 위한 자원순환 프로그램을 추진하고 있습니다. 2020년 LG전자의 글로벌 폐기물 발생량 중 약 61.5%는
+								해외에서 발생한 폐기물로 해외 생산사업장 폐기물의 단순 매립을 지양하고 재활용을 지속적으로 확대하고 있습니다. 이 밖에도 LG전자는 생산과정 및 재활용 체계를 지속적으로 개선하여 폐기물
+								발생량 감축 및 재생원료 사용을 확대하고 있습니다.</p>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">태양광 발전 설비 재활용</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">태양광 발전 설비 재활용</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
-							<p class="text">LG전자는 태양광 발전 설비에 의한 부정적인 환경영향 저감을 위해 2023년 도입 예정인 태양광 폐패널의 ‘생산자책임 재활용 제도(EPR제도)’에 적극 참여하고자 합니다. 또한, 2023년부터 한국 태양광 발전설비 폐기물이 급격하게 증가할 것을 대비하여 수거운송 및 재활용 체계를 구축하고 있습니다. 아울러, LG전자는 태양광 모듈의 폐기 방식을 연구하고 재활용 기술을 개발하였으며, 일부 한국 사업장에서는 태양광 발전 설비 폐기물을 유리, 알루미늄, 실리콘 등의 원자재로 재활용하고 있습니다.</p>
-							<div class="thumb pic2">
-								<img src="/kr/images/company/sustainable/img-businessplace-solar-system_thumb_01.jpg" alt="">
-								<img src="/kr/images/company/sustainable/img-businessplace-solar-system_thumb_02.jpg" alt="">
-							</div>
+						<div class="txtArea">
+							<p class="text">LG전자는 태양광 발전 설비에 의한 부정적인 환경영향 저감을 위해 2023년 도입 예정인 태양광 폐패널의 ‘생산자책임 재활용 제도(EPR제도)’에 적극 참여하고자
+								합니다. 또한, 2023년부터 한국 태양광 발전설비 폐기물이 급격하게 증가할 것을 대비하여 수거운송 및 재활용 체계를 구축하고 있습니다. 아울러, LG전자는 태양광 모듈의 폐기 방식을
+								연구하고 재활용 기술을 개발하였으며, 일부 한국 사업장에서는 태양광 발전 설비 폐기물을 유리, 알루미늄, 실리콘 등의 원자재로 재활용하고 있습니다.</p>
+							<div class="thumb pic2"> <img
+									src="/kr/images/company/sustainable/img-businessplace-solar-system_thumb_01.jpg" alt=""> <img
+									src="/kr/images/company/sustainable/img-businessplace-solar-system_thumb_02.jpg" alt=""> </div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 				<li class="lists">
-					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">칠서 리사이클링 센터 운영(한국)</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
-							<span class="blind ui_accord_text">내용 더 보기</span>
-						</a>
-					</div>
+					<div class="head"> <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기"
+							data-close-text="내용 닫기"> <span class="title line2">칠서 리사이클링 센터 운영(한국)</span>
+							<!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 --> <span class="blind ui_accord_text">내용 더
+								보기</span> </a> </div>
 					<div class="accord-cont ui_accord_content" style="display:none;">
-						<div class="txtArea nob_b">
-							<p class="text">LG전자는 환경 오염 최소화를 유도하는 환경성보장제도<sup>1)</sup>를 준수하고 있으며 2001년 8월에 설립한 칠서 리사이클링 센터(CRC: Chilseo Recycling Center)를 운영해오고 있습니다. CRC는 경남 지역의 폐가전제품 재활용 처리 및 환입제품 분석을 목적으로 운영되고 있고, 자원 사용저감 외에도 폐가전에 포함된 유해물질을 리사이클링 공정에서 친환경적으로 처리한다는 점에서 일반 리사이클링 센터와 차이점을 두고 있습니다. 이를 통해 폐가전 회수는 물론, 제품 기획 단계에서부터 자원순환을 고려한 친환경 설계를 수행하고 있으며 재생 자원을 활용할 수 있는 신기술 개발에 힘쓰고 있습니다.</p>
-							<p class="footnotes"><sup>1)</sup>환경성보장제도: 전시전자제품의 설계, 생산단계부터 폐기단계까지의 전 과정에 걸쳐 체계적인 관리를 통해 환경 오염 최소화를 유도하는 제도 (전기, 전자제품 및 자동차의 자원순환에 관한 법률)</p>
+						<div class="txtArea">
+							<p class="text">LG전자는 환경 오염 최소화를 유도하는 환경성보장제도<sup>1)</sup>를 준수하고 있으며 2001년 8월에 설립한 칠서 리사이클링 센터(CRC:
+								Chilseo Recycling Center)를 운영해오고 있습니다. CRC는 경남 지역의 폐가전제품 재활용 처리 및 환입제품 분석을 목적으로 운영되고 있고, 자원 사용저감 외에도
+								폐가전에 포함된 유해물질을 리사이클링 공정에서 친환경적으로 처리한다는 점에서 일반 리사이클링 센터와 차이점을 두고 있습니다. 이를 통해 폐가전 회수는 물론, 제품 기획 단계에서부터
+								자원순환을 고려한 친환경 설계를 수행하고 있으며 재생 자원을 활용할 수 있는 신기술 개발에 힘쓰고 있습니다.</p>
+							<p class="footnotes"><sup>1)</sup>환경성보장제도: 전시전자제품의 설계, 생산단계부터 폐기단계까지의 전 과정에 걸쳐 체계적인 관리를 통해 환경 오염 최소화를 유도하는
+								제도 (전기, 전자제품 및 자동차의 자원순환에 관한 법률)</p>
 							<p class="tit mt">칠서리사이클링 센터</p>
-							<div class="thumb pic2">
-								<img src="/kr/images/company/sustainable/img-businessplace-chilseo_thumb_01.jpg" alt="">
-								<img src="/kr/images/company/sustainable/img-businessplace-chilseo_thumb_02.jpg" alt="">
+							<div class="thumb pic2"> <img src="/kr/images/company/sustainable/img-businessplace-chilseo_thumb_01.jpg"
+									alt=""> <img src="/kr/images/company/sustainable/img-businessplace-chilseo_thumb_02.jpg" alt="">
 							</div>
 						</div>
-						<div class="btnArea">
-							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>
-						</div>
+						<div class="btnArea"> <button type="button"
+								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
-
 	<div class="sustainable-download only_pc">
 		<p class="tit">부정적 환경영향 Zero 사업장 PDF 다운로드</p>
-		<p class="desc">부정적 환경영향 Zero 사업장 페이지의 내용을 <br class="mo">한번에 확인하세요~</p>
-		<a href="#" class="btn"><span>PDF 다운로드</span></a>
+		<p class="desc">부정적 환경영향 Zero 사업장 페이지의 내용을 <br class="mo">한번에 확인하세요~</p> <a href="#" class="btn"><span>PDF
+				다운로드</span></a>
 	</div>
 </div>
