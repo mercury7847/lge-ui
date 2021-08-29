@@ -1134,14 +1134,14 @@
 
 //BTOCSITE-5010
 @include mobile{
-    .sales-receipt-popup {
+    #popup-salesReceipt {
         .pop-conts {
             padding: 32px 16px 32px;
             height: calc(100% - 62px);
             max-height: calc(100% - 62px);
         }
         .pop-footer {
-           display: none;
+            display: none;
         }
     }
 }
