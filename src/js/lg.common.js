@@ -762,7 +762,67 @@ var goAppUrl = function(path) {
             
                     window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
                 });
-                
+
+                // BTOCSITE-3536
+                /**
+                 *   a 태그에 js-link 클래스 추가하여 사용하세요
+                 *  - 모바일 브라우져 동작시 target 설정값이 '_blank' => window.open '_self' 이거나 미설정시 => location.href 이동
+                 *  - 아래 옵션은 app 일경우만 동작 입니다.
+                 *  - 옵션 : data-open-mode
+                 *      미설정시 : 앱내 이동 location.href 로 이동 시킵니다.
+                 *      inAppBrowser : inAppBrowser 로 뛰움
+                 *      outlink  : ios , android 외부 브라우저로 뛰움
+                 *    <샘플>
+                 *    <a class="js-link"  data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
+                 * 
+                 */
+                $doc.off('click.jsLink').on('click.jsLink', '.js-link', function(e){
+                    e.preventDefault();
+
+                    var href = this.getAttribute('href'),
+                        target = this.getAttribute('target'),
+                        data   = $(this).data(),
+                        openMode = data.openMode;
+
+                    if( isApp()) {
+                        switch(openMode) {
+                            case 'inAppBrowser' :
+                                alert('inAppBrowser');
+
+                                var url = lgkorUI.parseUrl(href),
+                                params = $.extend(url.searchParams.getAll(),{'openMode': openMode});
+                                href = href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
+    
+                                if(vcui.detect.isIOS){
+                                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': href, 'titlebar_show': 'Y'});
+                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                                } else {
+                                    android.openNewWebview(href);
+                                }
+                            break;
+
+                            case 'outlink' : 
+                                alert('oulink');
+                                if(vcui.detect.isIOS){
+                                    var jsonString = JSON.stringify({'command':'openLinkOut', 'url': href});
+                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                                } else {
+                                    android.openLinkOut(href);
+                                }
+                            break;
+                            default : 
+                                alert('앱에서 기본 동작');
+                                location.href = href;
+                            break;
+                        }
+                    } else {
+                        if(target === '_blank') {
+                            window.open(href);
+                        } else {
+                            location.href = href;
+                        }
+                    }                    
+                });
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
@@ -872,9 +932,22 @@ var goAppUrl = function(path) {
                     break;
                 }
             }
-            
-            if(index < 0) location.href = "/";
-            else history.back();
+
+            alert('_historyBack');
+            // BTOCSITE-3536 앱이고 파라메타에 openInApp 있는경우 closeInAppBrowser 실행
+            if(isApp() &&  lgkorUI.getParameterByName('openMode') === 'inAppBrowser') {
+                alert('isApp');
+                if(vcui.detect.isIOS){ 
+                    var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                 }else{
+                     android.closeNewWebview(); 
+                 }
+            } else {
+                alert('앱 아닐때 닫기');
+                if(index < 0) location.href = "/";
+                else history.back();
+            }
         },
 
         resetFlexibleBox: function(){
@@ -1978,10 +2051,63 @@ var goAppUrl = function(path) {
             });
         },
 
+        parseUrl: function (url) {
+            var protocol = url.split('//')[0],
+                comps = url.split('#')[0].replace(/^(https\:\/\/|http\:\/\/)|(\/)$/g, '').split('/'),
+                host = comps[0],
+                search = comps[comps.length - 1].split('?')[1],
+                tmp = host.split(':'),
+                port = tmp[1],
+                hostname = tmp[0];
+
+            search = typeof search !== 'undefined' ? '?' + search : '';
+
+            const params = search
+            .slice(1)
+            .split('&')
+            .map(function (p) { return p.split('='); })
+            .reduce((obj, pair) => {
+
+                    pair[0] = pair[0] || '';
+                    pair[1] = pair[1] || '';  
+
+                    if(pair[0]) {
+                        var parts = pair.map(function(param) {
+                            return decodeURIComponent(param);
+                        });
+                        obj[parts[0]] = parts[1];
+                    }
+
+                return obj
+            }, {});
+
+            return {
+                hash: url.indexOf('#') > -1 ? url.substring(url.indexOf('#')) : '',
+                protocol: protocol,
+                host: host,
+                hostname: hostname,
+                href: url,
+                pathname: '/' + comps.splice(1).map(function (o) { return /\?/.test(o) ? o.split('?')[0] : o; }).join('/'),
+                search: search,
+                origin: protocol + '//' + host,
+                port: typeof port !== 'undefined' ? port : '',
+                searchParams: {
+                    get: function(p) {
+                        return p in params? params[p] : ''
+                    },
+                    getAll: function(){ return params; }
+                }
+            };
+        },
+
+
         getParameterByName: function(name) {
+            alert(name);
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
                     results = regex.exec(location.search);
+
+                    alert(results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")))
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
 
