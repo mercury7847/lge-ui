@@ -95,7 +95,7 @@
 			},
 		};
 
-		function checkSizeColumn() {
+		var checkSizeColumn = function () {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
 				columnOptions.height = '240';
@@ -112,7 +112,7 @@
 				columnOptions.annotations.textStyle.fontSize = '13';
 				columnOptions.annotations.stem.length = '8';
 			}
-		}
+		};
 
 		var dataCombo = google.visualization.arrayToDataTable([
 			['', '영업이익', {
@@ -169,7 +169,7 @@
 			fontName: 'Noto Sans',
 		};
 
-		function checkSizeCombo() {
+		var checkSizeCombo = function () {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
 				comboOptions.fontSize = "12";
@@ -178,9 +178,9 @@
 				comboOptions.fontSize = "16";
 				comboOptions.height = '360';
 			}
-		}
+		};
 
-		function resize() {
+		var resize = function () {
 			if ($("#tab1").css("display") == "block") {
 				checkSizeColumn();
 				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
@@ -190,10 +190,10 @@
 				var chartCombo = new google.visualization.ColumnChart(document.getElementById("combochart"));
 				chartCombo.draw(viewCombo, comboOptions);
 			}
-		}
-
-		window.onload = resize();
-		window.onresize = resize;
+		};
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 	}
 </script>
 <style>
