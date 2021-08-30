@@ -233,8 +233,8 @@
 			var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
 			chart2.draw(view2, columnOptions2);
 		}
-		window.onload = resize();
-		window.onresize = resize;
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 
 		$(".draw_chart_div").on('click', function (e) {
 			setTimeout(function () {

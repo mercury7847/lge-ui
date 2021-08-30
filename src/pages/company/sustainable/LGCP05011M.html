@@ -209,7 +209,7 @@
 				checkSizeColumn();
 				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
 				chartColumn.draw(viewColumn, optionsColumn);
-			}, 500);
+			}, 2500);
 
 			$(".accordion-wrap li.lists:first-child").on('click', function () {
 				setTimeout(function () {
@@ -217,9 +217,9 @@
 				}, 500);
 			});
 		};
-
-		window.onload = init();
-		window.onresize = resize;
+		
+		$(window).on('load', init());
+		$(window).on('resize', resize);
 	}
 </script>
 <style type="text/css">

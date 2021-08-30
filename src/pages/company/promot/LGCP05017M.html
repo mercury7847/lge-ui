@@ -84,20 +84,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		}
 	
 		function resize() {
+			checkSize();
+			chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+			chart.draw(data, options);
+		}
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
 				checkSize();
 				chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 				chart.draw(data, options);
-			}
-			window.onload = resize();
-			window.onresize = resize;
-	
-			$(".draw_chart_div").on('click', function (e) {
-				setTimeout(function () {
-					checkSize();
-					chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-					chart.draw(data, options);
-				}, 500);
-			});
+			}, 500);
+		});
 	}
 
 

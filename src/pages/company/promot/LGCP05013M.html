@@ -248,11 +248,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				checkSizeDonut01();
 				var chartDonut01 = new google.visualization.PieChart(document.getElementById('donutchart01'));
 				chartDonut01.draw(viewDonut01, optionsDonut01);
-
+			}, 500);
+			
+			setTimeout(function () {
 				checkSizeDonut02();
 				var chartDonut02 = new google.visualization.PieChart(document.getElementById('donutchart02'));
 				chartDonut02.draw(viewDonut02, optionsDonut02);
-			}, 500);
+			}, 2500);
 
 			$(".accordion-wrap li.lists:first-child").on('click', function () {
 				setTimeout(function () {
@@ -261,8 +263,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			});
 		};
 
-		window.onload = init();
-		window.onresize = resize;
+		$(window).on('load', init());
+		$(window).on('resize', resize);
 	}
 </script>
 <style>

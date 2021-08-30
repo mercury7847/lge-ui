@@ -350,8 +350,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
 			chart3.draw(view3, columnOptions3);
 		}
-		window.onload = resize();
-		window.onresize = resize;
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 
 		$(".draw_chart_div").on('click', function (e) {
 			setTimeout(function () {

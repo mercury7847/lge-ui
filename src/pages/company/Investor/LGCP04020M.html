@@ -91,7 +91,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			chart.draw(data, options);
 		}, 100);
 	}
-	window.onresize = resize;
+	$(window).on('resize', resize);
 </script>
 <style>
 	.googlechart-wrap {position:relative; max-width:610px; margin:0 auto}
