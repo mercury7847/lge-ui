@@ -104,14 +104,12 @@
         // 원본 $('.cont-wrap > .btn-close,.cont-wrap .footer button')
         $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
             e.preventDefault();
-            // if(isApp() && vcui.detect.isIOS){
-            //     var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
-            //     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            // } else {
-            //     window.close();	
-            // }
-            window.close();	
-
+            if(isApp() && vcui.detect.isIOS){
+                var jsonString = JSON.stringify({'command':'closeAllInAppBrowser'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                window.close();	
+            }
         });
         // $('.cont-wrap [data-close]').on('click', function(e){
         //     e.preventDefault();
