@@ -48,6 +48,7 @@ img.m350 {max-width:350px!important}
 
 .chart_area.bar2 circle {stroke-width:0 !important;} /* hover 시 효과 없음 */
 .chart_area.bar2 svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;}
+#combochart.bar2 svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
 
 .chart_area.bar_row svg defs + rect + g > rect + g + g + g > g:nth-child(5) {opacity:0}/* 마지막 단위 지우기 */
 

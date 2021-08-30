@@ -269,26 +269,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <style>
 	.graph_dec {font-size:14px;line-height:24px;text-align:right}
-	.graph.pie {position:relative; max-width:910px; height:394px; margin:0 auto 20px; margin-top:0; padding-top:24px}
-	.graph.pie .c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
-	.graph.pie .graph_dec {position:absolute; top:0; right:0}
-	.graph.pie .chart_area {width:100%; height:394px}
-	.graph.pie .overlayarea {position:absolute; top:48%; left:50%; transform:translate(-50%,-50%); text-align:center}
+	.graph.pie {position:relative; max-width:910px; height:394px; margin:0 auto 44px; margin-top:0}
+	.graph.pie .c_legend {position:absolute; width:100%; bottom:-12px; left:50%; transform:translateX(-50%)}
+	.graph.pie .chart_area {width:100%; height:100%}
+	.graph.pie .overlayarea {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center}
 	.graph.pie .overlayarea span {display:block; font-size:20px; line-height:24px}
 	.graph.pie .overlayarea strong {display:block; margin-top:5px!important; margin-bottom:0!important; font-size:32px; font-weight:bold; line-height:32px}
 	.graph.pie .overlayarea span strong {margin-top:0!important; margin-bottom:5px!important}
 	.graph.pattern .c_legend {margin-top:24px}
 	.graph.pattern .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	@media screen and (max-width: 874px){
+		.graph.pie .c_legend .lgnd + .lgnd {margin-left:30px; padding-left:30px}
+	}
 	@media screen and (max-width: 767px){
 		.graph_dec {font-size:12px; line-height:20px}
 		.graph.pattern img {width:70%; max-width:293px}
-		.graph.pie .chart_area {height:76vw; max-height:394px}
+		.graph.pie {height:100%; margin-bottom:24px}
+		.graph.pie .chart_area {height:69.5vw; max-height:394px}
+		.graph.pie .overlayarea {top:calc(50% - 10px)}
 		.graph.pie .overlayarea span {font-size:14px; line-height:22px}
 		.graph.pie .overlayarea strong {font-size:24px; line-height:24px}
-	}
-	@media screen and (max-width: 491px){
-		.graph.pie.pie1 {margin-bottom:40px}
-		.graph.pie.pie1 .c_legend {bottom:-12px}
 	}
 </style>
 <div class="breadcrumb">

@@ -107,16 +107,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.graph {position:relative}
 	.c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
 	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	@media screen and (max-width: 767px){
-		.googlechart-wrap .donutchart {height:69.5vw; max-height:370px}
-		.googlechart-wrap .overlayarea { font-size:5vw; }
-		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
-		.company .c_legend .lgnd > span {margin-left:4px!important}
-	}
-	@media screen and (max-width: 386px){
-		.googlechart-wrap {margin:0 auto 40px!important}
-		.c_legend {bottom:-24px}
-	}
 	.googlechart-wrap {
 		position:relative;
 		max-width:520px;
@@ -134,6 +124,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		text-align:center;
 		font-size:24px;
 		font-weight:bold;
+	}
+	@media screen and (max-width: 767px){
+		.googlechart-wrap .donutchart {height:69.5vw; max-height:370px}
+		.googlechart-wrap .overlayarea { font-size:5vw; }
+		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
+		.company .c_legend .lgnd > span {margin-left:4px!important}
+	}
+	@media screen and (max-width: 386px){
+		.googlechart-wrap {margin:0 auto 40px!important}
+		.c_legend {bottom:-24px}
 	}
 </style>
 <div class="breadcrumb">
