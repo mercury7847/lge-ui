@@ -94,14 +94,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	window.onresize = resize;
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:610px;height:370px; margin:0 auto;}
-	.googlechart-wrap .chartarea{width:100%;height:100%;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;font-size:24px;font-weight:bold;}
+	.googlechart-wrap {position:relative; max-width:610px; margin:0 auto}
+	.googlechart-wrap .chartarea {width:100%; height:370px}
+	.googlechart-wrap .overlayarea {position:absolute; top:42%; left:50%; transform:translate(-50%, -42%); text-align:center; font-size:24px; font-weight:bold}
 	.graph {position:relative}
 	.c_legend {position:absolute; width:100%; bottom:0; left:50%; transform:translateX(-50%)}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:69.5vw}
-		.googlechart-wrap .overlayarea{font-size:5vw;}
+		.googlechart-wrap .chartarea {height:69.5vw; max-height:370px}
+		.googlechart-wrap .overlayarea {font-size:5vw}
 	}
 </style>
 <div class="breadcrumb">

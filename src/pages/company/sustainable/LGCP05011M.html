@@ -223,24 +223,15 @@
 	}
 </script>
 <style type="text/css">
-	@media screen and (max-width:767px) {
-		.googlechart-wrap .overlayarea { font-size:5vw; }
-	}
-	
 	.donutchart + .c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
 	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	@media screen and (max-width: 767px){
+	.googlechart-wrap {position:relative; max-width:910px; margin:0 auto}
+	.googlechart-wrap .donutchart {height:370px}
+	@media screen and (max-width:767px) {
+		.googlechart-wrap .overlayarea {font-size:5vw}
+		.googlechart-wrap .donutchart {height:76vw; max-height:370px}
 		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
 		.company .c_legend .lgnd > span {margin-left:4px!important}
-	}
-	.googlechart-wrap {
-		position: relative;
-		max-width: 910px;
-		margin: 0 auto;
-	}
-
-	.googlechart-wrap .donutchart {
-		height: 370px;
 	}
 </style>
 <div class="breadcrumb">
@@ -327,7 +318,7 @@
 			있습니다.</p>
 	</div>
 	
-	<div class="com-text">
+	<div class="com-text noLine_m">
 		<p class="tit">지배구조</p>
 		<p class="text">LG전자의 이사회와 이사회 산하 위원회는 ESG를 포함한 회사 경영 전략의 승인 등 주요 의사결정과 함께 운영 및 실적에 대한 관리, 감독 기능을 수행하고 있습니다.</p>
 		<div class="accordion-wrap ui_accordion btmBtn lgway" data-single-open="true">

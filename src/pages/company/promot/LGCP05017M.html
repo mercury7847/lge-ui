@@ -106,7 +106,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.graph {position:relative}
 	.c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
 	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	@media screen and (max-width: 768px){
+	@media screen and (max-width: 767px){
+		.googlechart-wrap .donutchart {height:69.5vw; max-height:370px}
+		.googlechart-wrap .overlayarea { font-size:5vw; }
 		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
 		.company .c_legend .lgnd > span {margin-left:4px!important}
 	}
@@ -116,13 +118,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	}
 	.googlechart-wrap {
 		position:relative;
-		width:520px;
-		height:370px;
+		max-width:520px;
 		margin:0 auto 12px;
 	}
-	.googlechart-wrap .chartarea {
+	.googlechart-wrap .donutchart {
 		width:100%;
-		height:100%;
+		height:370px;
 	}
 	.googlechart-wrap .overlayarea {
 		position:absolute;
@@ -132,13 +133,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		text-align:center;
 		font-size:24px;
 		font-weight:bold;
-	}
-	@media screen and (max-width:767px) {
-		.googlechart-wrap {
-			width:100%;
-			height:69.5vw;
-		}
-		.googlechart-wrap .overlayarea { font-size:5vw; }
 	}
 </style>
 <div class="breadcrumb">
@@ -426,7 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit h4">2) 공정거래 심화교육과정 개설</p>
 							<div class="graph ofn">
 								<div class="googlechart-wrap">
-									<div class="chartarea" id="donutchart"></div>
+									<div class="chartarea donutchart" id="donutchart"></div>
 									<!-- 구글차트 -->
 								</div>
 								<div class="c_legend">
