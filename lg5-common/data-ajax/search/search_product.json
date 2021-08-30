@@ -1,20 +1,20 @@
 {
-    "status":"success",
-    "message":null,
-    "param":{
+    "status": "success",
+    "message": null,
+    "param": {
         "inputValue": "aowlrtmvpdl스",
         "search": "매직스페이스22",
-        "searchIn":"결과내 검색어22",
+        "searchIn": "결과내 검색어22",
         "force": false,
-        "pagination":{
-            "page":"12",
-            "visibleCount":"7",
-            "totalCount":"23"
+        "pagination": {
+            "page": "12",
+            "visibleCount": "7",
+            "totalCount": "23"
         }
     },
-    "data":{
+    "data": {
         "allCount": "243",
-        "related":[
+        "related": [
             "OLED TV",
             "4K OLED TV",
             "LG DIOS",
@@ -31,342 +31,594 @@
             "매직스페이스",
             "AV 홈라이프"
         ],
-        "curation":[
+        "curation": [
             {
-                "curationId":"cur0001",
-                "text":"학생에게 추천 노트북 1"
+                "curationId": "cur0001",
+                "text": "학생에게 추천 노트북 1"
             },
             {
-                "curationId":"cur0002",
-                "text":"학생에게 추천 노트북 2"
+                "curationId": "cur0002",
+                "text": "학생에게 추천 노트북 2"
             },
             {
-                "curationId":"cur0003",
-                "text":"학생에게 추천 노트북 3"
+                "curationId": "cur0003",
+                "text": "학생에게 추천 노트북 3"
             },
             {
-                "curationId":"cur0004",
-                "text":"학생에게 추천 노트북 4"
+                "curationId": "cur0004",
+                "text": "학생에게 추천 노트북 4"
             },
             {
-                "curationId":"cur0005",
-                "text":"학생에게 추천 노트북 5"
+                "curationId": "cur0005",
+                "text": "학생에게 추천 노트북 5"
             },
             {
-                "curationId":"cur0006",
-                "text":"학생에게 추천 노트북 6"
+                "curationId": "cur0006",
+                "text": "학생에게 추천 노트북 6"
             },
             {
-                "curationId":"cur0007",
-                "text":"학생에게 추천 노트북 7"
+                "curationId": "cur0007",
+                "text": "학생에게 추천 노트북 7"
             }
         ],
         "smartFilterList": [
             {
-                "filterId":"sfid00001",
-                "filterGroupName":"사이즈",
-                "filterValues":[
-                    {"filterValueId":"sfsc0001","filterValueName":"27인치"},
-                    {"filterValueId":"sfsc0002","filterValueName":"32인치"},
-                    {"filterValueId":"sfsc0003","filterValueName":"40인치"},
-                    {"filterValueId":"sfsc0004","filterValueName":"47인치"},
-                    {"filterValueId":"sfsc0006","filterValueName":"49인치"},
-                    {"filterValueId":"sfsc0007","filterValueName":"52인치"},
-                    {"filterValueId":"sfsc0008","filterValueName":"58인치"},
-                    {"filterValueId":"sfsc0009","filterValueName":"70인치"},
-                    {"filterValueId":"sfsc0010","filterValueName":"80인치"},
-                    {"filterValueId":"sfsc0011","filterValueName":"100인치"},
-                    {"filterValueId":"sfsc0012","filterValueName":"120인치"}
+                "filterId": "sfid00001",
+                "filterGroupName": "사이즈",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfsc0001",
+                        "filterValueName": "27인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0002",
+                        "filterValueName": "32인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0003",
+                        "filterValueName": "40인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0004",
+                        "filterValueName": "47인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0006",
+                        "filterValueName": "49인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0007",
+                        "filterValueName": "52인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0008",
+                        "filterValueName": "58인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0009",
+                        "filterValueName": "70인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0010",
+                        "filterValueName": "80인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0011",
+                        "filterValueName": "100인치"
+                    },
+                    {
+                        "filterValueId": "sfsc0012",
+                        "filterValueName": "120인치"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00002",
-                "filterGroupName":"저장장치",
-                "filterValues":[
-                    {"filterValueId":"sfcp0001","filterValueName":"인텔 타이거레이크 i5"},
-                    {"filterValueId":"sfcp0002","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0003","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0004","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0006","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0007","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0008","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0009","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0010","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0011","filterValueName":"인텔 타이거레이크 i7"},
-                    {"filterValueId":"sfcp0012","filterValueName":"인텔 타이거레이크 i7"}
+                "filterId": "sfid00002",
+                "filterGroupName": "저장장치",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfcp0001",
+                        "filterValueName": "인텔 타이거레이크 i5"
+                    },
+                    {
+                        "filterValueId": "sfcp0002",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0003",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0004",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0006",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0007",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0008",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0009",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0010",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0011",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    },
+                    {
+                        "filterValueId": "sfcp0012",
+                        "filterValueName": "인텔 타이거레이크 i7"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00003",
-                "filterGroupName":"저장장치",
-                "filterValues":[
-                    {"filterValueId":"sfhd0001","filterValueName":"HDD 512"},
-                    {"filterValueId":"sfhd0002","filterValueName":"SSD 256"},
-                    {"filterValueId":"sfhd0003","filterValueName":"SSD 1TB"},
-                    {"filterValueId":"sfhd0004","filterValueName":"SSD 2TB"},
-                    {"filterValueId":"sfhd0006","filterValueName":"SSD 5TB"}
+                "filterId": "sfid00003",
+                "filterGroupName": "저장장치",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfhd0001",
+                        "filterValueName": "HDD 512"
+                    },
+                    {
+                        "filterValueId": "sfhd0002",
+                        "filterValueName": "SSD 256"
+                    },
+                    {
+                        "filterValueId": "sfhd0003",
+                        "filterValueName": "SSD 1TB"
+                    },
+                    {
+                        "filterValueId": "sfhd0004",
+                        "filterValueName": "SSD 2TB"
+                    },
+                    {
+                        "filterValueId": "sfhd0006",
+                        "filterValueName": "SSD 5TB"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00004",
-                "filterGroupName":"메모리",
-                "filterValues":[
-                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
-                    {"filterValueId":"sfmm0002","filterValueName":"256"},
-                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
-                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
-                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                "filterId": "sfid00004",
+                "filterGroupName": "메모리",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfmm0001",
+                        "filterValueName": "16GB"
+                    },
+                    {
+                        "filterValueId": "sfmm0002",
+                        "filterValueName": "256"
+                    },
+                    {
+                        "filterValueId": "sfmm0003",
+                        "filterValueName": "1TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0004",
+                        "filterValueName": "2TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0006",
+                        "filterValueName": "5TB"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00005",
-                "filterGroupName":"메모리2",
-                "filterValues":[
-                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
-                    {"filterValueId":"sfmm0002","filterValueName":"256"},
-                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
-                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
-                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                "filterId": "sfid00005",
+                "filterGroupName": "메모리2",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfmm0001",
+                        "filterValueName": "16GB"
+                    },
+                    {
+                        "filterValueId": "sfmm0002",
+                        "filterValueName": "256"
+                    },
+                    {
+                        "filterValueId": "sfmm0003",
+                        "filterValueName": "1TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0004",
+                        "filterValueName": "2TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0006",
+                        "filterValueName": "5TB"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00006",
-                "filterGroupName":"메모리3",
-                "filterValues":[
-                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
-                    {"filterValueId":"sfmm0002","filterValueName":"256"},
-                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
-                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
-                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                "filterId": "sfid00006",
+                "filterGroupName": "메모리3",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfmm0001",
+                        "filterValueName": "16GB"
+                    },
+                    {
+                        "filterValueId": "sfmm0002",
+                        "filterValueName": "256"
+                    },
+                    {
+                        "filterValueId": "sfmm0003",
+                        "filterValueName": "1TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0004",
+                        "filterValueName": "2TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0006",
+                        "filterValueName": "5TB"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00007",
-                "filterGroupName":"메모리4",
-                "filterValues":[
-                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
-                    {"filterValueId":"sfmm0002","filterValueName":"256"},
-                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
-                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
-                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                "filterId": "sfid00007",
+                "filterGroupName": "메모리4",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfmm0001",
+                        "filterValueName": "16GB"
+                    },
+                    {
+                        "filterValueId": "sfmm0002",
+                        "filterValueName": "256"
+                    },
+                    {
+                        "filterValueId": "sfmm0003",
+                        "filterValueName": "1TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0004",
+                        "filterValueName": "2TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0006",
+                        "filterValueName": "5TB"
+                    }
                 ]
             },
             {
-                "filterId":"sfid00008",
-                "filterGroupName":"메모리5",
-                "filterValues":[
-                    {"filterValueId":"sfmm0001","filterValueName":"16GB"},
-                    {"filterValueId":"sfmm0002","filterValueName":"256"},
-                    {"filterValueId":"sfmm0003","filterValueName":"1TB"},
-                    {"filterValueId":"sfmm0004","filterValueName":"2TB"},
-                    {"filterValueId":"sfmm0006","filterValueName":"5TB"}
+                "filterId": "sfid00008",
+                "filterGroupName": "메모리5",
+                "filterValues": [
+                    {
+                        "filterValueId": "sfmm0001",
+                        "filterValueName": "16GB"
+                    },
+                    {
+                        "filterValueId": "sfmm0002",
+                        "filterValueName": "256"
+                    },
+                    {
+                        "filterValueId": "sfmm0003",
+                        "filterValueName": "1TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0004",
+                        "filterValueName": "2TB"
+                    },
+                    {
+                        "filterValueId": "sfmm0006",
+                        "filterValueName": "5TB"
+                    }
                 ]
             }
         ],
-        "product":{
-            "count":"124",
-            "subcount":"34",
-            "data":[
+        "product": {
+            "count": "124",
+            "subcount": "34",
+            "data": [
                 {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                    "imageAlt":"LG DIOS JSW 노크온 매직스페이스",
-                    "title":"LG DIOS JSW 노크온 매직스페이스",
-                    "sku":"S833MC85Q1",
-                    "price":"4421000",
-                    "originalPrice":"4422000",
-                    "carePrice":"42000",
-                    "flag":[
+                    "url": "#",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt": "LG DIOS JSW 노크온 매직스페이스",
+                    "title": "LG DIOS JSW 노크온 매직스페이스",
+                    "sku": "S833MC85Q1",
+                    "price": "4421000",
+                    "originalPrice": "4422000",
+                    "carePrice": "42000",
+                    "flag": [
                         "미리 페스타",
                         "으뜸 효율 15%",
                         "신제품",
                         "베스트"
                     ],
-                    "hash":[
+                    "hash": [
                         "가전",
                         "겨울가전"
                     ],
-                    "hasCare":true,
-                    "hasReview":true,
-                    "rating":"40",
-                    "review":"34",
-                    "obsFlag":"N",
-                    "modelStatusCode":"ACTIVE!",
-                    "rentalFlag":"N"
+                    "hasCare": true,
+                    "hasReview": true,
+                    "rating": "40",
+                    "review": "34",
+                    "obsFlag": "N",
+                    "modelStatusCode": "ACTIVE!",
+                    "rentalFlag": "N",
+                    "rentalTabFlag": "Y",
+                    "techSpecs": []
                 },
                 {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                    "imageAlt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                    "sku":"S833MC85Q1",
-                    "price":"4422000",
-                    "originalPrice":"4421000",
-                    "carePrice":"41000",
-                    "flag":[
+                    "url": "#",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt": "LG DIOS 노크온 매직스페이스",
+                    "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku": "S833MC85Q1",
+                    "price": "4422000",
+                    "originalPrice": "4421000",
+                    "carePrice": "41000",
+                    "flag": [
                         "미리 페스타",
                         "베스트",
                         "신제품"
                     ],
-                    "hash":[
+                    "hash": [
                         "가전",
                         "가을가전"
                     ],
-                    "hasCare":false,
-                    "hasReview":false,
-                    "rating":"39",
-                    "review":"33",
-                    "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE",
-                    "rentalFlag":"N"
+                    "hasCare": false,
+                    "hasReview": false,
+                    "rating": "39",
+                    "review": "33",
+                    "obsFlag": "Y",
+                    "modelStatusCode": "ACTIVE",
+                    "rentalFlag": "N",
+                    "rentalTabFlag": "N",
+                    "techSpecs": []
                 },
                 {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                    "imageAlt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                    "sku":"S833MC85Q1",
-                    "price":"4422000",
-                    "originalPrice":"4433000",
-                    "carePrice":null,
-                    "flag":[
+                    "url": "#",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt": "LG DIOS 노크온 매직스페이스",
+                    "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku": "S833MC85Q1",
+                    "price": "4422000",
+                    "originalPrice": "4433000",
+                    "carePrice": null,
+                    "flag": [
                         "미리 페스타",
                         "베스트",
                         "신제품"
                     ],
-                    "hash":[
+                    "hash": [
                         "가전",
                         "가을가전"
                     ],
-                    "hasCare":false,
-                    "hasReview":false,
-                    "rating":"39",
-                    "review":"33",
-                    "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE",
-                    "rentalFlag":"N"
+                    "hasCare": false,
+                    "hasReview": false,
+                    "rating": "39",
+                    "review": "33",
+                    "obsFlag": "Y",
+                    "modelStatusCode": "ACTIVE",
+                    "rentalFlag": "N",
+                    "rentalTabFlag": "N",
+                    "techSpecs": []
                 },
                 {
-                    "url":"#",
-                    "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                    "imageAlt":"LG DIOS 노크온 매직스페이스",
-                    "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                    "sku":"S833MC85Q1",
-                    "price":null,
-                    "originalPrice":null,
-                    "carePrice":"78000",
-                    "flag":[
+                    "url": "#",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                    "imageAlt": "LG DIOS 노크온 매직스페이스",
+                    "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                    "sku": "S833MC85Q1",
+                    "price": null,
+                    "originalPrice": null,
+                    "carePrice": "78000",
+                    "flag": [
                         "미리 페스타",
                         "베스트",
                         "신제품"
                     ],
-                    "hash":[
+                    "hash": [
                         "가전",
                         "가을가전"
                     ],
-                    "hasCare":false,
-                    "hasReview":false,
-                    "rating":"39",
-                    "review":"33",
-                    "obsFlag":"Y",
-                    "modelStatusCode":"ACTIVE",
-                    "rentalFlag":"N"
+                    "hasCare": false,
+                    "hasReview": false,
+                    "rating": "39",
+                    "review": "33",
+                    "obsFlag": "Y",
+                    "modelStatusCode": "ACTIVE",
+                    "rentalFlag": "N",
+                    "rentalTabFlag": "N",
+                    "techSpecs": []
                 }
             ]
         },
-        "event":{
-            "count":"0"
+        "event": {
+            "count": "0"
         },
-        "story":{
-            "count":"0"
+        "story": {
+            "count": "0"
         },
-        "additional":{
-            "count":"0"
+        "additional": {
+            "count": "0"
         },
-        "shop":{
-            "count":"0"           
+        "shop": {
+            "count": "0"
         },
-        "customer":{
-            "count":"4"           
+        "customer": {
+            "count": "4"
         },
         "filterList": [
             {
-                "filterType":"range",
-                "filterId":"fid00001",
-                "filterGroupName":"판매가",
-                "filterGroupType":"range",
-                "filterValues":[
-                    {"filterValueId":"pd0001","filterValueName":"50,000"},
-                    {"filterValueId":"pd0002","filterValueName":"150,000"},
-                    {"filterValueId":"pd0003","filterValueName":"400,000"},
-                    {"filterValueId":"pd0004","filterValueName":"1,000,000"},
-                    {"filterValueId":"pd0005","filterValueName":"2,000,000"}
+                "filterType": "range",
+                "filterId": "fid00001",
+                "filterGroupName": "판매가",
+                "filterGroupType": "range",
+                "filterValues": [
+                    {
+                        "filterValueId": "pd0001",
+                        "filterValueName": "50,000"
+                    },
+                    {
+                        "filterValueId": "pd0002",
+                        "filterValueName": "150,000"
+                    },
+                    {
+                        "filterValueId": "pd0003",
+                        "filterValueName": "400,000"
+                    },
+                    {
+                        "filterValueId": "pd0004",
+                        "filterValueName": "1,000,000"
+                    },
+                    {
+                        "filterValueId": "pd0005",
+                        "filterValueName": "2,000,000"
+                    }
                 ]
             },
             {
-                "filterType":"range",
-                "filterId":"fid00002",
-                "filterGroupName":"화면크기",
-                "filterGroupType":"range",
-                "filterValues":[
-                    {"filterValueId":"rd0001","filterValueName":"48인치"},
-                    {"filterValueId":"rd0002","filterValueName":"52인치"},
-                    {"filterValueId":"rd0003","filterValueName":"80인치"},
-                    {"filterValueId":"rd0004","filterValueName":"120인치"}
+                "filterType": "range",
+                "filterId": "fid00002",
+                "filterGroupName": "화면크기",
+                "filterGroupType": "range",
+                "filterValues": [
+                    {
+                        "filterValueId": "rd0001",
+                        "filterValueName": "48인치"
+                    },
+                    {
+                        "filterValueId": "rd0002",
+                        "filterValueName": "52인치"
+                    },
+                    {
+                        "filterValueId": "rd0003",
+                        "filterValueName": "80인치"
+                    },
+                    {
+                        "filterValueId": "rd0004",
+                        "filterValueName": "120인치"
+                    }
                 ]
             },
             {
-                "filterType":"radio",
-                "filterId":"fid00003",
-                "filterGroupName":"서비스",
-                "filterGroupType":"radio",
-                "filterValues":[
-                    {"filterValueId":"","filterValueName":"전체"},
-                    {"filterValueId":"sd0002","filterValueName":"일반제품", "count":7},
-                    {"filterValueId":"sd0003","filterValueName":"케어십 가능 제품", "count":7},
-                    {"filterValueId":"sd0004","filterValueName":"기타", "count":7}
+                "filterType": "radio",
+                "filterId": "fid00003",
+                "filterGroupName": "서비스",
+                "filterGroupType": "radio",
+                "filterValues": [
+                    {
+                        "filterValueId": "",
+                        "filterValueName": "전체"
+                    },
+                    {
+                        "filterValueId": "sd0002",
+                        "filterValueName": "일반제품",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "sd0003",
+                        "filterValueName": "케어십 가능 제품",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "sd0004",
+                        "filterValueName": "기타",
+                        "count": 7
+                    }
                 ]
             },
             {
-                "filterType":"color",
-                "filterId":"fid00004",
-                "filterGroupName":"색상",
-                "filterGroupType":"color",
-                "filterValues":[
-                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel", "count":7},
-                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel", "count":7},
-                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel", "count":7},
-                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white", "count":7}
+                "filterType": "color",
+                "filterId": "fid00004",
+                "filterGroupName": "색상",
+                "filterGroupType": "color",
+                "filterValues": [
+                    {
+                        "filterValueId": "cd0001",
+                        "filterValueName": "맷 블랙",
+                        "topFilterDisplayName": "HA_REF_Matte_Black_Stainless_Steel",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "cd0002",
+                        "filterValueName": "블랙 스틸",
+                        "topFilterDisplayName": "Black-Stainless-Steel",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "cd0003",
+                        "filterValueName": "스테인레스 스틸",
+                        "topFilterDisplayName": "stainless-steel",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "cd0004",
+                        "filterValueName": "화이트",
+                        "topFilterDisplayName": "smooth-white",
+                        "count": 7
+                    }
                 ]
             },
             {
-                "filterType":"checkbox",
-                "filterId":"fid00005",
-                "filterGroupName":"용량",
-                "filterGroupType":"size",
-                "filterValues":[
-                    {"filterValueId":"yd0001","filterValueName":"용량 11"},
-                    {"filterValueId":"yd0002","filterValueName":"용량 22", "count":7},
-                    {"filterValueId":"yd0003","filterValueName":"용량 33"},
-                    {"filterValueId":"yd0004","filterValueName":"용량 44", "count":7}
+                "filterType": "checkbox",
+                "filterId": "fid00005",
+                "filterGroupName": "용량",
+                "filterGroupType": "size",
+                "filterValues": [
+                    {
+                        "filterValueId": "yd0001",
+                        "filterValueName": "용량 11"
+                    },
+                    {
+                        "filterValueId": "yd0002",
+                        "filterValueName": "용량 22",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "yd0003",
+                        "filterValueName": "용량 33"
+                    },
+                    {
+                        "filterValueId": "yd0004",
+                        "filterValueName": "용량 44",
+                        "count": 7
+                    }
                 ]
             },
             {
-                "filterType":"checkbox",
-                "filterId":"fid00006",
-                "filterGroupName":"태그",
-                "filterGroupType":"check",
-                "filterValues":[
-                    {"filterValueId":"td0001","filterValueName":"태그1", "count":7},
-                    {"filterValueId":"td0002","filterValueName":"태그2", "count":7},
-                    {"filterValueId":"td0003","filterValueName":"태그3", "count":7}
+                "filterType": "checkbox",
+                "filterId": "fid00006",
+                "filterGroupName": "태그",
+                "filterGroupType": "check",
+                "filterValues": [
+                    {
+                        "filterValueId": "td0001",
+                        "filterValueName": "태그1",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "td0002",
+                        "filterValueName": "태그2",
+                        "count": 7
+                    },
+                    {
+                        "filterValueId": "td0003",
+                        "filterValueName": "태그3",
+                        "count": 7
+                    }
                 ]
             }
         ],
         "recommendList": [
             {
                 "image": "/lg5-common/images/dummy/@img-stroy.png",
-                "category":"라이프스타일 컨설팅",
+                "category": "라이프스타일 컨설팅",
                 "title": "라이프스타일에 맞는 제품은 무엇인가요?",
                 "desc": "나의 라이프스타일에 맞는 제품을 추천드립니다.",
                 "url": "#n",
@@ -375,7 +627,7 @@
             },
             {
                 "image": "/lg5-common/images/dummy/@img-stroy.png",
-                "category":"라이프스타일 컨설팅",
+                "category": "라이프스타일 컨설팅",
                 "title": "라이프스타일에 맞는 제품은 무엇일까요?",
                 "desc": "나의 라이프스타일에 맞는 제품을 추천드립니다.",
                 "url": "#n",
@@ -383,7 +635,7 @@
                 "target": "_blank"
             }
         ],
-        "serviceLinkers":[
+        "serviceLinkers": [
             {
                 "title": "매장 찾기",
                 "image": "/lg5-common/images/icons/icon-img02-64.svg",
@@ -397,107 +649,107 @@
                 "target": "_blank"
             }
         ],
-        "noDataList":[
+        "noDataList": [
             {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS nodata 노크온 매직스페이스",
-                "title":"LG DIOS nodata 노크온 매직스페이스",
-                "sku":"S833MC85Q1",
-                "price":"4421000",
-                "originalPrice":"4422000",
-                "carePrice":"42000",
-                "flag":[
+                "url": "#",
+                "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt": "LG DIOS nodata 노크온 매직스페이스",
+                "title": "LG DIOS nodata 노크온 매직스페이스",
+                "sku": "S833MC85Q1",
+                "price": "4421000",
+                "originalPrice": "4422000",
+                "carePrice": "42000",
+                "flag": [
                     "미리 페스타",
                     "으뜸 효율 15%",
                     "신제품",
                     "베스트"
                 ],
-                "hash":[
+                "hash": [
                     "가전",
                     "겨울가전"
                 ],
-                "hasCare":true,
-                "hasReview":true,
-                "rating":"40",
-                "review":"34",
-                "obsFlag":"Y",
-                "modelStatusCode":"ACTIVE"
+                "hasCare": true,
+                "hasReview": true,
+                "rating": "40",
+                "review": "34",
+                "obsFlag": "Y",
+                "modelStatusCode": "ACTIVE"
             },
             {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS 노크온 매직스페이스",
-                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                "sku":"S833MC85Q1",
-                "price":"4422000",
-                "originalPrice":"4421000",
-                "carePrice":"41000",
-                "flag":[
+                "url": "#",
+                "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt": "LG DIOS 노크온 매직스페이스",
+                "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku": "S833MC85Q1",
+                "price": "4422000",
+                "originalPrice": "4421000",
+                "carePrice": "41000",
+                "flag": [
                     "미리 페스타",
                     "베스트",
                     "신제품"
                 ],
-                "hash":[
+                "hash": [
                     "가전",
                     "가을가전"
                 ],
-                "hasCare":false,
-                "hasReview":false,
-                "rating":"39",
-                "review":"33",
-                "obsFlag":"Y",
-                "modelStatusCode":"ACTIVE"
+                "hasCare": false,
+                "hasReview": false,
+                "rating": "39",
+                "review": "33",
+                "obsFlag": "Y",
+                "modelStatusCode": "ACTIVE"
             },
             {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS 노크온 매직스페이스",
-                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                "sku":"S833MC85Q1",
-                "price":"4422000",
-                "originalPrice":"4433000",
-                "carePrice":null,
-                "flag":[
+                "url": "#",
+                "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt": "LG DIOS 노크온 매직스페이스",
+                "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku": "S833MC85Q1",
+                "price": "4422000",
+                "originalPrice": "4433000",
+                "carePrice": null,
+                "flag": [
                     "미리 페스타",
                     "베스트",
                     "신제품"
                 ],
-                "hash":[
+                "hash": [
                     "가전",
                     "가을가전"
                 ],
-                "hasCare":false,
-                "hasReview":false,
-                "rating":"39",
-                "review":"33",
-                "obsFlag":"Y",
-                "modelStatusCode":"ACTIVE"
+                "hasCare": false,
+                "hasReview": false,
+                "rating": "39",
+                "review": "33",
+                "obsFlag": "Y",
+                "modelStatusCode": "ACTIVE"
             },
             {
-                "url":"#",
-                "imageUrl":"/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                "imageAlt":"LG DIOS 노크온 매직스페이스",
-                "title":"LG DIOS 노크온 매직스페이스 LG DIOS",
-                "sku":"S833MC85Q1",
-                "price":null,
-                "originalPrice":null,
-                "carePrice":"78000",
-                "flag":[
+                "url": "#",
+                "imageUrl": "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                "imageAlt": "LG DIOS 노크온 매직스페이스",
+                "title": "LG DIOS 노크온 매직스페이스 LG DIOS",
+                "sku": "S833MC85Q1",
+                "price": null,
+                "originalPrice": null,
+                "carePrice": "78000",
+                "flag": [
                     "미리 페스타",
                     "베스트",
                     "신제품"
                 ],
-                "hash":[
+                "hash": [
                     "가전",
                     "가을가전"
                 ],
-                "hasCare":false,
-                "hasReview":false,
-                "rating":"39",
-                "review":"33",
-                "obsFlag":"Y",
-                "modelStatusCode":"ACTIVE"
+                "hasCare": false,
+                "hasReview": false,
+                "rating": "39",
+                "review": "33",
+                "obsFlag": "Y",
+                "modelStatusCode": "ACTIVE"
             }
         ]
     }

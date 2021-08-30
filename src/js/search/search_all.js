@@ -255,8 +255,9 @@ if ('scrollRestoration' in history) {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
-                
-                //vcui.require(['ui/tab'], function () {
+                // BTOCSITE-1716
+                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
+
                     $(window).scrollTop(0); //BTOCSITE-2216
                     self.setting();
                     self.updateRecentSearchList();
@@ -280,6 +281,29 @@ if ('scrollRestoration' in history) {
                         }
                     });
 
+                    // BTOCSITE-1716
+                    self.savedFilterData = null;
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, 'unfold_flag', function (data) {
+                        if(self.savedFilterData) {
+                            var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
+                            var category2 = self.getCategoryFromFilter(data.filterData);
+                            if(!category1) category1 = [];
+                            if(!category2) category2 = [];
+                            var diffCat = vcui.array.different(category1,category2);
+                            if(diffCat.length > 0) {
+                                if(category2 && category2.length > 0) {
+                                    data.filterData = JSON.stringify({"category":category2});
+                                } else {
+                                    data.filterData = "{}";
+                                }
+                            }
+                        }
+                        self.savedFilterData = JSON.parse(JSON.stringify(data));
+                        data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
+                        self.requestSearch(self.makeFilterData(data));
+                    });// BTOCSITE-1716
+
+
                     var hash = location.hash.replace("#","");
                     var savedData = lgkorUI.getStorage(hash);
                     // BTOCSITE-2216
@@ -302,7 +326,7 @@ if ('scrollRestoration' in history) {
                     }
 
                     self.updateBasicData();
-                //});
+                });
             },
 
             makeProductGAData: function(item) {
@@ -401,6 +425,12 @@ if ('scrollRestoration' in history) {
                 //noData용
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
+
+                // BTOCSITE-1716
+                //필터
+                self.$layFilter = self.$contWrap.find('div.lay-filter');
+                //모바일 필터열기버튼
+                self.$btnFilter = self.$contWrap.find('div.btn-filter');
             },
 
             sendSearchPage: function(searchUrl, search, force, smartFilter, curation) {
@@ -846,7 +876,54 @@ if ('scrollRestoration' in history) {
                     }
                     */
 
-                    self.$contWrap.removeClass('w-filter');
+                    // BTOCSITE-1716
+                    //필터세팅
+                    // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
+                    // 2. 스마트 필터 없음 일반 필터로
+
+                    console.log(data);
+                    var isSmartFiler = data.smartFilterList.hasOwnProperty("data") && !!data.smartFilterList.data.length;
+                    var isFilterList = data.hasOwnProperty("filterList") && !!data.filterList.length;
+                    
+                    var filterShow = false;
+                    if(isSmartFiler || isFilterList) {
+                        filterShow = true;
+                        var smartFilterList = data.smartFilterList.data;
+
+                        if(isSmartFiler) {
+                            // api 에서 smartFilterList 에 filtertype 을 넣어주든
+                            // 일반 필터에 스마트 필터를 넣어주든 하나는 해야함
+                            smartFilterList.forEach(function(item, index) {
+                                if(!item.filterType) item.filterType = "checkbox";
+                                // item.unfold_flag = 'N';
+                            });
+                        }
+                        
+                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
+
+                        // 스마트 필터일경우 layFilter pc 타이틀
+                        if(self.$layFilter.hasClass('smart-type')) {
+                            var txt = lgkorUI.getParameterByName('search');
+                            $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세필터');
+                        }
+
+                        //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
+                        if(vcui.detect.isMobile){
+                            self.filterLayer.openFilterSectionAll(2);
+                        }
+
+
+                        if(self.savedFilterData && self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+
+                            console.log("savedFilterData %o",self.savedFilterData );
+                            self.filterLayer.resetFilter(filterData);
+                        }
+           
+                   }
+
+
+                    // self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap');
 
                     //카테고리 리스트 갱신
@@ -1147,16 +1224,37 @@ if ('scrollRestoration' in history) {
                         } else {
                             self.$resultListNoData.hide();
                         }
+
+                        // BTOCSITE-1716 
+                        self.$btnFilter.hide();
+
                         self.$resultListNoData.show();
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
+                        // BTOCSITE-1716
+                        if(filterShow) {
+                            self.$contWrap.addClass('w-filter');
+                            self.$layFilter.css('display', '');
+                        } else {
+                            self.$contWrap.removeClass('w-filter');
+                            self.$layFilter.hide();
+                        }
+
+                        // BTOCSITE-1716 
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            self.$btnFilter.hide();
+                        } else {
+                            self.$btnFilter.show();
+                        }
+                        
                         //self.$tab.parents('.search-tabs-wrap').show();
                         //self.$tab.vcSmoothScroll('refresh');
                         //self.$tab.show();
                         //self.$contWrap.show();
                         self.$resultListNoData.hide();
                         self.$searchNotResult.hide();
+
                     }
 
                     //검색어 저장

@@ -53,11 +53,13 @@ var FilterLayer = (function() {
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
-        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
+         // BTOCSITE-1716
+        '<div class="desc ui_accord_content" id="{{filterId}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.filterValueId}}" id="chk-{{filterId}}-{{idx}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
+                    // BTOCSITE-1716
+                    '<input type="checkbox" id="{{filterId}}-{{idx}}" name="{{filterId}}" value="{{item.filterValueId}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                    '<label for="{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -112,7 +114,6 @@ var FilterLayer = (function() {
 
         _bindEvents: function() {
             var self = this;
-            console.log()
 
             // 필터 아코디언 오픈시 슬라이더 업데이트
             self.$layFilter.on('accordionexpand', '.ui_filter_accordion',function(e,data){
@@ -120,7 +121,7 @@ var FilterLayer = (function() {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                 }
             });
-            self.$layFilter.on()
+            // self.$layFilter.on()
             
             // self.$openFilterDefault();
 
@@ -135,8 +136,21 @@ var FilterLayer = (function() {
                     $parent.find('span.sel_num').text(' (0)');
                 }
                 */
+
+                // BTOCSITE-1716
+                var idx = $(this).parents('.ui_filter_accordion').find('input').index(this);
                 self.resetSelectFilterCount(this);
-                self.triggerFilterChangeEvent();
+                // BTOCSITE-1716
+                if(self.$layFilter.hasClass('smart-type')) {
+                    // 사이드 스마트 필터 일경우 이벤트 처리
+                   $('.smart-filter .filter-list input').eq(idx).trigger('click');
+                } else {
+                    // 일반 필터 일경우 이벤트 처리
+                    self.triggerFilterChangeEvent();
+                }
+
+               
+              
             });
 
             // 모바일 필터박스 열기
@@ -189,8 +203,15 @@ var FilterLayer = (function() {
 
             // 초기화버튼 이벤트 처리
             self.$layFilter.on('click', 'div.btn-reset button', function(e){
-                self.resetFilter();
-                self.triggerFilterChangeEvent();
+                // BTOCSITE-1716
+                if(self.$layFilter.hasClass('smart-type')) {
+                    // 사이드 스마트 필터 일경우 이벤트 처리
+                   $('.smart-filter .btn-reset').trigger('click');
+               } else {
+                   // 일반 필터 일경우 이벤트 처리
+                   self.resetFilter();
+                   self.triggerFilterChangeEvent();
+               }
             });
 
             //품절상품 확인
@@ -264,8 +285,6 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
                     self.triggerFilterChangeEvent();
-
-                    //console.log('li' , $(e.currentTarget).closest('li').trigger('click'));
                 });
             }
 
@@ -274,6 +293,8 @@ var FilterLayer = (function() {
 
         //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
         _filterDefaultOpen:function () {
+            // BTOCSITE-1716
+            var self = this;
             var $searchTab = $('.contents.search .search-tabs-wrap .tabs');
             var $list = $searchTab.find('li');
             var $currentList = $list.filter('.on');
@@ -402,7 +423,7 @@ var FilterLayer = (function() {
 
         updateFilter: function(data) {
             if(!(data instanceof Array)) return;
-            
+         
             var self = this;
             
             if(!self.initLoadEnd) {
@@ -416,7 +437,6 @@ var FilterLayer = (function() {
             //var expands = [];
             var arr = data instanceof Array ? data : [];
             if(arr.length > 0) {
-
                 self._filterUnbindCustomEvents();
 
                 var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
