@@ -255,9 +255,6 @@ img.m350 {max-width:350px!important}
 .company .infoBox > ul > li span {position:relative; display:inline-block; color:#000; font-size:16px; line-height:1.5}
 .company .infoBox > ul > li span::before {content:''; display:block; position:absolute; width:1px; height:14px; background-color:#ddd; top:calc(50% - 7px); left:-21px}
 .company .btnArea {margin-top:30px; text-align:center}
-.company .slide-introduce .slide-conts .img {width:100%; height:480px; margin-top:30px}
-.company .slide-introduce .slide-conts .img > span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
-.company .slide-introduce .slide-conts .text {padding:0 60px}
 
 .company .hisArea {max-width:912px; margin:0 auto}
 .company .hisArea .title .tit {font-size:20px; font-weight:bold; line-height:1.5; text-align:center}
@@ -266,7 +263,6 @@ img.m350 {max-width:350px!important}
 .company .hisArea .hisList > ul > li + li {margin-top:15px}
 .company .hisArea .hisList > ul > li em {display:inline-block; margin-right:70px; font-size:20px; font-weight:bold; line-height:30px}
 .company .hisArea .hisList > ul > li span {display:inline-block; font-size:16px; line-height:30px}
-.company .slide-history .slide-conts .img {margin-top:30px}
 
 .company .ceoArea {position:relative}
 .company .ceoArea .bg {height:480px; border-radius:8px; overflow:hidden}
@@ -824,7 +820,10 @@ img.m350 {max-width:350px!important}
 /* 슬라이드 */
 .company .slide-covid19 .slide-wrap {width:100%; margin:0 auto}
 .company .slide-covid19 .slide-conts .img {width:100%; height:480px; margin-top:30px; margin-bottom:72px}
-.company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; border-radius:8px; background-repeat:no-repeat; background-position:center; background-size:cover}
+.company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; border-radius:8px}
+.company .slide-covid19 .slide-conts .img.slide1 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-01_pc.png) no-repeat center / cover}
+.company .slide-covid19 .slide-conts .img.slide2 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-02_pc.png) no-repeat center / cover}
+.company .slide-covid19 .slide-conts .img.slide3 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-03_pc.png) no-repeat center / cover}
 .company .slide-covid19 .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
 .company .slide-covid19 .slide-conts.ui_carousel_current .intArea {opacity:1}
 .company .slide-covid19 .slide-wrap .indi-wrap {bottom:auto; top:540px}
@@ -837,6 +836,9 @@ img.m350 {max-width:350px!important}
     .company .slide-covid19 {margin:0 -4.44vw}
     .company .slide-covid19 .slide-conts {padding:0 4.44vw}
     .company .slide-covid19 .slide-conts .img {margin-bottom:48px}
+    .company .slide-covid19 .slide-conts .img.slide1 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-01_mo.png) no-repeat center / cover}
+    .company .slide-covid19 .slide-conts .img.slide2 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-02_mo.png) no-repeat center / cover}
+    .company .slide-covid19 .slide-conts .img.slide3 > span {background:url(/kr/images/company/sustainable/img-covid19-slide-03_mo.png) no-repeat center / cover}
     .company .slide-covid19 .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
     .company .slide-covid19 .slide-conts.ui_carousel_current .intArea {opacity:1}
     .company .slide-covid19 .slide-wrap .indi-wrap {bottom:auto; top:calc(64vw + 40px)}
@@ -846,8 +848,6 @@ img.m350 {max-width:350px!important}
     .company .slide-covid19 .slide-conts .img {height:auto; margin-top:20px}
     .company .slide-covid19 .slide-conts .img > span {display:block; width:100%; height:100%; padding-bottom:73%; background-repeat:no-repeat; background-position:center; background-size:contain}
     .company .slide-covid19 .slide-conts .text {padding:0 60px}
-
-    .company .slide-introduce .slide-conts .text {padding:0}
 }
 
 /* 탭 형식 */
@@ -1988,9 +1988,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .infoBox > ul > li em {display:block; margin:0}
     .company .infoBox > ul > li span {display:block; margin-top:10px; font-size:14px; line-height:22px}
     .company .infoBox > ul > li span::before {display:none}
-    .company .slide-introduce .slide-conts .img {height:auto; margin-top:20px}
-    .company .slide-introduce .slide-conts .img > span {padding-bottom:73%}
-    .company .slide-intorduce .slide-conts .text {padding:0; font-size:14px; line-height:22px}
     
     .company .hisArea .title .tit {font-size:16px}
     .company .hisArea .title .text {margin-top:15px}
@@ -1999,8 +1996,6 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .hisArea .hisList > ul > li + li {margin-top:18px}
     .company .hisArea .hisList > ul > li em {margin-right:20px; font-size:15px; line-height:22px}
     .company .hisArea .hisList > ul > li span {font-size:14px; line-height:22px}
-	.company .slide-history .slide-conts .img {margin-top:20px}
-    .company .slide-history .slide-conts .text {font-size:14px; line-height:22px}
 
     .company .ceoArea {width:calc(100% + 32px); margin-left:-4.44vw}
     .company .ceoArea .bg {height:auto; border-radius:0}

@@ -97,65 +97,93 @@ br.pc {display:block}
 }
 
 /* 타블렛 */
-@media (max-width:1459px) and (min-width:767px) {
+@media (max-width:1459px) and (min-width:768px) {
 	br.ta {display:block}
 }
 
-/* 기업소개 슬라이더 mo */
-@media screen and (max-width:767px) {
+/* 기업소개 슬라이더 */
+.company .slide-introduce .slide-wrap {width:100%; max-width:1024px; margin:0 auto}
+.company .slide-introduce .slide-conts .intArea {margin-top:72px; text-align:center; opacity:0; transition:1s}
+.company .slide-introduce .slide-conts.ui_carousel_current .intArea {opacity:1}
+.company .slide-introduce .slide-content {overflow:visible !important}
+.company .slide-introduce .slide-conts .img {width:100%; height:480px; margin-top:30px}
+.company .slide-introduce .slide-conts .img > span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+.company .slide-introduce .slide-conts .text {padding:0 60px}
+.company .slide-introduce .slide-content .img.slide1 > span {background:url(/kr/images/company/info/img-introduce-slide-01_pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-introduce .slide-content .img.slide2 > span {background:url(/kr/images/company/info/img-introduce-slide-02_pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-introduce .slide-content .img.slide3 > span {background:url(/kr/images/company/info/img-introduce-slide-03_pc_new.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-introduce .slide-content .img.slide4 > span {background:url(/kr/images/company/info/img-introduce-slide-04_pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-introduce .slide-wrap .indi-wrap {bottom:auto; top:534px}
+.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:-24px}
+.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
+.company .slide-introduce .slide-wrap .slide-controls {top:264px}
+@media screen and (max-width:1024px) {
 	.company .slide-introduce {margin:0 -4.44vw}
 	.company .slide-introduce .slide-wrap {overflow:visible !important}
 	.company .slide-introduce .slide-conts {padding:0 4.44vw}
-	.company .slide-introduce .slide-conts .img {margin-bottom:48px}
 	.company .slide-introduce .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
 	.company .slide-introduce .slide-conts.ui_carousel_current .intArea {opacity:1}
-	.company .slide-introduce .slide-wrap .indi-wrap {bottom:auto; top:calc(64vw + 40px)}
+	.company .slide-introduce .slide-wrap .indi-wrap {top:54vw}
+	.company .slide-introduce .slide-wrap .slide-controls {top:25vw}
 	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:calc(3.33vw - 14px)}
 	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:calc(3.33vw - 14px)}
+}
+@media screen and (max-width:767px) {
+	.company .slide-introduce .slide-conts .img {height:auto; margin-top:20px}
+	.company .slide-introduce .slide-conts .img > span {padding-bottom:73%}
+	.company .slide-introduce .slide-content .img.slide1 > span {background:url(/kr/images/company/info/img-introduce-slide-01_mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-introduce .slide-content .img.slide2 > span {background:url(/kr/images/company/info/img-introduce-slide-02_mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-introduce .slide-content .img.slide3 > span {background:url(/kr/images/company/info/img-introduce-slide-03_mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-introduce .slide-content .img.slide4 > span {background:url(/kr/images/company/info/img-introduce-slide-04_mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-introduce .slide-conts .text {padding:0; font-size:14px; line-height:22px}
+	.company .slide-introduce .slide-conts .intArea {margin-top:48px}
+	.company .slide-introduce .slide-wrap .indi-wrap {bottom:auto; top:calc(64vw + 45px)}
 	.company .slide-introduce .slide-wrap .slide-controls {top:calc(32vw + 30px)}
 }
-/* 기업소개 슬라이더 pc */
-@media screen and (min-width:767px) {
-	.company .slide-introduce .slide-wrap {width:1024px; margin:0 auto}
-	.company .slide-introduce .slide-conts .img {margin-bottom:72px}
-	.company .slide-introduce .slide-conts .intArea {text-align:center; opacity:0; transition:1s}
-	.company .slide-introduce .slide-conts.ui_carousel_current .intArea {opacity:1}
-	.company .slide-introduce .slide-content {overflow:visible !important}
-	.company .slide-introduce .slide-wrap .indi-wrap {bottom:auto; top:540px}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:-24px}
-	.company .slide-introduce .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
-	.company .slide-introduce .slide-wrap .slide-controls {top:300px}
-}
-/* 역사 슬라이더 mo */
-@media screen and (max-width:767px) {
+
+/* 역사 슬라이더 */
+.company .slide-history .slide-wrap {width:100%; max-width:1024px; margin:0 auto}
+.company .slide-history .slide-conts .hisArea {opacity:0; transition:1s}
+.company .slide-history .slide-conts.ui_carousel_current .hisArea {opacity:1}
+.company .slide-history .slide-content {overflow:visible !important}
+.company .slide-history .slide-conts .img {width:100%; height:480px; margin-top:30px; margin-bottom:72px}
+.company .slide-history .slide-conts .img > span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+.company .slide-history .slide-conts .img.slide1 > span {background:url(/kr/images/company/info/history/img-history-slide-2010-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide2 > span {background:url(/kr/images/company/info/history/img-history-slide-2004-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide3 > span {background:url(/kr/images/company/info/history/img-history-slide-1995-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide4 > span {background:url(/kr/images/company/info/history/img-history-slide-1989-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide5 > span {background:url(/kr/images/company/info/history/img-history-slide-1980-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide6 > span {background:url(/kr/images/company/info/history/img-history-slide-1970-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-conts .img.slide7 > span {background:url(/kr/images/company/info/history/img-history-slide-1958-pc.jpg) no-repeat; background-size:contain; background-position:center 0}
+.company .slide-history .slide-wrap .indi-wrap {bottom:auto; top:624px}
+.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:-24px}
+.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
+.company .slide-history .slide-wrap .slide-controls {top:360px}
+@media screen and (max-width:1024px) {
 	.company .slide-history {margin:0 -4.44vw}
 	.company .slide-history .slide-wrap {overflow:visible !important}
 	.company .slide-history .slide-conts {padding:0 4.44vw}
-	.company .slide-history .slide-conts .img {margin-bottom:48px}
 	.company .slide-history .slide-conts .hisArea {opacity:0; transition:1s}
 	.company .slide-history .slide-conts.ui_carousel_current .hisArea {opacity:1}
-	.company .slide-history .slide-wrap .indi-wrap {bottom:auto; top:calc(64vw + 99px)}
+	.company .slide-history .slide-wrap .indi-wrap {bottom:auto}
 	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:calc(3.33vw - 14px)}
 	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:calc(3.33vw - 14px)}
-	.company .slide-history .slide-wrap .slide-controls {top:calc(32vw + 79px)}
-	.company .slide-history .slide-conts .img {height:auto}
+	.company .slide-history .slide-wrap .slide-controls {top:37vw}
+}
+@media screen and (max-width:767px) {
+	.company .slide-history .slide-conts .img {height:auto; margin-top:20px; margin-bottom:48px}
 	.company .slide-history .slide-conts .img span {padding-bottom:73%; display:block; width:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
+	.company .slide-history .slide-conts .img.slide1 > span {background:url(/kr/images/company/info/history/img-history-slide-2010-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide2 > span {background:url(/kr/images/company/info/history/img-history-slide-2004-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide3 > span {background:url(/kr/images/company/info/history/img-history-slide-1995-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide4 > span {background:url(/kr/images/company/info/history/img-history-slide-1989-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide5 > span {background:url(/kr/images/company/info/history/img-history-slide-1980-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide6 > span {background:url(/kr/images/company/info/history/img-history-slide-1970-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .img.slide7 > span {background:url(/kr/images/company/info/history/img-history-slide-1958-mo.jpg) no-repeat; background-size:contain; background-position:center 0}
+	.company .slide-history .slide-conts .text {font-size:14px; line-height:22px}
+	.company .slide-history .slide-wrap .indi-wrap {bottom:auto; top:calc(64vw + 127px)}
+	.company .slide-history .slide-wrap .slide-controls {top:calc(32vw + 79px)}
 }
-/* 역사 슬라이더 pc */
-@media screen and (min-width:767px) {
-	.company .slide-history .slide-wrap {width:1024px; margin:0 auto}
-	.company .slide-history .slide-conts .img {margin-bottom:72px}
-	.company .slide-history .slide-conts .hisArea {opacity:0; transition:1s}
-	.company .slide-history .slide-conts.ui_carousel_current .hisArea {opacity:1}
-	.company .slide-history .slide-content {overflow:visible !important}
-	.company .slide-history .slide-wrap .indi-wrap {bottom:auto; top:630px}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.prev {left:-24px}
-	.company .slide-history .slide-wrap.carousel-type .slide-controls .btn-arrow.next {right:-24px}
-	.company .slide-history .slide-wrap .slide-controls {top:360px}
-	.company .slide-history .slide-conts .img {width:100%; height:480px; margin-top:30px}
-	.company .slide-history .slide-conts .img span {display:block; width:100%; height:100%; background-repeat:no-repeat; background-position:center; background-size:contain}
-}
-
 
 /* 모두를 위한 지속 가능한 일터 */
 .only_pc_ib {display:inline-block !important}
