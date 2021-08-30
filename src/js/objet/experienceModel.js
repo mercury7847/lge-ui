@@ -6038,6 +6038,7 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
+            let domain = location.host.indexOf('wwwdev50') !== -1 ? '//wwwstg.lge.co.kr' : ''; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             
             priceArry.push(defaultModel);                            
@@ -6047,7 +6048,7 @@
             priceHtml += '      <dt>' + modelName + '</dt>';
             priceHtml += '      <div class="panel_guide">';
             priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
-            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" target="_blank" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
+            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" data-go-url data-open-mode="outlink" data-href="'+domain+'/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
             priceHtml += '      </div>';
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';
