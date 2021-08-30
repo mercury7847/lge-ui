@@ -885,138 +885,305 @@
                 {
                     name: "김치냉장고",
                     id: "refrigerator_kimchi",
-                    leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png",
-                    defaultCode: "Z330AAA151",
-                    simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_refrigerator_kimchi.png",
-                    defaultPrice: "0",
-                    memberDiscount: "0",
-                    directDiscount: "0",
-                    door: {
-                        count: 3,
-                        door1: {
-                            name: "상칸",
-                            code: "K330TT",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
+                    leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png", //BTOCSITE-4239 기본이미지(제일상단)
+                    typModel: [{
+                        name: "4도어",
+                        defaultCode: "Z330AAA151",
+                        leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png", //BTOCSITE-4239 선택모델 기본이미지(처음에보여지는 default 이미지)
+                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_refrigerator_kimchi.png", //BTOCSITE-4239 선택모델 시뮬이미지(좌측 색 선택시 필요한 simul 이미지)
+                        defaultPrice: "0",
+                        memberDiscount: "0",
+                        directDiscount: "0",
+                        door: {
+                            count: 3,
+                            door1: {
+                                name: "도어1",
+                                code: "B320TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            },door2: {
+                                name: "도어2",
+                                code: "B320TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            },door3: {
+                                name: "도어3",
+                                code: "B320TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }
                         },
-                        door2: {
-                            name: "중칸",
-                            code: "K330MM",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
+                        doorColorData: [{
+                            doorMaterial: {
+                                name: "솔리드",
+                                enName: "Solid Metal",
+                                code: "S",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                doorColor: [{
+                                    name: "맨해튼 미드나잇",
+                                    code: "MT",
+                                    mixingCode: "SMT"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "SSV"
+                                }, {
+                                    name: "그린",
+                                    code: "GR",
+                                    mixingCode: "SGR"
+                                }]
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "미스트",
+                                enName: "Mist Glass",
+                                code: "G",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                doorColor: [{
+                                    name: "베이지",
+                                    code: "BE",
+                                    mixingCode: "GBE"
+                                }, {
+                                    name: "핑크",
+                                    code: "PK",
+                                    mixingCode: "GPK"
+                                }, {
+                                    name: "민트",
+                                    code: "MN",
+                                    mixingCode: "GMN"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "GSV"
+                                }, {
+                                    name: "레드우드",
+                                    code: "RD",
+                                    mixingCode: "GRD"
+                                }, {
+                                    name: "클레이 브라운",
+                                    code: "CL",
+                                    mixingCode: "GCL"
+                                }]
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "네이쳐",
+                                enName: "Nature Metal",
+                                code: "M",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                doorColor: [{
+                                    name: "그레이",
+                                    code: "GY",
+                                    mixingCode: "MGY"
+                                }, {
+                                    name: "블랙",
+                                    code: "BK",
+                                    mixingCode: "MBK"
+                                }, {
+                                    name: "화이트",
+                                    code: "WH",
+                                    mixingCode: "MWH"
+                                }]
+                            }
+                        }]
+                    }, {
+                        name: "냉동고",
+                        defaultCode: "Y320AA",
+                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_X320AA.png",
+                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_X320AA.png",
+                        defaultPrice: "0",
+                        memberDiscount: "0",
+                        directDiscount: "0",
+                        door: {
+                            count: 1,
+                            door1: {
+                                name: "도어",
+                                code: "B320TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }
                         },
-                        door3: {
-                            name: "하칸",
-                            code: "K330BB",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                        }
-
-                    },
-                    doorColorData: [{
-                        doorMaterial: {
-                            name: "페닉스",
-                            enName: "FENIX",
-                            code: "F",
-                            desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                            doorColor: [{
-                                name: "보타닉",
-                                code: "BT",
-                                mixingCode: "FBT"
-
-                            }, {
-                                name: "샌드",
-                                code: "SD",
-                                mixingCode: "FSD"
-                            }, {
-                                name: "스톤",
-                                code: "ST",
-                                mixingCode: "FST"
-                            }]
-                        }
-
+                        doorColorData: [{
+                            doorMaterial: {
+                                name: "솔리드",
+                                enName: "Solid Metal",
+                                code: "S",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                doorColor: [{
+                                    name: "맨해튼 미드나잇",
+                                    code: "MT",
+                                    mixingCode: "SMT"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "SSV"
+                                }, {
+                                    name: "그린",
+                                    code: "GR",
+                                    mixingCode: "SGR"
+                                }]
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "미스트",
+                                enName: "Mist Glass",
+                                code: "G",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                doorColor: [{
+                                    name: "베이지",
+                                    code: "BE",
+                                    mixingCode: "GBE"
+                                }, {
+                                    name: "핑크",
+                                    code: "PK",
+                                    mixingCode: "GPK"
+                                }, {
+                                    name: "민트",
+                                    code: "MN",
+                                    mixingCode: "GMN"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "GSV"
+                                }, {
+                                    name: "레드우드",
+                                    code: "RD",
+                                    mixingCode: "GRD"
+                                }, {
+                                    name: "클레이 브라운",
+                                    code: "CL",
+                                    mixingCode: "GCL"
+                                }]
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "네이쳐",
+                                enName: "Nature Metal",
+                                code: "M",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                doorColor: [{
+                                    name: "그레이",
+                                    code: "GY",
+                                    mixingCode: "MGY"
+                                }, {
+                                    name: "블랙",
+                                    code: "BK",
+                                    mixingCode: "MBK"
+                                }, {
+                                    name: "화이트",
+                                    code: "WH",
+                                    mixingCode: "MWH"
+                                }]
+                            }
+                        }]
                     }, {
-                        doorMaterial: {
-                            name: "솔리드",
-                            enName: "Solid Metal",
-                            code: "S",
-                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                            doorColor: [{
-                                name: "맨해튼 미드나잇",
-                                code: "MT",
-                                mixingCode: "SMT"
-                            }, {
-                                name: "실버",
-                                code: "SV",
-                                mixingCode: "SSV"
-                            }, {
-                                name: "그린",
-                                code: "GR",
-                                mixingCode: "SGR"
-                            }]
-                        }
-                    }, {
-                        doorMaterial: {
-                            name: "미스트",
-                            enName: "Mist Glass",
-                            code: "G",
-                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                            doorColor: [{
-                                name: "베이지",
-                                code: "BE",
-                                mixingCode: "GBE"
-                            }, {
-                                name: "핑크",
-                                code: "PK",
-                                mixingCode: "GPK"
-                            }, {
-                                name: "민트",
-                                code: "MN",
-                                mixingCode: "GMN"
-                            }, {
-                                name: "실버",
-                                code: "SV",
-                                mixingCode: "GSV"
-                            }, {
-                                name: "레드우드",
-                                code: "RD",
-                                mixingCode: "GRD"
-                            }, {
-                                name: "클레이 브라운",
-                                code: "CL",
-                                mixingCode: "GCL"
-                            }]
-                            //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
-                        }
-                    }, {
-                        doorMaterial: {
-                            name: "네이쳐",
-                            enName: "Nature Metal",
-                            code: "M",
-                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                            doorColor: [{
-                                name: "그레이",
-                                code: "GY",
-                                mixingCode: "MGY"
-                            }, {
-                                name: "블랙",
-                                code: "BK",
-                                mixingCode: "MBK"
-                            }, {
-                                name: "화이트",
-                                code: "WH",
-                                mixingCode: "MWH"
-                            }]
-                        }
+                        name: "김치냉장고",
+                        defaultCode: "Z320AA",
+                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_X320AA.png",
+                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_X320AA.png",
+                        defaultPrice: "0",
+                        memberDiscount: "0",
+                        directDiscount: "0",
+                        door: {
+                            count: 1,
+                            door1: {
+                                name: "",
+                                code: "B320TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }
+                        },
+                        doorColorData: [{
+                            doorMaterial: {
+                                name: "솔리드",
+                                enName: "Solid Metal",
+                                code: "S",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                doorColor: [{
+                                    name: "맨해튼 미드나잇",
+                                    code: "MT",
+                                    mixingCode: "SMT"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "SSV"
+                                }, {
+                                    name: "그린",
+                                    code: "GR",
+                                    mixingCode: "SGR"
+                                }]
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "미스트",
+                                enName: "Mist Glass",
+                                code: "G",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                doorColor: [{
+                                    name: "베이지",
+                                    code: "BE",
+                                    mixingCode: "GBE"
+                                }, {
+                                    name: "핑크",
+                                    code: "PK",
+                                    mixingCode: "GPK"
+                                }, {
+                                    name: "민트",
+                                    code: "MN",
+                                    mixingCode: "GMN"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "GSV"
+                                }, {
+                                    name: "레드우드",
+                                    code: "RD",
+                                    mixingCode: "GRD"
+                                }, {
+                                    name: "클레이 브라운",
+                                    code: "CL",
+                                    mixingCode: "GCL"
+                                }]
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "네이쳐",
+                                enName: "Nature Metal",
+                                code: "M",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                doorColor: [{
+                                    name: "그레이",
+                                    code: "GY",
+                                    mixingCode: "MGY"
+                                }, {
+                                    name: "블랙",
+                                    code: "BK",
+                                    mixingCode: "MBK"
+                                }, {
+                                    name: "화이트",
+                                    code: "WH",
+                                    mixingCode: "MWH"
+                                }]
+                            }
+                        }]
                     }]
-
                 },
                 {
                     name: "컨버터블",
@@ -5129,6 +5296,16 @@
                     }
                 }
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head").addClass("is_active");
+            } else if (idx == 1) { //김치냉장고
+                let tabSubLeng = configData.modelConfig[idx].typModel.length;
+                for (let j = 0; j < tabSubLeng; j++) {
+                    tabBodyHtml += '<div class="swiper-slide" data-typ-filter="0">';
+                    tabBodyHtml += '    <button type="button" data-index="' + j + '" data-name="' + configData.modelConfig[idx].typModel[j].name + '" data-lead-name="' + configData.modelConfig[idx].id + '" data-default-code="' + configData.modelConfig[idx].typModel[j].defaultCode + '" class="btn_model_sub_pick">';
+                    tabBodyHtml += '        <span class="pic"><img src="' + configData.modelConfig[idx].typModel[j].leaderImg + '" alt=""/></span>';
+                    tabBodyHtml += '        <span class="model_name">' + configData.modelConfig[idx].typModel[j].name + '</span>';
+                    tabBodyHtml += '    </button>';
+                    tabBodyHtml += '</div>';
+                }
             } else if (idx == 2) { //컨버터블
                 let tabSubLeng = configData.modelConfig[idx].typModel.length;
                 for (let j = 0; j < tabSubLeng; j++) {
