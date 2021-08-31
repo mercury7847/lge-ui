@@ -2058,9 +2058,7 @@ var goAppUrl = function(path) {
             alert(name);
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                    results = regex.exec(location.search);
-
-                    alert(results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")))
+                results = regex.exec(location.search);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
 
