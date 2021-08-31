@@ -1,12 +1,24 @@
-<div class="lay-filter" @@if(context.hidden){style="display:none;"}>
+<!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 : 스마트 필터일 경우 .smart-type 추가됨 -->
+<div class="lay-filter @@if(context.smartType){smart-type}" @@if(context.hidden){style="display:none;"}>
     <!-- BTOCSITE-2161 :: dim 추가 -->
     <div class="dimmed"></div>
     <!-- //BTOCSITE-2161 :: dim 추가 -->
     <div id="filterWrap" class="lay-filter-con">
+        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 : 스마트 필터 일때만 .filter-head-pc 와  filter-head의 필터된 제품개수가 노출됨(타블렛사이즈부터) s-->
+        @@if (context.smartType) {
+            <div class="filter-head-pc">
+                <h1 class="tit">@@searchWord 상세 검색</h1>
+            </div>
+            <div class="filter-head">
+                <h1 class="tit">필터<span>@@searchNum개 제품</span></h1>
+            </div>
+        }
+        @@if (!context.smartType) {
         <div class="filter-head">
             <h1 class="tit">상세 필터</h1>
         </div>
-        
+         }
+         <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 e-->
         <div class="plp-filter-wrap">
 
             
