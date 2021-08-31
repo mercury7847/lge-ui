@@ -9,25 +9,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|ESG 경영 개요",
-		"content_depth4": "회사소개|지속가능경영|ESG 경영 개요|ESG 정책",
-		"content_depth5": "회사소개|지속가능경영|ESG 경영 개요|ESG 정책"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|ESG 경영 개요",
+		"content_depth4": "회사소개|ESG 경영|ESG 경영 개요|ESG 정책",
+		"content_depth5": "회사소개|ESG 경영|ESG 경영 개요|ESG 정책"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속 가능 경영</a></li>
-		<li><a href="/company/sustainable/overview">ESG 경영 개요</a></li>
-		<li><strong>ESG 정책</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -135,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<li>
 				<p class="pdfdwn_tit">제품 유해물질 관리</p>
 				<div class="pdfdwn_items">
-					<button type="button" class="btn pdfdwn_btn"><span>다운로드</span></button>
+					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/Policy/LG_prodect_hazard_guige.pdf')"><span>다운로드</span></button>
 				</div>
 			</li>
 			<li>
@@ -144,8 +135,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="select-wrap pdfdwn_select">
 						<select class="ui_selectbox" id="select_shee" title="전체 카테고리 선택">
 							<option value="">선택</option>
-							<option value="/uploads/company/sustainability/green/LGE_Safety_HealthPolicy.pdf">안전보건 경영방침</option>
-							<option value="/uploads/company/sustainability/green/LGE_EnvironmentPolicy.pdf">환경 경영방침</option>
+							<option value="/kr/company/upload/sustainability/green/LGE_Safety_HealthPolicy.pdf">안전보건 경영방침</option>
+							<option value="/kr/company/upload/sustainability/green/LGE_EnvironmentPolicy.pdf">환경 경영방침</option>
 						</select>
 					</div>
 					<button type="button" class="btn pdfdwn_btn" id="btn_shee"><span>다운로드</span></button>
@@ -159,7 +150,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<li>
 				<p class="pdfdwn_tit">윤리규범</p>
 				<div class="pdfdwn_items">
-					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/Policy/LG_Code_Conduct.pdf')"><span>다운로드</span></button>
+					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/Policy/2020_ethics_kor.pdf')"><span>다운로드</span></button>
 				</div>
 			</li>
 			<li>
@@ -171,19 +162,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<li>
 				<p class="pdfdwn_tit">협력회사 행동규범</p>
 				<div class="pdfdwn_items">
-					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/uploads/company/sustainability/partnership_intro/LGE_SCC_Korean_2018.pdf')"><span>다운로드</span></button>
+					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/partnership_intro/LGE_SCC_Korean_2018.pdf')"><span>다운로드</span></button>
 				</div>
 			</li>
 			<li>
 				<p class="pdfdwn_tit">협력회사 행동규범 가이드라인</p>
 				<div class="pdfdwn_items">
-					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/uploads/company/sustainability/partnership_intro/LGE_joint_corporation_guideline_v3.0.pdf')"><span>다운로드</span></button>
+					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/partnership_intro/LGE_joint_corporation_guideline_v3.0.pdf')"><span>다운로드</span></button>
 				</div>
 			</li>
 			<li>
 				<p class="pdfdwn_tit">글로벌 노동 방침</p>
 				<div class="pdfdwn_items">
-					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/uploads/company/sustainability/human_rights/LGE Global Labor Policy 2018.pdf')"><span>다운로드</span></button>
+					<button type="button" class="btn pdfdwn_btn" onclick="openInApp('/kr/company/upload/sustainability/green/LGE%20Global%20Labor%20Policy%202018.pdf')"><span>다운로드</span></button>
 				</div>
 			</li>
 		</ul>

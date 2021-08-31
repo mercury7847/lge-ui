@@ -91,7 +91,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			chart.draw(data, options);
 		}, 100);
 	}
-	$(window).on('resize', resize);
+	window.onresize = resize;
 </script>
 <style>
 	.googlechart-wrap {position:relative; max-width:610px; margin:0 auto}
@@ -104,15 +104,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		.googlechart-wrap .overlayarea {font-size:5vw}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/investor/corporateGovernance">투자자정보</a></li>
-		<li><a href="/company/investor/price">주식정보</a></li>
-		<li><strong>주주현황</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">투자자정보</h2>

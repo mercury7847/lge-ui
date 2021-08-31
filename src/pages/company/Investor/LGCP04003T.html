@@ -17,14 +17,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
-.col-count{width: 5.6%;}
-.col-date{width: 8.5%;}
-.col-cont{width: auto;text-align:left;}
+.col-count {width:5.6%}
+.col-date {width:8.5%}
+.col-cont {width:auto; text-align:left}
 /* .col-name{width: 9.7%;} */
-.col-name{width: 9.4%;}
-@media screen and (max-width: 767px){
-.col-count{width: 41.4%;}
-.col-name{width: 11.6%;}
+.col-name {width: 9.4%;}
+@media screen and (max-width: 768px){
+	.col-count {width:41.4%}
+	.col-name {width:11.6%}
+	table th, table td {word-break:break-all!important}
 }
 </style>
 <script type="text/javascript">
@@ -33,15 +34,6 @@ $(function(){
 	$("#tab3 table tbody td:nth-last-child(6)").css("text-align","left");
 });
 </script>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/investor/corporateGovernance">투자자정보</a></li>
-		<li><a href="/company/investor/corporateGovernance">경영정보</a></li>
-		<li><strong>이사회</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">투자자정보</h2>
@@ -667,7 +659,7 @@ $(function(){
 			<div class="com-text">
 				<p class="tit">이사회 활동</p>
 
-				<div class="only_pc">
+				<div class="only_pc no_tab">
 					<div class="tb_row tb-row-bl mt0">
 						<div class="tbl_select">
 							<div class="sort-select-wrap tabs-selectbox">
@@ -2138,7 +2130,7 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="only_mo">
+				<div class="only_tab">
 					<div class="tb_row tb-row-bl middle pd th_g">
 						<div class="tbl_select">
 							<div class="sort-select-wrap tabs-selectbox">
