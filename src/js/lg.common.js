@@ -765,7 +765,7 @@ var goAppUrl = function(path) {
 
                 // BTOCSITE-3536
                 /**
-                 *   a 태그에 goLink 클래스 추가하여 사용하세요
+                 *   a 태그에 goUrl 클래스 추가하여 사용하세요
                  *  - 모바일 브라우져 동작시 target 설정값이 '_blank' => window.open '_self' 이거나 미설정시 => location.href 이동
                  *  - 아래 옵션은 app 일경우만 동작 입니다.
                  *  - 옵션 : data-open-mode
@@ -773,12 +773,12 @@ var goAppUrl = function(path) {
                  *      inAppBrowser : inAppBrowser 로 뛰움
                  *      outlink  : ios , android 외부 브라우저로 뛰움
                  *    <샘플>
-                 *    <a class="goLink"  data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
+                 *    <a class="goUrl"  data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
                  * 
                  */
-                $doc.off('click.goLink').on('click.goLink', '.goLink', function(e){
+                $doc.off('click.goUrl').on('click.goUrl', '.goUrl', function(e){
                     e.preventDefault();
-                    lgkorUI.goLink(this);             
+                    lgkorUI.goUrl(this);             
                 });
 
                 $('.toast-message').remove();
@@ -2495,13 +2495,13 @@ var goAppUrl = function(path) {
         },
 
         /**
-         * goLink 함수 : 링크 처리하는 함수 
+         * goUrl 함수 : 링크 처리하는 함수 
          * 파라메타는 HTMLElement 또는 Object 
          * @param { HTMLElement } obj 
          * @param { href : '' , target:'', openMode : '' } obj 
          * 
          */
-         goLink: function(obj) {
+         goUrl: function(obj) {
 
             if(!obj || !obj instanceof Object) var obj = {};
 
