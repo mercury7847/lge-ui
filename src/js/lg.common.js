@@ -891,10 +891,8 @@ var goAppUrl = function(path) {
                 }
             }
 
-            alert('_historyBack');
             // BTOCSITE-3536 앱이고 파라메타에 openInApp 있는경우 closeInAppBrowser 실행
             if(isApp() &&  lgkorUI.getParameterByName('openMode') === 'inAppBrowser') {
-                alert('isApp');
                 if(vcui.detect.isIOS){ 
                     var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
@@ -902,7 +900,6 @@ var goAppUrl = function(path) {
                      android.closeNewWebview(); 
                  }
             } else {
-                alert('앱 아닐때 닫기');
                 if(index < 0) location.href = "/";
                 else history.back();
             }
@@ -2506,26 +2503,17 @@ var goAppUrl = function(path) {
             if(!obj || !obj instanceof Object) var obj = {};
 
             if(obj instanceof HTMLElement) {
-                console.log("obj %o",obj);
-                console.log("obj instance of %o",$(obj));
                 obj = $(obj).data();
-                console.log("obj %o",obj);
             } 
 
             obj   = $.extend( { href : '',target : '',openMode : '' } , obj );
 
-            // console.log("obj %o",obj);
-
-            alert(JSON.stringify(obj))
-
-
             if(obj.href) {
-                alert(isApp());
                 if(isApp()) {
+                    // 앱 케이스
                     switch(obj.openMode) {
                         case 'inAppBrowser' :
-                            alert('inAppBrowser');
-    
+
                             var url = lgkorUI.parseUrl(obj.href),
                                 params = $.extend(url.searchParams.getAll(),{'openMode': obj.openMode});
                                 obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
@@ -2539,7 +2527,6 @@ var goAppUrl = function(path) {
                         break;
     
                         case 'outlink' : 
-                            alert('oulink');
                             if(vcui.detect.isIOS){
                                 var jsonString = JSON.stringify({'command':'openLinkOut', 'url': obj.href});
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
@@ -2548,13 +2535,11 @@ var goAppUrl = function(path) {
                             }
                         break;
                         default : 
-                            alert('앱에서 기본 동작');
                             location.href = obj.href;
                         break;
                     }
                 } else {
-
-                    alert('일반 브라우져');
+                    // 일반 브라우져
                     if(obj.target === '_blank') {
                         window.open(obj.href);
                     } else {
