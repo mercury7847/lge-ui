@@ -324,6 +324,11 @@
 		width:calc(100% + 32px);
 		overflow-x:auto;
 		white-space:nowrap;
+		-ms-overflow-style:none;
+    	scrollbar-width:none;
+		&::-webkit-scrollbar{
+			display:none;
+		}
 	}
 }
 
