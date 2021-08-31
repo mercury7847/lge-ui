@@ -779,50 +779,14 @@ var goAppUrl = function(path) {
                 $doc.off('click.jsLink').on('click.jsLink', '.js-link', function(e){
                     e.preventDefault();
 
-                    var href = this.getAttribute('href'),
-                        target = this.getAttribute('target'),
-                        data   = $(this).data(),
-                        openMode = data.openMode;
+                    console.log("e %o",e);
+                    console.log("this %o",this);
+                    console.log("e %o",$(e.target));
 
-                    if( isApp()) {
-                        switch(openMode) {
-                            case 'inAppBrowser' :
-                                alert('inAppBrowser');
 
-                                var url = lgkorUI.parseUrl(href),
-                                params = $.extend(url.searchParams.getAll(),{'openMode': openMode});
-                                href = href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
-    
-                                if(vcui.detect.isIOS){
-                                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': href, 'titlebar_show': 'Y'});
-                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                                } else {
-                                    android.openNewWebview(href);
-                                }
-                            break;
-
-                            case 'outlink' : 
-                                alert('oulink');
-                                if(vcui.detect.isIOS){
-                                    var jsonString = JSON.stringify({'command':'openLinkOut', 'url': href});
-                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                                } else {
-                                    android.openLinkOut(href);
-                                }
-                            break;
-                            default : 
-                                alert('앱에서 기본 동작');
-                                location.href = href;
-                            break;
-                        }
-                    } else {
-                        if(target === '_blank') {
-                            window.open(href);
-                        } else {
-                            location.href = href;
-                        }
-                    }                    
+                    lgkorUI.jsLink(this);             
                 });
+
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
@@ -2535,6 +2499,70 @@ var goAppUrl = function(path) {
 
             return nowTime >= startTime && nowTime < endTime ? true : false;
         },
+
+        jsLink: function(obj){
+
+            console.log(obj.prototype)
+            console.log(typeof obj)
+            console.log(obj instanceof HTMLElement)
+     
+
+
+            if(!obj || !obj instanceof Object) var obj = {};
+
+            if(obj instanceof HTMLElement) {
+                console.log("obj %o",obj);
+                console.log("obj instance of %o",$(obj));
+                obj = $(obj).data();
+                console.log("obj %o",obj);
+            } 
+
+            obj   = $.extend( { href : '',target : '',openMode : '' } , obj );
+
+            console.log("obj %o",obj);
+            if(obj.href) {
+                if(isApp()) {
+                    switch(openMode) {
+                        case 'inAppBrowser' :
+                            alert('inAppBrowser');
+    
+                            var url = lgkorUI.parseUrl(obj.href),
+                                params = $.extend(url.searchParams.getAll(),{'openMode': obj.openMode});
+                                obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
+    
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'Y'});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openNewWebview(obj.href);
+                            }
+                        break;
+    
+                        case 'outlink' : 
+                            alert('oulink');
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openLinkOut', 'url': obj.href});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openLinkOut(obj.href);
+                            }
+                        break;
+                        default : 
+                            alert('앱에서 기본 동작');
+                            location.href = obj.href;
+                        break;
+                    }
+                } else {
+
+                    alert('일반 브라우져');
+                    if(obj.target === '_blank') {
+                        window.open(obj.href);
+                    } else {
+                        location.href = obj.href;
+                    }
+                }     
+            }
+        }
     }
 
     window.historyBack = lgkorUI._historyBack;
