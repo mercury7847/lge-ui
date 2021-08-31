@@ -2,7 +2,7 @@
     position:fixed;
     right:48px;
     bottom:48px;
-    z-index:110;
+    z-index:99; //BTOCSITE-1967
     @include mobile {
         right:14px;
         bottom:24px;
@@ -661,7 +661,7 @@
 
 
 //BTOCSITE-1967 모바일 웹하단바 - start
-.mdevice {
+.is-web-status-bar {
     &:not(.app) {
         $statusBarHeight: 70px;
         .floating-wrap {

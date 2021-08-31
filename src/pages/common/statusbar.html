@@ -1,11 +1,17 @@
 <!-- BTOCSITE-1967 웹 하단 탭바 추가 :  신규작성 start -->
+<!-- 
+    * 웹하단바 노출 기준
+    모바일 웹: O
+    모바일 앱: X
+    PC 브라우저: X
+-->
 <div class="mobile-status-bar">
     <ul class="mobile-status-list">
         <li class="list-item mypage">
             <a href="/my-page"><span>마이</span></a>
         </li>
         <li class="list-item chatbot">
-            <a href=""><span>상담챗</span></a>
+            <a href="/상담챗/" class="js-popup" title="새창으로 열림" data-width="450" data-height="760"><span>상담챗</span></a>
         </li>
         <li class="list-item home"> 
             <a href="/"><span>홈</span></a>

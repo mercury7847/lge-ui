@@ -277,7 +277,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(self.displayMode != "pc"){
                     self._hamburgerDisabled();
                     
-                    self.$pcNaviWrapper.css('display', 'inline-block');
+                    self.$pcNaviWrapper.not('.ui_gnb_accordion').css('display', 'inline-block'); //BTOCSITE-1967
 
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
                     self.$mobileNaviWrapper.hide();
@@ -726,10 +726,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
             self.$statusBar = $('div.mobile-status-bar');
 			self.$statusList = self.$statusBar.find('.mobile-status-list');
+
+            if( self.$statusBar.filter(':visible').length ) {
+                $('html').addClass('is-web-status-bar')
+            }
             
             self.$statusList.find('.nav-anchor a').on('click', function(e){
 				e.preventDefault();
 
+                if( $('.lay-filter').hasClass('open')) {
+                    $('.lay-filter').find('.dimmed').trigger('click');
+                }
 				self.$hamburger.trigger('click');
 			})
         },

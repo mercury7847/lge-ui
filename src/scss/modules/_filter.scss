@@ -853,3 +853,13 @@
     }
 }
 /* //BTOCSITE-2161 :: dim 추가 */
+
+
+//BTOCSITE-1967
+.is-web-status-bar:not(.app) {
+    .lay-filter {
+        .plp-filter-wrap {
+            padding-bottom:80px;
+        }
+    }
+}
