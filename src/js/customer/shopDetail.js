@@ -101,7 +101,6 @@
             ]
         });
 
-        // 원본 $('.cont-wrap > .btn-close,.cont-wrap .footer button')
         $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
             e.preventDefault();
             if(isApp() && vcui.detect.isIOS){
