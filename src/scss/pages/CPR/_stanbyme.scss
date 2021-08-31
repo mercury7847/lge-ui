@@ -302,7 +302,6 @@
 // register, modify
 .stanbyme-write{
 	margin-top:70px;
-	padding:0 16px;
 	.tit-wrap{
 		margin-bottom:48px;
 		.tit{
@@ -316,6 +315,7 @@
 	}
 	@include mobile{
 		margin-top:32px;
+		padding:0 16px;
 	}
 	.image-file-wrap{
 		display:flex;
