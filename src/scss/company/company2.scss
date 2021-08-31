@@ -492,6 +492,8 @@ img.m350 {width:100%; max-width:350px!important}
 .company .board-view-wrap .board-view .board-view-sub .tooltip-wrap.share .tooltip-box {top:32px; right:0; left:auto; padding:32px}
 .company .board-view-wrap .board-view .board-view-sub .dwn {display:inline-block; width:24px; height:24px; background:url(/lg5-common/images/icons/icon-download-32.svg) no-repeat center; background-size:28px 28px}
 .company .board-view-wrap .board-view .board-view-body {padding:24px}
+.company .board-view-wrap .board-view .board-view-body .view-content {line-height:1.5}
+.company .board-view-wrap .board-view .board-view-body .view-content p + p {margin-top:12px}
 .company .board-view-wrap .board-view .board-view-body .view-content > img {display:block; margin:0 auto}
 .company .board-view-wrap .board-navi {border-top:1px solid #ddd; border-bottom:1px solid #ddd}
 .company .board-view-wrap .board-navi .navi {display:block; padding:24px}
