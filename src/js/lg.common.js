@@ -2501,7 +2501,7 @@ var goAppUrl = function(path) {
          * @param { href : '' , target:'', openMode : '' } obj 
          * 
          */
-         goLink: function(obj){
+         goLink: function(obj) {
 
             if(!obj || !obj instanceof Object) var obj = {};
 
