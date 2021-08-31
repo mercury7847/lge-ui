@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "CPR/CPR",
+            "support/notice"
+        ],
+        pageTitle: "스탠바이미 클럽 | LG전자",
+        pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "스탠바이미 클럽" 
+        })
+
+        <div class="container">
+            <div class="contents stanbyme">
+                <div class="visual-wrap">
+                    <span class="img-v pc" style="background-image:url('/lg5-common/images/CPR/img-stanbyme-visual.jpg');"></span>
+                    <span class="img-v m" style="background-image:url('/lg5-common/images/CPR/img-stanbyme-visual-m.jpg');"></span>
+                    <div class="tit-wrap">
+                        <p class="tit">나만을 위한 <br class="mo-only">프라이빗 스크린</p>
+                        <span class="txt">스탠바이미에 대한 다양한 의견과 <br class="mo-only">아이디어를 나누는 <br>
+                            소통의 공간 스탠바이미 클럽</span>
+                    </div>
+                </div>
+                <div class="inner">
+                    <!-- .inner s  -->
+                    <div class="stanbyme-list">
+                        <div class="tabs-wrap border-type left ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#prod1">문의사항<em class="blind">선택됨</em></a></li>
+                                <li><a href="#prod2">리뷰</a></li>
+                            </ul>
+                        </div>
+                        <!-- 문의사항 -->
+                        <div id="prod1" class="tab-content">
+                            <div class="tit-sbm">
+                                <p class="tit">스탠바이미 클럽</p>
+                                <div class="sbm-qna">
+                                    <p>스탠바이미에 대한 궁금증이나,<br class="mo-only"> 문의사항을 등록해 주세요.</p>
+                                    <a href="#" class="btn ico-reg"><span>등록하기</span></a>
+                                </div>
+                            </div>
+                            <div class="result-wrap">
+                                <div class="sorting-wrap">
+                                    <div class="total">전체 <em id="count" class="count">86</em>건</div>
+                                    <div class="sort-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
+                                                <option value="최신순">최신순</option>
+                                                <option value="조회순">조회순</option>
+                                                <option value="댓글순">댓글순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tb_row board-type">
+                                    <table>
+                                        <caption>공지사항 제목, 등록일, 조회수</caption>
+                                        <colgroup>
+                                            <col >
+                                            <col style="width:148px">
+                                            <col style="width:148px">
+                                            <col style="width:128px">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">제목</th>
+                                            <th scope="col">작성자</th>
+                                            <th scope="col">등록일</th>
+                                            <th scope="col">조회수</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="empty-row">
+                                                <td colspan="4">
+                                                    <div class="no-data">
+                                                        <p>등록된 게시글이 없습니다.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div>
+                        </div>
+                        <!-- //문의사항 -->
+                        <!-- 리뷰 -->
+                        <div id="prod2" class="tab-content">
+                            <div class="component-inner">
+                                
+                            </div>
+                        </div>
+                        <!-- //리뷰 -->
+                    </div>
+                    <!-- .inner e  -->
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
