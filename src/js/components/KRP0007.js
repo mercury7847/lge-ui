@@ -978,7 +978,7 @@
                             curValue = "케어솔루션"
                             break;
                         case "DISPOSABLE": 
-                            curValue = "케어용품/소모품"
+                            curValue = "소모품"
                             break;                            
                     }
                     return curValue;
