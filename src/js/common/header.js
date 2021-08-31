@@ -730,7 +730,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$statusList.find('.nav-anchor a').on('click', function(e){
 				e.preventDefault();
 
-				console.log('aaaa')
 				self.$hamburger.trigger('click');
 			})
         },
