@@ -1,0 +1,24 @@
+<svg id="img_review_24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Mask" class="cls-1" d="M0 0h24v24H0z"/>
+        </clipPath>
+        <style>
+            .cls-1,.cls-3,.cls-4{fill:none}.cls-3,.cls-4{stroke:#000;stroke-linecap:round;stroke-linejoin:round}.cls-3{fill-rule:evenodd}
+        </style>
+    </defs>
+    <g id="Group_4" data-name="Group 4">
+        <path id="Mask-2" data-name="Mask" class="cls-1" d="M0 0h24v24H0z"/>
+    </g>
+    <g id="ic" transform="translate(4.135 3.902)">
+        <path id="Shape" class="cls-3" d="M6.955 19.789H.752A.767.767 0 0 1 0 19.038V4.752A.767.767 0 0 1 .752 4h3.383m6.015 0h3.383a.773.773 0 0 1 .752.752v5.061" transform="translate(0 -2.767)"/>
+        <g id="Group-12" transform="rotate(39 -3.357 26.332)">
+            <path id="Combined-Shape" class="cls-3" d="M.083.745A.752.752 0 0 1 .835 0h.752a.752.752 0 0 1 .752.752v.007h0L2.256 9.7h0l-1.148 2.6L0 9.7z"/>
+            <path id="Path" class="cls-4" transform="translate(.046 9.659)" d="m0 0 2.21.037"/>
+        </g>
+        <path id="Rectangle" class="cls-3" d="m12.976.755 1.619.506a.752.752 0 0 0 .449 0l1.619-.506a.752.752 0 0 1 .976.718v.481a.752.752 0 0 1-.752.752h-4.135A.752.752 0 0 1 12 1.953v-.481a.752.752 0 0 1 .976-.718z" transform="translate(-7.489 -.72)"/>
+        <path id="Line" class="cls-4" transform="translate(3.954 5.108)" d="M0 0h6.377"/>
+        <path id="Line-2" data-name="Line" class="cls-4" transform="translate(3.954 7.739)" d="M0 0h6.377"/>
+        <path id="Line-3" data-name="Line" class="cls-4" transform="translate(3.954 10.37)" d="M0 0h6.377"/>
+    </g>
+</svg>
