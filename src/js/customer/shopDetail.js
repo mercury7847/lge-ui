@@ -104,7 +104,7 @@
         $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
             e.preventDefault();
             if(isApp() && vcui.detect.isIOS){
-                var jsonString = JSON.stringify({'command':'closeAllInAppBrowser'});
+                var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
                 window.close();	
