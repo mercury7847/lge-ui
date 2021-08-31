@@ -251,10 +251,11 @@ var Curation = (function() {
                         parent.addClass('unfold');
                     }
                 });
-
+                // BTOCSITE-1716
                 // self.$smartFilterList.show();
             } else {
                 self.removeSelectSmartFilter();
+                // BTOCSITE-1716
                 // self.$smartFilterList.hide();
             }
 

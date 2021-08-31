@@ -109,7 +109,7 @@
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
-                
+                // BTOCSITE-1716
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
                     self.setting();
                     self.updateRecentSearchList();

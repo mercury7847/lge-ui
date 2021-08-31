@@ -53,9 +53,11 @@ var FilterLayer = (function() {
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
+         // BTOCSITE-1716
         '<div class="desc ui_accord_content" id="{{filterId}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
+                    // BTOCSITE-1716
                     '<input type="checkbox" id="{{filterId}}-{{idx}}" name="{{filterId}}" value="{{item.filterValueId}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
@@ -139,12 +141,12 @@ var FilterLayer = (function() {
                     $parent.find('span.sel_num').text(' (0)');
                 }
                 */
-
+                // BTOCSITE-1716
                 var idx = $(this).parents('.ui_filter_accordion').find('input').index(this);
 
 
                 self.resetSelectFilterCount(this);
-
+                // BTOCSITE-1716
                 if(self.$layFilter.hasClass('smart-type')) {
                     // 사이드 스마트 필터 일경우 이벤트 처리
                    $('.smart-filter .filter-list input').eq(idx).trigger('click');
@@ -209,6 +211,7 @@ var FilterLayer = (function() {
 
             // 초기화버튼 이벤트 처리
             self.$layFilter.on('click', 'div.btn-reset button', function(e){
+                // BTOCSITE-1716
                 if(self.$layFilter.hasClass('smart-type')) {
                     // 사이드 스마트 필터 일경우 이벤트 처리
                    $('.smart-filter .btn-reset').trigger('click');
@@ -302,6 +305,7 @@ var FilterLayer = (function() {
 
         //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
         _filterDefaultOpen:function () {
+            // BTOCSITE-1716
             var self = this;
             console.log("defaultopen %o",self)
             var $searchTab = $('.contents.search .search-tabs-wrap .tabs');
@@ -309,7 +313,7 @@ var FilterLayer = (function() {
             var $currentList = $list.filter('.on');
             var labelName = $currentList.attr('data-label');
 
-            if( labelName == "케어용품/소모품" || labelName == "제품" || labelName == "고객지원" ) {
+            if( labelName == "케어용품/소모품" || labelName == "제품" || labelName == "고객지원") {
                 var $category = $('.contents.search .ui_filter_accordion');
                 $category.vcAccordion("expandAll");
             }

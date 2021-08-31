@@ -111,7 +111,7 @@ if ('scrollRestoration' in history) {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
                 $(window).scrollTop(0); //BTOCSITE-2216
-
+                // BTOCSITE-1716
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
                     self.setting();
                     self.updateRecentSearchList();
@@ -156,6 +156,7 @@ if ('scrollRestoration' in history) {
                     });
                     
                     self.savedFilterData = null;
+                    // BTOCSITE-1716
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, 'unfold_flag', function (data) {
 
                         if(self.savedFilterData) {
@@ -822,7 +823,7 @@ if ('scrollRestoration' in history) {
                         noData = false;
                     }
                     */
-
+                    // BTOCSITE-1716
                     //필터세팅
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
                     // 2. 스마트 필터 없음 일반 필터로
@@ -840,6 +841,7 @@ if ('scrollRestoration' in history) {
 
                     
                     var filterShow = false;
+                    // BTOCSITE-1716 start
                     if(isSmartFiler || isFilterList) {
                         console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList : data.filterList)
                         filterShow = true;
@@ -869,6 +871,7 @@ if ('scrollRestoration' in history) {
                             }
            
                    }
+                   // BTOCSITE-1716 end
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
