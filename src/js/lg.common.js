@@ -2500,13 +2500,14 @@ var goAppUrl = function(path) {
             return nowTime >= startTime && nowTime < endTime ? true : false;
         },
 
+        /**
+         * jsLink 함수 : 링크 처리하는 함수 
+         * 파라메타는 HTMLElement 또는 Object 
+         * @param { HTMLElement } obj 
+         * @param { href : '' , target:'', openMode : '' } obj 
+         * 
+         */
         jsLink: function(obj){
-
-            console.log(obj.prototype)
-            console.log(typeof obj)
-            console.log(obj instanceof HTMLElement)
-     
-
 
             if(!obj || !obj instanceof Object) var obj = {};
 
@@ -2519,10 +2520,15 @@ var goAppUrl = function(path) {
 
             obj   = $.extend( { href : '',target : '',openMode : '' } , obj );
 
-            console.log("obj %o",obj);
+            // console.log("obj %o",obj);
+
+            alert(JSON.stringify(obj))
+
+
             if(obj.href) {
+                alert(isApp());
                 if(isApp()) {
-                    switch(openMode) {
+                    switch(obj.openMode) {
                         case 'inAppBrowser' :
                             alert('inAppBrowser');
     
