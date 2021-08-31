@@ -15,10 +15,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|환경",
-		"content_depth4": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스",
-		"content_depth5": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|환경",
+		"content_depth4": "회사소개|ESG 경영|환경|미래세대를 위한 제품과 서비스",
+		"content_depth5": "회사소개|ESG 경영|환경|미래세대를 위한 제품과 서비스"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
@@ -350,8 +350,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
 			chart3.draw(view3, columnOptions3);
 		}
-		window.onload = resize();
-		window.onresize = resize;
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 
 		$(".draw_chart_div").on('click', function (e) {
 			setTimeout(function () {
@@ -378,18 +378,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		});
 	}
 </script>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/businessplace">환경</a></li>
-		<li><strong>미래세대를 위한 제품과 서비스</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -838,7 +829,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
 							<p class="tit">1) 재질구조 개선</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<table>
 									<caption>구분, 비교(Base) 모델 - A, 평가모델 - B, 개선결과 - B/A</caption>
 									<colgroup>
@@ -869,7 +860,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											<td>2% 개선</td>
 										</tr>
 										<tr>
-											<th scope="row">제품 부피 (㎥))</th>
+											<th scope="row">제품 부피 (㎥)</th>
 											<td>1.08</td>
 											<td>1.08</td>
 											<td>-</td>
@@ -1316,7 +1307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</li>
 								<li>
 									<strong>AC모듈의 장점</strong>
-									<div class="tb-col middle pd keepAll">
+									<div class="tb-col middle pd">
 										<table>
 											<caption>설치 편의, 발전량 향상, 유지 보수 용이</caption>
 											<tbody>

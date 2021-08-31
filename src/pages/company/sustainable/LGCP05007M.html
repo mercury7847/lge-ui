@@ -13,10 +13,10 @@
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|환경",
-		"content_depth4": "회사소개|지속가능경영|환경|부정적 환경영향 Zero 사업장",
-		"content_depth5": "회사소개|지속가능경영|환경|부정적 환경영향 Zero 사업장"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|환경",
+		"content_depth4": "회사소개|ESG 경영|환경|부정적 환경영향 Zero 사업장",
+		"content_depth5": "회사소개|ESG 경영|환경|부정적 환경영향 Zero 사업장"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
@@ -233,8 +233,8 @@
 			var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
 			chart2.draw(view2, columnOptions2);
 		}
-		window.onload = resize();
-		window.onresize = resize;
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 
 		$(".draw_chart_div").on('click', function (e) {
 			setTimeout(function () {
@@ -253,18 +253,9 @@
 		});
 	}
 </script>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/businessplace">환경</a></li>
-		<li><strong>부정적 환경영향 Zero 사업장</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
 		<div class="visual-area"> <span class="bg ui_bg_switch"
@@ -550,7 +541,7 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="tb-col middle pd keepAll mgt only_mo">
+							<div class="tb-col middle pd mgt only_mo">
 								<table>
 									<caption>생산단계 탄소저감, UN 감축 프로젝트, SF6 저감활동</caption>
 									<colgroup>
