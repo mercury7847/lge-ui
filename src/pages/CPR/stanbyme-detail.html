@@ -27,7 +27,7 @@
                                 <li>조회수 3,021</li>
                             </ul>
                             <div class="btn-box pc-only">
-                                <a href="#" class="btn gray size"><span>삭제하기</span></a>
+                                <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제하기</span></button>
                                 <a href="#" class="btn border size"><span>수정하기</span></a>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         </div>
                         <!-- .stanbyme-detail-body e -->
                         <div class="btn-box mobile-only">
-                            <a href="#" class="btn gray size"><span>삭제</span></a>
+                            <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제하기</span></button>
                             <a href="#" class="btn border size"><span>수정</span></a>
                         </div>
                         <!-- .comment-wrap s  -->
@@ -235,6 +235,18 @@
         
         @@include('./common/footer.html')
     </div>
+
+    <!-- 게시글 삭제하기 팝업 -->
+    <article id="delPopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>게시글을 삭제 할 경우 댓글도 함께 삭제됩니다.<br> 게시글을 삭제하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>아니요</span></button>
+            <a href="#" class="btn"><span>예</span></a>
+        </div>
+    </article>
+
     <script>
         $(function() {
             $('.btn-comment-del').on('click', function(e){
