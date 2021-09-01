@@ -1003,7 +1003,8 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
-                item.isShow = lgkorUI.isShowDate('20210601','20210901')
+                /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
+                item.isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
                 
                 return vcui.template(productItemTemplate, item);
             },
