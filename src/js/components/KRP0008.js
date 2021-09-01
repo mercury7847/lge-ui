@@ -818,7 +818,8 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        var isShow = lgkorUI.isShowDate('20210601','20210901')
+                        /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
+                        var isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
