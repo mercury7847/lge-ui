@@ -73,6 +73,7 @@
 				parentElement = parentElement.parent();
 			}
 			$('.company').prepend(comTextClone);
+			$(window).trigger('resize');
 			
 			$('html').scrollTop(0);
 			lgkorUI.showLoading();
