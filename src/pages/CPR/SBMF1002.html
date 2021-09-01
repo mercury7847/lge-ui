@@ -160,10 +160,10 @@
                                                                 <div class="text-form">   
                                                                     <div class="input-wrap">
                                                                         <!-- 작성중일때 .valid class textarea에 추가 되어야 함 (취소버튼 노출, 등록 버튼 색상변경) -->
-                                                                        <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count2" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError">맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 
+                                                                        <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError">맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 
                                                                         </textarea>
                                                                         <div class="txt-count-box">
-                                                                            <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
+                                                                            <span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>
                                                                             <div class="comment-write-btn-box">
                                                                                 <button type="reset" class="btn gray size btn-cancel">취소</button>
                                                                                 <button type="submit" class="btn dark-gray size btn-confirm">등록</button>
@@ -260,6 +260,33 @@
                 }
                 lgkorUI.confirm(desc, obj);
             });
+
+            // 댓글 작성중일 경우 valid 클래스 추가
+            var inp = $('.input-wrap textarea');
+            inp.each(function(){
+                var me = $(this);
+                var inpValLen = me.val().length;
+                
+                me.on('change keyup paste', function(){
+                    
+                    if(inpValLen > 0) {
+                        me.addClass('valid');
+                    } else{
+                        me.removeClass('valid');
+                    }
+                });
+
+                if(inpValLen > 0) {
+                        me.addClass('valid'); 
+                        console.log('test');
+                } else{
+                    me.removeClass('valid');
+                }
+
+
+                
+            });
+            
         });
     </script>
 </body>
