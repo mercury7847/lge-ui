@@ -978,7 +978,7 @@
                             curValue = "케어솔루션"
                             break;
                         case "DISPOSABLE": 
-                            curValue = "소모품"
+                            curValue = "소모품" //BTOCSITE-1683 : 영역별 데이터레이어 내 model_gubun 값 추가 요청 2021-09-02
                             break;                            
                     }
                     return curValue;
