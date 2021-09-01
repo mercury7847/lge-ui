@@ -173,8 +173,6 @@ var openInApp = function (url, name, specs, replace) {
 		webkit.messageHandlers.callbackHandler.postMessage(jsonString);
 	} else if(isApp() && vcui.detect.isAndroid) {
 		$(parser).get(0).click();
-        //window.open(encodeURI('https://docs.google.com/gview?embedded=true&url=' + url), '_blank', 'location=yes, EnableViewPortScale=yes');
-        window.open('https://docs.google.com/gview?embedded=true&url=' + url, '_blank', 'location=yes, EnableViewPortScale=yes');
 	} else {
 		window.open(url, name, specs, replace);
 	}
