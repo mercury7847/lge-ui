@@ -2055,7 +2055,6 @@ var goAppUrl = function(path) {
 
 
         getParameterByName: function(name) {
-            alert(name);
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
                 results = regex.exec(location.search);
