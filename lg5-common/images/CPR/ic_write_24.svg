@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="ic_write_24" transform="translate(-856.126 -569.176)">
+        <path id="Rectangle" transform="translate(856.126 569.176)" style="fill:none" d="M0 0h24v24H0z"/>
+        <g id="Group_600" data-name="Group 600" transform="translate(0 1)">
+            <g id="Group_599" data-name="Group 599">
+                <g id="Group-12" transform="translate(-1 -9.334)">
+                    <path id="Combined-Shape" class="cls-2" d="M875 581.93a.75.75 0 0 1 1.05-.106l1.258 1.125a.75.75 0 0 1 .111 1.055v.006h0l-5.078 5.723h0l-3.2 1.038.773-3.107z"/>
+                    <path id="Path-3" class="cls-2" transform="translate(869.973 587.664)" d="m0 0 2.365 2.069"/>
+                </g>
+                <path id="Shape" class="cls-2" d="M867.207 573.312h-6.187a.731.731 0 0 0-.75.679v12.893a.732.732 0 0 0 .75.679h12.75a.738.738 0 0 0 .75-.679v-5.394" transform="translate(0 1)"/>
+            </g>
+        </g>
+    </g>
+</svg>

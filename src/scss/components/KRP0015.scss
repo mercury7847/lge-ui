@@ -187,6 +187,8 @@
 
        .compare-content {
            display: none;
+           //BTOCSITE-5037
+           width:100%;    
           .compare-list {
               margin:0 -8px;
              .list-inner {

@@ -1,0 +1,177 @@
+.section-wrap {
+    .sects {
+        &.noti-info{
+            .tit-wrap {
+                border-bottom: 0;
+            }
+        }
+    }
+    .gy-info-box {
+        padding:40px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            padding:24px 16px;
+        }
+        .gy-tit {
+            margin-top:24px;
+            color:#000;
+            @include font-small;
+            font-weight:700;
+            @include mobile {
+                margin-top:16px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+        }
+        .bullet-list {
+            margin-top:8px;
+        }
+    }
+    .customer-center-info {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        margin-top:24px;
+        padding:24px 32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            display:block;
+            position:relative;
+            padding:24px 16px;
+            padding-left:76px;
+        }
+        .hello {
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:48px;
+                height:48px;
+                margin-right:20px;
+                background:url("/lg5-common/images/icons/icon-call-svc-48.svg") center no-repeat;
+                vertical-align:middle;
+            }
+            display:table-cell;
+            padding-right:24px;
+            @include font-small;
+            font-weight:500;
+            vertical-align:middle;
+            @include mobile {
+                display:block;
+                &::before {
+                    position:absolute;
+                    top:24px;
+                    left:16px;
+                }
+            }
+        }
+        &.type2 {
+            margin-top:80px;
+            margin-bottom:16px;
+            @include mobile {
+                margin-top:60px;
+                margin-bottom:12px;
+            }
+            .hello {
+                position:relative;
+                width:59%;
+                padding-left:68px;
+                // padding-right:56px;
+                word-break:keep-all;
+                &::before {
+                    position:absolute;
+                    top:50%;
+                    left:0;
+                    margin-top:-24px;
+                }
+                @include mobile {
+                    position:static;
+                    width:100%;
+                    padding:0;
+                    &::before {
+                        top:24px;
+                        left:16px;
+                        margin-top:0;
+                    }
+                }
+            }
+        }
+        .call-info {
+            display:table-cell;
+            border-left:1px solid #ddd;
+            vertical-align:middle;
+            @include mobile {
+                display:block;
+                margin-top:14px;
+                padding-top:14px;
+                border-top:1px solid #ddd;
+                border-left:none;
+            }
+            ul {
+                font-size:0;
+                li {
+                    display:inline-block;
+                    margin-left:32px;
+                    vertical-align:middle;
+                    color:#767676;
+                    font-size:12px;
+                    line-height:22px;
+                    word-break:keep-all;
+                    vertical-align:top;
+                    br {
+                        display:none;
+                    }
+                    @include mobile {
+                        width:50%;
+                        margin-left:0;
+                        //padding-right:40px; //BTOCSITE-3953
+                        line-height:20px;
+                        br {
+                            display:block;
+                        }
+                    }
+                    em {
+                        display:inline-block;
+                        margin-left:12px;
+                        color:#000;
+                        font-size:18px;
+                        line-height:28px;
+                        font-weight:700;
+                        vertical-align:middle;
+                        @include mobile {
+                            display:block;
+                            margin-top:8px;
+                            margin-left:0;
+                            font-size:15px;
+                            line-height:23px;
+                        }
+                    }
+                }
+            }
+        }
+        &.type2 {
+            .call-info {
+                ul {
+                    li {
+                        margin:0;
+                        padding-left:32px;
+                        width:50%;
+                        @include mobile {
+                            padding-left:0;
+                        }
+                        br {
+                            display:block;
+                        }
+                        em {
+                            display:block;
+                            margin:0;
+                            margin-top:2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -51,7 +51,7 @@
 			},
 			series: {
 				0: {
-					color: '#e91953'
+					color: '#da0f47'
 				},
 			},
 			bar: {
@@ -95,7 +95,7 @@
 			},
 		};
 
-		function checkSizeColumn() {
+		var checkSizeColumn = function () {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
 				columnOptions.height = '240';
@@ -112,7 +112,7 @@
 				columnOptions.annotations.textStyle.fontSize = '13';
 				columnOptions.annotations.stem.length = '8';
 			}
-		}
+		};
 
 		var dataCombo = google.visualization.arrayToDataTable([
 			['', '영업이익', {
@@ -120,16 +120,16 @@
 			}, {
 				role: 'style'
 			}],
-			['2020', 3.19, '3.19', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
-			['2019', 2.44, '2.44', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953'],
-			['2018', 2.70, '2.70', 'stroke-color: #e91953; stroke-width: 2; fill-color: #e91953']
+			['2020', 3.19, '3.19', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47'],
+			['2019', 2.44, '2.44', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47'],
+			['2018', 2.70, '2.70', 'stroke-color: #da0f47; stroke-width: 2; fill-color: #da0f47']
 		]);
 		var viewCombo = new google.visualization.DataView(dataCombo);
 		var comboOptions = {
 			series: {
 				0: {
 					targetAxisIndex: 0,
-					color: '#e91953',
+					color: '#da0f47',
 					type: 'line',
 					pointSize: 12,
 					pointShape: 'circle'
@@ -169,7 +169,7 @@
 			fontName: 'Noto Sans',
 		};
 
-		function checkSizeCombo() {
+		var checkSizeCombo = function () {
 			var windowWidth = $(window).width();
 			if (windowWidth < 767) {
 				comboOptions.fontSize = "12";
@@ -178,9 +178,9 @@
 				comboOptions.fontSize = "16";
 				comboOptions.height = '360';
 			}
-		}
+		};
 
-		function resize() {
+		var resize = function () {
 			if ($("#tab1").css("display") == "block") {
 				checkSizeColumn();
 				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
@@ -190,33 +190,22 @@
 				var chartCombo = new google.visualization.ColumnChart(document.getElementById("combochart"));
 				chartCombo.draw(viewCombo, comboOptions);
 			}
-		}
-
-		window.onload = resize();
-		window.onresize = resize;
+		};
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 	}
 </script>
 <style>
 	.graph_area::after {content:''; display:block; clear:both}
 	.graph_area .graph {float:left; width:50%; max-width:50%}
+	.graph_area .graph .tit {margin-bottom:10px}
 	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
-	@media screen and (max-width:768px){
+	@media screen and (max-width:767px){
 		.graph_dec {font-size:12px;line-height:20px;}
 		.graph_area .graph {float:none; width:100%; max-width:100%; margin-top:60px}
 	}
-	#columnchart svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} 
-	#combochart svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;} 
-	#combochart svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/investor/corporateGovernance">투자자정보</a></li>
-		<li><a href="/company/investor/highlight">재무정보</a></li>
-		<li><strong>재무하이라이트</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">투자자정보</h2>
@@ -305,20 +294,37 @@
 		<div id="tab1" class="tabs-contents" style="display:block;">
 			<h3 class="blind">재무하이라이트</h3>
 			<div class="com-text">
-				<!-- 그래프 영역 -->
 				<div class="graph_area">
 					<div class="graph">
 						<p class="tit">매출액</p>
 						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-						<div class="chart_area columnchart" id="columnchart"></div>
+						<div class="chart_area columnchart bar" id="columnchart"></div>
+						<!-- 구글차트 -->
+						<div class="blind">
+							<span>매출액</span>
+							<ul>
+								<li>2020년 63.26조원</li>
+								<li>2019년 62.30조원</li>
+								<li>2018년 61.34조원</li>
+							</ul>
+						</div>
 					</div>
 					<div class="graph">
 						<p class="tit">영업이익</p>
 						<p class="graph_dec">K-IFRS 연결기준 (단위 : 조원)</p>
-						<div class="chart_area combochart" id="combochart"></div>
+						<div class="chart_area combochart bar2" id="combochart"></div>
+						<!-- 구글차트 -->
+						<div class="blind">
+							<span>영업이익</span>
+							<ul>
+								<li>2020년 3.19조원</li>
+								<li>2019년 2.44조원</li>
+								<li>2018년 2.70조원</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<div class="tb_row tb-row-bl mgt middle keepAll pd">
+				<div class="tb_row tb-row-bl mgt middle pd">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>재무 하이라이트 정보 표, 구분, 2020, 2019, 2018</caption>
@@ -382,7 +388,7 @@
 			<h3 class="blind">재무상태표</h3>
 			<div class="com-text">
 				<p class="tit">연도별 재무상태표</p>
-				<div class="tb_row tb-row-bl middle keepAll">
+				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>연도별 재무상태표, 구분, 2020, 2019, 2018</caption>
@@ -450,7 +456,7 @@
 			<div class="com-text noLine">
 				<p class="tit">분기별 재무상태표</p>
 				<p class="tit tbl_tit">2020년</p>
-				<div class="tb_row tb-row-bl middle keepAll">
+				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>2020년 재무상태표, 구분, 2020년 4분기, 2020년 3분기, 2020년 2분기, 2020년 1분기</caption>
@@ -529,7 +535,7 @@
 					<div class="content">
 						<div class="section">
 							<p class="tit tbl_tit">2019년</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 								<table>
 									<caption>2019년 재무상태표, 구분, 2019년 4분기, 2019년 3분기, 2019년 2분기, 2019년 1분기</caption>
@@ -605,7 +611,7 @@
 						</div>
 						<div class="section">
 							<p class="tit tbl_tit">2018년</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 								<table>
 									<caption>2018년 재무상태표, 2018년 4분기, 2018년 3분기, 2018년 2분기, 2018년 1분기</caption>
@@ -687,7 +693,7 @@
 			<h3 class="blind">손익계산서</h3>
 			<div class="com-text">
 				<p class="tit">연도별 손익계산서</p>
-				<div class="tb_row tb-row-bl middle keepAll">
+				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>2016년 손익계산서 표, 구분, 2020, 2019, 2018</caption>
@@ -749,7 +755,7 @@
 			<div class="com-text noLine">
 				<p class="tit">분기별 손익계산서</p>
 				<p class="tit tbl_tit">2020년</p>
-				<div class="tb_row tb-row-bl middle keepAll">
+				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>2020년 손익계산서 표, 구분, 2020년 4분기, 2020년 3분기, 2020년 2분기, 2020년 1분기</caption>
@@ -821,7 +827,7 @@
 					<div class="content">
 						<div class="section">
 							<p class="tit tbl_tit">2019년</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 								<table>
 									<caption>2019년 손익계산서 표, 구분, 2019년 4분기, 2019년 3분기, 2019년 2분기, 2019년 1분기</caption>
@@ -890,7 +896,7 @@
 						</div>
 						<div class="section">
 							<p class="tit tbl_tit">2018년</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<div class="tbl_info rt abs2">K-IFRS 연결기준 (단위 : 억원)</div>
 								<table>
 									<caption>2018년 손익계산서 표, 구분, 2018년 4분기, 2018년 3분기, 2018년 2분기, 2018년 1분기</caption>
@@ -965,7 +971,7 @@
 			<h3 class="blind">현금흐름표</h3>
 			<div class="com-text">
 				<p class="tit">현금흐름표</p>
-				<div class="tb_row tb-row-bl middle keepAll">
+				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
 					<table>
 						<caption>재무 하이라이트 현금 흐름표, 구분, 2020, 2019, 2018</caption>

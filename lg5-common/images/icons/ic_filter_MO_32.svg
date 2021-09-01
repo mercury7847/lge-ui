@@ -1,0 +1,25 @@
+<svg id="ic_filter_MO_32" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+    <defs>
+        <style>
+            .cls-1,.cls-2,.cls-3{fill:none}.cls-2,.cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:2px}.cls-2{stroke-linecap:round}.cls-4{stroke:none}
+        </style>
+    </defs>
+    <path id="Rectangle" class="cls-1" d="M0 0h32v32H0z"/>
+    <g id="ic" transform="translate(4 4)">
+        <path id="Line" class="cls-2" d="M0 .5h16.643" transform="translate(6.187 3.012)"/>
+        <g id="Rectangle-2" data-name="Rectangle" class="cls-3">
+            <rect class="cls-4" width="7.024" height="7.024" rx="3.512"/>
+            <rect class="cls-1" x="1" y="1" width="5.024" height="5.024" rx="2.512"/>
+        </g>
+        <path id="Line-2" data-name="Line" class="cls-2" d="M0 .5h16.643" transform="translate(6.187 19.402)"/>
+        <g id="Rectangle-3" data-name="Rectangle" class="cls-3" transform="translate(0 16.39)">
+            <rect class="cls-4" width="7.024" height="7.024" rx="3.512"/>
+            <rect class="cls-1" x="1" y="1" width="5.024" height="5.024" rx="2.512"/>
+        </g>
+        <path id="Line-3" data-name="Line" class="cls-2" d="M0 .5h16.7" transform="translate(1.171 11.207)"/>
+        <g id="Rectangle-4" data-name="Rectangle" class="cls-3" transform="translate(16.976 8.195)">
+            <rect class="cls-4" width="7.024" height="7.024" rx="3.512"/>
+            <rect class="cls-1" x="1" y="1" width="5.024" height="5.024" rx="2.512"/>
+        </g>
+    </g>
+</svg>

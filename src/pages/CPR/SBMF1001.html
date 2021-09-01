@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "CPR/CPR",
+            "support/notice"
+        ],
+        pageTitle: "스탠바이미 클럽 | LG전자",
+        pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "스탠바이미 클럽" 
+        })
+
+        <div class="container">
+            <div class="contents stanbyme">
+                <div class="visual-wrap">
+                    <span class="img-v pc" style="background-image:url('/lg5-common/images/CPR/img-stanbyme-visual.jpg');"></span>
+                    <span class="img-v m" style="background-image:url('/lg5-common/images/CPR/img-stanbyme-visual-m.jpg');"></span>
+                    <div class="tit-wrap">
+                        <p class="tit">나만을 위한 <br class="mo-only">프라이빗 스크린</p>
+                        <span class="txt">스탠바이미에 대한 다양한 의견과 <br class="mo-only">아이디어를 나누는 <br>
+                            소통의 공간 스탠바이미 클럽</span>
+                    </div>
+                </div>
+                <div class="inner">
+                    <!-- .inner s  -->
+                    <div class="stanbyme-list">
+                        <div class="tabs-wrap border-type left ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#prod1">문의사항<em class="blind">선택됨</em></a></li>
+                                <li><a href="#prod2">리뷰</a></li>
+                            </ul>
+                        </div>
+                        <!-- 문의사항 -->
+                        <div id="prod1" class="tab-content">
+                            <div class="tit-sbm">
+                                <p class="tit">스탠바이미 클럽</p>
+                                <div class="sbm-qna">
+                                    <p>스탠바이미에 대한 궁금증이나,<br class="mo-only"> 문의사항을 등록해 주세요.</p>
+                                    <a href="#" class="btn ico-reg"><span>등록하기</span></a>
+                                </div>
+                            </div>
+                            <div class="result-wrap">
+                                <div class="sorting-wrap">
+                                    <div class="total">전체 <em id="count" class="count">86</em>건</div>
+                                    <div class="sort-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
+                                                <option value="최신순">최신순</option>
+                                                <option value="조회순">조회순</option>
+                                                <option value="댓글순">댓글순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tb_row board-type">
+                                    <table>
+                                        <caption>공지사항 제목, 등록일, 조회수</caption>
+                                        <colgroup>
+                                            <col >
+                                            <col style="width:148px">
+                                            <col style="width:148px">
+                                            <col style="width:128px">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">제목</th>
+                                            <th scope="col">작성자</th>
+                                            <th scope="col">등록일</th>
+                                            <th scope="col">조회수</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="board-tit">
+                                                    <a href="#">
+                                                        <div class="flag-wrap bar-type">
+                                                            <span class="flag"><span class="blind">최신 게시글</span>NEW</span>
+                                                        </div>
+                                                        <p>배송날자가  지났는데  언제  받는건가요?</p>
+                                                        <span class="count">3</span>
+                                                    </a>
+                                                </td>
+                                                <td>남*한</td>
+                                                <td>2020.08.12</td>
+                                                <td><span class="txt-cnt">조회수</span>3,021</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="board-tit">
+                                                    <a href="#">
+                                                        <div class="flag-wrap bar-type">
+                                                            <span class="flag"><span class="blind">최신 게시글</span>NEW</span>
+                                                        </div>
+                                                        <p>연결되는 휴대폰 기종이 어떻게 되나요? </p>
+                                                        <span class="count">999+</span>
+                                                    </a>
+                                                </td>
+                                                <td>조*민</td>
+                                                <td>2020.08.12</td>
+                                                <td><span class="txt-cnt">조회수</span>2,980</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="board-tit tit-del">
+                                                    <p>관리자에 의해 삭제된 글입니다.</p>
+                                                </td>
+                                                <td>조*민</td>
+                                                <td>2020.07.27</td>
+                                                <td><span class="txt-cnt">조회수</span>3,021</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="board-tit">
+                                                    <a href="#">
+                                                        <div class="flag-wrap bar-type">
+                                                            <span class="flag"><span class="blind">최신 게시글</span>NEW</span>
+                                                        </div>
+                                                        <p>스마트 티비와 연결도 가능한가요? 패드는 어떤 종류까지 연결가능할까요?</p>
+                                                        <span class="count">999+</span>
+                                                    </a>
+                                                </td>
+                                                <td>조*민</td>
+                                                <td>2020.08.12</td>
+                                                <td><span class="txt-cnt">조회수</span>2,980</td>
+                                            </tr>
+                                            @@for (var i = 0; i < 6; i++) {
+                                            <tr>
+                                                <td class="board-tit">
+                                                    <a href="#">
+                                                        <p>배송은 언제 되는 걸까요?</p>
+                                                        <span class="count">2</span>
+                                                    </a>
+                                                </td>
+                                                <td>남*한</td>
+                                                <td>2020.07.27</td>
+                                                <td><span class="txt-cnt">조회수</span>3,021</td>
+                                            </tr>
+                                            }
+                                            <tr class="empty-row" style="display:none">
+                                                <td colspan="4">
+                                                    <div class="no-data">
+                                                        <p>등록된 게시글이 없습니다.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div>
+                        </div>
+                        <!-- //문의사항 -->
+                        <!-- 리뷰 -->
+                        <div id="prod2" class="tab-content">
+                            <div class="component-inner">
+                                
+                            </div>
+                        </div>
+                        <!-- //리뷰 -->
+                    </div>
+                    <!-- .inner e  -->
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

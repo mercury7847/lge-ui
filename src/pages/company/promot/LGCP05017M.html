@@ -15,10 +15,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|ESG 팩트북",
-		"content_depth4": "회사소개|지속가능경영|ESG 팩트북|컴플라이언스 개요",
-		"content_depth5": "회사소개|지속가능경영|ESG 팩트북|컴플라이언스 개요"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|ESG 팩트북",
+		"content_depth4": "회사소개|ESG 경영|ESG 팩트북|컴플라이언스 개요",
+		"content_depth5": "회사소개|ESG 경영|ESG 팩트북|컴플라이언스 개요"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
@@ -39,7 +39,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		]);
 		options = {
 			pieHole: 1,
-			pieSliceText: 'percent',
+			pieSliceText: 'value',
 			chartArea: {
 				width: '100%',
 				height: '80%',
@@ -47,8 +47,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			},
 			slices: {
 				0: {
-					color: '#e81953',
-					offset: 0.01
+					color: '#da0f47',
+					offset: 0.01,
 				},
 				1: {
 					color: '#aaaaaa',
@@ -79,25 +79,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			if (windowWidth < 767) {
 				options.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
 			} else {
-				options.pieSliceTextStyle.fontSize = "16";
+				options.pieSliceTextStyle.fontSize = "22";
 			}
 		}
 	
 		function resize() {
+			checkSize();
+			chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+			chart.draw(data, options);
+		}
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
 				checkSize();
 				chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 				chart.draw(data, options);
-			}
-			window.onload = resize();
-			window.onresize = resize;
-	
-			$(".draw_chart_div").on('click', function (e) {
-				setTimeout(function () {
-					checkSize();
-					chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-					chart.draw(data, options);
-				}, 500);
-			});
+			}, 500);
+		});
 	}
 
 
@@ -106,23 +107,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.graph {position:relative}
 	.c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
 	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
-	@media screen and (max-width: 768px){
-		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
-		.company .c_legend .lgnd > span {margin-left:4px!important}
-	}
-	@media screen and (max-width: 386px){
-		.googlechart-wrap {margin:0 auto 40px!important}
-		.c_legend {bottom:-24px}
-	}
 	.googlechart-wrap {
 		position:relative;
-		width:520px;
-		height:370px;
+		max-width:520px;
 		margin:0 auto 12px;
 	}
-	.googlechart-wrap .chartarea {
+	.googlechart-wrap .donutchart {
 		width:100%;
-		height:100%;
+		height:370px;
 	}
 	.googlechart-wrap .overlayarea {
 		position:absolute;
@@ -133,26 +125,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		font-size:24px;
 		font-weight:bold;
 	}
-	@media screen and (max-width:767px) {
-		.googlechart-wrap {
-			width:100%;
-			height:71.11vw;
-		}
+	@media screen and (max-width: 767px){
+		.googlechart-wrap .donutchart {height:69.5vw; max-height:370px}
 		.googlechart-wrap .overlayarea { font-size:5vw; }
+		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
+		.company .c_legend .lgnd > span {margin-left:4px!important}
+	}
+	@media screen and (max-width: 386px){
+		.googlechart-wrap {margin:0 auto 40px!important}
+		.c_legend {bottom:-24px}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/promot/system">ESG 팩트북</a></li>
-		<li><strong>컴플라이언스 개요</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -426,7 +412,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit h4">2) 공정거래 심화교육과정 개설</p>
 							<div class="graph ofn">
 								<div class="googlechart-wrap">
-									<div class="chartarea" id="donutchart"></div>
+									<div class="chartarea donutchart" id="donutchart"></div>
+									<!-- 구글차트 -->
 								</div>
 								<div class="c_legend">
 									<p class="lgnd">국내해외영업직군<span class="pink"></span></p>
@@ -434,7 +421,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<p class="lgnd">해외법인 조직책임자<span class="blk"></span></p>
 								</div>
 							</div>	
-							<!-- 구글차트 -->
 							<div class="survey_box">
 								<p class="s_tit">국내외 해외영업직군 임직원 대상 공정거래 컴플라이언스 리스크에 대한 온라인 심화교육과정 현황</p>
 								<p class="s_text">총 1,628명 이수</p>

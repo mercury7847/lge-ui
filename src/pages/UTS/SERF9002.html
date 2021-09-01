@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/curation","search/filterLayer","search/search_all"]
     })
 <!--        pageJS: ["search/curation","search/search_all"]-->
 <body>
@@ -68,7 +69,7 @@
                 </div>
                 <!-- 추천 큐레이션 -->
                 <!-- 스마트 필터 -->
-                <div class="smart-filter" style="display: none;" >
+                <div class="smart-filter">
                     <div class="inner">
                         <h2 class="title">스마트 필터</h2>
                         <div class="filter-list">
@@ -178,6 +179,7 @@
                                         </div>
                                     </div>
                                 </li>
+                                <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 : 스마트 필터 3단까지만 노출 
                                 <li class="row">
                                     <div class="label">메모리 용량</div>
                                     <div class="content">
@@ -263,15 +265,20 @@
                                             <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
-                                </li>
+                                </li>-->
                             </ul>
                         </div>
 
-                        <!-- 클릭 시 .fold 추가, toggle text - 필터 더보기 / 필터 접기 -->
-                        <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
+                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 -->
+                        <div class="smart-filter-btn-wrap">
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><em class="text">필터 더보기</em><span class="blind">옵션</span></a>
+                            </div>
+                        </div>
 
                         <!-- 스마트 필터 선택한 항목 표시 -->
-                        <div class="filter-result" style="display:none">
+                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 :선택한 항목 미노출 s -->
+                        <!-- <div class="filter-result" style="display:none">
                             <div class="ui_smooth_scrolltab">
                                 <div class="ui_smooth_tab">
                                     <ul class="rounded-list">
@@ -303,7 +310,8 @@
                                 </div>
                             </div>
                             <button type="button" class="btn-reset"><span>초기화</span></button>
-                        </div>
+                        </div>-->
+                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 :선택한 항목 미노출 e -->
                         <!-- 스마트 필터 선택한 항목 표시 -->
                     </div>
                 </div>
@@ -351,10 +359,16 @@
                 <!-- // 210413 수정 [피시, 모바일 이미지 분리] -->
                 <!-- // 210218 수정 [이미지 변경, br 태그 위치 수정] -->
 
-
-                <div class="cont-wrap">
-                    <div class="search-result-wrap all">
-
+				<!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 -->
+                <div class="cont-wrap w-filter"><!-- filter 보임 class : w-filter -->                    
+                    @@include('./common/modules/list-filter.html', {
+                        "smartType" : true,
+                        "searchWord" : "에어컨",
+                        "searchNum" : "26,833",
+                        "search" : true,
+                        "serviceLinkClass" : "product",
+                    })
+                    <div class="search-result-wrap">
                         <div class="list-sorting"><!-- 스크롤시 상단 고정 class : fixed -->
                             <div class="list-sorting-inner">
                                 <div class="sort-area left">

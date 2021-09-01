@@ -13,10 +13,10 @@
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|지배구조",
-		"content_depth4": "회사소개|지속가능경영|지배구조",
-		"content_depth5": "회사소개|지속가능경영|지배구조"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|지배구조",
+		"content_depth4": "회사소개|ESG 경영|지배구조",
+		"content_depth5": "회사소개|ESG 경영|지배구조"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
@@ -26,61 +26,32 @@
 		packages: ['corechart']
 	});
 	google.charts.setOnLoadCallback(drawChart);
-	var dataColumn, optionsColumn, chartColumn;
-	var dataDonut, optionsDonut, chartDonut;
 
 	function drawChart() {
-		dataColumn = google.visualization.arrayToDataTable([
+		var dataDonut = google.visualization.arrayToDataTable([
+			['', 'Amount', {
+				role: 'tooltip'
+			}],
+			['보고사항', 10, '보고사항\n10건'],
+			['승인사항', 32, '승인사항\n32건'],
+			['개최', 9, '개최\n9건'],
+		]);
+		var dataColumn = google.visualization.arrayToDataTable([
 			['', '참석', {
 				role: 'annotation'
 			}, '불참', {
 				role: 'annotation'
 			}],
-			['평균', 90.47, '90.47%', 9.53, '9.53%'],
+			['평균', 90.5, '90.5%', 9.53, '9.53%'],
 			['사내이사', 77.8, '77.80%', 22.2, '22.2%'],
 			['사외이사', 100, '100%', 0, '0%']
 		]);
-		optionsColumn = {
-			colors: ['#e81953', '#000000'],
-			vAxis: {
-				format: '#\'%\'',
-				minValue: '0',
-				maxValue: '110'
-			},
-			chartArea: {
-				width: '90%',
-				right: '0%',
-				height: '80%',
-				top: '-5%'
-			},
-			bar: {
-				groupWidth: '25%'
-			},
-			annotations: {
-				textStyle: {
-					bold: true
-				},
-				stem: {
-					color: 'none',
-					length: '0'
-				}
-			},
-			legend: {
-				position: 'bottom'
-			},
-			fontName: 'Noto Sans',
-			fontSize: "16"
-		};
-		dataDonut = google.visualization.arrayToDataTable([
-			['', 'Amount', {
-				role: 'tooltip'
-			}],
-			['개최', 9, '개최\n9건'],
-			['승인사항', 32, '승인사항\n32건'],
-			['보고사항', 10, '보고사항\n10건']
-		]);
-		optionsDonut = {
-			pieHole: 0.6,
+
+		var viewDonut = new google.visualization.DataView(dataDonut);
+		var viewColumn = new google.visualization.DataView(dataColumn);
+
+		var optionsDonut = {
+			pieHole: 1,
 			pieSliceText: 'value',
 			chartArea: {
 				width: '100%',
@@ -100,7 +71,7 @@
 					}
 				},
 				2: {
-					color: '#e81953',
+					color: '#da0f47',
 					offset: 0.01
 				}
 			},
@@ -109,122 +80,163 @@
 				bold: true
 			},
 			legend: {
-				position: 'bottom',
+				position: 'none',
 				alignment: 'center',
 				textStyle: {
 					fontSize: '16'
 				}
 			},
-			fontName: 'Noto Sans'
+			fontName: 'Noto Sans',
+			enableInteractivity: false,
 		};
-		setTimeout(function () {
-			checkSize();
-			chartColumn = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-			chartDonut = new google.visualization.PieChart(document.getElementById('donutchart'));
-			chartColumn.draw(dataColumn, optionsColumn);
-			chartDonut.draw(dataDonut, optionsDonut);
-		}, 1000);
-	}
 
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			optionsDonut.pieHole = 0.6;
-			optionsDonut.legend.textStyle.fontSize = "12";
-			optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
-			optionsColumn.fontSize = "12";
-			optionsColumn.bar.groupWidth = '30%';
-		} else {
-			optionsDonut.pieHole = 0.56;
-			optionsDonut.legend.textStyle.fontSize = "16";
-			optionsDonut.pieSliceTextStyle.fontSize = "16";
-			optionsColumn.fontSize = "16";
-			optionsColumn.bar.groupWidth = '25%';
-		}
+		var optionsColumn = {
+			series: {
+				0: {
+					color: '#da0f47'
+				},
+				1: {
+					color: '#000'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14'
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff'
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16'
+				}
+			},
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			bar: {
+				groupWidth: '88',
+				gap: 8
+			},
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			legend: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			fontSize: "16"
+		};
+
+		var checkSizeDonut = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsDonut.legend.textStyle.fontSize = "22";
+				optionsDonut.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+			} else {
+				optionsDonut.legend.textStyle.fontSize = "22";
+				optionsDonut.pieSliceTextStyle.fontSize = "22";
+			}
+		};
+		var checkSizeColumn = function () {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				optionsColumn.height = '200';
+				optionsColumn.bar.groupWidth = '60';
+				optionsColumn.bar.gap = '10';
+				optionsColumn.vAxis.textStyle.fontSize = '13';
+				optionsColumn.vAxis.gridlines.minSpacing = '20';
+				optionsColumn.hAxis.textStyle.fontSize = '13';
+				optionsColumn.annotations.textStyle.fontSize = '12';
+				optionsColumn.annotations.stem.length = '5';
+			} else {
+				optionsColumn.height = '300';
+				optionsColumn.bar.groupWidth = '88';
+				optionsColumn.bar.gap = '8';
+				optionsColumn.vAxis.textStyle.fontSize = '14';
+				optionsColumn.vAxis.gridlines.minSpacing = '40';
+				optionsColumn.hAxis.textStyle.fontSize = '14';
+				optionsColumn.annotations.textStyle.fontSize = '13';
+				optionsColumn.annotations.stem.length = '8';
+			}
+		};
+
+		var resize = function () {
+			if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
+				checkSizeDonut();
+				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
+				chartDonut.draw(viewDonut, optionsDonut);
+
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, optionsColumn);
+			}
+		};
+
+		var init = function () {
+			setTimeout(function () {
+				checkSizeDonut();
+				var chartDonut = new google.visualization.PieChart(document.getElementById("donutchart"));
+				chartDonut.draw(viewDonut, optionsDonut);
+
+				checkSizeColumn();
+				var chartColumn = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+				chartColumn.draw(viewColumn, optionsColumn);
+			}, 2500);
+
+			$(".accordion-wrap li.lists:first-child").on('click', function () {
+				setTimeout(function () {
+					resize();
+				}, 500);
+			});
+		};
+		
+		$(window).on('load', init());
+		$(window).on('resize', resize);
 	}
-	$(window).resize(function () {
-		/* 화면사이즈가 변하면 차트를 그려줌 */
-		if ($(".accordion-wrap li.lists:first-child").hasClass("on")) {
-			checkSize();
-			setTimeout(function () {
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
-		}
-	});
-	$(document).ready(function () {
-		/* 첫번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:first-child").on('click', function (e) {
-			checkSize();
-			setTimeout(function () {
-				chartColumn.draw(dataColumn, optionsColumn);
-				chartDonut.draw(dataDonut, optionsDonut);
-			}, 100);
-		});
-	});
 </script>
-<style>
-	.googlechart-wrap {
-		position: relative;
-		max-width: 900px;
-		margin: 0 auto;
-	}
-
-	.googlechart-wrap.over100::before {
-		content: "";
-		display: block;
-		background: #ffffff;
-		width: 100%;
-		height: 8%;
-		position: absolute;
-		top: 0;
-		z-index: 1;
-	}
-
-	.googlechart-wrap .columnchart {
-		height: 480px;
-	}
-
-	.googlechart-wrap .donutchart {
-		height: 370px;
-	}
-
-	@media screen and (max-width: 767px) {
-		.googlechart-wrap {
-			width: 100%;
-		}
-
-		.googlechart-wrap.over100::before {
-			height: 7%;
-		}
-
-		.googlechart-wrap .columnchart {
-			height: 53vw;
-		}
-
-		.googlechart-wrap .donutchart {
-			height: 71.11vw
-		}
-	}
-
-	@media screen and (max-width: 425px) {
-		.googlechart-wrap.over100::before {
-			height: 14%;
-		}
+<style type="text/css">
+	.donutchart + .c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
+	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	.googlechart-wrap {position:relative; max-width:910px; margin:0 auto}
+	.googlechart-wrap .donutchart {height:370px}
+	@media screen and (max-width:767px) {
+		.googlechart-wrap .overlayarea {font-size:5vw}
+		.googlechart-wrap .donutchart {height:76vw; max-height:370px}
+		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
+		.company .c_legend .lgnd > span {margin-left:4px!important}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/director">지배구조</a></li>
-		<li><strong>이사회 구성 및 운영</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
 		<div class="visual-area"> <span class="bg ui_bg_switch"
@@ -297,7 +309,7 @@
 			있습니다.</p>
 	</div>
 	
-	<div class="com-text noLine">
+	<div class="com-text noLine_m">
 		<p class="tit">지배구조</p>
 		<p class="text">LG전자의 이사회와 이사회 산하 위원회는 ESG를 포함한 회사 경영 전략의 승인 등 주요 의사결정과 함께 운영 및 실적에 대한 관리, 감독 기능을 수행하고 있습니다.</p>
 		<div class="accordion-wrap ui_accordion btmBtn lgway" data-single-open="true">
@@ -316,15 +328,15 @@
 								<li>LG전자의 이사회는 이사회의 운영과 의사결정의 효율성을 고려하여 총 7인으로 구성</li>
 								<li>사외이사를 이사회 총수의 과반수 이상으로 구성 (57%)<br>(사내이사 2인, 기타비상무이사 1인, 사외이사는 4인)</li>
 								<li>이사회는 독립성/전문성/다양성을 종합적으로 심사하여 선임하며, 성별, 인종, 종교, 정치, 문화 등에 따른 차별을 두지 않음<br>
-									<div class="only_pc tb_row tb-row-bl">
+									<div class="only_pc no_tab tb_row tb-row-bl">
 										<table>
 											<caption>구분, 성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 											<colgroup>
-												<col style="width:14%">
+												<col style="width:auto">
 												<col style="width:12%">
-												<col style="width:38%">
+												<col style="width:auto">
 												<col style="width:12%">
-												<col style="width:24%">
+												<col style="width:auto">
 											</colgroup>
 											<thead>
 												<tr>
@@ -455,7 +467,7 @@
 											</tbody>
 										</table>
 									</div>
-									<div class="only_mo tb-col middle pd mt20"> <strong class="bull">기타 비상무 이사</strong>
+									<div class="only_tab tb-col middle pd mt20"> <strong class="bull">기타 비상무 이사</strong>
 										<table>
 											<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 											<colgroup>
@@ -491,7 +503,7 @@
 											</tbody>
 										</table>
 									</div>
-									<div class="only_mo tb-col middle pd mt20"> <strong class="bull">사내 이사</strong>
+									<div class="only_tab tb-col middle pd mt20"> <strong class="bull">사내 이사</strong>
 										<table>
 											<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 											<colgroup>
@@ -549,7 +561,7 @@
 												</tr>
 											</tbody>
 										</table>
-										<div class="only_mo tb-col middle pd mt20"> <strong class="bull">사외 이사</strong>
+										<div class="only_tab tb-col middle pd mt20"> <strong class="bull">사외 이사</strong>
 											<table>
 												<caption>성명, 직위 / 주요 경력, 최근 선임, 비고</caption>
 												<colgroup>
@@ -679,7 +691,13 @@
 							</ul>
 							<p class="tit mt40">4) 이사회 활동</p>
 							<div class="googlechart-wrap">
-								<div class="chartarea donutchart" id="donutchart"></div>
+								<div class="chart_area donutchart" id="donutchart"></div>
+								<!-- 구글차트 -->
+								<div class="c_legend">
+									<p class="lgnd">개최<span class="pink"></span></p>
+									<p class="lgnd">승인사항<span class="gray"></span></p>
+									<p class="lgnd">보고사항<span class="blk"></span></p>
+								</div>
 								<div class="blind">
 									<ul>
 										<li> <span>개최</span>
@@ -727,12 +745,17 @@
 							</div>
 							<p class="tit mt">5) 이사회 참석</p>
 							<div class="googlechart-wrap over100">
-								<div class="chartarea columnchart" id="columnchart"></div>
+								<div class="chart_area columnchart percent" id="columnchart"></div>
+								<!-- 구글차트 -->
+								<div class="c_legend">
+									<p class="lgnd">참석<span class="pink"></span></p>
+									<p class="lgnd">불참<span class="blk"></span></p>
+								</div>
 								<div class="blind">
 									<ul>
 										<li> <span>평균</span>
 											<ul>
-												<li>90.47%(참석)</li>
+												<li>90.5%(참석)</li>
 												<li>9.53%(불참)</li>
 											</ul>
 										</li>
@@ -769,7 +792,7 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>90.47</td>
+											<td>90.5</td>
 											<td>77.80</td>
 											<td>100</td>
 										</tr>
@@ -798,7 +821,7 @@
 								<li>감사위원회의 전문성 제고를 위해 최근 회계감독 동향 교육을 진행하며, 감사위원회 지원 전담 조직인 내부회계 감사팀을 설치하여 감사위원회 요청 시 지원업무 수행</li>
 								<li>이사회 사무국을 설치하여 이사회 및 산하 위원회의 원활한 활동을 지원, 직무수행에 필요한 요청사항 수행</li>
 							</ul>
-							<div class="tb_row tb-row-bl middle pd keepAll">
+							<div class="tb_row tb-row-bl middle pd">
 								<table>
 									<caption>이사회 산하 위원회, 구분, 역할 및 활동</caption>
 									<colgroup>
@@ -868,7 +891,7 @@
 								</table>
 							</div>
 							<p class="tit mt">2) 이사회 보수 현황</p>
-							<div class="tb_row tb-row-bl keepAll">
+							<div class="tb_row tb-row-bl">
 								<div class="tbl_info rt abs2">(단위: 백만 원, 2020년 기준)</div>
 								<table>
 									<caption>구분, 급여, 상여, 총액, 1인당 평균</caption>
