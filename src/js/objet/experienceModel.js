@@ -5896,7 +5896,7 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            let domain = location.host.indexOf('wwwdev50') !== -1 ? '//wwwstg.lge.co.kr' : ''; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
+            let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : ''; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             
             priceArry.push(defaultModel);                            
