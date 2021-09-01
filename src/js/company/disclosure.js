@@ -40,7 +40,6 @@
         bindEvents: function() {
             var self = this;
 
-            //페이지
             self.$pagination.on('page_click', function(e, data) {
                 var param = {'page':data
                 			,'pblntf_ty':$('#select1').val()}
@@ -61,7 +60,7 @@
 
                 self.params = param;
                 self.params.page = param.pagination.page;
-                //페이지
+
                 self.$pagination.vcPagination('setPageInfo',param.pagination);
                 var arr = data.listData instanceof Array ? data.listData : [];
                 var listbody = self.$disclosureList;

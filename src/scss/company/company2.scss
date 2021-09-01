@@ -1140,9 +1140,10 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company ul.loca_list > li .top .tit {font-size:24px; font-weight:bold; line-height:1.5}
 .company ul.loca_list > li .cont {margin-top:32px}
 .company ul.loca_list > li .cont .addr em {display:block; margin-bottom:8px; font-size:16px; font-weight:bold; line-height:1.5}
-.company ul.loca_list > li .cont .addr span {display:inline-block; font-size:14px; line-height:22px}
-.company ul.loca_list > li .cont .addr span + span {position:relative; margin-left:10px; padding-left:11px}
-.company ul.loca_list > li .cont .addr span + span::before {content:''; display:block; position:absolute; width:1px; height:10px; left:0; top:calc(50% - 5px); background-color:#ddd}
+.company ul.loca_list > li .cont .addr span {position:relative; display:inline-block; margin-right:10px; padding-right:11px; font-size:14px; line-height:22px}
+.company ul.loca_list > li .cont .addr span:last-child {margin-right:0; padding-right:0}
+.company ul.loca_list > li .cont .addr span:last-child::after {display:none}
+.company ul.loca_list > li .cont .addr span::after {content:''; display:block; position:absolute; width:1px; height:10px; right:0; top:calc(50% - 5px); background-color:#ddd}
 .company ul.loca_list > li .cont .call {margin-top:25px}
 .company ul.loca_list > li .cont .call em {display:block; margin-bottom:8px; font-size:16px; font-weight:bold; line-height:1.5}
 .company ul.loca_list > li .cont .call span {display:inline-block; font-size:14px; line-height:22px}
@@ -1585,8 +1586,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 @media screen and (max-width:1024px) {
     .only_pc.no_tab {display:none!important}
     .only_tab {display:block!important}
-    .company ul.loca_list > li .cont .addr span + span {margin-left:0; padding-left:0}
-    .company ul.loca_list > li .cont .addr span + span::before {display:none}
+    .company ul.loca_list > li .cont .addr span {margin-right:0; padding-right:0}
+    .company ul.loca_list > li .cont .addr span::after {display:none}
     .company .ceoArea .txt {left:10%}
 }
 @media screen and (max-width:952px) {
