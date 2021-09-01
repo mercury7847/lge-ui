@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <!-- 문의사항 -->
-                        <div id="prod1" class="tab-content">
+                        <div id="prod1" class="tab-content" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeListAjax.json">
                             <div class="tit-sbm">
                                 <p class="tit">스탠바이미 클럽</p>
                                 <div class="sbm-qna">
@@ -147,8 +147,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-        
-                                @@include('./common/support/pagination.html', {
+
+                                @@include('./common/modules/pagination.html', {
                                     count: 5
                                 })
                             </div>
@@ -169,5 +169,6 @@
         
         @@include('./common/footer.html')
     </div>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>
