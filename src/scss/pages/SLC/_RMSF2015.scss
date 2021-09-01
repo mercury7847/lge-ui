@@ -342,6 +342,10 @@ br.m {
             .desc {
                 margin-top: 12px;
             }
+            // BTOCSITE-2838
+            .bullet-list .b-txt > a {
+                text-decoration: underline;
+            }
         }
         @include mobile {
             margin:0 16px 60px;
@@ -355,6 +359,90 @@ br.m {
                 .bullet-list {
                     margin-top: 12px;
                 }
+            }
+        }
+        // BTOCSITE-2838
+        &.csn-ars-bottom-type02{
+            padding:0 40px;
+            background:#fff;
+            max-width: 1460px;
+            @include mobile{
+                padding: 0;
+            }
+            .gray-block-wrap{
+              border-spacing: 0;
+              .info li {
+                    width:100% !important;
+                    text-align: left;
+                    .qr-info-img{
+                        display: inline-block;
+                        width:641px;
+                    }
+                    .text-area {
+                        display: inline-block;
+                        width:calc(100% - 645px);
+                        padding-left: 60px !important;
+                    }
+                    @include pc-size-m{
+                        display: flex !important;
+                        .qr-info-img{
+                            width:50%;
+                        }
+                        .text-area {
+                            width:calc(50% - 4px);
+                            padding-left: 50px !important;
+                        }
+                    }
+                    @include mobile{
+                        display: block !important;
+                        .qr-info-img{
+                            width:100%;
+                        }
+                        .text-area {
+                            width:100%;
+                            padding-left:0 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//BTOCSITE-2838
+.qr-info-img{
+    .info-img{
+        position:relative;
+        z-index:0;
+        width:100%;
+        height:auto;
+        img{
+            z-index:1;
+            top:0; 
+            left:0;
+            width:100%;
+            height:auto;
+        }
+        .link-box{
+            display: none;
+            position:absolute;
+            z-index:2;
+            width:37.18%;
+            height:9.5%;
+            bottom:5.7%;
+            right:7.5%;    
+            text-align: left;
+            a {
+                display: inline-block;
+                width:calc(50% - 3.4%);
+                height: 100%;
+                border-radius: 30px;
+                &.appstore{
+                    float: right;
+                }
+            }
+            @media screen and (max-width: 1024px) {
+                display: block;
             }
         }
     }

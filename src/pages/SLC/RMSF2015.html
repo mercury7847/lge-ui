@@ -12,7 +12,8 @@
             hiddenTitle: "케어솔루션 고객혜택" 
         })
         <!-- //210311_H1추가 -->
-
+        <!-- BTOCSITE-2838 : wcms 화면 맞춤을 위해 추가됨  -->
+        <link rel="stylesheet" href="https://wwwdev50.lge.co.kr/kr/main/store/assets/PRS_pub.css">
         <main class="container">
             <!-- 210409 수정 [타이틀 추가] -->
             @@include('./common/modules/page-header.html', {
@@ -165,7 +166,20 @@
                                     <ul class="info">
 										<li>
                                             <!-- 210601 특별쿠폰 QR코드 이미지 추가 -->
-                                            <div class="img"><img src="/lg5-common/images/SLC/210601_img_care-benefit03.png" alt="LG전자 케어솔루션레터, 특별쿠폰 확인 방법, 멤버십 앱 로그인 - 케어솔루션 - 나의 케어솔루션 - 케어솔루션 레터, google play 혹은 app store에서 lg전자 멤버십 앱 다운"></div>
+                                            <!-- BTOCSITE-2838 타블렛/모바일일때 링크 추가 -->
+                                            <div class="img qr-info-img">
+                                                <div class="info-img">
+                                                    <img src="/lg5-common/images/SLC/210601_img_care-benefit03.png" alt="LG전자 케어솔루션레터, 특별쿠폰 확인 방법, 멤버십 앱 로그인 - 케어솔루션 - 나의 케어솔루션 - 케어솔루션 레터, google play 혹은 app store에서 lg전자 멤버십 앱 다운">
+                                                    <div class="link-box">
+                                                        <a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" target="_blank" class="googlepaly">
+                                                            <span class="blind">google paly</span>
+                                                        </a>
+                                                        <a href="https://apps.apple.com/app/id1406622899" target="_blank" class="appstore">
+                                                            <span class="blind">apple apps tore</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- //210601 특별쿠폰 QR코드 이미지 추가 -->
                                             <div class="text-area">
                                                 <dl>
@@ -274,12 +288,54 @@
                                 <p class="tit">자세한 사항은 담당 케어솔루션 매니저 또는 가까운 LG 베스트샵에 문의하세요!</p>
                                 <p class="desc">담당 케어솔루션 매니저 연락처 확인 방법</p>
                                 <ul class="bullet-list">
-                                    <li class="b-txt">LG전자 멤버십 앱 로그인 &gt; 케어솔루션 &gt; 나의 케어솔루션 > 나의 계약 현황</li>
+                                    <!-- BTOCSITE-2838 : 텍스트 변경 및 링크 제공 -->
+                                    <li class="b-txt"><a href="https://wwwdev50.lge.co.kr/my-page/care-solution-contract-status#content">마이페이지 &gt; 렌탈/케어 &gt; 계약현황</a></li>
+                                    <!-- <li class="b-txt"><a href="/my-page/care-solution-contract-status">마이페이지 &gt; 렌탈/케어 &gt; 계약현황</a></li> -->
+                                    <!-- <li class="b-txt">LG전자 멤버십 앱 로그인 &gt; 케어솔루션 &gt; 나의 케어솔루션 > 나의 계약 현황</li> -->
                                 </ul>
                             </div>
                             <!-- //210326 소스수정 -->
                         </div>
                     </div>
+                     <!-- BTOCSITE-2838 : 멤버십 앱 특별 쿠폰 추가 S-->
+                     <div class="csn-ars-bottom csn-ars-bottom-type02">
+                        <div class="gray-block-wrap big">
+                            <div class="blocks benefit5">
+                                <dl>
+                                    <dt>
+                                        <p class="tit">멤버십 앱 특별 쿠폰</p>
+                                    </dt>
+                                </dl>
+                                <ul class="info">
+                                    <li>
+                                        <div class="img qr-info-img">
+                                            <div class="info-img">
+                                                <img src="/lg5-common/images/SLC/210601_img_care-benefit03.png" alt="LG전자 케어솔루션레터, 특별쿠폰 확인 방법, 멤버십 앱 로그인 - 케어솔루션 - 나의 케어솔루션 - 케어솔루션 레터, google play 혹은 app store에서 lg전자 멤버십 앱 다운">
+                                                <div class="link-box">
+                                                    <a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" target="_blank" class="googlepaly">
+                                                        <span class="blind">google paly</span>
+                                                    </a>
+                                                    <a href="https://apps.apple.com/app/id1406622899" target="_blank" class="appstore">
+                                                        <span class="blind">apple apps tore</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-area">
+                                            <dl>
+                                                <dt>특별쿠폰 확인 방법</dt>
+                                                <dd>LG전자 멤버십 앱 로그인 > 케어솔루션 > 나의 케어솔루션 > 케어솔루션 레터</dd>
+                                            </dl>
+                                            <ul class="bullet-list">
+                                                <li class="b-txt">LG전자 멤버십 앱이 없다면 Google Play 혹은 App Store에서 다운받으세요.</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- BTOCSITE-2838 : 멤버십 앱 특별 쿠폰 추가 e-->
+                     </div>
                 </div>
                 <!-- //계약 연차별 혜택 -->
                 <!-- // 210414 수정 [전체 수정] -->
