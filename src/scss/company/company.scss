@@ -44,6 +44,9 @@ br.pc {display:block}
 .company .sustainable-download .tit {font-size:24px; font-weight:bold; line-height:1.42; color:#ffffff}
 .company .sustainable-download .tit + .desc {margin-top:20px; font-size:16px; font-weight:normal; line-height:1.63; color:#ffffff}
 .company .sustainable-download .btn {margin-top:26px; background:transparent; border:solid 1px #fafafa}
+.company .sustainable-download .btn:hover,
+.company .sustainable-download .btn:focus,
+.company .sustainable-download .btn:active {border-color:#da0f47; background:#da0f47; color:#fff}
 .company .sustainable-download .btn + .btn {margin-left:17px}
 
 @media screen and (max-width:880px) {
