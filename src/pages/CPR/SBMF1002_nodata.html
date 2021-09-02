@@ -3,7 +3,7 @@
     @@include('./common/head.html', {
         pageCSS: ["CPR/CPR"],
         pageTitle: "스탠바이미 클럽 | LG전자",
-        pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+        pageDesc: "LG전자 스탠바이미에 대한 문의사항, 리뷰를 등록할 수 있는 스탠바이미 클럽 입니다."
     })
 <body>
     <div class="wrap">
@@ -47,7 +47,7 @@
                         </div>
                         <!-- .stanbyme-detail-body e -->
                         <div class="btn-box mobile-only">
-                            <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제하기</span></button>
+                            <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제</span></button>
                             <a href="#" class="btn border size"><span>수정</span></a>
                         </div>
                         <!-- .comment-wrap s  -->
@@ -71,7 +71,6 @@
                                         <div class="conts">
                                             <div class="text-form">   
                                                 <div class="input-wrap">
-                                                    <!-- 작성중일때 .valid class textarea에 추가 되어야 함 (취소버튼 노출, 등록 버튼 색상변경) -->
                                                     <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될   수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="contentError"></textarea>
                                                     <div class="txt-count-box">
                                                         <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
@@ -124,5 +123,43 @@
             <a href="#" class="btn"><span>예</span></a>
         </div>
     </article>
+
+    <script>
+        $(function() {
+            $('.btn-comment-del').on('click', function(e){
+                var id = $(e.currentTarget).data('id');
+                var obj ={title:'', typeClass:'', ok : function (){ }};
+                var desc = '';
+        
+                if(id=="#commentDeleteConfirm"){
+                    obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                    desc = '';
+                }
+                lgkorUI.confirm(desc, obj);
+            });
+
+            // 댓글 작성중일 경우 valid 클래스 추가
+            var inp = $('.input-wrap textarea');
+            inp.each(function(){
+                var me = $(this);
+                var inpValLen = me.val().length;
+
+                valid();
+                
+                me.on('change keyup paste', function(){
+                    inpValLen = me.val().length;
+                    valid();
+                });
+
+                function valid(){
+                    if(inpValLen > 0) {
+                        me.addClass('valid');
+                    } else{
+                        me.removeClass('valid');
+                    }     
+                }     
+            });
+        });
+    </script>
 </body>
 </html>
