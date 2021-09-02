@@ -966,12 +966,12 @@
         var $cashChk = $('#popup-cancel').hasClass('cash-chk');
         //210824 BTOCSITE-4124 로직 변경 - 현금결제일 경우 체크
         if($cashChk == true){
-            console.log('현금결제');
+            //console.log('현금결제');
             //openCancelPop(dataID);
             cancelOk();
 
         } else {
-            console.log('현금이외 결제'); //210823
+            //console.log('현금이외 결제'); //210823
 
             var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
             if(!chkItems.length){
@@ -2651,7 +2651,13 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();
 
-            popup.vcModal('close');
+            //BTOCSITE-4124 210902 수정
+            if(result.status != "fail" && result.data.success == "Y" && result.data.msg =="VC1001") {
+
+            } else {
+                popup.vcModal('close');
+            }
+            //BTOCSITE-4124 210902 수정
 
             if(result.status == "fail"){
                 lgkorUI.alert("", {
@@ -2674,9 +2680,9 @@
                         box.find('.orderCancel-btn, .requestOrder-btn').remove();
     
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
-                        if( result.data.msg == "VC1001") {
-                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
-                        }
+                        // if( result.data.msg == "VC1001") {
+                        //      resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        // }
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
@@ -2695,6 +2701,7 @@
                                 $('#popup-cancel').addClass('data-chk');
                                 var dataID = $('#popup-cancel').data('dataId');
                                 getPopOrderData(dataId, "ordercancel", opener); 
+                                popup.vcModal('close');//BTOCSITE-4124 210902 수정
                                 //cancelSubmit();
                                 }
                             });                       
