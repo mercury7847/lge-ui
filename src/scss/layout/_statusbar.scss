@@ -9,6 +9,7 @@
     z-index:9000;
     background: #fff;
     border-top:1px solid #ddd;
+    font-family: 'Noto Sans',sans-serif;
 
     .mobile-status-list {
         display: flex;
@@ -64,24 +65,7 @@
     }
 }
 
-.is-web-status-bar {
-    .wrap {
-        padding-bottom:70px;
-    }
-    
-    .utility {
-        right:11px;
-    }
-    .mobile-nav-button {
-        display: none;
-        &.active {
-            display: block;
-        }
-        & + .header-bottom {
-            padding-bottom:70px;
-        }
-    }
-}
+
 
 .mdevice:not(.app) {
     .mobile-status-bar {
