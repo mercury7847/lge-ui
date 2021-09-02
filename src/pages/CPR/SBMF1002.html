@@ -239,6 +239,7 @@
 
             // 댓글 작성중일 경우 valid 클래스 추가
             var inp = $('.input-wrap textarea');
+            var btnCancel = $('.btn-cancel');
             inp.each(function(){
                 var me = $(this);
                 var inpValLen = me.val().length;
@@ -257,6 +258,11 @@
                         me.removeClass('valid');
                     }     
                 }     
+                btnCancel.on('click', function(){
+                    var meInp = $(this).parents('.input-wrap');
+                    meInp.find('textarea').removeClass('valid');
+                    meInp.find('.inner-text em').text('0');
+                });
             });
         });
     </script>
