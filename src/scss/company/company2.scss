@@ -44,20 +44,20 @@ img.m350 {width:100%; max-width:350px!important}
     .tabs-wrap.act {top:66px}
 }
 /* 차트 */
-.chart_area.bar rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.bar svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
+.chart_area.bar rect {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.bar svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0} /* 제일 하단선 검은색 제거 */
 
-.chart_area.bar2 circle {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.bar2 svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;}
-#combochart.bar2 svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
+.chart_area.bar2 circle {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.bar2 svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0}
+#combochart.bar2 svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0}
 
 .chart_area.bar_row svg defs + rect + g > rect + g + g + g > g:nth-child(5) {opacity:0}/* 마지막 단위 지우기 */
 
 /* 차트 % 구조시 */
-.chart_area.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0;}/* 상단 지우기 (100%시 짤림) */
-.chart_area.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}
-.chart_area.percent rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.percent svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
+.chart_area.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0}/* 상단 지우기 (100%시 짤림) */
+.chart_area.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0}
+.chart_area.percent rect {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.percent svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0} /* 제일 하단선 검은색 제거 */
 
 /* 차트 범례 */
 .company .c_legend {display:flex; flex-wrap:wrap; justify-content:center}
