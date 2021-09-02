@@ -22,6 +22,7 @@
             
             self.$floatingWrap = $('.btn-floating-wrap');
             self.$KRP0005 = $('.KRP0005.floating-menu');
+            self.$morePlus = $('.KRP0005.floating-menu.more-plus');
             self.moreButton = self.$KRP0005.find('.more-plus-linker a');
 
             self.$popup = $('#KRP0032:eq(0)');
@@ -32,26 +33,28 @@
             var self = this;
             var $chat = self.$KRP0005.find('div.floating-linker.chat a');
             if($chat.length > 0) {
-                var ajaxUrl = self.$KRP0005.data('pincodeUrl');
-                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
-                    var pinCode = null;
-                    var data = result.data;
-                    if(data) {
-                        var receveResult = data.result;
-                        if(receveResult && receveResult.code) {
-                            pinCode = receveResult.code;
+                var ajaxUrl = self.$morePlus.data('pincodeUrl');
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
+                        var pinCode = null;
+                        var data = result.data;
+                        if(data) {
+                            var receveResult = data.result;
+                            if(receveResult && receveResult.code) {
+                                pinCode = receveResult.code;
+                            }
                         }
-                    }
 
-                    var chatUrl = self.$KRP0005.data('chatUrl');
-                    var isApplication = isApp();
-                    chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
-                    if(pinCode) {
-                        chatUrl += ("&code="+pinCode);
-                    }
+                        var chatUrl = self.$morePlus.data('chatUrl');
+                        var isApplication = isApp();
+                        chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
+                        if(pinCode) {
+                            chatUrl += ("&code="+pinCode);
+                        }
 
-                    $chat.attr('href',chatUrl);
-                });
+                        $chat.attr('href',chatUrl);
+                    });
+                }
             }
         },
 
