@@ -226,7 +226,7 @@ var Curation = (function() {
                 self.$curation.hide();
             }
 
-            var smartFilterData = data.smartFilterList;
+            var smartFilterData = data.smartFilterList.data;
             if(smartFilterData && smartFilterData.length > 0) {
                 var isOpen = self.$smartFilterList.data('open');
                 var $list_ul = self.$smartFilterList.find('ul.default');
