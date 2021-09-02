@@ -64,24 +64,7 @@
     }
 }
 
-.is-web-status-bar {
-    .wrap {
-        padding-bottom:70px;
-    }
-    
-    .utility {
-        right:11px;
-    }
-    .mobile-nav-button {
-        display: none;
-        &.active {
-            display: block;
-        }
-        & + .header-bottom {
-            padding-bottom:70px;
-        }
-    }
-}
+
 
 .mdevice:not(.app) {
     .mobile-status-bar {

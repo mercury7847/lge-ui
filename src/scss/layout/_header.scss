@@ -2087,7 +2087,8 @@ html {
 
 //BTOCSITE-1967 웹하단바
 .is-web-status-bar {
-    .wrap {
+    .wrap,
+    .iw_viewport-wrapper {
         padding-bottom:70px;
     }
     
