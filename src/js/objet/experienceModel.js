@@ -5486,7 +5486,7 @@
                                 doorKLocation = "상칸(우)";
                                 doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
                             } else if (k == 2) {
-                                doorDirection = "MM";
+                                doorDirection = "BB";
                                 doorLocation = "BB";
                                 doorKLocation = "하칸";
                                 doorPrice = configData.modelConfig[idx].door.door3.defaultPrice;
