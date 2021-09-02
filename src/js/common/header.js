@@ -747,12 +747,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                             '</li>' +
                         '</ul>' +
                     '</div>';
-    
-                    if( $('.wrap').length ){
-                        $('.wrap').append(statusBarHTML);
-                    } else {
-                        $('.iw_viewport-wrapper').append(statusBarHTML);
-                    }
+                    $('html').append(statusBarHTML);
                     $('html').addClass('is-web-status-bar')
                 }
             }
