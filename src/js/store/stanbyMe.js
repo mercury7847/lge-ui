@@ -67,11 +67,11 @@
             '<a href="{{url}}">' +
                 '{{# if (typeof flag != "undefined") { #}}' +
                 '<div class="flag-wrap bar-type">' +
-                    '<span class="flag"><span class="blind">최신 게시글</span>{{flag}}</span>' +
+                    '<span class="flag"><span class="blind">최신 게시글</span>{{newFlag}}</span>' +
                 '</div>' +
                 '{{# } #}}' +
                 '<p>{{title}}</p>' +
-                '<span class="count">{{replyCount}}</span>' +
+                '<span class="count">{{clubDCount}}</span>' +
             '</a>' +
         '</td>' +
         '<td>{{creationUserName}}</td>' +
@@ -83,54 +83,47 @@
 
 
     $(window).ready(function() {
-        var notice = {            
+        var notice = {
             params: {},
             init: function() {
                 var self = this,
                     $contents = $('.contents.stanbyme');
                 
                 //self.$searchWrap = $contents.find('.search-wrap');
+                self.$qnaTab = $contents.find('#prod1');
                 self.$pagination = $contents.find('.pagination');
                 self.$sortsWrap = $contents.find('.sorting-wrap');
-                self.$sortTotal = $contents.find('#count');
+                self.$sortTotal = self.$sortsWrap.find('#count');
                 self.$sortSelectWrap = $contents.find('.sort-select-wrap');
                 self.$sortSelect = $contents.find('.ui_selectbox');
                 self.$listWrap = $contents.find('.tb_row');
                 self.$noData = $contents.find('.empty-row');
-                self.$download = $contents.find('.addfile-wrap');
+                //self.$download = $contents.find('.addfile-wrap');
 
                 self.params = {
-                    //'keyword': self.$searchWrap.find('input[type="text"]').val(),
-                    //'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
                     'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
-                    'page': 1
+                    'page': 2
                 };
 
                 vcui.require(['ui/pagination'], function () {
-                    self.$pagination.pagination();
+                    self.bindEvent();
+                    self.$pagination.vcPagination('initialize');
                 });
 
-
-
-
-
-                self.bindEvent();
-
-                
             },
-            searchList: function() {
+            settingList: function() {
                 var self = this,
-                    url = self.$searchWrap.data('ajax');
+                    url = self.$qnaTab.data('ajax');
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
                     var html = '',
-                        data = d.data.listData,
-                        page = d.data.listPage;
+                        data = d.data,
+                        page = d.pagination;
 
-                    self.$searchWrap.find('input[type="text"]').val(self.params['keyword']);
-                    self.$sortTotal.html(page.totalCount);                    
-                    self.$pagination.pagination('update', page);
+                    self.$sortTotal.html(page.totalCount);
+
+                    self.$pagination.vcPagination('update', page);
                     self.$listWrap.find('tbody').find('tr').not( self.$noData).remove();
 
                     if (data.length) {
@@ -156,138 +149,24 @@
                 self.$listWrap.on('click', '.board-tit a', function() {
                     lgkorUI.historyBack(this);
                 });
-                
-              /*  self.$searchWrap.find('input[type="text"]').on('input', function() {
-                    var val = $(this).val().trim();
-
-                    if (val.length > 1) {
-                        $('.search-error').hide();
-                    }
-                });
-
-                self.$searchWrap.find('input[type="text"]').on('keyup', function(e) {
-                    if (e.keyCode == 13) { 
-                        self.$searchWrap.find('.btn-search').trigger('click');
-                    }
-                });*/
-                
-                /*self.$searchWrap.find('.btn-search').on('click', function() {
-                    var val = self.$searchWrap.find('input[type="text"]').val().trim();
-
-                    if (val.length > 1) {
-                        self.params = $.extend({}, self.params, {
-                            'keyword': val,
-                            'page': 1
-                        });
-                        
-                        $('.search-error').hide();
-
-                        self.searchList();
-                    } else if (val.length == 1) {
-                        $('.search-error').show();
-                    } else {
-                        self.params = $.extend({}, self.params, {
-                            'keyword': '',
-                            'page': 1
-                        });
-
-                        self.searchList();
-
-                        $('.search-error').hide();
-                    }
-                });*/
-
-                // self.$sortSelect.filter('#category').on('change', function() {
-                //     self.$searchWrap.find('input[type="text"]').val('');
-                //     self.$searchWrap.find('input[type="text"]').trigger('update');
-                //
-                //
-                //     self.params = $.extend({}, self.params, {
-                //         'keyword': '',
-                //         'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
-                //         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
-                //         'page': 1
-                //     });
-                //     self.searchList();
-                // });
 
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
-                        'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
-                    self.searchList();
+                    self.settingList();
                 });
 
-                self.$pagination.on('pageClick', function(e) {
+                self.$pagination.on('page_click', function(e) {
+                    console.log(2);
                     self.params = $.extend({}, self.params, {
                         'page': e.page
                     });
-                    self.searchList();
-                });
-
-                self.$download.find('.download', function(e) {
-                    
+                    self.settingList();
                 });
             }
         }
         notice.init();
-
-/*
-        $(window).on('load', function(){
-            $('.view-content img').rwdImageMaps();
-        })
-*/
-
-
-
-        var $contSticky = $('.fn-scroll-notice');
-        var $contTab = $contSticky.find('.tabs');
-        var scrollFlag = true;
-        var sectionArr = ["#sect_info", "#sect_install", "#sect_deliver"]
-
-        function scrollTarget(targetId){
-            scrollFlag = false;
-
-            if( $(targetId).length ) {
-                $('html, body').stop().animate({
-                    scrollTop : $(targetId).offset().top - $contTab.outerHeight() + 1
-                }, function(){
-                    scrollFlag = true;
-                })
-            }
-        }
-
-        $contTab.find('a').on('click', function(e){
-            var $this = $(this);
-            var $li = $this.closest('li');
-            var curIndex = $li.index();
-
-            $li.addClass('on').siblings().removeClass('on');
-            scrollTarget(sectionArr[curIndex]);
-            e.preventDefault();
-        });
-
-
-        if( $contSticky.length ) {
-            $(window).on('scroll', function(){
-                var _top = $(this).scrollTop();
-
-                if( _top >= $contSticky.offset().top &&  _top <= $('.contents.support').offset().top + $('.contents.support').outerHeight() - $contSticky.outerHeight() ) {
-                    $contSticky.addClass('fixed');
-                } else {
-                    $contSticky.removeClass('fixed');
-                }
-
-                sectionArr.forEach(function(v, i){
-                    if( _top >= $(v).offset().top - $contTab.outerHeight() && _top < $(v).offset().top + $(v).outerHeight() - $contTab.outerHeight()) {
-                        if( scrollFlag ) {
-                            $contTab.find('li').eq(i).addClass('on').siblings().removeClass('on');
-                        }
-                    }
-                })
-            });
-        }
     });
 })();
