@@ -843,9 +843,9 @@ if ('scrollRestoration' in history) {
                     var filterShow = false;
                     // BTOCSITE-1716 start
                     if(isSmartFiler || isFilterList) {
-                        console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList : data.filterList)
+                        console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList.data : data.filterList)
                         filterShow = true;
-                            var smartFilterList = data.smartFilterList;
+                            var smartFilterList = data.smartFilterList.data;
     
                             // api 에서 smartFilterList 에 filtertype 을 넣어주든
                             // 일반 필터에 스마트 필터를 넣어주든 하나는 해야함
