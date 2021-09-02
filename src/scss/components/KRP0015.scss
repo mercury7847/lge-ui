@@ -402,3 +402,11 @@
     }
     
 }
+
+//BTOCSITE-1967
+.is-web-status-bar {
+    $statusBarHeight: 70px;
+    .KRP0015 {
+        bottom:(0 + $statusBarHeight);
+    }
+}
