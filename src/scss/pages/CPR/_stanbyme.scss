@@ -252,18 +252,6 @@
 							}
 						}
 					}
-					&.tit-del{
-						>p{
-							text-align:left;
-							color:$color-gray-4;
-						}
-						@include mobile{
-							margin-bottom:0;
-							~td{
-								display:none;
-							}
-						}
-					}
 					.count{
 						display:inline-block;
 						margin-left:12px;
