@@ -878,3 +878,12 @@
         }
     }
 }
+
+//BTOCSITE-1967
+.is-web-status-bar {
+    .lay-filter {
+        .plp-filter-wrap {
+            padding-bottom:80px;
+        }
+    }
+}
