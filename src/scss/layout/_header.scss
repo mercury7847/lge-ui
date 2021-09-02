@@ -2083,3 +2083,34 @@ html {
         }
     }
 }
+
+
+//BTOCSITE-1967 웹하단바
+.is-web-status-bar {
+    .wrap {
+        padding-bottom:70px;
+    }
+    
+    .utility {
+        right:11px;
+    }
+    .mobile-nav-button {
+        display: none;
+        &.active {
+            display: block;
+        }
+        & + .header-bottom {
+            padding-bottom:70px;
+        }
+    }
+
+    &.scroll-down {
+        .header-bottom {
+            height:100vh;
+            transform:translateY(43px);
+        }
+        .dimmed {
+            height:100vh;
+        }
+    }
+}
