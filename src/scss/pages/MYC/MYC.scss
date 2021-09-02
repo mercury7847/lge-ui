@@ -335,6 +335,11 @@
     // 배송지 주소 관리
     @import "ACCF7009";
 
+    /* 2021.08.27 BTOCSITE-4704 */
+    // 주문/배송 조회
+    @import "ACCF7002";
+    /* //2021.08.27 BTOCSITE-4704 */
+
     // 쿠폰
     @import "ACCF7018";
 
@@ -1123,6 +1128,20 @@
     .pop-conts {
         @include pc {
             min-height:480px;
+        }
+    }
+}
+
+//BTOCSITE-5010
+@include mobile{
+    #popup-salesReceipt {
+        .pop-conts {
+            padding: 32px 16px 32px;
+            height: calc(100% - 62px);
+            max-height: calc(100% - 62px);
+        }
+        .pop-footer {
+            display: none;
         }
     }
 }

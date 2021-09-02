@@ -15,10 +15,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|사회",
-		"content_depth4": "회사소개|지속가능경영|사회|사회공헌",
-		"content_depth5": "회사소개|지속가능경영|사회|사회공헌"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|사회",
+		"content_depth4": "회사소개|ESG 경영|사회|사회공헌",
+		"content_depth5": "회사소개|ESG 경영|사회|사회공헌"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
@@ -55,7 +55,7 @@ function drawChart() {
 				color:'#000'
             },
 			1:{
-                color:'#e91953'
+                color:'#da0f47'
             },
         },
         bar:{
@@ -127,16 +127,16 @@ function drawChart() {
         var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
         chart.draw(view, columnOptions);
     }
-    window.onload = resize();
-    window.onresize = resize;
+    $(window).on('load', resize());
+    $(window).on('resize', resize);
 
-		$(".draw_chart_div").on('click', function (e) {
-			setTimeout(function () {
-				checkSize();
-				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
-				chart.draw(view, columnOptions);
-			}, 500);
-		});
+	$(".draw_chart_div").on('click', function (e) {
+		setTimeout(function () {
+			checkSize();
+			var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+			chart.draw(view, columnOptions);
+		}, 500);
+	});
 }
 </script>
 <style>
@@ -146,18 +146,9 @@ function drawChart() {
 		.graph_dec {font-size:12px;line-height:20px;}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/workplace">사회</a></li>
-		<li><strong>사회공헌</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -503,7 +494,7 @@ function drawChart() {
 							<ul class="bull mgtL">
 								<li>
 									<strong>사회공헌 기금 조성</strong>
-									<div class="tb_row tb-row-bl middle pd keepAll">
+									<div class="tb_row tb-row-bl middle pd">
 										<div class="tbl_info rt abs2">(단위: 백만원)</div>
 										<table>
 											<caption>사회공헌 기금 조성 표, 구분, 2020, 2019, 2018</caption>
@@ -544,7 +535,7 @@ function drawChart() {
 							<ul class="bull mgtL">
 								<li>
 									<strong>연도별 임직원 봉사단 참여 수(한국)</strong>
-									<div class="tb_row tb-row-bl middle pd keepAll">
+									<div class="tb_row tb-row-bl middle pd">
 										<div class="tbl_info rt abs2">(단위: 명)</div>
 										<table>
 											<caption>연도별 임직원 봉사단 참여 수(한국) 표, 구분, 2020, 2019, 2018</caption>
@@ -578,14 +569,39 @@ function drawChart() {
 							<div class="graph">
 								<div style="max-width:910px;margin:0 auto;">
 									<p class="graph_dec">(단위: 억원)</p>
-									<div class="chart_area" id="chart_div"></div>
+									<div class="chart_area bar" id="chart_div"></div>
+									<!-- 구글차트 -->
+									<div class="blind">
+										<ul>
+											<li>
+												<span>2021</span>
+												<ul>
+													<li>381(임원사회공헌기금)</li>
+													<li>290(임직원사회공헌기금)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2020</span>
+												<ul>
+													<li>364(임원사회공헌기금)</li>
+													<li>365(임직원사회공헌기금)</li>
+												</ul>
+											</li>
+											<li>
+												<span>2019</span>
+												<ul>
+													<li>334(임원사회공헌기금)</li>
+													<li>243(임직원사회공헌기금)</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<div class="c_legend">
 									<p class="lgnd">임원사회공헌기금<span class="blk"></span></p>
 									<p class="lgnd">임직원사회공헌기금<span class="pink"></span></p>
 								</div>
 							</div>
-							<!-- 구글차트 -->
 						</div>
 						<div class="btnArea">
 							<button type="button" class="btn border menu-opener menu-close"><span>닫기</span></button>

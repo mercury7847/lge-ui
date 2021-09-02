@@ -13,16 +13,16 @@
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|환경",
-		"content_depth4": "회사소개|지속가능경영|환경|부정적 환경영향 Zero 사업장",
-		"content_depth5": "회사소개|지속가능경영|환경|부정적 환경영향 Zero 사업장"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|환경",
+		"content_depth4": "회사소개|ESG 경영|환경|부정적 환경영향 Zero 사업장",
+		"content_depth5": "회사소개|ESG 경영|환경|부정적 환경영향 Zero 사업장"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <style>
 	.graph_dec {font-size:14px;line-height:24px;text-align:right;}	
-	@media screen and (max-width:768px){
+	@media screen and (max-width:767px){
 			.graph_dec {font-size:12px;line-height:20px;}	
 	}
 </style>
@@ -35,7 +35,7 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-			['LG전자 글로벌 재생에너지 확대 계획', '년도', {
+			['LG전자 글로벌 재생에너지 확대 계획', '전환율', {
 				role: 'annotation'
 			}],
 			['2020', 4, '4%'],
@@ -65,7 +65,7 @@
 			},
 			series: {
 				0: {
-					color: '#e91953'
+					color: '#da0f47'
 				},
 			},
 			bar: {
@@ -131,12 +131,12 @@
 		}
 
 		var data2 = google.visualization.arrayToDataTable([
-			['무공해차 전환 목표', '년도', {
+			['무공해차 전환 목표', '전환율', {
 				role: 'annotation'
 			}],
-			['2021년~2025년', 90, '90%'],
-			['2026년~2028년', 96, '96%'],
-			['2009년~2030년', 100, '100%'],
+			['2021~2025', 90, '90%'],
+			['2026~2028', 96, '96%'],
+			['2009~2030', 100, '100%'],
 		]);
 
 		var view2 = new google.visualization.DataView(data2);
@@ -159,7 +159,7 @@
 			},
 			series: {
 				0: {
-					color: '#e91953'
+					color: '#da0f47'
 				},
 			},
 			bar: {
@@ -233,8 +233,8 @@
 			var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
 			chart2.draw(view2, columnOptions2);
 		}
-		window.onload = resize();
-		window.onresize = resize;
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
 
 		$(".draw_chart_div").on('click', function (e) {
 			setTimeout(function () {
@@ -253,18 +253,9 @@
 		});
 	}
 </script>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/businessplace">환경</a></li>
-		<li><strong>부정적 환경영향 Zero 사업장</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
 		<div class="visual-area"> <span class="bg ui_bg_switch"
@@ -454,7 +445,58 @@
 						<div class="txtArea">
 							<p class="tit">글로벌 탄소 배출량 현황 및 목표<br class="mo">(한국+해외 배출량)</p> <img class="only_pc"
 								src="/kr/images/company/sustainable/img-businessplace-chart01-pc.png" alt=""> <img class="only_mo"
-								src="/kr/images/company/sustainable/img-businessplace-chart01-mo.png" alt=""> <!-- 구글차트 -->
+								src="/kr/images/company/sustainable/img-businessplace-chart01-mo.png" alt="">
+								<div class="blind">
+									<span>Net Zero 달성</span>
+									<ul>
+										<li>
+											<span>생산단계 감축</span>
+											<strong>97만톤</strong>
+										</li>
+										<li>
+											<span>외부상쇄 감축</span>
+											<strong>96만톤</strong>
+											<ul>
+												<li>UN 감축 프로젝트 56만톤</li>
+												<li>재생에너지 전환 40만톤</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<span>2030</span>
+											<ul>
+												<li>96만톤(외부상쇄 감축량)</li>
+												<li>96만톤(생산단계 온실가스 배출 목표량)</li>
+											</ul>
+										</li>
+										<li>
+											<span>2020</span>
+											<ul>
+												<li>146만톤(생산단계 온실가스 배출 목표량)</li>
+												<li>122만톤(생산단계 온실가스 배출량)</li>
+											</ul>
+										</li>
+										<li>
+											<span>2019</span>
+											<ul>
+												<li>122만톤(생산단계 온실가스 배출량)</li>
+											</ul>
+										</li>
+										<li>
+											<span>2018</span>
+											<ul>
+												<li>164만톤(생산단계 온실가스 배출량)</li>
+											</ul>
+										</li>
+										<li>
+											<span>2017</span>
+											<ul>
+												<li>193만톤(생산단계 온실가스 배출량)</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
 						</div>
 						<div class="btnArea"> <button type="button"
 								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>
@@ -499,7 +541,7 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="tb-col middle pd keepAll mgt only_mo">
+							<div class="tb-col middle pd mgt only_mo">
 								<table>
 									<caption>생산단계 탄소저감, UN 감축 프로젝트, SF6 저감활동</caption>
 									<colgroup>
@@ -595,10 +637,18 @@
 								Agreement) 등 적용 가능한 옵션을 다각도로 검토하는 등 2050년까지 재생에너지 사용 100%를 달성하기 위한 중장기 계획을 수립중입니다. 향후 LG전자는 이를 기반으로 국내외
 								사업장이 위치한 국가의 현행법과 사업장 현황을 고려하여 재생에너지 확대를 위해 지속적으로 노력할 계획입니다.</p>
 							<p class="tit mt">LG전자 글로벌 재생에너지 확대 계획</p>
-							<!-- <img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart02-pc.png" alt="">    <img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart02-mo.png" alt=""> -->
 							<div style="max-width:920px;margin:0 auto;">
 								<p class="graph_dec">(재생에너지 전환율(%) = 연도별 재생에너지 사용량 + 글로벌 전기 총 사용량)</p>
 								<div class="chart_area percent" id="chart_div"></div>
+								<div class="blind">
+									<ul>
+										<li>2020년 4%</li>
+										<li>2025년 18%</li>
+										<li>2030년 46%</li>
+										<li>2040년 70%</li>
+										<li>2050년 100%</li>
+									</ul>
+								</div>
 							</div> <!-- 구글차트 -->
 						</div>
 						<div class="btnArea"> <button type="button"
@@ -616,13 +666,17 @@
 								100%를 전기, 수소 등을 활용한 무공해 차량으로 전환할 것을 선언하였습니다. 당사는 K-EV100 선언을 시작으로 사용하는 친환경 차량 비율을 점진적으로 확대하고, 단순히 업무용
 								차량을 친환경 차량으로 전환하는 것을 넘어, 기업 경영의 작은 부분부터 탄소중립 사회의 실현을 위해 고민하고 노력해 나갈 계획입니다.</p>
 							<p class="tit mt">무공해자 전환 목표</p>
-							<!--<img class="only_pc" src="/kr/images/company/sustainable/img-businessplace-chart03-pc-new.png" alt="">							    <img class="only_mo" src="/kr/images/company/sustainable/img-businessplace-chart03-mo.png" alt="">-->
 							<div style="max-width:910px;margin:0 auto;">
 								<p class="graph_dec">(전환율)</p>
 								<div class="chart_area percent" id="chart_div2"></div>
+								<div class="blind">
+									<ul>
+										<li>2021~2025년 90%</li>
+										<li>2026~2028년 96%</li>
+										<li>2009~2030년 100%</li>
+									</ul>
+								</div>
 							</div> <!-- 구글차트 -->
-							<div class="thumb pic2"> <img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_01.jpg"
-									alt=""> <img src="/kr/images/company/sustainable/img-businessplace-kEv100_thumb_02.jpg" alt=""> </div>
 						</div>
 						<div class="btnArea"> <button type="button"
 								class="btn border menu-opener menu-close"><span>닫기</span></button> </div>

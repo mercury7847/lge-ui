@@ -701,7 +701,7 @@ $(function () {
                 $video.data($target.data());
                 $video.data('sceneIndex', index)
 
-                $video[0].addEventListener('canplay', function(){
+                $video[0].addEventListener('loadedmetadata', function(){
                     $video[0].muted = true
                     // $video[0].play()
                     sceneIO.observe($video[0])

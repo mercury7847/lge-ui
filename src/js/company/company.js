@@ -71,6 +71,13 @@ $(document).ready(function() {
 		}
 		e.preventDefault();
 	});
+	$(".com-tabs>.tabs-wrap>ul.tabs>li a").on("click", function() {
+		if (!$(this).parent().hasClass("on")){
+			$(".cont_view_more>.content").css("display", "none");
+			$(".cont_view_more>.btnArea span").attr("class", "open").text("지난 자료 보기");
+			$(".cont_view_more>.btnArea>.btn").removeClass("on");
+		}
+	});
 	
 	//Google Tag Manager (noscript)
 	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -78,6 +85,23 @@ $(document).ready(function() {
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-WL297VL');
+	
+	//SHEE 정책 다운로드
+	if ($('#select_shee').val() == '') {
+		$("#btn_shee").addClass("disabled").attr("disabled", true);
+	} else {
+		$("#btn_shee").removeClass("disabled").attr("disabled", false);
+	}
+	$('#select_shee').on("change", function() {
+		if ($('#select_shee').val() == '') {
+			$("#btn_shee").addClass("disabled").attr("disabled", true);
+		} else {
+			$("#btn_shee").removeClass("disabled").attr("disabled", false);
+		}
+	});
+	$('#btn_shee').on("click", function() {
+		openInApp($('#select_shee').val());
+	});
 });
 
 // 첫번째 아코디언 열기
@@ -120,6 +144,7 @@ function fcTabScrollLeft(tab){
 
 // 2번째 탭 fixed
 $(function(){
+	if(!$('#com-tabs02').length)return;
 	$(window).scroll(function() {
 		var tarTab = $('#com-tabs02').closest('.com-tabs');
 		var tarTab2 = $('#com-tabs01').closest('.com-tabs').find('.tabs-wrap').innerHeight();
@@ -134,6 +159,10 @@ $(function(){
 
 // pdf 다운로드
 var openInApp = function (url, name, specs, replace) {
+	var parser = document.createElement('a');
+	parser.href = url;
+	url = parser.href;
+	
 	if (isApp() && vcui.detect.isIOS) {
 		var obj = {
 			  'command' : 'openInAppBrowser'
@@ -142,7 +171,9 @@ var openInApp = function (url, name, specs, replace) {
 		};
 		var jsonString = JSON.stringify(obj);
 		webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+	} else if(isApp() && vcui.detect.isAndroid) {
+		$(parser).get(0).click();
 	} else {
 		window.open(url, name, specs, replace);
 	}
-}
+};

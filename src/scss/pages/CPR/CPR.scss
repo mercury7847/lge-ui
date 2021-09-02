@@ -430,3 +430,76 @@
         }
     }
 }
+
+/* 2021.09.01 BTOCSITE-4357 : 스탠바이미 PDP 내 고객문의 Q&A 생성 요청 */
+// 스탠바이미 진입 링크
+.stanbyme-qna{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+    padding:27px 20px;
+	border:1px solid #ddd;
+	border-radius:8px;
+	p{
+        position:relative;
+        padding-left:30px;
+        font-size:$font-medium;
+		font-weight:$font-weight-bold;
+        line-height:23px;
+        &:before{
+            position: absolute;
+            top:50%;
+            left:0;
+            width:24px;
+            height:24px;
+            background: url(/lg5-common/images/CPR/img_review_24.svg) 0 0 no-repeat;
+            background-size: 100% 100%;
+            transform:translateY(-50%);
+            content: '';
+        }
+        .mobile-only{
+            display:none;
+        }
+	}
+	.btn-link{
+		margin-left:14px;
+		line-height:1;
+		&:after{
+			top:calc(50% + 1px);
+			transform:translateY(-50%);
+		}
+	}
+	@include tablet {
+		flex-direction:column;
+        .btn-link{
+			margin:12px 0 0 0;
+		}
+	}
+	@include mobile {
+        p{
+            padding:48px 0 0 0;
+            font-size:$font-small;
+            line-height:22px;
+            text-align:center;
+            word-break:keep-all;
+            &:before{
+                top:0;
+                left:50%;
+                width:40px;
+                height:40px;
+                background: url(/lg5-common/images/CPR/img_review_80.svg) 0 0 no-repeat;
+                background-size: 100% 100%;
+                transform:translateX(-50%) translateY(0);
+            }
+            .mobile-only{
+                display:block;
+            }
+        }
+	}
+}
+
+// 스탠바이미
+@import "../../support/form-field";
+.contents.stanbyme {
+    @import "stanbyme";
+}

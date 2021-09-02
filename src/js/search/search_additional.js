@@ -131,6 +131,9 @@ if ('scrollRestoration' in history) {
                     self.savedFilterData = null;
                     
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
+
+
+                        console.log("filter callback %o",data);
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
