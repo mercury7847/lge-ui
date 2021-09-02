@@ -5471,6 +5471,36 @@
                             doorHtml += '   <span class="door_img"></span>';
                             doorHtml += '</button>';
                         }
+                    } else if (doorLeng == 4) { //BTOCSITE-4239 - 210902 4도어 CASE 추가
+                        for (let k = 0; k < doorLeng; k++) {
+                            let doorDirection;
+                            let doorLocation;
+                            if (k == 0) {
+                                doorDirection = "LT";
+                                doorLocation = "TT";
+                                doorKLocation = "상칸(좌)";
+                                doorPrice = configData.modelConfig[idx].door.door1.defaultPrice;
+                            } else if (k == 1) {
+                                doorDirection = "RT";
+                                doorLocation = "TT";
+                                doorKLocation = "상칸(우)";
+                                doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
+                            } else if (k == 2) {
+                                doorDirection = "MM";
+                                doorLocation = "BB";
+                                doorKLocation = "하칸";
+                                doorPrice = configData.modelConfig[idx].door.door3.defaultPrice;
+                            } else if (k == 3) {
+                                doorDirection = "BB";
+                                doorLocation = "BB";
+                                doorKLocation = "하칸";
+                                doorPrice = configData.modelConfig[idx].door.door4.defaultPrice;
+                            }
+                            doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-klocation="' + doorKLocation + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                            doorHtml += '   <span class="blind">도어 선택</span>';
+                            doorHtml += '   <span class="door_img"></span>';
+                            doorHtml += '</button>';
+                        }
                     }
                     ////console.log("code", code);
                 } else if (idx == 2) { //컨버터블
