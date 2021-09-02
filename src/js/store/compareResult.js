@@ -16,22 +16,6 @@
         $('.tabs-scroll-wrap .tabs li').each(function(idx, item){
             self.tabClones.push($(item).clone())
         });
-
-        // BTOCSITE-3276 비교하기 > 스펙 항목 라인 안맞음
-        var $li = [];
-        $('#SP00014695 .list').each(function(idx,item){
-            $li[idx] =  $(this).find('li:eq(3) dd')
-            
-            if(idx === 1) {
-                if($li[0].height() !=  $li[1].height() ) {
-                    var height =  Math.max($li[0].height(), $li[1].height())
-                    $li[0].height(height);
-                    $li[1].height(height);
-                }
-            }
-        });
-
-
     }
 
     function bindEvents(){
@@ -84,19 +68,20 @@
         lgkorUI.requestCart(ajaxUrl, param, true);
     }
 
+    // BTOCSITE-3276
     function setDifferentView(){
         var differentIDs = [];
         $('.compare-result-contents .section').each(function(idx, item){
-            var lists = $(item).find('.lists .list');
+            var lists = $(item).find('.compare-result-list tr');
             var leng = lists.length;
             var cleng = lists.eq(0).children().length;
 
             var differents = [];
-            for(var j=0;j<cleng;j++){
+            for(var j=0;j<leng;j++){
                 var diff = 0;
                 var matchValue = "";
-                for(var i=0;i<leng;i++){
-                    var value = lists.eq(i).children().eq(j).find('dl dd').text();                    
+                for(var i=0;i<cleng;i++){
+                    var value = lists.eq(j).children().eq(i).find('dl dd').text();      
                     if(matchValue != value){
                         diff++;
                         matchValue = value;
@@ -110,16 +95,17 @@
         });
 
         leng = differentIDs.length;
+        console.log(leng);
         for(i=0;i<leng;i++){
             var section = $('.compare-result-contents .section').eq(i);
 
             cleng = differentIDs[i].length;
             for(j=0;j<cleng;j++){
                 var idx = differentIDs[i][j]+1;
-                section.find('.lists > .list > li:nth-child(' + idx + ')').hide();
+                section.find('.compare-result-list tr:nth-child(' + idx + ')').hide();
             }
 
-            if(cleng == section.find('.lists > .list:first-child > li').length){
+            if(cleng == section.find('.compare-result-list tr').length){
                 section.hide();
 
                 $('.tabs-scroll-wrap .tabs li').eq(i).addClass("delete");
@@ -144,7 +130,7 @@
         //$('.tabs-scroll-wrap .tabs li').eq(0).addClass('on');
 
         $('.compare-result-contents .section').show();
-        $('.compare-result-contents .section .lists > .list > lI').show();
+        $('.compare-result-contents .section .lists .compare-result-list tr').show();
         $('.compare-result.ui_sticky').vcSticky('update');
     }
 
