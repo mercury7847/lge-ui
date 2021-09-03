@@ -330,6 +330,7 @@
                     line-height:34px;
                     border-radius:21px;
                     border:1px solid #000;
+                    transition:color .3s, border-color .3s;
                     &:before {
                         content:"";
                         display: inline-block;
@@ -339,6 +340,17 @@
                         vertical-align: middle;
                         background: url('/lg5-common/images/LLS/icon_btn_live-32.svg') no-repeat 100% 100%;
                         background-size: 100% 100%;
+                        transition:all .3s;
+                    }
+
+                    &:hover, 
+                    &:focus {
+                        color:#fff;
+                        background: #da0f47;
+                        border-color:#fff;
+                        &:before {
+                            background-image: url('/lg5-common/images/LLS/icon_btn_live-32_wh.svg');
+                        }
                     }
 
                     @include pc {
