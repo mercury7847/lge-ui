@@ -5493,7 +5493,7 @@
                                         doorLocation = "BB";
                                         doorKLocation = "중칸";
                                         doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
-                                    } else if (k == 4) {
+                                    } else if (k == 3) {
                                         doorDirection = "BB";
                                         doorLocation = "BB";
                                         doorKLocation = "하칸";
