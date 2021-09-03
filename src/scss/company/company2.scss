@@ -44,20 +44,20 @@ img.m350 {width:100%; max-width:350px!important}
     .tabs-wrap.act {top:66px}
 }
 /* 차트 */
-.chart_area.bar rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.bar svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
+.chart_area.bar rect {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.bar svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0} /* 제일 하단선 검은색 제거 */
 
-.chart_area.bar2 circle {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.bar2 svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0;}
-#combochart.bar2 svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0;}
+.chart_area.bar2 circle {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.bar2 svg defs + rect + g > rect + g > g:nth-child(2) {opacity:0}
+#combochart.bar2 svg defs + rect + g > rect + g > g:nth-child(4) {opacity:0}
 
 .chart_area.bar_row svg defs + rect + g > rect + g + g + g > g:nth-child(5) {opacity:0}/* 마지막 단위 지우기 */
 
 /* 차트 % 구조시 */
-.chart_area.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0;}/* 상단 지우기 (100%시 짤림) */
-.chart_area.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0;}
-.chart_area.percent rect {stroke-width:0 !important;} /* hover 시 효과 없음 */
-.chart_area.percent svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0;} /* 제일 하단선 검은색 제거 */
+.chart_area.percent svg defs + rect + g > g:nth-last-child(2) g:nth-last-child(1) {opacity:0}/* 상단 지우기 (100%시 짤림) */
+.chart_area.percent svg defs + rect + g > rect + g g rect:nth-last-child(7) {opacity:0}
+.chart_area.percent rect {stroke-width:0 !important} /* hover 시 효과 없음 */
+.chart_area.percent svg defs + rect + g > rect + g > g:nth-child(3) {opacity:0} /* 제일 하단선 검은색 제거 */
 
 /* 차트 범례 */
 .company .c_legend {display:flex; flex-wrap:wrap; justify-content:center}
@@ -372,7 +372,7 @@ img.m350 {width:100%; max-width:350px!important}
 .company ul.welfare > li .desc {margin-top:12px; font-size:16px; line-height:24px}
 
 .company ul.caring {display:flex; margin-top:30px; justify-content:center}
-.company ul.caring > li {max-width:276px; flex:1; display:flex; flex-direction:column; align-items:center}
+.company ul.caring > li {max-width:276px; width:25%; display:flex; flex-direction:column; align-items:center}
 .company ul.caring > li + li {position:relative}
 .company ul.caring > li + li::before {content:''; display:block; position:absolute; width:32px; height:32px; top:64px; left:-16px; background:url(/lg5-common/images/icons/btn-arr-32.svg) no-repeat center / contain}
 .company ul.caring > li .step {width:160px; border:1px dashed #ddd; border-radius:50%}
@@ -1479,14 +1479,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb-col.breakAll table td {word-break:break-all}
 
 .tb_row.thmb .tbl_thumb > ul {display:flex; background-color:#f4f4f4}
-.tb_row.thmb .tbl_thumb > ul > li {flex:1; height:200px}
+.tb_row.thmb .tbl_thumb > ul > li {width:20%; height:200px}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(2) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_01.png) no-repeat 50% 100%; background-size:contain}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(3) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_02.png) no-repeat 50% 100%; background-size:contain}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(4) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_03.png) no-repeat 50% 100%; background-size:contain}
 .tb_row.thmb .tbl_thumb > ul > li:nth-child(5) {background:url(/kr/images/company/sustainable/img-balancedGrowth_product_04.png) no-repeat 50% 100%; background-size:contain}
 .tb_row.thmb table {margin-top:0!important}
 .tb_row.thmb table::before {display:none}
-.tb_row.thmb table thead th {background-color:#da0f47; color:#fff; border:0}
+.tb_row.thmb table thead th {background-color:#da0f47; color:#fff; border:0; word-break:break-all}
 .tb_row.thmb table tbody td {vertical-align:top}
 
 .company table.grdt.grn1 th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
@@ -2078,7 +2078,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company ul.welfare > li .desc {margin-top:5px; font-size:14px; line-height:22px}
 
     .company ul.caring {flex-direction:column; margin-top:15px}
-    .company ul.caring > li {max-width:100%}
+    .company ul.caring > li {width:100%; max-width:100%}
     .company ul.caring > li + li {margin-top:66px}
     .company ul.caring > li + li::before {top:-47px; left:calc(50% - 16px); transform:rotate(90deg)}
     .company ul.caring > li .step {width:160px; margin:0 auto}

@@ -31,7 +31,7 @@
             var self = this;
             	$contents = $('div.com-text');
             self.$announceList = $contents.find('#announceList');
-            self.$pagination = $contents.find('div.pagination').vcPagination();
+            self.$pagination = $contents.find('div.pagination').vcPagination({'scrollTarget':self.$announceList});
             self.$nodata = $contents.find('#no-data');
         },
 
@@ -42,7 +42,6 @@
                 var param = {'page':data}
                 self.requestData(param);
                 history.replaceState(null, '', '?page=' + data);
-                document.preventDefault();
             });
         },
 
