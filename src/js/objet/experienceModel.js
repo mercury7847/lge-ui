@@ -5663,7 +5663,7 @@
                 let typModelLeng = configData.modelConfig[1].typModel.length;
                 //doorPrice = door.defaultPrice; 
                 for (let j = 0; j < typModelLeng; j++) {
-                    if (configData.modelConfig[2].typModel[j].defaultCode == modelCode) {
+                    if (configData.modelConfig[1].typModel[j].defaultCode == modelCode) {
                         let doorMaterialLeng = configData.modelConfig[1].typModel[j].doorColorData.length;
                         let colorSelBodyHtml = '';
                         for (let k = 0; k < doorMaterialLeng; k++) {
