@@ -5439,74 +5439,70 @@
                         }
                     }
 
-                } else if (idx == 1) { //김치냉장고
-                    modelWrap.attr({ "data-model-cate": _name, "data-model_code": code });
-                    let forLeng = configData.modelConfig[idx].refrigeratorType.length;
+                } else if (idx == 1) { //김치냉장고 - BTOCSITE-4239 수정 3도어/4도어 추가
+                    modelWrap.attr({ "data-model-cate": leadName, "data-model_code": code });
+                    let forLeng = configData.modelConfig[idx].typModel.length;
                     for (let i = 0; i < forLeng; i++) {
-                        if (_name == configData.modelConfig[idx].refrigeratorType[i].typ) {
-                            let forLeng2 = configData.modelConfig[idx].refrigeratorType[i].typModel.length;
-                            for (let j = 0; j < forLeng2; j++) {
-                                if (code == configData.modelConfig[idx].refrigeratorType[i].typModel[j].defaultCode) {
-                                    modelPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].defaultPrice;
-                                    defaultImg = configData.modelConfig[idx].refrigeratorType[i].typModel[j].simulImg;
-                                    doorLeng = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.count;
-                                    $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
-                                    if (doorLeng == 3) {
-                                        for (let k = 0; k < doorLeng; k++) {
-                                            let doorDirection;
-                                            let doorLocation;
-                                            if (k == 0) {
-                                                doorDirection = "TT";
-                                                doorLocation = "TT";
-                                                doorKLocation = "상칸";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
-                                            } else if (k == 1) {
-                                                doorDirection = "MM";
-                                                doorLocation = "MM";
-                                                doorKLocation = "중칸";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
-                                            } else if (k == 2) {
-                                                doorDirection = "BB";
-                                                doorLocation = "BB";
-                                                doorKLocation = "하칸";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
-                                            }
-                                            doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
-                                            doorHtml += '   <span class="blind">도어 선택</span>';
-                                            doorHtml += '   <span class="door_img"></span>';
-                                            doorHtml += '</button>';
-                                        }
-                                    } else if (doorLeng == 4) {
-                                        for (let k = 0; k < doorLeng; k++) {
-                                            let doorDirection;
-                                            let doorLocation;
-                                            if (k == 0) {
-                                                doorDirection = "TT";
-                                                doorLocation = "TT";
-                                                doorKLocation = "상칸(좌)";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
-                                            } else if (k == 1) {
-                                                doorDirection = "TT";
-                                                doorLocation = "TT";
-                                                doorKLocation = "상칸(우)";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
-                                            } else if (k == 2) {
-                                                doorDirection = "BB";
-                                                doorLocation = "BB";
-                                                doorKLocation = "중칸";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
-                                            } else if (k == 4) {
-                                                doorDirection = "BB";
-                                                doorLocation = "BB";
-                                                doorKLocation = "하칸";
-                                                doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door4.defaultPrice;
-                                            }
-                                            doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
-                                            doorHtml += '   <span class="blind">도어 선택</span>';
-                                            doorHtml += '   <span class="door_img"></span>';
-                                            doorHtml += '</button>';
-                                        }
+                        if (code == configData.modelConfig[idx].typModel[i].defaultCode) {
+                            defaultImg = configData.modelConfig[idx].typModel[i].simulImg;
+                            modelPrice = configData.modelConfig[idx].typModel[i].defaultPrice;
+                            doorLeng = configData.modelConfig[idx].typModel[i].door.count;
+                            doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
+                            $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
+                            if (doorLeng == 3) {
+                                for (let k = 0; k < doorLeng; k++) {
+                                    let doorDirection;
+                                    let doorLocation;
+                                    if (k == 0) {
+                                        doorDirection = "TT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
+                                    } else if (k == 1) {
+                                        doorDirection = "MM";
+                                        doorLocation = "MM";
+                                        doorKLocation = "중칸";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
+                                    } else if (k == 2) {
+                                        doorDirection = "BB";
+                                        doorLocation = "BB";
+                                        doorKLocation = "하칸";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
                                     }
+                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                    doorHtml += '   <span class="blind">도어 선택</span>';
+                                    doorHtml += '   <span class="door_img"></span>';
+                                    doorHtml += '</button>';
+                                }
+                            } else if (doorLeng == 4) {
+                                for (let k = 0; k < doorLeng; k++) {
+                                    let doorDirection;
+                                    let doorLocation;
+                                    if (k == 0) {
+                                        doorDirection = "TT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸(좌)";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
+                                    } else if (k == 1) {
+                                        doorDirection = "TT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸(우)";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
+                                    } else if (k == 2) {
+                                        doorDirection = "BB";
+                                        doorLocation = "BB";
+                                        doorKLocation = "중칸";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
+                                    } else if (k == 4) {
+                                        doorDirection = "BB";
+                                        doorLocation = "BB";
+                                        doorKLocation = "하칸";
+                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door4.defaultPrice;
+                                    }
+                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                    doorHtml += '   <span class="blind">도어 선택</span>';
+                                    doorHtml += '   <span class="door_img"></span>';
+                                    doorHtml += '</button>';
                                 }
                             }
                         }
