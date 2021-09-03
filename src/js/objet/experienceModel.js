@@ -5479,17 +5479,17 @@
                                     let doorDirection;
                                     let doorLocation;
                                     if (k == 0) {
-                                        doorDirection = "TT";
+                                        doorDirection = "LT";
                                         doorLocation = "TT";
                                         doorKLocation = "상칸(좌)";
                                         doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
                                     } else if (k == 1) {
-                                        doorDirection = "TT";
+                                        doorDirection = "RT";
                                         doorLocation = "TT";
                                         doorKLocation = "상칸(우)";
                                         doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
                                     } else if (k == 2) {
-                                        doorDirection = "BB";
+                                        doorDirection = "MM";
                                         doorLocation = "BB";
                                         doorKLocation = "중칸";
                                         doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;

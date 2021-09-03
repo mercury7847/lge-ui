@@ -531,19 +531,19 @@ h2.title {
                 &[data-model_code="Z491AAA151"] {
                     //김치냉장고
                     .model_door {
-                        &[data-door-direction="TT"] {
+                        &[data-door-direction="LT"] {
                             width: 49.1%;
                             height: 53.8%;
                             left: .5%;
                             top: .3%;
                         }
-                        &[data-door-direction="TT"] {
+                        &[data-door-direction="RT"] {
                             width: 49.1%;
                             height: 53.8%;
                             right: .5%;
                             top: .3%;
                         }
-                        &[data-door-direction="BB"] {
+                        &[data-door-direction="MM"] {
                             width: 96.9%;
                             height: 16.4%;
                             left: 1.7%;
