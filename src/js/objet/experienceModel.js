@@ -5457,17 +5457,17 @@
                                         doorDirection = "TT";
                                         doorLocation = "TT";
                                         doorKLocation = "상칸";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
                                     } else if (k == 1) {
                                         doorDirection = "MM";
                                         doorLocation = "MM";
                                         doorKLocation = "중칸";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
                                     } else if (k == 2) {
                                         doorDirection = "BB";
                                         doorLocation = "BB";
                                         doorKLocation = "하칸";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
                                     }
                                     doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                     doorHtml += '   <span class="blind">도어 선택</span>';
@@ -5482,22 +5482,22 @@
                                         doorDirection = "TT";
                                         doorLocation = "TT";
                                         doorKLocation = "상칸(좌)";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door1.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
                                     } else if (k == 1) {
                                         doorDirection = "TT";
                                         doorLocation = "TT";
                                         doorKLocation = "상칸(우)";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door2.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
                                     } else if (k == 2) {
                                         doorDirection = "BB";
                                         doorLocation = "BB";
                                         doorKLocation = "중칸";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door3.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
                                     } else if (k == 4) {
                                         doorDirection = "BB";
                                         doorLocation = "BB";
                                         doorKLocation = "하칸";
-                                        doorPrice = configData.modelConfig[idx].refrigeratorType[i].typModel[j].door.door4.defaultPrice;
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door4.defaultPrice;
                                     }
                                     doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                     doorHtml += '   <span class="blind">도어 선택</span>';
@@ -5660,69 +5660,74 @@
                     }
                 }
             } else if (modelCate == "refrigerator_kimchi") {
-                let doorMaterialLeng = configData.modelConfig[1].doorColorData.length;
-                let _door;
-                let _doorFrontCode;
-                let _doorLocation;
-                let doorPrice;
-                if (idx == 0) {
-                    _door = configData.modelConfig[1].door.door1;
-                } else if (idx == 1) {
-                    _door = configData.modelConfig[1].door.door2;
-                } else if (idx == 2) {
-                    _door = configData.modelConfig[1].door.door3;
-                } else if (idx == 3) {
-                    _door = configData.modelConfig[1].door.door4;
-                }
-                doorPrice = _door.defaultPrice;
-                _doorLocation = _door.name;
-                _doorFrontCode = _door.code;
-                let colorSelBodyHtml = '';
-                for (let k = 0; k < doorMaterialLeng; k++) {
-                    let doorColorLeng = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor.length;
-                    let doorMaterialName = configData.modelConfig[1].doorColorData[k].doorMaterial.name;
-                    let doorMaterialEnName = configData.modelConfig[1].doorColorData[k].doorMaterial.enName;
-                    let doorMaterialCode = configData.modelConfig[1].doorColorData[k].doorMaterial.code;
-                    let doorMaterialDesc = configData.modelConfig[1].doorColorData[k].doorMaterial.desc;
-                    let doorMaterialDescImg = configData.modelConfig[1].doorColorData[k].doorMaterial.descImg;
-                    modalTitle.push(doorMaterialName);
-                    modalTitle2.push(doorMaterialEnName);
-                    modalTxt.push(doorMaterialDesc);
-                    modalImg.push(doorMaterialDescImg);
-                    colorSelBodyHtml += '<div class="swiper-slide">';
-                    colorSelBodyHtml += '   <dl>';
-                    colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
-                    colorSelBodyHtml += '       <dd>';
-                    colorSelBodyHtml += '           <ul>';
-                    for (let l = 0; l < doorColorLeng; l++) {
-                        let doorColorName = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].name;
-                        let doorColorCode = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].code;
-                        let doorColorMixingCode = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].mixingCode;
-                        let colorImgUrl = '/lg5-common/images/OBJ/experience/color/';
-                        let colorImgName = 'color_' + doorMaterialCode + '_' + doorColorCode + '.png';
-                        let colorHtml = '<li>';
-                        colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
-                        colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
-                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
-                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                        colorHtml += '  </button>';
-                        colorHtml += '</li>';
-                        colorSelBodyHtml += colorHtml;
-                    }
-                    colorSelBodyHtml += '           <ul>';
-                    colorSelBodyHtml += '       </dd>';
-                    colorSelBodyHtml += '   </dl>';
-                    colorSelBodyHtml += '</div>';
-                }
-                $(".color_sel_wrap").addClass("is_active");
-                $(".simul_step2 .etc_area").addClass("is_active");
-                $(".color_sel_wrap .color_sel_body .swiper-wrapper").html(colorSelBodyHtml);
-                $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
-                setTimeout(function() {
-                    slideWrapAutoSize(".color_sel_wrap .color_sel_body");
-                }, 10);
+                let typModelLeng = configData.modelConfig[1].typModel.length;
+                //doorPrice = door.defaultPrice; 
+                for (let j = 0; j < typModelLeng; j++) {
+                    if (configData.modelConfig[2].typModel[j].defaultCode == modelCode) {
+                        let doorMaterialLeng = configData.modelConfig[1].typModel[j].doorColorData.length;
+                        let colorSelBodyHtml = '';
+                        for (let k = 0; k < doorMaterialLeng; k++) {
+                            let doorColorLeng = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor.length;
+                            let doorMaterialName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.name;
+                            let doorMaterialEnName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.enName;
+                            let doorMaterialCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.code;
+                            let doorMaterialDesc = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.desc;
+                            let doorMaterialDescImg = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.descImg;
+                            let _door;
+                            let _doorFrontCode;
+                            let _doorLocation;
+                            let doorPrice;
+                            if (idx == 0) {
+                                _door = configData.modelConfig[1].typModel[j].door.door1;
+                            } else if (idx == 1) {
+                                _door = configData.modelConfig[1].typModel[j].door.door2;
+                            } else if (idx == 2) {
+                                _door = configData.modelConfig[1].typModel[j].door.door3;
+                            } else if (idx == 3) {
+                                _door = configData.modelConfig[1].typModel[j].door.door4;
+                            }
+                            doorPrice = _door.defaultPrice;
+                            _doorLocation = _door.name;
+                            _doorFrontCode = _door.code;
+                            modalTitle.push(doorMaterialName);
+                            modalTitle2.push(doorMaterialEnName);
+                            modalTxt.push(doorMaterialDesc);
+                            modalImg.push(doorMaterialDescImg);
+                            colorSelBodyHtml += '<div class="swiper-slide">';
+                            colorSelBodyHtml += '   <dl>';
+                            colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
+                            colorSelBodyHtml += '       <dd>';
+                            colorSelBodyHtml += '           <ul>';
+                            for (let l = 0; l < doorColorLeng; l++) {
+                                let doorColorName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].name;
+                                let doorColorCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].code;
+                                let doorColorMixingCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].mixingCode;
+                                let colorImgUrl = '/lg5-common/images/OBJ/experience/color/';
+                                let colorImgName = 'color_' + doorMaterialCode + '_' + doorColorCode + '.png';
+                                let colorHtml = '<li>';
+                                colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
+                                colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
+                                // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
+                                colorHtml += '  </button>';
+                                colorHtml += '</li>';
+                                colorSelBodyHtml += colorHtml;
+                            }
+                            colorSelBodyHtml += '           <ul>';
+                            colorSelBodyHtml += '       </dd>';
+                            colorSelBodyHtml += '   </dl>';
+                            colorSelBodyHtml += '</div>';
+                        }
+                        $(".color_sel_wrap").addClass("is_active");
+                        $(".simul_step2 .etc_area").addClass("is_active");
+                        $(".color_sel_wrap .color_sel_body .swiper-wrapper").html(colorSelBodyHtml);
+                        setTimeout(function() {
+                            slideWrapAutoSize(".color_sel_wrap .color_sel_body");
+                        }, 10);
 
+                    }
+                }
             } else if (modelCate == "refrigerator_convertible") {
                 let typModelLeng = configData.modelConfig[2].typModel.length;
                 //doorPrice = door.defaultPrice;

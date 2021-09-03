@@ -526,6 +526,39 @@ h2.title {
                         }
                     }
                 }
+
+                // 210903 BTOCSITE-4239 4도어 추가 - Start
+                &[data-model_code="Z491AAA151"] {
+                    //김치냉장고
+                    .model_door {
+                        &[data-door-direction="TT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            left: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="TT"] {
+                            width: 49.1%;
+                            height: 53.8%;
+                            right: .5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="BB"] {
+                            width: 96.9%;
+                            height: 16.4%;
+                            left: 1.7%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="BB"] {
+                            width: 96.9%;
+                            height: 22.5%;
+                            left: 1.7%;
+                            top: 75.5%;
+                        }
+                    }
+                }
+                // 210903 BTOCSITE-4239 4도어 추가 - End
+
                 &[data-model_code="X320AA"],
                 &[data-model_code="Y320AA"],
                 &[data-model_code="Z320AA"] {
