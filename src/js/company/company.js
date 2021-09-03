@@ -105,22 +105,15 @@ $(document).ready(function() {
 });
 
 // 첫번째 아코디언 열기
-
 function fcOpenAccordion(){
-	if($(".tabs-contents .accordion-wrap").length > 0){
-		setTimeout(function(){
-			$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
-			$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
-		}, 200);
-	}else{
-		setTimeout(function(){
-			$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
-			$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
-		}, 200);
-	}	
+	//if($(".tabs-contents .accordion-wrap").length > 0){
+	setTimeout(function () {
+		$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
+		$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
+		$("#tab4").find(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
+		$("#tab4").find(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display', 'block');
+	}, 200);
 }
-
-
 
 // 탭 슬라이드 위치 이동
 function fcTabScrollLeft(tab){
