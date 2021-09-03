@@ -1853,63 +1853,64 @@ h2.title {
         }
     }
 
-    // &[data-cate="refrigerator_kimchi"]
-    &[data-model_code="Z491AAA151"]{
+    &[data-cate="refrigerator_kimchi"] {
         //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 추천조합 4도어, 3도어 분리
+        &[data-model-default-code="Z491AAA151"] {
+            .mini_model_wrap {
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
+                background-size: 100% 100%;
+                .mini_model {
+                     &:nth-child(1) {
+                    left: 35%;
+                    top: 9.5%;
+                    width: 14.5%;
+                    height: 43.7%;
+                }
+                &:nth-child(2) {
+                    right: 35%;
+                    top: 9.5%;
+                    width: 14.5%;
+                    height: 43.7%;
+                }
+                &:nth-child(3) {
+                    left: 35%;
+                    top: 54.1%;
+                    width: 31%;
+                    height: 18%;
+                }
+                &:nth-child(4) {
+                    left: 35%;
+                    top: 72.1%;
+                    width: 31%;
+                    height: 18%;
+                }
+                }
+            }
+        }
+
+        &[data-model-default-code="Z330AAA151"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
                 background-size: 100% 100%;
                 .mini_model {
                     &:nth-child(1) {
-                        left: 35%;
+                        left: 36%;
                         top: 9.5%;
-                        width: 14.5%;
+                        width: 28.3%;
                         height: 43.7%;
                     }
                     &:nth-child(2) {
-                        right: 35%;
-                        top: 9.5%;
-                        width: 14.5%;
-                        height: 43.7%;
+                        left: 36%;
+                        top: 55.5%;
+                        width: 28.3%;
+                        height: 14.3%;
                     }
                     &:nth-child(3) {
-                        left: 35%;
-                        top: 54.1%;
-                        width: 31%;
-                        height: 18%;
-                    }
-                    &:nth-child(4) {
-                        left: 35%;
+                        left: 36%;
                         top: 72.1%;
-                        width: 31%;
+                        width: 28.3%;
                         height: 18%;
                     }
-                }
-            }
-    }
-
-    &[data-model_code="Z330AAA151"] {
-        .mini_model_wrap {
-            background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
-            background-size: 100% 100%;
-            .mini_model {
-                &:nth-child(1) {
-                    left: 36%;
-                    top: 9.5%;
-                    width: 28.3%;
-                    height: 43.7%;
-                }
-                &:nth-child(2) {
-                    left: 36%;
-                    top: 55.5%;
-                    width: 28.3%;
-                    height: 14.3%;
-                }
-                &:nth-child(3) {
-                    left: 36%;
-                    top: 72.1%;
-                    width: 28.3%;
-                    height: 18%;
                 }
             }
         }
