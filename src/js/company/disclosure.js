@@ -45,7 +45,6 @@
                 			,'pblntf_ty':$('#select1').val()}
                 
                 self.requestData(param);
-                document.preventDefault();
             });
         },
 
