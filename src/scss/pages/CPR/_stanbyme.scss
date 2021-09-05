@@ -626,7 +626,6 @@
 			padding: 16px 12px;
 		}
 		.comment-btn-box{
-			display: none;
 			position: absolute;
 			right:24px;
 			top:24px;
@@ -655,11 +654,6 @@
 				.btn-text{
 					text-decoration: none;
 				}
-			}
-		}
-		&.my-commment{
-			.comment-btn-box{
-				display: inline-block;
 			}
 		}
 		.info-name{

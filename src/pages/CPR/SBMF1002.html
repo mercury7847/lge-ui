@@ -51,7 +51,7 @@
                             <a href="#" class="btn border size"><span>수정</span></a>
                         </div>
                         <!-- .comment-wrap s  -->
-                        <div class="comment-wrap">
+                        <div class="comment-wrap" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeDListAjax.json">
                             <div class="comment-head">
                                <div class="total">댓글 <em class="count">37</em></div>
                             </div>
@@ -105,8 +105,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <!-- 댓글작성자 일 경우에만 .my-commment class 추가 (수정/삭제 버튼이 노출됨) -->
-                                        <div class="comment-content my-commment">
+                                        <div class="comment-content">
                                             <div  class="info-name">
                                                 <span class="blind">작성자</span>정*희
                                             </div>
@@ -132,7 +131,7 @@
                                                 <span class="blind">작성자</span>정*희
                                             </div>
                                             <form>
-                                                <div class="comment-write">
+                                                <div class="comment-write" data-ajax="/lg5-common/data-ajax/store/insertStanbyMe.lgajax.json">
                                                     <div class="form-wrap">
                                                         <div class="forms">
                                                             <div class="conts">
@@ -143,7 +142,7 @@
                                                                             <span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>
                                                                             <div class="comment-write-btn-box">
                                                                                 <button type="reset" class="btn gray size btn-cancel">취소</button>
-                                                                                <button type="submit" class="btn dark-gray size btn-confirm">수정</button>
+                                                                                <button type="button" class="btn dark-gray size btn-confirm">수정</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -160,11 +159,11 @@
                                     </li>
                                 </ul>
                             </div>
-                            @@include('./common/support/pagination.html', {
-                                count: 5
-                            })
+                            <div class="pagination" data-page="1" data-visible-count="5" data-total-count="4"></div>
+
+
                             <form action="" method="post">
-                                <div class="comment-write">
+                                <div class="comment-write" data-ajax="/lg5-common/data-ajax/store/insertStanbyMe.lgajax.json">
                                     <div class="form-wrap">
                                         <div class="forms">
                                             <div class="conts">
@@ -175,7 +174,7 @@
                                                             <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
                                                             <div class="comment-write-btn-box">
                                                                 <button type="reset" class="btn gray size btn-cancel">취소</button>
-                                                                <button type="submit" class="btn dark-gray size btn-confirm">등록</button>
+                                                                <button type="button" class="btn dark-gray size btn-confirm">등록</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -223,48 +222,6 @@
         </div>
     </article>
 
-    <script>
-        $(function() {
-            $('.btn-comment-del').on('click', function(e){
-                var id = $(e.currentTarget).data('id');
-                var obj ={title:'', typeClass:'', ok : function (){ }};
-                var desc = '';
-        
-                if(id=="#commentDeleteConfirm"){
-                    obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    desc = '';
-                }
-                lgkorUI.confirm(desc, obj);
-            });
-
-            // 댓글 작성중일 경우 valid 클래스 추가
-            var inp = $('.input-wrap textarea');
-            var btnCancel = $('.btn-cancel');
-            inp.each(function(){
-                var me = $(this);
-                var inpValLen = me.val().length;
-
-                valid();
-                
-                me.on('change keyup paste', function(){
-                    inpValLen = me.val().length;
-                    valid();
-                });
-
-                function valid(){
-                    if(inpValLen > 0) {
-                        me.addClass('valid');
-                    } else{
-                        me.removeClass('valid');
-                    }     
-                }     
-                btnCancel.on('click', function(){
-                    var meInp = $(this).parents('.input-wrap');
-                    meInp.find('textarea').removeClass('valid');
-                    meInp.find('.inner-text em').text('0');
-                });
-            });
-        });
-    </script>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>

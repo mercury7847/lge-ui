@@ -124,42 +124,6 @@
         </div>
     </article>
 
-    <script>
-        $(function() {
-            $('.btn-comment-del').on('click', function(e){
-                var id = $(e.currentTarget).data('id');
-                var obj ={title:'', typeClass:'', ok : function (){ }};
-                var desc = '';
-        
-                if(id=="#commentDeleteConfirm"){
-                    obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    desc = '';
-                }
-                lgkorUI.confirm(desc, obj);
-            });
-
-            // 댓글 작성중일 경우 valid 클래스 추가
-            var inp = $('.input-wrap textarea');
-            inp.each(function(){
-                var me = $(this);
-                var inpValLen = me.val().length;
-
-                valid();
-                
-                me.on('change keyup paste', function(){
-                    inpValLen = me.val().length;
-                    valid();
-                });
-
-                function valid(){
-                    if(inpValLen > 0) {
-                        me.addClass('valid');
-                    } else{
-                        me.removeClass('valid');
-                    }     
-                }     
-            });
-        });
-    </script>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>
