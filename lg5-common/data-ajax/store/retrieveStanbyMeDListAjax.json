@@ -1,0 +1,55 @@
+{
+    "clubMId": "",
+    "data": [{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트12",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "N",
+        "mine": "N"
+    },{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트12",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "Y",
+        "mine": "N"
+    },{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트13333",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "N",
+        "mine": "Y"
+    },{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트12",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "N",
+        "mine": "N"
+    },{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트12",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "N",
+        "mine": "N"
+    },{
+        "creationUserName": "아*준",
+        "contents": "컨텐츠 테스트12",
+        "creationDate": "2021.09.02",
+        "creationTime": "18:34",
+        "admin": "N",
+        "mine": "N"
+    }],
+    "pagination": {
+        "page": 1,
+        "visibleCount": 5,
+        "totalCount": 3
+    },
+    "page": 1,
+    "message": "",
+    "dataCount": 10,
+    "status": "success"
+}

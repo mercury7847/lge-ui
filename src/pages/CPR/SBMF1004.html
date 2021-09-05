@@ -162,24 +162,9 @@
         </div>
     </article>
 
-    <script>
-        $(function() {
-            $('.btn-modify').on('click', function(e){
-                var id = $(e.currentTarget).data('id');
-                var obj ={title:'', typeClass:'', ok : function (){ }};
-                var desc = '';
-        
-                if(id=="#modifyConfirm"){
-                    obj = $.extend(obj,{title: '게시물을 수정하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    desc = '';
-                }
-                lgkorUI.confirm(desc, obj);
-            });
-        });
-    </script>
-
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/customVoice/suggestions.min.js"></script>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,133 @@
+{
+    "orderType": "NEW",
+    "data": [{
+        "clubMId": 12111,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 11,
+        "creationUserName": "아*준",
+        "hitCnt": 10,
+        "contents": "컨텐츠 테스트11",
+        "newFlag": "N",
+        "title": "제목 테스트11",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 12,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 11,
+        "creationUserName": "아*준",
+        "hitCnt": 10,
+        "contents": "컨텐츠 테스트11",
+        "newFlag": "Y",
+        "title": "제목 테스트11",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 12,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 11,
+        "creationUserName": "아*준",
+        "hitCnt": 10,
+        "contents": "컨텐츠 테스트11",
+        "newFlag": "Y",
+        "title": "제목 테스트11",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 12,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 11,
+        "creationUserName": "아*준",
+        "hitCnt": 10,
+        "contents": "컨텐츠 테스트11",
+        "newFlag": "Y",
+        "title": "제목 테스트11",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 12,
+        "editableFlag": "N"
+    }, {
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    },{
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "Y",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N"
+    }],
+    "pagination": {
+        "page": 1,
+        "visibleCount": 5,
+        "totalCount": 3
+    },
+    "page": 1,
+    "message": "",
+    "dataCount": 21,
+    "status": "success"
+}

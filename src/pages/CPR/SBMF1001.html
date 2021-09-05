@@ -2,8 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "CPR/CPR",
-            "support/notice"
+            "CPR/CPR"
         ],
         pageTitle: "스탠바이미 클럽 | LG전자",
         pageDesc: "LG전자 스탠바이미에 대한 문의사항, 리뷰를 등록할 수 있는 스탠바이미 클럽 입니다."
@@ -35,7 +34,7 @@
                             </ul>
                         </div>
                         <!-- 문의사항 -->
-                        <div id="prod1" class="tab-content">
+                        <div id="prod1" class="tab-content" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeListAjax.json">
                             <div class="tit-sbm">
                                 <p class="tit">스탠바이미 클럽</p>
                                 <div class="sbm-qna">
@@ -49,8 +48,8 @@
                                     <div class="sort-box">
                                         <div class="sort-select-wrap">
                                             <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
-                                                <option value="최신순">최신순</option>
-                                                <option value="조회순">조회순</option>
+                                                <option value="NEW">최신순</option>
+                                                <option value="HITS">조회순</option>
                                                 <option value="댓글순">댓글순</option>
                                             </select>
                                         </div>
@@ -139,10 +138,9 @@
                                         </tbody>
                                     </table>
                                 </div>
-        
-                                @@include('./common/support/pagination.html', {
-                                    count: 5
-                                })
+
+                                <div class="pagination" data-page="1" data-visible-count="5" data-total-count="4"></div>
+
                             </div>
                         </div>
                         <!-- //문의사항 -->
@@ -161,5 +159,6 @@
         
         @@include('./common/footer.html')
     </div>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>
