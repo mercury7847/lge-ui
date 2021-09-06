@@ -1738,3 +1738,16 @@ html.modal-open {
     }
 }
 /* //BTOCSITE-2150 add */
+
+/* BTOCSITE-4492 */
+.direction-column-reverse{
+    @include mobile{
+        .inner{
+            flex-direction:column-reverse;
+            .text-wrap{
+                margin:0 0 28px 0;
+            }
+        }
+    }
+}
+/* //BTOCSITE-4492 */
