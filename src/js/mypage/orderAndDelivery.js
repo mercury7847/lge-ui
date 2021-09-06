@@ -2288,13 +2288,19 @@
                 infoTypeName = "취소";
                 
                 addPopProdductList(popup, productList, true);
-
+                var $firstTab = $('.new-type .tabs').find("li").eq(0); //BTOCSITE-4124 수정 210906
                 var isAllChecked = false;
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
-                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
-                else if(result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") isAllChecked = true; //추가 210824 BTOCSITE-4124
-                else isAllChecked = false; // 210824 추가 BTOCSITE-4124
-                
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") {
+                    isAllChecked = true;
+                }else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") {
+                    isAllChecked = true;
+                }else if($firstTab.hasClass == true && result.data.payment.paymentType != undefined && result.data.payment.paymentType != null && result.data.payment.paymentType != "null") { //210906 BTOCSITE-4124 수정
+                    if(result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") {
+                        isAllChecked = true; //추가 210824 BTOCSITE-4124
+                    }
+                }else {
+                    isAllChecked = false; // 210824 추가 BTOCSITE-4124
+                }
                 // isAllChecked = false //210824 수정 BTOCSITE-4124 
                 
                 //210824 수정 BTOCSITE-4124 - Start
@@ -2334,13 +2340,19 @@
                 var isAllCancelDisable = true;  // 모두 취소 불가능
                 //210824 BTOCSITE-4124 - S
                 var isCashCheck = "";
+                
                 productList.forEach(function( data ){
-                    if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
+                    //BTOCSITE-4124 수정 210906
+                    if($firstTab.hasClass("on") == true){
+                        if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
                         isAllCancelDisable = true;
                         isCashCheck = "현금결제"; 
-                    } else { 
-                        isAllCancelDisable = false;
+                        } else { 
+                            isAllCancelDisable = false;
+                        }
                     }
+                    //BTOCSITE-4124 수정 210906
+                    
                 });
 // BTOCSITE 4124 210906 수정
 //                 if (isAllCancelDisable == true){
