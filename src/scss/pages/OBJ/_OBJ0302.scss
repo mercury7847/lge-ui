@@ -532,27 +532,27 @@ h2.title {
                     //김치냉장고
                     .model_door {
                         &[data-door-direction="LT"] {
-                            width: 46.1%;
+                            width: 48.1%;
                             height: 53.8%;
-                            left: 3.5%;
+                            left: 0.5%;
                             top: .3%;
                         }
                         &[data-door-direction="RT"] {
-                            width: 46.1%;
+                            width: 49.1%;
                             height: 53.8%;
-                            right: 3.5%;
+                            right: 0.5%;
                             top: .3%;
                         }
                         &[data-door-direction="MM"] {
-                            width: 92.9%;
+                            width: 98.9%;
                             height: 20.4%;
-                            left: 3.7%;
+                            left: 0.7%;
                             top: 56.5%;
                         }
                         &[data-door-direction="BB"] {
-                            width: 92.9%;
+                            width: 98.9%;
                             height: 20.5%;
-                            left: 3.7%;
+                            left: 0.7%;
                             top: 78.5%;
                         }
                     }
