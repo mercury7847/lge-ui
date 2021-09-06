@@ -59,10 +59,7 @@ var lls = {
                 var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appMKTpushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
 
-                var objPushCheck = new Object();
-                objPushCheck.command = "getPushStatus";
-                objPushCheck.callback = "appPushCheck";
-                var pushString= JSON.stringify(objPushCheck);
+                var pushString= JSON.stringify({"command": "getPushStatus", "callback": "appPushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(pushString);
             } else {
                 self.mktValue = android.getAdPushActive()
