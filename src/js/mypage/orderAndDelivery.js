@@ -2335,20 +2335,21 @@
                 //210824 BTOCSITE-4124 - S
                 var isCashCheck = "";
                 productList.forEach(function( data ){
-                    if (data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType != "41" && result.data.payment.paymentType != "42" && result.data.payment.paymentType != "0")){
-                        isAllCancelDisable = false;
-                    }else if(result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0"){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
+                    if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
                         isAllCancelDisable = true;
-                        isCashCheck = "현금결제";
+                        isCashCheck = "현금결제"; 
+                    } else { 
+                        isAllCancelDisable = false;
                     }
                 });
-
-                if (isAllCancelDisable == true && isCashCheck != "현금결제"){
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
-                    $('#popup-cancel').find('#cancel_desc').hide();
-                    $('#popup-cancel').find('.pop-footer').hide();
-                    $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == false && isAllChecked == true && isAllCancelDisable == true && isCashCheck == "현금결제"){ 
+// BTOCSITE 4124 210906 수정
+//                 if (isAllCancelDisable == true){
+//                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
+//                     $('#popup-cancel').find('#cancel_desc').hide();
+//                     $('#popup-cancel').find('.pop-footer').hide();
+//                     $('#popup-cancel').find('.not-cancel-footer').show();
+//                 } else 
+                if(dataChk == false && isAllChecked == true && isAllCancelDisable == true && isCashCheck == "현금결제"){ 
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('.cancel-select input[type=checkbox]').prop('disabled',true);
                     $('#popup-cancel').find('#cancelPopAgree').prop('disabled',true);
@@ -2366,6 +2367,7 @@
                 } else {
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
+                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
