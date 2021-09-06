@@ -426,7 +426,6 @@ if ('scrollRestoration' in history) {
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
 
-
                 //필터
                 self.$layFilter = self.$contWrap.find('div.lay-filter');
                 //모바일 필터열기버튼
@@ -875,7 +874,6 @@ if ('scrollRestoration' in history) {
                         noData = false;
                     }
                     */
-
 
                     //필터세팅
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로

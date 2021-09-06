@@ -169,6 +169,12 @@ var Curation = (function() {
                     $('.lay-filter.smart-type').find('div.btn-reset button').show();
                 }
 
+
+                // BTOCSITE-1716
+                if($('.lay-filter').hasClass('smart-type')) {
+                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
+                }
+
                 self.triggerSmartFilterChangeEvent();
             });
 
