@@ -51,7 +51,7 @@
                         '<div class="conts">' +
                             '<div class="text-form">' +
                                 '<div class="input-wrap">' +
-                                    '<textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
+                                    '<textarea title="댓글내용" name="comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
                                     '<div class="txt-count-box">' +
                                         '<span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>' +
                                         '<div class="comment-write-btn-box">' +
@@ -267,6 +267,8 @@
                         meInp.find('.inner-text em').text('0');
                     });
                 });
+
+                commentModify();
             }
         };
 
@@ -290,17 +292,23 @@
         });
 
         //댓글 수정 버튼 클릭시
-        $('.btn-comment-modify').on('click', function(e){
-            var $self = $(this),
-                $parent = $self.closest('.comment-content'),
-                $writeContWrap = $parent.find('.comment-text-wrap'),
-                $infoName = $('.info-name'),
-                $writeCont = $writeContWrap.find('.comment-text p').text(),
-                $replaceTextarea = $('#txa_comment');
+        var commentModify = function(){
+            $('.btn-comment-modify').on('click', function(e){
+                var $self = $(this),
+                    $parent = $self.closest('.comment-content'),
+                    $commentTextWrap = $parent.find('.comment-text-wrap'),
+                    $infoData = $parent.find('.info-date'),
+                    $commentBtnBox = $parent.find('.comment-btn-box'),
+                    $writeCont = $commentTextWrap.find('.comment-text p').text(),
+                    $replaceTextarea = $parent.find('textarea');
 
-                $parent.not($infoName).empty();
-                 $parent.append(commentModifyForm);
-                $replaceTextarea.val($writeCont);
-        });
+                $commentTextWrap.empty();
+                $infoData.empty();
+                $commentBtnBox.empty();
+                $parent.append(commentModifyForm);
+                $replaceTextarea.text($writeCont);
+            });
+        };
+        commentModify();
     });
 })();
