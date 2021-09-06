@@ -925,6 +925,29 @@
                         },
                         doorColorData: [{
                             doorMaterial: {
+                                name: "페닉스",
+                                enName: "FENIX",
+                                code: "F",
+                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                doorColor: [{
+                                    name: "보타닉",
+                                    code: "BT",
+                                    mixingCode: "FBT"
+
+                                }, {
+                                    name: "샌드",
+                                    code: "SD",
+                                    mixingCode: "FSD"
+                                }, {
+                                    name: "스톤",
+                                    code: "ST",
+                                    mixingCode: "FST"
+                                }]
+                            }
+
+                        },{
+                            doorMaterial: {
                                 name: "솔리드",
                                 enName: "Solid Metal",
                                 code: "S",
@@ -1039,6 +1062,29 @@
                                 }
                             },
                             doorColorData: [{
+                                doorMaterial: {
+                                    name: "페닉스",
+                                    enName: "FENIX",
+                                    code: "F",
+                                    desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                    doorColor: [{
+                                        name: "보타닉",
+                                        code: "BT",
+                                        mixingCode: "FBT"
+    
+                                    }, {
+                                        name: "샌드",
+                                        code: "SD",
+                                        mixingCode: "FSD"
+                                    }, {
+                                        name: "스톤",
+                                        code: "ST",
+                                        mixingCode: "FST"
+                                    }]
+                                }
+    
+                            },{
                                 doorMaterial: {
                                     name: "솔리드",
                                     enName: "Solid Metal",
@@ -5167,8 +5213,10 @@
         });
         let slideWrapW = (slideW * slideLeng);
         //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
-        let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');
-        if(subPickChkBasic.hasClass("is_selected") == true){
+        let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
+        let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]');
+        //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+        if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true){
             $(slideTarget).find(".swiper-wrapper").css("width", "580px");
         }else{
             $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
