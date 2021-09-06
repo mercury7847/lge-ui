@@ -990,7 +990,7 @@ if ('scrollRestoration' in history) {
                         self.$pagination.hide();
                         self.$recommendListBox.hide();
 
-                        // BTOCSITE-1716
+                        // BTOCSITE-1716 
                         // self.$contWrap.removeClass('w-filter');
                         // self.$layFilter.hide();
                         self.$btnFilter.hide();
@@ -1013,7 +1013,7 @@ if ('scrollRestoration' in history) {
                             self.$layFilter.hide();
                         }
 
-                        // BTOCSITE-1716
+                        // BTOCSITE-1716 
                         if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
                             self.$btnFilter.hide();
                         } else {
