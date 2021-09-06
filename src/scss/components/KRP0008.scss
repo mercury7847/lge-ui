@@ -704,6 +704,73 @@
                 }
             }
             /* //20210527 할인카드 flag*/
+
+            /* BTOCSITE-5234 추석 연휴 기간 안내팝업 */
+            .ex-info{
+                margin-top:24px;
+                padding-top:18px;
+                border-radius:8px;
+                font-size:$font-small;
+                line-height:24px;
+                .txt-point{
+                    display:block;
+                    margin-bottom:18px;
+                    padding-bottom:18px;
+                    border-bottom:1px solid #ddd;
+                    color:$color-primary;
+                }
+                .txt-exp{
+                    font-weight:$font-weight-bold;
+                }
+                .txt-list{
+                    margin-top:8px;
+                    >li{
+                        padding-left: 9px;
+                        font-size:$font-small;
+                        word-break: keep-all;
+                        &:before{
+                            content:'·';
+                            display: inline-block;
+                            margin-left: -9px;
+                            margin-right: 2px;
+                        }
+                        ul{
+                            >li{
+                                font-size:$font-small;
+                                font-weight:$font-weight-bold;
+                                word-break: keep-all;
+                                &:before{
+                                    content:'-';
+                                    display: inline-block;
+                                    margin-right: 2px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                .desc {
+                    padding-left: 12px;
+                    margin-top: 12px;
+                    font-size:$font-small;
+                    word-break: keep-all;
+                    &:before{
+                        content: '※';
+                        display: inline-block;
+                        margin-left: -14px;
+                        margin-right: 2px;
+                    }
+                }
+                @include mobile{
+                    padding:16px;
+                    font-size:13px;
+                    .txt-point{
+                        margin-bottom:16px;
+                        padding-bottom:16px;
+                    }
+                }
+            }
+            /* //BTOCSITE-5234 추석 연휴 기간 안내팝업 */
         }
 
         .product-detail-option {
