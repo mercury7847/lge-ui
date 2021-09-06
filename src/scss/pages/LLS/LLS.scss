@@ -753,7 +753,9 @@
 .app {
     .lls-main {
         .lls-push {
-            display: block;
+            &.active {
+                display: block;
+            }
         }
     }
 }
