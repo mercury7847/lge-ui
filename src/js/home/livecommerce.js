@@ -70,12 +70,14 @@ var lls = {
                 // alert("self.mktValue::" + self.mktValue + " self.pushValue::" + self.pushValue)
             }
 
-            if( self.pushValue == "Y" && self.mktValue == "Y") {
-                self.$pushBtn.addClass('active').find('span').text('알림받는중');
-            } else {
-                self.$pushBtn.removeClass('active').find('span').text('알림받기');
-            }
-            self.$llsMain.find('.lls-push').addClass('active');
+            setTimeout(function(){
+                if( self.pushValue == "Y" && self.mktValue == "Y") {
+                    self.$pushBtn.addClass('active').find('span').text('알림받는중');
+                } else {
+                    self.$pushBtn.removeClass('active').find('span').text('알림받기');
+                }
+                self.$llsMain.find('.lls-push').addClass('active');
+            }, 50)
         }
     },
     bindEvent: function(){
