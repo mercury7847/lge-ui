@@ -33,7 +33,7 @@
             var self = this;
             	$contents = $('.com-text');
             self.$disclosureList = $contents.find('#disclosureList');
-            self.$pagination = $contents.find('.pagination').vcPagination();
+            self.$pagination = $contents.find('.pagination').vcPagination({'scrollTarget':self.$disclosureList});
             self.$nodata = $contents.find('#no-data');
         },
 
@@ -45,7 +45,6 @@
                 			,'pblntf_ty':$('#select1').val()}
                 
                 self.requestData(param);
-                document.preventDefault();
             });
         },
 
