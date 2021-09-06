@@ -202,8 +202,8 @@
                 validation = new vcui.ui.CsValidation('.step-area', {register:register});
                 naverMap = new vcui.helper.NaverMapApi({
                     mapService: 'naver',
-                    keyID: 'vsay0tnzme',
-                    appKey: 'oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa'
+                    keyID: 'ca0xg7ikh5',
+                    appKey: 'FuS0E5wYrci3jWj6OoAt30PSJXtE9cJsSUwJy4xP'
                 }).load();  
                 
                 if (!isLogin) {

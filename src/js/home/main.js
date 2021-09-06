@@ -321,28 +321,6 @@ $(function () {
         
         
 
-        function stopVisualAnim(){
-            clearInterval(visualAnimInterval);
-        }
-
-        function playVisualAnim(){
-            //if(currentPage > 0 && currentPage < 5){
-                clearInterval(visualAnimInterval);
-
-                var newwidth = maxScale;
-                var currentImage = $scenes.eq(currentPage).find('.img img');
-                visualAnimInterval = setInterval(function(){
-                    newwidth -= 0.5;
-                    if(newwidth < 100) newwidth = 100;
-                    currentImage.css({
-                        width: newwidth + "%"
-                    });
-
-                    if(newwidth == 100) clearInterval(visualAnimInterval);
-                }, 18);
-            //}
-        }
-
         function wheelScene(delta) {
 
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
@@ -476,8 +454,6 @@ $(function () {
                     //     });
                     // }
                     /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
-
-                    playVisualAnim();
 
                     if(vcui.detect.isIOS) {
                         if($contentWrap.hasClass('active')) {
@@ -644,8 +620,8 @@ $(function () {
         var sceneIO = new IntersectionObserver(function(entries, observer) {
 
             entries.forEach(function (entry) {
-
                 if (entry.intersectionRatio > 0.7) {
+                    entry.target.muted = true
                     !entry.target.ended && entry.target.play()
                 } else if(entry.intersectionRatio === 0) {
                     entry.target.currentTime = 0
@@ -669,8 +645,7 @@ $(function () {
                 // loaded    = $target.data('loaded'),           
                 //videoAttr = $target.data('options') || 'autoplay playsinline muted',
                 videoAttr = $target.data('options') || 'playsinline muted',
-                $sources = $target.find('source'),
-                oVideo;
+                $sources = $target.find('source')
 
             var src = $target.data('src');
             var posterSrc = $target.data('posterSrc');
@@ -690,12 +665,12 @@ $(function () {
             // }
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
-            if (posterSrc) {
-                if (index > 0) {
-                    videoAttr += " poster='" + posterSrc + "' preload='metadata'";
-                } else {
-                    videoAttr += " preload='auto'";
-                }
+            if (index === 0) {
+                videoAttr += " preload='auto'";
+            } else if(posterSrc) {
+                videoAttr += " poster='" + posterSrc + "' preload='metadata'";
+            } else {
+                videoAttr += " preload='metadata'";
             }
 
             // 비디오 요소 생성.
@@ -705,6 +680,8 @@ $(function () {
                 // console.log(src, src.match(regExp));
 
                 if (!extArr.length) return false;
+
+                videoAttr += " src='" + src + "." + extArr[0] + "'"
 
                 var $video = $('<video ' + videoAttr + '></video>');
 
@@ -722,22 +699,18 @@ $(function () {
                     $('<p>').text($target.data('alt')).appendTo($video);
                 }
                 $video.data($target.data());
+                $video.data('sceneIndex', index)
+
+                $video[0].addEventListener('loadedmetadata', function(){
+                    $video[0].muted = true
+                    // $video[0].play()
+                    sceneIO.observe($video[0])
+                })
+
                 $target.replaceWith($video);
                 $video = $wrap.find('video');
                 $sources = $video.find('source');
-
-                $video.css({
-                    'position': 'absolute',
-                    'width': '100%',
-                    'height': '100%',
-                    'top': '50%',
-                    'left': '50%',
-                    'transform': 'translate(-50%,-50%)',
-                    '-webkit-transform': 'translateX(-50%) translateY(-50%)'
-                })
-                oVideo = $video[0];
-                oVideo.dataset['sceneIndex'] = index
-                sceneIO.observe(oVideo)
+                //
                 /*
                 if ( isAndroid ) {
                     $(document).one('touchstart.videoPlay', function() {

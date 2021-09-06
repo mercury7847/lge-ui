@@ -8,6 +8,7 @@ var lls = {
         self.heroSlider();
         self.highlightSlider();
         self.onbroadProductSlider();
+        self.appPushVisibleCheck();
     },
     settings: function(){
         var self = this;
@@ -41,14 +42,40 @@ var lls = {
             $(item).css('background-image', 'url(' + currentSrc + ')')
         })
     },
+    appPushVisibleCheck: function(){
+        if( isApp()) {
+            if( vcui.detect.isIOS ) {
+                appPushCheck = function(push, mktPush, geolocation, appVersion){
+                    alert("IOS " + mktPush)
+                }
+                var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "Y"});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                android.setAdPushActive("Y")
+
+                if( android.getAdPushActive()) {
+                    alert("안드로이드 " + android.getAdPushActive())
+                }
+            }
+
+        }
+    },
     bindEvent: function(){
         var self = this;
 
-        function LGEPushSetting(flag){
+        LGEPushSetting = function(flag){
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth();
+            var date = now.getDate();
+            var day = now.getDay();
+            var hours = now.getHours();
+
             var msg = {
-                flagY: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
+                flagY: year + "년 " + month + "월 " + date + "일 " + hours + "시 알림 허용처리가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
+
             if( flag == "Y" ) {
                 lgkorUI.alert("", {
                     title: msg.flagY,
@@ -66,7 +93,12 @@ var lls = {
                     title: msg.flagN,
                     okBtnName: "기기 알림 켜기",
                     ok: function(el) {
-                        location.href = '/mobile-app/option'
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "goSetting"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openOSSetting();
+                        }
                     }
                 }, self.pushBtn);
             }
@@ -82,22 +114,15 @@ var lls = {
             if( isApp() ) {
                 if(vcui.detect.isIOS){
                     var obj = new Object();
-                    obj.command = "setMkt";
-                    obj.value = "Y";
+                    obj.command = "getPushStatus";
+                    obj.callback = "LGEPushSetting";
                     var jsonString= JSON.stringify(obj);
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else {
-                    android.setAdPushActive("Y");
+                    var androidPush = android.getOSPush();
+                    LGEPushSetting(androidPush)
                 }
-
-                lgkorUI.alert("", {
-                    title: "엘LGE라 LIVE Show<br>알림 받기가 완료되었습니다.",
-                    ok: function(el) {
-                        
-                    }
-                }, _self);
             }
-            
         });
 
 

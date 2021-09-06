@@ -379,6 +379,23 @@ var goAppUrl = function(path) {
 
                 self.hideLoading()
             });
+
+
+            // BTOCSITE-659
+            if(location.href.indexOf('/story/') > -1 ) self.addAWSStory();
+
+        },
+
+        // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : story 상세
+        addAWSStory: function () {
+            // story 상세페잊 파라메터로 넘긴다
+            // /mkt/commonModule/addAWSStory.lgajax
+            // 파라미터
+            // itemId : storyurl (/story/only-and-best/all-in-one-generation)
+            var depth = location.pathname.split('/');
+            if(depth.length === 4) {
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSStory.lgajax", {"itemId":location.href.replace(/https?:\/\//,'').replace(location.host,'')});
+            }
         },
 
         //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
@@ -745,7 +762,25 @@ var goAppUrl = function(path) {
             
                     window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
                 });
-                
+
+                // BTOCSITE-3536
+                /**
+                 *   a 태그 속성에 data-go-url 추가하여 사용하세요
+                 *  - 모바일 브라우져 동작시 target 설정값이 '_blank' => window.open '_self' 이거나 미설정시 => location.href 이동
+                 *  - 아래 옵션은 app 일경우만 동작 입니다.
+                 *  - 옵션 : data-open-mode
+                 *      미설정시 : 앱내 이동 location.href 로 이동 시킵니다.
+                 *      inAppBrowser : inAppBrowser 로 뛰움
+                 *      outlink  : ios , android 외부 브라우저로 뛰움
+                 *    <샘플>
+                 *    <a data-go-url data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
+                 * 
+                 */
+                $doc.off('click.goUrl').on('click.goUrl', '[data-go-url]', function(e){
+                    e.preventDefault();
+                    lgkorUI.goUrl(this);             
+                });
+
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
@@ -855,9 +890,19 @@ var goAppUrl = function(path) {
                     break;
                 }
             }
-            
-            if(index < 0) location.href = "/";
-            else history.back();
+
+            // BTOCSITE-3536 앱이고 파라메타에 openInApp 있는경우 closeInAppBrowser 실행
+            if(isApp() &&  lgkorUI.getParameterByName('openMode') === 'inAppBrowser') {
+                if(vcui.detect.isIOS){ 
+                    var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                 }else{
+                     android.closeNewWebview(); 
+                 }
+            } else {
+                if(index < 0) location.href = "/";
+                else history.back();
+            }
         },
 
         resetFlexibleBox: function(){
@@ -1961,10 +2006,58 @@ var goAppUrl = function(path) {
             });
         },
 
+        parseUrl: function (url) {
+            var protocol = url.split('//')[0],
+                comps = url.split('#')[0].replace(/^(https\:\/\/|http\:\/\/)|(\/)$/g, '').split('/'),
+                host = comps[0],
+                search = comps[comps.length - 1].split('?')[1],
+                tmp = host.split(':'),
+                port = tmp[1],
+                hostname = tmp[0];
+
+            search = typeof search !== 'undefined' ? '?' + search : '';
+
+            var params = search
+            .slice(1)
+            .split('&')
+            .map(function (p) { return p.split('='); })
+            .reduce(function (obj, pair) {
+                    pair[0] = pair[0] || '';
+                    pair[1] = pair[1] || '';  
+
+                    if(pair[0]) {
+                        var parts = pair.map(function(param) {
+                            return decodeURIComponent(param);
+                        });
+                        obj[parts[0]] = parts[1];
+                    }
+                return obj
+            }, {});
+
+            return {
+                hash: url.indexOf('#') > -1 ? url.substring(url.indexOf('#')) : '',
+                protocol: protocol,
+                host: host,
+                hostname: hostname,
+                href: url,
+                pathname: '/' + comps.splice(1).map(function (o) { return /\?/.test(o) ? o.split('?')[0] : o; }).join('/'),
+                search: search,
+                origin: protocol + '//' + host,
+                port: typeof port !== 'undefined' ? port : '',
+                searchParams: {
+                    get: function(p) {
+                        return p in params? params[p] : ''
+                    },
+                    getAll: function(){ return params; }
+                }
+            };
+        },
+
+
         getParameterByName: function(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                    results = regex.exec(location.search);
+                results = regex.exec(location.search);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
 
@@ -2394,6 +2487,64 @@ var goAppUrl = function(path) {
 
             return nowTime >= startTime && nowTime < endTime ? true : false;
         },
+
+        /**
+         * goUrl 함수 : 링크 처리하는 함수 
+         * 파라메타는 HTMLElement 또는 Object 
+         * @param { HTMLElement } obj 
+         * @param { href : '' , target:'', openMode : '' } obj 
+         * 
+         */
+         goUrl: function(obj) {
+
+            if(!obj || !obj instanceof Object) var obj = {};
+
+            if(obj instanceof HTMLElement) {
+                obj = $(obj).data();
+            } 
+
+            obj   = $.extend( { href : '',target : '',openMode : '' } , obj );
+
+            if(obj.href) {
+                if(isApp()) {
+                    // 앱 케이스
+                    switch(obj.openMode) {
+                        case 'inAppBrowser' :
+
+                            var url = lgkorUI.parseUrl(obj.href),
+                                params = $.extend(url.searchParams.getAll(),{'openMode': obj.openMode});
+                                obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
+    
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'Y'});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openNewWebview(obj.href);
+                            }
+                        break;
+    
+                        case 'outlink' : 
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openLinkOut', 'url': obj.href});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openLinkOut(obj.href);
+                            }
+                        break;
+                        default : 
+                            location.href = obj.href;
+                        break;
+                    }
+                } else {
+                    // 일반 브라우져
+                    if(obj.target === '_blank') {
+                        window.open(obj.href);
+                    } else {
+                        location.href = obj.href;
+                    }
+                }     
+            }
+        }
     }
 
     window.historyBack = lgkorUI._historyBack;

@@ -127,6 +127,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.outTimer = null;
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
+            self.$aboutCompany = self.$el.find(".about-company"); 		//210820 add about-company;
 
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
@@ -207,6 +208,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 e.preventDefault();
                 self._mypageOut();
             });
+            // [S] 210820 add about-company 
+            self.$aboutCompany.on("mouseover", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOver();
+            }).on("mouseout", function(e) {
+                e.preventDefault();
+                self._aboutCompanyOut();
+            }),
+            // [E] 210820 add about-company
 
             self.$hamburger.on('click', function(e){
                 e.preventDefault();
@@ -267,7 +277,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(self.displayMode != "pc"){
                     self._hamburgerDisabled();
                     
-                    self.$pcNaviWrapper.css('display', 'inline-block');
+                    self.$pcNaviWrapper.not('.ui_gnb_accordion').css('display', 'inline-block'); //BTOCSITE-1967
 
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
                     self.$mobileNaviWrapper.hide();
@@ -712,6 +722,47 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }).on('blur', function(){
                 $('.is-main-sticky-header').removeClass('show-skip')
             });
+
+            //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
+            if( vcui.detect.isMobileDevice && !isApp()) {
+                if( $('.mobile-status-bar').filter(':visible').length ) {
+                    $('html').addClass('is-web-status-bar')
+                } else {
+                    var statusBarHTML = '<div class="mobile-status-bar">' +
+                        '<ul class="mobile-status-list">' +
+                            '<li class="list-item mypage">' +
+                                '<a href="/my-page"><span>마이</span></a>' +
+                            '</li>' +
+                            '<li class="list-item chatbot">' +
+                                '<a href="https://chat.lge.co.kr/kr/index.html?channel=lg_homepage" class="js-popup" title="새창으로 열림" data-width="450" data-height="760"><span>상담챗</span></a>' +
+                            '</li>' +
+                            '<li class="list-item home"> ' +
+                                '<a href="/"><span>홈</span></a>' +
+                            '</li>' +
+                            '<li class="list-item my-collection">' +
+                                '<a href="/my-collection/"><span>마이컬렉션</span></a>' +
+                            '</li>' +
+                            '<li class="list-item nav-anchor">' +
+                                '<a href="#"><span>전체메뉴</span></a>' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>';
+                    $('html').append(statusBarHTML);
+                    $('html').addClass('is-web-status-bar')
+                }
+            }
+
+            self.$statusBar = $('.mobile-status-bar');
+			self.$statusList = self.$statusBar.find('.mobile-status-list');
+            
+            self.$statusList.find('.nav-anchor a').on('click', function(e){
+				e.preventDefault();
+
+                if( $('.lay-filter').hasClass('open')) {
+                    $('.lay-filter').find('.dimmed').trigger('click');
+                }
+				self.$hamburger.trigger('click');
+			})
         },
 
         _mobileGnbSticky: function(scrollTop, direction){
@@ -757,6 +808,16 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
+        // [S] 210820 add about-company 
+        _aboutCompanyOver: function() {
+            this.$aboutCompany.find(".about-company-layer").show(),
+            this.$aboutCompany.find("> a").hasClass("on") || this.$aboutCompany.find("> a").addClass("on")
+        },
+        _aboutCompanyOut: function() {
+            this.$aboutCompany.find(".about-company-layer").hide(),
+            this.$aboutCompany.find("> a").hasClass("on") && this.$aboutCompany.find("> a").removeClass("on")
+        },     
+        // [E] 210820 add about-company
 
         _menuToggle: function(forceActive){
             var self = this,

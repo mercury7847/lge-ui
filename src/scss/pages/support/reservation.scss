@@ -1024,39 +1024,3 @@
 [data-product-only] {display: none;}
 
 @import "../../support/pages/payNwarranty";
-
-
-
-
-/* BTOCSITE-3216 add :: 회원가입 이벤트 배너 추가 */
-.evt-banner-3216 {
-    max-height:220px;
-    margin:0px;
-    margin-bottom:126px;
-
-    @include mobile {
-        margin-bottom:60px;
-    }
-
-    img {
-        width:100%;
-        height:auto;
-    }
-    .only_desktop {
-        display:block;  
-        max-height:220px;
-        @include mobile {
-            display:none;
-        }
-    }
-
-    .only_mobile {
-        display:none;
-        max-height:300px;
-        @include mobile {
-            display:block;
-        }         
-        
-    }
-}
-/* //BTOCSITE-3216 add :: 회원가입 이벤트 배너 추가 */

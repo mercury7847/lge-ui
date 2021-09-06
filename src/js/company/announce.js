@@ -31,19 +31,17 @@
             var self = this;
             	$contents = $('div.com-text');
             self.$announceList = $contents.find('#announceList');
-            self.$pagination = $contents.find('div.pagination').vcPagination();
+            self.$pagination = $contents.find('div.pagination').vcPagination({'scrollTarget':self.$announceList});
             self.$nodata = $contents.find('#no-data');
         },
 
         bindEvents: function() {
             var self = this;
 
-            //페이지
             self.$pagination.on('page_click', function(e, data) {
                 var param = {'page':data}
                 self.requestData(param);
                 history.replaceState(null, '', '?page=' + data);
-                document.preventDefault();
             });
         },
 
@@ -58,7 +56,7 @@
 
                 self.params = param;
                 self.params.page = param.pagination.page;
-                //페이지
+
                 self.$pagination.vcPagination('setPageInfo',param.pagination);
 
                 var arr = data.listData instanceof Array ? data.listData : [];

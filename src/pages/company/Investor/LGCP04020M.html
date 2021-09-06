@@ -18,75 +18,92 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:["corechart"]});
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
 	google.charts.setOnLoadCallback(drawChart);
 	var data, options, chart;
+
 	function drawChart() {
 		data = google.visualization.arrayToDataTable([
-			['',  'Amount', {role: 'tooltip'}],
-			['(주)LG',  31, '(주)LG\n31%'],
-			['개인 및 기관 투자자',  31, '개인 및 기관 투자자\n31%'],
-			['외국인 투자자',  38, '외국인 투자자\n38%']
+			['', 'Amount', {
+				role: 'tooltip'
+			}],
+			['개인 및 기관 투자자', 31, '개인 및 기관 투자자\n31%'],
+			['외국인 투자자', 38, '외국인 투자자\n38%'],
+			['(주)LG', 31, '(주)LG\n31%']
 		]);
 		options = {
 			pieHole: 0.6,
 			pieSliceText: 'percent',
-			chartArea: {width: '100%', height: '80%',top:'4%'},
+			chartArea: {
+				width: '100%',
+				height: '80%',
+				top: '4%'
+			},
 			slices: {
-				0: { color: '#000000', offset: 0.01},
-				1: { color: '#aaaaaa', offset: 0.01, textStyle :{ color: '#000'}},
-				2: { color: '#e81953', offset: 0.01}
+				0: {
+					color: '#000000',
+					offset: 0.01
+				},
+				1: {
+					color: '#aaaaaa',
+					offset: 0.01,
+					textStyle: {
+						color: '#000'
+					}
+				},
+				2: {
+					color: '#da0f47',
+					offset: 0.01
+				}
 			},
-			pieSliceTextStyle : {
+			pieSliceTextStyle: {
 				fontSize: '16',
-				bold:true,
-				fontName:'Noto Sans'
+				bold: true,
+				fontName: 'Noto Sans'
 			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16',fontName:'Noto Sans'}}
+			legend: {
+				position: 'none'
+			},
+			enableInteractivity: false,
 		};
-        checkSize();
+		checkSize();
 		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 		chart.draw(data, options);
 	}
+
 	function checkSize() {
 		var windowWidth = $(window).width();
 		if (windowWidth < 767) {
-			options.pieHole=0.6;
-			options.legend.textStyle.fontSize="12";
-			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
-		}
-		else{
-			options.pieHole=0.56;
-			options.legend.textStyle.fontSize="16";
-			options.pieSliceTextStyle.fontSize="16";
+			options.pieHole = 0.6;
+			options.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+		} else {
+			options.pieHole = 0.56;
+			options.pieSliceTextStyle.fontSize = "16";
 		}
 	}
-	$(window).resize(function() {
-        checkSize();
+
+	function resize() {
+		checkSize();
 		chart.draw(data, options);
-		setTimeout(function(){
+		setTimeout(function () {
 			chart.draw(data, options);
 		}, 100);
-	});
+	}
+	window.onresize = resize;
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:520px;height:370px;margin:0 auto;}
-	.googlechart-wrap .chartarea{width:100%;height:100%;}
-	.googlechart-wrap .overlayarea{position: absolute;top: 42%;left: 50%;transform: translate(-50%, -42%);text-align:center;font-size:24px;font-weight:bold;}
+	.googlechart-wrap {position:relative; max-width:610px; margin:0 auto}
+	.googlechart-wrap .chartarea {width:100%; height:370px}
+	.googlechart-wrap .overlayarea {position:absolute; top:42%; left:50%; transform:translate(-50%, -42%); text-align:center; font-size:24px; font-weight:bold}
+	.graph {position:relative}
+	.c_legend {position:absolute; width:100%; bottom:0; left:50%; transform:translateX(-50%)}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:71.11vw}
-		.googlechart-wrap .overlayarea{font-size:5vw;}
+		.googlechart-wrap .chartarea {height:69.5vw; max-height:370px}
+		.googlechart-wrap .overlayarea {font-size:5vw}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/investor/corporateGovernance">투자자정보</a></li>
-		<li><a href="/company/investor/price">주식정보</a></li>
-		<li><strong>주주현황</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">투자자정보</h2>
@@ -148,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/investor/announceList">전자공고</a></li>
 						</ul>
 					</li>
-					<li><a href="/support/email-inquiry">Contact IR</a></li>
+					<li><a href="/support/email-inquiry" target="_blank" title="새 창 열림">Contact IR</a></li>
 				</ul>
 			</div>
 		</div>
@@ -179,7 +196,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="graph ofn">
 			<div class="googlechart-wrap">
 				<div class="chartarea" id="donutchart"></div>
+				<!-- 구글차트 -->
 				<div class="overlayarea">LG 전자</div>
+				<div class="blind">
+					<span>LG 전자</span>
+					<ul>
+						<li>(주)LG (38%)</li>
+						<li>개인 및 기관 투자자 (31%)</li>
+						<li>외국인 투자자 (31%)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="c_legend">
+				<p class="lgnd">(주)LG<span class="pink"></span></p>
+				<p class="lgnd">개인 및 기관 투자자<span class="blk"></span></p>
+				<p class="lgnd">외국인 투자자<span class="gray"></span></p>
 			</div>
 			<div class="blind">
 				<strong>LG 전자 발행주식 주주현황</strong>

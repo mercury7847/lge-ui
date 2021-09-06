@@ -328,11 +328,29 @@
                         <!-- 210331 수정 [모바일 타이틀 영역 추가] -->
                         <div class="mobile-pdp-info visible-sm">
                             <div class="product-detail-info">
-                                @@include('./common/modules/flags.html', {
-                                barType: true,
-                                "flagDiscount" : true,
-                                flags: ["베스트","신제품","캐시백"]
-                                })
+                                <!-- 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 -->
+                                <!-- 
+                                        기존 flag  : "베스트","신제품","캐시백"
+                                -->
+                                <div class="product-detail-info-top">
+                                    @@include('./common/modules/flags.html', {
+                                        barType: true,
+                                        "flagDiscount" : true,
+                                        "flagNCSI" : true,
+                                        flags: ["캐시백"]
+                                        })
+
+                                    <div class="pdp-more-info">
+                                        <div class="inner">
+                                            <!-- 210421 문구수정 -->
+                                            <a href="#" class="btn-link popup" role="button">
+                                                수상내역 보기 <span class="blind">수상내역 팝업 열림</span>
+                                            </a>
+                                            <!-- //210421 문구수정 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 -->
                                 <!-- 210421 <div class="product-cover"> 감싸기 -->
                                 <div class="product-cover">
                                     <div class="product-name">
@@ -371,15 +389,14 @@
                                         <!-- //2021-02-25 크레마 리뷰 -->
                                     </div>
                                     <!-- // 리뷰 별점 영역 -->
-                                    <div class="pdp-more-info">
+                                    <!-- 20210820 BTOCSITE-4226 마크업 삭제 
+                                        <div class="pdp-more-info">
                                         <div class="inner">
-                                            <!-- 210421 문구수정 -->
                                             <a href="#" class="btn-link popup" role="button">
                                                 수상내역 보기 <span class="blind">수상내역 팝업 열림</span>
                                             </a>
-                                            <!-- //210421 문구수정 -->
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- //210421 <div class="product-cover"> 감싸기 -->
                             </div>

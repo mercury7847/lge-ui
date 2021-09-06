@@ -526,6 +526,39 @@ h2.title {
                         }
                     }
                 }
+
+                // 210903 BTOCSITE-4239 4도어 추가 - Start
+                &[data-model_code="Z491AAA151"] {
+                    //김치냉장고
+                    .model_door {
+                        &[data-door-direction="LT"] {
+                            width: 46.1%;
+                            height: 53.8%;
+                            left: 3.5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="RT"] {
+                            width: 46.1%;
+                            height: 53.8%;
+                            right: 3.5%;
+                            top: .3%;
+                        }
+                        &[data-door-direction="MM"] {
+                            width: 92.9%;
+                            height: 20.4%;
+                            left: 3.7%;
+                            top: 56.5%;
+                        }
+                        &[data-door-direction="BB"] {
+                            width: 92.9%;
+                            height: 20.5%;
+                            left: 3.7%;
+                            top: 78.5%;
+                        }
+                    }
+                }
+                // 210903 BTOCSITE-4239 4도어 추가 - End
+
                 &[data-model_code="X320AA"],
                 &[data-model_code="Y320AA"],
                 &[data-model_code="Z320AA"] {
@@ -1821,27 +1854,63 @@ h2.title {
     }
 
     &[data-cate="refrigerator_kimchi"] {
-        .mini_model_wrap {
-            background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
-            background-size: 100% 100%;
-            .mini_model {
-                &:nth-child(1) {
-                    left: 36%;
+        //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 추천조합 4도어, 3도어 분리
+        &[data-model-default-code="Z491AAA151"] {
+            .mini_model_wrap {
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
+                background-size: 100% 100%;
+                .mini_model {
+                     &:nth-child(1) {
+                    left: 35%;
                     top: 9.5%;
-                    width: 28.3%;
+                    width: 14.5%;
                     height: 43.7%;
                 }
                 &:nth-child(2) {
-                    left: 36%;
-                    top: 55.5%;
-                    width: 28.3%;
-                    height: 14.3%;
+                    right: 35%;
+                    top: 9.5%;
+                    width: 14.5%;
+                    height: 43.7%;
                 }
                 &:nth-child(3) {
-                    left: 36%;
-                    top: 72.1%;
-                    width: 28.3%;
+                    left: 35%;
+                    top: 54.1%;
+                    width: 30%;
                     height: 18%;
+                }
+                &:nth-child(4) {
+                    left: 35%;
+                    top: 73.1%;
+                    width: 30%;
+                    height: 17%;
+                }
+                }
+            }
+        }
+
+        &[data-model-default-code="Z330AAA151"] {
+            .mini_model_wrap {
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
+                background-size: 100% 100%;
+                .mini_model {
+                    &:nth-child(1) {
+                        left: 36%;
+                        top: 9.5%;
+                        width: 28.3%;
+                        height: 43.7%;
+                    }
+                    &:nth-child(2) {
+                        left: 36%;
+                        top: 55.5%;
+                        width: 28.3%;
+                        height: 14.3%;
+                    }
+                    &:nth-child(3) {
+                        left: 36%;
+                        top: 72.1%;
+                        width: 28.3%;
+                        height: 18%;
+                    }
                 }
             }
         }
@@ -2058,7 +2127,7 @@ h2.title {
     margin-top:20px;
     width:99.9%;
     font-size: 14px;
-
+    cursor: pointer; //BTOCSITE-4239 210906 수정 
     @include mobile {
         font-size: 13px;
         line-height: 21px;

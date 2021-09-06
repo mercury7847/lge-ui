@@ -15,25 +15,372 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|환경",
-		"content_depth4": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스",
-		"content_depth5": "회사소개|지속가능경영|환경|미래세대를 위한 제품과 서비스"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|환경",
+		"content_depth4": "회사소개|ESG 경영|환경|미래세대를 위한 제품과 서비스",
+		"content_depth5": "회사소개|ESG 경영|환경|미래세대를 위한 제품과 서비스"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/sustainable/businessplace">환경</a></li>
-		<li><strong>미래세대를 위한 제품과 서비스</strong></li>
-	</ul>
-</div>
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<style>
+	.graph_dec {font-size:14px;line-height:24px;text-align:right;}	
+	@media screen and (max-width:768px){
+			.graph_dec {font-size:12px;line-height:20px;}	
+	}
+</style>
+<script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['재생 플라스틱 사용량', '사용량', {
+				role: 'annotation'
+			}],
+			['2020', 11149, '11,149'],
+			['2019', 9282, '9,282'],
+			['2018', 11030, '11,030'],
+			['2017', 7134, '7,134']
+		]);
+
+		var view = new google.visualization.DataView(data);
+
+		var columnOptions = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 330,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				},
+			},
+			bar: {
+				groupWidth: '48',
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+				},
+				minorGridlines: {
+					color: '#fff',
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+		};
+
+		function checkSize() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions.height = '240';
+				columnOptions.bar.groupWidth = '25';
+				columnOptions.vAxis.textStyle.fontSize = '13';
+				columnOptions.hAxis.textStyle.fontSize = '13';
+				columnOptions.annotations.textStyle.fontSize = '12';
+				columnOptions.annotations.stem.length = '5';
+			} else {
+				columnOptions.height = '360';
+				columnOptions.bar.groupWidth = '48';
+				columnOptions.vAxis.textStyle.fontSize = '14';
+				columnOptions.hAxis.textStyle.fontSize = '14';
+				columnOptions.annotations.textStyle.fontSize = '13';
+				columnOptions.annotations.stem.length = '8';
+			}
+		}
+
+		var data2 = google.visualization.arrayToDataTable([
+			['2006년 이후 폐전자제품 누적 회수/처리 지역별 실적 : 한국', '', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
+			['2020', 3073688, '3,073,688', '#da0f47'],
+			['2019', 2661571, '2,661,571', '#000'],
+			['2018', 2306374, '2,306,374', '#000'],
+			['2017', 2057229, '2,057,229', '#000'],
+			['2016', 1825644, '1,825,644', '#000'],
+			['2015', 1606872, '1,606,872', '#000'],
+			['2014', 1392409, '1,392,409', '#000'],
+			['2013', 1179351, '1,179,351', '#000'],
+			['2012', 983363, '983,363', '#000'],
+			['2011', 806899, '806,899', '#000'],
+			['2010', 618635, '618,635', '#000'],
+			['2009', 409726, '409,726', '#000'],
+			['2008', 242249, '242,249', '#000'],
+			['2007', 134114, '134,114', '#000'],
+			['2006', 56480, '56,480', '#000']
+		]);
+
+		var view2 = new google.visualization.DataView(data2);
+
+		var barOptions2 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 50,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 500,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				}
+			},
+			bar: {
+				groupWidth: '16',
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '14',
+				}
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				minValue: '0',
+				textStyle: {
+					fontSize: '16',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+			},
+		};
+
+		function checkSize2() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				barOptions2.height = '380';
+				barOptions2.bar.groupWidth = "8";
+				barOptions2.vAxis.textStyle.fontSize = '10';
+				barOptions2.hAxis.textStyle.fontSize = '10';
+				barOptions2.annotations.textStyle.fontSize = '10';
+				barOptions2.annotations.stem.length = '5';
+			} else {
+				barOptions2.height = '500';
+				barOptions2.bar.groupWidth = "16";
+				barOptions2.vAxis.textStyle.fontSize = '14';
+				barOptions2.hAxis.textStyle.fontSize = '14';
+				barOptions2.annotations.textStyle.fontSize = '13';
+				barOptions2.annotations.stem.length = '5';
+			}
+		}
+
+		var data3 = google.visualization.arrayToDataTable([
+			['고출력 모듈 개발을 통한 발전량 개선', 'N타입 모듈', {
+				role: 'annotation'
+			}, '백컨택모듈', {
+				role: 'annotation'
+			}],
+			['2021', 390, '390w', 400, '400w'],
+			['2020', 370, '370w', 385, '385w'],
+			['2019', 350, '350w', 380, '380w'],
+		]);
+		var view3 = new google.visualization.DataView(data3);
+		var columnOptions3 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				left: 30,
+				right: 0,
+				top: 10,
+				bottom: 40
+			},
+			height: 500,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#000'
+				},
+				1: {
+					color: '#da0f47'
+				},
+			},
+			bar: {
+				groupWidth: '88',
+				gap: 8
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '450',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '10'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+		};
+
+		function checkSize3() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions3.height = '335';
+				columnOptions3.bar.groupWidth = '60';
+				columnOptions3.bar.gap = '10';
+				columnOptions3.vAxis.textStyle.fontSize = '13';
+				columnOptions3.hAxis.textStyle.fontSize = '13';
+				columnOptions3.annotations.textStyle.fontSize = '12';
+				columnOptions3.annotations.stem.length = '5';
+			} else {
+				columnOptions3.height = '500';
+				columnOptions3.bar.groupWidth = '88';
+				columnOptions3.bar.gap = '8';
+				columnOptions3.vAxis.textStyle.fontSize = '14';
+				columnOptions3.hAxis.textStyle.fontSize = '14';
+				columnOptions3.annotations.textStyle.fontSize = '13';
+				columnOptions3.annotations.stem.length = '8';
+			}
+		}
+
+		function resize() {
+			checkSize();
+			var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+			chart.draw(view, columnOptions);
+
+			checkSize2();
+			var chart2 = new google.visualization.BarChart(document.getElementById("chart_div2"));
+			chart2.draw(view2, barOptions2);
+
+			checkSize3();
+			var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
+			chart3.draw(view3, columnOptions3);
+		}
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+				chart.draw(view, columnOptions);
+			}, 500);
+		});
+
+		$(".draw_chart_div2").on('click', function (e) {
+			setTimeout(function () {
+				checkSize2();
+				var chart2 = new google.visualization.BarChart(document.getElementById("chart_div2"));
+				chart2.draw(view2, barOptions2);
+			}, 500);
+		});
+
+		$(".draw_chart_div3").on('click', function (e) {
+			setTimeout(function () {
+				checkSize3();
+				var chart3 = new google.visualization.ColumnChart(document.getElementById("chart_div3"));
+				chart3.draw(view3, columnOptions3);
+			}, 500);
+		});
+	}
+</script>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -152,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<li class="lists">
 					<div class="head">
 						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-							<span class="title line2">제품 친환경 평가</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
+							<span class="title line2">제품 환경성과 평가/관리</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
 					</div>
@@ -474,7 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</li>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">자원(Resource): 자원 효율성 향상</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -482,7 +829,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="accord-cont ui_accord_content" style="display:none;">
 						<div class="txtArea">
 							<p class="tit">1) 재질구조 개선</p>
-							<div class="tb_row tb-row-bl middle keepAll">
+							<div class="tb_row tb-row-bl middle">
 								<table>
 									<caption>구분, 비교(Base) 모델 - A, 평가모델 - B, 개선결과 - B/A</caption>
 									<colgroup>
@@ -513,7 +860,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											<td>2% 개선</td>
 										</tr>
 										<tr>
-											<th scope="row">제품 부피 (㎥))</th>
+											<th scope="row">제품 부피 (㎥)</th>
 											<td>1.08</td>
 											<td>1.08</td>
 											<td>-</td>
@@ -538,30 +885,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<ul class="bull stit">
 								<li>
 									<strong>재생 플라스틱 사용량</strong>
-									<!-- 그래프 -->
-									<div class="thumb w912">
-										<img class="only_pc" src="/kr/images/company/sustainable/img-PCR_PP-graph-pc.png" alt="재생 플라스틱 사용량 그래프">
-										<img class="only_mo" src="/kr/images/company/sustainable/img-PCR_PP-graph-mo.png" alt="재생 플라스틱 사용량 그래프">
-										<div class="blind">
-											<p>(단위: 톤)</p>
-											<ul>
-												<li>
-													<span>2020</span>
-													<p>11,149</p>
-												</li>
-												<li>
-													<span>2019</span>
-													<p>9,282</p>
-												</li>
-												<li>
-													<span>2018</span>
-													<p>11,130</p>
-												</li>
-												<li>
-													<span>2017</span>
-													<p>7,134</p>
-												</li>
-											</ul>
+									<div class="thumb">
+										<div style="max-width:910px;margin:0 auto;">
+											<p class="graph_dec">(단위: 톤)</p>
+											<div class="chart_area" id="chart_div"></div>
+											<!-- 구글차트 -->
+											<div class="blind">
+												<p>(단위: 톤)</p>
+												<ul>
+													<li>
+														<span>2020</span>
+														<p>11,149</p>
+													</li>
+													<li>
+														<span>2019</span>
+														<p>9,282</p>
+													</li>
+													<li>
+														<span>2018</span>
+														<p>11,030</p>
+													</li>
+													<li>
+														<span>2017</span>
+														<p>7,134</p>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</li>
@@ -745,7 +1094,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<ul>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div2" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">폐전기전자제품 회수 정책 및 프로그램</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -759,10 +1108,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit">3) 폐전기전자제품 무상 회수서비스(한국)</p>
 							<p class="text">LG전자는 지난 2003년부터 시행된 ‘생산자책임 재활용제도’에 적극 동참하여 폐전기전자제품의 무상 회수 서비스를 운영하고 있습니다. 고객으로부터 회수 신청을 접수 받은 후 설치 전문가가 직접 방문하여 무상으로 대형 폐전기전자제품을 회수하며, 소형 폐가전의 경우 LG전자 서비스센터의 전용 수거함을 통해 회수되고 있습니다. LG전자는 수거한 폐전기전자제품을 분해 및 분류 과정을 통해 원자재로 재활용, 자원순환에 기여하고 있습니다.</p>
 							<p class="tit">4) 2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적</p>
-							<!-- 그래프 -->
-							<div class="thumb w1142">
-								<img class="only_pc" src="/kr/images/company/sustainable/img-waste-electronics-graph-pc.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적">
-								<img class="only_mo" src="/kr/images/company/sustainable/img-waste-electronics-graph-mo.png" alt="2006년 이후 폐전기전자제품 지역별누적 회수&middot;처리 연도별 실적">
+							<div style="max-width:1140px;margin:0 auto;">
+								<p class="graph_dec">(단위: 톤)</p>
+								<div class="chart_area bar" id="chart_div2"></div>
+								<!-- 구글차트 -->
 								<div class="blind">
 									<p>(단위: 톤)</p>
 									<ul>
@@ -859,7 +1208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<ul>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div3" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">주요 활동</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -869,40 +1218,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<p class="tit">1) 태양광발전 부품 및 솔루션 확산</p>
 							<p class="text">LG전자는 고성능&middot;고품질의 태양광 모듈 제공 및 사업 포트폴리오 다변화를 통해 태양전지 사업 경쟁력을 확보하고 고객에게 지속적으로 에너지 사용에 대한 가치를 제공하고 있습니다. 특히, 제품 경쟁력 강화를 위해 모듈의 출력을 개선하고 있으며, 제품 원가 절감을 위한 다양한 활동을 통해 총원가를 개선해 나가고 있습니다. 향후 LG전자는 태양광발전 부품 및 솔루션에 대한 비즈니스를 지속적으로 확대하고 관련 응용 제품 시장에도 진입하여 사업 포트폴리오를 다변화해 나갈 계획입니다.</p>
 							<p class="tit">2) 고출력 모듈 개발을 통한 발전량 개선</p>
-							<!-- 그래프 -->
-							<div class="thumb grpimg w674">
-								<div class="g_imgs">
-									<img class="only_pc" src="/kr/images/company/sustainable/img-modules-graph-pc.png" alt="고출력 모듈 개발을 통한 발전량 개선 그래프">
-									<img class="only_mo" src="/kr/images/company/sustainable/img-modules-graph-mo.png" alt="고출력 모듈 개발을 통한 발전량 개선 그래프">
+							<div class="graph_modules">
+								<div style="max-width:675px; margin:0 auto">
+									<p class="graph_dec">(60셀 모듈 최고출력 기준)</p>
+									<div class="chart_area percent" id="chart_div3"></div>
+									<!-- 구글차트 -->
 									<div class="blind">
-										<p>(60셀 모듈 최고출력 기준)</p>
 										<ul>
 											<li>
-												<span>2019</span>
+												<span>2021</span>
 												<ul>
-													<li>345W(N타입 모듈)</li>
-													<li>375W(백컨택 모듈)</li>
+													<li>390W(N타입 모듈)</li>
+													<li>400W(백컨택 모듈)</li>
 												</ul>
 											</li>
 											<li>
 												<span>2020</span>
 												<ul>
-													<li>365W(N타입 모듈)</li>
-													<li>380W(백컨택 모듈)</li>
+													<li>370W(N타입 모듈)</li>
+													<li>385W(백컨택 모듈)</li>
 												</ul>
 											</li>
 											<li>
-												<span>2021</span>
+												<span>2019</span>
 												<ul>
-													<li>395W(N타입 모듈)</li>
-													<li>405W(백컨택 모듈)</li>
+													<li>350W(N타입 모듈)</li>
+													<li>380W(백컨택 모듈)</li>
 												</ul>
 											</li>
 										</ul>
 									</div>
 								</div>
 								<div class="grp_info">
-									<p class="g_tit">2019~2021 <br class="pc">모듈 출력 개선</p>
+									<div class="c_legend">
+										<p class="lgnd">백컨택 모듈<span class="pink"></span></p>
+										<p class="lgnd">N타입 모듈<span class="blk"></span></p>
+									</div>
+									<p class="g_tit">2019~2021 모듈 출력 개선</p>
 									<ul>
 										<li>
 											<span>N타입 모듈 출력 개선</span>
@@ -955,7 +1307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</li>
 								<li>
 									<strong>AC모듈의 장점</strong>
-									<div class="tb-col middle pd keepAll">
+									<div class="tb-col middle pd">
 										<table>
 											<caption>설치 편의, 발전량 향상, 유지 보수 용이</caption>
 											<tbody>

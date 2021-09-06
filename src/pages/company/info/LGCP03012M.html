@@ -1,10 +1,9 @@
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript><noscript><iframe
+		src="https://www.googletagmanager.com/ns.html?id=GTM-WB2F59T" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
@@ -15,97 +14,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		"content_depth5": "회사소개|기업정보|사업장|해외사업장"
 	};
 </script>
-<script type="text/javascript">
-	var imgMo = "/kr/images/company/info/overseas/img-mobile.png";
-	var imgPc = "/kr/images/company/info/overseas/img-default.png";
-	$(document).ready(function() {	
-		checkSize();
-	});
-	$(window).resize(function() {
-        checkSize();
-	});
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			$(".overseas .img-overseas img").attr("src", imgMo);
-			$(".overseas area").attr("onmouseover","");
-			$(".overseas area").attr("onmouseout","");
-		}
-		else{
-			$(".overseas .img-overseas img").attr("src", imgPc);
-			$(".overseas area").each(function(){
-				var _this = $(this);
-				_this.attr("onmouseover",_this.data("onmouseover"));
-				_this.attr("onmouseout", _this.data("onmouseout"));
-			});
-		}
-	}
-</script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
-<style>
-/* 해외사업장 */
-.overseas{position: relative;}
-.country-list {display: block;}
-.country-list li{display: table;}
-.country-list .country{width:102px;display: table-cell;font-weight: bold;color: #000000;position: relative;}
-.country-list .country::before{content:'';display:inline-block;background-color:#000;border-radius: 100%;position: absolute;top: 11px;left: -8px;}
-.country-list .links{display: table-cell;font-weight: normal;line-height: 1.29;color: #000000;}
-.country-list .links::after{content:'';display:inline-block;width:16px;height:16px;background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat right top 3px;margin: -2px 0 0 3px;}
-/* 해외사업장 mo */
-@media screen and (max-width:767px){
-.overseas {margin-top:15px;}
-.overseas .img-overseas{overflow-x: scroll;width: 100%;}
-.country-list {margin-top:16px;margin-bottom:18px;}
-.country-list li{margin-bottom:14px;}
-.country-list .country{font-size: 13px;}
-.country-list .country::before{width:2px;height:2px;}
-.country-list .links{font-size: 13px;}
-}
-/* 해외사업장 pc */
-@media screen and (min-width:768px){
-.overseas {margin-top:30px;}
-.overseas map {position:absolute; top: 100px;left: 110px;}
-.country-list {width: 1034px;display: block;margin-top:32px;margin-bottom:18px;}
-.country-list ul {display: inline-block;width: 33%;height: 260px;vertical-align: top;padding-left:10px;}
-.country-list ul+ul{border-left: dashed 1px #dddddd;padding-left:20px;}
-.country-list li{margin-bottom:23px;}
-.country-list .country{font-size: 14px;}
-.country-list .country::before{width:3px;height:3px;}
-.country-list .links{font-size: 14px;}
-}
-</style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/info/introduce">기업정보</a></li>
-		<li><strong>사업장</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">기업정보</h2>
-	</div>
-	<!-- hiro image -->
+	</div> <!-- hiro image -->
 	<section class="hiro-wrap">
-		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-companyInfo-hero-pc_new.jpg" data-m-src="/kr/images/company/info/img-companyInfo-hero-mo_new.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="visual-area"> <span class="bg ui_bg_switch"
+				data-pc-src="/kr/images/company/info/img-companyInfo-hero-pc_new.png"
+				data-m-src="/kr/images/company/info/img-companyInfo-hero-mo_new.png" aria-hidden="hidden"></span> </div>
 		<div class="text-area">
 			<p class="text">LG전자는 혁신적인 제품과 차별화된 기술로<br>세계 시장을 선도합니다</p>
 		</div>
-	</section>
-	<!-- // hiro image -->
+	</section> <!-- // hiro image -->
 	<div class="ui_sticky">
 		<div class="com-tabs">
 			<div id="com-tabs01"></div>
 			<div class="tabs-wrap border-type left">
 				<ul class="tabs">
-					<li>
-						<a href="/company/info/introduce#com-tabs01">기업소개</a>
-					</li>
-					<li>
-						<a href="/company/info/outline#com-tabs01">LG WAY</a>
+					<li> <a href="/company/info/introduce#com-tabs01">기업소개</a> </li>
+					<li> <a href="/company/info/outline#com-tabs01">LG WAY</a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/outline">개요</a></li>
 							<li><a href="/company/info/firstplacelg">일등LG</a></li>
@@ -113,17 +41,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="/company/info/ethics">윤리규범</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="/company/info/history#com-tabs01">역사</a>
-					</li>
-					<li>
-						<a href="/company/info/management#com-tabs01">경영진&middot;이사회</a>
-					</li>
-					<li>
-						<a href="/company/info/ci#com-tabs01">브랜드</a>
-					</li>
-					<li class="on">
-						<a href="/company/info/domestic#com-tabs01">사업장<em class="blind">선택됨</em></a>
+					<li> <a href="/company/info/history#com-tabs01">역사</a> </li>
+					<li> <a href="/company/info/management#com-tabs01">경영진·이사회</a> </li>
+					<li> <a href="/company/info/ci#com-tabs01">브랜드</a> </li>
+					<li class="on"> <a href="/company/info/domestic#com-tabs01">사업장<em class="blind">선택됨</em></a>
 						<ul class="tabs-over">
 							<li><a href="/company/info/domestic">국내사업장</a></li>
 							<li><a href="/company/info/overseas">해외사업장</a></li>
@@ -133,14 +54,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 		</div>
 	</div>
-
 	<div class="com-title">
-		<div class="img">
-			<span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-info-location-hero-pc.jpg" data-m-src="/kr/images/company/info/img-info-location-hero-mo.jpg" aria-hidden="hidden"></span>
-		</div>
+		<div class="img"> <span class="bg ui_bg_switch" data-pc-src="/kr/images/company/info/img-info-location-hero-pc.png"
+				data-m-src="/kr/images/company/info/img-info-location-hero-mo.png" aria-hidden="hidden"></span> </div>
 		<p class="text">LG전자의 사업장을 소개합니다.</p>
 	</div>
-
 	<div class="com-tabs">
 		<div id="com-tabs02"></div>
 		<div class="tabs-wrap btn-type left">
@@ -150,74 +68,92 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</ul>
 		</div>
 	</div>
-
 	<div class="com-text">
 		<p class="tit">LG 전자 해외사업장</p>
-		<p class="text">
-			LG전자는 각 지역에 약 142여 개의 현지 법인을 설립해 운영하고 있으며  약 74,000여명의 임직원이 함께 일하고 있습니다.<br>
-			(아래의 지도를 선택하시면 해외사업장을 확인 하실수 있습니다)<br><br>
-			* 2020년 기준
-		</p>
-		
-		<div class="overseas">
-			<map name="pc-map">
-				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="ASIA & PACIFIC" coords="381,183,333,224,311,263,279,291,480,561,716,613,759,565,617,183" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-asiapacific.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
-					<span class="tooltip-box">
-						<span class="tit">ASIA & PACIFIC</span>
-						<span class="country-list">
+		<p class="text"> LG전자는 각 지역에 약 142여 개의 현지 법인을 설립해 운영하고 있으며 약 74,000여명의 임직원이 함께 일하고 있습니다.<br> (아래의 지도를 선택하시면 해외사업장을
+			확인 하실수 있습니다)<br><br> * 2020년 기준 </p>
+		<div class="overseas"> <map name="pc-map">
+				<div class="tooltip-wrap"> <area class="ui_tooltip-target" shape="poly" title="ASIA & PACIFIC"
+						coords="381,183,333,224,311,263,279,291,480,561,716,613,759,565,617,183"
+						data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-asiapacific.png'"
+						data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" /> <span
+						class="tooltip-box"> <span class="tit">ASIA & PACIFIC</span> <span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Australia</span>
-									<span class="links"><a href="https://www.lg.com/au" target="_blank" title="Australia 사업장 새창열림">LGEAP</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/au" target="_blank" title="Australia 사업장 새창열림">LGEAP</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">China</span>
-									<span class="links"><a href="https://www.lg.com/cn" target="_blank" title="China 사업장 새창열림">LGEQA, LGETL, LGECH,  LGEYT, LGETR, LGETA, LGESY, LGESH, LGEQH, LGEQD, LGEPN, LGEND, LGEKS, LGEHZ, LGEHN, LGEHK</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/cn" target="_blank" title="China 사업장 새창열림">LGEQA, LGETL, LGECH, LGEYT, LGETR, LGETA, LGESY, LGESH, LGEQH, LGEQD, LGEPN, LGEND, LGEKS, LGEHZ, LGEHN, LGEHK</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">India</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="India 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/in" target="_blank" title="India 사업장 새창열림">LGEIL</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Indonesia</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Indonesia 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/id" target="_blank" title="Indonesia 사업장 새창열림">LGEIN</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Japan</span>
-									<span class="links"><a href="https://www.lg.com/jp" target="_blank" title="Japan 사업장 새창열림">LGEJP</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/jp" target="_blank" title="Japan 사업장 새창열림">LGEJP</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Korea(Head Quarter)</span>
-									<span class="links"><a href="http://www.lge.co.kr" target="_blank" title="Korea 사업장 새창열림">LG Electronics</a></span>
+									<span class="links">
+										<a href="http://www.lge.co.kr" target="_blank" title="Korea 사업장 새창열림">LG Electronics</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Malaysia</span>
-									<span class="links"><a href="https://www.lg.com/my" target="_blank" title="Malaysia 사업장 새창열림">LGEML</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/my" target="_blank" title="Malaysia 사업장 새창열림">LGEML</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Philippines</span>
-									<span class="links"><a href="https://www.lg.com/ph" target="_blank" title="Philippines 사업장 새창열림">LGEPH</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ph" target="_blank" title="Philippines 사업장 새창열림">LGEPH</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Singapore</span>
-									<span class="links"><a href="https://www.lg.com/sg" target="_blank" title="Singapore 사업장 새창열림">LGESL</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/sg" target="_blank" title="Singapore 사업장 새창열림">LGESL</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Taiwan</span>
-									<span class="links"><a href="https://www.lg.com/tw" target="_blank" title="Taiwan 사업장 새창열림">LGETT</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/tw" target="_blank" title="Taiwan 사업장 새창열림">LGETT</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Thailand</span>
-									<span class="links"><a href="https://www.lg.com/th" target="_blank" title="Thailand 사업장 새창열림">LGETH</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/th" target="_blank" title="Thailand 사업장 새창열림">LGETH</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Vietnam</span>
-									<span class="links"><a href="https://www.lg.com/vn" target="_blank" title="Vietnam 사업장 새창열림">LGEVN</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/vn" target="_blank" title="Vietnam 사업장 새창열림">LGEVN</a>
+									</span>
 								</li>
 							</ul>
 						</span>
@@ -225,36 +161,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="LATIN AMERICA" coords="1106,399,1210,399,1334,468,1199,710,1106,710" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-latinamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="LATIN AMERICA" coords="1106,399,1210,399,1334,468,1199,710,1106,710" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-latinamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" />
 					<span class="tooltip-box">
 						<span class="tit">LATIN AMERICA</span>
 						<span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Argentina</span>
-									<span class="links"><a href="https://www.lg.com/ar" target="_blank" title="Argentina 사업장 새창열림">LGEAR</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ar" target="_blank" title="Argentina 사업장 새창열림">LGEAG</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Brazil</span>
-									<span class="links"><a href="https://www.lg.com/br" target="_blank" title="Brazil 사업장 새창열림">LGEBR</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/br" target="_blank" title="Brazil 사업장 새창열림">LGEBR</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Chile</span>
-									<span class="links"><a href="https://www.lg.com/cl" target="_blank" title="Chile 사업장 새창열림">LGECL</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/cl" target="_blank" title="Chile 사업장 새창열림">LGECL</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Colombia</span>
-									<span class="links"><a href="https://www.lg.com/co" target="_blank" title="Colombia 사업장 새창열림">LGEVZ, LGECB</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/co" target="_blank" title="Colombia 사업장 새창열림">LGEVZ, LGECB</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Panama</span>
-									<span class="links"><a href="https://www.lg.com/pa" target="_blank" title="Panama 사업장 새창열림">Guatemala, C&S America Solution, LGEPS</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/pa" target="_blank" title="Panama 사업장 새창열림">Guatemala, C&S America Solution, LGEPS</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Peru</span>
-									<span class="links"><a href="https://www.lg.com/pe" target="_blank" title="Peru 사업장 새창열림">LGEPR</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/pe" target="_blank" title="Peru 사업장 새창열림">LGEPR</a>
+									</span>
 								</li>
 							</ul>
 						</span>
@@ -262,62 +210,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="EUROPE" coords="275,30,272,135,219,241,108,281,14,279,0,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-europe.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="EUROPE" coords="275,30,272,135,219,241,108,281,14,279,0,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-europe.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" />
 					<span class="tooltip-box">
 						<span class="tit">EUROPE</span>
 						<span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Austria</span>
-									<span class="links"><a href="https://www.lg.com/at" target="_blank" title="Austria 사업장 새창열림">LGEAG</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/at" target="_blank" title="Austria 사업장 새창열림">LGEAG</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Czech Republic</span>
-									<span class="links"><a href="http://www.lg.com/cz" target="_blank" title="Czech Republic 사업장 새창열림">LGECZ</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/cz" target="_blank" title="Czech Republic 사업장 새창열림">LGECZ</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">France</span>
-									<span class="links"><a href="http://www.lg.com/fr" target="_blank" title="France 사업장 새창열림">LGEFS</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/fr" target="_blank" title="France 사업장 새창열림">LGEFS</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Germany</span>
-									<span class="links"><a href="http://www.lg.com/de" target="_blank" title="Germany 사업장 새창열림">LGEDG</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/de" target="_blank" title="Germany 사업장 새창열림">LGEDG</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Greece</span>
-									<span class="links"><a href="http://www.lg.com/gr" target="_blank" title="Greece 사업장 새창열림">LGEHS</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/gr" target="_blank" title="Greece 사업장 새창열림">LGEHS</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Hungary</span>
-									<span class="links"><a href="http://www.lg.com/hu" target="_blank" title="Hungary 사업장 새창열림">LGEMK</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/hu" target="_blank" title="Hungary 사업장 새창열림">LGEMK</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Italy</span>
-									<span class="links"><a href="http://www.lg.com/it" target="_blank" title="Italy 사업장 새창열림">LGEIS</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/it" target="_blank" title="Italy 사업장 새창열림">LGEIS</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Netherlands</span>
-									<span class="links"><a href="http://www.lg.com/nl" target="_blank" title="Netherlands 사업장 새창열림">LGESC, LGEEH, LGEBN</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/nl" target="_blank" title="Netherlands 사업장 새창열림">LGESC, LGEEH, LGEBN</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Poland</span>
-									<span class="links"><a href="http://www.lg.com/pl" target="_blank" title="Poland 사업장 새창열림">LGEWR, LGEPL, LGEMA</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/pl" target="_blank" title="Poland 사업장 새창열림">LGEWR, LGEPL, LGEMA</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Portugal</span>
-									<span class="links"><a href="http://www.lg.com/pt" target="_blank" title="Portugal 사업장 새창열림">LGEPT</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/pt" target="_blank" title="Portugal 사업장 새창열림">LGEPT</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Romania</span>
-									<span class="links"><a href="http://www.lg.com/ro" target="_blank" title="Romania 사업장 새창열림">LGERO</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/ro" target="_blank" title="Romania 사업장 새창열림">LGERO</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Spain</span>
-									<span class="links"><a href="http://www.lg.com/es" target="_blank" title="Spain 사업장 새창열림">LGEES</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/es" target="_blank" title="Spain 사업장 새창열림">LGEES</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Sweden</span>
@@ -328,7 +300,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</li>
 								<li>
 									<span class="country">United Kingdom</span>
-									<span class="links"><a href="http://www.lg.com/uk" target="_blank" title="United Kingdom 사업장 새창열림">LGEUK</a></span>
+									<span class="links">
+										<a href="http://www.lg.com/uk" target="_blank" title="United Kingdom 사업장 새창열림">LGEUK</a>
+									</span>
 								</li>
 							</ul>
 						</span>
@@ -336,58 +310,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="MIDDLE EAST & AFRICA" coords="2,303,30,282,183,282,183,241,321,242,303,268,277,293,254,513,125,559,1,381" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-middleeastafrica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="MIDDLE EAST & AFRICA" coords="2,303,30,282,183,282,183,241,321,242,303,268,277,293,254,513,125,559,1,381" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-middleeastafrica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" />
 					<span class="tooltip-box">
 						<span class="tit">MIDDLE EAST & AFRICA</span>
 						<span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Algeria</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Algeria 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/dz" target="_blank" title="Algeria 사업장 새창열림">LGEAS</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Egypt</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Egypt 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/eg_ar" target="_blank" title="Egypt 사업장 새창열림">LGEEG</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Jordan</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Jordan 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/levant_ar" target="_blank" title="Jordan 사업장 새창열림">LGELF</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Kenya</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Kenya 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/global" target="_blank" title="Kenya 사업장 새창열림">LGESK</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Morocco</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Morocco 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ma" target="_blank" title="Morocco 사업장 새창열림">LGEMC</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Saudi Arabia</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Saudi Arabia 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/sa" target="_blank" title="Saudi Arabia LEGSB 사업장 새창열림">LGE</a>
+										<a href="https://www.lg.com/sa_ar" target="_blank" title="Saudi Arabia LGESR 사업장 새창열림">LGE</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">The Republic of South Africa</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="The Republic of South Africa 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/za" target="_blank" title="The Republic of South Africa 사업장 새창열림">LGESA</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Tunisia</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Tunisia 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/global" target="_blank" title="Tunisia 사업장 새창열림">LGETU</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">U.A.E</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="U.A.E 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="www.lg.com/ae" target="_blank" title="U.A.E 사업장 새창열림">LGEOT, LGEDF, LGEGF, LGEME, LGEAF</a>
+									</span>
 								</li>
 							</ul>
 							<ul>
 								<li>
 									<span class="country">Nigeria</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Nigeria 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/global" target="_blank" title="Nigeria 사업장 새창열림">LGEAO, Easytec, LGENI</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Turkey</span>
-									<span class="links"><a href="https://www.lg.com/" target="_blank" title="Turkey 사업장 새창열림">LGE</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/tr" target="_blank" title="Turkey 사업장 새창열림">LGETK, LGEAT</a>\
+									</span>
 								</li>
 							</ul>
 						</span>
@@ -395,48 +392,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="NORTH AMERICA" coords="1110,0,780,119,780,256,1070,400,1180,399,1400,192,1400,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-northamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="NORTH AMERICA" coords="1110,0,780,119,780,256,1070,400,1180,399,1400,192,1400,0" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-northamerica.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" />
 					<span class="tooltip-box">
 						<span class="tit">NORTH AMERICA</span>
 						<span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Canada</span>
-									<span class="links"><a href="https://www.lg.com/ca" target="_blank" title="Canada 사업장 새창열림">LGECI</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ca" target="_blank" title="Canada 사업장 새창열림">LGECI</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Mexico</span>
-									<span class="links"><a href="https://www.lg.com/mx" target="_blank" title="Mexico 사업장 새창열림">LGERS, LGEMX, LGEMS, LGEMM</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/mx" target="_blank" title="Mexico 사업장 새창열림">LGERS, LGEMX, LGEMS, LGEMM</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">United States</span>
-									<span class="links"><a href="https://www.lg.com/us" target="_blank" title="United States 사업장 새창열림">Zenith Electronics Corporation of Pennsylvania, ZENITH, LGEMR, LGEUS, LGEMU, LGEAI</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/us" target="_blank" title="United States 사업장 새창열림">Zenith Electronics Corporation of Pennsylvania, ZENITH, LGEMR, LGEUS, LGEMU, LGEAI</a>
+									</span>
 								</li>
 						</span>
 						<button type="button" class="btn-close"><span class="blind">닫기</span></button>
 					</span>
 				</div>
 				<div class="tooltip-wrap">
-					<area class="ui_tooltip-target" shape="poly" title="RUSSIA & CIS" coords="773,113,654,217,611,177,379,180,309,241,230,238,232,190,280,112,277,22,707,21" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-russiacis.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-default.png'"/>
+					<area class="ui_tooltip-target" shape="poly" title="RUSSIA & CIS" coords="773,113,654,217,611,177,379,180,309,241,230,238,232,190,280,112,277,22,707,21" data-onmouseover="overseas.src='/kr/images/company/info/overseas/img-overseas-russiacis.png'" data-onmouseout="overseas.src='/kr/images/company/info/overseas/img-overseas-default-map.png'" />
 					<span class="tooltip-box">
 						<span class="tit">RUSSIA & CIS</span>
 						<span class="country-list">
 							<ul>
 								<li>
 									<span class="country">Kazakhstan</span>
-									<span class="links"><a href="https://www.lg.com/kz" target="_blank" title="Kazakhstan 사업장 새창열림">LGEAK</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/kz" target="_blank" title="Kazakhstan 사업장 새창열림">LGEAK</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Russia</span>
-									<span class="links"><a href="https://www.lg.com/ru" target="_blank" title="Russia 사업장 새창열림">LGERM, LGERI, LGERA</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ru" target="_blank" title="Russia 사업장 새창열림">LGERM, LGERI, LGERA</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Ukraine</span>
-									<span class="links"><a href="https://www.lg.com/ua" target="_blank" title="Ukraine 사업장 새창열림">LGEUR</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/ua" target="_blank" title="Ukraine 사업장 새창열림">LGEUR</a>
+									</span>
 								</li>
 								<li>
 									<span class="country">Latvia</span>
-									<span class="links"><a href="https://www.lg.com/lv" target="_blank" title="Latvia 사업장 새창열림">LGELV</a></span>
+									<span class="links">
+										<a href="https://www.lg.com/lv" target="_blank" title="Latvia 사업장 새창열림">LGELV</a>
+									</span>
 								</li>
 							</ul>
 						</span>
@@ -445,9 +456,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</map>
 			<div class="img-overseas">
-				<img src="/kr/images/company/info/overseas/img-default.png" name="overseas" usemap="#pc-map" alt="해외 사업장 지도">
+				<img src="/kr/images/company/info/overseas/img-overseas-default-map.png" name="overseas" usemap="#pc-map"
+					alt="해외 사업장 지도" width="1380" height="657"><!-- 21.08.26 : width height 추가 - width height 가 들어가야 하네요 -->
 			</div>
 		</div>
 	</div>
-
 </div>
+
+<script type="text/javascript" src="/kr/images/company/jquery.rwdImageMaps.js"></script>
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		$('.img-overseas img[usemap]').rwdImageMaps();
+		checkSize();
+	});
+
+	/* var imgMo = "/kr/images/company/info/overseas/img-mobile.png"; */
+	/* var imgPc = "/kr/images/company/info/overseas/img-overseas-default-map.png"; */
+
+	/* $(window).resize(function () {
+		checkSize();
+	}); */
+
+	function checkSize() {
+		var windowWidth = $(window).width();
+		if (windowWidth < 767) {
+			/* $(".overseas .img-overseas img").attr("src", imgMo); */
+			$(".overseas area").attr("onmouseover", "");
+			$(".overseas area").attr("onmouseout", "");
+		} else {
+			/* $(".overseas .img-overseas img").attr("src", imgPc); */
+			$(".overseas area").each(function () {
+				var _this = $(this);
+				_this.attr("onmouseover", _this.data("onmouseover"));
+				_this.attr("onmouseout", _this.data("onmouseout"));
+			});
+		}
+	}
+</script>

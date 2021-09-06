@@ -6,6 +6,7 @@
 
 .lls-main {
     overflow:hidden;
+    margin-top:-40px;
     padding-bottom:146px;
 
     .only-pc {
@@ -16,6 +17,7 @@
     }
 
     @include mobile {
+        margin-top:-8px;
         padding-bottom:77px;
 
         .only-pc {
@@ -55,6 +57,10 @@
                     background: url(/lg5-common/images/icons/btn-carousel-hero-play.svg) no-repeat 0 0;
                     background-size: 100% 100%;
 
+                    &.active {
+                        display: inline-block;
+                    }
+    
                     &.active {
                         display: inline-block;
                     }
@@ -137,7 +143,37 @@
         &-item {
             position: relative;
             height:640px;
-            
+            > a, 
+            > div {
+                display: block;
+                position: relative;
+                height:100%;
+            }
+
+            .default-banner {
+                .hero-item-content {
+                    padding-top:167px;
+                }
+                .hero-item-title {
+                    // color:#000;
+
+                    .shadow-text {
+                        font-size:40px;
+                        opacity:0.6;
+
+                        @include mobile {
+                            font-size:20px;
+                        }
+                    }
+                }
+
+                @include mobile {
+                    .hero-item-content {
+                        padding-top:52px;
+                    }
+                }
+            }
+
             &-bg {
                 display: block;
                 position: relative;
@@ -201,6 +237,8 @@
                 transform:translateX(-50%);
                 padding:96px 40px 24px;
             }
+
+            
             &-title {
                 display: block;
                 font-size:52px;
@@ -267,8 +305,7 @@
 
     .lls-push {
         display: none;
-        background: rgb(242,195,124);
-        background: linear-gradient(90deg, rgba(242,195,124,1) 7%, rgba(254,63,109,1) 100%);
+        border-bottom:1px solid #ddd;
 
         .push {
             &-inner {
@@ -287,12 +324,13 @@
                     display: inline-block;
                     position: relative;
                     padding:0 13px;
-                    color:#fff;
+                    color:#000;
                     font-size:13px;
                     font-weight:500;
                     line-height:34px;
                     border-radius:21px;
-                    border:1px solid #fff;
+                    border:1px solid #000;
+                    transition:color .3s, border-color .3s;
                     &:before {
                         content:"";
                         display: inline-block;
@@ -302,6 +340,17 @@
                         vertical-align: middle;
                         background: url('/lg5-common/images/LLS/icon_btn_live-32.svg') no-repeat 100% 100%;
                         background-size: 100% 100%;
+                        transition:all .3s;
+                    }
+
+                    &:hover, 
+                    &:focus {
+                        color:#fff;
+                        background: #da0f47;
+                        border-color:#fff;
+                        &:before {
+                            background-image: url('/lg5-common/images/LLS/icon_btn_live-32_wh.svg');
+                        }
                     }
 
                     @include pc {
@@ -320,7 +369,7 @@
               font-size:14px;
               font-weight:bold;
               line-height:50px;
-              color:#fff;
+              color:#000;
 
               @include pc {
                   font-size:20px;

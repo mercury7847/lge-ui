@@ -1,4 +1,10 @@
+body {
+    @include mobile {
+        overflow:hidden; //BTOCSITE 1814건 결함 수정
+    }
+}
 // 스킵 네비게이션
+
 .skip-content {
     a {
         overflow: hidden;
@@ -336,6 +342,7 @@
 .utility {
     float: right;
     padding-right: 247px;
+    display:flex; // 회사소개 탑메뉴 추가
     @media screen and (min-width: 1760px) {
         padding-right: 242px;
     }
@@ -433,6 +440,69 @@
                 text-align: center;
             }
         }
+    }
+    // 회사소개 탑메뉴
+    .about-company {
+        position: relative;
+        margin-left: 24px;
+        &:before {
+            display: inline-block;
+            width: 1px;
+            height: 14px;
+            margin-right: 24px;
+            background-color: #ddd;
+            content: '';
+        }
+        @include mobile {
+            display: none;
+        }
+        > a {
+            font-size: 14px;
+            line-height: 24px;
+        }
+        // 회사소개 탑메뉴 추가 START
+        .about-company-layer {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: -6px;
+            max-width: 125px;
+            padding-top: 12px;
+            z-index: 104;
+            > ul {
+                padding: 4px 0;
+                border-radius: 4px;
+                background-color: #fff;
+                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+                li {
+                    > a {
+                        display: block;
+                        padding: 8px 24px;
+                        font-size: 14px;
+                        line-height:24px;
+                        text-align: center;
+                        &:hover {
+                            background-color:#f4f4f4
+                        }
+                    }
+                    > a.out_link {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 20px;
+                        i.go_out {
+                            display: block;
+                            width: 16px;
+                            height: 16px;
+                            margin-left: 4px;
+                            background: url(/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+                            background-size: 14px 14px
+                        }
+                    }   
+                }
+            }   
+        }
+        // 회사소개 탑메뉴 end
     }
 
     @include mobile {
@@ -2012,6 +2082,37 @@ html {
             .mobile-nav-wrap {
                 transform: translateY(0);
             }
+        }
+    }
+}
+
+
+//BTOCSITE-1967 웹하단바
+.is-web-status-bar {
+    body {
+        padding-bottom:70px;
+    }
+    
+    .utility {
+        right:11px;
+    }
+    .mobile-nav-button {
+        display: none;
+        &.active {
+            display: block;
+        }
+        & + .header-bottom {
+            padding-bottom:70px;
+        }
+    }
+
+    .scroll-down {
+        .header-bottom {
+            height:100vh;
+            transform:translateY(43px);
+        }
+        .dimmed {
+            height:100vh;
         }
     }
 }

@@ -128,6 +128,10 @@
                 })
                 //BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리
                 self.bindRentalPopupEvents();
+
+
+                // BTOCSITE-659 
+                self.addAWSPdpUp();
             },
 
             prepare: function() {
@@ -814,7 +818,8 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        var isShow = lgkorUI.isShowDate('20210601','20210901')
+                        /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
+                        var isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
@@ -2692,6 +2697,14 @@
                         }
                     });
                 }
+            },
+            // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : pdp
+            addAWSPdpUp: function() {
+                // /mkt/commonModule/addAWSPdpUp.lgajax
+                // 파라미터
+                // itemId : SKU (OLED65A1MS.AKRG : salesmodelcode + surffixcode)
+
+                lgkorUI.requestAjaxData("/mkt/commonModule/addAWSPdpUp.lgajax",  { "itemId":lgePdpSendData.sku});
             }
         };
 

@@ -15,91 +15,130 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|ESG 팩트북",
-		"content_depth4": "회사소개|지속가능경영|ESG 팩트북|컴플라이언스 개요",
-		"content_depth5": "회사소개|지속가능경영|ESG 팩트북|컴플라이언스 개요"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|ESG 팩트북",
+		"content_depth4": "회사소개|ESG 경영|ESG 팩트북|컴플라이언스 개요",
+		"content_depth5": "회사소개|ESG 경영|ESG 팩트북|컴플라이언스 개요"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:["corechart"]});
+	google.charts.load('current', {
+		'packages': ['corechart']
+	});
 	google.charts.setOnLoadCallback(drawChart);
 	var data, options, chart;
+
 	function drawChart() {
 		data = google.visualization.arrayToDataTable([
-			['',  '', {role: 'tooltip'}],
-			['국내해외영업직군',  1249, '국내해외영업직군\n1249명'],
-			['해외 PM',  290, '해외 PM\n290명'],
-			['해외법인 조직책임자', 89, '해외법인 조직책임자\n89명']
+			['', 'Amount'],
+			['국내해외영업직군', 1249],
+			['해외 PM', 290],
+			['해외법인 조직책임자', 89]
 		]);
 		options = {
-			pieHole: 0.62,
+			pieHole: 1,
 			pieSliceText: 'value',
-			chartArea: {width: '100%', height: '80%',top:'4%'},
+			chartArea: {
+				width: '100%',
+				height: '80%',
+				top: '4%'
+			},
 			slices: {
-				0: { color: '#000000', offset: 0},
-				1: { color: '#aaaaaa', offset: 0, textStyle :{ color: '#000'}},
-				2: { color: '#e81953', offset: 0}
+				0: {
+					color: '#da0f47',
+					offset: 0.01,
+				},
+				1: {
+					color: '#aaaaaa',
+					offset: 0.01,
+					textStyle: {
+						color: '#000'
+					}
+				},
+				2: {
+					color: '#000000',
+					offset: 0.01
+				},
 			},
-			pieSliceTextStyle : {
+			pieSliceTextStyle: {
 				fontSize: '16',
-				bold:true
+				bold: true,
+				fontName: 'Noto Sans'
 			},
-			legend:{position: 'bottom', alignment: 'center',textStyle: {fontSize: '16'}},
-			fontName:'Noto Sans'
+			legend: {
+				position: 'none'
+			},
+			enableInteractivity: false,
 		};
-        checkSize();
 		chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-		/*chart.draw(data, options);*/
-	}
-	function checkSize() {
-		var windowWidth = $(window).width();
-		if (windowWidth < 767) {
-			options.legend.textStyle.fontSize="12";
-			options.pieSliceTextStyle.fontSize= windowWidth/50 + 4;
-		}
-		else{
-			options.legend.textStyle.fontSize="16";
-			options.pieSliceTextStyle.fontSize="16";
-		}
-	}
-	$(window).resize(function() {
-        checkSize();
 		chart.draw(data, options);
-		setTimeout(function(){
-			chart.draw(data, options);
-		}, 100);
-	});$(document).ready(function() {
-		/* 두번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:nth-child(2)").on('click', function(e){
+		function checkSize() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				options.pieSliceTextStyle.fontSize = windowWidth / 50 + 4;
+			} else {
+				options.pieSliceTextStyle.fontSize = "22";
+			}
+		}
+	
+		function resize() {
 			checkSize();
-			setTimeout(function(){
+			chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+			chart.draw(data, options);
+		}
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 				chart.draw(data, options);
-			}, 100);
+			}, 500);
 		});
-	});
+	}
+
+
 </script>
 <style>
-	.googlechart-wrap {position: relative;width:520px;height:370px;margin:0 auto;}
-	.googlechart-wrap .chartarea{width:100%;height:100%;}
+	.graph {position:relative}
+	.c_legend {position:absolute; width:100%; bottom:8px; left:50%; transform:translateX(-50%)}
+	.company .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	.googlechart-wrap {
+		position:relative;
+		max-width:520px;
+		margin:0 auto 12px;
+	}
+	.googlechart-wrap .donutchart {
+		width:100%;
+		height:370px;
+	}
+	.googlechart-wrap .overlayarea {
+		position:absolute;
+		top:42%;
+		left:50%;
+		transform:translate(-50%,-42%);
+		text-align:center;
+		font-size:24px;
+		font-weight:bold;
+	}
 	@media screen and (max-width: 767px){
-		.googlechart-wrap{width:100%;height:71.11vw}
+		.googlechart-wrap .donutchart {height:69.5vw; max-height:370px}
+		.googlechart-wrap .overlayarea { font-size:5vw; }
+		.company .c_legend .lgnd + .lgnd {margin-left:4px!important}
+		.company .c_legend .lgnd > span {margin-left:4px!important}
+	}
+	@media screen and (max-width: 386px){
+		.googlechart-wrap {margin:0 auto 40px!important}
+		.c_legend {bottom:-24px}
 	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/promot/system">ESG 팩트북</a></li>
-		<li><strong>컴플라이언스 개요</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -356,7 +395,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</li>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">준법교육</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -371,10 +410,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li>교육 이수자를 대상으로 온라인 준법실천서약(조직 책임자용, 일반 임직원용) 실시</li>
 							</ul>
 							<p class="tit h4">2) 공정거래 심화교육과정 개설</p>
+							<div class="graph ofn">
 								<div class="googlechart-wrap">
-									<div class="chartarea" id="donutchart"></div>
+									<div class="chartarea donutchart" id="donutchart"></div>
+									<!-- 구글차트 -->
 								</div>
-							<!-- 구글차트 -->
+								<div class="c_legend">
+									<p class="lgnd">국내해외영업직군<span class="pink"></span></p>
+									<p class="lgnd">해외 PM<span class="gray"></span></p>
+									<p class="lgnd">해외법인 조직책임자<span class="blk"></span></p>
+								</div>
+							</div>	
 							<div class="survey_box">
 								<p class="s_tit">국내외 해외영업직군 임직원 대상 공정거래 컴플라이언스 리스크에 대한 온라인 심화교육과정 현황</p>
 								<p class="s_text">총 1,628명 이수</p>

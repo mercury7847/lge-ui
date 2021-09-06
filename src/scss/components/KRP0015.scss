@@ -187,6 +187,8 @@
 
        .compare-content {
            display: none;
+           //BTOCSITE-5037
+           width:100%;    
           .compare-list {
               margin:0 -8px;
              .list-inner {
@@ -401,4 +403,12 @@
        }
     }
     
+}
+
+//BTOCSITE-1967
+.is-web-status-bar {
+    $statusBarHeight: 70px;
+    .KRP0015 {
+        bottom:(0 + $statusBarHeight);
+    }
 }

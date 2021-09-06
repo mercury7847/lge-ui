@@ -738,154 +738,12 @@
                                     }
                                 }]
                             },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210719 주석해제) */
-                              {
-                            name: "베이직",
-                            defaultCode: "M871AAA041",
-                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
-                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                            magicSpace: 0,
-                            energy: 1,
-                            knockOn: false,
-                            door: {
-                                count: 4,
-                                door1: {
-                                    name: "상단(좌)",
-                                    code: "D870TT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door2: {
-                                    name: "상단(우)",
-                                    code: "D870TT",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door3: {
-                                    name: "하단(좌)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                },
-                                door4: {
-                                    name: "하단(우)",
-                                    code: "D870BB",
-                                    defaultPrice: "0",
-                                    memberDiscount: "0",
-                                    directDiscount: "0",
-                                }
+                            
 
-                            },
-                            doorColorData: [
-                                /* 210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 start
-                                {
-                                    doorMaterial: {
-                                        name: "페닉스",
-                                        enName: "FENIX",
-                                        code: "F",
-                                        desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                        doorColor: [{
-                                            name: "보타닉",
-                                            code: "BT",
-                                            mixingCode: "FBT"
+                            /* BTOCSITE-4470 : 모델 베이지 항목 삭제(원본 파일은 _bak 파일에서 확인) 2021-08-25 */
+                            
 
-                                        }, {
-                                            name: "샌드",
-                                            code: "SD",
-                                            mixingCode: "FSD"
-                                        }, {
-                                            name: "스톤",
-                                            code: "ST",
-                                            mixingCode: "FST"
-                                        }]
-                                    }
-
-                                },210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 end */
-                                {
-                                    doorMaterial: {
-                                        name: "솔리드",
-                                        enName: "Solid Metal",
-                                        code: "S",
-                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                        doorColor: [{
-                                            name: "맨해튼 미드나잇",
-                                            code: "MT",
-                                            mixingCode: "SMT"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "SSV"
-                                        }, {
-                                            name: "그린",
-                                            code: "GR",
-                                            mixingCode: "SGR"
-                                        }]
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "미스트",
-                                        enName: "Mist Glass",
-                                        code: "G",
-                                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                        doorColor: [{
-                                            name: "베이지",
-                                            code: "BE",
-                                            mixingCode: "GBE"
-                                        }, {
-                                            name: "핑크",
-                                            code: "PK",
-                                            mixingCode: "GPK"
-                                        }, {
-                                            name: "민트",
-                                            code: "MN",
-                                            mixingCode: "GMN"
-                                        }, {
-                                            name: "실버",
-                                            code: "SV",
-                                            mixingCode: "GSV"
-                                        }, {
-                                            name: "레드우드",
-                                            code: "RD",
-                                            mixingCode: "GRD"
-                                        }, {
-                                            name: "클레이 브라운",
-                                            code: "CL",
-                                            mixingCode: "GCL"
-                                        }]
-                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
-                                    }
-                                }, {
-                                    doorMaterial: {
-                                        name: "네이쳐",
-                                        enName: "Nature Metal",
-                                        code: "M",
-                                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                        doorColor: [{
-                                            name: "그레이",
-                                            code: "GY",
-                                            mixingCode: "MGY"
-                                        }, {
-                                            name: "블랙",
-                                            code: "BK",
-                                            mixingCode: "MBK"
-                                        }, {
-                                            name: "화이트",
-                                            code: "WH",
-                                            mixingCode: "MWH"
-                                        }]
-                                    }
-                                }]
-                            },
-                              {
+                            {
                                 name: "빌트인 타입",
                                 defaultCode: "M620AAA351",
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
@@ -1024,142 +882,241 @@
                         ]
                     }]
                 },
+                //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 210902 - START
                 {
                     name: "김치냉장고",
                     id: "refrigerator_kimchi",
-                    leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png",
-                    defaultCode: "Z330AAA151",
-                    simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_refrigerator_kimchi.png",
-                    defaultPrice: "0",
-                    memberDiscount: "0",
-                    directDiscount: "0",
-                    door: {
-                        count: 3,
-                        door1: {
-                            name: "상칸",
-                            code: "K330TT",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
+                    leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png", //BTOCSITE-4239 기본이미지(제일상단)
+                    typModel: [{
+                        name: "4도어",
+                        defaultCode: "Z491AAA151",
+                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 기본이미지(처음에보여지는 default 이미지)
+                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 시뮬이미지(좌측 색 선택시 필요한 simul 이미지)
+                        defaultPrice: "0",
+                        memberDiscount: "0",
+                        directDiscount: "0",
+                        door: {
+                            count: 4,
+                            door1: {
+                                name: "상칸(좌)",
+                                code: "K491TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            },door2: {
+                                name: "상칸(우)",
+                                code: "K491TT",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            },door3: {
+                                name: "중칸",
+                                code: "K491BB",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            },door4: {
+                                name: "하칸",
+                                code: "K491BB",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }
                         },
-                        door2: {
-                            name: "중칸",
-                            code: "K330MM",
+                        doorColorData: [{
+                            doorMaterial: {
+                                name: "솔리드",
+                                enName: "Solid Metal",
+                                code: "S",
+                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                doorColor: [{
+                                    name: "맨해튼 미드나잇",
+                                    code: "MT",
+                                    mixingCode: "SMT"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "SSV"
+                                }, {
+                                    name: "그린",
+                                    code: "GR",
+                                    mixingCode: "SGR"
+                                }]
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "미스트",
+                                enName: "Mist Glass",
+                                code: "G",
+                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                doorColor: [{
+                                    name: "베이지",
+                                    code: "BE",
+                                    mixingCode: "GBE"
+                                }, {
+                                    name: "핑크",
+                                    code: "PK",
+                                    mixingCode: "GPK"
+                                }, {
+                                    name: "민트",
+                                    code: "MN",
+                                    mixingCode: "GMN"
+                                }, {
+                                    name: "실버",
+                                    code: "SV",
+                                    mixingCode: "GSV"
+                                }, {
+                                    name: "레드우드",
+                                    code: "RD",
+                                    mixingCode: "GRD"
+                                }, {
+                                    name: "클레이 브라운",
+                                    code: "CL",
+                                    mixingCode: "GCL"
+                                }]
+                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                            }
+                        }, {
+                            doorMaterial: {
+                                name: "네이쳐",
+                                enName: "Nature Metal",
+                                code: "M",
+                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                doorColor: [{
+                                    name: "그레이",
+                                    code: "GY",
+                                    mixingCode: "MGY"
+                                }, {
+                                    name: "블랙",
+                                    code: "BK",
+                                    mixingCode: "MBK"
+                                }, {
+                                    name: "화이트",
+                                    code: "WH",
+                                    mixingCode: "MWH"
+                                }]
+                            }
+                        }]
+                        }, {
+                            name: "3도어",
+                            defaultCode: "Z330AAA151",
+                            subModel: [{
+                                modelCode: "Z331AAA151",
+                                defaultPrice: "0",
+                                memberDiscount: "0",
+                                directDiscount: "0",
+                            }],
+                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_Z330AAA151.png", //BTOCSITE-4239 선택모델 기본이미지(처음에보여지는 default 이미지)
+                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_Z330AAA151.png",
                             defaultPrice: "0",
                             memberDiscount: "0",
                             directDiscount: "0",
-                        },
-                        door3: {
-                            name: "하칸",
-                            code: "K330BB",
-                            defaultPrice: "0",
-                            memberDiscount: "0",
-                            directDiscount: "0",
-                        }
-
-                    },
-                    doorColorData: [{
-                        doorMaterial: {
-                            name: "페닉스",
-                            enName: "FENIX",
-                            code: "F",
-                            desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                            doorColor: [{
-                                name: "보타닉",
-                                code: "BT",
-                                mixingCode: "FBT"
-
+                            door: {
+                                count: 3,
+                                door1: {
+                                    name: "상칸",
+                                    code: "K330TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door2: {
+                                    name: "중칸",
+                                    code: "K330MM",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door3: {
+                                    name: "하칸",
+                                    code: "K330BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                }
+                            },
+                            doorColorData: [{
+                                doorMaterial: {
+                                    name: "솔리드",
+                                    enName: "Solid Metal",
+                                    code: "S",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "맨해튼 미드나잇",
+                                        code: "MT",
+                                        mixingCode: "SMT"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "SSV"
+                                    }, {
+                                        name: "그린",
+                                        code: "GR",
+                                        mixingCode: "SGR"
+                                    }]
+                                }
                             }, {
-                                name: "샌드",
-                                code: "SD",
-                                mixingCode: "FSD"
+                                doorMaterial: {
+                                    name: "미스트",
+                                    enName: "Mist Glass",
+                                    code: "G",
+                                    desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                    doorColor: [{
+                                        name: "베이지",
+                                        code: "BE",
+                                        mixingCode: "GBE"
+                                    }, {
+                                        name: "핑크",
+                                        code: "PK",
+                                        mixingCode: "GPK"
+                                    }, {
+                                        name: "민트",
+                                        code: "MN",
+                                        mixingCode: "GMN"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "GSV"
+                                    }, {
+                                        name: "레드우드",
+                                        code: "RD",
+                                        mixingCode: "GRD"
+                                    }, {
+                                        name: "클레이 브라운",
+                                        code: "CL",
+                                        mixingCode: "GCL"
+                                    }]
+                                    //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                                }
                             }, {
-                                name: "스톤",
-                                code: "ST",
-                                mixingCode: "FST"
+                                doorMaterial: {
+                                    name: "네이쳐",
+                                    enName: "Nature Metal",
+                                    code: "M",
+                                    desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                    doorColor: [{
+                                        name: "그레이",
+                                        code: "GY",
+                                        mixingCode: "MGY"
+                                    }, {
+                                        name: "블랙",
+                                        code: "BK",
+                                        mixingCode: "MBK"
+                                    }, {
+                                        name: "화이트",
+                                        code: "WH",
+                                        mixingCode: "MWH"
+                                    }]
+                                }
                             }]
-                        }
-
-                    }, {
-                        doorMaterial: {
-                            name: "솔리드",
-                            enName: "Solid Metal",
-                            code: "S",
-                            desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                            doorColor: [{
-                                name: "맨해튼 미드나잇",
-                                code: "MT",
-                                mixingCode: "SMT"
-                            }, {
-                                name: "실버",
-                                code: "SV",
-                                mixingCode: "SSV"
-                            }, {
-                                name: "그린",
-                                code: "GR",
-                                mixingCode: "SGR"
-                            }]
-                        }
-                    }, {
-                        doorMaterial: {
-                            name: "미스트",
-                            enName: "Mist Glass",
-                            code: "G",
-                            desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                            doorColor: [{
-                                name: "베이지",
-                                code: "BE",
-                                mixingCode: "GBE"
-                            }, {
-                                name: "핑크",
-                                code: "PK",
-                                mixingCode: "GPK"
-                            }, {
-                                name: "민트",
-                                code: "MN",
-                                mixingCode: "GMN"
-                            }, {
-                                name: "실버",
-                                code: "SV",
-                                mixingCode: "GSV"
-                            }, {
-                                name: "레드우드",
-                                code: "RD",
-                                mixingCode: "GRD"
-                            }, {
-                                name: "클레이 브라운",
-                                code: "CL",
-                                mixingCode: "GCL"
-                            }]
-                            //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
-                        }
-                    }, {
-                        doorMaterial: {
-                            name: "네이쳐",
-                            enName: "Nature Metal",
-                            code: "M",
-                            desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                            descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                            doorColor: [{
-                                name: "그레이",
-                                code: "GY",
-                                mixingCode: "MGY"
-                            }, {
-                                name: "블랙",
-                                code: "BK",
-                                mixingCode: "MBK"
-                            }, {
-                                name: "화이트",
-                                code: "WH",
-                                mixingCode: "MWH"
-                            }]
-                        }
-                    }]
-
-                },
+                        }]
+                },//BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 210902 - END
                 {
                     name: "컨버터블",
                     id: "refrigerator_convertible",
@@ -2590,6 +2547,118 @@
                 door3: "K330BB-MGY",
                 door4: "",
             }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GRC151S",
+                door1: "K330TT-GRD",
+                door2: "K330MM-GCL",
+                door3: "K330BB-GCL",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331FTS151",
+                door1: "K330TT-FST",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331FTS151",
+                door1: "K330TT-FST",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SGS151",
+                door1: "K330TT-SGR",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SMS151",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SMM151S",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SMT",
+                door3: "K330BB-SMT",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GPB151",
+                door1: "K330TT-GPK",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GBB151",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GRC151",
+                door1: "K330TT-GRD",
+                door2: "K330MM-GCL",
+                door3: "K330BB-GCL",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331MBG151",
+                door1: "K330TT-MBK",
+                door2: "K330MM-MGY",
+                door3: "K330BB-MGY",
+                door4: "",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491FTS151",
+                door1: "K491TT-FST",
+                door2: "K491TT-FST",
+                door3: "K491BB-FSD",
+                door4: "K491BB-FSD",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491SMM151",
+                door1: "K491TT-SMT",
+                door2: "K491TT-SMT",
+                door3: "K491BB-SMT",
+                door4: "K491BB-SMT",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491SGS151",
+                door1: "K491TT-SGR",
+                door2: "K491TT-SGR",
+                door3: "K491BB-SSV",
+                door4: "K491BB-SSV",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491GPB151",
+                door1: "K491TT-GPK",
+                door2: "K491TT-GPK",
+                door3: "K491BB-GBE",
+                door4: "K491BB-GBE",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491GBB151",
+                door1: "K491TT-GBE",
+                door2: "K491TT-GBE",
+                door3: "K491BB-GBE",
+                door4: "K491BB-GBE",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491GRC151",
+                door1: "K491TT-GRD",
+                door2: "K491TT-GRD",
+                door3: "K491BB-GCL",
+                door4: "K491BB-GCL",
+            },{
                 defaultCode: "W821AAA453",
                 modelCode: "W821FBB453S",
                 door1: "D870JT-FBT",
@@ -5271,6 +5340,16 @@
                     }
                 }
                 $(".model_choice_area .model_sub_tab_wrap .model_sub_tab_head").addClass("is_active");
+            } else if (idx == 1) { //김치냉장고
+                let tabSubLeng = configData.modelConfig[idx].typModel.length;
+                for (let j = 0; j < tabSubLeng; j++) {
+                    tabBodyHtml += '<div class="swiper-slide" data-typ-filter="0">';
+                    tabBodyHtml += '    <button type="button" data-index="' + j + '" data-name="' + configData.modelConfig[idx].typModel[j].name + '" data-lead-name="' + configData.modelConfig[idx].id + '" data-default-code="' + configData.modelConfig[idx].typModel[j].defaultCode + '" class="btn_model_sub_pick">';
+                    tabBodyHtml += '        <span class="pic"><img src="' + configData.modelConfig[idx].typModel[j].leaderImg + '" alt=""/></span>';
+                    tabBodyHtml += '        <span class="model_name">' + configData.modelConfig[idx].typModel[j].name + '</span>';
+                    tabBodyHtml += '    </button>';
+                    tabBodyHtml += '</div>';
+                }
             } else if (idx == 2) { //컨버터블
                 let tabSubLeng = configData.modelConfig[idx].typModel.length;
                 for (let j = 0; j < tabSubLeng; j++) {
@@ -5472,37 +5551,72 @@
                         }
                     }
 
-                } else if (idx == 1) { //김치냉장고
-                    code = configData.modelConfig[idx].defaultCode;
-                    modelWrap.attr({ "data-model-cate": _name, "data-model_code": code });
-                    defaultImg = configData.modelConfig[idx].simulImg;
-                    modelPrice = configData.modelConfig[idx].defaultPrice;
-                    doorLeng = configData.modelConfig[idx].door.count;
-                    $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
-                    if (doorLeng == 3) {
-                        for (let k = 0; k < doorLeng; k++) {
-                            let doorDirection;
-                            let doorLocation;
-                            if (k == 0) {
-                                doorDirection = "TT";
-                                doorLocation = "TT";
-                                doorKLocation = "상칸";
-                                doorPrice = configData.modelConfig[idx].door.door1.defaultPrice;
-                            } else if (k == 1) {
-                                doorDirection = "MM";
-                                doorLocation = "MM";
-                                doorKLocation = "중칸";
-                                doorPrice = configData.modelConfig[idx].door.door2.defaultPrice;
-                            } else if (k == 2) {
-                                doorDirection = "BB";
-                                doorLocation = "BB";
-                                doorKLocation = "하칸";
-                                doorPrice = configData.modelConfig[idx].door.door3.defaultPrice;
+                } else if (idx == 1) { //김치냉장고 - BTOCSITE-4239 수정 3도어/4도어 추가
+                    modelWrap.attr({ "data-model-cate": leadName, "data-model_code": code });
+                    let forLeng = configData.modelConfig[idx].typModel.length;
+                    for (let i = 0; i < forLeng; i++) {
+                        if (code == configData.modelConfig[idx].typModel[i].defaultCode) {
+                            defaultImg = configData.modelConfig[idx].typModel[i].simulImg;
+                            modelPrice = configData.modelConfig[idx].typModel[i].defaultPrice;
+                            doorLeng = configData.modelConfig[idx].typModel[i].door.count;
+                            doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
+                            $(".model_set_wrap[data-model-editing='Y']").attr("data-model-price", modelPrice);
+                            if (doorLeng == 3) {
+                                for (let k = 0; k < doorLeng; k++) {
+                                    let doorDirection;
+                                    let doorLocation;
+                                    if (k == 0) {
+                                        doorDirection = "TT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
+                                    } else if (k == 1) {
+                                        doorDirection = "MM";
+                                        doorLocation = "MM";
+                                        doorKLocation = "중칸";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
+                                    } else if (k == 2) {
+                                        doorDirection = "BB";
+                                        doorLocation = "BB";
+                                        doorKLocation = "하칸";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
+                                    }
+                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                    doorHtml += '   <span class="blind">도어 선택</span>';
+                                    doorHtml += '   <span class="door_img"></span>';
+                                    doorHtml += '</button>';
+                                }
+                            } else if (doorLeng == 4) {
+                                for (let k = 0; k < doorLeng; k++) {
+                                    let doorDirection;
+                                    let doorLocation;
+                                    if (k == 0) {
+                                        doorDirection = "LT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸(좌)";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
+                                    } else if (k == 1) {
+                                        doorDirection = "RT";
+                                        doorLocation = "TT";
+                                        doorKLocation = "상칸(우)";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
+                                    } else if (k == 2) {
+                                        doorDirection = "MM";
+                                        doorLocation = "BB";
+                                        doorKLocation = "중칸";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
+                                    } else if (k == 3) {
+                                        doorDirection = "BB";
+                                        doorLocation = "BB";
+                                        doorKLocation = "하칸";
+                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door4.defaultPrice;
+                                    }
+                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                    doorHtml += '   <span class="blind">도어 선택</span>';
+                                    doorHtml += '   <span class="door_img"></span>';
+                                    doorHtml += '</button>';
+                                }
                             }
-                            doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-klocation="' + doorKLocation + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
-                            doorHtml += '   <span class="blind">도어 선택</span>';
-                            doorHtml += '   <span class="door_img"></span>';
-                            doorHtml += '</button>';
                         }
                     }
                     ////console.log("code", code);
@@ -5658,69 +5772,74 @@
                     }
                 }
             } else if (modelCate == "refrigerator_kimchi") {
-                let doorMaterialLeng = configData.modelConfig[1].doorColorData.length;
-                let _door;
-                let _doorFrontCode;
-                let _doorLocation;
-                let doorPrice;
-                if (idx == 0) {
-                    _door = configData.modelConfig[1].door.door1;
-                } else if (idx == 1) {
-                    _door = configData.modelConfig[1].door.door2;
-                } else if (idx == 2) {
-                    _door = configData.modelConfig[1].door.door3;
-                } else if (idx == 3) {
-                    _door = configData.modelConfig[1].door.door4;
-                }
-                doorPrice = _door.defaultPrice;
-                _doorLocation = _door.name;
-                _doorFrontCode = _door.code;
-                let colorSelBodyHtml = '';
-                for (let k = 0; k < doorMaterialLeng; k++) {
-                    let doorColorLeng = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor.length;
-                    let doorMaterialName = configData.modelConfig[1].doorColorData[k].doorMaterial.name;
-                    let doorMaterialEnName = configData.modelConfig[1].doorColorData[k].doorMaterial.enName;
-                    let doorMaterialCode = configData.modelConfig[1].doorColorData[k].doorMaterial.code;
-                    let doorMaterialDesc = configData.modelConfig[1].doorColorData[k].doorMaterial.desc;
-                    let doorMaterialDescImg = configData.modelConfig[1].doorColorData[k].doorMaterial.descImg;
-                    modalTitle.push(doorMaterialName);
-                    modalTitle2.push(doorMaterialEnName);
-                    modalTxt.push(doorMaterialDesc);
-                    modalImg.push(doorMaterialDescImg);
-                    colorSelBodyHtml += '<div class="swiper-slide">';
-                    colorSelBodyHtml += '   <dl>';
-                    colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
-                    colorSelBodyHtml += '       <dd>';
-                    colorSelBodyHtml += '           <ul>';
-                    for (let l = 0; l < doorColorLeng; l++) {
-                        let doorColorName = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].name;
-                        let doorColorCode = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].code;
-                        let doorColorMixingCode = configData.modelConfig[1].doorColorData[k].doorMaterial.doorColor[l].mixingCode;
-                        let colorImgUrl = '/lg5-common/images/OBJ/experience/color/';
-                        let colorImgName = 'color_' + doorMaterialCode + '_' + doorColorCode + '.png';
-                        let colorHtml = '<li>';
-                        colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
-                        colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
-                        //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
-                        // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
-                        colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
-                        colorHtml += '  </button>';
-                        colorHtml += '</li>';
-                        colorSelBodyHtml += colorHtml;
-                    }
-                    colorSelBodyHtml += '           <ul>';
-                    colorSelBodyHtml += '       </dd>';
-                    colorSelBodyHtml += '   </dl>';
-                    colorSelBodyHtml += '</div>';
-                }
-                $(".color_sel_wrap").addClass("is_active");
-                $(".simul_step2 .etc_area").addClass("is_active");
-                $(".color_sel_wrap .color_sel_body .swiper-wrapper").html(colorSelBodyHtml);
-                $(".model_choice_area .model_choice_tab .btn_model_pick").prop("disabled", true);
-                setTimeout(function() {
-                    slideWrapAutoSize(".color_sel_wrap .color_sel_body");
-                }, 10);
+                let typModelLeng = configData.modelConfig[1].typModel.length;
+                //doorPrice = door.defaultPrice; 
+                for (let j = 0; j < typModelLeng; j++) {
+                    if (configData.modelConfig[1].typModel[j].defaultCode == modelCode) {
+                        let doorMaterialLeng = configData.modelConfig[1].typModel[j].doorColorData.length;
+                        let colorSelBodyHtml = '';
+                        for (let k = 0; k < doorMaterialLeng; k++) {
+                            let doorColorLeng = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor.length;
+                            let doorMaterialName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.name;
+                            let doorMaterialEnName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.enName;
+                            let doorMaterialCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.code;
+                            let doorMaterialDesc = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.desc;
+                            let doorMaterialDescImg = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.descImg;
+                            let _door;
+                            let _doorFrontCode;
+                            let _doorLocation;
+                            let doorPrice;
+                            if (idx == 0) {
+                                _door = configData.modelConfig[1].typModel[j].door.door1;
+                            } else if (idx == 1) {
+                                _door = configData.modelConfig[1].typModel[j].door.door2;
+                            } else if (idx == 2) {
+                                _door = configData.modelConfig[1].typModel[j].door.door3;
+                            } else if (idx == 3) {
+                                _door = configData.modelConfig[1].typModel[j].door.door4;
+                            }
+                            doorPrice = _door.defaultPrice;
+                            _doorLocation = _door.name;
+                            _doorFrontCode = _door.code;
+                            modalTitle.push(doorMaterialName);
+                            modalTitle2.push(doorMaterialEnName);
+                            modalTxt.push(doorMaterialDesc);
+                            modalImg.push(doorMaterialDescImg);
+                            colorSelBodyHtml += '<div class="swiper-slide">';
+                            colorSelBodyHtml += '   <dl>';
+                            colorSelBodyHtml += '       <dt>' + doorMaterialName + '</dt>';
+                            colorSelBodyHtml += '       <dd>';
+                            colorSelBodyHtml += '           <ul>';
+                            for (let l = 0; l < doorColorLeng; l++) {
+                                let doorColorName = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].name;
+                                let doorColorCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].code;
+                                let doorColorMixingCode = configData.modelConfig[1].typModel[j].doorColorData[k].doorMaterial.doorColor[l].mixingCode;
+                                let colorImgUrl = '/lg5-common/images/OBJ/experience/color/';
+                                let colorImgName = 'color_' + doorMaterialCode + '_' + doorColorCode + '.png';
+                                let colorHtml = '<li>';
+                                colorHtml += '  <button type="button" data-door-code="' + _doorFrontCode + '" data-door-klocation="' + _doorLocation + '" data-m-code="' + doorMaterialCode + '" data-m-name="' + doorMaterialName + '" data-c-code="' + doorColorCode + '" data-c-name="' + doorColorName + '" data-mix-code="' + doorColorMixingCode + '" data-door-price="' + doorPrice + '" class="btn_door_color_sel">';
+                                colorHtml += '      <span class="color_img"><img src="' + colorImgUrl + colorImgName + '" alt="" /></span>';
+                                //BTOCSITE-2346 오브제컬렉션 체험 제품 업데이트 요청 210709 (소재명 제거)
+                                // colorHtml += '      <span class="color_name">' + doorMaterialName + ' <br>' + doorColorName + '</span>'; 
+                                colorHtml += '      <span class="color_name">' + doorColorName + '</span>';
+                                colorHtml += '  </button>';
+                                colorHtml += '</li>';
+                                colorSelBodyHtml += colorHtml;
+                            }
+                            colorSelBodyHtml += '           <ul>';
+                            colorSelBodyHtml += '       </dd>';
+                            colorSelBodyHtml += '   </dl>';
+                            colorSelBodyHtml += '</div>';
+                        }
+                        $(".color_sel_wrap").addClass("is_active");
+                        $(".simul_step2 .etc_area").addClass("is_active");
+                        $(".color_sel_wrap .color_sel_body .swiper-wrapper").html(colorSelBodyHtml);
+                        setTimeout(function() {
+                            slideWrapAutoSize(".color_sel_wrap .color_sel_body");
+                        }, 10);
 
+                    }
+                }
             } else if (modelCate == "refrigerator_convertible") {
                 let typModelLeng = configData.modelConfig[2].typModel.length;
                 //doorPrice = door.defaultPrice;
@@ -6038,6 +6157,7 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
+            let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : location.protocol+'//'+location.host; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             
             priceArry.push(defaultModel);                            
@@ -6047,7 +6167,7 @@
             priceHtml += '      <dt>' + modelName + '</dt>';
             priceHtml += '      <div class="panel_guide">';
             priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
-            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" target="_blank" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
+            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" data-go-url data-open-mode="outlink" data-target="_blank" data-href="'+domain+'/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
             priceHtml += '      </div>';
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';

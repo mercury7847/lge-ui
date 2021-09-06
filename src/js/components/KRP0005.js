@@ -22,6 +22,7 @@
             
             self.$floatingWrap = $('.btn-floating-wrap');
             self.$KRP0005 = $('.KRP0005.floating-menu');
+            self.$morePlus = $('.KRP0005.floating-menu.more-plus');
             self.moreButton = self.$KRP0005.find('.more-plus-linker a');
 
             self.$popup = $('#KRP0032:eq(0)');
@@ -32,26 +33,28 @@
             var self = this;
             var $chat = self.$KRP0005.find('div.floating-linker.chat a');
             if($chat.length > 0) {
-                var ajaxUrl = self.$KRP0005.data('pincodeUrl');
-                lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
-                    var pinCode = null;
-                    var data = result.data;
-                    if(data) {
-                        var receveResult = data.result;
-                        if(receveResult && receveResult.code) {
-                            pinCode = receveResult.code;
+                var ajaxUrl = self.$morePlus.data('pincodeUrl');
+                if(ajaxUrl) {
+                    lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
+                        var pinCode = null;
+                        var data = result.data;
+                        if(data) {
+                            var receveResult = data.result;
+                            if(receveResult && receveResult.code) {
+                                pinCode = receveResult.code;
+                            }
                         }
-                    }
 
-                    var chatUrl = self.$KRP0005.data('chatUrl');
-                    var isApplication = isApp();
-                    chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
-                    if(pinCode) {
-                        chatUrl += ("&code="+pinCode);
-                    }
+                        var chatUrl = self.$morePlus.data('chatUrl');
+                        var isApplication = isApp();
+                        chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
+                        if(pinCode) {
+                            chatUrl += ("&code="+pinCode);
+                        }
 
-                    $chat.attr('href',chatUrl);
-                });
+                        $chat.attr('href',chatUrl);
+                    });
+                }
             }
         },
 
@@ -209,8 +212,11 @@
 
 	};
 
+
+
+
     $(document).ready(function(){
-        if(!document.querySelector('.KRP0005')) return false;
+        // if(!document.querySelector('.KRP0005')) return false;
         //$('.KRP0005').buildCommonUI();
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
@@ -222,31 +228,29 @@
         }
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
-            setTimeout(function(){
-                console.log('krp0005 init');
-                var floatingWrap = $('.floating-wrap').remove();
-                var btnFloatingWrap = $('.btn-floating-wrap').remove();
-                $('#floatBox').append(btnFloatingWrap);
-                $('#floatBox').append(floatingWrap);
+            var domInsertCheck = false;
+            $('#sw_con .swiper-slide').one('DOMNodeInserted', function(e) {
+                console.log("dom insert %o",e.target);
 
-                // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
-                if ($('.swiper-slide-active').data().hash == 'support'){
-                    $(floatingWrap).hide();
-                    $(btnFloatingWrap).hide();
+                if(!domInsertCheck) {
+                    console.log('krp0005 init');
+                    var floatingWrap = $('.floating-wrap').remove();
+                    var btnFloatingWrap = $('.btn-floating-wrap').remove();
+                    $('#floatBox').append(btnFloatingWrap);
+                    $('#floatBox').append(floatingWrap);
+
+                    // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
+                    if ($('.swiper-slide-active').data().hash == 'support'){
+                        $(floatingWrap).hide();
+                        $(btnFloatingWrap).hide();
+                    }
+                    
+                    KRP0005.init();
+                    $(document).trigger('appInit');
+                    domInsertCheck = true;
                 }
-                $('.back-to-top button').off('click').on('click', function (e) {
-                    e.preventDefault();
-                    $(window).trigger('floatingTop');
-                    $('html, body').stop().animate({
-                        scrollTop: 0
-                    }, 400);
-                });
-    
-                KRP0005.init();
-    
-                $(document).trigger('appInit');
-                
-            },100);
+
+            });
         }
         
         // 스와이프 아닌 페이지

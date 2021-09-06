@@ -1,0 +1,20 @@
+<svg id="ic_btn_reset_p_MO_32" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-3{stroke:#fff;stroke-width:2px;stroke-linecap:round}
+        </style>
+    </defs>
+    <path id="Rectangle" class="cls-1" d="M0 0h32v32H0z"/>
+    <g id="Group_610" data-name="Group 610" transform="translate(-1591.726 -755.168)">
+        <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(1594 758)" style="stroke:#fff;stroke-width:2px;fill:none">
+            <ellipse cx="13.631" cy="13.829" rx="13.631" ry="13.829" style="stroke:none"/>
+            <ellipse class="cls-1" cx="13.631" cy="13.829" rx="12.631" ry="12.829"/>
+        </g>
+        <path id="Path_100" data-name="Path 100" class="cls-3" d="M-20625-22482.107v-2.215" transform="translate(22232.639 23241)"/>
+        <path id="Path_101" data-name="Path 101" class="cls-3" d="M0 2.215V0" transform="rotate(30 -662.33 3378.063)"/>
+        <path id="Path_102" data-name="Path 102" class="cls-3" d="M0 0v2.215" transform="rotate(150 702.78 609.341)"/>
+        <path id="Path_103" data-name="Path 103" class="cls-3" d="m-20632.861-22482.1-2.932 2.375" transform="translate(22231.525 23239.188)"/>
+        <path id="Path_104" data-name="Path 104" class="cls-3" d="m-20635.795-22482.1 2.932 2.375" transform="translate(22252.395 23239.188)"/>
+        <path id="Path_105" data-name="Path 105" class="cls-3" d="M-20625.5-22477.91v6.059l-2.928 2.273" transform="translate(22232.623 23244.051)"/>
+    </g>
+</svg>

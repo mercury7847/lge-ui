@@ -12,7 +12,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
         detect = core.detect,
         ui = core.ui,
         isTouch = detect.isTouch,
-        _zIndex = 9000;
+        _zIndex = 9001; //BTOCSITE-1967
 
     var ModalManager = {
         templates: {

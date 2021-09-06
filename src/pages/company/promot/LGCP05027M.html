@@ -15,92 +15,254 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	var digitalData = digitalData || {};
 	digitalData.pageInfo = {
 		"content_depth1": "회사소개",
-		"content_depth2": "회사소개|지속가능경영",
-		"content_depth3": "회사소개|지속가능경영|ESG 팩트북",
-		"content_depth4": "회사소개|지속가능경영|ESG 팩트북|고객",
-		"content_depth5": "회사소개|지속가능경영|ESG 팩트북|고객"
+		"content_depth2": "회사소개|ESG 경영",
+		"content_depth3": "회사소개|ESG 경영|ESG 팩트북",
+		"content_depth4": "회사소개|ESG 경영|ESG 팩트북|고객",
+		"content_depth5": "회사소개|ESG 경영|ESG 팩트북|고객"
 	};
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {packages:['corechart']});
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
 	google.charts.setOnLoadCallback(drawChart);
-	var dataColumn01, chartColumn01, optionsColumn;
-	var dataColumn02, chartColumn02;
 
 	function drawChart() {
-		dataColumn01 = google.visualization.arrayToDataTable([
-			['', '', { role: 'annotation' }, {role: 'style'}],
-			['2020', 95.2, ' 95.2% ', 'fill-color: #e81953'],
-			['2019', 93.0, ' 93.0% ', 'fill-color: #000000'],
-			['2018', 92.9, ' 92.9% ', 'fill-color: #000000']
+		var data = google.visualization.arrayToDataTable([
+			['고객만족도 조사 : 한국', '고객만족도', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
+			['2020', 95.20, '95.20%', '#da0f47'],
+			['2019', 93.00, '93.00%', '#000'],
+			['2018', 92.90, '92.90%', '#000']
 		]);
-		dataColumn02 = google.visualization.arrayToDataTable([
-			['', '', { role: 'annotation' }, {role: 'style'}],
-			['2020', 64.1, ' 64.1% ', 'fill-color: #e81953'],
-			['2019', 68.4, ' 68.4% ', 'fill-color: #000000'],
-			['2018', 68.3, ' 68.3% ', 'fill-color: #000000']
-		]);
+		var view = new google.visualization.DataView(data);
+		var columnOptions = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				height: '100%',
+				left: 40,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			height: 360,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				},
+			},
+			bar: {
+				groupWidth: '40',
+			},
 
-		optionsColumn = {
-			colors: ['#e81953', '#000000'],
-			vAxis:{minValue:'0', maxValue: '110'},
-			chartArea: {width: '60%',right:'20%', height: '90%',top:'-5%'},
-			bar: { groupWidth: '25%' },
-			annotations: {textStyle: {bold:true},stem:{color :'none', length:'0'}},
-			legend: {position: 'none'},
-			fontName:'Noto Sans',
-			fontSize:"16"
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
 		};
-		chartColumn01 = new google.visualization.ColumnChart(document.getElementById("chartColumn01"));
-		chartColumn02 = new google.visualization.ColumnChart(document.getElementById("chartColumn02"));
-	}
-	$(window).resize(function() {
-		/* 화면사이즈가 변하면 차트를 그려줌 */
-		if($(".accordion-wrap li.lists:nth-child(3)").hasClass("on")){
-			setTimeout(function(){
-				chartColumn01.draw(dataColumn01, optionsColumn);
-				chartColumn02.draw(dataColumn02, optionsColumn);
-			}, 100);
+
+		function checkSize() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions.height = '240';
+				columnOptions.bar.groupWidth = '25';
+				columnOptions.vAxis.textStyle.fontSize = '13';
+				columnOptions.hAxis.textStyle.fontSize = '13';
+				columnOptions.annotations.textStyle.fontSize = '12';
+				columnOptions.annotations.stem.length = '5';
+			} else {
+				columnOptions.height = '360';
+				columnOptions.bar.groupWidth = '40';
+				columnOptions.vAxis.textStyle.fontSize = '14';
+				columnOptions.hAxis.textStyle.fontSize = '14';
+				columnOptions.annotations.textStyle.fontSize = '13';
+				columnOptions.annotations.stem.length = '8';
+			}
 		}
-	});
-	$(document).ready(function() {
-		/* 세번째 아코디언이 열린 다음에 차트를 그려줌 */
-		$(".accordion-wrap li.lists:nth-child(3)").on('click', function(e){
-			setTimeout(function(){
-				chartColumn01.draw(dataColumn01, optionsColumn);
-				chartColumn02.draw(dataColumn02, optionsColumn);
-			}, 100);
+
+
+
+		var data2 = google.visualization.arrayToDataTable([
+			['고객만족도 조사 : 해외', '고객만족도', {
+				role: 'annotation'
+			}, {
+				role: 'style'
+			}],
+			['2020', 64.10, '64.10%', '#da0f47'],
+			['2019', 68.40, '68.40%', '#000'],
+			['2018', 68.30, '68.30%', '#000']
+		]);
+		var view2 = new google.visualization.DataView(data2);
+		var columnOptions2 = {
+			title: {
+				position: 'none'
+			},
+			fontName: 'Noto Sans',
+			chartArea: {
+				width: '100%',
+				height: '100%',
+				left: 40,
+				right: 0,
+				top: 0,
+				bottom: 40
+			},
+			height: 360,
+			legend: {
+				position: 'none'
+			},
+			series: {
+				0: {
+					color: '#da0f47'
+				},
+			},
+			bar: {
+				groupWidth: '40',
+			},
+
+			annotations: {
+				alwaysOutside: true,
+				textStyle: {
+					fontSize: 13,
+					bold: true,
+					auraColor: 'none'
+				},
+				stem: {
+					color: 'none',
+					length: '8'
+				}
+			},
+			vAxis: {
+				title: {
+					position: 'none'
+				},
+				maxValue: '110',
+				minValue: '0',
+				textStyle: {
+					fontSize: '14',
+				},
+				gridlines: {
+					color: '#ddd',
+					count: '6'
+				},
+				minorGridlines: {
+					color: '#fff',
+				},
+				format: "#'%'"
+			},
+			hAxis: {
+				title: {
+					position: 'none'
+				},
+				textStyle: {
+					fontSize: '16',
+				}
+			},
+		};
+
+		function checkSize2() {
+			var windowWidth = $(window).width();
+			if (windowWidth < 767) {
+				columnOptions2.height = '240';
+				columnOptions2.bar.groupWidth = '25';
+				columnOptions2.vAxis.textStyle.fontSize = '13';
+				columnOptions2.hAxis.textStyle.fontSize = '13';
+				columnOptions2.annotations.textStyle.fontSize = '12';
+				columnOptions2.annotations.stem.length = '5';
+			} else {
+				columnOptions2.height = '360';
+				columnOptions2.bar.groupWidth = '40';
+				columnOptions2.vAxis.textStyle.fontSize = '14';
+				columnOptions2.hAxis.textStyle.fontSize = '14';
+				columnOptions2.annotations.textStyle.fontSize = '13';
+				columnOptions2.annotations.stem.length = '8';
+			}
+		}
+
+		function resize() {
+			checkSize();
+			var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+			chart.draw(view, columnOptions);
+
+			checkSize2();
+			var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
+			chart2.draw(view2, columnOptions2);
+		}
+		
+		$(window).on('load', resize());
+		$(window).on('resize', resize);
+
+		$(".draw_chart_div").on('click', function (e) {
+			setTimeout(function () {
+				checkSize();
+				var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+				chart.draw(view, columnOptions);
+
+				checkSize2();
+				var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div2"));
+				chart2.draw(view2, columnOptions2);
+			}, 500);
 		});
-	});
+	}
 </script>
 <style>
-.googlechart-wrap {position: relative;max-width:600px;margin:-8% auto 0;z-index: -1;}
-.googlechart-wrap.over100::before{content: "";display:block;background:#ffffff;width:100%;height:8%;position:absolute;top:0;z-index: 1;}
-.googlechart-wrap .chartarea {height:400px;}
-@media screen and (max-width: 767px){
-	.googlechart-wrap{width:100%;margin-top:-8%;}
-	.googlechart-wrap.over100::before{height:8%;}
-	.googlechart-wrap .chartarea {height:53vw;}
-}
-@media screen and (max-width: 425px){
-	.googlechart-wrap{margin-top:-14%;}
-	.googlechart-wrap.over100::before{height:14%;}
-}
+	ul.pc2mo1 {width:calc(100% + 12px); margin-left:-12px}
+	ul.pc2mo1 li {margin-left:0!important; text-indent:0!important}
+	.satisfactionArea li + li {margin-left:40px!important}
+	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
+	@media screen and (max-width:768px){
+		.graph_dec {font-size:12px;line-height:20px;}
+		.satisfactionArea li + li {margin-left:25px!important}
+	}
 </style>
-<div class="breadcrumb">
-	<ul>
-		<li><a href="/">홈</a></li>
-		<li><a href="/company/main">회사소개</a></li>
-		<li><a href="/company/sustainable/overview">지속가능경영</a></li>
-		<li><a href="/company/promot/system">ESG 팩트북</a></li>
-		<li><strong>고객</strong></li>
-	</ul>
-</div>
 <div class="container company">
 	<div class="page-header">
-		<h2 class="title">지속가능경영</h2>
+		<h2 class="title">ESG 경영</h2>
 	</div>
 	<!-- hiro image -->
 	<section class="hiro-wrap">
@@ -377,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</li>
 				<li class="lists">
 					<div class="head">
-						<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+						<a href="#n" class="accord-btn ui_accord_toggle draw_chart_div" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<span class="title line2">고객만족도</span><!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 -->
 							<span class="blind ui_accord_text">내용 더 보기</span>
 						</a>
@@ -393,24 +555,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<ul class="pc2mo1">
 										<li>
 											<div class="graph">
-												<span class="txt_rt">(단위: %)</span>
-												<div class="googlechart-wrap over100">
-													<div class="chartarea" id="chartColumn01"></div>
-													<div class="blind">
-														<ul>
-															<li>
-																<span>고객만족도 - 한국</span>
-																<ul>
-																	<li>95.2%</li>
-																	<li>93.0%</li>
-																	<li>92.9%</li>
-																</ul>
-															</li>
-														</ul>
-													</div>
+												<div style="max-width:620px;margin:0 auto;">
+													<p class="graph_dec">(단위: 고객만족도, %)</p>
+													<div class="chart_area percent" id="chart_div"></div>
+													<!-- 구글차트 -->
+												</div>
+												<div class="blind">
+													<ul>
+														<li>
+															<span>고객만족도 - 한국</span>
+															<ul>
+																<li>95.20%</li>
+																<li>93.00%</li>
+																<li>92.90%</li>
+															</ul>
+														</li>
+													</ul>
 												</div>
 											</div>
-											<!-- 구글차트 -->
 										</li>
 										<li>
 											<ul class="satisfactionArea">
@@ -427,24 +589,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<ul class="pc2mo1">
 										<li>
 											<div class="graph">
-												<span class="txt_rt">(단위: %)</span>
-												<div class="googlechart-wrap over100">
-													<div class="chartarea" id="chartColumn02"></div>
-													<div class="blind">
-														<ul>
-															<li>
-																<span>고객만족도 - 해외</span>
-																<ul>
-																	<li>64.1%</li>
-																	<li>68.4%</li>
-																	<li>68.3%</li>
-																</ul>
-															</li>
-														</ul>
-													</div>
+												<div style="max-width:620px;margin:0 auto;">
+													<p class="graph_dec">(단위: 고객만족도, %)</p>
+													<div class="chart_area percent" id="chart_div2"></div>
+													<!-- 구글차트 -->
+												</div>
+												<div class="blind">
+													<ul>
+														<li>
+															<span>고객만족도 - 해외</span>
+															<ul>
+																<li>64.10%</li>
+																<li>68.40%</li>
+																<li>68.30%</li>
+															</ul>
+														</li>
+													</ul>
 												</div>
 											</div>
-											<!-- 구글차트 -->
 										</li>
 										<li>
 											<ul class="satisfactionArea">

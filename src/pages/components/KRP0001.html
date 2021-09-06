@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html')
+    @@include('./common/head.html', {
+        pageJS: ["components/KRP0005"]
+    })
 <body>
     <div class="wrap">
         @@include('./common/header.html', {
@@ -8,6 +10,25 @@
         })
         <div class="container">
         </div>
+
+        <!-- @@include('./common/footer.html') -->
+        <div class="floating-wrap">
+            <!-- component / Sticky chat -->
+            @@include('./common/partials/KRP0005.html')
+            <!-- // component / Sticky chat -->
+
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+        </div>
+        <!-- //210226 플로팅버튼 추가 -->
+
+        @@include('./common/footer.html')
+
+        @@include('./LLS/LLS0100-modal-01.html', {
+            "popupID": "appInstallGuidePopup"
+        })
+        
     </div>
 </body>
 </html>

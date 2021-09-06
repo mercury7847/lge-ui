@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_menu_b" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <path id="Path" fill="none" d="M0 0h48v48H0z"/>
+    <g id="ic" transform="translate(7 10)">
+        <path id="Line" d="M0 .5h36" class="cls-2" transform="translate(-1 12.5)"/>
+        <path id="Line-2" d="M0 .5h36" class="cls-2" transform="translate(-1 26.5)"/>
+        <path id="Line-3" d="M0 .5h36" class="cls-2" transform="translate(-1 -1.5)"/>
+    </g>
+</svg>
