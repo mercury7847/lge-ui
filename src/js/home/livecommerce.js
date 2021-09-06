@@ -45,8 +45,8 @@ var lls = {
     appPushVisibleCheck: function(){
         if( isApp()) {
             if( vcui.detect.isIOS ) {
-                appPushCheck = function(push, mktPush, geolocation, appVersion){
-                    alert("IOS " + push + " " +  mktPush + " " + geolocation + " " + appVersion)
+                appPushCheck = function(value){
+                    alert("IOS " + value)
                 }
                 var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appPushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
