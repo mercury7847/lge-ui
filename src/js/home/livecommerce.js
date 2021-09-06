@@ -48,7 +48,7 @@ var lls = {
                 appPushCheck = function(push, mktPush, geolocation, appVersion){
                     alert("IOS " + mktPush)
                 }
-                var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "Y"});
+                var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appPushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
                 android.setAdPushActive("Y")
