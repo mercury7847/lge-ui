@@ -82,14 +82,8 @@ var lls = {
         var self = this;
 
         LGEPushSetting = function(flag){
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth();
-            var date = now.getDate();
-            var hours = now.getHours();
-
             var msg = {
-                flagY: year + "년 " + month + "월 " + date + "일 " + hours + "시 알림 허용처리가 완료되었습니다.",
+                flagY: self.showDate() + " 알림 허용처리가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
 
@@ -142,6 +136,13 @@ var lls = {
                             } else {
                                 android.setAdPushActive("N")
                             }
+
+                            lgkorUI.alert("", {
+                                title: self.showDate() + "<br>알림 해제 처리가 <br>완료되었습니다.",
+                                ok: function(el) {
+                                   
+                                }
+                            }, self.pushBtn);
                         }
                     }, self.pushBtn);
                 } else {
@@ -175,6 +176,16 @@ var lls = {
         var _self = this;
         var ajaxUrl = $(dm).attr('href');
         window.open(ajaxUrl,'','width=912,height=760,scrollbars=yes');
+    },
+    showDate: function(){
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth()+1;
+        var date = now.getDate();
+        var hours = now.getHours();
+        var textTime = year + "년 " + month + "월 " + date + "일 " + hours + "시" ;
+
+        return textTime;
     },
     heroSlider: function(){
         //히어로 배너 슬라이드
