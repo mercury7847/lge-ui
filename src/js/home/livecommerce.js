@@ -150,7 +150,7 @@ var lls = {
         });
         
     },
-    pushClickEvent(){
+    pushClickEvent: function(){
         var self = this;
         if( isApp() ) {
             if( self.$pushBtn.hasClass('active')) {
