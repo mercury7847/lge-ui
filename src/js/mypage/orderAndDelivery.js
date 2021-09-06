@@ -2290,16 +2290,12 @@
                 addPopProdductList(popup, productList, true);
                 var $firstTab = $('.new-type .tabs').find("li").eq(0); //BTOCSITE-4124 수정 210906
                 var isAllChecked = false;
-                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") {
-                    isAllChecked = true;
-                }else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") {
-                    isAllChecked = true;
-                }else if($firstTab.hasClass == true && result.data.payment.paymentType != undefined && result.data.payment.paymentType != null && result.data.payment.paymentType != "null") { //210906 BTOCSITE-4124 수정
-                    if(result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") {
-                        isAllChecked = true; //추가 210824 BTOCSITE-4124
-                    }
-                }else {
-                    isAllChecked = false; // 210824 추가 BTOCSITE-4124
+                if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
+                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
+                isAllChecked = false; // 210824 추가 BTOCSITE-4124
+                
+                if($firstTab.hasClass("on") == true){
+                    if(result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") isAllChecked = true;
                 }
                 // isAllChecked = false //210824 수정 BTOCSITE-4124 
                 
@@ -2345,9 +2341,14 @@
                     //BTOCSITE-4124 수정 210906
                     if($firstTab.hasClass("on") == true){
                         if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
-                        isAllCancelDisable = true;
-                        isCashCheck = "현금결제"; 
-                        } else { 
+                        isAllCancelDisable = false;
+                        // itemCancelAbleYn  == Y값으로 떨어지면 취소할수있도록 disabled 비활성화되어야함
+                        } else {
+                            isAllCancelDisable = true;
+                            isCashCheck = "현금결제"; 
+                        }
+                    } else {
+                        if(data.itemCancelAbleYn == "Y"){
                             isAllCancelDisable = false;
                         }
                     }
@@ -2361,14 +2362,14 @@
 //                     $('#popup-cancel').find('.pop-footer').hide();
 //                     $('#popup-cancel').find('.not-cancel-footer').show();
 //                 } else 
-                if(dataChk == false && isAllChecked == true && isAllCancelDisable == true && isCashCheck == "현금결제"){ 
+                if(dataChk == false && isAllCancelDisable == true && isCashCheck == "현금결제"){ 
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('.cancel-select input[type=checkbox]').prop('disabled',true);
                     $('#popup-cancel').find('#cancelPopAgree').prop('disabled',true);
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                     $('#popup-cancel').addClass('cash-chk');
-                } else if(dataChk == true && isAllChecked == true && isAllCancelDisable == true && isCashCheck == "현금결제"){
+                } else if(dataChk == true && isAllCancelDisable == true && isCashCheck == "현금결제"){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
