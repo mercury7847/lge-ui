@@ -12,6 +12,8 @@ var lls = {
     },
     settings: function(){
         var self = this;
+        self.mktValue = "";
+        self.pushValue = "";
         self.$llsMain = $('.lls-main');
         self.$switch = self.$llsMain.find('.ui_background_switch')
         self.$pushBtn = self.$llsMain.find('.btn-lls-push');
@@ -44,20 +46,34 @@ var lls = {
     },
     appPushVisibleCheck: function(){
         if( isApp()) {
+            
             if( vcui.detect.isIOS ) {
-                appPushCheck = function(push, mktPush, geolocation, appVersion){
-                    alert("IOS " + push + " " +  mktPush + " " + geolocation + " " + appVersion)
+                appMKTpushCheck = function(value){
+                    var valueArray = value.split("|");
+                    self.mktValue = valueArray[1];
                 }
-                var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appPushCheck"});
+                appPushCheck = function(value){
+                    self.pushValue = value;
+                }
+                var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appMKTpushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-            } else {
-                android.setAdPushActive("Y")
 
-                if( android.getAdPushActive()) {
-                    alert("안드로이드 " + android.getAdPushActive())
-                }
+                var objPushCheck = new Object();
+                objPushCheck.command = "getPushStatus";
+                objPushCheck.callback = "appPushCheck";
+                var pushString= JSON.stringify(objPushCheck);
+                webkit.messageHandlers.callbackHandler.postMessage(pushString);
+            } else {
+                self.mktValue = android.getAdPushActive()
+                self.pushValue = android.getOSPush();
+                alert(self.mktValue, self.pushValue)
             }
 
+            if( self.pushValue == "Y" && self.mktValue == "Y") {
+                self.$pushBtn.addClass('active').find('span').text('알림받는중');
+            } else {
+                self.$pushBtn.removeClass('active').find('span').text('알림받기');
+            }
         }
     },
     bindEvent: function(){
@@ -68,7 +84,6 @@ var lls = {
             var year = now.getFullYear();
             var month = now.getMonth();
             var date = now.getDate();
-            var day = now.getDay();
             var hours = now.getHours();
 
             var msg = {
@@ -111,16 +126,25 @@ var lls = {
             self.pushBtn = _self;
             e.preventDefault();
 
+            self.appPushVisibleCheck();
+
             if( isApp() ) {
-                if(vcui.detect.isIOS){
-                    var obj = new Object();
-                    obj.command = "getPushStatus";
-                    obj.callback = "LGEPushSetting";
-                    var jsonString= JSON.stringify(obj);
-                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                if( $(this).hasClass('active')) {
+                    lgkorUI.confirm("", {
+                        title: "알림 받기 해제 시 마케팅 푸시<br>알림 거부 처리가 됩니다. 알림<br> 받기를 해제 하시겠습니까?",
+                        okBtnName: "해제하기",
+                        ok: function(el) {
+                            if( vcui.detect.isIOS ) {
+                                var jsonString= JSON.stringify({"command": "setMkt", "value": "N"});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.setAdPushActive("N")
+                            }
+                        }
+                    }, self.pushBtn);
                 } else {
-                    var androidPush = android.getOSPush();
-                    LGEPushSetting(androidPush)
+                    alert('알림받기 실행 ::' + self.pushValue)
+                    LGEPushSetting(self.pushValue)
                 }
             }
         });
@@ -134,7 +158,7 @@ var lls = {
                 if( !vcui.detect.isMobileDevice ) {
                     e.preventDefault();
                     self.$appInstallPopup.vcModal({opener:$(this)});
-                }
+                } 
             }
         });
 
