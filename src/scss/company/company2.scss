@@ -1226,6 +1226,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-left:185px}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {position:absolute; width:100px; height:65px; top:calc(50% - 32.5px); left:60px; margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_thumb .thumb {top:calc(50% - 22.5px)}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb img {width:100%; vertical-align:top}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tit_thumb table {margin:0}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em {color:#666; font-size:16px; font-weight:normal}
@@ -1704,7 +1705,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-right:50px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {width:70px; height:45px; top:29px; left:20px}
-    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title {display:block; width:100%; min-height:45px; max-height:100%; margin-bottom:10px; padding-left:80px}
+    .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_thumb .thumb {top:29px!important}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title {display:table-cell; width:100%; min-height:45px; height:45px; margin-bottom:10px; padding-left:80px; vertical-align:middle}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em {font-size:13px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em b {font-size:16px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > span.bar {margin-right:7px; padding-right:8px}
