@@ -45,6 +45,7 @@ var lls = {
         })
     },
     appPushVisibleCheck: function(){
+        var self = this;
         if( isApp()) {
             
             if( vcui.detect.isIOS ) {
