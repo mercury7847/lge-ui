@@ -85,7 +85,7 @@ var lls = {
 
         LGEPushSetting = function(flag){
             var msg = {
-                flagY: self.showDate() + " 알림 허용처리가 완료되었습니다.",
+                flagY: self.showDate() + " 알림 허용 처리가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
 
