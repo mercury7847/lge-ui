@@ -869,6 +869,10 @@ if ('scrollRestoration' in history) {
            
                    }
 
+                    //리스트 세팅
+                    var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
+                    arr = self.checkArrayData(data.product);
+                    count = self.checkCountData(data.product);
                     self.setTabCount(1, count);
                     var subcount = self.checkSubCountData(data.product);
                     if(subcount) {
