@@ -74,7 +74,7 @@ var lls = {
                 if( self.pushValue == "Y" && self.mktValue == "Y") {
                     self.$pushBtn.addClass('active').find('span').text('알림받는중');
                 } else {
-                    self.$pushBtn.removeClass('active').find('span').text('알림받기');
+                    self.$pushBtn.removeClass('active').find('span').text('푸시알림받기');
                 }
                 self.$llsMain.find('.lls-push').addClass('active');
             }, 50)
@@ -143,7 +143,7 @@ var lls = {
                             lgkorUI.alert("", {
                                 title: self.showDate() + "<br>알림 해제 처리가 <br>완료되었습니다.",
                                 ok: function(el) {
-                                   self.$pushBtn.removeClass('active').find('span').text('알림받기')
+                                   self.$pushBtn.removeClass('active').find('span').text('푸시알림받기')
                                 }
                             }, self.pushBtn);
                         }
