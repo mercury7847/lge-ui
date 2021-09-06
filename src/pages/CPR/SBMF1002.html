@@ -3,7 +3,7 @@
     @@include('./common/head.html', {
         pageCSS: ["CPR/CPR"],
         pageTitle: "스탠바이미 클럽 | LG전자",
-        pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+        pageDesc: "LG전자 스탠바이미에 대한 문의사항, 리뷰를 등록할 수 있는 스탠바이미 클럽 입니다."
     })
 <body>
     <div class="wrap">
@@ -47,11 +47,11 @@
                         </div>
                         <!-- .stanbyme-detail-body e -->
                         <div class="btn-box mobile-only">
-                            <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제하기</span></button>
+                            <button type="button" class="btn gray size" data-href="#delPopup" data-control="modal"><span>삭제</span></button>
                             <a href="#" class="btn border size"><span>수정</span></a>
                         </div>
                         <!-- .comment-wrap s  -->
-                        <div class="comment-wrap">
+                        <div class="comment-wrap" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeDListAjax.json">
                             <div class="comment-head">
                                <div class="total">댓글 <em class="count">37</em></div>
                             </div>
@@ -84,27 +84,6 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="comment-content">
-                                            <div  class="info-name">
-                                                <span class="blind">작성자</span>김*복
-                                            </div>
-                                            <div class="comment-text-wrap">
-                                                <div class="comment-text">
-                                                    <p class="admin-delete">관리자에 의해 삭제된 글입니다.</p>
-                                                </div>
-                                            </div>
-                                            <div class="info-date">
-                                                <span class="blind">작성일시</span>
-                                                2021.08.11
-                                                <span class="time">18:05</span>
-                                            </div>
-                                            <div class="comment-btn-box">
-                                                <button type="button" class="btn-text">수정</button>
-                                                <button type="button" class="btn-text btn-comment-del" data-id="#commentDeleteConfirm" data-control="modal">삭제</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
                                         <div class="comment-content admin-comment">
                                             <div  class="info-name">
                                                 <span class="blind">작성자</span>LG전자
@@ -126,8 +105,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <!-- 댓글작성자 일 경우에만 .my-commment class 추가 (수정/삭제 버튼이 노출됨) -->
-                                        <div class="comment-content my-commment">
+                                        <div class="comment-content">
                                             <div  class="info-name">
                                                 <span class="blind">작성자</span>정*희
                                             </div>
@@ -153,20 +131,18 @@
                                                 <span class="blind">작성자</span>정*희
                                             </div>
                                             <form>
-                                                <div class="comment-write">
+                                                <div class="comment-write" data-ajax="/lg5-common/data-ajax/store/insertStanbyMe.lgajax.json">
                                                     <div class="form-wrap">
                                                         <div class="forms">
                                                             <div class="conts">
                                                                 <div class="text-form">   
                                                                     <div class="input-wrap">
-                                                                        <!-- 작성중일때 .valid class textarea에 추가 되어야 함 (취소버튼 노출, 등록 버튼 색상변경) -->
-                                                                        <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError">맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 
-                                                                        </textarea>
+                                                                        <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError">맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. 맞아요! 다운로드 지원가능 앱이 좀 더 많아지면 좋겠어요. </textarea>
                                                                         <div class="txt-count-box">
                                                                             <span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>
                                                                             <div class="comment-write-btn-box">
                                                                                 <button type="reset" class="btn gray size btn-cancel">취소</button>
-                                                                                <button type="submit" class="btn dark-gray size btn-confirm">등록</button>
+                                                                                <button type="button" class="btn dark-gray size btn-confirm">수정</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -183,23 +159,22 @@
                                     </li>
                                 </ul>
                             </div>
-                            @@include('./common/support/pagination.html', {
-                                count: 5
-                            })
+                            <div class="pagination" data-page="1" data-visible-count="5" data-total-count="4"></div>
+
+
                             <form action="" method="post">
-                                <div class="comment-write">
+                                <div class="comment-write" data-ajax="/lg5-common/data-ajax/store/insertStanbyMe.lgajax.json">
                                     <div class="form-wrap">
                                         <div class="forms">
                                             <div class="conts">
                                                 <div class="text-form">   
                                                     <div class="input-wrap">
-                                                        <!-- 작성중일때 .valid class textarea에 추가 되어야 함 (취소버튼 노출, 등록 버튼 색상변경) -->
                                                         <textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될   수 있습니다." maxlength="500" data-limit="500" data-count-target="#txt-count2" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>
                                                         <div class="txt-count-box">
                                                             <span id="txt-count2" class="inner-text"><em>0</em> / 500자</span>
                                                             <div class="comment-write-btn-box">
                                                                 <button type="reset" class="btn gray size btn-cancel">취소</button>
-                                                                <button type="submit" class="btn dark-gray size btn-confirm">등록</button>
+                                                                <button type="button" class="btn dark-gray size btn-confirm">등록</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -247,47 +222,6 @@
         </div>
     </article>
 
-    <script>
-        $(function() {
-            $('.btn-comment-del').on('click', function(e){
-                var id = $(e.currentTarget).data('id');
-                var obj ={title:'', typeClass:'', ok : function (){ }};
-                var desc = '';
-        
-                if(id=="#commentDeleteConfirm"){
-                    obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    desc = '';
-                }
-                lgkorUI.confirm(desc, obj);
-            });
-
-            // 댓글 작성중일 경우 valid 클래스 추가
-            var inp = $('.input-wrap textarea');
-            inp.each(function(){
-                var me = $(this);
-                var inpValLen = me.val().length;
-                
-                me.on('change keyup paste', function(){
-                    
-                    if(inpValLen > 0) {
-                        me.addClass('valid');
-                    } else{
-                        me.removeClass('valid');
-                    }
-                });
-
-                if(inpValLen > 0) {
-                        me.addClass('valid'); 
-                        console.log('test');
-                } else{
-                    me.removeClass('valid');
-                }
-
-
-                
-            });
-            
-        });
-    </script>
+    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>

@@ -252,18 +252,6 @@
 							}
 						}
 					}
-					&.tit-del{
-						>p{
-							text-align:left;
-							color:$color-gray-4;
-						}
-						@include mobile{
-							margin-bottom:0;
-							~td{
-								display:none;
-							}
-						}
-					}
 					.count{
 						display:inline-block;
 						margin-left:12px;
@@ -330,7 +318,7 @@
 			.file-scroll-wrap{
 				display:flex;
 				padding:0 16px;
-				width:calc(100% + 50px);
+				width:calc(100% + 36px);
 			}
 			.file-item{
 				width:33%;
@@ -638,7 +626,6 @@
 			padding: 16px 12px;
 		}
 		.comment-btn-box{
-			display: none;
 			position: absolute;
 			right:24px;
 			top:24px;
@@ -667,11 +654,6 @@
 				.btn-text{
 					text-decoration: none;
 				}
-			}
-		}
-		&.my-commment{
-			.comment-btn-box{
-				display: inline-block;
 			}
 		}
 		.info-name{
