@@ -164,13 +164,13 @@ var Curation = (function() {
                 // self.$smartFilterResult.hide();
 
 
-                // BTOCSITE-1716
+                // BTOCSITE-1716 
                 if($('.lay-filter').hasClass('smart-type')) {
                     $('.lay-filter.smart-type').find('div.btn-reset button').show();
                 }
 
 
-                // BTOCSITE-1716
+                // BTOCSITE-1716 
                 if($('.lay-filter').hasClass('smart-type')) {
                     $('.lay-filter.smart-type').find('div.btn-reset button').show();
                 }

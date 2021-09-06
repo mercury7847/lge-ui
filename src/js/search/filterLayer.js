@@ -139,17 +139,17 @@ var FilterLayer = (function() {
                     $parent.find('span.sel_num').text(' (0)');
                 }
                 */
+
+                // BTOCSITE-1716
                 var idx = $(this).parents('.ui_filter_accordion').find('input').index(this);
-
-
                 self.resetSelectFilterCount(this);
                 if(self.$layFilter.hasClass('smart-type')) {
                     // 사이드 스마트 필터 일경우 이벤트 처리
                    $('.smart-filter .filter-list input').eq(idx).trigger('click');
-               } else {
-                   // 일반 필터 일경우 이벤트 처리
-                   self.triggerFilterChangeEvent();
-               }
+                } else {
+                    // 일반 필터 일경우 이벤트 처리
+                    self.triggerFilterChangeEvent();
+                }
 
                
               

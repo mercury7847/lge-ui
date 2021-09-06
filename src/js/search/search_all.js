@@ -1225,7 +1225,7 @@ if ('scrollRestoration' in history) {
                             self.$resultListNoData.hide();
                         }
 
-                        // BTOCSITE-1716
+                        // BTOCSITE-1716 
                         self.$btnFilter.hide();
 
                         self.$resultListNoData.show();
@@ -1241,7 +1241,7 @@ if ('scrollRestoration' in history) {
                             self.$layFilter.hide();
                         }
 
-                        // BTOCSITE-1716
+                        // BTOCSITE-1716 
                         if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
                             self.$btnFilter.hide();
                         } else {
