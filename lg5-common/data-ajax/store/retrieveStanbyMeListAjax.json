@@ -11,7 +11,8 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 0,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 11,
         "creationUserName": "아*준",
@@ -23,19 +24,21 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 12,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 12,
         "creationUserName": "아*준",
         "hitCnt": "",
         "contents": "컨텐츠 테스트12",
-        "newFlag": "Y",
+        "newFlag": "N",
         "title": "제목 테스트12",
         "creationDate": "2021.09.02",
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 0,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 11,
         "creationUserName": "아*준",
@@ -47,19 +50,47 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 12,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 12,
         "creationUserName": "아*준",
         "hitCnt": "",
         "contents": "컨텐츠 테스트12",
-        "newFlag": "Y",
+        "newFlag": "N",
         "title": "제목 테스트12",
         "creationDate": "2021.09.02",
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 0,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
+    }, {
+        "clubMId": 11,
+        "creationUserName": "아*준",
+        "hitCnt": 10,
+        "contents": "컨텐츠 테스트11",
+        "newFlag": "N",
+        "title": "제목 테스트11",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 12,
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
+    }, {
+        "clubMId": 12,
+        "creationUserName": "아*준",
+        "hitCnt": "",
+        "contents": "컨텐츠 테스트12",
+        "newFlag": "N",
+        "title": "제목 테스트12",
+        "creationDate": "2021.09.02",
+        "adminFlag": "",
+        "deletableFlag": "N",
+        "clubDCount": 0,
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 11,
         "creationUserName": "아*준",
@@ -71,7 +102,8 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 12,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }, {
         "clubMId": 12,
         "creationUserName": "아*준",
@@ -83,31 +115,8 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 0,
-        "editableFlag": "N"
-    }, {
-        "clubMId": 11,
-        "creationUserName": "아*준",
-        "hitCnt": 10,
-        "contents": "컨텐츠 테스트11",
-        "newFlag": "Y",
-        "title": "제목 테스트11",
-        "creationDate": "2021.09.02",
-        "adminFlag": "",
-        "deletableFlag": "N",
-        "clubDCount": 12,
-        "editableFlag": "N"
-    }, {
-        "clubMId": 12,
-        "creationUserName": "아*준",
-        "hitCnt": "",
-        "contents": "컨텐츠 테스트12",
-        "newFlag": "Y",
-        "title": "제목 테스트12",
-        "creationDate": "2021.09.02",
-        "adminFlag": "",
-        "deletableFlag": "N",
-        "clubDCount": 0,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     },{
         "clubMId": 12,
         "creationUserName": "아*준",
@@ -119,7 +128,8 @@
         "adminFlag": "",
         "deletableFlag": "N",
         "clubDCount": 0,
-        "editableFlag": "N"
+        "editableFlag": "N",
+        "url": "/store/standbyme-club/standbyme-club-detail?clubMId=7&orderType=NEW&listPage=2"
     }],
     "pagination": {
         "page": 1,

@@ -2,7 +2,7 @@
     var listTmpl = 
     '<tr>' +
         '<td class="board-tit">' +
-            '<a href="{{clubMId}}">' +
+            '<a href="{{url}}">' +
                 '{{# if (newFlag == "Y") { #}}' +
                 '<div class="flag-wrap bar-type">' +
                     '<span class="flag"><span class="blind">최신 게시글</span>NEW</span>' +
@@ -21,10 +21,10 @@
 
     var commentList =
     '<li>'+
-         '{{# if (admin == "N") { #}}' +
-          '<div class="comment-content">' +
+           '{{# if (adminFlag == "N") { #}}' +
+           '<div class="comment-content">' +
            '{{# } #}}' +
-           '{{# if (admin == "Y") { #}}' +
+           '{{# if (adminFlag == "Y") { #}}' +
             '<div class="comment-content admin-comment">' +
            '{{# } #}}' +
             '<div class="info-name"><span class="blind">작성자</span>{{creationUserName}}</div>' +
@@ -34,14 +34,41 @@
                 '</div>' +
             '</div>' +
             '<div class="info-date"><span class="blind">작성일시</span>{{creationDate}}<span class="time">{{creationTime}}</span></div>' +
-            '{{# if (mine == "Y") { #}}' +
+            '{{# if (editableFlag == "Y") { #}}' +
             '<div class="comment-btn-box">' +
-                '<button type="button" class="btn-text">수정</button>' +
+                '<button type="button" class="btn-text btn-comment-modify">수정</button>' +
                 '<button type="button" class="btn-text btn-comment-del" data-id="#commentDeleteConfirm" data-control="modal">삭제</button>' +
             '</div>' +
             '{{# } #}}' +
         '</div>' +
     '</li>';
+
+    var commentModifyForm =
+        '<form>' +
+            '<div class="comment-write">' +
+                '<div class="form-wrap">' +
+                    '<div class="forms">' +
+                        '<div class="conts">' +
+                            '<div class="text-form">' +
+                                '<div class="input-wrap">' +
+                                    '<textarea title="댓글내용" name="comment" id="txa_comment" class="ui_textcontrol" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
+                                    '<div class="txt-count-box">' +
+                                        '<span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>' +
+                                        '<div class="comment-write-btn-box">' +
+                                            '<button type="reset" class="btn gray size btn-cancel">취소</button>' +
+                                            '<button type="button" class="btn dark-gray size btn-confirm">수정</button>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="btm-more err-block">' +
+                            '<p class="err-msg" id="commentError">댓글을 입력해주세요.</p>' +
+                        '</div>' +
+                    '</div>'
+                '</div>'
+            '</div>'
+        '</form>'
 
     $(window).ready(function() {
 
@@ -166,7 +193,7 @@
                 var self = this;
 
                 self.$pagination.on('page_click', function(e,page) {
-                    e.preventDefault();
+
                     self.params = $.extend({}, self.params, {
                         'page': page
                     });
@@ -212,18 +239,7 @@
                     }
                     lgkorUI.confirm(desc, obj);
                 });
-                //댓글 수정 버튼 클릭시
-                $('.btn-modify').on('click', function(e){
-                    var id = $(e.currentTarget).data('id');
-                    var obj ={title:'', typeClass:'', ok : function (){ }};
-                    var desc = '';
 
-                    if(id=="#modifyConfirm"){
-                        obj = $.extend(obj,{title: '게시물을 수정하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                        desc = '';
-                    }
-                    lgkorUI.confirm(desc, obj);
-                });
                 // 댓글 작성중일 경우 valid 클래스 추가
                 var inp = $('.input-wrap textarea');
                 var btnCancel = $('.btn-cancel');
@@ -259,5 +275,32 @@
         }else if($('.contents.stanbyme .stanbyme-detail').length > 0){
             stanbymeCommentList.init();
         }
+
+        //리스트 수정완료 버튼 클릭시
+        $('.btn-modify').on('click', function(e){
+            var id = $(e.currentTarget).data('id');
+            var obj ={title:'', typeClass:'', ok : function (){ }};
+            var desc = '';
+
+            if(id=="#modifyConfirm"){
+                obj = $.extend(obj,{title: '게시물을 수정하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                desc = '';
+            }
+            lgkorUI.confirm(desc, obj);
+        });
+
+        //댓글 수정 버튼 클릭시
+        $('.btn-comment-modify').on('click', function(e){
+            var $self = $(this),
+                $parent = $self.closest('.comment-content'),
+                $writeContWrap = $parent.find('.comment-text-wrap'),
+                $infoName = $('.info-name'),
+                $writeCont = $writeContWrap.find('.comment-text p').text(),
+                $replaceTextarea = $('#txa_comment');
+
+                $parent.not($infoName).empty();
+                 $parent.append(commentModifyForm);
+                $replaceTextarea.val($writeCont);
+        });
     });
 })();
