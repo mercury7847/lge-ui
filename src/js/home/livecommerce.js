@@ -66,7 +66,7 @@ var lls = {
             } else {
                 self.mktValue = android.getAdPushActive()
                 self.pushValue = android.getOSPush();
-                alert(self.mktValue, self.pushValue)
+                alert("self.mktValue::" + self.mktValue + " self.pushValue::" + self.pushValue)
             }
 
             if( self.pushValue == "Y" && self.mktValue == "Y") {
