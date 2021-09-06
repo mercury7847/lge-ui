@@ -353,6 +353,27 @@
                         }
                     }
 
+                    &.active {
+                        border-color:#e4e4e4;
+                        background-color: #e4e4e4;
+                        color:#666;
+
+                        &:before {
+                            background-image: url('/lg5-common/images/LLS/icon_btn_live-32_gr.svg');
+                        }
+
+                        &:hover, 
+                        &:focus {
+                            color:#666;
+                            background: #e4e4e4;
+                            border-color:#e4e4e4;
+                            &:before {
+                                background-image: url('/lg5-common/images/LLS/icon_btn_live-32_gr.svg');
+                            }
+                        }
+                    }
+
+
                     @include pc {
                         line-height:50px;
                         font-size:16px;
