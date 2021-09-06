@@ -66,6 +66,7 @@ var lls = {
             } else {
                 self.mktValue = android.getAdPushActive()
                 self.pushValue = android.getOSPush();
+                alert(self.mktValue, self.pushValue)
             }
 
             if( self.pushValue == "Y" && self.mktValue == "Y") {
@@ -142,6 +143,7 @@ var lls = {
                         }
                     }, self.pushBtn);
                 } else {
+                    alert('알림받기 실행 ::' + self.pushValue)
                     LGEPushSetting(self.pushValue)
                 }
             }
@@ -156,18 +158,7 @@ var lls = {
                 if( !vcui.detect.isMobileDevice ) {
                     e.preventDefault();
                     self.$appInstallPopup.vcModal({opener:$(this)});
-                } else {
-                    if(vcui.detect.isIOS){
-                        var obj = new Object();
-                        obj.command = "getPushStatus";
-                        obj.callback = "LGEPushSetting";
-                        var jsonString= JSON.stringify(obj);
-                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                    } else {
-                        var androidPush = android.getOSPush();
-                        LGEPushSetting(androidPush)
-                    }
-                }
+                } 
             }
         });
 
