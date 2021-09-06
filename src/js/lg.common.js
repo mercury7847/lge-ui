@@ -1609,6 +1609,7 @@ var goAppUrl = function(path) {
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
+                    if(callback && typeof callback === 'function') callback(result); 
                     return;
                 }
 

@@ -1,3 +1,6 @@
+@import "../../support/form-field";
+
+
 .inner{
 	max-width:1460px;
 	margin:0 auto;
@@ -135,7 +138,7 @@
 							left:0;
 							width:24px;
 							height:24px;
-							background: url(/lg5-common/images/CPR/ic_write_24.svg) 0 0 no-repeat;
+							background: url(/lg5-common/images/STS/ic_write_24.svg) 0 0 no-repeat;
 							background-size: 100% 100%;
 							content: '';
 						}
@@ -287,6 +290,17 @@
 	.component-inner{
 		margin-top:22px;
 	}
+
+	// 리스트에 데이터 없는 케이스
+	.result-wrap.no-data {
+		.bullet-list {
+			&.top-border {
+				margin-top:0;
+				padding-top:24px;
+				border:0;
+			}
+		}
+	}
 }
 
 // register, modify
@@ -303,6 +317,38 @@
 			border-bottom: 2px solid #222;
 		}
 	}
+	.file-item {
+		.file-image {
+			.file-preview {
+				position: relative;
+				> img {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 100%;
+					height: auto;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+		&.modify {
+			.file-btns {
+				.btn-del,.btn-upload { display:none;}
+				.btn-file-del { display:block; }
+			}
+			.file-preview {
+				background: none;
+			}
+		}
+	}
+	.form-wrap {
+		.input-wrap {
+			textarea:focus + .inner-text {
+				border-color: $color-primary ;
+			}
+		}
+	}
+
 	@include mobile{
 		margin-top:32px;
 		padding:0 16px;
@@ -568,7 +614,7 @@
 				left:0;
 				width:24px;
 				height:24px;
-				background: url(/lg5-common/images/CPR/icon-reply_24.svg) 0 0 no-repeat;
+				background: url(/lg5-common/images/STS/icon-reply_24.svg) 0 0 no-repeat;
 				background-size: 100% 100%;
 				content: '';
 			}
@@ -579,7 +625,7 @@
 				&:before{
 					width:20px;
 					height:20px;
-					background-image:url(/lg5-common/images/CPR/icon_reply_40.svg);
+					background-image:url(/lg5-common/images/STS/icon_reply_40.svg);
 				}
 				em {
 					font-weight: 700;
@@ -768,6 +814,7 @@
 					} 
 				}
 				&::placeholder {
+					white-space: pre-line;
 					color: #666 !important;
 					font-size:14px !important;
 					@include mobile{
@@ -775,9 +822,20 @@
 						line-height: 20px;
 					}
 				}
+				&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+					white-space: pre-line;
+					color: #666 !important;
+					font-size:14px !important;
+					@include mobile{
+						font-size:13px !important;
+						line-height: 20px;
+					}
+				}
+
 				&:-ms-input-placeholder {
-				color: #666 !important;
-				font-size:14px !important;
+					white-space: pre-line;
+					color: #666 !important;
+					font-size:14px !important;
 					@include mobile{
 						font-size:13px !important;
 						line-height: 20px;
@@ -792,6 +850,7 @@
 					border-radius: 0 0 8px 8px;
 					vertical-align: top;
 					text-align: right;
+					background: #fff;
 					@include mobile{
 						padding: 5px 16px 12px 12px;
 					}
@@ -810,6 +869,7 @@
 					}
 					.comment-write-btn-box{
 						display: inline-block;
+						vertical-align: top;
 						.btn {
 							height:auto;
 							display: inline-block;
