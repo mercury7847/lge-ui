@@ -44,7 +44,8 @@ var lls = {
             $(item).css('background-image', 'url(' + currentSrc + ')')
         })
     },
-    appPushVisibleCheck: function(){
+    appPushVisibleCheck: function(event){
+        var self = this;
         if( isApp()) {
             
             if( vcui.detect.isIOS ) {
@@ -58,36 +59,34 @@ var lls = {
                 var jsonString= JSON.stringify({"command": "getSettingOptions", "callback": "appMKTpushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
 
-                var objPushCheck = new Object();
-                objPushCheck.command = "getPushStatus";
-                objPushCheck.callback = "appPushCheck";
-                var pushString= JSON.stringify(objPushCheck);
+                var pushString= JSON.stringify({"command": "getPushStatus", "callback": "appPushCheck"});
                 webkit.messageHandlers.callbackHandler.postMessage(pushString);
             } else {
                 self.mktValue = android.getAdPushActive()
                 self.pushValue = android.getOSPush();
-                alert(self.mktValue, self.pushValue)
+                // alert("self.mktValue::" + self.mktValue + " self.pushValue::" + self.pushValue)
             }
 
-            if( self.pushValue == "Y" && self.mktValue == "Y") {
-                self.$pushBtn.addClass('active').find('span').text('알림받는중');
-            } else {
-                self.$pushBtn.removeClass('active').find('span').text('알림받기');
-            }
+            setTimeout(function(){
+                if( self.pushValue == "Y" && self.mktValue == "Y") {
+                    self.$pushBtn.addClass('active').find('span').text('알림받는중');
+                } else {
+                    self.$pushBtn.removeClass('active').find('span').text('푸시알림받기');
+                }
+                self.$llsMain.find('.lls-push').addClass('active');
+
+                if( event && event == "click") {
+                    self.pushClickEvent();
+                }
+            }, 50)
         }
     },
     bindEvent: function(){
         var self = this;
 
         LGEPushSetting = function(flag){
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth();
-            var date = now.getDate();
-            var hours = now.getHours();
-
             var msg = {
-                flagY: year + "년 " + month + "월 " + date + "일 " + hours + "시 알림 허용처리가 완료되었습니다.",
+                flagY: self.showDate() + " 알림 허용 처리가 완료되었습니다.",
                 flagN: "정보 알림을 받기 위해서<br>기기 알림을 켜주세요.",
             }
 
@@ -101,6 +100,7 @@ var lls = {
                         } else {
                             android.setAdPushActive("Y")
                         }
+                        self.$pushBtn.addClass('active').find('span').text('알림받는중');
                     }
                 }, self.pushBtn);
             } else {
@@ -126,27 +126,8 @@ var lls = {
             self.pushBtn = _self;
             e.preventDefault();
 
-            self.appPushVisibleCheck();
-
-            if( isApp() ) {
-                if( $(this).hasClass('active')) {
-                    lgkorUI.confirm("", {
-                        title: "알림 받기 해제 시 마케팅 푸시<br>알림 거부 처리가 됩니다. 알림<br> 받기를 해제 하시겠습니까?",
-                        okBtnName: "해제하기",
-                        ok: function(el) {
-                            if( vcui.detect.isIOS ) {
-                                var jsonString= JSON.stringify({"command": "setMkt", "value": "N"});
-                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                            } else {
-                                android.setAdPushActive("N")
-                            }
-                        }
-                    }, self.pushBtn);
-                } else {
-                    alert('알림받기 실행 ::' + self.pushValue)
-                    LGEPushSetting(self.pushValue)
-                }
-            }
+            self.appPushVisibleCheck("click");
+            
         });
 
 
@@ -169,10 +150,48 @@ var lls = {
         });
         
     },
+    pushClickEvent(){
+        var self = this;
+        if( isApp() ) {
+            if( self.$pushBtn.hasClass('active')) {
+                lgkorUI.confirm("", {
+                    title: "알림 받기 해제 시 마케팅 푸시<br>알림 거부 처리가 됩니다. 알림<br> 받기를 해제 하시겠습니까?",
+                    okBtnName: "해제하기",
+                    ok: function(el) {
+                        if( vcui.detect.isIOS ) {
+                            var jsonString= JSON.stringify({"command": "setMkt", "value": "N"});
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            android.setAdPushActive("N")
+                        }
+
+                        lgkorUI.alert("", {
+                            title: self.showDate() + "<br>알림 해제 처리가 <br>완료되었습니다.",
+                            ok: function(el) {
+                               self.$pushBtn.removeClass('active').find('span').text('푸시알림받기')
+                            }
+                        }, self.pushBtn);
+                    }
+                }, self.pushBtn);
+            } else {
+                LGEPushSetting(self.pushValue)
+            }
+        }
+    },
     requestModal: function(dm) {
         var _self = this;
         var ajaxUrl = $(dm).attr('href');
         window.open(ajaxUrl,'','width=912,height=760,scrollbars=yes');
+    },
+    showDate: function(){
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth()+1;
+        var date = now.getDate();
+        var hours = now.getHours();
+        var textTime = year + "년 " + month + "월 " + date + "일 " + hours + "시" ;
+
+        return textTime;
     },
     heroSlider: function(){
         //히어로 배너 슬라이드
