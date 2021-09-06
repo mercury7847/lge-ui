@@ -140,13 +140,12 @@ var lls = {
                             lgkorUI.alert("", {
                                 title: self.showDate() + "<br>알림 해제 처리가 <br>완료되었습니다.",
                                 ok: function(el) {
-                                   
+                                   self.pushBtn.removeClass('active').find('span').text('알림받기')
                                 }
                             }, self.pushBtn);
                         }
                     }, self.pushBtn);
                 } else {
-                    alert('알림받기 실행 ::' + self.pushValue)
                     LGEPushSetting(self.pushValue)
                 }
             }
