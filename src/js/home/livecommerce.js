@@ -97,6 +97,7 @@ var lls = {
                         } else {
                             android.setAdPushActive("Y")
                         }
+                        self.$pushBtn.addClass('active').find('span').text('알림받는중');
                     }
                 }, self.pushBtn);
             } else {
@@ -140,7 +141,7 @@ var lls = {
                             lgkorUI.alert("", {
                                 title: self.showDate() + "<br>알림 해제 처리가 <br>완료되었습니다.",
                                 ok: function(el) {
-                                   self.pushBtn.removeClass('active').find('span').text('알림받기')
+                                   self.$pushBtn.removeClass('active').find('span').text('알림받기')
                                 }
                             }, self.pushBtn);
                         }
