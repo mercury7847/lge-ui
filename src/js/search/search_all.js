@@ -255,7 +255,7 @@ if ('scrollRestoration' in history) {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
-                // BTOCSITE-1716
+                
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
 
                     $(window).scrollTop(0); //BTOCSITE-2216
@@ -301,7 +301,7 @@ if ('scrollRestoration' in history) {
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
                         self.requestSearch(self.makeFilterData(data));
-                    });// BTOCSITE-1716
+                    });
 
 
                     var hash = location.hash.replace("#","");
@@ -426,7 +426,6 @@ if ('scrollRestoration' in history) {
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
                 self.$resultListNoData = self.$contWrap.find('div.result-list-wrap.list-no-data');
 
-                // BTOCSITE-1716
                 //필터
                 self.$layFilter = self.$contWrap.find('div.lay-filter');
                 //모바일 필터열기버튼
@@ -876,7 +875,6 @@ if ('scrollRestoration' in history) {
                     }
                     */
 
-                    // BTOCSITE-1716
                     //필터세팅
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
                     // 2. 스마트 필터 없음 일반 필터로
@@ -1234,7 +1232,7 @@ if ('scrollRestoration' in history) {
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
-                        // BTOCSITE-1716
+                        
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
