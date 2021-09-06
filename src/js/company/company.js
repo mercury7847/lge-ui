@@ -110,8 +110,8 @@ function fcOpenAccordion(){
 	setTimeout(function () {
 		$(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
 		$(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display','block');
-		$("#tab4").find(".accordion-wrap").eq(0).find("li").eq(0).addClass('on');
-		$("#tab4").find(".accordion-wrap").eq(0).find("li").eq(0).find(".accord-cont.ui_accord_content").css('display', 'block');
+		$(".openFirst").find("li").eq(0).addClass('on');
+		$(".openFirst").find("li").eq(0).find(".accord-cont.ui_accord_content").css('display', 'block');
 	}, 200);
 }
 
