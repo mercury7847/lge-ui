@@ -383,12 +383,6 @@ var goAppUrl = function(path) {
             // BTOCSITE-659
             if(location.href.indexOf('/story/') > -1 ) self.addAWSStory();
 
-
-            // BTOCSITE-5379 css 버전업해서 배포 요청  
-            if(isApp() && vcui.detect.isAndroid) {
-                $('head').find('link[href="/lg5-common/css/app.min.css"]').prop("href","/lg5-common/css/app.min.css?v=20210907")
-            }
-
         },
 
         // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : story 상세
