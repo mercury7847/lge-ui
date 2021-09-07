@@ -1,0 +1,24 @@
+<svg id="ic_qr_96" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#1a1818;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h64v64H0z"/>
+    <g id="Group_36" data-name="Group 36" transform="translate(4.2 7.201)">
+        <g id="Group_35" data-name="Group 35" transform="translate(5.8 2.799)">
+            <path id="Rectangle_12" data-name="Rectangle 12" class="cls-2" d="M0 0h20.071v20.166H0z"/>
+            <path id="Rectangle_13" data-name="Rectangle 13" class="cls-2" transform="translate(5.616 5.5)" d="M0 0h8.839v8.881H0z"/>
+            <path id="Path_43" data-name="Path 43" class="cls-2" d="M0 0h20.071v20.166H0z" transform="translate(24.729)"/>
+            <path id="Rectangle_15" data-name="Rectangle 15" class="cls-2" transform="translate(30.345 5.5)" d="M0 0h8.839v8.881H0z"/>
+            <path id="Rectangle_16" data-name="Rectangle 16" class="cls-2" transform="translate(0 24.634)" d="M0 0h20.071v20.166H0z"/>
+            <path id="Rectangle_17" data-name="Rectangle 17" class="cls-2" transform="translate(5.656 30.33)" d="M0 0h8.839v8.881H0z"/>
+            <path id="Line_6" data-name="Line 6" class="cls-2" transform="translate(31.082 29.288)" d="M0 0h6.842"/>
+            <path id="Path_34" data-name="Path 34" class="cls-2" d="M94.45 89.493v-6.111h6.082" transform="translate(-69.721 -58.748)"/>
+            <path id="Path_35" data-name="Path 35" class="cls-2" d="M109.907 83.382h8.32v3.055" transform="translate(-73.427 -58.748)"/>
+            <path id="Rectangle_18" data-name="Rectangle 18" class="cls-2" transform="translate(24.729 34.717)" d="M0 0h10.036v10.083H0z"/>
+            <path id="Path_36" data-name="Path 36" class="cls-2" d="M116.262 93.712h3.2v12.275h-4.422" transform="translate(-74.657 -61.187)"/>
+        </g>
+        <path id="Line_7" data-name="Line 7" transform="translate(1.3 17.3)" style="stroke:#cd0038;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none" d="M0 0h52.8"/>
+    </g>
+</svg>

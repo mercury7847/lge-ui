@@ -190,9 +190,11 @@
             self.$registMyProductMainPage = self.$registMyProductPopup.find('div.page-change:eq(0)');
             self.$modelCheckHelpPage = self.$registMyProductPopup.find('div.page-change:eq(1)');
             //년도 선택 셀렉트
-            self.$yearSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="year"]');
+            //BTOCSITE-4086
+            //self.$yearSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="year"]');
             //월 선택 셀렉트
-            self.$monthSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="month"]');
+            //BTOCSITE-4086
+            //self.$monthSelect = self.$registMyProductMainPage.find('.ui_selectbox[name="month"]');
 
             var $inputs = self.$registMyProductMainPage.find('dl.forms div.box div.input-wrap input');
             var $buttons = self.$registMyProductMainPage.find('dl.forms div.box div.cell button');
@@ -205,7 +207,11 @@
 
             //시리얼넘버
             self.$snInput = $inputs.eq(1);
+            //BTOCSITE-4086
+            self.$snCheckOk = self.$snInput.siblings('p.comp');
             self.$snCheckButton = $buttons.eq(1);
+            //BTOCSITE-4086
+            self.$snCheckOk.hide();
 
             // 대문자로 입력받기
             self.$modelInput.css('text-transform', 'uppercase');
@@ -372,7 +378,8 @@
             });
 
             //모델명 확인 방법 팝업 열기
-            self.$registMyProductMainPage.on('click','p.link a', function(e) {
+            //BTOCSITE-4086
+            self.$registMyProductMainPage.on('click','.btn-model-check', function(e) {
                 e.preventDefault();
                 if(!self.modelData) {
                     var ajaxUrl = self.$registMyProductPopup.attr('data-list-url');
@@ -404,6 +411,50 @@
                     self.$registMyProductMainPage.hide();
                     self.$modelCheckHelpPage.show();
                     self.$modelCheckHelpPage.find('section').scrollTop(0);
+                }
+            });
+
+            
+            
+            //BTOCSITE-4086
+            //보유 제품 직접 등록 - QR 스캔/직접 입력  선택버튼 
+            self.$registMyProductMainPage.on('click','.scan-type-inbox button', function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('btn-qrscan')) {
+                    $(this).addClass('active');
+                    $('.btn-direct').removeClass('active');
+                    $('.info-req-box .direct').hide();
+                    $('.form-wrap .forms:first-child > .tit > label').removeClass('req');
+                    $('.info-req-box .qr').show();
+                    $('#inp01').attr('readonly','readonly');
+                    $('#inp02').attr('readonly','readonly');
+                    $('.cell button').attr('disabled', true);
+                    $('.btn-prod-reg').attr('disabled', true);
+
+                } else {
+                    $(this).addClass('active');
+                    $('.btn-qrscan').removeClass('active');
+                    $('.info-req-box .qr').hide();
+                    $('.info-req-box .direct').show();
+                    $('.form-wrap .forms:first-child > .tit > label').addClass('req');
+                    $('.req:after').show();
+                    $('#inp01').removeAttr('readonly');
+                    $('#inp02').removeAttr('readonly');
+                    $('.cell button').attr('disabled', false);
+                    $('.btn-prod-reg').attr('disabled', false);
+                }
+            });
+            //제품별 QR/모델명/제조번호 부착 위치 - 모델명/제조번호/바코드/OR코드 선택 버튼 
+            self.$modelCheckHelpPage.on('click','.example-type-inbox button', function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('btn-model')) {
+                    $(this).addClass('active');
+                    $('.btn-qrcord').removeClass('active');
+                    $('.example-type-list-wrap .bullet-list').hide();
+                } else {
+                    $(this).addClass('active');
+                    $('.btn-model').removeClass('active');
+                    $('.example-type-list-wrap .bullet-list').show();
                 }
             });
 
@@ -544,28 +595,31 @@
                     }
                 })
                 if(minLengthFlag && checkSerialSuccess.indexOf(false) == -1) {
-                    lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                    //BTOCSITE-4086
+                    self.$snCheckOk.show();
+                    // lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                 } else {
                     lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
             });
 
             //구매년도 선택
-            self.$yearSelect.on('change', function(e){
-                var value = self.$yearSelect.vcSelectbox('selectedOption').value;
-                var month = 12;
-                if(value == self.thisYear) {
-                    //현재 년도
-                    month = self.thisMonth;
-                }
+            //BTOCSITE-4086
+            // self.$yearSelect.on('change', function(e){
+            //     var value = self.$yearSelect.vcSelectbox('selectedOption').value;
+            //     var month = 12;
+            //     if(value == self.thisYear) {
+            //         //현재 년도
+            //         month = self.thisMonth;
+            //     }
 
-                self.$monthSelect.empty();
-                self.$monthSelect.append('<option value="" class="placeholder">선택</option>');
-                for(var i=0;i<month;i++) {
-                    self.$monthSelect.append('<option value="'+(i+1)+'">'+(i+1)+'</option>');
-                }
-                self.$monthSelect.vcSelectbox('update');
-            });
+            //     self.$monthSelect.empty();
+            //     self.$monthSelect.append('<option value="" class="placeholder">선택</option>');
+            //     for(var i=0;i<month;i++) {
+            //         self.$monthSelect.append('<option value="'+(i+1)+'">'+(i+1)+'</option>');
+            //     }
+            //     self.$monthSelect.vcSelectbox('update');
+            // });
 
             //보유제품 등록
             self.$registMyProductMainPage.on('click','footer div.btn-group button' ,function(e){
