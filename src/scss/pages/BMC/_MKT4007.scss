@@ -99,8 +99,8 @@
 	background-size: cover;
 
 	@include mobile {
-		margin-top: -40px;
-		margin-bottom: 32px;
+		margin: -40px -16px 32px; //BTOCISTE-3019
+		padding:48px 16px; //BTOCISTE-3019
 		background-image: url("/lg5-common/images/BMC/bg-win-announc-m.svg");
 	}
 
