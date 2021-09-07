@@ -507,7 +507,8 @@
 // BTOCSITE-3276
 .compare-result-table{
     table {
-        width:100%;
+        width:100%; 
+        table-layout: fixed;
         tbody {
             tr {
                 td {
@@ -527,6 +528,11 @@
                         padding-bottom: 0;
                     }
                 }
+            }
+        }
+        colgroup {
+            @include mobile{
+                display: none;
             }
         }
     }
