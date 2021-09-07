@@ -106,11 +106,11 @@
                                             <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "addClass": true,
-                                                "addrModi": true,
                                                 "list" : [
                                                     { "dt" : "이름", "dd" : "이*어", "fieldName": "name" },
                                                     { "dt" : "휴대폰", "dd" : "010****1234", "fieldName": "phoneNumber" },
                                                     { "dt" : "일반전화", "dd" : "010****1234", "fieldName": "telephoneNumber" },
+                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********", "fieldName": "adress" },
                                                 ],
                                                 "rcvPostCode": "21655",
                                                 "rcvBasAddr": "서울특별시 엘지구 엘지로 엘지동",
@@ -242,7 +242,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="input-wrap">
-                                                                <input type="text" value="" class="disabled" value="" name="rcvBasAddr" id="rcvBasAddr" data-required="true" placeholder="주소 찾기를 선택해 주세요." readonly>
+                                                                <input type="text" value="" class="disabled"  name="rcvBasAddr" id="rcvBasAddr" data-required="true" placeholder="주소 찾기를 선택해 주세요." readonly>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
