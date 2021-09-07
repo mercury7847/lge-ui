@@ -51,9 +51,9 @@
                         '<div class="conts">' +
                             '<div class="text-form">' +
                                 '<div class="input-wrap">' +
-                                    '<textarea title="댓글내용" name="comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
+                                    '<textarea title="댓글내용" name="comment" id="comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txa_comment" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
                                     '<div class="txt-count-box">' +
-                                        '<span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>' +
+                                        '<span id="txa_comment" class="inner-text"><em>0</em> / 500자</span>' +
                                         '<div class="comment-write-btn-box">' +
                                             '<button type="reset" class="btn gray size btn-cancel">취소</button>' +
                                             '<button type="button" class="btn dark-gray size btn-confirm">수정</button>' +
@@ -65,9 +65,9 @@
                         '<div class="btm-more err-block">' +
                             '<p class="err-msg" id="commentError">댓글을 입력해주세요.</p>' +
                         '</div>' +
-                    '</div>'
-                '</div>'
-            '</div>'
+                    '</div>' +
+                '</div>' +
+            '</div>' +
         '</form>'
 
     $(window).ready(function() {
@@ -112,6 +112,7 @@
 
                     if (data.length) {
                         data.forEach(function(item) {
+                            item.hitCnt = "" + item.hitCnt;
                             html += vcui.template(listTmpl, item);
                         });
                         self.$listWrap.find('tbody').prepend(html);
@@ -200,74 +201,7 @@
                     self.settingList();
                 });
 
-                //댓글 등록 버튼 클릭시 
-                var btnWriteFunc = function(){
-                    $('.comment-write .btn-confirm').on('click', function(e){
-                        var $commentWrite = $('.comment-write'),
-                            url = $commentWrite.data('ajax');
-
-                        var commentParam = {};
-                        commentParam.value = $('textarea').val();
-
-                        lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
-                            if(d.status == 'success'){
-                                commentParam = $.extend({}, params, {
-                                    'testSucFlag': "Y"
-                                });
-                            }else{
-                                commentParam = $.extend({}, commentParam, {
-                                    'testSucFlag': "N"
-                                });
-                                lgkorUI.alert("",{title:d.message});
-                            }
-                            self.bindEvent();
-                            lgkorUI.hideLoading();
-                        },true);
-                    });
-                };
-                btnWriteFunc();
-
-                //댓글 삭제 버튼 클릭시
-                $('.btn-comment-del').on('click', function(e){
-                    var id = $(e.currentTarget).data('id');
-                    var obj ={title:'', typeClass:'', ok : function (){ }};
-                    var desc = '';
-
-                    if(id=="#commentDeleteConfirm"){
-                        obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                        desc = '';
-                    }
-                    lgkorUI.confirm(desc, obj);
-                });
-
-                // 댓글 작성중일 경우 valid 클래스 추가
-                var inp = $('.input-wrap textarea');
-                var btnCancel = $('.btn-cancel');
-                inp.each(function(){
-                    var me = $(this);
-                    var inpValLen = me.val().length;
-
-                    valid();
-
-                    me.on('change keyup paste', function(){
-                        inpValLen = me.val().length;
-                        valid();
-                    });
-
-                    function valid(){
-                        if(inpValLen > 0) {
-                            me.addClass('valid');
-                        } else{
-                            me.removeClass('valid');
-                        }
-                    }
-                    btnCancel.on('click', function(){
-                        var meInp = $(this).parents('.input-wrap');
-                        meInp.find('textarea').removeClass('valid');
-                        meInp.find('.inner-text em').text('0');
-                    });
-                });
-
+                btnCancelFunc();
                 commentModify();
             }
         };
@@ -299,20 +233,86 @@
                     $commentTextWrap = $parent.find('.comment-text-wrap'),
                     $infoData = $parent.find('.info-date'),
                     $commentBtnBox = $parent.find('.comment-btn-box'),
-                    $writeCont = $commentTextWrap.find('.comment-text p').text(),
-                    $replaceTextarea = $parent.find('textarea');
+                    $writeCont = $commentTextWrap.find('.comment-text p').text();
 
-                $commentTextWrap.empty();
-                $infoData.empty();
-                $commentBtnBox.empty();
-                $parent.append(commentModifyForm);
-                $replaceTextarea.text($writeCont);
-                $replaceTextarea.value = $writeCont;
-                $replaceTextarea.val($writeCont);
-                console.log(writeCont);
-                console.log(replaceTextarea);
+                $commentTextWrap.remove();
+                $infoData.remove();
+                $commentBtnBox.remove();
+                $parent.append(commentModifyForm).closest('.comment-content .textarea').text($writeCont);
             });
         };
         commentModify();
+
+        //댓글 등록 버튼 클릭시
+        var btnWriteFunc = function(){
+            $('.comment-write .btn-confirm').on('click', function(e){
+                var $commentWrite = $('.comment-write'),
+                    url = $commentWrite.data('ajax');
+
+                var commentParam = {};
+                commentParam.value = $('textarea').val();
+
+                lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
+                    if(d.status == 'success'){
+                        commentParam = $.extend({}, params, {
+                            'testSucFlag': "Y"
+                        });
+                    }else{
+                        commentParam = $.extend({}, commentParam, {
+                            'testSucFlag': "N"
+                        });
+                        lgkorUI.alert("",{title:d.message});
+                    }
+                    self.bindEvent();
+                    lgkorUI.hideLoading();
+                },true);
+            });
+        };
+        btnWriteFunc();
+
+        //댓글 삭제 버튼 클릭시
+        $('.btn-comment-del').on('click', function(e){
+            var id = $(e.currentTarget).data('id');
+            var obj ={title:'', typeClass:'', ok : function (){ }};
+            var desc = '';
+
+            if(id=="#commentDeleteConfirm"){
+                obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                desc = '';
+            }
+            lgkorUI.confirm(desc, obj);
+        });
+
+        // 댓글 작성중일 경우 valid 클래스 추가
+        var inp = $('.input-wrap textarea');
+        var btnCancel = $('.btn-cancel');
+        inp.each(function(){
+            var me = $(this);
+            var inpValLen = me.val().length;
+
+            valid();
+
+            me.on('change keyup paste', function(){
+                inpValLen = me.val().length;
+                valid();
+            });
+
+            function valid(){
+                if(inpValLen > 0) {
+                    me.addClass('valid');
+                } else{
+                    me.removeClass('valid');
+                }
+            }
+            btnCancelFunc();
+        });
+         function btnCancelFunc(){
+            btnCancel.on('click', function(){
+                var meInp = $(this).parents('.input-wrap');
+                meInp.find('textarea').removeClass('valid');
+                meInp.find('.inner-text em').text('0');
+            });
+        }
+        btnCancelFunc();
     });
 })();
