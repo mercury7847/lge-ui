@@ -37,6 +37,7 @@ img.m350 {width:100%; max-width:350px!important}
 /* 2depth fixed */
 #com-tabs02 + .tabs-wrap {margin-bottom:-48px}
 .com-tabs + .com-text {margin-top:48px}
+.com-tabs .tabs-wrap.bar-type {margin-top:48px}
 .tabs-wrap.act {position:fixed; left:0; top:72px; width:100%; background:#fff; z-index:80}
 .tabs-wrap.act::after {content:''; display:block; position:absolute; top:0; height:48px; left:-730px; right:-730px; background-color:#fff; z-index:-1}
 @media screen and (min-width:1461px) {
@@ -44,6 +45,7 @@ img.m350 {width:100%; max-width:350px!important}
 }
 @media screen and (max-width:768px) {
     .tabs-wrap.act {top:66px}
+    .com-tabs .tabs-wrap.bar-type {margin-top:64px}
 }
 /* 차트 */
 .chart_area.bar rect {stroke-width:0 !important} /* hover 시 효과 없음 */
