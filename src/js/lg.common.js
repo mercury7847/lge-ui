@@ -366,7 +366,7 @@ var goAppUrl = function(path) {
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
 
 
-            // BTOCSITE-5379 css 버전업해서 배포 요청
+            // BTOCSITE-5379 css 버전업해서 배포 요청  
             if(isApp() && vcui.detect.isAndroid) {
                 $('head').find('link[href="/lg5-common/css/app.min.css"]').prop("href","/lg5-common/css/app.min.css?v=20210907")
             }
