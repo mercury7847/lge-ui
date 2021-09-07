@@ -1,6 +1,6 @@
 body {
     @include mobile {
-        overflow:hidden; //BTOCSITE 1814건 결함 수정
+        overflow-x:hidden; //BTOCSITE 1814건 결함 수정
     }
 }
 // 스킵 네비게이션
