@@ -758,10 +758,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$statusList.find('.nav-anchor a').on('click', function(e){
 				e.preventDefault();
 
-                if( $('.lay-filter').hasClass('open')) {
-                    $('.lay-filter').find('.dimmed').trigger('click');
+                if(vcui.detect.isMobileDevice && window.innerWidth < 768) {
+                    if( $('.lay-filter').hasClass('open')) {
+                        $('.lay-filter').find('.dimmed').trigger('click');
+                    }
+                    self.$hamburger.trigger('click');
                 }
-				self.$hamburger.trigger('click');
 			})
         },
 
