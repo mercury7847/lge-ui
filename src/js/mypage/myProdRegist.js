@@ -18,9 +18,14 @@
     var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}} ">' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
+                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리 예정
+                // '<a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '</div>' +
             '<div class="info-wrap">' +
+                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리
+                // '<a href="{{url}}"><p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
+                // '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p></a>' +
                 '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +

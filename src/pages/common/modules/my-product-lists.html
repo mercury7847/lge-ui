@@ -12,11 +12,17 @@
         @@if ( !context.saleEnd ) {
         <div class="thumb" aria-hidden="true">        
         }
-            <img src="/lg5-common/images/dummy/@@thumb.jpg" alt="">
+        <!-- BTOCSITE-4086 : link 추가 -->
+            <a href="#n">
+                <img src="/lg5-common/images/dummy/@@thumb.jpg" alt="">
+            </a>
         </div>
         <div class="info-wrap">
-            <p class="name"><span class="blind">모델명</span>@@name</p>
-            <p class="e-name"><span class="blind">영문모델명</span>@@eName</p>
+            <!-- BTOCSITE-4086 : link 추가 -->
+            <a href="#n">
+                <p class="name"><span class="blind">모델명</span>@@name</p>
+                <p class="e-name"><span class="blind">영문모델명</span>@@eName</p>
+            </a>
             <ul class="info-lists period">
                 <li>
                     <dl>
