@@ -103,15 +103,20 @@
                                         <div class="inner-box actual-info">
                                             <p class="inner-tit">실사용자 정보</p>
                                             <!-- 2021.2.19 이름 input name 추가 -->
+                                            <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "addClass": true,
+                                                "addrModi": true,
                                                 "list" : [
                                                     { "dt" : "이름", "dd" : "이*어", "fieldName": "name" },
                                                     { "dt" : "휴대폰", "dd" : "010****1234", "fieldName": "phoneNumber" },
                                                     { "dt" : "일반전화", "dd" : "010****1234", "fieldName": "telephoneNumber" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********", "fieldName": "adress" },
-                                                ]
+                                                ],
+                                                "rcvPostCode": "21655",
+                                                "rcvBasAddr": "서울특별시 엘지구 엘지로 엘지동",
+                                                "rcvDtlAddr": "348-12"
                                             })
+                                            <!-- //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                         </div>
                                         <!-- 201222 문구 수정 -->
                                         @@include('./common/modules/bullet-list.html', {
@@ -224,27 +229,27 @@
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="actualUserAdress">주소</label></dt>
+                                                    <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
+                                                    <dt class="tit"><label for="rcvPostCode">주소</label></dt>
                                                     <dd class="conts">
-                                                        <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                                         <div class="address-box">
                                                             <div class="box">
                                                                 <div class="input-wrap zip-code">
-                                                                    <input type="text" value="214565" class="disabled" name="actualUserZipCode" data-required="true" id="actualUserAdress" placeholder="우편번호" readonly>
+                                                                    <input type="text" value="" class="disabled" name="rcvPostCode" data-required="true" id="rcvPostCode" placeholder="우편번호" readonly>
                                                                 </div>
                                                                 <div class="cell">
                                                                     <button type="button" class="btn" id="addrBtn"><span>주소 찾기</span></button>
                                                                 </div>
                                                             </div>
                                                             <div class="input-wrap">
-                                                                <input type="text" value="서울특별시 엘지구 엘지로 엘지동" class="disabled" value="" name="addressInfo" data-required="true" placeholder="주소 찾기를 선택해 주세요." readonly>
+                                                                <input type="text" value="" class="disabled" value="" name="rcvBasAddr" id="rcvBasAddr" data-required="true" placeholder="주소 찾기를 선택해 주세요." readonly>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="엘지 송파빌딩 1702호" name="addressDetail" data-required="true" placeholder="상세주소를 입력해주세요.">
+                                                            <input type="text" value="" name="rcvDtlAddr" id="rcvDtlAddr" data-required="true" placeholder="상세주소를 입력해주세요.">
                                                         </div>
-                                                        <!-- //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                                     </dd>
+                                                    <!-- //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
                                                 </dl>
                                             </div>
                                         </div>
@@ -690,23 +695,6 @@
 
     </div>
     <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
-    <script>
-        $(function () {
-            // 주소 찾기
-            var addressFinder = new AddressFind();
-
-            $('#addrBtn').on('click', function(e){
-                addressFinder.open(function(data){
-                    $('input[name=actualUserZipCode]').val(data.zonecode);
-                    $('input[name=addressInfo]').val(data.roadAddress);
-                    
-                    // 상세정보로 포커스 이동
-                    $('input[name=addressDetail]').focus();
-                    $('input[name=addressDetail]').val('');
-                });
-            });
-        });
-    </script>
     <!-- support script -->
     <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <!-- //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
