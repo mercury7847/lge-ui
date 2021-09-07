@@ -270,47 +270,70 @@
                 </div>
             </div>
             }
-            @@if (context.eventItem) {
-            <!-- 기획전 상품리스트 -->
-            <div class="product-bottom">
-                @@if (context.eventItem.benefit) {
-                <div class="flag-wrap bar-type">
-                    @@for ( var i=0; i < eventItem.benefit.length; i++ ) {
-                    <span class="flag">`+eventItem.benefit[i]+`</span>
+            @@if (!context.bizType) {
+                @@if (context.eventItem) {
+                <!-- 기획전 상품리스트 -->
+                <div class="product-bottom">
+                    @@if (context.eventItem.benefit) {
+                    <div class="flag-wrap bar-type">
+                        @@for ( var i=0; i < eventItem.benefit.length; i++ ) {
+                        <span class="flag">`+eventItem.benefit[i]+`</span>
+                        }
+                    </div>
                     }
+                    @@if (context.eventItem.price) {
+                    <div class="price-area">
+                        @@if (context.eventItem.originalPrice) {
+                        <div class="original">
+                            <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                            <span class="price">5,200,000<em>원</em></span>
+                        </div>
+                        }
+                        <div class="total">
+                            <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
+                            <span class="price">4,420,000<em>원</em></span>
+                        </div>
+                        @@if (context.eventItem.discount) {
+                        <div class="discount">
+                            <em class="blind">할인율</em>
+                            <span class="percentage">10%</span>
+                        </div>
+                        }
+                    </div>
+                    }
+                    <div class="btn-area-wrap">
+                        <div class="cart">
+                            <!-- 비활성화 시 .disabled 추가 -->
+                            <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
+                        </div>
+                        <div class="btn-area">
+                            <a href="#n" class="btn border size-m">@@eventItem.button</a>
+                        </div>
+                    </div>
                 </div>
                 }
-                @@if (context.eventItem.price) {
-                <div class="price-area">
-                    @@if (context.eventItem.originalPrice) {
-                    <div class="original">
-                        <em class="blind">할인 전 정가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
-                        <span class="price">5,200,000<em>원</em></span>
+            }
+            <!-- 20210907 BTOCSITE-5035 "bizType" : "CARESOLUTION" 추가 -->
+            @@if (context.bizType === "CARESOLUTION") {
+                <div class="product-bottom">
+                    <div class="price-area care">
+                        <div class="total-price"><em class="text">기본 월 요금</em>
+                            <span class="price"><em>월</em> 29,900<em>원</em></span>
+                        </div>
+                        <span class="small-text">(3개월/1회 방문)</span>
                     </div>
-                    }
-                    <div class="total">
-                        <em class="blind">할인 후 판매가</em><!-- 210421 웹접근성 수정 [텍스트 수정] -->
-                        <span class="price">4,420,000<em>원</em></span>
-                    </div>
-                    @@if (context.eventItem.discount) {
-                    <div class="discount">
-                        <em class="blind">할인율</em>
-                        <span class="percentage">10%</span>
-                    </div>
-                    }
-                </div>
-                }
-                <div class="btn-area-wrap">
-                    <div class="cart">
-                        <!-- 비활성화 시 .disabled 추가 -->
-                        <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
-                        <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
-                    </div>
-                    <div class="btn-area">
-                        <a href="#n" class="btn border size-m">@@eventItem.button</a>
+                    <div class="btn-area-wrap">
+                        <div class="cart">
+                            <!-- 비활성화 시 .disabled 추가 -->
+                            <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="CARESOLUTION"><span class="blind">장바구니 담기</span></a>
+                        </div>
+                        <div class="btn-area">
+                            <a href="#n" class="btn border size-m">@@eventItem.button</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             }
             @@if (context.ar) {
             <!-- 210323 추가 [AR체험 버튼 추가] -->
