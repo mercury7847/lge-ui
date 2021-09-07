@@ -87,6 +87,16 @@
                     //item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                     item.eventType = item.eventType ? item.eventType : "";
                     item.eventId = item.eventId ? item.eventId : null;
+
+                    /* BTOCSITE-2065 : 이벤트&기획전 페이지 내 데이터레이어 삽입 (수정 작업 요청) 2021-09-02 */
+                    var ecPromotion = {
+                        "promo_id": item.eventUrl,
+                        "promo_name": item.eventTitle,
+						"promo_creative": item.eventListThumbnailPath
+                    }
+                    item.ecPromotion = JSON.stringify(ecPromotion);
+                    /* //BTOCSITE-2065 : 이벤트&기획전 페이지 내 데이터레이어 삽입 (수정 작업 요청) 2021-09-02 */
+                    
                     self.$list.append(vcui.template(eventItemList, item));
                 });
                 _self.checkNoData();
