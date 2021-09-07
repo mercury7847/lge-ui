@@ -34,7 +34,12 @@
 	top: auto;
 	overflow: hidden;
 }
-
+//BTOCISTE-3019
+.pop-conts {
+	@include mobile {
+		overflow-x: hidden;
+	}
+}
 /*
 .tit-area {
 	position: relative;
@@ -99,8 +104,8 @@
 	background-size: cover;
 
 	@include mobile {
-		margin: -40px -16px 32px; //BTOCISTE-3019
-		padding:48px 16px; //BTOCISTE-3019
+		margin-top: -40px;
+		margin-bottom: 32px;
 		background-image: url("/lg5-common/images/BMC/bg-win-announc-m.svg");
 	}
 
