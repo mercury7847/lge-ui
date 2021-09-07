@@ -21,39 +21,34 @@
 
     var commentList =
     '<li>'+
-           '{{# if (adminFlag == "N") { #}}' +
-           '<div class="comment-content">' +
-           '{{# } #}}' +
-           '{{# if (adminFlag == "Y") { #}}' +
-            '<div class="comment-content admin-comment">' +
-           '{{# } #}}' +
+        '<div class="comment-content {{# if (adminFlag == "Y") { #}}admin-comment{{# } #}}" data-club-id="{{clubDId}}">' +
             '<div class="info-name"><span class="blind">작성자</span>{{creationUserName}}</div>' +
             '<div class="comment-text-wrap">' +
                 '<div class="comment-text">' +
-                    '<p>{{contents}}</p>' +
+                    '<p>{{subContents}}</p>' +
                 '</div>' +
             '</div>' +
             '<div class="info-date"><span class="blind">작성일시</span>{{creationDate}}<span class="time">{{creationTime}}</span></div>' +
-            '{{# if (editableFlag == "Y") { #}}' +
+            '{{# if (editableFlag == "Y" || deletableFlag == "Y" ) { #}}' +
             '<div class="comment-btn-box">' +
-                '<button type="button" class="btn-text btn-comment-modify">수정</button>' +
-                '<button type="button" class="btn-text btn-comment-del" data-id="#commentDeleteConfirm" data-control="modal">삭제</button>' +
+                '{{# if (editableFlag == "Y" ) { #}} <button type="button" class="btn-text btn-comment-modify">수정</button> {{# } #}}' +
+                '{{# if (deletableFlag == "Y" ) { #}} <button type="button" class="btn-text btn-comment-del" data-id="#commentDeleteConfirm" data-control="modal">삭제</button> {{# } #}}' +
             '</div>' +
             '{{# } #}}' +
         '</div>' +
     '</li>';
-
+    
     var commentModifyForm =
         '<form>' +
-            '<div class="comment-write">' +
+            '<div class="comment-write" data-ajax="/mkt/api/stanbyMe/updateStanbyMeDAjax">' +
                 '<div class="form-wrap">' +
                     '<div class="forms">' +
                         '<div class="conts">' +
                             '<div class="text-form">' +
                                 '<div class="input-wrap">' +
-                                    '<textarea title="댓글내용" name="comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txt-count1" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError"></textarea>' +
+                                    '<textarea title="댓글내용" name="comment" id="comment" class="ui_textcontrol valid" placeholder="댓글을 작성해 주세요.&#13;&#10;- 작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다." maxLength="500" data-limit="500" data-count-target="#txa_comment" data-error-msg="댓글을 입력해주세요." data-required="true" required="" ui-modules="TextControl" aria-describedby="commentError">{{writeCont}}</textarea>' +
                                     '<div class="txt-count-box">' +
-                                        '<span id="txt-count1" class="inner-text"><em>0</em> / 500자</span>' +
+                                        '<span id="txa_comment" class="inner-text"><em>0</em> / 500자</span>' +
                                         '<div class="comment-write-btn-box">' +
                                             '<button type="reset" class="btn gray size btn-cancel">취소</button>' +
                                             '<button type="button" class="btn dark-gray size btn-confirm">수정</button>' +
@@ -65,9 +60,9 @@
                         '<div class="btm-more err-block">' +
                             '<p class="err-msg" id="commentError">댓글을 입력해주세요.</p>' +
                         '</div>' +
-                    '</div>'
-                '</div>'
-            '</div>'
+                    '</div>' +
+                '</div>' +
+            '</div>' +
         '</form>'
 
     $(window).ready(function() {
@@ -112,6 +107,7 @@
 
                     if (data.length) {
                         data.forEach(function(item) {
+                            item.hitCnt = "" + item.hitCnt;
                             html += vcui.template(listTmpl, item);
                         });
                         self.$listWrap.find('tbody').prepend(html);
@@ -155,13 +151,37 @@
 
                 vcui.require(['ui/pagination'], function () {
                     self.$commentWrap = $contents.find('.comment-wrap');
-                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination();
+
+                    self.$btnCancel = $('.btn-cancel');
+                    self.$btnConfirm = $('.btn-confirm');
+                    
+     
+
                     self.$listWrap = self.$commentWrap.find('.comment-list ul');
+
+
+                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination();
+
+                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
+
+                    if(isNoComment) {
+                        self.$pagination.hide();
+
+                    }
+
 
                     self.params = {
                         'page': 1
                     };
+
+
+
+
                     self.bindEvent();
+
+
+
+
                 });
 
             },
@@ -169,66 +189,70 @@
                 var self = this,
                     url = self.$commentWrap.data('ajax');
 
-                lgkorUI.showLoading();
-                lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
+                    if(url) {
+                        lgkorUI.showLoading();
+                        lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
+                            var html = '',
+                                data = d.data,
+                                page = d.pagination;
 
-                    var html = '',
-                        data = d.data,
-                        page = d.pagination;
 
-                    self.$listWrap.empty();
-
-                    if (data.length) {
-                        data.forEach(function(item) {
-                            html += vcui.template(commentList, item);
+                                // console.log();
+        
+                            self.$listWrap.empty();
+        
+                            if (data.length) {
+                                data.forEach(function(item) {
+                                    html += vcui.template(commentList, item);
+                                });
+                                self.$listWrap.prepend(html);
+                            }
+                            self.$pagination.vcPagination('setPageInfo', page);
+                            
+                            self.bindEvent();
+                            
+        
+        
+                            lgkorUI.hideLoading();
                         });
-                        self.$listWrap.prepend(html);
                     }
-                    self.$pagination.vcPagination('setPageInfo', page);
-                    self.bindEvent();
-                    lgkorUI.hideLoading();
-                });
+
+  
             },
             bindEvent: function() {
                 var self = this;
 
                 self.$pagination.on('page_click', function(e,page) {
+        
 
+                    console.log("pageClick %o %o",e,page)
+    
                     self.params = $.extend({}, self.params, {
                         'page': page
                     });
                     self.settingList();
                 });
 
-                //댓글 등록 버튼 클릭시 
-                var btnWriteFunc = function(){
-                    $('.comment-write .btn-confirm').on('click', function(e){
-                        var $commentWrite = $('.comment-write'),
-                            url = $commentWrite.data('ajax');
 
-                        var commentParam = {};
-                        commentParam.value = $('textarea').val();
+                // 댓글 취소 버튼
+                self.$btnCancel.off().on('click', function(){
 
-                        lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
-                            if(d.status == 'success'){
-                                commentParam = $.extend({}, params, {
-                                    'testSucFlag': "Y"
-                                });
-                            }else{
-                                commentParam = $.extend({}, commentParam, {
-                                    'testSucFlag': "N"
-                                });
-                                lgkorUI.alert("",{title:d.message});
-                            }
-                            self.bindEvent();
-                            lgkorUI.hideLoading();
-                        },true);
-                    });
-                };
-                btnWriteFunc();
+                    console.log("cancel %o",self.$btnCancel);
+
+                    var meInp = $(this).parents('.input-wrap');
+                    meInp.find('textarea').removeClass('valid');
+                    meInp.find('.inner-text em').text('0');
+                });
+
+
+                 // 댓글 등록/수정  버튼
+                self.$btnConfirm.off().on('click', function() {
+                    self.confirmFun(this);
+                });
+
 
                 //댓글 삭제 버튼 클릭시
-                $('.btn-comment-del').on('click', function(e){
+                $('.btn-comment-del').off().on('click', function(e){
                     var id = $(e.currentTarget).data('id');
                     var obj ={title:'', typeClass:'', ok : function (){ }};
                     var desc = '';
@@ -240,36 +264,93 @@
                     lgkorUI.confirm(desc, obj);
                 });
 
-                // 댓글 작성중일 경우 valid 클래스 추가
-                var inp = $('.input-wrap textarea');
-                var btnCancel = $('.btn-cancel');
-                inp.each(function(){
-                    var me = $(this);
-                    var inpValLen = me.val().length;
 
-                    valid();
+                $('.btn-comment-modify').on('click', function(e){
+                    var $self = $(this),
+                        $parent = $self.closest('.comment-content'),
+                        $commentTextWrap = $parent.find('.comment-text-wrap'),
+                        $infoData = $parent.find('.info-date'),
+                        $commentBtnBox = $parent.find('.comment-btn-box'),
+                        $writeCont = $commentTextWrap.find('.comment-text p').text();
 
-                    me.on('change keyup paste', function(){
-                        inpValLen = me.val().length;
-                        valid();
+                    $commentTextWrap.hide();
+                    $infoData.hide();
+                    $commentBtnBox.hide();
+                    $parent.append(
+                        vcui.template(commentModifyForm, {
+                            'writeCont' : $writeCont
+                        })
+                    ).find('.btn-confirm').off().on('click', function() {
+                        self.confirmFun(this);
                     });
 
-                    function valid(){
-                        if(inpValLen > 0) {
-                            me.addClass('valid');
-                        } else{
-                            me.removeClass('valid');
-                        }
-                    }
-                    btnCancel.on('click', function(){
-                        var meInp = $(this).parents('.input-wrap');
-                        meInp.find('textarea').removeClass('valid');
-                        meInp.find('.inner-text em').text('0');
-                    });
                 });
 
-                commentModify();
+
+
+                $('.input-wrap textarea').off().on('change keyup paste', function(){
+                    inpValLen = $(this).val().length;
+                    if(inpValLen > 0) {
+                        $(this).addClass('valid');
+                    } else{
+                        $(this).removeClass('valid');
+                    }
+                });
+            },
+
+            confirmFun : function(el){
+                var self = this;
+                var $commentWrite = $(el).closest('.comment-write');
+
+                // var url = $commentWrite.data('ajax');
+
+                var clubId = $(el).closest('.comment-content').data('clubId'); 
+
+                var mode = clubId ? 'modify' : 'write';
+
+                    if(mode == 'write') {
+                        var url = '/mkt/api/stanbyMe/insertStanbyMeDAjax';
+                        var params = {
+                            'clubMId' : lgkorUI.getParameterByName('clubMId') ,
+                            'contents' : $commentWrite.find('textarea').val()
+                        }
+
+                    } else {
+                        var url = '/mkt/api/stanbyMe/updateStanbyMeDAjax';
+
+                        var params = {
+                            'clubDId' : clubId,
+                            'contents' : $commentWrite.find('textarea').val()
+                        }
+
+                    }
+              
+                    if(url) {
+                        // lgkorUI.showLoading();
+                        lgkorUI.requestAjaxDataPost(url, params, function(data) {
+    
+                            console.log("res %o %o",url,data);
+    
+                            if(data.status === 'success') {
+                                if(mode == 'write') {
+                                    console.log('댓글 등록 성공')
+                                    self.params.page = 1;
+                                    self.settingList();
+                                } else {
+                                    console.log('댓글 수정 성공')
+                                    // self.params.page = 1;
+                                    self.settingList();
+                                }
+                            } else {
+                                lgkorUI.alert("", {
+                                    title: data.message
+                                });
+                            }
+                        });
+                    }
+
             }
+    
         };
 
         if($('.contents.stanbyme .visual-wrap').length > 0){
@@ -292,23 +373,53 @@
         });
 
         //댓글 수정 버튼 클릭시
-        var commentModify = function(){
-            $('.btn-comment-modify').on('click', function(e){
-                var $self = $(this),
-                    $parent = $self.closest('.comment-content'),
-                    $commentTextWrap = $parent.find('.comment-text-wrap'),
-                    $infoData = $parent.find('.info-date'),
-                    $commentBtnBox = $parent.find('.comment-btn-box'),
-                    $writeCont = $commentTextWrap.find('.comment-text p').text(),
-                    $replaceTextarea = $parent.find('textarea');
+        // var commentModify = function(){
+        //     $('.btn-comment-modify').on('click', function(e){
+        //         var $self = $(this),
+        //             $parent = $self.closest('.comment-content'),
+        //             $commentTextWrap = $parent.find('.comment-text-wrap'),
+        //             $infoData = $parent.find('.info-date'),
+        //             $commentBtnBox = $parent.find('.comment-btn-box'),
+        //             $writeCont = $commentTextWrap.find('.comment-text p').text();
 
-                $commentTextWrap.empty();
-                $infoData.empty();
-                $commentBtnBox.empty();
-                $parent.append(commentModifyForm);
-                $replaceTextarea.text($writeCont);
-            });
-        };
-        commentModify();
+        //         $commentTextWrap.remove();
+        //         $infoData.remove();
+        //         $commentBtnBox.remove();
+        //         $parent.append(commentModifyForm).closest('.comment-content .textarea').text($writeCont);
+        //     });
+        // };
+        // commentModify();
+
+        //댓글 등록 버튼 클릭시
+        // var btnWriteFunc = function(){
+        //     $('.comment-write .btn-confirm').on('click', function(e){
+        //         var $commentWrite = $('.comment-write'),
+        //             url = $commentWrite.data('ajax');
+
+        //         var commentParam = {};
+        //         commentParam.value = $('textarea').val();
+
+        //         lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
+        //             if(d.status == 'success'){
+        //                 commentParam = $.extend({}, params, {
+        //                     'testSucFlag': "Y"
+        //                 });
+        //             }else{
+        //                 commentParam = $.extend({}, commentParam, {
+        //                     'testSucFlag': "N"
+        //                 });
+        //                 lgkorUI.alert("",{title:d.message});
+        //             }
+        //             self.bindEvent();
+        //             lgkorUI.hideLoading();
+        //         },true);
+        //     });
+        // };
+        // btnWriteFunc();
+
+
+
+      
+
     });
 })();
