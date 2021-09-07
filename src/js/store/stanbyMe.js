@@ -307,6 +307,10 @@
                 $commentBtnBox.empty();
                 $parent.append(commentModifyForm);
                 $replaceTextarea.text($writeCont);
+                $replaceTextarea.value = $writeCont;
+                $replaceTextarea.val($writeCont);
+                console.log(writeCont);
+                console.log(replaceTextarea);
             });
         };
         commentModify();
