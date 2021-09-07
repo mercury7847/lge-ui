@@ -2326,6 +2326,7 @@
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
                 // BTOCSITE-1775
                 var isAllCancelDisable = true;  // 모두 취소 불가능
+                // BTOCSITE-4124 210907 수정 - S
                 productList.forEach(function( data ){
                     if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
                         isAllCancelDisable = false;
@@ -2334,7 +2335,9 @@
                         isAllCancelDisable = false;
                     }
                 });
+                // BTOCSITE-4124 210907 수정 - E
 
+                // BTOCSITE-4124 210907 수정 - S
                 if (isAllCancelDisable == true){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('#cancel_desc').hide();
@@ -2361,7 +2364,9 @@
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
-                // //BTOCSITE-1775
+               
+                // BTOCSITE-4124 210907 수정 - E
+                 // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
@@ -2697,6 +2702,8 @@
                                 }
                             });                       
                         }
+                    } else {
+                        console.log("no VC1001");
                     }
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
                 }
