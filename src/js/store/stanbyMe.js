@@ -112,6 +112,7 @@
 
                     if (data.length) {
                         data.forEach(function(item) {
+                            item.hitCnt = "" + item.hitCnt;
                             html += vcui.template(listTmpl, item);
                         });
                         self.$listWrap.find('tbody').prepend(html);
@@ -232,9 +233,8 @@
                     $commentTextWrap = $parent.find('.comment-text-wrap'),
                     $infoData = $parent.find('.info-date'),
                     $commentBtnBox = $parent.find('.comment-btn-box'),
-                    $writeCont = $commentTextWrap.find('.comment-text p').text(),
+                    $writeCont = $commentTextWrap.find('.comment-text p').text();
 
-                $parent.find('textarea').text($writeCont).end().focus();
                 $commentTextWrap.remove();
                 $infoData.remove();
                 $commentBtnBox.remove();
