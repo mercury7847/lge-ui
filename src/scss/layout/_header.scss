@@ -2088,8 +2088,11 @@ html {
 
 
 //BTOCSITE-1967 웹하단바
-
-.mdevice {
+.is-web-status-bar {
+    body {
+        padding-bottom:70px;
+    }
+    
     .utility {
         right:11px;
     }
@@ -2098,7 +2101,11 @@ html {
         &.active {
             display: block;
         }
+        & + .header-bottom {
+            padding-bottom:70px;
+        }
     }
+
     .scroll-down {
         .header-bottom {
             height:100vh;
@@ -2106,16 +2113,6 @@ html {
         }
         .dimmed {
             height:100vh;
-        }
-    }
-}
-.is-web-status-bar {
-    body {
-        padding-bottom:70px;
-    }
-    .mobile-nav-button {
-        & + .header-bottom {
-            padding-bottom:70px;
         }
     }
 }
