@@ -50,3 +50,11 @@
         right:16px;
     }
 }
+
+//BTOCSITE-1967
+.is-web-status-bar {
+    .toast-message {
+        $statusBarHeight:70px;
+        bottom: (24px + $statusBarHeight);
+    }
+}
