@@ -1459,6 +1459,9 @@ br.pc-only {
         .default-bottom-wrap,
         .prd-select-wrap {
             bottom:(0 + $statusBarHeight);
+            .inner .total-info {
+                bottom:(0 + $statusBarHeight);
+            }
         }
     }
 }
