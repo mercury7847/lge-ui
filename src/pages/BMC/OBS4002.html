@@ -179,6 +179,7 @@
                                     <div class="ev-prd-wrap">
                                         <ul class="product-items col4"> <!-- [210105_수정] .col4로 변경, 내부 리스트 항목 수정 확인 필요 -->
                                             <!-- 20210809 ["flagDiscount" : true 추가] BTOCSITE-3345 기획전 PLP 영역 가격노출 및 뱃지 적용 수정, 비활성화 시 .disabled 추가 -->
+                                            <!-- 20210907 BTOCSITE-5035 "bizType" : "CARESOLUTION" 추가 -->
                                             @@loop('./common/modules/product-list-item-loop.html', [
                                                 {
                                                     "itemClass" : "evt-item",
@@ -467,8 +468,9 @@
                                                         "price" : true,
                                                         "originalPrice" : true,
                                                         "button" : "자세히 보기",
-                                                        "discount" : true
-                                                    }
+                                                        "discount" : true,
+                                                    },
+                                                    "bizType" : "CARESOLUTION"
                                                 }
                                             ])
                                         </ul>
