@@ -35,6 +35,9 @@ img.m350 {width:100%; max-width:350px!important}
 .company .btn-link::after {top:auto; bottom:6px}
 
 /* 2depth fixed */
+#com-tabs02 + .tabs-wrap {margin-bottom:-48px}
+.com-tabs + .com-text {margin-top:48px}
+.com-tabs .tabs-wrap.bar-type {margin-top:48px}
 .tabs-wrap.act {position:fixed; left:0; top:72px; width:100%; background:#fff; z-index:80}
 .tabs-wrap.act::after {content:''; display:block; position:absolute; top:0; height:48px; left:-730px; right:-730px; background-color:#fff; z-index:-1}
 @media screen and (min-width:1461px) {
@@ -42,6 +45,7 @@ img.m350 {width:100%; max-width:350px!important}
 }
 @media screen and (max-width:768px) {
     .tabs-wrap.act {top:66px}
+    .com-tabs .tabs-wrap.bar-type {margin-top:64px}
 }
 /* 차트 */
 .chart_area.bar rect {stroke-width:0 !important} /* hover 시 효과 없음 */
@@ -158,6 +162,7 @@ img.m350 {width:100%; max-width:350px!important}
 .com-title .text {word-break:keep-all}
 .company .tit.h3 {margin-bottom:0; font-size:32px; font-weight:bold; line-height:1.5; text-align:center}
 .company .tit.h4 {font-size:18px; font-weight:bold; line-height:1.56; word-break:keep-all}
+.company .tit.h5 {margin-bottom:0!important; font-size:14px!important; font-weight:bold; line-height:28px!important; word-break:keep-all}
 .company .tit ~ .tit.h4 {margin-top:30px}
 .company .tit.mt {margin-top:30px!important}
 .company .tit.h4 + .text {margin-top:18px}
@@ -892,6 +897,8 @@ ul.bull > li .tb_row,
 ul.bull > li .tb-col {margin-left:-12px}
 ul.bull.mgtL > li + li {margin-top:30px!important}
 ul.bull > li ul.pl {padding-left:12px}
+ul.bull.fs14 > li {font-size:14px!important; line-height:22px!important}
+ul.bull.fs14 > li + li {margin-top:4px!important}
 
 ul.bull.m > li + li {margin-top:0}
 ul.bull.m > li::before {width:2px; height:2px; top:11px}
@@ -1172,7 +1179,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .popup-wrap.popup-company .pop-conts .com-text.tbl + .com-text::before {display:none}
 .popup-wrap.popup-company.social .pop-conts .tb_row table tbody th {padding:0; font-size:13px; font-weight:normal; line-height:21px; text-align:center}
 .popup-wrap.popup-company .pop-conts table th,
-.popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd}
+.popup-wrap.popup-company .pop-conts table td {padding:24px 26px; border-bottom:1px solid #ddd; word-break:keep-all}
 
 /* 아코디언 영역 */
 .company .tit + .accordion-wrap {margin-top:24px}
@@ -1222,9 +1229,14 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_sub .sub {display:block; margin-top:10px; font-size:16px; line-height:24px}
 
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-left:185px}
-.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {position:absolute; width:100px; height:65px; top:60px; left:60px; margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {position:absolute; width:100px; height:65px; top:calc(50% - 32.5px); left:60px; margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_thumb .thumb {top:calc(50% - 22.5px)}
 .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb img {width:100%; vertical-align:top}
 .company .accordion-wrap.btmBtn > ul > .lists .accord-cont .txtArea.tit_thumb table {margin:0}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em {color:#666; font-size:16px; font-weight:normal}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > span.bar {position:relative; margin-right:11px; padding-right:12px}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > span.bar::after {content:''; display:block; position:absolute; width:1px; height:20px; top:calc(50% - 10px); right:0; background-color:#ddd}
+.company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em b {color:#000; font-size:20px; font-weight:500}
 
 .company .accordion-wrap.lgway {margin-top:30px}
 .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:40px}
@@ -1489,40 +1501,34 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .tb_row.thmb table thead th {background-color:#da0f47; color:#fff; border:0; word-break:break-all}
 .tb_row.thmb table tbody td {vertical-align:top}
 
-.company table.grdt.grn1 th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
-.company table.grdt.grn1 th:nth-of-type(3) {background-color:#76afb5; color:#fff}
-.company table.grdt.grn1 th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
-.company table.grdt.grn1 th:nth-of-type(5) {background-color:#48949c; color:#fff}
-.company table.grdt.grn1 th:nth-of-type(6) {background-color:#347b83; color:#fff}
-.company table.grdt.grn1 th:nth-of-type(7) {background-color:#1d6169; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(2) th {background-color:#9bc4c9; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(3) th {background-color:#76afb5; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(4) th {background-color:#63a4ab; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(5) th {background-color:#48949c; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(6) th {background-color:#347b83; color:#fff}
-.company .only_mo table.grdt.grn1 tr:nth-of-type(7) th {background-color:#1d6169; color:#fff}
+.company .tb_row.grdt {max-width:706px; margin-top:8px!important}
+.company .tb_row.grdt table::before {display:none}
+.company .tb_row.grdt table th,
+.company .tb_row.grdt table td {border-color:#fff; height:40px; padding:8px 0; font-size:14px; line-height:22px}
+.company .tb_row.grdt table tr {border-bottom:none!important}
+.company .tb_row.grdt.grn1 table th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(3) {background-color:#76afb5; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(5) {background-color:#48949c; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(6) {background-color:#347b83; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(7) {background-color:#1d6169; color:#fff}
 
-.company table.grdt.grn2 th:nth-of-type(1) {background-color:#ddd; color:#666}
-.company table.grdt.grn2 th:nth-of-type(2) {background-color:#f4f4f4; color:#666}
-.company table.grdt.grn2 th:nth-of-type(3) {background-color:#9bc4c9; color:#fff}
-.company table.grdt.grn2 th:nth-of-type(4) {background-color:#76afb5; color:#fff}
-.company table.grdt.grn2 th:nth-of-type(5) {background-color:#63a4ab; color:#fff}
-.company table.grdt.grn2 th:nth-of-type(6) {background-color:#48949c; color:#fff}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(1) th {background-color:#ddd; color:#666}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(2) th {background-color:#f4f4f4; color:#666}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(3) th {background-color:#9bc4c9; color:#fff}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(4) th {background-color:#76afb5; color:#fff}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(5) th {background-color:#63a4ab; color:#fff}
-.company .only_mo table.grdt.grn2 tr:nth-of-type(6) th {background-color:#48949c; color:#fff}
+.company .tb_row.grdt.grn2 table th:nth-of-type(1) {background-color:#ddd; color:#666}
+.company .tb_row.grdt.grn2 table th:nth-of-type(2) {background-color:#f4f4f4; color:#666}
+.company .tb_row.grdt.grn2 table th:nth-of-type(3) {background-color:#9bc4c9; color:#fff}
+.company .tb_row.grdt.grn2 table th:nth-of-type(4) {background-color:#76afb5; color:#fff}
+.company .tb_row.grdt.grn2 table th:nth-of-type(5) {background-color:#63a4ab; color:#fff}
+.company .tb_row.grdt.grn2 table th:nth-of-type(6) {background-color:#48949c; color:#fff}
 
-.company table.grdt.grn3 th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
-.company table.grdt.grn3 th:nth-of-type(3) {background-color:#76afb5; color:#fff}
-.company table.grdt.grn3 th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
-.company table.grdt.grn3 th:nth-of-type(5) {background-color:#48949c; color:#fff}
-.company .only_mo table.grdt.grn3 tr:nth-of-type(2) th {background-color:#9bc4c9; color:#fff}
-.company .only_mo table.grdt.grn3 tr:nth-of-type(3) th {background-color:#76afb5; color:#fff}
-.company .only_mo table.grdt.grn3 tr:nth-of-type(4) th {background-color:#63a4ab; color:#fff}
-.company .only_mo table.grdt.grn3 tr:nth-of-type(5) th {background-color:#48949c; color:#fff}
+.company .tb_row.grdt.grn3 table th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
+.company .tb_row.grdt.grn3 table th:nth-of-type(3) {background-color:#76afb5; color:#fff}
+.company .tb_row.grdt.grn3 table th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
+.company .tb_row.grdt.grn3 table th:nth-of-type(5) {background-color:#48949c; color:#fff}
+@media screen and (max-width:768px) {
+    .company .tb_row.grdt table th,
+    .company .tb_row.grdt table td {height:34px; padding:6px 0!important}
+}
+
 
 /* 정관 */
 .artTxt p {font-size:16px; line-height:1.63; word-break:keep-all}
@@ -1647,6 +1653,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     .company .com-title + .tit.only {margin-top:60px}
     .company .tit.h3 + .desc {margin-top:6px; font-size:16px}
     .company .tit.h4 {font-size:15px; line-height:22px}
+    .company .tit.h5 {margin-bottom:8px!important; font-size:15px!important; line-height:22px!important}
     .company .tit ~ .tit.h4 {margin-top:15px}
     .company .tit.mt {margin-top:15px!important}
     .company .tit.h4 + .text {margin-top:10px}
@@ -1702,7 +1709,12 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb {padding-right:50px}
     .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .thumb {width:70px; height:45px; top:29px; left:20px}
-    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title {display:block; width:100%; height:45px; margin-bottom:10px; padding-left:80px}
+    .company .accordion-wrap.btmBtn > ul > .lists.on .head .accord-btn.tit_thumb .thumb {top:29px!important}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title {display:table-cell; width:100%; min-height:45px; height:45px; margin-bottom:10px; padding-left:80px; vertical-align:middle}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em {font-size:13px}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > em b {font-size:16px}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > span.bar {margin-right:7px; padding-right:8px}
+    .company .accordion-wrap.btmBtn > ul > .lists .head .accord-btn.tit_thumb .title > span.bar::after {height:16px; top:calc(50% - 8px)}
 
     .company .accordion-wrap.lgway {margin-top:15px}
     .company .accordion-wrap.lgway > ul > .lists .accord-cont .txtArea > ul > li + li {margin-top:18px}
@@ -1902,6 +1914,7 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
     ul.bull > li .tb_row,
     ul.bull > li .tb-col {margin-left:-8px}
     ul.bull.mgtL > li + li {margin-top:20px!important}
+    ul.bull.fs14 > li + li {margin-top:6px!important}
     
     .company .audit_list:first-of-type {margin-top:12px}
     .company .audit_list .titArea {align-items:center; margin-bottom:10px}
