@@ -1098,4 +1098,21 @@
     document.addEventListener('DOMContentLoaded', function () {
         init();
     });
+
+    /* BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
+    $(function () {
+        var addressFinder = new AddressFind();
+
+        $('#addrBtn').on('click', function(e){
+            addressFinder.open(function(data){
+                $('input[name=rcvPostCode]').val(data.zonecode);
+                $('input[name=rcvBasAddr]').val(data.roadAddress);
+                
+                // 상세정보로 포커스 이동
+                $('input[name=rcvDtlAddr]').focus();
+                $('input[name=rcvDtlAddr]').val('');
+            });
+        });
+    });
+    /* //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
 })();

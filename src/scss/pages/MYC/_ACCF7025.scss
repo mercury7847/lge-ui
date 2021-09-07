@@ -406,3 +406,17 @@
         padding:0;
     }
 }
+
+/* BTOCSITE-5138 */
+.dl-infolist-wrap{
+    .lists{
+        .addrInfo{
+            dd{
+                span{
+                    display:inline;
+                }
+            }
+        }
+    }
+}
+/* //BTOCSITE-5138 */
