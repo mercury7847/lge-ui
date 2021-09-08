@@ -2703,7 +2703,7 @@
                             });                       
                         }
                     } else {
-                        console.log("no VC1001");
+                        //console.log("no VC1001");
                     }
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
                 }
