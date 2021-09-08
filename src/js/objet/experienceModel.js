@@ -5212,7 +5212,7 @@
             }
         });
         let slideWrapW = (slideW * slideLeng);
-        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+         //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
         let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]');
         //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
@@ -6004,12 +6004,12 @@
                     if (refrigeratorType[i].typ == modelCate2) {
                         let _typModel = refrigeratorType[i].typModel;
                         for (let j = 0; j < _typModel.length; j++) {
-                            if (_typModel[i].defaultCode == modelCode) {
-                                let mainMagicSpace = _typModel[i].magicSpace;
-                                let mainEnergy = _typModel[i].energy;
-                                let mainKnockOn = _typModel[i].knockOn;
-                                let mainVoiceChk = _typModel[i].voiceChk; //210719 BTOCSITE-2346 음성인식 변수 추가
-                                let mainPrice = _typModel[i].defaultPrice;
+                            if (_typModel[j].defaultCode == modelCode) {
+                                let mainMagicSpace = _typModel[j].magicSpace;
+                                let mainEnergy = _typModel[j].energy;
+                                let mainKnockOn = _typModel[j].knockOn;
+                                let mainVoiceChk = _typModel[j].voiceChk; //210719 BTOCSITE-2346 음성인식 변수 추가
+                                let mainPrice = _typModel[j].defaultPrice;
                                 tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -6067,8 +6067,8 @@
                                 }
                                 // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '</tr>';
-                                if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
-                                    let _subModel = _typModel[i].subModel;
+                                if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
+                                    let _subModel = _typModel[j].subModel;
                                     for (let k = 0; k < _subModel.length; k++) {
                                         let subCode = _subModel[k].modelCode;
                                         let subMagicSpace = _subModel[k].magicSpace;
@@ -7158,7 +7158,7 @@
         for (let i = 0; i < _refrigeratorType.length; i++) {
             let _typModel = _refrigeratorType[i].typModel;
             for (let j = 0; j < _typModel.length; j++) {
-                if (_typModel[i].defaultCode == code) {
+                if (_typModel[j].defaultCode == code) {
 
                     returnIdx.push(0);
                     returnIdx.push(i);
