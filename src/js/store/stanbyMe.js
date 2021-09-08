@@ -218,6 +218,11 @@
                             }
 
                             self.$pagination.vcPagination('setPageInfo', page);
+                            self.$pagination.off('page_click').on('page_click', function(e,page) {
+                                self.pageClick(this,page);
+                            });
+
+
                             self.bindEvent();
                             lgkorUI.hideLoading();
                         });
@@ -229,17 +234,9 @@
                 var self = this;
 
                 // pagination click event
-                self.$pagination.on('page_click', function(e,page) {
-        
-
-                    console.log("pageClick %o %o",e,page)
-    
-                    self.params = $.extend({}, self.params, {
-                        'page': page
-                    });
-                    self.settingList();
+                self.$pagination.off('page_click').on('page_click', function(e,page) {
+                    self.pageClick(this,page);
                 });
-
 
                  // 댓글 쓰기폼 등록/수정 버튼
                 self.$btnConfirm.off().on('click', function() {
@@ -314,6 +311,22 @@
                 });
             },
 
+
+            // 페이지네이션 클릭 실행 함수
+
+            pageClick: function(el,page) {
+                var self = this;
+
+
+                console.log("pageClick %o %o",el,page)
+    
+                self.params = $.extend({}, self.params, {
+                    'page': page
+                });
+                self.settingList();
+
+
+            },
 
             // 코멘트 등록/수정 비동기 호출
             requestCmtWrite : function(el){
