@@ -2291,27 +2291,9 @@
 
                 var isAllChecked = false;
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
-                //else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; BTOCSITE-4124 부분취소 내용 제외 하단 따로 처리
+                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
                 
                 if(isAllChecked){
-                    for(var idx in PRICE_INFO_DATA){
-                        if(productList[idx].itemCancelAbleYn != "N"){
-                            originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
-                            discountPrices += PRICE_INFO_DATA[idx].discountPrice;
-                            mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
-                            productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
-                        }
-                    }
-                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
-                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllChecked');
-                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setDisenabled', true);
-                    $('#popup-cancel').on('change.disabled', '.ui_all_checkbox input[type=checkbox]',function(e){
-                        e.preventDefault();
-                        
-                        $(this).prop('checked', true);
-                    });
-                // BTOCSITE-4124 주문취소로직 - else if 구문 추가 (부분취소 따로 분리)
-                } else if(isAllChecked == false && getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y"){
                     for(var idx in PRICE_INFO_DATA){
                         if(productList[idx].itemCancelAbleYn != "N"){
                             originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
@@ -2343,60 +2325,32 @@
 
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
                 // BTOCSITE-1775
-                //var isAllCancelDisable = "true"; // 모두 취소 불가능
-                var isAllCancelDisable = ''; //  210907 변경 BTOCSITE-4124
-
+                var isAllCancelDisable = true;  // 모두 취소 불가능
+                // BTOCSITE-4124 210907 수정 - S
                 productList.forEach(function( data ){
-//                     if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체(현금/가상계좌) / 42:네이버페이 / 0:기타
-//                         if(dataChk == true){
-//                             isAllCancelDisable = false; // 변경 210907
-//                             //isCashCheck = "현금결제";
-//                         }else{
-//                             isAllCancelDisable = true; // 변경 210907
-//                             isCashCheck = "현금결제";
-//                         }
-//                     } else {
-//                         isAllCancelDisable = false;
-//                         //isCashCheck = "";
-//                     }
-                    if(data.itemCancelAbleYn == "Y"){
-                     if((result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") && productList[0].itemStatus == "Ordered"){ //BTOCSITE-4124 210824 추가 41:계좌이체(현금/가상계좌) / 42:네이버페이 / 0:기타
-                        isCashCheck = "현금결제";
-                        if(dataChk == false && $('#popup-cancel').hasClass('cash-chk') == false){ 
-                            isAllCancelDisable = true;
-                        } else if(dataChk == true && $('#popup-cancel').hasClass('cash-chk') == false){
-                            isAllCancelDisable = false;
-                        } else {
-                            isAllCancelDisable = false;
-                        }
-                     }else{
+                    if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
                         isAllCancelDisable = false;
-                     }
+                        isCashCheck = "현금결제";
                     } else {
                         isAllCancelDisable = false;
                     }
                 });
+                // BTOCSITE-4124 210907 수정 - E
 
-                //console.log("isAllCancelDisable %o %o %o",isAllCancelDisable,isCashCheck, dataChk );
-
-
-
-
-
-                if (dataChk == "" && isAllCancelDisable == true && isCashCheck == ""){
+                // BTOCSITE-4124 210907 수정 - S
+                if (isAllCancelDisable == true){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
                     $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == false && isAllChecked == false && isAllCancelDisable == true && isCashCheck == "현금결제") { // 변경 210907
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
-                    $('#popup-cancel').find('input[name=chk-cancel]').prop('disabled', true);
+                } else if(dataChk == false && isAllCancelDisable == false && isCashCheck == "현금결제") {
+                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
-                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',true);
+                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                     $('#popup-cancel').addClass('cash-chk');
-                } else if(dataChk == true && isAllChecked == false && isAllCancelDisable == false && isCashCheck == "현금결제"){
+                } else if(dataChk == true && isAllCancelDisable == false && isCashCheck == "현금결제"){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
@@ -2410,7 +2364,9 @@
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
-                // //BTOCSITE-1775
+               
+                // BTOCSITE-4124 210907 수정 - E
+                 // //BTOCSITE-1775
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
@@ -2484,7 +2440,7 @@
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
             
-            if((result.data.payment && dataChk == true && isAllCancelDisable == false && isCashCheck == "현금결제") || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
+            if((result.data.payment && dataChk == true && isAllChecked == true && isAllCancelDisable == false && isCashCheck == "현금결제") || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
                 popup.data('isBank', true);
 
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
@@ -2739,16 +2695,15 @@
                                 ok: function(){
                                 $('#popup-cancel').removeClass('cash-chk');
                                 $('#popup-cancel').addClass('data-chk');
-                                isAllCancelDisable = false; // 210907 BTOCSITE-4124 추가
                                 var dataID = $('#popup-cancel').data('dataId');
                                 getPopOrderData(dataId, "ordercancel", opener); 
-                                //popup.vcModal('close');//BTOCSITE-4124 210907 수정
+                                popup.vcModal('close');//BTOCSITE-4124 210902 수정
                                 //cancelSubmit();
                                 }
                             });                       
                         }
-                    }else {
-                        // console.log("정상 취소 case");
+                    } else {
+                        console.log("no VC1001");
                     }
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
                 }
