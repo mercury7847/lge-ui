@@ -75,7 +75,7 @@
 
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
-                        self.$pagination = $contents.find('.pagination').vcPagination({scrollTarget : $contents.find('.pagination')});
+                        self.$pagination = $contents.find('.pagination').vcPagination({scrollTop : 'noUse' });
                         self.$sortsWrap = $contents.find('.sorting-wrap');
                         self.$sortTotal = self.$sortsWrap.find('#count');
                         self.$sortSelectWrap = $contents.find('.sort-select-wrap');
@@ -95,7 +95,7 @@
                 var self = this,
                     url = self.$qnaTab.data('ajax');
 
-                lgkorUI.showLoading();
+                // lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
                     var html = '',
                         data = d.data,
@@ -123,7 +123,7 @@
 
                     console.log("페이지네이션 %o",page);
                     self.$pagination.vcPagination('setPageInfo', page);
-                    lgkorUI.hideLoading();
+                    // lgkorUI.hideLoading();
                 });
             },
             bindEvent: function() {
@@ -162,7 +162,7 @@
                     self.$btnCancel = $('.btn-cancel');
                     self.$btnConfirm = $('.btn-confirm');
                     self.$listWrap = self.$commentWrap.find('.comment-list ul');
-                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTarget :self.$commentWrap.find('.pagination')});
+                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTop : 'noUse' });
                     var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
 
                     if(isNoComment) {
@@ -418,7 +418,6 @@
                 var clubDId  = $(el).closest('.comment-content').data('clubId');
 
                 console.log("res %o %o",$(el),clubDId);
-
 
                 lgkorUI.requestAjaxDataPost("/mkt/api/stanbyMe/deleteStanbyMeDAjax", { 'clubDId' : clubDId }, function(data) {
 
