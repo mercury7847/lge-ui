@@ -51,7 +51,7 @@ $(function(){
 
     var $context = !!$('[data-hash="care"]').length ? $('[data-hash="care"]') : $(document);
 
-    vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
+    vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min', 'ui/gestrue'], function () {
 
         // 제품 코드 관리 부분
         $context.find('.ui_carousel_slider').vcCarousel({
