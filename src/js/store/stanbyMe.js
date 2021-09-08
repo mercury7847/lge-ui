@@ -32,7 +32,7 @@
             '{{# if (editableFlag == "Y" || deletableFlag == "Y" ) { #}}' +
             '<div class="comment-btn-box">' +
                 '{{# if (editableFlag == "Y" ) { #}} <button type="button" class="btn-text btn-comment-modify">수정</button> {{# } #}}' +
-                '{{# if (deletableFlag == "Y" ) { #}} <button type="button" class="btn-text btn-comment-del" data-id="#commentDeleteConfirm" data-control="modal">삭제</button> {{# } #}}' +
+                '{{# if (deletableFlag == "Y" ) { #}} <button type="button" class="btn-text btn-comment-del" data-control="modal">삭제</button> {{# } #}}' +
             '</div>' +
             '{{# } #}}' +
         '</div>' +
@@ -75,7 +75,7 @@
 
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
-                        self.$pagination = $contents.find('.pagination').vcPagination();
+                        self.$pagination = $contents.find('.pagination').vcPagination({scrollTarget : $contents.find('.pagination')});
                         self.$sortsWrap = $contents.find('.sorting-wrap');
                         self.$sortTotal = self.$sortsWrap.find('#count');
                         self.$sortSelectWrap = $contents.find('.sort-select-wrap');
@@ -101,6 +101,10 @@
                         data = d.data,
                         page = d.pagination;
 
+                        // page = $.extend(page , {
+                        //     scrollTarget : self.$pagination 
+                        // })
+
                     self.$sortTotal.html(page.dataCount);
 
                     self.$listWrap.find('tbody').find('tr').not( self.$noData).remove();
@@ -115,6 +119,9 @@
                     } else {
                         self.$noData.show();
                     }
+
+
+                    console.log("페이지네이션 %o",page);
                     self.$pagination.vcPagination('setPageInfo', page);
                     lgkorUI.hideLoading();
                 });
@@ -154,10 +161,14 @@
 
                     self.$btnCancel = $('.btn-cancel');
                     self.$btnConfirm = $('.btn-confirm');
-                    
-     
-
                     self.$listWrap = self.$commentWrap.find('.comment-list ul');
+                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTarget :self.$commentWrap.find('.pagination')});
+                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
+
+                    if(isNoComment) {
+                        self.$pagination.hide();
+
+                    }
 
 
                     self.$pagination = self.$commentWrap.find('.pagination').vcPagination();
@@ -173,9 +184,6 @@
                     self.params = {
                         'page': 1
                     };
-
-
-
 
                     self.bindEvent();
 
@@ -197,7 +205,7 @@
                                 page = d.pagination;
 
 
-                                // console.log();
+                                console.log("d %o",d);
         
                             self.$listWrap.empty();
         
@@ -206,13 +214,11 @@
                                     html += vcui.template(commentList, item);
                                 });
                                 self.$listWrap.prepend(html);
+                                $('.comment-head .count').text(d.dataCount);
                             }
+
                             self.$pagination.vcPagination('setPageInfo', page);
-                            
                             self.bindEvent();
-                            
-        
-        
                             lgkorUI.hideLoading();
                         });
                     }
@@ -222,6 +228,7 @@
             bindEvent: function() {
                 var self = this;
 
+                // pagination click event
                 self.$pagination.on('page_click', function(e,page) {
         
 
@@ -234,37 +241,31 @@
                 });
 
 
-                // 댓글 취소 버튼
-                self.$btnCancel.off().on('click', function(){
-
-                    console.log("cancel %o",self.$btnCancel);
-
-                    var meInp = $(this).parents('.input-wrap');
-                    meInp.find('textarea').removeClass('valid');
-                    meInp.find('.inner-text em').text('0');
-                });
-
-
-                 // 댓글 등록/수정  버튼
+                 // 댓글 쓰기폼 등록/수정 버튼
                 self.$btnConfirm.off().on('click', function() {
-                    self.confirmFun(this);
+                    self.requestCmtWrite(this);
                 });
 
 
-                //댓글 삭제 버튼 클릭시
-                $('.btn-comment-del').off().on('click', function(e){
-                    var id = $(e.currentTarget).data('id');
-                    var obj ={title:'', typeClass:'', ok : function (){ }};
-                    var desc = '';
-
-                    if(id=="#commentDeleteConfirm"){
-                        obj = $.extend(obj,{title: '댓글을 삭제하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                        desc = '';
-                    }
-                    lgkorUI.confirm(desc, obj);
+                // 댓글 쓰기폼 취소 버튼
+                self.$btnCancel.off().on('click', function(){
+                    self.cmtCancel(this)
                 });
 
 
+                // 댓글 쓰기폼 등록 / 수정 인풋 입력 체크
+                // $('.input-wrap textarea').off().on('change keyup paste', function(){
+                //     inpValLen = $(this).val().length;
+                //     if(inpValLen > 0) {
+                //         $(this).addClass('valid');
+                //     } else{
+                //         $(this).removeClass('valid');
+                //     }
+                // });
+
+
+
+                // 댓글 수정 버튼
                 $('.btn-comment-modify').on('click', function(e){
                     var $self = $(this),
                         $parent = $self.closest('.comment-content'),
@@ -273,32 +274,49 @@
                         $commentBtnBox = $parent.find('.comment-btn-box'),
                         $writeCont = $commentTextWrap.find('.comment-text p').text();
 
-                    $commentTextWrap.hide();
-                    $infoData.hide();
-                    $commentBtnBox.hide();
-                    $parent.append(
-                        vcui.template(commentModifyForm, {
-                            'writeCont' : $writeCont
-                        })
-                    ).find('.btn-confirm').off().on('click', function() {
-                        self.confirmFun(this);
-                    });
+                        $commentTextWrap.hide();
+                        $infoData.hide();
+                        $commentBtnBox.hide();
+                        $parent.append(
+                            vcui.template(commentModifyForm, {
+                                'writeCont' : $writeCont
+                            })
+                        );
+                        
+                        $parent.find('.btn-confirm').off().on('click', function() {
+                            self.requestCmtWrite(this);
+                        });
+
+
+                        $parent.find('.btn-cancel').off().on('click', function() {
+                            self.cmtCancel(this);
+                        });
+
+
+                        $parent.find('.ui_textcontrol').vcTextcontrol();
+
 
                 });
 
 
+                //댓글 삭제 버튼 클릭시
+                $('.btn-comment-del').off().on('click', function(e){
+                    var el = this;
+         
+                    lgkorUI.confirm('', {
+                        title:'댓글을 삭제하시겠습니까?', 
+                        cancelBtnName: '아니오', okBtnName: '예', 
+                        ok : function (){ 
 
-                $('.input-wrap textarea').off().on('change keyup paste', function(){
-                    inpValLen = $(this).val().length;
-                    if(inpValLen > 0) {
-                        $(this).addClass('valid');
-                    } else{
-                        $(this).removeClass('valid');
-                    }
+                            self.requestCmtDelete(el);
+                        }
+                    });
                 });
             },
 
-            confirmFun : function(el){
+
+            // 코멘트 등록/수정 비동기 호출
+            requestCmtWrite : function(el){
                 var self = this;
                 var $commentWrite = $(el).closest('.comment-write');
 
@@ -349,6 +367,62 @@
                         });
                     }
 
+            },
+
+            // 댓글 쓰기폼 취소 함수
+            cmtCancel: function(el) {
+                var self = this;
+
+
+                var isCmtModify = $(el).closest('.comment-write').data('ajax') === '/mkt/api/stanbyMe/updateStanbyMeDAjax' ;
+
+                console.log("cancel %o",self.$btnCancel);
+
+                var meInp = $(el).parents('.input-wrap');
+                    meInp.find('textarea').removeClass('valid');
+                    meInp.find('.inner-text em').text('0');
+
+                    $parent = $(el).closest('.comment-content'),
+                    $commentTextWrap = $parent.find('.comment-text-wrap'),
+                    $infoData = $parent.find('.info-date'),
+                    $commentBtnBox = $parent.find('.comment-btn-box'),
+
+                    $commentTextWrap.show();
+                    $infoData.show();
+                    $commentBtnBox.show();
+
+
+                if(isCmtModify) {
+                    // 코멘트 수정 박스 삭제
+                    $parent.find('form').remove();
+                    $parent.find('.ui_textcontrol').vcTextcontrol('destroy');
+                }
+            },
+
+            // 댓글 삭제 비동기 호출
+            requestCmtDelete: function(el) {
+                var self = this;
+                var clubDId  = $(el).closest('.comment-content').data('clubId');
+
+                console.log("res %o %o",$(el),clubDId);
+
+
+                lgkorUI.requestAjaxDataPost("/mkt/api/stanbyMe/deleteStanbyMeDAjax", { 'clubDId' : clubDId }, function(data) {
+
+                    console.log("res %o ",data);
+
+                    if(data.status === 'success') {
+         
+                        console.log('댓글 삭제 성공')
+        
+                        self.settingList();
+        
+                    } else {
+                        lgkorUI.alert("", {
+                            title: data.message
+                        });
+                    }
+                });
             }
     
         };
