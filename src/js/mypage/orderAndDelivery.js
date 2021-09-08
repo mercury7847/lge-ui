@@ -2291,7 +2291,7 @@
 
                 var isAllChecked = false;
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
-                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; //BTOCSITE-4124 부분취소 내용 제외 하단 따로 처리
+                //else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; BTOCSITE-4124 부분취소 내용 제외 하단 따로 처리
                 
                 if(isAllChecked){
                     for(var idx in PRICE_INFO_DATA){
@@ -2388,7 +2388,7 @@
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
                     $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == false && isAllChecked == true && isAllCancelDisable == true && isCashCheck == "현금결제") { // 변경 210907
+                } else if(dataChk == false && isAllChecked == false && isAllCancelDisable == true && isCashCheck == "현금결제") { // 변경 210907
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', true);
                     $('#popup-cancel').find('input[name=chk-cancel]').prop('disabled', true);
                     $('#popup-cancel').find('#cancel_desc').show();
@@ -2396,7 +2396,7 @@
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                     $('#popup-cancel').addClass('cash-chk');
-                } else if(dataChk == true && isAllChecked == true && isAllCancelDisable == false && isCashCheck == "현금결제"){
+                } else if(dataChk == true && isAllChecked == false && isAllCancelDisable == false && isCashCheck == "현금결제"){
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
@@ -2484,7 +2484,7 @@
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
             
-            if((result.data.payment && dataChk == true && isAllChecked == true && isAllCancelDisable == false && isCashCheck == "현금결제") || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
+            if((result.data.payment && dataChk == true && isAllCancelDisable == false && isCashCheck == "현금결제") || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
                 popup.data('isBank', true);
 
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
