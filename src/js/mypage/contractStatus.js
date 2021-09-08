@@ -1001,7 +1001,9 @@
                 actualUserName: data.userInfo.actualUser.name,
                 actualUserPhone: data.userInfo.actualUser.phoneNumber,
                 actualUserTelephone: data.userInfo.actualUser.telephoneNumber,
-                actualUserAdress: data.userInfo.actualUser.adress
+                rcvPostCode: data.userInfo.actualUser.rcvPostCode,
+                rcvBasAddr: data.userInfo.actualUser.rcvBasAddr,
+                rcvDtlAddr: data.userInfo.actualUser.rcvDtlAddr
             }
             userInfoValidation.setValues(userInfo);
     
