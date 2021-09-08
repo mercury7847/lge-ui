@@ -74,8 +74,10 @@ img.m350 {width:100%; max-width:350px!important}
 .company .c_legend .lgnd > span.gray {background-color:#aaa}
 .company .c_legend .lgnd > span.d_gray {background-color:#666}
 .company .c_legend .lgnd > span.d_g_line {border:2px solid #666}
+.company .c_legend .lgnd > span.d_b_line {border:2px solid #000}
 .company .c_legend .lgnd > span.pink_dot {background:url(/kr/images/company/promot/img-bg-graph-legend-pinkDot.png) no-repeat center / contain}
 .company .c_legend .lgnd > span.g_line_pt {background:url(/kr/images/company/promot/img-bg-graph-legend-grayLinePattern.png) no-repeat center / contain}
+.company .c_legend .lgnd > span.p_line_pt {background:url(/kr/images/company/investor/img-bg-graph-legend-pinkLinePattern.svg) no-repeat center / contain}
 @media screen and (max-width:768px) {
     .company .c_legend .lgnd {font-size:12px; line-height:20px}
     .company .c_legend .lgnd + .lgnd {margin-left:18px!important; padding-left:0!important}
@@ -249,6 +251,18 @@ img.m350 {width:100%; max-width:350px!important}
 .company .risk_system .item .item_txt {width:calc(64% - 12px)}
 .company .risk_system .item .item_txt p {display:flex; align-items:center; padding:26px 20px; border:1px solid #ddd; border-radius:8px; font-size:16px; line-height:26px; word-break:keep-all}
 .company .risk_system .item .item_txt p + p {margin-top:12px}
+
+.company .graph_area.t3 {display:flex; flex-wrap:wrap; justify-content:space-between}
+.company .graph_area.t3 .graph_img {width:calc(33.3333% - 16px); min-width:444px; max-width:444px}
+.company .graph_area.t3 .graph_img img {width:100%}
+.company .graph_area.t3 .graph_dec {text-align:right}
+@media screen and (max-width:1460px){
+    .company .graph_area.t3 {flex-direction:column}
+    .company .graph_area.t3 .graph_img {width:100%; min-width:0; margin:0 auto}
+    .company .graph_area.t3 .graph_img + .graph_img {margin-top:48px}
+}
+@media screen and (max-width:768px){
+}
 
 .company .linkArea {margin-top:30px; padding:32px 0; border-radius:8px; background-color:#f4f4f4}
 .company .linkArea.grdt {background-image:linear-gradient(133deg, #a58bee 36%, #f86791 61%)}
@@ -836,6 +850,26 @@ img.m350 {width:100%; max-width:350px!important}
 .company .orga_way > ul::before {content:''; display:block; position:absolute; width:0; height:0; top:0; left:calc(50% - 165px); border-bottom:28px solid #f4f4f4; border-left:165px solid transparent; border-right:165px solid transparent}
 .company .orga_way > ul li {display:flex; justify-content:center; align-items:center; width:calc(50% - 12px); max-width:300px; min-height:90px; margin-top:24px; padding:18px 26px; border:1px solid #ddd; border-radius:8px; font-size:16px; font-weight:500; line-height:26px; text-align:center}
 .company .orga_way > ul li:nth-child(2n) {margin-left:24px}
+
+.company .compWay_gram {width:100%; max-width:1040px; margin:0 auto}
+.company .compWay_gram > ul {display:flex; justify-content:space-between}
+.company .compWay_gram > ul li {position:relative; width:25%; max-width:280px}
+.company .compWay_gram > ul li:last-child {width:200px}
+.company .compWay_gram > ul li::before {content:''; display:block; position:absolute; height:1px; top:99px; left:185px; right:7px; background-color:#aaa}
+.company .compWay_gram > ul li::after {content:''; display:block; position:absolute; width:0; height:0; top:94px; right:0; border-left:7px solid #aaa; border-top:6px solid transparent; border-bottom:6px solid transparent}
+.company .compWay_gram > ul li:last-child:before {display:none}
+.company .compWay_gram > ul li:last-child:after {display:none}
+.company .compWay_gram > ul li .step {width:200px; height:200px; border-radius:50%; border:1px dashed #ddd}
+.company .compWay_gram > ul li .step span {display:flex; align-items:center; justify-content:center; width:170px; height:170px; margin:14px; border-radius:50%; background-color:#f4f4f4; font-size:18px; font-weight:500; line-height:28px; text-align:center}
+.company .compWay_gram > ul li:nth-child(3) .step span {background-color:#666; color:#fff}
+.company .compWay_gram > ul li:nth-child(4) .step span {background-color:#da0f47; color:#fff}
+.company .compWay_gram > ul li p {width:100%; max-width:200px; margin-top:12px; font-size:16px; line-height:26px; text-align:center}
+.company .compWay_gram > ul li:nth-child(4) p {color:#da0f47; font-weight:bold}
+@media screen and (max-width:960px) {
+    .company .compWay_gram {max-width:278px}
+    .company .compWay_gram > ul {display:none}
+    .company .compWay_gram img.only_mo {display:block!important}
+}
 /* 컨텐츠 영역 끝 */
 
 /* 슬라이드 */
