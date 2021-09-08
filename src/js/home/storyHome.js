@@ -20,55 +20,81 @@
             '</div>'+
         '</div>';
 
-            var storyListTemplate = 
-                '<div class="flexbox" data-contents-type="{{contentsType}}">'+
-                    //'<div class="box-wrap">'+
-                        '<div class="box {{contentsType}}">'+
-                            '<a href="{{storyUrl}}" class="visual-area">'+
-                                '{{#if contentsType == "image"}}'+
-                                '<span class="image">'+
-                                    '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
-                                '</span>'+
-                                '{{#elsif contentsType == "video"}}'+
-                                '<span class="image">'+
-                                    '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
-                                '</span>'+
-                                '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
-                                '{{/if}}'+
-                            '</a>'+
-                            '<div class="text-area">'+
-                                '{{#if contentsName}}'+
-                                '<div class="flag-wrap box-type">'+
-                                    '<span class="flag">{{contentsName}}</span>'+
-                                '</div>'+
-                                '{{/if}}'+
-                                '<a href="{{storyUrl}}" class="card-title"><span>{{#raw title}}</span></a>'+            
-                                '<div class="tag-wrap">'+
-                                    '<ul class="tags">'+
-                                        '{{#each item in tagList}}'+           
-                                        '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{#raw title}}">#{{item.tagName}}</a></li>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
-                                        '{{/each}}'+
-                                    '</ul>'+
-                                '</div>'+
-                            '</div>'+        
-                            '<div class="date">{{regDate}}</div>'+
+    var storyListTemplate = 
+        '<div class="flexbox" data-contents-type="{{contentsType}}">'+
+            //'<div class="box-wrap">'+
+                '<div class="box {{contentsType}}">'+
+                    '<a href="{{storyUrl}}" class="visual-area">'+
+                        '{{#if contentsType == "image"}}'+
+                        '<span class="image">'+
+                            '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
+                        '</span>'+
+                        '{{#elsif contentsType == "video"}}'+
+                        '<span class="image">'+
+                            '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{smallImage}}" alt="{{title}}">'+
+                        '</span>'+
+                        '<a href="{{storyUrl}}" class="btn-video"><span class="blind">동영상 재생</span></a>'+
+                        '{{/if}}'+
+                    '</a>'+
+                    '<div class="text-area">'+
+                        '{{#if contentsName}}'+
+                        '<div class="flag-wrap box-type">'+
+                            '<span class="flag">{{contentsName}}</span>'+
                         '</div>'+
-                    //'</div>'+
-                '</div>';
+                        '{{/if}}'+
+                        '<a href="{{storyUrl}}" class="card-title"><span>{{#raw title}}</span></a>'+            
+                        '<div class="tag-wrap">'+
+                            '<ul class="tags">'+
+                                '{{#each item in tagList}}'+           
+                                '<li class="tag"><a href="#" class="subscription-btn" data-mode="search" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{#raw title}}">#{{item.tagName}}</a></li>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                                '{{/each}}'+
+                            '</ul>'+
+                        '</div>'+
+                    '</div>'+        
+                    '<div class="date">{{regDate}}</div>'+
+                '</div>'+
+            //'</div>'+
+        '</div>';
 
     var tagBoxTemplate = 
-        '<div class="flexbox tag-area">'+
-            '<span class="title">이런 태그는 어떠세요?</span>'+
-            '<ul class="tag-lists">'+
-                '{{#each item in tagList}}'+         
-                '<li>'+
-                    '<div class="tag">'+
-                        '<span class="text">#{{item.tagName}}</span>'+
-                        '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{item.tagName}}"><span>구독</span></button>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
+        // '<div class="flexbox tag-area">'+
+        //     '<span class="title">이런 태그는 어떠세요?</span>'+
+        //     '<ul class="tag-lists">'+
+        //         '{{#each item in tagList}}'+         
+        //         '<li>'+
+        //             '<div class="tag">'+
+        //                 '<span class="text">#{{item.tagName}}</span>'+
+        //                 '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{item.tagName}}"><span>구독</span></button>'+ //BTOCSITE-1057 : data-contents 추가 2021-08-09
+        //             '</div>'+
+        //         '</li>'+        
+        //         '{{/each}}'+
+        //     '</ul>'+
+        // '</div>';
+        '<div class="flexbox-wrap">'+
+            '<div class="flexbox tag-area">'+
+                '<div class="title-area">'+
+                    '<span class="title">이런 <em>#태그</em>를 <br class="mo-only ">어떠세요?</span>'+
+                    '<a href="#" class="btn-link tagmnger-btn"><span>다른 태그도 구독</span></a>'+
+                '</div>'+
+                '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
+                    '<div class="ui_smooth_tab">'+
+                        '<ul class="tag-lists">'+
+                            '{{#each item in tagList}}'+                
+                            '<li>'+
+                                '<div class="tag">'+
+                                    '<span class="text">#{{item.tagName}}</span>'+
+                                    '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}"><span>구독</span></button>'+
+                                '</div>'+
+                            '</li>'+  
+                            '{{/each}}'+                      
+                        '</ul>'+
                     '</div>'+
-                '</li>'+        
-                '{{/each}}'+
-            '</ul>'+
+                    '<div class="scroll-controls ui_smooth_controls">'+
+                        '<button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>'+
+                        '<button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
         '</div>';
 
     var recommendTagTemplate = 
@@ -458,7 +484,9 @@
 
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
-                            sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
+                            // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
+                            $context.find('.tag-subscribe-story3').empty().show().append(list)
+                            $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                         }
                     } else{
                         if(sectioname == "new_story"){
