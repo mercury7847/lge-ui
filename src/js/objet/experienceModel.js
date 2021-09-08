@@ -6110,33 +6110,33 @@
                 for (let i = 0; i < _typModel.length; i++) {
                     if (_typModel[i].defaultCode == modelCode) {
                         let mainPrice = _typModel[i].defaultPrice;
+                        modelPriceArry.push(modelCode);
                         tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                         tblHtml += '    <table>';
                         tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
                         tblHtml += '        <colgroup>';
                         tblHtml += '            <col style="width:50%">';
-                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '            <col style="width:50%">';
-                        }
-                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                         tblHtml += '        </colgroup>';
                         tblHtml += '        <thead>';
                         tblHtml += '            <tr>';
                         tblHtml += '                <th scope="col">모델명</th>';
-                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
-                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '                <th scope="col">가격</th>';
-                        }
-                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                         tblHtml += '            </tr>';
                         tblHtml += '        </thead>';
                         tblHtml += '        <tbody>';
-
-                        modelPriceArry.push(modelCode);
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        if ($objContent.attr('data-page-type') === 'COMMON'){
                         tblHtml += '<tr class="is_active">';
                         tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td><span></span>원</td>';
                         tblHtml += '</tr>';
+                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td style="text-align:center;">-</td>';
+                        tblHtml += '</tr>';
+                        }
                         if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
                             let _subModel = _typModel[i].subModel;
                             for (let k = 0; k < _subModel.length; k++) {
