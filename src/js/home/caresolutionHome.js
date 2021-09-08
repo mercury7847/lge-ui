@@ -328,6 +328,7 @@ $(function(){
                     }, { passive: false }).on('gestureend', function (e, data) {
                         // gesturestart gesturemove gestureend gesturecancel
                         /* 탭 방향 전환 */
+                        console.log("gesture end@@@")
                         if (data.direction === 'left') {
                             tab.nav.next();
                         } else {

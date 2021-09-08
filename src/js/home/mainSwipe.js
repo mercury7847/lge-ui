@@ -206,10 +206,11 @@ MainSwiper.prototype = {
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
 
-            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick){
+            var isCareSmoothTab = !!$(e.target).closest('.care-home-section .ui_smooth_tab').length;
+
+            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab){
                 e.stopPropagation();
             }
-            
         });        
 
     },
