@@ -711,7 +711,7 @@
                 padding-top:18px;
                 border-radius:8px;
                 font-size:$font-small;
-                line-height:24px;
+                line-height:23px;
                 .txt-point{
                     display:block;
                     margin-bottom:18px;
@@ -723,9 +723,9 @@
                     font-weight:$font-weight-bold;
                 }
                 .txt-list{
-                    margin-top:8px;
+                    margin-top:5px;
                     >li{
-                        padding-left: 9px;
+                        padding-left: 6px;
                         font-size:$font-small;
                         word-break: keep-all;
                         &:before{
