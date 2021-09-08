@@ -2291,9 +2291,26 @@
 
                 var isAllChecked = false;
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
-                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true;
+                //else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; BTOCSITE-4124 수정 
                 
                 if(isAllChecked){
+                    for(var idx in PRICE_INFO_DATA){
+                        if(productList[idx].itemCancelAbleYn != "N"){
+                            originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
+                            discountPrices += PRICE_INFO_DATA[idx].discountPrice;
+                            mempointPrices += PRICE_INFO_DATA[idx].mempointPrice;
+                            productTotalPrices += PRICE_INFO_DATA[idx].productTotalPrice;
+                        }
+                    }
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('update');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setAllChecked');
+                    $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('setDisenabled', true);
+                    $('#popup-cancel').on('change.disabled', '.ui_all_checkbox input[type=checkbox]',function(e){
+                        e.preventDefault();
+                        
+                        $(this).prop('checked', true);
+                    });
+                } else if(isAllChecked == false && getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y"){
                     for(var idx in PRICE_INFO_DATA){
                         if(productList[idx].itemCancelAbleYn != "N"){
                             originalTotalPrices += PRICE_INFO_DATA[idx].originalTotalPrice;
