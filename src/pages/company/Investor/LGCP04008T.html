@@ -16,7 +16,6 @@
 </script>
 <link rel="stylesheet" href="/kr/images/company/company2.css">
 <script type="text/javascript" src="/kr/images/company/chartsloader.js"></script>
-<!--<script type="text/javascript" src="/kr/images/company/investorhighlight.js"></script>-->
 <script type="text/javascript">
 	google.charts.load("current", {
 		packages: ["corechart"]
@@ -198,12 +197,17 @@
 </script>
 <style>
 	.graph_area::after {content:''; display:block; clear:both}
-	.graph_area .graph {float:left; width:50%; max-width:50%}
+	.graph_area .graph {float:left; width:calc(50% - 12px); max-width:calc(50% - 12px)}
+	.graph_area .graph + .graph {margin-left:24px}
 	.graph_area .graph .tit {margin-bottom:10px}
-	.graph_dec {font-size:14px;line-height:24px;text-align:right;}
+	.graph_dec {font-size:14px;line-height:24px;text-align:right}
+	.graph_area.t3 {margin-bottom:60px}
+	.graph_area.t3 .c_legend .lgnd + .lgnd {margin-left:20px; padding-left:20px}
+	.graph_area.t3 .c_legend {margin-top:28px}
 	@media screen and (max-width:767px){
-		.graph_dec {font-size:12px;line-height:20px;}
-		.graph_area .graph {float:none; width:100%; max-width:100%; margin-top:60px}
+		.graph_dec {font-size:12px; line-height:20px}
+		.graph_area .graph {float:none; width:100%; max-width:100%}
+		.graph_area .graph + .graph {margin-left:0; margin-top:60px}
 	}
 </style>
 <div class="container company">
@@ -387,6 +391,113 @@
 		<div id="tab2" class="tabs-contents" style="display:block;">
 			<h3 class="blind">재무상태표</h3>
 			<div class="com-text">
+				<div class="graph_area t3">
+					<div class="graph_img">
+						<p class="tit">부채/자본</p>
+						<div class="graph_dec">K-IFRS 연결기준 (단위: 억원)</div>
+						<img class="only_pc" src="/kr/images/company/investor/img-graph-balance_sheet_01_pc.png" alt="부채/자본 그래프">
+						<img class="only_mo" src="/kr/images/company/investor/img-graph-balance_sheet_01_mo.png" alt="부채/자본 그래프">
+						<div class="blind">
+							<ul>
+								<li>
+									 <span>2018</span>
+									 <ul>
+										 <li>280,215(부채)</li>
+										 <li>163,068(자본)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2019</span>
+									 <ul>
+										 <li>284,348(부채)</li>
+										 <li>164,251(자본)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2020</span>
+									 <ul>
+										 <li>306,621(부채)</li>
+										 <li>175,421(자본)</li>
+									 </ul>
+								</li>
+							</ul>
+						</div>
+						<div class="c_legend">
+							<p class="lgnd">부채<span class="d_b_line"></span></p>
+							<p class="lgnd">자본<span class="p_line_pt"></span></p>
+						</div>
+					</div>
+					<div class="graph_img">
+						<p class="tit">유동/비유동 자산</p>
+						<div class="graph_dec">K-IFRS 연결기준 (단위: 억원)</div>
+						<img class="only_pc" src="/kr/images/company/investor/img-graph-balance_sheet_02_pc.png" alt="유동/비유동 자산 그래프">
+						<img class="only_mo" src="/kr/images/company/investor/img-graph-balance_sheet_02_mo.png" alt="유동/비유동 자산 그래프">
+						<div class="blind">
+							<ul>
+								<li>
+									 <span>2018</span>
+									 <ul>
+										 <li>193,629(유동자산)</li>
+										 <li>249,655(비유동자산)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2019</span>
+									 <ul>
+										 <li>197,535(유동자산)</li>
+										 <li>251,064(비유동자산)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2020</span>
+									 <ul>
+										 <li>232,394(유동자산)</li>
+										 <li>249,648(비유동자산)</li>
+									 </ul>
+								</li>
+							</ul>
+						</div>
+						<div class="c_legend">
+							<p class="lgnd">유동자산<span class="d_b_line"></span></p>
+							<p class="lgnd">비유동자산<span class="p_line_pt"></span></p>
+						</div>
+					</div>
+					<div class="graph_img">
+						<p class="tit">유동/비유동 부채</p>
+						<div class="graph_dec">K-IFRS 연결기준 (단위: 억원)</div>
+						<img class="only_pc" src="/kr/images/company/investor/img-graph-balance_sheet_03_pc.png" alt="유동/비유동 부채 그래프">
+						<img class="only_mo" src="/kr/images/company/investor/img-graph-balance_sheet_03_mo.png" alt="유동/비유동 부채 그래프">
+						<div class="blind">
+							<ul>
+								<li>
+									 <span>2018</span>
+									 <ul>
+										 <li>171,350(유동부채)</li>
+										 <li>108,865(비유동부채)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2019</span>
+									 <ul>
+										 <li>176,579(유동부채)</li>
+										 <li>107,768(비유동부채)</li>
+									 </ul>
+								</li>
+								<li>
+									 <span>2020</span>
+									 <ul>
+										 <li>202,075(유동부채)</li>
+										 <li>104,546(비유동부채)</li>
+									 </ul>
+								</li>
+							</ul>
+						</div>
+						<div class="c_legend">
+							<p class="lgnd">유동부채<span class="d_b_line"></span></p>
+							<p class="lgnd">비유동부채<span class="p_line_pt"></span></p>
+						</div>
+					</div>
+				</div>
 				<p class="tit">연도별 재무상태표</p>
 				<div class="tb_row tb-row-bl middle">
 					<div class="tbl_info rt s">K-IFRS 연결기준 (단위 : 억원)</div>
