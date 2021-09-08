@@ -2310,6 +2310,7 @@
                         
                         $(this).prop('checked', true);
                     });
+                // BTOCSITE-4124 주문취소로직 - else if 구문 추가 (부분취소 따로 분리)
                 } else if(isAllChecked == false && getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y"){
                     for(var idx in PRICE_INFO_DATA){
                         if(productList[idx].itemCancelAbleYn != "N"){
