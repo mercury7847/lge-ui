@@ -6004,12 +6004,12 @@
                     if (refrigeratorType[i].typ == modelCate2) {
                         let _typModel = refrigeratorType[i].typModel;
                         for (let j = 0; j < _typModel.length; j++) {
-                            if (_typModel[j].defaultCode == modelCode) {
-                                let mainMagicSpace = _typModel[j].magicSpace;
-                                let mainEnergy = _typModel[j].energy;
-                                let mainKnockOn = _typModel[j].knockOn;
-                                let mainVoiceChk = _typModel[j].voiceChk; //210719 BTOCSITE-2346 음석인식 변수 추가
-                                let mainPrice = _typModel[j].defaultPrice;
+                            if (_typModel[i].defaultCode == modelCode) {
+                                let mainMagicSpace = _typModel[i].magicSpace;
+                                let mainEnergy = _typModel[i].energy;
+                                let mainKnockOn = _typModel[i].knockOn;
+                                let mainVoiceChk = _typModel[i].voiceChk; //210719 BTOCSITE-2346 음성인식 변수 추가
+                                let mainPrice = _typModel[i].defaultPrice;
                                 tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
                                 tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
@@ -6067,8 +6067,8 @@
                                 }
                                 // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '</tr>';
-                                if (_typModel[j].subModel != undefined && _typModel[j].subModel != "") {
-                                    let _subModel = _typModel[j].subModel;
+                                if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
+                                    let _subModel = _typModel[i].subModel;
                                     for (let k = 0; k < _subModel.length; k++) {
                                         let subCode = _subModel[k].modelCode;
                                         let subMagicSpace = _subModel[k].magicSpace;
@@ -6106,39 +6106,62 @@
                     }
                 }
             } else if (modelCate1 == "refrigerator_kimchi") {
-                let refrigeratorType = configData.modelConfig[1].defaultCode;
-                let mainPrice = configData.modelConfig[1].defaultPrice;
-                modelPriceArry.push(refrigeratorType);
-                tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
-                tblHtml += '    <table>';
-                tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
-                tblHtml += '        <colgroup>';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '        </colgroup>';
-                tblHtml += '        <thead>';
-                tblHtml += '            <tr>';
-                tblHtml += '                <th scope="col">모델명</th>';
-                tblHtml += '                <th scope="col">가격</th>';
-                tblHtml += '            </tr>';
-                tblHtml += '        </thead>';
-                tblHtml += '        <tbody>';
-                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
-                if ($objContent.attr('data-page-type') === 'COMMON'){
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td><span></span>원</td>';
-                tblHtml += '</tr>';
-                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td style="text-align:center;">-</td>';
-                tblHtml += '</tr>';
+                let _typModel = configData.modelConfig[1].typModel;
+                for (let i = 0; i < _typModel.length; i++) {
+                    if (_typModel[i].defaultCode == modelCode) {
+                        let mainPrice = _typModel[i].defaultPrice;
+                        tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
+                        tblHtml += '    <table>';
+                        tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
+                        tblHtml += '        <colgroup>';
+                        tblHtml += '            <col style="width:50%">';
+                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        if ($objContent.attr('data-page-type') === 'COMMON'){
+                        tblHtml += '            <col style="width:50%">';
+                        }
+                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        tblHtml += '        </colgroup>';
+                        tblHtml += '        <thead>';
+                        tblHtml += '            <tr>';
+                        tblHtml += '                <th scope="col">모델명</th>';
+                        // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        if ($objContent.attr('data-page-type') === 'COMMON'){
+                        tblHtml += '                <th scope="col">가격</th>';
+                        }
+                        // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                        tblHtml += '            </tr>';
+                        tblHtml += '        </thead>';
+                        tblHtml += '        <tbody>';
+
+                        modelPriceArry.push(modelCode);
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '</tr>';
+                        if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
+                            let _subModel = _typModel[i].subModel;
+                            for (let k = 0; k < _subModel.length; k++) {
+                                let subCode = _subModel[k].modelCode;
+                                // let subMagicSpace = _subModel[k].magicSpace;
+                                // let subEnergy = _subModel[k].energy;
+                                // let subVoiceChk = _subModel[k].voiceChk
+                                // let subKnockOn = _subModel[k].knockOn;
+                                let subPrice = _subModel[k].defaultPrice;
+                                modelPriceArry.push(subCode);
+                                tblHtml += '<tr>';
+                                tblHtml += '    <td><span>' + subCode + '</span></td>';
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                if ($objContent.attr('data-page-type') === 'COMMON'){
+                                tblHtml += '    <td><span></span>원</td>';
+                                }
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                tblHtml += '</tr>';
+                            }
+                        }
+                        tblHtml += '        </tbody>';
+                        tblHtml += '    </table>';
+                        tblHtml += '</div>';
+                    }
                 }
-                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
-                tblHtml += '        </tbody>';
-                tblHtml += '    </table>';
-                tblHtml += '</div>';
             } else if (modelCate1 == "refrigerator_convertible") {
                 let _typModel = configData.modelConfig[2].typModel;
                 for (let i = 0; i < _typModel.length; i++) {
@@ -7135,7 +7158,7 @@
         for (let i = 0; i < _refrigeratorType.length; i++) {
             let _typModel = _refrigeratorType[i].typModel;
             for (let j = 0; j < _typModel.length; j++) {
-                if (_typModel[j].defaultCode == code) {
+                if (_typModel[i].defaultCode == code) {
 
                     returnIdx.push(0);
                     returnIdx.push(i);
