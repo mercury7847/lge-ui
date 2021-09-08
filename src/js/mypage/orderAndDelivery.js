@@ -2291,7 +2291,7 @@
 
                 var isAllChecked = false;
                 if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL && productList[0].itemStatus == "Ordered") isAllChecked = true;
-                //else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; BTOCSITE-4124 수정 
+                else if(getListData[0].bundleCancelYn && getListData[0].bundleCancelYn == "Y") isAllChecked = true; //BTOCSITE-4124 부분취소 내용 제외 하단 따로 처리
                 
                 if(isAllChecked){
                     for(var idx in PRICE_INFO_DATA){
@@ -2347,7 +2347,7 @@
                 var isAllCancelDisable = ''; //  210907 변경 BTOCSITE-4124
 
                 productList.forEach(function( data ){
-//                     if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
+//                     if(data.itemCancelAbleYn == "Y" && (result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0")){ //BTOCSITE-4124 210824 추가 41:계좌이체(현금/가상계좌) / 42:네이버페이 / 0:기타
 //                         if(dataChk == true){
 //                             isAllCancelDisable = false; // 변경 210907
 //                             //isCashCheck = "현금결제";
@@ -2360,7 +2360,7 @@
 //                         //isCashCheck = "";
 //                     }
                     if(data.itemCancelAbleYn == "Y"){
-                     if((result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") && productList[0].itemStatus == "Ordered"){ //BTOCSITE-4124 210824 추가 41:계좌이체 / 42:네이버페이 / 0:기타
+                     if((result.data.payment.paymentType == "41" || result.data.payment.paymentType == "42" || result.data.payment.paymentType == "0") && productList[0].itemStatus == "Ordered"){ //BTOCSITE-4124 210824 추가 41:계좌이체(현금/가상계좌) / 42:네이버페이 / 0:기타
                         isCashCheck = "현금결제";
                         if(dataChk == false && $('#popup-cancel').hasClass('cash-chk') == false){ 
                             isAllCancelDisable = true;
