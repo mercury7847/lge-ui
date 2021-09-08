@@ -855,9 +855,13 @@
 /* //BTOCSITE-2161 :: dim 추가 */
 
 //BTOCSITE-1716 스마트필터와 상세필터 합치기
+.search .lay-filter .filter-head-pc{
+    display: none;
+}
 .search .lay-filter.smart-type{
     margin-top: 14px;
     .filter-head-pc{
+        display: block;
         .tit{
             font-size: 14px;
             font-weight: 700;
