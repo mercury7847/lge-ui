@@ -353,7 +353,8 @@ $(function(){
                             $this.on('touchend', function(ev){
                                 endX = ev.changedTouches[0].clientX;
                                 var dirLeft = startX - endX < 0;
-                                if( touchFlag == true) {
+                                var diffValue = Math.abd(startX - endX);
+                                if( touchFlag == true && diffValue > 70) {
                                     touchFlag = false;
                                     if(dirLeft) {
                                         tab.nav.prev();
