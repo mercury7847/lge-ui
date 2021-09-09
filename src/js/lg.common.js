@@ -364,7 +364,6 @@ var goAppUrl = function(path) {
             self._switchLinker();
             
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
-            
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -1609,6 +1608,11 @@ var goAppUrl = function(path) {
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
+
+
+                    if(callback && typeof callback === 'function') callback(result); 
+  
+                    
                     return;
                 }
 
