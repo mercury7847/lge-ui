@@ -345,7 +345,7 @@ $(function(){
                             var startX = e.changedTouches[0].clientX;
                             var moveX = 0;
                             var endX = 0;
-    
+     
                             
                             $this.on('touchmove', function(ev){
                                 moveX = ev.changedTouches[0].clientX;
