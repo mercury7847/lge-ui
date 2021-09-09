@@ -177,6 +177,7 @@
                     console.log("url %o ",url);
                     lgkorUI.requestAjaxData(url,'', function(result) {
                         if(result.status === 'success') {
+                            $(el).closest('.file-image').find('.file-preview').empty();
                             $(el).closest('.file-item').removeClass('modify');
                         } else {
                             lgkorUI.alert("", {
