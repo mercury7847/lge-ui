@@ -1540,7 +1540,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb_row.grdt table th,
 .company .tb_row.grdt table td {border-color:#fff; height:40px; padding:8px 0; font-size:14px; line-height:22px}
 .company .tb_row.grdt table tr {border-bottom:none!important}
-.company .tb_row.grdt.grn1 table th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
+.company .tb_row.grdt.grn1 table th:nth-of-type(1) {background-color:#ddd; color:#666}
+.company .tb_row.grdt.grn1 table th:nth-of-type(2) {background-color:#f4f4f4; color:#666}
 .company .tb_row.grdt.grn1 table th:nth-of-type(3) {background-color:#76afb5; color:#fff}
 .company .tb_row.grdt.grn1 table th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
 .company .tb_row.grdt.grn1 table th:nth-of-type(5) {background-color:#48949c; color:#fff}
@@ -1554,7 +1555,8 @@ ul.bull > li.star::before {content:'*'; top:0; background:none; border-radius:0;
 .company .tb_row.grdt.grn2 table th:nth-of-type(5) {background-color:#63a4ab; color:#fff}
 .company .tb_row.grdt.grn2 table th:nth-of-type(6) {background-color:#48949c; color:#fff}
 
-.company .tb_row.grdt.grn3 table th:nth-of-type(2) {background-color:#9bc4c9; color:#fff}
+.company .tb_row.grdt.grn3 table th:nth-of-type(1) {background-color:#ddd; color:#666}
+.company .tb_row.grdt.grn3 table th:nth-of-type(2) {background-color:#f4f4f4; color:#666}
 .company .tb_row.grdt.grn3 table th:nth-of-type(3) {background-color:#76afb5; color:#fff}
 .company .tb_row.grdt.grn3 table th:nth-of-type(4) {background-color:#63a4ab; color:#fff}
 .company .tb_row.grdt.grn3 table th:nth-of-type(5) {background-color:#48949c; color:#fff}
