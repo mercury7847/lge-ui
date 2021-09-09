@@ -472,6 +472,7 @@
         if(window.breakpoint.isMobile){
             var wraptop;
             var item = $putItemContainer.find('.ui_active_toggle');
+            var statusBarHeight = $('.is-web-status-bar').length > 0 ? 70 : 0; //BTOCSITE-1967
             if(isOpen){
                 $putItemContainer.find('.total-info').removeAttr('style');
                 $putItemContainer.find('.total-info dl').show();
@@ -487,8 +488,8 @@
             item.data('isOpen', isOpen);
     
             if(window.breakpoint.name == 'mobile'){
-                if(anim) $putItemContainer.stop().animate({top:wraptop}, 220);
-                else $putItemContainer.css({top:wraptop});
+                if(anim) $putItemContainer.stop().animate({top:wraptop - statusBarHeight}, 220); //BTOCSITE-1967
+                else $putItemContainer.css({top:wraptop - statusBarHeight}); //BTOCSITE-1967
             }
         }
     }
