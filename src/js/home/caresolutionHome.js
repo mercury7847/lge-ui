@@ -357,8 +357,10 @@ $(function(){
                                     touchFlag = false;
                                     if(dirLeft) {
                                         tab.nav.prev();
+                                        console.log('left')
                                     } else {
                                         tab.nav.next();
+                                        console.log('right')
                                     }
                                 }
                                 clearTimeout(touchFlagTid);
