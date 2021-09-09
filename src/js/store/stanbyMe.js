@@ -80,17 +80,15 @@
 
 
                     vcui.require(['ui/validation'], function () {
-                        self.validation = new vcui.ui.Validation('#submitForm', { 
+                        self.validation = new vcui.ui.CsValidation('#submitForm', { 
                             register: {
                                 title: {
                                     required: true,
-                                    maxLength: 100,
                                     msgTarget: '.err-block',
                                     errorMsg: '제목을 입력해주세요.'
                                 },
                                 content: {
                                     required: true,
-                                    maxLength: 1000,
                                     msgTarget: '.err-block',
                                     errorMsg: '내용을 입력해주세요.'
                                 }
@@ -295,7 +293,6 @@
 
                     if(isNoComment) {
                         self.$pagination.hide();
-
                     }
 
 
@@ -342,15 +339,16 @@
                                     html += vcui.template(commentList, item);
                                 });
                                 self.$listWrap.prepend(html);
-                                $('.comment-head .count').text(d.dataCount);
-                            }
+                            } 
+
+                            $('.comment-head .count').text(d.dataCount);
+
+
+                            console.log("count %o %o",d.dataCount,typeof d.dataCount);
 
                             self.$pagination.vcPagination('setPageInfo', page);                            
-                            self.$pagination.off('page_click').on('page_click', function(e,page) {
-                                self.pageClick(this,page);
-                            });
-
-                            if(!self.$pagination.is(':visible')) self.$pagination.show();
+                            if(!self.$pagination.is(':visible') && d.dataCount !== 0) self.$pagination.show();
+                            else  self.$pagination.hide();
 
                             self.bindEvent();
                             lgkorUI.hideLoading();
@@ -402,7 +400,7 @@
 
 
                 // 댓글 쓰기폼 등록 / 수정 인풋 입력 체크
-                $('.input-wrap textarea').off().on('change keyup paste', function(){
+                $('.input-wrap textarea').off('change.cmtList keyup.cmtList paste.cmtList').on('change.cmtList keyup.cmtList paste.cmtList', function(){
                     inpValLen = $(this).val().length;
                     if(inpValLen > 0) {
                         $(this).addClass('valid');
