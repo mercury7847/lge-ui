@@ -304,19 +304,26 @@
 		}
 	}
 	.file-item {
-		&.on {
-			.file-image {
-				.file-preview {
-					position: relative;
-					> img {
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						width: 100%;
-						height: auto;
-						transform: translate(-50%, -50%);
-					}
+		.file-image {
+			.file-preview {
+				position: relative;
+				> img {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 100%;
+					height: auto;
+					transform: translate(-50%, -50%);
 				}
+			}
+		}
+		&.modify {
+			.file-btns {
+				.btn-del,.btn-upload { display:none;}
+				.btn-file-del { display:block; }
+			}
+			.file-preview {
+				background: none;
 			}
 		}
 	}
