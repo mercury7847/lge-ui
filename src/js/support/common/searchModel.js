@@ -408,7 +408,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
                 if (isRecommendVisitCategory && self.isEngineerReservation){
                     //BTOCSITE-4376
-                    var alertMsg = '<h6 class="ui-alert-msg">고객님,<br> 출장 서비스가 지연되고 있습니다.<br><br> 선택하신 제품은 <strong class="point">센터 방문</strong> 하시면 보다 신속하게 서비스 가능합니다.</h6>';
+                    /* BTOCSITE-5473 : 출장 서비스 예약 > 소형 가전제품 선택 시 안내 팝업 문구 수정 #3*/
+                    var alertMsg = '<h6 class="ui-alert-msg">고객님,<br> 선택하신 제품은 <strong class="point">센터 방문</strong>을 하시면 보다 신속하게 서비스를 받으실 수 있습니다. <br><br>  ※ 출장 서비스 이용 시 출장비가 발생될 수 있습니다. (무상수리 대상 제외)</h6>';
+                    /* //BTOCSITE-5473 : 출장 서비스 예약 > 소형 가전제품 선택 시 안내 팝업 문구 수정 #3*/
                     lgkorUI.alert(alertMsg,{
                         title:'',
                         ok: function() {
