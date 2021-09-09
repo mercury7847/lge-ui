@@ -206,9 +206,9 @@ MainSwiper.prototype = {
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
 
-            var isCareSmoothTab = !!$(e.target).closest('.care-home-section .ui_smooth_tab').length;
+            var isCareSmoothTab = !!$(e.target).closest('.care-home-section .ui_smooth_tab').length; //BTOCSITE-2196 
 
-            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab){
+            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab){ //BTOCSITE-2196 
                 e.stopPropagation();
             }
         });        
