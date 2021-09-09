@@ -394,7 +394,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$categoryBox.find('.sub-category-list button').on('click', function() {
                 var $this = $(this),
                     data = $this.data(),
-                    opt = self.options;
+                    opt = self.options; 
 
                 if (self.$el.hasClass('service-engineer') && (data.subCategory == 'CT50019259' || data.subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
                     lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
