@@ -343,18 +343,21 @@ $(function(){
                         care_cecommended.on('touchstart', function(e){
                             var $this = $(this);
                             var startX = e.changedTouches[0].clientX;
-                            var moveX = 0;
+                            var startY = e.changedTouches[0].clientY;
                             var endX = 0;
+                            var endY = 0;
      
-                            
-                            $this.on('touchmove', function(ev){
-                                moveX = ev.changedTouches[0].clientX;
-                            });
                             $this.on('touchend', function(ev){
                                 endX = ev.changedTouches[0].clientX;
+                                endY = ev.changedTouches[0].clientY;
+
                                 var dirLeft = startX - endX < 0;
-                                var diffValue = Math.abs(startX - endX);
-                                if( touchFlag == true && diffValue > 70) {
+                                var rangeX = Math.abs(startX - endX);
+                                var rangeY = Math.abs(startY - endY);
+
+                                if( rangeY > 30) return;
+                                
+                                if( touchFlag == true && rangeX > 100 ) {
                                     touchFlag = false;
                                     if(dirLeft) {
                                         tab.nav.prev();
@@ -363,11 +366,16 @@ $(function(){
                                         tab.nav.next();
                                         console.log('right')
                                     }
+
+                                    clearTimeout(touchFlagTid);
+                                    touchFlagTid = setTimeout(function(){
+                                        touchFlag = true;
+
+                                        console.log("rangeX", rangeX)
+                                        console.log("rangeY", rangeY)
+                                    }, 50);
                                 }
-                                clearTimeout(touchFlagTid);
-                                touchFlagTid = setTimeout(function(){
-                                    touchFlag = true;
-                                }, 50);
+                                
                             });
                         });
                     }
