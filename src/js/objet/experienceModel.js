@@ -6137,14 +6137,11 @@
                         tblHtml += '    <td style="text-align:center;">-</td>';
                         tblHtml += '</tr>';
                         }
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
                         if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
                             let _subModel = _typModel[i].subModel;
                             for (let k = 0; k < _subModel.length; k++) {
                                 let subCode = _subModel[k].modelCode;
-                                // let subMagicSpace = _subModel[k].magicSpace;
-                                // let subEnergy = _subModel[k].energy;
-                                // let subVoiceChk = _subModel[k].voiceChk
-                                // let subKnockOn = _subModel[k].knockOn;
                                 let subPrice = _subModel[k].defaultPrice;
                                 modelPriceArry.push(subCode);
                                 tblHtml += '<tr>';
@@ -6152,6 +6149,8 @@
                                 // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 if ($objContent.attr('data-page-type') === 'COMMON'){
                                 tblHtml += '    <td><span></span>원</td>';
+                                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                                tblHtml += '    <td style="text-align:center;">-</td>';
                                 }
                                 // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
                                 tblHtml += '</tr>';
