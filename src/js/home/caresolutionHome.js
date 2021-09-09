@@ -353,7 +353,7 @@ $(function(){
                             $this.on('touchend', function(ev){
                                 endX = ev.changedTouches[0].clientX;
                                 var dirLeft = startX - endX < 0;
-                                var diffValue = Math.abd(startX - endX);
+                                var diffValue = Math.abs(startX - endX);
                                 if( touchFlag == true && diffValue > 70) {
                                     touchFlag = false;
                                     if(dirLeft) {
