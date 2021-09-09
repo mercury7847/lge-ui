@@ -254,11 +254,15 @@
     
                 // 입력글자 수 체크
                 if (o.checkCount) {
+                console.log("sdflkjsldfjlsdk");
                     // subviews에다 설정하면 release가 호출될 때, subviews에 들어있는 컨트롤들의 release도 알아서 호출해준다.
                     self.on('textcounter:change', function () {
+
+           
                         var $countTarget = $(self.options.countTarget),
                             strUtil = core.string,
                             showCount = function showCount(len, limit) {
+                                console.log($countTarget)
                             $countTarget.html(strUtil.format(self.options.countText, {
                                 len: numUtil.addComma(len) || 0,
                                 limit: numUtil.addComma(limit) || 0
