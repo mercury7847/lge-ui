@@ -95,7 +95,13 @@
                             }
                         });
 
-                        self.$contents.find('.ui_imageinput').vcImageFileInput();
+                        self.$contents.find('.ui_imageinput').vcImageFileInput({
+                            message: {
+                                name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                                format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+                                size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
+                            }
+                        });
 
                         self.bindEvent();
                     });
@@ -525,8 +531,13 @@
                                     self.settingList();
                                 }
                             } else {
-                                lgkorUI.alert("", {
-                                    title: data.message
+
+                                lgkorUI.confirm('', {
+                                    title:data.message, 
+                                    cancelBtnName: '아니오', okBtnName: '예', 
+                                    ok : function (){ 
+                                        location.href = "/sso/api/Login";
+                                    }
                                 });
                             }
                         });
