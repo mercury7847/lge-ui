@@ -75,6 +75,11 @@
                     self.$submitForm = self.$contents.find('#submitForm');
                     self.$completeBtns = self.$contents.find('.btn-group');
 
+
+                    self.url = self.$submitForm.data('ajax');
+                    self.mode = self.url.indexOf('updateStanbyMeAjax') > -1 ? 'modify' : 'write';
+
+
                     vcui.require(['ui/validation'], function () {
                         self.validation = new vcui.ui.Validation('#submitForm', { 
                             register: {
@@ -100,15 +105,14 @@
             },
             bindEvent: function() {
                 var self = this;
-
-                self.$completeBtns.find('.btn-confirm').on('click', function() {
+                self.$completeBtns.find('.btn-confirm,.btn-modify').on('click', function() {
                     var result = self.validation.validate();
     
                     if (result.success == true) {    
                         lgkorUI.confirm('', {
-                            title:'저장 하시겠습니까?',
-                            okBtnName: '확인',
-                            cancelBtnName: '취소',
+                            title:self.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
+                            okBtnName:self.mode === 'write' ? '확인' : '예',
+                            cancelBtnName: self.mode === 'write' ? '취소' :'아니오',
                             ok: function() {
                                 self.requestWrite();
                             }
@@ -118,36 +122,40 @@
             },
             requestWrite: function() {
                 var self = this;
-    
-                var url = self.$submitForm.data('ajax');
-                var param = self.validation.getAllValues();
-                var formData = new FormData();
-       
-                for (var key in param) {
-                    formData.append(key, param[key]);
-                }
-    
-                lgkorUI.showLoading();
+                if(self.url) {
 
-                lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                    console.log("mode %o",self.mode);
 
 
-                    console.log("write %o",result);
-    
-                    if (result.status == 'success') {
-                        if(result.returnUrl) location.href = result.returnUrl;
-                    } else {
-                        lgkorUI.hideLoading();
-                        if (result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message,
-                                ok: function(){
-                                    location.href = "/sso/api/Login";
-                                }
-                            });
-                        }
+                    var param = self.validation.getAllValues();
+                    var formData = new FormData();
+           
+                    for (var key in param) {
+                        formData.append(key, param[key]);
                     }
-                }, 'POST', 'json',true);
+        
+                    lgkorUI.showLoading();
+
+                    lgkorUI.requestAjaxFileData(self.url, formData, function(result) {
+
+
+                        console.log("write %o",result);
+        
+                        if (result.status == 'success') {
+                            if(result.returnUrl) location.href = result.returnUrl;
+                        } else {
+                            lgkorUI.hideLoading();
+                            if (result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message,
+                                    ok: function(){
+                                        location.href = "/sso/api/Login";
+                                    }
+                                });
+                            }
+                        }
+                    }, 'POST', 'json',true);
+                }
             }
         };
 
@@ -561,68 +569,5 @@
             stanbymeWrite.init();
 
         }
-
-        //리스트 수정완료 버튼 클릭시
-        $('.btn-modify').on('click', function(e){
-            var id = $(e.currentTarget).data('id');
-            var obj ={title:'', typeClass:'', ok : function (){ }};
-            var desc = '';
-
-            if(id=="#modifyConfirm"){
-                obj = $.extend(obj,{title: '게시물을 수정하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-            }
-            lgkorUI.confirm(desc, obj);
-        });
-
-        //댓글 수정 버튼 클릭시
-        // var commentModify = function(){
-        //     $('.btn-comment-modify').on('click', function(e){
-        //         var $self = $(this),
-        //             $parent = $self.closest('.comment-content'),
-        //             $commentTextWrap = $parent.find('.comment-text-wrap'),
-        //             $infoData = $parent.find('.info-date'),
-        //             $commentBtnBox = $parent.find('.comment-btn-box'),
-        //             $writeCont = $commentTextWrap.find('.comment-text p').text();
-
-        //         $commentTextWrap.remove();
-        //         $infoData.remove();
-        //         $commentBtnBox.remove();
-        //         $parent.append(commentModifyForm).closest('.comment-content .textarea').text($writeCont);
-        //     });
-        // };
-        // commentModify();
-
-        //댓글 등록 버튼 클릭시
-        // var btnWriteFunc = function(){
-        //     $('.comment-write .btn-confirm').on('click', function(e){
-        //         var $commentWrite = $('.comment-write'),
-        //             url = $commentWrite.data('ajax');
-
-        //         var commentParam = {};
-        //         commentParam.value = $('textarea').val();
-
-        //         lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
-        //             if(d.status == 'success'){
-        //                 commentParam = $.extend({}, params, {
-        //                     'testSucFlag': "Y"
-        //                 });
-        //             }else{
-        //                 commentParam = $.extend({}, commentParam, {
-        //                     'testSucFlag': "N"
-        //                 });
-        //                 lgkorUI.alert("",{title:d.message});
-        //             }
-        //             self.bindEvent();
-        //             lgkorUI.hideLoading();
-        //         },true);
-        //     });
-        // };
-        // btnWriteFunc();
-
-
-
-      
-
     });
 })();
