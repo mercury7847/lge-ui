@@ -1293,6 +1293,16 @@
             text-align: center;
         }
     }
+    .info-req{
+        position: absolute;
+        display: none;
+        right: 0;
+        bottom: 9px;
+        margin: 0 !important;
+        @include mobile{
+            display: inline-block;
+        }
+    }
 
 }
 .popup-wrap .common-pop .info-req-box {
@@ -1331,11 +1341,11 @@
     p {
         font-size: 14px;
         color: $color-default;
-        line-height: 26px;
+        line-height: 21px;
         font-weight: 700;
     }
     .scan-type-list{
-        margin: 12px -6px 98px -6px;
+        margin: 12px -6px 100px -6px;
         @include clearfix;
         li{
             display:block;

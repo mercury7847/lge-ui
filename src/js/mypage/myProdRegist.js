@@ -428,8 +428,6 @@
                 if ($(this).hasClass('btn-qrscan')) {
                     $(this).addClass('active');
                     $('.btn-direct').removeClass('active');
-                    $('.info-req-box .direct').hide();
-                    $('.form-wrap .forms:first-child > .tit > label').removeClass('req');
                     $('.info-req-box .qr').show();
                     $('#inp01').attr('readonly','readonly');
                     $('#inp02').attr('readonly','readonly');
@@ -441,9 +439,7 @@
                     $(this).addClass('active');
                     $('.btn-qrscan').removeClass('active');
                     $('.info-req-box .qr').hide();
-                    $('.info-req-box .direct').show();
-                    $('.form-wrap .forms:first-child > .tit > label').addClass('req');
-                    $('.req:after').show();
+                    $('.app-exec').show();
                     $('#inp01').removeAttr('readonly');
                     $('#inp02').removeAttr('readonly');
                     $('.cell button').attr('disabled', false);
@@ -674,6 +670,7 @@
                     //등록
                     //2021-03-06 제조번호(sn) 필수 제외
                     //if(checkModelSuccess && checkSerialSuccess) {
+                        
                     if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
@@ -700,7 +697,27 @@
                             });
                         }
                     } else {
-                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출
+                        if(!checkModelSuccess && !checkSerialSuccess) {
+                            // lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                            //     title: "이메일로 접수 하시겠습니까?",
+                            //     cancelBtnName: "취소",
+                            //     okBtnName: "접수하기",
+                            //     ok: function(){
+                            //         location.href = "/support/email-inquiry";
+                            //     }
+                            // });
+                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                                title: "",
+                                cancelBtnName: "취소",
+                                okBtnName: "이메일 접수하기",
+                                ok: function(){
+                                    location.href = "/support/email-inquiry";
+                                }
+                            });
+                        }
+
+                        //lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                         /*
                         if(!checkModelSuccess) {
                             lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
