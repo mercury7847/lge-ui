@@ -2611,13 +2611,6 @@
                 door4: "",
             }, {
                 defaultCode: "Z331AAA151",
-                modelCode: "Z331FTS151",
-                door1: "K330TT-FST",
-                door2: "K330MM-FSD",
-                door3: "K330BB-FSD",
-                door4: "",
-            }, {
-                defaultCode: "Z331AAA151",
                 modelCode: "Z331SGS151",
                 door1: "K330TT-SGR",
                 door2: "K330MM-SSV",
