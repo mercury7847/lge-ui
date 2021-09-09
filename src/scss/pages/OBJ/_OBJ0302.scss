@@ -503,6 +503,7 @@ h2.title {
                 }
                 // 210719 BTOCSITE-2346 end
                 &[data-model_code="Z330AAA151"],
+                &[data-model_code="Z331AAA151"],
                 &[data-model_code="Z330AAA152"] {
                     //김치냉장고
                     .model_door {
@@ -532,7 +533,7 @@ h2.title {
                     //김치냉장고
                     .model_door {
                         &[data-door-direction="LT"] {
-                            width: 48.1%;
+                            width: 49.1%;
                             height: 53.8%;
                             left: 0.5%;
                             top: .3%;
@@ -1888,7 +1889,8 @@ h2.title {
             }
         }
 
-        &[data-model-default-code="Z330AAA151"] {
+        &[data-model-default-code="Z330AAA151"], 
+        &[data-model-default-code="Z331AAA151"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
                 background-size: 100% 100%;

@@ -887,143 +887,146 @@
                     name: "김치냉장고",
                     id: "refrigerator_kimchi",
                     leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_kimchi.png", //BTOCSITE-4239 기본이미지(제일상단)
-                    typModel: [{
-                        name: "4도어",
-                        defaultCode: "Z491AAA151",
-                        leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 기본이미지(처음에보여지는 default 이미지)
-                        simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 시뮬이미지(좌측 색 선택시 필요한 simul 이미지)
-                        defaultPrice: "0",
-                        memberDiscount: "0",
-                        directDiscount: "0",
-                        door: {
-                            count: 4,
-                            door1: {
-                                name: "상칸(좌)",
-                                code: "K491TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },door2: {
-                                name: "상칸(우)",
-                                code: "K491TT",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },door3: {
-                                name: "중칸",
-                                code: "K491BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            },door4: {
-                                name: "하칸",
-                                code: "K491BB",
-                                defaultPrice: "0",
-                                memberDiscount: "0",
-                                directDiscount: "0",
-                            }
-                        },
-                        doorColorData: [{
-                            doorMaterial: {
-                                name: "페닉스",
-                                enName: "FENIX",
-                                code: "F",
-                                desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
-                                doorColor: [{
-                                    name: "보타닉",
-                                    code: "BT",
-                                    mixingCode: "FBT"
+                    typModel: [
+                        // BTOCSITE-4239 4도어 9/17 운영 이관예정
+                        // {
+                        // name: "4도어",
+                        // defaultCode: "Z491AAA151",
+                        // leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 기본이미지(처음에보여지는 default 이미지)
+                        // simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_Z491AAA151.png", //BTOCSITE-4239 선택모델 시뮬이미지(좌측 색 선택시 필요한 simul 이미지)
+                        // defaultPrice: "0",
+                        // memberDiscount: "0",
+                        // directDiscount: "0",
+                        // door: {
+                        //     count: 4,
+                        //     door1: {
+                        //         name: "상칸(좌)",
+                        //         code: "K491TT",
+                        //         defaultPrice: "0",
+                        //         memberDiscount: "0",
+                        //         directDiscount: "0",
+                        //     },door2: {
+                        //         name: "상칸(우)",
+                        //         code: "K491TT",
+                        //         defaultPrice: "0",
+                        //         memberDiscount: "0",
+                        //         directDiscount: "0",
+                        //     },door3: {
+                        //         name: "중칸",
+                        //         code: "K491BB",
+                        //         defaultPrice: "0",
+                        //         memberDiscount: "0",
+                        //         directDiscount: "0",
+                        //     },door4: {
+                        //         name: "하칸",
+                        //         code: "K491BB",
+                        //         defaultPrice: "0",
+                        //         memberDiscount: "0",
+                        //         directDiscount: "0",
+                        //     }
+                        // },
+                        // doorColorData: [{
+                        //     doorMaterial: {
+                        //         name: "페닉스",
+                        //         enName: "FENIX",
+                        //         code: "F",
+                        //         desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                        //         descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                        //         doorColor: [{
+                        //             name: "보타닉",
+                        //             code: "BT",
+                        //             mixingCode: "FBT"
 
-                                }, {
-                                    name: "샌드",
-                                    code: "SD",
-                                    mixingCode: "FSD"
-                                }, {
-                                    name: "스톤",
-                                    code: "ST",
-                                    mixingCode: "FST"
-                                }]
-                            }
+                        //         }, {
+                        //             name: "샌드",
+                        //             code: "SD",
+                        //             mixingCode: "FSD"
+                        //         }, {
+                        //             name: "스톤",
+                        //             code: "ST",
+                        //             mixingCode: "FST"
+                        //         }]
+                        //     }
 
-                        },{
-                            doorMaterial: {
-                                name: "솔리드",
-                                enName: "Solid Metal",
-                                code: "S",
-                                desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
-                                doorColor: [{
-                                    name: "맨해튼 미드나잇",
-                                    code: "MT",
-                                    mixingCode: "SMT"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "SSV"
-                                }, {
-                                    name: "그린",
-                                    code: "GR",
-                                    mixingCode: "SGR"
-                                }]
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "미스트",
-                                enName: "Mist Glass",
-                                code: "G",
-                                desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
-                                doorColor: [{
-                                    name: "베이지",
-                                    code: "BE",
-                                    mixingCode: "GBE"
-                                }, {
-                                    name: "핑크",
-                                    code: "PK",
-                                    mixingCode: "GPK"
-                                }, {
-                                    name: "민트",
-                                    code: "MN",
-                                    mixingCode: "GMN"
-                                }, {
-                                    name: "실버",
-                                    code: "SV",
-                                    mixingCode: "GSV"
-                                }, {
-                                    name: "레드우드",
-                                    code: "RD",
-                                    mixingCode: "GRD"
-                                }, {
-                                    name: "클레이 브라운",
-                                    code: "CL",
-                                    mixingCode: "GCL"
-                                }]
-                                //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
-                            }
-                        }, {
-                            doorMaterial: {
-                                name: "네이쳐",
-                                enName: "Nature Metal",
-                                code: "M",
-                                desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
-                                descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
-                                doorColor: [{
-                                    name: "그레이",
-                                    code: "GY",
-                                    mixingCode: "MGY"
-                                }, {
-                                    name: "블랙",
-                                    code: "BK",
-                                    mixingCode: "MBK"
-                                }, {
-                                    name: "화이트",
-                                    code: "WH",
-                                    mixingCode: "MWH"
-                                }]
-                            }
-                        }]
-                        }, {
+                        // },{
+                        //     doorMaterial: {
+                        //         name: "솔리드",
+                        //         enName: "Solid Metal",
+                        //         code: "S",
+                        //         desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                        //         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                        //         doorColor: [{
+                        //             name: "맨해튼 미드나잇",
+                        //             code: "MT",
+                        //             mixingCode: "SMT"
+                        //         }, {
+                        //             name: "실버",
+                        //             code: "SV",
+                        //             mixingCode: "SSV"
+                        //         }, {
+                        //             name: "그린",
+                        //             code: "GR",
+                        //             mixingCode: "SGR"
+                        //         }]
+                        //     }
+                        // }, {
+                        //     doorMaterial: {
+                        //         name: "미스트",
+                        //         enName: "Mist Glass",
+                        //         code: "G",
+                        //         desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                        //         descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                        //         doorColor: [{
+                        //             name: "베이지",
+                        //             code: "BE",
+                        //             mixingCode: "GBE"
+                        //         }, {
+                        //             name: "핑크",
+                        //             code: "PK",
+                        //             mixingCode: "GPK"
+                        //         }, {
+                        //             name: "민트",
+                        //             code: "MN",
+                        //             mixingCode: "GMN"
+                        //         }, {
+                        //             name: "실버",
+                        //             code: "SV",
+                        //             mixingCode: "GSV"
+                        //         }, {
+                        //             name: "레드우드",
+                        //             code: "RD",
+                        //             mixingCode: "GRD"
+                        //         }, {
+                        //             name: "클레이 브라운",
+                        //             code: "CL",
+                        //             mixingCode: "GCL"
+                        //         }]
+                        //         //210805 BTOCSITE-2346 신규 컬러 적용 - 레드우드,클레이브라운
+                        //     }
+                        // }, {
+                        //     doorMaterial: {
+                        //         name: "네이쳐",
+                        //         enName: "Nature Metal",
+                        //         code: "M",
+                        //         desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                        //         descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                        //         doorColor: [{
+                        //             name: "그레이",
+                        //             code: "GY",
+                        //             mixingCode: "MGY"
+                        //         }, {
+                        //             name: "블랙",
+                        //             code: "BK",
+                        //             mixingCode: "MBK"
+                        //         }, {
+                        //             name: "화이트",
+                        //             code: "WH",
+                        //             mixingCode: "MWH"
+                        //         }]
+                        //     }
+                        // }]
+                        // }, 
+                        {
                             name: "3도어",
                             defaultCode: "Z330AAA151",
                             subModel: [{
@@ -2662,49 +2665,66 @@
                 door2: "K330MM-MGY",
                 door3: "K330BB-MGY",
                 door4: "",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491FTS151",
-                door1: "K491TT-FST",
-                door2: "K491TT-FST",
-                door3: "K491BB-FSD",
-                door4: "K491BB-FSD",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491SMM151",
-                door1: "K491TT-SMT",
-                door2: "K491TT-SMT",
-                door3: "K491BB-SMT",
-                door4: "K491BB-SMT",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491SGS151",
-                door1: "K491TT-SGR",
-                door2: "K491TT-SGR",
-                door3: "K491BB-SSV",
-                door4: "K491BB-SSV",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491GPB151",
-                door1: "K491TT-GPK",
-                door2: "K491TT-GPK",
-                door3: "K491BB-GBE",
-                door4: "K491BB-GBE",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491GBB151",
-                door1: "K491TT-GBE",
-                door2: "K491TT-GBE",
-                door3: "K491BB-GBE",
-                door4: "K491BB-GBE",
-            },{
-                defaultCode: "Z491AAA151", 
-                modelCode: "Z491GRC151",
-                door1: "K491TT-GRD",
-                door2: "K491TT-GRD",
-                door3: "K491BB-GCL",
-                door4: "K491BB-GCL",
-            },{
+            },
+            // BTOCSITE-4239 4도어 9/17 운영 이관예정
+            // {
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491FTS151",
+            //     door1: "K491TT-FST",
+            //     door2: "K491TT-FST",
+            //     door3: "K491BB-FSD",
+            //     door4: "K491BB-FSD",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491SMM151",
+            //     door1: "K491TT-SMT",
+            //     door2: "K491TT-SMT",
+            //     door3: "K491BB-SMT",
+            //     door4: "K491BB-SMT",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491SGS151",
+            //     door1: "K491TT-SGR",
+            //     door2: "K491TT-SGR",
+            //     door3: "K491BB-SSV",
+            //     door4: "K491BB-SSV",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491GPB151",
+            //     door1: "K491TT-GPK",
+            //     door2: "K491TT-GPK",
+            //     door3: "K491BB-GBE",
+            //     door4: "K491BB-GBE",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491GBB151",
+            //     door1: "K491TT-GBE",
+            //     door2: "K491TT-GBE",
+            //     door3: "K491BB-GBE",
+            //     door4: "K491BB-GBE",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491GRC151",
+            //     door1: "K491TT-GRD",
+            //     door2: "K491TT-GRD",
+            //     door3: "K491BB-GCL",
+            //     door4: "K491BB-GCL",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491MBG151",
+            //     door1: "K491TT-MBK",
+            //     door2: "K491TT-MBK",
+            //     door3: "K491BB-MGY",
+            //     door4: "K491BB-MGY",
+            // },{
+            //     defaultCode: "Z491AAA151", 
+            //     modelCode: "Z491GBP151",
+            //     door1: "K491TT-GBE",
+            //     door2: "K491TT-GBE",
+            //     door3: "K491BB-GPK",
+            //     door4: "K491BB-GPK",
+            // },
+            {
                 defaultCode: "W821AAA453",
                 modelCode: "W821FBB453S",
                 door1: "D870JT-FBT",
@@ -5212,7 +5232,7 @@
             }
         });
         let slideWrapW = (slideW * slideLeng);
-        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+         //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
         let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]');
         //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
@@ -5629,42 +5649,44 @@
                                         doorKLocation = "하칸";
                                         doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
                                     }
-                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                                    doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
                                     doorHtml += '   <span class="blind">도어 선택</span>';
                                     doorHtml += '   <span class="door_img"></span>';
                                     doorHtml += '</button>';
                                 }
-                            } else if (doorLeng == 4) {
-                                for (let k = 0; k < doorLeng; k++) {
-                                    let doorDirection;
-                                    let doorLocation;
-                                    if (k == 0) {
-                                        doorDirection = "LT";
-                                        doorLocation = "TT";
-                                        doorKLocation = "상칸(좌)";
-                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
-                                    } else if (k == 1) {
-                                        doorDirection = "RT";
-                                        doorLocation = "TT";
-                                        doorKLocation = "상칸(우)";
-                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
-                                    } else if (k == 2) {
-                                        doorDirection = "MM";
-                                        doorLocation = "BB";
-                                        doorKLocation = "중칸";
-                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
-                                    } else if (k == 3) {
-                                        doorDirection = "BB";
-                                        doorLocation = "BB";
-                                        doorKLocation = "하칸";
-                                        doorPrice = configData.modelConfig[idx].typModel[i].door.door4.defaultPrice;
-                                    }
-                                    doorHtml += '<button type="button" data-edit="N" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
-                                    doorHtml += '   <span class="blind">도어 선택</span>';
-                                    doorHtml += '   <span class="door_img"></span>';
-                                    doorHtml += '</button>';
-                                }
-                            }
+                            } 
+                            // BTOCSITE-4239 4도어 9/17 운영 이관예정 - 3도어만 선반영진행(9/13)
+                            // else if (doorLeng == 4) {
+                            //     for (let k = 0; k < doorLeng; k++) {
+                            //         let doorDirection;
+                            //         let doorLocation;
+                            //         if (k == 0) {
+                            //             doorDirection = "LT";
+                            //             doorLocation = "TT";
+                            //             doorKLocation = "상칸(좌)";
+                            //             doorPrice = configData.modelConfig[idx].typModel[i].door.door1.defaultPrice;
+                            //         } else if (k == 1) {
+                            //             doorDirection = "RT";
+                            //             doorLocation = "TT";
+                            //             doorKLocation = "상칸(우)";
+                            //             doorPrice = configData.modelConfig[idx].typModel[i].door.door2.defaultPrice;
+                            //         } else if (k == 2) {
+                            //             doorDirection = "MM";
+                            //             doorLocation = "BB";
+                            //             doorKLocation = "중칸";
+                            //             doorPrice = configData.modelConfig[idx].typModel[i].door.door3.defaultPrice;
+                            //         } else if (k == 3) {
+                            //             doorDirection = "BB";
+                            //             doorLocation = "BB";
+                            //             doorKLocation = "하칸";
+                            //             doorPrice = configData.modelConfig[idx].typModel[i].door.door4.defaultPrice;
+                            //         }
+                            //         doorHtml += '<button type="button" data-edit="N" data-door-klocation="' + doorKLocation + '" data-door-price="' + doorPrice + '" data-door-direction="' + doorDirection + '" data-door-model_location="' + doorLocation + '" data-door-model_location="' + doorLocation + '" data-door-model_spec_material="" data-door-model_spec_color="" class="model_door">';
+                            //         doorHtml += '   <span class="blind">도어 선택</span>';
+                            //         doorHtml += '   <span class="door_img"></span>';
+                            //         doorHtml += '</button>';
+                            //     }
+                            // }
                         }
                     }
                     ////console.log("code", code);
@@ -5748,7 +5770,7 @@
                     if (configData.modelConfig[0].refrigeratorType[i].typ == modelCate2) {
                         let typModelLeng = refrigeratorTypeLeng = configData.modelConfig[0].refrigeratorType[i].typModel.length;
                         for (let j = 0; j < typModelLeng; j++) {
-                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode) {
+                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode || (configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != "undefined" && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != undefined && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel[0].modelCode == modelCode)) { //BTOCSITE-4239 추가 - 2번째 모델이 있을 경우, 2번째모델 선택시 dfaultModel과 modelCode 달라서 해당 컬러칩영역 노출 안되는 문제 발생 -> 조건 추가함(서브모델과 현재 modelCode 비교 조건) 
                                 let doorMaterialLeng = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData.length;
                                 let _door;
                                 let _doorFrontCode;
@@ -5814,7 +5836,7 @@
                                 }, 10);
 
                                 break;
-                            }
+                               }
                         }
                         break;
                     }
@@ -5823,7 +5845,7 @@
                 let typModelLeng = configData.modelConfig[1].typModel.length;
                 //doorPrice = door.defaultPrice; 
                 for (let j = 0; j < typModelLeng; j++) {
-                    if (configData.modelConfig[1].typModel[j].defaultCode == modelCode) {
+                    if (configData.modelConfig[1].typModel[j].defaultCode == modelCode || (configData.modelConfig[1].typModel[j].subModel != "undefined" && configData.modelConfig[1].typModel[j].subModel != undefined && configData.modelConfig[1].typModel[j].subModel[0].modelCode == modelCode)) { //BTOCSITE-4239 추가 - 2번째 모델이 있을 경우, 2번째모델 선택시 dfaultModel과 modelCode 달라서 해당 컬러칩영역 노출 안되는 문제 발생 -> 조건 추가함(서브모델과 현재 modelCode 비교 조건)
                         let doorMaterialLeng = configData.modelConfig[1].typModel[j].doorColorData.length;
                         let colorSelBodyHtml = '';
                         for (let k = 0; k < doorMaterialLeng; k++) {
@@ -6008,7 +6030,7 @@
                                 let mainMagicSpace = _typModel[j].magicSpace;
                                 let mainEnergy = _typModel[j].energy;
                                 let mainKnockOn = _typModel[j].knockOn;
-                                let mainVoiceChk = _typModel[j].voiceChk; //210719 BTOCSITE-2346 음석인식 변수 추가
+                                let mainVoiceChk = _typModel[j].voiceChk; //210719 BTOCSITE-2346 음성인식 변수 추가
                                 let mainPrice = _typModel[j].defaultPrice;
                                 tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
                                 tblHtml += '    <table>';
@@ -6106,39 +6128,61 @@
                     }
                 }
             } else if (modelCate1 == "refrigerator_kimchi") {
-                let refrigeratorType = configData.modelConfig[1].defaultCode;
-                let mainPrice = configData.modelConfig[1].defaultPrice;
-                modelPriceArry.push(refrigeratorType);
-                tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
-                tblHtml += '    <table>';
-                tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
-                tblHtml += '        <colgroup>';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '        </colgroup>';
-                tblHtml += '        <thead>';
-                tblHtml += '            <tr>';
-                tblHtml += '                <th scope="col">모델명</th>';
-                tblHtml += '                <th scope="col">가격</th>';
-                tblHtml += '            </tr>';
-                tblHtml += '        </thead>';
-                tblHtml += '        <tbody>';
-                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
-                if ($objContent.attr('data-page-type') === 'COMMON'){
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td><span></span>원</td>';
-                tblHtml += '</tr>';
-                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td style="text-align:center;">-</td>';
-                tblHtml += '</tr>';
+                let _typModel = configData.modelConfig[1].typModel;
+                for (let i = 0; i < _typModel.length; i++) {
+                    if (_typModel[i].defaultCode == modelCode) {
+                        let mainPrice = _typModel[i].defaultPrice;
+                        modelPriceArry.push(modelCode);
+                        tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
+                        tblHtml += '    <table>';
+                        tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
+                        tblHtml += '        <colgroup>';
+                        tblHtml += '            <col style="width:50%">';
+                        tblHtml += '            <col style="width:50%">';
+                        tblHtml += '        </colgroup>';
+                        tblHtml += '        <thead>';
+                        tblHtml += '            <tr>';
+                        tblHtml += '                <th scope="col">모델명</th>';
+                        tblHtml += '                <th scope="col">가격</th>';
+                        tblHtml += '            </tr>';
+                        tblHtml += '        </thead>';
+                        tblHtml += '        <tbody>';
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        if ($objContent.attr('data-page-type') === 'COMMON'){
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td><span></span>원</td>';
+                        tblHtml += '</tr>';
+                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td style="text-align:center;">-</td>';
+                        tblHtml += '</tr>';
+                        }
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        if (_typModel[i].subModel != undefined && _typModel[i].subModel != "") {
+                            let _subModel = _typModel[i].subModel;
+                            for (let k = 0; k < _subModel.length; k++) {
+                                let subCode = _subModel[k].modelCode;
+                                let subPrice = _subModel[k].defaultPrice;
+                                modelPriceArry.push(subCode);
+                                tblHtml += '<tr>';
+                                tblHtml += '    <td><span>' + subCode + '</span></td>';
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                if ($objContent.attr('data-page-type') === 'COMMON'){
+                                tblHtml += '    <td><span></span>원</td>';
+                                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                                tblHtml += '    <td style="text-align:center;">-</td>';
+                                }
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                tblHtml += '</tr>';
+                            }
+                        }
+                        tblHtml += '        </tbody>';
+                        tblHtml += '    </table>';
+                        tblHtml += '</div>';
+                    }
                 }
-                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
-                tblHtml += '        </tbody>';
-                tblHtml += '    </table>';
-                tblHtml += '</div>';
             } else if (modelCate1 == "refrigerator_convertible") {
                 let _typModel = configData.modelConfig[2].typModel;
                 for (let i = 0; i < _typModel.length; i++) {

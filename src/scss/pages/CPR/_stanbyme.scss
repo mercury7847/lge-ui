@@ -360,6 +360,15 @@
 			}
 		}
 	}
+
+	// BTOCSITE-4357 스탠바이미 PDP 내 고객문의 Q&A 생성 요청
+	.file-item.modify {
+		.file-btns {
+			.btn-del,.btn-upload { display:none;}
+			.btn-file-del { display:block; }
+		}
+
+	}
 }
 
 

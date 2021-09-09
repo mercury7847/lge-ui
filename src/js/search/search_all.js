@@ -822,17 +822,32 @@ if ('scrollRestoration' in history) {
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
+                    /* BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
+                    var $maxTextPro = searchedValue.substring(0, 20) + "...";
+
                     //검색한 검색어
-                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과');
+                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
+                    /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                     //원래입력된 기존 검색어 이동
                     var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
-                        self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
+                        /* BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
+                        var $shortenTxt_1 = inputValue.substring(0, 10);
+                        var $shortenTxt_2 = inputValue.substr(inputValue.length-10, 10);
+
+                        // console.log($shortenTxt_1);
+                        // console.log("---------------");
+                        // console.log($shortenTxt_2);
+
+                        // self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
+                        self.$similarText.text('“' + $shortenTxt_1 + ' ~ '+ $shortenTxt_2 +'” 검색 결과로 이동').attr('href','#'+inputValue);
                         self.$searchSimilar.show();
+                        
                     } else {
                         self.$searchSimilar.hide();
                     }
+                    /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                     //연관 검색어 리스트 갱신
                     var arr = data.related instanceof Array ? data.related : [];
@@ -879,21 +894,21 @@ if ('scrollRestoration' in history) {
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
                     // 2. 스마트 필터 없음 일반 필터로
 
-                    console.log("filterList %o",data.filterList)
-                    console.log("smartFilterList %o",data.smartFilterList)
+                    //console.log("filterList %o",data.filterList)
+                    //console.log("smartFilterList %o",data.smartFilterList)
 
 
                     var isSmartFiler = !vcui.isEmpty(data.smartFilterList);
                     var isFilterList = !vcui.isEmpty(data.filterList);
                     
                     
-                    console.log("isSmartFiler %o",isSmartFiler)
-                    console.log("isFilterList %o",isFilterList)
+                    //console.log("isSmartFiler %o",isSmartFiler)
+                    //console.log("isFilterList %o",isFilterList)
 
                     
                     var filterShow = false;
                     if(isSmartFiler || isFilterList) {
-                        console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList.data : data.filterList)
+                        //console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList.data : data.filterList)
                         filterShow = true;
                             var smartFilterList = data.smartFilterList.data;
     
@@ -916,7 +931,7 @@ if ('scrollRestoration' in history) {
                             if(self.savedFilterData && self.savedFilterData.filterData) {
                                 var filterData = JSON.parse(self.savedFilterData.filterData);
 
-                                console.log("savedFilterData %o",self.savedFilterData );
+                                //console.log("savedFilterData %o",self.savedFilterData );
                                 self.filterLayer.resetFilter(filterData);
                             }
            
@@ -1229,7 +1244,19 @@ if ('scrollRestoration' in history) {
                         self.$btnFilter.hide();
 
                         self.$resultListNoData.show();
-                        self.$searchNotResult.find('em').text('“' + searchedValue + '”');
+
+                        /* BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
+                        var $searchTxtMax = self.$searchNotResult.find('em').text('“' + searchedValue + '”');
+                        //console.log($searchTxtMax.text().slice(1,-1).length);
+                        //console.log($searchTxtMax.text().substring(0, self.$searchNotResult.find('em').text().indexOf('”')));
+                        //console.log($searchTxtMax.text().substring(1, self.$searchNotResult.find('em').text().slice(1,-1)));
+                        if($searchTxtMax.text().slice(1,-1).length > 20){
+                            self.$searchNotResult.find('em').text(self.$searchNotResult.find('em').text().substring(0, 21)+"...”");
+                        }
+                        //console.log("------------------");
+                        //console.log($searchTxtMax.text());
+                        /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
+
                         self.$searchNotResult.show();
                     } else {
                         

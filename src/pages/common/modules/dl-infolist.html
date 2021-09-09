@@ -20,7 +20,7 @@
         </li>
         }
     }
-    @@if ( !context.idType && context.addClass &&  !context.addrModi) {
+    @@if ( !context.idType && context.addClass ) {
         @@for ( var i=0; i < list.length; i++ ) {
         <li class="`+list[i].fieldName+`">
             <dl>
@@ -29,26 +29,6 @@
             </dl>
         </li>
         }
-    }
-    @@if ( !context.idType && context.addClass && context.addrModi) {
-        @@for ( var i=0; i < list.length; i++ ) {
-        <li class="`+list[i].fieldName+`">
-            <dl>
-                <dt>`+list[i].dt+`</dt>
-                <dd>`+list[i].dd+`</dd>
-            </dl>
-        </li>
-        }
-        <li class="addrInfo">
-            <dl>
-                <dt>주소</dt>
-                <dd>
-                    <span>@@rcvPostCode</span>
-                    <span>@@rcvBasAddr</span>
-                    <span>@@rcvDtlAddr</span>
-                </dd>
-            </dl>
-        </li>
     }
     </ul>
 </div>
