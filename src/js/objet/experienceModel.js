@@ -2705,6 +2705,20 @@
                 door3: "K491BB-GCL",
                 door4: "K491BB-GCL",
             },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491MBG151",
+                door1: "K491TT-MBK",
+                door2: "K491TT-MBK",
+                door3: "K491BB-MGY",
+                door4: "K491BB-MGY",
+            },{
+                defaultCode: "Z491AAA151", 
+                modelCode: "Z491GBP151",
+                door1: "K491TT-GBE",
+                door2: "K491TT-GBE",
+                door3: "K491BB-GPK",
+                door4: "K491BB-GPK",
+            },{
                 defaultCode: "W821AAA453",
                 modelCode: "W821FBB453S",
                 door1: "D870JT-FBT",
