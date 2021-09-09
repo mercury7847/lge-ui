@@ -66,7 +66,6 @@
         '</form>'
 
     $(window).ready(function() {
-
         var stanbymeWrite = {
             params: {},
             init: function() {
@@ -74,7 +73,7 @@
                     self.$contents = $('.contents.stanbyme');
                     self.$submitForm = self.$contents.find('#submitForm');
                     self.$completeBtns = self.$contents.find('.btn-group');
-
+                    self.$fileDelBtn = self.$contents.find('.btn-file-del'); 
 
                     self.url = self.$submitForm.data('ajax');
                     self.mode = self.url.indexOf('updateStanbyMeAjax') > -1 ? 'modify' : 'write';
@@ -119,6 +118,18 @@
                         });       
                     }
                 });
+
+                self.$fileDelBtn.on('click',function(){
+                    var el = this;
+                    lgkorUI.confirm('', {
+                        title:'삭제하시겠습니까?', 
+                        cancelBtnName: '아니오', okBtnName: '예', 
+                        ok : function (){ 
+                            self.requestFileDelete(el);
+                        }
+                    });
+                });
+
             },
             requestWrite: function() {
                 var self = this;
@@ -155,6 +166,26 @@
                             }
                         }
                     }, 'POST', 'json',true);
+                }
+            },
+            // 글 수정시 파일 삭제 함수
+            requestFileDelete: function(el) {
+                var self = this;
+
+                console.log("삭제 버튼 테스트");
+                    
+                var url = $(el).data('href');
+                if(url){
+                    console.log("url %o ",url);
+                    lgkorUI.requestAjaxData(url,'', function(result) {
+                        if(result.status === 'success') {
+                            $(el).closest('.file-item').removeClass('modify');
+                        } else {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
+                    });
                 }
             }
         };
