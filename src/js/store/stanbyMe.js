@@ -397,7 +397,7 @@
 
                 // 댓글 쓰기폼 취소 버튼
                 self.$btnCancel.off().on('click', function(){
-                    self.cmtCancel(this)
+                    self.requestCmtCancel(this)
                 });
 
 
@@ -437,7 +437,7 @@
 
 
                         $parent.find('.btn-cancel').off().on('click', function() {
-                            self.cmtCancel(this);
+                            self.requestCmtCancel(this);
                         });
 
 
@@ -536,7 +536,7 @@
             },
 
             // 댓글 쓰기폼 취소 함수
-            cmtCancel: function(el) {
+            requestCmtCancel: function(el) {
                 var self = this;
 
 
