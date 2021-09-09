@@ -354,7 +354,10 @@ $(function(){
                                 var dirLeft = startX - endX < 0;
                                 var rangeX = Math.abs(startX - endX);
                                 var rangeY = Math.abs(startY - endY);
-                                if( touchFlag == true && rangeX > 100 && rangeY < 50) {
+
+                                if( rangeY > 30) return;
+                                
+                                if( touchFlag == true && rangeX > 100 ) {
                                     touchFlag = false;
                                     if(dirLeft) {
                                         tab.nav.prev();
@@ -363,11 +366,16 @@ $(function(){
                                         tab.nav.next();
                                         console.log('right')
                                     }
+
+                                    clearTimeout(touchFlagTid);
+                                    touchFlagTid = setTimeout(function(){
+                                        touchFlag = true;
+
+                                        console.log("rangeX", rangeX)
+                                        console.log("rangeY", rangeY)
+                                    }, 50);
                                 }
-                                clearTimeout(touchFlagTid);
-                                touchFlagTid = setTimeout(function(){
-                                    touchFlag = true;
-                                }, 50);
+                                
                             });
                         });
                     }
