@@ -5748,7 +5748,7 @@
                     if (configData.modelConfig[0].refrigeratorType[i].typ == modelCate2) {
                         let typModelLeng = refrigeratorTypeLeng = configData.modelConfig[0].refrigeratorType[i].typModel.length;
                         for (let j = 0; j < typModelLeng; j++) {
-                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode || (configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != "undefined" && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != undefined && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel[0].modelCode == modelCode)) { //BTOCSITE-4239 추가 - 2번째 모델이 있을 경우, 2번째모델 선택시 dfaultModel과 modelCode 달라서 해당 컬러칩영역 노출 안되는 문제 발생 -> 조건 추가함(서브모델과 현재 modelCode 비교 조건)
+                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode || (configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != "undefined" && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != undefined && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel[0].modelCode == modelCode)) { //BTOCSITE-4239 추가 - 2번째 모델이 있을 경우, 2번째모델 선택시 dfaultModel과 modelCode 달라서 해당 컬러칩영역 노출 안되는 문제 발생 -> 조건 추가함(서브모델과 현재 modelCode 비교 조건) 
                                 let doorMaterialLeng = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData.length;
                                 let _door;
                                 let _doorFrontCode;
