@@ -85,7 +85,7 @@
 	}
 
 	/* BTOCSITE-4492 */
-	&.headline-top-m{
+	&.m-hdline-top{
 		@include mobile{
 			.inner{
 				flex-direction:column-reverse;
