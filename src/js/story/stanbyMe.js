@@ -65,7 +65,7 @@
             '</div>' +
         '</form>'
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         var stanbymeWrite = {
             params: {},
             init: function() {
@@ -223,22 +223,11 @@
                         self.bindEvent();
 
                         //  Q&A 탭으로 이동
-                        self.$tab.on('tabchange', function(e, data) {
-                            e.preventDefault();
-                            location.hash = self.tabList[data.selectedIndex];
-                        })
-
-                        $(window).on('hashchange', function () {
-                            if(location.hash) {
-                                self.$tab.vcTab('select', self.tabList.indexOf(location.hash));
-                            }
-                        });
-
-                        if(!location.hash) { location.hash = self.tabList[0]; }
                         if(location.hash === '#prod2') {
-                            $(window).trigger('hashchange');
+                            self.$tab.vcTab('select', 1);
+                            $(window).scrollTop(0);
                         }
-
+          
                     });
 
             },
@@ -547,6 +536,7 @@
                                     self.settingList();
                                 }
                                 $commentWrite.closest('form')[0].reset();
+                                self.$btnCancel.trigger('click');
                             } else {
 
                                 lgkorUI.confirm('', {
@@ -609,6 +599,7 @@
         
                         self.settingList();
                         $commentWrite.closest('form')[0].reset();
+                        self.$btnCancel.trigger('click');
         
                     } else {
                         lgkorUI.alert("", {
