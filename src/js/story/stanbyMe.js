@@ -66,12 +66,145 @@
         '</form>'
 
     $(window).ready(function() {
+        var stanbymeWrite = {
+            params: {},
+            init: function() {
+                var self = this;
+                    self.$contents = $('.contents.stanbyme');
+                    self.$submitForm = self.$contents.find('#submitForm');
+                    self.$completeBtns = self.$contents.find('.btn-group');
+                    self.$fileDelBtn = self.$contents.find('.btn-file-del'); 
+
+                    self.url = self.$submitForm.data('ajax');
+                    self.mode = self.url.indexOf('updateStanbyMeAjax') > -1 ? 'modify' : 'write';
+
+
+                    vcui.require(['ui/validation'], function () {
+                        self.validation = new vcui.ui.CsValidation('#submitForm', { 
+                            register: {
+                                title: {
+                                    required: true,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '제목을 입력해주세요.'
+                                },
+                                content: {
+                                    required: true,
+                                    msgTarget: '.err-block',
+                                    errorMsg: '내용을 입력해주세요.'
+                                }
+                            }
+                        });
+
+                        self.$contents.find('.ui_imageinput').vcImageFileInput({
+                            message: {
+                                name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                                format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+                                size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
+                            }
+                        });
+
+                        self.bindEvent();
+                    });
+            },
+            bindEvent: function() {
+                var self = this;
+                self.$completeBtns.find('.btn-confirm,.btn-modify').on('click', function() {
+                    var result = self.validation.validate();
+    
+                    if (result.success == true) {    
+                        lgkorUI.confirm('', {
+                            title:self.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
+                            okBtnName:self.mode === 'write' ? '확인' : '예',
+                            cancelBtnName: self.mode === 'write' ? '취소' :'아니오',
+                            ok: function() {
+                                self.requestWrite();
+                            }
+                        });       
+                    }
+                });
+
+                self.$fileDelBtn.on('click',function(){
+                    var el = this;
+                    lgkorUI.confirm('', {
+                        title:'삭제하시겠습니까?', 
+                        cancelBtnName: '아니오', okBtnName: '예', 
+                        ok : function (){ 
+                            self.requestFileDelete(el);
+                        }
+                    });
+                });
+
+            },
+            requestWrite: function() {
+                var self = this;
+                if(self.url) {
+
+                    console.log("mode %o",self.mode);
+
+
+                    var param = self.validation.getAllValues();
+                    var formData = new FormData();
+           
+                    for (var key in param) {
+                        formData.append(key, param[key]);
+                    }
+        
+                    lgkorUI.showLoading();
+
+                    lgkorUI.requestAjaxFileData(self.url, formData, function(result) {
+
+
+                        console.log("write %o",result);
+        
+                        if (result.status == 'success') {
+                            if(result.returnUrl) location.href = result.returnUrl;
+                        } else {
+                            lgkorUI.hideLoading();
+                            if (result.message) {
+                                lgkorUI.alert("", {
+                                    title: result.message,
+                                    ok: function(){
+                                        location.href = "/sso/api/Login";
+                                    }
+                                });
+                            }
+                        }
+                    }, 'POST', 'json',true);
+                }
+            },
+            // 글 수정시 파일 삭제 함수
+            requestFileDelete: function(el) {
+                var self = this;
+
+                console.log("삭제 버튼 테스트");
+                    
+                var url = $(el).data('href');
+                if(url){
+                    console.log("url %o ",url);
+                    lgkorUI.requestAjaxData(url,'', function(result) {
+                        if(result.status === 'success') {
+                            $(el).closest('.file-image').find('.file-preview').empty();
+                            $(el).closest('.file-item').removeClass('modify');
+                        } else {
+                            lgkorUI.alert("", {
+                                title: result.message
+                            });
+                        }
+                    });
+                }
+            }
+        };
+
+
 
         var stanbymeList = {
             params: {},
             init: function() {
                 var self = this,
                     $contents = $('.contents.stanbyme');
+
+                    self.$tab = $('.ui_tab');
+                    self.tabList = ['#prod1','#prod2'];
 
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
@@ -82,12 +215,30 @@
                         self.$sortSelect = $contents.find('.ui_selectbox');
                         self.$listWrap = $contents.find('.tb_row');
                         self.$noData = $contents.find('.empty-row');
-
                         self.params = {
                             'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                             'page': 1
                         };
+
                         self.bindEvent();
+
+                        //  Q&A 탭으로 이동
+                        self.$tab.on('tabchange', function(e, data) {
+                            e.preventDefault();
+                            location.hash = self.tabList[data.selectedIndex];
+                        })
+
+                        $(window).on('hashchange', function () {
+                            if(location.hash) {
+                                self.$tab.vcTab('select', self.tabList.indexOf(location.hash));
+                            }
+                        });
+
+                        if(!location.hash) { location.hash = self.tabList[0]; }
+                        if(location.hash === '#prod2') {
+                            $(window).trigger('hashchange');
+                        }
+
                     });
 
             },
@@ -158,6 +309,9 @@
 
                 vcui.require(['ui/pagination'], function () {
                     self.$commentWrap = $contents.find('.comment-wrap');
+                    
+                    self.$delPopup =  $('#delPopup');
+                    self.$btnDel =  $('[data-href="#delPopup"]');
 
                     self.$btnCancel = $('.btn-cancel');
                     self.$btnConfirm = $('.btn-confirm');
@@ -167,14 +321,28 @@
 
                     if(isNoComment) {
                         self.$pagination.hide();
+                    }
+
+
+                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination();
+
+                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
+
+                    if(isNoComment) {
+                        self.$pagination.hide();
 
                     }
+
 
                     self.params = {
                         'page': 1
                     };
 
                     self.bindEvent();
+
+
+
+
                 });
 
             },
@@ -199,14 +367,16 @@
                                     html += vcui.template(commentList, item);
                                 });
                                 self.$listWrap.prepend(html);
-                                $('.comment-head .count').text(d.dataCount);
-                            }
+                            } 
 
-                            self.$pagination.vcPagination('setPageInfo', page);
-                            self.$pagination.off('page_click').on('page_click', function(e,page) {
-                                self.pageClick(this,page);
-                            });
+                            $('.comment-head .count').text(d.dataCount);
 
+
+                            console.log("count %o %o",d.dataCount,typeof d.dataCount);
+
+                            self.$pagination.vcPagination('setPageInfo', page);                            
+                            if(!self.$pagination.is(':visible') && d.dataCount !== 0) self.$pagination.show();
+                            else  self.$pagination.hide();
 
                             self.bindEvent();
                             lgkorUI.hideLoading();
@@ -217,6 +387,28 @@
             },
             bindEvent: function() {
                 var self = this;
+
+                // 글 삭제 버튼
+                self.$btnDel.off().on('click',function() {
+                    self.$delPopup.vcModal();
+                });
+
+                // 글 삭제 팝업 "예" 버튼
+                self.$delPopup.find('[data-role="ok"]').on('click',function(e) {
+                    var url = $(this).data('href');
+                    if(url){
+                        console.log("url %o ",url);
+                        lgkorUI.requestAjaxData(url,'', function(result) {
+                            if(result.status === 'success') {
+                                if(result.returnUrl) location.href = result.returnUrl;
+                            } else {
+                                lgkorUI.alert("", {
+                                    title: result.message
+                                });
+                            }
+                        });
+                    }
+                });
 
                 // pagination click event
                 self.$pagination.off('page_click').on('page_click', function(e,page) {
@@ -231,19 +423,19 @@
 
                 // 댓글 쓰기폼 취소 버튼
                 self.$btnCancel.off().on('click', function(){
-                    self.cmtCancel(this)
+                    self.requestCmtCancel(this)
                 });
 
 
                 // 댓글 쓰기폼 등록 / 수정 인풋 입력 체크
-                // $('.input-wrap textarea').off().on('change keyup paste', function(){
-                //     inpValLen = $(this).val().length;
-                //     if(inpValLen > 0) {
-                //         $(this).addClass('valid');
-                //     } else{
-                //         $(this).removeClass('valid');
-                //     }
-                // });
+                $('.input-wrap textarea').off('change.cmtList keyup.cmtList paste.cmtList').on('change.cmtList keyup.cmtList paste.cmtList', function(){
+                    inpValLen = $(this).val().length;
+                    if(inpValLen > 0) {
+                        $(this).addClass('valid');
+                    } else{
+                        $(this).removeClass('valid');
+                    }
+                });
 
 
 
@@ -271,7 +463,7 @@
 
 
                         $parent.find('.btn-cancel').off().on('click', function() {
-                            self.cmtCancel(this);
+                            self.requestCmtCancel(this);
                         });
 
 
@@ -352,14 +544,21 @@
                                     console.log('댓글 등록 성공')
                                     self.params.page = 1;
                                     self.settingList();
+                                    $commentWrite.closest('form')[0].reset();
+
                                 } else {
                                     console.log('댓글 수정 성공')
                                     // self.params.page = 1;
                                     self.settingList();
                                 }
                             } else {
-                                lgkorUI.alert("", {
-                                    title: data.message
+
+                                lgkorUI.confirm('', {
+                                    title:data.message, 
+                                    cancelBtnName: '아니오', okBtnName: '예', 
+                                    ok : function (){ 
+                                        location.href = "/sso/api/Login";
+                                    }
                                 });
                             }
                         });
@@ -368,7 +567,7 @@
             },
 
             // 댓글 쓰기폼 취소 함수
-            cmtCancel: function(el) {
+            requestCmtCancel: function(el) {
                 var self = this;
 
 
@@ -424,73 +623,14 @@
     
         };
 
-        if($('.contents.stanbyme .visual-wrap').length > 0){
+        if($('.contents.stanbyme .visual-wrap').length > 0){ // 리스트
+            console.log('sdfsdfsd');
             stanbymeList.init();
-        }else if($('.contents.stanbyme .stanbyme-detail').length > 0){
+        }else if($('.contents.stanbyme .stanbyme-detail').length > 0){  // 상세 
             stanbymeCommentList.init();
+        } else {
+            stanbymeWrite.init();
+
         }
-
-        //리스트 수정완료 버튼 클릭시
-        $('.btn-modify').on('click', function(e){
-            var id = $(e.currentTarget).data('id');
-            var obj ={title:'', typeClass:'', ok : function (){ }};
-            var desc = '';
-
-            if(id=="#modifyConfirm"){
-                obj = $.extend(obj,{title: '게시물을 수정하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                desc = '';
-            }
-            lgkorUI.confirm(desc, obj);
-        });
-
-        //댓글 수정 버튼 클릭시
-        // var commentModify = function(){
-        //     $('.btn-comment-modify').on('click', function(e){
-        //         var $self = $(this),
-        //             $parent = $self.closest('.comment-content'),
-        //             $commentTextWrap = $parent.find('.comment-text-wrap'),
-        //             $infoData = $parent.find('.info-date'),
-        //             $commentBtnBox = $parent.find('.comment-btn-box'),
-        //             $writeCont = $commentTextWrap.find('.comment-text p').text();
-
-        //         $commentTextWrap.remove();
-        //         $infoData.remove();
-        //         $commentBtnBox.remove();
-        //         $parent.append(commentModifyForm).closest('.comment-content .textarea').text($writeCont);
-        //     });
-        // };
-        // commentModify();
-
-        //댓글 등록 버튼 클릭시
-        // var btnWriteFunc = function(){
-        //     $('.comment-write .btn-confirm').on('click', function(e){
-        //         var $commentWrite = $('.comment-write'),
-        //             url = $commentWrite.data('ajax');
-
-        //         var commentParam = {};
-        //         commentParam.value = $('textarea').val();
-
-        //         lgkorUI.requestAjaxDataPost(url, commentParam, function(d) {
-        //             if(d.status == 'success'){
-        //                 commentParam = $.extend({}, params, {
-        //                     'testSucFlag': "Y"
-        //                 });
-        //             }else{
-        //                 commentParam = $.extend({}, commentParam, {
-        //                     'testSucFlag': "N"
-        //                 });
-        //                 lgkorUI.alert("",{title:d.message});
-        //             }
-        //             self.bindEvent();
-        //             lgkorUI.hideLoading();
-        //         },true);
-        //     });
-        // };
-        // btnWriteFunc();
-
-
-
-      
-
     });
 })();
