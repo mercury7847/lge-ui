@@ -912,3 +912,14 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
     return SearchModel;
 });
+
+// BTOCSITE-4086 : 보유제품 이메일로 등록 s
+$(document).ready(function(){
+    var emailReg = new RegExp('[\?&]emailReg([^&#]*)').exec(window.location.href);
+    if(emailReg){
+        setTimeout(function () {
+            $('#stepInquiryType .btn-next').trigger('click');
+        }, 100);
+    };
+});
+// BTOCSITE-4086 : 보유제품 이메일로 등록 e
