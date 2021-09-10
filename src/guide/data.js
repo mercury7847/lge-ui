@@ -254,13 +254,7 @@ var res = {
 				"홈(서브메인)" : ["/html/PRS/MKTF1001.html","",""]
 			},
 			"스토어(CPR)" : {
-				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수완료"],
-				"스탠바이미(리스트)" : ["/html/CPR/SBMF1001.html","","검수완료"],
-				"스탠바이미(리스트-게시글없음)" : ["/html/CPR/SBMF1001_nodata.html","","검수완료"],
-				"스탠바이미(상세)" : ["/html/CPR/SBMF1002.html","","검수완료"],
-				"스탠바이미(상세-댓글없음)" : ["/html/CPR/SBMF1002_nodata.html","","검수완료"],
-				"스탠바이미(등록하기))" : ["/html/CPR/SBMF1003.html","","검수완료"],
-				"스탠바이미(수정하기)" : ["/html/CPR/SBMF1004.html","","검수완료"]
+				"비교하기 결과" : ["/html/CPR/MKTF1010.html","","검수완료"]
 			},
 			"브랜드관(PRH)" : {
 				"LG ThinQ" : ["/html/PRH/MKTF1110.html","","진행중"],
@@ -268,7 +262,13 @@ var res = {
 			},
 			"스토리(STS)" : {
 				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""],
-				"팝업(NS)" : ["/html/STS/OBS5001_popup.html","",""]
+				"팝업(NS)" : ["/html/STS/OBS5001_popup.html","",""],
+				"스탠바이미(리스트)" : ["/html/STS/SBMF1001.html","","검수완료"],
+				"스탠바이미(리스트-게시글없음)" : ["/html/STS/SBMF1001_nodata.html","","검수완료"],
+				"스탠바이미(상세)" : ["/html/STS/SBMF1002.html","","검수완료"],
+				"스탠바이미(상세-댓글없음)" : ["/html/STS/SBMF1002_nodata.html","","검수완료"],
+				"스탠바이미(등록하기))" : ["/html/STS/SBMF1003.html","","검수완료"],
+				"스탠바이미(수정하기)" : ["/html/STS/SBMF1004.html","","검수완료"]
 			},
 			"스토리(STC)" : {
 				"모바일 서비스" : {
