@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["STS/STS"],
+        pageJS: ["story/stanbyMe"],
+        pageTitle: "스탠바이미 클럽 | LG전자",
+        pageDesc: "LG전자 스탠바이미에 대한 문의사항, 리뷰를 등록할 수 있는 스탠바이미 클럽 입니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "스탠바이미 클럽" 
+        })
+
+        <div class="container">
+            <div class="contents stanbyme">
+                <div class="inner">
+                    <!-- .inner s  -->
+                    <div class="stanbyme-write">
+                        <form action="" method="post" id="submitForm" data-ajax="" novalidate>
+                            <div class="section">
+                                <div class="tit-wrap">
+                                    <h2 class="tit">수정하기</h2>
+                                </div>
+                                <div class="section-box">
+                                    <div class="form-wrap">
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="title" class="req">제목<span class="blind">필수항목</span></label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="text-form">
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목을 입력해주세요. (50자 이하)" value="고객의 소리를 귀담아주세요!" maxlength="50" data-limit="50" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
+                                                        <span id="txt-count1" class="inner-text"><em>0</em>/50자</span>
+                                                    </div>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="content" class="req">내용<span class="blind">필수항목</span></label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="text-form">   
+                                                    <div class="input-wrap">
+                                                        <textarea name="content" id="content" class="ui_textcontrol" placeholder="내용을 입력해주세요. (1,000자 이하)" value="고객이 원하는 상품을 내놓았지만 이렇게 못파는 것도 문제입니다!분명히 온라인사이트에선 8월초부터 풀린다고 정확하게 기재되있어서 구매 하게되었어요 분명한건 8월말로 해놨다가 초로 바꾸신거보고 제가 가게에 새롭게 오브제를 과감하게 빼고 스탠바이미를! 가운데일날이여서 !! 제일 늦에인 8월 10일로 잡았구요! 첫희망 배송일은 8월 3일이였어요 인테리어까지 중간에 변경한 부분이에요! " maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required></textarea>
+                                                        <span id="txt-count2" class="inner-text"><em>0</em>/1000자</span>
+                                                    </div>
+                                                </div>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="inp02-2">이미지(선택)</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="image-file-wrap ui_imageinput">
+                                                    <div class="file-scroll-wrap">
+                                                        <div class="file-item">
+                                                            <div class="file-image">
+                                                                <div class="file-preview"></div>
+                                                                <div class="file-btns">
+                                                                    <input type="file" name="imageFile1" id="imageFile1" accept="image/*">
+                                                                    <label for="imageFile1" class="btn-upload"><span class="blind">업로드</span></label>
+                                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-name">
+                                                                <input type="text" class="name" placeholder="파일선택" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-item">
+                                                            <div class="file-image">
+                                                                <div class="file-preview"></div>
+                                                                <div class="file-btns">
+                                                                    <input type="file" name="imageFile2" id="imageFile2" accept="image/*">
+                                                                    <label for="imageFile2" class="btn-upload"><span class="blind">업로드</span></label>
+                                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-name">
+                                                                <input type="text" class="name" placeholder="파일선택" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-item">
+                                                            <div class="file-image">
+                                                                <div class="file-preview"></div>
+                                                                <div class="file-btns">
+                                                                    <input type="file" name="imageFile3" id="imageFile3" accept="image/*">
+                                                                    <label for="imageFile3" class="btn-upload"><span class="blind">업로드</span></label>
+                                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-name">
+                                                                <input type="text" class="name" placeholder="파일선택" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-item">
+                                                            <div class="file-image">
+                                                                <div class="file-preview"></div>
+                                                                <div class="file-btns">
+                                                                    <input type="file" name="imageFile4" id="imageFile4" accept="image/*">
+                                                                    <label for="imageFile4" class="btn-upload"><span class="blind">업로드</span></label>
+                                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-name">
+                                                                <input type="text" class="name" placeholder="파일선택" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @@include('./common/modules/bullet-list.html', {
+                                                    "bulletTxt" : [
+                                                        "첨부파일은 최대 4개까지 등록 가능하며, 전체 용량은 000MB 이하까지 업로드 가능합니다.",
+                                                        "이미지명은 특수기호(? ! , . & ^ ~ )를 제외해주세요. (첨부 가능 확장자 jpg, jpeg, png, gif)"
+                                                    ]
+                                                })
+                                            </div>
+                                        </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다"
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-group center">
+                                <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
+                                <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">수정완료</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- .inner e  -->
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>페이지를 나가실경우 작성하신 글은<br> 저장되지 않습니다. <br>
+                취소하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>아니요</span></button>
+            <a href="#" class="btn"><span>예</span></a>
+        </div>
+    </article>
+
+</body>
+</html>
