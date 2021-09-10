@@ -56,6 +56,7 @@
             //'</div>'+
         '</div>';
 
+    //2021-09-10 BTOCSITE-188
     var tagBoxTemplate = 
         // '<div class="flexbox tag-area">'+
         //     '<span class="title">이런 태그는 어떠세요?</span>'+
