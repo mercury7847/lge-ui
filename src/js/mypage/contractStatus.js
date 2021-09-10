@@ -1118,3 +1118,15 @@
     });
     /* //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
 })();
+
+// BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+$(document).ready(function(){
+    var managerInfo = new RegExp('[\?&]managerInfo([^&#]*)').exec(window.location.href);
+    if(managerInfo){        
+        var managerInfoPosition = document.querySelector(".manager-info").offsetTop;
+        setTimeout(function () {            
+            window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
+        }, 2000);
+    };
+});
+// BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
