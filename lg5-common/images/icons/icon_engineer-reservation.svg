@@ -1,15 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <path d="M0 0H160V160H0z" transform="translate(-762 -4620) translate(80 4564) translate(682 56)"/>
-                    <g stroke-linecap="round" stroke-linejoin="round" stroke-width="5" transform="translate(-762 -4620) translate(80 4564) translate(682 56) translate(26 28)">
-                        <path stroke="#000" d="M54 0c13.255 0 24 10.745 24 24h22c4.418 0 8 3.582 8 8v24c0 4.418-3.582 8-8 8H66v-8c0-2.142-1.684-3.891-3.8-3.995L62 52H46c-2.21 0-4 1.79-4 4h0v8H8c-4.418 0-8-3.582-8-8V32c0-4.418 3.582-8 8-8h22C30 10.745 40.745 0 54 0zm0 12c-6.627 0-12 5.373-12 12h24c0-6.627-5.373-12-12-12zM100.772 64v36c0 2.21-1.79 4-4 4h-84c-2.209 0-4-1.79-4-4V64H42L42 72c0 2.142 1.684 3.891 3.8 3.995L46 76h16c2.21 0 4-1.79 4-4h0v-8h34.772z"/>
-                        <rect width="24" height="24" x="42" y="52" stroke="#DA0F47" rx="4"/>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_CS_business_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h80v80H0z"/>
+    <g id="ic" transform="translate(13 14)">
+        <path id="Shape" class="cls-2" d="M31 38h-8a2 2 0 0 1-2-2v-4H2.5A2.5 2.5 0 0 1 0 29.5v-15A2.5 2.5 0 0 1 2.5 12H15a12 12 0 0 1 24 0h12.5a2.5 2.5 0 0 1 2.5 2.5v15a2.5 2.5 0 0 1-2.5 2.5H33v-4a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v4h12v4a2 2 0 0 1-2 2zM27 6a6.007 6.007 0 0 0-6 6h12a6.007 6.007 0 0 0-6-6z"/>
+        <path id="Combined_Shape" data-name="Combined Shape" class="cls-2" d="M47.5 20h-45A2.5 2.5 0 0 1 0 17.5V0h19v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V0h19v17.5a2.5 2.5 0 0 1-2.5 2.5z" transform="translate(2 32)"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="12" height="12" rx="2" transform="translate(21 26)" style="stroke:#da0f47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px;fill:none"/>
     </g>
 </svg>
