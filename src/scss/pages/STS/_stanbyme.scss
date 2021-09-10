@@ -843,8 +843,8 @@
 				+ .inner-text{
 					width:auto;
 				}
-				&:focus + .txt-count-box {
-					border-color: $color-primary ;
+				&:focus + .txt-count-box, &:focus + .inner-text {
+					border-color: $color-primary !important;
 				}
 				&.valid{
 					&+.txt-count-box{
