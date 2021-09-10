@@ -128,7 +128,7 @@
                     lgkorUI.confirm('', {
                         title:'삭제하시겠습니까?', 
                         cancelBtnName: '아니오', okBtnName: '예', 
-                        ok : function (){ 
+                        ok : function (e,data){ 
                             self.requestFileDelete(el);
                         }
                     });
@@ -176,7 +176,7 @@
             requestFileDelete: function(el) {
                 var self = this;
 
-                console.log("삭제 버튼 테스트");
+                console.log("삭제 버튼 테스트 %o",this);
                     
                 var url = $(el).data('href');
                 if(url){
@@ -251,10 +251,6 @@
                     var html = '',
                         data = d.data,
                         page = d.pagination;
-
-                        // page = $.extend(page , {
-                        //     scrollTarget : self.$pagination 
-                        // })
 
                     self.$sortTotal.html(page.dataCount);
 
@@ -417,6 +413,7 @@
 
                  // 댓글 쓰기폼 등록/수정 버튼
                 self.$btnConfirm.off().on('click', function() {
+                    console.log('댓글 스기');
                     self.requestCmtWrite(this);
                 });
 
@@ -490,7 +487,6 @@
 
 
             // 페이지네이션 클릭 실행 함수
-
             pageClick: function(el,page) {
                 var self = this;
 
@@ -544,13 +540,13 @@
                                     console.log('댓글 등록 성공')
                                     self.params.page = 1;
                                     self.settingList();
-                                    $commentWrite.closest('form')[0].reset();
 
                                 } else {
                                     console.log('댓글 수정 성공')
                                     // self.params.page = 1;
                                     self.settingList();
                                 }
+                                $commentWrite.closest('form')[0].reset();
                             } else {
 
                                 lgkorUI.confirm('', {
@@ -561,7 +557,7 @@
                                     }
                                 });
                             }
-                        });
+                        },'POST','json',true);
                     }
 
             },
@@ -612,6 +608,7 @@
                         console.log('댓글 삭제 성공')
         
                         self.settingList();
+                        $commentWrite.closest('form')[0].reset();
         
                     } else {
                         lgkorUI.alert("", {
