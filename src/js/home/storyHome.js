@@ -74,7 +74,7 @@
             '<div class="flexbox tag-area">'+
                 '<div class="title-area">'+
                     '<span class="title">이런 <em>#태그</em>를 <br class="mo-only ">어떠세요?</span>'+
-                    '<a href="#" class="btn-link tagmnger-btn"><span>다른 태그도 구독</span></a>'+
+                    '<a href="#" class="btn-link tagmnger-btn"><span>구독 중 태그 관리</span></a>'+
                 '</div>'+
                 '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
                     '<div class="ui_smooth_tab">'+
@@ -262,11 +262,11 @@
             e.preventDefault();
 
             var ajaxurl = $(this).data("submitUrl");
-            console.log("button ajaxurl", ajaxurl)
+            // console.log("button ajaxurl", ajaxurl)
             setTagMngOK(ajaxurl);
         })
         $(document).on('change', '#popup-tagMnger input[type=checkbox]', function(){
-            console.log(444)
+            // console.log(444)
             setTagMngChecked();
         });
 
@@ -307,7 +307,7 @@
     }
 
     function setTagMngChecked(){
-        console.log("$context.find('#popup-tagMnger').find('.btn-group button').length", $('#popup-tagMnger').find('.btn-group button').length)
+        // console.log("$context.find('#popup-tagMnger').find('.btn-group button').length", $('#popup-tagMnger').find('.btn-group button').length)
         $('#popup-tagMnger').find('.btn-group button').prop('disabled', false);
 
         setTagMngCount();
@@ -331,7 +331,7 @@
     function setTagMngOK(ajaxurl){
         lgkorUI.showLoading();
         
-        console.log("ajaxurl", ajaxurl)
+        // console.log("ajaxurl", ajaxurl)
 
         var sendata = {tag:[]}
         $('#popup-tagMnger').find('input[type=checkbox]:checked').each(function(idx, item){
@@ -342,7 +342,7 @@
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
             lgkorUI.hideLoading();
             
-            console.log("result", result)
+            // console.log("result", result)
 
             $('#popup-tagMnger').vcModal('close');
 
@@ -487,6 +487,8 @@
                             // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
                             $context.find('.tag-subscribe-story3').empty().show().append(list)
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                            // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
+                            $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
                         }
                     } else{
                         if(sectioname == "new_story"){

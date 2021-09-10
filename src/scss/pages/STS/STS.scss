@@ -80,20 +80,23 @@
         &.user_story { display:none; } /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
         &.new_story {
             border-top: 0;
-            margin-top:32px;
+            // margin-top:32px; //BTOCSITE-188 삭제 start
             /* 20210525 추가 */ 
             .inner {
                 //padding-top: 60px !important;
-                padding-top: 16px !important;
+                // padding-top: 16px !important; //BTOCSITE-188 삭제
                 .title { display:none; }   /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
             }
             /* //20210525 추가 */ 
+
+            //BTOCSITE-188 삭제 start
             @include mobile {
                 //margin-top: 16px !important;
-                margin-top: 0px !important;
+                // margin-top: 0px !important;
             }
+            //BTOCSITE-188 삭제 end
         }
-        border-top: 16px solid $color-bg;
+        // border-top: 16px solid $color-bg; //BTOCSITE-188 삭제
         padding-bottom: 120px;
         &:first-child { 
             border-top: 0;
