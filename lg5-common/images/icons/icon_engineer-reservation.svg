@@ -8,6 +8,6 @@
     <g id="ic" transform="translate(13 14)">
         <path id="Shape" class="cls-2" d="M31 38h-8a2 2 0 0 1-2-2v-4H2.5A2.5 2.5 0 0 1 0 29.5v-15A2.5 2.5 0 0 1 2.5 12H15a12 12 0 0 1 24 0h12.5a2.5 2.5 0 0 1 2.5 2.5v15a2.5 2.5 0 0 1-2.5 2.5H33v-4a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v4h12v4a2 2 0 0 1-2 2zM27 6a6.007 6.007 0 0 0-6 6h12a6.007 6.007 0 0 0-6-6z"/>
         <path id="Combined_Shape" data-name="Combined Shape" class="cls-2" d="M47.5 20h-45A2.5 2.5 0 0 1 0 17.5V0h19v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V0h19v17.5a2.5 2.5 0 0 1-2.5 2.5z" transform="translate(2 32)"/>
-        <rect id="Rectangle-2" data-name="Rectangle" width="12" height="12" rx="2" transform="translate(21 26)" style="stroke:#da0f47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px;fill:none"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="12" height="12" rx="2" transform="translate(21 26)" style="fill:#fff;stroke:#da0f47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px"/>
     </g>
 </svg>
