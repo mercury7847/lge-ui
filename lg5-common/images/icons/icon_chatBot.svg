@@ -1,0 +1,26 @@
+<svg id="img_floatingchat_40" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+    <defs>
+        <style>
+            .cls-1,.cls-5{fill:none}.cls-5{stroke-width:2.5px;stroke-linecap:round;stroke:#da0f47}.cls-6{fill:#da0f47}
+        </style>
+    </defs>
+    <g id="img_floatingchat_40-2" data-name="img_floatingchat_40">
+        <path id="Area" class="cls-1" d="M0 0h80v80H0z"/>
+        <g id="ic" transform="translate(8 15)">
+            <rect id="Rectangle" width="52.267" height="38.4" rx="4" style="stroke-width:2.5px;stroke:#000;stroke-miterlimit:10;fill:#fff"/>
+            <path id="Combined_Shape" data-name="Combined Shape" d="M22.4 38.4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h44.267a4 4 0 0 1 4 4v30.4a4 4 0 0 1-4 4H30.08l-7.68 6.4z" transform="translate(11.733 10.667)" style="stroke-linejoin:round;stroke-linecap:round;stroke-width:2.5px;stroke:#000;stroke-miterlimit:10;fill:#fff"/>
+            <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(24.533 22.4)" style="stroke:#da0f47;stroke-width:2.5px;fill:#fff">
+                <rect width="26.667" height="18.133" rx="8" style="stroke:none"/>
+                <rect class="cls-1" x="1.25" y="1.25" width="24.167" height="15.633" rx="6.75"/>
+            </g>
+            <g id="Group_5" data-name="Group 5" transform="translate(30.933 18.878)">
+                <path id="Path_1" data-name="Path 1" class="cls-5" d="M2480.948 900.7v4.267" transform="translate(-2480.948 -900.699)"/>
+                <path id="Path_2" data-name="Path 2" class="cls-5" d="M2480.948 900.7v4.267" transform="translate(-2467.082 -900.699)"/>
+            </g>
+            <g id="Group_2" data-name="Group 2" transform="translate(31.466 29.867)">
+                <circle id="Oval" class="cls-6" cx="1.6" cy="1.6" r="1.6"/>
+                <circle id="Oval-2" data-name="Oval" class="cls-6" cx="1.6" cy="1.6" r="1.6" transform="translate(9.6)"/>
+            </g>
+        </g>
+    </g>
+</svg>

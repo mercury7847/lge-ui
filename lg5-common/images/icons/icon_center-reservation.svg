@@ -1,27 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g>
-                            <g>
-                                <g>
-                                    <path d="M0 0H160V160H0z" transform="translate(-1274 -5866) translate(80 5140) translate(456 14) translate(2) translate(0 664) translate(736 48)"/>
-                                    <g stroke-linecap="round" stroke-linejoin="round" stroke-width="5" transform="translate(-1274 -5866) translate(80 5140) translate(456 14) translate(2) translate(0 664) translate(736 48) translate(22 30)">
-                                        <path stroke="#000" d="M72 28h39c2.761 0 5 2.239 5 5v71h0-44V28z"/>
-                                        <path stroke="#DA0F47" d="M29 72h14c2.761 0 5 2.239 5 5v27h0-24V77c0-2.761 2.239-5 5-5z"/>
-                                        <rect width="52" height="10" x="10" y="20" stroke="#000" rx="2"/>
-                                        <rect width="20" height="20" x="84" y="46" stroke="#000" rx="2"/>
-                                        <rect width="52" height="10" x="10" y="40" stroke="#000" rx="2"/>
-                                        <path stroke="#000" d="M5 0h62c2.761 0 5 2.239 5 5v99h0H0V5c0-2.761 2.239-5 5-5z"/>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_CS_center_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h80v80H0z"/>
+    <g id="ic" transform="translate(11 15)">
+        <path id="Rectangle-2" data-name="Rectangle" class="cls-2" d="M0 0h19.5A2.5 2.5 0 0 1 22 2.5V38h0H0h0V0h0z" transform="translate(36 14)"/>
+        <path id="Rectangle-3" data-name="Rectangle" d="M2.5 0h7A2.5 2.5 0 0 1 12 2.5V16h0H0h0V2.5A2.5 2.5 0 0 1 2.5 0z" transform="translate(12 36)" style="stroke:#da0f47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px;fill:none"/>
+        <rect id="Rectangle-4" data-name="Rectangle" class="cls-2" width="26" height="5" rx="1" transform="translate(5 10)"/>
+        <rect id="Rectangle-5" data-name="Rectangle" class="cls-2" width="10" height="10" rx="1" transform="translate(42 23)"/>
+        <rect id="Rectangle-6" data-name="Rectangle" class="cls-2" width="26" height="5" rx="1" transform="translate(5 20)"/>
+        <path id="Rectangle-7" data-name="Rectangle" class="cls-2" d="M2.5 0h31A2.5 2.5 0 0 1 36 2.5V52h0H0h0V2.5A2.5 2.5 0 0 1 2.5 0z"/>
     </g>
 </svg>
