@@ -4863,6 +4863,8 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
+            let doorInfo = [];
+            let saveInfo = []; 
             if (completedCheck() == false){
                 let desc = "";
                 let obj = {
@@ -4870,11 +4872,43 @@
                 };
                 lgkorUI.alert(desc, obj);
                 return;
-            }          
+            } else { 
+                //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
+                if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
+                    modelCheckdone();
+                    let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
+                    let idx = $this.index();
+                    let modelCate = $this.attr("data-model-cate");                        
+                    let defaultModel = $this.attr("data-model_code");
+                    let defaultPrice = $this.attr("data-model-price");
+                    let modelName = $this.find(".model_name").text();
+                    saveInfo.push(defaultModel);
+                    
+                    $this.find(".door_wrap .model_door").each(function() {
+                        let info = [];
+                        info.push($(this).attr("data-door-direction"));
+                        info.push($(this).attr("data-door-model_location"));
+                        info.push($(this).attr("data-door-model_spec_material"));
+                        info.push($(this).attr("data-door-model_spec_color"));
+                        info.push($(this).attr("data-door-price"));
+                        info.push($(this).attr("data-door-code"));
+                        info.push($(this).attr("data-door-text"));
+                        info.push($(this).attr("data-door-klocation"));
+                        doorInfo.push(info);
+                        let doorMix = $(this).attr("data-door-code") + "-" + $(this).attr("data-door-model_spec_material") + $(this).attr("data-door-model_spec_color");
+                        saveInfo.push(doorMix);
+                    });
+                }
+            }
 
             // S - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
-            let purchaseData = [];
+            let purchaseData = []; 
+            
+            //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
+            if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
+               purchaseData = saveInfo.slice();
+            }
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
@@ -4890,11 +4924,16 @@
                     } else {
                        $(this).attr("data-default-code");
                     }
-                    purchaseData.push($(this).attr("data-default-code"));
+
+                    //BTOCSITE-4239 210910 변경
+                    if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                     purchaseData.push($(this).attr("data-default-code"));
+                    }
+                    
+                    
                 }
             });
             // E - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
-            
             //console.log('selectedModelData', selectedModelData);
             //console.log('purchaseData', purchaseData);
 
@@ -4907,6 +4946,7 @@
                 selectedModelData = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             }
             // E - 210722 BTOCSITE-2346 추천제품 정보값 변경
+            
             for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
                 if (purchaseData[0] == proposeSet.proposeConfig[i].modelCode) {
                     purchaseData = [];
