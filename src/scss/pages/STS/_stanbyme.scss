@@ -1,71 +1,5 @@
 @import "../../support/form-field";
 
-// 스탠바이미 진입 링크
-.stanbyme-qna{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	padding:27px 20px;
-	border:1px solid #ddd;
-	border-radius:8px;
-	p{
-		position:relative;
-		padding-left:30px;
-		font-size:$font-medium;
-		font-weight:$font-weight-bold;
-		line-height:23px;
-		&:before{
-			position: absolute;
-			top:50%;
-			left:0;
-			width:24px;
-			height:24px;
-			background: url(/lg5-common/images/CPR/img_review_24.svg) 0 0 no-repeat;
-			background-size: 100% 100%;
-			transform:translateY(-50%);
-			content: '';
-		}
-		.mobile-only{
-			display:none;
-		}
-	}
-	.btn-link{
-		margin-left:14px;
-		line-height:1;
-		&:after{
-			top:calc(50% + 1px);
-			transform:translateY(-50%);
-		}
-	}
-	@include tablet {
-		flex-direction:column;
-		.btn-link{
-			margin:12px 0 0 0;
-		}
-	}
-	@include mobile {
-		p{
-			padding:48px 0 0 0;
-			font-size:$font-small;
-			line-height:22px;
-			text-align:center;
-			word-break:keep-all;
-			&:before{
-				top:0;
-				left:50%;
-				width:40px;
-				height:40px;
-				background: url(/lg5-common/images/CPR/img_review_80.svg) 0 0 no-repeat;
-				background-size: 100% 100%;
-				transform:translateX(-50%) translateY(0);
-			}
-			.mobile-only{
-				display:block;
-			}
-		}
-	}
-}
-
 
 .inner{
 	max-width:1460px;
@@ -204,7 +138,7 @@
 							left:0;
 							width:24px;
 							height:24px;
-							background: url(/lg5-common/images/CPR/ic_write_24.svg) 0 0 no-repeat;
+							background: url(/lg5-common/images/STS/ic_write_24.svg) 0 0 no-repeat;
 							background-size: 100% 100%;
 							content: '';
 						}
@@ -396,6 +330,14 @@
 			}
 		}
 	}
+	.form-wrap {
+		.input-wrap {
+			textarea:focus + .inner-text {
+				border-color: $color-primary ;
+			}
+		}
+	}
+
 	@include mobile{
 		margin-top:32px;
 		padding:0 16px;
@@ -661,7 +603,7 @@
 				left:0;
 				width:24px;
 				height:24px;
-				background: url(/lg5-common/images/CPR/icon-reply_24.svg) 0 0 no-repeat;
+				background: url(/lg5-common/images/STS/icon-reply_24.svg) 0 0 no-repeat;
 				background-size: 100% 100%;
 				content: '';
 			}
@@ -672,7 +614,7 @@
 				&:before{
 					width:20px;
 					height:20px;
-					background-image:url(/lg5-common/images/CPR/icon_reply_40.svg);
+					background-image:url(/lg5-common/images/STS/icon_reply_40.svg);
 				}
 				em {
 					font-weight: 700;
@@ -843,7 +785,7 @@
 				+ .inner-text{
 					width:auto;
 				}
-				&:focus + .txt-count-box, &:focus + .inner-text {
+				&:focus + .txt-count-box {
 					border-color: $color-primary ;
 				}
 				&.valid{
