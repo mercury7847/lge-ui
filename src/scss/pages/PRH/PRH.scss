@@ -204,6 +204,11 @@
             }
         }
     }
+    &.thinq-wrap  {
+        .tab-contents {
+            display: none; //BTOCSITE-2196
+        }
+    }
     .tab-contents {
         padding-top: 0;
     }
