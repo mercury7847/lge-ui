@@ -826,7 +826,8 @@ if ('scrollRestoration' in history) {
                     var $maxTextPro = searchedValue.substring(0, 20) + "...";
 
                     //검색한 검색어
-                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
+                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과'); //원본
+                    //self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
                     /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                     //원래입력된 기존 검색어 이동
@@ -839,14 +840,24 @@ if ('scrollRestoration' in history) {
                         // console.log($shortenTxt_1);
                         // console.log("---------------");
                         // console.log($shortenTxt_2);
-
-                        // self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
+                        
+                        //self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
                         self.$similarText.text('“' + $shortenTxt_1 + ' ~ '+ $shortenTxt_2 +'” 검색 결과로 이동').attr('href','#'+inputValue);
                         self.$searchSimilar.show();
-                        
+
+                        if(searchedValue.length < 20) {
+                            self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
+                        } else {
+                            self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
+                        }
                     } else {
                         self.$searchSimilar.hide();
                     }
+
+                    // console.log("--------------");
+                    // console.log(searchedValue.length);
+                    // console.log("--------------");
+                    // console.log(inputValue);
                     /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                     //연관 검색어 리스트 갱신

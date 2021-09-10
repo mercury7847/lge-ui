@@ -402,6 +402,7 @@
             color: $color-default;
             .word {
                 color: $color-primary;
+                word-break: break-all;
             }
         }
     }
