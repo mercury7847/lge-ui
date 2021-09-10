@@ -371,7 +371,7 @@
                             console.log("count %o %o",d.dataCount,typeof d.dataCount);
 
                             self.$pagination.vcPagination('setPageInfo', page);                            
-                            if(!self.$pagination.is(':visible') && d.dataCount !== 0) self.$pagination.show();
+                            if(d.dataCount !== 0) self.$pagination.show();
                             else  self.$pagination.hide();
 
                             self.bindEvent();
