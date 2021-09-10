@@ -1,4 +1,4 @@
-body {
+html {
     @include mobile {
         overflow-x:hidden; //BTOCSITE 1814건 결함 수정
     }
