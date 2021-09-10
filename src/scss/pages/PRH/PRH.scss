@@ -207,6 +207,9 @@
     &.thinq-wrap  {
         .tab-contents {
             display: none; //BTOCSITE-2196
+            &:first-child {
+                display: block;
+            }
         }
     }
     .tab-contents {
