@@ -1001,7 +1001,9 @@
                 actualUserName: data.userInfo.actualUser.name,
                 actualUserPhone: data.userInfo.actualUser.phoneNumber,
                 actualUserTelephone: data.userInfo.actualUser.telephoneNumber,
-                actualUserAdress: data.userInfo.actualUser.adress
+                rcvPostCode: data.userInfo.actualUser.rcvPostCode,
+                rcvBasAddr: data.userInfo.actualUser.rcvBasAddr,
+                rcvDtlAddr: data.userInfo.actualUser.rcvDtlAddr
             }
             userInfoValidation.setValues(userInfo);
     
@@ -1098,6 +1100,33 @@
     document.addEventListener('DOMContentLoaded', function () {
         init();
     });
+
+    /* BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
+    $(function () {
+        var addressFinder = new AddressFind();
+
+        $('#addrBtn').on('click', function(e){
+            addressFinder.open(function(data){
+                $('input[name=rcvPostCode]').val(data.zonecode);
+                $('input[name=rcvBasAddr]').val(data.roadAddress);
+                
+                // 상세정보로 포커스 이동
+                $('input[name=rcvDtlAddr]').focus();
+                $('input[name=rcvDtlAddr]').val('');
+            });
+        });
+    });
+    /* //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
 })();
 
-
+// BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+$(document).ready(function(){
+    var managerInfo = new RegExp('[\?&]managerInfo([^&#]*)').exec(window.location.href);
+    if(managerInfo){        
+        var managerInfoPosition = document.querySelector(".manager-info").offsetTop;
+        setTimeout(function () {            
+            window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
+        }, 2000);
+    };
+});
+// BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
