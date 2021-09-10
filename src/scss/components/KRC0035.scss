@@ -84,6 +84,19 @@
 		}
 	}
 
+	/* BTOCSITE-4492 */
+	&.m-hdline-top{
+		@include mobile{
+			.inner{
+				flex-direction:column-reverse;
+				.text-wrap{
+					margin:0 0 28px 0;
+				}
+			}
+		}
+	}
+	/* //BTOCSITE-4492 */
+
 	.inner {
         display:table;
         table-layout:fixed;

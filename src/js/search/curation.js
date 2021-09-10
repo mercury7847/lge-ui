@@ -137,7 +137,7 @@ var Curation = (function() {
                     if($findLi.length < 1) {
                         self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                        self.$smartFilterResult.show();
+                        // self.$smartFilterResult.show();
                     }
                 } else {
                     self.removeSelectSmartFilterResult(param.filterValueId);
@@ -161,10 +161,16 @@ var Curation = (function() {
                 e.preventDefault();
                 self.$smartFilterResult.find('li[data-filter-value-id]').remove();
                 self.$smartFilterList.find('input[data-filter-id]').prop('checked',false);
-                self.$smartFilterResult.hide();
+                // self.$smartFilterResult.hide();
 
 
-                // BTOCSITE-1716
+                // BTOCSITE-1716 
+                if($('.lay-filter').hasClass('smart-type')) {
+                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
+                }
+
+
+                // BTOCSITE-1716 
                 if($('.lay-filter').hasClass('smart-type')) {
                     $('.lay-filter.smart-type').find('div.btn-reset button').show();
                 }
@@ -226,7 +232,7 @@ var Curation = (function() {
                 self.$curation.hide();
             }
 
-            var smartFilterData = data.smartFilterList;
+            var smartFilterData = data.smartFilterList.data;
             if(smartFilterData && smartFilterData.length > 0) {
                 var isOpen = self.$smartFilterList.data('open');
                 var $list_ul = self.$smartFilterList.find('ul.default');
@@ -251,11 +257,10 @@ var Curation = (function() {
                         parent.addClass('unfold');
                     }
                 });
-                // BTOCSITE-1716
+
                 // self.$smartFilterList.show();
             } else {
                 self.removeSelectSmartFilter();
-                // BTOCSITE-1716
                 // self.$smartFilterList.hide();
             }
 
@@ -267,7 +272,7 @@ var Curation = (function() {
             var $list_ul = self.$smartFilterResult.find('ul.rounded-list');
             $list_ul.empty();
 
-            self.$smartFilterResult.hide();
+            // self.$smartFilterResult.hide();
         },
 
         removeSelectSmartFilterResult: function(filterValueId) {
@@ -280,9 +285,9 @@ var Curation = (function() {
 
                     self.$smartFilterList.find("input[value='"+filterValueId+"']").prop('checked',false);
                     
-                    if(self.$smartFilterResult.find('ul.rounded-list > li').length < 1) {
-                        self.$smartFilterResult.hide();
-                    }
+                    // if(self.$smartFilterResult.find('ul.rounded-list > li').length < 1) {
+                    //     self.$smartFilterResult.hide();
+                    // }
                 }
             }
         },
@@ -296,7 +301,7 @@ var Curation = (function() {
             if($findLi.length < 1) {
                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                 self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                self.$smartFilterResult.show();
+                // self.$smartFilterResult.show();
 
                 // BTOCSITE-1716
                 if($('.lay-filter').hasClass('smart-type')) {
@@ -382,7 +387,7 @@ var Curation = (function() {
                                 var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                                 if($findLi.length < 1) {
                                     self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                    self.$smartFilterResult.show();
+                                    // self.$smartFilterResult.show();
 
                                     // BTOCSITE-1716
                                     if($('.lay-filter').hasClass('smart-type')) {
@@ -413,7 +418,7 @@ var Curation = (function() {
                             var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                             if($findLi.length < 1) {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                self.$smartFilterResult.show();
+                                // self.$smartFilterResult.show();
 
                                 // BTOCSITE-1716
                                 if($('.lay-filter').hasClass('smart-type')) {

@@ -430,3 +430,37 @@
         }
     }
 }
+
+// BTOCSITE-3276
+.compare-result-table{
+    table {
+        width:100%; 
+        table-layout: fixed;
+        tbody {
+            tr {
+                td {
+                    width: 33.333333%;
+                    padding: 0 24px 36px;
+                    vertical-align: top;
+                    @include mobile{
+                        width:50%;
+                        padding: 0 10px 36px;
+                        &:nth-child(3){
+                            display: none;
+                        }
+                    }
+                }
+                &:last-child {
+                    td {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+        colgroup {
+            @include mobile{
+                display: none;
+            }
+        }
+    }
+}

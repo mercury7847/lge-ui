@@ -364,7 +364,6 @@ var goAppUrl = function(path) {
             self._switchLinker();
             
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
-            
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -765,7 +764,7 @@ var goAppUrl = function(path) {
 
                 // BTOCSITE-3536
                 /**
-                 *   a 태그에 js-link 클래스 추가하여 사용하세요
+                 *   a 태그 속성에 data-go-url 추가하여 사용하세요
                  *  - 모바일 브라우져 동작시 target 설정값이 '_blank' => window.open '_self' 이거나 미설정시 => location.href 이동
                  *  - 아래 옵션은 app 일경우만 동작 입니다.
                  *  - 옵션 : data-open-mode
@@ -773,56 +772,14 @@ var goAppUrl = function(path) {
                  *      inAppBrowser : inAppBrowser 로 뛰움
                  *      outlink  : ios , android 외부 브라우저로 뛰움
                  *    <샘플>
-                 *    <a class="js-link"  data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
+                 *    <a data-go-url data-open-mode="outlink" href="https://www.lge.co.kr/story/user-guide/objetcollection-change-panel-guide">자세히 보기</a>
                  * 
                  */
-                $doc.off('click.jsLink').on('click.jsLink', '.js-link', function(e){
+                $doc.off('click.goUrl').on('click.goUrl', '[data-go-url]', function(e){
                     e.preventDefault();
-
-                    var href = this.getAttribute('href'),
-                        target = this.getAttribute('target'),
-                        data   = $(this).data(),
-                        openMode = data.openMode;
-
-                    if( isApp()) {
-                        switch(openMode) {
-                            case 'inAppBrowser' :
-                                alert('inAppBrowser');
-
-                                var url = lgkorUI.parseUrl(href),
-                                params = $.extend(url.searchParams.getAll(),{'openMode': openMode});
-                                href = href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
-    
-                                if(vcui.detect.isIOS){
-                                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': href, 'titlebar_show': 'Y'});
-                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                                } else {
-                                    android.openNewWebview(href);
-                                }
-                            break;
-
-                            case 'outlink' : 
-                                alert('oulink');
-                                if(vcui.detect.isIOS){
-                                    var jsonString = JSON.stringify({'command':'openLinkOut', 'url': href});
-                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                                } else {
-                                    android.openLinkOut(href);
-                                }
-                            break;
-                            default : 
-                                alert('앱에서 기본 동작');
-                                location.href = href;
-                            break;
-                        }
-                    } else {
-                        if(target === '_blank') {
-                            window.open(href);
-                        } else {
-                            location.href = href;
-                        }
-                    }                    
+                    lgkorUI.goUrl(this);             
                 });
+
                 $('.toast-message').remove();
                 $('body').append('<div class="toast-message"></div>');
                 $('.toast-message').vcToast();
@@ -933,10 +890,8 @@ var goAppUrl = function(path) {
                 }
             }
 
-            alert('_historyBack');
             // BTOCSITE-3536 앱이고 파라메타에 openInApp 있는경우 closeInAppBrowser 실행
             if(isApp() &&  lgkorUI.getParameterByName('openMode') === 'inAppBrowser') {
-                alert('isApp');
                 if(vcui.detect.isIOS){ 
                     var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
@@ -944,7 +899,6 @@ var goAppUrl = function(path) {
                      android.closeNewWebview(); 
                  }
             } else {
-                alert('앱 아닐때 닫기');
                 if(index < 0) location.href = "/";
                 else history.back();
             }
@@ -1654,6 +1608,11 @@ var goAppUrl = function(path) {
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
+
+
+                    if(callback && typeof callback === 'function') callback(result); 
+  
+                    
                     return;
                 }
 
@@ -2100,12 +2059,9 @@ var goAppUrl = function(path) {
 
 
         getParameterByName: function(name) {
-            alert(name);
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                    results = regex.exec(location.search);
-
-                    alert(results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")))
+                results = regex.exec(location.search);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
 
@@ -2535,6 +2491,64 @@ var goAppUrl = function(path) {
 
             return nowTime >= startTime && nowTime < endTime ? true : false;
         },
+
+        /**
+         * goUrl 함수 : 링크 처리하는 함수 
+         * 파라메타는 HTMLElement 또는 Object 
+         * @param { HTMLElement } obj 
+         * @param { href : '' , target:'', openMode : '' } obj 
+         * 
+         */
+         goUrl: function(obj) {
+
+            if(!obj || !obj instanceof Object) var obj = {};
+
+            if(obj instanceof HTMLElement) {
+                obj = $(obj).data();
+            } 
+
+            obj   = $.extend( { href : '',target : '',openMode : '' } , obj );
+
+            if(obj.href) {
+                if(isApp()) {
+                    // 앱 케이스
+                    switch(obj.openMode) {
+                        case 'inAppBrowser' :
+
+                            var url = lgkorUI.parseUrl(obj.href),
+                                params = $.extend(url.searchParams.getAll(),{'openMode': obj.openMode});
+                                obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
+    
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'Y'});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openNewWebview(obj.href);
+                            }
+                        break;
+    
+                        case 'outlink' : 
+                            if(vcui.detect.isIOS){
+                                var jsonString = JSON.stringify({'command':'openLinkOut', 'url': obj.href});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                android.openLinkOut(obj.href);
+                            }
+                        break;
+                        default : 
+                            location.href = obj.href;
+                        break;
+                    }
+                } else {
+                    // 일반 브라우져
+                    if(obj.target === '_blank') {
+                        window.open(obj.href);
+                    } else {
+                        location.href = obj.href;
+                    }
+                }     
+            }
+        }
     }
 
     window.historyBack = lgkorUI._historyBack;

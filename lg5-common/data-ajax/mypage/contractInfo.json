@@ -16,7 +16,10 @@
                 "phoneNumber": "01034569999",
                 "telephoneNumber": "01023445657",
                 "email": "lgkor@lge.com",
-                "adress": "214565 서울특별시 엘지구 엘지로 엘지동 348-12"
+                "adress": "214565 서울특별시 엘지구 엘지로 엘지동 348-12",
+                "rcvPostCode": "214565",
+                "rcvBasAddr": "서울특별시 엘지구 엘지로 엘지동",
+                "rcvDtlAddr": "348-12"
             }
         },
         "contractInfo": {

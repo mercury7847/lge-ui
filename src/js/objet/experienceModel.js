@@ -882,6 +882,7 @@
                         ]
                     }]
                 },
+                //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 210902 - START
                 {
                     name: "김치냉장고",
                     id: "refrigerator_kimchi",
@@ -891,6 +892,12 @@
                     defaultPrice: "0",
                     memberDiscount: "0",
                     directDiscount: "0",
+	                subModel: [{
+                            modelCode: "Z331AAA151",
+                            defaultPrice: "0",
+                            memberDiscount: "0",
+                            directDiscount: "0",
+                    }],
                     door: {
                         count: 3,
                         door1: {
@@ -1017,7 +1024,7 @@
                         }
                     }]
 
-                },
+                },//BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 210902 - END
                 {
                     name: "컨버터블",
                     id: "refrigerator_convertible",
@@ -2274,6 +2281,41 @@
                 door4: "",
             }, {
                 defaultCode: "Z330AAA151",
+                modelCode: "Z330FSS151S",
+                door1: "K330TT-FSD",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FBB151S",
+                door1: "K330TT-FBT",
+                door2: "K330MM-FBT",
+                door3: "K330BB-FBT",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FTT151S",
+                door1: "K330TT-FST",
+                door2: "K330MM-FST",
+                door3: "K330BB-FST",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FTS151",
+                door1: "K330TT-FST",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330FBS151S",
+                door1: "K330TT-FBT",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
                 modelCode: "Z330FBT151S",
                 door1: "K330TT-FBT",
                 door2: "K330MM-FST",
@@ -2443,6 +2485,69 @@
             }, {
                 defaultCode: "Z330AAA151",
                 modelCode: "Z330MBG151",
+                door1: "K330TT-MBK",
+                door2: "K330MM-MGY",
+                door3: "K330BB-MGY",
+                door4: "",
+            }, {
+                defaultCode: "Z330AAA151",
+                modelCode: "Z330GRC151S",
+                door1: "K330TT-GRD",
+                door2: "K330MM-GCL",
+                door3: "K330BB-GCL",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331FTS151",
+                door1: "K330TT-FST",
+                door2: "K330MM-FSD",
+                door3: "K330BB-FSD",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SGS151",
+                door1: "K330TT-SGR",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            }, {
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SMS151",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SSV",
+                door3: "K330BB-SSV",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331SMM151S",
+                door1: "K330TT-SMT",
+                door2: "K330MM-SMT",
+                door3: "K330BB-SMT",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GPB151",
+                door1: "K330TT-GPK",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GBB151",
+                door1: "K330TT-GBE",
+                door2: "K330MM-GBE",
+                door3: "K330BB-GBE",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331GRC151",
+                door1: "K330TT-GRD",
+                door2: "K330MM-GCL",
+                door3: "K330BB-GCL",
+                door4: "",
+            },{
+                defaultCode: "Z331AAA151",
+                modelCode: "Z331MBG151",
                 door1: "K330TT-MBK",
                 door2: "K330MM-MGY",
                 door3: "K330BB-MGY",
@@ -5444,7 +5549,7 @@
                     if (configData.modelConfig[0].refrigeratorType[i].typ == modelCate2) {
                         let typModelLeng = refrigeratorTypeLeng = configData.modelConfig[0].refrigeratorType[i].typModel.length;
                         for (let j = 0; j < typModelLeng; j++) {
-                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode) {
+                            if (configData.modelConfig[0].refrigeratorType[i].typModel[j].defaultCode == modelCode || (configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != "undefined" && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel != undefined && configData.modelConfig[0].refrigeratorType[i].typModel[j].subModel[0].modelCode == modelCode)) { //BTOCSITE-4239 210909 추가 - 2번째 모델이 있을 경우, 2번째모델 선택시 dfaultModel과 modelCode 달라서 해당 컬러칩영역 노출 안되는 문제 발생 -> 조건 추가함(서브모델과 현재 modelCode 비교 조건) 
                                 let doorMaterialLeng = configData.modelConfig[0].refrigeratorType[i].typModel[j].doorColorData.length;
                                 let _door;
                                 let _doorFrontCode;
@@ -5797,39 +5902,60 @@
                     }
                 }
             } else if (modelCate1 == "refrigerator_kimchi") {
-                let refrigeratorType = configData.modelConfig[1].defaultCode;
-                let mainPrice = configData.modelConfig[1].defaultPrice;
-                modelPriceArry.push(refrigeratorType);
-                tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
-                tblHtml += '    <table>';
-                tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
-                tblHtml += '        <colgroup>';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '            <col style="width:50%">';
-                tblHtml += '        </colgroup>';
-                tblHtml += '        <thead>';
-                tblHtml += '            <tr>';
-                tblHtml += '                <th scope="col">모델명</th>';
-                tblHtml += '                <th scope="col">가격</th>';
-                tblHtml += '            </tr>';
-                tblHtml += '        </thead>';
-                tblHtml += '        <tbody>';
-                // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시 )
-                if ($objContent.attr('data-page-type') === 'COMMON'){
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td><span></span>원</td>';
-                tblHtml += '</tr>';
-                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
-                tblHtml += '<tr class="is_active">';
-                tblHtml += '    <td><span>' + refrigeratorType + '</span></td>';
-                tblHtml += '    <td style="text-align:center;">-</td>';
-                tblHtml += '</tr>';
-                }
-                // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
-                tblHtml += '        </tbody>';
-                tblHtml += '    </table>';
-                tblHtml += '</div>';
+                let _typModel = configData.modelConfig[1];
+                    if (_typModel.defaultCode == modelCode) {
+                        let mainPrice = _typModel.defaultPrice;
+                        modelPriceArry.push(modelCode);
+                        tblHtml += '<div class="tb_row tb_compare" style="visibility:hidden">';
+                        tblHtml += '    <table>';
+                        tblHtml += '        <caption>기능과 가격을 비교하여 모델 안내</caption>';
+                        tblHtml += '        <colgroup>';
+                        tblHtml += '            <col style="width:50%">';
+                        tblHtml += '            <col style="width:50%">';
+                        tblHtml += '        </colgroup>';
+                        tblHtml += '        <thead>';
+                        tblHtml += '            <tr>';
+                        tblHtml += '                <th scope="col">모델명</th>';
+                        tblHtml += '                <th scope="col">가격</th>';
+                        tblHtml += '            </tr>';
+                        tblHtml += '        </thead>';
+                        tblHtml += '        <tbody>';
+                        // S - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        if ($objContent.attr('data-page-type') === 'COMMON'){
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td><span></span>원</td>';
+                        tblHtml += '</tr>';
+                        } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                        tblHtml += '<tr class="is_active">';
+                        tblHtml += '    <td><span>' + modelCode + '</span></td>';
+                        tblHtml += '    <td style="text-align:center;">-</td>';
+                        tblHtml += '</tr>';
+                        }
+                        // E - 210722 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 "-" 표시)
+                        if (_typModel.subModel != undefined && _typModel.subModel != "") {
+                            let _subModel = _typModel.subModel;
+                            for (let k = 0; k < _subModel.length; k++) {
+                                let subCode = _subModel[k].modelCode;
+                                let subPrice = _subModel[k].defaultPrice;
+                                modelPriceArry.push(subCode);
+                                tblHtml += '<tr>';
+                                tblHtml += '    <td><span>' + subCode + '</span></td>';
+                                // S - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                if ($objContent.attr('data-page-type') === 'COMMON'){
+                                tblHtml += '    <td><span></span>원</td>';
+                                } else if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'  || $objContent.attr('data-page-type') === 'ETLAND') { //210805 BTOCSITE-3487
+                                tblHtml += '    <td style="text-align:center;">-</td>';
+                                }
+                                // E - 210719 BTOCSITE-2346 data-page-type == "common" 일때만 가격 노출되도록 수정(newbest,himart에선 미노출)
+                                tblHtml += '</tr>';
+                            }
+                        }
+                        tblHtml += '        </tbody>';
+                        tblHtml += '    </table>';
+                        tblHtml += '</div>';
+                    }
+                
             } else if (modelCate1 == "refrigerator_convertible") {
                 let _typModel = configData.modelConfig[2].typModel;
                 for (let i = 0; i < _typModel.length; i++) {
@@ -5896,6 +6022,7 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
+            let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : location.protocol+'//'+location.host; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             
             priceArry.push(defaultModel);                            
@@ -5905,7 +6032,7 @@
             priceHtml += '      <dt>' + modelName + '</dt>';
             priceHtml += '      <div class="panel_guide">';
             priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
-            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link js-link"  data-open-mode="outlink" href="https://wwwstg.lge.co.kr/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
+            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" data-go-url data-open-mode="outlink" data-target="_blank" data-href="'+domain+'/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';
             priceHtml += '      </div>';
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';

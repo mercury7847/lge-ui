@@ -1451,3 +1451,17 @@ br.pc-only {
         //transform:translateX(-50%);
     }
 }
+
+//BTOCSITE-1967
+.is-web-status-bar {
+    $statusBarHeight: 70px;
+    .care-plan {
+        .default-bottom-wrap,
+        .prd-select-wrap {
+            bottom:(0 + $statusBarHeight);
+            .inner .total-info {
+                bottom:(0 + $statusBarHeight);
+            }
+        }
+    }
+}

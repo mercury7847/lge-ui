@@ -34,7 +34,12 @@
 	top: auto;
 	overflow: hidden;
 }
-
+//BTOCISTE-3019
+.pop-conts {
+	@include mobile {
+		overflow-x: hidden;
+	}
+}
 /*
 .tit-area {
 	position: relative;

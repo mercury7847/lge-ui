@@ -798,22 +798,23 @@
             display: block;
         }
     }
-    
+    // 회사소개 START
 	&.company-list {
-        .item {
-            min-height: 142px!important;
-            @include mobile {
-                min-height: auto!important;
-            }
-            .result-info {
-                .info-text {
-                    @include mobile {
-                        padding-left:0
+		.item {
+			min-height: 142px!important;
+			@include mobile {
+				min-height: auto!important;
+			}
+			.result-info {
+				.info-text {
+					@include mobile {
+						padding-left:0
 					}
 				}
-            }
-        }
-    }
+			}
+		}
+	}
+    // 회사소개 END
 }
 
 

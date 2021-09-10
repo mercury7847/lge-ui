@@ -61,91 +61,12 @@
                     </div> 
                 </div>
 
-                <!-- -S- BTOCSITE-2153 210705 오브제컬렉션 제품 상세 아이프레임 수정 -->
-                <!-- <div class="iframe-wrap">
-                    <div class="iframe-area">
-                        <iframe id="pdpIframeContent" src="/refrigerators/w821sgs453?dpType=overViewNoSpec" class="pdp-wrap" scrolling="yes" frameborder="0" style="position:absolute; width:100%; top:0; left:0; height:100%;">
-                    </div>
+                <!-- BTOCSITE-1867 210902 오브제컬렉션 소재 설명 변경 요청 -->
+                <div class="uspImg-wrap">
+                    <img class="only_pc" src="/lg5-common/images/OBJ/main/waterPurifiers.jpg" alt="정수기 제품 이미지">
+                    <img class="only_mobile" src="/lg5-common/images/OBJ/main/waterPurifiers_m.jpg" alt="정수기 제품 이미지">
                 </div>
-
-                <script>
-
-                    (function() {
-                        if(!parent.document.location.href.match('/lg-objet-collection')) $('.banner-wrap_obj').hide();
-                    })();
-                    
-                </script> -->
-                <div class="objet-pdp-area" data-pdp-url="/water-purifiers/wd503acb?dpType=overViewNoSpec"></div>
-
-                <script>
-                    (function() {
-                        var OBJETPDP = {
-                            init: function(){
-                                var self = this;
-                                    self.$objetPdpArea = $('.objet-pdp-area');
-                                    self.load();
-                            },
-                            load: function() {
-                                var self = this;
-                                var href = self.$objetPdpArea.data('pdpUrl');
-                                $.ajax({
-                                    method: 'GET',
-                                    url : href,
-                                    dataType : 'html',
-                                    success : function( html ){
-                                        self.$objetPdpArea.hide();
-                                        var tmp = '',content = '', script = [], link = [];
-                                            tmp = $('<div style="display:none;">').append(html);
-                                            tmp.find('script[src],link[href]').each(function(){
-                                                switch(this.tagName.toLowerCase()) {
-                                                    case "link" :  
-                                                        if(this.href.indexOf('/lg5-common/css/components/') !== -1) {
-                                                            link.push($(this));
-                                                        }
-                                                    break;
-                                                    case "script" :  
-                                                        if(this.src.indexOf('/lg5-common/js/components/') !== -1) {
-                                                            script.push($(this));
-                                                        }
-                                                    break;
-                                                }
-                                            });
-
-                                            self.$objetPdpArea.append(link)
-                                                            .append(tmp.find('.iw_viewport-wrapper'))
-                                                            .append(script);
-                                            tmp = null;
-                                    },
-                                    error : function(error){
-                                        self.$objetPdpArea.hide();
-                                        console.log('PDP CONTENT LOAD ERROR %o', error);
-                                    },
-                                    complete: function(){
-                                        setTimeout(function() {
-                                                self.$objetPdpArea.show();
-                                                vcui.require([ 
-                                                        'ui/lazyLoaderSwitch',
-                                                        'ui/lazyLoader'
-                                                    ], 
-                                                    function() {
-                                                        $('body').vcLazyLoaderSwitch('reload', self.$objetPdpArea);
-                                                        // self.$objetPdpArea.vcLazyLoaderSwitch();
-                                                        self.$objetPdpArea.vcLazyLoader({
-                                                            range : 100
-                                                        });
-                                                });
-                                            },100);
-                                    }
-                                });
-                            }
-                        };
-
-                        $(document).ready(function(){
-                            OBJETPDP.init();
-                        });
-                    })();
-                </script>
-                <!-- -E- //BTOCSITE-2153 210705 오브제컬렉션 제품 상세 아이프레임 수정 -->
+                <!-- //BTOCSITE-1867 210902 오브제컬렉션 소재 설명 변경 요청 -->
                     
                 <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 상세 : 기존컨텐츠 삭제 / I-frame USP url 호출-->
 

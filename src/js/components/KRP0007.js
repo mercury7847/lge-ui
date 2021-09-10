@@ -978,7 +978,7 @@
                             curValue = "케어솔루션"
                             break;
                         case "DISPOSABLE": 
-                            curValue = "케어용품/소모품"
+                            curValue = "소모품" //BTOCSITE-1683 : 영역별 데이터레이어 내 model_gubun 값 추가 요청 2021-09-02
                             break;                            
                     }
                     return curValue;
@@ -1003,7 +1003,8 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
-                item.isShow = lgkorUI.isShowDate('20210601','20210901')
+                /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
+                item.isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
                 
                 return vcui.template(productItemTemplate, item);
             },

@@ -666,7 +666,7 @@ $(function () {
             /* //BTOCSITE-2148:pc메인 페이지 수정 2021-07-23 */
 
             if (index === 0) {
-                videoAttr += " preload='auto'";
+                videoAttr += " poster='" + posterSrc + "' preload='auto'";
             } else if(posterSrc) {
                 videoAttr += " poster='" + posterSrc + "' preload='metadata'";
             } else {

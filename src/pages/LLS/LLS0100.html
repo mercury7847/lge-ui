@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="app">
 @@include('./common/head.html', { 
     pageCSS: ["LLS/LLS"],
     pageJS: ["libs/slick", "home/livecommerce"],
@@ -33,7 +33,9 @@
                                 <!-- mo 이미지 -->
                                 <span class="hero-item-bg only-mo" style='background-image:url(/lg5-common/images/LLS/img-lls-hero-default-m.jpg)' aria-hidden="true"></span>
                                 <div class="hero-item-content">
-                                    <strong class="hero-item-title"><span class="only-pc">엘라쇼 </span>라이브로 즐기는 <br>LGE.COM</strong>
+                                    <!-- 2021-09-03 디폴트 문구 -->
+                                    <strong class="hero-item-title">엘<span class="shadow-text">LGE</span> 라<span class="shadow-text">LIVE</span> SHOW <br>라이브로 즐기는 <br class="only-pc">LGE.COM</strong>
+                                    <!-- //2021-09-03 디폴트 문구 -->
                                 </div>
                             </div>
                         </div>
@@ -101,7 +103,7 @@
                 <div class="lls-push">
                     <div class="push-inner">
                         <strong class="push-title">라이브 소식을 미리 받아보세요!</strong>
-                        <a href="#" class="btn-lls-push"><span>알림받기</span></a>
+                        <a href="#" class="btn-lls-push"><span>푸시알림받기</span></a>
                     </div>
                 </div>
                 <!-- //알림받기 -->
