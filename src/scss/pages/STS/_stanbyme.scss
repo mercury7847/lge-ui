@@ -330,6 +330,14 @@
 			}
 		}
 	}
+	.form-wrap {
+		.input-wrap {
+			textarea:focus + .inner-text {
+				border-color: $color-primary ;
+			}
+		}
+	}
+
 	@include mobile{
 		margin-top:32px;
 		padding:0 16px;
@@ -777,7 +785,7 @@
 				+ .inner-text{
 					width:auto;
 				}
-				&:focus + .txt-count-box, &:focus + .inner-text {
+				&:focus + .txt-count-box {
 					border-color: $color-primary ;
 				}
 				&.valid{
