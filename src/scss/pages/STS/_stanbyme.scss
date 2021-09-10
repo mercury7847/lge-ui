@@ -813,6 +813,7 @@
 					} 
 				}
 				&::placeholder {
+					white-space: pre-line;
 					color: #666 !important;
 					font-size:14px !important;
 					@include mobile{
@@ -820,9 +821,20 @@
 						line-height: 20px;
 					}
 				}
+				&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+					white-space: pre-line;
+					color: #666 !important;
+					font-size:14px !important;
+					@include mobile{
+						font-size:13px !important;
+						line-height: 20px;
+					}
+				}
+
 				&:-ms-input-placeholder {
-				color: #666 !important;
-				font-size:14px !important;
+					white-space: pre-line;
+					color: #666 !important;
+					font-size:14px !important;
 					@include mobile{
 						font-size:13px !important;
 						line-height: 20px;
