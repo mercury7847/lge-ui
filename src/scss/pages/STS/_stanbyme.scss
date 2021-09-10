@@ -290,6 +290,16 @@
 	.component-inner{
 		margin-top:22px;
 	}
+
+	// 리스트에 데이터 없는 케이스
+	.result-wrap.no-data {
+		.bullet-list {
+			&.top-border {
+				margin-top:0;
+				padding-top:24px;
+			}
+		}
+	}
 }
 
 // register, modify
