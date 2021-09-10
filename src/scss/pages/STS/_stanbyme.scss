@@ -843,7 +843,7 @@
 				+ .inner-text{
 					width:auto;
 				}
-				&:focus + .txt-count-box {
+				&:focus + .txt-count-box, &:focus + .inner-text {
 					border-color: $color-primary ;
 				}
 				&.valid{
