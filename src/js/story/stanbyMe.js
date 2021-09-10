@@ -203,6 +203,9 @@
                 var self = this,
                     $contents = $('.contents.stanbyme');
 
+                    self.$tab = $('.ui_tab');
+                    self.tabList = ['#prod1','#prod2'];
+
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
                         self.$pagination = $contents.find('.pagination').vcPagination({scrollTop : 'noUse' });
@@ -218,6 +221,24 @@
                         };
 
                         self.bindEvent();
+
+                        //  Q&A 탭으로 이동
+                        self.$tab.on('tabchange', function(e, data) {
+                            e.preventDefault();
+                            location.hash = self.tabList[data.selectedIndex];
+                        })
+
+                        $(window).on('hashchange', function () {
+                            if(location.hash) {
+                                self.$tab.vcTab('select', self.tabList.indexOf(location.hash));
+                            }
+                        });
+
+                        if(!location.hash) { location.hash = self.tabList[0]; }
+                        if(location.hash === '#prod2') {
+                            $(window).trigger('hashchange');
+                        }
+
                     });
 
             },
@@ -603,6 +624,7 @@
         };
 
         if($('.contents.stanbyme .visual-wrap').length > 0){ // 리스트
+            console.log('sdfsdfsd');
             stanbymeList.init();
         }else if($('.contents.stanbyme .stanbyme-detail').length > 0){  // 상세 
             stanbymeCommentList.init();
