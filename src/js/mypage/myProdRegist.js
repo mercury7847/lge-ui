@@ -434,8 +434,6 @@
                     $('#inp02').attr('readonly','readonly');
                     $('.cell button').attr('disabled', true);
                     $('.btn-prod-reg').attr('disabled', true);
-                    $('.pop-sub-title h2').text('입력 정보');
-
                 } else {
                     $(this).addClass('active');
                     $('.btn-qrscan').removeClass('active');
@@ -445,7 +443,6 @@
                     $('#inp02').removeAttr('readonly');
                     $('.cell button').attr('disabled', false);
                     $('.btn-prod-reg').attr('disabled', false);
-                    $('.pop-sub-title h2').text('제품 정보');
                 }
             });
             //제품별 QR/모델명/제조번호 부착 위치 : 모델명/제조번호/바코드/OR코드 선택 버튼 
@@ -700,22 +697,14 @@
                     } else {
                         // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출
                         if(!checkModelSuccess && !checkSerialSuccess) {
-                            lgkorUI.confirm("<br>입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
-                                title: "이메일로 접수 하시겠습니까?",
+                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                                title: "",
                                 cancelBtnName: "취소",
-                                okBtnName: "접수하기",
+                                okBtnName: "이메일접수",
                                 ok: function(){
                                     location.href = "/support/email-inquiry/?emailReg";
                                 }
                             });
-                            // lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
-                            //     title: "",
-                            //     cancelBtnName: "취소",
-                            //     okBtnName: "이메일 접수하기",
-                            //     ok: function(){
-                            //         location.href = "/support/email-inquiry/?emailReg";
-                            //     }
-                            // });
                         }
 
                         //lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
