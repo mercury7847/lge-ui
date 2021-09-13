@@ -2,16 +2,18 @@
 
 // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
 $(document).ready(function(){
+    var managerInfoLink= 'managerInfoLink';
     if ($('.section-inner').hasClass('manager-info') == true) {
         if (lgkorUI.getStorage('managerInfoLink')){        
             var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
             setTimeout(function () {            
                 window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
                 console.log(lgkorUI.getStorage('managerInfoLink'));
-                 var managerInfoLink= 'managerInfoLink';
                  lgkorUI.removeStorage(managerInfoLink);
             }, 2000);
         };
+    } else {
+        lgkorUI.removeStorage(managerInfoLink);
     }
 });
 // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
