@@ -546,3 +546,12 @@ $(function(){
         */
     });    
 });
+
+// BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+$(document).ready(function(){
+    $(".btn-manager-info").on('click', function(e){
+        e.preventDefault();
+        console.log('test');
+    });
+});
+// BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
