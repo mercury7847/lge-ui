@@ -84,7 +84,7 @@
                             '<li>'+
                                 '<div class="tag">'+
                                     '<span class="text">#{{item.tagName}}</span>'+
-                                    '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}"><span>구독</span></button>'+
+                                    '<button type="button" class="btn gray size subscription-btn" data-mode="add" data-code="{{item.tagCode}}" data-name="{{item.tagName}}" data-contents="{{item.tagName}}"><span>구독</span></button>'+
                                 '</div>'+
                             '</li>'+  
                             '{{/each}}'+                      
