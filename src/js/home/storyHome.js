@@ -495,8 +495,8 @@
                             if( $story3.length) {
                                 $story3.empty().show().append(list)
                             } else {
-                                $context.find('.user_story').after('<div class="story-section tag-subscribe-story3"></div style="display:none">')
-                                $context.find('.user_story .tag-subscribe-story3').show().append(list)
+                                $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
+                                $context.find('.tag-subscribe-story3').show().append(list)
                             }
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                             // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
