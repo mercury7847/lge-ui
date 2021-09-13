@@ -249,11 +249,15 @@
                 $context.find('.new_story').show();
                 setRepositionTagBox($context.find('.new_story'));
             }
-        }).on('click', '.subscription-btn', function(e){
+        })
+        //BTOCISTE-188
+        $(document).on('click', '.story-section .subscription-btn', function(e){
             e.preventDefault();
             
             sendTagList(this);
-        }).on('click', '.tagmnger-btn', function(e){
+        })
+        //BTOCISTE-188
+        $(document).on('click', '.story-section .tagmnger-btn', function(e){
             e.preventDefault();
             
             requestTagMngPop(this);
@@ -483,10 +487,16 @@
                         if(viewMode == "listMode" && sectioname == "user_story"){
                             $context.find('.tag-subscribe-story').empty().hide();
 
+                            var $story3 = $context.find('.tag-subscribe-story3');
+
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                             // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
-                            $context.find('.tag-subscribe-story3').empty().show().append(list)
+                            if( $story3.length) {
+                                $story3.empty().show().append(list)
+                            } else {
+                                $context.find('.user_story').after('<div class="tag-subscribe-story3"></div style="display:none">').show().append(list)
+                            }
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                             // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
                             $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
