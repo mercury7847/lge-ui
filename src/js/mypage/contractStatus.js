@@ -1125,7 +1125,6 @@ $(document).ready(function(){
         var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
         setTimeout(function () {            
             window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
-            sessionStorage.removeItem('managerInfoLink');
         }, 2000);
     };
 });

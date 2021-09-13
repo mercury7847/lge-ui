@@ -549,6 +549,7 @@ $(function(){
 
 // BTOCSITE-2838 : 매니저 정보로 이동 s
 $(document).ready(function(){
+    sessionStorage.removeItem('managerInfoLink');
     $('.btn-manager-info').on('click', function(e){
         e.preventDefault();
         sessionStorage.setItem('managerInfoLink',true);
