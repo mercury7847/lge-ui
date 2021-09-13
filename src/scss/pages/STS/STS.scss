@@ -81,6 +81,10 @@
             display:none; 
             padding-top:80px; //BTOCSITE-188
 
+            .story-title-area {
+                display: none;//BTOCSITE-188
+            }
+
             @include mobile {
                 padding-top:40px; //BTOCSITE-188
             }
