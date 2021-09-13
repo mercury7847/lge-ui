@@ -49,8 +49,8 @@ var itemTmpl = '{{#each obj in list}}'+
 
 // BTOCSITE-2838 : 매니저 정보로 이동 s
 $(document).ready(function(){
-    var managerInfoLink= 'managerInfoLink';
-    lgkorUI.setStorage(managerInfoLink, false);
+        var managerInfoLink= 'managerInfoLink';
+        lgkorUI.setStorage(managerInfoLink, false);
     $('.btn-manager-info').on('click', function(e){
         e.preventDefault();
         lgkorUI.setStorage(managerInfoLink, true);
