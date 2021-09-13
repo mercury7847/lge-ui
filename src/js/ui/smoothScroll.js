@@ -248,7 +248,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                     width += $(this).outerWidth(true);
                 }
             });
-            self.$scroller.css('width', width + paddingWidth);
+            self.$scroller.css('width', width + paddingWidth + 1); //BTOCSITE-188 (소수점때문에 1픽셀 추가)
         },
 
         _activateButtons: function _activateButtons() {
