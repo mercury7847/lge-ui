@@ -7,7 +7,7 @@ $(document).ready(function(){
             var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
             setTimeout(function () {            
                 window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
-                console.log(gkorUI.getStorage('managerInfoLink'));
+                console.log(lgkorUI.getStorage('managerInfoLink'));
                  var managerInfoLink= 'managerInfoLink';
                  lgkorUI.removeStorage(managerInfoLink);
             }, 2000);
