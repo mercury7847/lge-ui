@@ -76,25 +76,7 @@
                 $('#iostxt').show();
             }
 
-            // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
-            var managerInfoLink= 'managerInfoLink';
-            if ($('.section-inner').hasClass('manager-info') == true) {
-                if (lgkorUI.getStorage('managerInfoLink')){        
-                    var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
-                    window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
-                    console.log(lgkorUI.getStorage('managerInfoLink'));
-                    lgkorUI.removeStorage(managerInfoLink);
-                    // setTimeout(function () {            
-                    //     window.scrollTo({top:managerInfoPosition + 30, behavior:'smooth'});
-                    //     console.log(lgkorUI.getStorage('managerInfoLink'));
-                    //     lgkorUI.removeStorage(managerInfoLink);
-                    // }, 2000);
-                };
-            } else {
-                lgkorUI.removeStorage(managerInfoLink);
-            }
-            // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
-
+   
         });
         
     }
@@ -1103,8 +1085,20 @@
                         setRequestCard();
                     }, 100);
                 });
-            } else{
-                $('html, body').animate({scrollTop:0}, 220);
+            } else {
+                // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+                var managerInfoLink= 'managerInfoLink';
+                if ($('.section-inner').hasClass('manager-info') == true) {
+                    if (lgkorUI.getStorage('managerInfoLink')){        
+                        var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
+                        $('html, body').animate({scrollTop:managerInfoPosition + 30}, 0);
+                        lgkorUI.removeStorage(managerInfoLink);
+                    };
+                } else {
+                    lgkorUI.removeStorage(managerInfoLink);
+                    $('html, body').animate({scrollTop:0}, 220);
+                }
+                // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
             }
         }, ajaxMethod);
     }
