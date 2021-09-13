@@ -232,7 +232,7 @@
             if(IS_LOGIN == "Y"){
                 var userlistbox = $context.find('.user_story').find('.flexbox-wrap');
                 if(userlistbox.children().length > 0){
-                    $context.find('.user_story').find('.story-title-area').show();
+                    // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
                     setRepositionTagBox($('.user_story'));
                 } else{
@@ -464,7 +464,7 @@
 
                 sectionItem.find('.inner h2.title').show();
 
-                $context.find('.user_story').find('.story-title-area').show();
+                // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
             }
             
             if(result.data.storyList && result.data.storyList.length > 0){

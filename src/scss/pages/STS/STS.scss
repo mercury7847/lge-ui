@@ -75,7 +75,14 @@
     }
 
     .story-section {
-        &.user_story { display:none; } /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
+        &.user_story { 
+            display:none; 
+            padding-top:80px; //BTOCSITE-188
+
+            @include mobile {
+                padding-top:40px; //BTOCSITE-188
+            }
+        } /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
         &.new_story {
             border-top: 0;
             // margin-top:32px; //BTOCSITE-188 삭제 start
