@@ -47,18 +47,6 @@ var itemTmpl = '{{#each obj in list}}'+
     '</li>\n'+
     '{{/each}}'
 
-// BTOCSITE-2838 : 매니저 정보로 이동 s
-$(document).ready(function(){
-        var managerInfoLink= 'managerInfoLink';
-        lgkorUI.setStorage(managerInfoLink, false);
-    $('.btn-manager-info').on('click', function(e){
-        e.preventDefault();
-        lgkorUI.setStorage(managerInfoLink, true);
-        location.href='/my-page/care-solution-contract-status';
-    });
-});
-// BTOCSITE-2838 :매니저 정보로 이동 e
-
 $(function(){
 
     var $context = !!$('[data-hash="care"]').length ? $('[data-hash="care"]') : $(document);
@@ -556,5 +544,16 @@ $(function(){
             smoothScroll:'.ui_smooth_tab'
         }});
         */
-    });    
+    }); 
+    // BTOCSITE-2838 : 매니저 정보로 이동 s
+    $(document).ready(function(){
+        var managerInfoLink= 'managerInfoLink';
+        lgkorUI.setStorage(managerInfoLink, false);
+        $('.btn-manager-info').on('click', function(e){
+            e.preventDefault();
+            lgkorUI.setStorage(managerInfoLink, true);
+            location.href='/my-page/care-solution-contract-status';
+        });
+    });
+    // BTOCSITE-2838 :매니저 정보로 이동 e 
 });
