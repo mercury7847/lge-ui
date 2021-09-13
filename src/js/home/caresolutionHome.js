@@ -544,9 +544,7 @@ $(function(){
             smoothScroll:'.ui_smooth_tab'
         }});
         */
-    }); 
-    // BTOCSITE-2838 : 매니저 정보로 이동 s
-    $(document).ready(function(){
+        // BTOCSITE-2838 : 매니저 정보로 이동 s
         var managerInfoLink= 'managerInfoLink';
         lgkorUI.setStorage(managerInfoLink, false);
         $('.btn-manager-info').on('click', function(e){
@@ -554,6 +552,7 @@ $(function(){
             lgkorUI.setStorage(managerInfoLink, true);
             location.href='/my-page/care-solution-contract-status';
         });
-    });
-    // BTOCSITE-2838 :매니저 정보로 이동 e 
+        // BTOCSITE-2838 :매니저 정보로 이동 e 
+    }); 
+
 });
