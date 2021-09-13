@@ -726,7 +726,6 @@
                     margin-top:5px;
                     >li{
                         padding-left: 6px;
-                        font-size:$font-small;
                         word-break: keep-all;
                         &:before{
                             content:'·';
@@ -736,7 +735,6 @@
                         }
                         ul{
                             >li{
-                                font-size:$font-small;
                                 font-weight:$font-weight-bold;
                                 word-break: keep-all;
                                 &:before{
@@ -752,7 +750,6 @@
                 .desc {
                     padding-left: 12px;
                     margin-top: 12px;
-                    font-size:$font-small;
                     word-break: keep-all;
                     &:before{
                         content: '※';
@@ -764,9 +761,13 @@
                 @include mobile{
                     padding:16px;
                     font-size:13px;
+                    line-height:21px;
                     .txt-point{
                         margin-bottom:16px;
                         padding-bottom:16px;
+                    }
+                    .desc {
+                        margin-top:6px;
                     }
                 }
             }
