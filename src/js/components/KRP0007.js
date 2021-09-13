@@ -373,7 +373,7 @@
                 self.$totalCount = self.$listSorting.find('#totalCount');
 
                 //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13
-                self.$ttCount = self.$listSorting.find('.sort-area');
+                //self.$ttCount = self.$listSorting.find('.sort-area');
 
                 //더보기 버튼
                 self.$btnMore = self.$section.find('div.read-more-area button.read-more');
@@ -721,13 +721,13 @@
                     if(self.$productList.find('>li').length > 0) {
                         self.$productList.siblings('.no-data').hide();
                         self.$listSorting.show();
-                        self.$ttCount.show(); //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 : 추가
+                        //self.$ttCount.show(); //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 : 추가
                     } else {
                         self.$productList.siblings('.no-data').show();
                         self.$btnMore.hide();
                         /* BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                             //self.$listSorting.hide(); //삭제
-                            self.$ttCount.hide(); //추가
+                            //self.$ttCount.hide(); //추가
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
 
