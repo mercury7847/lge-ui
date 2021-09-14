@@ -135,21 +135,13 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 var index = $inputFile.index(this);
                 var $input = $(e.currentTarget);
 
-                console.log("$this %o %o",$input,self.$el);
-                console.log("index %o",$inputFile.index(this));
-                
                 if ($input[0].files.length > 0) {
                     var file = e.currentTarget.files[0],
                         result = self._checkFile(file); 
-                        console.log("change result %o",result);
-
 
                     if (result.success) {
                         totalSize += file.size;
                         selectFiles[index] = file;
-
-                        console.log("change selectFiles %o",selectFiles);
-                        
                         self._setPreview($(this), file);
                     } else {
                         $input[0].value = '';
@@ -163,7 +155,6 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 var index = $btnDel.index(this);
                 var $input = $inputFile.eq(index);
                 
-
                 lgkorUI.confirm('', {
                     title:'삭제하시겠습니까?',
                     okBtnName: '예',
@@ -178,9 +169,6 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
 
                         totalSize -= selectFiles[index].size;
                         selectFiles.splice(index,1);
-
-                        
-                        console.log("del selectFiles %o",selectFiles);
 
                         $(this).vcModal('hide');
                     }
