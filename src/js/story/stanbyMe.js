@@ -78,7 +78,6 @@
                     self.url = self.$submitForm.data('ajax');
                     self.mode = self.url.indexOf('updateStanbyMeAjax') > -1 ? 'modify' : 'write';
 
-
                     vcui.require(['ui/validation'], function () {
                         self.validation = new vcui.ui.CsValidation('#submitForm', { 
                             register: {
@@ -96,6 +95,8 @@
                         });
 
                         self.$contents.find('.ui_imageinput').vcImageFileInput({
+                            individualFlag:true,
+                            totalSize: 40 * 1024 * 1024,
                             message: {
                                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                                 format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
@@ -103,6 +104,12 @@
                             }
                         });
 
+                        self.$contents.find('.ui_imageinput input[type="file"]').on('change',function(e) {
+                            // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
+                            if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
+                                $(this).data('fileFlag','insert');
+                            }
+                        })
                         self.bindEvent();
                     });
             },
@@ -110,7 +117,6 @@
                 var self = this;
                 self.$completeBtns.find('.btn-confirm,.btn-modify').on('click', function() {
                     var result = self.validation.validate();
-    
                     if (result.success == true) {    
                         lgkorUI.confirm('', {
                             title:self.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
@@ -129,7 +135,7 @@
                         title:'삭제하시겠습니까?', 
                         cancelBtnName: '아니오', okBtnName: '예', 
                         ok : function (e,data){ 
-                            self.requestFileDelete(el);
+                            self.uploadFileDelete(el);
                         }
                     });
                 });
@@ -138,24 +144,28 @@
             requestWrite: function() {
                 var self = this;
                 if(self.url) {
-
-                    console.log("mode %o",self.mode);
-
-
                     var param = self.validation.getAllValues();
                     var formData = new FormData();
-           
+            
                     for (var key in param) {
                         formData.append(key, param[key]);
+
+                        if(key.indexOf('imageFile') > -1) {
+                            var changeFile = key.replace('image','change');
+
+                            // 신규 업로드시 삭제된 파일 체크
+                            var $file = $("#"+key);
+                            if(!param[key] &&  $file.data('fileFlag') === 'insert') {
+                                $file.removeData('fileFlag')
+                            } 
+
+                            // 글작서 ,수정시 fileFlag 보내줌
+                            formData.append(changeFile, $file.data('fileFlag') );
+                        }
                     }
-        
+
                     lgkorUI.showLoading();
-
                     lgkorUI.requestAjaxFileData(self.url, formData, function(result) {
-
-
-                        console.log("write %o",result);
-        
                         if (result.status == 'success') {
                             if(result.returnUrl) location.href = result.returnUrl;
                         } else {
@@ -173,29 +183,15 @@
                 }
             },
             // 글 수정시 파일 삭제 함수
-            requestFileDelete: function(el) {
+            uploadFileDelete: function(el) {
                 var self = this;
 
-                console.log("삭제 버튼 테스트 %o",this);
-                    
-                var url = $(el).data('href');
-                if(url){
-                    console.log("url %o ",url);
-                    lgkorUI.requestAjaxData(url,'', function(result) {
-                        if(result.status === 'success') {
-                            $(el).closest('.file-image').find('.file-preview').empty();
-                            $(el).closest('.file-item').removeClass('modify');
-                        } else {
-                            lgkorUI.alert("", {
-                                title: result.message
-                            });
-                        }
-                    });
-                }
+                $(el).closest('.file-btns').find("input[type='file']").data('fileFlag','delete');
+
+                $(el).closest('.file-image').find('.file-preview').empty();
+                $(el).closest('.file-item').removeClass('modify');
             }
         };
-
-
 
         var stanbymeList = {
             params: {},
@@ -204,7 +200,7 @@
                     $contents = $('.contents.stanbyme');
 
                     self.$tab = $('.ui_tab');
-                    self.tabList = ['#prod1','#prod2'];
+                    self.tabList = ['prod1','prod2'];
 
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
@@ -223,19 +219,25 @@
                         self.bindEvent();
 
                         //  Q&A 탭으로 이동
-                        if(location.hash === '#prod2') {
-                            self.$tab.vcTab('select', 1);
-                            $(window).scrollTop(0);
-                        }
-          
+                        // tab default 처리
+                        self.$tab.vcTab('select', lgkorUI.getParameterByName('tab') === 'prod2' ? 1 : 0);
+                        
+                        // TAB 변경시 마다 URL CHANGE
+                        self.$tab.on('tabchange', function(e, data) {
+                            var loc = lgkorUI.parseUrl(location.href);
+                            var params = $.extend(loc.searchParams.getAll(), {
+                                tab : self.tabList[data.selectedIndex]
+                            });
+
+                            history.replaceState(null, null, loc.pathname +'?'+ $.param(params));
+                        });
                     });
 
             },
-            settingList: function() {
+            renderList: function() {
                 var self = this,
                     url = self.$qnaTab.data('ajax');
 
-                // lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
                     var html = '',
                         data = d.data,
@@ -256,10 +258,7 @@
                         self.$noData.show();
                     }
 
-
-                    console.log("페이지네이션 %o",page);
                     self.$pagination.vcPagination('setPageInfo', page);
-                    // lgkorUI.hideLoading();
                 });
             },
             bindEvent: function() {
@@ -274,101 +273,50 @@
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
-                    self.settingList();
+                    self.renderList();
                 });
 
                 self.$pagination.on('page_click', function(e,page) {
                     self.params = $.extend({}, self.params, {
                         'page': page
                     });
-                    self.settingList();
+                    self.renderList();
                 });
             }
         };
 
-        var stanbymeCommentList = {
+        var stanbymeDetail = {
             params: {},
             init: function() {
                 var self = this,
                     $contents = $('.contents.stanbyme');
-
-                vcui.require(['ui/pagination'], function () {
-                    self.$commentWrap = $contents.find('.comment-wrap');
-                    
-                    self.$delPopup =  $('#delPopup');
-                    self.$btnDel =  $('[data-href="#delPopup"]');
-
-                    self.$btnCancel = $('.btn-cancel');
-                    self.$btnConfirm = $('.btn-confirm');
-                    self.$listWrap = self.$commentWrap.find('.comment-list ul');
-                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTop : 'noUse' });
-                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
-
-                    if(isNoComment) {
-                        self.$pagination.hide();
-                    }
-
-
-                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination();
-
-                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
-
-                    if(isNoComment) {
-                        self.$pagination.hide();
-
-                    }
-
-
-                    self.params = {
-                        'page': 1
-                    };
-
-                    self.bindEvent();
-
-
-
-
-                });
-
-            },
-            settingList: function() {
-                var self = this,
-                    url = self.$commentWrap.data('ajax');
-
-                    if(url) {
-                        lgkorUI.showLoading();
-                        lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
-                            var html = '',
-                                data = d.data,
-                                page = d.pagination;
-
-
-                                console.log("d %o",d);
-        
-                            self.$listWrap.empty();
-        
-                            if (data.length) {
-                                data.forEach(function(item) {
-                                    html += vcui.template(commentList, item);
-                                });
-                                self.$listWrap.prepend(html);
-                            } 
-
-                            $('.comment-head .count').text(d.dataCount);
-
-
-                            console.log("count %o %o",d.dataCount,typeof d.dataCount);
-
-                            self.$pagination.vcPagination('setPageInfo', page);                            
-                            if(d.dataCount !== 0) self.$pagination.show();
-                            else  self.$pagination.hide();
-
-                            self.bindEvent();
-                            lgkorUI.hideLoading();
-                        });
-                    }
-
-  
+                 // 삭제된글 일경우 처리
+                 if($contents.find("input[name='detailDeleteFlag']").length > 0 && $contents.find("input[name='detailDeleteFlag']").val() === 'Y'){
+                    self.goList();
+                    return;
+                 } else {
+                    // 글 존재할경우
+                    vcui.require(['ui/pagination'], function () {
+                        self.$commentWrap = $contents.find('.comment-wrap');
+                        
+                        self.$delPopup =  $('#delPopup');
+                        self.$btnDel =  $('[data-href="#delPopup"]');
+    
+                        self.$btnCancel = $('.btn-cancel');
+                        self.$btnConfirm = $('.btn-confirm');
+                        self.$listWrap = self.$commentWrap.find('.comment-list ul');
+                        self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTop : 'noUse' });
+                        var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
+    
+                        if(isNoComment) self.$pagination.hide();
+    
+                        self.params = {
+                            'page': 1
+                        };
+    
+                        self.bindEvent();
+                    });
+                 }
             },
             bindEvent: function() {
                 var self = this;
@@ -382,7 +330,6 @@
                 self.$delPopup.find('[data-role="ok"]').on('click',function(e) {
                     var url = $(this).data('href');
                     if(url){
-                        console.log("url %o ",url);
                         lgkorUI.requestAjaxData(url,'', function(result) {
                             if(result.status === 'success') {
                                 if(result.returnUrl) location.href = result.returnUrl;
@@ -402,16 +349,13 @@
 
                  // 댓글 쓰기폼 등록/수정 버튼
                 self.$btnConfirm.off().on('click', function() {
-                    console.log('댓글 스기');
-                    self.requestCmtWrite(this);
+                        self.requestCmtWrite(this);
                 });
-
 
                 // 댓글 쓰기폼 취소 버튼
                 self.$btnCancel.off().on('click', function(){
                     self.requestCmtCancel(this)
                 });
-
 
                 // 댓글 쓰기폼 등록 / 수정 인풋 입력 체크
                 $('.input-wrap textarea').off('change.cmtList keyup.cmtList paste.cmtList').on('change.cmtList keyup.cmtList paste.cmtList', function(){
@@ -422,8 +366,6 @@
                         $(this).removeClass('valid');
                     }
                 });
-
-
 
                 // 댓글 수정 버튼
                 $('.btn-comment-modify').on('click', function(e){
@@ -447,58 +389,72 @@
                             self.requestCmtWrite(this);
                         });
 
-
                         $parent.find('.btn-cancel').off().on('click', function() {
                             self.requestCmtCancel(this);
                         });
 
-
                         $parent.find('.ui_textcontrol').vcTextcontrol();
-
-
                 });
-
 
                 //댓글 삭제 버튼 클릭시
                 $('.btn-comment-del').off().on('click', function(e){
                     var el = this;
-         
                     lgkorUI.confirm('', {
                         title:'댓글을 삭제하시겠습니까?', 
                         cancelBtnName: '아니오', okBtnName: '예', 
                         ok : function (){ 
-
                             self.requestCmtDelete(el);
                         }
                     });
                 });
             },
 
-
             // 페이지네이션 클릭 실행 함수
             pageClick: function(el,page) {
                 var self = this;
-
-
-                console.log("pageClick %o %o",el,page)
-    
                 self.params = $.extend({}, self.params, {
                     'page': page
                 });
-                self.settingList();
-
-
+                self.requestCmtList();
             },
 
+            // 코멘트 리스트 
+            requestCmtList: function() {
+                var self = this,
+                    url = self.$commentWrap.data('ajax');
+
+                    if(url) {
+                        lgkorUI.showLoading();
+                        lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
+                            var html = '',
+                                data = d.data,
+                                page = d.pagination;
+        
+                            self.$listWrap.empty();
+        
+                            if (data.length) {
+                                data.forEach(function(item) {
+                                    html += vcui.template(commentList, item);
+                                });
+                                self.$listWrap.prepend(html);
+                            } 
+
+                            $('.comment-head .count').text(d.dataCount);
+
+                            self.$pagination.vcPagination('setPageInfo', page);                            
+                            if(d.dataCount !== 0) self.$pagination.show();
+                            else  self.$pagination.hide();
+
+                            self.bindEvent();
+                            lgkorUI.hideLoading();
+                        });
+                    }
+            },
             // 코멘트 등록/수정 비동기 호출
             requestCmtWrite : function(el){
                 var self = this;
                 var $commentWrite = $(el).closest('.comment-write');
-
-                // var url = $commentWrite.data('ajax');
-
                 var clubId = $(el).closest('.comment-content').data('clubId'); 
-
                 var mode = clubId ? 'modify' : 'write';
 
                     if(mode == 'write') {
@@ -507,59 +463,52 @@
                             'clubMId' : lgkorUI.getParameterByName('clubMId') ,
                             'contents' : $commentWrite.find('textarea').val()
                         }
-
                     } else {
                         var url = '/mkt/api/stanbyMe/updateStanbyMeDAjax';
 
                         var params = {
+                            'clubMId' : lgkorUI.getParameterByName('clubMId') ,
                             'clubDId' : clubId,
                             'contents' : $commentWrite.find('textarea').val()
                         }
-
                     }
-              
-                    if(url) {
-                        // lgkorUI.showLoading();
-                        lgkorUI.requestAjaxDataPost(url, params, function(data) {
-    
-                            console.log("res %o %o",url,data);
-    
-                            if(data.status === 'success') {
-                                if(mode == 'write') {
-                                    console.log('댓글 등록 성공')
-                                    self.params.page = 1;
-                                    self.settingList();
 
-                                } else {
-                                    console.log('댓글 수정 성공')
-                                    // self.params.page = 1;
-                                    self.settingList();
-                                }
+                    if(url && !!params.contents.replace(/\s/g, "")) {
+                        lgkorUI.requestAjaxDataPost(url, params, function(data) {
+                            if(data.status === 'success') {
+                                if(mode == 'write') self.params.page = 1;
+
+                                self.requestCmtList();
                                 $commentWrite.closest('form')[0].reset();
                                 self.$btnCancel.trigger('click');
                             } else {
 
-                                lgkorUI.confirm('', {
-                                    title:data.message, 
-                                    cancelBtnName: '아니오', okBtnName: '예', 
-                                    ok : function (){ 
-                                        location.href = "/sso/api/Login";
-                                    }
-                                });
+                                // 삭제된 게시물인경우 게시판 리스트 이동
+                                if(data.message === '삭제된 게시물 입니다.') {
+                                    self.goList();
+                                } else {
+                                    // 로그인 오류인경우 로그인 url  이동
+                                    lgkorUI.confirm('', {
+                                        title:data.message, 
+                                        cancelBtnName: '아니오', okBtnName: '예', 
+                                        ok : function (){ 
+                                            location.href = "/sso/api/Login";
+                                        }
+                                    });
+                                }
+      
                             }
                         },'POST','json',true);
+                    } else {
+                        $commentWrite.find('textarea').val('');
+                        $commentWrite.find('textarea').focus();
                     }
-
             },
 
             // 댓글 쓰기폼 취소 함수
             requestCmtCancel: function(el) {
                 var self = this;
-
-
                 var isCmtModify = $(el).closest('.comment-write').data('ajax') === '/mkt/api/stanbyMe/updateStanbyMeDAjax' ;
-
-                console.log("cancel %o",self.$btnCancel);
 
                 var meInp = $(el).parents('.input-wrap');
                     meInp.find('textarea').removeClass('valid');
@@ -574,7 +523,6 @@
                     $infoData.show();
                     $commentBtnBox.show();
 
-
                 if(isCmtModify) {
                     // 코멘트 수정 박스 삭제
                     $parent.find('form').remove();
@@ -587,38 +535,34 @@
                 var self = this;
                 var clubDId  = $(el).closest('.comment-content').data('clubId');
 
-                console.log("res %o %o",$(el),clubDId);
-
                 lgkorUI.requestAjaxDataPost("/mkt/api/stanbyMe/deleteStanbyMeDAjax", { 'clubDId' : clubDId }, function(data) {
-
-                    console.log("res %o ",data);
-
                     if(data.status === 'success') {
-         
-                        console.log('댓글 삭제 성공')
-        
-                        self.settingList();
+                        self.requestCmtList();
                         $commentWrite.closest('form')[0].reset();
                         self.$btnCancel.trigger('click');
-        
                     } else {
                         lgkorUI.alert("", {
                             title: data.message
                         });
                     }
                 });
+            },
+            goList: function() {
+                lgkorUI.alert('', {
+                    title:'삭제된 게시물 입니다.', 
+                    ok : function (){ 
+                        location.href = "/story/stanbyme-club/stanbyme-club-list?tab=prod2";
+                    }
+                });
             }
-    
         };
 
         if($('.contents.stanbyme .visual-wrap').length > 0){ // 리스트
-            console.log('sdfsdfsd');
             stanbymeList.init();
         }else if($('.contents.stanbyme .stanbyme-detail').length > 0){  // 상세 
-            stanbymeCommentList.init();
+            stanbymeDetail.init();
         } else {
             stanbymeWrite.init();
-
         }
     });
 })();
