@@ -724,41 +724,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
-            if( vcui.detect.isMobileDevice && !isApp() && window.innerWidth < 768) {
-                if( $('.mobile-status-bar').filter(':visible').length ) {
-                    $('html').addClass('is-web-status-bar')
-                } else {
-                    var statusBarHTML = '<div class="mobile-status-bar">' +
-                        '<ul class="mobile-status-list">' +
-                            '<li class="list-item mypage">' +
-                                '<a href="/my-page"><span>마이</span></a>' +
-                            '</li>' +
-                            '<li class="list-item chatbot">' +
-                                '<a href="https://chat.lge.co.kr/kr/index.html?channel=lg_homepage" class="js-popup" title="새창으로 열림" data-width="450" data-height="760"><span>상담챗</span></a>' +
-                            '</li>' +
-                            '<li class="list-item home"> ' +
-                                '<a href="/"><span>홈</span></a>' +
-                            '</li>' +
-                            '<li class="list-item my-collection">' +
-                                '<a href="/my-collection/"><span>마이컬렉션</span></a>' +
-                            '</li>' +
-                            '<li class="list-item nav-anchor">' +
-                                '<a href="#"><span>메뉴</span></a>' +
-                            '</li>' +
-                        '</ul>' +
-                    '</div>';
-                    $('html').append(statusBarHTML);
-                    $('html').addClass('is-web-status-bar')
-                }
-            }
-
             self.$statusBar = $('.mobile-status-bar');
 			self.$statusList = self.$statusBar.find('.mobile-status-list');
             
             self.$statusList.find('.nav-anchor a').on('click', function(e){
 				e.preventDefault();
 
-                if(vcui.detect.isMobileDevice && window.innerWidth < 768) {
+                if(vcui.detect.isMobileDevice && window.innerWidth < 768 && !isApp()) {
                     if( $('.lay-filter').hasClass('open')) {
                         $('.lay-filter').find('.dimmed').trigger('click');
                     }

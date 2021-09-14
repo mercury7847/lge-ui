@@ -2087,8 +2087,8 @@ html {
 }
 
 
-//BTOCSITE-1967 웹하단바
-.is-web-status-bar {
+/* BTOCSITE-1967 */
+.mdevice:not(.app) {
     // body {
     //     padding-bottom:70px;
     // }

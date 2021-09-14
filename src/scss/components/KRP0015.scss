@@ -405,8 +405,8 @@
     
 }
 
-//BTOCSITE-1967
-.is-web-status-bar {
+/* BTOCSITE-1967 */
+.mdevice:not(.app) {
     $statusBarHeight: 70px;
     .KRP0015 {
         bottom:(0 + $statusBarHeight);
