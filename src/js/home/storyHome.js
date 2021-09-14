@@ -344,11 +344,18 @@
             sendata.tag.push(id);
         });
 
+        
+        
+
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxurl, sendata, function(result){
             lgkorUI.hideLoading();
             
             // console.log("result", result)
 
+            //BTOCSITE-188
+            if( sendata.tag.length == 0) {
+                lgkorUI.removeCookieArrayValue('storyHomeFirstTagSet', "Y")
+            }
             $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");
@@ -492,6 +499,8 @@
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                             // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
+
+                            //BTOCSITE-188
                             if( $story3.length) {
                                 $story3.empty().show().append(list)
                             } else {
@@ -500,7 +509,13 @@
                             }
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                             // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
-                            $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+
+                            if( lgkorUI.getCookie('storyHomeFirstTagSet') == "Y") {
+
+                            } else {
+                                $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                                lgkorUI.setCookie('storyHomeFirstTagSet', "Y", 30)
+                            }
                         }
                     } else{
                         if(sectioname == "new_story"){
