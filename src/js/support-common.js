@@ -282,7 +282,7 @@ CS.MD.search = function() {
             if (keywordCookie && keywordCookie.length > 0) {
                 arr = keywordCookie.split(',');
                 if (arr.length) {
-                    arr.forEach(function(item) {
+                    arr.forEach(function(item) {                        
                         var html = tmpl.recentlyList.replace('{{keyword}}', item.toString());
                         $recentlyKeyword.find('ul').append(html);
                     });
@@ -307,7 +307,7 @@ CS.MD.search = function() {
             $popularKeyword.find('ul').empty();
 
             if (arr.length) {
-                arr.forEach(function(item) {
+                arr.forEach(function(item) {                    
                     html += tmpl.keywordList.replace('{{keyword}}', item);
                 });
 
@@ -350,6 +350,9 @@ CS.MD.search = function() {
         _search: function() {
             var self = this;
             var val = self.$el.find('input[type=text]').val().trim();
+            // console.log('val', val)
+            val = val.replace(/(<([^>]+)>)/ig,""); //BTOCSITE-5089
+            // console.log('editted val', val)
             
             if (val.length > 1) {
                 if (self.$el.find('.recently-keyword').length) {
