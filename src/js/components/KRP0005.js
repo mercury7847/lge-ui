@@ -259,6 +259,16 @@
         }
         
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
+
+        // BTOCSITE-2838 : 매니저 정보로 이동 s
+        var managerInfoLink= 'managerInfoLink';
+        lgkorUI.setStorage(managerInfoLink, false);
+        $('.btn-manager-info').on('click', function(e){
+            e.preventDefault();
+            lgkorUI.setStorage(managerInfoLink, true);
+            location.href='/my-page/care-solution-contract-status';
+        });
+        // BTOCSITE-2838 :매니저 정보로 이동 e 
         
     });
 })();
