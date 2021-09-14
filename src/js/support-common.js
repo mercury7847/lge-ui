@@ -352,10 +352,6 @@ CS.MD.search = function() {
             var self = this;
             var val = self.$el.find('input[type=text]').val().trim();
             // console.log('val', val)
-
-            var dom = new DOMParser().parseFromString(val, 'text/html');
-            //var val = dom.body.textContent;
-
             val = val.replace(/(<([^>]+)>)/ig,""); //BTOCSITE-5089
             val = val.replace(/<\/([^>]+)/ig,""); //BTOCSITE-5089
             // console.log('editted val', val)
@@ -394,7 +390,7 @@ CS.MD.search = function() {
             self.$el.on('click', '.search-layer .keyword-box a', function(e) {
                 e.preventDefault();
 
-                var val = $(this).contents()[0].textContent.trim();
+                var val = $(this).contents()[0].textContent.trim();//BTOCSITE-5089
 
                 self.$el.find('input[type=text]').val(val);
                 self.$el.removeClass('on');
