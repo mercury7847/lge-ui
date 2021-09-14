@@ -168,7 +168,14 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                         $box.find('.name').val('');
 
                         totalSize -= selectFiles[index].size;
-                        selectFiles.splice(index,1);
+
+                        selectFiles.map(function(val, idx){
+                            if(idx !== index ) {
+                                return val;
+                            } else {
+                                delete selectFiles[idx];
+                            }
+                        });
 
                         $(this).vcModal('hide');
                     }
