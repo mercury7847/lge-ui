@@ -738,6 +738,7 @@ br.m {
                                     }
                                 }
                             }
+                            /* 2021.09.14 BTOCSITE-4515 : WHY 케어십 콘텐츠 수정 - (운영 현행화 : 실제 RMSF2002.scss 사용) */
                             &[class*="careship"] {
                                 &::before {
                                     width:80px;
@@ -919,6 +920,7 @@ br.m {
                                     }
                                 }
                             }
+                            /* //2021.09.14 BTOCSITE-4515 : WHY 케어십 콘텐츠 수정 */
                             dt {
                                 position:relative;
                                 font-size:0;
