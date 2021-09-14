@@ -123,11 +123,20 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 $fileBox.find('.name').val(file.name);
             }
         },
+
+        // S: 20210914 BTOCSITE-5616 스탠바이미 추가 수정 
         _bindEvents: function _bindEvents() {
             var self = this;
 
-            self.$el.find('input[type="file"]').change(function(e) {
+            var $inputFile = self.$el.find('input[type="file"]');
+            var $btnDel =  self.$el.find('.btn-del');
+
+            $inputFile.change(function(e) {
                 var $this = $(e.currentTarget);
+                var index = $inputFile.index(this);
+
+                console.log("$this %o %o",$this,self.$el);
+                console.log("index %o",$inputFile.index(this));
                 
                 if ($this[0].files.length > 0) {
                     var file = e.currentTarget.files[0],
@@ -135,39 +144,46 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
 
                     if (result.success) {
                         totalSize += file.size;
-                        selectFiles.push(file);
+                        selectFiles[index] = file;
+
+                        console.log("selectFiles %o",selectFiles);
                         
                         self._setPreview($(this), file);
-
-                        $this.siblings('.btn-del').off('click').on('click', function() {
-                            var $btn = $(this);
-
-                            lgkorUI.confirm('', {
-                                title:'삭제하시겠습니까?',
-                                okBtnName: '예',
-                                cancelBtnName: '아니오',
-                                ok: function() {
-                                    var $box = $this.closest('.file-item');
-                
-                                    $this[0].value = '';
-                                    $box.removeClass('on');
-                                    $box.find('.file-preview').html('');
-                                    $box.find('.name').val('');
-
-                                    var index = $btn.closest('.image-file-wrap').find('.btn-del').index($btn);
-                                    totalSize -= selectFiles[index].size;
-                                    selectFiles.splice(index,1);
-
-                                    $(this).vcModal('hide');
-                                }
-                            });
-                        });         
                     } else {
                         $this[0].value = '';
                         self._callAlert(result.message);
                     }
                 }
             });
+
+            $btnDel.on('click', function() {
+                var $this = $(this);
+                var index = $btnDel.index(this);
+
+                lgkorUI.confirm('', {
+                    title:'삭제하시겠습니까?',
+                    okBtnName: '예',
+                    cancelBtnName: '아니오',
+                    ok: function() {
+                        var $box = $this.closest('.file-item');
+    
+                        $this[0].value = '';
+                        $box.removeClass('on');
+                        $box.find('.file-preview').html('');
+                        $box.find('.name').val('');
+
+                    //    var index = $btn.closest('.image-file-wrap').find('.btn-del').index($btn);
+                        totalSize -= selectFiles[index].size;
+                        selectFiles.splice(index,1);
+
+                        
+                        console.log("selectFiles %o",selectFiles);
+
+                        $(this).vcModal('hide');
+                    }
+                });
+            });   
+            // E: 20210914 BTOCSITE-5616 스탠바이미 추가 수정 
         },
     });
 

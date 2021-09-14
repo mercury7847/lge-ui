@@ -96,12 +96,29 @@
                         });
 
                         self.$contents.find('.ui_imageinput').vcImageFileInput({
+                            individualFlag:true,
+                            totalSize: 40 * 1024 * 1024,
                             message: {
                                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                                 format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
                                 size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
                             }
                         });
+
+                        self.$contents.find('.ui_imageinput input[type="file"]').on('change',function(e) {
+
+
+
+                            console.log("변경 %o",$(this).val());
+
+            
+                            // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
+                            if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
+                                $(this).data('fileFlag','insert');
+                            }
+
+                        })
+
 
                         self.bindEvent();
                     });
@@ -139,22 +156,50 @@
                 var self = this;
                 if(self.url) {
 
-                    console.log("mode %o",self.mode);
-
-
                     var param = self.validation.getAllValues();
                     var formData = new FormData();
-           
+
+                    console.log("param %o",param);
+            
                     for (var key in param) {
                         formData.append(key, param[key]);
+
+
+                        if(key.indexOf('imageFile') > -1) {
+
+                            console.log("파일 추가 파라메터 합치기");
+     
+
+
+                            var changeFile = key.replace('image','change');
+
+                            // 신규 업로드시 삭제된 파일 체크
+                            var $file = $("#"+key);
+                            if(!param[key] &&  $file.data('fileFlag') === 'insert') {
+                                $file.removeData('fileFlag')
+                            } 
+
+                            // 글작서 ,수정시 fileFlag 보내줌
+                            formData.append(changeFile, $file.data('fileFlag') );
+                        }
+
                     }
+
+                    console.log("formData");
+                    
+
+                    for (var p of formData) {
+                        let name = p[0];
+                        let value = p[1];
+                    
+                        console.log(name, value)
+                    }
+
+                    // return;
         
                     lgkorUI.showLoading();
 
                     lgkorUI.requestAjaxFileData(self.url, formData, function(result) {
-
-
-                        console.log("write %o",result);
         
                         if (result.status == 'success') {
                             if(result.returnUrl) location.href = result.returnUrl;
@@ -176,22 +221,12 @@
             requestFileDelete: function(el) {
                 var self = this;
 
-                console.log("삭제 버튼 테스트 %o",this);
-                    
-                var url = $(el).data('href');
-                if(url){
-                    console.log("url %o ",url);
-                    lgkorUI.requestAjaxData(url,'', function(result) {
-                        if(result.status === 'success') {
-                            $(el).closest('.file-image').find('.file-preview').empty();
-                            $(el).closest('.file-item').removeClass('modify');
-                        } else {
-                            lgkorUI.alert("", {
-                                title: result.message
-                            });
-                        }
-                    });
-                }
+
+
+                $(el).closest('.file-btns').find("input[type='file']").data('fileFlag','delete');
+
+                $(el).closest('.file-image').find('.file-preview').empty();
+                $(el).closest('.file-item').removeClass('modify');
             }
         };
 
@@ -204,7 +239,7 @@
                     $contents = $('.contents.stanbyme');
 
                     self.$tab = $('.ui_tab');
-                    self.tabList = ['#prod1','#prod2'];
+                    self.tabList = ['prod1','prod2'];
 
                     vcui.require(['ui/pagination'], function () {
                         self.$qnaTab = $contents.find('#prod1');
@@ -222,12 +257,25 @@
 
                         self.bindEvent();
 
+       
+
                         //  Q&A 탭으로 이동
-                        if(location.hash === '#prod2') {
-                            self.$tab.vcTab('select', 1);
-                            $(window).scrollTop(0);
-                        }
-          
+                        // tab default 처리
+                        self.$tab.vcTab('select', lgkorUI.getParameterByName('tab') === 'prod2' ? 1 : 0);
+                        
+                        // TAB 변경시 마다 URL CHANGE
+                        self.$tab.on('tabchange', function(e, data) {
+                            var loc = lgkorUI.parseUrl(location.href);
+                            var params = $.extend(loc.searchParams.getAll(), {
+                                tab : self.tabList[data.selectedIndex]
+                            });
+
+                            history.replaceState(null, null, loc.pathname +'?'+ $.param(params));
+
+                            console.log("현제 state %o",history.state);
+                            console.log("history %o",history);
+    
+                        });
                     });
 
             },
@@ -256,8 +304,6 @@
                         self.$noData.show();
                     }
 
-
-                    console.log("페이지네이션 %o",page);
                     self.$pagination.vcPagination('setPageInfo', page);
                     // lgkorUI.hideLoading();
                 });
@@ -342,8 +388,6 @@
                                 data = d.data,
                                 page = d.pagination;
 
-
-                                console.log("d %o",d);
         
                             self.$listWrap.empty();
         
@@ -355,9 +399,6 @@
                             } 
 
                             $('.comment-head .count').text(d.dataCount);
-
-
-                            console.log("count %o %o",d.dataCount,typeof d.dataCount);
 
                             self.$pagination.vcPagination('setPageInfo', page);                            
                             if(d.dataCount !== 0) self.$pagination.show();
@@ -382,7 +423,6 @@
                 self.$delPopup.find('[data-role="ok"]').on('click',function(e) {
                     var url = $(this).data('href');
                     if(url){
-                        console.log("url %o ",url);
                         lgkorUI.requestAjaxData(url,'', function(result) {
                             if(result.status === 'success') {
                                 if(result.returnUrl) location.href = result.returnUrl;
@@ -402,8 +442,7 @@
 
                  // 댓글 쓰기폼 등록/수정 버튼
                 self.$btnConfirm.off().on('click', function() {
-                    console.log('댓글 스기');
-                    self.requestCmtWrite(this);
+                        self.requestCmtWrite(this);
                 });
 
 
@@ -478,16 +517,11 @@
             // 페이지네이션 클릭 실행 함수
             pageClick: function(el,page) {
                 var self = this;
-
-
-                console.log("pageClick %o %o",el,page)
     
                 self.params = $.extend({}, self.params, {
                     'page': page
                 });
                 self.settingList();
-
-
             },
 
             // 코멘트 등록/수정 비동기 호출
@@ -512,26 +546,21 @@
                         var url = '/mkt/api/stanbyMe/updateStanbyMeDAjax';
 
                         var params = {
+                            'clubMId' : lgkorUI.getParameterByName('clubMId') ,
                             'clubDId' : clubId,
                             'contents' : $commentWrite.find('textarea').val()
                         }
 
                     }
               
-                    if(url) {
+                    if(url && !vcui.isEmpty(params.contents)) {
                         // lgkorUI.showLoading();
                         lgkorUI.requestAjaxDataPost(url, params, function(data) {
-    
-                            console.log("res %o %o",url,data);
-    
                             if(data.status === 'success') {
                                 if(mode == 'write') {
-                                    console.log('댓글 등록 성공')
                                     self.params.page = 1;
                                     self.settingList();
-
                                 } else {
-                                    console.log('댓글 수정 성공')
                                     // self.params.page = 1;
                                     self.settingList();
                                 }
@@ -559,8 +588,6 @@
 
                 var isCmtModify = $(el).closest('.comment-write').data('ajax') === '/mkt/api/stanbyMe/updateStanbyMeDAjax' ;
 
-                console.log("cancel %o",self.$btnCancel);
-
                 var meInp = $(el).parents('.input-wrap');
                     meInp.find('textarea').removeClass('valid');
                     meInp.find('.inner-text em').text('0');
@@ -587,15 +614,9 @@
                 var self = this;
                 var clubDId  = $(el).closest('.comment-content').data('clubId');
 
-                console.log("res %o %o",$(el),clubDId);
-
                 lgkorUI.requestAjaxDataPost("/mkt/api/stanbyMe/deleteStanbyMeDAjax", { 'clubDId' : clubDId }, function(data) {
 
-                    console.log("res %o ",data);
-
                     if(data.status === 'success') {
-         
-                        console.log('댓글 삭제 성공')
         
                         self.settingList();
                         $commentWrite.closest('form')[0].reset();
@@ -612,7 +633,6 @@
         };
 
         if($('.contents.stanbyme .visual-wrap').length > 0){ // 리스트
-            console.log('sdfsdfsd');
             stanbymeList.init();
         }else if($('.contents.stanbyme .stanbyme-detail').length > 0){  // 상세 
             stanbymeCommentList.init();
