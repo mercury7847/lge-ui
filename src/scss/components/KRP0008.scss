@@ -704,7 +704,7 @@
                 }
             }
             /* //20210527 할인카드 flag*/
-
+            
             /* BTOCSITE-5234 추석 연휴 기간 안내팝업 */
             .ex-info{
                 margin-top:24px;
@@ -1289,6 +1289,38 @@
                         }
                     }
                     /* //20210607 스펙선택 추가 */
+                    /* BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 */
+                    .txt-list{
+                        margin-top:5px;
+                        font-size:14px;
+                        line-height:24px;
+                        >li{
+                            padding-left: 6px;
+                            word-break: keep-all;
+                            &:before{
+                                content:'·';
+                                display: inline-block;
+                                margin-left: -9px;
+                                margin-right: 2px;
+                            }
+                            ul{
+                                >li{
+                                    font-weight:$font-weight-bold;
+                                    word-break: keep-all;
+                                    &:before{
+                                        content:'-';
+                                        display: inline-block;
+                                        margin-right: 2px;
+                                    }
+                                }
+                            }
+                        }
+                        @include mobile{
+                            font-size:13px;
+                            line-height:21px;
+                        }
+                    }
+                    /* //BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 */
                 }
                 &.care-solution-payment-info {
                     margin-top: 24px;
