@@ -234,7 +234,7 @@
                     });
 
             },
-            settingList: function() {
+            renderList: function() {
                 var self = this,
                     url = self.$qnaTab.data('ajax');
 
@@ -273,77 +273,50 @@
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
-                    self.settingList();
+                    self.renderList();
                 });
 
                 self.$pagination.on('page_click', function(e,page) {
                     self.params = $.extend({}, self.params, {
                         'page': page
                     });
-                    self.settingList();
+                    self.renderList();
                 });
             }
         };
 
-        var stanbymeCommentList = {
+        var stanbymeDetail = {
             params: {},
             init: function() {
                 var self = this,
                     $contents = $('.contents.stanbyme');
-
-                vcui.require(['ui/pagination'], function () {
-                    self.$commentWrap = $contents.find('.comment-wrap');
-                    
-                    self.$delPopup =  $('#delPopup');
-                    self.$btnDel =  $('[data-href="#delPopup"]');
-
-                    self.$btnCancel = $('.btn-cancel');
-                    self.$btnConfirm = $('.btn-confirm');
-                    self.$listWrap = self.$commentWrap.find('.comment-list ul');
-                    self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTop : 'noUse' });
-                    var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
-
-                    if(isNoComment) self.$pagination.hide();
-
-                    self.params = {
-                        'page': 1
-                    };
-
-                    self.bindEvent();
-                });
-
-            },
-            settingList: function() {
-                var self = this,
-                    url = self.$commentWrap.data('ajax');
-
-                    if(url) {
-                        lgkorUI.showLoading();
-                        lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
-                            var html = '',
-                                data = d.data,
-                                page = d.pagination;
-        
-                            self.$listWrap.empty();
-        
-                            if (data.length) {
-                                data.forEach(function(item) {
-                                    html += vcui.template(commentList, item);
-                                });
-                                self.$listWrap.prepend(html);
-                            } 
-
-                            $('.comment-head .count').text(d.dataCount);
-
-                            self.$pagination.vcPagination('setPageInfo', page);                            
-                            if(d.dataCount !== 0) self.$pagination.show();
-                            else  self.$pagination.hide();
-
-                            self.bindEvent();
-                            lgkorUI.hideLoading();
-                        });
-                    }
-
+                 // 삭제된글 일경우 처리
+                 if($contents.find("input[name='detailDeleteFlag']").length > 0 && $contents.find("input[name='detailDeleteFlag']").val() === 'Y'){
+                    self.goList();
+                    return;
+                 } else {
+                    // 글 존재할경우
+                    vcui.require(['ui/pagination'], function () {
+                        self.$commentWrap = $contents.find('.comment-wrap');
+                        
+                        self.$delPopup =  $('#delPopup');
+                        self.$btnDel =  $('[data-href="#delPopup"]');
+    
+                        self.$btnCancel = $('.btn-cancel');
+                        self.$btnConfirm = $('.btn-confirm');
+                        self.$listWrap = self.$commentWrap.find('.comment-list ul');
+                        self.$pagination = self.$commentWrap.find('.pagination').vcPagination({scrollTop : 'noUse' });
+                        var isNoComment = self.$listWrap.find('>li>div').hasClass('no-comment')
+    
+                        if(isNoComment) self.$pagination.hide();
+    
+                        self.params = {
+                            'page': 1
+                        };
+    
+                        self.bindEvent();
+                    });
+                 }
             },
             bindEvent: function() {
                 var self = this;
@@ -442,9 +415,41 @@
                 self.params = $.extend({}, self.params, {
                     'page': page
                 });
-                self.settingList();
+                self.requestCmtList();
             },
 
+            // 코멘트 리스트 
+            requestCmtList: function() {
+                var self = this,
+                    url = self.$commentWrap.data('ajax');
+
+                    if(url) {
+                        lgkorUI.showLoading();
+                        lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
+                            var html = '',
+                                data = d.data,
+                                page = d.pagination;
+        
+                            self.$listWrap.empty();
+        
+                            if (data.length) {
+                                data.forEach(function(item) {
+                                    html += vcui.template(commentList, item);
+                                });
+                                self.$listWrap.prepend(html);
+                            } 
+
+                            $('.comment-head .count').text(d.dataCount);
+
+                            self.$pagination.vcPagination('setPageInfo', page);                            
+                            if(d.dataCount !== 0) self.$pagination.show();
+                            else  self.$pagination.hide();
+
+                            self.bindEvent();
+                            lgkorUI.hideLoading();
+                        });
+                    }
+            },
             // 코멘트 등록/수정 비동기 호출
             requestCmtWrite : function(el){
                 var self = this;
@@ -473,19 +478,14 @@
                             if(data.status === 'success') {
                                 if(mode == 'write') self.params.page = 1;
 
-                                self.settingList();
+                                self.requestCmtList();
                                 $commentWrite.closest('form')[0].reset();
                                 self.$btnCancel.trigger('click');
                             } else {
 
                                 // 삭제된 게시물인경우 게시판 리스트 이동
                                 if(data.message === '삭제된 게시물 입니다.') {
-                                    lgkorUI.alert('', {
-                                        title:data.message, 
-                                        ok : function (){ 
-                                            location.href = "/story/stanbyme-club/stanbyme-club-list?tab=prod2";
-                                        }
-                                    });
+                                    self.goList();
                                 } else {
                                     // 로그인 오류인경우 로그인 url  이동
                                     lgkorUI.confirm('', {
@@ -537,7 +537,7 @@
 
                 lgkorUI.requestAjaxDataPost("/mkt/api/stanbyMe/deleteStanbyMeDAjax", { 'clubDId' : clubDId }, function(data) {
                     if(data.status === 'success') {
-                        self.settingList();
+                        self.requestCmtList();
                         $commentWrite.closest('form')[0].reset();
                         self.$btnCancel.trigger('click');
                     } else {
@@ -546,13 +546,21 @@
                         });
                     }
                 });
+            },
+            goList: function() {
+                lgkorUI.alert('', {
+                    title:'삭제된 게시물 입니다.', 
+                    ok : function (){ 
+                        location.href = "/story/stanbyme-club/stanbyme-club-list?tab=prod2";
+                    }
+                });
             }
         };
 
         if($('.contents.stanbyme .visual-wrap').length > 0){ // 리스트
             stanbymeList.init();
         }else if($('.contents.stanbyme .stanbyme-detail').length > 0){  // 상세 
-            stanbymeCommentList.init();
+            stanbymeDetail.init();
         } else {
             stanbymeWrite.init();
         }
