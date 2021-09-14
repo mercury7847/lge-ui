@@ -346,7 +346,7 @@ CS.MD.search = function() {
             } else {
                 self.$el.find('.autocomplete-box').find('ul').hide();
                 self.$el.find('.autocomplete-box').find('.no-keyword').show();
-            }
+            } 
         },
         _search: function() {
             var self = this;

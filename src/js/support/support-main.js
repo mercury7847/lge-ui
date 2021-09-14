@@ -1060,7 +1060,7 @@
                 var url = $searchWrap.data('searchUrl');
 
                 $searchInput.on('keyup', function(e) {
-                    if (e.keyCode == 13) { 
+                    if (e.keyCode == 13) {  
                         e.preventDefault();
                         var _value = $searchInput.val();
                         lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', '/acecount/mainSearchClickm.do');
