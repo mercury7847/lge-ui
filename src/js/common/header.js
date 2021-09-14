@@ -743,7 +743,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                 '<a href="/my-collection/"><span>마이컬렉션</span></a>' +
                             '</li>' +
                             '<li class="list-item nav-anchor">' +
-                                '<a href="#"><span>전체메뉴</span></a>' +
+                                '<a href="#"><span>메뉴</span></a>' +
                             '</li>' +
                         '</ul>' +
                     '</div>';
