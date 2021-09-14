@@ -1065,6 +1065,7 @@
                         var _value = $searchInput.val();
                         lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', '/acecount/mainSearchClickm.do');
                         _value = _value.replace(/(<([^>]+)>)/ig,""); //BTOCSITE-5089
+                        _value = _value.replace(/<\/([^>]+)/ig,""); //BTOCSITE-5089
                         location.href = url + encodeURI(_value)
                     }
                 });
@@ -1072,6 +1073,7 @@
                 $searchWrap.find('.btn-search').on('click', function() {
                     var _value = $searchInput.val();
                     _value = _value.replace(/(<([^>]+)>)/ig,""); //BTOCSITE-5089
+                    _value = _value.replace(/<\/([^>]+)/ig,""); //BTOCSITE-5089
                     lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainSearchClick.do', '/acecount/mainSearchClickm.do');
                     location.href = url + encodeURI(_value)
                 });
@@ -1079,6 +1081,8 @@
                 $searchWrap.on('keywordClick', function() {
                     var _value = $searchInput.val();
                     _value = _value.replace(/(<([^>]+)>)/ig,""); //BTOCSITE-5089
+                    _value = _value.replace(/<\/([^>]+)/ig,""); //BTOCSITE-5089
+                    
                     location.href = url + encodeURI(_value)
                 });
 
