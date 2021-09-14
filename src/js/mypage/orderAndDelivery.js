@@ -960,80 +960,76 @@
             }
         });
     }
+
     //취소신청 확인...
     function cancelSubmit(){
         //변수 추가 210824 BTOCSITE-4124
         var $cashChk = $('#popup-cancel').hasClass('cash-chk');
         //210824 BTOCSITE-4124 로직 변경 - 현금결제일 경우 체크
-        if($cashChk == true){
-            //console.log('현금결제');
-            //openCancelPop(dataID);
-            cancelOk();
+        var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
+        if(!chkItems.length){
+            lgkorUI.alert("", {
+                title: "취소 대상 제품을 선택해 주세요."
+            });
 
-        } else {
-            //console.log('현금이외 결제'); //210823
+            return;
+        }
 
-            var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
-            if(!chkItems.length){
+        var selectReason = $('#popup-cancel').find('#cancelReason option:selected').val();
+        var writeReason = $('#popup-cancel').find('textarea').val();
+        var selectReasonTrim = selectReason.replace(/[_-]/gi, '');
+        var writeReasonTrim = writeReason.replace(/[_-]/gi, '');
+        var reason = "";
+        if(selectReasonTrim.length){
+            reason = selectReason == "etc" ? writeReason : selectReason;
+        }
+
+        if(writeReasonTrim.length) reason = writeReason;
+
+        if(reason == ""){
+            lgkorUI.alert("", {
+                title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
+            });
+
+            return;
+        }
+
+        if($('#popup-cancel').data('isBank')){
+            if(!getBankBnumberValidation('popup-cancel')) return;
+    
+            var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
+            var paymentBank = $('#popup-cancel').find('.bank-input-box select option:selected').val();
+            if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
                 lgkorUI.alert("", {
-                    title: "취소 대상 제품을 선택해 주세요."
+                    title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
                 });
-
-                return;
-            }
-
-            var selectReason = $('#popup-cancel').find('#cancelReason option:selected').val();
-            var writeReason = $('#popup-cancel').find('textarea').val();
-            var selectReasonTrim = selectReason.replace(/[_-]/gi, '');
-            var writeReasonTrim = writeReason.replace(/[_-]/gi, '');
-            var reason = "";
-            if(selectReasonTrim.length){
-                reason = selectReason == "etc" ? writeReason : selectReason;
-            }
-
-            if(writeReasonTrim.length) reason = writeReason;
-
-            if(reason == ""){
-                lgkorUI.alert("", {
-                    title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
-                });
-
+    
                 return;
             }
     
-            if($('#popup-cancel').data('isBank')){
-                if(!getBankBnumberValidation('popup-cancel')) return;
-        
-                var paymentBankNumber = $('#popup-cancel').find('.bank-input-box input').val();
-                var paymentBank = $('#popup-cancel').find('.bank-input-box select option:selected').val();
-                if(!popBankConfirm || popBankInfo.paymentBank != paymentBank || popBankInfo.paymentBankNumber != paymentBankNumber){
-                    lgkorUI.alert("", {
-                        title: "'환불계좌확인' 버튼을 클릭하여 계좌번호를 확인해주세요."
-                    });
-        
-                    return;
-                }
-        
-                // if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
-                //     lgkorUI.alert("", {
-                //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
-                //     });
-        
-                //     return;
-                // }
-            }
+            // if(!$("#popup-cancel").find('.chk-wrap.bottom input[type=checkbox]').prop("checked")){
+            //     lgkorUI.alert("", {
+            //         title: "환불을 위한 개인정보 수집 처리에 동의해 주세요."
+            //     });
+    
+            //     return;
+            // }
+        }
 
-            var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
-            if(isAgreeChk){
-                if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
-                    lgkorUI.alert("", {
-                        title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
-                    });
-        
-                    return;
-                }
+        var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
+        if(isAgreeChk){
+            if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
+                lgkorUI.alert("", {
+                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                });
+    
+                return;
             }
-            
+        }
+        
+        if($cashChk == true){
+            cancelOk();
+        } else {
             lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
                 title: "",
                 cancelBtnName: "아니오",
