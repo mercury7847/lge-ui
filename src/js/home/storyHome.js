@@ -191,6 +191,8 @@
             loadStoryList('new_story', 1, 'NewStory');
 
             $context.find('.user_story').hide();
+            $context.find('.tag-subscribe-story3').hide();
+
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, 'UserStory');
             } 
@@ -352,10 +354,7 @@
             
             // console.log("result", result)
 
-            //BTOCSITE-188
-            if( sendata.tag.length == 0) {
-                lgkorUI.removeCookieArrayValue('storyHomeFirstTagSet', "Y")
-            }
+            
             $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");
@@ -442,6 +441,7 @@
             var sectionItem = $('.' + sectioname)
             var page = parseInt(result.param.pagination.page);
             var totalcnt = parseInt(result.param.pagination.totalCount);
+            var story3 = '.tag-subscribe-story3';
             sectionItem.data("page", page);
 
             if(page == 1){
@@ -464,7 +464,6 @@
                 sectionItem.prepend(stickyTag);
 
                 sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
-
                 $context.find('.user_story').find('.story-title-area').hide();
             } else{
                 viewMode = "listMode";
@@ -494,27 +493,29 @@
                         if(viewMode == "listMode" && sectioname == "user_story"){
                             $context.find('.tag-subscribe-story').empty().hide();
 
-                            var $story3 = $context.find('.tag-subscribe-story3');
-
                             var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
                             list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
                             // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
 
                             //BTOCSITE-188
-                            if( $story3.length) {
-                                $story3.empty().show().append(list)
+                            if( result.data.storyList.length > 0) {
+                                if( $context.find(story3).length) {
+                                    $context.find(story3).empty().show().append(list)
+                                } else {
+                                    $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
+                                    $context.find(story3).show().append(list)
+                                }
                             } else {
-                                $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
-                                $context.find('.tag-subscribe-story3').show().append(list)
+                                $context.find(story3).hide();
                             }
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                             // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
-
-                            if( lgkorUI.getCookie('storyHomeFirstTagSet') == "Y") {
+                            // console.log("lgkorUI.getCookie('storyHomeFirstTag')", lgkorUI.getCookie('storyHomeFirstTag'))
+                            if( lgkorUI.getCookie('storyHomeFirstTag') == "Y") {
 
                             } else {
                                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
-                                lgkorUI.setCookie('storyHomeFirstTagSet', "Y", 30)
+                                lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
                             }
                         }
                     } else{
@@ -530,6 +531,7 @@
                     if(viewMode == "selectTagMode"){
                         if(sectioname == "new_story"){
                             $context.find('.user_story').hide();
+                            $context.find(story3).hide(); //BTOCISTE-188
                         } else $context.find('.new_story').hide();
 
                         $context.find('.tag-subscribe-story').hide();
@@ -558,8 +560,9 @@
                     /* 20210518 추가 */    
                     $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
                     /* //20210518 추가 */
+                    $context.find(story3).hide();//BTOCISTE-188
+                    lgkorUI.removeCookieArrayValue("storyHomeFirstTag", "Y");//BTOCISTE-188
                     $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
-
                     $context.find('.new_story').find('.inner h2.title').hide();
                 }
                 sectionItem.hide();
