@@ -719,33 +719,14 @@
                     border-bottom:1px solid #ddd;
                     color:$color-primary;
                 }
-                .txt-exp{
-                    font-weight:$font-weight-bold;
-                }
-                .txt-list{
-                    margin-top:5px;
+                .txt-info-list{
+                    padding-left:14px;
                     >li{
-                        padding-left: 6px;
-                        word-break: keep-all;
-                        &:before{
-                            content:'·';
-                            display: inline-block;
-                            margin-left: -9px;
-                            margin-right: 2px;
-                        }
-                        ul{
-                            >li{
-                                font-weight:$font-weight-bold;
-                                word-break: keep-all;
-                                &:before{
-                                    content:'-';
-                                    display: inline-block;
-                                    margin-right: 2px;
-                                }
-                            }
+                        list-style: decimal;
+                        +li{
+                            margin-top:3px;
                         }
                     }
-
                 }
                 .desc {
                     padding-left: 12px;
