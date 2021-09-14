@@ -1091,10 +1091,8 @@
                 if ($('.section-inner').hasClass('manager-info') == true) {
                     if (lgkorUI.getStorage('managerInfoLink')){        
                         var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
-                        setTimeout(function () { 
                         $('html, body').animate({scrollTop:managerInfoPosition - 70}, 0);
                         lgkorUI.removeStorage(managerInfoLink);
-                        }, 2000);
                     };
                 } else {
                     lgkorUI.removeStorage(managerInfoLink);

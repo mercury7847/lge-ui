@@ -262,7 +262,6 @@
 
         // BTOCSITE-2838 : 매니저 정보로 이동 s
         var managerInfoLink= 'managerInfoLink';
-        lgkorUI.setStorage(managerInfoLink, false);
         $('.btn-manager-info').on('click', function(e){
             e.preventDefault();
             lgkorUI.setStorage(managerInfoLink, true);
