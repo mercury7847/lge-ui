@@ -188,14 +188,14 @@
                     console.log("formData");
                     
 
-                    for (var p of formData) {
-                        let name = p[0];
-                        let value = p[1];
+                    // for (var p of formData) {
+                    //     let name = p[0];
+                    //     let value = p[1];
                     
-                        console.log(name, value)
-                    }
+                    //     console.log(name, value)
+                    // }
 
-                    // return;
+                    // // return;
         
                     lgkorUI.showLoading();
 
