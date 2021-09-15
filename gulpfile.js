@@ -202,6 +202,7 @@ gulp.task("scripts", () => {
         "jsCompile:search",
         "jsCompile:caresolution",
         "jsCompile:store",
+        "jsCompile:story",
         "jsCompile:membership",
         "jsCompile:homebrew",
         "jsCompile:event",
@@ -316,6 +317,14 @@ gulp.task("jsCompile:store", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/store/"))
+);
+gulp.task("jsCompile:story", () => gulp
+    .src(src + "/js/story/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/story/"))
 );
 gulp.task("jsCompile:membership", () => gulp
     .src(src + "/js/membership/**/*")

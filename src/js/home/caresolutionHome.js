@@ -249,7 +249,6 @@ $(function(){
         var careProductUrl = $context.find('.care-recommended').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeCareProductList.json';
 
         function requestTab(){
-
             lgkorUI.requestAjaxDataFailCheck(careProductUrl, {}, function(result){
 
                 var data = result.data;
@@ -323,17 +322,65 @@ $(function(){
                             }
                         }
                     };
-                    care_cecommended.vcGesture({
-                        direction: 'horizontal'
-                    }, { passive: false }).on('gestureend', function (e, data) {
-                        // gesturestart gesturemove gestureend gesturecancel
-                        /* 탭 방향 전환 */
-                        if (data.direction === 'left') {
-                            tab.nav.next();
-                        } else {
-                            tab.nav.prev();
-                        }
-                    });
+                    
+                    //BTOCSITE-2196 -start
+                    if( !vcui.detect.isMobileDevice) {
+                        care_cecommended.vcGesture({
+                            direction: 'horizontal'
+                        }, { passive: false }).on('gestureend', function (e, data) {
+                            // gesturestart gesturemove gestureend gesturecancel
+                            /* 탭 방향 전환 */
+                            if (data.direction === 'left') {
+                                tab.nav.next();
+                            } else {
+                                tab.nav.prev();
+                            }
+                        });
+                    } else {
+                        var touchFlag = true;
+                        var touchFlagTid = 0;
+    
+                        care_cecommended.on('touchstart', function(e){
+                            var $this = $(this);
+                            var startX = e.changedTouches[0].clientX;
+                            var startY = e.changedTouches[0].clientY;
+                            var endX = 0;
+                            var endY = 0;
+     
+                            $this.on('touchend', function(ev){
+                                endX = ev.changedTouches[0].clientX;
+                                endY = ev.changedTouches[0].clientY;
+
+                                var dirLeft = startX - endX < 0;
+                                var rangeX = Math.abs(startX - endX);
+                                var rangeY = Math.abs(startY - endY);
+
+                                if( rangeY > 30) return;
+                                
+                                if( touchFlag == true && rangeX > 100 ) {
+                                    touchFlag = false;
+                                    if(dirLeft) {
+                                        tab.nav.prev();
+                                        console.log('left')
+                                    } else {
+                                        tab.nav.next();
+                                        console.log('right')
+                                    }
+
+                                    clearTimeout(touchFlagTid);
+                                    touchFlagTid = setTimeout(function(){
+                                        touchFlag = true;
+
+                                        console.log("rangeX", rangeX)
+                                        console.log("rangeY", rangeY)
+                                    }, 50);
+                                }
+                                
+                            });
+                        });
+                    }
+                    //BTOCSITE-2196 -end
+
 
                     /* 탭 클릭시 인덱스를 세션스토리지에 기록 */
                     var store = window.sessionStorage;
@@ -497,5 +544,5 @@ $(function(){
             smoothScroll:'.ui_smooth_tab'
         }});
         */
-    });    
+    }); 
 });

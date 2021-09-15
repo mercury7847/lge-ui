@@ -1,4 +1,4 @@
-body {
+html {
     @include mobile {
         overflow-x:hidden; //BTOCSITE 1814건 결함 수정
     }
@@ -2089,9 +2089,9 @@ html {
 
 //BTOCSITE-1967 웹하단바
 .is-web-status-bar {
-    body {
-        padding-bottom:70px;
-    }
+    // body {
+    //     padding-bottom:70px;
+    // }
     
     .utility {
         right:11px;

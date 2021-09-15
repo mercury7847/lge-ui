@@ -724,7 +724,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
 
             //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
-            if( vcui.detect.isMobileDevice && !isApp()) {
+            if( vcui.detect.isMobileDevice && !isApp() && window.innerWidth < 768) {
                 if( $('.mobile-status-bar').filter(':visible').length ) {
                     $('html').addClass('is-web-status-bar')
                 } else {
@@ -743,7 +743,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                                 '<a href="/my-collection/"><span>마이컬렉션</span></a>' +
                             '</li>' +
                             '<li class="list-item nav-anchor">' +
-                                '<a href="#"><span>전체메뉴</span></a>' +
+                                '<a href="#"><span>메뉴</span></a>' +
                             '</li>' +
                         '</ul>' +
                     '</div>';

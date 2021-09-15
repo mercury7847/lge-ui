@@ -4,6 +4,7 @@
 .btn-group {
     margin:64px auto 0;
     @include mobile {
+        margin-top: 32px;
         padding: 0 16px;
     }
 }
@@ -1159,6 +1160,7 @@
                 input[type="file"]:focus + .btn-upload {
                     outline:1px solid #000;
                 }
+                .btn-file-del, // BTOCSITE-4357 스탠바이미 PDP 내 고객문의 Q&A 생성 요청
                 .btn-del {
                     display:none;
                     width:24px;

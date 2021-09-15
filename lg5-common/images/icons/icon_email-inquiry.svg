@@ -1,21 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <path d="M0 0H160V160H0z" transform="translate(-554 -4900) translate(80 4564) translate(474 336)"/>
-                    <g transform="translate(-554 -4900) translate(80 4564) translate(474 336) translate(26 26)">
-                        <g stroke="#000" stroke-width="5">
-                            <path d="M0 40l20.477-9.004v21.002L56 73l33.719-21.002V31.344L108 40"/>
-                            <path d="M88 3.376H22c-.414 0-.79.168-1.06.44-.272.27-.44.646-.44 1.06v46.867l35.465 21.2L89.5 51.782V4.876c0-.414-.168-.79-.44-1.06-.27-.272-.646-.44-1.06-.44z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M0 40l56 33 52-33v62c0 2.21-1.79 4-4 4H4c-2.21 0-4-1.79-4-4V40h0z"/>
-                        </g>
-                        <rect width="46" height="5" x="32" y="18" fill="#DA0F47" rx="2.5"/>
-                        <rect width="46" height="5" x="32" y="30" fill="#DA0F47" rx="2.5"/>
-                        <rect width="30" height="5" x="32" y="42" fill="#DA0F47" rx="2.5"/>
-                    </g>
-                </g>
-            </g>
-        </g>
+<svg id="img_CS_email_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px}.cls-2{stroke:#000}.cls-3{stroke:#da0f47}
+        </style>
+    </defs>
+    <g id="ic" transform="translate(12 13)">
+        <path id="Combined_Shape" data-name="Combined Shape" class="cls-2" d="M55 0v32.225a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V0" transform="translate(0 15.15)"/>
+        <path id="Path" class="cls-2" d="M0 22h0V1.849A1.975 1.975 0 0 1 2.081 0h30.838A1.975 1.975 0 0 1 35 1.849v19.92h0" transform="translate(10)"/>
+        <path id="Path-2" data-name="Path" class="cls-2" d="m0 6.472 10-6" transform="translate(0 8.528)"/>
+        <path id="Path-3" data-name="Path" class="cls-2" d="m10.966 6.472-10-6" transform="translate(44.034 8.528)"/>
+        <path id="Path-4" data-name="Path" class="cls-2" d="m0 0 27.5 15.209L55 0" transform="translate(0 16.5)"/>
+        <path id="Line" class="cls-3" d="M0 .5h20" transform="translate(17.5 7)"/>
+        <path id="Line-2" data-name="Line" class="cls-3" d="M0 .5h10" transform="translate(17.5 19)"/>
+        <path id="Line-3" data-name="Line" class="cls-3" d="M0 .5h20" transform="translate(17.5 13)"/>
     </g>
 </svg>

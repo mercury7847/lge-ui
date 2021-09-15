@@ -92,6 +92,8 @@
             }
             
         }
+        //S: 2021-09-13 BTOCSITE-5579
+        .current-state .state-table th:first-child{border-left:0}
         @include mobile {
             .search-wrap {
                 margin-bottom:32px;
@@ -99,11 +101,10 @@
             .tabs-wrap {
                 margin-bottom:32px;
             }
+            //S: 2021-09-13 BTOCSITE-5579
+            .result-wrap tr td:first-child{display:none;}
             tr {
                 td {
-                    &:first-child{
-                        display:none;
-                    }
                     &:nth-child(3){
                         display:table-cell;
                     }
