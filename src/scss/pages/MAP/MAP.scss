@@ -114,11 +114,6 @@ body {
 }
 
 .lyr-opt-panel {
-    *{
-        &:focus{
-            outline:none;
-        }
-    }
     position: fixed;
     left: 100%;
     top: 0;
@@ -534,6 +529,9 @@ body {
             }
         }
     }
+    *:focus{
+        outline:none;
+    }
 }
 
 .lyr-modal {
@@ -689,6 +687,9 @@ body {
                     }
                 }
             }
+        }
+        &:focus{
+            outline:none;
         }
     }
 }
