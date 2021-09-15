@@ -93,7 +93,9 @@ MainSwiper.prototype = {
                         */
                       
                     }
-                    
+
+                    //BTOCSITE_1967
+                    self.setStatusBar(swiper);
 
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                 },
@@ -140,6 +142,9 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
+                    //BTOCSITE_1967
+                    self.setStatusBar(swiper);
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
@@ -445,6 +450,19 @@ MainSwiper.prototype = {
         } else {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
+    },
+    setStatusBar: function(swiper){
+         //BTOCSITE_1967
+         var currentSlide = swiper.slides[swiper.activeIndex];
+         if( $(currentSlide).find('.mobile-status-bar').length ) {
+             $('.wrap').data('slideStatus' + swiper.activeIndex, $(currentSlide).find('.mobile-status-list').html())
+             $(currentSlide).find('.mobile-status-bar').appendTo('.wrap');
+         } else {
+             var $statusbarCloned = $('.wrap').find('> .mobile-status-bar');
+             if( $statusbarCloned.length ) {
+                 $statusbarCloned.html($('.wrap').data('slideStatus' + swiper.activeIndex));
+             }
+         }
     }
 }
 
