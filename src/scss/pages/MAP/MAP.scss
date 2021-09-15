@@ -688,6 +688,9 @@ body {
                 }
             }
         }
+        &:focus{
+            outline:none;
+        }
     }
 }
 
