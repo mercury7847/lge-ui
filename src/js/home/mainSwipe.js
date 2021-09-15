@@ -46,6 +46,7 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
+        this.setStatusBarInit();
         
     },
     setSwipe : function(){
@@ -73,6 +74,8 @@ MainSwiper.prototype = {
                 'init' : function(swiper){   
                     self.isSwiped = false;    // BTOCSITE-2947 add
 
+                    
+
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
@@ -94,10 +97,11 @@ MainSwiper.prototype = {
                       
                     }
 
-                    //BTOCSITE_1967
-                    self.setStatusBar(swiper);
-
+                    
+                    
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
+                    
+                    self.removeStatusBar();//BTOCSITE-1967
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -111,6 +115,8 @@ MainSwiper.prototype = {
                     if (mainSwiper.currentIdx < swiper.activeIndex){
                         mainSwiper.customEventActionString = '스와이프 - 우측';
                     }
+
+                    self.removeStatusBar();//BTOCSITE-1967
 
                     //console.log('customEventActionString' , mainSwiper.customEventActionString);
 
@@ -144,7 +150,7 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
                     //BTOCSITE_1967
-                    self.setStatusBar(swiper);
+                    //self.setStatusBar(swiper);
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
@@ -274,6 +280,8 @@ MainSwiper.prototype = {
 
             self.isLoading = false;
             self.getContent();
+            //BTOCSITE_1967
+            //self.setStatusBar(currentSlide);
             /*
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
@@ -451,18 +459,18 @@ MainSwiper.prototype = {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
     },
-    setStatusBar: function(swiper){
-         //BTOCSITE_1967
-         var currentSlide = swiper.slides[swiper.activeIndex];
-         if( $(currentSlide).find('.mobile-status-bar').length ) {
-             $('.wrap').data('slideStatus' + swiper.activeIndex, $(currentSlide).find('.mobile-status-list').html())
-             $(currentSlide).find('.mobile-status-bar').appendTo('.wrap');
-         } else {
-             var $statusbarCloned = $('.wrap').find('> .mobile-status-bar');
-             if( $statusbarCloned.length ) {
-                 $statusbarCloned.html($('.wrap').data('slideStatus' + swiper.activeIndex));
-             }
+    setStatusBarInit: function(){
+        //BTOCSITE_1967
+        var self = this;
+        var $statusBar = $('.wrap').children('.mobile-status-bar');
+         
+         if( $statusBar.length > 1) {
+             $statusBar.first().siblings('.mobile-status-bar').remove();
          }
+    },
+    removeStatusBar: function(){
+        //BTOCSITE_1967
+        $('.swiper-slide').find('.mobile-status-bar').remove();
     }
 }
 
