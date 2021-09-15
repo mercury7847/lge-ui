@@ -463,7 +463,7 @@
                 var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
                 sectionItem.prepend(stickyTag);
 
-                sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
+                // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
                 $context.find('.user_story').find('.story-title-area').hide();
             } else{
                 viewMode = "listMode";
