@@ -46,8 +46,6 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
-        this.setStatusBarInit();
-        
     },
     setSwipe : function(){
         var self = this;
@@ -459,18 +457,13 @@ MainSwiper.prototype = {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
     },
-    setStatusBarInit: function(){
-        //BTOCSITE_1967
-        var self = this;
-        var $statusBar = $('.wrap').children('.mobile-status-bar');
-         
-         if( $statusBar.length > 1) {
-             $statusBar.first().siblings('.mobile-status-bar').remove();
-         }
-    },
     removeStatusBar: function(){
         //BTOCSITE_1967
-        $('.swiper-slide').find('.mobile-status-bar').remove();
+        if( !$('.swiper-slide').find('.mobile-status-bar').length ) {
+            return;
+        } else {
+            $('.swiper-slide').find('.mobile-status-bar').remove();    
+        }
     }
 }
 
