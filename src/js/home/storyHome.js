@@ -446,7 +446,7 @@
 
             if(page == 1){
                 sectionItem.find('.flexbox-wrap').empty();
-                sectionItem.find('.ui_sticky').parent().remove();
+                sectionItem.find('.ui_sticky').remove();
             }
 
             if(page == totalcnt) sectionItem.find('.btn-moreview').css('display','none');
