@@ -727,7 +727,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$statusBar = $('.mobile-status-bar');
 			self.$statusList = self.$statusBar.find('.mobile-status-list');
             
-            self.$statusList.find('.nav-anchor a').on('click', function(e){
+            $(document).on('click', '.mobile-status-bar .nav-anchor a', function(e){
 				e.preventDefault();
 
                 if(vcui.detect.isMobileDevice && window.innerWidth < 768 && !isApp()) {
