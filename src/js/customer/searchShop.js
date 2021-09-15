@@ -220,18 +220,17 @@
                             self._requestSaleStoreData();
     
                         }else{
-    
                             if(self.userLatitude && self.userLongitude) {
-                                // 사용자 위치가 있을때 사용자 위치 기준 반경 25Km 검색
-                                nArr = self._filterDistance(self.totalStoreData , {lat: self.userLatitude, long:self.userLongitude, limit:25});
+                                // BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15
+                                // 사용자 위치가 있을때 사용자 위치 기준 반경 25Km 검색 //에서 100km 수정 2021-09-13
+                                nArr = self._filterDistance(self.totalStoreData , {lat: self.userLatitude, long:self.userLongitude, limit:100}).slice(0,7);
                                 self.$map.draw(nArr, self.userLatitude, self.userLongitude, null, true);
-    
                             }else{
-                                // 아무설정이 없을때 강남본점 기준을 반경 25Km 검색
-                                nArr = self._filterDistance(self.totalStoreData , {lat: self.currentLatitude, long:self.currentLongitude, limit:25});
+                                // BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15
+                                // 아무설정이 없을때 강남본점 기준을 반경 25Km 검색 //에서 100km 수정 2021-09-13
+                                nArr = self._filterDistance(self.totalStoreData , {lat: self.currentLatitude, long:self.currentLongitude, limit:100}).slice(0,7);
                                 self.$map.draw(nArr, self.currentLatitude, self.currentLongitude, null, true);
                             }
-    
                         }
     
                     }).on('mapchanged', function(e, data){	
@@ -708,9 +707,15 @@
                 var keywords = self._getKeyword();
     
                 if(lat && long){
+                    /* BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
                     // 내주소로 검색 반경 5Km 내 검색
-                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:10});
-                    nArr = self._filterOptions(nArr, keywords);               
+                    //var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:10}); //원본
+                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:100}).slice(0, 7);
+    
+                    nArr = self._filterOptions(nArr, keywords);
+    
+                    //console.log("nArr은 선택된 시/도의 전체:", nArr.length);
+                    /* //BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */             
     
                     if(nArr.length==0){
     
@@ -1078,9 +1083,23 @@
                 switch(self.searchType){
                     case "local":
                         if(self._searchFieldValidation(self.$citySelect, "시/도를 선택해주세요.")){
-                            if(self._searchFieldValidation(self.$boroughSelect, "구/군을 선택해주세요.")){                            
+                            /* BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
+                            var $mapLocY = self.$citySelect.find(':selected').data('locationy');
+                            var $mapLocX = self.$citySelect.find(':selected').data('locationx');
+    
+                            //console.log("111. val테스트 :", self.$citySelect.val());
+                        
+                            self._renderStore($mapLocY, $mapLocX); 
+
+                            //console.log(self._renderStore($mapLocY, $mapLocX));
+                            //console.log(self._renderStore());
+                            
+                            //2차 구/군 선택할때
+                            if(!self.$boroughSelect.val() == false) {
+                                //console.log("222. val테스트 :", self.$boroughSelect.val());
                                 self._renderStore();
                             }
+                            /* //BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
                         }
                         break;
     
