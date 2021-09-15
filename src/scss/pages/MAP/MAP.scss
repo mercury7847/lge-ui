@@ -114,6 +114,11 @@ body {
 }
 
 .lyr-opt-panel {
+    *{
+        &:focus{
+            outline:none;
+        }
+    }
     position: fixed;
     left: 100%;
     top: 0;
