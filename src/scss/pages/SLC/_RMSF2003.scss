@@ -1453,7 +1453,7 @@ br.pc-only {
 }
 
 //BTOCSITE-1967
-.is-web-status-bar {
+.mdevice:not(.app) {
     $statusBarHeight: 70px;
     .care-plan {
         .default-bottom-wrap,

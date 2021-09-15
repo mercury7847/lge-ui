@@ -887,8 +887,8 @@
     }
 }
 
-//BTOCSITE-1967
-.is-web-status-bar {
+/* BTOCSITE-1967 */
+.mdevice:not(.app) {
     .lay-filter {
         .plp-filter-wrap {
             padding-bottom:80px;
