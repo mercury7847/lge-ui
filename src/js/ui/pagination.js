@@ -124,7 +124,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if(self.options.scrollTarget) {
                     $('html, body').animate({"scrollTop": self.options.scrollTarget.offset().top}, 0);
                 } else {
-                    $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
+                    if(self.options.scrollTop !== 'noUse') $('html, body').animate({"scrollTop": self.options.scrollTop }, 0);
                 }
                 /*
                 if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {

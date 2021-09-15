@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CPR/CPR"],
+        pageCSS: ["STS/STS"],
+        pageJS: ["story/stanbyMe"],
         pageTitle: "스탠바이미 클럽 | LG전자",
         pageDesc: "LG전자 스탠바이미에 대한 문의사항, 리뷰를 등록할 수 있는 스탠바이미 클럽 입니다."
     })
@@ -19,7 +20,7 @@
                         <form action="" method="post" id="submitForm" data-ajax="" novalidate>
                             <div class="section">
                                 <div class="tit-wrap">
-                                    <h2 class="tit">등록하기</h2>
+                                    <h2 class="tit">수정하기</h2>
                                 </div>
                                 <div class="section-box">
                                     <div class="form-wrap">
@@ -30,7 +31,7 @@
                                             <div class="conts">
                                                 <div class="text-form">
                                                     <div class="input-wrap">
-                                                        <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목을 입력해주세요. (50자 이하)" maxlength="50" data-limit="50" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
+                                                        <input type="text" name="title" id="title" class="ui_textcontrol" placeholder="제목을 입력해주세요. (50자 이하)" value="고객의 소리를 귀담아주세요!" maxlength="50" data-limit="50" data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요." data-required="true" required>
                                                         <span id="txt-count1" class="inner-text"><em>0</em>/50자</span>
                                                     </div>
                                                 </div>
@@ -47,7 +48,7 @@
                                             <div class="conts">
                                                 <div class="text-form">   
                                                     <div class="input-wrap">
-                                                        <textarea name="content" id="content" class="ui_textcontrol" placeholder="내용을 입력해주세요. (1,000자 이하)" maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required></textarea>
+                                                        <textarea name="content" id="content" class="ui_textcontrol" placeholder="내용을 입력해주세요. (1,000자 이하)" value="고객이 원하는 상품을 내놓았지만 이렇게 못파는 것도 문제입니다!분명히 온라인사이트에선 8월초부터 풀린다고 정확하게 기재되있어서 구매 하게되었어요 분명한건 8월말로 해놨다가 초로 바꾸신거보고 제가 가게에 새롭게 오브제를 과감하게 빼고 스탠바이미를! 가운데일날이여서 !! 제일 늦에인 8월 10일로 잡았구요! 첫희망 배송일은 8월 3일이였어요 인테리어까지 중간에 변경한 부분이에요! " maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-error-msg="내용을 입력해주세요." data-required="true" required></textarea>
                                                         <span id="txt-count2" class="inner-text"><em>0</em>/1000자</span>
                                                     </div>
                                                 </div>
@@ -120,7 +121,7 @@
                                                 </div>
                                                 @@include('./common/modules/bullet-list.html', {
                                                     "bulletTxt" : [
-                                                        "첨부파일은 최대 4개까지 등록 가능하며, 전체 용량은 000MB 이하까지 업로드 가능합니다.",
+                                                        "첨부파일은 최대 4개까지 등록 가능하며, 파일별 최대 용량은 10MB 이하까지 업로드 가능합니다.",
                                                         "이미지명은 특수기호(? ! , . & ^ ~ )를 제외해주세요. (첨부 가능 확장자 jpg, jpeg, png, gif)"
                                                     ]
                                                 })
@@ -129,7 +130,7 @@
                                         @@include('./common/modules/bullet-list.html', {
                                             "topBorder" : true,
                                             "bulletTxt" : [
-                                                "작성된 글은 저작권/초상권, 음란성/홍보성, 욕설/비방 등의 성격에 따라 관리자에 의해 통보 없이 임의 삭제 될 수 있습니다"
+                                                 "저작권,초상권,음란성,홍보성,욕설,비방 등 게시판 취지에 맞지 않은 글은 운영자에 의해 통보 없이 임의 삭제 될 수 있습니다."
                                             ]
                                         })
                                     </div>
@@ -138,7 +139,7 @@
 
                             <div class="btn-group center">
                                 <button type="button" class="btn gray" data-href="#canclePopup" data-control="modal"><span>취소</span></button>
-                                <button type="button" class="btn btn-confirm">확인</button>
+                                <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">수정완료</button>
                             </div>
                         </form>
                     </div>
@@ -162,9 +163,5 @@
         </div>
     </article>
 
-    <!-- support script -->
-    <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/customVoice/suggestions.min.js"></script>
-    <script src="/lg5-common/js/store/stanbyMe.min.js"></script>
 </body>
 </html>

@@ -72,12 +72,12 @@
                     self.$floatingWrap.removeClass('open');
                     //닫기
                     self.moreButton.attr('aria-expanded',false);
-                    self.moreButton.find('span').text('더보기 열기');
+                    self.moreButton.find('span').text('서비스 메뉴 열기'); //BTOCSITE-5223 : 플로팅 버튼 GA 수정 2021-09-14
                 } else {
                     self.$floatingWrap.addClass('open');
                     //열기
                     self.moreButton.attr('aria-expanded',true);
-                    self.moreButton.find('span').text('더보기 닫기');
+                    self.moreButton.find('span').text('서비스 메뉴 닫기'); //BTOCSITE-5223 : 플로팅 버튼 GA 수정 2021-09-14
                 }
             });
 
@@ -212,7 +212,14 @@
 
 	};
 
-
+    // BTOCSITE-2838 : 매니저 정보로 이동 s
+    var managerInfoLink= 'managerInfoLink';
+    $('.btn-manager-info').on('click', function(e){
+        e.preventDefault();
+        lgkorUI.setStorage(managerInfoLink, true);
+        location.href='/my-page/care-solution-contract-status';
+    });
+    // BTOCSITE-2838 :매니저 정보로 이동 e 
 
 
     $(document).ready(function(){
@@ -259,6 +266,5 @@
         }
         
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
-        
     });
 })();

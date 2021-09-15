@@ -109,9 +109,9 @@
         },
         "serviceMenu"  : [
             {
-                "name" : "채팅 상담",
+                "name" : "챗봇 상담",
                 "url" : "/",
-                "imgUrl" : "/lg5-common/images/icons/icon_chat.svg"
+                "imgUrl" : "/lg5-common/images/icons/icon_chatBot.svg"
             },
             {
                 "name" : "이메일 문의",
@@ -129,14 +129,9 @@
                 "imgUrl" : "/lg5-common/images/icons/icon_engineer-reservation.svg"
             },
             {
-                "name" : "센터방문예약",
+                "name" : "설치/철거 예약",
                 "url" : "/",
-                "imgUrl" : "/lg5-common/images/icons/icon_center-reservation.svg"
-            },
-            {
-                "name" : "매장방문예약",
-                "url" : "/",
-                "imgUrl" : "/lg5-common/images/icons/icon_store-reservation.svg"
+                "imgUrl" : "/lg5-common/images/icons/icon_installation-reservation.svg"
             }
         ]
     }

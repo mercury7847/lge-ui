@@ -75,7 +75,10 @@
                 $('.arsAgreeRequestCheck').attr('disabled', true).show();
                 $('#iostxt').show();
             }
+
+   
         });
+        
     }
 
     function setting(){
@@ -1082,8 +1085,20 @@
                         setRequestCard();
                     }, 100);
                 });
-            } else{
-                $('html, body').animate({scrollTop:0}, 220);
+            } else {
+                // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+                var managerInfoLink= 'managerInfoLink';
+                    if (lgkorUI.getStorage('managerInfoLink') == true){ 
+                        if ($('.section-inner').hasClass('manager-info') == true) {
+                            var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
+                            $('html, body').animate({scrollTop:managerInfoPosition - 70}, 0);
+                        }       
+                        lgkorUI.removeStorage(managerInfoLink);
+                    } else {
+                        lgkorUI.removeStorage(managerInfoLink);
+                        $('html, body').animate({scrollTop:0}, 220);
+                    }
+                // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
             }
         }, ajaxMethod);
     }

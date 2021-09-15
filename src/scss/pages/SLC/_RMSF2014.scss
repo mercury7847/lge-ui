@@ -738,6 +738,7 @@ br.m {
                                     }
                                 }
                             }
+                            /* 2021.09.14 BTOCSITE-4515 : WHY 케어십 콘텐츠 수정 - (운영 현행화 : 실제 RMSF2002.scss 사용) */
                             &[class*="careship"] {
                                 &::before {
                                     width:80px;
@@ -756,6 +757,11 @@ br.m {
                                 &[class*="1-3"] {
                                     &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-refrigeratior-03.png');
+                                    }
+                                }
+                                &[class*="1-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
                                     }
                                 }
                                 &[class*="2-1"] {
@@ -778,6 +784,11 @@ br.m {
                                         background-image:url('/lg5-common/images/SLC/icon-water-04.png');
                                     }
                                 }
+                                &[class*="2-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
                                 &[class*="3-1"] {
                                     &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-air-01.png');
@@ -793,6 +804,11 @@ br.m {
                                         background-image:url('/lg5-common/images/SLC/icon-check.png');
                                     }
                                 }
+                                &[class*="3-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
                                 &[class*="4-1"] {
                                     &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-dryer-01.png');
@@ -806,6 +822,11 @@ br.m {
                                 &[class*="4-3"] {
                                     &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-dryer-03.png');
+                                    }
+                                }
+                                &[class*="4-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
                                     }
                                 }
                                 &[class*="5-1"] {
@@ -843,6 +864,16 @@ br.m {
                                         background-image:url('/lg5-common/images/SLC/icon-stove-03.png');
                                     }
                                 }
+                                &[class*="6-4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-stove-04.png');
+                                    }
+                                }
+                                &[class*="6-5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
+                                    }
+                                }
                                 &[class*="7-1"] {
                                     &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-dishwasher-01.png');
@@ -860,7 +891,17 @@ br.m {
                                 }
                                 &[class*="7-4"] {
                                     &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-dishwasher-04.png');
+                                    }
+                                }
+                                &[class*="7-5"] {
+                                    &::before {
                                         background-image:url('/lg5-common/images/SLC/icon-dishwasher-05.png');
+                                    }
+                                }
+                                &[class*="7-6"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-service.png');
                                     }
                                 }
                                 &[class*="8-1"] {
@@ -879,6 +920,7 @@ br.m {
                                     }
                                 }
                             }
+                            /* //2021.09.14 BTOCSITE-4515 : WHY 케어십 콘텐츠 수정 */
                             dt {
                                 position:relative;
                                 font-size:0;

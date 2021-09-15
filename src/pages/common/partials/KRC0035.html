@@ -51,7 +51,13 @@
         기본은 언더라인 없음
         .font-underline : 언더라인
     -->
+    
+    @@if ( !context.mHdlineTop ) {
     <section class="component KRC0035 @@align-class1 @@imgSizeType @@bg-color">
+    }
+    @@if ( context.mHdlineTop ) {
+    <section class="component KRC0035 @@align-class1 @@imgSizeType m-hdline-top">
+    }
         <div class="component-inner">
             <div class="inner">
                 @@if ( context.type2 ) {
