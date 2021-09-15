@@ -2484,13 +2484,6 @@
                 door4: "K491BB-GCL",
             },{
                 defaultCode: "Z491AAA151", 
-                modelCode: "Z491MBG151",
-                door1: "K491TT-MBK",
-                door2: "K491TT-MBK",
-                door3: "K491BB-MGY",
-                door4: "K491BB-MGY",
-            },{
-                defaultCode: "Z491AAA151", 
                 modelCode: "Z491GBP151",
                 door1: "K491TT-GBE",
                 door2: "K491TT-GBE",
@@ -5051,9 +5044,10 @@
         let slideWrapW = (slideW * slideLeng);
          //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
-        let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]');
+        let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]'); //4도어 추가 BTOCSITE-4239 210915
+        let subPickChkDoor3 = $('.btn_model_sub_pick[data-name="3도어"]'); //3도어 추가 BTOCSITE-4239 210915
         //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
-        if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true){
+        if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true || subPickChkDoor3.hasClass("is_selected") == true){
             $(slideTarget).find(".swiper-wrapper").css("width", "580px");
         }else{
             $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
