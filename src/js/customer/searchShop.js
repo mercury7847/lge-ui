@@ -1326,15 +1326,22 @@
                 var keywords = self._getKeyword();
                 var searchKeyword;
                 if(self.searchType == "local"){
+                    /* BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
+                    var cityname = self.$citySelect.find('option:selected').text();
+                    var borough = self.$boroughSelect.find('option:selected').text();
+                    
+                    var $boroughVal = self.$boroughSelect.find('option:selected');
+                    
                     if(!self.isUserAddressClick){
-                        
-                        var cityname = self.$citySelect.find('option:selected').text();
-                        var borough = self.$boroughSelect.find('option:selected').text();
-                        searchKeyword = cityname + " " + borough;
-    
+                        if( $boroughVal.val() != undefined && $boroughVal.val() != "") {
+                            searchKeyword = cityname + " " + borough;
+                        } else {
+                            searchKeyword = cityname;
+                        }
                     }else{
                         searchKeyword = self.userAddress;
                     }
+                    /* //BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
                 } else if(self.searchType == "subway"){
                     var stationame = self.$subwayStationSelect.find('option:selected').text();
                     searchKeyword = stationame;
