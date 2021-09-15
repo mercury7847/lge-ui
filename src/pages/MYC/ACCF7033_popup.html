@@ -11,7 +11,8 @@
         <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>다운로드/SW</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>사용설명서</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>보유 제품 직접 등록</span></button><br><br>
-        <button type="button" data-href="#popup4" data-control="modal" class="btn pink"><span>모델명 확인방법</span></button><br><br>
+        <!-- BTOCSITE-4086 -->
+        <button type="button" data-href="#popup4" data-control="modal" class="btn pink"><span>제품별 QR/모델명/제조번호 부착 위치</span></button><br><br>
     </div>
 
     <!-- 다운로드/SW -->
@@ -27,15 +28,23 @@
     <!-- // 사용설명서-->
 
     <!-- 내 보유 제품 등록 -->
-    @@include('./common/popup/ACCF7033_pop3.html', {
+    <!-- BTOCSITE-4086 -->
+    @@include('./common/popup/ACCF7033_pop5.html', {
         popupID: 'popup3'
     })
+    <!-- @@include('./common/popup/ACCF7033_pop3.html', {
+        popupID: 'popup3'
+    }) -->
     <!-- // 내 보유 제품 등록-->
 
     <!-- 모델명 확인방법 -->
-    @@include('./common/popup/CSRF6005_pop.html', {
+    <!-- BTOCSITE-4086 -->
+    @@include('./common/popup/CSRF6005_pop02.html', {
         popupID: 'popup4'
     })
+    <!-- @@include('./common/popup/CSRF6005_pop.html', {
+        popupID: 'popup4'
+    }) -->
     <!-- // 모델명 확인방법 -->
 
     <!-- 설치 전 주의사항 및 사용법 팝업 -->
