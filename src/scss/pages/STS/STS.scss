@@ -963,3 +963,10 @@
         }
     }
 }
+
+//BTOCSITE-188
+#popup-tagMnger {
+    @include mobile {
+        min-height:auto !important;
+    }
+}
