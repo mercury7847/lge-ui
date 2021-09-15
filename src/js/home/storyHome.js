@@ -74,7 +74,7 @@
         '<div class="flexbox-wrap">'+
             '<div class="flexbox tag-area">'+
                 '<div class="title-area">'+
-                    '<span class="title">이런 <em>#태그</em>를 <br class="mo-only ">어떠세요?</span>'+
+                    '<span class="title">이런 <em>#태그</em>는 <br class="mo-only ">어떠세요?</span>'+
                     '<a href="#" class="btn-link tagmnger-btn"><span>구독 중 태그 관리</span></a>'+
                 '</div>'+
                 '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
