@@ -529,9 +529,11 @@ body {
             }
         }
     }
+    /* BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
     *:focus{
         outline:none;
     }
+    /* //BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
 }
 
 .lyr-modal {
