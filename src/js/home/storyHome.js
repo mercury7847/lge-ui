@@ -501,8 +501,10 @@
                                     $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
                                     $context.find(story3).show().append(list)
                                 }
+                                $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next')
                             } else {
                                 $context.find(story3).hide();
+                                $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next')
                             }
                             $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                             // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
