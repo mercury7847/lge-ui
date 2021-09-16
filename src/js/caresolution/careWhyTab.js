@@ -361,11 +361,11 @@
 
                 var param = {
                     "tabID": "1",
-                    "modelID": optdata.siblingColors.modelId,
+                    "modelID": optdata.siblingColors && optdata.siblingColors.modelId  ? optdata.siblingColors.modelId  : '',
                     "rtModelSeq": _currentObj.rtModelSeq,
-                    "feeCd": optdata.siblingFee.value,
-                    "usePeriodCd": optdata.siblingUsePeriod.value,
-                    "visitCycleCd": optdata.siblingVisitCycle.value,
+                    "feeCd": optdata.siblingFee && optdata.siblingFee.value ? optdata.siblingFee.value : '',
+                    "usePeriodCd": optdata.siblingUsePeriod && optdata.siblingUsePeriod.value ? optdata.siblingUsePeriod.value : '',
+                    "visitCycleCd": optdata.siblingVisitCycle && optdata.siblingVisitCycle.value ? optdata.siblingVisitCycle.value : '',
                     "blockID": idx
                 }
                 var ajaxUrl = self.$contents.data('priceStatus');
