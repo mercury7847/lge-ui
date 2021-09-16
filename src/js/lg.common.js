@@ -404,13 +404,13 @@ var goAppUrl = function(path) {
                '^/benefits/event/?', // 이벤트 페이지
                '^/benefits/exhibitions/?', // 기획전 페이지
                '^/story/?$', // 스토리 페이지
-               '^/story/lifestyle/?', // 스토리 - lifestyle 상세 페이지
-               '^/story/trend/?', // 스토리 - trend 상세 페이지
-               '^/story/expert-curation/?', // 스토리 - 인사이드 대명장의 추천  상세 페이지
-               '^/story/only-and-best/?', // 스토리 -  인사이드 only & best 상세 페이지
-               '^/story/useful-tip/?', // 스토리 - 가이드&팁 상세 페이지
-               '^/story/user-guide/?', // 스토리 - 사용가이드 상세 페이지
-               '^/story/hands-on-reviews/?', // 스토리 - 고객리뷰 상세 페이지
+            //    '^/story/lifestyle/?', // 스토리 - lifestyle 상세 페이지
+            //    '^/story/trend/?', // 스토리 - trend 상세 페이지
+            //    '^/story/expert-curation/?', // 스토리 - 인사이드 대명장의 추천  상세 페이지
+            //    '^/story/only-and-best/?', // 스토리 -  인사이드 only & best 상세 페이지
+            //    '^/story/useful-tip/?', // 스토리 - 가이드&팁 상세 페이지
+            //    '^/story/user-guide/?', // 스토리 - 사용가이드 상세 페이지
+            //    '^/story/hands-on-reviews/?', // 스토리 - 고객리뷰 상세 페이지
 
 
                // pdp 
