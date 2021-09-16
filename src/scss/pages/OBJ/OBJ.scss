@@ -21,6 +21,9 @@
         .select_objet {
             bottom:(0 + $statusBarHeight)
         }
+        .simulator.full .objet_select_slider .img-download {
+            bottom:(0 + $statusBarHeight)
+        }
     }
 }
 
