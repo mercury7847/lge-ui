@@ -188,7 +188,7 @@
                 var $fileItem = $(el).closest('.file-item');
                 $fileItem.find("input[type='file']").data('fileFlag','delete');
                 $fileItem.find('.file-preview').empty();
-                $fileItem.find('.file-name').val('');
+                $fileItem.find('.file-name input').prop('placeholder','');
                 $fileItem.removeClass('modify');
             }
         };
