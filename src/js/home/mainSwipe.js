@@ -81,7 +81,6 @@ MainSwiper.prototype = {
                             document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                         })
                         mainSwiper.loadContent( currentSlide,true );
-                        // mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                     }
                     
                     else {
@@ -339,8 +338,6 @@ MainSwiper.prototype = {
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
                         }, 500);
                     });
-
-                    console.log('%cSwipe panel loaded: ' + (((new Date().getTime())-timingBegin)/1000).toFixed(2)+'s', 'background: green; color: white; padding: 5px 8px;')
                 });
             }
         });
