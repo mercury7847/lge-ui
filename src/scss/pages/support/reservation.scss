@@ -112,7 +112,49 @@
                 }
             }
         }
+        /* BTOCSITE-5594 */
+        +.cont-wrap.busi-trip{
+            .inquiry-list{
+                .description{
+                    .line{
+                        display:inline-block;
+                    }
+                    .btn{
+                        display:inline-block;
+                        margin:0 0 0 10px;
+                    }
+                }
+            }
+            .result-progress{
+                margin-top:-18px;
+                padding:0;
+                .desc{
+                    margin-bottom:55px;
+                }
+            }
+            .result-btn-group{
+                margin-top:56px;
+                background:none;
+                .group-box{
+                    max-width:568px;
+                    padding:0;
+                    text-align:center;
+                    .group-box-btngroup{
+                        .btn{
+                            margin:24px 0 0 14px;
+                            padding:0 5px;
+                            width:180px;
+                            height:46px;
+                            &:nth-of-type(1), &:nth-of-type(4){
+                                margin-left:0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+    /* //BTOCSITE-5594 */
 
     .engineer-to-visit {
         @include clearfix;

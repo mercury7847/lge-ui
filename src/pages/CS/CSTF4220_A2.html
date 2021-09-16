@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="result-header">
-                    <h2 class="tit">출장 서비스 예약</h2>
+                    <h2 class="tit">출장 서비스 접수 현황</h2> <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->
                 </div>
                 <div class="complete-summary">
                     <div class="box">
@@ -41,150 +41,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="result-btn-group ui_sticky">
-                    <!-- 2021.03.11 스티키 ui 마크업 변경 -->
-                    <div class="group-box">
-                        <div class="group-box-title">예약하신 내역의 변경/추가 사항이 생기셨나요? <br class="mo-only"><em class="color-3">버튼을 클릭</em>하여 알려주세요.</div>
-                        <div class="group-box-btngroup">
-                            <a href="/html/CS/CSRF6072.html" target="_blank" class="btn border size-m"><span>사진 등록</span></a>
-                            <button type="button" data-href="#reservationTimePopup" class="btn border size-m"><span>일시 변경</span></button>
-                            <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border size-m"><span>예약 취소</span></button>
-                        </div>
-                    </div>
-                    <!-- //2021.03.11 스티키 ui 마크업 변경 -->
-                </div>
-                <div class="result-progress">
-                    <!-- 2021.01.26 마크업 변경 -->
-                    <p class="desc"><em class="color-3">접수 &gt; 방문 예정 &gt; 완료</em> 순으로 진행됩니다.</p>
-                    <!-- 2021.01.26 마크업 변경 -->
-
-                    <div class="progress-box">
-                        <span class="progressing" style="width:calc(100% / 2 * 1)"></span>
-                        <ol class="progressbar">
-                            <li class="on"><span class="text">접수</span></li>
-                            <li class="on current"><span class="text">상담 예정</span><span class="blind">현재 단계</span></li>
-                            <li><span class="text">완료</span></li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="cont-wrap">
-                    <div class="section">
-                        <div class="tit-wrap">
-                            <h3 class="tit">예약/결과 정보</h3>
-                        </div>
-                        
-                        <ul class="inquiry-list">
-                            <li>
-                                <div class="title"><strong>접수 번호</strong></div>
-                                <div class="description">HA230948WW</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>접수 일시</strong></div>
-                                <div class="description">2020.10.01 10:01</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>접수 경로</strong></div>
-                                <div class="description">온라인</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>진행 상태</strong></div>
-                                <div class="description">처리 완료</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>취소 일시</strong></div>
-                                <div class="description">2020.10.01 10:01</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>취소 사유</strong></div>
-                                <div class="description">
-                                    <span class="line">직접 해결하여서</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>서비스 예정 일시</strong></div>
-                                <div class="description">2020.10.01 10:01</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>제품</strong></div>
-                                <div class="description">세탁기/스타일러 &gt; 데스크톱.일체형 (모델명 : ABCD=123456)</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>증상</strong></div>
-                                <div class="description">
-                                    <span class="line">버튼/리모컨 &gt; 버튼 잠금 설정</span>
-                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>구입 시기</strong></div>
-                                <div class="description">1년~2년 이내</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>유형</strong></div>
-                                <div class="description">설치</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>엔지니어</strong></div>
-                                <div class="description">홍길동 / 동대문서비스센터</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>엔지니어</strong></div>
-                                <div class="description">
-                                    <div class="engineer-box">
-                                        <div class="image">
-                                            <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="엔지니어 사진">
-                                        </div>
-                                        <p class="txt">홍길동 / 동대문서비스센터</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>서비스비용</strong></div>
-                                <div class="description">
-                                    <span class="line">1,252,000원</span>
-                                    <span class="line">※ 서비스 비용 외 별도 금액을 지불한 경우 엔지니어를 통해 받으신 영수증과는 상이할 수 있습니다.</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>전달사항</strong></div>
-                                <div class="description">
-                                    <span class="line">천천히 오셔도 돼요</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>                    
+                <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 //버튼 위치수정 -->
+                <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 //진행단계 위치수정 -->
+                <div class="cont-wrap busi-trip">
+                    <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청// 예약/결과정보 삭제 -->
+                    <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->    
                     <div class="section">
                         <div class="tit-wrap">
                             <h3 class="tit">서비스 받으실 분</h3>
                         </div>
-
                         <ul class="inquiry-list">
                             <li>
-                                <div class="title"><strong>이름</strong></div>
+                                <div class="title"><strong>고객명</strong></div>
                                 <div class="description">홍*동</div>
-                            </li>
-                            <li>
-                                <div class="title"><strong>휴대 전화</strong></div>
-                                <div class="description">010-****-1234</div>
                             </li>
                             <li>
                                 <div class="title"><strong>주소</strong></div>
                                 <div class="description">(12345) 서울 강남구 도산대로 104*****************</div>
                             </li>
+                            <li>
+                                <div class="title"><strong>제품</strong></div>
+                                <div class="description">가전용 스탠드형 (모델명 : FMX151USP)</div>
+                            </li>
+                            <li>
+                                <div class="title"><strong>증상</strong></div>
+                                <div class="description">
+                                    <span class="line">냉방관련 &gt; 냉방안됨</span>
+                                    <button type="button" class="btn border size" data-href="#solutionsPopup"><span>제품 문제해결 방법</span></button>
+                                </div>
+                            </li>
                         </ul>
-                        @@include('./common/modules/bullet-list.html', {
+                    </div>
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">진행 단계</h3>
+                        </div>
+                        <div class="result-progress">
+                            <p class="desc"><em class="color-3">접수 &gt; 방문 예정 &gt; 처리중 &gt; 처리 완료</em> 순으로 진행됩니다.</p>
+        
+                            <div class="progress-box">
+                                <span class="progressing" style="width:calc(100% / 3 * 2)"></span>
+                                <ol class="progressbar">
+                                    <li class="on"><span class="text">접수</span></li>
+                                    <li class="on"><span class="text">방문 예정</span></li>
+                                    <li class="on current"><span class="text">처리중</span><span class="blind">현재 단계</span></li>
+                                    <li><span class="text">처리 완료</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="result-btn-group">
+                            <div class="group-box">
+                                <div class="group-box-btngroup">
+                                    <button onclick="window.open('/html/CS/CSRF6072.html')" class="btn border"><span>사진 등록(고장 증상)</span></button>
+                                    <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
+                                    <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 변경</span></button>
+                                    <button type="button" class="btn border" data-href="#solutionsPopup"><span>자가 해결 컨텐츠</span></button>
+                                    <button type="button" class="btn border"><span>제품 주요 정보</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청// 현재 사용은 하지 않으나 필요할수도 있어서 주석처리 -->
+                        <!-- @@include('./common/modules/bullet-list.html', {
                             "topBorder" : true,
                             "bulletTxt" : [
                                 "온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다.",
                                 "[예약 일시 변경]버튼을 클릭하면 서비스 받으실 날짜, 시간 변경이 가능합니다. 예약 일시 변경은 예약 시간 1시간 전까지 가능하며, 기존 접수건 취소 후 신규로 접수됩니다."
                             ]
-                        })
+                        }) -->
+                        <!-- //BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청// 현재 사용은 하지 않으나 필요할수도 있어서 주석처리 -->   
                     </div>
-                    
+                    <!-- //BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->
                     <div class="btn-group center">
                         <!-- 단건 조회 시 -->
-                        <a href="#" class="btn">고객지원 메인</a>
+                        <!-- <a href="#" class="btn">고객지원 메인</a> --> <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청// 현재 사용은 하지 않으나 필요할수도 있어서 주석처리 -->
                         <!-- 다건 조회 시 -->
                         <!-- <a href="#" class="btn">목록</a> -->
                     </div>
