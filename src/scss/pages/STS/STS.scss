@@ -100,6 +100,24 @@
             }
             //BTOCSITE-188 삭제 end
         }
+
+        //BTOCSITE-188
+        &.hidden-story-next {
+            .inner {
+                padding-top:0;
+
+                @include mobile {
+                    padding-top:0;
+                }
+
+                .btn-more {
+                    top:54px;
+                    @include mobile {
+                        top:49px;
+                    }
+                }
+            }
+        }
         // border-top: 16px solid $color-bg; //BTOCSITE-188 삭제
         padding-bottom: 120px;
         &:first-child { 
