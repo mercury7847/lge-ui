@@ -65,6 +65,11 @@
     }
 }
 
+.swiper-slide {
+    .mobile-status-bar {
+        display: none;
+    }
+}
 
 
 .mdevice:not(.app) {
