@@ -77,14 +77,9 @@
     .story-section {
         &.user_story { 
             display:none; 
-            padding-top:80px; //BTOCSITE-188
 
             .story-title-area {
                 display: none;//BTOCSITE-188
-            }
-
-            @include mobile {
-                padding-top:40px; //BTOCSITE-188
             }
         } /* BTOCSITE-787 스토리 - 구독유도 영역 로딩 개선 */
         &.new_story {
@@ -136,12 +131,13 @@
                 max-width: 100%;
                 padding: 16px 16px 0;
             }
-            &:first-child {
-                padding-top: 80px;
-                @include mobile {
-                    padding-top: 60px;
-                }
-            }
+            //BTOCSITE-188 삭제
+            // &:first-child {
+            //     padding-top: 80px;
+            //     @include mobile {
+            //         padding-top: 60px;
+            //     }
+            // }
         }
         .title {
             margin: 0 0 48px;
@@ -199,7 +195,7 @@
         .btn-more {
             position: absolute;
             @include pc {
-                top: 134px;
+                top: 102px; //BTOCSITE-188
                 right: 40px;
                 .btn-link {
                     font-size: 14px;
@@ -208,7 +204,7 @@
                 }
             }
             @include mobile {
-                top: 109px;
+                top: 65px; //BTOCSITE-188
                 right: 0;
                 left: 0;
                 text-align: center;
@@ -387,7 +383,8 @@
         /* 20210518 추가*/ 
         &.tag-subscribe-story2,
         &.tag-subscribe-story3 {
-            margin-bottom: -16px;
+            // margin-bottom: -16px;
+            margin-bottom:72px; //BTOCSITE-188 
             padding: 32px 0 28px;
             border-top: 0;
             background-color: $color-bg;
@@ -413,7 +410,7 @@
                 }
             }
             @include mobile {
-                margin-bottom: -12px;
+                margin-bottom:44px; //BTOCSITE-188 
                 padding: 24px 0 18px;
                 .flexbox-wrap {
                     padding: 0;
