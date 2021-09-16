@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* BTOCISTE-1967 웹하단바*/
+
 .mobile-status-bar {
     display: none;
     position:fixed;
@@ -65,6 +67,11 @@
     }
 }
 
+.swiper-slide {
+    .mobile-status-bar {
+        display: none;
+    }
+}
 
 
 .mdevice:not(.app) {
