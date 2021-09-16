@@ -76,9 +76,12 @@ MainSwiper.prototype = {
 
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
-                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
+                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];
+                        document.addEventListener('readystatechange', function(e) {
+                            document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
+                        })
                         mainSwiper.loadContent( currentSlide,true );
-                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
+                        // mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                     }
                     
                     else {
@@ -336,6 +339,8 @@ MainSwiper.prototype = {
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
                         }, 500);
                     });
+
+                    console.log('%cSwipe panel loaded: ' + (((new Date().getTime())-timingBegin)/1000).toFixed(2)+'s', 'background: green; color: white; padding: 5px 8px;')
                 });
             }
         });
