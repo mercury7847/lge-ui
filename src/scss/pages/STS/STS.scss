@@ -269,7 +269,7 @@
             }
         }
         &.tag-subscribe-story {
-            margin-bottom: -16px;
+            margin-bottom:72px; //BTOCSITE-188 
             padding: 32px 0 28px;
             border-top: 0;
             background-color: $color-bg;
@@ -295,7 +295,7 @@
                 }
             }
             @include mobile {
-                //margin-bottom: -12px;
+                margin-bottom:44px; //BTOCSITE-188 
                 margin-bottom: 0px;
                 padding: 24px 0 18px;
                 .flexbox-wrap {
