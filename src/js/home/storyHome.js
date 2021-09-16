@@ -251,15 +251,11 @@
                 $context.find('.new_story').show();
                 setRepositionTagBox($context.find('.new_story'));
             }
-        })
-        //BTOCISTE-188
-        $(document).on('click', '.story-section .subscription-btn', function(e){
+        }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
             
             sendTagList(this);
-        })
-        //BTOCISTE-188
-        $(document).on('click', '.story-section .tagmnger-btn', function(e){
+        }).on('click', '.tagmnger-btn', function(e){
             e.preventDefault();
             
             requestTagMngPop(this);
