@@ -69,7 +69,7 @@
     '</li>'
 
     var manualListItemTemplate = '<li class="lists"><div class="ui_flexible_box"><div class="inner ui_flexible_cont">' +
-        '<p class="guide-tit">제품 사용설명서</p>' +
+        '<p class="guide-tit">{{id}}</p>' +
         '<p class="guide-desc">{{title}}</p>' +
         '<div class="bottom-tbl">' +
             '<div class="cell">' +
