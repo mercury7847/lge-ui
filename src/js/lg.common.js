@@ -2598,8 +2598,7 @@ var goAppUrl = function(path) {
                                 obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
     
                             if(vcui.detect.isIOS){
-                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'N'});
-                                
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'N'});  
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                             } else {
                                 android.openNewWebview(obj.href);
