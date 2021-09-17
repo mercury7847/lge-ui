@@ -108,12 +108,12 @@
             @include mobile {
                 border-width:12px;
             }
-            
+
             .inner {
-                padding-top:0;
+                padding-top:120px;
 
                 @include mobile {
-                    padding-top:0;
+                    padding-top:60px;
                 }
 
                 .btn-more {
