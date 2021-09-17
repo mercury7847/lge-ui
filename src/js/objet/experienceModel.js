@@ -6061,6 +6061,7 @@
             let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : location.protocol+'//'+location.host; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             
+            
             priceArry.push(defaultModel);                            
             
             priceHtml += '<div class="swiper-slide">';
