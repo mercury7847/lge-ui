@@ -129,6 +129,18 @@
                 }
             }
         }
+
+        //BTOCSITE-188
+        &:not(.user_story),
+        &:not(.new_story),
+        &:not([class^="tag-subscribe-story"]) {
+            border-top:16px solid #f4f4f4;
+
+            @include mobile {
+                border-width:12px;
+            }
+        }
+        
         @include mobile {
             padding-bottom: 60px;
             border-width: 12px;
