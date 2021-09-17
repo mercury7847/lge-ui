@@ -2517,6 +2517,7 @@ var goAppUrl = function(path) {
     
                             if(vcui.detect.isIOS){
                                 var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'N'});
+                                
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                             } else {
                                 android.openNewWebview(obj.href);
