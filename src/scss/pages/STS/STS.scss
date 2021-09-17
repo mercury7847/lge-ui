@@ -103,6 +103,12 @@
 
         //BTOCSITE-188
         &.hidden-story-next {
+            border-top:16px solid #f4f4f4;
+
+            @include mobile {
+                border-width:12px;
+            }
+            
             .inner {
                 padding-top:0;
 
@@ -128,18 +134,7 @@
                     word-break: keep-all;
                 }
             }
-        }
-
-        //BTOCSITE-188
-        &:not(.user_story),
-        &:not(.new_story),
-        &:not([class^="tag-subscribe-story"]) {
-            border-top:16px solid #f4f4f4;
-
-            @include mobile {
-                border-width:12px;
-            }
-        }
+        }        
         
         @include mobile {
             padding-bottom: 60px;
