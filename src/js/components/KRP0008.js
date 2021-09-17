@@ -313,6 +313,53 @@
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
+
+                    rentalInfo = [
+                        {
+                            "years3TotAmt": 35900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 0,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 35900,
+                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                            "years2TotAmt": 35900,
+                            "years6TotAmt": 35900,
+                            "years7TotAmt": 35900,
+                            "rtFreePeriod": "25,37,49",
+                            "rtModelSeq": "1579561",
+                            "dutyTerm": "6",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "Y",
+                            "contractTerm": "7",
+                            "years5TotAmt": 35900,
+                            "years4TotAmt": 35900,
+                            "freeMonth": 3
+                        },
+                        {
+                            "years3TotAmt": 39900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 0,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 39900,
+                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                            "years2TotAmt": 39900,
+                            "years6TotAmt": 0,
+                            "rtFreePeriod": "25,37,49",
+                            "rtModelSeq": "1565994",
+                            "dutyTerm": "3",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "N",
+                            "contractTerm": "5",
+                            "years5TotAmt": 39900,
+                            "years4TotAmt": 39900,
+                            "freeMonth": 3
+                        }
+                    ];
+
+
+
                     // rentalInfo = [
                     //     {
                     //         "careCategoryId": "CT50000175",
@@ -1318,9 +1365,11 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1402,9 +1451,11 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1920,21 +1971,23 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
-                    }
+                   if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
+                   }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
-                            popupData[y+""].free.push(item);
-                            break;
-                        }
+                            if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
+                                popupData[y+""].free.push(item);
+                                break;
+                            }
                     }
                 });
 
@@ -1988,18 +2041,20 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
+                    if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
                     }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }
