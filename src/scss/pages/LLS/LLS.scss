@@ -918,7 +918,7 @@
 
 /* BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
 @include mobile{
-    .lls-main, .lay-wrap{
+    .lls-main, .ui_modal_wrap{
         *:focus{
             outline:none;
         }
