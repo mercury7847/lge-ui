@@ -530,7 +530,7 @@ body {
         }
     }
     /* BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
-    *:focus{
+    * [tabindex]:focus{
         outline:none;
     }
     /* //BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
@@ -745,6 +745,11 @@ body {
             }
         }
     }
+    /* BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
+    &[tabindex]:focus{
+        outline:none;
+    }
+    /* //BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
 }
 
 .main-panel {
