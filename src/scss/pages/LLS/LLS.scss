@@ -752,13 +752,6 @@
             }
         }
     }
-    /* BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
-    @include mobile{
-        * [tabindex]:focus{
-            outline:none;
-        }
-    }
-    /* //BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
 }
 
 .app {
@@ -922,3 +915,13 @@
         }
     }
 }
+
+/* BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
+@include mobile{
+    .lls-main, .lay-wrap{
+        *:focus{
+            outline:none;
+        }
+    }
+}
+/* //BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
