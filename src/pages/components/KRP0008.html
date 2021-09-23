@@ -310,6 +310,23 @@
             }
         ];
 
+        // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : pdp
+        var lgePdpSendData  = {
+		"modelId":"MD08922094",
+		"sku" : "OLED77G1KW.AKRG",
+		"typeFlag" : "",
+		"rtSeq" : "",
+		"requireCare" : "N",
+		"wishListId" : "",
+		"wishItemId" : "",
+		"categoryId" : "CT50000025",
+		"id": "MD08922094",
+		"productName": "LG 올레드 evo (벽걸이형)",
+		"productID": "MD08922094",
+		"productImg": "/kr/images/tvs/md08922094/md08922094-350x350.jpg",
+		"productAlt": "LG 올레드 evo (벽걸이형)"
+	};
+
     </script>
 <!-- /mkt/ajax/product/retrieveModelRewardInfo -->
     <div class="wrap">
@@ -366,7 +383,8 @@
                                         </div>
                                         <!-- // 공유하기 -->
                                     </div>
-                                    <div class="sku">OLED77GXKNA</div>
+                                      <!-- 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선  -->
+                                    <div class="sku copy">OLED77GXKNA</div>
                                     <!-- 리뷰 별점 영역 -->
                                     <div class="review-info">
                                         <div class="star-rating-wrap">
@@ -376,8 +394,9 @@
                                                         <span class="blind">현재 별점 : 4.4</span>
                                                     </div>
                                                 </div>
+                                                <!-- 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선  -->
+                                                <span class="scope">4.4(리뷰 8)</span>
                                             </a>
-                                            <span class="scope">4.4(리뷰 8)</span>
                                         </div>
                                         <!-- 2021-02-25 크레마 리뷰 -->
                                         <div class="crema-product-reviews-score"
