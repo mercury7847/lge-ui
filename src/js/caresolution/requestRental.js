@@ -128,6 +128,15 @@
         $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
         });
+        // BTOCSITE-1905 - start
+        $('input[name=registBackFirst]').on('keypress', function(e){
+            if(e.keyCode == 53 || e.keyCode == 54 ||  e.keyCode == 55 ||  e.keyCode == 56 ){  // 5, 6, 7, 8 입력시 외국인 등록번호 노출
+                $(".foreignNum").show();
+            }else{
+                $('.foreignNum').hide();
+            }
+        });
+        // BTOCSITE-1905 - end
 
         var register = {
             registFrontNumber:{
@@ -139,6 +148,12 @@
                 required: true,
                 errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.",
                 msgTarget: '.err-regist-first'
+            },
+            //BTOCSITE-1905 210830 추가 외국인등록번호 case
+            registForeignNum: {
+                required: true,
+                errorMsg: "외국인 등록번호를 다시 확인해주세요.",
+                msgTarget: '.err-foreign-num'
             },
             userEmail:{
                 required: true,
@@ -617,8 +632,9 @@
                 } else{
                     var isRFN = result.validItem.registFrontNumber;
                     var isRBF = result.validItem.registBackFirst;
+                    var isRFOR = result.validItem.registForeignNum; //BTOCSITE-1905 외국인등록번호 case 추가
                     var isUE = result.validItem.userEmail;
-                    if(!isRFN && !isRBF && !isUE){
+                    if(!isRFN && !isRBF && !isRFOR && !isUE){ //BTOCSITE-1905 외국인등록번호 case 추가
                         var isZP = result.validItem.zipCode;
                         var isUD = result.validItem.userAddress;
                         if(isZP && isUD) $(window).trigger("toastshow", "주소를 확인해주세요.");
@@ -983,7 +999,7 @@
     function setCreditInquire(){
         var step1Value = step1Validation.getValues();
         var result = step1Validation.validate();
-        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
+        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.registForeignNum || result.validItem.userEmail || result.validItem.zipCode){ ////BTOCSITE-1905 외국인 등록번호 case 추가
             return;
         }
 
@@ -993,6 +1009,7 @@
             rentalCareType: getInputData('rentalCareType'),
             registFrontNumber: step1Value.registFrontNumber,
             registBackFirst: step1Value.registBackFirst,
+            registForeignNum: step1Value.registForeignNum, //BTOCSITE-1905 외국인 등록번호 case 추가
             userEmail: step1Value.userEmail,
             zipCode: step1Value.zipCode
         }
@@ -1021,6 +1038,7 @@
 
                     step1Block.find('input[name=registFrontNumber]').prop("disabled", true);
                     step1Block.find('input[name=registBackFirst]').prop("disabled", true);
+                    step1Block.find('input[name=registForeignNum]').prop("disabled", true); //BTOCSITE-1905 외국인 등록번호 case 추가
 
                     //step1LastValidation();             
                 } else{
@@ -1540,6 +1558,7 @@
             CUST_DTL_ADDR: step1Value.detailAddress,
             EMAIL: step1Value.userEmail,
             REG_FIRST_DIGIT: step1Value.registBackFirst,
+            REG_FOREIGN_NUM: step1Value.registForeignNum, //BTOCSITE-1905 외국인등록번호 컬럼추가해줘야함 - DB컬럼값에맞게 변경필요, 현재 임의로 키값 지정한상태
             PREPAY_FLAG: step3Block.find('input[name=rdo04]:checked').val(),
             TRANS_TYPE: payment ? "B" : "C",
             TRANS_MEM_NAME: bankValidation.getValues('bankUserName'),
@@ -1558,7 +1577,6 @@
             MEM_POINT_USED: step3Block.find('input[name=chk03-3]').prop('checked') ? "Y" : "N",
             isAgree: step3Block.find('input[name=useMemPoint]').prop('checked'),
             INSTALL_PLACE: step2Value.inatallPlace,
-
             NOTES: notes,
             INST_REQ_DATE: instReqDate,
             collectRequest: collectRequest,
