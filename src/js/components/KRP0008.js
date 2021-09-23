@@ -272,6 +272,9 @@
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
 
+                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy =  self.$component.find('.copy');
+
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
@@ -711,6 +714,16 @@
                     self.requestModal(this);
                 });
                 */
+
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy.on('click',function() {
+                        self.copyClicked = true;
+                        vcui.dom.copyToClipboard(($(this).text()), {
+                            onSuccess: function () {
+                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                            }
+                        });
+                });
 
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
