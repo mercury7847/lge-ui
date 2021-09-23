@@ -1318,9 +1318,12 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1402,9 +1405,12 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1920,18 +1926,22 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
-                    }
+                    // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                   if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
+                   }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }
@@ -1988,18 +1998,20 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
+                    if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
                     }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }
