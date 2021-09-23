@@ -1378,6 +1378,7 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
                             if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
@@ -1464,6 +1465,7 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
                             if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
@@ -1984,6 +1986,7 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
+                    // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
                    if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
                         if(!popupData[key]) popupData[key] = {}
                         var price = selectInfoData['years'+y+'TotAmt'] || 0;
@@ -1997,10 +2000,11 @@
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                            if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
-                                popupData[y+""].free.push(item);
-                                break;
-                            }
+                        // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
+                            popupData[y+""].free.push(item);
+                            break;
+                        }
                     }
                 });
 
