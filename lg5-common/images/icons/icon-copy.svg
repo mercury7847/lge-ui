@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="copy_icon" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-2{fill:#fff;stroke:#000;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle_11" fill="none" d="M0 0H16V16H0z"/>
+    <g id="Group_56" transform="translate(-1137 -555.5)">
+        <path id="Path_17" d="M1147.538 563.171v5.077a.752.752 0 0 1-.752.752h-5.265a.752.752 0 0 1-.752-.752v-7.8a.752.752 0 0 1 .752-.752h2.562z" class="cls-2"/>
+        <g id="Group_55">
+            <path id="Path_18" d="M1149.231 561.479v5.077a.752.752 0 0 1-.752.752h-5.265a.752.752 0 0 1-.752-.752v-7.8a.752.752 0 0 1 .752-.752h2.562z" class="cls-2"/>
+            <path id="Path_19" d="M1149.086 561.385h-3.24v-3.24z" class="cls-2"/>
+        </g>
+    </g>
+</svg>

@@ -584,7 +584,19 @@
                 display: inline-block;
                 @include font-small;
                 vertical-align: middle;
+
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                &.copy {
+                    cursor:pointer;
+                    display: inline-block;
+                    padding-right:22px;
+                    margin-left:6px;
+                    background:url(/lg5-common/images/icons/icon-copy.svg) 100% 60% no-repeat;
+                    background-size: 16px;
+                    vertical-align: middle;
+                }
             }
+
             .review-info {
                 .star-rating-wrap {
                     // display: none;
@@ -2376,6 +2388,17 @@
                 display: inline-block;
                 font-size: 13px;
                 line-height: 21px;
+
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선
+                &.copy {
+                    cursor:pointer;
+                    display: inline-block;
+                    padding-right:22px;
+                    margin-left:6px;
+                    background:url(/lg5-common/images/icons/icon-copy.svg) 100% 60% no-repeat;
+                    background-size: 16px;
+                    vertical-align: middle;
+                }
             }
             .review-info {
                 display: inline-block;
