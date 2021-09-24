@@ -330,7 +330,7 @@
                 self.$registMyProductPopup.vcModal({opener:$(this)});
             });
 
-            // BTOCSITE-3521
+            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
             if($('input[name=cta]').val() === 'Y'){
                 self.registMyProductPopupClear();     
                 self.$registMyProductPopup.vcModal({opener:$(this)});
@@ -340,7 +340,7 @@
                     history.replaceState({}, null, location.pathname)
                 });
             }
-            // BTOCSITE-3521
+            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
 
             //보유제품 삭제
             self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
