@@ -128,12 +128,26 @@
         $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
         });
+
         // BTOCSITE-1905 - start
-        $('input[name=registBackFirst]').on('keypress', function(e){
-            if(e.keyCode == 53 || e.keyCode == 54 ||  e.keyCode == 55 ||  e.keyCode == 56 ){  // 5, 6, 7, 8 입력시 외국인 등록번호 노출
+        var isForeigner = function(n) {
+            var arr = [5,6,7,8];
+            return arr.indexOf( n ) !== -1 ? true : false;
+        }
+        console.log("tetete", isForeigner(6));
+        
+        var $tetetete = $('input[name=registBackFirst]');
+        // e.keyCode == 53 || e.keyCode == 54 || e.keyCode == 55 || e.keyCode == 56
+        $tetetete.blur(function(e){
+            // if($(e.target).val() == "5" || $(e.target).val() == "6" || $(e.target).val() == "7" || $(e.target).val() == "8"){
+            if($(e.target).val() == "5" || $(e.target).val() == "6" || $(e.target).val() == "7" || $(e.target).val() == "8"){  // 5, 6, 7, 8 입력시 외국인 등록번호 노출
                 $(".foreignNum").show();
+
+                console.log("외국인:", $('input[name=registBackFirst]').val());
             }else{
                 $('.foreignNum').hide();
+
+                console.log("한국인:", $('input[name=registBackFirst]').val());
             }
         });
         // BTOCSITE-1905 - end
@@ -149,12 +163,14 @@
                 errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.",
                 msgTarget: '.err-regist-first'
             },
+
             //BTOCSITE-1905 210830 추가 외국인등록번호 case
             registForeignNum: {
                 required: true,
                 errorMsg: "외국인 등록번호를 다시 확인해주세요.",
                 msgTarget: '.err-foreign-num'
             },
+
             userEmail:{
                 required: true,
                 errorMsg: "이메일 주소를 다시 확인해주세요.",
