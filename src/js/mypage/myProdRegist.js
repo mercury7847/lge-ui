@@ -330,17 +330,17 @@
                 self.$registMyProductPopup.vcModal({opener:$(this)});
             });
 
-            // BTOCSITE-3621
+            // BTOCSITE-3521
             if($('input[name=cta]').val() === 'Y'){
                 self.registMyProductPopupClear();     
                 self.$registMyProductPopup.vcModal({opener:$(this)});
                 self.$modelCheckHelpPage.hide();   
+                self.$registMyProductMainPage.on('click','.ui_modal_close, footer div.btn-group button' ,function(e) {
+                    $('input[name=cta]').val('');
+                    history.replaceState({}, null, location.pathname)
+                });
             }
-            self.$registMyProductMainPage.on('click','.ui_modal_close' ,function(e) {
-                $('input[name=cta]').val('');
-                history.replaceState({}, null, location.pathname)
-            });
-            // BTOCSITE-3621
+            // BTOCSITE-3521
 
             //보유제품 삭제
             self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
