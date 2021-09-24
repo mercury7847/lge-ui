@@ -330,6 +330,17 @@
                 self.$registMyProductPopup.vcModal({opener:$(this)});
             });
 
+            // BTOCSITE-3621
+            if($('input[name=cta]').val() === 'Y'){
+                self.registMyProductPopupClear();     
+                self.$registMyProductPopup.vcModal({opener:$(this)});
+                self.$modelCheckHelpPage.hide();   
+            }
+            self.$registMyProductMainPage.on('click','.ui_modal_close' ,function(e) {
+                $('input[name=cta]').val('')
+            });
+            // BTOCSITE-3621
+
             //보유제품 삭제
             self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
                 var ajaxUrl = self.$contents.attr('data-remove-url');
@@ -571,7 +582,6 @@
             self.$registMyProductMainPage.on('click','footer div.btn-group button' ,function(e){
                 var $button = $(this);
                 if($button.index() == 0) {
-                    //취소
                     self.$registMyProductPopup.vcModal('close');
                 } else {
                     //등록
