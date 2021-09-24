@@ -347,7 +347,8 @@
                 self.$modelCheckHelpPage.hide();   
             }
             self.$registMyProductMainPage.on('click','.ui_modal_close' ,function(e) {
-                $('input[name=cta]').val('')
+                $('input[name=cta]').val('');
+                history.replaceState({}, null, location.pathname)
             });
             // BTOCSITE-3621
 
