@@ -131,6 +131,8 @@ if ('scrollRestoration' in history) {
                         if(self.$layFilter.hasClass('smart-type')) {
                             filterData.filterData = "{}";
                         }
+
+                        console.log("1111111111111 %o",filterData);
                         
                         self.requestSearch(self.makeFilterData(filterData));
                     }, function(data){
@@ -717,6 +719,8 @@ if ('scrollRestoration' in history) {
 
             //필터 검색
             requestSearch:function(filterQueryData) {
+
+                console.log("filterQueryData %o",filterQueryData);
                 var self = this;
                 var value = self.$contentsSearch.attr('data-search-value').trim();
                 var force = self.$contentsSearch.attr('data-search-force');
