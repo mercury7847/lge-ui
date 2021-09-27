@@ -415,7 +415,7 @@
                 // BTOCSITE-4785 s
                 $('.btn-dppdp-fold').on('click', function(e){
                     e.preventDefault();
-                    $(this).parent().parent().toggleClass('close');
+                    $(this).parent().parent().parent().toggleClass('close');
                     setTimeout(function(){
                         self._setListArea();
                     },400);
