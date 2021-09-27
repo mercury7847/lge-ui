@@ -2,7 +2,7 @@
     position:fixed;
     right:48px;
     bottom:48px;
-    z-index:99; /* BTOCSITE-1967 */
+    z-index:110; /* BTOCSITE-1967 */
     @include mobile {
         right:14px;
         bottom:24px;
@@ -665,6 +665,7 @@
     &:not(.app) {
         $statusBarHeight: 70px;
         .floating-wrap {
+            z-index:99;
             bottom:(48px + 70px);
 
             @include mobile {
