@@ -89,7 +89,7 @@ var Curation = (function() {
         _makeFilterData: function(data) {
             var makeData = {};
             for(key in data) {
-                makeData[key] = data[key].join(",");
+                makeData[key] = data[key].join("||");
             }
             return JSON.stringify(makeData);
         },
@@ -379,7 +379,7 @@ var Curation = (function() {
 
                 var maxIndex = 0;
                 for(key in filterData) {
-                    var arr = filterData[key].split(',');
+                    var arr = filterData[key].split('||');
                     if(arr instanceof Array) {
                         arr.forEach(function(item,index) {
                             var $input = self.$smartFilterList.find("input[value='"+item+"']");
