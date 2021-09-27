@@ -236,6 +236,7 @@
                 if(userlistbox.children().length > 0){
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
+                    $context.find('.tag-subscribe-story3').show();
                     setRepositionTagBox($('.user_story'));
                 } else{
                     $context.find('.tag-subscribe-story').show();
@@ -354,6 +355,7 @@
             $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");
+            $('html, body').stop().animate({scrollTop:0}, 180); //BTOCSITE-188
         });
     }
 
@@ -410,7 +412,7 @@
             }
         }
 
-        $('html, body').animate({scrollTop:0}, 180);
+        $('html, body').stop().animate({scrollTop:0}, 180);
     }
 
     var firstPageHeight = 0;
@@ -534,8 +536,11 @@
                             if(sectioname == "new_story"){
                                 $context.find('.user_story').hide();
                                 $context.find(story3).hide(); //BTOCISTE-188
+                                $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next') //BTOCSITE-188
+                            } else {
+                                $context.find('.new_story').hide();   
                                 $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
-                            } else $context.find('.new_story').hide();
+                            }
 
                             $context.find('.tag-subscribe-story').hide();
                         }
