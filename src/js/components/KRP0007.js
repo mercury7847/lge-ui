@@ -86,11 +86,16 @@
             '</div>' +
             '<div class="product-bottom">' +
                 '{{#if bizType != "CARESOLUTION" && obsBtnRule == "enable"}}'+
-                '<div class="flag-wrap icon-type">' +
-                    '{{#if cashbackBadgeFlag}}<span class="flag cash">{{cashbackBadgeName}}</span>{{/if}}' +
-                '</div>' +
-                '{{/if}}'+
+                    '<div class="flag-wrap icon-type">' +
+                        '{{#if cashbackBadgeFlag}}<span class="flag cash">{{cashbackBadgeName}}</span>{{/if}}' +
+                    '</div>' +
+                '{{/if}}' +
+
+
+                /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                 '{{#if checkPriceFlag}}'+
+
+                    //케어솔루션 경우
                     '{{#if bizType == "CARESOLUTION"}}' +
                         '<div class="price-area care">' +
                             '<div class="total-price">' +
@@ -99,26 +104,52 @@
                             '</div>' +
                             '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
                         '</div>' +
-                    '{{#else}}' +
+                        
+                    '{{#else}}' + 
+
                         '<div class="price-area">' +
-                            '{{#if obsTotalDiscountPrice}}'+
-                                '{{#if obsOriginalPrice}}<div class="original">' +
-                                    '<em class="blind">판매가격</em>' +
-                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                                '</div>{{/if}}' +
-                                '{{#if obsSellingPrice}}<div class="total">' +
-                                    '<em class="blind">총 판매가격</em>' +
-                                    '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-                                '</div>{{/if}}' +
-                            '{{#else}}'+
-                                '{{#if obsOriginalPrice}}<div class="total">' +
-                                    '<em class="blind">총 판매가격</em>' +
-                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                                '</div>{{/if}}' +
-                            '{{/if}}'+
+                            '{{#if obsTotalDiscountPrice}}' +
+                                '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == 0}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
+                                    '{{#if obsOriginalPrice}}' +
+                                        '<div class="total">' +
+                                            '<em class="blind">판매가격</em>' +
+                                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                        '</div>' +
+                                    '{{/if}}' +
+
+                                    '{{#else}}' +
+
+                                    '{{#if obsOriginalPrice}}' +
+                                        '<div class="original">' +
+                                            '<em class="blind">판매가격</em>' +
+                                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                        '</div>' +
+                                    '{{/if}}' +
+                                    '{{#if obsSellingPrice}}' +
+                                        '<div class="total">' +
+                                            '<em class="blind">총 판매가격</em>' +
+                                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+                                        '</div>' +
+                                    '{{/if}}' +
+                                '{{/if}}' +
+                                
+                            '{{#else}}' + 
+
+                                '{{#if obsOriginalPrice}}' +
+                                    '<div class="total">' +
+                                        '<em class="blind">총 판매가격</em>' +
+                                        '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                    '</div>' +
+                                '{{/if}}' +
+
+                            '{{/if}}' + 
+
                         '</div>' +
                     '{{/if}}' +
-                '{{/if}}'+
+                '{{/if}}' +
+                /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
+
                 '<div class="btn-area-wrap">' +
                     '<div class="wishlist">' +
                         '<span class="chk-wish-wrap large">' +
@@ -824,13 +855,20 @@
                 }
             },
 
+            
             checkPriceFlag: function(item) {
                 if(item.bizType == "PRODUCT") {
+                    /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                     if(lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule=="enable") {
-                        return true
+                        //console.log("A :", "obsBtnRule: enable");
+                        return true;
+                    } else if(item.obsTotalDiscountPrice == 0 || item.obsSellingPrice == 0) {
+                        return true; //true면 disable 조건도 가격이 나온다.
                     } else {
-                        return false;
+                        //console.log("B :", "obsBtnRule: disable");
+                        return false; //false면 disable 조건이 가격이 안나온다.
                     }
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                 } else if(item.bizType == "CARESOLUTION") {
                     if ((item.rTypeCount && item.rTypeCount != "") || (item.cTypeCount && item.cTypeCount != "")) {
                         return true;
@@ -846,6 +884,7 @@
                     }
                 }
             },
+            /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
 
             makeListItem: function(item){
                 var self = this;
