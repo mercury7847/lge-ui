@@ -1,7 +1,9 @@
 $(document).ready(function() { 
+    // BTOCSITE-4785 s
     if ($('.btn-pdp-alert').length) {
         goPdpUrl();
     }
+    // BTOCSITE-4785 e
     var $wrap = $('.ev-detail-wrap');
     vcui.require(['ui/tab', 'ui/carousel'], function () {
 
@@ -31,6 +33,7 @@ $(document).ready(function() {
     })
 });
 
+// BTOCSITE-4785 s
 function goPdpUrl() {
     $('.btn-pdp-alert').on('click', function(e) {
         e.preventDefault();
@@ -44,3 +47,4 @@ function goPdpUrl() {
         });
     });
 }
+// BTOCSITE-4785 e
