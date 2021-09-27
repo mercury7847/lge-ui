@@ -417,6 +417,18 @@
 
     var firstPageHeight = 0;
 
+    function setHiddenMargin(){
+        var $story1 = $context.find('.tag-subscribe-story');
+        var $story2 = $context.find('.tag-subscribe-stor2');
+        var $lastSection = $context.find('.tag-subscribe-story2').next('.story-section')
+
+        if( $story1.filter(":visible").length == 0 && $story2.filter(":visible").length == 0) {
+            $lastSection.addClass('hidden-story-next')
+        } else {
+            $lastSection.removeClass('hidden-story-next')
+        }
+    }
+
     function loadStoryList(sectioname, page, type, selectTag){
         //lgkorUI.showLoading();
 
@@ -507,11 +519,12 @@
                                         $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
                                         $context.find(story3).show().append(list)
                                     }
-                                    $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next')
+                                    //$context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next')
                                 } else {
                                     $context.find(story3).hide();
-                                    $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next')
+                                    //$context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next')
                                 }
+                                //setHiddenMargin();
                                 $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
                                 // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
                                 // console.log("lgkorUI.getCookie('storyHomeFirstTag')", lgkorUI.getCookie('storyHomeFirstTag'))
@@ -536,13 +549,13 @@
                             if(sectioname == "new_story"){
                                 $context.find('.user_story').hide();
                                 $context.find(story3).hide(); //BTOCISTE-188
-                                $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next') //BTOCSITE-188
+                                //$context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next') //BTOCSITE-188
                             } else {
                                 $context.find('.new_story').hide();   
-                                $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
+                                //$context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
                             }
-
                             $context.find('.tag-subscribe-story').hide();
+                            //setHiddenMargin();
                         }
                     }
 
@@ -560,7 +573,7 @@
 
                         $context.find('.new_story').find('.inner h2.title').show();
                     }
-
+                    
                     setRepositionTagBox(sectionItem);
                 } else{
                     if(sectioname == "user_story"){
@@ -576,6 +589,8 @@
                     }
                     sectionItem.hide();
                 }
+
+                setHiddenMargin(); //BTOCSITE-188
                 // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
                 if (typeof(mainSwiper) !== 'undefined'){
                     mainSwiper.swiper.updateAutoHeight();
