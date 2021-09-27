@@ -1365,6 +1365,27 @@
                     }
                 }
             }
+
+            /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+            .signature-price {
+                margin-top: 16px;
+                text-align: center;
+                .price-info {
+                    .text {
+                        // font-size: 14px;
+                    }
+                }
+                .content {
+                    .price {
+                        font-size: 20px;
+                        font-weight: bold;
+                        @include mobile {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
         }
 
         .option-tabs {
