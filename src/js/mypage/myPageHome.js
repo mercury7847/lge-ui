@@ -2,36 +2,54 @@
     var myHome = {
         likeProdTemplate: '<ul class="product-items">'+
                 '{{#each item in list}}'+                                                  
-                '<li>'+
-                    '<div class="item">'+                
-                        '<div class="product-image" aria-hidden="true">'+
-                            '<a href="{{item.pdpUrl}}">'+
-                                '<img src="{{item.imageUrl}}" alt="{{item.imageAlt}}">'+
-                            '</a>'+                    
-                        '</div>'+
-                    '<div class="product-contents">'+
-                        '<div class="product-info">'+
-                            '<div class="product-name">'+
-                                '<a href="{{item.pdpUrl}}">{{#raw item.title}}</a>'+
+                    '<li>'+
+                        '<div class="item">'+                
+                            '<div class="product-image" aria-hidden="true">'+
+                                '<a href="{{item.pdpUrl}}">'+
+                                    '<img src="{{item.imageUrl}}" alt="{{item.imageAlt}}">'+
+                                '</a>'+                    
+                            '</div>'+
+                        '<div class="product-contents">'+
+                            '<div class="product-info">'+
+                                '<div class="product-name">'+
+                                    '<a href="{{item.pdpUrl}}">{{#raw item.title}}</a>'+
+                                '</div>'+
                             '</div>'+
                         '</div>'+
-                    '</div>'+
-                    '<div class="price-area">'+
-                        '{{#if item.addCommaOriginalPrice != "0"}}'+
-                        '<div class="original">'+
-                            '<em class="blind">할인 전 정가</em>'+
-                            '<span class="price">{{item.addCommaOriginalPrice}}<em>원</em></span>'+
+                        
+                        /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                        '<div class="price-area">'+
+
+                            '{{#if item.addCommaOriginalPrice == 0}}'+
+
+                                '<div class="total">'+
+                                    '<em class="blind">구매가격</em>'+
+                                    '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
+                                '</div>'+
+                
+                            '{{#else}}' + 
+
+                                '{{#if item.addCommaOriginalPrice != "0"}}'+
+                                    '<div class="original">'+
+                                        '<em class="blind">할인 전 정가</em>'+
+                                        '<span class="price">{{item.addCommaOriginalPrice}}<em>원</em></span>'+
+                                    '</div>'+
+                                '{{/if}}'+
+                                '{{#if item.addCommaPrice != "0"}}'+
+                                    '<div class="total">'+
+                                        '<em class="blind">할인 후 판매가</em>'+
+                                        '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
+                                    '</div>'+
+                                '{{/if}}'+
+
+                            '{{/if}}'+
+
+
                         '</div>'+
-                        '{{/if}}'+
-                        '{{#if item.addCommaPrice != "0"}}'+
-                        '<div class="total">'+
-                            '<em class="blind">할인 후 판매가</em>'+
-                            '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
-                        '</div>'+
-                        '{{/if}}'+
+                        /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
                     '</div>'+
-                '</div>'+
-            '</li>'+
+                '</li>'+
             '{{/each}}'+
         '</ul>',
         noDataTemplate:'<div class="no-data"><span>{{#raw msg}}</span></div>',

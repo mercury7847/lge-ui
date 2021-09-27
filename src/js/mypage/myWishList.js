@@ -12,11 +12,30 @@
                     '</ul></div>' +
                 '</div>' +
                 '<p class="price">' +
+
+                    /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                     '{{#if obsBtnFlag=="enable"}}' +
-                    '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
-                    '{{#if price}}<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원{{/if}}' +
+
+                        '{{#if price == 0}}' +
+                            '<span class="blind">구매가격</span>' +
+                            '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' + //세일 굻은 가격
+
+                        '{{#else}}' +
+
+                            '{{#if originalPrice}}' +
+                                '<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>' + //오리지날 밑줄칠 가격
+                            '{{/if}}' +
+                            '{{#if price}}' +
+                                '<span class="blind">구매가격</span>' +
+                                '{{#if typeFlag=="C"}}월 {{/if}}{{price}}원' +
+                            '{{/if}}' +
+
+                        '{{/if}}' +
                     '{{/if}}' +
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
                     '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
+
                 '</p>' +
             '</div></div>' +
             '<div class="col btn-col">' +
