@@ -6,15 +6,30 @@
     </div>
     <div class="slide-content ui_carousel_list">
         <div class="slide-track ui_carousel_track">
-            @@for (var i=0; i < context.slideArr.length; i++) {
-            <!-- slide -->
-            <div class="slide-conts ui_carousel_slide">
-                <a href="#">
-                    <img data-lazy="`+slideArr[i].visual+`" alt="">
-                </a>
-            </div>
-            <!-- // slide -->
+            <!-- BTOCSITE-4785: 매장 진열모델 일때 분기 추가 s -->
+            @@if (!context.pdpType) {
+                @@for (var i=0; i < context.slideArr.length; i++) {
+                    <!-- slide -->
+                    <div class="slide-conts ui_carousel_slide">
+                        <a href="#">
+                            <img data-lazy="`+slideArr[i].visual+`" alt="">
+                        </a>
+                    </div>
+                    <!-- // slide -->
+                }
             }
+            @@if (context.pdpType === "displayPdp") {
+                @@for (var i=0; i < context.slideArr.length; i++) {
+                    <!-- slide -->
+                    <div class="slide-conts ui_carousel_slide">
+                        <a href="@@buttonUrl" class="btn-pdp-alert">
+                            <img data-lazy="`+slideArr[i].visual+`" alt="">
+                        </a>
+                    </div>
+                    <!-- // slide -->
+                }
+            }
+            <!-- BTOCSITE-4785: 매장 진열모델 일때 분기 추가 e -->
         </div>
     </div>
     <div class="slide-controls">
