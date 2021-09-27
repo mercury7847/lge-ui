@@ -128,13 +128,21 @@ if ('scrollRestoration' in history) {
                         filterData.smartFilter = sendData;
 
                         // BTOCISTE-1716
+                        var postData = '';
                         if(self.$layFilter.hasClass('smart-type')) {
                             filterData.filterData = "{}";
+                            console.log('스마트 필터');
+
+                            postData = self.makeSmaertFilterData(filterData);
+
+                            console.log("postData %o",postData);
+                        } else {
+                            console.log("1111111111111 %o",filterData);
+                        
+                            postData = self.makeFilterData(filterData);
                         }
 
-                        console.log("1111111111111 %o",filterData);
-                        
-                        self.requestSearch(self.makeFilterData(filterData));
+                        self.requestSearch(postData);
                     }, function(data){
 
                         console.log("큐레이션 %o",data);
@@ -251,6 +259,17 @@ if ('scrollRestoration' in history) {
                 data.filterData = JSON.stringify(makeData);
                 return data;
             },
+
+            makeSmaertFilterData: function(data) {
+                var filterdata = JSON.parse(data.filterData);
+                var makeData = {};
+                for(key in filterdata) {
+                    makeData[key] = filterdata[key].join(",");
+                }
+                data.filterData = JSON.stringify(makeData);
+                return data;
+            },
+
 
             makeProductGAData: function(item) {
                 var param = {
