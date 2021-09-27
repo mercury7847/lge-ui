@@ -379,7 +379,7 @@ var Curation = (function() {
 
                 var maxIndex = 0;
                 for(key in filterData) {
-                    var arr = filterData[key].split('||');
+                    var arr = filterData[key].split(',');
                     if(arr instanceof Array) {
                         arr.forEach(function(item,index) {
                             var $input = self.$smartFilterList.find("input[value='"+item+"']");
