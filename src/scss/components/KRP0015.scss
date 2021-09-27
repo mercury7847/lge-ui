@@ -409,6 +409,7 @@
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
     .KRP0015 {
+        z-index: 99;
         bottom:(0 + $statusBarHeight);
     }
 }

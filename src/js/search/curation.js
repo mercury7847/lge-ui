@@ -89,7 +89,7 @@ var Curation = (function() {
         _makeFilterData: function(data) {
             var makeData = {};
             for(key in data) {
-                makeData[key] = data[key].join(",");
+                makeData[key] = data[key].join("||");
             }
             return JSON.stringify(makeData);
         },

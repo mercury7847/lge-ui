@@ -1675,6 +1675,11 @@
             margin:24px 0;
             & ~ .care-sibling-option {
                 margin:0;
+                /* BTOCSITE-4997 */
+                & ~ .info-accordion-wrap {
+                    margin-top:24px;
+                }
+                /* //BTOCSITE-4997 */
             }
 
             & ~ .care-sibling-option .info-accordion-wrap:first-child {

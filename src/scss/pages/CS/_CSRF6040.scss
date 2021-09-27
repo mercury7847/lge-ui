@@ -43,6 +43,10 @@
                 width:100%;
                 box-shadow:none;
             }
+            // BTOCSITE-4785
+            .display-product-search-info-wrap {
+                display: none;
+            }
             h2.tit {
                 padding:48px 40px 32px;
                 font-size: 32px;
@@ -460,17 +464,31 @@
                                         line-height:18px;
                                     }
                                 }
-                                .btn-detail {
-                                    margin-left:12px;
-                                    font-size:16px;
-                                    line-height:24px;
-                                    font-weight:700;
-                                    @include csmobile {
-                                        font-size:14px;
-                                        line-height:18px;
-                                        text-decoration:underline;
+                                // BTOCSITE-4785 s
+                                // .btn-detail {
+                                //     margin-left:12px;
+                                //     font-size:16px;
+                                //     line-height:24px;
+                                //     font-weight:700;
+                                //     @include csmobile {
+                                //         font-size:14px;
+                                //         line-height:18px;
+                                //         text-decoration:underline;
+                                //     }
+                                // }
+                                .btn-link-box {
+                                    display: block;
+                                    float: right;
+                                    text-align: right;
+                                    .btn-link.pink {
+                                        margin-left: 8px;
+                                        color:$color-primary;
+                                        &:after{
+                                            background-image: url(/lg5-common/images/icons/btn-arr-16-red.svg) ;
+                                        }
                                     }
                                 }
+                                 // BTOCSITE-4785 e
                             }
                         }
                     }
@@ -593,6 +611,12 @@
                         }
                     }
                 }
+                // BTOCSITE-4785 s
+                .display-product-search-info-wrap {
+                    margin-top: 16px;
+                    padding-bottom: 0 !important;
+                }
+                // BTOCSITE-4785 e
             }
 
             .list-wrap {
@@ -920,6 +944,202 @@
                     }
                 }
             }
+            // BTOCSITE-4785 s
+            &.display-product-search{
+                h2.tit {
+                    padding-bottom:16px;
+                    padding-top:16px;
+                    @include mobile {
+                        padding-bottom:12px;
+                        padding-top:4px;
+                    }
+                }
+                .sch-box {
+                    border-bottom: 1px solid #000;
+                    .desc {
+                        display: none;
+                    }
+                    .tabs-wrap {
+                        margin-bottom: 14px;
+                        // @include mobile {
+                        //     margin-bottom: 189px;
+                        //     transition: all 0.2s;
+                        //     &.close {
+                        //         margin-bottom: 80px;
+                        //         transition: all 0.2s;
+                        //     }
+                        // }
+                    }
+                    #tab1 .sch-input-wrap {
+                        padding-bottom: 42px;
+                        margin-bottom: 32px;
+                        @include mobile {
+                            padding-bottom: 48px;
+                        }
+                        .btn-area {
+                            @include mobile {
+                                bottom:0;
+                            }
+                            .btn.size-m {
+                                line-height: 16px;
+                                @include mobile {
+                                    line-height: 12px;
+                                }
+                            } 
+                        }
+                    }
+                    .sch-input-wrap {
+                        margin-bottom: 32px;
+                        @include mobile {
+                            padding-bottom: 48px;
+                            margin-bottom: 32px;
+                        }
+                    }
+                }
+                .sch-list .list-item > li {
+                    padding-right: 10px;
+                    @include mobile {
+                        padding-right:12px;
+                    }
+                }
+                .display-product {
+                    &-search-info-wrap{
+                        display: block;
+                        padding: 0 0 32px 0;
+                        @include mobile {
+                            padding: 0 0 16px 0;
+                        }
+                    }
+                    &-search-info {
+                        position: relative;
+                        background: $color-bg;
+                        padding: 18px 24px 24px 24px;
+                        border-radius: 8px;
+                        height:181px;
+                        transition: all 0.2s;
+                        @include mobile {
+                            padding: 16px 16px 24px 16px;
+                            height: 161px;
+                        }
+                        h3{
+                            position: relative;
+                            font-size: 14px;
+                            font-weight: 700;
+                            line-height: 22px;
+                            padding: 0 0 18px 28px;
+                            border-bottom : 1px solid $color-border;
+                            margin-bottom: 18px;
+                            @include mobile {
+                                font-size: 13px;
+                                padding: 0 0 16px 24px;
+                                margin-bottom: 16px;
+                                line-height: 18px;
+                            }
+                            &:before{
+                                position: absolute;
+                                top:-2px; 
+                                left:0;
+                                width: 24px;
+                                height: 24px;
+                                background: url(/lg5-common/images/CS/icon/ic_findastore_24.svg) no-repeat center center;
+                                background-size: 24px 24px;
+                                content: '';
+                                @include mobile {
+                                    width: 20px;
+                                    height: 20px;
+                                    top:-2px;
+                                    background-size: 20px 20px;
+                                }
+                            }
+                        }
+                        .btn-fold-box{
+                            position: absolute;
+                            top:-8px;
+                            left:0;
+                            width: 100%;
+                            height: 100%;
+                            .btn-dppdp-fold{
+                                width: 100%;
+                                height: 100%;
+                                &:after {
+                                    position: absolute;
+                                    top:12px;
+                                    right:0;
+                                    width: 16px;
+                                    height: 16px;
+                                    background: url(/lg5-common/images/CS/icon/ic_up_16.svg) no-repeat center center;
+                                    background-size: 16px 16px;
+                                    transition: all 0.2s;
+                                    content:'';
+                                    @include mobile {
+                                        top:9px;
+                                    }
+                                }
+                            }
+                        }
+                        .display-product-name{
+                            font-size: 16px;
+                            font-weight: 700;
+                            line-height: 24px;
+                            @include  textEllipsis ();
+                            @include mobile {
+                                font-size: 15px;
+                                line-height: 22px;
+                            }
+                        }
+                        .bullet-list {
+                            margin-top: 12px;
+                            color: $color-primary;
+                            font-size: 12px;
+                            line-height: 22px;
+                            @include mobile {
+                                line-height: 20px;
+                                margin-top: 8px;
+                            }
+                            .b-txt {
+                                @include mobile {
+                                    font-size: 13px;
+                                    line-height: 21px;
+                                }
+                            }
+                            .b-txt:before {
+                                width: 3px;
+                                height: 3px;
+                                margin-top: 9px;
+                                margin-left: -7px;
+                                margin-right: 4px;
+                                background: $color-primary ;
+                                vertical-align: top;
+                            }
+                        }
+                        &.close {
+                            height: 56px;
+                            overflow: hidden;
+                            transition: all 0.2s;
+                            @include mobile {
+                                height: 51px;
+                            }
+                            h3 {
+                                border-bottom:none;
+                                margin-bottom:33px;
+                            }
+                            .btn-fold-box{
+                                .btn-dppdp-fold:after{
+                                    -webkit-transform:rotate(180deg);
+                                    transform:rotate(180deg);
+                                    transition: all 0.2s;
+                                }
+                            }
+                        }
+                    }
+                }
+                .store-list-box .view-info-btn {
+                    @include mobile {
+                        bottom: 35px;
+                    }
+                }
+            }
+            // BTOCSITE-4785 e
         }
 
         .point {

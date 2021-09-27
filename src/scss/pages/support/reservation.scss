@@ -112,7 +112,85 @@
                 }
             }
         }
+        /* BTOCSITE-5594 */
+        +.cont-wrap.busi-trip{
+            .inquiry-list{
+                .description{
+                    .line{
+                        display:inline-block;
+                        margin:0 10px 0 0;
+                    }
+                    .btn{
+                        display:inline-block;
+                        margin:0;
+                        top:-2px;
+                        @include mobile{
+                            margin-top:10px;
+                        }
+                    }
+                }
+            }
+            .result-progress{
+                margin-top:-18px;
+                padding:0;
+                .desc{
+                    margin-bottom:55px;
+                }
+            }
+            .result-btn-group{
+                margin-top:56px;
+                background:none;
+                .group-box{
+                    max-width:568px;
+                    padding:0;
+                    text-align:center;
+                    .group-box-btngroup{
+                        margin-left:-14px;
+                        width:100%;
+                        .btn{
+                            margin:24px 0 0 14px;
+                            padding:0 5px;
+                            height:46px;
+                            &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3){
+                                width:calc(33.33% - 14px);
+                            }
+                            &:nth-of-type(4), &:nth-of-type(5){
+                                width:calc(50% - 14px);
+                            }
+                        }
+                    }
+                }
+                @include mobile{
+                    margin-top:32px;
+                    .group-box{
+                        .group-box-btngroup{
+                            margin-left:-13px;
+                            .btn{
+                                margin:13px 0 0 13px;
+                                min-width:auto;
+                                max-width:150px;
+                                height:44px;
+                                font-size:12px;
+                                line-height:15px;
+                                &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3){
+                                    width:calc(33.33% - 13px);
+                                }
+                                &:nth-of-type(4), &:nth-of-type(5){
+                                    width:calc(50% - 13px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include pc{
+                .only-mobile{
+                    display:none;
+                }
+            }
+        }
     }
+    /* //BTOCSITE-5594 */
 
     .engineer-to-visit {
         @include clearfix;

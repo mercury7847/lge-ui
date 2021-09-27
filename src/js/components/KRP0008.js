@@ -906,10 +906,15 @@
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                     var checked = !$(this).hasClass('compare-select');
+                    var pdpDataId = self.$pdpInfo.attr('data-id');
+
                     if(checked) {
+                        $(this).prop('checked');
                         $(this).addClass('compare-select');
                     } else {
+                        $(this).prop('checked', false);
                         $(this).removeClass('compare-select');
+                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click');
                     }
                     //$(this).prop('checked',!checked);
                     self.requestCompareItem(lgePdpSendData, checked, $(this));
