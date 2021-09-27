@@ -419,10 +419,11 @@
 
     function setHiddenMargin(){
         var $story1 = $context.find('.tag-subscribe-story');
-        var $story2 = $context.find('.tag-subscribe-stor2');
+        var $story2 = $context.find('.tag-subscribe-story2');
+        var $newStory = $context.find('.new_story');
         var $lastSection = $context.find('.tag-subscribe-story2').next('.story-section')
 
-        if( $story1.filter(":visible").length == 0 && $story2.filter(":visible").length == 0) {
+        if( $story1.filter(":visible").length == 0 && $story2.filter(":visible").length == 0 && $newStory.filter(':visible').length == 1) {
             $lastSection.addClass('hidden-story-next')
         } else {
             $lastSection.removeClass('hidden-story-next')
