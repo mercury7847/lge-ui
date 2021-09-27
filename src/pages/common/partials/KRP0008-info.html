@@ -29,7 +29,8 @@
                 </div>
                 <!-- // 공유하기 -->
             </div>
-            <div class="sku">OLED77GXKNA</div>
+            <!-- 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선  -->
+            <div class="sku copy">OLED77GXKNA</div> 
             <!-- 리뷰 별점 영역 -->
             <div class="review-info">
                 <!-- 210316 별점 수정 -->
@@ -187,7 +188,9 @@
 
             <!-- // Sibling 정보 선택 -->
             <!-- 일반제품 -->
-            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2,3]">
+            <!-- BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
+            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2,3,5]">
+            <!-- //BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
                 <ul>
                     <!-- 20210607 스펙선택 추가-->
                     <li class="lists Spec">
@@ -384,6 +387,41 @@
                         </div>
                     </li>
                     <!-- // 구매혜택 없음 -->
+                    <!-- BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
+                    <li class="lists benefit">
+                        <div class="head">
+                            <dl class="price-info">
+                                <dt class="text">배송방법</dt>
+                                <dd class="content">
+                                    <!-- 직접배송(설치) -->
+                                    <span class="price">직접배송(설치)</span>
+                                    <!-- 택배배송 -->
+                                    <!-- 
+                                        <span class="price">택배배송</span> 
+                                    -->
+                                </dd>
+                            </dl>
+                            <a href="#n" class="btn-toggle ui_accord_toggle">내용 더보기</a>
+                        </div>
+                        <div class="ui_accord_content">
+                            <!-- 직접배송(설치) -->
+                            <ul class="txt-list">
+                                <li>재고 부족/단종/생산 지연 등의 사유로 배송 일정이 변경될 경우 사전 안내 드립니다.</li>
+                                <li>배송 전 알림톡 또는 배송 당일 방문하실 설치기사가 연락 드립니다.</li>
+                                <li>도서산간지역(제주도 포함)의 경우, 추가 운임이 발생할 수 있으며 물류 센터 사정에 따라 배송이 불가할 수 있습니다.</li>
+                            </ul>
+                            <!-- 택배배송 -->
+                            <!--
+                            <ul class="txt-list">
+                                <li>택배배송의 경우, 주문일 기준 2~3일 내에 배송 받으실 수 있습니다.<br>
+                                    (택배사의 사정에 의해 지연될 수 있는 점 양해 바랍니다.)</li>
+                                <li>재고 부족/단종/생산 지연 등의 사유로 배송 일정이 변경될 경우 사전 안내 드립니다.</li>
+                                <li>단순변심으로 인한 반품의 경우, 제품 반송에 필요한 비용을 부담하셔야 됩니다.</li>
+                            </ul>
+                            -->
+                        </div>
+                    </li>
+                    <!-- //BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
                 </ul>
             </div>
 
@@ -1216,6 +1254,32 @@
                         </div>
                     </div>
                 </div>
+                <!-- BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
+                <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0]">
+                    <ul>
+                        <li class="lists benefit">
+                            <div class="head">
+                                <dl class="price-info">
+                                    <dt class="text">배송방법</dt>
+                                    <dd class="content">
+                                        <!-- 직접배송(설치) -->
+                                        <span class="price">직접배송(설치)</span>
+                                    </dd>
+                                </dl>
+                                <a href="#n" class="btn-toggle ui_accord_toggle">내용 더보기</a>
+                            </div>
+                            <div class="ui_accord_content">
+                                <!-- 직접배송(설치) -->
+                                <ul class="txt-list">
+                                    <li>재고 부족/단종/생산 지연 등의 사유로 배송 일정이 변경될 경우 사전 안내 드립니다.</li>
+                                    <li>배송 전 알림톡 또는 배송 당일 방문하실 설치기사가 연락 드립니다.</li>
+                                    <li>도서산간지역(제주도 포함)의 경우, 추가 운임이 발생할 수 있으며 물류 센터 사정에 따라 배송이 불가할 수 있습니다.</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //BTOCSITE-4997 PDP > 제품배송타입(방법) 제품상세화면 표기 -->
                 <!-- 2021-02-03 data-prefix 추가 -->
                 <div class="box payment-amount" data-prefix="월">
                     <ul>
@@ -1315,25 +1379,28 @@
         </div>
         <!-- // 210330 수정 [윙 체험존 위치 보기 추가] -->
 
-        <!-- BTOCSITE-5234 210913 추석 연휴 기간 안내팝업 진행요청 -->
+        <!-- BTOCSITE-5234 추석 연휴 기간 안내팝업 진행요청 -->
         <div class="box ex-info">
             <strong class="txt-point">고객님! 주문 전에 확인해주세요.</strong>
-            <p class="txt-exp">추석 연휴기간 배송 물량 초과로 배송희망일보다 지연될 수 있습니다.</p>
-            <ul class="txt-list">
-                <li>설치 제품의 경우 담당 물류센터 사정으로 일부 지연될 수 있습니다.</li>
-                <li>택배 배송 제품의 경우<br>
-                    (※ 택배사의 사정으로 인해 변경될 수 있습니다.)
-                    <ul>
-                        <li>9월 15일 이전 주문 : ~ 18일까지 배송</li>
-                        <li>9월 15일 이후 주문 : 23일 이후 순차 배송</li>
-                    </ul>
+            <ul class="txt-info-list">
+                <li>
+                    <strong>추석 연휴 이후에는 배송 물량 집중으로 선택하신 배송희망일 대비 지연</strong>될 수 있습니다.
+                <li>
+                    택배 배송 제품은 아래와 같이 배송 예상됩니다.<br>
+                    (단, 택배사의 사정으로 변경될 수 있습니다.)<br>
+                    - <strong>9월 14일 이내 주문분 : 9월 18일 이내 배송</strong><br>
+                    - <strong>9월 15일 이후 주문분 : 9월 23일 이후 순차 배송</strong><br>
+                    * 택배 배송 제품 : 톤프리, 미니공청기, 무선 스피커
+                </li>
+                <li>
+                    물류센터/고객센터 휴무 안내<br>
+                    - <strong>물류센터 휴무 : 19(일)~22(수)</strong><br>
+                    - <strong>고객센터 휴무 : 18(토)~22(수)</strong>
                 </li>
             </ul>
-            <p class="desc"><strong>문의사항은 고객센터(1544-6351)</strong>로 연락 부탁 드립니다.<br>
-                (<strong>고객센터는 9월 18일 ~ 22일 휴무</strong>입니다.)
-            </p>
+            <p class="desc">추가 문의 사항은 <strong>고객센터(1544-6351)</strong>로 연락 부탁 드립니다.</p>
         </div>
-        <!-- //BTOCSITE-5234 210913 추석 연휴 기간 안내팝업 진행요청 -->
+        <!-- //BTOCSITE-5234 추석 연휴 기간 안내팝업 진행요청 -->
     </div>
 </div>
 

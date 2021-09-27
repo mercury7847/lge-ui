@@ -133,6 +133,10 @@
                 .thumb {
                     float:left;
                     width:140px;
+                    // BTOCSITE-4086
+                    a {
+                        display: inline-block;
+                    }
                     img {
                         width:100%;
                         height:auto;
@@ -162,6 +166,10 @@
                         // margin:16px 0 0;
                         padding:0 0 0 122px;
                         padding-left:122px;
+                    }
+                    // BTOCSITE-4086
+                    a {
+                        display: inline-block;
                     }
                     .name {
                         color:#000;

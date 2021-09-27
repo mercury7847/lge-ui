@@ -1145,3 +1145,326 @@
         }
     }
 }
+
+//BTOCSITE-4086
+#registMyProductPopup {
+    .pop-conts{
+        max-height: 560px;
+        @include mobile{
+            max-height: calc(100% - 122px);
+        }
+    }
+    .pop-footer{
+        padding: 64px 48px 48px;
+        @include mobile{
+            padding: 0;
+        }
+    }
+    .info-req.pc{
+        @include mobile{
+            display: none;
+        }
+    }
+    .example-type-list-wrap{
+        .noti-txt {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 26px;
+            @include mobile{
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+        .bullet-list {
+            display: none;
+            margin-top: 16px;
+            @include mobile{
+                margin-top: 14px;
+            }
+        }
+    }
+    .example-type-list{
+        margin: 16px -8px 0 -8px;
+        @include clearfix;
+        li{
+            display:block;
+            float: left;
+            width:50%;
+            .example-type-inbox{
+                padding: 0 8px;
+                button{
+                    width: 100%; 
+                    height: 88px;
+                    border-radius: 8px;
+                    box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
+                    border:2px solid #fff;
+                    @include mobile{
+                        height: 42px;
+                    }
+                    &.active{
+                        border-color: $color-primary;
+                    }
+                    span{
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        padding: 32px 0;
+                        font-size: 16px;
+                        color: $color-default;
+                        line-height:1;
+                        font-weight: 700;
+                        @include mobile{
+                            padding: 12px 0;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .btn-prod-reg:disabled {
+        border-color: #f3b7c7 !important;
+        background: #f3b7c7;
+        color: #fff;
+    }
+    .input-wrap input:read-only {
+        border-color: #ddd;
+        background: #f4f4f4;
+        color: #aaa;
+    }
+    .select-wrap .ui-selectbox-wrap.disabled .ui-select-button {
+        border-color: #ddd;
+        background: #f4f4f4;
+        cursor: default;
+    }
+} 
+
+#registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
+    display: none;
+    @include mobile {
+        margin:0 0 0 6px; 
+        &.active {
+            display: inline-block;
+        }
+    }
+}
+#registMyProductPopup .common-pop.academy-pop .example-result {
+    padding-top: 64px;
+    @include mobile {
+        padding-top: 60px;
+    }
+}
+.pop-sub-title {
+    position: relative;
+    padding-bottom: 16px;
+    margin-bottom: 48px;
+    border-bottom:1px solid $color-default;
+    @include mobile {
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+    }
+    h2 {
+        font-size: 24px;
+        color: $color-default;
+        line-height: 34px;
+        @include mobile{
+            font-size: 20px;
+            line-height: 28px;
+        }
+    }
+    .btn-link-wrap{
+        display: inline-block;
+        position: absolute;
+        right:0;
+        bottom:16px;
+        .btn-model-check{
+            padding-right: 32px;
+            &:after{
+                right:9px;
+                @include mobile{
+                    margin-top: -9px;
+                }
+            }
+        }
+        @include mobile{
+            bottom:100%;
+            width: 100%;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+    }
+    .info-req{
+        position: absolute;
+        display: none;
+        right: 0;
+        bottom: 9px;
+        margin: 0 !important;
+        @include mobile{
+            display: inline-block;
+        }
+    }
+
+}
+.popup-wrap .common-pop .info-req-box {
+    display: none;
+    @include mobile{
+        display: block;
+        margin-bottom: 24px;
+    }
+    .info-req{
+        font-size: 14px;
+        line-height: 22px;
+        margin: 0;
+        display: none;
+        @include mobile{
+            &.direct{
+                display: block;
+            }
+            &.qr {
+                display: none;
+                &:before{
+                    display: none;
+                }
+                &-active {
+                    display: none;
+                    color : $color-primary;
+                    &:before{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+.scan-type-wrap-mobile {
+    display: none;
+    p {
+        font-size: 14px;
+        color: $color-default;
+        line-height: 21px;
+        font-weight: 700;
+    }
+    .scan-type-list{
+        margin: 12px -6px 100px -6px;
+        @include clearfix;
+        li{
+            display:block;
+            float: left;
+            width:50%;
+            .scan-type-inbox{
+                padding: 0 6px;
+                button{
+                    width: 100%; 
+                    height: 120px;
+                    border-radius: 8px;
+                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                    border:2px solid #fff;
+                    &.active{
+                        border-color: $color-primary;
+                    }
+                    span{
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        padding-top: 78px;
+                        font-size: 14px;
+                        color: $color-default;
+                        line-height: 22px;
+                        font-weight: 700;
+                    }
+                    &.btn-qrscan {
+                        span {
+                            background: url('/lg5-common/images/MYC/ic_qr_96.svg') no-repeat center 18px;
+                            background-size: 48px 48px;
+                        }
+                    }
+                    &.btn-direct {
+                        span {
+                            background: url('/lg5-common/images/MYC/ic_write_96.svg') no-repeat center 18px;
+                            background-size: 48px 48px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include mobile{
+        display: block;
+    }
+}
+.qrscan-info-wrap {
+    display: block;
+    position: relative;
+    height: 196px;
+    margin-top: 64px;
+    padding: 42px 0 24px 213px;
+    border-radius: 8px;
+    background-color: $color-bg;
+    @include mobile{
+        display: none;
+    }
+    h3 {
+        position: absolute;
+        top:24px; 
+        left:0;
+        height: 148px;
+        width:181px;
+        padding-top: 76px;
+        border-right: 1px solid $color-border;
+        text-align: center;
+        font-size: 14px;
+        color: $color-default;
+        line-height: 24px;
+        font-weight: 700;
+        background: url('/lg5-common/images/MYC/ic_qr_96.svg') no-repeat top center;
+        span {
+            display: block;
+            font-weight: 400;
+        }
+    }
+    p {
+        font-size: 16px;
+        color: $color-default;
+        line-height: 26px;
+        font-weight: 700;
+    }
+    .bullet-list{
+        margin-top: 16px;
+    }
+}
+.example-type-list{
+    margin: 8px -8px 100px -8px;
+    @include clearfix;
+    li{
+        display:block;
+        float: left;
+        width:50%;
+        .example-type-inbox{
+            padding: 0 8px;
+            button{
+                width: 100%; 
+                height: 88px;
+                border-radius: 8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                border:2px solid #fff;
+                &.active{
+                    border-color: $color-primary;
+                }
+                span{
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 16px;
+                    color: $color-default;
+                    line-height: 26px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+#registMyProductPopup .common-pop.academy-pop .example-result .img{
+    margin-top: 12px;
+    border-radius: 8px;
+    border:1px solid $color-border;
+}

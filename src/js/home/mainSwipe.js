@@ -46,7 +46,6 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
-        
     },
     setSwipe : function(){
         var self = this;
@@ -73,11 +72,15 @@ MainSwiper.prototype = {
                 'init' : function(swiper){   
                     self.isSwiped = false;    // BTOCSITE-2947 add
 
+                    
+
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
-                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];                        
+                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];
+                        document.addEventListener('readystatechange', function(e) {
+                            document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
+                        })
                         mainSwiper.loadContent( currentSlide,true );
-                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                     }
                     
                     else {
@@ -93,9 +96,12 @@ MainSwiper.prototype = {
                         */
                       
                     }
-                    
 
+                    
+                    
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
+                    
+                    self.removeStatusBar();//BTOCSITE-1967
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -109,6 +115,8 @@ MainSwiper.prototype = {
                     if (mainSwiper.currentIdx < swiper.activeIndex){
                         mainSwiper.customEventActionString = '스와이프 - 우측';
                     }
+
+                    self.removeStatusBar();//BTOCSITE-1967
 
                     //console.log('customEventActionString' , mainSwiper.customEventActionString);
 
@@ -140,6 +148,9 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
+                    //BTOCSITE_1967
+                    //self.setStatusBar(swiper);
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
@@ -270,6 +281,8 @@ MainSwiper.prototype = {
 
             self.isLoading = false;
             self.getContent();
+            //BTOCSITE_1967
+            //self.setStatusBar(currentSlide);
             /*
             setTimeout(function(){
                 mainSwiper.swiper.updateAutoHeight();
@@ -445,6 +458,14 @@ MainSwiper.prototype = {
             $('.floating-menu.cs-cst.btn-app-ar').show();
         } else {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
+        }
+    },
+    removeStatusBar: function(){
+        //BTOCSITE_1967
+        if( !$('.swiper-slide').find('.mobile-status-bar').length ) {
+            return;
+        } else {
+            $('.swiper-slide').find('.mobile-status-bar').remove();    
         }
     }
 }

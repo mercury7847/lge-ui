@@ -654,7 +654,7 @@
 
             setTotalCount: function (totalCount) {
                 var self = this;
-                self.$totalCount.text(vcui.number.addComma(totalCount) + "개");
+                self.$totalCount.text( "총 " + vcui.number.addComma(totalCount) + "개");
             },
 
             requestSearch: function(data, isNew){

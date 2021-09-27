@@ -272,6 +272,9 @@
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
 
+                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy =  self.$component.find('.copy');
+
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
@@ -313,6 +316,53 @@
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
+
+                    rentalInfo = [
+                        {
+                            "years3TotAmt": 35900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 0,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 35900,
+                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                            "years2TotAmt": 35900,
+                            "years6TotAmt": 35900,
+                            "years7TotAmt": 35900,
+                            "rtFreePeriod": "25,37,49",
+                            "rtModelSeq": "1579561",
+                            "dutyTerm": "6",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "Y",
+                            "contractTerm": "7",
+                            "years5TotAmt": 35900,
+                            "years4TotAmt": 35900,
+                            "freeMonth": 3
+                        },
+                        {
+                            "years3TotAmt": 39900,
+                            "visitPer": "3",
+                            "rtRgstFeePre": 0,
+                            "freeMonthDisplayYn": "Y",
+                            "rentalCareType": "R",
+                            "years1TotAmt": 39900,
+                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                            "years2TotAmt": 39900,
+                            "years6TotAmt": 0,
+                            "rtFreePeriod": "25,37,49",
+                            "rtModelSeq": "1565994",
+                            "dutyTerm": "3",
+                            "careCategoryId": "CT50000175",
+                            "representChargeFlag": "N",
+                            "contractTerm": "5",
+                            "years5TotAmt": 39900,
+                            "years4TotAmt": 39900,
+                            "freeMonth": 3
+                        }
+                    ];
+
+
+
                     // rentalInfo = [
                     //     {
                     //         "careCategoryId": "CT50000175",
@@ -712,6 +762,16 @@
                 });
                 */
 
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy.on('click',function() {
+                        self.copyClicked = true;
+                        vcui.dom.copyToClipboard(($(this).text()), {
+                            onSuccess: function () {
+                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                            }
+                        });
+                });
+
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
                     e.preventDefault();
@@ -847,12 +907,16 @@
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                     var checked = !$(this).hasClass('compare-select');
                     if(checked) {
+                        $(this).prop('checked');
                         $(this).addClass('compare-select');
                     } else {
+                        $(this).prop('checked', false);
                         $(this).removeClass('compare-select');
+                        $('.btn-close').trigger('click');
                     }
                     //$(this).prop('checked',!checked);
                     self.requestCompareItem(lgePdpSendData, checked, $(this));
+
                 });
 
                 //비교하기 컴포넌트 변화 체크
@@ -1318,9 +1382,12 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1402,9 +1469,12 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1920,18 +1990,22 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
-                    }
+                    // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                   if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
+                   }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }
@@ -1988,18 +2062,20 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
+                    if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
                     }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }

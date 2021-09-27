@@ -9,7 +9,8 @@ $(function() {
         event.preventDefault();
     });
 
-    $(".logo a").attr("href", "/html_mobi/index.html");
+    // BTOCSITE-5810 [UI] 오브제컬렉션 제품 상세 오류
+    // $(".logo a").attr("href", "/html_mobi/index.html");
 
     $(".siteInfo").find("li").each(function() {
         var texta = $(this).text();

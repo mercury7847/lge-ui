@@ -747,13 +747,15 @@ footer {
     }
 }
 
-//BTOCSITE-1967
-.is-web-status-bar {
-    @include mobile {
-        $statusbarHeight: 70px;
-        footer {
-            &:not(.no-footer) {
-                padding-bottom:60px + $statusbarHeight;
+/* BTOCSITE-1967 */
+.mdevice {
+    &:not(.app) {
+        @include mobile {
+            $statusbarHeight: 70px;
+            footer {
+                &:not(.no-footer) {
+                    padding-bottom:60px + $statusbarHeight;
+                }
             }
         }
     }

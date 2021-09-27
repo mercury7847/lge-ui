@@ -185,11 +185,11 @@
             // 글 수정시 파일 삭제 함수
             uploadFileDelete: function(el) {
                 var self = this;
-
-                $(el).closest('.file-btns').find("input[type='file']").data('fileFlag','delete');
-
-                $(el).closest('.file-image').find('.file-preview').empty();
-                $(el).closest('.file-item').removeClass('modify');
+                var $fileItem = $(el).closest('.file-item');
+                $fileItem.find("input[type='file']").data('fileFlag','delete');
+                $fileItem.find('.file-preview').empty();
+                $fileItem.find('.file-name input').prop('placeholder','');
+                $fileItem.removeClass('modify');
             }
         };
 

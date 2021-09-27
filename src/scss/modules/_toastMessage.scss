@@ -51,8 +51,8 @@
     }
 }
 
-//BTOCSITE-1967
-.is-web-status-bar {
+/* BTOCSITE-1967 */
+.mdevice:not(.app) {
     .toast-message {
         $statusBarHeight:70px;
         bottom: (24px + $statusBarHeight);

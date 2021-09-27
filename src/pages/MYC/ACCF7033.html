@@ -27,7 +27,10 @@
                     <input type="hidden" name="membership" value="Y">
                     <input type="hidden" name="marketing" value="N">
                     <input type="hidden" name="year" value="2021,2020,2019,2018,2017">
-                    <input type="hidden" name="month" value="3">
+                    <input type="hidden" name="month" vlue="3">
+                    <!-- BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가 -->
+                    <input type="hidden" name="cta" value="Y">
+                    <!-- //BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가-->
                 </div>
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
@@ -453,219 +456,10 @@
     </div>  
 
     <!-- 보유제품 등록 -->
-    <!-- 2021-02-26 수정 -->
-    <!-- 2021-02-26 data-list-url 추가 보유제품 등록 팝업에 있던 보유제품 카테고리 검색 -->
-    <article id="registMyProductPopup" class="popup-wrap"
-        data-list-url="/lg5-common/data-ajax/support/searchModelName.json"
-        data-sku-url="/lg5-common/data-ajax/mypage/product/checkSku.json"
-        data-insert-url="/lg5-common/data-ajax/mypage/product/productRegist.json"
-    >
-    <!-- //210201 수정 -->
-        <div class="page-change">
-            <header class="pop-header" ui-modules="Header">
-                <!-- 210201 수정 -->
-                <h1 class="tit" id="modal_30_title"><span>보유 제품 직접 등록</span></h1>
-                <!-- //210201 수정 -->
-            </header>
-            <section class="pop-conts common-pop mypage" id="modal_30_content"><!-- [12.01 수정] .common-pop class 추가 -->
-                <!-- 210201 추가 -->
-                <p class="info-req"><span class="blind">필수입력</span>필수 입력 항목</p>
-                <!-- //210201 추가 -->
-                <div class="form-wrap">
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="box">
-                                <div class="input-wrap">
-                                    <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력" name='sku'>
-                                    <!-- 210201 수정 -->
-                                    <p class="comp">제품 모델명 확인이 완료되었습니다.</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
-                                    <!-- 210315 문구수정 -->
-                                    <p class="link"><a href="#n" class="btn-link">모델명 확인 방법</a></p>
-                                    <!-- //210315 문구수정 -->
-                                    <!-- //210201 수정 -->
-                                </div>
-                                <div class="cell">
-                                    <button type="button" class="btn"><span>확인</span></button>
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="slt01" class="req">구매 년 월<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="box date-select-box col-2">
-                                <div class="cell">
-                                    <div class="box">
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="slt01" title="년 선택" name="year" data-required="true" required>
-                                                <option value="" class="placeholder">선택</option>
-                                                <option value="2021">2021</option>
-                                                <option value="2020">2020</option>
-                                                <option value="2019">2019</option>
-                                                <option value="2018">2018</option>
-                                                <option value="2017">2017</option>
-                                                <option value="2016">2016</option>
-                                                <option value="2015">2015</option>4
-                                                <option value="2014">2014</option>
-                                                <option value="2013">2013</option>
-                                                <option value="2012">2012</option>
-                                                <option value="2011">2011</option>
-                                            </select>
-                                        </div>
-                                        <div class="text"><span>년</span></div>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="box">
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" id="slt01-1" title="월 선택" name="month" data-required="true" required>
-                                                <option value="" class="placeholder">선택</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                        </div>
-                                        <div class="text"><span>월</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="err-block"><p class="err-msg"></p></div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit"><label for="inp02">제조번호(S/N)<span class="blind">필수입력</span></label></dt>
-                        <dd class="conts">
-                            <div class="box">
-                                <div class="input-wrap">
-                                    <!-- 2021-08-17 BTOCSITE-4196 수정  minlength="12" maxlength="18" && 제조번호 확인 버튼 추가 -->
-                                    <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력" name='sn' minlength="12" maxlength="18">
-                                    <p class="link"><a href="#n" class="btn-link">제조번호(S/N) 확인 방법</a></p>
-                                    <!-- //2021-08-17 BTOCSITE-4196 수정 -->
-                                </div>
-                                <div class="cell">
-                                    <!-- 210201 수정 -->
-                                    <button type="button" class="btn"><span>시리얼 번호 확인</span></button>
-                                    <!-- //210201 수정 -->
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    <!-- 2021-08-17 BTOCSITE-4196 수정 삭제 -->
-                    <!-- <dl class="forms">
-                        <dt class="tit"><label for="slt02">구매장소</label></dt>
-                        <dd class="conts">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="slt02" title="구매 장소 유형 선택" name='store1'>
-                                    <option value="" class="placeholder">구매 장소 유형 선택</option>
-                                    <option value="bestshop">BESTSHOP</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" id="inp03" value="" placeholder="상세 구매처 명 입력" name='store2'>
-                            </div>
-                        </dd>
-                    </dl> -->
-                    <!-- //2021-08-17 BTOCSITE-4196 수정 삭제 -->
-                </div>
-                <!-- 2021-08-17 BTOCSITE-4196 수정 삭제 -->
-                <!-- <dl class="bullet-list top-border">
-                    <dt class="b-tit">확인하세요</dt>
-                    <dd class="b-txt">제품 등록은 구매일 다음날부터 등록 가능하며 제품 등록 시 리워드가 포인트로 적립됩니다.</dd>
-                </dl> -->
-                <!-- //2021-08-17 BTOCSITE-4196 수정 -->
-            </section>
-            <footer class="pop-footer center" ui-modules="Footer">
-                <div class="btn-group">
-                    <button type="button" class="btn gray"><span>취소</span></button>
-                    <button type="button" class="btn"><span>등록</span></button>
-                </div>
-            </footer>
-            <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-            </div>
-        <div class="page-change">
-            <header class="pop-header">
-                <h1 class="tit"><span>모델명 확인 방법</span></h1>
-            </header>
-            <!-- 210324 클래스 수정 -->
-            <section class="pop-conts academy-pop common-pop">
-            <!-- //210324 클래스 수정 -->
-                <p class="noti-txt">사용하시는 제품의 <em>모델명과 제조번호</em>를 확인해주세요.</p>
-                <div class="example-list">
-                    <dl>
-                        <dt>모델명</dt>
-                        <dd>PRODUCT CODE 나 SVC CODE 또는 제품 CODE로 확인</dd>
-                    </dl>
-                    <dl>
-                        <dt>제조번호</dt>
-                        <dd>SERIAL NO(S/N) 또는 일련번호로 확인</dd>
-                    </dl>
-                </div>
-        
-                <div class="form-wrap category-select">
-                    <dl class="forms">
-                        <dt class="tit"><label for="select1" class="req">카테고리 선택</label></dt>
-                        <dd class="conts">
-                            <div class="box">
-                                <div class="select-wrap">
-                                    <select class="ui_selectbox ul_select_target" id="select1" title="전체 카테고리 선택" data-target="#select2">
-                                        <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                        <option value="세탁기/스타일러">세탁기/스타일러</option>
-                                        <option value="모바일">모바일</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <div class="select-wrap">
-                                    <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" disabled>
-                                        <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
-                                    </select>
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                </div>
-        
-                <div class="example-result">
-                    <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
-                    <!-- 
-                        카테고리 선택 후 안내 메시지 
-                        <p class="txt">제품 오른쪽 뒷면에 스티커가 부착되어 있습니다.</p>
-                    -->
-                    <!-- 
-                        제품 이미지 없을 경우
-                        <p class="txt">제품 이미지 준비중입니다.</p>
-                     -->
-                    <!-- [11.27 수정] 샘플 이미지 DOM 수정 -->
-                    <div class="img" aria-hidden="true">
-                        <!-- 
-                            제품 이미지 없을 경우
-                            <img src="/lg5-common/images/img-nodata.svg" alt=""> 
-                        -->
-                        <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
-                    </div>
-                    <!-- // [11.27 수정] 샘플 이미지 DOM 수정 -->
-                </div>
-            </section>
-            <footer class="pop-footer center">
-                <div class="btn-group">
-                    <button type="button" class="btn"><span>뒤로가기</span></button>
-                </div>
-            </footer>
-            <!-- <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button> -->
-        </div>
-    </article>
+    <!-- BTOCSITE-4086 s -->
+    @@include('./common/popup/ACCF7033_pop5.html')
+    <!-- BTOCSITE-4086 e -->
     <!-- // 보유제품 등록-->
-    <!-- //2021-02-26 수정 -->
 
     <!-- 사용설명서 -->
     <article id="manualPopup" class="popup-wrap wide"
@@ -871,6 +665,5 @@
     </article> -->
     <!-- //2021-02-26 제거 -->
     <!-- //모델명 확인방법 -->
-
 </body>
 </html>

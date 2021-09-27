@@ -11,7 +11,7 @@ var Curation = (function() {
                         '<div class="chk-group">' +
                             '{{#each (item, idx) in filterValues}}' +
                                 '<div class="chk-wrap">' +
-                                    '<input type="checkbox" id="smart-{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}-{{idx}}">' +
+                                    '<input type="checkbox" id="smart-{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}">' +
                                     '<label for="smart-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                                 '</div>' +
                             '{{/each}}' +
@@ -52,6 +52,8 @@ var Curation = (function() {
         triggerSmartFilterChangeEvent: function () {
             var self = this;
             var filterData = self.getDataFromSmartFilter();
+
+            console.log("triggerSmartFilterChangeEvent filterdata %o",filterData);
             self.smartFilterChangeEventFunc(filterData, self._makeFilterData(filterData));
         },
 
@@ -65,6 +67,8 @@ var Curation = (function() {
         getDataFromSmartFilter: function() {
             var self = this;
             var data = {};
+
+            console.log("getDataFromSmartFilter %o",self.$smartFilterResult);
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
@@ -77,13 +81,15 @@ var Curation = (function() {
                 data[filterId] = tempArray;
                 //data['data'] = tempArray;
             });
+
+            console.log("스마트 필터 데이터 %o",data);
             return data;
         },
 
         _makeFilterData: function(data) {
             var makeData = {};
             for(key in data) {
-                makeData[key] = data[key].join("||");
+                makeData[key] = data[key].join(",");
             }
             return JSON.stringify(makeData);
         },
@@ -208,6 +214,8 @@ var Curation = (function() {
         },
 
         setCurationData: function(data) {
+
+            console.log("setCurationData 초기 %o",data);
             var self = this;
             var curationData = data.curation;
             if(curationData && curationData.length > 0) {
@@ -371,7 +379,7 @@ var Curation = (function() {
 
                 var maxIndex = 0;
                 for(key in filterData) {
-                    var arr = filterData[key].split('||');
+                    var arr = filterData[key].split(',');
                     if(arr instanceof Array) {
                         arr.forEach(function(item,index) {
                             var $input = self.$smartFilterList.find("input[value='"+item+"']");

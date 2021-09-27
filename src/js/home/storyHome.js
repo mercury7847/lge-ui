@@ -536,11 +536,8 @@
                             if(sectioname == "new_story"){
                                 $context.find('.user_story').hide();
                                 $context.find(story3).hide(); //BTOCISTE-188
-                                $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next') //BTOCSITE-188
-                            } else {
-                                $context.find('.new_story').hide();   
                                 $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
-                            }
+                            } else $context.find('.new_story').hide();
 
                             $context.find('.tag-subscribe-story').hide();
                         }

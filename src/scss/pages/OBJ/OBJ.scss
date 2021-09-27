@@ -14,11 +14,14 @@
 .space_mobi {
     @import "OBJ0301_mobi";
 }
-//BTOCSITE-1967
-.is-web-status-bar {
+/* BTOCSITE-1967 */
+.mdevice:not(.app) {
     $statusBarHeight: 70px;
     .space_mobi {
         .select_objet {
+            bottom:(0 + $statusBarHeight)
+        }
+        .simulator.full .objet_select_slider .img-download {
             bottom:(0 + $statusBarHeight)
         }
     }

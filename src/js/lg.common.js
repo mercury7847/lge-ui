@@ -402,7 +402,90 @@ var goAppUrl = function(path) {
             var enableUrl = [
                 '^/$', // 메인
                '^/benefits/event/?', // 이벤트 페이지
-               '^/benefits/exhibitions/?' // 기획전 페이지
+               '^/benefits/exhibitions/?', // 기획전 페이지
+               '^/story/?$', // 스토리 페이지
+            //    '^/story/lifestyle/?', // 스토리 - lifestyle 상세 페이지
+            //    '^/story/trend/?', // 스토리 - trend 상세 페이지
+            //    '^/story/expert-curation/?', // 스토리 - 인사이드 대명장의 추천  상세 페이지
+            //    '^/story/only-and-best/?', // 스토리 -  인사이드 only & best 상세 페이지
+            //    '^/story/useful-tip/?', // 스토리 - 가이드&팁 상세 페이지
+            //    '^/story/user-guide/?', // 스토리 - 사용가이드 상세 페이지
+            //    '^/story/hands-on-reviews/?', // 스토리 - 고객리뷰 상세 페이지
+
+
+               // pdp 
+            //    '^/tvs|projectors|home-audio|notebook|all-in-one-pc-and-desktop|monitors/.*$', // 스토어 - tv/av , it
+            //    '^/refrigerators|kimchi-refrigerators|electric-ranges|dishwashers|microwaves-and-ovens|water-purifiers|lg-homebrew/.*$', // 스토어 - 주방가전
+
+            //    '^/tvs/.*$', // 스토어 - tv/av = tv
+            //    '^/projectors/.*$', // 스토어 - tv/av - 프로젝터
+            //    '^/home-audio/.*$',// 스토어 - tv/av - av
+            //    '^/notebook/.*$',// 스토어 - it - 노트북
+            //    '^/all-in-one-pc-and-desktop/.*$',// 스토어 - it - 일체형/데스크톱
+            //    '^/monitors/.*$',// 스토어 - it - 모니터
+
+            //    '^/refrigerators/.*$',// 스토어 - 주방가전 - 냉장고
+            //    '^/kimchi-refrigerators/.*$',// 스토어 - 주방가전 - 김치냉장고
+            //    '^/electric-ranges/.*$',// 스토어 - 주방가전 - 전자레인지
+            //    '^/dishwashers/.*$',// 스토어 - 주방가전 - 식기세척기
+            //    '^/microwaves-and-ovens/.*$',// 스토어 - 주방가전 - 광파오븐/전자레인지
+            //    '^/water-purifiers/.*$',// 스토어 - 주방가전 - 정수기
+            //    '^/lg-homebrew/.*$',// 스토어 - 주방가전 - 맥주제조기
+
+
+            //    '^/kr/business/product/builtin/cooling-list/.*$',// 스토어 - 주방가전 - 빌트인가전, 시그니쳐 : lge.co.kr 5.0 사이트 아님
+
+
+            //     '^/wash-tower/.*$',// 스토어 - 생활가전 - 워시타워
+            //     '^/washing-machines/.*$',// 스토어 - 생활가전 - 세탁기
+            //     '^/dryers/.*$',// 스토어 - 생활가전 - 의류건조기
+            //     '^/vacuum-cleaners/.*$',// 스토어 - 생활가전 - 청소기
+            //     '^/massage-chairs/.*$',// 스토어 - 생활가전 - 안마의자
+
+            //     '^/air-conditioners/.*$',// 스토어 - 에어컨/에어케어 - 에어컨
+            //     '^/system-air-conditioners/.*$',// 스토어 - 에어컨/에어케어 - 시스템에어컨
+            //     '^/air-purifier/.*$',// 스토어 - 에어컨/에어케어 - 공기청정기
+            //     '^/air-conditioners/.*$',// 스토어 - 에어컨/에어케어 - 에어컨
+            //     '^/dehumidifiers-and-humidifiers/.*$',// 스토어 - 에어컨/에어케어 - 제습/가습기
+            //     '^/ceiling-fan/.*$',// 스토어 - 에어컨/에어케어 - 제습/가습기
+                
+            //     '^/beauty-device/.*$',// 스토어 - 뷰티의료기기 - 뷰티디바이스
+            //     '^/medical-device/.*$',// 스토어 - 뷰티의료기기 - 뷰티디바이스
+            //     '^/beauty-device/.*$',// 스토어 - 뷰티의료기기 - 뷰티디바이스
+
+            //     '^/signature/.*$',// 스토어 - LG SIGNATURE 
+            //     '^/object-collection/.*$',// 스토어 - LG Objet Collection 
+
+
+
+            //     '^/care-accessories/(abq|aaa).*$',// 케어용품/소모품 -전자레인지
+
+
+            //    '^/care-accessories/tv/.*$',// 케어용품/소모품 -tv
+            //    '^/care-accessories/projector-\(minibeam-etc\.\)/.*$',// 케어용품/소모품 -프로젝터
+            //    '^/care-accessories/laptop/.*$',// 케어용품/소모품 -노트북
+            //    '^/care-accessories/monitor/.*$',// 케어용품/소모품 -모니터
+            //    '^/care-accessories/desktop/.*$',// 케어용품/소모품 -데스크톱
+            //    '^/care-accessories/laserjet-inkjet-printer-printer/.*$',// 케어용품/소모품 -프린터
+            //    '^/care-accessories/side-by-side-and-french-door-refrigerators/.*$',// 케어용품/소모품 -냉장고
+            //    '^/care-accessories/care-accessories/water-purifier/.*$',// 케어용품/소모품 -정수기
+            //    '^/care-accessories/care-accessories/dishwasher/.*$',// 케어용품/소모품 -식기세척기
+
+            //    '^/care-accessories/front-load-washer/.*$',// 케어용품/소모품 -세탁기
+            //    '^/care-accessories/dryer/.*$',// 케어용품/소모품 -의류건조기
+            //    '^/care-accessories/styler/.*$',// 케어용품/소모품 -스타일러
+            //    '^/care-accessories/a9-vacuum-cleaner/.*$',// 케어용품/소모품 -청소기
+            //    '^/care-accessories/robotic-vacuum-cleaner/.*$',// 케어용품/소모품 -청소기
+            //    '^/care-accessories/other-vacuum-cleaner/.*$',// 케어용품/소모품 -청소기
+            //    '^/care-accessories/floor-standing-cooler/.*$',// 케어용품/소모품 -에어컨
+            //    '^/care-accessories/room-air-conditioner/.*$',// 케어용품/소모품 -에어컨
+            //    '^/care-accessories/system-rooftop-air-conditioner/.*$',// 케어용품/소모품 -에어컨
+            //    '^/care-accessories/window-portable-air-conditioner/.*$',// 케어용품/소모품 -에어컨
+
+            //    '^/care-accessories/pra\.l/.*$',// 케어용품/소모품 -프라엘
+            //    '^/care-accessories/medi-hair/.*$',// 케어용품/소모품 -메디헤어
+            //    '^/care-accessories/eye-care/.*$',// 케어용품/소모품 -아이케어
+
             ];
 
             var isPopUp = enableUrl.some(function(element) {
@@ -412,7 +495,7 @@ var goAppUrl = function(path) {
             $(function() {
                 if (vcui.detect.isMobileDevice && !isApp()) {
                     var cookie_name = '__LGAPP_DLOG__';
-                    if (vcui.Cookie.get(cookie_name) === '' && isPopUp ) {
+                    if (vcui.Cookie.get(cookie_name) === '' && (isPopUp || $('.pdp-wrap').length >0) ) {
                         if($('#mobile-close-popup').size() === 0 && !!vcui.modal) {
                             $('body').append(vcui.template(appDownloadTmpl));
                             vcui.modal('#mobile-close-popup', open);
@@ -1608,7 +1691,6 @@ var goAppUrl = function(path) {
                 if(dtype == 'json' && result.status != 'success'){
                     //alert(result.message ? result.message : '오류발생');
                     console.log('resultStatusFail',url,result);
-                    if(callback && typeof callback === 'function') callback(result); 
                     return;
                 }
 
@@ -2516,7 +2598,7 @@ var goAppUrl = function(path) {
                                 obj.href = obj.href.split('?')[0] + '?' + $.param(params)+(url.hash || '');
     
                             if(vcui.detect.isIOS){
-                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'Y'});
+                                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': obj.href, 'titlebar_show': 'N'});  
                                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                             } else {
                                 android.openNewWebview(obj.href);
