@@ -67,7 +67,7 @@
         };
     
         var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-    
+        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
                 '<div class="store-info-list ui_marker_selector">'+
@@ -127,12 +127,14 @@
     
                 self.isTransion = false;
 
-                // BTOCSITE-4785
+                // BTOCSITE-4785 s
                 if(cartPrdList){
-                    self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
+                    // self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
+                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
                 } else {
-                    self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?device=w&inflow=lgekor&orgCode=";
+                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?device=w&inflow=lgekor&orgCode=";
                 }
+                // BTOCSITE-4785 e
     
                 self.$mapContainer = $('.map-container');
                 self.bestShopUrl = $('.map-container').data("bestShop");
@@ -153,7 +155,6 @@
                 self.$defaultListLayer = self.$defaultListContainer.find('.sch-list .scroll-wrap .list-item'); 
                 self.$searchContainer = self.$leftContainer.find('.sch-box');
                 
-               
                 self.$mapArea = $('.map-area'); //맴 모듈 컨테이너...            
                 self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
     
@@ -411,7 +412,7 @@
                     self._toggleOptContainer();
                 });
 
-                // BTOCSITE-4785
+                // BTOCSITE-4785 s
                 $('.btn-dppdp-fold').on('click', function(e){
                     e.preventDefault();
                     $(this).parent().parent().toggleClass('close');
@@ -419,6 +420,7 @@
                         self._setListArea();
                     },400);
                 });
+                // BTOCSITE-4785 e
     
                 self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
                     var id = $(this).closest('li').data('id');
@@ -1250,6 +1252,7 @@
                             shopTelphone: arr[i].info.shopTelphone,
                             shopID: arr[i].info.shopID,
                             detailUrl:self.detailUrl+arr[i].info.shopID,
+                            // BTOCSITE-4785
                             orgCode:self.shopUrl+arr[i].info.orgCode,
                             selected: arr[i].info.selected ? " on" : ""
                         }
@@ -1488,8 +1491,9 @@
             searchShop.init();
             // BTOCSITE-4785 s
             var dpPdp  = getParameter("dpPdp");
-            if(dpPdp){
+            if(getParameter("dpPdp")){
                 $(".store-list-wrap").addClass("display-product-search");
+                $(".display-product-name").text(dpPdp);
             } 
             // BTOCSITE-4785 e
         });

@@ -1,4 +1,5 @@
 <li>
+    <!-- BTOCSITE-4785 : .product-contents > .flag-wrap.bar-type 제거, .product-bottom > .flag-wrap.bar-type 제거, 장바구니버튼 제거, 진열제품 구매가능매장 확인하기 버튼 추가 -->
     <div class="item @@itemClass">
         @@if (context.imageFlags) {
         <div class="badge">
@@ -160,9 +161,11 @@
                 }
                 <div class="btn-area-wrap">
                     <div class="btn-area">
+                        <!-- BTOCSITE-4785 : 파라미터 전달값 - dpPdp(제품명전달), cartPrdList, salesCode -->
                         <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">진열제품 구매가능매장 확인하기</a>
                     </div>
                     <div class="btn-area">
+                        <!-- BTOCSITE-4785 : .btn-pdp-alert - 자세히보기 버튼 클릭시 팝업 노출 -->
                         <a href="https://www.lge.co.kr/refrigerators/w821mww463s" class="btn border size-m btn-pdp-alert">@@eventItem.button</a>
                     </div>
                 </div>
