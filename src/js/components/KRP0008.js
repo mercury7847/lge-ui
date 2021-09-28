@@ -312,9 +312,54 @@
                 var rentalSelectBoxIndex4 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
-
-                    
                     //test data
+
+                    // rentalInfo = [
+                    //     {
+                    //         "years3TotAmt": 35900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 35900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 35900,
+                    //         "years6TotAmt": 35900,
+                    //         "years7TotAmt": 35900,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1579561",
+                    //         "dutyTerm": "6",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "Y",
+                    //         "contractTerm": "7",
+                    //         "years5TotAmt": 35900,
+                    //         "years4TotAmt": 35900,
+                    //         "freeMonth": 3
+                    //     },
+                    //     {
+                    //         "years3TotAmt": 39900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 39900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 39900,
+                    //         "years6TotAmt": 0,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1565994",
+                    //         "dutyTerm": "3",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+                    //         "contractTerm": "5",
+                    //         "years5TotAmt": 39900,
+                    //         "years4TotAmt": 39900,
+                    //         "freeMonth": 3
+                    //     }
+                    // ];
+
+
+
                     // rentalInfo = [
                     //     {
                     //         "careCategoryId": "CT50000175",
