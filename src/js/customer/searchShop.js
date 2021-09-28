@@ -1288,6 +1288,8 @@
                 var self = this;
                 
                 self.$searchContainer.stop().transition({opacity:1}, 320, "easeInOutCubic");
+                // BTOCSITE-4785
+                $('.display-product-search-info-wrap').eq(0).show();
                 $('.result-list-box').stop().css({display:'none'})            
                 
                 $('.store-list-wrap .tit').show();
@@ -1325,6 +1327,8 @@
     
                 $('.store-list-wrap .tit').hide();
                 self.$searchContainer.css('display', 'none');
+                // BTOCSITE-4785
+                $('.display-product-search-info-wrap').eq(0).hide();
                 $('.result-list-box').stop().css({display:'block', opacity:0}).transition({opacity:1}, 410, "easeInOutCubic");
                 
                 var paddingtop = 0;

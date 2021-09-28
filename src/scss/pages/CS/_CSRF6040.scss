@@ -614,7 +614,7 @@
                 // BTOCSITE-4785 s
                 .display-product-search-info-wrap {
                     margin-top: 16px;
-                    padding-bottom: 0 !important;
+                    padding: 0 !important;
                 }
                 // BTOCSITE-4785 e
             }
@@ -1005,9 +1005,9 @@
                 .display-product {
                     &-search-info-wrap{
                         display: block;
-                        padding: 0 0 32px 0;
+                        padding: 0 40px 32px 40px;
                         @include mobile {
-                            padding: 0 0 16px 0;
+                            padding: 0 20px 16px 20px;
                         }
                     }
                     &-search-info {
