@@ -1370,6 +1370,11 @@
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
                                 list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
                             }
                         }
 
@@ -1457,6 +1462,11 @@
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
                                 list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                 // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
                             }
                         }
 
