@@ -315,6 +315,8 @@
                 var rentalSelectBoxIndex4 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
+
+                    
                     //test data
 
                     rentalInfo = [
