@@ -2647,12 +2647,18 @@
                 } else{
                     if(PAGE_TYPE == PAGE_TYPE_LIST){
                         var box = $('.box[data-id=' + dataId + ']');
-                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
-    
+                        // BTOCSITE-4124 210928 - start
+                        if( result.data.msg == "VC1001") {
+                            
+                        } else {
+                            box.find('.orderCancel-btn, .requestOrder-btn').remove();
+                        }
+
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
-                        // if( result.data.msg == "VC1001") {
-                        //      resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
-                        // }
+                        if( result.data.msg == "VC1001") {
+                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        }
+                        // BTOCSITE-4124 210928 - end
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
