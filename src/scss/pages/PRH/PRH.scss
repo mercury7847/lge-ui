@@ -708,119 +708,124 @@
 @import "MKTF1111";
 
 
-// 21-09-27
-@import "../../components-app";
+// BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
 .hero-brand{
-    // text
+    .slide-controls{
+        display: block !important;
+        width: 100%;
+        left:50%;
+    }
+    @include mobile{
+        .visual-area img{
+            height: 100%;
+        }
+    }
+    // 텍스트 옵션 (좌우, 상하, 폰트컬러) 
     .text-area {
         position:absolute;
         left:0;
         right:0;
         z-index:10;
-        &.vertical-top {
-            top:80px;
-            @include mobile {
-                top:auto;
+        display: flex;
+        max-width:1510px;
+        margin:0 auto;
+        padding:90px 50px 120px 50px;
+        height: 100%;
+        @include mobile{
+            padding:60px 0;
+        }
+        &.box-align{
+            &-left{
+                text-align: left;
+            }
+            &-center {
+                justify-content: center;
+                text-align: center;
+            }
+            &-right {
+                justify-content:flex-end;
+                text-align: right;
             }
         }
-        &.vertical-middle {
-            top:50%;
-            transform:translateY(-50%);
-            @include mobile {
-                top:auto;
-                transform:translateY(0);
+        &.align{
+            &-top{
+                align-items:flex-start; 
+            }
+            &-middle {
+                align-items:center;
+            }
+            &-bottom {
+                align-items:flex-end;
             }
         }
-        &.vertical-bottom {
-            bottom:80px;
-            @include mobile {
-                bottom:auto;
-            }
-        }
-        
         &.text-black {
             color:#111;
-            
-            .link-text {
+            .text-detail-title, .text-detail-desc{
                 color:#111;
             }
         }
         &.text-white {
             color:#fff;
-            
-            .link-text {
+            .text-detail-title, .text-detail-desc{
                 color:#fff;
             }
         }
-
-        .text-inner {
-            max-width:1380px + 80px;
-            margin:0 auto;
-            padding:0 40px;
-            &.type-wide {
-                .box {
-                    @include boxs(w);
-                }
-            }
-            &.type-narrow {
-                .box {
-                    @include boxs(n);
-                }
-            }
-            &.box-align-left {
-                .box {
-                    margin-right:auto;
-                }
-            }
-            &.box-align-center {
-                .box {
-                    margin-left:auto;
-                    margin-right:auto;
-                }
-            }
-            &.box-align-right {
-                .box {
-                    margin-left:auto;
-                }
-            }
-            .title {
-                h2 {
-                    @include title-h2;
-                }
-                &.title-h1 * {
-                    @include title-h1;
-                }
-                &.title-h2 * {
-                    @include title-h2;
-                }
-                &.title-h3 * {
-                    @include title-h3;
-                }
-                &.title-h4 * {
-                    @include title-h4;
-                }
-                &.title-h5 * {
-                    @include title-h5;
-                }
-                &.title-h6 * {
-                    @include title-h6;
-                }
-            }
-            .body-copy {
-                @include bodycopy(h2, h2);
+        @include mobile {
+            &.box-align-left, &.box-align-right{
+                justify-content: center;
+                text-align: center;
             }
         }
+    }
+    .text-detail {
+        &-title {
+            color: #fff;
+            font-weight: 700;
+            @include font(56px, 1.32);
+            h2{
+                @include font(56px, 1.32);
+            }
+            .logo, img {
+                float: none;
+                width: 245px;
+                padding: 0;
+                margin-top: -10px;
+            }
+        }
+        &-desc {
+            margin-top: 24px;
+            color: #fff;
+            font-weight: 700;
+            @include font($font-large-1, 1.5);
+            .logo {
+                float: none;
+                width: 90px;
+                padding: 0;
+            }
+        }
+        
         @include mobile {
-            position:relative;
-            top:auto;
-            bottom:auto;
-            left:auto;
-            right:auto;
-            margin-bottom:28px;
-            transform:translateY(0);
-            .text-inner {
-                padding:0 16px;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .text-detail-title {
+                font-size: 25px;
+                line-height: 35px;
+                .logo,img {
+                    width: 124px;
+                    height: 23px;
+                    margin-top: -4px;
+                }
+            }
+            .text-detail-desc {
+                margin-top: 10px;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 22px;
             }
         }
     }
 }
+// BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)

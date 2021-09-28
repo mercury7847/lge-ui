@@ -1,4 +1,4 @@
-<!-- components/partials/KRC0015-hero.html -->
+<!-- components/partials/KRC0015-hero-brand.html -->
 <div class="component-wrap @@common.zero @@common.bg-color">
     <section class="component KRC0015 @@common.bg-color @@common.className"><!-- [KR수정] bg-color 추가 -->
         <!--
@@ -27,6 +27,7 @@
         2. 세로 정렬
         .align-top: 텍스트 영역이 상단
         .align-middle: 텍스트 영역이 중간
+        .align-bottom: 텍스트 영역이 하단
 
         3. 텍스트 영역 넓이
         .type-wide : 넓음
@@ -60,12 +61,12 @@
                     <div class="custom-indis">
                         <ul class="indis ui_wideslider_dots">
                             @@for (var i=0; i < context.carousel.itemArr.length; i++) {
-                                <li>
-                                    <button type="button" class="btn-indi">
-                                        <!-- <p>1</p>-->
-                                        <div class="bar"></div>
-                                    </button>
-                                </li>
+                            <li>
+                                <button type="button" class="btn-indi">
+                                    <!-- <p>1</p>-->
+                                    <div class="bar"></div>
+                                </button>
+                            </li>
                             }
                         </ul>
                     </div>
@@ -79,36 +80,34 @@
                         <!-- [KR수정_210126] li 태그 변경 / carousel-box -> slide-conts 클래스 변경 -->
                         <!-- animation 타입인 경우 animation-box 클래스 추가 -->
                         @@for (var i=0; i < context.carousel.itemArr.length; i++) {
-                            <li class="slide-conts animation-box ui_carousel_slide">
-                                <!-- 210208 수정(a태그 감싸기 button 변경) -->
-                                <a href="#">
-                                    <!-- 1. image -->
-                                    <div class="visual-area">
-                                        <img data-pc-src="`+carousel.itemArr[i].visual1+`" data-m-src="`+carousel.itemArr[i].visual2+`" alt=""><!-- [KR수정] img 수정 -->
-                                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-                                    </div>
-                                    <!-- // 1. image -->
-    
-                                    <!-- contents-area -->
-                                    <div class="contents-area">
-                                        <div class="text-area `+carousel.itemArr[i].alignClass1+` `+carousel.itemArr[i].alignClass2+` `+carousel.itemArr[i].widthClass+` `+carousel.itemArr[i].boxAlign+` `+carousel.itemArr[i].fontColor+`">
-                                            <div class="text-wrap">
-                                                <div class="box">
-                                                    <div class="text-inner">
-                                                        <div class="text-block">
-                                                            <div class="title">@@title.headline</div>
-                                                            <div class="copy font-regular">@@title.copy</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                        <li class="slide-conts animation-box ui_carousel_slide">
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <!-- image -->
+                                <div class="visual-area">
+                                    <img data-pc-src="`+carousel.itemArr[i].visual1+`" data-m-src="`+carousel.itemArr[i].visual2+`" alt=""><!-- [KR수정] img 수정 -->
+                                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                </div>
+                                <!-- // image -->
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area `+carousel.itemArr[i].alignClass1+` `+carousel.itemArr[i].alignClass2+` `+carousel.itemArr[i].widthClass+` `+carousel.itemArr[i].boxAlign+` `+carousel.itemArr[i].fontColor+`">
+                                        <div class="text-detail">
+                                            <div class="text-detail-title">
+                                                <span class="pc-only">@@title.headline</span>
+                                                <span class="mo-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 <br>늘 더 나은 삶을 원합니다.</span>
+                                            </div>
+                                            <div class="text-detail-desc">
+                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 이러한 당신의 기대에 맞춰 <br>인공지능과 스마트 기술을 통합한 플랫폼입니다.</span>
+                                                <span class="mo-only">Mobile 버전은 최대 2줄, <br>라인 당 18자 등록 가능합니다.</span>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <!-- // contents-area -->
-                                </a>
-                                <!-- //210208 수정(a태그 감싸기 button 변경) -->
-                            </li>
+                                </div>
+                                <!-- // contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
+                        </li>
                         }
                     </ul><!-- [KR수정] .ui_carousel_track DOM 추가 -->
                 </div><!-- [KR수정_210126] slide-content ui_carousel_list DOM 추가 -->
