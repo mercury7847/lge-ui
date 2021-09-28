@@ -1026,13 +1026,6 @@
                 return;
             }
         }
-        
-        // BTOCSITE-4124 flag 제거 210924
-        // if($cashChk == true){
-        //     cancelOk();
-        // } else {
-            
-        // }
 
         lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
             title: "",
@@ -2339,14 +2332,6 @@
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
                     $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == true && isAllCancelDisable == false){
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
-                    $('#popup-cancel').find('#cancel_desc').show();
-                    $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
-                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
-                    $('#popup-cancel').find('.state-box > p.tit').html('<span class="blind">진행상태</span>결제완료');
-                    $('#popup-cancel').find('.pop-footer').show();
-                    $('#popup-cancel').find('.not-cancel-footer').hide();
                 } else {
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
@@ -2429,7 +2414,7 @@
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
             
-            if((result.data.payment && dataChk == true && isAllCancelDisable == false) || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){ //210826 추가 BTOCSITE-4124
                 popup.data('isBank', true);
 
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
@@ -2662,12 +2647,18 @@
                 } else{
                     if(PAGE_TYPE == PAGE_TYPE_LIST){
                         var box = $('.box[data-id=' + dataId + ']');
-                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
-    
+                        // BTOCSITE-4124 210928 - start
+                        if( result.data.msg == "VC1001") {
+                            
+                        } else {
+                            box.find('.orderCancel-btn, .requestOrder-btn').remove();
+                        }
+
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
-                        // if( result.data.msg == "VC1001") {
-                        //      resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
-                        // }
+                        if( result.data.msg == "VC1001") {
+                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        }
+                        // BTOCSITE-4124 210928 - end
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
