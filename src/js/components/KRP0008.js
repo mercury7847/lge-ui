@@ -906,15 +906,13 @@
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                     var checked = !$(this).hasClass('compare-select');
-                    var pdpDataId = self.$pdpInfo.attr('data-id');
+                    var pdpDataId = self.$pdpInfo.attr('data-id'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
 
                     if(checked) {
-                        $(this).prop('checked');
                         $(this).addClass('compare-select');
                     } else {
-                        $(this).prop('checked', false);
                         $(this).removeClass('compare-select');
-                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click');
+                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
                     }
                     //$(this).prop('checked',!checked);
                     self.requestCompareItem(lgePdpSendData, checked, $(this));
