@@ -2527,6 +2527,7 @@
     function cancelOk(){
         var productList = [];
         var matchIds = [];
+        //var chkData = $('#popup-cancel').hasClass('data-chk'); //210825 추가 BTOCSITE-4124
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
             var id = $(item).val();
@@ -2664,6 +2665,9 @@
                         box.find('.orderCancel-btn, .requestOrder-btn').remove();
     
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
+                        // if( result.data.msg == "VC1001") {
+                        //      resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        // }
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
@@ -2674,7 +2678,7 @@
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - S
                     if(result.data.msg == "VC1001"){
                         lgkorUI.alert("", {
-                            title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.<br>주문취소 신청을 하시겠습니까? ",
+                            title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.",
                             ok: function(){
                             $('#popup-cancel').addClass('data-chk');
                             getPopOrderData(dataId, "ordercancel", opener); 
