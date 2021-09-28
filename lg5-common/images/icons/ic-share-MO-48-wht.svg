@@ -1,0 +1,24 @@
+<svg id="ic_share_MO_48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#fff;stroke-miterlimit:10;stroke-width:2px}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <path id="Area" class="cls-1" d="M0 0h48v48H0z"/>
+    <g id="Group_30" data-name="Group 30" transform="translate(9.822 9)">
+        <g id="Oval" class="cls-2" transform="translate(-3.478 9.244)">
+            <circle class="cls-3" cx="5.498" cy="5.498" r="5.498"/>
+            <circle class="cls-1" cx="5.498" cy="5.498" r="4.498"/>
+        </g>
+        <g id="Oval-2" data-name="Oval" class="cls-2" transform="translate(18.619 -2.756)">
+            <circle class="cls-3" cx="5.607" cy="5.607" r="5.607"/>
+            <circle class="cls-1" cx="5.607" cy="5.607" r="4.607"/>
+        </g>
+        <g id="Oval-3" data-name="Oval" class="cls-2" transform="translate(18.619 21.542)">
+            <circle class="cls-3" cx="5.607" cy="5.607" r="5.607"/>
+            <circle class="cls-1" cx="5.607" cy="5.607" r="4.607"/>
+        </g>
+        <path id="Path" class="cls-2" d="m0 0 13.07 8.1" transform="translate(6.548 17.137)"/>
+        <path id="Path-2" data-name="Path" class="cls-2" d="M0 7.4 13.07 0" transform="translate(6.548 5.432)"/>
+    </g>
+</svg>

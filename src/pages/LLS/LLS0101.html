@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" class="app">
+@@include('./common/head.html', { 
+    pageCSS: ["LLS/llc"],
+    pageJS:["lls/llc"],
+    pageTitle: "하이라이트영상 제목 | LG전자",
+    pageDesc: "LGE.COM 엘라쇼 하이라이트 영상",
+})
+<body>
+    <div class="lls-frame-container">
+        <div class="lls-frame-content">
+            <div class="lls-frame-head">
+                <div class="tooltip-wrap share"><!-- 활성화시 active -->
+                    <a href="#n" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>
+                    <div class="tooltip-box fixed-right">
+                        <span class="title">공유하기</span>
+                        <div class="sns-wrap">
+                            <!-- 
+                                data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                        
+                                각 sns 버튼에 적용.
+                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                            -->
+                            <ul class="sns-list">
+                                <li><a href="#none" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                <li><a href="#none" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                <li><a href="#none" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                <li><a href="#none" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                    </div>
+                </div>
+                <a href="/livecommerce/" class="lls-frame-close"><span class="blind">닫기</span></a>
+            </div>
+            <div class="lls-frame">
+                <iframe src="/benefits/highlight?{해당 하이라이트param}" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
