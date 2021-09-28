@@ -348,7 +348,8 @@
                 }
                 .list-item > li {
                     position:relative;
-                    padding:24px 40px 24px 0;
+                    // BTOCSITE-4785
+                    padding:24px 10px 24px 0;
                     border-bottom:1px solid #ddd;
                     &:first-child {
                         padding-top:0;
@@ -357,7 +358,8 @@
                     @include csmobile {
                         //padding:0 20px 40px 0;
                         // margin-bottom: 20px;
-                        padding:16px 0;
+                        // BTOCSITE-4785
+                        padding:16px 12px 16px 0;
                         border-bottom:0;
                         &:after {
                             display: inline-block;
