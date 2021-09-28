@@ -977,11 +977,17 @@
                             padding-bottom: 48px;
                         }
                         .btn-area {
+                            @include csmobile {
+                                bottom:0;
+                            }
                             @include mobile {
                                 bottom:0;
                             }
                             .btn.size-m {
                                 line-height: 16px;
+                                @include csmobile {
+                                    line-height: 12px;
+                                }
                                 @include mobile {
                                     line-height: 12px;
                                 }
@@ -1134,6 +1140,9 @@
                     }
                 }
                 .store-list-box .view-info-btn {
+                    @include csmobile {
+                        bottom: 35px;
+                    }
                     @include mobile {
                         bottom: 35px;
                     }
@@ -1192,6 +1201,9 @@
                 left:-9999px;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
+            }
+            &.isMobile{
+                margin-top: 4px;
             }
         }
 
