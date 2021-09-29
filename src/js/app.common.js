@@ -190,7 +190,18 @@ var appInit = function() {
             //QR 스캔 버튼 이벤트
             $(".btn-qrscan").off("click").on({
                 click : function() {
-                    $(this).addClass("on").siblings("button").removeClass("on");
+                    // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - s
+                    $(this).addClass('active');
+                    $('.btn-direct').removeClass('active');
+                    $('.info-req-box .qr-active').hide();
+                    $('.info-req-box .qr').show();
+                    $('.app-exec').removeClass('active');
+                    $('#inp01').attr('readonly','readonly');
+                    $('#inp02').attr('readonly','readonly');
+                    $('.cell button').attr('disabled', true);
+                    $('.btn-prod-reg').attr('disabled', true);
+                    // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - e
+                    //$(this).addClass("on").siblings("button").removeClass("on");
                     if (isApp()) {
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                             var obj = new Object();
@@ -218,7 +229,8 @@ var appInit = function() {
         LGEAPPreturnArBarcode = function(barcode) {
             console.log("바코드 리턴값 : " + barcode);
             if (barcode != null && barcode != "" && barcode != undefined) {
-
+                $('.info-req-box .qr').hide();
+                $('.info-req-box .qr-active').show();
                 // BTOCSITE-4086 210924 - S
                 isURL(barcode); //QR형식 URL로 들어오는지 값 체크!해서 QR코드,바코드 구분
                 if(isURL){
@@ -227,8 +239,8 @@ var appInit = function() {
                     var salesModel = param.m;
                     //salesModel = salesModel.replace('.AKOR',''); BTOCSITE-4086 파라미터값 자르는 부분 제거 (barcode 값으로 전달된 url의 salesModel값 그대로 화면 노출되어도 이상 없음 - db 테이블에서 따로 체크함 )
                     var serialNum =  param.s;
-                    console.log("salesModel 값:"+salesModel);
-                    console.log("S/N"+serialNum);
+                    console.log("salesModel 값 : "+salesModel);
+                    console.log("S/N 값 : "+serialNum);
                     
                     // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
                     $("#inp01").val(salesModel); // salesModel명
@@ -237,6 +249,7 @@ var appInit = function() {
                     // 바코드
                     $("#inp02").val(barcode); 
                 }
+                $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
                 
             }

@@ -337,7 +337,10 @@
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
                 self.$registMyProductPopup.vcModal({opener:$(this)});
-                self.$registMyProductMainPage.find('.btn-direct').trigger('click');
+                //BTOCSITE-4086 직접 입력이 아닌 QR 스캔이 먼저 활성화 되도록 변경 - S
+                //self.$registMyProductMainPage.find('.btn-direct').trigger('click');
+                self.$registMyProductMainPage.find('.btn-qrscan').trigger('click');
+                //BTOCSITE-4086 직접 입력이 아닌 QR 스캔이 먼저 활성화 되도록 변경 - E
             });
 
             // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
@@ -434,28 +437,18 @@
             
             
             //BTOCSITE-4086
-            //보유 제품 직접 등록 : QR 스캔/직접 입력  선택버튼 
-            self.$registMyProductMainPage.on('click','.scan-type-inbox button', function(e) {
+            //보유 제품 직접 등록 : QR 직접 입력 선택버튼 
+            self.$registMyProductMainPage.on('click','.scan-type-inbox button.btn-direct', function(e) {
                 e.preventDefault();
-                if ($(this).hasClass('btn-qrscan')) {
-                    $(this).addClass('active');
-                    $('.btn-direct').removeClass('active');
-                    $('.info-req-box .qr').show();
-                    $('.app-exec').removeClass('active');
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
-                } else {
-                    $(this).addClass('active');
-                    $('.btn-qrscan').removeClass('active');
-                    $('.info-req-box .qr').hide();
-                    $('.app-exec').addClass('active');
-                    $('#inp01').removeAttr('readonly');
-                    $('#inp02').removeAttr('readonly');
-                    $('.cell button').attr('disabled', false);
-                    $('.btn-prod-reg').attr('disabled', false);
-                }
+                $(this).addClass('active');
+                $('.btn-qrscan').removeClass('active');
+                $('.info-req-box .qr').hide();
+                $('.info-req-box .qr-active').hide();
+                $('.app-exec').addClass('active');
+                $('#inp01').removeAttr('readonly');
+                $('#inp02').removeAttr('readonly');
+                $('.cell button').attr('disabled', false);
+                $('.btn-prod-reg').attr('disabled', false);
             });
             //제품별 QR/모델명/제조번호 부착 위치 : 모델명/제조번호/바코드/OR코드 선택 버튼 
             self.$modelCheckHelpPage.on('click','.example-type-inbox button', function(e) {
