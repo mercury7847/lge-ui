@@ -337,10 +337,22 @@
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
                 self.$registMyProductPopup.vcModal({opener:$(this)});
-                //BTOCSITE-4086 직접 입력이 아닌 QR 스캔이 먼저 활성화 되도록 변경 - S
+                //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - S
                 //self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                self.$registMyProductMainPage.find('.btn-qrscan').trigger('click');
-                //BTOCSITE-4086 직접 입력이 아닌 QR 스캔이 먼저 활성화 되도록 변경 - E
+                //self.$registMyProductMainPage.find('.btn-qrscan').trigger('click');
+                //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - E
+
+                //직접등록 팝업 진입시 default 처리 - S
+                $('.btn-direct').removeClass('active');
+                $('.btn-qrscan').addClass('active');
+                $('#inp01').attr('readonly','readonly');
+                $('#inp02').attr('readonly','readonly');
+                $('.cell button').attr('disabled', true);
+                $('.btn-prod-reg').attr('disabled', true);             
+                $('.info-req-box .qr-active').hide();
+                $('.info-req-box .qr').show();
+                $('p.comp').hide();
+                //직접등록 팝업 진입시 default 처리 - E 
             });
 
             //보유제품 삭제
@@ -568,9 +580,10 @@
                                     self.$registMyProductMainPage.find('.btn-direct').trigger('click');
                                 }
                             });
-                        } else {
-                            lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
-                        }
+                        } 
+                        // else {
+                        //     lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
+                        // }
                     }
                 });
             });
