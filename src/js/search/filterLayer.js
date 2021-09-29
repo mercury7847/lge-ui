@@ -426,6 +426,8 @@ var FilterLayer = (function() {
             }
 
             data["filterData"] = JSON.stringify(filterData);
+
+            console.log("filterlayer %o",data);
             return data;
         },
 

@@ -921,47 +921,37 @@ if ('scrollRestoration' in history) {
                     //필터세팅
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
                     // 2. 스마트 필터 없음 일반 필터로
-
-                    //console.log("filterList %o",data.filterList)
-                    //console.log("smartFilterList %o",data.smartFilterList)
-
-
-                    var isSmartFiler = !vcui.isEmpty(data.smartFilterList);
-                    var isFilterList = !vcui.isEmpty(data.filterList);
-                    
-                    
-                    //console.log("isSmartFiler %o",isSmartFiler)
-                    //console.log("isFilterList %o",isFilterList)
-
+                    var isSmartFiler = data.smartFilterList.hasOwnProperty("data") && !!data.smartFilterList.data.length;
+                    var isFilterList = !!data.filterList.length;
                     
                     var filterShow = false;
                     if(isSmartFiler || isFilterList) {
-                        //console.log("isFilterList %o",!isSmartFiler ? data.smartFilterList.data : data.filterList)
                         filterShow = true;
-                            var smartFilterList = data.smartFilterList.data;
-    
+                        var smartFilterList = data.smartFilterList.data;
+
+                        if(isSmartFiler) {
                             // api 에서 smartFilterList 에 filtertype 을 넣어주든
                             // 일반 필터에 스마트 필터를 넣어주든 하나는 해야함
                             smartFilterList.forEach(function(item, index) {
                                 if(!item.filterType) item.filterType = "checkbox";
                                 // item.unfold_flag = 'N';
                             });
-    
-                           
-                            self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
-                            if(isSmartFiler && !self.$layFilter.hasClass('smart-type')) self.$layFilter.addClass('smart-type');
+                        }
+                        
+                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
+                        if(isSmartFiler && !self.$layFilter.hasClass('smart-type')) self.$layFilter.addClass('smart-type');
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
                         if(vcui.detect.isMobile){
                             self.filterLayer.openFilterSectionAll(2);
                         }
 
 
-                            if(self.savedFilterData && self.savedFilterData.filterData) {
-                                var filterData = JSON.parse(self.savedFilterData.filterData);
+                        if(self.savedFilterData && self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
 
-                                //console.log("savedFilterData %o",self.savedFilterData );
-                                self.filterLayer.resetFilter(filterData);
-                            }
+                            console.log("savedFilterData %o",self.savedFilterData );
+                            self.filterLayer.resetFilter(filterData);
+                        }
            
                    }
 
