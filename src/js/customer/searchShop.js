@@ -1484,6 +1484,17 @@
                         $( ".btn-list-fold" ).after( $('.store-map-con') );
     
                     }
+                    // BTOCSITE-4785 s
+                    if($('.display-product-search-info').eq(1).hasClass('close')){
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '207px',
+                        });
+                    }
+                    // BTOCSITE-4785 s
     
                 } else{
     
@@ -1510,6 +1521,11 @@
                         });
     
                     }
+                    // BTOCSITE-4785 s
+                    $('.dp-pdp-map').css({
+                        'margin-top' : '0',
+                    });
+                    // BTOCSITE-4785 e
                 }
                 
                 self.$mapArea.css({
