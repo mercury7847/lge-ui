@@ -246,12 +246,11 @@ var appInit = function() {
                     // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
                     $("#inp01").val(salesModel); // salesModel명
                     $("#inp02").val(serialNum); // 제조번호(S/N)
-
-                    $('.cell button').attr('disabled', false); // 확인 버튼 활성화
                 }else{
                     // 바코드
                     $("#inp02").val(barcode); 
                 }
+                $('.cell button').attr('disabled', false); // 확인 버튼 활성화
                 $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
             }
