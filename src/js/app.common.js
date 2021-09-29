@@ -191,15 +191,15 @@ var appInit = function() {
             $(".btn-qrscan").off("click").on({
                 click : function() {
                     // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - s
-                    $(this).addClass('active');
                     $('.btn-direct').removeClass('active');
-                    $('.info-req-box .qr-active').hide();
-                    $('.info-req-box .qr').show();
                     $('.app-exec').removeClass('active');
+                    $(this).addClass('active');
                     $('#inp01').attr('readonly','readonly');
                     $('#inp02').attr('readonly','readonly');
                     $('.cell button').attr('disabled', true);
                     $('.btn-prod-reg').attr('disabled', true);
+                    $('.info-req-box .qr-active').hide();
+                    $('.info-req-box .qr').show();
                     $('p.comp').hide();
                     // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - e
                     //$(this).addClass("on").siblings("button").removeClass("on");
@@ -228,13 +228,13 @@ var appInit = function() {
 
         //리턴 된 바코드 값 입력
         LGEAPPreturnArBarcode = function(barcode) {
+            // BTOCSITE-4086 210924 - S
             console.log("바코드 리턴값 : " + barcode);
             if (barcode != null && barcode != "" && barcode != undefined) {
                 $('.info-req-box .qr').hide();
                 $('.info-req-box .qr-active').show();
-                // BTOCSITE-4086 210924 - S
-                isURL(barcode); //QR형식 URL로 들어오는지 값 체크!해서 QR코드,바코드 구분
-                if(isURL){
+                var urlChk = isURL(barcode); //QR형식 URL로 들어오는지 값 체크!해서 QR코드,바코드 구분
+                if(urlChk){
                     // QR코드
                     var param = getParams(barcode);
                     var salesModel = param.m;
@@ -254,43 +254,13 @@ var appInit = function() {
                 }
                 $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
-                
-            } else {
-                // BTOCSITE-4086 보유제품 등록_스캔 정보 인식되지 않을 경우 - S
-                // if ($('.btn-qrscan').hasClass('active')) {
-                //     lgkorUI.confirm("스캔 정보를 가져올 수 없습니다.", {
-                //         title: "",
-                //         cancelBtnName: "재시도",
-                //         okBtnName: "직접 입력하기",
-                //         cancel: function() {
-                //             if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                //                 var obj = new Object();
-                //                 obj.command = "scanBarcode";
-                //                 obj.callback ="LGEAPPreturnArBarcode";
-                //                 var jsonString= JSON.stringify(obj);
-                //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                //             } else {
-                //                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
-                //             }
-                //         },
-                //         ok: function(){
-                //             $('.btn-direct').trigger('click');
-                //         }
-                //     });
-                // }
-                // BTOCSITE-4086 보유제품 등록_스캔 정보 인식되지 않을 경우 - E
             }
         }
 
-        // URL 형식 체크 - BTOCSITE-4086 210923 QR용
+        // URL 형식 체크[정규식] - BTOCSITE-4086 210923 QR용
         function isURL(barcode) {
-            var pattern = new RegExp('^(https?:\\/\\/)?'+ 
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ 
-            '((\\d{1,3}\\.){3}\\d{1,3}))'+ 
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
-            '(\\?[;&a-z\\d%_.~+=-]*)?'+ 
-            '(\\#[-a-z\\d_]*)?$','i');
-            return pattern.test(barcode);
+            var expUrl = /^http[s]?\:\/\//i;
+            return expUrl.test(barcode);
         }
 
         // 파라미터 자르기 - BTOCSITE-4086 210923 QR용
