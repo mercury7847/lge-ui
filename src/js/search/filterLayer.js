@@ -112,12 +112,9 @@ var FilterLayer = (function() {
 
         _bindEvents: function() {
             var self = this;
-            console.log()
 
             // 필터 아코디언 오픈시 슬라이더 업데이트
             self.$layFilter.on('accordionexpand', '.ui_filter_accordion',function(e,data){
-
-                console.log("accordionexpand");
                 if(data.content.find('.ui_filter_slider').length > 0) {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                 }
@@ -128,8 +125,6 @@ var FilterLayer = (function() {
 
             // 필터안 체크박스 이벤트 처리
             self.$layFilter.on('change', '.ui_filter_accordion input', function(e){
-                console.log("클릭 change");
-                console.log('filterlayer ui_filter_accordion input %o %o',$(this),$(this).parents('.ui_filter_accordion').find('input').index(this));
                 /*
                 var $parent = $(this).parents('li');
                 var length = $parent.find('input:checked').length;
@@ -158,8 +153,6 @@ var FilterLayer = (function() {
             // 모바일 필터박스 열기
             $('div.btn-filter a').on('click', function(e){
                 e.preventDefault();
-
-                console.log('필터 더보기 클릭');
                 
                 self.$layFilter.addClass('open');
                 self.$layFilter.find('.ui_filter_slider').vcRangeSlider('update',true);
@@ -287,11 +280,7 @@ var FilterLayer = (function() {
 
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
-
-                    console.log("filterlyer input %o",$(this));
                     self.triggerFilterChangeEvent();
-
-                    //console.log('li' , $(e.currentTarget).closest('li').trigger('click'));
                 });
             }
 
@@ -301,7 +290,6 @@ var FilterLayer = (function() {
         //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
         _filterDefaultOpen:function () {
             var self = this;
-            console.log("defaultopen %o",self)
             var $searchTab = $('.contents.search .search-tabs-wrap .tabs');
             var $list = $searchTab.find('li');
             var $currentList = $list.filter('.on');
@@ -341,7 +329,6 @@ var FilterLayer = (function() {
 
         triggerFilterChangeEvent: function () {
             var self = this;
-            console.log("triggerFilterChangeEvent ");
             self.filterChangeEventFunc(self.getDataFromFilter());
         },
 
@@ -426,17 +413,12 @@ var FilterLayer = (function() {
             }
 
             data["filterData"] = JSON.stringify(filterData);
-
-            console.log("filterlayer %o",data);
             return data;
         },
 
         updateFilter: function(data) {
             if(!(data instanceof Array)) return;
-
-            console.log('엡데이트 필터 %o',data);
          
-
             var self = this;
             
             if(!self.initLoadEnd) {
@@ -450,7 +432,6 @@ var FilterLayer = (function() {
             //var expands = [];
             var arr = data instanceof Array ? data : [];
             if(arr.length > 0) {
-                console.log("updateFilter %o",arr);
                 self._filterUnbindCustomEvents();
 
                 var $list_ul = self.$layFilter.find('div.ui_filter_accordion > ul');
@@ -544,7 +525,6 @@ var FilterLayer = (function() {
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
-            console.log("filterlayer resetFilter");
             var self = this;
             
             if(!self.initLoadEnd) {
@@ -699,8 +679,6 @@ var FilterLayer = (function() {
                     self.resetSelectFilterCount(obj);
                 });
 
-
-                console.log("$btnFilter %o",$btnFilter);
                 if(selectedFilter) {
                     $btnFilter.addClass('applied');
                     $btnFilter.find('a span').text('옵션 적용됨');
