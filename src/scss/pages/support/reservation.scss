@@ -125,6 +125,7 @@
                         margin:0;
                         top:-2px;
                         @include mobile{
+                            display:block;
                             margin-top:10px;
                         }
                     }
