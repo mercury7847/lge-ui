@@ -129,12 +129,27 @@
             return e.keyCode !== 69;
         });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // BTOCSITE-1905 - start
-        var isForeigner = function(n) {
-            var arr = [5,6,7,8];
-            return arr.indexOf( n ) !== -1 ? true : false;
-        }
-        console.log("tetete", isForeigner(6));
+        //주영
+        // var isForeigner = function(n) {
+        //     var arr = [5,6,7,8];
+        //     return arr.indexOf( n ) !== -1 ? true : false;
+        // }
         
         var $tetetete = $('input[name=registBackFirst]');
         // e.keyCode == 53 || e.keyCode == 54 || e.keyCode == 55 || e.keyCode == 56
@@ -144,7 +159,9 @@
                 $(".foreignNum").show();
 
                 console.log("외국인:", $('input[name=registBackFirst]').val());
-            }else{
+            } else if ($(e.target).val() == "") {
+                console.log("인종 선택 안됨:", $('input[name=registBackFirst]').val());
+            } else {
                 $('.foreignNum').hide();
 
                 console.log("한국인:", $('input[name=registBackFirst]').val());
@@ -152,16 +169,40 @@
         });
         // BTOCSITE-1905 - end
 
+
+
+
+
+
+
+
+
+
+
+
+
+        //주영
         var register = {
             registFrontNumber:{
                 required: true,
                 errorMsg: "생년월일을 다시 확인해주세요.",
                 msgTarget: '.err-regist'
             },
+            //주영
             registBackFirst: {
                 required: true,
-                errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.",
-                msgTarget: '.err-regist-first'
+                errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.111111111111111",
+                msgTarget: '.err-regist-first',
+                validate : function(value){
+           
+                    if( value != "" ) {
+                        console.log("val 값이 있음^^");
+                        return true;
+                    } else {
+                        console.log("val 값이 없음ㅠㅠ");
+                        return false;
+                    }
+                }
             },
 
             //BTOCSITE-1905 210830 추가 외국인등록번호 case
@@ -189,6 +230,19 @@
                 msgTarget: '.err-address'
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
         register = {
@@ -366,11 +420,43 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //주영
         creditInquireButton.on('click', function(e){
             e.preventDefault();
 
             setCreditInquire();
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $('.popup-wrap').on('click', '.btn-group .agree-confirm', function(e){
             e.preventDefault();
@@ -625,6 +711,7 @@
     }
 
     //계약자 정보입력 밸리데이션...
+    //주영
     function setStep1Validation(){
         var completed = false;
         var result = step1Validation.validate();
@@ -635,11 +722,15 @@
                 lgkorUI.alert("", {
                     title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
                 });
+                console.log("111111111111111111111");
             }
+            console.log("zzzzzzzzzzzzzzzzzzzz");
         } else{
             var leng = Object.keys(result.validItem).length;
+            console.log("zzzzzzzzzzzzzzzzzzzz");
             if(data == "Y"){
                 if(leng == 1) completed = true;
+                console.log("zzzzzzzzzzzzzzzzzzzz");
             } else{
                 if(leng == 1){
                     lgkorUI.alert("", {
@@ -650,20 +741,26 @@
                     var isRBF = result.validItem.registBackFirst;
                     var isRFOR = result.validItem.registForeignNum; //BTOCSITE-1905 외국인등록번호 case 추가
                     var isUE = result.validItem.userEmail;
+                    console.log("111111111111111111111");
                     if(!isRFN && !isRBF && !isRFOR && !isUE){ //BTOCSITE-1905 외국인등록번호 case 추가
                         var isZP = result.validItem.zipCode;
                         var isUD = result.validItem.userAddress;
+                        console.log("111111111111111111111");
                         if(isZP && isUD) $(window).trigger("toastshow", "주소를 확인해주세요.");
                         else{
                             var isCP = result.validItem.chkPrivacy;
                             var isDA = result.validItem.detailAddress;
                             if(!isDA && isCP) $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
                         }
-                    } 
+
+                        console.log("111111111111111111111");
+                    } else {
+                        console.log("8988888888888888");
+                    }
                 }
             }
         }
-
+        console.log("zzzzzzzzzzzzzzzzzzzz");
         return completed;
     }
 
@@ -1011,11 +1108,36 @@
         }, ajaxMethod);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //신용정보 조회...
+    //주영
     function setCreditInquire(){
         var step1Value = step1Validation.getValues();
-        var result = step1Validation.validate();
-        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.registForeignNum || result.validItem.userEmail || result.validItem.zipCode){ ////BTOCSITE-1905 외국인 등록번호 case 추가
+
+        var result = step1Validation.validate(); //주영 요거
+
+                       //생년                                 //주민번호                           //외국인                          //이메일                      //주소
+        // if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.registForeignNum || result.validItem.userEmail || result.validItem.zipCode){
+        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.registForeignNum || result.validItem.userEmail || result.validItem.zipCode){ //BTOCSITE-1905 외국인 등록번호 case 추가
+            //console.log("ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
             return;
         }
 
@@ -1042,11 +1164,12 @@
                 document.form_chk.submit();
 
                 $('.niceChker').show();
+                console.log("111111111111111111111");
             } else{
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
-    
+                console.log("111111111111111111111");
                 if(lgkorUI.stringToBool(result.data.success)){
                     setInputData('safekey', result.data.safekey);
                     setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
@@ -1056,9 +1179,12 @@
                     step1Block.find('input[name=registBackFirst]').prop("disabled", true);
                     step1Block.find('input[name=registForeignNum]').prop("disabled", true); //BTOCSITE-1905 외국인 등록번호 case 추가
 
+                    console.log("111111111111111111111");
+
                     //step1LastValidation();             
                 } else{
                     setInputData('creditInquire', 'N');
+                    console.log("111111111111111111111");
                 }
             }
         }, ajaxMethod);
