@@ -51,10 +51,6 @@
         ** video-box 클래스는 제품 영상보기 링크와 같이, video가 배경 이미지 영역에 출력되는경우에만 추가 해 주세요.
         -->
         <div class="component-box"><!-- [KR수정] .component-box DOM 추가 -->
-            <!-- <div class="slick-indicator">
-                <div class="slick-dot-wrap"></div>
-                <a href="#none" class="slide-pause pause" data-title-stop="Stop" data-title-play="Play">Stop</a>
-            </div> [KR수정] indicator DOM 삭제 -->
             <div class="slide-wrap @@carousel.type ui_wide_slider"><!-- [KR수정] .ui_carousel_slider 추가 / 210126 slide-wrap hero-banner ui_wide_slider 클래스 수정 -->
                 <!-- [KR수정] indicator DOM 추가 / 210126 custom-indi-wrap 돔 수정 -->
                 <div class="custom-indi-wrap">
@@ -63,8 +59,7 @@
                             @@for (var i=0; i < context.carousel.itemArr.length; i++) {
                             <li>
                                 <button type="button" class="btn-indi">
-                                    <!-- <p>1</p>-->
-                                    <div class="bar"></div>
+                                    <div class="bar">`+i + 1+`</div>
                                 </button>
                             </li>
                             }
