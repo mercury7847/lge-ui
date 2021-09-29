@@ -86,7 +86,22 @@
 
 	/* BTOCSITE-4492 */
 	&.m-hdline-top{
+		.visual-wrap{
+			.bullet-list{
+				display:none;
+			}
+		}
 		@include mobile{
+			.visual-wrap{
+				.bullet-list{
+					display:block;
+				}
+			}
+			.text-wrap{
+				.bullet-list{
+					display:none;
+				}
+			}
 			.inner{
 				flex-direction:column-reverse;
 				.text-wrap{
