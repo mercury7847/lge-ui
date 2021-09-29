@@ -879,7 +879,7 @@
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
                         /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
-                        var isShow = lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00
+                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
