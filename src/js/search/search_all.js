@@ -921,8 +921,10 @@ if ('scrollRestoration' in history) {
                     //필터세팅
                     // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
                     // 2. 스마트 필터 없음 일반 필터로
+
+                    console.log(data);
                     var isSmartFiler = data.smartFilterList.hasOwnProperty("data") && !!data.smartFilterList.data.length;
-                    var isFilterList = !!data.filterList.length;
+                    var isFilterList = data.hasOwnProperty("filterList") && !!data.filterList.length;
                     
                     var filterShow = false;
                     if(isSmartFiler || isFilterList) {
