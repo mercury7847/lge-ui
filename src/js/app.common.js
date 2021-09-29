@@ -200,6 +200,7 @@ var appInit = function() {
                     $('#inp02').attr('readonly','readonly');
                     $('.cell button').attr('disabled', true);
                     $('.btn-prod-reg').attr('disabled', true);
+                    $('p.comp').hide();
                     // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - e
                     //$(this).addClass("on").siblings("button").removeClass("on");
                     if (isApp()) {
@@ -245,6 +246,8 @@ var appInit = function() {
                     // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
                     $("#inp01").val(salesModel); // salesModel명
                     $("#inp02").val(serialNum); // 제조번호(S/N)
+
+                    $('.cell button').attr('disabled', false); // 확인 버튼 활성화
                 }else{
                     // 바코드
                     $("#inp02").val(barcode); 
@@ -252,6 +255,30 @@ var appInit = function() {
                 $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
                 
+            } else {
+                // BTOCSITE-4086 보유제품 등록_스캔 정보 인식되지 않을 경우 - S
+                // if ($('.btn-qrscan').hasClass('active')) {
+                //     lgkorUI.confirm("스캔 정보를 가져올 수 없습니다.", {
+                //         title: "",
+                //         cancelBtnName: "재시도",
+                //         okBtnName: "직접 입력하기",
+                //         cancel: function() {
+                //             if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                //                 var obj = new Object();
+                //                 obj.command = "scanBarcode";
+                //                 obj.callback ="LGEAPPreturnArBarcode";
+                //                 var jsonString= JSON.stringify(obj);
+                //                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                //             } else {
+                //                 void android.openBarcodeScanner("LGEAPPreturnArBarcode");
+                //             }
+                //         },
+                //         ok: function(){
+                //             $('.btn-direct').trigger('click');
+                //         }
+                //     });
+                // }
+                // BTOCSITE-4086 보유제품 등록_스캔 정보 인식되지 않을 경우 - E
             }
         }
 
