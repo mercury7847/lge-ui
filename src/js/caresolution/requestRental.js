@@ -129,17 +129,90 @@
             return e.keyCode !== 69;
         });
 
+
+
+        //step1Validation validate item
         var register = {
             registFrontNumber:{
                 required: true,
                 errorMsg: "생년월일을 다시 확인해주세요.",
                 msgTarget: '.err-regist'
             },
+            
             registBackFirst: {
                 required: true,
-                errorMsg: "주민번호 뒤 첫자리를 다시 확인해주세요.",
-                msgTarget: '.err-regist-first'
+                errorMsg: "주민번호 뒤 첫 자리는 1~8까지만 입력이 가능합니다.",
+                msgTarget: '.err-regist-first',
+                /* BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
+                validate : function(value){
+                    var self = this;
+                    var foreignNumberFlag = value >= 5 && value <= 8;
+
+                    if(foreignNumberFlag){  // 5, 6, 7, 8 입력시 외국인 등록번호 노출
+                        $(".foreignNum").show();
+                    } else {
+                        $('.foreignNum').hide();
+                    }
+
+                    if( value > 0 && value <= 8) {
+                        return true
+                    } else {
+                        if( $('input[name="registBackFirst"]').data('alertEvent') == undefined || $('input[name="registBackFirst"]').data('alertEvent') == "") {
+                            $('input[name="registBackFirst"]').data('alertEvent', true);
+                            
+                            if (value == 9) {
+                                lgkorUI.alert("", {
+                                    title: "주민번호 뒤 첫 자리는<br>1~8까지만 입력이 가능합니다.",
+                                    ok:function(){
+                                        $('input[name="registBackFirst"]').data('alertEvent', "")
+                                    }
+                                    
+                                });
+                            } else {
+                                lgkorUI.alert("", {
+                                    title: "주민번호 뒤 첫 자리를 입력하셔야 합니다.",
+                                    ok:function(){
+                                        $('input[name="registBackFirst"]').data('alertEvent', "")
+
+                                    }
+                                });
+                            }
+                            return false;
+                        }
+                    }
+                }
+                /* //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
             },
+            
+            /* BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
+            registForeignNum: {
+                required: true,
+                errorMsg: "외국인 등록번호를 다시 확인해주세요.",
+                msgTarget: '.err-foreign-num',
+                validate : function(value){
+                    var valueLength = value.length;
+                    
+                    if( $('.foreignNum').is(':visible') == false ) {
+                        var $currentFormWrap = $('.foreignNum').closest('.form-wrap');
+                        $currentFormWrap.find('.err-msg').filter(':visible').first().closest('.input-wrap').find('input').focus();
+                    } else {
+                        if( value == "" || valueLength < 13) {
+                            if( $('input[name="userEmail"]').data('alertEvent_2') == undefined || $('input[name="userEmail"]').data('alertEvent_2') == false) {
+                                $('input[name="userEmail"]').data('alertEvent_2', true);
+                                lgkorUI.alert("", {
+                                    title: "외국인 고객님의 경우, 외국인 등록번호를 필수로 입력하셔야 합니다.",
+                                    ok:function(){
+                                        $('input[name="userEmail"]').data('alertEvent_2', false)
+                                    }
+                                });
+                                return false;
+                            }
+                        }
+                    }
+                }
+            },
+            /* //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
+
             userEmail:{
                 required: true,
                 errorMsg: "이메일 주소를 다시 확인해주세요.",
@@ -158,8 +231,11 @@
                 msgTarget: '.err-address'
             }
         }
+
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(1)',{register:register});
 
+
+        //step2Validation validate item
         register = {
             userName:{
                 required: true,
@@ -203,6 +279,8 @@
         }
         step2Validation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(2)',{register:register});
 
+
+        //cardValidation validate item
         register = {
             paymentCard:{
                 required: true,
@@ -222,6 +300,7 @@
         }
         cardValidation = new vcui.ui.Validation('.requestRentalForm ul.step-block > li:nth-child(3) .by-card',{register:register});
 
+        //bankValidation validate item
         register = {
             paymentBank: {
                 required: true,
@@ -335,11 +414,25 @@
 
 
 
+
+
+
+
+
+        //신용정보 조회 버튼
         creditInquireButton.on('click', function(e){
             e.preventDefault();
 
             setCreditInquire();
         });
+
+
+
+
+
+
+
+
 
         $('.popup-wrap').on('click', '.btn-group .agree-confirm', function(e){
             e.preventDefault();
@@ -617,8 +710,16 @@
                 } else{
                     var isRFN = result.validItem.registFrontNumber;
                     var isRBF = result.validItem.registBackFirst;
+                    var isRFOR = result.validItem.registForeignNum; //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29
                     var isUE = result.validItem.userEmail;
-                    if(!isRFN && !isRBF && !isUE){
+
+                    //console.log("청약", result)
+                    // console.log(isRFN, "1");
+                    // console.log(isRBF, "2");
+                    // console.log(isRFOR, "3");
+                    // console.log(isUE, "4");
+                    
+                    if(!isRFN && !isRBF && !isRFOR && !isUE){ //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29
                         var isZP = result.validItem.zipCode;
                         var isUD = result.validItem.userAddress;
                         if(isZP && isUD) $(window).trigger("toastshow", "주소를 확인해주세요.");
@@ -627,7 +728,7 @@
                             var isDA = result.validItem.detailAddress;
                             if(!isDA && isCP) $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
                         }
-                    } 
+                    }
                 }
             }
         }
@@ -981,21 +1082,49 @@
 
     //신용정보 조회...
     function setCreditInquire(){
+
+        var $foreignForm = $('.foreignNum');
+
+        /* BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
+        if( $foreignForm.filter(':visible').length > 0) {
+            //console.log('외국인', step1Validation.getValues()) //nameArr
+        } else {
+            step1Validation.setValues({register: ""})
+            //console.log('내국인', step1Validation.getValues());
+        }
         var step1Value = step1Validation.getValues();
         var result = step1Validation.validate();
-        if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
-            return;
+        
+        if( result.validItem.registForeignNum == true) {
+            if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.registForeignNum || result.validItem.userEmail || result.validItem.zipCode){
+                //console.log('외국인 리턴')
+                return;
+            }
+        } else {
+            if(result.validItem.registFrontNumber || result.validItem.registBackFirst || result.validItem.userEmail || result.validItem.zipCode){
+                //console.log('내국인 리턴')
+                return;
+            }
         }
+        /* //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
 
         lgkorUI.showLoading();
+
 
         var sendata = {
             rentalCareType: getInputData('rentalCareType'),
             registFrontNumber: step1Value.registFrontNumber,
             registBackFirst: step1Value.registBackFirst,
+
             userEmail: step1Value.userEmail,
             zipCode: step1Value.zipCode
         }
+
+        if( result.validItem.registForeignNum == true) { 
+            sendata.registForeignNum =  step1Value.registForeignNum
+        } 
+
+        
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
             if(result.data.success == "P"){
                 void(window.open("", "nicePopUp", "width=500, height=550, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
@@ -1020,7 +1149,8 @@
                     setInputData('creditInquire', 'Y');
 
                     step1Block.find('input[name=registFrontNumber]').prop("disabled", true);
-                    step1Block.find('input[name=registBackFirst]').prop("disabled", true);
+                    step1Block.find('input[name=registBackFirst]').prop("disabled", true); 
+                    step1Block.find('input[name=registForeignNum]').prop("disabled", true); //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29
 
                     //step1LastValidation();             
                 } else{
@@ -1533,6 +1663,8 @@
             }
         }
 
+        //console.log('청약', step1Value)
+
         var sendata = {
             CUST_REG_NO: step1Value.registFrontNumber,
             CUST_POST_CODE: step1Value.zipCode,
@@ -1540,6 +1672,7 @@
             CUST_DTL_ADDR: step1Value.detailAddress,
             EMAIL: step1Value.userEmail,
             REG_FIRST_DIGIT: step1Value.registBackFirst,
+            REG_FOREIGN_NUM: step1Value.registForeignNum, //BTOCSITE-1905 외국인등록번호 컬럼추가해줘야함 - DB컬럼값에맞게 변경필요, 현재 임의로 키값 지정한상태
             PREPAY_FLAG: step3Block.find('input[name=rdo04]:checked').val(),
             TRANS_TYPE: payment ? "B" : "C",
             TRANS_MEM_NAME: bankValidation.getValues('bankUserName'),
