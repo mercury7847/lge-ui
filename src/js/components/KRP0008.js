@@ -714,7 +714,9 @@
 
             bindProductEvents: function() {
 
-                console.log("bindProductEvents");
+
+
+                
                 var self = this;
 
                 //핀치줌
