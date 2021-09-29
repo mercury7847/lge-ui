@@ -69,7 +69,7 @@
     '</li>'
 
     var manualListItemTemplate = '<li class="lists"><div class="ui_flexible_box"><div class="inner ui_flexible_cont">' +
-        '<p class="guide-tit">제품 사용설명서</p>' +
+        '<p class="guide-tit">{{id}}</p>' +
         '<p class="guide-desc">{{title}}</p>' +
         '<div class="bottom-tbl">' +
             '<div class="cell">' +
@@ -339,11 +339,11 @@
                 self.$registMyProductPopup.vcModal({opener:$(this)});
                 //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - S
                 //self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                //self.$registMyProductMainPage.find('.btn-qrscan').trigger('click');
                 //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - E
 
                 //직접등록 팝업 진입시 default 처리 - S
                 $('.btn-direct').removeClass('active');
+                $('.app-exec').removeClass('active');
                 $('.btn-qrscan').addClass('active');
                 $('#inp01').attr('readonly','readonly');
                 $('#inp02').attr('readonly','readonly');
@@ -580,10 +580,9 @@
                                     self.$registMyProductMainPage.find('.btn-direct').trigger('click');
                                 }
                             });
-                        } 
-                        // else {
-                        //     lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
-                        // }
+                        } else {
+                            lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
+                        }
                     }
                 });
             });
