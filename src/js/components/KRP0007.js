@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">롯데카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -1011,7 +1011,7 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
-                /* BTOCSITE-5783 : 롯데카드 5% 청구할인 */
+                /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
                 item.isShow = lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00
                 
                 return vcui.template(productItemTemplate, item);
