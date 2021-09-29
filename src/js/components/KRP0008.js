@@ -666,6 +666,10 @@
             },
 
             bindProductEvents: function() {
+
+
+
+                
                 var self = this;
 
                 //핀치줌
