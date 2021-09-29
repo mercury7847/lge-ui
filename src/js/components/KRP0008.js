@@ -722,12 +722,12 @@
                         cancelBtnName: "취소",
                         okBtnName: "복사",
                         ok:function(){
-                        vcui.dom.copyToClipboard(txt, {
-                            container:this,
-                            onSuccess: function () {
-                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
-                            }
-                        });
+                            vcui.dom.copyToClipboard(txt, {
+                                container:this,
+                                onSuccess: function () {
+                                    $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                                }
+                            });
                         }
                    });
                 });
