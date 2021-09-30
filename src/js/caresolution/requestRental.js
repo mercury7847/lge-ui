@@ -129,8 +129,6 @@
             return e.keyCode !== 69;
         });
 
-
-
         //step1Validation validate item
         var register = {
             registFrontNumber:{
@@ -160,23 +158,19 @@
                         if( $('input[name="registBackFirst"]').data('alertEvent') == undefined || $('input[name="registBackFirst"]').data('alertEvent') == "") {
                             $('input[name="registBackFirst"]').data('alertEvent', true);
                             
-                            if (value == 9) {
-                                lgkorUI.alert("", {
-                                    title: "주민번호 뒤 첫 자리는<br>1~8까지만 입력이 가능합니다.",
-                                    ok:function(){
-                                        $('input[name="registBackFirst"]').data('alertEvent', "")
-                                    }
-                                    
-                                });
-                            } else {
-                                lgkorUI.alert("", {
-                                    title: "주민번호 뒤 첫 자리를 입력하셔야 합니다.",
-                                    ok:function(){
-                                        $('input[name="registBackFirst"]').data('alertEvent', "")
-
-                                    }
-                                });
+                            var alertMsg = {
+                                msg1 : "주민번호 뒤 첫 자리는<br>1~8까지만 입력이 가능합니다.",
+                                msg2 : "주민번호 뒤 첫 자리를 입력하셔야 합니다."
                             }
+                            var currentMsg = value != "" ? alertMsg.msg1 : alertMsg.msg2;
+                            $('.err-regist-first').addClass('show');
+                            lgkorUI.alert("", {
+                                title: currentMsg,
+                                ok:function(){
+                                    $('input[name="registBackFirst"]').data('alertEvent', false)
+                                    $('.err-regist-first').show().removeClass('show');
+                                }
+                            });
                             return false;
                         }
                     }
@@ -199,10 +193,13 @@
                         if( value == "" || valueLength < 13) {
                             if( $('input[name="userEmail"]').data('alertEvent_2') == undefined || $('input[name="userEmail"]').data('alertEvent_2') == false) {
                                 $('input[name="userEmail"]').data('alertEvent_2', true);
+                                
+                                $('.err-foreign-num').addClass('show');
                                 lgkorUI.alert("", {
                                     title: "외국인 고객님의 경우, 외국인 등록번호를 필수로 입력하셔야 합니다.",
                                     ok:function(){
                                         $('input[name="userEmail"]').data('alertEvent_2', false)
+                                        $('.err-foreign-num').show().removeClass('show');
                                     }
                                 });
                                 return false;
