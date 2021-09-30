@@ -123,6 +123,7 @@
 
         creditInquireButton = $('.creditInquire');
 
+
         // number e block;
         $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
@@ -142,7 +143,7 @@
             registFrontNumber:{
                 required: true,
                 errorMsg: "생년월일을 다시 확인해주세요.",
-                msgTarget: '.err-regist',
+                msgTarget: '.err-regist'
             },
             
             registBackFirst: {
@@ -197,7 +198,7 @@
                 msgTarget: '.err-foreign-num',
                 validate : function(value){
                     var valueLength = value.length;
-
+                    
                     if( $('.foreignNum').is(':visible') == false ) {
                         var $currentFormWrap = $('.foreignNum').closest('.form-wrap');
                         $currentFormWrap.find('.err-msg').filter(':visible').first().closest('.input-wrap').find('input').focus();
@@ -339,6 +340,8 @@
             $('.arsAgreeRequestCheck').attr('disabled', true).show();
             $('#iostxt').show();
         }
+        //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+        setParamBenefitUrl();
 
     }
 
@@ -649,6 +652,21 @@
             if(isBeforeUnload) return '페이지를 벗어날 경우, 지금까지 작성한 내용이 사라집니다.';
         });
 
+        //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+        $(document).on('click', '.card-benefit-box .btn-link', function(e){
+            if( vcui.detect.isMobileDevice && isApp()) {
+                e.preventDefault();
+                
+                var currentUrl = $btnLink.attr('href');
+                if(vcui.detect.isIOS){
+                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': currentUrl});
+                    // , 'titlebar_show': 'Y'
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    android.openNewWebview(currentUrl);
+                }
+            }
+        })
     }
 
     function changeMaskingText(ipt){
@@ -1753,6 +1771,22 @@
             }
         }, ajaxMethod);
     }
+
+    //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+    function setParamBenefitUrl(){
+        var $benefitBox = $('.card-benefit-box');
+        var $btnLink = $benefitBox.find('.btn-link');
+
+        if( vcui.detect.isMobileDevice ) {
+            if( !isApp()) {
+                var _param = 'careSolution=true';
+                var _href = $btnLink.attr('href').indexOf('card-discount?') == -1 ? $btnLink.attr('href') + "?" + _param : $btnLink.attr('href') + "&" + _param;
+                $btnLink.attr('href', _href)
+            } 
+        }
+    }
+
+
 
     $(document).ready(function(){
         init();
