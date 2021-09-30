@@ -153,6 +153,7 @@
                     }
 
                     if( value > 0 && value <= 8) {
+                        $('input[name="registBackFirst"]').removeClass('checkBorder');
                         return true
                     } else {
                         if( $('input[name="registBackFirst"]').data('alertEvent') == undefined || $('input[name="registBackFirst"]').data('alertEvent') == "") {
@@ -163,7 +164,10 @@
                                 msg2 : "주민번호 뒤 첫 자리를 입력하셔야 합니다."
                             }
                             var currentMsg = value != "" ? alertMsg.msg1 : alertMsg.msg2;
+
                             $('.err-regist-first').addClass('show');
+                            $('input[name="registBackFirst"]').addClass('checkBorder');
+
                             lgkorUI.alert("", {
                                 title: currentMsg,
                                 ok:function(){
@@ -191,19 +195,22 @@
                         $currentFormWrap.find('.err-msg').filter(':visible').first().closest('.input-wrap').find('input').focus();
                     } else {
                         if( value == "" || valueLength < 13) {
-                            if( $('input[name="userEmail"]').data('alertEvent_2') == undefined || $('input[name="userEmail"]').data('alertEvent_2') == false) {
-                                $('input[name="userEmail"]').data('alertEvent_2', true);
+                            if( $('input[name="registForeignNum"]').data('alertEvent_2') == undefined || $('input[name="registForeignNum"]').data('alertEvent_2') == false) {
+                                $('input[name="registForeignNum"]').data('alertEvent_2', true);
                                 
-                                $('.err-foreign-num').addClass('show');
+                                $('input[name="registForeignNum"]').addClass('checkBorder');
+
                                 lgkorUI.alert("", {
                                     title: "외국인 고객님의 경우, 외국인 등록번호를 필수로 입력하셔야 합니다.",
                                     ok:function(){
-                                        $('input[name="userEmail"]').data('alertEvent_2', false)
+                                        $('input[name="registForeignNum"]').data('alertEvent_2', false)
                                         $('.err-foreign-num').show().removeClass('show');
                                     }
                                 });
                                 return false;
                             }
+                        } else {
+                            $('input[name="registForeignNum"]').removeClass('checkBorder');
                         }
                     }
                 }
