@@ -280,12 +280,12 @@
             var self = this;
             var subCategory = self.$cont.find('#subCategory').val()
 
-            if ((subCategory == 'CT50019259' || subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
-                lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
-                    title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
-                });
-                self.hirun = true;
-            }
+            // if ((subCategory == 'CT50019259' || subCategory == 'CT50019244') && $('#hiDownTimeFlag').val() == 'Y') {                    
+            //     lgkorUI.alert('(자세한 내용은 공지사항을 확인하시기 바랍니다.)<br>점검시간 : '+ $('#hirunDownStartTime').val() +' ~ '+ $('#hirunDownEndTime').val(),{
+            //         title: '시스템 점검 중으로, <br>\'시스템에어컨\', \'업소용 스탠드형\'<br>신청 및 조회가 불가합니다.'
+            //     });
+            //     self.hirun = true;
+            // }
         },
         setTopicList: function(data) {
             var self = this;
@@ -725,10 +725,10 @@
 
                 // 20210610 세척서비스 증상 선택시 팝업 띄움
                 var topicName = $(this).data('topicName');
-                /*
+                
+                // BTOCSITE-6144 세척서비스 중지 팝업 다시 원래대로 원복
                 var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';                
                 if( topicName === "세척서비스" ){
-                    $(this).prop('checked', false);
                     lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
                         title:'',
@@ -740,13 +740,13 @@
                         cancel: function() {}
                     });
                 }
-                */
+                
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
-                var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
-                if( topicName === "세척서비스" ){
-                    $(this).prop('checked', false);
-                    lgkorUI.alert(alertMsg);
-                }
+                // var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
+                // if( topicName === "세척서비스" ){
+                //     $(this).prop('checked', false);
+                //     lgkorUI.alert(alertMsg);
+                // }
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
                 self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);
