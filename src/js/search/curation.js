@@ -58,11 +58,11 @@ var Curation = (function() {
         },
 
         //선택된 스마트 필터 반환
-        getMakeDataFromSmartFilter: function() {
-            var self = this;
-            var filterData = self.getDataFromSmartFilter();
-            return self._makeFilterData(filterData)
-        },
+        // getMakeDataFromSmartFilter: function() {
+        //     var self = this;
+        //     var filterData = self.getDataFromSmartFilter();
+        //     return self._makeFilterData(filterData)
+        // },
 
         getDataFromSmartFilter: function() {
             var self = this;
@@ -78,6 +78,7 @@ var Curation = (function() {
                     tempArray = [];
                 }
                 tempArray.push(filterValueId);
+
                 data[filterId] = tempArray;
                 //data['data'] = tempArray;
             });
@@ -240,8 +241,10 @@ var Curation = (function() {
                 self.$curation.hide();
             }
 
+            self.smartFilterCnt = data.smartFilterList.count || 0;
             var smartFilterData = data.smartFilterList.data;
             if(smartFilterData && smartFilterData.length > 0) {
+               
                 var isOpen = self.$smartFilterList.data('open');
                 var $list_ul = self.$smartFilterList.find('ul.default');
                 $list_ul.empty();
@@ -369,13 +372,13 @@ var Curation = (function() {
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
-            console.log("curation resetFilter");
+  
 
             var self = this;
 
             var filterData = JSON.parse(data);
+            console.log("curation resetFilter %o",filterData);
 
-            console.log(filterData);
             if(filterData) {
 
                 var maxIndex = 0;
@@ -452,11 +455,21 @@ var Curation = (function() {
                 console.log("curation resetFilter smart-type %o",$('.lay-filter.smart-type'))
                 // BTOCSITE-1716 좌측 스마트 필터 리셋              
                 if($('.lay-filter').hasClass('smart-type')) {
+                    var cntArray = [];
                     var $filterChecked = $('.smart-filter .filter-list input:checked');
                     $('.lay-filter.smart-type input').prop("checked", false);
                     $filterChecked.each(function(){
                         $('.lay-filter.smart-type input[value="'+$(this).val()+'"]').prop("checked", true);
+                        cntArray = cntArray.concat($(this).val().split(','));
                     })
+
+                    cntArray = cntArray.filter(function(item,index){
+                        return cntArray.indexOf(item) === index;
+                    });
+
+                    var cnt = cntArray.length ||  self.smartFilterCnt;
+                    $(".lay-filter .filter-head h1").html('필터<span>'+cnt+'개 제품</span>');
+
 
                     // 필터 더보기 클래스 붙히기
                     if($filterChecked.length >  0) {
@@ -464,6 +477,7 @@ var Curation = (function() {
                     } else {
                         $('.smart-filter .btn-filter').removeClass('applied');
                     }
+
                     
                 }
                
