@@ -360,18 +360,6 @@
                 //직접등록 팝업 진입시 default 처리 - E 
             });
 
-            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
-            if($('input[name=cta]').val() === 'Y'){
-                self.registMyProductPopupClear();     
-                self.$registMyProductPopup.vcModal({opener:$(this)});
-                self.$modelCheckHelpPage.hide();   
-                self.$registMyProductMainPage.on('click','.ui_modal_close, footer div.btn-group button' ,function(e) {
-                    $('input[name=cta]').val('');
-                    history.replaceState({}, null, location.pathname)
-                });
-            }
-            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
-
             //보유제품 삭제
             self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
                 var ajaxUrl = self.$contents.attr('data-remove-url');
@@ -474,10 +462,18 @@
                     $(this).addClass('active');
                     $('.btn-qrcord').removeClass('active');
                     $('.example-type-list-wrap .bullet-list').hide();
+                    $('#qrcodeSelect').hide();
+                    $('#qrcodeResult').hide();
+                    $('#barcodeSelect').show();
+                    $('#barcodeResult').show();
                 } else {
                     $(this).addClass('active');
                     $('.btn-model').removeClass('active');
                     $('.example-type-list-wrap .bullet-list').show();
+                    $('#barcodeSelect').hide();
+                    $('#barcodeResult').hide();
+                    $('#qrcodeSelect').show();
+                    $('#qrcodeResult').show();
                 }
             });
 
@@ -674,6 +670,7 @@
             self.$registMyProductMainPage.on('click','footer div.btn-group button' ,function(e){
                 var $button = $(this);
                 if($button.index() == 0) {
+                    //취소
                     self.$registMyProductPopup.vcModal('close');
                 } else {
                     //등록
@@ -924,6 +921,71 @@
                 }
             });
 
+            // BTOCSITE-4086 s: qr코드 부착위치 모델선택 (임시하드코딩 적용용)
+           $('#qrcodselect').on('change', function(e){
+                var index = this.selectedIndex;
+                var qrOptionStr = "<option value='' class='placeholder'>세부 카테고리 선택</option>";
+                switch(index) {
+                    case 0 : break;
+                    case 1 :
+                        qrOptionStr += "<option value='cate1-1'>드럼세탁기</option>";
+                        qrOptionStr += "<option value='cate1-2'>의류건조기</option>";
+                        qrOptionStr += "<option value='cate1-3'>일반세탁기</option>";
+                        qrOptionStr += "<option value='cate1-4'>스타일러</option>";
+                        break;
+                    case 2 : 
+                        qrOptionStr += "<option value='cate2-1'>무선(A9)/일반</option>";
+                        qrOptionStr += "<option value='cate2-2'>로봇청소기</option>";
+                        break;
+                }
+                if(index > 0){
+                    $("#qrcodselect1").prop('disabled', false);
+                    $("#qrcodselect1").html(qrOptionStr);
+                    $("#qrcodselect1").vcSelectbox('update');
+                    $('#qrcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
+                } else {
+                    $("#qrcodselect1").prop('disabled', true);
+                    $("#qrcodselect1").html(qrOptionStr);
+                    $("#qrcodselect1").vcSelectbox('update');
+                    $('#qrcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
+                }
+            });
+            $('#qrcodselect1').on('change', function(e){
+                var index = this.selectedIndex;
+                var qrselectedValue = $('#qrcodselect1').vcSelectbox('selectedOption').value;
+                var qrimageUrl
+                var qrdesc
+                switch(qrselectedValue) {
+                    case '' : 
+                        qrimageUrl="";
+                        break;
+                    case 'cate1-1':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-front-washers-qr.jpg"
+                        break;
+                    case 'cate1-2':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg"
+                        break;
+                    case 'cate1-3':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg"
+                        break;
+                    case 'cate1-4':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-stylers-qr.jpg"
+                        break;
+                    case 'cate2-1':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-stick-cleaners-qr.jpg"
+                        break;
+                    case 'cate2-2':
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-robot-cleaners-qr.jpg"
+                        break;
+                }
+                if(qrimageUrl) {
+                    $('#qrcodeResult .img img').attr('src',qrimageUrl).css('opacity',1);
+                } else {
+                    $('#qrcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
+                }
+            });
+            // BTOCSITE-4086 e
+            
             //보유제품 직접 등록 팝업 뒤로가기
             self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
                 var initExampleContent = self.$modelCheckHelpPage.find('.example-result').data('initContent');

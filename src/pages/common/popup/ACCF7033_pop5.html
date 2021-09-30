@@ -171,7 +171,7 @@
                     <li class="b-txt">QR코드는 2021년 10월 이후 생산된 제품부터 제공됩니다.</li>
                 </ul>
             </div>
-            <div class="form-wrap category-select" >
+            <div class="form-wrap category-select" id="barcodeSelect"><!-- BTOCSITE-4086 하드코딩 적용 수정부분 : id값 추가 -->
                 <dl class="forms">
                     <dt class="tit"><label for="select1" class="req">카테고리 선택<span class="blind">필수입력</span></label></dt>
                     <dd class="conts">
@@ -185,7 +185,7 @@
                         </div>
                         <div class="box">
                             <div class="select-wrap">
-                                <select class="ui_selectbox" id="select2" title="전체 카테고리 선택" disabled>
+                                <select class="ui_selectbox" id="select2" title="세부 카테고리 선택" disabled>
                                     <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
                                 </select>
                             </div>
@@ -193,8 +193,33 @@
                     </dd>
                 </dl>
             </div>
+            <!-- BTOCSITE-4086 하드코딩 적용 수정부분 s -->
+            <div class="form-wrap category-select" id="qrcodeSelect">
+                <dl class="forms">
+                    <dt class="tit"><label for="qrcodselect" class="req">카테고리 선택<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="box">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox ul_select_target" id="qrcodselect" title="전체 카테고리 선택">
+                                    <option value="" class="placeholder">카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                    <option value="cate1">세탁기/스타일러</option>
+                                    <option value="cate2">청소기</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="qrcodselect1" title="세부 카테고리 선택" disabled>
+                                    <option value="" class="placeholder">세부 카테고리 선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                </select>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+             <!-- BTOCSITE-4086 하드코딩 적용 수정부분 e -->
             
-            <div class="example-result">
+            <div class="example-result" id="barcodeResult"><!-- BTOCSITE-4086 하드코딩 적용 수정부분 : id값 추가 -->
                 <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
                 <!-- 
                     카테고리 선택 후 안내 메시지 
@@ -210,6 +235,14 @@
                     <!-- <img src="/lg5-common/images/dummy/@img-example.jpg" alt=""> -->
                 </div>
             </div>
+            <!-- BTOCSITE-4086 하드코딩 적용 수정부분 s -->
+            <div class="example-result" id="qrcodeResult">
+                <p class="txt">제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.</p>
+                <div class="img" aria-hidden="true">
+                    <img src="/lg5-common/images/img-nodata.svg" alt=""> 
+                </div>
+            </div>
+            <!-- BTOCSITE-4086 하드코딩 적용 수정부분 e -->
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
