@@ -3643,7 +3643,7 @@
         }
     }
 }
-// BTOCSITE-5781
+/* BTOCSITE-5781 */
 .popup-icon {
     display:inline-block;
     position:relative;
@@ -3662,3 +3662,55 @@
         background-size:100% 100%;
     }
 }
+.ui_modal_wrap{
+    .pop-conts{
+        &.pd-btm{
+            padding:0 40px 48px;
+            @include mobile{
+                padding:0 14px 30px;
+            }
+            .sale-info{
+                padding:20px 0 16px;
+                border-bottom:1px solid #ddd;
+                font-size:16px;
+                line-height:26px;
+                @include mobile{
+                    padding:18px 0 12px;
+                    font-size:14px;
+                    line-height:22px;
+                }
+            }
+            .payment-info{
+                padding:24px 0 0;
+                @include mobile{
+                    padding:16px 0 0;
+                }
+                .discount{
+                    .price{
+                        color:#000;
+                    }
+                }
+                .total-discount{
+                    margin-top:4px;
+                    .text{
+                        font-size:16px;
+                        color:#da0f47;
+                        @include mobile{
+                            font-size:13px
+                        }
+                    }
+                    .content{
+                        .price{
+                            font-size:16px;
+                            color:#da0f47;
+                            @include mobile{
+                                font-size:14px
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* //BTOCSITE-5781 */
