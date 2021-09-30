@@ -694,7 +694,7 @@
                         lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                     }
 
-                    if(result && !modelChkOk && !snChkOk) {                        
+                    if(result && !modelChkOk && !snChkOk) {
                         if(checkModelSuccess) {
                             //var result = self.registMyProductValidation.validate().success;
                             
@@ -719,7 +719,9 @@
                             }, "POST", null, null, null, false, function(err){
                                 self.hideLoading(true);
                             });
-                            
+
+                            //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
+                            self.$myProductTab.trigger('click'); 
                         } else {
                             if ($('.btn-qrscan').hasClass('active')) {
                                 if(!checkSerialSuccess) {
