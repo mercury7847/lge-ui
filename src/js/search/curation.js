@@ -313,7 +313,7 @@ var Curation = (function() {
             if($findLi.length < 1) {
                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                 self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                self.$smartFilterResult.show();
+                // self.$smartFilterResult.show();
 
                 // BTOCSITE-1716
                 if($('.lay-filter').hasClass('smart-type')) {
@@ -399,7 +399,7 @@ var Curation = (function() {
                                 var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                                 if($findLi.length < 1) {
                                     self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                    self.$smartFilterResult.show();
+                                    // self.$smartFilterResult.show();
 
                                     // BTOCSITE-1716
                                     if($('.lay-filter').hasClass('smart-type')) {
@@ -430,7 +430,7 @@ var Curation = (function() {
                             var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                             if($findLi.length < 1) {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                self.$smartFilterResult.show();
+                                // self.$smartFilterResult.show();
 
                                 // BTOCSITE-1716
                                 if($('.lay-filter').hasClass('smart-type')) {
