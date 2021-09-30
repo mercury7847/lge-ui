@@ -890,6 +890,7 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        $('.store-counsel-banner').show(); //BTOCSITE-5727
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -897,6 +898,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
