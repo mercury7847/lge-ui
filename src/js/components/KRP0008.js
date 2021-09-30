@@ -705,6 +705,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$saleInfoPopup = $('#saleInfoPopup'); // BTOCSITE-5781
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -1158,6 +1159,12 @@
                     self.$mainInitPopup.vcModal({opener: this});
                 });
                 
+                //할인적용가 팝업 BTOCSITE-5781
+                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                    e.preventDefault();
+                    self.$saleInfoPopup.vcModal({opener: this});
+                });
+
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
