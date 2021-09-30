@@ -1122,6 +1122,41 @@
                         margin-top:12px;
                     }
                 }
+                //BTOCSITE-3523
+                &.ui_accordion {
+                    &.detail-option-box {
+                        background: #f4f4f4;
+                        border-radius: 8px;
+                        .lists {
+                            padding: 24px;
+                            .head {
+                                margin-bottom: 0;
+                                padding: 0 0 16px;
+                                border-bottom: 1px solid #ddd;
+                                .btn-toggle {
+                                    top: calc( 50% - 8px);
+                                }
+                            }
+                            .select-info:first-child {
+                                margin-top: 16px;
+                            }
+                            .article-box {
+                                padding: 0;
+                                ul {
+                                    > li {
+                                        color: #000;
+                                    }
+                                }
+                            }
+                            &.on {
+                                .ui_accord_content {
+                                    margin-top: 0;
+                                    border-top: 0 !important;
+                                }
+                            }
+                        }
+                    }
+                }
                 .lists {
                     padding: 0 24px;
                     @include mobile {
@@ -1665,6 +1700,136 @@
                     }
                     .selectbox-list {
                         display: block;
+                    }
+                }
+            }
+
+            //BTOCSITE-3523 - 구매 탭 - 제휴카드 영역
+            &.rental-card-list {
+                margin: 0 -24px;
+                //이용요금 영역
+                & + .select-info.price-info.total {
+                    margin: 16px -24px 0;
+                }
+            }
+            //BTOCSITE-3523 - 구매, 렌탈 케어 탭 - 제휴카드 영역
+            &.rental-card-list,
+            &.careship-card-list {
+                .select-wrap {
+                    &.open {
+                        height: auto;
+                        .select-button {
+                            border: 1px solid #ddd;
+                            .selectbox-list {
+                                position: relative;
+                                top: auto;
+                                right: auto;
+                            }
+                            .high-card-list {
+                                border-bottom: 1px dashed #ddd;
+                                & > li:nth-child(3) {
+                                    display: block;
+                                }
+                            }
+                            .select-button {
+                                border: 1px solid #ddd;
+                            }
+                            .ui_dropdown_toggle {
+                                .spread-layer {
+                                    display: none;
+                                }
+                                .fold-layer {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                    .select-button {
+                        position: relative;
+                        top: auto;
+                        left: auto;
+                        right: auto;
+                        border-color: #ddd;
+                        .select-list {
+                            margin: 18px 24px 0;
+                            li {
+                                a {
+                                    position: relative;
+                                    display: block;
+                                    padding: 4px 0 4px 10px;
+                                    &::before {
+                                        content: ' ';
+                                        position: absolute;
+                                        width: 3px;
+                                        height: 3px;
+                                        margin-top: 11px;
+                                        margin-left: -11px;
+                                        margin-right: 8px;
+                                        border-radius: 50%;
+                                        background: #000;
+                                        vertical-align: top;
+                                    }
+                                    &:hover {
+                                        background: none;
+                                    }
+                                    .card-name,
+                                    .card-discount {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                    }
+                                    .card-discount {
+                                        margin-left: 4px;
+                                    }
+                                }
+                            }
+                        }
+                        .select-text {
+                            position: relative;
+                            top: auto;
+                            left: auto;
+                            right: auto;
+                            padding: 14px 24px;
+                            transform: none;
+                            background: #f4f4f4;
+                            color: #000;
+                            text-align: left;
+                            border-radius: 6px 6px 0 0;
+                            .tooltip-wrap {
+                                .tooltip-icon {
+                                    background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
+                                }
+                            }
+                        }
+                        .selectbox-list {
+                            border: none;
+                        }
+                        .ui_dropdown_toggle {
+                            position: relative;
+                            text-align: center;
+                            border-top: 1px solid #ddd;
+                            &:after {
+                                display: inline-block;
+                                position: relative;
+                                top: auto;
+                                right: auto;
+                                margin: 0 0 0 4px;
+                                vertical-align: middle;
+                            }
+                            .fold-layer {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .high-card-list {
+                    padding-bottom: 18px;
+                    > li:nth-child(3) {
+                        display: none;
+                    }
+                    li + li {
+                        @include mobile {
+                            margin-top: 3px;
+                        }
                     }
                 }
             }
