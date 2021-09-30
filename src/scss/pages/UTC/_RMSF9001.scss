@@ -31,8 +31,12 @@
                     background-size: 14px;
                 }
             }
+            /* BTOCSITE-1905 : 주민번호 뒤 첫자리, 외국인 등록번호 에러메세지 기능 추가 */
             .show {
                 display:block !important;
+            }
+            .checkBorder {
+                border: 1px solid #ec455a;
             }
         }
     }
