@@ -685,14 +685,12 @@
                     // if(snChkOk) {
                     //     lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
                     // }
-
-                    // 제품 모델명 확인 confirm 버튼 validation chk용
-                    if(modelChkOk) {
-                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                    }
-
-                    if(result && !modelChkOk) {
-                        if(checkModelSuccess) {
+                    if(result) {
+                        // 제품 모델명 확인 confirm 버튼 validation chk용
+                        if(modelChkOk) {
+                            lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        }
+                        if(checkModelSuccess  && !modelChkOk) {
                             //var result = self.registMyProductValidation.validate().success;
                             
                             var param = self.registMyProductValidation.getAllValues();
