@@ -8,16 +8,20 @@
 <div class="mobile-status-bar">
     <ul class="mobile-status-list">
         <li class="list-item mypage">
-            <a href="/my-page"><span>마이</span></a>
+            <!-- 하단탭바 웹과 앱 구분을 위해 url에 파라미터 추가 -->
+            <a href="/my-page?inflow=web"><span>마이</span></a>
         </li>
         <li class="list-item chatbot">
-            <a href="/상담챗/" class="js-popup" title="새창으로 열림" data-width="450" data-height="760"><span>상담챗</span></a>
+            <!-- 하단탭바 웹과 앱 구분을 위해 url에 파라미터 추가 -->
+            <a href="/상담챗/?inflow=web" class="js-popup" title="새창으로 열림" data-width="450" data-height="760"><span>상담챗</span></a>
         </li>
         <li class="list-item home"> 
-            <a href="/"><span>홈</span></a>
+            <!-- 하단탭바 웹과 앱 구분을 위해 url에 파라미터 추가 -->
+            <a href="/?inflow=web"><span>홈</span></a>
         </li>
         <li class="list-item my-collection">
-            <a href="/my-collection/"><span>마이컬렉션</span></a>
+            <!-- 하단탭바 웹과 앱 구분을 위해 url에 파라미터 추가 -->
+            <a href="/my-collection/?inflow=web"><span>마이컬렉션</span></a>
         </li>
         <li class="list-item nav-anchor">
             <a href="#"><span>메뉴</span></a>
