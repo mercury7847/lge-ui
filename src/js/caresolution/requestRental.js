@@ -129,6 +129,15 @@
             return e.keyCode !== 69;
         });
 
+        //BTOCSITE-1905 특수문자 삭제
+        var replaceId  = /[~!@\#$%^&*\()\-=+_']/gi; 
+        $('input[name="registBackFirst"]').on("keyup", function() {
+            $(this).val($(this).val().replace(replaceId, ""));
+        });
+        $('input[name="registForeignNum"]').on("keyup", function() {
+            $(this).val($(this).val().replace(replaceId, ""));
+        });
+
         //step1Validation validate item
         var register = {
             registFrontNumber:{
@@ -201,7 +210,7 @@
                                 $('input[name="registForeignNum"]').addClass('checkBorder'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
 
                                 lgkorUI.alert("", {
-                                    title: "외국인 고객님의 경우, 외국인 등록번호를 필수로 입력하셔야 합니다.",
+                                    title: "외국인 고객님의 경우, 외국인 등록번호를<br>필수로 입력하셔야 합니다.",
                                     ok:function(){
                                         $('input[name="registForeignNum"]').data('alertEvent_2', false)
                                         $('.err-foreign-num').show().removeClass('show'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
