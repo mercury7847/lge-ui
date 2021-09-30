@@ -679,7 +679,7 @@
                     //BTOCSITE-4086 - S
                     var result = self.registMyProductValidation.validate().success;
                     //var snChkOk = self.$snCheckOk.css("display") == "none"; // S/N validation chk용 BTOCSITE-4086
-                    var modelChkOk = self.$modelCheckOk.css("display") == "none"; // model명 validation chk용 BTOCSITE-4086
+                    //var modelChkOk = self.$modelCheckOk.css("display") == "none"; // model명 validation chk용 BTOCSITE-4086
 
                     // 제조번호(S/N) 확인 confirm 버튼 validation chk용
                     // if(snChkOk) {
@@ -687,11 +687,11 @@
                     // }
 
                     // 제품 모델명 확인 confirm 버튼 validation chk용
-                    if(modelChkOk) {
-                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                    }
+                    // if(modelChkOk) {
+                    //     lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                    // }
 
-                    if(result && !modelChkOk) {
+                    if(result) {
                         if(checkModelSuccess) {
                             //var result = self.registMyProductValidation.validate().success;
                             
