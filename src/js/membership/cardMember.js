@@ -12,6 +12,7 @@
                 var self = this;
                 self.$contents = $('div.contents.membership');
                 self.$cardInfoPopup = $('#cardInfoPopup');
+                self.$btnBack = $('.mobile-nav-wrap').find('.btn-back');
             },
 
             bindEvents: function() {
@@ -27,6 +28,18 @@
                     var url = self.$cardInfoPopup.attr('data-url');
                     if(!(!url)) {
                         location.href = url;
+                    }
+                });
+
+                //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+                self.$btnBack.on('click', function(e){
+                    var paramFlag = lgkorUI.getParameterByName("careSolution");
+                    
+                    if( paramFlag != undefined && paramFlag != "" ) {
+                        if( paramFlag == "true" || paramFlag == true) {
+                            e.preventDefault();
+                            window.close();
+                        }
                     }
                 });
             }
