@@ -653,20 +653,20 @@
         });
 
         //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
-        // $(document).on('click', '.card-benefit-box .btn-link', function(e){
-        //     if( vcui.detect.isMobileDevice && isApp()) {
-        //         e.preventDefault();
+        $(document).on('click', '.card-benefit-box .btn-link', function(e){
+            if( vcui.detect.isMobileDevice && isApp()) {
+                e.preventDefault();
                 
-        //         var currentUrl = $btnLink.attr('href');
-        //         if(vcui.detect.isIOS){
-        //             var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': currentUrl});
-        //             // , 'titlebar_show': 'Y'
-        //             webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-        //         } else {
-        //             android.openNewWebview(currentUrl);
-        //         }
-        //     }
-        // })
+                var currentUrl = $(this).attr('href');
+                if(vcui.detect.isIOS){
+                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': currentUrl});
+                    // , 'titlebar_show': 'Y'
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    android.openNewWebview(currentUrl);
+                }
+            }
+        })
     }
 
     function changeMaskingText(ipt){
@@ -1783,7 +1783,7 @@
                 var _href = $btnLink.attr('href').indexOf('card-discount?') == -1 ? $btnLink.attr('href') + "?" + _param : $btnLink.attr('href') + "&" + _param;
                 $btnLink.attr('href', _href)
             } else {
-                $btnLink.attr('target', '_self');
+                // $btnLink.attr('target', '_self');
             }
         }
     }
