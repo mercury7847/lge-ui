@@ -1769,7 +1769,7 @@
                                         background: #000;
                                         vertical-align: top;
                                     }
-                                    &:hover {
+                                    &:hover, &:active {
                                         background: none;
                                     }
                                     .card-name,

@@ -1831,7 +1831,7 @@
                 });
 
                 //최상단 카드취소
-                arr.push({
+                /*arr.push({
                     "groupTitle":null,
                     "listItem":[
                         {
@@ -1842,7 +1842,7 @@
                             "maxSalePrice":0
                         }
                     ]
-                });
+                });*/
 
                 //간편 신청 카드
                 if(simpleCardData.length > 0) {
@@ -1861,6 +1861,7 @@
                     });
                 }
                 /* //20210513 수정 */
+
                 return arr;
             },
 
@@ -1871,19 +1872,19 @@
                     //카드데이타
                     var selectList = $cardInfo.find('ul.select-list');
                     selectList.empty();
-                    var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                    //var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                     var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
-                        if(obj.groupTitle) {
-                            selectList.append(vcui.template(groupItemTemplate,obj));
-                        }
+                        //if(obj.groupTitle) {
+                            //selectList.append(vcui.template(groupItemTemplate,obj));
+                        //}
                         if(obj.listItem) {
                             obj.listItem.forEach(function(item, index) {
                                 item.label = item.title;
                                 item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
                                 if(!item.cardNameCode) {
-                                    item.label = "선택취소"
-                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
+                                    //item.label = "선택취소"
+                                    //cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
                                 }else{
                                     cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                                 }
