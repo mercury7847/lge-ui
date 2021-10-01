@@ -347,10 +347,9 @@
                     $('#inp01').attr('readonly','readonly');
                     $('#inp02').attr('readonly','readonly');
                     $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
+                    //$('.btn-prod-reg').attr('disabled', true); BTOCSITE-4086 211001 요건수정 최초 진입시, 활성화로 변경
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
-                    $('.btn-qrscan').addClass('active');
                     $('.info-req-box .qr-active').hide();
                     $('.info-req-box .qr').show();
                     $('p.comp').hide();
