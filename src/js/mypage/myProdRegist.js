@@ -441,7 +441,7 @@
 
             
             
-            //BTOCSITE-4086
+            //BTOCSITE-4086 s
             //보유 제품 직접 등록 : QR 직접 입력 선택버튼 
             self.$registMyProductMainPage.on('click','.scan-type-inbox button.btn-direct', function(e) {
                 e.preventDefault();
@@ -466,6 +466,8 @@
                     $('#qrcodeResult').hide();
                     $('#barcodeSelect').show();
                     $('#barcodeResult').show();
+                    self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)').vcSelectbox('selectedIndex', 0, true);
+                    $('#barcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
                 } else {
                     $(this).addClass('active');
                     $('.btn-model').removeClass('active');
@@ -474,8 +476,13 @@
                     $('#barcodeResult').hide();
                     $('#qrcodeSelect').show();
                     $('#qrcodeResult').show();
+                    $("#qrcodselect").vcSelectbox('selectedIndex',0);
+                    $("#qrcodselect1").vcSelectbox('selectedIndex',0);
+                    $('#qrcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
                 }
+                self.$modelCheckHelpPage.find('div.example-result p.txt').html('제품 카테고리를 선택하면, 해당 제품의 모델명 확인 방법을 안내해 드립니다.');
             });
+            //BTOCSITE-4086 e
 
             //사용설명서
             self.$myProductList.on('click','>ul li div.btns button.manual-btn', function(e) {
