@@ -490,15 +490,11 @@
     
             if(window.breakpoint.name == 'mobile'){
                 if(anim){
-                    console.log(1)
-                    $putItemContainer.stop().animate({top:wraptop - statusBarHeight}, 220);
-                } //BTOCSITE-1967
+                    $putItemContainer.stop().animate({top:wraptop - statusBarHeight}, 220);//BTOCSITE-1967
+                } 
                 else {
-                    console.log(2)
-                    console.log(statusBarHeight)
-
-                    $putItemContainer.css({top:wraptop - statusBarHeight});
-                } //BTOCSITE-1967
+                    $putItemContainer.css({top:wraptop - statusBarHeight});//BTOCSITE-1967
+                } 
             }
         }
     }
