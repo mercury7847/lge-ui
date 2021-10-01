@@ -944,10 +944,13 @@
                 }
                 @include mobile {
                     height:46px;
-                    padding:12px;
+                    // 2021-10-01 BTOCSITE-5938-17
+                    padding:0;
                     a {
                         font-size:14px;
                         line-height:22px;
+                        // 2021-10-01 BTOCSITE-5938-17
+                        padding:12px;
                     }
                 }
             }
