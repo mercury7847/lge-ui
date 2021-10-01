@@ -69,7 +69,7 @@ if ('scrollRestoration' in history) {
                         '<div class="price-info sales">' +
                             '{{#if obsFlag=="Y"}}' +
 
-                                '{{#if price == "0"}}' +
+                                '{{#if price == originalPrice}}' +
                                     '<div class="price-in">' +
                                         '<p class="tit">구매</p><span class="price">{{originalPrice}}<em>원</em></span>' +
                                     '</div>' +

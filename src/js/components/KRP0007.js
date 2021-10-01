@@ -109,7 +109,8 @@
 
                         '<div class="price-area">' +
                             '{{#if obsTotalDiscountPrice}}' +
-                                '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == 0}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
+                                /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                                '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == obsOriginalPrice}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
                                     '{{#if obsOriginalPrice}}' +
                                         '<div class="total">' +
                                             '<em class="blind">판매가격</em>' +
@@ -132,6 +133,7 @@
                                         '</div>' +
                                     '{{/if}}' +
                                 '{{/if}}' +
+                                /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                                 
                             '{{#else}}' + 
 
