@@ -18,7 +18,7 @@
 
                         '{{#if price == originalPrice}}' +
                             '<span class="blind">구매가격</span>' +
-                            '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원 : 값이 같으면 나옴' +
+                            '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' +
 
                         '{{#else}}' +
 
