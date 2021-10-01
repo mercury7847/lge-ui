@@ -654,8 +654,8 @@
                 var value = self.$yearSelect.vcSelectbox('selectedOption').value;
                 var month = 12;
                 if(value == self.thisYear) {
-                    //현재 년도
-                    month = self.thisMonth;
+                    //현재 년도 BTOCSITE-4086 211001 제거
+                    //month = self.thisMonth; 
                 }
 
                 self.$monthSelect.empty();
