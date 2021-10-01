@@ -2668,7 +2668,7 @@
                         lgkorUI.alert("", {
                             title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.",
                             ok: function(){
-                            popup.vcModal('close'); //BTOCSITE-4124 210902 수정
+                            popup.vcModal('close'); //BTOCSITE-4124 210902 수정 
                             }
                         });
                     } else {
