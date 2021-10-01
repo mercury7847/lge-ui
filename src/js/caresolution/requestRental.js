@@ -1778,13 +1778,9 @@
         var $btnLink = $benefitBox.find('.btn-link');
 
         if( vcui.detect.isMobileDevice ) {
-            if( !isApp()) {
-                var _param = 'careSolution=true';
-                var _href = $btnLink.attr('href').indexOf('card-discount?') == -1 ? $btnLink.attr('href') + "?" + _param : $btnLink.attr('href') + "&" + _param;
-                $btnLink.attr('href', _href)
-            } else {
-                // $btnLink.attr('target', '_self');
-            }
+            var _param = isApp()? 'openMode=inAppBrowser': 'careSolution=true';
+            var _href = $btnLink.attr('href').indexOf('card-discount?') == -1 ? $btnLink.attr('href') + "?" + _param : $btnLink.attr('href') + "&" + _param;
+            $btnLink.attr('href', _href)
         }
     }
 
