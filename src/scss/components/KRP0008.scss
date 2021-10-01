@@ -986,8 +986,6 @@
                         flex-grow: 2;
                     }
                 }
-
-                
             }
 
             /* 210702 */
@@ -1386,6 +1384,9 @@
             .signature-price {
                 margin-top: 16px;
                 text-align: center;
+                @include mobile {
+                    margin-bottom: 16px;
+                }
                 .price-info {
                     .text {
                         // font-size: 14px;

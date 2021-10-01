@@ -68,7 +68,7 @@ if ('scrollRestoration' in history) {
                         '<div class="price-info sales">' +
                             '{{#if obsFlag=="Y"}}' +
 
-                                '{{#if price == "0"}}' +
+                                '{{#if price == originalPrice}}' +
                                     '<div class="price-in">' +
                                         '<p class="tit">구매</p><span class="price">{{originalPrice}}<em>원</em></span>' +
                                     '</div>' +
@@ -192,7 +192,7 @@ if ('scrollRestoration' in history) {
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
 
-                 
+                    
                         console.log("filterLayer data %o",data);
                         self.requestSearch(self.makeFilterData(data));
                     });
@@ -200,7 +200,7 @@ if ('scrollRestoration' in history) {
                     var hash = location.hash.replace("#","");
                     var savedData = lgkorUI.getStorage(hash);
                     if(savedData && savedData.search) {
-             
+                
                         self.savedFilterData = JSON.parse(JSON.stringify(savedData));
 
                         console.log("savedata %o %o",self.savedFilterData,hash);
@@ -219,7 +219,7 @@ if ('scrollRestoration' in history) {
                         // if(self.savedFilterData.smartFilter) {
 
                         //     // var smartFilter = JSON.parse(self.savedFilterData.smartFilter);
-                 
+                    
                         //     // self.savedFilterData.smartFilter = decodeURIComponent(self.savedFilterData.smartFilter)
                         //     // self.savedFilterData.search = "정수기";
                         //     // self.savedFilterData.smartFilter = "{\"타입\":\"MD08747120,MD08747119\"}";
@@ -479,7 +479,7 @@ if ('scrollRestoration' in history) {
                 //검색 타이머
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(self.searchTimer);
-                  
+                    
                     var searchVal = this.value;
                     if (searchVal.length < lgkorUI.SEARCH_AUTOCOMPLETE_MIN_LENGTH) {
                         self.$searchKeywordArea.show();
@@ -869,7 +869,7 @@ if ('scrollRestoration' in history) {
                     // 2. 스마트 필터 없음 일반 필터로
                     var isSmartFiler = data.smartFilterList.hasOwnProperty("data") && !!data.smartFilterList.data.length;
                     var isFilterList = data.hasOwnProperty("filterList") && !!data.filterList.length;
-           
+            
                     var filterShow = false;
                     // BTOCSITE-1716 start
                     if(isSmartFiler || isFilterList) {
@@ -884,7 +884,7 @@ if ('scrollRestoration' in history) {
                                 // item.unfold_flag = 'N';
                             });
                         }
-                           
+                            
                 
                         if(isSmartFiler) {
 
@@ -913,8 +913,8 @@ if ('scrollRestoration' in history) {
                             self.filterLayer.resetFilter(filterData);
                         }
         
-                   }
-                   // BTOCSITE-1716 end
+                    }
+                    // BTOCSITE-1716 end
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
