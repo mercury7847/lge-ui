@@ -725,7 +725,7 @@
                             });
 
                             //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
-                            self.$myProductTab.trigger('click'); 
+                            self.$myProductTab.trigger('click');
                         } else {
                             if ($('.btn-qrscan').hasClass('active')) {
                                 //2021-03-06 제조번호(sn) 필수 제외
@@ -737,7 +737,7 @@
                                 }
                             } else {
                                 // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출
-                                if(!checkModelSuccess) {
+                                if(!checkModelSuccess && !checkSerialSuccess) {
                                     lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
                                         title: "",
                                         cancelBtnName: "취소",
