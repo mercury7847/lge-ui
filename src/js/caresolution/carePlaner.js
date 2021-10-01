@@ -480,7 +480,6 @@
                 $putItemContainer.find('.total-info dl').show();
                 wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) + $putItemContainer.find('.slide-wrap').outerHeight(true) + 10;
                 if(wraptop < 0) wraptop = 0;
-                if(wraptop > window.innerHeight) wraptop > window.innerHeight;
                 item.css({transform:'rotate(0deg)'});
             } else{
                 // console.log(2)
@@ -1297,10 +1296,11 @@
     $(document).ready(function() {
         init();
 
+        //BTOCSITE-1967
         $(window).on('resize', function(){
-            if( window.innerWidth > 768 && $putItemContainer.is(':visible') == true) {
+            if( window.innerWidth >= 768 && $putItemContainer.is(':visible') == true) {
                 $putItemContainer.css('height', 'auto')
-            }
+            } 
         });
     });
 })();
