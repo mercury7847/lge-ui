@@ -1296,5 +1296,11 @@
 
     $(document).ready(function() {
         init();
+
+        $(window).on('resize', function(){
+            if( window.innerWidth > 768 && $putItemContainer.is(':visible') == true) {
+                $putItemContainer.css('height', 'auto')
+            }
+        });
     });
 })();
