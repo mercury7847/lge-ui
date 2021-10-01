@@ -42,28 +42,32 @@ var llc = {
 
 $(function(){
     llc.init();
+
+    $(window).on('load', function(){
+        window.addEventListener(
+            "message", function(e) { 
+              if(typeof e.data == 'string'){ 				
+                  var obj = JSON.parse(e.data);              		    
+                  if(obj["key"] == "sauceflexMoveLogin"){
+                      location.href="/sso/api/Login";
+                  }else if(obj["key"] == "sauceflexMoveProduct"){
+                          location.href=obj["params"].linkUrl;    	
+                 }else if(obj["key"] == "sauceflexOnShare"){ 		    	
+                      var dummy = document.createElement("input");	 		        	 		        
+                      document.body.appendChild(dummy);
+                      dummy.value = window.location.href;
+                      dummy.select();	 		       
+                      document.execCommand("copy");	 		        
+                      document.body.removeChild(dummy);
+                      alert("URL을 복사했습니다.");	 		       
+                  }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
+                      location.href="/livecommerce";
+                  }
+              }    
+            }, false
+        );
+    })
 });
 
 
-window.addEventListener(
-    "message", function(e) { 
-      if(typeof e.data == 'string'){ 				
-          var obj = JSON.parse(e.data);              		    
-          if(obj["key"] == "sauceflexMoveLogin"){
-              location.href="/sso/api/Login";
-          }else if(obj["key"] == "sauceflexMoveProduct"){
-                  location.href=obj["params"].linkUrl;    	
-         }else if(obj["key"] == "sauceflexOnShare"){ 		    	
-              var dummy = document.createElement("input");	 		        	 		        
-              document.body.appendChild(dummy);
-              dummy.value = window.location.href;
-              dummy.select();	 		       
-              document.execCommand("copy");	 		        
-              document.body.removeChild(dummy);
-              alert("URL을 복사했습니다.");	 		       
-          }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
-              location.href="/livecommerce";
-          }
-      }    
-    }, false
-  );
+
