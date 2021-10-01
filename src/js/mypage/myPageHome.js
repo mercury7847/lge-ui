@@ -24,7 +24,7 @@
 
                                 '<div class="total">'+
                                     '<em class="blind">구매가격</em>'+
-                                    '<span class="price">{{item.addCommaPrice}}<em>원:가격이 같다면</em></span>'+
+                                    '<span class="price">{{item.addCommaPrice}}<em>원</em></span>'+
                                 '</div>'+
                 
                             '{{#else}}' + 

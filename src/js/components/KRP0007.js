@@ -44,6 +44,7 @@
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -1052,8 +1053,17 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
+
+                if( typeof item.obsSellingPriceNumber == "string") {
+                    item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
+                } else {
+                    item.isShowPrice = item.obsSellingPriceNumber;
+                }
                 /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                item.isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
+                item.isShow = lgkorUI.isShowDate('20210601','20211001'); //(startTime, endTime, nowTime)
+
+                /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
+                item.isShowLotteCard = lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00
                 
                 return vcui.template(productItemTemplate, item);
             },
