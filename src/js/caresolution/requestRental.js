@@ -657,7 +657,7 @@
             if( vcui.detect.isMobileDevice && isApp()) {
                 e.preventDefault();
                 
-                var currentUrl = $(this).attr('href');
+                var currentUrl = location.host + $(this).attr('href');
                 if(vcui.detect.isIOS){
                     var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': currentUrl});
                     // , 'titlebar_show': 'Y'
