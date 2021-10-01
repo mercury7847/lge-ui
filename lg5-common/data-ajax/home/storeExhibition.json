@@ -19,9 +19,47 @@
                         "subCategoryName": "올레드 TV",
                         "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08045021/md08045021-450x450.jpg",
                         "superCategoryId": "CT50000024",
+                        "obsDiscountPrice": 1,
+                        "obsMemberPrice": 2,
+                        "modelDisplayName": "test",
+                        "group": 0,
+                        "newProductBadgeFlag": "N",
+                        "modelStatusCode": "ACTIVE",
+                        "obsOriginalPrice": 1000,
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08045021/md08045021-350x350.jpg",
+                        "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08045021/md08045021-280x280.jpg",
+                        "isflag": "",
+                        "subCategoryId": "CT50000028",
+                        "reviewsScore": 5.0,
+                        "salesSuffixCode": "AKRG",
+                        "obsCartFlag": "Y",
+                        "modelName": "OLED65BXFNA",
+                        "obsInventoryQty": 9999,
+                        "modelGubunName": "일반제품",
+                        "categoryId": "CT50000025"
+                    },
+
+
+
+                    
+                    {                       
+
+                        "modelGubun": "1",
+                        "obsSellFlag": "Y",
+                        "obsInventoryFlag": "Y",
+                        "modelId": "MD08045021",
+                        "superCategoryName": "TV/AV",
+                        "modelUrlPath": "/tvs/oled65bxfna-stand",
+                        "salesModelCode": "OLED65BXFS",
+                        "reviewsCount": 17.00,
+                        "categoryName": "TV",
+                        "obssellingprice": 2598200,
+                        "subCategoryName": "올레드 TV",
+                        "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08045021/md08045021-450x450.jpg",
+                        "superCategoryId": "CT50000024",
                         "obsDiscountPrice": 108300,
                         "obsMemberPrice": 142500,
-                        "modelDisplayName": "LG 올레드 AI <sup>ThinQ</sup> (스탠드형)",
+                        "modelDisplayName": "111111111111111111",
                         "group": 0,
                         "newProductBadgeFlag": "N",
                         "modelStatusCode": "ACTIVE",
@@ -38,6 +76,27 @@
                         "modelGubunName": "일반제품",
                         "categoryId": "CT50000025"
                     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     {  
                         "modelId":"75NANO99KNA",
                         "saleModelCode":"FQ2",
