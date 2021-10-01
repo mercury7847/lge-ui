@@ -1214,8 +1214,9 @@ br.pc-only {
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
         z-index:99; //BTOCSITE-1967
         @include mobile {
-            // top:0;
-            height:100%;
+            // top:0; //BTOCSITE-1967
+            height:100%; //BTOCSITE-1967
+            max-height:calc(100% - 70px); //BTOCSITE-1967
             box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         }
         .inner {
@@ -1463,6 +1464,10 @@ br.pc-only {
             // .inner .total-info {
             //     bottom:(0 + $statusBarHeight);
             // }
+            .inner .contract-slide {
+                height: calc(80vh - 70px);
+                max-height: calc(80vh - 70px);
+            }
         }
     }
 }
