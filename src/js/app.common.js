@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount;
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, LGEAPPsetQrCode; // LGEAPPsetQrCode 추가 BTOCSITE-4086
 var LGEAPPclickCNT = 0;
 
 /*
@@ -148,6 +148,7 @@ var appInit = function() {
             });
         }
 
+        //BTOCSITE-4086 210928 - S
         //제품등록 페이지 탭
         LGEAPPsetArBarcode = function() {
             //직접입력 이벤트
@@ -185,13 +186,112 @@ var appInit = function() {
             });
         }
 
+        LGEAPPsetQrCode = function() {
+            //QR 스캔 버튼 이벤트
+            $(".btn-qrscan").off("click").on({
+                click : function() {
+                    // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - s
+                    $('.btn-direct').removeClass('active');
+                    $('.app-exec').removeClass('active');
+                    $(this).addClass('active');
+                    $('#inp01').attr('readonly','readonly');
+                    $('#inp02').attr('readonly','readonly');
+                    $('.cell button').attr('disabled', true);
+                    $('.btn-prod-reg').attr('disabled', true);
+                    $('.info-req-box .qr-active').hide();
+                    $('.info-req-box .qr').show();
+                    $('p.comp').hide();
+                    // BTOCSITE-4086 210928 QR 스캔 클릭시 이벤트 제어 속성 추가 - e
+                    //$(this).addClass("on").siblings("button").removeClass("on");
+                    if (isApp()) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            var obj = new Object();
+                            obj.command = "scanBarcode";
+                            obj.callback ="LGEAPPreturnArBarcode";
+                            var jsonString= JSON.stringify(obj);
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openBarcodeScanner("LGEAPPreturnArBarcode");
+                        }
+                    } else {
+                        var obj = {title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+
+                        obj = $.extend(obj, {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: LGEcomfirmAPPInstall});
+                        //var desc = '바코드로 편리하게 제품등록<br>하기위해 APP을 설치하시겠습니까?';
+                        var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
+
+                        lgkorUI.confirm(desc, obj);
+                    }
+                }
+            });
+        }
+
         //리턴 된 바코드 값 입력
         LGEAPPreturnArBarcode = function(barcode) {
+            // BTOCSITE-4086 210924 - S
+            //console.log("바코드 리턴값 : " + barcode);
             if (barcode != null && barcode != "" && barcode != undefined) {
-                $("#inp02").val(barcode);
+                $('.info-req-box .qr').hide();
+                $('.info-req-box .qr-active').show();
+                var urlChk = isURL(barcode); //QR형식 URL로 들어오는지 값 체크!해서 QR코드,바코드 구분
+                if(urlChk){
+                    // QR코드
+                    var param = getParams(barcode);
+                    var salesModel = param.m;
+                    //salesModel = salesModel.replace('.AKOR',''); BTOCSITE-4086 파라미터값 자르는 부분 제거 (barcode 값으로 전달된 url의 salesModel값 그대로 화면 노출되어도 이상 없음 - db 테이블에서 따로 체크함 )
+                    var serialNum =  param.s;
+                    //console.log("salesModel 값 : "+salesModel);
+                    //console.log("S/N 값 : "+serialNum);
+                    
+                    // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
+                    $("#inp01").val(salesModel); // salesModel명
+                    $("#inp02").val(serialNum); // 제조번호(S/N)
+                }else{
+                    // 바코드
+                    $("#inp02").val(barcode); 
+                }
+                $('.cell button').attr('disabled', false); // 확인 버튼 활성화
+                $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
+                // BTOCSITE-4086 210924 - E
             }
         }
 
+        // URL 형식 체크[정규식] - BTOCSITE-4086 210923 QR용
+        function isURL(barcode) {
+            var expUrl = /^http[s]?\:\/\//i;
+            return expUrl.test(barcode);
+        }
+
+        // 파라미터 자르기 - BTOCSITE-4086 210923 QR용
+        function getParams(barcode) {
+            // 파라미터가 담길 배열
+            var param = new Array();
+        
+            // 현재 페이지의 url
+            var url = decodeURIComponent(barcode);
+            // url이 encodeURIComponent 로 인코딩 되었을때는 다시 디코딩 해준다.
+            url = decodeURIComponent(url);
+        
+            var params;
+            // url에서 '?' 문자 이후의 파라미터 문자열까지 자르기
+            params = url.substring( url.indexOf('?')+1, url.length );
+            // 파라미터 구분자("&") 로 분리
+            params = params.split("&");
+        
+            // params 배열을 다시 "=" 구분자로 분리하여 param 배열에 key = value 로 담는다.
+            var size = params.length;
+            var key, value;
+            for(var i=0 ; i < size ; i++) {
+                key = params[i].split("=")[0];
+                value = params[i].split("=")[1];
+        
+                param[key] = value;
+            }
+        
+            return param;
+        }
+        //BTOCSITE-4086 210928 - E
+        
         //iOS, Android 앱 설치 여부 확인
         LGEcomfirmAPPInstall = function() {
             var agent = navigator.userAgent;
@@ -241,9 +341,11 @@ var appInit = function() {
         }
 
         LGEAPPsetArBarcode();
+        LGEAPPsetQrCode();
         $(window).on({
             resize : function() {
                 LGEAPPsetArBarcode();
+                LGEAPPsetQrCode();
             }
         });
     }

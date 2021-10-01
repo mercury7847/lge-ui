@@ -1,0 +1,12 @@
+<svg id="ic_close_MO_48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="영역" style="fill:none" d="M0 0h48v48H0z"/>
+    <g id="ic" transform="translate(10 10)">
+        <path id="Path" class="cls-2" d="m0 0 27.641 27.641"/>
+        <path id="Path-2" data-name="Path" class="cls-2" d="m0 0-27.224 27.224" transform="translate(27.641)"/>
+    </g>
+</svg>

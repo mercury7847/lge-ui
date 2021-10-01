@@ -317,49 +317,49 @@
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
 
-                    rentalInfo = [
-                        {
-                            "years3TotAmt": 35900,
-                            "visitPer": "3",
-                            "rtRgstFeePre": 0,
-                            "freeMonthDisplayYn": "Y",
-                            "rentalCareType": "R",
-                            "years1TotAmt": 35900,
-                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
-                            "years2TotAmt": 35900,
-                            "years6TotAmt": 35900,
-                            "years7TotAmt": 35900,
-                            "rtFreePeriod": "25,37,49",
-                            "rtModelSeq": "1579561",
-                            "dutyTerm": "6",
-                            "careCategoryId": "CT50000175",
-                            "representChargeFlag": "Y",
-                            "contractTerm": "7",
-                            "years5TotAmt": 35900,
-                            "years4TotAmt": 35900,
-                            "freeMonth": 3
-                        },
-                        {
-                            "years3TotAmt": 39900,
-                            "visitPer": "3",
-                            "rtRgstFeePre": 0,
-                            "freeMonthDisplayYn": "Y",
-                            "rentalCareType": "R",
-                            "years1TotAmt": 39900,
-                            "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
-                            "years2TotAmt": 39900,
-                            "years6TotAmt": 0,
-                            "rtFreePeriod": "25,37,49",
-                            "rtModelSeq": "1565994",
-                            "dutyTerm": "3",
-                            "careCategoryId": "CT50000175",
-                            "representChargeFlag": "N",
-                            "contractTerm": "5",
-                            "years5TotAmt": 39900,
-                            "years4TotAmt": 39900,
-                            "freeMonth": 3
-                        }
-                    ];
+                    // rentalInfo = [
+                    //     {
+                    //         "years3TotAmt": 35900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 35900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 35900,
+                    //         "years6TotAmt": 35900,
+                    //         "years7TotAmt": 35900,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1579561",
+                    //         "dutyTerm": "6",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "Y",
+                    //         "contractTerm": "7",
+                    //         "years5TotAmt": 35900,
+                    //         "years4TotAmt": 35900,
+                    //         "freeMonth": 3
+                    //     },
+                    //     {
+                    //         "years3TotAmt": 39900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 39900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 39900,
+                    //         "years6TotAmt": 0,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1565994",
+                    //         "dutyTerm": "3",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+                    //         "contractTerm": "5",
+                    //         "years5TotAmt": 39900,
+                    //         "years4TotAmt": 39900,
+                    //         "freeMonth": 3
+                    //     }
+                    // ];
 
 
 
@@ -761,15 +761,22 @@
                     self.requestModal(this);
                 });
                 */
-
                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
                 self.$copy.on('click',function() {
-                        self.copyClicked = true;
-                        vcui.dom.copyToClipboard(($(this).text()), {
-                            onSuccess: function () {
-                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
-                            }
-                        });
+                    var txt = $(this).text();
+                    lgkorUI.confirm('모델명을 복사하시겠습니까?', {
+                        title: "",
+                        cancelBtnName: "취소",
+                        okBtnName: "복사",
+                        ok:function(){
+                            vcui.dom.copyToClipboard(txt, {
+                                container:this,
+                                onSuccess: function () {
+                                    $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                                }
+                            });
+                        }
+                   });
                 });
 
                 //데스크탑용 갤러리 이미지 클릭
@@ -878,11 +885,12 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                        var isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
+                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
+                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        $('.store-counsel-banner').show(); //BTOCSITE-5727
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -890,6 +898,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -906,15 +915,13 @@
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                     var checked = !$(this).hasClass('compare-select');
-                    var pdpDataId = self.$pdpInfo.attr('data-id');
+                    var pdpDataId = self.$pdpInfo.attr('data-id'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
 
                     if(checked) {
-                        $(this).prop('checked');
                         $(this).addClass('compare-select');
                     } else {
-                        $(this).prop('checked', false);
                         $(this).removeClass('compare-select');
-                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click');
+                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
                     }
                     //$(this).prop('checked',!checked);
                     self.requestCompareItem(lgePdpSendData, checked, $(this));
@@ -1388,6 +1395,11 @@
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
                                 list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
                             }
                         }
 
@@ -1475,6 +1487,11 @@
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
                                 list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                 // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
                             }
                         }
 

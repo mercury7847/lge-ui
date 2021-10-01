@@ -348,7 +348,8 @@
                 }
                 .list-item > li {
                     position:relative;
-                    padding:24px 40px 24px 0;
+                    // BTOCSITE-4785
+                    padding:24px 10px 24px 0;
                     border-bottom:1px solid #ddd;
                     &:first-child {
                         padding-top:0;
@@ -357,7 +358,8 @@
                     @include csmobile {
                         //padding:0 20px 40px 0;
                         // margin-bottom: 20px;
-                        padding:16px 0;
+                        // BTOCSITE-4785
+                        padding:16px 12px 16px 0;
                         border-bottom:0;
                         &:after {
                             display: inline-block;
@@ -614,7 +616,7 @@
                 // BTOCSITE-4785 s
                 .display-product-search-info-wrap {
                     margin-top: 16px;
-                    padding-bottom: 0 !important;
+                    padding: 0 !important;
                 }
                 // BTOCSITE-4785 e
             }
@@ -977,11 +979,17 @@
                             padding-bottom: 48px;
                         }
                         .btn-area {
+                            @include csmobile {
+                                bottom:0;
+                            }
                             @include mobile {
                                 bottom:0;
                             }
                             .btn.size-m {
                                 line-height: 16px;
+                                @include csmobile {
+                                    line-height: 12px;
+                                }
                                 @include mobile {
                                     line-height: 12px;
                                 }
@@ -1005,9 +1013,9 @@
                 .display-product {
                     &-search-info-wrap{
                         display: block;
-                        padding: 0 0 32px 0;
+                        padding: 0 40px 32px 40px;
                         @include mobile {
-                            padding: 0 0 16px 0;
+                            padding: 0 20px 16px 20px;
                         }
                     }
                     &-search-info {
@@ -1134,10 +1142,14 @@
                     }
                 }
                 .store-list-box .view-info-btn {
+                    @include csmobile {
+                        bottom: 35px;
+                    }
                     @include mobile {
                         bottom: 35px;
                     }
                 }
+                
             }
             // BTOCSITE-4785 e
         }
@@ -1192,6 +1204,9 @@
                 left:-9999px;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
+            }
+            &.isMobile{
+                margin-top: 4px;
             }
         }
 

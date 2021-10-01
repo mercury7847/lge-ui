@@ -1026,13 +1026,6 @@
                 return;
             }
         }
-        
-        // BTOCSITE-4124 flag 제거 210924
-        // if($cashChk == true){
-        //     cancelOk();
-        // } else {
-            
-        // }
 
         lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
             title: "",
@@ -2282,7 +2275,6 @@
             var productTotalPrices = 0;
             var getListData = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData : result.data.careListData;
             var productList = getListData[0].productList;
-            var dataChk = $('#popup-cancel').hasClass('data-chk');
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
@@ -2339,21 +2331,12 @@
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
                     $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == true && isAllCancelDisable == false){
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
-                    $('#popup-cancel').find('#cancel_desc').show();
-                    $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
-                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
-                    $('#popup-cancel').find('.state-box > p.tit').html('<span class="blind">진행상태</span>결제완료');
-                    $('#popup-cancel').find('.pop-footer').show();
-                    $('#popup-cancel').find('.not-cancel-footer').hide();
                 } else {
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
-               
                 // BTOCSITE-4124 210907 수정 - E
                  // //BTOCSITE-1775
             } else{
@@ -2429,7 +2412,7 @@
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
             
-            if((result.data.payment && dataChk == true && isAllCancelDisable == false) || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){
                 popup.data('isBank', true);
 
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
@@ -2466,7 +2449,7 @@
     }
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
-        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
         for(var idx in productList){
             var listdata = productList[idx];
@@ -2661,9 +2644,18 @@
                 } else{
                     if(PAGE_TYPE == PAGE_TYPE_LIST){
                         var box = $('.box[data-id=' + dataId + ']');
-                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
-    
+                        // BTOCSITE-4124 210928 - start
+                        if( result.data.msg == "VC1001") {
+                            
+                        } else {
+                            box.find('.orderCancel-btn, .requestOrder-btn').remove();
+                        }
+
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
+                        if( result.data.msg == "VC1001") {
+                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        }
+                        // BTOCSITE-4124 210928 - end
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
@@ -2674,11 +2666,9 @@
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - S
                     if(result.data.msg == "VC1001"){
                         lgkorUI.alert("", {
-                            title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.<br>주문취소 신청을 하시겠습니까? ",
+                            title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.",
                             ok: function(){
-                            $('#popup-cancel').addClass('data-chk');
-                            getPopOrderData(dataId, "ordercancel", opener); 
-                            popup.vcModal('close');//BTOCSITE-4124 210902 수정
+                            popup.vcModal('close'); //BTOCSITE-4124 210902 수정 
                             }
                         });
                     } else {

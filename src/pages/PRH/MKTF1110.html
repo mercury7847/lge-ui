@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
+        componentID: "KRC0015",
         pageTitle: "LG ThinQ | LG전자",
         pageDesc: "LG ThinQ는 LG만의 인공지능기술이 적용된 제품과 서비스 브랜드입니다. 일상 속에서 LG ThinQ를 통해 한 번도 느껴보지 못한 자유를 누려보세요."
     })
@@ -18,121 +19,127 @@
             <!-- LG ThinQ -->
             <div class="contents thinq-main" >
                 <div class="sub-main">
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
-                    <!-- 히어로 -->
-                    <div class="hero-banner slide-wrap ui_wide_slider">
-						<div class="custom-indi-wrap">
-							<div class="custom-indis">
-								<ul class="indis ui_wideslider_dots">
-									<li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-                                    <li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-                                    <li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-								</ul>
-							</div>
-							<button type="button" class="indi-control ui_carousel_play play">
-								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-							</button>
-						</div>
-						<div class="slide-content ui_carousel_list">
-							<ul class="slide-track ui_carousel_track">
-								<!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual02.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont1_q">
-                                                <span class="pc-only">우리는 늘 다양한 <br class="mo-only">바람을 가지고 <br>더 나은 삶을 원합니다</span>
-                                                <span class="mo-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는<br>늘 더 나은 삶을 원합니다.</span>
-                                            </div>
-                                            <div class="cont2_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 이러한 당신의 <br class="mo-only">기대에 맞춰 <br class="pc-only">인공지능과 스마트 <br class="mo-only">기술을 통합한 플랫폼입니다</span>
-                                                <span class="mo-only">당신의 기대에 맞춰<br>인공지능과 스마트 기술을 통합한 플랫폼입니다.</span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-                                <!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual03.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont1_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 변화하는 시대와 <br>라이프 스타일에 맞춰 <br>늘 당신을 배우고 케어합니다</span>
-                                                <span class="mo-only">변화하는 시대와<br>라이프 스타일을 맞춘<br><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ"></span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <div class="cont2_q">
-                                                <span class="pc-only">하나의 플랫폼으로 가전들을 <br class="mo-only">연결해서 제어하고 <br class="pc-only">당신의 일상을 케어하며 필요로 하는 것을 <br class="mo-only">더 쉽게 구할 수 있게 합니다</span>
-                                                <span class="mo-only">하나의 플랫폼으로 당신의 일상을 케어합니다.</span>
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-                                <!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual04.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <div class="cont1_q">
-                                                <span>
-                                                    <img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ">를 통해<br>당신이 원하는 삶을 <br class="mo-only">누려보세요.
-                                                </span>
-                                            </div>
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont2_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 언제나 당신의 삶이 <br>더 편리하고 더 안심되고 <br class="mo-only">더 즐거울 수 있도록 합니다</span>
-                                                <span class="mo-only">언제나 더 편리하고 안심된<br>즐거운 삶을 만들어줍니다.</span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-							</ul>
-						</div>
-						<div class="slide-controls">
-							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
-							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
-						</div>
-					</div>
-                    <!-- //히어로 -->
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
-
+                    <!-- BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)  -->
+                    <!-- D: 카피위치는 text-area 옵션 클래스 참고 -->
+                    @@include('./common/partials/KRC0015-hero-brand.html', {
+                        "common": {
+                            "zero": "zero-top zero-btm",
+                            "bg-color": "",
+                            "className": 'hero-brand'
+                        },
+                        "title": {
+                            "font-class1": "font-regular",
+                            "font-class2": "font-underline",
+                            "headline": "<h2>우리는 늘 다양한 바람을 가지고 <br>더 나은 삶을 원합니다.</h2>",
+                        },
+                        "carousel": {
+                            "type": "hero-banner",
+                            "itemArr": [
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual02.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png",
+                                    "boxAlign" : "box-align-left", 
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":"",
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                    
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                }
+                            ]
+                        }
+                    })
+                    <!-- //BTOCSITE-4251 hero carousel-->
+                    <!-- //BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel) -->
 
                     <div class="brand-wrap thinq-wrap">
                         <div class="thinq-tabs">

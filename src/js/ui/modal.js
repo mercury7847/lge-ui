@@ -435,7 +435,14 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
                 //////$('body').attr('aria-hidden', 'true');    // body를 비활성화(aria)
                 self._draggabled(); // 드래그 기능 빌드
                 self._escape(); // esc키이벤트 바인딩
-                self.$el.css('min-height', self.$el.css('min-height', '').prop('scrollHeight'));
+                //2021-10-01팝업 결함 수정
+                var _scrollHeight = self.$el.css('min-height', '').prop('scrollHeight');
+                if( _scrollHeight <= window.innerHeight ) {
+                    self.$el.css('min-height', self.$el.css('min-height', '').prop('scrollHeight'));
+                } else {
+                    self.$el.css('min-height', self.$el.css('min-height', '100%'));
+                }
+                
                 ///////////me._enforceFocus();   // 탭키로 포커스를 이동시킬 때 포커스가 레이어팝업 안에서만 돌도록 빌드
 
                 self.on('mousewheel', function (e) {

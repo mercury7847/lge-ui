@@ -416,6 +416,15 @@
                 $('.btn-dppdp-fold').on('click', function(e){
                     e.preventDefault();
                     $(this).parent().parent().parent().toggleClass('close');
+                    if($(this).parent().parent().parent().hasClass('close')){
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '207px',
+                        });
+                    }
                     setTimeout(function(){
                         self._setListArea();
                     },400);
@@ -1288,6 +1297,15 @@
                 var self = this;
                 
                 self.$searchContainer.stop().transition({opacity:1}, 320, "easeInOutCubic");
+                // BTOCSITE-4785 s
+                if($('.store-list-wrap').hasClass('display-product-search')){
+                    $('.display-product-search-info-wrap').eq(0).show();
+                    $('.display-product-search .dp-pdp-map').css({
+                        'margin-top' : '0',
+                    });
+                    $('.display-product-search .store-map-con.isMobile').removeClass('dp-pdp-map');
+                }
+                // BTOCSITE-4785 e
                 $('.result-list-box').stop().css({display:'none'})            
                 
                 $('.store-list-wrap .tit').show();
@@ -1325,6 +1343,21 @@
     
                 $('.store-list-wrap .tit').hide();
                 self.$searchContainer.css('display', 'none');
+                // BTOCSITE-4785 s
+                if($('.store-list-wrap').hasClass('display-product-search')){
+                    $('.display-product-search-info-wrap').eq(0).hide();
+                    $('.display-product-search .store-map-con.isMobile').addClass('dp-pdp-map');
+                    if ($('.display-product-search-info').eq(1).hasClass('close')) {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '207px',
+                        });
+                    }
+                }
+                // BTOCSITE-4785 e
                 $('.result-list-box').stop().css({display:'block', opacity:0}).transition({opacity:1}, 410, "easeInOutCubic");
                 
                 var paddingtop = 0;
@@ -1341,13 +1374,17 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'320'
+                        'height':'320',
                     });
                     $('body,html').scrollTop(0);
                 }
-    
-                self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);            
-                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
+                // BTOCSITE-4785 s
+                //self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);  
+                if(!$('.store-list-wrap').hasClass('display-product-search')){
+                    self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300); 
+                }   
+                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);      
+                // BTOCSITE-4785 e
                 self._setListArea();
                 
             },
@@ -1447,6 +1484,17 @@
                         $( ".btn-list-fold" ).after( $('.store-map-con') );
     
                     }
+                    // BTOCSITE-4785 s
+                    if($('.display-product-search-info').eq(1).hasClass('close')){
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'margin-top' : '207px',
+                        });
+                    }
+                    // BTOCSITE-4785 s
     
                 } else{
     
@@ -1473,6 +1521,11 @@
                         });
     
                     }
+                    // BTOCSITE-4785 s
+                    $('.dp-pdp-map').css({
+                        'margin-top' : '0',
+                    });
+                    // BTOCSITE-4785 e
                 }
                 
                 self.$mapArea.css({
