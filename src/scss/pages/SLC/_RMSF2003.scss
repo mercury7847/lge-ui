@@ -1214,7 +1214,8 @@ br.pc-only {
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
         z-index:99; //BTOCSITE-1967
         @include mobile {
-            top:0;
+            // top:0;
+            height:100%;
             box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         }
         .inner {
