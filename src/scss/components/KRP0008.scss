@@ -1045,15 +1045,33 @@
                         @include font-small;
                         color: $color-gray-5;
                     }
+                    /* BTOCSITE-5181 */
                     .price {
+                        display:inline-block;
                         @include font-small;
+                        font-weight:600;
                         & + .price {
-                            display: block;
+                            @include pc{
+                                &:before{
+                                    content:'';
+                                    display:inline-block;
+                                    position:relative;
+                                    top:1px;
+                                    margin:0 8px;
+                                    width:1px;
+                                    height:12px;
+                                    background:#666;
+                                }
+                            }
+                            @include mobile{
+                                display:block;
+                            }
                         }
                         .block {
                             display: block;
                         }
                     }
+                    /* //BTOCSITE-5181 */
                 }
                 &.total {
                     .text {
