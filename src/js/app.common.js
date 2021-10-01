@@ -197,7 +197,6 @@ var appInit = function() {
                     $('#inp01').attr('readonly','readonly');
                     $('#inp02').attr('readonly','readonly');
                     $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
                     $('.info-req-box .qr-active').hide();
                     $('.info-req-box .qr').show();
                     $('p.comp').hide();
@@ -251,7 +250,7 @@ var appInit = function() {
                     $("#inp02").val(barcode); 
                 }
                 $('.cell button').attr('disabled', false); // 확인 버튼 활성화
-                $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
+                //$('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
             }
         }
