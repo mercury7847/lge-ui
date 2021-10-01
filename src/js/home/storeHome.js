@@ -74,6 +74,16 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
     '   </div>\n'+
     '{{/each}}';
 
+
+
+
+
+
+
+
+
+
+
 //추천 기획전 : 제품 슬라이드
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -82,20 +92,38 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '           <div class="info">\n'+
     '               <div class="model">{{#raw obj.modelDisplayName}}</div>\n'+
     '               <div class="code">{{obj.modelName}}</div>\n'+
-    '               {{#if obj.isPrice}}'+
+
+    '               {{#if obj.isPrice}}\n'+
+
+    '               {{#if obj.totalPrice333 == obj.tetetetete}}\n'+
+    
+    '                   <div class="price-area">\n'+
+    '                       <div class="total">\n'+
+    '                           <em class="blind">판매가격</em>\n'+
+    '                           <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원11</em></span>\n'+
+    '                       </div>\n'+
+    '                   </div>\n'+
+
+    '               {{#else}}\n'+
+
     '                   <div class="price-area">\n'+
     '                       <div class="original">\n'+
     '                           {{#if obj.obsOriginalPrice}}'+
     '                               <em class="blind">기존가격</em>\n'+
-    '                               <span class="price">{{#raw obj.obsOriginalPrice}}</span>{{/if}}\n'+
+    '                               <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원</em></span>{{/if}}\n'+
     '                       </div>\n'+
     '                       <div class="total">\n'+
     '                           {{#if obj.totalPrice}}\n'+
     '                               <em class="blind">판매가격</em>\n'+
-    '                               <span class="price">{{#raw obj.totalPrice}}</span>{{/if}}\n'+
+    '                               <span class="price">{{ vcui.number.addComma(obj.totalPrice) }}<em>원</em></span>{{/if}}\n'+
     '                       </div>\n'+
     '                   </div>\n'+
     '               {{/if}}\n'+
+    
+
+
+    '               {{/if}}\n'+
+
     '           </div>\n'+
     '       </a>\n'+
     '   </li>\n'+
@@ -332,6 +360,7 @@ $(function(){
                         item['obsOriginalPrice'] = null;
                     }
 
+
                     var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
                     if(price!==0){ 
@@ -339,6 +368,7 @@ $(function(){
                     }else{
                         item['totalPrice'] = null;
                     }
+
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
                     item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
 
@@ -447,23 +477,70 @@ $(function(){
                     list = vcui.array.map(list, function(item, index){
 
                         var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
+                        var obssellingprice = parseInt(item['obsDiscountPrice'] || "0");
+
                         var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                         var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
-                        var recommendTempProduct = getEcProduct(item);
-
-                        if(obsOriginalPrice!==0){ 
-                            item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
-                        }else{
-                            item['obsOriginalPrice'] = null;
-                        }
                         
-                        var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
-                        if(price!==0){ 
-                            item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
-                        }else{
-                            item['totalPrice'] = null;
-                        }
+                        var recommendTempProduct = getEcProduct(item);
+                        var totalPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+
+                        var totalPrice11 = totalPrice;
+                        var totalPrice333 = totalPrice11 + obsMemberPrice + obsDiscountPrice;
+
+                        var tetetetete = obssellingprice + obsDiscountPrice + obsMemberPrice;
+                        //var tetetetete1212 = 
+
+                        console.log(totalPrice333);
+                        console.log("합", totalPrice333, tetetetete);
+                        console.log("1.totalPrice", totalPrice);
+                        console.log("2.totalPrice11", totalPrice11);
+                        console.log("3.totalPrice333 원가: 2849000", totalPrice333);
+
+                        console.log("---", obsDiscountPrice);
+                        console.log("---", obsMemberPrice);
+
+                        totalPrice333 = parseInt(totalPrice333);
+                        
+                        // if(obsOriginalPrice!==0){ 
+                        //     item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
+                        // }else{
+                        //     item['obsOriginalPrice'] = null;
+                        // }
+
+                        item['obsOriginalPrice'] = obsOriginalPrice;
+                        item['obsMemberPrice'] = obsMemberPrice;
+                        item['obsDiscountPrice'] = obsDiscountPrice;
+
+                        item['totalPrice'] = totalPrice;
+                        item['totalPrice11'] = totalPrice11;
+
+                        
+                        // var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+
+                        // if(price!==0){ 
+                        //     item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
+                        // }else{
+                        //     item['totalPrice'] = null;
+                        // }
+
+
+                  
+                        // var addPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+
+
+                        // if(price!==0){ 
+                        //     item['totalPrice'] = vcui.number.addComma(price) + '<em>원11</em>';
+                        // }else{
+                        //     item['totalPrice'] = null;
+                        // }
+
+                        // if(addPrice!==0){ 
+                        //     item['addTotalPrice'] = vcui.number.addComma(addPrice) + '<em>원33</em>';
+                        // }else{
+                        //     item['addTotalPrice'] = null;
+                        // }
 
                         item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
                         // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
@@ -473,6 +550,9 @@ $(function(){
                         //item.ecProduct_s = JSON.stringify(ecProduct_s);
                         /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                         item.ecProduct = JSON.stringify(recommendTempProduct);
+
+
+                        console.log("iteem %o",item);
 
                         return item;
                     });
