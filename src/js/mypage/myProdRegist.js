@@ -971,10 +971,10 @@
                         qrimageUrl="/lg5-common/images/MYC/qrimg/model-front-washers-qr.jpg"
                         break;
                     case 'cate1-2':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg"
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg"
                         break;
                     case 'cate1-3':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg"
+                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg"
                         break;
                     case 'cate1-4':
                         qrimageUrl="/lg5-common/images/MYC/qrimg/model-stylers-qr.jpg"
