@@ -1725,7 +1725,7 @@
                                 top: auto;
                                 right: auto;
                             }
-                            .high-card-list {
+                            .simple-card-list {
                                 border-bottom: 1px dashed #ddd;
                                 & > li:nth-child(3) {
                                     display: block;
@@ -1769,7 +1769,7 @@
                                         background: #000;
                                         vertical-align: top;
                                     }
-                                    &:hover, &:active {
+                                    &:hover, &:active, &:focus {
                                         background: none;
                                     }
                                     .card-name,
@@ -1821,7 +1821,7 @@
                         }
                     }
                 }
-                .high-card-list {
+                .simple-card-list {
                     padding-bottom: 18px;
                     > li:nth-child(3) {
                         display: none;

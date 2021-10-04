@@ -624,6 +624,7 @@
                                             </div>
                                         </dd>
                                     </dl>
+                                    <!--[S] BTOCSITE-3523 제휴카드 -->
                                     <div class="select-info select-box dropdown-box careship-card-list">
                                         <div class="select-wrap ui_dropdown">
                                             <input type="hidden" name="cardType" value=""/>
@@ -635,28 +636,80 @@
                                                     "page" : "tooltip-KRP0008-02"
                                                     })
                                                 </div>
-                                                <!-- 210427 문구수정 -->
-                                                <a href="#" class="ui_dropdown_toggle">이용시 월 최대 23,000원 할인</a>
-                                                <!-- //210427 문구수정 -->
-                                            </div>
-                                            <div class="selectbox-list ui_dropdown_list">
-                                                <ul class="select-list">
-                                                    <li class="divide"><span class="inner"><em>----------------------------------- 간편 신청 가능 카드</em></span></li>
-                                                    <li><a href="#card1">[신한] LG전자 렌탈애(愛)</a></li>
-                                                    <li><a href="#card2">[롯데] LG전자 베스트렌탈</a></li>
-                                                    <li><a href="#card3">[하나] LG전자 렌탈플러스</a></li>
-                                                    <li class="divide"><span class="inner"><em>----------------------------------- 개별 신청 필요 카드</em></span></li>
-                                                    <li><a href="#card4">[우리] LG전자 베스트렌탈</a></li>
-                                                    <li><a href="#card5">[광주] 베스트케어</a></li>
-                                                    <li><a href="#card6">[현대] 현대카드 M Edition3</a></li>
-                                                    <li><a href="#card7">[하나] LG전자 렌탈플러스</a></li>
-                                                    <li><a href="#card8">[NH] 올원 LG전자 BEST</a></li>
-                                                    <li><a href="#card9">[KB국민] LG전자 KB국민</a></li>
+                                                <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
+                                                <div class="ui_dropdown_list">
+                                                    <ul class="select-list card-discountSelect simple-card-list">
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[간편 신청] [하나] LG전자 렌탈플러스</p>
+                                                                <p class="card-discount">월 최대 <span>-23,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[간편 신청] [롯데] LG전자 스페셜</p>
+                                                                <p class="card-discount">월 최대 <span>-13,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[간편 신청] [신한] LG전자 렌탈애</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--//BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
+                                                <!--BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
+                                                <div class="selectbox-list ui_dropdown_list no-action">
+                                                    <ul class="select-list card-discountSelect individual-card-list">
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [광주] 베스트케어</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [우리] LG전자 베스트렌탈</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [현대] LG전자 M Edition3</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [NH] 올원 LG전자 BEST</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [국민] LG전자 KB 국민</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <p class="card-name">[개별 신청] [전북] 베스트케어</p>
+                                                                <p class="card-discount">월 최대 <span>-17,000원</span></p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--//BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
 
-                                                </ul>
+                                                <!--BTOCSITE-3523 : span 추가-->
+                                                <a href="#" class="ui_dropdown_toggle">제휴카드 <span class="spread-layer">전체보기</span> <span class="fold-layer">접기</span></a>
+                                                <!--//BTOCSITE-3523 : span 추가-->
                                             </div>
                                         </div>
                                     </div>
+                                    <!--//[E] BTOCSITE-3523 제휴카드 -->
                                     <dl class="select-info price-info total">
                                         <dt class="text">
                                             <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
@@ -942,7 +995,7 @@
                                                     </div>
                                                     <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
                                                     <div class="ui_dropdown_list">
-                                                        <ul class="select-list card-discountSelect high-card-list">
+                                                        <ul class="select-list card-discountSelect simple-card-list">
                                                             <li>
                                                                 <a href="#none">
                                                                     <p class="card-name">[간편 신청] [하나] LG전자 렌탈플러스</p>
@@ -966,8 +1019,8 @@
                                                     <!--//BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
 
                                                     <!--BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
-                                                    <div class="selectbox-list ui_dropdown_list">
-                                                        <ul class="select-list card-discountSelect">
+                                                    <div class="selectbox-list ui_dropdown_list no-action">
+                                                        <ul class="select-list card-discountSelect individual-card-list">
                                                             <li>
                                                                 <a href="#none">
                                                                     <p class="card-name">[개별 신청] [광주] 베스트케어</p>
@@ -1014,7 +1067,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--//[S] BTOCSITE-3523 제휴카드 -->
+                                        <!--//[E] BTOCSITE-3523 제휴카드 -->
                                         <dl class="select-info price-info total">
                                             <dt class="text">
                                                 <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
@@ -1218,7 +1271,7 @@
 
                                 <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
                                 <div class="ui_dropdown_list">
-                                    <ul class="select-list card-discountSelect high-card-list">
+                                    <ul class="select-list card-discountSelect simple-card-list">
                                         <li>
                                             <a href="#none">
                                                 <p class="card-name">[간편 신청] [하나] LG전자 렌탈플러스</p>
@@ -1242,8 +1295,8 @@
                                 <!--//BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
 
                                 <!--BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
-                                <div class="selectbox-list ui_dropdown_list">
-                                    <ul class="select-list card-discountSelect">
+                                <div class="selectbox-list ui_dropdown_list no-action">
+                                    <ul class="select-list card-discountSelect individual-card-list">
                                         <li>
                                             <a href="#none">
                                                 <p class="card-name">[개별 신청] [광주] 베스트케어</p>
@@ -1288,10 +1341,9 @@
                                 <a href="#" class="ui_dropdown_toggle">제휴카드 <span class="spread-layer">전체보기</span> <span class="fold-layer">접기</span></a>
                                 <!--//BTOCSITE-3523 : span 추가-->
                             </div>
-
                         </div>
                     </div>
-                    <!--[E] BTOCSITE-3523 제휴카드 -->
+                    <!--//[E] BTOCSITE-3523 제휴카드 -->
 
                     <dl class="select-info price-info total">
                         <dt class="text">
