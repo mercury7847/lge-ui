@@ -101,12 +101,9 @@ MainSwiper.prototype = {
                     
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                     
+                    self.storyHomeToastChk(); //BTOCSITE-188
                     self.removeStatusBar();//BTOCSITE-1967
 
-                    //BTOCSITE-188
-                    if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" ) {
-                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
-                    }
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -154,14 +151,9 @@ MainSwiper.prototype = {
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
 
-                    //BTOCSITE-188
-                    if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" ) {
-                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
-                    }
-
+                    self.storyHomeToastChk(); //BTOCSITE-188
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
-
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
                         //$('html,body').stop().animate({scrollTop:0}, 300);
@@ -476,6 +468,13 @@ MainSwiper.prototype = {
             return;
         } else {
             $('.swiper-slide').find('.mobile-status-bar').remove();    
+        }
+    },
+    storyHomeToastChk: function(){
+        //BTOCSITE-188
+        if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
+            $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+            lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
         }
     }
 }
