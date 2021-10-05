@@ -597,7 +597,15 @@
                                 }
                             });
                         } else {
-                            lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
+                            //lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
+                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                                title: "",
+                                cancelBtnName: "취소",
+                                okBtnName: "이메일접수",
+                                ok: function(){
+                                    location.href = "/support/email-inquiry?emailReg";
+                                }
+                            });
                         }
                         
                     }
@@ -658,7 +666,15 @@
                             }
                         });
                     } else {
-                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        //lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
+                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                            title: "",
+                            cancelBtnName: "취소",
+                            okBtnName: "이메일접수",
+                            ok: function(){
+                                location.href = "/support/email-inquiry?emailReg";
+                            }
+                        });
                     }
                     self.$snCheckOk.hide();
                 }
@@ -689,9 +705,9 @@
                     self.$registMyProductPopup.vcModal('close');
                 } else {
                     //등록
+                    //BTOCSITE-4086 - S
                     //2021-03-06 제조번호(sn) 필수 제외
                     //if(checkModelSuccess && checkSerialSuccess) {
-                    //BTOCSITE-4086 - S
                     if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
@@ -716,24 +732,19 @@
                             }, "POST", null, null, null, false, function(err){
                                 self.hideLoading(true);
                             });
-                            //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
-                            self.$myProductTab.trigger('click');
                         }
+                        //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
+                        self.$myProductTab.trigger('click');
                     } else {
                         // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출 (제조번호 필수값 아니라 제외함)
-                        // 제품 모델명 확인 confirm 버튼 validation chk용
-                        if(!checkModelSuccess){
+                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        /*
+                        if(!checkModelSuccess) {
                             lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                        }else if(!checkSerialSuccess){
-                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
-                                title: "",
-                                cancelBtnName: "취소",
-                                okBtnName: "이메일접수",
-                                ok: function(){
-                                    location.href = "/support/email-inquiry?emailReg";
-                                }
-                            });
+                        } else if(!checkSerialSuccess) {
+                            lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
                         }
+                        */
                     }
                     
                     //BTOCSITE-4086 - E
