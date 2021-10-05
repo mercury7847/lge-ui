@@ -454,6 +454,8 @@
                 $('.btn-qrscan').removeClass('active');
                 $('.info-req-box .qr').hide();
                 $('.info-req-box .qr-active').hide();
+                $("#inp01").val('');
+                $("#inp02").val('');
                 $('.app-exec').addClass('active');
                 $('#inp01').removeAttr('readonly');
                 $('#inp02').removeAttr('readonly');
