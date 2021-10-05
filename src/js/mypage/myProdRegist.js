@@ -735,8 +735,8 @@
                                     lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                                 }
                             } else {
-                                // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출
-                                if(!checkModelSuccess && !checkSerialSuccess) {
+                                // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출 (제조번호 필수값 아니라 제외함)
+                                if(!checkModelSuccess) {
                                     lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
                                         title: "",
                                         cancelBtnName: "취소",
