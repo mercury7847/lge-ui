@@ -132,7 +132,7 @@
                     // self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
                     self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
                 } else {
-                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?device=w&inflow=lgekor&orgCode=";
+                    self.shopUrl = "/support/visit-store-reservation?orgCode=";
                 }
                 // BTOCSITE-4785 e
     
@@ -418,11 +418,11 @@
                     $(this).parent().parent().parent().toggleClass('close');
                     if($(this).parent().parent().parent().hasClass('close')){
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                     setTimeout(function(){
@@ -1301,7 +1301,7 @@
                 if($('.store-list-wrap').hasClass('display-product-search')){
                     $('.display-product-search-info-wrap').eq(0).show();
                     $('.display-product-search .dp-pdp-map').css({
-                        'margin-top' : '0',
+                        'marginTop' : '0',
                     });
                     $('.display-product-search .store-map-con.isMobile').removeClass('dp-pdp-map');
                 }
@@ -1349,11 +1349,11 @@
                     $('.display-product-search .store-map-con.isMobile').addClass('dp-pdp-map');
                     if ($('.display-product-search-info').eq(1).hasClass('close')) {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                 }
@@ -1436,7 +1436,7 @@
     
                     $scrollWrap.css({
                         'height':'auto',
-                        'overflow-y':'initial'
+                        'overflowY':'initial'
                     });
     
                 }else{                
@@ -1449,7 +1449,7 @@
     
                     $scrollWrap.css({
                         'height':ht,
-                        'overflow-y':'auto'
+                        'overflowY':'auto'
                     });
                 }   
     
@@ -1487,11 +1487,11 @@
                     // BTOCSITE-4785 s
                     if($('.display-product-search-info').eq(1).hasClass('close')){
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                     // BTOCSITE-4785 s
@@ -1523,7 +1523,7 @@
                     }
                     // BTOCSITE-4785 s
                     $('.dp-pdp-map').css({
-                        'margin-top' : '0',
+                        'marginTop' : '0',
                     });
                     // BTOCSITE-4785 e
                 }
@@ -1531,7 +1531,7 @@
                 self.$mapArea.css({
                     width: mapwidth,
                     height: mapheight,
-                    'margin-left': mapmargin
+                    'marginLeft': mapmargin
                 });
     
                 self._setListArea();
