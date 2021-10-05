@@ -750,7 +750,7 @@
                                         cancelBtnName: "취소",
                                         okBtnName: "이메일접수",
                                         ok: function(){
-                                            location.href = "https://" + location.host + "/support/email-inquiry/?emailReg";
+                                            location.href = "https://wwwdev50.lge.co.kr/support/email-inquiry/?emailReg";
                                         }
                                     });
                                 }
