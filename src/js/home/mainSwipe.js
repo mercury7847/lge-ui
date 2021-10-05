@@ -474,8 +474,10 @@ MainSwiper.prototype = {
     },
     storyHomeToastChk: function(target){
         //BTOCSITE-188
+        
+        
         setTimeout(function(){
-            if( $(target).filter('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $(target).find('.story-main .user_story').is(':visible') == true) {
+            if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
                 lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
             }    
