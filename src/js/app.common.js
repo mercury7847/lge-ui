@@ -156,6 +156,8 @@ var appInit = function() {
                 click : function() {
                     $(this).addClass("on").siblings("button").removeClass("on");
                     $(this).closest(".appType-tab").next(".box").find("input").focus();
+                    $("#inp01").val('');
+                    $("#inp02").val('');
                 }
             });
 
