@@ -18,14 +18,9 @@
     var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}} ">' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
-                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리 예정
-                // '<a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '</div>' +
             '<div class="info-wrap">' +
-                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리 예정
-                // '<a href="{{url}}"><p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
-                // '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p></a>' +
                 '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +
@@ -215,7 +210,7 @@
             self.$snCheckButton = $buttons.eq(1);
             //BTOCSITE-4086
             self.$snCheckOk.hide();
-
+            
             // 대문자로 입력받기
             self.$modelInput.css('text-transform', 'uppercase');
             self.$snInput.css('text-transform', 'uppercase');
@@ -359,6 +354,19 @@
                 //직접등록 팝업 진입시 default 처리 - E 
             });
 
+            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
+            if($('input[name=cta]').val() === 'Y'){
+                self.registMyProductPopupClear();     
+                self.$registMyProductPopup.vcModal({opener:$(this)});
+                self.$modelCheckHelpPage.hide();   
+                self.$registMyProductMainPage.on('click','.ui_modal_close, footer div.btn-group button' ,function(e) {
+                    $('input[name=cta]').val('');
+                    history.replaceState({}, null, location.pathname)
+                });
+            }
+            // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
+
+
             //보유제품 삭제
             self.$myProductList.on('click','>ul li button.btn-delete', function(e) {
                 var ajaxUrl = self.$contents.attr('data-remove-url');
@@ -437,8 +445,6 @@
                 }
                 self.$modelCheckHelpPage.find('.btn-model').trigger('click');
             });
-
-            
             
             //BTOCSITE-4086 s
             //보유 제품 직접 등록 : QR 직접 입력 선택버튼 
@@ -576,7 +582,7 @@
                     } else {
                         checkModelSuccess = false;
                         self.$modelCheckOk.hide();
-
+                        
                         //BTOCSITE-4086 : QR스캔으로 값을 받아온 후 입력된 제품모델이 없을경우 confirm 추가
                         if ($('.btn-qrscan').hasClass('active')) {
                             lgkorUI.confirm("입력된 제품 모델명을 찾을 수 없습니다.<br>직접 입력으로 전환하시겠습니까?", {
@@ -660,8 +666,8 @@
                 var value = self.$yearSelect.vcSelectbox('selectedOption').value;
                 var month = 12;
                 if(value == self.thisYear) {
-                    //현재 년도 BTOCSITE-4086 211001 제거
-                    //month = self.thisMonth; 
+                    //현재 년도 BTOCSITE-6341 211005 운영결함 선조치 : 2021년도 선택시 '월' 출력 안되는 문제 수정 후 반영
+                    //month = self.thisMonth;
                 }
 
                 self.$monthSelect.empty();
@@ -928,7 +934,7 @@
                 }
             });
 
-            // BTOCSITE-4086 s: qr코드 부착위치 모델선택 (임시하드코딩 적용용)
+           // BTOCSITE-4086 s: qr코드 부착위치 모델선택 (임시하드코딩 적용용)
            $('#qrcodselect').on('change', function(e){
                 var index = this.selectedIndex;
                 var qrOptionStr = "<option value='' class='placeholder'>세부 카테고리 선택</option>";
@@ -992,7 +998,6 @@
                 }
             });
             // BTOCSITE-4086 e
-            
             //보유제품 직접 등록 팝업 뒤로가기
             self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
                 var initExampleContent = self.$modelCheckHelpPage.find('.example-result').data('initContent');
