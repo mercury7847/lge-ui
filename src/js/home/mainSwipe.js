@@ -149,7 +149,6 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
-                    // self.storyHomeToastChk(swiper.slides[swiper.activeIndex]); //BTOCSITE-188
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
                     // $('html,body').stop().animate({scrollTop:0}, 300);
@@ -281,15 +280,9 @@ MainSwiper.prototype = {
 
             self.isLoading = false;
             self.getContent();
-            
+            self.storyHomeToastChk(currentSlide) //BTOCSITE-188
 
-            //BTOCSITE_1967
-            //self.setStatusBar(currentSlide);
-            /*
-            setTimeout(function(){
-                mainSwiper.swiper.updateAutoHeight();
-            }, 1000);
-            */
+            
             return;
         }
 
@@ -344,7 +337,7 @@ MainSwiper.prototype = {
             }
         });
 
-        self.storyHomeToastChk(currentSlide) //BTOCSITE_188
+        self.storyHomeToastChk(currentSlide) //BTOCSITE-188
     },
     setDigitalData : function( pageData ){
         var self = this;
@@ -474,8 +467,6 @@ MainSwiper.prototype = {
     },
     storyHomeToastChk: function(target){
         //BTOCSITE-188
-        
-        
         setTimeout(function(){
             if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
