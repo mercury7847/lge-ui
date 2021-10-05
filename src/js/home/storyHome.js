@@ -534,8 +534,8 @@
                                 } else {
                                     if( !vcui.detect.isMobileDevice || $('.story-main').closest('.swiper-slide-active').length > 0) {
                                         $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                                        lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
                                     }
-                                    lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
                                 }
                             }
                         } else{
