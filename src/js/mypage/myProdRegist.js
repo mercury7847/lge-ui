@@ -339,9 +339,9 @@
                 //직접등록 팝업 진입시 default 처리 - S
                 //BTOCSITE-4086 isMobile(모바일웹,ios앱,안드로이드앱)일 경우 해당 속성 실행 - S
                 if(vcui.detect.isMobile){
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
+                    //$('#inp01').attr('readonly','readonly');
+                    //$('#inp02').attr('readonly','readonly');
+                    //$('.cell button').attr('disabled', true);
                     //$('.btn-prod-reg').attr('disabled', true); BTOCSITE-4086 211001 요건수정 최초 진입시, 활성화로 변경
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
