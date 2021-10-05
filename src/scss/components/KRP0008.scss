@@ -2085,19 +2085,29 @@
                 text-align: right;
             }
         }
-
+        // BTOCSITE-5960 s
         .non-purchase {
             margin-top: 16px;
             //padding: 24px;
             //border-radius: 8px;
             //background-color: $color-bg;
-            text-align: center;
+            text-align: left;
+            @include mobile{
+                margin-top: 0;
+                padding:21px !important;
+            }
             .text {
-                @include font-medium;
-                color: $color-primary;
+                font-size: 14px;
+                line-height: 23px;
+                color: $color-default;
+                @include mobile{
+                    font-size: 13px;
+                    line-height: 22px;
+                    letter-spacing: -0.2px;
+                }
             }
         }
-
+        // BTOCSITE-5960 e
         .careship-service {
             //@include clearfix;
             margin-top: 40px;
