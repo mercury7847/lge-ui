@@ -693,13 +693,13 @@
                     //if(checkModelSuccess && checkSerialSuccess) {
                     //BTOCSITE-4086 - S
                     var result = self.registMyProductValidation.validate().success;
-                    //var snChkOk = self.$snCheckOk.css("display") == "none"; // S/N validation chk용 BTOCSITE-4086
+                    var snChkOk = self.$snCheckOk.css("display") == "none"; // S/N validation chk용 BTOCSITE-4086
                     var modelChkOk = self.$modelCheckOk.css("display") == "none"; // model명 validation chk용 BTOCSITE-4086
 
                     // 제조번호(S/N) 확인 confirm 버튼 validation chk용
-                    // if(snChkOk) {
-                    //     lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
-                    // }
+                    if($("#inp02").val() && snChkOk) {
+                        lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
+                    }
 
                     // 제품 모델명 확인 confirm 버튼 validation chk용
                     // if(modelChkOk) {
@@ -737,18 +737,14 @@
                         } else {
                             // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출 (제조번호 필수값 아니라 제외함)
                             if(!checkModelSuccess) {
-                                if(modelChkOk) {
-                                    lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                                } else {
-                                    lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
-                                        title: "",
-                                        cancelBtnName: "취소",
-                                        okBtnName: "이메일접수",
-                                        ok: function(){
-                                            location.href = "/support/email-inquiry/?emailReg";
-                                        }
-                                    });
-                                }
+                                lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                                    title: "",
+                                    cancelBtnName: "취소",
+                                    okBtnName: "이메일접수",
+                                    ok: function(){
+                                        location.href = "/support/email-inquiry?emailReg";
+                                    }
+                                });
                             }
                         }
                     }
