@@ -102,6 +102,11 @@ MainSwiper.prototype = {
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                     
                     self.removeStatusBar();//BTOCSITE-1967
+
+                    //BTOCSITE-188
+                    if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" ) {
+                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                    }
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
@@ -148,6 +153,11 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
+                    //BTOCSITE-188
+                    if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" ) {
+                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                    }
 
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
