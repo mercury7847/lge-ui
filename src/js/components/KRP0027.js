@@ -4,10 +4,9 @@ $(window).ready(function(){
     $('.KRP0027').buildCommonUI();
 
     ;(function(){
+        var param = {};
         var REQUEST_MODE_SUPERCATEGORY = "superCategory";
         var REQUEST_MODE_CATEGORY = "category";
-        var REQUEST_MODE_YEAR = "year";
-        var REQUEST_MODE_SCROLL = "scroll"
 
         var VIDEO_LIST_URL;
         var VIEWER_DATA_URL;
@@ -161,15 +160,27 @@ $(window).ready(function(){
 
         function bindEvents(){
             superCategoryTab.on('tabchange', function(e, data){
-                setContentsList(REQUEST_MODE_SUPERCATEGORY, 1);
+                param = {
+                    mode : "superCategory",
+                    scrolled : false
+                }
+                setContentsList(1);
             });
 
             categoryTab.find('.ui_tab').on('tabchange', function(e, data){
-                setContentsList(REQUEST_MODE_CATEGORY, 1);
+                param = {
+                    mode : "category",
+                    scrolled : false
+                }
+                setContentsList(1);
             });
 
             yearTab.on('tabchange', function(e, data){
-                setContentsList(REQUEST_MODE_YEAR, 1);
+                param = {
+                    mode : "year",
+                    scrolled : true
+                }
+                setContentsList(1);
             }).vcTab();
 
             contList.scroll(function(e){
@@ -319,25 +330,30 @@ $(window).ready(function(){
                         }
                     }
 
-                    if(getList) setContentsList(REQUEST_MODE_SCROLL, page+1);
+                    if(getList) setContentsList(page+1);
                 }
             }
         }
 
-        function setContentsList(mode, page){
-            if(mode != REQUEST_MODE_SCROLL) lgkorUI.showLoading();
+        function setContentsList(page){
+            if(!param.scrolled) lgkorUI.showLoading();
 
-            contLoadMode = mode;
+            contLoadMode = param.mode;
 
             scrollAbled = false;
 
             var idxs = getTabCateIDs();
             var sendata = {
                 page: page,
-                superCategoryId: idxs.superCategoryId,
-                categoryId: mode != REQUEST_MODE_SUPERCATEGORY ? idxs.categoryId : "",
-                year: mode == REQUEST_MODE_YEAR ? idxs.year : ""
+                superCategoryId: idxs.superCategoryId
             }
+
+            // superCategory 탭이 아닌경우만 categoryId 설정
+            sendata.categoryId = param.mode !== "superCategory" ?  idxs.categoryId : "";
+
+            // 연도 탭
+            sendata.year = param.mode === "year" ? idxs.year : "";
+
             // console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
@@ -376,7 +392,8 @@ $(window).ready(function(){
                     break;
                 }
 
-                if(contLoadMode != REQUEST_MODE_SCROLL && contLoadMode != REQUEST_MODE_YEAR) changeViewContents(data.storyinfo);
+                // 스크롤이 아닌경우
+                if(!param.scrolled) changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
 
