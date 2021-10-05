@@ -281,7 +281,7 @@ MainSwiper.prototype = {
 
             self.isLoading = false;
             self.getContent();
-            self.storyHomeToastChk(currentSlide) //BTOCSITE_188
+            
 
             //BTOCSITE_1967
             //self.setStatusBar(currentSlide);
@@ -343,6 +343,8 @@ MainSwiper.prototype = {
                 });
             }
         });
+
+        self.storyHomeToastChk(currentSlide) //BTOCSITE_188
     },
     setDigitalData : function( pageData ){
         var self = this;
@@ -473,7 +475,6 @@ MainSwiper.prototype = {
     storyHomeToastChk: function(target){
         //BTOCSITE-188
         setTimeout(function(){
-            console.log($(target).filter('.swiper-slide-active').find('.story-main').length > 0)
             if( $(target).find('.story-main').length > 0 && $(target).hasClass('swiper-slide-active') && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $(target).find('.story-main .user_story').is(':visible') == true) {
                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
                 lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
