@@ -42,26 +42,24 @@ var bestRankBuyProductTmpl =
     '       <p class="tit">{{#raw modelDisplayName}}</p>\n'+
     // '       <p class="tit">{{modelName}}</p>\n'+
     '       {{#if isPrice}}'+
-    '       {{#if totalPrice}}'+
-    '           <div class="price">{{#raw totalPrice}}</div>\n'+
-    '       {{/if}}'+
+
+                /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+    // '       {{#if totalPrice}}'+
+    // '           <div class="price">{{#raw totalPrice}}</div>\n'+
+    // '       {{/if}}'+
+
+    '               {{#if totalPrice == obsOriginalPrice}}\n'+
+    '                   <div class="price">{{ vcui.number.addComma(obsOriginalPrice) }}<em>원</em></div>\n'+
+    '               {{#else}}\n'+
+    '                   {{#if totalPrice}}'+
+    '                       <div class="price">{{ vcui.number.addComma(totalPrice) }}<em>원</em></div>\n'+
+    '                   {{/if}}'+
+    '               {{/if}}\n'+
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
     '       {{/if}}'+
     '   </div>\n'+
     '</a>';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //많이 구매하는 제품 - 4개
