@@ -753,7 +753,8 @@ footer {
         @include mobile {
             $statusbarHeight: 70px;
             footer {
-                &:not(.no-footer) {
+                &:not(.no-footer),
+                &:not(.pop-footer) {
                     padding-bottom:60px + $statusbarHeight;
                 }
             }
