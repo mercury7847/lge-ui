@@ -49,6 +49,21 @@ var bestRankBuyProductTmpl =
     '   </div>\n'+
     '</a>';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //많이 구매하는 제품 - 4개
 var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -59,9 +74,15 @@ var rankBuyProductTmpl = '{{#each obj in list}}\n'+
     '           <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
     // '           <p class="tit">{{obj.modelName}}</p>\n'+
     '           {{#if obj.isPrice}}'+
-    '               {{#if obj.totalPrice}}'+
-    '                   <div class="price">{{#raw obj.totalPrice}}</div>\n'+
-    '               {{/if}}'+
+                    /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+    '               {{#if obj.totalPrice == obj.obsOriginalPrice}}\n'+
+    '                   <div class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원</em></div>\n'+
+    '               {{#else}}\n'+
+    '                   {{#if obj.totalPrice}}'+
+    '                       <div class="price">{{ vcui.number.addComma(obj.totalPrice) }}<em>원</em></div>\n'+
+    '                   {{/if}}'+
+    '               {{/if}}\n'+
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
     '           {{/if}}'+
     '       </div>\n'+
     '       </a>\n'+
@@ -84,6 +105,8 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
 
 
 
+
+
 //추천 기획전 : 제품 슬라이드
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -95,12 +118,13 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
 
     '               {{#if obj.isPrice}}\n'+
 
-    '               {{#if obj.totalPrice333 == obj.tetetetete}}\n'+
+                    /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+    '               {{#if obj.totalPrice == obj.obsOriginalPrice}}\n'+
     
     '                   <div class="price-area">\n'+
     '                       <div class="total">\n'+
     '                           <em class="blind">판매가격</em>\n'+
-    '                           <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원11</em></span>\n'+
+    '                           <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원111</em></span>\n'+
     '                       </div>\n'+
     '                   </div>\n'+
 
@@ -119,15 +143,28 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '                       </div>\n'+
     '                   </div>\n'+
     '               {{/if}}\n'+
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
     
-
-
     '               {{/if}}\n'+
 
     '           </div>\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //새로운 제품, 놓치지 마세요 - 이미지 배경
 var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
@@ -152,12 +189,33 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
     '                   </div>\n'+
     '               {{/if}}'+
     '           </div>\n'+
+
     '           <div class="product-price">\n'+
     '               {{#if isPrice}}\n'+
-    '                   <div class="original">{{#if obsOriginalPrice}}<span class="blind">기존가격</span>{{#raw obsOriginalPrice}}{{/if}}</div>\n'+
-    '                   <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{#raw totalPrice}}{{/if}}</div>\n'+
+
+                        /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+    '                   {{#if totalPrice == obsOriginalPrice}}\n'+
+    '                       <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{ vcui.number.addComma(obsOriginalPrice) }}{{/if}}<em>원1111</em></div>\n'+
+
+    '                   {{#else}}\n'+
+
+    '                       <div class="original">\n'+
+    '                            {{#if obsOriginalPrice}}\n'+
+    '                                <span class="blind">기존가격</span>{{ vcui.number.addComma(obsOriginalPrice) }}<em>원</em>\n'+
+    '                            {{/if}}\n'+
+    '                        </div>\n'+
+    '                       <div class="total">\n'+
+    '                            {{#if totalPrice}}\n'+
+    '                                <span class="blind">판매가격</span>{{ vcui.number.addComma(totalPrice) }}<em>원</em>\n'+
+    '                            {{/if}}\n'+
+    '                        </div>\n'+
+
+    '                   {{/if}}\n'+
+                        /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
     '               {{/if}}\n'+
     '           </div>\n'+
+
     '       </div>\n'+
     '   </div>\n'+
     '</li>';
@@ -340,6 +398,29 @@ $(function(){
             newExhibitionLocal.push(obj);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // 새제품 렌더링
         function buildNewRecommend(result){
 
@@ -352,22 +433,32 @@ $(function(){
                     var obsOriginalPrice = parseInt(item['obsOriginalPrice'] || "0");
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
+
+                    /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                    var obssellingprice = parseInt(item['obsDiscountPrice'] || "0");
                     var newTempEcProduct = getEcProduct(item);
 
-                    if(obsOriginalPrice!==0){ 
-                        item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
-                    }else{
-                        item['obsOriginalPrice'] = null;
-                    }
+                    // if(obsOriginalPrice!==0){ 
+                    //     item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원11</em>';
+                    // }else{
+                    //     item['obsOriginalPrice'] = null;
+                    // }
 
+                    // var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+                    var totalPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
-                    var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+                    // if(price!==0){ 
+                    //     item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
+                    // }else{
+                    //     item['totalPrice'] = null;
+                    // }
 
-                    if(price!==0){ 
-                        item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
-                    }else{
-                        item['totalPrice'] = null;
-                    }
+                    item['obsOriginalPrice'] = obsOriginalPrice;
+                    item['obsMemberPrice'] = obsMemberPrice;
+                    item['obsDiscountPrice'] = obsDiscountPrice;
+                    item['totalPrice'] = totalPrice;
+                    /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
 
                     item['flags'] = (item['isFlag'] && item['isFlag'].split('|')) || ((item['isflag'] && item['isflag'].split('|')) || []);
                     item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obssellingprice'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y' && item['obssellingprice'] > 0;
@@ -435,6 +526,29 @@ $(function(){
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         // 추천 렌더링
         function buildRecommend(){
 
@@ -486,22 +600,7 @@ $(function(){
                         var recommendTempProduct = getEcProduct(item);
                         var totalPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
 
-                        var totalPrice11 = totalPrice;
-                        var totalPrice333 = totalPrice11 + obsMemberPrice + obsDiscountPrice;
-
-                        var tetetetete = obssellingprice + obsDiscountPrice + obsMemberPrice;
-                        //var tetetetete1212 = 
-
-                        console.log(totalPrice333);
-                        console.log("합", totalPrice333, tetetetete);
-                        console.log("1.totalPrice", totalPrice);
-                        console.log("2.totalPrice11", totalPrice11);
-                        console.log("3.totalPrice333 원가: 2849000", totalPrice333);
-
-                        console.log("---", obsDiscountPrice);
-                        console.log("---", obsMemberPrice);
-
-                        totalPrice333 = parseInt(totalPrice333);
+                        /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                         
                         // if(obsOriginalPrice!==0){ 
                         //     item['obsOriginalPrice'] = vcui.number.addComma(obsOriginalPrice) + '<em>원</em>';
@@ -514,7 +613,7 @@ $(function(){
                         item['obsDiscountPrice'] = obsDiscountPrice;
 
                         item['totalPrice'] = totalPrice;
-                        item['totalPrice11'] = totalPrice11;
+                        //item['totalPrice11'] = totalPrice11;
 
                         
                         // var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
@@ -525,10 +624,7 @@ $(function(){
                         //     item['totalPrice'] = null;
                         // }
 
-
-                  
                         // var addPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-
 
                         // if(price!==0){ 
                         //     item['totalPrice'] = vcui.number.addComma(price) + '<em>원11</em>';
@@ -551,8 +647,8 @@ $(function(){
                         /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                         item.ecProduct = JSON.stringify(recommendTempProduct);
 
-
-                        console.log("iteem %o",item);
+                        //console.log("iteem %o",item);
+                        /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
 
                         return item;
                     });
@@ -587,6 +683,24 @@ $(function(){
                 $('body').vcLazyLoaderSwitch('reload', $context.find('.ui_exhib_carousel'));
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         function errorRequest(err){
@@ -748,6 +862,22 @@ $(function(){
         }
         //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // 많이 구매하는 제품 화면 렌더링
         function buildRankBuyProduct(result){
 
@@ -761,12 +891,18 @@ $(function(){
                     var obsMemberPrice = parseInt(item['obsMemberPrice'] || "0");
                     var obsDiscountPrice = parseInt(item['obsDiscountPrice'] || "0");
 
-                    var price = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
-                    if(price!==0){ 
-                        item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
-                    }else{
-                        item['totalPrice'] = null;
-                    }
+                    var totalPrice = obsOriginalPrice - obsMemberPrice - obsDiscountPrice;
+
+                    item['obsOriginalPrice'] = obsOriginalPrice;
+                    item['obsMemberPrice'] = obsMemberPrice;
+                    item['obsDiscountPrice'] = obsDiscountPrice;
+                    item['totalPrice'] = totalPrice;
+
+                    // if(price!==0){ 
+                    //     item['totalPrice'] = vcui.number.addComma(price) + '<em>원</em>';
+                    // }else{
+                    //     item['totalPrice'] = null;
+                    // }
                     item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
                     // item['modelDisplayName'] = vcui.string.stripTags(item['modelDisplayName']);
 
