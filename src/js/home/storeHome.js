@@ -99,14 +99,6 @@ var exhibitionTmpl = '{{#each obj in list}}\n'+
 
 
 
-
-
-
-
-
-
-
-
 //추천 기획전 : 제품 슬라이드
 var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '   <li>\n'+
@@ -124,7 +116,7 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '                   <div class="price-area">\n'+
     '                       <div class="total">\n'+
     '                           <em class="blind">판매가격</em>\n'+
-    '                           <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원111</em></span>\n'+
+    '                           <span class="price">{{ vcui.number.addComma(obj.obsOriginalPrice) }}<em>원</em></span>\n'+
     '                       </div>\n'+
     '                   </div>\n'+
 
@@ -151,17 +143,6 @@ var exhibitionProductTmpl = '{{#each obj in list}}\n'+
     '       </a>\n'+
     '   </li>\n'+
     '{{/each}}';
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -195,7 +176,7 @@ var newFullItemTmpl = '<li class="slide-conts ui_carousel_slide img-type">\n'+
 
                         /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
     '                   {{#if totalPrice == obsOriginalPrice}}\n'+
-    '                       <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{ vcui.number.addComma(obsOriginalPrice) }}{{/if}}<em>원1111</em></div>\n'+
+    '                       <div class="total">{{#if totalPrice}}<span class="blind">판매가격</span>{{ vcui.number.addComma(obsOriginalPrice) }}{{/if}}<em>원</em></div>\n'+
 
     '                   {{#else}}\n'+
 
