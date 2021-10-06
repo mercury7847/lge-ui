@@ -67,7 +67,7 @@
         };
     
         var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가
+        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
                 '<div class="store-info-list ui_marker_selector">'+
@@ -78,7 +78,7 @@
                         '</div>'+
                     '</div>'+
                     '<div class="info-wrap">'+
-                        '<a href="#">'+
+                        '<a href="#" class="shop-map-link">'+
                             '<div class="tit-wrap">'+
                                 '<p class="name">'+
                                     '<span class="blind">매장명</span>'+
@@ -430,8 +430,8 @@
                     },400);
                 });
                 // BTOCSITE-4785 e
-    
-                self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
+                // BTOCSITE-4785 : a link  .shop-map-link 로 변경
+                self.$defaultListLayer.on('click', 'li > .ui_marker_selector .shop-map-link', function(e){
                     var id = $(this).closest('li').data('id');
                     self.$map.selectedMarker(id, this);
     
