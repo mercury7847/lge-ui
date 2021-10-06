@@ -851,248 +851,283 @@
 
 // BTOCSITE-77 : app tab 작업중
 @import "../../modules/slick";
-
-.app-tabs-wrap{
-    position:relative;
-    background-color: #fff;
-    padding:48px 0;
-    @include mobile{
-        padding:20px 16px;
-    }
-    .app-tabs-inner{
+.app-tab-section{
+    .app-tab-area{
         position:relative;
-        max-width: 1380px;
-        margin:0 auto;
-    }
-    .tab-menu-item{
-        display: inline-block;
-        width: 90px;
-        
-    }
-    .icon-wrap{
-        display: flex;
-        width: 90px;
-        height: 90px;
-        background: #fff;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-        & + .txt{
-            display: block;
-            text-align:center; 
-            font-size:18px;
-            margin-top: 8px;
-            font-weight: 500;
-            line-height: 1.3;
-        }
         @include mobile{
-            width: 50px;
-            height: 50px;
-            & + .txt{
-                font-size:13px;
+            padding:0;
+        }
+        .menu-slide-block{
+            position:relative;
+            background-color: #fff;
+            padding:48px 0;
+            @include mobile {
+                padding:20px 0 23px;
+            }
+            .tabs-wrap{
+                padding:0 202px 0 80px;
+                max-width: 1380px;
+                margin:0 auto;
+                @include mobile{
+                    padding:0 70px 0 0;
+                }
+            }
+            .menu-slide-nav{
+                .slick-arrow.slick-prev{
+                    left:-32px;
+                    &:before {
+                        // background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg); //교체 
+                    }
+                }
+                .slick-arrow.slick-next{
+                    right:-32px;
+                    &:before {
+                        // background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg); //교체 
+                    }
+                }
+                .menu-item{
+                    display: inline-block;
+                    width: 90px;
+                    
+                }
+            }
+            &.is-active{
+                box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
+                .btn-allview{
+                    .icon-wrap{
+                        background: #666;
+                    }
+                    .icon{
+                        &-all{
+                            background-image:url('/lg5-common/images/PRH/app/ic_close_64.png');
+                        }
+                    }
+                }
+                .menu-slide-nav{
+                    width: 100%;
+                    &:after{content:''; display:block; clear:both;}
+                    .menu-item{
+                        float:left;
+                        width:calc(100%/7);
+                        @include tablet{
+                            width:calc(100%/4);
+                        }
+                    }
+                }
             }
         }
-    }
-    
-    .icon{
-        display: inline-block;;
-        width: 64px;
-        height: 64px;
-        @include mobile{
-            width: 32px;
-            height: 32px;
-            background-size:100%;
-        }
-        &-all{
-            background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
-        }
-        &-refrigerator{
-            background-image:url('/lg5-common/images/PRH/app/img_Refrigerator_64.png');
-        }
-        &-kimchiRefrigerator{
-            background-image:url('/lg5-common/images/PRH/app/img_KimchiRefrigerator_64.png');
-        }
-        &-wineCellar{
-            background-image:url('/lg5-common/images/PRH/app/img_WineCellar_80.png');
-        }
-        &-cooktop{
-            background-image:url('/lg5-common/images/PRH/app/img_Cooktop_64.png');
-        }
-        &-dishWasher{
-            background-image:url('/lg5-common/images/PRH/app/img_DishWasher_64.png');
-        }
-        &-lightWaveOven{
-            background-image:url('/lg5-common/images/PRH/app/img_LightWaveOven_80.png');
-        }
-        &-waterPurifier{
-            background-image:url('/lg5-common/images/PRH/app/img_WaterPurifier_80.png');
-        }
-        &-beerMaker{
-            background-image:url('/lg5-common/images/PRH/app/img_BeerMaker_64.png');
-        }
-        &-washer{
-            background-image:url('/lg5-common/images/PRH/app/img_Washer_64.png');
-        }
-        &-dryer{
-            background-image:url('/lg5-common/images/PRH/app/img_Dryer_64.png');
-        }
-        &-styler{
-            background-image:url('/lg5-common/images/PRH/app/img_Styler_64.png');
-        }
-        &-vacuumCleaner{
-            background-image:url('/lg5-common/images/PRH/app/img_VacuumCleaner_80.png');
-        }
-        &-aircon{
-            background-image:url('/lg5-common/images/PRH/app/img_AirConditioner_64.png');
-        }
-        &-airCleaner{
-            background-image:url('/lg5-common/images/PRH/app/img_AirCleaner_64.png');
-        }
-        &-dehumidifier{
-            background-image:url('/lg5-common/images/PRH/app/img_Dehumidifier_64.png');
-        }
-        &-ceillingFan{
-            background-image:url('/lg5-common/images/PRH/app/img_CeilingFan_64.png');
-        }
-    }
-    .btn-allview{
-        position:absolute;
-        right:0;
-        top:0;
-        z-index: 100;
         .icon-wrap{
-            background: linear-gradient(135deg, #fa263e, #fb5a72);
+            display: inline-flex;
+            width: 90px;
+            height: 90px;
+            background: #fff;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            & + .txt{
+                display: block;
+                text-align:center; 
+                font-size:18px;
+                margin-top: 8px;
+                font-weight: 500;
+                line-height: 1.3;
+            }
+            @include mobile{
+                width: 50px;
+                height: 50px;
+                & + .txt{
+                    font-size:13px;
+                }
+            }
         }
-    }
-    &.is-active{
-        box-shadow: 4px 4px 15px 0 rgba(0, 0, 0, 0.1);
-        .tabs{
-            // white-space: initial;
+        
+        .icon{
+            display: inline-block;;
+            width: 64px;
+            height: 64px;
+            @include mobile{
+                width: 32px;
+                height: 32px;
+                background-size:100%;
+            }
+            &-all{
+                background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
+            }
+            &-refrigerator{
+                background-image:url('/lg5-common/images/PRH/app/img_Refrigerator_64.png');
+            }
+            &-kimchiRefrigerator{
+                background-image:url('/lg5-common/images/PRH/app/img_KimchiRefrigerator_64.png');
+            }
+            &-wineCellar{
+                background-image:url('/lg5-common/images/PRH/app/img_WineCellar_80.png');
+            }
+            &-cooktop{
+                background-image:url('/lg5-common/images/PRH/app/img_Cooktop_64.png');
+            }
+            &-dishWasher{
+                background-image:url('/lg5-common/images/PRH/app/img_DishWasher_64.png');
+            }
+            &-lightWaveOven{
+                background-image:url('/lg5-common/images/PRH/app/img_LightWaveOven_80.png');
+            }
+            &-waterPurifier{
+                background-image:url('/lg5-common/images/PRH/app/img_WaterPurifier_80.png');
+            }
+            &-beerMaker{
+                background-image:url('/lg5-common/images/PRH/app/img_BeerMaker_64.png');
+            }
+            &-washer{
+                background-image:url('/lg5-common/images/PRH/app/img_Washer_64.png');
+            }
+            &-dryer{
+                background-image:url('/lg5-common/images/PRH/app/img_Dryer_64.png');
+            }
+            &-styler{
+                background-image:url('/lg5-common/images/PRH/app/img_Styler_64.png');
+            }
+            &-vacuumCleaner{
+                background-image:url('/lg5-common/images/PRH/app/img_VacuumCleaner_80.png');
+            }
+            &-aircon{
+                background-image:url('/lg5-common/images/PRH/app/img_AirConditioner_64.png');
+            }
+            &-airCleaner{
+                background-image:url('/lg5-common/images/PRH/app/img_AirCleaner_64.png');
+            }
+            &-dehumidifier{
+                background-image:url('/lg5-common/images/PRH/app/img_Dehumidifier_64.png');
+            }
+            &-ceillingFan{
+                background-image:url('/lg5-common/images/PRH/app/img_CeilingFan_64.png');
+            }
         }
         .btn-allview{
+            position:absolute;
+            right:0;
+            top:0;
+            z-index: 100;
+            @include mobile{
+                right:16px;
+            }
             .icon-wrap{
-                background: #666;
+                background: linear-gradient(135deg, #fa263e, #fb5a72);
             }
-            .icon{
-                &-all{
-                    background-image:url('/lg5-common/images/PRH/app/ic_close_64.png');
+        }
+        .menu-item{
+            width: 90px;
+            cursor: pointer;
+            &.on{
+                .icon-wrap{
+                    border:2px solid #000
+        
                 }
             }
         }
     }
-    .tabs-wrap{
-        max-width: 1098px;
-        margin:0 auto;
-    }
-    .tab-menu-item{
-        width: 90px;
-        cursor: pointer;
-        // & + li{
-        //     margin-left: 78px;
-        // }
-    }
-    .slick-current{
-        .icon-wrap{
-            border:2px solid #000
-
+    .app-smart-wrap{
+        background-color: #f4f4f4;
+        padding:120px 0 !important;
+        @include mobile{
+            padding: 0 !important;
         }
-    }
-}
-.app-smart-wrap{
-    background-color: #f4f4f4;
-    padding:120px 0 !important;
-    .app-smart-detail{
-        max-width: 1460px;
-        margin: 0 auto;
-        padding: 0 40px; 
-        li{
-            display:flex;
-            position: relative;
-            .detail-inner{
-                display:flex;
-                width: 100%;
-                flex-direction: row;
-                align-items: center;
-                .text-area{
-                    color:#000;
-                    padding-left:60px;
-                    .tit{
-                        font-size:32px;
-                        line-height: 1.63;
-                        font-weight: 500;
-                    }
-                    .desc{
-                        font-size:20px;
-                        line-height: 1.5;
-                        margin-top: 17px;
-                    }
-                }
-            }
-            &:nth-child(even){
-                .detail-inner{
-                    flex-direction: row-reverse;
-                }
-            }
-            & + li{
-                margin-top:-248px;
-            }
-            .detail-inner{
-                .image{
-                    width: 342px;
-                    height: 639px;
-                }
-            }
-        }
-    }
-    @include mobile{
-        padding: 0 !important;
         .app-smart-detail{
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 0 40px; 
             li{
-                .detail-inner, &:nth-child(even) .detail-inner{
-                    flex-direction: column;
-                }
+                display:flex;
+                position: relative;
                 .detail-inner{
-                    .image{
-                        width: 185px;
-                        height: 348.5px;
+                    display:flex;
+                    width: 100%;
+                    flex-direction: row;
+                    align-items: center;
+                    @include mobile{
+                        flex-direction: column;
+                    }
+                    .text-area{
+                        color:#000;
+                        padding-left:60px;
+                        @include mobile{
+                            text-align: center;
+                            padding-left:0;
+                        }
+                        .tit{
+                            font-size:32px;
+                            line-height: 1.63;
+                            font-weight: 500;
+                            @include mobile{
+                                font-size:18px;
+                            }
+                        }
+                        .desc{
+                            font-size:20px;
+                            line-height: 1.5;
+                            margin-top: 17px;
+                            @include mobile{
+                                font-size:15px;
+                            }
+                        }
+                    }
+                }
+                &:nth-child(even){
+                    .detail-inner{
+                        flex-direction: row-reverse;
+                        @include mobile{
+                            flex-direction: column;
+                        }
                     }
                 }
                 & + li{
-                    margin-top:0;
+                    margin-top:-248px;
+                    @include mobile{
+                       margin-top:50px;
+                    }
+                }
+                .detail-inner{
+                    .image{
+                        width: 342px;
+                        height: 639px;
+                        @include mobile{
+                            width: 185px;
+                            height: 348.5px;
+                        }
+                    }
                 }
             }
         }
     }
-}
-@include mobile{
-    .app-tabs-wrap{
-        width: 100%;
-    }
-    .app-tabs-wrap .tabs-wrap{
-        width: 100%;
-    }
-    .app-tabs-wrap{
-        .tabs{
-            display:flex !important;
-        } 
-        .tabs li{
-            width: calc(100%/5);
+    @include mobile{
+        .app-tabs-wrap{
+            width: 100%;
         }
-        .btn-tabs-menu{
-            position:relative;
-            display: inline-block;
-            width: calc(100%/5);
-            button{
-                position:absolute;
-                right:0;
-                top:0;
-                width: 50px;
-                height: 50px;
-            }
+        .app-tabs-wrap .tabs-wrap{
+            width: 100%;
         }
-        &.is-active{
+        .app-tabs-wrap{
             .tabs{
-                white-space: nowrap;
+                display:flex !important;
+            } 
+            .tabs li{
+                width: calc(100%/5);
+            }
+            .btn-tabs-menu{
+                position:relative;
+                display: inline-block;
+                width: calc(100%/5);
+                button{
+                    position:absolute;
+                    right:0;
+                    top:0;
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            &.is-active{
+                .tabs{
+                    white-space: nowrap;
+                }
             }
         }
     }
