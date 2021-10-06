@@ -1045,7 +1045,7 @@
                         @include font-small;
                         color: $color-gray-5;
                     }
-                    /* BTOCSITE-5181 */
+                    /* BTOCSITE-5781 */
                     .price {
                         display:inline-block;
                         @include font-small;
@@ -1071,7 +1071,7 @@
                             display: block;
                         }
                     }
-                    /* //BTOCSITE-5181 */
+                    /* //BTOCSITE-5781 */
                 }
                 &.total {
                     .text {
@@ -1229,9 +1229,11 @@
                         }
                     }
                     &.member {
+                        /* BTOCSITE-5781 */
                         .price-info{
                             padding-right:0;
                         }
+                        /* //BTOCSITE-5781 */
                         .ui_accord_content {
                             padding-top: 16px;
                         }
