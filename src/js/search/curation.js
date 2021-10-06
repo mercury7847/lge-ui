@@ -243,6 +243,7 @@ var Curation = (function() {
 
             self.smartFilterCnt = data.smartFilterList.count || 0;
             var smartFilterData = data.smartFilterList.data;
+            console.log("smartFilterData %o",smartFilterData);
             if(smartFilterData && smartFilterData.length > 0) {
                
                 var isOpen = self.$smartFilterList.data('open');
@@ -269,11 +270,11 @@ var Curation = (function() {
                     }
                 });
                 // BTOCSITE-1716
-                // self.$smartFilterList.show();
+                self.$smartFilterList.addClass("show");
             } else {
                 self.removeSelectSmartFilter();
                 // BTOCSITE-1716
-                // self.$smartFilterList.hide();
+                self.$smartFilterList.removeClass("show");
             }
 
             self.resetSmartFilterMoreButton(self.$smartFilterMore.data('open'));

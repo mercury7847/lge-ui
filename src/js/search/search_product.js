@@ -883,7 +883,11 @@ if ('scrollRestoration' in history) {
 
 
                         self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
-                        if(isSmartFiler && !self.$layFilter.hasClass('smart-type')) self.$layFilter.addClass('smart-type');
+                        // 스마트 필터일경우 layFilter pc 타이틀
+                        if(self.$layFilter.hasClass('smart-type')) {
+                            var txt = lgkorUI.getParameterByName('search');
+                            $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세필터');
+                        }
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
                         if(vcui.detect.isMobile){
                             self.filterLayer.openFilterSectionAll(2);
