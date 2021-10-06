@@ -762,15 +762,22 @@
                     self.requestModal(this);
                 });
                 */
-
                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
                 self.$copy.on('click',function() {
-                        self.copyClicked = true;
-                        vcui.dom.copyToClipboard(($(this).text()), {
-                            onSuccess: function () {
-                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
-                            }
-                        });
+                    var txt = $(this).text();
+                    lgkorUI.confirm('모델명을 복사하시겠습니까?', {
+                        title: "",
+                        cancelBtnName: "취소",
+                        okBtnName: "복사",
+                        ok:function(){
+                            vcui.dom.copyToClipboard(txt, {
+                                container:this,
+                                onSuccess: function () {
+                                    $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                                }
+                            });
+                        }
+                   });
                 });
 
                 //데스크탑용 갤러리 이미지 클릭
@@ -884,6 +891,7 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        $('.store-counsel-banner').show(); //BTOCSITE-5727
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -891,6 +899,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경

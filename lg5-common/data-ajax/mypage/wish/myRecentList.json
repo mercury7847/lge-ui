@@ -22,13 +22,19 @@
                     "스펙1",
                     "스펙2"
                 ],
-                "originalPrice":"5000000",
-                "price":"1500000",
+                "originalPrice":"7777",
+                "price":"7777",
                 "isWish":true,
                 "enableWish":true,
                 "pdpUrl": "#",
                 "obsBtnFlag":"enable"
             },
+
+
+
+
+
+
             {
                 "id":"pid00002",
                 "categoryId":"cate0002",
@@ -55,6 +61,13 @@
                 "pdpUrl": "#",
                 "obsBtnFlag":"enable"
             },
+
+
+
+
+
+
+
             {
                 "id":"pid00002",
                 "categoryId":"cate0002",
@@ -81,6 +94,13 @@
                 "pdpUrl": "#",
                 "obsBtnFlag":"enable"
             },
+
+
+
+
+
+
+
             {
                 "id":"pid00003",
                 "categoryId":"cate0003",
@@ -107,6 +127,13 @@
                 "pdpUrl": "#",
                 "obsBtnFlag":"disable"
             },
+
+
+
+
+
+
+
             {
                 "id":"pid00004",
                 "categoryId":"cate0004",
