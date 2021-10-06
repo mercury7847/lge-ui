@@ -194,10 +194,9 @@ var appInit = function() {
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
                     $(this).addClass('active');
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
+                    //$('#inp01').attr('readonly','readonly');
+                    //$('#inp02').attr('readonly','readonly');
+                    //$('.cell button').attr('disabled', true);
                     $('.info-req-box .qr-active').hide();
                     $('.info-req-box .qr').show();
                     $('p.comp').hide();
@@ -229,7 +228,7 @@ var appInit = function() {
         //리턴 된 바코드 값 입력
         LGEAPPreturnArBarcode = function(barcode) {
             // BTOCSITE-4086 210924 - S
-            console.log("바코드 리턴값 : " + barcode);
+            //console.log("바코드 리턴값 : " + barcode);
             if (barcode != null && barcode != "" && barcode != undefined) {
                 $('.info-req-box .qr').hide();
                 $('.info-req-box .qr-active').show();
@@ -240,19 +239,18 @@ var appInit = function() {
                     var salesModel = param.m;
                     //salesModel = salesModel.replace('.AKOR',''); BTOCSITE-4086 파라미터값 자르는 부분 제거 (barcode 값으로 전달된 url의 salesModel값 그대로 화면 노출되어도 이상 없음 - db 테이블에서 따로 체크함 )
                     var serialNum =  param.s;
-                    console.log("salesModel 값 : "+salesModel);
-                    console.log("S/N 값 : "+serialNum);
+                    //console.log("salesModel 값 : "+salesModel);
+                    //console.log("S/N 값 : "+serialNum);
                     
                     // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
                     $("#inp01").val(salesModel); // salesModel명
                     $("#inp02").val(serialNum); // 제조번호(S/N)
-
-                    $('.cell button').attr('disabled', false); // 확인 버튼 활성화
                 }else{
                     // 바코드
-                    $("#inp02").val(barcode); 
+                    $("#inp02").val(barcode);
                 }
-                $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
+                //$('.cell button').attr('disabled', false); // 확인 버튼 활성화
+                //$('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
             }
         }

@@ -358,7 +358,7 @@ var goAppUrl = function(path) {
                 self._preloadComponents();
             }
 
-            self._mobileInitPopup(); //2021-07-01 긴급 반영건
+            // self._mobileInitPopup(); //2021-09-30 삭제
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();

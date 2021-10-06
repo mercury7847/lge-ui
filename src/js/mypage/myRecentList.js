@@ -17,7 +17,7 @@
                         '{{#if priceFlag=="Y"}}' +
 
                             /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
-                            '{{#if price == 0}}' +
+                            '{{#if price == originalPrice}}' +
                                 '<span class="blind">구매가격</span>' +
                                 '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' +
 

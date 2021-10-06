@@ -59,15 +59,15 @@
                 <!-- //2021-02-25 크레마 리뷰 -->
             </div>
             <!-- // 리뷰 별점 영역 -->
-        </div><!-- 210331 수정 [.hidden-sm 추가] -->
+        </div><!-- 210331 수정 [.hidden-sm 추가] -->\
+        <!-- BTOCSITE-3679 오브제컬렉션 PDP 배너 위치 확인 요청 -->
+        <div class="my-objet">
+            <a href="#"><span>나만의 오브제컬렉션 체험하고 구매하기</span></a>
+        </div>
+        <!-- //BTOCSITE-3679 오브제컬렉션 PDP 배너 위치 확인 요청 -->
         <div class="product-detail-option">
             <!-- Sibling 정보 선택 -->
             <div class="sibling-option">
-                <!-- 210408 나만만의오브제체험구매 영역 추가 -->
-                <div class="my-objet">
-                    <a href="#"><span>나만의 오브제컬렉션 체험하고 구매하기</span></a>
-                </div>
-                <!-- //210408 나만만의오브제체험구매 영역 추가 -->
                 <div class="sibling-color">
                     <div class="text">색상</div>
                     <div class="select-option radio color">
@@ -557,17 +557,41 @@
                 </dl>
             </div>
             <!-- // 구성품을 포함하는 제품 -->
-
             <!-- 구매불가 -->
-            <div class="box non-purchase">
+            <!-- <div class="box non-purchase">
                 <span class="text">해당제품은 온라인에서 판매하지 않습니다.</span>
-            </div>
+            </div> -->
             <!-- // 구매불가 -->
             <!-- 구매불가 - 단종 -->
-            <div class="box non-purchase">
+            <!-- <div class="box non-purchase">
                 <span class="text">해당제품은 판매가 종료되었습니다.</span>
-            </div>
+            </div> -->
             <!-- // 구매불가 - 단종 -->
+
+            <!-- BTOCSITE-5960 제품 상태별 메세지 노출요청 s -->
+            <!-- 단종 (OBS) -->
+            <div class="box non-purchase">
+                <p class="text">
+                    단종 제품입니다.<br>
+                    매장 상담 예약 서비스를 통해 베스트샵을 방문하시면,<br>
+                    고객님께 최적의 제품을 추천해드리겠습니다.
+                </p>
+            </div>
+            <!-- 품절 (OBS) -->
+            <div class="box non-purchase">
+                <p class="text">
+                    일시품절된 제품입니다.
+                </p>
+            </div>
+            <!-- 판매안함 (obs_cart_flag가 N인 경우), 혼매전용 -->
+            <div class="box non-purchase">
+                <p class="text">
+                    LGE.COM에서는 제품정보만 제공하고 있습니다.<br>
+                    매장 상담 예약 서비스를 통해 베스트샵을 방문하시면,<br>
+                    고객님께 최적의 제품을 추천해드리겠습니다.
+                </p>
+            </div>
+            <!-- BTOCSITE-5960 제품 상태별 메세지 노출요청 e -->
 
             <!-- 케어십 서비스 -->
             <div class="careship-service">
@@ -1331,9 +1355,7 @@
                 <ul>
                     <!-- BTOCSITE-2551 PDP > 매장상담 예약 > 코드에 따른 분기처리 -->
                     <!-- 구매탭 : 매장 상담 신청 -->
-                    <li class="reservation store-counsel">
-                        <a href="#" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">매장 상담 예약</a>
-                    </li>
+                    <!-- BTOCSITE-5727 //매장 상담 예약 삭제 -->
                     <!-- 렌탈탭 : 렌탈 전화상담 예약 -->
                     <!-- <li class="reservation rental-counsel">
                         <a href="#rentalCounselPop" class="package" data-control="modal"><span>렌탈 전화상담 예약</span></a>
@@ -1373,6 +1395,15 @@
             <a href="" class="btn-link"><span>윙 체험존 위치보기</span></a>
         </div>
         <!-- // 210330 수정 [윙 체험존 위치 보기 추가] -->
+
+        <!-- BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) -->
+        <div class="store-counsel-banner">
+            <a href="https://www.google.com" data-pc-href="https://www.google.com" data-m-href="https://www.naver.com">
+                <img src="/lg5-common/images/KRP0008/img-banner-counsel.png" class="pc" alt="매장 상담 예약"> 
+                <img src="/lg5-common/images/KRP0008/img-banner-counsel-m.svg" class="mobile" alt="매장 상담 예약"> 
+            </a>
+        </div>
+        <!-- //BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) -->
 
         <!-- BTOCSITE-5234 추석 연휴 기간 안내팝업 진행요청 -->
         <div class="box ex-info">
