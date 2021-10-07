@@ -942,19 +942,15 @@ if ('scrollRestoration' in history) {
                             });
                         }
 
-
                         if(isSmartFiler) {
                             $(".lay-filter .filter-head h1").html('필터<span>'+data.smartFilterList.count+'개 제품</span>');
                         } else {
                             $(".lay-filter .filter-head h1").html('상세 필터');
                         }
                         
-
                         if(!isSmartFiler) {
                             self.$layFilter.removeClass('smart-type')
                         }
-
-                        console.log("postData %o",data)
                     
                         // 스마트 필터일경우 layFilter pc 타이틀
                         if(isSmartFiler && self.$layFilter.hasClass('smart-type')) {
