@@ -214,7 +214,8 @@ if ('scrollRestoration' in history) {
 
                         if(savedData.href) self.scrollHref = savedData.href;
                         if(savedData.search) self.$inputSearch.val(savedData.search);
-                        self.requestSearchData(self.savedFilterData.search,self.savedFilterData.force,self.savedFilterData, true);
+                        // self.requestSearchData(self.savedFilterData.search,self.savedFilterData.force,self.savedFilterData, true);
+                        self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                         var value = self.$contentsSearch.attr('data-search-value');
@@ -868,10 +869,7 @@ if ('scrollRestoration' in history) {
                             });
                         }
                            
-                
                         if(isSmartFiler) {
-
-                            console.log("filterQueryData 111 %o",filterQueryData);
                             if(!filterQueryData.smartFilter) {
                                 $(".lay-filter .filter-head h1").html('필터<span>'+data.smartFilterList.count+'개 제품</span>');
                             } 
@@ -880,14 +878,18 @@ if ('scrollRestoration' in history) {
                             $(".lay-filter .filter-head h1").html('상세 필터');
                         }
 
-
-
-                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
+                        if(!isSmartFiler) {
+                            self.$layFilter.removeClass('smart-type')
+                        }
+                    
                         // 스마트 필터일경우 layFilter pc 타이틀
-                        if(self.$layFilter.hasClass('smart-type')) {
+                        if(isSmartFiler && self.$layFilter.hasClass('smart-type')) {
                             var txt = lgkorUI.getParameterByName('search');
                             $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세필터');
                         }
+
+                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
+
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
                         if(vcui.detect.isMobile){
                             self.filterLayer.openFilterSectionAll(2);
