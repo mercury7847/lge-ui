@@ -5,11 +5,11 @@
 
 // 무인매장
 .contents.unmanned-store-wrap {
-    @import "unmanned-store";
+	@import "unmanned-store";
 }
 // 온라인견적요청서 0624
 .contents.sysaircon-form-wrap {
-    @import "sysaircon-form";
+	@import "sysaircon-form";
 }
 
 
@@ -83,7 +83,7 @@ img{
 	// max-width:1920px;
 	margin:0 auto;
 	padding-top: 20px;
-    border-top: 1px solid #ddd;
+	border-top: 1px solid #ddd;
 	@include mobile {
 		// padding-bottom:171px;
 		padding-top: 0px;
@@ -131,7 +131,7 @@ img{
 			width: 100%;
 			max-width: 1760px;
 			background-color: #fff;
-    		margin: 0 auto;
+			margin: 0 auto;
 			padding:0 30px;
 			> a {
 				display: block;
@@ -182,13 +182,14 @@ img{
 					top:50%;
 					left:50%;
 					width:100%;
-					height:auto;
+					// BTOCSITE-2193
+					height:100%;
 					transform:translate(-50%,-50%);
 					-webkit-transform:translate(-50%,-50%);
 					@include mobile {
 						top:50%;
 						left:50%;
-						height:auto;
+						height: 100%;
 						transform:translate(-50%,-50%);;
 						-webkit-transform:translate(-50%,-50%);;
 					}
@@ -229,17 +230,56 @@ img{
 			.text-cont {
 				text-align: center;
 				padding: 15px 0 100px 0;
-				> h3 {
-					font-size: 40px;
-					line-height: 50px;
-					margin-bottom: 10px;
+				// BTOCSITE-2193 s
+				.title{
+					border:1px solid red;
+					.only-desktop{
+						display: block;
+						font-size: 40px;
+						line-height: 50px;
+						margin-bottom: 10px;
+						@media screen and (max-width: 1023px) {
+							font-size: 30px;
+							line-height: 40px;
+						}
+						@include mobile {
+							display: none;
+						}
+					}
+					.only-mobile{
+						display: none;
+						@include mobile {
+							display: block;
+							overflow: hidden;
+							max-height: 58px;
+							font-size: 24px;
+							line-height: 1.21;
+							color: #000 !important;
+						}
+					}
 				}
-				> p {
+				> p.desc {
 					font-size: 16px;
-    				font-weight: 400;
-					margin-bottom: 20px;
-					line-height: 22px;
+					font-weight: 400;
+					margin-bottom: 24px;
+					line-height: 24px;
+					span{
+						display: block;
+					}
+					&.only-desktop{
+						display: block;
+						@include mobile {
+							display: none;
+						}
+					}
+					&.only-mobile{
+						display: none;
+						@include mobile {
+							display: block;
+						}
+					}
 				}
+				// BTOCSITE-2193 e
 				.btn-wrap {
 					a {
 						margin: 0 4px;
@@ -254,15 +294,16 @@ img{
 					height: 34.43181818181818vw;
 				}
 			}
-
-			@media screen and (max-width: 1023px) {
-				.text-cont {
-					> h3 {
-						font-size: 30px;
-						line-height: 40px;
-					}
-				}
-			}
+			// BTOCSITE-2193 s
+			// @media screen and (max-width: 1023px) {
+			// 	.text-cont {
+			// 		> h3 {
+			// 			font-size: 30px;
+			// 			line-height: 40px;
+			// 		}
+			// 	}
+			// }
+			// BTOCSITE-2193 e
 
 			@include mobile {
 				height:auto;
@@ -342,6 +383,7 @@ img{
 						color: #000 !important;
 						font-weight: 400;
 						margin-bottom: 10px;
+
 					}
 					.btn-wrap {
 						margin-top: 10px;
@@ -644,7 +686,7 @@ img{
 					padding:48px 32px;
 					font-size:0;
 					display: flex;
-    				align-items: center;
+					align-items: center;
 					@include mobile {
 						height:176px;
 						padding:40px 30px 40px 108px;
@@ -742,8 +784,8 @@ img{
 							li {
 								display:block;
 								width:100%;
-								 a {
-									 padding:0;
+								a {
+									padding:0;
 									.item-box {
 										position:relative;
 										height:100%;
@@ -779,10 +821,10 @@ img{
 											}
 										}
 									}
-								 }
-								 & + li {
-									 margin-top:12px;
-								 }
+								}
+								& + li {
+									margin-top:12px;
+								}
 							}
 						}
 					}
@@ -1111,21 +1153,21 @@ img{
 				display: none !important;
 			}
 			.slide-content {
-			   //@at-root: hidden;
-			//    margin-left: -12px;
-			//    margin-right: -12px;
-			   @include mobile {
-				// margin-left: -2px;
-				// margin-right: -2px;
-			}
-			   .slide-track {
-				   .slide-conts {
-					   position: relative;
-					   padding: 0 12px;
-					   @include mobile {
-						   padding: 0 6px;
-					   }
-					   .thumb {
+				//@at-root: hidden;
+				//    margin-left: -12px;
+				//    margin-right: -12px;
+				@include mobile {
+					// margin-left: -2px;
+					// margin-right: -2px;
+				}
+				.slide-track {
+					.slide-conts {
+						position: relative;
+						padding: 0 12px;
+						@include mobile {
+							padding: 0 6px;
+						}
+						.thumb {
 							position:relative;
 							border-radius:8px;
 							box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5);
@@ -1146,8 +1188,8 @@ img{
 							@include mobile {
 								box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 							}
-					   }
-					   .text-area {
+						}
+						.text-area {
 							display:none;
 							position: absolute;
 							right: 0;
@@ -1189,7 +1231,7 @@ img{
 								display: none;
 								margin-top: 12px;
 							}
-					   }
+						}
 						&.ui_carousel_current {
 							@include mobile {
 								.text-area {
@@ -1261,9 +1303,9 @@ img{
 								}
 							}
 						} 
-				   }
-			   }
-		   }
+					}
+				}
+			}
 		}
 	}
 	.br {
@@ -1290,104 +1332,104 @@ img{
 
 // 20210616 메인 컨텐츠 리뉴얼
 // .mdevice {
-	@include mobile {
-		.main-wrap {
-			.scene.scene-renew {
-				height:auto;
-				padding: 16px;
-				background: none !important;
-				> a {
-					padding-bottom: 118.9014%;
-					height: 0;
-				}
-				.img {
-					width: 100% !important;
-					height: 100% !important;
-					margin: 0 !important;
-					overflow: hidden;
-					&.video {
-						// position: static;
-						// height: 100% !important;
-						// min-height: 300px !important;
-						video {
-							position: relative !important;
-							height: 100%;
-							top: 0 !important;
-							left: 0 !important;
-							transform: none !important;
-						}
-						img {
-							height: 100% !important;
-						}
-					}
-					&:before {
-						display: none;
+@include mobile {
+	.main-wrap {
+		.scene.scene-renew {
+			height:auto;
+			padding: 16px;
+			background: none !important;
+			> a {
+				padding-bottom: 118.9014%;
+				height: 0;
+			}
+			.img {
+				width: 100% !important;
+				height: 100% !important;
+				margin: 0 !important;
+				overflow: hidden;
+				&.video {
+					// position: static;
+					// height: 100% !important;
+					// min-height: 300px !important;
+					video {
+						position: relative !important;
+						height: 100%;
+						top: 0 !important;
+						left: 0 !important;
+						transform: none !important;
 					}
 					img {
-						position: relative;
-						top: 0;
-						left: 0;
-						height: auto;
-						transform: none;
+						height: 100% !important;
 					}
 				}
-				.text-cont {
+				&:before {
+					display: none;
+				}
+				img {
 					position: relative;
-					top: auto;
+					top: 0;
 					left: 0;
-					margin-top: -1px;
-					padding: 13px 10px 0 10px;
-					text-align: left;
-					margin-bottom: 12px;
-					background-color: #fff;
-					.title {
-						overflow: hidden;
-						max-height: 58px;
-						font-size: 24px;
-						line-height: 1.21;
-						color: #000 !important;
-					}
-					.desc {
-						overflow: hidden;
-						max-height: 36px;
-						margin-top: 9px;
-						font-size: 13px;
-						line-height: 1.38;
-						color: #000 !important;
-						font-weight: 400;
-					}
+					height: auto;
+					transform: none;
 				}
-				.text-link {
-					top: 37px;
-					bottom: auto !important;
-					right: 32px;
-					>.a {
-						display: none;
-					}
-					.bi-svg .lg-bi-main {
-						//max-width: 130px;
-					}
-				}
-				.btn-wrap {
-					margin-top: 10px;
-					margin-left: 10px;
-					.size-main {
-						min-width: 88px;
-						height: 36px;
-						padding: 3px 19px;
-						margin-right: 2px;
-						border-radius: 21px;
-						line-height: 1.62;
-						> span {
-							font-size: 13px;
-							font-weight: 500;
-						}
-					}
-				}
-				// & + .scene {
-				// 	margin-top: 28px;
-				// }
 			}
+			.text-cont {
+				position: relative;
+				top: auto;
+				left: 0;
+				margin-top: -1px;
+				padding: 13px 10px 0 10px;
+				text-align: left;
+				margin-bottom: 12px;
+				background-color: #fff;
+				.title {
+					overflow: hidden;
+					max-height: 58px;
+					font-size: 24px;
+					line-height: 1.21;
+					color: #000 !important;
+				}
+				.desc {
+					overflow: hidden;
+					max-height: 36px;
+					margin-top: 9px;
+					font-size: 13px;
+					line-height: 1.38;
+					color: #000 !important;
+					font-weight: 400;
+				}
+			}
+			.text-link {
+				top: 37px;
+				bottom: auto !important;
+				right: 32px;
+				>.a {
+					display: none;
+				}
+				.bi-svg .lg-bi-main {
+					//max-width: 130px;
+				}
+			}
+			.btn-wrap {
+				margin-top: 10px;
+				margin-left: 10px;
+				.size-main {
+					min-width: 88px;
+					height: 36px;
+					padding: 3px 19px;
+					margin-right: 2px;
+					border-radius: 21px;
+					line-height: 1.62;
+					> span {
+						font-size: 13px;
+						font-weight: 500;
+					}
+				}
+			}
+			// & + .scene {
+			// 	margin-top: 28px;
+			// }
 		}
 	}
+}
 //}
