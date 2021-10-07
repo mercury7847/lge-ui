@@ -898,14 +898,28 @@ if ('scrollRestoration' in history) {
                                 // item.unfold_flag = 'N';
                             });
                         }
-                        
-                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
 
+
+                        if(isSmartFiler) {
+                            $(".lay-filter .filter-head h1").html('필터<span>'+data.smartFilterList.count+'개 제품</span>');
+                        } else {
+                            $(".lay-filter .filter-head h1").html('상세 필터');
+                        }
+                        
+
+                        if(!isSmartFiler) {
+                            self.$layFilter.removeClass('smart-type')
+                        }
+
+                        console.log("postData %o",data)
+                    
                         // 스마트 필터일경우 layFilter pc 타이틀
-                        if(self.$layFilter.hasClass('smart-type')) {
+                        if(isSmartFiler && self.$layFilter.hasClass('smart-type')) {
                             var txt = lgkorUI.getParameterByName('search');
                             $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세필터');
                         }
+
+                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
 
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
                         if(vcui.detect.isMobile){
