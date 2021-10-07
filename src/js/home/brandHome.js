@@ -947,7 +947,54 @@
         $window.trigger('breakpointchange');
         window.resizeScene = render;
 
-         
+        // BTOCSITE-77
+        var slideConfig = {
+            infinite: false,
+            slidesToShow: 7,
+            slidesToScroll: 7,
+            focusOnSelect: true,
+            swipeToSlide: true,
+            responsive: [
+                {
+                    breakpoint:1025,
+                    settings:{
+                        infinite: false,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        focusOnSelect: true,
+                        swipeToSlide: true,
+                        arrows:false,
+                    }
+                }
+            ]
+        };
+        $('.menu-slide-nav').not('.slick-initialized').slick(slideConfig)
+
+        $('.btn-allview').on('click', function(e){
+           var $parent = $(e.currentTarget).parents('.menu-slide-block');
+           if(!$parent.hasClass('is-active')){
+               $parent.addClass('is-active');
+               $(e.currentTarget).children('.txt').text('닫기');
+               $('.menu-slide-nav .slick-arrow').hide()
+               $('.menu-slide-nav.slick-initialized').slick('unslick')
+            }else{
+                $parent.removeClass('is-active');
+                $(e.currentTarget).children('.txt').text('전체보기');
+                $('.menu-slide-nav .slick-arrow').show()
+                $('.menu-slide-nav').not('.slick-initialized').slick(slideConfig)
+           }
+    
+        })
+
+        $('.app-tab-content .tab-cont').hide();
+        $('.menu-slide-nav .menu-item a').click(function () {
+            console.log(this.hash);
+            $('.app-tab-content .tab-cont').hide().filter(this.hash).show();
+            $('.menu-slide-nav .menu-item').removeClass('on');
+            $(this).parent().addClass('on');
+            return false;
+        }).filter(':eq(0)').click();
+        // BTOCSITE-77
 
 });
     
