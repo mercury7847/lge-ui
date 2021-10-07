@@ -934,6 +934,15 @@
                 focusOnSelect: true,
                 responsive: [
                     {
+                        breakpoint:1024,
+                        settings:{
+                            infinite: false,
+                            slidesToShow: 5,
+                            slidesToScroll: 5,
+                            focusOnSelect: true,
+                        }
+                    },
+                    {
                         breakpoint:768,
                         settings:{
                             infinite: false,
@@ -953,15 +962,20 @@
                    $parent.addClass('is-active');
                    $(e.currentTarget).children('.txt').text('닫기');
                    $('.menu-slide-nav .slick-arrow').hide()
-                   $('.menu-slide-nav.slick-initialized').slick('unslick')
+                   $('.menu-slide-nav.slick-initialized').slick('unslick');
                 }else{
                     $parent.removeClass('is-active');
                     $(e.currentTarget).children('.txt').text('전체보기');
                     $('.menu-slide-nav .slick-arrow').show()
                     $('.menu-slide-nav').not('.slick-initialized').slick(slideConfig)
-               }
-        
+                }
+                
             })
+            
+            if(window.innerWidth < 768){
+                var dimmed = $('<span class="white-dimmed"></span>');
+                $('.btn-allview').after(dimmed)
+            }
     
             $('.app-tab-content .tab-cont').hide();
             $('.menu-slide-nav .menu-item a').click(function () {
@@ -973,6 +987,15 @@
             }).filter(':eq(0)').click();
         }
         smartTabFn();
+
+        // 앱 다운안내 슬라이드
+        $('.download-guide-slide').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        })
         // BTOCSITE-77
 
 

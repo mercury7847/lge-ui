@@ -852,10 +852,29 @@
 // BTOCSITE-77 : app tab 작업중
 @import "../../modules/slick";
 .app-tab-section{
+    .visual-img-solo{
+        width: 100%;
+        img{width: 100%;}
+        .mobile-only{ display: none;}
+        @include mobile{
+            .pc-only{display:none}
+            .mobile-only{display:block;}
+        }
+    }
     .app-tab-area{
         position:relative;
         @include mobile{
             padding:0;
+        }
+        .white-dimmed{
+            position:absolute;
+            right:85.5px;
+            top:0;
+            display: inline-block;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(225,225,225, 0), white);
+            z-index: 10;
         }
         .menu-slide-block{
             position:relative;
@@ -870,26 +889,37 @@
                 max-width: 1380px;
                 margin:0 auto;
                 @include mobile{
-                    padding:0 70px 0 16px;
+                    padding:0 85.5px 0 10px;
                 }
             }
             .menu-slide-nav{
                 .slick-arrow.slick-prev{
                     left:-32px;
+                    width: 48px;
+                    height: 48px;
                     &:before {
                         box-shadow: none;
+                        background-image:url('/lg5-common/images/PRH/app/ic_calender_prev_48.svg');
+                        width: 48px;
+                        height: 48px;
                     }
                 }
                 .slick-arrow.slick-next{
                     right:-32px;
+                    width: 48px;
+                    height: 48px;
                     &:before {
                         box-shadow: none;
+                        background-image:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg');
+                        width: 48px;
+                        height: 48px;
                     }
                 }
                 .menu-item{
+                    position: relative;
                     display: inline-block;
                     width: 90px;
-                    cursor: pointer;
+                    text-align: center;
                     a{
                         display: inline-block;
                     }
@@ -907,11 +937,11 @@
                 top:0;
                 z-index: 100;
                 @include tablet {
-                    top:10px;
-                    right:30px;
+                    right:40px;
+                    top:0px;
                 }
                 @include mobile{
-                    right:16px;
+                    right: 16px;
                 }
                 .icon-wrap{
                     background: linear-gradient(135deg, #fa263e, #fb5a72);
@@ -920,18 +950,22 @@
             &.is-active{
                 box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
                 width: 100%;
+                &:after{content:''; display:block; clear:both;}
                 .menu-slide-nav{
                     margin-top:-47px;
-                }
-                &:after{content:''; display:block; clear:both;}
-                @include mobile{
-                    margin-top: -17.5px;
+                    @include mobile{
+                        margin-top: -17.5px;
+                    }
                 }
                 .btn-allview{
                     top:47px;
                     @include tablet {
-                        top:52px;
-                        right:30px;
+                        top:47px;
+                        right:40px;
+                    }
+                    @include mobile{
+                        top: 18px; 
+                        right:16px;
                     }
                     .icon-wrap{
                         background: #666;
@@ -946,9 +980,12 @@
                     float:left;
                     width:calc(100%/7);
                     margin-top: 47px;
+                    @include tablet {
+                        width:calc(100%/5);
+                    }
                     @include mobile{
                         width:calc(100%/4);
-                        margin-top: 17.5px
+                        margin-top: 17.5px;
                     }
                 }
             }
@@ -1041,9 +1078,9 @@
         .app-tab-content{
             .app-smart-wrap{
                 background-color: #f4f4f4;
-                padding:120px 0 !important;
+                padding:120px 0;
                 @include mobile{
-                    padding: 0 !important;
+                    padding: 62px 16px;
                 }
                 .app-smart-detail{
                     max-width: 1460px;
@@ -1059,6 +1096,9 @@
                             align-items: center;
                             @include mobile{
                                 flex-direction: column;
+                                br{
+                                    display: none;
+                                }
                             }
                             .text-area{
                                 color:#000;
@@ -1088,11 +1128,14 @@
                         &:nth-child(even){
                             .detail-inner{
                                 flex-direction: row-reverse;
-                                .text-area{
-                                    padding-right:60px;
-                                }
                                 @include mobile{
                                     flex-direction: column;
+                                }
+                                .text-area{
+                                    padding-right:60px;
+                                    @include mobile{
+                                        padding-right:0;
+                                    }
                                 }
                             }
                         }
@@ -1120,8 +1163,14 @@
     .search-banner-wrap{
         height: 80px;
         max-width: 1380px;
-        background: url('/lg5-common/images/PRH/app/banner-mini.png') no-repeat 0 0;
+        background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
         margin:100px auto 0;
+        @include mobile{
+            height: 120px;
+            background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
+            background-size: 100% auto;
+            margin:60px 16px 0;
+        }
         a{
             display: flex;
             align-items: center;
@@ -1133,14 +1182,128 @@
                 line-height: 1.5;
                 font-weight: 500;
                 position:relative;
-                &:before{
+                &:after{
                     content:'';
                     display:inline-block;
-                    width: 16px;
-                    height: 16px;
+                    width: 20px;
+                    height: 20px;
+                    background:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg') no-repeat 0 0;
+                    background-size:100% 100%;
+                    position: absolute;
+                    top:5px;
                 }
             }
         }
     }
-    
+    .download-guide-slide{
+        max-width: 1380px;
+        margin:0 auto;
+        .download-guide-item{
+            height: 440px;
+            @include mobile{
+                height: 480px;
+            }
+            &.bg-appDown{
+                background:url('/lg5-common/images/PRH/app/img_banner_01.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_01_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            &.bg-howTo{
+                background:url('/lg5-common/images/PRH/app/img_banner_02.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_02_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            &.bg-magazine{
+                background:url('/lg5-common/images/PRH/app/img_banner_03.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_03_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            .box{
+                padding:65px 0 0 120px; 
+                @include mobile { 
+                    padding: 36px 32px;
+                    text-align: center;
+                    .btn-area{
+                        .btn{
+                            height:43px;
+                            font-size:13px;
+                            line-height: 1;
+                        }
+                    }
+                }
+                .btn-download{
+                    width: 162px;
+                    height: 50px;
+                    display: inline-block;
+                    img{
+                        width: 100%;
+                    }
+                    & + .btn-download{margin-left: 4px;}
+                    @include mobile{
+                        width:139.5px;
+                        height: 43px;
+                    }
+                }
+                .text-wrap{
+                   .title h2{
+                       font-size:40px; 
+                       line-height: 56px;
+                       @include mobile { 
+                            font-size:24px;
+                            line-height: 1.38;
+                       }
+                    }
+                   .text{
+                       font-size:18px; 
+                       line-height: 28px;
+                       @include mobile { 
+                            font-size:14px;
+                            line-height: 1.57;
+                       }
+                    }
+                   .title + .text{
+                       margin-top: 10px;
+                       @include mobile{
+                           margin-top: 5.5px;
+                       }
+                    }
+                }
+            }
+            .text-wrap + .btn-area{
+                margin-top: 25px;
+                @include mobile {
+                    margin-top: 24.5px;
+                }
+            }
+        }
+        @include mobile {
+            .slick-dots{
+                bottom:-24px;
+            }
+        }
+        .slick-arrow.slick-prev{
+            left:-18px;
+            @include tablet{
+                left:0
+            }
+        }
+        .slick-arrow.slick-next{
+            right:-18px;
+            @include tablet{
+                right:0
+            }
+        }
+    }
+    .search-banner-wrap + .download-guide-slide{
+        margin-top: 100px;
+        @include mobile{
+            margin-top: 60px;
+        }
+    }
 }

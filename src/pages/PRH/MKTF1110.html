@@ -677,7 +677,12 @@
                                         <h3 class="title"><span>LG ThinQ 앱 하나로, 우리집 스마트한 생활</span></h3>
                                     </div>
                                     <div class="visual-img-solo">
-                                        <img src="/lg5-common/images/PRH/app/hero_banner.jpg" alt="">
+                                        <div class="pc-only">
+                                            <img src="/lg5-common/images/PRH/app/hero_banner.jpg" alt="">
+                                        </div>
+                                        <div class="mobile-only">
+                                            <img src="/lg5-common/images/PRH/app/hero_banner_m.jpg" alt="">
+                                        </div>
                                     </div>
 
                                     <!-- 스마트 탭 -->
@@ -721,7 +726,7 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <span class="tit">문 열림 알림 기능</span>
-                                                                    <p class="desc">냉장고 문 열림 알림 기능으로 에너지도 절약하고 <br>부모님댁의 문 열림 알림도 확인하세요.</p>
+                                                                    <p class="desc">냉장고 문 열림 알림 기능으로 에너지도 절약하고 <br />부모님댁의 문 열림 알림도 확인하세요.</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -732,7 +737,7 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <span class="tit">식품관리 기능</span>
-                                                                    <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난 <br>알림을 받아보세요.</p>
+                                                                    <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난  <br />알림을 받아보세요.</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1378,15 +1383,75 @@
                                         </a>
                                     </div>
                                     <!-- //연동기기 찾기 -->
+
+                                    <!-- ThinQ 앱 다운 안내 slide -->
+                                    <div class="download-guide-slide">
+                                        <div class="download-guide-item bg-appDown">
+                                            <div class="box">
+                                                <div class="text-wrap">
+                                                    <div id="title" class="title">
+                                                        <h2>LG ThinQ 앱 하나로 완벽한 <br>
+                                                            스마트 홈 제어</h2>
+                                                    </div>
+                                                    <div class="text ">
+                                                        집 밖에서 에어컨을 작동시키고, 집 안 공기 상태를 확인하며 말 한마디로 <br>
+                                                        다양한 가전을 제어하는 새로운 경험. <br> 
+                                                        LG ThinQ 앱을 지금 다운로드하세요.
+                                                    </div>
+                                                </div>
+                                                <div class="btn-area">
+                                                    <div class="btn-download">
+                                                        <a href="#"><img src="/lg5-common/images/icons/btn-google-play.png" alt="구글플레이 다운로드하기"></a>
+                                                    </div>
+                                                    <div class="btn-download">
+                                                        <a href="#"><img src="/lg5-common/images/icons/btn-app-store.png" alt="앱스토어 다운로드하기"></a>
+                                                        <a href="#"><span class="blind">앱스토어 다운로드하기</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="download-guide-item bg-howTo">
+                                            <div class="box ">
+                                                <div class="text-wrap">
+                                                    <div id="title" class="title">
+                                                        <h2>LG ThinQ 앱 설치 및 사용방법</h2>
+                                                    </div>
+                                                    <div class="text">
+                                                        구글 플레이 &amp; 앱 스토어에서 <br> LG ThinQ를 검색해서 다운 받아주세요.
+                                                    </div>
+                                                </div>
+                                                <div class="btn-area">
+                                                    <a href="#none" class="btn border"><span>사용방법 알아보기</span></a>                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="download-guide-item bg-magazine">
+                                            <div class="box ">
+                                                <div class="text-wrap">
+                                                    <div id="title" class="title">
+                                                        <h2>LG ThinQ 라이프 스타일</h2>
+                                                    </div>
+                                                    <div class="text ">
+                                                        ThinQ가 알아서 챙겨주니까! <br>
+                                                        한번도 느껴보지 못한 자유 Think Wise. Be Free.
+                                                    </div>
+                                                </div>
+                                                <div class="btn-area">
+                                                    <a href="#none" class="btn border"><span>자세히 알아보기</span></a>                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //ThinQ 앱 다운 안내 slide -->
                                     
-                                    @@include('./common/modules/bullet-list.html', {
+                                    <!-- @@include('./common/modules/bullet-list.html', {
                                         "topBorder" : true,
                                         "bulletTxt" : [
                                             "해당 기능 사용을 위해서는 스마트폰에 따라 구글 플레이(Android) 또는 앱 스토어(iOS)에서 'LG ThinQ' 앱을 설치하여, 제품을 Wi-Fi에 연결, 등록한 후, 초기 연결과 동일한 Wi-Fi 환경에서 제품이 동작되어야 합니다.",
                                             "일부 스마트폰에서는 기능 사용에 제약이 발생하거나 작동하지 않을 수 있으며, LG ThinQ 앱은 Android 운영체제 5.0 이상, iOS 운영체제 10.0 이상을 지원합니다.",
                                             "제공된 기능은 모델 및 앱 버전마다 다를 수 있으며, 자세한 사용 방법은 제품 사용 설명서를 참고해 주시기 바랍니다."
                                         ]
-                                    })
+                                    }) -->
                                    
                                 </div>
                             </div>
