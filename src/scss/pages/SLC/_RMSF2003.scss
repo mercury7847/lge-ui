@@ -1457,16 +1457,19 @@ br.pc-only {
 //BTOCSITE-1967
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
-    .care-plan {
-        .default-bottom-wrap,
-        .prd-select-wrap {
-            bottom:(0 + $statusBarHeight);
-            // .inner .total-info {
-            //     bottom:(0 + $statusBarHeight);
-            // }
-            .inner .contract-slide {
-                height: calc(80vh - 70px);
-                max-height: calc(80vh - 70px);
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .care-plan {
+            .default-bottom-wrap,
+            .prd-select-wrap {
+                bottom:(0 + $statusBarHeight);
+                // .inner .total-info {
+                //     bottom:(0 + $statusBarHeight);
+                // }
+                .inner .contract-slide {
+                    height: calc(80vh - 70px);
+                    max-height: calc(80vh - 70px);
+                }
             }
         }
     }

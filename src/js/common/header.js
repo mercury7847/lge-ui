@@ -323,6 +323,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             }
+
+            self._mobileGnbSticky(); //BTOCSITE-1967 2차 추가수정
         },
 
         _scroll: function(scrollTop){
@@ -744,25 +746,30 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var $scrollContainer = $('body');
             
-
-            if( $scrollContainer.hasClass('is-main-sticky-header')) {
-                if( scrollTop > 0) {
-                    $scrollContainer.addClass('header-fixed')
-                } else {
-                    $scrollContainer.removeClass('header-fixed')
-                }
-
-                if( scrollTop > 84) {
-                    if( direction === 1 ) {
-                        $scrollContainer.addClass('scroll-down')
-                    } else if (direction === -1) {
+            //BTOCSITE-1967 2차 추가수정 start
+            if( window.innerWidth < 768) {
+                if( $scrollContainer.hasClass('is-main-sticky-header')) {
+                    if( scrollTop > 0) {
+                        $scrollContainer.addClass('header-fixed')
+                    } else {
+                        $scrollContainer.removeClass('header-fixed')
+                    }
+    
+                    if( scrollTop > 84) {
+                        if( direction === 1 ) {
+                            $scrollContainer.addClass('scroll-down')
+                        } else if (direction === -1) {
+                            $scrollContainer.removeClass('scroll-down')
+                        }
+                    } else {
                         $scrollContainer.removeClass('scroll-down')
                     }
-                } else {
-                    $scrollContainer.removeClass('scroll-down')
+                    self.prevScrollTop = scrollTop;
                 }
-                self.prevScrollTop = scrollTop;
+            } else {
+                $scrollContainer.removeClass('scroll-down header-fixed')
             }
+            //BTOCSITE-1967 2차 추가수정 end
         },
 
         _mypageOver: function(){

@@ -459,28 +459,31 @@
 }
 
 .mobile:not(.app) {
-    .quick-menu {
-        z-index: 99; /* BTOCSITE-1967 */
-
-        &:before {
-            content:"";
-            background:transparent;
-            transition:background-color .6s;
-        }
-        &.dim {
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .quick-menu {
+            z-index: 99; /* BTOCSITE-1967 */
+    
             &:before {
-                display:block;
-                position:fixed;
-                top:0;
-                left:0;
-                width:100%;
-                height:100%;
-                background: rgba(0,0,0,0.7);
-            }   
-        }
-        .history-list {
-            .name {
-                color:#fff;
+                content:"";
+                background:transparent;
+                transition:background-color .6s;
+            }
+            &.dim {
+                &:before {
+                    display:block;
+                    position:fixed;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background: rgba(0,0,0,0.7);
+                }   
+            }
+            .history-list {
+                .name {
+                    color:#fff;
+                }
             }
         }
     }
@@ -490,8 +493,6 @@
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
     .quick-menu {
-        bottom: (48px + $statusBarHeight);
-
         @include mobile {
             bottom:(24px + $statusBarHeight);
         }

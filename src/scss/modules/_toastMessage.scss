@@ -53,8 +53,11 @@
 
 /* BTOCSITE-1967 */
 .mdevice:not(.app) {
-    .toast-message {
-        $statusBarHeight:70px;
-        bottom: (24px + $statusBarHeight);
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .toast-message {
+            $statusBarHeight:70px;
+            bottom: (24px + $statusBarHeight);
+        }
     }
 }
