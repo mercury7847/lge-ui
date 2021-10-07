@@ -451,19 +451,19 @@
                     @include font-small;
                     vertical-align: middle; 
                     &:before {
-                       display: inline-block;
-                       content: '';
-                       position: absolute;
-                       top: 50%;
-                       right: 0; 
-                       width: 1px;
-                       height: 12px;
-                       background-color: $color-border;
-                       transform: translateY(-50%);
-                   }
-                   &:last-child:before {
-                       display: none;
-                   }
+                        display: inline-block;
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        right: 0; 
+                        width: 1px;
+                        height: 12px;
+                        background-color: $color-border;
+                        transform: translateY(-50%);
+                    }
+                    &:last-child:before {
+                        display: none;
+                    }
                 }
             }
             .text-disabled {
@@ -787,6 +787,7 @@
 }
 
 // 케어솔루션 청약 신청
+// BTOCSITE-5938-170 : min 처리 테스트
 @import "RMSF9001";
 // 케어솔루션 청약 완료
 @import "RMSF9011";
