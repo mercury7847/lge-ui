@@ -1252,7 +1252,7 @@ if ('scrollRestoration' in history) {
                         }
 
                         // BTOCSITE-1716 
-                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                        if(!vcui.isEmpty(data.smartFilterList.data) || !vcui.isEmpty(data.curation)) {
                             self.$btnFilter.hide();
                         } else {
                             self.$btnFilter.show();
