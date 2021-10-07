@@ -121,7 +121,7 @@ var FilterLayer = (function() {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                 }
             });
-            self.$layFilter.on()
+            // self.$layFilter.on()
             
             // self.$openFilterDefault();
 
