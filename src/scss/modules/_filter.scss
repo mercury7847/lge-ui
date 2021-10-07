@@ -881,9 +881,12 @@
 
 /* BTOCSITE-1967 */
 .mdevice:not(.app) {
-    .lay-filter {
-        .plp-filter-wrap {
-            padding-bottom:80px;
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .lay-filter {
+            .plp-filter-wrap {
+                padding-bottom:80px;
+            }
         }
     }
 }

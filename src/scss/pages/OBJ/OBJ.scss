@@ -17,12 +17,15 @@
 /* BTOCSITE-1967 */
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
-    .space_mobi {
-        .select_objet {
-            bottom:(0 + $statusBarHeight)
-        }
-        .simulator.full .objet_select_slider .img-download {
-            bottom:(0 + $statusBarHeight)
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .space_mobi {
+            .select_objet {
+                bottom:(0 + $statusBarHeight)
+            }
+            .simulator.full .objet_select_slider .img-download {
+                bottom:(0 + $statusBarHeight)
+            }
         }
     }
 }
