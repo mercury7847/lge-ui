@@ -58,11 +58,13 @@ var Curation = (function() {
         },
 
         //선택된 스마트 필터 반환
+        
         getMakeDataFromSmartFilter: function() {
             var self = this;
             var filterData = self.getDataFromSmartFilter();
             return self._makeFilterData(filterData)
         },
+
 
         getDataFromSmartFilter: function() {
             var self = this;
