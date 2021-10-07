@@ -912,7 +912,7 @@ if ('scrollRestoration' in history) {
                         // 스마트 필터일경우 layFilter pc 타이틀
                         if(isSmartFiler && self.$layFilter.hasClass('smart-type')) {
                             var txt = lgkorUI.getParameterByName('search');
-                            $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세필터');
+                            $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세 검색');
                         }
 
                         self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
