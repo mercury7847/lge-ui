@@ -869,10 +869,7 @@ if ('scrollRestoration' in history) {
                             });
                         }
                            
-                
                         if(isSmartFiler) {
-
-                            console.log("filterQueryData 111 %o",filterQueryData);
                             if(!filterQueryData.smartFilter) {
                                 $(".lay-filter .filter-head h1").html('필터<span>'+data.smartFilterList.count+'개 제품</span>');
                             } 
