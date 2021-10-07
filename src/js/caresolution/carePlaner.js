@@ -472,7 +472,7 @@
         if(window.breakpoint.isMobile){
             var wraptop;
             var item = $putItemContainer.find('.ui_active_toggle');
-            var statusBarHeight = vcui.detect.isMobileDevice && !isApp() ? 70 : 0; //BTOCSITE-1967
+            var statusBarHeight = vcui.detect.isMobileDevice && !isApp() && window.innerWidth < 768 ? 70 : 0; //BTOCSITE-1967 2차 수정
             //var statusBarHeight = 0; //BTOCSITE-1967
             if(isOpen){
                 // console.log(1)
