@@ -443,6 +443,8 @@
 
     var ajaxMethod = "GET";
 
+    var datalayerResult = null; //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청
+
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
             vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
@@ -1027,14 +1029,46 @@
             }
         }
 
+        /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
+        //console.log("1")
         lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
             title: "",
             cancelBtnName: "아니오",
             okBtnName: "네",
             ok: function(){
+                if( datalayerResult != null) {
+                    //console.log("datalayerResult", datalayerResult);
+                    if(typeof dataLayer !== 'undefined' && dataLayer) {
+                        var pushDataEvent = {				
+                            'event': 'refund',				
+                            'actionField': {
+                                'order_id' : datalayerResult.listData[0].orderNumber
+                            },				
+                            'products': [{
+                                'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
+                                'model_id': datalayerResult.listData[0].productList[0].modelID,					
+                                'model_sku': datalayerResult.listData[0].productList[0].productNameEN,					
+                                'category': 'nnnn',					
+                                'brand': 'LG',					
+                                'price': datalayerResult.payment.grandTotal,					
+                                'quantity': datalayerResult.listData[0].productList[0].orderedQuantity,					
+                                'model_gubun': datalayerResult.listData[0].productList[0].modelType,
+                                'ct_id': 'nnnn'
+                            }]				
+                        };
+
+                        dataLayer.push(pushDataEvent);
+                        console.log("dataLayer : ", pushDataEvent);
+                    }
+                }
+                //console.log("3")
+                datalayerResult = null;
+
                 cancelOk();
             }
         });
+        //console.log("2")
+        /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
 
         //로직 변경 210824 BTOCSITE-4124
 
@@ -2338,7 +2372,15 @@
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
                 // BTOCSITE-4124 210907 수정 - E
-                 // //BTOCSITE-1775
+                // //BTOCSITE-1775
+
+                /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
+                if(result.status == "success"){
+                    if( datalayerResult == null ) {
+                        datalayerResult = result.data;
+                    }
+                }
+                /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
