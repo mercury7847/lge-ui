@@ -864,36 +864,75 @@
             @include mobile {
                 padding:20px 0 23px;
             }
-            .tabs-wrap{
+            .menu-slide-inner{
+                position: relative;
                 padding:0 202px 0 80px;
                 max-width: 1380px;
                 margin:0 auto;
                 @include mobile{
-                    padding:0 70px 0 0;
+                    padding:0 70px 0 16px;
                 }
             }
             .menu-slide-nav{
                 .slick-arrow.slick-prev{
                     left:-32px;
                     &:before {
-                        // background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg); //교체 
+                        box-shadow: none;
                     }
                 }
                 .slick-arrow.slick-next{
                     right:-32px;
                     &:before {
-                        // background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg); //교체 
+                        box-shadow: none;
                     }
                 }
                 .menu-item{
                     display: inline-block;
                     width: 90px;
+                    cursor: pointer;
+                    a{
+                        display: inline-block;
+                    }
+                    &.on{
+                        .icon-wrap{
+                            border:2px solid #000
+                        }
+                    }
                     
+                }
+            }
+            .btn-allview{
+                position:absolute;
+                right:0;
+                top:0;
+                z-index: 100;
+                @include tablet {
+                    top:10px;
+                    right:30px;
+                }
+                @include mobile{
+                    right:16px;
+                }
+                .icon-wrap{
+                    background: linear-gradient(135deg, #fa263e, #fb5a72);
                 }
             }
             &.is-active{
                 box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
+                width: 100%;
+                .menu-slide-nav{
+                    margin-top:-47px;
+                }
+                &:after{content:''; display:block; clear:both;}
+                @include mobile{
+                    margin-top: -17.5px;
+                }
                 .btn-allview{
+                    top:47px;
+                    @include tablet {
+                        top:52px;
+                        right:30px;
+                    }
                     .icon-wrap{
                         background: #666;
                     }
@@ -903,15 +942,13 @@
                         }
                     }
                 }
-                .menu-slide-nav{
-                    width: 100%;
-                    &:after{content:''; display:block; clear:both;}
-                    .menu-item{
-                        float:left;
-                        width:calc(100%/7);
-                        @include tablet{
-                            width:calc(100%/4);
-                        }
+                .menu-item{
+                    float:left;
+                    width:calc(100%/7);
+                    margin-top: 47px;
+                    @include mobile{
+                        width:calc(100%/4);
+                        margin-top: 17.5px
                     }
                 }
             }
@@ -939,196 +976,171 @@
                     font-size:13px;
                 }
             }
-        }
-        
-        .icon{
-            display: inline-block;;
-            width: 64px;
-            height: 64px;
-            @include mobile{
-                width: 32px;
-                height: 32px;
-                background-size:100%;
-            }
-            &-all{
-                background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
-            }
-            &-refrigerator{
-                background-image:url('/lg5-common/images/PRH/app/img_Refrigerator_64.png');
-            }
-            &-kimchiRefrigerator{
-                background-image:url('/lg5-common/images/PRH/app/img_KimchiRefrigerator_64.png');
-            }
-            &-wineCellar{
-                background-image:url('/lg5-common/images/PRH/app/img_WineCellar_80.png');
-            }
-            &-cooktop{
-                background-image:url('/lg5-common/images/PRH/app/img_Cooktop_64.png');
-            }
-            &-dishWasher{
-                background-image:url('/lg5-common/images/PRH/app/img_DishWasher_64.png');
-            }
-            &-lightWaveOven{
-                background-image:url('/lg5-common/images/PRH/app/img_LightWaveOven_80.png');
-            }
-            &-waterPurifier{
-                background-image:url('/lg5-common/images/PRH/app/img_WaterPurifier_80.png');
-            }
-            &-beerMaker{
-                background-image:url('/lg5-common/images/PRH/app/img_BeerMaker_64.png');
-            }
-            &-washer{
-                background-image:url('/lg5-common/images/PRH/app/img_Washer_64.png');
-            }
-            &-dryer{
-                background-image:url('/lg5-common/images/PRH/app/img_Dryer_64.png');
-            }
-            &-styler{
-                background-image:url('/lg5-common/images/PRH/app/img_Styler_64.png');
-            }
-            &-vacuumCleaner{
-                background-image:url('/lg5-common/images/PRH/app/img_VacuumCleaner_80.png');
-            }
-            &-aircon{
-                background-image:url('/lg5-common/images/PRH/app/img_AirConditioner_64.png');
-            }
-            &-airCleaner{
-                background-image:url('/lg5-common/images/PRH/app/img_AirCleaner_64.png');
-            }
-            &-dehumidifier{
-                background-image:url('/lg5-common/images/PRH/app/img_Dehumidifier_64.png');
-            }
-            &-ceillingFan{
-                background-image:url('/lg5-common/images/PRH/app/img_CeilingFan_64.png');
-            }
-        }
-        .btn-allview{
-            position:absolute;
-            right:0;
-            top:0;
-            z-index: 100;
-            @include mobile{
-                right:16px;
-            }
-            .icon-wrap{
-                background: linear-gradient(135deg, #fa263e, #fb5a72);
-            }
-        }
-        .menu-item{
-            width: 90px;
-            cursor: pointer;
-            &.on{
-                .icon-wrap{
-                    border:2px solid #000
-        
+            .icon{
+                display: inline-block;;
+                width: 64px;
+                height: 64px;
+                @include mobile{
+                    width: 32px;
+                    height: 32px;
+                    background-size:100%;
+                }
+                &-all{
+                    background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
+                }
+                &-refrigerator{
+                    background-image:url('/lg5-common/images/PRH/app/img_Refrigerator_64.png');
+                }
+                &-kimchiRefrigerator{
+                    background-image:url('/lg5-common/images/PRH/app/img_KimchiRefrigerator_64.png');
+                }
+                &-wineCellar{
+                    background-image:url('/lg5-common/images/PRH/app/img_WineCellar_80.png');
+                }
+                &-cooktop{
+                    background-image:url('/lg5-common/images/PRH/app/img_Cooktop_64.png');
+                }
+                &-dishWasher{
+                    background-image:url('/lg5-common/images/PRH/app/img_DishWasher_64.png');
+                }
+                &-lightWaveOven{
+                    background-image:url('/lg5-common/images/PRH/app/img_LightWaveOven_80.png');
+                }
+                &-waterPurifier{
+                    background-image:url('/lg5-common/images/PRH/app/img_WaterPurifier_80.png');
+                }
+                &-beerMaker{
+                    background-image:url('/lg5-common/images/PRH/app/img_BeerMaker_64.png');
+                }
+                &-washer{
+                    background-image:url('/lg5-common/images/PRH/app/img_Washer_64.png');
+                }
+                &-dryer{
+                    background-image:url('/lg5-common/images/PRH/app/img_Dryer_64.png');
+                }
+                &-styler{
+                    background-image:url('/lg5-common/images/PRH/app/img_Styler_64.png');
+                }
+                &-vacuumCleaner{
+                    background-image:url('/lg5-common/images/PRH/app/img_VacuumCleaner_80.png');
+                }
+                &-aircon{
+                    background-image:url('/lg5-common/images/PRH/app/img_AirConditioner_64.png');
+                }
+                &-airCleaner{
+                    background-image:url('/lg5-common/images/PRH/app/img_AirCleaner_64.png');
+                }
+                &-dehumidifier{
+                    background-image:url('/lg5-common/images/PRH/app/img_Dehumidifier_64.png');
+                }
+                &-ceillingFan{
+                    background-image:url('/lg5-common/images/PRH/app/img_CeilingFan_64.png');
                 }
             }
         }
-    }
-    .app-smart-wrap{
-        background-color: #f4f4f4;
-        padding:120px 0 !important;
-        @include mobile{
-            padding: 0 !important;
-        }
-        .app-smart-detail{
-            max-width: 1460px;
-            margin: 0 auto;
-            padding: 0 40px; 
-            li{
-                display:flex;
-                position: relative;
-                .detail-inner{
-                    display:flex;
-                    width: 100%;
-                    flex-direction: row;
-                    align-items: center;
-                    @include mobile{
-                        flex-direction: column;
-                    }
-                    .text-area{
-                        color:#000;
-                        padding-left:60px;
-                        @include mobile{
-                            text-align: center;
-                            padding-left:0;
-                        }
-                        .tit{
-                            font-size:32px;
-                            line-height: 1.63;
-                            font-weight: 500;
+        .app-tab-content{
+            .app-smart-wrap{
+                background-color: #f4f4f4;
+                padding:120px 0 !important;
+                @include mobile{
+                    padding: 0 !important;
+                }
+                .app-smart-detail{
+                    max-width: 1460px;
+                    margin: 0 auto;
+                    padding: 0 40px; 
+                    li{
+                        display:flex;
+                        position: relative;
+                        .detail-inner{
+                            display:flex;
+                            width: 100%;
+                            flex-direction: row;
+                            align-items: center;
                             @include mobile{
-                                font-size:18px;
+                                flex-direction: column;
+                            }
+                            .text-area{
+                                color:#000;
+                                padding-left:60px;
+                                @include mobile{
+                                    text-align: center;
+                                    padding-left:0;
+                                }
+                                .tit{
+                                    font-size:32px;
+                                    line-height: 1.63;
+                                    font-weight: 500;
+                                    @include mobile{
+                                        font-size:18px;
+                                    }
+                                }
+                                .desc{
+                                    font-size:20px;
+                                    line-height: 1.5;
+                                    margin-top: 17px;
+                                    @include mobile{
+                                        font-size:15px;
+                                    }
+                                }
                             }
                         }
-                        .desc{
-                            font-size:20px;
-                            line-height: 1.5;
-                            margin-top: 17px;
-                            @include mobile{
-                                font-size:15px;
+                        &:nth-child(even){
+                            .detail-inner{
+                                flex-direction: row-reverse;
+                                .text-area{
+                                    padding-right:60px;
+                                }
+                                @include mobile{
+                                    flex-direction: column;
+                                }
                             }
                         }
-                    }
-                }
-                &:nth-child(even){
-                    .detail-inner{
-                        flex-direction: row-reverse;
-                        @include mobile{
-                            flex-direction: column;
+                        & + li{
+                            margin-top:-248px;
+                            @include mobile{
+                               margin-top:50px;
+                            }
                         }
-                    }
-                }
-                & + li{
-                    margin-top:-248px;
-                    @include mobile{
-                       margin-top:50px;
-                    }
-                }
-                .detail-inner{
-                    .image{
-                        width: 342px;
-                        height: 639px;
-                        @include mobile{
-                            width: 185px;
-                            height: 348.5px;
+                        .detail-inner{
+                            .image{
+                                width: 342px;
+                                height: 639px;
+                                @include mobile{
+                                    width: 185px;
+                                    height: 348.5px;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
-    @include mobile{
-        .app-tabs-wrap{
+    .search-banner-wrap{
+        height: 80px;
+        max-width: 1380px;
+        background: url('/lg5-common/images/PRH/app/banner-mini.png') no-repeat 0 0;
+        margin:100px auto 0;
+        a{
+            display: flex;
+            align-items: center;
             width: 100%;
-        }
-        .app-tabs-wrap .tabs-wrap{
-            width: 100%;
-        }
-        .app-tabs-wrap{
-            .tabs{
-                display:flex !important;
-            } 
-            .tabs li{
-                width: calc(100%/5);
-            }
-            .btn-tabs-menu{
+            height: 100%;
+            justify-content: center;
+            span{
+                font-size:18px;
+                line-height: 1.5;
+                font-weight: 500;
                 position:relative;
-                display: inline-block;
-                width: calc(100%/5);
-                button{
-                    position:absolute;
-                    right:0;
-                    top:0;
-                    width: 50px;
-                    height: 50px;
-                }
-            }
-            &.is-active{
-                .tabs{
-                    white-space: nowrap;
+                &:before{
+                    content:'';
+                    display:inline-block;
+                    width: 16px;
+                    height: 16px;
                 }
             }
         }
     }
+    
 }
