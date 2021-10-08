@@ -25,7 +25,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
      */
     // BTOCSITE-4785 s
     if(cartPrdList){
-        self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&orgCode=";
+        // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
+        self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
     } else {
         self.shopUrl = "/support/visit-store-reservation?orgCode=";
     }
