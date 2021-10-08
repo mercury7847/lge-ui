@@ -8,7 +8,7 @@ var lls = {
         self.heroSlider();
         self.highlightSlider();
         self.onbroadProductSlider();
-        self.appPushVisibleCheck();
+        //self.appPushVisibleCheck();  BTOCSITE-5368
     },
     settings: function(){
         var self = this;
@@ -16,6 +16,7 @@ var lls = {
         self.pushValue = "";
         self.$llsMain = $('.lls-main');
         self.$switch = self.$llsMain.find('.ui_background_switch')
+        self.$pushContent = self.$llsMain.find('.lls-push'); // BTOCSITE-5368 추가
         self.$pushBtn = self.$llsMain.find('.btn-lls-push');
         self.pushBtn = null;
 
@@ -45,6 +46,7 @@ var lls = {
         })
     },
     appPushVisibleCheck: function(event){
+        
         var self = this;
         if( isApp()) {
             
@@ -121,12 +123,65 @@ var lls = {
 
         //앱 알림받기 버튼
         self.$pushBtn.on('click', function(e){
-            var _self = this;
+            /*  BTOCSITE-5368 클릭 이벤트 수정
+            구독완료 , 구독취소 성공여부 
+            {
+                "status":"success",
+                "message":null,
+                "data": {
+                    "success" : "Y"
+                }
+            }
 
+
+            구독중인지 아닌지
+            {
+                "status":"success",
+                "message":null,
+                "data": {
+                    "subscribeFlag" : "Y"
+                }
+            }
+            */
+            var _self = this;
+            var pushData = self.$pushContent.data(); 
+            var isLogin = pushData.loginFlag;
+            var loginUrl = pushData.loginUrl;
+            var chkUrl = pushData.subcheckUrl;
+            var subUrl = pushData.subscribeUrl;
+
+            console.log("pushData", pushData)
             self.pushBtn = _self;
+
+            if( isLogin == "Y") {
+                lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
+                    if( result.status == "success") {
+                        var data = result.data;
+                        var flag = data.subscribeFlag;
+
+                        if( flag == "Y") {
+                            lgkorUI.alert("",{title:"이미 구독 중입니다."}, self.pushBtn);
+                        } else {
+                            // action: Y면 구독하기 N 이면 구독취소하기 파라미터
+
+                            lgkorUI.requestAjaxData(subUrl, {"action":"Y"}, function(subResult) {
+                                if( subResult.status == "success") {
+                                    var subData = subResult.subData;
+                                    var currentMsg = subData == "Y" ? "구독 신청이 완료되었습니다." : "구독 신청이 실패하였습니다.";
+                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                }
+                            });
+                        }
+                    } 
+                });
+            } else {
+                location.href = loginUrl;
+            }
+
+            
             e.preventDefault();
 
-            self.appPushVisibleCheck("click");
+            //self.appPushVisibleCheck("click");
             
         });
 
