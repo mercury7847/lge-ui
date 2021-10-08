@@ -716,6 +716,7 @@
 
             // 증상 선택
             self.$topicList.on('change', '[name=topic]', function() {
+                var currentTopic = this; //BTOCSITE_6554
                 var url = self.$topicListWrap.data('ajax'),
                     param = {
                         topic : $(this).val(),
@@ -737,7 +738,9 @@
                         ok: function() {
                             location.href = "/support/request-call-reservation";
                         },
-                        cancel: function() {}
+                        cancel: function() {
+                            $(currentTopic).prop('checked', false); //BTOCSITE_6554
+                        }
                     });
                 }
                 
