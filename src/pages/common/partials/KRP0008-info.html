@@ -611,7 +611,9 @@
                                 </span>
                                 <div class="careship-option general-careship">
                                     <dl class="select-info select-box">
-                                        <dt class="select-text">방문주기</dt>
+                                        <!--[S] BTOCSITE-3523 span 추가 -->
+                                        <dt class="select-text"><span class="card-title">방문주기</span></dt>
+                                        <!--//[E] BTOCSITE-3523 span 추가 -->
                                         <dd>
                                             <div class="select-wrap">
                                                 <input type="hidden" name="mmType" value=""/>
@@ -624,17 +626,18 @@
                                             </div>
                                         </dd>
                                     </dl>
-                                    <!--[S] BTOCSITE-3523 제휴카드 -->
+                                    <!--[S] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                                     <div class="select-info select-box dropdown-box careship-card-list">
                                         <div class="select-wrap ui_dropdown">
                                             <input type="hidden" name="cardType" value=""/>
                                             <div class="select-button">
                                                 <div class="select-text">
-                                                    <span>제휴카드</span>
+                                                    <span class="card-title">제휴카드</span>
                                                     @@include('./common/modules/tooltip.html', {
                                                     "type" : "include",
                                                     "page" : "tooltip-KRP0008-02"
                                                     })
+                                                    <a href="#" class="ui_dropdown_toggle"></a>
                                                 </div>
                                                 <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
                                                 <div class="ui_dropdown_list">
@@ -702,14 +705,10 @@
                                                     </ul>
                                                 </div>
                                                 <!--//BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
-
-                                                <!--BTOCSITE-3523 : span 추가-->
-                                                <a href="#" class="ui_dropdown_toggle">제휴카드 <span class="spread-layer">전체보기</span> <span class="fold-layer">접기</span></a>
-                                                <!--//BTOCSITE-3523 : span 추가-->
                                             </div>
                                         </div>
                                     </div>
-                                    <!--//[E] BTOCSITE-3523 제휴카드 -->
+                                    <!--//[E] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                                     <dl class="select-info price-info total">
                                         <dt class="text">
                                             <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
@@ -981,17 +980,18 @@
                                                 </div>
                                             </dd>
                                         </dl>
-                                        <!--[S] BTOCSITE-3523 제휴카드 -->
+                                        <!--[S] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                                         <div class="select-info select-box dropdown-box careship-card-list">
                                             <div class="select-wrap ui_dropdown">
                                                 <input type="hidden" name="cardType" value=""/>
                                                 <div class="select-button">
                                                     <div class="select-text">
-                                                        <span>제휴카드</span>
+                                                        <span class="card-title">제휴카드</span>
                                                         @@include('./common/modules/tooltip.html', {
                                                         "type" : "include",
                                                         "page" : "tooltip-KRP0008-02"
                                                         })
+                                                        <a href="#" class="ui_dropdown_toggle"></a>
                                                     </div>
                                                     <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
                                                     <div class="ui_dropdown_list">
@@ -1060,14 +1060,10 @@
                                                         </ul>
                                                     </div>
                                                     <!--//BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
-
-                                                    <!--BTOCSITE-3523 : span 추가-->
-                                                    <a href="#" class="ui_dropdown_toggle">제휴카드 <span class="spread-layer">전체보기</span> <span class="fold-layer">접기</span></a>
-                                                    <!--//BTOCSITE-3523 : span 추가-->
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--//[E] BTOCSITE-3523 제휴카드 -->
+                                        <!--//[E] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                                         <dl class="select-info price-info total">
                                             <dt class="text">
                                                 <a href="#n" class="btn-link popup" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
@@ -1177,7 +1173,8 @@
                 </div>
                 <!-- // 20210813 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 후속 수정  -->
                 <div class="care-sibling-option">
-                    <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0]">
+                    <!--BTOCSITE-3523 detail-option-box class 추가 -->
+                    <div class="info-accordion-wrap ui_accordion detail-option-box" data-single-open="false" data-open-index="[0]">
                         <ul>
                             <li class="lists">
                                 <div class="head">
@@ -1257,16 +1254,17 @@
                     </div>
                     <!-- 2021-02-05 클래스 추가 -->
 
-                    <!--[S] BTOCSITE-3523 제휴카드 -->
+                    <!--[S] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                     <div class="select-info select-box dropdown-box rental-card-list">
                         <div class="select-wrap ui_dropdown">
                             <input type="hidden" name="cardType" value=""/>
                             <div class="select-button">
-                                <div class="select-text"><span>제휴카드</span>
+                                <div class="select-text"><span class="card-title">제휴카드</span>
                                     @@include('./common/modules/tooltip.html', {
                                         "type" : "include",
                                         "page" : "tooltip-KRP0008-02"
                                     })
+                                    <a href="#" class="ui_dropdown_toggle"></a>
                                 </div>
 
                                 <!--BTOCSITE-3523 : 제휴카드 간편 신청 리스트 추가-->
@@ -1336,14 +1334,10 @@
                                     </ul>
                                 </div>
                                 <!--//BTOCSITE-3523 : 제휴카드 개별 신청 리스트-->
-
-                                <!--BTOCSITE-3523 : span 추가-->
-                                <a href="#" class="ui_dropdown_toggle">제휴카드 <span class="spread-layer">전체보기</span> <span class="fold-layer">접기</span></a>
-                                <!--//BTOCSITE-3523 : span 추가-->
                             </div>
                         </div>
                     </div>
-                    <!--//[E] BTOCSITE-3523 제휴카드 -->
+                    <!--//[E] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
 
                     <dl class="select-info price-info total">
                         <dt class="text">

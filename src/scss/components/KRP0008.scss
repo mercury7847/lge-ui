@@ -1122,7 +1122,7 @@
                         margin-top:12px;
                     }
                 }
-                //BTOCSITE-3523
+                //BTOCSITE-3523 - 렌탈 케어 솔루션 탭 - 제휴카드 영역
                 &.ui_accordion {
                     &.detail-option-box {
                         background: #f4f4f4;
@@ -1453,7 +1453,18 @@
                 }
             }
         }
-
+        //BTOCSITE-3523 - 구매 탭 - 제휴카드 영역
+        .caresolution-careship {
+            & > .select-info {
+                &.select-box {
+                    .select-text {
+                        .card-title {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
         .select-info {
             @include clearfix;
             position: relative;
@@ -1704,42 +1715,48 @@
                 }
             }
 
-            //BTOCSITE-3523 - 구매 탭 - 제휴카드 영역
-            &.rental-card-list {
-                margin: 0 -24px;
-                //이용요금 영역
-                & + .select-info.price-info.total {
-                    margin: 16px -24px 0;
-                }
-            }
-            //BTOCSITE-3523 - 구매, 렌탈 케어 탭 - 제휴카드 영역
+            //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
             &.rental-card-list,
             &.careship-card-list {
                 .select-wrap {
+                    &.is-selected {
+                        .ui_dropdown_list {
+                            display: none;
+                        }
+                    }
                     &.open {
                         height: auto;
+                        &.is-selected {
+                            .cancel-item {
+                                display: block;
+                                & + li {
+                                    margin-top: 30px;
+                                }
+                            }
+                            .ui_dropdown_list {
+                                display: block;
+                            }
+                        }
                         .select-button {
-                            border: 1px solid #ddd;
-                            .selectbox-list {
+                            border: 1px solid #000;
+                            border-radius: 8px 8px 0 0;
+                          .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
                             }
                             .simple-card-list {
-                                border-bottom: 1px dashed #ddd;
-                                & > li:nth-child(3) {
+                                & > li:nth-child(4) {
                                     display: block;
                                 }
                             }
-                            .select-button {
-                                border: 1px solid #ddd;
-                            }
-                            .ui_dropdown_toggle {
-                                .spread-layer {
-                                    display: none;
+                            .ui_dropdown_list {
+                                &:first-child {
+                                    border-radius: 8px 8px 0 0;
                                 }
-                                .fold-layer {
-                                    display: inline-block;
+                                & + .ui_dropdown_list {
+                                    border: 1px solid #000;
+                                    border-top: 0;
                                 }
                             }
                         }
@@ -1750,25 +1767,37 @@
                         left: auto;
                         right: auto;
                         border-color: #ddd;
-                        .select-list {
-                            margin: 18px 24px 0;
-                            li {
-                                a {
-                                    position: relative;
+                        .ui_dropdown_list {
+                            padding: 29px 15px 27px;
+                            border-radius: 0 0 8px 8px;
+                            @include mobile {
+                                padding: 25px 12px 25px;
+                            }
+                            & + .ui_dropdown_list {
+                                position: absolute;
+                                left: -1px;
+                                width: calc(100% + 2px);
+                                &::before {
+                                    content: "";
                                     display: block;
-                                    padding: 4px 0 4px 10px;
-                                    &::before {
-                                        content: ' ';
-                                        position: absolute;
-                                        width: 3px;
-                                        height: 3px;
-                                        margin-top: 11px;
-                                        margin-left: -11px;
-                                        margin-right: 8px;
-                                        border-radius: 50%;
-                                        background: #000;
-                                        vertical-align: top;
-                                    }
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    width: calc(100% - 30px);
+                                    border-top: 1px dashed #ddd;
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
+                        .select-list {
+                            margin: 0;
+                            padding-bottom: 0;
+                            li {
+                                &:not(.cancel-item) + li {
+                                    margin-top: 30px;
+                                }
+                                a {
+                                    padding: 0;
                                     &:hover, &:active, &:focus {
                                         background: none;
                                     }
@@ -1776,9 +1805,6 @@
                                     .card-discount {
                                         display: inline-block;
                                         vertical-align: top;
-                                    }
-                                    .card-discount {
-                                        margin-left: 4px;
                                     }
                                 }
                             }
@@ -1788,42 +1814,43 @@
                             top: auto;
                             left: auto;
                             right: auto;
-                            padding: 14px 24px;
+                            padding: 14px 15px;
                             transform: none;
-                            background: #f4f4f4;
+                            background: none;
                             color: #000;
                             text-align: left;
-                            border-radius: 6px 6px 0 0;
+                            border-radius: 0;
                             .tooltip-wrap {
                                 .tooltip-icon {
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
                                 }
+                            }
+                            & + .ui_dropdown_list {
+                                border-top: 1px solid #ddd;
                             }
                         }
                         .selectbox-list {
                             border: none;
                         }
                         .ui_dropdown_toggle {
-                            position: relative;
-                            text-align: center;
-                            border-top: 1px solid #ddd;
-                            &:after {
-                                display: inline-block;
-                                position: relative;
-                                top: auto;
-                                right: auto;
-                                margin: 0 0 0 4px;
-                                vertical-align: middle;
-                            }
-                            .fold-layer {
-                                display: none;
+                            overflow: hidden;
+                            position: absolute;
+                            right: 15px;
+                            display: inline-block;
+                            max-width: calc(100% - 100px);
+                            height: 24px;
+                            padding: 0 24px 0 0;
+                            &::after {
+                                right: 0;
                             }
                         }
                     }
                 }
                 .simple-card-list {
-                    padding-bottom: 18px;
-                    > li:nth-child(3) {
+                    .cancel-item {
+                        display: none;
+                    }
+                    > li:nth-child(4) {
                         display: none;
                     }
                     li + li {

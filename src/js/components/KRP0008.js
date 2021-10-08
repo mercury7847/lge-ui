@@ -597,7 +597,7 @@
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
-                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.rental-card-list'); //BTOCSITE-3523
+                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.rental-card-list'); //BTOCSITE-3523 선택자 수정
                 if(self.$rentalCardList.length > 0) {
                     isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
@@ -1567,8 +1567,19 @@
                 self.$pdpInfo.on('click','.rental-card-list div.ui_dropdown_list li a, .careship-card-list div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
+                    var $dropDownList = $this.closest('.ui_dropdown_list');
                     var $dropDown = $this.parents('.ui_dropdown');
-                    //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title')); //BTOCSITE-3523
+                    //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));  //BTOCSITE-3523 삭제
+
+                    //BTOCSITE-3523 추가
+                    if($this.closest("li").hasClass("cancel-item")) {
+                        $this.closest(".ui_dropdown").removeClass('is-selected');
+                        $dropDown.find('.ui_dropdown_toggle').empty();
+                    }else{
+                        $dropDown.find('.ui_dropdown_toggle').text($this.attr('data-card-title'));
+                        $this.closest(".ui_dropdown").addClass('is-selected');
+                    }
+
                     $dropDown.vcDropdown("close");
 
                     var cardData = {};
@@ -1607,14 +1618,12 @@
                     }
                 });
 
-
-                //BTOCSITE-3523 사용안함 처리
                 //div.option-contents
-                /*var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list, .careship-card-list div.ui_dropdown_list');
+                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list .simple-card-list, .careship-card-list div.ui_dropdown_list .simple-card-list'); //BTOCSITE-3523 수정
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click',firstRow);
-                }*/
+                }
             },
 
             resize: function(){
@@ -1829,12 +1838,13 @@
                         max = item.maxSalePrice;
                     }
                     item.title = "[" + item.cardName.replace("카드","")+ "] " + item.cardSubName;
+                    lgkorUI.stringToBool(item.simpleReqFlag) ? (item.categoryTitle = "[간편 신청]") : (item.categoryTitle = "[개별 신청]"); //BTOCSITE-3523 추가
                     lgkorUI.stringToBool(item.simpleReqFlag) ? simpleCardData.push(item) : individualCardData.push(item);
                 });
 
-                //BTOCSITE-3523
+
                 //최상단 카드취소
-                /*arr.push({
+                arr.push({
                     "groupTitle":null,
                     "listItem":[
                         {
@@ -1845,7 +1855,7 @@
                             "maxSalePrice":0
                         }
                     ]
-                });*/
+                });
 
                 //간편 신청 카드
                 if(simpleCardData.length > 0) {
@@ -1869,34 +1879,42 @@
 
             //제휴카드리스트 갱신
             /* 20210513 수정 */
-            //BTOCSITE-3523
+            //BTOCSITE-3523 : 케어솔루션 PDP 상세조건 개선
             updateAssociatedCardList: function ($cardInfo, cardData) {
                 if(cardData && cardData.length > 0) {
                     //카드데이타
                     var selectList = $cardInfo.find('ul.select-list'),
                         simpleCardList = $('ul.select-list.simple-card-list'),
-                        individualCardList = $('ul.select-list.individual-card-list');
+                        individualCardList = $('ul.select-list.individual-card-list');;
                     selectList.empty();
+                    //var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                     var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
-                        if(obj.groupTitle === "간편 신청 가능 카드") {
-                            if(obj.listItem) {
-                                obj.listItem.forEach(function(item, index) {
-                                    item.label = item.title;
-                                    item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
-                                    if(!simpleCardList.length){return;}
+                        /*if(obj.groupTitle) {
+                            selectList.append(vcui.template(groupItemTemplate,obj));
+                        }*/
+                        if(obj.listItem) {
+                            obj.listItem.forEach(function(item, index) {
+                                item.label = item.title;
+                                item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
+                                if(!item.cardNameCode) {
+                                    item.label = "선택취소"
+                                    cardItemTemplate = '<li class="cancel-item"><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
+                                }else{
+                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{categoryTitle}}{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
+                                }
+                                //item.maxSaleString = item.maxSalePrice ? vcui.number.addComma(item.maxSalePrice) : null;
+                                if(item.simpleReqFlag === "Y"){
+                                    //간편 신청 가능 카드
                                     $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
-                                });
-                            }
-                        }else if(obj.groupTitle === "개별 신청 가능 카드") {
-                            if(obj.listItem) {
-                                obj.listItem.forEach(function(item, index) {
-                                    item.label = item.title;
-                                    item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
-                                    if(!individualCardList.length){return;}
+                                }else if(item.simpleReqFlag === "N"){
+                                    //개별 신청 가능 카드
                                     $cardInfo.find(individualCardList).append(vcui.template(cardItemTemplate, item));
-                                });
-                            }
+                                }else {
+                                    //선택취소
+                                    $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
+                                }
+                            });
                         }
                     });
                     $cardInfo.show();
