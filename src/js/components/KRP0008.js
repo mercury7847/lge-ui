@@ -705,6 +705,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$saleInfoPopup = $('#saleInfoPopup'); // BTOCSITE-5781
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -761,15 +762,22 @@
                     self.requestModal(this);
                 });
                 */
-
                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
                 self.$copy.on('click',function() {
-                        self.copyClicked = true;
-                        vcui.dom.copyToClipboard(($(this).text()), {
-                            onSuccess: function () {
-                                $(window).trigger("toastshow", "모델명을 복사했습니다.");
-                            }
-                        });
+                    var txt = $(this).text();
+                    lgkorUI.confirm('모델명을 복사하시겠습니까?', {
+                        title: "",
+                        cancelBtnName: "취소",
+                        okBtnName: "복사",
+                        ok:function(){
+                            vcui.dom.copyToClipboard(txt, {
+                                container:this,
+                                onSuccess: function () {
+                                    $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                                }
+                            });
+                        }
+                   });
                 });
 
                 //데스크탑용 갤러리 이미지 클릭
@@ -878,11 +886,12 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                        var isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
+                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
+                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        $('.store-counsel-banner').show(); //BTOCSITE-5727
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -890,6 +899,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -1158,6 +1168,12 @@
                     self.$mainInitPopup.vcModal({opener: this});
                 });
                 
+                //할인적용가 팝업 BTOCSITE-5781
+                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                    e.preventDefault();
+                    self.$saleInfoPopup.vcModal({opener: this});
+                });
+
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();

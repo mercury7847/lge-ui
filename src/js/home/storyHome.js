@@ -74,7 +74,7 @@
         '<div class="flexbox-wrap">'+
             '<div class="flexbox tag-area">'+
                 '<div class="title-area">'+
-                    '<span class="title">이런 <em>#태그</em>는 <br class="mo-only ">어떠세요?</span>'+
+                    '<span class="title">이런 <em>#태그</em>는 어떠세요?</span>'+
                     '<a href="#" class="btn-link tagmnger-btn"><span>구독 중 태그 관리</span></a>'+
                 '</div>'+
                 '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
@@ -532,8 +532,11 @@
                                 if( lgkorUI.getCookie('storyHomeFirstTag') == "Y") {
 
                                 } else {
-                                    $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
-                                    lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
+                                    if( !vcui.detect.isMobileDevice || $('.swiper-slide-active .story-main').length > 0) {
+                                        console.log('storyHome', $('.swiper-slide-active .story-main').length)
+                                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                                        lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
+                                    }
                                 }
                             }
                         } else{

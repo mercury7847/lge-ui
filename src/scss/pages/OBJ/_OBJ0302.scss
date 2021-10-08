@@ -1856,34 +1856,35 @@ h2.title {
 
     &[data-cate="refrigerator_kimchi"] {
         //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 추천조합 4도어, 3도어 분리
+        //BTOCSITE-6441 BG 이미지 수정
         &[data-model-default-code="Z491AAA151"] {
             .mini_model_wrap {
-                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi_4door.png') center center no-repeat;
                 background-size: 100% 100%;
                 .mini_model {
-                     &:nth-child(1) {
-                    left: 35%;
-                    top: 9.5%;
-                    width: 14.5%;
+                &:nth-child(1) {
+                    left: 32%;
+                    top: 10.5%;
+                    width: 17.5%;
                     height: 43.7%;
                 }
                 &:nth-child(2) {
-                    right: 35%;
-                    top: 9.5%;
-                    width: 14.5%;
+                    right: 32%;
+                    top: 10.5%;
+                    width: 17.5%;
                     height: 43.7%;
                 }
                 &:nth-child(3) {
-                    left: 35%;
-                    top: 54.1%;
-                    width: 30%;
-                    height: 18%;
+                    left: 32%;
+                    top: 56.1%;
+                    width: 36%;
+                    height: 16%;
                 }
                 &:nth-child(4) {
-                    left: 35%;
-                    top: 73.1%;
-                    width: 30%;
-                    height: 17%;
+                    left: 32%;
+                    top: 74.1%;
+                    width: 36%;
+                    height: 16%;
                 }
                 }
             }

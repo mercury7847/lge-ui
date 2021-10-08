@@ -18,14 +18,9 @@
     var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}} ">' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
-                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리 예정
-                // '<a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
                 '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
             '</div>' +
             '<div class="info-wrap">' +
-                // BTOCSITE-4086 : 제품링크 추가 - data 확인후 처리 예정
-                // '<a href="{{url}}"><p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
-                // '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p></a>' +
                 '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
                 '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
                 '<ul class="info-lists period">' +
@@ -210,11 +205,7 @@
 
             //시리얼넘버
             self.$snInput = $inputs.eq(1);
-            //BTOCSITE-4086
-            self.$snCheckOk = self.$snInput.siblings('p.comp');
             self.$snCheckButton = $buttons.eq(1);
-            //BTOCSITE-4086
-            self.$snCheckOk.hide();
 
             // 대문자로 입력받기
             self.$modelInput.css('text-transform', 'uppercase');
@@ -337,7 +328,6 @@
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
                 self.$registMyProductPopup.vcModal({opener:$(this)});
-                self.$registMyProductMainPage.find('.btn-direct').trigger('click');
             });
 
             // BTOCSITE-3521 마이페이지 내 제품등록 CTA 추가
@@ -394,8 +384,7 @@
             });
 
             //모델명 확인 방법 팝업 열기
-            //BTOCSITE-4086
-            self.$registMyProductMainPage.on('click','.btn-model-check', function(e) {
+            self.$registMyProductMainPage.on('click','p.link a', function(e) {
                 e.preventDefault();
                 if(!self.modelData) {
                     var ajaxUrl = self.$registMyProductPopup.attr('data-list-url');
@@ -427,47 +416,6 @@
                     self.$registMyProductMainPage.hide();
                     self.$modelCheckHelpPage.show();
                     self.$modelCheckHelpPage.find('section').scrollTop(0);
-                }
-                self.$modelCheckHelpPage.find('.btn-model').trigger('click');
-            });
-
-            
-            
-            //BTOCSITE-4086
-            //보유 제품 직접 등록 : QR 스캔/직접 입력  선택버튼 
-            self.$registMyProductMainPage.on('click','.scan-type-inbox button', function(e) {
-                e.preventDefault();
-                if ($(this).hasClass('btn-qrscan')) {
-                    $(this).addClass('active');
-                    $('.btn-direct').removeClass('active');
-                    $('.info-req-box .qr').show();
-                    $('.app-exec').removeClass('active');
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
-                } else {
-                    $(this).addClass('active');
-                    $('.btn-qrscan').removeClass('active');
-                    $('.info-req-box .qr').hide();
-                    $('.app-exec').addClass('active');
-                    $('#inp01').removeAttr('readonly');
-                    $('#inp02').removeAttr('readonly');
-                    $('.cell button').attr('disabled', false);
-                    $('.btn-prod-reg').attr('disabled', false);
-                }
-            });
-            //제품별 QR/모델명/제조번호 부착 위치 : 모델명/제조번호/바코드/OR코드 선택 버튼 
-            self.$modelCheckHelpPage.on('click','.example-type-inbox button', function(e) {
-                e.preventDefault();
-                if ($(this).hasClass('btn-model')) {
-                    $(this).addClass('active');
-                    $('.btn-qrcord').removeClass('active');
-                    $('.example-type-list-wrap .bullet-list').hide();
-                } else {
-                    $(this).addClass('active');
-                    $('.btn-model').removeClass('active');
-                    $('.example-type-list-wrap .bullet-list').show();
                 }
             });
 
@@ -556,19 +504,6 @@
             self.$modelCheckButton.on('click', function(e){
                 var ajaxUrl = self.$registMyProductPopup.attr('data-sku-url');
                 var modelName = self.$modelInput.val().toUpperCase();
-                if ( modelName === '1') {
-                    alert(1);
-                    if ($('.btn-qrscan').hasClass('active')) {
-                        lgkorUI.confirm("입력된 제품 모델명을 찾을 수 없습니다.<br>직접 입력으로 전환하시겠습니까?", {
-                            title: "",
-                            cancelBtnName: "확인",
-                            okBtnName: "직접 입력하기",
-                            ok: function(){
-                                self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                            }
-                        });
-                    }
-                }
                 lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                     var data = result.data;
                     if(lgkorUI.stringToBool(data.success)) {
@@ -577,19 +512,7 @@
                     } else {
                         checkModelSuccess = false;
                         self.$modelCheckOk.hide();
-                        //BTOCSITE-4086 : QR스캔으로 값을 받아온 후 입력된 제품모델이 없을경우 confirm 추가
-                        if ($('.btn-qrscan').hasClass('active')) {
-                            lgkorUI.confirm("입력된 제품 모델명을 찾을 수 없습니다.<br>직접 입력으로 전환하시겠습니까?", {
-                                title: "",
-                                cancelBtnName: "확인",
-                                okBtnName: "직접 입력하기",
-                                ok: function(){
-                                    self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                                }
-                            });
-                        } else {
-                            lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
-                        }
+                        lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
                     }
                 });
             });
@@ -633,23 +556,9 @@
                     }
                 })
                 if(minLengthFlag && checkSerialSuccess.indexOf(false) == -1) {
-                    //BTOCSITE-4086
-                    self.$snCheckOk.show();
-                    // lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
+                    lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                 } else {
-                    //BTOCSITE-4086 : QR스캔으로 값을 받아온 후 입력된 제품모델이 없을경우 confirm 추가
-                    if ($('.btn-qrscan').hasClass('active')) {
-                        lgkorUI.confirm("입력된 제조번호를 찾을 수 없습니다.<br>직접 입력으로 전환하시겠습니까?", {
-                            title: "",
-                            cancelBtnName: "확인",
-                            okBtnName: "직접 입력하기",
-                            ok: function(){
-                                self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                            }
-                        });
-                    } else {
-                        lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
-                    }
+                    lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
                 }
             });
 
@@ -679,7 +588,6 @@
                     //등록
                     //2021-03-06 제조번호(sn) 필수 제외
                     //if(checkModelSuccess && checkSerialSuccess) {
-                        
                     if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
@@ -706,19 +614,7 @@
                             });
                         }
                     } else {
-                        // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출
-                        if(!checkModelSuccess && !checkSerialSuccess) {
-                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
-                                title: "",
-                                cancelBtnName: "취소",
-                                okBtnName: "이메일접수",
-                                ok: function(){
-                                    location.href = "/support/email-inquiry/?emailReg";
-                                }
-                            });
-                        }
-
-                        //lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
+                        lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
                         /*
                         if(!checkModelSuccess) {
                             lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});

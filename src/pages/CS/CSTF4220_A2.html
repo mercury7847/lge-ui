@@ -38,7 +38,7 @@
                 </div>
                 <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 //버튼 위치수정 --> 
                 <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 //진행단계 위치수정 --> 
-                <div class="cont-wrap busi-trip">
+                <div class="cont-wrap busi-trip"> <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 //-->
                     <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청// 예약/결과정보 삭제 --> 
                     <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 --> 
                     <div class="section">
@@ -87,7 +87,7 @@
                         <div class="result-btn-group">
                             <div class="group-box">
                                 <div class="group-box-btngroup">
-                                    <button onclick="window.open('/html/CS/CSRF6072.html')" class="btn border"><span>사진 등록<br class="only-mobile">(고장 증상)</span></button>
+                                    <button onclick="CSRF6072_pop()" class="btn border"><span>사진 등록<br class="only-mobile">(고장 증상)</span></button><!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->
                                     <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
                                     <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 변경</span></button>
                                     <button type="button" class="btn border" data-href="#solutionsPopup"><span>자가 해결 컨텐츠</span></button>
@@ -133,5 +133,12 @@
     <!-- support script -->
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/reservation/serviceStatus.min.js"></script>
+    <!-- BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->
+    <script>
+        function CSRF6072_pop(){
+            window.open('/html/CS/CSRF6072.html','고장증상 사진 등록 팝업','width=800px, height=800px');
+        }
+    </script>
+    <!-- //BTOCSITE-5594 알림톡 연동 출장서비스 예약/결과 조회 > 출장서비스 건 화면 변경 요청 -->
 </body>
 </html> 

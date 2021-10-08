@@ -1,0 +1,18 @@
+<svg id="ic_fail_negative_MO_32" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <path id="guidebox" class="cls-1" d="M0 40h40V0H0z"/>
+    <g id="ic" transform="translate(2.5 2.5)">
+        <g id="Oval" style="stroke-width:2px;stroke:#000;stroke-miterlimit:10;fill:none">
+            <circle cx="17.5" cy="17.5" r="17.5" style="stroke:none"/>
+            <circle class="cls-1" cx="17.5" cy="17.5" r="16.5"/>
+        </g>
+        <g id="Group_3" data-name="Group 3" transform="translate(16.25 11.78)">
+            <rect id="Rectangle" width="2.644" height="2.644" rx="1.322" transform="translate(0 10.576)"/>
+            <path id="Line" d="M1 1v7.932" transform="translate(.322 -1)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2.5px;stroke:#000;stroke-miterlimit:10;fill:none"/>
+        </g>
+    </g>
+</svg>

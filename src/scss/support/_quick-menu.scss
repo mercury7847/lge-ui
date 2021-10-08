@@ -459,6 +459,7 @@
 }
 
 .mobile:not(.app) {
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
     .quick-menu {
         z-index: 99; /* BTOCSITE-1967 */
 
@@ -489,9 +490,9 @@
 /* BTOCSITE-1967 */
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
+    
     .quick-menu {
-        bottom: (48px + $statusBarHeight);
-
+        //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
         @include mobile {
             bottom:(24px + $statusBarHeight);
         }

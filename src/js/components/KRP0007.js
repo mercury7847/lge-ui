@@ -44,6 +44,7 @@
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -109,29 +110,35 @@
 
                         '<div class="price-area">' +
                             '{{#if obsTotalDiscountPrice}}' +
-                                '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == 0}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
-                                    '{{#if obsOriginalPrice}}' +
-                                        '<div class="total">' +
-                                            '<em class="blind">판매가격</em>' +
-                                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                                        '</div>' +
-                                    '{{/if}}' +
+                                /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                                '{{#if obsBtnRule == "enable"}}'+
+                                    '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == obsOriginalPrice}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
 
-                                    '{{#else}}' +
+                                        '{{#if obsOriginalPrice}}' +
+                                            '<div class="total">' +
+                                                '<em class="blind">판매가격</em>' +
+                                                '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                            '</div>' +
+                                        '{{/if}}' +
 
-                                    '{{#if obsOriginalPrice}}' +
-                                        '<div class="original">' +
-                                            '<em class="blind">판매가격</em>' +
-                                            '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                                        '</div>' +
-                                    '{{/if}}' +
-                                    '{{#if obsSellingPrice}}' +
-                                        '<div class="total">' +
-                                            '<em class="blind">총 판매가격</em>' +
-                                            '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-                                        '</div>' +
+                                        '{{#else}}' +
+
+                                        '{{#if obsOriginalPrice}}' +
+                                            '<div class="original">' +
+                                                '<em class="blind">판매가격</em>' +
+                                                '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
+                                            '</div>' +
+                                        '{{/if}}' +
+                                        '{{#if obsSellingPrice}}' +
+                                            '<div class="total">' +
+                                                '<em class="blind">총 판매가격</em>' +
+                                                '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
+                                            '</div>' +
+                                        '{{/if}}' +
+                                            
                                     '{{/if}}' +
                                 '{{/if}}' +
+                                /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                                 
                             '{{#else}}' + 
 
@@ -685,7 +692,7 @@
 
             setTotalCount: function (totalCount) {
                 var self = this;
-                self.$totalCount.text( "총 " + vcui.number.addComma(totalCount) + "개");
+                self.$totalCount.text( "총 " + vcui.number.addComma(totalCount) + "개"); //BTOCSITE-5157 add
             },
 
             requestSearch: function(data, isNew){
@@ -1050,8 +1057,17 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
+
+                if( typeof item.obsSellingPriceNumber == "string") {
+                    item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
+                } else {
+                    item.isShowPrice = item.obsSellingPriceNumber;
+                }
                 /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                item.isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
+                item.isShow = lgkorUI.isShowDate('20210601','20211001'); //(startTime, endTime, nowTime)
+
+                /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
+                item.isShowLotteCard = lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00
                 
                 return vcui.template(productItemTemplate, item);
             },
