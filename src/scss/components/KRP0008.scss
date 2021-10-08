@@ -1493,8 +1493,9 @@
                 }
             }
         }
-        //BTOCSITE-3523 - 구매 탭 - 제휴카드 영역
-        .caresolution-careship {
+        //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
+        .caresolution-careship,
+        .care-sibling-option {
             & > .select-info {
                 &.select-box {
                     .select-text {

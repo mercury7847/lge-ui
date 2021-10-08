@@ -1583,7 +1583,6 @@
                 self.$pdpInfo.on('click','.rental-card-list div.ui_dropdown_list li a, .careship-card-list div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
-                    var $dropDownList = $this.closest('.ui_dropdown_list');
                     var $dropDown = $this.parents('.ui_dropdown');
                     //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));  //BTOCSITE-3523 삭제
 
