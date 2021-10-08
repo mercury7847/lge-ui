@@ -130,7 +130,7 @@
                 // BTOCSITE-4785 s
                 if(cartPrdList){
                     // self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
-                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
+                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&orgCode=";
                 } else {
                     self.shopUrl = "/support/visit-store-reservation?orgCode=";
                 }
