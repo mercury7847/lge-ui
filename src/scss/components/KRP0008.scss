@@ -1759,10 +1759,16 @@
             //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
             &.rental-card-list,
             &.careship-card-list {
+                z-index: 51;
                 .select-wrap {
                     &.is-selected {
                         .ui_dropdown_list {
                             display: none;
+                        }
+                    }
+                    &:not(.is-selected) {
+                        .dropdown-menu-wrap {
+                            border-top: 1px solid #ddd;
                         }
                     }
                     &.open {
@@ -1777,27 +1783,33 @@
                             .ui_dropdown_list {
                                 display: block;
                             }
+                            .dropdown-menu-wrap {
+                                border-top: 1px solid #ddd;
+                            }
                         }
                         .select-button {
                             border: 1px solid #000;
                             border-radius: 8px 8px 0 0;
+                            @include mobile {
+                                border-radius: 8px;
+                            }
                           .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
                             }
                             .simple-card-list {
-                                & > li:nth-child(4) {
+                                & > li:nth-child(n + 4) {
                                     display: block;
                                 }
                             }
                             .ui_dropdown_list {
-                                &:first-child {
-                                    border-radius: 8px 8px 0 0;
-                                }
                                 & + .ui_dropdown_list {
                                     border: 1px solid #000;
-                                    border-top: 0;
+                                    border-top: none;
+                                    @include mobile {
+                                        border: none;
+                                    }
                                 }
                             }
                         }
@@ -1831,6 +1843,8 @@
                             }
                         }
                         .select-list {
+                            max-height: none;
+                            overflow: initial;
                             margin: 0;
                             padding-bottom: 0;
                             li {
@@ -1866,8 +1880,14 @@
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
                                 }
                             }
-                            & + .ui_dropdown_list {
-                                border-top: 1px solid #ddd;
+                        }
+                        .dropdown-menu-wrap {
+                            position: relative;
+                            @include mobile {
+                                overflow: hidden;
+                                overflow-y: auto;
+                                max-height: 50vh;
+                                border-radius: 0 0 8px 8px;
                             }
                         }
                         .selectbox-list {
@@ -1891,7 +1911,7 @@
                     .cancel-item {
                         display: none;
                     }
-                    > li:nth-child(4) {
+                    > li:nth-child(n + 4) {
                         display: none;
                     }
                     li + li {
