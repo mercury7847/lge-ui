@@ -1,0 +1,31 @@
+<svg id="img_식물생활가전_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+    <defs>
+        <style>
+            .cls-1,.cls-2,.cls-3,.cls-4{fill:none}.cls-1,.cls-2,.cls-3{stroke:#000;stroke-width:3px}.cls-2,.cls-3{stroke-linecap:round}.cls-3{stroke-linejoin:round;stroke-miterlimit:10}.cls-5{stroke:none}
+        </style>1
+    </defs>
+    <g id="ic" transform="translate(12 2)">
+        <g id="Rectangle_18" data-name="Rectangle 18" class="cls-1">
+            <rect class="cls-5" width="56" height="75.942" rx="4"/>
+            <rect class="cls-4" x="1.5" y="1.5" width="53" height="72.942" rx="2.5"/>
+        </g>
+        <g id="Rectangle_19" data-name="Rectangle 19" class="cls-1" transform="translate(6 8)">
+            <rect class="cls-5" width="44" height="48" rx="4"/>
+            <rect class="cls-4" x="1.5" y="1.5" width="41" height="45" rx="2.5"/>
+        </g>
+        <path id="Path_109" data-name="Path 109" class="cls-2" d="M-17217.168-22535.033h40" transform="translate(17225.168 22567.033)"/>
+        <path id="Path_112" data-name="Path 112" class="cls-2" d="M-17217.422-22533.687h52" transform="translate(17219.311 22594.879)"/>
+        <path id="Path_114" data-name="Path 114" class="cls-2" d="M-17217.422-22534.723h40" transform="translate(17225.568 22602.773)"/>
+        <g id="Group_613" data-name="Group 613" transform="translate(19.627 15.939)">
+            <path id="Path_115" data-name="Path 115" class="cls-3" d="M19.182 18.611s-1.9 10.083 8.056 11.375c-.001 0 2.762-9.653-8.056-11.375z" transform="translate(-19.036 -18.611)"/>
+            <path id="Path_116" data-name="Path 116" class="cls-3" d="M29.87 19.547s1.9 10.083-8.056 11.371c0 0-2.766-9.649 8.056-11.371z" transform="translate(-12.98 -19.404)"/>
+            <path id="Path_117" data-name="Path 117" class="cls-2" d="M990.2 1034.17v6.686" transform="translate(-981.682 -1026.138)"/>
+        </g>
+        <g id="Group_615" data-name="Group 615" transform="translate(19.627 38.614)">
+            <path id="Path_115-2" data-name="Path 115" class="cls-3" d="M19.182 18.611s-1.9 10.083 8.056 11.375c-.001 0 2.762-9.653-8.056-11.375z" transform="translate(-19.036 -18.611)"/>
+            <path id="Path_116-2" data-name="Path 116" class="cls-3" d="M29.87 19.547s1.9 10.083-8.056 11.371c0 0-2.766-9.649 8.056-11.371z" transform="translate(-12.98 -19.404)"/>
+            <path id="Path_117-2" data-name="Path 117" class="cls-2" d="M990.2 1034.17v6.686" transform="translate(-981.682 -1026.138)"/>
+        </g>
+    </g>
+    <path id="Rectangle" class="cls-4" d="M0 0h80v80H0z"/>
+</svg>
