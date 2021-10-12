@@ -51,7 +51,7 @@
                 <!-- BTOCSITE-3002 멤버십 페이지 수정 // tab제거-->
                 <!-- BTOCSITE-3002 멤버십 페이지 수정 -->
                 <div class="cont-wrap">
-                    <div class="section-wrap">
+                    <div class="section-wrap membership">
                         <!-- 멤버십 혜택 -->
                         <div class="sects">
                             <div class="tit-wrap type2 align-center">
@@ -92,9 +92,7 @@
                                     <a href="#n" class="btn"><span>멤버십 가입</span></a>
                                 </div>
                             </div> 
-                        </div>
-                        <!-- VIP 멤버십(3년 무상 서비스) 혜택 -->
-                        <div class="sects">
+                            <!-- VIP 멤버십(3년 무상 서비스) 혜택 -->
                             <div class="tit-wrap type2 align-center">
                                 <h2 class="tit">VIP 멤버십(3년 무상 서비스) 혜택</h2>
                             </div>
@@ -102,7 +100,7 @@
                                 <div class="vip-benefit">
                                     <dl class="cont">
                                         <dt>VIP 멤버십이란?</dt>
-                                        <dd>1년간 5백만원 이상 구매 시, VIP 멤버십 달성</dd>
+                                        <dd>1년간 5백만원 이상 구매 시, <br class="mo-only">VIP 멤버십 달성</dd>
                                     </dl>
                                 </div>
                                 @@include('./common/modules/bullet-list.html', {
@@ -116,9 +114,7 @@
                                     ]
                                 }) 
                             </div>
-                        </div>
-                        <!-- 무상 A/S 안내 -->
-                        <div class="sects">
+                            <!-- 무상 A/S 안내 -->
                             <div class="tit-wrap type2 align-center">
                                 <h2 class="tit">무상 A/S 안내</h2>
                             </div>
@@ -210,9 +206,7 @@
                                     ]
                                 })
                             </div>
-                        </div>
-                        <!-- 멤버십 운영 매장 -->
-                        <div class="sects">
+                            <!-- 멤버십 운영 매장 -->
                             <div class="tit-wrap type2 align-center">
                                 <h2 class="tit">멤버십 운영 매장</h2>
                             </div>
@@ -295,9 +289,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 가입 안내 -->
-                        <div class="sects">
+                            <!-- 가입 안내 -->
                             <div class="tit-wrap type2 align-center">
                                 <h2 class="tit">가입 안내</h2>
                             </div>
@@ -307,11 +299,36 @@
                                         <dl>
                                             <dt>온라인 / 모바일 가입 방법</dt>
                                             <dd>
-                                                <p>LGE.COM 또는 LG전자 멤버십 앱에서 회원가입,<br>
+                                                <p>LGE.COM 또는 LG전자 멤버십 앱에서 회원가입,<br class="pc-only">
                                                     본인인증 후 가입 완료!</p>
                                                 <a href="#n" class="btn"><span>멤버십 가입</span></a>
                                             </dd>
                                         </dl>
+                                        <div class="mo-only">
+                                            <div class="tit-wrap type-sub align-center">
+                                                <h3 class="tit">LG전자 멤버십 APP 다운</h3>
+                                            </div>
+                                            <div class="section-inner">
+                                                <div class="app-down">
+                                                    <div class="inner">
+                                                        <span class="img-qr">
+                                                            <img src="/lg5-common/images/BMC/img-qr-googleplay-m.png" alt="Google Play Qr코드"/>
+                                                        </span>
+                                                        <a href="#" class="btn-app-down">
+                                                            <img src="/lg5-common/images/BMC/img-btn-googleplay-m.png" alt="Google Play"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="inner">
+                                                        <span class="img-qr">
+                                                            <img src="/lg5-common/images/BMC/img-qr-appstore-m.png" alt="App Store Qr코드"/>
+                                                        </span>
+                                                        <a href="#" class="btn-app-down">
+                                                            <img src="/lg5-common/images/BMC/img-btn-appstore-m.png" alt="App Store"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="inner offline">
                                         <dl>
@@ -325,16 +342,34 @@
                                 </div>
                             </div>
                             <!-- LG전자 멤버십 APP 다운 -->
-                            <div class="tit-wrap type-sub align-center">
-                                <h2 class="tit">LG전자 멤버십 APP 다운</h2>
-                            </div>
-                            <div class="section-inner">
-                                <div class="app-down">
-                                    <div class="inner">
-                                        안드로이드 앱 설치하기
-                                    </div>
-                                    <div class="inner">
-                                        iOS 앱 설치하기
+                            <div class="pc-only">
+                                <div class="tit-wrap type-sub align-center">
+                                    <h3 class="tit">LG전자 멤버십 APP 다운</h3>
+                                </div>
+                                <div class="section-inner">
+                                    <div class="app-down">
+                                        <div class="inner">
+                                            <span class="txt-btn">
+                                                <strong>안드로이드 앱 설치하기</strong>
+                                                <a href="#" class="btn-app-down">
+                                                    <img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>
+                                                </a>
+                                            </span>
+                                            <span class="img-qr">
+                                                <img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>
+                                            </span>
+                                        </div>
+                                        <div class="inner">
+                                            <span class="txt-btn">
+                                                <strong>iOS 앱 설치하기</strong>
+                                                <a href="#" class="btn-app-down">
+                                                    <img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>
+                                                </a>
+                                            </span>
+                                            <span class="img-qr">
+                                                <img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
