@@ -208,7 +208,7 @@ var lls = {
         var chkUrl = pushData.subcheckUrl;
         var subUrl = pushData.subscribeUrl;
 
-        if( vcui.detect.isMobileDevice && isApp()) {
+        if( vcui.detect.isMobileDevice ) {
             if ( isLogin == "Y" ) {
                 lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
                     if( result.status == "success") {
@@ -219,7 +219,7 @@ var lls = {
                         self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
         
                         if( click ) {
-                            param.subscribeAction = flag == "Y" ? "C" : "R";
+                            // param.subscribeAction = flag == "Y" ? "C" : "R";
                             lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
                                 if( subResult.status == "success") {
                                     var subData = subResult.data;
@@ -241,7 +241,7 @@ var lls = {
             }
     
             if( !click ) {
-                if( vcui.detect.isMobileDevice && isApp()) {
+                if( vcui.detect.isMobileDevice ) {
                     self.$pushContent.show();
                 }
             }
