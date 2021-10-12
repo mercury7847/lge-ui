@@ -1060,6 +1060,9 @@
                         }
                         & + li{
                             margin-top:-248px;
+                            @include tablet{
+                                margin-top: -200px;
+                            }
                             @include mobile{
                                margin-top:50px;
                             }
@@ -1211,10 +1214,16 @@
             @include tablet{
                 left:0
             }
+            @media screen and (max-width: 1450px) {
+                left:0
+            }
         }
         .slick-arrow.slick-next{
             right:-18px;
             @include tablet{
+                right:0
+            }
+            @media screen and (max-width: 1450px) {
                 right:0
             }
         }
@@ -1251,7 +1260,7 @@
         }
     }
     $prdIconLists: (refrigerator, kimchiRefrigerator, wineCellar, cooktop, dishWasher, lightWaveOven, waterPurifier, beerMaker, washer, dryer, styler, vacuumCleaner, airCon, airCleaner, dehumidifier, ceilingFan);
-    @each $item in $prdIconLists {
+    @each $name in $prdIconLists {
         .icon{
             display: inline-block;;
             width: 64px;
@@ -1264,10 +1273,10 @@
             &-all{
                 background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
             }
-            &-#{$item}{
-                background-image:url('/lg5-common/images/PRH/app/img_#{$item}.png');
+            &-#{$name}{
+                background-image:url('/lg5-common/images/PRH/app/img_#{$name}.png');
                 &.fill{
-                    background-image:url('/lg5-common/images/PRH/app/search/img_#{$item}.png');
+                    background-image:url('/lg5-common/images/PRH/app/search/img_#{$name}.png');
                 }
             }
         }
@@ -1431,6 +1440,34 @@
                     font-size: 14px;
                     line-height: 1.86;
                     margin-top: 6px;
+                }
+            }
+        }
+    }
+}
+
+.popup-howtouse{
+    width: 1146px;
+    max-width: 1146px;
+    .howto-slide{
+        width: 1066px;
+        .slide-item{
+            .inner{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .image{
+                width: 177px;
+                height: 365px;
+                img{
+                    width: 100%;
+                }
+            }
+            .text{
+                margin-top: 36px;
+                .num{
+                    font-weight: 800;
                 }
             }
         }
