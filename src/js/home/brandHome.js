@@ -792,7 +792,7 @@
             $device.find('.intro').css({'opacity':val3});
             $device.find('.ui_last').css({'opacity':val4});
 
-            var useWrap = $('.app-use-wrap').position().top;            
+            var useWrap = $('.app-use-wrap').position().top;
 
             if(st + deviceH*2 - 188 > useWrap){
                 var ny = st + deviceH*2 - 188 - useWrap;
@@ -975,6 +975,11 @@
         smartTabFn();
         // BTOCSITE-77
 
+
+        //BTOCSITE-5860 - ThinQ 체험하기 팝업
+        $('.btn-experience').on('click',function(e){
+            $('.popup-experience').vcModal("show");
+        });
 
         $window.on('floatingTop', function(){
             currentPage = 0;

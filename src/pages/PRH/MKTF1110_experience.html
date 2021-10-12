@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["PRH/PRH"],
+        componentID: "KRC0015",
+        pageTitle: "LG ThinQ | LG전자",
+        pageDesc: "LG ThinQ는 LG만의 인공지능기술이 적용된 제품과 서비스 브랜드입니다. 일상 속에서 LG ThinQ를 통해 한 번도 느껴보지 못한 자유를 누려보세요."
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle : "LG ThinQ",
+            mobileCase : "subMain"
+        })
+        <!-- //210311_H1추가 -->
+
+        <div class="container">
+            <!-- LG ThinQ -->
+            <div class="contents thinq-main" >
+                <div class="sub-main">
+                    <!-- BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)  -->
+                    <!-- D: 카피위치는 text-area 옵션 클래스 참고 -->
+                    @@include('./common/partials/KRC0015-hero-brand.html', {
+                        "common": {
+                            "zero": "zero-top zero-btm",
+                            "bg-color": "",
+                            "className": 'hero-brand'
+                        },
+                        "title": {
+                            "font-class1": "font-regular",
+                            "font-class2": "font-underline",
+                            "headline": "<h2>우리는 늘 다양한 바람을 가지고 <br>더 나은 삶을 원합니다.</h2>",
+                        },
+                        "carousel": {
+                            "type": "hero-banner",
+                            "itemArr": [
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual02.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png",
+                                    "boxAlign" : "box-align-left", 
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":"",
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                    
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                }
+                            ]
+                        }
+                    })
+                    <!-- //BTOCSITE-4251 hero carousel-->
+                    <!-- //BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel) -->
+
+                    <div class="brand-wrap thinq-wrap">
+                        <div class="thinq-tabs">
+                            <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                                <ul class="tabs">
+                                    <li><a href="#thinq-cont1">LG ThinQ<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#thinq-cont2">라이프스타일</a></li>
+                                    <li class="on"><a href="#thinq-cont3">APP</a></li>
+                                    <li><a href="#thinq-cont4">매거진</a></li>
+                                    <!-- <li><a href="#thinq-cont5">제품</a></li> 210312 수정 [제품 탭 삭제] -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- LG ThinQ -->
+                        <!-- <div id="thinq-cont1" class="tab-contents thinq-brand-stroy">
+                            <h2 class="blind">LG ThinQ</h2>
+                            <div class="inner">
+                                <div class="thinq-section">
+                                    <span class="eyebrow">맞춤형 진화</span>
+                                    <h3 class="title"><span>LG ThinQ는 매일 매일 당신에 맞춰 진화합니다</span></h3>
+                                    <p class="body-copy">ThinQ는 사용할 때마다 쌓이는 생활 데이터를 기반으로 당신의 사용습관과 생활패턴을 스스로 학습해 당신에 맞게 최적화됩니다.<br>당신을 배우고, 당신을 이해하고, 당신을 돕는 인공지능가전 LG ThinQ</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/img-thinq01.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="thinq-section">
+                                    <span class="eyebrow">폭넓은 경험</span>
+                                    <h3 class="title"><span>LG ThinQ는 당신의 일상 속 모든 순간과 함께 합니다</span></h3>
+                                    <p class="body-copy">TV, 냉장고, 세탁기, 에어컨 등 가전 제품부터 스마트폰까지 집 안에서든 밖에서든 ThinQ를 만나실 수 있습니다.<br>모든 제품들이 서로 연결되고 필요한 정보를 나누어 지금 당신에게 딱 맞는 도움을 드립니다.</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/img-thinq02.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="thinq-section">
+                                    <span class="eyebrow">개방성</span>
+                                    <h3 class="title"><span>LG ThinQ는 모두에게 열려있습니다</span></h3>
+                                    <p class="body-copy">당신이 어떤 인공지능서비스를 사용하시더라도 ThinQ라면 제약 없이 활용하실 수 있습니다.<br>인공지능은 오직 당신을 위해 존재하기에 당신을 도울 수 있는 더 좋은 방법이 있다면 플랫폼의 한계 없이 모두에게 열려있어야 합니다.</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/img-thinq03.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-banner">
+                                <div class="inner">
+                                    <div class="text-area">
+                                        <span class="tit">LG ThinQ 라이프 스타일</span>
+                                        <p class="desc">ThinQ가 알아서 챙겨주니까! 한번도 느껴보지 못한 자유 Think Wise. Be Free.</p>
+                                    </div>
+                                    <a href="#thinq-cont2" class="btn border size-m"><span>자세히 알아보기</span></a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- 210405 내용전체수정 -->
+                        <div id="thinq-cont1" class="tab-contents thinq-brand-stroy">
+                            <h2 class="blind">LG ThinQ</h2>
+                            <div class="inner">
+                                <div class="thinq-section">
+                                    <span class="eyebrow">앱 하나로 간편한 컨트롤</span>
+                                    <h3 class="title"><span>LG ThinQ로 당신의 일상을 더 편리하게</span></h3>
+                                    <p class="body-copy">앱 하나로 언제 어디서나 가전 제품은 물론, 집안 곳곳을 컨트롤 할 수 있습니다.</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/thinq/img-thinq01.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="thinq-section">
+                                    <span class="eyebrow">먼저 알려주는 똑똑한 케어</span>
+                                    <h3 class="title"><span>LG ThinQ로 당신이 모르는 것까지도 알아서 한번에
+                                        </span></h3>
+                                    <p class="body-copy">당신을 위한 정보들을 먼저 알아서 준비하고 딱 맞추어 알려 줍니다.</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/thinq/img-thinq02.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="thinq-section">
+                                    <!-- 210406 문구수정 -->
+                                    <span class="eyebrow">처음 경험하는 스마트한 쇼핑</span>
+                                    <!-- //210406 문구수정 -->
+                                    <h3 class="title"><span>LG ThinQ로 쇼핑도 더 쉽고 간편하게 </span></h3>
+                                    <p class="body-copy">당신에게 필요한 것이 무엇인지 알아서 알려주고, 바로 구매까지 가능합니다.</p>
+                                    <div class="image">
+                                        <img src="/lg5-common/images/PRH/thinq/img-thinq03.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-banner">
+                                <div class="inner">
+                                    <div class="text-area">
+                                        <span class="tit">LG ThinQ 라이프 스타일</span>
+                                        <p class="desc">ThinQ가 알아서 챙겨주니까! 한번도 느껴보지 못한 자유 Think Wise. Be Free.</p>
+                                    </div>
+                                    <a href="#thinq-cont2" class="btn border size-m"><span>자세히 알아보기</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //210405 내용전체수정 -->
+                        <!-- // LG ThinQ -->
+                        <!-- 라이프스타일 -->
+                        <!-- <div id="thinq-cont2" class="tab-contents thinq-lifestyle">
+                            <h2 class="blind">라이프스타일</h2>
+                            <div class="thinq-section free-life-wrap">
+                                <div class="inner">
+                                    스크롤 시 .fixed 추가
+                                    <div class="title-area">
+                                        <span class="eyebrow">Mom &amp; Dad's Free Life</span>
+                                        <h3 class="title"><span>ThinQ로 만드는 <br class="pc-only">여유로운 생활</span></h3>
+                                    </div>
+                                    <div class="free-life">
+                                        <div class="box animate-target animated">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle01.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle01-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>상쾌한 가족의 아침</span></h3>
+                                            <p class="body-copy">간밤에 내린 비에 눅눅해진 아침 뽀송하게 세탁된 옷과 <br class="pc-only">신선하고 따뜻한 아침 식사로 오늘 하루도 활기차게 시작해 보세요.</p>
+                                            <ul class="thinq-life-icons morning">
+                                                210312 수정 [텍스트 수정]
+                                                <li>
+                                                    <span>원격제어로 <br>스타일러 코스 작동</span>
+                                                </li>
+                                                <li>
+                                                    <span>아침식사 메뉴 <br>레시피 설정</span>
+                                                </li>
+                                                // 210312 수정 [텍스트 수정]
+                                            </ul>
+                                        </div>
+                                        <div class="box animate-target">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle02.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle02-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>친구들과의 홈파티, 오후</span></h3>
+                                            <p class="body-copy">친구들을 위해 조촐한 홈 파티를 준비한 날, <br class="pc-only">각자의 입맛에 맞는 음식은 물론 집안 구석구석 공기까지 세심하게 챙겨 <br class="pc-only">편안하고 즐거운 시간을 보내고 싶은 마음까지 전달해보세요.</p>
+                                            <ul class="thinq-life-icons afternoon">
+                                                <li>
+                                                    <span>남은 식재료 <br>유통기한 확인</span>
+                                                </li>
+                                                <li>
+                                                    210312 수정 [텍스트 수정]
+                                                    <span>공기 질 감지 및 <br>원격제어</span>
+                                                    // 210312 수정 [텍스트 수정]
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="box animate-target">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle03.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle03-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>하루 끝에 휴식, 저녁</span></h3>
+                                            <p class="body-copy">하루 끝에 맞이한 꿀맛 같은 휴식, 말 한 마디면 취향에 맞는 드라마가 시작되고 내 몸이 원하는 쾌적한 온도로 맞춰지는 지금 이 순간 만큼은 당신만을 위한 자유로운 시간을 즐겨보세요.</p>
+                                            <ul class="thinq-life-icons evening">
+                                                210312 수정 [텍스트 수정]
+                                                <li>
+                                                    <span>말 한마디로 취향에 <br>맞는 컨텐츠 추천</span>
+                                                </li>
+                                                <li>
+                                                    <span>활동량에 따라 <br>알아서 냉방 조절</span>
+                                                </li>
+                                                // 210312 수정 [텍스트 수정]
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thinq-section joyful-life-wrap">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <span class="eyebrow">Joyful My Life</span>
+                                        <h3 class="title"><span>ThinQ로 즐기는 멋진하루</span></h3>
+                                    </div>
+                                    <div class="joyful-life">
+                                        <div class="tabs-wrap ui_tab">
+                                            <ul class="tabs">
+                                                <li class="on">
+                                                    <a href="#morningLife">
+                                                        <i class="icon morning"></i>
+                                                        피로를 푸는 주말<span>아침</span>
+                                                        <em class="blind">선택됨</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#afternoonLife">
+                                                        <i class="icon afternoon"></i>
+                                                        날씨 좋은 날 외출<span>오후</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#eveningLife">
+                                                        <i class="icon evening"></i>
+                                                        즐거운 모임<span>저녁</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="morningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle04.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle04-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <span class="tit">피로를 푸는 주말 아침</span>
+                                                <p class="desc">주말이라고 누워만 있기엔 아까운 아침, 몸도 마음도 챙기셔야죠!<br>
+                                                    가벼운 아침 운동으로 한 주의 피로를 풀고 운동 후엔 건강한 레시피로 영양까지 챙겨보세요.</p>
+                                            </div>
+                                        </div>
+                                        <div id="afternoonLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle05.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle05-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <span class="tit">친구들과의 홈파티, 오후</span>
+                                                <p class="desc">오랜만에 친구들과의 약속 대충 입고 나가기엔 날씨가 너무 좋다면 매일 입는 평범한 데일리룩 대신 로코 속 트렌디룩을 <br class="pc-only">완벽하게 연출해 오늘 모임 속 주인공이 되어보세요.</p>
+                                            </div>
+                                        </div>
+                                        <div id="eveningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle06.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle06-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <span class="tit">즐거운 모임의 저녁</span>
+                                                <p class="desc">좋아하는 사람들과 즐거운 시간 보내고 있나요?<br>
+                                                    혼자 있는 반려견 걱정과 밀린 빨래와 청소 걱정으로 친구들과의 즐거운 시간을 방해 받지마세요.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thinq-section happy-life-wrap">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <span class="eyebrow">Happy Family Life</span>
+                                        <h3 class="title"><span>ThinQ와 함께하는 온 가족 맞춤 행복</span></h3>
+                                    </div>
+                                    <div class="happy-life">
+                                        <div class="box animate-target animated">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle07.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle07-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>우리집 아이들의 아침</span></h3>
+                                            <p class="body-copy">아침부터 아이들은 지치지도 않나봐요. 매일 신나게 뛰어노는 우리집 개구쟁이들을 위해 마음껏 놀아도 걱정없는 상쾌한 공기와 좋아하는 프로그램을 준비해보세요.</p>
+                                            <ul class="thinq-life-icons morning">
+                                                210312 수정 [텍스트 수정]
+                                                <li>
+                                                    <span>취향에 맞는 <br>컨텐츠 추천</span>
+                                                </li>
+                                                <li>
+                                                    <span>공기질 감지 및 <br>원격제어</span>
+                                                </li>
+                                                // 210312 수정 [텍스트 수정]
+                                            </ul>
+                                        </div>
+                                        <div class="box animate-target animated">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle08.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle08-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>즐거운 피크닉의 오후</span></h3>
+                                            <p class="body-copy">가족 모두가 손꼽아온 피크닉이 있는 날, 모두가 좋아 하는 메뉴로 가방을 가득 채우고 목적지 까지 가는 길 내내 행복을 놓치지 않도록 완벽한 드라이빙을 선물하세요.</p>
+                                            <ul class="thinq-life-icons afternoon">
+                                                <li>
+                                                    210312 수정 [텍스트 수정]
+                                                    <span>피크닉 메뉴 레시피 <br>설정</span>
+                                                    // 210312 수정 [텍스트 수정]
+                                                </li>
+                                                <li>
+                                                    <span>날씨, 교통정보 <br>음성인식 검색</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="box animate-target animated">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-lifestyle09.jpg" data-m-src="/lg5-common/images/PRH/img-lifestyle09-m.jpg" alt="">
+                                            </div>
+                                            <h3 class="title"><span>가족 행복의 마무리, 저녁</span></h3>
+                                            <p class="body-copy">즐거운 여행길의 끝자락 집에 도착하니 밀린 세탁과 청소가 귀찮은 것은 당연해요! 오늘 하루 끝까지 행복할 수 있도록 여행 속 에피소드와 추억 꾸러미를 가족들과 함께 풀어보세요.</p>
+                                            <ul class="thinq-life-icons evening">
+                                                210312 수정 [텍스트 수정]
+                                                <li>
+                                                    <span>최적의 세탁옵션 <br>추천</span>
+                                                </li>
+                                                <li>
+                                                    <span>예약된 시간에 <br>알아서 청소 시작</span>
+                                                </li>
+                                                // 210312 수정 [텍스트 수정]
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-banner">
+                                <div class="inner">
+                                    <div class="text-area">
+                                        <span class="tit">LG ThinQ 앱으로 보다 편리한 생활</span>
+                                        <p class="desc">집 밖에서 청소기를 작동시키고, 집안 공기 상태를 확인하며 말 한마디로 다양한 가전을 제어 하는 새로운 경험</p>
+                                    </div>
+                                    <a href="#thinq-cont3" class="btn border size-m"><span>자세히 알아보기</span></a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- 210405 내용전체수정 -->
+                        <div id="thinq-cont2" class="tab-contents thinq-lifestyle">
+                            <h2 class="blind">라이프스타일</h2>
+                            <div class="thinq-section life-style-top-wrap">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <span class="eyebrow">Special Life</span>
+                                        <h3 class="title"><span>
+                                                일상을 보다 특별하게,<br class="pc-only">
+                                                ThinQ에게 물어보세요.
+                                            </span></h3>
+                                    </div>
+                                    <div class="life-style-top">
+                                        <div class="tabs-wrap ui_tab">
+                                            <ul class="tabs">
+                                                <li class="on">
+                                                    <a href="#idx_01_afternoonLife">
+                                                        <i class="icon afternoon"></i>
+                                                        손님 맞이로 분주한<span>Day</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#idx_01_eveningLife">
+                                                        <i class="icon evening"></i>
+                                                        함께해서 즐거운<span>Night</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="idx_01_afternoonLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle05.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle05-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">오늘은 기다리던 친구들과의 홈 파티!</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">오랜만에 실력 발휘가 필요한 날이네요.<br class="pc-only">
+                                                    어제 사온 김치는 먹기 좋게 익어 있고, 오븐 세팅까지 한 번에 끝났네요.
+                                                    <br class="pc-only">
+                                                    <br class="pc-only">
+                                                    특별한 날에 어울리는 스페셜한 요리도 문제없죠. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons morning">
+                                                    <li>
+                                                        <span>김치냉장고 <br>인공지능 맞춤 보관</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>광파오븐 <br>인공지능 쿡</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="idx_01_eveningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle06.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle06-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">헤어짐이 아쉽다면, 우리 다음 파티 준비를 시작해볼까요?</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">
+                                                    맛있는 음식과 즐거운 대화로 행복한 시간을 보내다 보니 어느새 시간이 훌쩍 지나버렸네요.<br>
+                                                    마지막 코스는 특별한 자리에 어울리는 Hot 칵테일로 장식해 보세요.<br>
+                                                    <br>
+                                                    행복한 시간이 더욱 특별해 집니다. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons evening">
+                                                    <li>
+                                                        <span>정수기<br>
+                                                            정수기 활용 레시피 제안</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>공통<br>
+                                                            HMR 주문</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thinq-section life-style-center-wrap">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <span class="eyebrow">Care Life</span>
+                                        <h3 class="title"><span>공간을 언제나 완벽하게, ThinQ로 케어하세요.</span></h3>
+                                    </div>
+                                    <div class="life-style-center">
+                                        <div class="tabs-wrap ui_tab">
+                                            <ul class="tabs">
+                                                <li class="on">
+                                                    <a href="#idx-02-morningLife">
+                                                        <i class="icon morning"></i>
+                                                        바쁜 하루의 시작<span>Day</span>
+                                                        <em class="blind">선택됨</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#idx-02-eveningLife">
+                                                        <i class="icon evening"></i>
+                                                        빛나는 내일을 준비하는<span>Night</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="idx-02-morningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle-new02.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle-new02-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">중요한 프레젠테이션이 있는 오늘!</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">
+                                                    당신은 발표에만 집중해도 괜찮아요. 365일, 24시간 우리 집은 알아서 케어되고 있으니까요.<br class="pc-only">
+                                                    당신이 자리를 비운 동안에도 완벽하게. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons morning">
+                                                    <li> <span>건조기<br> 아웃도어 코스 다운로드</span> </li>
+                                                    <li> <span>공기청정기<br> 우리집 공기질이 모니터링<br> 및 예약 권유</span> </li>
+                                                    <li> <span>냉장고<br> 냉동실 온도 이상 감지 알림<br>
+                                                            → 원스탑서비스</span> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="idx-02-eveningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle-new03.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle-new03-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">고된 하루를 마치고 집에 돌아왔다면!</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">
+                                                    겉옷도, 다른 생각도 다 잠시 미뤄두고, 오롯이 따뜻한 휴식을 즐겨보세요.<br>
+                                                    내일 하루가 달라집니다. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons morning">
+                                                    <li> <span>스타일러<br> 아로마 향기 시트 정기구매</span> </li>
+                                                    <li> <span>에어컨<br> 실외기 온도 높음 알림<br>
+                                                            및 해결 방안 제시</span> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thinq-section life-style-bottom-wrap">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <span class="eyebrow">Special Life</span>
+                                        <h3 class="title"><span>
+                                                언제 어디서든<br class="pc-only">
+                                                안심할 수 있게,<br class="pc-only">
+                                                ThinQ로 컨트롤 하세요.
+                                            </span></h3>
+                                    </div>
+                                    <div class="life-style-bottom">
+                                        <div class="tabs-wrap ui_tab">
+                                            <ul class="tabs">
+                                                <li class="on">
+                                                    <a href="#idx_03_afternoonLife">
+                                                        <i class="icon afternoon"></i>
+                                                        설레는 마음을 안고 출발<span>Day</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#idx_03_eveningLife">
+                                                        <i class="icon evening"></i>
+                                                        행복한 휴가의 끝<span>Night</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="idx_03_afternoonLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle-new04.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle-new04-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">오랜만의 휴가는 모두를 설레게 합니다.</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">
+                                                    즐거운 여행을 떠나면서, 혹시나 마음은 집에 두고 온 건 아니겠지요?<br class="pc-only">
+                                                    오롯이 행복한 순간에만 집중하세요.<br class="pc-only"><br class="pc-only">
+                                                    언제 어디서든 안심할 수 있죠. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons morning">
+                                                    <li>
+                                                        <span>인덕션 <br>원격제어(Off)</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>건조기 <br>구김방지 기능 사용 후 의류 방치 알림</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="idx_03_eveningLife" class="tab-contents">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/thinq/img-lifestyle-new05.jpg"
+                                                    data-m-src="/lg5-common/images/PRH/thinq/img-lifestyle-new05-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <h4 class="tit">즐거운 휴가가 끝나가나요?</h4><!-- 2100422 웹접근성 수정 [span -> h4 태그 변경] -->
+                                                <p class="desc">
+                                                    이 여행이 끝나더라도 당신을 기다리고 있는 아늑한 집에서의 행복한 시간이 또 펼쳐질 거에요.<br class="pc-only">
+                                                    당신이 돌아올 수 있도록 집은 벌써 준비를 마쳤으니까요. <br class="pc-only"><br class="pc-only">
+                                                    여행이 끝나더라도 행복은 이어집니다. ThinQ와 함께라면!
+                                                </p>
+                                                <ul class="thinq-life-icons evening">
+                                                    <li>
+                                                        <span>로봇 청소기<br>
+                                                            홈가드 & 홈 뷰</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>공기청정기<br>
+                                                            원격제어(On)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-banner">
+                                <div class="inner">
+                                    <div class="text-area">
+                                        <span class="tit">LG ThinQ 앱으로 보다 편리한 생활</span>
+                                        <p class="desc">집 밖에서 청소기를 작동시키고, 집안 공기 상태를 확인하며 말 한마디로 다양한 가전을 제어 하는 새로운 경험</p>
+                                    </div>
+                                    <a href="#thinq-cont3" class="btn border size-m"><span>자세히 알아보기</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //210405 내용전체수정 -->
+                        <!-- // 라이프스타일 -->
+
+                        <!-- BTOCSSITE-77-->
+                        <!-- APP -->
+                        <div id="thinq-cont3" class="tab-contents thinq-app">
+                            <h2 class="blind">APP</h2>
+
+
+                            <!--BTOCSITE-5860 - ThinQ 브랜드관 내 제품기능 및 체험하기 추가 요청 : 임시 마크업 -->
+                            <div style="margin:100px auto;text-align:center;">
+                                <button type="button" class="btn-experience">체험하기 팝업 검수용</button>
+                            </div>
+                            <!--//BTOCSITE-5860 - ThinQ 브랜드관 내 제품기능 및 체험하기 추가 요청 : 임시 마크업 -->
+
+                            <!--[S] BTOCSITE-5860 - ThinQ 브랜드관 내 제품기능 및 체험하기 팝업-->
+                            <article id="popup" class="popup-wrap popup-experience">
+                                <header class="pop-header">
+                                    <h1 class="tit"><span>LG ThinQ앱 체험</span></h1>
+                                </header>
+                                <section class="pop-conts no-footer">
+                                    <iframe src="https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </section>
+                                <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                            </article>
+                            <!--//[E] BTOCSITE-5860 - ThinQ 브랜드관 내 제품기능 및 체험하기 팝업-->
+
+
+                        </div>
+                        <!-- // APP -->
+                        <!-- //BTOCSSITE-77-->
+                        <!-- 매거진 -->
+                        <div id="thinq-cont4" class="tab-contents thinq-magazine">
+                            <h2 class="blind">매거진</h2>
+                            <div class="thinq-section">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <h3 class="title"><span>LG ThinQ 매거진</span></h3>
+                                    </div>
+                                    <div class="magazine-wrap">
+                                        <div class="video-wrap">
+                                            <div class="video-asset youtube-box">
+                                                <div class="video-box">
+                                                    <!-- <iframe src="https://www.youtube.com/embed/vgfhzPKX4oA" id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player"></iframe> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="video-thumb">
+                                            <div class="slide-wrap ui_carousel_slider">
+                                                <div class="indi-wrap">
+                                                    <ul class="indi-conts ui_carousel_dots">
+                                                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="slide-content ui_carousel_list">
+                                                    <ul class="slide-track ui_carousel_track">
+                                                        <!-- 210224 수정 [링크 추가] -->
+                                                        <li class="slide-conts ui_carousel_slide slide_on">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/vgfhzPKX4oA"><!-- 210218 수정 [a 태그 추가 - 아래 모두 동일] -->
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb01.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘당신과 ThinQ를 맞추다’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/f6bWuXCnA1E">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb02.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘마음 치유 시간 앱 소개’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/XbrSmi7euoQ">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb03.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘마음 치유 시간 제품 구동’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/31BYPmS1SBM">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb04.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘하면서 하는중 런칭’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/ZktK5eUKUsY">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb05.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘하면서 하는중 캠핑’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/8EI2ABPwEdY">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb06.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">‘하면서 하는중 요가’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/XgqkIIt1fMA">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb07.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG ThinQ</span>
+                                                                    <p class="desc">통합광고</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/BUnK8zT3Xyg">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb08.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG 올레드 TV ThinQ</span>
+                                                                    <p class="desc">‘채널바로검색’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/8NJ7kxWRvTc">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb09.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG 올레드 TV ThinQ</span>
+                                                                    <p class="desc">‘추억공유’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/adX7MDIYg0U">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb10.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG 올레드 TV ThinQ</span>
+                                                                    <p class="desc">‘축구’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <!-- <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/vgfhzPKX4oA">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb11.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">LG G7 ThinQ X BTS</span>
+                                                                </div>
+                                                            </a>
+                                                        </li> 210224 수정 [삭제] -->
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/75PGnhbH-7A">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb12.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">인공지능</span>
+                                                                    <p class="desc">‘스스로 에어컨 여름’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/-8wTX6lriUY">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb13.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">인공지능</span>
+                                                                    <p class="desc">스스로 에어컨 2018</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/ymdF0KGSmXU">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb14.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">인공지능</span>
+                                                                    <p class="desc">‘로봇 청소의 시작’ 편</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="slide-conts ui_carousel_slide">
+                                                            <a href="#" data-url="https://www.youtube.com/embed/M3JCKeFAT-o">
+                                                                <div class="thumb">
+                                                                    <img src="/lg5-common/images/PRH/img-magazine-thumb15.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">로봇청소기</span>
+                                                                    <p class="desc">R9 ThinQ 기능 소개</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="slide-controls">
+                                                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="bottom-banner">
+                                <div class="inner">
+                                    <div class="text-area">
+                                        <span class="tit">편리한 생활을 선사하는 LG ThinQ 제품을 만나보세요</span>
+                                    </div>
+                                    <a href="#thinq-cont5" class="btn border size-m"><span>자세히 알아보기</span></a>
+                                </div>
+                            </div> 210312 수정 [제품 탭 삭제로 삭제] -->
+                        </div>
+                        <!-- // 매거진 -->
+                        <!-- 제품 210312 수정 [제품 탭 삭제]
+                        <div id="thinq-cont5" class="tab-contents thinq-product">
+                            <h2 class="blind">제품</h2>
+                            <div class="thinq-section">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <h3 class="title"><span>LG ThinQ 제품</span></h3>
+                                    </div>
+                                    !-- 210304 수정 [돔 수정] -- !-- 210224 수정 [링크 추가] --
+                                    <div class="product-banner">
+                                        <div class="box">
+                                            <a href="https://www.lge.co.kr/lgekor/product/media/tv/productDetail.do?cateId=1160&prdId=EPRD.346665" target="_blank" title="LG 올레드 AI ThinQ 자세히 보기 새 창 열림">
+                                                <div class="image">
+                                                    <img data-pc-src="/lg5-common/images/PRH/img-product01.jpg" data-m-src="/lg5-common/images/PRH/img-product01-m.jpg" alt="">
+                                                </div>
+                                            </a>
+                                            <div class="text-area">
+                                                <span class="tit">LG 올레드 AI <br>ThinQ</span>
+                                                <a href="/tvs/oled65rxkna" class="btn border" target="_blank" title="새 창 열림"><span>자세히 보기</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <a href="https://www.lge.co.kr/lgekor/product/household-appliances/vacuum/productDetail.do?cateId=6180&prdId=EPRD.339138" target="_blank" title="LG 코드제로 R9 ThinQ 자세히 보기 새 창 열림">
+                                                <div class="image">
+                                                    <img data-pc-src="/lg5-common/images/PRH/img-product02.jpg" data-m-src="/lg5-common/images/PRH/img-product02-m.jpg" alt="">
+                                                </div>
+                                            </a>
+                                            <div class="text-area">
+                                                <span class="tit">LG 코드제로 R9 <br>ThinQ</span>
+                                                <a href="/vacuum-cleaners/r969ia" class="btn border" target="_blank" title="새 창 열림"><span>자세히 보기</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <a href="https://www.lge.co.kr/lgekor/product/aircare/air-conditioner/productDetail.do?cateId=3200&prdId=EPRD.349940" target="_blank" title="LG WHISEN ThinQ 자세히 보기 새 창 열림">
+                                                <div class="image">
+                                                    <img data-pc-src="/lg5-common/images/PRH/img-product03.jpg" data-m-src="/lg5-common/images/PRH/img-product03-m.jpg" alt="">
+                                                </div>
+                                            </a>
+                                            <div class="text-area">
+                                                <span class="tit">LG WHISEN <br>ThinQ</span>
+                                                <a href="/air-conditioners/fq23ladrb2" class="btn border" target="_blank" title="새 창 열림"><span>자세히 보기</span></a>
+                                            </div>
+                                        </div>
+                                        !-- <a href="#" class="box" title="LG ThinQ Hub 자세히 보기">
+                                            <div class="image">
+                                                <img data-pc-src="/lg5-common/images/PRH/img-product04.jpg" data-m-src="/lg5-common/images/PRH/img-product04-m.jpg" alt="">
+                                            </div>
+                                            <div class="text-area">
+                                                <span class="tit">LG ThinQ <br>Hub</span>
+                                                <span class="btn border">자세히 보기</span>
+                                            </div>
+                                        </a> 210224 수정 [삭제] --
+                                    </div>
+                                    !-- // 210304 수정 [돔 수정] --
+                                </div>
+                            </div>
+                            <div class="thinq-section">
+                                <div class="inner">
+                                    <div class="title-area">
+                                        <h3 class="title"><span>사용자 리뷰</span></h3>
+                                    </div>
+                                    !-- 크레마 솔루션 호출되는 영역 --
+                                    !-- [임시_210304] 임시 인라인 스타일. 인라인 스타일은 삭제되어야 함 --
+                                    <div style="width:100%;height:500px;background-color:#f4f4f4;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        !-- // 제품 // 210312 수정 [제품 탭 삭제] -->
+                        @@include('./common/footer.html')
+                    </div>
+                </div>
+            </div>
+            <!-- // LG ThinQ -->
+        </div>
+        
+        <!-- 210226 플로팅버튼 추가 -->
+        <!-- @@include('./common/footer.html') -->
+        <div class="floating-wrap">
+            <!-- component / Scroll to the top -->
+            @@include('./common/partials/KRP0004.html')
+            <!-- // component / Scroll to the top -->
+        </div>
+        <!-- //210226 플로팅버튼 추가 -->
+    </div>
+    <script src="/lg5-common/js/libs/slick.min.js"></script>
+    <script src="/lg5-common/js/home/brandHome.min.js"></script>
+<script>
+    
+</script>
+</body>
+</html>
