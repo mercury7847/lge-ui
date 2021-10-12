@@ -1389,6 +1389,41 @@ h2.title {
                                         }
                                     }
                                 }
+                                //BTOCSITE-3198 - start
+                                .pannel_list {
+                                    padding-bottom:10px;
+                                    li{
+                                        &:before {
+                                        position: relative;
+                                        content: '';
+                                        left: 0;
+                                        top: 0;
+                                        border:1px solid #fa263e;
+                                        border-radius: 4px;
+                                        width: 20px;
+                                        height: 20px;
+                                        }
+                                    }
+                                    li.is_active {
+                                        &:before {
+                                            background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                        }
+                                    }
+                                }
+                                .sum{
+                                    display: flex;
+                                    justify-content: space-between;
+                                    height:25px;
+                                    line-height: 25px;
+                                    .btn_total{
+                                        color:#ffffff;
+                                        background: #acacac;
+                                        padding: 0 35px;
+                                        border-radius: 8px;
+                                    }                                    
+                                }
+                                //BTOCSITE-3198 - end
+
                                 .err-msg {
                                     // position: absolute;
                                     // left: 7.5%;
@@ -1404,6 +1439,7 @@ h2.title {
                                         // right: 15px;
                                     }
                                 }
+
                                 .btn_purchase {
                                     position: absolute;
                                     bottom: 50px;
@@ -1411,6 +1447,7 @@ h2.title {
                                     right: 7.5%;
                                     width: 85%;
                                 }
+                                
                             }
                         }
                     }
