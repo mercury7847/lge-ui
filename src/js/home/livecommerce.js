@@ -208,43 +208,39 @@ var lls = {
         var chkUrl = pushData.subcheckUrl;
         var subUrl = pushData.subscribeUrl;
 
-        if( vcui.detect.isMobileDevice ) {
-            if ( isLogin == "Y" ) {
-                lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
-                    if( result.status == "success") {
-                        var data = result.data;
-                        var flag = data.subscribeFlag;
-                        var param = {};
-        
-                        self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
-        
-                        if( click ) {
-                            // param.subscribeAction = flag == "Y" ? "C" : "R";
-                            lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
-                                if( subResult.status == "success") {
-                                    var subData = subResult.data;
-                                    console.log("subData", subData)
-                                    var currentActionName = param.subscribeAction == "Y" ? "구독 신청이" : "구독 취소가"
-                                    var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
-                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
-                                }
-                            });
-                        } else {
-        
-                        }
-                    } 
-                });
-            } else {
-                if( click ) {   
-                    location.href = loginUrl;
-                }
-            }
+        if ( isLogin == "Y" ) {
+            lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
+                if( result.status == "success") {
+                    var data = result.data;
+                    var flag = data.subscribeFlag;
+                    var param = {};
     
-            if( !click ) {
-                if( vcui.detect.isMobileDevice ) {
-                    self.$pushContent.show();
-                }
+                    self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
+    
+                    if( click ) {
+                        // param.subscribeAction = flag == "Y" ? "C" : "R";
+                        lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                            if( subResult.status == "success") {
+                                var subData = subResult.data;
+                                console.log("subData", subData)
+                                var currentActionName = param.subscribeAction == "Y" ? "구독 신청이" : "구독 취소가"
+                                var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
+                                lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                            }
+                        });
+                    } else {
+    
+                    }
+                } 
+            });
+        } else {
+            if( click ) {   
+                location.href = loginUrl;
             }
+        }
+
+        if( !click ) {
+            self.$pushContent.show();
         }
     },
     requestModal: function(dm) {
