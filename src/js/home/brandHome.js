@@ -996,6 +996,9 @@
             slidesToShow: 1,
             adaptiveHeight: true
         })
+
+        $('.ui_selectbox').vcSelectbox();
+
         // BTOCSITE-77
 
 
