@@ -9,6 +9,7 @@ var lls = {
         self.highlightSlider();
         self.onbroadProductSlider();
         //self.appPushVisibleCheck();  BTOCSITE-5368
+        self.requestSubscribeCheck()  //BTOCSITE-5368
     },
     settings: function(){
         var self = this;
@@ -144,45 +145,11 @@ var lls = {
             }
             */
             var _self = this;
-            var pushData = self.$pushContent.data(); 
-            var isLogin = pushData.loginFlag;
-            var loginUrl = pushData.loginUrl;
-            var chkUrl = pushData.subcheckUrl;
-            var subUrl = pushData.subscribeUrl;
 
-            console.log("pushData", pushData)
-            self.pushBtn = _self;
-
-            if( isLogin == "Y") {
-                lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
-                    if( result.status == "success") {
-                        var data = result.data;
-                        var flag = data.subscribeFlag;
-
-                        if( flag == "Y") {
-                            lgkorUI.alert("",{title:"이미 구독 중입니다."}, self.pushBtn);
-                        } else {
-                            // action: Y면 구독하기 N 이면 구독취소하기 파라미터
-
-                            lgkorUI.requestAjaxData(subUrl, {"action":"Y"}, function(subResult) {
-                                if( subResult.status == "success") {
-                                    var subData = subResult.subData;
-                                    var currentMsg = subData == "Y" ? "구독 신청이 완료되었습니다." : "구독 신청이 실패하였습니다.";
-                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
-                                }
-                            });
-                        }
-                    } 
-                });
-            } else {
-                location.href = loginUrl;
-            }
-
-            
             e.preventDefault();
 
-            //self.appPushVisibleCheck("click");
-            
+            self.pushBtn = _self;
+            self.requestSubscribeCheck(true);
         });
 
 
@@ -230,6 +197,51 @@ var lls = {
                 }, self.pushBtn);
             } else {
                 LGEPushSetting(self.pushValue)
+            }
+        }
+    },
+    requestSubscribeCheck: function(click){
+        var self = this;
+        var pushData = self.$pushContent.data(); 
+        var isLogin = pushData.loginFlag;
+        var loginUrl = pushData.loginUrl;
+        var chkUrl = pushData.subcheckUrl;
+        var subUrl = pushData.subscribeUrl;
+
+        if ( isLogin == "Y" ) {
+            lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
+                if( result.status == "success") {
+                    var data = result.data;
+                    var flag = data.subscribeFlag;
+                    var param = {};
+    
+                    self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
+    
+                    if( click ) {
+                        param.subscribeAction = flag == "Y" ? "C" : "R";
+                        lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                            if( subResult.status == "success") {
+                                var subData = subResult.data;
+                                console.log("subData", subData)
+                                var currentActionName = param.subscribeAction == "Y" ? "구독 신청이" : "구독 취소가"
+                                var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
+                                lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                            }
+                        });
+                    } else {
+    
+                    }
+                } 
+            });
+        } else {
+            if( click ) {   
+                location.href = loginUrl;
+            }
+        }
+
+        if( !click ) {
+            if( vcui.detect.isMobileDevice && isApp()) {
+                self.$pushContent.show();
             }
         }
     },
