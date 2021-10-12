@@ -189,6 +189,7 @@ img{
 					@include mobile {
 						top:50%;
 						left:50%;
+						// BTOCSITE-2193
 						height: 100%;
 						transform:translate(-50%,-50%);;
 						-webkit-transform:translate(-50%,-50%);;
@@ -1384,14 +1385,16 @@ img{
 				background-color: #fff;
 				.title {
 					overflow: hidden;
-					max-height: 58px;
+					// BTOCSITE-2193
+					// max-height: 58px;
 					font-size: 24px;
 					line-height: 1.21;
 					color: #000 !important;
 				}
 				.desc {
 					overflow: hidden;
-					max-height: 36px;
+					// BTOCSITE-2193
+					// max-height: 36px;
 					margin-top: 9px;
 					font-size: 13px;
 					line-height: 1.38;
