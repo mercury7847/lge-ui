@@ -407,9 +407,13 @@
 
             //BTOCSTIE-5368 &-desc 추가 
             &-desc {
-                margin-top:3px;
-                font-size:13px;
-                line-height:21px;
+                margin-top:6px;
+                font-size:14px;
+                line-height:1.56;
+
+                @include mobile {
+                    font-size:13px;
+                }
             }
         }
     }
