@@ -317,7 +317,7 @@
                 @include pc {
                     max-width:1460px;
                     margin:0 auto;
-                    padding:0 40px;
+                    padding:20px 40px; //BTOCSITE-5368
                 }
 
                 .btn-lls-push {
@@ -401,7 +401,7 @@
 
               @include pc {
                   font-size:20px;
-                  line-height:80px;
+                  line-height:1.56; //BTOCSITE-5368
               }
             }
 
