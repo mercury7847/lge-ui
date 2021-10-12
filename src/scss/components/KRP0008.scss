@@ -1498,6 +1498,13 @@
         .care-sibling-option {
             & > .select-info {
                 &.select-box {
+                    .ui-selectbox-wrap {
+                        &.active {
+                            .ui-selectbox-list {
+                                z-index: 52;
+                            }
+                        }
+                    }
                     .select-text {
                         .card-title {
                             font-weight: bold;
