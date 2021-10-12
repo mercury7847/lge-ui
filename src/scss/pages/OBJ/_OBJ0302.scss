@@ -1810,6 +1810,39 @@ h2.title {
                 }
             }
         }
+        // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
+        &[data-model-default-code="W821AAA453"],
+        &[data-model-default-code="W821AAA463"],
+        &[data-model-default-code="M620AAA351"] {
+            .mini_model_wrap {
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
+                background-size: 100% 100%;
+                .mini_model {
+                    &:nth-child(1) {
+                        left: 30.3%;
+                        top: 11.8%;
+                        width: 18.6%;
+                        height: 42.1%;
+                        @include mobile {
+                            top: 11.3%;
+                            height: 42.6%;
+                        }
+                    }
+                    &:nth-child(2) {
+                        left: 30.3%;
+                        top: 55.1%;
+                        width: 18.6%;
+                        height: 34%;
+                    }
+                    &:nth-child(3) {
+                        left: 50.6%;
+                        top: 55.1%;
+                        width: 18.5%;
+                        height: 34%;
+                    }
+                }
+            }
+        }
         // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
         &[data-model-default-code="M871AAA151"],
         &[data-model-default-code="M871AAA252"],
