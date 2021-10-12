@@ -23,11 +23,13 @@
             self.$stickyTabWrap = self.$thinqMain.find('.thinq-tabs');
             self.$stickyTab = self.$stickyTabWrap.find('.ui_tab');
 
-            self.$appContent = self.$thinqMain.find('.app-wrap');
-            self.$appTabArea = self.$appContent.find('.app-tab-area')
+            self.$appContainer = self.$thinqMain.find('.app-wrap');
+            self.$appTabArea = self.$appContainer.find('.app-tab-area')
+            self.$appTabCont = self.$appTabArea.find('.app-tab-content');
             self.$appTabMenu = self.$appTabArea.find('.menu-slide-nav');
+            self.$appTablist = self.$appTabMenu.find('.menu-item');
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
-            self.$appGuideSlider = self.$appContent.find('.download-guide-slide');
+            self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
         },
         bindEvents: function(){
             var self = this;
@@ -59,10 +61,10 @@
                 }
             })
 
-            $('.menu-slide-nav .menu-item a').on('click', function(e) {
+            self.$appTablist.find('a').on('click', function(e) {
                 e.preventDefault();
-                $('.app-tab-content .tab-cont').hide().filter(this.hash).show();
-                $('.menu-slide-nav .menu-item').removeClass('on');
+                self.$appTabCont.find('.tab-cont').hide().filter(this.hash).show();
+                self.$appTablist.removeClass('on');
                 $(this).parent().addClass('on');
             }).filter(':eq(0)').click();
         },
@@ -184,7 +186,7 @@
                 thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideConfig)
             },
             reinit: function(){
-                thinQMain.$appTabMenu.filter('.slick-initialized').slick('reinit')
+                thinQMain.$appTabMenu.filter('.slick-initialized').slick('refresh')
             },
             load: function(){
                 if( thinQMain.$appTabMenu.hasClass('slick-initialized') ) {
@@ -211,7 +213,7 @@
                 thinQMain.$appGuideSlider.not('.slick-initialized').slick(guideSlider.slideConfig)
             },
             reinit: function(){
-                thinQMain.$appGuideSlider.filter('.slick-initialized').slick('reinit')
+                thinQMain.$appGuideSlider.filter('.slick-initialized').slick('refresh')
             },
             load: function(){
                 if( thinQMain.$appGuideSlider.hasClass('slick-initialized') ) {
