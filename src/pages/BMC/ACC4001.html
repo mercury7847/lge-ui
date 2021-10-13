@@ -3,9 +3,11 @@
     @@include('./common/head.html', {
         pageCSS: ["BMC/BMC"],
         componentID: "KRC0015",
+        pageJS: ["membership/signUpGuide"],
         pageTitle: "멤버십 | LG전자",
         pageDesc: "LG전자 멤버십이란? 베스트샵에서 제품 구매 시 포인트가 적립되며 이는 전국 베스트샵, 서비스센터 및 렌탈 구매 시 현금처럼 사용 가능한 특별한 혜택입니다."
     })
+    <!-- BTOCSITE-3002 멤버십 페이지 수정 // head : signUpGuide.js 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -50,8 +52,8 @@
 
                 <!-- BTOCSITE-3002 멤버십 페이지 수정 // tab제거-->
                 <!-- BTOCSITE-3002 멤버십 페이지 수정 -->
-                <div class="cont-wrap">
-                    <div class="section-wrap membership">
+                <div class="cont-wrap membership">
+                    <div class="section-wrap">
                         <!-- 멤버십 혜택 -->
                         <div class="sects">
                             <div class="tit-wrap type2 align-center">
@@ -207,10 +209,10 @@
                                 })
                             </div>
                             <!-- 멤버십 운영 매장 -->
-                            <div class="tit-wrap type2 align-center">
-                                <h2 class="tit">멤버십 운영 매장</h2>
+                            <div class="tit-wrap type2 align-center mo-only-acc">
+                                <h2 class="tit"><span>멤버십 운영 매장</span><button class="btn-mo-acc">멤버십 운영 매장</button></h2>
                             </div>
-                            <div class="section-inner">
+                            <div class="section-inner mo-only-acc">
                                 <div class="tb-scroll">
                                     <div class="tb_row tb-row-bl">
                                         <table>
@@ -372,6 +374,13 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- 내 포인트 확인 -->
+                        <div class="point-section">
+                            <div class="inner">
+                                <strong>멤버십 포인트 적립 및 사용 내역을<br class="mo-only"> 확인하실 수 있어요.</strong>
+                                <a href="#" class="btn"><span>내 포인트 확인</span></a>
                             </div>
                         </div>
                     </div>
