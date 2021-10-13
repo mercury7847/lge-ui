@@ -1835,7 +1835,7 @@ h2.title {
                         height: 34%;
                     }
                     &:nth-child(3) {
-                        left: 49.6%;
+                        left: 50.3%;
                         top: 55.1%;
                         width: 18.5%;
                         height: 34%;
@@ -1849,12 +1849,12 @@ h2.title {
         &[data-model-default-code="M871AAA252"],
         &[data-model-default-code="M871AAA041"],
         &[data-model-default-code="W821AAA153"] {
-            .mini_model_wrap {
+            .mini_model_wrap { 
                 .mini_model {
                     &:nth-child(1) {
                         left: 30.3%;
                         top: 10.8%;
-                        width: 19.6%;
+                        width: 18.6%;
                         height: 43.1%;
                         @include mobile {
                             top: 11.3%;
@@ -1874,7 +1874,7 @@ h2.title {
                     &:nth-child(3) {
                         left: 30.3%;
                         top: 55.1%;
-                        width: 19.6%;
+                        width: 18.6%;
                         height: 34%;
                     }
                     &:nth-child(4) {
