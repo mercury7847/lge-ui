@@ -203,8 +203,8 @@ var lls = {
                             lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
                                 if( subResult.status == "success") {
                                     var subData = subResult.data;
-                                    var currentActionName = subData.subscribeAction == "R" ? "알림 신청이" : "알림 취소가"
-                                    var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
+                                    var currentActionName = subData.subscribeAction == "R" ? "엘라쇼 알림 신청이" : "엘라쇼 알림 취소가"
+                                    var currentMsg = (subData.success == "Y" ? self.showDate() + " " + currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.");
                                     lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
                                     self.$pushContent.find('.btn-lls-push span').text(subData.subscribeAction == "R" ? "알림 취소" : "알림 신청");
                                 }
