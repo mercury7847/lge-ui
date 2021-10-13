@@ -8,7 +8,8 @@ var lls = {
         self.heroSlider();
         self.highlightSlider();
         self.onbroadProductSlider();
-        self.appPushVisibleCheck();
+        //self.appPushVisibleCheck();  BTOCSITE-5368
+        self.requestSubscribeCheck()  //BTOCSITE-5368
     },
     settings: function(){
         var self = this;
@@ -16,6 +17,7 @@ var lls = {
         self.pushValue = "";
         self.$llsMain = $('.lls-main');
         self.$switch = self.$llsMain.find('.ui_background_switch')
+        self.$pushContent = self.$llsMain.find('.lls-push'); // BTOCSITE-5368 추가
         self.$pushBtn = self.$llsMain.find('.btn-lls-push');
         self.pushBtn = null;
 
@@ -45,6 +47,7 @@ var lls = {
         })
     },
     appPushVisibleCheck: function(event){
+        
         var self = this;
         if( isApp()) {
             
@@ -121,13 +124,32 @@ var lls = {
 
         //앱 알림받기 버튼
         self.$pushBtn.on('click', function(e){
+            /*  BTOCSITE-5368 클릭 이벤트 수정
+            구독완료 , 구독취소 성공여부 
+            {
+                "status":"success",
+                "message":null,
+                "data": {
+                    "success" : "Y"
+                }
+            }
+
+
+            구독중인지 아닌지
+            {
+                "status":"success",
+                "message":null,
+                "data": {
+                    "subscribeFlag" : "Y"
+                }
+            }
+            */
             var _self = this;
 
-            self.pushBtn = _self;
             e.preventDefault();
 
-            self.appPushVisibleCheck("click");
-            
+            self.pushBtn = _self;
+            self.requestSubscribeCheck(true);
         });
 
 
@@ -177,6 +199,49 @@ var lls = {
                 LGEPushSetting(self.pushValue)
             }
         }
+    },
+    requestSubscribeCheck: function(click){
+        var self = this;
+        var pushData = self.$pushContent.data(); 
+        var isLogin = pushData.loginFlag;
+        var loginUrl = pushData.loginUrl;
+        var chkUrl = pushData.subcheckUrl;
+        var subUrl = pushData.subscribeUrl;
+
+        
+            if ( isLogin == "Y" ) {
+                lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
+                    if( result.status == "success") {
+                        var data = result.data;
+                        var flag = data.subscribeFlag;
+                        var param = {};
+        
+                        
+        
+                        if( click ) {
+                            // param.subscribeAction = flag == "Y" ? "C" : "R";
+                            lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                if( subResult.status == "success") {
+                                    var subData = subResult.data;
+                                    var currentActionName = subData.subscribeAction == "R" ? "구독 신청이" : "구독 취소가"
+                                    var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
+                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                    self.$pushContent.find('.btn-lls-push span').text(subData.subscribeAction == "R" ? "구독 취소" : "구독 신청");
+                                }
+                            });
+
+                        } else {
+                            self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
+                            self.$pushContent.show();
+                        }
+                    } 
+                });
+            } else {
+                self.$pushContent.show();
+                if( click ) {   
+                    location.href = loginUrl;
+                }
+            }
     },
     requestModal: function(dm) {
         var _self = this;

@@ -1857,6 +1857,7 @@
                     lgkorUI.stringToBool(item.simpleReqFlag) ? simpleCardData.push(item) : individualCardData.push(item);
                 });
 
+
                 //최상단 카드취소
                 arr.push({
                     "groupTitle":null,

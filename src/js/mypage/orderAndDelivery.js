@@ -101,7 +101,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
-                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
+                            '{{#if !vcui.isEmpty(listData.itemCancelAbleMassege) }}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -1048,12 +1048,12 @@
                                 'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
                                 'model_id': datalayerResult.listData[0].productList[0].modelID,					
                                 'model_sku': datalayerResult.listData[0].productList[0].productNameEN,					
-                                'category': 'nnnn',					
+                                'category': null,					
                                 'brand': 'LG',					
                                 'price': datalayerResult.payment.grandTotal,					
                                 'quantity': datalayerResult.listData[0].productList[0].orderedQuantity,					
                                 'model_gubun': datalayerResult.listData[0].productList[0].modelType,
-                                'ct_id': 'nnnn'
+                                'ct_id': null
                             }]				
                         };
 
@@ -1227,7 +1227,7 @@
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-                    
+
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
             }

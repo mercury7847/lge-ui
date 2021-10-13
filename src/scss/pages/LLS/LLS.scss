@@ -305,6 +305,8 @@
 
     .lls-push {
         display: none;
+        max-width:1920px; //BTOCSITE-5368
+        margin:0 auto; //BTOCSITE-5368
         border-bottom:1px solid #ddd;
 
         .push {
@@ -312,12 +314,14 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding:0 16px;
+                padding:16px; // BTOCSITE-5368 수정
 
                 @include pc {
+                    display: block;
                     max-width:1460px;
                     margin:0 auto;
-                    padding:0 40px;
+                    padding:20px 40px; //BTOCSITE-5368
+                    text-align: center;
                 }
 
                 .btn-lls-push {
@@ -331,17 +335,25 @@
                     border-radius:21px;
                     border:1px solid #000;
                     transition:color .3s, border-color .3s;
-                    &:before {
-                        content:"";
-                        display: inline-block;
-                        width:16px;
-                        height:16px;
-                        margin-right:6px;
-                        vertical-align: middle;
-                        background: url('/lg5-common/images/LLS/icon_btn_live-32.svg') no-repeat 100% 100%;
-                        background-size: 100% 100%;
-                        transition:all .3s;
+
+                    @include pc {
+                        font-size:14px;
+                        padding:0 16px;
+                        line-height:38px;
+                        border-radius:30px;
                     }
+                    //// BTOCSITE-5368 삭제
+                    // &:before {
+                    //     content:"";
+                    //     display: inline-block;
+                    //     width:16px;
+                    //     height:16px;
+                    //     margin-right:6px;
+                    //     vertical-align: middle;
+                    //     background: url('/lg5-common/images/LLS/icon_btn_live-32.svg') no-repeat 100% 100%;
+                    //     background-size: 100% 100%;
+                    //     transition:all .3s;
+                    // }
 
                     // &:hover, 
                     // &:focus {
@@ -372,30 +384,45 @@
                         //     }
                         // }
                     }
+                }
+            }
 
+            //BTOCSITE-5368 추가
+            &-content {
+                flex:1;
+                padding-right:10px;
 
-                    @include pc {
-                        line-height:50px;
-                        font-size:16px;
-                        border-radius:30px;
-
-                        &:before {
-                            width:24px;
-                            height:24px;
-                        }
-                    }
+                @include pc {
+                    display: inline-block;
+                    padding-right:24px;
                 }
             }
             &-title {
               font-size:14px;
               font-weight:bold;
-              line-height:50px;
+              line-height:1.56; //BTOCSITE-5368
               color:#000;
 
               @include pc {
-                  font-size:20px;
-                  line-height:80px;
+                  font-size:18px;
+                  
               }
+            }
+
+            //BTOCSTIE-5368 &-desc 추가 
+            &-desc {
+                @include pc {
+                    display: inline-block;
+                    margin-left:12px;
+                    font-size:18px;
+                    line-height:1.56;
+                }
+
+                @include mobile {
+                    display: block;
+                    margin-top:3px;
+                    font-size:13px;
+                }
             }
         }
     }

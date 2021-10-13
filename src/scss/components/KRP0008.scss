@@ -1498,6 +1498,13 @@
         .care-sibling-option {
             & > .select-info {
                 &.select-box {
+                    .ui-selectbox-wrap {
+                        &.active {
+                            .ui-selectbox-list {
+                                z-index: 52;
+                            }
+                        }
+                    }
                     .select-text {
                         .card-title {
                             font-weight: bold;
@@ -1765,8 +1772,14 @@
                             display: none;
                         }
                     }
+                    &:not(.is-selected) {
+                        .dropdown-menu-wrap {
+                            border-top: 1px solid #ddd;
+                        }
+                    }
                     &.open {
                         height: auto;
+                        z-index: 51;
                         &.is-selected {
                             .cancel-item {
                                 display: block;
@@ -1777,27 +1790,33 @@
                             .ui_dropdown_list {
                                 display: block;
                             }
+                            .dropdown-menu-wrap {
+                                border-top: 1px solid #ddd;
+                            }
                         }
                         .select-button {
                             border: 1px solid #000;
                             border-radius: 8px 8px 0 0;
+                            @include mobile {
+                                border-radius: 8px;
+                            }
                           .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
                             }
                             .simple-card-list {
-                                & > li:nth-child(4) {
+                                & > li:nth-child(n + 4) {
                                     display: block;
                                 }
                             }
                             .ui_dropdown_list {
-                                &:first-child {
-                                    border-radius: 8px 8px 0 0;
-                                }
                                 & + .ui_dropdown_list {
                                     border: 1px solid #000;
-                                    border-top: 0;
+                                    border-top: none;
+                                    @include mobile {
+                                        border: none;
+                                    }
                                 }
                             }
                         }
@@ -1831,6 +1850,8 @@
                             }
                         }
                         .select-list {
+                            max-height: none;
+                            overflow: initial;
                             margin: 0;
                             padding-bottom: 0;
                             li {
@@ -1866,8 +1887,14 @@
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
                                 }
                             }
-                            & + .ui_dropdown_list {
-                                border-top: 1px solid #ddd;
+                        }
+                        .dropdown-menu-wrap {
+                            position: relative;
+                            @include mobile {
+                                overflow: hidden;
+                                overflow-y: auto;
+                                max-height: 50vh;
+                                border-radius: 0 0 8px 8px;
                             }
                         }
                         .selectbox-list {
@@ -1891,7 +1918,7 @@
                     .cancel-item {
                         display: none;
                     }
-                    > li:nth-child(4) {
+                    > li:nth-child(n + 4) {
                         display: none;
                     }
                     li + li {
@@ -3730,7 +3757,7 @@
 @import "KRP0008_popup";
 
 /* BTOCSITE-5781 제품 PDP 페이지 개선요청건 */
-.popup-icon {
+.popup-icon.popup{
     display:inline-block;
     position:relative;
     margin-left:2px;
