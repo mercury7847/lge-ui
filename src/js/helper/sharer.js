@@ -138,16 +138,12 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            console.log("service.makeParam(params)")
-
             if (service.support & (detect.PC | detect.MOBILE)) {
                 if (core.isFunction(service.run)) {
                     service.run(params);
                 } else {
 
                     if(type === 'kakaotalk'){
-
-                        console.log("service.makeParam(params) %o",service.makeParam(params))
                         Kakao.Link.sendDefault(service.makeParam(params));
                     }else{
                         if (service.size) {
