@@ -1498,6 +1498,13 @@
         .care-sibling-option {
             & > .select-info {
                 &.select-box {
+                    .ui-selectbox-wrap {
+                        &.active {
+                            .ui-selectbox-list {
+                                z-index: 52;
+                            }
+                        }
+                    }
                     .select-text {
                         .card-title {
                             font-weight: bold;
@@ -1759,7 +1766,6 @@
             //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
             &.rental-card-list,
             &.careship-card-list {
-                z-index: 51;
                 .select-wrap {
                     &.is-selected {
                         .ui_dropdown_list {
@@ -1773,6 +1779,7 @@
                     }
                     &.open {
                         height: auto;
+                        z-index: 51;
                         &.is-selected {
                             .cancel-item {
                                 display: block;
@@ -3750,7 +3757,7 @@
 @import "KRP0008_popup";
 
 /* BTOCSITE-5781 제품 PDP 페이지 개선요청건 */
-.popup-icon {
+.popup-icon.popup{
     display:inline-block;
     position:relative;
     margin-left:2px;
