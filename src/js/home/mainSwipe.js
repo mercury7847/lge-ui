@@ -100,11 +100,12 @@ MainSwiper.prototype = {
                     
                     
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
-                    
                     self.removeStatusBar();//BTOCSITE-1967
+
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
+
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
 
@@ -148,10 +149,8 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
-
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
-
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
                         //$('html,body').stop().animate({scrollTop:0}, 300);
@@ -281,13 +280,9 @@ MainSwiper.prototype = {
 
             self.isLoading = false;
             self.getContent();
-            //BTOCSITE_1967
-            //self.setStatusBar(currentSlide);
-            /*
-            setTimeout(function(){
-                mainSwiper.swiper.updateAutoHeight();
-            }, 1000);
-            */
+            self.storyHomeToastChk(currentSlide) //BTOCSITE-188
+
+            
             return;
         }
 
@@ -341,6 +336,8 @@ MainSwiper.prototype = {
                 });
             }
         });
+
+        self.storyHomeToastChk(currentSlide) //BTOCSITE-188
     },
     setDigitalData : function( pageData ){
         var self = this;
@@ -467,6 +464,16 @@ MainSwiper.prototype = {
         } else {
             $('.swiper-slide').find('.mobile-status-bar').remove();    
         }
+    },
+    storyHomeToastChk: function(target){
+        //BTOCSITE-188
+        setTimeout(function(){
+            if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
+                $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
+            }    
+        }, 100);
+        
     }
 }
 

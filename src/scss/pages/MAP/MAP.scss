@@ -1,5 +1,8 @@
 @charset 'UTF-8';
 
+@import "../../utilities/variables"; //BTOCSITE-5478
+@import "../../utilities/mixins"; //BTOCSITE-5478
+
 $main-hd-height: 68px;  // 설정 화면 Header 높이값, 디자인 상 초기 115px
 $sub-hd-height: 68px;   // 서브 화면(알림, 오픈소스) Header 높이값, 디자인 상 초기 106px
 $gap-height: 54px;      // 설정 화면 상단 Gap 높이값
@@ -529,11 +532,16 @@ body {
             }
         }
     }
-    /* BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
-    *:focus{
+    /* BTOCSITE-5478 [APP]설정 버튼 테두리 제거 요청 */
+    * [tabindex]:focus{
         outline:none;
     }
-    /* //BTOCSITE-5478 [APP] 설정 버튼 테두리 제거 요청 */
+    @include mobile{
+        *:focus{
+            outline:none;
+        }
+    }
+     /* //BTOCSITE-5478 [APP]설정 버튼 테두리 제거 요청 */
 }
 
 .lyr-modal {
@@ -745,6 +753,11 @@ body {
             }
         }
     }
+    /* BTOCSITE-5478 [APP]설정 버튼 테두리 제거 요청 */
+    &[tabindex]:focus{
+        outline:none;
+    }
+    /* //BTOCSITE-5478 [APP]설정 버튼 테두리 제거 요청 */
 }
 
 .main-panel {

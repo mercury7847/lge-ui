@@ -272,6 +272,9 @@
                 //PDP 제품구매/렌탈 선택 탭
                 self.$pdpInfoTab = self.$pdpInfo.find('.product-detail-info .ui_tab:eq(0)');
 
+                 // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy =  self.$component.find('.copy');
+
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
@@ -313,6 +316,53 @@
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
+
+                    // rentalInfo = [
+                    //     {
+                    //         "years3TotAmt": 35900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 35900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 35900,
+                    //         "years6TotAmt": 35900,
+                    //         "years7TotAmt": 35900,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1579561",
+                    //         "dutyTerm": "6",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "Y",
+                    //         "contractTerm": "7",
+                    //         "years5TotAmt": 35900,
+                    //         "years4TotAmt": 35900,
+                    //         "freeMonth": 3
+                    //     },
+                    //     {
+                    //         "years3TotAmt": 39900,
+                    //         "visitPer": "3",
+                    //         "rtRgstFeePre": 0,
+                    //         "freeMonthDisplayYn": "Y",
+                    //         "rentalCareType": "R",
+                    //         "years1TotAmt": 39900,
+                    //         "caresolutionSalesCodeSuffix": "WD503AGB.AKOR",
+                    //         "years2TotAmt": 39900,
+                    //         "years6TotAmt": 0,
+                    //         "rtFreePeriod": "25,37,49",
+                    //         "rtModelSeq": "1565994",
+                    //         "dutyTerm": "3",
+                    //         "careCategoryId": "CT50000175",
+                    //         "representChargeFlag": "N",
+                    //         "contractTerm": "5",
+                    //         "years5TotAmt": 39900,
+                    //         "years4TotAmt": 39900,
+                    //         "freeMonth": 3
+                    //     }
+                    // ];
+
+
+
                     // rentalInfo = [
                     //     {
                     //         "careCategoryId": "CT50000175",
@@ -547,7 +597,7 @@
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
-                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
+                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.rental-card-list'); //BTOCSITE-3523 선택자 수정
                 if(self.$rentalCardList.length > 0) {
                     isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
@@ -655,6 +705,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$saleInfoPopup = $('#saleInfoPopup'); // BTOCSITE-5781
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -711,6 +762,23 @@
                     self.requestModal(this);
                 });
                 */
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                self.$copy.on('click',function() {
+                    var txt = $(this).text();
+                    lgkorUI.confirm('모델명을 복사하시겠습니까?', {
+                        title: "",
+                        cancelBtnName: "취소",
+                        okBtnName: "복사",
+                        ok:function(){
+                            vcui.dom.copyToClipboard(txt, {
+                                container:this,
+                                onSuccess: function () {
+                                    $(window).trigger("toastshow", "모델명을 복사했습니다.");
+                                }
+                            });
+                        }
+                   });
+                });
 
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
@@ -818,11 +886,12 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                        var isShow = lgkorUI.isShowDate('20210601','20211001') //(startTime, endTime, nowTime)
+                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
+                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
+                        $('.store-counsel-banner').show(); //BTOCSITE-5727
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -830,6 +899,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
+                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -846,10 +916,13 @@
                 //비교하기
                 self.$pdpInfo.find('.product-compare input[type=checkbox]').on('click', function(e) {
                     var checked = !$(this).hasClass('compare-select');
+                    var pdpDataId = self.$pdpInfo.attr('data-id'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
+
                     if(checked) {
                         $(this).addClass('compare-select');
                     } else {
                         $(this).removeClass('compare-select');
+                        $('.item-inner[data-id=' + pdpDataId + ']').siblings('.btn-close').trigger('click'); //BTOCSITE-5856 비교하기 버튼 토글기능 오류
                     }
                     //$(this).prop('checked',!checked);
                     self.requestCompareItem(lgePdpSendData, checked, $(this));
@@ -1095,6 +1168,12 @@
                     self.$mainInitPopup.vcModal({opener: this});
                 });
                 
+                //할인적용가 팝업 BTOCSITE-5781
+                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                    e.preventDefault();
+                    self.$saleInfoPopup.vcModal({opener: this});
+                });
+
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
@@ -1318,9 +1397,17 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1402,9 +1489,17 @@
 
                         var list = {};
                         for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
-                            list[i] = {};
-                            list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
-                            list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
+                                list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
+                            } else {
+                                 // 요금제는 세팅 되구 데이터 안들어오는경우 처리
+                                list[i] = {};
+                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].free =  "";
+                            }
                         }
 
                         $tbody.append(vcui.template(trTemplate, { 'list' : list }));
@@ -1489,7 +1584,17 @@
                     e.preventDefault();
                     var $this = $(this);
                     var $dropDown = $this.parents('.ui_dropdown');
-                    $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
+                    //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));  //BTOCSITE-3523 삭제
+
+                    //BTOCSITE-3523 추가
+                    if($this.closest("li").hasClass("cancel-item")) {
+                        $this.closest(".ui_dropdown").removeClass('is-selected');
+                        $dropDown.find('.ui_dropdown_toggle').empty();
+                    }else{
+                        $dropDown.find('.ui_dropdown_toggle').text($this.attr('data-card-title'));
+                        $this.closest(".ui_dropdown").addClass('is-selected');
+                    }
+
                     $dropDown.vcDropdown("close");
 
                     var cardData = {};
@@ -1529,7 +1634,7 @@
                 });
 
                 //div.option-contents
-                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list, .careship-card-list div.ui_dropdown_list');
+                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list .simple-card-list, .careship-card-list div.ui_dropdown_list .simple-card-list'); //BTOCSITE-3523 수정
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click',firstRow);
@@ -1748,8 +1853,10 @@
                         max = item.maxSalePrice;
                     }
                     item.title = "[" + item.cardName.replace("카드","")+ "] " + item.cardSubName;
+                    lgkorUI.stringToBool(item.simpleReqFlag) ? (item.categoryTitle = "[간편 신청]") : (item.categoryTitle = "[개별 신청]"); //BTOCSITE-3523 추가
                     lgkorUI.stringToBool(item.simpleReqFlag) ? simpleCardData.push(item) : individualCardData.push(item);
                 });
+
 
                 //최상단 카드취소
                 arr.push({
@@ -1787,29 +1894,41 @@
 
             //제휴카드리스트 갱신
             /* 20210513 수정 */
+            //BTOCSITE-3523 : 케어솔루션 PDP 상세조건 개선
             updateAssociatedCardList: function ($cardInfo, cardData) {
                 if(cardData && cardData.length > 0) {
                     //카드데이타
-                    var selectList = $cardInfo.find('ul.select-list');
+                    var selectList = $cardInfo.find('ul.select-list'),
+                        simpleCardList = $('ul.select-list.simple-card-list'),
+                        individualCardList = $('ul.select-list.individual-card-list');;
                     selectList.empty();
-                    var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                    //var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                     var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
-                        if(obj.groupTitle) {
+                        /*if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
-                        }
+                        }*/
                         if(obj.listItem) {
                             obj.listItem.forEach(function(item, index) {
                                 item.label = item.title;
                                 item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
                                 if(!item.cardNameCode) {
                                     item.label = "선택취소"
-                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
+                                    cardItemTemplate = '<li class="cancel-item"><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
                                 }else{
-                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
+                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{categoryTitle}}{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                                 }
                                 //item.maxSaleString = item.maxSalePrice ? vcui.number.addComma(item.maxSalePrice) : null;
-                                selectList.append(vcui.template(cardItemTemplate, item));
+                                if(item.simpleReqFlag === "Y"){
+                                    //간편 신청 가능 카드
+                                    $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
+                                }else if(item.simpleReqFlag === "N"){
+                                    //개별 신청 가능 카드
+                                    $cardInfo.find(individualCardList).append(vcui.template(cardItemTemplate, item));
+                                }else {
+                                    //선택취소
+                                    $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
+                                }
                             });
                         }
                     });
@@ -1920,18 +2039,22 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
-                    }
+                    // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                   if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
+                   }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }
@@ -1988,18 +2111,20 @@
 
                 for(var y=1;y<=selectInfoData.contractTerm;y++){
                     var key = y+"";
-                    if(!popupData[key]) popupData[key] = {}
-                    var price = selectInfoData['years'+y+'TotAmt'] || 0;
-                    if(price) {
-                        popupData[key].price = price;
-                        popupData[key].free = [];
-                        infoTotal += (price * 12);
+                    if(selectInfoData.hasOwnProperty('years'+y+'TotAmt') ) {
+                        if(!popupData[key]) popupData[key] = {}
+                        var price = selectInfoData['years'+y+'TotAmt'] || 0;
+                        if(price) {
+                            popupData[key].price = price;
+                            popupData[key].free = [];
+                            infoTotal += (price * 12);
+                        }
                     }
                 }
 
                 rtFreePeriod.forEach(function(item, index){
                     for(var y=1;y<=selectInfoData.contractTerm;y++){
-                        if(item <= y*12 && selectInfoData['years'+y+'TotAmt']) {
+                        if(item <= y*12 && selectInfoData.hasOwnProperty('years'+y+'TotAmt')) {
                             popupData[y+""].free.push(item);
                             break;
                         }

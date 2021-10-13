@@ -101,7 +101,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
-                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
+                            '{{#if !vcui.isEmpty(listData.itemCancelAbleMassege) }}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -442,6 +442,8 @@
     var isClickedarsAgreeConfirmCheckBtn = false;    // BTOCSITE-98 add
 
     var ajaxMethod = "GET";
+
+    var datalayerResult = null; //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청
 
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
@@ -964,7 +966,7 @@
     //취소신청 확인...
     function cancelSubmit(){
         //변수 추가 210824 BTOCSITE-4124
-        var $cashChk = $('#popup-cancel').hasClass('cash-chk');
+        //var $cashChk = $('#popup-cancel').hasClass('cash-chk'); BTOCSITE-4124 제거 210924
         //210824 BTOCSITE-4124 로직 변경 - 현금결제일 경우 체크
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         if(!chkItems.length){
@@ -1026,19 +1028,48 @@
                 return;
             }
         }
-        
-        if($cashChk == true){
-            cancelOk();
-        } else {
-            lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
-                title: "",
-                cancelBtnName: "아니오",
-                okBtnName: "네",
-                ok: function(){
-                    cancelOk();
+
+        /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
+        //console.log("1")
+        lgkorUI.confirm("주문하신 제품을 취소신청 하시겠어요?", {
+            title: "",
+            cancelBtnName: "아니오",
+            okBtnName: "네",
+            ok: function(){
+                if( datalayerResult != null) {
+                    //console.log("datalayerResult", datalayerResult);
+                    if(typeof dataLayer !== 'undefined' && dataLayer) {
+                        var pushDataEvent = {				
+                            'event': 'refund',				
+                            'actionField': {
+                                'order_id' : datalayerResult.listData[0].orderNumber
+                            },				
+                            'products': [{
+                                'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
+                                'model_id': datalayerResult.listData[0].productList[0].modelID,					
+                                'model_sku': datalayerResult.listData[0].productList[0].productNameEN,					
+                                'category': null,					
+                                'brand': 'LG',					
+                                'price': datalayerResult.payment.grandTotal,					
+                                'quantity': datalayerResult.listData[0].productList[0].orderedQuantity,					
+                                'model_gubun': datalayerResult.listData[0].productList[0].modelType,
+                                'ct_id': null
+                            }]				
+                        };
+
+                        dataLayer.push(pushDataEvent);
+                        console.log("dataLayer : ", pushDataEvent);
+                    }
                 }
-            });
-        }
+                //console.log("3")
+                datalayerResult = null;
+
+                cancelOk();
+            }
+        });
+        //console.log("2")
+        /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
+
         //로직 변경 210824 BTOCSITE-4124
 
     }
@@ -1196,7 +1227,7 @@
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-                    
+
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
             }
@@ -2278,7 +2309,6 @@
             var productTotalPrices = 0;
             var getListData = TAB_FLAG == TAB_FLAG_ORDER ? result.data.listData : result.data.careListData;
             var productList = getListData[0].productList;
-            var dataChk = $('#popup-cancel').hasClass('data-chk');
             if(calltype == "ordercancel"){
                 popup = $('#popup-cancel');
                 infoTypeName = "취소";
@@ -2322,8 +2352,9 @@
                 $('#popup-cancel').find('.pop-footer .btn-group button:nth-child(2)').prop('disabled', false);
                 // BTOCSITE-1775
                 var isAllCancelDisable = true;  // 모두 취소 불가능
-                productList.forEach(function( data ){                    
-                    if (data.itemCancelAbleYn == "Y"){
+                //var isCashCheck = '';
+                productList.forEach(function( data ){
+                    if(data.itemCancelAbleYn == "Y"){
                         isAllCancelDisable = false;
                     }
                 });
@@ -2334,30 +2365,22 @@
                     $('#popup-cancel').find('#cancel_desc').hide();
                     $('#popup-cancel').find('.pop-footer').hide();
                     $('#popup-cancel').find('.not-cancel-footer').show();
-                } else if(dataChk == false && isAllCancelDisable == false) {
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
-                    $('#popup-cancel').find('#cancel_desc').show();
-                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
-                    $('#popup-cancel').find('.pop-footer').show();
-                    $('#popup-cancel').find('.not-cancel-footer').hide();
-                    $('#popup-cancel').addClass('cash-chk');
-                } else if(dataChk == true && isAllCancelDisable == false){
-                    $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
-                    $('#popup-cancel').find('#cancel_desc').show();
-                    $('#cancel_desc').find('.cancelReasonField').prop('disabled', false);
-                    $('#popup-cancel').find('#cancelPopAgree').prop('disabled',false);
-                    $('#popup-cancel').find('.state-box > p.tit').html('<span class="blind">진행상태</span>결제완료');
-                    $('#popup-cancel').find('.pop-footer').show();
-                    $('#popup-cancel').find('.not-cancel-footer').hide();
                 } else {
                     $('#popup-cancel').find('.ui_all_checker').prop('disabled', false);
                     $('#popup-cancel').find('#cancel_desc').show();
                     $('#popup-cancel').find('.pop-footer').show();
                     $('#popup-cancel').find('.not-cancel-footer').hide();
                 }
-               
                 // BTOCSITE-4124 210907 수정 - E
-                 // //BTOCSITE-1775
+                // //BTOCSITE-1775
+
+                /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
+                if(result.status == "success"){
+                    if( datalayerResult == null ) {
+                        datalayerResult = result.data;
+                    }
+                }
+                /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
@@ -2431,7 +2454,7 @@
 
             var bankInfoBlock = popup.find('.sect-wrap > .form-wrap > .forms:nth-child(2)');
             
-            if((result.data.payment && dataChk == true && isAllChecked == true && isAllCancelDisable == false) || (result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered")){ //210826 추가 BTOCSITE-4124
+            if(result.data.payment && Object.keys(result.data.payment).length && result.data.payment.transType == METHOD_BANK && productList[0].itemStatus != "Ordered"){
                 popup.data('isBank', true);
 
                 var backSelect = popup.find('.bank-input-box select').empty().append('<option value="" class="placeholder">선택</option>');
@@ -2468,7 +2491,7 @@
     }
     //취소/반품 팝업 리스트 추가
     function addPopProdductList(popup, productList, isCheck){
-        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();   
+        var prodListWrap = popup.find('.info-tbl-wrap .tbl-layout .tbody').empty();
         var prodPriceKey = TAB_FLAG == TAB_FLAG_CARE ? "years1TotAmt" : "rowTotal";
         for(var idx in productList){
             var listdata = productList[idx];
@@ -2529,7 +2552,6 @@
     function cancelOk(){
         var productList = [];
         var matchIds = [];
-        var chkData = $('#popup-cancel').hasClass('data-chk'); //210825 추가 BTOCSITE-4124
         var chkItems = $('#popup-cancel').find('.ui_all_checkbox').vcCheckboxAllChecker('getCheckItems');
         chkItems.each(function(idx, item){
             var id = $(item).val();
@@ -2664,12 +2686,18 @@
                 } else{
                     if(PAGE_TYPE == PAGE_TYPE_LIST){
                         var box = $('.box[data-id=' + dataId + ']');
-                        box.find('.orderCancel-btn, .requestOrder-btn').remove();
-    
+                        // BTOCSITE-4124 210928 - start
+                        if( result.data.msg == "VC1001") {
+                            
+                        } else {
+                            box.find('.orderCancel-btn, .requestOrder-btn').remove();
+                        }
+
                         var resultMsg = sendata.callType == "ordercancel" ? "취소접수" : "반품접수";
-                        // if( result.data.msg == "VC1001") {
-                        //      resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
-                        // }
+                        if( result.data.msg == "VC1001") {
+                             resultMsg = sendata.callType == "ordercancel" ? "주문 접수" : "반품접수";
+                        }
+                        // BTOCSITE-4124 210928 - end
 
                         for(var idx in matchIds){
                             var block = box.find('.tbody .row').eq(matchIds[idx]);
@@ -2678,21 +2706,13 @@
                     } else reloadOrderInquiry();
                     
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - S
-                    var flagChk = $('#popup-cancel').hasClass('cash-chk');
                     if(result.data.msg == "VC1001"){
-                        if(flagChk == true){
-                            lgkorUI.alert("", {
-                                title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.<br>주문취소 신청을 하시겠습니까? ",
-                                ok: function(){
-                                $('#popup-cancel').removeClass('cash-chk');
-                                $('#popup-cancel').addClass('data-chk');
-                                var dataID = $('#popup-cancel').data('dataId');
-                                getPopOrderData(dataId, "ordercancel", opener); 
-                                popup.vcModal('close');//BTOCSITE-4124 210902 수정
-                                //cancelSubmit();
-                                }
-                            });                       
-                        }
+                        lgkorUI.alert("", {
+                            title: "현금(가상계좌) 입금이 확인되어 즉시 취소가 불가합니다.",
+                            ok: function(){
+                            popup.vcModal('close'); //BTOCSITE-4124 210902 수정 
+                            }
+                        });
                     } else {
                         //console.log("no VC1001");
                     }

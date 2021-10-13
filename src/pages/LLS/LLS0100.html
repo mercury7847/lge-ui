@@ -99,11 +99,22 @@
                 </div>
                 <!-- 상단 히어로 영역 -->
 
-                <!-- 알림받기 : 앱일 경우에만 노출 -->
-                <div class="lls-push">
+                <!-- BTOCSITE-5368 알림받기 : 앱일 경우에만 노출 -->
+                <!-- 2021-10-08 
+                    data 속성 추가
+                    data-subcheck-url
+                    data-subscribe-url
+                    data-login-flag
+                    data-login-url
+                    버튼 문구변경 : 푸시알림받기 > 구독 신청 
+                -->
+                <div class="lls-push" data-subcheck-url="/lg5-common/data-ajax/livecommerce/subscribeCheck.json" data-subscribe-url="/lg5-common/data-ajax/livecommerce/subscribeRequest.json" data-login-flag="Y" data-login-url="/sso/api/Login">
                     <div class="push-inner">
-                        <strong class="push-title">라이브 소식을 미리 받아보세요!</strong>
-                        <a href="#" class="btn-lls-push"><span>푸시알림받기</span></a>
+                        <div class="push-content">
+                            <strong class="push-title">라이브 소식을 미리 받아보세요!</strong>
+                            <p class="push-desc">구독 신청 시 방송일에 SMS가 발송됩니다.</p>
+                        </div>
+                        <a href="#" class="btn-lls-push"><span>구독 신청</span></a>
                     </div>
                 </div>
                 <!-- //알림받기 -->
@@ -118,7 +129,11 @@
                             <div class="recently-highlight-slider">
                                 @@for ( var i=0; i < 7; i++ ) {
                                     <div class="slide-item">
-                                        <a href="">
+                                        <!-- 2021-09-29 BTOCSITE-5449 최신 하이라이트 아이프레임 화면 링크 연결 
+                                            - 하이라이트 아이프래임의 url에 파라미터를 붙여서 독립적으로 ga 트래킹 가능하도록 해야 함 
+                                                Ex) /benefits/highlight + 파라미터
+                                        -->
+                                        <a href="/html/LLS/LLS0101.html">
                                             <div class="slide-thumb-area">
                                                 <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
                                                 <span class="slide-item-time">18:00</span>

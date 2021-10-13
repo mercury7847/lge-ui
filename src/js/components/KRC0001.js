@@ -26,7 +26,7 @@
 							'</div>' +
 							'{{#if item.checkBtnFlag}}'+
 								'<div class="product-price">' +
-									'{{#if item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' +
+									'{{#if item.obsOriginalPrice && item.obsSellingPrice != item.obsOriginalPrice}}<div class="original"><span class="blind">판매가</span><em>{{item.obsOriginalPrice}}</em>원</div>{{/if}}' + //BTOCSITE-5387
 									'{{#if item.obsSellingPrice}}<div class="total"><span class="blind">총 판매가</span><em>{{item.obsSellingPrice}}</em>원</div>{{/if}}' +
 								'</div>' +
 							'{{/if}}'+	

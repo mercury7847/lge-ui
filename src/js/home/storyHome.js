@@ -74,7 +74,7 @@
         '<div class="flexbox-wrap">'+
             '<div class="flexbox tag-area">'+
                 '<div class="title-area">'+
-                    '<span class="title">이런 <em>#태그</em>는 <br class="mo-only ">어떠세요?</span>'+
+                    '<span class="title">이런 <em>#태그</em>는 어떠세요?</span>'+
                     '<a href="#" class="btn-link tagmnger-btn"><span>구독 중 태그 관리</span></a>'+
                 '</div>'+
                 '<div class="tag-lists-wrap ui_tag_smooth_scrolltab">'+
@@ -236,6 +236,7 @@
                 if(userlistbox.children().length > 0){
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
+                    $context.find('.tag-subscribe-story3').show();
                     setRepositionTagBox($('.user_story'));
                 } else{
                     $context.find('.tag-subscribe-story').show();
@@ -354,6 +355,7 @@
             $('#popup-tagMnger').vcModal('close');
 
             loadStoryList('user_story', 1, "UserStory");
+            $('html, body').stop().animate({scrollTop:0}, 180); //BTOCSITE-188
         });
     }
 
@@ -410,10 +412,23 @@
             }
         }
 
-        $('html, body').animate({scrollTop:0}, 180);
+        $('html, body').stop().animate({scrollTop:0}, 180);
     }
 
     var firstPageHeight = 0;
+
+    function setHiddenMargin(){
+        var $story1 = $context.find('.tag-subscribe-story');
+        var $story2 = $context.find('.tag-subscribe-story2');
+        var $newStory = $context.find('.new_story');
+        var $lastSection = $context.find('.tag-subscribe-story2').next('.story-section')
+
+        if( $story1.filter(":visible").length == 0 && $story2.filter(":visible").length == 0 && $newStory.filter(':visible').length == 1) {
+            $lastSection.addClass('hidden-story-next')
+        } else {
+            $lastSection.removeClass('hidden-story-next')
+        }
+    }
 
     function loadStoryList(sectioname, page, type, selectTag){
         //lgkorUI.showLoading();
@@ -426,153 +441,167 @@
         // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
-        lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
 
-            if(result.data.loginUrl){
-                location.href = result.data.loginUrl;
 
-                return;
-            }
+        //20210924 BTOCSITE-5933 메인홈 Request 수정 요청
+        if(STORY_LIST_URL){
+            lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
 
-            var sectionItem = $('.' + sectioname)
-            var page = parseInt(result.param.pagination.page);
-            var totalcnt = parseInt(result.param.pagination.totalCount);
-            var story3 = '.tag-subscribe-story3';
-            sectionItem.data("page", page);
+                if(result.data.loginUrl){
+                    location.href = result.data.loginUrl;
 
-            if(page == 1){
-                sectionItem.find('.flexbox-wrap').empty();
-                sectionItem.find('.ui_sticky').remove();
-            }
-
-            if(page == totalcnt) sectionItem.find('.btn-moreview').css('display','none');
-            else sectionItem.find('.btn-moreview').css('display','block');
-            
-            // console.log("result.data.selectTags:", result.data.selectTags);
-            var viewMode;
-            if(result.data.selectTags){
-
-                viewMode = "selectTagMode";
-                
-                sectionItem.find('.inner h2.title').hide();
-                
-                var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
-                sectionItem.prepend(stickyTag);
-
-                // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
-                $context.find('.user_story').find('.story-title-area').hide();
-            } else{
-                viewMode = "listMode";
-
-                sectionItem.find('.inner h2.title').show();
-
-                // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
-            }
-            
-            if(result.data.storyList && result.data.storyList.length > 0){
-                sectionItem.show();
-
-                sectionItem.data("imgLoadId", 0);
-                sectionItem.data("imgLoadTotal", result.data.storyList.length);
-                for(var str in result.data.storyList){
-                    var contentsType = result.data.storyList[str].contentsType;
-                    if(contentsType == "video"){
-                        var storyId = result.data.storyList[str].storyId;
-                        result.data.storyList[str].storyUrl = STORY_URL + "?storyId="+storyId;                 
-                    }
-                    var list = vcui.template(storyListTemplate, result.data.storyList[str]);
-                    sectionItem.find('.flexbox-wrap').append(list);
+                    return;
                 }
 
-                if(page == 1){ 
-                    if(IS_LOGIN == "Y"){
-                        if(viewMode == "listMode" && sectioname == "user_story"){
-                            $context.find('.tag-subscribe-story').empty().hide();
+                var sectionItem = $('.' + sectioname)
+                var page = parseInt(result.param.pagination.page);
+                var totalcnt = parseInt(result.param.pagination.totalCount);
+                var story3 = '.tag-subscribe-story3';
+                sectionItem.data("page", page);
 
-                            var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9; 
-                            list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
-                            // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
-
-                            //BTOCSITE-188
-                            if( result.data.storyList.length > 0) {
-                                if( $context.find(story3).length) {
-                                    $context.find(story3).empty().show().append(list)
-                                } else {
-                                    $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
-                                    $context.find(story3).show().append(list)
-                                }
-                                $context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next')
-                            } else {
-                                $context.find(story3).hide();
-                                $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next')
-                            }
-                            $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
-                            // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
-                            // console.log("lgkorUI.getCookie('storyHomeFirstTag')", lgkorUI.getCookie('storyHomeFirstTag'))
-                            if( lgkorUI.getCookie('storyHomeFirstTag') == "Y") {
-
-                            } else {
-                                $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
-                                lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
-                            }
-                        }
-                    } else{
-                        if(sectioname == "new_story"){
-                            //$('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
-                            /* 20210518 추가 */
-                            $context.find('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
-                            /* //20210518 추가 */
-                            $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
-                        }
-                    }
-
-                    if(viewMode == "selectTagMode"){
-                        if(sectioname == "new_story"){
-                            $context.find('.user_story').hide();
-                            $context.find(story3).hide(); //BTOCISTE-188
-                            $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
-                        } else $context.find('.new_story').hide();
-
-                        $context.find('.tag-subscribe-story').hide();
-                    }
+                if(page == 1){
+                    sectionItem.find('.flexbox-wrap').empty();
+                    sectionItem.find('.ui_sticky').remove();
                 }
 
-                if(sectioname == "new_story"){
-                    if(IS_LOGIN == "Y"){
-                        var userlistbox = $context.find('.user_story').find('.flexbox-wrap');
-                        if(userlistbox.children().length > 0){
-                            if(viewMode == "selectTagMode") sectionItem.find('.inner h2.title').hide();
-                            else sectionItem.find('.inner h2.title').show();
-                        }else sectionItem.find('.inner h2.title').hide();
-                    } else{
-                        sectionItem.find('.inner h2.title').hide();
-                    }
+                if(page == totalcnt) sectionItem.find('.btn-moreview').css('display','none');
+                else sectionItem.find('.btn-moreview').css('display','block');
+
+                // console.log("result.data.selectTags:", result.data.selectTags);
+                var viewMode;
+                if(result.data.selectTags){
+
+                    viewMode = "selectTagMode";
+
+                    sectionItem.find('.inner h2.title').hide();
+
+                    var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
+                    sectionItem.prepend(stickyTag);
+
+                    // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
+                    $context.find('.user_story').find('.story-title-area').hide();
                 } else{
+                    viewMode = "listMode";
 
-                    $context.find('.new_story').find('.inner h2.title').show();
+                    sectionItem.find('.inner h2.title').show();
+
+                    // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                 }
-                
-                setRepositionTagBox(sectionItem);
-            } else{
-                if(sectioname == "user_story"){ 
-                    // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags})); 
-                    /* 20210518 추가 */    
-                    $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
-                    /* //20210518 추가 */
-                    $context.find(story3).hide();//BTOCISTE-188
-                    $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
-                    lgkorUI.removeCookieArrayValue("storyHomeFirstTag", "Y");//BTOCISTE-188
-                    $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
-                    $context.find('.new_story').find('.inner h2.title').hide();
+
+                if(result.data.storyList && result.data.storyList.length > 0){
+                    sectionItem.show();
+
+                    sectionItem.data("imgLoadId", 0);
+                    sectionItem.data("imgLoadTotal", result.data.storyList.length);
+                    for(var str in result.data.storyList){
+                        var contentsType = result.data.storyList[str].contentsType;
+                        if(contentsType == "video"){
+                            var storyId = result.data.storyList[str].storyId;
+                            result.data.storyList[str].storyUrl = STORY_URL + "?storyId="+storyId;
+                        }
+                        var list = vcui.template(storyListTemplate, result.data.storyList[str]);
+                        sectionItem.find('.flexbox-wrap').append(list);
+                    }
+
+                    if(page == 1){
+                        if(IS_LOGIN == "Y"){
+                            if(viewMode == "listMode" && sectioname == "user_story"){
+                                $context.find('.tag-subscribe-story').empty().hide();
+
+                                var putIdx = result.data.storyList.length < 10 ? result.data.storyList.length-1 : 9;
+                                list = vcui.template(tagBoxTemplate, {tagList: result.data.recommendTags});
+                                // sectionItem.show().find('.flexbox-wrap').children().eq(putIdx).after(list);
+
+                                //BTOCSITE-188
+                                if( result.data.storyList.length > 0) {
+                                    if( $context.find(story3).length) {
+                                        $context.find(story3).empty().show().append(list)
+                                    } else {
+                                        $context.find('.user_story').after('<div class="story-section tag-subscribe-story3" style="display:none"></div>')
+                                        $context.find(story3).show().append(list)
+                                    }
+                                    //$context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next')
+                                } else {
+                                    $context.find(story3).hide();
+                                    //$context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next')
+                                }
+                                //setHiddenMargin();
+                                $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                                // $(window).trigger('toastShow', '구독하고 있는 스토리를 확인해보세요')
+                                // console.log("lgkorUI.getCookie('storyHomeFirstTag')", lgkorUI.getCookie('storyHomeFirstTag'))
+                                if( lgkorUI.getCookie('storyHomeFirstTag') == "Y") {
+
+                                } else {
+                                    if( !vcui.detect.isMobileDevice || $('.swiper-slide-active .story-main').length > 0) {
+                                        console.log('storyHome', $('.swiper-slide-active .story-main').length)
+                                        $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
+                                        lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
+                                    }
+                                }
+                            }
+                        } else{
+                            if(sectioname == "new_story"){
+                                //$('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                                /* 20210518 추가 */
+                                $context.find('.tag-subscribe-story2').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                                /* //20210518 추가 */
+                                $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                            }
+                        }
+
+                        if(viewMode == "selectTagMode"){
+                            if(sectioname == "new_story"){
+                                $context.find('.user_story').hide();
+                                $context.find(story3).hide(); //BTOCISTE-188
+                                //$context.find('.tag-subscribe-story2').next('.story-section').addClass('hidden-story-next') //BTOCSITE-188
+                            } else {
+                                $context.find('.new_story').hide();   
+                                //$context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
+                            }
+                            $context.find('.tag-subscribe-story').hide();
+                            //setHiddenMargin();
+                        }
+                    }
+
+                    if(sectioname == "new_story"){
+                        if(IS_LOGIN == "Y"){
+                            var userlistbox = $context.find('.user_story').find('.flexbox-wrap');
+                            if(userlistbox.children().length > 0){
+                                if(viewMode == "selectTagMode") sectionItem.find('.inner h2.title').hide();
+                                else sectionItem.find('.inner h2.title').show();
+                            }else sectionItem.find('.inner h2.title').hide();
+                        } else{
+                            sectionItem.find('.inner h2.title').hide();
+                        }
+                    } else{
+
+                        $context.find('.new_story').find('.inner h2.title').show();
+                    }
+                    
+                    setRepositionTagBox(sectionItem);
+                } else{
+                    if(sectioname == "user_story"){
+                        // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                        /* 20210518 추가 */
+                        $context.find('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
+                        /* //20210518 추가 */
+                        $context.find(story3).hide();//BTOCISTE-188
+                        $context.find('.tag-subscribe-story2').next('.story-section').removeClass('hidden-story-next') //BTOCSITE-188
+                        lgkorUI.removeCookieArrayValue("storyHomeFirstTag", "Y");//BTOCISTE-188
+                        $context.find('.ui_tag_smooth_scrolltab').vcSmoothScrollTab();
+                        $context.find('.new_story').find('.inner h2.title').hide();
+                    }
+                    sectionItem.hide();
                 }
-                sectionItem.hide();
-            }
-            // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
-            if (typeof(mainSwiper) !== 'undefined'){
-                mainSwiper.swiper.updateAutoHeight();
-            }
-        
-        });
+
+                setHiddenMargin(); //BTOCSITE-188
+                // BTOCSITE-27 스토리 불러왔을때 컨텐츠 영역 height 값 업데이트
+                if (typeof(mainSwiper) !== 'undefined'){
+                    mainSwiper.swiper.updateAutoHeight();
+                }
+
+            });
+        }
     }
 
     function setRepositionTagBox(item){

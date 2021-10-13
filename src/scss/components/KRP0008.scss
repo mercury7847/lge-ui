@@ -584,7 +584,19 @@
                 display: inline-block;
                 @include font-small;
                 vertical-align: middle;
+
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
+                &.copy {
+                    cursor:pointer;
+                    display: inline-block;
+                    padding-right:22px;
+                    margin-left:6px;
+                    background:url(/lg5-common/images/icons/icon-copy.svg) 100% 60% no-repeat;
+                    background-size: 16px;
+                    vertical-align: middle;
+                }
             }
+
             .review-info {
                 .star-rating-wrap {
                     // display: none;
@@ -758,6 +770,57 @@
                 }
             }
             /* //BTOCSITE-5234 추석 연휴 기간 안내팝업 */
+
+            // BTOCSITE-3679 오브제컬렉션 PDP 배너 위치 확인 요청
+            .my-objet {
+                margin-top:38px;
+
+                a {
+                    display:block;
+                    width:100%;
+                    height:50px;
+                    padding:12px 0;
+                    border-radius:8px;
+                    background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
+                    color:#fff;
+                    font-size:16px;
+                    font-weight:700;
+                    line-height:26px;
+                    text-align:center;
+                    span {
+                        position:relative;
+                        padding-right:22px;
+                        &:after {
+                            content:' ';
+                            position:absolute;
+                            top:5px;
+                            right:0;
+                            width:16px;
+                            height:16px;
+                            background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+                            background-size:16px;
+                        }
+                    }
+                }
+                @include mobile {
+                    margin:0 -16px;
+                    padding:24px 0 0;
+                    a {
+                        border-radius:0;
+                    }
+                }
+            }
+
+            .my-objet ~ .product-detail-option{ 
+                margin-top:24px;
+                @include mobile {
+                    margin-top:40px;
+                }
+            }
+
+            .my-objet ~ .product-detail-option .option-tabs { 
+                margin-top:0;
+            }
         }
 
         .product-detail-option {
@@ -923,43 +986,6 @@
                         flex-grow: 2;
                     }
                 }
-                .my-objet {
-                    a {
-                        display:block;
-                        width:100%;
-                        height:50px;
-                        padding:12px 0;
-                        border-radius:8px;
-                        background-image: linear-gradient(96deg, #a58bee, #f86791 99%);
-                        color:#fff;
-                        font-size:16px;
-                        font-weight:700;
-                        line-height:26px;
-                        text-align:center;
-                        span {
-                            position:relative;
-                            padding-right:22px;
-                            &:after {
-                                content:' ';
-                                position:absolute;
-                                top:5px;
-                                right:0;
-                                width:16px;
-                                height:16px;
-                                background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
-                                background-size:16px;
-                            }
-                        }
-                    }
-                    @include mobile {
-                        margin:0 -16px;
-                        // margin:24px -16px 0;
-                        a {
-                            border-radius:0;
-                        }
-                    }
-                }
-                
             }
 
             /* 210702 */
@@ -1033,15 +1059,33 @@
                         @include font-small;
                         color: $color-gray-5;
                     }
+                    /* BTOCSITE-5781 */
                     .price {
+                        display:inline-block;
                         @include font-small;
+                        font-weight:600;
                         & + .price {
-                            display: block;
+                            @include pc{
+                                &:before{
+                                    content:'';
+                                    display:inline-block;
+                                    position:relative;
+                                    top:1px;
+                                    margin:0 8px;
+                                    width:1px;
+                                    height:12px;
+                                    background:#666;
+                                }
+                            }
+                            @include mobile{
+                                display:block;
+                            }
                         }
                         .block {
                             display: block;
                         }
                     }
+                    /* //BTOCSITE-5781 */
                 }
                 &.total {
                     .text {
@@ -1108,6 +1152,41 @@
                     margin-top:0;
                     & + .info-accordion-wrap {
                         margin-top:12px;
+                    }
+                }
+                //BTOCSITE-3523 - 렌탈 케어 솔루션 탭 - 제휴카드 영역
+                &.ui_accordion {
+                    &.detail-option-box {
+                        background: #f4f4f4;
+                        border-radius: 8px;
+                        .lists {
+                            padding: 24px;
+                            .head {
+                                margin-bottom: 0;
+                                padding: 0 0 16px;
+                                border-bottom: 1px solid #ddd;
+                                .btn-toggle {
+                                    top: calc( 50% - 8px);
+                                }
+                            }
+                            .select-info:first-child {
+                                margin-top: 16px;
+                            }
+                            .article-box {
+                                padding: 0;
+                                ul {
+                                    > li {
+                                        color: #000;
+                                    }
+                                }
+                            }
+                            &.on {
+                                .ui_accord_content {
+                                    margin-top: 0;
+                                    border-top: 0 !important;
+                                }
+                            }
+                        }
                     }
                 }
                 .lists {
@@ -1199,6 +1278,11 @@
                         }
                     }
                     &.member {
+                        /* BTOCSITE-5781 */
+                        .price-info{
+                            padding-right:0;
+                        }
+                        /* //BTOCSITE-5781 */
                         .ui_accord_content {
                             padding-top: 16px;
                         }
@@ -1353,6 +1437,30 @@
                     }
                 }
             }
+
+            /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+            .signature-price {
+                margin-top: 16px;
+                text-align: center;
+                @include mobile {
+                    margin-bottom: 16px;
+                }
+                .price-info {
+                    .text {
+                        // font-size: 14px;
+                    }
+                }
+                .content {
+                    .price {
+                        font-size: 20px;
+                        font-weight: bold;
+                        @include mobile {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
         }
 
         .option-tabs {
@@ -1385,7 +1493,26 @@
                 }
             }
         }
-
+        //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
+        .caresolution-careship,
+        .care-sibling-option {
+            & > .select-info {
+                &.select-box {
+                    .ui-selectbox-wrap {
+                        &.active {
+                            .ui-selectbox-list {
+                                z-index: 52;
+                            }
+                        }
+                    }
+                    .select-text {
+                        .card-title {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
         .select-info {
             @include clearfix;
             position: relative;
@@ -1635,6 +1762,172 @@
                     }
                 }
             }
+
+            //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
+            &.rental-card-list,
+            &.careship-card-list {
+                .select-wrap {
+                    &.is-selected {
+                        .ui_dropdown_list {
+                            display: none;
+                        }
+                    }
+                    &:not(.is-selected) {
+                        .dropdown-menu-wrap {
+                            border-top: 1px solid #ddd;
+                        }
+                    }
+                    &.open {
+                        height: auto;
+                        z-index: 51;
+                        &.is-selected {
+                            .cancel-item {
+                                display: block;
+                                & + li {
+                                    margin-top: 30px;
+                                }
+                            }
+                            .ui_dropdown_list {
+                                display: block;
+                            }
+                            .dropdown-menu-wrap {
+                                border-top: 1px solid #ddd;
+                            }
+                        }
+                        .select-button {
+                            border: 1px solid #000;
+                            border-radius: 8px 8px 0 0;
+                            @include mobile {
+                                border-radius: 8px;
+                            }
+                          .selectbox-list {
+                                position: relative;
+                                top: auto;
+                                right: auto;
+                            }
+                            .simple-card-list {
+                                & > li:nth-child(n + 4) {
+                                    display: block;
+                                }
+                            }
+                            .ui_dropdown_list {
+                                & + .ui_dropdown_list {
+                                    border: 1px solid #000;
+                                    border-top: none;
+                                    @include mobile {
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .select-button {
+                        position: relative;
+                        top: auto;
+                        left: auto;
+                        right: auto;
+                        border-color: #ddd;
+                        .ui_dropdown_list {
+                            padding: 29px 15px 27px;
+                            border-radius: 0 0 8px 8px;
+                            @include mobile {
+                                padding: 25px 12px 25px;
+                            }
+                            & + .ui_dropdown_list {
+                                position: absolute;
+                                left: -1px;
+                                width: calc(100% + 2px);
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    width: calc(100% - 30px);
+                                    border-top: 1px dashed #ddd;
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
+                        .select-list {
+                            max-height: none;
+                            overflow: initial;
+                            margin: 0;
+                            padding-bottom: 0;
+                            li {
+                                &:not(.cancel-item) + li {
+                                    margin-top: 30px;
+                                }
+                                a {
+                                    padding: 0;
+                                    &:hover, &:active, &:focus {
+                                        background: none;
+                                    }
+                                    .card-name,
+                                    .card-discount {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                    }
+                                }
+                            }
+                        }
+                        .select-text {
+                            position: relative;
+                            top: auto;
+                            left: auto;
+                            right: auto;
+                            padding: 14px 15px;
+                            transform: none;
+                            background: none;
+                            color: #000;
+                            text-align: left;
+                            border-radius: 0;
+                            .tooltip-wrap {
+                                .tooltip-icon {
+                                    background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
+                                }
+                            }
+                        }
+                        .dropdown-menu-wrap {
+                            position: relative;
+                            @include mobile {
+                                overflow: hidden;
+                                overflow-y: auto;
+                                max-height: 50vh;
+                                border-radius: 0 0 8px 8px;
+                            }
+                        }
+                        .selectbox-list {
+                            border: none;
+                        }
+                        .ui_dropdown_toggle {
+                            overflow: hidden;
+                            position: absolute;
+                            right: 15px;
+                            display: inline-block;
+                            max-width: calc(100% - 100px);
+                            height: 24px;
+                            padding: 0 24px 0 0;
+                            &::after {
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+                .simple-card-list {
+                    .cancel-item {
+                        display: none;
+                    }
+                    > li:nth-child(n + 4) {
+                        display: none;
+                    }
+                    li + li {
+                        @include mobile {
+                            margin-top: 3px;
+                        }
+                    }
+                }
+            }
         }
         
         // 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
@@ -1642,6 +1935,11 @@
             margin:24px 0;
             & ~ .care-sibling-option {
                 margin:0;
+                /* BTOCSITE-4997 */
+                & ~ .info-accordion-wrap {
+                    margin-top:24px;
+                }
+                /* //BTOCSITE-4997 */
             }
 
             & ~ .care-sibling-option .info-accordion-wrap:first-child {
@@ -2030,19 +2328,29 @@
                 text-align: right;
             }
         }
-
+        // BTOCSITE-5960 s
         .non-purchase {
             margin-top: 16px;
             //padding: 24px;
             //border-radius: 8px;
             //background-color: $color-bg;
-            text-align: center;
+            text-align: left;
+            @include mobile{
+                margin-top: 0;
+                padding:21px !important;
+            }
             .text {
-                @include font-medium;
-                color: $color-primary;
+                font-size: 14px;
+                line-height: 23px;
+                color: $color-default;
+                @include mobile{
+                    font-size: 13px;
+                    line-height: 22px;
+                    letter-spacing: -0.2px;
+                }
             }
         }
-
+        // BTOCSITE-5960 e
         .careship-service {
             //@include clearfix;
             margin-top: 40px;
@@ -2376,6 +2684,17 @@
                 display: inline-block;
                 font-size: 13px;
                 line-height: 21px;
+
+                // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선
+                &.copy {
+                    cursor:pointer;
+                    display: inline-block;
+                    padding-right:22px;
+                    margin-left:6px;
+                    background:url(/lg5-common/images/icons/icon-copy.svg) 100% 60% no-repeat;
+                    background-size: 16px;
+                    vertical-align: middle;
+                }
             }
             .review-info {
                 display: inline-block;
@@ -3437,6 +3756,78 @@
 //210702 에어컨 필터 구매 전 주의사항 팝업 관련 css 파일	
 @import "KRP0008_popup";
 
+/* BTOCSITE-5781 제품 PDP 페이지 개선요청건 */
+.popup-icon.popup{
+    display:inline-block;
+    position:relative;
+    margin-left:2px;
+    top:-1px;
+    width:24px;
+    height:24px;
+    background:url('/lg5-common/images/icons/icon-popup-24.svg') 0 0 no-repeat;
+    background-size:100%;
+    font-size:0;
+    cursor:pointer;
+    @include mobile{
+        top:-2px;
+        width:20px;
+        height:20px;
+        background:url('/lg5-common/images/icons/icon-popup-20.svg') 0 0 no-repeat;
+        background-size:100% 100%;
+    }
+}
+.ui_modal_wrap{
+    .pop-conts{
+        &.pd-btm{
+            padding:0 40px 48px;
+            @include mobile{
+                padding:0 14px 30px;
+            }
+            .sale-info{
+                padding:20px 0 16px;
+                border-bottom:1px solid #ddd;
+                font-size:16px;
+                line-height:26px;
+                @include mobile{
+                    padding:18px 0 12px;
+                    font-size:14px;
+                    line-height:22px;
+                }
+            }
+            .payment-info{
+                padding:24px 0 0;
+                @include mobile{
+                    padding:16px 0 0;
+                }
+                .discount{
+                    .price{
+                        color:#000;
+                    }
+                }
+                .total-discount{
+                    margin-top:4px;
+                    .text{
+                        font-size:16px;
+                        color:#da0f47;
+                        @include mobile{
+                            font-size:13px
+                        }
+                    }
+                    .content{
+                        .price{
+                            font-size:16px;
+                            color:#da0f47;
+                            @include mobile{
+                                font-size:14px
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* //BTOCSITE-5781 제품 PDP 페이지 개선요청건 */
 
 // 패키지 모델 팝업
 .popup-package-model {
@@ -3591,3 +3982,30 @@
         }
     }
 }
+/* BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */
+.store-counsel-banner{
+    margin-top:24px;
+    >a{
+        display:block;
+        img {
+            width:100%;
+            /* 클래스별이미지분기 */
+            &.pc{
+                display:inline-block;
+            }
+            &.mobile{
+                display:none;
+            }
+            @include mobile {
+                &.pc{
+                    display:none;
+                }
+                &.mobile{
+                    display:inline-block;
+                }
+            }
+            /* //클래스별이미지분기 */
+        } 
+    } 
+}
+/* //BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */

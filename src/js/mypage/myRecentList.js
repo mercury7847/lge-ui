@@ -1,24 +1,45 @@
 (function() {
     var listItemTemplate = '<li class="box {{#if disabled}}disabled{{/if}}" data-id="{{id}}" data-sku="{{sku}}" data-categoryId="{{categoryId}}" data-rtSeq="{{rtSeq}}" data-requireCare="{{requireCare}}" data-typeFlag="{{typeFlag}}">' +
         '<div class="col-table">' +
-            '<div class="col"><div class="product-info">' +
-                '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
-                '<div class="infos">' +
-                    '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
-                    '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
-                    '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
-                    '<div class="more"><span class="blind">제품스펙</span><ul>' +
-                        '{{#if !disabled}}{{#each item in spec}}<li>{{item}}</li>{{/each}}{{/if}}' +
-                    '</ul></div>' +
+                '<div class="col">' +
+                    '<div class="product-info">' +
+                    '<div class="thumb"><a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}" onError="lgkorUI.addImgErrorEvent(this);"></a></div>' +
+                    '<div class="infos">' +
+                        '<p class="name"><a href="{{pdpUrl}}"><span class="blind">제품명</span>{{#raw title}}</a></p>' +
+                        '<p class="e-name"><span class="blind">영문제품번호</span>{{modelName}}</p>' + 
+                        '{{#if disabledReason}}<p class="soldout-msg pc-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
+                        '<div class="more"><span class="blind">제품스펙</span><ul>' +
+                            '{{#if !disabled}}{{#each item in spec}}<li>{{item}}</li>{{/each}}{{/if}}' +
+                        '</ul></div>' +
+                    '</div>' +
+
+                    '<p class="price">' +
+                        '{{#if priceFlag=="Y"}}' +
+
+                            /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                            '{{#if price == originalPrice}}' +
+                                '<span class="blind">구매가격</span>' +
+                                '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' +
+
+                            '{{#else}}' +
+
+                                '{{#if originalPrice}}' +
+                                    '<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>' +
+                                '{{/if}}' +
+                                '{{#if price}}' +
+                                    '<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원' +
+                                '{{/if}}' +
+                            '{{/if}}' +
+                            /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
+                        '{{/if}}' +
+
+                        '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
+                    '</p>' +
+
                 '</div>' +
-                '<p class="price">' +
-                    '{{#if priceFlag=="Y"}}' +
-                    '{{#if originalPrice}}<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>{{/if}}' +
-                    '{{#if price}}<span class="blind">구매가격</span>{{#if typeFlag=="C"}}월 {{/if}}{{price}}원{{/if}}' +
-                    '{{/if}}' +
-                    '{{#if disabledReason}}<p class="soldout-msg m-view" aria-hidden="true">{{disabledReason}}</p>{{/if}}' +
-                '</p>' +
-            '</div></div>' +
+            '</div>' +
+
             '<div class="col btn-col">' +
                 '{{#if !disabled && obsBtnFlag=="enable"}}<button type="button" class="btn size border buycart"><span>장바구니</span></button>{{/if}}' +
                 //

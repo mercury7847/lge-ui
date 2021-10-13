@@ -16,6 +16,12 @@
         $('.tabs-scroll-wrap .tabs li').each(function(idx, item){
             self.tabClones.push($(item).clone())
         });
+
+        //20210924 BTOCSITE-5872
+        if($('.compare-result-contents .section').length == 0) {
+            $('.compare-result').vcSticky('destroy');
+            $('.compare-result').removeClass('ui_sticky');
+        }
     }
 
     function bindEvents(){

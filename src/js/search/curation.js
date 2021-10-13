@@ -11,7 +11,7 @@ var Curation = (function() {
                         '<div class="chk-group">' +
                             '{{#each (item, idx) in filterValues}}' +
                                 '<div class="chk-wrap">' +
-                                    '<input type="checkbox" id="smart-{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}-{{idx}}">' +
+                                    '<input type="checkbox" id="smart-{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}">' +
                                     '<label for="smart-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                                 '</div>' +
                             '{{/each}}' +
@@ -52,6 +52,8 @@ var Curation = (function() {
         triggerSmartFilterChangeEvent: function () {
             var self = this;
             var filterData = self.getDataFromSmartFilter();
+
+            console.log("triggerSmartFilterChangeEvent filterdata %o",filterData);
             self.smartFilterChangeEventFunc(filterData, self._makeFilterData(filterData));
         },
 
@@ -65,6 +67,8 @@ var Curation = (function() {
         getDataFromSmartFilter: function() {
             var self = this;
             var data = {};
+
+            console.log("getDataFromSmartFilter %o",self.$smartFilterResult);
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
@@ -74,9 +78,12 @@ var Curation = (function() {
                     tempArray = [];
                 }
                 tempArray.push(filterValueId);
+
                 data[filterId] = tempArray;
                 //data['data'] = tempArray;
             });
+
+            console.log("스마트 필터 데이터 %o",data);
             return data;
         },
 
@@ -208,6 +215,8 @@ var Curation = (function() {
         },
 
         setCurationData: function(data) {
+
+            console.log("setCurationData 초기 %o",data);
             var self = this;
             var curationData = data.curation;
             if(curationData && curationData.length > 0) {
@@ -232,8 +241,11 @@ var Curation = (function() {
                 self.$curation.hide();
             }
 
+            self.smartFilterCnt = data.smartFilterList.count || 0;
             var smartFilterData = data.smartFilterList.data;
+            console.log("smartFilterData %o",smartFilterData);
             if(smartFilterData && smartFilterData.length > 0) {
+               
                 var isOpen = self.$smartFilterList.data('open');
                 var $list_ul = self.$smartFilterList.find('ul.default');
                 $list_ul.empty();
@@ -257,11 +269,12 @@ var Curation = (function() {
                         parent.addClass('unfold');
                     }
                 });
-
-                // self.$smartFilterList.show();
+                // BTOCSITE-1716
+                self.$smartFilterList.addClass("show");
             } else {
                 self.removeSelectSmartFilter();
-                // self.$smartFilterList.hide();
+                // BTOCSITE-1716
+                self.$smartFilterList.removeClass("show");
             }
 
             self.resetSmartFilterMoreButton(self.$smartFilterMore.data('open'));
@@ -360,13 +373,13 @@ var Curation = (function() {
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
-            console.log("curation resetFilter");
+  
 
             var self = this;
 
             var filterData = JSON.parse(data);
+            console.log("curation resetFilter %o",filterData);
 
-            console.log(filterData);
             if(filterData) {
 
                 var maxIndex = 0;
@@ -443,11 +456,21 @@ var Curation = (function() {
                 console.log("curation resetFilter smart-type %o",$('.lay-filter.smart-type'))
                 // BTOCSITE-1716 좌측 스마트 필터 리셋              
                 if($('.lay-filter').hasClass('smart-type')) {
+                    var cntArray = [];
                     var $filterChecked = $('.smart-filter .filter-list input:checked');
                     $('.lay-filter.smart-type input').prop("checked", false);
                     $filterChecked.each(function(){
                         $('.lay-filter.smart-type input[value="'+$(this).val()+'"]').prop("checked", true);
+                        cntArray = cntArray.concat($(this).val().split(','));
                     })
+
+                    cntArray = cntArray.filter(function(item,index){
+                        return cntArray.indexOf(item) === index;
+                    });
+
+                    var cnt = cntArray.length ||  self.smartFilterCnt;
+                    $(".lay-filter .filter-head h1").html('필터<span>'+cnt+'개 제품</span>');
+
 
                     // 필터 더보기 클래스 붙히기
                     if($filterChecked.length >  0) {

@@ -116,9 +116,11 @@
             vertical-align:top;
             @include mobile {
                 display:block;
-                width:280px;
+                // width:280px;
                 margin-top:16px;
-                margin-right:48px;
+                // BTOCSITE-5938 모니터링 항목 189 
+                margin-right:0;
+                width:100%;
                 &:first-child {
                     margin-top:0;
                 }

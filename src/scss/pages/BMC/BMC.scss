@@ -531,3 +531,32 @@
 
 // 오픈컨텐츠
 @import "MKT-openconts";
+
+// BTOCSITE-4785 s
+.display-product-type{
+    .item.evt-item{
+        padding-bottom: 187px;
+        @include mobile{
+            padding-bottom: 32px;
+        }
+        .product-bottom{
+            bottom:40px;
+            .btn-area-wrap {
+                .btn-area {
+                    display: block; 
+                    &+ .btn-area{
+                        margin-top: 8px;
+                    }
+                    .btn-store{
+                        color: $color-primary;
+                        border-color: $color-primary !important;
+                        &:hover,&:focus{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        } 
+    } 
+}
+// BTOCSITE-4785 e

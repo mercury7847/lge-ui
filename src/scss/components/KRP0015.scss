@@ -408,7 +408,11 @@
 /* BTOCSITE-1967 */
 .mdevice:not(.app) {
     $statusBarHeight: 70px;
-    .KRP0015 {
-        bottom:(0 + $statusBarHeight);
+    //BTOCSITE-1967 2차 추가수정
+    @include mobile {
+        .KRP0015 {
+            z-index: 99;
+            bottom:(0 + $statusBarHeight);
+        }
     }
 }

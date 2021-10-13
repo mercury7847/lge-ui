@@ -36,6 +36,11 @@
                 "modelGubunName": "일반제품",
                 "categoryId": "CT50000111"
             },
+
+
+
+
+
             {
                 "modelGubun": "1",
                 "obsSellFlag": "Y",
@@ -50,9 +55,9 @@
                 "subCategoryName": "PC모니터",
                 "largeImageAddr": "https://www.lge.co.kr/kr/images/monitors/md08043297/md08043297-450x450.jpg",
                 "superCategoryId": "CT50000045",
-                "obsDiscountPrice": 8400,
-                "obsMemberPrice": 11000,
-                "modelDisplayName": "LG PC모니터",
+                "obsDiscountPrice": 0,
+                "obsMemberPrice": 0,
+                "modelDisplayName": "test111111111",
                 "newProductBadgeFlag": "N",
                 "modelStatusCode": "ACTIVE",
                 "obsOriginalPrice": 218900,

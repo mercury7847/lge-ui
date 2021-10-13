@@ -1,0 +1,204 @@
+<li>
+    <!-- BTOCSITE-4785 : .product-contents > .flag-wrap.bar-type 제거, .product-bottom > .flag-wrap.bar-type 제거, 장바구니버튼 제거, 진열제품 구매가능매장 확인하기 버튼 추가 -->
+    <div class="item @@itemClass">
+        @@if (context.imageFlags) {
+        <div class="badge">
+            <div class="flag-wrap image-type left">
+                @@for ( var i=0; i < imageFlags.length; i++ ) {
+                <span class="big-flag"><img data-pc-src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" data-m-src="/lg5-common/images/dummy/m-flag-60x66-`+imageFlags[i].num+`.png" src="/lg5-common/images/dummy/flag-60x66-`+imageFlags[i].num+`.png" alt="`+imageFlags[i].alt+`"></span>
+                }
+            </div>
+        </div>
+        }
+        <div class="product-image" aria-hidden="true">
+            @@if(!context.singleImage) {
+                @@include('./common/partials/KRP0007-carousel.html', {
+                    "pdpType" : "displayPdp",
+                    "buttonUrl" : "https://www.lge.co.kr/refrigerators/w821mww463s",
+                    "slideArr" : [
+                        {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
+                        {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
+                    ]
+                })
+        }
+        @@if(context.singleImage) {
+            <a href="@@eventItem.buttonUrl" class="btn-pdp-alert">
+                <img src="@@singleImage" alt="LG DIOS 노크온 매직스페이스">
+            </a>
+        }
+        </div>
+        <div class="product-contents">
+            @@if (context.optionColor) {
+            <div class="product-option color ui_smooth_scrolltab">
+                <div class="ui_smooth_tab">
+                    <ul class="option-list" role="radiogroup">
+                        @@for (var i = 0; i < context.colorSet.length; i++) {
+                        <li>
+                            <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
+                                <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+` value="MD08045006"> <!-- 2021.2.10 vlaue=modelId 추가-->
+                                <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="scroll-controls ui_smooth_controls"> 
+                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                </div>
+            </div>
+            }
+            @@if (context.optionText) {
+            <div class="product-option text ui_smooth_scrolltab">
+                <div class="ui_smooth_tab"> 
+                    <ul class="option-list" role="radiogroup">
+                        @@for (var i = 0; i < context.textSet.length; i++) {
+                        <li>
+                            <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
+                                <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
+                                <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="scroll-controls ui_smooth_controls">
+                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+                </div>
+            </div>
+            }
+            <div class="product-info">
+                <div class="product-name">
+                    <a href="#" class="btn-pdp-alert-open">LG DIOS 노크온 매직스페이스</a>
+                </div>
+                @@if (!context.nonSku) {
+                <div class="sku">S833MC85Q</div>
+                }
+                @@if (context.review) {
+                <div class="review-info">
+                    <a href="#">
+                        @@if (context.isReview) {
+                        <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                        <div class="average-rating"><span class="blind">평점</span>4.2</div>
+                        <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                        }
+                        @@if (!context.isReview) {
+                        <div class="star"><span class="blind">리뷰없음</span></div>
+                        <div class="average-rating"><span class="blind">평점</span>0</div>
+                        <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
+                        }
+                    </a>
+                </div>
+                }
+                @@if (context.spec) {
+                <ul class="spec-info">
+                    <li>용량 : 840L</li>
+                    <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
+                    <li>형태 : 노크온 매직스페이스</li>
+                    <li>패턴 : 미드나잇</li>
+                    <li>케어솔루션 가능</li>
+                </ul>
+                }
+                @@if (context.spec2) {
+                <p class="spec-info2">적용모델 : H-62HSGAKOR 외 </p>
+                }
+                @@if (context.spec3) {
+                <div class="spec-info3">케어십 가능</div>
+                }
+            </div>
+            @@if (context.hashtag) {
+            <div class="hashtag-wrap">
+                <span class="hashtag">#여름가전</span>
+                <span class="hashtag">#가전</span>
+            </div>
+            }
+        </div>
+        @@if (context.wish) {
+        <div class="product-wish">
+            <span class="chk-wish-wrap">
+                <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
+                <label for="@@wish.id"><span class="blind">찜하기</span></label>
+            </span>
+        </div>
+        }
+        @@if (context.price) {
+        <div class="price-area">
+            @@if (context.originalPrice) {
+            <div class="original">
+                <em class="blind">할인 전 정가</em>
+                <span class="price">5,200,000<em>원</em></span>
+            </div>
+            }
+            <div class="total">
+                <em class="blind">할인 후 판매가</em>
+                <span class="price">4,420,000<em>원</em></span>
+            </div>
+        </div>
+        }
+        @@if (!context.bizType) {
+            @@if (context.eventItem) {
+            <div class="product-bottom">
+                @@if (context.eventItem.price) {
+                <div class="price-area">
+                    @@if (context.eventItem.originalPrice) {
+                    <div class="original">
+                        <em class="blind">할인 전 정가</em>
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="total">
+                        <em class="blind">할인 후 판매가</em>
+                        <span class="price">4,420,000<em>원</em></span>
+                    </div>
+                    @@if (context.eventItem.discount) {
+                    <div class="discount">
+                        <em class="blind">할인율</em>
+                        <span class="percentage">10%</span>
+                    </div>
+                    }
+                </div>
+                }
+                <div class="btn-area-wrap">
+                    <div class="btn-area">
+                        <!-- BTOCSITE-4785 : 파라미터 전달값 - dpPdp(제품명전달), cartPrdList, salesCode -->
+                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">진열제품 구매가능매장 확인하기</a>
+                    </div>
+                    <div class="btn-area">
+                        <!-- BTOCSITE-4785 : .btn-pdp-alert - 자세히보기 버튼 클릭시 팝업 노출 -->
+                        <a href="https://www.lge.co.kr/refrigerators/w821mww463s" class="btn border size-m btn-pdp-alert">@@eventItem.button</a>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+        @@if (context.bizType === "CARESOLUTION") {
+            <div class="product-bottom">
+                <div class="price-area care">
+                    <div class="total-price"><em class="text">기본 월 요금</em>
+                        <span class="price"><em>월</em> 29,900<em>원</em></span>
+                    </div>
+                    <span class="small-text">(3개월/1회 방문)</span>
+                </div>
+                <div class="btn-area-wrap">
+                    <div class="btn-area">
+                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">진열제품 구매가능매장 확인하기</a>
+                    </div>
+                    <div class="btn-area">
+                        <a href="@@eventItem.buttonUrl" class="btn border size-m btn-pdp-alert">@@eventItem.button</a>
+                    </div>
+                </div>
+            </div>
+        }
+        @@if (context.ar) {
+        <div class="product-ar">
+            <a href="#"><span>AR 체험</span></a>
+        </div>
+        }
+        @@if (context.compare) {
+        <div class="product-compare">
+            @@compare
+        </div>
+        }
+    </div>
+</li>

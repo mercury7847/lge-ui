@@ -4,8 +4,16 @@
     <iframe src="https://www.lge.co.kr/lgekor/bestshop/product/applyCounsel.do?device=w&inflow=mycollection&orgcode=0113"></iframe>
     <!-- IFRAME 종료  -->
     */
-    
-    
+        // BTOCSITE-4785 s
+        var cartPrdList  = getParameter("cartPrdList");
+
+        function getParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        // BTOCSITE-4785 e
         function isRegExp(a){
             return a.constructor===RegExp;
         }
@@ -59,7 +67,7 @@
         };
     
         var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-    
+        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
                 '<div class="store-info-list ui_marker_selector">'+
@@ -70,7 +78,7 @@
                         '</div>'+
                     '</div>'+
                     '<div class="info-wrap">'+
-                        '<a href="#">'+
+                        '<a href="#" class="shop-map-link">'+
                             '<div class="tit-wrap">'+
                                 '<p class="name">'+
                                     '<span class="blind">매장명</span>'+
@@ -94,7 +102,10 @@
                                 '<span class="blind">전화번호</span>'+
                                 '{{shopTelphone}}'+
                             '</span>'+
-                            '<a href="#" data-url="{{detailUrl}}" class="btn-detail">상세보기</a>'+
+                            '<div class="btn-link-box">'+
+                                '<a href="#" data-url="{{detailUrl}}" class="btn-link btn-detail">상세보기</a>'+
+                                '<a href="{{orgCode}}" class="btn-link pink">매장 상담 예약</a>'+
+                            '</div>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -115,6 +126,15 @@
                 self.windowHeight;
     
                 self.isTransion = false;
+
+                // BTOCSITE-4785 s
+                if(cartPrdList){
+                    // // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
+                    self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+                } else {
+                    self.shopUrl = "/support/visit-store-reservation?orgCode=";
+                }
+                // BTOCSITE-4785 e
     
                 self.$mapContainer = $('.map-container');
                 self.bestShopUrl = $('.map-container').data("bestShop");
@@ -391,8 +411,27 @@
                     e.preventDefault();
                     self._toggleOptContainer();
                 });
-    
-                self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
+
+                // BTOCSITE-4785 s
+                $('.btn-dppdp-fold').on('click', function(e){
+                    e.preventDefault();
+                    $(this).parent().parent().parent().toggleClass('close');
+                    if($(this).parent().parent().parent().hasClass('close')){
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '207px',
+                        });
+                    }
+                    setTimeout(function(){
+                        self._setListArea();
+                    },400);
+                });
+                // BTOCSITE-4785 e
+                // BTOCSITE-4785 : a link  .shop-map-link 로 변경
+                self.$defaultListLayer.on('click', 'li > .ui_marker_selector .shop-map-link', function(e){
                     var id = $(this).closest('li').data('id');
                     self.$map.selectedMarker(id, this);
     
@@ -1222,6 +1261,8 @@
                             shopTelphone: arr[i].info.shopTelphone,
                             shopID: arr[i].info.shopID,
                             detailUrl:self.detailUrl+arr[i].info.shopID,
+                            // BTOCSITE-4785
+                            orgCode:self.shopUrl+arr[i].info.orgCode,
                             selected: arr[i].info.selected ? " on" : ""
                         }
     
@@ -1256,6 +1297,15 @@
                 var self = this;
                 
                 self.$searchContainer.stop().transition({opacity:1}, 320, "easeInOutCubic");
+                // BTOCSITE-4785 s
+                if($('.store-list-wrap').hasClass('display-product-search')){
+                    $('.display-product-search-info-wrap').eq(0).show();
+                    $('.display-product-search .dp-pdp-map').css({
+                        'marginTop' : '0',
+                    });
+                    $('.display-product-search .store-map-con.isMobile').removeClass('dp-pdp-map');
+                }
+                // BTOCSITE-4785 e
                 $('.result-list-box').stop().css({display:'none'})            
                 
                 $('.store-list-wrap .tit').show();
@@ -1293,6 +1343,21 @@
     
                 $('.store-list-wrap .tit').hide();
                 self.$searchContainer.css('display', 'none');
+                // BTOCSITE-4785 s
+                if($('.store-list-wrap').hasClass('display-product-search')){
+                    $('.display-product-search-info-wrap').eq(0).hide();
+                    $('.display-product-search .store-map-con.isMobile').addClass('dp-pdp-map');
+                    if ($('.display-product-search-info').eq(1).hasClass('close')) {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '207px',
+                        });
+                    }
+                }
+                // BTOCSITE-4785 e
                 $('.result-list-box').stop().css({display:'block', opacity:0}).transition({opacity:1}, 410, "easeInOutCubic");
                 
                 var paddingtop = 0;
@@ -1309,13 +1374,17 @@
                         'position':'relative',
                         'visibility':'visible',
                         'left':'0',
-                        'height':'320'
+                        'height':'320',
                     });
                     $('body,html').scrollTop(0);
                 }
-    
-                self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);            
-                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);
+                // BTOCSITE-4785 s
+                //self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300);  
+                if(!$('.store-list-wrap').hasClass('display-product-search')){
+                    self.$defaultListContainer.css({paddingTop:paddingtop, opacity:0}).animate({opacity:1}, 300); 
+                }   
+                self.$defaultListContainer.find('.scroll-wrap').animate({scrollTop:0}, 120);      
+                // BTOCSITE-4785 e
                 self._setListArea();
                 
             },
@@ -1367,7 +1436,7 @@
     
                     $scrollWrap.css({
                         'height':'auto',
-                        'overflow-y':'initial'
+                        'overflowY':'initial'
                     });
     
                 }else{                
@@ -1378,10 +1447,9 @@
                     var opt = 80; //$('.store-list-box > .opt-cont').height();
                     var ht = container - listTop - title - opt;                   
     
-    
                     $scrollWrap.css({
                         'height':ht,
-                        'overflow-y':'auto'
+                        'overflowY':'auto'
                     });
                 }   
     
@@ -1416,6 +1484,17 @@
                         $( ".btn-list-fold" ).after( $('.store-map-con') );
     
                     }
+                    // BTOCSITE-4785 s
+                    if($('.display-product-search-info').eq(1).hasClass('close')){
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '91px',
+                        });
+                    } else {
+                        $('.display-product-search .dp-pdp-map').css({
+                            'marginTop' : '207px',
+                        });
+                    }
+                    // BTOCSITE-4785 s
     
                 } else{
     
@@ -1442,12 +1521,17 @@
                         });
     
                     }
+                    // BTOCSITE-4785 s
+                    $('.dp-pdp-map').css({
+                        'marginTop' : '0',
+                    });
+                    // BTOCSITE-4785 e
                 }
                 
                 self.$mapArea.css({
                     width: mapwidth,
                     height: mapheight,
-                    'margin-left': mapmargin
+                    'marginLeft': mapmargin
                 });
     
                 self._setListArea();
@@ -1458,6 +1542,13 @@
     
         $(window).ready(function(){
             searchShop.init();
+            // BTOCSITE-4785 s
+            var dpPdp  = getParameter("dpPdp");
+            if(getParameter("dpPdp")){
+                $(".store-list-wrap").addClass("display-product-search");
+                $(".display-product-name").text(dpPdp);
+            } 
+            // BTOCSITE-4785 e
         });
     })();
     

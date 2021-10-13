@@ -25,7 +25,7 @@
 
     @include tablet {
         position: relative;
-        margin-bottom: 109px;
+        margin-bottom: 147px;
         padding: 40px 16px 30px;
         border-radius: 8px 8px 0 0;
         @include mobile {
@@ -254,7 +254,7 @@
             }
         }
     }
-
+    // BTOCSITE-3521 
     .my-shortcut {
         @include clearfix;
         .bookmark {
@@ -262,8 +262,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 314px;
-            padding: 16px 16px 16px 24px;
+            min-width: 314px;
+            padding: 10px 16px 10px 24px;
             border-radius: 32px;
             background-color: $color-bg-wt;
             box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -294,10 +294,11 @@
                 margin-left: 20px;
                 vertical-align: middle;
             }
+            & +.bookmark {margin-left:20px;}
         }
         .subscriptions {
             float: right;
-            margin-top: 30px;
+            margin-top: 18px; // BTOCSITE-3521 
             ul {
                 padding: 4px 8px;
                 border: 1px solid rgba(255,255,255,.5);
@@ -325,16 +326,37 @@
         }
         @include tablet {
             position: absolute;
-            bottom: -77px;
+            bottom: -107px;
             right: 0;
             left: 0;
             padding: 0 16px;
             @include mobile {
-                bottom: -69px;
+                // bottom: -69px;
             }
             .bookmark {
                 float: none;
                 width: 100%;
+                border-radius:20px 20px 0 0;
+                padding: 10px 15px 10px 15px;
+                & + .bookmark{
+                    margin-left:0;
+                    border-radius: 0 0 20px 20px;
+                    position:relative;
+                    &:before{
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        content:'';
+                        display:block;
+                        width: calc(100% - 30px);
+                        height: 1px;
+                        margin:0 15px;
+                        background-color:#dddddd;   
+                    }
+                }
+                .text{
+                    white-space: nowrap;
+                }
             }
             .subscriptions {
                 float: none;

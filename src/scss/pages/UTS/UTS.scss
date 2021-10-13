@@ -234,13 +234,20 @@
             padding: 0 40px;
         }
         @media screen and (max-width: 1024px) {
-            // BTOCSITE-1716 스마트필터와 상세필터 합치기
-            display: block !important;
             .inner {
                 max-width: 100%;
                 padding: 0;
             }
         }
+
+        // BTOCSITE-1716 스마트필터와 상세필터 합치기
+        &.show {
+            display:none;
+            @media screen and (max-width: 1024px) {
+                display:block;
+            }
+        }
+
         .title {
             @include blind;
         }
