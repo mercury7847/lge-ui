@@ -200,15 +200,33 @@ var lls = {
         
                         if( click ) {
                             // param.subscribeAction = flag == "Y" ? "C" : "R";
-                            lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
-                                if( subResult.status == "success") {
-                                    var subData = subResult.data;
-                                    var currentActionName = subData.subscribeAction == "R" ? "엘라쇼 알림 신청이" : "엘라쇼 알림 취소가"
-                                    var currentMsg = (subData.success == "Y" ? self.showDate() + " " + currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.");
-                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
-                                    self.$pushContent.find('.btn-lls-push span').text(subData.subscribeAction == "R" ? "알림 취소" : "알림 신청");
-                                }
-                            });
+                            if( flag ) {
+                                lgkorUI.confirm("", {
+                                    title:"엘라쇼 알림 신청을 <br>해제 하시겠습니까?", 
+                                    okBtnName: "해제하기",
+                                    ok: function(){
+                                        lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                            if( subResult.status == "success") {
+                                                var subData = subResult.data;
+                                                var currentActionName = "엘라쇼 알림 취소가"
+                                                var currentMsg = (subData.success == "Y" ? self.showDate() + " " + currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
+                                                lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                                self.$pushContent.find('.btn-lls-push span').text("알림 신청");
+                                            }
+                                        });
+                                    }
+                                }, self.pushBtn)
+                            } else {
+                                lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                    if( subResult.status == "success") {
+                                        var subData = subResult.data;
+                                        var currentActionName = "엘라쇼 알림 신청이";
+                                        var currentMsg = (subData.success == "Y" ? self.showDate() + " " + currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
+                                        lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                        self.$pushContent.find('.btn-lls-push span').text("알림 취소");
+                                    }
+                                });
+                            }
 
                         } else {
                             self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "알림 취소" : "알림 신청");
