@@ -30,6 +30,7 @@
             self.$appTablist = self.$appTabMenu.find('.menu-item');
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
             self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
+            self.$howToUseAppSlider = $('.howto-slider');
         },
         bindEvents: function(){
             var self = this;
@@ -67,6 +68,12 @@
                 self.$appTablist.removeClass('on');
                 $(this).parent().addClass('on');
             }).filter(':eq(0)').click();
+
+            self.$appGuideSlider.find('.btn-howToUse').on('click', function(e) {
+                setTimeout(function(){
+                    self.sliderInPopup.load();
+                },100)
+            })
         },
         heroSlider: function(){
             //최상단 히어로배너
@@ -217,6 +224,40 @@
             },
             load: function(){
                 if( thinQMain.$appGuideSlider.hasClass('slick-initialized') ) {
+                    this.reinit();
+                } else {
+                    this.init();
+                }
+            }
+        },
+        sliderInPopup: {
+            // ThinQ 앱 설치 및 사용방법 슬라이드 
+            slideConfig: {
+                dots: true,
+                infinite:false,
+                spped:300,
+                slidesToShow:3,
+                slidesToScroll: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        }
+                    }
+
+                ]
+            },
+            init: function() {
+                var slider = this;
+                thinQMain.$howToUseAppSlider.not('.slick-initialized').slick(slider.slideConfig)
+            },
+            reinit: function(){
+                thinQMain.$howToUseAppSlider.filter('.slick-initialized').slick('refresh')
+            },
+            load: function(){
+                if( thinQMain.$howToUseAppSlider.hasClass('slick-initialized') ) {
                     this.reinit();
                 } else {
                     this.init();

@@ -1446,11 +1446,31 @@
     }
 }
 
-.popup-howtouse{
-    width: 1146px;
+.popup-howto{
     max-width: 1146px;
-    .howto-slide{
+    @include mobile {
+        width: 100%;
+    }
+    .howto-content{
+        padding:13px 0 38px;
+        @include mobile { 
+            padding-top:0;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            padding-bottom:0;
+        }
+    }
+    .howto-slider{
         width: 1066px;
+        padding:0 59px;
+        @include tablet {
+            width: 100%;
+        }
+        @include mobile {
+            width: 100%;
+            padding:0;
+        }
         .slide-item{
             .inner{
                 display:flex;
@@ -1460,14 +1480,35 @@
             .image{
                 width: 177px;
                 height: 365px;
+                @include mobile {
+                    width: 165px;
+                    height: 340.5px;
+                }
                 img{
                     width: 100%;
                 }
             }
             .text{
                 margin-top: 36px;
+                text-align:center;
+                font-size: 16px;
+                line-height: 1.75;
+                @include mobile{
+                    font-size:14px;
+                    line-height: 1.57;
+                    margin-top: 29px;
+                }
                 .num{
+                    display:block;
                     font-weight: 800;
+                    margin-bottom: 12px;
+                    @include mobile{
+                        font-size:15px;
+                        line-height: 1.53;
+                    }
+                }
+                em{
+                    color:$color-primary;
                 }
             }
         }
