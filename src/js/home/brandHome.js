@@ -980,6 +980,13 @@
         $('.btn-experience').on('click',function(e){
             $('.popup-experience').vcModal("show");
         });
+        //test 검수용
+        $('.btn-experience2').on('click',function(e){
+            var target = "https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html"
+            window.open(target, '_blank', 'width=360, height=800, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+        });
+
+
 
         $window.on('floatingTop', function(){
             currentPage = 0;
