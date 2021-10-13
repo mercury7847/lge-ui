@@ -1813,7 +1813,9 @@ h2.title {
         // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
         &[data-model-default-code="W821AAA453"],
         &[data-model-default-code="W821AAA463"],
-        &[data-model-default-code="M620AAA351"] {
+        &[data-model-default-code="M620AAA351"],
+        &[data-model-default-code="M870AAA451"],
+        &[data-model-default-code="M870AAA452"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
                 background-size: 100% 100%;
@@ -1933,19 +1935,19 @@ h2.title {
                     &:nth-child(1) {
                         left: 36%;
                         top: 9.5%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 43.7%;
                     }
                     &:nth-child(2) {
                         left: 36%;
                         top: 55.5%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 14.3%;
                     }
                     &:nth-child(3) {
                         left: 36%;
                         top: 72.1%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 18%;
                     }
                 }
