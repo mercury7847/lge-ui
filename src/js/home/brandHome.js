@@ -9,20 +9,21 @@
             self.setMagazineVideo();
 
             vcui.require(['libs/slick.min'], function () {
-                
                 self.contentTab();
             });
         },
         settings: function(){
             var self = this;
             self.$thinqMain = $('.thinq-main');
-            self.$heroSlider = self.$thinqMain.find('.hero-banner');
-            self.$magazin = self.$thinqMain.find('.magazine-wrap');
-            self.$magazinSlider = self.$magazin.find('.ui_carousel_slider');
 
+            //상단 히어로배너
+            self.$heroSlider = self.$thinqMain.find('.hero-banner');
+
+            //전체 탭
             self.$stickyTabWrap = self.$thinqMain.find('.thinq-tabs');
             self.$stickyTab = self.$stickyTabWrap.find('.ui_tab');
-
+            
+            //APP 탭
             self.$appContainer = self.$thinqMain.find('.app-wrap');
             self.$appTabArea = self.$appContainer.find('.app-tab-area')
             self.$appTabCont = self.$appTabArea.find('.app-tab-content');
@@ -32,10 +33,15 @@
             self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
             self.$howToPopup = $('.popup-howto');
             self.$howToUseAppSlider = self.$howToPopup.find('.howto-slider');
+
+            //매거진 탭
+            self.$magazin = self.$thinqMain.find('.magazine-wrap');
+            self.$magazinSlider = self.$magazin.find('.ui_carousel_slider');
         },
         bindEvents: function(){
             var self = this;
 
+            //앵커요소로 전체탭 전환
             $(document).on('click', 'a', function(e){
                 var href = $(e.currentTarget).attr('href').replace(/ /gi, "");
                 if(href == '#' || href == '#n'){
@@ -50,6 +56,7 @@
                 }      
             });
 
+            //App 탭 > 우리집 스마트한 생활 > 메뉴 전체보기 버튼
             self.$appTabBtnAll.on('click', function(e){
                 var $parent = $(this).parents('.menu-slide-block');
                 if(!$parent.hasClass('is-active')){
@@ -63,6 +70,7 @@
                 }
             })
 
+            //App 탭 > 우리집 스마트한 생활 > 메뉴 클릭
             self.$appTablist.find('a').on('click', function(e) {
                 e.preventDefault();
                 self.$appTabCont.find('.tab-cont').hide().filter(this.hash).show();
@@ -70,10 +78,7 @@
                 $(this).parent().addClass('on');
             }).filter(':eq(0)').click();
 
-            // self.$appGuideSlider.find('.btn-howToUse').on('click', function(e) {
-            //     self.sliderInPopup.load();
-            // })
-
+            //App 탭 > 하단 슬라이드배너 > 앱 설치 및 사용방법 팝업 버튼 활성화시 팝업내 슬라이드 활성화
             self.$howToPopup.on('modalshown', function(e){
                 self.sliderInPopup.load();
             })
@@ -124,6 +129,7 @@
             });
         },
         setMagazineVideo: function(){
+            //매거진 탭 내부 유튜브 영상 & 슬라이드
             var self = this;
             var videoTmpl = '<iframe src={{link}} '+
             'id="videoPlayerCode" frameborder="0" allowfullscreen="1" '+
@@ -149,6 +155,7 @@
             $videoOnBtn.trigger('click');
         },
         contentTab: function(){
+            //전체 탭
             var self = this;
 
             var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
@@ -164,6 +171,7 @@
             })
         },
         appSmartTab: {
+            //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드
             slideConfig : {
                 infinite: false,
                 slidesToShow: 7,
@@ -210,7 +218,7 @@
             }
         },
         appDownloadGuideSlider:{
-             // 앱 다운안내 슬라이드
+             //App 탭 > 앱 다운안내 슬라이드
             slideConfig: {
                 dots: true,
                 infinite: true,
@@ -234,7 +242,7 @@
             }
         },
         sliderInPopup: {
-            // ThinQ 앱 설치 및 사용방법 슬라이드 
+            //App 탭 > 하단 슬라이드배너 > 팝업 > ThinQ 앱 설치 및 사용방법 슬라이드 
             slideConfig: {
                 dots: true,
                 infinite:false,
@@ -272,8 +280,8 @@
             $('.ui_selectbox').vcSelectbox();
         },
         scroll: function(scrollTop){
+            //전체탭 스티키
             var self = this;
-            
             var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
 
             if(scrollTop >= stickyTabOffsetTop) {
