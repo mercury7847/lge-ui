@@ -305,6 +305,8 @@
 
     .lls-push {
         display: none;
+        max-width:1920px; //BTOCSITE-5368
+        margin:0 auto; //BTOCSITE-5368
         border-bottom:1px solid #ddd;
 
         .push {
