@@ -541,6 +541,13 @@
                             font-size:22px;
                             font-weight:700;
                             line-height:32px;
+                            @include mobile{
+                                font-size:16px;
+                                &:before{
+                                    width:32px;
+                                    height:32px;
+                                }
+                            }
                             &:before{
                                 display:inline-block;
                                 position:relative;
@@ -549,10 +556,7 @@
                                 height:64px;
                                 vertical-align:middle;
                                 content:'';
-                            }
-                            @include mobile{
-                                font-size:16px;
-                                &:before{
+                                @include mobile{
                                     width:32px;
                                     height:32px;
                                 }
@@ -595,14 +599,17 @@
                     }
                     &.offline{
                         dt{
+                            @include mobile{
+                                margin-top:65px;
+                            }
                             &:before{
-                                top:-10px;
+                                top:-10px; 
                                 background:url("/lg5-common/images/BMC/icon-join03.svg") 0 0 no-repeat;
                                 background-size:100% 100%;
+                                @include mobile{
+                                    top:-5px;
+                                }
                             }
-                        }
-                        @include mobile{
-                            margin-top:65px;
                         }
                     }
                 }
