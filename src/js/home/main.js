@@ -267,17 +267,17 @@ $(function () {
             var data = window.breakpoint;
             var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
             var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
-
             if(data.name == 'mobile'){
 
                 if(!isRecom){
                     $context.find('.recom-list-slide').vcCarousel({                        
-                        infinite: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+                        infinite: false,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
                         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                         speed: 150,
-                        touchThreshold: 100
+                        touchThreshold: 100,
+                        centerMode: true
                     });
                 }
 
@@ -294,15 +294,35 @@ $(function () {
 
 
             }else if(data.name == 'pc'){
+                // BTOCSITE-2193 s
+                // $context.find('.recom-list-slide').find('.ui_carousel_dots').show();
+                // $context.find('.benefit-list-slide').find('.ui_carousel_dots').show();
+                // if(isRecom){
+                //     $context.find('.recom-list-slide').vcCarousel('destroy');
+                // }
+                // if(isBenefit){
+                //     $context.find('.benefit-list-slide').vcCarousel('destroy');
+                // }
+                    $context.find('.recom-list-slide').vcCarousel({                        
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100,
+                        dots: true,
+                        arrows: true
+                    });
 
-                $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
-                $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
-                if(isRecom){
-                    $context.find('.recom-list-slide').vcCarousel('destroy');
-                }
-                if(isBenefit){
-                    $context.find('.benefit-list-slide').vcCarousel('destroy');
-                }
+                    $context.find('.benefit-list-slide').vcCarousel({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100,
+                    });
+                // BTOCSITE-2193 e
             }
 
         });               
