@@ -30,7 +30,8 @@
             self.$appTablist = self.$appTabMenu.find('.menu-item');
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
             self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
-            self.$howToUseAppSlider = $('.howto-slider');
+            self.$howToPopup = $('.popup-howto');
+            self.$howToUseAppSlider = self.$howToPopup.find('.howto-slider');
         },
         bindEvents: function(){
             var self = this;
@@ -69,10 +70,12 @@
                 $(this).parent().addClass('on');
             }).filter(':eq(0)').click();
 
-            self.$appGuideSlider.find('.btn-howToUse').on('click', function(e) {
-                setTimeout(function(){
-                    self.sliderInPopup.load();
-                },100)
+            // self.$appGuideSlider.find('.btn-howToUse').on('click', function(e) {
+            //     self.sliderInPopup.load();
+            // })
+
+            self.$howToPopup.on('modalshown', function(e){
+                self.sliderInPopup.load();
             })
         },
         heroSlider: function(){
