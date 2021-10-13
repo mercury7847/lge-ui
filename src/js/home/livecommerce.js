@@ -223,7 +223,6 @@ var lls = {
                             lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
                                 if( subResult.status == "success") {
                                     var subData = subResult.data;
-                                    console.log("subData", subData)
                                     var currentActionName = subData.subscribeAction == "R" ? "구독 신청이" : "구독 취소가"
                                     var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
                                     lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
