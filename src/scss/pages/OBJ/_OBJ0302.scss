@@ -1835,7 +1835,7 @@ h2.title {
                         height: 34%;
                     }
                     &:nth-child(3) {
-                        left: 50.6%;
+                        left: 49.6%;
                         top: 55.1%;
                         width: 18.5%;
                         height: 34%;
@@ -1843,7 +1843,8 @@ h2.title {
                 }
             }
         }
-        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
+        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
+        // 211013 BTOCSITE-6441 W821AAA153 : 추천조합 패널 위치 조정
         &[data-model-default-code="M871AAA151"],
         &[data-model-default-code="M871AAA252"],
         &[data-model-default-code="M871AAA041"],
@@ -1853,7 +1854,7 @@ h2.title {
                     &:nth-child(1) {
                         left: 30.3%;
                         top: 10.8%;
-                        width: 18.6%;
+                        width: 19.6%;
                         height: 43.1%;
                         @include mobile {
                             top: 11.3%;
@@ -1863,7 +1864,7 @@ h2.title {
                     &:nth-child(2) {
                         left: 50.6%;
                         top: 10.8%;
-                        width: 19.5%;
+                        width: 18.5%;
                         height: 43.1%;
                         @include mobile {
                             top: 11.3%;
@@ -1873,13 +1874,13 @@ h2.title {
                     &:nth-child(3) {
                         left: 30.3%;
                         top: 55.1%;
-                        width: 18.6%;
+                        width: 19.6%;
                         height: 34%;
                     }
                     &:nth-child(4) {
                         left: 50.6%;
                         top: 55.1%;
-                        width: 19.5%;
+                        width: 18.5%;
                         height: 34%;
                     }
                 }
