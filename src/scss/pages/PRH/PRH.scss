@@ -849,7 +849,7 @@
 }
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
 
-// BTOCSITE-77 : app tab 작업중
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
 @import "../../modules/slick";
 .app-tab-section{
     .visual-img-solo{
@@ -1514,4 +1514,15 @@
         }
     }
 }
-// BTOCSITE-77 : app tab 작업중
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
+
+// 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용(BTOCSITE-4251)으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
+.thinq-main{
+    .video-asset{
+        width: initial;
+        height: initial;
+        position: initial;
+        overflow: initial;
+    }
+}
+// 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
