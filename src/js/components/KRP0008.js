@@ -78,6 +78,9 @@
         
         var KRP0008 = {
             init: function() {
+                // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
+                loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+                
                 var self = this;
                 //처음 로그인 체크를 하는 ajax 호출 여부
                 self.processProductBuy = null;
@@ -2455,9 +2458,6 @@
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                             var data = result.data[0];
-                            //로그인
-                            loginFlag = data.loginFlag;
-                            
                             //보유멤버쉽 포인트
                             var myMembershipPoint = data.myMembershipPoint;
                             if(lgkorUI.stringToBool(loginFlag)) {
