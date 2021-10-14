@@ -171,12 +171,12 @@
 
         // 카카오톡 공유하기 url 생성
         var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
-        var loc = lgkorUI.parseUrl(kakaoShareUrl);
-        var params = $.extend(loc.searchParams.getAll(), {
+        var kakaoShareLoc = lgkorUI.parseUrl(kakaoShareUrl);
+        var kakaoShareParam = $.extend(kakaoShareLoc.searchParams.getAll(), {
             kakaoShare : 'Y'
         });
 
-        $('.ico-btn.kk').attr("data-url",loc.pathname +'?'+ $.param(params)); 
+        $('.ico-btn.kk').attr("data-url",kakaoShareLoc.origin + kakaoShareLoc.pathname +'?'+ $.param(kakaoShareParam)); 
     }
 
     $(document).ready(function() {
