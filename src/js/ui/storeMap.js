@@ -27,8 +27,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
     if(cartPrdList){
         // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
         self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+        self.cartPrd = "?cartPrdList="+cartPrdList;
     } else {
         self.shopUrl = "/support/visit-store-reservation?orgCode=";
+        self.cartPrd = "";
     }
     // BTOCSITE-4785 e
     var StoreMap = core.ui('StoreMap', /** @lends vcui.ui.StoreMap# */{
@@ -91,7 +93,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                                 // BTOCSITE-4785
                     '           <a href="{{self.shopUrl}}{{orgCode}}" class="btn border size storeConsult-btn">매장 상담 예약</a>'+
                     '           {{/if}}'+
-                    '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
+                    '           <a href="{{detailUrl}}{{self.cartPrd}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '       <button class="info-overlay-close"><span class="blind">닫기</span></button>'+
                     '   </div>'+

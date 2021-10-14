@@ -131,8 +131,10 @@
                 if(cartPrdList){
                     // // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
                     self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+                    self.cartPrd = "?cartPrdList="+cartPrdList;
                 } else {
                     self.shopUrl = "/support/visit-store-reservation?orgCode=";
+                    self.cartPrd = "";
                 }
                 // BTOCSITE-4785 e
     
@@ -1260,8 +1262,8 @@
                             shopAdress: arr[i].info.shopAdress,
                             shopTelphone: arr[i].info.shopTelphone,
                             shopID: arr[i].info.shopID,
-                            detailUrl:self.detailUrl+arr[i].info.shopID,
                             // BTOCSITE-4785
+                            detailUrl:self.detailUrl+arr[i].info.shopID+self.cartPrd,
                             orgCode:self.shopUrl+arr[i].info.orgCode,
                             selected: arr[i].info.selected ? " on" : ""
                         }
