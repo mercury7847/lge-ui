@@ -1,5 +1,5 @@
 <!-- popup : LG ThingQ 와 연동되는 기기 찾기 -->
-<article id="popupSearchMachine" class="popup-wrap middle" >
+<article id="popupSearchMachine" class="popup-wrap middle" data-ajax-url="/lg5-common/data-ajax/PRH/searchCompatibleModel.json">
     <header class="pop-header">
         <h1 class="tit"><span>LG ThinQ와 연동되는 기기 찾기</span></h1>
     </header>
@@ -24,8 +24,14 @@
         </div>
         <!-- //검색 -->
 
-        <!-- 검색 결과 목록 -->
-        <div class="product-result-wrap">
+        <!-- 검색 전 인트로 문구: 노출시 is-active 클래스 -->
+        <div class="intro-message is-active">
+            <p>LG ThinQ와 연동되는 기기를 찾아보세요.</p>
+        </div>
+        <!-- //검색 전 인트로 문구 -->
+
+        <!-- 검색 결과 목록: 노출시 is-active 클래스 -->
+        <div class="product-result-wrap is-active">
             <div class="prd-result-text">전체 <em>123</em> 건</div>
             <ul class="prd-result-lists">
                 <li>
@@ -158,8 +164,8 @@
         </div>
         <!-- //검색 결과 목록 -->
         
-        <!-- 검색 결과 없음 -->
-        <div class="no-data-message"  >
+        <!-- 검색 결과 없음: 노출시 is-active 클래스 -->
+        <div class="no-data-message is-active">
             <em>검색결과가 없습니다.</em>
             <p>입력한 검색어를 확인하고 다시 검색해 보세요.</p>
             <div class="btn-area ">
