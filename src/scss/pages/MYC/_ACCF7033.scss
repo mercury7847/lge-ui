@@ -977,7 +977,7 @@
             .input-wrap {
                 input {
                     position:relative;
-                    z-index:2;
+                    z-index:5;
                     &:focus {
                         border-color:transparent;
                     }
@@ -989,3 +989,6 @@
         }
     }
 }
+
+
+
