@@ -92,7 +92,7 @@
             ]
         });
 
-        $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
+        $('.cont-wrap > .btn-close,.cont-wrap .pop-footer button').on('click', function(e){
             e.preventDefault();
 
             if(isApp() && vcui.detect.isIOS){ 

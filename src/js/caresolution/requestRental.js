@@ -129,6 +129,15 @@
             return e.keyCode !== 69;
         });
 
+        //BTOCSITE-1905 특수문자 삭제
+        var replaceId  = /[~!@\#$%^&*\()\-=+_']/gi; 
+        $('input[name="registBackFirst"]').on("keyup", function() {
+            $(this).val($(this).val().replace(replaceId, ""));
+        });
+        $('input[name="registForeignNum"]').on("keyup", function() {
+            $(this).val($(this).val().replace(replaceId, ""));
+        });
+
         //step1Validation validate item
         var register = {
             registFrontNumber:{
@@ -165,8 +174,8 @@
                             }
                             var currentMsg = value != "" ? alertMsg.msg1 : alertMsg.msg2;
 
-                            $('.err-regist-first').addClass('show');
-                            $('input[name="registBackFirst"]').addClass('checkBorder');
+                            $('.err-regist-first').addClass('show'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
+                            $('input[name="registBackFirst"]').addClass('checkBorder'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
 
                             lgkorUI.alert("", {
                                 title: currentMsg,
@@ -198,13 +207,13 @@
                             if( $('input[name="registForeignNum"]').data('alertEvent_2') == undefined || $('input[name="registForeignNum"]').data('alertEvent_2') == false) {
                                 $('input[name="registForeignNum"]').data('alertEvent_2', true);
                                 
-                                $('input[name="registForeignNum"]').addClass('checkBorder');
+                                $('input[name="registForeignNum"]').addClass('checkBorder'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
 
                                 lgkorUI.alert("", {
-                                    title: "외국인 고객님의 경우, 외국인 등록번호를 필수로 입력하셔야 합니다.",
+                                    title: "외국인 고객님의 경우, 외국인 등록번호를<br>필수로 입력하셔야 합니다.",
                                     ok:function(){
                                         $('input[name="registForeignNum"]').data('alertEvent_2', false)
-                                        $('.err-foreign-num').show().removeClass('show');
+                                        $('.err-foreign-num').show().removeClass('show'); //주민번호 뒤 첫자리, 외국인 등록번호 에러 메세지 기능 추가
                                     }
                                 });
                                 return false;
@@ -331,6 +340,8 @@
             $('.arsAgreeRequestCheck').attr('disabled', true).show();
             $('#iostxt').show();
         }
+        //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+        setParamBenefitUrl();
 
     }
 
@@ -641,6 +652,21 @@
             if(isBeforeUnload) return '페이지를 벗어날 경우, 지금까지 작성한 내용이 사라집니다.';
         });
 
+        //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+        $(document).on('click', '.card-benefit-box .btn-link', function(e){
+            if( vcui.detect.isMobileDevice && isApp()) {
+                e.preventDefault();
+                
+                var currentUrl = location.origin + $(this).attr('href');
+                if(vcui.detect.isIOS){
+                    var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': currentUrl});
+                    // , 'titlebar_show': 'Y'
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else {
+                    android.openNewWebview(currentUrl);
+                }
+            }
+        })
     }
 
     function changeMaskingText(ipt){
@@ -1114,19 +1140,21 @@
 
         lgkorUI.showLoading();
 
-
+        /* BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
         var sendata = {
             rentalCareType: getInputData('rentalCareType'),
             registFrontNumber: step1Value.registFrontNumber,
             registBackFirst: step1Value.registBackFirst,
-
+            //registForeignNum: step1Value.registForeignNum, //BTOCSITE-1905 외국인이면 전달값 수정
             userEmail: step1Value.userEmail,
             zipCode: step1Value.zipCode
         }
 
-        if( result.validItem.registForeignNum == true) { 
+        //BTOCSITE-1905 외국인이면 전달값 수정
+        if( $('.foreignNum').is(':visible') == true) { 
             sendata.registForeignNum =  step1Value.registForeignNum
         } 
+        /* //BTOCSITE-1905 케어솔루션 > 외국인등록번호를 이용한 세이프키 발급 전문 수정 : 2021-09-29 */
 
         
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(CREDIT_INQUIRE_URL, sendata, function(result){
@@ -1140,12 +1168,13 @@
                 document.form_chk.m.value = "safekeyService";
                 document.form_chk.target = "nicePopUp";
                 document.form_chk.submit();
-
                 $('.niceChker').show();
             } else{
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
+                
+                //console.log("2", sendata); //신용정보 조회 데이터 전달 값 확인
     
                 if(lgkorUI.stringToBool(result.data.success)){
                     setInputData('safekey', result.data.safekey);
@@ -1720,10 +1749,9 @@
                     endesc = "케어솔루션/케어십 청약이 완료되었습니다. 해당 케어십 제품은 추가로 제품 주문이 필요합니다.<br><br></br>주문 실패시, 7일이내 마이페이지 > 쇼핑관리에서 주문가능합니다.";
                     endbntname = "케어십 제품 주문하러 가기";
                 }
-
                 if(endtitle != ""){
                     lgkorUI.hideLoading();
-
+                    
                     lgkorUI.alert(endesc, {
                         title: endtitle,
                         okBtnName: endbntname,
@@ -1743,6 +1771,20 @@
             }
         }, ajaxMethod);
     }
+
+    //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+    function setParamBenefitUrl(){
+        var $benefitBox = $('.card-benefit-box');
+        var $btnLink = $benefitBox.find('.btn-link');
+
+        if( vcui.detect.isMobileDevice ) {
+            var _param = isApp()? 'openMode=inAppBrowser': 'careSolution=true';
+            var _href = $btnLink.attr('href').indexOf('card-discount?') == -1 ? $btnLink.attr('href') + "?" + _param : $btnLink.attr('href') + "&" + _param;
+            $btnLink.attr('href', _href)
+        }
+    }
+
+
 
     $(document).ready(function(){
         init();

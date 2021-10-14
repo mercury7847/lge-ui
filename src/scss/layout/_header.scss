@@ -2031,56 +2031,59 @@ html {
 
 //BTOCSITE 2116 - 모바일(디바이스) 메인 헤더 스티키
 .is-main-sticky-header {
-    .wrap {
-        padding-top:84px;
-    }
-
-    .header,
-    .mobile-nav-wrap {
-        position: fixed;
-        left:0;
-        width:100%; 
-        background: #fff;
-        //transition:transform .4s cubic-bezier(0.25, 0.1, 0.25, 1);
-        // transition:transform .3s ease-in;
-    }
-    .header {
-        top:0;
-        z-index:100;
-        &:before {
-            content:"";
-            display: block;
-            position: absolute;
-            top:-3px;
-            left:0;
-            width:100%;
-            height:5px;
-            background: #fff;
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .wrap {
+            padding-top:84px;
         }
-    }
-    .mobile-nav-wrap {
-        top:45px;
-        z-index:99;
-        border-top:1px solid #fff;
-        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    &.show-skip {
-        .mobile-nav-wrap {
-            top:97px;
-        }
-    }
-
-    &.scroll-down {
+    
         .header,
         .mobile-nav-wrap {
-            transform: translateY(-43px);
+            position: fixed;
+            left:0;
+            width:100%; 
+            background: #fff;
+            //transition:transform .4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            // transition:transform .3s ease-in;
         }
-
+        .header {
+            top:0;
+            z-index:100;
+            &:before {
+                content:"";
+                display: block;
+                position: absolute;
+                top:-3px;
+                left:0;
+                width:100%;
+                height:5px;
+                background: #fff;
+            }
+        }
+        .mobile-nav-wrap {
+            top:45px;
+            z-index:99;
+            border-top:1px solid #fff;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+    
         &.show-skip {
+            .mobile-nav-wrap {
+                top:97px;
+            }
+        }
+    
+        &.scroll-down {
             .header,
             .mobile-nav-wrap {
-                transform: translateY(0);
+                transform: translateY(-43px);
+            }
+    
+            &.show-skip {
+                .header,
+                .mobile-nav-wrap {
+                    transform: translateY(0);
+                }
             }
         }
     }
@@ -2089,29 +2092,48 @@ html {
 
 /* BTOCSITE-1967 */
 .mdevice {
-    .utility {
-        right:11px;
-    }
-    .mobile-nav-button {
-        display: none;
-        &.active {
-            display: block;
+    @include mobile {
+        .utility {
+            right:11px;
         }
-    }
-    .scroll-down {
-        .header-bottom {
-            height:100vh;
-            transform:translateY(43px);
-        }
-        .dimmed {
-            height:100vh;
-        }
-    }
-
-    &:not(.app) {
         .mobile-nav-button {
-            & + .header-bottom {
-                padding-bottom:70px;
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        .scroll-down {
+            .header-bottom {
+                height:100vh;
+                transform:translateY(43px);
+            }
+            .dimmed {
+                height:100vh;
+            }
+        }
+    
+        &:not(.app) {
+            .mobile-nav-button {
+                & + .header-bottom {
+                    padding-bottom:70px;
+                }
+            }
+        }
+    }
+}
+/* BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) */
+.header-bottom{
+    .store-counsel-banner{
+        @include pc {
+            display: none !important;
+        }
+        @include mobile{
+            margin-top:-12px;
+            >a{
+                display:block;
+                img{
+                    width:100%;
+                }
             }
         }
     }

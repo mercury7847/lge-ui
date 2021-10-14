@@ -20,16 +20,19 @@
                 }
             }
             .input-mix-wrap {
+                // BTOCSITE-5938 모니터링-170 s
                 .btn-link:before {
-                    content: '';
-                    position: absolute;
-                    right: 0;
-                    top: 6px;
-                    width: 14px;
-                    height: 14px;
-                    background: url('/lg5-common/images/icons/btn-arr-16-black.svg') center no-repeat;
-                    background-size: 14px;
+                    display: none;
+                    // content: '';
+                    // position: absolute;
+                    // right: 0;
+                    // top: 6px;
+                    // width: 14px;
+                    // height: 14px;
+                    // background: url('/lg5-common/images/icons/btn-arr-16-black.svg') center no-repeat;
+                    // background-size: 14px;
                 }
+                // BTOCSITE-5938 모니터링-170 e
             }
             /* BTOCSITE-1905 : 주민번호 뒤 첫자리, 외국인 등록번호 에러메세지 기능 추가 */
             .show {

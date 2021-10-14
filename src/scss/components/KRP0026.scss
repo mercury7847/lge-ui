@@ -22,6 +22,8 @@
                     right:40px;
                 }
                 @include mobile {
+                    overflow:hidden; //BTOCSITE-5368
+                    max-width:100%; //BTOCSITE-5368
                     padding:0;
 
                     &:before {

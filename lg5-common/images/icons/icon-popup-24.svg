@@ -1,0 +1,16 @@
+<svg id="ic_fail_negative_16" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <path id="guidebox" class="cls-1" d="M0 24h24V0H0z"/>
+    <g id="ic" transform="translate(1.5 1)">
+        <g id="Oval" transform="translate(1.5 2)" style="stroke:#000;stroke-miterlimit:10;fill:none">
+            <circle cx="9" cy="9" r="9" style="stroke:none"/>
+            <circle class="cls-1" cx="9" cy="9" r="8.5"/>
+        </g>
+        <rect id="Rectangle" width="2" height="2" rx="1" transform="translate(9.5 13.5)"/>
+        <path id="Line" d="M.5.5V5" transform="translate(10 7)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;stroke:#000;stroke-miterlimit:10;fill:none"/>
+    </g>
+</svg>

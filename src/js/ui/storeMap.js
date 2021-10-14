@@ -5,6 +5,15 @@
  * @copyright VinylC UID Group
  * 
  */
+// BTOCSITE-4785 s
+var cartPrdList  = getParameter("cartPrdList");
+function getParameter(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+// BTOCSITE-4785 e
 vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($, core) {
     "use strict";
 
@@ -14,7 +23,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
      * @name vcui.ui.StoreMap
      * @extends vcui.ui.View
      */
-
+    // BTOCSITE-4785 s
+    if(cartPrdList){
+        // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
+        self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+    } else {
+        self.shopUrl = "/support/visit-store-reservation?orgCode=";
+    }
+    // BTOCSITE-4785 e
     var StoreMap = core.ui('StoreMap', /** @lends vcui.ui.StoreMap# */{
         bindjQuery: 'storeMap',
         defaults: { 
@@ -72,7 +88,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           {{#if consultFlag == "Y"}}'+
                     // '           <a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=lgekor" class="btn border size storeConsult-btn" target="_blank">매장 상담 신청</a>'+
                     //210411 임시로 새창 뛰우기 바꿈. 개발에서 작업이 완료되면 교체
-                    '           <a href="/support/visit-store-reservation?orgCode={{orgCode}}" class="btn border size storeConsult-btn">매장 상담 예약</a>'+
+                                // BTOCSITE-4785
+                    '           <a href="{{self.shopUrl}}{{orgCode}}" class="btn border size storeConsult-btn">매장 상담 예약</a>'+
                     '           {{/if}}'+
                     '           <a href="{{detailUrl}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
