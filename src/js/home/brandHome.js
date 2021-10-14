@@ -47,6 +47,11 @@
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
             self.$pagination = self.$searchPopup.find('.pagination').vcPagination();
+
+            self.$searchIntro = self.$searchPopup.find('.intro-message');
+            self.$prdResult = self.$searchPopup.find('.product-result-wrap');
+            self.$prdTotalCount = self.$prdResult.find('.prd-result-text');
+            self.$nodata = self.$searchPopup.find('.no-data-message');
         },
         bindEvents: function(){
             var self = this;
@@ -101,19 +106,32 @@
 
             //검색팝업: 검색 실행
             self.$btnInputSearch.on('click', function(e){
-
+                var categoryId = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = self.$searchInput.val();
+                self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
             })
 
-            //검색팝업: 검색어 입력
-            self.$searchInput.on('input', function(e){
+            self.$searchSelect.on('change', function(e){
+                var categoryId = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = self.$searchInput.val();
+                self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
+            });
 
+            //검색팝업: 검색어 입력
+            self.$searchInput.on('keydown', function(e){
+                var categoryId = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = self.$searchInput.val();
+
+                if( e.keyCode == 13) {
+                    self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
+                }
             })
 
             //검색팝업: 페이징 넘버 클릭
             self.$pagination.on('page_click', function(e, data) {
-                var categoryType = self.$searchSelect.vcSelectbox('value')
-                var searchKeyword = sef.$searchInput.val();
-                self.requestModelData({"category":categoryType,"keyword":searchKeyword,"page": data});
+                var categoryId = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = self.$searchInput.val();
+                self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": data});
             });
         },
         heroSlider: function(){
@@ -313,34 +331,78 @@
             
             self.$searchSelect.vcSelectbox();
         },
+        swapContent: function(target, targetArray, $parent){
+            var self = this;
+            if( targetArray && targetArray.length > 0 && target){
+                targetArray.forEach(function(item){
+                    var $currentTarget = $parent && parent != "" ? $parent.find(item) : $(item);
+                   
+                    if( item == target ) {
+                        $currentTarget.addClass('is-active');
+                    } else {
+                        $currentTarget.removeClass('is-active');
+                    }
+                })
+            }
+        },
+        searchSwap: function(target){
+            var self = this;
+            var contArray = ['.intro-message', '.product-result-wrap', '.no-data-message'];
+
+            self.swapContent(target, contArray, self.$searchPopup);
+        },
         requestModelData: function(param){
+            console.log('request!!!')
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =  '<ul class="prd-result-lists">' + 
-            '{{#each (item, index) in listData}}' + 
-            '    <li>' + 
-            '        <div class="icon-wrap"><i class="icon icon-{{item.categoryType}} fill"><span class="blind">{{item.categoryName}}</span></i></div>' + 
-            '        <div class="text">' + 
-            '            <span class="name">{{item.modelName}}</span>' + 
-            '            <span class="serial-num">{{item.modelId}}</span>' + 
-            '        </div>' + 
-            '    </li>' + 
-            '{{/each}}' + 
-            '</ul>';
-
+            var listTemplate =  '<li>' + 
+            '   <div class="icon-wrap"><i class="icon icon-{{imgName}} fill"><span class="blind">{{categoryName}}</span></i></div>' + 
+            '   <div class="text">' + 
+            '       <span class="name">{{modelName}}</span>' + 
+            '       <span class="serial-num">{{modelId}}</span>' + 
+            '   </div>' + 
+            '</li>';
+            
+            
+            lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                
+                if( result.status == "success") {
+                    var data = result.data;
+
+                    if(data.listData.length > 0) {
+                        //리스트 페이지 노출
+                        var html = "";
+
+                        data.listData.forEach(function(item){
+                            html += vcui.template(listTemplate, item);
+                        })
+                        self.$prdTotalCount.find('em').text(data.listData.length)
+                        self.$prdResult.find('.prd-result-lists').empty().append(html);
+                        self.$pagination.vcPagination('setPageInfo', data.listPage)
+                        self.searchSwap('.product-result-wrap')
+                    } else {
+                        //nodata 호출
+                        self.searchSwap('.no-data-message');
+                    }
+                    lgkorUI.hideLoading();
+                } else {
+                    self.searchSwap('.no-data-message')
+                    lgkorUI.hideLoading();
+                }
             })
         },
         scroll: function(scrollTop){
             //전체탭 스티키
             var self = this;
-            var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
-
-            if(scrollTop >= stickyTabOffsetTop) {
-                self.$thinqMain.addClass('active on');
-            } else {
-                self.$thinqMain.removeClass('active on');
+            console.log("self.$stickyTabWrap", self.$stickyTabWrap)
+            if( self.$stickyTabWrap.length ) {
+                var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
+    
+                if(scrollTop >= stickyTabOffsetTop) {
+                    self.$thinqMain.addClass('active on');
+                } else {
+                    self.$thinqMain.removeClass('active on');
+                }
             }
         },
         resize: function(){

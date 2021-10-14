@@ -2980,10 +2980,13 @@
 // 검색 전
 .intro-message{
     height: calc(100% - 96px);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &.is-active {
+        display: flex;
+    }
     @include mobile{
         height: calc(100% - 150px);
     }
@@ -3002,10 +3005,14 @@
 // 검색결과 없음 재시도
 .no-data-message{
     height: calc(100% - 96px);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &.is-active {
+        display: flex;
+    }
     @include mobile{
         height: calc(100% - 150px);
     }
@@ -3048,10 +3055,16 @@
 }
 //  검색 결과 목록
 .product-result-wrap{
+    display: none;
     height: calc(100% - 96px);
     overflow-y:auto;
     margin-right: -40px;
     padding:40px 40px 50px 0;
+
+    &.is-active {
+        display: block;
+    }
+
     @include mobile {
         height: calc(100% - 150px);
     }
