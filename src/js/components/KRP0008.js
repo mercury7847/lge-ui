@@ -876,6 +876,7 @@
                     var index = data.selectedIndex;
                     var url = location.pathname;
                     var param = vcui.uri.parseQuery(location.search);
+                    var bannerStore = $('.product-detail-info .store-counsel-banner'); //BTOCSITE-6416
                     var n = 0;
                     for(key in param) {
                         if(key != "dpType") {
@@ -891,7 +892,7 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
-                        $('.product-detail-info .store-counsel-banner').show(); //BTOCSITE-5727 //BTOCSITE-6416
+                        bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -899,7 +900,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
-                        $('.product-detail-info .store-counsel-banner').hide(); //BTOCSITE-5727 //BTOCSITE-6416
+                        bannerStore.hide(); //BTOCSITE-5727 //BTOCSITE-6416
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
