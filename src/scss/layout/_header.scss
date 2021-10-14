@@ -2121,3 +2121,20 @@ html {
         }
     }
 }
+/* BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) */
+.header-bottom{
+    .store-counsel-banner{
+        @include pc {
+            display: none !important;
+        }
+        @include mobile{
+            margin-top:-12px;
+            >a{
+                display:block;
+                img{
+                    width:100%;
+                }
+            }
+        }
+    }
+}

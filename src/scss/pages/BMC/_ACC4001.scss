@@ -330,3 +330,446 @@
         }
     }
 }
+/* BTOCSITE-3002 멤버십 페이지 수정 */
+.cont-wrap{
+    &.membership{
+        padding:0 0 120px;
+        max-width:100%;
+        @include mobile{
+            padding:40px 0;
+        }
+        .section-wrap{
+            .sects{
+                margin:0 auto;
+                max-width:1460px;
+                .tit-wrap{
+                    margin-top:100px;
+                    &:first-child{
+                        margin-top:40px;
+                    }
+                    @include mobile{
+                        margin-top:60px;
+                    }
+                }
+                .section-inner{
+                    @include mobile{
+                        padding-top:0;
+                    }
+                }
+            }
+            .vip-benefit{
+                height:176px;
+                background:url('/lg5-common/images/BMC/img-mem-bene-vip.jpg') no-repeat 0 0;
+                @include mobile{
+                    margin:0 -16px;
+                    height:160px;
+                    background:url('/lg5-common/images/BMC/img-mem-bene-vip-m.jpg') no-repeat 0 0;
+                }
+                .cont{
+                    display:flex;
+                    height:100%;
+                    flex-direction:column;
+                    justify-content:center;
+                    align-items:center;
+                    dt{
+                        font-weight:700;
+                        font-size:28px;
+                        line-height:38px;
+                        color:#da0f47;
+                        @include mobile{
+                            font-size:20px;
+                            line-height:28px;
+                        }
+                    }
+                    dd{
+                        margin-top:6px;
+                        font-size:22px;
+                        line-height:32px;
+                        color:#000;
+                        @include mobile{
+                            margin-top:8px;
+                            font-size:14px;
+                            line-height:22px;
+                            text-align:center;
+                        }
+                    }
+                }
+                ~.bullet-list{
+                    margin-top:0;
+                    padding-top:20px;
+                    border-top:0;
+                    @include mobile{
+                        .b-txt{
+                            margin-top:10px;
+                        }
+                    }
+                }
+            }
+            .vip-as-guide{
+                margin:0 -16px;
+                padding:0 32px;
+                overflow-x:auto;
+                >ul{
+                    display:table;
+                    margin-left:-25px;
+                    padding-right:16px;
+                    table-layout:fixed;
+                    height:100%;
+                    >li{
+                        display:table-cell;
+                        margin-left:25px;
+                        width:20%;
+                        @include mobile{
+                            width:203px;
+                        }
+                        .inner{
+                            margin-left:25px;
+                            padding:24px 22px;
+                            height:100%;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            overflow:hidden;
+                            text-align:center;
+                            @include mobile{
+                                margin-left:12px;
+                                width:191px;
+                            }
+                            dt{
+                                font-size:22px;
+                                font-weight:700;
+                                line-height:32px;
+                                @include mobile{
+                                    font-size:20px;
+                                }
+                            }
+                            dd{
+                                margin-top:6px;
+                                img{
+                                    width:140px;
+                                }
+                                p{
+                                    font-size:16px;
+                                    line-height:26px;
+                                    word-break:keep-all;
+                                }
+                            }
+                        }
+                    }
+                }
+                ~.bullet-list{
+                    margin-top:0;
+                    padding-top:20px;
+                    border-top:0;
+                }
+            }
+            .tit-wrap{
+                &.mo-only-acc{
+                    @include mobile{
+                        &.tit-wrap.align-center{
+                            border-bottom:1px solid #000;
+                        }
+                    }
+                    h2{
+                        span{
+                            font-size:inherit;
+                            font-weight:inherit;
+                            line-height:inherit;
+                            @include mobile{
+                                display:none;
+                            }
+                        }
+                        button{
+                            font-size:inherit;
+                            font-weight:inherit;
+                            line-height:inherit;
+                            @include pc{
+                                display:none;
+                            }
+                            @include mobile{
+                                padding-right:36px;
+                                background:url("/lg5-common/images/icons/icon-arrow-down-48.svg") right center no-repeat;
+                                background-size:24px 24px;
+                            }
+                        }
+                    }
+                    &.on{
+                        @include mobile{
+                            &.tit-wrap.align-center{
+                                border-bottom:0;
+                            }
+                        }
+                        h2{
+                            button{
+                                @include mobile{
+                                    background:url("/lg5-common/images/icons/icon-arrow-up-48.svg") right center no-repeat;
+                                    background-size:24px 24px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .section-inner{
+                &.mo-only-acc{
+                    @include mobile{
+                        display:none;
+                    }
+                    &.on{
+                        @include mobile{
+                            display:block;
+                            .tb_row table thead th{
+                                border-top:1px solid #000;
+                            }
+                        }   
+                    }
+                }
+            }
+            .sign-up-info{
+                display:flex;
+                margin-top:-5px;
+                .inner{
+                    width:calc(50% - 63px);
+                    margin-left:126px;
+                    &:first-child{
+                        margin-left:0;
+                    }
+                    dl{
+                        dt{
+                            display:block;
+                            padding:10px 0 2px;
+                            border-bottom:1px solid #000;
+                            font-size:22px;
+                            font-weight:700;
+                            line-height:32px;
+                            @include mobile{
+                                font-size:16px;
+                                &:before{
+                                    width:32px;
+                                    height:32px;
+                                }
+                            }
+                            &:before{
+                                display:inline-block;
+                                position:relative;
+                                margin-right:10px;
+                                width:64px;
+                                height:64px;
+                                vertical-align:middle;
+                                content:'';
+                                @include mobile{
+                                    width:32px;
+                                    height:32px;
+                                }
+                            }
+                        }
+                        dd{
+                            display:flex;
+                            margin-top:16px;
+                            @include mobile{
+                                display:block;
+                            }
+                            >p{
+                                width:calc(100% - 164px);
+                                font-size:16px;
+                                line-height:26px;
+                                @include mobile{
+                                    width:100%;
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
+                            }
+                            >a{
+                                padding:11px 15px;
+                                width:154px;
+                                height:50px;
+                                @include mobile{
+                                    margin-top:24px;
+                                    width:100%;
+                                }
+                            }
+                        }
+                    }
+                    &.online{
+                        dt{
+                            &:before{
+                                background:url("/lg5-common/images/BMC/icon-join01.svg") 0 0 no-repeat;
+                                background-size:100% 100%;
+                            }
+                        }
+                    }
+                    &.offline{
+                        dt{
+                            @include mobile{
+                                margin-top:65px;
+                            }
+                            &:before{
+                                top:-10px; 
+                                background:url("/lg5-common/images/BMC/icon-join03.svg") 0 0 no-repeat;
+                                background-size:100% 100%;
+                                @include mobile{
+                                    top:-5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                @include tablet{
+                    flex-wrap:wrap;
+                    .inner{
+                        width:100%;
+                        margin-left:0;
+                    }
+                }
+            }
+            .point-section{
+                margin-top:100px;
+                height:80px;
+                background-image: linear-gradient(92deg, #8d71ec, #f75584 99%);
+                text-align:center;
+                @include mobile{
+                    margin:0;
+                    padding:0 16px;
+                    height:auto;
+                    background:none;
+                }
+                .inner{
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    height:100%;
+                    @include mobile{
+                        flex-direction:column;
+                        padding:21px;
+                        border-radius:8px;
+                        background-image: linear-gradient(92deg, #8d71ec, #f75584 99%);
+                    }
+                    strong{
+                        font-size:20px;
+                        color:#fff;
+                        @include mobile{
+                            font-size:14px;
+                            line-height:22px;
+                        }
+                    }
+                    .btn{
+                        margin-left:14px;
+                        height:50px;
+                        border:1px solid #fff;
+                        background:transparent;
+                        color:#fff;
+                        @include mobile{
+                            margin-top:12px;
+                            padding:0 25px;
+                            height:43px;
+                            font-size:16px;
+                            line-height:41px;
+                        }
+                    }
+                }
+            }
+            .pc-only{
+                @include pc{
+                    .tit-wrap.type-sub{
+                        margin-top:66px;
+                        h3.tit{
+                            font-size:26px;
+                            line-height:36px;
+                        }
+                        +.section-inner{
+                            padding-top:20px;
+                        }
+                    }
+                    .app-down{
+                        display:flex;
+                        justify-content:center;
+                        .inner{
+                            display:flex;
+                            padding:66px 84px 64px 40px;
+                            width:490px;
+                            height:240px;
+                            background:#f4f4f4;
+                            border-radius:8px;
+                            .txt-btn{
+                                width:calc(100% - 108px);
+                                >strong{
+                                    display:block;
+                                    font-size:18px;
+                                    line-height:28px;
+                                }
+                                .btn-app-down{
+                                    display:block;
+                                    margin-top:14px;
+                                    width:133px;
+                                    height:42px;
+                                    img{
+                                        width:100%;
+                                    }
+                                }
+                            }
+                            .img-qr{
+                                display:inline-block;
+                                width:108px;
+                                height:109px;
+                                img{
+                                    width:100%;
+                                }
+                            }
+                            +.inner{
+                                margin-left:20px;
+                            }
+                        }
+                    }
+                }
+                @include mobile{
+                    display:none;
+                }
+            }
+            .mo-only{
+                @include pc{
+                    display:none;
+                }
+                @include mobile{
+                    .tit-wrap.type-sub{
+                        margin-top:32px;
+                        h3.tit{
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                        +.section-inner{
+                            padding-top:25px;
+                        }
+                    }
+                    .app-down{
+                        display:flex;
+                        justify-content:center;
+                        text-align:center;
+                        .inner{
+                            width:106px;
+                            +.inner{
+                                margin-left:25px;
+                            }
+                            .img-qr{
+                                display:inline-block;
+                                width:72.5px;
+                                height:73.5px;
+                                img{
+                                    width:100%;
+                                }
+                            }
+                            .btn-app-down{
+                                display:inline-block;
+                                margin-top:9px;
+                                width:106px;
+                                height:33.5px;
+                                img{
+                                    width:100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* //BTOCSITE-3002 멤버십 페이지 수정 */

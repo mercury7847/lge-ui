@@ -577,11 +577,18 @@
             });
 
             // 신청 완료
-            self.$completeBtns.find('.btn-confirm').on('click', function() {
+            /* BTOCSITE-6393 [고객지원] 센터 방문 예약 시, 모바일 (스마트폰/일반폰) 접수 시 휴대폰 인증 제외 : 인증 팝업 예외 처리*/
+            self.$completeBtns.find('.btn-confirm').on('click', function(data) {
                 var result = validation.validate();
 
+                //console.log("data", self.data.subCategory); 가져온 데이터
+
+                var $ifData = self.data.subCategory,
+                    $cellPhone = "CT50019097",
+                    $smartPhone = "CT50019117";
+
                 if (result.success == true) {    
-                    if (isLogin) {
+                    if (isLogin || $ifData == $cellPhone || $ifData == $smartPhone) {
                         lgkorUI.confirm('', {
                             title:'예약 하시겠습니까?',
                             okBtnName: '확인',
@@ -598,6 +605,7 @@
                     }
                 }
             });
+            /* //BTOCSITE-6393 [고객지원] 센터 방문 예약 시, 모바일 (스마트폰/일반폰) 접수 시 휴대폰 인증 제외 : 인증 팝업 예외 처리*/
 
             self.$authPopup.find('.btn-send').on('click', function() {
                 authManager.send(this);
