@@ -4386,7 +4386,8 @@
             let modelcate = $(".model_simul_wrap .simul_wrap .simul_body .model_set_wrap[data-model-editing='Y']").attr("data-model-cate");
             if ($(this).hasClass("border")) {
                 $(this).removeClass("border");
-                $(".chng_pannel").addClass("border"); // BTOCSITE-3198 변경
+                $(".proposeModel").addClass("border");
+                $(".chng_pannel").addClass("border"); // BTOCSITE-3198 개별 패널 판매 관련 내용 추가
                 modelSimulator.openMyPickModel(modelCode, modelcate);
                 modelSimulator.closeProposeModel();
                 //modelSimulator.mobileStep(".simul_step2");
@@ -4419,7 +4420,7 @@
             completedCheck();
         });
 
-        // BTOCSITE-3198 패널 교체 견적 보기 > 패널 선택
+        // BTOCSITE-3198 패널 교체 견적 보기 > 패널 선택 - 2021-10-12 - start
         $(document).on("click", ".pannel_list li", function() {
             
             if($(this).hasClass('is_active')){
@@ -4435,19 +4436,20 @@
                 $(this).attr("data-model-price", modelPrice);                
             }
 
-            $('.btn_total').click(function(){    
+            $('.btn_total').click(function(){
                 pannelSumTotal();
+                $('.sum').css('display','flex'); //2021-10-14 추가
             });
         });
-        // 설근 21-10-12
+
         function pannelSumTotal(){
-            let totalSumPrice = 0;
+            let totalPannelSumPrice = 0;
         
             $(".pannel_list li.is_active").each(function(){
-                totalSumPrice += parseInt(minusComma($(this).attr('data-model-price')));
+                totalPannelSumPrice += parseInt(minusComma($(this).attr('data-model-price')));
             });
-                $(".product_price .after_price em").text(addComma(totalSumPrice));
-                console.log("후"+totalSumPrice);
+            $(".product_price .total_price em").text(addComma(totalPannelSumPrice));
+            console.log("후"+totalPannelSumPrice);
         }
 
         //BTOCSITE-3198 패널만 교체 클릭 이벤트
@@ -4543,7 +4545,7 @@
             }
             //modelSimulator.mobileStep(".simul_step3");
         });        
-
+        // BTOCSITE-3198 패널 교체 견적 보기 > 패널 선택 - 2021-10-12 - end
 
         //제품 다시선택하기
         $(".model_reset").on("click", function() {
@@ -4988,20 +4990,43 @@
             });
             */
 
-            $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li").each(function(index) {
-                if (!$(this).hasClass("sum")) {
-                    if(index == 0) {
-                       $(this).attr("data-default-code",modelCode);
-                    } else {
-                       $(this).attr("data-default-code");
-                    }
-
-                    //BTOCSITE-4239 210910 변경
-                    if($('.model_experience').attr('data-page-type') === 'COMMON') {
-                     purchaseData.push($(this).attr("data-default-code"));
-                    }
+            //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - start
+            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
+            var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
+            if(plist.hasClass("pannel_list")){
+                //패널만 교체
+                if(plChk.length){
+                    plChk.each(function() {
+                        if (!$(this).hasClass("sum")) {
+                            $(this).attr("data-default-code");
+    
+                            //BTOCSITE-4239 210910 변경
+                            if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                            purchaseData.push($(this).attr("data-default-code"));
+                            }
+                        }
+                    });                    
+                } else {
+                    alert("패널을 선택해주세요.");
                 }
-            });
+            } else {
+                //견적 확인하기
+                plist.each(function(index) {
+                    if (!$(this).hasClass("sum")) {
+                        if(index == 0) {
+                            $(this).attr("data-default-code",modelCode);
+                        } else {
+                            $(this).attr("data-default-code");
+                        }
+                        //BTOCSITE-4239 210910 변경
+                        if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                            purchaseData.push($(this).attr("data-default-code"));
+                        }
+                    }
+                });
+            }
+            //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - end
+            
             // E - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             //console.log('selectedMFodelData', selectedModelData);
             //console.log('purchaseData', purchaseData);
@@ -6287,17 +6312,20 @@
             
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
-            priceHtml += '      <dt>' + modelName + '</dt>';
+            priceHtml += '      <div class="pannel_info">';
+            priceHtml += '          <dt>' + modelName + '</dt>';
+            priceHtml += '          <button class="btn border btn_total"><span>선택 제품 총 금액 확인</span></button>';
+            priceHtml += '      </div>';
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';
-            priceHtml += '              <ul class="product_list pannel_list">'; // 21-10-12
+            priceHtml += '              <ul class="product_list pannel_list">'; // 21-10-12 pannel_list 클래스 추가 - BTOCSITE-3198
             //sumPrice += parseInt(minusComma(defaultPrice)); 21-10-12 Default Model 가격 제거
             // if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
-                    if (doorModelCode == "B320TT-SMT") {
-                        doorModelCode = "B320TT-SMT";
-                    }
+                    // if (doorModelCode == "B320TT-SMT") {
+                    //     doorModelCode = "B320TT-SMT";
+                    // }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '" >';
 
@@ -6312,8 +6340,8 @@
             sumPrice = addComma(sumPrice);
             priceHtml += '                                    </ul>';
             priceHtml += '                                    <div class="sum">';
-            priceHtml += '                                         <button class="btn_total"><span>선택 제품 총 금액 확인</span></button>';
-            priceHtml += '                                         <span class="product_price"><span class="after_price"><em></em>원</span></span>';
+            priceHtml += '                                         <span class="product_total_title">총금액</span>'
+            priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             priceHtml += '                                </div>';
@@ -6331,7 +6359,7 @@
                 //console.log('priceSumList', priceSumList);
                 $(priceSumList.$el[0]).hide();
             }
-            /* //BTOCSITE-1582 */
+            /* //BTOCSITE-1582 */            
 
             if (sumSlide.length > 0) {
                 if (sumSlide.length > idx) {
@@ -6353,7 +6381,7 @@
             setTimeout(function() {
                 let totalSumPrice = 0;
                 $(".total_price_info_body .swiper-wrapper .swiper-slide").each(function() {
-                    totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price em").text()));
+                    totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price .total_price em").text()));
                 });
                 $(".total_result_price .price em").text(addComma(totalSumPrice));
             }, 100);
