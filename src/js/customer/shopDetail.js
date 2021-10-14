@@ -170,13 +170,13 @@
         });
 
         // 카카오톡 공유하기 url 생성
-        var kakaoShareUrl = $('.ico-btn.kk').data("url") || location.href;
+        var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
         var loc = lgkorUI.parseUrl(kakaoShareUrl);
         var params = $.extend(loc.searchParams.getAll(), {
             kakaoShare : 'Y'
         });
 
-        $('.ico-btn.kk').data("url",loc.pathname +'?'+ $.param(params)); 
+        $('.ico-btn.kk').attr("data-url",loc.pathname +'?'+ $.param(params)); 
     }
 
     $(document).ready(function() {
