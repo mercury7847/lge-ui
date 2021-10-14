@@ -99,7 +99,14 @@
                 var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
-                window.close();
+                // 카카오톡 공유하기 url 인경우 분기
+                if(lgkorUI.getParameterByName("kakaoShare") === 'Y') {
+                    location.href = '/';
+
+                } else {
+                    window.close();
+                }
+                
             }
            
         });
@@ -161,6 +168,15 @@
                 window.close();
             }
         });
+
+        // 카카오톡 공유하기 url 생성
+        var kakaoShareUrl = $('.ico-btn.kk').data("url") || location.href;
+        var loc = lgkorUI.parseUrl(kakaoShareUrl);
+        var params = $.extend(loc.searchParams.getAll(), {
+            kakaoShare : 'Y'
+        });
+
+        $('.ico-btn.kk').data("url",loc.pathname +'?'+ $.param(params)); 
     }
 
     $(document).ready(function() {
