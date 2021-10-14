@@ -210,7 +210,7 @@ var lls = {
                                             if( subResult.status == "success") {
                                                 var subData = subResult.data;
                                                 var currentActionName = "엘라쇼 알림 취소가"
-                                                var currentMsg = (subData.success == "Y" ? self.showDate() + "<br>" + currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
+                                                var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
                                                 lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
                                                 self.$pushContent.find('.btn-lls-push span').text("알림 신청");
                                             }
