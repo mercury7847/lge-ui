@@ -267,18 +267,17 @@ $(function () {
             var data = window.breakpoint;
             var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
             var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
-            
             if(data.name == 'mobile'){
 
                 if(!isRecom){
-                    $context.find('.recom-list-slide').slick({                       
+                    $context.find('.recom-list-slide').vcCarousel({                        
                         infinite: false,
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                         speed: 150,
                         touchThreshold: 100,
-                        outerEdgeLimit: true
+                        centerMode: true
                     });
                 }
 
@@ -304,7 +303,7 @@ $(function () {
                 // if(isBenefit){
                 //     $context.find('.benefit-list-slide').vcCarousel('destroy');
                 // }
-                    $context.find('.recom-list-slide').slick({                       
+                    $context.find('.recom-list-slide').vcCarousel({                        
                         infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
@@ -312,8 +311,7 @@ $(function () {
                         speed: 150,
                         touchThreshold: 100,
                         dots: true,
-                        arrows: true,
-                        outerEdgeLimit: false
+                        arrows: true
                     });
 
                     $context.find('.benefit-list-slide').vcCarousel({
