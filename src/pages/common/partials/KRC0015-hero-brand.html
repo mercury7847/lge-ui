@@ -73,7 +73,41 @@
                 <div class="slide-content ui_carousel_list"><!-- [KR수정_210126] slide-content ui_carousel_list DOM 추가 -->
                     <ul class="slide-track ui_carousel_track "><!-- [KR수정] .ui_carousel_track DOM 추가 -->
                         <!-- [KR수정_210126] li 태그 변경 / carousel-box -> slide-conts 클래스 변경 -->
-                        <!-- animation 타입인 경우 animation-box 클래스 추가 -->
+                        <li class="slide-conts animation-box ui_carousel_slide">
+                            <!-- 210208 수정(a태그 감싸기 button 변경) -->
+                            <a href="#">
+                                <!-- video -->
+                                <div class="visual-area">
+                                    <div class="animation-area">
+                                        <video autoplay muted loop>
+                                            <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                            <!-- WEBM 동영상을 제공하는 경우
+                                            <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                            -->
+                                        </video>
+                                    </div>
+                                </div>
+                                <!-- // video -->
+
+                                <!-- contents-area -->
+                                <div class="contents-area">
+                                    <div class="text-area box-align-left align-top text-white">
+                                        <div class="text-detail">
+                                            <div class="text-detail-title">
+                                                <span class="pc-only">@@title.headline</span>
+                                                <span class="mo-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 <br>늘 더 나은 삶을 원합니다.</span>
+                                            </div>
+                                            <div class="text-detail-desc">
+                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 이러한 당신의 기대에 맞춰 <br>인공지능과 스마트 기술을 통합한 플랫폼입니다.</span>
+                                                <span class="mo-only">Mobile 버전은 최대 2줄, <br>라인 당 18자 등록 가능합니다.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // contents-area -->
+                            </a>
+                            <!-- //210208 수정(a태그 감싸기 button 변경) -->
+                        </li>
                         @@for (var i=0; i < context.carousel.itemArr.length; i++) {
                         <li class="slide-conts animation-box ui_carousel_slide">
                             <!-- 210208 수정(a태그 감싸기 button 변경) -->
@@ -84,6 +118,7 @@
                                     <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                                 </div>
                                 <!-- // image -->
+
                                 <!-- contents-area -->
                                 <div class="contents-area">
                                     <div class="text-area `+carousel.itemArr[i].boxAlign+` `+carousel.itemArr[i].alignClass1+` `+carousel.itemArr[i].alignClass2+``+carousel.itemArr[i].fontColor+`">
