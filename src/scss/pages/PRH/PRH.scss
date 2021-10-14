@@ -1259,20 +1259,24 @@
             font-size:13px;
         }
     }
+
+    .icon {
+        display: inline-block;;
+        width: 64px;
+        height: 64px;
+        @include mobile{
+            width: 32px;
+            height: 32px;
+            background-size:100%;
+        }
+
+        &-all{
+            background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
+        }
+    }
     $prdIconLists: (refrigerator, kimchiRefrigerator, wineCellar, cooktop, dishWasher, lightWaveOven, waterPurifier, beerMaker, washer, dryer, styler, vacuumCleaner, airCon, airCleaner, dehumidifier, ceilingFan);
     @each $name in $prdIconLists {
         .icon{
-            display: inline-block;;
-            width: 64px;
-            height: 64px;
-            @include mobile{
-                width: 32px;
-                height: 32px;
-                background-size:100%;
-            }
-            &-all{
-                background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
-            }
             &-#{$name}{
                 background-image:url('/lg5-common/images/PRH/app/img_#{$name}.png');
                 &.fill{
@@ -1280,7 +1284,6 @@
                 }
             }
         }
-
     }
 }
 .search-sticky-wrap{

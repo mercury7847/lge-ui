@@ -2,13 +2,14 @@
     var thinQMain = {
         init: function(){
             var self = this;
-            self.settings();
-            self.bindEvents()
-            self.heroSlider();
-            self.magazinSlider();
-            self.setMagazineVideo();
 
-            vcui.require(['libs/slick.min'], function () {
+            vcui.require(['libs/slick.min', 'ui/pagination'], function () {
+                self.settings();
+                self.bindEvents()
+                self.heroSlider();
+                self.magazinSlider();
+                self.setMagazineVideo();
+                self.modelSearchInit();
                 self.contentTab();
             });
         },
@@ -31,12 +32,21 @@
             self.$appTablist = self.$appTabMenu.find('.menu-item');
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
             self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
-            self.$howToPopup = $('.popup-howto');
+            self.$howToPopup = $('.popup-howto');            
             self.$howToUseAppSlider = self.$howToPopup.find('.howto-slider');
 
             //매거진 탭
             self.$magazin = self.$thinqMain.find('.magazine-wrap');
             self.$magazinSlider = self.$magazin.find('.ui_carousel_slider');
+
+            //검색팝업
+            self.$searchPopup = $('#popupSearchMachine');
+            self.$searchSticky = self.$searchPopup.find('.search-sticky-wrap');
+            self.$searchSelect = self.$searchSticky.find('.ui_selectbox');
+            self.$btnInputDel = self.$searchSticky.find('.btn-delete');
+            self.$btnInputSearch = self.$searchSticky.find('.btn-search');
+            self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
+            self.$pagination = self.$searchPopup.find('.pagination').vcPagination();
         },
         bindEvents: function(){
             var self = this;
@@ -82,6 +92,29 @@
             self.$howToPopup.on('modalshown', function(e){
                 self.sliderInPopup.load();
             })
+
+
+            //검색팝업: 검색어 삭제
+            self.$btnInputDel.on('click', function(e){
+                self.$searchInput.val('');
+            })
+
+            //검색팝업: 검색 실행
+            self.$btnInputSearch.on('click', function(e){
+
+            })
+
+            //검색팝업: 검색어 입력
+            self.$searchInput.on('input', function(e){
+
+            })
+
+            //검색팝업: 페이징 넘버 클릭
+            self.$pagination.on('page_click', function(e, data) {
+                var categoryType = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = sef.$searchInput.val();
+                self.requestModelData({"category":categoryType,"keyword":searchKeyword,"page": data});
+            });
         },
         heroSlider: function(){
             //최상단 히어로배너
@@ -275,9 +308,29 @@
                 }
             }
         },
-        modelSearchPopupInit: function(){
+        modelSearchInit: function(){
             var self = this;
-            $('.ui_selectbox').vcSelectbox();
+            
+            self.$searchSelect.vcSelectbox();
+        },
+        requestModelData: function(param){
+            var self = this;
+            var ajaxUrl = self.$searchPopup.data('ajaxUrl');
+            var listTemplate =  '<ul class="prd-result-lists">' + 
+            '{{#each (item, index) in listData}}' + 
+            '    <li>' + 
+            '        <div class="icon-wrap"><i class="icon icon-{{item.categoryType}} fill"><span class="blind">{{item.categoryName}}</span></i></div>' + 
+            '        <div class="text">' + 
+            '            <span class="name">{{item.modelName}}</span>' + 
+            '            <span class="serial-num">{{item.modelId}}</span>' + 
+            '        </div>' + 
+            '    </li>' + 
+            '{{/each}}' + 
+            '</ul>';
+
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                
+            })
         },
         scroll: function(scrollTop){
             //전체탭 스티키
