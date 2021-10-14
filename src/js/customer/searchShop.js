@@ -670,7 +670,8 @@
                             item['id'] = item['shopID'];
                             item['info'] = false;
                             item["selected"] = false;
-                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID'] +'")' //self.detailUrl+item['shopID'];
+                            // BTOCSITE-4785
+                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID']+self.cartPrd+'")' //self.detailUrl+item['shopID'];
                             //item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
                             return item;
                         });
