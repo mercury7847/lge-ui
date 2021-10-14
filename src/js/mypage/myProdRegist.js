@@ -685,8 +685,7 @@
                 var value = self.$yearSelect.vcSelectbox('selectedOption').value;
                 var month = 12;
                 if(value == self.thisYear) {
-                    //현재 년도 BTOCSITE-6341 211005 운영결함 선조치 : 2021년도 선택시 '월' 출력 안되는 문제 수정 후 반영
-                    //month = self.thisMonth;
+                    month = self.thisMonth;
                 }
 
                 self.$monthSelect.empty();
