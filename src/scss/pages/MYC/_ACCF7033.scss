@@ -977,6 +977,7 @@
             .input-wrap {
                 input {
                     position:relative;
+                    // BTOCSITE-5938-17
                     z-index:5;
                     &:focus {
                         border-color:transparent;
