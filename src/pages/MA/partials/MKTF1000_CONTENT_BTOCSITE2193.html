@@ -160,15 +160,11 @@
         <div class="tit-wrap">
             <p class="tit">당신이 원하는 삶을 누려보세요</p>
         </div>
-        <div class="recom-list-slide slide-wrap">
-            <div class="indi-wrap">
-                <ul class="indi-conts ui_carousel_dots">
-                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                </ul>
-            </div>
-            <div class="slide-content ui_carousel_list">
-                <ul class="slide-track ui_carousel_track">
-                    <li class="slide-conts ui_carousel_slide">
+        <div class="recom-list-slide recom-list-slide01">
+            @@for ( var i=0; i < 1; i++ ) {
+            <div class="slide-content slide-item">
+                <div class="slide-conts-box">
+                    <div class="slide-conts">
                         <a href="/lg-thinq" class="slide-box">
                             <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/MA/img-main-desired-life-01.jpg');" 
                             data-pc-src="/lg5-common/images/MA/img-main-desired-life-01.jpg" 
@@ -180,13 +176,10 @@
                                 <span class="arr">자세히 보기</span>
                             </div>
                         </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
-            <div class="slide-controls">
-                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-            </div>
+            }
         </div>
     </div>
     <!-- 스토리 추가 -->
@@ -194,15 +187,11 @@
         <div class="tit-wrap">
             <p class="tit">다양한 스토리를 만나보세요</p>
         </div>
-        <div class="recom-list-slide slide-wrap">
-            <div class="indi-wrap">
-                <ul class="indi-conts ui_carousel_dots">
-                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                </ul>
-            </div>
-            <div class="slide-content ui_carousel_list">
-                <ul class="slide-track ui_carousel_track">
-                    <li class="slide-conts ui_carousel_slide">
+        <div class="recom-list-slide recom-list-slide02">
+            @@for ( var i=0; i < 3; i++ ) {
+            <div class="slide-content slide-item">
+                <div class="slide-conts-box">
+                    <div class="slide-conts">
                         <a href="/story/hands-on-reviews/styler" class="slide-box">
                             <span class="bg ui_bg_switch" style="background-image:url('https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg');" 
                             data-pc-src="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_pc.jpg" 
@@ -214,39 +203,10 @@
                                 <span class="arr" data-contents="트롬 스타일러 여름철 사용 꿀팁">스토리 더보기</span>                      
                             </div>
                         </a>
-                    </li>
-                    <li class="slide-conts ui_carousel_slide">
-                        <a href="/story/hands-on-reviews/styler" class="slide-box">
-                            <span class="bg ui_bg_switch" style="background-image:url('https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg');" 
-                            data-pc-src="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_pc.jpg" 
-                            data-m-src="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg" 
-                            aria-hidden="hidden" 
-                            data-current-image="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg"></span>
-                            <div class="text-area fc-black">
-                                <p class="tit">트롬 스타일러<br>여름철 사용 꿀팁</p>
-                                <span class="arr" data-contents="트롬 스타일러 여름철 사용 꿀팁">스토리 더보기</span>                      
-                            </div>
-                        </a>
-                    </li>
-                    <li class="slide-conts ui_carousel_slide">
-                        <a href="/story/hands-on-reviews/styler" class="slide-box">
-                            <span class="bg ui_bg_switch" style="background-image:url('https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg');" 
-                            data-pc-src="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_pc.jpg" 
-                            data-m-src="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg" 
-                            aria-hidden="hidden" 
-                            data-current-image="https://www.lge.co.kr/kr/main/main/assets/storybanner_styler_mo.jpg"></span>
-                            <div class="text-area fc-black">
-                                <p class="tit">트롬 스타일러<br>여름철 사용 꿀팁</p>
-                                <span class="arr" data-contents="트롬 스타일러 여름철 사용 꿀팁">스토리 더보기</span>                      
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
-            <div class="slide-controls">
-                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-            </div>
+            }
         </div>
     </div>
     <!-- //스토리 추가 -->

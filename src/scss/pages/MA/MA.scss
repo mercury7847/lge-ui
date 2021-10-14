@@ -2,6 +2,8 @@
 
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
+// BTOCSITE-2193
+@import "../../modules/slick";
 
 // 무인매장
 .contents.unmanned-store-wrap {
@@ -855,7 +857,7 @@ img{
 					padding: 0 !important;
 					margin-left: -16px !important;
 					margin-right: -16px !important;
-					.slide-track {
+					.slide-conts-box {
 						.slide-conts{
 							padding: 0 16px;
 						}
@@ -864,14 +866,8 @@ img{
 			}
 			// BTOCSITE-2193 e
 			.slide-content {
-				@include mobile {
-					// BTOCSITE-2193
-					padding:0 20% 0 20% !important;
-					margin-right: calc((-20%) + 44px) !important;
-					margin-left: calc((-20%) + 44px) !important;
-				}
-				.slide-track {
-					// BTOCSITE-2193
+				// BTOCSITE-2193
+				.slide-conts-box {
 					margin:0;
 					// @include mobile {
 					// 	margin:0;
@@ -1208,7 +1204,8 @@ img{
 					// margin-left: -2px;
 					// margin-right: -2px;
 				}
-				.slide-track {
+				// BTOCSITE-2193
+				.slide-conts-box {
 					.slide-conts {
 						position: relative;
 						padding: 0 12px;
