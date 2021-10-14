@@ -2125,7 +2125,7 @@ html {
 .header-bottom{
     .store-counsel-banner{
         @include pc {
-            display: none;
+            display: none !important;
         }
         @include mobile{
             margin-top:-12px;
