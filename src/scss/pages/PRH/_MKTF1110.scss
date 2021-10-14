@@ -2440,3 +2440,745 @@
         }
     }
 }
+
+
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
+@import "../../modules/slick";
+// ThinQ > APP 탭 section
+.app-tab-section{
+    // 비주얼 이미지 
+    .visual-img-solo{
+        width: 100%;
+        img{width: 100%;}
+        .mobile-only{ display: none;}
+        @include mobile{
+            .pc-only{display:none}
+            .mobile-only{display:block;}
+        }
+    }
+    // 탭 영역
+    .app-tab-area{
+        position:relative;
+        @include mobile{
+            padding:0;
+        }
+        .white-dimmed{
+            position:absolute;
+            right:85.5px;
+            top:0;
+            display: inline-block;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(225,225,225, 0), white);
+            z-index: 10;
+        }
+        // 탭메뉴 nav
+        .menu-slide-block{
+            background-color: #fff;
+            padding:48px 0;
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 5;
+            @include mobile {
+                padding:20px 0 23px;
+            }
+            .menu-slide-inner{
+                position: relative;
+                padding:0 202px 0 80px;
+                max-width: 1380px;
+                margin:0 auto;
+                @include mobile{
+                    padding:0 85.5px 0 10px;
+                }
+            }
+            .menu-slide-nav{
+                .slick-arrow.slick-prev{
+                    left:-32px;
+                    width: 48px;
+                    height: 48px;
+                    &:before {
+                        box-shadow: none;
+                        background-image:url('/lg5-common/images/PRH/app/ic_calender_prev_48.svg');
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                .slick-arrow.slick-next{
+                    right:-32px;
+                    width: 48px;
+                    height: 48px;
+                    &:before {
+                        box-shadow: none;
+                        background-image:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg');
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                .menu-item{
+                    position: relative;
+                    display: inline-block;
+                    width: 90px;
+                    text-align: center;
+                    a{
+                        display: inline-block;
+                    }
+                    &.on{
+                        .icon-wrap{
+                            border:2px solid #000
+                        }
+                    }
+                    
+                }
+            }
+            .btn-allview{
+                position:absolute;
+                right:0;
+                top:0;
+                z-index: 100;
+                @include tablet {
+                    right:40px;
+                    top:0px;
+                }
+                @include mobile{
+                    right: 16px;
+                }
+                .icon-wrap{
+                    background: linear-gradient(135deg, #fa263e, #fb5a72);
+                }
+            }
+            &.is-active{
+                box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
+                width: 100%;
+                &:after{content:''; display:block; clear:both;}
+                .menu-slide-nav{
+                    margin-top:-47px;
+                    @include mobile{
+                        margin-top: -17.5px;
+                    }
+                }
+                .btn-allview{
+                    top:47px;
+                    @include tablet {
+                        top:47px;
+                        right:40px;
+                    }
+                    @include mobile{
+                        top: 18px; 
+                        right:16px;
+                    }
+                    .icon-wrap{
+                        background: #666;
+                    }
+                    .icon{
+                        &-all{
+                            background-image:url('/lg5-common/images/PRH/app/ic_close_64.png');
+                        }
+                    }
+                }
+                .menu-item{
+                    float:left;
+                    width:calc(100%/7);
+                    margin-top: 47px;
+                    @include tablet {
+                        width:calc(100%/5);
+                    }
+                    @include mobile{
+                        width:calc(100%/4);
+                        margin-top: 17.5px;
+                    }
+                }
+            }
+        }
+        // 탭 메뉴 content
+        .app-tab-content{
+            .app-smart-wrap{
+                background-color: #f4f4f4;
+                padding: 350px 0 120px;
+                @include mobile{
+                    padding: 196px 16px 62px;
+                }
+                .app-smart-detail{
+                    max-width: 1460px;
+                    margin: 0 auto;
+                    padding: 0 40px; 
+                    li{
+                        display:flex;
+                        position: relative;
+                        .detail-inner{
+                            display:flex;
+                            width: 100%;
+                            flex-direction: row;
+                            align-items: center;
+                            @include mobile{
+                                flex-direction: column;
+                                br{
+                                    display: none;
+                                }
+                            }
+                            .text-area{
+                                color:#000;
+                                padding-left:60px;
+                                @include mobile{
+                                    text-align: center;
+                                    padding-left:0;
+                                }
+                                .tit{
+                                    font-size:32px;
+                                    line-height: 1.63;
+                                    font-weight: 500;
+                                    @include mobile{
+                                        font-size:18px;
+                                    }
+                                }
+                                .desc{
+                                    font-size:20px;
+                                    line-height: 1.5;
+                                    margin-top: 17px;
+                                    @include mobile{
+                                        font-size:15px;
+                                    }
+                                }
+                            }
+                        }
+                        &:nth-child(even){
+                            .detail-inner{
+                                flex-direction: row-reverse;
+                                @include mobile{
+                                    flex-direction: column;
+                                }
+                                .text-area{
+                                    padding-right:60px;
+                                    @include mobile{
+                                        padding-right:0;
+                                    }
+                                }
+                            }
+                        }
+                        & + li{
+                            margin-top:-248px;
+                            @include tablet{
+                                margin-top: -200px;
+                            }
+                            @include mobile{
+                               margin-top:50px;
+                            }
+                        }
+                        .detail-inner{
+                            .image{
+                                width: 342px;
+                                height: 639px;
+                                @include mobile{
+                                    width: 185px;
+                                    height: 348.5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 연동기기 찾기 배너 
+    .search-banner-wrap{
+        height: 80px;
+        max-width: 1380px;
+        background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
+        margin:100px auto 0;
+        @include mobile{
+            height: 120px;
+            background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
+            background-size: 100% auto;
+            margin:60px 16px 0;
+        }
+        > button{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            span{
+                font-size:18px;
+                line-height: 1.5;
+                font-weight: 500;
+                position:relative;
+                &:after{
+                    content:'';
+                    display:inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg') no-repeat 0 0;
+                    background-size:100% 100%;
+                    position: absolute;
+                    top:5px;
+                }
+            }
+        }
+    }
+    // ThinQ 앱 다운 안내 슬라이드
+    .download-guide-slide{
+        max-width: 1380px;
+        margin:0 auto;
+        .download-guide-item{
+            height: 440px;
+            @include mobile{
+                height: 480px;
+            }
+            &.bg-appDown{
+                background:url('/lg5-common/images/PRH/app/img_banner_01.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_01_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            &.bg-howTo{
+                background:url('/lg5-common/images/PRH/app/img_banner_02.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_02_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            &.bg-magazine{
+                background:url('/lg5-common/images/PRH/app/img_banner_03.jpg') no-repeat 0 0;
+                @include mobile{
+                    background:url('/lg5-common/images/PRH/app/img_banner_03_m.jpg') no-repeat 0 0;
+                    background-size: 100% 100%;
+                }
+            }
+            .box{
+                padding:65px 0 0 120px; 
+                @include mobile { 
+                    padding: 36px 32px;
+                    text-align: center;
+                    .btn-area{
+                        .btn{
+                            height:43px;
+                            font-size:13px;
+                            line-height: 1;
+                        }
+                    }
+                }
+                .btn-download{
+                    width: 162px;
+                    height: 50px;
+                    display: inline-block;
+                    img{
+                        width: 100%;
+                    }
+                    & + .btn-download{margin-left: 4px;}
+                    @include mobile{
+                        width:139.5px;
+                        height: 43px;
+                    }
+                }
+                .text-wrap{
+                   .title h2{
+                       font-size:40px; 
+                       line-height: 56px;
+                       @include mobile { 
+                            font-size:24px;
+                            line-height: 1.38;
+                       }
+                    }
+                   .text{
+                       font-size:18px; 
+                       line-height: 28px;
+                       @include mobile { 
+                            font-size:14px;
+                            line-height: 1.57;
+                       }
+                    }
+                   .title + .text{
+                       margin-top: 10px;
+                       @include mobile{
+                           margin-top: 5.5px;
+                       }
+                    }
+                }
+            }
+            .text-wrap + .btn-area{
+                margin-top: 25px;
+                @include mobile {
+                    margin-top: 24.5px;
+                }
+            }
+        }
+        @include mobile {
+            .slick-dots{
+                bottom:-24px;
+            }
+        }
+        .slick-arrow.slick-prev{
+            left:-18px;
+            @include tablet{
+                left:0
+            }
+            @media screen and (max-width: 1450px) {
+                left:0
+            }
+        }
+        .slick-arrow.slick-next{
+            right:-18px;
+            @include tablet{
+                right:0
+            }
+            @media screen and (max-width: 1450px) {
+                right:0
+            }
+        }
+    }
+    
+    .search-banner-wrap + .download-guide-slide{
+        margin-top: 100px;
+        @include mobile{
+            margin-top: 60px;
+        }
+    }
+}
+
+.icon-wrap{
+    display: inline-flex;
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    & + .txt{
+        display: block;
+        text-align:center; 
+        font-size:18px;
+        margin-top: 8px;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    @include mobile{
+        width: 50px;
+        height: 50px;
+        & + .txt{
+            font-size:13px;
+        }
+    }
+
+    .icon {
+        display: inline-block;;
+        width: 64px;
+        height: 64px;
+        @include mobile{
+            width: 32px;
+            height: 32px;
+            background-size:100%;
+        }
+
+        &-all{
+            background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
+        }
+    }
+    $prdIconLists: (refrigerator, kimchiRefrigerator, wineCellar, cooktop, dishWasher, lightWaveOven, waterPurifier, beerMaker, washer, dryer, styler, vacuumCleaner, airCon, airCleaner, dehumidifier, ceilingFan);
+    @each $name in $prdIconLists {
+        .icon{
+            &-#{$name}{
+                background-image:url('/lg5-common/images/PRH/app/img_#{$name}.png');
+                &.fill{
+                    background-image:url('/lg5-common/images/PRH/app/search/img_#{$name}.png');
+                }
+            }
+        }
+    }
+}
+// 연동기기 찾기 팝업 
+.popup-searchMachine{
+    height: 800px;
+    @include mobile{
+        height: 100%;
+    }
+    &.popup-wrap .pop-conts.no-footer{
+        height:calc(100% - 78px);
+        overflow: hidden;
+        padding-top:20px;
+        padding-bottom:0;
+        max-height: initial;
+        @include mobile {
+            height:calc(100% - 62px);
+        }
+    }
+}
+// 연동기기 찾기 검색 박스
+.search-sticky-wrap{
+    position: relative;
+    @include mobile{
+        // top:-32px;
+        // margin: -32px -16px 0 -16px;
+        // padding:24px 16px;
+    }
+}
+.search-machine-box{
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding:24px 26px;
+    display:flex;
+    @include mobile{
+        flex-direction: column;
+        padding:25px 10px;
+    }
+    .select-wrap{
+        width: 159px;
+        @include mobile{
+            width: 100%;            
+        }
+    }
+    .select-wrap + .input-wrap{
+        margin-left:8px;
+        @include mobile{
+            margin-left: 0;
+            margin-top: 8px;
+        }
+    }
+    .input-wrap{
+        flex:1;
+        position: relative;
+        .btn-search{
+            position:absolute;
+            right:0;
+            top:0;
+            width: 48px;
+            height: 48px;
+            @include mobile{
+                width: 46px;
+                height: 46px;
+            }
+            .icon{
+                margin-top: 5px;
+                &.icon-search{
+                    display: inline-block;;
+                    width: 32px;
+                    height: 32px;
+                    background-image:url('/lg5-common/images/PRH/app/search/ic_search_32.png');
+                    @include mobile{
+                        width: 24px;
+                        height: 24px;
+                        background-size:24px 24px;
+                    }
+                }
+            }
+        }
+        .btn-delete {
+            position:absolute;
+            top:50%;
+            right:48px;
+            width:24px;
+            height:24px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/PRH/app/search/ic_delete_medium_24.png') no-repeat 0 0;
+            @include mobile {
+                right: 42px;
+            }
+        }
+    }
+}
+// 검색 전
+.intro-message{
+    height: calc(100% - 96px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include mobile{
+        height: calc(100% - 150px);
+    }
+    > p{
+        font-size: 20px;
+        font-weight: 800;  
+        line-height: 1.5;
+        text-align: center;
+        @include mobile{
+            font-size:16px;
+            line-height: 1.5;
+        }
+    }
+
+}
+// 검색결과 없음 재시도
+.no-data-message{
+    height: calc(100% - 96px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include mobile{
+        height: calc(100% - 150px);
+    }
+    br{
+        display:none;
+        @include mobile {
+            display: block;
+        }
+    }
+    > em{
+        font-size: 20px;
+        font-weight: 800;  
+        line-height: 1.5;
+        @include mobile{
+            font-size:16px;
+            line-height: 1.5;
+        }
+    }
+    > p{
+        font-size: 16px;
+        line-height: 1.63;
+        color: #666; 
+        @include mobile{
+            font-size:14px;
+            line-height: 1.57;
+        }
+    }
+    em + p{
+        margin-top: 8px;
+        @include mobile{
+            margin-top: 11.5px;
+        }
+    }
+    .btn-area{
+        margin-top: 25px;
+        @include mobile{
+            margin-top: 24.5px;
+        }
+    }
+}
+//  검색 결과 목록
+.product-result-wrap{
+    height: calc(100% - 96px);
+    overflow-y:auto;
+    margin-right: -40px;
+    padding:40px 40px 50px 0;
+    @include mobile {
+        height: calc(100% - 150px);
+    }
+    .prd-result-text{
+        padding-bottom:12px;
+        em{
+            color:$color-primary;
+            font-weight: 800;
+        }
+    }
+    .prd-result-lists{
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom:24px;
+        border-top:1px solid #666666;
+        border-bottom:1px solid #dddddd;
+        > li{
+            width: 50%;
+            display:block;
+            overflow:hidden;
+            margin-top: 24px;
+            @include mobile {
+                width: 100%;
+                margin-top: 16px;
+            }
+            .icon-wrap {
+                float:left;
+                width: 120px;
+                height: 120px;
+                background-color: #f4f4f4;
+                border-radius: 8px;
+                @include mobile{
+                    width: 105px;
+                    height: 105px;
+                    .icon{
+                        width: 64px;
+                        height: 64px;
+                    }
+                }
+            }
+            .text{
+                margin-left:144px;
+                @include mobile{
+                    margin-left:121px;
+                }
+                .name{
+                    font-size: 16px;
+                    font-weight: 800;
+                    line-height: 1.63;
+                }
+                .serial-num{
+                    display: block;
+                    font-size: 14px;
+                    line-height: 1.86;
+                    margin-top: 6px;
+                }
+            }
+        }
+    }
+}
+// 앱 설치 및 사용 방법 팝업 
+.popup-howto{
+    max-width: 1146px;
+    @include mobile {
+        width: 100%;
+    }
+    .howto-content{
+        padding:13px 0 38px;
+        @include mobile { 
+            padding-top:0;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            padding-bottom:0;
+        }
+    }
+    .howto-slider{
+        width: 1066px;
+        padding:0 59px;
+        @include tablet {
+            width: 100%;
+        }
+        @include mobile {
+            width: 100%;
+            padding:0;
+        }
+        .slide-item{
+            .inner{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .image{
+                width: 177px;
+                height: 365px;
+                @include mobile {
+                    width: 165px;
+                    height: 340.5px;
+                }
+                img{
+                    width: 100%;
+                }
+            }
+            .text{
+                margin-top: 36px;
+                text-align:center;
+                font-size: 16px;
+                line-height: 1.75;
+                @include mobile{
+                    font-size:14px;
+                    line-height: 1.57;
+                    margin-top: 29px;
+                }
+                .num{
+                    display:block;
+                    font-weight: 800;
+                    margin-bottom: 12px;
+                    @include mobile{
+                        font-size:15px;
+                        line-height: 1.53;
+                    }
+                }
+                em{
+                    color:$color-primary;
+                }
+            }
+        }
+    }
+}
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
