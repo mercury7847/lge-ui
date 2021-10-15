@@ -401,8 +401,8 @@
         scroll: function(scrollTop){
             //전체탭 스티키
             var self = this;
-            console.log("self.$stickyTabWrap", self.$stickyTabWrap)
-            if( self.$stickyTabWrap.length ) {
+            
+            if( self.$stickyTabWrap.length > 0 ) {
                 var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
     
                 if(scrollTop >= stickyTabOffsetTop) {
