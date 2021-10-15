@@ -315,19 +315,21 @@ $(function () {
             var recomSlider02Num = recomSlider02.find('.slide-item').length
 
             if(recomSlider01Num > 1){
-                if(data.name == 'mobile'){
-                    recomSliderMobile(recomSlider01);
-                }else if(data.name == 'pc'){
-                    recomSliderPC(recomSlider01);
-                }
+                recomSliderPC(recomSlider01);
+                // if(data.name == 'mobile'){
+                //     recomSliderPC(recomSlider01);
+                // }else if(data.name == 'pc'){
+                //     recomSliderPC(recomSlider01);
+                // }
             }
 
             if(recomSlider02Num > 1){
-                if(data.name == 'mobile'){
-                    recomSliderMobile(recomSlider02);
-                }else if(data.name == 'pc'){
-                    recomSliderPC(recomSlider02);
-                }
+                recomSliderPC(recomSlider02);
+                // if(data.name == 'mobile'){
+                //     recomSliderPC(recomSlider02);
+                // }else if(data.name == 'pc'){
+                //     recomSliderPC(recomSlider02);
+                // }
             }
         });   
 
@@ -335,34 +337,40 @@ $(function () {
             var slider = slider;
             slider.slick({
                 arrows: true,
+                dots: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                outerEdgeLimit: false,
                 infinite:false,
                 variableWidth:false,
+                outerEdgeLimit: false,
                 responsive: [
                     {
                         breakpoint: 768,
                         settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
                         }
                     }
                 ]
             });
         }
-        function recomSliderMobile(slider) {
-            alert(1);
-            var slider = slider;
-            slider.slick({
-                arrows: true,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                outerEdgeLimit: false,
-                infinite:false,
-                variableWidth:false,
-            });
-        }
+        // function recomSliderMobile(slider) {
+        //     var slider = slider;
+        //     slider.slick({
+        //         dots: false,
+        //         arrows:false,
+        //         slidesToShow: 1,
+        //         slidesToScroll: 1,
+        //         infinite:false,
+        //         variableWidth:true,
+        //         outerEdgeLimit: true
+        //     });
+        // }
         // BTOCSITE-2193 e           
 
 
