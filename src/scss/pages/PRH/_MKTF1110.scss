@@ -2864,6 +2864,7 @@
         display: inline-block;;
         width: 64px;
         height: 64px;
+        background-size: 100% ;
         @include mobile{
             width: 40px;
             height: 40px;
@@ -2874,13 +2875,13 @@
             background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
         }
     }
-    $prdIconLists: (refrigerator, kimchiRefrigerator, wineCellar, cooktop, dishWasher, lightWaveOven, waterPurifier, beerMaker, washer, dryer, styler, vacuumCleaner, airCon, airCleaner, dehumidifier, ceilingFan);
+    $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan);
     @each $name in $prdIconLists {
         .icon{
             &-#{$name}{
-                background-image:url('/lg5-common/images/PRH/app/img_#{$name}.png');
-                &.fill{
-                    background-image:url('/lg5-common/images/PRH/app/search/img_#{$name}.png');
+                background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
+                @at-root .menu-item.on .icon-#{$name}{
+                    background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
                 }
             }
         }
@@ -2958,7 +2959,7 @@
                     display: inline-block;;
                     width: 32px;
                     height: 32px;
-                    background-image:url('/lg5-common/images/PRH/app/search/ic_search_32.png');
+                    background-image:url('/lg5-common/images/PRH/app/search/search_32.png');
                     @include mobile{
                         width: 24px;
                         height: 24px;
@@ -2968,6 +2969,7 @@
             }
         }
         .btn-delete {
+            display: none;
             position:absolute;
             top:50%;
             right:48px;
