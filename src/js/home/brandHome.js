@@ -126,7 +126,12 @@
                 if( e.keyCode == 13) {
                     self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
                 }
+            })
 
+            self.$searchInput.on('input', function(e){
+                var categoryId = self.$searchSelect.vcSelectbox('value')
+                var searchKeyword = self.$searchInput.val();
+                console.log(searchKeyword.length)
                 if( searchKeyword.length > 0 ){
                     self.$searchDel.show();
                 } else {
