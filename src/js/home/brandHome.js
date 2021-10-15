@@ -133,6 +133,11 @@
                 var searchKeyword = self.$searchInput.val();
                 self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": data});
             });
+
+            //검색팝업: 닫기
+            self.$searchPopup.on('modalhide', function(e){
+                self.modelSearchInit();
+            })
         },
         heroSlider: function(){
             //최상단 히어로배너
@@ -329,7 +334,9 @@
         modelSearchInit: function(){
             var self = this;
             
-            self.$searchSelect.vcSelectbox();
+            self.$searchSelect.vcSelectbox('selectedIndex', 0, false);
+            self.$searchInput.val('');
+            self.searchSwap('.intro-message');
         },
         swapContent: function(target, targetArray, $parent){
             var self = this;

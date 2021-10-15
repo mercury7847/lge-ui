@@ -2890,6 +2890,7 @@
 // 연동기기 찾기 팝업 
 .popup-searchMachine{
     height: 800px;
+    min-height:auto !important;
     @include mobile{
         height: 100%;
     }
@@ -2938,6 +2939,10 @@
     .input-wrap{
         flex:1;
         position: relative;
+        
+        input[type="text"] {
+            padding:10px 75px 10px 15px
+        }
         .btn-search{
             position:absolute;
             right:0;
