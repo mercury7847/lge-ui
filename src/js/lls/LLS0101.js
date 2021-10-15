@@ -26,15 +26,16 @@ var llc = {
         var self = this;
 
         if( !vcui.detect.isMobileDevice ) {
-            self.$frameContent.hide();
-            lgkorUI.alert("", {
-                title: "LGE.COM APP을 설치하시면 <br>모바일에서 엘라쇼 최신 하이라이트 영상을 <br>편리하게 이용하실 수 있습니다.",
-                ok: function(el) {
-                    location.href = self.homeUrl
-                }
-            });
+            // self.$frameContent.hide();
+            // lgkorUI.alert("", {
+            //     title: "LGE.COM APP을 설치하시면 <br>모바일에서 엘라쇼 최신 하이라이트 영상을 <br>편리하게 이용하실 수 있습니다.",
+            //     ok: function(el) {
+            //         location.href = self.homeUrl
+            //     }
+            // });
+            //self.$frameContent.show();
         } else {
-            self.$frameContent.show();
+            //self.$frameContent.show();
         }
     }
 }
@@ -47,23 +48,32 @@ $(function(){
         window.addEventListener(
             "message", function(e) { 
               if(typeof e.data == 'string'){ 				
-                  var obj = JSON.parse(e.data);              		    
-                  if(obj["key"] == "sauceflexMoveLogin"){
-                      location.href="/sso/api/Login";
-                  }else if(obj["key"] == "sauceflexMoveProduct"){
-                          location.href=obj["params"].linkUrl;    	
-                 }else if(obj["key"] == "sauceflexOnShare"){ 		    	
-                      var dummy = document.createElement("input");	 		        	 		        
-                      document.body.appendChild(dummy);
-                      dummy.value = window.location.href;
-                      dummy.select();	 		       
-                      document.execCommand("copy");	 		        
-                      document.body.removeChild(dummy);
-                      alert("URL을 복사했습니다.");	 		       
-                  }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
-                      location.href="/livecommerce";
-                  }
-              }    
+                    var obj = JSON.parse(e.data);
+
+                    //console.log("check", obj);
+
+                    if(obj["key"] == "sauceflexMoveLogin"){
+                        location.href="/sso/api/Login";
+                    }else if(obj["key"] == "sauceflexMoveProduct"){
+                        location.href=obj["params"].linkUrl;    	
+                    }else if(obj["key"] == "sauceflexOnShare"){ 		    	
+                        console.log(e)
+                    //   var dummy = document.createElement("input");
+
+                    //   console.log("check 1", dummy);
+
+                    //   document.body.appendChild(dummy);
+                    //   dummy.value = window.location.href;
+                    //   dummy.select();	 		       
+                    //   document.execCommand("copy");	 		        
+                    //   document.body.removeChild(dummy);
+                    //   alert("URL을 복사했습니다.");	 		       
+
+                        $('.tooltip-wrap.share .tooltip-icon').trigger('click');
+                    }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
+                        location.href="/livecommerce";
+                    }
+                }    
             }, false
         );
     })
