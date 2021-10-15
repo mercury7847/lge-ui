@@ -4995,7 +4995,7 @@
             var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
             if(plist.hasClass("pannel_list")){
                 //패널만 교체
-                if(plChk.length){
+                if(plChk.length && $('.sum').css('display') == 'flex'){
                     plChk.each(function() {
                         if (!$(this).hasClass("sum")) {
                             $(this).attr("data-default-code");
@@ -5005,9 +5005,21 @@
                             purchaseData.push($(this).attr("data-default-code"));
                             }
                         }
-                    });                    
+                    });
+                } else if(plChk.length && $('.sum').css('display') == 'none') {
+                    let desc = "";
+                    let obj = {
+                        title: '선택 제품의 총 금액을 확인하여 주십시오.'
+                    };
+                    lgkorUI.alert(desc, obj);
+                    return;
                 } else {
-                    alert("패널을 선택해주세요.");
+                    let desc = "";
+                    let obj = {
+                        title: '구매하고자 하는 패널을 선택하여 주십시오.'
+                    };
+                    lgkorUI.alert(desc, obj);
+                    return;
                 }
             } else {
                 //견적 확인하기
@@ -6328,7 +6340,6 @@
                     // }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '" >';
-
                     var _klocation = doorInfo[i][7]!=undefined ? doorInfo[i][7]: "";
                     priceHtml += '                      <span class="product_name">' + doorInfo[i][6] + ' ' + _klocation + '</span>';
                     priceHtml += '                      <span class="product_price"><em></em>원</span>';
