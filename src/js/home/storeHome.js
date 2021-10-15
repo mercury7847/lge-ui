@@ -664,24 +664,6 @@ $(function(){
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         function errorRequest(err){
             //console.log(err);
         }
@@ -698,19 +680,13 @@ $(function(){
                     var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(subCategoryId){
-                        if( item['title'] == "케어용품/소모품") {
-                            if (vcui.detect.isMobileDevice){
-                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
-                            } else {
-                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
-                            }
+                        //[S] - BTOCSITE-1488 - 스토어 홈 > 카테고리 추가요청
+                        if (vcui.detect.isMobileDevice){
+                            iconPath = item['iconPathM'];
                         } else {
-                            if (vcui.detect.isMobileDevice){
-                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
-                            } else {
-                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
-                            }
+                            iconPath = item['iconPath'];
                         }
+                        //[E] - BTOCSITE-1488 - 스토어 홈 > 카테고리 추가요청
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -723,10 +699,6 @@ $(function(){
 
                 /* BTOCSITE-1057 : data-contents 추가 2021-08-09 */
                 $context.find('#'+categoryId).find('.ui_sub_category li a').attr('data-contents', categoryName);
-                // console.log("gnbId :", '#'+gnbId);
-                // console.log("categoryName :", '#'+categoryName);
-                // console.log("categoryId :", '#'+categoryId);
-                // console.log(tabContentStr);
                 /* //BTOCSITE-1057 : data-contents 추가 2021-08-09 */
 
                 // 4개 이하일때 중앙정렬
