@@ -79,9 +79,10 @@
                     $(this).children('.txt').text('닫기');
                     self.appSmartTab.destroy()
                 }else{
+                    var currentIndex = self.$appTablist.filter('.on').index();
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
-                    self.appSmartTab.init()
+                    self.appSmartTab.init(currentIndex)
                 }
             })
 
@@ -223,48 +224,58 @@
                 if( data.content[0] == $('.thinq-app')[0]) {
                     self.appSmartTab.load();
                     self.appDownloadGuideSlider.load();
+                } else {
+                    // if( self.$appTabArea.find('.menu-slide-block').hasClass('is-active')) {
+                    //     self.$appTabBtnAll.trigger('click');
+                    // }
                 }
             })
         },
         appSmartTab: {
             //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드
             slideConfig : {
-                infinite: false,
+                infinite: false,                
                 slidesToShow: 7,
                 slidesToScroll: 7,
-                focusOnSelect: true,
+                // focusOnSelect: true,
                 responsive: [
                     {
                         breakpoint:1024,
                         settings:{
-                            infinite: false,
+                            // infinite: false,
                             slidesToShow: 5,
                             slidesToScroll: 5,
-                            focusOnSelect: true,
+                            //focusOnSelect: true,
                         }
                     },
                     {
                         breakpoint:768,
                         settings:{
-                            infinite: false,
+                            // infinite: false,
                             slidesToShow: 4,
                             slidesToScroll: 4,
                             focusOnSelect: true,
-                            arrows:false,
+                            //arrows:false,
                         }
                     }
                 ]
             },
-            init: function(){
+            init: function(index){
                 var tabs = this;
-                thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideConfig)
+                if( !thinQMain.$appTabArea.find('.menu-slide-block').hasClass('is-active') ) {
+                    thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideConfig)
+                    if( index != undefined ) {
+                        thinQMain.$appTabMenu.slick('slickGoTo', index)
+                    }
+                }
             },
             reinit: function(){
-                thinQMain.$appTabMenu.filter('.slick-initialized').slick('refresh')
+                var tabs = this;
+                // thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition')
             },
             load: function(){
                 if( thinQMain.$appTabMenu.hasClass('slick-initialized') ) {
-                    this.reinit();
+                    //this.reinit();
                 } else {
                     this.init();
                 }
