@@ -1882,6 +1882,9 @@
                             color: #000;
                             text-align: left;
                             border-radius: 0;
+                            @include mobile {
+                                padding: 9px 15px;
+                            }
                             .tooltip-wrap {
                                 .tooltip-icon {
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
@@ -1903,11 +1906,18 @@
                         .ui_dropdown_toggle {
                             overflow: hidden;
                             position: absolute;
+                            top: 0;
                             right: 15px;
                             display: inline-block;
-                            max-width: calc(100% - 100px);
-                            height: 24px;
+                            width: calc(100% - 115px);
+                            height: 52px;
                             padding: 0 24px 0 0;
+                            text-align: right;
+                            line-height: 52px;
+                            @include mobile {
+                                height: 41px;
+                                line-height: 41px;
+                            }
                             &::after {
                                 right: 0;
                             }
