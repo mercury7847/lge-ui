@@ -514,6 +514,49 @@ br.m {
                                     }
                                 }
                             }
+                            &[class*="mng"] {
+                                min-height: 80px;
+                                padding-left:104px;
+                                @include mobile {
+                                    padding-left: 96px;
+                                }
+                                &::before {
+                                    content: ' ';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    background-size: 100%;
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    width:80px;
+                                    height:80px;
+                                }
+                                &[class*="1"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-01.svg');
+                                    }
+                                }
+                                &[class*="2"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-02.svg');
+                                    }
+                                }
+                                &[class*="3"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-03.svg');
+                                    }
+                                }
+                                &[class*="4"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-04.svg');
+                                    }
+                                }
+                                &[class*="5"] {
+                                    &::before {
+                                        background-image:url('/lg5-common/images/SLC/icon-care-benefit-05.svg');
+                                    }
+                                }
+                            }
                         }
                         .bullet-list {
                             margin-top:8px;

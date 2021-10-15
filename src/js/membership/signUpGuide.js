@@ -12,4 +12,8 @@ $(document).ready(function() {
         $content.find('.device-aos-qrcode').hide();
         $content.find('.device-ios-qrcode').show();
     }
+    /* BTOCSITE-3002 멤버십 페이지 수정 */
+    $('.btn-mo-acc').click(function(){        
+        $('.mo-only-acc').toggleClass('on');
+    })
 });
