@@ -978,7 +978,19 @@
 
         //BTOCSITE-5860 - ThinQ 체험하기 팝업
         $('.btn-experience').on('click',function(e){
-            $('.popup-experience').vcModal("show");
+            if (vcui.detect.isIE) {
+                var id = $(e.currentTarget).data('id');
+                var obj ={title:'.', ok : function (){ }};
+                var desc = '';
+
+                if(id=="#popup-experience"){
+                    obj = $.extend(obj,{title:'크롬 브라우저를 이용해 주세요.'});
+                    desc = '';
+                }
+                lgkorUI.alert(desc, obj);
+            }else{
+                $('.popup-experience').vcModal("show");
+            }
         });
         //test 검수용
         $('.btn-experience2').on('click',function(e){
