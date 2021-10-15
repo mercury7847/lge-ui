@@ -2475,47 +2475,57 @@
         // 탭메뉴 nav
         .menu-slide-block{
             background-color: #fff;
-            padding:48px 0;
+            padding:48px 40px;
             position: absolute;
             width: 100%;
             left: 50%;
             transform: translate(-50%, 0%);
             z-index: 5;
             @include mobile {
-                padding:20px 0 23px;
+                padding:25px 16px 24px;
             }
             .menu-slide-inner{
+                display: flex;
+                align-items: flex-start;
                 position: relative;
-                padding:0 202px 0 80px;
                 max-width: 1380px;
                 margin:0 auto;
-                @include mobile{
-                    padding:0 85.5px 0 10px;
-                }
             }
             .menu-slide-nav{
-                .slick-arrow.slick-prev{
-                    left:-32px;
+                flex:1;
+                overflow:hidden;
+                margin-right:32px;
+                padding:0 48px;
+
+                @include mobile {
+                    margin-right:16px;
+                    padding:0;
+                }
+
+                .slick-arrow {
                     width: 48px;
                     height: 48px;
+
                     &:before {
                         box-shadow: none;
-                        background-image:url('/lg5-common/images/PRH/app/ic_calender_prev_48.svg');
                         width: 48px;
                         height: 48px;
                     }
-                }
-                .slick-arrow.slick-next{
-                    right:-32px;
-                    width: 48px;
-                    height: 48px;
-                    &:before {
-                        box-shadow: none;
-                        background-image:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg');
-                        width: 48px;
-                        height: 48px;
+
+                    &.slick-prev {
+                        left:0;
+                        &:before {
+                            background-image:url('/lg5-common/images/PRH/app/ic_calender_prev_48.svg');
+                        }
+                    }
+                    &.slick-next {
+                        right:0;
+                        &:before {
+                            background-image:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg');
+                        }
                     }
                 }
+
                 .menu-item{
                     position: relative;
                     display: inline-block;
@@ -2526,24 +2536,13 @@
                     }
                     &.on{
                         .icon-wrap{
-                            border:2px solid #000
+                            // border:2px solid #000
                         }
                     }
                     
                 }
             }
             .btn-allview{
-                position:absolute;
-                right:0;
-                top:0;
-                z-index: 100;
-                @include tablet {
-                    right:40px;
-                    top:0px;
-                }
-                @include mobile{
-                    right: 16px;
-                }
                 .icon-wrap{
                     background: linear-gradient(135deg, #fa263e, #fb5a72);
                 }
@@ -2866,8 +2865,8 @@
         width: 64px;
         height: 64px;
         @include mobile{
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             background-size:100%;
         }
 

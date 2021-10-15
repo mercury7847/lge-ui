@@ -237,25 +237,20 @@
                 infinite: false,                
                 slidesToShow: 7,
                 slidesToScroll: 7,
-                // focusOnSelect: true,
                 responsive: [
                     {
-                        breakpoint:1024,
+                        breakpoint:1280,
                         settings:{
-                            // infinite: false,
                             slidesToShow: 5,
                             slidesToScroll: 5,
-                            //focusOnSelect: true,
                         }
                     },
                     {
                         breakpoint:768,
                         settings:{
-                            // infinite: false,
+                            arrows:false,
                             slidesToShow: 4,
                             slidesToScroll: 4,
-                            focusOnSelect: true,
-                            //arrows:false,
                         }
                     }
                 ]
