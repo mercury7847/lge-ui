@@ -92,14 +92,21 @@
             ]
         });
 
-        $('.cont-wrap > .btn-close,.cont-wrap .footer button').on('click', function(e){
+        $('.cont-wrap > .btn-close,.cont-wrap .pop-footer button').on('click', function(e){
             e.preventDefault();
 
             if(isApp() && vcui.detect.isIOS){ 
                 var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
-                window.close();
+                // 카카오톡 공유하기 url 인경우 분기
+                if(lgkorUI.getParameterByName("kakaoShare") === 'Y') {
+                    location.href = '/';
+
+                } else {
+                    window.close();
+                }
+                
             }
            
         });
@@ -161,6 +168,15 @@
                 window.close();
             }
         });
+
+        // 카카오톡 공유하기 url 생성
+        var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
+        var kakaoShareLoc = lgkorUI.parseUrl(kakaoShareUrl);
+        var kakaoShareParam = $.extend(kakaoShareLoc.searchParams.getAll(), {
+            kakaoShare : 'Y'
+        });
+
+        $('.ico-btn.kk').attr("data-url",kakaoShareLoc.origin + kakaoShareLoc.pathname +'?'+ $.param(kakaoShareParam)); 
     }
 
     $(document).ready(function() {

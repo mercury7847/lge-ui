@@ -67,8 +67,8 @@ var FilterLayer = (function() {
     /* BTOCSITE-2785 : add 2021-07-16 */
     var filterCategoryTopTemplate = '<li data-productTarget="s{{index}}">' +
             '<div class="rdo-wrap">' +
-                '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
-                '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'+
+                '<input type="radio" name="{{filterId}}" id="{{ filterValueId || "rdo100" }}" value="{{filterValueId}}">' +
+                '<label for="{{filterValueId || "rdo100" }}">{{filterValueName}}</label>'+
             '</div>' +
         '</li>';
     /* //BTOCSITE-2785 : add 2021-07-16 */
@@ -106,10 +106,17 @@ var FilterLayer = (function() {
             self.$listSorting = $listSorting;
             self.$categorySelect = $categorySelect;
             self.unfoldFlagName = unfoldFlagName;
+
+            self.subCategory = self.getSubCategory();
+
+            console.log("sub category %o",  self.subCategory);
             
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider();
             self.$layFilter.find('.ui_order_accordion').vcAccordion();
             self.$layFilter.find('.ui_filter_accordion').vcAccordion();
+
+
+            
         },
 
         _bindEvents: function() {
@@ -284,6 +291,17 @@ var FilterLayer = (function() {
 
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
+                    console.log('카테고리 체인지 %o %o %o',firstFilterList,location,$(this));
+
+
+                    var subCat = $(this).val();
+                    var subCateId = subCat ? self.subCategory[subCat] : '';
+                    var url = lgkorUI.parseUrl(location.href);
+                    var params = subCateId ? $.extend(url.searchParams.getAll(),{'subCateId':  self.subCategory[subCat] }) : '';
+                        params = subCateId ? '?'+$.param(params) +  (url.hash || '') : (url.hash || '');
+
+                    window.history.replaceState('', '', location.pathname + params)
+
                     self.triggerFilterChangeEvent();
                 });
             }
@@ -338,6 +356,7 @@ var FilterLayer = (function() {
         },
 
         getDataFromFilter: function() {
+            console.log("getDataFromFilter");
             var self = this;
             var $btnFilter = self.$targetFilterButton;
             
@@ -396,14 +415,14 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 var items = self.$categorySelect.find('li input:checked');
                 items.each(function(idx, el){
-                    if(el.value && el.value.length > 0) {
+                   // if(el.value && el.value.length > 0) {
                         var tempArray = filterData[el.name];
                         if(!tempArray) {
                             tempArray = [];
                         }
                         tempArray.push(el.value);
                         filterData[el.name] = tempArray;
-                    }
+                  //  }
                 });
             }
 
@@ -418,6 +437,8 @@ var FilterLayer = (function() {
             }
 
             data["filterData"] = JSON.stringify(filterData);
+
+            console.log("filterdata %o",data)
             return data;
         },
 
@@ -659,6 +680,7 @@ var FilterLayer = (function() {
                             var findCategory = self.$categorySelect.find('input[name="'+key+'"]');
                             if(findCategory.length > 0) {
                                 findCategory.prop('checked', false);
+                                console.log('reset item %o',item)
                                 item.forEach(function(val, index) {
                                     var findInput = self.$categorySelect.find('input[name='+key+'][value="'+val+'"]');
                                     findInput.prop('checked', true);
@@ -703,6 +725,16 @@ var FilterLayer = (function() {
             if(!selectedCategory && self.$categorySelect) {
                 self.$categorySelect.find('input:eq(0)').prop('checked', true);
             }
+
+            //
+            /* BTOCSITE-2785 : 2021-07-14 add */
+            var producttarget = self.$categorySelect.find('input:checked').closest("li").data("producttarget");
+
+            var $selectedGlossary  = $('.cont_'+producttarget+'.productGlossary');
+            if($selectedGlossary.length >0) {
+                $selectedGlossary.slideDown(200);
+            }
+            /* //BTOCSITE-2785 : 2021-07-14 add */
 
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
@@ -807,6 +839,22 @@ var FilterLayer = (function() {
                 var $pa = $(findDm);
                 $pa.vcAccordion('expand',idx,false);
             });
+        },
+        getSubCategory : function() {
+            var ret = [];
+
+            if(firstFilterList) {
+                firstFilterList.forEach(function(el) {
+                    if(el.filterGroupType === 'sub_category') {
+                        el.filterValues.forEach(function(item){
+                            ret[item.filterValueId] = item.filterValueCode
+                        });
+                        return false;
+                    }
+                });
+            }
+
+            return ret;
         }
 
     }

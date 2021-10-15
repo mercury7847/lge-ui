@@ -1157,7 +1157,7 @@ h2.title {
                                             text-align: center;
                                             line-height: 2.89;
                                             &:last-child {
-                                                text-align: right;
+                                                text-align: center; //BTOCSITE-3198 211013 - 중앙 정렬로 변경
                                                 span {
                                                     padding: 0;
                                                 }
@@ -1203,7 +1203,7 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
-                            // BTOCSITE-2346 mobile 버튼 css수정 210811
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811 - S
                             .btn{
                                 @media screen and (max-width: 845px) {
                                     margin-bottom:10px;
@@ -1216,7 +1216,7 @@ h2.title {
                                     margin-left:0;
                                 }
                             }
-                             // BTOCSITE-2346 mobile 버튼 css수정 210811
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811 - E
                         }
                     }
                 }
@@ -1303,6 +1303,24 @@ h2.title {
                     dl {
                         height: 100%;
                         text-align: center;
+                        //BTOCSITE-3198 패널 선택용 - START 211014
+                        .pannel_info {
+                            display:flex;
+                            justify-content:space-between;
+                            align-items: center;
+                            dt {
+
+                            }
+                            .btn_total{
+                                width: 153px;
+                                height:32px;
+                                line-height: 7px;
+                                font-size:13px;
+                                padding:6px 10px;
+                                margin:0 2px;
+                            }
+                        }
+                        //BTOCSITE-3198 패널 선택용 - END 211014
                         dt {
                             text-align: left;
                             font-size: 18px;
@@ -1336,6 +1354,7 @@ h2.title {
                                     li {
                                         display: flex;
                                         justify-content: space-between;
+                                        flex-grow: 1;//BTOCSITE-3198
                                         &+li {
                                             margin-top: 10px;
                                         }
@@ -1389,6 +1408,39 @@ h2.title {
                                         }
                                     }
                                 }
+                                //BTOCSITE-3198 - start
+                                .pannel_list {
+                                    padding-bottom:10px;
+                                    li{
+                                        &:before {
+                                        position: relative;
+                                        content: '';
+                                        left: 0;
+                                        top: 0;
+                                        //border:1px solid #fa263e;
+                                        //border-radius: 4px;
+                                        width: 20px;
+                                        height: 20px;
+                                        background: url('/lg5-common/images/icons/btn-compare-off-24.svg');
+                                        background-size: 20px;
+                                        }
+                                    }
+                                    li.is_active {
+                                        &:before {
+                                            //background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                            background: url('/lg5-common/images/icons/btn-compare-on-24.svg');
+                                            background-size: 20px;
+                                        }
+                                    }
+                                }
+                                .sum{
+                                    display: none;
+                                    justify-content: space-between;
+                                    font-size:18px;
+                                    line-height: 1.67;
+                                    font-weight: 500;
+                                }
+                                //BTOCSITE-3198 - end
                                 .err-msg {
                                     // position: absolute;
                                     // left: 7.5%;
@@ -1813,7 +1865,9 @@ h2.title {
         // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
         &[data-model-default-code="W821AAA453"],
         &[data-model-default-code="W821AAA463"],
-        &[data-model-default-code="M620AAA351"] {
+        &[data-model-default-code="M620AAA351"],
+        &[data-model-default-code="M870AAA451"],
+        &[data-model-default-code="M870AAA452"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
                 background-size: 100% 100%;
@@ -1933,19 +1987,19 @@ h2.title {
                     &:nth-child(1) {
                         left: 36%;
                         top: 9.5%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 43.7%;
                     }
                     &:nth-child(2) {
                         left: 36%;
                         top: 55.5%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 14.3%;
                     }
                     &:nth-child(3) {
                         left: 36%;
                         top: 72.1%;
-                        width: 28.3%;
+                        width: 28.5%;
                         height: 18%;
                     }
                 }

@@ -3982,30 +3982,32 @@
         }
     }
 }
-/* BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */
-.store-counsel-banner{
-    margin-top:24px;
-    >a{
-        display:block;
-        img {
-            width:100%;
-            /* 클래스별이미지분기 */
-            &.pc{
-                display:inline-block;
-            }
-            &.mobile{
-                display:none;
-            }
-            @include mobile {
+/* BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) //BTOCSITE-6416 */
+.product-detail-info{
+    .store-counsel-banner{
+        margin-top:24px;
+        >a{
+            display:block;
+            img {
+                width:100%;
+                /* 클래스별이미지분기 */
                 &.pc{
-                    display:none;
-                }
-                &.mobile{
                     display:inline-block;
                 }
-            }
-            /* //클래스별이미지분기 */
+                &.mobile{
+                    display:none;
+                }
+                @include mobile {
+                    &.pc{
+                        display:none;
+                    }
+                    &.mobile{
+                        display:inline-block;
+                    }
+                }
+                /* //클래스별이미지분기 */
+            } 
         } 
-    } 
+    }
 }
 /* //BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */

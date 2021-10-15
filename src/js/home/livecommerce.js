@@ -124,26 +124,6 @@ var lls = {
 
         //앱 알림받기 버튼
         self.$pushBtn.on('click', function(e){
-            /*  BTOCSITE-5368 클릭 이벤트 수정
-            구독완료 , 구독취소 성공여부 
-            {
-                "status":"success",
-                "message":null,
-                "data": {
-                    "success" : "Y"
-                }
-            }
-
-
-            구독중인지 아닌지
-            {
-                "status":"success",
-                "message":null,
-                "data": {
-                    "subscribeFlag" : "Y"
-                }
-            }
-            */
             var _self = this;
 
             e.preventDefault();
@@ -220,18 +200,37 @@ var lls = {
         
                         if( click ) {
                             // param.subscribeAction = flag == "Y" ? "C" : "R";
-                            lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
-                                if( subResult.status == "success") {
-                                    var subData = subResult.data;
-                                    var currentActionName = subData.subscribeAction == "R" ? "구독 신청이" : "구독 취소가"
-                                    var currentMsg = subData.success == "Y" ? currentActionName + " 완료되었습니다." : currentActionName + " 실패하였습니다.";
-                                    lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
-                                    self.$pushContent.find('.btn-lls-push span').text(subData.subscribeAction == "R" ? "구독 취소" : "구독 신청");
-                                }
-                            });
+                            console.log(flag)
+                            if( flag == "Y" ) {
+                                lgkorUI.confirm("", {
+                                    title:"엘라쇼 알림 신청을 <br>해제 하시겠습니까?", 
+                                    okBtnName: "해제하기",
+                                    ok: function(){
+                                        lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                            if( subResult.status == "success") {
+                                                var subData = subResult.data;
+                                                var currentActionName = "엘라쇼 알림 취소가"
+                                                var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
+                                                lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                                self.$pushContent.find('.btn-lls-push span').text("알림 신청");
+                                            }
+                                        });
+                                    }
+                                })
+                            } else {
+                                lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                    if( subResult.status == "success") {
+                                        var subData = subResult.data;
+                                        var currentActionName = "엘라쇼 알림 신청이";
+                                        var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다. <br>알림 신청 시 방송일에 <br>SMS가 발송됩니다." : currentActionName + " <br>실패하였습니다.");
+                                        lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                        self.$pushContent.find('.btn-lls-push span').text("알림 취소");
+                                    }
+                                });
+                            }
 
                         } else {
-                            self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "구독 취소" : "구독 신청");
+                            self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "알림 취소" : "알림 신청");
                             self.$pushContent.show();
                         }
                     } 
