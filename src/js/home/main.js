@@ -309,59 +309,59 @@ $(function () {
         // });   
         $window.on('breakpointchange', function(e){
             var data = window.breakpoint;
-            if(data.name == 'mobile'){
-                ttttest();
+            var recomSlider01 = $('.recom-list-slide01');
+            var recomSlider02 = $('.recom-list-slide02');
+            var recomSlider01Num = recomSlider01.find('.slide-item').length
+            var recomSlider02Num = recomSlider02.find('.slide-item').length
 
-            }else if(data.name == 'pc'){
-                ttttest();
+            if(recomSlider01Num > 1){
+                if(data.name == 'mobile'){
+                    recomSliderMobile(recomSlider01);
+                }else if(data.name == 'pc'){
+                    recomSliderPC(recomSlider01);
+                }
+            }
+
+            if(recomSlider02Num > 1){
+                if(data.name == 'mobile'){
+                    recomSliderMobile(recomSlider02);
+                }else if(data.name == 'pc'){
+                    recomSliderPC(recomSlider02);
+                }
             }
         });   
 
-        function ttttest() {
-            var slider01 = $('.recom-list-slide01');
-            var slider02 = $('.recom-list-slide02');
-            slider01.each(function(i,el){
-                if($(el).find('.slide-conts').length > 1){
-                    $('.recom-list-slide01').slick({
-                        arrows: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        outerEdgeLimit: false,
-                        infinite:false,
-                        variableWidth:false,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 2,
-                                    slidesToScroll: 2,
-                                }
-                            }
-                        ]
-                    });
-                }
-              })  
-              slider02.each(function(i,el){
-                if($(el).find('.slide-conts').length > 1){
-                    $('.recom-list-slide02').slick({
-                        arrows: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        outerEdgeLimit: false,
-                        infinite:false,
-                        variableWidth:false,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 2,
-                                    slidesToScroll: 2,
-                                }
-                            }
-                        ]
-                    });
-                }
-              })
+        function recomSliderPC(slider) {
+            var slider = slider;
+            slider.slick({
+                arrows: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                outerEdgeLimit: false,
+                infinite:false,
+                variableWidth:false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                        }
+                    }
+                ]
+            });
+        }
+        function recomSliderMobile(slider) {
+            alert(1);
+            var slider = slider;
+            slider.slick({
+                arrows: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                outerEdgeLimit: false,
+                infinite:false,
+                variableWidth:false,
+            });
         }
         // BTOCSITE-2193 e           
 
