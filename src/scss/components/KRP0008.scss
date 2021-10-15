@@ -1767,6 +1767,9 @@
             &.rental-card-list,
             &.careship-card-list {
                 .select-wrap {
+                    @include mobile {
+                        max-height: 211px;
+                    }
                     &.is-selected {
                         .ui_dropdown_list {
                             display: none;
@@ -1792,6 +1795,10 @@
                             }
                             .dropdown-menu-wrap {
                                 border-top: 1px solid #ddd;
+                                @include mobile {
+                                    max-height: 420px;
+                                    padding-bottom: 40px;
+                                }
                             }
                         }
                         .select-button {
@@ -1896,7 +1903,7 @@
                             @include mobile {
                                 overflow: hidden;
                                 overflow-y: auto;
-                                max-height: 50vh;
+                                max-height: 168px;
                                 border-radius: 0 0 8px 8px;
                             }
                         }
