@@ -1048,12 +1048,12 @@
                                 'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
                                 'model_id': datalayerResult.listData[0].productList[0].modelID,					
                                 'model_sku': datalayerResult.listData[0].productList[0].productNameEN,					
-                                'category': 'nnnn',					
+                                'category': null,					
                                 'brand': 'LG',					
                                 'price': datalayerResult.payment.grandTotal,					
                                 'quantity': datalayerResult.listData[0].productList[0].orderedQuantity,					
                                 'model_gubun': datalayerResult.listData[0].productList[0].modelType,
-                                'ct_id': 'nnnn'
+                                'ct_id': null
                             }]				
                         };
 

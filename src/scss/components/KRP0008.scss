@@ -1498,6 +1498,13 @@
         .care-sibling-option {
             & > .select-info {
                 &.select-box {
+                    .ui-selectbox-wrap {
+                        &.active {
+                            .ui-selectbox-list {
+                                z-index: 52;
+                            }
+                        }
+                    }
                     .select-text {
                         .card-title {
                             font-weight: bold;
@@ -1759,7 +1766,6 @@
             //BTOCSITE-3523 - 구매, 렌탈 케어 솔루션 탭 - 제휴카드 영역
             &.rental-card-list,
             &.careship-card-list {
-                z-index: 51;
                 .select-wrap {
                     &.is-selected {
                         .ui_dropdown_list {
@@ -1773,6 +1779,7 @@
                     }
                     &.open {
                         height: auto;
+                        z-index: 51;
                         &.is-selected {
                             .cancel-item {
                                 display: block;
@@ -1869,12 +1876,15 @@
                             top: auto;
                             left: auto;
                             right: auto;
-                            padding: 14px 15px;
+                            padding: 12px 15px;
                             transform: none;
                             background: none;
                             color: #000;
                             text-align: left;
                             border-radius: 0;
+                            @include mobile {
+                                padding: 9px 15px;
+                            }
                             .tooltip-wrap {
                                 .tooltip-icon {
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
@@ -1896,11 +1906,18 @@
                         .ui_dropdown_toggle {
                             overflow: hidden;
                             position: absolute;
+                            top: 0;
                             right: 15px;
                             display: inline-block;
-                            max-width: calc(100% - 100px);
-                            height: 24px;
+                            width: calc(100% - 115px);
+                            height: 48px;
                             padding: 0 24px 0 0;
+                            text-align: right;
+                            line-height: 48px;
+                            @include mobile {
+                                height: 41px;
+                                line-height: 41px;
+                            }
                             &::after {
                                 right: 0;
                             }
@@ -3750,7 +3767,7 @@
 @import "KRP0008_popup";
 
 /* BTOCSITE-5781 제품 PDP 페이지 개선요청건 */
-.popup-icon {
+.popup-icon.popup{
     display:inline-block;
     position:relative;
     margin-left:2px;
@@ -3975,30 +3992,32 @@
         }
     }
 }
-/* BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */
-.store-counsel-banner{
-    margin-top:24px;
-    >a{
-        display:block;
-        img {
-            width:100%;
-            /* 클래스별이미지분기 */
-            &.pc{
-                display:inline-block;
-            }
-            &.mobile{
-                display:none;
-            }
-            @include mobile {
+/* BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) //BTOCSITE-6416 */
+.product-detail-info{
+    .store-counsel-banner{
+        margin-top:24px;
+        >a{
+            display:block;
+            img {
+                width:100%;
+                /* 클래스별이미지분기 */
                 &.pc{
-                    display:none;
-                }
-                &.mobile{
                     display:inline-block;
                 }
-            }
-            /* //클래스별이미지분기 */
+                &.mobile{
+                    display:none;
+                }
+                @include mobile {
+                    &.pc{
+                        display:none;
+                    }
+                    &.mobile{
+                        display:inline-block;
+                    }
+                }
+                /* //클래스별이미지분기 */
+            } 
         } 
-    } 
+    }
 }
 /* //BTOCSITE-5727 매장상담예약 노출 강화 (PDP, 햄버거메뉴) */

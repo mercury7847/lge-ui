@@ -78,6 +78,9 @@
         
         var KRP0008 = {
             init: function() {
+                // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
+                loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+                
                 var self = this;
                 //처음 로그인 체크를 하는 ajax 호출 여부
                 self.processProductBuy = null;
@@ -876,6 +879,7 @@
                     var index = data.selectedIndex;
                     var url = location.pathname;
                     var param = vcui.uri.parseQuery(location.search);
+                    var bannerStore = $('.product-detail-info .store-counsel-banner'); //BTOCSITE-6416
                     var n = 0;
                     for(key in param) {
                         if(key != "dpType") {
@@ -891,7 +895,7 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
-                        $('.store-counsel-banner').show(); //BTOCSITE-5727
+                        bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -899,7 +903,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
-                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
+                        bannerStore.hide(); //BTOCSITE-5727 //BTOCSITE-6416
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -2454,9 +2458,6 @@
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                             var data = result.data[0];
-                            //로그인
-                            loginFlag = data.loginFlag;
-                            
                             //보유멤버쉽 포인트
                             var myMembershipPoint = data.myMembershipPoint;
                             if(lgkorUI.stringToBool(loginFlag)) {

@@ -131,8 +131,10 @@
                 if(cartPrdList){
                     // // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
                     self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+                    self.cartPrd = "?cartPrdList="+cartPrdList;
                 } else {
                     self.shopUrl = "/support/visit-store-reservation?orgCode=";
+                    self.cartPrd = "";
                 }
                 // BTOCSITE-4785 e
     
@@ -668,7 +670,8 @@
                             item['id'] = item['shopID'];
                             item['info'] = false;
                             item["selected"] = false;
-                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID'] +'")' //self.detailUrl+item['shopID'];
+                            // BTOCSITE-4785
+                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID']+self.cartPrd+'")' //self.detailUrl+item['shopID'];
                             //item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
                             return item;
                         });
@@ -1260,8 +1263,8 @@
                             shopAdress: arr[i].info.shopAdress,
                             shopTelphone: arr[i].info.shopTelphone,
                             shopID: arr[i].info.shopID,
-                            detailUrl:self.detailUrl+arr[i].info.shopID,
                             // BTOCSITE-4785
+                            detailUrl:self.detailUrl+arr[i].info.shopID+self.cartPrd,
                             orgCode:self.shopUrl+arr[i].info.orgCode,
                             selected: arr[i].info.selected ? " on" : ""
                         }

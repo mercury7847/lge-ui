@@ -37,8 +37,6 @@
             vcui.require(['ui/pagination'], function () {
                 self.setting();
                 self.bindEvents();
-
-                self.checkNoData();
             });
         },
 
@@ -55,6 +53,24 @@
             self.$list = self.$section.find('ul.award-list');
             self.$noData = self.$section.find('div.no-data');
             self.$pagination = self.$section.find('.pagination').vcPagination();
+
+            // 뒤로가기시
+            self.storageName = 'storeHistory';
+
+            console.log("main %o",self.$mainTab);
+            console.log("subTab %o",self.$subTab);
+            console.log("selectOrder %o",self.$selectOrder);
+
+            // BTOCSITE-5938-21 [모니터링] 뒤로가기 
+            self.storageData = lgkorUI.getStorage(self.storageName);
+            if(!(vcui.isEmpty(self.storageData)) && self.storageData.data) {
+                console.log("캐시 storageData %o",self.storageData)
+                self.updateList(self.storageData.data,true,true);
+            } else {
+                self.checkNoData();
+            }
+
+            // self.checkNoData();
         },
 
         bindEvents: function() {
@@ -70,12 +86,16 @@
 
             self.$mainTab.on('click','li a',function(e){
                 var category1 = $(this).attr('href').replace("#","");
+
+                console.log("메인 클릭")
                 self.requestData({"superCategoryId":category1,"categoryId":"","sort":self.$selectOrder.vcSelectbox('value')}, true);
             });
 
             self.$subTab.on('click','li a',function(e){
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = $(this).attr('href').replace("#","");
+
+                console.log("sub %o %o",category1,category2)
                 self.requestData({"superCategoryId":category1,"categoryId":category2,"sort":self.$selectOrder.vcSelectbox('value')}, false);
             });
 
@@ -114,8 +134,11 @@
         },
 
         selectedTabHref: function($tabs) {
+            console.log("selectedTabHref %o",$tabs);
             if($tabs.length > 0) {
                 var index = $tabs.vcTab('getSelectIdx');
+
+                console.log("index %o",index);
                 var selectTab = $tabs.find('li:eq('+index+') a');
                 if(selectTab.length > 0) {
                     return selectTab.attr('href').replace("#","");
@@ -125,11 +148,38 @@
         },
 
         requestData: function(param, isMainTabClick) {
+
+            console.log("requestData");
             var self = this;
             var ajaxUrl = self.$section.attr('data-list-url');
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 var tempData = result.data;
                 var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : tempData;
+
+                // BTOCSITE-5938-21 [모니터링] 뒤로가기 
+
+                console.log("self.storageName set %o",self.storageName,)
+                lgkorUI.setStorage(self.storageName, { param : param, data : data }, false);
+                self.updateList(data,isMainTabClick,false);
+
+            });
+        },
+
+        updateList: function(data,isMainTabClick,store){
+            var self = this;
+            console.log("updateList  %o%o",data,isMainTabClick);
+                //뒤로가기 복원
+                if(store && self.storageData.param) {
+                    console.log("updateList cache %o%o",data,isMainTabClick);
+                    // mainTab 뒤로가기 복원
+                    var mainIdx = self.$mainTab.find('a[href="#'+self.storageData.param.superCategoryId+'"]').closest('li').index();
+                    self.$mainTab.vcTab('select',mainIdx);
+
+                    // selectOrder 뒤로가기 복원
+                    self.$selectOrder.vcSelectbox('value',self.storageData.param.sort)
+
+                }
+
                 //var param = result.param;
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
                 self.$totalCounter.text('총 '+ vcui.number.addComma(data.totalCnt) +'개');
@@ -150,8 +200,17 @@
                         $ul.append(vcui.template(subTabItemTemplate, item));
                     });
                     if(arr.length > 0) {
+                        console.log("서브 카테고리 탭 %o %o",self.storageData,self.$subTab);
                         self.$subTab.vcTab('update');
-                        self.$subTab.vcTab('select',0);
+
+                        // 뒤로가기 복원
+                        if(store && self.storageData.param) {
+                            var subIdx = self.$subTab.find('a[href="#'+self.storageData.param.categoryId+'"]').closest('li').index();
+                            self.$subTab.vcTab('select',subIdx);             
+                        } else {
+                            self.$subTab.vcTab('select',0);
+                        }
+                      
                         self.$subTab.parents('.tabs-bg').show();
                         self.$subTab.vcSmoothScroll('refresh');
                     } else {
@@ -182,7 +241,6 @@
                 });
 
                 self.checkNoData();
-            });
         },
         
         checkNoData: function() {
