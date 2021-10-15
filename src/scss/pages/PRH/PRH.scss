@@ -785,7 +785,7 @@
         }
         &.text-white {
             color:#fff;
-            .text-detail-title, .text-detail-desc{
+            .text-detail-title, .text-detail-desc, .text-info-etc{
                 color:#fff;
             }
         }
@@ -797,18 +797,30 @@
         }
     }
     .text-detail {
+        @include mobile {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
         &-title {
+            @include font(56px, 1.32);
             color: #fff;
             font-weight: 700;
-            @include font(56px, 1.32);
-            h2{
-                @include font(56px, 1.32);
+            @include mobile{
+                font-size: 25px;
+                line-height: 1.4;
             }
             .logo, img {
                 float: none;
                 width: 245px;
                 padding: 0;
                 margin-top: -10px;
+                @include mobile {
+                    width: 123.5px;
+                    height:22.65px;
+                }
             }
         }
         &-desc {
@@ -816,34 +828,30 @@
             color: #fff;
             font-weight: 700;
             @include font($font-large-1, 1.5);
+            @include mobile {
+                margin-top: 10px;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 1.53;
+            }
             .logo {
                 float: none;
                 width: 90px;
                 padding: 0;
             }
         }
-        
+    }
+    .text-info-etc{
+        font-size:12px;
+        position:absolute;
+        right: 158px;
+        bottom: 47px;
         @include mobile {
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            .text-detail-title {
-                font-size: 25px;
-                line-height: 35px;
-                .logo,img {
-                    width: 124px;
-                    height: 23px;
-                    margin-top: -4px;
-                }
-            }
-            .text-detail-desc {
-                margin-top: 10px;
-                font-weight: 400;
-                font-size: 15px;
-                line-height: 22px;
-            }
+            right:auto;
+            left: 9px;
+            bottom:32px;
+            text-align: left;
+            width: 75%;
         }
     }
 }
