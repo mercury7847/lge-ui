@@ -1088,7 +1088,7 @@
                 item.isShow = lgkorUI.isShowDate('20210601','20211001'); //(startTime, endTime, nowTime)
 
                 /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
-                item.isShowLotteCard = lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00
+                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
                 
                 return vcui.template(productItemTemplate, item);
             },
