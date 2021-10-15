@@ -1876,7 +1876,7 @@
                             top: auto;
                             left: auto;
                             right: auto;
-                            padding: 14px 15px;
+                            padding: 12px 15px;
                             transform: none;
                             background: none;
                             color: #000;
@@ -1910,10 +1910,10 @@
                             right: 15px;
                             display: inline-block;
                             width: calc(100% - 115px);
-                            height: 52px;
+                            height: 48px;
                             padding: 0 24px 0 0;
                             text-align: right;
-                            line-height: 52px;
+                            line-height: 48px;
                             @include mobile {
                                 height: 41px;
                                 line-height: 41px;
