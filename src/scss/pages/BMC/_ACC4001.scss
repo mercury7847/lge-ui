@@ -336,7 +336,7 @@
         padding:0 0 120px;
         max-width:100%;
         @include mobile{
-            padding:40px 0;
+            padding:0 0 40px;
         }
         .section-wrap{
             .sects{
@@ -349,6 +349,7 @@
                     }
                     @include mobile{
                         margin-top:60px;
+                        padding-bottom:16px;
                     }
                 }
                 .section-inner{
@@ -363,7 +364,8 @@
                 @include mobile{
                     margin:0 -16px;
                     height:160px;
-                    background:url('/lg5-common/images/BMC/img-mem-bene-vip-m.jpg') no-repeat 0 0;
+                    background-image:url('/lg5-common/images/BMC/img-mem-bene-vip-m.png');
+                    background-size:cover;
                 }
                 .cont{
                     display:flex;
@@ -467,6 +469,7 @@
                     @include mobile{
                         &.tit-wrap.align-center{
                             border-bottom:1px solid #000;
+                            padding-bottom:12px;
                         }
                     }
                     h2{
@@ -511,14 +514,80 @@
             }
             .section-inner{
                 &.mo-only-acc{
+                    @include pc{
+                        tbody{
+                            th{
+                                border-bottom:1px solid #ddd;
+                                font-size:16px;
+                                font-weight:400;
+                                line-height:26px;
+                            }
+                        }
+                        .tb-clone{
+                            display:none;
+                        }
+                    }
                     @include mobile{
                         display:none;
                     }
                     &.on{
                         @include mobile{
                             display:block;
-                            .tb_row table thead th{
-                                border-top:1px solid #000;
+                            .vertical-fixed{
+                                position:relative;
+                                margin:0 -16px 0 0;
+                                padding:0;
+                                overflow:hidden;
+                                .tb_row{
+                                    border-top:1px solid #000;
+                                    overflow:auto;
+                                    table{
+                                        thead{
+                                            th{
+                                                border-top:0;
+                                            }
+                                        }
+                                        tbody{
+                                            th{
+                                                padding:10px 8px;
+                                                font-size:14px;
+                                                font-weight:400;
+                                                line-height:21px;
+                                            }
+                                            .fixed-side{
+                                                border-bottom:1px solid #ddd;
+                                            }
+                                        }
+                                    }
+                                }
+                                .tb-clone{
+                                    position:absolute;
+                                    top:1px;
+                                    left:0;
+                                    pointer-events:none;
+                                    th{
+                                        visibility:hidden;
+                                        background:#fff;
+                                    }
+                                    td{
+                                        visibility:hidden;
+                                        border-color:transparent;
+                                    }
+                                    .fixed-side{
+                                        visibility:visible;
+                                        border-right:1px solid #ddd;
+                                        font-size:14px;
+                                        font-weight:400;
+                                    }
+                                    thead{
+                                        .fixed-side{
+                                            background:#f4f4f4;
+                                        }
+                                        th{
+                                            border-left:0;
+                                        }
+                                    }
+                                }
                             }
                         }   
                     }
@@ -600,7 +669,7 @@
                     &.offline{
                         dt{
                             @include mobile{
-                                margin-top:65px;
+                                margin-top:55px;
                             }
                             &:before{
                                 top:-10px; 
@@ -736,7 +805,7 @@
                             line-height:24px;
                         }
                         +.section-inner{
-                            padding-top:25px;
+                            padding-top:8px;
                         }
                     }
                     .app-down{
