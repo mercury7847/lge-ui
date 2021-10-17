@@ -2880,7 +2880,7 @@
         .icon{
             &-#{$name}{
                 background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
-                @at-root .menu-item.on .icon-#{$name}{
+                @at-root .menu-item.on .icon-#{$name}, .menu-item:hover .icon-#{$name}{
                     background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
                 }
             }
