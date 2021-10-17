@@ -43,7 +43,7 @@
             self.$searchPopup = $('#popupSearchMachine');
             self.$searchSticky = self.$searchPopup.find('.search-sticky-wrap');
             self.$searchSelect = self.$searchSticky.find('.ui_selectbox');
-            self.$btnInputDel = self.$searchSticky.find('.btn-delete');
+            self.$searchDel = self.$searchSticky.find('.btn-delete');
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
             self.$pagination = self.$searchPopup.find('.pagination').vcPagination();
@@ -101,7 +101,7 @@
 
 
             //검색팝업: 검색어 삭제
-            self.$btnInputDel.on('click', function(e){
+            self.$searchDel.on('click', function(e){
                 self.$searchInput.val('');
             })
 
@@ -125,6 +125,15 @@
 
                 if( e.keyCode == 13) {
                     self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
+                }
+            })
+
+            self.$searchInput.on('input', function(e){
+                var searchKeyword = self.$searchInput.val();
+                if( searchKeyword.length > 0 ){
+                    self.$searchDel.show();
+                } else {
+                    self.$searchDel.hide();
                 }
             })
 
