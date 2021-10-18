@@ -4317,7 +4317,7 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.show();
+            $quickbuy.hide(); //BTOCSITE-5790 add 전자랜드용 구매하기 제외 - 2021-10-18
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
@@ -4906,7 +4906,7 @@
                     modelCheckdone();
                     let $this = $(".simul_wrap .model_set_wrap[data-model-editing='Y']");
                     let idx = $this.index();
-                    let modelCate = $this.attr("data-model-cate");                        
+                    let modelCate = $this.attr("data-model-cate");
                     let defaultModel = $this.attr("data-model_code");
                     let defaultPrice = $this.attr("data-model-price");
                     let modelName = $this.find(".model_name").text();
