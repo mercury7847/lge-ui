@@ -341,7 +341,7 @@
         .section-wrap{
             .sects{
                 margin:0 auto;
-                max-width:1460px;
+                max-width:1380px;
                 .tit-wrap{
                     margin-top:100px;
                     &:first-child{
@@ -408,18 +408,21 @@
                 }
             }
             .vip-as-guide{
-                margin:0 -16px;
-                padding:0 32px;
-                overflow-x:auto;
+                @include mobile{
+                    margin:0 -16px;
+                    padding:0 32px;
+                    overflow-x:auto;
+                }
                 >ul{
                     display:table;
-                    margin-left:-25px;
-                    padding-right:16px;
                     table-layout:fixed;
+                    margin-left:-25px;
                     height:100%;
+                    @include mobile{
+                        padding-right:16px;
+                    }
                     >li{
                         display:table-cell;
-                        margin-left:25px;
                         width:20%;
                         @include mobile{
                             width:203px;
@@ -577,7 +580,6 @@
                                         visibility:visible;
                                         border-right:1px solid #ddd;
                                         font-size:14px;
-                                        font-weight:400;
                                     }
                                     thead{
                                         .fixed-side{
