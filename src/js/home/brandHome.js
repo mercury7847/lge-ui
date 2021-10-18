@@ -242,6 +242,7 @@
         },
         appSmartTab: {
             //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드
+            prevSlidesToShow: 0,
             slideConfig : {
                 infinite: false,                
                 slidesToShow: 7,
@@ -275,13 +276,16 @@
             },
             reinit: function(){
                 var tabs = this;
-                // thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition')
+                thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition')
             },
             load: function(){
-                if( thinQMain.$appTabMenu.hasClass('slick-initialized') ) {
-                    //this.reinit();
+                var tabs = this;
+                
+                if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
+                    this.reinit();
                 } else {
                     this.init();
+                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
                 }
             },
             destroy: function(){
