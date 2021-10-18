@@ -757,9 +757,12 @@ $(function () {
             var allHeight = 0;
 
             var renderVideo = function(index) {
-                $(this).find('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > .video').each(function () {
-                    updateVideo(this, index);
-                });
+                $(this).find('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > video').each(function() {
+                    // 이미 생성된 비디오 요소 옵저브
+                    this.muted = true
+                    this.parentElement.classList.add('video')
+                    sceneIO.observe(this)
+                })
             }
 
             $scenes.each(function(i) {
