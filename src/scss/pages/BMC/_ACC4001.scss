@@ -568,6 +568,9 @@
                                         margin-left:12px;
                                         width:191px;
                                     }
+                                    .info-cont{
+                                        height:100%;
+                                    }
                                     dt{
                                         font-size:22px;
                                         font-weight:700;
@@ -580,6 +583,11 @@
                                         margin-top:6px;
                                         img{
                                             width:140px;
+                                            height:140px;
+                                            @include mobile{
+                                                width:128px;
+                                                height:128px;
+                                            }
                                         }
                                         p{
                                             margin-top:6px;
