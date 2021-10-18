@@ -1795,10 +1795,6 @@
                             }
                             .dropdown-menu-wrap {
                                 border-top: 1px solid #ddd;
-                                @include mobile {
-                                    max-height: 420px;
-                                    padding-bottom: 40px;
-                                }
                             }
                         }
                         .select-button {
@@ -1806,8 +1802,12 @@
                             border-radius: 8px 8px 0 0;
                             @include mobile {
                                 border-radius: 8px;
+                                .dropdown-menu-wrap {
+                                    max-height: 256px;
+                                    padding-bottom: 40px;
+                                }
                             }
-                          .selectbox-list {
+                            .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
