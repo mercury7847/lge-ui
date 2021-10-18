@@ -2682,14 +2682,15 @@
     // 연동기기 찾기 배너 
     .search-banner-wrap{
         height: 80px;
-        max-width: 1380px;
-        background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
-        margin:100px auto 0;
+        // max-width: 1380px;
+        width: 100%;
+        background-color: #8c929a;
+        // background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
         @include mobile{
-            height: 120px;
-            background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
+            height: 70.5px;
+            background-color: #8c929a;
+            // background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
             background-size: 100% auto;
-            margin:60px 16px 0;
         }
         > button{
             display: flex;
@@ -2702,15 +2703,34 @@
                 line-height: 1.5;
                 font-weight: 500;
                 position:relative;
-                &:after{
+                color:#fff;
+                &:before{
                     content:'';
                     display:inline-block;
-                    width: 20px;
-                    height: 20px;
-                    background:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg') no-repeat 0 0;
+                    width: 32px;
+                    height: 32px;
+                    background:url('/lg5-common/images/PRH/app/icon/ic_app.png') no-repeat 0 0;
                     background-size:100% 100%;
                     position: absolute;
-                    top:5px;
+                    left: -30px;
+                    top: 1px;
+                    @include mobile { 
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+                &:after{
+                    display:inline-block;
+                    content: '';
+                    width: 9px;
+                    height: 9px;
+                    border-top: 2px solid #fff;
+                    border-right: 2px solid #fff;
+                    display: inline-block;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: 9px;
+                    right: -15px;
                 }
             }
         }
@@ -2829,7 +2849,7 @@
     }
     
     .search-banner-wrap + .download-guide-slide{
-        margin-top: 100px;
+        margin-top: 120px;
         @include mobile{
             margin-top: 60px;
         }
