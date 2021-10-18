@@ -4572,7 +4572,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ // 210805 BTOCSITE-3487 전자랜드 추가
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' ){ // 210805 BTOCSITE-3487 전자랜드 추가 -> 21-10-18 전자랜드 제거
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
