@@ -4449,6 +4449,7 @@
                 totalPannelSumPrice += parseInt(minusComma($(this).attr('data-model-price')));
             });
             $(".product_price .total_price em").text(addComma(totalPannelSumPrice));
+            $(".total_result_price .cont .price em").text(addComma(totalPannelSumPrice));
             console.log("후"+totalPannelSumPrice);
         }
 
@@ -4458,7 +4459,6 @@
                 $(this).removeClass("border");
                 $('.myPick').addClass("border");
             } else {
-                $('.myPick').removeClass("border");
                 $(this).addClass("border");
             }
 
@@ -4488,50 +4488,6 @@
                 saveInfo.push(doorMix);
             });
             if ($(".simul_wrap .model_set_wrap[data-model-editing='Y']").attr("data-model-completed") == "Y") {
-                var obj = {
-                    title: '',
-                    typeClass: '',
-                    cancelBtnName: '',
-                    okBtnName: '',
-                    ok: function() {
-                        // console.log("saveInfo", saveInfo);
-                        myPickSave(saveInfo);
-                        //210719 BTOCSITE-2346 CASE별 분기 처리 - S
-                        if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
-                            modelSimulator.mobileStep(".simul_step3");
-                        } else {
-                            modelSimulator.mobileStep(".simul_step3");
-                        }
-                        //210719 BTOCSITE-2346 CASE별 분기 처리 - E
-                        setTimeout(function() {
-                            $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-                        }, 500);
-                    }
-                };
-                var desc = '';
-
-                /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
-                if($objContent.attr('data-page-type') === 'COMMON') {
-                    obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    let popLoginCheck = $("meta[name='login']").attr("content");
-                    // console.log("popLoginCheck", popLoginCheck);
-                    if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
-                        desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
-                    } else {
-                        desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
-                    }
-                    lgkorUI.confirm(desc, obj);
-                }
-                /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
-                /* BTOCSITE-1582 */
-                //var $objContent = $('.model_experience');
-                if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
-                    modelSimulator.mobileStep(".simul_step3");
-                } else {
-                    modelSimulator.mobileStep(".simul_step3");    
-                }
-                /* //BTOCSITE-1582 */
-                
                 modelSimulator.pannelCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
@@ -6318,7 +6274,7 @@
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
-            let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : location.protocol+'//'+location.host; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
+            //let domain = location.host.indexOf('wwwdev50') !== -1 ? location.protocol+'//wwwstg.lge.co.kr' : location.protocol+'//'+location.host; // 패널 교체 배너 url 개발 서버에 없어서 스테이지 url로 변경
             
             priceArry.push(defaultModel);                            
             
@@ -6389,13 +6345,13 @@
             }, 100);
             resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
-            setTimeout(function() {
-                let totalSumPrice = 0;
-                $(".total_price_info_body .swiper-wrapper .swiper-slide").each(function() {
-                    totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price .total_price em").text()));
-                });
-                $(".total_result_price .price em").text(addComma(totalSumPrice));
-            }, 100);
+            // setTimeout(function() {
+            //     let totalSumPrice = 0;
+            //     $(".total_price_info_body .swiper-wrapper .swiper-slide").each(function() {
+            //         totalSumPrice += parseInt(minusComma($(this).find(".sum .product_price .total_price em").text()));
+            //     });
+            //     $(".total_result_price .price em").text(addComma(totalSumPrice));
+            // }, 100);
 
         },        
 

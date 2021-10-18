@@ -1036,9 +1036,6 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
-                            @media screen and (max-width:1140px) {
-                                
-                            }
                             @include mobile {
                                 padding: 20px 15px;
                                 display: flex;
