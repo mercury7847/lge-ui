@@ -4317,7 +4317,7 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.hide(); //BTOCSITE-5790 add 전자랜드용 구매하기 제외 - 2021-10-18
+            $quickbuy.show();
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
