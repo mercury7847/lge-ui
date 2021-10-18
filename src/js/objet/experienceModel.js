@@ -4618,7 +4618,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' ){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -7172,7 +7172,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
