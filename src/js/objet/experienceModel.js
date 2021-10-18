@@ -4317,7 +4317,7 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.show();
+            $quickbuy.hide();
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
