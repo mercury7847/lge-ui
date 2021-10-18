@@ -43,7 +43,7 @@ var rankBuyProductTmpl =
     '                 <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                 <div class="product-info">\n'+
     '                      <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
-    '                      <div class="price">{{#if obj.price > 0}}{{vcui.number.addComma(obj.price)}}<em>원</em>{{/if}}</div>\n'+
+    '                      <div class="price">{{#if obj.totalPrice > 0}}{{ vcui.number.addComma(obj.totalPrice == obj.obsOriginalPrice ? obj.obsOriginalPrice : obj.totalPrice) }}<em>원{{/if}}</em></div>\n'+
     '                 </div>\n'+
     '             </a>\n'+
     '         </div>\n'+
@@ -55,7 +55,7 @@ var rankBuyProductTmpl =
     '                  <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                  <div class="product-info">\n'+
     '                      <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
-    '                      <div class="price">{{#if obj.price > 0}}{{vcui.number.addComma(obj.price)}}<em>원</em>{{/if}}</div>\n'+
+    '                      <div class="price">{{#if obj.totalPrice > 0}}{{ vcui.number.addComma(obj.totalPrice == obj.obsOriginalPrice ? obj.obsOriginalPrice : obj.totalPrice) }}<em>원{{/if}}</em></div>\n'+
     '                  </div>\n'+
     '                  </a>\n'+
     '              </li>\n'+
@@ -823,21 +823,21 @@ $(function(){
 
         //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
         function buyProductInit(cate) {
-            var $buyProdect = $context.find('.module-box.module-buy-product .tabs-wrap')
-            $buyProdect.find('.tabs').empty().html(vcui.template(buyProductTabTmpl, {list:cate}));
-            $buyProdect.on('tabbeforechange tabinit', function(e, data){
+            var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
+            $buyProduct.find('.tabs').empty().html(vcui.template(buyProductTabTmpl, {list:cate}));
+            $buyProduct.on('tabbeforechange tabinit', function(e, data){
                 // 탭 이벤트 분기
                 switch(e.type) {
                     case "tabinit" : 
                     console.log("tabinit %o",data);
                         // 탭초기화시 탭선택
                         var idx = Math.floor(Math.random() * cate.length || 0);
-                            $buyProdect.vcTab('select',idx).vcSmoothScroll('scrollToActive');	
+                            $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');	
                     break;
                     default : 
                         // 탭이동 이벤트
                         var idx = data.selectedIndex;
-                        var superCategoryId = $buyProdect.find('.tabs li a').eq(idx).data("category");
+                        var superCategoryId = $buyProduct.find('.tabs li a').eq(idx).data("category");
                             console.log("tabbeforechange %o",idx);
                             buildRankBuyProduct({
                                 superCategoryId : superCategoryId
@@ -845,7 +845,7 @@ $(function(){
                     break;
                 }
             }).vcTab();
-            $buyProdect.vcSmoothScroll('refresh');	
+            $buyProduct.vcSmoothScroll('refresh');	
         }
 
 
@@ -857,6 +857,16 @@ $(function(){
                 var data = result.products;
                     data = data.slice(0,5); // rank 5위까지 가져옴
                     data = vcui.array.map(data, function(item, index){
+                        item['modelGubunName'] =  item['modelGubun'];
+                        item['obsOriginalPrice'] = parseInt(item['obsOriginalPrice'] || 0);
+                        item['obsMemberPrice']   = parseInt(item['obsMemberPrice'] || 0);
+                        item['obsDiscountPrice'] = parseInt(item['obsDiscountPrice'] || 0);
+                        // item['totalPrice'] = item['obsOriginalPrice'] - item['obsMemberPrice'] - item['obsDiscountPrice'];
+                        item['totalPrice'] = item['price'];
+    
+                        // item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
+
+
                         item.ecProduct = JSON.stringify(getEcProduct(item));
                         return item;
                     });
