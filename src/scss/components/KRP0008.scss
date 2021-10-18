@@ -1767,9 +1767,6 @@
             &.rental-card-list,
             &.careship-card-list {
                 .select-wrap {
-                    @include mobile {
-                        max-height: 211px;
-                    }
                     &.is-selected {
                         .ui_dropdown_list {
                             display: none;
