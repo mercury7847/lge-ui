@@ -551,6 +551,7 @@
                             >li{
                                 display:table-cell;
                                 width:20%;
+                                height:100%;
                                 @include mobile{
                                     width:203px;
                                 }
