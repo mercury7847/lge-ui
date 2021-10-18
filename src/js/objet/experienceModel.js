@@ -4317,7 +4317,7 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.hide();
+            $quickbuy.show();
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
@@ -4572,7 +4572,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' ){ // 210805 BTOCSITE-3487 전자랜드 추가 -> 21-10-18 전자랜드 제거
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ // 210805 BTOCSITE-3487 전자랜드 추가
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
@@ -4618,7 +4618,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' ){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -7172,7 +7172,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
