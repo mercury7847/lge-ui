@@ -1,0 +1,35 @@
+{
+    "data": {
+        "product": [
+            {
+                "modelDisplay": " - 드럼_세탁기",
+                "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "modelName": "W16EG",
+                "mediumImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "modelId": "MD08745930",
+                "smallImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "orgProdModelCd": "F24EJT.AKOR",
+                "modelCd": "F24EJT.AKOR",
+                "packageModelCode": "W16EG.AKOR",
+                "prodModelCd": "F24EJT",
+                "modelDisplayName": "LG 오브제컬렉션 워시타워"
+            },
+            {
+                "modelDisplay": " - 건조기",
+                "largeImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "modelName": "W16EG",
+                "mediumImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "modelId": "MD08745930",
+                "smallImageAddr": "/lg5-common/images/dummy/@img-product2.jpg",
+                "orgProdModelCd": "RH16GJT.AKOR",
+                "modelCd": "RH16GJT.AKOR",
+                "packageModelCode": "W16EG.AKOR",
+                "prodModelCd": "RH16GJT",
+                "modelDisplayName": "LG 오브제컬렉션 워시타워"
+            }
+        ],
+        "modelPackageFlag": "Y"
+    },
+    "message": null,
+    "status": "success"
+}
