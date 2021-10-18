@@ -309,31 +309,51 @@ $(function () {
         // });   
         $window.on('breakpointchange', function(e){
             var data = window.breakpoint;
+
             var recomSlider01 = $('.recom-list-slide01');
             var recomSlider02 = $('.recom-list-slide02');
-            var recomSlider01Num = recomSlider01.find('.slide-item').length
-            var recomSlider02Num = recomSlider02.find('.slide-item').length
+            var recomSlider03 = $('.recom-list-slide03');
+
+            var recomSlider01Num = recomSlider01.find('.slide-item').length;
+            var recomSlider02Num = recomSlider02.find('.slide-item').length;
+            var recomSlider03Num = recomSlider03.find('.slide-item').length;
 
             if(recomSlider01Num > 1){
-                recomSliderPC(recomSlider01);
-                // if(data.name == 'mobile'){
-                //     recomSliderPC(recomSlider01);
-                // }else if(data.name == 'pc'){
-                //     recomSliderPC(recomSlider01);
-                // }
+                recomSlider(recomSlider01);
+            }
+            if(recomSlider02Num > 1){
+                recomSlider(recomSlider02);
+            }
+            if(recomSlider03Num > 1){
+                recomSlider(recomSlider03);
             }
 
-            if(recomSlider02Num > 1){
-                recomSliderPC(recomSlider02);
-                // if(data.name == 'mobile'){
-                //     recomSliderPC(recomSlider02);
-                // }else if(data.name == 'pc'){
-                //     recomSliderPC(recomSlider02);
-                // }
-            }
+            $('.membership-type-slide').slick({
+                arrows: false,
+                dots: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite:false,
+                variableWidth:false,
+                outerEdgeLimit: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
+                        }
+                    }
+                ]
+            });
         });   
 
-        function recomSliderPC(slider) {
+        function recomSlider(slider) {
             var slider = slider;
             slider.slick({
                 arrows: true,
@@ -359,18 +379,7 @@ $(function () {
                 ]
             });
         }
-        // function recomSliderMobile(slider) {
-        //     var slider = slider;
-        //     slider.slick({
-        //         dots: false,
-        //         arrows:false,
-        //         slidesToShow: 1,
-        //         slidesToScroll: 1,
-        //         infinite:false,
-        //         variableWidth:true,
-        //         outerEdgeLimit: true
-        //     });
-        // }
+
         // BTOCSITE-2193 e           
 
 
