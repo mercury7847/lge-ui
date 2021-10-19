@@ -1039,10 +1039,25 @@
                 if( datalayerResult != null) {
                     //console.log("datalayerResult", datalayerResult);
                     if(typeof dataLayer !== 'undefined' && dataLayer) {
+                        
+                        var orderProdutID = datalayerResult.listData[0].orderNumber;
+                        var orderRentalId = datalayerResult.listData[0].requestNo;
+                        
+                        function getOrderID(datalayerResult){
+                            if( orderProdutID == "" || orderProdutID == undefined) {
+                                return "ORD-" + orderRentalId
+                            } else {
+                                return "ORD-" + orderProdutID
+                            }
+                        }
+
+                        //console.log("구매제품", orderProdutID);
+                        //console.log("렌탈제품", orderRentalId);
+
                         var pushDataEvent = {				
                             'event': 'refund',				
                             'actionField': {
-                                'order_id' : datalayerResult.listData[0].orderNumber
+                                'order_id' : getOrderID(datalayerResult)
                             },				
                             'products': [{
                                 'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
@@ -1064,7 +1079,7 @@
                 //console.log("3")
                 datalayerResult = null;
 
-                cancelOk();
+                //cancelOk();
             }
         });
         //console.log("2")
