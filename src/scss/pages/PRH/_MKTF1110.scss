@@ -3109,15 +3109,16 @@
         border-bottom:1px solid #dddddd;
         > li{
             width: 50%;
-            display:block;
+            display: flex;
             overflow:hidden;
+            align-items: flex-start;
             margin-top: 24px;
             @include mobile {
+                align-items: center;
                 width: 100%;
                 margin-top: 16px;
             }
             .icon-wrap {
-                float:left;
                 width: 120px;
                 height: 120px;
                 background-color: #f4f4f4;
@@ -3132,14 +3133,16 @@
                 }
             }
             .text{
-                margin-left:144px;
+                flex:1;
+                padding:0 24px;
                 @include mobile{
-                    margin-left:121px;
+                    padding:16px;
                 }
                 .name{
                     font-size: 16px;
                     font-weight: 800;
                     line-height: 1.63;
+                    word-break:break-word;
                 }
                 .serial-num{
                     display: block;
