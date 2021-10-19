@@ -12,91 +12,91 @@
             {
                 "imgName" : "kimchi_refrigerator",
                 "categoryName" : "김치냉장고",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 김치냉장고",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "dishwasher",
                 "categoryName" : "식기세척기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 식기세척기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "oven",
                 "categoryName" : "오븐",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 오븐",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "cooktop",
                 "categoryName" : "전기레인지",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 전기레인지",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "winecellar",
                 "categoryName" : "와인셀러",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 와인셀러",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "waterpurifier",
                 "categoryName" : "정수기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 정수기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "homebrew",
                 "categoryName" : "맥주제조기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 맥주제조기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "drum_washer",
                 "categoryName" : "세탁기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 세탁기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "dryer",
                 "categoryName" : "의류건조기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 의류건조기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "styler",
                 "categoryName" : "스타일러",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 스타일러",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "stickcleaner",
                 "categoryName" : "청소기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 청소기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "stand_airconditioner",
                 "categoryName" : "에어컨",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 에어컨",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "airpurifier",
                 "categoryName" : "공기청정기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 공기청정기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "dehumidifier",
                 "categoryName" : "제습기",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 제습기",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "ceilingfan",
                 "categoryName" : "실링팬",
-                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelName": "LG 디오스 오브제컬렉션 실링팬",
                 "modelId": "MASDA123012309"
             }
         ],
