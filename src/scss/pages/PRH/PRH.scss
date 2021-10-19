@@ -724,8 +724,23 @@
         &.hero-banner{
             .custom-indi-wrap {
                 bottom: 20px;
-                right: 17.5px;
-                left: 17.5px;
+                left: 0;
+                right: 0;
+                max-width: 1410px;
+                @include mobile {
+                    left: 0;
+                    right: 0;
+                    padding-right: 17.5px;
+                    padding-left: 17.5px;
+                }
+                .custom-indis{
+                    margin:0
+                }
+                .indi-control{
+                    @include mobile {
+                        right:17.5px;
+                    }
+                }
             }
             .bar{
                 text-indent: -9999px;
@@ -743,6 +758,9 @@
                 }
             }
         }
+        .custom-indi-wrap{
+            width: 100%;
+        }
     }
     .slide-conts {
         width: 1920px;
@@ -758,6 +776,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             max-width: none;
             width: 100%;
@@ -772,6 +791,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             max-width: none;
             background-position: center center;
@@ -888,6 +908,7 @@
         position:absolute;
         left:50%;
         bottom: 47px;
+        -ms-transform: translate(-50%, 0%);
         transform: translate(-50%, 0%);
         width: 100%;
         max-width: 1410px;
@@ -895,21 +916,22 @@
         margin: 0 auto;
         font-size:12px;
         padding-right:64px;
-        justify-content: end;
+        justify-content: flex-end;
         @media screen and (max-width: 1475px){
-            padding-right:100px;
+            padding-right:73px;
         }
-
         @include mobile {
             right:auto;
             left: 17.5px;
             bottom:32px;
+            -ms-transform: initial;
             transform: initial;
             font-size:11px;
             font-weight: 400;
-            justify-content: start;
+            justify-content: flex-start;
             text-align:left;
             line-height: 1.73;
+            padding-right:0;
             
         }
     }
