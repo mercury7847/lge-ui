@@ -618,8 +618,7 @@
                 }
 
                 .list-header {
-                    padding-right:70px;
-
+                    padding-right:60px; //BTOCSITE-7016
                     .list-tit {
                         color:rgba(255,255,255,0.6);
                         // color:#fff;
@@ -669,10 +668,14 @@
                         .list-tit {
                             font-size:26px;
                         }
+                        /* BTOCSITE-7016 */
                         .btn-list-toggle {
-                            width:40px;
-                            height:40px;
+                            &:after{
+                                width:40px;
+                                height:40px;
+                            }
                         }
+                        /* //BTOCSITE-7016 */
                     }
                     ul {
                         width:295px;
