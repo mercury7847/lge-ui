@@ -4955,7 +4955,6 @@
                     plChk.each(function() {
                         if (!$(this).hasClass("sum")) {
                             $(this).attr("data-default-code");
-    
                             //BTOCSITE-4239 210910 변경
                             if($('.model_experience').attr('data-page-type') === 'COMMON') {
                             purchaseData.push($(this).attr("data-default-code"));
