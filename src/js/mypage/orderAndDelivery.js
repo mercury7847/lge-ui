@@ -1079,7 +1079,7 @@
                 //console.log("3")
                 datalayerResult = null;
 
-                //cancelOk();
+                cancelOk();
             }
         });
         //console.log("2")
