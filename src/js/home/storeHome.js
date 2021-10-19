@@ -40,7 +40,7 @@ var rankBuyProductTmpl =
     '         <div class="best">\n'+
     '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
     '                 <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
-    '                 <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '                 <div class="img"><img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                 <div class="product-info">\n'+
     '                      <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
     '                      <div class="price">{{#if obj.totalPrice > 0}}{{ vcui.number.addComma(obj.totalPrice == obj.obsOriginalPrice ? obj.obsOriginalPrice : obj.totalPrice) }}<em>원{{/if}}</em></div>\n'+
