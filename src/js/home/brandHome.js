@@ -275,14 +275,12 @@
                 }
             },
             reinit: function(){
-                var tabs = this;
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition')
             },
             load: function(){
-                var tabs = this;
-                
                 if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
                     this.reinit();
+                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
                 } else {
                     this.init();
                     this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
