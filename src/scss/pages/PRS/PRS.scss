@@ -246,6 +246,7 @@
 		}
 	}
 	.module-box {
+		position:relative;
 		max-width:1460px;
 		margin:120px auto 0;
 		padding:0 40px;
@@ -496,7 +497,6 @@
 			}
 
 			.tooltip-wrap {
-				position: relative;
 				margin-top: -5px;
 				vertical-align: middle;
 			}
