@@ -1,6 +1,32 @@
 // LG ThinQ
 .thinq-main {}
 
+.pc-only {
+    display: block !important;
+    @include mobile {
+        display: none !important;
+    }
+}
+.mo-only {
+    display: none !important;
+    @include mobile {
+        display: block !important;
+    }
+}
+
+.pc-only-ib {
+    display: inline-block !important;
+    @include mobile {
+        display: none !important;
+    }
+}
+.mo-only-ib {
+    display: none !important;
+    @include mobile {
+        display: inline-block !important;
+    }
+}
+
 // .thinq-hero {
 //     [class*="scene"] {
 //         .image.blur {
@@ -2445,24 +2471,24 @@
 // BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
 @import "../../modules/slick";
 // ThinQ > APP 탭 section
-.app-tab-section{
+.app-tab-section {
     // 비주얼 이미지 
-    .visual-img-solo{
+    .visual-img-solo {
         width: 100%;
-        img{width: 100%;}
-        .mobile-only{ display: none;}
-        @include mobile{
-            .pc-only{display:none}
-            .mobile-only{display:block;}
+        img {width: 100%;}
+        .mobile-only { display: none;}
+        @include mobile {
+            .pc-only {display:none}
+            .mobile-only {display:block;}
         }
     }
     // 탭 영역
-    .app-tab-area{
+    .app-tab-area {
         position:relative;
-        @include mobile{
+        @include mobile {
             padding:0;
         }
-        .white-dimmed{
+        .white-dimmed {
             position:absolute;
             right:85.5px;
             top:0;
@@ -2473,7 +2499,7 @@
             z-index: 10;
         }
         // 탭메뉴 nav
-        .menu-slide-block{
+        .menu-slide-block {
             background-color: #fff;
             padding:48px 40px;
             position: absolute;
@@ -2484,14 +2510,14 @@
             @include mobile {
                 padding:25px 16px 24px;
             }
-            .menu-slide-inner{
+            .menu-slide-inner {
                 display: flex;
                 align-items: flex-start;
                 position: relative;
                 max-width: 1380px;
                 margin:0 auto;
             }
-            .menu-slide-nav{
+            .menu-slide-nav {
                 flex:1;
                 overflow:hidden;
                 margin-right:32px;
@@ -2526,7 +2552,7 @@
                     }
                 }
 
-                .menu-item{
+                .menu-item {
                     position: relative;
                     display: inline-block;
                     width: 90px;
@@ -2534,7 +2560,7 @@
                     a{
                         display: inline-block;
                     }
-                    &.on{
+                    &.on {
                         .icon-wrap{
                             // border:2px solid #000
                         }
@@ -2542,48 +2568,48 @@
                     
                 }
             }
-            .btn-allview{
-                .icon-wrap{
+            .btn-allview {
+                .icon-wrap {
                     background: linear-gradient(135deg, #fa263e, #fb5a72);
                 }
             }
-            &.is-active{
+            &.is-active {
                 box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
                 width: 100%;
-                &:after{content:''; display:block; clear:both;}
-                .menu-slide-nav{
+                &:after {content:''; display:block; clear:both;}
+                .menu-slide-nav {
                     margin-top:-47px;
-                    @include mobile{
+                    @include mobile {
                         margin-top: -17.5px;
                     }
                 }
-                .btn-allview{
+                .btn-allview {
                     top:47px;
                     @include tablet {
                         top:47px;
                         right:40px;
                     }
-                    @include mobile{
+                    @include mobile {
                         top: 18px; 
                         right:16px;
                     }
-                    .icon-wrap{
+                    .icon-wrap {
                         background: #666;
                     }
-                    .icon{
-                        &-all{
+                    .icon {
+                        &-all {
                             background-image:url('/lg5-common/images/PRH/app/ic_close_64.png');
                         }
                     }
                 }
-                .menu-item{
+                .menu-item {
                     float:left;
                     width:calc(100%/7);
                     margin-top: 47px;
                     @include tablet {
                         width:calc(100%/5);
                     }
-                    @include mobile{
+                    @include mobile {
                         width:calc(100%/4);
                         margin-top: 17.5px;
                     }
@@ -2591,28 +2617,28 @@
             }
         }
         // 탭 메뉴 content
-        .app-tab-content{
-            .app-smart-wrap{
+        .app-tab-content {
+            .app-smart-wrap {
                 background-color: #f4f4f4;
                 padding: 350px 0 120px;
-                @include mobile{
+                @include mobile {
                     padding: 196px 16px 62px;
                 }
-                .app-smart-detail{
+                .app-smart-detail {
                     max-width: 1460px;
                     margin: 0 auto;
                     padding: 0 40px; 
-                    li{
+                    li {
                         display:flex;
                         position: relative;
-                        .detail-inner{
+                        .detail-inner {
                             display:flex;
                             width: 100%;
                             flex-direction: row;
                             align-items: center;
-                            @include mobile{
+                            @include mobile {
                                 flex-direction: column;
-                                br{
+                                br {
                                     display: none;
                                 }
                             }
@@ -2627,7 +2653,7 @@
                                     font-size:32px;
                                     line-height: 1.63;
                                     font-weight: 500;
-                                    @include mobile{
+                                    @include mobile {
                                         font-size:18px;
                                     }
                                 }
@@ -2635,21 +2661,21 @@
                                     font-size:20px;
                                     line-height: 1.5;
                                     margin-top: 17px;
-                                    @include mobile{
+                                    @include mobile {
                                         font-size:15px;
                                     }
                                 }
                             }
                         }
                         &:nth-child(even){
-                            .detail-inner{
+                            .detail-inner {
                                 flex-direction: row-reverse;
-                                @include mobile{
+                                @include mobile {
                                     flex-direction: column;
                                 }
                                 .text-area{
                                     padding-right:60px;
-                                    @include mobile{
+                                    @include mobile {
                                         padding-right:0;
                                     }
                                 }
@@ -2657,18 +2683,18 @@
                         }
                         & + li{
                             margin-top:-248px;
-                            @include tablet{
+                            @include tablet {
                                 margin-top: -200px;
                             }
-                            @include mobile{
+                            @include mobile {
                                margin-top:50px;
                             }
                         }
-                        .detail-inner{
-                            .image{
+                        .detail-inner {
+                            .image {
                                 width: 342px;
                                 height: 639px;
-                                @include mobile{
+                                @include mobile {
                                     width: 185px;
                                     height: 348.5px;
                                 }
@@ -2680,31 +2706,31 @@
         }
     }
     // 연동기기 찾기 배너 
-    .search-banner-wrap{
+    .search-banner-wrap {
         height: 80px;
         // max-width: 1380px;
         width: 100%;
         background-color: #8c929a;
         // background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
-        @include mobile{
+        @include mobile {
             height: 70.5px;
             background-color: #8c929a;
             // background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
             background-size: 100% auto;
         }
-        > button{
+        > button {
             display: flex;
             align-items: center;
             width: 100%;
             height: 100%;
             justify-content: center;
-            span{
+            span {
                 font-size:18px;
                 line-height: 1.5;
                 font-weight: 500;
                 position:relative;
                 color:#fff;
-                &:before{
+                &:before {
                     content:'';
                     display:inline-block;
                     width: 32px;
@@ -2719,7 +2745,7 @@
                         height: 24px;
                     }
                 }
-                &:after{
+                &:after {
                     display:inline-block;
                     content: '';
                     width: 9px;
@@ -2736,31 +2762,31 @@
         }
     }
     // ThinQ 앱 다운 안내 슬라이드
-    .download-guide-slide{
+    .download-guide-slide {
         max-width: 1380px;
         margin:0 auto;
-        .download-guide-item{
+        .download-guide-item {
             height: 440px;
-            @include mobile{
+            @include mobile {
                 height: 480px;
             }
-            &.bg-appDown{
+            &.bg-appDown {
                 background:url('/lg5-common/images/PRH/app/img_banner_01.jpg') no-repeat 0 0;
                 @include mobile{
                     background:url('/lg5-common/images/PRH/app/img_banner_01_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
             }
-            &.bg-howTo{
+            &.bg-howTo {
                 background:url('/lg5-common/images/PRH/app/img_banner_02.jpg') no-repeat 0 0;
                 @include mobile{
                     background:url('/lg5-common/images/PRH/app/img_banner_02_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
             }
-            &.bg-magazine{
+            &.bg-magazine {
                 background:url('/lg5-common/images/PRH/app/img_banner_03.jpg') no-repeat 0 0;
-                @include mobile{
+                @include mobile {
                     background:url('/lg5-common/images/PRH/app/img_banner_03_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
@@ -2770,28 +2796,28 @@
                 @include mobile { 
                     padding: 36px 32px;
                     text-align: center;
-                    .btn-area{
-                        .btn{
+                    .btn-area {
+                        .btn {
                             height:43px;
                             font-size:13px;
                             line-height: 1;
                         }
                     }
                 }
-                .btn-download{
+                .btn-download {
                     width: 162px;
                     height: 50px;
                     display: inline-block;
-                    img{
+                    img {
                         width: 100%;
                     }
-                    & + .btn-download{margin-left: 4px;}
-                    @include mobile{
+                    & + .btn-download {margin-left: 4px;}
+                    @include mobile {
                         width:139.5px;
                         height: 43px;
                     }
                 }
-                .text-wrap{
+                .text-wrap {
                    .item-title {
                        font-size:40px; 
                        line-height: 56px;
@@ -2800,7 +2826,7 @@
                             line-height: 1.38;
                        }
                     }
-                   .item-desc{
+                   .item-desc {
                        font-size:18px; 
                        line-height: 28px;
                        @include mobile { 
@@ -2808,7 +2834,7 @@
                             line-height: 1.57;
                        }
                     }
-                   .item-title + .item-desc{
+                   .item-title + .item-desc {
                        margin-top: 10px;
                        @include mobile{
                            margin-top: 5.5px;
@@ -2816,7 +2842,7 @@
                     }
                 }
             }
-            .text-wrap + .btn-area{
+            .text-wrap + .btn-area {
                 margin-top: 25px;
                 @include mobile {
                     margin-top: 24.5px;
@@ -2824,22 +2850,22 @@
             }
         }
         @include mobile {
-            .slick-dots{
+            .slick-dots {
                 bottom:-24px;
             }
         }
-        .slick-arrow.slick-prev{
+        .slick-arrow.slick-prev {
             left:-18px;
-            @include tablet{
+            @include tablet {
                 left:0
             }
             @media screen and (max-width: 1450px) {
                 left:0
             }
         }
-        .slick-arrow.slick-next{
+        .slick-arrow.slick-next {
             right:-18px;
-            @include tablet{
+            @include tablet {
                 right:0
             }
             @media screen and (max-width: 1450px) {
@@ -2850,13 +2876,13 @@
     
     .search-banner-wrap + .download-guide-slide{
         margin-top: 120px;
-        @include mobile{
+        @include mobile {
             margin-top: 60px;
         }
     }
 }
 
-.icon-wrap{
+.icon-wrap {
     display: inline-flex;
     width: 90px;
     height: 90px;
@@ -2864,7 +2890,7 @@
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    & + .txt{
+    & + .txt {
         display: block;
         text-align:center; 
         font-size:18px;
@@ -2872,7 +2898,7 @@
         font-weight: 500;
         line-height: 1.3;
     }
-    @include mobile{
+    @include mobile {
         width: 50px;
         height: 50px;
         & + .txt{
@@ -2885,7 +2911,7 @@
         width: 64px;
         height: 64px;
         background-size: 100% ;
-        @include mobile{
+        @include mobile {
             width: 40px;
             height: 40px;
             background-size:100%;
@@ -2908,13 +2934,13 @@
     }
 }
 // 연동기기 찾기 팝업 
-.popup-searchMachine{
+.popup-searchMachine {
     height: 800px;
     min-height:auto !important;
-    @include mobile{
+    @include mobile {
         height: 100%;
     }
-    &.popup-wrap .pop-conts.no-footer{
+    &.popup-wrap .pop-conts.no-footer {
         height:calc(100% - 78px);
         overflow: hidden;
         padding-top:20px;
@@ -2926,61 +2952,61 @@
     }
 }
 // 연동기기 찾기 검색 박스
-.search-sticky-wrap{
+.search-sticky-wrap {
     position: relative;
-    @include mobile{
+    @include mobile {
         // top:-32px;
         // margin: -32px -16px 0 -16px;
         // padding:24px 16px;
     }
 }
-.search-machine-box{
+.search-machine-box {
     background-color: #f4f4f4;
     border-radius: 8px;
     padding:24px 26px;
     display:flex;
-    @include mobile{
+    @include mobile {
         flex-direction: column;
         padding:25px 10px;
     }
-    .select-wrap{
+    .select-wrap {
         width: 159px;
-        @include mobile{
+        @include mobile {
             width: 100%;            
         }
     }
-    .select-wrap + .input-wrap{
+    .select-wrap + .input-wrap {
         margin-left:8px;
-        @include mobile{
+        @include mobile {
             margin-left: 0;
             margin-top: 8px;
         }
     }
-    .input-wrap{
+    .input-wrap {
         flex:1;
         position: relative;
         
         input[type="text"] {
             padding:10px 75px 10px 15px
         }
-        .btn-search{
+        .btn-search {
             position:absolute;
             right:0;
             top:0;
             width: 48px;
             height: 48px;
-            @include mobile{
+            @include mobile {
                 width: 46px;
                 height: 46px;
             }
             .icon{
                 margin-top: 5px;
-                &.icon-search{
-                    display: inline-block;;
+                &.icon-search {
+                    display: inline-block;
                     width: 32px;
                     height: 32px;
                     background-image:url('/lg5-common/images/PRH/app/icon/ic_search_32.png');
-                    @include mobile{
+                    @include mobile {
                         width: 24px;
                         height: 24px;
                         background-size:24px 24px;
@@ -3004,7 +3030,7 @@
     }
 }
 // 검색 전
-.intro-message{
+.intro-message {
     height: calc(100% - 96px);
     display: none;
     justify-content: center;
@@ -3013,15 +3039,15 @@
     &.is-active {
         display: flex;
     }
-    @include mobile{
+    @include mobile {
         height: calc(100% - 150px);
     }
-    > p{
+    > p {
         font-size: 20px;
         font-weight: 800;  
         line-height: 1.5;
         text-align: center;
-        @include mobile{
+        @include mobile {
             font-size:16px;
             line-height: 1.5;
         }
@@ -3029,7 +3055,7 @@
 
 }
 // 검색결과 없음 재시도
-.no-data-message{
+.no-data-message {
     height: calc(100% - 96px);
     display: none;
     justify-content: center;
@@ -3039,16 +3065,16 @@
     &.is-active {
         display: flex;
     }
-    @include mobile{
+    @include mobile {
         height: calc(100% - 150px);
     }
-    br{
+    br {
         display:none;
         @include mobile {
             display: block;
         }
     }
-    > em{
+    > em {
         font-size: 20px;
         font-weight: 800;  
         line-height: 1.5;
@@ -3057,30 +3083,30 @@
             line-height: 1.5;
         }
     }
-    > p{
+    > p {
         font-size: 16px;
         line-height: 1.63;
         color: #666; 
-        @include mobile{
+        @include mobile {
             font-size:14px;
             line-height: 1.57;
         }
     }
-    em + p{
+    em + p {
         margin-top: 8px;
-        @include mobile{
+        @include mobile {
             margin-top: 11.5px;
         }
     }
-    .btn-area{
+    .btn-area {
         margin-top: 25px;
-        @include mobile{
+        @include mobile {
             margin-top: 24.5px;
         }
     }
 }
 //  검색 결과 목록
-.product-result-wrap{
+.product-result-wrap {
     display: none;
     height: calc(100% - 96px);
     overflow-y:auto;
@@ -3094,20 +3120,20 @@
     @include mobile {
         height: calc(100% - 150px);
     }
-    .prd-result-text{
+    .prd-result-text {
         padding-bottom:12px;
-        em{
+        em {
             color:$color-primary;
             font-weight: 800;
         }
     }
-    .prd-result-lists{
+    .prd-result-lists {
         display: flex;
         flex-wrap: wrap;
         padding-bottom:24px;
         border-top:1px solid #666666;
         border-bottom:1px solid #dddddd;
-        > li{
+        > li {
             width: 50%;
             display: flex;
             overflow:hidden;
@@ -3123,7 +3149,7 @@
                 height: 120px;
                 background-color: #f4f4f4;
                 border-radius: 8px;
-                @include mobile{
+                @include mobile {
                     width: 105px;
                     height: 105px;
                     .icon{
@@ -3132,19 +3158,19 @@
                     }
                 }
             }
-            .text{
+            .text {
                 flex:1;
                 padding:0 24px;
-                @include mobile{
+                @include mobile {
                     padding:16px;
                 }
-                .name{
+                .name {
                     font-size: 16px;
                     font-weight: 800;
                     line-height: 1.63;
                     word-break:break-word;
                 }
-                .serial-num{
+                .serial-num {
                     display: block;
                     font-size: 14px;
                     line-height: 1.86;
@@ -3155,12 +3181,12 @@
     }
 }
 // 앱 설치 및 사용 방법 팝업 
-.popup-howto{
+.popup-howto {
     max-width: 1146px;
     @include mobile {
         width: 100%;
     }
-    .howto-content{
+    .howto-content {
         padding:13px 0 38px;
         @include mobile { 
             padding-top:0;
@@ -3170,7 +3196,7 @@
             padding-bottom:0;
         }
     }
-    .howto-slider{
+    .howto-slide {
         width: 1066px;
         padding:0 59px;
         @include tablet {
@@ -3180,34 +3206,34 @@
             width: 100%;
             padding:0;
         }
-        .slide-item{
-            .inner{
+        .slide-item {
+            .inner {
                 display:flex;
                 flex-direction: column;
                 align-items: center;
             }
-            .image{
+            .image {
                 width: 177px;
                 height: 365px;
                 @include mobile {
                     width: 165px;
                     height: 340.5px;
                 }
-                img{
+                img {
                     width: 100%;
                 }
             }
-            .text{
+            .text {
                 margin-top: 36px;
                 text-align:center;
                 font-size: 16px;
                 line-height: 1.75;
-                @include mobile{
+                @include mobile {
                     font-size:14px;
                     line-height: 1.57;
                     margin-top: 29px;
                 }
-                .num{
+                .num {
                     display:block;
                     font-weight: 800;
                     margin-bottom: 12px;
