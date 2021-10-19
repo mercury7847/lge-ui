@@ -1769,5 +1769,21 @@ img{
 			}
 		}
 	}
+	.info-area-wrap {
+		position: relative;
+		padding: 22px 200px 22px 100px;
+		border-radius: 8px;
+		background: #f4f4f4;
+		.tit{
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			margin-top:-10px;
+			left: 20px;
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 28px;
+		}
+	}
 }
 

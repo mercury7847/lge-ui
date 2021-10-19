@@ -351,6 +351,29 @@ $(function () {
                     }
                 ]
             });
+            
+            $('.info-area').slick({
+                arrows: true,
+                dots: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite:false,
+                vertical: true,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                pauseOnHover: true,
+                pauseOnFocus: true
+            });
+            $('.info-pause').on('click', function() {
+                $('.info-area')
+                    .slick('slickPause')
+            });
+            
+            $('.info-play').on('click', function() {
+                $('.info-area')
+                    .slick('slickPlay')
+            });
+
         });   
 
         function recomSlider(slider) {
