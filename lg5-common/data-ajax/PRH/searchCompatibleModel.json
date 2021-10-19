@@ -4,62 +4,98 @@
     "data": {
         "listData": [
             {
-                "imgName" : "vacuumCleaner",
+                "imgName" : "refrigerator",
                 "categoryName" : "냉장고",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },            
             {
                 "imgName" : "kimchi_refrigerator",
-                "categoryName" : "냉장고",
+                "categoryName" : "김치냉장고",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
-                "imgName" : "wineCellar",
-                "categoryName" : "냉장고",
+                "imgName" : "dishwasher",
+                "categoryName" : "식기세척기",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "oven",
+                "categoryName" : "오븐",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "cooktop",
-                "categoryName" : "냉장고",
+                "categoryName" : "전기레인지",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
-                "imgName" : "dishWasher",
-                "categoryName" : "냉장고",
+                "imgName" : "winecellar",
+                "categoryName" : "와인셀러",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
-                "imgName" : "waterPurifier",
-                "categoryName" : "냉장고",
+                "imgName" : "waterpurifier",
+                "categoryName" : "정수기",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
-                "imgName" : "beerMaker",
-                "categoryName" : "냉장고",
+                "imgName" : "homebrew",
+                "categoryName" : "맥주제조기",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
-                "imgName" : "washer",
-                "categoryName" : "냉장고",
+                "imgName" : "drum_washer",
+                "categoryName" : "세탁기",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "dryer",
+                "categoryName" : "의류건조기",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "styler",
-                "categoryName" : "냉장고",
+                "categoryName" : "스타일러",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             },
             {
                 "imgName" : "stickcleaner",
-                "categoryName" : "냉장고",
+                "categoryName" : "청소기",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "stand_airconditioner",
+                "categoryName" : "에어컨",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "airpurifier",
+                "categoryName" : "공기청정기",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "dehumidifier",
+                "categoryName" : "제습기",
+                "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
+                "modelId": "MASDA123012309"
+            },
+            {
+                "imgName" : "ceilingfan",
+                "categoryName" : "실링팬",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309"
             }
