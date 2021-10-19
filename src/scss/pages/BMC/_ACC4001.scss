@@ -538,6 +538,7 @@
                         @include mobile{
                             margin:0 -16px;
                             padding:0 32px;
+                            height:100%;
                             overflow-x:auto;
                         }
                         >ul{
@@ -551,12 +552,13 @@
                             >li{
                                 display:table-cell;
                                 width:20%;
+                                height:100%;
                                 @include mobile{
                                     width:203px;
                                 }
                                 .inner{
                                     margin-left:25px;
-                                    padding:24px 22px;
+                                    padding:0 22px;
                                     height:100%;
                                     border:1px solid #ddd;
                                     border-radius:8px;
@@ -566,27 +568,37 @@
                                         margin-left:12px;
                                         width:191px;
                                     }
-                                    dt{
-                                        font-size:22px;
-                                        font-weight:700;
-                                        line-height:32px;
-                                        @include mobile{
-                                            font-size:20px;
+                                    dl{
+                                        padding-top:24px;
+                                        dt{
+                                            font-size:22px;
+                                            font-weight:700;
+                                            line-height:32px;
+                                            @include mobile{
+                                                font-size:20px;
+                                            }
                                         }
-                                    }
-                                    dd{
-                                        margin-top:6px;
-                                        img{
-                                            width:140px;
-                                        }
-                                        p{
+                                        dd{
                                             margin-top:6px;
-                                            font-size:16px;
-                                            line-height:26px;
+                                            img{
+                                                width:140px;
+                                                height:140px;
+                                                @include mobile{
+                                                    width:128px;
+                                                    height:128px;
+                                                }
+                                            }
+                                            p{
+                                                margin-top:6px;
+                                                font-size:16px;
+                                                line-height:26px;
+                                                word-break:keep-all;
+                                            }
                                         }
                                     }
                                     .bullet-list{
                                         margin-top:15px;
+                                        padding-bottom:24px;
                                     }
                                 }
                             }
