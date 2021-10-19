@@ -720,6 +720,30 @@
         width: 100%;
         left:50%;
     }
+    .slide-wrap{
+        &.hero-banner{
+            .custom-indi-wrap {
+                bottom: 20px;
+                right: 17.5px;
+                left: 17.5px;
+            }
+            .bar{
+                text-indent: -9999px;
+                top: auto;
+                overflow: hidden;
+            }
+            .slide-content{
+                .slide-track{
+                    @include mobile{
+                        height: 326px;
+                    }
+                    .slide-conts{
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
     .slide-conts {
         width: 1920px;
         margin: 0 auto;
@@ -729,14 +753,33 @@
             height: 100%;
         }
     }
-    .visual-area img{
-        width: 100%;
-        height: 100%;
-        background-position: center center;
-        object-fit: cover;
-        @include mobile{
-            width: auto;
-            height:100%;
+    .visual-area {
+        img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: none;
+            width: 100%;
+            background-position: center center;
+            min-width: 100%;
+            min-height: 100%;
+            @include mobile{
+                object-fit: cover;
+            }
+        }
+        video{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: none;
+            background-position: center center;
+            min-width: 100%;
+            min-height: 100%;
+            @include mobile{
+                object-fit: cover;
+            }
         }
     }
     // 텍스트 옵션 (좌우, 상하, 폰트컬러) 
@@ -751,7 +794,7 @@
         padding:90px 50px 120px 50px;
         height: 100%;
         @include mobile{
-            padding:60px 0;
+            padding:31px 0 60px;
         }
         &.box-align{
             &-left{
@@ -842,16 +885,32 @@
         }
     }
     .text-info-etc{
-        font-size:12px;
         position:absolute;
-        right: 158px;
+        left:50%;
         bottom: 47px;
+        transform: translate(-50%, 0%);
+        width: 100%;
+        max-width: 1410px;
+        display: flex;
+        margin: 0 auto;
+        font-size:12px;
+        padding-right:64px;
+        justify-content: end;
+        @media screen and (max-width: 1475px){
+            padding-right:100px;
+        }
+
         @include mobile {
             right:auto;
-            left: 9px;
+            left: 17.5px;
             bottom:32px;
-            text-align: left;
-            width: 75%;
+            transform: initial;
+            font-size:11px;
+            font-weight: 400;
+            justify-content: start;
+            text-align:left;
+            line-height: 1.73;
+            
         }
     }
 }
