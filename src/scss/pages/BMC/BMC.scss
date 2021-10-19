@@ -534,6 +534,7 @@
 
 // BTOCSITE-4785 s
 .display-product-type{
+    margin-top: -70px !important;
     .item.evt-item{
         padding-bottom: 187px;
         @include mobile{
