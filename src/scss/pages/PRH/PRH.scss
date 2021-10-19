@@ -724,8 +724,23 @@
         &.hero-banner{
             .custom-indi-wrap {
                 bottom: 20px;
-                right: 17.5px;
-                left: 17.5px;
+                left: 0;
+                right: 0;
+                max-width: 1410px;
+                @include mobile {
+                    left: 0;
+                    right: 0;
+                    padding-right: 17.5px;
+                    padding-left: 17.5px;
+                }
+                .custom-indis{
+                    margin:0
+                }
+                .indi-control{
+                    @include mobile {
+                        right:17.5px;
+                    }
+                }
             }
             .bar{
                 text-indent: -9999px;
@@ -903,7 +918,7 @@
         padding-right:64px;
         justify-content: flex-end;
         @media screen and (max-width: 1475px){
-            padding-right:100px;
+            padding-right:73px;
         }
         @include mobile {
             right:auto;
