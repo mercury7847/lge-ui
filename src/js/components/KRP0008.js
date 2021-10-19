@@ -1582,24 +1582,40 @@
                     });
                 };
 
+                //BTOCSITE-3523 - 제휴카드 할인 드롭다운 열림/닫힘 액션
+                var cardDropExpanded = "false";
+                self.$pdpInfo.on('click','.careship-card-list .ui_dropdown_toggle, .rental-card-list .ui_dropdown_toggle',function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    $this.closest('.dropdown-box-wrap').toggleClass('open');
+                    (cardDropExpanded === "false") ? (cardDropExpanded = "true") : (cardDropExpanded = "false");
+                    $this.attr('aria-expanded',cardDropExpanded);
+                });
+                $(document).on('click', function(e) {
+                    var $rentalCareCardDropList = $('.careship-card-list .dropdown-box-wrap, .rental-card-list .dropdown-box-wrap');
+                    if($(e.target).closest($rentalCareCardDropList).length == 0){
+                        $rentalCareCardDropList.removeClass("open");
+                    }
+                });
+
                 //제휴카드 할인 드롭다운 선택
                 //div.option-contents
                 self.$pdpInfo.on('click','.rental-card-list div.ui_dropdown_list li a, .careship-card-list div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
-                    var $dropDown = $this.parents('.ui_dropdown');
+                    var $dropDown = $this.parents('.dropdown-box-wrap'); //BTOCSITE-3523 수정
                     //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));  //BTOCSITE-3523 삭제
 
                     //BTOCSITE-3523 추가
                     if($this.closest("li").hasClass("cancel-item")) {
-                        $this.closest(".ui_dropdown").removeClass('is-selected');
+                        $this.closest('.dropdown-box-wrap').removeClass('is-selected'); //BTOCSITE-3523 수정
                         $dropDown.find('.ui_dropdown_toggle').empty();
                     }else{
                         $dropDown.find('.ui_dropdown_toggle').text($this.attr('data-card-title'));
-                        $this.closest(".ui_dropdown").addClass('is-selected');
+                        $this.closest('.dropdown-box-wrap').addClass('is-selected'); //BTOCSITE-3523 수정
                     }
 
-                    $dropDown.vcDropdown("close");
+                    $dropDown.removeClass('open'); //BTOCSITE-3523 수정
 
                     var cardData = {};
                     var cardNameCode = $this.attr('href').replace("#","");
