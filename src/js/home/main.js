@@ -7,7 +7,6 @@ $(function () {
         }
     });
 
-    var isOnlyMobileDevice = vcui.detect.isMobileDevice && window.innerWidth < 768
     var isMobileScreen = function() {
         return vcui.detect.isMobileDevice || window.innerWidth < 768
     }
@@ -21,11 +20,7 @@ $(function () {
         
         $('body').addClass('ignore-overflow-hidden');
 
-        $context.find('.ui_carousel_slider_banner1').find('.flow-bar').css({
-            'transition': 'all 0.5s ease-out'
-        });
-
-        $context.find('.ui_carousel_slider_banner2').find('.flow-bar').css({
+        $context.find('.ui_carousel_slider_banner1,.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
         });
 
