@@ -537,6 +537,9 @@
     margin-top: -70px !important;
     @include mobile {
         margin-top: -40px !important;
+        .item .product-info .spec-info li:after {
+            display: none;
+        }
     }
     .item.evt-item{
         padding-bottom: 187px;
@@ -561,6 +564,6 @@
                 }
             }
         } 
-    } 
+    }
 }
 // BTOCSITE-4785 e
