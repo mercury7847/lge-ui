@@ -557,7 +557,8 @@ img{
 		}
 		@include mobile {
 			.tit-wrap {
-				margin-bottom:24px;
+				// BTOCSITE-2193
+				margin-bottom:20px;
 				.tit {
 					font-size:20px;
 					line-height:27px;
@@ -1490,7 +1491,98 @@ img{
 //}
 
 // BTOCSITE-2193 s
+.slick-section {
+	.slick-arrow {
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		border-radius: 50%;
+		border: 0;
+		width: 48px;
+		height: 48px;
+		z-index: 1;
+		&.slick-next {
+			right: -24px;
+		}
+		&.slick-prev {
+			left: -24px;
+		}
+		&.slick-disabled{
+			display: inline-block !important;
+			opacity: 0.4;
+			cursor: default;
+		}
+	}
+	.slick-dots {
+		position: absolute;
+		bottom: -26px;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		font-size: 0;
+		li{
+			button {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				border: 0;
+				background: #e4e4e4;
+				vertical-align: top;
+				font-size: 0;
+				overflow: hidden;
+			}
+			&.slick-active button {
+				background:#000000;
+			}
+		}
+	}
+}
+.main-wrap .section .recom-list-slide .slide-content .slide-conts-box .slide-conts .slide-box .text-area{
+	.tit {
+		font-size: 40px;
+		line-height: 48px;
+	}
+	.arr {
+		display: inline-block;
+		height: 46px;
+		min-width:142px;
+		margin-top:16px;
+		padding: 10px 32px 12px 32px;
+		border-radius: 23px;
+		border: 1px solid #fff;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 23px;
+	}
+	@include mobile {
+		text-align: center !important;
+		left:0 !important;
+		right:0 !important;
+		top:27px !important;
+		.tit {
+			font-size: 27px;
+			line-height: 34px;
+		}
+		.arr {
+			height: 40px;
+			min-width:114px;
+			margin-top:12px;
+			padding: 9px 24px 10px 24px;
+			border-radius: 20px;
+			border: 1px solid #fff;
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+} 
 .main-wrap .section {
+	margin-top: 100px;
+	@include mobile {
+		margin-top: 58px;
+		padding: 0 16px;
+	}
 	&.slick-section {
 		@include mobile{
 			overflow: hidden;
@@ -1532,11 +1624,21 @@ img{
 							font-weight: 400;
 							line-height: 29px;
 						}
+						@media screen and (max-width: 1125px) {
+							.tit {
+								font-size: 21px;
+								line-height: 30px;
+							}
+							.desc {
+								font-size: 16px;
+								line-height: 26px;
+							}
+						}
 						@include mobile {
 							padding: 104px 25px 25px 25px;
 							border-radius: 8px;
 							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
-							height: 184px;
+							height: 183px;
 							i {
 								display: block;
 								position: absolute;
@@ -1605,6 +1707,10 @@ img{
 							font-size: 16px;
 							font-weight: 400;
 							line-height: 24px;
+						}
+						@media screen and (max-width: 1410px) {
+							vertical-align: middle;
+							height: 180px;
 						}
 						@include tablet {
 							padding: 25px 20px 25px 109px;
