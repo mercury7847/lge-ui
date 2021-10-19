@@ -1,31 +1,32 @@
 // LG ThinQ
-.thinq-main {}
-
-.pc-only {
-    display: block !important;
-    @include mobile {
-        display: none !important;
-    }
-}
-.mo-only {
-    display: none !important;
-    @include mobile {
+.thinq-main {
+    .pc-only {
         display: block !important;
+        @include mobile {
+            display: none !important;
+        }
+    }
+    .mo-only {
+        display: none !important;
+        @include mobile {
+            display: block !important;
+        }
+    }
+    
+    .pc-only-ib {
+        display: inline-block !important;
+        @include mobile {
+            display: none !important;
+        }
+    }
+    .mo-only-ib {
+        display: none !important;
+        @include mobile {
+            display: inline-block !important;
+        }
     }
 }
 
-.pc-only-ib {
-    display: inline-block !important;
-    @include mobile {
-        display: none !important;
-    }
-}
-.mo-only-ib {
-    display: none !important;
-    @include mobile {
-        display: inline-block !important;
-    }
-}
 
 // .thinq-hero {
 //     [class*="scene"] {
