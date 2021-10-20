@@ -32,8 +32,8 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
 
 
 //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
-//많이 구매하는 제품 
-var rankBuyProductTmpl = 
+//많이 구매하는 제품
+var rankBuyProductTmpl =
     '<div class="inner">\n'+
     '   {{#each (obj, index) in list}}'+
     '      {{#if index === 0}}'+
@@ -652,19 +652,13 @@ $(function(){
                     var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(subCategoryId){
-                        if( item['title'] == "케어용품/소모품") {
-                            if (vcui.detect.isMobileDevice){
-                                iconPath = '/lg5-common/images/PRS/mobile/'+ categoryId + '_' + subCategoryId +'.svg';
-                            } else {
-                                iconPath = '/lg5-common/images/PRS/'+ categoryId + '_' + subCategoryId +'.svg';
-                            }
+                        //[S] - BTOCSITE-5695 - GNB 아이콘 경로 추가
+                        if (vcui.detect.isMobileDevice){
+                            iconPath = item['iconPathM'];
                         } else {
-                            if (vcui.detect.isMobileDevice){
-                                iconPath = '/lg5-common/images/PRS/mobile/'+ subCategoryId +'.svg';
-                            } else {
-                                iconPath = '/lg5-common/images/PRS/'+ subCategoryId +'.svg';
-                            }
+                            iconPath = item['iconPath'];
                         }
+                        //[E] - BTOCSITE-5695 - GNB 아이콘 경로 추가
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
@@ -677,10 +671,6 @@ $(function(){
 
                 /* BTOCSITE-1057 : data-contents 추가 2021-08-09 */
                 $context.find('#'+categoryId).find('.ui_sub_category li a').attr('data-contents', categoryName);
-                // console.log("gnbId :", '#'+gnbId);
-                // console.log("categoryName :", '#'+categoryName);
-                // console.log("categoryId :", '#'+categoryId);
-                // console.log(tabContentStr);
                 /* //BTOCSITE-1057 : data-contents 추가 2021-08-09 */
 
                 // 4개 이하일때 중앙정렬
@@ -804,7 +794,7 @@ $(function(){
                 */
                 var cateExcept = [ 'CT50000003','CT50000152','CT50019001','CT50019002','CT50020000'];
                 var buyProductCate = arr.filter(function(el) {
-                    el.$index += 1; 
+                    el.$index += 1;
                     return cateExcept.indexOf(el.categoryId) === -1
                 })
 
@@ -828,13 +818,13 @@ $(function(){
             $buyProduct.on('tabbeforechange tabinit', function(e, data){
                 // 탭 이벤트 분기
                 switch(e.type) {
-                    case "tabinit" : 
+                    case "tabinit" :
                     console.log("tabinit %o",data);
                         // 탭초기화시 탭선택
                         var idx = Math.floor(Math.random() * cate.length || 0);
-                            $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');	
+                            $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
                     break;
-                    default : 
+                    default :
                         // 탭이동 이벤트
                         var idx = data.selectedIndex;
                         var superCategoryId = $buyProduct.find('.tabs li a').eq(idx).data("category");
@@ -845,7 +835,7 @@ $(function(){
                     break;
                 }
             }).vcTab();
-            $buyProduct.vcSmoothScroll('refresh');	
+            $buyProduct.vcSmoothScroll('refresh');
         }
 
 
@@ -863,7 +853,7 @@ $(function(){
                         item['obsDiscountPrice'] = parseInt(item['obsDiscountPrice'] || 0);
                         // item['totalPrice'] = item['obsOriginalPrice'] - item['obsMemberPrice'] - item['obsDiscountPrice'];
                         item['totalPrice'] = item['price'];
-    
+
                         // item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
 
 
@@ -875,12 +865,12 @@ $(function(){
                     $buyProduct.html(vcui.template(rankBuyProductTmpl, {list:data}));
                     $('body').vcLazyLoaderSwitch('reload', $buyProduct);
 
-            }, "POST","json",true);  
+            }, "POST","json",true);
         }
          //-E- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
 
         // 카테고리 요청
-        lgkorUI.requestAjaxDataFailCheck(storeCategoryTabUrl,{}, buildCategoryTab, errorRequest);    
+        lgkorUI.requestAjaxDataFailCheck(storeCategoryTabUrl,{}, buildCategoryTab, errorRequest);
         
         // 추천 기획전
         lgkorUI.requestAjaxDataFailCheck(storeExhibitionProductUrl,{}, buildExhibit, errorRequest);
