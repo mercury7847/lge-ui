@@ -680,13 +680,13 @@ $(function(){
                     var gnbId = item['gnbId'];
                     var iconPath = '';                    
                     if(subCategoryId){
-                        //[S] - BTOCSITE-1488 - 스토어 홈 > 카테고리 추가요청
+                        //[S] - BTOCSITE-5695 - GNB 아이콘 경로 추가
                         if (vcui.detect.isMobileDevice){
                             iconPath = item['iconPathM'];
                         } else {
                             iconPath = item['iconPath'];
                         }
-                        //[E] - BTOCSITE-1488 - 스토어 홈 > 카테고리 추가요청
+                        //[E] - BTOCSITE-5695 - GNB 아이콘 경로 추가
                     }else{
                         iconPath = '/lg5-common/images/icons/noimage.svg';
                     }
