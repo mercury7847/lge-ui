@@ -934,7 +934,7 @@
                 var desc = '';
 
                 if(id=="#popup-experience"){
-                    obj = $.extend(obj,{title:'크롬 브라우저를 이용해 주세요.'});
+                    obj = $.extend(obj,{title:'인터넷 익스플로러(Internet Explorer) 브라우저에서 접속 불가합니다.<br> 크롬(Chrome) 브라우저 등에서 재시도 부탁드립니다.'});
                     desc = '';
                 }
                 lgkorUI.alert(desc, obj);
