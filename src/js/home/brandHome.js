@@ -267,6 +267,7 @@
             },
             init: function(index){
                 var tabs = this;
+
                 if( !thinQMain.$appTabArea.find('.menu-slide-block').hasClass('is-active') ) {
                     thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideConfig)
                     if( index != undefined ) {
@@ -288,6 +289,7 @@
             },
             destroy: function(){
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
+                thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
             }
         },
         appDownloadGuideSlider:{
