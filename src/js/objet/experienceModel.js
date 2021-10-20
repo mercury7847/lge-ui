@@ -7273,14 +7273,21 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount, pannelType)
         //BTOCSITE-3198 - pannelType 분기처리 조건 추가 211020 - S
         if(pannelType == 'pannel'){
             // 패널만 교체
-            $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i+1]));
-            sumPrice += parseInt(price[i+1]);
-        }else{
+            let j = i+1;
+            if(j == priceLeng) {
+                return false;
+            } else {
+                $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[j]));
+                sumPrice += parseInt(price[j]);
+            }
+        } else {
             // 견적 확인하기 (pannelType == 'normal');
             $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
             sumPrice += parseInt(price[i]);
         }
-        //sumPrice += parseInt(price[i]);
+        
+        // $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
+        // sumPrice += parseInt(price[i]);
 
         //BTOCSITE-3198 - pannelType 분기처리 조건 추가 211020 - E
 
