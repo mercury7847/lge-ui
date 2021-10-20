@@ -1203,6 +1203,13 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
+
+                            //BTOCSITE-3198 - S
+                            @media screen and (max-width:1140px) {
+                                padding:20px 10px;
+                            }
+                            //BTOCSITE-3198 - E
+
                             // BTOCSITE-2346 mobile 버튼 css수정 210811 - S
                             .btn{
                                 @media screen and (max-width: 845px) {
@@ -1212,11 +1219,36 @@ h2.title {
                             }
                             .btn+.btn {
                                 margin-left: 7px;
+                                //BTOCSITE-3198 - S
+                                @media screen and (max-width:1140px) {
+                                    margin-left: 0;
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                }
+                                //BTOCSITE-3198 - E
                                 @media screen and (max-width: 845px) {
                                     margin-left:0;
                                 }
                             }
                             // BTOCSITE-2346 mobile 버튼 css수정 210811 - E
+                            //BTOCSITE-3198 버튼 간격 수정 - S
+                            .btn_check_price {
+                                @media screen and (max-width:1140px){
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                }
+                            }
+                            .myPick{
+                                @media screen and (max-width:1140px){
+                                    //width: 100%;
+                                }
+                            }
+                            .chng_pannel{
+                                @media screen and (max-width:1140px){
+                                    //width: 100%;
+                                }
+                            }
+                            //BTOCSITE-3198 버튼 간격 수정 - E
                         }
                     }
                 }
@@ -1308,16 +1340,19 @@ h2.title {
                             display:flex;
                             justify-content:space-between;
                             align-items: center;
-                            dt {
-
-                            }
                             .btn_total{
                                 width: 153px;
                                 height:32px;
                                 line-height: 7px;
-                                font-size:13px;
+                                font-size:14px;
                                 padding:6px 10px;
                                 margin:0 2px;
+                                @media screen and (max-width:850px) {
+                                    font-size:13px;
+                                }
+                                @media screen and (max-width:303px) {
+                                    font-size:11px;
+                                }
                             }
                         }
                         //BTOCSITE-3198 패널 선택용 - END 211014
@@ -1331,6 +1366,12 @@ h2.title {
                                 padding: 18px 0 18px 20px;
                                 font-size: 14px;
                             }
+                            //BTOCSITE-3198 패널 선택용 - START 211014
+                            @media screen and (max-width:303px) {
+                                font-size:10px;
+                                padding: 18px 0 18px 0;
+                            }
+                            //BTOCSITE-3198 패널 선택용 - END 211014
                         }
                         dd {
                             position: relative;
@@ -1354,7 +1395,6 @@ h2.title {
                                     li {
                                         display: flex;
                                         justify-content: space-between;
-                                        flex-grow: 1;//BTOCSITE-3198
                                         &+li {
                                             margin-top: 10px;
                                         }
@@ -1421,14 +1461,22 @@ h2.title {
                                         //border-radius: 4px;
                                         width: 20px;
                                         height: 20px;
-                                        background: url('/lg5-common/images/icons/btn-compare-off-24.svg');
+                                        background: url('/lg5-common/images/icons/btn-compare-off-24.svg') no-repeat;
                                         background-size: 20px;
+                                        }
+                                        .product_name {
+                                            margin-left:10px;
+                                            align-self: center;
+                                        }
+                                        .product_price {
+                                            margin-left:auto; // display:flex 일때, 우측 정렬하기 위하여 사용
+                                            align-self: center;
                                         }
                                     }
                                     li.is_active {
                                         &:before {
                                             //background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
-                                            background: url('/lg5-common/images/icons/btn-compare-on-24.svg');
+                                            background: url('/lg5-common/images/icons/btn-compare-on-24.svg') no-repeat;
                                             background-size: 20px;
                                         }
                                     }
@@ -1439,6 +1487,15 @@ h2.title {
                                     font-size:18px;
                                     line-height: 1.67;
                                     font-weight: 500;
+                                    @media screen and (max-width:767px) {
+                                        padding:0 10px;
+                                    }
+                                    .product_total_title{
+                                        margin-left:30px;
+                                    }
+                                    .product_price{
+                                        //padding:0 10px;
+                                    }
                                 }
                                 //BTOCSITE-3198 - end
                                 .err-msg {
@@ -1459,9 +1516,9 @@ h2.title {
                                 .btn_purchase {
                                     position: absolute;
                                     bottom: 50px;
-                                    left: 7.5%;
-                                    right: 7.5%;
-                                    width: 85%;
+                                    left: 5%;
+                                    right: 5%;
+                                    width: 90%;
                                 }
                             }
                         }
@@ -1987,19 +2044,19 @@ h2.title {
                     &:nth-child(1) {
                         left: 36%;
                         top: 9.5%;
-                        width: 28.5%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 43.7%;
                     }
                     &:nth-child(2) {
                         left: 36%;
                         top: 55.5%;
-                        width: 28.5%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 14.3%;
                     }
                     &:nth-child(3) {
                         left: 36%;
                         top: 72.1%;
-                        width: 28.5%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 18%;
                     }
                 }
@@ -2206,6 +2263,10 @@ h2.title {
 
 .simul_step.simul_step3 {
     border-top: 1px solid #dddddd;
+    //BTOCSITE-3198
+    @include mobile {
+        padding:0 15px;
+    }
 }
 /* //BTOCSITE-1582 */
 

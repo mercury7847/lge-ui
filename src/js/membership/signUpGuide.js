@@ -15,5 +15,8 @@ $(document).ready(function() {
     /* BTOCSITE-3002 멤버십 페이지 수정 */
     $('.btn-mo-acc').click(function(){        
         $('.mo-only-acc').toggleClass('on');
-    })
+    });
+
+    $('.vertical-fixed table').clone(true).appendTo('.tb_row').addClass('tb-clone');
+    /* //BTOCSITE-3002 멤버십 페이지 수정 */
 });

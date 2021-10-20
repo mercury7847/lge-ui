@@ -1799,8 +1799,12 @@
                             border-radius: 8px 8px 0 0;
                             @include mobile {
                                 border-radius: 8px;
+                                .dropdown-menu-wrap {
+                                    max-height: 280px;
+                                    padding-bottom: 40px;
+                                }
                             }
-                          .selectbox-list {
+                            .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
@@ -1876,12 +1880,15 @@
                             top: auto;
                             left: auto;
                             right: auto;
-                            padding: 14px 15px;
+                            padding: 12px 15px;
                             transform: none;
                             background: none;
                             color: #000;
                             text-align: left;
                             border-radius: 0;
+                            @include mobile {
+                                padding: 9px 15px;
+                            }
                             .tooltip-wrap {
                                 .tooltip-icon {
                                     background-image: url("/lg5-common/images/icons/icon-tooltip.svg");
@@ -1893,7 +1900,7 @@
                             @include mobile {
                                 overflow: hidden;
                                 overflow-y: auto;
-                                max-height: 50vh;
+                                max-height: 168px;
                                 border-radius: 0 0 8px 8px;
                             }
                         }
@@ -1903,11 +1910,18 @@
                         .ui_dropdown_toggle {
                             overflow: hidden;
                             position: absolute;
+                            top: 0;
                             right: 15px;
                             display: inline-block;
-                            max-width: calc(100% - 100px);
-                            height: 24px;
+                            width: calc(100% - 115px);
+                            height: 48px;
                             padding: 0 24px 0 0;
+                            text-align: right;
+                            line-height: 48px;
+                            @include mobile {
+                                height: 41px;
+                                line-height: 41px;
+                            }
                             &::after {
                                 right: 0;
                             }

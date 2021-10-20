@@ -6,35 +6,45 @@
           "title": "올레드 TV",
           "iconAlt": "올레드 TV",
           "categoryId": "CT50022018",
-          "gnbId": "gnbId-01"
+          "gnbId": "gnbId-01",
+          "iconPath": "/kr/images/gnb/store/CT50000025.svg",
+          "iconPathM": "/kr/images/gnb/store/mobile/CT50000025.svg"
         },
         {
           "linkPath": "/signature?subCateId=CT50022019",
           "title": "냉장고",
           "iconAlt": "냉장고",
           "categoryId": "CT50022019",
-          "gnbId": "gnbId-02"
+          "gnbId": "gnbId-02",
+          "iconPath": "/kr/images/gnb/store/CT50000032.svg",
+          "iconPathM": "/kr/images/gnb/store/mobile/CT50000032.svg"
         },
         {
           "linkPath": "/signature?subCateId=CT50022020",
           "title": "세탁기",
           "iconAlt": "세탁기",
           "categoryId": "CT50022020",
-          "gnbId": "gnbId-03"
+          "gnbId": "gnbId-03",
+          "iconPath": "/kr/images/gnb/store/CT50000036.svg",
+          "iconPathM": "/kr/images/gnb/store/mobile/CT50000036.svg"
         },
         {
           "linkPath": "/signature?subCateId=CT50022021",
           "title": "에어컨",
           "iconAlt": "에어컨",
           "categoryId": "CT50022021",
-          "gnbId": "gnbId-04"
+          "gnbId": "gnbId-04",
+          "iconPath": "/kr/images/gnb/store/CT50000025.svg",
+          "iconPathM": "/kr/images/gnb/store/mobile/CT50000025.svg"
         },
         {
           "linkPath": "/signature?subCateId=CT50022022",
           "title": "가습 공기청정기",
           "iconAlt": "가습 공기청정기",
           "categoryId": "CT50022022",
-          "gnbId": "gnbId-05"
+          "gnbId": "gnbId-05",
+          "iconPath": "/kr/images/gnb/store/CT50000025.svg",
+          "iconPathM": "/kr/images/gnb/store/mobile/CT50000025.svg"
         }
       ],
       "success": "Y"
