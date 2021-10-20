@@ -1204,7 +1204,7 @@
                     else $('.cate-m').show();
                 }
             },
-            subCategoryFirstFilterId() {
+            subCategoryFirstFilterId: function() {
                 var filterId = '';
     
                 if(firstFilterList) {
@@ -1215,7 +1215,6 @@
                         }
                     });
                 }
-    
                 return filterId;
             }
         };

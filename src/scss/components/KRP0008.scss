@@ -1799,8 +1799,12 @@
                             border-radius: 8px 8px 0 0;
                             @include mobile {
                                 border-radius: 8px;
+                                .dropdown-menu-wrap {
+                                    max-height: 280px;
+                                    padding-bottom: 40px;
+                                }
                             }
-                          .selectbox-list {
+                            .selectbox-list {
                                 position: relative;
                                 top: auto;
                                 right: auto;
@@ -1896,7 +1900,7 @@
                             @include mobile {
                                 overflow: hidden;
                                 overflow-y: auto;
-                                max-height: 50vh;
+                                max-height: 168px;
                                 border-radius: 0 0 8px 8px;
                             }
                         }

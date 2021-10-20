@@ -246,6 +246,7 @@
 		}
 	}
 	.module-box {
+		position:relative;
 		max-width:1460px;
 		margin:120px auto 0;
 		padding:0 40px;
@@ -477,7 +478,47 @@
 				bottom:0;
 			}
 		}
+
+		// BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
+		// PC
+		&.module-buy-product {
+			.buy-product-tab {
+				.tabs-wrap {
+					&.border-type {
+						.tabs {
+							li.on {
+								a:after {
+									height:2px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.tooltip-wrap {
+				margin-top: -5px;
+				vertical-align: middle;
+			}
+
+			.tooltip-box {
+				.title { font-size:14px; color:#000; }
+				.bullet-list {
+					.b-txt {
+						padding-left:0;
+						&::before{
+							display:none;
+						}
+					}
+				}
+				.btn-close {
+					top:16px;
+				}
+			}
+		}
+
 		.buy-product {
+			margin-top:48px;
 			font-size:0;
 			&:after {
 				content:' ';
@@ -498,23 +539,19 @@
 					height:100%;
 					border-radius:8px;
 					overflow:hidden;
+					box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+					@include mobile {
+						box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+					}
 					.flag {
 						position:absolute;
 						top:0;
 						left:0;
 					}
-					.bg {
-						display:block;
-						width:100%;
-						height:100%;
-						background-position:center center;
-						background-repeat:no-repeat;
-						background-size:cover;
-					}
 					.img {
+						text-align:center;
 						img {
-							max-width:678px;
-							width:100%;
+							width:80%;
 						}
 					}
 					.product-info {
@@ -522,7 +559,6 @@
 						bottom:80px;
 						right: 48px;
 						left:48px;
-						color:#fff;
 						text-align: center;
 						.tit {
 							font-weight:700;
@@ -1166,6 +1202,7 @@
 			&.cnt01 {
 				margin-top:0;
 			}
+
 			.tabs-wrap {
 				&.border-type {
 					//padding-top:32px;
@@ -1186,6 +1223,8 @@
 					}
 				}
 			}
+
+
 			.ui_category_tab_contents {
 				z-index: 10;
 				position: relative;
@@ -1277,7 +1316,36 @@
 					}
 				}
 			}
+
+			// BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
+			//MOBILE
+			.buy-product-tab {
+				position:relative;
+				&:before,
+				&:after {
+					position: absolute;
+					top: 0;
+					z-index: 1;
+					width: 16px;
+					height: 43px;
+					content: '';
+					background:none;
+				}
+				&:before {
+					left: 0;
+					background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+				}
+				&:after {
+					right: 0;
+					background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+				}
+				.tabs-wrap {
+					&::before { display:block; }
+				}
+			}
+
 			.buy-product {
+				margin-top:24px;
 				padding:0 16px;
 				.inner {
 					display:block;
@@ -1293,25 +1361,17 @@
 								width:100%;
 							}
 						}
-						.bg {
-							padding-top:62.2%;
-						}
-						.img {
-							img {
-								width:100%;
-							}
-						}
 						.product-info {
-							bottom:26px;
+							position:relative;
+							bottom:auto;
 							right: 20px;
 							left:20px;
-							//max-width: 156px;
 							text-align: left;
 							.tit {
 								@include font($font-large-1,28px);
 							}
 							.price {
-								margin-top:14px;
+								margin:0 0 25px;
 								@include font($font-small,22px);
 							}
 						}
@@ -1341,8 +1401,6 @@
 								margin-top:8px;
 								.tit {
 									-webkit-line-clamp:1;
-									// max-height:44px;
-									// height:44px;
 									max-height:22px;
 									height:22px;
 									font-size:14px;
