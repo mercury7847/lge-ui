@@ -71,9 +71,10 @@ br.m{
                     line-height: 33px;
                 }
             }
+            /* BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 */
             .desc{
                 width: 100%;
-                max-width: 479px;
+                max-width: 540px;
                 margin: 12px auto;
                 text-align: center;
                 font-size:16px;

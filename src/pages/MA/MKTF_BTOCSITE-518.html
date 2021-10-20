@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
     <!-- 210330 스키티챗JS 추가 -->
+    <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 텍스트 수정-->
     @@include('./common/head.html', {
         pageCSS: ["MA/MA"],
         pageJS: ["components/KRP0005"],
         pageTitle: "온라인 견적 신청 | LG전자",
-        pageDesc: "간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다. 문의하신 견적은 마케팅 담당자가 연락 드린 후 상세하게 안내해 드립니다."
+        pageDesc: "간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다. 문의하신 견적은 문의 이후 1일 이내 마케팅 담당자가 연락을 드린 후 상세하게 안내드립니다. (금/토/일 및 공휴일 문의시 1일 이내 연락 불가)"
     })
     <!-- //210330 스키티챗JS 추가 -->
     <!-- pageCSS: ["STC/STC"], -->
@@ -26,11 +27,19 @@
                     <!-- BTOCSITE-518 20210706 수정 사항 END -->
                         <div class="form-head">
                             <h2 class="headTitle">가정용 시스템에어컨 <span class="mo-flex">온라인 견적</span></h2>
-                            <p class="desc">간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다.
-                                문의하신 견적은 마케팅 담당자가 연락 드린 후 상세하게 안내해 드립니다.
-                                </p>
+                            <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 텍스트 수정 -->
+                            <p class="desc">
+                                간단한 양식 작성만으로 편리하게 온라인 견적을 받아보실 수 있습니다.
+                                문의하신 견적은 문의 이후 1일 이내 마케팅 담당자가 연락을 드린 후 상세하게 안내드립니다.<br/>
+                                (금/토/일 및 공휴일 문의시 1일 이내 연락 불가)
+                            </p>
                         </div>
-                        <h2 class="title bdb mo-h2">개인정보(필수사항)</h2>
+
+                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 태그 수정-->
+                        <div class="inner bdb">
+                            <h1 class="tit mo-h2">개인정보(필수사항)</h2>
+                        </div>
+
                         <p class="reqchk">필수 입력 사항</p>
                         <dl class="forms">
                             <dt class="tit"><label for="inp01" class="req">이름<span class="blind">필수입력</span></label></dt>
@@ -89,7 +98,8 @@
                         <div class="sub-forms-wrap">
                             <div class="sub-forms subbox">
                                 <div class="inner bdb">
-                                    <h1 class="tit mo-h2">시스템에어컨 설치정보(선택사항)</h2>
+                                    <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 텍스트 수정-->
+                                    <h1 class="tit mo-h2">시스템에어컨 설치정보</h2>
                                     <div class="desc">하기 사항을 입력해주시면 보다 정확한 상담이 가능합니다.</div>
                                 </div>
                                 <dl class="forms dl1">
@@ -155,9 +165,13 @@
                                             </div>
                                         </dd>
                                     </dl>
+
+
+
                                     <!--  BTOCSITE-518 20210707 START -->
                                     <dl class="forms dl2">
-                                        <dt class="tit"><label for="chk1-1">유형</label></dt>
+                                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크-->
+                                        <dt class="tit"><label for="chk1-1" class="req">유형<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
                                                 <input type="radio" id="chk1-1" name="chk1" checked value="아파트">
@@ -188,22 +202,26 @@
                                         </dd>
                                     </dl>
                                     <!--  BTOCSITE-518 20210707 END -->
+
                                     <dl class="forms">
-                                        <dt class="tit"><label for="inp08">설치 수량</label></dt>
+                                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크-->
+                                        <dt class="tit"><label for="inp08" class="req">설치 수량<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
                                             <div class="input-wrap">
                                                   <!--  BTOCSITE-518 20210709 START -->
-                                                <input type="text" id="inp08" name="inp08" value="" placeholder="실내기 요청 수량" maxlength="10" inputmode="numeric">
+                                                <input type="text" id="inp08" name="inp08" value="" placeholder="실내기 요청 수량" maxlength="10" inputmode="numeric" data-required="true">
                                                   <!--  BTOCSITE-518 20210709 END -->
                                             </div>
                                         </dd>
-                                    </dl>
+                                    </dl> 
+
                                     <dl class="forms dl4">
-                                        <dt class="tit"><label for="inp09">설치시점</label></dt>
+                                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크-->
+                                        <dt class="tit"><label for="inp09" class="req">설치시점<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
                                                 <!--  BTOCSITE-518 20210708 START -->
-                                                <select class="ui_selectbox" id="select3" name="select3" class="year" title="전체 카테고리 선택">
+                                                <select class="ui_selectbox" id="select3" name="select3" class="year" title="전체 카테고리 선택" data-required="true">
                                                     <option value="" class="">년</option>
                                                     <option value="2021">2021년</option>
                                                     <option value="2022">2022년</option>
@@ -213,7 +231,7 @@
                                             </div>
                                             <div class="select-wrap">
                                                   <!--  BTOCSITE-518 20210708 START -->
-                                                <select class="ui_selectbox" id="select4" name="select4" class="month" title="전체 카테고리 선택">
+                                                <select class="ui_selectbox" id="select4" name="select4" class="month" title="전체 카테고리 선택" data-required="true">
                                                     <option value="" class="">월</option>
                                                     <option value="01" class="">1월</option>
                                                     <option value="02" class="">2월</option>
@@ -240,7 +258,8 @@
                                     <h1 class="tit">기존 사용 제품</h2>
                                     <!--  BTOCSITE-518 20210707 START -->
                                     <dl class="forms dl2">
-                                        <dt class="tit"><label for="chk2-1">제품종류</label></dt>
+                                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크 -->
+                                        <dt class="tit"><label for="chk2-1" class="req">제품종류<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
                                                 <input type="radio" id="chk2-1" name="chk2" checked value="시스템에어컨(천장형)">
@@ -260,8 +279,10 @@
                                             </span>
                                         </dd>
                                     </dl>
+
                                     <dl class="forms dl2">
-                                        <dt class="tit"><label for="chk3-1">브랜드</label></dt>
+                                        <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크 -->
+                                        <dt class="tit"><label for="chk3-1" class="req">브랜드<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
                                             <span class="chk-wrap">
                                                 <input type="radio" id="chk3-1" name="chk3" checked value="엘지">
