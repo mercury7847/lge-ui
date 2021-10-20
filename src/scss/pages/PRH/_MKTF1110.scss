@@ -2686,6 +2686,9 @@
                                     font-size:32px;
                                     line-height: 1.63;
                                     font-weight: 500;
+                                    @include tablet {
+                                        font-size:24px;
+                                    }
                                     @include mobile {
                                         font-size:18px;
                                         font-weight:700;
@@ -2695,6 +2698,9 @@
                                     font-size:20px;
                                     line-height: 1.5;
                                     margin-top: 17px;
+                                    @include tablet {
+                                        font-size:18px;
+                                    }
                                     @include mobile {
                                         margin-top:7px;
                                         font-size:15px;
@@ -2705,7 +2711,9 @@
                                     font-size:16px;
                                     line-height:1.5;
                                     margin-top:10px;
-
+                                    @include tablet {
+                                        font-size:14px;
+                                    }
                                     @include mobile {
                                         font-size:13px;
                                     }
@@ -2732,7 +2740,7 @@
                         & + li {
                             margin-top:-248px;
                             @include tablet {
-                                margin-top: -200px;
+                                margin-top: -120px;
                             }
                             @include mobile {
                                margin-top:50px;
@@ -2742,6 +2750,10 @@
                             .image {
                                 width: 342px;
                                 height: 639px;
+                                @include tablet {
+                                    width: (342px * 0.6) ;
+                                    height: (639px * 0.6);
+                                }
                                 @include mobile {
                                     width: 185px;
                                     height: 348.5px;
