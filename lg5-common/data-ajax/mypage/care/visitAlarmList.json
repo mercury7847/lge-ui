@@ -12,6 +12,7 @@
                 "when":null,
                 "visitTargetSeq":"vit00001",
                 "managerEmpNo":"emp00001",
+                "changeEnable" : false,
                 "serviceList":[
                     {
                         "name":"정수기",
@@ -37,6 +38,7 @@
                 "when":"1개월 1주 후에 만나요!",
                 "visitTargetSeq":"vit00002",
                 "managerEmpNo":"emp00002",
+                "changeEnable" : false,
                 "serviceList":[
                     {
                         "name":"세탁기",
@@ -82,6 +84,7 @@
                 "when":"2개월 2주 후에 만나요!",
                 "visitTargetSeq":"vit00003",
                 "managerEmpNo":"emp00003",
+                "changeEnable" : false,
                 "serviceList":[
                     {
                         "name":"정수기",
@@ -115,6 +118,10 @@
                     }
                 ]
             }
-        ]
+        ],
+        "recentlyVisitInfo" : {
+            "date": "06.26",
+            "serviceName" : "식기세척기(WD502AP) 외 2건"
+        }
     }
 }
