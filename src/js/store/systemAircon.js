@@ -37,7 +37,9 @@
             vcui.require(['ui/validation'], function () {
                 self.validation = new vcui.ui.Validation('#systemAirconForm',{register:register});
                 self.validation.on('nextfocus', function(e,$target){
-                    console.log("target %o",$target);
+
+                    console.log("target check Value %o",$target);
+
                     if($target.attr('name') == 'addr1' || $target.attr('name') == 'plc-addr1'){
                         setTimeout(function () {
                             $target.closest('.addr-box-wrap').find('.btn').focus();
@@ -84,7 +86,9 @@
                     radioChk['isApp']= isApp() ? 'M' : 'W';
     
                     param = $.extend(param,radioChk);
+
                     console.log("param %o",param);
+                    
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                         console.log("result %o",result);
                         if(result.ResultCode === 'success') {
