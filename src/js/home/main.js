@@ -236,6 +236,91 @@ $(function () {
         });
 
         $window.trigger('breakpointchange');
+
+        // S BTOCSITE-7225 앱 AR 버튼 노출 건
+        setActiveScroll();
+        
+        function setActiveScroll(){
+            // BTOCSITE-740
+            //if (!vcui.detect.isMobileDevice) return; //2021-07-23
+
+            // 플로팅 버튼 AR 관련
+            if (vcui.detect.isMobileDevice){
+                var isApplication = isApp();
+
+                setTimeout(function(){
+                    if (isApplication){
+                        $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                        $('.floating-menu.top').hide();
+                        $('.floating-menu.top').addClass('call-yet');
+                        $(window).trigger('floatingTopHide');
+                        $(window).scrollTop(0);
+                    }
+                }, 100);
+
+                $(window).on('scroll.floating', function(){                
+                    var scrollTop = $(window).scrollTop();
+                    var hasTop = $('.floating-menu.top').hasClass('call-yet');
+
+                    if(scrollTop == 0){
+                        if(hasTop){
+                            //$('.floating-menu.top').css('opacity', 0);
+                            if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                                $('.floating-menu.btn-app-ar').css('display', 'block');
+                            }
+                            
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').hide();
+                            if(!(isApplication && location.pathname == "/")) {
+                                $(window).trigger('floatingTopHide');
+                                $('.floating-menu.top').addClass('call-yet');
+                            }
+                        } else {
+                            /*
+                            // 원본 소스
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').addClass('call-yet');
+                            */
+
+                            //임시 추가
+                            //앱인데 메인이 아닐경우에만 실행
+                            //$('.floating-menu.top').css('opacity', 1);
+                            if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                                $('.floating-menu.btn-app-ar').css('display', 'block');
+                            }
+                            $(window).trigger('floatingTopHide');
+                            $('.floating-menu.top').hide();
+                            if(!(isApplication && location.pathname == "/")) {
+                                $(window).trigger('floatingTopHide');
+                                $('.floating-menu.top').addClass('call-yet');
+                            }
+                            //임시 추가 끝
+                        }
+                    }else{
+                        if(hasTop){
+                            //$('.floating-menu.top').css('opacity', 1); //임시추가 1줄
+                            if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                                $('.floating-menu.btn-app-ar').css('display', 'block');
+                            }
+                            
+                            $('.floating-menu.top').removeClass('call-yet');
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').show();
+
+                        } else {
+                            if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                                $('.floating-menu.btn-app-ar').css('display', 'block');
+                            }
+                            $('.floating-menu.top').removeClass('call-yet');
+                            $(window).trigger('floatingTopShow');
+                            $('.floating-menu.top').show();
+                        }                       
+                    }
+                });
+            }
+        }
+        // E BTOCSITE-7225 앱 AR 버튼 노출 건
+
     });
 
 });
