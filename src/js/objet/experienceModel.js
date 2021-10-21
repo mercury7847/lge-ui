@@ -6273,7 +6273,7 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            resultDoorPriceCheck(idx, priceArry); // BTOCSITE-3198 pannelType 파라미터 추가 211020
+            resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
                 let totalSumPrice = 0;
@@ -6290,7 +6290,7 @@
             // console.log("modelTyp", modelCate);
             // console.log("defaultModel", defaultModel);
             // console.log("doorInfo", doorInfo);
-            //let pannelType = 'pannel'; // BTOCSITE-3198 pannelType 파라미터 추가 211020
+            let pannelType = 'S'; // BTOCSITE-3198 pannelType용 판매 모델명 관련 파라미터 추가 211020 (판매 모델명 형식 : S+기존모델명)
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
@@ -6367,7 +6367,7 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            resultDoorPriceCheck(idx, priceArry); // BTOCSITE-3198 pannelType 파라미터 추가 211020
+            resultDoorPriceCheck(idx, priceArry, pannelType); // BTOCSITE-3198 pannelType 파라미터 추가 211020
             //토탈 sum가격 구하기
             // setTimeout(function() {
             //     let totalSumPrice = 0;
@@ -7270,7 +7270,8 @@ function minusComma(value) {
 }
 
 //제품과 도어의 가격과 할인정보 //개발에서 함수로 반환해줌 //견적확인 버튼을 눌렀을때
-function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
+//BTOCSITE-3198 pannelType 파라미터 추가 211020
+function resultDoorPrice(idx, price, memberDiscount, directDiscount, pannelType) {
     //console.log("resultDoorPrice", price);
     // console.log("price", price);
     // console.log("memberDiscount", memberDiscount);
