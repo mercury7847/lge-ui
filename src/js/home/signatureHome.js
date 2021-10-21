@@ -737,6 +737,12 @@ $(function() {
                 if(currentStep<1) wheelScene(1);
             }, 200);
 
+            /* BTOCSITE-6178 시그니처 제품정보 URL 요청 */	
+            if(!!window.location.hash){	
+                var sigTab = $('.signature-tabs > .tabs-wrap > .tabs > li a[href="' + window.location.hash +'"]');	
+                sigTab.trigger('click');
+            }	
+            /* //BTOCSITE-6178 시그니처 제품정보 URL 요청 */
         });
 
 
