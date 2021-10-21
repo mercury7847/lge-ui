@@ -5034,7 +5034,15 @@
                 datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
                 // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
-                purchaseFn(purchaseData);
+                // BTOCSITE-3198 패널만 교체용 함수 분리 - S
+                if(plist.hasClass("pannel_list")){
+                    //패널만 교체용
+                    purchaseFnPannel(purchaseData);
+                } else {
+                    //기존 견적 확인하기용
+                    purchaseFn(purchaseData);
+                }
+                // BTOCSITE-3198 패널만 교체용 함수 분리 - E
             }
             
 
