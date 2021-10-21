@@ -529,11 +529,13 @@
                     .vip-benefit{
                         height:176px;
                         background:url('/lg5-common/images/BMC/img-mem-bene-vip.jpg') no-repeat 0 0;
+                        border-radius:8px;
                         @include mobile{
                             margin:0 -16px;
                             height:160px;
                             background-image:url('/lg5-common/images/BMC/img-mem-bene-vip-m.png');
                             background-size:cover;
+                            border-radius:0;
                         }
                         .cont{
                             display:flex;
