@@ -1452,6 +1452,9 @@ h2.title {
                                 .pannel_list {
                                     padding-bottom:10px;
                                     li{
+                                        &:nth-child(1){
+                                        display: none;
+                                        }
                                         &:before {
                                         position: relative;
                                         content: '';
