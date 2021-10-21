@@ -22,7 +22,18 @@
             return -c/2 * ((t-=2)*t*t*t - 2) + b;
         }
     });
-  
+
+        //BTOCSITE-4251 히어로 슬라이드 배너 첫번째 이미지 프리로드 (테스트중)
+        var $firstImg = $('.hero-brand .hero-banner .slide-track li').eq(0).find('.visual-area img')
+        if($firstImg.length > 0){
+            var heroPcImgSrc = $firstImg.data('pcSrc');
+            var heroMoImgSrc = $firstImg.data('mSrc');
+            var heroImg = new Image();
+            heroImg.src = vcui.detect.isMobile ? heroMoImgSrc : heroPcImgSrc
+        }
+        //BTOCSITE-4251 히어로 슬라이드 배너 첫번째 이미지 프리로드 (테스트)
+
+
         // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
         var $thinqMain = $('.ui_wide_slider');
