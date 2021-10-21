@@ -331,6 +331,69 @@
     }
 }
 /* BTOCSITE-3002 멤버십 페이지 수정 */
+.visual-wrap{
+    &.membership{
+        height:480px;
+        background:#efdce1;
+        @include mobile{
+            height:420px;
+        }
+        .inner{
+            position:relative;
+            margin:0 auto;
+            padding:96px 0 0 0;
+            max-width:1380px;
+            height:100%;
+            @include mobile{
+                padding:36px 20px 0;
+            }
+            .txt{
+                position:relative;
+                font-size:24px;
+                font-weight:700;
+                line-height:34px;
+                z-index:1;
+                word-break:break-all;
+                @include mobile{
+                    font-size:16px;
+                    line-height:24px;
+                }
+            }
+            .tit{
+                position:relative;
+                margin-top:7px;
+                font-size:48px;
+                font-weight:700;
+                line-height:66px;
+                z-index:1;
+                @include mobile{
+                    margin-top:5px;
+                    font-size:26px;
+                    line-height:36px;
+                }
+            }
+            &:after{
+                content:'';
+                position:absolute;
+                top:0;
+                right:0;
+                max-width:100%;
+                width:930px;
+                height:480px;
+                background:url("/lg5-common/images/BMC/img-membership-hero.png") right center no-repeat;
+                @include mobile{
+                    top:auto;
+                    right:0;
+                    bottom:0;
+                    max-width:360px;
+                    height:285px;
+                    background:url("/lg5-common/images/BMC/img-membership-hero-m.png") right bottom no-repeat;                    
+                    background-size:100% 100%;
+                }
+            }
+        }
+    }
+}
 .cont-wrap{
     &.membership{
         padding:0;
@@ -341,7 +404,11 @@
         .section-wrap{
             .sects{
                 margin:0 auto;
-                max-width:1380px;
+                padding:0 40px;
+                max-width:1460px;
+                @include mobile{
+                    padding:0 16px 60px;
+                }
                 .tit-wrap{
                     margin-top:100px;
                     &:first-child{
@@ -424,15 +491,19 @@
                     .btn-group{
                         @include mobile{
                             margin-top:18px;
-                        }
-                        a{
-                            padding:0 15px;
-                            height:43px;
-                            line-height:41px;
+                            a{
+                                padding:0 15px;
+                                height:43px;
+                                line-height:41px;
+                            }
                         }
                     }
                     &.mo-only-acc{
                         @include pc{
+                            .tb-scroll{
+                                margin:0;
+                                padding:0;
+                            }
                             tbody{
                                 th{
                                     border-bottom:1px solid #ddd;
@@ -451,7 +522,7 @@
                         &.on{
                             @include mobile{
                                 display:block;
-                                .vertical-fixed{
+                                .tb-scroll.vertical-fixed{
                                     position:relative;
                                     margin:0 -16px 0 0;
                                     padding:0;
@@ -559,11 +630,11 @@
                         }
                     }
                     .vip-as-guide{
+                        overflow-x:auto;
                         @include mobile{
                             margin:0 -16px;
                             padding:0 32px;
-                            height:100%;
-                            overflow-x:auto;
+                            height:100%;   
                         }
                         >ul{
                             display:table;
