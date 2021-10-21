@@ -617,6 +617,10 @@
                                                 font-size:16px;
                                                 line-height:26px;
                                                 word-break:keep-all;
+                                                @include mobile{
+                                                    font-size:15px;
+                                                    line-height:23px;
+                                                }
                                             }
                                         }
                                     }
@@ -678,6 +682,7 @@
                                         display:block;
                                     }
                                     >p{
+                                        margin-right:10px;
                                         width:calc(100% - 164px);
                                         font-size:16px;
                                         line-height:26px;
