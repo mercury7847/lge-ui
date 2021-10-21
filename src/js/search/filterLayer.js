@@ -842,7 +842,10 @@ var FilterLayer = (function() {
         },
         getSubCategory : function() {
             var ret = [];
-
+            if(!firstFilterList) {
+                var firstFilterList = [];
+            }
+            
             if(firstFilterList) {
                 firstFilterList.forEach(function(el) {
                     if(el.filterGroupType === 'sub_category') {
