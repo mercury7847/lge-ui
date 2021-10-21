@@ -767,11 +767,6 @@
         width: 1920px;
         margin: 0 auto;
     }
-    @include mobile{
-        .visual-area img{
-            height: 100%;
-        }
-    }
     .visual-area {
         img{
             position: absolute;
@@ -780,26 +775,39 @@
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             max-width: none;
-            width: 100%;
+            height: auto;
+            width: auto;
             background-position: center center;
             min-width: 100%;
             min-height: 100%;
             @include mobile{
+                height: auto;
                 object-fit: cover;
             }
         }
-        video{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            max-width: none;
-            background-position: center center;
-            min-width: 100%;
-            min-height: 100%;
-            @include mobile{
-                object-fit: cover;
+        .animation-area{
+            video{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                max-width: none;
+                background-position: center center;
+                min-width: 100%;
+                min-height: 100%;
+                &.pc{
+                    width: auto;
+                }
+                &.mobile{
+                    width: auto;
+                    height: auto;
+                    
+                }
+                @include mobile{
+                    object-fit: cover;
+                    height: 100%;
+                }
             }
         }
     }
