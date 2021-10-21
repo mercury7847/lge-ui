@@ -1741,294 +1741,6 @@
                 }
             }
         }
-
-        .content-area {
-            padding: 80px 40px 120px;
-            text-align: center;
-            @include mobile {
-                padding: 60px 16px 70px;
-            }
-            .title {
-                font-size: $font-large-6;
-                line-height: 64px;
-                @include mobile {
-                    font-size: $font-large-2;
-                    line-height: 33px;
-                }
-            }
-            .body-copy {
-                margin-top: 24px;
-                @include font-large;
-                @include mobile {
-                    margin-top: 12px;
-                }
-            }
-            .download-btn-wrap {
-                margin-top: 64px;
-                font-size: 0;
-                text-align: center;
-                [class*="btn"] {
-                    display: inline-block;
-                    padding: 0 6px;
-                    img {
-                        max-width: 100%;
-                        height: 72px;
-                    }
-                }
-                @include mobile {
-                    display: flex;
-                    justify-content: center;
-                    margin: 40px -8px 0;
-                    [class*="btn"] {
-                        display: block;
-                        padding: 0 8px;
-                        img {
-                            max-width: 100%;
-                            height: auto;
-                            max-height: 49px;
-                        }
-                    }
-                }
-            }
-        }
-        .mobile-device {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            &.fixed {
-                position: fixed;
-                top: 0;
-                left: calc(50% - 8px);
-                z-index: 11;
-                @at-root .mac & {
-                    left: 50%;
-                }
-            }
-            @include mobile {
-                position: static;
-                left: 0;
-                transform: translateY(0);
-                width: 100%;
-                padding: 0 17.222vw;
-
-            }
-            img {
-                width: 100%;
-            }
-            .frame {
-                position: relative;
-                overflow: hidden;
-                //transform: scale(0.7);
-            }
-            .device {
-                position: relative;
-                z-index: 2;
-                width: 473px;
-                height: 972px;
-                @include mobile {
-                    width: 100%;
-                    height: auto;
-
-                }
-            }
-            .screen {
-                overflow: hidden;
-                position: absolute;
-                top: 52px;
-                left: 23px;
-                z-index: 1;
-                width: 428px;
-                height: 853px;
-                @include mobile {
-                    width: 59.744vw;
-                    height: 118.472vw;
-                    top: 7.161vw;
-                    left: 3.194vw;
-                    right: 2.778vw;
-                }
-                .screen-slider {
-                    li {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                    }
-                }
-            }
-        }
-        .typography {
-            max-width: 1430px;
-            height: 600px;
-            margin: 80px auto 292px;
-            background: url('/lg5-common/images/PRH/img-app-typography.png') no-repeat center center;
-            text-align: center;
-            @include mobile {
-                display: none;
-            }
-        }
-        .install-wrap {
-            margin-top: 1000px;
-            @include mobile {
-                margin-top: 0;
-                //margin-top: calc(135.0vw + 120px);
-                padding: 120px 0 60px;
-            }
-            .slide-wrap {
-                @include mobile {
-                    padding-bottom: 44px;
-                }
-            }
-            .indi-wrap {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 120px;
-                z-index: 10;
-                @include mobile {
-                    bottom: 0;
-                }
-            }
-            .slide-controls {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 100%;
-                // transform: translateX(-50%);
-                transform: translateX(0);
-                margin-left:-50%;
-                z-index: 10;
-                .btn-arrow {
-                    position: absolute;
-                    transform: translateY(-50%);
-                    &.prev {
-                        left: 40px;
-                    }
-                    &.next {
-                        right: 40px;
-                    }
-                }
-                @include mobile {
-                    .btn-arrow {
-                        @include calc(top,50%,84px);
-                        &.prev {
-                            left: 6px;
-                        }
-                        &.next {
-                            right: 6px;
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                .image {
-                    display: none;
-                }
-            }
-            .mobile-device {
-                @include pc {
-                    display: none;
-                }
-                position: static;
-                left: 0;
-                transform: translateY(0);
-                width: 100%;
-                padding: 0 22.083vw;
-                .screen {
-                    width: 45.767vw;
-                    height: 90.372vw;
-                    top: 5.361vw;
-                    left: 2.094vw;
-                }
-            }
-            .text-area {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateY(-50%);
-                margin-left: 246px;
-                .tit {
-                    display: block;
-                    margin-bottom: 12px;
-                    font-weight: 700;
-                    @include font-large;
-                }
-                .desc {
-                    @include font-medium;
-                    .num {
-                        display: block;
-                    }
-                    .point {
-                        font-weight: 700;
-                        color: $color-primary;
-                    }
-                }
-                @include mobile {
-                    position: static;
-                    top: 100%;
-                    left: 0;
-                    transform: translateY(0);
-                    width: 100%;
-                    margin-left: 0;
-                    padding-top: 24px;
-                    text-align: center;
-                }
-            }
-        }
-
-        .app-use-wrap {
-            overflow-x:hidden;
-            background-color: $color-bg;
-            .slide-wrap {
-                padding-bottom: 44px;
-                .indi-wrap {
-                    bottom: 0;
-                }
-                .slide-controls button {
-                    @include calc(top,50%,59px);
-                    &.prev {
-                        left: -24px;
-                    }
-                    &.next {
-                        right: -24px;
-                    }
-                    @include mobile {
-                        &.prev {
-                            left: -10px;
-                        }
-                        &.next {
-                            right: -10px;
-                        }
-                    }
-                }
-                .slide-content {
-                    margin: 0 -12px;
-                    .slide-conts {
-                        padding: 0 12px;
-                    }
-                }
-            }
-            .text-area {
-                margin-top: 24px;
-                text-align: center;
-                .tit {
-                    display: block;
-                    margin-bottom: 7px;
-                    font-weight: 700;
-                    @include font-large;
-                }
-                .desc {
-                    @include font-small;
-                }
-            }
-            .bullet-list.top-border {
-                padding-top: 24px;
-                .b-txt {
-                    font-weight: 400;
-                    color: $color-default;
-                }
-            }
-        }
-
         .smart-thinq-wrap {
             .title-area {
                 margin-bottom: 47px;
@@ -2479,6 +2191,8 @@
     // 비주얼 이미지 
     .visual-img-solo {
         width: 100%;
+        max-width:1920px;
+        margin:0 auto;
         img {width: 100%;}
         .mobile-only { display: none;}
         @include mobile {
@@ -2622,6 +2336,13 @@
         }
         // 탭 메뉴 content
         .app-tab-content {
+            .tab-cont {
+                display:none;
+                &.is-active {
+                    display: block;
+                }
+            }
+
             .app-smart-wrap {
                 background-color: #f4f4f4;
                 padding: 350px 0 120px;
@@ -2721,15 +2442,13 @@
                         }
                         .detail-inner {
                             .image {
-                                width: 342px;
-                                height: 639px;
+                                $width: 370px;
+                                width: $width;
                                 @include tablet {
-                                    width: (342px * 0.6) ;
-                                    height: (639px * 0.6);
+                                    width: ($width * 0.6) ;
                                 }
                                 @include mobile {
-                                    width: 185px;
-                                    height: 348.5px;
+                                    width: 164px;
                                 }
                             }
                         }
@@ -2738,184 +2457,255 @@
             }
         }
     }
-    // 연동기기 찾기 배너 
-    .search-banner-wrap {
-        height: 80px;
-        // max-width: 1380px;
-        width: 100%;
+}
+// 연동기기 찾기 배너 
+.search-banner-wrap {
+    height: 80px;
+    // max-width: 1380px;
+    width: 100%;
+    background-color: #8c929a;
+    // background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
+    @include mobile {
+        height: 70.5px;
         background-color: #8c929a;
-        // background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
-        @include mobile {
-            height: 70.5px;
-            background-color: #8c929a;
-            // background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
-            background-size: 100% auto;
-        }
-        > button {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            span {
-                font-size:18px;
-                line-height: 1.5;
-                font-weight: 500;
-                position:relative;
-                color:#fff;
-                &:before {
-                    content:'';
-                    display:inline-block;
-                    width: 32px;
-                    height: 32px;
-                    background:url('/lg5-common/images/PRH/app/icon/ic_app.png') no-repeat 0 0;
-                    background-size:100% 100%;
-                    position: absolute;
-                    left: -38px;
-                    top: -2px;
-                    @include mobile { 
-                        width: 24px;
-                        height: 24px;
-                        left: -30px;
-                        top: 1px;
-                    }
+        // background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
+        background-size: 100% auto;
+    }
+    > button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        span {
+            font-size:18px;
+            line-height: 1.5;
+            font-weight: 500;
+            position:relative;
+            color:#fff;
+            @include mobile {
+                font-size:14px;
+            }
+            &:before {
+                content:'';
+                display:inline-block;
+                width: 32px;
+                height: 32px;
+                margin-top:-2px;
+                margin-right:12px;
+                background:url('/lg5-common/images/PRH/app/icon/ic_app.png') no-repeat 0 0;
+                background-size:100% 100%;
+                vertical-align: middle;
+
+                @include mobile { 
+                    width: 24px;
+                    height: 24px;
+                    margin-right:6px;
                 }
-                &:after {
-                    display:inline-block;
-                    content: '';
-                    width: 9px;
-                    height: 9px;
-                    border-top: 2px solid #fff;
-                    border-right: 2px solid #fff;
-                    display: inline-block;
-                    transform: rotate(45deg);
-                    position: absolute;
-                    top: 9px;
-                    right: -15px;
-                }
+            }
+            &:after {
+                display:inline-block;
+                content: '';
+                width: 9px;
+                height: 9px;
+                margin-top:-2px;
+                margin-left:10px;
+                border-top: 2px solid #fff;
+                border-right: 2px solid #fff;
+                transform: rotate(45deg);
+                vertical-align: middle;
+                // position: absolute;
+                // top: 9px;
+                // right: -15px;
             }
         }
     }
-    // ThinQ 앱 다운 안내 슬라이드
-    .download-guide-slide {
-        max-width: 1380px;
-        margin:0 auto;
-        .download-guide-item {
-            height: 440px;
-            @include mobile {
-                height: 480px;
-            }
-            &.bg-appDown {
-                background:url('/lg5-common/images/PRH/app/img_app_download_banner_01.jpg') no-repeat 0 0;
-                @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_01_m.jpg') no-repeat 0 0;
-                    background-size: 100% 100%;
-                }
-            }
-            &.bg-howTo {
-                background:url('/lg5-common/images/PRH/app/img_app_download_banner_02.jpg') no-repeat 0 0;
-                @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_02_m.jpg') no-repeat 0 0;
-                    background-size: 100% 100%;
-                }
-            }
-            &.bg-magazine {
-                background:url('/lg5-common/images/PRH/app/img_app_download_banner_03.jpg') no-repeat 0 0;
-                @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_03_m.jpg') no-repeat 0 0;
-                    background-size: 100% 100%;
-                }
-            }
-            .item-inner {
-                padding:65px 0 0 120px; 
-                @include mobile { 
-                    padding: 36px 32px;
-                    text-align: center;
-                    .btn-area {
-                        .btn {
-                            height:43px;
-                            font-size:13px;
-                            line-height: 1;
-                        }
-                    }
-                }
-                .btn-download {
-                    width: 162px;
-                    height: 50px;
-                    display: inline-block;
-                    img {
-                        width: 100%;
-                    }
-                    & + .btn-download {margin-left: 4px;}
-                    @include mobile {
-                        width:139.5px;
-                        height: 43px;
-                    }
-                }
-                .text-wrap {
-                   .item-title {
-                       font-size:40px; 
-                       line-height: 56px;
-                       @include mobile { 
-                            font-size:24px;
-                            line-height: 1.38;
-                       }
-                    }
-                   .item-desc {
-                       font-size:18px; 
-                       line-height: 28px;
-                       @include mobile { 
-                            font-size:14px;
-                            line-height: 1.57;
-                       }
-                    }
-                   .item-title + .item-desc {
-                       margin-top: 10px;
-                       @include mobile {
-                           margin-top: 5.5px;
-                       }
-                    }
-                }
-            }
-            .text-wrap + .btn-area {
-                margin-top: 25px;
-                @include mobile {
-                    margin-top: 24.5px;
-                }
-            }
+}
+
+// ThinQ 앱 다운 안내 슬라이드
+.app-download-guide {
+    max-width: 1460px;
+    margin:120px auto 0;
+    padding:0 40px 66px;
+
+    @include mobile {
+        margin:60px auto 0;
+        padding:0 0 32px;
+
+        .slick-dots {
+            bottom:-24px;
         }
+    }
+
+    .slide-item {
+        overflow:hidden;
+        height: 440px;
+        border-radius:8px;
+
         @include mobile {
-            .slick-dots {
-                bottom:-24px;
+            height: 480px;
+            border-radius:0;
+        }
+        &.bg-appDown {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_01.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_01_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
             }
         }
-        .slick-arrow.slick-prev {
-            left:-18px;
-            @include tablet {
-                left:0
-            }
-            @media screen and (max-width: 1450px) {
-                left:0
+        &.bg-howTo {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_02.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_02_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
             }
         }
-        .slick-arrow.slick-next {
-            right:-18px;
-            @include tablet {
-                right:0
+        &.bg-magazine {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_03.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_03_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
             }
-            @media screen and (max-width: 1450px) {
-                right:0
+        }
+        .item-inner {
+            padding:65px 0 0 120px; 
+            @include mobile { 
+                padding: 36px 32px;
+                text-align: center;
+                .btn-area {
+                    .btn {
+                        height:43px;
+                        font-size:13px;
+                        line-height: 1;
+                    }
+                }
+            }
+            .btn-download {
+                width: 162px;
+                height: 50px;
+                display: inline-block;
+                img {
+                    width: 100%;
+                }
+                & + .btn-download {margin-left: 4px;}
+                @include mobile {
+                    width:139.5px;
+                    height: 43px;
+                }
+            }
+            .text-wrap {
+               .item-title {
+                   font-size:40px; 
+                   line-height: 56px;
+                   @include mobile { 
+                        font-size:24px;
+                        line-height: 1.38;
+                   }
+                }
+               .item-desc {
+                   font-size:18px; 
+                   line-height: 28px;
+                   @include mobile { 
+                        font-size:14px;
+                        line-height: 1.57;
+                   }
+                }
+               .item-title + .item-desc {
+                   margin-top: 10px;
+                   @include mobile {
+                       margin-top: 5.5px;
+                   }
+                }
+            }
+        }
+        .text-wrap + .btn-area {
+            margin-top: 25px;
+            @include mobile {
+                margin-top: 24.5px;
             }
         }
     }
     
-    .search-banner-wrap + .download-guide-slide {
-        margin-top: 120px;
+    .slick-arrow.slick-prev {
+        left:-18px;
+
         @include mobile {
-            margin-top: 60px;
+            left:4px;
+        }
+    }
+    .slick-arrow.slick-next {
+        right:-18px;
+        @include mobile {
+            right:4px;
         }
     }
 }
+
+//앱 체험한내
+.app-experience-intro {
+    max-width:1460px;
+    margin:120px auto 0;
+    padding:0 40px;
+    
+    @include mobile {
+        margin:60px auto 0;
+        padding:0 16px;
+    }
+    .intro {
+        &-inner {
+            text-align: center;
+            .btn-area {
+                margin-top:32px;
+
+                @include mobile {
+                    margin-top:24px;
+                }
+                .btn {
+                    font-size:14px;
+                    padding:6px 16px;
+
+                    @include mobile {
+                        font-size:13px;
+                        padding:12px 20px;
+                    }
+                }
+            }
+        }
+        &-tit {
+            display: block;
+            font-size:32px;
+            font-weight:bold;
+            line-height:1.31;
+
+            @include mobile {
+                font-size:24px;
+            }
+        }
+        &-desc {
+            margin-top:16px;
+            font-size:16px;
+            line-height:1.63;
+            @include mobile {
+                margin-top:13px;
+                font-size:14px;
+            }
+        }
+        &-image {
+            overflow:hidden;
+            margin:48px auto 0;
+            border-radius:8px;
+
+            @include mobile {
+                margin:24px auto 0;
+            }
+
+            img {
+                width:100%;
+            }
+        }
+    }
+}
+
 
 .icon-wrap {
     display: inline-flex;
@@ -2962,7 +2752,7 @@
             &-#{$name} {
                 background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
                 @at-root 
-                .menu-item.on .icon-#{$name} {
+                .menu-item.is-active .icon-#{$name} {
                     background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
                 }
             }

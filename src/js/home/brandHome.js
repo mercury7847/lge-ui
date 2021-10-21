@@ -31,7 +31,8 @@
             self.$appTabMenu = self.$appTabArea.find('.menu-slide-nav');
             self.$appTablist = self.$appTabMenu.find('.menu-item');
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
-            self.$appGuideSlider = self.$appContainer.find('.download-guide-slide');
+            self.$appDownload = self.$appContainer.find('.app-download-guide');
+            self.$appDownloadSlider = self.$appDownload.find('.guide-slider');
             self.$howToPopup = $('.popup-howto');            
             self.$howToUseAppSlider = self.$howToPopup.find('.howto-slider');
 
@@ -79,9 +80,10 @@
                     $(this).children('.txt').text('닫기');
                     self.appSmartTab.destroy()
                 }else{
-                    var currentIndex = self.$appTablist.filter('.on').index();
+                    var currentIndex = self.$appTablist.filter('.is-active').index();
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
+                    console.log("currentIndex", currentIndex)
                     self.appSmartTab.init(currentIndex)
                 }
             })
@@ -89,10 +91,15 @@
             //App 탭 > 우리집 스마트한 생활 > 메뉴 클릭
             self.$appTablist.find('a').on('click', function(e) {
                 e.preventDefault();
-                self.$appTabCont.find('.tab-cont').hide().filter(this.hash).show();
-                self.$appTablist.removeClass('on');
-                $(this).parent().addClass('on');
-            }).filter(':eq(0)').click();
+
+                self.$appTabCont.find('.tab-cont').removeClass('is-active');
+                self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
+                $(this).parent().addClass('is-active').siblings().removeClass('is-active');
+
+                if( !self.$appTabMenu.hasClass('slick-initialized')) {
+                    self.$appTabBtnAll.trigger('click')
+                }
+            })
 
             //App 탭 > 하단 슬라이드배너 > 앱 설치 및 사용방법 팝업 버튼 활성화시 팝업내 슬라이드 활성화
             self.$howToPopup.on('modalshown', function(e){
@@ -224,19 +231,15 @@
             //전체 탭
             var self = this;
 
-            var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
-
             self.$stickyTab.on('tabchange', function(e, data){
-                self.$thinqMain.scrollTop(0); 
-                $('html, body').stop().animate({scrollTop:stickyTabOffsetTop});
+                // self.$thinqMain.scrollTop(0); 
+                $('html, body').stop().animate({scrollTop:self.$stickyTabWrap.offset().top});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
                     self.appSmartTab.load();
                     self.appDownloadGuideSlider.load();
                 } else {
-                    // if( self.$appTabArea.find('.menu-slide-block').hasClass('is-active')) {
-                    //     self.$appTabBtnAll.trigger('click');
-                    // }
+                   
                 }
             })
         },
@@ -304,13 +307,13 @@
             },
             init: function(){
                 var guideSlider = this;
-                thinQMain.$appGuideSlider.not('.slick-initialized').slick(guideSlider.slideConfig)
+                thinQMain.$appDownloadSlider.not('.slick-initialized').slick(guideSlider.slideConfig)
             },
             reinit: function(){
-                thinQMain.$appGuideSlider.filter('.slick-initialized').slick('refresh')
+                thinQMain.$appDownloadSlider.filter('.slick-initialized').slick('refresh')
             },
             load: function(){
-                if( thinQMain.$appGuideSlider.hasClass('slick-initialized') ) {
+                if( thinQMain.$appDownloadSlider.hasClass('slick-initialized') ) {
                     this.reinit();
                 } else {
                     this.init();
@@ -356,6 +359,7 @@
             
             self.$searchSelect.vcSelectbox('selectedIndex', 0, false);
             self.$searchInput.val('');
+            self.$searchDel.hide();
             self.searchSwap('.intro-message');
         },
         swapContent: function(target, targetArray, $parent){
