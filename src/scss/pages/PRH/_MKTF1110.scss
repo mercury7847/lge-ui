@@ -2031,7 +2031,10 @@
 
         .smart-thinq-wrap {
             .title-area {
-                margin-bottom: 32px;
+                margin-bottom: 47px;
+                @include mobile {
+                    margin-bottom:37px;
+                }
             }
             .tabs-wrap {
                 margin-bottom: 30px;
@@ -2564,42 +2567,9 @@
                     display: inline-block;
                     width: 90px;
                     text-align: center;
+                    vertical-align: top;
                     a {
                         display: inline-block;
-                    }
-                    &.on {
-                        .icon-wrap {
-                            // border:2px solid #000
-                        }
-                    }
-
-                    @include mobile {
-                        // &.active-first {
-                        //     &:before {
-                        //         content:"";
-                        //         position: absolute;
-                        //         display: inline-block;
-                        //         top:0;
-                        //         left:0;
-                        //         height:100%;
-                        //         width:35px;
-                        //         background-image: linear-gradient(89deg, #fff 3%, rgba(255, 255, 255, 0) 99%);
-                        //         z-index:1;
-                        //     }
-                        // }
-    
-                        // &.active-last {
-                        //     &:after {
-                        //         content:"";
-                        //         position: absolute;
-                        //         display: inline-block;
-                        //         top:0;
-                        //         right:0;
-                        //         height:100%;
-                        //         width:60px;
-                        //         background-image: linear-gradient(89deg, rgba(255, 255, 255, 0) 3%, #fff 99%);
-                        //     }
-                        // }
                     }
                 }
             }
@@ -2638,7 +2608,6 @@
                     }
                 }
                 .menu-item {
-                    float:left;
                     width:calc(100%/7);
                     margin-top: 47px;
                     @include tablet {
