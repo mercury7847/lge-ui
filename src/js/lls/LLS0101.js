@@ -47,17 +47,19 @@ $(function(){
     $(window).on('load', function(){
         window.addEventListener(
             "message", function(e) { 
-              if(typeof e.data == 'string'){ 				
+                if(typeof e.data == 'string'){ 				
                     var obj = JSON.parse(e.data);
 
                     //console.log("check", obj);
+                    
 
                     if(obj["key"] == "sauceflexMoveLogin"){
                         location.href="/sso/api/Login";
                     }else if(obj["key"] == "sauceflexMoveProduct"){
-                        location.href=obj["params"].linkUrl;    	
+                        location.href=obj["params"].linkUrl;  
+
                     }else if(obj["key"] == "sauceflexOnShare"){ 		    	
-                        console.log(e)
+
                     //   var dummy = document.createElement("input");
 
                     //   console.log("check 1", dummy);
@@ -69,11 +71,20 @@ $(function(){
                     //   document.body.removeChild(dummy);
                     //   alert("URL을 복사했습니다.");	 		       
 
-                        $('.tooltip-wrap.share .tooltip-icon').trigger('click');
+                    //$('.tooltip-wrap.share .tooltip-icon').trigger('click');
+
+                    //console.log("sssss");
+                    $('.tooltip-box').toggle();
+                    $('.lls-frame-head').find('.btn-close').on('click', function(){
+                        $('.tooltip-box').hide();
+                    });
+
+
                     }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
                         location.href="/livecommerce";
                     }
-                }    
+                }
+
             }, false
         );
     })

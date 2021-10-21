@@ -3,6 +3,10 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+.evt_con {
+    position: relative;
+}
+
 .lls-frame {
     position:fixed;
     top:0;
@@ -51,38 +55,149 @@
         .tooltip-wrap.share {
             position: absolute;
             top: 44px;
-            left: 385px;
+            left: 410px;
             padding: 0;
-            .tooltip-icon {
-                // opacity: 0;
-                background-image: url('/lg5-common/images/icons/ic-share-MO-48-wht.svg');
-                background-size:100% 100%;
-                background-color: rgba(0, 255, 38, 0.6);
+            .tooltip-box {
+                padding-right: 32px;
             }
         }
         @media screen and (max-width: 1300px) {
             max-width: 100vw;
             margin-left: -50vw;
             .tooltip-wrap.share {
+                //top: 3.3846153846153846vw;
+                //left: 29.615384615384617vw;
                 top: 3.3846153846153846vw;
-                left: 29.615384615384617vw;
+                left: 31.538461538461537vw;
+                .tooltip-box {
+                    padding-right: 2.4615384615384617vw;
+
+                    top: 2.6153846153846154vw;
+                    min-width: 26.769230769230766vw;
+                    .title {
+                        font-size: 1.5384615384615385vw;
+                        line-height: 2.307692307692308vw;
+                    }
+                    .sns-wrap {
+                        margin-top: 1.2307692307692308vw;
+                        padding-top: 1.2307692307692308vw;
+                        .sns-list {
+                            li {
+                                margin-left: 1.1384615384615385vw;
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+                                .ico-btn {
+                                    min-width: 4.3076923076923075vw;
+                                    padding-top: 2.769230769230769vw;
+                                    font-size: 1.0769230769230769vw;
+                                    line-height: 1.8461538461538463vw;
+                                    background-size: 2.4615384615384617vw 2.4615384615384617vw;
+                                }
+                            }
+                        }
+                    }
+                    .btn-close {
+                        top: 2.4615384615384617vw;
+                        right: 2.4615384615384617vw;
+                        width: 2.4615384615384617vw;
+                        height: 2.4615384615384617vw;
+                    }
+                }
             }
         }
 
-        @media screen and (max-width: 980px) {
+        @media screen and (max-width: 1000px) {
             max-width: 767px;
             margin-left: -383px;
+            height: 5px;
+            background-color: #f00;
             .tooltip-wrap.share {
                 top: 15px;
                 left: auto;
-                right: 55px;
+                right: 40px;
+                .tooltip-box {
+                    padding-right: 32px;
+                    top: 34px;
+                    min-width: 348px;
+                    border-radius: 8px;
+                    .title {
+                        font-weight: 700;
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+                    .sns-wrap {
+                        margin-top: 16px;
+                        padding-top: 16px;
+                        .sns-list {
+                            li {
+                                margin-left: 20px;
+                                .ico-btn {
+                                    min-width: 56px;
+                                    padding-top: 36px;
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    background-size: 32px 32px;
+                                }
+                            }
+                        }
+                    }
+                    .btn-close {
+                        top: 32px;
+                        right: 32px;
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+        // @media screen and (max-width: 1000px) {
+
+        // }
+
+        @media screen and (max-width: 767px) {
+            max-width: 767px;
+            margin-left: 0;
+            left: 0;
+            .tooltip-wrap.share {
+                right: 30px;
+            }
+            .tooltip-box {
+                top: 40px;
+                .title {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+                .sns-wrap {
+                    .sns-list {
+                        li {
+                            margin-left: 12px;
+                            .ico-btn {
+                                font-size: 13px;
+                                line-height: 21px;
+                            }
+                        }
+                    }
+                }
+                .btn-close {
+                    top: 24px;
+                    right: 24px;
+                    width: 24px;
+                    height: 24px;
+                }
             }
         }
 
-        @media screen and (max-width: 768px) {
-            top: 0;
-            max-width: 99.86979166666666vw;
-            margin-left: -49.86979166666667vw;
+        @media screen and (max-width: 450px) {
+            .tooltip-wrap.share {
+                right: 0;
+                left: 0;
+                .tooltip-box {
+                    top: 30px;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                }
+            }
         }
     }
     /* //BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
