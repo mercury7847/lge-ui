@@ -810,6 +810,9 @@
                 }
             }
         }
+        .hidden{
+            opacity: 0.1;
+        }
     }
     // 텍스트 옵션 (좌우, 상하, 폰트컬러) 
     .text-area {
@@ -945,6 +948,16 @@
         }
     }
 }
+.heroImg-preload{
+    position:fixed;
+    width: 10px;
+    height: 10px;
+    bottom:0;
+    left:0;
+    opacity: 0.1;
+    overflow: hidden;
+}
+
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
 
 // 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용(BTOCSITE-4251)으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
