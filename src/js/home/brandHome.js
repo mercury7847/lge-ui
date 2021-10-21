@@ -251,6 +251,7 @@
                     {
                         breakpoint:1280,
                         settings:{
+                            arrows:false,
                             slidesToShow: 5,
                             slidesToScroll: 5,
                         }
@@ -421,7 +422,7 @@
             //전체탭 스티키
             var self = this;
             
-            if( self.$stickyTabWrap.length > 0 ) {
+            if( self.$stickyTabWrap && self.$stickyTabWrap.length > 0 ) {
                 var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
     
                 if(scrollTop >= stickyTabOffsetTop) {

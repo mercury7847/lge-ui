@@ -2524,6 +2524,10 @@
                 margin-right:32px;
                 padding:0 48px;
 
+                @include tablet {
+                    padding:0;
+                }
+
                 @include mobile {
                     margin-right:16px;
                     padding:0;
@@ -2544,13 +2548,13 @@
                     &.slick-prev {
                         left:0;
                         &:before {
-                            background-image:url('/lg5-common/images/PRH/app/ic_calender_prev_48.svg');
+                            background-image:url('/lg5-common/images/PRH/app/icon_carousel_prev_48.svg');
                         }
                     }
                     &.slick-next {
                         right:0;
                         &:before {
-                            background-image:url('/lg5-common/images/PRH/app/ic_calender_next_48.svg');
+                            background-image:url('/lg5-common/images/PRH/app/icon_carousel_next_48.svg');
                         }
                     }
                 }
@@ -2629,7 +2633,7 @@
                     }
                     .icon {
                         &-all {
-                            background-image:url('/lg5-common/images/PRH/app/ic_close_64.png');
+                            background-image:url('/lg5-common/images/PRH/app/icon_close_64.png');
                         }
                     }
                 }
@@ -2833,23 +2837,23 @@
                 height: 480px;
             }
             &.bg-appDown {
-                background:url('/lg5-common/images/PRH/app/img_banner_01.jpg') no-repeat 0 0;
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_01.jpg') no-repeat 0 0;
                 @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_banner_01_m.jpg') no-repeat 0 0;
+                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_01_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
             }
             &.bg-howTo {
-                background:url('/lg5-common/images/PRH/app/img_banner_02.jpg') no-repeat 0 0;
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_02.jpg') no-repeat 0 0;
                 @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_banner_02_m.jpg') no-repeat 0 0;
+                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_02_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
             }
             &.bg-magazine {
-                background:url('/lg5-common/images/PRH/app/img_banner_03.jpg') no-repeat 0 0;
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_03.jpg') no-repeat 0 0;
                 @include mobile {
-                    background:url('/lg5-common/images/PRH/app/img_banner_03_m.jpg') no-repeat 0 0;
+                    background:url('/lg5-common/images/PRH/app/img_app_download_banner_03_m.jpg') no-repeat 0 0;
                     background-size: 100% 100%;
                 }
             }
