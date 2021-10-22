@@ -4891,7 +4891,7 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
-	        let doorInfo = [];
+            let doorInfo = [];
             let saveInfo = []; 
             if (completedCheck() == false){
                 let desc = "";
@@ -4933,7 +4933,7 @@
             let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let purchaseData = [];
 
-	        //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
+            //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
             if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
                purchaseData = saveInfo.slice();
             }
@@ -4955,19 +4955,19 @@
                 if(plChk.length && $('.sum').css('display') == 'flex'){
                     plist.each(function(index) {
                         if (!$(this).hasClass("sum")) {
+                            //BTOCSITE-3198 S - 211022
+                            let pushData = "";
                             if(index == 0) {
                                 $(this).attr("data-default-code",modelCode);
+                                pushData = modelCode;
                             } else {
-                                if(plist[index].className == "is_active"){
-                                    $(this).attr("data-default-code");
-                                }else{
-                                    $(this).attr("data-default-code","");
-                                }
+                                pushData = plist[index].className == "is_active" ? $(this).attr("data-default-code") : "";
                             }
                             //BTOCSITE-4239 210910 변경
                             if($('.model_experience').attr('data-page-type') === 'COMMON') {
-                                purchaseData.push($(this).attr("data-default-code"));
+                                purchaseData.push(pushData);
                             }
+                            //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
                         }
                     });
                 } else if(plChk.length && $('.sum').css('display') == 'none') {
