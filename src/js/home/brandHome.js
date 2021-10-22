@@ -119,11 +119,12 @@
                 self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
             })
 
-            self.$searchSelect.on('change', function(e){
-                var categoryId = self.$searchSelect.vcSelectbox('value')
-                var searchKeyword = self.$searchInput.val();
-                self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
-            });
+            //검색팝업: 셀렉트박스
+            // self.$searchSelect.on('change', function(e){
+            //     var categoryId = self.$searchSelect.vcSelectbox('value')
+            //     var searchKeyword = self.$searchInput.val();
+            //     self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": 1});
+            // });
 
             //검색팝업: 검색어 입력
             self.$searchInput.on('keydown', function(e){
