@@ -110,6 +110,7 @@
             //검색팝업: 검색어 삭제
             self.$searchDel.on('click', function(e){
                 self.$searchInput.val('');
+                $(this).hide();
             })
 
             //검색팝업: 검색 실행
