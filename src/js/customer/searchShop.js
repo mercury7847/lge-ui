@@ -202,7 +202,6 @@
                 self.defaultInfoViewId = vcui.uri.getParam('shopId');   
                 self.totalStoreData = [];         
                 
-                
                 vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support/common/quickMenu.min'], function (StoreMap) {  
     
                     self.$map = new StoreMap(self.$mapArea,{
@@ -599,15 +598,19 @@
                 // lgkorUI.showLoading();
     
                 lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search', salesCode:self.salesCode}, function(result){
-    
-                    if(result.data.length){
-    
+                    // BTOCSITE-4785
+                    if(result.data.length == 0){
+                        self.totalStoreData = result.data;
+                        self.$defaultListLayer.append('<div class="no-data"><p>검색 결과가 없습니다.</p></div>'); 
+                    } else if(result.data.length){
+                        
                         var arr = vcui.array.map(result.data, function(item, index){
                             var itemObj = vcui.array.filterOne(self.totalStoreData, function(obj,i){
                                 return item['shopID'] == obj['shopID']
                             });
                             return itemObj;
                         });
+                        self.totalStoreData = arr;
     
                         var defaultLat = self.currentLatitude;
                         var defaultLong = self.currentLongitude;
@@ -617,8 +620,9 @@
                             defaultLat = self.userLatitude;
                             defaultLong = self.userLongitude;
                         }
-    
-                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        // BTOCSITE-4785 : 반경 100km 이내 거리순 7개로 변경
+                        //var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
     
                         if(nArr.length == 0){                       
     
@@ -642,7 +646,7 @@
                             }, self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                         }else{
                             self.$map.draw(nArr, defaultLat, defaultLong);
-                        }                    
+                        }   
                     } 
     
                     // lgkorUI.hideLoading();
