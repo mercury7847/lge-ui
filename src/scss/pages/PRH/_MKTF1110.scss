@@ -2190,14 +2190,19 @@
 .app-tab-section {
     // 비주얼 이미지 
     .visual-img-solo {
-        width: 100%;
-        max-width:1920px;
-        margin:0 auto;
-        img {width: 100%;}
-        .mobile-only { display: none;}
+        position:relative;
+        height:480px;
         @include mobile {
-            .pc-only {display:none}
-            .mobile-only {display:block;}
+            height:270px;
+        }
+        img {
+            position:absolute;
+            top:50%;
+            left:50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform:translate(-50%, -50%);
         }
     }
     // 탭 영역
@@ -2317,7 +2322,7 @@
                     }
                     .icon {
                         &-all {
-                            background-image:url('/lg5-common/images/PRH/app/icon_close_64.png');
+                            background-image:url('/lg5-common/images/PRH/app/icon_close_64.svg');
                         }
                     }
                 }
@@ -2442,7 +2447,7 @@
                         }
                         .detail-inner {
                             .image {
-                                $width: 370px;
+                                $width: 342px;
                                 width: $width;
                                 @include tablet {
                                     width: ($width * 0.6) ;
@@ -2572,8 +2577,14 @@
             @include mobile { 
                 padding: 36px 32px;
                 text-align: center;
-                .btn-area {
-                    .btn {
+            }
+            .btn-area {
+                .btn {
+                    &:hover, &:focus, &:active {
+                        color:#fff;
+                    }
+
+                    @include mobile {
                         height:43px;
                         font-size:13px;
                         line-height: 1;
@@ -2664,6 +2675,10 @@
                     font-size:14px;
                     padding:6px 16px;
 
+                    &:hover, &:focus, &:active {
+                        color:#fff;
+                    }
+
                     @include mobile {
                         font-size:13px;
                         padding:12px 20px;
@@ -2743,22 +2758,23 @@
         }
 
         &-all {
-            background-image:url('/lg5-common/images/PRH/app/img_all_64.png');
+            background-image:url('/lg5-common/images/PRH/app/icon_all_64.svg');
         }
     }
     $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
     @each $name in $prdIconLists {
-        .icon {
-            &-#{$name} {
-                background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
-                @at-root 
-                .menu-item.is-active .icon-#{$name} {
-                    background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
-                }
-            }
+        @at-root .menu-item .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
+        }
+        @at-root .menu-item.is-active .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
+        }
+        @at-root .prd-result-lists .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.png');
         }
     }
 }
+
 // 연동기기 찾기 팝업 
 .popup-searchMachine {
     height: 800px;
