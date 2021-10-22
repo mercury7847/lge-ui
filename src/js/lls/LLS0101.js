@@ -60,24 +60,24 @@ $(function(){
 
                     }else if(obj["key"] == "sauceflexOnShare"){ 		    	
 
-                      var dummy = document.createElement("input");
+                        var dummy = document.createElement("input");
 
-                      console.log("check 1", dummy);
+                    //   console.log("check 1", dummy);
 
-                      document.body.appendChild(dummy);
-                      dummy.value = window.location.href;
-                      dummy.select();	 		       
-                      document.execCommand("copy");	 		        
-                      document.body.removeChild(dummy);
-                      alert("URL을 복사했습니다.");	 		       
+                    //   document.body.appendChild(dummy);
+                    //   dummy.value = window.location.href;
+                    //   dummy.select();	 		       
+                    //   document.execCommand("copy");	 		        
+                    //   document.body.removeChild(dummy);
+                    //   alert("URL을 복사했습니다.");	 		       
 
                     //$('.tooltip-wrap.share .tooltip-icon').trigger('click');
 
                     //console.log("sssss");
-                    // $('.tooltip-box').toggle();
-                    // $('.lls-frame-head').find('.btn-close').on('click', function(){
-                    //     $('.tooltip-box').hide();
-                    // });
+                    $('.tooltip-box').toggle();
+                    $('.lls-frame-head').find('.btn-close').on('click', function(){
+                        $('.tooltip-box').hide();
+                    });
 
 
                     }else if(obj["key"] == "sauceflexMoveExit"){ 		    	
