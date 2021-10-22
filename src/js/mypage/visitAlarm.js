@@ -296,14 +296,14 @@
                     });
 
                     //BTOCSITE-7039
-                    var recentlyInfo = data.recentlyVisitInfo;
-                    var recenttlyMonth = recentlyInfo.date.split('.')[0]
-                    var recenttlyDate = recentlyInfo.date.split('.')[1]
-                    var recentlyServiceName = recentlyInfo.serviceName;
-
-                    console.log(recenttlyMonth, recenttlyDate)
-                    $('.service-info-txt').find('em').not('.red').text(recenttlyMonth + '월 ' + recenttlyDate + '일에 매니저가 방문') 
-                    $('.service-info-txt').find('em.red').text(recentlyServiceName) 
+                    var $infoTitle = $('.service-info-txt .tit');
+                    if( data.prevDateStr != undefined && data.prevDateStr != "" && data.representativeModel != undefined && data.representativeModel !="") {
+                        $infoTitle.find('em').not('.red').text(data.prevDateStr) 
+                        $infoTitle.find('em.red').text(data.representativeModel) 
+                        $infoTitle.show();
+                    } else {
+                        $infoTitle.hide();
+                    }
                 });
             },
 
