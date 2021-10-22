@@ -3039,7 +3039,8 @@
         }
     }
     .howto-slider {
-        width: 1066px;
+        max-width: 1066px;
+        margin:0 auto;
         padding:0 59px;
         @include tablet {
             width: 100%;
