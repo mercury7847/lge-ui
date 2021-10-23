@@ -603,7 +603,11 @@
                     var param = {};
                     var filterdata = JSON.parse(filterLayerData.filterData);
                     for(var key in filterdata){
-                        param[key] = filterdata[key].join(",");
+                        // top category 의 경우 전체 탭은 값이 없으므로 뺀다.
+                        var filterValue = filterdata[key].join(",");
+                        if(filterValue){
+                            param[key] = filterValue;
+                        }
                     }
                     param.sortType = filterLayerData.sortType;
 
