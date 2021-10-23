@@ -489,7 +489,6 @@
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
-                    self.$listSorting.show();
                 }
             },
 
@@ -611,7 +610,16 @@
                         if(result.data.linkTarget == 'self') {
                             location.href = result.data.url;
                         } else {
-                            window.open(result.data.url,'_blank');
+                            if(isApp()) {   
+                                if(vcui.detect.isIOS){
+                                    var jsonString = JSON.stringify({'command':'sendOutLink', 'url': result.data.url});
+                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                                } else {
+                                    void android.openLinkOut(result.data.url);
+                                }
+                            } else {
+                                window.open(result.data.url,'_blank');
+                            }
                         }
                     } else {
                         lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
@@ -855,7 +863,8 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
-                        self.$listSorting.find('.sort-select-wrap').show();
+                        // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
+                        self.$listSorting.find('.sort-select-wrap').removeAttr('style');
                     }
 
                     //페이지
