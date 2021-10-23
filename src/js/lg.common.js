@@ -2642,7 +2642,11 @@ var goAppUrl = function(path) {
                     iframe.parentNode.removeChild(iframe);
                     iframe = null;
 
-                    vcui.Cookie.remove('AF_LOGIN');
+                // vcui 도메인 세팅이 틀린경우 삭제가 안되어 과거로 돌려서 삭제함.
+                vcui.Cookie.set('AF_LOGIN','',{
+                    expires : new Date('1999/01/01'),
+                    domain : location.host
+                });
             }
         }
     }
