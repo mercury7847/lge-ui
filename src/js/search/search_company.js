@@ -489,7 +489,6 @@
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
-                    self.$listSorting.show();
                 }
             },
 
@@ -855,7 +854,8 @@
                             self.$layFilter.css('display', '');
                         }
                         self.$btnFilter.show();
-                        self.$listSorting.find('.sort-select-wrap').show();
+                        // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
+                        self.$listSorting.find('.sort-select-wrap').removeAttr('style');
                     }
 
                     //페이지

@@ -154,16 +154,14 @@ if ('scrollRestoration' in history) {
                         console.log("큐레이션 %o",data);
                         //큐레이션 선택
                         //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
+                        //BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
                         if(vcui.isEmpty(data)) {
-                            self.$sortListCurationHidden.show();
                             self.$listSorting.removeClass('selected');
-                            //selected
                             var filterData  = self.filterLayer.getDataFromFilter();
                             filterData.curation = data;
                             self.requestSearch(self.makeFilterData(filterData));
                         } else {
-                            var filterData  = "{}";
-                            self.$sortListCurationHidden.hide();
+                            var filterData  = {};
                             self.$listSorting.addClass('selected');
                             filterData.curation = data;
                             self.requestSearch(filterData);
@@ -626,7 +624,6 @@ if ('scrollRestoration' in history) {
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
-                    self.$listSorting.show();
                 }
             },
 
@@ -792,11 +789,10 @@ if ('scrollRestoration' in history) {
                 location.hash = self.uniqId;
 
                 //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
+                // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
                 if(vcui.isEmpty(filterQueryData.curation)) {
-                    self.$sortListCurationHidden.show();
                     self.$listSorting.removeClass('selected');
                 } else {
-                    self.$sortListCurationHidden.hide();
                     self.$listSorting.addClass('selected');
                 }
 
@@ -1080,8 +1076,8 @@ if ('scrollRestoration' in history) {
                         } else {
                             self.$btnFilter.show();
                         }
-                        //
-                        self.$listSorting.find('.sort-select-wrap').show();
+                        // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
+                        self.$listSorting.find('.sort-select-wrap').removeAttr('style');
                     }
 
                     //페이지

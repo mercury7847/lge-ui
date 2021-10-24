@@ -1565,6 +1565,15 @@
 
 .list-sorting {
     //display: none;
+    // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
+    &.selected {
+        .sort-area {
+            .sort-check-area,.sort-select-wrap,.sort-search-area  {
+                display:none !important;
+            }
+        }
+    }
+
     @include tablet {
         padding: 44px 0 16px;
         &.selected {
@@ -1621,11 +1630,12 @@
             &.left {
                 padding-top: 0;
             }
-            .sort-check-area {
-                position: absolute;
-                top: 4px;
-                right: 0;
-            }
+            // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
+            // .sort-check-area {
+            //     position: absolute;
+            //     top: 4px;
+            //     right: 0;
+            // }
             .sort-search-area {
                 display: none;
             }
