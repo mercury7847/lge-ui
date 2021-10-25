@@ -53,9 +53,11 @@ var FilterLayer = (function() {
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
+         // BTOCSITE-1716
         '<div class="desc ui_accord_content" id="{{filterId}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
+                    // BTOCSITE-1716
                     '<input type="checkbox" id="{{filterId}}-{{idx}}" name="{{filterId}}" value="{{item.filterValueId}}" data-contents="{{#raw filterGroupName}}">' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '<label for="{{filterId}}-{{idx}}">{{item.filterValueName}}{{#if item.count}} ({{item.count}}){{/if}}</label>' +
                 '</div>{{/each}}' +
@@ -65,8 +67,8 @@ var FilterLayer = (function() {
     /* BTOCSITE-2785 : add 2021-07-16 */
     var filterCategoryTopTemplate = '<li data-productTarget="s{{index}}">' +
             '<div class="rdo-wrap">' +
-                '<input type="radio" name="{{filterId}}" id="{{filterId}}-{{index}}" value="{{filterValueId}}">' +
-                '<label for="{{filterId}}-{{index}}">{{filterValueName}}</label>'+
+                '<input type="radio" name="{{filterId}}" id="{{ filterValueId || "rdo100" }}" value="{{filterValueId}}">' +
+                '<label for="{{filterValueId || "rdo100" }}">{{filterValueName}}</label>'+
             '</div>' +
         '</li>';
     /* //BTOCSITE-2785 : add 2021-07-16 */
@@ -104,10 +106,17 @@ var FilterLayer = (function() {
             self.$listSorting = $listSorting;
             self.$categorySelect = $categorySelect;
             self.unfoldFlagName = unfoldFlagName;
+
+            self.subCategory = self.getSubCategory();
+
+            console.log("sub category %o",  self.subCategory);
             
             self.$layFilter.find('.ui_filter_slider').vcRangeSlider();
             self.$layFilter.find('.ui_order_accordion').vcAccordion();
             self.$layFilter.find('.ui_filter_accordion').vcAccordion();
+
+
+            
         },
 
         _bindEvents: function() {
@@ -119,7 +128,7 @@ var FilterLayer = (function() {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                 }
             });
-            self.$layFilter.on()
+            // self.$layFilter.on()
             
             // self.$openFilterDefault();
 
@@ -138,6 +147,7 @@ var FilterLayer = (function() {
                 // BTOCSITE-1716
                 var idx = $(this).parents('.ui_filter_accordion').find('input').index(this);
                 self.resetSelectFilterCount(this);
+                // BTOCSITE-1716
                 if(self.$layFilter.hasClass('smart-type')) {
                     // 사이드 스마트 필터 일경우 이벤트 처리
                    $('.smart-filter .filter-list input').eq(idx).trigger('click');
@@ -200,6 +210,7 @@ var FilterLayer = (function() {
 
             // 초기화버튼 이벤트 처리
             self.$layFilter.on('click', 'div.btn-reset button', function(e){
+                // BTOCSITE-1716
                 if(self.$layFilter.hasClass('smart-type')) {
                     // 사이드 스마트 필터 일경우 이벤트 처리
                    $('.smart-filter .btn-reset').trigger('click');
@@ -280,6 +291,17 @@ var FilterLayer = (function() {
 
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
+                    console.log('카테고리 체인지 %o %o %o',firstFilterList,location,$(this));
+
+
+                    var subCat = $(this).val();
+                    var subCateId = subCat ? self.subCategory[subCat] : '';
+                    var url = lgkorUI.parseUrl(location.href);
+                    var params = subCateId ? $.extend(url.searchParams.getAll(),{'subCateId':  self.subCategory[subCat] }) : '';
+                        params = subCateId ? '?'+$.param(params) +  (url.hash || '') : (url.hash || '');
+
+                    window.history.replaceState('', '', location.pathname + params)
+
                     self.triggerFilterChangeEvent();
                 });
             }
@@ -289,6 +311,7 @@ var FilterLayer = (function() {
 
         //BTOCSITE-1396 검색 > PC > 상세필터 > "카테고리"를 디폴트 펼침
         _filterDefaultOpen:function () {
+            // BTOCSITE-1716
             var self = this;
             var $searchTab = $('.contents.search .search-tabs-wrap .tabs');
             var $list = $searchTab.find('li');
@@ -333,6 +356,7 @@ var FilterLayer = (function() {
         },
 
         getDataFromFilter: function() {
+            console.log("getDataFromFilter");
             var self = this;
             var $btnFilter = self.$targetFilterButton;
             
@@ -391,14 +415,14 @@ var FilterLayer = (function() {
             if(self.$categorySelect) {
                 var items = self.$categorySelect.find('li input:checked');
                 items.each(function(idx, el){
-                    if(el.value && el.value.length > 0) {
+                   // if(el.value && el.value.length > 0) {
                         var tempArray = filterData[el.name];
                         if(!tempArray) {
                             tempArray = [];
                         }
                         tempArray.push(el.value);
                         filterData[el.name] = tempArray;
-                    }
+                  //  }
                 });
             }
 
@@ -413,6 +437,8 @@ var FilterLayer = (function() {
             }
 
             data["filterData"] = JSON.stringify(filterData);
+
+            console.log("filterdata %o",data)
             return data;
         },
 
@@ -654,6 +680,7 @@ var FilterLayer = (function() {
                             var findCategory = self.$categorySelect.find('input[name="'+key+'"]');
                             if(findCategory.length > 0) {
                                 findCategory.prop('checked', false);
+                                console.log('reset item %o',item)
                                 item.forEach(function(val, index) {
                                     var findInput = self.$categorySelect.find('input[name='+key+'][value="'+val+'"]');
                                     findInput.prop('checked', true);
@@ -698,6 +725,18 @@ var FilterLayer = (function() {
             if(!selectedCategory && self.$categorySelect) {
                 self.$categorySelect.find('input:eq(0)').prop('checked', true);
             }
+
+            //
+            /* BTOCSITE-2785 : 2021-07-14 add */
+            if(self.$categorySelect) {
+                var producttarget = self.$categorySelect.find('input:checked').closest("li").data("producttarget");
+
+                var $selectedGlossary  = $('.cont_'+producttarget+'.productGlossary');
+                if($selectedGlossary.length >0) {
+                    $selectedGlossary.slideDown(200);
+                }
+            }
+            /* //BTOCSITE-2785 : 2021-07-14 add */
 
             if(triggerFilterChangeEvent) {
                 self.triggerFilterChangeEvent();
@@ -802,6 +841,25 @@ var FilterLayer = (function() {
                 var $pa = $(findDm);
                 $pa.vcAccordion('expand',idx,false);
             });
+        },
+        getSubCategory : function() {
+            var ret = [];
+            if(!firstFilterList) {
+                var firstFilterList = [];
+            }
+            
+            if(firstFilterList) {
+                firstFilterList.forEach(function(el) {
+                    if(el.filterGroupType === 'sub_category') {
+                        el.filterValues.forEach(function(item){
+                            ret[item.filterValueId] = item.filterValueCode
+                        });
+                        return false;
+                    }
+                });
+            }
+
+            return ret;
         }
 
     }

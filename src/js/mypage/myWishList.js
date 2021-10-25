@@ -16,14 +16,14 @@
                     /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                     '{{#if obsBtnFlag=="enable"}}' +
 
-                        '{{#if price == 0}}' +
+                        '{{#if price == originalPrice}}' +
                             '<span class="blind">구매가격</span>' +
-                            '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' + //세일 굻은 가격
+                            '{{#if typeFlag=="C"}}월 {{/if}}{{originalPrice}}원' +
 
                         '{{#else}}' +
 
                             '{{#if originalPrice}}' +
-                                '<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>' + //오리지날 밑줄칠 가격
+                                '<small><span class="blind">할인전 가격</span>{{originalPrice}}원</small>' +
                             '{{/if}}' +
                             '{{#if price}}' +
                                 '<span class="blind">구매가격</span>' +

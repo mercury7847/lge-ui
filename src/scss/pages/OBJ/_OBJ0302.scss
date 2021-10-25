@@ -1157,7 +1157,7 @@ h2.title {
                                             text-align: center;
                                             line-height: 2.89;
                                             &:last-child {
-                                                text-align: right;
+                                                text-align: center; //BTOCSITE-3198 211013 - 중앙 정렬로 변경
                                                 span {
                                                     padding: 0;
                                                 }
@@ -1203,7 +1203,14 @@ h2.title {
                         .btn_wrap {
                             padding: 20px 0;
                             text-align: center;
-                            // BTOCSITE-2346 mobile 버튼 css수정 210811
+
+                            //BTOCSITE-3198 - S
+                            @media screen and (max-width:1140px) {
+                                padding:20px 10px;
+                            }
+                            //BTOCSITE-3198 - E
+
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811 - S
                             .btn{
                                 @media screen and (max-width: 845px) {
                                     margin-bottom:10px;
@@ -1212,11 +1219,36 @@ h2.title {
                             }
                             .btn+.btn {
                                 margin-left: 7px;
+                                //BTOCSITE-3198 - S
+                                @media screen and (max-width:1140px) {
+                                    margin-left: 0;
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                }
+                                //BTOCSITE-3198 - E
                                 @media screen and (max-width: 845px) {
                                     margin-left:0;
                                 }
                             }
-                             // BTOCSITE-2346 mobile 버튼 css수정 210811
+                            // BTOCSITE-2346 mobile 버튼 css수정 210811 - E
+                            //BTOCSITE-3198 버튼 간격 수정 - S
+                            .btn_check_price {
+                                @media screen and (max-width:1140px){
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                }
+                            }
+                            .myPick{
+                                @media screen and (max-width:1140px){
+                                    //width: 100%;
+                                }
+                            }
+                            .chng_pannel{
+                                @media screen and (max-width:1140px){
+                                    //width: 100%;
+                                }
+                            }
+                            //BTOCSITE-3198 버튼 간격 수정 - E
                         }
                     }
                 }
@@ -1303,6 +1335,27 @@ h2.title {
                     dl {
                         height: 100%;
                         text-align: center;
+                        //BTOCSITE-3198 패널 선택용 - START 211014
+                        .pannel_info {
+                            display:flex;
+                            justify-content:space-between;
+                            align-items: center;
+                            .btn_total{
+                                width: 153px;
+                                height:32px;
+                                line-height: 7px;
+                                font-size:14px;
+                                padding:6px 10px;
+                                margin:0 2px;
+                                @media screen and (max-width:850px) {
+                                    font-size:13px;
+                                }
+                                @media screen and (max-width:303px) {
+                                    font-size:11px;
+                                }
+                            }
+                        }
+                        //BTOCSITE-3198 패널 선택용 - END 211014
                         dt {
                             text-align: left;
                             font-size: 18px;
@@ -1313,6 +1366,12 @@ h2.title {
                                 padding: 18px 0 18px 20px;
                                 font-size: 14px;
                             }
+                            //BTOCSITE-3198 패널 선택용 - START 211014
+                            @media screen and (max-width:303px) {
+                                font-size:10px;
+                                padding: 18px 0 18px 0;
+                            }
+                            //BTOCSITE-3198 패널 선택용 - END 211014
                         }
                         dd {
                             position: relative;
@@ -1389,6 +1448,59 @@ h2.title {
                                         }
                                     }
                                 }
+                                //BTOCSITE-3198 - start
+                                .pannel_list {
+                                    padding-bottom:10px;
+                                    li{
+                                        &:nth-child(1){
+                                        display: none;
+                                        }
+                                        &:before {
+                                        position: relative;
+                                        content: '';
+                                        left: 0;
+                                        top: 0;
+                                        //border:1px solid #fa263e;
+                                        //border-radius: 4px;
+                                        width: 20px;
+                                        height: 20px;
+                                        background: url('/lg5-common/images/icons/btn-compare-off-24.svg') no-repeat;
+                                        background-size: 20px;
+                                        }
+                                        .product_name {
+                                            margin-left:10px;
+                                            align-self: center;
+                                        }
+                                        .product_price {
+                                            margin-left:auto; // display:flex 일때, 우측 정렬하기 위하여 사용
+                                            align-self: center;
+                                        }
+                                    }
+                                    li.is_active {
+                                        &:before {
+                                            //background: url('/lg5-common/images/OBJ/simulator/ico/ico_radio_check.png');
+                                            background: url('/lg5-common/images/icons/btn-compare-on-24.svg') no-repeat;
+                                            background-size: 20px;
+                                        }
+                                    }
+                                }
+                                .sum{
+                                    display: none;
+                                    justify-content: space-between;
+                                    font-size:18px;
+                                    line-height: 1.67;
+                                    font-weight: 500;
+                                    @media screen and (max-width:767px) {
+                                        padding:0 10px;
+                                    }
+                                    .product_total_title{
+                                        margin-left:30px;
+                                    }
+                                    .product_price{
+                                        //padding:0 10px;
+                                    }
+                                }
+                                //BTOCSITE-3198 - end
                                 .err-msg {
                                     // position: absolute;
                                     // left: 7.5%;
@@ -1407,9 +1519,9 @@ h2.title {
                                 .btn_purchase {
                                     position: absolute;
                                     bottom: 50px;
-                                    left: 7.5%;
-                                    right: 7.5%;
-                                    width: 85%;
+                                    left: 5%;
+                                    right: 5%;
+                                    width: 90%;
                                 }
                             }
                         }
@@ -1810,12 +1922,48 @@ h2.title {
                 }
             }
         }
-        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 컬러 위치 조정
+        // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
+        &[data-model-default-code="W821AAA453"],
+        &[data-model-default-code="W821AAA463"],
+        &[data-model-default-code="M620AAA351"],
+        &[data-model-default-code="M870AAA451"],
+        &[data-model-default-code="M870AAA452"] {
+            .mini_model_wrap {
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
+                background-size: 100% 100%;
+                .mini_model {
+                    &:nth-child(1) {
+                        left: 30.3%;
+                        top: 11.8%;
+                        width: 18.6%;
+                        height: 42.1%;
+                        @include mobile {
+                            top: 11.3%;
+                            height: 42.6%;
+                        }
+                    }
+                    &:nth-child(2) {
+                        left: 30.3%;
+                        top: 55.1%;
+                        width: 18.6%;
+                        height: 34%;
+                    }
+                    &:nth-child(3) {
+                        left: 50.3%;
+                        top: 55.1%;
+                        width: 18.5%;
+                        height: 34%;
+                    }
+                }
+            }
+        }
+        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
+        // 211013 BTOCSITE-6441 W821AAA153 : 추천조합 패널 위치 조정
         &[data-model-default-code="M871AAA151"],
         &[data-model-default-code="M871AAA252"],
         &[data-model-default-code="M871AAA041"],
         &[data-model-default-code="W821AAA153"] {
-            .mini_model_wrap {
+            .mini_model_wrap { 
                 .mini_model {
                     &:nth-child(1) {
                         left: 30.3%;
@@ -1830,7 +1978,7 @@ h2.title {
                     &:nth-child(2) {
                         left: 50.6%;
                         top: 10.8%;
-                        width: 19.5%;
+                        width: 18.5%;
                         height: 43.1%;
                         @include mobile {
                             top: 11.3%;
@@ -1846,7 +1994,7 @@ h2.title {
                     &:nth-child(4) {
                         left: 50.6%;
                         top: 55.1%;
-                        width: 19.5%;
+                        width: 18.5%;
                         height: 34%;
                     }
                 }
@@ -1856,34 +2004,35 @@ h2.title {
 
     &[data-cate="refrigerator_kimchi"] {
         //BTOCSITE-4239 오브제컬렉션 김치냉장고 제품 업데이트 요청 추천조합 4도어, 3도어 분리
+        //BTOCSITE-6441 BG 이미지 수정
         &[data-model-default-code="Z491AAA151"] {
             .mini_model_wrap {
-                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi.png') center center no-repeat;
+                background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator_kimchi_4door.png') center center no-repeat;
                 background-size: 100% 100%;
                 .mini_model {
-                     &:nth-child(1) {
-                    left: 35%;
-                    top: 9.5%;
-                    width: 14.5%;
+                &:nth-child(1) {
+                    left: 32%;
+                    top: 10.5%;
+                    width: 17.5%;
                     height: 43.7%;
                 }
                 &:nth-child(2) {
-                    right: 35%;
-                    top: 9.5%;
-                    width: 14.5%;
+                    right: 32%;
+                    top: 10.5%;
+                    width: 17.5%;
                     height: 43.7%;
                 }
                 &:nth-child(3) {
-                    left: 35%;
-                    top: 54.1%;
-                    width: 30%;
-                    height: 18%;
+                    left: 32%;
+                    top: 56.1%;
+                    width: 36%;
+                    height: 16%;
                 }
                 &:nth-child(4) {
-                    left: 35%;
-                    top: 73.1%;
-                    width: 30%;
-                    height: 17%;
+                    left: 32%;
+                    top: 74.1%;
+                    width: 36%;
+                    height: 16%;
                 }
                 }
             }
@@ -1898,19 +2047,19 @@ h2.title {
                     &:nth-child(1) {
                         left: 36%;
                         top: 9.5%;
-                        width: 28.3%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 43.7%;
                     }
                     &:nth-child(2) {
                         left: 36%;
                         top: 55.5%;
-                        width: 28.3%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 14.3%;
                     }
                     &:nth-child(3) {
                         left: 36%;
                         top: 72.1%;
-                        width: 28.3%;
+                        width: 28.5%; //BTOCSITE-6441
                         height: 18%;
                     }
                 }
@@ -2117,6 +2266,10 @@ h2.title {
 
 .simul_step.simul_step3 {
     border-top: 1px solid #dddddd;
+    //BTOCSITE-3198
+    @include mobile {
+        padding:0 15px;
+    }
 }
 /* //BTOCSITE-1582 */
 

@@ -40,9 +40,9 @@ var appInit = function() {
                 //console.log('AR 버튼 추가');
                 //Quick메뉴 AR 버튼 추가
                 $("#floatBox .KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
-
+                var $arBtn =  $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button");
                 //Quick메뉴 AR 버튼 이벤트
-                $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").off("click").on({
+                $arBtn.off("click focusin focusout").on({
                     click : function() {
                         $(this).addClass("active");
 
@@ -60,31 +60,22 @@ var appInit = function() {
                     },
                     focusin : function(){
                         setTimeout(function(){
-                            $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").addClass("active");
+                            $arBtn.addClass("active");
                             LGEAPPclickCNT = 1;
                         }, 150);
                     },
                     focusout : function(){
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
+                        $arBtn.removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
 
                 //스크롤 시 AR 버튼 default 상태로 변경
-                /*
-                $("body").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
+                $(window).on('scroll.floating', function(){    
+                    if ($(this).scrollTop() > 100 && $arBtn.hasClass('active')) {
+                        $arBtn.trigger('focusout');
                     }
                 });
-                $(".section-cover").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
-                    }
-                });
-                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
@@ -194,10 +185,9 @@ var appInit = function() {
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
                     $(this).addClass('active');
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
-                    $('.btn-prod-reg').attr('disabled', true);
+                    //$('#inp01').attr('readonly','readonly');
+                    //$('#inp02').attr('readonly','readonly');
+                    //$('.cell button').attr('disabled', true);
                     $('.info-req-box .qr-active').hide();
                     $('.info-req-box .qr').show();
                     $('p.comp').hide();
@@ -229,7 +219,7 @@ var appInit = function() {
         //리턴 된 바코드 값 입력
         LGEAPPreturnArBarcode = function(barcode) {
             // BTOCSITE-4086 210924 - S
-            console.log("바코드 리턴값 : " + barcode);
+            //console.log("바코드 리턴값 : " + barcode);
             if (barcode != null && barcode != "" && barcode != undefined) {
                 $('.info-req-box .qr').hide();
                 $('.info-req-box .qr-active').show();
@@ -240,18 +230,18 @@ var appInit = function() {
                     var salesModel = param.m;
                     //salesModel = salesModel.replace('.AKOR',''); BTOCSITE-4086 파라미터값 자르는 부분 제거 (barcode 값으로 전달된 url의 salesModel값 그대로 화면 노출되어도 이상 없음 - db 테이블에서 따로 체크함 )
                     var serialNum =  param.s;
-                    console.log("salesModel 값 : "+salesModel);
-                    console.log("S/N 값 : "+serialNum);
+                    //console.log("salesModel 값 : "+salesModel);
+                    //console.log("S/N 값 : "+serialNum);
                     
                     // 각 객체값별로 쪼개진 내용을 입력 form에 넣음! id로 체킹하기! 모델명, 제조번호(S/N)
                     $("#inp01").val(salesModel); // salesModel명
                     $("#inp02").val(serialNum); // 제조번호(S/N)
                 }else{
                     // 바코드
-                    $("#inp02").val(barcode); 
+                    $("#inp02").val(barcode);
                 }
-                $('.cell button').attr('disabled', false); // 확인 버튼 활성화
-                $('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
+                //$('.cell button').attr('disabled', false); // 확인 버튼 활성화
+                //$('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
             }
         }

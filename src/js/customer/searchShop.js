@@ -67,7 +67,7 @@
         };
     
         var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가
+        // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
                 '<div class="store-info-list ui_marker_selector">'+
@@ -78,7 +78,7 @@
                         '</div>'+
                     '</div>'+
                     '<div class="info-wrap">'+
-                        '<a href="#">'+
+                        '<a href="#" class="shop-map-link">'+
                             '<div class="tit-wrap">'+
                                 '<p class="name">'+
                                     '<span class="blind">매장명</span>'+
@@ -129,10 +129,12 @@
 
                 // BTOCSITE-4785 s
                 if(cartPrdList){
-                    // self.shopUrl = "https://www.lge.co.kr/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
-                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?cartPrdList="+cartPrdList+"&device=w&inflow=lgekor&orgCode=";
+                    // // https://wwwdev50.lge.co.kr/support/visit-store-reservation?orgCode=1141&cartPrdList=MD08037890^refrigerators
+                    self.shopUrl = "/support/visit-store-reservation?cartPrdList="+cartPrdList+"&orgCode=";
+                    self.cartPrd = "?cartPrdList="+cartPrdList;
                 } else {
-                    self.shopUrl = "/lgekor/bestshop/product/productPlanMain.do?device=w&inflow=lgekor&orgCode=";
+                    self.shopUrl = "/support/visit-store-reservation?orgCode=";
+                    self.cartPrd = "";
                 }
                 // BTOCSITE-4785 e
     
@@ -199,7 +201,6 @@
     
                 self.defaultInfoViewId = vcui.uri.getParam('shopId');   
                 self.totalStoreData = [];         
-                
                 
                 vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support/common/quickMenu.min'], function (StoreMap) {  
     
@@ -418,11 +419,11 @@
                     $(this).parent().parent().parent().toggleClass('close');
                     if($(this).parent().parent().parent().hasClass('close')){
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                     setTimeout(function(){
@@ -430,8 +431,8 @@
                     },400);
                 });
                 // BTOCSITE-4785 e
-    
-                self.$defaultListLayer.on('click', 'li > .ui_marker_selector a', function(e){
+                // BTOCSITE-4785 : a link  .shop-map-link 로 변경
+                self.$defaultListLayer.on('click', 'li > .ui_marker_selector .shop-map-link', function(e){
                     var id = $(this).closest('li').data('id');
                     self.$map.selectedMarker(id, this);
     
@@ -597,15 +598,19 @@
                 // lgkorUI.showLoading();
     
                 lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search', salesCode:self.salesCode}, function(result){
-    
-                    if(result.data.length){
-    
+                    // BTOCSITE-4785
+                    if(result.data.length == 0){
+                        self.totalStoreData = result.data;
+                        self.$defaultListLayer.append('<div class="no-data"><p>검색 결과가 없습니다.</p></div>'); 
+                    } else if(result.data.length){
+                        
                         var arr = vcui.array.map(result.data, function(item, index){
                             var itemObj = vcui.array.filterOne(self.totalStoreData, function(obj,i){
                                 return item['shopID'] == obj['shopID']
                             });
                             return itemObj;
                         });
+                        self.totalStoreData = arr;
     
                         var defaultLat = self.currentLatitude;
                         var defaultLong = self.currentLongitude;
@@ -615,8 +620,9 @@
                             defaultLat = self.userLatitude;
                             defaultLong = self.userLongitude;
                         }
-    
-                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        // BTOCSITE-4785 : 반경 100km 이내 거리순 7개로 변경
+                        //var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
     
                         if(nArr.length == 0){                       
     
@@ -640,7 +646,7 @@
                             }, self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                         }else{
                             self.$map.draw(nArr, defaultLat, defaultLong);
-                        }                    
+                        }   
                     } 
     
                     // lgkorUI.hideLoading();
@@ -668,7 +674,8 @@
                             item['id'] = item['shopID'];
                             item['info'] = false;
                             item["selected"] = false;
-                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID'] +'")' //self.detailUrl+item['shopID'];
+                            // BTOCSITE-4785
+                            item["detailUrl"] = 'javascript:infoWindowDetail("'+ self.detailUrl+item['shopID']+self.cartPrd+'")' //self.detailUrl+item['shopID'];
                             //item["detailUrl"] = 'javascript:void(window.open("' + self.detailUrl+item['shopID'] + '", "_blank", "width=1070, height=' + self.windowHeight + ', scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"))';
                             return item;
                         });
@@ -1260,8 +1267,8 @@
                             shopAdress: arr[i].info.shopAdress,
                             shopTelphone: arr[i].info.shopTelphone,
                             shopID: arr[i].info.shopID,
-                            detailUrl:self.detailUrl+arr[i].info.shopID,
                             // BTOCSITE-4785
+                            detailUrl:self.detailUrl+arr[i].info.shopID+self.cartPrd,
                             orgCode:self.shopUrl+arr[i].info.orgCode,
                             selected: arr[i].info.selected ? " on" : ""
                         }
@@ -1301,7 +1308,7 @@
                 if($('.store-list-wrap').hasClass('display-product-search')){
                     $('.display-product-search-info-wrap').eq(0).show();
                     $('.display-product-search .dp-pdp-map').css({
-                        'margin-top' : '0',
+                        'marginTop' : '0',
                     });
                     $('.display-product-search .store-map-con.isMobile').removeClass('dp-pdp-map');
                 }
@@ -1349,11 +1356,11 @@
                     $('.display-product-search .store-map-con.isMobile').addClass('dp-pdp-map');
                     if ($('.display-product-search-info').eq(1).hasClass('close')) {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                 }
@@ -1436,7 +1443,7 @@
     
                     $scrollWrap.css({
                         'height':'auto',
-                        'overflow-y':'initial'
+                        'overflowY':'initial'
                     });
     
                 }else{                
@@ -1449,7 +1456,7 @@
     
                     $scrollWrap.css({
                         'height':ht,
-                        'overflow-y':'auto'
+                        'overflowY':'auto'
                     });
                 }   
     
@@ -1487,11 +1494,11 @@
                     // BTOCSITE-4785 s
                     if($('.display-product-search-info').eq(1).hasClass('close')){
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '91px',
+                            'marginTop' : '91px',
                         });
                     } else {
                         $('.display-product-search .dp-pdp-map').css({
-                            'margin-top' : '207px',
+                            'marginTop' : '207px',
                         });
                     }
                     // BTOCSITE-4785 s
@@ -1523,7 +1530,7 @@
                     }
                     // BTOCSITE-4785 s
                     $('.dp-pdp-map').css({
-                        'margin-top' : '0',
+                        'marginTop' : '0',
                     });
                     // BTOCSITE-4785 e
                 }
@@ -1531,7 +1538,7 @@
                 self.$mapArea.css({
                     width: mapwidth,
                     height: mapheight,
-                    'margin-left': mapmargin
+                    'marginLeft': mapmargin
                 });
     
                 self._setListArea();

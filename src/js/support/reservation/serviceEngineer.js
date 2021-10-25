@@ -668,7 +668,7 @@
                     if (data.category == 'CT50019183') {
                         if (data.subCategory == "CT50019259"){
                             self.$fanBox.show();
-                            self.$bdTypeBox.show().data('current-product-code', 'CRB')                         
+                            self.$bdTypeBox.show().data('current-product-code', '')                         
                         } else if (data.subCategory != "CT50019229") {
                             self.$fanBox.show();
                             self.$bdTypeBox.hide().data('current-product-code', '');
@@ -716,6 +716,7 @@
 
             // 증상 선택
             self.$topicList.on('change', '[name=topic]', function() {
+                var currentTopic = this; //BTOCSITE_6554
                 var url = self.$topicListWrap.data('ajax'),
                     param = {
                         topic : $(this).val(),
@@ -725,10 +726,10 @@
 
                 // 20210610 세척서비스 증상 선택시 팝업 띄움
                 var topicName = $(this).data('topicName');
-                /*
+                
+                // BTOCSITE-6144 세척서비스 중지 팝업 다시 원래대로 원복
                 var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';                
                 if( topicName === "세척서비스" ){
-                    $(this).prop('checked', false);
                     lgkorUI.confirm(alertMsg,{
                         typeClass:'type2',
                         title:'',
@@ -737,16 +738,18 @@
                         ok: function() {
                             location.href = "/support/request-call-reservation";
                         },
-                        cancel: function() {}
+                        cancel: function() {
+                            $(currentTopic).prop('checked', false); //BTOCSITE_6554
+                        }
                     });
                 }
-                */
+                
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
-                var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
-                if( topicName === "세척서비스" ){
-                    $(this).prop('checked', false);
-                    lgkorUI.alert(alertMsg);
-                }
+                // var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
+                // if( topicName === "세척서비스" ){
+                //     $(this).prop('checked', false);
+                //     lgkorUI.alert(alertMsg);
+                // }
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
                 self.$solutionsBanner.hide();
                 self.requestSubTopic(url, param);

@@ -3,6 +3,13 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+.evt_con {
+    position: relative;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .lls-frame {
     position:fixed;
     top:0;
@@ -37,40 +44,220 @@
         display: none;
     }
 
-    // &-head {
-    //     position: fixed;
-    //     top:0;
-    //     left:0;
-    //     right:0;
-    //     z-index:10;
-    //     display: flex;
-    //     justify-content: flex-end;
-    //     align-items: center;
-    //     padding:11px 12px 7px 16px;
+    /* BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
+    &-head {
+        position: absolute;
+        z-index: 10;
+        padding: 0;
+        width: 418px;
+        margin: 0 auto;
+        margin-left: 8px;
+        height: 1px;
+        .tooltip-wrap.share {
+            // position: absolute;
+            // top: 44px;
+            // left: 410px;
+            top: 115px;
+            left: 50%;
+            margin-left: -174px;
+            .tooltip-box {
+                top: 0px;
+                left: 0px;
+                padding-right: 32px;
+            }
+        }
+        @media screen and (max-width: 1320px) {
+            width: 31.666666666666664vw;
+            .tooltip-wrap.share {
+                // top: 8.712121212121213vw;
+                margin-left: -13.18181818181818vw;
+                .tooltip-box {
+                    padding-right: 2.4615384615384617vw;
+                    min-width: 26.769230769230766vw;
+                    .title {
+                        font-size: 1.5384615384615385vw;
+                        line-height: 2.307692307692308vw;
+                    }
+                    .sns-wrap {
+                        margin-top: 1.2307692307692308vw;
+                        padding-top: 1.2307692307692308vw;
+                        .sns-list {
+                            li {
+                                margin-left: 1.1384615384615385vw;
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+                                .ico-btn {
+                                    min-width: 4.3076923076923075vw;
+                                    padding-top: 2.769230769230769vw;
+                                    font-size: 1.0769230769230769vw;
+                                    line-height: 1.8461538461538463vw;
+                                    background-size: 2.4615384615384617vw 2.4615384615384617vw;
+                                }
+                            }
+                        }
+                    }
+                    .btn-close {
+                        top: 2.4615384615384617vw;
+                        right: 2.4615384615384617vw;
+                        width: 2.4615384615384617vw;
+                        height: 2.4615384615384617vw;
+                    }
+                }
+            }
+        }
 
-    //     .tooltip-wrap.share {
-    //         // height:32px;
-    //         padding:4px;
-    //         .tooltip-icon {
-    //             // background-color: #000;
-    //             background-image: url('/lg5-common/images/icons/ic-share-MO-48-wht.svg');
-    //             background-size:100% 100%
-    //         }
-    //     }
-    // }
+        @media screen and (max-width: 998px) {
+            max-width: 767px;
+            margin-left: -383px;
+            width: 100%;
+            left: 50%;
+            .tooltip-wrap.share {
+                left: 50%;
+                margin-left: -174px;
+                .tooltip-box {
+                    padding-right: 32px;
+                    min-width: 348px;
+                    border-radius: 8px;
+                    .title {
+                        font-weight: 700;
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+                    .sns-wrap {
+                        margin-top: 16px;
+                        padding-top: 16px;
+                        .sns-list {
+                            li {
+                                margin-left: 20px;
+                                .ico-btn {
+                                    min-width: 56px;
+                                    padding-top: 36px;
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    background-size: 32px 32px;
+                                }
+                            }
+                        }
+                    }
+                    .btn-close {
+                        top: 32px;
+                        right: 32px;
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+        // @media screen and (max-width: 1000px) {
 
-    // &-close {
-    //     font-size:0;
-    //     padding:4px;
-    //     margin-left:8px;
-    //     &:before {
-    //         content:"";
-    //         display: inline-block;
-    //         width:24px;
-    //         height:24px;
-    //         background: url('/lg5-common/images/icons/ic-close-MO-48.svg') no-repeat 0 0;
-    //         background-size: 100% 100%;
-    //         vertical-align: top;
-    //     }
-    // }
+        // }
+
+        @media screen and (max-width: 767px) {
+            max-width: 767px;
+            margin-left: 0;
+            left: 0;
+            .tooltip-wrap.share {
+                right: 0;
+                left: auto;
+                .tooltip-box {
+                    margin-top: 0;
+                    top: 110px;
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    .title {
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                    .sns-wrap {
+                        .sns-list {
+                            li {
+                                margin-left: 12px;
+                                .ico-btn {
+                                    font-size: 13px;
+                                    line-height: 21px;
+                                }
+                            }
+                        }
+                    }
+                    .btn-close {
+                        top: 24px;
+                        right: 24px;
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+    /* //BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
+
+    &-close {
+        font-size:0;
+        padding:4px;
+        margin-left:8px;
+        &:before {
+            content:"";
+            display: inline-block;
+            width:24px;
+            height:24px;
+            background: url('/lg5-common/images/icons/ic-close-MO-48.svg') no-repeat 0 0;
+            background-size: 100% 100%;
+            vertical-align: top;
+        }
+    }
 }
+
+
+
+
+
+/* BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
+.liveCommerce-banner-wrap {
+    min-width: 960px;
+    max-width: 1300px;
+    margin: 50px auto 0;
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+// .liveCommerce-banner-wrap img {
+//     display: block;
+//     margin: 0 auto;
+// }
+
+#sauce {
+    width:100%; 		
+    height: 60vh;
+    min-height: 800px;
+    margin-top: 0;
+}
+@media screen and (max-width: 959px) {
+    .liveCommerce-banner-wrap {
+        display: none;
+    }
+    #sauce {
+        height: calc(100vh - 148px);									
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    #sauce {
+        height: calc(100vh - 48px);
+        min-height:auto;									
+    }
+    
+    .mdevice {
+        #sauce {			
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;			
+        }
+    }
+}
+/* //BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */

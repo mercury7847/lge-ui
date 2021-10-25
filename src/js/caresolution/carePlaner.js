@@ -472,24 +472,31 @@
         if(window.breakpoint.isMobile){
             var wraptop;
             var item = $putItemContainer.find('.ui_active_toggle');
-            var statusBarHeight = $('.is-web-status-bar').length > 0 ? 70 : 0; //BTOCSITE-1967
+            var statusBarHeight = vcui.detect.isMobileDevice && !isApp() && window.innerWidth < 768 ? 70 : 0; //BTOCSITE-1967 2차 수정
+            //var statusBarHeight = 0; //BTOCSITE-1967
             if(isOpen){
+                // console.log(1)
                 $putItemContainer.find('.total-info').removeAttr('style');
                 $putItemContainer.find('.total-info dl').show();
-                wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true) - $putItemContainer.find('.slide-wrap').outerHeight(true) - 10;
+                wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) + $putItemContainer.find('.slide-wrap').outerHeight(true) + 10;
                 if(wraptop < 0) wraptop = 0;
                 item.css({transform:'rotate(0deg)'});
             } else{
+                // console.log(2)
                 $putItemContainer.find('.total-info').css({background:'#ffffff'})
                 $putItemContainer.find('.total-info dl').hide();
-                wraptop = $(window).height() - $putItemContainer.find('.total-info').outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true)  +5;
+                wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) - 5;
                 item.css({transform:'rotate(180deg)'});
             }
             item.data('isOpen', isOpen);
     
             if(window.breakpoint.name == 'mobile'){
-                if(anim) $putItemContainer.stop().animate({top:wraptop - statusBarHeight}, 220); //BTOCSITE-1967
-                else $putItemContainer.css({top:wraptop - statusBarHeight}); //BTOCSITE-1967
+                if(anim){
+                    $putItemContainer.stop().animate({height:wraptop}, 220);//BTOCSITE-1967
+                } 
+                else {
+                    $putItemContainer.css({height:wraptop});//BTOCSITE-1967
+                } 
             }
         }
     }
@@ -1288,5 +1295,12 @@
 
     $(document).ready(function() {
         init();
+
+        //BTOCSITE-1967
+        $(window).on('resize', function(){
+            if( window.innerWidth >= 768 && $putItemContainer.is(':visible') == true) {
+                $putItemContainer.css('height', 'auto')
+            } 
+        });
     });
 })();

@@ -75,7 +75,10 @@
 
 
 .mdevice:not(.app) {
-    .mobile-status-bar {
-        display:block;
+    //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
+    @include mobile {
+        .mobile-status-bar {
+            display:block;
+        }
     }
 }

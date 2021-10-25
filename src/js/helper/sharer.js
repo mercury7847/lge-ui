@@ -91,6 +91,7 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 support: detect.PC | detect.MOBILE,
                 makeParam: function makeParam(data) {
                     return {     
+                        installTalk:true,
                         objectType : 'feed',
                         content : {
                             title : data.title,

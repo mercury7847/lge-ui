@@ -256,58 +256,12 @@
         
         //렌탈 케어솔루션 제휴카드 리스트 정보
         var rentalAssociatedCardList = [
-            {
-                "cardNameCode":"cid00001",
-                "cardSubName":"LG전자 베스트렌탈",
-                "defaultPrice":"default",
-                "cardName":"우리카드",
-                "simpleReqFlag":"Y", //간편신청카드
-                "maxSalePrice":110000
-            },
-            {
-                "cardNameCode":"cid00002",
-                "cardSubName":"LG전자 렌탈애",
-                "defaultPrice":"",
-                "cardName":"신한카드",
-                "simpleReqFlag":"N", //개별신청카드
-                "maxSalePrice":19000
-            },
-            {
-                "cardNameCode":"cid00003",
-                "cardSubName":"테스트카드",
-                "defaultPrice":"Y",
-                "cardName":"신한카드",
-                "simpleReqFlag":"N",
-                "maxSalePrice":100000
-            }
+            {"cardSubName":"LG전자 렌탈플러스","defaultPrice":"default","cardName":"하나카드","cardSubNameCode":"00005","cardNameCode":"A09","simpleReqFlag":"Y","maxSalePrice":23000},{"cardSubName":"LG전자 스페셜","defaultPrice":"","cardName":"롯데카드","cardSubNameCode":"00004","cardNameCode":"A04","simpleReqFlag":"Y","maxSalePrice":23000},{"cardSubName":"LG전자 렌탈애","defaultPrice":"","cardName":"신한카드","cardSubNameCode":"00001","cardNameCode":"A02","simpleReqFlag":"Y","maxSalePrice":10000},{"cardSubName":"베스트케어","defaultPrice":"","cardName":"광주카드","cardSubNameCode":"direct","cardNameCode":"B02","simpleReqFlag":"N","maxSalePrice":23000},{"cardSubName":"LG전자 베스트렌탈\t","defaultPrice":"","cardName":"우리카드","cardSubNameCode":"direct","cardNameCode":"A03","simpleReqFlag":"N","maxSalePrice":20000},{"cardSubName":"LG전자-M Edition3","defaultPrice":"","cardName":"현대카드","cardSubNameCode":"direct","cardNameCode":"A05","simpleReqFlag":"N","maxSalePrice":18000},{"cardSubName":"올원 LG전자 BEST","defaultPrice":"","cardName":"NH카드","cardSubNameCode":"direct","cardNameCode":"B01","simpleReqFlag":"N","maxSalePrice":20000},{"cardSubName":"LG전자 KB국민","defaultPrice":"","cardName":"국민카드","cardSubNameCode":"direct","cardNameCode":"A01","simpleReqFlag":"N","maxSalePrice":15000},{"cardSubName":"베스트케어","defaultPrice":"","cardName":"전북카드","cardSubNameCode":"direct","cardNameCode":"B04","simpleReqFlag":"N","maxSalePrice":20000}
         ];
 
         //케어십 제휴카드 리스트 정보
         var careshipAssociatedCardList = [
-        {
-                "cardNameCode":"cid00004",
-                "cardSubName":"LG전자 베스트렌탈",
-                "defaultPrice":"default",
-                "cardName":"우리카드",
-                "simpleReqFlag":"N",
-                "maxSalePrice":110000
-            },
-            {
-                "cardNameCode":"cid00005",
-                "cardSubName":"LG전자 렌탈애",
-                "defaultPrice":"",
-                "cardName":"신한카드",
-                "simpleReqFlag":"Y",
-                "maxSalePrice":19000
-            },
-            {
-                "cardNameCode":"cid00006",
-                "cardSubName":"테스트카드",
-                "defaultPrice":"Y",
-                "cardName":"신한카드",
-                "simpleReqFlag":"Y",
-                "maxSalePrice":100000
-            }
+            {"cardSubName":"LG전자 렌탈플러스","defaultPrice":"default","cardName":"하나카드","cardSubNameCode":"00005","cardNameCode":"A09","simpleReqFlag":"Y","maxSalePrice":23000},{"cardSubName":"LG전자 스페셜","defaultPrice":"","cardName":"롯데카드","cardSubNameCode":"00004","cardNameCode":"A04","simpleReqFlag":"Y","maxSalePrice":23000},{"cardSubName":"LG전자 렌탈애","defaultPrice":"","cardName":"신한카드","cardSubNameCode":"00001","cardNameCode":"A02","simpleReqFlag":"Y","maxSalePrice":10000},{"cardSubName":"베스트케어","defaultPrice":"","cardName":"광주카드","cardSubNameCode":"direct","cardNameCode":"B02","simpleReqFlag":"N","maxSalePrice":23000},{"cardSubName":"LG전자 베스트렌탈\t","defaultPrice":"","cardName":"우리카드","cardSubNameCode":"direct","cardNameCode":"A03","simpleReqFlag":"N","maxSalePrice":20000},{"cardSubName":"LG전자-M Edition3","defaultPrice":"","cardName":"현대카드","cardSubNameCode":"direct","cardNameCode":"A05","simpleReqFlag":"N","maxSalePrice":18000},{"cardSubName":"올원 LG전자 BEST","defaultPrice":"","cardName":"NH카드","cardSubNameCode":"direct","cardNameCode":"B01","simpleReqFlag":"N","maxSalePrice":20000},{"cardSubName":"LG전자 KB국민","defaultPrice":"","cardName":"국민카드","cardSubNameCode":"direct","cardNameCode":"A01","simpleReqFlag":"N","maxSalePrice":15000},{"cardSubName":"베스트케어","defaultPrice":"","cardName":"전북카드","cardSubNameCode":"direct","cardNameCode":"B04","simpleReqFlag":"N","maxSalePrice":20000}
         ];
 
         // BTOCSITE-659 [UI개발]마이컬렉션 추천 서비스로 개편 : pdp
@@ -495,6 +449,40 @@
                     </footer>
                     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                 </article>
+
+                <!-- BTOCSITE-5781 제품 PDP 페이지 개선요청건 -->
+                <article id="saleInfoPopup" class="popup-wrap small">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>할인내역</span></h1>
+                    </header>
+                    <section class="pop-conts pd-btm" id="modal_15_content">
+                        <div class="layer-benefit">
+                            <p class="sale-info">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text"><strong>회원할인</strong></dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text"><strong>즉시할인</strong></dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text"><strong>할인금액합계</strong></dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+                <!-- //BTOCSITE-5781 제품 PDP 페이지 개선요청건 -->
 
                 <!-- 구매혜택 자세히보기 -->
                 <article id="benefitInfoPopup" class="popup-wrap small">

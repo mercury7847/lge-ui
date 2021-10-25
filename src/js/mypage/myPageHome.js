@@ -20,7 +20,7 @@
                         /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
                         '<div class="price-area">'+
 
-                            '{{#if item.addCommaOriginalPrice == 0}}'+
+                            '{{#if item.addCommaOriginalPrice == item.addCommaPrice}}'+
 
                                 '<div class="total">'+
                                     '<em class="blind">구매가격</em>'+

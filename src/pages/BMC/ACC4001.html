@@ -3,9 +3,11 @@
     @@include('./common/head.html', {
         pageCSS: ["BMC/BMC"],
         componentID: "KRC0015",
+        pageJS: ["membership/signUpGuide"],
         pageTitle: "멤버십 | LG전자",
         pageDesc: "LG전자 멤버십이란? 베스트샵에서 제품 구매 시 포인트가 적립되며 이는 전국 베스트샵, 서비스센터 및 렌탈 구매 시 현금처럼 사용 가능한 특별한 혜택입니다."
     })
+    <!-- BTOCSITE-3002 멤버십 페이지 수정 // head : signUpGuide.js 추가 -->
 <body>
     <div class="wrap">
         <!-- 210311_H1추가 -->
@@ -26,11 +28,10 @@
             <!-- //210215 수정 -->
             <!-- membership -->
             <div class="contents membership home"><!-- 210413 수정 [.home 클래스 추가] -->
-                <!-- 210405 수정 [KRC0015 컴퍼넌트 삭제] -->
-                <!-- 210413 수정 [히어로배너 추가] -->
-                <!-- 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
                 <!-- visual slider -->
-                <div class="visual-wrap">
+                <!-- 210413 수정 [히어로배너 수정] -->
+                <!-- 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
+                <div class="visual-wrap bg-membership"> <!-- BTOCSITE-3002 멤버십 페이지 수정 -->
                     @@include('./common/modules/main_carousel.html', {
                         "slides" : [
                             {
@@ -43,114 +44,343 @@
                         ]
                     })
                 </div>
-                <!-- // visual slider -->
                 <!-- // 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
-                <!-- // 210413 수정 [히어로배너 추가] -->
+                <!-- // 210413 수정 [히어로배너 수정] -->
+                <!-- // visual slider -->
 
-                <!-- 210215 수정 -->
-                <div class="ui_sticky">
-                    <div class="page-tabs">
-                        <!-- 210416 클래스 추가 -->
-                        <div class="tabs-wrap border-type left ui_smooth_scroll">
-                        <!-- //210416 클래스 추가 -->
-                            <ul class="tabs">
-                                <li class="on"><a href="#n">LG전자 멤버십</a></li><!-- 210413 수정 [추가] -->
-                                <li><a href="#n">멤버십 소개</a></li>
-                                <li><a href="#n">VIP 멤버십 혜택</a></li>
-                                <li><a href="#n">가입 안내</a></li>
-                            </ul>
+                <!-- BTOCSITE-3002 멤버십 페이지 수정 // tab제거 -->
+                <div class="cont-wrap membership">
+                    <div class="section-wrap">
+                        <!-- 멤버십 혜택 -->
+                        <div class="sects">
+                            <div class="tit-wrap type2 align-center">
+                                <h2 class="tit">멤버십 혜택</h2>
+                            </div>
+                            <div class="section-inner">
+                                <div class="benefit-info-box size2">
+                                    <ul>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">포인트 적립</dt>
+                                                <dd class="desc">LGE.COM/전국 BEST 매장<br>
+                                                    (백화점, 대형마트 입점 매장 제외)</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">현금처럼 사용하는 포인트</dt>
+                                                <dd class="desc">LGE.COM, 베스트샵, LG전자 서비스센터 수리, 렌탈 구매 (1포인트=1원)</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">세일 정보</dt>
+                                                <dd class="desc">각종 세일 정보 확인</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="lists">
+                                            <dl>
+                                                <dt class="tit">제휴 혜택</dt>
+                                                <dd class="desc">다양한 제휴 카드의 할인 혜택</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group center">
+                                    <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                                </div>
+                            </div> 
+                            <!-- VIP 멤버십(3년 무상 서비스) 혜택 -->
+                            <div class="tit-wrap type2 align-center">
+                                <h2 class="tit">VIP 멤버십(3년 무상 서비스) 혜택</h2>
+                            </div>
+                            <div class="section-inner">
+                                <div class="vip-benefit">
+                                    <dl class="cont">
+                                        <dt>VIP 멤버십이란?</dt>
+                                        <dd>1년간 5백만원 이상 구매 시, <br class="mo-only">VIP 멤버십 달성</dd>
+                                    </dl>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "멤버십 포인트 제도 안내",
+                                    "bulletTxt" : [
+                                        "VIP 고객 달성 시점으로부터 1년 전에 구매한 5가지 제품 (TV, 냉장고, 세탁기, 에어컨, 김치냉장고)에 한하여 무상 A/S 혜택이 부여됩니다.",
+                                        "VIP 기간 종료 후, 추가 구매를 하시어 1년간 구매금액 기준 5백만원이상이 되어야 자동연장 됩니다.",
+                                        "한 번 3년 무상 처리된 제품은 추가 연장되지 않습니다.",
+                                        "구매 제품의 수리 사유 발생 시에 한해 A/S 서비스를 받으실 수 있으며, 기타 교환/환불 발생시에는 소비자 분쟁해결기준에 따라 교환/환불됩니다."
+                                    ]
+                                }) 
+                            </div>
+                            <!-- 무상 A/S 안내 -->
+                            <div class="tit-wrap type2 align-center">
+                                <h2 class="tit">무상 A/S 안내</h2>
+                            </div>
+                            <div class="section-inner">
+                                <div class="vip-as-guide">
+                                    <ul>
+                                        <li>
+                                            <div class="inner">
+                                                <dl>
+                                                    <dt>TV</dt>
+                                                    <dd>
+                                                        <img src="/lg5-common/images/BMC/img-free-info-01.jpg" alt="">
+                                                        <p>LED, LCD, PDP, 울트라HD, 올레드</p>
+                                                    </dd>
+                                                </dl>
+                                                @@include('./common/modules/bullet-list.html', {
+                                                    "bulletTxt" : [
+                                                        "벽걸이/스탠드 자재 제외"
+                                                    ]
+                                                })
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="inner">
+                                                <dl>
+                                                    <dt>김치 냉장고</dt>
+                                                    <dd>
+                                                        <img src="/lg5-common/images/BMC/img-free-info-02.jpg" alt="">
+                                                        <p>김치 냉장고 전제품</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="inner">
+                                                <dl>
+                                                    <dt>세탁기</dt>
+                                                    <dd>
+                                                        <img src="/lg5-common/images/BMC/img-free-info-03.jpg" alt="">
+                                                        <p>트윈워시, 트롬, 통돌이, 미니세탁기(미니워시,꼬망스),
+                                                            워시타워(건조기 포함)</p>
+                                                    </dd>
+                                                </dl>
+                                                @@include('./common/modules/bullet-list.html', {
+                                                    "bulletTxt" : [
+                                                        "세탁기 받침대 제외, 스타일러/건조기단품 제외"
+                                                    ]
+                                                })
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="inner">
+                                                <dl>
+                                                    <dt>냉장고</dt>
+                                                    <dd>
+                                                        <img src="/lg5-common/images/BMC/img-free-info-04.jpg" alt="">
+                                                        <p>상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="inner">
+                                                <dl>
+                                                    <dt>에어컨</dt>
+                                                    <dd>
+                                                        <img src="/lg5-common/images/BMC/img-free-info-05.jpg" alt="">
+                                                        <p>스탠드, 벽걸이</p>
+                                                    </dd>
+                                                </dl>
+                                                @@include('./common/modules/bullet-list.html', {
+                                                    "bulletTxt" : [
+                                                        "일반 냉난방기, 시스템 에어컨, 배관자재 제외"
+                                                    ]
+                                                })
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "유의사항 안내",
+                                    "bulletTxt" : [
+                                        "무상 서비스 기간 : 설치 일자 기준 3년 적용 <br> ※ 대형마트(이마트, 홈플러스) 구매 건의 경우 구매 일자 기준 3년 적용",
+                                        "멤버십 등급 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
+                                        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 및 홈쇼핑 구매 제품 제외"
+                                    ]
+                                })
+                            </div>
+                            <!-- 멤버십 운영 매장 -->
+                            <div class="tit-wrap type2 align-center mo-only-acc">
+                                <h2 class="tit"><span>멤버십 운영 매장</span><button class="btn-mo-acc">멤버십 운영 매장</button></h2>
+                            </div>
+                            <div class="section-inner mo-only-acc">
+                                <div class="tb-scroll vertical-fixed">
+                                    <div class="tb_row tb-row-bl">
+                                        <table>
+                                            <caption>멤버십 운영매장 표로, 운영매장, 3년 무상서비스(LG멤버십), 포인트 적립(행사 진행시), 포인트 사용 순으로 나옵니다.</caption>
+                                            <colgroup>
+                                                <col>
+                                                <col style="width:25%">
+                                                <col style="width:25%">
+                                                <col style="width:25%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="fixed-side">운영매장</th>
+                                                    <th scope="col">33년 무상서비스<br class="mo-only"> (LG멤버십)</th>
+                                                    <th scope="col">포인트 적립<br class="mo-only"> (행사 진행시)</th>
+                                                    <th scope="col">포인트 사용</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">LGE.COM</th>
+                                                    <td>O</td>
+                                                    <td>O</td>
+                                                    <td>O</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">LG BEST SHOP</th>
+                                                    <td>O</td>
+                                                    <td>O</td>
+                                                    <td>O</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">롯데, AK, 갤러리아,<br> 신세계, 현대백화점 등<br class="mo-only">(BEST SHOP 입점)</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">홈플러스</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">이마트</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">롯데하이마트</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">전자랜드</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">시그니처 키친 스위트 <br class="mo-only">쇼륨</th>
+                                                    <td>O</td>
+                                                    <td>X</td>
+                                                    <td>X</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fixed-side">LG전자 서비스센터</th>
+                                                    <td>해당없음</td>
+                                                    <td>X</td>
+                                                    <td>O</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 가입 안내 -->
+                            <div class="tit-wrap type2 align-center">
+                                <h2 class="tit">가입 안내</h2>
+                            </div>
+                            <div class="section-inner">
+                                <div class="sign-up-info">
+                                    <div class="inner online">
+                                        <dl>
+                                            <dt>온라인 / 모바일 가입 방법</dt>
+                                            <dd>
+                                                <p>LGE.COM 또는 LG전자 멤버십 앱에서 회원가입,<br class="pc-only">
+                                                    본인인증 후 가입 완료!</p>
+                                                <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                                            </dd>
+                                        </dl>
+                                        <div class="mo-only">
+                                            <div class="tit-wrap type-sub align-center">
+                                                <h3 class="tit">LG전자 멤버십 APP 다운</h3>
+                                            </div>
+                                            <div class="section-inner">
+                                                <div class="app-down">
+                                                    <div class="inner">
+                                                        <span class="img-qr">
+                                                            <img src="/lg5-common/images/BMC/img-qr-googleplay-m.png" alt="Google Play Qr코드"/>
+                                                        </span>
+                                                        <a href="#" class="btn-app-down">
+                                                            <img src="/lg5-common/images/BMC/img-btn-googleplay-m.png" alt="Google Play"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="inner">
+                                                        <span class="img-qr">
+                                                            <img src="/lg5-common/images/BMC/img-qr-appstore-m.png" alt="App Store Qr코드"/>
+                                                        </span>
+                                                        <a href="#" class="btn-app-down">
+                                                            <img src="/lg5-common/images/BMC/img-btn-appstore-m.png" alt="App Store"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inner offline">
+                                        <dl>
+                                            <dt>매장 방문</dt>
+                                            <dd>
+                                                <p>가까운 LG전자 베스트샵 매장 방문, 가입 신청서 작성</p>
+                                                <a href="#n" class="btn border"><span>가까운 매장 찾기</span></a>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- LG전자 멤버십 APP 다운 -->
+                            <div class="pc-only">
+                                <div class="tit-wrap type-sub align-center">
+                                    <h3 class="tit">LG전자 멤버십 APP 다운</h3>
+                                </div>
+                                <div class="section-inner">
+                                    <div class="app-down">
+                                        <div class="inner">
+                                            <span class="txt-btn">
+                                                <strong>안드로이드 앱 설치하기</strong>
+                                                <a href="#" class="btn-app-down">
+                                                    <img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>
+                                                </a>
+                                            </span>
+                                            <span class="img-qr">
+                                                <img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>
+                                            </span>
+                                        </div>
+                                        <div class="inner">
+                                            <span class="txt-btn">
+                                                <strong>iOS 앱 설치하기</strong>
+                                                <a href="#" class="btn-app-down">
+                                                    <img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>
+                                                </a>
+                                            </span>
+                                            <span class="img-qr">
+                                                <img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 내 포인트 확인 -->
+                        <div class="point-section">
+                            <div class="inner">
+                                <strong>멤버십 포인트 적립 및 사용 내역을<br class="mo-only"> 확인하실 수 있어요.</strong>
+                                <a href="#" class="btn"><span>내 포인트 확인</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- //210215 수정 -->
-
-                <div class="membership-welcome">
-                    <div class="welcome">
-                        <!-- 210413 수정 [삭제] -->
-                        <!-- <p class="tit">LG전자 멤버십이란?</p>!-- 210405 수정 [띄어쓰기 붙임 수정] --
-                        !-- 210215 수정 --
-                        <p class="desc">LG전자 고객만을 위해 준비한 특별한<br class="mob-only"> 서비스 및 혜택을 드립니다.</p> // 210413 수정 [삭제] -->
-
-                        <!--210716 BTOCSITE-3023 - 멤버십 > 이미지 내 LG 로고 삭제 -->
-                        <!--<span class="img" aria-hidden="true"><img src="/lg5-common/images/BMC/img-card.svg" alt="LG MEMBERSHIP"></span>-->
-                        <!--//210716 BTOCSITE-3023 - 멤버십 > 이미지 내 LG 로고 삭제 -->
-
-                        <!-- //210215 수정 -->
-                    </div>
-                   <div class="benefits">
-                        <!-- 210402 문구수정 -->
-                        <dl class="dls dls1">
-                            <dt>포인트 적립</dt>
-                            <dd>LGE.COM과 베스트샵 매장에서 구매 시<br>행사별 포인트가 적립됩니다.</dd> <!-- 210607 문구수정 -->
-                        </dl>
-                        <!-- //210402 문구수정 -->
-                        <dl class="dls dls2">
-                            <dt>현금처럼 사용하는 포인트</dt>
-                            <dd>1포인트는 1원! LGE.COM과 전국 베스트샵/서비스센터/렌탈 구매시 멤버십 포인트를 현금처럼 사용하세요.</dd> <!-- 210607 문구수정 -->
-                        </dl>
-                    <!-- 210215 수정 -->
-                    </div>
-                    <!-- //210215 수정 -->
-                    <!-- 210413 수정 [위치 이동] -->
-                    <div class="btn-group">
-                        <a href="#n" class="btn size-m border"><span>더 알아보기</span></a>
-                    </div>
-                    <!-- // 210413 수정 [위치 이동] -->
-                </div>
-
-                <!-- 210215 수정 -->
-                <div class="membership-benefit">
-                    <div class="cont">
-                        <!-- 210413 수정 [문구 수정] -->
-                        <dl>
-                            <dt>VIP 멤버십 혜택</dt>
-                            <dd>LGE.COM과 베스트샵 및 제휴매장에서 멤버십 가입 후, LG전자 제품을 1년간 5백만원 이상 구입한 고객님께 대상 제품에 대해 3년 무상 서비스 혜택을 드립니다</dd> <!-- 210607 문구수정 -->
-                        </dl>
-                        <div class="btn-group">
-                            <a href="#n" class="btn size-m border"><span>혜택보기</span></a>
-                        </div>
-                        <!-- // 210413 수정 [문구 수정] -->
-                    </div>
-                </div>
-
-                <div class="membership-info">
-                    <ul class="infos">
-                        <li class="bg1">
-                            <!-- 210329 a태그수정 -->
-                            <a href="#n">
-                                <div class="inner">
-                                    <p class="tit">멤버십 가입</p>
-                                    <p class="desc">LG전자 멤버십 회원가입하고 무상서비스 등 다양한 혜택을 받아보세요.</p><!-- 210413 수정 [문구 수정] -->
-                                    <!-- <a href="#n" class="btn size border"><span>멤버십 가입</span></a> -->
-                                </div>
-                            </a>
-                            <!-- //210329 a태그수정 -->
-                        </li>
-                        <li class="bg2">
-                            <!-- 210329 a태그수정 -->
-                            <a href="#n">
-                                <div class="inner">
-                                    <!-- 210413 수정 [문구 수정] -->
-                                    <p class="tit">베스트샵 매장</p>
-                                    <p class="desc">다양한 할인과 포인트가 적립되는 가까운 베스트샵 매장을 찾아보세요.</p>
-                                    <!-- // 210413 수정 [문구 수정] -->
-                                </div>
-                            </a>
-                            <!-- //210329 a태그수정 -->
-                        </li>
-                        <li class="bg3">
-                            <!-- 210329 a태그수정 -->
-                            <a href="#n">
-                                <div class="inner">
-                                    <p class="tit">내 포인트 확인</p>
-                                    <p class="desc">멤버십 포인트 적립 및 사용 내역을 확인하실 수 있어요</p><!-- 210413 수정 [문구 수정] -->
-                                </div>
-                            </a>
-                            <!-- //210329 a태그수정 -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- //210215 수정 -->
+                <!-- //BTOCSITE-3002 멤버십 페이지 수정 -->
             </div>
             <!-- // membership -->
         </div>
