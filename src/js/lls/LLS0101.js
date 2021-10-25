@@ -52,12 +52,16 @@ $(function(){
 
                     //console.log("check", obj);
                     
-
                     if(obj["key"] == "sauceflexMoveLogin"){
                         location.href="/sso/api/Login";
                     }else if(obj["key"] == "sauceflexMoveProduct"){
-                        location.href=obj["params"].linkUrl;  
+                        //location.href=obj["params"].linkUrl;
 
+                        if(!vcui.detect.isMobileDevice){
+                            window.open(obj["params"].linkUrl);
+                        }else{
+                            location.href=obj["params"].linkUrl;
+                        }
                     }else if(obj["key"] == "sauceflexOnShare"){ 		    	
 
                         var dummy = document.createElement("input");
