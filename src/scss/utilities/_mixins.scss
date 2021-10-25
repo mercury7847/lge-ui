@@ -1,56 +1,56 @@
 // font Size PC / Mobile
 @mixin font-x-small {
     // font-size: 12px;
-	font-size: $font-x-small;
-	line-height: 22px;
+    font-size: $font-x-small;
+    line-height: 22px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-       line-height: 20px;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        line-height: 20px;
+    }
 }
 
 @mixin font-small {
     // font-size: 14px;
-	font-size: $font-small;
-	line-height: 24px;
+    font-size: $font-small;
+    line-height: 24px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	    font-size: $font-small - 1;
-	    line-height: 21px;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size: $font-small - 1;
+        line-height: 21px;
+    }
 }
 
 @mixin font-medium {
     // font-size: 16px;
-	font-size: $font-medium;
-	line-height: 26px;
+    font-size: $font-medium;
+    line-height: 26px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-		font-size : $font-medium - 2;
-		line-height: 22px;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size : $font-medium - 2;
+        line-height: 22px;
+    }
 }
 
 @mixin font-large {
     // font-size: 18px;
-	font-size: $font-large;
-	line-height: 28px;
+    font-size: $font-large;
+    line-height: 28px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	   font-size : $font-medium - 1;
-	   line-height: 23px;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size : $font-medium - 1;
+        line-height: 23px;
+    }
 }
 
 @mixin font-large-1 {
     // font-size: 20px;
-	font-size: $font-large-1;
-	line-height: 30px;
+    font-size: $font-large-1;
+    line-height: 30px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	   font-size : $font-medium;
-	   line-height: 24px;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size : $font-medium;
+        line-height: 24px;
+    }
 }
 
 @mixin font-large-2 {
@@ -59,8 +59,8 @@
     line-height: 34px;
 
     @media screen and (max-width: #{$tablet-s-width}) {
-       font-size : 24px;
-       line-height: 31px;
+        font-size : 24px;
+        line-height: 31px;
     }
 }
 
@@ -70,8 +70,8 @@
     line-height: 38px;
 
     @media screen and (max-width: #{$tablet-s-width}) {
-       font-size : $font-large-2;
-       line-height: 32px;
+        font-size : $font-large-2;
+        line-height: 32px;
     }
 }
 
@@ -123,37 +123,37 @@
 
 // only PC
 @mixin pc {
-	@media screen and (min-width: #{$tablet-s-width + 1}) {
-		@content;
-	}
+    @media screen and (min-width: #{$tablet-s-width + 1}) {
+        @content;
+    }
 }
 
 // 1600 size
 @mixin pc-size-l {
-	@media screen and (max-width: #{$desktop-l-width}) {
-		@content;
-	}
+    @media screen and (max-width: #{$desktop-l-width}) {
+        @content;
+    }
 }
 
 // 1460 size
 @mixin pc-size-m {
-	@media screen and (max-width: #{$desktop-m-width}) {
-		@content;
-	}
+    @media screen and (max-width: #{$desktop-m-width}) {
+        @content;
+    }
 }
 
 // tablet
 @mixin tablet {
-	@media screen and (max-width: #{$tablet-l-width}) {
-		@content;
-	}
+    @media screen and (max-width: #{$tablet-l-width}) {
+        @content;
+    }
 }
 
 // Mobile
 @mixin mobile {
-	@media screen and (max-width: #{$tablet-s-width}) {
-		@content;
-	}
+    @media screen and (max-width: #{$tablet-s-width}) {
+        @content;
+    }
 }
 
 /*
@@ -279,10 +279,10 @@ $wide-screen: "(min-width: 1600px)";
 * @include translate3D;
 */
 @mixin translate3D () {
--webkit-transform: translate3D(0, 0, 0);
+    -webkit-transform: translate3D(0, 0, 0);
     -ms-transform: translate3D(0, 0, 0);
-        -o-transform: translate3D(0, 0, 0);
-        transform: translate3D(0, 0, 0);
+    -o-transform: translate3D(0, 0, 0);
+    transform: translate3D(0, 0, 0);
 }
 
 
@@ -291,10 +291,10 @@ $wide-screen: "(min-width: 1600px)";
 * @include scale(-1, 1);
 */
 @mixin scale ($sx, $sy) {
--webkit-transform: scale($sx, $sy);
+    -webkit-transform: scale($sx, $sy);
     -ms-transform: scale($sx, $sy);
-        -o-transform: scale($sx, $sy);
-        transform: scale($sx, $sy);
+    -o-transform: scale($sx, $sy);
+    transform: scale($sx, $sy);
 }
 
 /*
@@ -325,13 +325,13 @@ $wide-screen: "(min-width: 1600px)";
 @mixin text-through ($color) {
     position: relative;
     &:after {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: $color;
-      content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        content: '';
     }
 }
 

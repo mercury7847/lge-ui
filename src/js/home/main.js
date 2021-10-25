@@ -357,21 +357,24 @@ $(function () {
                 dots: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                infinite:false,
+                infinite:true,
                 vertical: true,
                 autoplay: true,
                 autoplaySpeed: 3000,
                 pauseOnHover: true,
                 pauseOnFocus: true
             });
-            $('.info-pause').on('click', function() {
-                $('.info-area')
-                    .slick('slickPause')
-            });
             
-            $('.info-play').on('click', function() {
-                $('.info-area')
-                    .slick('slickPlay')
+            $('.btn-info-play').on('click', function() {
+                if($(this).hasClass('pause')){
+                    $(this).removeClass('pause');
+                    $('.info-area').slick('slickPause')
+                    $('.btn-info-play span').text('재생');
+                } else {
+                    $(this).addClass('pause');
+                    $('.info-area').slick('slickPlay');
+                    $('.btn-info-play span').text('멈춤');
+                }
             });
 
         });   
