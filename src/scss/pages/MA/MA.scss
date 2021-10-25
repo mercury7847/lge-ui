@@ -233,7 +233,7 @@ img{
 			.text-cont {
 				text-align: center;
 				// BTOCSITE-2193 s
-				padding: 16px 0 100px 0;
+				padding: 23px 0 100px 0;
 				.title{
 					.only-desktop{
 						display: block;
@@ -254,8 +254,7 @@ img{
 							display: block;
 							overflow: hidden;
 							font-size: 24px;
-							line-height: 1.21;
-							color: #000 !important;
+							line-height: 30px;
 						}
 					}
 				}
@@ -376,7 +375,7 @@ img{
 					padding: 13px 10px 0 10px;
 					text-align: left;
 					margin-bottom: 12px;
-					background-color: #fff;
+					background: #fff;
 					.title {
 						overflow: hidden;
 						max-height: 58px;
@@ -556,7 +555,7 @@ img{
 				font-size:32px;
 				font-weight:700;
 				// BTOCSITE-2193
-				line-height:40px;
+				line-height:46px;
 			}
 		}
 		@include mobile {
@@ -1062,6 +1061,20 @@ img{
 						.slide-content{
 							width: 77.777vw!important;
 							padding:0 4px;
+							.slide-conts-box {
+								.slide-conts {
+									height: 272px;
+									.slide-box{
+										.text-area{
+											top:24px;
+											.tit {
+												font-size: 24px;
+												line-height: 30px;
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -1436,7 +1449,8 @@ img{
 				top: auto;
 				left: 0;
 				margin-top: -1px;
-				padding: 13px 10px 0 10px;
+				// BTOCSITE-2193
+				padding: 18px 10px 0 10px;
 				text-align: left;
 				margin-bottom: 12px;
 				background-color: #fff;
@@ -1495,6 +1509,15 @@ img{
 //}
 
 // BTOCSITE-2193 s
+
+.scene-cover .scene.scene-renew:last-child {
+	.text-cont {
+		padding-bottom: 55px;
+		@include mobile {
+			padding-bottom: 0;
+		}
+	}
+}
 .slick-section {
 	.slick-arrow {
 		display: inline-block;
@@ -1554,9 +1577,8 @@ img{
 		height: 46px;
 		min-width:142px;
 		margin-top:16px;
-		padding: 10px 32px 12px 32px;
+		padding: 10px 31px 12px 31px;
 		border-radius: 23px;
-		border: 1px solid #fff;
 		font-size: 16px;
 		font-weight: 500;
 		line-height: 23px;
@@ -1572,11 +1594,10 @@ img{
 		}
 		.arr {
 			height: 40px;
-			min-width:114px;
-			margin-top:12px;
+			min-width:126px;
+			margin-top:13px;
 			padding: 9px 24px 10px 24px;
 			border-radius: 20px;
-			border: 1px solid #fff;
 			font-size: 14px;
 			line-height: 20px;
 		}
@@ -1591,6 +1612,9 @@ img{
 	&.slick-section {
 		@include mobile{
 			overflow: hidden;
+			&:first-child {
+				margin-top: 31px;
+			}
 		}
 	}
 	.advice-type{
@@ -1879,6 +1903,21 @@ img{
 			padding: 25px 206px 25px 146px;
 			border-radius: 8px;
 			background: #f4f4f4;
+			&.info-solo{
+				padding-right: 25px;
+				.btn-info-play{
+					display: none;
+				}
+				@include mobile{
+					padding-right: 16px;
+					.item-box{
+						height:auto;
+						p {
+							height:auto;
+						}
+					}
+				}
+			}
 			.tit{
 				display: inline-block;
 				position: absolute;
@@ -1983,4 +2022,8 @@ img{
 
 	}
 }
-
+@include mobile {
+	.scene-cover .scene.scene-renew + .scene.scene-renew {
+		margin-top: 16px;
+	}
+}

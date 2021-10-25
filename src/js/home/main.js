@@ -317,6 +317,7 @@ $(function () {
             var recomSlider01Num = recomSlider01.find('.slide-item').length;
             var recomSlider02Num = recomSlider02.find('.slide-item').length;
             var recomSlider03Num = recomSlider03.find('.slide-item').length;
+            var infoSliderNum = $('.info-area .slide-item').length;
 
             if(recomSlider01Num > 1){
                 recomSlider(recomSlider01);
@@ -352,18 +353,22 @@ $(function () {
                 ]
             });
             
-            $('.info-area').slick({
-                arrows: true,
-                dots: false,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                infinite:true,
-                vertical: true,
-                autoplay: true,
-                autoplaySpeed: 3000,
-                pauseOnHover: true,
-                pauseOnFocus: true
-            });
+            if(infoSliderNum > 1){
+                $('.info-area').slick({
+                    arrows: true,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite:true,
+                    vertical: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    pauseOnHover: true,
+                    pauseOnFocus: true
+                });
+            } else {
+                $('.info-area-wrap').addClass('info-solo');
+            }
             
             $('.btn-info-play').on('click', function() {
                 if($(this).hasClass('pause')){
