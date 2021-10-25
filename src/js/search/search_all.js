@@ -805,11 +805,21 @@ if ('scrollRestoration' in history) {
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
                 
                 lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
+                    console.log("target %o",result.data.linkTarget )
                     if(result.data && result.data.success == 'Y' && result.data.url) {
                         if(result.data.linkTarget == 'self') {
                             location.href = result.data.url;
                         } else {
-                            window.open(result.data.url,'_blank');
+                            if(isApp()) {   
+                                if(vcui.detect.isIOS){
+                                    var jsonString = JSON.stringify({'command':'sendOutLink', 'url': result.data.url});
+                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                                } else {
+                                    void android.openLinkOut(result.data.url);
+                                }
+                            } else {
+                                window.open(result.data.url,'_blank');
+                            }
                         }
                     } else {
                         lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {
