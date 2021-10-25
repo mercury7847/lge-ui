@@ -1412,6 +1412,10 @@ html {
     }
     .slide-wrap{
         &.hero-banner{
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.05s ease;
+            -webkit-transition: opacity 0.05s ease;
             .custom-indi-wrap {
                 bottom: 20px;
                 left: 0;
@@ -1448,6 +1452,10 @@ html {
                     }
                 }
             }
+            &.ui_carousel_initialized{
+                visibility: visible;
+                opacity: 1;
+            }
         }
         .custom-indi-wrap{
             width: 100%;
@@ -1473,6 +1481,20 @@ html {
             @include mobile{
                 height: auto;
                 object-fit: cover;
+            }
+        }
+        .img-pc{
+            display: block;
+        }
+        .img-mobile{
+            display:none;
+        }
+        @include mobile{
+            .img-pc{
+                display:none;
+            }
+            .img-mobile{
+                display:block;
             }
         }
         .animation-area{
@@ -1638,14 +1660,4 @@ html {
         }
     }
 }
-.heroImg-preload{
-    position:fixed;
-    width: 10px;
-    height: 10px;
-    bottom:0;
-    left:0;
-    opacity: 0.1;
-    overflow: hidden;
-}
-
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
