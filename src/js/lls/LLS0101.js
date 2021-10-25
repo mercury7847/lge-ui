@@ -44,6 +44,7 @@ var llc = {
 $(function(){
     llc.init();
 
+    /* BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
     $(window).on('load', function(){
         window.addEventListener(
             "message", function(e) { 
@@ -92,6 +93,7 @@ $(function(){
             }, false
         );
     })
+    /* //BTOCSITE-3372 라이브커머스 공유하기 기능 추가 */
 });
 
 
