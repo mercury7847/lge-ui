@@ -625,14 +625,15 @@
                         var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
     
                         if(nArr.length == 0){                       
-    
-                            lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                            // BTOCSITE-4785
+                            lgkorUI.confirm("100Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 200Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
                                 title: "",
                                 cancelBtnName: "아니오",
                                 okBtnName: "네",
                                 ok: function(){
                                     setTimeout(function(){
-                                        var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:20});
+                                        // BTOCSITE-4785
+                                        var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:200});
                                         self.$map.draw(newArr, defaultLat, defaultLong);
                                         
                                     },300);
@@ -764,14 +765,14 @@
                     /* //BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */             
     
                     if(nArr.length==0){
-    
-                        lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                        // BTOCSITE-4785
+                        lgkorUI.confirm("100Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 200Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
                             title: "",
                             cancelBtnName: "아니오",
                             okBtnName: "네",
                             ok: function(){
                                 setTimeout(function(){
-                                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:20});
+                                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:200});
                                     nArr = self._filterOptions(nArr, keywords);
                                     self._setSearchResultMode(nArr.length);
                                     self.$map.draw(nArr, lat, long, null, true);
