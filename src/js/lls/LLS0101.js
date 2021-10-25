@@ -25,7 +25,7 @@ var llc = {
     alertRedirect:function(){
         var self = this;
 
-        // if( !vcui.detect.isMobileDevice ) {
+        // if( !vcui.detect.isMobileDevice ) { 
         //     // self.$frameContent.hide();
         //     // lgkorUI.alert("", {
         //     //     title: "LGE.COM APP을 설치하시면 <br>모바일에서 엘라쇼 최신 하이라이트 영상을 <br>편리하게 이용하실 수 있습니다.",
