@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', { pageCSS: ["OBJ/OBJ"]})
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/animate.css" />
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/aos.css" />
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/swiper.css">
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/lg5-common/temp_OBJ/css/common.css" />
+
+<!-- -S- BTOCSITE-2153 0707 마크업 원복 -->
+<script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/common.js"></script>
+<script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/common_mobi.js"></script>
+<script src="/lg5-common/temp_OBJ/js/fontfaceobserver.js"></script>
+<script src="/lg5-common/temp_OBJ/js/iscroll-probe.js" type="text/javascript" charset="utf-8"></script>
+<script src="/lg5-common/temp_OBJ/js/wow.js"></script>
+<script src="/lg5-common/temp_OBJ/js/aos.js"></script>
+<script src="/lg5-common/temp_OBJ/js/swiper.js"></script>
+<script src="/lg5-common/temp_OBJ/js/SmoothScroll.min.js"></script>
+<script src="/lg5-common/temp_OBJ/js/rellax.min.js"></script>
+<script src="/lg5-common/temp_OBJ/js/modernsizr.js" type="text/javascript"></script>
+<script src="/lg5-common/temp_OBJ/js/materialize.js" type="text/javascript"></script>
+<!-- <script media="screen and (min-width: 768px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator.js"></script> -->
+<!-- <script media="screen and (max-width: 767px)" src="/lg5-common/temp_OBJ/js/collection_refrigerator_mobi.js"></script> -->
+<!-- -E- BTOCSITE-2153 0707 마크업 원복 -->
+
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- @@include('./common/modules/page-header.html', { "pageTitle": "Gallery" }) -->
+            <div class="brand-wrap objet-wrap">
+                <div class="objetcollection-tabs">
+                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                        <ul class="tabs">
+                            <li><a href="/html/OBJ/OBJ0100.html?objet-cont1">LG Objet Collection<em class="blind">선택됨</em></a></li>
+                            <li class="on"><a href="/html/OBJ/OBJ0100.html?objet-cont2">제품</a></li>
+                            <li><a href="/html/OBJ/OBJ0100.html?objet-cont3">체험</a></li>
+                            <li><a href="/html/OBJ/OBJ0100.html?objet-cont4">갤러리</a></li>
+                            <!-- -S- BTOCSITE-2153 오브제컬렉션 제품 USP 수정 : 브랜드 스토리 탭 숨김 -->
+                            <!-- <li><a href="/html/OBJ/OBJ0100.html?objet-cont5">브랜드 스토리</a></li> -->
+                            <!-- -E- BTOCSITE-2153 오브제컬렉션 제품 USP 수정 : 브랜드 스토리 탭 숨김 -->
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!--[S] BTOCSITE-6801 브랜드관 > 오브제컬렉션 제품 추가 : LG 틔운 -->
+                <div class="banner-wrap_obj prod-image-margin">
+                    <div class="banner-inner">
+                        <div class="text-wrap">
+                            <h2 class="title">공간인테리어 가전</h2>
+                            <div class="logo-obj">
+                                <img src="/lg5-common/images/OBJ/logo/tiiun_logo.svg" alt="LG 틔운 | Object collection">
+                            </div>
+                            <p class="model-name">대표모델 : L061E1P2</p>
+                            <a href="/lg-tiiun" class="btn border size-m" target="_blank"><span>더 많은 모델 보기</span></a>
+                        </div>
+                        <div class="product-img">
+                            <img class="only_mobile" src="/lg5-common/images/OBJ/main/tiiun_cut_image_mo.png" alt="LG 틔운">
+                            <img class="only_pc" src="/lg5-common/images/OBJ/main/tiiun_cut_image.png" alt="LG 틔운">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uspImg-wrap">
+                    <img class="only_pc" src="/lg5-common/images/OBJ/main/tiiun_contents.jpg" alt="LG 틔운">
+                    <img class="only_mobile" src="/lg5-common/images/OBJ/main/tiiun_contents_mo.jpg" alt="LG 틔운">
+                </div>
+                <!--[E] BTOCSITE-6801 브랜드관 > 오브제컬렉션 제품 추가 : LG 틔운 -->
+
+
+            </div>
+        </div>
+        @@include('./common/footer.html')
+    </div>
+    <div class="floating-wrap">
+        <!-- component / Scroll to the top -->
+        @@include('./common/partials/KRP0004.html')
+        <!-- // component / Scroll to the top -->
+    </div>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            var agent = navigator.userAgent.toLowerCase();
+            if ((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)) {
+                $("html").attr("data-b-typ", "ie");
+
+                //console.log("인터넷 익스플로러 브라우저 입니다.");
+                window.addEventListener("DOMMouseScroll", handleScroll);
+                window.addEventListener("mousewheel", handleScroll);
+
+                function wheelDistance(e) {
+                    console.log(e);
+                    if (!e) {
+                        e = window.event;
+                    }
+                    var w = e.wheelDelta,
+                        d = e.detail;
+                    if (d) {
+                        return -d / 3; // Firefox;
+                    }
+
+                    // IE, Safari, Chrome & other browsers
+                    return w / 120;
+                }
+
+                function handleScroll(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var delta = wheelDistance(e);
+                    console.log(delta);
+                    var time = 500;
+                    var distance = 700;
+
+                    $('html, body').stop().animate({
+                        scrollTop: $(window).scrollTop() -
+                            (distance * delta)
+                    }, time);
+                }
+
+            }
+            $('.objetcollection-tabs .ui_tab a').on("click", function() {
+                let linkTarget = $(this).attr("href");
+                document.location.href = linkTarget;
+            });
+            $(window).on("load", function() {
+                autoFixedLinkTab()
+
+            });
+            $(window).on("scroll", function() {
+                autoFixedLinkTab()
+            });
+
+            function autoFixedLinkTab() {
+                let fixedOffsetTop = $(".brand-wrap.objet-wrap").offset().top;
+                let scrollT = $(window).scrollTop();
+                let tabH = $(".objetcollection-tabs").height();
+                $(".brand-wrap.objet-wrap").addClass("fixed_link_tab");
+                if (scrollT > fixedOffsetTop) {
+                    $(".brand-wrap.objet-wrap").addClass("active on");
+                    $("#content.container").css("padding-top", tabH);
+                } else {
+                    $(".brand-wrap.objet-wrap").removeClass("active on");
+                    $("#content.container").css("padding-top", 0);
+                }
+            }
+
+        });
+        //]]>
+    </script>
+
+</body>
+
+</html>
