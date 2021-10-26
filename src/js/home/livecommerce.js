@@ -228,6 +228,10 @@ var lls = {
                     var param = {};
 
                     if( click ) {
+
+                        console.log("click %o",click);
+                        console.log("flag %o",flag);
+
                         // param.subscribeAction = flag == "Y" ? "C" : "R";
                         console.log(flag)
                         if( flag == "Y" ) {
@@ -252,7 +256,7 @@ var lls = {
                                 console.log("popup %o",self.$agreePrivacyPopup)
                                 self.$agreePrivacyPopup.empty().append(
                                     vcui.template(agreePrivacyPopupTmpl, data)
-                                ).one('click','.btn-agree', function(e){
+                                ).off('click').one('click','.btn-agree', function(e){
                                     e.preventDefault();
                                     // 개인정보 동의 클릭
                                     console.log('동의 클릭');
