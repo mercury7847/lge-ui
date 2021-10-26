@@ -16,6 +16,7 @@
                 self.$inqueryBtn     = self.$container.find('.inqueryBtn');
                 self.$addressFindBtn = self.$container.find('.addr-box-wrap .btn');
                 self.$defaultAddress = self.$container.find('#defaultAddress');
+                self.$linkAgreeLink   = self.$container.find('.link-agree a');
 
             // systemAirconForm validation
             var register = {
@@ -135,6 +136,20 @@
                     $('input[name="plc-addr3"]').val('');
                 }
             });
+
+            //BTOCSITE-5498 B2C 견적페이지>B2B개인정보처리방침 링크추가
+            self.$linkAgreeLink.on('click',function(e){
+                var $url = $(this).attr('href');
+                if(isApp()) {
+                    e.preventDefault();
+                    if(vcui.detect.isIOS){
+                        var jsonString = JSON.stringify({'command':'sendOutLink', 'url': $url});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    } else {
+                        void android.openLinkOut($url);
+                    }
+                }
+            })
         },
     };
     var b2cOnlineSearch = {
