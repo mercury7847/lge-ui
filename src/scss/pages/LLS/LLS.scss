@@ -950,3 +950,123 @@
     }
 }
 /* //BTOCSITE-5455 엘라쇼홈> 파란색 테두리 제거 */
+
+
+// S: BTOCSITE-7191 엘라쇼 알림 신청 시 뜨는 팝업 내 이벤트 개인정보 위탁 동의 절차 삽입
+#agreePrivacyPopup {
+    &.popup-wrap.full {
+        max-width:678px;
+        @include mobile {
+            max-width:328px;
+            transform: translateX(-50%) translateY(-50%) !important;
+            left: 50% !important;
+            top: 50% !important;
+
+            height:calc(100% - 196px) !important;
+            min-height:auto !important;
+            border-radius: 8px;
+        } 
+
+        .pop-conts {
+            padding: 30px 16px;
+            @include mobile {
+                padding:15px 16px 20px;
+            }
+    
+            .txt-head {
+                color:#767676;
+                @include font-small;
+                .dl-txt-cont {
+                    color: $color-default;
+    
+                    dt {
+                        margin-bottom:20px;
+                        @include mobile {
+                            margin-bottom:12px;
+                        }
+    
+                        div {
+                            text-align:center;
+                            font-size:22px;
+                            font-weight: bold;
+                            line-height:32px;
+                            @include mobile {
+                                display:inline;
+                                font-size:18px;
+                                line-height:26px;                  
+                            }
+                        }
+                    }
+    
+                    dd {
+                       font-size:16px;
+                       line-height:26px;
+                       margin-bottom:30px;
+        
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
+                            text-align:center;
+                            margin-bottom: 12px;
+                        }
+                    }
+                }
+            }
+    
+            .txt-cont {
+                .dl-txt-cont {
+                    font-size:16px;
+                    border:1px solid #dddddd;
+                    padding:20px 32px;
+                    @include mobile {
+                        font-size:13px;
+                        padding:16px;
+                    }
+    
+                    dd {
+                        font-size:14px;
+                        margin-top:16px;
+                        @include mobile {
+                            font-size:12px;
+                            margin-top:12px;
+                        }
+    
+                        ul {
+                            li {
+                                padding-left:32px;
+                                @include mobile {
+                                    padding-left:16px;
+                                }
+    
+                                div.pad {
+                                    padding-left:14px;
+                                    @include mobile {
+                                        padding-left:7px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .pop-footer{
+            padding-top:0;
+            padding-bottom:40px;
+            @include mobile {
+                padding:0;
+            }
+    
+            .btn.btn-group {
+                .ui_modal_close {
+                    @include mobile {
+                        margin-left:0;
+                        border-radius: 0;
+                    } 
+                }
+            }
+        }
+    }
+}
+// E: BTOCSITE-7191 엘라쇼 알림 신청 시 뜨는 팝업 내 이벤트 개인정보 위탁 동의 절차 삽입

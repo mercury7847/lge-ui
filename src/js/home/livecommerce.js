@@ -1,3 +1,27 @@
+var agreePrivacyPopupTmpl = '<header class="pop-header">'+
+                            '   <h1 class="tit"><span>개인정보 취급 및 위탁 동의</span></h1>'+
+                            '</header>'+
+                            '<section class="pop-conts rmsf-pop">'+
+                            '   <div class="input-info">'+
+                            '       <div class="txt-head">'+
+                            '           <dl class="dl-txt-cont">'+
+                            '               <dt><div>{{#raw consignmentAgreementTitleMsg}}</dt>'+
+                            '               <dd>{{#raw consignmentAgreementDescMsg}}</dd> '+
+                            '           </dl>'+
+                            '       </div>'+
+                            '       <div class="txt-cont">'+
+                            '           <dl class="dl-txt-cont">{{#raw consignmentAgreementDesc2Msg}}</dl>'+
+                            '       </div>'+
+                            '   </div>'+
+                            '</section>'+
+                            '<div class="pop-footer center">'+
+                            '   <div class="btn-group">'+
+                            '       <button type="button" class="btn gray ui_modal_close"><span>동의하지 않습니다</span></button>'+
+                            '       <button type="button" class="btn pink btn-agree ui_modal_close"><span>동의합니다</span></button>'+
+                            '   </div>'+
+                            '</div>'+
+                            '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>';
+
 var lls = {
     init: function(){
         var self = this;
@@ -35,6 +59,12 @@ var lls = {
         self.$eventList = self.$eventSection.find('.event-item-list');
         self.$eventAnchor = self.$eventList.find('.item-list-anchor');
         self.$appInstallPopup = $('#appInstallGuidePopup');
+
+        // 엘라쇼 팝업 마크업 추가
+        if($('#mobile-close-popup').size() === 0 ) {
+            self.$llsMain.append('<article id="agreePrivacyPopup" class="popup-wrap full"></article>');
+            self.$agreePrivacyPopup = $('#agreePrivacyPopup');
+        }
     },
     backgroundSwitch: function(){
         var self = this;
@@ -189,35 +219,57 @@ var lls = {
         var subUrl = pushData.subscribeUrl;
 
         
-            if ( isLogin == "Y" ) {
-                lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
-                    if( result.status == "success") {
-                        var data = result.data;
-                        var flag = data.subscribeFlag;
-                        var param = {};
-        
-                        
-        
-                        if( click ) {
-                            // param.subscribeAction = flag == "Y" ? "C" : "R";
-                            console.log(flag)
-                            if( flag == "Y" ) {
-                                lgkorUI.confirm("", {
-                                    title:"엘라쇼 알림 신청을 <br>해제 하시겠습니까?", 
-                                    okBtnName: "해제하기",
-                                    ok: function(){
-                                        lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
-                                            if( subResult.status == "success") {
-                                                var subData = subResult.data;
-                                                var currentActionName = "엘라쇼 알림 취소가"
-                                                var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
-                                                lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
-                                                self.$pushContent.find('.btn-lls-push span').text("알림 신청");
-                                            }
-                                        });
-                                    }
+        if ( isLogin == "Y" ) {
+            lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
+                if( result.status == "success") {
+                    var data = result.data;
+                    var flag = data.subscribeFlag;
+                    var agreeFlag = data.consignmentAgreementFlagMsg == 'Y' && data.agreementFlag != 'Y'
+                    var param = {};
+
+                    if( click ) {
+                        // param.subscribeAction = flag == "Y" ? "C" : "R";
+                        console.log(flag)
+                        if( flag == "Y" ) {
+                            lgkorUI.confirm("", {
+                                title:"엘라쇼 알림 신청을 <br>해제 하시겠습니까?", 
+                                okBtnName: "해제하기",
+                                ok: function(){
+                                    lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                        if( subResult.status == "success") {
+                                            var subData = subResult.data;
+                                            var currentActionName = "엘라쇼 알림 취소가"
+                                            var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다." : currentActionName + " <br>실패하였습니다.");
+                                            lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                            self.$pushContent.find('.btn-lls-push span').text("알림 신청");
+                                        }
+                                    });
+                                }
+                            })
+                        } else {
+                            if(agreeFlag) {
+                                // 이벤트 개인정보 동의 팝업
+                                console.log("popup %o",self.$agreePrivacyPopup)
+                                self.$agreePrivacyPopup.empty().append(
+                                    vcui.template(agreePrivacyPopupTmpl, data)
+                                ).one('click','.btn-agree', function(e){
+                                    e.preventDefault();
+                                    // 개인정보 동의 클릭
+                                    console.log('동의 클릭');
+                                    lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
+                                        if( subResult.status == "success") {
+                                            var subData = subResult.data;
+                                            var currentActionName = "엘라쇼 알림 신청이";
+                                            var currentMsg = (subData.success == "Y" ? currentActionName + " <br>완료되었습니다. <br>알림 신청 시 방송일에 <br>SMS가 발송됩니다." : currentActionName + " <br>실패하였습니다.");
+                                            lgkorUI.alert("", {title:currentMsg}, self.pushBtn)
+                                            self.$pushContent.find('.btn-lls-push span').text("알림 취소");
+                                        }
+                                    });
+                                    
                                 })
+                                .vcModal();
                             } else {
+                                // 알림팝업
                                 lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
                                     if( subResult.status == "success") {
                                         var subData = subResult.data;
@@ -228,19 +280,19 @@ var lls = {
                                     }
                                 });
                             }
-
-                        } else {
-                            self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "알림 취소" : "알림 신청");
-                            self.$pushContent.show();
                         }
-                    } 
-                });
-            } else {
-                self.$pushContent.show();
-                if( click ) {   
-                    location.href = loginUrl;
-                }
+                    } else {
+                        self.$pushContent.find('.btn-lls-push span').text(flag == "Y" ? "알림 취소" : "알림 신청");
+                        self.$pushContent.show();
+                    }
+                } 
+            });
+        } else {
+            self.$pushContent.show();
+            if( click ) {   
+                location.href = loginUrl;
             }
+        }
     },
     requestModal: function(dm) {
         var _self = this;
