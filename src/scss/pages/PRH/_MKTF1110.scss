@@ -2371,7 +2371,7 @@
                             flex-direction: row;
                             align-items: center;
                             @include mobile {
-                                flex-direction: column;
+                                flex-direction: column-reverse;
                             }
                             .text-area {
                                 color:#000;
@@ -2379,7 +2379,7 @@
                                 @include mobile {
                                     text-align: center;
                                     padding-left:0;
-                                    margin-top:10px;
+                                    margin-bottom:10px;
                                 }
                                 .tit {
                                     font-size:32px;
@@ -2421,9 +2421,9 @@
                         }
                         &:nth-child(even) {
                             .detail-inner {
-                                flex-direction: row-reverse;
-                                @include mobile {
-                                    flex-direction: column;
+                                
+                                @include pc {
+                                    flex-direction: row-reverse;
                                 }
                                 .text-area {
                                     text-align: right;
