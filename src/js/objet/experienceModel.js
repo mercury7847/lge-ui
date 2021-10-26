@@ -4317,12 +4317,12 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.hide(); //BTOCSITE-5790 add
+            $quickbuy.hide(); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
-            $quickbuy.css("border-top","0");
-            $quickbuyInfoBody.css("padding","0");
+            //$quickbuy.css("border-top","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
+            //$quickbuyInfoBody.css("padding","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
         }
         // E - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
 
@@ -4488,7 +4488,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ // 210805 BTOCSITE-3487 전자랜드 추가
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ // 210805 BTOCSITE-3487 전자랜드 추가, BTOCSITE-5790 전자랜드 구매하기 제거
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
@@ -4534,7 +4534,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487, BTOCSITE-5790 전자랜드 구매하기 제거
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
