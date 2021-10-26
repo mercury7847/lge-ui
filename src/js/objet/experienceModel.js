@@ -4317,12 +4317,12 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.hide(); //BTOCSITE-5790 add
+            $quickbuy.hide(); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
-            $quickbuy.css("border-top","0");
-            $quickbuyInfoBody.css("padding","0");
+            //$quickbuy.css("border-top","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
+            //$quickbuyInfoBody.css("padding","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
         }
         // E - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
 
