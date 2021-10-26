@@ -622,6 +622,13 @@ header {
         height: auto;
         max-height: 800px;
         background: #f4f4f4;
+        @include mobile {
+            &.prod-image-margin {
+                .product-img {
+                    margin-bottom: 35px;
+                }
+            }
+        }
         .banner-inner {
             display: flex;
             justify-content: space-between;

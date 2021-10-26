@@ -1305,13 +1305,13 @@
 
                 //BTOCSITE-6801 - LG 틔운
                 &.list14 {
-                    background: #eae9e7 url("/lg5-common/images/OBJ/main/aircleaner.png") no-repeat center center;
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/tiiun.png") no-repeat center center;
                     background-size: 320px 320px;
                     @include mobile {
                         background-size: 90%;
                     }
                     .bgList {
-                        background: url("/lg5-common/images/OBJ/main/images-co-list-aircleaner-hover.jpg") no-repeat;
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-tiiun-hover.jpg") no-repeat;
                         background-size: 100% 100%;
                     }
                 }
