@@ -218,7 +218,6 @@ var lls = {
         var chkUrl = pushData.subcheckUrl;
         var subUrl = pushData.subscribeUrl;
 
-        
         if ( isLogin == "Y" ) {
             lgkorUI.requestAjaxData(chkUrl, {}, function(result) {
                 if( result.status == "success") {
@@ -228,12 +227,7 @@ var lls = {
                     var param = {};
 
                     if( click ) {
-
-                        console.log("click %o",click);
-                        console.log("flag %o",flag);
-
                         // param.subscribeAction = flag == "Y" ? "C" : "R";
-                        console.log(flag)
                         if( flag == "Y" ) {
                             lgkorUI.confirm("", {
                                 title:"엘라쇼 알림 신청을 <br>해제 하시겠습니까?", 
@@ -253,15 +247,11 @@ var lls = {
                         } else {
                             if(agreeFlag) {
                                 // 이벤트 개인정보 동의 팝업
-                                console.log("popup %o",self.$agreePrivacyPopup)
                                 self.$agreePrivacyPopup.empty().append(
                                     vcui.template(agreePrivacyPopupTmpl, data)
-
-                                    
                                 ).off('click').one('click','.btn-agree', function(e){
                                     e.preventDefault();
                                     // 개인정보 동의 클릭
-                                    console.log('동의 클릭');
                                     lgkorUI.requestAjaxData(subUrl, param, function(subResult) {
                                         if( subResult.status == "success") {
                                             var subData = subResult.data;
@@ -271,7 +261,6 @@ var lls = {
                                             self.$pushContent.find('.btn-lls-push span').text("알림 취소");
                                         }
                                     });
-                                    
                                 })
                                 .vcModal();
                             } else {
