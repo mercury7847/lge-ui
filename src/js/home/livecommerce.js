@@ -256,6 +256,8 @@ var lls = {
                                 console.log("popup %o",self.$agreePrivacyPopup)
                                 self.$agreePrivacyPopup.empty().append(
                                     vcui.template(agreePrivacyPopupTmpl, data)
+
+                                    
                                 ).off('click').one('click','.btn-agree', function(e){
                                     e.preventDefault();
                                     // 개인정보 동의 클릭
