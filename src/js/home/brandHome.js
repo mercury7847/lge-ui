@@ -389,9 +389,9 @@
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
             var listTemplate =  '<li>' + 
-            '   <div class="icon-wrap"><i class="icon icon-{{imgName}}"><span class="blind">{{categoryName}}</span></i></div>' + 
+            '   <div class="icon-wrap"><i class="icon icon-{{imgName}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
             '   <div class="text">' + 
-            '       <span class="name">{{modelName}}</span>' + 
+            '       <span class="name">{{categoryName}}</span>' + 
             '       <span class="serial-num">{{modelId}}</span>' + 
             '   </div>' + 
             '</li>';
