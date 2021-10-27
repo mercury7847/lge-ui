@@ -1173,7 +1173,8 @@
                 });
                 
                 //할인적용가 팝업 BTOCSITE-5781
-                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                //BTOCSITE-7379 PDP > 버튼 UI 변경건
+                self.$pdpInfo.on('click','li.lists.member .btn-discount-popup', function(e) {
                     e.preventDefault();
                     self.$saleInfoPopup.vcModal({opener: this});
                 });

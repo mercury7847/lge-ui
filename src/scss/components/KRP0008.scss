@@ -1043,6 +1043,9 @@
                     .btn-link {
                         @include font-small;
                     }
+                    .btn-discount-popup {
+                        margin-left:7px;
+                    }
                 }
                 .content {
                     float: right;
