@@ -1625,7 +1625,9 @@ img{
     }
     &.slick-section {
         @include mobile{
-            // overflow: hidden;
+            overflow: hidden;
+            max-width: 100%;
+            width:100%;
             &:first-child {
                 margin-top: 31px;
             }
