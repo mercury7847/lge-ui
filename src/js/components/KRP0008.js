@@ -78,6 +78,9 @@
         
         var KRP0008 = {
             init: function() {
+                // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
+                loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+                
                 var self = this;
                 //처음 로그인 체크를 하는 ajax 호출 여부
                 self.processProductBuy = null;
@@ -597,7 +600,7 @@
                     self.rentalCardList = self.makeAssociatedCardListData(rentalAssociatedCardList);
                 }
 
-                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.select-box:eq(3)');
+                self.$rentalCardList = self.$pdpInfoCareSiblingOption.find('.rental-card-list'); //BTOCSITE-3523 선택자 수정
                 if(self.$rentalCardList.length > 0) {
                     isTab = true;
                     self.updateAssociatedCardList(self.$rentalCardList, self.rentalCardList);
@@ -705,6 +708,7 @@
             popUpDataSetting: function() {
                 var self = this;
                 self.$awardPopup = $('#awardPopup');
+                self.$saleInfoPopup = $('#saleInfoPopup'); // BTOCSITE-5781
                 self.$benefitInfoPopup = $('#benefitInfoPopup');
                 self.$careshipInfoPopup = $('#careshipInfoPopup');
                 self.$caresolutionInfoPopup = $('#caresolutionInfoPopup');
@@ -875,6 +879,7 @@
                     var index = data.selectedIndex;
                     var url = location.pathname;
                     var param = vcui.uri.parseQuery(location.search);
+                    var bannerStore = $('.product-detail-info .store-counsel-banner'); //BTOCSITE-6416
                     var n = 0;
                     for(key in param) {
                         if(key != "dpType") {
@@ -890,7 +895,7 @@
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
-                        $('.store-counsel-banner').show(); //BTOCSITE-5727
+                        bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -898,7 +903,7 @@
                         $('.cardDiscount').hide();
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
-                        $('.store-counsel-banner').hide(); //BTOCSITE-5727
+                        bannerStore.hide(); //BTOCSITE-5727 //BTOCSITE-6416
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -1167,6 +1172,12 @@
                     self.$mainInitPopup.vcModal({opener: this});
                 });
                 
+                //할인적용가 팝업 BTOCSITE-5781
+                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                    e.preventDefault();
+                    self.$saleInfoPopup.vcModal({opener: this});
+                });
+
                 //구매혜택 팝업
                 self.$pdpInfo.on('click','li.lists.benefit a.btn-link.popup', function(e) {
                     e.preventDefault();
@@ -1571,14 +1582,40 @@
                     });
                 };
 
+                //BTOCSITE-3523 - 제휴카드 할인 드롭다운 열림/닫힘 액션
+                var cardDropExpanded = "false";
+                self.$pdpInfo.on('click','.careship-card-list .ui_dropdown_toggle, .rental-card-list .ui_dropdown_toggle',function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    $this.closest('.dropdown-box-wrap').toggleClass('open');
+                    (cardDropExpanded === "false") ? (cardDropExpanded = "true") : (cardDropExpanded = "false");
+                    $this.attr('aria-expanded',cardDropExpanded);
+                });
+                $(document).on('click', function(e) {
+                    var $rentalCareCardDropList = $('.careship-card-list .dropdown-box-wrap, .rental-card-list .dropdown-box-wrap');
+                    if($(e.target).closest($rentalCareCardDropList).length == 0){
+                        $rentalCareCardDropList.removeClass("open");
+                    }
+                });
+
                 //제휴카드 할인 드롭다운 선택
                 //div.option-contents
                 self.$pdpInfo.on('click','.rental-card-list div.ui_dropdown_list li a, .careship-card-list div.ui_dropdown_list li a', function(e){
                     e.preventDefault();
                     var $this = $(this);
-                    var $dropDown = $this.parents('.ui_dropdown');
-                    $dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));
-                    $dropDown.vcDropdown("close");
+                    var $dropDown = $this.parents('.dropdown-box-wrap'); //BTOCSITE-3523 수정
+                    //$dropDown.find('a.ui_dropdown_toggle').text($this.attr('data-card-title'));  //BTOCSITE-3523 삭제
+
+                    //BTOCSITE-3523 추가
+                    if($this.closest("li").hasClass("cancel-item")) {
+                        $this.closest('.dropdown-box-wrap').removeClass('is-selected'); //BTOCSITE-3523 수정
+                        $dropDown.find('.ui_dropdown_toggle').empty();
+                    }else{
+                        $dropDown.find('.ui_dropdown_toggle').text($this.attr('data-card-title'));
+                        $this.closest('.dropdown-box-wrap').addClass('is-selected'); //BTOCSITE-3523 수정
+                    }
+
+                    $dropDown.removeClass('open'); //BTOCSITE-3523 수정
 
                     var cardData = {};
                     var cardNameCode = $this.attr('href').replace("#","");
@@ -1617,7 +1654,7 @@
                 });
 
                 //div.option-contents
-                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list, .careship-card-list div.ui_dropdown_list');
+                var cardDropdown = self.$pdpInfo.find('.rental-card-list div.ui_dropdown_list .simple-card-list, .careship-card-list div.ui_dropdown_list .simple-card-list'); //BTOCSITE-3523 수정
                 var firstRow = cardDropdown.find('li a:eq(0)');
                 if(firstRow.length > 0) {
                     firstRow.trigger('click',firstRow);
@@ -1836,8 +1873,10 @@
                         max = item.maxSalePrice;
                     }
                     item.title = "[" + item.cardName.replace("카드","")+ "] " + item.cardSubName;
+                    lgkorUI.stringToBool(item.simpleReqFlag) ? (item.categoryTitle = "[간편 신청]") : (item.categoryTitle = "[개별 신청]"); //BTOCSITE-3523 추가
                     lgkorUI.stringToBool(item.simpleReqFlag) ? simpleCardData.push(item) : individualCardData.push(item);
                 });
+
 
                 //최상단 카드취소
                 arr.push({
@@ -1875,29 +1914,41 @@
 
             //제휴카드리스트 갱신
             /* 20210513 수정 */
+            //BTOCSITE-3523 : 케어솔루션 PDP 상세조건 개선
             updateAssociatedCardList: function ($cardInfo, cardData) {
                 if(cardData && cardData.length > 0) {
                     //카드데이타
-                    var selectList = $cardInfo.find('ul.select-list');
+                    var selectList = $cardInfo.find('ul.select-list'),
+                        simpleCardList = $('ul.select-list.simple-card-list'),
+                        individualCardList = $('ul.select-list.individual-card-list');;
                     selectList.empty();
-                    var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
+                    //var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                     var cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                     cardData.forEach(function(obj, idx) {
-                        if(obj.groupTitle) {
+                        /*if(obj.groupTitle) {
                             selectList.append(vcui.template(groupItemTemplate,obj));
-                        }
+                        }*/
                         if(obj.listItem) {
                             obj.listItem.forEach(function(item, index) {
                                 item.label = item.title;
                                 item.maxSalePriceComma = vcui.number.addComma(item.maxSalePrice);
                                 if(!item.cardNameCode) {
                                     item.label = "선택취소"
-                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
+                                    cardItemTemplate = '<li class="cancel-item"><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p></a></li>';
                                 }else{
-                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
+                                    cardItemTemplate = '<li><a href="#{{cardNameCode}}" data-card-sub-name="{{cardSubName}}" data-simple-req-flag="{{simpleReqFlag}}" data-card-sale="{{maxSalePrice}}" data-card-title="{{title}}"><p class="card-name">{{categoryTitle}}{{label}}</p><p class="card-discount">월 최대 -{{maxSalePriceComma}}원</p></a></li>';
                                 }
                                 //item.maxSaleString = item.maxSalePrice ? vcui.number.addComma(item.maxSalePrice) : null;
-                                selectList.append(vcui.template(cardItemTemplate, item));
+                                if(item.simpleReqFlag === "Y"){
+                                    //간편 신청 가능 카드
+                                    $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
+                                }else if(item.simpleReqFlag === "N"){
+                                    //개별 신청 가능 카드
+                                    $cardInfo.find(individualCardList).append(vcui.template(cardItemTemplate, item));
+                                }else {
+                                    //선택취소
+                                    $cardInfo.find(simpleCardList).append(vcui.template(cardItemTemplate, item));
+                                }
                             });
                         }
                     });
@@ -2423,9 +2474,6 @@
                     if(ajaxUrl) {
                         lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                             var data = result.data[0];
-                            //로그인
-                            loginFlag = data.loginFlag;
-                            
                             //보유멤버쉽 포인트
                             var myMembershipPoint = data.myMembershipPoint;
                             if(lgkorUI.stringToBool(loginFlag)) {

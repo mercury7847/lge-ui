@@ -1468,3 +1468,22 @@
     border-radius: 8px;
     //border:1px solid $color-border;
 }
+
+// BTOCSITE-5938-17 s
+@include mobile {
+    #registMyProductPopup{
+        .form-wrap{
+            .forms {
+                .conts {
+                    z-index: 0;
+                }
+            } 
+            .forms:first-child  {
+                .conts {
+                    z-index:1;
+                }
+            } 
+        }
+    }
+}
+// BTOCSITE-5938-17 e

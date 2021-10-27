@@ -1,0 +1,15 @@
+<svg id="ic_delete_medium_MO_48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+    <defs>
+        <style>
+            .cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h48v48H0z"/>
+    <g id="ic" transform="translate(4 4)">
+        <path id="Path" d="M20 0a20 20 0 1 0 20 20A19.982 19.982 0 0 0 20 0z" style="fill:#666"/>
+        <g id="Group_2" data-name="Group 2" transform="rotate(-45 27.071 2.929)">
+            <path id="Line" class="cls-3" d="M0 1h20" transform="translate(0 9)"/>
+            <path id="Line-2" data-name="Line" class="cls-3" d="M1 0v20" transform="translate(9)"/>
+        </g>
+    </g>
+</svg>

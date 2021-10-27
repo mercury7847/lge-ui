@@ -2,7 +2,6 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
-        componentID: "KRC0015",
         pageTitle: "LG ThinQ | LG전자",
         pageDesc: "LG ThinQ는 LG만의 인공지능기술이 적용된 제품과 서비스 브랜드입니다. 일상 속에서 LG ThinQ를 통해 한 번도 느껴보지 못한 자유를 누려보세요."
     })
@@ -19,129 +18,123 @@
             <!-- LG ThinQ -->
             <div class="contents thinq-main" >
                 <div class="sub-main">
-                    <!-- BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)  -->
-                    <!-- D: 카피위치는 text-area 옵션 클래스 참고 -->
-                    @@include('./common/partials/KRC0015-hero-brand.html', {
-                        "common": {
-                            "zero": "zero-top zero-btm",
-                            "bg-color": "",
-                            "className": 'hero-brand'
-                        },
-                        "title": {
-                            "font-class1": "font-regular",
-                            "font-class2": "font-underline",
-                            "headline": "<h2>우리는 늘 다양한 바람을 가지고 <br>더 나은 삶을 원합니다.</h2>",
-                        },
-                        "carousel": {
-                            "type": "hero-banner",
-                            "itemArr": [
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual02.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png",
-                                    "boxAlign" : "box-align-left", 
-                                    "alignClass1":"align-top",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-regular",
-                                    "fontClass2":"",
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
-                                    "boxAlign" : "box-align-center",
-                                    "alignClass1":"align-top",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-regular",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
-                                    "boxAlign" : "box-align-right",
-                                    "alignClass1":"align-top",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-regular",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-left",
-                                    "alignClass1":"align-middle",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-center",
-                                    "alignClass1":"align-middle",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                    
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-right",
-                                    "alignClass1":"align-middle",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-left",
-                                    "alignClass1":"align-bottom",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-center",
-                                    "alignClass1":"align-bottom",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                },
-                                {
-                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
-                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
-                                    "boxAlign" : "box-align-right",
-                                    "alignClass1":"align-bottom",
-                                    "alignClass2":"",
-                                    "widthClass":"",
-                                    "fontColor":"text-white",
-                                    "fontClass1":"font-bold",
-                                    "fontClass2":""
-                                }
-                            ]
-                        }
-                    })
-                    <!-- //BTOCSITE-4251 hero carousel-->
-                    <!-- //BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel) -->
+                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
+                    <!-- 히어로 -->
+                    <div class="hero-banner slide-wrap ui_wide_slider">
+						<div class="custom-indi-wrap">
+							<div class="custom-indis">
+								<ul class="indis ui_wideslider_dots">
+									<li>
+										<button type="button" class="btn-indi">
+											<div class="bar"></div>
+										</button>
+									</li>
+                                    <li>
+										<button type="button" class="btn-indi">
+											<div class="bar"></div>
+										</button>
+									</li>
+                                    <li>
+										<button type="button" class="btn-indi">
+											<div class="bar"></div>
+										</button>
+									</li>
+								</ul>
+							</div>
+							<button type="button" class="indi-control ui_carousel_play play">
+								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+							</button>
+						</div>
+						<div class="slide-content ui_carousel_list">
+							<ul class="slide-track ui_carousel_track">
+								<!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<!-- 210406_반응형이미지방식변경 -->
+									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
+									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual02.jpg');" aria-hidden="hidden"></span>
+									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png');" aria-hidden="hidden"></span>
+									<!-- //210406_반응형이미지방식변경 -->
+                                    <div class="slide-con-area">
+                                        <div class="content_thinQ">
+                                            <!-- 210407 수정 [문구 수정] -->
+                                            <div class="cont1_q">
+                                                <span class="pc-only">우리는 늘 다양한 <br class="mo-only">바람을 가지고 <br>더 나은 삶을 원합니다</span>
+                                                <span class="mo-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는<br>늘 더 나은 삶을 원합니다.</span>
+                                            </div>
+                                            <div class="cont2_q">
+                                                <!-- 210421 lg thinq 로고이미지 추가 -->
+                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 이러한 당신의 <br class="mo-only">기대에 맞춰 <br class="pc-only">인공지능과 스마트 <br class="mo-only">기술을 통합한 플랫폼입니다</span>
+                                                <span class="mo-only">당신의 기대에 맞춰<br>인공지능과 스마트 기술을 통합한 플랫폼입니다.</span>
+                                                <!-- //210421 lg thinq 로고이미지 추가 -->
+                                            </div>
+                                            <!-- // 210407 수정 [문구 수정] -->
+                                        </div>
+                                    </div>
+								</li>
+								<!-- // slide -->
+                                <!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<!-- 210406_반응형이미지방식변경 -->
+									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
+									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual03.jpg');" aria-hidden="hidden"></span>
+									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png');" aria-hidden="hidden"></span>
+									<!-- //210406_반응형이미지방식변경 -->
+                                    <div class="slide-con-area">
+                                        <div class="content_thinQ">
+                                            <!-- 210407 수정 [문구 수정] -->
+                                            <div class="cont1_q">
+                                                <!-- 210421 lg thinq 로고이미지 추가 -->
+                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 변화하는 시대와 <br>라이프 스타일에 맞춰 <br>늘 당신을 배우고 케어합니다</span>
+                                                <span class="mo-only">변화하는 시대와<br>라이프 스타일을 맞춘<br><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ"></span>
+                                                <!-- //210421 lg thinq 로고이미지 추가 -->
+                                            </div>
+                                            <div class="cont2_q">
+                                                <span class="pc-only">하나의 플랫폼으로 가전들을 <br class="mo-only">연결해서 제어하고 <br class="pc-only">당신의 일상을 케어하며 필요로 하는 것을 <br class="mo-only">더 쉽게 구할 수 있게 합니다</span>
+                                                <span class="mo-only">하나의 플랫폼으로 당신의 일상을 케어합니다.</span>
+                                            </div>
+                                            <!-- // 210407 수정 [문구 수정] -->
+                                        </div>
+                                    </div>
+								</li>
+								<!-- // slide -->
+                                <!-- slide -->
+								<li class="slide-conts ui_carousel_slide">
+									<!-- 210406_반응형이미지방식변경 -->
+									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
+									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual04.jpg');" aria-hidden="hidden"></span>
+									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png');" aria-hidden="hidden"></span>
+									<!-- //210406_반응형이미지방식변경 -->
+                                    <div class="slide-con-area">
+                                        <div class="content_thinQ">
+                                            <div class="cont1_q">
+                                                <span>
+                                                    <img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ">를 통해<br>당신이 원하는 삶을 <br class="mo-only">누려보세요.
+                                                </span>
+                                            </div>
+                                            <!-- 210407 수정 [문구 수정] -->
+                                            <div class="cont2_q">
+                                                <!-- 210421 lg thinq 로고이미지 추가 -->
+                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 언제나 당신의 삶이 <br>더 편리하고 더 안심되고 <br class="mo-only">더 즐거울 수 있도록 합니다</span>
+                                                <span class="mo-only">언제나 더 편리하고 안심된<br>즐거운 삶을 만들어줍니다.</span>
+                                                <!-- //210421 lg thinq 로고이미지 추가 -->
+                                            </div>
+                                            <!-- // 210407 수정 [문구 수정] -->
+                                        </div>
+                                    </div>
+								</li>
+								<!-- // slide -->
+							</ul>
+						</div>
+						<div class="slide-controls">
+							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
+							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
+						</div>
+					</div>
+                    <!-- //히어로 -->
+                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
+                         
 
-                    <div class="brand-wrap thinq-wrap">
+                    <div class="brand-wrap thinq-wrap"  >
                         <div class="thinq-tabs">
                             <div class="tabs-wrap ui_tab ui_smooth_scroll">
                                 <ul class="tabs">
@@ -666,1033 +659,842 @@
                         </div>
                         <!-- //210405 내용전체수정 -->
                         <!-- // 라이프스타일 -->
+
+                        <!-- BTOCSITE-77-->
                         <!-- APP -->
                         <div id="thinq-cont3" class="tab-contents thinq-app">
                             <h2 class="blind">APP</h2>
                             <div class="app-wrap">
-                                <div class="content-area">
-                                    <h3 class="title"><span>LG ThinQ 앱 하나로 완벽한 스마트 홈 제어</span></h3>
-                                    <p class="body-copy">집 밖에서 청소기를 작동시키고, 집 안 공기 상태를 확인하며 말 한마디로 다양한 가전을 제어하는 새로운 경험.<br>
-                                        가전의 사용 폭을 넓혀주는 LG ThinQ 앱을 지금 다운로드하세요.</p>
-                                    <div class="download-btn-wrap">
-                                        <a href="#" class="btn-googleplay" target="_blank" title="구글플레이 다운로드 바로가기 새창">
-                                            <img src="/lg5-common/images/PRH/btn-google-play.png" alt="다운로드하기 Google Play">
-                                        </a>
-                                        <a href="#" class="btn-appstore" target="_blank" title="앱스토어 다운로드 바로가기 새창">
-                                            <img src="/lg5-common/images/PRH/btn-app-store.png" alt="Download on the App Store">
-                                        </a>
+                                <div class="thinq-section smart-thinq-wrap app-tab-section">
+                                    <div class="title-area">
+                                        <h3 class="title"><span>LG ThinQ 앱 하나로, 우리집 스마트한 생활</span></h3>
                                     </div>
-                                </div>
-                                <!-- <div class="mobile-device" style="position:fixed;top:0;"> -->
-                                <!-- .fixed 추가
-                                     모바일 .static 추가 -->
-                                <div class="mobile-device ui_device">
-                                    <div class="frame">
-                                        <div class="device">
-                                            <img src="/lg5-common/images/PRH/lg-phone-device.png" alt="" aria-hidden="true">
-                                        </div>
-                                        <div class="screen loading">
-                                            <img src="/lg5-common/images/PRH/img-app-logo.jpg" alt="">
-                                        </div>
-                                        <div class="screen intro" style="opacity: 0;">
-                                            <img src="/lg5-common/images/PRH/img-app-intro.jpg" alt="">
-                                        </div>
-                                        <div class="screen ui_last" style="opacity: 0;">
-                                            <ul class="screen-slider">
-                                                <li style="opacity: 1;">
-                                                    <img src="/lg5-common/images/PRH/img-app-store01.jpg" alt="">
-                                                </li>
-                                                <li style="opacity: 0;">
-                                                    <img src="/lg5-common/images/PRH/img-app-store02.jpg" alt="">
-                                                </li>
-                                                <li style="opacity: 0;">
-                                                    <img src="/lg5-common/images/PRH/img-app-intro.jpg" alt="">
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="visual-img-solo">
+                                        <div class="pc-only"><img src="/lg5-common/images/PRH/app/img_app_smart_banner.png" alt=""></div>
+                                        <div class="mo-only"><img src="/lg5-common/images/PRH/app/img_app_smart_banner_m.png" alt=""></div>
                                     </div>
-                                </div>
-                                <div class="typography"></div>
-                                <div class="install-wrap">
-                                    <div class="inner">
-                                        <div class="slide-wrap ui_carousel_slider">
-                                            <div class="indi-wrap">
-                                                <ul class="indi-conts ui_carousel_dots">
-                                                    <li class="on"><button type="button" class="btn-indi"><span class="blind">1번 내용 보기</span></button></li>
-                                                    <li><button type="button" class="btn-indi"><span class="blind">2번 내용 보기</span></button></li>
-                                                    <li><button type="button" class="btn-indi"><span class="blind">3번 내용 보기</span></button></li>
-                                                </ul>
-                                            </div>
-                                            <div class="mobile-device">
-                                                <div class="frame">
-                                                    <div class="device">
-                                                        <img src="/lg5-common/images/PRH/lg-phone-device.png" alt="" aria-hidden="true">
-                                                    </div>
-                                                    <div class="screen">
-                                                        <ul class="screen-slider">
-                                                            <li>
-                                                                <img src="/lg5-common/images/PRH/img-app-store01.jpg" alt="">
-                                                            </li>
-                                                            <li>
-                                                                <img src="/lg5-common/images/PRH/img-app-store02.jpg" alt="">
-                                                            </li>
-                                                            <li>
-                                                                <img src="/lg5-common/images/PRH/img-app-intro.jpg" alt="">
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+
+                                    <!-- 스마트 탭 -->
+                                    <div class="app-tab-area">
+                                        <!-- slide nav -->
+                                        <div class="menu-slide-block">
+                                            <div class="menu-slide-inner">
+                                                <div class="menu-slide-nav">
+                                                    <div class="menu-item is-active"><a href="#tab-refrigerator"><div class="icon-wrap"><i class="icon icon-refrigerator"></i></div><span class="txt">냉장고</span><em class="blind">선택됨</em></a></div>
+                                                    <div class="menu-item"><a href="#tab-kimchi_refrigerator"><div class="icon-wrap"><i class="icon icon-kimchi_refrigerator"></i></div><span class="txt">김치<br class="mo-only">냉장고</span></a></div>
+                                                    <!-- <div class="menu-item"><a href="#tab-winecellar"><div class="icon-wrap"><i class="icon icon-winecellar"></i></div><span class="txt">와인셀러</span></a></div> -->
+                                                    <div class="menu-item"><a href="#tab-cooktop"><div class="icon-wrap"><i class="icon icon-cooktop"></i></div><span class="txt">전기<br class="mo-only">레인지</span></a></div>
+                                                    <!-- <div class="menu-item"><a href="#tab-dishwasher"><div class="icon-wrap"><i class="icon icon-dishwasher"></i></div><span class="txt">식기<br class="mo-only">세척기</span></a></div> -->
+                                                    <div class="menu-item"><a href="#tab-oven"><div class="icon-wrap"><i class="icon icon-oven"></i></div><span class="txt">광파오븐</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-waterpurifier"><div class="icon-wrap"><i class="icon icon-waterpurifier"></i></div><span class="txt">정수기</span></a></div>
+                                                    <!-- <div class="menu-item"><a href="#tab-homebrew"><div class="icon-wrap"><i class="icon icon-beerMaker"></i></div><span class="txt">맥주제조기</span></a></div> -->
+                                                    <div class="menu-item"><a href="#tab-drum_washer"><div class="icon-wrap"><i class="icon icon-drum_washer"></i></div><span class="txt">세탁기</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-dryer"><div class="icon-wrap"><i class="icon icon-dryer"></i></div><span class="txt">의류<br class="mo-only">건조기</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-styler"><div class="icon-wrap"><i class="icon icon-styler"></i></div><span class="txt">스타일러</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-stickcleaner"><div class="icon-wrap"><i class="icon icon-stickcleaner"></i></div><span class="txt">청소기</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-stand_airconditioner"><div class="icon-wrap"><i class="icon icon-stand_airconditioner"></i></div><span class="txt">에어컨</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-airpurifier"><div class="icon-wrap"><i class="icon icon-airpurifier"></i></div><span class="txt">공기<br class="mo-only">청정기</span></a></div>
+                                                    <!-- <div class="menu-item"><a href="#tab-dehumidifier"><div class="icon-wrap"><i class="icon icon-dehumidifier"></i></div><span class="txt">제습기</span></a></div> -->
+                                                    <!-- <div class="menu-item"><a href="#tab-ceilingfan"><div class="icon-wrap"><i class="icon icon-ceilingfan"></i></div><span class="txt">실링팬</span></a></div> -->
                                                 </div>
-                                            </div>
-                                            <div class="slide-content ui_carousel_list">
-                                                <ul class="slide-track ui_carousel_track">
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img data-pc-src="/lg5-common/images/PRH/@img-1380x964.jpg" data-m-src="/lg5-common/images/PRH/@img-720x700.jpg" alt="" aria-hidden="true">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <span class="tit">LG ThinQ 앱 설치방법</span>
-                                                            <p class="desc">
-                                                                <em class="num">01</em><!-- 210406 수정 [번호 수정] -->
-                                                                안드로이드 사용자는 구글 플레이에서 <br><span class="point">LG ThinQ</span>를 검색해서 다운 받아주세요.</p>
-                                                        </div>
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img data-pc-src="/lg5-common/images/PRH/@img-1380x964.jpg" data-m-src="/lg5-common/images/PRH/@img-720x700.jpg" alt="" aria-hidden="true">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <span class="tit">LG ThinQ 앱 설치방법</span>
-                                                            <p class="desc">
-                                                                <em class="num">02</em><!-- 210406 수정 [번호 수정] -->
-                                                                아이폰 사용자는 앱 스토어에서 <br><span class="point">LG ThinQ</span>를 검색해서 다운 받아주세요.</p>
-                                                        </div>
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img data-pc-src="/lg5-common/images/PRH/@img-1380x964.jpg" data-m-src="/lg5-common/images/PRH/@img-720x700.jpg" alt="" aria-hidden="true">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <span class="tit">LG ThinQ 앱 설치방법</span>
-                                                            <p class="desc">
-                                                                <em class="num">03</em><!-- 210406 수정 [번호 수정] -->
-                                                                <span class="point">LG ThinQ</span> 앱을 실행해 주세요.</p>
-                                                        </div>
-                                                    </li>
-                                                    <!-- //slide -->
-                                                </ul>
-                                            </div>
-                                            <div class="slide-controls">
-                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                                <button type="button" class="btn-allview"><div class="icon-wrap"><i class="icon icon-all"></i></div><span class="txt">전체보기</span></button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="thinq-section app-use-wrap">
-                                    <div class="inner">
-                                        <div class="title-area">
-                                            <h3 class="title"><span>LG ThinQ 앱 사용방법</span></h3>
-                                        </div>
-                                        <div class="slide-wrap ui_carousel_slider">
-                                            <div class="indi-wrap">
-                                                <ul class="indi-conts ui_carousel_dots">
-                                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                </ul>
-                                            </div>
-                                            <div class="slide-content ui_carousel_list">
-                                                <ul class="slide-track ui_carousel_track">
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use01.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">01. LG ThinQ 앱 로그인</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use02.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">02. LG ThinQ 앱 메인</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use03.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">03. 내 가전 제품 선택</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use04.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">04. 제품 연결 준비</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use05.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">05. 제품 네트워크 설정</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                    <!-- slide -->
-                                                    <li class="slide-conts ui_carousel_slide">
-                                                        <div class="image">
-                                                            <img src="/lg5-common/images/PRH/img-app-use06.png" alt="">
-                                                        </div>
-                                                        <!-- 210406 수정 [문구 수정] -->
-                                                        <div class="text-area">
-                                                            <span class="tit">06. 제품 등록 완료</span>
-                                                        </div>
-                                                        <!-- // 210406 수정 [문구 수정] -->
-                                                    </li>
-                                                    <!-- //slide -->
-                                                </ul>
-                                            </div>
-                                            <div class="slide-controls">
-                                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                            </div>
-                                        </div>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "topBorder" : true,
-                                            "bulletTxt" : [
-                                                "GHz 지원 무선 공유기를 사용하는 경우 2.4 GHz의 네트워크로 연결해주세요.",
-                                                "해당 가이드는 설치 예시로 다른 스마트 가전도 동일하게 진행하시면 됩니다."
-                                            ]
-                                        })
-                                    </div>
-                                </div>
-                                <div class="thinq-section smart-thinq-wrap">
-                                    <div class="inner">
-                                        <div class="title-area">
-                                            <h3 class="title"><span>LG ThinQ 앱 하나로, 우리집 스마트한 생활</span></h3>
-                                        </div>
-                                        <!-- 210406 수정 [컨텐츠 수정 및 추가] -->
-                                        <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
-                                            <ul class="tabs">
-                                                <li class="on"><a href="#smart-cont1">냉장고<em class="blind">선택됨</em></a></li>
-                                                <li><a href="#smart-cont2">김치냉장고</a></li>
-                                                <li><a href="#smart-cont3">워시타워</a></li>
-                                                <li><a href="#smart-cont4">세탁기</a></li>
-                                                <li><a href="#smart-cont5">건조기</a></li>
-                                                <li><a href="#smart-cont6">에어컨</a></li>
-                                                <li><a href="#smart-cont7">정수기</a></li>
-                                                <li><a href="#smart-cont8">스타일러</a></li>
-                                                <li><a href="#smart-cont9">공기청정기</a></li>
-                                                <li><a href="#smart-cont10">식기세척기</a></li>
-                                                <li><a href="#smart-cont11">오븐</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- 냉장고 -->
-                                        <div id="smart-cont1" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart1-1">
-                                                                <span class="tit">01. 문 열림 알림 기능</span>
-                                                                <p class="desc">냉장고 문 열림 알림 기능으로 에너지도 절약하고 부모님댁의 문 열림 알림도 확인하세요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                        <!-- //slide nav -->
+
+                                        <!-- tab content -->
+                                        <div class="app-tab-content">
+                                            <!-- 냉장고 -->
+                                            <div id="tab-refrigerator" class="tab-cont is-active">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_refrigerator_01.png" alt="냉장고 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">온도/모드 설정</strong>
+                                                                    <p class="desc">냉장, 냉동실 온도와 메뉴 설정이 가능합니다. </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart1-2">
-                                                                <span class="tit">02. 식품관리 기능</span>
-                                                                <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난 알림을 받아보세요.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_refrigerator_02.png" alt="냉장고 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">식품관리</strong>
+                                                                    <p class="desc">냉장고에 보관한 식품을 추가 하고 <br>
+                                                                        보관 기간 지난 식품은 알려 드립니다.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart1-3">
-                                                                <span class="tit">03. 스마트케어</span>
-                                                                <p class="desc">생활 환경 및 사용 패턴을 분석하여 스마트하게 냉장고를 사용할 수 있도록 다양한 기능을 제공합니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_refrigerator_03.png" alt="냉장고 앱 화면3">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">문열림 알림</strong>
+                                                                    <p class="desc">
+                                                                        냉장고 문이 열리면 알람으로 알려주어  <br> 에너지를 절약할 수 있습니다.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart1-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart01-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 문 열림 알림 기능</span>
-                                                                    <p class="desc">냉장고 문 열림 알림 기능으로 에너지도 절약하고 부모님댁의 문 열림 알림도 확인하세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart1-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart01-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 식품관리 기능</span>
-                                                                    <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난 알림을 받아보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart1-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart01-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트케어</span>
-                                                                    <p class="desc">생활 환경 및 사용 패턴을 분석하여 스마트하게 냉장고를 사용할 수 있도록 다양한 기능을 제공합니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 냉장고 -->
-                                        <!-- 김치냉장고 -->
-                                        <div id="smart-cont2" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart2-1">
-                                                                <span class="tit">01. 스마트 관리</span>
-                                                                <p class="desc">한 눈에 김치냉장고 속의 상태를 확인하고 온도 설정과 탈취 기능을 통해 똑똑하게 관리해 보세요.</p><!-- 210407 수정 [문구 수정] -->
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 냉장고 -->
+                                            <!-- 김치냉장고 -->
+                                            <div id="tab-kimchi_refrigerator" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_kimchirefrigerator_01.png" alt="김치냉장고 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">온도/모드 설정</strong>
+                                                                    <p class="desc">각 칸마다 온도를 확인하고 설정할 수 있습니다.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart2-2">
-                                                                <span class="tit">02. 스마트 진단</span>
-                                                                <p class="desc">올바른 사용 방법을 알려주고, 제품 사용 중 문제가 있을 때 진단 결과에 따른 해결 방법을 제공받을 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_kimchirefrigerator_02.png" alt="김치냉장고 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">인공지능 맞춤 보관</strong>
+                                                                    <p class="desc">포장김치도 제조일자에 맞추어  <br>알맞게 익혀주고, 보관해 줍니다. </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart2-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart02-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 스마트 관리</span>
-                                                                    <p class="desc">한 눈에 김치냉장고 속의 상태를 확인하고 온도 설정과 탈취 기능을 통해 똑똑하게 관리해 보세요.</p><!-- 210407 수정 [문구 수정] -->
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart2-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart02-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 스마트 진단</span>
-                                                                    <p class="desc">올바른 사용 방법을 알려주고, 제품 사용 중 문제가 있을 때 진단 결과에 따른 해결 방법을 제공받을 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 김치냉장고 -->
-                                        <!-- 워시타워 -->
-                                        <div id="smart-cont3" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart3-1">
-                                                                <span class="tit">01. 다운로드 코스</span>
-                                                                <p class="desc">원하는 세탁기/건조기 코스를 다운로드해서 사용해 보세요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 김치냉장고 -->
+                                            <!-- 와인셀러 -->
+                                            <!-- <div id="tab-winecellar" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="와인셀러 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀 1</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart3-2">
-                                                                <span class="tit">02. 스마트폰 원격 제어</span>
-                                                                <p class="desc">‘원격제어’ 설정 후 스마트폰으로 간편하게 세탁/건조 코스를 작동시켜 보세요.</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#smart3-3">
-                                                                <span class="tit">03. 스마트케어</span>
-                                                                <p class="desc">평소 세탁 습관과 날씨 정보를 스스로 학습하여 최적의 세탁 옵션을 추천합니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="와인셀러 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀 2</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart3-1" class="tab-contents ui_carousel_slide">
+                                            </div> -->
+                                            <!-- // 와인셀러 -->
+                                            <!-- 전기레인지 -->
+                                            <div id="tab-cooktop" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart03-1.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_cooktop_01.png" alt="전기레인지 앱 화면1">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">01. 다운로드 코스</span>
-                                                                    <p class="desc">원하는 세탁기/건조기 코스를 다운로드해서 사용해 보세요.</p>
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">
+                                                                        전원OFF, 화구OFF, 화력조절(낮춤), <br>
+                                                                        타이머 시간 조절(낮춤)까지 스마트폰으로  <br>
+                                                                        어디서든 손쉽게 제어가 가능해 더욱 안전하게  <br>
+                                                                        사용할 수 있습니다.
+                                                                    </p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart3-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart03-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 스마트폰 원격 제어</span>
-                                                                    <p class="desc">‘원격제어’ 설정 후 스마트폰으로 간편하게 세탁/건조 코스를 작동시켜 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart3-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart03-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트케어</span>
-                                                                    <p class="desc">평소 세탁 습관과 날씨 정보를 스스로 학습하여 최적의 세탁 옵션을 추천합니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- // 워시타워 -->
-                                        <!-- 세탁기 -->
-                                        <div id="smart-cont4" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart4-1">
-                                                                <span class="tit">01. 다운로드 코스</span>
-                                                                <p class="desc">새로운 세탁 코스를 추가하여 사용할 수 있습니다.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart4-2">
-                                                                <span class="tit">02. 원격 제어</span>
-                                                                <p class="desc">언제 어디서든 스마트폰 원격제어로 세탁을 시작하고 실시간 세탁 상황을 확인 할 수 있습니다.</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#smart4-3">
-                                                                <span class="tit">03. 스마트케어</span>
-                                                                <p class="desc">사용 패턴과 날씨 등 주변 환경을 인지하여 맞춤 옵션을 추천합니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_cooktop_02.png" alt="전기레인지 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">사용량 모니터링</strong>
+                                                                    <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난 <br>알림을 받아보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart4-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart04-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 다운로드 코스</span>
-                                                                    <p class="desc">새로운 세탁 코스를 추가하여 사용할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart4-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart04-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 원격 제어</span>
-                                                                    <p class="desc">언제 어디서든 스마트폰 원격제어로 세탁을 시작하고 실시간 세탁 상황을 확인 할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart4-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart04-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트케어</span>
-                                                                    <p class="desc">사용 패턴과 날씨 등 주변 환경을 인지하여 맞춤 옵션을 추천합니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 세탁기 -->
-                                        <!-- 건조기 -->
-                                        <div id="smart-cont5" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart5-1">
-                                                                <span class="tit">01. 다운로드 코스</span>
-                                                                <p class="desc">더 많은 건조코스를 추가하여 사용할 수 있습니다.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 전기레인지 -->
+                                            <!-- 식기세척기 -->
+                                            <!-- <div id="tab-dishwasher" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">문 열림 알림 기능</strong>
+                                                                    <p class="desc">냉장고 문 열림 알림 기능으로 에너지도 절약하고 <br>부모님댁의 문 열림 알림도 확인하세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart5-2">
-                                                                <span class="tit">02. 원격 제어</span>
-                                                                <p class="desc">건조 상황 확인과 건조기를 원격 제어할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="식기세척기 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
-                                                        <!-- 210424 문구삭제 -->
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="식기세척기 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> -->
+                                            <!-- // 식기세척기 -->
+                                            <!-- 광파오븐 -->
+                                            <div id="tab-oven" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_lightwaveoven_01.png" alt="광파오븐 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">쿡북/레시피</strong>
+                                                                    <p class="desc">
+                                                                        레시피를 검색하고 식재료, 조리법을 확인한 후 <br>
+                                                                        오븐에 전송하면 조리 기능, 온도, 조리 시간이 <br>
+                                                                        자동으로 설정되어 제품을 조작할 필요없이 <br>간편한 조리가 가능합니다.<br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
                                                         <!-- <li>
-                                                            <a href="#smart5-3">
-                                                                <span class="tit">03. 스마트케어</span>
-                                                                <p class="desc">자주 사용하는 건조 옵션과 외부 온도 정보를 인식하여 최적의 건조 옵션을 추천해 드립니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_lightwaveoven_02.png" alt="광파오븐 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">인공지능쿡</strong>
+                                                                    <p class="desc"> 
+                                                                        스마트폰 카메라로 간편식 제품 바코드를 <br>
+                                                                        찍으면 가장 맛있는 조리 모드와 시간을 <br>
+                                                                        자동으로 설정해 바삭하고 노릇하게 <br>
+                                                                        간편식 요리를 완성해 줍니다. 
+                                                                    </p>
+                                                                    <span class="dscl">*제휴 제품에 한함</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_lightwaveoven_03.png" alt="광파오븐 앱 화면3">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">요리완료알림</strong>
+                                                                    <p class="desc">주방 밖에서도 요리가 완료되면 알림을 주어 <br>
+                                                                        여유롭게 요리할 수 있습니다.</p>
+                                                                </div>
+                                                            </div>
                                                         </li> -->
-                                                        <!-- //210424 문구삭제 -->
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart5-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart05-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 다운로드 코스</span>
-                                                                    <p class="desc">더 많은 건조코스를 추가하여 사용할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart5-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart05-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 원격 제어</span>
-                                                                    <p class="desc">건조 상황 확인과 건조기를 원격 제어할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart5-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart05-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트케어</span>
-                                                                    <p class="desc">자주 사용하는 건조 옵션과 외부 온도 정보를 인식하여 최적의 건조 옵션을 추천해 드립니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 건조기 -->
-                                        <!-- 에어컨 -->
-                                        <div id="smart-cont6" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart6-1">
-                                                                <span class="tit">01. 스마트폰 원격 제어</span>
-                                                                <p class="desc">더운 여름날 귀가 중에 에어컨을 미리 켤 수 있어요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 광파오븐 -->
+                                            <!-- 정수기 -->
+                                            <div id="tab-waterpurifier" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_waterpurifier_01.png" alt="정수기 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">물 사용량</strong>
+                                                                    <p class="desc">
+                                                                        물을 얼마나 마셨는지 음용량 및 패턴을 파악해 <br> 건강한 라이프를 계획해 보세요.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart6-2">
-                                                                <span class="tit">02. 에너지 모니터링</span>
-                                                                <p class="desc">일/주/월간 단위로 전력 사용량 확인을 통해 전기료를 관리해 보세요.</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#smart6-3">
-                                                                <span class="tit">03. 필터 관리</span>
-                                                                <p class="desc">사용중인 에어컨의 필터 사용 시간과 잔여 시간을 한눈으로 확인하고 교체 및 청소 관리해 보세요.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_waterpurifier_02.png" alt="정수기 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">안심 살균</strong>
+                                                                    <p class="desc">자동/수동으로 진행된 정수기 코크 살균 횟수와 <br>시간을 확인하여 안심하고 사용하세요!</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart6-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart06-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 스마트폰 원격 제어</span>
-                                                                    <p class="desc">더운 여름날 귀가 중에 에어컨을 미리 켤 수 있어요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart6-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart06-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 에너지 모니터링</span>
-                                                                    <p class="desc">일/주/월간 단위로 전력 사용량 확인을 통해 전기료를 관리해 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart6-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart06-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 필터 관리</span>
-                                                                    <p class="desc">사용중인 에어컨의 필터 사용 시간과 잔여 시간을 한눈으로 확인하고 교체 및 청소 관리해 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 에어컨 -->
-                                        <!-- 정수기 -->
-                                        <div id="smart-cont7" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart7-1">
-                                                                <span class="tit">01. 물 사용량 모니터링</span>
-                                                                <p class="desc">물을 얼마나 마셨는지 음용량 및 패턴을 파악해 건강한 라이프를 계획해 보세요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 정수기 -->
+                                            <!-- 맥주제조기 -->
+                                            <!-- <div id="tab-beerMaker" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="맥주제조기 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart7-2">
-                                                                <span class="tit">02. 스마트 케어</span>
-                                                                <p class="desc">케어솔루션 매니저 방문과 필터 교체 이력을 확인 할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="맥주제조기 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브 내용</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart7-3">
-                                                                <span class="tit">03. 위생 상태 모니터링</span>
-                                                                <p class="desc">제품 위생 상태를 실시간으로 확인 할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">온도/모드 설정</strong>
+                                                                    <p class="desc">상세 내용은 수급 예정입니다.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart7-1" class="tab-contents ui_carousel_slide">
+                                            </div> -->
+                                            <!-- // 맥주제조기 -->
+                                            <!-- 세탁기 -->
+                                            <div id="tab-drum_washer" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart07-1.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_01.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">01. 물 사용량 모니터링</span>
-                                                                    <p class="desc">물을 얼마나 마셨는지 음용량 및 패턴을 파악해 건강한 라이프를 계획해 보세요.</p>
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">'원격제어' 설정 후 스마트폰으로 간편하게 <br>
+                                                                        세탁/건조 코스를 작동시켜 보세요.</p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart7-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart07-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 스마트 케어</span>
-                                                                    <p class="desc">케어솔루션 매니저 방문과 필터 교체 이력을 확인 할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart7-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart07-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 위생 상태 모니터링</span>
-                                                                    <p class="desc">제품 위생 상태를 실시간으로 확인 할 수 있습니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- // 정수기 -->
-                                        <!-- 스타일러 -->
-                                        <div id="smart-cont8" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart8-1">
-                                                                <span class="tit">01. 다운로드 코스</span>
-                                                                <p class="desc">다양한 다운로드 코스! 나에게 필요한 코스를 다운로드해서 사용해 보세요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart8-2">
-                                                                <span class="tit">02. 에너지 모니터링</span>
-                                                                <p class="desc">사용 횟수는 물론 에너지 사용량까지 한눈에 쉽게 확인하고 꼼꼼하게 체크해 보세요.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_02.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">다운로드 코스</strong>
+                                                                    <p class="desc">세탁기/건조기에 없는 추가 코스를 <br>
+                                                                        다운로드해서 사용해 보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart8-3">
-                                                                <span class="tit">03. 스마트폰 원격 제어</span>
-                                                                <p class="desc">‘원격 제어’ 설정 후 스마트폰으로 간편하게 스타일러 코스를 작동시켜 보세요.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_03.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">에너지 모니터링</strong>
+                                                                    <p class="desc">
+                                                                        에너지 사용량까지 한눈에 쉽게 확인하고 <br>꼼꼼하게 체크해보세요.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_04.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">세탁/건조 완료 알림</strong>
+                                                                    <p class="desc">
+                                                                        코스(관리)가 종료됨을 쉽게 알 수 있습니다.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart8-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart08-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 다운로드 코스</span>
-                                                                    <p class="desc">다양한 다운로드 코스! 나에게 필요한 코스를 다운로드해서 사용해 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart8-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart08-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 에너지 모니터링</span>
-                                                                    <p class="desc">사용 횟수는 물론 에너지 사용량까지 한눈에 쉽게 확인하고 꼼꼼하게 체크해 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart8-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart08-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트폰 원격 제어</span>
-                                                                    <p class="desc">‘원격 제어’ 설정 후 스마트폰으로 간편하게 스타일러 코스를 작동시켜 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 스타일러 -->
-                                        <!-- 공기청정기 -->
-                                        <div id="smart-cont9" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart9-1">
-                                                                <span class="tit">01. 공기 상태 확인</span>
-                                                                <p class="desc">언제 어디서나 종합 청정도, 먼지 농도, 냄새 등 집안의 공기 상태를 확인해 보세요.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 세탁기 -->
+                                            <!-- 의류건조기 -->
+                                            <div id="tab-dryer" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_01.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">'원격제어' 설정 후 스마트폰으로 간편하게 <br>
+                                                                        세탁/건조 코스를 작동시켜 보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart9-2">
-                                                                <span class="tit">02. 미리 알림 기능</span>
-                                                                <p class="desc">집안 공기가 나쁘거나, 필터 교체 시기가 되면 미리 알려줍니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_02.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">다운로드 코스</strong>
+                                                                    <p class="desc">세탁기/건조기에 없는 추가 코스를 <br>
+                                                                        다운로드해서 사용해 보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart9-3">
-                                                                <span class="tit">03. 스마트폰 원격 제어</span>
-                                                                <p class="desc">공기청정기 운전이나 정지, 바람 세기 등 스마트폰으로 제어가 가능합니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_03.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">에너지 모니터링</strong>
+                                                                    <p class="desc">
+                                                                        에너지 사용량까지 한눈에 쉽게 확인하고 <br>꼼꼼하게 체크해보세요.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_04.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">세탁/건조 완료 알림</strong>
+                                                                    <p class="desc">
+                                                                        코스(관리)가 종료됨을 쉽게 알 수 있습니다.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart9-1" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart09-1.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">01. 공기 상태 확인</span>
-                                                                    <p class="desc">언제 어디서나 종합 청정도, 먼지 농도, 냄새 등 집안의 공기 상태를 확인해 보세요.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart9-2" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart09-2.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">02. 미리 알림 기능</span>
-                                                                    <p class="desc">집안 공기가 나쁘거나, 필터 교체 시기가 되면 미리 알려줍니다.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li id="smart9-3" class="tab-contents ui_carousel_slide">
-                                                                <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart09-3.png" alt="">
-                                                                </div>
-                                                                <div class="text-area">
-                                                                    <span class="tit">03. 스마트폰 원격 제어</span>
-                                                                    <p class="desc">공기청정기 운전이나 정지, 바람 세기 등 스마트폰으로 제어가 가능합니다.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- // 공기청정기 -->
-                                        <!-- 식기세척기 -->
-                                        <div id="smart-cont10" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart10-1">
-                                                                <span class="tit">01. 린스 투입량/ 연수화 레벨 설정</span>
-                                                                <p class="desc">제품 세부 설정 메뉴에서 린스 투입량과 연수화(경도) 레벨 변경하여 식기세척기를 관리 할 수 있습니다.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 의류건조기 -->
+                                            <!-- 스타일러 -->
+                                            <div id="tab-styler" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_styler_01.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">
+                                                                        '원격제어' 설정 후 스마트폰으로 간편하게 <br>
+                                                                        스타일러 코스를 작동시켜보세요.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart10-2">
-                                                                <span class="tit">02. 다운로드 코스</span>
-                                                                <p class="desc">원하는 세척 코스를 다운로드 받아 편리하게 식기를 세척할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_styler_02.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <span class="tit">다운로드 코스</span>
+                                                                    <p class="desc">
+                                                                        다양한 다운로드 코스! 나에게 필요한 코스를 <br>
+                                                                        다운로드 해서 사용해 보세요.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart10-3">
-                                                                <span class="tit">03. 에너지 모니터링</span>
-                                                                <p class="desc">사용 횟수는 물론 에너지 사용량까지 한눈에 쉽게 확인하고 꼼꼼하게 체크해 보세요.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_styler_03.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">에너지 모니터링</strong>
+                                                                    <p class="desc">사용 횟수는 물론 에너지 사용량까지 한눈에 <br>
+                                                                        쉽게 확인하고 꼼꼼하게 체크해보세요.</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_styler_04.png" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">스타일링 완료 알림</strong>
+                                                                    <p class="desc">알림음을 통해 코스(관리)가 종료됨을 <br>
+                                                                        쉽게 알 수 있습니다.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart10-1" class="tab-contents ui_carousel_slide">
+                                            </div>
+                                            <!-- // 스타일러 -->
+                                            <!-- 청소기 -->
+                                            <div id="tab-stickcleaner" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <!-- <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart10-1.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_vacuumcleaner_01.png" alt="청소기 앱 화면1">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">01. 린스 투입량/ 연수화 레벨 설정</span>
-                                                                    <p class="desc">제품 세부 설정 메뉴에서 린스 투입량과 연수화(경도) 레벨 변경하여 식기세척기를 관리 할 수 있습니다.</p>
+                                                                    <strong class="tit">스마트 청소 관리</strong>
+                                                                    <p class="desc">청소 이력 모니터링 그래프 및 스마트 진단, 충전 <br>상태, 필터 청소 가이드를 확인할 수 있습니다.</p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart10-2" class="tab-contents ui_carousel_slide">
+                                                            </div>
+                                                        </li> -->
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart10-2.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_vacuumcleaner_02.png" alt="청소기 앱 화면2">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">02. 다운로드 코스</span>
-                                                                    <p class="desc">원하는 세척 코스를 다운로드 받아 편리하게 식기를 세척할 수 있습니다.</p>
+                                                                    <strong class="tit">마이존</strong>
+                                                                    <p class="desc">
+                                                                        로봇청소기가 우리 집을 다니며 스스로 만든 <br>
+                                                                        도면을 휴대폰으로 보며 원하는 영역만 지정 <br>
+                                                                        또는 제외하여 청소할 수 있고, <br>
+                                                                        구역별로 청소 순서도 지정할 수 있습니다.
+                                                                    </p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart10-3" class="tab-contents ui_carousel_slide">
+                                                            </div>
+                                                        </li>
+                                                        <!-- <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart10-3.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_vacuumcleaner_03.png" alt="청소기 앱 화면3">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">03. 에너지 모니터링</span>
-                                                                    <p class="desc">사용 횟수는 물론 에너지 사용량까지 한눈에 쉽게 확인하고 꼼꼼하게 체크해 보세요.</p>
+                                                                    <strong class="tit">홈가드</strong>
+                                                                    <p class="desc">
+                                                                        홈가드 위치 설정 후 해당 위치에서 움직임이 <br>
+                                                                        감지되면 연속으로 5장의 사진을 촬영해 <br>
+                                                                        휴대폰으로 알림을 보내줍니다.
+                                                                    </p>
                                                                 </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
+                                                            </div>
+                                                        </li> -->
+                                                    </ul>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- // 식기세척기 -->
-                                        <!-- 오븐 -->
-                                        <div id="smart-cont11" class="tab-contents">
-                                            <div class="app-smart-wrap">
-                                                <div class="app-smart-tabs ui_tab">
-                                                    <ul class="tabs">
-                                                        <li class="on">
-                                                            <a href="#smart11-1">
-                                                                <span class="tit">01. 쿡북 제공</span>
-                                                                <p class="desc">LG 레시피를 통해 필요한 재료와 요리 과정을 제공받고, 다른 나라 요리도 쉽게 만들 수 있습니다.</p>
-                                                                <em class="blind">선택됨</em>
-                                                            </a>
+                                            <!-- // 청소기 -->
+                                            <!-- 에어컨 -->
+                                            <div id="tab-stand_airconditioner" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_airconditioner_01.png" alt="에어컨 앱 화면1">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">더운 여름날 귀가 중에 에어컨을 <br>
+                                                                        미리 켤 수 있어요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart11-2">
-                                                                <span class="tit">02. 레시피 오븐 전송</span>
-                                                                <p class="desc">원하는 LG 레시피를 오븐에 전송하여 쉽게 요리를 할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_airconditioner_02.png" alt="에어컨 앱 화면2">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">필터관리</strong>
+                                                                    <p class="desc">사용중인 에어컨의 필터 사용시간과 잔여시간을 <br> 한눈으로 확인하고 교체 및 청소 관리해 보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a href="#smart11-3">
-                                                                <span class="tit">03. 스마트 진단</span>
-                                                                <p class="desc">스마트 진단을 통해 제품에 이상이 있는지 점검 할 수 있습니다.</p>
-                                                            </a>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_airconditioner_03.png" alt="에어컨 앱 화면3">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">에너지 모니터링</strong>
+                                                                    <p class="desc">일/주/월간 단위로 전력 사용량 확인을 통해 <br>
+                                                                        전기료를 관리해 보세요.</p>
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="slide-wrap ui_carousel_slider">
-                                                    <div class="indi-wrap">
-                                                        <ul class="indi-conts ui_carousel_dots">
-                                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-content ui_carousel_list">
-                                                        <ul class="slide-track ui_carousel_track">
-                                                            <li id="smart11-1" class="tab-contents ui_carousel_slide">
+                                            </div>
+                                            <!-- // 에어컨 -->
+                                            <!-- 공기청정기 -->
+                                            <div id="tab-airpurifier" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart11-1.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_aircleaner_01.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">01. 쿡북 제공</span>
-                                                                    <p class="desc">LG 레시피를 통해 필요한 재료와 요리 과정을 제공받고, 다른 나라 요리도 쉽게 만들 수 있습니다.</p>
+                                                                    <strong class="tit">공기상태확인</strong>
+                                                                    <p class="desc">종합청정도, 먼지농도, 냄새등 집안의 공기 상태<br>를 확인해 보세요.</p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart11-2" class="tab-contents ui_carousel_slide">
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart11-2.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_aircleaner_02.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">02. 레시피 오븐 전송</span>
-                                                                    <p class="desc">원하는 LG 레시피를 오븐에 전송하여 쉽게 요리를 할 수 있습니다.</p>
+                                                                    <strong class="tit">미리알림 기능</strong>
+                                                                    <p class="desc">집안 공기가 나쁘거나,필터교체 시기가 되면 <br>
+                                                                        미리 알려줍니다.</p>
                                                                 </div>
-                                                            </li>
-                                                            <li id="smart11-3" class="tab-contents ui_carousel_slide">
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/img-app-smart11-3.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_aircleaner_03.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <span class="tit">03. 스마트 진단</span>
-                                                                    <p class="desc">스마트 진단을 통해 제품에 이상이 있는지 점검 할 수 있습니다.</p>
+                                                                    <strong class="tit">원격제어</strong>
+                                                                    <p class="desc">공기청정기 운전이나 정지,바람세기 등  <br>
+                                                                        스마트폰으로 제어가 가능합니다.</p>
                                                                 </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="slide-controls">
-                                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                                    </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
+                                            <!-- // 공기청정기 -->
+                                            <!-- 제습기 -->
+                                            <!-- <div id="tab-dehumidifier" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> -->
+                                            <!-- // 제습기 -->
+                                            <!-- 실링팬 -->
+                                            <!-- <div id="tab-ceilingfan" class="tab-cont">
+                                                <div class="app-smart-wrap">
+                                                    <ul class="app-smart-detail">
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="" alt="">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">타이틀</strong>
+                                                                    <p class="desc">서브내용</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> -->
+                                            <!-- // 실링팬 -->
                                         </div>
-                                        <!-- // 오븐 -->
-                                        <!-- // 210406 수정 [컨텐츠 수정 및 추가] -->
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "topBorder" : true,
-                                            "bulletTxt" : [
-                                                "해당 기능 사용을 위해서는 스마트폰에 따라 구글 플레이(Android) 또는 앱 스토어(iOS)에서 'LG ThinQ' 앱을 설치하여, 제품을 Wi-Fi에 연결, 등록한 후, 초기 연결과 동일한 Wi-Fi 환경에서 제품이 동작되어야 합니다.",
-                                                "일부 스마트폰에서는 기능 사용에 제약이 발생하거나 작동하지 않을 수 있으며, LG ThinQ 앱은 Android 운영체제 5.0 이상, iOS 운영체제 10.0 이상을 지원합니다.",
-                                                "제공된 기능은 모델 및 앱 버전마다 다를 수 있으며, 자세한 사용 방법은 제품 사용 설명서를 참고해 주시기 바랍니다."
-                                            ]
-                                        })
+                                        <!-- tab content -->
                                     </div>
+                                    <!-- //스마트 탭 -->
+
+                                    <!-- 연동기기 찾기 -->
+                                    <div class="search-banner-wrap">
+                                        <button type="button" data-href="#popupSearchMachine" data-control="modal">
+                                            <span class="text">LG ThinQ 앱과 연동 제품 확인하기</span>
+                                        </button>
+                                    </div>
+                                    <!-- //연동기기 찾기 -->
+
+                                    <!-- 앱 체험안내 -->
+                                    <div class="app-experience-intro app-cont-section">
+                                        <div class="intro-inner">
+                                            <strong class="intro-tit">LG ThinQ 앱을 체험하세요</strong>
+                                            <p class="intro-desc">우리집에서 시작되는 좋은 삶. ThinQ 앱에서 사용할 수 있는 편리한 기능을 미리 확인할 수 있어요.</p>
+                                            <div class="btn-area">
+                                                <a href="#" class="btn border">
+                                                    <span class="text">LG ThinQ 앱 체험하기</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="intro-image">
+                                            <div class="pc-only"><img src="/lg5-common/images/PRH/app/img_app_experience_banner.png" alt=""></div>
+                                            <div class="mo-only"><img src="/lg5-common/images/PRH/app/img_app_experience_banner_m.png" alt=""></div>
+                                        </div>
+                                    </div>
+                                    <!-- //앱 체험안내 -->
+
+                                    <!-- ThinQ 앱 다운 안내 slide -->
+                                    <div class="app-download-guide app-cont-section">
+                                        <div class="guide-slider">
+                                            <div class="slide-item bg-appDown">
+                                                <div class="item-inner">
+                                                    <div class="text-wrap">
+                                                        <h3 class="item-title">
+                                                            LG ThinQ 앱 하나로 완벽한 <br>
+                                                            스마트 홈 제어
+                                                        </h3>
+                                                        <div class="item-desc">
+                                                            집 밖에서 에어컨을 작동시키고, 집 안 공기 상태를 확인하며 말 한마디로 <br>
+                                                            다양한 가전을 제어하는 새로운 경험. <br> 
+                                                            LG ThinQ 앱을 지금 다운로드하세요.
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-area">
+                                                        <div class="btn-download">
+                                                            <a href="https://play.google.com/store/apps/details?id=com.lgeha.nuts" target="_blank"><img src="/lg5-common/images/icons/btn-google-play.png" alt="구글플레이 다운로드하기"></a>
+                                                        </div>
+                                                        <div class="btn-download">
+                                                            <a href="https://apps.apple.com/us/app/lg-thinq/id993504342" target="_blank"><img src="/lg5-common/images/icons/btn-app-store.png" alt="앱스토어 다운로드하기"></a>
+                                                            <a href="#"><span class="blind">앱스토어 다운로드하기</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide-item bg-howTo">
+                                                <div class="item-inner">
+                                                    <div class="text-wrap">
+                                                        <h3 class="item-title">LG ThinQ 앱 설치 및 사용방법</h3>
+                                                        <div class="item-desc">
+                                                            구글 플레이 &amp; 앱 스토어에서 <br> LG ThinQ를 검색해서 다운 받아주세요.
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-area">
+                                                        <button type="button" data-href="#popupHowToUse" data-control="modal" class="btn border btn-howToUse">
+                                                            <span class="text">사용방법 알아보기</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="slide-item bg-magazine">
+                                                <div class="item-inner">
+                                                    <div class="text-wrap">
+                                                        <h3 class="item-title">LG ThinQ 라이프 스타일</h3>
+                                                        <div class="item-desc">
+                                                            ThinQ가 알아서 챙겨주니까! <br>
+                                                            한번도 느껴보지 못한 자유 Think Wise. Be Free.
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-area">
+                                                        <a href="#none" class="btn border"><span>자세히 알아보기</span></a>                                               
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- //ThinQ 앱 다운 안내 slide -->
+
+                                    
                                 </div>
                             </div>
                             <div class="bottom-banner">
@@ -1706,6 +1508,7 @@
                             </div>
                         </div>
                         <!-- // APP -->
+                        <!-- //BTOCSITE-77-->
                         <!-- 매거진 -->
                         <div id="thinq-cont4" class="tab-contents thinq-magazine">
                             <h2 class="blind">매거진</h2>
@@ -2001,6 +1804,16 @@
         </div>
         <!-- //210226 플로팅버튼 추가 -->
     </div>
+
+    <!-- popup : BTOCSITE-77 LG ThingQ 와 연동되는 기기 찾기 -->
+    @@include('./PRH/MKTF1110-modal-01.html')
+    <!-- //popup : LG ThingQ 와 연동되는 기기 찾기 -->
+
+    <!-- popup : BTOCSITE-77 LG ThinQ 앱 설치 및 사용 방법 -->
+    @@include('./PRH/MKTF1110-modal-02.html')
+    <!-- //popup : LG ThinQ 앱 설치 및 사용 방법 -->
+
     <script src="/lg5-common/js/home/brandHome.min.js"></script>
+
 </body>
 </html>

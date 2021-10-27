@@ -40,9 +40,9 @@ var appInit = function() {
                 //console.log('AR 버튼 추가');
                 //Quick메뉴 AR 버튼 추가
                 $("#floatBox .KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
-
+                var $arBtn =  $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button");
                 //Quick메뉴 AR 버튼 이벤트
-                $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").off("click").on({
+                $arBtn.off("click focusin focusout").on({
                     click : function() {
                         $(this).addClass("active");
 
@@ -60,31 +60,22 @@ var appInit = function() {
                     },
                     focusin : function(){
                         setTimeout(function(){
-                            $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").addClass("active");
+                            $arBtn.addClass("active");
                             LGEAPPclickCNT = 1;
                         }, 150);
                     },
                     focusout : function(){
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
+                        $arBtn.removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
 
                 //스크롤 시 AR 버튼 default 상태로 변경
-                /*
-                $("body").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
+                $(window).on('scroll.floating', function(){    
+                    if ($(this).scrollTop() > 100 && $arBtn.hasClass('active')) {
+                        $arBtn.trigger('focusout');
                     }
                 });
-                $(".section-cover").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
-                    }
-                });
-                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {
@@ -194,9 +185,9 @@ var appInit = function() {
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
                     $(this).addClass('active');
-                    $('#inp01').attr('readonly','readonly');
-                    $('#inp02').attr('readonly','readonly');
-                    $('.cell button').attr('disabled', true);
+                    //$('#inp01').attr('readonly','readonly');
+                    //$('#inp02').attr('readonly','readonly');
+                    //$('.cell button').attr('disabled', true);
                     $('.info-req-box .qr-active').hide();
                     $('.info-req-box .qr').show();
                     $('p.comp').hide();
@@ -249,7 +240,7 @@ var appInit = function() {
                     // 바코드
                     $("#inp02").val(barcode);
                 }
-                $('.cell button').attr('disabled', false); // 확인 버튼 활성화
+                //$('.cell button').attr('disabled', false); // 확인 버튼 활성화
                 //$('.btn-prod-reg').attr('disabled', false); // 바코드,QR 리턴값 자동 입력 데이터 있을 경우, 등록 버튼 활성화 (disabled 해제)
                 // BTOCSITE-4086 210924 - E
             }

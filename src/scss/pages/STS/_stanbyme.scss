@@ -287,8 +287,12 @@
 		}
 	}
 	// review
+	//BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청
 	.component-inner{
-		margin-top:22px;
+		margin-top:32px;
+		@include mobile{
+			margin-top:24px;
+		}
 	}
 
 	// 리스트에 데이터 없는 케이스
@@ -956,4 +960,25 @@
 		}
 	}
 
+}
+
+//BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청
+.stm-event-banner{
+	.img-banner{
+		display:block;
+		width:100%;
+		img{
+			width:100%;
+		}
+		@include pc{
+			.mo-only{
+				display:none;
+			}
+		}
+		@include mobile{
+			.pc-only{
+				display:none;
+			}
+		}
+	}
 }

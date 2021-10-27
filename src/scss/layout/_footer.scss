@@ -733,6 +733,16 @@ footer {
                                 margin-top:-16px;
                             }
                         }
+                        /* BTOCSITE-6743 [급] 엘지이닷컴 ISMS인증마크에 범위 및 유효기간 추가 */
+                        dl{
+                            display:flex;
+                            dd{
+                                margin-left:7px;
+                                font-weight:400;
+                                color:#666;
+                            }
+                        }
+                        /* //BTOCSITE-6743 [급] 엘지이닷컴 ISMS인증마크에 범위 및 유효기간 추가 */
                     }
                 }
             }
@@ -752,11 +762,10 @@ footer {
     &:not(.app) {
         @include mobile {
             $statusbarHeight: 70px;
-            footer {
-                &:not(.no-footer) {
-                    padding-bottom:60px + $statusbarHeight;
-                }
+            footer:not(.no-footer):not(.pop-footer) {
+                padding-bottom:60px + $statusbarHeight;
             }
+            
         }
     }
 }

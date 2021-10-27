@@ -1,5 +1,32 @@
 // LG ThinQ
-.thinq-main {}
+.thinq-main {
+    .pc-only {
+        display: block !important;
+        @include mobile {
+            display: none !important;
+        }
+    }
+    .mo-only {
+        display: none !important;
+        @include mobile {
+            display: block !important;
+        }
+    }
+    
+    .pc-only-ib {
+        display: inline-block !important;
+        @include mobile {
+            display: none !important;
+        }
+    }
+    .mo-only-ib {
+        display: none !important;
+        @include mobile {
+            display: inline-block !important;
+        }
+    }
+}
+
 
 // .thinq-hero {
 //     [class*="scene"] {
@@ -70,23 +97,23 @@
 //                     }
 //                 }
 //             }
-//             &.active{
+//             &.active {
 //                 .dimmed {
 //                     opacity: 0;
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 0;
 //                     transform:translateY(200px);
 
 //                 }
 //             }
-//             &.on{
+//             &.on {
 //                 .dimmed {
 //                     transition: opacity 0.5s 0.5s ease-in-out;
 //                     opacity: 1 !important;
                     
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 1;
 //                     transform:translateY(0px);
 
@@ -148,34 +175,34 @@
 //                     }
 //                 }
 //             }
-//             &.active{
+//             &.active {
 //                 .image {
 //                     &.blur {
 //                         opacity: 0;
 //                     }
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 0;
 //                     transform:translateY(100px);
 
 //                 }
-//                 .cont2{
+//                 .cont2 {
 //                     opacity: 0;
 //                     transform:translateY(150px);                    
 //                 }
 //             }
-//             &.on{
+//             &.on {
 //                 .image {
 //                     &.blur {
 //                         opacity: 1;
 //                     }
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 1;
 //                     transform:translateY(0px);
 
 //                 }
-//                 .cont2{
+//                 .cont2 {
 //                     opacity: 1;
 //                     transform:translateY(0px);
 
@@ -235,34 +262,34 @@
 //                     }
 //                 }                
 //             }
-//             &.active{
+//             &.active {
 //                 .image {
 //                     &.blur {
 //                         opacity: 0;
 //                     }
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 0;
 //                     transform:translateY(100px);
 
 //                 }
-//                 .cont2{
+//                 .cont2 {
 //                     opacity: 0;
 //                     transform:translateY(150px);                    
 //                 }
 //             }
-//             &.on{
+//             &.on {
 //                 .image {
 //                     &.blur {
 //                         opacity: 1;
 //                     }
 //                 }
-//                 .cont1{
+//                 .cont1 {
 //                     opacity: 1;
 //                     transform:translateY(0px);
 
 //                 }
-//                 .cont2{
+//                 .cont2 {
 //                     opacity: 1;
 //                     transform:translateY(0px);
 
@@ -1714,297 +1741,12 @@
                 }
             }
         }
-
-        .content-area {
-            padding: 80px 40px 120px;
-            text-align: center;
-            @include mobile {
-                padding: 60px 16px 70px;
-            }
-            .title {
-                font-size: $font-large-6;
-                line-height: 64px;
-                @include mobile {
-                    font-size: $font-large-2;
-                    line-height: 33px;
-                }
-            }
-            .body-copy {
-                margin-top: 24px;
-                @include font-large;
-                @include mobile {
-                    margin-top: 12px;
-                }
-            }
-            .download-btn-wrap {
-                margin-top: 64px;
-                font-size: 0;
-                text-align: center;
-                [class*="btn"] {
-                    display: inline-block;
-                    padding: 0 6px;
-                    img {
-                        max-width: 100%;
-                        height: 72px;
-                    }
-                }
-                @include mobile {
-                    display: flex;
-                    justify-content: center;
-                    margin: 40px -8px 0;
-                    [class*="btn"] {
-                        display: block;
-                        padding: 0 8px;
-                        img {
-                            max-width: 100%;
-                            height: auto;
-                            max-height: 49px;
-                        }
-                    }
-                }
-            }
-        }
-        .mobile-device {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            &.fixed {
-                position: fixed;
-                top: 0;
-                left: calc(50% - 8px);
-                z-index: 11;
-                @at-root .mac & {
-                    left: 50%;
-                }
-            }
-            @include mobile {
-                position: static;
-                left: 0;
-                transform: translateY(0);
-                width: 100%;
-                padding: 0 17.222vw;
-
-            }
-            img {
-                width: 100%;
-            }
-            .frame {
-                position: relative;
-                overflow: hidden;
-                //transform: scale(0.7);
-            }
-            .device {
-                position: relative;
-                z-index: 2;
-                width: 473px;
-                height: 972px;
-                @include mobile {
-                    width: 100%;
-                    height: auto;
-
-                }
-            }
-            .screen {
-                overflow: hidden;
-                position: absolute;
-                top: 52px;
-                left: 23px;
-                z-index: 1;
-                width: 428px;
-                height: 853px;
-                @include mobile {
-                    width: 59.744vw;
-                    height: 118.472vw;
-                    top: 7.161vw;
-                    left: 3.194vw;
-                    right: 2.778vw;
-                }
-                .screen-slider {
-                    li {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                    }
-                }
-            }
-        }
-        .typography {
-            max-width: 1430px;
-            height: 600px;
-            margin: 80px auto 292px;
-            background: url('/lg5-common/images/PRH/img-app-typography.png') no-repeat center center;
-            text-align: center;
-            @include mobile {
-                display: none;
-            }
-        }
-        .install-wrap {
-            margin-top: 1000px;
-            @include mobile {
-                margin-top: 0;
-                //margin-top: calc(135.0vw + 120px);
-                padding: 120px 0 60px;
-            }
-            .slide-wrap {
-                @include mobile {
-                    padding-bottom: 44px;
-                }
-            }
-            .indi-wrap {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 120px;
-                z-index: 10;
-                @include mobile {
-                    bottom: 0;
-                }
-            }
-            .slide-controls {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 100%;
-                // transform: translateX(-50%);
-                transform: translateX(0);
-                margin-left:-50%;
-                z-index: 10;
-                .btn-arrow {
-                    position: absolute;
-                    transform: translateY(-50%);
-                    &.prev {
-                        left: 40px;
-                    }
-                    &.next {
-                        right: 40px;
-                    }
-                }
-                @include mobile {
-                    .btn-arrow {
-                        @include calc(top,50%,84px);
-                        &.prev {
-                            left: 6px;
-                        }
-                        &.next {
-                            right: 6px;
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                .image {
-                    display: none;
-                }
-            }
-            .mobile-device {
-                @include pc {
-                    display: none;
-                }
-                position: static;
-                left: 0;
-                transform: translateY(0);
-                width: 100%;
-                padding: 0 22.083vw;
-                .screen {
-                    width: 45.767vw;
-                    height: 90.372vw;
-                    top: 5.361vw;
-                    left: 2.094vw;
-                }
-            }
-            .text-area {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateY(-50%);
-                margin-left: 246px;
-                .tit {
-                    display: block;
-                    margin-bottom: 12px;
-                    font-weight: 700;
-                    @include font-large;
-                }
-                .desc {
-                    @include font-medium;
-                    .num {
-                        display: block;
-                    }
-                    .point {
-                        font-weight: 700;
-                        color: $color-primary;
-                    }
-                }
-                @include mobile {
-                    position: static;
-                    top: 100%;
-                    left: 0;
-                    transform: translateY(0);
-                    width: 100%;
-                    margin-left: 0;
-                    padding-top: 24px;
-                    text-align: center;
-                }
-            }
-        }
-
-        .app-use-wrap {
-            overflow-x:hidden;
-            background-color: $color-bg;
-            .slide-wrap {
-                padding-bottom: 44px;
-                .indi-wrap {
-                    bottom: 0;
-                }
-                .slide-controls button {
-                    @include calc(top,50%,59px);
-                    &.prev {
-                        left: -24px;
-                    }
-                    &.next {
-                        right: -24px;
-                    }
-                    @include mobile {
-                        &.prev {
-                            left: -10px;
-                        }
-                        &.next {
-                            right: -10px;
-                        }
-                    }
-                }
-                .slide-content {
-                    margin: 0 -12px;
-                    .slide-conts {
-                        padding: 0 12px;
-                    }
-                }
-            }
-            .text-area {
-                margin-top: 24px;
-                text-align: center;
-                .tit {
-                    display: block;
-                    margin-bottom: 7px;
-                    font-weight: 700;
-                    @include font-large;
-                }
-                .desc {
-                    @include font-small;
-                }
-            }
-            .bullet-list.top-border {
-                padding-top: 24px;
-                .b-txt {
-                    font-weight: 400;
-                    color: $color-default;
-                }
-            }
-        }
-
         .smart-thinq-wrap {
             .title-area {
-                margin-bottom: 32px;
+                margin-bottom: 47px;
+                @include mobile {
+                    margin-bottom:37px;
+                }
             }
             .tabs-wrap {
                 margin-bottom: 30px;
@@ -2440,3 +2182,915 @@
         }
     }
 }
+
+
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
+@import "../../modules/slick";
+// ThinQ > APP 탭 section
+.app-tab-section {
+    // 비주얼 이미지 
+    .visual-img-solo {
+        position:relative;
+        height:480px;
+        @include mobile {
+            height:270px;
+        }
+        img {
+            position:absolute;
+            top:50%;
+            left:50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform:translate(-50%, -50%);
+        }
+    }
+    // 탭 영역
+    .app-tab-area {
+        position:relative;
+        @include mobile {
+            padding:0;
+        }
+        .white-dimmed {
+            position:absolute;
+            right:85.5px;
+            top:0;
+            display: inline-block;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(225,225,225, 0), white);
+            z-index: 10;
+        }
+        // 탭메뉴 nav
+        .menu-slide-block {
+            background-color: #fff;
+            padding:48px 40px;
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 5;
+            @include mobile {
+                padding:25px 16px 24px;
+            }
+            .menu-slide-inner {
+                display: flex;
+                align-items: flex-start;
+                position: relative;
+                max-width: 1380px;
+                margin:0 auto;
+            }
+            .menu-slide-nav {
+                flex:1;
+                overflow:hidden;
+                margin-right:32px;
+                padding:0 48px;
+
+                @include tablet {
+                    padding:0;
+                }
+
+                @include mobile {
+                    margin-right:16px;
+                    padding:0;
+                    position: relative;
+                    
+                }
+
+                .slick-arrow {
+                    width: 48px;
+                    height: 48px;
+
+                    &:before {
+                        box-shadow: none;
+                        width: 48px;
+                        height: 48px;
+                    }
+
+                    &.slick-prev {
+                        left:0;
+                        &:before {
+                            background-image:url('/lg5-common/images/PRH/app/icon_carousel_prev_48.svg');
+                        }
+                    }
+                    &.slick-next {
+                        right:0;
+                        &:before {
+                            background-image:url('/lg5-common/images/PRH/app/icon_carousel_next_48.svg');
+                        }
+                    }
+                }
+
+                .menu-item {
+                    position: relative;
+                    display: inline-block;
+                    width: 90px;
+                    text-align: center;
+                    vertical-align: top;
+                    a {
+                        display: inline-block;
+                    }
+                }
+            }
+            .btn-allview {
+                .icon-wrap {
+                    background: linear-gradient(135deg, #fa263e, #fb5a72);
+                }
+            }
+            &.is-active {
+                box-shadow: 4px 13px 15px 0 rgba(0, 0, 0, 0.1);
+                width: 100%;
+                &:after {content:''; display:block; clear:both;}
+                .menu-slide-nav {
+                    margin-top:-47px;
+                    @include mobile {
+                        margin-top: -17.5px;
+                    }
+                }
+                .btn-allview {
+                    top:47px;
+                    @include tablet {
+                        top:47px;
+                        right:40px;
+                    }
+                    @include mobile {
+                        top: 18px; 
+                        right:16px;
+                    }
+                    .icon-wrap {
+                        background: #666;
+                    }
+                    .icon {
+                        &-all {
+                            background-image:url('/lg5-common/images/PRH/app/icon_close_64.svg');
+                        }
+                    }
+                }
+                .menu-item {
+                    width:calc(100%/7);
+                    margin-top: 47px;
+                    @include tablet {
+                        width:calc(100%/5);
+                    }
+                    @include mobile {
+                        width:calc(100%/4);
+                        margin-top: 17.5px;
+                    }
+                }
+            }
+        }
+        // 탭 메뉴 content
+        .app-tab-content {
+            .tab-cont {
+                display:none;
+                &.is-active {
+                    display: block;
+                }
+            }
+
+            .app-smart-wrap {
+                background-color: #f4f4f4;
+                padding: 350px 0 120px;
+                @include mobile {
+                    padding: 196px 16px 62px;
+                }
+                .app-smart-detail {
+                    max-width: 1460px;
+                    margin: 0 auto;
+                    padding: 0 40px; 
+
+                    @include mobile {
+                        padding:0;
+                    }
+                    li {
+                        display:flex;
+                        position: relative;
+                        .detail-inner {
+                            display:flex;
+                            width: 100%;
+                            flex-direction: row;
+                            align-items: center;
+                            @include mobile {
+                                flex-direction: column-reverse;
+                            }
+                            .text-area {
+                                color:#000;
+                                padding-left:60px;
+                                @include mobile {
+                                    text-align: center;
+                                    padding-left:0;
+                                    margin-bottom:10px;
+                                }
+                                .tit {
+                                    font-size:32px;
+                                    line-height: 1.63;
+                                    font-weight: 500;
+                                    @include tablet {
+                                        font-size:24px;
+                                    }
+                                    @include mobile {
+                                        font-size:18px;
+                                        font-weight:700;
+                                    }
+                                }
+                                .desc {
+                                    font-size:20px;
+                                    line-height: 1.5;
+                                    margin-top: 17px;
+                                    @include tablet {
+                                        font-size:18px;
+                                    }
+                                    @include mobile {
+                                        margin-top:7px;
+                                        font-size:15px;
+                                    }
+                                }
+                                .dscl {
+                                    display: block;
+                                    font-size:16px;
+                                    line-height:1.5;
+                                    margin-top:10px;
+                                    @include tablet {
+                                        font-size:14px;
+                                    }
+                                    @include mobile {
+                                        font-size:13px;
+                                    }
+                                }
+                            }
+                        }
+                        &:nth-child(even) {
+                            .detail-inner {
+                                
+                                @include pc {
+                                    flex-direction: row-reverse;
+                                }
+                                .text-area {
+                                    text-align: right;
+                                    padding-left:0;
+                                    padding-right:60px;
+                                    @include mobile {
+                                        padding-right:0;
+                                        text-align: center;
+                                    }
+                                }
+                            }
+                        }
+                        & + li {
+                            margin-top:-248px;
+                            @include tablet {
+                                margin-top: -120px;
+                            }
+                            @include mobile {
+                               margin-top:50px;
+                            }
+                        }
+                        .detail-inner {
+                            .image {
+                                $width: 342px;
+                                width: $width;
+                                @include tablet {
+                                    width: ($width * 0.6) ;
+                                }
+                                @include mobile {
+                                    width: 164px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// 연동기기 찾기 배너 
+.search-banner-wrap {
+    height: 80px;
+    // max-width: 1380px;
+    width: 100%;
+    background-color: #8c929a;
+    // background: url('/lg5-common/images/PRH/app/banner-mini.jpg') no-repeat 0 0;
+    @include mobile {
+        height: 70.5px;
+        background-color: #8c929a;
+        // background-image: url('/lg5-common/images/PRH/app/banner-mini_m.jpg') ;
+        background-size: 100% auto;
+    }
+    > button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        span {
+            font-size:18px;
+            line-height: 1.5;
+            font-weight: 500;
+            position:relative;
+            color:#fff;
+            @include mobile {
+                font-size:14px;
+            }
+            &:before {
+                content:'';
+                display:inline-block;
+                width: 32px;
+                height: 32px;
+                margin-top:-2px;
+                margin-right:12px;
+                background:url('/lg5-common/images/PRH/app/icon/ic_app.png') no-repeat 0 0;
+                background-size:100% 100%;
+                vertical-align: middle;
+
+                @include mobile { 
+                    width: 24px;
+                    height: 24px;
+                    margin-right:6px;
+                }
+            }
+            &:after {
+                display:inline-block;
+                content: '';
+                width: 9px;
+                height: 9px;
+                margin-top:-2px;
+                margin-left:10px;
+                border-top: 2px solid #fff;
+                border-right: 2px solid #fff;
+                transform: rotate(45deg);
+                vertical-align: middle;
+                // position: absolute;
+                // top: 9px;
+                // right: -15px;
+            }
+        }
+    }
+}
+
+// ThinQ 앱 다운 안내 슬라이드
+.app-download-guide {
+    max-width: 1460px;
+    margin:120px auto 0;
+    padding:0 40px 66px;
+
+    @include mobile {
+        margin:60px auto 0;
+        padding:0 0 32px;
+
+        .slick-dots {
+            bottom:-24px;
+        }
+    }
+
+    .slide-item {
+        overflow:hidden;
+        height: 440px;
+        border-radius:8px;
+
+        @include mobile {
+            height: 480px;
+            border-radius:0;
+        }
+        &.bg-appDown {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_01.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_01_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
+            }
+        }
+        &.bg-howTo {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_02.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_02_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
+            }
+        }
+        &.bg-magazine {
+            background:url('/lg5-common/images/PRH/app/img_app_download_banner_03.jpg') no-repeat 0 0;
+            @include mobile {
+                background:url('/lg5-common/images/PRH/app/img_app_download_banner_03_m.jpg') no-repeat 0 0;
+                background-size: 100% 100%;
+            }
+        }
+        .item-inner {
+            padding:65px 0 0 120px; 
+            @include mobile { 
+                padding: 36px 32px;
+                text-align: center;
+            }
+            .btn-area {
+                .btn {
+                    &:hover, &:focus, &:active {
+                        color:#fff;
+                    }
+
+                    @include mobile {
+                        height:43px;
+                        font-size:13px;
+                        line-height: 1;
+                    }
+                }
+            }
+            .btn-download {
+                width: 162px;
+                height: 50px;
+                display: inline-block;
+                img {
+                    width: 100%;
+                }
+                & + .btn-download {margin-left: 4px;}
+                @include mobile {
+                    width:139.5px;
+                    height: 43px;
+                }
+            }
+            .text-wrap {
+               .item-title {
+                   font-size:40px; 
+                   line-height: 56px;
+                   @include mobile { 
+                        font-size:24px;
+                        line-height: 1.38;
+                   }
+                }
+               .item-desc {
+                   font-size:18px; 
+                   line-height: 28px;
+                   @include mobile { 
+                        font-size:14px;
+                        line-height: 1.57;
+                   }
+                }
+               .item-title + .item-desc {
+                   margin-top: 10px;
+                   @include mobile {
+                       margin-top: 5.5px;
+                   }
+                }
+            }
+        }
+        .text-wrap + .btn-area {
+            margin-top: 25px;
+            @include mobile {
+                margin-top: 24.5px;
+            }
+        }
+    }
+    
+    .slick-arrow.slick-prev {
+        left:-18px;
+
+        @include mobile {
+            left:4px;
+        }
+    }
+    .slick-arrow.slick-next {
+        right:-18px;
+        @include mobile {
+            right:4px;
+        }
+    }
+}
+
+//앱 체험한내
+.app-experience-intro {
+    max-width:1460px;
+    margin:120px auto 0;
+    padding:0 40px;
+    
+    @include mobile {
+        margin:60px auto 0;
+        padding:0 16px;
+    }
+    .intro {
+        &-inner {
+            text-align: center;
+            .btn-area {
+                margin-top:32px;
+
+                @include mobile {
+                    margin-top:24px;
+                }
+                .btn {
+                    font-size:14px;
+                    padding:6px 16px;
+
+                    &:hover, &:focus, &:active {
+                        color:#fff;
+                    }
+
+                    @include mobile {
+                        font-size:13px;
+                        padding:12px 20px;
+                    }
+                }
+            }
+        }
+        &-tit {
+            display: block;
+            font-size:32px;
+            font-weight:bold;
+            line-height:1.31;
+
+            @include mobile {
+                font-size:24px;
+            }
+        }
+        &-desc {
+            margin-top:16px;
+            font-size:16px;
+            line-height:1.63;
+            @include mobile {
+                margin-top:13px;
+                font-size:14px;
+            }
+        }
+        &-image {
+            overflow:hidden;
+            margin:48px auto 0;
+            border-radius:8px;
+
+            @include mobile {
+                margin:24px auto 0;
+            }
+
+            img {
+                width:100%;
+            }
+        }
+    }
+}
+
+
+.icon-wrap {
+    display: inline-flex;
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    & + .txt {
+        display: block;
+        text-align:center; 
+        font-size:18px;
+        margin-top: 8px;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    @include mobile {
+        width: 50px;
+        height: 50px;
+        & + .txt {
+            font-size:13px;
+        }
+    }
+
+    .icon {
+        display: inline-block;;
+        width: 64px;
+        height: 64px;
+        background-size: 100% ;
+        @include mobile {
+            width: 40px;
+            height: 40px;
+            background-size:100%;
+        }
+
+        &-all {
+            background-image:url('/lg5-common/images/PRH/app/icon_all_64.svg');
+        }
+    }
+    $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
+    @each $name in $prdIconLists {
+        @at-root .menu-item .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
+        }
+        @at-root .menu-item.is-active .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
+        }
+        @at-root .prd-result-lists .icon-#{$name} {
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.png');
+        }
+    }
+}
+
+// 연동기기 찾기 팝업 
+.popup-searchMachine {
+    height: 800px;
+    min-height:auto !important;
+    @include mobile {
+        height: 100%;
+    }
+    &.popup-wrap .pop-conts.no-footer {
+        height:calc(100% - 78px);
+        overflow: hidden;
+        padding-top:20px;
+        padding-bottom:0;
+        max-height: initial;
+        @include mobile {
+            height:calc(100% - 62px);
+        }
+    }
+}
+// 연동기기 찾기 검색 박스
+.search-sticky-wrap {
+    position: relative;
+    @include mobile {
+        // top:-32px;
+        // margin: -32px -16px 0 -16px;
+        // padding:24px 16px;
+    }
+}
+.search-machine-box {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding:24px 26px;
+    display:flex;
+    @include mobile {
+        flex-direction: column;
+        padding:25px 10px;
+    }
+    .select-wrap {
+        width: 159px;
+        @include mobile {
+            width: 100%;            
+        }
+    }
+    .select-wrap + .input-wrap {
+        margin-left:8px;
+        @include mobile {
+            margin-left: 0;
+            margin-top: 8px;
+        }
+    }
+    .input-wrap {
+        flex:1;
+        position: relative;
+        
+        input[type="text"] {
+            padding:10px 75px 10px 15px
+        }
+        .btn-search {
+            position:absolute;
+            right:0;
+            top:0;
+            width: 48px;
+            height: 48px;
+            @include mobile {
+                width: 46px;
+                height: 46px;
+            }
+            .icon {
+                margin-top: 5px;
+                &.icon-search {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background-image:url('/lg5-common/images/PRH/app/icon/ic_search_32.png');
+                    @include mobile {
+                        width: 24px;
+                        height: 24px;
+                        background-size:24px 24px;
+                    }
+                }
+            }
+        }
+        .btn-delete {
+            display: none;
+            position:absolute;
+            top:50%;
+            right:48px;
+            width:24px;
+            height:24px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/PRH/app/icon/ic_delete_medium_MO_48.svg') no-repeat 0 0;
+            background-size:100% 100%;
+            @include mobile {
+                right: 42px;
+            }
+        }
+    }
+}
+// 검색 전
+.intro-message {
+    height: calc(100% - 96px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &.is-active {
+        display: flex;
+    }
+    @include mobile {
+        height: calc(100% - 150px);
+    }
+    > p {
+        font-size: 20px;
+        font-weight: 800;  
+        line-height: 1.5;
+        text-align: center;
+        @include mobile {
+            font-size:16px;
+            line-height: 1.5;
+        }
+    }
+
+}
+// 검색결과 없음 재시도
+.no-data-message {
+    height: calc(100% - 96px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &.is-active {
+        display: flex;
+    }
+    @include mobile {
+        height: calc(100% - 150px);
+    }
+    br {
+        display:none;
+        @include mobile {
+            display: block;
+        }
+    }
+    > em {
+        font-size: 20px;
+        font-weight: 800;  
+        line-height: 1.5;
+        @include mobile {
+            font-size:16px;
+            line-height: 1.5;
+        }
+    }
+    > p {
+        font-size: 16px;
+        line-height: 1.63;
+        color: #666; 
+        @include mobile {
+            font-size:14px;
+            line-height: 1.57;
+        }
+    }
+    em + p {
+        margin-top: 8px;
+        @include mobile {
+            margin-top: 11.5px;
+        }
+    }
+    .btn-area {
+        margin-top: 25px;
+        @include mobile {
+            margin-top: 24.5px;
+        }
+    }
+}
+//  검색 결과 목록
+.product-result-wrap {
+    display: none;
+    height: calc(100% - 96px);
+    overflow-y:auto;
+    margin-right: -40px;
+    padding:40px 40px 50px 0;
+
+    &.is-active {
+        display: block;
+    }
+
+    @include mobile {
+        height: calc(100% - 150px);
+    }
+    .prd-result-text {
+        padding-bottom:12px;
+        em {
+            color:$color-primary;
+            font-weight: 800;
+        }
+    }
+    .prd-result-lists {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom:24px;
+        border-top:1px solid #666666;
+        border-bottom:1px solid #dddddd;
+        > li {
+            width: 50%;
+            display: flex;
+            overflow:hidden;
+            align-items: flex-start;
+            margin-top: 24px;
+            @include mobile {
+                align-items: center;
+                width: 100%;
+                margin-top: 16px;
+            }
+            .icon-wrap {
+                width: 120px;
+                height: 120px;
+                background-color: #f4f4f4;
+                border-radius: 8px;
+                @include mobile {
+                    width: 105px;
+                    height: 105px;
+                    .icon {
+                        width: 64px;
+                        height: 64px;
+                    }
+                }
+            }
+            .text {
+                flex:1;
+                padding:0 24px;
+                @include mobile {
+                    padding:16px;
+                }
+                .name {
+                    font-size: 16px;
+                    font-weight: 800;
+                    line-height: 1.63;
+                    word-break:break-word;
+                }
+                .serial-num {
+                    display: block;
+                    font-size: 14px;
+                    line-height: 1.86;
+                    margin-top: 6px;
+                }
+            }
+        }
+    }
+}
+// 앱 설치 및 사용 방법 팝업 
+.popup-howto {
+    max-width: 1146px;
+    @include mobile {
+        width: 100%;
+    }
+    .howto-content {
+        padding:13px 0 38px;
+        @include mobile { 
+            padding-top:0;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            padding-bottom:0;
+        }
+    }
+    .howto-slider {
+        max-width: 1066px;
+        margin:0 auto;
+        padding:0 59px;
+        @include tablet {
+            width: 100%;
+        }
+        @include mobile {
+            width: 100%;
+            padding:0;
+        }
+        .slide-item {
+            .inner {
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .image {
+                width: 177px;
+                height: 365px;
+                @include mobile {
+                    width: 165px;
+                    height: 340.5px;
+                }
+                img {
+                    width: 100%;
+                }
+            }
+            .text {
+                margin-top: 36px;
+                text-align:center;
+                font-size: 16px;
+                line-height: 1.75;
+                @include mobile {
+                    font-size:14px;
+                    line-height: 1.57;
+                    margin-top: 29px;
+                }
+                .num {
+                    display:block;
+                    font-weight: 800;
+                    margin-bottom: 12px;
+                    @include mobile {
+                        font-size:15px;
+                        line-height: 1.53;
+                    }
+                }
+                em {
+                    color:$color-primary;
+                }
+            }
+        }
+    }
+}
+// BTOCSITE-77 [UI_2]ThinQ 브랜드관 호환기기 검색 기능
