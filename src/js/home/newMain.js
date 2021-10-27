@@ -151,50 +151,156 @@ $(function () {
             }            
         });
 
+        // BTOCSITE-2193 s
+        // $window.on('breakpointchange', function(e){
+
+        //     var data = window.breakpoint;
+        //     var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
+        //     var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
+
+        //     if(data.name == 'mobile'){
+
+        //         if(!isRecom){
+        //             $context.find('.recom-list-slide').vcCarousel({                        
+        //                 infinite: true,
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1,
+        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+        //                 speed: 150,
+        //                 touchThreshold: 100
+        //             });
+        //         }
+
+        //         if(!isBenefit){
+        //             $context.find('.benefit-list-slide').vcCarousel({
+        //                 infinite: true,
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1,
+        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+        //                 speed: 150,
+        //                 touchThreshold: 100                            
+        //             });
+        //         }
+
+
+        //     }else if(data.name == 'pc'){
+
+        //         $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
+        //         $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
+        //         if(isRecom){
+        //             $context.find('.recom-list-slide').vcCarousel('destroy');
+        //         }
+        //         if(isBenefit){
+        //             $context.find('.benefit-list-slide').vcCarousel('destroy');
+        //         }
+        //     }
+
+        // });   
         $window.on('breakpointchange', function(e){
-
             var data = window.breakpoint;
-            var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
-            var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
 
-            if(data.name == 'mobile'){
+            var recomSlider01 = $('.recom-list-slide01');
+            var recomSlider02 = $('.recom-list-slide02');
+            var recomSlider03 = $('.recom-list-slide03');
 
-                if(!isRecom){
-                    $context.find('.recom-list-slide').vcCarousel({                        
-                        infinite: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                        speed: 150,
-                        touchThreshold: 100
-                    });
-                }
+            var recomSlider01Num = recomSlider01.find('.slide-item').length;
+            var recomSlider02Num = recomSlider02.find('.slide-item').length;
+            var recomSlider03Num = recomSlider03.find('.slide-item').length;
+            var infoSliderNum = $('.info-area .slide-item').length;
 
-                if(!isBenefit){
-                    $context.find('.benefit-list-slide').vcCarousel({
-                        infinite: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                        speed: 150,
-                        touchThreshold: 100                            
-                    });
-                }
-
-
-            }else if(data.name == 'pc'){
-
-                $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
-                $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
-                if(isRecom){
-                    $context.find('.recom-list-slide').vcCarousel('destroy');
-                }
-                if(isBenefit){
-                    $context.find('.benefit-list-slide').vcCarousel('destroy');
-                }
+            if(recomSlider01Num > 1){
+                recomSlider(recomSlider01);
+            }
+            if(recomSlider02Num > 1){
+                recomSlider(recomSlider02);
+            }
+            if(recomSlider03Num > 1){
+                recomSlider(recomSlider03);
             }
 
-        });               
+            $('.membership-type-slide').slick({
+                arrows: false,
+                dots: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite:false,
+                variableWidth:false,
+                outerEdgeLimit: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
+                        }
+                    }
+                ]
+            });
+            
+            if(infoSliderNum > 1){
+                $('.info-area').slick({
+                    arrows: true,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite:true,
+                    vertical: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    pauseOnHover: true,
+                    pauseOnFocus: true
+                });
+            } else {
+                $('.info-area-wrap').addClass('info-solo');
+            }
+            
+            $('.btn-info-play').on('click', function() {
+                if($(this).hasClass('pause')){
+                    $(this).removeClass('pause');
+                    $('.info-area').slick('slickPause')
+                    $('.btn-info-play span').text('재생');
+                } else {
+                    $(this).addClass('pause');
+                    $('.info-area').slick('slickPlay');
+                    $('.btn-info-play span').text('멈춤');
+                }
+            });
+
+        });   
+
+        function recomSlider(slider) {
+            var slider = slider;
+            slider.slick({
+                arrows: true,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite:false,
+                variableWidth:false,
+                outerEdgeLimit: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
+                        }
+                    }
+                ]
+            });
+        }
+
+        // BTOCSITE-2193 e                 
 
         var observerOption = {
             root: null,

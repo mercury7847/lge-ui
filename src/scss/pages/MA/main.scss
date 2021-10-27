@@ -1,0 +1,2055 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+// BTOCSITE-2193
+@import "../../modules/slick";
+
+// 무인매장
+.contents.unmanned-store-wrap {
+    @import "unmanned-store";
+}
+// 온라인견적요청서 0624
+.contents.sysaircon-form-wrap {
+    @import "sysaircon-form";
+}
+
+
+
+// 메인
+/* 앱용 */
+.app {
+    .main-wrap {
+        .scene {
+            .text-link {
+                bottom:180px;
+            }
+        }
+    }
+}
+// BTOCSITE-740 start
+.only-mobile{
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+.only-desktop{
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+// BTOCSITE-740 end
+
+/* 클래스별이미지분기 */
+img{
+    &.pc{
+        display:inline-block;
+    }
+    &.mobile{
+        display:none;
+    }
+    @include mobile {
+        &.pc{
+            display:none;
+        }
+        &.mobile{
+            display:inline-block;
+        }
+    }
+}
+/* //클래스별이미지분기 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-wrap {
+    // max-width:1920px;
+    margin:0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    @include mobile {
+        // padding-bottom:171px;
+        padding-top: 0px;
+        border-top: 0;
+    }
+    .video-poster {
+        overflow: hidden;
+        position: absolute;
+        top: 110px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 110px);
+        @include mobile {
+            top: 84px;
+            height: calc(100% - 84px);
+        }
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    // 2021-07-23 여기서 부터 수정
+    .scene {
+        position:relative;
+        width: 100%;
+        // height:100%;
+        // height:100vh;
+        max-height: 100%;
+        overflow: hidden;
+        // BTOCSITE-740 start
+        @include mobile {			
+            height: 500px;
+            // &+.scene {
+            // 	margin-top:12px;
+            // }
+        }
+
+        // 2021-07-23 pc 여기서부터 시작
+        &.scene-renew {
+            position: relative;
+            width: 100%;
+            max-width: 1700px;
+            background-color: #fff;
+            margin: 0 auto;
+            padding:0 30px;
+            > a {
+                display: block;
+                height: 100%;
+                width: 100%;
+                height: 650px;
+                &.scene-cond {
+                    background-color: #8ea7c2;
+                }
+                .text-link {
+                    position: absolute;
+                    top: 36px;
+                    right: 65px;
+                    z-index: 2;
+                    max-width: 260px;
+                    max-height: 80px;
+                    .bi-svg {
+                        padding-right: 0;
+                        line-height: normal;
+                        font-size: 0;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .opac {
+                opacity:.7;
+            }
+            .img {
+                position:relative;
+                // &.only-mobile{
+                // 	display:none;
+                // 	@include mobile {
+                // 		display:block;
+                // 	}
+                // }
+				
+                // &.only-desktop{
+                // 	display:block;
+                // 	@include mobile {
+                // 		display:none;
+                // 	}
+                // }
+                // BTOCSITE-740 end
+                img {
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    width:100%;
+                    // BTOCSITE-2193
+                    height:100%;
+                    transform:translate(-50%,-50%);
+                    -webkit-transform:translate(-50%,-50%);
+                    @include mobile {
+                        top:50%;
+                        left:50%;
+                        // BTOCSITE-2193
+                        height: 100%;
+                        transform:translate(-50%,-50%);;
+                        -webkit-transform:translate(-50%,-50%);;
+                    }
+                }
+	
+                display:block;
+                width:100%;
+                height:100%;
+                background-position:center center;
+                background-repeat:no-repeat;
+                background-size:cover;
+                &.only-desktop{
+                    display:block !important;
+                }
+                &.only-mobile{
+                    display:none !important;
+                }
+                &.video {
+                    overflow: hidden;
+                    // padding: 0 30px;
+                    // height: 650px;
+                    video {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    @include mobile {
+                        padding: 0 0px;
+                        width: 100% !important;
+                        margin-left: 0 !important;
+                        height: 100% !important;
+                        video {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .text-cont {
+                text-align: center;
+                // BTOCSITE-2193 s
+                padding: 23px 0 100px 0;
+                .title{
+                    .only-desktop{
+                        display: block;
+                        font-size: 40px;
+                        line-height: 48px;
+                        margin-bottom: 10px;
+                        @media screen and (max-width: 1023px) {
+                            font-size: 30px;
+                            line-height: 40px;
+                        }
+                        @include mobile {
+                            display: none;
+                        }
+                    }
+                    .only-mobile{
+                        display: none;
+                        @include mobile {
+                            display: block;
+                            overflow: hidden;
+                            font-size: 24px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                > p.desc {
+                    margin-bottom: 24px;
+                    span{
+                        display: block;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        @include mobile {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                    &.only-desktop{
+                        display: block;
+                        @include mobile {
+                            display: none;
+                        }
+                    }
+                    &.only-mobile{
+                        display: none;
+                        @include mobile {
+                            display: block;
+                        }
+                    }
+                    @include mobile {
+                        margin-bottom: 16px;
+                    }
+                }
+                .btn-wrap {
+                    a {
+                        margin: 0 3px;
+                        line-height: 20px;
+                        padding: 12px 31px;
+                        width:auto;
+                        min-width: 126px;
+                        font-size: 16px;
+                    }
+                }
+                // BTOCSITE-2193 e
+            }
+            @media screen and (max-width: 1760px) {
+                > a {
+                    height: 34.43181818181818vw;
+                }
+            }
+            // BTOCSITE-2193 s
+            // @media screen and (max-width: 1023px) {
+            // 	.text-cont {
+            // 		> h3 {
+            // 			font-size: 30px;
+            // 			line-height: 40px;
+            // 		}
+            // 	}
+            // }
+
+            @include mobile {
+                height:auto;
+                padding: 16px;
+                background: none !important;
+                > a {
+                    // height: 114.08083441981746vw;
+                    height: 100%;
+                    position: relative;
+                    .text-link {
+                        top: 21px;
+                        right: 16px;
+                        max-height: 45px;
+                    }
+                }
+                .img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 !important;
+                    overflow: hidden;
+                    &.only-desktop{
+                        display:none !important;
+                    }
+                    &.only-mobile{
+                        display:block !important;
+                    }
+                    &.video {
+                        // position: static;
+                        // height: auto !important;
+                        // min-height: 300px !important;
+                        left:0;
+                        top:0;
+                        width: 100%;
+                        height: 100%;
+                        video {
+                            position: relative !important;
+                            top: 0 !important;
+                            left: 0 !important;
+                            width: 100%;
+                            height: 100%;
+                            transform: none !important;
+                        }
+                    }
+                    &:before {
+                        display: none;
+                    }
+                    img {
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        height: auto;
+                        transform: none;
+                    }
+                }
+                .text-cont {
+                    position: relative;
+                    top: auto;
+                    left: 0;
+                    margin-top: -1px;
+                    padding: 13px 10px 0 10px;
+                    text-align: left;
+                    margin-bottom: 12px;
+                    background: #fff;
+                    .title {
+                        overflow: hidden;
+                        max-height: 58px;
+                        font-size: 24px;
+                        line-height: 1.21;
+                        color: #000 !important;
+                    }
+                    .desc {
+                        overflow: hidden;
+                        margin-top: 9px;
+                        font-size: 13px;
+                        line-height: 1.38;
+                        color: #000 !important;
+                        font-weight: 400;
+                        margin-bottom: 10px;
+
+                    }
+                    .btn-wrap {
+                        margin-top: 10px;
+                        margin-left: 0px;
+                        // BTOCSITE-2193
+                        margin-bottom: 8px;
+                        a {
+                            height: 36px;
+                            padding: 8px 0;
+                            line-height: 15px;
+                            min-width: 94px;
+                            width: 94px;
+                            &.size-main {
+                                margin-right: 2px;
+                                border-radius: 21px;
+                                line-height: 16px;
+                                // BTOCSITE-2193
+                                height: 40px;
+                                padding: 10px 24px;
+                                min-width: 110px;
+                                width: auto;
+                                font-size: 14px;
+                                &:first-of-type {
+                                    margin-left: 0;
+                                }
+                                > span {
+                                    // BTOCSITE-2193
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    letter-spacing: -0.7px;
+                                }
+                            }
+                        }
+                    }
+                }
+				
+            }
+            // BTOCSITE-2193 e
+            // @media screen and (max-width: 414px){
+            // 	> a {
+            // 		height: 110.020834vw;
+            // 	}
+            // }
+            // @media screen and (max-width: 375px){
+            // 	> a {
+            // 		height: 108.970834vw;
+            // 	}
+            // }
+        }
+        // ////2021-07-23 pc 여기서부터 시작
+
+		
+        &.fc-black { //밝은 배경
+            .text-cont {
+                > p {
+                    color:#000;
+                    //text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+                }
+            }
+            .text-link {
+                > .a {
+                    color:#000;
+                    &:after {
+                        // background-image:url('/lg5-common/images/MA/icon-arr-64x64-black.svg');
+                    }
+                }
+            }
+        }
+		
+        @keyframes arr {
+            0% {
+                transform:translateY(0);
+            }
+            50% {
+                transform:translateY(10px);
+            }
+            100% {
+                transform:translateY(0);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 2021-07-23 공통 컨텐츠*/
+    .section-cover {
+        background-color:#fff;
+        footer {
+            // BTOCSITE-2193
+            margin-top:132px;
+            @include mobile {
+                // BTOCSITE-2193
+                margin-top:80px;
+            }
+        }
+        .floating-wrap {
+            .floating-menu.top {
+                &.top-hidden {
+                    opacity:0 !important;
+                }
+            }
+        }
+    }
+    .section {
+        max-width:1460px;
+        &:first-of-type {
+            margin-top:20px;
+        }
+        margin:120px auto 0;
+        padding:0 40px;
+        // BTOCSITE-2193
+        // .slide-controls {
+        // 	display:none;
+        // }
+        @include mobile {
+            &:first-of-type {
+                margin-top:44px;
+            }
+            // BTOCSITE-2193
+            margin-top:58px;
+            padding:0 16px;
+            .slide-wrap {
+                padding-bottom:32px;
+                .indi-wrap {
+                    bottom:0;
+                    ul {
+                        li {
+                            width:auto;
+                        }
+                    }
+                }
+                .slide-content {
+                    margin:0 -6px;
+                }
+                .slide-controls {
+                    display:block;
+                    margin-top:-16px;
+                    .prev {
+                        left:-12px;
+                    }
+                    .next {
+                        right:-12px;
+                    }
+                }
+            }
+        }
+        .tit-wrap {
+            // // BTOCSITE-2193
+            margin-bottom:32px;
+            text-align:center;
+            .tit {
+                font-size:32px;
+                font-weight:700;
+                // BTOCSITE-2193
+                line-height:46px;
+            }
+        }
+        @include mobile {
+            .tit-wrap {
+                // BTOCSITE-2193
+                margin-bottom:20px;
+                .tit {
+                    font-size:20px;
+                    line-height:27px;
+                }
+            }
+        }
+        .item-box-wrap {
+            margin:0 -12px;
+            @include mobile {
+                margin:0;
+            }
+            ul {
+                font-size:0;
+                li {
+                    display:inline-block;
+                    width:50%;
+                    vertical-align:top;
+                    @include mobile {
+                        width:100%;
+                    }
+                    a {
+                        display:block;
+                        position:relative;
+                        padding:0 12px;
+                        @include mobile {
+                            padding:0;
+                        }
+                        .item-box {
+                            position:relative;
+                            height:100%;
+                            border-radius:8px;
+                            background-color:#f4f4f4;
+                            // box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                            // @include mobile {
+                            // 	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                            // }
+                            i {
+                                display:block;
+                                position:absolute;
+                                top:48px;
+                                left:48px;
+                                width:64px;
+                                height:64px;
+                                // margin:0 auto;
+                                img {
+                                    width:100%;
+                                }
+                                @include mobile {
+                                    top:40px;
+                                    left:20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.type1 {
+                ul {
+                    li {
+                        @media screen and (min-width:768px) and (max-width:1300px) {
+                            width:100%;
+                            & + li {
+                                margin-top:16px;
+                            }
+                        }
+                        &:first-child {
+                            .item-box {
+                                background-color:#f1e6ed;
+                            }
+                        }
+                        &:last-child {
+                            .item-box {
+                                background-color:#f3e2e2;
+                            }
+                        }
+                        .item-box {
+                            height:228px;
+                            padding:48px 72px 48px 144px;
+                            text-align:left;
+                            .tit {
+                                // margin-top:24px;
+                                font-size:32px;
+                                font-weight:700;
+                                line-height:52px;
+                            }
+                            .desc {
+                                margin-top:4px;
+                                color:#000;
+                                font-size:20px;
+                                font-weight:500;
+                                line-height:30px;
+                            }
+                            .arr {
+                                // position:absolute;
+                                // bottom:48px;
+                                // left:50%;
+                                display:inline-block;
+                                margin-top:20px;
+                                padding-right:20px;
+                                background:url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') no-repeat right 50%;
+                                font-size:16px;
+                                font-weight:500;
+                                line-height:26px;
+                                text-decoration:underline;
+                                // transform:translateX(-50%);
+                            }							
+                        }
+                        @include mobile {
+                            margin-top:16px;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                            .item-box {
+                                height:220px;
+                                padding:40px 16px 40px 108px;
+                                .tit {
+                                    // margin-top:16px;
+                                    font-size:24px;
+                                    line-height:33px;
+                                }
+                                .desc {
+                                    margin-top:4px;
+                                    font-size:14px;
+                                    line-height:22px;
+                                }
+                                .arr {
+                                    bottom:40px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.type2 {
+                ul {
+                    margin:0;
+                }
+                a {
+                    padding:12px;
+                    @include mobile {
+                        padding:6px;
+                    }
+                }
+                .item-box {
+                    height:154px;
+                    padding:48px 32px;
+                    font-size:0;
+                    display: flex;
+                    align-items: center;
+                    @include mobile {
+                        height:176px;
+                        padding:40px 30px 40px 108px;
+                        text-align:left;
+                    }
+                    i {
+                        position:absolute;
+                        top:45px;
+                        left:32px;
+                        @include mobile {
+                            top:40px;
+                            left:20px;
+                        }
+                    }
+                    .cont {
+                        display:inline-block;
+                        padding-left:86px;
+                        vertical-align:top;
+                        @include mobile {
+                            padding:0;
+                        }
+                        .tit {
+                            display:inline-block;
+                            position:relative;
+                            padding-right:20px;
+                            font-size:18px;
+                            font-weight:700;
+                            line-height:28px;
+                            &:after {
+                                content:' ';
+                                position:absolute;
+                                top:6px;
+                                right:0;
+                                width:14px;
+                                height:14px;
+                                background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+                                background-size:14px 14px;
+                            }
+                            @include mobile {
+                                // padding:0;
+                                font-size:16px;
+                                line-height:24px;
+                                // &:after {
+                                // 	display:none;
+                                // }
+                            }
+                        }
+                        .desc {
+                            margin-top:4px;
+                            color:#000;
+                            font-size:16px;
+                            line-height:26px;
+                            @include mobile {
+                                margin-top:6px;
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                    }
+                }
+                &.size3 {
+                    ul {
+                        li {
+                            @media screen and (min-width:768px) and (max-width:1360px) {
+                                width:50%;
+                            }
+                            width:33.33%;
+                            a {
+                                .item-box {
+                                    height:148px;
+                                    padding:32px;
+                                    // border-radius:0;
+                                    i {
+                                        width:64px;
+                                        height:64px;
+                                    }
+                                    .cont {
+                                        padding-left:80px;
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                display:none;
+                                @include mobile {
+                                    display:block;
+                                }
+                            }
+                        }
+                    }
+                    @include mobile {
+                        // padding:20px 16px 30px;
+                        // border-radius:8px;
+                        // box-shadow:1px 2px 6px rgba(0, 0, 0, 0.14);
+                        ul {
+                            li {
+                                display:block;
+                                width:100%;
+                                a {
+                                    padding:0;
+                                    .item-box {
+                                        position:relative;
+                                        height:100%;
+                                        padding:0;
+                                        box-shadow:none;
+                                        text-align:left;
+                                        i {
+                                            position:absolute;
+                                            top:20px;
+                                            left:24px;
+                                        }
+                                        .cont {
+                                            padding:20px 16px 20px 120px;
+                                            .tit {
+                                                padding-right:21px;
+                                                font-size:16px;
+                                                line-height:24px;
+                                                &:after {
+                                                    content:' ';
+                                                    position:absolute;
+                                                    top:4px;
+                                                    right:0;
+                                                    width:16px;
+                                                    height:16px;
+                                                    background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat 0 0;
+                                                    background-size:16px;
+                                                }
+                                            }
+                                            .desc {
+                                                margin-top:4px;
+                                                font-size:14px;
+                                                line-height:22px;
+                                            }
+                                        }
+                                    }
+                                }
+                                & + li {
+                                    margin-top:12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .recom-list-slide {
+            // BTOCSITE-2193
+            @include clearfix ();
+            .slide-content {
+                .slide-conts-box {
+                    // @include mobile {
+                    // 	margin:0;
+                    // }
+                    .slide-conts {
+                        // BTOCSITE-2193 s
+                        // &:nth-child(2),
+                        // &:nth-child(3) {
+                        // 	width:50%;
+                        // 	height:600px;
+                        // 	.slide-box {
+                        // 		.text-area {
+                        // 			top:56px;
+                        // 			right:0;
+                        // 			left:0;
+                        // 			transform:none;
+                        // 		}
+                        // 	}
+                        // 	@include mobile {
+                        // 		width:100%;
+                        // 		height:300px;
+                        // 		.slide-box {
+                        // 			.text-area {
+                        // 				top:32px;
+                        // 				right:16px;
+                        // 				left:16px;
+                        // 			}
+                        // 		}
+                        // 	}
+                        // }
+                        float:left;
+                        width:100%;
+                        height:416px;
+                        @include mobile {
+                            height:328px;
+                        }
+                        .slide-box {
+                            display:block;
+                            position:relative;
+                            width:100%;
+                            height:100%;
+                            // BTOCSITE-2193
+                            padding:12px;
+                            @include mobile {
+                                padding:0;
+                            }
+                            .bg {
+                                display:block;
+                                position: absolute;
+                                top:0; left:0;
+                                width:100%;
+                                height:100%;
+                                border-radius:8px;
+                                background-position:center center;
+                                background-repeat:no-repeat;
+                                background-size:cover;
+                            }
+                            .text-area {
+                                position:absolute;
+                                top:50%;
+                                left:118px;
+                                transform:translateY(-50%);
+                                padding:0 12px;
+                                text-align:center;
+                                .br-a {
+                                    display:none;
+                                    margin-top:12px;
+                                    font-size:20px;
+                                    font-weight:normal;
+                                    line-height:30px;
+                                    @include mobile {
+                                        margin-top:8px;
+                                        font-size:16px;
+                                        line-height:24px;
+                                    }
+                                }
+                                .br {
+                                    @include mobile {
+                                        display:block;
+                                    }
+                                }
+                                &.type-r {
+                                    // BTOCSITE-2193
+                                    right:0;
+                                    width:50%;
+                                    padding: 0;
+                                    left:auto;
+                                }
+                                // BTOCSITE-2193
+                                &.type-c {
+                                    right:0;
+                                    left:0;
+                                }
+                                &.type-l {
+                                    right:auto;
+                                    // BTOCSITE-2193
+                                    width:50%;
+                                    left:0;
+                                    padding: 0;
+                                }
+                                @include mobile {
+                                    top:32px;
+                                    right:16px;
+                                    left:16px;
+                                    transform:translateY(0);
+                                    padding:0;
+                                    &.type-r {
+                                        right:16px;
+                                        left:16px;
+                                    }
+                                }
+                                &.fc-white {
+                                    color:#fff;
+                                    .arr {
+                                        border-color:#fff;
+                                        // &:after {
+                                        // 	background:url('/lg5-common/images/icons/btn-arr-24x24-white2.svg') no-repeat 0 0;
+                                        // }
+                                    }
+                                }
+                                &.fc-black {
+                                    color:#000;
+                                    .arr {
+                                        border-color:#000;
+                                        // &:after {
+                                        // 	background:url('/lg5-common/images/icons/btn-arr-24x24-black2.svg') no-repeat 0 0;
+                                        // }
+                                    }
+                                }
+                                .tit {
+                                    font-size:40px;
+                                    font-weight:700;
+                                    line-height:56px;
+                                    span{
+                                        display: block;
+                                    }
+                                    sup {
+                                        display:block;
+                                        margin-bottom:12px;
+                                        font-size:22px;
+                                        font-weight:700;
+                                        line-height:32px;
+                                        // opacity:.8;
+                                    }
+                                    @include mobile {
+                                        font-size:27px;
+                                        line-height:38px;
+                                        sup {
+                                            margin-bottom:4px;
+                                            font-size:16px;
+                                            line-height:24px;
+                                        }
+                                    }
+                                }
+                                .arr {
+                                    display:inline-block;
+                                    position:relative;
+                                    height:40px;
+                                    margin-top:32px;
+                                    padding:8px 16px;
+                                    border-radius:25px;
+                                    border:1px solid #fff;
+                                    font-size:14px;
+                                    font-weight:500;
+                                    line-height:24px;
+                                    // &:after {
+                                    // 	content:' ';
+                                    // 	display:block;
+                                    // 	position:absolute;
+                                    // 	right:0;
+                                    // 	bottom:5px;
+                                    // 	width:24px;
+                                    // 	height:24px;
+                                    // }
+                                    @include mobile {
+                                        margin-top:20px;
+                                        padding-right:21px;
+                                        font-size:13px;
+                                        line-height:21px;
+                                        &:after {
+                                            bottom:1px;
+                                            width:20px;
+                                            height:20px;
+                                            background-size:20px !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            // BTOCSITE-2193 s
+            .recom-list-slide {
+                padding-bottom:0;
+                &.slick-slider{
+                    .slick-track{
+                        padding-left: 12px;
+                    }
+                    .slick-list{
+                        overflow: visible;
+                        margin-left: -4px;
+                        margin-right: -4px;
+                        .slide-content{
+                            width: 77.777vw!important;
+                            padding:0 4px;
+                            .slide-conts-box {
+                                .slide-conts {
+                                    height: 272px;
+                                    .slide-box{
+                                        .text-area{
+                                            top:28px !important;
+                                            .tit {
+                                                font-size: 24px;
+                                                line-height: 30px;
+                                                letter-spacing: -0.89px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // BTOCSITE-2193 e
+            .benefit-list-slide {
+                &.slide-wrap .slide-content {
+                    margin: -2px -8px;
+                    ul > li {
+                        padding: 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    .flow-banner {
+        position:absolute;
+        right:0;
+        bottom:140px;
+        left:0;
+        z-index:2;
+        //max-width: 1920px;
+        margin: 0 auto;
+        @include mobile {
+            bottom:120px;
+        }
+        .flow-bar-wrap {
+            position:absolute;
+            right:120px;
+            bottom:-24px;
+            left:120px;
+            height:2px;
+            background-color:rgba(255,255,255,.2);
+            .flow-bar {
+                position:absolute;
+                top:0;
+                left:0;
+                height:2px;
+                background-color:#fff;
+            }
+            @include mobile {
+                bottom:-20px;
+                right:16px;
+                left:16px;
+            }
+        }
+        .slide-wrap {
+            .custom-indi-wrap {
+                position:absolute;
+                left:20px;
+                bottom:-40px;
+                right:20px;
+                z-index:10;
+                font-size:0;
+                text-align:center;
+                .custom-indis {
+                    display:inline-block;
+                    max-width:calc(100% - 30px);
+                    vertical-align:top;
+                    .indis {
+                        display:table;
+                        width:auto;
+                        li {
+                            display:table-cell;
+                            width:104px;
+                            padding:0 2px;
+                            .btn-indi {
+                                position:relative;
+                                display:block;
+                                width:100%;
+                                overflow:hidden;
+                                text-align:left;
+                                &::after {
+                                    content:' ';
+                                    display:block;
+                                    position:relative;
+                                    width:100%;
+                                    height:2px;
+                                    background:rgba(#fff, .4);
+                                }
+                                p {
+                                    width:0;
+                                    height:24px;
+                                    color:#fff;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    white-space:nowrap;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    opacity:0;
+                                }
+                                .bar {
+                                    position:absolute;
+                                    left:0;
+                                    bottom:0;
+                                    width:0;
+                                    height:4px;
+                                    background:#fff;
+                                }
+                            }
+		
+                            &.on {
+                                width:504px;
+                                .btn-indi {
+                                    p {
+                                        width:auto;
+                                        opacity:1;
+                                    }
+                                    @keyframes bars {
+                                        from { width:0; }
+                                        to { width:100%; }
+                                    }
+                                    .bar {
+                                        width:100%;
+                                        animation-name:bars;
+                                        animation-duration:5s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .indi-control {
+                    display:inline-block; 
+                    position:relative; 
+                    width:28px;
+                    height:28px; 
+                    margin-top:12px;
+                    margin-left:2px; 
+                    font-size:0;
+                    line-height:28px;
+                    text-align:center;
+                    &::before, &::after {
+                        content:' '; 
+                        display:inline-block; 
+                        width:2px; 
+                        height:10px; 
+                        margin:0 2px; 
+                        background-color:#fff; 
+                        vertical-align:middle;
+                    }
+                }
+            }
+            .slide-controls {
+                display: none !important;
+            }
+            .slide-content {
+                //@at-root: hidden;
+                //    margin-left: -12px;
+                //    margin-right: -12px;
+                @include mobile {
+                    // margin-left: -2px;
+                    // margin-right: -2px;
+                }
+                // BTOCSITE-2193
+                .slide-conts-box {
+                    .slide-conts {
+                        position: relative;
+                        padding: 0 12px;
+                        @include mobile {
+                            padding: 0 6px;
+                        }
+                        .thumb {
+                            position:relative;
+                            border-radius:8px;
+                            box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.5);
+                            // &:before {
+                            // 	content:' ';
+                            // 	position:absolute;
+                            // 	right:0;
+                            // 	bottom:0;
+                            // 	left:0;
+                            // 	height:100px;
+                            // 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 6%, #000000 70%);
+                            // 	opacity:.5;
+                            // }
+                            img {
+                                width: 100%;
+                                border-radius: 8px;
+                            }
+                            @include mobile {
+                                box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+                            }
+                        }
+                        .text-area {
+                            display:none;
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            // width: 100%;
+                            // height: 100%;
+                            padding: 28px 52px;
+                            .inner {
+                                display: block;
+                                width: 100%;
+                                // height: 100%;
+                                // position:absolute;
+                                // right:40px;
+                                // bottom:28px;
+                                @include mobile {
+                                    width:auto;
+                                    right:18px;
+                                    bottom:16px;
+                                }
+                            }
+                            @include mobile {
+                                padding: 14px 22px;
+                            }
+                            .tit {
+                                display: block;
+                                @include font-large-2;
+                                color: #000;
+                                font-weight: 700;
+                                @include mobile {
+                                    //font-size: 15px;
+                                    //line-height: 23px;
+                                    display:none;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    text-align:left;
+                                }
+                            }
+                            .btn-area {
+                                display: none;
+                                margin-top: 12px;
+                            }
+                        }
+                        &.ui_carousel_current {
+                            @include mobile {
+                                .text-area {
+                                    .tit {
+                                        display:block;
+                                    }
+                                }
+                            }
+                        }
+                        &.on {
+                            // &::after {
+                            // 	display: block;
+                            // 	content: '';
+                            // 	position: absolute;
+                            // 	top: 0;
+                            // 	left: 12px;
+                            // 	width: calc(100% - 24px);
+                            // 	height: 100%;
+                            // 	background-color: #000;
+                            // 	border-radius: 8px;
+                            // 	opacity: 0.3;
+                            // 	@include mobile {
+                            // 		left: 2px;
+                            // 		width: calc(100% - 4px);
+                            // 	}
+                            // }
+                            .text-area {
+                                z-index: 2;
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: center;
+                                width:100%;
+                                height:100%;
+                                .tit {
+                                    width: 100%;
+                                    @include font-large-2;
+                                    text-align: left;
+                                    @include mobile {
+                                        font-size:16px;
+                                        line-height:24px;
+                                    }
+                                }
+                                .btn-area {
+                                    display: block;
+                                    width: 100%;
+                                    text-align: center;
+                                    @include mobile {
+                                        text-align: right;
+                                    }
+                                    .btn-border {
+                                        display: inline-block;
+                                        min-width: 112px;
+                                        padding: 11px 31px;
+                                        font-size: 16px;
+                                        line-height: 26px;
+                                        text-align: center;
+                                        vertical-align: top;
+                                        border: 1px solid #fff;
+                                        border-radius: 26px;
+                                        color: #fff;
+                                        font-weight: 500;
+                                        @include mobile {
+                                            min-width: auto;
+                                            padding: 6px 16px;
+                                            font-size: 13px;
+                                            line-height: 21px;
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+    .br {
+        @include mobile {
+            display:block;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 20210616 메인 컨텐츠 리뉴얼
+// .mdevice {
+@include mobile {
+    .main-wrap {
+        .scene.scene-renew {
+            height:auto;
+            padding: 16px;
+            background: none !important;
+            > a {
+                padding-bottom: 118.9014%;
+                height: 0;
+            }
+            .img {
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                overflow: hidden;
+                &.video {
+                    // position: static;
+                    // height: 100% !important;
+                    // min-height: 300px !important;
+                    video {
+                        position: relative !important;
+                        height: 100%;
+                        top: 0 !important;
+                        left: 0 !important;
+                        transform: none !important;
+                    }
+                    img {
+                        height: 100% !important;
+                    }
+                }
+                &:before {
+                    display: none;
+                }
+                img {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    height: auto;
+                    transform: none;
+                }
+            }
+            .text-cont {
+                position: relative;
+                top: auto;
+                left: 0;
+                margin-top: -1px;
+                // BTOCSITE-2193
+                padding: 18px 10px 0 10px;
+                text-align: left;
+                margin-bottom: 12px;
+                background-color: #fff;
+                .title {
+                    overflow: hidden;
+                    // BTOCSITE-2193
+                    // max-height: 58px;
+                    font-size: 24px;
+                    line-height: 1.21;
+                    color: #000 !important;
+                }
+                .desc {
+                    overflow: hidden;
+                    // BTOCSITE-2193
+                    // max-height: 36px;
+                    margin-top: 9px;
+                    font-size: 13px;
+                    line-height: 1.38;
+                    color: #000 !important;
+                    font-weight: 400;
+                }
+            }
+            .text-link {
+                top: 37px;
+                bottom: auto !important;
+                right: 32px;
+                >.a {
+                    display: none;
+                }
+                .bi-svg .lg-bi-main {
+                    //max-width: 130px;
+                }
+            }
+            .btn-wrap {
+                margin-top: 10px;
+                margin-left: 10px;
+                .size-main {
+                    min-width: 88px;
+                    height: 36px;
+                    padding: 3px 19px;
+                    margin-right: 2px;
+                    border-radius: 21px;
+                    line-height: 1.62;
+                    > span {
+                        font-size: 13px;
+                        font-weight: 500;
+                    }
+                }
+            }
+            // & + .scene {
+            // 	margin-top: 28px;
+            // }
+        }
+    }
+}
+//}
+
+// BTOCSITE-2193 s
+
+.scene-cover .scene.scene-renew:last-child {
+    .text-cont {
+        padding-bottom: 55px;
+        @include mobile {
+            padding-bottom: 0;
+        }
+    }
+}
+.slick-section {
+    .slick-arrow {
+        display: inline-block;
+        position: absolute;
+        top: calc(50% - 13px);
+        transform: translateY(-50%);
+        border-radius: 50%;
+        border: 0;
+        width: 48px;
+        height: 48px;
+        padding: 4px;
+        z-index: 1;
+        opacity: 1;
+        &.slick-next {
+            right: -24px;
+        }
+        &.slick-prev {
+            left: -24px;
+        }
+        &.slick-disabled{
+            display: inline-block !important;
+            opacity: 0.7;
+            cursor: default;
+        }
+    }
+    .slick-dots {
+        position: static;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 0;
+        padding-top: 16px;
+        li{
+            button {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 0;
+                background: #e4e4e4;
+                vertical-align: top;
+                font-size: 0;
+                overflow: hidden;
+            }
+            &.slick-active button {
+                background:#000000;
+            }
+        }
+    }
+}
+.main-wrap .section .recom-list-slide .slide-content .slide-conts-box .slide-conts .slide-box .text-area{
+    .tit {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: -1px;
+    }
+    .arr {
+        display: inline-block;
+        height: 46px;
+        min-width:142px;
+        margin-top:22px;
+        padding: 10px 31px 12px 31px;
+        border-radius: 23px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 23px;
+    }
+    @include mobile {
+        text-align: center !important;
+        width:100% !important;
+        left:0 !important;
+        right:0 !important;
+        top:31px !important;
+        .tit {
+            font-size: 27px;
+            line-height: 34px;
+        }
+        .arr {
+            height: 40px;
+            min-width:110px;
+            margin-top:13px;
+            padding: 9px 24px 10px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: -0.7px;
+        }
+    }
+} 
+.main-wrap .section {
+    margin-top: 100px;
+    @include mobile {
+        margin-top: 58px;
+        padding: 0 16px;
+    }
+    &.slick-section {
+        @include mobile{
+            overflow: hidden;
+            &:first-child {
+                margin-top: 31px;
+            }
+        }
+    }
+    .advice-type{
+        ul {
+            li {
+                @include mobile {
+                    +li {
+                        margin-top: 8px;
+                    }
+                }
+                a {
+                    .item-box {
+                        position: relative;
+                        padding: 48px 50px 48px 154px;
+                        border-radius: 16px;
+                        background: #fff;
+                        box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                        height: 174px;
+                        i {
+                            display: block;
+                            position: absolute;
+                            top: 54px;
+                            left: 50px;
+                            width: 64px;
+                            height: 64px;
+                        }
+                        .tit {
+                            font-size: 28px;
+                            font-weight: 700;
+                            line-height: 36px;
+                        }
+                        .desc {
+                            margin-top: 8px;
+                            color: #000;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 29px;
+                        }
+                        @media screen and (max-width: 1125px) {
+                            .tit {
+                                font-size: 21px;
+                                line-height: 30px;
+                            }
+                            .desc {
+                                font-size: 16px;
+                                line-height: 26px;
+                            }
+                        }
+                        @media screen and (max-width: 1024px) {
+                            padding: 104px 25px 25px 25px;
+                            border-radius: 8px;
+                            box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                            height: 183px;
+                            i {
+                                display: block;
+                                position: absolute;
+                                top: 25px;
+                                left: 50%;
+                                margin-left: -32px;
+                                img {
+                                    height: 64px;
+                                    width:auto;
+                                    max-width:64px;
+                                }
+                            }
+                            .tit {
+                                font-size: 16px;
+                                line-height: 23px;
+                                text-align: center;
+                            }
+                            .desc {
+                                margin-top: 6px;
+                                font-size: 14px;
+                                line-height: 21px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .membership-type{
+        .membership-type-slide {
+            .slide-item {
+                padding: 0 12px;
+                a {
+                    display: table;
+                    width:100%;
+                    height:100%;
+                    .item-box {
+                        display: table-cell;
+                        position: relative;
+                        padding: 48px 50px 48px 154px;
+                        border-radius: 8px;
+                        background: #f4f4f4;
+                        height: 155px;
+                        i {
+                            display: block;
+                            position: absolute;
+                            top: 45px;
+                            left: 50px;
+                            width: 64px;
+                            height: 64px;
+                            img {
+                                height: 64px;
+                                width:auto;
+                                max-width:64px;
+                            }
+                        }
+                        .tit {
+                            font-size: 18px;
+                            font-weight: 700;
+                            line-height: 28px;
+                        }
+                        .desc {
+                            margin-top: 8px;
+                            color: #000;
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 24px;
+                        }
+                        @media screen and (max-width: 1410px) {
+                            vertical-align: middle;
+                            height: 180px;
+                        }
+                        @include tablet {
+                            padding: 25px 20px 25px 109px;
+                            height: 116px;
+                            i {
+                                top: 17px;
+                                left: 26px;
+                            }
+                            .tit {
+                                font-size: 16px;
+                                line-height: 22px;
+                                text-align: left;
+                            }
+                            .desc {
+                                margin-top: 3px;
+                                font-size: 14px;
+                                line-height: 20px;
+                                text-align: left;
+                            }
+                        }
+                        @include mobile {
+                            padding: 25px 20px 25px 109px;
+                            height: 137px;
+                            i {
+                                top: 36px;
+                                left: 20px;
+                            }
+                            .tit {
+                                font-size: 16px;
+                                line-height: 22px;
+                                text-align: left;
+                            }
+                            .desc {
+                                margin-top: 3px;
+                                font-size: 14px;
+                                line-height: 20px;
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .slick-track{
+                    padding-left: 12px;
+                }
+                .slick-list{
+                    overflow: visible;
+                    margin-left: -4px;
+                    margin-right: -4px;
+                    .slide-item{
+                        width: 83.889vw !important;
+                        padding:0 4px;
+                    }
+                }
+            }
+        }
+    }
+    &.wide-section{
+        width:100% !important;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left:0;
+        padding-right: 0;
+        .section{
+            margin-top: 0;
+        }
+        .item-box-cover{
+            width:100%;
+            padding: 32px 0;
+            background:#f4f4f4;
+            @include mobile{
+                padding: 20px 0 18px 0;
+            }
+            .item-box-wrap.type2.size3{
+                @include  clearfix;
+                a {
+                    padding:0 12px;
+                    .item-box {
+                        display: block;
+                        height: 204px;
+                        padding: 112px 30px 30px 30px;
+                        background: #fff;
+                        i {
+                            top: 30px;
+                            left: 50%;
+                            margin-left: -32px;
+                        }
+                        .cont{
+                            display: block;
+                            padding: 0;
+                            .tit {
+                                display: block;
+                                padding-right: 0;
+                                font-size: 18px;
+                                font-weight: 700;
+                                line-height: 26px;
+                                text-align: center;
+                                &:after{
+                                    display: none;
+                                }
+                            }
+                            .desc {
+                                margin-top: 8px;
+                                font-size: 16px;
+                                line-height: 24px;
+                                text-align: center;
+                            }
+                        } 
+                        @include mobile{
+                            padding: 88px 19px 19px 19px;
+                            height: 130px;
+                            i {
+                                top: 18px;
+                            }
+                            .cont{
+                                .tit {
+                                    font-size: 16px;
+                                    line-height: 23px;
+                                }
+                                .desc{
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            @media screen and (min-width: 768px) and (max-width: 1360px){
+                .item-box-wrap.type2.size3 ul li {
+                    width: 33.3%;
+                    a .item-box{
+                        height: auto;
+                    }
+                }
+            }
+            @include mobile{
+                .item-box-wrap.type2.size3 ul{
+                    margin: -4px;
+                    @include clearfix;
+                    li {
+                        width: 50%;
+                        float: left;
+                        padding: 4px;
+                        margin: 0;
+                        a {
+                            padding: 0;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    &.info-section{
+        margin-top: 48px;
+        @include mobile{
+            margin-top: 40px;
+        }
+        .info-area-wrap{
+            position: relative;
+            padding: 25px 206px 25px 146px;
+            border-radius: 8px;
+            background: #f4f4f4;
+            &.info-solo{
+                padding-right: 25px;
+                .btn-info-play{
+                    display: none;
+                }
+                @include mobile{
+                    padding-right: 16px;
+                    .item-box{
+                        height:auto;
+                        p {
+                            height:auto;
+                        }
+                    }
+                }
+            }
+            .tit{
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                margin-top:-12px;
+                left: 48px;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 24px;
+            }
+            .item-box{
+                p {
+                    font-size: 16px;
+                    line-height: 24px;
+                    @include textEllipsis; 
+                }
+            }
+            @include mobile{
+                padding: 54px 16px 24px 16px;
+                .tit{
+                    top: 20px;
+                    margin-top:auto;
+                    left: 16px;
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                .item-box{
+                    height: 60px;
+                    p {
+                        font-size: 14px;
+                        line-height: 20px;
+                        height: 60px;
+                        @include  textEllipsisClamp (3); 
+                        white-space: normal;
+                    }
+                }
+            }
+        }
+        .slick-arrow {
+            position: absolute;
+            width:24px;
+            height:24px;
+            top:50%;
+            transform:translateY(-50%);
+            background-size: 24px 24px;
+            background-position: center center;
+            background-repeat:no-repeat;
+            opacity: 1;
+            &:before{
+                display: none;;
+            }
+            &.slick-prev {
+                left:auto;
+                right:-94px;
+                background-image: url('/lg5-common/images/MA/ic_notice_up.svg');
+            }
+            &.slick-next {
+                right:-122px;
+                background-image: url('/lg5-common/images/MA/ic_notice_down.svg');
+            }
+            &.slick-disabled {
+                display: inline-block !important;
+                opacity: 0.7;
+                cursor: default;
+            }
+            @include mobile{
+                top:-34px;
+                right:16px;
+                transform:translateY(0);
+                &.slick-prev {
+                    left:auto;
+                    right:66px;
+                }
+                &.slick-next {
+                    right:36px;
+                }
+            }
+        }
+        .btn-info-play {
+            display: block;
+            position: absolute;
+            width:24px;
+            height:24px;
+            top:50%;
+            right:48px;
+            transform:translateY(-50%);
+            background-size: 24px 24px;
+            background-position: center center;
+            background-repeat:no-repeat;
+            background-image: url('/lg5-common/images/MA/ic_notice_play.svg');
+
+            &.pause {
+                background-image: url('/lg5-common/images/MA/ic_notice_pause.svg');
+            }
+            @include mobile{
+                top:20px;
+                right:16px;
+                transform:translateY(0);
+            }
+        }
+    }
+}
+@media screen and (max-width: 1200px) {
+    .main-wrap .section .recom-list-slide .slide-content .slide-conts-box .slide-conts .slide-box .text-area{
+        width:70% !important;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .main-wrap .section.wide-section .item-box-cover .item-box-wrap.type2.size3 a .item-box .cont .desc {
+        font-size: 15px;
+    }
+}
+@include mobile {
+    .scene-cover .scene.scene-renew + .scene.scene-renew {
+        margin-top: 15px;
+    }
+    .main-wrap .section .recom-list-slide .slide-content .slide-conts-box .slide-conts .slide-box .text-area{
+        width:100% !important;
+    }
+}
