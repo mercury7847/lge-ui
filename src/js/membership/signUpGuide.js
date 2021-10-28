@@ -25,7 +25,7 @@ $(document).ready(function() {
             title:'고객님은 멤버십 회원입니다. <br> 멤버십 관리 화면으로 이동할까요?', 
             cancelBtnName: '취소', okBtnName: '확인', 
             ok: function(){
-                location.href = "https://www.lge.co.kr/my-page/membership-info";
+                location.href = "/my-page/membership-info";
             }
         });
     });
