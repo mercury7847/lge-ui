@@ -3111,7 +3111,7 @@
                 door4: "D870BB-SSV",
             }, {
                 defaultCode: "M871AAA041",
-                modelCode: "M871SGS041",
+                modelCode: "M871SGS041", 
                 door1: "D870TT-SGR",
                 door2: "D870TT-SGR",
                 door3: "D870BB-SSV",
