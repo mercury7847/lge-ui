@@ -1554,7 +1554,7 @@
             var dpPdp  = getParameter("dpPdp");
             if(getParameter("dpPdp")){
                 $(".store-list-wrap").addClass("display-product-search");
-                $(".display-product-name").text(dpPdp);
+                // $(".display-product-name").text(dpPdp);
             } 
             // BTOCSITE-4785 e
         });
