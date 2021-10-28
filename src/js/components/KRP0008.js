@@ -2384,25 +2384,45 @@
 
                     if(self.loginCheckEnd) {
                         if(lgkorUI.stringToBool(loginFlag)) {
-                            ajaxUrl = self.$pdpInfo.attr('data-rental-url');
-                            var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
-                            if(ajaxUrl) {
-                                if(isDirectBuy) {
-                                    $('#careRequireBuyPopup').data('sendUrl',url);
-                                    /*
-                                    $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
-                                    $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
-                                        console.log($('#careRequireBuyPopup').data('sendUrl'));
-                                        location.href = $('#careRequireBuyPopup').data('sendUrl');
+                            if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy){
+                                console('careShipInfo 없음 일반구매 페이지로'); 
+                                ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                                //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
+                                if(ajaxUrl) {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                                        //console.log(result);
+                                        var data = result.data;
+                                        var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                        if(obsDirectPurchaseUrl){
+                                            location.href = obsDirectPurchaseUrl;
+                                        }
                                     });
-                                    */
-                                    if(eventTarget) {
-                                        $('#careRequireBuyPopup').vcModal({opener: eventTarget});
+                                }
+                            }
+                            else{
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                                var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                                if(ajaxUrl) {
+                                    if(!isDirectBuy) {
+                                        console.log('케어십 서비스 가능, 청약신청 페이지로 ')
+                                        $('#careRequireBuyPopup').data('sendUrl',url);
+                                        /*
+                                        $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
+                                        $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
+                                            console.log($('#careRequireBuyPopup').data('sendUrl'));
+                                            location.href = $('#careRequireBuyPopup').data('sendUrl');
+                                        });
+                                        */
+                                        if(eventTarget) {
+                                            $('#careRequireBuyPopup').vcModal({opener: eventTarget});
+                                        } else {
+                                            $('#careRequireBuyPopup').vcModal();
+                                        }
                                     } else {
-                                        $('#careRequireBuyPopup').vcModal();
+                                        console.log('렌탈 케어솔루션페이지로')
+                                        location.href = url;
                                     }
-                                } else {
-                                    location.href = url;
                                 }
                             }
                         } else {
