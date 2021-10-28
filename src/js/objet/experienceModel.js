@@ -12,7 +12,7 @@
                         typ: "refrigerator1",
                         typModel: [{
                             name: "노크온 매직스페이스", //210719 BTOCSITE-2346 제품 추가 - 제품명 수정
-                            defaultCode: "W822AAA452",
+                            defaultCode: "W822AAA452", //BTOCSITE-6534 냉장고 모델명 수정
                             subModel: [{
                                 modelCode: "W822AAA462",
                                 magicSpace: 1,
