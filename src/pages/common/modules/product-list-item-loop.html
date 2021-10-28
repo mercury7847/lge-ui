@@ -263,7 +263,12 @@
                     </div>
                     <div class="cart">
                         <!-- 비활성화 시 .disabled 추가 -->
-                        <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        @@if (context.bottom.cartDisabled) {
+                            <a href="#n" class="btn-cart disabled" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        }
+                        @@if (!context.bottom.cartDisabled) {
+                            <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        }
                     </div>
                     <div class="btn-area">
                         <a href="#n" class="btn border size-m">@@bottom.button</a>
