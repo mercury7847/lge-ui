@@ -13,7 +13,7 @@
             '</div>' +
         '</a>' +
         '{{#if winAnnouncementFlag != "N"}}<a href="{{#if eventId}}/benefits/event/eventWin-{{eventId}}{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
-    '</div></li>'
+    '</div></li>' 
 
     $(window).ready(function() {
         var KRP0022 = {
