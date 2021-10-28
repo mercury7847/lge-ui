@@ -409,7 +409,7 @@
                         data.listData.forEach(function(item){
                             html += vcui.template(listTemplate, item);
                         })
-                        self.$prdTotalCount.find('em').text(data.listData.length)
+                        self.$prdTotalCount.find('em').text(data.listPage.listCount)
                         self.$prdResult.find('.prd-result-lists').empty().append(html);
                         self.$pagination.vcPagination('setPageInfo', data.listPage)
                         self.searchSwap('.product-result-wrap')
