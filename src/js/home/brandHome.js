@@ -53,9 +53,36 @@
             self.$prdResult = self.$searchPopup.find('.product-result-wrap');
             self.$prdTotalCount = self.$prdResult.find('.prd-result-text');
             self.$nodata = self.$searchPopup.find('.no-data-message');
+
+            //체험하기 팝업
+            self.$btnExperience = self.$thinqMain.find('.btn-experience');
+            self.$popupExperience = self.$thinqMain.find('.popup-experience');
         },
         bindEvents: function(){
             var self = this;
+
+            //체험하기 팝업
+            self.$btnExperience.on('click',function(e){
+                if(!vcui.detect.isMobile && !vcui.detect.isIE){
+                    var target = "https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html";
+                    var width = 360;
+                    var height = 800;
+                    var xpos = (screen.availWidth - width)/2;
+                    var ypos = (screen.availHeight - height)/2;
+                    window.open(target, '_blank', 'width='+width + ',height=' + height + ',top=' + ypos + ',left=' + xpos + ',fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+                }else if (vcui.detect.isIE) {
+                    var id = $(e.currentTarget).data('id');
+                    var obj ={title:'.', ok : function (){ }};
+                    var desc = '';
+                    if(id=="#popup-experience"){
+                        obj = $.extend(obj,{title:'인터넷 익스플로러(Internet Explorer) <br>브라우저에서 접속 불가합니다.<br> 크롬(Chrome) 브라우저 등에서 <br>재시도 부탁드립니다.'});
+                        desc = '';
+                    }
+                    lgkorUI.alert(desc, obj);
+                }else {
+                    self.$popupExperience.vcModal("show");
+                }
+            });
 
             //앵커요소로 전체탭 전환
             $(document).on('click', 'a', function(e){
