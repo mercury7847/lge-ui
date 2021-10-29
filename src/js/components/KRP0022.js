@@ -78,11 +78,12 @@
 
                 //jytest
                 if($('input:checkbox[name="win"]').is(":checked") == true) {
-                    postData['eventSort'] = 'win';
+                    postData['eventStatus'] = 'win';
                     //postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
-                } else {
-                    postData['eventSort'] = '';
-                }
+                } 
+                // else {
+                //     postData['eventSort'] = '';
+                // }
                 // console.log("새로운 체크방식 당첨자", $('input:checkbox[name="win"]').is(":checked") == true);
 
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
