@@ -459,10 +459,11 @@
                     var $li = $(this).parents('li');
                     var uniqId = $li.data('uniqId');
                     if(uniqId && uniqId.length == 8) {
-                        // location.hash = uniqId;
-
+                        // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
                         var url = lgkorUI.parseUrl(location.href);
-                        var params = '?'+$.param(url.searchParams.getAll()) +  ('#'+uniqId || '');
+                        var params = url.searchParams.getAll();
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                            params +=  ('#'+uniqId || '');
                         window.history.replaceState('', '', url.pathname + params)
                     }        
                 });
@@ -667,7 +668,6 @@
                 var $productGBtn = $productG_content.find('button');
 
                 self.$categorySelect.on('click', '.ui_smooth_tab ul li', function(){ 
-                    //console.log("클릭");
                     $(this).addClass('on');
                     if($(this).hasClass('on')){
                         $productG_content.not('.cont_' + $(this).attr('data-productTarget')).hide();
@@ -1211,7 +1211,9 @@
                 }
             },
             subCategoryFirstFilterId: function() {
+                // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
                 var filterId = '';
+                var firstFilterList = window.hasOwnProperty('firstFilterList') && window.firstFilterList ? window.firstFilterList : [];
     
                 if(firstFilterList) {
                     firstFilterList.forEach(function(el) {
