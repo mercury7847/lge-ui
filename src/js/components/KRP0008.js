@@ -2405,7 +2405,7 @@
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
-                                    if(!isDirectBuy) {
+                                    if(isDirectBuy) {
                                         console.log('케어십 서비스 가능, 청약신청 페이지로 ');
                                         $('#careRequireBuyPopup').data('sendUrl',url);
                                         /*
