@@ -74,7 +74,7 @@
                     <!-- BTOCSITE-4226 뱃지 생성 및 적용 요청 -->
                     @@if (context.flagDiscount) {
                         <!-- BTOCSITE-5783  신한카드 청구할인 안내 뱃지 수정 요청 건 -->
-                        <span class="flag cardDiscount">롯데카드 5% 결제일 할인</span>
+                        <span class="flag cardDiscount">롯데카드 5% 결제일 할인 (무이자 12개월)</span>
                     }
 
                     @@if (context.flagNCSI) {
@@ -263,7 +263,12 @@
                     </div>
                     <div class="cart">
                         <!-- 비활성화 시 .disabled 추가 -->
-                        <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        @@if (context.bottom.cartDisabled) {
+                            <a href="#n" class="btn-cart disabled" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        }
+                        @@if (!context.bottom.cartDisabled) {
+                            <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
+                        }
                     </div>
                     <div class="btn-area">
                         <a href="#n" class="btn border size-m">@@bottom.button</a>

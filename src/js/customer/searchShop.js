@@ -202,7 +202,6 @@
                 self.defaultInfoViewId = vcui.uri.getParam('shopId');   
                 self.totalStoreData = [];         
                 
-                
                 vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox', 'support/common/quickMenu.min'], function (StoreMap) {  
     
                     self.$map = new StoreMap(self.$mapArea,{
@@ -599,15 +598,19 @@
                 // lgkorUI.showLoading();
     
                 lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search', salesCode:self.salesCode}, function(result){
-    
-                    if(result.data.length){
-    
+                    // BTOCSITE-4785
+                    if(result.data.length == 0){
+                        self.totalStoreData = result.data;
+                        self.$defaultListLayer.append('<div class="no-data"><p>검색 결과가 없습니다.</p></div>'); 
+                    } else if(result.data.length){
+                        
                         var arr = vcui.array.map(result.data, function(item, index){
                             var itemObj = vcui.array.filterOne(self.totalStoreData, function(obj,i){
                                 return item['shopID'] == obj['shopID']
                             });
                             return itemObj;
                         });
+                        self.totalStoreData = arr;
     
                         var defaultLat = self.currentLatitude;
                         var defaultLong = self.currentLongitude;
@@ -617,18 +620,20 @@
                             defaultLat = self.userLatitude;
                             defaultLong = self.userLongitude;
                         }
-    
-                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        // BTOCSITE-4785 : 반경 100km 이내 거리순 7개로 변경
+                        //var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
+                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
     
                         if(nArr.length == 0){                       
-    
-                            lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                            // BTOCSITE-4785
+                            lgkorUI.confirm("100Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 200Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
                                 title: "",
                                 cancelBtnName: "아니오",
                                 okBtnName: "네",
                                 ok: function(){
                                     setTimeout(function(){
-                                        var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:20});
+                                        // BTOCSITE-4785
+                                        var newArr = self._filterDistance(arr, {lat:defaultLat, long:defaultLong, limit:200});
                                         self.$map.draw(newArr, defaultLat, defaultLong);
                                         
                                     },300);
@@ -642,7 +647,7 @@
                             }, self.$leftContainer.find(':not(.btn-fold):visible:focusable').first()[0]);
                         }else{
                             self.$map.draw(nArr, defaultLat, defaultLong);
-                        }                    
+                        }   
                     } 
     
                     // lgkorUI.hideLoading();
@@ -760,14 +765,14 @@
                     /* //BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */             
     
                     if(nArr.length==0){
-    
-                        lgkorUI.confirm("10Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 20Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
+                        // BTOCSITE-4785
+                        lgkorUI.confirm("100Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 200Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
                             title: "",
                             cancelBtnName: "아니오",
                             okBtnName: "네",
                             ok: function(){
                                 setTimeout(function(){
-                                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:20});
+                                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:200});
                                     nArr = self._filterOptions(nArr, keywords);
                                     self._setSearchResultMode(nArr.length);
                                     self.$map.draw(nArr, lat, long, null, true);
@@ -1549,7 +1554,7 @@
             var dpPdp  = getParameter("dpPdp");
             if(getParameter("dpPdp")){
                 $(".store-list-wrap").addClass("display-product-search");
-                $(".display-product-name").text(dpPdp);
+                // $(".display-product-name").text(dpPdp);
             } 
             // BTOCSITE-4785 e
         });

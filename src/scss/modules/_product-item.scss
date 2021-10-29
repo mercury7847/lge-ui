@@ -412,7 +412,7 @@
                         line-height:13px;
                         color: #DA0F47;
                     }
-            }
+                }
                 @include mobile {
                     margin: 8px 0;
                     li {
@@ -675,8 +675,10 @@
                     background: url('/lg5-common/images/icons/btn-cart-32.svg') no-repeat 0 0;
                     background-size: 32px 32px;
                     &.disabled {
-                        background-image: url('/lg5-common/images/icons/btn-cart-32-gray.svg');
-                        cursor: default;
+                        // BTOCSITE-6375
+                        // background-image: url('/lg5-common/images/icons/btn-cart-32-gray.svg');
+                        // cursor: default;
+                        display: none;
                     }
                 }
             }

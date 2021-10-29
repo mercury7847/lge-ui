@@ -668,7 +668,7 @@
                     if (data.category == 'CT50019183') {
                         if (data.subCategory == "CT50019259"){
                             self.$fanBox.show();
-                            self.$bdTypeBox.show().data('current-product-code', 'CRB')                         
+                            self.$bdTypeBox.show().data('current-product-code', '')                         
                         } else if (data.subCategory != "CT50019229") {
                             self.$fanBox.show();
                             self.$bdTypeBox.hide().data('current-product-code', '');

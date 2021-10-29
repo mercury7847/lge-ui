@@ -1,0 +1,12 @@
+<svg id="ic_close_64" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h64v64H0z"/>
+    <g id="ic" transform="translate(16 16)">
+        <path id="Line" class="cls-2" d="m0 0 32 32"/>
+        <path id="Line-2" data-name="Line" class="cls-2" d="M32 0 0 32"/>
+    </g>
+</svg>

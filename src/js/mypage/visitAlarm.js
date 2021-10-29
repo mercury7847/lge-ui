@@ -294,6 +294,16 @@
                        }
                         self.$list.append(vcui.template(visitAlarmItemTemplate, item));
                     });
+
+                    //BTOCSITE-7039
+                    var $infoTitle = $('.service-info-txt .tit');
+                    if( data.prevDateStr != undefined && data.prevDateStr != "" && data.representativeModel != undefined && data.representativeModel !="") {
+                        $infoTitle.find('em').not('.red').text(data.prevDateStr + "에 매니저가 방문") 
+                        $infoTitle.find('em.red').text(data.representativeModel) 
+                        $infoTitle.show();
+                    } else {
+                        $infoTitle.hide();
+                    }
                 });
             },
 

@@ -28,11 +28,10 @@
             <!-- //210215 수정 -->
             <!-- membership -->
             <div class="contents membership home"><!-- 210413 수정 [.home 클래스 추가] -->
-                <!-- 210405 수정 [KRC0015 컴퍼넌트 삭제] -->
-                <!-- 210413 수정 [히어로배너 추가] -->
-                <!-- 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
                 <!-- visual slider -->
-                <div class="visual-wrap">
+                <!-- 210413 수정 [히어로배너 수정] -->
+                <!-- 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
+                <div class="visual-wrap bg-membership"> <!-- BTOCSITE-3002 멤버십 페이지 수정 -->
                     @@include('./common/modules/main_carousel.html', {
                         "slides" : [
                             {
@@ -45,11 +44,11 @@
                         ]
                     })
                 </div>
-                <!-- // visual slider -->
                 <!-- // 210413 수정 [히어로배너 아이브로우, 타이틀 위치 변경] -->
-                <!-- // 210413 수정 [히어로배너 추가] -->
+                <!-- // 210413 수정 [히어로배너 수정] -->
+                <!-- // visual slider -->
 
-                <!-- BTOCSITE-3002 멤버십 페이지 수정 // tab제거-->
+                <!-- BTOCSITE-3002 멤버십 페이지 수정 // tab제거 -->
                 <div class="cont-wrap membership">
                     <div class="section-wrap">
                         <!-- 멤버십 혜택 -->
@@ -64,7 +63,7 @@
                                             <dl>
                                                 <dt class="tit">포인트 적립</dt>
                                                 <dd class="desc">LGE.COM/전국 BEST 매장<br>
-                                                    (백화면, 대형마트 입점 매장 제외)</dd>
+                                                    (백화점, 대형마트 입점 매장 제외)</dd>
                                             </dl>
                                         </li>
                                         <li class="lists">
@@ -89,12 +88,12 @@
                                 </div>
 
                                 <div class="btn-group center">
-                                    <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                                    <a href="#n" class="btn memPopup"><span>멤버십 가입</span></a>
                                 </div>
                             </div> 
-                            <!-- VIP 멤버십(3년 무상 서비스) 혜택 -->
+                            <!-- VIP 멤버십 혜택 -->
                             <div class="tit-wrap type2 align-center">
-                                <h2 class="tit">VIP 멤버십(3년 무상 서비스) 혜택</h2>
+                                <h2 class="tit">VIP 멤버십 혜택</h2>
                             </div>
                             <div class="section-inner">
                                 <div class="vip-benefit">
@@ -108,15 +107,15 @@
                                     "bulletTit" : "멤버십 포인트 제도 안내",
                                     "bulletTxt" : [
                                         "VIP 고객 달성 시점으로부터 1년 전에 구매한 5가지 제품 (TV, 냉장고, 세탁기, 에어컨, 김치냉장고)에 한하여 무상 A/S 혜택이 부여됩니다.",
-                                        "VIP 기간 종료 후, 추가 구매를 하시어 1년간 구매금액 기준 5백만원이상이 되어야 자동연장 됩니다.",
+                                        "VIP 기간 종료 후, 추가 구매를 하시어 1년간 구매금액 기준 5백만원이상이 되어야 VIP멤버십 기간이 자동연장 됩니다.",
                                         "한 번 3년 무상 처리된 제품은 추가 연장되지 않습니다.",
                                         "구매 제품의 수리 사유 발생 시에 한해 A/S 서비스를 받으실 수 있으며, 기타 교환/환불 발생시에는 소비자 분쟁해결기준에 따라 교환/환불됩니다."
                                     ]
                                 }) 
                             </div>
-                            <!-- 무상 A/S 안내 -->
+                            <!-- VIP 3년 무상 A/S 안내 -->
                             <div class="tit-wrap type2 align-center">
-                                <h2 class="tit">무상 A/S 안내</h2>
+                                <h2 class="tit">VIP 3년 무상 A/S 안내</h2>
                             </div>
                             <div class="section-inner">
                                 <div class="vip-as-guide">
@@ -212,7 +211,7 @@
                                 <div class="tb-scroll vertical-fixed">
                                     <div class="tb_row tb-row-bl">
                                         <table>
-                                            <caption>멤버십 운영매장 표로, 운영매장, 3년 무상서비스(LG멤버십), 포인트 적립(행사 진행시), 포인트 사용 순으로 나옵니다.</caption>
+                                            <caption>멤버십 운영매장 표로, 운영매장, 3년 무상서비스(VIP멤버십), 포인트 적립(행사 진행시), 포인트 사용 순으로 나옵니다.</caption>
                                             <colgroup>
                                                 <col>
                                                 <col style="width:25%">
@@ -222,7 +221,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="fixed-side">운영매장</th>
-                                                    <th scope="col">33년 무상서비스<br class="mo-only"> (LG멤버십)</th>
+                                                    <th scope="col">3년 무상서비스<br class="mo-only"> (VIP멤버십)</th>
                                                     <th scope="col">포인트 적립<br class="mo-only"> (행사 진행시)</th>
                                                     <th scope="col">포인트 사용</th>
                                                 </tr>
@@ -299,7 +298,7 @@
                                             <dd>
                                                 <p>LGE.COM 또는 LG전자 멤버십 앱에서 회원가입,<br class="pc-only">
                                                     본인인증 후 가입 완료!</p>
-                                                <a href="#n" class="btn"><span>멤버십 가입</span></a>
+                                                <a href="#n" class="btn memPopup"><span>멤버십 가입</span></a>
                                             </dd>
                                         </dl>
                                         <div class="mo-only">

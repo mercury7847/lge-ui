@@ -16,6 +16,7 @@
                 self.$inqueryBtn     = self.$container.find('.inqueryBtn');
                 self.$addressFindBtn = self.$container.find('.addr-box-wrap .btn');
                 self.$defaultAddress = self.$container.find('#defaultAddress');
+                self.$linkAgreeLink   = self.$container.find('.link-agree a');
 
             // systemAirconForm validation
             var register = {
@@ -37,7 +38,9 @@
             vcui.require(['ui/validation'], function () {
                 self.validation = new vcui.ui.Validation('#systemAirconForm',{register:register});
                 self.validation.on('nextfocus', function(e,$target){
-                    console.log("target %o",$target);
+
+                    console.log("target check Value %o",$target);
+
                     if($target.attr('name') == 'addr1' || $target.attr('name') == 'plc-addr1'){
                         setTimeout(function () {
                             $target.closest('.addr-box-wrap').find('.btn').focus();
@@ -84,7 +87,9 @@
                     radioChk['isApp']= isApp() ? 'M' : 'W';
     
                     param = $.extend(param,radioChk);
+
                     console.log("param %o",param);
+                    
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                         console.log("result %o",result);
                         if(result.ResultCode === 'success') {
@@ -131,6 +136,20 @@
                     $('input[name="plc-addr3"]').val('');
                 }
             });
+
+            //BTOCSITE-5498 B2C 견적페이지>B2B개인정보처리방침 링크추가
+            self.$linkAgreeLink.on('click',function(e){
+                var $url = $(this).attr('href');
+                if(isApp()) {
+                    e.preventDefault();
+                    if(vcui.detect.isIOS){
+                        var jsonString = JSON.stringify({'command':'sendOutLink', 'url': $url});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    } else {
+                        void android.openLinkOut($url);
+                    }
+                }
+            })
         },
     };
     var b2cOnlineSearch = {

@@ -44,7 +44,7 @@
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인{{#if (isShowLotteCardEvent)}} (무이자 12개월){{/if}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -603,7 +603,11 @@
                     var param = {};
                     var filterdata = JSON.parse(filterLayerData.filterData);
                     for(var key in filterdata){
-                        param[key] = filterdata[key].join(",");
+                        // top category 의 경우 전체 탭은 값이 없으므로 뺀다.
+                        var filterValue = filterdata[key].join(",");
+                        if(filterValue){
+                            param[key] = filterValue;
+                        }
                     }
                     param.sortType = filterLayerData.sortType;
 
@@ -1089,6 +1093,8 @@
 
                 /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
                 item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
+                item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20211201') // 2021.11.1 00:00 ~ 2021.11.30 24:00 //BTOCSITE-7388 롯데카드 12개월 무이자 할인 적용기간
+
                 
                 return vcui.template(productItemTemplate, item);
             },

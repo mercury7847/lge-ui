@@ -1,0 +1,18 @@
+<svg id="ic_notice_pause_48" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-3{stroke:#fff;stroke-linecap:round;stroke-width:4px}
+        </style>
+    </defs>
+    <path id="Rectangle" class="cls-1" d="M0 0h48v48H0z"/>
+    <g id="ic" transform="translate(4 4)">
+        <g id="Rectangle-2" data-name="Rectangle" style="fill:#666;stroke:#666;stroke-miterlimit:10">
+            <rect width="40" height="40" rx="20" style="stroke:none"/>
+            <rect class="cls-1" x=".5" y=".5" width="39" height="39" rx="19.5"/>
+        </g>
+        <g id="ic-2" data-name="ic" transform="translate(12 13.955)">
+            <path id="패스_378" data-name="패스 378" class="cls-3" d="M0 0v11.666" transform="translate(4 .379)"/>
+            <path id="선_9" data-name="선 9" class="cls-3" transform="translate(12 .045)" d="M0 0v12"/>
+        </g>
+    </g>
+</svg>

@@ -13,7 +13,7 @@
             '</div>' +
         '</a>' +
         '{{#if winAnnouncementFlag != "N"}}<a href="{{#if eventId}}/benefits/event/eventWin-{{eventId}}{{/if}}" class="btn-link"><span>당첨자 발표</span></a>{{/if}}' +
-    '</div></li>'
+    '</div></li>' 
 
     $(window).ready(function() {
         var KRP0022 = {
@@ -33,6 +33,11 @@
                 var _self = this;
                 self.$KRP0022.find('.ui_selectbox').on('change', function(e){
                    _self.requestData();
+                });
+
+                //jytest 추가
+                self.$KRP0022.find('#eventSort').on('change', function(e){
+                    _self.requestData();
                 });
 
                 self.$tab.on("tabchange", function(e) {
@@ -65,11 +70,21 @@
                 var selectIdx = self.$tab.vcTab('getSelectIdx');
                 var selectedCategory = self.$tab.find('ul.tabs li:eq(' + selectIdx +') a').attr('href').replace("#", "");                
                 var postData = {"categoryId":selectedCategory};
+
                 self.$KRP0022.find('.ui_selectbox').each(function (index, item) {
                     var $item = $(item);
                     postData[$item.attr('id')] = $item.vcSelectbox('value');
                 });
-                
+
+                //jytest
+                // if($('input:checkbox[name="win"]').is(":checked") == true) {
+                //     postData['eventSort'] = 'win';
+                //     //postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
+                // } else {
+                //     postData['eventSort'] = '';
+                // }
+                // console.log("새로운 체크방식 당첨자", $('input:checkbox[name="win"]').is(":checked") == true);
+
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
                 if($("#eventStatus").vcSelectbox('value') === 'progress') {
                     postData['eventSort'] = '';  
@@ -81,6 +96,8 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                 });
+
+                console.log("결과", postData);
             },
 
             updateList: function(data) {
@@ -88,6 +105,7 @@
                 self.$list.empty();
                 var arr =  data ? (data instanceof Array ? data : []) : [];
                 var eventList = (arr.length > 0) ? arr[0].eventList : [];
+
                 eventList.forEach(function(item, index) {
                     //item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                     //item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
@@ -104,7 +122,16 @@
                     /* //BTOCSITE-2065 : 이벤트&기획전 페이지 내 데이터레이어 삽입 (수정 작업 요청) 2021-09-02 */
 
                     self.$list.append(vcui.template(eventItemList, item));
+
+                    //jytest
+                    //console.log("11?", item.eventType);
+                    //console.log("22?", item.eventId);
                 });
+
+                //jytest
+                console.log("쏘팅된 개수", eventList.length);
+                
+
                 _self.checkNoData();
             },
 

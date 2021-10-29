@@ -728,11 +728,13 @@ var FilterLayer = (function() {
 
             //
             /* BTOCSITE-2785 : 2021-07-14 add */
-            var producttarget = self.$categorySelect.find('input:checked').closest("li").data("producttarget");
+            if(self.$categorySelect) {
+                var producttarget = self.$categorySelect.find('input:checked').closest("li").data("producttarget");
 
-            var $selectedGlossary  = $('.cont_'+producttarget+'.productGlossary');
-            if($selectedGlossary.length >0) {
-                $selectedGlossary.slideDown(200);
+                var $selectedGlossary  = $('.cont_'+producttarget+'.productGlossary');
+                if($selectedGlossary.length >0) {
+                    $selectedGlossary.slideDown(200);
+                }
             }
             /* //BTOCSITE-2785 : 2021-07-14 add */
 
@@ -842,7 +844,10 @@ var FilterLayer = (function() {
         },
         getSubCategory : function() {
             var ret = [];
-
+            if(!firstFilterList) {
+                var firstFilterList = [];
+            }
+            
             if(firstFilterList) {
                 firstFilterList.forEach(function(el) {
                     if(el.filterGroupType === 'sub_category') {

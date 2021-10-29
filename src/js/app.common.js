@@ -40,9 +40,9 @@ var appInit = function() {
                 //console.log('AR 버튼 추가');
                 //Quick메뉴 AR 버튼 추가
                 $("#floatBox .KRP0004").before('<div class="floating-menu cs-cst btn-app-ar"><div class="app-ar"><button href="javascript:void(0);"><span>AR</span><span class="app-ar-txt"><i></i>제품을 가상으로 배치해보세요</span></button></div></div>');
-
+                var $arBtn =  $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button");
                 //Quick메뉴 AR 버튼 이벤트
-                $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").off("click").on({
+                $arBtn.off("click focusin focusout").on({
                     click : function() {
                         $(this).addClass("active");
 
@@ -60,31 +60,22 @@ var appInit = function() {
                     },
                     focusin : function(){
                         setTimeout(function(){
-                            $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").addClass("active");
+                            $arBtn.addClass("active");
                             LGEAPPclickCNT = 1;
                         }, 150);
                     },
                     focusout : function(){
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
+                        $arBtn.removeClass("active");
                         LGEAPPclickCNT = 0;
                     }
                 });
 
                 //스크롤 시 AR 버튼 default 상태로 변경
-                /*
-                $("body").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
+                $(window).on('scroll.floating', function(){    
+                    if ($(this).scrollTop() > 100 && $arBtn.hasClass('active')) {
+                        $arBtn.trigger('focusout');
                     }
                 });
-                $(".section-cover").scroll(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $("#floatBox .btn-app-ar a, #floatBox .btn-app-ar button").removeClass("active");
-                        LGEAPPclickCNT = 0;
-                    }
-                });
-                */
             }
 
             if($(".main-wrap").length > 0 || $(".signature-main").length > 0 || $(".thinq-main").length > 0) {

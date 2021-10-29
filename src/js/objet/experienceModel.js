@@ -11,7 +11,7 @@
                         typeName: "얼음정수기",
                         typ: "refrigerator1",
                         typModel: [{
-                            name: "노크온 매직스페이스", //210719 BTOCSITE-2346 제품 추가 - 제품명 수정
+                            name: "노크온 매직스페이스", // 210719 BTOCSITE-2346 제품 추가 - 제품명 수정
                             defaultCode: "W821AAA453",
                             subModel: [{
                                 modelCode: "W821AAA463",
@@ -3111,7 +3111,7 @@
                 door4: "D870BB-SSV",
             }, {
                 defaultCode: "M871AAA041",
-                modelCode: "M871SGS041",
+                modelCode: "M871SGS041", 
                 door1: "D870TT-SGR",
                 door2: "D870TT-SGR",
                 door3: "D870BB-SSV",
@@ -4317,12 +4317,12 @@
             $objFooter.hide();
             //$step3.show();  // BTOCSITE-1582 add
             //$quickbuy.show();   // BTOCSITE-1582 add
-            $quickbuy.show();
+            $quickbuy.hide(); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
             $step3.show();
             $step3Tit.html("특성 비교하여 모델 정하기");
             $step3Etc.hide();
-            $quickbuy.css("border-top","0");
-            $quickbuyInfoBody.css("padding","0");
+            //$quickbuy.css("border-top","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
+            //$quickbuyInfoBody.css("padding","0"); //BTOCSITE-5790 전자랜드 구매하기 버튼 제거
         }
         // E - 210805 BTOCSITE-3487 오브제컬렉션 제품체험 매장 연계 추가 건_전자랜드 추가
 
@@ -4422,7 +4422,10 @@
 
         // BTOCSITE-3198 패널 교체 견적 보기 > 패널 선택 - 2021-10-12 - start
         $(document).on("click", ".pannel_list li", function() {
-            
+            //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - s
+            let plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
+            //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - e
+
             if($(this).hasClass('is_active')){
                 $(this).removeClass("is_active");
             }else{
@@ -4433,7 +4436,16 @@
 
             if($(this).hasClass("is_active")){
                 modelPrice = $(this).find("span.product_price em").text();
-                $(this).attr("data-model-price", modelPrice);                
+                $(this).attr("data-model-price", modelPrice);
+                //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - s
+                if($('.sum').css('display') == 'flex'){
+                    pannelSumTotal();
+                }                
+            } else {
+                if(plChk.length && $('.sum').css('display') == 'flex'){
+                    pannelSumTotal();
+                }
+                //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - e                 
             }
 
             $('.btn_total').click(function(){
@@ -4450,7 +4462,6 @@
             });
             $(".product_price .total_price em").text(addComma(totalPannelSumPrice));
             $(".total_result_price .cont .price em").text(addComma(totalPannelSumPrice));
-            console.log("후"+totalPannelSumPrice);
         }
 
         //BTOCSITE-3198 패널만 교체 클릭 이벤트
@@ -4572,7 +4583,7 @@
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
             var $quickbuy = $('#quick_buy');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ // 210805 BTOCSITE-3487 전자랜드 추가
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ // 210805 BTOCSITE-3487 전자랜드 추가, BTOCSITE-5790 전자랜드 제거
                 if ($(this).data().childcate == 'Y'){
                     $quickbuy.hide();
                 } else {
@@ -4618,7 +4629,7 @@
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487 BTOCSITE-5790 제거
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -4891,7 +4902,7 @@
         });
         //구매하기
         $(document).on("click", ".btn_purchase", function() {
-	        let doorInfo = [];
+            let doorInfo = [];
             let saveInfo = []; 
             if (completedCheck() == false){
                 let desc = "";
@@ -4933,7 +4944,7 @@
             let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let purchaseData = [];
 
-	        //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
+            //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
             if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
                purchaseData = saveInfo.slice();
             }
@@ -4947,18 +4958,27 @@
             */
 
             //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - start
-            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
+            var plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
+            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
             var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
-            if(plist.hasClass("pannel_list")){
+            if(plistWrap.hasClass("pannel_list")){
                 //패널만 교체
                 if(plChk.length && $('.sum').css('display') == 'flex'){
-                    plChk.each(function() {
+                    plist.each(function(index) {
                         if (!$(this).hasClass("sum")) {
-                            $(this).attr("data-default-code");
+                            //BTOCSITE-3198 S - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
+                            let pushData = "";
+                            if(index == 0) {
+                                $(this).attr("data-default-code",modelCode);
+                                pushData = modelCode;
+                            } else {
+                                pushData = plist[index].className == "is_active" ? $(this).attr("data-default-code") : "";
+                            }
                             //BTOCSITE-4239 210910 변경
                             if($('.model_experience').attr('data-page-type') === 'COMMON') {
-                            purchaseData.push($(this).attr("data-default-code"));
+                                purchaseData.push(pushData);
                             }
+                            //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
                         }
                     });
                 } else if(plChk.length && $('.sum').css('display') == 'none') {
@@ -5034,7 +5054,17 @@
                 datasend(0, selectedModelData ? selectedModelData : '', purchaseData); 
                 // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - end
             } else {
-                purchaseFn(purchaseData);
+                // BTOCSITE-3198 패널만 교체용 함수 분리 - S
+                if(plistWrap.hasClass("pannel_list")){
+                    //패널만 교체용
+                    purchaseFnPannel(purchaseData);
+                } else {
+                    //기존 견적 확인하기용
+                    purchaseFn(purchaseData);
+                }
+                // BTOCSITE-3198 패널만 교체용 함수 분리 - E
+
+
             }
             
 
@@ -6173,7 +6203,6 @@
             // console.log("modelTyp", modelCate);
             // console.log("defaultModel", defaultModel);
             // console.log("doorInfo", doorInfo);
-            let pannelType = 'normal'; // BTOCSITE-3198 pannelType 파라미터 추가 211020
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
@@ -6254,7 +6283,7 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            resultDoorPriceCheck(idx, priceArry, pannelType); // BTOCSITE-3198 pannelType 파라미터 추가 211020
+            resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             setTimeout(function() {
                 let totalSumPrice = 0;
@@ -6271,7 +6300,6 @@
             // console.log("modelTyp", modelCate);
             // console.log("defaultModel", defaultModel);
             // console.log("doorInfo", doorInfo);
-            let pannelType = 'pannel'; // BTOCSITE-3198 pannelType 파라미터 추가 211020
             let priceHtml = '';
             let sumPrice = 0;
             let priceArry = [];
@@ -6288,13 +6316,17 @@
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';
             priceHtml += '              <ul class="product_list pannel_list">'; // 21-10-12 pannel_list 클래스 추가 - BTOCSITE-3198
-            //sumPrice += parseInt(minusComma(defaultPrice)); 21-10-12 Default Model 가격 제거
+            priceHtml += '                  <li data-default-code="' + defaultModel + '">';
+            priceHtml += '                      <span class="product_name">' + defaultModel + '</span>';
+            priceHtml += '                      <span class="product_price"><em></em>원</span>';
+            priceHtml += '                  </li>';
+            sumPrice += parseInt(minusComma(defaultPrice)); //21-10-12 Default Model 가격 제거 해제
             // if ($(".model_set_wrap[data-model-editing='Y']").attr("data-best") != "Y") {
                 for (let i = 0; i < doorInfo.length; i++) {
                     let doorModelCode = doorInfo[i][5] + '-' + doorInfo[i][2] + doorInfo[i][3];
-                    // if (doorModelCode == "B320TT-SMT") {
-                    //     doorModelCode = "B320TT-SMT";
-                    // }
+                    if (doorModelCode == "B320TT-SMT") {
+                        doorModelCode = "B320TT-SMT";
+                    }
                     priceArry.push(doorModelCode);
                     priceHtml += '                  <li data-default-code="' + doorModelCode + '" >';
                     var _klocation = doorInfo[i][7]!=undefined ? doorInfo[i][7]: "";
@@ -6344,7 +6376,7 @@
             setTimeout(function() {
                 $(".total_price_info_wrap").addClass("is_active");
             }, 100);
-            resultDoorPriceCheck(idx, priceArry, pannelType); // BTOCSITE-3198 pannelType 파라미터 추가 211020
+            resultDoorPriceCheck(idx, priceArry);
             //토탈 sum가격 구하기
             // setTimeout(function() {
             //     let totalSumPrice = 0;
@@ -7173,7 +7205,7 @@
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
-            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
+            if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART'){ //210805 BTOCSITE-3487 ,BTOCSITE-5790 전자랜드 구매하기 제거
                 $('#quick_buy').show();
             }
             /* //BTOCSITE-1582 add */
@@ -7247,8 +7279,7 @@ function minusComma(value) {
 }
 
 //제품과 도어의 가격과 할인정보 //개발에서 함수로 반환해줌 //견적확인 버튼을 눌렀을때
-// BTOCSITE-3198 - pannelType 매개변수(파라미터) 추가
-function resultDoorPrice(idx, price, memberDiscount, directDiscount, pannelType) {
+function resultDoorPrice(idx, price, memberDiscount, directDiscount) {
     //console.log("resultDoorPrice", price);
     // console.log("price", price);
     // console.log("memberDiscount", memberDiscount);
@@ -7270,20 +7301,8 @@ function resultDoorPrice(idx, price, memberDiscount, directDiscount, pannelType)
             
         // }
 
-        //BTOCSITE-3198 - pannelType 분기처리 조건 추가 211020 - S
-        if(pannelType == 'pannel'){
-            // 패널만 교체
-            $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i+1]));
-            sumPrice += parseInt(price[i+1]);
-        }else{
-            // 견적 확인하기 (pannelType == 'normal');
-            $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
-            sumPrice += parseInt(price[i]);
-        }
-        //sumPrice += parseInt(price[i]);
-
-        //BTOCSITE-3198 - pannelType 분기처리 조건 추가 211020 - E
-
+        $(".total_price_info_body .swiper-wrapper .swiper-slide:eq(" + idx + ")").find(".product_list li:eq(" + i + ") .product_price em").text(addComma(price[i]));
+        sumPrice += parseInt(price[i]);
         
         if (i == (priceLeng - 1)) {
             let memberDiscountSum = 0;

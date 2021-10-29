@@ -364,6 +364,7 @@ var goAppUrl = function(path) {
             self._switchLinker();
             
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
+            self.afLoginEvent(); // BTOCSITE-4852 [AppsFlyer] 앱어트리뷰션 툴 Event 태깅을 위한 회원가입완료 및 로그인 완료 정보 개발 요청건
 
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -2625,6 +2626,27 @@ var goAppUrl = function(path) {
                         location.href = obj.href;
                     }
                 }     
+            }
+        },
+        // BTOCSITE-4852 [AppsFlyer] 앱어트리뷰션 툴 Event 태깅을 위한 회원가입완료 및 로그인 완료 정보 개발 요청건
+        afLoginEvent: function(){
+            var afLogin = vcui.Cookie.get('AF_LOGIN');
+            if(isApp() && afLogin) {
+                var eventName = "af_login";
+                var eventValue = { "af_login_method" : "success", "af_unify_id" : afLogin };
+                    eventValue = JSON.stringify(eventValue);
+
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+
+                // vcui 도메인 세팅이 틀린경우 삭제가 안되어 과거로 돌려서 삭제함.
+                vcui.Cookie.set('AF_LOGIN','',{
+                    expires : new Date('1999/01/01'),
+                    domain : location.host
+                });
             }
         }
     }

@@ -441,7 +441,7 @@ h2.title {
                 &[data-model_code="M871AAA252"],
                 &[data-model_code="M871AAA151"],
                 &[data-model_code="M871AAA152"] {
-                    //매직 스페이스
+                    //매직 스페이스 
                     .model_door {
                         &[data-door-direction="LT"] {
                             width: 49.1%;
@@ -1452,6 +1452,9 @@ h2.title {
                                 .pannel_list {
                                     padding-bottom:10px;
                                     li{
+                                        &:nth-child(1){
+                                        display: none;
+                                        }
                                         &:before {
                                         position: relative;
                                         content: '';
