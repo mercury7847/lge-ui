@@ -447,6 +447,7 @@ var res = {
 				// "장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
 				"메인(LLS)" : ["/html/LLS/LLS0100.html","",""],
 				"최신하이라이트 아이프레임(LLS)" : ["/html/LLS/LLS0101.html","",""],
+				"엘라쇼 benefits링크 이벤트 개별 페이지 아이프레임(LLS)" : ["/html/LLS/LLS0101_1.html","",""],
 			},
 			
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
