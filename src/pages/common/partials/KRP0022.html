@@ -10,19 +10,16 @@
         <!-- 210126 수정 - ui_smooth_scroll 클래스 추가 -->
         <div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
             <ul class="tabs">
-                <li class="on"><a href="#">전체<em class="blind">선택됨</em></a></li>
-                <li><a href="#AV">TV/AV</a></li>
-                <li><a href="#IT">IT</a></li>
-                <li><a href="#KITCHEN">주방가전</a></li>
-                <li><a href="#LIFE">생활가전</a></li>
-                <li><a href="#AIR">에어컨/에어케어</a></li>
-                <li><a href="#MOBILE">모바일</a></li>
-                <li><a href="#BEAUTY">뷰티</a></li>
-                <li><a href="#CARE">케어솔루션</a></li>
-                <!-- 210223 추가 -->
-                <li><a href="#CONSUMA">케어용품/소모품</a></li>
-                <!-- //210223 추가 -->
-                <li><a href="#BUSINESS">비지니스</a></li>
+                <li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+                <li><a href="#CT50000024">TV/AV</a></li>
+                <li><a href="#CT50000045">IT</a></li>
+                <li><a href="#CT50000064">주방가전</a></li>
+                <li><a href="#CT50000100">생활가전</a></li>
+                <li><a href="#CT50000130">에어컨/에어케어</a></li>
+                <li><a href="#CT50000152">뷰티/의료기기</a></li>
+                <li><a href="#CT50019001">LG SIGNATURE</a></li>
+                <li><a href="#CT50019002">LG Objet Collection</a></li>
+                <li><a href="#CT50050000">안마의자</a></li>
             </ul>
         </div>
         <!-- // tabs -->
@@ -38,19 +35,20 @@
                             <select class="ui_selectbox" id="eventStatus" title="이벤트 상태 선택">
                                 <option value="progress">진행중인 이벤트</option>
                                 <option value="end">종료된 이벤트</option>
-                                <option value="win">당첨자 발표</option>
+                                <!-- <option value="win">당첨자 발표</option> -->
                             </select>
                         </div>
                         <div class="sort-select-wrap">
                             <select class="ui_selectbox" id="eventGubun" title="이벤트 구분 선택">
-                                <option value="">전체</option>
+                                <option value="">온라인/매장</option> <!-- 텍스트 수정 -->
                                 <option value="online">온라인</option>
                                 <option value="offline">매장</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="sort-area">
+                <!-- 삭제 주영 -->
+                <!-- <div class="sort-area">
                     <div class="sort-list">
                         <div class="sort-select-wrap">
                             <select class="ui_selectbox" id="eventSort" title="정렬 옵션 선택">
@@ -58,6 +56,14 @@
                                 <option value="oldest">마감순</option>
                             </select>
                         </div>
+                    </div>
+                </div> -->
+                <div class="sort-area">
+                    <div class="sort-list">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="eventSort" name="win">
+                            <label for="eventSort">당첨자 발표</label>
+                        </span>
                     </div>
                 </div>
             </div>

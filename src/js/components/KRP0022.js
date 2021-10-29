@@ -77,21 +77,21 @@
                 });
 
                 //jytest
-                // if($('input:checkbox[name="win"]').is(":checked") == true) {
-                //     postData['eventSort'] = 'win';
-                //     //postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
-                // } else {
-                //     postData['eventSort'] = '';
-                // }
+                if($('input:checkbox[name="win"]').is(":checked") == true) {
+                    postData['eventSort'] = 'win';
+                    //postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
+                } else {
+                    postData['eventSort'] = '';
+                }
                 // console.log("새로운 체크방식 당첨자", $('input:checkbox[name="win"]').is(":checked") == true);
 
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
-                if($("#eventStatus").vcSelectbox('value') === 'progress') {
-                    postData['eventSort'] = '';  
-                    self.$KRP0022.find('#eventSort').closest(".sort-area").hide();
-                } else {
-                    self.$KRP0022.find('#eventSort').closest(".sort-area").show();
-                }
+                // if($("#eventStatus").vcSelectbox('value') === 'progress') {
+                //     postData['eventSort'] = '';  
+                //     self.$KRP0022.find('#eventSort').closest(".sort-area").hide();
+                // } else {
+                //     self.$KRP0022.find('#eventSort').closest(".sort-area").show();
+                // }
 
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
