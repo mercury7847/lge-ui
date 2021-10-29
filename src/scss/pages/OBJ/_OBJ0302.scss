@@ -1484,6 +1484,11 @@ h2.title {
                                         }
                                     }
                                 }
+                                .no_price {
+                                    li {
+                                        justify-content: flex-start;
+                                    }
+                                }
                                 .sum{
                                     display: none;
                                     justify-content: space-between;
