@@ -4967,7 +4967,7 @@
             var plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
             var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
             var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
-            if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price") == false){
+            if(plistWrap.hasClass("pannel_list")){
                 //패널만 교체
                 if(plChk.length && $('.sum').css('display') == 'flex'){
                     plist.each(function(index) {
@@ -4987,14 +4987,14 @@
                             //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
                         }
                     });
-                } else if(plChk.length && $('.sum').css('display') == 'none') {
+                } else if(plistWrap.hasClass("no_price") == false && plChk.length && $('.sum').css('display') == 'none') {
                     let desc = "";
                     let obj = {
                         title: '선택 제품의 총 금액을 확인하여 주십시오.'
                     };
                     lgkorUI.alert(desc, obj);
                     return;
-                } else {
+                } else if(plistWrap.hasClass("no_price") == false && plChk.length && $('.sum').css('display') == 'block'){
                     let desc = "";
                     let obj = {
                         title: '구매하고자 하는 패널을 선택하여 주십시오.'
