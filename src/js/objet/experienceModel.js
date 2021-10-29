@@ -4950,11 +4950,19 @@
             let modelCode = $(".model_set_wrap[data-model-editing='Y']").attr("data-model_code");
             let purchaseData = [];
 
-            //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
-            if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
-               purchaseData = saveInfo.slice();
-            }
+            //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - start
+            var plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
+            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
+            var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
 
+            if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price") == true){
+                
+            } else {
+                //210910 변경 BTOCSITE-4239 - 구매하기시 패널 색상선택값 체크하여 purchaseData 넘김
+                if($('.model_experience').attr('data-page-type') === 'NEWBEST' || $('.model_experience').attr('data-page-type') === 'HIMART'  || $('.model_experience').attr('data-page-type') === 'ETLAND') {
+                purchaseData = saveInfo.slice();
+                }
+            }
             /*
             $(this).closest(".swiper-slide").find(">dl .product_list li").each(function() {
                 if (!$(this).hasClass("sum")) {
@@ -4962,16 +4970,65 @@
                 }
             });
             */
-
-            //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - start
-            var plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
-            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
-            var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
-            if(plistWrap.hasClass("pannel_list")){
-                //패널만 교체
-                if(plChk.length && $('.sum').css('display') == 'flex'){
+            //BTOCSITE-3198 일반용, 전자랜드&하이마트용 분리 - S 211029          
+            if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                if(plistWrap.hasClass("pannel_list")){
+                    //패널만 교체
+                    if(plChk.length && $('.sum').css('display') == 'flex'){
+                        plist.each(function(index) {
+                            if (!$(this).hasClass("sum")) {
+                                //BTOCSITE-3198 S - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
+                                let pushData = "";
+                                if(index == 0) {
+                                    $(this).attr("data-default-code",modelCode);
+                                    pushData = modelCode;
+                                } else {
+                                    pushData = plist[index].className == "is_active" ? $(this).attr("data-default-code") : "";
+                                }
+                                //BTOCSITE-4239 210910 변경
+                                if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                                    purchaseData.push(pushData);
+                                }
+                                //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
+                            }
+                        });
+                    } else if(plChk.length && $('.sum').css('display') == 'none') {
+                        let desc = "";
+                        let obj = {
+                            title: '선택 제품의 총 금액을 확인하여 주십시오.'
+                        };
+                        lgkorUI.alert(desc, obj);
+                        return;
+                    } else {
+                        let desc = "";
+                        let obj = {
+                            title: '구매하고자 하는 패널을 선택하여 주십시오.'
+                        };
+                        lgkorUI.alert(desc, obj);
+                        return;
+                    }
+                } else {
+                    //견적 확인하기
                     plist.each(function(index) {
                         if (!$(this).hasClass("sum")) {
+                            if(index == 0) {
+                                $(this).attr("data-default-code",modelCode);
+                            } else {
+                                $(this).attr("data-default-code");
+                            }
+                            //BTOCSITE-4239 210910 변경
+                            if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                                purchaseData.push($(this).attr("data-default-code"));
+                            }
+                        }
+                    });
+                }
+                //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - end
+            } else {
+                if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price") == true){
+                    //뉴베스트,하이마트용 패널만 교체
+                    if(plChk.length){
+                        plist.each(function(index) {
                             //BTOCSITE-3198 S - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
                             let pushData = "";
                             if(index == 0) {
@@ -4981,44 +5038,15 @@
                                 pushData = plist[index].className == "is_active" ? $(this).attr("data-default-code") : "";
                             }
                             //BTOCSITE-4239 210910 변경
-                            if($('.model_experience').attr('data-page-type') === 'COMMON') {
+                            if($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART') {
                                 purchaseData.push(pushData);
                             }
                             //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
-                        }
-                    });
-                } else if(plistWrap.hasClass("no_price") == false && plChk.length && $('.sum').css('display') == 'none') {
-                    let desc = "";
-                    let obj = {
-                        title: '선택 제품의 총 금액을 확인하여 주십시오.'
-                    };
-                    lgkorUI.alert(desc, obj);
-                    return;
-                } else if(plistWrap.hasClass("no_price") == false && plChk.length && $('.sum').css('display') == 'block'){
-                    let desc = "";
-                    let obj = {
-                        title: '구매하고자 하는 패널을 선택하여 주십시오.'
-                    };
-                    lgkorUI.alert(desc, obj);
-                    return;
-                }
-            } else {
-                //견적 확인하기
-                plist.each(function(index) {
-                    if (!$(this).hasClass("sum")) {
-                        if(index == 0) {
-                            $(this).attr("data-default-code",modelCode);
-                        } else {
-                            $(this).attr("data-default-code");
-                        }
-                        //BTOCSITE-4239 210910 변경
-                        if($('.model_experience').attr('data-page-type') === 'COMMON') {
-                            purchaseData.push($(this).attr("data-default-code"));
-                        }
+                        });
                     }
-                });
+                }  
             }
-            //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - end
+            //BTOCSITE-3198 일반용, 전자랜드&하이마트용 분리 - E 211029
             
             // E - 210723 BTOCSITE-2346 구매하기 데이터 전달값 구조 변경 : 비교하기에서 선택한 default 모델값 전달되도록 변경
             //console.log('selectedMFodelData', selectedModelData);
@@ -6366,10 +6394,13 @@
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                    </ul>';
+            //BTOCSITE-3198 COMMON만 노출 - s
+            if ($objContent.attr('data-page-type') === 'COMMON') { 
             priceHtml += '                                    <div class="sum">';
             priceHtml += '                                         <span class="product_total_title">총금액</span>'
             priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
+            }
             if ($objContent.attr('data-page-type') === 'COMMON') { //BTOCSITE-3198 구매하기 버튼명 다르게 노출
                 priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             } else {
