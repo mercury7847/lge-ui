@@ -35,7 +35,7 @@
                    _self.requestData();
                 });
 
-                //jytest 추가
+                //jytest 추가 
                 self.$KRP0022.find('#eventSort').on('change', function(e){
                     _self.requestData();
                 });
