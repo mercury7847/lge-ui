@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko" class="app">
+<html lang="ko">
 @@include('./common/head.html', { 
-    pageCSS: ["LLS/LLS0101"],
-    pageJS:["lls/LLS0101"],
+    pageCSS: ["LLS/LLS0101_benefits"],
+    pageJS:["lls/LLS0101_benefits"],
     pageTitle: "하이라이트영상 제목 | LG전자",
     pageDesc: "LGE.COM 엘라쇼 하이라이트 영상",
 })
+<!--
+    엘라쇼홈 동영상 페이지에 불러오는 기본 js, css
+    pageCSS: ["LLS/LLS0101"],
+    pageJS:["lls/LLS0101"],
+-->
 <body>
-    <div class="lls-frame-container">
-        <div class="lls-frame-content">
-            <!-- <div class="lls-frame-head">
+    <div class="container">
+
+        <div class="evt_con">
+            <!-- BTOCSITE-3372 라이브커머스 공유하기 기능 추가 : 본 수정 내용은 배너를 통해 들어오는 라이브커머스 페이지-->
+            <div class="lls-frame-head">
                 <div class="tooltip-wrap share">
-                    <a href="#n" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>
+                    <!-- <a href="#n" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a> -->
                     <div class="tooltip-box fixed-right">
                         <span class="title">공유하기</span>
                         <div class="sns-wrap">
@@ -25,13 +32,17 @@
                         <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                     </div>
                 </div>
-                <a href="/livecommerce/" class="lls-frame-close"><span class="blind">닫기</span></a>
-            </div> -->
-            <div class="lls-frame">
-                <!-- 임시 url -->
-                <iframe src="https://sflex.us/kzQEDJ" frameborder="0"></iframe>
             </div>
+            <!-- //BTOCSITE-3372 라이브커머스 공유하기 기능 추가 -->
+
+            <!-- 임시 url -->
+            <!-- 방송 전 --> 
+            <!-- <iframe id="sauce" name="sauce" src="https://stage.sflex.us/7qhwjH" frameborder="0"></iframe> -->
+
+            <!-- 방송 시작 --> 
+            <iframe id="sauce" name="sauce" src="https://sflex.us/kzQEDJ" frameborder="0"></iframe> 
         </div>
+
     </div>
 </body>
 
