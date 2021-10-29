@@ -150,12 +150,18 @@ img{
                     z-index: 2;
                     max-width: 260px;
                     max-height: 80px;
+                    @include mobile{
+                        max-width: 34.72vw;
+                        max-height: 50px;
+                    }
                     .bi-svg {
                         padding-right: 0;
                         line-height: normal;
                         font-size: 0;
                         img {
-                            width: 100%;
+                            // BTOCSITE-2193
+                            width:100%;
+                            height:auto;
                         }
                     }
                 }
@@ -1486,6 +1492,7 @@ img{
                 top: 37px;
                 bottom: auto !important;
                 right: 32px;
+                // BTOCSITE-2193
                 >.a {
                     display: none;
                 }
