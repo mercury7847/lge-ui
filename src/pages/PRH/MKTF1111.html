@@ -4,6 +4,7 @@
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
         pageJS: ["components/KRP0005"],
+        componentID: "KRC0015",
         pageTitle: "LG SIGNATURE | LG전자",
         pageDesc: "LG전자의 초프리미엄 브랜드 SIGNATURE 가전 제품을 소개합니다. 압도적인 성능과 정제된 디자인으로 본실에 충실한 LG 시그니처 제품을 경험해 보세요."
     })
@@ -21,47 +22,126 @@
             <!-- LG SIGNATURE -->
             <div class="contents signature-main">
                 <div class="sub-main">
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
-                    <!-- 히어로 -->
-                    <div class="hero-banner slide-wrap ui_wide_slider">
-						<div class="custom-indi-wrap">
-							<div class="custom-indis">
-								<ul class="indis ui_wideslider_dots">
-									<li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-								</ul>
-							</div>
-							<button type="button" class="indi-control ui_carousel_play play">
-								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-							</button>
-						</div>
-						<div class="slide-content ui_carousel_list">
-							<ul class="slide-track ui_carousel_track">
-								<!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img_storemain_hero.png');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/img_storemain_hero_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-									<div class="signatureVisualTextArea">
-                                        <p>가전, 작품이 되다<br>초 프리미엄 가전 <br class="mo-only">LG SIGNATURE</p>
-                                        <!--BTOCSITE-1519 : 히어로배너 구조 변경 : 버튼 영역 삭제 -->
-                                    </div>
-								</li>
-								<!-- // slide -->
-							</ul>
-						</div>
-						<div class="slide-controls">
-							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
-							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
-						</div>
-					</div>
-                    <!-- //히어로 -->
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
+                     <!-- BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)  -->
+                    <!-- D: 카피위치는 text-area 옵션 클래스 참고 -->
+                    @@include('./common/partials/KRC0015-hero-brand.html', {
+                        "common": {
+                            "zero": "zero-top zero-btm",
+                            "bg-color": "",
+                            "className": 'hero-brand'
+                        },
+                        "title": {
+                            "font-class1": "font-regular",
+                            "font-class2": "font-underline",
+                        },
+                        "carousel": {
+                            "type": "hero-banner",
+                            "itemArr": [
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual02.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png",
+                                    "boxAlign" : "box-align-left", 
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":"",
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                    
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                }
+                            ]
+                        }
+                    })
+                    <!-- //BTOCSITE-4251 hero carousel-->
+                    <!-- //BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel) -->
 
                     <div class="brand-wrap signature-wrap">
                         <div class="signature-tabs">
