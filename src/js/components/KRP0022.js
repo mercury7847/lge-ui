@@ -70,11 +70,18 @@
                 var selectIdx = self.$tab.vcTab('getSelectIdx');
                 var selectedCategory = self.$tab.find('ul.tabs li:eq(' + selectIdx +') a').attr('href').replace("#", "");                
                 var postData = {"categoryId":selectedCategory};
-
+                
+                //console.log("1111", postData);
                 self.$KRP0022.find('.ui_selectbox').each(function (index, item) {
                     var $item = $(item);
                     postData[$item.attr('id')] = $item.vcSelectbox('value');
                 });
+
+                elf.$KRP0022.find('input:checkbox[name="win"]').each(function (index, item) {
+                    var $item = $(item);
+                    postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
+                });
+                //console.log("2222", postData);
 
                 //jytest
                 if($('input:checkbox[name="win"]').is(":checked") == true) {
