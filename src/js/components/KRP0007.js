@@ -171,7 +171,8 @@
                         '<a href="#n" class="btn-cart{{#if !checkBtnFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" data-contents="{{modelDisplayName}}" {{#if !checkBtnFlag}}disabled{{/if}}><span class="blind">장바구니 담기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>' +
                     '<div class="btn-area">' +
-                        '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">자세히 보기</a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                        // BTOCSITE-6375
+                        '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">{{#if !checkBtnFlag}}제품정보 보기{{/if}}{{#if checkBtnFlag}}구매하기{{/if}}</a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>' +
                 '</div>' +
             '</div>' +
