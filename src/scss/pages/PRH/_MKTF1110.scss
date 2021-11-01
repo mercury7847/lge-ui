@@ -2769,6 +2769,10 @@
         &-all {
             background-image:url('/lg5-common/images/PRH/app/icon_all_64.svg');
         }
+
+        @at-root .prd-result-lists .icon {
+            background-image: url('lg5-common/images/icon-nodata.svg');
+        }
     }
     $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
     @each $name in $prdIconLists {
