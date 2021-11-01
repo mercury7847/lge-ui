@@ -110,7 +110,6 @@
                     var currentIndex = self.$appTablist.filter('.is-active').index();
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
-                    console.log("currentIndex", currentIndex)
                     self.appSmartTab.init(currentIndex)
                 }
             })
@@ -413,7 +412,6 @@
             self.swapContent(target, contArray, self.$searchPopup);
         },
         requestModelData: function(param){
-            console.log('request!!!')
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
             var listTemplate =  
