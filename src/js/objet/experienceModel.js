@@ -6265,10 +6265,12 @@
             priceHtml += '<div class="swiper-slide">';
             priceHtml += '  <dl data-cate="' + modelCate + '" data-default-code="' + defaultModel + '" data-default-price="' + defaultPrice + '">';
             priceHtml += '      <dt>' + modelName + '</dt>';
-            priceHtml += '      <div class="panel_guide">';
-            priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
-            priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" data-go-url data-open-mode="inAppBrowser" data-target="_blank" data-href="'+domain+'/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';   
-            priceHtml += '      </div>';
+            // BTOCSITE-3198 패널만 교체 가능한 거 아세요? 문구 제거 - 패널만 교체 오픈과 동시에 해당 내용 불필요하게됨._211101 - S
+            // priceHtml += '      <div class="panel_guide">';
+            // priceHtml += '          <p class="strong" >패널만 교체 가능한 거 아세요?</p>';
+            // priceHtml += '          <p class="desc" >소재/컬러 체험해보시고 패널만 따로 신청해 주세요. <a class="more btn-link" data-go-url data-open-mode="inAppBrowser" data-target="_blank" data-href="'+domain+'/story/user-guide/objetcollection-change-panel-guide"><u>자세히 보기</u></a></p>';   
+            // priceHtml += '      </div>';
+            // BTOCSITE-3198 패널만 교체 가능한 거 아세요? 문구 제거 - 패널만 교체 오픈과 동시에 해당 내용 불필요하게됨._211101 - E
             priceHtml += '      <dd>';
             priceHtml += '          <div class="price_info">';
             priceHtml += '              <ul class="product_list">';
