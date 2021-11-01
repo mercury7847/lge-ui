@@ -414,16 +414,14 @@
         requestModelData: function(param){
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =  
-            '{{#if imgname !== "undefined" && categoryName !== "undefined" && salesModelCode !== "undefined"}}' + 
+            var listTemplate =              
             '<li>' + 
             '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
             '   <div class="text">' + 
             '       <span class="name">{{categoryName}}</span>' + 
             '       <span class="serial-num">{{salesModelCode}}</span>' + 
             '   </div>' + 
-            '</li>' + 
-            '{{/if}}';
+            '</li>';
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
@@ -435,7 +433,9 @@
                         var html = "";
 
                         data.listData.forEach(function(item){
-                            html += vcui.template(listTemplate, item);
+                            if( item.categoryName != "undefined" && item.categoryName != "" && item.imgname != "undefined" && item.imgname != "" && item.salesModelCode != "undefined" && item.salesModelCode != "") {
+                                html += vcui.template(listTemplate, item);
+                            }
                         })
                         self.$prdTotalCount.find('em').text(data.listPage.listCount)
                         self.$prdResult.find('.prd-result-lists').empty().append(html);
