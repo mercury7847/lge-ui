@@ -177,6 +177,7 @@
             self.$pagination.on('page_click', function(e, data) {
                 var categoryId = self.$searchSelect.vcSelectbox('value')
                 var searchKeyword = self.$searchInput.val();
+                e.preventDefault();
                 self.requestModelData({"categoryId":categoryId,"keyword":searchKeyword,"page": data});
             });
 
