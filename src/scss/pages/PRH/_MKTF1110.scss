@@ -2289,8 +2289,13 @@
                     vertical-align: top;
                     a {
                         display: inline-block;
+                    }
+                    @at-root .mdevice .menu-item a {
                         &:focus,
                         &:active {
+                            @include mobile {
+
+                            }
                             outline:0;
                         }
                     }
