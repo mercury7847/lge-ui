@@ -5092,14 +5092,9 @@
 
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 // BTOCSITE-3198 패널만 교체용 함수 분리 - S
-                if(plistWrap.hasClass("pannel_list")){ // BTOCSITE-3198 validationChk : 선택한 패널값 존재할 경우만, datasendPannel 함수 실행 - 211101
+                if(plistWrap.hasClass("pannel_list") && plChk.length){ // BTOCSITE-3198 validationChk : 선택한 패널값 존재할 경우만, datasendPannel 함수 실행 - 211101
                     //패널만 교체용
-                    if(plChk.length){
-                        datasendPannel(0, selectedModelData ? selectedModelData : '', purchaseData);
-                    } else {
-                        datasendPannel(0, selectedModelData ? selectedModelData : '', purchaseData);
-                        return false;
-                    }
+                    datasendPannel(0, selectedModelData ? selectedModelData : '', purchaseData);
                 } else {
                     //기존 견적 확인하기용
                     // BTOCSITE-2346 newbest, himart일 경우 datasend 데이터 전달값 변경 - 210721 - start
