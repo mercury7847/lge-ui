@@ -4561,6 +4561,9 @@
                     /* BTOCSITE-1582 add */
                     $('#quick_buy').hide();
                     /* //BTOCSITE-1582 add */
+                    /* BTOCSITE-5938-83 모니터링 83 */
+                    $('.color_mixing_area .swiper-wrapper').css('transform','translate3d(0px, 0px, 0px)');
+                    /* BTOCSITE-5938-83 모니터링 83 */
                 }
             };
             var desc = '';
