@@ -5025,7 +5025,7 @@
                 }
                 //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - end
             } else {
-                if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price") == true){
+                if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price")){
                     //뉴베스트,하이마트용 패널만 교체
                     if(plChk.length){
                         plist.each(function(index) {
@@ -5043,6 +5043,13 @@
                             }
                             //BTOCSITE-3198 E - 211022 선택한 패널값 데이터 전달 방식 변경 (class체크를 통한 data-default-code 빈 값 처리 후 데이터 push -> 패널 선택된 값(is_active), 비선택된값("") push 데이터 처리(data-default-code를 바꾸지 않음) )
                         });
+                    } else { // BTOCSITE-3198 validationChk : 선택한 패널값 존재하지 않을 경우 해당 alert창 발생 - 211101
+                        let desc = "";
+                        let obj = {
+                            title: '구매하고자 하는 패널을 선택하여 주십시오.'
+                        };
+                        lgkorUI.alert(desc, obj);
+                        return;
                     }
                 }  
             }
@@ -5085,7 +5092,7 @@
 
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 // BTOCSITE-3198 패널만 교체용 함수 분리 - S
-                if(plistWrap.hasClass("pannel_list")){
+                if(plistWrap.hasClass("pannel_list") && plChk.length){ // BTOCSITE-3198 validationChk : 선택한 패널값 존재할 경우만, datasendPannel 함수 실행 - 211101
                     //패널만 교체용
                     datasendPannel(0, selectedModelData ? selectedModelData : '', purchaseData); 
                 } else {
