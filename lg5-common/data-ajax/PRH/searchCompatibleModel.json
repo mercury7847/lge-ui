@@ -4,112 +4,112 @@
     "data": {
         "listData": [
             {
-                "imgName" : "refrigerator",
+                "imgname" : "refrigerator",
                 "categoryName" : "냉장고",
                 "modelName": "LG 디오스 오브제컬렉션 얼음 정수기 냉장고",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },            
             {
-                "imgName" : "kimchi_refrigerator",
+                "imgname" : "kimchi_refrigerator",
                 "categoryName" : "김치냉장고",
                 "modelName": "LG 디오스 오브제컬렉션 김치냉장고",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "dishwasher",
+                "imgname" : "dishwasher",
                 "categoryName" : "식기세척기",
                 "modelName": "LG 디오스 오브제컬렉션 식기세척기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "oven",
+                "imgname" : "oven",
                 "categoryName" : "오븐",
                 "modelName": "LG 디오스 오브제컬렉션 오븐",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "cooktop",
+                "imgname" : "cooktop",
                 "categoryName" : "전기레인지",
                 "modelName": "LG 디오스 오브제컬렉션 전기레인지",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "winecellar",
+                "imgname" : "winecellar",
                 "categoryName" : "와인셀러",
                 "modelName": "LG 디오스 오브제컬렉션 와인셀러",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "waterpurifier",
+                "imgname" : "waterpurifier",
                 "categoryName" : "정수기",
                 "modelName": "LG 디오스 오브제컬렉션 정수기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "homebrew",
+                "imgname" : "homebrew",
                 "categoryName" : "맥주제조기",
                 "modelName": "LG 디오스 오브제컬렉션 맥주제조기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "drum_washer",
+                "imgname" : "drum_washer",
                 "categoryName" : "세탁기",
                 "modelName": "LG 디오스 오브제컬렉션 세탁기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "dryer",
+                "imgname" : "dryer",
                 "categoryName" : "의류건조기",
                 "modelName": "LG 디오스 오브제컬렉션 의류건조기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "styler",
+                "imgname" : "styler",
                 "categoryName" : "스타일러",
                 "modelName": "LG 디오스 오브제컬렉션 스타일러",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "stickcleaner",
+                "imgname" : "stickcleaner",
                 "categoryName" : "청소기",
                 "modelName": "LG 디오스 오브제컬렉션 청소기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "stand_airconditioner",
+                "imgname" : "stand_airconditioner",
                 "categoryName" : "에어컨",
                 "modelName": "LG 디오스 오브제컬렉션 에어컨",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "airpurifier",
+                "imgname" : "airpurifier",
                 "categoryName" : "공기청정기",
                 "modelName": "LG 디오스 오브제컬렉션 공기청정기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "dehumidifier",
+                "imgname" : "dehumidifier",
                 "categoryName" : "제습기",
                 "modelName": "LG 디오스 오브제컬렉션 제습기",
                 "modelId": "MASDA123012309",
                 "salesModelCode": "asasdlkajs123l1k2j3"
             },
             {
-                "imgName" : "ceilingfan",
+                "imgname" : "ceilingfan",
                 "categoryName" : "실링팬",
                 "modelName": "LG 디오스 오브제컬렉션 실링팬",
                 "modelId": "MASDA123012309",
