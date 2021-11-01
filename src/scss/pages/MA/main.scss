@@ -84,7 +84,8 @@ img{
 .main-wrap {
     // max-width:1920px;
     margin:0 auto;
-    padding-top: 20px;
+    // BTOCSITE-2193
+    padding-top: 44px;
     border-top: 1px solid #ddd;
     @include mobile {
         // padding-bottom:171px;
