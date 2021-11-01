@@ -2289,6 +2289,10 @@
                     vertical-align: top;
                     a {
                         display: inline-block;
+                        &:focus,
+                        &:active {
+                            outline:0;
+                        }
                     }
                 }
             }

@@ -47,7 +47,7 @@
             self.$searchDel = self.$searchSticky.find('.btn-delete');
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
-            self.$pagination = self.$searchPopup.find('.pagination').vcPagination();
+            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
 
             self.$searchIntro = self.$searchPopup.find('.intro-message');
             self.$prdResult = self.$searchPopup.find('.product-result-wrap');
@@ -110,7 +110,6 @@
                     var currentIndex = self.$appTablist.filter('.is-active').index();
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
-                    console.log("currentIndex", currentIndex)
                     self.appSmartTab.init(currentIndex)
                 }
             })
@@ -413,17 +412,18 @@
             self.swapContent(target, contArray, self.$searchPopup);
         },
         requestModelData: function(param){
-            console.log('request!!!')
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =  '<li>' + 
+            var listTemplate =  
+            '{{#if imgname !== "undefined" && categoryName !== "undefined" && salesModelCode !== "undefined"}}' + 
+            '<li>' + 
             '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
             '   <div class="text">' + 
             '       <span class="name">{{categoryName}}</span>' + 
             '       <span class="serial-num">{{salesModelCode}}</span>' + 
             '   </div>' + 
-            '</li>';
-            
+            '</li>' + 
+            '{{/if}}';
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
