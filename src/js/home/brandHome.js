@@ -416,14 +416,16 @@
             console.log('request!!!')
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =  '<li>' + 
+            var listTemplate =  
+            '{{#if imgname !== "undefined" && categoryName !== "undefined" && salesModelCode !== "undefined"}}'
+            '<li>' + 
             '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
             '   <div class="text">' + 
             '       <span class="name">{{categoryName}}</span>' + 
             '       <span class="serial-num">{{salesModelCode}}</span>' + 
             '   </div>' + 
-            '</li>';
-            
+            '</li>' + 
+            '{{/if}}';
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
