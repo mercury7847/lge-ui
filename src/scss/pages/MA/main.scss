@@ -84,8 +84,7 @@ img{
 .main-wrap {
     // max-width:1920px;
     margin:0 auto;
-    // BTOCSITE-2193
-    padding-top: 44px;
+    padding-top: 20px;
     border-top: 1px solid #ddd;
     @include mobile {
         // padding-bottom:171px;
@@ -132,7 +131,7 @@ img{
         &.scene-renew {
             position: relative;
             width: 100%;
-            max-width: 1700px;
+            max-width: 1760px;
             background-color: #fff;
             margin: 0 auto;
             padding:0 30px;
