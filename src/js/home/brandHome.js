@@ -323,6 +323,7 @@
             destroy: function(){
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
+                thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
             }
         },
         appDownloadGuideSlider:{
