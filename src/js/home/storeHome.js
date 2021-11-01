@@ -32,13 +32,14 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
 
 
 //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
+//BTOCSITE-7260 뷰저블 셀렉터 id 추가
 //많이 구매하는 제품
 var rankBuyProductTmpl =
     '<div class="inner">\n'+
     '   {{#each (obj, index) in list}}'+
     '      {{#if index === 0}}'+
     '         <div class="best">\n'+
-    '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
     '                 <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '                 <div class="img"><img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                 <div class="product-info">\n'+
@@ -50,7 +51,7 @@ var rankBuyProductTmpl =
     '      {{#else}}'+
     '          {{#if index === 1}}<ol class="list">\n{{/if}}'+
     '              <li>\n'+
-    '                  <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '                  <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
     '                  <div class="flag"><span class="num">{{obj.ranking}}</span></div>\n'+
     '                  <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                  <div class="product-info">\n'+
