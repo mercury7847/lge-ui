@@ -6403,13 +6403,10 @@
 
             sumPrice = addComma(sumPrice);
             priceHtml += '                                    </ul>';
-            //BTOCSITE-3198 COMMON만 노출 - s
-            if ($objContent.attr('data-page-type') === 'COMMON') { 
             priceHtml += '                                    <div class="sum">';
             priceHtml += '                                         <span class="product_total_title">총금액</span>'
             priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
-            }
             if ($objContent.attr('data-page-type') === 'COMMON') { //BTOCSITE-3198 구매하기 버튼명 다르게 노출
                 priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             } else {
