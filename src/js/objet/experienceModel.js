@@ -4895,7 +4895,11 @@
                 }
                 /* //BTOCSITE-1582 */
                 
+                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - S (뉴베스트/하이마트/전자랜드 제외)
+                if($objContent.attr('data-page-type') === 'COMMON'){
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
+                }
+                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - E
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                 }, 500);
@@ -6303,12 +6307,8 @@
             priceHtml += '                                            <span class="product_price"><span class="before_price"><em></em>원</span><span class="after_price"><em></em>원</span></span>';
             priceHtml += '                                        </li>';
             priceHtml += '                                    </ul>';
-            // BTOCSITE-3198 구매하기 COMMON일때만 나오도록 변경_211101 - S
-            if ($objContent.attr('data-page-type') === 'COMMON'){
             priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             priceHtml += '                                    <p class="err-msg">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용됩니다.</p>';
-            }
-            // BTOCSITE-3198 구매하기 COMMON일때만 나오도록 변경_211101 - E
             priceHtml += '                                </div>';
             priceHtml += '                            </dd>';
             priceHtml += '                        </dl>';
