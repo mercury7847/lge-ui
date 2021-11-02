@@ -332,11 +332,11 @@ $(window).ready(function(){
                         }
                     }
                     //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
-                    if(page == totalpage && getList){
+                    if(window.breakpoint.name == "mobile" && page == totalpage){
                         getList = false;
                         $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                     }else {
-                        if(getList) setContentsList(page+1)
+                        if(getList) setContentsList(page+1);
                     }
                 }
             }
