@@ -296,7 +296,9 @@ $(window).ready(function(){
             if(scrollAbled){
                 var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
-                if(page < totalpage){
+
+                //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
+                if(page <= totalpage){
                     var getList = false;
                     var scrolltop, wrapheight, listheight, scrolldist, contop;
                     if(window.breakpoint.name == "pc"){
@@ -329,8 +331,13 @@ $(window).ready(function(){
                             $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
                     }
-
-                    if(getList) setContentsList(page+1);
+                    //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
+                    if(page == totalpage && getList){
+                        getList = false;
+                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                    }else {
+                        if(getList) setContentsList(page+1)
+                    }
                 }
             }
         }
