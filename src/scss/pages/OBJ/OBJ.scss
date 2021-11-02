@@ -1482,6 +1482,11 @@ html {
                 height: auto;
                 object-fit: cover;
             }
+            &.img-mobile{
+                @include mobile{
+                    max-width: 100%;
+                }
+            }
         }
         .img-pc{
             display: block;
@@ -1655,7 +1660,7 @@ html {
             justify-content: flex-start;
             text-align:left;
             line-height: 1.73;
-            padding-right:0;
+            padding-right:20px;
             
         }
     }
