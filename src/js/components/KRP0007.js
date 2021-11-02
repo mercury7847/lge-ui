@@ -179,6 +179,7 @@
                             '{{#if !checkBtnFlag}}제품정보 보기{{/if}}{{#if checkBtnFlag}}구매하기{{/if}}' +
                         '{{/if}}' +
                         '</a>'+
+                        // BTOCSITE-6375 e
                     '</div>' +
                 '</div>' +
             '</div>' +
