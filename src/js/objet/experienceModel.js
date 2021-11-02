@@ -4425,11 +4425,25 @@
         });
 
         // BTOCSITE-3198 패널 교체 견적 보기 > 패널 선택 - 2021-10-12 - start
-        $(document).on("click", ".pannel_list li", function() {
-            //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - s
-            let plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
-            //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - e
 
+        // 선택 제품 총 금액 확인 버튼 클릭이벤트
+        $(document).on("click", ".btn_total", function() {
+            let plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
+            if(plChk.length){
+                pannelSumTotal();
+                $('.sum').css('display','flex'); //2021-10-14 추가
+            } else {
+                let desc = "";
+                let obj = {
+                    title: '구매하고자 하는 패널을 선택하여 주십시오.'
+                };
+                lgkorUI.alert(desc, obj);
+                return;
+            }
+        });
+        // 패널만 교체 > 견적 리스트 클릭이벤트
+        $(document).on("click", ".pannel_list li", function() {
+            let plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
             if($(this).hasClass('is_active')){
                 $(this).removeClass("is_active");
             }else{
@@ -4451,11 +4465,6 @@
                 }
                 //BTOCSITE-3198 선택된 패널 값을 다시 체크해서, 총금액에 적용하여 노출 - e                 
             }
-
-            $('.btn_total').click(function(){
-                pannelSumTotal();
-                $('.sum').css('display','flex'); //2021-10-14 추가
-            });
         });
 
         function pannelSumTotal(){
@@ -4955,9 +4964,9 @@
             let purchaseData = [];
 
             //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - start
-            var plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
-            var plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
-            var plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
+            let plistWrap = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list");
+            let plist = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li");
+            let plChk = $('.total_price_info_wrap .swiper-slide').find(">dl .product_list li.is_active");
 
             if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price") == true){
                 
@@ -4974,7 +4983,8 @@
                 }
             });
             */
-            //BTOCSITE-3198 일반용, 전자랜드&하이마트용 분리 - S 211029          
+            //BTOCSITE-3198 일반용, 뉴베스트&전자랜드&하이마트용 분리 - S 211029 
+            //일반용
             if($('.model_experience').attr('data-page-type') === 'COMMON') {
                 if(plistWrap.hasClass("pannel_list")){
                     //패널만 교체
@@ -5029,6 +5039,7 @@
                 }
                 //BTOCSITE-3198 패널만 교체/견적 확인하기 각각 적용되는 이벤트 분리 - end
             } else {
+                //뉴베스트&하이마트&전자랜드
                 if(plistWrap.hasClass("pannel_list") && plistWrap.hasClass("no_price")){
                     //뉴베스트,하이마트용 패널만 교체
                     if(plChk.length){
@@ -5096,7 +5107,7 @@
 
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 // BTOCSITE-3198 패널만 교체용 함수 분리 - S
-                if(plistWrap.hasClass("pannel_list") && plChk.length){ // BTOCSITE-3198 validationChk : 선택한 패널값 존재할 경우만, datasendPannel 함수 실행 - 211101
+                if(plistWrap.hasClass("pannel_list")){ // BTOCSITE-3198 validationChk : 선택한 패널값 존재할 경우만, datasendPannel 함수 실행 - 211101
                     //패널만 교체용
                     datasendPannel(0, selectedModelData ? selectedModelData : '', purchaseData);
                 } else {
@@ -5116,8 +5127,6 @@
                     purchaseFn(purchaseData);
                 }
                 // BTOCSITE-3198 패널만 교체용 함수 분리 - E
-
-
             }
             
 
