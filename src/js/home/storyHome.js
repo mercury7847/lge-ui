@@ -24,6 +24,7 @@
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
+                    '<div class="label-stroy label-new"><span>{{storyLabel}}</span></div>'+ 
                     '<a href="{{storyUrl}}" class="visual-area">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+
@@ -207,9 +208,10 @@
     var newsHeight = 0;
 
     function bindEvent(){
-        $(window).on('resize', function(){
-            resize();
-        });
+        
+        // $(window).on('resize', function(){ //BTOCSITE-6011
+        //     resize();
+        // });
 
         $context.find('.story-section').on('click', '.btn-moreview', function(e){
             e.preventDefault();
@@ -237,7 +239,7 @@
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
                     $context.find('.tag-subscribe-story3').show();
-                    setRepositionTagBox($('.user_story'));
+                    // setRepositionTagBox($('.user_story')); //BTOCSITE-6011
                 } else{
                     $context.find('.tag-subscribe-story').show();
                 }
@@ -250,7 +252,7 @@
                 loadStoryList('user_story', 1, 'UserStory');
 
                 $context.find('.new_story').show();
-                setRepositionTagBox($context.find('.new_story'));
+                // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6011
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -578,7 +580,7 @@
                         $context.find('.new_story').find('.inner h2.title').show();
                     }
                     
-                    setRepositionTagBox(sectionItem);
+                    // setRepositionTagBox(sectionItem); //BTOCSITE-6011 
                 } else{
                     if(sectioname == "user_story"){
                         // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
@@ -698,8 +700,8 @@
     }
 
     function resize(){
-        setRepositionTagBox($context.find('.user_story'));
-        setRepositionTagBox($context.find('.new_story'));
+        // setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6011 
+        // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6011 
     }
 
     $(document).ready(function(){

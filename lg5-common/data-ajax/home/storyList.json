@@ -49,7 +49,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":"<span>NEW</span>\n콘텐츠"
             },
             {
                 "contentsType": "video",
@@ -64,23 +65,12 @@
                     {
                         "tagCode": "웰빙",
                         "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "코로나싱글라이프싱글",
-                        "tagName": "코로나싱글라이프싱글"
-                    },
-                    {
-                        "tagCode": "미세먼지",
-                        "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
                     }
                 ],
                 "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
                 "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":"TOP\n콘텐츠"
             },
             {
                 "contentsType": "image",
@@ -95,15 +85,12 @@
                     {
                         "tagCode": "",
                         "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
                     }
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":"TOP\n구매"
             },
             {
                 "contentsType": "image",
@@ -122,7 +109,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":"BEST\n콘텐츠"
             },
             {
                 "contentsType": "video",
@@ -175,10 +163,6 @@
                     {
                         "tagCode": "",
                         "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
                     }
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
@@ -217,10 +201,6 @@
                     {
                         "tagCode": "",
                         "tagName": "웰빙"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
                     }
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
@@ -278,10 +258,6 @@
                     {
                         "tagCode": "",
                         "tagName": "미세먼지"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
                     }
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
