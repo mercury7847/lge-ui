@@ -31,14 +31,76 @@
 
             bindEvents: function() {
                 var _self = this;
-                self.$KRP0022.find('.ui_selectbox').on('change', function(e){
-                   _self.requestData();
+                
+                
+
+                // self.$KRP0022.find('.ui_selectbox').on('change', function(e) {
+                //     console.log( $(this).attr('id') )
+                //     if ( $(this).attr('id') !== 'eventStatus') {
+                //         _self.requestData(); 
+                //         // alert(e.type)
+                //     }else{
+                //         // alert( $(this).val() );
+                //         if( $(this).val() === 'progress' ){
+                //             $('input[name="win"]').prop('checked', false);
+                           
+                //         }
+                //          _self.requestData();
+                //     }
+                // });
+
+                self.$KRP0022.find('.ui_selectbox').on('change', function(e) {
+                    console.log( $(this).attr('id') )
+                    if ( $(this).attr('id') !== 'eventStatus') {
+                        // alert(e.type)
+                    }else{
+                        // alert( $(this).val() );
+                        if( $(this).val() === 'progress' ){
+                            $('input[name="win"]').prop('checked', false);
+                        }
+                    }
+                         _self.requestData();
+                    
+                    
+                    
                 });
 
-                //jytest 추가 
-                self.$KRP0022.find('#eventSort').on('change', function(e){
-                    _self.requestData();
+                
+                self.$KRP0022.find('.ui_selectbox').on('change_on', function(e) {
+                     if ($(this).attr('id') === 'eventStatus') {
+                        $('input[name="win"]').prop('checked', true);
+                        $(this).val('end').prop('selected', true).trigger('change');
+                        
+                        _self.requestData();    
+                     }
                 });
+                
+                self.$KRP0022.find('.ui_selectbox').on('change_off', function(e) {
+                     if ($(this).attr('id') === 'eventStatus') {
+                         $('input[name="win"]').prop('checked', false);
+                        $(this).val('progress').prop('selected', true).trigger('change');                        
+                        
+                        
+                        _self.requestData();    
+
+                     }
+                });
+
+
+                //jytest 추가 
+                self.$KRP0022.find('#eventSort').on('change', function(e) {
+                    // _self.requestData();
+                    if( $(this).is(':checked') ){
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_on');    
+                    }else{
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_off');    
+                    }
+                    
+
+                });
+
+
+
 
                 self.$tab.on("tabchange", function(e) {
                     _self.requestData();
@@ -77,10 +139,10 @@
                     postData[$item.attr('id')] = $item.vcSelectbox('value');
                 });
 
-                self.$KRP0022.find('input:checkbox[name="win"]').each(function (index, item) {
-                    var $item = $(item);
-                    postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
-                });
+                // self.$KRP0022.find('input:checkbox[name="win"]').each(function (index, item) {
+                //     var $item = $(item);
+                //     postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
+                // });
                 //console.log("2222", postData);
 
                 //jytest
