@@ -885,7 +885,9 @@
                 color:#111;
             }
             .text-detail-desc{
-                width: 100vw;
+                @include mobile{
+                    width: 100vw;
+                }
             }
         }
         &.text-white {
