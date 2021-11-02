@@ -2387,7 +2387,6 @@
                         if(lgkorUI.stringToBool(loginFlag)) {
                             //BTOCSITE-6011 
                             if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy){
-                                console.log('careShipInfo 없음 일반구매 페이지로'); 
                                 ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                                 //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                                 if(ajaxUrl) {
@@ -2407,7 +2406,6 @@
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
                                     if(isDirectBuy) {
-                                        console.log('케어십 서비스 가능, 청약신청 페이지로 ');
                                         $('#careRequireBuyPopup').data('sendUrl',url);
                                         /*
                                         $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
@@ -2422,7 +2420,6 @@
                                             $('#careRequireBuyPopup').vcModal();
                                         }
                                     } else {
-                                        console.log('렌탈 케어솔루션페이지로');
                                         location.href = url;
                                     }
                                 }
