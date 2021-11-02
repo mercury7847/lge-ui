@@ -884,11 +884,6 @@
             .text-detail-title, .text-detail-desc{
                 color:#111;
             }
-            .text-detail-desc{
-                @include mobile{
-                    width: 100vw;
-                }
-            }
         }
         &.text-white {
             color:#fff;
@@ -940,6 +935,7 @@
                 font-weight: 400;
                 font-size: 15px;
                 line-height: 1.53;
+                width: 100vw;
             }
             .logo {
                 float: none;
