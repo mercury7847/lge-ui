@@ -518,6 +518,11 @@
                     }
                 });
 
+                /* BTOCSITE-5938-28 모니터링 28 */
+                //찜하기 체크
+                var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
+                lgkorUI.checkWishItem(ajaxUrl);
+
                 //장바구니
                 self.$productList.on('click','li div.btn-area-wrap div.cart a',function(e){
                     e.preventDefault();
