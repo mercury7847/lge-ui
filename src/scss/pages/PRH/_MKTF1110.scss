@@ -3001,6 +3001,7 @@
                 margin-top: 16px;
             }
             .icon-wrap {
+                flex:none;
                 width: 120px;
                 height: 120px;
                 background-color: #f4f4f4;
@@ -3031,6 +3032,7 @@
                     font-size: 14px;
                     line-height: 1.86;
                     margin-top: 6px;
+                    word-break:break-word;
                 }
             }
         }
