@@ -791,7 +791,7 @@
             @include mobile{
                 height: auto;
                 object-fit: cover;
-            }
+            } 
             &.img-mobile{
                 @include mobile{
                     max-width: 100%;
@@ -884,6 +884,9 @@
             .text-detail-title, .text-detail-desc{
                 color:#111;
             }
+            .text-detail-desc{
+                width: 100vw;
+            }
         }
         &.text-white {
             color:#fff;
@@ -970,11 +973,13 @@
             justify-content: flex-start;
             text-align:left;
             line-height: 1.73;
-            display: inline-block;
+            padding-right:0;
+            
         }
     }
 }
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
+
 
 // 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용(BTOCSITE-4251)으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
 .thinq-main{
