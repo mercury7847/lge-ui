@@ -390,8 +390,8 @@
                     if(distance <= limit){
                         item['distance'] = distance;
                         newArr.push(item);
-                    	}
-                	}
+                        }
+                    }
                     // BTOCSITE-4785 e
                 }
     
@@ -634,10 +634,10 @@
                         // BTOCSITE-4785 s
                         //var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
                         if(dpPdp){
-                            // 기획전에서 넘어올 경우, limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고 매장이 가까운순으로 30개까지 리스팅 됨
+                            // 기획전에서 넘어올 경우:limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고, 가까운순으로 30개까지 리스팅 됨
                             var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 30);
                         }else{
-                        	var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
+                            var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
                         }
                         // BTOCSITE-4785 e
                         if(nArr.length == 0){                       
@@ -834,7 +834,14 @@
     
                     var geo = keywords.searchCodeDesc.split(',');
                     if(geo.length>1){
-                        var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:1});
+                         // BTOCSITE-4785 s
+                         if(dpPdp){
+                            // 기획전에서 넘어올 경우:limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고, 가까운순으로 30개까지 리스팅 됨
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:100}).slice(0, 30);
+                        }else{
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:1});
+                        }
+                        // BTOCSITE-4785 e
                         nArr = self._filterOptions(nArr, keywords);
                         resultLen = nArr.length;
                         self.$map.draw(nArr, geo[0], geo[1]);
