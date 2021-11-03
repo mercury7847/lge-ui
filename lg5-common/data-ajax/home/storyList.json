@@ -50,7 +50,7 @@
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "storyUrl": "lg.com",
-                "storyLabel":"<span>NEW</span>\n콘텐츠"
+                "storyLabel":"newContent"
             },
             {
                 "contentsType": "video",
@@ -70,7 +70,7 @@
                 "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
                 "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
                 "storyUrl": "lg.com",
-                "storyLabel":"TOP\n콘텐츠"
+                "storyLabel":"topContent"
             },
             {
                 "contentsType": "image",
@@ -90,7 +90,7 @@
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "storyUrl": "lg.com",
-                "storyLabel":"TOP\n구매"
+                "storyLabel":"topBuy"
             },
             {
                 "contentsType": "image",
@@ -110,7 +110,7 @@
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "storyUrl": "lg.com",
-                "storyLabel":"BEST\n콘텐츠"
+                "storyLabel":"bestContent"
             },
             {
                 "contentsType": "video",
@@ -129,7 +129,8 @@
                 ],
                 "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
                 "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -148,7 +149,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -167,7 +169,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "video",
@@ -186,7 +189,8 @@
                 ],
                 "largeImage": "/lg5-common/images/STS/img-story-04.jpg",
                 "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -205,7 +209,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -224,7 +229,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -243,7 +249,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             },
             {
                 "contentsType": "image",
@@ -262,7 +269,8 @@
                 ],
                 "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
                 "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "storyUrl": "lg.com"
+                "storyUrl": "lg.com",
+                "storyLabel":""
             }
         ]
     }

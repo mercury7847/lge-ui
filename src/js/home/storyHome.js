@@ -24,7 +24,19 @@
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
-                    '<div class="label-stroy label-new"><span>{{storyLabel}}</span></div>'+ 
+                    '{{#if storyLabel == "newContent"}}'+
+                        '<div class="label-stroy label-new"><span><span>NEW</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "topContent"}}'+
+                        '<div class="label-stroy label-topCont"><span><span>TOP</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "topBuy"}}'+
+                        '<div class="label-stroy label-topBuy"><span><span>TOP</span>구매</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "bestContent"}}'+
+                    '<div class="label-stroy label-best"><span><span>BEST</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+
                     '<a href="{{storyUrl}}" class="visual-area">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+
@@ -157,12 +169,16 @@
                 if(breakpoint.name == 'mobile'){ 
                     $context.find('.story-review').find('.indi-wrap').show();
                     $context.find('.story-review').vcCarousel({
-                        variableWidth: true,
-                        slidesToShow: 1,
+                        // variableWidth: true,
+                        slidesToShow: 2.16,
                         slidesToScroll: 1,
-                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                         speed: 150,
-                        touchThreshold: 100
+                        touchThreshold: 100,
+                        dots:false,
+                        centerMode:false,
+                        centerPadding:0,
+                        infinite:false,
+
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();
@@ -202,6 +218,8 @@
                 $('html, body').animate({scrollTop:moveScrollTop}, 120);
             }, 10);
         });
+
+        
     }
 
     var userHeight = 0;
@@ -310,6 +328,8 @@
                 }
             }
         });
+
+        
     }
 
     function setTagMngChecked(){
