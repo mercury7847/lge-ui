@@ -470,7 +470,7 @@
                         var contractTerm = ("" + item.contractTerm);
                         var dutyTerm     = ("" + item.dutyTerm) ;
 
-                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음' : '1회 / '+item.visitPer+'개월';
+                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
                         var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
 
@@ -481,9 +481,9 @@
                             dataByFee.push(item);
 
 
-                        dataByVisit[visitPerKey] = dataByFee; // 세번째 갑
-                        dataByDuty[dutyTerm] = dataByVisit; // 두번째 갑
-                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 갑
+                        dataByVisit[visitPerKey] = dataByFee; // 세번째 값
+                        dataByDuty[dutyTerm] = dataByVisit; // 두번째 값
+                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값
 
                         if(item.representChargeFlag == "Y") {
                             selectRtModelSeq = item.rtModelSeq;
@@ -1967,7 +1967,12 @@
                     $selectBox.empty();
                     if(selectData instanceof Array) {
                         selectData.forEach(function(item, index){
-                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                            //BTOCSITE-7447
+                            if(item.visitPer == 0){
+                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
+                            }else{
+                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                            }
                         });
                     }
                     $selectBox.vcSelectbox('update');
@@ -2083,7 +2088,7 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                var visitPerTxt = selectInfoData.visitPer === '0' ? '원(방문없음 기준)' : '원('+selectInfoData.visitPer+'개월 방문 기준)';
+                var visitPerTxt = selectInfoData.visitPer === '0' ? '원(방문없음/자가관리 기준)' : '원('+selectInfoData.visitPer+'개월 방문 기준)'; //BTOCSITE-7447
                 $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? visitPerTxt : '원(대표요금제 기준)'));
                 $paymentAmount.data('popupData',popupData);
             },
