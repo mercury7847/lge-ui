@@ -25,7 +25,20 @@
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
-                    '<a href="{{storyUrl}}" class="visual-area" id="beu_storylist_{{storyId}}">'+
+                    '{{#if storyLabel == "newContent"}}'+
+                        '<div class="label-stroy label-new"><span><span>NEW</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "topContent"}}'+
+                        '<div class="label-stroy label-topCont"><span><span>TOP</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "topBuy"}}'+
+                        '<div class="label-stroy label-topBuy"><span><span>TOP</span>구매</span></div>'+ 
+                    '{{/if}}'+
+                    '{{#if storyLabel == "bestContent"}}'+
+                    '<div class="label-stroy label-best"><span><span>BEST</span>콘텐츠</span></div>'+ 
+                    '{{/if}}'+
+
+                    '<a href="{{storyUrl}}" class="visual-area">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+
                             '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
@@ -157,12 +170,16 @@
                 if(breakpoint.name == 'mobile'){ 
                     $context.find('.story-review').find('.indi-wrap').show();
                     $context.find('.story-review').vcCarousel({
-                        variableWidth: true,
-                        slidesToShow: 1,
+                        // variableWidth: true,
+                        slidesToShow: 2.16,
                         slidesToScroll: 1,
-                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                         speed: 150,
-                        touchThreshold: 100
+                        touchThreshold: 100,
+                        dots:false,
+                        centerMode:false,
+                        centerPadding:0,
+                        infinite:false,
+
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();
@@ -202,15 +219,18 @@
                 $('html, body').animate({scrollTop:moveScrollTop}, 120);
             }, 10);
         });
+
+        
     }
 
     var userHeight = 0;
     var newsHeight = 0;
 
     function bindEvent(){
-        $(window).on('resize', function(){
-            resize();
-        });
+        
+        // $(window).on('resize', function(){ //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
+        //     resize();
+        // });
 
         $context.find('.story-section').on('click', '.btn-moreview', function(e){
             e.preventDefault();
@@ -238,7 +258,7 @@
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
                     $context.find('.tag-subscribe-story3').show();
-                    setRepositionTagBox($('.user_story'));
+                    // setRepositionTagBox($('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
                 } else{
                     $context.find('.tag-subscribe-story').show();
                 }
@@ -251,7 +271,7 @@
                 loadStoryList('user_story', 1, 'UserStory');
 
                 $context.find('.new_story').show();
-                setRepositionTagBox($context.find('.new_story'));
+                // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -309,6 +329,8 @@
                 }
             }
         });
+
+        
     }
 
     function setTagMngChecked(){
@@ -579,7 +601,7 @@
                         $context.find('.new_story').find('.inner h2.title').show();
                     }
                     
-                    setRepositionTagBox(sectionItem);
+                    // setRepositionTagBox(sectionItem); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
                 } else{
                     if(sectioname == "user_story"){
                         // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
@@ -699,8 +721,8 @@
     }
 
     function resize(){
-        setRepositionTagBox($context.find('.user_story'));
-        setRepositionTagBox($context.find('.new_story'));
+        // setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
+        // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
     }
 
     $(document).ready(function(){
