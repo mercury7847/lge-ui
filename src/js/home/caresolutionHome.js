@@ -1,7 +1,7 @@
 //BTOCSITE-7260 뷰저블 셀렉터 id 추가
 var tabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
-'       <a href="#{{obj.categoryType}}" id="beu_recommend_tab_{{categoryName}}">{{obj.categoryName}}</a>\n'+
+'       <a href="#{{obj.categoryType}}" id="beu_recommend_tab_{{obj.categoryName}}">{{obj.categoryName}}</a>\n'+
 '   </li>\n'+
 '{{/each}}';
 
