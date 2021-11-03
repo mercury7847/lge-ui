@@ -227,7 +227,7 @@
 
     function bindEvent(){
         
-        // $(window).on('resize', function(){ //BTOCSITE-6011
+        // $(window).on('resize', function(){ //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
         //     resize();
         // });
 
@@ -257,7 +257,7 @@
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
                     $context.find('.tag-subscribe-story3').show();
-                    // setRepositionTagBox($('.user_story')); //BTOCSITE-6011
+                    // setRepositionTagBox($('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
                 } else{
                     $context.find('.tag-subscribe-story').show();
                 }
@@ -270,7 +270,7 @@
                 loadStoryList('user_story', 1, 'UserStory');
 
                 $context.find('.new_story').show();
-                // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6011
+                // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -600,7 +600,7 @@
                         $context.find('.new_story').find('.inner h2.title').show();
                     }
                     
-                    // setRepositionTagBox(sectionItem); //BTOCSITE-6011 
+                    // setRepositionTagBox(sectionItem); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
                 } else{
                     if(sectioname == "user_story"){
                         // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
@@ -720,8 +720,8 @@
     }
 
     function resize(){
-        // setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6011 
-        // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6011 
+        // setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
+        // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
     }
 
     $(document).ready(function(){
