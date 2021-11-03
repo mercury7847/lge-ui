@@ -162,7 +162,7 @@
                         '<span class="chk-wish-wrap large">' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}} data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-wish-model-name="{{sku}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
@@ -185,7 +185,7 @@
             '</div>' +
             '{{#if arFlag=="Y"}}' +
             '<div class="product-ar">' +
-                '<a href="#" data-ar-model-id="{{modelName}}"><span>AR 체험</span></a>' +
+			    '<a href="#" data-ar-model-id="{{modelName}}"><span>AR 체험</span></a>' +
 			'</div>' +
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
@@ -205,15 +205,10 @@
         lgkorUI.showAppBottomMenu(false);
 
         var categoryId = lgkorUI.getHiddenInputData().categoryId;
-
-        console.log("categoryId %o",categoryId);
         var storageName = categoryId+'_lgeProductFilter';
         var saveListDataStorageName = categoryId+'_lgeProductFilterSaveListData';
         
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
-
-
-        console.log("savedFilterArr %o",savedFilterArr);
 
         var KRP0007 = {
             init: function() {
@@ -225,12 +220,9 @@
                 self.savedPLPData.isNew = false;
                 self.isLoading = false; // BTOCSITE-2150 add	
                 self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
-    
+                
                 self.setting();
                 self.bindEvents();
-
- 
-
 
                 //더보기 버튼 체크
                 self.setPageData(lgkorUI.getHiddenInputData());
@@ -242,9 +234,6 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, "defalutUnfoldFlag", function (data) {
-                        
-                        
-                        console.log("storageName set %o",data)                        
                         lgkorUI.setStorage(storageName, data, true);
     
                         var param = {};
@@ -256,8 +245,6 @@
                                 param[key] = filterValue;
                             }
                         }
-
-                        console.log("param %o",param);
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
@@ -274,7 +261,6 @@
                     // var storageFilters = {};//lgkorUI.getStorage(storageName);
                     //BTOCSITE 1842 - 2021-07-02 상품에서 뒤로가기시 스토리지에 저장된 필터체크 다시 활성화
                     var storageFilters = lgkorUI.getStorage(storageName);
-                    
                     if(!firstEnableFilter) {
                         var allId =  self.subCategoryFirstFilterId();
                         firstEnableFilter = {};
@@ -283,16 +269,8 @@
 
                     var filterData = firstEnableFilter;
 
-                    console.log("firstEnableFilter %o",firstEnableFilter);
-                    console.log("storageFilters %o",storageFilters);
-
-                    // debugger;
-
                     var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
-
-
-                        console.log("cached ");
                         var storageFilterData = JSON.parse(storageFilters.filterData);
                         var firstSortType = self.$orderSorting.find('option').eq(0).val();
 
@@ -309,18 +287,12 @@
                         filterData = storageFilterData;
                     }
 
-
-                    console.log("init filterdata %o",filterData);
-
                     var hash = location.hash.replace("#","");
                     if(hash && hash.length == 8) {
-              
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
-                            console.log(" hash 캐시 데이터");
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
-
                             if(self.savedPLPData.isNew) {
                                 self.$productList.empty();
                             }
@@ -351,14 +323,14 @@
                                 });
                                 // $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
                             }
-                        } else {
 
-                            console.log("resetFilter hash 캐시 데이터 없는 경우 change %o",change);
+                            // BTOCSITE-5938-77 찜하기 오류 대응
+                            var ajaxUrl = self.$section.attr('data-wish-url');
+                            lgkorUI.checkWishItem(ajaxUrl);
+                        } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
                     } else {
-
-                        console.log("resetFilter 최초 로딩시 change %o",change);
                         self.filterLayer.resetFilter(filterData, change);
                     }
 
@@ -431,9 +403,6 @@
                 self.$listSorting = self.$section.find('div.list-sorting');
                 //카테고리 셀렉트
                 self.$categorySelect = self.$section.find('div.cate-scroll-wrap.ui_smooth_scrolltab');
-                // // 카테고리 초기화
-                // self.$categorySelect.find('input').prop('checked', false);
-                               
 
                 //순서 셀렉트 풀다운
                 self.$orderSorting = self.$listSorting.find('select[name=sortType]');
@@ -724,8 +693,6 @@
             },
 
             requestSearch: function(data, isNew){
-
-                console.log("requestSearch %o",data);
                 var self = this;
 
                 if (self.isLoading) return; //BTOCSITE-2150 add	
@@ -766,14 +733,11 @@
                         self.setPageData(data.pagination);
 
                         self.savedPLPData.listData = self.savedPLPData.listData.concat(arr);
-
-                        console.log("saveListDataStorageName set %o",self.savedPLPData)   
                         lgkorUI.setStorage(saveListDataStorageName, self.savedPLPData, false);
-
-                        /*
+                        
+                        // BTOCSITE-5938-77 찜하기 오류 대응
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         lgkorUI.checkWishItem(ajaxUrl);
-                        */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }
@@ -804,7 +768,6 @@
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
                     if (isNew){
-                        console.log("animate");
                         //$(window).scrollTop($('.KRP0007').offset().top);
                         $('html, body').animate({scrollTop: $('.KRP0007').offset().top}, 300);
                     }
