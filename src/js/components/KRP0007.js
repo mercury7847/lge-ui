@@ -162,7 +162,7 @@
                         '<span class="chk-wish-wrap large">' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-wish-model-name="{{sku}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-wish-model-name="{{sku}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}}" data-wish-item-id="" >' + //BTOCSITE-5938-28 [모니터링] 찜하기 오류 //BTOCSITE-1057 : data-contents 추가 2021-08-09
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
@@ -324,9 +324,10 @@
                                 // $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
                             }
 
-                            // BTOCSITE-5938-77 찜하기 오류 대응
+                            /* BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                             var ajaxUrl = self.$section.attr('data-wish-url');
                             lgkorUI.checkWishItem(ajaxUrl);
+                            /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
@@ -735,9 +736,10 @@
                         self.savedPLPData.listData = self.savedPLPData.listData.concat(arr);
                         lgkorUI.setStorage(saveListDataStorageName, self.savedPLPData, false);
                         
-                        // BTOCSITE-5938-77 찜하기 오류 대응
+                        /* BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         lgkorUI.checkWishItem(ajaxUrl);
+                        /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }
