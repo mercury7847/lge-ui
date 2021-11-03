@@ -68,8 +68,17 @@
             subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
             myLocation: '내 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
         };
-    
-        var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
+        
+        // BTOCSITE-4785 s
+        if(dpPdp){
+            // 기획전에서 넘어올 경우, 좌표 설정
+           var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
+        }else{
+            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
+        }
+        
+        // BTOCSITE-4785 e
+
         // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
@@ -835,7 +844,7 @@
                     var geo = keywords.searchCodeDesc.split(',');
                     if(geo.length>1){
                          // BTOCSITE-4785 s
-                         if(dpPdp){
+                        if(dpPdp){
                             // 기획전에서 넘어올 경우:limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고, 가까운순으로 30개까지 리스팅 됨
                             var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:100}).slice(0, 30);
                         }else{
@@ -867,6 +876,7 @@
                 lgkorUI.requestAjaxDataFailCheck(self.localUrl, {city:encodeURI(val)}, function(result){
                     self._setSelectOption(self.$boroughSelect, result.data);
                     self.$boroughSelect.vcSelectbox('update');
+                    console.log(result.data);
                 });
             },
     
@@ -891,6 +901,7 @@
     
                 for(var i in list){
                     if(list[i].codeDesc == undefined || list[i].codeDesc == null) list[i].codeDesc = "";
+                    console.log(list[i].title,list[i].dataLocationX, list[i].dataLocationY);
                     var opt = vcui.template(localOptTemplate, list[i]);
                     select.append($(opt).get(0));
                 }
