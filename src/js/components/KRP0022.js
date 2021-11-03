@@ -31,19 +31,55 @@
 
             bindEvents: function() {
                 var _self = this;
-                self.$KRP0022.find('.ui_selectbox').on('change', function(e){
-                   _self.requestData();
+                
+                /* BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
+                self.$KRP0022.find('.ui_selectbox').on('change', function(e) {
+                    console.log( $(this).attr('id') )
+                    if ( $(this).attr('id') !== 'eventStatus') {
+                        // alert(e.type)
+                    }else{
+                        // alert( $(this).val() );
+                        if( $(this).val() === 'progress' ){
+                            $('input[name="win"]').prop('checked', false);
+                        }
+                    }
+                     _self.requestData();
                 });
 
-                //jytest 추가 
-                self.$KRP0022.find('#eventSort').on('change', function(e){
-                    _self.requestData();
+                //BTOCSITE-6859 : change_on 되었을때 체크박스, 셀렉박스 이벤트
+                self.$KRP0022.find('.ui_selectbox').on('change_on', function(e) {
+                     if ($(this).attr('id') === 'eventStatus') {
+                        $('input[name="win"]').prop('checked', true);
+                        $(this).val('end').prop('selected', true).trigger('change');
+                        
+                        _self.requestData();    
+                     }
                 });
+                //BTOCSITE-6859 : change_off 되었을때 체크박스, 셀렉박스 이벤트
+                self.$KRP0022.find('.ui_selectbox').on('change_off', function(e) {
+                     if ($(this).attr('id') === 'eventStatus') {
+                         $('input[name="win"]').prop('checked', false);
+                        $(this).val('progress').prop('selected', true).trigger('change');                        
+                        
+                        _self.requestData();    
+
+                     }
+                });
+
+                //BTOCSITE-6859 : 당첨자 체크 박스 추가, 셀렉박스 연동 이벤트
+                self.$KRP0022.find('#eventSort').on('change', function(e) {
+                    // _self.requestData();
+                    if( $(this).is(':checked') ){
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_on');    
+                    }else{
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_off');    
+                    }
+                });
+                /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
 
                 self.$tab.on("tabchange", function(e) {
                     _self.requestData();
                 });
-
 
                 self.$list.on('click', 'div.list-inner a.btn-link', function(e) {
                     e.preventDefault();
@@ -77,21 +113,17 @@
                     postData[$item.attr('id')] = $item.vcSelectbox('value');
                 });
 
-                self.$KRP0022.find('input:checkbox[name="win"]').each(function (index, item) {
-                    var $item = $(item);
-                    postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
-                });
-                //console.log("2222", postData);
+                /* BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
 
-                //jytest
+                // self.$KRP0022.find('input:checkbox[name="win"]').each(function (index, item) {
+                //     var $item = $(item);
+                //     postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
+                // });
+
                 if($('input:checkbox[name="win"]').is(":checked") == true) {
                     postData['eventStatus'] = 'win';
                     //postData[$item.attr('id')] = $('input:checkbox[name="win"]').val();
                 } 
-                // else {
-                //     postData['eventSort'] = '';
-                // }
-                // console.log("새로운 체크방식 당첨자", $('input:checkbox[name="win"]').is(":checked") == true);
 
                 // BTOCSITE-203 기획전 및 이벤트 우선순위 개발 요청건
                 // if($("#eventStatus").vcSelectbox('value') === 'progress') {
@@ -101,11 +133,13 @@
                 //     self.$KRP0022.find('#eventSort').closest(".sort-area").show();
                 // }
 
+                /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
+
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                 });
 
-                console.log("결과", postData);
+                //console.log("결과", postData);
             },
 
             updateList: function(data) {
@@ -130,16 +164,11 @@
                     /* //BTOCSITE-2065 : 이벤트&기획전 페이지 내 데이터레이어 삽입 (수정 작업 요청) 2021-09-02 */
 
                     self.$list.append(vcui.template(eventItemList, item));
-
-                    //jytest
-                    //console.log("11?", item.eventType);
-                    //console.log("22?", item.eventId);
                 });
 
-                //jytest
-                console.log("쏘팅된 개수", eventList.length);
+                //sorting 
+                //console.log("쏘팅된 개수", eventList.length);
                 
-
                 _self.checkNoData();
             },
 

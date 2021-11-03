@@ -338,7 +338,7 @@
         }
         /* //20210601 구매혜택 팝업 conts수정 */
 
-        /* 20210607 스펙선택 추가 */ 
+        /* 20210607 스펙선택 추가 */
         &.sibling-pop {
             padding: 0;
             .process-info {
@@ -481,9 +481,14 @@
                                     margin-right: 10px;
                                 }
                             }
+                            //2021101 시블링 레이어 컬러칩 영역 깨짐 수정
                             &.color {
                                 flex: auto;
                                 display: flex;
+                                .option-list {
+                                    margin: -8px 0 0 0;
+                                    font-size: 0;
+                                }
                                 .chk-wrap-colorchip {
                                     width: 40px;
                                     height: 40px;
@@ -491,12 +496,11 @@
                                     @include mobile {
                                         width: 34px;
                                         height: 34px;
-                                        margin-top:3px;
                                     }
                                     &:not(:last-child) {
-                                        margin-right: 8px;
+                                        margin-right: 15px;
                                         @include mobile {
-                                            margin-right:3px;
+                                            margin-right: 10px;
                                         }
                                     }
                                     input {
@@ -508,13 +512,13 @@
                                             &:before {
                                                 top: 0;
                                                 left: 0;
-                                                width: 40px;
-                                                height: 40px;
+                                                width: 23px;
+                                                height: 23px;
                                                 border: 0;
                                                 background-size: 144px auto;
+                                                transform: translate(8px, 8px) scale(1.739);
                                                 @include mobile {
-                                                    width: 34px;
-                                                    height: 34px;
+                                                    transform: translate(6px, 6px) scale(1.4781);
                                                 }
                                             }
                                             &:after {

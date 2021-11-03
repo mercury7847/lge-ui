@@ -47,7 +47,7 @@
             self.$searchDel = self.$searchSticky.find('.btn-delete');
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
-            self.$pagination = self.$searchPopup.find('.pagination').vcPagination();
+            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
 
             self.$searchIntro = self.$searchPopup.find('.intro-message');
             self.$prdResult = self.$searchPopup.find('.product-result-wrap');
@@ -110,7 +110,6 @@
                     var currentIndex = self.$appTablist.filter('.is-active').index();
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
-                    console.log("currentIndex", currentIndex)
                     self.appSmartTab.init(currentIndex)
                 }
             })
@@ -324,6 +323,7 @@
             destroy: function(){
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
+                thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
             }
         },
         appDownloadGuideSlider:{
@@ -413,17 +413,16 @@
             self.swapContent(target, contArray, self.$searchPopup);
         },
         requestModelData: function(param){
-            console.log('request!!!')
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =  '<li>' + 
-            '   <div class="icon-wrap"><i class="icon icon-{{imgName}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
+            var listTemplate =              
+            '<li>' + 
+            '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
             '   <div class="text">' + 
             '       <span class="name">{{categoryName}}</span>' + 
             '       <span class="serial-num">{{salesModelCode}}</span>' + 
             '   </div>' + 
             '</li>';
-            
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
@@ -435,7 +434,9 @@
                         var html = "";
 
                         data.listData.forEach(function(item){
-                            html += vcui.template(listTemplate, item);
+                            if( item.categoryName != "undefined" && item.categoryName != "" && item.imgname != "undefined" && item.imgname != "" && item.salesModelCode != "undefined" && item.salesModelCode != "") {
+                                html += vcui.template(listTemplate, item);
+                            }
                         })
                         self.$prdTotalCount.find('em').text(data.listPage.listCount)
                         self.$prdResult.find('.prd-result-lists').empty().append(html);

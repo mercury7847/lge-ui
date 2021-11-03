@@ -1489,6 +1489,11 @@ html {
                 height: auto;
                 object-fit: cover;
             }
+            &.img-mobile{
+                @include mobile{
+                    max-width: 100%;
+                }
+            }
         }
         .img-pc{
             display: block;
@@ -1630,6 +1635,7 @@ html {
                 font-weight: 400;
                 font-size: 15px;
                 line-height: 1.53;
+                width: 100vw;
             }
             .logo {
                 float: none;
@@ -1665,7 +1671,8 @@ html {
             justify-content: flex-start;
             text-align:left;
             line-height: 1.73;
-            padding-right:0;
+            padding-right:20px;
+            display: inline-block;
             
         }
     }

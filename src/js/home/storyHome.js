@@ -20,6 +20,7 @@
             '</div>'+
         '</div>';
 
+    //BTOCSITE-7260 뷰저블 셀렉터 id 추가
     var storyListTemplate = 
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+

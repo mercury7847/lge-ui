@@ -302,276 +302,118 @@ br.pc {
             margin-bottom: 25px;
         }
     }
-    .link-list {
-        /* 210528 - 버튼 디자인 수정 */
-        padding: 0 82px 0 93px;
-        font-size: 0;
-        @media screen and (max-width: 1024px){
-        //@include mobile {
-            // margin-top: 50px;
-            padding: 20px 0  ;
-            text-align: center;
+    /* BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 */
+    .link-list{
+        display:flex;
+        margin-left:-20px;
+        padding:0 20px;
+        @include mobile{
+            margin-left:-8px;
+            padding:0 16px;
         }
-        li {
-            display: inline-block;
-            width: calc(33.33% - 20px);
-            border-radius: 16px;
-            
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
-            background-color: #ffffff;
-            border:2px solid #fff;
-            margin: 0 10px;
-            &:hover {
-                border: solid 2px #da0f47; 
+        .link-item{
+            margin-left:20px;
+            width:calc(33.33% - 20px);
+            @include mobile{
+                margin-left:8px;
+                width:calc(33.33% - 8px);
             }
-            @media screen and (max-width: 1024px){
-                margin: 0 5px;
-                min-height:140px;
-                border:4px solid #fff;
-            //@include mobile {                
-                & + li {
-                    // margin-top: 38px;
-                    margin-top: 0;
+            >a{
+                display:table;
+                padding:113px 0 30px;
+                width:100%;
+                height:100%;
+                border-radius:8px;
+                border:2px solid transparent;
+                box-shadow:1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                text-align:center;
+                @include mobile{
+                    padding:70px 5px 15px;
                 }
-                &:hover {
-                    border: solid 4px #da0f47; 
-                }
-            }
-            @include mobile{ //210629
-                width: calc(33.33% - 18px);
-            }
-            @media screen and (max-width:361px){
-                width: calc(33.33% - 10px);
-            }
-
-            > span, 
-            > a {
-                display: inline-block;
-                position: relative;
-                text-align: center;
-                padding: 105px 22px 30px;
-                font-size: 24px;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: 1.42;
-                &:after {
-                    display: block;
-                    content:' ';
-                    position:absolute;
-                    right:-10px;
-                    bottom:30px;
-                    width:32px;
-                    height:32px;
-                    background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
-                    //210629
-                    @media screen and (max-width:1024px) {
-                        right:-5px;
-                        bottom:21px;
-                        width:16px;
-                        height:16px;
-                        background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
-                    }
+                >span{
+                    display:table-cell;
+                    position:relative;
+                    vertical-align:middle;
+                    font-size:20px;
+                    font-weight:700;
+                    line-height:30px;
                     @include mobile{
-                        right:3px; 
-                        bottom:21px;
+                        font-size:12px;
+                        line-height:20px;
+                        .pc-only{
+                            display:none;
+                        }
                     }
-                    @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
+                    @include pc{
+                        .mo-only{
+                            display:none;
+                        }
                     }
-                    //210629
-                }
-                @include pc {
-                    &:hover {
-                        &:after {
-                            display: block;
+                    @media screen and (max-width: 980px){
+                        .mo-only{
+                            display:block;
+                        }
+                    }
+                    .day{
+                        display:inline-block;
+                        @include mobile{
+                            display:block;
+                        }
+                    }
+                    .ico-arr{
+                        display:inline-block;
+                        position:relative;
+                        top:4px;
+                        width:24px;
+                        height:24px;
+                        background:url('/lg5-common/images/icons/btn-arr-24.svg') no-repeat 0 0;
+                        @include mobile{
+                            top:2px;
+                            width:12px;
+                            height:12px;
+                            background:url('/lg5-common/images/icons/btn_arrow_right_24.svg') no-repeat 0 0;
+                            background-size:100% 100%;
                         }
                     }
                 }
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    padding:80px 3px 20px;
-                    margin: 0;
-                    text-align: center;
-                    max-width:100px;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                //210629
-                @include mobile{
-                    padding:80px 10px 20px;
-                    max-width:90px;
-                    font-size:12px;
-                    line-height:20px;
-                }
-                @media screen and (max-width: 334px){
-                    padding: 80px 5px 20px;
-                }
-                @media screen and (max-width: 280px){
-                    padding: 80px 0 20px;
-                    max-width:79px;
-                }
-                //210629
-                &:before {
-                    display: inline-block;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);                           
-                    margin: 20px 0;
-                    width: 64px;
-                    height: 64px;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        width: 48px;
-                        height: 48px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                    }
+                &:hover, &:focus{
+                    border:2px solid #da0f47;
+                    outline:none;
                 }
             }
-            &.on {
-                > span, 
-                > a {
-                    color: $color-default;
-                }
-            }
-            &:nth-child(1) {
-                text-align: center;                
-            }
-            &:nth-child(2) {
-                text-align: center;
-            }
-            &:nth-child(3) {
-                text-align: center;
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    text-align: center;
-                }
-            }
-            /* //210528 - 버튼 디자인 수정 */
-            &.link-benefit {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    margin: 20px 0;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-            }
-            &.link-planner {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-            }
-            &.link-my {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-
-            }
-            &.next-schedule {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on span:before,
-                //&:hover span:before {
-                //    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-                .day {
-                    display: inline-block;
-                }
-            }
-        }
-        //210629
-        li:nth-child(1), li:nth-child(2){
-            > a {
-                &:after{
-                    @media screen and (max-width: 1024px){
-                        right:5px;
-                        bottom:22px;
-                    }
-
+            &.link{
+                &-benefit{
+                    background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 30px no-repeat;
                     @include mobile{
-                        right:7px;
-                        bottom:21px;
-                    }
-
-                    @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
+                        background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 15px no-repeat;
+                        background-size:48px 48px;
                     }
                 }
+                &-planner{
+                    background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 30px no-repeat;
+                    @include mobile{
+                        background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 15px no-repeat;
+                        background-size:48px 48px;
+                    }
+                }
+                &-my{
+                    background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 30px no-repeat;
+                    @include mobile{
+                        background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 15px no-repeat;
+                        background-size:48px 48px;
+                    }
+                }
             }
-        }
-        //210629
-    }
-    /* 210629 케어솔루션 홈 버튼 로그인후 버튼 영역 */
-    .link-list.list02 {
-        li {
-            a:after{
-                @media screen and (max-width:1207px){
-                    right:-5px;
-                    bottom:30px;
-                }
-                @media screen and (max-width: 1024px){
-                    right:-5px;
-                    bottom:22px;
-                }
+            &.next-schedule{
+                background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 30px no-repeat;
                 @include mobile{
-                    right:3px; //210629
-                    bottom:21px; //210629
-                }
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
+                    background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 15px no-repeat;
+                    background-size:48px 48px;
                 }
             }
         }
-        //210629
-        li:nth-child(1), li:nth-child(2) {
-            a:after{
-                @media screen and (max-width: 1024px){
-                    right:-10px;
-                    bottom:22px;
-                }
-
-                @include mobile{
-                    right:-2px; //210629
-                    bottom:21px; //210629
-                }
-
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
-                }
-            }
-        }
-        //210629
     }
+    /* //BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 */
 }
 
 // 플로우배너

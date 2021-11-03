@@ -32,13 +32,14 @@ var categoryTabContentsTmpl = '{{#each obj in list}}\n'+
 
 
 //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
+//BTOCSITE-7260 뷰저블 셀렉터 id 추가
 //많이 구매하는 제품
 var rankBuyProductTmpl =
     '<div class="inner">\n'+
     '   {{#each (obj, index) in list}}'+
     '      {{#if index === 0}}'+
     '         <div class="best">\n'+
-    '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
     '                 <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
     '                 <div class="img"><img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                 <div class="product-info">\n'+
@@ -50,7 +51,7 @@ var rankBuyProductTmpl =
     '      {{#else}}'+
     '          {{#if index === 1}}<ol class="list">\n{{/if}}'+
     '              <li>\n'+
-    '                  <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '                  <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
     '                  <div class="flag"><span class="num">{{obj.ranking}}</span></div>\n'+
     '                  <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
     '                  <div class="product-info">\n'+
@@ -811,7 +812,7 @@ $(function(){
         //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
 
-        //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
+        //-S- BTOCSITE-7560 스토어 홈 > 이달의 추천제품 : 정상적으로 판매 가능한 제품만 노출
         function buyProductInit(cate) {
             var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
             $buyProduct.find('.tabs').empty().html(vcui.template(buyProductTabTmpl, {list:cate}));
@@ -819,7 +820,6 @@ $(function(){
                 // 탭 이벤트 분기
                 switch(e.type) {
                     case "tabinit" :
-                    console.log("tabinit %o",data);
                         // 탭초기화시 탭선택
                         var idx = Math.floor(Math.random() * cate.length || 0);
                             $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
@@ -828,8 +828,8 @@ $(function(){
                         // 탭이동 이벤트
                         var idx = data.selectedIndex;
                         var superCategoryId = $buyProduct.find('.tabs li a').eq(idx).data("category");
-                            console.log("tabbeforechange %o",idx);
                             buildRankBuyProduct({
+                                searchType:'storehome',
                                 superCategoryId : superCategoryId
                             })
                     break;

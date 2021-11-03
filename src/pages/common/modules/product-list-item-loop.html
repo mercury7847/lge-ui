@@ -262,7 +262,7 @@
                         </span>
                     </div>
                     <div class="cart">
-                        <!-- BTOCSITE-6375 - 구매가능시 : 장바구니 활성화 + 구매하기, 구매불가시 : 장바구니 아이콘 비노출 + 제품정보 보기 -->
+                        <!-- BTOCSITE-6375 - 구매가능시 : 장바구니 활성화 + 구매하기, 구매불가시 : 장바구니 아이콘 비노출 + 제품정보 보기 (스토어,렌탈/케어 일때 동시 적용) -->
                         <!-- 구매불가시 .disabled 추가 -->
                         @@if (context.bottom.cartDisabled) {
                             <a href="#n" class="btn-cart disabled" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT" disable=""><span class="blind">장바구니 담기</span></a>
@@ -312,6 +312,7 @@
                         <div class="cart">
                             <!-- 비활성화 시 .disabled 추가 -->
                             <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <!-- 구매불가시 .disabled 추가 -->
                             <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="PRODUCT"><span class="blind">장바구니 담기</span></a>
                         </div>
                         <div class="btn-area">
@@ -334,6 +335,7 @@
                         <div class="cart">
                             <!-- 비활성화 시 .disabled 추가 -->
                             <!--2021.2.10 data-id(modelId), data-model-name(modelName), data-rtseq(rtModelSeq), data-type-flag(bizType) 추가-->
+                            <!-- 2021.11.01 :  장바구니 활성화 + 구매하기, 구매불가시 : 장바구니 아이콘 비노출 + 제품정보 보기로 추후 변경해야 할시 BTOCSITE-6375 부분 참조 할 것  -->
                             <a href="#n" class="btn-cart" data-id="MD08045006" data-model-name="55UN7800GNA" data-rtseq="rtModelSeq" data-type-flag="CARESOLUTION"><span class="blind">장바구니 담기</span></a>
                         </div>
                         <div class="btn-area">
