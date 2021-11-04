@@ -39,11 +39,21 @@ var rankBuyProductTmpl =
     '   {{#each (obj, index) in list}}'+
     '      {{#if index === 0}}'+
     '         <div class="best">\n'+
-    '             <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
-    '                 <div class="flag"><img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1"></div>\n'+
-    '                 <div class="img"><img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '                 {{#if obj}}'+
+    '                 <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '                 {{#else}}'+
+    '                 <a class="no-border">\n'+
+    '                 {{/if}}'+
+    '                 <div class="flag">{{#if obj}}<img src="/lg5-common/images/PRS/img-flag-buy-best.svg" alt="BEST 1">{{/if}}</div>\n'+
+    '                 <div class="img">'+
+    '                    {{#if obj.largeImageUrl}}'+
+    '                       <img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)">\n'+
+    '                    {{#else}}'+
+    '                    <img class="no-img">\n'+
+    '                    {{/if}}'+
+    '                 </div>\n'+
     '                 <div class="product-info">\n'+
-    '                      <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
+    '                      <p class="tit">{{#if obj.modelDisplayName}}{{#raw obj.modelDisplayName}}{{/if}}</p>\n'+
     '                      <div class="price">{{#if obj.totalPrice > 0}}{{ vcui.number.addComma(obj.totalPrice == obj.obsOriginalPrice ? obj.obsOriginalPrice : obj.totalPrice) }}<em>원{{/if}}</em></div>\n'+
     '                 </div>\n'+
     '             </a>\n'+
@@ -51,11 +61,21 @@ var rankBuyProductTmpl =
     '      {{#else}}'+
     '          {{#if index === 1}}<ol class="list">\n{{/if}}'+
     '              <li>\n'+
-    '                  <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}" id="beu_product_{{obj.modelId}}">\n'+
-    '                  <div class="flag"><span class="num">{{obj.ranking}}</span></div>\n'+
-    '                  <div class="img"><img src="{{obj.mediumImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)"></div>\n'+
+    '                 {{#if obj}}'+
+    '                 <a href="{{obj.link}}" data-model-id="{{obj.modelId}}" data-ec-product="{{obj.ecProduct}}">\n'+
+    '                 {{#else}}'+
+    '                 <a class="no-border">\n'+
+    '                 {{/if}}'+
+    '                 <div class="flag"><span class="num">{{obj.ranking}}</span></div>\n'+
+    '                 <div class="img">'+
+    '                    {{#if obj.largeImageUrl}}'+
+    '                    <img src="{{obj.largeImageUrl}}" alt="{{obj.modelDisplayName}}" onError="lgkorUI.addImgErrorEvent(this)">\n'+
+    '                    {{#else}}'+
+    '                    <img class="no-img">\n'+
+    '                    {{/if}}'+
+    '                 </div>\n'+
     '                  <div class="product-info">\n'+
-    '                      <p class="tit">{{#raw obj.modelDisplayName}}</p>\n'+
+    '                      <p class="tit">{{#if obj.modelDisplayName}}{{#raw obj.modelDisplayName}}{{/if}}</p>\n'+
     '                      <div class="price">{{#if obj.totalPrice > 0}}{{ vcui.number.addComma(obj.totalPrice == obj.obsOriginalPrice ? obj.obsOriginalPrice : obj.totalPrice) }}<em>원{{/if}}</em></div>\n'+
     '                  </div>\n'+
     '                  </a>\n'+
@@ -844,22 +864,30 @@ $(function(){
             var storeRankBuyProductUrl = $context.find('.module-buy-product').data('ajaxUrl') || '/lg5-common/data-ajax/home/storeRankBuyProduct.json';
 
             lgkorUI.requestAjaxData(storeRankBuyProductUrl,param, function(result){
-                var data = result.products;
-                    data = data.slice(0,5); // rank 5위까지 가져옴
+                var data = result.products && result.products.length >0 ? result.products.slice(0,5) : [];
+                    data = $.extend(new Array(5),data);
                     data = vcui.array.map(data, function(item, index){
-                        item['modelGubunName'] =  item['modelGubun'];
-                        item['obsOriginalPrice'] = parseInt(item['obsOriginalPrice'] || 0);
-                        item['obsMemberPrice']   = parseInt(item['obsMemberPrice'] || 0);
-                        item['obsDiscountPrice'] = parseInt(item['obsDiscountPrice'] || 0);
-                        // item['totalPrice'] = item['obsOriginalPrice'] - item['obsMemberPrice'] - item['obsDiscountPrice'];
-                        item['totalPrice'] = item['price'];
+                        if(item) {
+                            item['modelGubunName'] =  item['modelGubun'];
+                            item['obsOriginalPrice'] = parseInt(item['obsOriginalPrice'] || 0);
+                            item['obsMemberPrice']   = parseInt(item['obsMemberPrice'] || 0);
+                            item['obsDiscountPrice'] = parseInt(item['obsDiscountPrice'] || 0);
+                            // item['totalPrice'] = item['obsOriginalPrice'] - item['obsMemberPrice'] - item['obsDiscountPrice'];
+                            item['totalPrice'] = item['price'];
+        
+                            // item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
+    
+    
+                            item.ecProduct = JSON.stringify(getEcProduct(item));
+                        } else {
+                            item = "";
+                        }
 
-                        // item['isPrice'] = item['obsSellFlag'] && item['obsInventoryFlag'] && item['obsCartFlag'] && item['obsSellFlag']=='Y' && item['obsInventoryFlag']=='Y' && item['obsCartFlag']=='Y';
-
-
-                        item.ecProduct = JSON.stringify(getEcProduct(item));
                         return item;
                     });
+
+
+                    console.log("data %o",data);
 
                 var $buyProduct = $context.find('.buy-product')
                     $buyProduct.html(vcui.template(rankBuyProductTmpl, {list:data}));
