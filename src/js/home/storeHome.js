@@ -886,9 +886,6 @@ $(function(){
                         return item;
                     });
 
-
-                    console.log("data %o",data);
-
                 var $buyProduct = $context.find('.buy-product')
                     $buyProduct.html(vcui.template(rankBuyProductTmpl, {list:data}));
                     $('body').vcLazyLoaderSwitch('reload', $buyProduct);
