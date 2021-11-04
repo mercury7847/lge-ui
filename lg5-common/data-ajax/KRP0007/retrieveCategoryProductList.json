@@ -445,9 +445,492 @@
             "productList": [
                 {
                     "affiliateCode": null,
+                    "bizType": "CARESOLUTION",
+                    "modelName": "OLED55B1KNA",
+                    "modelDisplayName": "LG 올레드 TV (스탠드형)-렌탈/케어",
+                    "modelId": "MD08923002",
+                    "modelStatusCode": "ACTIVE",
+                    "modelDiscontinuedDate": null,
+                    "discontinuedDisplayEndDate": null,
+                    "modelDiscontinuedDisplayFlag": null,
+                    "modelPageType": null,
+                    "modelGubun": "1",
+                    "obsInventoryFlag": "Y",
+                    "obsOriginalPrice": 77777,
+                    "obsMemberPrice": 118300,
+                    "obsDiscountPrice": 89900,
+                    "obsTotalDiscountPrice": 208200,
+                    "obsSellingPrice": 77777,
+                    "obsInventoryQty": 9999,
+                    "obsSellFlag": "Y",
+                    "obsCartFlag": "Y",
+                    "obsTabDisplayFlag": null,
+                    "productLevelCode": null,
+                    "salesModelCode": "OLED55B1KS",
+                    "salesSuffixCode": "AKRG",
+                    "beforeVisitModelFlag": null,
+                    "membershipFlag": null,
+                    "modelComponent": null,
+                    "reviewDisplayFlag": "Y",
+                    "newProductBadgeFlag": "Y",
+                    "cashbackBadgeFlag": "N",
+                    "bestBadgeFlag": "N",
+                    "sku": "OLED55B1KS.AKRG",
+                    "arFlag": "N",
+                    "arUrl": null,
+                    "obsOpenFlag": "Y",
+                    "advanceBookingModelFlag": null,
+                    "mixProductFlag": null,
+                    "buyBtnFlag": null,
+                    "rentalOnlyFlag": "N",
+                    "careshipOnlyFlag": "N",
+                    "cashbackBadgeGubun": null,
+                    "imageAltText": null,
+                    "largeImageAddr": null,
+                    "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/md08923002-350x350.jpg",
+                    "model360Image": null,
+                    "model360Title": null,
+                    "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/md08923002-280x280.jpg",
+                    "modelReleaseDate": "2021-05-01",
+                    "modelUrlPath": "/tvs/oled55b1kna-stand",
+                    "categoryId": "CT50000025",
+                    "categoryName": "TV",
+                    "subCategoryId": "CT50000070",
+                    "subCategoryName": "올레드 TV",
+                    "superCategoryId": "CT50000024",
+                    "superCategoryName": "TV/AV",
+                    "subCategoryCareshipFlag": "",
+                    "lgpickFlag": "N",
+                    "lgpickDisNo": "999999",
+                    "lgpickSetNo": "1111",
+                    "years1TotAmt": "37900",
+                    "visitPer": "3",
+                    "totalPrice": "156800.00000",
+                    "reviewsScore": "5",
+                    "reviewsCount": "1",
+                    "wishListFlag": "false",
+                    "wishListId": "",
+                    "wishItemId": "",
+                    "cartListFlag": null,
+                    "rtModelSeq": null,
+                    "myMembershipPoint": null,
+                    "loginFlag": null,
+                    "name": null,
+                    "unifyId": null,
+                    "mobileNo": null,
+                    "restockFlag": null,
+                    "rewardAjaxUrl": null,
+                    "instockNoticeAjaxUrl": null,
+                    "obsBtnRule": "enable",
+                    "compatibleModels": [],
+                    "galleryImages": [
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium11.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small11.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large11.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m11.jpg",
+                            "repOrderNo": 1
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium02.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small02.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large02.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m02.jpg",
+                            "repOrderNo": 2
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium03.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small03.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large03.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m03.jpg",
+                            "repOrderNo": 3
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium04.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small04.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large04.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m04.jpg",
+                            "repOrderNo": 4
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium05.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small05.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large05.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m05.jpg",
+                            "repOrderNo": 5
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium06.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small06.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large06.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m06.jpg",
+                            "repOrderNo": 6
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium07.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small07.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large07.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m07.jpg",
+                            "repOrderNo": 7
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium08.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small08.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large08.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m08.jpg",
+                            "repOrderNo": 8
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium09.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small09.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large09.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m09.jpg",
+                            "repOrderNo": 9
+                        }
+                    ],
+                    "rollingImages": [],
+                    "videos": [],
+                    "bulletFeatures": [
+                        {
+                            "high_display_order_no": 1,
+                            "specText": "화면크기 : 138cm",
+                            "repOrderNo": 3
+                        },
+                        {
+                            "high_display_order_no": 1,
+                            "specText": "해상도 : 울트라HD(3,840x2,160)",
+                            "repOrderNo": 8
+                        },
+                        {
+                            "high_display_order_no": 2,
+                            "specText": "인공지능 프로세서 : 4세대 인공지능 알파7",
+                            "repOrderNo": 2
+                        },
+                        {
+                            "high_display_order_no": 3,
+                            "specText": "사운드 출력/채널 : 40W/2.2Ch",
+                            "repOrderNo": 6
+                        },
+                        {
+                            "high_display_order_no": 4,
+                            "specText": "디자인 타입 : 페이퍼 슬림",
+                            "repOrderNo": 3
+                        }
+                    ],
+                    "siblings": [],
+                    "pdpCompatibleSearchAjaxUrl": null,
+                    "compatibleCount": 0,
+                    "siblingAjaxUrl": null,
+                    "btnFlag": null,
+                    "disposableModels": [],
+                    "disposableStandards": [],
+                    "rTypeCount": "0",
+                    "cTypeCount": "1",
+                    "retalCareshipInfo": [],
+                    "substitutePart": [],
+                    "substitutePartCount": 0,
+                    "awards": [
+                        {
+                            "storyPdpThumbnailPath": "/kr/images/award/",
+                            "storyTitle": "2년 연속 국가고객만족도(NCSI) TV 부문 1위",
+                            "base_date": "Jan 1, 2019",
+                            "storyPdpThumbnailAltText": "국가고객만족도(NCSI) 로고",
+                            "storyPdpThumbnailServerName": "20190801172335325_0.png"
+                        }
+                    ],
+                    "promotionBadges": [],
+                    "pTypeRewardCount": "0",
+                    "cTypeRewardCount": "0",
+                    "benefitCards": [
+                        {
+                            "installmentTo": "6",
+                            "cardName": "신한카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "BC카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "국민카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "농협카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "4",
+                            "cardName": "롯데카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "삼성카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "8",
+                            "cardName": "하나카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "7",
+                            "cardName": "현대카드",
+                            "billingSalePercent": ""
+                        }
+                    ]
+                },
+                {
+                    "affiliateCode": null,
                     "bizType": "PRODUCT",
                     "modelName": "OLED55B1KNA",
-                    "modelDisplayName": "LG 올레드 TV (스탠드형)",
+                    "modelDisplayName": "LG 올레드 TV (스탠드형)-스토어 캐어십온니",
+                    "modelId": "MD08923002",
+                    "modelStatusCode": "ACTIVE",
+                    "modelDiscontinuedDate": null,
+                    "discontinuedDisplayEndDate": null,
+                    "modelDiscontinuedDisplayFlag": null,
+                    "modelPageType": null,
+                    "modelGubun": "1",
+                    "obsInventoryFlag": "Y",
+                    "obsOriginalPrice": 77777,
+                    "obsMemberPrice": 118300,
+                    "obsDiscountPrice": 89900,
+                    "obsTotalDiscountPrice": 208200,
+                    "obsSellingPrice": 77777,
+                    "obsInventoryQty": 9999,
+                    "obsSellFlag": "Y",
+                    "obsCartFlag": "Y",
+                    "obsTabDisplayFlag": null,
+                    "productLevelCode": null,
+                    "salesModelCode": "OLED55B1KS",
+                    "salesSuffixCode": "AKRG",
+                    "beforeVisitModelFlag": null,
+                    "membershipFlag": null,
+                    "modelComponent": null,
+                    "reviewDisplayFlag": "Y",
+                    "newProductBadgeFlag": "Y",
+                    "cashbackBadgeFlag": "N",
+                    "bestBadgeFlag": "N",
+                    "sku": "OLED55B1KS.AKRG",
+                    "arFlag": "N",
+                    "arUrl": null,
+                    "obsOpenFlag": "Y",
+                    "advanceBookingModelFlag": null,
+                    "mixProductFlag": null,
+                    "buyBtnFlag": null,
+                    "rentalOnlyFlag": "N",
+                    "careshipOnlyFlag": "N",
+                    "cashbackBadgeGubun": null,
+                    "imageAltText": null,
+                    "largeImageAddr": null,
+                    "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/md08923002-350x350.jpg",
+                    "model360Image": null,
+                    "model360Title": null,
+                    "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/md08923002-280x280.jpg",
+                    "modelReleaseDate": "2021-05-01",
+                    "modelUrlPath": "/tvs/oled55b1kna-stand",
+                    "categoryId": "CT50000025",
+                    "categoryName": "TV",
+                    "subCategoryId": "CT50000070",
+                    "subCategoryName": "올레드 TV",
+                    "superCategoryId": "CT50000024",
+                    "superCategoryName": "TV/AV",
+                    "subCategoryCareshipFlag": "",
+                    "lgpickFlag": "N",
+                    "lgpickDisNo": "999999",
+                    "lgpickSetNo": "1111",
+                    "years1TotAmt": null,
+                    "visitPer": null,
+                    "totalPrice": "156800.00000",
+                    "reviewsScore": "5",
+                    "reviewsCount": "1",
+                    "wishListFlag": "false",
+                    "wishListId": "",
+                    "wishItemId": "",
+                    "cartListFlag": null,
+                    "rtModelSeq": null,
+                    "myMembershipPoint": null,
+                    "loginFlag": null,
+                    "name": null,
+                    "unifyId": null,
+                    "mobileNo": null,
+                    "restockFlag": null,
+                    "rewardAjaxUrl": null,
+                    "instockNoticeAjaxUrl": null,
+                    "obsBtnRule": null,
+                    "compatibleModels": [],
+                    "galleryImages": [
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium11.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small11.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large11.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m11.jpg",
+                            "repOrderNo": 1
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium02.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small02.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large02.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m02.jpg",
+                            "repOrderNo": 2
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium03.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small03.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large03.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m03.jpg",
+                            "repOrderNo": 3
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium04.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small04.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large04.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m04.jpg",
+                            "repOrderNo": 4
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium05.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small05.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large05.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m05.jpg",
+                            "repOrderNo": 5
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium06.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small06.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large06.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m06.jpg",
+                            "repOrderNo": 6
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium07.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small07.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large07.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m07.jpg",
+                            "repOrderNo": 7
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium08.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small08.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large08.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m08.jpg",
+                            "repOrderNo": 8
+                        },
+                        {
+                            "largeImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/medium09.jpg",
+                            "smallImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/small09.jpg",
+                            "zoomImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large09.jpg",
+                            "zoomMobImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08923002/gallery/large-m09.jpg",
+                            "repOrderNo": 9
+                        }
+                    ],
+                    "rollingImages": [],
+                    "videos": [],
+                    "bulletFeatures": [
+                        {
+                            "high_display_order_no": 1,
+                            "specText": "화면크기 : 138cm",
+                            "repOrderNo": 3
+                        },
+                        {
+                            "high_display_order_no": 1,
+                            "specText": "해상도 : 울트라HD(3,840x2,160)",
+                            "repOrderNo": 8
+                        },
+                        {
+                            "high_display_order_no": 2,
+                            "specText": "인공지능 프로세서 : 4세대 인공지능 알파7",
+                            "repOrderNo": 2
+                        },
+                        {
+                            "high_display_order_no": 3,
+                            "specText": "사운드 출력/채널 : 40W/2.2Ch",
+                            "repOrderNo": 6
+                        },
+                        {
+                            "high_display_order_no": 4,
+                            "specText": "디자인 타입 : 페이퍼 슬림",
+                            "repOrderNo": 3
+                        }
+                    ],
+                    "siblings": [],
+                    "pdpCompatibleSearchAjaxUrl": null,
+                    "compatibleCount": 0,
+                    "siblingAjaxUrl": null,
+                    "btnFlag": null,
+                    "disposableModels": [],
+                    "disposableStandards": [],
+                    "rTypeCount": "0",
+                    "cTypeCount": "1",
+                    "careshipOnlyFlag": "Y",
+                    "retalCareshipInfo": [],
+                    "substitutePart": [],
+                    "substitutePartCount": 0,
+                    "awards": [
+                        {
+                            "storyPdpThumbnailPath": "/kr/images/award/",
+                            "storyTitle": "2년 연속 국가고객만족도(NCSI) TV 부문 1위",
+                            "base_date": "Jan 1, 2019",
+                            "storyPdpThumbnailAltText": "국가고객만족도(NCSI) 로고",
+                            "storyPdpThumbnailServerName": "20190801172335325_0.png"
+                        }
+                    ],
+                    "promotionBadges": [],
+                    "pTypeRewardCount": "0",
+                    "cTypeRewardCount": "0",
+                    "benefitCards": [
+                        {
+                            "installmentTo": "6",
+                            "cardName": "신한카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "BC카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "국민카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "농협카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "4",
+                            "cardName": "롯데카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "6",
+                            "cardName": "삼성카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "8",
+                            "cardName": "하나카드",
+                            "billingSalePercent": ""
+                        },
+                        {
+                            "installmentTo": "7",
+                            "cardName": "현대카드",
+                            "billingSalePercent": ""
+                        }
+                    ]
+                },
+                {
+                    "affiliateCode": null,
+                    "bizType": "PRODUCT",
+                    "modelName": "OLED55B1KNA",
+                    "modelDisplayName": "LG 올레드 TV (스탠드형)-스토어 구매불가능",
                     "modelId": "MD08923002",
                     "modelStatusCode": "ACTIVE",
                     "modelDiscontinuedDate": null,
@@ -688,7 +1171,7 @@
                     "affiliateCode": null,
                     "bizType": "PRODUCT",
                     "modelName": "OLED65C1KNA",
-                    "modelDisplayName": "LG 올레드 TV (벽걸이형)",
+                    "modelDisplayName": "LG 올레드 TV (벽걸이형)-스토어 구매가능",
                     "modelId": "MD08922097",
                     "modelStatusCode": "ACTIVE",
                     "modelDiscontinuedDate": null,
