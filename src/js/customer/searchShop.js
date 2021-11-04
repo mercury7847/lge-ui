@@ -69,15 +69,6 @@
             myLocation: '내 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
         };
         
-        // BTOCSITE-4785 s
-        // if(dpPdp){
-        //     // 기획전에서 넘어올 경우, 좌표 설정
-        //    var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
-        // }else{
-        //     var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-        // }
-        
-        // // BTOCSITE-4785 e
 
             var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
 
@@ -831,8 +822,8 @@
                 if(keywords.searchType =='local'){
                     // BTOCSITE-4785 s
                     if(dpPdp){
-                        var localGeo = keywords.selectLocationXY.split(',');
-                        alert(2, localGeo);
+                        var localGeo = keywords.searchLocationXY.split(',');
+                        console.log(keywords.searchLocationXY);
                         if(localGeo.length>1){
                             var nArr = self._filterDistance(self.totalStoreData, {lat:localGeo[0], long:localGeo[1], limit:100}).slice(0, 30);
                             nArr = self._filterOptions(nArr, keywords);
@@ -1128,7 +1119,7 @@
                 var optdata = self._getOptions();
                 var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
                 // BTOCSITE-4785
-                var selectLocationXY = self.$boroughSelect.find('option:selected').data("dataLocationXY");
+                var selectLocationXY = self.$boroughSelect.find('option:selected').data("codeDesc");
                 var keywords = {
                     searchType: self.searchType,
     
@@ -1138,7 +1129,7 @@
                     searchCity: self.$citySelect.val(),
                     searchBorough: self.$boroughSelect.val(),
                     // BTOCSITE-4785
-                    selectLocationXY: selectLocationXY == undefined ? "" : selectLocationXY,
+                    searchLocationXY: selectLocationXY == undefined ? "" : selectLocationXY,
 
                     
                     searchSubwayLocal: self.$subwayCitySelect.val(),
