@@ -70,14 +70,16 @@
         };
         
         // BTOCSITE-4785 s
-        if(dpPdp){
-            // 기획전에서 넘어올 경우, 좌표 설정
-            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
-        }else{
-            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
-        }
+        // if(dpPdp){
+        //     // 기획전에서 넘어올 경우, 좌표 설정
+        //    var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
+        // }else{
+        //     var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
+        // }
         
-        // BTOCSITE-4785 e
+        // // BTOCSITE-4785 e
+
+            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
 
         // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
@@ -827,6 +829,17 @@
                 var resultLen = 0;
     
                 if(keywords.searchType =='local'){
+                    // BTOCSITE-4785 s
+                    if(dpPdp){
+                        var localGeo = keywords.selectLocationXY.split(',');
+                        alert(2, localGeo);
+                        if(localGeo.length>1){
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:localGeo[0], long:localGeo[1], limit:100}).slice(0, 30);
+                            nArr = self._filterOptions(nArr, keywords);
+                            resultLen = nArr.length;
+                            self.$map.draw(nArr, localGeo[0], localGeo[1]);
+                        }
+                    } else {
                     var searchCity = self.$citySelect.find('option:selected').text();
                     var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
                         return keywords.searchCity!==''? xsearch(item.shopAdress, searchCity).length > 0 : false;
@@ -838,6 +851,8 @@
                     nArr = self._filterOptions(nArr, keywords);
                     resultLen = nArr.length;
                     self.$map.draw(nArr);
+                    }
+                    // BTOCSITE-4785 s
     
                 }else if(keywords.searchType =='subway'){
     
@@ -901,7 +916,6 @@
     
                 for(var i in list){
                     if(list[i].codeDesc == undefined || list[i].codeDesc == null) list[i].codeDesc = "";
-                    console.log(list[i].title,list[i].dataLocationX, list[i].dataLocationY);
                     var opt = vcui.template(localOptTemplate, list[i]);
                     select.append($(opt).get(0));
                 }
@@ -1113,7 +1127,8 @@
     
                 var optdata = self._getOptions();
                 var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
-    
+                // BTOCSITE-4785
+                var selectLocationXY = self.$boroughSelect.find('option:selected').data("dataLocationXY");
                 var keywords = {
                     searchType: self.searchType,
     
@@ -1122,6 +1137,9 @@
     
                     searchCity: self.$citySelect.val(),
                     searchBorough: self.$boroughSelect.val(),
+                    // BTOCSITE-4785
+                    selectLocationXY: selectLocationXY == undefined ? "" : selectLocationXY,
+
                     
                     searchSubwayLocal: self.$subwayCitySelect.val(),
                     searchSubwayLine: self.$subwayLineSelect.val(),
