@@ -23,6 +23,8 @@
                 self.$list = self.$KRP0022.find('ul.box-list-inner');
                 self.$noData = self.$KRP0022.find('div.no-data');
 
+                self.saved_eventStatus = '';
+
                 var _self = this;
                 _self.bindEvents();
                 _self.checkNoData();
@@ -31,10 +33,15 @@
 
             bindEvents: function() {
                 var _self = this;
+
+                var $te_progress = '';
+                var $te_end = '';
+
+                
                 
                 /* BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
                 self.$KRP0022.find('.ui_selectbox').on('change', function(e) {
-                    console.log( $(this).attr('id') )
+                    //console.log( $(this).attr('id') )
                     if ( $(this).attr('id') !== 'eventStatus') {
                         // alert(e.type)
                     }else{
@@ -47,32 +54,80 @@
                 });
 
                 //BTOCSITE-6859 : change_on 되었을때 체크박스, 셀렉박스 이벤트
-                self.$KRP0022.find('.ui_selectbox').on('change_on', function(e) {
-                     if ($(this).attr('id') === 'eventStatus') {
-                        $('input[name="win"]').prop('checked', true);
-                        $(this).val('end').prop('selected', true).trigger('change');
-                        
-                        _self.requestData();    
-                     }
-                });
-                //BTOCSITE-6859 : change_off 되었을때 체크박스, 셀렉박스 이벤트
-                self.$KRP0022.find('.ui_selectbox').on('change_off', function(e) {
-                     if ($(this).attr('id') === 'eventStatus') {
-                         $('input[name="win"]').prop('checked', false);
-                        $(this).val('progress').prop('selected', true).trigger('change');                        
-                        
-                        _self.requestData();    
+                // self.$KRP0022.find('.ui_selectbox').on('change_on', function(e) {
+                    
+                //     if ($(this).attr('id') === 'eventStatus') {
 
-                     }
+                //         var $thisTest = $(this).val();
+
+                //         $('input[name="win"]').prop('checked', true);
+                //         $(this).val('end').prop('selected', true).trigger('change');
+                //         //console.log("체크 했을때 val", $thisTest);
+
+                //         if($thisTest = $(this).val('end')) {
+                //             console.log("11111");
+                //         }
+                        
+                //         _self.requestData();
+                //     }
+                // });
+                // //BTOCSITE-6859 : change_off 되었을때 체크박스, 셀렉박스 이벤트
+                // self.$KRP0022.find('.ui_selectbox').on('change_off', function(e) {
+
+                //     var $thisTest = $(this).val();
+
+                //     if ($(this).attr('id') === 'eventStatus') {
+                //         $('input[name="win"]').prop('checked', false);
+                //         $(this).val('progress').prop('selected', true).trigger('change');                        
+                //         console.log("체크 풀었을때 val", $thisTest);
+
+                //         // if($thisTest = $(this).val('end')) {
+                //         //     console.log("11111");
+                //         // }
+
+                //         _self.requestData();    
+                //     }
+                // });
+
+                self.$KRP0022.find('.ui_selectbox').on('change_on change_off', function(e) {
+                    //console.log('event type : ')
+                    //console.log(e.type)
+
+                    // if ($(this).attr('id') === 'eventStatus') {
+                       
+                    //     if (e.type === 'change_on') {
+                    //         $('input[name="win"]').prop('checked', true);
+                    //         $(this).val('end').prop('selected', true).trigger('change');
+                    //     } else {
+                    //         $('input[name="win"]').prop('checked', false);
+                    //         $(this).val('progress').prop('selected', true).trigger('change');
+                    //     }
+                    //     _self.requestData();
+                    // }
+
+
+
+                    if ($(this).attr('id') === 'eventStatus') {
+                        if (e.type === 'change_on') {
+                            self.saved_eventStatus = $('#eventStatus').val();
+                            $('input[name="win"]').prop('checked', true);
+                            $(this).val('end').prop('selected', true).trigger('change');
+                        } else {
+                            self.saved_eventStatus = (self.saved_eventStatus === '') ? 'progress' : self.saved_eventStatus;
+                            $('input[name="win"]').prop('checked', false);
+                            $(this).val(self.saved_eventStatus).prop('selected', true).trigger('change');
+                        }
+                        _self.requestData();
+                    }
                 });
 
                 //BTOCSITE-6859 : 당첨자 체크 박스 추가, 셀렉박스 연동 이벤트
                 self.$KRP0022.find('#eventSort').on('change', function(e) {
                     // _self.requestData();
                     if( $(this).is(':checked') ){
-                        self.$KRP0022.find('.ui_selectbox').trigger('change_on');    
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_on');
                     }else{
-                        self.$KRP0022.find('.ui_selectbox').trigger('change_off');    
+                        self.$KRP0022.find('.ui_selectbox').trigger('change_off');
                     }
                 });
                 /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
