@@ -171,12 +171,23 @@
                         '<a href="#n" class="btn-cart{{#if !checkBtnFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" data-contents="{{modelDisplayName}}" {{#if !checkBtnFlag}}disabled{{/if}}><span class="blind">장바구니 담기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>' +
                     '<div class="btn-area">' +
-                        // BTOCSITE-6375 s
+                         // BTOCSITE-6375 s
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">' +
                         '{{#if bizType == "CARESOLUTION"}}' +
+                            // 렌탈/케어일때
                             '자세히 보기' +
                         '{{#else}}' +
-                            '{{#if !checkBtnFlag}}제품정보 보기{{/if}}{{#if checkBtnFlag}}구매하기{{/if}}' +
+                            '{{#if !checkBtnFlag}}' +
+                                '{{#if careshipOnlyFlag == "Y"}}' +
+                                    // 스토어 + 케어쉽온니 (장바구니 비노출)
+                                    '구매하기' +
+                                '{{#else}}' +
+                                    // 스토어 + 케어쉽온니가 아닐경우 (장바구니 비노출)
+                                    '자세히 보기' +
+                                '{{/if}}' +
+                            '{{/if}}' +
+                             // 스토어 + 케어쉽온니가 아닐경우 (장바구니 노출)
+                            '{{#if checkBtnFlag}}구매하기{{/if}}' +
                         '{{/if}}' +
                         '</a>'+
                         // BTOCSITE-6375 e
