@@ -990,6 +990,10 @@
                 }
             }
             .tag-wrap {
+                @include mobile{
+                    // margin-right:2px;
+                    overflow: hidden;;
+                }
                 .tags {
                     font-size: 0;
                     white-space: nowrap;
