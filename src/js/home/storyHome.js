@@ -25,19 +25,6 @@
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
-                    '{{#if storyLabel == "newContent"}}'+
-                        '<div class="label-stroy label-new"><span><span>NEW</span>콘텐츠</span></div>'+ 
-                    '{{/if}}'+
-                    '{{#if storyLabel == "topContent"}}'+
-                        '<div class="label-stroy label-topCont"><span><span>TOP</span>콘텐츠</span></div>'+ 
-                    '{{/if}}'+
-                    '{{#if storyLabel == "topBuy"}}'+
-                        '<div class="label-stroy label-topBuy"><span><span>TOP</span>구매</span></div>'+ 
-                    '{{/if}}'+
-                    '{{#if storyLabel == "bestContent"}}'+
-                    '<div class="label-stroy label-best"><span><span>BEST</span>콘텐츠</span></div>'+ 
-                    '{{/if}}'+
-
                     '<a href="{{storyUrl}}" class="visual-area">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+

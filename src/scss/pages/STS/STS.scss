@@ -662,56 +662,6 @@
                     margin-top: 6px;
                 }
             }
-            .label-stroy{
-                position: absolute;
-                right:12px;
-                top:12px;
-                width: 68px;
-                height: 68px;
-                color:#fff;
-                border-radius: 35px;
-                z-index: 10;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                @include mobile{
-                    right:6px;
-                    top:6px;
-                    width: 41px;
-                    height: 41px;
-                }
-                > span{
-                    text-align: center;
-                    font-size:14px;
-                    line-height:20px;
-                    font-weight: normal;
-                    @include mobile{
-                        font-size:11px;
-                        line-height: 11px;
-                    }
-                    > span{
-                        display:block;
-                        font-size:18px;
-                        font-weight: 500;
-                        @include mobile{
-                            font-size:12px;
-                            line-height: 12px;
-                        }
-                    }
-                }
-                &.label-new{
-                    background-color: #ec008b;
-                }
-                &.label-topCont{
-                    background-color: #e97300;
-                }
-                &.label-topBuy{
-                    background-color: #a40033;
-                }
-                &.label-best{
-                    background-color: #0096a8;
-                }
-            }
             &.video {
                 overflow: hidden;
                 flex:1;
