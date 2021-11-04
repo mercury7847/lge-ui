@@ -1,61 +1,164 @@
 {
     "ssoCheckUrl": null,
-    "status":"success",
-    "message":null,
-    "param":{},
+    "status": "success",
+    "message": null,
+    "param": {},
     "data": [
         {
-            "title": "구/군 선택", "value": ""
-        },{
-            "title": "강남구", "value": "ddd"
-        }, {
-            "title": "강동구", "value": "강동구"
-        }, {
-            "title": "강북구", "value": "강북구"
-        }, {
-            "title": "강서구", "value": "강서구"
-        }, {
-            "title": "관악구", "value": "관악구"
-        }, {
-            "title": "광진구", "value": "광진구"
-        }, {
-            "title": "구로구", "value": "구로구"
-        }, {
-            "title": "금천구", "value": "금천구"
-        }, {
-            "title": "노원구", "value": "노원구"
-        }, {
-            "title": "도봉구", "value": "도봉구"
-        }, {
-            "title": "동대문구", "value": "동대문구"
-        }, {
-            "title": "동작구", "value": "동작구"
-        }, {
-            "title": "마포구", "value": "마포구"
-        }, {
-            "title": "서대문구", "value": "서대문구"
-        }, {
-            "title": "서초구", "value": "서초구"
-        }, {
-            "title": "성동구", "value": "성동구"
-        }, {
-            "title": "성북구", "value": "성북구"
-        }, {
-            "title": "송파구", "value": "송파구"
-        }, {
-            "title": "양천구", "value": "양천구"
-        }, {
-            "title": "영등포구", "value": "영등포구"
-        }, {
-            "title": "용산구", "value": "용산구"
-        }, {
-            "title": "은평구", "value": "은평구"
-        }, {
-            "title": "종로구", "value": "종로구"
-        }, {
-            "title": "중구", "value": "중구"
-        }, {
-            "title": "중랑구", "value": "중랑구"
+            "title": "구/군 선택",
+            "value": "",
+            "dataLocationX": "",
+            "dataLocationY": ""
+        },
+        {
+            "title": "강남구",
+            "value": "강남구",
+            "dataLocationX": "127.0495556",
+            "dataLocationY": "37.514575"
+        },
+        {
+            "title": "강동구",
+            "value": "강동구",
+            "dataLocationX": "127.1258639",
+            "dataLocationY": "37.52736667"
+        },
+        {
+            "title": "강북구",
+            "value": "강북구",
+            "dataLocationX": "127.0277194",
+            "dataLocationY": "37.63695556"
+        },
+        {
+            "title": "강서구",
+            "value": "강서구",
+            "dataLocationX": "126.851675",
+            "dataLocationY": "37.54815556"
+        },
+        {
+            "title": "관악구",
+            "value": "관악구",
+            "dataLocationX": "126.9538444",
+            "dataLocationY": "37.47538611"
+        },
+        {
+            "title": "광진구",
+            "value": "광진구",
+            "dataLocationX": "127.0845333",
+            "dataLocationY": "37.53573889"
+        },
+        {
+            "title": "구로구",
+            "value": "구로구",
+            "dataLocationX": "126.8895972",
+            "dataLocationY": "37.49265"
+        },
+        {
+            "title": "금천구",
+            "value": "금천구",
+            "dataLocationX": "126.9041972",
+            "dataLocationY": "37.44910833"
+        },
+        {
+            "title": "노원구",
+            "value": "노원구",
+            "dataLocationX": "127.0583889",
+            "dataLocationY": "37.65146111"
+        },
+        {
+            "title": "도봉구",
+            "value": "도봉구",
+            "dataLocationX": "127.0495222",
+            "dataLocationY": "37.66583333"
+        },
+        {
+            "title": "동대문구",
+            "value": "동대문구",
+            "dataLocationX": "127.0421417",
+            "dataLocationY": "37.571625"
+        },
+        {
+            "title": "동작구",
+            "value": "동작구",
+            "dataLocationX": "126.941575",
+            "dataLocationY": "37.50965556"
+        },
+        {
+            "title": "마포구",
+            "value": "마포구",
+            "dataLocationX": "126.9105306",
+            "dataLocationY": "37.56070556"
+        },
+        {
+            "title": "서대문구",
+            "value": "서대문구",
+            "dataLocationX": "126.9388972",
+            "dataLocationY": "37.57636667"
+        },
+        {
+            "title": "서초구",
+            "value": "서초구",
+            "dataLocationX": "127.0348111",
+            "dataLocationY": "37.48078611"
+        },
+        {
+            "title": "성동구",
+            "value": "성동구",
+            "dataLocationX": "127.039",
+            "dataLocationY": "37.56061111"
+        },
+        {
+            "title": "성북구",
+            "value": "성북구",
+            "dataLocationX": "127.0203333",
+            "dataLocationY": "37.58638333"
+        },
+        {
+            "title": "송파구",
+            "value": "송파구",
+            "dataLocationX": "127.1079306",
+            "dataLocationY": "37.51175556"
+        },
+        {
+            "title": "양천구",
+            "value": "양천구",
+            "dataLocationX": "126.8687083",
+            "dataLocationY": "37.51423056"
+        },
+        {
+            "title": "영등포구",
+            "value": "영등포구",
+            "dataLocationX": "126.8983417",
+            "dataLocationY": "37.52361111"
+        },
+        {
+            "title": "용산구",
+            "value": "용산구",
+            "dataLocationX": "126.9675222",
+            "dataLocationY": "37.53609444"
+        },
+        {
+            "title": "은평구",
+            "value": "은평구",
+            "dataLocationX": "126.9312417",
+            "dataLocationY": "37.59996944"
+        },
+        {
+            "title": "종로구",
+            "value": "종로구",
+            "dataLocationX": "126.9816417",
+            "dataLocationY": "37.57037778"
+        },
+        {
+            "title": "중구",
+            "value": "중구",
+            "dataLocationX": "126.9996417",
+            "dataLocationY": "37.56100278"
+        },
+        {
+            "title": "중랑구",
+            "value": "중랑구",
+            "dataLocationX": "127.0947778",
+            "dataLocationY": "37.60380556"
         }
     ]
 }
