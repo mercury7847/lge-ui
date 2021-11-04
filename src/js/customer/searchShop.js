@@ -72,7 +72,7 @@
         // BTOCSITE-4785 s
         if(dpPdp){
             // 기획전에서 넘어올 경우, 좌표 설정
-           var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
+            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}" data-locationy="{{dataLocationY}}" data-locationx="{{dataLocationX}}">{{title}}</option>';
         }else{
             var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
         }
