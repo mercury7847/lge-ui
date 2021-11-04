@@ -22,7 +22,7 @@
                     e.preventDefault();
                     var popupId = $this.attr('href');
                     $(popupId).vcModal({opener: this});
-                }
+                } 
             })
             //BTOCSITE-5938-250 [모니터링] KRP0008.js 렌탈 전화상담 예약 팝업과 중복 호출 오류로 닫기 기능 삭제
         }
