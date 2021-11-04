@@ -635,7 +635,6 @@
             margin: 0 -4px;
             .flexbox {
                 width: calc(100% / 2);
-                // &:nth-child(odd){margin-left: 8px;}
                 &.tag-area {
                     padding-bottom: 40px;
                 }
@@ -649,6 +648,12 @@
             height: 409px;
             @include mobile{
                 height: 287.5px;
+            }
+            &:not(.review){
+                @include mobile {
+                    display: flex;
+                    flex-direction:column;
+                }
             }
             .flag-wrap + .card-title{margin-top: 8px;}
             .card-title + .tag-wrap{
@@ -709,12 +714,15 @@
             }
             &.video {
                 overflow: hidden;
+                flex:1;
                 .visual-area {
                     position: relative;
                     border-radius: 8px 8px 0 0;
                     height: 184px;
                     @include mobile{
-                        height:200px;
+                        height: auto;
+                        max-height: 200px;
+                        flex:1;
                     }
                     &:after {
                         position: absolute;
@@ -745,6 +753,18 @@
                             }
                             @include mobile{
                                 object-fit:cover;
+
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                -ms-transform: translate(0, 0);
+                                transform: translate(0, 0);
+                                max-width: none;
+                                width: auto;
+                                background-position: center center;
+                                min-width: auto;
+                                min-height: auto;
+                                height: 100%;
                             }
                         }
                     }
@@ -760,7 +780,7 @@
                     background-size: 100%;
                     transform: translate(-50%, 0%);
                     @include mobile{
-                        top:79.5px;
+                        top:26%;
                         width: 41px;
                         height: 41px;
                     }
@@ -827,7 +847,8 @@
                 .visual-area{
                     @include mobile{
                         position: relative;
-                        height: 200px;
+                        height: auto;
+                        max-height: 200px;
                         border-radius: 0;
                     }
                     .image{
@@ -898,7 +919,6 @@
                     z-index: 1;
                     color: $color-white;
                     @include mobile{
-                        position: relative;
                         padding:10px 12px;
                     }
                     .card-title {
@@ -918,7 +938,6 @@
                     .tag-wrap {
                         .tags {
                             @include mobile{
-                                margin-top: 6px;
                                 .tag{
                                     text-decoration: none;
                                     a{
@@ -969,6 +988,7 @@
         .visual-area {
             display: block;
             border-radius: 8px;
+            flex:1;
             img {
                 width: 100%;
                 border-radius: 8px;
@@ -978,6 +998,7 @@
             padding: 24px 24px 32px;
             @include mobile {
                 padding: 20px 20px 32px;
+                background-color: #fff;
             }
             .card-title {
                 max-height: 67px;
@@ -996,7 +1017,6 @@
                 }
                 .tags {
                     font-size: 0;
-                    white-space: nowrap;
                 }
                 .tag {
                     display: inline-block;
@@ -1010,6 +1030,9 @@
                     @include mobile{
                         font-size:12px;
                         line-height: 16px;
+                        a{
+                            word-break: normal ;
+                        }
                     }
                 }
             }
@@ -1144,7 +1167,7 @@
                 @include mobile{
                     height: 179px;
                 }
-                .box{
+                .box.review{
                     height: 100%;
                     width: 100%;
                     overflow: hidden;
@@ -1166,6 +1189,11 @@
                                     object-fit:cover;
                                 }
                             }
+                        }
+                    }
+                    .text-area{
+                        @include mobile{
+                            background:transparent !important;
                         }
                     }
                 }
