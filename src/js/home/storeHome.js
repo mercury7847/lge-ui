@@ -786,17 +786,17 @@ $(function(){
 
                 //BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
                 /***
-                 * 카테고리 제외 목록
-                 * CT50000003 : 모바일
-                 * CT50000152 : 뷰티 의료기기
-                 * CT50019001 : LG SIGNATURE
-                 * CT50019002 : LG Objet HTMLAllCollection
-                 * CT50020000 : 케어용품 / 소모품
+                 * 카테고리 허용 목록
+                 * CT50000024 : TV/AV
+                 * CT50000045 : IT
+                 * CT50000064 : 주방가전
+                 * CT50000100 : 생활가전
+                 * CT50000130 : 에어컨/에어케어
                 */
-                var cateExcept = [ 'CT50000003','CT50000152','CT50019001','CT50019002','CT50020000'];
+                var cateAllow = [ 'CT50000024','CT50000045','CT50000064','CT50000100','CT50000130'];
                 var buyProductCate = arr.filter(function(el) {
                     el.$index += 1;
-                    return cateExcept.indexOf(el.categoryId) === -1
+                    return cateAllow.indexOf(el.categoryId) > -1
                 })
 
                 buyProductCate.unshift({
