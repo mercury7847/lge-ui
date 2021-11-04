@@ -47,8 +47,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":"newContent"
             },
@@ -67,8 +67,8 @@
                         "tagName": "웰빙"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
+                "largeImage": "/lg5-common/images/STS/img-test2.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test2.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":"topContent"
             },
@@ -87,8 +87,8 @@
                         "tagName": "미세먼지"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":"topBuy"
             },
@@ -107,8 +107,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test4.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test4.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":"bestContent"
             },
@@ -127,8 +127,8 @@
                         "tagName": "코로나싱글라이프싱글"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-story-01.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -147,8 +147,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -167,8 +167,8 @@
                         "tagName": "웰빙"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -187,8 +187,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-story-04.jpg",
-                "smallImage": "/lg5-common/images/STS/thumb-story-01.jpg",
+                "largeImage": "/lg5-common/images/STS/img-test5.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test5.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -207,8 +207,8 @@
                         "tagName": "웰빙"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -227,8 +227,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -247,8 +247,8 @@
                         "tagName": "반려동물"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             },
@@ -267,8 +267,8 @@
                         "tagName": "미세먼지"
                     }
                 ],
-                "largeImage": "/lg5-common/images/dummy/story_temp.jpeg",
-                "smallImage": "/lg5-common/images/dummy/story_temp.jpeg",
+                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
+                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
                 "storyUrl": "lg.com",
                 "storyLabel":""
             }
