@@ -265,22 +265,28 @@
     /* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
     $(function () {
         var isAndroid = vcui.detect.isAndroid;
-        var phNum01 = $('#address-regist-form .forms input#ipt4');
-        var phNum02 = $('#address-regist-form .forms input#ipt5');
+        var phNum = $('#address-regist-form .forms input#ipt4, #address-regist-form .forms input#ipt5');
+        //var phNum02 = $('#address-regist-form .forms input#ipt5');
         
         if(isAndroid) {
-            phNum01.on('focusin', function(){
-                $('.popup-wrap .pop-conts').addClass('pdb01');
+            phNum.on('focusin', function(){
+                $('.ui_modal_wrap').css('position', 'absolute');
             });
-            phNum01.on('focusout', function(){
-                $('.popup-wrap .pop-conts').removeClass('pdb01');
+            phNum.on('focusout', function(){
+                $('.ui_modal_wrap').css('position', 'fixed');
             });
-            phNum02.on('focusin', function(){
-                $('.popup-wrap .pop-conts').addClass('pdb02');
-            });
-            phNum02.on('focusout', function(){
-                $('.popup-wrap .pop-conts').removeClass('pdb02');
-            });
+            // phNum01.on('focusin', function(){
+            //     $('.popup-wrap .pop-conts').addClass('pdb01');
+            // });
+            // phNum01.on('focusout', function(){
+            //     $('.popup-wrap .pop-conts').removeClass('pdb01');
+            // });
+            // phNum02.on('focusin', function(){
+            //     $('.popup-wrap .pop-conts').addClass('pdb02');
+            // });
+            // phNum02.on('focusout', function(){
+            //     $('.popup-wrap .pop-conts').removeClass('pdb02');
+            // });
         }
     });
     /* //BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
