@@ -548,7 +548,7 @@
         },
         updateEngineer: function(data) {
             var self = this,
-                $engineerBox = self.$stepEngineer.find('.engineer-info'),
+                $engineerBox = self.$stepEngineer.find('.engineer-infoP'),
                 $resultBox = self.$stepEngineer.find('.engineer-desc'),
                 topicNm = self.$stepInput.find('[name=topic]:checked').data('topicName'),
                 subTopicNm = self.$stepInput.find('[name=subTopic]:checked').data('subTopicName')
@@ -913,7 +913,7 @@
 
                             /* BTOCSITE-BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                             // self.$engineerSlider.find('.slide-track').html(html); // 원본
-                            self.$engineerSlider.find('.engineer-info').html(html);
+                            self.$engineerSlider.find('.engineer-infoP').html(html);
                             /* //BTOCSITE-BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 
                             self.$engineerSlider.vcCarousel('reinit');

@@ -834,7 +834,7 @@
         overflow-x:hidden;
 
         /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
-        .engineer-info {
+        .engineer-infoP {
             display: flex;
             flex-wrap: wrap;
             align-content: center;
@@ -1053,7 +1053,7 @@
 
 
     /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
-    .engineer-info {
+    .engineer-infoP {
         display: flex;
         flex-wrap: wrap;
         align-content: center;

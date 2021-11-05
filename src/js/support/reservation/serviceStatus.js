@@ -641,7 +641,7 @@
                                 
                                 /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                                 // self.el.slider.find('.slide-track').html(html); //주영
-                                self.el.slider.find('.engineer-info').html(html);
+                                self.el.slider.find('.engineer-infoP').html(html);
                                 /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 
                                 self.el.stepEngineer.find('.btn').show();
@@ -671,7 +671,7 @@
             update: function(data) {
                 var self = this,
                     $stepEngineer = $('#stepEngineer'),
-                    $engineerBox = $stepEngineer.find('.engineer-info'),
+                    $engineerBox = $stepEngineer.find('.engineer-infoP'),
                     $resultBox = $stepEngineer.find('.engineer-desc'),
                     topicNm = $('#topic').val(),
                     subTopicNm = $('#subtopic').val(),
