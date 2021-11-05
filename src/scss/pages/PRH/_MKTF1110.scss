@@ -2471,6 +2471,17 @@
             }
         }
     }
+    //디스클라이머
+    .app-tab-desc {
+        padding: 0 40px;
+        background: #f4f4f4;
+        .bullet-list {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 26px 0 120px;
+            border-top: 1px solid #ddd;
+        }
+    }
 }
 // 연동기기 찾기 배너 
 .search-banner-wrap {
