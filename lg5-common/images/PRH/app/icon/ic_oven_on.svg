@@ -1,0 +1,45 @@
+<svg id="ic_oven_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d9a898"/>
+            <stop offset="1" stop-color="#d1774e"/>
+        </linearGradient>
+        <style>
+            .cls-1,.cls-6{fill:none}.cls-6{stroke:#404040;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Group_143" data-name="Group 143" transform="translate(-1235 -146.97)">
+        <path id="Rectangle_153" data-name="Rectangle 153" class="cls-1" transform="translate(1235 146.97)" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_153" data-name="Group 153" transform="translate(-1235 -143.97)">
+        <g id="Group_147" data-name="Group 147">
+            <g id="Group_144" data-name="Group 144">
+                <path id="Path_75" data-name="Path 75" d="M1290.28 209.89h-30.58a1 1 0 0 1-1-1v-31.31a1 1 0 0 1 1-1h30.58a1 1 0 0 1 1 1v31.31a1 1 0 0 1-1 1z" style="fill:url(#linear-gradient)"/>
+            </g>
+            <g id="Group_146" data-name="Group 146">
+                <g id="Group_145" data-name="Group 145">
+                    <path id="Path_76" data-name="Path 76" d="M1294.97 158.89v55.41h-39.95v-55.41h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v57.41a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-57.41a1.993 1.993 0 0 0-2-2z" transform="translate(.125)" style="fill:#404040"/>
+                    <g id="Rectangle_174" data-name="Rectangle 174" transform="translate(1258.145 149.97)" style="stroke-width:3px;stroke:#404040;fill:none">
+                        <rect width="34" height="8.8" rx="2" style="stroke:none"/>
+                        <rect class="cls-1" x="1.5" y="1.5" width="31" height="5.8" rx=".5"/>
+                    </g>
+                </g>
+                <path id="Line_65" data-name="Line 65" transform="translate(1252.03 170.71)" style="stroke-miterlimit:10;stroke-width:3px;stroke:#404040;fill:none" d="M0 0h45.94"/>
+            </g>
+        </g>
+        <g id="Group_152" data-name="Group 152">
+            <g id="Group_148" data-name="Group 148">
+                <circle id="Ellipse_15" data-name="Ellipse 15" class="cls-6" cx="2.09" cy="2.09" r="2.09" transform="translate(1258.44 162.03)"/>
+            </g>
+            <g id="Group_149" data-name="Group 149">
+                <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-6" cx="2.09" cy="2.09" r="2.09" transform="translate(1266.97 162.03)"/>
+            </g>
+            <g id="Group_150" data-name="Group 150">
+                <circle id="Ellipse_17" data-name="Ellipse 17" class="cls-6" cx="2.09" cy="2.09" r="2.09" transform="translate(1278.83 162.03)"/>
+            </g>
+            <g id="Group_151" data-name="Group 151">
+                <circle id="Ellipse_18" data-name="Ellipse 18" class="cls-6" cx="2.09" cy="2.09" r="2.09" transform="translate(1287.36 162.03)"/>
+            </g>
+        </g>
+    </g>
+</svg>

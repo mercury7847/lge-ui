@@ -1,0 +1,17 @@
+<svg id="ic_styler_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <style>
+            .cls-3{fill:none;stroke:#6aaca5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:3.8px}
+        </style>
+    </defs>
+    <rect id="Rectangle_161" data-name="Rectangle 161" width="120" height="120" rx="16" style="fill:#fff"/>
+    <g id="Group_631" data-name="Group 631" transform="translate(10 10)">
+        <g id="Group_236" data-name="Group 236" transform="translate(27.8 8.337)">
+            <path id="Path_95" data-name="Path 95" d="M797.89 550.42v75.837h-36.913V550.42h36.913m1.263-3.75H759.74a2.5 2.5 0 0 0-2.5 2.5v78.337a2.5 2.5 0 0 0 2.5 2.5h39.413a2.5 2.5 0 0 0 2.5-2.5V549.17a2.507 2.507 0 0 0-2.5-2.5z" transform="translate(-757.24 -546.67)" style="fill:#404040"/>
+        </g>
+        <g id="Group_237" data-name="Group 237" transform="translate(36.425 14.95)">
+            <path id="Path_96" data-name="Path 96" class="cls-3" d="M771.97 555.61a3.65 3.65 0 0 1 7.3 0s.2 2.625-3.65 3.1v3.425" transform="translate(-762.182 -551.96)"/>
+            <path id="Path_97" data-name="Path 97" class="cls-3" d="m777.578 560.09-13.437 7.387h26.875z" transform="translate(-764.14 -549.927)"/>
+        </g>
+    </g>
+</svg>

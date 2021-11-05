@@ -1,0 +1,24 @@
+<svg id="devices_ic_robotcleaner_off" data-name="devices/ic_robotcleaner_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2{fill:#8c8c8c}
+        </style>
+    </defs>
+    <g id="Group_253" data-name="Group 253" transform="translate(-1075 -540)">
+        <path id="Rectangle_164" data-name="Rectangle 164" transform="translate(1075 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_257" data-name="Group 257" transform="translate(-1075 -540)">
+        <g id="Group_254" data-name="Group 254">
+            <path id="Path_103" data-name="Path 103" class="cls-2" d="M1121.31 555.61a17.656 17.656 0 0 1 17.64 17.64v13.5a17.656 17.656 0 0 1-17.64 17.64h-12.61a17.656 17.656 0 0 1-17.64-17.64v-13.5a17.656 17.656 0 0 1 17.64-17.64h12.61m0-3h-12.61a20.639 20.639 0 0 0-20.64 20.64v13.5a20.639 20.639 0 0 0 20.64 20.64h12.61a20.639 20.639 0 0 0 20.64-20.64v-13.5a20.652 20.652 0 0 0-20.64-20.64z"/>
+        </g>
+        <path id="Line_77" data-name="Line 77" transform="translate(1109.89 559.22)" style="stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:3px;fill:none" d="M0 0h10.22"/>
+        <g id="Group_255" data-name="Group 255">
+            <path id="Path_104" data-name="Path 104" class="cls-2" d="M1119.42 565.32a10.311 10.311 0 0 1 10.3 10.3v8.94a10.311 10.311 0 0 1-10.3 10.3h-8.84a10.311 10.311 0 0 1-10.3-10.3v-8.94a10.311 10.311 0 0 1 10.3-10.3h8.84m0-3h-8.84a13.3 13.3 0 0 0-13.3 13.3v8.94a13.3 13.3 0 0 0 13.3 13.3h8.84a13.3 13.3 0 0 0 13.3-13.3v-8.94a13.3 13.3 0 0 0-13.3-13.3z"/>
+        </g>
+        <g id="Group_256" data-name="Group 256">
+            <circle id="Ellipse_33" data-name="Ellipse 33" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1107.53 578.58)"/>
+            <circle id="Ellipse_34" data-name="Ellipse 34" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1113.5 578.58)"/>
+            <circle id="Ellipse_35" data-name="Ellipse 35" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1119.47 578.58)"/>
+        </g>
+    </g>
+</svg>

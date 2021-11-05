@@ -1,0 +1,58 @@
+<svg id="devices_ic_airpurifier_white" data-name="devices/ic_airpurifier_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#77b4aa"/>
+            <stop offset="1" stop-color="#379192"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:#6eafaa}.cls-7{stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px;stroke-linecap:round;stroke-linejoin:round;fill:none}
+        </style>
+    </defs>
+    <rect id="Rectangle_169" data-name="Rectangle 169" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g id="Group_629" data-name="Group 629" transform="translate(10 10)">
+        <g id="Group_300" data-name="Group 300" transform="translate(14.425 9.437)">
+            <g id="Group_294" data-name="Group 294" transform="translate(56.362)">
+                <g id="Group_292" data-name="Group 292" transform="translate(0 3.5)">
+                    <circle id="Ellipse_37" data-name="Ellipse 37" class="cls-2" cx="2.375" cy="2.375" r="2.375"/>
+                    <circle id="Ellipse_38" data-name="Ellipse 38" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 23.962)"/>
+                    <circle id="Ellipse_39" data-name="Ellipse 39" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 8)"/>
+                    <circle id="Ellipse_40" data-name="Ellipse 40" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 15.963)"/>
+                </g>
+                <g id="Group_293" data-name="Group 293" transform="translate(7.4)">
+                    <circle id="Ellipse_41" data-name="Ellipse 41" class="cls-2" cx="2.375" cy="2.375" r="2.375"/>
+                    <circle id="Ellipse_42" data-name="Ellipse 42" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 30.963)"/>
+                    <circle id="Ellipse_43" data-name="Ellipse 43" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 10)"/>
+                    <circle id="Ellipse_44" data-name="Ellipse 44" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 20.963)"/>
+                </g>
+            </g>
+            <g id="Group_297" data-name="Group 297">
+                <g id="Group_295" data-name="Group 295" transform="translate(7.4 3.5)">
+                    <circle id="Ellipse_45" data-name="Ellipse 45" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65)"/>
+                    <circle id="Ellipse_46" data-name="Ellipse 46" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 23.962)"/>
+                    <circle id="Ellipse_47" data-name="Ellipse 47" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 8)"/>
+                    <circle id="Ellipse_48" data-name="Ellipse 48" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 15.963)"/>
+                </g>
+                <g id="Group_296" data-name="Group 296">
+                    <circle id="Ellipse_49" data-name="Ellipse 49" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65)"/>
+                    <circle id="Ellipse_50" data-name="Ellipse 50" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(2.65 30.963)"/>
+                    <circle id="Ellipse_51" data-name="Ellipse 51" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 10)"/>
+                    <circle id="Ellipse_52" data-name="Ellipse 52" class="cls-2" cx="2.375" cy="2.375" r="2.375" transform="translate(0 20.963)"/>
+                </g>
+            </g>
+            <g id="Group_299" data-name="Group 299" transform="translate(17.537)">
+                <circle id="Ellipse_53" data-name="Ellipse 53" cx="9.3" cy="9.3" r="9.3" transform="translate(8.5 8.5)" style="fill:url(#linear-gradient)"/>
+                <g id="Group_298" data-name="Group 298">
+                    <path id="Path_121" data-name="Path 121" d="M1526.76 546.88a14.05 14.05 0 1 1-14.05 14.05 14.062 14.062 0 0 1 14.05-14.05m0-3.75a17.8 17.8 0 1 0 17.8 17.8 17.8 17.8 0 0 0-17.8-17.8z" transform="translate(-1508.96 -543.13)" style="fill:#404040"/>
+                </g>
+            </g>
+        </g>
+        <g id="Group_302" data-name="Group 302" transform="translate(29.438 40.4)">
+            <path id="Path_122" data-name="Path 122" d="M1508.24 612.462h37.4l-3.062-44.562h-31.662z" transform="translate(-1506.615 -567.9)" style="stroke-linecap:round;stroke-linejoin:round;stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px;fill:#f4f4f4"/>
+            <g id="Group_301" data-name="Group 301" transform="translate(0 44.287)">
+                <path id="Line_84" data-name="Line 84" transform="translate(0 5.875)" style="fill:none;stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px" d="M0 0h40.75"/>
+                <path id="Path_123" data-name="Path 123" class="cls-7" d="M1508.23 603.33s.338 4.388 5.8 5.625" transform="translate(-1506.617 -603.33)"/>
+                <path id="Path_124" data-name="Path 124" class="cls-7" d="M1539.32 603.33s-.338 4.388-5.8 5.625" transform="translate(-1500.295 -603.33)"/>
+            </g>
+        </g>
+    </g>
+</svg>

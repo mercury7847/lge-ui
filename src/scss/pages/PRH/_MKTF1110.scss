@@ -1545,30 +1545,30 @@
                     &.morning {
                         li {
                             &:nth-child(1) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-refrigerator.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon_kimchi_refrigerator.svg');
                             }
                             &:nth-child(2) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-oven.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon-oven.svg');
                             }
                         }
                     }
                     &.afternoon {
                         li {
                             &:nth-child(1) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-purifier.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon-purifier.svg');
                             }
                             &:nth-child(2) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-hmr.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon-hmr.svg');
                             }
                         }
                     }
                     &.evening {
                         li {
                             &:nth-child(1) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-purifier.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon-purifier.svg');
                             }
                             &:nth-child(2) {
-                                background-image: url('/lg5-common/images/PRH/thinq/icon-hmr.jpg');
+                                background-image: url('/lg5-common/images/PRH/thinq/icon-hmr.svg');
                             }
                         }
                     }
@@ -1579,15 +1579,15 @@
                     &.morning {
                         li {
                             &:nth-child(1) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_dryer-w.png");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_dryer-w.svg");
                             }
 
                             &:nth-child(2) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_air-purifier-w.png");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_air-purifier-w.svg");
                             }
 
                             &:nth-child(3) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_refrigerator-w.png");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_refrigerator-w.svg");
                             }
                         }
                     }
@@ -1595,11 +1595,11 @@
                     &.evening {
                         li {
                             &:nth-child(1) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_styler-w.png");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_styler-w.svg");
                             }
 
                             &:nth-child(2) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_air-conditioner-w.png");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_stand_airconditioner_w.svg");
                             }
                         }
                     }
@@ -1611,11 +1611,11 @@
                     &.morning {
                         li {
                             &:nth-child(1) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_induction.jpg");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_induction.svg");
                             }
 
                             &:nth-child(2) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_dryer.jpg");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_refrigerator.svg");
                             }
                         }
                     }
@@ -1623,11 +1623,11 @@
                     &.evening {
                         li {
                             &:nth-child(1) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_robot-vacuum-cleaner.jpg");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_robot-vacuum-cleaner.svg");
                             }
 
                             &:nth-child(2) {
-                                background-image: url("/lg5-common/images/PRH/thinq/icon_air-purifier.jpg");
+                                background-image: url("/lg5-common/images/PRH/thinq/icon_air-purifier.svg");
                             }
                         }
                     }
@@ -2777,13 +2777,13 @@
     $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
     @each $name in $prdIconLists {
         @at-root .menu-item .icon-#{$name} {
-            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.png');
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.svg');
         }
         @at-root .menu-item.is-active .icon-#{$name} {
-            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.png');
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
         }
         @at-root .prd-result-lists .icon-#{$name} {
-            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.png');
+            background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.svg');
         }
     }
 }

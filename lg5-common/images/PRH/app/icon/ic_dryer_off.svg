@@ -1,0 +1,35 @@
+<svg id="ic_dryer_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_187" data-name="Group 187" transform="translate(-575 -540)">
+        <path id="Rectangle_157" data-name="Rectangle 157" transform="translate(575 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_196" data-name="Group 196" transform="translate(-575 -540)">
+        <g id="Group_193" data-name="Group 193">
+            <g id="Group_190" data-name="Group 190">
+                <g id="Group_189" data-name="Group 189">
+                    <g id="Group_188" data-name="Group 188">
+                        <path id="Path_84" data-name="Path 84" class="cls-2" d="M634.97 551.92v56.17h-39.95v-56.17h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v58.17a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-58.17a1.993 1.993 0 0 0-2-2z"/>
+                    </g>
+                    <path id="Line_71" data-name="Line 71" class="cls-3" transform="translate(592.03 562.34)" d="M0 0h45.94"/>
+                    <path id="Line_86" data-name="Line 86" class="cls-3" transform="translate(592.03 603.34)" d="M0 0h45.94"/>
+                    <path id="Line_72" data-name="Line 72" class="cls-3" transform="translate(620.18 556.38)" d="M0 0h11.92"/>
+                </g>
+            </g>
+            <g id="Group_192" data-name="Group 192">
+                <g id="Group_191" data-name="Group 191">
+                    <path id="Path_85" data-name="Path 85" class="cls-2" d="M615 554.32a2 2 0 1 0 2 2 2.006 2.006 0 0 0-2-2z"/>
+                </g>
+            </g>
+        </g>
+        <g id="Group_195" data-name="Group 195" transform="translate(0 -2)">
+            <g id="Group_194" data-name="Group 194">
+                <path id="Path_86" data-name="Path 86" class="cls-2" d="M615 572.74a12.61 12.61 0 1 1-12.61 12.61A12.622 12.622 0 0 1 615 572.74m0-3a15.61 15.61 0 1 0 15.61 15.61A15.611 15.611 0 0 0 615 569.74z"/>
+            </g>
+            <path id="Path_87" data-name="Path 87" d="M627.45 589.35h-.17a2.347 2.347 0 0 1-2.35-2.35v-3.31a2.347 2.347 0 0 1 2.35-2.35h.17c1.3.01 1.3 8.01 0 8.01z" style="stroke-linejoin:round;stroke-width:2px;stroke:#8c8c8c;stroke-miterlimit:10;fill:none"/>
+        </g>
+    </g>
+</svg>

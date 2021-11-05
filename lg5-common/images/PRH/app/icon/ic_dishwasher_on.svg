@@ -1,0 +1,34 @@
+<svg id="ic_dishwasher_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#87a0be"/>
+            <stop offset="1" stop-color="#4182b4"/>
+        </linearGradient>
+        <style>
+            .cls-4{fill:none}.cls-3{fill:#404040}.cls-4{stroke:#404040;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_127" data-name="Group 127" transform="translate(-985 -146.97)">
+        <path id="Rectangle_150" data-name="Rectangle 150" transform="translate(985 146.97)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_133" data-name="Group 133" transform="translate(-985 -146.97)">
+        <g id="Group_131" data-name="Group 131">
+            <g id="Group_128" data-name="Group 128">
+                <path id="Rectangle_151" data-name="Rectangle 151" transform="translate(1007.2 176.63)" style="fill:url(#linear-gradient)" d="M0 0h35.52v28.87H0z"/>
+            </g>
+            <g id="Group_130" data-name="Group 130">
+                <g id="Group_129" data-name="Group 129">
+                    <path id="Path_73" data-name="Path 73" class="cls-3" d="M1044.97 158.89v56.17h-39.95v-56.17h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v58.17a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-58.17a1.993 1.993 0 0 0-2-2z"/>
+                </g>
+                <path id="Line_59" data-name="Line 59" class="cls-4" transform="translate(1002.03 209.23)" d="M0 0h45.94"/>
+                <path id="Line_60" data-name="Line 60" class="cls-4" transform="translate(1002.03 172.91)" d="M0 0h45.94"/>
+                <path id="Line_61" data-name="Line 61" class="cls-4" transform="translate(1002.03 162.6)" d="M0 0h45.94"/>
+            </g>
+        </g>
+        <g id="Group_132" data-name="Group 132">
+            <circle id="Ellipse_9" data-name="Ellipse 9" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1018.28 166.24)"/>
+            <circle id="Ellipse_10" data-name="Ellipse 10" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1023.5 166.24)"/>
+            <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1028.72 166.24)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg id="ic_dishwasher_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px}
+        </style>
+    </defs>
+    <path id="Rectangle_152" data-name="Rectangle 152" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_138" data-name="Group 138" transform="translate(27.232 14.272)">
+        <g id="Group_137" data-name="Group 137">
+            <g id="Group_136" data-name="Group 136">
+                <path id="Path_74" data-name="Path 74" class="cls-2" d="M1160.74 160.69v89.872h-63.92V160.69h63.92m1.6-4.8h-67.12a3.209 3.209 0 0 0-3.2 3.2v93.072a3.209 3.209 0 0 0 3.2 3.2h67.12a3.209 3.209 0 0 0 3.2-3.2V159.09a3.189 3.189 0 0 0-3.2-3.2z" transform="translate(-1092.02 -155.89)"/>
+            </g>
+            <path id="Line_62" data-name="Line 62" class="cls-3" transform="translate(.016 85.344)" d="M0 0h73.504"/>
+            <path id="Line_63" data-name="Line 63" class="cls-3" transform="translate(.016 27.232)" d="M0 0h73.504"/>
+            <path id="Line_64" data-name="Line 64" class="cls-3" transform="translate(.016 10.736)" d="M0 0h73.504"/>
+        </g>
+    </g>
+    <g id="Group_139" data-name="Group 139" transform="translate(53.248 30.832)">
+        <circle id="Ellipse_12" data-name="Ellipse 12" class="cls-2" cx="2.4" cy="2.4" r="2.4"/>
+        <circle id="Ellipse_13" data-name="Ellipse 13" class="cls-2" cx="2.4" cy="2.4" r="2.4" transform="translate(8.352)"/>
+        <circle id="Ellipse_14" data-name="Ellipse 14" class="cls-2" cx="2.4" cy="2.4" r="2.4" transform="translate(16.704)"/>
+    </g>
+</svg>
