@@ -270,17 +270,17 @@
         
         if(isAndroid) {
             phNum01.on('focusin', function(){
-                $('.popup-wrap .pop-conts').addClass('pdb01');
-                $('html').animate({scrollTop : $(document).height()+200}, 400);
-                console.log($(document).height()+200);
+                //$('.popup-wrap .pop-conts').addClass('pdb01');
+                $('html, body').animate({scrollTop : $(document).height()}, 400);
+                console.log($(document).height());
             });
             phNum01.on('focusout', function(){
                 $('.popup-wrap .pop-conts').removeClass('pdb01');
             });
             phNum02.on('focusin', function(){
-                $('.popup-wrap .pop-conts').addClass('pdb02');
-                $('html').animate({scrollTop : $(document).height()+400}, 400);
-                console.log($(document).height()+400);
+                //$('.popup-wrap .pop-conts').addClass('pdb02');
+                $('html, body').animate({scrollTop : $(document).height()}, 400);
+                console.log($(document).height());
             });
             phNum02.on('focusout', function(){
                 $('.popup-wrap .pop-conts').removeClass('pdb02');
