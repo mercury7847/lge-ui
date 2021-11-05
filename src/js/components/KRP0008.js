@@ -1173,7 +1173,8 @@
                 });
                 
                 //할인적용가 팝업 BTOCSITE-5781
-                self.$pdpInfo.on('click','li.lists.member .popup-icon.popup', function(e) {
+                //BTOCSITE-7379 PDP > 버튼 UI 변경건
+                self.$pdpInfo.on('click','li.lists.member .btn-discount-popup', function(e) {
                     e.preventDefault();
                     self.$saleInfoPopup.vcModal({opener: this});
                 });
@@ -2384,27 +2385,46 @@
 
                     if(self.loginCheckEnd) {
                         if(lgkorUI.stringToBool(loginFlag)) {
-                            ajaxUrl = self.$pdpInfo.attr('data-rental-url');
-                            var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
-                            if(ajaxUrl) {
-                                if(isDirectBuy) {
-                                    $('#careRequireBuyPopup').data('sendUrl',url);
-                                    /*
-                                    $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
-                                    $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
-                                        console.log($('#careRequireBuyPopup').data('sendUrl'));
-                                        location.href = $('#careRequireBuyPopup').data('sendUrl');
+                            //BTOCSITE-6011 
+                            if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy){
+                                ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                                //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
+                                if(ajaxUrl) {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                                        //console.log(result);
+                                        var data = result.data;
+                                        var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                        if(obsDirectPurchaseUrl){
+                                            location.href = obsDirectPurchaseUrl;
+                                        }
                                     });
-                                    */
-                                    if(eventTarget) {
-                                        $('#careRequireBuyPopup').vcModal({opener: eventTarget});
-                                    } else {
-                                        $('#careRequireBuyPopup').vcModal();
-                                    }
-                                } else {
-                                    location.href = url;
                                 }
                             }
+                            else{
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url');
+                                var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
+                                if(ajaxUrl) {
+                                    if(isDirectBuy) {
+                                        $('#careRequireBuyPopup').data('sendUrl',url);
+                                        /*
+                                        $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
+                                        $('#careRequireBuyPopup').off('.goto').on('click.goto','.btn-group button',function(e){
+                                            console.log($('#careRequireBuyPopup').data('sendUrl'));
+                                            location.href = $('#careRequireBuyPopup').data('sendUrl');
+                                        });
+                                        */
+                                        if(eventTarget) {
+                                            $('#careRequireBuyPopup').vcModal({opener: eventTarget});
+                                        } else {
+                                            $('#careRequireBuyPopup').vcModal();
+                                        }
+                                    } else {
+                                        location.href = url;
+                                    }
+                                }
+                            }
+                            //BTOCSITE-6011 
                         } else {
                             ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
                             //스테이지 세팅후 제거 코드

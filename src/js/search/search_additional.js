@@ -640,7 +640,16 @@ if ('scrollRestoration' in history) {
                         if(result.data.linkTarget == 'self') {
                             location.href = result.data.url;
                         } else {
-                            window.open(result.data.url,'_blank');
+                            if(isApp()) {   
+                                if(vcui.detect.isIOS){
+                                    var jsonString = JSON.stringify({'command':'sendOutLink', 'url': result.data.url});
+                                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                                } else {
+                                    void android.openLinkOut(result.data.url);
+                                }
+                            } else {
+                                window.open(result.data.url,'_blank');
+                            }
                         }
                     } else {
                         lgkorUI.requestAjaxData(ajaxUrl, {"search":value}, function(result) {

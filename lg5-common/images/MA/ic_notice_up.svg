@@ -1,0 +1,17 @@
+<svg id="ic_notice_up_48" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <path id="Rectangle" class="cls-1" d="M0 0h48v48H0z"/>
+    <g id="ic" transform="translate(4 4)">
+        <g id="Rectangle-2" data-name="Rectangle" style="stroke-miterlimit:10;fill:#aaa;stroke:#aaa">
+            <rect width="40" height="40" rx="20" style="stroke:none"/>
+            <rect class="cls-1" x=".5" y=".5" width="39" height="39" rx="19.5"/>
+        </g>
+        <g id="ic-2" data-name="ic" transform="translate(12.078 15.5)">
+            <path id="Arrow" d="m0 0 8 7.922-8 7.922" transform="rotate(-90 4 4)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:4px;stroke-miterlimit:10;fill:none"/>
+        </g>
+    </g>
+</svg>

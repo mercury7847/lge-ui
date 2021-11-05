@@ -509,7 +509,6 @@
             var ajaxUrl = self.$searchLayer.data('searchInputUrl');
 
             lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
-                console.log("target %o",result.data.linkTarget )
                 if(result.data && result.data.success == 'Y' && result.data.url) {
                     if(result.data.linkTarget == 'self') {
                         location.href = result.data.url;

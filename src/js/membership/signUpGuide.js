@@ -18,5 +18,16 @@ $(document).ready(function() {
     });
 
     $('.vertical-fixed table').clone(true).appendTo('.tb_row').addClass('tb-clone');
+
+    //멤버십 가입 팝업
+    $('.memPopup').click(function(){
+        lgkorUI.confirm('', {
+            title:'고객님은 멤버십 회원입니다. <br> 멤버십 관리 화면으로 이동할까요?', 
+            cancelBtnName: '취소', okBtnName: '확인', 
+            ok: function(){
+                location.href = "/my-page/membership-info";
+            }
+        });
+    });
     /* //BTOCSITE-3002 멤버십 페이지 수정 */
 });

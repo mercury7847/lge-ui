@@ -291,14 +291,17 @@ var FilterLayer = (function() {
 
             if(self.$categorySelect) {
                 self.$categorySelect.on('change', 'input', function(e, noRequest){
-                    console.log('카테고리 체인지 %o %o %o',firstFilterList,location,$(this));
-
+                    // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
 
                     var subCat = $(this).val();
                     var subCateId = subCat ? self.subCategory[subCat] : '';
                     var url = lgkorUI.parseUrl(location.href);
-                    var params = subCateId ? $.extend(url.searchParams.getAll(),{'subCateId':  self.subCategory[subCat] }) : '';
-                        params = subCateId ? '?'+$.param(params) +  (url.hash || '') : (url.hash || '');
+                    var searchParams = url.searchParams.getAll();
+                    if(!subCateId) delete searchParams['subCateId'];
+
+                    var params = $.extend(searchParams, subCateId ? {'subCateId':  subCateId } : '');
+                        params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                        params +=  (url.hash || '');
 
                     window.history.replaceState('', '', location.pathname + params)
 
@@ -843,10 +846,9 @@ var FilterLayer = (function() {
             });
         },
         getSubCategory : function() {
+            // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
             var ret = [];
-            if(!firstFilterList) {
-                var firstFilterList = [];
-            }
+            var firstFilterList = window.hasOwnProperty('firstFilterList') && window.firstFilterList ? window.firstFilterList : [];
             
             if(firstFilterList) {
                 firstFilterList.forEach(function(el) {
@@ -858,7 +860,6 @@ var FilterLayer = (function() {
                     }
                 });
             }
-
             return ret;
         }
 

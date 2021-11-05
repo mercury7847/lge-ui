@@ -706,3 +706,286 @@
 
 // LG SIGNATURE
 @import "MKTF1111";
+
+
+// BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
+.hero-brand{
+    width: 100%;
+    .component-box{
+        width: 100%;
+        max-width: 100%;
+    }
+    .slide-controls{
+        display: block !important;
+        width: 100%;
+        left:50%;
+    }
+    .slide-wrap{
+        &.hero-banner{
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.05s ease;
+            -webkit-transition: opacity 0.05s ease;
+            .custom-indi-wrap {
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                max-width: 1410px;
+                @include mobile {
+                    left: 0;
+                    right: 0;
+                    padding-right: 17.5px;
+                    padding-left: 17.5px;
+                }
+                .custom-indis{
+                    margin:0
+                }
+                .indi-control{
+                    @include mobile {
+                        right:17.5px;
+                        bottom:18px;
+                    }
+                }
+            }
+            .bar{
+                text-indent: -9999px;
+                top: auto;
+                overflow: hidden;
+            }
+            .slide-content{
+                .slide-track{
+                    @include mobile{
+                        height: 326px;
+                    }
+                    .slide-conts{
+                        height: 100%;
+                    }
+                }
+            }
+            &.ui_carousel_initialized{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        .custom-indi-wrap{
+            width: 100%;
+        }
+    }
+    .slide-conts {
+        width: 1920px;
+        margin: 0 auto;
+    }
+    .visual-area {
+        img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            max-width: none;
+            height: auto;
+            width: auto;
+            background-position: center center;
+            min-width: 100%;
+            min-height: 100%;
+            @include mobile{
+                height: auto;
+                object-fit: cover;
+            }
+            &.img-mobile{
+                @include mobile{
+                    max-width: 100%;
+                }
+            }
+        }
+        .img-pc{
+            display: block !important;
+        }
+        .img-mobile{
+            display:none !important;
+        }
+        @include mobile{
+            .img-pc{
+                display:none !important;
+            }
+            .img-mobile{
+                display:block !important;
+            }
+        }
+        .animation-area{
+            video{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                max-width: none;
+                background-position: center center;
+                min-width: 100%;
+                min-height: 100%;
+                &.pc{
+                    width: auto;
+                }
+                &.mobile{
+                    width: auto;
+                    height: auto;
+
+                }
+                @include mobile{
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+        }
+        .hidden{
+            opacity: 0.1;
+        }
+    }
+    // 텍스트 옵션 (좌우, 상하, 폰트컬러)
+    .text-area {
+        position:absolute;
+        left:0;
+        right:0;
+        z-index:10;
+        display: flex;
+        max-width:1610px;
+        margin:0 auto;
+        padding:90px 50px 120px 50px;
+        height: 100%;
+        @include mobile{
+            padding:31px 0 60px;
+        }
+        &.box-align{
+            &-left{
+                text-align: left;
+            }
+            &-center {
+                justify-content: center;
+                text-align: center;
+            }
+            &-right {
+                justify-content:flex-end;
+                text-align: right;
+            }
+        }
+        &.align{
+            &-top{
+                align-items:flex-start;
+            }
+            &-middle {
+                align-items:center;
+            }
+            &-bottom {
+                align-items:flex-end;
+            }
+        }
+        &.text-black {
+            color:#111;
+            .text-detail-title, .text-detail-desc{
+                color:#111;
+            }
+        }
+        &.text-white {
+            color:#fff;
+            .text-detail-title, .text-detail-desc, .text-info-etc{
+                color:#fff;
+            }
+        }
+        @include mobile {
+            &.box-align-left, &.box-align-right{
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+    .text-detail {
+        @include mobile {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        &-title {
+            @include font(56px, 1.32);
+            color: #fff;
+            font-weight: 700;
+            @include mobile{
+                font-size: 25px;
+                line-height: 1.4;
+            }
+            .logo, img {
+                float: none;
+                width: 245px;
+                padding: 0;
+                margin-top: -10px;
+                @include mobile {
+                    width: 123.5px;
+                    height:22.65px;
+                }
+            }
+        }
+        &-desc {
+            margin-top: 24px;
+            color: #fff;
+            font-weight: 700;
+            @include font($font-large-1, 1.5);
+            @include mobile {
+                margin-top: 10px;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 1.53;
+                width: 100vw;
+            }
+            .logo {
+                float: none;
+                width: 90px;
+                padding: 0;
+            }
+        }
+    }
+    .text-info-etc{
+        position:absolute;
+        left:50%;
+        bottom: 47px;
+        -ms-transform: translate(-50%, 0%);
+        transform: translate(-50%, 0%);
+        width: 100%;
+        max-width: 1410px;
+        display: flex;
+        margin: 0 auto;
+        font-size:12px;
+        padding-right:64px;
+        justify-content: flex-end;
+        @media screen and (max-width: 1475px){
+            padding-right:73px;
+        }
+        @include mobile {
+            right:auto;
+            left: 17.5px;
+            bottom:32px;
+            -ms-transform: initial;
+            transform: initial;
+            font-size:11px;
+            font-weight: 400;
+            justify-content: flex-start;
+            text-align:left;
+            line-height: 1.73;
+            padding-right:0;
+
+        }
+    }
+}
+// BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)
+
+
+// 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용(BTOCSITE-4251)으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
+.thinq-main{
+    .video-asset{
+        width: initial;
+        height: initial;
+        position: initial;
+        overflow: initial;
+    }
+}
+// 21-10-13 :  브랜드관 히어로 배너 KRC0015 컴포넌트 사용으로 인해 매거진탭 video-asset 틀어지는 이슈로 추가
