@@ -4,10 +4,10 @@
             var self = this;
 
             self.settings();
-            self.bindEvents()
+            self.heroSlider();
 
             vcui.require(['libs/slick.min', 'ui/pagination'], function () {
-                self.heroSlider();
+                self.bindEvents();
                 self.magazinSlider();
                 self.setMagazineVideo();
                 self.modelSearchInit();
