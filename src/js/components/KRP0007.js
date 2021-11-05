@@ -171,23 +171,32 @@
                         '<a href="#n" class="btn-cart{{#if !checkBtnFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" data-contents="{{modelDisplayName}}" {{#if !checkBtnFlag}}disabled{{/if}}><span class="blind">장바구니 담기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>' +
                     '<div class="btn-area">' +
-                         // BTOCSITE-6375 s
+                        // BTOCSITE-6375 s
                         '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">' +
                         '{{#if bizType == "CARESOLUTION"}}' +
                             // 렌탈/케어일때
                             '자세히 보기' +
                         '{{#else}}' +
-                            '{{#if !checkBtnFlag}}' +
-                                '{{#if careshipOnlyFlag == "Y"}}' +
-                                    // 스토어 + 케어쉽온니 (장바구니 비노출)
-                                    '구매하기' +
+                            // PRODUCT 일때
+                            // 케어쉽온니 (장바구니 항상 비노출)
+                            '{{#if careshipOnlyFlag == "Y"}}' +
+                                //구매 불가능
+                                '{{#if obsBtnRule != "enable"}}' +
+                                    '제품정보 보기' +
+                                //구매 가능
                                 '{{#else}}' +
-                                    // 스토어 + 케어쉽온니가 아닐경우 (장바구니 비노출)
-                                    '자세히 보기' +
+                                    '구매하기' +
+                                '{{/if}}' +
+                            '{{#else}}' +
+                            // 케어쉽온니가 아닐때
+                                '{{#if !checkBtnFlag}}' +
+                                    //구매 불가능
+                                    '제품정보 보기' +
+                                '{{#else}}' +
+                                    //구매 가능
+                                    '구매하기' +
                                 '{{/if}}' +
                             '{{/if}}' +
-                             // 스토어 + 케어쉽온니가 아닐경우 (장바구니 노출)
-                            '{{#if checkBtnFlag}}구매하기{{/if}}' +
                         '{{/if}}' +
                         '</a>'+
                         // BTOCSITE-6375 e
