@@ -2380,28 +2380,26 @@
                 }
 
                 var ajaxUrl;
+                //BTOCSITE-6011 
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-
-                    if(self.loginCheckEnd) {
-                        if(lgkorUI.stringToBool(loginFlag)) {
-                            //BTOCSITE-6011 
-                            if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy){
-                                ajaxUrl = self.$pdpInfo.attr('data-buy-url');
-                                //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
-                                if(ajaxUrl) {
-                                    lgkorUI.showLoading();
-                                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                                        //console.log(result);
-                                        var data = result.data;
-                                        var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
-                                        if(obsDirectPurchaseUrl){
-                                            location.href = obsDirectPurchaseUrl;
-                                        }
-                                    });
+                    if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy ){
+                        ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
+                        if(ajaxUrl) {
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                                //console.log(result);
+                                var data = result.data;
+                                var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                if(obsDirectPurchaseUrl){
+                                    location.href = obsDirectPurchaseUrl;
                                 }
-                            }
-                            else{
+                            });
+                        }
+                    }else{
+                        if(self.loginCheckEnd) {
+                            if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
@@ -2423,43 +2421,42 @@
                                         location.href = url;
                                     }
                                 }
-                            }
-                            //BTOCSITE-6011 
-                        } else {
-                            ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
-                            //스테이지 세팅후 제거 코드
-                            ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
-                            var sendParam = {
-                                "rtModelSeq":param.rtModelSeq
-                            };
-                            if(sendParam.easyRequestCard) {
-                                sendParam.easyRequestCard = param.easyRequestCard
-                            }
-
-                            sendParam.modelUrlPath = location.pathname + location.search;
-                            /*
-                            if(typeof modelUrlPath !== 'undefined') {
-                                var queryString = location.search;
-                                sendParam.modelUrlPath = modelUrlPath + queryString;
-                            }
-                            */
-
-                            if(isDirectBuy) {
-                                lgkorUI.showLoading();
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    //console.log(result);
-                                });
                             } else {
-                                lgkorUI.showLoading();
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    //console.log(result);
-                                });
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
+                                //스테이지 세팅후 제거 코드
+                                ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
+                                var sendParam = {
+                                    "rtModelSeq":param.rtModelSeq
+                                };
+                                if(sendParam.easyRequestCard) {
+                                    sendParam.easyRequestCard = param.easyRequestCard
+                                }
+    
+                                sendParam.modelUrlPath = location.pathname + location.search;
+                                /*
+                                if(typeof modelUrlPath !== 'undefined') {
+                                    var queryString = location.search;
+                                    sendParam.modelUrlPath = modelUrlPath + queryString;
+                                }
+                                */
+    
+                                if(isDirectBuy) {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        //console.log(result);
+                                    });
+                                } else {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        //console.log(result);
+                                    });
+                                }
                             }
+                        } else {
+                            self.processProductBuy = $dm;
                         }
-                    } else {
-                        self.processProductBuy = $dm;
                     }
-                } else {
+                }else {
                     ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                     //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                     if(ajaxUrl) {
@@ -2474,6 +2471,7 @@
                         });
                     }
                 }
+                //BTOCSITE-6011
             },
 
             //로그인 데이타 정보 가져오기
