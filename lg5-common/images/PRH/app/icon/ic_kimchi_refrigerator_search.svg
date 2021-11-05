@@ -1,0 +1,21 @@
+<svg id="ic_kimchi_refrigerator_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px}
+        </style>
+    </defs>
+    <path id="Rectangle_149" data-name="Rectangle 149" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_121" data-name="Group 121" transform="translate(42.736 18.976)">
+        <path id="Path_71" data-name="Path 71" class="cls-2" d="M612.222 163.63v18.8h-5.712v-18.8h5.712m4.32-4.8H602.19a.481.481 0 0 0-.48.48v27.44a.481.481 0 0 0 .48.48h14.352a.481.481 0 0 0 .48-.48v-27.44a.492.492 0 0 0-.48-.48z" transform="translate(-601.71 -158.83)"/>
+    </g>
+    <g id="Group_123" data-name="Group 123" transform="translate(30.8 10.752)">
+        <g id="Group_122" data-name="Group 122">
+            <path id="Path_72" data-name="Path 72" class="cls-2" d="M655.85 158.49v96.9h-56.8v-96.9h56.8m1.6-4.8h-60a3.209 3.209 0 0 0-3.2 3.2v100.08a3.209 3.209 0 0 0 3.2 3.2h60a3.209 3.209 0 0 0 3.2-3.2V156.89a3.209 3.209 0 0 0-3.2-3.2z" transform="translate(-594.25 -153.69)"/>
+        </g>
+        <path id="Line_54" data-name="Line 54" class="cls-3" transform="translate(33.2)" d="M0 0v59.312"/>
+        <path id="Line_55" data-name="Line 55" class="cls-3" transform="translate(0 56.912)" d="M0 0h66.4"/>
+        <path id="Line_56" data-name="Line 56" class="cls-3" transform="translate(0 80.48)" d="M0 0h66.4"/>
+        <path id="Line_57" data-name="Line 57" class="cls-3" transform="translate(8.336 88.768)" d="M0 0h49.728"/>
+        <path id="Line_58" data-name="Line 58" class="cls-3" transform="translate(8.336 65.12)" d="M0 0h49.728"/>
+    </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg id="ic_homebrew_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2,.cls-3{stroke:#8c8c8c;stroke-width:4.8px}.cls-3{fill:#fff}.cls-5{stroke:none}
+        </style>
+    </defs>
+    <path id="Rectangle_184" data-name="Rectangle 184" class="cls-1" d="M0 0h128v128H0z"/>
+    <g id="Group_644" data-name="Group 644" transform="translate(-1143 -713)">
+        <g id="Rectangle_181" data-name="Rectangle 181" class="cls-2" transform="translate(1162 742)">
+            <rect class="cls-5" width="90" height="77" rx="4"/>
+            <rect class="cls-1" x="2.4" y="2.4" width="85.2" height="72.2" rx="1.6"/>
+        </g>
+        <g id="Rectangle_182" data-name="Rectangle 182" class="cls-2">
+            <path class="cls-5" d="M0 0h36v77H0z" transform="translate(1189 742)"/>
+            <path class="cls-1" d="M2.4 2.4h31.2v72.2H2.4z" transform="translate(1189 742)"/>
+        </g>
+        <g id="Rectangle_183" data-name="Rectangle 183" class="cls-3" transform="translate(1173 804)">
+            <rect class="cls-5" width="68" height="15" rx="2"/>
+            <rect class="cls-1" x="2.4" y="2.4" width="63.2" height="10.2" rx=".4"/>
+        </g>
+        <g id="Path_141" data-name="Path 141" style="fill:#fff">
+            <path class="cls-5" d="M11.628 21.6H4.372L2.452 2.4h11.096l-1.92 19.2z" transform="translate(1199 736)"/>
+            <path d="m5.104 4.8 1.44 14.4h2.912l1.44-14.4H5.104M2 0h12a2 2 0 0 1 2 2l-2 20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2L0 2a2 2 0 0 1 2-2z" style="fill:#8c8c8c;stroke:none" transform="translate(1199 736)"/>
+        </g>
+        <g id="Rectangle_180" data-name="Rectangle 180" class="cls-3" transform="translate(1200 755)">
+            <rect class="cls-5" width="14" height="17" rx="2"/>
+            <rect class="cls-1" x="2.4" y="2.4" width="9.2" height="12.2" rx=".4"/>
+        </g>
+        <path id="Path_142" data-name="Path 142" class="cls-2" d="M-18769-11219.406v-9.647" transform="translate(19976 12000)"/>
+    </g>
+</svg>

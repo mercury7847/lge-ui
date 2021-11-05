@@ -1,0 +1,25 @@
+<svg id="ic_stand_airconditioner_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <g id="Group_283" data-name="Group 283" transform="translate(-1325 -533.33)">
+        <path id="Rectangle_168" data-name="Rectangle 168" class="cls-1" transform="translate(1325 533.33)" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_288" data-name="Group 288" transform="translate(-1325 -533.33)">
+        <g id="Group_285" data-name="Group 285">
+            <g id="Group_284" data-name="Group 284">
+                <path id="Path_119" data-name="Path 119" d="M1378.3 542.65v61.36h-26.6v-61.36h26.6m1-3h-28.61a2 2 0 0 0-2 2v63.36a2 2 0 0 0 2 2h28.61a2 2 0 0 0 2-2v-63.36a2 2 0 0 0-2-2z" style="fill:#8c8c8c"/>
+            </g>
+        </g>
+        <g id="Group_287" data-name="Group 287">
+            <g id="Group_286" data-name="Group 286">
+                <g id="Ellipse_61" data-name="Ellipse 61" transform="translate(1354.74 546.64)" style="stroke:#8c8c8c;stroke-width:3px;fill:none">
+                    <circle cx="10.26" cy="10.26" r="10.26" style="stroke:none"/>
+                    <circle class="cls-1" cx="10.26" cy="10.26" r="8.76"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

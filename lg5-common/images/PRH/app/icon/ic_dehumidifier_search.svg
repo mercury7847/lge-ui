@@ -1,0 +1,16 @@
+<svg id="ic_dehumidifier_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke:#8c8c8c;stroke-width:4.8px}.cls-2{stroke-miterlimit:10}
+        </style>
+    </defs>
+    <path id="Rectangle_185" data-name="Rectangle 185" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_646" data-name="Group 646" transform="translate(-1008 -914)">
+        <g id="Group_645" data-name="Group 645" transform="translate(804.141 778.437)">
+            <path id="Path_144" data-name="Path 144" class="cls-2" d="M296.278 151.111a28.484 28.484 0 0 0-3.167-3.055 2.163 2.163 0 0 0-3 .333s-.555.833-5.778 4a21.98 21.98 0 0 1-10.445 2.889h-31.971a2.75 2.75 0 0 0-2.75 2.75v85.889a2.75 2.75 0 0 0 2.75 2.75h42.833a2.75 2.75 0 0 0 2.75-2.75v-74.578c-.08-2.556 1-3.632 2.173-6.216a45.594 45.594 0 0 1 5.771-8.9c1.834-2.112.834-3.112.834-3.112z"/>
+            <path id="Path_145" data-name="Path 145" class="cls-2" d="M290.444 160.333h1.623a4.484 4.484 0 0 1 4.483 4.484v77.366a4.484 4.484 0 0 1-4.483 4.484H273.4"/>
+        </g>
+        <path id="Path_146" data-name="Path 146" class="cls-3" d="M-18923.959-10974.9v6.056" transform="translate(19975.811 12000)"/>
+        <path id="Path_147" data-name="Path 147" class="cls-3" d="M-18923.693-10974.9v6.056" transform="translate(20015.811 12000)"/>
+    </g>
+</svg>

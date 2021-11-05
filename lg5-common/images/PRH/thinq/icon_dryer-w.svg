@@ -1,0 +1,30 @@
+<svg id="ic_dryer_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d9a898"/>
+            <stop offset="1" stop-color="#d1774e"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:#404040}.cls-3{fill:none;stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px}
+        </style>
+    </defs>
+    <rect id="Rectangle_158" data-name="Rectangle 158" width="120" height="120" rx="16" style="fill:#fff"/>
+    <g id="Group_628" data-name="Group 628" transform="translate(10 10)">
+        <g id="Group_203" data-name="Group 203" transform="translate(21.275 11.15)">
+            <g id="Group_201" data-name="Group 201">
+                <g id="Group_200" data-name="Group 200">
+                    <g id="Group_199" data-name="Group 199">
+                        <path id="Path_88" data-name="Path 88" class="cls-2" d="M555.707 552.67v70.212H505.77V552.67h49.938m1.25-3.75H504.52a2.507 2.507 0 0 0-2.5 2.5v72.712a2.507 2.507 0 0 0 2.5 2.5h52.438a2.507 2.507 0 0 0 2.5-2.5V551.42a2.491 2.491 0 0 0-2.5-2.5z" transform="translate(-502.02 -548.92)"/>
+                    </g>
+                    <path id="Line_73" data-name="Line 73" class="cls-3" transform="translate(.013 16.775)" d="M0 0h57.425"/>
+                    <path id="Line_87" data-name="Line 87" class="cls-3" transform="translate(.013 68.025)" d="M0 0h57.425"/>
+                    <path id="Line_74" data-name="Line 74" class="cls-3" transform="translate(35.2 9.325)" d="M0 0h14.9"/>
+                </g>
+            </g>
+            <g id="Group_202" data-name="Group 202" transform="translate(26.225 6.75)">
+                <circle id="Ellipse_25" data-name="Ellipse 25" class="cls-2" cx="2.5" cy="2.5" r="2.5"/>
+            </g>
+        </g>
+        <circle id="Ellipse_26" data-name="Ellipse 26" cx="19.512" cy="19.512" r="19.512" transform="translate(30.487 34.675)" style="fill:url(#linear-gradient)"/>
+    </g>
+</svg>
