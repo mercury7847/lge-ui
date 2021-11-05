@@ -1488,13 +1488,15 @@
 }
 // BTOCSITE-5938-17 e
 
+/* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
 .popup-wrap{
     .pop-conts{
         &.pdb01{
-            padding-bottom:180px;
+            padding-bottom:160px;
         }
         &.pdb02{
             padding-bottom:240px;
         }
     }
 }
+/* //BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
