@@ -1487,3 +1487,14 @@
     }
 }
 // BTOCSITE-5938-17 e
+
+.popup-wrap{
+    .pop-conts{
+        &.pdb01{
+            padding-bottom:180px;
+        }
+        &.pdb02{
+            padding-bottom:240px;
+        }
+    }
+}
