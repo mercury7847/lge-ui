@@ -3,9 +3,10 @@
         init: function(){
             var self = this;
 
+            self.settings();
+            self.bindEvents()
+
             vcui.require(['libs/slick.min', 'ui/pagination'], function () {
-                self.settings();
-                self.bindEvents()
                 self.heroSlider();
                 self.magazinSlider();
                 self.setMagazineVideo();
@@ -47,7 +48,7 @@
             self.$searchDel = self.$searchSticky.find('.btn-delete');
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
-            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
+
 
             self.$searchIntro = self.$searchPopup.find('.intro-message');
             self.$prdResult = self.$searchPopup.find('.product-result-wrap');
@@ -60,6 +61,9 @@
         },
         bindEvents: function(){
             var self = this;
+
+            //페이징 이벤트 실행
+            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
 
             //체험하기 팝업
             self.$btnExperience.on('click',function(e){
