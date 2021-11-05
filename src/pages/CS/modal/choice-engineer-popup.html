@@ -3,16 +3,22 @@
     <header class="pop-header">
         <h1 class="tit"><span>엔지니어 선택</span></h1>
     </header>
+
+    <!-- BTOCSITE-6859 이벤트페이지 UI 변경 요청 -->
     <section class="pop-conts engineer-pop">
-        <div class="engineer-slider slide-wrap">
+        <div class="engineer-popup">
             <div class="indi-wrap">
                 <ul class="indi-conts ui_carousel_dots">
                     <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                 </ul>
             </div>
-            <div class="slide-content ui_carousel_list">
+            <ul class="engineer-info">
+
+            <!-- BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 -->
+                <!-- 삭제 -->
+                <!-- 
                 <div class="slide-track ui_carousel_track">
-                    <!-- <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-conts ui_carousel_slide">
                         <div class="engineer-box">
                             <input type="radio" name="engineer" id="engineer-1" value="">
                             <label for="engineer-1">
@@ -23,15 +29,22 @@
                                 <p class="desc">모란지역지원센터</p>
                             </label>
                         </div>  
-                    </div> -->
+                    </div>
                 </div>
-            </div>
+                 -->
+            </ul>
+            <!-- 
             <div class="slide-controls">
                 <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
                 <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-            </div>
+            </div> 
+            -->
+            <!-- //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 -->
+            
         </div>
     </section>
+    <!-- //BTOCSITE-6859 이벤트페이지 UI 변경 요청 -->
+
 	<!-- 2021.03.08 footer 태그 div로 수정 -->
     <div class="pop-footer">
         <div class="btn-group center">
