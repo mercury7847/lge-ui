@@ -2359,9 +2359,9 @@
 
             .app-smart-wrap {
                 background-color: #f4f4f4;
-                padding: 350px 0 120px;
+                padding: 350px 0 48px;
                 @include mobile {
-                    padding: 196px 16px 62px;
+                    padding: 196px 16px 40px;
                 }
                 .app-smart-detail {
                     max-width: 1460px;
@@ -2475,6 +2475,9 @@
     .app-tab-desc {
         padding: 0 40px;
         background: #f4f4f4;
+        @include mobile {
+            padding: 0 16px;
+        }
         .bullet-list {
             max-width: 1380px;
             margin: 0 auto;
