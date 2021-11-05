@@ -262,6 +262,26 @@
         });
     }
 
+    /* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+    $(function () {
+        var phNum01 = $('#address-regist-form .forms input#ipt4');
+        var phNum02 = $('#address-regist-form .forms input#ipt5');
+
+        phNum01.on('focus', function(){
+            $('.popup-wrap .pop-conts').css('padding-bottom', '100px');
+        });
+        phNum01.on('focusout', function(){
+            $('.popup-wrap .pop-conts').css('padding-bottom', '60px');
+        });
+        phNum02.on('focus', function(){
+            $('.popup-wrap .pop-conts').css('padding-bottom', '240px');
+        });
+        phNum02.on('focusout', function(){
+            $('.popup-wrap .pop-conts').css('padding-bottom', '60px');
+        });
+    });
+    /* //BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+
     $(window).load(function(){
         init();
     })
