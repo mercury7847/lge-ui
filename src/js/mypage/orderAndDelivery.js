@@ -755,11 +755,16 @@
 
         lgkorUI.addLimitedInputEvent($('input[name=birthDt]'));
 
+        // BTOCSITE-5938-210 내용 추가 생년월일 년도 입력 수 제한
+        lgkorUI.addLimitedInputEvent($('input[name=year]'));
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
         //     setMethodReceiptPop();
         // });
+
+        
     }
 
     function sendDetailPage(dataID){
@@ -805,6 +810,11 @@
 
         if($('#' + popname).data('isBirthDt')){
             bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - S
+            var bYear = $('input[name="year"]').val();
+            var bMonth = $('.ui_selectbox[name="month"]').val();
+            var bDay = $('.ui_selectbox[name="day"]').val();
+
             if(!bankValue){
                 lgkorUI.alert("", {
                     title: "생년월일을 입력해 주세요."
@@ -812,6 +822,31 @@
     
                 return false;
             }
+
+            if(!bYear){
+                lgkorUI.alert("", {
+                    title: "년도를 입력해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bMonth){
+                lgkorUI.alert("", {
+                    title: "월을 선택해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bDay){
+                lgkorUI.alert("", {
+                    title: "일을 선택해 주세요."
+                });
+    
+                return false;
+            }
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - E
         }
 
         bankValue = $('#' + popname).find('.bank-input-box select option:selected').val();
@@ -2814,6 +2849,18 @@
     function sendListPage(){
 
     }
+
+    // BTOCSITE-5938-210 생년월일(비회원) 형식 변경(select-box) 이벤트 - start
+    $(document).on("change", ".ui_selectbox[name='day'], .ui_selectbox[name='month']" ,function(){
+        var curYear = $('input[name="year"]').val();
+        var curMonth = $('.ui_selectbox[name="month"]').val();
+        var curDay = $('.ui_selectbox[name="day"]').val();
+
+        var birthDay = curYear + curMonth + curDay;
+        $('input[name=birthDt]').val(birthDay);
+        
+    });
+    // BTOCSITE-5938-210 생년월일(비회원) 형식 변경(select-box) 이벤트 - end
 
     document.addEventListener('DOMContentLoaded', function () {
         init();
