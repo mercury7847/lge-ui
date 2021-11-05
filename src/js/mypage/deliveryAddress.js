@@ -270,9 +270,13 @@
         
         if(isAndroid) {
             phNum.on('focusin', function(){
+                $('body').css('overflow', 'visible');
+                $('.wrap').css('display', 'none');
                 $('.ui_modal_wrap').css('position', 'absolute');
             });
             phNum.on('focusout', function(){
+                $('body').css('overflow', 'hidden');
+                $('.wrap').css('display', 'block');
                 $('.ui_modal_wrap').css('position', 'fixed');
             });
             // phNum01.on('focusin', function(){
