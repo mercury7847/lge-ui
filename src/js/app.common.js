@@ -293,22 +293,7 @@ var appInit = function() {
         
         //iOS, Android 앱 설치 여부 확인
         LGEcomfirmAPPInstall = function() {
-            var agent = navigator.userAgent;
-
-            if (agent.indexOf("Android") != -1) {
-                location.href = "Intent://goto#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                setTimeout(function() {
-                    //location.href = "https://play.google.com/store/apps/details?id=kr.co.lge.android";
-                    window.open("https://play.google.com/store/apps/details?id=kr.co.lge.android", "_blank");
-                }, 500);
-            } else if (/iPhone|iPad|iPod/i.test(agent)) {
-                setTimeout(function() {
-                    if (!document.webkitHidden) {
-                        location.href = "https://itunes.apple.com/app/id1561079401?mt=8";
-                    }
-                }, 25);
-                location.href = "lgeapp://";
-            }
+            goAppUrl();   // BTOCSITE-5938-237 앱실행 방법 변경
         }
 
         //알림함 Count 표시

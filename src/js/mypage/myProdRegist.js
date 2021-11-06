@@ -206,9 +206,9 @@
         setting: function() {
             var self = this;  
             self.$contents = $('div.lnb-contents');
-            var $tab = $('.tabs-wrap.ui_tab');
-            self.$registProductTab = $tab.find('li:eq(0) a');
-            self.$myProductTab = $tab.find('li:eq(1) a');
+            self.$tab = $('.tabs-wrap.ui_tab');
+            self.$registProductTab = self.$tab.find('li:eq(0) a');
+            self.$myProductTab = self.$tab.find('li:eq(1) a');
 
             //등록가능제품
             self.$registProductList = self.$contents.find('div.my-product-lists:eq(0)');
@@ -290,10 +290,28 @@
             } else {
                self.$packageModal = $('#packageProductSelectPopup');
             }
+
+            // BTOCSITE-5938-298 모바일에서 리뷰작성 팝업에서 탭 이동 오류 수정
+            var defaultTab = parseInt(lgkorUI.getParameterByName('tab')) || 0;
+            if(defaultTab > 0) {
+                self.$tab.vcTab('select',defaultTab);
+            }
         },
 
         bindEvents: function() {
             var self = this;
+
+            // BTOCSITE-5938-298 모바일에서 리뷰작성 팝업에서 탭 이동 오류 수정
+            self.$tab.on("tabchange", function(e,data) {
+                var url = lgkorUI.parseUrl(location.href);
+                var params = $.extend(url.searchParams.getAll(),{'tab':  data.selectedIndex });
+                    params = '?'+$.param(params) +  (url.hash || '');
+                window.history.replaceState('', '', location.pathname + params);
+
+                //크레마 리로드
+                lgkorUI.cremaReload();
+            });
+
             
             //등록가능제품 보유제품으로 등록하기
             self.$registProductList.on('click','div.enroll-list ul li div.btn-group a', function(e) {
