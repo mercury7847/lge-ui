@@ -809,12 +809,19 @@
         var bankValue;
 
         if($('#' + popname).data('isBirthDt')){
-            bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - S
+            bankValue = $('#' + popname).find('input[name=birthDt]').val();
+            var bYear = $('#' + popname).find('input[name="year"]').val();
+            var bMonth = $('#' + popname).find('.ui_selectbox[name="month"]').val();
+            var bDay = $('#' + popname).find('.ui_selectbox[name="day"]').val();
+                         
+            bankValue = bYear + bMonth + bDay;
+            $('#' + popname).find('input[name=birthDt]').val(bankValue);
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - E
+            
+            //bankValue= $('#' + popname).find('input[name=birthDt]').val();
             // BTOCSITE-5938-210 생년월일 validation Check 추가 - S
-            var bYear = $('input[name="year"]').val();
-            var bMonth = $('.ui_selectbox[name="month"]').val();
-            var bDay = $('.ui_selectbox[name="day"]').val();
-
+            
             if(!bankValue){
                 lgkorUI.alert("", {
                     title: "생년월일을 입력해 주세요."
@@ -2849,18 +2856,6 @@
     function sendListPage(){
 
     }
-
-    // BTOCSITE-5938-210 생년월일(비회원) 형식 변경(select-box) 이벤트 - start
-    $(document).on("change", ".ui_selectbox[name='day'], .ui_selectbox[name='month']" ,function(){
-        var curYear = $('input[name="year"]').val();
-        var curMonth = $('.ui_selectbox[name="month"]').val();
-        var curDay = $('.ui_selectbox[name="day"]').val();
-
-        var birthDay = curYear + curMonth + curDay;
-        $('input[name=birthDt]').val(birthDay);
-        
-    });
-    // BTOCSITE-5938-210 생년월일(비회원) 형식 변경(select-box) 이벤트 - end
 
     document.addEventListener('DOMContentLoaded', function () {
         init();
