@@ -1019,7 +1019,14 @@
     }
 }
 
-
+// BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
+.pop-footer {
+    @include mobile {
+        position:fixed;
+        width:100%;
+        bottom:0;
+    }
+}
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
