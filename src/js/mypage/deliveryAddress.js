@@ -273,11 +273,13 @@
                 $('body').css('overflow', 'visible');
                 $('.wrap').css('display', 'none');
                 $('.ui_modal_wrap').css('position', 'absolute');
+                $('.popup-wrap .pop-conts').addClass('pdb02');
             });
             phNum.on('focusout', function(){
                 $('body').css('overflow', 'hidden');
                 $('.wrap').css('display', 'block');
                 $('.ui_modal_wrap').css('position', 'fixed');
+                $('.popup-wrap .pop-conts').removeClass('pdb02');
             });
             // phNum01.on('focusin', function(){
             //     $('.popup-wrap .pop-conts').addClass('pdb01');
