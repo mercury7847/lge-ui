@@ -208,6 +208,11 @@ $(function () {
             var recomSlider03Num = recomSlider03.find('.slide-item').length;
             var infoSliderNum = $('.info-area').find('.slide-item').length;
 
+            if(data.name == 'pc'){
+
+            } else if(data.name == 'mobile'){
+            }
+
             if(recomSlider01Num > 1){
                 recomSlider(recomSlider01);
             }
