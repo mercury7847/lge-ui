@@ -4614,17 +4614,19 @@
                 var desc = '';
 
                 /* 20210622 오브제컬렉션_ 매장 시뮬레이터 */
-                if($objContent.attr('data-page-type') === 'COMMON') {
-                    obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
-                    let popLoginCheck = $("meta[name='login']").attr("content");
-                    // console.log("popLoginCheck", popLoginCheck);
-                    if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
-                        desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
-                    } else {
-                        desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
-                    }
-                    lgkorUI.confirm(desc, obj);
-                }
+                // BTOCSITE-7809 오브제컬렉션 체험 내 저장하기 삭제 요청 - S
+                // if($objContent.attr('data-page-type') === 'COMMON') {
+                //     obj = $.extend(obj, { title: '체험하신 내용을 저장하시겠습니까?', cancelBtnName: '아니오', okBtnName: '예', });
+                //     let popLoginCheck = $("meta[name='login']").attr("content");
+                //     // console.log("popLoginCheck", popLoginCheck);
+                //     if (popLoginCheck == "" || popLoginCheck === null || popLoginCheck == "null" || popLoginCheck == "undefined" || popLoginCheck === undefined) {
+                //         desc = '<p class="err-msg save_alert">저장 시 로그인이 필요하며 체험한 제품은 초기화됩니다. <br>해당 제품은 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                //     } else {
+                //         desc = '<p class="err-msg save_alert">저장 시 내가 만든 오브제컬렉션에서 확인 가능합니다.</p>';
+                //     }
+                //     lgkorUI.confirm(desc, obj);
+                // }
+                // BTOCSITE-7809 오브제컬렉션 체험 내 저장하기 삭제 요청 - E
                 /* //20210622 오브제컬렉션_ 매장 시뮬레이터 */
                 /* BTOCSITE-1582 */
                 //var $objContent = $('.model_experience');
@@ -4638,11 +4640,16 @@
                 //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - S (뉴베스트/하이마트/전자랜드 제외)
                 if($objContent.attr('data-page-type') === 'COMMON'){
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
-                }
-                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - E
+                //BTOCSITE-7809 - S
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                 }, 500);
+                //BTOCSITE-7809 - E
+                }
+                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - E
+                // setTimeout(function() {
+                //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                // }, 500);
             } else {
                 let desc = "";
                 let obj = {
