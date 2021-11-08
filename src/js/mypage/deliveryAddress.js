@@ -274,12 +274,14 @@
                 $('.wrap').css('display', 'none');
                 $('.ui_modal_dim').css('display', 'none');
                 $('.ui_modal_wrap').css('position', 'relative');
+                $('.popup-wrap .pop-conts').addClass('pdb02');
             });
             phNum.on('focusout', function(){
                 $('body').css('overflow', 'hidden');
                 $('.wrap').css('display', 'visible');
                 $('.ui_modal_dim').css('display', 'visible');
                 $('.ui_modal_wrap').css('position', 'fixed');
+                $('.popup-wrap .pop-conts').removeClass('pdb02');
             });
             // phNum01.on('focusin', function(){
             //     $('.popup-wrap .pop-conts').addClass('pdb01');
