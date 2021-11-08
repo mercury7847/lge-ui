@@ -2,6 +2,9 @@
 <html lang="ko">
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
     @@include('./common/head.html', {
+        "pageCSS": [
+            "../components/KRP0011",
+        ],
         componentID: "KRP0008",
         isJScompile: true
     })
@@ -384,6 +387,82 @@
                        @@include('./common/partials/KRP0008-info.html')
                         <!-- // component -->
                     </div>
+
+
+                    <!-- component -->
+
+                    <div class="component-wrap">
+                        <!--
+                            1. 여백
+                            .zero-top : 상단여백 없음
+                            .zero-btm : 하단여백 없음
+                        -->
+                        <section class="component KRP0011">
+                            <div class="component-inner">
+                                <div class="title">
+                                    <h2>유사 제품 추천</h2>
+                                </div>
+                                <!-- [KR수정_210118] 전체적으로 수정.. -->
+                                <div class="recommend-wrap">
+                                    <!-- 지금 보고있는 제품 -->
+                                    <div class="prod-box now">
+                                        <p class="tit">지금 보고있는 제품</p>
+                                        <ul class="product-items">
+                                            @@loop('./common/modules/product-list-item-loop.html', [
+                                            {
+                                            "itemClass" : "rec-items",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : false,
+                                            "originalPrice" : false,
+                                            "visitPer": "3",
+                                            "bizType": "CARESOLUTION"
+                                            }
+                                            ])
+                                        </ul>
+                                    </div>
+                                    <!-- // 지금 보고있는 제품 -->
+
+                                    <!-- 추천 제품 -->
+                                    <div class="prod-box recommend">
+                                        <p class="tit">추천 제품</p>
+                                        <ul class="product-items">
+                                            @@loop('./common/modules/product-list-item-loop.html', [
+                                            {
+                                            "itemClass" : "rec-items",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "originalPrice" : true
+                                            }, {
+                                            "itemClass" : "rec-items",
+                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "originalPrice" : true
+                                            }
+                                            ])
+                                        </ul>
+                                    </div>
+                                    <!-- // 추천 제품 -->
+
+                                    <!-- 스펙 비교하기 버튼 -->
+                                    <div class="bottom-area">
+                                        <button class="btn border size-m"><span>스펙 비교하기</span></button><!-- [KR수정_210118] class명 수정 -->
+                                    </div>
+                                    <!-- // 스펙 비교하기 버튼 -->
+                                    <!-- // [KR수정_210118] DOM 닫기, 버튼 DOM 위치 이동 -->
+                                </div>
+                                <!-- // [KR수정_210118] 전체적으로 수정.. -->
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- // component -->
+
 
                     <!-- 210611 서비스 안내 문구 추가 -->
                     <div class="care-solution-info">
