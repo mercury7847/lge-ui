@@ -4605,8 +4605,8 @@
                         } else {
                             modelSimulator.mobileStep(".simul_step3");
                         }
-                        // BTOCSITE-7809 위치 변경 - S
                         //210719 BTOCSITE-2346 CASE별 분기 처리 - E
+                        // BTOCSITE-7809 위치 변경 - S
                         // setTimeout(function() {
                         //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                         // }, 500);
@@ -5003,12 +5003,13 @@
         let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]'); //4도어 추가 BTOCSITE-4239 210915
         let subPickChkDoor3 = $('.btn_model_sub_pick[data-name="3도어"]'); //3도어 추가 BTOCSITE-4239 210915
         //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
-        if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true || subPickChkDoor3.hasClass("is_selected") == true){
-            $(slideTarget).find(".swiper-wrapper").css("width", "580px");
-        }else{
-            $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
-        }
-        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+        // BTOCSITE-6534 요청사항(좌측 정렬로 변경) - S
+        // if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true || subPickChkDoor3.hasClass("is_selected") == true){
+        //     $(slideTarget).find(".swiper-wrapper").css("width", "580px");
+        // }else{
+        //     $(slideTarget).find(".swiper-wrapper").css("width", slideWrapW);                       
+        // }
+        // BTOCSITE-6534 요청사항(좌측 정렬로 변경) - E
         modelSubTabCont = new Swiper(slideTarget, {
             slidesPerView: 'auto',
             freeMode: true,
