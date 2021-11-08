@@ -65,7 +65,7 @@
             self.$btnExperience.on('click',function(e){
                 if(!vcui.detect.isMobile && !vcui.detect.isIE){
                     var target = "https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html";
-                    var width = 360;
+                    var width = 480;
                     var height = 800;
                     var xpos = (screen.availWidth - width)/2;
                     var ypos = (screen.availHeight - height)/2;
