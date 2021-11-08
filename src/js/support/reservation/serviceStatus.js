@@ -683,10 +683,12 @@
                 });                             
                 $engineerBox.find('.name').html(data.engineerName);
                 $engineerBox.find('.center').html(data.centerName);
-    
+                
+                /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                 $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
                 $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
                 $resultBox.find('.name').html(data.engineerName);
+                $resultBox.find('.store').html('(' + data.centerName + ')');
     
                 $('#engineerNm').val(data.engineerName);
                 $('#engineerCode').val(data.engineerCode);
