@@ -265,7 +265,7 @@
     /* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
     $(function () {
         var isAndroid = vcui.detect.isAndroid;
-        var phNum = $('#address-regist-form .forms input#ipt4, #address-regist-form .forms input#ipt5');
+        var phNum = $('#address-regist-form .forms input#ipt3, #address-regist-form .forms input#ipt4, #address-regist-form .forms input#ipt5');
         
         if(isAndroid) {
             phNum.on('focusin', function(){
