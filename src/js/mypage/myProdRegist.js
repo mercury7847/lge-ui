@@ -986,28 +986,30 @@
                 switch(index) {
                     case 0 : break;
                     case 1 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stand-air.jpg'>가정용 스탠드형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-wall-air.jpg'>벽걸이형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-windows-air.jpg'>창문형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-move-air.jpg'>이동식</option>";
+                        break;
+                    case 2 :
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-front-washers-qr.jpg'>드럼세탁기</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg'>의류건조기</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg'>일반세탁기</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stylers-qr.jpg'>스타일러</option>";
-                        break;
-                    case 2 :
-                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stand-air.jpg'>스탠드에어컨</option>";
-                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-wall-air.jpg'>벽걸이에어컨</option>";
-                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-windows-air.jpg'>창문형에어컨</option>";
-                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-move-air.jpg'>이동형에어컨</option>";
                         break;
                     case 3 :
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stick-cleaners-qr.jpg'>무선(A9)/일반</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-robot-cleaners-qr.jpg'>로봇청소기</option>";
                         break;
                     case 4 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-electric-range.jpg'>전기레인지</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-gas-oven.jpg'>가스오븐</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-lightwave-oven.jpg'>광파오븐</option>";
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-microwave-oven.jpg'>전자레인지</option>";
                         break;
                     case 5 :
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-air-purifiers.jpg'>공기청정기</option>";
-                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-humidifier.jpg'>가습기제습기</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-humidifier.jpg'>제습기</option>";
                         break;
                     case 6 :
                         qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-water-purifier.jpg'>정수기</option>";
