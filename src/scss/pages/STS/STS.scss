@@ -616,13 +616,9 @@
         font-size: 0;
         .flexbox:not(.tag-area) {
             display: inline-block;
-            width: calc(100% / 4);
-            padding:0 12px;
             height: 409px;
             vertical-align: top;
-            margin-top: 24px;
             @include tablet {
-                width: calc((100% / 2));
             }
             @include mobile{
                 height: 287.5px;
@@ -633,7 +629,7 @@
         }
         @include mobile {
             margin: 0 -4px;
-            .flexbox {
+            .flexbox:not(.tag-area) {
                 width: calc(100% / 2);
                 &.tag-area {
                     padding-bottom: 40px;
@@ -781,7 +777,7 @@
             &.image,
             &.review {
                 .visual-area {
-                    @include moible{
+                    @include mobile{
                         height: 100%;
                     }
                     &:after {
@@ -1051,7 +1047,6 @@
             height: 27px;
         }
         @include mobile{
-            margin-top: 24px;
             font-size:14px;
             height: 40px;
             width: 148.5px;
@@ -1123,11 +1118,13 @@
             @include mobile {
                 margin: 0;
             }
-            .flexbox {
+            .flexbox{
                 //position: static !important;
-                padding: 0 12px;
+                display: inline-block;
                 height: 358px;
                 margin-top: 0;
+                width: calc(100% / 4);
+                padding:0 12px;
                 @include mobile{
                     height: 179px;
                 }
