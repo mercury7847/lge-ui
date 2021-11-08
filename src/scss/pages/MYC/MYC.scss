@@ -1495,6 +1495,19 @@
 }
 // BTOCSITE-5938-17 e
 
+/* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+.popup-wrap{
+    .pop-conts{
+        &.pdb01{
+            padding-bottom:145px;
+        }
+        &.pdb02{
+            padding-bottom:240px;
+        }
+    }
+}
+/* //BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+
 /* BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) */
 .popup-package-model {
 	width: 678px;
