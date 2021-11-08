@@ -155,6 +155,11 @@
                 @include font-medium;
                 span {
                     font-weight:bold;
+                    /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+                    &.egn-info-btn {
+                        color: #fa263e;
+                    }
+                    /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                 }
             }
             .btn-wrap {
@@ -174,6 +179,9 @@
                 // width:calc(100% - 104px);
                 width: 100%;
                 padding-left:24px;
+                .txt {
+                    word-break: keep-all;
+                }
                 .btn-wrap {
                     margin-top:16px;
                 }
