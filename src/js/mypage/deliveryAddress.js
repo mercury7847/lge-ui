@@ -270,13 +270,20 @@
         
         if(isAndroid) {
             phNum.on('focusin', function(){
+                $('html').css('overflow', 'visible');
                 $('body').css('overflow', 'visible');
                 $('.wrap').css('display', 'none');
                 $('.ui_modal_dim').css('display', 'none');
                 $('.ui_modal_wrap').css('position', 'relative');
                 $('.popup-wrap .pop-conts').addClass('pdb02');
+                $('.pop-conts').scrollTop( $(document).height() );
+                console.log($(window).scrollTop());
+                console.log($('html').scrollTop());
+                console.log($('body').scrollTop());
+                console.log($('.pop-conts').scrollTop());
             });
             phNum.on('focusout', function(){
+                $('html').css('overflow', 'hidden');
                 $('body').css('overflow', 'hidden');
                 $('.wrap').css('display', 'visible');
                 $('.ui_modal_dim').css('display', 'visible');
