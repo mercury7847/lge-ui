@@ -230,7 +230,7 @@
                 }
             }
             @include mobile {
-                top: 65px; //BTOCSITE-188
+                top: 54px; //BTOCSITE-188
                 right: 0;
                 left: 0;
                 text-align: center;
@@ -614,7 +614,7 @@
     .flexbox-wrap {
         position: relative;
         font-size: 0;
-        .flexbox {
+        .flexbox:not(.tag-area) {
             display: inline-block;
             width: calc(100% / 4);
             padding:0 12px;
@@ -781,6 +781,9 @@
             &.image,
             &.review {
                 .visual-area {
+                    @include moible{
+                        height: 100%;
+                    }
                     &:after {
                         position: absolute;
                         top: 0;
