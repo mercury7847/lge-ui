@@ -215,9 +215,9 @@
 
     function bindEvent(){
         
-        // $(window).on('resize', function(){ //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
-        //     resize();
-        // });
+        $(window).on('resize', function(){ //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
+            resize();
+        });
 
         $context.find('.story-section').on('click', '.btn-moreview', function(e){
             e.preventDefault();
@@ -245,7 +245,7 @@
                     // $context.find('.user_story').find('.story-title-area').show();//BTOCSITE-188
                     $context.find('.user_story').show();
                     $context.find('.tag-subscribe-story3').show();
-                    // setRepositionTagBox($('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
+                    setRepositionTagBox($('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
                 } else{
                     $context.find('.tag-subscribe-story').show();
                 }
@@ -258,7 +258,7 @@
                 loadStoryList('user_story', 1, 'UserStory');
 
                 $context.find('.new_story').show();
-                // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
+                setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함
             }
         }).on('click', '.subscription-btn', function(e){
             e.preventDefault();
@@ -588,7 +588,7 @@
                         $context.find('.new_story').find('.inner h2.title').show();
                     }
                     
-                    // setRepositionTagBox(sectionItem); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
+                    setRepositionTagBox(sectionItem); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
                 } else{
                     if(sectioname == "user_story"){
                         // $('.tag-subscribe-story').empty().show().append(vcui.template(recommendTagTemplate, {tagList:result.data.recommendTags}));
@@ -632,21 +632,21 @@
                     lastbox = boxmap[i][leng-1];
 
                     contype = lastbox.data('contentsType');
-                    if(contype == 'image') boxheight = status.imgheight;
-                    else if(contype == "video"){
-                        txtheight = lastbox.find('.text-area').outerHeight(true);
-                        boxheight = status.videoheight + txtheight;
-                    } else{
-                        titleheight = lastbox.find('.title').outerHeight(true);
-                        tagheight = lastbox.find('.tag-lists').outerHeight(true);
-                        boxheight = titleheight + tagheight;
+                    // BTOCSITE-6881 
+                    if(window.innerWidth < 768){
+                        boxheight = 287.5;
+                    }else{
+                        boxheight = 409;
                     }
+                    // BTOCSITE-6881 
 
                     lasty = lastbox.position().top + boxheight + status.distance;
+                    console.log(lasty)
                     if(lasty < boxtop - 40){
                         raw = i;
                         col = leng-1;
                         boxtop = lasty;
+                        console.log(boxtop)
                     }
                 }
             }
@@ -655,19 +655,29 @@
             contype = $(box).data('contentsType');
             if(contype == 'image') boxheight = status.imgheight;
             else if(contype == "video"){
-                txtheight = $(box).find('.text-area').outerHeight(true);
-                boxheight = status.videoheight + txtheight;
+                txtheight = $(box).find('.text-area').outerHeight(true); // txt area 높이 
+                //BTOCSITE-6881 박스 높이 
+                if(window.innerWidth < 768){
+                    boxheight = 287.5;
+                }else{
+                    boxheight = 409;
+                }
             } else{
                 titleheight = $(box).find('.title').outerHeight(true);
                 tagheight = $(box).find('.tag-lists').outerHeight(true);
-                boxheight = titleheight + tagheight;       
+                //BTOCSITE-6881 박스 높이 
+                if(window.innerWidth < 768){
+                    boxheight = 287.5;
+                }else{
+                    boxheight = 409;
+                }
                 overflow = "visible";         
             }
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
-                height: boxheight,
+                // height: boxheight,
                 left: boxleft,
                 top: boxtop
             });
@@ -687,16 +697,26 @@
         var wrapwidth = item.find('.inner').width();
         var boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
-        while(boxwidth < 310){
-            rawnum--;
+        // BTOCSITE-6881 
+        if(window.innerWidth < 768){
+            rawnum = 2;
+            distance = 16;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
-        }
 
-        if(rawnum < 1){
-            rawnum = 1;
-            boxwidth = wrapwidth;
+        }else{
+            while(boxwidth < 310){
+                rawnum--;
+                distances = distance * (rawnum-1);
+                boxwidth = parseInt((wrapwidth-distances)/rawnum);
+            }
+
+            if(rawnum < 1){
+                rawnum = 1;
+                boxwidth = wrapwidth;
+            }
         }
+        // BTOCSITE-6881 
         
         return {
             rawnum: rawnum,
@@ -708,8 +728,8 @@
     }
 
     function resize(){
-        // setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
-        // setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
+        setRepositionTagBox($context.find('.user_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
+        setRepositionTagBox($context.find('.new_story')); //BTOCSITE-6881 디자인 변경으로 인해 사용 안함 
     }
 
     $(document).ready(function(){
