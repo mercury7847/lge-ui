@@ -4570,6 +4570,9 @@
                     /* BTOCSITE-1582 add */
                     $('#quick_buy').hide();
                     /* //BTOCSITE-1582 add */
+                    /* BTOCSITE-5938-83 모니터링 83 */
+                    $('.color_mixing_area .swiper-wrapper').css('transform','translate3d(0px, 0px, 0px)');
+                    /* //BTOCSITE-5938-83 모니터링 83 */
                 }
             };
             var desc = '';
@@ -4871,10 +4874,12 @@
                         } else {
                             modelSimulator.mobileStep(".simul_step3");
                         }
+                        // BTOCSITE-7809 위치 변경 - S
                         //210719 BTOCSITE-2346 CASE별 분기 처리 - E
-                        setTimeout(function() {
-                            $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-                        }, 500);
+                        // setTimeout(function() {
+                        //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
+                        // }, 500);
+                        // BTOCSITE-7809 위치 변경 - E
                     }
                 };
                 var desc = '';
@@ -4902,15 +4907,16 @@
                     modelSimulator.mobileStep(".simul_step3");    
                 }
                 /* //BTOCSITE-1582 */
-                
-                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - S (뉴베스트/하이마트/전자랜드 제외)
-                if($objContent.attr('data-page-type') === 'COMMON'){
-                modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
+
                 //BTOCSITE-7809 - S
                 setTimeout(function() {
                     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
                 }, 500);
                 //BTOCSITE-7809 - E
+
+                //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - S (뉴베스트/하이마트/전자랜드 제외)
+                if($objContent.attr('data-page-type') === 'COMMON'){
+                modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 }
                 //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - E
                 // setTimeout(function() {
