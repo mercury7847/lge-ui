@@ -641,38 +641,23 @@
                     // BTOCSITE-6881 
 
                     lasty = lastbox.position().top + boxheight + status.distance;
-                    console.log(lasty)
                     if(lasty < boxtop - 40){
                         raw = i;
                         col = leng-1;
                         boxtop = lasty;
-                        console.log(boxtop)
                     }
                 }
             }
 
             overflow = "auto";
             contype = $(box).data('contentsType');
-            if(contype == 'image') boxheight = status.imgheight;
-            else if(contype == "video"){
-                txtheight = $(box).find('.text-area').outerHeight(true); // txt area 높이 
-                //BTOCSITE-6881 박스 높이 
-                if(window.innerWidth < 768){
-                    boxheight = 287.5;
-                }else{
-                    boxheight = 409;
-                }
-            } else{
-                titleheight = $(box).find('.title').outerHeight(true);
-                tagheight = $(box).find('.tag-lists').outerHeight(true);
-                //BTOCSITE-6881 박스 높이 
-                if(window.innerWidth < 768){
-                    boxheight = 287.5;
-                }else{
-                    boxheight = 409;
-                }
-                overflow = "visible";         
+            if(window.innerWidth < 768){
+                boxheight = 287.5;
+            }else{
+                boxheight = 409;
             }
+
+           
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
                 position:'absolute',
@@ -684,6 +669,8 @@
             boxmap[raw][col] = $(box);
 
             var bottom = $(box).position().top + boxheight;
+            console.log('boxheight' +boxheight)
+            console.log(bottom)
             maxBottom = Math.max(maxBottom, bottom);
         });
 

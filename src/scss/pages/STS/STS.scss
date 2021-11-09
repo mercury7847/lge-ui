@@ -76,6 +76,9 @@
     .story-section {
         &.user_story { 
             display:none; 
+            @include mobile{
+                padding-bottom:120px;
+            }
 
             .story-title-area {
                 display: none;//BTOCSITE-188
@@ -826,6 +829,8 @@
                     }
                     @include mobile{
                         // object-fit: cover;
+                        height: 100%;
+                        object-fit: cover;
                         border-radius: 0;
                         width: 100%;
                         top:0;
