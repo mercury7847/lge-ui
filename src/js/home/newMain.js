@@ -464,11 +464,12 @@ $(function () {
 $(document).on('click', '.scene a, .section a', function(e){
     var target = this.getAttribute('target');
     if(target == "_blank"){
-        if( isApp()) {
+        if(isApp()) {
             var appUrl = $(this).attr('href');
+            alert(appUrl);
             if(vcui.detect.isIOS){
                 var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
-                // , 'titlebar_show': 'Y'
+                //, 'titlebar_show': 'Y'
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
                 android.openNewWebview(appUrl);
