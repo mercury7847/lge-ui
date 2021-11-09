@@ -1678,3 +1678,24 @@
         }
     }
 }
+
+// BTOCSITE-8035 [비회원] 주문 취소신청 생년월일 UI 수정 - (모바일)
+#popup-cancel, #popup-takeback {
+    .form-wrap{
+        .forms {
+            .conts {
+                .date-select-box {
+                    .cell{
+                        @include mobile{
+                            display: flex;
+                            width: 50%;
+                            &:nth-child(1){
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
