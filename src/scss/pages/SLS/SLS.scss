@@ -63,15 +63,36 @@ br.pc {
         .tabs-wrap,
         .scroll-wrap {
             margin-bottom: 20px;
+            text-align: center; //BTOCSITE-7335
+
+            //BTOCSITE-7335
+            .tabs {
+                display: inline-block;
+            }
             @include mobile {
                 margin-bottom: 8px;
             }
+        }
+        //BTOCSITE-7335
+        .tab-content {
+            display: none;
         }
     }
     &.care-benefit {
         .tabs-wrap,
         .scroll-wrap {
             margin-bottom: 20px;
+            //BTOCSITE-7335
+            text-align: center;
+
+            //BTOCSITE-7335
+            .tabs {
+                display: inline-block;
+            }
+        }
+        //BTOCSITE-7335
+        .tab-content {
+            display: none;
         }
     }
 }
