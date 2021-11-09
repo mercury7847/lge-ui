@@ -626,12 +626,13 @@
             @include mobile{
                 height: 287.5px;
                 margin-top: 8px;
-                padding:0 4px;
+                // padding:0 4px;
+                padding:0;
 
             }
         }
         @include mobile {
-            margin: 0 -4px;
+            // margin: 0 -4px;
             .flexbox:not(.tag-area) {
                 width: calc(100% / 2);
                 &.tag-area {
