@@ -1,0 +1,28 @@
+<svg id="devices_ic_robotcleaner_on" data-name="devices/ic_robotcleaner_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#77b4aa"/>
+            <stop offset="1" stop-color="#379192"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:#404040}
+        </style>
+    </defs>
+    <g id="Group_247" data-name="Group 247" transform="translate(-985 -540)">
+        <path id="Rectangle_163" data-name="Rectangle 163" transform="translate(985 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_251" data-name="Group 251" transform="translate(-985 -540)">
+        <g id="Group_248" data-name="Group 248">
+            <path id="Path_101" data-name="Path 101" class="cls-2" d="M1031.31 555.61a17.656 17.656 0 0 1 17.64 17.64v13.5a17.656 17.656 0 0 1-17.64 17.64h-12.61a17.656 17.656 0 0 1-17.64-17.64v-13.5a17.656 17.656 0 0 1 17.64-17.64h12.61m0-3h-12.61a20.639 20.639 0 0 0-20.64 20.64v13.5a20.639 20.639 0 0 0 20.64 20.64h12.61a20.639 20.639 0 0 0 20.64-20.64v-13.5a20.652 20.652 0 0 0-20.64-20.64z"/>
+        </g>
+        <path id="Line_76" data-name="Line 76" transform="translate(1019.89 559.22)" style="stroke:#404040;stroke-miterlimit:10;stroke-width:3px;fill:none" d="M0 0h10.22"/>
+        <g id="Group_249" data-name="Group 249">
+            <path id="Path_102" data-name="Path 102" d="M1029.42 597.85h-8.84a13.3 13.3 0 0 1-13.3-13.3v-8.94a13.3 13.3 0 0 1 13.3-13.3h8.84a13.3 13.3 0 0 1 13.3 13.3v8.94a13.3 13.3 0 0 1-13.3 13.3z" style="fill:url(#linear-gradient)"/>
+        </g>
+        <g id="Group_250" data-name="Group 250">
+            <circle id="Ellipse_30" data-name="Ellipse 30" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1017.53 578.58)"/>
+            <circle id="Ellipse_31" data-name="Ellipse 31" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1023.5 578.58)"/>
+            <circle id="Ellipse_32" data-name="Ellipse 32" class="cls-2" cx="1.5" cy="1.5" r="1.5" transform="translate(1029.47 578.58)"/>
+        </g>
+    </g>
+</svg>

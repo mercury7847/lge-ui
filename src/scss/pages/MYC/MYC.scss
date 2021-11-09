@@ -1019,7 +1019,14 @@
     }
 }
 
-
+// BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
+.pop-footer {
+    @include mobile {
+        position:fixed;
+        width:100%;
+        bottom:0;
+    }
+}
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
@@ -1237,6 +1244,37 @@
         background: #f4f4f4;
         cursor: default;
     }
+
+    .info-msg { 
+        
+        border-top:1px solid #ddd; 
+        margin-top:48px;
+        padding-top:13px;
+        li {
+            position:relative;
+            font-size:14px;
+            &::before {
+                content : '';
+                position:absolute;
+                width: 3px; height:3px;
+                left:0; top:50%; transform: translateY(-50%);
+                background:#000;
+            }
+            line-height:19px; padding-left:11px; margin:3px 0;
+        }
+       
+        @include mobile{
+            margin-top:40px;
+            padding-top:4px;
+            li {
+                font-size:13px;
+                &::before {
+                    width: 2px; height:2px;
+                }
+                line-height:20px; padding-left:12px; margin:8px 0;
+            }
+        }
+    }
 } 
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
@@ -1396,7 +1434,7 @@
     display: block;
     position: relative;
     height: 196px;
-    margin-top: 64px;
+    margin-top: 45px;
     padding: 42px 0 24px 213px;
     border-radius: 8px;
     background-color: $color-bg;
@@ -1487,3 +1525,156 @@
     }
 }
 // BTOCSITE-5938-17 e
+
+/* BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) */
+.popup-package-model {
+	width: 678px;
+	min-height: auto;
+	max-height: 696px;
+	@include mobile {
+		width: 100%;
+		height: auto;
+		max-height: 100vh;
+	}
+	.pop-header {
+		padding: 28px 0 15px;
+		@include mobile {
+			padding: 28px 0 10px;
+		}
+    }
+    .pop-conts {
+        padding: 24px 40px 20px;
+        max-height: 479px;
+        @include mobile {
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
+            padding: 20px 16px 54px;
+			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+			
+        }
+        .desc {
+            padding-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.63;
+            @include mobile {
+                font-size: 14px;
+                line-height: 1.57;
+                padding-bottom: 20px;
+            }
+        }
+        .model-list {
+            height: auto;
+            li {
+                margin-top: 13px;
+                &:first-child {
+                    margin-top: 0;
+                }
+                @include mobile {
+                    margin-top: 14px;
+                }
+                .rdo-wrap {
+                    display: block;
+                    &.btn-type2 div.item {
+                        display: flex;
+                        width: 100% !important;
+                        padding: 11px 50px;  
+                        border-radius: 8px;                  
+                        border-width:0;
+                        position: relative;
+                        &:before {
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            content:"";
+                            display: block;
+                            border:1px solid #000;
+                            border-radius: 8px;  
+                        }
+                        @include mobile {
+                            padding: 15px 17px;
+                        }
+                        .thumb {
+                            width: 100px;
+                            height: 100px;
+                            @include mobile {
+                                flex-shrink: 0;
+                            }
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .text-wrap {
+                            margin-left: 32px;
+                            @include mobile {
+                                margin-left: 16px;
+                            }
+                            > p {
+                                font-size: 14px;
+                                line-height: 1.71;
+                                text-align: left;
+                                @include mobile {
+                                    line-height: 1.57;
+                                }
+                                &.model-name {
+                                    margin: 22px 0 10px;
+                                    font-size: 16px;
+                                    line-height: 1.63;
+                                    font-weight: 700;
+                                    @include mobile {
+                                        font-size: 15px;
+                                        line-height: 1.53;
+                                        margin: 12px 0 7px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.btn-type2 div.item.active {
+                        color: #000;
+                        &:before {
+                            border: 2px solid #da0f47; 
+                        }
+                    }
+                }
+                &:hover {
+                    .rdo-wrap {
+                        &.btn-type2 div.item {
+                            &:before {
+                                border: 2px solid #da0f47; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pop-footer {
+        padding: 20px 48px 50px;
+        @include mobile {
+            padding: 0;    
+        }
+        .btn {
+            min-width: 140px;
+            @include mobile {
+                padding: 15px 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+    }
+    @include mobile {
+        .btn-close {
+            width: 26px;
+            height: 26px;
+            &::before {
+                width: 26px;
+                height: 26px;
+                background-size: 26px;
+            }
+        }
+    }
+}

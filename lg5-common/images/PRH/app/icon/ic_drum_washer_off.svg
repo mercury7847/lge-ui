@@ -1,0 +1,34 @@
+<svg id="ic_drum_washer_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_176" data-name="Group 176" transform="translate(-325 -540)">
+        <path id="Rectangle_156" data-name="Rectangle 156" transform="translate(325 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_185" data-name="Group 185" transform="translate(-325 -540)">
+        <g id="Group_182" data-name="Group 182">
+            <g id="Group_179" data-name="Group 179">
+                <g id="Group_178" data-name="Group 178">
+                    <g id="Group_177" data-name="Group 177">
+                        <path id="Path_80" data-name="Path 80" class="cls-2" d="M384.97 551.92v56.17h-39.95v-56.17h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v58.17a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-58.17a1.993 1.993 0 0 0-2-2z"/>
+                    </g>
+                    <path id="Line_69" data-name="Line 69" class="cls-3" transform="translate(342.03 562.34)" d="M0 0h45.94"/>
+                    <path id="Line_70" data-name="Line 70" class="cls-3" transform="translate(370.18 556.38)" d="M0 0h11.92"/>
+                </g>
+            </g>
+            <g id="Group_181" data-name="Group 181">
+                <g id="Group_180" data-name="Group 180">
+                    <path id="Path_81" data-name="Path 81" class="cls-2" d="M365 554.32a2 2 0 1 0 2 2 2.006 2.006 0 0 0-2-2z"/>
+                </g>
+            </g>
+        </g>
+        <g id="Group_184" data-name="Group 184">
+            <g id="Group_183" data-name="Group 183">
+                <path id="Path_82" data-name="Path 82" class="cls-2" d="M365 572.74a12.61 12.61 0 1 1-12.61 12.61A12.622 12.622 0 0 1 365 572.74m0-3a15.61 15.61 0 1 0 15.61 15.61A15.611 15.611 0 0 0 365 569.74z"/>
+            </g>
+            <path id="Path_83" data-name="Path 83" d="M377.45 589.35h-.17a2.347 2.347 0 0 1-2.35-2.35v-3.31a2.347 2.347 0 0 1 2.35-2.35h.17c1.3.01 1.3 8.01 0 8.01z" style="stroke-linejoin:round;stroke-width:2px;stroke:#8c8c8c;stroke-miterlimit:10;fill:none"/>
+        </g>
+    </g>
+</svg>

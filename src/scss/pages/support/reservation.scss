@@ -147,11 +147,19 @@
         }
         .engineer-desc {
             float:left;
-            width:calc(100% - 194px);
+            /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+            //width:calc(100% - 194px);
+            width: 100%;
+            /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
             .txt {
                 @include font-medium;
                 span {
                     font-weight:bold;
+                    /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+                    &.egn-info-btn {
+                        color: #fa263e;
+                    }
+                    /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                 }
             }
             .btn-wrap {
@@ -168,8 +176,12 @@
             }
             .engineer-desc {
                 float:left;
-                width:calc(100% - 104px);
+                // width:calc(100% - 104px);
+                width: 100%;
                 padding-left:24px;
+                .txt {
+                    word-break: keep-all;
+                }
                 .btn-wrap {
                     margin-top:16px;
                 }
@@ -828,6 +840,33 @@
 
     .engineer-pop {
         overflow-x:hidden;
+
+        /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+        .engineer-infoP {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: flex-start;
+            li {
+                width: 33%;
+                margin-bottom: 15px;
+                @include mobile {
+                    width: 100%;
+                }
+                span {
+                    position: relative;
+                    &:first-child {
+                        position: relative;
+                    }
+                    &:last-child {
+                        font-size: 12px;
+                        margin-left: 5px;
+                        color: #585858;
+                    }
+                }
+            }
+        }
+        /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
     }
 
     .engineer-slider {
@@ -1019,6 +1058,34 @@
             width: 178px;
         }
     }
+
+
+    /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+    .engineer-infoP {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: flex-start;
+        li {
+            width: 33%;
+            margin-bottom: 15px;
+            @include mobile {
+                width: 100%;
+            }
+            span {
+                position: relative;
+                &:first-child {
+                    position: relative;
+                }
+                &:last-child {
+                    font-size: 12px;
+                    margin-left: 5px;
+                    color: #585858;
+                }
+            }
+        }
+    }
+    /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 }
 /* BTOCSITE-5594 */
 .cont-wrap.busi-trip{

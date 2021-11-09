@@ -37,12 +37,15 @@
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect4" : true
                         })
+                        <!-- -S- BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) -->
                         <div class="lnb-contents"
                             data-list-url="/lg5-common/data-ajax/mypage/product/registedProductList.json"
                             data-own-list-url = "/lg5-common/data-ajax/mypage/product/ownProductList.json"
                             data-remove-url="/lg5-common/data-ajax/mypage/product/deleteProductRegist.json"
                             data-add-url="/lg5-common/data-ajax/mypage/product/addProductData.json"
+                            data-package-url ="/lg5-common/data-ajax/mypage/product/retrieveProductSupportNoData.json"
                         >
+                        <!-- -E- BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) -->
                             <!-- 210407 수정 [레이아웃 수정] -->
                             <div class="my-product">
                                 <div class="tabs-wrap new-type ui_tab">
@@ -665,5 +668,11 @@
     </article> -->
     <!-- //2021-02-26 제거 -->
     <!-- //모델명 확인방법 -->
+
+    <!-- -S- BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) -->
+    <!-- 세트 상품  팝업  -->
+    <article id="packageProductSelectPopup" class="popup-wrap popup-package-model"></article>
+    <!-- -E- BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) -->
+
 </body>
 </html>

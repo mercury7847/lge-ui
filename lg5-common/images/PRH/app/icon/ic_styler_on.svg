@@ -1,0 +1,19 @@
+<svg id="ic_styler_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#6aaca5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_238" data-name="Group 238" transform="translate(-735 -540)">
+        <g id="Group_236" data-name="Group 236">
+            <path id="Path_95" data-name="Path 95" d="M789.76 549.67v60.67h-29.53v-60.67h29.53m1.01-3h-31.53a2 2 0 0 0-2 2v62.67a2 2 0 0 0 2 2h31.53a2 2 0 0 0 2-2v-62.67a2.006 2.006 0 0 0-2-2z" style="fill:#404040"/>
+        </g>
+        <g id="Group_237" data-name="Group 237">
+            <path id="Path_96" data-name="Path 96" class="cls-2" d="M771.97 554.88a2.92 2.92 0 0 1 5.84 0s.16 2.1-2.92 2.48v2.74"/>
+            <path id="Path_97" data-name="Path 97" class="cls-2" d="M774.89 560.09 764.14 566h21.5z"/>
+        </g>
+    </g>
+    <g id="Group_239" data-name="Group 239" transform="translate(-735 -540)">
+        <path id="Rectangle_161" data-name="Rectangle 161" transform="translate(735 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+</svg>
