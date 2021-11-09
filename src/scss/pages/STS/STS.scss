@@ -903,6 +903,11 @@
                         }
                     }
                     .tag-wrap {
+                        position: absolute;
+                        bottom:40px;
+                        @include mobile{
+                            bottom:12px;
+                        }
                         .tags {
                             @include mobile{
                                 .tag{
@@ -980,7 +985,10 @@
                 }
             }
             .tag-wrap {
+                position: absolute;
+                bottom:40px;
                 @include mobile{
+                    bottom:12px;
                     // margin-right:2px;
                     overflow: hidden;;
                 }
@@ -1174,7 +1182,10 @@
                 }
             }
             .text-area{
-                padding:16px;
+                padding:24px 24px 40px;
+                @include mobile{
+                    padding:16px;
+                }
             }
             .card-title{
                 font-size:28px;
