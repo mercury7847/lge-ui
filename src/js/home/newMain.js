@@ -198,73 +198,12 @@ $(function () {
         // });   
         $window.on('breakpointchange', function(e){
             var data = window.breakpoint;
-
-            var recomSlider01 = $('.recom-list-slide01');
-            var recomSlider02 = $('.recom-list-slide02');
-            var recomSlider03 = $('.recom-list-slide03');
-
-            var recomSlider01Num = recomSlider01.find('.slide-item').length;
-            var recomSlider02Num = recomSlider02.find('.slide-item').length;
-            var recomSlider03Num = recomSlider03.find('.slide-item').length;
-            var infoSliderNum = $('.info-area').find('.slide-item').length;
-
-            if(data.name == 'pc'){
-
-            } else if(data.name == 'mobile'){
+            
+            if(data.name == 'mobile'){
+                sliderSet();
+            }else if(data.name == 'pc'){
+                sliderSet()
             }
-
-            if(recomSlider01Num > 1){
-                recomSlider(recomSlider01);
-            }
-            if(recomSlider02Num > 1){
-                recomSlider(recomSlider02);
-            }
-            if(recomSlider03Num > 1){
-                recomSlider(recomSlider03);
-            }
-
-            $('.membership-type-slide').slick({
-                arrows: false,
-                dots: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite:false,
-                variableWidth:false,
-                outerEdgeLimit: false,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            dots: false,
-                            arrows:false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite:false,
-                            variableWidth:true,
-                            outerEdgeLimit: true
-                        }
-                    }
-                ]
-            });
-            if(infoSliderNum == 0) {
-                $('.info-section').hide();
-            } else if(infoSliderNum == 1) {
-                $('.info-area-wrap').addClass('info-solo');
-            } else if(infoSliderNum > 1) {
-                $('.info-area').slick({
-                    arrows: true,
-                    dots: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite:true,
-                    vertical: true,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    pauseOnHover: true,
-                    pauseOnFocus: true
-                });
-            } 
-
             
             $('.btn-info-play').on('click', function() {
                 if($(this).hasClass('pause')){
@@ -280,9 +219,17 @@ $(function () {
 
         });   
 
-        function recomSlider(slider) {
-            var slider = slider;
-            slider.slick({
+        function sliderSet() {
+            var recomSlider01 = $('.recom-list-slide01');
+            var recomSlider02 = $('.recom-list-slide02');
+            var recomSlider03 = $('.recom-list-slide03');
+
+            var recomSlider01Num = recomSlider01.find('.slide-item').length;
+            var recomSlider02Num = recomSlider02.find('.slide-item').length;
+            var recomSlider03Num = recomSlider03.find('.slide-item').length;
+            var infoSliderNum = $('.info-area').find('.slide-item').length;
+
+            var recomOpt = {
                 arrows: true,
                 dots: true,
                 slidesToShow: 1,
@@ -304,7 +251,86 @@ $(function () {
                         }
                     }
                 ]
-            });
+            }
+            var memberOpt = {
+                arrows: false,
+                dots: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite:false,
+                variableWidth:false,
+                outerEdgeLimit: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
+                        }
+                    }
+                ]
+            }
+            var infoOpt = {
+                arrows: true,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite:true,
+                    vertical: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    pauseOnHover: true,
+                    pauseOnFocus: true
+            }
+
+            if(recomSlider01.hasClass('slick-slider')){
+                recomSlider01.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider01Num > 1){
+                    recomSlider(recomSlider01,recomOpt);
+                }
+            }
+            if(recomSlider02.hasClass('slick-slider')){
+                recomSlider02.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider02Num > 1){
+                    recomSlider(recomSlider02,recomOpt);
+                }
+            }
+            if(recomSlider03.hasClass('slick-slider')){
+                recomSlider03.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider03Num > 1){
+                    recomSlider(recomSlider03,recomOpt);
+                }
+            }
+            if($('.info-area').hasClass('slick-slider')){
+                $('.info-area').not('.slick-initialized').slick(infoOpt);
+            } else {
+                if(infoSliderNum == 0) {
+                    $('.info-section').hide();
+                } else if(infoSliderNum == 1) {
+                    $('.info-area-wrap').addClass('info-solo');
+                } else if(infoSliderNum > 1) {
+                    $('.info-area').slick(infoOpt);
+                } 
+            }
+            if($('.membership-type-slide').hasClass('slick-slider')){
+                $('.membership-type-slide').not('.slick-initialized').slick(memberOpt);
+            } else {
+                $('.membership-type-slide').slick(memberOpt);
+            }
+        }
+
+        function recomSlider(slider,recomOpt) {
+            var slider = slider;
+            var recomOpt = recomOpt;
+            slider.slick(recomOpt);
         }
 
         // BTOCSITE-2193 e                 
