@@ -655,7 +655,10 @@
                     flex-direction:column;
                 }
             }
-            .flag-wrap + .card-title{margin-top: 8px;}
+            .flag-wrap + .card-title{
+                margin-top: 2px;
+            
+            }
             .card-title + .tag-wrap{
                 margin-top:28px;
                 @include mobile{
@@ -749,11 +752,22 @@
                     .card-title{
                         font-size:24px;
                         line-height:32px;
+                        height: 67px;
+                        margin-top:8px;
+                        position: relative;
                         @include mobile{
                             // @include textEllipsisClamp(1);
                             font-size:14px;
                             line-height:20px;
                             margin-top: 3px;
+                            height: 40px;
+                        }
+                        span{
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            -ms-transform: translate(0, -50%);
+                            transform: translate(0, -50%);
                         }
                     }
                     .flag-wrap.box-type .flag{
@@ -891,15 +905,25 @@
                         height: 108px;
                     }
                     .card-title {
+                        @include textEllipsisClamp(2);
                         max-height: 86px;
                         font-size: 32px;
                         line-height: 40px; 
-                        @include textEllipsisClamp(2);
+                        position: relative;
+                        height: 86px;
                         @include mobile{
                             font-size: 14px;
                             line-height: 20px;
                             color:#000;
-                            margin-top: 2px;
+                            margin-top: 3px;
+                            height: 40px;
+                        }
+                        span{
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            -ms-transform: translate(0, -50%);
+                            transform: translate(0, -50%);
                         }
                     }
                     .tag-wrap {
