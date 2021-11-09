@@ -1100,7 +1100,7 @@
                     // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
                     if(!item.isPackgaeModel) item.packageModelCode = "";
                     if(item.isPackgaeModel) {
-                        var ajaxUrl = self.$contents.data('packageUrl') || '/my-page/retrieveProductSupportNoData.lgajax';
+                        var ajaxUrl = self.$contents.data('packageUrl');
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxData(ajaxUrl, {"sku":item.packageModelCode}, function(result) {
                                 if(lgkorUI.stringToBool(result.data.success)) {
