@@ -703,8 +703,8 @@
                                 border-radius: 8px 8px 0 0;
                             }
                             @include mobile{
-                                // object-fit:cover;
-
+                                object-fit: cover;
+                                height: 100%;
                                 position: relative;
                                 top: 0;
                                 left: auto;
