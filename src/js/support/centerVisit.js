@@ -1250,7 +1250,7 @@
             $('#centerCode').val(data.centerCode);
 
             /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
-            $resultBox.find('.txt').html('<span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 <span>'+data.engineerName+'</span> <span>('+data.centerName+')</span> 전문 엔지니어가 <span>'+self.data.subCategoryNm+' 제품</span> 점검이 가능합니다.<br>센터 방문 예약을 완료 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
+            $resultBox.find('.txt').html('<span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 <span>'+data.engineerName+'</span> <span>('+data.centerName+')</span> 전문 엔지니어가 <span>'+self.data.subCategoryNm+'</span> <span class="bold">제품 점검이 가능합니다.</span><br>센터 방문 예약을 완료 하시려면 화면 하단의 <span class="egn-info-btn">[예약] 버튼을</span> 눌러 예약을 완료하여 주시기 바랍니다.');
 
             self.data['resrvSeq'] = data.resrvSeq;
         },
