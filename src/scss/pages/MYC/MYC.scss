@@ -1244,6 +1244,37 @@
         background: #f4f4f4;
         cursor: default;
     }
+
+    .info-msg { 
+        
+        border-top:1px solid #ddd; 
+        margin-top:48px;
+        padding-top:13px;
+        li {
+            position:relative;
+            font-size:14px;
+            &::before {
+                content : '';
+                position:absolute;
+                width: 3px; height:3px;
+                left:0; top:50%; transform: translateY(-50%);
+                background:#000;
+            }
+            line-height:19px; padding-left:11px; margin:3px 0;
+        }
+       
+        @include mobile{
+            margin-top:40px;
+            padding-top:4px;
+            li {
+                font-size:13px;
+                &::before {
+                    width: 2px; height:2px;
+                }
+                line-height:20px; padding-left:12px; margin:8px 0;
+            }
+        }
+    }
 } 
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
@@ -1403,7 +1434,7 @@
     display: block;
     position: relative;
     height: 196px;
-    margin-top: 64px;
+    margin-top: 45px;
     padding: 42px 0 24px 213px;
     border-radius: 8px;
     background-color: $color-bg;
