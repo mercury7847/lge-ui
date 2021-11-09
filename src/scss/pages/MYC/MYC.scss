@@ -1687,10 +1687,11 @@
                 .date-select-box {
                     .cell{
                         @include mobile{
-                            display: flex;
-                            width: 50%;
+                            display: inline-block;
+                            width: 47%;
                             &:nth-child(1){
                                 width: 100%;
+                                margin-bottom:10px;
                             }
                         }
                     }
