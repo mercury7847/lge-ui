@@ -684,7 +684,7 @@
                                 }
                             });
                         } else {
-                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                                 title: "",
                                 cancelBtnName: "취소",
                                 okBtnName: "이메일접수",
@@ -712,7 +712,7 @@
             //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
                 // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
-                var minLengthFlag = self.$snInput.val().length >= 12 ? true: false;
+                var minLengthFlag = self.$snInput.val().length >= 11 ? true: false;
                 
                 var currentVal = [];
                 var checkSerialSuccess = [];
@@ -742,7 +742,7 @@
                             }
                         });
                     } else {
-                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                             title: "",
                             cancelBtnName: "취소",
                             okBtnName: "이메일접수",
