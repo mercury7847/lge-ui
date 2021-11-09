@@ -791,7 +791,7 @@
             @include mobile{
                 height: auto;
                 object-fit: cover;
-            }
+            } 
             &.img-mobile{
                 @include mobile{
                     max-width: 100%;
@@ -829,7 +829,7 @@
                 &.mobile{
                     width: auto;
                     height: auto;
-
+                    
                 }
                 @include mobile{
                     object-fit: cover;
@@ -841,7 +841,7 @@
             opacity: 0.1;
         }
     }
-    // 텍스트 옵션 (좌우, 상하, 폰트컬러)
+    // 텍스트 옵션 (좌우, 상하, 폰트컬러) 
     .text-area {
         position:absolute;
         left:0;
@@ -870,7 +870,7 @@
         }
         &.align{
             &-top{
-                align-items:flex-start;
+                align-items:flex-start; 
             }
             &-middle {
                 align-items:center;
@@ -972,7 +972,7 @@
             text-align:left;
             line-height: 1.73;
             padding-right:0;
-
+            
         }
     }
 }
