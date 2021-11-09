@@ -1,0 +1,31 @@
+<svg id="ic_drum_washer_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#87a0be"/>
+            <stop offset="1" stop-color="#4182b4"/>
+        </linearGradient>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#404040}.cls-3{stroke:#404040;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_168" data-name="Group 168" transform="translate(-235 -540)">
+        <path id="Rectangle_155" data-name="Rectangle 155" transform="translate(235 540)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_174" data-name="Group 174" transform="translate(-235 -540)">
+        <g id="Group_173" data-name="Group 173">
+            <g id="Group_171" data-name="Group 171">
+                <g id="Group_170" data-name="Group 170">
+                    <g id="Group_169" data-name="Group 169">
+                        <path id="Path_79" data-name="Path 79" class="cls-2" d="M294.97 551.92v56.17h-39.95v-56.17h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v58.17a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-58.17a1.993 1.993 0 0 0-2-2z"/>
+                    </g>
+                    <path id="Line_67" data-name="Line 67" class="cls-3" transform="translate(252.03 562.34)" d="M0 0h45.94"/>
+                    <path id="Line_68" data-name="Line 68" class="cls-3" transform="translate(280.18 556.38)" d="M0 0h11.92"/>
+                </g>
+            </g>
+            <g id="Group_172" data-name="Group 172">
+                <circle id="Ellipse_23" data-name="Ellipse 23" class="cls-2" cx="2" cy="2" r="2" transform="translate(273 554.32)"/>
+            </g>
+        </g>
+        <circle id="Ellipse_24" data-name="Ellipse 24" cx="15.61" cy="15.61" r="15.61" transform="translate(259.39 569.74)" style="fill:url(#linear-gradient)"/>
+    </g>
+</svg>

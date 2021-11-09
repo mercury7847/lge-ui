@@ -1,0 +1,22 @@
+<svg id="ic_refrigerator_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_107" data-name="Group 107" transform="translate(-325 -146.97)">
+        <path id="Rectangle_147" data-name="Rectangle 147" transform="translate(325 146.97)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_111" data-name="Group 111" transform="translate(-325 -146.97)">
+        <g id="Group_108" data-name="Group 108">
+            <path id="Path_67" data-name="Path 67" class="cls-2" d="M378.32 161.14v21.31h-7.29v-21.31h7.29m2.7-3h-12.69a.3.3 0 0 0-.3.3v26.72a.3.3 0 0 0 .3.3h12.69a.3.3 0 0 0 .3-.3v-26.72a.3.3 0 0 0-.3-.3z"/>
+        </g>
+        <g id="Group_110" data-name="Group 110">
+            <g id="Group_109" data-name="Group 109">
+                <path id="Path_68" data-name="Path 68" class="cls-2" d="M382.75 156.69v60.56h-35.5v-60.56h35.5m1-3h-37.5a2.006 2.006 0 0 0-2 2v62.55a2.006 2.006 0 0 0 2 2h37.5a2.006 2.006 0 0 0 2-2v-62.55a2.006 2.006 0 0 0-2-2z"/>
+            </g>
+            <path id="Line_47" data-name="Line 47" class="cls-3" transform="translate(365 153.69)" d="M0 0v66.56"/>
+            <path id="Line_48" data-name="Line 48" class="cls-3" transform="translate(344.25 188.46)" d="M0 0h41.5"/>
+        </g>
+    </g>
+</svg>

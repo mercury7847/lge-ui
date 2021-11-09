@@ -755,11 +755,16 @@
 
         lgkorUI.addLimitedInputEvent($('input[name=birthDt]'));
 
+        // BTOCSITE-5938-210 내용 추가 생년월일 년도 입력 수 제한
+        lgkorUI.addLimitedInputEvent($('input[name=year]'));
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
         //     setMethodReceiptPop();
         // });
+
+        
     }
 
     function sendDetailPage(dataID){
@@ -804,7 +809,19 @@
         var bankValue;
 
         if($('#' + popname).data('isBirthDt')){
-            bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - S
+            bankValue = $('#' + popname).find('input[name=birthDt]').val();
+            var bYear = $('#' + popname).find('input[name="year"]').val();
+            var bMonth = $('#' + popname).find('.ui_selectbox[name="month"]').val();
+            var bDay = $('#' + popname).find('.ui_selectbox[name="day"]').val();
+                         
+            bankValue = bYear + bMonth + bDay;
+            $('#' + popname).find('input[name=birthDt]').val(bankValue);
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - E
+            
+            //bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - S
+            
             if(!bankValue){
                 lgkorUI.alert("", {
                     title: "생년월일을 입력해 주세요."
@@ -812,6 +829,31 @@
     
                 return false;
             }
+
+            if(!bYear){
+                lgkorUI.alert("", {
+                    title: "년도를 입력해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bMonth){
+                lgkorUI.alert("", {
+                    title: "월을 선택해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bDay){
+                lgkorUI.alert("", {
+                    title: "일을 선택해 주세요."
+                });
+    
+                return false;
+            }
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - E
         }
 
         bankValue = $('#' + popname).find('.bank-input-box select option:selected').val();

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="a" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d9a898"/>
+            <stop offset="1" stop-color="#d1774e"/>
+        </linearGradient>
+        <linearGradient id="b" x1=".5" y1="1" x2=".5" y2=".001" xlink:href="#a"/>
+        <linearGradient id="c" x1=".5" y1="1" x2=".5" y2="0" xlink:href="#a"/>
+    </defs>
+    <rect data-name="Rectangle 159" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g data-name="Group 633">
+        <g data-name="Group 209">
+            <path data-name="Path 89" d="M815.39 173.84v44.238h-66.55V173.84h66.55m1.263-3.75H747.59a2.5 2.5 0 0 0-2.5 2.5v46.75a2.5 2.5 0 0 0 2.5 2.5h69.063a2.5 2.5 0 0 0 2.5-2.5v-46.75a2.507 2.507 0 0 0-2.5-2.5z" transform="translate(-722.115 -135.953)" style="fill:#404040"/>
+        </g>
+        <g data-name="Group 217">
+            <g data-name="Group 211">
+                <g data-name="Group 210" transform="translate(55.963 44.437)">
+                    <circle data-name="Ellipse 27" cx="15.712" cy="15.712" r="15.712" style="fill:url(#a)"/>
+                </g>
+            </g>
+            <g data-name="Group 216">
+                <g data-name="Group 213">
+                    <g data-name="Group 212" transform="translate(32.6 41.362)">
+                        <circle data-name="Ellipse 28" cx="8.375" cy="8.375" r="8.375" style="fill:url(#b)"/>
+                    </g>
+                </g>
+                <g data-name="Group 215">
+                    <g data-name="Group 214" transform="translate(32.6 61.887)">
+                        <circle data-name="Ellipse 29" cx="8.375" cy="8.375" r="8.375" style="fill:url(#c)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

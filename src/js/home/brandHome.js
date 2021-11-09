@@ -3,10 +3,11 @@
         init: function(){
             var self = this;
 
+            self.settings();
+            self.heroSlider();
+
             vcui.require(['libs/slick.min', 'ui/pagination'], function () {
-                self.settings();
-                self.bindEvents()
-                self.heroSlider();
+                self.bindEvents();
                 self.magazinSlider();
                 self.setMagazineVideo();
                 self.modelSearchInit();
@@ -47,7 +48,7 @@
             self.$searchDel = self.$searchSticky.find('.btn-delete');
             self.$btnInputSearch = self.$searchSticky.find('.btn-search');
             self.$searchInput = self.$searchSticky.find('.input-wrap input[type="text"]');
-            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
+
 
             self.$searchIntro = self.$searchPopup.find('.intro-message');
             self.$prdResult = self.$searchPopup.find('.product-result-wrap');
@@ -61,11 +62,14 @@
         bindEvents: function(){
             var self = this;
 
+            //페이징 이벤트 실행
+            self.$pagination = self.$searchPopup.find('.pagination').vcPagination({scrollTop : 'noUse'});
+
             //체험하기 팝업
             self.$btnExperience.on('click',function(e){
                 if(!vcui.detect.isMobile && !vcui.detect.isIE){
                     var target = "https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html";
-                    var width = 360;
+                    var width = 480;
                     var height = 800;
                     var xpos = (screen.availWidth - width)/2;
                     var ypos = (screen.availHeight - height)/2;

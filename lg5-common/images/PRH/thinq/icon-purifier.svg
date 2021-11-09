@@ -1,0 +1,32 @@
+<svg id="ic_waterpurifier_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#86a0be"/>
+            <stop offset="1" stop-color="#467daa"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:#404040}.cls-3{fill:none;stroke-miterlimit:10;stroke:#404040;stroke-width:3.8px}
+        </style>
+    </defs>
+    <rect id="Rectangle_165" data-name="Rectangle 165" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g id="Group_627" data-name="Group 627" transform="translate(10 10)">
+        <g id="Group_264" data-name="Group 264" transform="translate(29.575 10)">
+            <g id="Group_261" data-name="Group 261" transform="translate(0 3.012)">
+                <path id="Path_105" data-name="Path 105" class="cls-2" d="M1545.747 161.13v3.6h-33.337v-3.6h33.338m1.25-3.75h-35.838a2.508 2.508 0 0 0-2.5 2.5v8.6h40.84v-8.6a2.5 2.5 0 0 0-2.5-2.5z" transform="translate(-1508.66 -157.38)"/>
+            </g>
+            <path id="Line_78" data-name="Line 78" class="cls-3" transform="translate(20.425 29.212)" d="M0 0v9.9"/>
+            <path id="Line_79" data-name="Line 79" class="cls-3" transform="translate(4.7 11.625)" d="M0 0v9.9"/>
+            <path id="Line_80" data-name="Line 80" class="cls-3" transform="translate(36.188 11.625)" d="M0 0v9.9"/>
+            <g id="Group_262" data-name="Group 262" transform="translate(.063 18.062)">
+                <path id="Path_106" data-name="Path 106" class="cls-2" d="M1545.735 173.17v51.887a4.236 4.236 0 0 1-4.225 4.225h-24.825a4.236 4.236 0 0 1-4.225-4.225V173.17h33.275m3.75-3.75h-40.775v55.637a7.981 7.981 0 0 0 7.975 7.975h24.825a7.981 7.981 0 0 0 7.975-7.975V169.42z" transform="translate(-1508.71 -169.42)"/>
+            </g>
+            <g id="Group_263" data-name="Group 263" transform="translate(13.758)">
+                <path id="Path_107" data-name="Path 107" d="M1519.83 185.755v-30a.619.619 0 0 1 .625-.625h11.725a.619.619 0 0 1 .625.625v30z" transform="translate(-1519.625 -154.93)" style="fill:#fff"/>
+                <path id="Rectangle_175" data-name="Rectangle 175" d="M2 0h9.333a2 2 0 0 1 2 2v28.833H0V2a2 2 0 0 1 2-2z" style="stroke:#404040;stroke-width:3.8px;fill:#f4f4f4"/>
+            </g>
+        </g>
+        <g id="Group_265" data-name="Group 265" transform="translate(36.1 54.663)">
+            <path id="Path_109" data-name="Path 109" d="M1537.592 221.238h-19.637a4.076 4.076 0 0 1-4.075-4.075V190.7h27.775v26.463a4.057 4.057 0 0 1-4.063 4.075z" transform="translate(-1513.88 -190.7)" style="fill:url(#linear-gradient)"/>
+        </g>
+    </g>
+</svg>

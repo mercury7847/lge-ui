@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="a" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d9a898"/>
+            <stop offset="1" stop-color="#d1774e"/>
+        </linearGradient>
+        <linearGradient id="b" x1=".5" y1="1" x2=".5" y2=".001" xlink:href="#a"/>
+        <linearGradient id="c" x1=".5" y1="1" x2=".5" y2="0" xlink:href="#a"/>
+    </defs>
+    <g data-name="Group 208">
+        <path data-name="Rectangle 159" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g data-name="Group 218">
+        <g data-name="Group 209">
+            <path data-name="Path 89" d="M801.33 173.09v35.39h-53.24v-35.39h53.24m1.01-3h-55.25a2 2 0 0 0-2 2v37.4a2 2 0 0 0 2 2h55.25a2 2 0 0 0 2-2v-37.4a2.006 2.006 0 0 0-2-2z" style="fill:#404040" transform="translate(-734.71 -150.78)"/>
+        </g>
+        <g data-name="Group 217">
+            <g data-name="Group 211">
+                <g data-name="Group 210" transform="translate(-734.71 -150.78)">
+                    <circle data-name="Ellipse 27" cx="12.57" cy="12.57" r="12.57" transform="translate(771.48 178.33)" style="fill:url(#a)"/>
+                </g>
+            </g>
+            <g data-name="Group 216">
+                <g data-name="Group 213">
+                    <g data-name="Group 212" transform="translate(-734.71 -150.78)">
+                        <circle data-name="Ellipse 28" cx="6.7" cy="6.7" r="6.7" transform="translate(752.79 175.87)" style="fill:url(#b)"/>
+                    </g>
+                </g>
+                <g data-name="Group 215">
+                    <g data-name="Group 214" transform="translate(-734.71 -150.78)">
+                        <circle data-name="Ellipse 29" cx="6.7" cy="6.7" r="6.7" transform="translate(752.79 192.29)" style="fill:url(#c)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
