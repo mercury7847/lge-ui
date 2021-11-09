@@ -699,7 +699,6 @@
                             min-height: 100%;
                             height: auto;
                             @include tablet{
-                                // object-fit:cover;
                                 border-radius: 8px 8px 0 0;
                             }
                             @include mobile{
@@ -716,7 +715,6 @@
                                 background-position: center center;
                                 min-width: auto;
                                 min-height: auto;
-                                height: auto;
                             }
                         }
                     }
@@ -745,6 +743,7 @@
                     padding:34px 24px;
                     @include mobile {
                         padding:10px 12px;
+                        height: 88px;
                     }
                     .card-title{
                         font-size:24px;
@@ -886,6 +885,7 @@
                     color: $color-white;
                     @include mobile{
                         padding:10px 12px;
+                        height: 88px;
                     }
                     .card-title {
                         max-height: 86px;
