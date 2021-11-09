@@ -1685,14 +1685,6 @@
         .forms {
             .conts {
                 .date-select-box {
-                    .text {
-                        @include mobile{
-                            padding-right : 10px;
-                            &:nth-child(1) {
-                                padding-right:0;
-                            }
-                        }
-                    }
                     .cell{
                         @include mobile{
                             display: inline-block;
@@ -1700,6 +1692,14 @@
                             &:nth-child(1){
                                 width: 100%;
                                 margin-bottom:10px;
+                            }
+                        }
+                        .text {
+                            @include mobile{
+                                padding-right : 10px;
+                                &:nth-child(1) {
+                                    padding-right:0;
+                                }
                             }
                         }
                     }
