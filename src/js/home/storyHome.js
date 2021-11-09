@@ -688,7 +688,7 @@
         // BTOCSITE-6881 
         if(window.innerWidth < 768){
             rawnum = 2;
-            distance = 16;
+            distance = 8;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
