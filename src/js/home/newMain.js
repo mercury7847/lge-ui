@@ -460,3 +460,19 @@ $(function () {
         // E BTOCSITE-7225 앱 AR 버튼 노출 건
     });
 });
+
+$(document).on('click', '.scene a, .section a', function(e){
+    var target = this.getAttribute('target');
+    if(target == "_blank"){
+        if( isApp()) {
+            var appUrl = $(this).attr('href');
+            if(vcui.detect.isIOS){
+                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
+                // , 'titlebar_show': 'Y'
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                android.openNewWebview(appUrl);
+            }
+        } 
+    }
+})
