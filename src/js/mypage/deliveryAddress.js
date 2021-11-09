@@ -279,8 +279,8 @@
             phNum.on('focusout', function(){
                 $('html').css('overflow', 'hidden');
                 $('body').css('overflow', 'hidden');
-                $('.wrap').css('display', 'visible');
-                $('.ui_modal_dim').css('display', 'visible');
+                $('.wrap').css('display', 'block');
+                $('.ui_modal_dim').css('display', 'block');
                 $('.ui_modal_wrap').css('position', 'fixed');
             });
         }
