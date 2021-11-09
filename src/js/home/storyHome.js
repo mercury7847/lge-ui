@@ -651,12 +651,13 @@
 
             overflow = "auto";
             contype = $(box).data('contentsType');
+            // BTOCSITE-6881
             if(window.innerWidth < 768){
                 boxheight = 287.5;
             }else{
                 boxheight = 409;
             }
-
+            // BTOCSITE-6881
            
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
