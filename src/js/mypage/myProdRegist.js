@@ -712,7 +712,7 @@
             //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
                 // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
-                var minLengthFlag = self.$snInput.val().length >= 11 ? true: false;
+                var minLengthFlag = self.$snInput.val().length >= 10 ? true: false;
                 
                 var currentVal = [];
                 var checkSerialSuccess = [];
