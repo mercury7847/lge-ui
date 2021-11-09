@@ -684,7 +684,7 @@
                                 }
                             });
                         } else {
-                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
+                            lgkorUI.confirm("보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                                 title: "",
                                 cancelBtnName: "취소",
                                 okBtnName: "이메일접수",
@@ -742,7 +742,7 @@
                             }
                         });
                     } else {
-                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
+                        lgkorUI.confirm("보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                             title: "",
                             cancelBtnName: "취소",
                             okBtnName: "이메일접수",
@@ -1100,7 +1100,7 @@
                     // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
                     if(!item.isPackgaeModel) item.packageModelCode = "";
                     if(item.isPackgaeModel) {
-                        var ajaxUrl = self.$contents.data('packageUrl') || '/my-page/retrieveProductSupportNoData.lgajax';
+                        var ajaxUrl = self.$contents.data('packageUrl');
                         if(ajaxUrl) {
                             lgkorUI.requestAjaxData(ajaxUrl, {"sku":item.packageModelCode}, function(result) {
                                 if(lgkorUI.stringToBool(result.data.success)) {
