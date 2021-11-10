@@ -463,14 +463,9 @@ $(function () {
 //BTOCSITE-2193 s
 $(document).on('click', '.scene a, .section a', function(e){
     var target = this.getAttribute('target');
-    // var appUrl = $(this).attr('href');
-    //         if (!(appUrl.match('https://'))) {
-    //             alert(appUrl);
-    //             appUrl = 'https://'+window.LGEAPPHostName+appUrl;
-    //             alert(appUrl);
-    //         } 
     if(target == "_blank"){
         if(isApp()) {
+            e.preventDefault();
             var appUrl = $(this).attr('href');
             if (!(appUrl.match('https://'))) {
                 appUrl = 'https://'+window.LGEAPPHostName+appUrl;
