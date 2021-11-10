@@ -460,7 +460,7 @@ $(function () {
         // E BTOCSITE-7225 앱 AR 버튼 노출 건
     });
 });
-
+//BTOCSITE-2193 s
 $(document).on('click', '.scene a, .section a', function(e){
     var target = this.getAttribute('target');
     // var appUrl = $(this).attr('href');
@@ -484,3 +484,4 @@ $(document).on('click', '.scene a, .section a', function(e){
         } 
     }
 })
+//BTOCSITE-2193 s
