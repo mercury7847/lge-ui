@@ -468,15 +468,13 @@ $(document).on('click', '.scene a, .section a', function(e){
             e.preventDefault();
             var appUrl = $(this).attr('href');
             if (!(appUrl.match('https://'))) {
-                appUrl = 'https://'+window.LGEAPPHostName+appUrl+'?openMode=inAppBrowser';
-            } else {
-                appUrl = appUrl+'?openMode=inAppBrowser';
-            }
+                appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+            } 
             if(vcui.detect.isIOS){
-                var jsonString = JSON.stringify({'url': appUrl, 'command':'openInAppBrowser', 'titlebar_show': 'Y'});
+                var jsonString = JSON.stringify({'url': appUrl, 'command':'sendOutLink'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
-                android.openNewWebview(appUrl);
+                android.openLinkOut(appUrl);
             }
         } 
     }
