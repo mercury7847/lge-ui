@@ -468,7 +468,7 @@ $(document).on('click', '.scene a, .section a', function(e){
             e.preventDefault();
             var appUrl = $(this).attr('href');
             if (!(appUrl.match('https://'))) {
-                appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+                appUrl = 'https://'+window.LGEAPPHostName+appUrl+'?openMode=inAppBrowser';
             } 
             if(vcui.detect.isIOS){
                 var jsonString = JSON.stringify({'url': appUrl, 'command':'openInAppBrowser', 'titlebar_show': 'Y'});
