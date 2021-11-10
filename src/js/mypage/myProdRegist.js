@@ -1120,6 +1120,8 @@
                                         item.linkBtn.forEach(function(obj){
                                             switch(obj.title) {
                                                 case "출장 서비스 신청" : 
+
+
                                                     obj.url.forEach(function(link){
                                                         var url = lgkorUI.parseUrl(link);
                                                         var mktModelCd = url.searchParams.get("mktModelCd");
@@ -1129,8 +1131,12 @@
                                                             return false;
                                                         }
                                                     });
+
+
                                                 break;
                                                 case "센터 방문 예약" : 
+
+
                                                     obj.url.forEach(function(link){
                                                         var url = lgkorUI.parseUrl(link);
                                                         var mktModelCd = url.searchParams.get("mktModelCd");
@@ -1140,6 +1146,8 @@
                                                             return false;
                                                         }
                                                     });
+
+                                                    
                                                 break;
                                             }
                                         });
