@@ -177,6 +177,15 @@
         });
 
         $('.ico-btn.kk').attr("data-url",kakaoShareLoc.origin + kakaoShareLoc.pathname +'?'+ $.param(kakaoShareParam)); 
+
+        /* BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
+        $(function () {
+            var flag = $('.flag-wrap .flag').length;
+            if(flag){
+                $('.tit-info-r').addClass('isFlag');
+            }
+        });
+        /* //BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
     }
 
     $(document).ready(function() {
