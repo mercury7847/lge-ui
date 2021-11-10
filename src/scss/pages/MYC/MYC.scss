@@ -1020,11 +1020,12 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom:0;
+.popup-wrap {
+    .pop-conts {
+        @include mobile {
+            height:calc(100vh - 122px);
+            max-height:calc(100vh - 122px);
+        }
     }
 }
 
@@ -1158,7 +1159,7 @@
     .pop-conts{
         max-height: 560px;
         @include mobile{
-            max-height: calc(100% - 122px);
+            max-height: calc(100vh - 122px);
         }
     }
     .pop-footer{
@@ -1244,7 +1245,7 @@
         background: #f4f4f4;
         cursor: default;
     }
-
+    // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
     .info-msg { 
         
         border-top:1px solid #ddd; 
@@ -1275,6 +1276,7 @@
             }
         }
     }
+    // -E- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
 } 
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{

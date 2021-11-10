@@ -111,7 +111,7 @@
     '            <li>'+
     '                <span class="rdo-wrap btn-type2">'+
     '                    {{#if type}}'+
-    '                     <div class="item" data-href="{{item.linkBtn[type]}}">'+
+    '                     <div class="item" data-type="{{type}}" data-href="{{item.linkBtn[type]}}">'+
     '                    {{/if}}'+
     '                        <span class="thumb">'+
     '                            <img data-pc-src="{{item.largeImageAddr}}" data-m-src="{{item.largeImageAddr}}" alt="">'+
@@ -555,9 +555,18 @@
             // 세트 상품 팝업 확인 버튼 
             self.$packageModal.on('click','.ui_modal_close_pack',function(e) {
                 e.preventDefault();
-                var href = self.$packageModal.find('.btn-type2 div.item.active').data("href");
-                self.$packageModal.vcModal('close')
-                location.href = href;
+
+                var $el = self.$packageModal.find('.btn-type2 div.item.active')
+                var data = $el.data();
+                
+                if($el.length > 0) {
+                    if(data.type !== "accessories" && data.href ) {
+                        self.$packageModal.vcModal('close')
+                        location.href = data.href;
+                    } else {
+                        lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+                    }
+                }
             });
 
             // 세트 상품 팝업 (출장 서비스 신청 / 센터 방문 예약 / 소모품 조회 / 리뷰작성 팝업)
@@ -684,6 +693,7 @@
                                 }
                             });
                         } else {
+                            // -S- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                             lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                                 title: "",
                                 cancelBtnName: "취소",
@@ -692,6 +702,7 @@
                                     location.href = "/support/email-inquiry?emailReg";
                                 }
                             });
+                            // -E- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                         }
                         
                     }
@@ -712,6 +723,7 @@
             //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
                 // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
+                // BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                 var minLengthFlag = self.$snInput.val().length >= 10 ? true: false;
                 
                 var currentVal = [];
@@ -742,6 +754,7 @@
                             }
                         });
                     } else {
+                        // -S- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                         lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                             title: "",
                             cancelBtnName: "취소",
@@ -750,6 +763,7 @@
                                 location.href = "/support/email-inquiry?emailReg";
                             }
                         });
+                        // -E- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                     }
                     self.$snCheckOk.hide();
                 }
@@ -804,7 +818,6 @@
                                     'customEventAction': '보유제품 등록 완료',				
                                     'customEventLabel': param.sku
                                 });				
-                          
 
                                 self.$registMyProductPopup.vcModal('close');
 
