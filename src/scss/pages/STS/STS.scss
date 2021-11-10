@@ -979,6 +979,7 @@
                 max-height: 67px;
                 font-weight: 700;
                 @include font-large-1;
+                display: block;
                 @include textEllipsisClamp(2);
                 @include mobile {
                     max-height: 48px;
