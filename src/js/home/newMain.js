@@ -463,12 +463,20 @@ $(function () {
 
 $(document).on('click', '.scene a, .section a', function(e){
     var target = this.getAttribute('target');
+    // var appUrl = $(this).attr('href');
+    //         if (!(appUrl.match('https://'))) {
+    //             alert(appUrl);
+    //             appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+    //             alert(appUrl);
+    //         } 
     if(target == "_blank"){
         if(isApp()) {
             var appUrl = $(this).attr('href');
+            if (!(appUrl.match('https://'))) {
+                appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+            } 
             if(vcui.detect.isIOS){
-                var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': appUrl, 'titlebar_show': 'Y'});
-                //, 'titlebar_show': 'Y'
+                var jsonString = JSON.stringify({'url': appUrl, 'command':'openInAppBrowser', 'titlebar_show': 'Y'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
                 android.openNewWebview(appUrl);
