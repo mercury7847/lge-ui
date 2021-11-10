@@ -111,7 +111,7 @@
     '            <li>'+
     '                <span class="rdo-wrap btn-type2">'+
     '                    {{#if type}}'+
-    '                     <div class="item" data-href="{{item.linkBtn[type]}}">'+
+    '                     <div class="item" data-type="{{type}}" data-href="{{item.linkBtn[type]}}">'+
     '                    {{/if}}'+
     '                        <span class="thumb">'+
     '                            <img data-pc-src="{{item.largeImageAddr}}" data-m-src="{{item.largeImageAddr}}" alt="">'+
@@ -555,9 +555,13 @@
             // 세트 상품 팝업 확인 버튼 
             self.$packageModal.on('click','.ui_modal_close_pack',function(e) {
                 e.preventDefault();
-                var href = self.$packageModal.find('.btn-type2 div.item.active').data("href");
-                self.$packageModal.vcModal('close')
-                location.href = href;
+                var data = self.$packageModal.find('.btn-type2 div.item.active').data();
+                if(data.type !== "accessories" && data.href ) {
+                    self.$packageModal.vcModal('close')
+                    location.href = data.href;
+                } else {
+                    lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+                }
             });
 
             // 세트 상품 팝업 (출장 서비스 신청 / 센터 방문 예약 / 소모품 조회 / 리뷰작성 팝업)
