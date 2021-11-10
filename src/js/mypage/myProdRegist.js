@@ -1116,26 +1116,12 @@
                                         item.linkBtn.forEach(function(obj){
                                             switch(obj.title) {
                                                 case "출장 서비스 신청" : 
-                                                    obj.url.forEach(function(link){
-                                                        var url = lgkorUI.parseUrl(link);
-                                                        var mktModelCd = url.searchParams.get("mktModelCd");
-                                                        if(mktModelCd === product.orgProdModelCd) {
-                                                            // 출장 서비스 링크
-                                                            linkBtn.reservation = link;
-                                                            return false;
-                                                        }
-                                                    });
+                                                    // 출장 서비스 신청
+                                                    linkBtn.reservation = obj.title ? "/support/service-engineer-reservation?mktModelCd="+product.orgProdModelCd : "";
                                                 break;
                                                 case "센터 방문 예약" : 
-                                                    obj.url.forEach(function(link){
-                                                        var url = lgkorUI.parseUrl(link);
-                                                        var mktModelCd = url.searchParams.get("mktModelCd");
-                                                        if(mktModelCd === product.orgProdModelCd) {
-                                                            // 센터 방문 예약" 링크
-                                                            linkBtn.center = link;
-                                                            return false;
-                                                        }
-                                                    });
+                                                    //센터 방문 예약
+                                                    linkBtn.center = obj.title ? "/support/visit-center-reservation?mktModelCd="+product.orgProdModelCd : "";
                                                 break;
                                             }
                                         });
