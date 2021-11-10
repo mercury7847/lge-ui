@@ -1707,4 +1707,9 @@
             }
         }
     }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - S
+    .bullet-list.top-border {
+        padding-bottom:42px;
+    }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - E
 }
