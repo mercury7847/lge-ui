@@ -555,12 +555,17 @@
             // 세트 상품 팝업 확인 버튼 
             self.$packageModal.on('click','.ui_modal_close_pack',function(e) {
                 e.preventDefault();
-                var data = self.$packageModal.find('.btn-type2 div.item.active').data();
-                if(data.type !== "accessories" && data.href ) {
-                    self.$packageModal.vcModal('close')
-                    location.href = data.href;
-                } else {
-                    lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+
+                var $el = self.$packageModal.find('.btn-type2 div.item.active')
+                var data = $el.data();
+                
+                if($el.length > 0) {
+                    if(data.type !== "accessories" && data.href ) {
+                        self.$packageModal.vcModal('close')
+                        location.href = data.href;
+                    } else {
+                        lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+                    }
                 }
             });
 
@@ -1120,6 +1125,7 @@
                                         item.linkBtn.forEach(function(obj){
                                             switch(obj.title) {
                                                 case "출장 서비스 신청" : 
+
                                                     obj.url.forEach(function(link){
                                                         var url = lgkorUI.parseUrl(link);
                                                         var mktModelCd = url.searchParams.get("mktModelCd");
@@ -1129,8 +1135,10 @@
                                                             return false;
                                                         }
                                                     });
+
                                                 break;
                                                 case "센터 방문 예약" : 
+
                                                     obj.url.forEach(function(link){
                                                         var url = lgkorUI.parseUrl(link);
                                                         var mktModelCd = url.searchParams.get("mktModelCd");
@@ -1140,6 +1148,7 @@
                                                             return false;
                                                         }
                                                     });
+
                                                 break;
                                             }
                                         });
