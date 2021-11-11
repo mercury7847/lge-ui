@@ -41,8 +41,8 @@
                             e.preventDefault();
                             window.close();
                         }
-                    } else if( paramFlagDisc != undefined && paramFlagDisc != "" ){
-                        if( paramFlagDisc == "Y" || paramFlagDisc == Y ){
+                    } else if( paramFlagDisc != undefined && paramFlagDisc != "" ) {
+                        if( paramFlagDisc == "Y" ) {
                             e.preventDefault();
                             window.close();
                         }
