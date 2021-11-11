@@ -111,7 +111,7 @@
     '            <li>'+
     '                <span class="rdo-wrap btn-type2">'+
     '                    {{#if type}}'+
-    '                     <div class="item" data-href="{{item.linkBtn[type]}}">'+
+    '                     <div class="item" data-type="{{type}}" data-href="{{item.linkBtn[type]}}">'+
     '                    {{/if}}'+
     '                        <span class="thumb">'+
     '                            <img data-pc-src="{{item.largeImageAddr}}" data-m-src="{{item.largeImageAddr}}" alt="">'+
@@ -555,9 +555,18 @@
             // 세트 상품 팝업 확인 버튼 
             self.$packageModal.on('click','.ui_modal_close_pack',function(e) {
                 e.preventDefault();
-                var href = self.$packageModal.find('.btn-type2 div.item.active').data("href");
-                self.$packageModal.vcModal('close')
-                location.href = href;
+
+                var $el = self.$packageModal.find('.btn-type2 div.item.active')
+                var data = $el.data();
+                
+                if($el.length > 0) {
+                    if(data.type !== "accessories" && data.href ) {
+                        self.$packageModal.vcModal('close')
+                        location.href = data.href;
+                    } else {
+                        lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+                    }
+                }
             });
 
             // 세트 상품 팝업 (출장 서비스 신청 / 센터 방문 예약 / 소모품 조회 / 리뷰작성 팝업)
@@ -1116,12 +1125,26 @@
                                         item.linkBtn.forEach(function(obj){
                                             switch(obj.title) {
                                                 case "출장 서비스 신청" : 
-                                                    // 출장 서비스 신청
-                                                    linkBtn.reservation = obj.title ? "/support/service-engineer-reservation?mktModelCd="+product.orgProdModelCd : "";
+                                                    obj.url.forEach(function(link){
+                                                        var url = lgkorUI.parseUrl(link);
+                                                        var mktModelCd = url.searchParams.get("mktModelCd");
+                                                        if(mktModelCd === product.orgProdModelCd) {
+                                                            // 출장 서비스 링크
+                                                            linkBtn.reservation = link;
+                                                            return false;
+                                                        }
+                                                    });
                                                 break;
                                                 case "센터 방문 예약" : 
-                                                    //센터 방문 예약
-                                                    linkBtn.center = obj.title ? "/support/visit-center-reservation?mktModelCd="+product.orgProdModelCd : "";
+                                                    obj.url.forEach(function(link){
+                                                        var url = lgkorUI.parseUrl(link);
+                                                        var mktModelCd = url.searchParams.get("mktModelCd");
+                                                        if(mktModelCd === product.orgProdModelCd) {
+                                                            // 센터 방문 예약" 링크
+                                                            linkBtn.center = link;
+                                                            return false;
+                                                        }
+                                                    });
                                                 break;
                                             }
                                         });

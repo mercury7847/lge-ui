@@ -1024,11 +1024,12 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom:0;
+.popup-wrap {
+    .pop-conts {
+        @include mobile {
+            height:calc(100vh - 122px);
+            max-height:calc(100vh - 122px);
+        }
     }
 }
 
@@ -1162,7 +1163,7 @@
     .pop-conts{
         max-height: 560px;
         @include mobile{
-            max-height: calc(100% - 122px);
+            max-height: calc(100vh - 122px);
         }
     }
     .pop-footer{
