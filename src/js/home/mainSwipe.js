@@ -231,9 +231,7 @@ MainSwiper.prototype = {
         //console.log('this.loadQUE', this.loadQUE);
     },
     getContent: function(){        
-        var self = this;
-
-        lgkorUI.showLoading();
+        var self = this;        
         
         // 로딩중일때
         if (self.isLoading == true){
@@ -281,14 +279,14 @@ MainSwiper.prototype = {
             self.isLoading = false;
             self.getContent();
             self.storyHomeToastChk(currentSlide) //BTOCSITE-188
-
-            lgkorUI.hideLoading();
             return;
         }
 
         $.ajaxSetup({
             cache:true
         });
+
+        lgkorUI.showLoading();
 
         $.ajax({
             method: 'POST',
