@@ -372,7 +372,10 @@ var res = {
 					"계약현황-해지 상담 신청 내 팝업" : ["/html/MYC/ACCF7055_popup.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"],
+
+					//BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 : 페이지 생성
+					"케어솔루션 레터" : ["/html/MYC/ACCF7025_care_list.html","",""],
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],

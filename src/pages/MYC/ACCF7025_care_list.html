@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/careSolutionLatter"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어솔루션 레터"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문일정 / 예약" },
+                                { "on": "on", "page": "케어솔루션 레터" },
+                                { "on": "", "page": "연차별 혜택" }
+                            ]
+                        })
+                        <div class="lnb-contents latter-contents">
+                            <!-- 상단 배너 -->
+                            <div class="my-contract-info latter-topBanner">
+                                <p class="tit">오직 케어솔루션/케어십 고객님께만!</p>
+                                <span>유익한 정보도 확인해 보시고 베스트샵에서<br class="mob-only"> 사용 가능한 특별 쿠폰도 확인해 보세요.</span>
+                            </div>
+                            <!-- // 상단 배너 -->
+
+                            <!-- 탭 -->
+                            <div class="tabs-wrap new-type ui_tab">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab-info">정보<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab-coupon">쿠폰</a></li>
+                                </ul>
+                            </div>
+                            <!-- //탭 -->
+
+                            <!-- 정보 컨텐츠 -->
+                            <div id="tab-info" class="tab-contents">
+                                <div class="latter-accordion">
+                                    <!-- Accordion -->
+                                    <div class="accordion-border-wrap ui_accordion" data-single-open="true" data-open-index="[0]">
+                                        <ul>
+                                            <li class="lists">
+                                                <div class="head">
+                                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                        <span class="title line2">제목 타이틀 : 제목을 입력해 주세요</span>
+                                                        <span class="blind ui_accord_text">내용 더 보기</span>
+                                                    </a>
+                                                </div>
+                                                <div class="accord-cont ui_accord_content" style="display:none;">
+                                                    <div class="latter-acrord_content">
+                                                        <div>
+                                                            <p class="text">
+                                                                차로 마셔도 맛있고 요리에 첨가해도 좋은 여름 제철 과일 매실!<br>
+                                                                이번 케어솔루션 레터에서는 상큼상큼한 매실청 만드는 방법을 소개해 드립니다.
+                                                            </p>
+                                                            <a href="#n" class="btn-link">자세히 보기</a>
+                                                        </div>
+                                                        <p class="thumb">
+                                                            <img src="/lg5-common/images/MYC/care/thumbnail_img.jpg" alt="썸네일 이미지">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="lists">
+                                                <div class="head">
+                                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                        <span class="title line2">제목 타이틀 : 제목을 입력해 주세요 제목을 입력해 주세요 제목을 입력해 주세요 제목을 입력해 주세요</span>
+                                                        <span class="blind ui_accord_text">내용 더 보기</span>
+                                                    </a>
+                                                </div>
+                                                <div class="accord-cont ui_accord_content" style="display:none;">
+                                                    <div class="latter-acrord_content">
+                                                        <div>
+                                                            <p class="text">
+                                                                text
+                                                            </p>
+                                                            <a href="#n" class="btn-link">자세히 보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="lists">
+                                                <div class="head">
+                                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                        <span class="title line2">제목 타이틀 : 제목을 입력해 주세요</span>
+                                                        <span class="blind ui_accord_text">내용 더 보기</span>
+                                                    </a>
+                                                </div>
+                                                <div class="accord-cont ui_accord_content" style="display:none;">
+                                                    <div class="latter-acrord_content">
+                                                        <div>
+                                                            <p class="text">
+                                                                text
+                                                            </p>
+                                                            <a href="#n" class="btn-link">자세히 보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- // Accordion -->
+
+                                    <button type="button" class="btn-moreview block" style="display: block;"><span>정보 더보기</span></button>
+                                </div>
+                            </div>
+                            <!-- //정보 컨텐츠 -->
+                            
+                            <!-- 쿠폰 컨텐츠 -->
+                            <div id="tab-coupon" class="tab-contents" style="display:none;">
+                                <div class="latter-accordion">
+                                    <!-- Accordion -->
+                                    <div class="accordion-border-wrap ui_accordion" data-single-open="true" data-open-index="[0]">
+                                        <ul>
+                                            <li class="lists">
+                                                <div class="head">
+                                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                        <span class="title line2">쿠폰쿠폰쿠폰</span>
+                                                        <span class="blind ui_accord_text">내용 더 보기</span>
+                                                    </a>
+                                                </div>
+                                                <div class="accord-cont ui_accord_content" style="display:none;">
+                                                    <div class="latter-acrord_content">
+                                                        <div>
+                                                            <p class="text">
+                                                                쿠폰쿠폰쿠폰쿠폰 내용
+                                                            </p>
+                                                            <a href="#n" class="btn-link">자세히 보기</a>
+                                                        </div>
+                                                        <p class="thumb">
+                                                            <img src="/lg5-common/images/MYC/care/thumbnail_img.jpg" alt="썸네일 이미지">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- // Accordion -->
+
+                                    <button type="button" class="btn-moreview block" style="display: block;"><span>쿠폰 더보기</span></button>
+                                </div>
+                            </div>
+                            <!-- //쿠폰 컨텐츠 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+
+        
+        @@include('./common/footer.html')
+
+    </div>
+ 
+</body>
+</html>
