@@ -2808,33 +2808,58 @@
         }
     }
 
-            // <-- 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업
-            .rental-banner {
-                // margin:16px 0 24px;
-                // @include mobile {
-                //     margin:14px 0 24px;
-                // }
-                img {
-                    width:100%;
-                    /* 클래스별이미지분기 */
-                    &.pc{
-                        display:inline-block;
-                    }
-                    &.mobile{
-                        display:none;
-                    }
-                    @include mobile {
-                        &.pc{
-                            display:none;
-                        }
-                        &.mobile{
-                            display:inline-block;
-                        }
-                    }
-                    /* //클래스별이미지분기 */
-                }     
+    //BTOCSITE-7447 - 렌탈 케어솔루션 Tab, TIP 박스 내 문구
+    .rental-banner {
+        .banner-type {
+            position: relative;
+            padding: 10px 20px 14px;
+            border: solid 1px #666;
+            border-radius: 8px;
+            text-align: center;
+            .banner-title {
+                display: block;
+                max-width: calc(100% - 100px);
+                margin: 0 auto;
+                color: #da0f47;
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 1.33;
+                @include mobile {
+                    font-size: 15px;
+                    line-height: 1.4;
+                }
+                & + .banner-desc {
+                    margin-top: 6px;
+                }
             }
-            // 20210818 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발_후속작업 //-->
+            .banner-desc {
+                display: block;
+                font-size: 14px;
+                line-height: 1.71;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 1.62;
+                }
+            }
+            &:after {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                top: -4px;
+                left: 25px;
+                width: 30px;
+                height: 36px;
+                background: url('/lg5-common/images/KRP0008/icon_banner_tip.svg') no-repeat;
+                background-size: cover;
+                @include mobile {
+                    top: -3px;
+                    width: 25px;
+                    height: 30px;
+                }
+            }
+
+        }
+    }
 }
 
 .layer-benefit {

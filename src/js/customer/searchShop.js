@@ -7,9 +7,6 @@
         // BTOCSITE-4785 s
         var cartPrdList  = getParameter("cartPrdList");
         var dpPdp  = getParameter("dpPdp");
-        if(dpPdp){
-            $(".store-list-wrap").addClass("display-product-search");
-        } 
         function getParameter(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -1599,6 +1596,16 @@
     
         $(window).ready(function(){
             searchShop.init();
+            var dpPdp  = getParameter("dpPdp");
+            if(dpPdp){
+                $(".store-list-wrap").addClass("display-product-search");
+            } 
+            function getParameter(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
         });
     })();
     

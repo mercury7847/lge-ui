@@ -388,22 +388,23 @@
     </div>
     <div class="scroll-wrap border-type ui_product_tab">
         <div class="ui_smooth_tab">
+            <!-- BTOCSITE-7335 수정 -->
             <ul class="tabs">
-                <!-- 210401 삭제해주세요.-->
-                <!-- <li class="on" data-ajax-url=""><a href="#tab1">신제품<em class="blind">선택됨</em></a></li>
-                <li data-ajax-url=""><a href="#tab2">베스트</a></li>
-                <li data-ajax-url=""><a href="#tab3">신혼부부 추천</a></li>
-                <li data-ajax-url=""><a href="#tab4">반려동물</a></li> -->
-                <!-- 210401 삭제해주세요. 끝-->
+                <li class="on"><a href="#new" id="beu_recommend_tab_new">신제품<em class="blind">선택됨</em></a></li>
+                <li><a href="#best" id="beu_recommend_tab_best">베스트</a></li>
+                <li><a href="#couple" id="beu_recommend_tab_couple">신혼부부 추천</a></li>
+                <li><a href="#pet" id="beu_recommend_tab_pet">반려동물</a></li>
             </ul>
+            <!-- //BTOCSITE-7335 수정 -->
         </div>
         <div class="scroll-controls ui_smooth_controls">
             <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
             <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
         </div>
     </div>
-    <!-- 210401 삭제해주세요.-->
-    <!-- <div id="tab1" class="tab-content" aria-labelledby="tab1" role="tabpanel">
+   
+    <!-- BTOCSITE-7335 수정 -->
+    <div id="new" class="tab-content" aria-labelledby="new" role="tabpanel">
         <div class="prd-list-wrap">
             <div class="slide-wrap ui_product_carousel_slider">
                 <div class="indi-wrap">
@@ -413,12 +414,228 @@
                 </div>
                 <div class="slide-content ui_carousel_list">
                     <ul class="inner slide-track ui_carousel_track">
+                        <li class="item ui_carousel_slide ui_carousel_current on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="item ui_carousel_slide on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li>   
                     </ul>
                 </div>
             </div>
         </div>
-    </div> -->
-    <!-- 210401 삭제해주세요. 끝-->                    
+    </div>
+
+    <div id="best" class="tab-content" aria-labelledby="best" role="tabpanel">
+        <div class="prd-list-wrap">
+            <div class="slide-wrap ui_product_carousel_slider">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+                <div class="slide-content ui_carousel_list">
+                    <ul class="inner slide-track ui_carousel_track">
+                        <li class="item ui_carousel_slide ui_carousel_current on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="item ui_carousel_slide on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="couple" class="tab-content" aria-labelledby="couple" role="tabpanel">
+        <div class="prd-list-wrap">
+            <div class="slide-wrap ui_product_carousel_slider">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+                <div class="slide-content ui_carousel_list">
+                    <ul class="inner slide-track ui_carousel_track">
+                        <li class="item ui_carousel_slide ui_carousel_current on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="item ui_carousel_slide on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pet" class="tab-content" aria-labelledby="pet" role="tabpanel">
+        <div class="prd-list-wrap">
+            <div class="slide-wrap ui_product_carousel_slider">
+                <div class="indi-wrap">
+                    <ul class="indi-conts ui_carousel_dots" style="display: none;">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+                <div class="slide-content ui_carousel_list">
+                    <ul class="inner slide-track ui_carousel_track">
+                        <li class="item ui_carousel_slide ui_carousel_current on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="item ui_carousel_slide on">
+                            <div class="prd-care-vertical">
+                                <div class="img-wrap"> 
+                                    <a href="/care-solutions/water-purifiers/wd505acb?dpType=careTab"> 
+                                        <img src="/kr/images/water-purifiers/md09003826/md09003826-350x350.jpg" alt="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"> 
+                                    </a> 
+                                </div>
+                                <div class="txt-wrap"> 
+                                    <p class="tit"><span class="blind">제품명</span>LG 퓨리케어 상하좌우 정수기 오브제컬렉션</p> 
+                                    <p class="code"><span class="blind">제품 코드</span>WD505ACB</p> 
+                                </div>
+                                <div class="info-wrap"> 
+                                    <div class="price-wrap"> 
+                                        <div class="total-price">  
+                                            <p class="price">월 37,900원</p>  
+                                            <button type="button" class="btn border ui_care_detail_btn" data-url="/care-solutions/water-purifiers/wd505acb?dpType=careTab" data-contents="LG 퓨리케어 상하좌우 정수기 오브제컬렉션"><span>자세히 보기</span></button> 
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //BTOCSITE-7335 수정 -->
 </div>
 <!-- //케솔 추천제품 -->
 
@@ -628,7 +845,10 @@
                 <ul>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-1-1.jpg" data-m-src="/lg5-common/images/SLS/m-img-benefit-1-1.jpg" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-1-1.jpg')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-1-1.jpg')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -639,7 +859,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-1-3.jpg" data-m-src="/lg5-common/images/SLS/m-img-benefit-1-3.jpg" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-1-3.jpg')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-1-3.jpg')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -650,7 +873,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-1-2.jpg" data-m-src="/lg5-common/images/SLS/m-img-benefit-1-2.jpg" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-1-2.jpg')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-1-2.jpg')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -661,7 +887,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-1-4.jpg" data-m-src="/lg5-common/images/SLS/m-img-benefit-1-4.jpg" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-1-4.jpg')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-1-4.jpg')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -672,7 +901,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-1-5.jpg" data-m-src="/lg5-common/images/SLS/m-img-benefit-1-5.jpg" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-1-5.jpg')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-1-5.jpg')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -698,7 +930,10 @@
                 <ul>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-2-1.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-2-1.png" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-2-1.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-2-1.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -712,7 +947,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-2-2.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-2-2.png" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-2-2.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-2-2.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -726,7 +964,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-2-3.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-2-3.png" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-2-3.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-2-3.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -740,7 +981,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-2-4.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-2-4.png" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-2-4.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-2-4.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -754,7 +998,10 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-2-5.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-2-5.png" alt="">
+                            <!-- BTOCSITE-7335 수정 -->
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-2-5.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-2-5.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- //BTOCSITE-7335 수정 -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -779,7 +1026,9 @@
                 <ul>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-1.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-1.png" alt="">
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-3-1.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-3-1.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-1.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-1.png" alt=""> -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -790,7 +1039,9 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-2.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-2.png" alt="">
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-3-2.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-3-2.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-2.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-2.png" alt=""> -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -801,7 +1052,9 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-3.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-3.png" alt="">
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-3-3.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-3-3.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-3.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-3.png" alt=""> -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -812,7 +1065,9 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-4.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-4.png" alt="">
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-3-4.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-3-4.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-4.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-4.png" alt=""> -->
                         </div>
                         <div class="cont">
                             <dl>
@@ -823,7 +1078,9 @@
                     </li>
                     <li>
                         <div class="thumb">
-                            <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-5.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-5.png" alt="">
+                            <span style="background-image:url('/lg5-common/images/SLS/img-benefit-3-5.png')" class="pc ui_bg_switch" aria-hidden="true"></span>
+                            <span style="background-image:url('/lg5-common/images/SLS/m-img-benefit-3-5.png')" class="mo ui_bg_switch" aria-hidden="true"></span>
+                            <!-- <img data-pc-src="/lg5-common/images/SLS/img-benefit-3-5.png" data-m-src="/lg5-common/images/SLS/m-img-benefit-3-5.png" alt=""> -->
                         </div>
                         <div class="cont">
                             <dl>
