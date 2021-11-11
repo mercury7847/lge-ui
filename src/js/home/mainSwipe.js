@@ -37,7 +37,7 @@ function MainSwiper( ID ){
         'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
     ];
 
-    this.init();
+        this.init();
     
 }
 
@@ -72,14 +72,12 @@ MainSwiper.prototype = {
                 'init' : function(swiper){   
                     self.isSwiped = false;    // BTOCSITE-2947 add
 
-                    
-
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];
-                        document.addEventListener('readystatechange', function(e) {
-                            document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
-                        })
+//                         document.addEventListener('readystatechange', function(e) {
+//                             document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
+//                         })
                         mainSwiper.loadContent( currentSlide,true );
                     }
                     
@@ -96,16 +94,14 @@ MainSwiper.prototype = {
                         */
                       
                     }
+                    
 
-                    
-                    
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                     self.removeStatusBar();//BTOCSITE-1967
 
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
-
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
 
@@ -123,13 +119,13 @@ MainSwiper.prototype = {
 
                     mainSwiper.loadContent( currentSlide,true );
 
-                    if(swiper.activeIndex > 0){
-                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
-                    }
+//                     if(swiper.activeIndex > 0){
+//                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+//                     }
 
-                    if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
-                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
-                    }
+//                     if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
+//                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+//                     }
 
                     swiper.allowSlideNext = swiper.activeIndex === swiper.slides.length -1 ? false: true;
                     swiper.allowSlidePrev = swiper.activeIndex === 0 ? false: true;
@@ -149,8 +145,10 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
+
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
                         //$('html,body').stop().animate({scrollTop:0}, 300);
@@ -233,7 +231,7 @@ MainSwiper.prototype = {
         //console.log('this.loadQUE', this.loadQUE);
     },
     getContent: function(){        
-        var self = this;
+        var self = this;        
         
         // 로딩중일때
         if (self.isLoading == true){
@@ -281,14 +279,14 @@ MainSwiper.prototype = {
             self.isLoading = false;
             self.getContent();
             self.storyHomeToastChk(currentSlide) //BTOCSITE-188
-
-            
             return;
         }
 
         $.ajaxSetup({
             cache:true
         });
+
+        lgkorUI.showLoading();
 
         $.ajax({
             method: 'POST',
@@ -331,6 +329,7 @@ MainSwiper.prototype = {
                         setTimeout(function(){
                             mainSwiper.swiper.updateAutoHeight();
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                            lgkorUI.hideLoading();
                         }, 500);
                     });
                 });
@@ -456,7 +455,7 @@ MainSwiper.prototype = {
         } else {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
-    },
+    },    
     removeStatusBar: function(){
         //BTOCSITE_1967
         if( !$('.swiper-slide').find('.mobile-status-bar').length ) {
