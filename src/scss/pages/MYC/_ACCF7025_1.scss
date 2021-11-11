@@ -1,0 +1,282 @@
+/* BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 */
+.lnb-contents {
+    &.latter-contents {
+        position: relative;
+        .pc {
+            @include mobile {
+                display: none;
+            }
+        }
+        .mobile {
+            display: none;
+            @include mobile {
+                display: block;
+            }
+        }
+        .my-contract-info {
+            position: relative;
+            &.latter-topBanner {
+                padding: 38px;
+                text-align: center;
+                color: #fff;
+                margin-bottom: 60px;
+                p { margin-bottom: 16px; }
+                span {}
+                @include mobile {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    span {
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+        .section-wrap {
+            .sects {
+                .latter-btnWarp {
+                    position: relative;
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    li {
+                        border-radius: 8px;
+                        box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                        width: 50%;
+                        margin: 0px 12px;
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        a {
+                            position: relative;
+                            display: block;
+                            padding: 20px 20px 20px 40px;
+                            .latter-btn-text {
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                align-content: center;
+                                i {
+                                    margin-right: 30px;
+                                    img {}
+                                }
+                                p {
+                                    font-size: 22px;
+                                    line-height: 32px;
+                                    span {
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                            &::after {
+                                content: '';
+                                width: 29px;
+                                height: 27px;
+                                background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                                background-position: 0 0;
+                                background-repeat: no-repeat;
+                                position: absolute;
+                                top: 50%;
+                                right: 20px;
+                                margin-top: -14px;
+                            }
+                        }
+                    }
+                    @include mobile {
+                        flex-direction: column;
+                        li {
+                            width: 100%;
+                            margin: 0 0 25px 0;
+                            a {
+                                padding : 10px 12px;
+                                .latter-btn-text {
+                                    i {
+                                        margin-right: 10px;
+                                        img {}
+                                    }
+                                    p {
+                                        font-size: 14px;
+                                        line-height: 22px;
+                                    }
+                                }
+                                &::after {
+                                    width: 32px;
+                                    height: 32px;
+                                    background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                                    background-position: center;
+                                    top: 50%;
+                                    right: 12px;
+                                    margin-top: -16px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .tabs-wrap {
+            margin-bottom: 40px;
+            @include mobile {
+                margin-bottom: 20px;
+            }
+        }
+        //아코디언 메뉴 리스트 
+        .latter-accordion {
+            position: relative;
+            .accord-btn {
+                position: relative;
+            }
+            .lists {
+                &.on {
+                    .accord-btn {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .accord-cont {
+                padding-top: 0;
+                .latter-acrord_content {
+                    display: flex;
+                    justify-content: space-between;
+                    .text {
+                        margin-bottom: 20px;
+                    }
+                    .thumb {
+                        margin-right: 80px;
+                        margin-top: -42px;
+                        width: 256px;
+                        min-height: 200px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .accord-btn {
+                    padding: 16px 12px;
+                    .title {
+                        width: 80%;
+                    }
+                }
+                .accord-cont {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-bottom: 32px;
+                    .latter-acrord_content {
+                        flex-direction: column;
+                        .text {
+                            margin-bottom: 16px;
+                        }
+                        .btn-link {
+                            margin-bottom: 16px;
+                        }
+                        .thumb {
+                            margin-right: 0px;
+                            margin-top: 0px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        //케어솔루션 레터 - 디테일 페이지
+        .latter-detail {
+            position: relative;
+            .latter-detailCont {
+                position: relative;
+                padding: 30px 24px 50px 24px;
+                background-color: #f4f4f4;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 80px;
+                .detail-cont {
+                    p {
+                        line-height: 26px;
+                    }
+                    .coupon-img{
+                        position: relative;
+                        .coupon-end {
+                            display: flex;
+                            align-content: center;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            background-color: rgba(0, 0, 0, 0.7);
+                            span {
+                                position: relative;
+                                width: 110px;
+                                height: 110px;
+                                background-color: #aaa;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 100%;
+                                color: #fff;
+                                font-size: 22px;
+                                font-weight: 600;
+                                @include mobile {
+                                    width: 70px;
+                                    height: 70px;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                    img {
+                        max-width: 1098px;
+                        width: 100%;
+                    }
+                    .manager-call {
+                        position: relative;
+                        display: none;
+                        margin-top: 24px;
+                        font-size: 14px;
+                        padding: 10px 0px;
+                        border-radius: 50px;
+                        text-align: center;
+                        border: 1px solid #000;
+                        justify-content: center;
+                        &::before {
+                            content: '';
+                            width: 24px;
+                            margin-right: 5px;
+                            background-image: url("/lg5-common/images/icons/care/icon_call.png");
+                            background-size: 100%;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include mobile {
+                            display: flex;
+                        }
+                    }
+                }
+                @include mobile {
+                    border-bottom: 2px solid #ddd;
+                    margin-bottom: 32px;
+                }
+            }
+            .section-wrap {
+                position: relative;
+                margin-bottom: 64px;
+            }
+        }
+
+
+
+        .latter-detail_btn {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+/* //BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 */
