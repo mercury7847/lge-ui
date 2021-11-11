@@ -9,8 +9,762 @@
         isJScompile: true
     })
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
+    <script src="/lg5-common/js/components/KRP0011.min.js"></script>
 <body>
     <script>
+        //유사 제품 추천 sample
+        var recommendProduct = {
+            "data": [
+                {
+                    "compareList": [
+                        {
+                            "bizType": "PRODUCT",
+                            "modelName": "OLED83C1KNA",
+                            "modelDisplayName": "LG 올레드 TV (벽걸이형) PRODUCT 추천1",
+                            "modelId": "MD08970829",
+                            "modelStatusCode": "ACTIVE",
+                            "modelDiscontinuedDate": null,
+                            "discontinuedDisplayEndDate": null,
+                            "modelDiscontinuedDisplayFlag": null,
+                            "modelPageType": "PDP",
+                            "modelGubun": "1",
+                            "modelGubunName": null,
+                            "obsInventoryFlag": "Y",
+                            "obsOriginalPrice": 12099000,
+                            "obsMemberPrice": 605000,
+                            "obsDiscountPrice": 574700,
+                            "obsTotalDiscountPrice": 1179700,
+                            "obsSellingPrice": 10919300,
+                            "obsSpecialDiscount": 0,
+                            "obsInventoryQty": 0,
+                            "obsSellFlag": "Y",
+                            "productLevelCode": "TV",
+                            "salesModelCode": "OLED83C1KW",
+                            "salesSuffixCode": "AKRG",
+                            "beforeVisitModelFlag": "",
+                            "membershipFlag": null,
+                            "modelComponent": null,
+                            "reviewDisplayFlag": null,
+                            "newProductBadgeFlag": null,
+                            "cashbackBadgeFlag": null,
+                            "bestBadgeFlag": null,
+                            "hqAccountingUnitCode": null,
+                            "arFlag": null,
+                            "arUrl": null,
+                            "modelReviewDisplayFlag": null,
+                            "delivType": null,
+                            "modelStatusMessageFlag": null,
+                            "advanceBookingModelFlag": null,
+                            "mixProductFlag": "N",
+                            "buyBtnFlag": "enable",
+                            "rentalOnlyFlag": null,
+                            "careshipOnlyFlag": null,
+                            "imageAltText": null,
+                            "largeImageAddr": "/kr/images/tvs/md08970829/md08970829-450x450.jpg",
+                            "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08970829/md08970829-350x350.jpg",
+                            "model360Image": null,
+                            "model360Title": null,
+                            "smallImageAddr": "/kr/images/tvs/md08970829/md08970829-280x280.jpg",
+                            "modelUrlPath": "/tvs/oled83c1kna-wall",
+                            "categoryId": "CT50000025",
+                            "categoryName": "TV",
+                            "subCategoryId": null,
+                            "subCategoryName": "올레드 TV",
+                            "superCategoryId": null,
+                            "superCategoryName": "TV/AV",
+                            "reviewWidgetId": null,
+                            "careDispText": null,
+                            "lgpickFlag": null,
+                            "categoryEngName": null,
+                            "years1TotAmt": 0,
+                            "reviewsCount": 0,
+                            "reviewsScore": 0.00,
+                            "compatibleModels": [],
+                            "galleryImages": [],
+                            "videos": [],
+                            "bulletFeatures": [],
+                            "siblings": [],
+                            "pdpCompatibleSearchAjaxUrl": null,
+                            "compatibleCount": 0,
+                            "siblingAjaxUrl": null,
+                            "obsBtnRule": null,
+                            "retalObsBtnRule": null,
+                            "disposableModels": [],
+                            "disposableStandards": [],
+                            "rTypeCount": null,
+                            "cTypeCount": null,
+                            "careshipInfo": [],
+                            "careshipAssociatedCardList": [],
+                            "rentalInfo": [],
+                            "rentalObsBtnFlag": [],
+                            "rentalAssociatedCardList": [],
+                            "substitutePart": [],
+                            "substitutePartCount": 0,
+                            "awards": [],
+                            "promotionBadges": [],
+                            "pTypeRewardCount": null,
+                            "cTypeRewardCount": null,
+                            "rewardPoint": null,
+                            "rewardAmt": null,
+                            "rewardLists": [],
+                            "benefitCards": [],
+                            "myMembershipPoint": null,
+                            "loginFlag": null,
+                            "name": null,
+                            "unifyId": null,
+                            "mobileNo": null,
+                            "restockFlag": null,
+                            "rewardAjaxUrl": null,
+                            "instockNoticeAjaxUrl": null,
+                            "outletStockFlag": null,
+                            "buttonRuledAjaxUrl": null,
+                            "wishListFlag": null,
+                            "wishListId": null,
+                            "wishItemId": null,
+                            "mobileWingModelFlag": null,
+                            "objetCategoryFlag": null,
+                            "ageCheckCategoryFlag": null,
+                            "obsOpenFlag": null,
+                            "rentalModelName": null,
+                            "rentalModelId": null,
+                            "modelPackageFlag": null,
+                            "supportProduct": null,
+                            "supportProductList": [],
+                            "digitalDataProductInfo": [],
+                            "enableTabGubun": null,
+                            "medihairExperienceFlag": null,
+                            "cinebeamExperienceFlag": null,
+                            "systemEstimateB2cFlag": null,
+                            "systemEstimateB2bFlag": null,
+                            "disposableNotice": [],
+                            "disposableNoticeButtons": []
+                        },
+                        {
+                            "bizType": "PRODUCT",
+                            "modelName": "OLED77G1KNA",
+                            "modelDisplayName": "LG 올레드 evo (벽걸이형) PRODUCT 추천2",
+                            "modelId": "MD08922094",
+                            "modelStatusCode": "ACTIVE",
+                            "modelDiscontinuedDate": null,
+                            "discontinuedDisplayEndDate": null,
+                            "modelDiscontinuedDisplayFlag": null,
+                            "modelPageType": "PDP",
+                            "modelGubun": "1",
+                            "modelGubunName": null,
+                            "obsInventoryFlag": "Y",
+                            "obsOriginalPrice": 9324000,
+                            "obsMemberPrice": 466200,
+                            "obsDiscountPrice": 442900,
+                            "obsTotalDiscountPrice": 909100,
+                            "obsSellingPrice": 8414900,
+                            "obsSpecialDiscount": 0,
+                            "obsInventoryQty": 0,
+                            "obsSellFlag": "Y",
+                            "productLevelCode": "TV",
+                            "salesModelCode": "OLED77G1KW",
+                            "salesSuffixCode": "AKRG",
+                            "beforeVisitModelFlag": "",
+                            "membershipFlag": null,
+                            "modelComponent": null,
+                            "reviewDisplayFlag": null,
+                            "newProductBadgeFlag": null,
+                            "cashbackBadgeFlag": null,
+                            "bestBadgeFlag": null,
+                            "hqAccountingUnitCode": null,
+                            "arFlag": null,
+                            "arUrl": null,
+                            "modelReviewDisplayFlag": null,
+                            "delivType": null,
+                            "modelStatusMessageFlag": null,
+                            "advanceBookingModelFlag": null,
+                            "mixProductFlag": "N",
+                            "buyBtnFlag": "enable",
+                            "rentalOnlyFlag": null,
+                            "careshipOnlyFlag": null,
+                            "imageAltText": null,
+                            "largeImageAddr": "/kr/images/tvs/md08922094/md08922094-450x450.jpg",
+                            "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08922094/md08922094-350x350.jpg",
+                            "model360Image": null,
+                            "model360Title": null,
+                            "smallImageAddr": "/kr/images/tvs/md08922094/md08922094-280x280.jpg",
+                            "modelUrlPath": "/tvs/oled77g1kna-wall",
+                            "categoryId": "CT50000025",
+                            "categoryName": "TV",
+                            "subCategoryId": null,
+                            "subCategoryName": "라이프스타일 스크린",
+                            "superCategoryId": null,
+                            "superCategoryName": "TV/AV",
+                            "reviewWidgetId": null,
+                            "careDispText": null,
+                            "lgpickFlag": null,
+                            "categoryEngName": null,
+                            "years1TotAmt": 0,
+                            "reviewsCount": 6,
+                            "reviewsScore": 4.33,
+                            "compatibleModels": [],
+                            "galleryImages": [],
+                            "videos": [],
+                            "bulletFeatures": [],
+                            "siblings": [],
+                            "pdpCompatibleSearchAjaxUrl": null,
+                            "compatibleCount": 0,
+                            "siblingAjaxUrl": null,
+                            "obsBtnRule": null,
+                            "retalObsBtnRule": null,
+                            "disposableModels": [],
+                            "disposableStandards": [],
+                            "rTypeCount": null,
+                            "cTypeCount": null,
+                            "careshipInfo": [],
+                            "careshipAssociatedCardList": [],
+                            "rentalInfo": [],
+                            "rentalObsBtnFlag": [],
+                            "rentalAssociatedCardList": [],
+                            "substitutePart": [],
+                            "substitutePartCount": 0,
+                            "awards": [],
+                            "promotionBadges": [],
+                            "pTypeRewardCount": null,
+                            "cTypeRewardCount": null,
+                            "rewardPoint": null,
+                            "rewardAmt": null,
+                            "rewardLists": [],
+                            "benefitCards": [],
+                            "myMembershipPoint": null,
+                            "loginFlag": null,
+                            "name": null,
+                            "unifyId": null,
+                            "mobileNo": null,
+                            "restockFlag": null,
+                            "rewardAjaxUrl": null,
+                            "instockNoticeAjaxUrl": null,
+                            "outletStockFlag": null,
+                            "buttonRuledAjaxUrl": null,
+                            "wishListFlag": null,
+                            "wishListId": null,
+                            "wishItemId": null,
+                            "mobileWingModelFlag": null,
+                            "objetCategoryFlag": null,
+                            "ageCheckCategoryFlag": null,
+                            "obsOpenFlag": null,
+                            "rentalModelName": null,
+                            "rentalModelId": null,
+                            "modelPackageFlag": null,
+                            "supportProduct": null,
+                            "supportProductList": [],
+                            "digitalDataProductInfo": [],
+                            "enableTabGubun": null,
+                            "medihairExperienceFlag": null,
+                            "cinebeamExperienceFlag": null,
+                            "systemEstimateB2cFlag": null,
+                            "systemEstimateB2bFlag": null,
+                            "disposableNotice": [],
+                            "disposableNoticeButtons": []
+                        }
+                    ],
+                    "productInfo": {
+                        "bizType": "PRODUCT",
+                        "modelName": "OLED77G1KNA",
+                        "modelDisplayName": "LG 올레드 evo (스탠드형) PRODUCT 지금보고있는상품",
+                        "modelId": "MD08922095",
+                        "modelStatusCode": "ACTIVE",
+                        "modelDiscontinuedDate": null,
+                        "discontinuedDisplayEndDate": null,
+                        "modelDiscontinuedDisplayFlag": null,
+                        "modelPageType": "PDP",
+                        "modelGubun": "1",
+                        "modelGubunName": null,
+                        "obsInventoryFlag": "Y",
+                        "obsOriginalPrice": 9324000,
+                        "obsMemberPrice": 466200,
+                        "obsDiscountPrice": 442900,
+                        "obsTotalDiscountPrice": 909100,
+                        "obsSellingPrice": 8414900,
+                        "obsSpecialDiscount": 0,
+                        "obsInventoryQty": 0,
+                        "obsSellFlag": "Y",
+                        "productLevelCode": "TV",
+                        "salesModelCode": "OLED77G1KS",
+                        "salesSuffixCode": "AKRG",
+                        "beforeVisitModelFlag": "",
+                        "membershipFlag": null,
+                        "modelComponent": null,
+                        "reviewDisplayFlag": null,
+                        "newProductBadgeFlag": null,
+                        "cashbackBadgeFlag": null,
+                        "bestBadgeFlag": null,
+                        "hqAccountingUnitCode": null,
+                        "arFlag": null,
+                        "arUrl": null,
+                        "modelReviewDisplayFlag": null,
+                        "delivType": null,
+                        "modelStatusMessageFlag": null,
+                        "advanceBookingModelFlag": null,
+                        "mixProductFlag": "N",
+                        "buyBtnFlag": "enable",
+                        "rentalOnlyFlag": null,
+                        "careshipOnlyFlag": null,
+                        "imageAltText": null,
+                        "largeImageAddr": "/kr/images/tvs/md08922095/md08922095-450x450.jpg",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08922095/md08922095-350x350.jpg",
+                        "model360Image": null,
+                        "model360Title": null,
+                        "smallImageAddr": "/kr/images/tvs/md08922095/md08922095-280x280.jpg",
+                        "modelUrlPath": "/tvs/oled77g1kna-stand",
+                        "categoryId": "CT50000025",
+                        "categoryName": "TV",
+                        "subCategoryId": null,
+                        "subCategoryName": "라이프스타일 스크린",
+                        "superCategoryId": null,
+                        "superCategoryName": "TV/AV",
+                        "reviewWidgetId": null,
+                        "careDispText": null,
+                        "lgpickFlag": null,
+                        "categoryEngName": null,
+                        "years1TotAmt": 0,
+                        "reviewsCount": 6,
+                        "reviewsScore": 4.33,
+                        "compatibleModels": [],
+                        "galleryImages": [],
+                        "videos": [],
+                        "bulletFeatures": [],
+                        "siblings": [],
+                        "pdpCompatibleSearchAjaxUrl": null,
+                        "compatibleCount": 0,
+                        "siblingAjaxUrl": null,
+                        "obsBtnRule": null,
+                        "retalObsBtnRule": null,
+                        "disposableModels": [],
+                        "disposableStandards": [],
+                        "rTypeCount": null,
+                        "cTypeCount": null,
+                        "careshipInfo": [],
+                        "careshipAssociatedCardList": [],
+                        "rentalInfo": [],
+                        "rentalObsBtnFlag": [],
+                        "rentalAssociatedCardList": [],
+                        "substitutePart": [],
+                        "substitutePartCount": 0,
+                        "awards": [],
+                        "promotionBadges": [],
+                        "pTypeRewardCount": null,
+                        "cTypeRewardCount": null,
+                        "rewardPoint": null,
+                        "rewardAmt": null,
+                        "rewardLists": [],
+                        "benefitCards": [],
+                        "myMembershipPoint": null,
+                        "loginFlag": null,
+                        "name": null,
+                        "unifyId": null,
+                        "mobileNo": null,
+                        "restockFlag": null,
+                        "rewardAjaxUrl": null,
+                        "instockNoticeAjaxUrl": null,
+                        "outletStockFlag": null,
+                        "buttonRuledAjaxUrl": null,
+                        "wishListFlag": null,
+                        "wishListId": null,
+                        "wishItemId": null,
+                        "mobileWingModelFlag": null,
+                        "objetCategoryFlag": null,
+                        "ageCheckCategoryFlag": null,
+                        "obsOpenFlag": null,
+                        "rentalModelName": null,
+                        "rentalModelId": null,
+                        "modelPackageFlag": null,
+                        "supportProduct": null,
+                        "supportProductList": [],
+                        "digitalDataProductInfo": [],
+                        "enableTabGubun": null,
+                        "medihairExperienceFlag": null,
+                        "cinebeamExperienceFlag": null,
+                        "systemEstimateB2cFlag": null,
+                        "systemEstimateB2bFlag": null,
+                        "disposableNotice": [],
+                        "disposableNoticeButtons": []
+                    }
+                },
+                {
+                    "compareList": [
+                        {
+                            "bizType": "CARESOLUTION",
+                            "modelName": "OLED83C1KNA",
+                            "modelDisplayName": "LG 올레드 TV (벽걸이형) CARESOLUTION 추천상품1",
+                            "modelId": "MD08970829",
+                            "modelStatusCode": "ACTIVE",
+                            "modelDiscontinuedDate": null,
+                            "discontinuedDisplayEndDate": null,
+                            "modelDiscontinuedDisplayFlag": null,
+                            "modelPageType": "PDP",
+                            "modelGubun": "1",
+                            "modelGubunName": null,
+                            "obsInventoryFlag": "Y",
+                            "obsOriginalPrice": 12099000,
+                            "obsMemberPrice": 605000,
+                            "obsDiscountPrice": 574700,
+                            "obsTotalDiscountPrice": 1179700,
+                            "obsSellingPrice": 10919300,
+                            "obsSpecialDiscount": 0,
+                            "obsInventoryQty": 0,
+                            "obsSellFlag": "Y",
+                            "productLevelCode": "TV",
+                            "salesModelCode": "OLED83C1KW",
+                            "salesSuffixCode": "AKRG",
+                            "beforeVisitModelFlag": "",
+                            "membershipFlag": null,
+                            "modelComponent": null,
+                            "reviewDisplayFlag": null,
+                            "newProductBadgeFlag": null,
+                            "cashbackBadgeFlag": null,
+                            "bestBadgeFlag": null,
+                            "hqAccountingUnitCode": null,
+                            "arFlag": null,
+                            "arUrl": null,
+                            "modelReviewDisplayFlag": null,
+                            "delivType": null,
+                            "modelStatusMessageFlag": null,
+                            "advanceBookingModelFlag": null,
+                            "mixProductFlag": "N",
+                            "buyBtnFlag": "enable",
+                            "rentalOnlyFlag": null,
+                            "careshipOnlyFlag": null,
+                            "imageAltText": null,
+                            "largeImageAddr": "/kr/images/tvs/md08970829/md08970829-450x450.jpg",
+                            "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08970829/md08970829-350x350.jpg",
+                            "model360Image": null,
+                            "model360Title": null,
+                            "smallImageAddr": "/kr/images/tvs/md08970829/md08970829-280x280.jpg",
+                            "modelUrlPath": "/tvs/oled83c1kna-wall",
+                            "categoryId": "CT50000025",
+                            "categoryName": "TV",
+                            "subCategoryId": null,
+                            "subCategoryName": "올레드 TV",
+                            "superCategoryId": null,
+                            "superCategoryName": "TV/AV",
+                            "reviewWidgetId": null,
+                            "careDispText": null,
+                            "lgpickFlag": null,
+                            "categoryEngName": null,
+                            "years1TotAmt": 0,
+                            "reviewsCount": 0,
+                            "reviewsScore": 0.00,
+                            "compatibleModels": [],
+                            "galleryImages": [],
+                            "videos": [],
+                            "visitPer": 1,
+                            "bulletFeatures": [],
+                            "siblings": [],
+                            "pdpCompatibleSearchAjaxUrl": null,
+                            "compatibleCount": 0,
+                            "siblingAjaxUrl": null,
+                            "obsBtnRule": null,
+                            "retalObsBtnRule": null,
+                            "disposableModels": [],
+                            "disposableStandards": [],
+                            "rTypeCount": null,
+                            "cTypeCount": null,
+                            "careshipInfo": [],
+                            "careshipAssociatedCardList": [],
+                            "rentalInfo": [],
+                            "rentalObsBtnFlag": [],
+                            "rentalAssociatedCardList": [],
+                            "substitutePart": [],
+                            "substitutePartCount": 0,
+                            "awards": [],
+                            "promotionBadges": [],
+                            "pTypeRewardCount": null,
+                            "cTypeRewardCount": null,
+                            "rewardPoint": null,
+                            "rewardAmt": null,
+                            "rewardLists": [],
+                            "benefitCards": [],
+                            "myMembershipPoint": null,
+                            "loginFlag": null,
+                            "name": null,
+                            "unifyId": null,
+                            "mobileNo": null,
+                            "restockFlag": null,
+                            "rewardAjaxUrl": null,
+                            "instockNoticeAjaxUrl": null,
+                            "outletStockFlag": null,
+                            "buttonRuledAjaxUrl": null,
+                            "wishListFlag": null,
+                            "wishListId": null,
+                            "wishItemId": null,
+                            "mobileWingModelFlag": null,
+                            "objetCategoryFlag": null,
+                            "ageCheckCategoryFlag": null,
+                            "obsOpenFlag": null,
+                            "rentalModelName": null,
+                            "rentalModelId": null,
+                            "modelPackageFlag": null,
+                            "supportProduct": null,
+                            "supportProductList": [],
+                            "digitalDataProductInfo": [],
+                            "enableTabGubun": null,
+                            "medihairExperienceFlag": null,
+                            "cinebeamExperienceFlag": null,
+                            "systemEstimateB2cFlag": null,
+                            "systemEstimateB2bFlag": null,
+                            "disposableNotice": [],
+                            "disposableNoticeButtons": []
+                        },
+                        {
+                            "bizType": "CARESOLUTION",
+                            "modelName": "OLED77G1KNA",
+                            "modelDisplayName": "LG 올레드 evo (벽걸이형) CARESOLUTION 추천상품2",
+                            "modelId": "MD08922094",
+                            "modelStatusCode": "ACTIVE",
+                            "modelDiscontinuedDate": null,
+                            "discontinuedDisplayEndDate": null,
+                            "modelDiscontinuedDisplayFlag": null,
+                            "modelPageType": "PDP",
+                            "modelGubun": "1",
+                            "modelGubunName": null,
+                            "obsInventoryFlag": "Y",
+                            "obsOriginalPrice": 9324000,
+                            "obsMemberPrice": 466200,
+                            "obsDiscountPrice": 442900,
+                            "obsTotalDiscountPrice": 909100,
+                            "obsSellingPrice": 8414900,
+                            "obsSpecialDiscount": 0,
+                            "obsInventoryQty": 0,
+                            "obsSellFlag": "Y",
+                            "productLevelCode": "TV",
+                            "salesModelCode": "OLED77G1KW",
+                            "salesSuffixCode": "AKRG",
+                            "beforeVisitModelFlag": "",
+                            "membershipFlag": null,
+                            "modelComponent": null,
+                            "reviewDisplayFlag": null,
+                            "newProductBadgeFlag": null,
+                            "cashbackBadgeFlag": null,
+                            "bestBadgeFlag": null,
+                            "hqAccountingUnitCode": null,
+                            "arFlag": null,
+                            "arUrl": null,
+                            "modelReviewDisplayFlag": null,
+                            "delivType": null,
+                            "modelStatusMessageFlag": null,
+                            "advanceBookingModelFlag": null,
+                            "mixProductFlag": "N",
+                            "buyBtnFlag": "enable",
+                            "rentalOnlyFlag": null,
+                            "careshipOnlyFlag": null,
+                            "imageAltText": null,
+                            "largeImageAddr": "/kr/images/tvs/md08922094/md08922094-450x450.jpg",
+                            "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08922094/md08922094-350x350.jpg",
+                            "model360Image": null,
+                            "model360Title": null,
+                            "smallImageAddr": "/kr/images/tvs/md08922094/md08922094-280x280.jpg",
+                            "modelUrlPath": "/tvs/oled77g1kna-wall",
+                            "categoryId": "CT50000025",
+                            "categoryName": "TV",
+                            "subCategoryId": null,
+                            "subCategoryName": "라이프스타일 스크린",
+                            "superCategoryId": null,
+                            "superCategoryName": "TV/AV",
+                            "reviewWidgetId": null,
+                            "careDispText": null,
+                            "lgpickFlag": null,
+                            "categoryEngName": null,
+                            "years1TotAmt": 0,
+                            "reviewsCount": 6,
+                            "reviewsScore": 4.33,
+                            "compatibleModels": [],
+                            "galleryImages": [],
+                            "videos": [],
+                            "visitPer": 3,
+                            "bulletFeatures": [],
+                            "siblings": [],
+                            "pdpCompatibleSearchAjaxUrl": null,
+                            "compatibleCount": 0,
+                            "siblingAjaxUrl": null,
+                            "obsBtnRule": null,
+                            "retalObsBtnRule": null,
+                            "disposableModels": [],
+                            "disposableStandards": [],
+                            "rTypeCount": null,
+                            "cTypeCount": null,
+                            "careshipInfo": [],
+                            "careshipAssociatedCardList": [],
+                            "rentalInfo": [],
+                            "rentalObsBtnFlag": [],
+                            "rentalAssociatedCardList": [],
+                            "substitutePart": [],
+                            "substitutePartCount": 0,
+                            "awards": [],
+                            "promotionBadges": [],
+                            "pTypeRewardCount": null,
+                            "cTypeRewardCount": null,
+                            "rewardPoint": null,
+                            "rewardAmt": null,
+                            "rewardLists": [],
+                            "benefitCards": [],
+                            "myMembershipPoint": null,
+                            "loginFlag": null,
+                            "name": null,
+                            "unifyId": null,
+                            "mobileNo": null,
+                            "restockFlag": null,
+                            "rewardAjaxUrl": null,
+                            "instockNoticeAjaxUrl": null,
+                            "outletStockFlag": null,
+                            "buttonRuledAjaxUrl": null,
+                            "wishListFlag": null,
+                            "wishListId": null,
+                            "wishItemId": null,
+                            "mobileWingModelFlag": null,
+                            "objetCategoryFlag": null,
+                            "ageCheckCategoryFlag": null,
+                            "obsOpenFlag": null,
+                            "rentalModelName": null,
+                            "rentalModelId": null,
+                            "modelPackageFlag": null,
+                            "supportProduct": null,
+                            "supportProductList": [],
+                            "digitalDataProductInfo": [],
+                            "enableTabGubun": null,
+                            "medihairExperienceFlag": null,
+                            "cinebeamExperienceFlag": null,
+                            "systemEstimateB2cFlag": null,
+                            "systemEstimateB2bFlag": null,
+                            "disposableNotice": [],
+                            "disposableNoticeButtons": []
+                        }
+                    ],
+                    "productInfo": {
+                        "bizType": "CARESOLUTION",
+                        "modelName": "OLED77G1KNA",
+                        "modelDisplayName": "LG 올레드 evo (스탠드형) CARESOLUTION 지금보고있는",
+                        "modelId": "MD08922095",
+                        "modelStatusCode": "ACTIVE",
+                        "modelDiscontinuedDate": null,
+                        "discontinuedDisplayEndDate": null,
+                        "modelDiscontinuedDisplayFlag": null,
+                        "modelPageType": "PDP",
+                        "modelGubun": "1",
+                        "modelGubunName": null,
+                        "obsInventoryFlag": "Y",
+                        "obsOriginalPrice": 9324000,
+                        "obsMemberPrice": 466200,
+                        "obsDiscountPrice": 442900,
+                        "obsTotalDiscountPrice": 909100,
+                        "obsSellingPrice": 8414900,
+                        "obsSpecialDiscount": 0,
+                        "obsInventoryQty": 0,
+                        "obsSellFlag": "Y",
+                        "productLevelCode": "TV",
+                        "salesModelCode": "OLED77G1KS",
+                        "salesSuffixCode": "AKRG",
+                        "beforeVisitModelFlag": "",
+                        "membershipFlag": null,
+                        "modelComponent": null,
+                        "reviewDisplayFlag": null,
+                        "newProductBadgeFlag": null,
+                        "cashbackBadgeFlag": null,
+                        "bestBadgeFlag": null,
+                        "hqAccountingUnitCode": null,
+                        "arFlag": null,
+                        "arUrl": null,
+                        "modelReviewDisplayFlag": null,
+                        "delivType": null,
+                        "modelStatusMessageFlag": null,
+                        "advanceBookingModelFlag": null,
+                        "mixProductFlag": "N",
+                        "buyBtnFlag": "enable",
+                        "rentalOnlyFlag": null,
+                        "careshipOnlyFlag": null,
+                        "imageAltText": null,
+                        "largeImageAddr": "/kr/images/tvs/md08922095/md08922095-450x450.jpg",
+                        "mediumImageAddr": "https://www.lge.co.kr/kr/images/tvs/md08922095/md08922095-350x350.jpg",
+                        "model360Image": null,
+                        "model360Title": null,
+                        "smallImageAddr": "/kr/images/tvs/md08922095/md08922095-280x280.jpg",
+                        "modelUrlPath": "/tvs/oled77g1kna-stand",
+                        "categoryId": "CT50000025",
+                        "categoryName": "TV",
+                        "subCategoryId": null,
+                        "subCategoryName": "라이프스타일 스크린",
+                        "superCategoryId": null,
+                        "superCategoryName": "TV/AV",
+                        "reviewWidgetId": null,
+                        "careDispText": null,
+                        "lgpickFlag": null,
+                        "categoryEngName": null,
+                        "years1TotAmt": 0,
+                        "reviewsCount": 6,
+                        "reviewsScore": 4.33,
+                        "compatibleModels": [],
+                        "galleryImages": [],
+                        "videos": [],
+                        "visitPer": 11,
+                        "bulletFeatures": [],
+                        "siblings": [],
+                        "pdpCompatibleSearchAjaxUrl": null,
+                        "compatibleCount": 0,
+                        "siblingAjaxUrl": null,
+                        "obsBtnRule": null,
+                        "retalObsBtnRule": null,
+                        "disposableModels": [],
+                        "disposableStandards": [],
+                        "rTypeCount": null,
+                        "cTypeCount": null,
+                        "careshipInfo": [],
+                        "careshipAssociatedCardList": [],
+                        "rentalInfo": [],
+                        "rentalObsBtnFlag": [],
+                        "rentalAssociatedCardList": [],
+                        "substitutePart": [],
+                        "substitutePartCount": 0,
+                        "awards": [],
+                        "promotionBadges": [],
+                        "pTypeRewardCount": null,
+                        "cTypeRewardCount": null,
+                        "rewardPoint": null,
+                        "rewardAmt": null,
+                        "rewardLists": [],
+                        "benefitCards": [],
+                        "myMembershipPoint": null,
+                        "loginFlag": null,
+                        "name": null,
+                        "unifyId": null,
+                        "mobileNo": null,
+                        "restockFlag": null,
+                        "rewardAjaxUrl": null,
+                        "instockNoticeAjaxUrl": null,
+                        "outletStockFlag": null,
+                        "buttonRuledAjaxUrl": null,
+                        "wishListFlag": null,
+                        "wishListId": null,
+                        "wishItemId": null,
+                        "mobileWingModelFlag": null,
+                        "objetCategoryFlag": null,
+                        "ageCheckCategoryFlag": null,
+                        "obsOpenFlag": null,
+                        "rentalModelName": null,
+                        "rentalModelId": null,
+                        "modelPackageFlag": null,
+                        "supportProduct": null,
+                        "supportProductList": [],
+                        "digitalDataProductInfo": [],
+                        "enableTabGubun": null,
+                        "medihairExperienceFlag": null,
+                        "cinebeamExperienceFlag": null,
+                        "systemEstimateB2cFlag": null,
+                        "systemEstimateB2bFlag": null,
+                        "disposableNotice": [],
+                        "disposableNoticeButtons": []
+                    }
+                }
+            ],
+            "message": "",
+            "status": "success",
+            "dataCount": 1
+        }
+
+
         // 로그인 유무
         var loginFlag = true;
 
@@ -392,34 +1146,63 @@
                     <!-- component -->
 
                     <div class="component-wrap">
-                        <!--
-                            1. 여백
-                            .zero-top : 상단여백 없음
-                            .zero-btm : 하단여백 없음
-                        -->
                         <section class="component KRP0011">
                             <div class="component-inner">
                                 <div class="title">
                                     <h2>유사 제품 추천</h2>
                                 </div>
-                                <!-- [KR수정_210118] 전체적으로 수정.. -->
                                 <div class="recommend-wrap">
                                     <!-- 지금 보고있는 제품 -->
                                     <div class="prod-box now">
                                         <p class="tit">지금 보고있는 제품</p>
                                         <ul class="product-items">
-                                            @@loop('./common/modules/product-list-item-loop.html', [
-                                            {
-                                            "itemClass" : "rec-items",
-                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "price" : false,
-                                            "originalPrice" : false,
-                                            "visitPer": "3",
-                                            "bizType": "CARESOLUTION"
-                                            }
-                                            ])
+                                            <li>
+                                                <div class="item rec-items">
+                                                    <div class="product-image" aria-hidden="true">
+                                                        <a href="#">
+                                                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="LG DIOS 노크온 매직스페이스">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-contents">
+                                                        <div class="product-info">
+                                                            <div class="product-name">
+                                                                <a href="#">LG DIOS 노크온 매직스페이스</a>
+                                                            </div>
+                                                            <div class="sku">S833MC85Q</div>
+                                                            <div class="review-info">
+                                                                <a href="#">
+                                                                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                                                    <div class="average-rating"><span class="blind">평점</span>4.2</div>
+                                                                    <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!--<div class="price-area">
+                                                        <div class="original">
+                                                            <em class="blind">할인 전 정가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">5,200,000<em>원</em></span>
+                                                        </div>
+
+                                                        <div class="total">
+                                                            <em class="blind">할인 후 판매가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">4,420,000<em>원</em></span>
+                                                        </div>
+                                                    </div>-->
+                                                    <!--// BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!-- BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                    <div class="product-bottom rental-type">
+                                                        <div class="price-area care">
+                                                            <div class="total-price"><em class="text">기본 월 요금</em>
+                                                                <span class="price"><em>월</em> 29,900<em>원</em></span>
+                                                            </div>
+                                                            <span class="small-text">(3개월/1회 방문)</span>
+                                                        </div>
+                                                    </div>
+                                                    <!--// BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
                                     <!-- // 지금 보고있는 제품 -->
@@ -428,23 +1211,100 @@
                                     <div class="prod-box recommend">
                                         <p class="tit">추천 제품</p>
                                         <ul class="product-items">
-                                            @@loop('./common/modules/product-list-item-loop.html', [
-                                            {
-                                            "itemClass" : "rec-items",
-                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "price" : true,
-                                            "originalPrice" : true
-                                            }, {
-                                            "itemClass" : "rec-items",
-                                            "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "price" : true,
-                                            "originalPrice" : true
-                                            }
-                                            ])
+                                            <li>
+                                                <div class="item rec-items">
+                                                    <div class="product-image" aria-hidden="true">
+                                                        <a href="#">
+                                                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="LG DIOS 노크온 매직스페이스">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-contents">
+                                                        <div class="product-info">
+                                                            <div class="product-name">
+                                                                <a href="#">LG DIOS 노크온 매직스페이스</a>
+                                                            </div>
+                                                            <div class="sku">S833MC85Q</div>
+                                                            <div class="review-info">
+                                                                <a href="#">
+                                                                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                                                    <div class="average-rating"><span class="blind">평점</span>4.2</div>
+                                                                    <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!--<div class="price-area">
+                                                        <div class="original">
+                                                            <em class="blind">할인 전 정가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">5,200,000<em>원</em></span>
+                                                        </div>
+
+                                                        <div class="total">
+                                                            <em class="blind">할인 후 판매가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">4,420,000<em>원</em></span>
+                                                        </div>
+                                                    </div>-->
+                                                    <!--// BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!-- BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                    <div class="product-bottom rental-type">
+                                                        <div class="price-area care">
+                                                            <div class="total-price"><em class="text">기본 월 요금</em>
+                                                                <span class="price"><em>월</em> 29,900<em>원</em></span>
+                                                            </div>
+                                                            <span class="small-text">(3개월/1회 방문)</span>
+                                                        </div>
+                                                    </div>
+                                                    <!--// BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item rec-items">
+                                                    <div class="product-image" aria-hidden="true">
+                                                        <a href="#">
+                                                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="LG DIOS 노크온 매직스페이스">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-contents">
+                                                        <div class="product-info">
+                                                            <div class="product-name">
+                                                                <a href="#">LG DIOS 노크온 매직스페이스</a>
+                                                            </div>
+                                                            <div class="sku">S833MC85Q</div>
+                                                            <div class="review-info">
+                                                                <a href="#">
+                                                                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                                                    <div class="average-rating"><span class="blind">평점</span>4.2</div>
+                                                                    <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!--<div class="price-area">
+                                                        <div class="original">
+                                                            <em class="blind">할인 전 정가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">5,200,000<em>원</em></span>
+                                                        </div>
+
+                                                        <div class="total">
+                                                            <em class="blind">할인 후 판매가</em>&lt;!&ndash; 210421 웹접근성 수정 [텍스트 수정] &ndash;&gt;
+                                                            <span class="price">4,420,000<em>원</em></span>
+                                                        </div>
+                                                    </div>-->
+                                                    <!--// BTOCSITE-7447 "bizType" : "PRODUCT" 일 경우 -->
+                                                    <!-- BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                    <div class="product-bottom rental-type">
+                                                        <div class="price-area care">
+                                                            <div class="total-price"><em class="text">기본 월 요금</em>
+                                                                <span class="price"><em>월</em> 29,900<em>원</em></span>
+                                                            </div>
+                                                            <span class="small-text">(3개월/1회 방문)</span>
+                                                        </div>
+                                                    </div>
+                                                    <!--// BTOCSITE-7447 "bizType" : "CARESOLUTION" 일 경우 -->
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
                                     <!-- // 추천 제품 -->

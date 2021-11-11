@@ -193,6 +193,19 @@
                         color:#666;
                     }
                 }
+                .product-bottom {
+                    &.rental-type {
+                        position: relative;
+                        bottom: auto;
+                        right: auto;
+                        left: auto;
+                        .price-area {
+                            &.care {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
