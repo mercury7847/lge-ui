@@ -693,6 +693,7 @@
                                 }
                             });
                         } else {
+                            // -S- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                             lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                                 title: "",
                                 cancelBtnName: "취소",
@@ -701,6 +702,7 @@
                                     location.href = "/support/email-inquiry?emailReg";
                                 }
                             });
+                            // -E- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                         }
                         
                     }
@@ -721,6 +723,7 @@
             //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
                 // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
+                // BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                 var minLengthFlag = self.$snInput.val().length >= 10 ? true: false;
                 
                 var currentVal = [];
@@ -751,6 +754,7 @@
                             }
                         });
                     } else {
+                        // -S- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                         lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                             title: "",
                             cancelBtnName: "취소",
@@ -759,6 +763,7 @@
                                 location.href = "/support/email-inquiry?emailReg";
                             }
                         });
+                        // -E- BTOCSITE-8000 : [UI] 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
                     }
                     self.$snCheckOk.hide();
                 }
