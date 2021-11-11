@@ -36,17 +36,12 @@
                     var paramFlag = lgkorUI.getParameterByName("careSolution");
                     var paramFlagDisc = lgkorUI.getParameterByName("CareDiscount");
                     
-                    if( paramFlag != undefined && paramFlag != "" ) {
-                        if( paramFlag == "true" || paramFlag == true ) {
+                    if( paramFlag != undefined && paramFlag != "" || paramFlagDisc != undefined && paramFlagDisc != "") {
+                        if( paramFlag == "true" || paramFlag == true || paramFlagDisc == "Y" ) {
                             e.preventDefault();
                             window.close();
                         }
-                    } else if( paramFlagDisc != undefined && paramFlagDisc != "" ) {
-                        if( paramFlagDisc == "Y" ) {
-                            e.preventDefault();
-                            window.close();
-                        }
-                    }
+                    } 
                 });
             }
         };
