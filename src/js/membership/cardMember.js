@@ -31,12 +31,18 @@
                     }
                 });
 
-                //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류
+                //BTOCSITE-6130 렌탈 청약시 납부정보 카드혜택 팝업 오류 //BTOCSITE-5938-326 [모니터링] 케어솔루션 할인 혜택 > '제휴카드 할인 혜택 자세히 보기' 이전버튼 반응 없음
                 self.$btnBack.on('click', function(e){
                     var paramFlag = lgkorUI.getParameterByName("careSolution");
+                    var paramFlagDisc = lgkorUI.getParameterByName("CareDiscount");
                     
                     if( paramFlag != undefined && paramFlag != "" ) {
-                        if( paramFlag == "true" || paramFlag == true) {
+                        if( paramFlag == "true" || paramFlag == true ) {
+                            e.preventDefault();
+                            window.close();
+                        }
+                    } else if( paramFlagDisc != undefined && paramFlagDisc != "" ){
+                        if( paramFlagDisc == "Y" || paramFlagDisc == Y ){
                             e.preventDefault();
                             window.close();
                         }
