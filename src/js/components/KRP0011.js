@@ -78,9 +78,7 @@
                 self.$tabList = self.$tabs.find('li a');
 
                 //스펙 비교하기 버튼
-                self.$compareModelIds = self.$section.find("bottom-area").data('modelIds');
-                self.$compareModelIdsRental = "";
-
+                self.$compareModelIds = "";
             },
             bindEvents: function() {
                 var self = this;
@@ -99,10 +97,9 @@
                     }
                 });
 
-                //유사제품 추천
+                //유사제품 추천(스펙 비교하기)
                 $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
                     e.preventDefault();
-
                     var url = $(this).data('compareUrl');
                     lgkorUI.addEqualCompare($(this).data('modelIds'), url);
                 });
@@ -110,16 +107,25 @@
             makeProdList: function(tabType, loopData){
                 var self = this;
                 var $dataProdInfo = dataList.productInfo;
+                var $compareId = [];
 
+                //구매,렌탈 활성화 탭 플래그를 각 data에 값 추가
                 $dataProdInfo.tabName = tabType;
-                $.each(data,function(idx,item){
+                $.each(loopData,function(idx,item){
                     item.tabName = tabType;
+                    $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
                 });
+                $compareId.push($dataProdInfo.modelId); //스펙비교하기에 모델명 추가
 
+                //지금보고 있는 상품에 템플릿 그리기
                 self.$prodViewNow.append(vcui.template(productItem,$dataProdInfo));
-                $.each(data,function(idx,item){
-                    self.$prodRecommend.append(vcui.template(productItem,item))
+                //추천 상품리스트 템플릿 그리기
+                $.each(loopData,function(idx,item){
+                    self.$prodRecommend.append(vcui.template(productItem,item));
                 });
+                //스펙비교하기 버튼에 모델명 교체
+                self.$compareModelIds = $compareId.join("|");
+                self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
             }
         }
         KRP0011.init();
