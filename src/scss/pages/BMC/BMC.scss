@@ -567,3 +567,21 @@
     }
 }
 // BTOCSITE-4785 e
+
+// BTOCSITE-7637
+.ev-detail-wrap .evt-item {
+    .flag-wrap{
+        .flag{
+            margin-right: 10px;
+            position: relative;
+            &:before {
+                position: absolute;
+                top: 7px;
+                left: -5px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+// BTOCSITE-7637
