@@ -17,6 +17,7 @@
         settings: function(){
             var self = this;
             self.$thinqMain = $('.thinq-main');
+            self.$thinqWrap = self.$thinqMain.find('.brand-wrap.thinq-wrap');
 
             //상단 히어로배너
             self.$heroSlider = self.$thinqMain.find('.hero-banner');
@@ -24,7 +25,8 @@
             //전체 탭
             self.$stickyTabWrap = self.$thinqMain.find('.thinq-tabs');
             self.$stickyTab = self.$stickyTabWrap.find('.ui_tab');
-            
+            self.stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
+
             //APP 탭
             self.$appContainer = self.$thinqMain.find('.app-wrap');
             self.$appTabArea = self.$appContainer.find('.app-tab-area')
@@ -34,7 +36,7 @@
             self.$appTabBtnAll = self.$appTabArea.find('.btn-allview');
             self.$appDownload = self.$appContainer.find('.app-download-guide');
             self.$appDownloadSlider = self.$appDownload.find('.guide-slider');
-            self.$howToPopup = $('.popup-howto');            
+            self.$howToPopup = $('.popup-howto');
             self.$howToUseAppSlider = self.$howToPopup.find('.howto-slider');
 
             //매거진 탭
@@ -94,13 +96,13 @@
                 if(href == '#' || href == '#n'){
                     e.preventDefault();
                 }else{
-                    if (href && /^(#|\.)\w+/.test(href)) {                    
+                    if (href && /^(#|\.)\w+/.test(href)) {
                         var $compareTarget = $('.thinq-tabs .ui_tab').find('a[href="'+href+'"]');
                         if($compareTarget[0] != e.currentTarget) {
                             $('.thinq-tabs .ui_tab').vcTab('selectByName', href);
                         }
-                    }                
-                }      
+                    }
+                }
             });
 
             //App 탭 > 우리집 스마트한 생활 > 메뉴 전체보기 버튼
@@ -245,7 +247,7 @@
             $('#thinq-cont4').off('click', '.video-thumb a');
             $('#thinq-cont4').on('click', '.video-thumb a', function(e){
                 var href = $(e.currentTarget).attr('data-url').replace(/ /gi, "");
-                $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl,{link:href}));   
+                $('#thinq-cont4').find('.video-box').empty().html(vcui.template(videoTmpl,{link:href}));
                 var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
                 $videoBtns.removeClass('slide_on');
                 $videoBtns.find('span.blind.bh-add').remove();
@@ -255,7 +257,7 @@
                     aT.append('<span class="blind bh-add">선택됨</span>');
                 }
             });
-            
+
             var $videoBtns = $('#thinq-cont4').find('.magazine-wrap .ui_carousel_slider .ui_carousel_slide');
             var $videoOnBtn = $videoBtns.siblings('.slide_on').find('a[data-url]');
             $videoOnBtn.trigger('click');
@@ -265,14 +267,13 @@
             var self = this;
 
             self.$stickyTab.on('tabchange', function(e, data){
-                // self.$thinqMain.scrollTop(0); 
-                $('html, body').stop().animate({scrollTop:self.$stickyTabWrap.offset().top});
+                $('html, body').stop().animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
                     self.appSmartTab.load();
                     self.appDownloadGuideSlider.load();
                 } else {
-                   
+
                 }
             })
         },
@@ -280,7 +281,7 @@
             //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드
             prevSlidesToShow: 0,
             slideConfig : {
-                infinite: false,                
+                infinite: false,
                 slidesToShow: 7,
                 slidesToScroll: 7,
                 responsive: [
@@ -355,7 +356,7 @@
             }
         },
         sliderInPopup: {
-            //App 탭 > 하단 슬라이드배너 > 팝업 > ThinQ 앱 설치 및 사용방법 슬라이드 
+            //App 탭 > 하단 슬라이드배너 > 팝업 > ThinQ 앱 설치 및 사용방법 슬라이드
             slideConfig: {
                 dots: true,
                 infinite:false,
@@ -390,7 +391,7 @@
         },
         modelSearchInit: function(){
             var self = this;
-            
+
             self.$searchSelect.vcSelectbox('selectedIndex', 0, false);
             self.$searchInput.val('');
             self.$searchDel.hide();
@@ -401,7 +402,7 @@
             if( targetArray && targetArray.length > 0 && target){
                 targetArray.forEach(function(item){
                     var $currentTarget = $parent && parent != "" ? $parent.find(item) : $(item);
-                   
+
                     if( item == target ) {
                         $currentTarget.addClass('is-active');
                     } else {
@@ -419,15 +420,15 @@
         requestModelData: function(param){
             var self = this;
             var ajaxUrl = self.$searchPopup.data('ajaxUrl');
-            var listTemplate =              
-            '<li>' + 
-            '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' + 
-            '   <div class="text">' + 
-            '       <span class="name">{{categoryName}}</span>' + 
-            '       <span class="serial-num">{{salesModelCode}}</span>' + 
-            '   </div>' + 
+            var listTemplate =
+            '<li>' +
+            '   <div class="icon-wrap"><i class="icon icon-{{imgname}}"><span class="blind">{{categoryName}} 아이콘</span></i></div>' +
+            '   <div class="text">' +
+            '       <span class="name">{{categoryName}}</span>' +
+            '       <span class="serial-num">{{salesModelCode}}</span>' +
+            '   </div>' +
             '</li>';
-            
+
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
                 if( result.status == "success") {
@@ -460,14 +461,12 @@
         scroll: function(scrollTop){
             //전체탭 스티키
             var self = this;
-            
+
             if( self.$stickyTabWrap && self.$stickyTabWrap.length > 0 ) {
-                var stickyTabOffsetTop = self.$stickyTabWrap.offset().top;
-    
-                if(scrollTop >= stickyTabOffsetTop) {
-                    self.$thinqMain.addClass('active on');
+                if(scrollTop >= self.stickyTabOffsetTop) {
+                    self.$thinqWrap.addClass('active on');
                 } else {
-                    self.$thinqMain.removeClass('active on');
+                    self.$thinqWrap.removeClass('active on');
                 }
             }
         },
@@ -475,19 +474,19 @@
 
         }
     };
-    thinQMain.init();    
+    thinQMain.init();
 
     $(window).on('resize', function(){
 
     })
 
     $(window).on('breakpointchange', function(e){
-        var data = window.breakpoint;            
-        if(data.name == 'mobile'){    
-            isMobile = true;   
-        }else if(data.name == 'pc'){    
+        var data = window.breakpoint;
+        if(data.name == 'mobile'){
+            isMobile = true;
+        }else if(data.name == 'pc'){
             isMobile = false;
-        }    
+        }
     })
 
     $(window).on('scroll', function(){
@@ -511,4 +510,3 @@
 
 
 });
-    
