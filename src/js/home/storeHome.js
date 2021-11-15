@@ -4,9 +4,10 @@ var buyProductTabTmpl = '{{#each obj in list}}\n'+
 '   </li>\n'+
 '{{/each}}';
 
+//BTOCSITE-7260 뷰저블 쿼리셀렉터(id) 추가
 var categoryTabTmpl = '{{#each obj in list}}\n'+
 '   <li>\n'+
-'       <a href="#{{obj.categoryId}}">{{obj.categoryName}}</a>\n'+
+'       <a href="#{{obj.categoryId}}" id="beu_category_{{obj.categoryName}}">{{obj.categoryName}}</a>\n'+
 '   </li>\n'+
 '{{/each}}';
 
