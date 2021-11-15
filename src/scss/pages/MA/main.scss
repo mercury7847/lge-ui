@@ -148,13 +148,16 @@ img{
                     top: 36px;
                     right: 65px;
                     z-index: 2;
-                    max-width: 260px;
-                    max-height: 80px;
-                    @include mobile{
-                        max-width: 34.72vw;
-                        max-height: 50px;
-                    }
+                    // BTOCSITE-2193
+                    // max-width: 260px;
+                    // max-height: 80px;
+                    // @include mobile{
+                    //     max-width: 34.72vw;
+                    //     max-height: 50px;
+                    // }
                     .bi-svg {
+                        // BTOCSITE-2193
+                        text-align: right;
                         padding-right: 0;
                         line-height: normal;
                         font-size: 0;
@@ -162,6 +165,9 @@ img{
                             // BTOCSITE-2193
                             width:100%;
                             height:auto;
+                            @include mobile{
+                                width:50%;
+                            }
                         }
                     }
                 }
@@ -258,7 +264,9 @@ img{
                         display: none;
                         @include mobile {
                             display: block;
-                            overflow: hidden;
+                            // BTOCSITE-2193
+                            overflow: visible;
+                            max-height: none;
                             font-size: 24px;
                             line-height: 30px;
                         }
