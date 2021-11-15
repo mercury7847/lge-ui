@@ -1,5 +1,5 @@
 (function(){
-    var productListItemTemplate = //'<li class="lists" data-model-id="{{id}}" data-sku="{{sku}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}">' +
+    var productListItemTemplate = 
     '<li class="lists" data-model="{{jsonModel}}">' +
         '<div class="inner">' +
             '<div class="thumb" aria-hidden="true"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div>' +
@@ -15,17 +15,19 @@
         '</div>' +
     '</li>'
 
-    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}} ">' +
+    // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
+    var ownListItemTemplate = '<li class="lists" data-model-id="{{modelId}}" data-ord-no="{{ordNo}}" data-model-code="{{modelCode}}" {{#if isPackgaeModel}}data-package-model-code="{{packageModelCode}}" {{/if}}>' +
         '<div class="inner">' +
             '<div class="thumb{{#if disabled}} saleend{{/if}}" aria-hidden="true">' +
-                '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
+                '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
             '</div>' +
             '<div class="info-wrap">' +
-                '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
-                '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
+                '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
+                    '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
+                    '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
+                '</a>'+
                 '<ul class="info-lists period">' +
                     '{{#if saleDate}}<li><dl><dt>{{#if userType=="USER"}}구매월{{#else}}구매일자{{/if}}</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
-                    //'{{#if creationDate}}<li><dl><dt>등록일자</dt><dd>{{creationDate}}</dd></dl></li>{{/if}}' +
                     '{{#if useDate}}<li><dl><dt>사용기간</dt><dd>{{useDate}}개월</dd></dl></li>{{/if}}' +
                     '{{#if careState}}<li><dl><dt>케어십 서비스</dt><dd><em{{#if careService}} class="can"{{/if}}>{{careState}}</em></dd></dl></li>{{/if}}' +
                     '{{#if nextCareServiceDate}}<li><dl><dt>다음 케어서비스 일자</dt><dd>{{nextCareServiceDate}}</dd></dl></li>{{/if}}' +
@@ -36,14 +38,14 @@
                 '</div>' +
                 '<div class="btns link-type">' + 
                     '{{#each item in linkBtn}}' +
-                        '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
+                        '{{#if !isPackgaeModel}}' +
+                            '<a href="{{item.url}}" class="btn-link">{{item.title}}</a>' +
+                        '{{#else}}' +
+                            '{{#if item.title}}<a class="packageModel btn-link">{{item.title}}</a>{{/if}}' +
+                        '{{/if}}' +
                     '{{/each}}' +
                     '{{#if reviewBtn}}' +
-                        '{{#if isMobile}}' +
-                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}" review-source="mobile_my_orders">리뷰작성</a>' +
-                        '{{#else}}' +
-                            '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}">리뷰작성</a>' +
-                        '{{/if}}' +
+                        '<a href="#" class="crema-new-review-link btn-link" data-product-code="{{enModelName}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰작성</a>' +
                     '{{/if}}' +
                 '</div>' +
                 '{{#if disabled}}<p class="product-on"><span class="blind">보유중인 제품이</span>{{#if disabledReason}}{{disabledReason}}{{#else}}단종되었습니다.{{/if}}</p>{{/if}}' +
@@ -96,8 +98,45 @@
         '</div>' +
     '</li>';
 
+    // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
+    var packageModalTmpl = 
+    '<header class="pop-header">'+
+    '    <h1 class="tit"><span>제품 선택</span></h1>'+
+    '</header>'+
+    '<section class="pop-conts">'+
+    '    <p class="desc">제품을 선택하시면 해당 제품의 고객지원 정보를 확인하실 수 있습니다.</p>'+
+    '    <div class="model-wrap">'+
+    '        <ul class="model-list">'+
+    '           {{#each item in product}}' +
+    '            <li>'+
+    '                <span class="rdo-wrap btn-type2">'+
+    '                    {{#if type}}'+
+    '                     <div class="item" data-type="{{type}}" data-href="{{item.linkBtn[type]}}">'+
+    '                    {{/if}}'+
+    '                        <span class="thumb">'+
+    '                            <img data-pc-src="{{item.largeImageAddr}}" data-m-src="{{item.largeImageAddr}}" alt="">'+
+    '                        </span>'+
+    '                        <div class="text-wrap">'+
+    '                            <p class="model-name">{{item.modelDisplayName}}</p>'+
+    '                            <p class="model-code">{{item.prodModelCd}}</p>'+
+    '                        </div>'+
+    '                    </div>'+
+    '                </span>'+
+    '            </li>'+
+    '           {{/each}}' +
+    '        </ul>'+
+    '    </div>'+
+    '</section>'+
+    '<div class="bottomFixCulculateArea">'+
+    '    <footer class="pop-footer center">'+
+    '        <div class="btn-group">'+
+    '            <button type="button" class="btn ui_modal_close_pack"><span>확인</span></button>'+
+    '        </div>'+
+    '    </footer>'+
+    '</div>'+
+    '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>';
+
     var checkModelSuccess = false;
-    var checkSerialSuccess = false;
 
     var myProductRegistration = {
         init: function() {
@@ -167,9 +206,9 @@
         setting: function() {
             var self = this;  
             self.$contents = $('div.lnb-contents');
-            var $tab = $('.tabs-wrap.ui_tab');
-            self.$registProductTab = $tab.find('li:eq(0) a');
-            self.$myProductTab = $tab.find('li:eq(1) a');
+            self.$tab = $('.tabs-wrap.ui_tab');
+            self.$registProductTab = self.$tab.find('li:eq(0) a');
+            self.$myProductTab = self.$tab.find('li:eq(1) a');
 
             //등록가능제품
             self.$registProductList = self.$contents.find('div.my-product-lists:eq(0)');
@@ -242,48 +281,42 @@
             self.$downloadSearch = self.$downloadMainPage.find('#driverKeyword');
             self.$selectOS = self.$downloadMainPage.find('.ui_selectbox');
             self.$downloadPopupPagination = self.$downloadMainPage.find('.pagination').vcPagination({"scrollTarget":self.$downloadMainPage.find('section'),"scrollTop":100});
-
-            //모델병 확인방법 팝업
-            //self.$modelCheckHelpPopup = $('#modelCheckHelpPopup');
-
-            //nodata
-            //03-31 정승우 멤버십/마케팅 관련 데이타 가져오는게 아직 미흡하여 일단 막음
-            /*
-            var hiddenData = lgkorUI.getHiddenInputData();
-            var membership = lgkorUI.stringToBool(hiddenData.membership);
-            var marketing = lgkorUI.stringToBool(hiddenData.marketing);
-            if(membership) {
-                if(marketing) {
-                    self.$registProductNoData = self.$contents.find('div.no-data');
-                } else {
-                    self.$registProductNoData = self.$contents.find('div.no-data-case:eq(1)');
-                }
-            } else {
-                self.$registProductNoData = self.$contents.find('div.no-data-case:eq(0)');
-            }
-            */
             self.$registProductNoData = self.$contents.find('div.no-data');
+
+            // BTOCSITE-4806 세트상품 모달 셋업
+            self.packageProduct = {};
+            if($('#packageProductSelectPopup').size() === 0) {
+               self.$packageModal =  $('<article id="packageProductSelectPopup" class="popup-wrap popup-package-model"></article>').appendTo('body');
+            } else {
+               self.$packageModal = $('#packageProductSelectPopup');
+            }
+
+            // BTOCSITE-5938-298 모바일에서 리뷰작성 팝업에서 탭 이동 오류 수정
+            var defaultTab = parseInt(lgkorUI.getParameterByName('tab')) || 0;
+            if(defaultTab > 0) {
+                self.$tab.vcTab('select',defaultTab);
+            }
         },
 
         bindEvents: function() {
             var self = this;
+
+            // BTOCSITE-5938-298 모바일에서 리뷰작성 팝업에서 탭 이동 오류 수정
+            self.$tab.on("tabchange", function(e,data) {
+                var url = lgkorUI.parseUrl(location.href);
+                var params = $.extend(url.searchParams.getAll(),{'tab':  data.selectedIndex });
+                    params = '?'+$.param(params) +  (url.hash || '');
+                window.history.replaceState('', '', location.pathname + params);
+
+                //크레마 리로드
+                lgkorUI.cremaReload();
+            });
+
             
             //등록가능제품 보유제품으로 등록하기
             self.$registProductList.on('click','div.enroll-list ul li div.btn-group a', function(e) {
                 e.preventDefault();
                 var $li = $(this).parents('li');
-                /*
-                var _id = $li.attr('data-model-id');
-                var sku = $li.attr('data-sku');
-                var ordNo = $li.attr('data-ord-no');
-                var modelCode = $li.attr('data-model-code');
-                var param = {
-                    "id":_id,
-                    "sku":sku,
-                    "ordNo":ordNo,
-                    "modelCode":modelCode
-                };
-                */
                 var param = $li.data('model');
                 var ajaxUrl = self.$contents.attr('data-add-url');
                 self.showLoading();
@@ -294,19 +327,6 @@
                     self.requestMoreData(1);
                     self.requestOwnData(true);
                     self.hideLoading();
-                    /*
-                    var item = result.data;
-                    if(item) {
-                        var $list = self.$myProductList.find('>ul');
-                        item.saleDate = vcui.date.format(item.saleDate,'yyyy.MM');
-                        item.creationDate = vcui.date.format(item.creationDate,'yyyy.MM.dd');
-                        item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
-                        $list.append(vcui.template(ownListItemTemplate, item));
-                        self.checkNoData();
-                        $li.remove();
-                        $(window).trigger("toastshow", "제품 등록이 완료되었습니다.");
-                    }
-                    */
                 }, "POST", null, null, null, true, function(err){
                     self.hideLoading(true);
                 });
@@ -332,17 +352,10 @@
                 self.$registMyProductMainPage.show();
                 self.$modelCheckHelpPage.hide();                
                 self.$registMyProductPopup.vcModal({opener:$(this)});
-                //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - S
-                //self.$registMyProductMainPage.find('.btn-direct').trigger('click');
-                //BTOCSITE-4086 직접 입력 버튼 활성화 해제 - E
 
                 //직접등록 팝업 진입시 default 처리 - S
                 //BTOCSITE-4086 isMobile(모바일웹,ios앱,안드로이드앱)일 경우 해당 속성 실행 - S
                 if(vcui.detect.isMobile){
-                    //$('#inp01').attr('readonly','readonly');
-                    //$('#inp02').attr('readonly','readonly');
-                    //$('.cell button').attr('disabled', true);
-                    //$('.btn-prod-reg').attr('disabled', true); BTOCSITE-4086 211001 요건수정 최초 진입시, 활성화로 변경
                     $('.btn-direct').removeClass('active');
                     $('.app-exec').removeClass('active');
                     $('.info-req-box .qr-active').hide();
@@ -435,10 +448,6 @@
                         }
                     });
                 } else {
-                    /*
-                    var selectbox = self.$modelCheckHelpPage.find('.ui_selectbox:eq(0)');
-                    selectbox.vcSelectbox('selectedIndex', 0, true);
-                    */
                     self.$registMyProductMainPage.hide();
                     self.$modelCheckHelpPage.show();
                     self.$modelCheckHelpPage.find('section').scrollTop(0);
@@ -492,25 +501,106 @@
             });
             //BTOCSITE-4086 e
 
+            // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
             //사용설명서
             self.$myProductList.on('click','>ul li div.btns button.manual-btn', function(e) {
                 var $li = $(this).parents('li');
-                var _id = $li.attr('data-model-id');
-                var sku = $li.attr('data-model-code');
-                self.requestManualData(_id,sku,1,false);
+                var data = $li.data();
+  
+                if(!!data.packageModelCode) {
+                    var item = {
+                        'type' : 'manual',
+                        'product' : self.packageProduct[data.packageModelCode]
+                    };
+
+                    self.$packageModal.empty().append(vcui.template(packageModalTmpl,item)).vcModal();
+                    $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
+                } else {
+                    self.requestManualData(data.modelId,data.modelCode,1,false);
+                }
+               
             });
 
             //다운로드/sw
             self.$myProductList.on('click','>ul li div.btns button.download-btn', function(e) {
                 var $li = $(this).parents('li');
-                var _id = $li.attr('data-model-id');
-                var sku = $li.attr('data-model-code');
+                var data = $li.data();
 
-                self.$downloadPopup.attr('data-model-id', _id);
-                self.$downloadPopup.attr('data-model-code', sku);
-                self.$downloadSearch.val("");
-                self.$downloadSearch.data('search',null);
-                self.requestDownloadData({"page":1}, true, true);
+                if(!!data.packageModelCode) {
+                    var item = {
+                        type : 'download',
+                        product : self.packageProduct[data.packageModelCode]
+                    };
+                    
+                    self.$packageModal.empty().append(vcui.template(packageModalTmpl,item)).vcModal();
+                    $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
+                } else {
+                    self.$downloadPopup.data('modelId', data.modelId);
+                    self.$downloadPopup.attr('modelCode', data.modelCode);
+                    self.$downloadSearch.val("");
+                    self.$downloadSearch.data('search',null);
+                    self.requestDownloadData({"page":1}, true, true);
+                }
+            });
+
+            // 세트 상품 팝업 링크 활성화 처리
+            self.$packageModal.on('click','.btn-type2 div.item',function(e) {
+                e.preventDefault();
+                if(!$(this).hasClass('active')) {
+                    $(this).closest("ul").find(">li div.item").removeClass("active")
+                    $(this).addClass("active");
+                }
+            });
+
+            // 세트 상품 팝업 확인 버튼 
+            self.$packageModal.on('click','.ui_modal_close_pack',function(e) {
+                e.preventDefault();
+
+                var $el = self.$packageModal.find('.btn-type2 div.item.active')
+                var data = $el.data();
+                
+                if($el.length > 0) {
+                    if(data.type !== "accessories" && data.href ) {
+                        self.$packageModal.vcModal('close')
+                        location.href = data.href;
+                    } else {
+                        lgkorUI.alert("선택하신 제품은 데이터가 존재하지 않습니다.");
+                    }
+                }
+            });
+
+            // 세트 상품 팝업 (출장 서비스 신청 / 센터 방문 예약 / 소모품 조회 / 리뷰작성 팝업)
+            self.$myProductList.on('click','>ul li div.link-type a.packageModel', function(e) {
+                e.preventDefault();
+
+                var $li = $(this).parents('li');
+                var data = $li.data();
+
+                var type;
+
+                switch($(this).text()) {
+                    case "출장 서비스 신청" :
+                        type = 'reservation';
+                    break;
+                    case "센터 방문 예약" :
+                        type = 'center';
+                    break;
+                    case "소모품 조회" :
+                        type = 'accessories';
+                    break;
+                }
+
+                var item = {
+                    isMobile : self.isMobileNow,
+                    type     : type,
+                    product  : self.packageProduct[data.packageModelCode],
+                };
+
+                self.$packageModal.empty().append(vcui.template(packageModalTmpl,item)).vcModal();
+                $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
+                
+                //크레마 리로드
+                lgkorUI.cremaReload();
             });
         },
 
@@ -579,11 +669,17 @@
                 var modelName = self.$modelInput.val().toUpperCase();
                 lgkorUI.requestAjaxData(ajaxUrl, {"sku":modelName}, function(result) {
                     var data = result.data;
-                    if(lgkorUI.stringToBool(data.success)) {
-                        checkModelSuccess = true;
+                        checkModelSuccess = lgkorUI.stringToBool(data.success);
+                        modelPackageFlag = lgkorUI.stringToBool(data.modelPackageFlag);
+
+                    if(checkModelSuccess) {
                         self.$modelCheckOk.show();
+
+                        // BTOCSITE-4086 : [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
+                        if(modelPackageFlag) {
+                            lgkorUI.alert("등록하시는 제품은 세트 제품입니다.<br>세트 제품 1건으로 등록되며, 사용 설명서를<br>포함한 부가 서비스는 각 제품별로 제공 받으실 수 있습니다.");
+                        }
                     } else {
-                        checkModelSuccess = false;
                         self.$modelCheckOk.hide();
                         
                         //BTOCSITE-4086 : QR스캔으로 값을 받아온 후 입력된 제품모델이 없을경우 confirm 추가
@@ -597,8 +693,7 @@
                                 }
                             });
                         } else {
-                            //lgkorUI.alert("", {title: "해당 제품 모델명이 존재하지 않습니다."});
-                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                            lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                                 title: "",
                                 cancelBtnName: "취소",
                                 okBtnName: "이메일접수",
@@ -622,20 +717,11 @@
                 }
             });
 
-            //제조번호 길이 체크
-            //2021-08-17 BTOCSITE-4196 수정
-            // self.$snInput.on('input', function(e){
-            //     checkSerialSuccess = false;
-            //     if(e.target.value.length > 18){
-            //         e.target.value = e.target.value.slice(0, 18);
-            //     }
-            // })
-
             //제조번호 확인
             //2021-08-17 BTOCSITE-4196 수정
             self.$snCheckButton.on('click', function(e){
                 // var serialRegex = /^\d{3}[A-Za-z]{4}[\d\A-Za-z]{5,7}$/ /* /^\d{3}[A-Z]{4}[\d\A-Z]{7}$/ */
-                var minLengthFlag = self.$snInput.val().length >= 12 ? true: false;
+                var minLengthFlag = self.$snInput.val().length >= 10 ? true: false;
                 
                 var currentVal = [];
                 var checkSerialSuccess = [];
@@ -653,7 +739,6 @@
                 if(minLengthFlag && checkSerialSuccess.indexOf(false) == -1) {
                     //BTOCSITE-4086
                     self.$snCheckOk.show();
-                    // lgkorUI.alert("", {title: "제조번호(S/N)가 확인되었습니다."});
                 } else {
                     //BTOCSITE-4086 : QR스캔으로 값을 받아온 후 입력된 제품모델이 없을경우 confirm 추가
                     if ($('.btn-qrscan').hasClass('active')) {
@@ -666,8 +751,7 @@
                             }
                         });
                     } else {
-                        //lgkorUI.alert("", {title: "해당 제조번호(S/N)가 존재하지 않습니다.<br>제조번호 확인 후 다시 입력해 주세요."});
-                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>등록을 원하시는 제품을 이메일로 접수 할 수 있습니다.", {
+                        lgkorUI.confirm("입력하신 제품 정보를 찾을 수 없습니다.<br>보유제품 등록 관련 궁금하신 사항은 이메일로 문의해 주세요.", {
                             title: "",
                             cancelBtnName: "취소",
                             okBtnName: "이메일접수",
@@ -707,8 +791,6 @@
                 } else {
                     //등록
                     //BTOCSITE-4086 - S
-                    //2021-03-06 제조번호(sn) 필수 제외
-                    //if(checkModelSuccess && checkSerialSuccess) {
                     if(checkModelSuccess) {
                         var result = self.registMyProductValidation.validate().success;
                         if(result) {
@@ -721,8 +803,18 @@
                                 param.factoryModel = null;
                             }
                             var ajaxUrl = self.$registMyProductPopup.attr('data-insert-url');
+
                             self.showLoading();
                             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                                // BTOCSITE-7553 [GA360] GA360에 보유제품 등록 상태를 확인하기 위한 Datalayer 개발 요청
+                                dataLayer.push({				
+                                    'event': 'customEvent',				
+                                    'customEventCategory': '보유제품 등록',				
+                                    'customEventAction': '보유제품 등록 완료',				
+                                    'customEventLabel': param.sku
+                                });				
+                          
+
                                 self.$registMyProductPopup.vcModal('close');
 
                                 //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
@@ -734,18 +826,15 @@
                                 self.hideLoading(true);
                             });
                         }
+
+
+
+
                         //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
                         self.$myProductTab.trigger('click');
                     } else {
                         // BTOCSITE-4086 :모델명 / 제조번호 정보를 찾을 수 없을 경우 호출 (제조번호 필수값 아니라 제외함)
                         lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                        /*
-                        if(!checkModelSuccess) {
-                            lgkorUI.alert("", {title: "제품 모델명을 확인해 주세요."});
-                        } else if(!checkSerialSuccess) {
-                            lgkorUI.alert("", {title: "제조번호(S/N)를 확인해 주세요."});
-                        }
-                        */
                     }
                     
                     //BTOCSITE-4086 - E
@@ -796,16 +885,6 @@
                 }
                 self.requestDownloadData(param, false, false);
             });
-
-            //다운로드 파일
-            /*
-            self.$downloadPopup.on('click','li button.btn', function(e){
-                var url = $(this).attr('data-file-url');
-                if(!(!url)) {
-                    window.location = url;
-                }
-            });
-            */
            
             //다운로드 파일 상세 보기
             self.$downloadPopup.on('click','button.btn-info', function(e){
@@ -852,31 +931,14 @@
                     lgkorUI.alert("", {title: "검색어를 입력하고 조회해 주세요."});
                     return;
                 }
-                //if(search) {
-                    self.$downloadSearch.data('search',search);
-                    //var param = {"page":1,"search":search};
-                    var os = self.$selectOS.vcSelectbox('selectedOption').value;
-                    if(os) {
-                        param.os = os;
-                    }
-                    self.requestDownloadData(param, false, false);
-                //} else {
-                    //$(this).parents('div.keyword-search').find('.search-error').show();
-                //}
-            });
 
-            /*
-            //다운로드 검색어 삭제 및 초기화
-            self.$downloadPopup.on('click','div.search-input button.btn-delete', function(e){
-                self.$downloadSearch.data('search',null);
-                var param = {"page":1};
+                self.$downloadSearch.data('search',search);
                 var os = self.$selectOS.vcSelectbox('selectedOption').value;
                 if(os) {
                     param.os = os;
                 }
                 self.requestDownloadData(param, false, false);
             });
-            */
 
             self.$downloadDetailPage.on('click','footer button', function(e){
                 self.$downloadDetailPage.hide();
@@ -933,14 +995,33 @@
                 switch(index) {
                     case 0 : break;
                     case 1 :
-                        qrOptionStr += "<option value='cate1-1'>드럼세탁기</option>";
-                        qrOptionStr += "<option value='cate1-2'>의류건조기</option>";
-                        qrOptionStr += "<option value='cate1-3'>일반세탁기</option>";
-                        qrOptionStr += "<option value='cate1-4'>스타일러</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stand-air.jpg'>가정용 스탠드형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-wall-air.jpg'>벽걸이형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-windows-air.jpg'>창문형</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-move-air.jpg'>이동식</option>";
                         break;
-                    case 2 : 
-                        qrOptionStr += "<option value='cate2-1'>무선(A9)/일반</option>";
-                        qrOptionStr += "<option value='cate2-2'>로봇청소기</option>";
+                    case 2 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-front-washers-qr.jpg'>드럼세탁기</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg'>의류건조기</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg'>일반세탁기</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stylers-qr.jpg'>스타일러</option>";
+                        break;
+                    case 3 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-stick-cleaners-qr.jpg'>무선(A9)/일반</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-robot-cleaners-qr.jpg'>로봇청소기</option>";
+                        break;
+                    case 4 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-electric-range.jpg'>전기레인지</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-gas-oven.jpg'>가스오븐</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-lightwave-oven.jpg'>광파오븐</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-microwave-oven.jpg'>전자레인지</option>";
+                        break;
+                    case 5 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-air-purifiers.jpg'>공기청정기</option>";
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-humidifier.jpg'>제습기</option>";
+                        break;
+                    case 6 :
+                        qrOptionStr += "<option value='/lg5-common/images/MYC/qrimg/model-water-purifier.jpg'>정수기</option>";
                         break;
                 }
                 if(index > 0){
@@ -956,40 +1037,15 @@
                 }
             });
             $('#qrcodselect1').on('change', function(e){
-                var index = this.selectedIndex;
-                var qrselectedValue = $('#qrcodselect1').vcSelectbox('selectedOption').value;
-                var qrimageUrl
-                var qrdesc
-                switch(qrselectedValue) {
-                    case '' : 
-                        qrimageUrl="";
-                        break;
-                    case 'cate1-1':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-front-washers-qr.jpg"
-                        break;
-                    case 'cate1-2':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-dryers-qr.jpg"
-                        break;
-                    case 'cate1-3':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-top-washers-qr.jpg"
-                        break;
-                    case 'cate1-4':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-stylers-qr.jpg"
-                        break;
-                    case 'cate2-1':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-stick-cleaners-qr.jpg"
-                        break;
-                    case 'cate2-2':
-                        qrimageUrl="/lg5-common/images/MYC/qrimg/model-robot-cleaners-qr.jpg"
-                        break;
-                }
+                var qrimageUrl = $('#qrcodselect1').vcSelectbox('selectedOption').value;
+
                 if(qrimageUrl) {
                     $('#qrcodeResult .img img').attr('src',qrimageUrl).css('opacity',1);
                 } else {
                     $('#qrcodeResult .img img').attr('src','/lg5-common/images/img-nodata.svg').css('opacity',0);
                 }
             });
-            // BTOCSITE-4086 e
+            // BTOCSITE-4086 e: qr코드 부착위치 모델선택 (임시하드코딩 적용용)
             //보유제품 직접 등록 팝업 뒤로가기
             self.$modelCheckHelpPage.on('click','footer button' ,function(e) {
                 var initExampleContent = self.$modelCheckHelpPage.find('.example-result').data('initContent');
@@ -1025,15 +1081,13 @@
             var self = this;
             var ajaxUrl = self.$contents.attr('data-own-list-url');
             self.showLoading();
+
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                 var data = result.data;
                 var totalListCount = data.totalListCount ? data.totalListCount : 0;
-                //var $title = self.$myProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
-                    //$title.find('.tit').text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')');
                     self.$myProductTab.text('보유 제품 목록('+ vcui.number.addComma(totalListCount) + ')').attr('data-contents', '보유 제품 목록'); //BTOCSITE-1057 : data-contents 추가 2021-08-09;
                 } else {
-                    //$title.find('.tit').text('보유 제품 목록');
                     self.$myProductTab.text('보유 제품 목록').attr('data-contents', '보유 제품 목록'); //BTOCSITE-1057 : data-contents 추가 2021-08-09;
                 }
 
@@ -1050,6 +1104,69 @@
                     item.nextCareServiceDate = item.nextCareServiceDate ? vcui.date.format(item.nextCareServiceDate,'yyyy.MM.dd') : null;
                     item.reviewBtn = lgkorUI.stringToBool(item.reviewBtn);
                     item.isMobile = self.isMobileNow;
+                    item.isPackgaeModel = !!item.packageModelCode;
+
+                    // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
+                    if(!item.isPackgaeModel) item.packageModelCode = "";
+                    if(item.isPackgaeModel) {
+                        var ajaxUrl = self.$contents.data('packageUrl');
+                        if(ajaxUrl) {
+                            lgkorUI.requestAjaxData(ajaxUrl, {"sku":item.packageModelCode}, function(result) {
+                                if(lgkorUI.stringToBool(result.data.success)) {
+    
+                                    result.data.product.forEach(function(product){
+                                        var linkBtn = {};
+    
+                                        // 매뉴얼 링크 
+                                        linkBtn.manual = item.manualBtn ? "/support/product-manuals?title=manual&mktModelCd="+product.prodModelCd : "";
+                                        // 다운로드/sw 링크
+                                        linkBtn.download = item.downloadBtn ? "/support/product-manuals?title=driver&mktModelCd="+product.prodModelCd : "";
+    
+                                        item.linkBtn.forEach(function(obj){
+                                            switch(obj.title) {
+                                                case "출장 서비스 신청" : 
+                                                    obj.url.forEach(function(link){
+                                                        var url = lgkorUI.parseUrl(link);
+                                                        var mktModelCd = url.searchParams.get("mktModelCd");
+                                                        if(mktModelCd === product.orgProdModelCd) {
+                                                            // 출장 서비스 링크
+                                                            linkBtn.reservation = link;
+                                                            return false;
+                                                        }
+                                                    });
+                                                break;
+                                                case "센터 방문 예약" : 
+                                                    obj.url.forEach(function(link){
+                                                        var url = lgkorUI.parseUrl(link);
+                                                        var mktModelCd = url.searchParams.get("mktModelCd");
+                                                        if(mktModelCd === product.orgProdModelCd) {
+                                                            // 센터 방문 예약" 링크
+                                                            linkBtn.center = link;
+                                                            return false;
+                                                        }
+                                                    });
+                                                break;
+                                            }
+                                        });
+    
+                                        // 소모품 조회 
+                                        linkBtn.accessories = "/search/result/care-accessories?search="+product.prodModelCd+"&amp;force=false";
+    
+                                        // 링크 버튼 데이터 삽입
+                                        if(!product.hasOwnProperty("linkBtn")) {
+                                            product.linkBtn = linkBtn;
+                                        }
+                                    })
+    
+                                    // 패키지 상품 데이터
+                                    if(!self.packageProduct.hasOwnProperty(item.packageModelCode)) {
+                                        self.packageProduct[item.packageModelCode] = result.data.product;
+                                    }
+                                }
+                            });
+                        }
+                    }
+
                     $list.append(vcui.template(ownListItemTemplate, item));
                 });
                 self.checkNoData();
@@ -1074,12 +1191,9 @@
                 var data = result.data;
                 var param = result.param;
                 var totalListCount = data.totalListCount ? data.totalListCount : 0;
-                //var $title = self.$registProductList.siblings('.tit-wrap');
                 if(parseInt(totalListCount) > 0) {
-                    //$title.find('.tit').text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')');
                     self.$registProductTab.text('등록 가능 제품('+ vcui.number.addComma(totalListCount) + ')').attr('data-contents', '등록 가능 제품'); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 } else {
-                    //$title.find('.tit').text('등록 가능 제품');
                     self.$registProductTab.text('등록 가능 제품').attr('data-contents', '등록 가능 제품'); //BTOCSITE-1057 : data-contents 추가 2021-08-09
                 }
 
@@ -1151,7 +1265,6 @@
             var self = this;
 
             checkModelSuccess = false;
-            checkSerialSuccess = false;
 
             self.$modelCheckOk.hide();
             
@@ -1234,11 +1347,9 @@
                 self.osList = arr;
                 if(arr.length < 2) {
                     self.$selectOS.prop('disabled', true);
-                    //self.$selectOS.append('<option value="">없음</option>');
                 } else {
                     self.$selectOS.prop('disabled', false);
                 }
-                    //self.$selectOS.append('<option value="">전체</option>');
                 arr.forEach(function(item, index){
                     if(selectedOSValue == item.code) {
                         selectedIndex = index;
@@ -1253,8 +1364,6 @@
         requestDownloadData: function(param, selectOSUpdate, openDownloadPopup) {
             var self = this;
 
-            //self.$downloadPopup.find('div.keyword-search .search-error').hide();
-
             if(!self.osList) {
                 var ajaxUrl = self.$downloadPopup.attr('data-os-url');
                 self.showLoading();
@@ -1265,11 +1374,9 @@
                     self.osList = arr;
                     if(arr.length < 2) {
                         self.$selectOS.prop('disabled', true);
-                        //self.$selectOS.append('<option value="">없음</option>');
                     } else {
                         self.$selectOS.prop('disabled', false);
                     }
-                        //self.$selectOS.append('<option value="">전체</option>');
                     arr.forEach(function(item, index){
                         self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
                     });
@@ -1308,52 +1415,12 @@
                     self.$downloadPopupPagination.vcPagination('setPageInfo',param.pagination);
                     self.$downloadMainPage.find('div.tit-wrap .tit em').text(vcui.number.addComma(data.totalCount));
 
-                    //if(selectOSUpdate) {
-
-                        /*
-                        var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
-                        var selectedIndex = 0;
-
-                        self.$selectOS.empty();
-                        var arr = data.osOption instanceof Array ? data.osOption : [];
-                        if(arr.length < 2) {
-                            self.$selectOS.prop('disabled', true);
-                            //self.$selectOS.append('<option value="">없음</option>');
-                        } else {
-                            self.$selectOS.prop('disabled', false);
-                        }
-                            //self.$selectOS.append('<option value="">전체</option>');
-                            arr.forEach(function(item, index){
-                                if(selectedOSValue == item.code) {
-                                    selectedIndex = index;
-                                }
-                                self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
-                            });
-    //                    }
-                        self.$selectOS.vcSelectbox('update');
-                        if(selectOSUpdate) {
-                            self.$selectOS.vcSelectbox('selectedIndex',0,false);
-                        } else {
-                            self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
-                        }
-                        */
-
-                    //}
-
                     arr = data.listData instanceof Array ? data.listData : [];
                     var $list = self.$downloadMainPage.find('div.download-list-wrap>ul');
                     $list.empty();
                     if(arr.length > 0) {
                         arr.forEach(function(item, index) {
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                            /*
-                            var list = item.list;
-                            if(list) {
-                                list.forEach(function(item, index) {
-                                    list[index].date = vcui.date.format(item.date,'yyyy.MM.dd');
-                                });
-                            }
-                            */
                             $list.append(vcui.template(downloadListItemTemplate, item));
                         });
                         self.$downloadMainPage.find('.no-data').hide();
