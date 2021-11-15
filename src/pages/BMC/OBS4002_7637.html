@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: [
+            "event/evtExhibitions"
+        ]
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "기획전" 
+        })
+        <!-- //210311_H1추가 -->
+
+        <main class="container">
+            <!-- event -->
+            <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <div class="contents event exhibition"
+                data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+            ><!-- 210126 수정 - .exhibition 추가 -->
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+
+                        <div class="ev-detail-top">
+                            <div class="top-inner">
+                                <div class="tit-wrap">
+                                    <p class="tit"><span class="blind">제목</span>당신의 삶을 더 품격 있게 만드는 LGE.COM의 맞춤제안</p>
+                                    <span class="sub-tit"><span class="blind">서브 제목</span>제품을 구매하여 더 나은 라이프스타일을 만들어보세요.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-con"><!-- 210329 수정 [종료된 기획전 .finish 클래스 추가] -->
+                            <div class="ev-cont">
+                                <div class="conts">
+                                    <!-- 이벤트 상세내용 자리 -->
+                                    <div class="event10">
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-01.png" class="pc" alt="">
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-01-m.png" class="mobile" alt="">
+                                        <div class="blind">
+                                            <h2>당신의 삶을 더 품격있게 만드는 LGE.COM의 맞춤제안</h2>
+                                        </div>
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-02.png" class="pc" alt="">
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-02-m.png" class="mobile" alt="">
+                                        <div class="blind">
+                                            <dl>
+                                                <dt>당신의 라이프스타일에 어울리는 가전을 추천드립니다.</dt>
+                                                <dd>
+                                                    <!-- 210423_날짜및태그수정 -->
+                                                    <p>*300만원이상 구매고객 전원 사은품 제공</p>
+                                                    <span>기간: 2021.05.03 - 2021.05.31</span>
+                                                    <!-- //210423_날짜및태그수정 -->
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="remd_prd">
+                                            <div class="tabs-wrap ui_tab">
+                                                <ul class="tabs">
+                                                    <li class="on">
+                                                        <a href="#tab1"><span class="blind">반려동물의 흔적을 아무도 모르게</span><em class="blind">선택됨</em></a>
+                                                    </li>
+                                                    <li><a href="#tab2"><span class="blind">집콕러의 생활공간을 조금은 색다르게</span></a></li>
+                                                    <li><a href="#tab3"><span class="blind">패피의 의류관리는 남보다 빠르게</span></a></li>
+                                                </ul>
+                                            </div>     
+                                            <div class="tabs-cont" id="tab1">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-01.png" class="pc" alt="">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-01-m.png" class="mobile" alt="">
+                                                <div class="blind">
+                                                    <ul>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>반려동물과 쾌적한 공간을</dt>
+                                                                <dd>추천제품: LG 코드제로 A9S 펫ThinQ</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>집을 비워도 깨끗한 공간을</dt>
+                                                                <dd>추천제품: LG 코드제로 R9 ThinQ</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>반려동물과 쾌적한 공간을</dt>
+                                                                <dd>추천제품: LG 코드제로 A9S 펫ThinQ</dd>
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="tabs-cont" id="tab2">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-02.png" class="pc" alt="">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-02-m.png" class="mobile" alt="">
+                                                <div class="blind">
+                                                    <ul>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>집콕러 필수 아이템</dt>
+                                                                <dd>추천제품: LG DIOS 식기세척기 스팀</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>나만의 홈 시네마</dt>
+                                                                <dd>추천제품: LG 시네빔 Laser 4K</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>깨끗한 피부관리 비결</dt>
+                                                                <dd>추천제품: LG 프라엘</dd>
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="tabs-cont" id="tab3">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-03.png" class="pc" alt="">
+                                                <img src="/lg5-common/images/BMC/open_conts/event10/img-object-03-m.png" class="mobile" alt="">
+                                                <div class="blind">
+                                                    <ul>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>외부의 세균을 차단한다</dt>
+                                                                <dd>추천제품: LG TROMM 스타일러</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>빠르게 옷을 건조한다</dt>
+                                                                <dd>추천제품: LG TROMM 건조기</dd>
+                                                            </dl>
+                                                        </li>
+                                                        <li>
+                                                            <dl>
+                                                                <dt>깨끗하고 구김없는 옷을 만든다</dt>
+                                                                <dd>추천제품: LG 트윈워시</dd>
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-03.png" class="pc" alt="이벤트 내용">
+                                        <img src="/lg5-common/images/BMC/open_conts/event10/img-03-m.png" class="mobile" alt="이벤트 내용">
+                                        <div class="blind">
+                                            <dl>
+                                                <dt>구매혜택: 300만원이상 제품구매시 사은품을 드립니다</dt>
+                                                <dd>
+                                                    사은품: [LEXON] MINA LED 조명<br>
+                                                    <strong>기획전 기간 중 300만원이상 제품 구매시,사은품으로 조명을 드립니다.(본 기획전에 한함)</strong>
+                                                </dd>
+                                            </dl>
+                                            <p>추가혜택: 구매금액대별 멤버십 포인트 증정 혜택</p>
+                                            <table>
+                                                <caption></caption>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>구매금액</th>
+                                                        <td>300만~</td>
+                                                        <td>500만~</td>
+                                                        <td>1,000만~</td>
+                                                        <td>1,200만~</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>멤버십P</th>
+                                                        <td>10만</td>
+                                                        <td>20만</td>
+                                                        <td>30만</td>
+                                                        <td>40만</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <dl>
+                                                <dt>최대 40만 포인트 증정!</dt>
+                                                <dd>
+                                                    LG전자 멤버십 가입 필수 (미가입 고객 포인트 적립 불가)혜택은 월별 변경되며, 가입월이 아닌 구매월 기준으로 혜택 부여법인/선물/체크카드 사용 불가
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <!-- //이벤트 상세내용 자리 -->
+                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- 210324 수정 [스티키 탭 추가] -->
+                        <div class="ev-detail-category">
+                            <div class="ev-counter"><span>상품 100개</span></div>
+                            <div class="ui_sticky" data-used-anchor="true" data-anchor-class=".tabs-scroll-wrap .tabs a" data-act-class="on">
+                                <div class="tabs-wrap border-type tabs-scroll-wrap ui_smooth_scroll" data-used-tab-link="false">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#ev-category1">상냉장 냉장고<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#ev-category2">컨버터블 패키지</a></li>
+                                        <li><a href="#ev-category3">김치냉장고</a></li>
+                                        <li><a href="#ev-category4">워시타워</a></li>
+                                        <li><a href="#ev-category5">스타일러</a></li>
+                                        <li><a href="#ev-category6">에어컨</a></li>
+                                        <li><a href="#ev-category7">청소기</a></li>
+                                        <li><a href="#ev-category8">광파오븐</a></li>
+                                        <li><a href="#ev-category9">식기세척기</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="ev-category1" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>상냉장 냉장고</span></h3>
+                                    <div class="ev-prd-wrap">
+                                        <ul class="product-items col4"> <!-- [210105_수정] .col4로 변경, 내부 리스트 항목 수정 확인 필요 -->
+                                            @@loop('./common/modules/product-list-item-loop.html', [
+                                                {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product1-color1",
+                                                            "name": "product1",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product1-color2",
+                                                            "name": "product1",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product1-color3",
+                                                            "name": "product1",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["신제품"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk6",
+                                                            "name": "wish-chk6",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  true,
+                                                        "button" : "제품정보 보기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product2-color1",
+                                                            "name": "product2",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product2-color2",
+                                                            "name": "product2",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product2-color3",
+                                                            "name": "product2",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk6",
+                                                            "name": "wish-chk6",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  true,
+                                                        "button" : "제품정보 보기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product3-color1",
+                                                            "name": "product3",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product3-color2",
+                                                            "name": "product3",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product3-color3",
+                                                            "name": "product3",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product4-color1",
+                                                            "name": "product4",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product4-color2",
+                                                            "name": "product4",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product4-color3",
+                                                            "name": "product4",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product5-color1",
+                                                            "name": "product5",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product5-color2",
+                                                            "name": "product5",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product5-color3",
+                                                            "name": "product5",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product6-color1",
+                                                            "name": "product6",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product6-color2",
+                                                            "name": "product6",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product6-color3",
+                                                            "name": "product6",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product7-color1",
+                                                            "name": "product7",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product7-color2",
+                                                            "name": "product7",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product7-color3",
+                                                            "name": "product7",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }, {
+                                                    "itemClass" : "evt-item",
+                                                    "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "optionColor" : true,
+                                                    "colorSet" : [
+                                                        {
+                                                            "title": "샤이니 유니버스",
+                                                            "color": "stainless-steel",
+                                                            "id": "product8-color1",
+                                                            "name": "product8",
+                                                            "checked": "checked"
+                                                        },{
+                                                            "title": "샤이니 퓨어",
+                                                            "color": "Black-Stainless-Steel",
+                                                            "id": "product8-color2",
+                                                            "name": "product8",
+                                                            "checked": ""
+                                                        },{
+                                                            "title": "맨하튼 미드나잇",
+                                                            "color": "MC_K62_SkyBlue",
+                                                            "id": "product8-color3",
+                                                            "name": "product8",
+                                                            "checked": ""
+                                                        }
+                                                    ],
+                                                    "flagDiscount" : true,
+                                                    "flags" : ["베스트","신제품","온라인전용"],
+                                                    "review" : true,
+                                                    "isReview" : true,
+                                                    "spec" : true,
+                                                    "bottom" : {
+                                                        "benefit" : [
+                                                            {
+                                                                "icon" : "cash",
+                                                                "text" : "캐시백 이벤트"
+                                                            },{
+                                                                "icon" : "gift",
+                                                                "text" : "사은품 증정"
+                                                            }
+                                                        ],
+                                                        "price" : true,
+                                                        "originalPrice" : true,
+                                                        "wish" : {
+                                                            "id": "wish-chk3",
+                                                            "name": "wish-chk3",
+                                                            "checked": ""
+                                                        },
+                                                        "cartDisabled" :  false,
+                                                        "button" : "구매하기"
+                                                    }
+                                                }
+                                            ])
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ev-category2" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>컨버터블 패키지</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category3" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>김치냉장고</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category4" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>워시타워</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category5" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>스타일러</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category6" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>에어컨</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category7" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>청소기</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category8" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>광파오븐</span></h3>
+                                </div>
+                            </div>
+                            <div id="ev-category9" class="tab-contents">
+                                <div class="cont-inner">
+                                    <h3 class="ev-category-title"><span>식기세척기</span></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-bottom">
+                            <!-- 210105 수정 -->
+                            <div class="notice-wrap">
+                                <!-- 210203 수정 -->
+                                <span class="b-tit">유의사항</span>
+                                <p class="bullet-text">본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.</p>
+                                <p class="bullet-text">LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.</p>
+                                <a href="#n" class="btn-link">텍스트 링크 버튼</a>
+                                <p class="bullet-text">상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 양도가 불가능합니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.</p>
+                                <p class="bullet-text">이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다.</p>
+                                <a href="#n" class="btn-link">개인정보처리방침</a>
+                            </div>
+                            <!-- //210105 수정 -->
+
+                            <!-- 210105 수정 -->
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                                <a href="#n" class="btn"><span>이메일 문의</span></a>
+                            </div>
+                            <!-- //210105 수정 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>
