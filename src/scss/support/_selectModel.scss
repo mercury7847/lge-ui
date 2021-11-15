@@ -113,7 +113,8 @@
         }
         .slide {
             &-controls {
-                margin-top:-22px;
+                // BTOCSITE-7947
+                margin-top:-2px;
                 button {
                     &.prev {
                         left:-20px;
