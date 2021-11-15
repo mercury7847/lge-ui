@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <clipPath id="clip-path">
+            <circle id="circle" cx="31.25" cy="31.25" r="31.25" style="stroke-dasharray:12 16;stroke-width:3px;stroke:#da0f47;stroke-linecap:round;stroke-miterlimit:10;fill:none"/>
+        </clipPath>
+        <style>
+            .cls-6{fill:none;stroke:#da0f47;stroke-linecap:round;stroke-miterlimit:10;stroke-linejoin:round;stroke-width:4px}
+        </style>
+    </defs>
+    <g id="img_PD_regi_MO_128" style="opacity:.8">
+        <path id="Rectangle" style="fill:none" d="M0 0h80v80H0z"/>
+        <g id="ic" transform="translate(8.75 8.75)">
+            <circle id="circle-2" data-name="circle" cx="31.25" cy="31.25" r="31.25" style="stroke-dasharray:6 16;stroke-width:3px;stroke:#da0f47;stroke-linecap:round;stroke-miterlimit:10;fill:none"/>
+            <g id="ic-2" data-name="ic" style="clip-path:url(#clip-path)">
+                <g id="_" data-name="+" transform="translate(22.5 22.5)">
+                    <path id="Line" class="cls-6" d="M0 1.4h17.5" transform="translate(0 7.35)"/>
+                    <path id="Line-2" data-name="Line" class="cls-6" d="M1.4 0v17.5" transform="translate(7.35)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg id="img_PD_regi_64" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <clipPath id="clip-path">
+            <circle id="circle" class="cls-1" cx="25" cy="25" r="25"/>
+        </clipPath>
+        <style>
+            .cls-1,.cls-4{fill:none;stroke:#da0f47;stroke-linecap:round;stroke-miterlimit:10}.cls-1{stroke-width:1.5px;stroke-dasharray:6 8}.cls-4{stroke-linejoin:round;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h64v64H0z"/>
+    <g id="ic" transform="translate(7 7)">
+        <circle id="circle-2" data-name="circle" class="cls-1" cx="25" cy="25" r="25"/>
+        <g id="ic-2" data-name="ic" style="clip-path:url(#clip-path)">
+            <g id="_" data-name="+" transform="translate(18 18)">
+                <path id="Line" class="cls-4" d="M0 .7h14" transform="translate(0 6.3)"/>
+                <path id="Line-2" data-name="Line" class="cls-4" d="M.7 0v14" transform="translate(6.3)"/>
+            </g>
+        </g>
+    </g>
+</svg>
