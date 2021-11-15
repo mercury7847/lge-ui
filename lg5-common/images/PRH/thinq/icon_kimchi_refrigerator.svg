@@ -1,0 +1,27 @@
+<svg id="ic_kimchi_refrigerator_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#87a0be"/>
+            <stop offset="1" stop-color="#4182b4"/>
+        </linearGradient>
+        <style>
+            .cls-4{fill:none;stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px}
+        </style>
+    </defs>
+    <rect id="Rectangle_148" data-name="Rectangle 148" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g id="Group_625" data-name="Group 625" transform="translate(10 10)">
+        <g id="Group_118" data-name="Group 118" transform="translate(24.063 8.4)">
+            <g id="Group_115" data-name="Group 115" transform="translate(9.325 6.425)">
+                <path id="Path_69" data-name="Path 69" d="M523.3 181.017h-11.215a.376.376 0 0 1-.375-.375V159.2a.376.376 0 0 1 .375-.375H523.3a.376.376 0 0 1 .375.375v21.437a.376.376 0 0 1-.375.38z" transform="translate(-511.71 -158.83)" style="fill:url(#linear-gradient)"/>
+            </g>
+            <g id="Group_117" data-name="Group 117">
+                <path id="Path_70" data-name="Path 70" d="M552.375 157.44v75.7H508v-75.7h44.375m1.25-3.75H506.75a2.507 2.507 0 0 0-2.5 2.5v78.188a2.507 2.507 0 0 0 2.5 2.5h46.875a2.507 2.507 0 0 0 2.5-2.5V156.19a2.507 2.507 0 0 0-2.5-2.5z" transform="translate(-504.25 -153.69)" style="fill:#404040"/>
+                <path id="Line_49" data-name="Line 49" class="cls-4" transform="translate(25.938)" d="M0 0v45.35"/>
+                <path id="Line_50" data-name="Line 50" class="cls-4" transform="translate(0 44.462)" d="M0 0h51.875"/>
+                <path id="Line_51" data-name="Line 51" class="cls-4" transform="translate(0 62.875)" d="M0 0h51.875"/>
+                <path id="Line_52" data-name="Line 52" class="cls-4" transform="translate(6.512 69.35)" d="M0 0h38.85"/>
+                <path id="Line_53" data-name="Line 53" class="cls-4" transform="translate(6.512 50.875)" d="M0 0h38.85"/>
+            </g>
+        </g>
+    </g>
+</svg>

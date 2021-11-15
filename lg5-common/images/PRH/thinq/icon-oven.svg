@@ -1,0 +1,31 @@
+<svg id="ic_oven_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d9a898"/>
+            <stop offset="1" stop-color="#d1774e"/>
+        </linearGradient>
+        <style>
+            .cls-6{fill:none;stroke:#404040;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <rect id="Rectangle_153" data-name="Rectangle 153" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g id="Group_626" data-name="Group 626" transform="translate(10 10)">
+        <g id="Group_144" data-name="Group 144" transform="translate(29.625 40.763)">
+            <path id="Path_75" data-name="Path 75" d="M1298.175 218.217h-38.225a1.254 1.254 0 0 1-1.25-1.25V177.83a1.254 1.254 0 0 1 1.25-1.25h38.225a1.254 1.254 0 0 1 1.25 1.25v39.137a1.254 1.254 0 0 1-1.25 1.25z" transform="translate(-1258.7 -176.58)" style="fill:url(#linear-gradient)"/>
+        </g>
+        <g id="Group_146" data-name="Group 146" transform="translate(21.431 7.5)">
+            <path id="Path_76" data-name="Path 76" d="M1305.708 159.64v69.26h-49.938v-69.26h49.938m1.25-3.75h-52.438a2.507 2.507 0 0 0-2.5 2.5v71.763a2.507 2.507 0 0 0 2.5 2.5h52.438a2.507 2.507 0 0 0 2.5-2.5V158.39a2.491 2.491 0 0 0-2.5-2.5z" transform="translate(-1252.02 -148.49)" style="fill:#404040"/>
+            <g id="Rectangle_174" data-name="Rectangle 174" transform="translate(7.499)" style="stroke-width:3.8px;stroke:#404040;fill:none">
+                <rect width="42.5" height="11" rx="2" style="stroke:none"/>
+                <rect x="1.9" y="1.9" width="38.7" height="7.2" rx=".1" style="fill:none"/>
+            </g>
+            <path id="Line_65" data-name="Line 65" transform="translate(.771 25.925)" style="stroke-miterlimit:10;stroke-width:3.8px;stroke:#404040;fill:none" d="M0 0h55.835"/>
+        </g>
+        <g id="Group_152" data-name="Group 152" transform="translate(29.299 22.575)">
+            <circle id="Ellipse_15" data-name="Ellipse 15" class="cls-6" cx="2.612" cy="2.612" r="2.612"/>
+            <circle id="Ellipse_16" data-name="Ellipse 16" class="cls-6" cx="2.612" cy="2.612" r="2.612" transform="translate(10.663)"/>
+            <circle id="Ellipse_17" data-name="Ellipse 17" class="cls-6" cx="2.612" cy="2.612" r="2.612" transform="translate(25.488)"/>
+            <circle id="Ellipse_18" data-name="Ellipse 18" class="cls-6" cx="2.612" cy="2.612" r="2.612" transform="translate(36.151)"/>
+        </g>
+    </g>
+</svg>

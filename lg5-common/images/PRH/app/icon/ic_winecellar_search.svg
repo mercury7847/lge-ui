@@ -1,0 +1,24 @@
+<svg id="ic_winecellar_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#8c8c8c;stroke-width:4.8px}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <path id="Rectangle_179" data-name="Rectangle 179" class="cls-1" d="M0 0h128v128H0z"/>
+    <g id="Group_643" data-name="Group 643" transform="translate(-791 -666)">
+        <g id="Rectangle_177" data-name="Rectangle 177" class="cls-2" transform="translate(821 680)">
+            <rect class="cls-3" width="68" height="97" rx="6"/>
+            <rect class="cls-1" x="2.4" y="2.4" width="63.2" height="92.2" rx="3.6"/>
+        </g>
+        <g id="Rectangle_178" data-name="Rectangle 178" class="cls-2" transform="translate(830 697)">
+            <rect class="cls-3" width="50" height="66" rx="2"/>
+            <rect class="cls-1" x="2.4" y="2.4" width="45.2" height="61.2" rx=".4"/>
+        </g>
+        <path id="Path_135" data-name="Path 135" class="cls-2" d="M-19105.518-11309.439h9.432" transform="translate(19976 12000.367)"/>
+        <path id="Path_136" data-name="Path 136" class="cls-2" d="M-19105.508-11309.439h45.773" transform="translate(19937.621 12024.01)"/>
+        <path id="Path_137" data-name="Path 137" class="cls-2" d="M-19105.508-11309.439h45.773" transform="translate(19937.621 12039.439)"/>
+        <path id="Path_138" data-name="Path 138" class="cls-2" d="M-19105.508-11309.439h45.773" transform="translate(19937.621 12054.892)"/>
+        <path id="Path_139" data-name="Path 139" class="cls-2" d="M-19146-11223.515v4.3" transform="translate(19976 12000)"/>
+        <path id="Path_140" data-name="Path 140" class="cls-2" d="M-19146-11223.515v4.3" transform="translate(20027 12000)"/>
+    </g>
+</svg>

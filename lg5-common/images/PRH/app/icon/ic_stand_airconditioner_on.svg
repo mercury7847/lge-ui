@@ -1,0 +1,42 @@
+<svg id="ic_stand_airconditioner_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset=".813" stop-color="#78b5b5"/>
+            <stop offset=".841" stop-color="#8dc0c0"/>
+            <stop offset="1" stop-color="#fff"/>
+        </radialGradient>
+        <linearGradient id="linear-gradient" y1=".5" x2="1" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".181" stop-color="#add2d2"/>
+            <stop offset=".236" stop-color="#78b5b5"/>
+            <stop offset=".776" stop-color="#78b5b5"/>
+            <stop offset=".837" stop-color="#a8cfcf"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:none}.cls-3{fill:#fff}
+        </style>
+    </defs>
+    <g id="Group_276" data-name="Group 276" transform="translate(-1235.71 -533.33)">
+        <path id="Rectangle_167" data-name="Rectangle 167" class="cls-1" transform="translate(1235.71 533.33)" d="M0 0h80v80H0z"/>
+    </g>
+    <path id="Path_114" data-name="Path 114" d="M1245.24 538.6s6.44 7.44 30.56 9.11c0 0 23.11-.22 30.11-8.44v63s-4.16-6.22-30.14-6.78c0 0-17.75-1.56-30.53 8.22z" transform="translate(-1235.71 -533.33)" style="fill:url(#linear-gradient)"/>
+    <g id="Group_281" data-name="Group 281" transform="translate(-1235.71 -533.33)">
+        <g id="Group_278" data-name="Group 278">
+            <g id="Group_277" data-name="Group 277">
+                <path id="Path_115" data-name="Path 115" class="cls-3" d="M1261.4 605.51a.5.5 0 0 1-.5-.5v-63.36a.5.5 0 0 1 .5-.5h28.61a.5.5 0 0 1 .5.5v63.36a.5.5 0 0 1-.5.5z"/>
+                <path id="Path_116" data-name="Path 116" d="M1289.01 542.65v61.36h-26.6v-61.36h26.6m1-3h-28.61a2 2 0 0 0-2 2v63.36a2 2 0 0 0 2 2h28.61a2 2 0 0 0 2-2v-63.36a2.006 2.006 0 0 0-2-2z" style="fill:#404040"/>
+            </g>
+        </g>
+        <g id="Group_280" data-name="Group 280">
+            <circle id="Ellipse_36" data-name="Ellipse 36" cx="12.74" cy="12.74" r="12.74" transform="translate(1262.97 544.16)" style="fill:url(#radial-gradient)"/>
+            <g id="Group_279" data-name="Group 279">
+                <path id="Path_117" data-name="Path 117" class="cls-3" d="M1275.71 565.92a9.01 9.01 0 1 1 9.01-9.01 9.018 9.018 0 0 1-9.01 9.01z"/>
+                <g id="Ellipse_62" data-name="Ellipse 62" transform="translate(1265.45 546.65)" style="stroke:#404040;stroke-width:3px;fill:none">
+                    <circle cx="10.26" cy="10.26" r="10.26" style="stroke:none"/>
+                    <circle class="cls-1" cx="10.26" cy="10.26" r="8.76"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

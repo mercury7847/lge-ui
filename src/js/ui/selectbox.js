@@ -11,7 +11,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
     var $doc = $(document),
         $win = $(window),
-        isTouch = core.detect.isTouch;
+        isTouch = core.detect.isTouch,
+        mouseFlag = false; //BTOCSITE-77 셀렉트박스 스크롤바 스크롤시 리스트 숨김처리 오류 수정
+        
 
     var BaseSelectbox = core.ui.View.extend({
         name: 'Selectbox',
@@ -382,6 +384,19 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             // 비터치 기반일 때에 대한 이벤트 처리
             if (!isTouch) {
+
+                //BTOCSITE-77 셀렉트박스 스크롤바 스크롤시 리스트 숨김처리 오류 수정
+                self.$selectbox.find('.ui-selectbox-list').on('mouseenter mouseleave', function(e){
+                    if (e.type === 'mouseenter') {
+                        self.mouseFlag = true;
+                    } else if (e.type === 'mouseleave') {
+                        self.mouseFlag = true;
+                    }
+                })
+                self.$selectbox.find('.ui-selectbox-list').on('mouseleave', function(){
+                    self.mouseFlag = false;
+                })
+
                 // 셀렉트박스에서 포커스가 벗어날 경우 자동으로 닫히게
                 self.$selectbox.on('mouseenter.selectbox mouseleave.selectbox ' + 'focusin.selectbox focusout.selectbox', function (e) {
                     clearTimeout(timer), timer = null;
@@ -392,7 +407,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                         self.$selectbox.addClass('active');
                     } else if (e.type === 'mouseleave' || e.type === 'focusout') {
                         self.$selectbox.removeClass('active');
-                        if (e.type === 'focusout' && self.$selectbox.hasClass('on')) {
+                        //BTOCSITE-77 셀렉트박스 스크롤바 스크롤시 리스트 숨김처리 오류 수정
+                        if (e.type === 'focusout' && self.$selectbox.hasClass('on') && self.mouseFlag == false) {
                             timer = setTimeout(function () {
                                 self.close();
                             }, 200);

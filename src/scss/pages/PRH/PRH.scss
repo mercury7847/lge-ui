@@ -791,6 +791,11 @@
             @include mobile{
                 height: auto;
                 object-fit: cover;
+            } 
+            &.img-mobile{
+                @include mobile{
+                    max-width: 100%;
+                }
             }
         }
         .img-pc{
@@ -930,6 +935,7 @@
                 font-weight: 400;
                 font-size: 15px;
                 line-height: 1.53;
+                width: 100vw;
             }
             .logo {
                 float: none;

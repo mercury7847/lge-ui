@@ -1,0 +1,27 @@
+<svg id="ic_waterpurifier_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:3px}
+        </style>
+    </defs>
+    <g id="Group_268" data-name="Group 268" transform="translate(-1575 -146.97)">
+        <path id="Rectangle_166" data-name="Rectangle 166" transform="translate(1575 146.97)" style="fill:none" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_273" data-name="Group 273" transform="translate(-1575 -146.97)">
+        <g id="Group_272" data-name="Group 272">
+            <g id="Group_269" data-name="Group 269">
+                <path id="Path_110" data-name="Path 110" class="cls-2" d="M1628.33 160.38v2.88h-26.67v-2.88h26.67m1-3h-28.67a2.006 2.006 0 0 0-2 2v6.88h32.67v-6.88a2 2 0 0 0-2-2z"/>
+            </g>
+            <path id="Line_81" data-name="Line 81" class="cls-3" transform="translate(1615 178.34)" d="M0 0v7.92"/>
+            <path id="Line_82" data-name="Line 82" class="cls-3" transform="translate(1602.42 164.27)" d="M0 0v7.92"/>
+            <path id="Line_83" data-name="Line 83" class="cls-3" transform="translate(1627.61 164.27)" d="M0 0v7.92"/>
+            <g id="Group_270" data-name="Group 270">
+                <path id="Path_111" data-name="Path 111" class="cls-2" d="M1628.33 172.42v41.51a3.389 3.389 0 0 1-3.38 3.38h-19.86a3.389 3.389 0 0 1-3.38-3.38v-41.51h26.62m3-3h-32.62v44.51a6.385 6.385 0 0 0 6.38 6.38h19.86a6.385 6.385 0 0 0 6.38-6.38v-44.51z"/>
+            </g>
+            <g id="Group_271" data-name="Group 271">
+                <path id="Path_112" data-name="Path 112" d="M1609.83 179.63v-24a.5.5 0 0 1 .5-.5h9.38a.5.5 0 0 1 .5.5v24z" style="fill:#fff"/>
+                <path id="Path_113" data-name="Path 113" class="cls-2" d="M1618.71 156.63v21.5h-7.38v-21.5h7.38m1-3h-9.38a2.006 2.006 0 0 0-2 2v25.5h13.38v-25.5a2.006 2.006 0 0 0-2-2z"/>
+            </g>
+        </g>
+    </g>
+</svg>

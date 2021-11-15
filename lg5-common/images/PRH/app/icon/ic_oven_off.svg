@@ -1,0 +1,33 @@
+<svg id="ic_oven_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-1,.cls-5{fill:none}.cls-2{fill:#8c8c8c}.cls-5{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Group_155" data-name="Group 155" transform="translate(-1325.29 -146.97)">
+        <path id="Rectangle_154" data-name="Rectangle 154" class="cls-1" transform="translate(1325.29 146.97)" d="M0 0h80v80H0z"/>
+    </g>
+    <g id="Group_165" data-name="Group 165" transform="translate(-1325.29 -143.97)">
+        <g id="Group_159" data-name="Group 159">
+            <g id="Group_156" data-name="Group 156">
+                <path id="Path_77" data-name="Path 77" class="cls-2" d="M1378.57 179.58v27.31h-26.58v-27.31h26.58m1.99-3h-30.58a1 1 0 0 0-1 1v31.31a1 1 0 0 0 1 1h30.58a1 1 0 0 0 1-1v-31.31a.99.99 0 0 0-1-1z"/>
+            </g>
+            <g id="Group_158" data-name="Group 158">
+                <g id="Group_157" data-name="Group 157">
+                    <path id="Path_78" data-name="Path 78" class="cls-2" d="M1385.26 158.89v55.41h-39.95v-55.41h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v57.41a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-57.41a2 2 0 0 0-2-2z"/>
+                </g>
+                <path id="Line_66" data-name="Line 66" transform="translate(1342.31 170.71)" style="stroke-width:3px;stroke-miterlimit:10;stroke:#8c8c8c;fill:none" d="M0 0h45.95"/>
+            </g>
+            <g id="Rectangle_173" data-name="Rectangle 173" transform="translate(1348.29 149.97)" style="stroke-width:3px;stroke:#8c8c8c;fill:none">
+                <rect width="34" height="8.8" rx="2" style="stroke:none"/>
+                <rect class="cls-1" x="1.5" y="1.5" width="31" height="5.8" rx=".5"/>
+            </g>
+        </g>
+        <g id="Group_164" data-name="Group 164">
+            <circle id="Ellipse_19" data-name="Ellipse 19" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1348.72 162.03)"/>
+            <circle id="Ellipse_20" data-name="Ellipse 20" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1357.26 162.03)"/>
+            <circle id="Ellipse_21" data-name="Ellipse 21" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1369.12 162.03)"/>
+            <circle id="Ellipse_22" data-name="Ellipse 22" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1377.65 162.03)"/>
+        </g>
+    </g>
+</svg>

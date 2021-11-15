@@ -1000,6 +1000,7 @@
         position:relative;
         padding:24px 32px;
         border-radius:8px;
+        //211109 - BTOCSITE-7768
         &.solv {
             margin-top:64px;
             padding:24px 48px;
@@ -1010,19 +1011,22 @@
                 line-height:26px;
                 > span {
                     display:block;
+                    font-weight: normal;
                 }
             }
             a {
                 position:absolute;
                 right:48px;
-                bottom:24px;
+                bottom:50%;
                 padding-right:18px;
                 background:url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 6px;
                 background-size:14px;
-                color:#000;
+                color:$color-primary;
                 font-size:16px;
+                font-weight: bold;
                 line-height:26px;
                 text-decoration:underline;
+                transform: translateY(50%);
             }
         }
         @include tablet {
@@ -1037,6 +1041,7 @@
                 a {
                     display:inline-block;
                     position:static;
+                    bottom: auto;
                     margin-top:24px;
                     background-position-y:4px;
                     font-size:14px;

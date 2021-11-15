@@ -239,7 +239,8 @@
                         @@if ( context.nonMembers ) {
                         <!-- 210402 수정 [전체 수정] -->
                         <div class="gray-box">
-                            <div class="form-wrap col-2">
+                            <!-- 211104 BTOCSITE-5938-210 생년월일 수정 - S -->
+                            <div class="form-wrap col-3">
                                 <dl class="forms inner-type">
                                     <dt class="tit"><label for="ipt-bank">예금주명</label></dt>
                                     <dd class="conts">
@@ -251,12 +252,89 @@
                                 <dl class="forms inner-type">
                                     <dt class="tit"><label for="ipt-birth">생년월일</label></dt>
                                     <dd class="conts">
+                                        <!-- BTOCSITE-5938-210 생년월일 형태 변경 (select-box)
                                         <div class="input-wrap">
                                             <input type="number" id="ipt-birth" name="birthDt" placeholder="YYYYMMDD" maxlength="8" value="">
+                                        </div>
+                                        -->
+                                        <div class="box date-select-box col-3">
+                                            <div class="cell">
+                                                <div class="box">
+                                                    <div class="input-wrap">
+                                                        <input type="number" id="ipt-birth" name="year" placeholder="YYYY(4자)" maxlength="4" value="">
+                                                    </div>
+                                                    <div class="text"><span>년</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="cell">
+                                                <div class="box">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="ipt-birth-1" title="월 선택" name="month" data-required="true" required>
+                                                            <option value="" class="placeholder">선택</option>
+                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
+                                                            <option value="03">03</option>
+                                                            <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="text"><span>월</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="cell">
+                                                <div class="box">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="ipt-birth-2" title="일 선택" name="day" data-required="true" required>
+                                                            <option value="" class="placeholder">선택</option>
+                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
+                                                            <option value="03">03</option>
+                                                            <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="text"><span>일</span></div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="birthDt" id="birthDt" value="0" />
                                         </div>
                                     </dd>
                                 </dl>
                             </div>
+                            <!-- //211104 BTOCSITE-5938-210 생년월일 수정 - E -->
                             <div class="form-wrap">
                                 <dl class="forms inner-type">
                                     <dt class="tit"><label for="ipt-bank">계좌 정보</label></dt>

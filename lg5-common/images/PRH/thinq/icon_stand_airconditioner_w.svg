@@ -1,0 +1,40 @@
+<svg id="ic_stand_airconditioner_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset=".813" stop-color="#78b5b5"/>
+            <stop offset=".841" stop-color="#8dc0c0"/>
+            <stop offset="1" stop-color="#fff"/>
+        </radialGradient>
+        <linearGradient id="linear-gradient" y1=".5" x2="1" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".181" stop-color="#add2d2"/>
+            <stop offset=".236" stop-color="#78b5b5"/>
+            <stop offset=".776" stop-color="#78b5b5"/>
+            <stop offset=".837" stop-color="#a8cfcf"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:#fff}
+        </style>
+    </defs>
+    <rect id="Rectangle_167" data-name="Rectangle 167" class="cls-1" width="120" height="120" rx="16"/>
+    <g id="Group_632" data-name="Group 632" transform="translate(10 10)">
+        <path id="Path_114" data-name="Path 114" d="M1245.24 538.6s8.05 9.3 38.2 11.387c0 0 28.888-.275 37.638-10.55v78.75s-5.2-7.775-37.675-8.475c0 0-22.187-1.95-38.163 10.275z" transform="translate(-1233.327 -532.013)" style="fill:url(#linear-gradient)"/>
+        <g id="Group_278" data-name="Group 278" transform="translate(29.613 7.9)">
+            <g id="Group_277" data-name="Group 277">
+                <path id="Path_115" data-name="Path 115" class="cls-1" d="M1261.525 621.6a.627.627 0 0 1-.625-.625v-79.2a.627.627 0 0 1 .625-.625h35.762a.627.627 0 0 1 .625.625v79.2a.627.627 0 0 1-.625.625z" transform="translate(-1259.025 -539.275)"/>
+                <path id="Path_116" data-name="Path 116" d="M1296.412 543.4v76.7h-33.25v-76.7h33.25m1.25-3.75H1261.9a2.5 2.5 0 0 0-2.5 2.5v79.2a2.5 2.5 0 0 0 2.5 2.5h35.762a2.5 2.5 0 0 0 2.5-2.5v-79.2a2.507 2.507 0 0 0-2.5-2.5z" transform="translate(-1259.4 -539.65)" style="fill:#404040"/>
+            </g>
+        </g>
+        <g id="Group_280" data-name="Group 280" transform="translate(34.075 13.537)">
+            <circle id="Ellipse_36" data-name="Ellipse 36" cx="15.925" cy="15.925" r="15.925" style="fill:url(#radial-gradient)"/>
+            <g id="Group_279" data-name="Group 279" transform="translate(3.1 3.112)">
+                <path id="Path_117" data-name="Path 117" class="cls-1" d="M1277.962 570.425a11.263 11.263 0 1 1 11.262-11.263 11.272 11.272 0 0 1-11.262 11.263z" transform="translate(-1265.138 -546.337)"/>
+                <g id="Ellipse_62" data-name="Ellipse 62" style="stroke:#404040;stroke-width:3.8px;fill:none">
+                    <circle cx="12.825" cy="12.825" r="12.825" style="stroke:none"/>
+                    <circle cx="12.825" cy="12.825" r="10.925" style="fill:none"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

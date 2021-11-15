@@ -310,8 +310,8 @@ h2.title {
                         }
                     }
                 }
-                // 210719 BTOCSITE-2346 - W821AAA463,W822AAA452 추가 
-                // BTOCSITE-6534 - 제품 모델명 수정 
+                // 210719 BTOCSITE-2346 - W822AAA462 추가 
+                // 211102 BTOCSITE-6534 - 냉장고 모델명 업데이트 
                 &[data-model_code="W822AAA452"],
                 &[data-model_code="W822AAA462"] {
                     //노크온 매직스페이스
@@ -1485,6 +1485,11 @@ h2.title {
                                         }
                                     }
                                 }
+                                .no_price {
+                                    li {
+                                        justify-content: flex-start;
+                                    }
+                                }
                                 .sum{
                                     display: none;
                                     justify-content: space-between;
@@ -1924,7 +1929,7 @@ h2.title {
             }
         }
         // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
-        // BTOCSITE-6534 냉장고 본체 모델 변경 요청 - 211026
+        // BTOCSITE-6534 냉장고 제품 모델 업데이트 - 211102 추가
         &[data-model-default-code="W822AAA452"],
         &[data-model-default-code="W822AAA462"],
         &[data-model-default-code="M620AAA351"],
@@ -1961,7 +1966,6 @@ h2.title {
         }
         // 210719 BTOCSITE-2346 W822AAA152(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
         // 211013 BTOCSITE-6441 W822AAA152 : 추천조합 패널 위치 조정
-        // 211026 BTOCSITE-6534 냉장고 본체 모델 변경 요청
         &[data-model-default-code="M872AAA151"],
         &[data-model-default-code="M872AAA252"],
         &[data-model-default-code="M871AAA041"],

@@ -171,7 +171,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
                 left: opts.left,
                 top: opts.top,
                 //transform: "scale(" + opts.scale + ")", 
-                transform: 'translate(0, -50px)', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30
+                transform: 'translate(0, -50%)', //BTOCSITE-2226 : 로딩 아이콘 변경 2021-07-30 - 2021-11-11 위치 수정
             });
 
             if(opts.className) self.$contents.addClass(opts.className);

@@ -1,7 +1,6 @@
 var Curation = (function() {
     //큐레이션 템플릿
     var curationTemplate = '<li><a href="#" class="curation" data-curation="{{curationId}}"><span>{{text}}</span></a></li>';
-    // BTOCSITE-1716 스마트필터와 상세필터 합치기 : 모바일일때 동시에 노출되는 checkbox 값 때문에 id와 lable 앞에 smart- 처리
     var sFilterTemplate = '<li class="row" {{#if hidden}}style="display: none;"{{/if}}>' +
         '<div class="label">{{filterGroupName}}</div>' +
         '<div class="content">' +
@@ -11,8 +10,8 @@ var Curation = (function() {
                         '<div class="chk-group">' +
                             '{{#each (item, idx) in filterValues}}' +
                                 '<div class="chk-wrap">' +
-                                    '<input type="checkbox" id="smart-{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}">' +
-                                    '<label for="smart-{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
+                                    '<input type="checkbox" id="{{filterId}}-{{idx}}" name="{{item.filterValueName}}" value="{{item.filterValueId}}" data-filter-id="{{filterId}}">' +
+                                    '<label for="{{filterId}}-{{idx}}">{{item.filterValueName}}</label>' +
                                 '</div>' +
                             '{{/each}}' +
                         '</div>' +
@@ -52,8 +51,6 @@ var Curation = (function() {
         triggerSmartFilterChangeEvent: function () {
             var self = this;
             var filterData = self.getDataFromSmartFilter();
-
-            console.log("triggerSmartFilterChangeEvent filterdata %o",filterData);
             self.smartFilterChangeEventFunc(filterData, self._makeFilterData(filterData));
         },
 
@@ -67,8 +64,6 @@ var Curation = (function() {
         getDataFromSmartFilter: function() {
             var self = this;
             var data = {};
-
-            console.log("getDataFromSmartFilter %o",self.$smartFilterResult);
             self.$smartFilterResult.find('li[data-filter-value-id]').each(function(idx, el){
                 var filterId = el.dataset.filterId;
                 var filterValueId = el.dataset.filterValueId;
@@ -78,12 +73,9 @@ var Curation = (function() {
                     tempArray = [];
                 }
                 tempArray.push(filterValueId);
-
                 data[filterId] = tempArray;
                 //data['data'] = tempArray;
             });
-
-            console.log("스마트 필터 데이터 %o",data);
             return data;
         },
 
@@ -132,7 +124,6 @@ var Curation = (function() {
 
             //스마트필터 리스트 아이템 클릭
             self.$smartFilterList.on('click', 'div input', function(e){
-                console.log("curation 클릭");
                 var checked = this.checked;
                 var param = {
                     "filterId": this.dataset.filterId,
@@ -144,7 +135,7 @@ var Curation = (function() {
                     if($findLi.length < 1) {
                         self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                         self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                        // self.$smartFilterResult.show();
+                        self.$smartFilterResult.show();
                     }
                 } else {
                     self.removeSelectSmartFilterResult(param.filterValueId);
@@ -168,19 +159,7 @@ var Curation = (function() {
                 e.preventDefault();
                 self.$smartFilterResult.find('li[data-filter-value-id]').remove();
                 self.$smartFilterList.find('input[data-filter-id]').prop('checked',false);
-                // self.$smartFilterResult.hide();
-
-
-                // BTOCSITE-1716 
-                if($('.lay-filter').hasClass('smart-type')) {
-                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
-                }
-
-
-                // BTOCSITE-1716 
-                if($('.lay-filter').hasClass('smart-type')) {
-                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
-                }
+                self.$smartFilterResult.hide();
 
                 self.triggerSmartFilterChangeEvent();
             });
@@ -215,8 +194,6 @@ var Curation = (function() {
         },
 
         setCurationData: function(data) {
-
-            console.log("setCurationData 초기 %o",data);
             var self = this;
             var curationData = data.curation;
             if(curationData && curationData.length > 0) {
@@ -241,11 +218,8 @@ var Curation = (function() {
                 self.$curation.hide();
             }
 
-            self.smartFilterCnt = data.smartFilterList.count || 0;
-            var smartFilterData = data.smartFilterList.data;
-            console.log("smartFilterData %o",smartFilterData);
+            var smartFilterData = data.smartFilterList;
             if(smartFilterData && smartFilterData.length > 0) {
-               
                 var isOpen = self.$smartFilterList.data('open');
                 var $list_ul = self.$smartFilterList.find('ul.default');
                 $list_ul.empty();
@@ -269,12 +243,11 @@ var Curation = (function() {
                         parent.addClass('unfold');
                     }
                 });
-                // BTOCSITE-1716
-                self.$smartFilterList.addClass("show");
+
+                self.$smartFilterList.show();
             } else {
                 self.removeSelectSmartFilter();
-                // BTOCSITE-1716
-                self.$smartFilterList.removeClass("show");
+                self.$smartFilterList.hide();
             }
 
             self.resetSmartFilterMoreButton(self.$smartFilterMore.data('open'));
@@ -285,7 +258,7 @@ var Curation = (function() {
             var $list_ul = self.$smartFilterResult.find('ul.rounded-list');
             $list_ul.empty();
 
-            // self.$smartFilterResult.hide();
+            self.$smartFilterResult.hide();
         },
 
         removeSelectSmartFilterResult: function(filterValueId) {
@@ -298,9 +271,9 @@ var Curation = (function() {
 
                     self.$smartFilterList.find("input[value='"+filterValueId+"']").prop('checked',false);
                     
-                    // if(self.$smartFilterResult.find('ul.rounded-list > li').length < 1) {
-                    //     self.$smartFilterResult.hide();
-                    // }
+                    if(self.$smartFilterResult.find('ul.rounded-list > li').length < 1) {
+                        self.$smartFilterResult.hide();
+                    }
                 }
             }
         },
@@ -314,14 +287,7 @@ var Curation = (function() {
             if($findLi.length < 1) {
                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
                 self.$smartFilterResult.find('.ui_smooth_scrolltab').vcSmoothScrollTab('refresh');
-                // self.$smartFilterResult.show();
-
-                // BTOCSITE-1716
-                if($('.lay-filter').hasClass('smart-type')) {
-                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
-                }
-                
-
+                self.$smartFilterResult.show();
             }
         },
 
@@ -364,7 +330,6 @@ var Curation = (function() {
         },
 
         resetCuration: function(data, triggerFilterChangeEvent) {
-            console.log("curation resetCuration");
             var self = this;
 
             self.$curation.find('ul.curation-list > li').removeClass('on');
@@ -373,13 +338,9 @@ var Curation = (function() {
         },
 
         resetFilter: function(data, triggerFilterChangeEvent) {
-  
-
             var self = this;
 
             var filterData = JSON.parse(data);
-            console.log("curation resetFilter %o",filterData);
-
             if(filterData) {
 
                 var maxIndex = 0;
@@ -400,13 +361,7 @@ var Curation = (function() {
                                 var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                                 if($findLi.length < 1) {
                                     self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                    // self.$smartFilterResult.show();
-
-                                    // BTOCSITE-1716
-                                    if($('.lay-filter').hasClass('smart-type')) {
-                                        $('.lay-filter.smart-type').find('div.btn-reset button').show();
-                                    }
-                                    
+                                    self.$smartFilterResult.show();
                                 }
 
                                 var parent = $input.parents('li.row');
@@ -431,12 +386,7 @@ var Curation = (function() {
                             var $findLi = self.$smartFilterResult.find("li[data-filter-value-id='"+param.filterValueId+"']");
                             if($findLi.length < 1) {
                                 self.$smartFilterResult.find('ul.rounded-list').append(vcui.template(sFilterResultTemplate, param));
-                                // self.$smartFilterResult.show();
-
-                                // BTOCSITE-1716
-                                if($('.lay-filter').hasClass('smart-type')) {
-                                    $('.lay-filter.smart-type').find('div.btn-reset button').show();
-                                }
+                                self.$smartFilterResult.show();
                             }
 
                             var parent = $input.parents('li.row');
@@ -451,36 +401,6 @@ var Curation = (function() {
                         this.resetSmartFilterMoreButton(true);
                     }
                 }
-
-
-                console.log("curation resetFilter smart-type %o",$('.lay-filter.smart-type'))
-                // BTOCSITE-1716 좌측 스마트 필터 리셋              
-                if($('.lay-filter').hasClass('smart-type')) {
-                    var cntArray = [];
-                    var $filterChecked = $('.smart-filter .filter-list input:checked');
-                    $('.lay-filter.smart-type input').prop("checked", false);
-                    $filterChecked.each(function(){
-                        $('.lay-filter.smart-type input[value="'+$(this).val()+'"]').prop("checked", true);
-                        cntArray = cntArray.concat($(this).val().split(','));
-                    })
-
-                    cntArray = cntArray.filter(function(item,index){
-                        return cntArray.indexOf(item) === index;
-                    });
-
-                    var cnt = cntArray.length ||  self.smartFilterCnt;
-                    $(".lay-filter .filter-head h1").html('필터<span>'+cnt+'개 제품</span>');
-
-
-                    // 필터 더보기 클래스 붙히기
-                    if($filterChecked.length >  0) {
-                        $('.smart-filter .btn-filter').addClass('applied');
-                    } else {
-                        $('.smart-filter .btn-filter').removeClass('applied');
-                    }
-                    
-                }
-               
 
                 if(triggerFilterChangeEvent) {
                     self.triggerFilterChangeEvent();

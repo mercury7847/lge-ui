@@ -10,18 +10,19 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "방문 알리미",
+                "pageTitle": "방문일정 / 예약",
                 "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect2" : [
                                 { "on": "", "page": "계약현황" },
                                 { "on": "", "page": "납부내역" },
-                                { "on": "on", "page": "방문 알리미" }
+                                { "on": "on", "page": "방문일정 / 예약" }
                             ]
                         })
                         <div class="lnb-contents"
@@ -66,7 +67,7 @@
                                 <div class="sects">
                                     <!-- 210204 수정 -->
                                     <div class="tit-wrap type2">
-                                        <h2 class="tit">방문 알리미 일정</h2>
+                                        <h2 class="tit">방문일정​</h2><!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 -->
                                     </div>
                                     <!-- //210204 수정 -->
                                     <div class="section-inner">

@@ -1,0 +1,24 @@
+<svg id="devices_ic_refrigerator_white" data-name="devices/ic_refrigerator_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#87a0be"/>
+            <stop offset="1" stop-color="#4182b4"/>
+        </linearGradient>
+        <style>
+            .cls-4{fill:none;stroke:#404040;stroke-miterlimit:10;stroke-width:3.8px}
+        </style>
+    </defs>
+    <rect id="Rectangle_146" data-name="Rectangle 146" width="120" height="120" rx="16" style="fill:#fff"/>
+    <g id="Group_630" data-name="Group 630" transform="translate(10 10)">
+        <g id="Group_102" data-name="Group 102" transform="translate(53.787 13.95)">
+            <path id="Path_65" data-name="Path 65" d="M295.017 192.28h-15.862a.376.376 0 0 1-.375-.375V158.5a.376.376 0 0 1 .375-.375h15.863a.376.376 0 0 1 .375.375v33.4a.368.368 0 0 1-.376.38z" transform="translate(-278.78 -158.13)" style="fill:url(#linear-gradient)"/>
+        </g>
+        <g id="Group_104" data-name="Group 104" transform="translate(24.063 8.4)">
+            <g id="Group_103" data-name="Group 103">
+                <path id="Path_66" data-name="Path 66" d="M303.125 157.44v75.7H258.75v-75.7h44.375m1.25-3.75H257.5a2.507 2.507 0 0 0-2.5 2.5v78.188a2.507 2.507 0 0 0 2.5 2.5h46.875a2.507 2.507 0 0 0 2.5-2.5V156.19a2.507 2.507 0 0 0-2.5-2.5z" transform="translate(-255 -153.69)" style="fill:#404040"/>
+            </g>
+            <path id="Line_45" data-name="Line 45" class="cls-4" transform="translate(25.938)" d="M0 0v83.2"/>
+            <path id="Line_46" data-name="Line 46" class="cls-4" transform="translate(0 43.463)" d="M0 0h51.875"/>
+        </g>
+    </g>
+</svg>
