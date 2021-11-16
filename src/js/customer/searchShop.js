@@ -1498,7 +1498,8 @@
                     var container = self.$leftContainer.height();
                     var listTop = self.$defaultListContainer.position().top;
                     var title = $('.store-list-wrap .tit').height();
-                    var opt = 80; //$('.store-list-box > .opt-cont').height();
+                    // BTOCSITE-8243 
+                    var opt = 64; //$('.store-list-box > .opt-cont').height();
                     var ht = container - listTop - title - opt;                   
     
                     $scrollWrap.css({
