@@ -91,7 +91,22 @@
                 var category2 = self.selectedTabHref(self.$subTab);
                 self.requestData({"superCategoryId":category1,"categoryId":category2/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": data}, false);
             });
+            /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+            var pageNum = window.location.hash;
+            var pageArray = pageNum.split('&');
+            var pageNum = pageArray[1];
+            console.log('!!pageNum : ' + pageNum);
 
+            if(!!window.location.hash){	
+                var storyTab = $('.tabs-wrap .tabs li a[href="' + window.location.hash +'"]');	
+                var pageClik = $('.pagination a[href="' + '#'+pageNum +'"]');	
+                storyTab.trigger('click');
+                pageClik.trigger('click');
+            } else{
+                var firstTab = $('.tabs-wrap .tabs li:first-child a');	
+                firstTab.trigger('click');
+            }
+            /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         },
 
         selectedTabHref: function($tabs) {
@@ -141,10 +156,23 @@
                     } else {
                         self.$subTab.parents('.tabs-bg').hide();
                     }
+                    /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+                    var currentUrl = $(location).attr('href');
+                    var superCategoryId = param.superCategoryId;
+                    var url = currentUrl + '#' + superCategoryId;
+                    var strArray = url.split('#');
+                    var str1 = strArray[0];
+                    var urlSet = str1 + '#' + superCategoryId;
+
+                    history.pushState(null, null, urlSet);
+                    /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                 }
 
                 var arr = data.storyList instanceof Array ? data.storyList : [];
                 self.$list.empty();
+
+                
+
                 arr.forEach(function(item, index) {
                     item.storyDesc = vcui.string.replaceAll(item.storyDesc, '\n', '<br>');
                     self.$list.append(vcui.template(storyListItemTemplate, item));
