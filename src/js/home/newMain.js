@@ -460,3 +460,23 @@ $(function () {
         // E BTOCSITE-7225 앱 AR 버튼 노출 건
     });
 });
+//BTOCSITE-2193 s
+$(document).on('click', '.scene a, .section a', function(e){
+    var target = this.getAttribute('target');
+    if(target == "_blank"){
+        if(isApp()) {
+            e.preventDefault();
+            var appUrl = $(this).attr('href');
+            if (!(appUrl.match('https://'))) {
+                appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+            } 
+            if(vcui.detect.isIOS){
+                var jsonString = JSON.stringify({'url': appUrl, 'command':'sendOutLink'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                android.openLinkOut(appUrl);
+            }
+        } 
+    }
+})
+//BTOCSITE-2193 s
