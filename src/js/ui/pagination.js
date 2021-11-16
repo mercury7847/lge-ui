@@ -139,18 +139,6 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
                 */
-               /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
-                var currentUrl = $(location).attr('href');
-                var page = e.currentTarget.hash;
-                var pageArray = page.split('#');
-                var pageNum = pageArray[1];
-                var url = currentUrl + '&' + pageNum;
-                var urlArray = url.split('&');
-                var urlStr0 = urlArray[0];
-                var urlSet = urlStr0 + '&' + pageNum;
-                
-                history.pushState(null, null, urlSet);
-                /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
             });
         },
     });
