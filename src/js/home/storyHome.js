@@ -25,7 +25,7 @@
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
-                    '<a href="{{storyUrl}}" class="visual-area">'+
+                    '<a href="{{storyUrl}}" class="visual-area" id="beu_storylist_{{storyId}}">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+
                             '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
