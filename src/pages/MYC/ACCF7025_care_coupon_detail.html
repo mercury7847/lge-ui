@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/careSolutionLatter"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어솔루션 레터"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+            
+                
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문일정 / 예약" },
+                                { "on": "on", "page": "케어솔루션 레터" },
+                                { "on": "", "page": "연차별 혜택" }
+                            ]
+                        })
+                        <div class="lnb-contents latter-contents">
+                            <!-- 상단 배너 -->
+                            <div class="my-contract-info latter-topBanner">
+                                <p class="tit">오직 케어솔루션/케어십 고객님께만!</p>
+                                <span>유익한 정보도 확인해 보시고 베스트샵에서<br class="mob-only"> 사용 가능한 특별 쿠폰도 확인해 보세요.</span>
+                            </div>
+                            <!-- // 상단 배너 -->
+
+                            <!-- 탭 -->
+                            <div class="tabs-wrap new-type ui_tab">
+                                <ul class="tabs">
+                                    <li><a href="#tab-info">정보<em class="blind">선택됨</em></a></li>
+                                    <li class="on"><a href="#tab-coupon">쿠폰</a></li>
+                                </ul>
+                            </div>
+                            <!-- //탭 -->
+
+                            <!-- 정보 컨텐츠 -->
+                            <div id="tab-info" class="tab-contents">
+                                <div class="latter-detail">
+                                    <!-- info detail -->
+                                    <div class="detail-cont">
+                                        정보
+                                    </div>
+                                    <!-- // info detail -->
+                                </div>
+                            </div>
+                            <!-- //정보 컨텐츠 -->
+                            
+                            <!-- 쿠폰 컨텐츠 -->
+                            <div id="tab-coupon" class="tab-contents" style="display:none;">
+
+                                <!-- info detail -->
+                                <div class="latter-detail">
+                                    <div class="latter-detailCont">
+                                        <div class="detail-cont">
+                                            <div>
+                                                <img src="/lg5-common/images/MYC/care/coupon_detail_img_pc.jpg" class="pc" alt="디테일 이미지">
+                                                <img src="/lg5-common/images/MYC/care/coupon_detail_img_mobile.jpg" class="mobile" alt="디테일 이미지">
+                                            </div>
+                                            
+                                            <br>
+    
+                                            <div class="coupon-img">
+                                                <img src="/lg5-common/images/MYC/care/coupon_img_pc.jpg" class="pc" alt="쿠폰 이미지">
+                                                <img src="/lg5-common/images/MYC/care/coupon_img_mobile.png" class="mobile" alt="쿠폰 이미지">
+
+                                                <div class="coupon-end">
+                                                    <span>쿠폰종료</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <br><br>
+    
+                                            <p>
+                                                쿠폰 혜택 외에도 케어솔루션 매니저를 통한 LG전자 제품 구매 시 추가혜택이 제공됩니다.<br>
+                                                자세한 내용은 케어솔루션 매니저에 문의하세요!
+                                            </p>
+
+                                            <a href="" class="manager-call mobile">케어솔루션 매니저 상담하기</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- 케어솔루션 매니저 상담하기 -->
+                                    <div class="section-wrap pc">
+                                        <div class="sects">
+                                            <div class="tit-wrap type2">
+                                                <h4 class="tit">케어솔루션 매니저 상담하기</h4>
+                                            </div>
+                                            <div class="section-inner manager-info">
+                                                @@include('./common/modules/dl-infolist.html', {
+                                                    "addClass": true,
+                                                    "list" : [
+                                                        { "dt" : "이름", "dd" : "김진희 매니저", "fieldName": "name" },
+                                                        { "dt" : "휴대폰", "dd" : "01012341234", "fieldName": "phoneNumber" }
+                                                    ]
+                                                })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- // 케어솔루션 매니저 정보 -->
+                                </div>
+                                <!-- // info detail -->
+
+                            </div>
+                            <!-- //쿠폰 컨텐츠 -->
+
+
+                            <button type="button" class="btn latter-detail_btn"><span>목록</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+
+           
+        @@include('./common/footer.html')
+
+    </div>
+</body>
+</html>

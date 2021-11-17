@@ -295,6 +295,13 @@
 					height: 71px;
 				}
 			}
+
+			//BTOCSITE-7335
+			.ui_category_tab_contents {
+				.tabs-contents {
+					display:none;
+				}
+			}
 		}
 		&.wide {
 			max-width:100%;

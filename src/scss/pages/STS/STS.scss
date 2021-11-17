@@ -77,7 +77,7 @@
         &.user_story { 
             display:none; 
             @include mobile{
-                padding-bottom:120px;
+                padding-bottom:58px;
             }
 
             .story-title-area {
@@ -747,8 +747,8 @@
                         height: 108px;
                     }
                     .card-title{
-                        font-size:24px;
-                        line-height:32px;
+                        font-size:22px;
+                        line-height:28px;
                         @include mobile{
                             // @include textEllipsisClamp(1);
                             font-size:14px;
@@ -892,9 +892,9 @@
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
-                        max-height: 86px;
-                        font-size: 32px;
-                        line-height: 40px; 
+                        max-height: 82px;
+                        font-size: 30px;
+                        line-height: 38px; 
                         
                         @include mobile{
                             font-size: 14px;
@@ -976,7 +976,7 @@
                 background-color: #fff;
             }
             .card-title {
-                max-height: 67px;
+                max-height: 60px;
                 font-weight: 700;
                 @include font-large-1;
                 display: block;
@@ -1190,9 +1190,9 @@
                 }
             }
             .card-title{
-                font-size:28px;
-                line-height: 36px;
-                max-height: 76px;
+                font-size:26px;
+                line-height: 34px;
+                max-height: 74px;
                 @include mobile{
                     font-size:15px;
                     line-height: 21px;
