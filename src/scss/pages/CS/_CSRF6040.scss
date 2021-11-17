@@ -106,7 +106,7 @@
                 @include csmobile {
                     display:block;
                     position:absolute;
-                    bottom:90px;
+                    top:186px;
                     left:0;
                     span {
                         display:inline-block;
@@ -231,7 +231,8 @@
                             @include mobile {
                                 top:auto;
                                 right:0;
-                                bottom:-59px;
+                                // BTOCSITE-8243
+                                bottom:-49px;
                                 text-align:right;
                             }
                         }
@@ -322,7 +323,8 @@
 
                     @include csmobile {
                         position:relative;
-                        padding:103px 0 12px;
+                        // BTOCSITE-8243
+                        padding:82px 0 12px;
                         /*
                         &:before {
                             content:'';
@@ -344,6 +346,7 @@
             .sch-list {
                 padding-top: 24px;
                 @include mobile {
+                    // BTOCSITE-8243
                     padding-top:16px;
                 }
                 .list-item {
@@ -609,7 +612,8 @@
                         @include font-medium;
                         font-weight: $font-weight-bold;
                         @include csmobile {
-                            padding:0 0 20px 0;
+                            // BTOCSITE-8243
+                            padding:0 0 12px 0;
                         }
                         strong {
                             font-weight:normal;
@@ -663,6 +667,9 @@
                 @include csmobile {
                     position:fixed;
                     width:100%;
+                }
+                @include mobile {
+                   bottom:70px;
                 }
                 .btn-sel {
                     position:relative;
@@ -1479,7 +1486,10 @@
     padding-bottom: 11px;
 }
 .sch-input-wrap .btn.size-m {
-	padding: 3px 15px;
+	padding: 0 15px;
+    height: 32px;
 }
-
+.view-info-btn.withtab3{
+    top: 133px !important;
+}
 // BTOCSITE-8243 e
