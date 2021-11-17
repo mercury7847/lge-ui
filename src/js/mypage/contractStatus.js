@@ -1473,8 +1473,6 @@
         return newdata;
     }
 
-
-    //주영
     function changeContractInfo(){
         lgkorUI.showLoading();
 
@@ -1490,8 +1488,6 @@
         }
         
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
-
-            //주영
 
             // console.log("result_1111111 %o",result);
             // console.log("test", lb_careShip);

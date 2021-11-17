@@ -13,6 +13,12 @@
                 display: block;
             }
         }
+        .teb-only {
+            display: none;
+            @media screen and (max-width:1023px) {
+                display: block;
+            }
+        }
         .my-contract-info {
             position: relative;
             margin-bottom: 40px;
@@ -107,6 +113,9 @@
                                 width: 25%;
                                 border-right: 1px solid #aaa;
                                 padding: 35px 20px;
+                                @media screen and (max-width:1023px) {
+                                    padding: 6% 2%;
+                                }
                                 @include mobile {
                                     width: 100%;
                                     padding: 25px 20px;
@@ -133,6 +142,10 @@
                                         }
                                         h4 {
                                             font-size: 22px;
+                                            line-height: 28px;
+                                            @media screen and (max-width:1023px) {
+                                                font-size: 20px;
+                                            }
                                             @include mobile {
                                                 font-size: 18px;
                                             }
@@ -146,6 +159,7 @@
                                         p {
                                             line-height: 26px;
                                             margin-bottom: 24px;
+                                            word-break: keep-all;
                                             span {
                                                 color: #da0f47;
                                             }
@@ -612,7 +626,6 @@
             .latter-detailCont {
                 position: relative;
                 padding: 30px 24px 50px 24px;
-                background-color: #f4f4f4;
                 border-bottom: 1px solid #ddd;
                 margin-bottom: 80px;
                 .detail-cont {
@@ -653,7 +666,9 @@
                         }
                     }
                     img {
-                        max-width: 1098px;
+                        display: flex;
+                        margin: 0 auto;
+                        max-width: 608px;
                         width: 100%;
                     }
                     .manager-call {
