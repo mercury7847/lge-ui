@@ -348,9 +348,7 @@
                     "review": "34",
                     "obsFlag": "N",
                     "modelStatusCode": "ACTIVE!",
-                    "rentalFlag": "N",
-                    "rentalTabFlag": "Y",
-                    "techSpecs": []
+                    "rentalFlag": "N"
                 },
                 {
                     "url": "#",
@@ -376,9 +374,7 @@
                     "review": "33",
                     "obsFlag": "Y",
                     "modelStatusCode": "ACTIVE",
-                    "rentalFlag": "N",
-                    "rentalTabFlag": "N",
-                    "techSpecs": []
+                    "rentalFlag": "N"
                 },
                 {
                     "url": "#",
@@ -404,9 +400,7 @@
                     "review": "33",
                     "obsFlag": "Y",
                     "modelStatusCode": "ACTIVE",
-                    "rentalFlag": "N",
-                    "rentalTabFlag": "N",
-                    "techSpecs": []
+                    "rentalFlag": "N"
                 },
                 {
                     "url": "#",
@@ -432,9 +426,7 @@
                     "review": "33",
                     "obsFlag": "Y",
                     "modelStatusCode": "ACTIVE",
-                    "rentalFlag": "N",
-                    "rentalTabFlag": "N",
-                    "techSpecs": []
+                    "rentalFlag": "N"
                 }
             ]
         },

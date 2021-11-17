@@ -41,6 +41,12 @@
         }
     }
 
+    @mixin recommendTablet {
+        @media screen and (max-width: $desktop-m-width) and (min-width: $tablet-s-width) {
+            @content;
+        }
+    }
+
     .recommend-wrap {
         max-width:1226px;
         margin:0 auto;
@@ -54,6 +60,9 @@
         }
         .prod-box {
             float:left;
+            @include recommendTablet {
+                float: none;
+            }
             @include mobile {
                 width:50%;
             }
@@ -61,9 +70,11 @@
                 margin:0;
                 > li {
                     width:366px;
+                    min-height: 466px;
                     padding:0;
                     @include mobile {
                         width:100%;
+                        min-height: auto;
                     }
                     .product-image {
                         width:240px;
@@ -87,8 +98,23 @@
                     > li {
                         // width:100%;
                         // padding:0 12px;
+                        @include recommendTablet {
+                            margin: 0 auto;
+                        }
                         .item {
                             border:2px solid #da0f47;
+                            .product-contents {
+                                .product-name {
+                                    a {
+                                        pointer-events: none;
+                                    }
+                                }
+                            }
+                            .product-image {
+                                a {
+                                    pointer-events: none;
+                                }
+                            }
                         }
                     }
                 }
@@ -112,6 +138,10 @@
                 //     width:1px;
                 //     background:#ddd;
                 // }
+                @include recommendTablet {
+                    margin-top: 30px;
+                    padding: 0;
+                }
                 @include mobile {
                     width:50%;
                     padding:0 4px;
@@ -124,6 +154,9 @@
                     > li {
                         // width:50%;
                         // padding:0 12px;
+                        @include recommendTablet {
+                            width: calc(50% - 12px);
+                        }
                         & + li {
                             margin-left:24px;
                         }
@@ -191,6 +224,19 @@
                     margin-top:24px;
                     .zero-price {
                         color:#666;
+                    }
+                }
+                .product-bottom {
+                    &.rental-type {
+                        position: relative;
+                        bottom: auto;
+                        right: auto;
+                        left: auto;
+                        .price-area {
+                            &.care {
+                                margin-top: 0;
+                            }
+                        }
                     }
                 }
             }
