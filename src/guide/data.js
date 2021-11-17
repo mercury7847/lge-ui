@@ -376,6 +376,7 @@ var res = {
 
 					//BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 : 페이지 생성
 					"케어솔루션 레터" : ["/html/MYC/ACCF7025_care_list.html","",""],
+					"연차별 혜택" : ["/html/MYC/ACCF7025_care_benefits.html","",""]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
