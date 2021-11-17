@@ -94,6 +94,7 @@
         '</li>';
         
     var $contents;
+    var $productList; // BTOCSITE-7637
 
     function init(){
         setting();
@@ -102,9 +103,67 @@
 
     function setting(){
         $contents = $('.contents.event.exhibition');
+        
+
+        //리스트
+        $productList = $('.ev-prd-wrap ul.product-items');// BTOCSITE-7637
     }
 
     function bindEvents(){
+
+        // BTOCSITE-7637
+        //찜하기
+        $productList.on('change', 'li div.btn-area-wrap div.wishlist input', function(e){
+            var isLogin = lgkorUI.getHiddenInputData().isLogin;
+            if(isLogin == "N"){
+                lgkorUI.confirm("", {
+                    title: "선택하신 제품을 찜하기 위해서는 <br>LG전자 통합 사이트의 로그인이 필요합니다."
+                }, this);
+
+                $(this).prop('checked', false);
+            } else{
+                var $this = $(this);
+                var _id = $this.attr('data-id');
+                var sku = $this.attr('data-model-name');
+                var wishListId = $this.data("wishListId");
+                var wishItemId = $this.data("wishItemId");
+                var wish = $this.is(':checked');
+                var param = {
+                    "id":_id,
+                    "sku":sku,
+                    "wishListId": wishListId,
+                    "wishItemId": wishItemId
+                }
+                console.log(param)
+                if(wish){
+                    param.type = "add";
+                } else{
+                    param.type = "remove";
+                }
+
+                var ajaxUrl = $contents.attr('data-wish-url');
+                
+                var success = function(data) {
+                    $this.data("wishItemId",data.wishItemId);
+                    $this.prop("checked",wish);
+                };
+                var fail = function(data) {
+                    $this.prop("checked",!wish);
+                };
+
+                lgkorUI.requestWish(
+                    param,
+                    wish,
+                    success,
+                    fail,
+                    ajaxUrl,
+                    this
+                );
+            }
+        });
+        // BTOCSITE-7637
+
+        // 장바구니
         $contents.on('click', '.btn-area-wrap .cart .btn-cart', function(e){
             e.preventDefault();
 
