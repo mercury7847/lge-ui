@@ -295,6 +295,13 @@
 					height: 71px;
 				}
 			}
+
+			//BTOCSITE-7335
+			.ui_category_tab_contents {
+				.tabs-contents {
+					display:none;
+				}
+			}
 		}
 		&.wide {
 			max-width:100%;
@@ -562,7 +569,6 @@
 							img {
 								width: 69.33%;
 								&.no-img {
-									height:0;
 									padding-bottom: 69.33%;
 								}
 							}
@@ -635,7 +641,6 @@
 								img {
 									width:72%;
 									&.no-img {
-										height:0;
 										padding-bottom: 72%;
 									}
 								}
@@ -1407,7 +1412,6 @@
 								img {
 									width: 45.74%;	
 									&.no-img {
-										height:0;
 										padding-bottom: 45.74%;
 									}	
 								}
@@ -1457,7 +1461,6 @@
 									img {
 										width: 74.63%;
 										&.no-img {
-											height:0;
 											padding-bottom: 74.63%;
 										}	
 									}

@@ -365,8 +365,7 @@
 
                 // BTOCSITE-7914 케어십(일반판매케어십 및 보유제품케어십) 청약 화면 수정 요청
                 if(step === 1) {
-                    var ownedCareShip = $(".order-list .product-info .flag:contains('보유 제품 케어십')").length > 0;
-                    if(ownedCareShip) step2Block.find('.forAOP').hide();
+                    if($(".order-list .product-info .flag").data('salesType') === 'X') step2Block.find('.forAOP').hide();
                 }
 
                 var contop = $(data.header).offset().top;

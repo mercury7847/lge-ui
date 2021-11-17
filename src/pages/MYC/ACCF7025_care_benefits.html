@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/contractStatus"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "연차별 혜택"
+            })
+            <!-- mypage -->
+            <!-- 2021.02.05 data-request-contract-url 추가-->
+            <!-- 2021.2.19 data-payment-save-url 추가-->
+            <!-- 2021.2.24 data-request-card-url 추가-->
+            <div class="contents mypage"
+                data-contract-info-url="/lg5-common/data-ajax/mypage/contractInfo.json"
+                data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
+                data-modify-save-url="/lg5-common/data-ajax/mypage/infoModifySave.json"
+                data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
+                data-payment-save-url = "/lg5-common/data-ajax/mypage/infoModifySave.json"
+                data-ars-agree-url="/lg5-common/data-ajax/mypage/requestArsAgree.json"
+                data-request-contract-url="/lg5-common/data-ajax/mypage/requestContract.json"
+                data-mempoint-deduct-url="/lg5-common/data-ajax/mypage/memberPointDeductAgree.json"
+                data-request-card-url="/lg5-common/data-ajax/mypage/requestCardIssue.json"
+            >
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문일정 / 예약" },
+                                { "on": "", "page": "케어솔루션 레터" },
+                                { "on": "on", "page": "연차별 혜택" }
+                            ]
+                        })
+                        <div class="lnb-contents latter-contents"> <!-- BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 : 클래스 추가-->
+                            <!-- 계약정보 셀렉 -->
+                            <div class="my-contract-info">
+                                <div class="tit">
+                                    <p class="b-txt">
+                                        <span class="lc-name">홍길동</span> 고객님,
+                                    </p> 
+                                    <div class="s-txt">
+                                        "고객님과 LG전자 케어십이 함께한 시간이 <b><span class="lc-month">3</span>개월 <span class="lc-day">24</span>일</b> 되었습니다."
+                                    </div>
+                                </div>
+                                <div class="form-wrap">
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="contractInfo">계약정보 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="contractInfo" name="contractInfo">
+                                                    <option value="">선택</option>
+                                                    <option value="RH9WGANR|12345678">건조기 (RH9WGANR) 계약번호 (12345678)</option>
+                                                    <option value="RG8WGGFC|34563245">세탁기 (RG8WGGFC) 계약번호 (34563245)</option>
+                                                    <option value="RA3WQWER|67673323">에어컨 (RA3WQWER) 계약번호 (67673323)</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!-- // 계약정보 셀렉 -->
+
+
+
+                            <!-- 상세 -->
+                            <div class="lb-section-wrap">
+                                <div class="sects payment viewer" style="display: none;"></div>
+
+                                <div class="lb-container">
+
+                                    
+
+                                </div>
+
+
+                                <!-- 기본 -->
+                                <div class="lb-common sects">
+                                    <div class="latter-benefits">
+                                        <div class="lc-benefits_title">
+                                            <h3>케어솔루션/케어십의 연차별 특별한 혜택을 알려드립니다.</h3>
+                                        </div>
+
+                                        <div class="lc-benefits_list">
+                                            <ul>
+                                                <li>
+                                                    <div class="lc-list_cont">
+                                                        <div class="lc-head">
+                                                            <i><img src="/lg5-common/images/icons/care/icon_gift.png" alt="상품권 아이콘"></i>
+                                                            <h4><span>1년</span> (만 12개월)</h4>
+                                                        </div>
+
+                                                        <div class="lc-cont">
+                                                            <p>
+                                                                케어솔루션 추가 결합 시<br>
+                                                                <span>2만 모바일 상품권</span> 증정
+                                                            </p>
+                                                            <dl>
+                                                                <dd>
+                                                                    케어십 고객은 만 12개월 이내
+                                                                    결합 시 증정
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="lc-list_cont">
+                                                        <div class="lc-head">
+                                                            <i><img src="/lg5-common/images/icons/care/icon_point.png" alt="포인트 아이콘"></i>
+                                                            <h4><span>2년</span> (만 24개월)</h4>
+                                                        </div>
+
+                                                        <div class="lc-cont">
+                                                            <p>
+                                                                베스트샵 가전 구매 시<br>
+                                                                <span>3만 멤버십 포인트</span> 증정
+                                                            </p>
+                                                            <dl>
+                                                                <dd>
+                                                                    100만원 이상 구매 시
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li>
+                                                    <div class="lc-list_cont">
+                                                        <div class="lc-head">
+                                                            <i><img src="/lg5-common/images/icons/care/icon_point.png" alt="포인트 아이콘"></i>
+                                                            <h4><span>3년</span> (만 36개월)</h4>
+                                                        </div>
+
+                                                        <div class="lc-cont">
+                                                            <p>
+                                                                <span>2만 멤버십 포인트</span> 적립
+                                                            </p>
+                                                            <dl>
+                                                                <dd>
+                                                                    엘지전자 웹사이트 / 맴버십 앱에서 신청 필수
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li>
+                                                    <div class="lc-list_cont">
+                                                        <div class="lc-head">
+                                                            <i><img src="/lg5-common/images/icons/care/icon_point.png" alt="포인트 아이콘"></i>
+                                                            <h4><span>4년</span> (만 48개월)</h4>
+                                                        </div>
+
+                                                        <div class="lc-cont">
+                                                            <p>
+                                                                베스트샵 가전 구매 시<br>
+                                                                <span>5만 멤버십 포인트</span> 적립
+                                                            </p>
+                                                            <dl>
+                                                                <dd>
+                                                                    100만원 이상 구매 시
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li>
+                                                    <div class="lc-list_cont">
+                                                        <div class="lc-head">
+                                                            <i><img src="/lg5-common/images/icons/care/icon_coupon.png" alt="쿠폰 아이콘"></i>
+                                                            <h4><span>5년</span> (만 57개월)</h4>
+                                                        </div>
+
+                                                        <div class="lc-cont">
+                                                            <p>
+                                                                재계약시 <span>월 요금 할인권</span><br>
+                                                                증정
+                                                            </p>
+                                                            <dl>
+                                                                <dd>
+                                                                    정수기, 공기청정기 케어솔루션
+                                                                    고객에 한함
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "대상자는 개인 고객 케어솔루션/유상케어십 계약자에 한함",
+                                                "사용년수는 연체로 인한 계정정지 기간 제외 기준이며, 사용개월수 만 12/24/36/48/57개월의 0일(ex. 만 36개월 0일)이 도래하는 월 1일부터 혜택 대상자가 됨",
+                                                "제품 구성 및 가격은 신청 시점과 차이가 날 수 있으며, 재입고 알림을 받았더라도 구매 시점에 따라 품절이 발생할 수 있습니다.",
+                                                "혜택은 도래월로부터 3개월간 유효",
+                                                "수혜조건 충족한 익월 말 상품권 증정 및 포인트 적립",
+                                                "1년 사용 혜택은, 추가 결합 계약 1건당 보유 중인 여러 계정 중 하나의 계정과의 결합만 인정함",
+                                                "하이마트/전자랜드/대형마트(이마트 등) 계약 고객은 베스트샵 구매 혜택 적용 불가(결합할인은 가능)",
+                                                "모든 대상자는 유효기간 내 <span>마이페이지 > 케어솔루션 > 연차별 혜택</span>에서 혜택 메시지 확인 가능",
+                                                "위 혜택은 2021년 1월부터 운영하며 당사 사정으로 내용이 변경 될 수 있습니다."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 기본 -->
+
+
+                            </div>
+                            <!-- // 상세 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+
+
+            
+        @@include('./common/footer.html')
+
+    </div>
+    <!-- BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
+    <!-- support script -->
+    <!-- <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script> -->
+    <!-- //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 -->
+</body>
+</html>
