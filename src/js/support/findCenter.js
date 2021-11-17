@@ -404,6 +404,7 @@ function moveConsultPage() {
                 self._setUserAdressSearch();
             });
             self.$searchCurrentButton.on('click', function(e) {
+                console.log("내 위치 검색");
                 self.searchType = 'current';
                 self._setCurrentSearch();          
             });
@@ -809,36 +810,23 @@ function moveConsultPage() {
         	
     
             };
-            var getAppCurrentLocation = function() {
-                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                	var obj = new Object();
-                	obj.command = "getGPS";
-                	obj.callback ="setAppLocation";
-                	var jsonString= JSON.stringify(obj);
-                	webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                } else {
-    	        	try {
-    	        		var appGeoAgree = android.getLocationActive();
-    	        		if (appGeoAgree=='Y'){
-    	        			android.getLocation('setAppLocation');
-    	        			//searchCurrentSearch();
-        	        		//setAppLocation(android.getLocation());	
-    	        		} else {
-                            if (!init) {
-                                lgkorUI.alert('', {
-                                    title: '설정 > 앱권한에서 위치정보 이용동의를 하셔야 이용 가능합니다.'
-                                }, self.$searchCurrentButton[0]);
-                            } else {
-                                self.searchResultMode = false;
 
-                                self.latitude = self.defaultLatitude;
-                                self.longitude = self.defaultLongitude;
-                                
-                                self._loadStoreData();
-                            }	
-                            //setAppLocation('37.55401,126.97486');	    	        			
-    	        		}
-            		} catch (e) {
+            // 앱 위치 권한 콜백
+            useGps = function(appGeoAgree) {
+                if(isApp()){
+                    if (appGeoAgree=='Y'){
+                        if(vcui.detect.isIOS) {
+                            var jsonString= JSON.stringify({
+                                command : "getGPS",
+                                callback : "setAppLocation"
+                            });
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);   
+                        } else {
+                            android.getLocation('setAppLocation');
+                        }
+                        //searchCurrentSearch();
+                        //setAppLocation(android.getLocation());	
+                    } else {
                         if (!init) {
                             lgkorUI.alert('', {
                                 title: '설정 > 앱권한에서 위치정보 이용동의를 하셔야 이용 가능합니다.'
@@ -851,9 +839,24 @@ function moveConsultPage() {
                             
                             self._loadStoreData();
                         }	
-                        //setAppLocation('37.55401,126.97486');
-            		}
-                }	
+                        //setAppLocation('37.55401,126.97486');	    	        			
+                    }
+                } 
+            }
+
+            var getAppCurrentLocation = function() {
+                if(isApp()){
+                    // 앱권한 요청 함수
+                    if(vcui.detect.isIOS) {
+                        var obj = new Object();
+                        obj.command = "isUseGps";
+                        obj.callback ="useGps";
+                        var jsonString= JSON.stringify(obj);
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    } else {
+                        useGps(android.getLocationActive());
+                    }
+                }
             };
             
             var obj ={
