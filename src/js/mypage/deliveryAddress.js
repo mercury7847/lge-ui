@@ -56,6 +56,7 @@
             },
             receiverUser: {
                 required: true,
+                maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
                 msgTarget: '.err-block'
             },
