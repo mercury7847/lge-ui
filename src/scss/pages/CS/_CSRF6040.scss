@@ -1493,4 +1493,11 @@
 .view-info-btn.withtab3{
     top: 133px !important;
 }
+
+@include mobile {
+    .mdevice:not(.app) footer:not(.no-footer):not(.pop-footer) {
+        padding-bottom: 200px;
+    }
+}
+
 // BTOCSITE-8243 e
