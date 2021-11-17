@@ -192,7 +192,7 @@
                 $fileItem.removeClass('modify');
             }
         };
-
+        /* BTOCSITE-5938-202 [모니터링] 스토리 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         var stanbymeList = {
             params: {},
             init: function() {
@@ -211,12 +211,18 @@
                         self.$sortSelect = $contents.find('.ui_selectbox');
                         self.$listWrap = $contents.find('.tb_row');
                         self.$noData = $contents.find('.empty-row');
+                        var currentUrl = $(location).attr('href');
+                        var pageHash = currentUrl.split('&pageId=')[1];
                         self.params = {
                             'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
-                            'page': 1
+                            'page': pageHash
                         };
 
-                        self.bindEvent();
+                        if( pageHash == 1 ) {
+                            self.bindEvent();    
+                        } else{
+                            self.renderList();   
+                        }
 
                         //  Q&A 탭으로 이동
                         // tab default 처리
@@ -228,8 +234,14 @@
                             var params = $.extend(loc.searchParams.getAll(), {
                                 tab : self.tabList[data.selectedIndex]
                             });
+                            var hashArr1 = $.param(params).split('&')[0];
 
-                            history.replaceState(null, null, loc.pathname +'?'+ $.param(params));
+                            history.replaceState(null, null, loc.pathname +'?'+ hashArr1 + '&pageId=1');
+                            self.params = $.extend({}, self.params, {
+                                'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
+                                'page': 1
+                            });
+                            self.renderList(); 
                         });
                     });
 
@@ -260,6 +272,8 @@
 
                     self.$pagination.vcPagination('setPageInfo', page);
                 });
+                self.pageEvent();
+                self.filterEvent();
             },
             bindEvent: function() {
                 var self = this;
@@ -267,24 +281,46 @@
                 self.$listWrap.on('click', '.board-tit a', function() {
                     lgkorUI.historyBack(this);
                 });
+                self.pageEvent();
+                self.filterEvent();
+            },
+            pageEvent: function() {
+                var self = this;
+                self.$pagination.on('page_click', function(e,page) {
+                    self.params = $.extend({}, self.params, {
+                        'page': page
+                    });
+                    self.renderList();
+                    
+                    var currentUrl = $(location).attr('href');
+                    var url = currentUrl + '&pageId=' + page;
+                    var arr = url.split('&')[0];
+                    var urlSet = arr + '&pageId=' + page;
 
+                    history.replaceState(null, null, urlSet);
+
+                });
+            },
+            filterEvent: function(){
+                var self = this;
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
                     self.renderList();
-                });
 
-                self.$pagination.on('page_click', function(e,page) {
-                    self.params = $.extend({}, self.params, {
-                        'page': page
-                    });
-                    self.renderList();
+
+
+                    var currentUrl = $(location).attr('href');
+                    var url = currentUrl + '&pageId=1';
+                    var urlSet = url.split('&')[0];
+
+                    history.replaceState(null, null, urlSet);
                 });
             }
         };
-
+        /* //BTOCSITE-5938-202 [모니터링] 스토리 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         var stanbymeDetail = {
             params: {},
             init: function() {
