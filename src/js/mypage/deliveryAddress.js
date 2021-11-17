@@ -76,6 +76,7 @@
             },
             phoneNumber: {
                 required: true,
+                minLength:10,
                 errorMsg: "휴대폰번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
