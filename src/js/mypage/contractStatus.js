@@ -1,4 +1,56 @@
 (function(){
+    //케어십 - 14개월 미만
+    var lb_careShip = '<div class="sects lb-pdlr lb-careShip">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케이십 가입 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contractInfo.contStartDate }}</span> ~ <span>{{ contractInfo.contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        '고객님과 LG전자 케어십이 함께하는 최소 1년동안 <span>케어솔루션 제품 추가 결합 시 모바일 상품권</span>을 드립니다.<br>' +
+                        '물, 공기 뿐만 아니라 라이프 스타일까지 한번에 케어솔루션 하시고 추가 혜택까지 받아보세요!' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom">' +
+                    '<div class="lb-icon">' +
+                        '<i>' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_pc.png" class="pc" alt="상품권 아이콘">' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_mobile.png" class="mobile" alt="상품권 아이콘">' +
+                        '</i>' +
+                    '</div>' +
+                    '<div class="lb-bottom_text">' +
+                        '<p class="lb-TTxt">이 메시지를 받으신 고객님께서 <span><br class="mob-only">케어솔루션 추가 결합 시 혜택</span></p>' +
+
+                        '<h5>모바일 상품권 관련 상세 기준</h5>' +
+
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 베스트샵에서 1백만원 이상 구매조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">추가 결합 제품 설치 익월말 계약자 휴대폰번호로 증정</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 사용방법 :</p>' +
+                                '<p class="dd">문자메세지 내 인증번호로 상품권교환처에서 상품권 교환(유효기간 1년)</p>' +
+                            '</li>' +
+                        '</ul>' +
+
+                        '<span class="lb-bTxt">공급사 사정에 따라 타브랜드로 변경될 수 있습니다.</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    
     var MODE_USER = "USER";
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
@@ -44,6 +96,7 @@
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
+
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -868,14 +921,30 @@
         }
     }
 
+    //주영 여기
     function setContractInfo(data){
         mypage.find(".no-data").remove();
 
-        console.log("setContractInfo %o",data);
-        if(data != undefined && data != "" && data != null){
+        var tetete1 = $('select[name=contractInfo]').find('option:selected').val();
+        var tetetete = $('.lb-container');
+        //console.log("setContractInfo_의 데이터 %o",data);
+        //console.log("셀렉", tetete1);
+        //mypage.find(".section-wrap").hide();
+        //console.log("sssss", mypage.find(".section-wrap"))
+
+        // if(tetete1 != ""){
+        //     mypage.find(".section-wrap").hide();
+        // } else {
+        //     mypage.find(".section-wrap").show();
+        // }
+
+
+        //주영 여기
+        if(data != undefined && data != "" && data != null && tetete1 != ""){
             var info;
     
             mypage.find(".section-wrap").show();
+            mypage.find(".lb-common").show();
     
             info = getMaskingData(data.userInfo.user);
             changeFieldValue('user-info', info);
@@ -1009,6 +1078,10 @@
                 rcvDtlAddr: data.userInfo.actualUser.rcvDtlAddr
             }
             userInfoValidation.setValues(userInfo);
+
+            // console.log("ssssssssssss");
+            // console.log(userInfo.actualUserName);
+            // console.log(data.managerInfo.name);
     
             cardInfo = {
                 paymentCard: data.paymentInfo.cardInfo.cardComValue,
@@ -1024,9 +1097,43 @@
             }
             bankValidation.setValues(bankInfo);
 
+
+            //날짜 데이터
+            var $contract_startDate = data.contractInfo.contStartDate;
+            var $contract_endDate = data.contractInfo.contEndDate;
+
+            //날짜 데이터 형태 변환
+            var $st_date = $contract_startDate.replace(".", "/").replace(".", "/");
+            var $ed_date = $contract_endDate.replace(".", "/").replace(".", "/");
+
+            //날짜 
+            var $date1 = new Date($st_date);
+            var $date2 = new Date($ed_date);
+
+            // var sdt = new Date('string_Date1');
+            // var edt = new Date('string_Date2');
+            // var dateDiff = Math.ceil((edt.getTime()-sdt.getTime())/(1000*3600*24));
+            // console.log("hhhh", dateDiff)
+
+  
+            console.log("시작 날짜 :", $date1);
+            console.log("종료 날짜 :", $date2);
+
+
+            //console.log("eeee", $fofo);
+            //console.log("vvvv", $koko);
+
+            //주영 -----------------------------------------------
+            tetetete.html(vcui.template(lb_careShip, data));
+            
+
             setPaymentModeCont();
+
         } else{
+
             mypage.find(".section-wrap").hide();
+            mypage.find(".lb-container").empty();
+            //mypage.find(".lb-common").hide();
 
             mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
@@ -1052,6 +1159,8 @@
         return newdata;
     }
 
+
+    //주영
     function changeContractInfo(){
         lgkorUI.showLoading();
 
@@ -1068,11 +1177,14 @@
         
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
 
+            //주영
+            //var tetetete = $('.lb-container');
 
-            console.log("result %o",result);
-            setContractInfo(result.data);
+            // console.log("result_1111111 %o",result);
+            // console.log("test", lb_careShip);
+            // console.log("changeContractInfo의 select", sendata);
 
-        
+            setContractInfo(result.data);       
 
             lgkorUI.hideLoading();
 
