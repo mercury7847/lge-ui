@@ -90,21 +90,32 @@
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = self.selectedTabHref(self.$subTab);
                 self.requestData({"superCategoryId":category1,"categoryId":category2/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": data}, false);
-            });
-            /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
-            var pageNum = window.location.hash;
-            var pageArray = pageNum.split('&');
-            var pageNum = pageArray[1];
-            console.log('!!pageNum : ' + pageNum);
 
+                /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+                var currentUrl = $(location).attr('href');
+                var hashArr = currentUrl.split('&');
+                var urlSet = hashArr[0] + '&' + data;
+                
+                history.replaceState(null, null, urlSet);
+                /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+            });
+
+            /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+            var hash = window.location.hash;
+            var hashArr = hash.split('&');
+            var tabHash = hashArr[0]; 
+            var tabNum = hashArr[0].split('#')[1];
+            var pageNum = hashArr[1];
+            var storyTab = $('.tabs-wrap .tabs li a[href="' + tabHash +'"]');
+            
             if(!!window.location.hash){	
-                var storyTab = $('.tabs-wrap .tabs li a[href="' + window.location.hash +'"]');	
-                var pageClik = $('.pagination a[href="' + '#'+pageNum +'"]');	
-                storyTab.trigger('click');
-                pageClik.trigger('click');
-            } else{
-                var firstTab = $('.tabs-wrap .tabs li:first-child a');	
-                firstTab.trigger('click');
+                self.$mainTab.vcTab('select', storyTab.parents('li').index());
+                self.requestData({"superCategoryId":tabNum,"categoryId":"","page": pageNum}, true);
+            } else {
+                var currentUrl = $(location).attr('href');
+                var urlSet = currentUrl + '#&1';
+                
+                history.replaceState(null, null, urlSet);
             }
             /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         },
@@ -160,11 +171,10 @@
                     var currentUrl = $(location).attr('href');
                     var superCategoryId = param.superCategoryId;
                     var url = currentUrl + '#' + superCategoryId;
-                    var strArray = url.split('#');
-                    var str1 = strArray[0];
-                    var urlSet = str1 + '#' + superCategoryId;
-
-                    history.pushState(null, null, urlSet);
+                    var str = url.split('#')[0];
+                    var urlSet = str + '#' + superCategoryId + '&' + param.page;                                
+                    
+                    history.replaceState(null, null, urlSet);
                     /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                 }
 
