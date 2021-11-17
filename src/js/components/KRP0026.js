@@ -94,8 +94,7 @@
                 /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                 var currentUrl = $(location).attr('href');
                 var hashArr = currentUrl.split('&');
-                var url = hashArr[0];
-                var urlSet = url + '&' + data;
+                var urlSet = hashArr[0] + '&' + data;
                 
                 history.replaceState(null, null, urlSet);
                 /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
@@ -110,11 +109,12 @@
             var storyTab = $('.tabs-wrap .tabs li a[href="' + tabHash +'"]');
             
             if(!!window.location.hash){	
-                self.$mainTab.vcTab('select', storyTab.parents('li').index())
+                self.$mainTab.vcTab('select', storyTab.parents('li').index());
                 self.requestData({"superCategoryId":tabNum,"categoryId":"","page": pageNum}, true);
             } else {
                 var currentUrl = $(location).attr('href');
                 var urlSet = currentUrl + '#&1';
+                
                 history.replaceState(null, null, urlSet);
             }
             /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
@@ -171,13 +171,9 @@
                     var currentUrl = $(location).attr('href');
                     var superCategoryId = param.superCategoryId;
                     var url = currentUrl + '#' + superCategoryId;
-                    var strArray = url.split('#');
-                    var str1 = strArray[0];
-                    var page = param.page;
-                    console.log(page);
-
-                    var urlSet = str1 + '#' + superCategoryId + '&' + page;                                
-
+                    var str = url.split('#')[0];
+                    var urlSet = str + '#' + superCategoryId + '&' + param.page;                                
+                    
                     history.replaceState(null, null, urlSet);
                     /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                 }
