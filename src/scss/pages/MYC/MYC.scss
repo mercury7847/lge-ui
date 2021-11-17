@@ -105,6 +105,87 @@
             @include mobile {
                 margin:0 -16px;
             }
+            .latter-btnWarp {
+                position: relative;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                li {
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                    width: 50%;
+                    margin: 0px 12px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        position: relative;
+                        display: block;
+                        padding: 20px 20px 20px 40px;
+                        .latter-btn-text {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            align-content: center;
+                            i {
+                                margin-right: 30px;
+                                img {}
+                            }
+                            p {
+                                font-size: 22px;
+                                line-height: 32px;
+                                span {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                        &::after {
+                            content: '';
+                            width: 29px;
+                            height: 27px;
+                            background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                            background-position: 0 0;
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            top: 50%;
+                            right: 20px;
+                            margin-top: -14px;
+                        }
+                    }
+                }
+                @include mobile {
+                    flex-direction: column;
+                    li {
+                        width: 100%;
+                        margin: 0 0 25px 0;
+                        a {
+                            padding : 10px 12px;
+                            .latter-btn-text {
+                                i {
+                                    margin-right: 10px;
+                                    img {}
+                                }
+                                p {
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                }
+                            }
+                            &::after {
+                                width: 32px;
+                                height: 32px;
+                                background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                                background-position: center;
+                                top: 50%;
+                                right: 12px;
+                                margin-top: -16px;
+                            }
+                        }
+                    }
+                }
+            }
             // contents
             .section-inner {
                 .inner-box {
