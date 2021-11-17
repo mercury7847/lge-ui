@@ -14,6 +14,17 @@ footer {
         padding: 16px 0 60px;
     }
     /* 20210601 : BTOCSITE-874 추가 */
+
+    // -S- BTOCSITE-5938-204 푸터 하단 가리는 현상 수정
+    &.default-bottom-wrap {
+        padding-bottom: 130px;
+        @include mobile {
+            padding-bottom: 140px;
+        }
+    }
+    // -E- BTOCSITE-5938-204 푸터 하단 가리는 현상 수정
+
+
     // footer cont
     .foot-cont {
         .cont-area {
