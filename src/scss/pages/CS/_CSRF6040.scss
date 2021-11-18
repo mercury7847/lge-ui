@@ -669,7 +669,7 @@
                     width:100%;
                 }
                 @include mobile {
-                   bottom:70px;
+                   bottom:0px;
                 }
                 .btn-sel {
                     position:relative;
@@ -1500,9 +1500,12 @@
     .mdevice:not(.app) footer:not(.no-footer):not(.pop-footer) {
         padding-bottom: 150px;
     }
+    .mdevice .find-store-wrap .map-container .store-list-wrap .opt-cont {
+        bottom:70px;
+    }
     .app.mdevice .find-store-wrap .map-container .store-list-wrap .opt-cont {
         bottom:0;
-     }
+    }
 }
 
 // BTOCSITE-8243 e
