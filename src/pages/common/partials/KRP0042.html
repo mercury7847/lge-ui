@@ -1,0 +1,205 @@
+<!-- components/partials/KRP0042.html -->
+<div class="component-wrap">
+	<!--
+        [component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [text-area 옵션]
+        1. 가로 정렬 [KR수정_201214]
+        .box-align-left : 텍스트 영역이 왼쪽
+        .box-align-right : 텍스트 영역이 오른쪽
+        .box-align-center : 텍스트 영역이 가운데
+
+        2. 세로 정렬
+        .align-top: 텍스트 영역이 상단
+        .align-middle: 텍스트 영역이 중간
+        .align-bottom: 텍스트 영역이 하단
+
+        3. 텍스트 영역 넓이
+        .type-wide : 넓음
+        .type-narrow : 좁음
+
+        4. 텍스트 정렬
+        .text-align-left : left
+        .text-align-center : center
+        .text-align-right : right
+
+        [.component 영역 사이즈 옵션]
+        1. 이미지 사이즈
+        .stage-full : visual width 1920px(100%)
+        .stage-wide : visual width 1600px
+        .stage-medium : visual width 1380px
+
+        2. usp-banner-wrap > indi-wrap 없는 경우
+        .usp-btm : 하단여백 없음
+
+        [copy 옵션]
+        1. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+    -->
+	<section class="component KRP0042 @@stageSize">
+        <div class="component-box">
+            <div class="usp-banner-wrap ui_carousel_slider">
+                <!-- Indicator Area -->
+                <div class="indi-wrap">
+                    <ul class="ui_carousel_dots indi-conts">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                    <span class="ui_carousel_play play">
+                        <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                    </span>
+                </div>
+                <!-- //Indicator Area -->
+
+                <!-- Swipe Area -->
+                <div class="ui_carousel_track">
+                    <!-- item -->
+                    <div class="carousel-box ui_carousel_slide">
+                        <a href="#">
+                            <div class="visual-area">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG.jpg" alt="" class="pc-only">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG-m.jpg" alt="" class="mo-only">
+                            </div>
+                            <div class="text-area type-wide box-align-left align-top text-align-left">
+                                <div class="inner">
+                                    <span class="banner-tit-sup">아이브로우 최대 20자</span>
+                                    <div class="title">
+                                        <h2>헤드라인 글자수최대 60자</h2>
+                                    </div>
+                                    <p class="banner-txt">바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자</p>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "디스클레이머 영역 14px 사용합니다. 디스클레이머 영역 최대 500자까지 가능합니다.",
+                                        ]
+                                    })
+                                    <div class="banner-btn">
+                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- //item -->
+                     <!-- item -->
+                     <div class="carousel-box ui_carousel_slide">
+                        <a href="#">
+                            <div class="visual-area">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG.jpg" alt="" class="pc-only">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG-m.jpg" alt="" class="mo-only">
+                            </div>
+                            <div class="text-area type-wide box-align-left align-top text-align-left">
+                                <div class="inner">
+                                    <span class="banner-tit-sup">아이브로우 최대 20자</span>
+                                    <div class="title">
+                                        <h2>헤드라인 글자수최대 60자</h2>
+                                    </div>
+                                    <p class="banner-txt">바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자</p>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "디스클레이머 영역 14px 사용합니다. 디스클레이머 영역 최대 500자까지 가능합니다.",
+                                        ]
+                                    })
+                                    <div class="banner-btn">
+                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- //item -->
+                     <!-- item -->
+                     <div class="carousel-box ui_carousel_slide">
+                        <a href="#">
+                            <div class="visual-area">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG.jpg" alt="" class="pc-only">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG-m.jpg" alt="" class="mo-only">
+                            </div>
+                            <div class="text-area type-wide box-align-left align-top text-align-left">
+                                <div class="inner">
+                                    <span class="banner-tit-sup">아이브로우 최대 20자</span>
+                                    <div class="title">
+                                        <h2>헤드라인 글자수최대 60자</h2>
+                                    </div>
+                                    <p class="banner-txt">바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자</p>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "디스클레이머 영역 14px 사용합니다. 디스클레이머 영역 최대 500자까지 가능합니다.",
+                                        ]
+                                    })
+                                    <div class="banner-btn">
+                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- //item -->
+                     <!-- item -->
+                     <div class="carousel-box ui_carousel_slide">
+                        <a href="#">
+                            <div class="visual-area">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG.jpg" alt="" class="pc-only">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG-m.jpg" alt="" class="mo-only">
+                            </div>
+                            <div class="text-area type-wide box-align-left align-top text-align-left">
+                                <div class="inner">
+                                    <span class="banner-tit-sup">아이브로우 최대 20자</span>
+                                    <div class="title">
+                                        <h2>헤드라인 글자수최대 60자</h2>
+                                    </div>
+                                    <p class="banner-txt">바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자까지 작성 가능합니다. 바디카피 공백포함 최대 400자</p>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "디스클레이머 영역 14px 사용합니다. 디스클레이머 영역 최대 500자까지 가능합니다.",
+                                        ]
+                                    })
+                                    <div class="banner-btn">
+                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button>
+                                    </div>
+                                    <div class="banner-btn">
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- //item -->
+                </div>
+                <!-- //Swipe Area -->
+
+                <!-- Navigation Area -->
+                <div class="controls-wrap">
+                    <div class="inner">
+                        <div class="row">
+                            <button type="button" class="btn-arrow prev">이전</button>
+                            <button type="button" class="btn-arrow next">다음</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- //Navigation Area -->
+            </div>
+        </div>
+    </section>
+</div>

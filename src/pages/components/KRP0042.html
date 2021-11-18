@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0042",
+		isJScompile: true,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<!-- component-wrap -->
+			@@include('./common/partials/KRP0042.html', {
+				stageSize : "stage-full"
+			})
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			@@include('./common/partials/KRP0042.html', {
+				stageSize : "stage-wide"
+			})
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			@@include('./common/partials/KRP0042.html', {
+				stageSize : "stage-medium"
+			})
+			<!-- //component-wrap -->
+
+		</div>
+	</div>
+</body>
+</html>
