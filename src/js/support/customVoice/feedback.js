@@ -1,5 +1,4 @@
 (function() {
-    var validation;
     var authManager;
     var authFlag = lgkorUI.isLogin;
 
@@ -122,7 +121,7 @@
                     }
                 };
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                self.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 authManager = new AuthManager(authOptions);
 
                 self.bindEvent();
@@ -133,7 +132,33 @@
             var self = this;
 
             self.$form.find('.btn-confirm').on('click', function() {
-                var result = validation.validate();
+                var contactPhoneNo1 = $('#contactPhoneNo1').val();
+                var contactPhoneNo2 = $('#contactPhoneNo2').val();
+                var contactPhoneNo3 = $('#contactPhoneNo3').val();
+
+                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                    if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo1').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{3,4}/.test(contactPhoneNo2)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo2').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{4,4}/.test(contactPhoneNo3)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo3').focus();
+                        return;
+                    }
+
+                    $('.err-block.contact-box-err-blocK').hide();
+                }
+
+                var result = self.validation.validate();
 
                 if (authFlag && result.success == true) {   
                     lgkorUI.confirm('', {
@@ -142,7 +167,7 @@
                         cancelBtnName: '취소',
                         ok: function() {
                             var ajaxUrl = self.$form.data('ajax');
-                            var data = validation.getAllValues();
+                            var data = self.validation.getAllValues();
 
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
@@ -190,7 +215,7 @@
             });
 
             $('.btn-open, #userName, #phoneNo').on('click', function() {
-                var result = validation.validate(['privcyCheck']);
+                var result = self.validation.validate(['privcyCheck']);
 
                 if (!authFlag && result.success) {
                     authManager.open(function() {
@@ -214,9 +239,33 @@
                 });
             });
 
-            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            })
+            // 연락가능 전화번호 밸리데이션
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('change', function(e){
+                var contactPhoneNo1 = $('#contactPhoneNo1').val();
+                var contactPhoneNo2 = $('#contactPhoneNo2').val();
+                var contactPhoneNo3 = $('#contactPhoneNo3').val();
+
+                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                    if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo1').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{3,4}/.test(contactPhoneNo2)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo2').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{4,4}/.test(contactPhoneNo3)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo3').focus();
+                        return;
+                    }
+                    $('.err-block.contact-box-err-blocK').hide();
+                }
+            });
         }
     }
 
