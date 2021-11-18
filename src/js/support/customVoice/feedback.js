@@ -69,6 +69,27 @@
                             }
                         }
                     },
+                    contactPhoneNo1: {
+                        required: true,
+                        pattern: /^0/,
+                        minLength : 2,
+                        maxLength : 3,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
+                    contactPhoneNo2: {
+                        required: true,
+                        minLength : 3,
+                        maxLength : 4,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
+                    contactPhoneNo3: {
+                        required: true,
+                        minLength : 4,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
                     title: {
                         required: true,
                         maxLength: 100,
@@ -215,7 +236,13 @@
             });
 
             $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
+
                 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+
+
+
+
+
             })
         }
     }
