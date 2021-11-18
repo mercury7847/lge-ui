@@ -1546,11 +1546,6 @@
 			background:#8a898f;
 		}
 	}
-	// &.fridge_manhattan-midnight {
-	// 	& input + label:before {
-	// 		background:#525459;
-	// 	}
-	// }
 	&.fridge_montblanc-nature {
 		& input + label:before {
 			background:#a3a5a8;
@@ -1977,12 +1972,6 @@
 			background:#465050;
 		}
 	}
-	/* 세탁기 */
-	// &.washing_modern-stainless {
-	// 	& input + label:before {
-	// 		background:#B1B1B3;
-	// 	}
-	// }
 	&.washing_mid-free-silver {
 		& input + label:before {
 			background:#aaaaaa;
@@ -2793,6 +2782,53 @@
 		}
 	}
 	/* //BTOCSITE-2758 시블링 컬러칩코드 추가요청 */
+
+	//BTOCSITE-4224 PLP,PDP 시블링
+	$colorChipData: (
+		av_charcoal-black: -48px -216px,
+		av_pearl-white: -72px -216px,
+		av_blue-black: -96px -216px,
+		av_silver-white: -120px -216px,
+
+		av_berry-blue: 0 -240px,
+		av_bubble-black: -24px -240px,
+		av_sour-lemon: -48px -240px,
+		fridge_manhattan-midnight: -72px -240px,
+		objet_botanic: -96px -240px,
+		objet_Stone: -120px -240px,
+
+		kimchi_shinee-pure: 0 -264px,
+		oven_shinee-pure-silver: -24px -264px,
+		oven_pure-black: -48px -264px,
+		washing_black-stainless: -72px -264px,
+		washing_modern-stainless: -96px -264px,
+		washing_middle-black: -120px -264px,
+
+		objet_calm-beige_calm-green: 0 -288px,
+		objet_calm-green_calm-beige: -24px -288px,
+		objet_calm-beige_Iron-gray: -48px -288px,
+		objet_calm-green_Iron-gray: -72px -288px,
+		objet_calm-beige_fantasy-silver: -96px -288px,
+		objet_calm-green_fantasy-silver: -120px -288px,
+
+		objet_calm-beige_black: 0 -312px,
+		objet_calm-green_black: -24px -312px,
+		air_milktea-latte: -48px -312px,
+		air_new-metal-shine: -72px -312px,
+		air_romantic-rose: -96px -312px,
+		air_dark-blue: -120px -312px,
+
+		air_rose-gold: 0 -336px,
+	);
+
+	@each $color, $bgPosition in $colorChipData {
+		&.#{$color} {
+			& input + label:before {
+				background-position: $bgPosition;
+			}
+		}
+	}
+	//BTOCSITE-4224 PLP,PDP 시블링
 }
 
 
