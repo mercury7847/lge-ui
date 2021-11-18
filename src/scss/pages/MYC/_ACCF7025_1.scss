@@ -1,0 +1,718 @@
+/* BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 */
+.lnb-contents {
+    &.latter-contents {
+        position: relative;
+        .pc {
+            @include mobile {
+                display: none;
+            }
+        }
+        .mobile {
+            display: none;
+            @include mobile {
+                display: block;
+            }
+        }
+        .teb-only {
+            display: none;
+            @media screen and (max-width:1023px) {
+                display: block;
+            }
+        }
+        .my-contract-info {
+            position: relative;
+            margin-bottom: 40px;
+            @include mobile {
+                margin-bottom: 55px;
+            }
+            .tit {
+                font-weight: 100;
+                .b-txt {
+                    font-size: 24px;
+                    .lc-name {
+                        font-weight: bold;
+                    }
+                }
+                .s-txt {
+                    font-size: 16px;
+                    b {
+                        display: inline-block;
+                    }
+                }
+
+                @include mobile {
+                    .b-txt {
+                        font-size: 20px;
+                        margin-bottom: 16px;
+                    }
+                    .s-txt {
+                        font-size: 14px;
+                    }
+                }
+            }
+            &.latter-topBanner {
+                padding: 38px;
+                text-align: center;
+                color: #fff;
+                margin-bottom: 60px;
+                p { margin-bottom: 16px; }
+                span {}
+                @include mobile {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    span {
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+        .lb-section-wrap {
+            .lb-container {
+                margin-bottom: 100px;
+                @include mobile {
+                    margin-bottom: 80px;
+                }
+            }
+            .sects {
+                border-top: 0;
+                @include mobile {
+                    &.lb-pdlr {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+
+                /* 연차별 혜택 기본 */
+                .latter-benefits {
+                    position: relative;
+                    .lc-benefits_title {
+                        text-align: center;
+                        margin-bottom: 32px;
+                        h3 {
+                            font-size: 24px;
+                        }
+                        @include mobile {
+                            margin-bottom: 20px;
+                            h3 {
+                                font-size: 20px;
+                                line-height: 28px;
+                                word-break: keep-all;
+                            }
+                        }
+                    }
+                    .lc-benefits_list {
+                        position: relative;
+                        ul {
+                            border: 1px solid #aaa;
+                            border-radius: 8px;
+                            display: flex;
+                            @include mobile {
+                                flex-direction: column;
+                            }
+                            li {
+                                width: 25%;
+                                border-right: 1px solid #aaa;
+                                padding: 35px 20px;
+                                @media screen and (max-width:1023px) {
+                                    padding: 6% 2%;
+                                }
+                                @include mobile {
+                                    width: 100%;
+                                    padding: 25px 20px;
+                                    border-right: 0;
+                                    border-bottom: 1px solid #aaa;
+                                }
+                                &:last-child {
+                                    border-right: 0;
+                                    border-bottom: 0;
+                                }
+                                .lc-list_cont {
+                                    position: relative;
+                                    text-align: center;
+                                    .lc-head {
+                                        padding-bottom: 30px;
+                                        margin-bottom: 30px;
+                                        border-bottom: 2px dashed #ddd;
+                                        @include mobile {
+                                            padding-bottom: 15px;
+                                            margin-bottom: 15px;
+                                        }
+                                        i {
+                                            img {}
+                                        }
+                                        h4 {
+                                            font-size: 22px;
+                                            line-height: 28px;
+                                            @media screen and (max-width:1023px) {
+                                                font-size: 20px;
+                                            }
+                                            @include mobile {
+                                                font-size: 18px;
+                                            }
+                                            span {
+                                                color: #da0f47;
+                                            }
+                                        }
+                                    }
+                                    .lc-cont {
+                                        position: relative;
+                                        p {
+                                            line-height: 26px;
+                                            margin-bottom: 24px;
+                                            word-break: keep-all;
+                                            span {
+                                                color: #da0f47;
+                                            }
+                                        }
+                                        dl {
+                                            @include mobile {
+                                                display: flex;
+                                                justify-content: center;
+                                            }
+                                            dd {
+                                                position: relative;
+                                                display: inline-block;
+                                                font-size: 14px;
+                                                line-height: 22px;
+                                                padding-left: 5px;
+                                                @include mobile {
+                                                    font-size: 13px;
+                                                    padding-left: 10px;
+                                                }
+                                                &::before {
+                                                    content: '';
+                                                    width: 3px;
+                                                    height: 3px;
+                                                    background-color: #000;
+                                                    position: absolute;
+                                                    top: 10px;
+                                                    left: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .bullet-list {
+                        &.top-border{
+                            margin-top: 80px;
+                            li {
+                                span {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+                /* 연차별 혜택 : 컨텐츠 */
+                .latter-benefits_detail {
+                    position: relative;
+                    background-color: #f4f4f4;
+                    padding: 40px 60px;
+                    border-radius: 8px;
+                    background-image: url("/lg5-common/images/MYC/care/benefit_bg.jpg");
+                    background-repeat: no-repeat;
+                    background-position: center bottom;
+                    padding-bottom: 420px;
+                    @include mobile {
+                        padding: 30px;
+                        padding-bottom: 57.36636245110821vw;
+                        border-radius: 0;
+                        background-image: url("/lg5-common/images/MYC/care/benefit_bg_mobile.jpg");
+                        background-size: 100%;
+                    }
+                    &.lb-5year {
+                        padding-bottom: 40px;
+                        background-image: none;
+                    }
+                    .lb-cont {
+                        background-color: #fff;
+                        padding: 60px;
+                        border-radius: 8px;
+                        @include mobile {
+                            padding: 40px 14px;
+                        }
+                        .lb-cont_top {
+                            margin-bottom: 70px;
+                            &.cont_top-custom {
+                                margin-bottom: 50px;
+                                padding-bottom: 50px;
+                                border-bottom: 2px solid #f1f1f1;
+                                @include mobile {
+                                    margin-bottom: 40px;
+                                    padding-bottom: 40px;
+                                }
+                            }
+                            @include mobile {
+                                margin-bottom: 55px;
+                            }
+                            .lb-head_cont {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                margin-bottom: 20px;
+                                @include mobile {
+                                    flex-direction: column;
+                                    margin-bottom: 30px;
+                                }
+                                h3 {
+                                    font-size: 24px;
+                                    line-height: 32px;
+                                    @include mobile {
+                                        font-size: 20px;
+                                        line-height: 28px;
+                                        text-align: center;
+                                        margin-bottom: 19px;
+                                        word-break: keep-all;
+                                    }
+                                }
+                                .lb-term {
+                                    position: relative;
+                                    background-color: #e3e3e3;
+                                    padding: 10px 25px 10px 35px;
+                                    border-radius: 50px;
+                                    &::before {
+                                        content: '';
+                                        width: 3px;
+                                        height: 3px;
+                                        background-color: #000;
+                                        position: absolute;
+                                        top: 18px;
+                                        left: 24px;
+                                    }
+                                    @include mobile {
+                                        font-size: 13px;
+                                        padding: 10px 15px 10px 20px;
+                                        &::before {
+                                            width: 2px;
+                                            height: 2px;
+                                            top: 16px;
+                                            left: 13px;
+                                        }
+                                    }
+                                }
+                            }
+      
+                            .lb-top_text {
+                                line-height: 26px;
+                                @include mobile {
+                                    text-align: center;
+                                    word-break: keep-all;
+                                    font-size: 13px;
+                                    line-height: 20px;
+                                }
+                                span {
+                                    color: #da0f47;
+                                }
+                            }
+
+                        }
+
+                        .lb-btn {
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 70px;
+                            .btn {
+                                font-size: 14px;
+                                font-weight: 100;
+                                padding: 6px 70px;
+                            }
+                            @include mobile {
+                                margin-bottom: 55px;
+                                .btn {
+                                    font-size: 13px;
+                                    padding: 6px;
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                        .lb-cont_bottom {
+                            position: relative;
+                            display: flex;
+                            justify-content: space-between;
+                            @include mobile {
+                                flex-direction: column;
+                            }
+                            .lb-icon {
+                                i {
+                                    img {
+                                        width: 100%;
+                                        max-width: 279px;
+                                    }
+                                }
+                                @include mobile {
+                                    position: absolute;
+                                    top: 70px;
+                                    i {
+                                        img {
+                                            max-width: 448px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.cont_bottom-custom {
+                                .lb-bottom_text {
+                                    width: 100%;
+                                }
+                            }
+                            .lb-bottom_text {
+                                width: 65%;
+                                @include mobile {
+                                    width: 100%;
+                                }
+                                .lb-TTxt {
+                                    font-size: 20px;
+                                    margin-bottom: 30px;
+                                    @include mobile {
+                                        font-size: 16px;
+                                        text-align: center;
+                                        line-height: 24px;
+                                        margin-bottom: 300px;
+                                        // margin-bottom: 39.113428943937414vw;
+                                    }
+                                    @media screen and(max-width: 580px) {
+                                        margin-bottom: 50.124137931034484vw
+                                    }
+                                    span {
+                                        font-weight: bold;
+                                    }
+                                }
+                                h5 {
+                                    font-size: 16px;
+                                    margin-bottom: 30px;
+                                    @include mobile {
+                                        margin-bottom: 25px;
+                                    }
+                                }
+                                ul {
+                                    position: relative;
+                                    @include mobile {
+                                        font-size: 13px;
+                                    }
+                                    li {
+                                        display: flex;
+                                        margin-bottom: 5px;
+                                        line-height: 24px;
+                                        p {
+                                            position: relative;
+                                            &.dt {
+                                                width: 85px;
+                                                &.dt-custom {
+                                                    width: auto;
+                                                }
+                                            }
+                                            &.dd {
+                                                width: 80%;
+                                                word-break: keep-all;
+                                                &.dd-custom {
+                                                    width: auto;
+                                                }
+                                            }
+                                        }
+                                        @include mobile {
+                                            line-height: 20px;
+                                            margin-bottom: 5px;
+                                            p {
+                                                &.dt {
+                                                    width: 68px;
+                                                }
+                                                &.dd {
+                                                    width: 80%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .lb-bTxt {
+                                    position: relative;
+                                    font-size: 14px;
+                                    padding-left: 10px;
+                                    &::before {
+                                        content: '';
+                                        width: 3px;
+                                        height: 3px;
+                                        background-color: #000;
+                                        position: absolute;
+                                        top: 10px;
+                                        left: 0;
+                                    }
+                                    @include mobile {
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .lb-cont_img {
+                            .lb-img-cotent {
+                                position: relative;
+                                overflow: hidden;
+                                margin-bottom: 30px;
+                                @include mobile {
+                                    flex-direction: column;
+                                    margin-bottom: 40px;
+                                }
+                                .lb-cont-i_text {
+                                    position: relative;
+                                    width: 47%;
+                                    float: left;
+                                    margin-top: 45px;
+                                    &.pdr-custom {
+                                        padding-right: 20px;
+                                    }
+                                    &.pdl-custom {
+                                        padding-left: 20px;
+                                    }
+                                    &.fl-r {
+                                        float: right;
+                                    }
+                                    h3 {
+                                        font-size: 20px;
+                                        line-height: 30px;
+                                        margin-bottom: 10px;
+                                    }
+                                    p {
+                                        line-height: 20px;
+                                    }
+                                    @media screen and(max-width:1250px) {
+                                        margin-top: 0;
+                                    }
+                                    @include mobile {
+                                        width: 100%;
+                                        text-align: center;
+                                        margin-bottom: 20px;
+                                        margin-top: 0;
+                                        &.pdr-custom {
+                                            padding-right: 0px;
+                                        }
+                                        &.pdl-custom {
+                                            padding-left: 0px;
+                                            margin-top: 15px;
+                                        }
+                                        
+                                        h3 {
+                                            font-size: 15px;
+                                            line-height: 22px;
+                                            margin-bottom: 10px;
+                                        }
+                                        p {
+                                            font-size: 13px;
+                                        }
+                                    }
+                                }
+                                .lb-cont-i_img {
+                                    float: right;
+                                    width: 50%;
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    @include mobile {
+                                        width: 100%;
+                                        justify-content: center;
+                                    }
+
+                                    &.fl-l {
+                                        float: left;
+                                        justify-content: flex-start;
+                                        @include mobile {
+                                            justify-content: center;
+                                        }
+                                    }
+                                    ul {
+                                        display: flex;
+                                        li {
+                                            margin-right: 10px;
+                                            @include mobile {
+                                                margin-right: 15px;
+                                            }
+                                            &:last-child {
+                                                margin-right: 0;
+                                            }
+                                            img {
+                                                width: 100%;
+                                                max-width: 200px;
+                                                @include mobile {
+                                                    max-width: 142px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .tabs-wrap {
+            margin-bottom: 40px;
+            @include mobile {
+                margin-bottom: 20px;
+            }
+        }
+        //아코디언 메뉴 리스트 
+        .latter-accordion {
+            position: relative;
+            .accord-btn {
+                position: relative;
+            }
+            .lists {
+                &.on {
+                    .accord-btn {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .accord-cont {
+                padding-top: 0;
+                .latter-acrord_content {
+                    display: flex;
+                    justify-content: space-between;
+                    .text {
+                        margin-bottom: 20px;
+                    }
+                    .thumb {
+                        margin-right: 80px;
+                        margin-top: -42px;
+                        width: 256px;
+                        min-height: 200px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                .accord-btn {
+                    padding: 16px 12px;
+                    .title {
+                        width: 80%;
+                    }
+                }
+                .accord-cont {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-bottom: 32px;
+                    .latter-acrord_content {
+                        flex-direction: column;
+                        .text {
+                            margin-bottom: 16px;
+                        }
+                        .btn-link {
+                            margin-bottom: 16px;
+                        }
+                        .thumb {
+                            margin-right: 0px;
+                            margin-top: 0px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        //케어솔루션 레터 - 디테일 페이지
+        .latter-detail {
+            position: relative;
+            .latter-detailCont {
+                position: relative;
+                padding: 30px 24px 50px 24px;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 80px;
+                .detail-cont {
+                    p {
+                        line-height: 26px;
+                    }
+                    .coupon-img{
+                        position: relative;
+                        .coupon-end {
+                            display: flex;
+                            align-content: center;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            background-color: rgba(0, 0, 0, 0.7);
+                            span {
+                                position: relative;
+                                width: 110px;
+                                height: 110px;
+                                background-color: #aaa;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 100%;
+                                color: #fff;
+                                font-size: 22px;
+                                font-weight: 600;
+                                @include mobile {
+                                    width: 70px;
+                                    height: 70px;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                    img {
+                        display: flex;
+                        margin: 0 auto;
+                        max-width: 608px;
+                        width: 100%;
+                    }
+                    .manager-call {
+                        position: relative;
+                        display: none;
+                        margin-top: 24px;
+                        font-size: 14px;
+                        padding: 10px 0px;
+                        border-radius: 50px;
+                        text-align: center;
+                        border: 1px solid #000;
+                        justify-content: center;
+                        &::before {
+                            content: '';
+                            width: 24px;
+                            margin-right: 5px;
+                            background-image: url("/lg5-common/images/icons/care/icon_call.png");
+                            background-size: 100%;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include mobile {
+                            display: flex;
+                        }
+                    }
+                }
+                @include mobile {
+                    border-bottom: 2px solid #ddd;
+                    margin-bottom: 32px;
+                }
+            }
+            .lb-section-wrap {
+                position: relative;
+                margin-bottom: 64px;
+            }
+        }
+
+
+
+        .latter-detail_btn {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+/* //BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 */

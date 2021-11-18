@@ -1496,17 +1496,17 @@ html {
             }
         }
         .img-pc{
-            display: block;
+            display: block !important;
         }
         .img-mobile{
-            display:none;
+            display:none !important;
         }
         @include mobile{
             .img-pc{
-                display:none;
+                display:none !important;
             }
             .img-mobile{
-                display:block;
+                display:block !important;
             }
         }
         .animation-area{
@@ -1580,9 +1580,6 @@ html {
             color:#111;
             .text-detail-title, .text-detail-desc{
                 color:#111;
-            }
-            .text-detail-desc{
-                width: 100vw;
             }
         }
         &.text-white {

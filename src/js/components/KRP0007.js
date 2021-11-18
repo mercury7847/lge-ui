@@ -103,7 +103,14 @@
                                 '<em class="text">기본 월 요금</em>' +
                                 '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
                             '</div>' +
-                            '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+                            //[S] BTOCSITE 7447
+                            '{{#if visitPer != "0"}}' +
+                                '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+                            '{{/if}}' +
+                            '{{#if visitPer = "0"}}' +
+                                '<span class="small-text">(방문없음/자가관리)</span>' +
+                            '{{/if}}' +
+                            //[E] BTOCSITE 7447
                         '</div>' +
                         
                     '{{#else}}' + 
