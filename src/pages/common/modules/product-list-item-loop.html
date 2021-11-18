@@ -109,9 +109,7 @@
                     @@if (context.spec) {
                     <ul class="spec-info">
                         <li>용량 : 840L</li>
-                        <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
                         <li>형태 : 노크온 매직스페이스</li>
-                        <li>패턴 : 미드나잇</li>
                         <li>케어십 가능</li>
                     </ul>
                     }
@@ -140,12 +138,14 @@
             </div>
             @@if (context.wish) {
             <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+            <!-- BTOCSITE-7637 -->
             <div class="product-wish">
                 <span class="chk-wish-wrap">
-                    <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
+                    <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked >
                     <label for="@@wish.id"><span class="blind">찜하기</span></label>
                 </span>
             </div>
+            <!-- //BTOCSITE-7637 -->
             }
             @@if (context.price) {
             <div class="price-area">
@@ -257,7 +257,7 @@
                 <div class="btn-area-wrap">
                     <div class="wishlist">
                         <span class="chk-wish-wrap large">
-                            <input type="checkbox" id="@@bottom.wish.id" name="@@bottom.wish.name" @@bottom.wish.checked>
+                            <input type="checkbox" id="@@bottom.wish.id" name="@@bottom.wish.name" @@bottom.wish.checked  data-id="@@bottom.wish.id" data-wish-model-name="@@bottom.wish.wishModelName" data-model-name="@@bottom.wish.modelName" data-wish-list-id="@@bottom.wish.wishListId" data-contents="@@bottom.wish.contents" data-wish-item-id="@@bottom.wish.wishItemId" > <!-- BTOCSITE-7637 -->
                             <label for="@@bottom.wish.id"><span class="blind">찜하기</span></label>
                         </span>
                     </div>

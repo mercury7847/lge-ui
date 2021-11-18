@@ -90,8 +90,34 @@
                 var category1 = self.selectedTabHref(self.$mainTab);
                 var category2 = self.selectedTabHref(self.$subTab);
                 self.requestData({"superCategoryId":category1,"categoryId":category2/*,"sort":self.$selectOrder.vcSelectbox('value')*/,"page": data}, false);
+
+                /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+                var currentUrl = $(location).attr('href');
+                var hashArr = currentUrl.split('&');
+                var urlSet = hashArr[0] + '&' + data;
+                
+                history.replaceState(null, null, urlSet);
+                /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
             });
 
+            /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+            var hash = window.location.hash;
+            var hashArr = hash.split('&');
+            var tabHash = hashArr[0]; 
+            var tabNum = hashArr[0].split('#')[1];
+            var pageNum = hashArr[1];
+            var storyTab = $('.tabs-wrap .tabs li a[href="' + tabHash +'"]');
+            
+            if(!!window.location.hash){	
+                self.$mainTab.vcTab('select', storyTab.parents('li').index());
+                self.requestData({"superCategoryId":tabNum,"categoryId":"","page": pageNum}, true);
+            } else {
+                var currentUrl = $(location).attr('href');
+                var urlSet = currentUrl + '#&1';
+                
+                history.replaceState(null, null, urlSet);
+            }
+            /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         },
 
         selectedTabHref: function($tabs) {
@@ -141,10 +167,22 @@
                     } else {
                         self.$subTab.parents('.tabs-bg').hide();
                     }
+                    /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+                    var currentUrl = $(location).attr('href');
+                    var superCategoryId = param.superCategoryId;
+                    var url = currentUrl + '#' + superCategoryId;
+                    var str = url.split('#')[0];
+                    var urlSet = str + '#' + superCategoryId + '&' + param.page;                                
+                    
+                    history.replaceState(null, null, urlSet);
+                    /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                 }
 
                 var arr = data.storyList instanceof Array ? data.storyList : [];
                 self.$list.empty();
+
+                
+
                 arr.forEach(function(item, index) {
                     item.storyDesc = vcui.string.replaceAll(item.storyDesc, '\n', '<br>');
                     self.$list.append(vcui.template(storyListItemTemplate, item));

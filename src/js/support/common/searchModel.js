@@ -674,9 +674,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
                 var $this = $(this),
                     data = $this.data();
-
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                // BTOCSITE-7947
+                } else if ($this.hasClass('regist-type')) {
+                    var href = $(this).attr('href');
+                    location.href = href;
                 } else {
                     self.complete(data);
                 }

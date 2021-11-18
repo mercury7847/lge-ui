@@ -209,25 +209,14 @@ $(function(){
             switch(e.type) {
                 case "tabinit" :
                     // 탭초기화시 탭선택
-                        $buyProduct.vcTab('select',0).vcSmoothScroll('scrollToActive');
+                        var listLen = $buyProduct.find('.tabs > li').length;
+                        var idx = Math.floor(Math.random() * listLen || 0);
+                        $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
                 break;
                 default :
-                    // 탭이동 이벤트
-                    var idx = data.selectedIndex;
-                    var superCategoryId = $buyProduct.find('.tabs li a').eq(idx).data("category");
-                        console.log("tabbeforechange %o",idx);
-                        buildRankBuyProduct({
-                            superCategoryId : superCategoryId
-                        })
                 break;
             }
         }).vcTab();
         $buyProduct.vcSmoothScroll('refresh');
-    }
-
-
-    // 많이 구매하는 제품 화면 렌더링
-    function buildRankBuyProduct(param){
-        // $('body').vcLazyLoaderSwitch('reload', $buyProduct);
     }
 });

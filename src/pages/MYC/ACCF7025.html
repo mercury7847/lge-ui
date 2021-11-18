@@ -28,19 +28,7 @@
                 data-mempoint-deduct-url="/lg5-common/data-ajax/mypage/memberPointDeductAgree.json"
                 data-request-card-url="/lg5-common/data-ajax/mypage/requestCardIssue.json"
             >
-            <form name="form_chk" method="post">
-                <input type="hidden" name="m" value="checkplusSerivce" />
-                <input type="hidden" name="EncodeData" value="" />
-                <input type="hidden" name="auth_type" value="M"/>
-                <input type="hidden" name="param_r1" value="" />
-                <input type="hidden" name="param_r2" value="MOBILE" />
-                <input type="hidden" name="param_r3" value="BASIC" />
-            </form>
-                <div class="hidden-input-group">
-                    <input type="hidden" name="paymentMethodConfirm" value="N" />
-                    <input type="hidden" name="arsAgree" value="N" />
-                    <input type="hidden" name="requestPartnerCardYn" value="Y" />
-                </div>
+          
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
@@ -48,10 +36,12 @@
                             "sect2" : [
                                 { "on": "on", "page": "계약현황" },
                                 { "on": "", "page": "납부내역" },
-                                { "on": "", "page": "방문일정 / 예약" }
+                                { "on": "", "page": "방문일정 / 예약" },
+                                { "on": "", "page": "케어솔루션 레터" },
+                                { "on": "", "page": "연차별 혜택" }
                             ]
                         })
-                        <div class="lnb-contents">
+                        <div class="lnb-contents latter-contents"> <!-- BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 : 클래스 추가-->
                             <!-- 계약정보 -->
                             <div class="my-contract-info">
                                 <p class="tit">이케어 고객님의 계약정보는 <br class="mob">총 <em>3건</em>입니다.</p>
@@ -662,6 +652,39 @@
                                     </div>
                                 </div>
                                 <!-- // 케어솔루션 매니저 정보 -->
+
+
+
+                                <!-- BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 -->
+                                <div class="sects">
+                                    <ul class="latter-btnWarp">
+                                        <li>
+                                            <a href="">
+                                                <div class="latter-btn-text">
+                                                    <i><img src="/lg5-common/images/icons/care/icon_coupon.png" alt="쿠폰 아이콘"></i>
+                                                    <p>
+                                                        <span>유익한 정보와 베스트샵 특별쿠폰!</span><br>
+                                                        케어솔루션 레터에서 확인해보세요.
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <div class="latter-btn-text">
+                                                    <i><img src="/lg5-common/images/icons/care/icon_point.png" alt="포인트 아이콘"></i>
+                                                    <p>
+                                                        케어솔루션/케어십의<br>
+                                                        <span>연차별 특별한 혜택</span>을 알려드립니다.
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- //BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 -->
+
+
                             </div>
                             <!-- // 상세 -->
                         </div>
