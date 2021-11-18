@@ -1,5 +1,4 @@
 (function() {
-    var validation;
     var authManager;
     var authFlag = lgkorUI.isLogin;
 
@@ -69,6 +68,19 @@
                             }
                         }
                     },
+                    contactPhoneNo1: {
+                        required: true,
+                        pattern: /^0[1-9]{1,2}/,
+                    },
+                    contactPhoneNo2: {
+                        required: true,
+                        minLength : 3,
+                        maxLength : 4
+                    },
+                    contactPhoneNo3: {
+                        required: true,
+                        minLength : 4
+                    },
                     title: {
                         required: true,
                         maxLength: 100,
@@ -122,7 +134,7 @@
                     }
                 };
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                self.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 authManager = new AuthManager(authOptions);
 
                 self.bindEvent();
@@ -133,7 +145,7 @@
             var self = this;
 
             self.$form.find('.btn-confirm').on('click', function() {
-                var result = validation.validate();
+                var result = self.validation.validate();
 
                 if (authFlag && result.success == true) {   
                     lgkorUI.confirm('', {
@@ -142,7 +154,7 @@
                         cancelBtnName: '취소',
                         ok: function() {
                             var ajaxUrl = self.$form.data('ajax');
-                            var data = validation.getAllValues();
+                            var data = self.validation.getAllValues();
 
                             lgkorUI.showLoading();
                             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result) {
@@ -190,7 +202,7 @@
             });
 
             $('.btn-open, #userName, #phoneNo').on('click', function() {
-                var result = validation.validate(['privcyCheck']);
+                var result = self.validation.validate(['privcyCheck']);
 
                 if (!authFlag && result.success) {
                     authManager.open(function() {
@@ -214,9 +226,19 @@
                 });
             });
 
-            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('keyup', function(e){
-                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            })
+            // 연락가능 전화번호 밸리데이션
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('change', function(e){
+                self.validation.validate();
+            });
+
+            self.validation.on('errors',function(e,data){
+                var contactPhoneNoCheck = data.hasOwnProperty("contactPhoneNo1") || data.hasOwnProperty("contactPhoneNo2") || data.hasOwnProperty("contactPhoneNo3") ? false : true;
+                if(!contactPhoneNoCheck) {
+                    $('.err-block.contact-box-err-blocK').show();
+                } else {
+                    $('.err-block.contact-box-err-blocK').hide();
+                }
+            });
         }
     }
 

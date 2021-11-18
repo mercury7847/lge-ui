@@ -1,5 +1,4 @@
 (function() {
-    var validation;
     var dateUtil = vcui.date;
     var detect = vcui.detect;
     var isLogin = lgkorUI.isLogin;
@@ -65,6 +64,19 @@
                             }
                         }
                     },
+                    contactPhoneNo1: {
+                        required: true,
+                        pattern: /^0[1-9]{1,2}/
+                    },
+                    contactPhoneNo2: {
+                        required: true,
+                        minLength : 3,
+                        maxLength : 4
+                    },
+                    contactPhoneNo3: {
+                        required: true,
+                        minLength : 4
+                    },
                     replyCheck: {
                         required: true,
                         msgTarget: '.reply-err-block',
@@ -84,9 +96,8 @@
                     }
                 }
 
+                self.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 self.bindEvent();
-
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
 
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
                 self.$cont.vcSearchModel(); 
@@ -96,7 +107,7 @@
             var self = this;
 
             var url = self.$submitForm.data('ajax');
-            var param = validation.getAllValues();
+            var param = self.validation.getAllValues();
             var formData = new FormData();
    
             for (var key in param) {
@@ -127,7 +138,7 @@
             self.$cont.on('reset', function() {
                 self.$completeBtns.hide();
 
-                // validation.reset();
+                // self.validation.reset();
 
                 // self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
                 // self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
@@ -144,7 +155,7 @@
             });
 
             self.$completeBtns.find('.btn-confirm').on('click', function() {
-                var result = validation.validate();
+                var result = self.validation.validate();
 
                 if (result.success == true) {    
                     lgkorUI.confirm('', {
@@ -155,6 +166,20 @@
                             self.requestComplete();
                         }
                     });       
+                }
+            });
+
+            // 연락가능 전화번호 밸리데이션
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('change', function(e){
+                self.validation.validate();
+            });
+
+            self.validation.on('errors',function(e,data){
+                var contactPhoneNoCheck = data.hasOwnProperty("contactPhoneNo1") || data.hasOwnProperty("contactPhoneNo2") || data.hasOwnProperty("contactPhoneNo3") ? false : true;
+                if(!contactPhoneNoCheck) {
+                    $('.err-block.contact-box-err-blocK').show();
+                } else {
+                    $('.err-block.contact-box-err-blocK').hide();
                 }
             });
         }
