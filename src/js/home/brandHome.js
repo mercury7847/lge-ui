@@ -71,7 +71,7 @@
             self.$btnExperience.on('click',function(e){
                 if(!vcui.detect.isMobile && !vcui.detect.isIE){
                     var target = "https://s3-an2-op-t20-css-contents.s3.ap-northeast-2.amazonaws.com/workexperience/index.html";
-                    var width = 480;
+                    var width = 460;
                     var height = 800;
                     var xpos = (screen.availWidth - width)/2;
                     var ypos = (screen.availHeight - height)/2;

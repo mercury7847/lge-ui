@@ -23,34 +23,42 @@
                     '</div>'+
                 '</div>'+
 
-                '{{#if (tabName == "purchaseTab")}}'+
-                '<div class="price-area">'+
-                    '{{#if (obsSellingPrice != "0")}}'+
-                    '<div class="original">'+
-                        '<em class="blind">할인 전 정가</em>'+
-                        '<span class="price">{{vcui.number.addComma(obsOriginalPrice)}}<em>원</em></span>'+
-                    '</div>'+
-                    '{{/if}}'+
-                    '{{#if (obsSellingPrice != "0")}}'+
-                    '<div class="total">'+
-                        '<em class="blind">할인 후 판매가</em>'+
-                        '<span class="price">{{vcui.number.addComma(obsSellingPrice)}}<em>원</em></span>'+
-                    '</div>'+
-                    '{{/if}}'+
-                '</div>'+
-                '{{/if}}'+
-
-                '{{#if (tabName == "rentalTab") && (years1TotAmt !=0)}}'+
-                '<div class="product-bottom rental-type">'+
-                    '<div class="price-area care">'+
-                        '<div class="total-price"><em class="text">기본 월 요금</em>'+
-                            '<span class="price"><em>월</em> {{vcui.number.addComma(years1TotAmt)}}<em>원</em></span>'+
+                //modelStatusCode=="ACTIVE" 판매가능상태
+                //mixProductFlag=="N" 혼매가 아닌 상품
+                '{{#if (modelStatusCode=="ACTIVE") && (mixProductFlag=="N") && (buyBtnFlag=="enable")}}'+
+                   '{{#if (tabName == "purchaseTab")}}'+
+                    '<div class="price-area">'+
+                        '{{#if (obsSellingPrice != "0") && (obsOriginalPrice != "0")}}'+
+                        '<div class="original">'+
+                            '<em class="blind">할인 전 정가</em>'+
+                            '<span class="price">{{vcui.number.addComma(obsOriginalPrice)}}<em>원</em></span>'+
                         '</div>'+
-                        '{{#if (visitPer != null) && (visitPer != undefined) && (visitPer != "")}}'+
-                            '<span class="small-text">({{visitPer}}개월/1회 방문)</span>'+
+                        '{{/if}}'+
+                        '{{#if (obsSellingPrice != "0")}}'+
+                        '<div class="total">'+
+                            '<em class="blind">할인 후 판매가</em>'+
+                            '<span class="price">{{vcui.number.addComma(obsSellingPrice)}}<em>원</em></span>'+
+                        '</div>'+
                         '{{/if}}'+
                     '</div>'+
-                '</div>'+
+                    '{{/if}}'+
+
+                    '{{#if (tabName == "rentalTab") && (years1TotAmt !=0)}}'+
+                    '<div class="product-bottom rental-type">'+
+                        '<div class="price-area care">'+
+                            '<div class="total-price"><em class="text">기본 월 요금</em>'+
+                                '<span class="price"><em>월</em> {{vcui.number.addComma(years1TotAmt)}}<em>원</em></span>'+
+                            '</div>'+
+                            '{{#if (visitPer != null) && (visitPer != undefined)}}'+
+                                '{{#if (visitPer != "0")}}'+
+                                '<span class="small-text">({{visitPer}}개월/1회 방문)</span>'+
+                                '{{#else}}'+
+                                '<span class="small-text">(방문없음/자가관리)</span>'+
+                                '{{/if}}'+
+                            '{{/if}}'+
+                        '</div>'+
+                    '</div>'+
+                    '{{/if}}'+
                 '{{/if}}'+
             '</div>'+
         '</li>';
@@ -116,16 +124,6 @@
                     $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
                 });
                 $compareId.push($dataProdInfo.modelId); //스펙비교하기에 모델명 추가
-
-                //렌탈 요금의 방문주기 visitPer 값이 없을 경우 null 기본값 셋팅
-                if($dataProdInfo.visitPer === undefined){
-                    $dataProdInfo.visitPer = null;
-                };
-                $.each(loopData,function(idx,item){
-                    if(item.visitPer === undefined){
-                        item.visitPer = null;
-                    }
-                });
 
                 //지금보고 있는 상품에 템플릿 그리기
                 self.$prodViewNow.append(vcui.template(productItem,$dataProdInfo));

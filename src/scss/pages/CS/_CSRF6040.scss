@@ -669,7 +669,7 @@
                     width:100%;
                 }
                 @include mobile {
-                   bottom:70px;
+                   bottom:0px;
                 }
                 .btn-sel {
                     position:relative;
@@ -729,7 +729,8 @@
                     .scroll-wrap {
                         position:relative;
                         margin-right:8px;
-                        height:calc(100vh - 126px - 105px - 105px);
+                        // BTOCSITE-8243
+                        height:calc(100vh - 126px - 105px - 74px);
                         overflow-y:scroll;
                         @include csmobile {
                             // BTOCSITE-8243
@@ -906,7 +907,8 @@
                         left:0;
                         right:0;
                         bottom:0;
-                        height:105px;
+                        // BTOCSITE-8243
+                        height:74px;
                         background:#fff;
                         text-align:right;
                         border-top:1px solid #ddd;
@@ -1493,4 +1495,17 @@
 .view-info-btn.withtab3{
     top: 133px !important;
 }
+
+@include mobile {
+    .mdevice:not(.app) footer:not(.no-footer):not(.pop-footer) {
+        padding-bottom: 150px;
+    }
+    .mdevice .find-store-wrap .map-container .store-list-wrap .opt-cont {
+        bottom:70px;
+    }
+    .app.mdevice .find-store-wrap .map-container .store-list-wrap .opt-cont {
+        bottom:0;
+    }
+}
+
 // BTOCSITE-8243 e
