@@ -105,6 +105,103 @@
             @include mobile {
                 margin:0 -16px;
             }
+            .latter-btnWarp {
+                position: relative;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                @media screen and (max-width:1023px) {
+                    flex-direction: column;
+                }
+                li {
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                    width: 50%;
+                    margin: 0px 12px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        position: relative;
+                        display: flex;
+                        padding: 20px 20px 20px 40px;
+                        height: 100%;
+                        .latter-btn-text {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            align-content: center;
+                            i {
+                                margin-right: 30px;
+                                img {
+                                    @include mobile {
+                                        max-width: 64px;
+                                    }
+                                }
+                            }
+                            p {
+                                font-size: 22px;
+                                line-height: 32px;
+                                padding-right: 25px;
+                                span {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                        &::after {
+                            content: '';
+                            width: 29px;
+                            height: 27px;
+                            background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                            background-position: 0 0;
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            top: 50%;
+                            right: 20px;
+                            margin-top: -14px;
+                        }
+                    }
+                    @media screen and (max-width:1023px) {
+                        width: 100%;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-bottom: 25px;
+                    }
+                }
+                
+                @include mobile {
+                    flex-direction: column;
+                    li {
+                        width: 100%;
+                        margin: 0 0 25px 0;
+                        a {
+                            padding : 10px 12px;
+                            .latter-btn-text {
+                                i {
+                                    margin-right: 10px;
+                                    img {}
+                                }
+                                p {
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                }
+                            }
+                            &::after {
+                                width: 32px;
+                                height: 32px;
+                                background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                                background-position: center;
+                                top: 50%;
+                                right: 12px;
+                                margin-top: -16px;
+                            }
+                        }
+                    }
+                }
+            }
             // contents
             .section-inner {
                 .inner-box {
@@ -357,6 +454,10 @@
 
     // 케어솔루션 계약현황
     @import "ACCF7025";
+
+    // BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성
+    // 케어솔루션 레터
+    @import "ACCF7025_1";
 
     // 방문 알리미
     @import "ACCF7030";
@@ -1020,11 +1121,12 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom:0;
+.popup-wrap {
+    .pop-conts {
+        @include mobile {
+            height:calc(100vh - 122px);
+            max-height:calc(100vh - 122px);
+        }
     }
 }
 
@@ -1158,7 +1260,7 @@
     .pop-conts{
         max-height: 560px;
         @include mobile{
-            max-height: calc(100% - 122px);
+            max-height: calc(100vh - 122px);
         }
     }
     .pop-footer{
@@ -1245,6 +1347,7 @@
         cursor: default;
     }
 
+    // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
     .info-msg { 
         
         border-top:1px solid #ddd; 
@@ -1275,6 +1378,7 @@
             }
         }
     }
+    // -E- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
 } 
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
@@ -1677,4 +1781,39 @@
             }
         }
     }
+}
+
+// BTOCSITE-8035 [비회원] 주문 취소신청 생년월일 UI 수정 - (모바일)
+#popup-cancel, #popup-takeback {
+    .form-wrap{
+        .forms {
+            .conts {
+                .date-select-box {
+                    .cell{
+                        @include mobile{
+                            display: inline-block;
+                            width: 47%;
+                            &:nth-child(1){
+                                width: 100%;
+                                margin-bottom:10px;
+                                .text{
+                                    padding-right: 8px;
+                                }
+                            }
+                        }
+                        .text {
+                            @include mobile{
+                                padding-right : 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - S
+    .bullet-list.top-border {
+        padding-bottom:42px;
+    }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - E
 }

@@ -289,7 +289,7 @@ var appInit = function() {
 
         function chkSerialNum(barcode) {
 
-            var minLengthFlag = barcode.length >= 11 ? true: false;
+            var minLengthFlag = barcode.length >= 10 ? true: false;
                 
             var currentVal = [];
             var checkSerialSuccess = [];

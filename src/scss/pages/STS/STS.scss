@@ -77,7 +77,7 @@
         &.user_story { 
             display:none; 
             @include mobile{
-                padding-bottom:120px;
+                padding-bottom:58px;
             }
 
             .story-title-area {
@@ -704,6 +704,7 @@
                             @include mobile{
                                 object-fit: cover;
                                 height: 100%;
+                                width: 100%;
                                 position: relative;
                                 top: 0;
                                 left: auto;
@@ -711,7 +712,6 @@
                                 -ms-transform: translate(0, 0);
                                 transform: translate(0, 0);
                                 max-width: none;
-                                width: 100%;
                                 background-position: center center;
                                 min-width: auto;
                                 min-height: auto;
@@ -741,18 +741,19 @@
                     right: 0;
                     left: 0;
                     padding:34px 24px;
+                    height: 225px;
                     @include mobile {
                         padding:10px 12px;
-                        height: 88px;
+                        height: 108px;
                     }
                     .card-title{
-                        font-size:24px;
-                        line-height:32px;
+                        font-size:22px;
+                        line-height:28px;
                         @include mobile{
-                            @include textEllipsisClamp(1);
+                            // @include textEllipsisClamp(1);
                             font-size:14px;
                             line-height:20px;
-                            margin-top: 2px;
+                            margin-top: 3px;
                         }
                     }
                     .flag-wrap.box-type .flag{
@@ -883,35 +884,43 @@
                     left: 0;
                     z-index: 1;
                     color: $color-white;
+                    height: 225px;
+                    padding-top:34px;
                     @include mobile{
                         padding:10px 12px;
-                        height: 88px;
+                        height: 108px;
                     }
                     .card-title {
-                        max-height: 86px;
-                        font-size: 32px;
-                        line-height: 40px; 
                         @include textEllipsisClamp(2);
+                        max-height: 82px;
+                        font-size: 30px;
+                        line-height: 38px; 
+                        
                         @include mobile{
-                            max-height: 20px;
                             font-size: 14px;
                             line-height: 20px;
                             color:#000;
                             margin-top: 2px;
-                            @include textEllipsisClamp(1);
                         }
                     }
                     .tag-wrap {
+                        position: absolute;
+                        bottom:40px;
+                        @include mobile{
+                            bottom:12px;
+                        }
                         .tags {
                             @include mobile{
                                 .tag{
+                                    display:none;
                                     text-decoration: none;
                                     a{
                                         text-decoration: underline;
                                         color:#000;
                                         line-height: 13px;
                                     }
-                                    &:last-child{
+                                    &:first-child{
+                                        display:block;
                                         a{
                                             // overflow: hidden;
                                             // text-overflow: ellipsis;
@@ -967,9 +976,10 @@
                 background-color: #fff;
             }
             .card-title {
-                max-height: 67px;
+                max-height: 60px;
                 font-weight: 700;
                 @include font-large-1;
+                display: block;
                 @include textEllipsisClamp(2);
                 @include mobile {
                     max-height: 48px;
@@ -977,7 +987,10 @@
                 }
             }
             .tag-wrap {
+                position: absolute;
+                bottom:40px;
                 @include mobile{
+                    bottom:12px;
                     // margin-right:2px;
                     overflow: hidden;;
                 }
@@ -993,9 +1006,14 @@
                     &:not(:last-child) {
                         margin-right: 8px;
                     }
+                    
                     @include mobile{
                         font-size:12px;
                         line-height: 16px;
+                        display:none;
+                        &:first-child{
+                            display:block;
+                        }
                         a{
                             word-break: normal ;
                         }
@@ -1166,12 +1184,15 @@
                 }
             }
             .text-area{
-                padding:16px;
+                padding:24px 24px 40px;
+                @include mobile{
+                    padding:16px;
+                }
             }
             .card-title{
-                font-size:28px;
-                line-height: 36px;
-                max-height: 76px;
+                font-size:26px;
+                line-height: 34px;
+                max-height: 74px;
                 @include mobile{
                     font-size:15px;
                     line-height: 21px;

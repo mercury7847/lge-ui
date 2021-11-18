@@ -85,6 +85,7 @@
             width: 24px;
             height: 24px;
         }
+        /* BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
         .tit-wrap {
             display: flex;
             position:relative;
@@ -95,22 +96,21 @@
             @include mobile {
                 align-items:start;
                 margin:0;
-                padding:0 16px;
+                padding:0 16px 20px;
             }
             .tit-info {
                 padding:0;
                 font-size:0;
                 @include mobile {
                     position:relative;
-                    padding:0 0 20px;
+                    flex:auto;
+                    margin-right:15px;
                 }
                 h2.name {
                     @include font-large-1;
                     font-weight:$font-weight-bold;
                     vertical-align:middle;
-                    @include mobile {
-                        max-width:175px;
-                    }
+                    word-break:keep-all;
                 }
                 .flag-wrap {
                     .flag {
@@ -125,21 +125,26 @@
             .tit-info-r {
                 display: flex;
                 align-items: center;
+                flex:none;
+                &.isFlag{
+                    @include mobile{
+                        padding-top:21px;
+                    }
+                }
                 .tooltip-wrap {
                     margin-left: 24px;
                     @include mobile {
                         margin-left: 5px;
+                        padding:0;
+                        height:24px;
                     }
                 }
                 .link-btn-wrap {
                     margin-left: 24px;
                 }
-                @include mobile {
-                    padding-top:17px;
-                }
             }
         }
-
+        /* //BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
         .detail-info-wrap {
             display:table;
             table-layout:fixed;
