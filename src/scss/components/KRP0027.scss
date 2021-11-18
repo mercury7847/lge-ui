@@ -418,7 +418,7 @@
                 border-radius: 16px;
                 border: 1px solid #222;  
                 .btn-text {
-                    flex: 1;
+                    //BTOCSITE-5938-337 flex 삭제
                     display: -webkit-box;
                     max-height: 48px;
                     text-overflow:ellipsis;
