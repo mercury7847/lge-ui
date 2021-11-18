@@ -1,33 +1,55 @@
-<svg id="ic_oven_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-    <defs>
-        <style>
-            .cls-1,.cls-5{fill:none}.cls-2{fill:#8c8c8c}.cls-5{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:2px}
-        </style>
-    </defs>
-    <g id="Group_155" data-name="Group 155" transform="translate(-1325.29 -146.97)">
-        <path id="Rectangle_154" data-name="Rectangle 154" class="cls-1" transform="translate(1325.29 146.97)" d="M0 0h80v80H0z"/>
-    </g>
-    <g id="Group_165" data-name="Group 165" transform="translate(-1325.29 -143.97)">
-        <g id="Group_159" data-name="Group 159">
-            <g id="Group_156" data-name="Group 156">
-                <path id="Path_77" data-name="Path 77" class="cls-2" d="M1378.57 179.58v27.31h-26.58v-27.31h26.58m1.99-3h-30.58a1 1 0 0 0-1 1v31.31a1 1 0 0 0 1 1h30.58a1 1 0 0 0 1-1v-31.31a.99.99 0 0 0-1-1z"/>
-            </g>
-            <g id="Group_158" data-name="Group 158">
-                <g id="Group_157" data-name="Group 157">
-                    <path id="Path_78" data-name="Path 78" class="cls-2" d="M1385.26 158.89v55.41h-39.95v-55.41h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v57.41a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-57.41a2 2 0 0 0-2-2z"/>
-                </g>
-                <path id="Line_66" data-name="Line 66" transform="translate(1342.31 170.71)" style="stroke-width:3px;stroke-miterlimit:10;stroke:#8c8c8c;fill:none" d="M0 0h45.95"/>
-            </g>
-            <g id="Rectangle_173" data-name="Rectangle 173" transform="translate(1348.29 149.97)" style="stroke-width:3px;stroke:#8c8c8c;fill:none">
-                <rect width="34" height="8.8" rx="2" style="stroke:none"/>
-                <rect class="cls-1" x="1.5" y="1.5" width="31" height="5.8" rx=".5"/>
-            </g>
-        </g>
-        <g id="Group_164" data-name="Group 164">
-            <circle id="Ellipse_19" data-name="Ellipse 19" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1348.72 162.03)"/>
-            <circle id="Ellipse_20" data-name="Ellipse 20" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1357.26 162.03)"/>
-            <circle id="Ellipse_21" data-name="Ellipse 21" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1369.12 162.03)"/>
-            <circle id="Ellipse_22" data-name="Ellipse 22" class="cls-5" cx="2.09" cy="2.09" r="2.09" transform="translate(1377.65 162.03)"/>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ic_x5F_device_x5F_list_x5F_lightwave_x5F_oven"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 240 240"
+	 style="enable-background:new 0 0 240 240;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#555555;}
+	.st2{fill:#747474;}
+	.st3{fill:#E6E6E6;}
+	.st4{fill:#474747;}
+	.st5{fill:#C1C1C1;}
+	.st6{fill:url(#SVGID_2_);}
+	.st7{fill:#434343;}
+	.st8{opacity:0.35;fill:url(#SVGID_3_);}
+	.st9{opacity:0.35;fill:url(#SVGID_4_);}
+</style>
+<g id="_x5F_off_37_">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-113" y1="120" x2="-223" y2="120" gradientTransform="matrix(0 1 -1 0 240 280)">
+		<stop  offset="0" style="stop-color:#D8D8D8"/>
+		<stop  offset="0.6" style="stop-color:#EEEEEE"/>
+		<stop  offset="1" style="stop-color:#DDDDDD"/>
+	</linearGradient>
+	<path class="st0" d="M33,165V59c0-1.1,0.9-2,2-2h170c1.1,0,2,0.9,2,2v106c0,1.1-0.9,2-2,2H35C33.9,167,33,166.1,33,165z"/>
+	<g>
+		<path class="st1" d="M56,143V98c0-1.1,0.9-2,2-2h124c1.1,0,2,0.9,2,2v45c0,1.1-0.9,2-2,2H58C56.9,145,56,144.1,56,143z"/>
+	</g>
+	<g>
+		<circle class="st2" cx="158.5" cy="69.5" r="7.5"/>
+		<circle id="Ellipse_887_copy_60_" class="st3" cx="158.5" cy="69.5" r="5.6"/>
+	</g>
+	<g>
+		<rect x="95" y="62" class="st4" width="51" height="15"/>
+	</g>
+	<path class="st5" d="M199,82H41c-2.2,0-4,1.8-4,4v4h18l3-4h124l3,4h18v-4C203,83.8,201.2,82,199,82z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="120" y1="182" x2="120" y2="174">
+		<stop  offset="0" style="stop-color:#575757"/>
+		<stop  offset="1" style="stop-color:#747474"/>
+	</linearGradient>
+	<rect x="33" y="174" class="st6" width="174" height="8"/>
+	<rect x="35" y="167" class="st7" width="170" height="7"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="242.887" y1="112" x2="159.0123" y2="112">
+		<stop  offset="0" style="stop-color:#828282"/>
+		<stop  offset="1" style="stop-color:#828282;stop-opacity:0"/>
+	</linearGradient>
+	<path class="st8" d="M205,57h-46.3v110H205c1.1,0,2-0.9,2-2V59C207,57.9,206.1,57,205,57z"/>
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-250.4873" y1="112" x2="-334.362" y2="112" gradientTransform="matrix(-1 0 0 1 -253.3744 0)">
+		<stop  offset="0" style="stop-color:#828282"/>
+		<stop  offset="1" style="stop-color:#828282;stop-opacity:0"/>
+	</linearGradient>
+	<path class="st9" d="M35,57h46.3v110H35c-1.1,0-2-0.9-2-2V59C33,57.9,33.9,57,35,57z"/>
+</g>
 </svg>
