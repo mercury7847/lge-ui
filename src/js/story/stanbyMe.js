@@ -192,7 +192,7 @@
                 $fileItem.removeClass('modify');
             }
         };
-        /* BTOCSITE-5938-202 [모니터링] 스토리 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+        /* BTOCSITE-5938-202 [모니터링] 스탠바이미 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         var stanbymeList = {
             params: {},
             init: function() {
@@ -286,41 +286,35 @@
             },
             pageEvent: function() {
                 var self = this;
+                var currentUrl = $(location).attr('href');
                 self.$pagination.on('page_click', function(e,page) {
                     self.params = $.extend({}, self.params, {
                         'page': page
                     });
                     self.renderList();
-                    
-                    var currentUrl = $(location).attr('href');
+
                     var url = currentUrl + '&pageId=' + page;
-                    var arr = url.split('&')[0];
-                    var urlSet = arr + '&pageId=' + page;
+                    var urlSet = url.split('&')[0] + '&pageId=' + page;
 
                     history.replaceState(null, null, urlSet);
-
                 });
             },
             filterEvent: function(){
                 var self = this;
+                var currentUrl = $(location).attr('href');
+                var url = currentUrl + '&pageId=1';
+                var urlSet = url.split('&')[0];
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
                     self.renderList();
-
-
-
-                    var currentUrl = $(location).attr('href');
-                    var url = currentUrl + '&pageId=1';
-                    var urlSet = url.split('&')[0];
-
                     history.replaceState(null, null, urlSet);
                 });
             }
         };
-        /* //BTOCSITE-5938-202 [모니터링] 스토리 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
+        /* //BTOCSITE-5938-202 [모니터링] 스탠바이미 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
         var stanbymeDetail = {
             params: {},
             init: function() {
