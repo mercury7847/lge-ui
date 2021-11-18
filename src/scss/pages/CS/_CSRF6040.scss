@@ -729,7 +729,8 @@
                     .scroll-wrap {
                         position:relative;
                         margin-right:8px;
-                        height:calc(100vh - 126px - 105px - 105px);
+                        // BTOCSITE-8243
+                        height:calc(100vh - 126px - 105px - 74px);
                         overflow-y:scroll;
                         @include csmobile {
                             // BTOCSITE-8243
@@ -906,7 +907,8 @@
                         left:0;
                         right:0;
                         bottom:0;
-                        height:105px;
+                        // BTOCSITE-8243
+                        height:74px;
                         background:#fff;
                         text-align:right;
                         border-top:1px solid #ddd;
