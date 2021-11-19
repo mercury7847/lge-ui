@@ -224,7 +224,10 @@ $(window).ready(function(){
 
                 if( modelList > 1 ){
                     btnMoreModel.show();
-                    modelName.css('width', 'calc(100% - 30px)');    
+                    modelName.addClass('isMore');   
+                    modelName.click(function(ignore){
+                        ignore.preventDefault();
+                    }) 
                 }
             })
             /* //BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */

@@ -430,6 +430,10 @@
                     @include mobile {
                         max-height: 42px;
                     }
+                    &.isMore{
+                        width:calc(100% - 30px);
+                        cursor:default;
+                    }
                 }
                 .btn-more {
                     display:none;
