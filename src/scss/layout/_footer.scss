@@ -19,7 +19,7 @@ footer {
     &.default-bottom-wrap {
         padding-bottom: 130px;
         @include mobile {
-            padding-bottom: 140px;
+            padding-bottom: 230px;
         }
     }
     // -E- BTOCSITE-5938-204 푸터 하단 가리는 현상 수정
@@ -773,7 +773,7 @@ footer {
     &:not(.app) {
         @include mobile {
             $statusbarHeight: 70px;
-            footer:not(.no-footer):not(.pop-footer) {
+            footer:not(.no-footer):not(.pop-footer):not(.default-bottom-wrap) {
                 padding-bottom:60px + $statusbarHeight;
             }
             
