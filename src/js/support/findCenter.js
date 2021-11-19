@@ -404,7 +404,6 @@ function moveConsultPage() {
                 self._setUserAdressSearch();
             });
             self.$searchCurrentButton.on('click', function(e) {
-                console.log("내 위치 검색");
                 self.searchType = 'current';
                 self._setCurrentSearch();          
             });
@@ -670,8 +669,6 @@ function moveConsultPage() {
                     longitude:self.longitude
                 };
             }
-
-            console.log("keywords :", keywords)
 
             return keywords;
         },
