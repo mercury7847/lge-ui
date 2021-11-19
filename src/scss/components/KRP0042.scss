@@ -29,18 +29,6 @@
 	&.stage-full {
         max-width:1920px;
         margin:0 auto;
-        .usp-banner-wrap {
-            .carousel-box {
-                .text-area.type-narrow {
-                    .inner {
-                        max-width:49.131%;
-                        @include mobile {
-                            max-width:100%;
-                        }
-                    }
-                }
-            }
-        }
     }
     &.stage-wide {
         max-width:1600px;
@@ -98,138 +86,178 @@
 				max-width:1380px + 160px;
                 margin:0 auto;
                 padding:0 80px;
-
-				&.align-top {
-					top: 80px;
-				}
-				&.align-middle {
-					top: 50%;
-					transform:translateX(-50%) translateY(-50%);
-				}
-				&.align-bottom {
-					top:auto;
-					bottom:80px;
-				}
+                color: #ffffff;
+                .inner {
+                    max-width:49.131%;
+                    @include tablet {
+                        max-width:80%;
+                    }
+                    @include mobile {
+                        max-width:100%;
+                    }
+                    .bullet-list .b-txt {
+                        color:#fff;
+                        padding-left: 11px;
+                        position: relative;
+                        &:before{
+                            display: block !important;
+                            position: absolute;
+                            top:10px;
+                            left:0;
+                            width:3px;
+                            height: 3px;
+                            margin:0;
+                            background: #ffffff;
+                            border-radius: 50%;
+                            content: '';
+                        }
+                    }
+                    .btn.border.size-m{
+                        color:#ffffff;
+                        border-color: #ffffff !important;
+                        &:hover,&:focus,&:active{
+                            border-color: #fa263e !important;
+                        }
+                    }
+                    .text-link{
+                        color:#ffffff;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 26px;
+                        &:after{
+                            background-image: url("/lg5-common/images/icons/icon-arr-16-wt.svg");
+                        }
+                    }
+                }
 				@include mobile {
 					position:relative;
 					top:0;
 					left:auto;
 					transform:none;
 					max-width:none;
-					&.align-top,
-					&.align-middle,
-					&.align-bottom {
-						position:relative;
-						top:0;
-						left:auto;
-						transform:none;
-						max-width:none;
-						padding:20px 16px 0;
-					}
-                }
-                
-                &.type-wide {
+					padding:20px 16px 0 !important;
+                    color:#000000 !important;
                     .inner {
-                        @include boxs(w);
-                    }
-                }
-                &.type-narrow {
-                    .inner {
-                        // @include boxs(n);
-                        max-width:49.131%;
-                        @include mobile {
-                            max-width:100%;
+                        .bullet-list .b-txt {
+                            padding-left: 9px;
+                            font-size: 13px;
+                            line-height: 21px;
+                            color:#000000 !important;
+                            &:before{
+                                top:10px;
+                                left:0;
+                                width:2px;
+                                height: 2px;
+                                margin:0;
+                                background: #000000 !important;
+                                border-radius: 50%;
+                                content: '';
+                            }
+                        }
+                        .btn.border.size-m{
+                            color:#000000 !important;
+                            border-color: #000000 !important;
+                            &:hover,&:focus,&:active{
+                                border-color: #fa263e !important;
+                            }
+                        }
+                        .text-link{
+                            color:#000000 !important;
+                            font-size: 13px;
+                            line-height: 21px;
+                            &:after{
+                                background-image: url("/lg5-common/images/icons/icon-arr-16-bk.svg") !important;
+                            }
                         }
                     }
                 }
-
-                &.box-align-left {
-                    .inner {
-                        margin-right:auto;
-                    }
-                }
-                &.box-align-center {
-                    .inner {
-                        margin-left:auto;
-                        margin-right:auto;
-                    }
-                }
-                &.box-align-right {
-                    .inner {
-                        margin-left:auto;
-                    }
-                }
-                &.text-align-left {
-                    text-align:left;
-                }
-                &.text-align-center {
-                    text-align:center;
-                }
-                &.text-align-right {
-                    text-align:right;
-                }
-                
 				.banner-tit-sup {
-                    display:block;
-                    @include eyebrow;
+                    display: block;
+                    margin-bottom: 8px;
+                    font-weight: 700;
+                    font-size: 20px;
+                    line-height: 29px;
+                    @include tablet{
+                        font-size: 18px;
+                        line-height: 26px;
+                    }
+                    @include mobile{
+                        font-size: 16px;
+                        line-height: 24px;
+                        margin-bottom: 6px;
+                        color:#000000 !important;
+                    }
 				}
 				.title {
                     h2 {
-                        @include title-h2;
-                    }
-                    &.title-h1 * {
-                        @include title-h1;
-                    }
-                    &.title-h2 * {
-                        @include title-h2;
-                    }
-                    &.title-h3 * {
-                        @include title-h3;
-                    }
-                    &.title-h4 * {
-                        @include title-h4;
-                    }
-                    &.title-h5 * {
-                        @include title-h5;
-                    }
-                    &.title-h6 * {
-                        @include title-h6;
+                        font-size: 48px;
+                        line-height: 66px;
+                        font-weight: 700;
+                        @include tablet{
+                            font-size: 40px;
+                            line-height: 52px;
+                        }
+                        @include mobile{
+                            color:#000000 !important;
+                            font-size: 32px;
+                            line-height: 42px;
+                        }
                     }
 				}
 				.banner-txt {
 					@include bodycopy(h1, h1);
+                    @include tablet{
+                        font-size: 16px;
+                    }
+                    @include mobile{
+                        font-size: 15px;
+                        color:#000000 !important;
+                    }
+                    
 				}
 				.banner-btn {
                     @include cta-btn;
-                }
-                .overlay-image {
-                    max-width:678px;
-                    margin-top:24px;
-                    overflow:hidden;
-                    &:first-child {
-                        margin-top:0;
+                    @include mobile{
+                        color:#000000 !important;
                     }
-                    img {
-                        width:auto;
-                        max-width:100%;
-                        height:auto;
-                        vertical-align:top;
+                }
+                &.f-white {
+                    color: #ffffff;
+                    @include mobile{
+                        color:#000000 !important;
+                        .text-link{
+                            color:#000000 !important;
+                            &:after{
+                                background-image: url("/lg5-common/images/icons/icon-arr-16-bk.svg");
+                            }
+                        }
+                    }
+                }
+                &.f-black {
+                    color: #000000;
+                    .inner {
+                        .bullet-list .b-txt {
+                            color:#000;
+                            &:before{
+                                background: #000;
+                            }
+                        }
+                        .btn.border.size-m{
+                            color:#000;
+                            border-color: #000 !important;
+                            &:hover,&:focus,&:active{
+                                border-color: #fa263e !important;
+                            }
+                        }
+                        .text-link{
+                            color:#000;
+                            &:after{
+                                background-image: url("/lg5-common/images/icons/icon-arr-16-bk.svg");
+                            }
+                        }
                     }
                 }
 			}
-            .video-link {
-                position:absolute;
-                left:50%;
-                bottom:68px;
-                transform:translateX(-50%);
-                z-index:20;
-                @include mobile {
-                    bottom:24px;
-                }
-            }
-            .video-asset {
-                z-index:20;
-            }
 			.visual-area {
 				position:relative;
                 width:100%;
@@ -251,12 +279,15 @@
             left:0;
             right:0;
             z-index:10;
+            @include mobile{
+                top:180px;
+            }
             .inner {
                 padding:0 16px;
-                max-width:1380px + 144px + 32px;
+                max-width:1460px;
                 margin:0 auto;
                 @include mobile {
-                    padding:0 8px;
+                    padding:0;
                 }
                 .row {
                     position:relative;
@@ -286,202 +317,5 @@
             }
         }
 	}
-    .fc-white,
-    .fc-light-gray {
-        & {
-            @include mobile {
-                color:#000 !important;
-            }
-        }
-        .logo {
-            filter:brightness(0) invert(1);
-            @include mobile {
-                filter:brightness(1) invert(0) !important;
-            }
-        }
-    }
 }
 
-
-.component-wrap {
-    $color: (lightgray, dark, black, white, gray);
-    @each $bg in $color {
-        &.bg-#{$bg} {
-            .component.KRP0042 {
-                @include mobile {
-                    @if $bg == lightgray {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-light-gray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                        .btn.border {
-                            &.bc-black,
-                            &.bc-white {
-                                border-color:#222 !important;
-                                color:#000 !important;
-                                &:hover,
-                                &:active,
-                                &:focus {
-                                    border-color:#fa263e !important;
-                                    background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
-                                    color:#fff !important;
-                                }
-                            }
-                        }
-                        .text-link {
-                            &.bc-black,
-                            &.bc-white {
-                                color:#000 !important;
-                                &::after {
-                                    background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    } @else if $bg == dark {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-light-gray,
-                        .fc-white {
-                            color:#fff !important;
-                            * {
-                                color:#fff !important;
-                            }
-                        }
-                        .btn.border {
-                            &.bc-black,
-                            &.bc-white {
-                                border-color:#fff !important;
-                                color:#fff !important;
-                                &:hover,
-                                &:active,
-                                &:focus {
-                                    border-color:#fa263e !important;
-                                    background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
-                                    color:#fff !important;
-                                }
-                            }
-                        }
-                        .text-link {
-                            &.bc-black,
-                            &.bc-white {
-                                color:#fff !important;
-                                &::after {
-                                    background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    } @else if $bg == black {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-light-gray,
-                        .fc-white {
-                            color:#fff !important;
-                            * {
-                                color:#fff !important;
-                            }
-                        }
-                        .btn.border {
-                            &.bc-black,
-                            &.bc-white {
-                                border-color:#fff !important;
-                                color:#fff !important;
-                                &:hover,
-                                &:active,
-                                &:focus {
-                                    border-color:#fa263e !important;
-                                    background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
-                                    color:#fff !important;
-                                }
-                            }
-                        }
-                        .text-link {
-                            &.bc-black,
-                            &.bc-white {
-                                color:#fff !important;
-                                &::after {
-                                    background:url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    } @else if $bg == white {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-light-gray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                        .btn.border {
-                            &.bc-black,
-                            &.bc-white {
-                                border-color:#222 !important;
-                                color:#000 !important;
-                                &:hover,
-                                &:active,
-                                &:focus {
-                                    border-color:#fa263e !important;
-                                    background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
-                                    color:#fff !important;
-                                }
-                            }
-                        }
-                        .text-link {
-                            &.bc-black,
-                            &.bc-white {
-                                color:#000 !important;
-                                &::after {
-                                    background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    } @else if $bg == gray {
-                        .fc-black,
-                        .fc-dark-gray,
-                        .fc-gray,
-                        .fc-light-gray,
-                        .fc-white {
-                            color:#000 !important;
-                            * {
-                                color:#000 !important;
-                            }
-                        }
-                        .btn.border {
-                            &.bc-black,
-                            &.bc-white {
-                                border-color:#222 !important;
-                                color:#000 !important;
-                                &:hover,
-                                &:active,
-                                &:focus {
-                                    border-color:#fa263e !important;
-                                    background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
-                                    color:#fff !important;
-                                }
-                            }
-                        }
-                        .text-link {
-                            &.bc-black,
-                            &.bc-white {
-                                color:#000 !important;
-                                &::after {
-                                    background:url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
