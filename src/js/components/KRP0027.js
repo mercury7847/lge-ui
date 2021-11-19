@@ -193,8 +193,8 @@ $(window).ready(function(){
                     setContListScrolled();
                 }
             })
-
-            $('.video-wrap').on('click', '.btn-modelName, .btn-moreModel', function(e){
+            /* BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
+            $('.video-wrap').on('click', '.btn-moreModel', function(e){
                 e.preventDefault();
 
                 $('#match-models').vcModal({opener:$(this)});
@@ -215,6 +215,19 @@ $(window).ready(function(){
             });
 
             $(window).on('resize', function(){setContListScrolled();})
+
+            /* BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
+            $(function(){
+                var modelList = $('.com-pop-list li').length;
+                var btnMoreModel = $('.btn-moreModel');
+                var modelName = $('.btn-modelName');
+
+                if( modelList > 1 ){
+                    btnMoreModel.show();
+                    modelName.css('width', 'calc(100% - 30px)');    
+                }
+            })
+            /* //BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
         }
 
         function toggleVideoCtrl(ctrl){
