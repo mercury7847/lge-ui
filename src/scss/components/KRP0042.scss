@@ -279,12 +279,9 @@
             left:0;
             right:0;
             z-index:10;
-            @include mobile{
-                top:180px;
-            }
             .inner {
                 padding:0 16px;
-                max-width:1460px;
+                max-width:1380px + 144px + 32px;
                 margin:0 auto;
                 @include mobile {
                     padding:0;
