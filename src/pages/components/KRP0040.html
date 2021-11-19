@@ -2,7 +2,7 @@
 <html lang="ko">
 @@include('./common/head.html', {
     componentID: "KRP0040",
-    isJScompile: false
+    isJScompile: true
 })
 <body>
     <div class="wrap">
@@ -16,7 +16,7 @@
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
                 -->
-                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-login-flag="N" data-login-url="/sso/api/Login">
+                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="N" >
                     <div class="inner">
                         <div class="heading-box">
                             <!-- qnaListTotal -->
@@ -33,8 +33,11 @@
                                         <div class="sort-select-wrap">
                                             <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
                                                 <option value="all">문의유형 전체</option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
+                                                <option value="product">상품 구성 및 정보 문의</option>
+                                                <option value="guideline">사용방법 문의</option>
+                                                <option value="buying">구매 문의</option>
+                                                <option value="delivery">배송 문의</option>
+                                                <option value="etc">기타</option>
                                             </select>
                                         </div>
                                     </div>
@@ -46,7 +49,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn border ico-req" data-href="#popupWrite" data-control="modal"><span>문의하기</span></button>
+                                    <button type="button" class="btn border ico-req" data-href="" data-control="modal"><span>문의하기</span></button>
                                 </div>
                             </div>
                             <!-- //sort -->
@@ -97,8 +100,8 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <a class="modi-btn" href="javascript:;">수정</a>
-                                                <a class="del-btn" href="javascript:;">삭제</a> 
+                                                <button class="modi-btn" type="button" data-href="" data-control="modal">수정</button>
+                                                <button class="del-btn" type="button" >삭제</button> 
                                             </div>
                                         </div>
                                     </li>
@@ -146,7 +149,7 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <a class="modi-btn" href="javascript:;">수정</a>
+                                                <!-- <a class="modi-btn" href="javascript:;">수정</a> -->
                                                 <a class="del-btn" href="javascript:;">삭제</a> 
                                             </div>
                                         </div>
@@ -194,7 +197,7 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <a class="modi-btn" href="javascript:;">수정</a>
+                                                <!-- <a class="modi-btn" href="javascript:;">수정</a> -->
                                                 <a class="del-btn" href="javascript:;">삭제</a> 
                                             </div>
                                         </div>
@@ -253,29 +256,23 @@
                                             </div>
                                         </div>
                                     </li>
-                                    
-                                    
                                 </ul>
+                                <!-- // 문의내역 없을 경우 - s-->
+                                <div class="no-data-message">
+                                    등록된 문의 내역이 없습니다.
+                                </div>
+                                <!-- // 문의내역 없을 경우 - e-->
                             </div>
                             <!-- // Accordion -->
-                            <!-- // 문의내역 없을 경우 - s-->
-                            <div class="no-data-message">
-                                등록된 문의 내역이 없습니다.
-                            </div>
-                            <!-- // 문의내역 없을 경우 - e-->
                         </div>
                         <!-- paging -->
-                        <div class="pagination" data-page="1" data-visible-count="5" data-total-count="4"></div>
+                        <div class="pagination" data-page="1" data-visible-count="5" data-total-count="7"></div>
                         <!-- //paging -->
-                        @@include('./common/modules/pagination.html', {
-                            count: 5
-                        })
-                        
                     </div>
                 </section>
                 
             </div>
-            <!-- //component KRP0014 -->a
+            <!-- //component KRP0014 -->
 		</div>
     </div>
 
@@ -292,7 +289,7 @@
                 <div class="qna-write">
                     <form action="" method="post" id="submitForm" 
                         data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" 
-                        data-write-ajax="/lg5-common/data-ajax/qna/requestQnaWrite.json">
+                        data-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
                         <div class="section">
                             <div class="section-box">
                                 <div class="form-wrap">
@@ -304,13 +301,13 @@
                                                     <dl class="forms">
                                                         <dd class="conts">
                                                             <div class="select-wrap half">
-                                                                <select class="ui_selectbox" id="qnaType">
+                                                                <select class="ui_selectbox" name="orderType" id="qnaType">
                                                                     <option value="" class="placeholder">문의 유형을 선택해주세요</option>
-                                                                    <option value="상품 구성 및 정보 문의">상품 구성 및 정보 문의</option>
-                                                                    <option value="사용 방법 문의">사용 방법 문의</option>
-                                                                    <option value="구매 문의">구매 문의</option>
-                                                                    <option value="배송 문의">배송 문의</option>
-                                                                    <option value="기타">기타</option>
+                                                                    <option value="product">상품 구성 및 정보 문의</option>
+                                                                    <option value="guideline">사용방법 문의</option>
+                                                                    <option value="buying">구매 문의</option>
+                                                                    <option value="delivery">배송 문의</option>
+                                                                    <option value="etc">기타</option>
                                                                 </select>
                                                             </div>
                                                         </dd>
@@ -469,6 +466,197 @@
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!-- // 등록하기 -->
+
+    <!-- 수정하기-->
+    <article id="popupUpdate" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit">
+                <span>문의하기</span>
+            </h1>
+        </header>
+        <section class="pop-conts contents qna">
+            <div class="inner">
+                <!-- .inner s  -->
+                <div class="qna-write">
+                    <form action="" method="post" id="submitForm" 
+                        data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" 
+                        data-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
+                        <div class="section">
+                            <div class="section-box">
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="sect-wrap" id="type_desc">
+                                                <div class="form-wrap">
+                                                    <!-- 취소사유 입력 -->
+                                                    <dl class="forms">
+                                                        <dd class="conts">
+                                                            <div class="select-wrap half">
+                                                                <select class="ui_selectbox" name="orderType" id="qnaType">
+                                                                    <option value="" class="placeholder">문의 유형을 선택해주세요</option>
+                                                                    <option value="product">상품 구성 및 정보 문의</option>
+                                                                    <option value="guideline">사용방법 문의</option>
+                                                                    <option value="buying">구매 문의</option>
+                                                                    <option value="delivery">배송 문의</option>
+                                                                    <option value="etc">기타</option>
+                                                                </select>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <!-- // 취소사유 입력 -->
+                                                </div>
+                                    
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="title" id="title" class="ui_textcontrol"
+                                                        placeholder="문의 제목을 입력해주세요. " maxlength="30" data-limit="30"
+                                                        data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요."
+                                                        data-required="true" required>
+                                                    <!-- <span id="txt-count1" class="inner-text"><em>0</em>/50자</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <textarea name="content" id="content" class="ui_textcontrol"
+                                                        placeholder="개인정보 보호를 위해 연락처, 이메일 등 개인정보는 남기지 말아주세요. 욕설, 비방, 홍보 등 제품과 무관한 내용은 별도 통보 없이 삭제될 수 있습니다." maxlength="200"
+                                                        data-limit="200" data-count-target="#txt-count2"
+                                                        data-error-msg="내용을 입력해주세요." data-required="true"
+                                                        required></textarea>
+                                                    <span id="txt-count2" class="inner-text"><em>0</em>/200자</span>
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="image-file-wrap ui_imageinput">
+                                                <div class="file-scroll-wrap">
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile1" id="imageFile1"
+                                                                    accept="image/*">
+                                                                <label for="imageFile1" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile2" id="imageFile2"
+                                                                    accept="image/*">
+                                                                <label for="imageFile2" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile3" id="imageFile3"
+                                                                    accept="image/*">
+                                                                <label for="imageFile3" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile4" id="imageFile4"
+                                                                    accept="image/*">
+                                                                <label for="imageFile4" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--20210909 수정-->
+    
+                                            <ul class="bullet-list bullet-area">
+                                                <li class="b-txt">이미지는 최대 4개까지 등록 가능하며, 파일별 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                                <li class="b-txt">이미지명은 특수기호(? ! , . & ^ ~ )를 제외해주세요. (첨부 가능 확장자 jpg, jpeg, png, gif)</li>
+    
+                                            </ul>
+    
+                                            <!--//20210909 수정-->
+                                        </div>
+                                    </div>
+                                    <ul class="bullet-list top-border">
+                                        <li class="b-txt">문의하신 내역과 답변은 <a href="" class="underline">마이페이지 > 고객지원 관리 > 나의 글 보기</a>에서 확인 가능합니다.</li>
+                                    </ul>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- .inner e  -->
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <div class="sq-area">
+                    <div class="sq-list">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="secretQna" name="secret">
+                            <label for="secretQna">비밀 글로 문의하기</label>
+                        </span>
+                    </div>
+                </div>
+                <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
+                <!-- 
+                수정 버튼 - 답변 등록되기 전 생성가능 - s
+                <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">등록</button>
+                수정 버튼 - 답변 등록되기 전 생성가능 - e 
+                -->
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- 수정하기 -->
 
 
     

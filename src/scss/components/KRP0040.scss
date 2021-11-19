@@ -240,6 +240,7 @@
                 margin-bottom: 16px;
                 .img-wrap {
                     height: 500px;
+                    overflow-x: hidden;
                     overflow-y: scroll;
                     img {
                         margin-top: 16px;
@@ -278,7 +279,6 @@
     }
     .no-data-message {
         display: none;
-        border-top:2px solid #666;
         border-bottom:1px solid #ddd;
         padding:91px 0;
         text-align: center;
