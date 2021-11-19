@@ -75,6 +75,23 @@
                 self.hide();
             });
 
+            // 매장 위치 및 정보 링크 처리
+            if(isApp()) {
+                $('a.btn-link').on('click', function(e){
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        var $el = $(this);
+                        var url = $el.attr('href');
+                            url = lgkorUI.parseUrl(location.origin+url);
+
+                        var params = $.extend(url.searchParams.getAll(),{'openMode' : 'inAppBrowser'});
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+
+                        lgkorUI.goUrl({ href :  url.origin + url.pathname + params , target:$el.attr('target'), openMode : 'inAppBrowser' });   
+                });
+            }
+
             if( self.el.layer.find('.agree-wrap').length ) {
                 $('#smsPhoneNo').prop('disabled', true);
                 self.el.layer.find('#smsAgreeCheck').on('change', function(e){
@@ -224,20 +241,7 @@
                 }
             });
 
-            // 매장 위치 및 정보 링크 처리
-            if(isApp()) {
-                $('a.btn-link').on('click', function(e){
-                        e.preventDefault();
-                        var $el = $(this);
-                        var url = $el.attr('href');
-                            url = lgkorUI.parseUrl(location.origin+url);
 
-                        var params = $.extend(url.searchParams.getAll(),{'openMode' : 'inAppBrowser'});
-                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
-
-                        lgkorUI.goUrl({ href :  url.origin + url.pathname + params , target:$el.attr('target'), openMode : 'inAppBrowser' });   
-                });
-            }
         });
 
         sms.init();
