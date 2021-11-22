@@ -121,7 +121,11 @@ var res = {
 				"KRP0037_Exhibition List[KRP0048]" : ["/html/components/KRP0037.html","","검수완료"],
 				"KRP0038_Section Title[KRP0050]" : ["/html/components/KRP0038.html","","검수완료"],
 				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
-				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""]
+				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""],
+				//BTOCSITE-7314 PDP > 프로모션 배너 구좌 추가 요청 (+CMS Admin) : KRP0042 신규작업분 추가
+				"KRP0042 PDP promotion banner [KRP0042]" : ["/html/components/KRP0042.html","",""],
+				//BTOCSITE-6032 PDP에 Q&A게시판 생성 요청
+				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""]
 			}
 		},
 		// "Component" : {
@@ -372,7 +376,10 @@ var res = {
 					"계약현황-해지 상담 신청 내 팝업" : ["/html/MYC/ACCF7055_popup.html","","검수완료"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"]
+					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","검수완료"],
+					//BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성 : 페이지 생성
+					"케어솔루션 레터" : ["/html/MYC/ACCF7025_care_list.html","",""],
+					"연차별 혜택" : ["/html/MYC/ACCF7025_care_benefits.html","",""]
 				},
 				"관심목록" : {
 					"찜한 제품" : ["/html/MYC/ACCF7013.html","","검수완료"],
