@@ -1126,7 +1126,19 @@
         @include mobile {
             height:calc(100vh - 122px);
             max-height:calc(100vh - 122px);
+            padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+            padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
+    }
+}
+
+.pop-footer {
+    @include mobile {
+        position:fixed;
+        width:100%;
+        bottom: 0;
+        bottom: env(safe-area-inset-bottom);
+        bottom: constant(safe-area-inset-bottom);
     }
 }
 
@@ -1346,7 +1358,6 @@
         background: #f4f4f4;
         cursor: default;
     }
-
     // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
     .info-msg { 
         
