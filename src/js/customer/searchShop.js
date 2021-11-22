@@ -232,6 +232,7 @@
                             });
                             
                             $(".sch-box .tabs-wrap").vcTab('select', 2); // 검색 탭으로 이동시킴.
+                            $(".view-info-btn").addClass("withtab3"); // BTOCSITE-5938-350 모니터링 수정
     
                             if(nArr.length > 0) {
                                 var shopName = nArr[0]['shopName'];
