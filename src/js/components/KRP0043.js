@@ -3,7 +3,7 @@
     '<li class="lists">' +
         '<div class="head">' +
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<span class="badge active">{{ statusBadge }}</span>' + 
+                '<span class="badge{{#if (statusBadge == "공지") }} notice{{/if}} {{#if (statusBadge == "답변완료") }}active{{/if}}">{{ statusBadge }}</span>' + 
                 '<span class="title line1">{{ title }}</span>' +
                 '<span class="writer"> {{ writer }} </span>' +
                 '<span class="date"> {{ date }} </span>' +
@@ -24,7 +24,7 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{# if(statusBadge == "답변완료") }} ' +
+            '{{#if (statusBadge == "답변완료") }} ' +
             '<div class="ans-box">' +
                 '<div>' +
                     '<span class="ans tit">A</span>' +
@@ -38,13 +38,17 @@
             '</div>' +
             '{{/if}}' +
             '<div class="btn-wrap">' +
-                '{{# if(statusBadge == "답변대기") }} ' + 
-                '<button class="modi-btn" type="button" data-href="#popupWrite" data-control="modal">수정</button>' +
+                '{{#if (statusBadge == "답변대기") }} ' + 
+                '<button class="modi-btn" type="button" data-href="#popupWrite" data-control="modal" data-name="modify">수정</button>' + 
                 '{{/if}}' +
-                '<button class="del-btn" type="button" >삭제</button>' +
+                '<button class="del-btn" type="button" data-name="delete">삭제</button>' +
             '</div>' +
         '</div>' +
     '</li>';
+
+
+
+
 
     var qnaPdp = {
         init : function (){
@@ -68,7 +72,7 @@
             self.$reqBtn = self.$sortingWrap.find('.ico-req'); //문의하기 버튼
 
             //Qna LIst
-            self.$qnaType = self.$pdpQna.find('.KRP0040');
+            self.$qnaType = self.$pdpQna.find('.KRP0043');
             self.$qnaList = self.$qnaType.find('ul.qna-result-lists');
 
             self.$qnaListBadge = self.$qnaType.find('.badge');
@@ -108,7 +112,6 @@
         },
         bindEvents : function() {
             var self = this;
-            
             // 에러나는 원인 찾기 - 설근
             //self.mode = self.url.indexOf('updateQnaAjax') > -1 ? 'modify' : 'write';
             self.mode = 'write';
@@ -142,27 +145,16 @@
             });
             //문의하기 
             self.$reqBtn.on('click', function(){
-                var loginChk = self.$qnaType.attr("data-login-flag");
-                console.log("loginChk 초기값 " + loginChk)
-                if(loginChk == 'Y'){
-                    var location = self.$reqBtn.attr('data-href','#popupWrite');
-                    location.href = location;
-                } else {
-                    console.log("로그인 체크값 : " + loginChk);
-                    lgkorUI.confirm('', {
-                        title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
-                        cancelBtnName: '아니오', okBtnName: '예', 
-                        ok : function (){ 
-                            window.location.href = "/sso/api/Login";
-                        }
-                    });
-                    
-                }
+                var loginChk = self.$qnaType.attr('data-login-flag');
+                var mode = self.$reqBtn.attr('data-name');
+                console.log(mode);
+                self.requestQnaReadPop({"mode":mode,"loginChk":loginChk});
+                
             });
 
             //파일삭제하기 - 문의글 수정시
             self.$fileDelBtn.on('click',function(){
-                var el = this;
+                var self = this;
                 lgkorUI.confirm('', {
                     title:'삭제하시겠습니까?', 
                     cancelBtnName: '아니오', okBtnName: '예', 
@@ -173,7 +165,7 @@
             });
             //삭제하기
             self.$deleteBtn.on('click', function(){
-                var el = this;
+                var self = this;
                 lgkorUI.confirm('', {
                     title:'게시물을 삭제하시겠습니까? <br> 답변이 작성된 경우 답변도 같이 삭제됩니다.', 
                     cancelBtnName: '아니오', okBtnName: '예', 
@@ -185,8 +177,15 @@
 
             //수정하기
             self.$modifyBtn.on('click', function(){
-                var el = this;
-                self.requestQnaReadPop(); //qna read popup
+                var loginChk = self.$qnaType.attr('data-login-flag');
+                var mode = self.$modifyBtn.attr('data-name');
+                
+                console.log("수정하기"+mode);
+                self.requestQnaReadPop({"mode":mode,"loginChk":loginChk}); //qna read popup
+            });
+
+            self.$myPageLink.on('click', function(){
+                window.location.href =  '/my-page/email-inquiry';
             });
         },
         // qna-list - get
@@ -231,7 +230,45 @@
         },
         // qna-read-popup - get
         requestQnaReadPop : function(param) {
-            console.log("QnA 조회 팝업 - API request !!");
+            console.log("QnA 조회 팝업 - API request !!");            
+            console.log("loginChk 초기값 " + param.loginChk);
+            var self = this; 
+            var location = '';
+
+            if(param.loginChk == 'Y'){
+                if(param.mode == 'write') {
+                    // write
+                    if($('#popupWrite').hasClass='modify') {
+                        $('#popupWrite').removeClass('modify');
+                    }
+                    $('#popupWrite').addClass(param.mode);
+                    $('#popupWrite').find('.pop-header > .tit > span').html("문의하기");
+                    location = $('.ico-req').attr('data-href','#popupWrite');
+
+                } else {
+                    // modify
+                    console.log("modify");
+
+                    if($('#popupWrite').hasClass='write') {
+                        $('#popupWrite').removeClass('write');
+                    }
+                    $('#popupWrite').addClass(param.mode);
+                    $('#popupWrite').find('.pop-header > .tit > span').html("수정하기");
+                    location = $('.modi-btn').attr('data-href','#popupWrite');
+                }
+                
+                location.href = location;
+            } else {
+                console.log("로그인 체크값 : " + param.loginChk);
+                lgkorUI.confirm('', {
+                    title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
+                    cancelBtnName: '아니오', okBtnName: '예', 
+                    ok : function (){ 
+                        window.location.href = "/sso/api/Login";
+                    }
+                });
+                
+            }
         },
         // qna-write-popup - post
         requestQnaWritePop : function(el) {
@@ -318,7 +355,7 @@
             }
         },
         // qna-modify-popup - post
-        requestQnaModify :function(param) {
+        requestQnaModifyPop :function(param) {
             console.log("QnA 수정하기 팝업 - API request !!");
             var self = this;
             self.url = self.$writeForm.data('updateAjax');
@@ -328,12 +365,7 @@
             console.log("QnA 삭제하기 - API request !!");
             var self = this;
             self.url = self.$writeForm.data('deleteAjax');
-            
-            
-
             lgkorUI.requestAjaxDataPost(self.url)
-
-
         },
         // 글 수정시 파일 삭제 함수
         uploadFileDelete: function(el) {
