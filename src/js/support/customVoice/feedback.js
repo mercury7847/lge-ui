@@ -71,7 +71,7 @@
                     },
                     contactPhoneNo1: {
                         required: true,
-                        pattern: /^0/,
+                        pattern: /^0[1-9]+/,
                         minLength : 2,
                         maxLength : 3,
                         msgTarget: '.err-block.contact-box-err-blocK',
