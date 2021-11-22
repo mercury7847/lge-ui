@@ -65,6 +65,27 @@
                             }
                         }
                     },
+                    contactPhoneNo1: {
+                        required: true,
+                        pattern: /^0/,
+                        minLength : 2,
+                        maxLength : 3,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
+                    contactPhoneNo2: {
+                        required: true,
+                        minLength : 3,
+                        maxLength : 4,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
+                    contactPhoneNo3: {
+                        required: true,
+                        minLength : 4,
+                        msgTarget: '.err-block.contact-box-err-blocK',
+                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                    },
                     replyCheck: {
                         required: true,
                         msgTarget: '.reply-err-block',
@@ -83,6 +104,7 @@
                         errorMsg: '내용을 입력해주세요.'
                     }
                 }
+
 
                 self.bindEvent();
 
