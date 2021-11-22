@@ -96,9 +96,8 @@
                 //
                 var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
                 if(!ignoreOverflow){
-                    $('html, body').css({
-                        overflow:"hidden"
-                    });
+                    // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                    $('body').addClass('scroll-lock');
                 }
             });
 
@@ -216,9 +215,8 @@
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
-                $('html, body').css({
-                    overflow:"visible"
-                });
+                // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                $('body').removeClass('scroll-lock');
             }
                 
                 /*

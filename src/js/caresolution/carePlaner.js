@@ -294,9 +294,10 @@
 
             loadCategoryList();
 
-
-
-
+            // BTOCSITE-5938-204 하단 푸터 가리는 현상 수정
+            if($('.default-bottom-wrap').is(':visible')) {
+                $('footer').addClass('default-bottom-wrap');
+            }
         });
     }
 

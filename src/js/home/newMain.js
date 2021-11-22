@@ -40,7 +40,8 @@ $(function () {
         
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
         
-        $('body').addClass('ignore-overflow-hidden');
+        // BTOCSITE-5938-285 메인 검색창 스크롤 밀림 현상 수정
+        // $('body').addClass('ignore-overflow-hidden');
 
         $context.find('.ui_carousel_slider_banner1,.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'

@@ -169,6 +169,21 @@
             }
         });
 
+        // 서비스 센타 링크 처리
+        if(isApp()) {
+            $('a.btn-link').on('click', function(e){
+                    e.preventDefault();
+                    var $el = $(this);
+                    var url = $el.attr('href');
+                        url = lgkorUI.parseUrl(location.origin+url);
+
+                    var params = $.extend(url.searchParams.getAll(),{'openMode' : 'inAppBrowser'});
+                        params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+
+                    lgkorUI.goUrl({ href :  url.origin + url.pathname + params , target:$el.attr('target'), openMode : 'inAppBrowser' });   
+            });
+        }
+
         // 카카오톡 공유하기 url 생성
         var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
         var kakaoShareLoc = lgkorUI.parseUrl(kakaoShareUrl);
