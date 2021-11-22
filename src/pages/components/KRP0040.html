@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0040",
+    isJScompile: true
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+
+            <!-- component KRP0040 -->
+            <div class="component-wrap full" id="pdpQna">
+                <!--
+                    [component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+                -->
+                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="Y" >
+                    <div class="inner">
+                        <div class="heading-box">
+                            <!-- qnaListTotal -->
+                            <div class="title ta-c">
+                                <h2>Q&A (<em id="count" class="count">86</em>)</h2>
+                            </div>
+                            <!-- //qnaListTotal -->
+                        </div>
+                        <div class="result-wrap">
+                            <!-- sort -->
+                            <div class="sorting-wrap">
+                                <div class="sort-wrap">
+                                    <div class="sort-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
+                                                <option value="all">문의유형 전체</option>
+                                                <option value="product">상품 구성 및 정보 문의</option>
+                                                <option value="guideline">사용방법 문의</option>
+                                                <option value="buying">구매 문의</option>
+                                                <option value="delivery">배송 문의</option>
+                                                <option value="etc">기타</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sort-area">
+                                        <div class="sort-list">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="secretSort" name="secret">
+                                                <label for="secretSort">비밀글 제외</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn border ico-req" data-href="" data-control="modal"><span>문의하기</span></button>
+                                </div>
+                            </div>
+                            <!-- //sort -->
+                            <!-- Accordion -->
+                            <div class="accordion-wrap qna-type ui_accordion" data-single-open="true" data-open-index="0">
+                                <ul class="qna-result-lists">
+                                    <!-- 공지 case -->
+                                    <li class="lists">
+                                        <div class="head">
+                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                <span class="badge active notice">공지</span><!-- active 클래스 : 답변완료일때 /  notice : 공지사항 글일 경우-->                                     
+                                                <span class="title line1">공지사항 타이틀이 출력됩니다.</span> <!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 / on 클래스로 비밀글 아이콘 여부 처리 있을경우에만 아이콘적용-->                                                
+                                                <span class="writer">관리자</span>
+                                                <span class="date">2021.08.12</span>
+                                                <span class="blind ui_accord_text">내용 더 보기</span>
+                                            </a>
+                                        </div>
+                                        <div class="accord-cont ui_accord_content" style="display:none;">
+                                            <div class="que-box">
+                                                <div>
+                                                    <span class="que tit">Q</span>
+                                                    <p class="desc">
+                                                        서울지역은 묶음배송(무료배송 지역)으로 진행되기에 주말, 공휴일 제외하고 평일기준 2-3주 전후로 소요되며,
+                                                        그 외 지역의 기본배송일은 주말 공휴일 제외하고 평일 기준 7-14일 전후로 소요됩니다.
+                                                    </p>
+                                                    <!-- img 최대 4개까지 등록 가능 -->
+                                                    <!--
+                                                    <div class="img-wrap">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt=""> 
+                                                    </div>
+                                                    -->
+                                                    <!-- //img 최대 4개까지 등록 가능 -->
+                                                </div>
+                                            </div>
+                                            <div class="ans-box">
+                                                <div>
+                                                    <span class="ans tit">A</span>
+                                                    <p class="desc">
+                                                        네 고객님 벽걸이로 주문하셔도, 기본 스탠드는 함께 배송됩니다. 언제든지 추가 비용 없이 스탠드형으로  변경 설치 가능합니다.
+                                                    </p>
+                                                </div>
+                                                <div class="ans-date-wrap">
+                                                    답변일 <span class="ans-date">2021.09.30</span>
+                                                </div>
+                                            </div>
+                                            <div class="btn-wrap">
+                                                <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
+                                                <button class="modi-btn" type="button" data-href="" data-control="modal">수정</button>
+                                                <button class="del-btn" type="button" >삭제</button> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- //공지 case-->
+                                    <li class="lists">
+                                        <div class="head">
+                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                <span class="badge active">답변완료</span><!-- active 클래스 답변완료일때, -->                                     
+                                                <span class="title hide line1 on">관리자에 의해 노출되지 않는 게시물입니다.</span> <!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 / on 클래스로 비밀글 아이콘 여부 처리 있을경우에만 아이콘적용-->
+                                                <span class="writer">홍길동</span>
+                                                <span class="date">2021.11.12</span>
+                                                <span class="blind ui_accord_text">내용 더 보기</span>
+                                            </a>
+                                        </div>
+                                        <div class="accord-cont ui_accord_content" style="display:none;">
+                                            <div class="que-box">
+                                                <div>
+                                                    <span class="que tit">Q</span>
+                                                    <p class="desc">
+                                                        서울지역은 묶음배송(무료배송 지역)으로 진행되기에 주말, 공휴일 제외하고 평일기준 2-3주 전후로 소요되며,
+                                                        그 외 지역의 기본배송일은 주말 공휴일 제외하고 평일 기준 7-14일 전후로 소요됩니다.
+                                                    </p>
+                                                    <!-- img 최대 4개까지 등록 가능 -->
+                                                    <!--
+                                                    <div class="img-wrap">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt=""> 
+                                                    </div>
+                                                    -->
+                                                    <!-- //img 최대 4개까지 등록 가능 -->
+                                                </div>
+                                            </div>
+                                            <div class="ans-box">
+                                                <div>
+                                                    <span class="ans tit">A</span>
+                                                    <p class="desc">
+                                                        네 고객님 벽걸이로 주문하셔도, 기본 스탠드는 함께 배송됩니다. 언제든지 추가 비용 없이 스탠드형으로  변경 설치 가능합니다.
+                                                    </p>
+                                                </div>
+                                                <div class="ans-date-wrap">
+                                                    답변일 <span class="ans-date">2021.09.30</span>
+                                                </div>
+                                            </div>
+                                            <div class="btn-wrap">
+                                                <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
+                                                <!-- <a class="modi-btn" href="javascript:;">수정</a> -->
+                                                <a class="del-btn" href="javascript:;">삭제</a> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="lists">
+                                        <div class="head">
+                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                <span class="badge active">답변완료</span><!-- active 클래스 답변완료일때, -->                                     
+                                                <span class="title line1 on">주문하면 얼마나 걸리나요? 주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?</span> <!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 / on 클래스로 비밀글 아이콘 여부 처리 있을경우에만 아이콘적용-->
+                                                <span class="writer">홍길동</span>
+                                                <span class="date">2021.11.12</span>
+                                                <span class="blind ui_accord_text">내용 더 보기</span>
+                                            </a>
+                                        </div>
+                                        <div class="accord-cont ui_accord_content" style="display:none;">
+                                            <div class="que-box">
+                                                <div>
+                                                    <span class="que tit">Q</span>
+                                                    <p class="desc">
+                                                        서울지역은 묶음배송(무료배송 지역)으로 진행되기에 주말, 공휴일 제외하고 평일기준 2-3주 전후로 소요되며,
+                                                        그 외 지역의 기본배송일은 주말 공휴일 제외하고 평일 기준 7-14일 전후로 소요됩니다.
+                                                    </p>
+                                                    <!-- img 최대 4개까지 등록 가능 -->
+                                                    <!--
+                                                    <div class="img-wrap">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt=""> 
+                                                    </div>
+                                                    -->
+                                                    <!-- //img 최대 4개까지 등록 가능 -->
+                                                </div>
+                                            </div>
+                                            <div class="ans-box">
+                                                <div>
+                                                    <span class="ans tit">A</span>
+                                                    <p class="desc">
+                                                        네 고객님 벽걸이로 주문하셔도, 기본 스탠드는 함께 배송됩니다. 언제든지 추가 비용 없이 스탠드형으로  변경 설치 가능합니다.
+                                                    </p>
+                                                </div>
+                                                <div class="ans-date-wrap">
+                                                    답변일 <span class="ans-date">2021.09.30</span>
+                                                </div>
+                                            </div>
+                                            <div class="btn-wrap">
+                                                <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
+                                                <!-- <a class="modi-btn" href="javascript:;">수정</a> -->
+                                                <a class="del-btn" href="javascript:;">삭제</a> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="lists">
+                                        <div class="head">
+                                            <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                                <span class="badge">답변대기</span><!-- active 클래스 답변완료일때, -->                                     
+                                                <span class="title line1">주문하면 얼마나 걸리나요? 주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?주문하면 얼마나 걸리나요?</span> <!-- 말줄임 line수 따라 line1, line2, line3, line4, line5 적용 / secert 클래스로 비밀글 아이콘 여부 처리 있을경우에만 아이콘적용-->
+                                                <span class="writer">홍길동</span>
+                                                <span class="date">2021.11.12</span>
+                                                <span class="blind ui_accord_text">내용 더 보기</span>
+                                            </a>
+                                        </div>
+                                        <div class="accord-cont ui_accord_content" style="display:none;">
+                                            <div class="que-box">
+                                                <div>
+                                                    <span class="que tit">Q</span>
+                                                    <p class="desc">
+                                                        서울지역은 묶음배송(무료배송 지역)으로 진행되기에 주말, 공휴일 제외하고 평일기준 2-3주 전후로 소요되며,
+                                                        그 외 지역의 기본배송일은 주말 공휴일 제외하고 평일 기준 7-14일 전후로 소요됩니다.
+                                                    </p>
+                                                    <div class="img-wrap">
+                                                        <!-- img 최대 4개까지 등록 가능 -->
+                                                        <!-- 
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt="">
+                                                        <img src="" alt=""> 
+                                                        -->
+                                                        <!-- // img 최대 4개까지 등록 가능 -->
+                                                        <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                                                        <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                                                        <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                                                        <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ans-box">
+                                                <!-- 답변 대기 상태
+                                                <div>
+                                                    <span class="ans tit">A</span>
+                                                    <p class="desc">
+                                                        네 고객님 벽걸이로 주문하셔도, 기본 스탠드는 함께 배송됩니다. 언제든지 추가 비용 없이 스탠드형으로  변경 설치 가능합니다.
+                                                    </p>
+                                                </div>
+                                                <div class="ans-date-wrap">
+                                                    답변일 <span class="ans-date">2021.09.30</span>
+                                                </div> 
+                                                -->
+                                            </div>
+                                            <div class="btn-wrap">
+                                                <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
+                                                <a class="modi-btn" href="javascript:;">수정</a>
+                                                <a class="del-btn" href="javascript:;">삭제</a> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- // 문의내역 없을 경우 - s-->
+                                <div class="no-data-message">
+                                    등록된 문의 내역이 없습니다.
+                                </div>
+                                <!-- // 문의내역 없을 경우 - e-->
+                            </div>
+                            <!-- // Accordion -->
+                        </div>
+                        <!-- paging -->
+                        <div class="pagination" data-page="1" data-visible-count="5" data-total-count="7"></div>
+                        <!-- //paging -->
+                    </div>
+                </section>
+                
+            </div>
+            <!-- //component KRP0014 -->
+		</div>
+    </div>
+
+    <!-- 등록하기 -->
+    <article id="popupWrite" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit">
+                <span>문의하기</span>
+            </h1>
+        </header>
+        <section class="pop-conts contents qna">
+            <div class="inner">
+                <!-- .inner s  -->
+                <div class="qna-write">
+                    <form action="" method="post" id="submitForm" 
+                        data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" 
+                        data-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
+                        <div class="section">
+                            <div class="section-box">
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="sect-wrap" id="type_desc">
+                                                <div class="form-wrap">
+                                                    <!-- 취소사유 입력 -->
+                                                    <dl class="forms">
+                                                        <dd class="conts">
+                                                            <div class="select-wrap half">
+                                                                <select class="ui_selectbox" name="orderType" id="qnaType">
+                                                                    <option value="" class="placeholder">문의 유형을 선택해주세요</option>
+                                                                    <option value="product">상품 구성 및 정보 문의</option>
+                                                                    <option value="guideline">사용방법 문의</option>
+                                                                    <option value="buying">구매 문의</option>
+                                                                    <option value="delivery">배송 문의</option>
+                                                                    <option value="etc">기타</option>
+                                                                </select>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <!-- // 취소사유 입력 -->
+                                                </div>
+                                    
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="title" id="title" class="ui_textcontrol"
+                                                        placeholder="문의 제목을 입력해주세요. " maxlength="30" data-limit="30"
+                                                        data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요."
+                                                        data-required="true" required>
+                                                    <!-- <span id="txt-count1" class="inner-text"><em>0</em>/50자</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <textarea name="content" id="content" class="ui_textcontrol"
+                                                        placeholder="개인정보 보호를 위해 연락처, 이메일 등 개인정보는 남기지 말아주세요. 욕설, 비방, 홍보 등 제품과 무관한 내용은 별도 통보 없이 삭제될 수 있습니다." maxlength="200"
+                                                        data-limit="200" data-count-target="#txt-count2"
+                                                        data-error-msg="내용을 입력해주세요." data-required="true"
+                                                        required></textarea>
+                                                    <span id="txt-count2" class="inner-text"><em>0</em>/200자</span>
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="image-file-wrap ui_imageinput">
+                                                <div class="file-scroll-wrap">
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile1" id="imageFile1"
+                                                                    accept="image/*">
+                                                                <label for="imageFile1" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile2" id="imageFile2"
+                                                                    accept="image/*">
+                                                                <label for="imageFile2" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile3" id="imageFile3"
+                                                                    accept="image/*">
+                                                                <label for="imageFile3" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile4" id="imageFile4"
+                                                                    accept="image/*">
+                                                                <label for="imageFile4" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--20210909 수정-->
+    
+                                            <ul class="bullet-list bullet-area">
+                                                <li class="b-txt">이미지는 최대 4개까지 등록 가능하며, 파일별 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                                <li class="b-txt">이미지명은 특수기호(? ! , . & ^ ~ )를 제외해주세요. (첨부 가능 확장자 jpg, jpeg, png, gif)</li>
+    
+                                            </ul>
+    
+                                            <!--//20210909 수정-->
+                                        </div>
+                                    </div>
+                                    <ul class="bullet-list top-border">
+                                        <li class="b-txt">문의하신 내역과 답변은 <a href="" class="underline">마이페이지 > 고객지원 관리 > 나의 글 보기</a>에서 확인 가능합니다.</li>
+                                    </ul>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sq-area">
+                            <div class="sq-list">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="secretQna" name="secret">
+                                    <label for="secretQna">비밀 글로 문의하기</label>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- .inner e  -->
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
+                <!-- 
+                수정 버튼 - 답변 등록되기 전 생성가능 - s
+                <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">등록</button>
+                수정 버튼 - 답변 등록되기 전 생성가능 - e 
+                -->
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 등록하기 -->
+
+    <!-- 수정하기-->
+    <article id="popupUpdate" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit">
+                <span>수정하기</span>
+            </h1>
+        </header>
+        <section class="pop-conts contents qna">
+            <div class="inner">
+                <!-- .inner s  -->
+                <div class="qna-write">
+                    <form action="" method="post" id="submitForm" 
+                        data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" 
+                        data-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
+                        <div class="section">
+                            <div class="section-box">
+                                <div class="form-wrap">
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="sect-wrap" id="type_desc">
+                                                <div class="form-wrap">
+                                                    <!-- 취소사유 입력 -->
+                                                    <dl class="forms">
+                                                        <dd class="conts">
+                                                            <div class="select-wrap half">
+                                                                <select class="ui_selectbox" name="orderType" id="qnaType">
+                                                                    <option value="" class="placeholder">문의 유형을 선택해주세요</option>
+                                                                    <option value="product">상품 구성 및 정보 문의</option>
+                                                                    <option value="guideline">사용방법 문의</option>
+                                                                    <option value="buying">구매 문의</option>
+                                                                    <option value="delivery">배송 문의</option>
+                                                                    <option value="etc">기타</option>
+                                                                </select>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <!-- // 취소사유 입력 -->
+                                                </div>
+                                    
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <input type="text" name="title" id="title" class="ui_textcontrol"
+                                                        placeholder="문의 제목을 입력해주세요. " maxlength="30" data-limit="30"
+                                                        data-count-target="#txt-count1" data-error-msg="제목을 입력해주세요."
+                                                        data-required="true" required>
+                                                    <!-- <span id="txt-count1" class="inner-text"><em>0</em>/50자</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="text-form">
+                                                <div class="input-wrap">
+                                                    <textarea name="content" id="content" class="ui_textcontrol"
+                                                        placeholder="개인정보 보호를 위해 연락처, 이메일 등 개인정보는 남기지 말아주세요. 욕설, 비방, 홍보 등 제품과 무관한 내용은 별도 통보 없이 삭제될 수 있습니다." maxlength="200"
+                                                        data-limit="200" data-count-target="#txt-count2"
+                                                        data-error-msg="내용을 입력해주세요." data-required="true"
+                                                        required></textarea>
+                                                    <span id="txt-count2" class="inner-text"><em>0</em>/200자</span>
+                                                </div>
+                                            </div>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="forms">
+                                        <div class="conts">
+                                            <div class="image-file-wrap ui_imageinput">
+                                                <div class="file-scroll-wrap">
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile1" id="imageFile1"
+                                                                    accept="image/*">
+                                                                <label for="imageFile1" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile2" id="imageFile2"
+                                                                    accept="image/*">
+                                                                <label for="imageFile2" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile3" id="imageFile3"
+                                                                    accept="image/*">
+                                                                <label for="imageFile3" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="file-item">
+                                                        <div class="file-image">
+                                                            <div class="file-preview"></div>
+                                                            <div class="file-btns">
+                                                                <input type="file" name="imageFile4" id="imageFile4"
+                                                                    accept="image/*">
+                                                                <label for="imageFile4" class="btn-upload"><span
+                                                                        class="blind">업로드</span></label>
+                                                                <button type="button" class="btn-del"><span
+                                                                        class="blind">삭제</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <input type="text" class="name" placeholder="파일선택" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--20210909 수정-->
+    
+                                            <ul class="bullet-list bullet-area">
+                                                <li class="b-txt">이미지는 최대 4개까지 등록 가능하며, 파일별 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                                <li class="b-txt">이미지명은 특수기호(? ! , . & ^ ~ )를 제외해주세요. (첨부 가능 확장자 jpg, jpeg, png, gif)</li>
+    
+                                            </ul>
+    
+                                            <!--//20210909 수정-->
+                                        </div>
+                                    </div>
+                                    <ul class="bullet-list top-border">
+                                        <li class="b-txt">문의하신 내역과 답변은 <a href="" class="underline">마이페이지 > 고객지원 관리 > 나의 글 보기</a>에서 확인 가능합니다.</li>
+                                    </ul>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sq-area">
+                            <div class="sq-list">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="secretQna" name="secret">
+                                    <label for="secretQna">비밀 글로 문의하기</label>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- .inner e  -->
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
+                <!-- 
+                수정 버튼 - 답변 등록되기 전 생성가능 - s
+                <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">등록</button>
+                수정 버튼 - 답변 등록되기 전 생성가능 - e 
+                -->
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- 수정하기 -->
+</body>
+</html>
