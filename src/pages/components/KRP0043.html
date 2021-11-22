@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', {
-    componentID: "KRP0040",
-    isJScompile: true
+        componentID: "KRP0043",
+        isJScompile : true,
 })
 <body>
     <div class="wrap">
@@ -16,7 +16,7 @@
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
                 -->
-                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="Y" >
+                <section class="component KRP0043" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="Y" >
                     <div class="inner">
                         <div class="heading-box">
                             <!-- qnaListTotal -->
@@ -49,7 +49,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn border ico-req" data-href="" data-control="modal"><span>문의하기</span></button>
+                                    <button type="button" class="btn border ico-req" data-href="" data-control="modal" data-name="write"><span>문의하기</span></button>
                                 </div>
                             </div>
                             <!-- //sort -->
@@ -100,8 +100,8 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <button class="modi-btn" type="button" data-href="" data-control="modal">수정</button>
-                                                <button class="del-btn" type="button" >삭제</button> 
+                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal" data-href="">수정</button>
+                                                <button class="del-btn" type="button" data-name="delete" >삭제</button> 
                                             </div>
                                         </div>
                                     </li>
@@ -251,8 +251,8 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <a class="modi-btn" href="javascript:;">수정</a>
-                                                <a class="del-btn" href="javascript:;">삭제</a> 
+                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal" data-href="">수정</button>
+                                                <button class="del-btn" type="button" data-name="delete" >삭제</button> 
                                             </div>
                                         </div>
                                     </li>
@@ -434,7 +434,7 @@
                                         </div>
                                     </div>
                                     <ul class="bullet-list top-border">
-                                        <li class="b-txt">문의하신 내역과 답변은 <a href="" class="underline">마이페이지 > 고객지원 관리 > 나의 글 보기</a>에서 확인 가능합니다.</li>
+                                        <li class="b-txt">문의하신 내역과 답변은 <a href="javascript:;" class="underline">마이페이지 > 고객지원 관리 > 나의 글 보기</a>에서 확인 가능합니다.</li>
                                     </ul>
     
                                 </div>
@@ -468,7 +468,7 @@
     <!-- // 등록하기 -->
 
     <!-- 수정하기-->
-    <article id="popupUpdate" class="popup-wrap">
+    <article id="popupModify" class="popup-wrap">
         <header class="pop-header">
             <h1 class="tit">
                 <span>수정하기</span>
@@ -646,7 +646,7 @@
         </section>
         <footer class="pop-footer">
             <div class="btn-group">
-                <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
+                <button type="button" class="btn pink btn-modify"><span>등록</span></button>
                 <!-- 
                 수정 버튼 - 답변 등록되기 전 생성가능 - s
                 <button type="button" class="btn btn-modify" data-id="#modifyConfirm" data-control="modal">등록</button>
