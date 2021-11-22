@@ -560,7 +560,7 @@
                 var data = $el.data();
                 
                 if($el.length > 0) {
-                    if(data.type !== "accessories" && data.href ) {
+                    if(data.href) {
                         self.$packageModal.vcModal('close')
                         location.href = data.href;
                     } else {
