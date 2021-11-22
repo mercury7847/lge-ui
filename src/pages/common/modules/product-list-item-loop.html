@@ -138,14 +138,12 @@
             </div>
             @@if (context.wish) {
             <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
-            <!-- BTOCSITE-7637 -->
             <div class="product-wish">
                 <span class="chk-wish-wrap">
                     <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked >
                     <label for="@@wish.id"><span class="blind">찜하기</span></label>
                 </span>
             </div>
-            <!-- //BTOCSITE-7637 -->
             }
             @@if (context.price) {
             <div class="price-area">
