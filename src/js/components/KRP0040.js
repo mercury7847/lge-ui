@@ -24,7 +24,7 @@
                     '</div>' +
                 '</div>' +
             '</div>' +
-            '{{# if(statusBadge == "답변완료" )}} ' +
+            '{{# if(statusBadge == "답변완료") }} ' +
             '<div class="ans-box">' +
                 '<div>' +
                     '<span class="ans tit">A</span>' +
@@ -38,7 +38,7 @@
             '</div>' +
             '{{/if}}' +
             '<div class="btn-wrap">' +
-                '{{# if(statusBadge == "답변대기" ) }} ' + 
+                '{{# if(statusBadge == "답변대기") }} ' + 
                 '<button class="modi-btn" type="button" data-href="#popupWrite" data-control="modal">수정</button>' +
                 '{{/if}}' +
                 '<button class="del-btn" type="button" >삭제</button>' +
@@ -198,7 +198,6 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                console.log("result : "+result);
                 if(result.status == "success") {
                     var data = result.data;
 
@@ -207,7 +206,6 @@
                         var html = "";
 
                         data.listData.forEach(function(item){
-                            console.log("테스트"  + item);
                             html += vcui.template(qnaListTmpl, item);
                         });
 

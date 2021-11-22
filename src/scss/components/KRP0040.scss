@@ -394,26 +394,32 @@
     .pop-conts {
         @include mobile{
             padding: 0 16px 30px;
-            height: calc(100% - 144px);
-            max-height: calc(100% - 144px);
+        }
+        .sq-area {
+            position: absolute;
+            bottom:60px;            
+            @include mobile{
+                font-size:14px;
+                position: relative;
+                bottom:-20px;
+                padding-bottom: 20px;
+            }
+            .sq-list {
+                .chk-wrap{
+                }
+            }
         }
     }
     .pop-footer {
+        @include mobile {
+            
+        }
         .btn-group {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             @include mobile{
                 padding-bottom: 0;
                 display: block;
-                .sq-area {
-                    font-size:14px;
-                    .sq-list {
-                        .chk-wrap{
-                             left:10px; 
-                             top:-20px;                            
-                        }
-                     }
-                }
             }
         }
     }   

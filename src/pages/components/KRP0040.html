@@ -16,7 +16,7 @@
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
                 -->
-                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="N" >
+                <section class="component KRP0040" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="Y" >
                     <div class="inner">
                         <div class="heading-box">
                             <!-- qnaListTotal -->
@@ -440,6 +440,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="sq-area">
+                            <div class="sq-list">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="secretQna" name="secret">
+                                    <label for="secretQna">비밀 글로 문의하기</label>
+                                </span>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- .inner e  -->
@@ -447,14 +455,6 @@
         </section>
         <footer class="pop-footer">
             <div class="btn-group">
-                <div class="sq-area">
-                    <div class="sq-list">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="secretQna" name="secret">
-                            <label for="secretQna">비밀 글로 문의하기</label>
-                        </span>
-                    </div>
-                </div>
                 <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
                 <!-- 
                 수정 버튼 - 답변 등록되기 전 생성가능 - s
@@ -471,7 +471,7 @@
     <article id="popupUpdate" class="popup-wrap">
         <header class="pop-header">
             <h1 class="tit">
-                <span>문의하기</span>
+                <span>수정하기</span>
             </h1>
         </header>
         <section class="pop-conts contents qna">
@@ -631,6 +631,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="sq-area">
+                            <div class="sq-list">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="secretQna" name="secret">
+                                    <label for="secretQna">비밀 글로 문의하기</label>
+                                </span>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- .inner e  -->
@@ -638,14 +646,6 @@
         </section>
         <footer class="pop-footer">
             <div class="btn-group">
-                <div class="sq-area">
-                    <div class="sq-list">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="secretQna" name="secret">
-                            <label for="secretQna">비밀 글로 문의하기</label>
-                        </span>
-                    </div>
-                </div>
                 <button type="button" class="btn pink btn-confirm"><span>등록</span></button>
                 <!-- 
                 수정 버튼 - 답변 등록되기 전 생성가능 - s
@@ -657,8 +657,5 @@
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!-- 수정하기 -->
-
-
-    
 </body>
 </html>
