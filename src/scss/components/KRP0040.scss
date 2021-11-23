@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0040 {
+	.component-inner {
+		@include mobile {
+			padding:0;
+		}
+	}
+	.title {
+		text-align:center;
+		@include mobile {
+			padding:0 16px;
+		}
+		* {
+			font-size:32px;
+			font-weight:700;
+			line-height:52px;
+			color:#000;
+			@include mobile {
+				font-size:24px;
+				line-height:33px;
+			}
+		}
+	}
+	.withstory-list-slide {
+		margin-top:32px;
+        margin-left: -12px;
+        margin-right: -12px;
+		@include mobile {
+			margin-top:32px;
+		}
+        .slide-item {
+            padding: 0 12px;
+            max-width:33.3333333%;
+            @include mobile{
+                max-width:100%;
+            }
+        }
+        .slide-box{
+            a {
+                display:block;
+                position: relative;
+                border-radius:8px;
+                overflow:hidden;
+                &:after {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    border-radius: 8px;
+                    background: url("/lg5-common/images/KRP0040/dimmed.svg") no-repeat 0 0;
+                    background-size: 100% 100%;
+                    content: '';
+                    @include mobile {
+                        right: 6px;
+                        left: 6px;
+                    }
+                }
+                > img {
+                    width:100%;
+                    vertical-align:top; 
+                }
+                .info-area {
+                    position:absolute;
+                    left:0;
+                    right:0;
+                    top:0;
+                    z-index: 1;
+                    padding:335px 32px 40px;
+                    color:#fff;
+                    @include mobile {
+                        left:26px;
+                        right:26px;
+                        bottom:32px;
+                        padding:0;
+                    }
+                    .flag {
+                        height:24px;
+                        padding:0 8px;
+                        border:1px solid;
+                        border-radius:4px;
+                        border-color:#fff;
+                        color:inherit;
+                        font-weight:500;
+                        line-height:22px;
+                        @include mobile {
+                            font-size:11px;
+                            line-height:23px;
+                        }
+                    }
+                    .info-tit {
+                        padding-top:10px;
+                        font-weight:700;
+                        font-size:40px;
+                        line-height:48px;
+                        max-height: 106px;
+                        @include textEllipsisClamp(2);
+                        @include mobile {
+                            font-size:27px;
+                            line-height:38px;
+                        }
+                    }
+                    .info-tag {
+                        display:block;
+                        width:100%;
+                        margin-top:24px;
+                        max-height: 24px;
+                        @include textClipClamp(1);
+                        @include mobile {
+                            margin-top:20px;
+                        }
+                        li {
+                            display:inline-block;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight: 400;
+                            text-decoration:underline;
+                            +li{
+                                padding-left: 8px;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+        .slick-prev{
+            left: -6px;
+        }
+        .slick-next {
+            right: -6px;
+        }
+        .slick-dots {
+            position: static;
+            bottom: auto;
+            left: auto;
+            width: 100%;
+            text-align: center;
+            font-size: 0;
+            padding-top: 16px;
+            li{
+                button {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 0;
+                    background: #e4e4e4;
+                    vertical-align: top;
+                    font-size: 0;
+                    overflow: hidden;
+                }
+                &.slick-active button {
+                    background:#000000;
+                }
+            }
+        }
+	}
+}
