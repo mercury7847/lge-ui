@@ -2834,9 +2834,9 @@
 	$activeBlackArrowData: (av_pearl-white, av_silver-white, av_berry-blue, av_bubble-black, av_sour-lemon);
 	@each $color in $activeBlackArrowData {
 		&.#{$color} {
-			& input + label:after {
-				border-bottom: 2px solid #000;
-				border-left: 2px solid #000;
+			& input:checked + label:after {
+				border-bottom: 2px solid #000 !important;
+				border-left: 2px solid #000 !important;
 			}
 		}
 	}
