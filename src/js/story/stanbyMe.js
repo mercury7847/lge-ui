@@ -302,8 +302,8 @@
             filterEvent: function(){
                 var self = this;
                 var currentUrl = $(location).attr('href');
-                var url = currentUrl + '&pageId=1';
-                var urlSet = url.split('&')[0];
+                var url = currentUrl.split('?')[0]; //BTOCSITE-5938-369 [모니터링] 필터 변경후 상세 페이지 진입시 뒤로가기 오류
+                var urlSet = url + '?tab=prod2&pageId=1'; //BTOCSITE-5938-369 [모니터링] 필터 변경후 상세 페이지 진입시 뒤로가기 오류
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
                         'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
