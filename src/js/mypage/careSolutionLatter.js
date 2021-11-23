@@ -136,8 +136,9 @@
             putList: function(el, rows) {
                 var self = this;
                 var pagination = rows.pagination;
+                //console.log("불러온 데이터", rows);
                 var moreBtn = el.closest('.tab-contents').attr('aria-labelledby').replace('tab-', '') === 'info' ? self.$couponOnMore : self.$couponEndMore;
-
+                console.log("ssss", moreBtn)
 
                 var isLast = self.visibleCount * pagination.page >= pagination.totalCount;
 
