@@ -85,6 +85,18 @@
                             height:auto;
                         }
                     }
+                    .product-contents {
+                        .product-name {
+                            a {
+                                @include mobile {
+                                    display: block;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             &.now {
@@ -191,6 +203,7 @@
             .item.rec-items {
                 padding:40px 32px 32px;
                 box-shadow:none;
+                border: 2px solid #fff;
                 a img {
                     max-width:240px;
                 }
