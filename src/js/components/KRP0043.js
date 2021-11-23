@@ -117,20 +117,20 @@
             self.mode = 'write';
 
             // QnA 리스트 : 페이징 선택
-            self.$pagination.on('page_click', function(e, data) {
+            self.$pagination.off('page_click').on('page_click', function(e, data) {
                 var categoryId = self.$sortSelect.vcSelectbox('value');
                 var secretExcept = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
-                self.requestQnaListData({"categoryId":categoryId,"secretExcept":secretExcept,"page": 1});
+                self.requestQnaListData({"categoryId":categoryId,"secretExcept":secretExcept,"page": data});
             });
             
             // QnA 리스트 : selectbox 선택
-            self.$sortSelect.on('change', function(e){
+            self.$sortSelect.off('change').on('change', function(e){
                 var categoryId = self.$sortSelect.vcSelectbox('value');
                 var secretExcept = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
                 self.requestQnaListData({"categoryId":categoryId,"secretExcept":secretExcept,"page": 1});
             });
             
-            self.$completeBtn.find('.btn-confirm,.btn-modify').on('click', function() {
+            self.$completeBtn.find('.btn-confirm,.btn-modify').off('click').on('click', function() {
                 var result = self.validation.validate();
                 if (result.success == true) {    
                     lgkorUI.confirm('', {
@@ -144,7 +144,7 @@
                 }
             });
             //문의하기 
-            self.$reqBtn.on('click', function(){
+            self.$reqBtn.off('click').on('click', function(){
                 var loginChk = self.$qnaType.attr('data-login-flag');
                 var mode = self.$reqBtn.attr('data-name');
                 console.log(mode);
@@ -153,7 +153,7 @@
             });
 
             //파일삭제하기 - 문의글 수정시
-            self.$fileDelBtn.on('click',function(){
+            self.$fileDelBtn.off('click').on('click',function(){
                 var self = this;
                 lgkorUI.confirm('', {
                     title:'삭제하시겠습니까?', 
@@ -164,7 +164,7 @@
                 });
             });
             //삭제하기
-            self.$deleteBtn.on('click', function(){
+            self.$deleteBtn.off('click').on('click', function(){
                 var self = this;
                 lgkorUI.confirm('', {
                     title:'게시물을 삭제하시겠습니까? <br> 답변이 작성된 경우 답변도 같이 삭제됩니다.', 
@@ -176,7 +176,7 @@
             });
 
             //수정하기
-            self.$modifyBtn.on('click', function(){
+            self.$modifyBtn.off('click').on('click', function(){
                 var loginChk = self.$qnaType.attr('data-login-flag');
                 var mode = self.$modifyBtn.attr('data-name');
                 
@@ -216,6 +216,7 @@
                         }
                         self.$qnaList.empty().append(html);
                         self.$pagination.vcPagination('setPageInfo', data.listPage)
+                        self.bindEvents(); //추가 211122
                     } else {
                         self.$qnaType.find('.qna-result-lists').hide();
                         self.$nodata.show();
