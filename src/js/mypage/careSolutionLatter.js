@@ -1,7 +1,5 @@
 (function() {
 
-
-
     var couponItemTemplate = '<li class="lists">' +
         '<div class="head">' +
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
@@ -13,13 +11,12 @@
             '<div class="latter-acrord_content">' +
                 '<div>' +
                     '<p class="text">' +
-                        '차로 마셔도 맛있고 요리에 첨가해도 좋은 여름 제철 과일 매실!<br>' +
-                        '이번 케어솔루션 레터에서는 상큼상큼한 매실청 만드는 방법을 소개해 드립니다.' +
+                        '{{subTitle}}' +
                     '</p>' +
                     '<a href="#n" class="btn-link">자세히 보기</a>' +
                 '</div>' +
                 '<p class="thumb">' +
-                    '<img src="/lg5-common/images/MYC/care/thumbnail_img.jpg" alt="썸네일 이미지">' +
+                    '<img src="{{imagePath}}{{imageNameM}}" alt="썸네일 이미지">' +
                 '</p>' +
             '</div>' +
         '</div>' +
@@ -113,20 +110,26 @@
 
             },
 
-            requestCouponData: function(cate, page) {
+            requestCouponData: function( cate , page ) {
                 var self = this;
                 /* ajax 인디케이터 시작 */
                 lgkorUI.showLoading();
 
                 var ajaxUrl = self.$contents.attr('data-clatter-list');
 
+                var pageParam = (cate === 'info') ? 'infoPage' : 'couponPage';
+                var ajaxParams = JSON.parse( '{ "' +  pageParam + '" : ' + page + '}' );
+        
+     
+                
+                lgkorUI.requestAjaxData(ajaxUrl, ajaxParams , function(result) {
 
-                lgkorUI.requestAjaxData(ajaxUrl, { "page": page }, function(result) {
+                   
                     var elList = (cate === 'info') ? self.$couponOnList : self.$couponEndList;
                     var data = (cate === 'info') ? result.data.infoList : result.data.couponList;
 
                     /* 비동기 데이터 출력 */
-                    self.putList(elList, data);
+                    self.putList( elList, data );
 
                     /* ajax 인디케이터 종료 */
                     lgkorUI.hideLoading();
@@ -136,11 +139,10 @@
             putList: function(el, rows) {
                 var self = this;
                 var pagination = rows.pagination;
-                //console.log("불러온 데이터", rows);
                 var moreBtn = el.closest('.tab-contents').attr('aria-labelledby').replace('tab-', '') === 'info' ? self.$couponOnMore : self.$couponEndMore;
-                console.log("ssss", moreBtn)
 
-                var isLast = self.visibleCount * pagination.page >= pagination.totalCount;
+
+                var isLast = self.visibleCount * pagination.page >= rows.totalCount;
 
                 /* 페이징  값이 null일 경우와 마지막 페이지 일 경우 버튼 감춤 처리 */
                 if (pagination.page === null || isLast) {
