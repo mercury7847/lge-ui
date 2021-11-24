@@ -145,6 +145,32 @@
             var self = this;
 
             self.$form.find('.btn-confirm').on('click', function() {
+                var contactPhoneNo1 = $('#contactPhoneNo1').val();
+                var contactPhoneNo2 = $('#contactPhoneNo2').val();
+                var contactPhoneNo3 = $('#contactPhoneNo3').val();
+
+                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                    if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo1').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{3,4}/.test(contactPhoneNo2)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo2').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{4,4}/.test(contactPhoneNo3)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo3').focus();
+                        return;
+                    }
+
+                    $('.err-block.contact-box-err-blocK').hide();
+                }
+
                 var result = self.validation.validate();
 
                 if (authFlag && result.success == true) {   
@@ -228,14 +254,28 @@
 
             // 연락가능 전화번호 밸리데이션
             $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('change', function(e){
-                self.validation.validate();
-            });
+                var contactPhoneNo1 = $('#contactPhoneNo1').val();
+                var contactPhoneNo2 = $('#contactPhoneNo2').val();
+                var contactPhoneNo3 = $('#contactPhoneNo3').val();
 
-            self.validation.on('errors',function(e,data){
-                var contactPhoneNoCheck = data.hasOwnProperty("contactPhoneNo1") || data.hasOwnProperty("contactPhoneNo2") || data.hasOwnProperty("contactPhoneNo3") ? false : true;
-                if(!contactPhoneNoCheck) {
-                    $('.err-block.contact-box-err-blocK').show();
-                } else {
+                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                    if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo1').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{3,4}/.test(contactPhoneNo2)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo2').focus();
+                        return;
+                    }
+    
+                    if(!/^\d{4,4}/.test(contactPhoneNo3)) {
+                        $('.err-block.contact-box-err-blocK').show();
+                        $('#contactPhoneNo3').focus();
+                        return;
+                    }
                     $('.err-block.contact-box-err-blocK').hide();
                 }
             });
