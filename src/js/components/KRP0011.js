@@ -94,16 +94,28 @@
                 //구매/렌탈 탭 클릭시 유사제품 상품, 각각의 금액으로 변경
                 self.$tabList.on('click',function(){
                     var $idx = $(this).parent().index();
-                    self.$prodViewNow.empty();
-                    self.$prodRecommend.empty();
                     if($idx === 0){
                         // 구매 탭
-                        self.makeProdList("purchaseTab", dataList.compareList);
+                        if(dataList.compareList.length === 2){
+                            drawTab("purchaseTab", dataList.compareList);
+                        }else{
+                            self.$section.hide();
+                        }
                     }else if($idx === 1) {
                         //렌탈 탭
-                        self.makeProdList("rentalTab", dataList.rentalCompareList);
+                        if(dataList.rentalCompareList.length === 2){
+                            drawTab("rentalTab", dataList.rentalCompareList);
+                        }else{
+                            self.$section.hide();
+                        }
                     }
                 });
+                function drawTab(tab,data){
+                    self.$section.show();
+                    self.$prodViewNow.empty();
+                    self.$prodRecommend.empty();
+                    self.makeProdList(tab, data);
+                };
 
                 //유사제품 추천(스펙 비교하기)
                 $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
