@@ -13,7 +13,7 @@
                     '<p class="text">' +
                         '{{subTitle}}' +
                     '</p>' +
-                    '<a href="#n" class="btn-link">자세히 보기</a>' +
+                    '<a href="/my-page/care-solution-letter/care-info-detail?letterId={{letterId}}" class="btn-link">자세히 보기</a>' +
                 '</div>' +
                 '<p class="thumb">' +
                     '<img src="{{imagePath}}{{imageNameM}}" alt="썸네일 이미지">' +
