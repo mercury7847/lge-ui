@@ -1,8 +1,8 @@
 {
     "data": {
-        "contStartDate": "2020.01.01",
+        "contStartDate": "2020.09.24",
         "modelName": "정수기(WD503AP)",
-        "contractType": "C",
+        "contractType": "R",
         "contractID": "20228971",
         "contDtlType": "C01",
         "contEndDate": "2022.01.02"

@@ -1409,15 +1409,33 @@
             var $lc_StartDate1 = new Date($st_date);
             var $lc_EndDate2 = new Date($ed_date);
 
-            var $lc_StartDateFinal = new Date($st_date);
-
 
             $lc_StartDateYear = new Date($st_date); //기준
-            $lc_StartDateYear_1 = new Date($st_date);
-            $lc_StartDateYear_2 = new Date($st_date);
-            $lc_StartDateYear_3 = new Date($st_date);
-            $lc_StartDateYear_4 = new Date($st_date);
-            $lc_StartDateYear_5 = new Date($st_date);
+
+
+            //가입 한 데이터
+            $lc_join = new Date($st_date);
+
+            //케어십
+            //년
+            $lc_careShip_Year = new Date($st_date);
+            //개월
+            $lc_careShip_Month = new Date($st_date);
+
+
+            //케어솔루션 
+            //년
+            $lc_Year_1 = new Date($st_date);
+            $lc_Year_2 = new Date($st_date);
+            $lc_Year_3 = new Date($st_date);
+            $lc_Year_4 = new Date($st_date);
+            $lc_Year_5 = new Date($st_date);
+            //개월
+            $lc_Month_1 = new Date($st_date);
+            $lc_Month_2 = new Date($st_date);
+            $lc_Month_3 = new Date($st_date);
+            $lc_Month_4 = new Date($st_date);
+            $lc_Month_5 = new Date($st_date);
 
             
             //시잘날짜 종료날짜 계산
@@ -1436,22 +1454,17 @@
 
 
 
-
-
-
             //처음 가입 시작 날짜
             var startDateYear = $lc_StartDate1;
-            var sDataYear = startDateYear.getFullYear();
 
             console.log("1.가입 시작 데이터", startDateYear);
-            console.log("----------------");
+            //console.log("----------------");
 
             //14개월 후 변환 하기
             var sDataMonth = (startDateYear.getMonth() + 13);
             var careShipMonth = startDateYear.setMonth(sDataMonth);
 
             
-            console.log("시작 년도 뽑기", sDataYear);
             //console.log("시작 월 뽑기", sDataMonth);
 
             //console.log("한달 후11", sDataMonth);
@@ -1469,190 +1482,109 @@
             //console.log("2.14개월 변환된 데이터", csMonth_data);
 
             console.log("----------------");
-
-            //console.log("1변환된 년도 추출", csMonth_data_year);
-            //console.log("2변환된 월 추출", csMonth_data_month);
-
-            //console.log("----------------");
-
-            //console.log("3변환된 월말 추출", csMonth_data_month_lastDay);
-
-        
-
-            //console.log("시작일", $lc_StartDate1);
-            //console.log("test 월 말일 체크", dateTest.getDate());
-
             console.log("년 체크", $lc_year);
             console.log("월 체크", $lc_month);
             console.log("----------------");
 
             var $currenrDate = new Date();
 
-            console.log("현재 시각1", $currenrDate);
-            console.log("처음 돌고돌아  :", $lc_StartDateFinal);
-            console.log("14개월 변환최종:", csMonth_data_month_lastDay);
-            console.log("----------------");
-
-            //var ttteeee = ($lc_StartDateFinal.getDate());
-            //console.log("111111111111", ttteeee)
-            
-            var clYear_data_1year = new Date($lc_StartDateYear_1.setFullYear($lc_StartDateYear_1.getFullYear() + 1, $lc_StartDateYear_1.getMonth() + 3, 2));
-            var clYear_data_2year = new Date($lc_StartDateYear_2.setFullYear($lc_StartDateYear_2.getFullYear() + 2, $lc_StartDateYear_2.getMonth() + 3, 2));
-            var clYear_data_3year = new Date($lc_StartDateYear_3.setFullYear($lc_StartDateYear_3.getFullYear() + 3, $lc_StartDateYear_3.getMonth() + 3, 2));
-            var clYear_data_4year = new Date($lc_StartDateYear_4.setFullYear($lc_StartDateYear_4.getFullYear() + 4, $lc_StartDateYear_4.getMonth() + 3, 2));
-            var clYear_data_5year = new Date($lc_StartDateYear_5.setFullYear($lc_StartDateYear_5.getFullYear() + 5, $lc_StartDateYear_5.getMonth() + 3, 2));
-
-            // console.log("다음에 할거 원본2222222222", $lc_StartDateYear);
-            // console.log("1년 변환 첫번째 날 1일 변환", clYear_data_3year);
-            //console.log("케어십조건 원본  :", $lc_StartDateFinal);
-            //console.log("케어 변환된 값 보존  :", csMonth_data_month_lastDay);
-
-            console.log("----------------");
+            //console.log("----------------");
 
             //console.log("1년 변환 :", clYear_data_1year);
             //console.log("2년 변환 :", clYear_data_2year);
             //console.log("3년 변환 :", clYear_data_3year);
             //console.log("4년 변환 :", clYear_data_4year);
             //console.log("5년 변환 :", clYear_data_5year);
-            console.log("가입한 날짜 :", $lc_StartDateYear);
-            //console.log("고유의 값이 변환 됐구나  :", $lc_StartDateYear_1);
+            //console.log("가입한 날짜 :", $lc_StartDateYear);
 
-            var currentTime = new Date()
-            var crent_year_1 = currentTime.getFullYear()
-            var tetete = $lc_StartDateYear.getFullYear()
+
+            //var crent_year_1 = currentTime.getFullYear()
+
+            //케어십
+            //1년 후
+            //var CareShip_YearLater = new Date($lc_careShip_Year.setFullYear($lc_careShip_Year.getFullYear() + 1));
+            //2개월 차 말일 까지
+            var CareShip_MonthLater = new Date($lc_careShip_Month.setFullYear($lc_careShip_Month.getFullYear() + 1, $lc_careShip_Month.getMonth() + 3, 0));
+
+
+            //케어솔루션 
+            //년 후
+            var YearLater1 = new Date($lc_Year_1.setFullYear($lc_Year_1.getFullYear() + 1, $lc_Year_1.getMonth(), 1));
+            var YearLater2 = new Date($lc_Year_2.setFullYear($lc_Year_2.getFullYear() + 2, $lc_Year_2.getMonth(), 1));
+            var YearLater3 = new Date($lc_Year_3.setFullYear($lc_Year_3.getFullYear() + 3, $lc_Year_3.getMonth(), 1));
+            var YearLater4 = new Date($lc_Year_4.setFullYear($lc_Year_4.getFullYear() + 4, $lc_Year_4.getMonth(), 1));
+            var YearLater5 = new Date($lc_Year_5.setFullYear($lc_Year_5.getFullYear() + 5, $lc_Year_5.getMonth(), 1));
+            //3개월 차 첫쨋날 까지
+            var MonthLater1 = new Date($lc_Month_1.setFullYear($lc_Month_1.getFullYear() + 1, $lc_Month_1.getMonth() + 3, 1));
+            var MonthLater2 = new Date($lc_Month_2.setFullYear($lc_Month_2.getFullYear() + 2, $lc_Month_2.getMonth() + 3, 1));
+            var MonthLater3 = new Date($lc_Month_3.setFullYear($lc_Month_3.getFullYear() + 3, $lc_Month_3.getMonth() + 3, 1));
+            var MonthLater4 = new Date($lc_Month_4.setFullYear($lc_Month_4.getFullYear() + 4, $lc_Month_4.getMonth() + 3, 1));
+            var MonthLater5 = new Date($lc_Month_5.setFullYear($lc_Month_5.getFullYear() + 5, $lc_Month_5.getMonth() + 3, 1));
             
-            console.log("current_year", crent_year_1);
-            console.log("year", tetete);
-
+            console.log("가입:", $lc_join)
+            //console.log("1년후", CareShip_YearLater);
+            console.log("1년 2개월", CareShip_MonthLater);
 
             //주영 -----------------------------------------------
             //케어십 조건
-            if(data.contractType === 'R' && (Date.now() >= $lc_StartDateFinal && Date.now() <= csMonth_data_month_lastDay)){
-                $lc_cont.html(vcui.template(lb_careShip, data));
+            if(data.contractType === 'R') {
+                if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
+                    //console.log("---가입시점부터 14개월 말일 까지 노출---")
+                    $lc_cont.html(vcui.template(lb_careShip, data));
+                }
             }
 
             //케어솔루션 조건
             if(data.contractType === 'C') {
-                console.log("몇년?", $lc_year);
-                if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_1year) {
-                    console.log("---1.노출---");
-                    console.log("---원래가입:", $lc_StartDateYear);
-                    console.log("---1년 변환 :", clYear_data_1year);
-                    return
+                if(Date.now() >= (+YearLater1) && Date.now() <= (+YearLater2)) {
+                    //console.log("------1년차!!!------")
+                    if (Date.now() >= (+MonthLater1)) {
+                        //console.log("---3개월 까지만 노출---")
+                        $lc_cont.html(vcui.template(lb_careSolution_1, data));
+                    }
                 }
-            } else if(data.contractType === 'C'){
-                console.log("몇년?", $lc_year);
-                if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_2year) {
-                    console.log("---2.노출---");
-                    console.log("---원래가입:", $lc_StartDateYear);
-                    console.log("---2년 변환 :", clYear_data_2year);
-                    return
+
+                if(Date.now() >= (+YearLater2) && Date.now() <= (+YearLater3)) {
+                    //console.log("------2년차!!!------")
+                    if (Date.now() >= (+MonthLater2)) {
+                        //console.log("---3개월 까지만 노출---")
+                        $lc_cont.html(vcui.template(lb_careSolution_2, data));
+                    }
                 }
-                
-                //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-                
-            } else if(data.contractType === 'C'){
-                console.log("몇년?", $lc_year);
-                if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_3year) {
-                    console.log("---3.노출---");
-                    console.log("---3년 변환 :", clYear_data_3year);
-                    return
+
+                if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
+                    //console.log("------3년차!!!------")
+                    if (Date.now() >= (+MonthLater3)) {
+                        //console.log("---3개월 까지만 노출---")
+                        $lc_cont.html(vcui.template(lb_careSolution_3, data));
+                    }
                 }
-                
-                //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-                
-            } else if(data.contractType === 'C'){
-                console.log("몇년?", $lc_year);
-                if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_4year) {
-                    console.log("---4.노출---");
-                    console.log("---4년 변환 :", clYear_data_4year);
-                    return
+
+                if(Date.now() >= (+YearLater4) && Date.now() <= (+YearLater5)) {
+                    //console.log("------4년차!!!------")
+                    if (Date.now() >= (+MonthLater4)) {
+                        //console.log("---3개월 까지만 노출---")
+                        $lc_cont.html(vcui.template(lb_careSolution_4, data));
+                    }
                 }
-                
-                //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-                
-            }  else if(data.contractType === 'C'){
-                console.log("몇년?", $lc_year);
-                if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_5year) {
-                    console.log("---5.노출---");
-                    console.log("---5년 변환 :", clYear_data_5year);
-                    return
+
+                if(Date.now() >= (+YearLater5)) {
+                    //console.log("------5년차!!!------")
+                    if (Date.now() >= (+MonthLater5)) {
+                        //console.log("---3개월 까지만 노출---")
+                        $lc_cont.html(vcui.template(lb_careSolution_5, data));
+                    }
                 }
-                
-                //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-                
-            } else {
-                console.log("읍다")
             }
-
-
-
-            // if(data.contractType === 'C' && $lc_year == '1'){
-                
-            //     console.log("몇년?", $lc_year);
-            //     if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_1year) {
-            //         console.log("---1.노출---");
-            //         console.log("---1년 변환 :", clYear_data_1year);
-            //         return
-            //     }
-                
-            //     //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-                
-            // } 
-
-            // if(data.contractType === 'C' && $lc_year == '2'){
-            //     console.log("몇년?", $lc_year);
-            //     if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_2year) {
-            //         console.log("---2.노출---");
-            //         console.log("---2년 변환 :", clYear_data_2year);
-            //         return
-            //     }
-                
-            //     //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-            // }
-
-            // if(data.contractType === 'C' && $lc_year == '3'){
-            //     console.log("몇년?", $lc_year);
-            //     if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_3year) {
-            //         console.log("---3.노출---");
-            //         console.log("---3년 변환 :", clYear_data_3year);
-            //         return
-            //     }
-                
-            //     //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-            // }
-
-            // if(data.contractType === 'C' && $lc_year == '4'){
-            //     console.log("몇년?", $lc_year);
-            //     if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_4year) {
-            //         console.log("---4.노출---");
-            //         console.log("---4년 변환 :", clYear_data_4year);
-            //         return
-            //     }
-                
-            //     //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-            // }
-
-            // if(data.contractType === 'C' && $lc_year == '5'){
-            //     console.log("몇년?", $lc_year);
-            //     if(Date.now() >= $lc_StartDateYear && Date.now() <= clYear_data_5year) {
-            //         console.log("---5.노출---");
-            //         console.log("---5년 변환 :", clYear_data_5year);
-            //         return
-            //     }
-                
-            //     //$lc_cont.html(vcui.template(lb_careSolution_1, data));
-            // }
-            
+           
             //setPaymentModeCont();
 
         } else{
-            //console.log("읍다");
             mypage.find(".section-wrap").hide();
             mypage.find(".lb-container").empty();
             //mypage.find(".lb-common").hide();
 
-            //mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
+            mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
     }
 

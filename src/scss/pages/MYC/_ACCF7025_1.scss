@@ -69,6 +69,11 @@
         .lb-section-wrap {
             .lb-container {
                 margin-bottom: 100px;
+                // .lb-careSolution_1 { display: none; }
+                // .lb-careSolution_2 { display: none; }
+                // .lb-careSolution_3 { display: none; }
+                // .lb-careSolution_4 { display: none; }
+                // .lb-careSolution_5 { display: none; }
                 @include mobile {
                     margin-bottom: 80px;
                 }
