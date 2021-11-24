@@ -41,7 +41,7 @@
 
                 var self = this;
                 self.listData = [];
-                self.visibleCount = 3;
+                self.visibleCount = 12;
                 // self.visibleCount = 1;
                 self.$contents = $('div.lnb-contents');
                 self.$tab = self.$contents.find('div.ui_tab');
