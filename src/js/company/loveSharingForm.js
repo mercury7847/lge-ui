@@ -8,25 +8,21 @@
         init: function() {
             var self = this;
 
-            self.$cont = $('.container');
+            self.$cont = $('.company.container');
             //self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
             //self.$myModelArea = self.$cont.find('.my-product-wrap');
-            self.$submitForm = self.$cont.find('#submitForm');
-            self.$completeBtns = self.$cont.find('.btn-group');
+            self.$submitForm = self.$cont.find('#loveSharingForm');
+            self.$completeBtns = self.$cont.find('.btn-wrap');
 
-            self.$stepArea = self.$cont.find('.step-area');
-            self.$stepModel = self.$cont.find('#stepModel');
-            self.$stepInput = self.$cont.find('#stepInput');
+            //self.$stepArea = self.$cont.find('.step-area');
+            //self.$stepModel = self.$cont.find('#stepModel');
+            //self.$stepInput = self.$cont.find('#stepInput');
 
             vcui.require(['ui/validation', 'ui/formatter'], function () {
                 var register = {
-                    privcyCheck: {
-                        required: true,
-                        msgTarget: '.err-block'
-                    },
                     userName: {
                         required: true,
-                        maxLength: 30,
+                        maxLength: 25,
                         pattern: /^[가-힣\s]+$|^[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
@@ -65,10 +61,10 @@
                             }
                         }
                     },
-                    replyCheck: {
+                    receiptY: {
                         required: true,
                         msgTarget: '.reply-err-block',
-                        errorMsg: '회신 여부를 체크해주세요.'
+                        errorMsg: '발급 여부를 체크해주세요.'
                     },
                     title: {
                         required: true,
@@ -86,10 +82,10 @@
 
                 self.bindEvent();
 
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
+                validation = new vcui.ui.CsValidation('#$submitForm', {register:register});
 
-                self.$cont.find('.ui_imageinput').vcImageFileInput();
-                self.$cont.vcSearchModel();
+                self.$cont.find('.ui_fileinput').vcFileinput();
+                //self.$cont.vcSearchModel();
             });
         },
         requestComplete: function() {
@@ -134,16 +130,16 @@
                 // self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
             });
 
-            self.$cont.on('complete', function(e, data) {
+           /* self.$cont.on('complete', function(e, data) {
                 self.$cont.vcSearchModel('updateSummary', {
                     product: [data.categoryNm, data.subCategoryNm, data.modelCode],
                     reset: 'product'
                 });
 
                 self.$completeBtns.show();
-            });
+            });*/
 
-            self.$completeBtns.find('.btn-confirm').on('click', function() {
+            self.$completeBtns.find('.estimateBtn').on('click', function() {
                 var result = validation.validate();
 
                 if (result.success == true) {

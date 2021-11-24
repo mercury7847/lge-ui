@@ -81,20 +81,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<p class="sub-desc">하기 항목은 귀 단체의 제안프로그램을 평가하기 위한 기초자료로 충실히 작성하여 주시기 바랍니다. <br>작성내용이 불충분할 경우, 심사대상에서 제외됩니다. <br>또한 허위로 기재한 사실이 발견될 시에는 채택된 후라도 취소될 수 있으니 유의하여 주시기 바랍니다.</p>
 	</div>
 	<div class="form-wrap loveSharing">
-		<form id="loveSharingForm" name="loveSharingForm" ui-modules="Validation">
-		<form action="/html/CS/CSTF6017.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/save.json" novalidate>
-				<input type="hidden" name="categoryNm" id="categoryNm" value="">
-				<input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
-				<input type="hidden" name="category" id="category" value="">
-				<input type="hidden" name="subCategory" id="subCategory" value="">
-				<input type="hidden" name="modelCode" id="modelCode" value="">
-				<input type="hidden" name="productCode" id="productCode" value="">
-				<input type="hidden" name="serviceType" id="serviceType" value="C">
-				<input type="hidden" name="lockUserId" id="lockUserId" value="120119377295">
-				<input type="hidden" name="pageCode" id="pageCode" value="pageCode">
 
-
-				<!--[S]신청 담당자 정보-->
+		<form action="/suggestions-complete" method="post" id="loveSharingForm" name="loveSharingForm" data-ajax="https://www.lge.co.kr/support/suggestionsWrite.lgajax" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+			<!--[S]신청 담당자 정보-->
 			<div class="innder bdb">
 				<h1 class="tit mo-h2">
 					신청 담당자 정보
@@ -103,11 +92,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<p class="reqchk">필수 입력 사항</p>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp01" class="req">담당자<span class="blind">필수입력</span></label>
+					<label for="userName" class="req">담당자<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="inp01" name="userName" class="inq-name" value="" maxlength="25" placeholder="담당자 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="userName" name="userName" class="inq-name" value="" maxlength="25" placeholder="담당자 이름 입력" data-format="koreng" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -116,8 +108,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<label for="inp02" class="req">휴대폰<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
-					<div class="phone-input-wrap input-wrap">
+					<div class="input-wrap">
 						<input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="10" maxlength="11">
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -127,8 +122,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="email-conts-wrap">
-						<div class="email-input-wrap input-wrap">
+						<div class="input-wrap">
 							<input type="text" id="inp03" name="userEmail" value="" maxlength="200" placeholder="이메일 주소 입력" data-required="true">
+						</div>
+						<div class="btm-more err-block">
+							<p class="err-msg"></p>
 						</div>
 					</div>
 				</dd>
@@ -150,6 +148,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="input-wrap">
 						<input type="text" id="inp04" name="userName" class="inq-name" value="" maxlength="100" placeholder="대표자 이름 입력" data-format="koreng" data-required="true">
 					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
+					</div>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -160,6 +161,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="input-wrap">
 						<input type="text" id="inp05" name="userName" class="inq-name" value="" maxlength="100" placeholder="단체명 이름 입력" data-format="koreng" data-required="true">
 					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
+					</div>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -167,8 +171,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<label for="inp06" class="req">고유번호증<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
-					<div class="phone-input-wrap input-wrap">
+					<div class="input-wrap">
 						<input type="number" id="inp06" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="10" maxlength="10">
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -177,8 +184,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<label for="inp07" class="req">사무실 전화번호<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
-					<div class="phone-input-wrap input-wrap">
+					<div class="input-wrap">
 						<input type="number" id="inp07" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="9" maxlength="10">
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -204,6 +214,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="input-wrap">
 							<input type="text" name="addr3" value="" maxlength="300" placeholder="상세 주소 입력" data-required="true">
 						</div>
+						<div class="btm-more err-block">
+							<p class="err-msg"></p>
+						</div>
 					</div>
 				</dd>
 			</dl>
@@ -219,11 +232,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="chk1-1" class="req">기부 영수증 발급 여부<span class="blind">필수입력</span></label>
+					<label for="receiptN" class="req">기부 영수증 발급 여부<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
-					<span class="chk-wrap"><input type="radio" id="chk1-1" name="chk1" checked="" value="가능"> <label for="chk1-1">가능</label></span>
-					<span class="chk-wrap"> <input type="radio" id="chk1-2" name="chk1" value="불가능"> <label for="chk1-2">불가능</label></span>
+					<span class="chk-wrap"><input type="radio" id="receiptY" name="receipt" value="가능"> <label for="receiptY">가능</label></span>
+					<span class="chk-wrap"> <input type="radio" id="receiptN" name="receipt" value="불가능" checked data-required="true" required> <label for="receiptN">불가능</label></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -256,6 +269,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<ul class="bullet-list">
 						<li class="b-txt">최대 2MB까지 등록 가능합니다.</li>
 					</ul>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
+					</div>
 				</dd>
 			</dl>
 			<!--//[E]단체 정보-->
@@ -273,6 +289,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<dd class="conts">
 					<div class="input-wrap">
 						<textarea id="inp11" name="inp11" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)"></textarea>
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -307,6 +326,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li class="b-txt">사업명, 사업기간, 사업목적, 사업목표, 세부프로그램 내용, 사업예산 반드시 포함</li>
 						<li class="b-txt">최대 2MB까지 등록 가능합니다.</li>
 					</ul>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
+					</div>
 				</dd>
 			</dl>
 			<!--//[E]사랑나눔 제한 내용-->
