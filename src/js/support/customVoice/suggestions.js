@@ -67,24 +67,16 @@
                     },
                     contactPhoneNo1: {
                         required: true,
-                        pattern: /^0[1-9]+/,
-                        minLength : 2,
-                        maxLength : 3,
-                        msgTarget: '.err-block.contact-box-err-blocK',
-                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                        pattern: /^0[1-9]{1,2}/
                     },
                     contactPhoneNo2: {
                         required: true,
                         minLength : 3,
-                        maxLength : 4,
-                        msgTarget: '.err-block.contact-box-err-blocK',
-                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                        maxLength : 4
                     },
                     contactPhoneNo3: {
                         required: true,
-                        minLength : 4,
-                        msgTarget: '.err-block.contact-box-err-blocK',
-                        errorMsg: '정확한 연락가능 전화번호를 입력해주세요.'
+                        minLength : 4
                     },
                     replyCheck: {
                         required: true,
@@ -177,6 +169,20 @@
                             self.requestComplete();
                         }
                     });       
+                }
+            });
+
+            // 연락가능 전화번호 밸리데이션
+            $('[name="contactPhoneNo1"], [name="contactPhoneNo2"], [name="contactPhoneNo3"]').on('change', function(e){
+                self.validation.validate();
+            });
+
+            self.validation.on('errors',function(e,data){
+                var contactPhoneNoCheck = data.hasOwnProperty("contactPhoneNo1") || data.hasOwnProperty("contactPhoneNo2") || data.hasOwnProperty("contactPhoneNo3") ? false : true;
+                if(!contactPhoneNoCheck) {
+                    $('.err-block.contact-box-err-blocK').show();
+                } else {
+                    $('.err-block.contact-box-err-blocK').hide();
                 }
             });
         }
