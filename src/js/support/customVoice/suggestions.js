@@ -1,5 +1,4 @@
 (function() {
-    var validation;
     var dateUtil = vcui.date;
     var detect = vcui.detect;
     var isLogin = lgkorUI.isLogin;
@@ -97,10 +96,8 @@
                     }
                 }
 
-
+                self.validation = new vcui.ui.CsValidation('#submitForm', {register:register});
                 self.bindEvent();
-
-                validation = new vcui.ui.CsValidation('#submitForm', {register:register});
 
                 self.$cont.find('.ui_imageinput').vcImageFileInput();
                 self.$cont.vcSearchModel(); 
@@ -110,7 +107,7 @@
             var self = this;
 
             var url = self.$submitForm.data('ajax');
-            var param = validation.getAllValues();
+            var param = self.validation.getAllValues();
             var formData = new FormData();
    
             for (var key in param) {
@@ -141,7 +138,7 @@
             self.$cont.on('reset', function() {
                 self.$completeBtns.hide();
 
-                // validation.reset();
+                // self.validation.reset();
 
                 // self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
                 // self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
@@ -158,7 +155,7 @@
             });
 
             self.$completeBtns.find('.btn-confirm').on('click', function() {
-                var result = validation.validate();
+                var result = self.validation.validate();
 
                 if (result.success == true) {    
                     lgkorUI.confirm('', {
