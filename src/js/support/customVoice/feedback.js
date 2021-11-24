@@ -148,8 +148,9 @@
                 var contactPhoneNo1 = $('#contactPhoneNo1').val();
                 var contactPhoneNo2 = $('#contactPhoneNo2').val();
                 var contactPhoneNo3 = $('#contactPhoneNo3').val();
+                var contractCheck = vcui.isEmpty(contactPhoneNo1) && vcui.isEmpty(contactPhoneNo2) && vcui.isEmpty(contactPhoneNo3) ? false : true;
 
-                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                if(contractCheck) {
                     if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
                         $('.err-block.contact-box-err-blocK').show();
                         $('#contactPhoneNo1').focus();
@@ -257,8 +258,9 @@
                 var contactPhoneNo1 = $('#contactPhoneNo1').val();
                 var contactPhoneNo2 = $('#contactPhoneNo2').val();
                 var contactPhoneNo3 = $('#contactPhoneNo3').val();
+                var contractCheck = vcui.isEmpty(contactPhoneNo1) && vcui.isEmpty(contactPhoneNo2) && vcui.isEmpty(contactPhoneNo3) ? false : true;
 
-                if(contactPhoneNo1 || contactPhoneNo2 || contactPhoneNo3) {
+                if(contractCheck) {
                     if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
                         $('.err-block.contact-box-err-blocK').show();
                         $('#contactPhoneNo1').focus();
