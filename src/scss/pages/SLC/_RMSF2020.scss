@@ -328,6 +328,11 @@
             border-radius: 8px;
             border: 1px solid $color-default;
             background-color: $color-bg-wt;
+            /* BTOCSITE-5938-362 [안드로이드앱] 렌탈 케어플래너 견적내역 팝업 견적합계 셀렉트 박스 오류 */
+            @include mobile{
+                position:relative;
+            }
+            /* //BTOCSITE-5938-362 [안드로이드앱] 렌탈 케어플래너 견적내역 팝업 견적합계 셀렉트 박스 오류 */
         }
         .select-list {
             margin-top: 48px;
