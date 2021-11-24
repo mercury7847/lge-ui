@@ -30,6 +30,9 @@ if ('scrollRestoration' in history) {
                                 '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                                '{{#if salesModelFlag === "Y"}}' +
+                                '<div class="review-count"><span class="blind">렌탈제품모델명</span>({{caresolutionSalesModelCode}})</div>' + 
+                                '{{/if}}' +
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
@@ -65,7 +68,7 @@ if ('scrollRestoration' in history) {
                         
                             '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
                                 '<div class="price-info rental">' +
-                                    '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                                    '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                                 '</div>' +
                             '{{/if}}' +
 
