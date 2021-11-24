@@ -25,8 +25,8 @@
 
                 //modelStatusCode=="ACTIVE" 판매가능상태
                 //mixProductFlag=="N" 혼매가 아닌 상품
-                '{{#if (modelStatusCode=="ACTIVE") && (mixProductFlag=="N") && (buyBtnFlag=="enable")}}'+
-                   '{{#if (tabName == "purchaseTab")}}'+
+                '{{#if (modelStatusCode=="ACTIVE") && (mixProductFlag=="N")}}'+
+                   '{{#if (tabName == "purchaseTab") && (buyBtnFlag=="enable")}}'+
                     '<div class="price-area">'+
                         '{{#if (obsSellingPrice != "0") && (obsOriginalPrice != "0")}}'+
                         '<div class="original">'+
