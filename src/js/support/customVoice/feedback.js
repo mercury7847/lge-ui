@@ -68,6 +68,19 @@
                             }
                         }
                     },
+                    // contactPhoneNo1: {
+                    //     required: true,
+                    //     pattern: /^0[1-9]{1,2}/,
+                    // },
+                    // contactPhoneNo2: {
+                    //     required: true,
+                    //     minLength : 3,
+                    //     maxLength : 4
+                    // },
+                    // contactPhoneNo3: {
+                    //     required: true,
+                    //     minLength : 4
+                    // },
                     title: {
                         required: true,
                         maxLength: 100,
