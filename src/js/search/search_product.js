@@ -42,17 +42,17 @@ if ('scrollRestoration' in history) {
                             '{{/if}}' +
                         '</div>' +
 
-                        '<div class="info-btm">' +
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
-                            '<div class="care">'+
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
-                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
-                            '</div>'+
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
-                            '<div class="text hashtag-wrap">' +
-                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                            '</div>' +
-                        '</div>' +
+                        // '<div class="info-btm">' +
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
+                        //     '<div class="care">'+
+                        //     '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
+                        //     '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
+                        //     '</div>'+
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                        //     '<div class="text hashtag-wrap">' +
+                        //         '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        //     '</div>' +
+                        // '</div>' +
                     '</div>' +
                 '</div>' +
                 '{{#if techSpecs && techSpecs.length > 0}}' +
@@ -63,7 +63,7 @@ if ('scrollRestoration' in history) {
                         // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
                         '{{#if caresolutionSalesModelCode}}' +
                         '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
-                        // '{{/if}}' +
+                        '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
