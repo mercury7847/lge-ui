@@ -1,9 +1,25 @@
 (function() {
-
-    var couponItemTemplate = '<li class="lists">' +
+    var careSolutionLatterItemTemplate = '<li class="lists">' +
         '<div class="head">' +
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<span class="title line2">{{title}}</span>' +
+                '<span class="title line2">' +
+
+                    '{{#if typeof stateFlag !== "undefined"}}' +
+
+                        '{{#if stateFlag == "Y"}}' +
+                            '<em class="proceed">[진행중]</em> ' +
+                            '{{title}}' +
+                        '{{#else}}' +
+                            '<em>[쿠폰종료]</em> ' +
+                            '{{title}}' +
+                        '{{/if}}' +
+
+                    '{{#else}}' +
+
+                        '{{title}}' +
+                    '{{/if}}' +
+
+                '</span>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -35,10 +51,9 @@
                 self.requestCouponData('info', 1);
                 self.requestCouponData('coupon', 1);
 
-
             },
             setting: function() {
-
+                
                 var self = this;
                 self.listData = [];
                 self.visibleCount = 12;
@@ -76,17 +91,7 @@
 
                 var self = this;
 
-                //주영 삭제
-                // self.$contents.find('div.cl_list').on('click','li a', function(e){
-                //     e.preventDefault();
-                //     var $li = $(this).parent();
-                //     var obj = JSON.parse($li.attr('data-json'));
-                //     self.$couponPopup.html(vcui.template(couponPopupTemplate, obj));
-                //     self.$couponPopup.vcModal({opener:$(this)});
-                // });
-
-
-
+    
                 self.$contents.find('button.btn-moreview').on('click', function(e) {
 
 
@@ -97,16 +102,7 @@
 
                     // self.addCouponList(tabIndex, page+1);
 
-
                 });
-
-                // self.$couponPopup.on('click','div.btn-group button', function(e){
-                //     var url = $(this).attr("data-coupon-url");
-                //     if(!(!url)) {
-                //         location.href = url;
-                //     }
-                // });
-
 
             },
 
@@ -119,8 +115,8 @@
 
                 var pageParam = (cate === 'info') ? 'infoPage' : 'couponPage';
                 var ajaxParams = JSON.parse( '{ "' +  pageParam + '" : ' + page + '}' );
-        
-     
+
+                //console.log("tttt", cate);
                 
                 lgkorUI.requestAjaxData(ajaxUrl, ajaxParams , function(result) {
 
@@ -128,8 +124,17 @@
                     var elList = (cate === 'info') ? self.$couponOnList : self.$couponEndList;
                     var data = (cate === 'info') ? result.data.infoList : result.data.couponList;
 
+                    var tetete = result.data.infoList.listData[0].letterId;
+
+                    //console.log("test", tetete);
+                    //console.log("리절트", result.data.infoList.listData[1].title);
+                    //console.log("data??", data);
+
                     /* 비동기 데이터 출력 */
                     self.putList( elList, data );
+
+                    //console.log("dnjTm", elList)
+                    //console.log("dnjTm", data)
 
                     /* ajax 인디케이터 종료 */
                     lgkorUI.hideLoading();
@@ -144,13 +149,32 @@
 
                 var isLast = self.visibleCount * pagination.page >= rows.totalCount;
 
+                
+
+                //console.log("더 보기", isLast);
+                //console.log("page", pagination.page);
+                //console.log("totalCount", rows.totalCount);
+                //console.log("el", el);
+
+                //console.log("rows", rows.infoList);
+
                 /* 페이징  값이 null일 경우와 마지막 페이지 일 경우 버튼 감춤 처리 */
                 if (pagination.page === null || isLast) {
                     moreBtn.hide();
                 }
-                $.each(rows.listData, function(idx, item) {
-                    el.append(vcui.template(couponItemTemplate, item));
+                $.each(rows.listData, function(idx, item) { //원래 이거 : rows.listData
+                    el.append(vcui.template(careSolutionLatterItemTemplate, item));
+
+                    //console.log("1111111",rows.listData);
+                    //console.log("1111111",data);
+                    //console.log("1111111",result);
+                    //console.log("rows???", rows);
+
+                    //each 돌고
+                    //console.log("rows???", rows.listData[0].stateFlag);
                 });
+                
+                
             }
         }
         coupon.init();

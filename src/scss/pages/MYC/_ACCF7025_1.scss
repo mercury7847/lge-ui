@@ -568,6 +568,12 @@
             position: relative;
             .accord-btn {
                 position: relative;
+                em {
+                    font-weight: bold;
+                    &.proceed {
+                        color: #DA0F47;
+                    }
+                }
             }
             .lists {
                 &.on {
