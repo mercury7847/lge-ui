@@ -96,7 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="userName" name="userName" class="inq-name" value="" maxlength="25" placeholder="담당자 이름 입력" data-format="koreng" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" required>
+						<input type="text" id="userName" name="userName" class="inq-name" value="" maxlength="25" placeholder="담당자 이름 입력" data-format="koreng" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -105,11 +105,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp02" class="req">휴대폰<span class="blind">필수입력</span></label>
+					<label for="phoneNo" class="req">휴대폰<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="inp02" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="10" maxlength="11">
+						<input type="number" id="phoneNo" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" inputmode="numeric" data-required="true" numberOnly>
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -118,12 +118,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp03" class="req">이메일<span class="blind">필수입력</span></label>
+					<label for="userEmail" class="req">이메일<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="email-conts-wrap">
 						<div class="input-wrap">
-							<input type="text" id="inp03" name="userEmail" value="" maxlength="200" placeholder="이메일 주소 입력" data-required="true">
+							<input type="text" id="userEmail" name="userEmail" value="" maxlength="200" placeholder="이메일 주소 입력" data-required="true">
 						</div>
 						<div class="btm-more err-block">
 							<p class="err-msg"></p>
@@ -142,11 +142,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp04" class="req">대표자<span class="blind">필수입력</span></label>
+					<label for="groupOwner" class="req">대표자<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="inp04" name="userName" class="inq-name" value="" maxlength="100" placeholder="대표자 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="groupOwner" name="groupOwner" class="inq-name" value="" maxlength="100" placeholder="대표자 이름 입력" data-format="koreng" data-required="true">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -155,11 +155,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp05" class="req">단체명<span class="blind">필수입력</span></label>
+					<label for="groupName" class="req">단체명<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="inp05" name="userName" class="inq-name" value="" maxlength="100" placeholder="단체명 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="groupName" name="groupName" class="inq-name" value="" maxlength="100" placeholder="단체명 이름 입력" data-format="koreng" data-required="true">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -168,11 +168,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp06" class="req">고유번호증<span class="blind">필수입력</span></label>
+					<label for="groupNumber" class="req">고유번호증<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="inp06" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="10" maxlength="10">
+						<input type="number" id="groupNumber" name="groupNumber" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" maxlength="10">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -181,11 +181,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp07" class="req">사무실 전화번호<span class="blind">필수입력</span></label>
+					<label for="groupTel" class="req">사무실 전화번호<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="inp07" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="9" maxlength="10">
+						<input type="number" id="groupTel" name="groupTel" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="9" maxlength="10">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -194,13 +194,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp08" class="req">주소<span class="blind">필수입력</span></label>
+					<label for="groupAddress" class="req">주소<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="addr-box-wrap">
 						<div class="box">
 							<div class="input-wrap">
-								<input type="text" class="addr1" value="" placeholder="우편번호" name="addr1" readonly data-required="true">
+								<input type="text" id="groupAddress" class="addr1" value="" placeholder="우편번호" name="addr1" readonly data-required="true">
 							</div>
 							<div class="cell">
 								<button type="button" class="btn" id="inp08">
@@ -222,11 +222,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp09" class="req">홈페이지</label>
+					<label for="homepage">홈페이지</label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="inp09" name="userName" class="inq-name" value="" maxlength="100" placeholder="홈페이지 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="homepage" name="homepage" class="inq-name" value="" placeholder="홈페이지 이름 입력" data-format="koreng" data-required="true">
+					</div>
+					<div class="btm-more err-block">
+						<p class="err-msg"></p>
 					</div>
 				</dd>
 			</dl>
@@ -284,11 +287,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="inp11" class="req">제안 내용<span class="blind">필수입력</span></label>
+					<label for="content" class="req">제안 내용<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<textarea id="inp11" name="inp11" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)"></textarea>
+						<textarea id="content" name="content" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)"></textarea>
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -326,9 +329,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li class="b-txt">사업명, 사업기간, 사업목적, 사업목표, 세부프로그램 내용, 사업예산 반드시 포함</li>
 						<li class="b-txt">최대 2MB까지 등록 가능합니다.</li>
 					</ul>
-					<div class="btm-more err-block">
-						<p class="err-msg"></p>
-					</div>
 				</dd>
 			</dl>
 			<!--//[E]사랑나눔 제한 내용-->
