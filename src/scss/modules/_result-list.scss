@@ -163,35 +163,38 @@
             }
             .spec-info {
                 font-size: 0;
-                li {
-                    @include font-x-small;
-                    span {
-                        color: $color-gray-1;
-                    }
-                }
-                @include pc {
-                    max-width: 569px;
-                    margin-top: 8px;
-                    padding-top: 4px;
-                    border-top: 1px solid $color-border;
-                    li {
-                        display: inline-block;
-                        margin-right: 16px;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                        span {
-                            margin-right: 4px;
-                        }
-                    }
-                }
+                max-width: 569px;
+                margin-top: 8px;
+                padding-top: 4px;
+                border-top: 1px solid $color-border;
+
                 @include mobile {
                     margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                }
+
+                li {
+                    display: inline-block;
+                    margin-right: 16px;
+                    @include font-x-small;
+                    &.rentalModel {
+                        display:none;
+                        @include mobile {
+                            display:block;
+                        }
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
                     span {
-                        margin-right: 8px;
+                        color: $color-gray-1;
+                        margin-right: 4px;
+
+                        @include mobile {
+                            margin-right: 8px;
+                        }
                     }
                 }
             }
@@ -339,11 +342,11 @@
                 }
             }
         }
-        @include pc {
-            .sku {
-                margin-right: 8px;
-            }
-        }
+        // @include pc {
+        //     .sku {
+        //         margin-right: 8px;
+        //     }
+        // }
         .info-btm {
             margin-top: 12px;
             font-size: 0;
@@ -487,7 +490,46 @@
             font-weight: 500;
             @include font-small;
             vertical-align: top;
+            .search-word {
+                color:#000;
+            }
+
+            &:after {
+                content:'';
+                display:inline-block;
+                width: 1px;
+                height: 12px;
+                margin: 4px 0 4px 6px;
+                background-color: #ddd;
+                vertical-align: middle;
+            }
         }
+
+        .result-detail {
+            .rentalModel {
+                display: inline-block;
+                font-weight: 500;
+                margin:0 6px;
+                @include font-small;
+                vertical-align: top;
+    
+                @include mobile {
+                    display:none;
+                }
+            }
+        }
+
+        // .spec-info {
+        //     .rentalModel {
+        //         display:none;
+        //         @include mobile {
+        //             display:inline-block;
+        //         }
+        //     }
+        // }
+
+
+
         .hashtag-wrap + .careflag  {
             @include mobile {
                 display: block;
@@ -527,17 +569,27 @@
             .average-rating,
             .review-count {
                 display: inline-block;
+                vertical-align:middle;
                 @include font-small;
             }
             .star {
-                width: 20px;
-                height: 20px;
-                margin-right: 2px;
-                background: url("/lg5-common/images/icons/icon-star-off-20.svg") no-repeat 0 0;
-                vertical-align: -5px;
-                &.is-review {
-                    background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
+                position: relative;
+                width: 80px;
+                height:24px;
+                line-height: 24px;
+                background: url(/lg5-common/images/KRP0008/img-star-pdp-off.svg) no-repeat 0 50%;
+                background-size: 80px 16px;
+                margin-left:6px;
+                .star-rating {
+                    position: absolute;
+                    height:24px;
+                    top: 50%;
+                    left: 0;
+                    transform:translate(0,-50%);
+                    background: url(/lg5-common/images/KRP0008/img-star-pdp-on.svg) no-repeat 0 50%;
+                    background-size: 80px 16px;
                 }
+
             }
         }
         

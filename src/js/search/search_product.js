@@ -23,18 +23,25 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
+                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                        '{{#if caresolutionSalesModelCode}}' +
+                        '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
+                        '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                // '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="star">'+
+									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
+										'<span class="blind">현재 별점 : {{rating}}</span>'+
+									'</div>'+
+								'</div>'+
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                                '{{#if salesModelFlag === "Y"}}' +
-                                '<div class="review-count"><span class="blind">렌탈제품모델명</span>({{caresolutionSalesModelCode}})</div>' + 
-                                '{{/if}}' +
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
+
                         '<div class="info-btm">' +
                             /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
                             '<div class="care">'+
@@ -53,6 +60,10 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
+                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                        '{{#if caresolutionSalesModelCode}}' +
+                        '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
+                        // '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +

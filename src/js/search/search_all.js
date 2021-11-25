@@ -24,10 +24,18 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
+                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                        '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
+                        // '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                // '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="star">'+
+									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
+										'<span class="blind">현재 별점 : {{rating}}</span>'+
+									'</div>'+
+								'</div>'+
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                                 '{{#if salesModelFlag === "Y"}}' +
@@ -54,6 +62,10 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
+                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                        '{{#if caresolutionSalesModelCode}}' +
+                        '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
+                        // '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
@@ -961,6 +973,8 @@ if ('scrollRestoration' in history) {
                             item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                             item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                             item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
+
+
                             $list_ul.append(vcui.template(productItemTemplate, item));
                         });
                         $resultListWrap.show();
