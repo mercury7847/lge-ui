@@ -206,19 +206,16 @@
                 if(contractCheck) {
                     if(!/^0[1-9]{1,2}/.test(contactPhoneNo1)) {
                         $('.err-block.contact-box-err-blocK').show();
-                        $('#contactPhoneNo1').focus();
                         return;
                     }
     
                     if(!/^\d{3,4}/.test(contactPhoneNo2)) {
                         $('.err-block.contact-box-err-blocK').show();
-                        $('#contactPhoneNo2').focus();
                         return;
                     }
     
                     if(!/^\d{4,4}/.test(contactPhoneNo3)) {
                         $('.err-block.contact-box-err-blocK').show();
-                        $('#contactPhoneNo3').focus();
                         return;
                     }
                 }
