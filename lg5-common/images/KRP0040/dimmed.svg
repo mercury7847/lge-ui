@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="444" height="555" viewBox="0 0 444 555">
+    <defs>
+        <linearGradient id="a" x1=".5" y1=".174" x2=".5" y2=".629" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-opacity="0"/>
+            <stop offset="1"/>
+        </linearGradient>
+        <linearGradient id="c" y1=".826" y2=".371" xlink:href="#a"/>
+        <clipPath id="b">
+            <rect width="444" height="555" rx="8" style="fill:#666"/>
+        </clipPath>
+    </defs>
+    <g style="clip-path:url(#b)">
+        <path d="M0 0h444v257a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V0z" transform="translate(0 289)" style="opacity:.6;fill:url(#a)"/>
+        <path d="M8 0h428a8 8 0 0 1 8 8v80H0V8a8 8 0 0 1 8-8z" style="opacity:.2;fill:url(#c)"/>
+    </g>
+</svg>

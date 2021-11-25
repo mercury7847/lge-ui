@@ -79,9 +79,56 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
+            <!-- BTOCSITE-6632 PDP 컨텐츠 개선 s -->
+            <div class="pdp-info-back-wrap">
+                <a href="#" class="pdp-info-back">제품 정보 페이지로 이동</a>
+            </div>
+            <style>
+                .pdp-info-back-wrap{width:100%; text-align: center; padding: 80px 0; display: none;} 
+                .pdp-info-back, .pdp-info-back:hover, .pdp-info-back:focus{
+                    display: inline-block;
+                    position: relative;
+                    color:#fff;
+                    background: #000;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    width: 238px;
+                    height: 46px;
+                    padding: 10px 48px 12px 32px;
+                    border-radius: 23px;
+                   }
+                .pdp-info-back:after{
+                    position: absolute;
+                    top: 50%;
+                    right:24px;
+                    margin-top: -10px;
+                    width:20px;
+                    height:20px;
+                    background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") no-repeat center center;
+                    background-size: 100% 100%;
+                    content: '';
+                    }
+                    @media screen and (max-width: 767px){
+                        .pdp-info-back-wrap {
+                            padding: 60px 0;
+                        }
+                    }
+            </style>
+            <script>
+               $(document).ready(function(){
+                    var pdpLink = 'pdpLink';
+                    var backLink = lgkorUI.getStorage(pdpLink);
+                    if(vcui.isEmpty(backLink) == false){ 
+                        $('.pdp-info-back-wrap').show();
+                        $('.pdp-info-back').attr('href',backLink);
+                        lgkorUI.removeStorage(pdpLink);
+                    } 
+                });
+            </script>
+            <!-- BTOCSITE-6632 PDP 컨텐츠 개선 e -->
         </div>
         
         @@include('./common/footer.html')
