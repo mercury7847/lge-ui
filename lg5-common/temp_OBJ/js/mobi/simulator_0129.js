@@ -592,7 +592,7 @@ var go_shop_model = "";
             },
             {
                 id: 'clean',
-                name: '무서청소기',
+                name: '무선청소기',
                 icon: { default: 'Thumb_09.png', focus: 'Thumb_09_selected.png' },
                 offset: { top: 537, left: 6117, },
                 size: { width: 81, height: 328, },
