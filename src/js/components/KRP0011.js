@@ -72,6 +72,7 @@
                 var self = this;
 
                 self.setting();
+                self.setPath();
                 self.bindEvents();
 
             },
@@ -87,6 +88,19 @@
 
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
+
+            },
+            setPath: function(){
+                var self = this;
+                //랜탈 탭 일 경우 url에 랜탈탭 파라미터 추가
+                var kiosk = lgkorUI.getParameterByName("kiosk");
+                $(dataList.rentalCompareList).each(function(idx,item){
+                    item.modelUrlPath = item.modelUrlPath + "?dpType=careTab";
+                    if(kiosk) {
+                        item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
+                        item.modelUrlPath += 'kiosk='+kiosk;
+                    }
+                });
             },
             bindEvents: function() {
                 var self = this;
