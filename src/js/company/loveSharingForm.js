@@ -18,7 +18,7 @@
             //self.$stepModel = self.$cont.find('#stepModel');
             //self.$stepInput = self.$cont.find('#stepInput');
 
-            vcui.require(['ui/validation', 'ui/formatter'], function () {
+            vcui.require(['ui/validation'], function () {
                 var register = {
                     userName: {
                         required: true,
@@ -151,6 +151,14 @@
                             self.requestComplete();
                         }
                     });
+                }
+            });
+
+            
+            // dash remove
+            $(document).on('keydown', 'input[type="number"]', function(e){
+                if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 110 || e.keyCode == 190) {
+                    e.preventDefault();
                 }
             });
         }
