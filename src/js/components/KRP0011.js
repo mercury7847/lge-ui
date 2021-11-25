@@ -71,10 +71,11 @@
             init: function(){
                 var self = this;
 
-                self.setting();
-                self.setPath();
-                self.bindEvents();
-
+                if(dataList != null){
+                    self.setting();
+                    self.setPath();
+                    self.bindEvents();
+                }
             },
             setting: function() {
                 var self = this;
