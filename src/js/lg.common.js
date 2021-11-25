@@ -71,7 +71,7 @@ var goAppUrl = function(path) {
         '</article>';
 
     var mainPopupInit = 
-    '<article id="main-init-popup" class="popup-wrap small main-init-popup"  style="max-width:600px">' + 
+    '<article id="main-init-popup" class="popup-wrap small main-init-popup"  style="max-width:500px">' + 
         '<header class="pop-header">' + 
             '<h1 class="tit"><span>안내</span></h1>' + 
         '</header>' + 
@@ -81,9 +81,9 @@ var goAppUrl = function(path) {
                     '<h3 class="h-tit-3">주주확정기준일설정공고</h3>' + 
                 '</div>' + 
                 '<div class="text-cont">' + 
-                    '상법 제354조 및 우리 회사 정관 제21조에 의거하여,<br> ' + 
-                    '다음과 같이 임시주주총회에서 의결권을 행사할 주주 확정을 위한 <br> ' + 
-                    '기준일을 정하였으니 양지하여 주시기 바랍니다. ' + 
+                    '상법 제354조 및 우리 회사 정관 제21조에<br> 의거하여, ' + 
+                    '다음과 같이 임시주주총회에서<br> 의결권을 행사할 주주 확정을 위한 ' + 
+                    '기준일을<br> 정하였으니 양지하여 주시기 바랍니다. ' + 
                     '<br><br> - 다  음 - <br><br>' + 
                     '■주주확정기준일: 2021년 12월 10일<br><br>' +
                     '<p style="text-align:right;">2021년 11월 25일</p>' +
