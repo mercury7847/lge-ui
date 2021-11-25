@@ -5,7 +5,7 @@
 .KRP0040 {
 	.component-inner {
 		@include mobile {
-			padding:0;
+			padding:0 16px;
 		}
 	}
 	.title {
@@ -16,11 +16,11 @@
 		* {
 			font-size:32px;
 			font-weight:700;
-			line-height:52px;
+			line-height:46px;
 			color:#000;
 			@include mobile {
 				font-size:24px;
-				line-height:33px;
+				line-height:35px;
 			}
 		}
 	}
@@ -29,13 +29,25 @@
         margin-left: -12px;
         margin-right: -12px;
 		@include mobile {
-			margin-top:32px;
+			margin-top:19px;
+            margin-left: 0;
+            margin-right: 0;
 		}
+        .slick-list {
+            @include mobile{
+                margin-left: -16px;
+                margin-right: -16px;
+                padding-left: 12px;
+            }
+        }
         .slide-item {
             padding: 0 12px;
-            max-width:33.3333333%;
+            max-width: 33.4%;
+            float: left;
             @include mobile{
-                max-width:100%;
+                width: 77.777vw;
+                max-width: 77.777vw;
+                padding: 0 4px;
             }
         }
         .slide-box{
@@ -54,14 +66,9 @@
                     background: url("/lg5-common/images/KRP0040/dimmed.svg") no-repeat 0 0;
                     background-size: 100% 100%;
                     content: '';
-                    @include mobile {
-                        right: 6px;
-                        left: 6px;
-                    }
                 }
                 > img {
                     width:100%;
-                    vertical-align:top; 
                 }
                 .info-area {
                     position:absolute;
@@ -69,13 +76,10 @@
                     right:0;
                     top:0;
                     z-index: 1;
-                    padding:335px 32px 40px;
+                    padding:75.45% 32px 0 32px;
                     color:#fff;
                     @include mobile {
-                        left:26px;
-                        right:26px;
-                        bottom:32px;
-                        padding:0;
+                        padding:72.06% 20px 0 20px;
                     }
                     .flag {
                         height:24px;
@@ -92,25 +96,27 @@
                         }
                     }
                     .info-tit {
-                        padding-top:10px;
+                        padding-top:8px;
                         font-weight:700;
                         font-size:40px;
                         line-height:48px;
                         max-height: 106px;
                         @include textEllipsisClamp(2);
                         @include mobile {
-                            font-size:27px;
-                            line-height:38px;
+                            padding-top:6px;
+                            font-size:24px;
+                            line-height:30px;
+                            max-height: 65px;
                         }
                     }
                     .info-tag {
                         display:block;
                         width:100%;
-                        margin-top:24px;
-                        max-height: 24px;
+                        margin-top:28px;
+                        height: 24px;
                         @include textClipClamp(1);
                         @include mobile {
-                            margin-top:20px;
+                            margin-top:15px;
                         }
                         li {
                             display:inline-block;
@@ -118,6 +124,10 @@
                             line-height:24px;
                             font-weight: 400;
                             text-decoration:underline;
+                            @include mobile {
+                                font-size:14px;
+                                line-height:20px;
+                            }
                             +li{
                                 padding-left: 8px;
                             }

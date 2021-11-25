@@ -1,10 +1,8 @@
 $(window).ready(function(){
 	if(!document.querySelector('.KRP0040')) return false;
-
     var storySlider = $('.withstory-list-slide');
     var storySliderNum = storySlider.find('.slide-item').length;
-
-    var storyOpt = {
+    var storyOption = {
         arrows: true,
         dots: true,
         slidesToShow: 3,
@@ -18,21 +16,25 @@ $(window).ready(function(){
                 settings: {
                     dots: false,
                     arrows:false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite:false,
                     variableWidth:true,
-                    outerEdgeLimit: true
+                    outerEdgeLimit: true,
+                    slidesToShow: 1
                 }
             }
         ]
     }
-    if(storySlider.hasClass('slick-slider')){
-        storySlider.not('.slick-initialized').slick(storyOpt);
-        alert(1);
-    } else {
-        if(storySliderNum > 1){
-            storySlider.slick(storyOpt);
-        }
+    if(storySliderNum > 0){
+        storySlider.slick(storyOption);
+    } else{
+        $('.KRP0040').parent().hide();
     }
+
+    storySlider.on('click', 'a', function(e){
+        var location = document.location.href;
+        var pdpLink= 'pdpLink';
+        if(location){
+          lgkorUI.setStorage(pdpLink,location);
+        }
+    });
 })
+
