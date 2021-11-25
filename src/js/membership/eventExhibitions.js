@@ -112,6 +112,23 @@
     function bindEvents(){
 
         // BTOCSITE-7637
+        var self = this;
+        self.savedPLPData = {};
+        self.savedPLPData.listData = [];
+        self.savedPLPData.pagination = {page:0, totalCount:0};
+        self.savedPLPData.isNew = false;
+
+        var ajaxUrl = $$contents.attr('data-wish-url');
+        lgkorUI.checkWishItem(ajaxUrl);
+        
+        var hash = location.hash.replace("#","");
+        if(hash && hash.length == 8) {
+            self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
+            if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
+                var ajaxUrl = self.$section.attr('data-wish-url');
+                lgkorUI.checkWishItem(ajaxUrl);
+            }
+        }
         //찜하기
         $productList.on('change', 'li div.btn-area-wrap div.wishlist input', function(e){
             var isLogin = lgkorUI.getHiddenInputData().isLogin;
@@ -134,7 +151,7 @@
                     "wishListId": wishListId,
                     "wishItemId": wishItemId
                 }
-                console.log(param)
+
                 if(wish){
                     param.type = "add";
                 } else{
