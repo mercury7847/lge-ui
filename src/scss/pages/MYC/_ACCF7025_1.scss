@@ -354,6 +354,9 @@
                                 @include mobile {
                                     position: absolute;
                                     top: 70px;
+                                    display: flex;
+                                    justify-content: center;
+                                    width: 100%;
                                     i {
                                         img {
                                             max-width: 448px;
@@ -383,7 +386,7 @@
                                         // margin-bottom: 39.113428943937414vw;
                                     }
                                     @media screen and(max-width: 580px) {
-                                        margin-bottom: 50.124137931034484vw
+                                        margin-bottom: 49.124137931034484vw
                                     }
                                     span {
                                         font-weight: bold;

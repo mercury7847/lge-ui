@@ -1414,28 +1414,28 @@
 
 
             //가입 한 데이터
-            $lc_join = new Date($st_date);
+            var $lc_join = new Date($st_date);
 
             //케어십
             //년
-            $lc_careShip_Year = new Date($st_date);
+            var $lc_careShip_Year = new Date($st_date);
             //개월
-            $lc_careShip_Month = new Date($st_date);
+            var $lc_careShip_Month = new Date($st_date);
 
 
             //케어솔루션 
             //년
-            $lc_Year_1 = new Date($st_date);
-            $lc_Year_2 = new Date($st_date);
-            $lc_Year_3 = new Date($st_date);
-            $lc_Year_4 = new Date($st_date);
-            $lc_Year_5 = new Date($st_date);
+            var $lc_Year_1 = new Date($st_date);
+            var $lc_Year_2 = new Date($st_date);
+            var $lc_Year_3 = new Date($st_date);
+            var $lc_Year_4 = new Date($st_date);
+            var $lc_Year_5 = new Date($st_date);
             //개월
-            $lc_Month_1 = new Date($st_date);
-            $lc_Month_2 = new Date($st_date);
-            $lc_Month_3 = new Date($st_date);
-            $lc_Month_4 = new Date($st_date);
-            $lc_Month_5 = new Date($st_date);
+            var $lc_Month_1 = new Date($st_date);
+            var $lc_Month_2 = new Date($st_date);
+            var $lc_Month_3 = new Date($st_date);
+            var $lc_Month_4 = new Date($st_date);
+            var $lc_Month_5 = new Date($st_date);
 
             
             //시잘날짜 종료날짜 계산
@@ -1524,6 +1524,7 @@
             console.log("가입:", $lc_join)
             //console.log("1년후", CareShip_YearLater);
             console.log("1년 2개월", CareShip_MonthLater);
+            console.log("sss", YearLater1);
 
             //주영 -----------------------------------------------
             //케어십 조건
@@ -1537,32 +1538,35 @@
             //케어솔루션 조건
             if(data.contractType === 'C') {
                 if(Date.now() >= (+YearLater1) && Date.now() <= (+YearLater2)) {
-                    //console.log("------1년차!!!------")
-                    if (Date.now() >= (+MonthLater1)) {
-                        //console.log("---3개월 까지만 노출---")
+                    console.log("------1년차!!!------")
+                    //console.log("mmm", MonthLater1);
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater1)) {
+                        console.log("---3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_1, data));
                     }
+                } else {
+                    console.log("------no------")
                 }
 
                 if(Date.now() >= (+YearLater2) && Date.now() <= (+YearLater3)) {
-                    //console.log("------2년차!!!------")
-                    if (Date.now() >= (+MonthLater2)) {
-                        //console.log("---3개월 까지만 노출---")
+                    console.log("------2년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater2)) {
+                        console.log("---3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_2, data));
                     }
                 }
 
                 if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
-                    //console.log("------3년차!!!------")
-                    if (Date.now() >= (+MonthLater3)) {
-                        //console.log("---3개월 까지만 노출---")
+                    console.log("------3년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
+                        console.log("---3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
                 }
 
                 if(Date.now() >= (+YearLater4) && Date.now() <= (+YearLater5)) {
                     //console.log("------4년차!!!------")
-                    if (Date.now() >= (+MonthLater4)) {
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater4)) {
                         //console.log("---3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_4, data));
                     }
@@ -1570,7 +1574,7 @@
 
                 if(Date.now() >= (+YearLater5)) {
                     //console.log("------5년차!!!------")
-                    if (Date.now() >= (+MonthLater5)) {
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater5)) {
                         //console.log("---3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_5, data));
                     }
