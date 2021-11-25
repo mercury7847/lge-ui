@@ -78,6 +78,12 @@
                     z-index: 1;
                     padding:75.45% 32px 0 32px;
                     color:#fff;
+                    @media screen and (max-width: 1300px){
+                        padding:73% 32px 0 32px;
+                    }
+                    @include tablet {
+                        padding:72% 20px 0 20px;
+                    }
                     @include mobile {
                         padding:72.06% 20px 0 20px;
                     }
@@ -102,6 +108,17 @@
                         line-height:48px;
                         max-height: 106px;
                         @include textEllipsisClamp(2);
+                        @media screen and (max-width: 1300px){
+                            font-size:30px;
+                            line-height:36px;
+                            max-height: 83px;
+                        }
+                        @include tablet {
+                            padding-top:6px;
+                            font-size:20px;
+                            line-height:26px;
+                            max-height: 60px;
+                        }
                         @include mobile {
                             padding-top:6px;
                             font-size:24px;
@@ -115,6 +132,9 @@
                         margin-top:28px;
                         height: 24px;
                         @include textClipClamp(1);
+                        @media screen and (max-width: 1300px){
+                            margin-top:2.5%;
+                        }
                         @include mobile {
                             margin-top:15px;
                         }
@@ -124,6 +144,10 @@
                             line-height:24px;
                             font-weight: 400;
                             text-decoration:underline;
+                            @include tablet {
+                                font-size:13px;
+                                line-height:18px;
+                            }
                             @include mobile {
                                 font-size:14px;
                                 line-height:20px;
