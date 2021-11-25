@@ -75,21 +75,22 @@ var goAppUrl = function(path) {
         '<header class="pop-header">' + 
             '<h1 class="tit"><span>안내</span></h1>' + 
         '</header>' + 
-        '<section class="pop-conts">' + 
+        '<section class="pop-conts" style="text-align:center;">' + 
             '<section class="section">' + 
                 '<div class="headline">' + 
-                    '<h3 class="h-tit-3">LG전자㈜ 분할보고총회에 갈음하는 공고</h3>' + 
+                    '<h3 class="h-tit-3">주주확정기준일설정공고</h3>' + 
                 '</div>' + 
                 '<div class="text-cont">' + 
-                    '당사는 2021년 3월 24일 개최된 정기주주총회에서 단순·물적 분할방식으로 ' + 
-                    '엘지마그나 이파워트레인 주식회사를 설립하기로 결의하였으며, ' + 
-                    '엘지마그나 이파워트레인 주식회사를 분할함에 있어 필요한 소정의 절차를 ' + 
-                    '완료하였습니다. <br><br>' + 
-                    '이에 당사는 2021년 7월 1일 이사회에서 분할보고총회를 공고로 갈음하기로 결의하고, 분할의 경과를 공고합니다. <br>' + 
-                    '자세한 내용은 당사 홈페이지의 공고를 참조하시기 바랍니다.' +
+                    '상법 제354조 및 우리 회사 정관 제21조에 의거하여,<br> ' + 
+                    '다음과 같이 임시주주총회에서 의결권을 행사할 주주 확정을 위한 <br> ' + 
+                    '기준일을 정하였으니 양지하여 주시기 바랍니다. ' + 
+                    '<br><br> - 다  음 - <br><br>' + 
+                    '■주주확정기준일: 2021년 12월 10일<br><br>' +
+                    '<p style="text-align:right;">2021년 11월 25일</p>' +
+                    '<p style="text-align:right;">LG전자 주식회사</p>' +
                 '</div>' + 
                 '<div class="btn-wrap">' + 
-                    '<a href="https://www.lge.co.kr/uploads/company/investment/notice/21_division.pdf" target="_blank" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
+                    '<a href="https://www.lge.co.kr/company/investor/announceView?anncmNo=18&page=1#com-tabs02" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
                 '</div>' + 
             '</section>' + 
         '</section>' + 
@@ -358,7 +359,7 @@ var goAppUrl = function(path) {
                 self._preloadComponents();
             }
 
-            // self._mobileInitPopup(); //2021-09-30 삭제
+            self._mobileInitPopup(); //2021-09-30 삭제
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
