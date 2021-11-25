@@ -178,9 +178,9 @@
                         $('#contactPhoneNo3').focus();
                         return;
                     }
-
-                    $('.err-block.contact-box-err-blocK').hide();
                 }
+
+                $('.err-block.contact-box-err-blocK').hide();
 
                 var result = self.validation.validate();
 
@@ -221,8 +221,8 @@
                         $('#contactPhoneNo3').focus();
                         return;
                     }
-                    $('.err-block.contact-box-err-blocK').hide();
                 }
+                $('.err-block.contact-box-err-blocK').hide();
             });
         }
     }
