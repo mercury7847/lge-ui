@@ -71,11 +71,9 @@
             init: function(){
                 var self = this;
 
-                if(dataList != null){
-                    self.setting();
-                    self.setPath();
-                    self.bindEvents();
-                }
+                self.setting();
+                self.setPath();
+                self.bindEvents();
             },
             setting: function() {
                 var self = this;
@@ -93,45 +91,49 @@
             },
             setPath: function(){
                 var self = this;
-                //랜탈 탭 일 경우 url에 랜탈탭 파라미터 추가
-                var kiosk = lgkorUI.getParameterByName("kiosk");
-                $(dataList.rentalCompareList).each(function(idx,item){
-                    item.modelUrlPath = item.modelUrlPath + "?dpType=careTab";
-                    if(kiosk) {
-                        item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
-                        item.modelUrlPath += 'kiosk='+kiosk;
-                    }
-                });
+
+                if(dataList != null){
+                    //랜탈 탭 일 경우 url에 랜탈탭 파라미터 추가
+                    var kiosk = lgkorUI.getParameterByName("kiosk");
+                    $(dataList.rentalCompareList).each(function(idx,item){
+                        item.modelUrlPath = item.modelUrlPath + "?dpType=careTab";
+                        if(kiosk) {
+                            item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
+                            item.modelUrlPath += 'kiosk='+kiosk;
+                        }
+                    });
+                }
             },
             bindEvents: function() {
                 var self = this;
 
-                //구매/렌탈 탭 클릭시 유사제품 상품, 각각의 금액으로 변경
-                self.$tabList.on('click',function(){
-                    var $idx = $(this).parent().index();
-                    if($idx === 0){
-                        // 구매 탭
-                        if(dataList.compareList.length === 2){
-                            drawTab("purchaseTab", dataList.compareList);
-                        }else{
-                            self.$section.hide();
+                if(dataList != null){
+                    //구매/렌탈 탭 클릭시 유사제품 상품, 각각의 금액으로 변경
+                    self.$tabList.on('click',function(){
+                        var $idx = $(this).parent().index();
+                        if($idx === 0){
+                            // 구매 탭
+                            if(dataList.compareList.length === 2){
+                                drawTab("purchaseTab", dataList.compareList);
+                            }else{
+                                self.$section.hide();
+                            }
+                        }else if($idx === 1) {
+                            //렌탈 탭
+                            if(dataList.rentalCompareList.length === 2){
+                                drawTab("rentalTab", dataList.rentalCompareList);
+                            }else{
+                                self.$section.hide();
+                            }
                         }
-                    }else if($idx === 1) {
-                        //렌탈 탭
-                        if(dataList.rentalCompareList.length === 2){
-                            drawTab("rentalTab", dataList.rentalCompareList);
-                        }else{
-                            self.$section.hide();
-                        }
-                    }
-                });
-                function drawTab(tab,data){
-                    self.$section.show();
-                    self.$prodViewNow.empty();
-                    self.$prodRecommend.empty();
-                    self.makeProdList(tab, data);
-                };
-
+                    });
+                    function drawTab(tab,data){
+                        self.$section.show();
+                        self.$prodViewNow.empty();
+                        self.$prodRecommend.empty();
+                        self.makeProdList(tab, data);
+                    };
+                }
                 //유사제품 추천(스펙 비교하기)
                 $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
                     e.preventDefault();
