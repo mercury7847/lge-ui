@@ -4,7 +4,9 @@
         '<p class="title"><a href="#{{id}}">{{title}}</a>' +
         '</p>' +
         '<div class="info"><ul>' +
+            '{{#if (postType == "legacy") }}' +
             '<li>접수번호 {{regNumber}}</li>' +
+            '{{/if}}' +
             '<li>등록일 {{date}}</li>' +
         '</ul></div>' +
     '</li>';

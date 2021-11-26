@@ -10,6 +10,28 @@ $(function () {
     var isMobileScreen = function() {
         return vcui.detect.isMobileDevice || window.innerWidth < 768
     }
+
+    //BTOCSITE-7335
+    function setVideoCurrentSrc(type){
+        var $scene = $('.scene');
+        var $visual = $scene.find('.scene-visual');
+
+        if( type != "" && type != "undefined" && type != undefined) {
+            $visual.each(function(idx){
+                var $video = $(this).find('video');
+
+                if( $video.attr('src') != $video.data(type + '-src') ) {
+                    $video.attr('src', $video.data(type + '-src'))
+                }
+    
+                if( $video.attr('poster') != $video.data(type + '-poster') ) {
+                    $video.attr('poster', $video.data(type + '-poster'))
+                }
+    
+                return;
+            });
+        }
+    }
     
     var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
@@ -18,7 +40,8 @@ $(function () {
         
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
         
-        $('body').addClass('ignore-overflow-hidden');
+        // BTOCSITE-5938-285 메인 검색창 스크롤 밀림 현상 수정
+        // $('body').addClass('ignore-overflow-hidden');
 
         $context.find('.ui_carousel_slider_banner1,.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
@@ -151,58 +174,18 @@ $(function () {
             }            
         });
 
-        // BTOCSITE-2193 s
-        // $window.on('breakpointchange', function(e){
+        
 
-        //     var data = window.breakpoint;
-        //     var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
-        //     var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
-
-        //     if(data.name == 'mobile'){
-
-        //         if(!isRecom){
-        //             $context.find('.recom-list-slide').vcCarousel({                        
-        //                 infinite: true,
-        //                 slidesToShow: 1,
-        //                 slidesToScroll: 1,
-        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        //                 speed: 150,
-        //                 touchThreshold: 100
-        //             });
-        //         }
-
-        //         if(!isBenefit){
-        //             $context.find('.benefit-list-slide').vcCarousel({
-        //                 infinite: true,
-        //                 slidesToShow: 1,
-        //                 slidesToScroll: 1,
-        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        //                 speed: 150,
-        //                 touchThreshold: 100                            
-        //             });
-        //         }
-
-
-        //     }else if(data.name == 'pc'){
-
-        //         $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
-        //         $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
-        //         if(isRecom){
-        //             $context.find('.recom-list-slide').vcCarousel('destroy');
-        //         }
-        //         if(isBenefit){
-        //             $context.find('.benefit-list-slide').vcCarousel('destroy');
-        //         }
-        //     }
-
-        // });   
+        
         $window.on('breakpointchange', function(e){
             var data = window.breakpoint;
             
             if(data.name == 'mobile'){
                 sliderSet();
+                setVideoCurrentSrc('m') //BTOCSITE-7335
             }else if(data.name == 'pc'){
                 sliderSet()
+                setVideoCurrentSrc('pc') //BTOCSITE-7335
             }
             
             $('.btn-info-play').on('click', function() {
@@ -358,7 +341,14 @@ $(function () {
 
         }, observerOption)
 
-        $('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > video').each(function() {
+        // $('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > video').each(function() {
+        //     // 이미 생성된 비디오 요소 옵저브
+        //     this.muted = true
+        //     this.parentElement.classList.add('video')
+        //     sceneIO.observe(this)
+        // })
+
+        $('.img.scene-visual > video').each(function() {
             // 이미 생성된 비디오 요소 옵저브
             this.muted = true
             this.parentElement.classList.add('video')

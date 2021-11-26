@@ -158,6 +158,7 @@
                         if(result.validArray && result.validArray.length > 0) {
                             var item = result.validArray[0];
                             if(item.errmsg) {
+                                self.$inputReceipt.blur();
                                 lgkorUI.alert("", {title: item.errmsg});
                             }
                         }

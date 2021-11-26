@@ -2256,6 +2256,22 @@
                     position: relative;
                     
                 }
+                .icon-wrap {
+                    @include mobile {
+                        width: 55px;
+                        height: 55px;
+                    }
+                    .icon {
+                        width: 80px;
+                        height: 80px;
+                        background-repeat: no-repeat;
+                        background-position: 50%;
+                        @include mobile {
+                            width: 55px;
+                            height: 55px;
+                        }
+                    }
+                }
 
                 .slick-arrow {
                     width: 48px;

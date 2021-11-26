@@ -560,7 +560,7 @@
                 var data = $el.data();
                 
                 if($el.length > 0) {
-                    if(data.type !== "accessories" && data.href ) {
+                    if(data.href) {
                         self.$packageModal.vcModal('close')
                         location.href = data.href;
                     } else {
@@ -818,7 +818,6 @@
                                     'customEventAction': '보유제품 등록 완료',				
                                     'customEventLabel': param.sku
                                 });				
-                          
 
                                 self.$registMyProductPopup.vcModal('close');
 

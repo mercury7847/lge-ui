@@ -232,6 +232,7 @@
                             });
                             
                             $(".sch-box .tabs-wrap").vcTab('select', 2); // 검색 탭으로 이동시킴.
+                            $(".view-info-btn").addClass("withtab3"); // BTOCSITE-5938-350 모니터링 수정
     
                             if(nArr.length > 0) {
                                 var shopName = nArr[0]['shopName'];
@@ -859,7 +860,6 @@
                         self.$map.draw(nArr, geo[0], geo[1]);
                     }
                 }else if(keywords.searchType =='search'){
-    
                     var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
                         return keywords.searchKeyword!==''? xsearch(item.shopName, keywords.searchKeyword).length > 0 : false;
                     });
@@ -1421,8 +1421,8 @@
                     var resultop = $('.result-list-box').position().top;
                     var resultheight = $('.result-list-box').outerHeight(true);
                     var listop = self.$defaultListContainer.offset().top;
-    
-                    paddingtop = resultop + resultheight - listop;
+                    // BTOCSITE-8243
+                    paddingtop = (resultop + resultheight - listop) - 24;
     
                     $('.store-map-con').css({
                         'position':'relative',
@@ -1498,7 +1498,8 @@
                     var container = self.$leftContainer.height();
                     var listTop = self.$defaultListContainer.position().top;
                     var title = $('.store-list-wrap .tit').height();
-                    var opt = 80; //$('.store-list-box > .opt-cont').height();
+                    // BTOCSITE-8243 
+                    var opt = 64; //$('.store-list-box > .opt-cont').height();
                     var ht = container - listTop - title - opt;                   
     
                     $scrollWrap.css({
@@ -1606,6 +1607,16 @@
                     results = regex.exec(location.search);
                 return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
             }
+            // BTOCSITE-8243 s
+            $(".tabs > li > a").click(function() {
+                var tabIdx = $(this).attr('href');
+                if (tabIdx=="#tab3"){
+                    $(".view-info-btn").addClass("withtab3");
+                }else{
+                    $(".view-info-btn").removeClass("withtab3");
+                }
+            });
+            // BTOCSITE-8243 e
         });
     })();
     

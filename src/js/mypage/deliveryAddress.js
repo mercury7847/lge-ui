@@ -56,6 +56,7 @@
             },
             receiverUser: {
                 required: true,
+                maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
                 msgTarget: '.err-block'
             },
@@ -76,6 +77,7 @@
             },
             phoneNumber: {
                 required: true,
+                minLength:10,
                 errorMsg: "휴대폰번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },

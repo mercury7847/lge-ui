@@ -103,6 +103,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf/rf_door01_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf/rf_door01_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf/rf_door01_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf/rf_door01_03mg_redwood.png' }, //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf/rf_door01_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf/rf_door01_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf/rf_door01_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf/rf_door01_04nm_white.png' },
@@ -125,6 +127,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf/rf_door02_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf/rf_door02_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf/rf_door02_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf/rf_door01_03mg_redwood.png' }, //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf/rf_door01_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf/rf_door02_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf/rf_door02_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf/rf_door02_04nm_white.png' },
@@ -147,6 +151,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf/rf_door03_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf/rf_door03_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf/rf_door03_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf/rf_door03_03mg_redwood.png' }, //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf/rf_door03_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf/rf_door03_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf/rf_door03_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf/rf_door03_04nm_white.png' },
@@ -177,6 +183,8 @@ var go_shop_model = "";
                             { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
                             { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
                             { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'mg_redwood' },  //BTOCSITE-8181
+                            { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'mg_claybrown' },  //BTOCSITE-8181
                         ],
                     },
                     {
@@ -219,6 +227,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_kimchi/rf_kim_door01_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_kimchi/rf_kim_door01_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_kimchi/rf_kim_door01_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_kimchi/rf_kim_door01_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_kimchi/rf_kim_door01_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_kimchi/rf_kim_door01_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_kimchi/rf_kim_door01_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_kimchi/rf_kim_door01_04nm_white.png' },
@@ -241,6 +251,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_kimchi/rf_kim_door02_02mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_kimchi/rf_kim_door02_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_kimchi/rf_kim_door02_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_kimchi/rf_kim_door02_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_kimchi/rf_kim_door02_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_kimchi/rf_kim_door02_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_kimchi/rf_kim_door02_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_kimchi/rf_kim_door02_04nm_white.png' },
@@ -263,6 +275,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_kimchi/rf_kim_door03_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_kimchi/rf_kim_door03_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_kimchi/rf_kim_door03_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_kimchi/rf_kim_door03_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_kimchi/rf_kim_door03_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_kimchi/rf_kim_door03_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_kimchi/rf_kim_door03_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_kimchi/rf_kim_door03_04nm_white.png' },
@@ -293,6 +307,8 @@ var go_shop_model = "";
                             { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
                             { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
                             { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'mg_redwood' },  //BTOCSITE-8181
+                            { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'mg_claybrown' },  //BTOCSITE-8181
                         ],
                     },
                     {
@@ -331,6 +347,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_con/rf_con_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_con/rf_con_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_con/rf_con_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_con/rf_con_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_con/rf_con_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_con/rf_con_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_con/rf_con_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_con/rf_con_04nm_white.png' },
@@ -350,6 +368,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_con/rf_con_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_con/rf_con_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_con/rf_con_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_con/rf_con_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_con/rf_con_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_con/rf_con_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_con/rf_con_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_con/rf_con_04nm_white.png' },
@@ -369,6 +389,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf_con/rf_con_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf_con/rf_con_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf_con/rf_con_03mg_silver.png' },
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf_con/rf_con_03mg_redwood.png' },  //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf_con/rf_con_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf_con/rf_con_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf_con/rf_con_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf_con/rf_con_04nm_white.png' },
@@ -390,6 +412,8 @@ var go_shop_model = "";
                             { name: '핑크', colorChip: 'color_03mg_pink.png', colorCode: 'mg_pink' },
                             { name: '민트', colorChip: 'color_03mg_mint.png', colorCode: 'mg_mint' },
                             { name: '실버', colorChip: 'color_03mg_silver.png', colorCode: 'mg_silver' },
+                            { name: '레드<br />우드', colorChip: 'color_redwood.png', colorCode: 'mg_redwood' }, //BTOCSITE-8181
+                            { name: '클레이<br />브라운', colorChip: 'color_claybrown.png', colorCode: 'mg_claybrown' }, //BTOCSITE-8181
                         ],
                     },
                     {
@@ -568,7 +592,7 @@ var go_shop_model = "";
             },
             {
                 id: 'clean',
-                name: '무서청소기',
+                name: '무선청소기',
                 icon: { default: 'Thumb_09.png', focus: 'Thumb_09_selected.png' },
                 offset: { top: 537, left: 6117, },
                 size: { width: 81, height: 328, },
