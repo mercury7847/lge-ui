@@ -127,8 +127,8 @@ var go_shop_model = "";
                             { colorCode: 'mg_pink', filename: 'appliances/rf/rf_door02_03mg_pink.png' },
                             { colorCode: 'mg_mint', filename: 'appliances/rf/rf_door02_03mg_mint.png' },
                             { colorCode: 'mg_silver', filename: 'appliances/rf/rf_door02_03mg_silver.png' },
-                            { colorCode: 'mg_redwood', filename: 'appliances/rf/rf_door01_03mg_redwood.png' }, //BTOCSITE-8181
-                            { colorCode: 'mg_claybrown', filename: 'appliances/rf/rf_door01_03mg_claybrown.png' }, //BTOCSITE-8181
+                            { colorCode: 'mg_redwood', filename: 'appliances/rf/rf_door02_03mg_redwood.png' }, //BTOCSITE-8181
+                            { colorCode: 'mg_claybrown', filename: 'appliances/rf/rf_door02_03mg_claybrown.png' }, //BTOCSITE-8181
                             { colorCode: 'nm_gray', filename: 'appliances/rf/rf_door02_04nm_gray.png' },
                             { colorCode: 'nm_black', filename: 'appliances/rf/rf_door02_04nm_black.png' },
                             { colorCode: 'nm_white', filename: 'appliances/rf/rf_door02_04nm_white.png' },
