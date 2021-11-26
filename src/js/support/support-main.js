@@ -477,14 +477,17 @@
                 }
 
                 // 주요 서비스 
+                self.main_service.el.slider.on('init', function(event, slick){
+                    // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
+                    if($(self.main_service.el.slider).find(".slick-arrow").length > 0){
+                        $(self.main_service.el.slider).find(".slick-arrow").each(function(index){
+                            this.id = "beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2);
+                        });
+                    }
+                });
+
                 self.main_service.el.slider.not(self.activeClass).slick(self.main_service.config);
 
-                // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
-                if($(self.main_service.el.slider).find(".slick-arrow").length > 0){
-                   $(self.main_service.el.slider).find(".slick-arrow").each(function(index){
-                        this.id = "beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2);
-                    });
-                }
 
                 //수상목록
                 self.award.el.slider.not(self.activeClass).slick(self.award.config);
