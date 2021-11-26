@@ -1167,7 +1167,14 @@
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                
+                //주영
+                var cardItemTemplate = '<li>' +
+                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                        '<spna>{{label}}</spna>' +
+                        '<spna class="card-discount">{{salePrice}}</spna>' +
+                    '</a>' +
+                '</li>';
 
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
