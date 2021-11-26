@@ -103,8 +103,6 @@
 
     function setting(){
         $contents = $('.contents.event.exhibition');
-        
-
         //리스트
         $productList = $('.ev-prd-wrap ul.product-items');// BTOCSITE-7637
     }
@@ -148,8 +146,8 @@
                 var param = {
                     "id":_id,
                     "sku":sku,
-                    "wishListId": wishListId,
-                    "wishItemId": wishItemId
+                    // "wishListId": wishListId, //BTOCSITE-7637
+                    // "wishItemId": wishItemId //BTOCSITE-7637
                 }
 
                 if(wish){
