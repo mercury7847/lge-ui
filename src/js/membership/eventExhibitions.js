@@ -115,25 +115,33 @@
         // BTOCSITE-7637
         //찜하기
         $productList.on('change', 'li div.btn-area-wrap div.wishlist input', function(e){
-            var isLogin = lgkorUI.getHiddenInputData().isLogin;
+            var login = $contents.data('loginUrl');
+            var isLogin = $contents.data('loginflag') == 'Y' ? true : false;
             if(isLogin == "N"){
-                lgkorUI.confirm("", {
-                    title: "선택하신 제품을 찜하기 위해서는 <br>LG전자 통합 사이트의 로그인이 필요합니다."
-                }, this);
-
+                var obj = {
+                    title:'선택하신 제품을 찜하기 위해서는 <br>LG전자 통합 사이트의 로그인이 필요합니다.', 
+                    cancelBtnName:'취소', 
+                    okBtnName:'확인', 
+                    ok: function (){
+                        location.href = login;
+                    }
+                };
+                lgkorUI.confirm(null, obj);
                 $(this).prop('checked', false);
+                return;
+
             } else{
                 var $this = $(this);
                 var _id = $this.attr('data-id');
                 var sku = $this.attr('data-model-name');
-                var wishListId = $this.data("wishListId"); //BTOCSITE-7637
-                var wishItemId = $this.data("wishItemId"); //BTOCSITE-7637
+                var wishListId = $this.data("wishListId"); 
+                var wishItemId = $this.data("wishItemId");
                 var wish = $this.is(':checked');
                 var param = {
                     "id":_id,
                     "sku":sku,
-                    "wishListId": wishListId, //BTOCSITE-7637
-                    "wishItemId": wishItemId //BTOCSITE-7637
+                    "wishListId": wishListId,
+                    "wishItemId": wishItemId
                 }
 
                 if(wish){
