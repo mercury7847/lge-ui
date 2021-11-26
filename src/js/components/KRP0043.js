@@ -58,8 +58,6 @@
             vcui.require(['ui/pagination'], function (){
                 self.settings();
                 self.bindEvents();
-                //self.setPagination();
-                //self.requestQnaListData2({"page": 1});
             });
         },
         settings : function (){
@@ -233,7 +231,7 @@
             
             var typeSelText = $('#cusomtSelectbox_7_button > a > span.ui-select-text');
             var self = this;
-            var ajaxUrl = self.$qnaType.data('ajax');
+            var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
             var selectedQTypeName = param.queTypeName;
             
             typeSelText.html(selectedQTypeName);
@@ -275,59 +273,6 @@
                             });
                          
                         }
-
-                        self.$qnaList.empty().append(html);
-                        self.bindEvents();
-                        self.$pagination.vcPagination('setPageInfo', pagination);
-            
-                    } else {
-                        self.$qnaType.find('.qna-result-lists').hide();
-                        self.$nodata.show();
-                    }
-                    lgkorUI.hideLoading();
-                } else {
-                    self.$qnaType.find('.qna-result-lists').hide();
-                    self.$nodata.show();
-                    lgkorUI.hideLoading();
-                }
-            }, 'POST');
-        },
-        requestQnaListData2 : function(param){
-            console.log("QnA List - API request !!");
-            console.log(param);
-            
-            //var typeSelText = $('#cusomtSelectbox_7_button > a > span.ui-select-text');
-            var self = this;
-            var ajaxUrl = self.$qnaType.data('ajax');
-            //var selectedQTypeName = param.queTypeName;
-            
-            //typeSelText.html(selectedQTypeName);
-            //console.log(selectedQTypeName);
-            
-            lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                if(result.status == "success") {
-                    var data = result.data.qnaList;
-                    var pagination = result.data.pagination;
-                    var totalCount = result.data.qnaTotalCount;
-                    var selectedQTypeVal = param.questionTypeCode;
-                    
-                    var html = "";
-
-                    if(data.length > 0) {
-      
-                        // qna 리스트 문의 건수, 999건 초과시 999+
-                        if(totalCount > 999 ){
-                            self.$totalCount.text("999+");
-                        } else {
-                            self.$totalCount.text(totalCount);
-                        }
-
-                        //리스트 페이지 노출
-                        // select-box 문의유형 선택값 필터처리
-                        data.forEach(function(item){
-                            html += vcui.template(qnaListTmpl, item);
-                        });
 
                         self.$qnaList.empty().append(html);
                         self.bindEvents();
