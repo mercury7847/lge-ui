@@ -338,33 +338,45 @@
             margin-top: 48px;
             padding-bottom: 12px;
             @include font-medium;
-            a {
-                display: block;
-                padding: 10px 16px;
-                &:hover,
-                &:focus,
-                &.on {
-                    background-color: $color-bg;
+            //주영 수정
+            li {
+                &.divide {
+                    padding: 10px 16px;
+                    .inner {
+                        position: relative;
+                        overflow: hidden;
+                        display: block;
+                        height: 22px;
+                    }
+                    em {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        @include font-medium;
+                        color: $color-gray-1;
+                        white-space: nowrap;
+                    }
                 }
-            }
-            .divide {
-                padding: 10px 16px;
-                .inner {
-                    position: relative;
-                    overflow: hidden;
+
+                a {
                     display: block;
-                    height: 22px;
-                }
-                em {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-                    @include font-medium;
-                    color: $color-gray-1;
-                    white-space: nowrap;
+                    padding: 10px 16px;
+                    &:hover,
+                    &:focus,
+                    &.on {
+                        background-color: $color-bg;
+                    }
+                    span {
+                        display: flex;
+                        &.card-discount {
+                            color: #da0f47;
+                            font-weight: 500;
+                        }
+                    }
                 }
             }
+            //주영 수정 end
         }
         &.open {
             .select-button {
