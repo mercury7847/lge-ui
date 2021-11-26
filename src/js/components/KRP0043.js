@@ -58,7 +58,7 @@
             vcui.require(['ui/pagination'], function (){
                 self.settings();
                 self.bindEvents();
-                self.setPagination();
+                //self.setPagination();
 
             });
         },
@@ -494,19 +494,18 @@
             }
             
         },
-        setPagination : function() {
-            var self = this;
-            var ajaxUrl = self.$qnaType.data('ajax');
+        // setPagination : function() {
+        //     var self = this;
+        //     var ajaxUrl = self.$qnaType.data('ajax');
 
-            lgkorUI.requestAjaxData(ajaxUrl,function(result){
-
-                var pagination = result.pagination;
-                self.$pagination.vcPagination('setPageInfo', pagination);
+        //     lgkorUI.requestAjaxData(ajaxUrl,param,function(result){
+        //         var pagination = result.pagination;
+        //         self.$pagination.vcPagination('setPageInfo', pagination);
                 
-            });
+        //     });
 
 
-        },
+        // },
         // 글 수정시 파일 삭제 함수
         uploadFileDelete: function(el) {
             var self = this;
