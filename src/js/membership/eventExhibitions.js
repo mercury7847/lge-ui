@@ -99,6 +99,9 @@
     function init(){
         setting();
         bindEvents();
+
+        var ajaxUrl = $contents.attr('data-wish-url');// BTOCSITE-7637
+        lgkorUI.checkWishItem(ajaxUrl); // BTOCSITE-7637
     }
 
     function setting(){
@@ -107,26 +110,9 @@
         $productList = $('.ev-prd-wrap ul.product-items');// BTOCSITE-7637
     }
 
-    function bindEvents(){
+    function bindEvents(){ 
 
         // BTOCSITE-7637
-        var self = this;
-        self.savedPLPData = {};
-        self.savedPLPData.listData = [];
-        self.savedPLPData.pagination = {page:0, totalCount:0};
-        self.savedPLPData.isNew = false;
-
-        var ajaxUrl = $$contents.attr('data-wish-url');
-        lgkorUI.checkWishItem(ajaxUrl);
-        
-        var hash = location.hash.replace("#","");
-        if(hash && hash.length == 8) {
-            self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
-            if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
-                var ajaxUrl = self.$section.attr('data-wish-url');
-                lgkorUI.checkWishItem(ajaxUrl);
-            }
-        }
         //찜하기
         $productList.on('change', 'li div.btn-area-wrap div.wishlist input', function(e){
             var isLogin = lgkorUI.getHiddenInputData().isLogin;
@@ -140,8 +126,8 @@
                 var $this = $(this);
                 var _id = $this.attr('data-id');
                 var sku = $this.attr('data-model-name');
-                var wishListId = $this.data("wishListId");
-                var wishItemId = $this.data("wishItemId");
+                // var wishListId = $this.data("wishListId"); //BTOCSITE-7637
+                // var wishItemId = $this.data("wishItemId"); //BTOCSITE-7637
                 var wish = $this.is(':checked');
                 var param = {
                     "id":_id,
