@@ -127,21 +127,21 @@
                     }
                 };
                 lgkorUI.confirm(null, obj);
+                $(this).prop('checked', false);
                 return;
 
-                $(this).prop('checked', false);
             } else{
                 var $this = $(this);
                 var _id = $this.attr('data-id');
                 var sku = $this.attr('data-model-name');
-                var wishListId = $this.data("wishListId"); //BTOCSITE-7637
-                var wishItemId = $this.data("wishItemId"); //BTOCSITE-7637
+                var wishListId = $this.data("wishListId"); 
+                var wishItemId = $this.data("wishItemId");
                 var wish = $this.is(':checked');
                 var param = {
                     "id":_id,
                     "sku":sku,
-                    "wishListId": wishListId, //BTOCSITE-7637
-                    "wishItemId": wishItemId //BTOCSITE-7637
+                    "wishListId": wishListId,
+                    "wishItemId": wishItemId
                 }
 
                 if(wish){
