@@ -2,7 +2,7 @@
 // ★ 공지사항 관련 게시글은 별도의 어드민 api개발이 완료된 이 후 , 따로 api로 그린다고함. cms에서 붙임
 (function (){
     var qnaListTmpl = 
-    '<li class="lists" data-model-id="{{ modelId }}" data-que-no="{{ questionNo }}" {{#if (secret == "Y") }}data-secret-flag="{{secret}}"{{/if}}>' +
+    '<li class="lists" data-que-no="{{ questionNo }}" {{#if (secret == "Y") }}data-secret-flag="{{secret}}"{{/if}}>' +
         '<div class="head">' +
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge{{#if (answered == "Y") }} active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
@@ -65,8 +65,7 @@
         settings : function (){
             var self = this;
             self.isLogin = lgkorUI.isLogin;
-
-            self.$dataModelId = $('.KRP0006').attr('data-model-id');
+            
             self.$pdpQna = $('#pdp_qna');
             
             // QnA 리스트 상단 영역
@@ -78,6 +77,7 @@
 
             //Qna LIst
             self.$qnaType = self.$pdpQna.find('.KRP0043');
+            self.$dataModelId = self.$qnaType.attr('data-model-id');
             self.$qnaList = self.$qnaType.find('ul.qna-result-lists');
             
             
@@ -179,7 +179,7 @@
             //삭제하기
             self.$qnaType.find('.del-btn').off('click').on('click', function(){
                 var self = this;
-                var modelId = $(this).closest('li.lists').attr("data-model-id");
+                var modelId = self.$dataModelId;
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 console.log("삭제" + self);
                 lgkorUI.confirm('', {
@@ -204,7 +204,7 @@
             self.$qnaType.find('.modi-btn').off('click').on('click', function(){
                 var loginChk = self.$qnaType.attr('data-login-flag');
                 var mode = self.$modifyBtn.attr('data-name');
-                var modelId = $(this).closest('li.lists').attr("data-model-id");
+                var modelId = self.$dataModelId;
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 self.requestQnaReadPop({"mode":mode,"loginChk":loginChk,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
@@ -233,7 +233,7 @@
             
             var typeSelText = $('#cusomtSelectbox_7_button > a > span.ui-select-text');
             var self = this;
-            var ajaxUrl = self.$qnaType.data('ajax') + '?modelId=' + self.$dataModelId;
+            var ajaxUrl = self.$qnaType.data('ajax');
             var selectedQTypeName = param.queTypeName;
             
             typeSelText.html(selectedQTypeName);
@@ -260,7 +260,7 @@
 
                         //리스트 페이지 노출
                         // select-box 문의유형 선택값 필터처리
-                        if(selectedQTypeVal == 'all'){
+                        if(selectedQTypeVal == 'ALL'){
                             data.forEach(function(item){
                                 html += vcui.template(qnaListTmpl, item);
                             });
@@ -356,7 +356,7 @@
             console.log(ajaxUrl);
 
             //일반 case
-            if(param.loginChk == 'Y'){
+            if(self.isLogin){
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
