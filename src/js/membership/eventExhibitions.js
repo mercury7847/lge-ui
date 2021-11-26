@@ -126,14 +126,14 @@
                 var $this = $(this);
                 var _id = $this.attr('data-id');
                 var sku = $this.attr('data-model-name');
-                // var wishListId = $this.data("wishListId"); //BTOCSITE-7637
-                // var wishItemId = $this.data("wishItemId"); //BTOCSITE-7637
+                var wishListId = $this.data("wishListId"); //BTOCSITE-7637
+                var wishItemId = $this.data("wishItemId"); //BTOCSITE-7637
                 var wish = $this.is(':checked');
                 var param = {
                     "id":_id,
                     "sku":sku,
-                    // "wishListId": wishListId, //BTOCSITE-7637
-                    // "wishItemId": wishItemId //BTOCSITE-7637
+                    "wishListId": wishListId, //BTOCSITE-7637
+                    "wishItemId": wishItemId //BTOCSITE-7637
                 }
 
                 if(wish){
