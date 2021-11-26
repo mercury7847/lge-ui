@@ -110,7 +110,7 @@
         $productList = $('.ev-prd-wrap ul.product-items');// BTOCSITE-7637
     }
 
-    function bindEvents(){
+    function bindEvents(){ 
 
         // BTOCSITE-7637
         //찜하기
