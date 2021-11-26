@@ -115,11 +115,19 @@
         // BTOCSITE-7637
         //찜하기
         $productList.on('change', 'li div.btn-area-wrap div.wishlist input', function(e){
-            var isLogin = lgkorUI.getHiddenInputData().isLogin;
+            var login = $contents.data('loginUrl');
+            var isLogin = $contents.data('loginflag') == 'Y' ? true : false;
             if(isLogin == "N"){
-                lgkorUI.confirm("", {
-                    title: "선택하신 제품을 찜하기 위해서는 <br>LG전자 통합 사이트의 로그인이 필요합니다."
-                }, this);
+                var obj = {
+                    title:'선택하신 제품을 찜하기 위해서는 <br>LG전자 통합 사이트의 로그인이 필요합니다.', 
+                    cancelBtnName:'취소', 
+                    okBtnName:'확인', 
+                    ok: function (){
+                        location.href = login;
+                    }
+                };
+                lgkorUI.confirm(null, obj);
+                return;
 
                 $(this).prop('checked', false);
             } else{
