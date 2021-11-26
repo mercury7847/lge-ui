@@ -1,25 +1,48 @@
-<svg id="ic_stand_airconditioner_off" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-    <defs>
-        <style>
-            .cls-1{fill:none}
-        </style>
-    </defs>
-    <g id="Group_283" data-name="Group 283" transform="translate(-1325 -533.33)">
-        <path id="Rectangle_168" data-name="Rectangle 168" class="cls-1" transform="translate(1325 533.33)" d="M0 0h80v80H0z"/>
-    </g>
-    <g id="Group_288" data-name="Group 288" transform="translate(-1325 -533.33)">
-        <g id="Group_285" data-name="Group 285">
-            <g id="Group_284" data-name="Group 284">
-                <path id="Path_119" data-name="Path 119" d="M1378.3 542.65v61.36h-26.6v-61.36h26.6m1-3h-28.61a2 2 0 0 0-2 2v63.36a2 2 0 0 0 2 2h28.61a2 2 0 0 0 2-2v-63.36a2 2 0 0 0-2-2z" style="fill:#8c8c8c"/>
-            </g>
-        </g>
-        <g id="Group_287" data-name="Group 287">
-            <g id="Group_286" data-name="Group 286">
-                <g id="Ellipse_61" data-name="Ellipse 61" transform="translate(1354.74 546.64)" style="stroke:#8c8c8c;stroke-width:3px;fill:none">
-                    <circle cx="10.26" cy="10.26" r="10.26" style="stroke:none"/>
-                    <circle class="cls-1" cx="10.26" cy="10.26" r="8.76"/>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ic_x5F_device_x5F_list_x5F_stand_x5F_airconditioner"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 240 240"
+	 style="enable-background:new 0 0 240 240;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);}
+	.st2{fill:url(#SVGID_3_);}
+	.st3{fill:url(#SVGID_4_);}
+	.st4{fill:#696E72;}
+	.st5{fill:#95989C;}
+	.st6{fill:url(#Ellipse_886_copy_1_);}
+</style>
+<g id="_x5F_off_94_">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="89.5" y1="222" x2="150.5" y2="222">
+		<stop  offset="0" style="stop-color:#7C8088"/>
+		<stop  offset="6.716418e-02" style="stop-color:#9DA0A6"/>
+		<stop  offset="0.9328" style="stop-color:#9DA0A6"/>
+		<stop  offset="1" style="stop-color:#7C8088"/>
+	</linearGradient>
+	<rect x="89.5" y="220" class="st0" width="61" height="4"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="120" y1="220" x2="120" y2="17.4663">
+		<stop  offset="0.2" style="stop-color:#DDDDDD"/>
+		<stop  offset="1" style="stop-color:#EFF0F2"/>
+	</linearGradient>
+	<path class="st1" d="M150.5,220h-61c-0.8,0-1.5-0.7-1.5-1.5v-201c0-0.8,0.7-1.5,1.5-1.5h61c0.8,0,1.5,0.7,1.5,1.5v201
+		C152,219.3,151.3,220,150.5,220z"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="152" y1="118" x2="144.3622" y2="118">
+		<stop  offset="0" style="stop-color:#B4B4B4"/>
+		<stop  offset="1" style="stop-color:#B4B4B4;stop-opacity:0"/>
+	</linearGradient>
+	<path class="st2" d="M150.5,16h-14v204h14c0.8,0,1.5-0.7,1.5-1.5v-201C152,16.7,151.3,16,150.5,16z"/>
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-187.6042" y1="118" x2="-195.2421" y2="118" gradientTransform="matrix(-1 0 0 1 -99.6042 0)">
+		<stop  offset="0" style="stop-color:#B4B4B4"/>
+		<stop  offset="1" style="stop-color:#B4B4B4;stop-opacity:0"/>
+	</linearGradient>
+	<path class="st3" d="M89.5,16h14v204h-14c-0.8,0-1.5-0.7-1.5-1.5v-201C88,16.7,88.7,16,89.5,16z"/>
+	<circle class="st4" cx="120" cy="48.5" r="21.8"/>
+	<circle id="Ellipse_886_copy_32_" class="st5" cx="120" cy="48.5" r="19.5"/>
+	<linearGradient id="Ellipse_886_copy_1_" gradientUnits="userSpaceOnUse" x1="106.1868" y1="34.6867" x2="133.8133" y2="62.3132">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.6"/>
+		<stop  offset="1" style="stop-color:#DDDDDD;stop-opacity:0"/>
+	</linearGradient>
+	<circle id="Ellipse_886_copy_31_" class="st6" cx="120" cy="48.5" r="19.5"/>
+</g>
 </svg>

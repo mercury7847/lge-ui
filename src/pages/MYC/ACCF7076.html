@@ -6,6 +6,7 @@
 <body>
     <div class="wrap">
         <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>나의 글 보기</span></button>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>나의 글 보기_Q&A</span></button>
     </div>
 
     <!-- 나의 글 보기 -->
@@ -13,5 +14,11 @@
         popupID: 'popup1'
     })
     <!-- //나의 글 보기 -->
+
+    <!-- 나의 글 보기_Q&A [BTOCSITE-6032] -->
+    @@include('./common/popup/ACCF7076_pop2.html', {
+        popupID: 'popup2'
+    })
+    <!-- //나의 글 보기_Q&A [BTOCSITE-6032] -->
 </body>
 </html>

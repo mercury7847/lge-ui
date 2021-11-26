@@ -113,14 +113,36 @@
     }
 }
 // BTOCSITE-372 마이페이지-참여이벤트 리스트 노출 오류 
+/* BTOCSITE-5938-251 모바일 참여 이벤트 > 당첨자 발표 팝업 스크롤 동작 오류 */
 #event-modal {
     max-width:912px;
     .win-popup-wrap {
-        .pop-header { position:absolute; width:90%; padding-left:0; }
-        .pop-header:after { display:none; }
-        .win-btn-close { position:absolute; top: 35px;  }
+        height:100%;
+        .pop-header {
+            position:absolute;
+            padding-left:0;
+            width:calc(100% - 80px);
+            @include mobile{
+                width:calc(100% - 32px);
+            }
+            &:after {
+                display:none;
+            }
+        }
+        @include mobile{
+            .pop-conts{
+                max-height:100%;
+                height:100%;
+            }
+            .tit-area{
+                margin:-40px -16px 32px;
+                padding:48px 16px 30px;
+                height:auto;
+            }
+        }
     }
 }
+/* //BTOCSITE-5938-251 모바일 참여 이벤트 > 당첨자 발표 팝업 스크롤 동작 오류 */
 .popup-wrap {
     display:none;
     position:absolute;
@@ -655,14 +677,22 @@
         }
         /* //20210607 스펙선택 추가 */
         &.no-footer {
+            position:relative;
             max-height:576px + 130px;
-            padding-bottom:48px;
+            padding-bottom:0;
             text-align:left;
             @include mobile {
                 height:calc(100% - 62px);
                 max-height:calc(100% - 62px);
             }
         }
+        &.no-footer:after {
+            content:'';
+            display:block;
+            padding-bottom:48px;
+        }
+
+
         &.support {
             background-color: #fff;
         }

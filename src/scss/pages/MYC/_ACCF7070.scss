@@ -9,7 +9,7 @@
 		font-size:0;
 		li {
 			display:inline-block;
-			width:calc((100% - 72px) / 4);
+			width:calc((100% - 96px) / 5); //BTOCSITE-6032 탭 5개로 변경(Q&A tab 추가)
 			margin-left:24px;
 			&:first-child {
 				margin-left:0;

@@ -96,9 +96,8 @@
                 //
                 var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
                 if(!ignoreOverflow){
-                    $('html, body').css({
-                        overflow:"hidden"
-                    });
+                    // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                    $('body').addClass('scroll-lock');
                 }
             });
 
@@ -216,9 +215,8 @@
 
             var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
             if(!ignoreOverflow){
-                $('html, body').css({
-                    overflow:"visible"
-                });
+                // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                $('body').removeClass('scroll-lock');
             }
                 
                 /*
@@ -302,6 +300,7 @@
                 var arr = (data && data.listData instanceof Array) ? data.listData : [];
                 if(arr.length > 0) {
                     var $list_ul = self.$autoComplete.find('div.keyword-list ul');
+                    var searchItem = arr[0]; //BTOCSITE-5938-316 PC 검색 카테고리 미노출 오류
                     $list_ul.empty();
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(autoCompleteItemTemplate, {"input":item, "text":vcui.string.replaceAll(item, searchedValue, replaceText)}));
@@ -309,12 +308,8 @@
                     self.$autoComplete.show();
                     self.openSearchInputLayer(false);
                     self.$searchSimilar.hide();
-
-                    //모바일
-                    if(window.breakpoint.name == "mobile"){
-                        var searchItem = arr[0];
-                        self.requestSearch(searchItem, false);
-                    }
+                    self.requestSearch(searchItem, false); //BTOCSITE-5938-316 PC 검색 카테고리 미노출 오류
+                    
                 } else {
                     self.hideSearchResultArea();
                     //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기

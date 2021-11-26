@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0040",
+		pageJS: ["libs/slick","components/KRP0040"],
+        pageCSS: ["modules/slick"]
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+			<div class="component-wrap">
+				<section class="component KRP0040">
+					<div class="component-inner">
+						<div class="title">
+							<h2>제품 체험 및 설치</h2>
+						</div>
+                        <div class="withstory-list-slide"> 
+                            @@for ( var i=0; i < 6; i++ ) {
+                            <div class="slide-item">
+                                <div class="slide-box">
+                                    <a href="/html/STC/MKT5006.html">
+                                        <img src="/lg5-common/images/KRP0040/img@3x.jpg" aria-hidden="true" alt="">
+                                        <div class="info-area"> 
+                                            <div class="flag-wrap">
+                                                <span class="flag">가전꿀팁</span>
+                                            </div>
+                                            <p class="info-tit">
+                                                트롬건조 하나면<br>뽀송뽀송한 빨래 완성입니다.
+                                            </p>
+                                            <ul class="info-tag">
+                                                <li>#가을</li>
+                                                <li>#LifeWithLG</li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            }
+                        </div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

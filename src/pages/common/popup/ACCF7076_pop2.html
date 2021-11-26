@@ -1,0 +1,53 @@
+<!-- BTOCSITE-6032 -->
+<article id="@@popupID" class="popup-wrap full">
+    <header class="pop-header">
+        <h1 class="tit"><span>나의 글 보기</span></h1>
+    </header>
+    <section class="pop-conts common-pop mypage">
+		<!-- 210128 수정(구조변경) -->
+		<div class="custom-step-area">
+			<p class="desc">홈페이지를 통해 등록하신 Q&A에 대한 내역 조회를 하실 수 있습니다.</p>
+			<div class="section-wrap">
+				<div class="sects">
+					<div class="section-inner">
+						<!-- 작성 내용 -->
+						<div class="inner-box">
+							<p class="inner-tit">작성 내용</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "구분", "dd" : "Q&A" },
+									{ "dt" : "등록일", "dd" : "2021.10.12" },
+									{ "dt" : "진행상태", "dd" : "<em>답변완료</em>" },
+									{ "dt" : "제목", "dd" : "제목이 출력됩니다." },
+									{ "dt" : "내용", "dd" : "문의글 내용이 출력됩니다." }
+								]
+							})
+						</div>
+						<!-- //작성 내용 -->
+						<!-- 답변 -->
+						<div class="inner-box">
+							<p class="inner-tit">답변</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "답변 내용", "dd" : "답변 내용대로 텍스트 노출합니다. 텍스트 전체 노출합니다." },
+									{ "dt" : "답변일", "dd" : "2021.10.12" }
+								]
+							})
+						</div>
+						<!-- //답변 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //210128 수정(구조변경) -->
+    </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+			<!-- 210312 수정 -->
+            <button type="button" class="btn pink ui_modal_close"><span>닫기</span></button>
+			<!-- //210312 수정 -->
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- //BTOCSITE-6032 -->
