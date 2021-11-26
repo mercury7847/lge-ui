@@ -9,14 +9,14 @@
         <div class="container">
 
             <!-- component KRP0043 -->
-            <div class="component-wrap full" id="pdpQna">
+            <div class="component-wrap full" id="pdp_qna">
                 <!--
                     [component-wrap 옵션]
                     1. 여백
                     .zero-top : 상단여백 없음
                     .zero-btm : 하단여백 없음
                 -->
-                <section class="component KRP0043" data-ajax="/lg5-common/data-ajax/qna/requestQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/requestQnaRead.json" data-delete-ajax="/lg5-common/data-ajax/qna/requestQnaDelete.json" data-login-flag="Y" >
+                <section class="component KRP0043" data-ajax="/lg5-common/data-ajax/qna/retrieveQnaList.json" data-read-ajax="/lg5-common/data-ajax/qna/retrieveQnaDetail.json" data-delete-ajax="" data-login-flag="Y" >
                     <div class="inner">
                         <div class="heading-box">
                             <!-- qnaListTotal -->
@@ -33,11 +33,11 @@
                                         <div class="sort-select-wrap">
                                             <select class="ui_selectbox" name="orderType" id="orderType" title="정렬 기준 선택">
                                                 <option value="all">문의유형 전체</option>
-                                                <option value="product">상품 구성 및 정보 문의</option>
-                                                <option value="guideline">사용방법 문의</option>
-                                                <option value="buying">구매 문의</option>
-                                                <option value="delivery">배송 문의</option>
-                                                <option value="etc">기타</option>
+                                                <option value="PRODUCT_INFO">상품 구성 및 정보 문의</option>
+                                                <option value="HOW_TO_USE">사용방법 문의</option>
+                                                <option value="PURCHASE">구매 문의</option>
+                                                <option value="SHIPPING">배송 문의</option>
+                                                <option value="ETC">기타</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal" data-href="">수정</button>
+                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal">수정</button>
                                                 <button class="del-btn" type="button" data-name="delete" >삭제</button> 
                                             </div>
                                         </div>
@@ -251,7 +251,7 @@
                                             </div>
                                             <div class="btn-wrap">
                                                 <!-- 삭제버튼은 답변대기/완료 모두 화면에 활성화, 답변완료 상태되면 삭제버튼만 활성화 되도록 구현! -->
-                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal" data-href="">수정</button>
+                                                <button class="modi-btn" type="button" data-name="modify" data-control="modal">수정</button>
                                                 <button class="del-btn" type="button" data-name="delete" >삭제</button> 
                                             </div>
                                         </div>
@@ -266,13 +266,13 @@
                             <!-- // Accordion -->
                         </div>
                         <!-- paging -->
-                        <div class="pagination" data-page="1" data-visible-count="5" data-total-count="7"></div>
+                        <div class="pagination" data-page="1" data-visible-count="5" data-total-count="12"></div>
                         <!-- //paging -->
                     </div>
                 </section>
                 
             </div>
-            <!-- //component KRP0014 -->
+            <!-- //component KRP0043 -->
 		</div>
     </div>
 
@@ -288,7 +288,7 @@
                 <!-- .inner s  -->
                 <div class="qna-write">
                     <form action="" method="post" id="submitForm" 
-                        data-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
+                        data-create-ajax="/lg5-common/data-ajax/qna/createQnaAjax.json" data-update-ajax="/lg5-common/data-ajax/qna/updateQnaAjax.json">
                         <div class="section">
                             <div class="section-box">
                                 <div class="form-wrap">
@@ -302,11 +302,11 @@
                                                             <div class="select-wrap half">
                                                                 <select class="ui_selectbox" name="orderType" id="qnaType">
                                                                     <option value="" class="placeholder">문의 유형을 선택해주세요</option>
-                                                                    <option value="product">상품 구성 및 정보 문의</option>
-                                                                    <option value="guideline">사용방법 문의</option>
-                                                                    <option value="buying">구매 문의</option>
-                                                                    <option value="delivery">배송 문의</option>
-                                                                    <option value="etc">기타</option>
+                                                                    <option value="PRODUCT_INFO">상품 구성 및 정보 문의</option>
+                                                                    <option value="HOW_TO_USE">사용방법 문의</option>
+                                                                    <option value="PURCHASE">구매 문의</option>
+                                                                    <option value="SHIPPING">배송 문의</option>
+                                                                    <option value="ETC">기타</option>
                                                                 </select>
                                                             </div>
                                                         </dd>
@@ -442,8 +442,8 @@
                         <div class="sq-area">
                             <div class="sq-list">
                                 <span class="chk-wrap">
-                                    <input type="checkbox" id="secretQna" name="secret">
-                                    <label for="secretQna">비밀 글로 문의하기</label>
+                                    <input type="checkbox" id="privateFlag" name="secret">
+                                    <label for="privateFlag">비밀 글로 문의하기</label>
                                 </span>
                             </div>
                         </div>
