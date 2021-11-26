@@ -9,14 +9,8 @@
             var self = this;
 
             self.$cont = $('.company.container');
-            //self.$selectedModelBar = self.$cont.find('.prod-selected-wrap');
-            //self.$myModelArea = self.$cont.find('.my-product-wrap');
             self.$submitForm = self.$cont.find('#loveSharingForm');
             self.$completeBtns = self.$cont.find('.btn-wrap');
-
-            //self.$stepArea = self.$cont.find('.step-area');
-            //self.$stepModel = self.$cont.find('#stepModel');
-            //self.$stepInput = self.$cont.find('#stepInput');
 
             vcui.require(['ui/validation'], function () {
                 var register = {
@@ -24,7 +18,8 @@
                     userName: {
                         required: true,
                         maxLength: 25,
-                        pattern: /^[가-힣a-zA-Z0-9]+$/,
+                        //pattern: /^[가-힣a-zA-Z0-9]+$/,
+                        pattern: /^[가-힣\s]+$|^[a-zA-Z\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '특수문자는 입력이 불가합니다.'
@@ -34,7 +29,6 @@
                         required: true,
                         minLength: 10,
                         maxLength: 11,
-                        //pattern: /^[0-9]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '휴대폰번호를 입력해주세요.',
                         patternMsg: '휴대폰번호를 정확히 입력해주세요.',
@@ -43,7 +37,7 @@
                         }
                     },
                     //이메일
-                    userEmail:{
+                    userEmail: {
                         required: true,
                         pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         minLength: 1,
@@ -84,13 +78,10 @@
                     //고유번호증
                     groupNumber: {
                         required: true,
-                        minLength: 10,
+                        //maxLength: 10,
                         msgTarget: '.err-block',
                         errorMsg: '고유번호증을 입력해 주세요.',
-                        patternMsg: '정확한 고유번호를 입력해주세요.',
-                        validate : function(value){
-                            return validatePhone(value);
-                        }
+                        patternMsg: '정확한 고유번호를 입력해주세요.'
                     },
                     //사무실 전화번호
                     groupTel: {
@@ -99,10 +90,23 @@
                         maxLength: 11,
                         msgTarget: '.err-block',
                         errorMsg: '전화번호를 정확히 입력해주세요.',
-                        patternMsg: '정확한 휴대폰번호를 입력해주세요.',
-                        validate : function(value){
-                            return validatePhone(value);
-                        }
+                        patternMsg: '정확한 휴대폰번호를 입력해주세요.'
+                    },
+                    //주소
+                    zipCode: {
+                        required: true,
+                        msgTarget: '.address-err-msg',
+                        errorMsg: '정확한 주소를 입력해주세요.'
+                    },
+                    userAddress: {
+                        required: true,
+                        msgTarget: '.address-err-msg',
+                        errorMsg: '정확한 주소를 입력해주세요.'
+                    },
+                    detailAddress: {
+                        required: true,
+                        msgTarget: '.address-err-msg',
+                        errorMsg: '정확한 주소를 입력해주세요.'
                     },
                     //제안 내용
                     content: {
@@ -115,22 +119,19 @@
                 validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
                 self.bindEvent();
 
-
                 self.$cont.find('.ui_fileinput').vcFileinput();
-                //self.$cont.vcSearchModel();
             });
         },
         validatePhone: function(value){
             var self = this;
             var _pattern = new RegExp(/^(010|016|011|017|018|019)\d{3,4}\d{4}$/);
-            console.log(1);
             if( _pattern.test(value) == true) {
                 var _length = value.length;
                 var firstVal = value.substr(0,3);
                 var num4th = value.substr(3,1);
                 var num3 = value.substr(3,3);
                 var num4 = value.substr(3,4);
-                console.log(2);
+
                 function validateNum10(){
                     if( 200<= num3 && num3 <= 899) {
                         return true;
@@ -188,35 +189,6 @@
                 return false;
             }
         },
-        requestComplete: function() {
-            var self = this;
-
-            var url = self.$submitForm.data('ajax');
-            var param = validation.getAllValues();
-            var formData = new FormData();
-
-            for (var key in param) {
-                formData.append(key, param[key]);
-            }
-
-            lgkorUI.showLoading();
-            lgkorUI.requestAjaxFileData(url, formData, function(result) {
-                var data = result.data;
-
-                if (data.resultFlag == 'Y') {
-                    result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
-                    self.$submitForm.submit();
-                } else {
-                    lgkorUI.hideLoading();
-
-                    if (data.resultMessage) {
-                        lgkorUI.alert("", {
-                            title: data.resultMessage
-                        });
-                    }
-                }
-            }, 'POST');
-        },
         bindEvent: function() {
             var self = this;
 
@@ -230,20 +202,39 @@
                 // self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
             });
 
-           /* self.$cont.on('complete', function(e, data) {
-                self.$cont.vcSearchModel('updateSummary', {
-                    product: [data.categoryNm, data.subCategoryNm, data.modelCode],
-                    reset: 'product'
-                });
+            // 특수문자 제거
+            $(document).on('keydown', '#phoneNo, #groupNumber, #groupTel', function(e){
+                if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 110 || e.keyCode == 190) {
+                    e.preventDefault();
+                }
+            });
 
-                self.$completeBtns.show();
-            });*/
+            $(document).on('keyup', 'input[type="number"]', function(e){
+                var $this = $(this);
+                var v = $this.val();
+
+                if( e.keyCode != 8 && e.keyCode != 46) {
+                    if( v != null && v != "") {
+                        $this.data('oldValue', v);
+                    }
+                } else {
+                    $this.data('oldValue', v);
+                }
+            });
+
+            $(document).on('blur', 'input[type="number"]', function(e){
+                var $this = $(this);
+                var v = $this.val();
+                var oldVal = $this.data('oldValue');
+
+                if( v == null || v == "") {
+                    $this.val(oldVal);
+                }
+            });
 
             self.$completeBtns.find('.estimateBtn').on('click', function() {
                 var result = validation.validate();
-
-                console.log("result %o",result)
-
+console.log("result",result);
                 if (result.success == true) {
                     lgkorUI.confirm('', {
                         title:'저장 하시겠습니까?',
@@ -255,15 +246,38 @@
                     });
                 }
             });
+        },
+        requestComplete: function(){
+            var self = this;
 
-            
-            // dash remove
-            $(document).on('keydown', 'input[type="number"]', function(e){
-                if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 110 || e.keyCode == 190) {
-                    e.preventDefault();
+            var url = self.$submitForm.data('ajax');
+            var param = validation.getAllValues();
+            var formData = new FormData();
+
+console.log("param",param);
+
+            for (var key in param) {
+                formData.append(key, param[key]);
+            }
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                var data = result.data;
+
+                if (data.resultFlag == 'Y') {
+                    //result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
+                    self.$submitForm.submit();
+                } else {
+                    lgkorUI.hideLoading();
+
+                    if (data.resultMessage) {
+                        lgkorUI.alert("", {
+                            title: data.resultMessage
+                        });
+                    }
                 }
-            });
-        }
+            }, 'POST');
+        },
     }
 
     $(window).ready(function() {

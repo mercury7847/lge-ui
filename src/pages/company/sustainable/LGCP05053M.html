@@ -82,7 +82,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 	<div class="form-wrap loveSharing">
 
-		<form action="/suggestions-complete" method="post" id="loveSharingForm" name="loveSharingForm" data-ajax="https://www.lge.co.kr/support/suggestionsWrite.lgajax" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+		<form action="/suggestions-complete" method="post" id="loveSharingForm" name="loveSharingForm" data-ajax="https://www.lge.co.kr/lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
 			<!--[S]신청 담당자 정보-->
 			<div class="innder bdb">
 				<h1 class="tit mo-h2">
@@ -96,7 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="userName" name="userName" class="inq-name" value="" maxlength="25" placeholder="담당자 이름 입력" data-format="koreng" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true">
+						<input type="text" id="userName" name="userName" class="inq-name" value="" placeholder="담당자 이름 입력" data-format="koreng">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -109,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="phoneNo" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" inputmode="numeric" data-required="true" numberOnly>
+						<input type="number" id="phoneNo" name="phoneNo" value="" placeholder="'-' 없이 숫자만 입력" inputmode="numeric">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -123,7 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<dd class="conts">
 					<div class="email-conts-wrap">
 						<div class="input-wrap">
-							<input type="text" id="userEmail" name="userEmail" value="" maxlength="200" placeholder="이메일 주소 입력" data-required="true">
+							<input type="text" id="userEmail" name="userEmail" value="" maxlength="200" placeholder="이메일 주소 입력">
 						</div>
 						<div class="btm-more err-block">
 							<p class="err-msg"></p>
@@ -146,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="groupOwner" name="groupOwner" class="inq-name" value="" maxlength="100" placeholder="대표자 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="groupOwner" name="groupOwner" class="inq-name" value="" placeholder="대표자 이름 입력" data-format="koreng">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -159,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="groupName" name="groupName" class="inq-name" value="" maxlength="100" placeholder="단체명 이름 입력" data-format="koreng" data-required="true">
+						<input type="text" id="groupName" name="groupName" class="inq-name" value="" placeholder="단체명 이름 입력" data-format="koreng">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -172,7 +172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="groupNumber" name="groupNumber" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" maxlength="10">
+						<input type="number" id="groupNumber" name="groupNumber" value="" placeholder="'-' 없이 숫자만 입력" inputmode="numeric" maxlength="10">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -185,7 +185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="number" id="groupTel" name="groupTel" value="" placeholder="'-' 없이 숫자만 입력" data-required="true" inputmode="numeric" minlength="9" maxlength="10">
+						<input type="number" id="groupTel" name="groupTel" value="" placeholder="'-' 없이 숫자만 입력" inputmode="numeric">
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -239,7 +239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<span class="chk-wrap"><input type="radio" id="receiptY" name="receipt" value="가능"> <label for="receiptY">가능</label></span>
-					<span class="chk-wrap"> <input type="radio" id="receiptN" name="receipt" value="불가능" checked data-required="true" required> <label for="receiptN">불가능</label></span>
+					<span class="chk-wrap"> <input type="radio" id="receiptN" name="receipt" value="불가능" checked> <label for="receiptN">불가능</label></span>
 				</dd>
 			</dl>
 			<dl class="forms">
