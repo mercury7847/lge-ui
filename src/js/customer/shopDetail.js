@@ -165,7 +165,12 @@
             var url = $(this).attr('href');
             if(url) {
                 //BTOCSITE-5938-280 [IOS 앱] 매장 정보 화면에서 [매장 상담 예약] 선택 반응 없음
-                location.href = url;
+                if(isApp()) {
+                    location.href = url;
+                } else{
+                    window.opener.location.href = url;
+                    window.close();
+                }
             }
         });
 
