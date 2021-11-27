@@ -215,6 +215,8 @@
                         background-color: $color-border;
                         content: '';
                     }
+
+                    &.mo-only { display:none; }
                 }
                 @include mobile {
                     display: block;
@@ -223,7 +225,11 @@
                     padding-top: 12px;
                     border-top: 1px solid $color-border;
                     text-align: left;
+                    &.mo-only { display:block; }
+                    &.pc-only { display:none; }
                 }
+
+
                 &.type2 {
                     align-items: center;
                     margin-top: 0;  
@@ -236,7 +242,7 @@
                     &.rental {
                         @include mobile {
                             display: flex;
-                            justify-content: space-between;
+                            justify-content: flex-end;
                         }
                     }
                     &.sales {
@@ -503,7 +509,7 @@
                 display:inline-block;
                 width: 1px;
                 height: 12px;
-                margin: 4px 0 4px 6px;
+                margin: 4px 6px;
                 background-color: #ddd;
                 vertical-align: middle;
                 @include mobile {
@@ -516,7 +522,7 @@
             .rentalModel {
                 display: inline-block;
                 font-weight: 500;
-                margin:0 6px;
+                margin-right:6px;
                 @include font-small;
                 vertical-align: top;
     
@@ -561,7 +567,6 @@
 
         .review-info {
             display: inline-block;
-            margin-left:6px;
             margin-right: 12px;
             font-size: 0;
             vertical-align: top;
@@ -655,9 +660,12 @@
         .price-info {
             white-space: nowrap;
             .tit {
-                //margin-bottom: 4px;
-                @include font-x-small;
-                color: $color-default;
+                display:inline-block;
+                vertical-align: middle;
+                @include font(16px,26px);
+                color: #666666;
+                font-weight: $font-weight-bold;
+                padding-right:5px;
                 @include mobile {
                     font-size: 13px;
                     line-height: 22px;
@@ -666,7 +674,7 @@
             }
             .price {
                 display: inline-block;
-                vertical-align: bottom;
+                vertical-align: middle;
                 @include font(16px,26px);
                 color: $color-default;
                 font-weight: $font-weight-bold;

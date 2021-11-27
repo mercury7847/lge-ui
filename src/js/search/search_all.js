@@ -25,8 +25,9 @@ if ('scrollRestoration' in history) {
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
                         // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                        '{{#if caresolutionSalesModelCode}}' +
                         '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
-                        // '{{/if}}' +
+                        '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
@@ -65,7 +66,7 @@ if ('scrollRestoration' in history) {
                         // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
                         '{{#if caresolutionSalesModelCode}}' +
                         '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
-                        // '{{/if}}' +
+                        '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
@@ -558,10 +559,10 @@ if ('scrollRestoration' in history) {
                 });
 
                 //연관검색어 리스트 클릭
-                self.$relatedKeywordList.on('click', 'ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
+                // self.$relatedKeywordList.on('click', 'ul li a', function(e){
+                //     e.preventDefault();
+                //     self.searchItem($(this));
+                // });
 
                 //기존입력 검색어 클릭
                 self.$similarText.on('click', function(e){
@@ -574,14 +575,14 @@ if ('scrollRestoration' in history) {
                 });
 
                 //연관검색어 펼치기
-                self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
-                    e.preventDefault();
-                    if(self.$relatedKeywordList.hasClass('open')) {
-                        self.$relatedKeywordList.removeClass('open');
-                    } else {
-                        self.$relatedKeywordList.addClass('open');
-                    }
-                });
+                // self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
+                //     e.preventDefault();
+                //     if(self.$relatedKeywordList.hasClass('open')) {
+                //         self.$relatedKeywordList.removeClass('open');
+                //     } else {
+                //         self.$relatedKeywordList.addClass('open');
+                //     }
+                // });
                 
                 //카테고리 더보기 클릭
                 /*
@@ -635,9 +636,9 @@ if ('scrollRestoration' in history) {
                 });
 
                 //리사이즈 체크
-                $(window).on('resizeend', function(e){   
-                    self.updateRelatedKeywordMoreButton();
-                });
+                // $(window).on('resizeend', function(e){   
+                //     self.updateRelatedKeywordMoreButton();
+                // });
 
                 //스크롤 이벤트
                 $(window).on('scroll', function(e){
@@ -875,23 +876,25 @@ if ('scrollRestoration' in history) {
                     // console.log(inputValue);
                     /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
+                    // -S- BTOCSITE-16 검색 결과 구획 정리 -- 제품탭 이외 삭제
                     //연관 검색어 리스트 갱신
-                    var arr = data.related instanceof Array ? data.related : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        var $list_ul = self.$relatedKeywordList.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
-                        });
-                        self.$relatedKeywordList.show();
+                    // var arr = data.related instanceof Array ? data.related : [];
+                    // if(arr.length > 0) {
+                    //     showResult = true;
+                    //     var $list_ul = self.$relatedKeywordList.find('ul');
+                    //     $list_ul.empty();
+                    //     arr.forEach(function(item, index) {
+                    //         $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
+                    //     });
+                    //     self.$relatedKeywordList.show();
 
-                        self.updateRelatedKeywordMoreButton();
-                    } else {
-                        self.$relatedKeywordList.hide();
-                    }
+                    //     self.updateRelatedKeywordMoreButton();
+                    // } else {
+                    //     self.$relatedKeywordList.hide();
+                    // }
 
-                    self.$relatedKeywordList.removeClass('open');
+                    // self.$relatedKeywordList.removeClass('open');
+                    // -E- BTOCSITE-16 검색 결과 구획 정리 -- 제품탭 이외 삭제
 
                     //noData체크
 
@@ -1273,16 +1276,16 @@ if ('scrollRestoration' in history) {
             },
 
             //연관검색어 더보기 버튼 노출 여부 체크
-            updateRelatedKeywordMoreButton:function () {
-                var self = this;
-                var $list_ul = self.$relatedKeywordList.find('ul');
-                var $li = $list_ul.find('>li:eq(0)');
-                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
-                    self.$relatedKeywordMobileMoreButton.show();
-                } else {
-                    self.$relatedKeywordMobileMoreButton.hide();
-                }    
-            },
+            // updateRelatedKeywordMoreButton:function () {
+            //     var self = this;
+            //     var $list_ul = self.$relatedKeywordList.find('ul');
+            //     var $li = $list_ul.find('>li:eq(0)');
+            //     if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+            //         self.$relatedKeywordMobileMoreButton.show();
+            //     } else {
+            //         self.$relatedKeywordMobileMoreButton.hide();
+            //     }    
+            // },
 
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
