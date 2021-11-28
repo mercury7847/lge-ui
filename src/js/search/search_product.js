@@ -23,9 +23,8 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
-                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                        '{{#if caresolutionSalesModelCode}}' +
-                        '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
+                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                            '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
                         '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
@@ -103,9 +102,8 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
-                        // '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                        '{{#if caresolutionSalesModelCode}}' +
-                        '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
+                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                            '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
                         '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
