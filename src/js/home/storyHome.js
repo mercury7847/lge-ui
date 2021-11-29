@@ -623,6 +623,7 @@
         var boxmap = [];
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
+        /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
         item.find('.flexbox').each(function(idx, box){
             var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
             var boxheight = $('.flexbox').height();
@@ -634,13 +635,13 @@
                     lastbox = boxmap[i][leng-1];
 
                     contype = lastbox.data('contentsType');
-                    // BTOCSITE-6881 
+                    // BTOCSITE-6881
                     if(window.innerWidth < 768){
                         boxheight = 287.5;
                     }else{
                         boxheight = boxwidth * 1.25;
                     }
-                    // BTOCSITE-6881 
+                    // BTOCSITE-6881
 
                     lasty = lastbox.position().top + boxheight + status.distance;
                     if(lasty < boxtop - 40){
@@ -678,6 +679,7 @@
             maxBottom = Math.max(maxBottom, bottom);
             $('.flexbox').css('height', boxheight);
         });
+        /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
 
         item.find('.flexbox-wrap').height(maxBottom);
     }
@@ -697,7 +699,7 @@
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
         }else{
-            while(boxwidth < 250){ //BTOCSITE-8513
+            while(boxwidth < 310){
                 rawnum--;
                 distances = distance * (rawnum-1);
                 boxwidth = parseInt((wrapwidth-distances)/rawnum);

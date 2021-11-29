@@ -800,6 +800,7 @@
                     }
                 }
             }
+            /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             &.image {
                 overflow: hidden;
                 .visual-area{
@@ -811,7 +812,6 @@
                         overflow: hidden;
                     }
                 }
-                //BTOCSITE-8513
                 img{
                     position: absolute;
                     top: 0;
@@ -872,7 +872,7 @@
                     padding-top:34px;
                     @include mobile{
                         padding:10px 12px;
-                        height: 108px;
+                        height: 113px;
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
@@ -919,6 +919,7 @@
                     }
                 }
             }
+            /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             &.review {
                 box-shadow: none;
 
