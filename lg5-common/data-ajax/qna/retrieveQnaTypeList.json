@@ -1,0 +1,20 @@
+{
+    "data": [{
+        "code": "PRODUCT_INFO",
+        "value": "상품 구성 및 정보"
+    }, {
+        "code": "HOW_TO_USE",
+        "value": "사용방법"
+    }, {
+        "code": "PURCHASE",
+        "value": "구매"
+    }, {
+        "code": "SHIPPING",
+        "value": "배송"
+    }, {
+        "code": "ETC",
+        "value": "기타"
+    }],
+    "message": "",
+    "status": "success"
+}
