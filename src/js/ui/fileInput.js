@@ -4,25 +4,33 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
     var selectFiles = [],
         totalSize = 0;
 
-    var message = {
-        length: '첨부 파일은 최대 3개까지 가능합니다.',
-        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
-        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
-        size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다'
-    }
+    // var message = {
+    //     length: '첨부 파일은 최대 3개까지 가능합니다.',
+    //     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+    //     format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+    //     size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다'
+    // }
 
     var FileInput = core.ui('FileInput', {
-        bindjQuery: 'fileinput',
+        bindjQuery: 'fileInput',
         defaults: {
             regex: /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,
             format: 'jpg|jpeg|png|gif',
             totalSize: '10000000',
             maxLength: 3,
             templateFileListItem : '<li><span class="file-name">{{name}}</span><button type="button" class="btn-del"><span class="blind">삭제</span></button></li>',
-            templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>'
+            templateAlert: '<article id="fileAlert" class="lay-wrap"><section class="lay-conts"><h6>{{message}}</h6></section><div class="btn-wrap laypop"><button type="button" class="btn pink ui_modal_close"><span>확인</span></button></div></article>',
+            message: {
+                length: '첨부 파일은 최대 3개까지 가능합니다.',
+                name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+                size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다'
+            }
         },
         initialize: function initialize(el, options) {
             var self = this;
+
+            console.log(333);
 
             if (self.supr(el, options) === false) {
                 return;
@@ -85,7 +93,7 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
                 tmpl;
 
             tmpl = vcui.template(self.options.templateAlert, {
-                message: message[msg]
+                message: self.options.message[msg]
             });
 
             $('body').append(tmpl);

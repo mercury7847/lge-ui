@@ -41,7 +41,6 @@
 <script src="https://wwwdev50.lge.co.kr/lg5-common/js/company/disclosure.min.js"></script>
 
 <script src="https://wwwdev50.lge.co.kr/lg5-common/js/search/integratedSearch.min.js" async=""></script>
-<script src="https://wwwdev50.lge.co.kr/lg5-common/js/app.common.min.js"></script>
 
 
 
@@ -73,6 +72,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!--[S]BTOCSITE-7329 회사소개 내 사랑나눔 요청 페이지 제작의 건-->
 <!--<script src="/lg5-common/js/company/loveSharingForm.min.js"></script>--> <!--절대경로로 수정필요-->
+<script src="https://www.lge.co.kr/lg5-common/js/caresolution/addressManagement.min.js"></script>
 <script src="../../../js/company/loveSharingForm.js"></script> <!--로컬 작업용-->
 
 <div class="container company">
@@ -194,25 +194,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="groupAddress" class="req">주소<span class="blind">필수입력</span></label>
+					<label for="zipCode" class="req">주소<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="addr-box-wrap">
 						<div class="box">
 							<div class="input-wrap">
-								<input type="text" id="groupAddress" class="addr1" value="" placeholder="우편번호" name="addr1" readonly data-required="true">
+								<input type="text" name="zipCode" id="zipCode" class="addr1" value="" placeholder="우편번호" readonly data-required="true">
 							</div>
 							<div class="cell">
-								<button type="button" class="btn" id="inp08">
+								<button type="button" class="btn btn-address">
 									<span>주소 찾기</span>
 								</button>
 							</div>
 						</div>
 						<div class="input-wrap">
-							<input type="text" class="addr2" value="" placeholder="기본 주소" name="addr2" readonly data-required="true">
+							<input type="text" name="userAddress" id="userAddress" class="addr2" value="" placeholder="기본 주소" readonly data-required="true">
 						</div>
 						<div class="input-wrap">
-							<input type="text" name="addr3" value="" maxlength="300" placeholder="상세 주소 입력" data-required="true">
+							<input type="text" name="detailAddress" id="detailAddress" value="" maxlength="300" placeholder="상세 주소 입력" readonly data-required="true">
 						</div>
 						<div class="btm-more err-block">
 							<p class="err-msg"></p>
@@ -247,14 +247,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<label for="file-upload" class="req">고유번호증 사본첨부<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
-					<div class="file-box">
+					<div class="file-box ui_fileAttachInput">
 						<span class="file-input">
 							<div class="box">
 								<div class="input-wrap">
 									<input type="text" class="addr2 file-label" value="" placeholder="" name="file-upload" readonly data-required="true">
 								</div>
 								<div class="cell">
-									<label for="file-upload" class="btn ui_fileinput">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload"></label>
+									<label for="file-upload" class="btn">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload"></label>
 								</div>
 							</div>
 						</span>
@@ -310,7 +310,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<input type="text" class="addr2 file-label" value="" placeholder="" name="file-upload" readonly data-required="true">
 								</div>
 								<div class="cell">
-									<label for="file-upload" class="btn ui_fileinput">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload2"></label>
+									<label for="file-upload" class="btn">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload2"></label>
 								</div>
 							</div>
 						</span>

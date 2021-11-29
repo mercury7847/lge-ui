@@ -8,6 +8,7 @@
         init: function() {
             var self = this;
 
+            self.addressFinder = new AddressFind();
             self.$cont = $('.company.container');
             self.$submitForm = self.$cont.find('#loveSharingForm');
             self.$completeBtns = self.$cont.find('.btn-wrap');
@@ -119,7 +120,21 @@
                 validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
                 self.bindEvent();
 
-                self.$cont.find('.ui_fileinput').vcFileinput();
+
+                console.log(111);
+
+                self.$cont.find('.ui_fileinput').vcFileInput();
+
+                // self.$cont.find('.ui_fileinput').vcFileInput({
+                //     format: 'jpg|jpeg|png|gif|xlsx|hwp|pptx|ppt|psd',
+                //     totalSize: '2000000',
+                //     maxLength: 1,
+                //     message: {
+                //         name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.!!',
+                //         format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다!!!!.',
+                //         size: '첨부파일 용량은 2MB 이내로 등록 가능합니다.'
+                //     }
+                // });
             });
         },
         validatePhone: function(value){
@@ -230,6 +245,17 @@
                 if( v == null || v == "") {
                     $this.val(oldVal);
                 }
+            });
+
+            // 주소 찾기 팝업
+            self.$cont.find('.btn-address').on('click', function() {
+                self.addressFinder.open(function(data) {
+                    var address = data.userSelectedType == 'R' ? data.roadAddress : data.jibunAddress;
+
+                    self.$cont.find('#zipCode').val(data.zonecode);
+                    self.$cont.find('#userAddress').val(address);
+                    self.$cont.find('#detailAddress').val('').prop('readonly', false);
+                });
             });
 
             self.$completeBtns.find('.estimateBtn').on('click', function() {
