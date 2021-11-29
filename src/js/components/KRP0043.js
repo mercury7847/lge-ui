@@ -92,7 +92,7 @@
             self.$deleteBtn = self.$qnaType.find('.del-btn');
             
             self.$nodata = self.$pdpQna.find('.no-data-message');
-            self.$pagination = self.$pdpQna.find('.pagination').vcPagination();
+            self.$pagination = self.$pdpQna.find('.pagination').vcPagination({scrollTop : 'noUse'});
 
             //등록하기 팝업
             self.$writePopup = $('#popupWrite');
