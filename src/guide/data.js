@@ -123,6 +123,9 @@ var res = {
 				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
 				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""],
 				//BTOCSITE-7314 PDP > 프로모션 배너 구좌 추가 요청 (+CMS Admin) : KRP0042 신규작업분 추가
+				// BTOCSITE-6632 PDP 컨텐츠 개선
+				"KRP0040 PDP Product experience Installation [KRP0040]" : ["/html/components/KRP0040.html","",""],
+				"KRP0041 PDP  Product instructions [KRP0041]" : ["/html/components/KRP0041.html","",""],
 				"KRP0042 PDP promotion banner [KRP0042]" : ["/html/components/KRP0042.html","",""],
 				//BTOCSITE-6032 PDP에 Q&A게시판 생성 요청
 				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""]
