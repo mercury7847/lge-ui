@@ -30,8 +30,6 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
         initialize: function initialize(el, options) {
             var self = this;
 
-            console.log(333);
-
             if (self.supr(el, options) === false) {
                 return;
             };
@@ -48,7 +46,8 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
         },
         _checkFileName: function _checkFileName(file) {
             var name = file.name.split('.').slice(0,-1).join('.') || file.name + '';
-            return !this.options.regex.test(name);
+            //return this.options.regex.test(name);
+            return name.match(this.options.regex) !== null;
         },
         _checkFileSize: function _checkFileSize(file) {
             return totalSize + file.size <= this.options.totalSize

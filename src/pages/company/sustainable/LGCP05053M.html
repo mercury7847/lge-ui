@@ -258,16 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 							</div>
 						</span>
-						<ul class="file-lists">
-							<li>
-								<span class="file-name">test_img_001.jpg</span>
-								<button type="button" class="btn-del"><span class="blind">삭제</span></button>
-							</li>
-							<li>
-								<span class="file-name">test_img_001.jpg</span>
-								<button type="button" class="btn-del"><span class="blind">삭제</span></button>
-							</li>
-						</ul>
+						<ul class="file-lists"></ul>
 					</div>
 					<ul class="bullet-list">
 						<li class="b-txt">최대 2MB까지 등록 가능합니다.</li>
@@ -314,16 +305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 							</div>
 						</span>
-						<ul class="file-lists">
-							<li>
-								<span class="file-name">test_img_001.jpg</span>
-								<button type="button" class="btn-del"><span class="blind">삭제</span></button>
-							</li>
-							<li>
-								<span class="file-name">test_img_001.jpg</span>
-								<button type="button" class="btn-del"><span class="blind">삭제</span></button>
-							</li>
-						</ul>
+						<ul class="file-lists"></ul>
 					</div>
 					<ul class="bullet-list">
 						<li class="b-txt">사업명, 사업기간, 사업목적, 사업목표, 세부프로그램 내용, 사업예산 반드시 포함</li>
@@ -379,11 +361,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .form-wrap.loveSharing .forms .conts .input-wrap {width:100%}
 	.company .form-wrap.loveSharing .forms .conts .phone-input-wrap {width:320px;height:48px;display:inline-block}
 	.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .email-input-wrap {width:320px;display:inline-block}
+	.company .form-wrap.loveSharing .forms .btn {min-width:78px;}
 	.company .form-wrap.loveSharing .rdo-wrap input+label {margin-right:30px}
 	.company .form-wrap.loveSharing .chk-wrap input+label {margin-right:30px}
 	.company .form-wrap.loveSharing .btn-wrap.pc-only {width:100%;margin-top:64px;text-align:center}
 	.company .form-wrap.loveSharing .btn-wrap.mo-only {display:none}
+	.company .form-wrap.loveSharing .file-box {position:relative}
 	.company .form-wrap.loveSharing .file-box .file-input {width:100%;}
+	.company .form-wrap.loveSharing .file-box .file-lists {position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
+	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:12px 24px;background:#ededed;}
 
 	/*mobile*/
 	@media screen and (max-width:768px) {

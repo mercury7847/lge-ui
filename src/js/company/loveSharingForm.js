@@ -19,8 +19,7 @@
                     userName: {
                         required: true,
                         maxLength: 25,
-                        //pattern: /^[가-힣a-zA-Z0-9]+$/,
-                        pattern: /^[가-힣\s]+$|^[a-zA-Z\s]+$/,
+                        pattern: /^[가-힣a-zA-Z0-9]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '특수문자는 입력이 불가합니다.'
@@ -67,7 +66,7 @@
                         pattern: /^[가-힣a-zA-Z0-9]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
-                        patternMsg: '한글 또는 영문만 입력 가능합니다.'
+                        patternMsg: '특수문자는 입력이 불가합니다.'
                     },
                     //단체명
                     groupName: {
@@ -120,21 +119,19 @@
                 validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
                 self.bindEvent();
 
+                self.$cont.find('.ui_fileinput').vcFileInput({
+                    regex: /^.+$/gi,
+                    format: 'jpg|jpeg|png|gif|xlsx|hwp|pptx|ppt|psd|txt|docx|zip|html|pdf',
+                    totalSize: '2000000',
+                    maxLength: 1,
+                    message: {
+                        length: '첨부 파일은 최대 1개까지 가능합니다.',
+                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.!!!',
+                        format: '파일 형식을 확인해 주세요.',
+                        size: '첨부파일 용량은 2MB 이내로 등록 가능합니다.'
+                    }
+                });
 
-                console.log(111);
-
-                self.$cont.find('.ui_fileinput').vcFileInput();
-
-                // self.$cont.find('.ui_fileinput').vcFileInput({
-                //     format: 'jpg|jpeg|png|gif|xlsx|hwp|pptx|ppt|psd',
-                //     totalSize: '2000000',
-                //     maxLength: 1,
-                //     message: {
-                //         name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.!!',
-                //         format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다!!!!.',
-                //         size: '첨부파일 용량은 2MB 이내로 등록 가능합니다.'
-                //     }
-                // });
             });
         },
         validatePhone: function(value){
