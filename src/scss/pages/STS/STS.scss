@@ -617,16 +617,12 @@
     .flexbox-wrap {
         position: relative;
         font-size: 0;
+        //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
         .flexbox:not(.tag-area) {
             display: inline-block;
-            //height: 409px; //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
             vertical-align: top;
-            @include tablet {
-            }
             @include mobile{
-                //height: 287.5px; //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
                 margin-top: 8px;
-                // padding:0 4px;
                 padding:0;
 
             }
@@ -641,20 +637,19 @@
             }
         }
         .box {
+            /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             position: relative;
             border-radius: 8px;
             background-color: $color-bg-wt;
             box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
-            height: 100%; //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
-            @include mobile{
-                //height: 287.5px; //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
-            }
+            height: 100%;
             &:not(.review){
                 @include mobile {
                     display: flex;
                     flex-direction:column;
                 }
             }
+            /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             .flag-wrap + .card-title{margin-top: 8px;}
             .card-title + .tag-wrap{
                 margin-top:28px;
@@ -836,25 +831,6 @@
                         height: 20px;
                     }
                 }
-                //@media screen and (min-width: 1058px) {
-                    //.visual-area {
-                        //overflow: hidden;
-                        //height: 486px;
-                        //.image {
-                        //    display: block;
-                        //    position: relative;
-                        //    height: 100%;
-                        //    img {
-                        //        position: absolute;
-                        //        top: 50%;
-                        //        left: 50%;
-                        //        transform: translate(-50%, -50%);
-                        //        width: auto;
-                        //        height: 100%;
-                        //    }
-                        //}
-                    //}
-                //}
                 .card-title + .tag-wrap{
                     margin-top:16px;
                     @include mobile{
@@ -872,7 +848,7 @@
                     padding-top:34px;
                     @include mobile{
                         padding:10px 12px;
-                        height: 113px;
+                        height: 108px;
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
@@ -905,13 +881,6 @@
                                     }
                                     &:first-child{
                                         display:block;
-                                        a{
-                                            // overflow: hidden;
-                                            // text-overflow: ellipsis;
-                                            // display: block;
-                                            // -webkit-line-clamp: 1;
-                                            // width: 99%;
-                                        }
                                     }
                                 }
                             }
