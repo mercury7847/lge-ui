@@ -175,10 +175,8 @@
 
             //삭제하기
             self.$qnaType.find('.del-btn').off('click').on('click', function(){
-                var self = this;
-                var modelId = self.$dataModelId;
+                var modelId = $('.KRP0043').attr('data-model-id');
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
-                console.log("삭제" + self);
                 lgkorUI.confirm('', {
                     title:'게시물을 삭제하시겠습니까? <br> 답변이 작성된 경우 답변도 같이 삭제됩니다.', 
                     cancelBtnName: '아니오', okBtnName: '예', 
@@ -190,20 +188,18 @@
 
             //문의하기 
             self.$reqBtn.on('click', function(){
-                var loginChk = self.$qnaType.attr('data-login-flag');
                 var mode = self.$reqBtn.attr('data-name');
                 console.log(mode);
-                self.requestQnaReadPop({"mode":mode,"loginChk":loginChk});
+                self.requestQnaReadPop({"mode":mode});
                 
             });
 
             //수정하기
             self.$qnaType.find('.modi-btn').off('click').on('click', function(){
-                var loginChk = self.$qnaType.attr('data-login-flag');
                 var mode = self.$modifyBtn.attr('data-name');
                 var modelId = self.$dataModelId;
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
-                self.requestQnaReadPop({"mode":mode,"loginChk":loginChk,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
+                self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
 
             self.$qnaType.find('.underline').off('click').on('click', function(){
@@ -291,8 +287,7 @@
         },
         // qna-read-popup - get
         requestQnaReadPop : function(param) {
-            console.log("QnA 조회 팝업 - API request !!");            
-            console.log("loginChk 초기값 " + param.loginChk);
+            console.log("QnA 조회 팝업 - API request !!");
             var self = this;
             
             //수정하기용, 문의하기일땐 READ API거칠 필요 없음
@@ -307,8 +302,8 @@
                     self.$writeDesc.val('');
                     self.$secretChkBtn.attr("checked",false);
                     $('#popupWrite').find('.pop-header > .tit > span').html("문의하기");
-                    $('#cusomtSelectbox_9_button > a > span.ui-select-text').html("문의 유형을 선택해주세요");
-                    $('#cusomtSelectbox_9_menu > div > ul > li').eq(0).addClass("on");
+                    $('#cusomtSelectbox_58_button > a > span.ui-select-text').html("문의 유형을 선택해주세요");
+                    $('#cusomtSelectbox_58_menu > div > ul > li').eq(0).addClass("on");
 
                     if($('#popupWrite').hasClass='modify') {
                         $('#popupWrite').removeClass('modify');
@@ -316,11 +311,11 @@
                     $('#popupWrite').addClass(param.mode);
                     
                     $('.ico-req').attr('data-href','#popupWrite');
-                    //$('#popupWrite').vcModal();
+
                 } else {
                     // modify
                     console.log("modify");
-
+                    
                     if($('#popupWrite').hasClass='write') {
                         $('#popupWrite').removeClass('write');
                     }
@@ -328,7 +323,6 @@
                     $('#popupWrite').find('.pop-header > .tit > span').html("수정하기");
 
                     $(param.selector).attr('data-href','#popupWrite');
-                    $('#popupWrite').data("param",param);
 
                     lgkorUI.requestAjaxData(ajaxUrl,{},function(result){
                         var data = result.data;
@@ -340,9 +334,9 @@
 
                             self.$writeTitle.val(qTitle);
                             self.$writeDesc.val(qContent);
-                            var qTypeList = $('#cusomtSelectbox_9_menu > div > ul > li');
-                            var qTypeListItem = $('#cusomtSelectbox_9_menu > div > ul > li > a');
-                            var qTypeBtnSelectedText = $('#cusomtSelectbox_9_button > a > span.ui-select-text');
+                            var qTypeList = $('#cusomtSelectbox_58_menu > div > ul > li');
+                            var qTypeListItem = $('#cusomtSelectbox_58_menu > div > ul > li > a');
+                            var qTypeBtnSelectedText = $('#cusomtSelectbox_58_button > a > span.ui-select-text');
 
                             if(secretFlag === "Y") {
                                 self.$secretChkBtn.attr("checked", true);
@@ -363,8 +357,8 @@
                         }
                     },"POST");
                 }
+                $('#popupWrite').data("param",param);
             } else {
-                console.log("로그인 체크값 : " + param.loginChk);
                 lgkorUI.confirm('', {
                     title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
                     cancelBtnName: '아니오', okBtnName: '예', 
@@ -474,14 +468,20 @@
             var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             console.log(ajaxUrl);
             if(lgkorUI.stringToBool(loginFlag)) {
-                lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result){
-                    var data = result.data;
-    
-                    if(result.status == "success"){
-    
+                lgkorUI.requestAjaxData(ajaxUrl,param, function(result) {
+                    if(result.status === 'success') {
+                        //if(result.returnUrl) location.href = result.returnUrl;
+                        lgkorUI.alert("", {
+                            title: "게시글이 삭제되었습니다."
+                            
+                        });
+                        location.reload();
+                    } else {
+                        lgkorUI.alert("", {
+                            title: result.message
+                        });
                     }
-                    console.log("삭제 데이터값 : "+data);
-                }, 'POST');
+                },"POST");
             } else {
                 //비로그인
                 lgkorUI.confirm('', {
@@ -506,7 +506,6 @@
         validationChk : function () {
 
         }        
-        
     };
 
 $(document).ready(function(){
