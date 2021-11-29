@@ -625,6 +625,8 @@
 
         item.find('.flexbox').each(function(idx, box){
             var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
+            var boxheight = $('.flexbox').height();
+            var boxwidth = $('.flexbox').width();
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
@@ -636,7 +638,7 @@
                     if(window.innerWidth < 768){
                         boxheight = 287.5;
                     }else{
-                        boxheight = 409;
+                        boxheight = boxwidth * 1.25;
                     }
                     // BTOCSITE-6881 
 
@@ -655,7 +657,7 @@
             if(window.innerWidth < 768){
                 boxheight = 287.5;
             }else{
-                boxheight = 409;
+                boxheight = boxwidth * 1.25;
             }
             // BTOCSITE-6881
            
@@ -670,9 +672,11 @@
             boxmap[raw][col] = $(box);
 
             var bottom = $(box).position().top + boxheight;
+            console.log('boxwidth' +boxwidth)
             console.log('boxheight' +boxheight)
-            console.log(bottom)
+            console.log('bottom' +bottom)
             maxBottom = Math.max(maxBottom, bottom);
+            $('.flexbox').css('height', boxheight);
         });
 
         item.find('.flexbox-wrap').height(maxBottom);
@@ -693,7 +697,7 @@
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
         }else{
-            while(boxwidth < 250){
+            while(boxwidth < 250){ //BTOCSITE-8513
                 rawnum--;
                 distances = distance * (rawnum-1);
                 boxwidth = parseInt((wrapwidth-distances)/rawnum);
