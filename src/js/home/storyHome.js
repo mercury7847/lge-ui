@@ -693,7 +693,7 @@
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
         }else{
-            while(boxwidth < 310){
+            while(boxwidth < 250){
                 rawnum--;
                 distances = distance * (rawnum-1);
                 boxwidth = parseInt((wrapwidth-distances)/rawnum);
