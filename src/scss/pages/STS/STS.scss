@@ -649,7 +649,6 @@
                     flex-direction:column;
                 }
             }
-            /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             .flag-wrap + .card-title{margin-top: 8px;}
             .card-title + .tag-wrap{
                 margin-top:28px;
@@ -663,7 +662,6 @@
                 .visual-area {
                     position: relative;
                     border-radius: 8px 8px 0 0;
-                    height: 184px;
                     overflow: hidden;
                     @include mobile{
                         height: auto;
@@ -679,39 +677,6 @@
                         border-radius: 8px 8px 0 0;
                         background-color: rgba(0,0,0,.2);
                         content: '';
-                    }
-                    .image{
-                        img {
-                            position: absolute;
-                            top: 0;
-                            left: 50%;
-                            -ms-transform: translate(-50%, 0%);
-                            transform: translate(-50%, 0%);
-                            max-width: none;
-                            width: 100%;
-                            background-position: center center;
-                            min-width: 100%;
-                            min-height: 100%;
-                            height: auto;
-                            @include tablet{
-                                border-radius: 8px 8px 0 0;
-                            }
-                            @include mobile{
-                                object-fit: cover;
-                                height: 100%;
-                                width: 100%;
-                                position: relative;
-                                top: 0;
-                                left: auto;
-                                right:0;
-                                -ms-transform: translate(0, 0);
-                                transform: translate(0, 0);
-                                max-width: none;
-                                background-position: center center;
-                                min-width: auto;
-                                min-height: auto;
-                            }
-                        }
                     }
                 }
                 .btn-video {
@@ -773,6 +738,7 @@
                     }
                 }
             }
+            /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
             &.image,
             &.review {
                 .visual-area {
@@ -802,7 +768,6 @@
                     @include mobile{
                         position: relative;
                         height: auto;
-                        //max-height: 200px; //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -920,7 +885,7 @@
             flex:1;
             img {
                 width: 100%;
-                border-radius: 8px;
+                //border-radius: 8px;
             }
         }
         .text-area {
