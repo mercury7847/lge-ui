@@ -477,20 +477,16 @@
                 }
 
                 // 주요 서비스 
-                self.main_service.el.slider.on('init', function(event, slick){  
-                    // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
-                    if($(self.main_service.el.slider).find(".slick-arrow").length > 0){
+                self.main_service.el.slider.slick(self.main_service.config);
+                self.main_service.el.slider.off('DOMNodeInserted').on('DOMNodeInserted', function(e) {
+                    var element = e.target;
 
-                        setTimeout(function(){
-                            $(self.main_service.el.slider).find(".slick-arrow").each(function(index){
-                                console.log("ini %o",this);
-                                $(this).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
-                            });
-                        },1000)
+                    if($(element).is('.slick-arrow')) {
+                        var index = $(element).hasClass('slick-prev') ? 0 : 1;
+                        // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
+                        $(element).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
                     }
                 });
-
-                self.main_service.el.slider.slick(self.main_service.config);
 
 
                 //수상목록
