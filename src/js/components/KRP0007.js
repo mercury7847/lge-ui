@@ -1093,7 +1093,7 @@
 
                 /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
                 item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
-                item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20211201') // 2021.11.1 00:00 ~ 2021.11.30 24:00 //BTOCSITE-7388 롯데카드 12개월 무이자 할인 적용기간
+                item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20220101') // 2021.11.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-9006 롯데카드 12개월 무이자 할인 적용기간
 
                 
                 return vcui.template(productItemTemplate, item);
