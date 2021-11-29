@@ -635,13 +635,12 @@
                     lastbox = boxmap[i][leng-1];
 
                     contype = lastbox.data('contentsType');
-                    // BTOCSITE-6881
-                    if(window.innerWidth < 768){
-                        boxheight = 287.5;
-                    }else{
+
+                    if(window.innerWidth < 768 && window.innerWidth > 480){
                         boxheight = boxwidth * 1.25;
+                    }else{
+                        boxheight = boxwidth * 1.25 + 50;
                     }
-                    // BTOCSITE-6881
 
                     lasty = lastbox.position().top + boxheight + status.distance;
                     if(lasty < boxtop - 40){
@@ -654,13 +653,12 @@
 
             overflow = "auto";
             contype = $(box).data('contentsType');
-            // BTOCSITE-6881
-            if(window.innerWidth < 768){
-                boxheight = 287.5;
-            }else{
+            
+            if(window.innerWidth < 768 && window.innerWidth > 480){
                 boxheight = boxwidth * 1.25;
+            }else{
+                boxheight = boxwidth * 1.25 + 50;
             }
-            // BTOCSITE-6881
            
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
@@ -673,9 +671,6 @@
             boxmap[raw][col] = $(box);
 
             var bottom = $(box).position().top + boxheight;
-            console.log('boxwidth' +boxwidth)
-            console.log('boxheight' +boxheight)
-            console.log('bottom' +bottom)
             maxBottom = Math.max(maxBottom, bottom);
             $('.flexbox').css('height', boxheight);
         });
@@ -697,7 +692,6 @@
             distance = 8;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
-
         }else{
             while(boxwidth < 310){
                 rawnum--;
