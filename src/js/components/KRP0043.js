@@ -1,4 +1,3 @@
-// ★ 로그인 체크 플래그, 개발 컴포넌트 붙으면 self.isLogin 으로 다 변경하기!
 // ★ 공지사항 관련 게시글은 별도의 어드민 api개발이 완료된 이 후 , 따로 api로 그린다고함. cms에서 붙임
 (function (){
     var qnaListTmpl = 
@@ -53,6 +52,7 @@
 
     var qnaPdp = {
         init : function (){
+            loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var self = this;
 
             vcui.require(['ui/pagination'], function (){
@@ -61,8 +61,7 @@
             });
         },
         settings : function (){
-            var self = this;
-            self.isLogin = lgkorUI.isLogin;
+            var self = this;            
             
             self.$pdpQna = $('#pdp_qna');
             
@@ -297,11 +296,11 @@
             var self = this;
             
             //수정하기용, 문의하기일땐 READ API거칠 필요 없음
-            var ajaxUrl = self.$qnaType.data('readAjax') + "?modelID=" + param.modelId +"&questionNo="+ param.queNo;
+            var ajaxUrl = self.$qnaType.data('readAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             console.log(ajaxUrl);
 
             //일반 case
-            if(self.isLogin){
+            if(lgkorUI.stringToBool(loginFlag)) {
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
@@ -317,6 +316,7 @@
                     $('#popupWrite').addClass(param.mode);
                     
                     $('.ico-req').attr('data-href','#popupWrite');
+                    //$('#popupWrite').vcModal();
                 } else {
                     // modify
                     console.log("modify");
@@ -361,7 +361,7 @@
                         } else {
                             console.log("fail");
                         }
-                    });
+                    },"POST");
                 }
             } else {
                 console.log("로그인 체크값 : " + param.loginChk);
@@ -471,9 +471,9 @@
         requestQnaDelete :function(param) {
             console.log("QnA 삭제하기 - API request !!");
             var self = this;
-            var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelID=" + param.modelId +"&questionNo="+ param.queNo;
+            var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             console.log(ajaxUrl);
-            if(self.isLogin){
+            if(lgkorUI.stringToBool(loginFlag)) {
                 lgkorUI.requestAjaxDataPost(ajaxUrl,param,function(result){
                     var data = result.data;
     
@@ -481,7 +481,7 @@
     
                     }
                     console.log("삭제 데이터값 : "+data);
-                });
+                }, 'POST');
             } else {
                 //비로그인
                 lgkorUI.confirm('', {
@@ -505,9 +505,12 @@
         },
         validationChk : function () {
 
-        }
+        }        
         
     };
 
-    qnaPdp.init();
+$(document).ready(function(){
+        qnaPdp.init();
+})
+
 })();
