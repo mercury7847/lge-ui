@@ -48,8 +48,8 @@
                 self.bindEvents();
 
                 /* 초기 데이터 출력 */
-                self.requestCouponData('info', 1);
-                self.requestCouponData('coupon', 1);
+                self.requestCareLatterData('info', 1);
+                self.requestCareLatterData('coupon', 1);
 
             },
             setting: function() {
@@ -61,17 +61,21 @@
                 self.$contents = $('div.lnb-contents');
                 self.$tab = self.$contents.find('div.ui_tab');
 
-                self.$tabCouponOn = self.$contents.find('#tab-info');
-                self.$tabCouponEnd = self.$contents.find('#tab-coupon');
-                self.$couponOnList = self.$tabCouponOn.find('div.cl_list ul');
-                self.$couponEndList = self.$tabCouponEnd.find('div.cl_list ul');
-                self.$couponOnMore = self.$tabCouponOn.find('button.btn-moreview');
-                self.$couponOnMore.data("page", 2);
-                self.$couponOnMore.data("tabIndex", 0);
+                self.$tabInfo = self.$contents.find('#tab-info');
+                self.$tabCoupon = self.$contents.find('#tab-coupon');
 
-                self.$couponEndMore = self.$tabCouponEnd.find('button.btn-moreview');
-                self.$couponEndMore.data("page", 2);
-                self.$couponEndMore.data("tabIndex", 1);
+                self.$cl_detail_info = self.$contents.find('.cl_info_detail_bTn');
+                self.$cl_detail_coupon = self.$contents.find('.cl_coupon_detail_bTn');
+
+                self.$cl_info_OnList = self.$tabInfo.find('div.cl_list ul');
+                self.$cl_coupon_OnList = self.$tabCoupon.find('div.cl_list ul');
+                self.$cl_infoMore = self.$tabInfo.find('button.btn-moreview');
+                self.$cl_infoMore.data("page", 2);
+                self.$cl_infoMore.data("tabIndex", 0);
+
+                self.$cl_couponMore = self.$tabCoupon.find('button.btn-moreview');
+                self.$cl_couponMore.data("page", 2);
+                self.$cl_couponMore.data("tabIndex", 1);
 
 
                 self.currentTab = function() {
@@ -79,34 +83,50 @@
                     return el.attr('aria-controls').replace('tab-', '');
                 };
 
-                // self.$couponOnMore.hide();
-                // self.$couponEndMore.hide();
-                //self.$couponOnNoData = self.$tabCouponOn.find('div.no-data'); //
-                //self.$couponEndNoData = self.$tabCouponEnd.find('div.no-data'); //
+                // self.$cl_infoMore.hide();
+                // self.$cl_couponMore.hide();
+                //self.$couponOnNoData = self.$tabInfo.find('div.no-data'); //
+                //self.$couponEndNoData = self.$tabCoupon.find('div.no-data'); //
                 //self.$couponPopup = $('#couponPopup'); //
+                
+                //주영
+                var tabName = lgkorUI.getParameterByName('tabName');
+                var currentIndex = 0;
+                console.log("tabName", tabName)
+                if( tabName != "" && tabName != undefined && tabName == "coupon") {
+                    currentIndex = 1;
+                } 
+                $('.tabs-wrap').vcTab('select', currentIndex, false);
             },
 
             bindEvents: function() {
 
-
                 var self = this;
-
     
                 self.$contents.find('button.btn-moreview').on('click', function(e) {
-
 
                     var page = $(this).data("page");
                     $(this).data('page', page + 1);
                     console.log(self.currentTab(), page);
-                    self.requestCouponData(self.currentTab(), page);
+                    self.requestCareLatterData(self.currentTab(), page);
 
                     // self.addCouponList(tabIndex, page+1);
 
                 });
 
+                
+                self.$cl_detail_info.on('click', function(e) {
+                    e.preventDefault();
+                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html");
+                });
+                self.$cl_detail_coupon.on('click', function(e) {
+                    e.preventDefault();
+                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html?tabName=coupon");
+                });
             },
+            
 
-            requestCouponData: function( cate , page ) {
+            requestCareLatterData: function( cate , page ) {
                 var self = this;
                 /* ajax 인디케이터 시작 */
                 lgkorUI.showLoading();
@@ -120,11 +140,8 @@
                 
                 lgkorUI.requestAjaxData(ajaxUrl, ajaxParams , function(result) {
 
-                   
-                    var elList = (cate === 'info') ? self.$couponOnList : self.$couponEndList;
+                    var elList = (cate === 'info') ? self.$cl_info_OnList : self.$cl_coupon_OnList;
                     var data = (cate === 'info') ? result.data.infoList : result.data.couponList;
-
-                    var tetete = result.data.infoList.listData[0].letterId;
 
                     //console.log("test", tetete);
                     //console.log("리절트", result.data.infoList.listData[1].title);
@@ -144,12 +161,9 @@
             putList: function(el, rows) {
                 var self = this;
                 var pagination = rows.pagination;
-                var moreBtn = el.closest('.tab-contents').attr('aria-labelledby').replace('tab-', '') === 'info' ? self.$couponOnMore : self.$couponEndMore;
-
+                var moreBtn = el.closest('.tab-contents').attr('aria-labelledby').replace('tab-', '') === 'info' ? self.$cl_infoMore : self.$cl_couponMore;
 
                 var isLast = self.visibleCount * pagination.page >= rows.totalCount;
-
-                
 
                 //console.log("더 보기", isLast);
                 //console.log("page", pagination.page);
