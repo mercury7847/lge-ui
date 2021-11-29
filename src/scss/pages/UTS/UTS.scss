@@ -1540,6 +1540,15 @@
             .chk-wrap input + label {
                 @include font-small; 
             }
+
+            //BTOCSITE-16 검색 결과 구획 정리
+            &:first-child {
+                margin-right:16px;
+
+                @include mobile {
+                    margin-right:18px;
+                }
+            }
         }
         .sort-search-area {
             display: inline-block;

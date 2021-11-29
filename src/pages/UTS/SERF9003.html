@@ -346,12 +346,23 @@
                                     </div>
                                     <div class="sort-area right">
                                         <div class="sort-list">
+                                            <!-- -S- BTOCSITE-16 검색 결과 구획 정리 -->
                                             <div class="sort-check-area">
                                                 <span class="chk-wrap">
                                                     <input type="checkbox" id="chk-pd" name="availableforpurchase">
-                                                    <label for="chk-pd">구매 가능한 제품</label>
+                                                    <label for="chk-pd">
+                                                        <span class="pc-only">구매 가능한 제품</span>
+                                                        <span class="mo-only">구매 가능</span>
+                                                    </label>
                                                 </span>
                                             </div>
+                                            <div class="sort-check-area">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk-rental" name="availableforrental">
+                                                    <label for="chk-rental">렌탈 가능</label>
+                                                </span>
+                                            </div>
+                                            <!-- -E- BTOCSITE-16 검색 결과 구획 정리 -->
                                             <!-- 검색 영역 -->
                                             @@include('./common/modules/search.html', {
                                                 "value" : "노크온 매직스페이스",

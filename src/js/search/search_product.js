@@ -23,26 +23,78 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
+                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                            '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
+                        '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                // '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="star">'+
+									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
+										'<span class="blind">현재 별점 : {{rating}}</span>'+
+									'</div>'+
+								'</div>'+
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
-                        '<div class="info-btm">' +
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
-                            '<div class="care">'+
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
-                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
-                            '</div>'+
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
-                            '<div class="text hashtag-wrap">' +
-                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                            '</div>' +
-                        '</div>' +
+
+
+                        /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                        '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
+
+                            '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
+
+                                '<div class="info-price mo-only">' +
+                                    '<a href="{{url}}">' +
+                                    
+                                        '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                                            '<div class="price-info rental">' +
+                                                '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                                            '</div>' +
+                                        '{{/if}}' +
+
+                                        '<div class="price-info sales">' +
+                                            '{{#if obsFlag=="Y"}}' +
+                                            
+                                                '{{#if price == originalPrice}}' +
+                                                    '<div class="price-in">' +
+                                                        '<span class="price">{{originalPrice}}<em>원</em></span>' +
+                                                    '</div>' +
+
+                                                '{{#else}}' +
+
+                                                    '<div class="original">' +
+                                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                                                    '</div>' +
+                                                    '<div class="price-in">' +
+                                                        '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                                                    '</div>' +
+                                                    
+                                                '{{/if}}' +
+
+                                            '{{/if}}' +
+                                        '</div>' +
+                                    '</a>' +
+                                '</div>' +
+                            '{{/if}}' +
+                        '{{/if}}' +
+                        /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+
+
+                        // '<div class="info-btm">' +
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
+                        //     '<div class="care">'+
+                        //     '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
+                        //     '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
+                        //     '</div>'+
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                        //     '<div class="text hashtag-wrap">' +
+                        //         '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        //     '</div>' +
+                        // '</div>' +
                     '</div>' +
                 '</div>' +
                 '{{#if techSpecs && techSpecs.length > 0}}' +
@@ -50,6 +102,9 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
+                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
+                            '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
+                        '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
@@ -59,12 +114,12 @@ if ('scrollRestoration' in history) {
 
                 '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
 
-                    '<div class="info-price">' +
+                    '<div class="info-price pc-only">' +
                         '<a href="{{url}}">' +
                         
                             '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
                                 '<div class="price-info rental">' +
-                                    '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                                    '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                                 '</div>' +
                             '{{/if}}' +
 
@@ -73,7 +128,7 @@ if ('scrollRestoration' in history) {
                                 
                                     '{{#if price == originalPrice}}' +
                                         '<div class="price-in">' +
-                                            '<p class="tit">구매</p><span class="price">{{originalPrice}}<em>원</em></span>' +
+                                            '<span class="price">{{originalPrice}}<em>원</em></span>' +
                                         '</div>' +
 
                                     '{{#else}}' +
@@ -82,7 +137,7 @@ if ('scrollRestoration' in history) {
                                             '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
                                         '<div class="price-in">' +
-                                            '{{#if price != 0}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                                            '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
                                         
                                     '{{/if}}' +

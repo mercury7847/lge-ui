@@ -182,7 +182,7 @@
 
     .title {
         position: absolute;
-        top: 0;
+        top: 8px;
         left: 0;
         font-weight: 700;
         @include font-small;
@@ -191,19 +191,34 @@
     .keyword-list {
         display: inline-block;
         margin-bottom: -4px;
+        margin-right: -13px;
         font-size: 0;
         text-align: left;
 
         li {
             display: inline-block;
-            margin: 0 12px 4px 0;
+            margin: 0 8px 8px 0;
+
 
             &:nth-last-child(1) {
                 margin-right: 0;
             }
 
             a {
-                @include font-small;
+                display:inline-block;
+                // @include font-small;
+                font-size: 14px;
+                line-height:21px;
+
+                padding:8px 14px;
+                margin:1px;
+                border-radius: 8px;
+                border: solid 1px #ddd;
+
+                &:hover {
+                    margin:0;
+                    border: solid 2px #da0f47;
+                }
             }
         }
     }
@@ -212,25 +227,25 @@
         display: none;
     }
 
-    @include mobile {
+    // @include mobile {
         position: relative;
-        height: 24px;
+        height: 42px;
         margin-top: 12px;
-        padding-right: 32px;
+        padding-right: 26px;
         .inner {
             position: relative;
             display: inline-block;
             padding-left: 88px;
 
         }
-        .title {
-            left: 8px;
-        }
+        // .title {
+        //     left: 8px;
+        // }
         .mobile-more-btn {
             display: block;
             position: absolute;
-            top: 1px;
-            right: 8px;
+            top: 13px;
+            right: 0;
 
             .btn-more {
                 display: block;
@@ -251,7 +266,7 @@
                 }
             }
         }
-    }
+    // }
 }
 
 .search-input-layer {

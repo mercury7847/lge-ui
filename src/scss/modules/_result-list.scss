@@ -163,35 +163,38 @@
             }
             .spec-info {
                 font-size: 0;
-                li {
-                    @include font-x-small;
-                    span {
-                        color: $color-gray-1;
-                    }
-                }
-                @include pc {
-                    max-width: 569px;
-                    margin-top: 8px;
-                    padding-top: 4px;
-                    border-top: 1px solid $color-border;
-                    li {
-                        display: inline-block;
-                        margin-right: 16px;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                        span {
-                            margin-right: 4px;
-                        }
-                    }
-                }
+                max-width: 569px;
+                margin-top: 8px;
+                padding-top: 4px;
+                border-top: 1px solid $color-border;
+
                 @include mobile {
                     margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                }
+
+                li {
+                    display: inline-block;
+                    margin-right: 16px;
+                    @include font-x-small;
+                    &.rentalModel {
+                        display:none;
+                        @include mobile {
+                            display:block;
+                        }
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
                     span {
-                        margin-right: 8px;
+                        color: $color-gray-1;
+                        margin-right: 4px;
+
+                        @include mobile {
+                            margin-right: 8px;
+                        }
                     }
                 }
             }
@@ -212,15 +215,21 @@
                         background-color: $color-border;
                         content: '';
                     }
+
+                    &.mo-only { display:none; }
                 }
                 @include mobile {
                     display: block;
                     width: 100%;
-                    margin-top: 12px;
-                    padding-top: 12px;
-                    border-top: 1px solid $color-border;
+                    margin-top: 10px;
+                    padding-top: 10px;
+                    // border-top: 1px solid $color-border;
                     text-align: left;
+                    &.mo-only { display:block; }
+                    &.pc-only { display:none; }
                 }
+
+
                 &.type2 {
                     align-items: center;
                     margin-top: 0;  
@@ -233,7 +242,7 @@
                     &.rental {
                         @include mobile {
                             display: flex;
-                            justify-content: space-between;
+                            justify-content: flex-end;
                         }
                     }
                     &.sales {
@@ -339,11 +348,11 @@
                 }
             }
         }
-        @include pc {
-            .sku {
-                margin-right: 8px;
-            }
-        }
+        // @include pc {
+        //     .sku {
+        //         margin-right: 8px;
+        //     }
+        // }
         .info-btm {
             margin-top: 12px;
             font-size: 0;
@@ -485,9 +494,55 @@
         .sku {
             display: inline-block;
             font-weight: 500;
-            @include font-small;
             vertical-align: top;
+            @include font-small;
+            @include mobile {
+                display:block;
+            }
+
+            .search-word {
+                color:#000;
+            }
+
+            &:after {
+                content:'';
+                display:inline-block;
+                width: 1px;
+                height: 12px;
+                margin: 4px 6px;
+                background-color: #ddd;
+                vertical-align: middle;
+                @include mobile {
+                    display:none;
+                }
+            }
         }
+
+        .result-detail {
+            .rentalModel {
+                display: inline-block;
+                font-weight: 500;
+                margin-right:6px;
+                @include font-small;
+                vertical-align: top;
+    
+                @include mobile {
+                    display:none;
+                }
+            }
+        }
+
+        // .spec-info {
+        //     .rentalModel {
+        //         display:none;
+        //         @include mobile {
+        //             display:inline-block;
+        //         }
+        //     }
+        // }
+
+
+
         .hashtag-wrap + .careflag  {
             @include mobile {
                 display: block;
@@ -521,23 +576,33 @@
             }
             @include mobile {
                 margin-right: 0;
-                margin-left: 6px;
+                margin-left: 0;
             }
             .star,
             .average-rating,
             .review-count {
                 display: inline-block;
+                vertical-align:middle;
                 @include font-small;
             }
             .star {
-                width: 20px;
-                height: 20px;
-                margin-right: 2px;
-                background: url("/lg5-common/images/icons/icon-star-off-20.svg") no-repeat 0 0;
-                vertical-align: -5px;
-                &.is-review {
-                    background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
+                position: relative;
+                width: 80px;
+                height:24px;
+                line-height: 24px;
+                background: url(/lg5-common/images/KRP0008/img-star-pdp-off.svg) no-repeat 0 50%;
+                background-size: 80px 16px;
+                // margin-left:6px;
+                .star-rating {
+                    position: absolute;
+                    height:24px;
+                    top: 50%;
+                    left: 0;
+                    transform:translate(0,-50%);
+                    background: url(/lg5-common/images/KRP0008/img-star-pdp-on.svg) no-repeat 0 50%;
+                    background-size: 80px 16px;
                 }
+
             }
         }
         
@@ -595,9 +660,12 @@
         .price-info {
             white-space: nowrap;
             .tit {
-                //margin-bottom: 4px;
-                @include font-x-small;
-                color: $color-default;
+                display:inline-block;
+                vertical-align: middle;
+                @include font(16px,26px);
+                color: #666666;
+                font-weight: $font-weight-bold;
+                padding-right:5px;
                 @include mobile {
                     font-size: 13px;
                     line-height: 22px;
@@ -606,7 +674,7 @@
             }
             .price {
                 display: inline-block;
-                vertical-align: bottom;
+                vertical-align: middle;
                 @include font(16px,26px);
                 color: $color-default;
                 font-weight: $font-weight-bold;
