@@ -810,33 +810,17 @@
                         border-radius: 0;
                         overflow: hidden;
                     }
-                    .image{
-                    }
                 }
+                //BTOCSITE-8513
                 img{
                     position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    -ms-transform: translate(-50%, -50%);
-                    transform: translate(-50%, -50%);
-                    max-width: none;
-                    width: auto;
-                    background-position: center center;
-                    min-width: 100%;
-                    min-height: 100%;
+                    top: 0;
+                    right: 0;
+                    width:auto;
                     height: 100%;
-                    @include tablet{
-                        // object-fit:cover;
-                    }
                     @include mobile{
-                        // object-fit: cover;
-                        height: 100%;
-                        object-fit: cover;
                         border-radius: 0;
                         width: 100%;
-                        top:0;
-                        -ms-transform: translate(-50%, 0%);
-                        transform: translate(-50%, 0%);
                         height: auto;
                     }
                 }
