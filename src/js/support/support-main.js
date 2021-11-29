@@ -477,16 +477,20 @@
                 }
 
                 // 주요 서비스 
-                self.main_service.el.slider.on('init', function(event, slick){
+                self.main_service.el.slider.on('init', function(event, slick){  
                     // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
                     if($(self.main_service.el.slider).find(".slick-arrow").length > 0){
-                        $(self.main_service.el.slider).find(".slick-arrow").each(function(index){
-                            this.id = "beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2);
-                        });
+
+                        setTimeout(function(){
+                            $(self.main_service.el.slider).find(".slick-arrow").each(function(index){
+                                console.log("ini %o",this);
+                                $(this).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
+                            });
+                        },1000)
                     }
                 });
 
-                self.main_service.el.slider.not(self.activeClass).slick(self.main_service.config);
+                self.main_service.el.slider.slick(self.main_service.config);
 
 
                 //수상목록
