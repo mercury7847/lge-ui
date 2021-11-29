@@ -117,11 +117,11 @@
                 
                 self.$cl_detail_info.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html");
+                    $(location).attr("href", "/my-page/care-solution-letter");
                 });
                 self.$cl_detail_coupon.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html?tabName=coupon");
+                    $(location).attr("href", "/my-page/care-solution-letter?tabName=coupon");
                 });
             },
             
