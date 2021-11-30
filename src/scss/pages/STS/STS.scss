@@ -673,12 +673,14 @@
                         background-color: rgba(0,0,0,.2);
                         content: '';
                     }
-                    img{
-                        position:absolute;
-                        top:calc(50% - 50px);
-                        left:50%;
-                        height:calc(100% - 100px);
-                        transform:translate(-50%, -50%);
+                    @include mobile{
+                        img{
+                            position:absolute;
+                            top:calc(50% - 50px);
+                            left:50%;
+                            height:calc(100% - 100px);
+                            transform:translate(-50%, -50%);
+                        }
                     }
                 }
                 .btn-video {
