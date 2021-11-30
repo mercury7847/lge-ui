@@ -672,7 +672,7 @@
 
             var bottom = $(box).position().top + boxheight;
             maxBottom = Math.max(maxBottom, bottom);
-            $('.new_story .flexbox').css('height', boxheight);
+            $('.new_story .flexbox, .user_story .flexbox').css('height', boxheight);
         });
         /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
 
