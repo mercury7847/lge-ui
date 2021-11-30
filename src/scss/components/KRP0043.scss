@@ -239,11 +239,15 @@
             .que-box {
                 margin-bottom: 16px;
                 .img-wrap {
-                    height: 500px;
+                    //height: 500px;
                     overflow-x: hidden;
                     overflow-y: scroll;
+                    @include mobile{
+                        overflow: scroll;
+                    }
                     img {
                         margin-top: 16px;
+                        display: block;
                     }
                 }
                 &.notice {
