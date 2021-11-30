@@ -227,7 +227,7 @@
             padding:0 76px 48px 108px;
             color:#000;
             @include mobile {
-                padding:0 44px 32px 36px;
+                padding:0 44px 60px 12px;
             }
             p.desc {
                 display: inline;
@@ -246,6 +246,18 @@
                         margin-top: 16px;
                     }
                 }
+                &.notice {
+                    p.desc {
+                        margin-left: 0;
+                    }
+                    .img-wrap {
+                        height: 100%;
+                        overflow: hidden;
+                        img {
+                            margin-top: 16px;
+                        }
+                    }
+                }
             }
             .ans-box {
                 p {
@@ -256,6 +268,9 @@
                     font-size:14px;
                     color: #666;
                     line-height: 26px;
+                    @include mobile{
+                        margin-left: 0;
+                    }
                     .ans-date {
                         
                     }
