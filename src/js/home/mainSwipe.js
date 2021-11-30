@@ -37,7 +37,9 @@ function MainSwiper( ID ){
         'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
     ];
 
+    if(vcui.detect.isMobileDevice){
         this.init();
+    }
     
 }
 
@@ -46,6 +48,7 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
+        
     },
     setSwipe : function(){
         var self = this;
@@ -75,9 +78,9 @@ MainSwiper.prototype = {
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];
-//                         document.addEventListener('readystatechange', function(e) {
-//                             document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
-//                         })
+                        document.addEventListener('readystatechange', function(e) {
+                            document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
+                        })
                         mainSwiper.loadContent( currentSlide,true );
                     }
                     
@@ -119,13 +122,13 @@ MainSwiper.prototype = {
 
                     mainSwiper.loadContent( currentSlide,true );
 
-//                     if(swiper.activeIndex > 0){
-//                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
-//                     }
+                    if(swiper.activeIndex > 0){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
+                    }
 
-//                     if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
-//                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
-//                     }
+                    if(swiper.activeIndex >= 0 && swiper.activeIndex !== swiper.slides.length -1){
+                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
+                    }
 
                     swiper.allowSlideNext = swiper.activeIndex === swiper.slides.length -1 ? false: true;
                     swiper.allowSlidePrev = swiper.activeIndex === 0 ? false: true;
@@ -231,7 +234,7 @@ MainSwiper.prototype = {
         //console.log('this.loadQUE', this.loadQUE);
     },
     getContent: function(){        
-        var self = this;        
+        var self = this;
         
         // 로딩중일때
         if (self.isLoading == true){
@@ -279,14 +282,14 @@ MainSwiper.prototype = {
             self.isLoading = false;
             self.getContent();
             self.storyHomeToastChk(currentSlide) //BTOCSITE-188
+
+            
             return;
         }
 
         $.ajaxSetup({
             cache:true
         });
-
-        lgkorUI.showLoading();
 
         $.ajax({
             method: 'POST',
@@ -329,7 +332,6 @@ MainSwiper.prototype = {
                         setTimeout(function(){
                             mainSwiper.swiper.updateAutoHeight();
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                            lgkorUI.hideLoading();
                         }, 500);
                     });
                 });
@@ -483,9 +485,3 @@ $(function(){
     //$('#floatBox').hide();
 
 });
-
-
-
-
-
-
