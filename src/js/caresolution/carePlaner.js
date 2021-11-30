@@ -1168,15 +1168,11 @@
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                 
-                //주영
-                //var tetetete = vcui.number.addComma(salePrice);
-                var jejejej = result.data.paymentInfo.salePrice;
-                console.log("sssssssssssssssssssssssssssss", jejejej)
-
+                /* BTOCSITE-8334 제휴카드 별 할인가 표기 */
                 var cardItemTemplate = '<li>' +
                     '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
                         '<span>{{label}}</span>' +
-                        '<span class="card-discount">{{salePrice}}</span>' +
+                        '<span class="card-discount">월 최대 -{{vcui.number.addComma(salePrice)}}원</span>' +
                     '</a>' +
                 '</li>';
 
@@ -1187,14 +1183,29 @@
                     if(obj.listItem) {
                         obj.listItem.forEach(function(item, index) {
                             item.label = item.title;
+                            //item.salePrice = vcui.number.addComma(item.salePrice); //salePrice에 콤마 추가 하니 총합 계산이 오류 템플릿에 콤마 기능 추가.
+
                             if(!item.cardId) {
                                 item.label = "선택취소"
+                                cardItemTemplate = '<li>' +
+                                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                                        '<span>{{label}}</span>' +
+                                    '</a>' +
+                                '</li>';
+                            } else {
+                                cardItemTemplate = '<li>' +
+                                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                                        '<span>{{label}}</span>' +
+                                        '<span class="card-discount">월 최대 -{{vcui.number.addComma(salePrice)}}원</span>' +
+                                    '</a>' +
+                                '</li>';
                             }
                             item.descId = idx;
                             selectList.append(vcui.template(cardItemTemplate, item));
                         });
                     }
                 });
+                /* //BTOCSITE-8334 제휴카드 별 할인가 표기 */
 
                 $('#pop-estimate').data("cardDescription", result.data.paymentInfo.cardDescription);
                 $cardInfo.find('.ui_dropdown a.ui_dropdown_toggle').text(result.data.paymentInfo.cardDescription);
