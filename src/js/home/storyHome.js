@@ -636,10 +636,10 @@
 
                     contype = lastbox.data('contentsType');
 
-                    if(window.innerWidth < 768 && window.innerWidth > 480){
-                        boxheight = boxwidth * 1.25;
-                    }else{
+                    if(window.innerWidth < 480){
                         boxheight = boxwidth * 1.25 + 50;
+                    }else{
+                        boxheight = boxwidth * 1.25;
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
@@ -654,10 +654,10 @@
             overflow = "auto";
             contype = $(box).data('contentsType');
             
-            if(window.innerWidth < 768 && window.innerWidth > 480){
-                boxheight = boxwidth * 1.25;
-            }else{
+            if(window.innerWidth < 480){
                 boxheight = boxwidth * 1.25 + 50;
+            }else{
+                boxheight = boxwidth * 1.25;
             }
            
             var boxleft = raw * (status.boxwidth + status.distance);
