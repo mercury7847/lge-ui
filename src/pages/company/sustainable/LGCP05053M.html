@@ -214,7 +214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="input-wrap">
 							<input type="text" name="detailAddress" id="detailAddress" value="" maxlength="300" placeholder="상세 주소 입력" readonly data-required="true">
 						</div>
-						<div class="btm-more err-block">
+						<div class="btm-more err-block address-err-msg">
 							<p class="err-msg"></p>
 						</div>
 					</div>
@@ -226,10 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<input type="text" id="homepage" name="homepage" class="inq-name" value="" placeholder="홈페이지 이름 입력" data-format="koreng" data-required="true">
-					</div>
-					<div class="btm-more err-block">
-						<p class="err-msg"></p>
+						<input type="text" id="homepage" name="homepage" class="inq-name" value="" placeholder="홈페이지 이름 입력" data-format="koreng">
 					</div>
 				</dd>
 			</dl>
@@ -251,7 +248,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<span class="file-input">
 							<div class="box">
 								<div class="input-wrap">
-									<input type="text" class="addr2 file-label" value="" placeholder="" name="file-upload" readonly data-required="true">
+									<input type="text" class="addr2 file-label" value="" placeholder="" name="fileUpload" readonly data-required="true">
 								</div>
 								<div class="cell">
 									<label for="file-upload" class="btn">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload"></label>
@@ -263,9 +260,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<ul class="bullet-list">
 						<li class="b-txt">최대 2MB까지 등록 가능합니다.</li>
 					</ul>
-					<div class="btm-more err-block">
-						<p class="err-msg"></p>
-					</div>
 				</dd>
 			</dl>
 			<!--//[E]단체 정보-->
@@ -282,7 +276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<textarea id="content" name="content" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)"></textarea>
+						<textarea id="content" name="content" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)" data-required="true"></textarea>
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -298,10 +292,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<span class="file-input">
 							<div class="box">
 								<div class="input-wrap">
-									<input type="text" class="addr2 file-label" value="" placeholder="" name="file-upload" readonly data-required="true">
+									<input type="text" class="addr2 file-label" value="" placeholder="" name="fileUpload2" readonly data-required="true">
 								</div>
 								<div class="cell">
-									<label for="file-upload" class="btn">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload2"></label>
+									<label for="file-upload2" class="btn">찾아보기<input type="file" class="btn ui_fileinput" id="file-upload2"></label>
 								</div>
 							</div>
 						</span>
@@ -365,10 +359,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .form-wrap.loveSharing .rdo-wrap input+label {margin-right:30px}
 	.company .form-wrap.loveSharing .chk-wrap input+label {margin-right:30px}
 	.company .form-wrap.loveSharing .btn-wrap.pc-only {width:100%;margin-top:64px;text-align:center}
+	.company .form-wrap.loveSharing .btn-wrap.pc-only .btn {min-width:154px;}
+	.company .form-wrap.loveSharing .btn-wrap.pc-only .btn + .btn {margin-left:35px;}
 	.company .form-wrap.loveSharing .btn-wrap.mo-only {display:none}
 	.company .form-wrap.loveSharing .file-box {position:relative}
 	.company .form-wrap.loveSharing .file-box .file-input {width:100%;}
-	.company .form-wrap.loveSharing .file-box .file-lists {position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
+	.company .form-wrap.loveSharing .file-box .file-lists {opacity:0;position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
+	.company .form-wrap.loveSharing .file-box .file-lists:not(:empty) {opacity:1}
 	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:12px 24px;background:#ededed;}
 
 	/*mobile*/

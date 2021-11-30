@@ -167,7 +167,7 @@ var goAppUrl = function(path) {
             this.find('.animation-box').vcVideoBox();
             this.find('.youtube-box').vcYoutubeBox();
             this.find('.ui_textcontrol').vcTextcontrol();
-            this.find('.ui_fileinput').vcFileinput();
+            //this.find('.ui_fileinput').vcFileInput();
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();

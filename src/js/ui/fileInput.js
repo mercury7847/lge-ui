@@ -1,7 +1,7 @@
 vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
-    var selectFiles = [],
+    var selectFilesCommon = [],
         totalSize = 0;
 
     // var message = {
@@ -14,6 +14,7 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
     var FileInput = core.ui('FileInput', {
         bindjQuery: 'fileInput',
         defaults: {
+            separateType : false,
             regex: /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,
             format: 'jpg|jpeg|png|gif',
             totalSize: '10000000',
@@ -34,15 +35,17 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
-            selectFiles = [];
+            selectFilesCommon = [];
+            self.selectFiles = [];
+            self.independentGroupSize = 0;
             self.$el.closest(".file-box").find(".file-lists").empty();
             self._bindEvents();
         },
         getSelectFiles: function getSelectFiles() {
-            return selectFiles;
+            return this.options.separateType ? this.selectFiles : selectFilesCommon;
         },
         _checkFileLength: function _checkFileLength() {
-            return selectFiles.length < this.options.maxLength;
+            return this.options.separateType ? this.selectFiles.length <  this.options.maxLength : selectFilesCommon.length <  this.options.maxLength;
         },
         _checkFileName: function _checkFileName(file) {
             var name = file.name.split('.').slice(0,-1).join('.') || file.name + '';
@@ -50,18 +53,18 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
             return name.match(this.options.regex) !== null;
         },
         _checkFileSize: function _checkFileSize(file) {
-            return totalSize + file.size <= this.options.totalSize
+            return this.options.separateType ? this.independentGroupSize + file.size <= this.options.totalSize : totalSize + file.size <= this.options.totalSize;
         },
         _checkFileFormat: function _checkFileFormat(file) {
             var optArr = this.options.format.split('|'),
                 formatArr = file.name.split('.'),
                 format = formatArr[formatArr.length - 1].toLowerCase();
-            
+
             if (!vcui.array.has(optArr, format)) {
                 return false;
             }
 
-            return true; 
+            return true;
         },
         _checkFile: function _checkFile(file) {
             var self = this,
@@ -106,17 +109,33 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
             self.$el.on("change",function(e) {
                 if(e.currentTarget.files.length > 0) {
                     var file = e.currentTarget.files[0],
-                        result = self._checkFile(file); 
+                        result = self._checkFile(file);
 
                     if (result.success) {
                         $(this).closest(".file-box").find(".file-lists").append(core.template(self.options.templateFileListItem, file));
-                        
-                        totalSize += file.size;
-                        selectFiles.push(file);
-                        
-                        $(this).closest(".file-box").find(".file-lists li:nth-child(" + selectFiles.length +") .btn-del").on("click",function(e) {
+
+                        //totalSize += file.size;
+
+                        if(self.options.separateType) {
+                            self.selectFiles.push(file);
+                            var len = self.selectFiles.length;
+                            self.independentGroupSize += file.size;
+                        }  else {
+                            selectFilesCommon.push(file);
+                            var len = selectFilesCommon.length;
+                            totalSize += file.size;
+                        }
+
+                        $(this).closest(".file-box").find(".file-lists li:nth-child(" + len +") .btn-del").on("click",function(e) {
                             var index = $(this).closest(".file-lists").find('.btn-del').index($(this));
-                            selectFiles.splice(index,1);
+
+                            if(self.options.separateType) {
+                                self.selectFiles.splice(index,1);
+                                self.independentGroupSize -= file.size;
+                            }else {
+                                selectFilesCommon.splice(index,1);
+                                totalSize -= file.size;
+                            }
                             $(this).closest(".file-lists").find("li:nth-child(" + (index+1) +")").remove();
                         });
                     } else {

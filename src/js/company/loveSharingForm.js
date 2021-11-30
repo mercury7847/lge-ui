@@ -72,8 +72,10 @@
                     groupName: {
                         required: true,
                         maxLength: 25,
+                        pattern: /^[가-힣a-zA-Z0-9]+$/,
                         msgTarget: '.err-block',
-                        errorMsg: '단체명을 입력해 주세요.'
+                        errorMsg: '단체명을 입력해 주세요.',
+                        patternMsg: '특수문자는 입력이 불가합니다.'
                     },
                     //고유번호증
                     groupNumber: {
@@ -96,42 +98,73 @@
                     zipCode: {
                         required: true,
                         msgTarget: '.address-err-msg',
-                        errorMsg: '정확한 주소를 입력해주세요.'
+                        errorMsg: '필수 입력정보가 입력되지 않았습니다.',
+                        patternMsg: '정확한 주소를 입력해주세요.'
                     },
                     userAddress: {
                         required: true,
                         msgTarget: '.address-err-msg',
-                        errorMsg: '정확한 주소를 입력해주세요.'
+                        errorMsg: '필수 입력정보가 입력되지 않았습니다.',
+                        patternMsg: '정확한 주소를 입력해주세요.'
                     },
                     detailAddress: {
                         required: true,
                         msgTarget: '.address-err-msg',
-                        errorMsg: '정확한 주소를 입력해주세요.'
+                        errorMsg: '필수 입력정보가 입력되지 않았습니다.',
+                        patternMsg: '정확한 주소를 입력해주세요.'
+                    },
+                    //고유번호증 사본첨부
+                    fileUpload: {
+                        required: true,
+                        //msgTarget: '.err-block',
+                        //errorMsg: '필수 입력정보가 입력되지 않았습니다.'
+                    },
+                    //사업계획서 첨부
+                    fileUpload2: {
+                        required: true,
+                        //msgTarget: '.err-block',
+                        //errorMsg: '필수 입력정보가 입력되지 않았습니다.'
                     },
                     //제안 내용
                     content: {
                         required: true,
+                        minLength: 1,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해 주세요.'
                     }
                 }
 
-                validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
-                self.bindEvent();
-
-                self.$cont.find('.ui_fileinput').vcFileInput({
+                //고유번호증 사본첨부
+                $('#file-upload').vcFileInput({
+                    separateType: true,
                     regex: /^.+$/gi,
-                    format: 'jpg|jpeg|png|gif|xlsx|hwp|pptx|ppt|psd|txt|docx|zip|html|pdf',
+                    format: 'txt|doc|docm|docx|pptx|ppt|pdf|xlsx|xls|xml|jpeg|jpg|png|svg|zip|7z|bz|bz2',
                     totalSize: '2000000',
                     maxLength: 1,
                     message: {
                         length: '첨부 파일은 최대 1개까지 가능합니다.',
-                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.!!!',
-                        format: '파일 형식을 확인해 주세요.',
-                        size: '첨부파일 용량은 2MB 이내로 등록 가능합니다.'
+                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                        format: '첨부할 수 없는 파일입니다.',
+                        size: '첨부파일 최대 용량은 2MB까지 등록 가능 합니다.'
+                    }
+                });
+                //사업계획서 첨부
+                $('#file-upload2').vcFileInput({
+                    separateType: true,
+                    regex: /^.+$/gi,
+                    format: 'txt|doc|docm|docx|pptx|ppt|pdf|xlsx|xls|xml|jpeg|jpg|png|svg|zip|7z|bz|bz2',
+                    totalSize: '2000000',
+                    maxLength: 1,
+                    message: {
+                        length: '첨부 파일은 최대 1개까지 가능합니다.',
+                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                        format: '첨부할 수 없는 파일입니다.',
+                        size: '첨부파일 최대 용량은 2MB까지 등록 가능 합니다.'
                     }
                 });
 
+                validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
+                self.bindEvent();
             });
         },
         validatePhone: function(value){
@@ -204,16 +237,6 @@
         bindEvent: function() {
             var self = this;
 
-            self.$cont.on('reset', function() {
-                self.$completeBtns.hide();
-
-                // validation.reset();
-
-                // self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
-                // self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
-                // self.$cont.find('.ui_imageinput').vcImageFileInput('removeAll');
-            });
-
             // 특수문자 제거
             $(document).on('keydown', '#phoneNo, #groupNumber, #groupTel', function(e){
                 if( e.keyCode == 189 || e.keyCode == 187 || e.keyCode == 107 || e.keyCode == 109 || e.keyCode == 110 || e.keyCode == 190) {
@@ -254,10 +277,14 @@
                     self.$cont.find('#detailAddress').val('').prop('readonly', false);
                 });
             });
-
+            
+            //신청 버튼 클릭시
             self.$completeBtns.find('.estimateBtn').on('click', function() {
                 var result = validation.validate();
+
 console.log("result",result);
+console.log("validation.getAllValues()",validation.getAllValues());
+
                 if (result.success == true) {
                     lgkorUI.confirm('', {
                         title:'저장 하시겠습니까?',
@@ -267,7 +294,23 @@ console.log("result",result);
                             self.requestComplete();
                         }
                     });
+                }else{
+                    lgkorUI.alert('', {
+                        title:'필수 입력정보가<br>입력되지 않았습니다.'
+                    });
                 }
+            });
+
+            //취소 버튼 클릭시
+            self.$completeBtns.find('.inqueryBtn').on('click', function() {
+                lgkorUI.confirm('', {
+                    title:'입력하신 신청 정보를<br>취소 하시겠습니까?',
+                    okBtnName: '네',
+                    cancelBtnName: '아니오',
+                    ok: function() {
+                        location.href = "/company/sustainable/socialContribution#com-tabs02"
+                    }
+                });
             });
         },
         requestComplete: function(){
