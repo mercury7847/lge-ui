@@ -55,9 +55,12 @@
             loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var self = this;
 
-            vcui.require(['ui/pagination'], function (){
+            vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
+                self.validation = new vcui.ui.CsValidation('#submitForm', { 
+                
+                });
             });
         },
         settings : function (){
@@ -96,22 +99,19 @@
 
             //등록하기 팝업
             self.$writePopup = $('#popupWrite');
-            
+            self.$writeForm = self.$writePopup.find("#submitForm");
 
             self.$writeQnaType = self.$writePopup.find('#qnaType');
             self.$writeTitle = self.$writePopup.find('#title');
             self.$writeDesc = self.$writePopup.find('#content');
-            self.$imgFileWrap = self.$writePopup.find('.image-file-wrap');
-            
-            self.$imgFileDel = self.$writePopup.find('.btn-del');
-            self.$writeBullet = self.$writePopup.find('.bullet-area');
-            self.$myPageLink = self.$writePopup.find('.underline');
 
-            self.$completeBtn = self.$writePopup.find('.btn-group');
-            self.$fileDelBtn = self.$writePopup.find('.btn-file-del'); //출처 확인
+            //self.$myPageLink = self.$writePopup.find('.underline');
+
+            //self.$completeBtn = self.$writePopup.find('.btn-group');
+            //self.$fileDelBtn = self.$writePopup.find('.btn-file-del'); //출처 확인
             
             self.$secretChkBtn = self.$writePopup.find('#privateFlag');
-            self.$confirmBtn = self.$writePopup.find('.btn-confirm');
+            //self.$confirmBtn = self.$writePopup.find('.btn-confirm');
         },
         bindEvents : function() {
             var self = this;
@@ -154,23 +154,25 @@
             });
 
             self.$writePopup.find('.btn-confirm').off('click').on('click', function() {
-               
                 
                 var param = $(this).closest("#popupWrite").data('param');
+                var valChk = self.formValidationChk(param);
                 
                 // console.log("test : "+param.mode);
-                lgkorUI.confirm('', {
-                    title:param.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
-                    okBtnName:param.mode === 'write' ? '확인' : '예',
-                    cancelBtnName:param.mode === 'write' ? '취소' :'아니오',
-                    ok: function() {
-                        if(param.mode === 'write'){
-                            self.requestQnaWrite();
-                        }else{
-                            self.requestQnaModify();
+                if(valChk){
+                    lgkorUI.confirm('', {
+                        title:param.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
+                        okBtnName:param.mode === 'write' ? '확인' : '예',
+                        cancelBtnName:param.mode === 'write' ? '취소' :'아니오',
+                        ok: function() {
+                            if(param.mode === 'write'){
+                                self.requestQnaWrite(param);
+                            }else{
+                                self.requestQnaModify();
+                            }
                         }
-                    }
-                }); 
+                    }); 
+                }
             });
 
             //삭제하기
@@ -202,8 +204,8 @@
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
 
-            self.$qnaType.find('.underline').off('click').on('click', function(){
-                window.location.href =  '/my-page/email-inquiry';
+            self.$writePopup.find('.underline').off('click').on('click', function(){
+                window.open('/my-page/email-inquiry');
             });
 
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
@@ -218,7 +220,7 @@
                     $('ul.qna-result-lists > li').show();
                 }
             });
-        },        
+        },           
         // qna-list - get
         requestQnaListData : function(param){
             console.log("QnA List - API request !!");
@@ -358,6 +360,7 @@
                     },"POST");
                 }
                 $('#popupWrite').data("param",param);
+                self.uploadFileChk(); //파일업로드 이벤트실행
             } else {
                 lgkorUI.confirm('', {
                     title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
@@ -372,83 +375,46 @@
         },
         // qna-write - post
         requestQnaWrite : function(el) {
-            var self = this;            
-            ajaxUrl = self.$writeForm.data('createAjax');   
+            self = this;
+            ajaxUrl = self.$writeForm.data('createAjax');
+
             console.log("QnA 등록하기 - API request !!" + ajaxUrl);
 
-            vcui.require(['ui/validation'], function () {
-                self.validation = new vcui.ui.CsValidation('#submitForm', {
-                    register: {
-                        orderType : {
-                            required: true,
-                            msgTarget: '.err-block',
-                            errorMsg:'문의유형을 선택해주세요.'
-                        },
-                        title: {
-                            required: true,
-                            msgTarget: '.err-block',
-                            errorMsg: '제목을 입력해주세요.'
-                        },
-                        content: {
-                            required: true,
-                            msgTarget: '.err-block',
-                            errorMsg: '내용을 입력해주세요.'
-                        }
-                    }
-                });
-
-                self.$writeForm.find('.ui_imageinput').vcImageFileInput({
-                    individualFlag:true,
-                    totalSize: 40 * 1024 * 1024,
-                    message: {
-                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
-                        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
-                        size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
-                    }
-                });
-
-                self.$writeForm.find('.ui_imageinput input[type="file"]').on('change',function(e) {
-                    // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
-                    if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
-                        $(this).data('fileFlag','insert');
-                    }
-                })
-            });
-
-            if(self.url) {
+            if(ajaxUrl) {
                 var param = self.validation.getAllValues();
                 var formData = new FormData();
+
+                // data modelId 값 추가
+                formData.append('modelId', self.$dataModelId);
         
                 for (var key in param) {
                     formData.append(key, param[key]);
 
                     if(key.indexOf('imageFile') > -1) {
-                        var changeFile = key.replace('image','change');
 
-                        // 신규 업로드시 삭제된 파일 체크
+                        //var changeFile = key.replace('image','change');
+
+                        //신규 업로드시 삭제된 파일 체크
                         var $file = $("#"+key);
                         if(!param[key] &&  $file.data('fileFlag') === 'insert') {
                             $file.removeData('fileFlag')
                         } 
 
-                        // 글작성 ,수정시 fileFlag 보내줌
-                        formData.append(changeFile, $file.data('fileFlag') );
-                    }
+                        //글작성 ,수정시 fileFlag 보내줌
+                        //formData.append(changeFile, $file.data('fileFlag') );
+                    } 
                 }
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
                         lgkorUI.hideLoading();
+                        if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
                     } else {
                         lgkorUI.hideLoading();
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
-                                ok: function(){
-                                    location.href = "/sso/api/Login";
-                                }
                             });
                         }
                     }
@@ -460,6 +426,47 @@
             var self = this;
             ajaxUrl = self.$writeForm.data('updateAjax');
             console.log("QnA 수정하기 - API request !!" + ajaxUrl);
+
+            if(ajaxUrl) {
+                var param = self.validation.getAllValues();
+                var formData = new FormData();
+
+                // data modelId 값 추가
+                formData.append('modelId', self.$dataModelId);
+        
+                for (var key in param) {
+                    formData.append(key, param[key]);
+
+                    if(key.indexOf('imageFile') > -1) {
+
+                        var changeFile = key.replace('image','change');
+
+                        //신규 업로드시 삭제된 파일 체크
+                        var $file = $("#"+key);
+                        if(!param[key] &&  $file.data('fileFlag') === 'insert') {
+                            $file.removeData('fileFlag')
+                        } 
+
+                        //글작성 ,수정시 fileFlag 보내줌
+                        formData.append(changeFile, $file.data('fileFlag') );
+                    } 
+                }
+
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
+                    if (result.status == 'success') {
+                        lgkorUI.hideLoading();
+                        if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
+                    } else {
+                        lgkorUI.hideLoading();
+                        if (result.message) {
+                            lgkorUI.alert("", {
+                                title: result.message,
+                            });
+                        }
+                    }
+                }, 'POST', 'json',true);
+            }
         },
         // qna-delete-popup - post
         requestQnaDelete :function(param) {
@@ -494,6 +501,27 @@
             }
             
         },
+        //파일업로드 체크
+        uploadFileChk : function(param){
+            var self = this;
+
+            self.$writeForm.find('.ui_imageinput').vcImageFileInput({
+                individualFlag:true,
+                totalSize: 40 * 1024 * 1024,
+                message: {
+                    name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
+                    format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
+                    size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
+                }
+            });
+
+            self.$writeForm.find('.ui_imageinput input[type="file"]').on('change',function(e) {
+                // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
+                if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
+                    $(this).data('fileFlag','insert');
+                }
+            })
+        },
         // 글 수정시 파일 삭제 함수
         uploadFileDelete: function(el) {
             var self = this;
@@ -503,9 +531,38 @@
             $fileItem.find('.file-name input').prop('placeholder','');
             $fileItem.removeClass('modify');
         },
-        validationChk : function () {
+        formValidationChk : function(param) {
+            var self = this;
+            var qnaTypeVal =  self.$writeQnaType.find('option:selected').val();
+            var titleVal = self.$writeTitle.val();
+            var descVal = self.$writeDesc.val();
+            
+            if(!qnaTypeVal){
+                lgkorUI.alert("", {
+                    title: "문의 유형을 선택해주세요."
+                });
+    
+                return false;
+            }
 
-        }        
+            if(!titleVal){
+                lgkorUI.alert("", {
+                    title: "문의 제목을 작성해주세요."
+                });
+    
+                return false;
+            }
+                
+            if(!descVal){
+                lgkorUI.alert("", {
+                    title: "문의 내용을 작성해주세요."
+                });
+    
+                return false;
+            }
+
+            return true;
+        }
     };
 
 $(document).ready(function(){
