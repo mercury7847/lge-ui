@@ -338,7 +338,7 @@
             margin-top: 48px;
             padding-bottom: 12px;
             @include font-medium;
-            //주영 수정
+            /* BTOCSITE-8334 제휴카드 별 할인가 표기 */
             li {
                 &.divide {
                     padding: 10px 16px;
@@ -378,7 +378,7 @@
                     }
                 }
             }
-            //주영 수정 end
+            /* //BTOCSITE-8334 제휴카드 별 할인가 표기 */
         }
         &.open {
             .select-button {
