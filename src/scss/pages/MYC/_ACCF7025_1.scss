@@ -582,6 +582,9 @@
                 &.on {
                     .accord-btn {
                         font-weight: bold;
+                        .title {
+                            width: 75%;
+                        }
                     }
                 }
             }
