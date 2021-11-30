@@ -232,7 +232,6 @@
             var selectedQTypeName = param.queTypeName;
             
             typeSelText.html(selectedQTypeName);
-            console.log(selectedQTypeName);
             
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
@@ -405,13 +404,13 @@
                     } 
                 }
 
-                lgkorUI.showLoading();
+                //lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        lgkorUI.hideLoading();
+                        //lgkorUI.hideLoading();
                         if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
                     } else {
-                        lgkorUI.hideLoading();
+                        //lgkorUI.hideLoading();
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
@@ -452,13 +451,13 @@
                     } 
                 }
 
-                lgkorUI.showLoading();
+                //lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        lgkorUI.hideLoading();
+                        //lgkorUI.hideLoading();
                         if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
                     } else {
-                        lgkorUI.hideLoading();
+                        //lgkorUI.hideLoading();
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
