@@ -20,7 +20,7 @@
                     '</p>' +
                     '<div class="img-wrap">' +
                         '{{#each item in files }}' +
-                        '<img src="{{ item.filePath }}" alt="img">' +
+                        '<img src="{{ item.filePath }}" alt="{{ item.fileName }}">' +
                         '{{/each}}'+
                     '</div>' +
                 '</div>' +
@@ -349,8 +349,6 @@
                                     qTypeList.removeClass("on");
                                     qTypeListItem[i].closest('li').classList.add("on");
                                     qTypeBtnSelectedText.html(qTypeListItem[i].textContent);
-                                } else {
-                                    console.log("no-! \n")
                                 }
                             }
                         } else {
@@ -387,6 +385,9 @@
                 formData.append('modelId', self.$dataModelId);
         
                 for (var key in param) {
+                    if(key == 'privateFlag'){
+                        param[key]  = param[key] == true ? "Y" : "N";
+                    }
                     formData.append(key, param[key]);
 
                     if(key.indexOf('imageFile') > -1) {
@@ -401,21 +402,29 @@
 
                         //글작성 ,수정시 fileFlag 보내줌
                         //formData.append(changeFile, $file.data('fileFlag') );
-                    } 
+                    }
                 }
 
-                //lgkorUI.showLoading();
+                lgkorUI.showLoading();
+
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        //lgkorUI.hideLoading();
-                        if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
+                        lgkorUI.hideLoading();
+                        $('#popupWrite').vcModal('hide');
+                        lgkorUI.alert("", {
+                            title: "게시물이 등록되었습니다."
+                            
+                        });
+                        location.reload();
                     } else {
-                        //lgkorUI.hideLoading();
+                        lgkorUI.hideLoading();
+                        $('#popupWrite').vcModal('hide');
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
                             });
                         }
+                        
                     }
                 }, 'POST', 'json',true);
             }
@@ -427,7 +436,7 @@
             console.log("QnA 수정하기 - API request !!" + ajaxUrl);
 
             if(ajaxUrl) {
-                var param = self.validation.getAllValues();
+                var param = self.validation.getAllValues(); 
                 var formData = new FormData();
 
                 // data modelId 값 추가
@@ -454,10 +463,16 @@
                 //lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        //lgkorUI.hideLoading();
-                        if(result.returnUrl) location.href = result.returnUrl; // popup창 닫히고 
+                        lgkorUI.hideLoading();
+                        $('#popupWrite').vcModal('hide');
+                        lgkorUI.alert("", {
+                            title: "게시물이 수정되었습니다."
+                            
+                        });
+                        location.reload();
                     } else {
-                        //lgkorUI.hideLoading();
+                        lgkorUI.hideLoading();
+                        $('#popupWrite').vcModal('hide');
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
@@ -478,7 +493,7 @@
                     if(result.status === 'success') {
                         //if(result.returnUrl) location.href = result.returnUrl;
                         lgkorUI.alert("", {
-                            title: "게시글이 삭제되었습니다."
+                            title: "게시물이 삭제되었습니다."
                             
                         });
                         location.reload();
