@@ -1169,10 +1169,14 @@
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
                 
                 //주영
+                //var tetetete = vcui.number.addComma(salePrice);
+                var jejejej = result.data.paymentInfo.salePrice;
+                console.log("sssssssssssssssssssssssssssss", jejejej)
+
                 var cardItemTemplate = '<li>' +
                     '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
-                        '<spna>{{label}}</spna>' +
-                        '<spna class="card-discount">{{salePrice}}</spna>' +
+                        '<span>{{label}}</span>' +
+                        '<span class="card-discount">{{salePrice}}</span>' +
                     '</a>' +
                 '</li>';
 

@@ -362,6 +362,8 @@
                 a {
                     display: block;
                     padding: 10px 16px;
+                    display: flex;
+                    justify-content: space-between;
                     &:hover,
                     &:focus,
                     &.on {
