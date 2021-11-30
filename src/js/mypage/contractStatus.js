@@ -341,7 +341,7 @@
 
     var CONTRACT_INFO;
 
-    var CONTRACT_CARE; //주영
+    var CONTRACT_CARE; //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성
 
     var INFO_MODIFY_CONFIRM;
     var INFO_MODIFY_SAVE;
@@ -387,7 +387,7 @@
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
 
-        CONTRACT_CARE = $('.contents.mypage').data('contractCareUrl'); //주영
+        CONTRACT_CARE = $('.contents.mypage').data('contractCareUrl'); //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성
 
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
@@ -1210,7 +1210,7 @@
         }
     }
 
-    //주영
+    
     // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     function setContractInfo(data){
         mypage.find(".no-data").remove();
@@ -1375,7 +1375,7 @@
     }
 
 
-    //주영 여기 추가
+    /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
     function setContractCare(data){
         mypage.find(".no-data").remove();
 
@@ -1410,9 +1410,6 @@
             var $lc_EndDate2 = new Date($ed_date);
 
 
-            $lc_StartDateYear = new Date($st_date); //기준
-
-
             //가입 한 데이터
             var $lc_join = new Date($st_date);
 
@@ -1437,68 +1434,7 @@
             var $lc_Month_4 = new Date($st_date);
             var $lc_Month_5 = new Date($st_date);
 
-            
-            //시잘날짜 종료날짜 계산
-            var $date_calculate = $lc_EndDate2 - $lc_StartDate1;
-
-            var lb_Day = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
-            var lb_Month = lb_Day * 30;// 월 만듬
-            var lb_Year = lb_Month * 12; // 년 만듬
-
-            //년차
-            var $lc_year = parseInt($date_calculate/lb_Year);
-            //월차
-            var $lc_month = parseInt($date_calculate/lb_Month);
-
-
-
-
-
-            //처음 가입 시작 날짜
-            var startDateYear = $lc_StartDate1;
-
-            console.log("1.가입 시작 데이터", startDateYear);
             //console.log("----------------");
-
-            //14개월 후 변환 하기
-            var sDataMonth = (startDateYear.getMonth() + 13);
-            var careShipMonth = startDateYear.setMonth(sDataMonth);
-
-            
-            //console.log("시작 월 뽑기", sDataMonth);
-
-            //console.log("한달 후11", sDataMonth);
-            //console.log("한달 후22", careShipMonth);
-
-            //14개월 변환 된 데이터
-            var csMonth_data = new Date(careShipMonth);
-            var csMonth_data_year = (csMonth_data.getFullYear());
-            var csMonth_data_month = (csMonth_data.getMonth() + 1);
-
-            
-            //14개월 변환 된 데이터의 월말
-            var csMonth_data_month_lastDay = new Date(csMonth_data_year, csMonth_data_month, 0);
-
-            //console.log("2.14개월 변환된 데이터", csMonth_data);
-
-            console.log("----------------");
-            console.log("년 체크", $lc_year);
-            console.log("월 체크", $lc_month);
-            console.log("----------------");
-
-            var $currenrDate = new Date();
-
-            //console.log("----------------");
-
-            //console.log("1년 변환 :", clYear_data_1year);
-            //console.log("2년 변환 :", clYear_data_2year);
-            //console.log("3년 변환 :", clYear_data_3year);
-            //console.log("4년 변환 :", clYear_data_4year);
-            //console.log("5년 변환 :", clYear_data_5year);
-            //console.log("가입한 날짜 :", $lc_StartDateYear);
-
-
-            //var crent_year_1 = currentTime.getFullYear()
 
             //케어십
             //1년 후
@@ -1524,15 +1460,21 @@
             console.log("가입:", $lc_join)
             //console.log("1년후", CareShip_YearLater);
             console.log("1년 2개월", CareShip_MonthLater);
-            console.log("sss", YearLater1);
+            console.log("1년차 첫날", YearLater1);
 
-            //주영 -----------------------------------------------
             //케어십 조건
             if(data.contractType === 'R') {
                 if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
+                    console.log("------케어십 가입 14개월 이전!!!------")
                     //console.log("---가입시점부터 14개월 말일 까지 노출---")
                     $lc_cont.html(vcui.template(lb_careShip, data));
+                } else {
+                    console.log("----케어십 14개월이 훨신 지난 조건----");
+                    mypage.find(".lb-container").empty();
                 }
+            } else {
+                console.log("------no------")
+                mypage.find(".lb-container").empty();
             }
 
             //케어솔루션 조건
@@ -1541,43 +1483,56 @@
                     console.log("------1년차!!!------")
                     //console.log("mmm", MonthLater1);
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater1)) {
-                        console.log("---3개월 까지만 노출---")
+                        console.log("---1년차 - 3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_1, data));
                     }
                 } else {
-                    console.log("------no------")
+                    console.log("------1년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
                 }
 
                 if(Date.now() >= (+YearLater2) && Date.now() <= (+YearLater3)) {
                     console.log("------2년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater2)) {
-                        console.log("---3개월 까지만 노출---")
+                        console.log("---2년차 - 3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_2, data));
                     }
+                } else {
+                    console.log("------2년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
                 }
 
                 if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
                     console.log("------3년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
-                        console.log("---3개월 까지만 노출---")
+                        console.log("---3년차 - 3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
+                } else {
+                    console.log("------3년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
                 }
 
                 if(Date.now() >= (+YearLater4) && Date.now() <= (+YearLater5)) {
-                    //console.log("------4년차!!!------")
+                    console.log("------4년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater4)) {
-                        //console.log("---3개월 까지만 노출---")
+                        console.log("---4년차 - 3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_4, data));
                     }
+                } else {
+                    console.log("------4년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
                 }
 
                 if(Date.now() >= (+YearLater5)) {
-                    //console.log("------5년차!!!------")
+                    console.log("------5년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater5)) {
-                        //console.log("---3개월 까지만 노출---")
+                        console.log("---5년차 - 3개월 까지만 노출---")
                         $lc_cont.html(vcui.template(lb_careSolution_5, data));
                     }
+                } else {
+                    mypage.find(".lb-container").empty();
+                    console.log("------5년차 조건에 해당하지 않음------")
                 }
             }
            
@@ -1591,6 +1546,7 @@
             mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
     }
+    /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
 
     function setPaymentModeCont(){
         $('.mypage .section-wrap .sects.payment.modify input[data-visible-target]').prop("checked", false);
@@ -1662,7 +1618,7 @@
             }
         }, ajaxMethod);
 
-        //주영 추가
+        /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
         lgkorUI.requestAjaxData(CONTRACT_CARE, sendata, function(result){
 
             // console.log("result_1111111 %o",result);
@@ -1670,35 +1626,36 @@
             // console.log("changeContractInfo의 select", sendata);
 
             setContractCare(result.data);
-            //console.log("sssss", result.data);
 
             lgkorUI.hideLoading();
 
-            if(requestPartnerCardYn == "Y"){
-                requestPartnerCardYn = "";
+            //BTOCSITE-3407 삭제
+            // if(requestPartnerCardYn == "Y"){
+            //     requestPartnerCardYn = "";
 
-                var viewertop = $('.sects.payment.viewer').offset().top;
-                $('html, body').animate({scrollTop:viewertop}, 200, function(){
-                    setTimeout(function(){
-                        setRequestCard();
-                    }, 100);
-                });
-            } else {
-                // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
-                var managerInfoLink= 'managerInfoLink';
-                    if (lgkorUI.getStorage('managerInfoLink') == true){ 
-                        if ($('.section-inner').hasClass('manager-info') == true) {
-                            var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
-                            $('html, body').animate({scrollTop:managerInfoPosition - 70}, 0);
-                        }       
-                        lgkorUI.removeStorage(managerInfoLink);
-                    } else {
-                        lgkorUI.removeStorage(managerInfoLink);
-                        $('html, body').animate({scrollTop:0}, 220);
-                    }
-                // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
-            }
+            //     var viewertop = $('.sects.payment.viewer').offset().top;
+            //     $('html, body').animate({scrollTop:viewertop}, 200, function(){
+            //         setTimeout(function(){
+            //             setRequestCard();
+            //         }, 100);
+            //     });
+            // } else {
+            //     // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+            //     var managerInfoLink= 'managerInfoLink';
+            //         if (lgkorUI.getStorage('managerInfoLink') == true){ 
+            //             if ($('.section-inner').hasClass('manager-info') == true) {
+            //                 var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
+            //                 $('html, body').animate({scrollTop:managerInfoPosition - 70}, 0);
+            //             }       
+            //             lgkorUI.removeStorage(managerInfoLink);
+            //         } else {
+            //             lgkorUI.removeStorage(managerInfoLink);
+            //             $('html, body').animate({scrollTop:0}, 220);
+            //         }
+            //     // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
+            // }
         }, ajaxMethod);
+        /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
     }
 
     function setHiddenData(iptname, value){
