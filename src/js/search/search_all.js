@@ -130,7 +130,7 @@ if ('scrollRestoration' in history) {
                                 
                                     '{{#if price == originalPrice}}' +
                                         '<div class="price-in">' +
-                                            '<p class="tit">구매</p><span class="price">{{originalPrice}}<em>원</em></span>' +
+                                            '<span class="price">{{originalPrice}}<em>원</em></span>' +
                                         '</div>' +
 
                                     '{{#else}}' +
@@ -139,7 +139,7 @@ if ('scrollRestoration' in history) {
                                             '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
                                         '<div class="price-in">' +
-                                            '{{#if price != 0}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                                            '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
                                         
                                     '{{/if}}' +
