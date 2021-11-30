@@ -105,14 +105,20 @@ if ('scrollRestoration' in history) {
                     '</div>' +
                     '{{/if}}' +
                     '<div class="price-info sales">' +
-                    '{{#if obsFlag=="Y"}}' +
-                        '<div class="original">' +
-                            '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
-                        '</div>' +
-                        '<div class="price-in">' +
-                            '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                        '</div>' +
-                    '{{/if}}' +
+                        '{{#if obsFlag=="Y"}}' +
+                            '{{#if price == originalPrice}}' +
+                                '<div class="price-in">' +
+                                    '<span class="price">{{originalPrice}}<em>원</em></span>' +
+                                '</div>' +
+                            '{{#else}}' +
+                                '<div class="original">' +
+                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                                '</div>' +
+                                '<div class="price-in">' +
+                                    '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                                '</div>' +
+                            '{{/if}}' +
+                        '{{/if}}' +
                     '</div>' +
                 '</a>' +
             '</div>' +
