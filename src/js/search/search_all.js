@@ -116,7 +116,7 @@ if ('scrollRestoration' in history) {
 
                 '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
 
-                    '<div class="info-price">' +
+                    '<div class="info-price pc-only">' +
                         '<a href="{{url}}">' +
                         
                             '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +

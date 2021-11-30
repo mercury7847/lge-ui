@@ -97,7 +97,7 @@ if ('scrollRestoration' in history) {
                 '{{/if}}' +
             '</div>' +
             '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-            '<div class="info-price">' +
+            '<div class="info-price pc-only">' +
                 '<a href="{{url}}">' +
                     '{{#if rentalTabFlag=="Y" && carePrice != "0"}}' +
                     '<div class="price-info rental">' +
