@@ -885,15 +885,15 @@
                 }
             }
         }
+        /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
         .visual-area {
             display: block;
-            border-radius: 8px;
             flex:1;
             img {
                 width: 100%;
-                //border-radius: 8px;
             }
         }
+        /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
         .text-area {
             padding: 24px 24px 32px;
             @include mobile {
