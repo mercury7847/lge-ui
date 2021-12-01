@@ -114,8 +114,6 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
                     if (result.success) {
                         $(this).closest(".file-box").find(".file-lists").append(core.template(self.options.templateFileListItem, file));
 
-                        //totalSize += file.size;
-
                         if(self.options.separateType) {
                             self.selectFiles.push(file);
                             var len = self.selectFiles.length;
@@ -137,12 +135,11 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
                                 totalSize -= file.size;
                             }
                             $(this).closest(".file-lists").find("li:nth-child(" + (index+1) +")").remove();
+                            self.$el.val("");
                         });
                     } else {
                         self._callAlert(result.message);
                     }
-
-                    $(this).val("");
                 }
             })
         },

@@ -113,18 +113,6 @@
                         errorMsg: '필수 입력정보가 입력되지 않았습니다.',
                         patternMsg: '정확한 주소를 입력해주세요.'
                     },
-                    //고유번호증 사본첨부
-                    fileUpload: {
-                        required: true,
-                        //msgTarget: '.err-block',
-                        //errorMsg: '필수 입력정보가 입력되지 않았습니다.'
-                    },
-                    //사업계획서 첨부
-                    fileUpload2: {
-                        required: true,
-                        //msgTarget: '.err-block',
-                        //errorMsg: '필수 입력정보가 입력되지 않았습니다.'
-                    },
                     //제안 내용
                     content: {
                         required: true,
@@ -134,22 +122,8 @@
                     }
                 }
 
-                //고유번호증 사본첨부
-                $('#file-upload').vcFileInput({
-                    separateType: true,
-                    regex: /^.+$/gi,
-                    format: 'txt|doc|docm|docx|pptx|ppt|pdf|xlsx|xls|xml|jpeg|jpg|png|svg|zip|7z|bz|bz2',
-                    totalSize: '2000000',
-                    maxLength: 1,
-                    message: {
-                        length: '첨부 파일은 최대 1개까지 가능합니다.',
-                        name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
-                        format: '첨부할 수 없는 파일입니다.',
-                        size: '첨부파일 최대 용량은 2MB까지 등록 가능 합니다.'
-                    }
-                });
-                //사업계획서 첨부
-                $('#file-upload2').vcFileInput({
+                //고유번호증 사본첨부, 사업계획서 첨부
+                $('.ui_fileinput').vcFileInput({
                     separateType: true,
                     regex: /^.+$/gi,
                     format: 'txt|doc|docm|docx|pptx|ppt|pdf|xlsx|xls|xml|jpeg|jpg|png|svg|zip|7z|bz|bz2',
