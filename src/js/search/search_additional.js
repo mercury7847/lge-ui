@@ -26,7 +26,12 @@ if ('scrollRestoration' in history) {
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                // '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="star">'+
+									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
+										'<span class="blind">현재 별점 : {{rating}}</span>'+
+									'</div>'+
+								'</div>'+
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                             '</a>' +
@@ -134,13 +139,30 @@ if ('scrollRestoration' in history) {
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="sku">{{#raw sku}}</div>' +
-                    '<div class="info-btm">' +
-                        '<div class="text model">{{desc}}</div>' +
+                    '{{#if obsFlag=="Y" && hasPrice}}' +
+                    '<div class="info-price mo-only">' +
+                        '{{#if carePrice}}' +
+                        '<div class="price-info rental">' +
+                            '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                        '</div>' +
+                        '{{/if}}' +
+                        '<div class="price-info sales">' +
+                            '<div class="original">' +
+                                '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                            '</div>' +
+                            '<div class="price-in">' +
+                                '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '</div>' +
+                        '</div>' +
                     '</div>' +
+                    '{{/if}}' +
+                    // '<div class="info-btm">' +
+                    //     '<div class="text model">fhjksdjhfklsdjlfkj</div>' +
+                    // '</div>' +
                 '</div>' +
             '</div>' +
             '{{#if obsFlag=="Y" && hasPrice}}' +
-            '<div class="info-price">' +
+            '<div class="info-price pc-only">' +
                 '{{#if carePrice}}' +
                 '<div class="price-info rental">' +
                     '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
@@ -151,7 +173,7 @@ if ('scrollRestoration' in history) {
                         '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                     '<div class="price-in">' +
-                        '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                        '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
             '</div>' +

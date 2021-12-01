@@ -23,9 +23,6 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
-                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                            '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
-                        '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
@@ -102,9 +99,6 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
-                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                            '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
-                        '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
@@ -922,6 +916,16 @@ if ('scrollRestoration' in history) {
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
+
+                            // BTOCSITE-16 검색 결과 구획 정리
+                            if(item.salesModelFlag === "Y" && item.caresolutionSalesModelCode) {
+                                if(!item.techSpecs) item.techSpecs = [];
+                                item.techSpecs.push({
+                                    'SPEC_NAME' : '렌탈제품모델명',
+                                    'SPEC_VALUE_NAME' : item.caresolutionSalesModelCode
+                                });
+                            }   
+
                             item.ga = self.makeProductGAData(item);
                             //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);

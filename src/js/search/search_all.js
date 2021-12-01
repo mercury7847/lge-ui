@@ -24,9 +24,6 @@ if ('scrollRestoration' in history) {
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
                     '<div class="result-detail">' +
                         '<div class="sku">{{#raw sku}}</div>' +
-                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                        '<div class="rentalModel">{{caresolutionSalesModelCode}}</div>' + 
-                        '{{/if}}' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
@@ -38,9 +35,6 @@ if ('scrollRestoration' in history) {
 								'</div>'+
                                 '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                 '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                                '{{#if salesModelFlag === "Y"}}' +
-                                '<div class="review-count"><span class="blind">렌탈제품모델명</span>({{caresolutionSalesModelCode}})</div>' + 
-                                '{{/if}}' +
                             '</a>' +
                             '{{/if}}' +
                         '</div>' +
@@ -104,9 +98,6 @@ if ('scrollRestoration' in history) {
                         '{{#each item in techSpecs}}' +
                             '<li><span>{{item.SPEC_NAME}}</span>{{#raw item.SPEC_VALUE_NAME}}</li>' +
                         '{{/each}}' +
-                        '{{#if salesModelFlag === "Y" && caresolutionSalesModelCode}}' +
-                            '<li class="rentalModel"><span>렌탈제품모델명</span>{{caresolutionSalesModelCode}}</li>' +
-                        '{{/if}}' +
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
@@ -202,13 +193,30 @@ if ('scrollRestoration' in history) {
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="sku">{{#raw sku}}</div>' +
-                    '<div class="info-btm">' +
-                        '<div class="text model">{{desc}}</div>' +
+                    '{{#if obsFlag=="Y" && hasPrice}}' +
+                    '<div class="info-price mo-only">' +
+                        '{{#if carePrice}}' +
+                        '<div class="price-info rental">' +
+                            '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                        '</div>' +
+                        '{{/if}}' +
+                        '<div class="price-info sales">' +
+                            '<div class="original">' +
+                                '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                            '</div>' +
+                            '<div class="price-in">' +
+                                '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                            '</div>' +
+                        '</div>' +
                     '</div>' +
+                    '{{/if}}' +
+                    // '<div class="info-btm">' +
+                    //     '<div class="text model">{{desc}}</div>' +
+                    // '</div>' +
                 '</div>' +
             '</div>' +
             '{{#if obsFlag=="Y" && hasPrice}}' +
-            '<div class="info-price">' +
+            '<div class="info-price pc-only">' +
                 '{{#if carePrice}}' +
                 '<div class="price-info rental">' +
                     '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
@@ -219,7 +227,7 @@ if ('scrollRestoration' in history) {
                         '{{#if originalPrice}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                     '<div class="price-in">' +
-                        '{{#if price}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                        '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -1008,6 +1016,16 @@ if ('scrollRestoration' in history) {
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
+
+                            // BTOCSITE-16 검색 결과 구획 정리
+                            if(item.salesModelFlag === "Y" && item.caresolutionSalesModelCode) {
+                                if(!item.techSpecs) item.techSpecs = [];
+                                item.techSpecs.push({
+                                    'SPEC_NAME' : '렌탈제품모델명',
+                                    'SPEC_VALUE_NAME' : item.caresolutionSalesModelCode
+                                });
+                            }   
+
                             item.ga = self.makeProductGAData(item);
                             //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
