@@ -7,10 +7,13 @@
     var reservation = {
         init: function() {
             var self = this;
+            self.param = {};
 
             self.addressFinder = new AddressFind();
             self.$cont = $('.company.container');
             self.$submitForm = self.$cont.find('#loveSharingForm');
+            self.$writeForm = self.$cont.find('.write-form');
+            self.$viewWriteForm = self.$cont.find('.write-form-confirm');
             self.$completeBtns = self.$cont.find('.btn-wrap');
 
             vcui.require(['ui/validation'], function () {
@@ -114,11 +117,19 @@
                         patternMsg: '정확한 주소를 입력해주세요.'
                     },
                     //제안 내용
-                    content: {
+                    textContent: {
                         required: true,
                         minLength: 1,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해 주세요.'
+                    },
+                    //고유번호증 사본첨부
+                    fileUpload: {
+                        required: true
+                    },
+                    //사업계획서 첨부
+                    fileUpload2: {
+                        required: true
                     }
                 }
 
@@ -253,21 +264,21 @@
             });
             
             //신청 버튼 클릭시
-            self.$completeBtns.find('.estimateBtn').on('click', function() {
+            self.$completeBtns.find('.applyBtn').on('click', function() {
                 var result = validation.validate();
 
-console.log("result",result);
+                self.param = validation.getAllValues();
+
 console.log("validation.getAllValues()",validation.getAllValues());
+console.log("self.param",self.param);
 
                 if (result.success == true) {
-                    lgkorUI.confirm('', {
-                        title:'저장 하시겠습니까?',
-                        okBtnName: '확인',
-                        cancelBtnName: '취소',
-                        ok: function() {
-                            self.requestComplete();
-                        }
-                    });
+                    lgkorUI.showLoading();
+                    self.$writeForm.hide();
+                    self.$viewWriteForm.show();
+                    //registerInfoForm();
+                    lgkorUI.hideLoading();
+                    $(document).scrollTop(0);
                 }else{
                     lgkorUI.alert('', {
                         title:'필수 입력정보가<br>입력되지 않았습니다.'
@@ -276,7 +287,7 @@ console.log("validation.getAllValues()",validation.getAllValues());
             });
 
             //취소 버튼 클릭시
-            self.$completeBtns.find('.inqueryBtn').on('click', function() {
+            self.$completeBtns.find('.cancelBtn').on('click', function() {
                 lgkorUI.confirm('', {
                     title:'입력하신 신청 정보를<br>취소 하시겠습니까?',
                     okBtnName: '네',
@@ -286,7 +297,14 @@ console.log("validation.getAllValues()",validation.getAllValues());
                     }
                 });
             });
+
+
         },
+
+
+
+
+
         requestComplete: function(){
             var self = this;
 

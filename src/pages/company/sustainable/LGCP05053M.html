@@ -78,11 +78,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container company">
 	<div class="page-header">
 		<h2 class="title">사랑나눔</h2>
-		<p class="sub-desc">하기 항목은 귀 단체의 제안프로그램을 평가하기 위한 기초자료로 충실히 작성하여 주시기 바랍니다. <br>작성내용이 불충분할 경우, 심사대상에서 제외됩니다. <br>또한 허위로 기재한 사실이 발견될 시에는 채택된 후라도 취소될 수 있으니 유의하여 주시기 바랍니다.</p>
 	</div>
 	<div class="form-wrap loveSharing">
+		 <!--신청 작성 폼-->
+		<form action="/suggestions-complete" method="post" id="loveSharingForm" class="write-form" name="loveSharingForm" data-ajax="https://www.lge.co.kr/lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
 
-		<form action="/suggestions-complete" method="post" id="loveSharingForm" name="loveSharingForm" data-ajax="https://www.lge.co.kr/lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+			<p class="form-desc">하기 항목은 귀 단체의 제안프로그램을 평가하기 위한 기초자료로 충실히 작성하여 주시기 바랍니다. <br>작성내용이 불충분할 경우, 심사대상에서 제외됩니다. <br>또한 허위로 기재한 사실이 발견될 시에는 채택된 후라도 취소될 수 있으니 유의하여 주시기 바랍니다.</p>
+
 			<!--[S]신청 담당자 정보-->
 			<div class="innder bdb">
 				<h1 class="tit mo-h2">
@@ -272,11 +274,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="content" class="req">제안 내용<span class="blind">필수입력</span></label>
+					<label for="textContent" class="req">제안 내용<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<textarea id="content" name="content" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)" data-required="true"></textarea>
+						<textarea id="textContent" name="textContent" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)" data-required="true"></textarea>
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -309,16 +311,157 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</dl>
 			<!--//[E]사랑나눔 제한 내용-->
 
-			<div class="btn-wrap pc-only">
-				<button type="button" class="btn gray inqueryBtn"><span>취소</span></button>
-				<button type="button" class="btn estimateBtn"><span>신청</span></button>
+			<div class="btn-wrap">
+				<div class="inner">
+					<button type="button" class="btn gray cancelBtn"><span>취소</span></button>
+					<button type="button" class="btn applyBtn"><span>신청</span></button>
+				</div>
 			</div>
-
 		</form>
-		<div class="btn-wrap mo-only">
-			<button type="button" class="btn gray mo inqueryBtn"><span>취소</span></button>
-			<button type="button" class="btn mo estimateBtn"><span>신청</span></button>
+		<!--//신청 작성 폼-->
+
+		<!--신청 작성 완료 확인-->
+		<div class="write-form-confirm" style="display: block;">
+
+			<p class="form-desc">신청하신 후원 요청에 대해서는, 내부 검토 후 약 2주 내에 입력하신 이메일로 결과를 알려 드립니다.</p>
+
+			<!--[S]신청 담당자 정보-->
+			<div class="innder bdb">
+				<h1 class="tit mo-h2">
+					신청 담당자 정보
+				</h1>
+			</div>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">담당자</span>
+				</dt>
+				<dd class="conts">
+					<span class="write-data" data-user-name="aaa"></span>
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">휴대폰</span>
+				</dt>
+				<dd class="conts">
+					<span class="write-data" data-phone-no=""></span>
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">이메일</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<!--//[E]신청 담당자 정보-->
+
+
+			<!--[S]단체 정보-->
+			<div class="innder bdb">
+				<h1 class="tit mo-h2">
+					단체 정보
+				</h1>
+			</div>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">대표자</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">단체명</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">고유번호증</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">사무실 전화번호</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">주소</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">홈페이지</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">기부 영수증 발급 여부</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">고유번호증 사본첨부</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<!--//[E]단체 정보-->
+
+			<!--[S]사랑나눔 제한 내용-->
+			<div class="innder bdb">
+				<h1 class="tit mo-h2">
+					사랑나눔 제안 내용
+				</h1>
+			</div>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">제안 내용</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<dl class="forms">
+				<dt class="tit">
+					<span class="label">사업계획서 첨부</span>
+				</dt>
+				<dd class="conts">
+
+				</dd>
+			</dl>
+			<!--//[E]사랑나눔 제한 내용-->
+
+			<div class="btn-wrap">
+				<div class="inner">
+					<button type="button" class="btn gray modifyBtn"><span>수정</span></button>
+					<button type="button" class="btn applyBtn"><span>완료</span></button>
+				</div>
+			</div>
 		</div>
+		<!--//신청 작성 완료 확인-->
 	</div>
 </div>
 
@@ -345,8 +488,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn + .btn-apply {margin-left:30px;}
 
 	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청*/
-	.company .page-header .sub-desc {margin-top: 12px; font-size:16px;line-height:1.63;}
-	.company .form-wrap.loveSharing {max-width:1460px;margin:0 auto;margin-top:76px;padding:0 40px}
+	.company .form-wrap.loveSharing {max-width:1460px;margin:0 auto;margin-top:12px;padding:0 40px}
+	.company .form-wrap.loveSharing .form-desc {margin:-24px 0 100px; text-align:center; font-size:16px;line-height:1.63;}
 	.company .form-wrap.loveSharing .bdb {border-bottom:2px solid #000;padding-bottom:15px}
 	.company .form-wrap.loveSharing .reqchk {font-size:16px;padding-top:20px}
 	.company .form-wrap.loveSharing .reqchk::before {content:"*";display:inline-block;margin-left:1px;margin-right:2px;color:#ec455a;font-size:inherit;line-height:inherit;vertical-align:top}
@@ -355,24 +498,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .form-wrap.loveSharing .forms .conts .input-wrap {width:100%}
 	.company .form-wrap.loveSharing .forms .conts .phone-input-wrap {width:320px;height:48px;display:inline-block}
 	.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .email-input-wrap {width:320px;display:inline-block}
-	.company .form-wrap.loveSharing .forms .btn {min-width:78px;}
+	.company .form-wrap.loveSharing .forms .cell .btn {position:relative;min-width:78px;}
+	.company .form-wrap.loveSharing .forms .cell .btn input[type="file"] {min-width:auto;}
 	.company .form-wrap.loveSharing .rdo-wrap input+label {margin-right:30px}
 	.company .form-wrap.loveSharing .chk-wrap input+label {margin-right:30px}
-	.company .form-wrap.loveSharing .btn-wrap.pc-only {width:100%;margin-top:64px;text-align:center}
-	.company .form-wrap.loveSharing .btn-wrap.pc-only .btn {min-width:154px;}
-	.company .form-wrap.loveSharing .btn-wrap.pc-only .btn + .btn {margin-left:35px;}
-	.company .form-wrap.loveSharing .btn-wrap.mo-only {display:none}
+	.company .form-wrap.loveSharing .btn-wrap {width:100%;margin-top:64px;text-align:center}
+	.company .form-wrap.loveSharing .btn-wrap .btn {min-width:154px;}
+	.company .form-wrap.loveSharing .btn-wrap .btn + .btn {margin-left:35px;}
 	.company .form-wrap.loveSharing .file-box {position:relative}
 	.company .form-wrap.loveSharing .file-box .file-input {width:100%;}
+	.company .form-wrap.loveSharing .file-box .file-input .file-label {border:none}
 	.company .form-wrap.loveSharing .file-box .file-lists {opacity:0;position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
 	.company .form-wrap.loveSharing .file-box .file-lists:not(:empty) {opacity:1}
 	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:12px 24px;background:#ededed;}
 
+	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
+	.company .write-form-confirm {display:none}
+	.company .write-form-confirm .forms .tit {font-size:16px;font-weight:bold}
+
 	/*mobile*/
 	@media screen and (max-width:768px) {
 		/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청*/
-		.company .page-header .sub-desc {font-size:14px;line-height:1.57;}
 		.company .form-wrap.loveSharing {margin-top:33px;padding:0 16px 60px}
+		.company .form-wrap.loveSharing .form-desc {margin-bottom:33px; font-size:14px;line-height:1.57;}
 		.company .form-wrap.loveSharing .innder .mo-h2 {font-size:20px}
 		.company .form-wrap.loveSharing .reqchk {font-size:13px;padding-top:10px;padding-bottom:15px}
 		.company .form-wrap.loveSharing .forms {margin-top:20px}
@@ -383,8 +531,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .select-wrap {width:100%;display:block;margin-top:10px}
 		.company .form-wrap.loveSharing .forms .conts .addr-box-wrap {width:100%}
 		.company .form-wrap.loveSharing .tit {font-size:18px}
-		.company .form-wrap.loveSharing .btn-wrap.pc-only {display:none}
-		.company .form-wrap.loveSharing .btn-wrap.mo-only {position:fixed;z-index:108;left:0;right:0;bottom:0;width:100%;display:flex;justify-content:center}
-		.company .form-wrap.loveSharing .btn-wrap.mo-only .btn.mo {width:50%;border-radius:0;padding:16px 10px;font-size:15px;font-weight:400}
+		.company .form-wrap.loveSharing .btn-wrap {position:fixed;z-index:108;left:0;right:0;bottom:0;width:100%;margin-top:0;}
+		.company .form-wrap.loveSharing .btn-wrap .inner {display:flex;justify-content:center}
+		.company .form-wrap.loveSharing .btn-wrap .btn {width:50%;border-radius:0;padding:16px 10px;font-size:15px;font-weight:400}
+		.company .form-wrap.loveSharing .btn-wrap .btn + .btn {margin-left:0;}
+
+		/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
+
 	}
+
 </style>
