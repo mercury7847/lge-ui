@@ -621,10 +621,13 @@
         .flexbox:not(.tag-area) {
             display: inline-block;
             vertical-align: top;
+            @include pc{
+                height:408px;
+            }
             @include mobile{
                 margin-top: 8px;
                 padding:0;
-
+                height:260px;
             }
         }
         @include mobile {
