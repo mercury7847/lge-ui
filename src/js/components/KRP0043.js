@@ -54,7 +54,7 @@
 
     var qnaPdp = {
         init : function (){
-            //loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var self = this;
 
             vcui.require(['ui/pagination', 'ui/validation'], function (){
@@ -63,6 +63,7 @@
                 self.validation = new vcui.ui.CsValidation('#submitForm', { 
                 
                 });
+                //self.requestQnaListData();
             });
         },
         settings : function (){
@@ -127,16 +128,17 @@
             });            
 
             //파일삭제하기 - 문의글 수정시
-            self.$writePopup.find('.btn-file-del').off('click').on('click',function(){
-                var self = this;
-                lgkorUI.confirm('', {
-                    title:'삭제하시겠습니까?', 
-                    cancelBtnName: '아니오', okBtnName: '예',
-                    ok : function (e,data){ 
-                        self.uploadFileDelete();
-                    }
-                });
-            });
+            // self.$writePopup.find('.btn-file-del').off('click').on('click',function(){
+            //     var self = this;
+            //     lgkorUI.confirm('', {
+            //         title:'삭제하시겠습니까?', 
+            //         cancelBtnName: '아니오', okBtnName: '예',
+            //         ok : function (e,data){ 
+            //             self.uploadFileDelete();
+
+            //         }
+            //     });
+            // });
 
             self.$writePopup.find('.btn-confirm').off('click').on('click', function() {
                 
@@ -344,7 +346,7 @@
                                     qTypeBtnSelectedText.html(qTypeList[i].textContent);
                                 }
                             }
-
+                            // imageFiles read.
                             for(var i=0; i < imageInputFiles.length; i++){
                                 (function(i) {
                                     var $fileBox = imageInputFiles[i].closest('.file-item')
@@ -364,7 +366,7 @@
                                             reader.onload = function(e){
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
                                                 $fileBox.classList.add('on');
-                                                imageInputFiles[i].dataset.fileFlag = "delete";
+                                                imageInputFiles[i].dataset.fileFlag = "delete"; //추가 1201
                                                 $filePreview.innerHTML = imgTag;
                                                 $fileName.value = imgfiles[i].fileName;
                                             }
@@ -374,6 +376,7 @@
                                         }
                                 })(i);
                             }
+
                         } else {
                             console.log("fail");
                         }
@@ -565,12 +568,20 @@
                     $(this).data('fileFlag','insert');
                 }
             })
+            //1201 추가
+            // self.$writeForm.find('.btn-del').on('click',function(){
+            //     if($(this).data('fileFlag') == 'delete'){
+            //         $(this).data('fileFlag','');
+            //     }
+                
+            // })
         },
         // 글 수정시 파일 삭제 함수
         uploadFileDelete: function(el) {
             var self = this;
             var $fileItem = $(el).closest('.file-item');
-            $fileItem.find("input[type='file']").data('fileFlag','delete');
+            //$fileItem.find("input[type='file']").data('fileFlag','delete');
+            $fileItem.find("input[type='file']").data('fileFlag',''); // 1201 변경
             $fileItem.find('.file-preview').empty();
             $fileItem.find('.file-name input').prop('placeholder','');
             //$fileItem.removeClass('modify');
