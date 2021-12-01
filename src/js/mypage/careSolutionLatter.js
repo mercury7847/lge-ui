@@ -96,7 +96,7 @@
                 if( tabName != "" && tabName != undefined && tabName == "coupon") {
                     currentIndex = 1;
                 } 
-                $('.tabs-wrap').vcTab('select', currentIndex, false);
+                $('.lc-tabs').vcTab('select', currentIndex, false);
             },
 
             bindEvents: function() {
@@ -117,11 +117,11 @@
                 
                 self.$cl_detail_info.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "/my-page/care-solution-letter");
+                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html");
                 });
                 self.$cl_detail_coupon.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "/my-page/care-solution-letter?tabName=coupon");
+                    $(location).attr("href", "http://localhost:3010/html/MYC/ACCF7025_care_list.html?tabName=coupon");
                 });
             },
             
