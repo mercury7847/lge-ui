@@ -602,6 +602,7 @@
                         margin-right: 80px;
                         margin-top: -42px;
                         width: 256px;
+                        min-width: 256px;
                         min-height: 200px;
                         img {
                             width: 100%;
@@ -632,6 +633,7 @@
                             margin-right: 0px;
                             margin-top: 0px;
                             width: 100%;
+                            min-width: auto;
                         }
                     }
                 }
