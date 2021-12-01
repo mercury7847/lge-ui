@@ -52,7 +52,7 @@
 
     var qnaPdp = {
         init : function (){
-            loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            //loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var self = this;
 
             vcui.require(['ui/pagination', 'ui/validation'], function (){
@@ -168,7 +168,7 @@
                             if(param.mode === 'write'){
                                 self.requestQnaWrite(param);
                             }else{
-                                self.requestQnaModify();
+                                self.requestQnaModify(param);
                             }
                         }
                     }); 
@@ -297,14 +297,17 @@
 
             //일반 case
             if(lgkorUI.stringToBool(loginFlag)) {
+
+                var qTypeList = self.$writeQnaType.find('option');
+                var qTypeBtnSelectedText = $("#type_desc .ui-selectbox-wrap").find('.ui-selectbox-view > a > .ui-select-text');
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
                     self.$writeDesc.val('');
                     self.$secretChkBtn.attr("checked",false);
                     $('#popupWrite').find('.pop-header > .tit > span').html("문의하기");
-                    $('#cusomtSelectbox_58_button > a > span.ui-select-text').html("문의 유형을 선택해주세요");
-                    $('#cusomtSelectbox_58_menu > div > ul > li').eq(0).addClass("on");
+                    qTypeBtnSelectedText.html("문의 유형을 선택해주세요");
+                    //qTypeList.eq(0).addClass("on");
 
                     if($('#popupWrite').hasClass='modify') {
                         $('#popupWrite').removeClass('modify');
@@ -335,20 +338,15 @@
 
                             self.$writeTitle.val(qTitle);
                             self.$writeDesc.val(qContent);
-                            var qTypeList = $('#cusomtSelectbox_58_menu > div > ul > li');
-                            var qTypeListItem = $('#cusomtSelectbox_58_menu > div > ul > li > a');
-                            var qTypeBtnSelectedText = $('#cusomtSelectbox_58_button > a > span.ui-select-text');
 
                             if(secretFlag === "Y") {
                                 self.$secretChkBtn.attr("checked", true);
                             }
 
-                            for(var i=0 ; i < qTypeListItem.length; i++){
-                                if(qTypeListItem[i].dataset.value === qTypeCode) {
-                                    //console.log(qTypeListItem[i].textContent);
-                                    qTypeList.removeClass("on");
-                                    qTypeListItem[i].closest('li').classList.add("on");
-                                    qTypeBtnSelectedText.html(qTypeListItem[i].textContent);
+                            for(var i=0 ; i < qTypeList.length; i++){
+                                if(qTypeList[i].value === qTypeCode) {
+                                    qTypeList[i].selected = true;
+                                    qTypeBtnSelectedText.html(qTypeList[i].textContent);
                                 }
                             }
                         } else {
@@ -416,6 +414,7 @@
                             
                         });
                         location.reload();
+                        //location.href = "#pdp_qna"; //새로고침 후 pdp_qna 탭으로 이동시키는 방법 알아보기
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
@@ -430,8 +429,9 @@
             }
         },
         // qna-modify-popup - post
-        requestQnaModify :function(param) {
+        requestQnaModify :function(el) {
             var self = this;
+            var queNo = el.queNo;
             ajaxUrl = self.$writeForm.data('updateAjax');
             console.log("QnA 수정하기 - API request !!" + ajaxUrl);
 
@@ -439,10 +439,15 @@
                 var param = self.validation.getAllValues(); 
                 var formData = new FormData();
 
-                // data modelId 값 추가
+                // data modelId / data questionNo 값 추가
                 formData.append('modelId', self.$dataModelId);
+                formData.append('questionNo', queNo);
+
         
                 for (var key in param) {
+                    if(key == 'privateFlag'){
+                        param[key]  = param[key] == true ? "Y" : "N";
+                    }
                     formData.append(key, param[key]);
 
                     if(key.indexOf('imageFile') > -1) {
@@ -547,7 +552,8 @@
         },
         formValidationChk : function(param) {
             var self = this;
-            var qnaTypeVal =  self.$writeQnaType.find('option:selected').val();
+            //var qnaTypeVal =  self.$writeQnaType.find('option:selected').val();
+            var qnaTypeVal = $('.ui_selectbox').vcSelectbox('value'); 
             var titleVal = self.$writeTitle.val();
             var descVal = self.$writeDesc.val();
             
