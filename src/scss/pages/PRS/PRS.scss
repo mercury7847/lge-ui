@@ -1794,6 +1794,31 @@
 					border-radius:8px;
 				}
 			}
+			//BTOCSITE-7335 &-img 추가
+			&-img {
+				position: relative;
+				height:200px;
+
+				img {
+					position:absolute;
+					top:0;
+					left:50%;
+					height:100%;
+					transform:translateX(-50%);
+				}
+
+				@include mobile {
+					height:auto;
+
+					img {
+						position: static;
+						top:0;
+						left:0;
+						transform:none;
+						width:100%;
+					}
+				}
+			}
 			&-bg {
 				position: relative;
 				background-repeat: no-repeat;

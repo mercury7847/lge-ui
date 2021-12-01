@@ -170,7 +170,8 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var mode, winwidth;
 
-            winwidth = $(window).outerWidth(true);
+            //winwidth = $(window).outerWidth(true);
+            winwidth = window.innerWidth; //BTOCSITE-7335
             (winwidth > 767) ? mode = self.options.pc_prefix : mode = self.options.mobile_prefix;
 
             //if(self.mode != mode) {
