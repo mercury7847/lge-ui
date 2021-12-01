@@ -31,9 +31,13 @@
                     '</p>' +
                     '<a href="/my-page/care-solution-letter/care-info-detail?letterId={{letterId}}" class="btn-link">자세히 보기</a>' +
                 '</div>' +
-                '<p class="thumb">' +
-                    '<img src="{{imagePath}}{{imageNameM}}" alt="썸네일 이미지">' +
-                '</p>' +
+
+                '{{#if imageServerNameM || imagePathM}}' +
+                    '<p class="thumb">' +
+                        '<img src="{{imagePathM}}{{imageServerNameM}}" alt="썸네일 이미지">' +
+                    '</p>' +
+                '{{/if}}' +
+                
             '</div>' +
         '</div>' +
     '</li>';
@@ -89,10 +93,10 @@
                 //self.$couponEndNoData = self.$tabCoupon.find('div.no-data'); //
                 //self.$couponPopup = $('#couponPopup'); //
                 
-                //주영
+                //BTOCSITE-3407 쿠폰 디테일 페이지에서 쿠폰 탭 클릭시 쿠폰탭 유지
                 var tabName = lgkorUI.getParameterByName('tabName');
                 var currentIndex = 0;
-                console.log("tabName", tabName)
+                //console.log("tabName", tabName)
                 if( tabName != "" && tabName != undefined && tabName == "coupon") {
                     currentIndex = 1;
                 } 
@@ -170,7 +174,7 @@
                 //console.log("totalCount", rows.totalCount);
                 //console.log("el", el);
 
-                //console.log("rows", rows.infoList);
+                //console.log("11111111111111111111", rows.infoList);
 
                 /* 페이징  값이 null일 경우와 마지막 페이지 일 경우 버튼 감춤 처리 */
                 if (pagination.page === null || isLast) {
@@ -180,8 +184,8 @@
                     el.append(vcui.template(careSolutionLatterItemTemplate, item));
 
                     //console.log("1111111",rows.listData);
-                    //console.log("1111111",data);
-                    //console.log("1111111",result);
+                    //console.log("1111111",data); //안됨
+                    //console.log("1111111",result); //안됨
                     //console.log("rows???", rows);
 
                     //each 돌고

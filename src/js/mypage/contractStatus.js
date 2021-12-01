@@ -1463,7 +1463,7 @@
             console.log("1년차 첫날", YearLater1);
 
             //케어십 조건
-            if(data.contractType === 'R') {
+            if(data.contractType === 'C') {
                 if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
                     console.log("------케어십 가입 14개월 이전!!!------")
                     //console.log("---가입시점부터 14개월 말일 까지 노출---")
@@ -1478,7 +1478,7 @@
             }
 
             //케어솔루션 조건
-            if(data.contractType === 'C') {
+            if(data.contractType === 'R') {
                 if(Date.now() >= (+YearLater1) && Date.now() <= (+YearLater2)) {
                     console.log("------1년차!!!------")
                     //console.log("mmm", MonthLater1);
