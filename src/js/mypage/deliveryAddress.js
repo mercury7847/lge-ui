@@ -24,8 +24,19 @@
                     '</div>'+
                 '</div>'+
                 '<div class="buttons">'+
-                    '<button type="button" class="btn size border edit-btn" data-edit-type="modify"><span>수정</span></button>'+
-                    '{{#if !defaultAddress}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
+                    // BTOCSITE-5938-51 s
+                    '{{#if memberInfoAddress}}'+
+                        '<a href="{{modHref}}" class="btn size border mod-link"><span>수정</span></a>'+
+                    '{{#else}}' + 
+                        '<button type="button" class="btn size border edit-btn" data-edit-type="modify"><span>수정</span></button>'+
+                    '{{/if}}'+
+                    // '{{#if !defaultAddress}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
+                    '{{#if !defaultAddress}}'+
+                        '{{#if !memberInfoAddress}}'+
+                            '<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>'+
+                        '{{/if}}'+
+                    '{{/if}}'+
+                    // BTOCSITE-5938-51 e
                 '</div>'+
             '</div>'+
         '</li>';
@@ -222,7 +233,8 @@
 
     function loadaddressList(type, formdata){
         lgkorUI.showLoading();
-
+        // BTOCSITE-5938-51
+        var modHref = $('.myp-sub li .mod-link').attr('href');
         var sendata = {
             type: type,
             addressID: formdata ? formdata.addressID : "",
@@ -234,7 +246,10 @@
             detailAddress: formdata ? formdata.detailAddress : "",
             phoneNumber: formdata ? formdata.phoneNumber : "",
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
-            city: formdata ? formdata.city : ""
+            city: formdata ? formdata.city : "",
+            // BTOCSITE-5938-51
+            memberInfoAddress: formdata ? formdata.memberInfoAddress : "",
+            modHref: formdata ? formdata.modHref : ""
         }
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
@@ -251,6 +266,10 @@
                         addressListData[idx]["addressMasking"] = addressListData[idx].userAddress + addressListData[idx].detailAddress;
                         addressListData[idx]["phoneNumberMasking"] = addressListData[idx].phoneNumber;
                         if(!addressListData[idx].addressNickName) addressListData[idx].addressNickName = "집";
+                        // BTOCSITE-5938-51 s
+                        addressListData[idx]["memberInfoAddress"] = addressListData[idx].member_info_address;
+                        addressListData[idx]["modHref"] = modHref;
+                         // BTOCSITE-5938-51 e
                         $('.addressListWrap').append(vcui.template(addressListTemplate, addressListData[idx]));
 
                         if(addressListData[idx].defaultAddress) isDefault = true;
