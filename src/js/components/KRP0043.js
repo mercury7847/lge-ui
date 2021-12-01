@@ -63,7 +63,7 @@
                 self.validation = new vcui.ui.CsValidation('#submitForm', { 
                 
                 });
-                //self.requestQnaListData();
+                self.requestQnaListData({"questionTypeCode":"ALL","queTypeName":"문의유형 전체","page": 1});
             });
         },
         settings : function (){
