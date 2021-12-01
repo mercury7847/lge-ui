@@ -39,10 +39,12 @@
             '</div>' +
             '{{/if}}' +
             '<div class="btn-wrap">' +
-                '{{#if (answered == "N") }} ' + 
+                '{{#if (editable == "Y") }} ' + 
                 '<button class="modi-btn" type="button" data-href="" data-control="modal" data-name="modify">수정</button>' + 
                 '{{/if}}' +
+                '{{#if (deletable == "Y") }} ' + 
                 '<button class="del-btn" type="button" data-name="delete">삭제</button>' +
+                '{{/if}}'
             '</div>' +
         '</div>' +
     '</li>';
@@ -79,17 +81,6 @@
             self.$qnaType = self.$pdpQna.find('.KRP0043');
             self.$dataModelId = self.$qnaType.attr('data-model-id');
             self.$qnaList = self.$qnaType.find('ul.qna-result-lists');
-            
-            
-            // self.$queBox = self.$qnaType.find('.que-box');
-            // self.$queTit = self.$queBox.find('.tit');
-            // self.$queDesc = self.$queBox.find('.desc');
-            // self.$queImgWrap = self.$queBox.find('.img-wrap');
-            // self.$ansBox = self.$qnaType.find('.ans-box');
-            // self.$ansTit = self.$ansBox.find('.tit');
-            // self.$ansDesc = self.$ansBox.find('.desc');
-            // self.$ansDateWrap = self.$ansBox.find('.ans-date-wrap');
-            // self.$ansDate = self.$ansDateWrap.find('.ans-date');
 
             self.$modifyBtn = self.$qnaType.find('.modi-btn');
             self.$deleteBtn = self.$qnaType.find('.del-btn');
@@ -105,13 +96,7 @@
             self.$writeTitle = self.$writePopup.find('#title');
             self.$writeDesc = self.$writePopup.find('#content');
 
-            //self.$myPageLink = self.$writePopup.find('.underline');
-
-            //self.$completeBtn = self.$writePopup.find('.btn-group');
-            //self.$fileDelBtn = self.$writePopup.find('.btn-file-del'); //출처 확인
-            
             self.$secretChkBtn = self.$writePopup.find('#privateFlag');
-            //self.$confirmBtn = self.$writePopup.find('.btn-confirm');
         },
         bindEvents : function() {
             var self = this;
@@ -225,8 +210,8 @@
         requestQnaListData : function(param){
             console.log("QnA List - API request !!");
             console.log(param);
-            
-            var typeSelText = $('#cusomtSelectbox_7_button > a > span.ui-select-text');
+
+            var typeSelText = $('.KRP0043 .ui-selectbox-wrap .ui-selectbox-view').find('.ui-select-text');
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
             var selectedQTypeName = param.queTypeName;
@@ -300,6 +285,8 @@
 
                 var qTypeList = self.$writeQnaType.find('option');
                 var qTypeBtnSelectedText = $("#type_desc .ui-selectbox-wrap").find('.ui-selectbox-view > a > .ui-select-text');
+                var imageInputFiles = $('.ui_imageinput').find('input[type="file"]');
+
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
@@ -319,6 +306,8 @@
                 } else {
                     // modify
                     console.log("modify");
+                    $('.file-item').find('.file-preview').empty();
+                    $('.file-item').find('.file-name input').prop('placeholder','');
                     
                     if($('#popupWrite').hasClass='write') {
                         $('#popupWrite').removeClass('write');
@@ -329,12 +318,18 @@
                     $(param.selector).attr('data-href','#popupWrite');
 
                     lgkorUI.requestAjaxData(ajaxUrl,{},function(result){
+                        
                         var data = result.data;
+                        
                         if(result.status === "success") {
                             var qTitle = data.questionTitle;
                             var qContent = data.questionContent;
                             var secretFlag = data.secret;
                             var qTypeCode = data.questionTypeCode;
+                            var imgfiles = data.files;
+                            
+
+                            console.log(imgfiles);
 
                             self.$writeTitle.val(qTitle);
                             self.$writeDesc.val(qContent);
@@ -348,6 +343,36 @@
                                     qTypeList[i].selected = true;
                                     qTypeBtnSelectedText.html(qTypeList[i].textContent);
                                 }
+                            }
+
+                            for(var i=0; i < imageInputFiles.length; i++){
+                                (function(i) {
+                                    var $fileBox = imageInputFiles[i].closest('.file-item')
+                                    var $fileBoxInputfile = imageInputFiles[i].closest('input[type=file]');
+                                    var $filePreview = $fileBox.querySelector('.file-preview');
+                                    var $fileName = $fileBox.querySelector('.name');
+                                    var reader = new FileReader();
+                                    if(imgfiles[i]) {
+                                        $.ajax({
+                                            url: imgfiles[i].filePath,
+                                            xhrFields:{
+                                                responseType: 'blob'
+                                            },
+                                            success: function(data){
+                                            console.log("data %o",data)
+                                            reader.readAsDataURL(data);
+                                            reader.onload = function(e){
+                                                var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
+                                                $fileBox.classList.add('on');
+                                                imageInputFiles[i].dataset.fileFlag = "delete";
+                                                $filePreview.innerHTML = imgTag;
+                                                $fileName.value = imgfiles[i].fileName;
+                                            }
+
+                                            }
+                                        });
+                                        }
+                                })(i);
                             }
                         } else {
                             console.log("fail");
@@ -457,7 +482,7 @@
                         //신규 업로드시 삭제된 파일 체크
                         var $file = $("#"+key);
                         if(!param[key] &&  $file.data('fileFlag') === 'insert') {
-                            $file.removeData('fileFlag')
+                            $file.removeData('fileFlag');
                         } 
 
                         //글작성 ,수정시 fileFlag 보내줌
@@ -548,11 +573,10 @@
             $fileItem.find("input[type='file']").data('fileFlag','delete');
             $fileItem.find('.file-preview').empty();
             $fileItem.find('.file-name input').prop('placeholder','');
-            $fileItem.removeClass('modify');
+            //$fileItem.removeClass('modify');
         },
         formValidationChk : function(param) {
             var self = this;
-            //var qnaTypeVal =  self.$writeQnaType.find('option:selected').val();
             var qnaTypeVal = $('.ui_selectbox').vcSelectbox('value'); 
             var titleVal = self.$writeTitle.val();
             var descVal = self.$writeDesc.val();
