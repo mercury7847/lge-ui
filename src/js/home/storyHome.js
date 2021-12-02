@@ -177,7 +177,7 @@
             bindEvent();
 
             var moveScrollTop = 0;
-            if(window.sessionStorage){                
+            if(window.sessionStorage){    
                 var storyUserHeight = sessionStorage.getItem('storyUserHeight');
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
@@ -653,12 +653,6 @@
 
             overflow = "auto";
             contype = $(box).data('contentsType');
-            
-            if(window.innerWidth < 480){
-                boxheight = boxwidth * 1.25 + 50;
-            }else{
-                boxheight = boxwidth * 1.25;
-            }
            
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
