@@ -69,6 +69,8 @@
             },
             receiverUser: {
                 required: true,
+                // BTOCSITE-5938-396
+                minLength: 1,
                 maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
                 msgTarget: '.err-block'
@@ -103,7 +105,8 @@
         $('#address-regist-form').find('input[name="detailAddress"]').attr('maxlength', '50'); // 상세주소 글자수 제한 50
 
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
-        addressInfoValidation.on()
+        // BTOCSITE-5938-396
+        //addressInfoValidation.on()
 
         addressInfoValidation.on('errors', function(e,data){
 
