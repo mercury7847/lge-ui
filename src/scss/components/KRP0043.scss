@@ -253,6 +253,7 @@
                 &.notice {
                     p.desc {
                         margin-left: 0;
+                        white-space : pre-line;
                     }
                     .img-wrap {
                         height: 100%;

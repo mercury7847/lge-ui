@@ -1,11 +1,36 @@
 // ★ 공지사항 관련 게시글은 별도의 어드민 api개발이 완료된 이 후 , 따로 api로 그린다고함. cms에서 붙임
 (function (){
-    var qnaListTmpl = 
-    '<li class="lists" data-que-no="{{ questionNo }}" {{#if (secret == "Y") }}data-secret-flag="{{secret}}"{{/if}}>' +
+    var noticeListTmpl = 
+    '<li class="lists notice" data-noticeid="{{ noticeId }}" data-noticetype="{{ noticeType }}">' +
         '<div class="head">' +
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
-                '<span class="badge{{#if (answered == "Y") }} active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
-                '<span class="title line1">{{ questionTitle }}</span>' +
+                '<span class="badge active notice">공지</span>' + 
+                '<span class="title line1">{{ noticeTitle }}</span>' +
+                '<span class="writer"> {{ creationName }} </span>' +
+                '<span class="date"> {{ creationDate }} </span>' +
+                '<span class="blind ui_accord_text">내용 더 보기</span>' +
+            '</a>' +
+        '</div>' +
+        '<div class="accord-cont ui_accord_content" style="display:none;">' +
+            '<div class="que-box notice">' +
+                '<div>' +
+                    '<p class="desc">' +
+                        '{{ noticeContent }}' +
+                    '</p>' +
+                    '<div class="img-wrap">' +
+                        '<img src="{{ noticeImagePath }}" alt="">' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</li>';
+
+    var qnaListTmpl = 
+    '<li class="lists" data-que-no="{{ questionNo }}" {{#if (secret == "Y") }}data-secret-flag="{{secret}}"{{/if}} data-enabled="{{enabled}}">' +
+        '<div class="head">' +
+            '<a href="#n" class="accord-btn {{#if (enabled == true) }}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+                '<span class="badge {{#if (answered == "Y") }}active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
+                '<span class="title line1{{#if (secret == "Y") }} on{{/if}}">{{ questionTitle }}</span>' +
                 '<span class="writer"> {{ creationUserName }} </span>' +
                 '<span class="date"> {{ creationDate }} </span>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
@@ -60,10 +85,11 @@
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
-                self.validation = new vcui.ui.CsValidation('#submitForm', { 
+ 
+                self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","queTypeName":"문의유형 전체","page": 1});
+                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","page": 1});
             });
         },
         settings : function (){
@@ -124,28 +150,13 @@
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"queTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
-            });            
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
+            });
 
-            //파일삭제하기 - 문의글 수정시
-            // self.$writePopup.find('.btn-file-del').off('click').on('click',function(){
-            //     var self = this;
-            //     lgkorUI.confirm('', {
-            //         title:'삭제하시겠습니까?', 
-            //         cancelBtnName: '아니오', okBtnName: '예',
-            //         ok : function (e,data){ 
-            //             self.uploadFileDelete();
-
-            //         }
-            //     });
-            // });
-
-            self.$writePopup.find('.btn-confirm').off('click').on('click', function() {
+            self.$writePopup.find('.btn-confirm').on('click', function() {
                 
                 var param = $(this).closest("#popupWrite").data('param');
                 var valChk = self.formValidationChk(param);
-                
-                // console.log("test : "+param.mode);
                 if(valChk){
                     lgkorUI.confirm('', {
                         title:param.mode === 'write' ? '저장 하시겠습니까?' : '게시물을 수정하시겠습니까?',
@@ -162,8 +173,22 @@
                 }
             });
 
+            // qna 리스트 선택시, 비밀글 alert 처리
+            self.$qnaList.on('click', 'li', function(){
+                var queNo = $(this).data("secretFlag");
+                var enabled = $(this).data("enabled");
+
+                if(queNo == "Y" && enabled != true) {
+                    lgkorUI.alert("", {
+                        title: '비밀글은 작성자만 조회할  수 있습니다.',
+                        okBtnName : '확인'
+                    });
+                    
+                    return;
+                }
+            })
             //삭제하기
-            self.$qnaType.find('.del-btn').off('click').on('click', function(){
+            self.$qnaList.on('click', '.del-btn', function(){
                 var modelId = $('.KRP0043').attr('data-model-id');
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 lgkorUI.confirm('', {
@@ -173,8 +198,7 @@
                         self.requestQnaDelete({"modelId":modelId, "queNo":queNo});
                     }
                 }); 
-            });
-
+            })
             //문의하기 
             self.$reqBtn.on('click', function(){
                 var mode = self.$reqBtn.attr('data-name');
@@ -184,7 +208,7 @@
             });
 
             //수정하기
-            self.$qnaType.find('.modi-btn').off('click').on('click', function(){
+            $('.qna-result-lists').on('click', '.modi-btn', function(){
                 var mode = self.$modifyBtn.attr('data-name');
                 var modelId = self.$dataModelId;
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
@@ -196,82 +220,124 @@
             });
 
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
-                var chkVal = self.$sortSecChk.find('input[type=checkbox]:checked').val();
-                if (chkVal == "on") {
-                    $('ul.qna-result-lists > li').each(function(idx,item){
-                        if($(this).data('secretFlag') == "Y"){
-                            $(this).hide();
-                        }
-                    });
+                //var chkVal = self.$sortSecChk.find('input[type=checkbox]:checked').val();
+                // if (chkVal == "on") {
+                //     $('ul.qna-result-lists > li').each(function(idx,item){
+                //         if($(this).data('secretFlag') == "Y"){
+                //             $(this).hide();
+                //         }
+                //     });
+                // } else {
+                //     $('ul.qna-result-lists > li').show();
+                // }
+
+                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var questionTypeName = self.$sortSelect.vcSelectbox('text');
+                if(excludePrivate === "on" ) {
+                    excludePrivate = "Y";
                 } else {
-                    $('ul.qna-result-lists > li').show();
+                    excludePrivate = "N";
                 }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
             });
-        },           
+        },
         // qna-list - get
         requestQnaListData : function(param){
             console.log("QnA List - API request !!");
             console.log(param);
-
+            
             var typeSelText = $('.KRP0043 .ui-selectbox-wrap .ui-selectbox-view').find('.ui-select-text');
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
-            var selectedQTypeName = param.queTypeName;
-            
+            var selectedQTypeName = param.listTypeName;
             typeSelText.html(selectedQTypeName);
-            
+
             lgkorUI.showLoading();
-            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
-                if(result.status == "success") {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                console.log('result !!!!!', result)
                     var data = result.data.qnaList;
+                    var noticeData = result.data.qnaNoticeList;//공지사항
+                    var html = ""; // 공지사항용
+                    var innerHTML = ""; //qna list용
+                    
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
                     var selectedQTypeVal = param.questionTypeCode;
-                    
-                    var html = "";
 
-                    if(data.length > 0) {
-      
-                        // qna 리스트 문의 건수, 999건 초과시 999+
-                        if(totalCount > 999 ){
-                            self.$totalCount.text("999+");
+                    console.log('request qna ')
+                    if(result.status == "success"){
+                        if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
+                            console.log('request qna  length is')
+                            noticeData.forEach(function(item){
+                                console.log('notice item');
+                                html += vcui.template(noticeListTmpl, item);
+                                //console.log("html", html)
+                            });
+                            //self.$qnaList.empty().append(html);
+                            self.$qnaList.empty();
+                            self.$qnaList.append(html);
+
+                            //self.$qnaType.find('.qna-result-lists').empty();
+                            // qna 리스트 문의 건수, 999건 초과시 999+
+                            if(totalCount > 999 ){
+                                self.$totalCount.text("999+");
+                            } else {
+                                self.$totalCount.text(totalCount);
+                            }
+    
+                            //리스트 페이지 노출
+                            // select-box 문의유형 선택값 필터처리
+                            if(selectedQTypeVal == 'ALL'){
+                                data.forEach(function(item){
+                                    item.enabled = false;
+                                    if( item.blocked == "N") {
+                                        if(item.sameId == "Y" || (item.sameId == "N" && item.secret == "N")) {
+                                            item.enabled = true    
+                                        } 
+                                    } 
+                                    innerHTML += vcui.template(qnaListTmpl, item);
+                                });
+                            } else {
+                                //let selArr = data.filter(key => key.questionTypeCode == selectedQTypeVal);
+                                var selArr = data.filter(function(key){
+                                    return key.questionTypeCode == selectedQTypeVal;
+                                });
+    
+                                selArr.forEach(function(item){
+                                    item.enabled = false;
+                                    if( item.blocked == "N") {
+                                        if(item.sameId == "Y" || (item.sameId == "N" && item.secret == "N")) {
+                                            item.enabled = true    
+                                        } 
+                                    } 
+                                    innerHTML += vcui.template(qnaListTmpl, item);
+                                });
+    
+                            }
+                            console.log(innerHTML)
+                            self.$qnaList.append(innerHTML);
+                            //self.bindEvents();
+                            //console.log("테스트" +self.$qnaListNotice.last());
+                            self.$pagination.vcPagination('setPageInfo', pagination);
+                  
+                            lgkorUI.hideLoading();
                         } else {
-                            self.$totalCount.text(totalCount);
+                            self.$qnaType.find('.qna-result-lists').hide();
+                            self.$nodata.show();
+                            gkorUI.hideLoading();
                         }
-
-                        //리스트 페이지 노출
-                        // select-box 문의유형 선택값 필터처리
-                        if(selectedQTypeVal == 'ALL'){
-                            data.forEach(function(item){
-                                html += vcui.template(qnaListTmpl, item);
-                            });
-                        } else {
-                            //let selArr = data.filter(key => key.questionTypeCode == selectedQTypeVal);
-                            var selArr = data.filter(function(key){
-                                return key.questionTypeCode == selectedQTypeVal;
-                            });
-
-                            selArr.forEach(function(item){
-                                html += vcui.template(qnaListTmpl, item);
-                            });
-                         
-                        }
-
-                        self.$qnaList.empty().append(html);
-                        self.bindEvents();
-                        self.$pagination.vcPagination('setPageInfo', pagination);
-            
                     } else {
                         self.$qnaType.find('.qna-result-lists').hide();
                         self.$nodata.show();
+                        gkorUI.hideLoading();
                     }
-                    lgkorUI.hideLoading();
-                } else {
-                    self.$qnaType.find('.qna-result-lists').hide();
-                    self.$nodata.show();
-                    lgkorUI.hideLoading();
-                }
-            }, 'POST');
+                    //success end
+            });
+            
+            //qna list 호출
+            //lgkorUI.showLoading();
+            
         },
         // qna-read-popup - get
         requestQnaReadPop : function(param) {
@@ -350,7 +416,7 @@
                             for(var i=0; i < imageInputFiles.length; i++){
                                 (function(i) {
                                     var $fileBox = imageInputFiles[i].closest('.file-item')
-                                    var $fileBoxInputfile = imageInputFiles[i].closest('input[type=file]');
+                                    //var $fileBoxInputfile = imageInputFiles[i].closest('input[type=file]');
                                     var $filePreview = $fileBox.querySelector('.file-preview');
                                     var $fileName = $fileBox.querySelector('.name');
                                     var reader = new FileReader();
@@ -373,8 +439,16 @@
 
                                             }
                                         });
-                                        }
+                                    }
                                 })(i);
+
+                                //보완할것 1201
+                                // let file = new File([data], imgfiles[i].filePath, {
+                                //     type : "image/png",
+                                // });
+                                // imageInputFiles[i].files = file.files;
+                                // $(this).trigger("change");
+
                             }
 
                         } else {
@@ -497,12 +571,14 @@
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
                         lgkorUI.hideLoading();
-                        $('#popupWrite').vcModal('hide');
+                        
                         lgkorUI.alert("", {
-                            title: "게시물이 수정되었습니다."
-                            
+                            title: "게시물이 수정되었습니다.",
+                            ok: function(){
+                                $('#popupWrite').vcModal('hide');
+                            }
                         });
-                        location.reload();
+                        //location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
@@ -577,18 +653,18 @@
             // })
         },
         // 글 수정시 파일 삭제 함수
-        uploadFileDelete: function(el) {
-            var self = this;
-            var $fileItem = $(el).closest('.file-item');
-            //$fileItem.find("input[type='file']").data('fileFlag','delete');
-            $fileItem.find("input[type='file']").data('fileFlag',''); // 1201 변경
-            $fileItem.find('.file-preview').empty();
-            $fileItem.find('.file-name input').prop('placeholder','');
-            //$fileItem.removeClass('modify');
-        },
+        // uploadFileDelete: function(el) {
+        //     var self = this;
+        //     var $fileItem = $(el).closest('.file-item');
+        //     //$fileItem.find("input[type='file']").data('fileFlag','delete');
+        //     $fileItem.find("input[type='file']").data('fileFlag',''); // 1201 변경
+        //     $fileItem.find('.file-preview').empty();
+        //     $fileItem.find('.file-name input').prop('placeholder','');
+        //     //$fileItem.removeClass('modify');
+        // },
         formValidationChk : function(param) {
             var self = this;
-            var qnaTypeVal = $('.ui_selectbox').vcSelectbox('value'); 
+            var qnaTypeVal = self.$writePopup.find('.ui_selectbox').vcSelectbox('value'); 
             var titleVal = self.$writeTitle.val();
             var descVal = self.$writeDesc.val();
             
