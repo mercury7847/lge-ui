@@ -81,7 +81,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 	<div class="form-wrap loveSharing">
 		 <!--신청 작성 폼-->
-		<form action="/suggestions-complete" method="post" id="loveSharingForm" class="write-form" name="loveSharingForm" data-ajax="https://www.lge.co.kr/lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+		<form action="/suggestions-complete" method="post" id="loveSharingForm" class="write-form" name="loveSharingForm" data-ajax="../../../../lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
 
 			<p class="form-desc">하기 항목은 귀 단체의 제안프로그램을 평가하기 위한 기초자료로 충실히 작성하여 주시기 바랍니다. <br>작성내용이 불충분할 경우, 심사대상에서 제외됩니다. <br>또한 허위로 기재한 사실이 발견될 시에는 채택된 후라도 취소될 수 있으니 유의하여 주시기 바랍니다.</p>
 
@@ -134,7 +134,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</dd>
 			</dl>
 			<!--//[E]신청 담당자 정보-->
-
 
 			<!--[S]단체 정보-->
 			<div class="innder bdb">
@@ -274,11 +273,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<dl class="forms">
 				<dt class="tit">
-					<label for="textContent" class="req">제안 내용<span class="blind">필수입력</span></label>
+					<label for="commentContent" class="req">제안 내용<span class="blind">필수입력</span></label>
 				</dt>
 				<dd class="conts">
 					<div class="input-wrap">
-						<textarea id="textContent" name="textContent" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)" data-required="true"></textarea>
+						<textarea id="commentContent" name="commentContent" placeholder="제안하고자 하는 프로그램의 간략한 개요를 기술해주시기 바랍니다. (사업대상, 예상 수혜인원/지역, LG전자와의 관련성은 반드시 포함)" data-required="true" data-format="koreng"></textarea>
 					</div>
 					<div class="btm-more err-block">
 						<p class="err-msg"></p>
@@ -321,7 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!--//신청 작성 폼-->
 
 		<!--신청 작성 완료 확인-->
-		<div class="write-form-confirm" style="display: block;">
+		<div class="write-form-confirm">
 
 			<p class="form-desc">신청하신 후원 요청에 대해서는, 내부 검토 후 약 2주 내에 입력하신 이메일로 결과를 알려 드립니다.</p>
 
@@ -336,7 +335,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">담당자</span>
 				</dt>
 				<dd class="conts">
-					<span class="write-data" data-user-name="aaa"></span>
+					<span class="write-data" data-value="userName"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -344,7 +343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">휴대폰</span>
 				</dt>
 				<dd class="conts">
-					<span class="write-data" data-phone-no=""></span>
+					<span class="write-data" data-value="phoneNo"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -352,7 +351,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">이메일</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="userEmail"></span>
 				</dd>
 			</dl>
 			<!--//[E]신청 담당자 정보-->
@@ -369,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">대표자</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="groupOwner"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -377,7 +376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">단체명</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="groupName"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -385,7 +384,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">고유번호증</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="groupNumber"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -393,15 +392,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">사무실 전화번호</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="groupTel"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
 				<dt class="tit">
 					<span class="label">주소</span>
 				</dt>
-				<dd class="conts">
-
+				<dd class="conts address-cont">
+					<span class="write-data" data-value="zipCode"></span>
+					<span class="write-data" data-value="userAddress"></span>
+					<span class="write-data" data-value="detailAddress"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -409,7 +410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">홈페이지</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="homepage"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -417,7 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">기부 영수증 발급 여부</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="receipt"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -425,7 +426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">고유번호증 사본첨부</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="fileUpload"></span>
 				</dd>
 			</dl>
 			<!--//[E]단체 정보-->
@@ -440,8 +441,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<dt class="tit">
 					<span class="label">제안 내용</span>
 				</dt>
-				<dd class="conts">
-
+				<dd class="conts textarea-cont">
+					<span class="write-data" data-value="commentContent"></span>
 				</dd>
 			</dl>
 			<dl class="forms">
@@ -449,7 +450,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<span class="label">사업계획서 첨부</span>
 				</dt>
 				<dd class="conts">
-
+					<span class="write-data" data-value="fileUpload2"></span>
 				</dd>
 			</dl>
 			<!--//[E]사랑나눔 제한 내용-->
@@ -457,7 +458,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="btn-wrap">
 				<div class="inner">
 					<button type="button" class="btn gray modifyBtn"><span>수정</span></button>
-					<button type="button" class="btn applyBtn"><span>완료</span></button>
+					<button type="button" class="btn submitBtn"><span>완료</span></button>
 				</div>
 			</div>
 		</div>
@@ -467,16 +468,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!--//[E]BTOCSITE-7329 회사소개 내 사랑나눔 요청 페이지 제작의 건-->
 <style>
-
 	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램*/
-	.company .accordion-wrap .tit.dot {position:relative; padding-left:12px;}
-	.company .accordion-wrap .tit.dot:before {content:''; display:inline-block; position:absolute; top:11px; left:0; width:3px; height:3px; background-color:#000; border-radius:100%;}
-	.company .accordion-wrap .agree-wrap {margin-top:14px; border:1px solid #ddd; border-radius:8px;}
-	.company .accordion-wrap .agree-wrap .txt-wrap {overflow-y: scroll; height:268px; padding:25px 24px 17px 24px; font-size:14px; line-height:24px; border-bottom:1px solid #ddd;}
-	.company .accordion-wrap .agree-wrap .btn-agree {padding: 17px 24px;}
 	.company .accordion-wrap ul.bull.num_bull > li {padding-left:20px;text-indent: -20px;}
 	.company .accordion-wrap ul.bull.num_bull > li:before {display:none;}
-	.company .accordion-wrap .policy_box {font-weight:400;color:#666}
 	.company .accordion-wrap .policy_box h4 {font-size:14px;font-weight: normal;color: #666;}
 	.company .accordion-wrap .policy_box h5{margin-top:35px;padding-top:37px;font-size:14px;font-weight:400;color:#666;border-top:1px solid #ccc}
 	.company .accordion-wrap .policy_box p{color:#666;line-height:1.714;margin-top:12px}
@@ -484,20 +478,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .accordion-wrap .policy_box table{margin:20px 0 25px;font-size:14px;color:#666;}
 	.company .accordion-wrap .policy_box table th,
 	.company .accordion-wrap .policy_box table td {font-size:14px;color:#666;}
-	.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn-apply {background:#da0f47;}
-	.company .accordion-wrap.btmBtn > ul > .lists .accord-cont .btnArea .btn + .btn-apply {margin-left:30px;}
 
 	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청*/
-	.company .form-wrap.loveSharing {max-width:1460px;margin:0 auto;margin-top:12px;padding:0 40px}
+	.company .form-wrap.loveSharing {max-width:1460px;margin:12px auto 0;padding:0 40px}
 	.company .form-wrap.loveSharing .form-desc {margin:-24px 0 100px; text-align:center; font-size:16px;line-height:1.63;}
 	.company .form-wrap.loveSharing .bdb {border-bottom:2px solid #000;padding-bottom:15px}
 	.company .form-wrap.loveSharing .reqchk {font-size:16px;padding-top:20px}
 	.company .form-wrap.loveSharing .reqchk::before {content:"*";display:inline-block;margin-left:1px;margin-right:2px;color:#ec455a;font-size:inherit;line-height:inherit;vertical-align:top}
 	.company .form-wrap.loveSharing .forms {margin-top:20px}
-	.company .form-wrap.loveSharing .forms+.innder {margin-top:80px}
-	.company .form-wrap.loveSharing .forms .conts .input-wrap {width:100%}
-	.company .form-wrap.loveSharing .forms .conts .phone-input-wrap {width:320px;height:48px;display:inline-block}
-	.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .email-input-wrap {width:320px;display:inline-block}
+	.company .form-wrap.loveSharing .forms + .innder {margin-top:80px}
 	.company .form-wrap.loveSharing .forms .cell .btn {position:relative;min-width:78px;}
 	.company .form-wrap.loveSharing .forms .cell .btn input[type="file"] {min-width:auto;}
 	.company .form-wrap.loveSharing .rdo-wrap input+label {margin-right:30px}
@@ -510,11 +499,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	.company .form-wrap.loveSharing .file-box .file-input .file-label {border:none}
 	.company .form-wrap.loveSharing .file-box .file-lists {opacity:0;position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
 	.company .form-wrap.loveSharing .file-box .file-lists:not(:empty) {opacity:1}
-	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:12px 24px;background:#ededed;}
+	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:10px 15px;background:#ededed;}
 
 	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
 	.company .write-form-confirm {display:none}
-	.company .write-form-confirm .forms .tit {font-size:16px;font-weight:bold}
+	.company .write-form-confirm .forms .tit {font-size:16px;font-weight:bold;line-height:1.63;}
+	.company .write-form-confirm .forms .conts .write-data {display:inline-block;padding:11px 24px;font-size:16px;line-height:1.63;}
+	.company .write-form-confirm .forms .conts.textarea-cont .write-data {word-break:break-word}
+	.company .write-form-confirm .forms .conts.address-cont .write-data:first-child {padding:11px 10px 11px 24px}
+	.company .write-form-confirm .forms .conts.address-cont .write-data + .write-data {padding:11px 2px;}
 
 	/*mobile*/
 	@media screen and (max-width:768px) {
@@ -525,19 +518,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		.company .form-wrap.loveSharing .reqchk {font-size:13px;padding-top:10px;padding-bottom:15px}
 		.company .form-wrap.loveSharing .forms {margin-top:20px}
 		.company .form-wrap.loveSharing .forms+.innder {margin-top:55px}
-		.company .form-wrap.loveSharing .forms .conts .phone-input-wrap {display:flex;width:100%}
 		.company .form-wrap.loveSharing .forms .conts .email-conts-wrap {width:100%;display:flex;flex-direction:column}
-		.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .email-input-wrap {width:100%;display:block;text-align:center}
-		.company .form-wrap.loveSharing .forms .conts .email-conts-wrap .select-wrap {width:100%;display:block;margin-top:10px}
 		.company .form-wrap.loveSharing .forms .conts .addr-box-wrap {width:100%}
 		.company .form-wrap.loveSharing .tit {font-size:18px}
 		.company .form-wrap.loveSharing .btn-wrap {position:fixed;z-index:108;left:0;right:0;bottom:0;width:100%;margin-top:0;}
 		.company .form-wrap.loveSharing .btn-wrap .inner {display:flex;justify-content:center}
 		.company .form-wrap.loveSharing .btn-wrap .btn {width:50%;border-radius:0;padding:16px 10px;font-size:15px;font-weight:400}
 		.company .form-wrap.loveSharing .btn-wrap .btn + .btn {margin-left:0;}
+		.company .form-wrap.loveSharing .write-form .forms .conts {width:100%}
+		.company .form-wrap.loveSharing .file-box .file-lists li {padding:11px 50px 11px 11px}
+		.company .form-wrap.loveSharing .file-box .file-lists li .file-name {font-size:14px}
 
 		/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
-
+		.company .write-form-confirm .forms .tit {display:inline-block;width:30%;font-size:14px;line-height: 1.57;}
+		.company .write-form-confirm .forms .conts {width:70%;margin-top:0;padding-left:12px;}
+		.company .write-form-confirm .forms .conts .write-data {display:inline-block;padding:0;font-size:14px;line-height: 1.57;}
+		.company .write-form-confirm .forms .conts.textarea-cont {display:block;width:100%;margin-top:8px;padding-left:0;}
+		.company .write-form-confirm .forms .conts.textarea-cont .write-data {overflow-y:auto;width:100%;max-height:167px;min-height:100px;padding:6px 10px;border:1px solid #ddd;border-radius: 8px;}
+		.company .write-form-confirm .forms .conts.address-cont .write-data:first-child {display:block;padding:0;}
+		.company .write-form-confirm .forms .conts.address-cont .write-data + .write-data {display:inline;padding:0;}
+		.company .write-form-confirm .forms .conts.address-cont .write-data:nth-child(3) {margin-left:2px}
 	}
 
 </style>

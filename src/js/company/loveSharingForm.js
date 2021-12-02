@@ -1,8 +1,5 @@
 (function() {
     var validation;
-    var dateUtil = vcui.date;
-    var detect = vcui.detect;
-    var isLogin = lgkorUI.isLogin;
 
     var reservation = {
         init: function() {
@@ -83,7 +80,6 @@
                     //고유번호증
                     groupNumber: {
                         required: true,
-                        //maxLength: 10,
                         msgTarget: '.err-block',
                         errorMsg: '고유번호증을 입력해 주세요.',
                         patternMsg: '정확한 고유번호를 입력해주세요.'
@@ -117,9 +113,9 @@
                         patternMsg: '정확한 주소를 입력해주세요.'
                     },
                     //제안 내용
-                    textContent: {
+                    commentContent: {
                         required: true,
-                        minLength: 1,
+                        //minLength: 1,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해 주세요.'
                     },
@@ -151,6 +147,7 @@
                 validation = new vcui.ui.CsValidation('#loveSharingForm', {register:register});
                 self.bindEvent();
             });
+
         },
         validatePhone: function(value){
             var self = this;
@@ -229,26 +226,27 @@
                 }
             });
 
-            $(document).on('keyup', 'input[type="number"]', function(e){
-                var $this = $(this);
-                var v = $this.val();
+            $('input[type="number"]').on({
+                keyup : function(e){
+                    var $this = $(this);
+                    var v = $this.val();
 
-                if( e.keyCode != 8 && e.keyCode != 46) {
-                    if( v != null && v != "") {
+                    if( e.keyCode != 8 && e.keyCode != 46) {
+                        if( v != null && v != "") {
+                            $this.data('oldValue', v);
+                        }
+                    } else {
                         $this.data('oldValue', v);
                     }
-                } else {
-                    $this.data('oldValue', v);
-                }
-            });
+                },
+                blur : function(e){
+                    var $this = $(this);
+                    var v = $this.val();
+                    var oldVal = $this.data('oldValue');
 
-            $(document).on('blur', 'input[type="number"]', function(e){
-                var $this = $(this);
-                var v = $this.val();
-                var oldVal = $this.data('oldValue');
-
-                if( v == null || v == "") {
-                    $this.val(oldVal);
+                    if( v == null || v == "") {
+                        $this.val(oldVal);
+                    }
                 }
             });
 
@@ -269,16 +267,15 @@
 
                 self.param = validation.getAllValues();
 
-console.log("validation.getAllValues()",validation.getAllValues());
-console.log("self.param",self.param);
-
-                if (result.success == true) {
+                if (result.success === true) {
                     lgkorUI.showLoading();
                     self.$writeForm.hide();
                     self.$viewWriteForm.show();
-                    //registerInfoForm();
+                    registerInfoForm();
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 500);
                     lgkorUI.hideLoading();
-                    $(document).scrollTop(0);
                 }else{
                     lgkorUI.alert('', {
                         title:'필수 입력정보가<br>입력되지 않았습니다.'
@@ -297,22 +294,50 @@ console.log("self.param",self.param);
                     }
                 });
             });
+            
+            //신청 버튼 클릭 후 입력 내용 확인 페이지에 value 값 추가
+            function registerInfoForm(){
+                self.$viewWriteForm.find('.write-data').each(function(){
+                    var $this = $(this);
+                    var $feild = $(this).data("value");
+                    $.each(self.param,function(key, value){
+                        if(key === $feild){
+                            if(key === "fileUpload" || key === "fileUpload2"){
+                                $this.text(value.name);
+                            }else if(key === "homepage"){
+                                value === "" ? $this.text("-") : $this.text(value);
+                            }else{
+                                $this.text(value);
+                            }
+                        }
+                    })
+                })
+            };
 
+            //완료 버튼 클릭시
+            self.$completeBtns.find('.submitBtn').on('click', function() {
+                self.requestComplete();
+            });
 
+            //수정 버튼 클릭시
+            self.$completeBtns.find('.modifyBtn').on('click', function() {
+                lgkorUI.showLoading();
+                self.$writeForm.find('.btn-wrap .cancelBtn span').text("수정 취소");
+                self.$writeForm.find('.btn-wrap .applyBtn span').text("수정 신청");
+                self.$writeForm.show();
+                self.$viewWriteForm.hide();
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 500);
+                lgkorUI.hideLoading();
+            });
         },
-
-
-
-
-
         requestComplete: function(){
             var self = this;
 
             var url = self.$submitForm.data('ajax');
             var param = validation.getAllValues();
             var formData = new FormData();
-
-console.log("param",param);
 
             for (var key in param) {
                 formData.append(key, param[key]);
@@ -323,11 +348,17 @@ console.log("param",param);
                 var data = result.data;
 
                 if (data.resultFlag == 'Y') {
-                    //result.data.nomemberId && $('#nomemberId').val(result.data.nomemberId);
-                    self.$submitForm.submit();
+                    lgkorUI.hideLoading();
+                    lgkorUI.alert("", {
+                        title: "사랑나눔 신청이 완료 되었습니다.",
+                        okBtnName: '확인',
+                        ok: function() {
+                            self.$submitForm.submit();
+                            location.href = "/company/sustainable/socialContribution#com-tabs02"
+                        }
+                    });
                 } else {
                     lgkorUI.hideLoading();
-
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
                             title: data.resultMessage
