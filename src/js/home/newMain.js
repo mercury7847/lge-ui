@@ -186,19 +186,8 @@ $(function () {
             }else if(data.name == 'pc'){
                 sliderSet()
                 setVideoCurrentSrc('pc') //BTOCSITE-7335
-            }
+            }           
             
-            $('.btn-info-play').on('click', function() {
-                if($(this).hasClass('pause')){
-                    $(this).removeClass('pause');
-                    $('.info-area').slick('slickPause')
-                    $('.btn-info-play span').text('재생');
-                } else {
-                    $(this).addClass('pause');
-                    $('.info-area').slick('slickPlay');
-                    $('.btn-info-play span').text('멈춤');
-                }
-            });
 
         });   
 
@@ -354,6 +343,18 @@ $(function () {
             this.parentElement.classList.add('video')
             sceneIO.observe(this)
         })
+
+        $('.btn-info-play').on('click', function() {
+            if($(this).hasClass('pause')){
+                $(this).removeClass('pause');
+                $('.info-area').slick('slickPause')
+                $('.btn-info-play span').text('재생');
+            } else {
+                $(this).addClass('pause');
+                $('.info-area').slick('slickPlay');
+                $('.btn-info-play span').text('멈춤');
+            }
+        });
         
         if(isApplication){
             $('header').find('.header-bottom').addClass('app-btm');
