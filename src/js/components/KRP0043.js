@@ -255,7 +255,6 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                console.log('result !!!!!', result)
                     var data = result.data.qnaList;
                     var noticeData = result.data.qnaNoticeList;//공지사항
                     var html = ""; // 공지사항용
@@ -265,14 +264,10 @@
                     var totalCount = result.data.qnaTotalCount;
                     var selectedQTypeVal = param.questionTypeCode;
 
-                    console.log('request qna ')
                     if(result.status == "success"){
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
-                            console.log('request qna  length is')
                             noticeData.forEach(function(item){
-                                console.log('notice item');
                                 html += vcui.template(noticeListTmpl, item);
-                                //console.log("html", html)
                             });
                             //self.$qnaList.empty().append(html);
                             self.$qnaList.empty();
@@ -315,10 +310,7 @@
                                 });
     
                             }
-                            console.log(innerHTML)
                             self.$qnaList.append(innerHTML);
-                            //self.bindEvents();
-                            //console.log("테스트" +self.$qnaListNotice.last());
                             self.$pagination.vcPagination('setPageInfo', pagination);
                   
                             lgkorUI.hideLoading();
@@ -334,9 +326,6 @@
                     }
                     //success end
             });
-            
-            //qna list 호출
-            //lgkorUI.showLoading();
             
         },
         // qna-read-popup - get
@@ -596,7 +585,6 @@
             console.log("QnA 삭제하기 - API request !!");
             var self = this;
             var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
-            console.log(ajaxUrl);
             if(lgkorUI.stringToBool(loginFlag)) {
                 lgkorUI.requestAjaxData(ajaxUrl,param, function(result) {
                     if(result.status === 'success') {
@@ -644,24 +632,7 @@
                     $(this).data('fileFlag','insert');
                 }
             })
-            //1201 추가
-            // self.$writeForm.find('.btn-del').on('click',function(){
-            //     if($(this).data('fileFlag') == 'delete'){
-            //         $(this).data('fileFlag','');
-            //     }
-                
-            // })
         },
-        // 글 수정시 파일 삭제 함수
-        // uploadFileDelete: function(el) {
-        //     var self = this;
-        //     var $fileItem = $(el).closest('.file-item');
-        //     //$fileItem.find("input[type='file']").data('fileFlag','delete');
-        //     $fileItem.find("input[type='file']").data('fileFlag',''); // 1201 변경
-        //     $fileItem.find('.file-preview').empty();
-        //     $fileItem.find('.file-name input').prop('placeholder','');
-        //     //$fileItem.removeClass('modify');
-        // },
         formValidationChk : function(param) {
             var self = this;
             var qnaTypeVal = self.$writePopup.find('.ui_selectbox').vcSelectbox('value'); 
