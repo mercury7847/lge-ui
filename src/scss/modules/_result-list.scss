@@ -143,6 +143,7 @@
             .info-text {
                 display: flex;
                 flex-direction: column;
+                width:100%;
                 //align-items: start;
                 //flex: 1;
                 padding-top: 12px;
@@ -163,10 +164,10 @@
             }
             .spec-info {
                 font-size: 0;
-                max-width: 569px;
+                // max-width: 569px;
                 margin-top: 8px;
                 padding-top: 4px;
-                border-top: 1px solid $color-border;
+                // border-top: 1px solid $color-border;
 
                 @include mobile {
                     margin: 12px 0 0 -126px;
@@ -221,8 +222,8 @@
                 @include mobile {
                     display: block;
                     width: 100%;
-                    margin-top: 10px;
-                    padding-top: 10px;
+                    margin-top: 6px;
+                    padding-top: 6px;
                     // border-top: 1px solid $color-border;
                     text-align: left;
                     &.mo-only { display:block; }
@@ -669,7 +670,7 @@
                 font-weight: $font-weight-bold;
                 padding-right:5px;
                 @include mobile {
-                    font-size: 13px;
+                    font-size: 14px;
                     line-height: 22px;
 
                 }

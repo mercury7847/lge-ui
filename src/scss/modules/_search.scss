@@ -168,16 +168,24 @@
 }
 
 .related-keyword {
+    position: relative;
+    max-width: 678px;
+    height: 42px;
+    margin: 12px auto 16px;
+    padding-right: 26px;
+    text-align: center;
     overflow: hidden;
-    @include pc {
-        max-width: 678px;
-        margin: 16px auto 0;
-        text-align: center;
-    }
+
     .inner {
         position: relative;
         display: inline-block;
         padding-left: 81px;
+
+        @include mobile { 
+            padding-left: 32px;
+
+
+        }
     }
 
     .title {
@@ -223,24 +231,8 @@
         }
     }
 
-    .mobile-more-btn {
-        display: none;
-    }
 
-    // @include mobile {
-        position: relative;
-        height: 42px;
-        margin-top: 12px;
-        padding-right: 26px;
-        .inner {
-            position: relative;
-            display: inline-block;
-            padding-left: 88px;
 
-        }
-        // .title {
-        //     left: 8px;
-        // }
         .mobile-more-btn {
             display: block;
             position: absolute;
@@ -266,7 +258,6 @@
                 }
             }
         }
-    // }
 }
 
 .search-input-layer {
