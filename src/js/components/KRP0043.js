@@ -317,12 +317,12 @@
                         } else {
                             self.$qnaType.find('.qna-result-lists').hide();
                             self.$nodata.show();
-                            gkorUI.hideLoading();
+                            lgkorUI.hideLoading();
                         }
                     } else {
                         self.$qnaType.find('.qna-result-lists').hide();
                         self.$nodata.show();
-                        gkorUI.hideLoading();
+                        lgkorUI.hideLoading();
                     }
                     //success end
             });
@@ -631,7 +631,7 @@
                 if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
                     $(this).data('fileFlag','insert');
                 }
-            })
+            });
         },
         formValidationChk : function(param) {
             var self = this;
