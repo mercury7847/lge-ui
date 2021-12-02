@@ -276,7 +276,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(winwidth > 767){
                 if(self.displayMode != "pc"){
                     self._hamburgerDisabled();
-                    
+                    self.$dimmed.hide(); //BTOCSITE-7335
                     self.$pcNaviWrapper.not('.ui_gnb_accordion').css('display', 'inline-block'); //BTOCSITE-1967
 
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
@@ -487,6 +487,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var $superCategoryNav =$('.nav').not('ui_gnb_accordion').find('.super-category-nav');
 
             $('header, .nav-category-inner').on('mouseleave', function(){
+                if( window.innerWidth > 767) {
                 self._setOut();
                 $superContentLastAnchor = null
                 if($superCategoryNav.hasClass('swiper-container-initialized')) {
@@ -495,6 +496,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                         $superContentLastAnchor.off('keydown.lastAnchor')
                         $superContentLastAnchor = null;
                     }
+                }
                 }
             })
 
@@ -515,8 +517,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     e.preventDefault();
                     if( !$parent.hasClass('on')) {
                         $parent.addClass('on').siblings().removeClass('on');
-                        $navInner.find($currentContent).addClass('on').siblings('.super-category-content').removeClass('on');
-                        $navInner.find($currentContent).find('.ui_carousel_slider').vcCarousel('update')
+                        //BTOCSITE-7335 : pc gnb 이미지 레이지로드
+                        var $curInnerCont = $navInner.find($currentContent);
+                        $curInnerCont.addClass('on').siblings('.super-category-content').removeClass('on');
+                        $curInnerCont.find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
+                        $curInnerCont.find('.ui_carousel_slider').vcCarousel('update')
     
                         $superContentLastAnchor = $navInner.find($currentContent).find('a, button').not('.ui_carousel_hidden').last();
                         lastAnchorKeyEvent();
@@ -575,6 +580,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 item.find('> a').addClass('active');
             }
         },
+        _changeActiveImgSrc: function(img){
+            //BTOCSITE-7335 : pc gnb 이미지 레이지로드
+            var _src = $(img).not('.no-img').attr('src');
+            if( _src != undefined && _src != "") return; 
+            
+            $(img).attr('src', $(img).attr('data-active-src'))
+        },
 
         _showSubContents: function(item){
             var self = this;
@@ -583,8 +595,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var $superCategoryContent = $(item).find('.super-category-content');
             if(categoryLayer.length){
                 if( $superCategoryContent.length ) {
+                    //BTOCSITE-7335 : pc gnb 이미지 레이지로드
+                    $superCategoryContent.filter('.on').find('img[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
                     $superCategoryContent.filter('.on').find('.ui_carousel_slider').vcCarousel('update');
                 } else {
+                    //BTOCSITE-7335 : pc gnb 이미지 레이지로드
+                    categoryLayer.find('img[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
                     categoryLayer.find('.ui_carousel_slider').vcCarousel('update');
                 }
                 
@@ -648,9 +664,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var isSwipe = !!$('#sw_con').length;
 
-            if( isSwipe ) {
-                $('body').addClass('is-main-sticky-header');
-            }            
+            if( isSwipe ) { $('body').addClass('is-main-sticky-header'); }            
 
             /* BTOCSITE-1937 스프레드 메뉴 수정 */
             self.$mobileNaviItems.each(function(idx, item){
@@ -816,10 +830,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     replaceText.text("메뉴 열기");
                     $('.ui_gnb_accordion').vcAccordion("collapseAll");
                 },600);
-
                 self.$dimmed.hide();
 
             } else{
+                self.$mobileMktSlider.find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
+                self.$mobileMktSlider.vcCarousel('update');
+                self._changeActiveImgSrc($('.store-counsel-banner').find('[data-active-src]')[0])
+                self._changeActiveImgSrc($('.mobile-nav-banner').find('[data-active-src]')[0])
                 self.$hamburger.addClass('active');
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 replaceText.text("메뉴 닫기");

@@ -140,7 +140,8 @@ html {
             }
         }
 
-        .nav {
+        .nav {           
+
             height:37px;
             // overflow:hidden;
             white-space: nowrap;
@@ -739,6 +740,11 @@ html {
     @include pc {
         display: inline-block;
 
+        //BTOCSITE-7335 : gnb mobile nav 최초 display none 처리
+        &.mo-nav {
+            display: none;
+        }
+
         > li {
             display: inline-block;
             padding-left: 24px;
@@ -840,7 +846,10 @@ html {
     }
 
     @include mobile {
-
+        //BTOCSITE-7335
+        &.mo-nav {
+            display: block;
+        }
         > li {
             border-top: 2px solid $color-bg;
             &:first-child {
