@@ -32,11 +32,11 @@
                     '<a href="/my-page/care-solution-letter/care-info-detail?letterId={{letterId}}" class="btn-link">자세히 보기</a>' +
                 '</div>' +
 
-                // '{{#if imageServerNameM || imagePathM}}' +
-                //     '<p class="thumb">' +
-                //         '<img src="{{imagePathM}}{{imageServerNameM}}" alt="썸네일 이미지">' +
-                //     '</p>' +
-                // '{{/if}}' +
+                '{{#if imageServerNameM || imagePathM}}' +
+                    '<p class="thumb">' +
+                        '<img src="{{imagePathM}}{{imageServerNameM}}" alt="썸네일 이미지">' +
+                    '</p>' +
+                '{{/if}}' +
                 
             '</div>' +
         '</div>' +
@@ -205,7 +205,7 @@
                 $.each(rows.listData, function(idx, item) { //원래 이거 : rows.listData
 
                     item.subTitle = item.subTitle.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
-                    
+
                     el.append(vcui.template(careSolutionLatterItemTemplate, item));
 
                     //console.log("1111111",rows.listData);
