@@ -182,25 +182,40 @@
                 }
                 var listHTML = "";
                 
-                $.each(rows.listData, function(idx, item) { //원래 이거 : rows.listData
+                // $.each(rows.listData, function(idx, item) { //원래 이거 : rows.listData
                     
-                    //어드민에서 br로 떨어지게 작업
-                    item.subTitle = item.subTitle.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
-                    //console.log(item.subTitle)
+                //     //어드민에서 br로 떨어지게 작업
+                //     item.subTitle = item.subTitle.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+                //     //console.log(item.subTitle)
 
-                    //어드민에서 br로 떨어지게 작업 : 템플릿 구조 html 형식으로
-                    listHTML += vcui.template(careSolutionLatterItemTemplate, item);
+                //     //어드민에서 br로 떨어지게 작업 : 템플릿 구조 html 형식으로
+                //     listHTML += vcui.template(careSolutionLatterItemTemplate, item);
+
+                //     //console.log("1111111",rows.listData);
+                //     //console.log("1111111",data); //안됨
+                //     //console.log("1111111",result); //안됨
+                //     //console.log("rows???", rows);
+
+                //     //each 돌고
+                //     //console.log("rows???", rows.listData[0].stateFlag);
+                // });
+
+                // el.html(listHTML);
+
+                $.each(rows.listData, function(idx, item) { //원래 이거 : rows.listData
+
+                    item.subTitle = item.subTitle.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+
+                    el.append(vcui.template(careSolutionLatterItemTemplate, item));
 
                     //console.log("1111111",rows.listData);
-                    //console.log("1111111",data); //안됨
-                    //console.log("1111111",result); //안됨
+                    //console.log("1111111",data);
+                    //console.log("1111111",result);
                     //console.log("rows???", rows);
 
                     //each 돌고
                     //console.log("rows???", rows.listData[0].stateFlag);
                 });
-
-                el.html(listHTML);
             }
         }
         coupon.init();
