@@ -23,7 +23,7 @@
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
-        '<div class="accord-cont ui_accord_content" style="display:none;">' +
+        '<div class="accord-cont ui_accord_content">' +
             '<div class="latter-acrord_content">' +
                 '<div>' +
                     '<p class="text">' +
