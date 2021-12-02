@@ -743,6 +743,10 @@
             text-align: center;
             display: block;
             margin: 0 auto;
+            margin-top: 64px;
+            @include mobile {
+                margin-top: 32px;
+            }
         }
     }
 }
