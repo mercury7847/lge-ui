@@ -31,7 +31,6 @@ label img {
                 }
             }
         }
-
     }
 }
 
@@ -1424,3 +1423,29 @@ label img {
         @include font-small;
     }
 }
+
+// BTOCSITE-8855 s
+.inquiry-sections{
+    .faq-link{
+        margin-top: 33px;
+        a {
+            img {
+                width:100%;
+                height:auto;
+                &.mobile-only{
+                    display: none;
+                    @include mobile {
+                        display: block;
+                    }
+                }
+                &.pc-only{
+                display: block;
+                    @include mobile {
+                    display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+// BTOCSITE-8855 e
