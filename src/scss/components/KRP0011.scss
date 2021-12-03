@@ -51,11 +51,9 @@
         max-width:1226px;
         margin:0 auto;
         padding:0 40px;
-        // padding:64px;
-        // border-radius:8px;
-        // background:#f4f4f4;
         @include mobile {
-            padding:40px 12px;
+            display: flex;
+            padding:40px 12px 20px;
             border-radius:0;
         }
         .prod-box {
@@ -66,8 +64,16 @@
             @include mobile {
                 width:50%;
             }
+            p.tit {
+                @media screen and (max-width: 323px) {
+                    font-size: 15px;
+                }
+            }
             .product-items {
                 margin:0;
+                @include mobile {
+                    height: calc(100% - 30px);
+                }
                 > li {
                     width:366px;
                     min-height: 466px;
@@ -253,6 +259,13 @@
                     }
                 }
             }
+        }
+
+        .bottom-area {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 

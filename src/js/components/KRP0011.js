@@ -113,25 +113,25 @@
                         var $idx = $(this).parent().index();
                         if($idx === 0){
                             // 구매 탭
-                            if(dataList.compareList.length === 2){
-                                drawTab("purchaseTab", dataList.compareList);
+                            if(dataList.productInfo.length > -1 && dataList.compareList.length === 2){
+                                drawTab("purchaseTab", dataList.productInfo, dataList.compareList);
                             }else{
                                 self.$section.hide();
                             }
                         }else if($idx === 1) {
                             //렌탈 탭
-                            if(dataList.rentalCompareList.length === 2){
-                                drawTab("rentalTab", dataList.rentalCompareList);
+                            if(dataList.rentalProductInfo.length > -1 && dataList.rentalCompareList.length === 2){
+                                drawTab("rentalTab", dataList.rentalProductInfo, dataList.rentalCompareList);
                             }else{
                                 self.$section.hide();
                             }
                         }
                     });
-                    function drawTab(tab,data){
+                    function drawTab(tab,now,recommend){
                         self.$section.show();
                         self.$prodViewNow.empty();
                         self.$prodRecommend.empty();
-                        self.makeProdList(tab, data);
+                        self.makeProdList(tab,now, recommend);
                     };
                 }
                 //유사제품 추천(스펙 비교하기)
@@ -141,24 +141,15 @@
                     lgkorUI.addEqualCompare($(this).data('modelIds'), url);
                 });
             },
-            makeProdList: function(tabType, loopData){
+            makeProdList: function(tabType,now,loopData){
                 var self = this;
-                var $dataProdInfo = dataList.productInfo;
                 var $compareId = [];
 
-                //구매,렌탈 활성화 탭 플래그를 각 data에 값 추가
-                $dataProdInfo.tabName = tabType;
+                $compareId.push(now.modelId); //스펙비교하기에 모델명 추가
+                self.$prodViewNow.append(vcui.template(productItem,now)); //지금보고 있는 상품에 템플릿 그리기
                 $.each(loopData,function(idx,item){
-                    item.tabName = tabType;
                     $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
-                });
-                $compareId.push($dataProdInfo.modelId); //스펙비교하기에 모델명 추가
-
-                //지금보고 있는 상품에 템플릿 그리기
-                self.$prodViewNow.append(vcui.template(productItem,$dataProdInfo));
-                //추천 상품리스트 템플릿 그리기
-                $.each(loopData,function(idx,item){
-                    self.$prodRecommend.append(vcui.template(productItem,item));
+                    self.$prodRecommend.append(vcui.template(productItem,item));//추천 상품리스트 템플릿 그리기
                 });
 
                 //스펙비교하기 버튼에 모델명 교체
