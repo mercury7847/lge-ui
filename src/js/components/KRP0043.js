@@ -125,8 +125,6 @@
             self.$writeTitle = self.$writePopup.find('#title');
             self.$writeDesc = self.$writePopup.find('#content');
 
-            //self.$fileDelBtn = self.$writePopup.find('.btn-file-del'); 
-
             self.$secretChkBtn = self.$writePopup.find('#privateFlag');
         },
         bindEvents : function() {
@@ -235,16 +233,17 @@
             });
             
             //파일 업로드 삭제
-            self.$writePopup.on('click', '.btn-file-del', function(){
-                var el = this;
-                lgkorUI.confirm('', {
-                    title:'삭제하시겠습니까?', 
-                    cancelBtnName: '아니오', okBtnName: '예', 
-                    ok : function (e,data){ 
-                        self.uploadFileDelete(el);
-                    }
-                });
-            });
+            // self.$writePopup.on('click', '.btn-del', function(e){
+            //     var el = this;
+                
+            //     lgkorUI.confirm('', {
+            //         title:'파일을 삭제하시겠습니까?', 
+            //         cancelBtnName: '아니오', okBtnName: '예', 
+            //         ok : function (e,data){ 
+            //             self.uploadFileDelete(el);
+            //         }
+            //     });
+            // });
 
             //나의글보기 이동
             self.$writePopup.find('.underline').off('click').on('click', function(){
@@ -352,7 +351,7 @@
                 var qTypeList = self.$writeQnaType.find('option');
                 var qTypeBtnSelectedText = $("#type_desc .ui-selectbox-wrap").find('.ui-selectbox-view > a > .ui-select-text');
                 var imageInputFiles = $('.ui_imageinput').find('input[type="file"]');
-
+                
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
@@ -385,12 +384,13 @@
                         $('.file-item').removeClass("on");
                         $('.file-item').find('.file-preview').empty();
                         $('.file-item').find('.file-name input').prop('placeholder','');
-                        //$('.file-item').find('.file-name').text('');
+                        $('.file-item').find('.file-name').text('');
                     }
 
                     if($('#popupWrite').hasClass='write') {
                         $('#popupWrite').removeClass('write');
                     }
+                    
                     $('#popupWrite').addClass(param.mode);
                     $('#popupWrite').find('.pop-header > .tit > span').html("수정하기");
 
@@ -435,24 +435,19 @@
                                     var $fileName = $fileBox.querySelector('input.name');
                                     var reader = new FileReader();
                                     if(imgfiles[i]) {
-                                        
-                                     
                                         $.ajax({
                                             url: imgfiles[i].filePath,
                                             xhrFields:{
                                                 responseType: 'blob'
                                             },
                                             success: function(data){
-                                            console.log("data %o",data)
                                             reader.readAsDataURL(data);
-                                            reader.onload = function(e){
-                                        
+                                            reader.onload = function(e){                               
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on');                    
+                                                $fileBox.classList.add('on'); 
+                                                $fileBox.classList.add('modify');              
                                                 $filePreview.innerHTML = imgTag;
-                                                $fileName.value = imgfiles[i].fileName;
-                                             
-                                                
+                                                $($fileName).val(imgfiles[i].fileName);
                                             }
 
                                             }
@@ -647,6 +642,16 @@
                     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                     format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
                     size: '첨부파일 용량은 10mb 이내로 등록 가능합니다.'
+                },
+                delCompleted: function(target){
+                    //BTOCSITE-6032 추가
+                    if( $(target).is('[data-btn="delete"]')) {
+                        var $fileItem = $(target).closest('[data-role="file-item"]');
+                        $fileItem.find("input[type='file']").data('fileFlag','delete');
+                        $fileItem.find('.file-preview').empty();
+                        $fileItem.find('.file-name input').prop('placeholder','');
+                        $fileItem.removeClass('modify');
+                    }
                 }
             });
 
@@ -656,14 +661,6 @@
                     $(this).data('fileFlag','insert');
                 }
             });
-        },
-        // 글 수정시 파일 삭제 함수
-        uploadFileDelete: function(el) {
-            var self = this;
-            var $fileItem = $(el).closest('.file-item');
-            $fileItem.find("input[type='file']").data('fileFlag','delete');
-            $fileItem.find('.file-preview').empty();
-            $fileItem.find('.file-name input').prop('placeholder','');
         },
         formValidationChk : function(param) {
             var self = this;
