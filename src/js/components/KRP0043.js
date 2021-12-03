@@ -43,11 +43,13 @@
                     '<p class="desc">' +
                         '{{ questionContent }}' +
                     '</p>' +
+                    '{{#if files.length > 0}}' +
                     '<div class="img-wrap">' +
                         '{{#each item in files }}' +
                         '<img src="{{ item.filePath }}" alt="{{ item.fileName }}">' +
                         '{{/each}}'+
                     '</div>' +
+                    '{{/if}}' +
                 '</div>' +
             '</div>' +
             '{{#if (answered == "Y") }} ' +
@@ -349,6 +351,14 @@
                     self.$writeTitle.val('');
                     self.$writeDesc.val('');
                     self.$secretChkBtn.attr("checked",false);
+
+                    if($('.file-item').hasClass="on"){
+                        $('.file-item').removeClass("on");
+                        $('.file-item').find('.file-preview').empty();
+                        $('.file-item').find('.file-name input').prop('placeholder','');
+                        $('.file-item').find('.file-name').text('');
+                    }
+                    
                     $('#popupWrite').find('.pop-header > .tit > span').html("문의하기");
                     qTypeBtnSelectedText.html("문의 유형을 선택해주세요");
                     //qTypeList.eq(0).addClass("on");
@@ -363,9 +373,14 @@
                 } else {
                     // modify
                     console.log("modify");
-                    $('.file-item').find('.file-preview').empty();
-                    $('.file-item').find('.file-name input').prop('placeholder','');
                     
+                    if($('.file-item').hasClass="on"){
+                        $('.file-item').removeClass("on");
+                        $('.file-item').find('.file-preview').empty();
+                        $('.file-item').find('.file-name input').prop('placeholder','');
+                        //$('.file-item').find('.file-name').text('');
+                    }
+
                     if($('#popupWrite').hasClass='write') {
                         $('#popupWrite').removeClass('write');
                     }
@@ -402,14 +417,19 @@
                                 }
                             }
                             // imageFiles read.
-                            for(var i=0; i < imageInputFiles.length; i++){
+
+                            for (var i in imgfiles){ 
                                 (function(i) {
-                                    var $fileBox = imageInputFiles[i].closest('.file-item')
+                                    var k = imgfiles[i].fileNo -1;
+
+                                    var $fileBox = imageInputFiles[k].closest('.file-item')
                                     //var $fileBoxInputfile = imageInputFiles[i].closest('input[type=file]');
                                     var $filePreview = $fileBox.querySelector('.file-preview');
-                                    var $fileName = $fileBox.querySelector('.name');
+                                    var $fileName = $fileBox.querySelector('input.name');
                                     var reader = new FileReader();
                                     if(imgfiles[i]) {
+                                        
+                                     
                                         $.ajax({
                                             url: imgfiles[i].filePath,
                                             xhrFields:{
@@ -419,27 +439,22 @@
                                             console.log("data %o",data)
                                             reader.readAsDataURL(data);
                                             reader.onload = function(e){
+                                        
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
                                                 $fileBox.classList.add('on');
-                                                imageInputFiles[i].dataset.fileFlag = "delete"; //추가 1201
+                                                imageInputFiles[k].dataset.fileFlag = "delete"; //추가 1201
                                                 $filePreview.innerHTML = imgTag;
+                                                //$fileName.value = imgfiles[i].fileName;
                                                 $fileName.value = imgfiles[i].fileName;
+                                             
+                                                
                                             }
 
                                             }
                                         });
                                     }
                                 })(i);
-
-                                //보완할것 1201
-                                // let file = new File([data], imgfiles[i].filePath, {
-                                //     type : "image/png",
-                                // });
-                                // imageInputFiles[i].files = file.files;
-                                // $(this).trigger("change");
-
                             }
-
                         } else {
                             console.log("fail");
                         }
@@ -499,19 +514,23 @@
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
                         lgkorUI.hideLoading();
-                        $('#popupWrite').vcModal('hide');
                         lgkorUI.alert("", {
-                            title: "게시물이 등록되었습니다."
-                            
+                            title: "게시물이 등록되었습니다.",
+                            ok : function(){
+                                $('#popupWrite').vcModal('hide');
+                            }
                         });
                         location.reload();
                         //location.href = "#pdp_qna"; //새로고침 후 pdp_qna 탭으로 이동시키는 방법 알아보기
                     } else {
                         lgkorUI.hideLoading();
-                        $('#popupWrite').vcModal('hide');
+                        
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
+                                ok : function(){
+                                    $('#popupWrite').vcModal('hide');
+                                }
                             });
                         }
                         
