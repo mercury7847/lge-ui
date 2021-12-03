@@ -91,7 +91,7 @@
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","page": 1});
+                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","page": 1});
             });
         },
         settings : function (){
@@ -125,6 +125,8 @@
             self.$writeTitle = self.$writePopup.find('#title');
             self.$writeDesc = self.$writePopup.find('#content');
 
+            //self.$fileDelBtn = self.$writePopup.find('.btn-file-del'); 
+
             self.$secretChkBtn = self.$writePopup.find('#privateFlag');
         },
         bindEvents : function() {
@@ -147,6 +149,21 @@
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
                 var questionTypeName = self.$sortSelect.vcSelectbox('text');
                 var excludePrivate = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
+                if(excludePrivate === "on" ) {
+                    excludePrivate = "Y";
+                } else {
+                    excludePrivate = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
+            });
+
+            
+
+            // 비밀글 제외 체크
+            self.$qnaType.find('#secretSort').off('click').on('click', function(){
+                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var questionTypeName = self.$sortSelect.vcSelectbox('text');
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
@@ -216,32 +233,22 @@
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
-
-            self.$writePopup.find('.underline').off('click').on('click', function(){
-                window.open('/my-page/email-inquiry');
+            
+            //파일 업로드 삭제
+            self.$writePopup.on('click', '.btn-file-del', function(){
+                var el = this;
+                lgkorUI.confirm('', {
+                    title:'삭제하시겠습니까?', 
+                    cancelBtnName: '아니오', okBtnName: '예', 
+                    ok : function (e,data){ 
+                        self.uploadFileDelete(el);
+                    }
+                });
             });
 
-            self.$qnaType.find('#secretSort').off('click').on('click', function(){
-                //var chkVal = self.$sortSecChk.find('input[type=checkbox]:checked').val();
-                // if (chkVal == "on") {
-                //     $('ul.qna-result-lists > li').each(function(idx,item){
-                //         if($(this).data('secretFlag') == "Y"){
-                //             $(this).hide();
-                //         }
-                //     });
-                // } else {
-                //     $('ul.qna-result-lists > li').show();
-                // }
-
-                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                var questionTypeName = self.$sortSelect.vcSelectbox('text');
-                if(excludePrivate === "on" ) {
-                    excludePrivate = "Y";
-                } else {
-                    excludePrivate = "N";
-                }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
+            //나의글보기 이동
+            self.$writePopup.find('.underline').off('click').on('click', function(){
+                window.open('/my-page/email-inquiry');
             });
         },
         // qna-list - get
@@ -441,10 +448,8 @@
                                             reader.onload = function(e){
                                         
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on');
-                                                imageInputFiles[k].dataset.fileFlag = "delete"; //추가 1201
+                                                $fileBox.classList.add('on');                    
                                                 $filePreview.innerHTML = imgTag;
-                                                //$fileName.value = imgfiles[i].fileName;
                                                 $fileName.value = imgfiles[i].fileName;
                                              
                                                 
@@ -651,6 +656,14 @@
                     $(this).data('fileFlag','insert');
                 }
             });
+        },
+        // 글 수정시 파일 삭제 함수
+        uploadFileDelete: function(el) {
+            var self = this;
+            var $fileItem = $(el).closest('.file-item');
+            $fileItem.find("input[type='file']").data('fileFlag','delete');
+            $fileItem.find('.file-preview').empty();
+            $fileItem.find('.file-name input').prop('placeholder','');
         },
         formValidationChk : function(param) {
             var self = this;
