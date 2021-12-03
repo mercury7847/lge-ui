@@ -405,11 +405,12 @@ if ('scrollRestoration' in history) {
                     self.searchItem($(this));
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 리스트 클릭
-                self.$relatedKeywordList.on('click', 'ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
+                // self.$relatedKeywordList.on('click', 'ul li a', function(e){
+                //     e.preventDefault();
+                //     self.searchItem($(this));
+                // });
 
                 //기존입력 검색어 클릭
                 self.$similarText.on('click', function(e){
@@ -422,15 +423,16 @@ if ('scrollRestoration' in history) {
                     self.requestSearchData(searchVal, true, filterQueryData, true);
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 펼치기
-                self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
-                    e.preventDefault();
-                    if(self.$relatedKeywordList.hasClass('open')) {
-                        self.$relatedKeywordList.removeClass('open');
-                    } else {
-                        self.$relatedKeywordList.addClass('open');
-                    }
-                });
+                // self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
+                //     e.preventDefault();
+                //     if(self.$relatedKeywordList.hasClass('open')) {
+                //         self.$relatedKeywordList.removeClass('open');
+                //     } else {
+                //         self.$relatedKeywordList.addClass('open');
+                //     }
+                // });
 
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
@@ -690,23 +692,24 @@ if ('scrollRestoration' in history) {
                         self.$searchSimilar.hide();
                     }
 
+                    // BTOCSITE-16 검색 결과 구획 정리
                     //연관 검색어 리스트 갱신
-                    var arr = data.related instanceof Array ? data.related : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        var $list_ul = self.$relatedKeywordList.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
-                        });
-                        self.$relatedKeywordList.show();
+                    // var arr = data.related instanceof Array ? data.related : [];
+                    // if(arr.length > 0) {
+                    //     showResult = true;
+                    //     var $list_ul = self.$relatedKeywordList.find('ul');
+                    //     $list_ul.empty();
+                    //     arr.forEach(function(item, index) {
+                    //         $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
+                    //     });
+                    //     self.$relatedKeywordList.show();
 
-                        self.updateRelatedKeywordMoreButton();
-                    } else {
-                        self.$relatedKeywordList.hide();
-                    }
+                    //     self.updateRelatedKeywordMoreButton();
+                    // } else {
+                    //     self.$relatedKeywordList.hide();
+                    // }
 
-                    self.$relatedKeywordList.removeClass('open');
+                    // self.$relatedKeywordList.removeClass('open');
 
                     //nodata Test
                     //data.count = null;
@@ -898,17 +901,18 @@ if ('scrollRestoration' in history) {
                 });
             },
 
+            // BTOCSITE-16 검색 결과 구획 정리
             //연관검색어 더보기 버튼 노출 여부 체크
-            updateRelatedKeywordMoreButton:function () {
-                var self = this;
-                var $list_ul = self.$relatedKeywordList.find('ul');
-                var $li = $list_ul.find('>li:eq(0)');
-                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
-                    self.$relatedKeywordMobileMoreButton.show();
-                } else {
-                    self.$relatedKeywordMobileMoreButton.hide();
-                }    
-            },
+            // updateRelatedKeywordMoreButton:function () {
+            //     var self = this;
+            //     var $list_ul = self.$relatedKeywordList.find('ul');
+            //     var $li = $list_ul.find('>li:eq(0)');
+            //     if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+            //         self.$relatedKeywordMobileMoreButton.show();
+            //     } else {
+            //         self.$relatedKeywordMobileMoreButton.hide();
+            //     }    
+            // },
 
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
