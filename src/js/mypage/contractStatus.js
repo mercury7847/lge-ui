@@ -1713,18 +1713,41 @@
 
     /* BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
     $(function () {
-        var addressFinder = new AddressFind();
 
-        $('#addrBtn').on('click', function(e){
-            addressFinder.open(function(data){
-                $('input[name=rcvPostCode]').val(data.zonecode);
-                $('input[name=rcvBasAddr]').val(data.roadAddress);
-                
-                // 상세정보로 포커스 이동
-                $('input[name=rcvDtlAddr]').focus();
-                $('input[name=rcvDtlAddr]').val('');
+        /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 - 링크 경로로 해당 스크립트 돌도록 삭제 */
+        var cl_benefisLocation = $(location).attr('href');
+
+        //오류가 있다면 indexOf URL 경로를 확인 해야함
+        if (cl_benefisLocation.indexOf('benefits') == -1) {
+            var addressFinder = new AddressFind();
+
+            $('#addrBtn').on('click', function(e){
+                addressFinder.open(function(data){
+                    $('input[name=rcvPostCode]').val(data.zonecode);
+                    $('input[name=rcvBasAddr]').val(data.roadAddress);
+                    
+                    // 상세정보로 포커스 이동
+                    $('input[name=rcvDtlAddr]').focus();
+                    $('input[name=rcvDtlAddr]').val('');
+                });
             });
-        });
+        } 
+
+        //분기 태움
+        // var addressFinder = new AddressFind();
+
+        // $('#addrBtn').on('click', function(e){
+        //     addressFinder.open(function(data){
+        //         $('input[name=rcvPostCode]').val(data.zonecode);
+        //         $('input[name=rcvBasAddr]').val(data.roadAddress);
+                
+        //         // 상세정보로 포커스 이동
+        //         $('input[name=rcvDtlAddr]').focus();
+        //         $('input[name=rcvDtlAddr]').val('');
+        //     });
+        // });
     });
     /* //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
+
+    /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 - 링크 경로로 해당 스크립트 돌도록 삭제 */
 })();
