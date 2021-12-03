@@ -25,7 +25,7 @@
         '</div>' +
         '<div class="accord-cont ui_accord_content" style="display:none;">' +
             '<div class="latter-acrord_content">' +
-                '<div>' +
+                '<div class="latter-item">' +
                     '<p class="text">' +
                         '{{subTitle}}' +
                     '</p>' +
@@ -68,6 +68,8 @@
                 self.$tabInfo = self.$contents.find('#tab-info');
                 self.$tabCoupon = self.$contents.find('#tab-coupon');
 
+                self.$tetetete = self.$tabCoupon.find('.btn-link'); //주영
+
                 self.$cl_detail_info = self.$contents.find('.cl_info_detail_bTn');
                 self.$cl_detail_coupon = self.$contents.find('.cl_coupon_detail_bTn');
 
@@ -93,39 +95,111 @@
                 //self.$couponEndNoData = self.$tabCoupon.find('div.no-data'); //
                 //self.$couponPopup = $('#couponPopup'); //
                 
-                //BTOCSITE-3407 쿠폰 디테일 페이지에서 쿠폰 탭 클릭시 쿠폰탭 유지
+
+                //쿠폰 디테일 페이지에서 쿠폰 탭 클릭시 쿠폰탭 유지
                 var tabName = lgkorUI.getParameterByName('tabName');
                 var currentIndex = 0;
-                //console.log("tabName", tabName)
                 if( tabName != "" && tabName != undefined && tabName == "coupon") {
                     currentIndex = 1;
                 } 
                 $('.lc-tabs').vcTab('select', currentIndex, false);
             },
 
+            // removeParam: function(key, sourceURL) {
+            //     var rtn = sourceURL.split("?")[0],
+            //         param,
+            //         params_arr = [],
+            //         queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+            //     if (queryString !== "") {
+            //         params_arr = queryString.split("&");
+            //         for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            //             param = params_arr[i].split("=")[0];
+            //             if (param === key) {
+            //                 params_arr.splice(i, 1);
+            //             }
+            //         }
+            //         if (params_arr.length) rtn = rtn + "?" + params_arr.join("&");
+            //     }
+            //     return rtn;
+            // },
+
+            replaceParam: function(url, paramName, paramValue){
+                if (paramValue == null) {
+                    paramValue = '';
+                }
+                var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+                if (url.search(pattern)>=0) {
+                    return url.replace(pattern,'$1' + paramValue + '$2');
+                }
+                url = url.replace(/[?#]$/,'');
+                return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+            },
+
+            //파라미터가 붙어있는가의 분기
+            addParam: function(url, name, value){
+                if(url.indexOf(name) > -1) {
+                    return self.replaceParam(url, name, value);
+                } else {
+                    return url + (url.indexOf('?') > -1 ? "&" : "?") + name + "=" + value; 
+                }
+            },
+
             bindEvents: function() {
-
                 var self = this;
-    
-                self.$contents.find('button.btn-moreview').on('click', function(e) {
+                
+                //쿠폰 리스트의 자세히 보기 파라미터 보내는 버튼
+                self.$tabCoupon.on('click','.btn-link' ,function(e) {
+                    //e.preventDefault();
+                    var tPram = lgkorUI.getParameterByName("contractID");
+                    var slocation = $(this).attr('href');
+                    var urlVal = slocation + "&contractID=" + tPram;
 
+                    self.$tabCoupon.find('.btn-link').attr('href',urlVal);
+                });
+
+                //정보 리스트의 자세히 보기 파라미터 보내는 버튼
+                self.$tabInfo.on('click','.btn-link' ,function(e) {
+                    //e.preventDefault();
+                    var tPram = lgkorUI.getParameterByName("contractID");
+                    var slocation = $(this).attr('href');
+                    var urlVal = slocation + "&contractID=" + tPram;
+
+                    self.$tabInfo.find('.btn-link').attr('href',urlVal);
+                });
+
+                self.$contents.find('button.btn-moreview').on('click', function(e) {
                     var page = $(this).data("page");
                     $(this).data('page', page + 1);
                     console.log(self.currentTab(), page);
                     self.requestCareLatterData(self.currentTab(), page);
-
                     // self.addCouponList(tabIndex, page+1);
-
                 });
 
-                
+
+                //정보,쿠폰 탭 구분하여 url 경로 분기
+                function tabParam(type, paramValue){
+                    var tPram = lgkorUI.getParameterByName("contractID");
+                    var hrefValue = "/my-page/care-solution-letter";
+                    if( type == "coupon")  {
+                        hrefValue = hrefValue + "?tabName=coupon";
+                    }
+                    //현재 경로의 addParam함수의 hrefValue, contractID, tPram 붙이기
+                    location.href = self.addParam(hrefValue, "contractID", tPram);
+                }
+
+                //정보 디테일 페이지 탭버튼 클릭시 파라미터 가지고 리스트로 이동
                 self.$cl_detail_info.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "/my-page/care-solution-letter");
+                    var tPram = lgkorUI.getParameterByName("contractID"); //가져온 파라미터
+
+                    tabParam("info", tPram)
                 });
+                //쿠폰 디테일 페이지 탭버튼 클릭시 파라미터 가지고 리스트로 이동
                 self.$cl_detail_coupon.on('click', function(e) {
                     e.preventDefault();
-                    $(location).attr("href", "/my-page/care-solution-letter?tabName=coupon");
+                    var tPram = lgkorUI.getParameterByName("contractID"); //가져온 파라미터
+
+                    tabParam("coupon", tPram)
                 });
             },
             
