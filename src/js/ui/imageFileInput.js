@@ -19,7 +19,9 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                 format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
                 size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다'
-            }
+            }, 
+            delCompleted : null 
+            //BTOCISTE-6032 delCompleted 추가
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -151,7 +153,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             });
 
             $btnDel.on('click', function() {
-        
+                var selfBtn = this;
                 var index = $btnDel.index(this);
                 var $input = $inputFile.eq(index);
                 
@@ -167,6 +169,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                         $box.find('.file-preview').html('');
                         $box.find('.name').val('');
 
+                        //BTOCSITE-6032 - if(selectFiles[index]) 조건 추가
                         if(selectFiles[index]) {
                             totalSize -= selectFiles[index].size;
 
@@ -178,7 +181,11 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                                 }
                             });
                         }
-
+                        //BTOCSITE-6032 - 추가 S
+                        if( self.options.delCompleted !== null && typeof self.options.delCompleted == "function") {
+                            self.options.delCompleted(selfBtn);
+                        }                        
+                        //BTOCSITE-6032 - 추가 E
                         $(this).vcModal('hide');
                     }
                 });
