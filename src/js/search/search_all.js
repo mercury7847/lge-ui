@@ -27,7 +27,7 @@ if ('scrollRestoration' in history) {
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                             '<a href="{{url}}">' +
-                                // '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                // BTOCSITE-16 검색 결과 구획 정리
                                 '<div class="star">'+
 									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
 										'<span class="blind">현재 별점 : {{rating}}</span>'+
@@ -39,47 +39,38 @@ if ('scrollRestoration' in history) {
                             '{{/if}}' +
                         '</div>' +
 
-                        /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+                        // BTOCSITE-16 검색 결과 구획 정리
                         '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-
-                            '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
-
+                            '{{#if originalPrice != 0}}' + 
                                 '<div class="info-price mo-only">' +
                                     '<a href="{{url}}">' +
-                                    
                                         '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
                                             '<div class="price-info rental">' +
                                                 '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                                             '</div>' +
                                         '{{/if}}' +
-
                                         '<div class="price-info sales">' +
                                             '{{#if obsFlag=="Y"}}' +
-                                            
                                                 '{{#if price == originalPrice}}' +
                                                     '<div class="price-in">' +
                                                         '<span class="price">{{originalPrice}}<em>원</em></span>' +
                                                     '</div>' +
-
                                                 '{{#else}}' +
-
                                                     '<div class="original">' +
                                                         '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                                                     '</div>' +
                                                     '<div class="price-in">' +
                                                         '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                                                     '</div>' +
-                                                    
                                                 '{{/if}}' +
-
                                             '{{/if}}' +
                                         '</div>' +
                                     '</a>' +
                                 '</div>' +
                             '{{/if}}' +
                         '{{/if}}' +
-                        /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
 
+                        // BTOCSITE-16 검색 결과 구획 정리 - 삭제
                         // '<div class="info-btm">' +
                         //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
                         //     '<div class="care">'+
@@ -102,46 +93,36 @@ if ('scrollRestoration' in history) {
                 '{{/if}}' +
             '</div>' +
 
-            /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
+            // BTOCSITE-16 검색 결과 구획 정리
             '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-
-                '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
-
+                '{{#if originalPrice != 0}}' + 
                     '<div class="info-price pc-only">' +
                         '<a href="{{url}}">' +
-                        
                             '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
                                 '<div class="price-info rental">' +
                                     '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
                                 '</div>' +
                             '{{/if}}' +
-
                             '<div class="price-info sales">' +
                                 '{{#if obsFlag=="Y"}}' +
-                                
                                     '{{#if price == originalPrice}}' +
                                         '<div class="price-in">' +
                                             '<span class="price">{{originalPrice}}<em>원</em></span>' +
                                         '</div>' +
-
                                     '{{#else}}' +
-
                                         '<div class="original">' +
                                             '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
                                         '<div class="price-in">' +
                                             '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
                                         '</div>' +
-                                        
                                     '{{/if}}' +
-
                                 '{{/if}}' +
                             '</div>' +
                         '</a>' +
                     '</div>' +
                 '{{/if}}' +
             '{{/if}}' +
-            /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
             
         '</div>' +
     '</div></li>';
@@ -193,6 +174,7 @@ if ('scrollRestoration' in history) {
                 '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
                 '<div class="result-detail">' +
                     '<div class="sku">{{#raw sku}}</div>' +
+                    // BTOCSITE-16 검색 결과 구획 정리
                     '{{#if obsFlag=="Y" && hasPrice}}' +
                     '<div class="info-price mo-only">' +
                         '{{#if carePrice}}' +
@@ -210,12 +192,14 @@ if ('scrollRestoration' in history) {
                         '</div>' +
                     '</div>' +
                     '{{/if}}' +
+                    // BTOCSITE-16 검색 결과 구획 정리 - 삭제
                     // '<div class="info-btm">' +
                     //     '<div class="text model">{{desc}}</div>' +
                     // '</div>' +
                 '</div>' +
             '</div>' +
             '{{#if obsFlag=="Y" && hasPrice}}' +
+            // BTOCSITE-16 검색 결과 구획 정리
             '<div class="info-price pc-only">' +
                 '{{#if carePrice}}' +
                 '<div class="price-info rental">' +
@@ -606,6 +590,7 @@ if ('scrollRestoration' in history) {
                     self.searchItem($(this));
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 리스트 클릭
                 // self.$relatedKeywordList.on('click', 'ul li a', function(e){
                 //     e.preventDefault();
@@ -622,6 +607,7 @@ if ('scrollRestoration' in history) {
                     self.requestSearchData(searchVal, true);
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 펼치기
                 // self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
                 //     e.preventDefault();
@@ -683,6 +669,7 @@ if ('scrollRestoration' in history) {
                     }
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //리사이즈 체크
                 // $(window).on('resizeend', function(e){   
                 //     self.updateRelatedKeywordMoreButton();
@@ -1333,6 +1320,7 @@ if ('scrollRestoration' in history) {
                 });
             },
 
+            // BTOCSITE-16 검색 결과 구획 정리
             //연관검색어 더보기 버튼 노출 여부 체크
             // updateRelatedKeywordMoreButton:function () {
             //     var self = this;

@@ -135,6 +135,7 @@
                 }
             }
         }
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .result-info {
             display: flex;
             flex: 1;
@@ -167,13 +168,14 @@
                 // max-width: 569px;
                 margin-top: 8px;
                 padding-top: 4px;
-                // border-top: 1px solid $color-border;
+                border-top: 1px solid $color-border;
 
                 @include mobile {
                     margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                    border-top: 0;
                 }
 
                 li {
@@ -285,6 +287,7 @@
             }
             
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         .item-type2 {
             .info-price {
                 display: block;
@@ -349,11 +352,6 @@
                 }
             }
         }
-        // @include pc {
-        //     .sku {
-        //         margin-right: 8px;
-        //     }
-        // }
         .info-btm {
             margin-top: 12px;
             font-size: 0;
@@ -492,6 +490,7 @@
             }
         }
         
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .sku {
             display: inline-block;
             font-weight: 500;
@@ -506,19 +505,6 @@
             .search-word {
                 color:#000;
             }
-
-            // &:after {
-            //     content:'';
-            //     display:inline-block;
-            //     width: 1px;
-            //     height: 12px;
-            //     margin: 4px 6px;
-            //     background-color: #ddd;
-            //     vertical-align: middle;
-            //     @include mobile {
-            //         display:none;
-            //     }
-            // }
         }
 
         .result-detail {
@@ -534,18 +520,7 @@
                 }
             }
         }
-
-        // .spec-info {
-        //     .rentalModel {
-        //         display:none;
-        //         @include mobile {
-        //             display:inline-block;
-        //         }
-        //     }
-        // }
-
-
-
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         .hashtag-wrap + .careflag  {
             @include mobile {
                 display: block;
@@ -568,6 +543,7 @@
             }
         }
 
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .review-info {
             display: inline-block;
             margin-right: 12px;
@@ -608,6 +584,7 @@
 
             }
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         
         .shop-info {
             .desc {
@@ -660,6 +637,7 @@
                 }
             }
         }
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .price-info {
             white-space: nowrap;
             .tit {
@@ -703,6 +681,7 @@
                 }
             }
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
     }
 
     &.product-list {
