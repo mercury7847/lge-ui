@@ -3152,9 +3152,14 @@
             height: 100%;
             max-height: 722px;
             padding: 24px 40px 40px;
+            &.no-footer{
+                &:after {
+                    display: none;
+                }
+            }
             @include mobile {
                 max-height: calc(100% - 62px);
-                padding: 24px 16px 50px;
+                padding: 0;
             }
             iframe {
                 display: block;
