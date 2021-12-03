@@ -344,6 +344,7 @@ $(function () {
             sceneIO.observe(this)
         })
 
+        // 재생/멈춤 클릭이벤트 위치 수정
         $('.btn-info-play').on('click', function() {
             if($(this).hasClass('pause')){
                 $(this).removeClass('pause');
@@ -470,4 +471,4 @@ $(document).on('click', '.scene a, .section a', function(e){
         } 
     }
 })
-//BTOCSITE-2193 s
+//BTOCSITE-2193 e

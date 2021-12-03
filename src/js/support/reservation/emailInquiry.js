@@ -307,6 +307,23 @@
 
                 $popup.vcModal('hide');
             });
+            //BTOCSITE-8855 s
+            $(document).on('click', '.faq-link a', function(e){
+                if(isApp()) {
+                    e.preventDefault();
+                    var appUrl = $(this).attr('href');
+                    if (!(appUrl.match('https://'))) {
+                        appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+                    } 
+                    if(vcui.detect.isIOS){
+                        var jsonString = JSON.stringify({'url': appUrl, 'command':'sendOutLink'});
+                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                    } else {
+                        android.openLinkOut(appUrl);
+                    }
+                } 
+            })
+            //BTOCSITE-8855 e
         }
     }
 
