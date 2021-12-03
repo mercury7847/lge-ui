@@ -626,7 +626,36 @@
         $('select[name="contractInfo"]').on('change', function(e){
             changeContractInfo();
         });
+
+
+        //주영
+        // $('.cctest').find('a').on('click', function(e){
+        //     //e.preventDefault();
+        //     //$(this).attr("href", "/html/MYC/ACCF7025_care_list.html");
+        //     tetetetetetete();
+        // });
     }
+
+    //주영
+    // function tetetetetetete(result){
+    //     var sendata = {
+    //         contractID: $('select[name=contractInfo]').find('option:selected').val()
+    //     }
+
+    //     //var _href = $('.cctest').find('a').attr("href");
+    //     //console.log("sssssss", _href);
+    //     console.log("gggggg", sendata);
+
+    //     //$('.cctest').find('a').attr("href", _href + sendata.contractID);
+    //     //$('.cctest').find('a').attr("href", "/html/MYC/ACCF7025_care_list.html?");
+
+    //     /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
+    //     lgkorUI.requestAjaxData(CONTRACT_CARE, sendata, function(result){
+            
+    //         lgkorUI.hideLoading();
+
+    //     }, ajaxMethod);
+    // }
 
     //계약서 발급 신청
     function sendRequestContract(){
@@ -1218,12 +1247,22 @@
             var info;
     
             mypage.find(".section-wrap").show();
-    
+            
             info = getMaskingData(data.userInfo.user);
             changeFieldValue('user-info', info);
     
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
+
+
+            ///BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 : 파라미터 값 보내는 버튼
+            var clParm = data.contractInfo.contractID;
+
+            if( $('.cl_listBtn > a').attr('data-current-href') == undefined) {
+                $('.cl_listBtn > a').attr('data-current-href', $('.cl_listBtn > a').attr('href'))
+            }
+            $('.cl_listBtn > a').attr('href', $('.cl_listBtn > a').attr('data-current-href') + '?contractID=' + clParm);
+
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
@@ -1367,6 +1406,7 @@
             bankValidation.setValues(bankInfo);
 
             setPaymentModeCont();
+           
         } else{
             mypage.find(".section-wrap").hide();
 
