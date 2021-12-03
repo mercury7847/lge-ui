@@ -168,13 +168,14 @@
                 // max-width: 569px;
                 margin-top: 8px;
                 padding-top: 4px;
-                // border-top: 1px solid $color-border;
+                border-top: 1px solid $color-border;
 
                 @include mobile {
                     margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                    border-top: 0;
                 }
 
                 li {
