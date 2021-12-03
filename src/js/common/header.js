@@ -833,8 +833,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$dimmed.hide();
 
             } else{
-                self.$mobileMktSlider.find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
-                self.$mobileMktSlider.vcCarousel('update');
+                $('.marketing-link .ui_carousel_slider').find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
+                $('.marketing-link .ui_carousel_slider').vcCarousel('update');
                 self._changeActiveImgSrc($('.store-counsel-banner').find('[data-active-src]')[0])
                 self._changeActiveImgSrc($('.mobile-nav-banner').find('[data-active-src]')[0])
                 self.$hamburger.addClass('active');
