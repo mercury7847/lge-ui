@@ -74,7 +74,7 @@
                 self.$cl_info_OnList = self.$tabInfo.find('div.cl_list ul');
                 self.$cl_coupon_OnList = self.$tabCoupon.find('div.cl_list ul');
 
-                self.$cl_firstList = self.$tab.find('.cl_list ul li'); //추가
+                //self.$cl_firstList = self.$tab.find('.cl_list ul li'); //추가
                 
                 self.$cl_infoMore = self.$tabInfo.find('button.btn-moreview');
                 self.$cl_infoMore.data("page", 2);
