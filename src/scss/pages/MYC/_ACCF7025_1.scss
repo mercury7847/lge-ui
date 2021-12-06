@@ -589,6 +589,12 @@
                 }
             }
             .lists {
+                &:first-child {
+                    position: relative;
+                    .accord-cont {
+                        display: block;
+                    }
+                }
                 &.on {
                     .accord-btn {
                         font-weight: bold;
