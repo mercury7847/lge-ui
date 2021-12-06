@@ -272,7 +272,6 @@
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
                     var selectedQTypeVal = param.questionTypeCode;
-                    var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
                     if(result.status == "success"){
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
@@ -287,7 +286,6 @@
                             // qna 리스트 문의 건수, 999건 초과시 999+
                             if(totalCount > 999 ){
                                 self.$totalCount.text("999+");
-                                self.$pdpTab.html("Q&amp;A " +"("+totalCount+")")
                             } else {
                                 self.$totalCount.text(totalCount);
                             }
@@ -524,7 +522,6 @@
                             }
                         });
                         location.reload();
-                        //location.href = "#pdp_qna"; //새로고침 후 pdp_qna 탭으로 이동시키는 방법 알아보기
                     } else {
                         lgkorUI.hideLoading();
                         
@@ -589,7 +586,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        //location.reload();
+                        location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
