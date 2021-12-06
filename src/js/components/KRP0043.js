@@ -145,14 +145,13 @@
             // QnA 리스트 : selectbox 선택
             self.$sortSelect.off('change').on('change', function(e){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var questionTypeName = self.$sortSelect.vcSelectbox('text');
                 var excludePrivate = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": 1});
             });
 
             
@@ -167,7 +166,7 @@
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"listTypeName":questionTypeName,"excludePrivate":excludePrivate ,"page": 1});
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": 1});
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
@@ -254,13 +253,13 @@
         requestQnaListData : function(param){
             console.log("QnA List - API request !!");
             console.log(param);
-            
-            var typeSelText = $('.KRP0043 .ui-selectbox-wrap .ui-selectbox-view').find('.ui-select-text');
+        
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
-            var selectedQTypeName = param.listTypeName;
+            var selectedQTypeVal = param.questionTypeCode;
             
-            typeSelText.html(selectedQTypeName);
+            $('#orderType').val(selectedQTypeVal).vcSelectbox('update')
+
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -271,7 +270,6 @@
                     
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
-                    var selectedQTypeVal = param.questionTypeCode;
 
                     if(result.status == "success"){
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
