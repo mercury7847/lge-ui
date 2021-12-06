@@ -87,7 +87,6 @@
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
- 
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
@@ -139,7 +138,10 @@
                 } else {
                     excludePrivate = "N";
                 }
+
                 self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": data});
+                
+                
             });
             
             // QnA 리스트 : selectbox 선택
@@ -160,7 +162,7 @@
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
                 var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                var questionTypeName = self.$sortSelect.vcSelectbox('text');
+                //var questionTypeName = self.$sortSelect.vcSelectbox('text');
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
@@ -270,6 +272,7 @@
                     
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
+                    var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
                     if(result.status == "success"){
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
@@ -284,8 +287,10 @@
                             // qna 리스트 문의 건수, 999건 초과시 999+
                             if(totalCount > 999 ){
                                 self.$totalCount.text("999+");
+                                $pdpTab.text("Q&A (999+)");
                             } else {
                                 self.$totalCount.text(totalCount);
+                                $pdpTab.html("Q&A "+"("+totalCount+")");
                             }
     
                             //리스트 페이지 노출
@@ -319,7 +324,7 @@
                             }
                             
                             self.$qnaList.append(innerHTML);
-                            self.$pagination.vcPagination('setPageInfo', pagination);
+                            self.$pagination.vcPagination('setPageInfo', pagination);        
                   
                             lgkorUI.hideLoading();
                         } else {
