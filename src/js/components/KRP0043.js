@@ -259,6 +259,7 @@
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
             var selectedQTypeName = param.listTypeName;
+            
             typeSelText.html(selectedQTypeName);
 
             lgkorUI.showLoading();
@@ -318,6 +319,7 @@
                                 });
     
                             }
+                            
                             self.$qnaList.append(innerHTML);
                             self.$pagination.vcPagination('setPageInfo', pagination);
                   
@@ -444,8 +446,7 @@
                                             reader.readAsDataURL(data);
                                             reader.onload = function(e){                               
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on'); 
-                                                $fileBox.classList.add('modify');              
+                                                $fileBox.classList.add('on');                                                
                                                 $filePreview.innerHTML = imgTag;
                                                 $($fileName).val(imgfiles[i].fileName);
                                             }
@@ -521,7 +522,6 @@
                             }
                         });
                         location.reload();
-                        //location.href = "#pdp_qna"; //새로고침 후 pdp_qna 탭으로 이동시키는 방법 알아보기
                     } else {
                         lgkorUI.hideLoading();
                         
@@ -586,7 +586,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        //location.reload();
+                        location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
@@ -650,7 +650,6 @@
                         $fileItem.find("input[type='file']").data('fileFlag','delete');
                         $fileItem.find('.file-preview').empty();
                         $fileItem.find('.file-name input').prop('placeholder','');
-                        $fileItem.removeClass('modify');
                     }
                 }
             });
