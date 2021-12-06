@@ -240,7 +240,6 @@
                 margin-bottom: 16px;
                 .img-wrap {
                     //height: 500px;
-                    overflow-x: hidden;
                     overflow-y: scroll;
                     @include mobile{
                         overflow: scroll;

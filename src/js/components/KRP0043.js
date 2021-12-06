@@ -259,6 +259,7 @@
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
             var selectedQTypeName = param.listTypeName;
+            
             typeSelText.html(selectedQTypeName);
 
             lgkorUI.showLoading();
@@ -271,6 +272,7 @@
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
                     var selectedQTypeVal = param.questionTypeCode;
+                    var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
                     if(result.status == "success"){
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
@@ -285,6 +287,7 @@
                             // qna 리스트 문의 건수, 999건 초과시 999+
                             if(totalCount > 999 ){
                                 self.$totalCount.text("999+");
+                                self.$pdpTab.html("Q&amp;A " +"("+totalCount+")")
                             } else {
                                 self.$totalCount.text(totalCount);
                             }
@@ -318,6 +321,7 @@
                                 });
     
                             }
+                            
                             self.$qnaList.append(innerHTML);
                             self.$pagination.vcPagination('setPageInfo', pagination);
                   
@@ -444,8 +448,7 @@
                                             reader.readAsDataURL(data);
                                             reader.onload = function(e){                               
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on'); 
-                                                $fileBox.classList.add('modify');              
+                                                $fileBox.classList.add('on');                                                
                                                 $filePreview.innerHTML = imgTag;
                                                 $($fileName).val(imgfiles[i].fileName);
                                             }
@@ -650,7 +653,6 @@
                         $fileItem.find("input[type='file']").data('fileFlag','delete');
                         $fileItem.find('.file-preview').empty();
                         $fileItem.find('.file-name input').prop('placeholder','');
-                        $fileItem.removeClass('modify');
                     }
                 }
             });
