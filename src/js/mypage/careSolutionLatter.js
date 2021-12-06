@@ -234,17 +234,18 @@
                     //console.log("dnjTm", elList)
                     //console.log("dnjTm", data)
 
-
-                    //test
-                    var $cl_firstList = $('.cl_list ul li:first-child'); //추가
-                    var $cl_firstLust_accordCont = $cl_firstList.find('.accord-cont');
-       
-                    $cl_firstList.addClass('on');
-                    $cl_firstLust_accordCont.show();
-                    //$cl_firstLust_accordCont.addClass('tetetetetete');
-
-
                     
+                    //최종
+                    if( page == 1) {
+                        var $cl_firstList = $('.cl_list ul li').eq(0); //추가
+                        var $cl_firstLust_accordCont = $cl_firstList.find('.accord-cont');
+            
+                        $cl_firstList.addClass('on');
+                        $cl_firstLust_accordCont.show();
+
+                    }
+
+
                     /* ajax 인디케이터 종료 */
                     lgkorUI.hideLoading();
                 });
