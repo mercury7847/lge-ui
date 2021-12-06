@@ -65,7 +65,16 @@
             addressNickName:{
                 required: true,
                 errorMsg: "주소별칭을 입력해주세요.",
-                msgTarget: '.err-block'
+                msgTarget: '.err-block',
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             receiverUser: {
                 required: true,
@@ -73,7 +82,16 @@
                 minLength: 1,
                 maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
-                msgTarget: '.err-block'
+                msgTarget: '.err-block',
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             zipCode: {
                 required: true,
