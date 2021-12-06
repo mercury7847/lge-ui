@@ -274,12 +274,12 @@
                     var totalCount = result.data.qnaTotalCount;
                     var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
-                    if(result.status == "success"){
+                    if(result.status == "success"){                    
+
                         if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
                             noticeData.forEach(function(item){
                                 html += vcui.template(noticeListTmpl, item);
                             });
-                            //self.$qnaList.empty().append(html);
                             self.$qnaList.empty();
                             self.$qnaList.append(html);
 
@@ -323,6 +323,10 @@
     
                             }
                             
+                            // 211206 추가 - 필터. no-data일경우에,비노출 처리 건, 다시 데이터 조회될 경우, 초기화 
+                            self.$nodata.hide();
+                            self.$qnaType.find('.qna-result-lists').show();
+
                             self.$qnaList.append(innerHTML);
                             self.$pagination.vcPagination('setPageInfo', pagination);
                   
@@ -356,7 +360,8 @@
                 var qTypeList = self.$writeQnaType.find('option');
                 var qTypeBtnSelectedText = $("#type_desc .ui-selectbox-wrap").find('.ui-selectbox-view > a > .ui-select-text');
                 var imageInputFiles = $('.ui_imageinput').find('input[type="file"]');
-                
+                $('inpu[type=file]').removeData('fileFlag');
+
                 if(param.mode == 'write') {
                     // write
                     self.$writeTitle.val('');
@@ -524,7 +529,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        location.reload();
+                        //location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         
@@ -589,7 +594,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        location.reload();
+                        //location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
@@ -615,7 +620,7 @@
                             title: "게시물이 삭제되었습니다."
                             
                         });
-                        location.reload();
+                        //location.reload();
                     } else {
                         lgkorUI.alert("", {
                             title: result.message
@@ -657,12 +662,12 @@
                 }
             });
 
-            self.$writeForm.find('.ui_imageinput input[type="file"]').on('change',function(e) {
-                // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
-                if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
-                    $(this).data('fileFlag','insert');
-                }
-            });
+            // self.$writeForm.find('.ui_imageinput input[type="file"]').on('change',function(e) {
+            //     // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
+            //     if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
+            //         $(this).data('fileFlag','insert');
+            //     }
+            // });
         },
         formValidationChk : function(param) {
             var self = this;
