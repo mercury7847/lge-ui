@@ -324,7 +324,7 @@
                             }
                             
                             self.$qnaList.append(innerHTML);
-                            self.$pagination.vcPagination('setPageInfo', pagination);        
+                            self.$pagination.vcPagination('setPageInfo', pagination);
                   
                             lgkorUI.hideLoading();
                         } else {
