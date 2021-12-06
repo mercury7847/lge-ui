@@ -68,13 +68,14 @@
                 self.$tabInfo = self.$contents.find('#tab-info');
                 self.$tabCoupon = self.$contents.find('#tab-coupon');
 
-                self.$tetetete = self.$tabCoupon.find('.btn-link'); //주영
-
                 self.$cl_detail_info = self.$contents.find('.cl_info_detail_bTn');
                 self.$cl_detail_coupon = self.$contents.find('.cl_coupon_detail_bTn');
 
                 self.$cl_info_OnList = self.$tabInfo.find('div.cl_list ul');
                 self.$cl_coupon_OnList = self.$tabCoupon.find('div.cl_list ul');
+
+                self.$cl_firstList = self.$tab.find('.cl_list ul li'); //추가
+                
                 self.$cl_infoMore = self.$tabInfo.find('button.btn-moreview');
                 self.$cl_infoMore.data("page", 2);
                 self.$cl_infoMore.data("tabIndex", 0);
@@ -103,6 +104,8 @@
                     currentIndex = 1;
                 } 
                 $('.lc-tabs').vcTab('select', currentIndex, false);
+
+                //console.log("sssssss", self.$cl_firstList);
             },
 
             // removeParam: function(key, sourceURL) {
@@ -231,6 +234,14 @@
                     //console.log("dnjTm", elList)
                     //console.log("dnjTm", data)
 
+
+                    //test
+                    var $cl_firstList = $('.cl_list ul li:first-child'); //추가
+                    //console.log("ssssssssssss", $cl_firstList);
+                    $cl_firstList.addClass('on');
+
+
+                    
                     /* ajax 인디케이터 종료 */
                     lgkorUI.hideLoading();
                 });
