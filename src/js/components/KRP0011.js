@@ -26,7 +26,7 @@
                 //modelStatusCode=="ACTIVE" 판매가능상태
                 //mixProductFlag=="N" 혼매가 아닌 상품
                 '{{#if (modelStatusCode=="ACTIVE") && (mixProductFlag=="N")}}'+
-                   '{{#if (buyBtnFlag=="enable")}}'+
+                   '{{#if (tabName == "purchaseTab") && (buyBtnFlag=="enable")}}'+
                     '<div class="price-area">'+
                         '{{#if (obsSellingPrice != "0") && (obsOriginalPrice != "0")}}'+
                         '<div class="original">'+
@@ -43,7 +43,7 @@
                     '</div>'+
                     '{{/if}}'+
 
-                    '{{#if (years1TotAmt !=0)}}'+
+                    '{{#if (tabName == "rentalTab") && (years1TotAmt !=0)}}'+
                     '<div class="product-bottom rental-type">'+
                         '<div class="price-area care">'+
                             '<div class="total-price"><em class="text">기본 월 요금</em>'+
@@ -107,7 +107,7 @@
             bindEvents: function() {
                 var self = this;
 
-                if(dataList != null){
+                if(dataList !== null){
                     //구매/렌탈 탭 클릭시 유사제품 상품, 각각의 금액으로 변경
                     self.$tabList.on('click',function(){
                         var $idx = $(this).parent().index();
@@ -132,7 +132,7 @@
                         self.$prodViewNow.empty();
                         self.$prodRecommend.empty();
                         self.makeProdList(tab,now, recommend);
-                    };
+                    }
                 }
                 //유사제품 추천(스펙 비교하기)
                 $('.KRP0011').on('click', 'button[data-model-ids]', function(e){
@@ -145,10 +145,12 @@
                 var self = this;
                 var $compareId = [];
 
+                now.tabName = tabType;
                 $compareId.push(now.modelId); //스펙비교하기에 모델명 추가
                 self.$prodViewNow.append(vcui.template(productItem,now)); //지금보고 있는 상품에 템플릿 그리기
                 $.each(loopData,function(idx,item){
                     $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
+                    item.tabName = tabType;
                     self.$prodRecommend.append(vcui.template(productItem,item));//추천 상품리스트 템플릿 그리기
                 });
 
