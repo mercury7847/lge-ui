@@ -107,6 +107,15 @@
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 // msgTarget: '.err-block'
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             phoneNumber: {
                 required: true,
