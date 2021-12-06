@@ -26,7 +26,7 @@
                 //modelStatusCode=="ACTIVE" 판매가능상태
                 //mixProductFlag=="N" 혼매가 아닌 상품
                 '{{#if (modelStatusCode=="ACTIVE") && (mixProductFlag=="N")}}'+
-                   '{{#if (tabName == "purchaseTab") && (buyBtnFlag=="enable")}}'+
+                   '{{#if (buyBtnFlag=="enable")}}'+
                     '<div class="price-area">'+
                         '{{#if (obsSellingPrice != "0") && (obsOriginalPrice != "0")}}'+
                         '<div class="original">'+
@@ -43,7 +43,7 @@
                     '</div>'+
                     '{{/if}}'+
 
-                    '{{#if (tabName == "rentalTab") && (years1TotAmt !=0)}}'+
+                    '{{#if (years1TotAmt !=0)}}'+
                     '<div class="product-bottom rental-type">'+
                         '<div class="price-area care">'+
                             '<div class="total-price"><em class="text">기본 월 요금</em>'+
@@ -113,14 +113,14 @@
                         var $idx = $(this).parent().index();
                         if($idx === 0){
                             // 구매 탭
-                            if(dataList.productInfo.length > -1 && dataList.compareList.length === 2){
+                            if(dataList.productInfo !== null && dataList.compareList.length === 2){
                                 drawTab("purchaseTab", dataList.productInfo, dataList.compareList);
                             }else{
                                 self.$section.hide();
                             }
                         }else if($idx === 1) {
                             //렌탈 탭
-                            if(dataList.rentalProductInfo.length > -1 && dataList.rentalCompareList.length === 2){
+                            if(dataList.rentalProductInfo !== null && dataList.rentalCompareList.length === 2){
                                 drawTab("rentalTab", dataList.rentalProductInfo, dataList.rentalCompareList);
                             }else{
                                 self.$section.hide();
