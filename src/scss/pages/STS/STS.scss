@@ -664,7 +664,8 @@
                 //flex:1;
                 .visual-area {
                     position: relative;
-                    height: 368px;
+                    //BTOCSITE-9038
+                    height:calc(100% - 173px);
                     @include mobile{
                         height: auto;
                         border-radius: 0;
@@ -786,7 +787,8 @@
             &.image {
                 overflow: hidden;
                 .visual-area{
-                    height:368px;
+                    //BTOCSITE-9038
+                    height:calc(100% - 173px);
                     position: relative;
                     @include mobile{
                         height: auto;
@@ -804,9 +806,10 @@
                     //BTOCSITE-9038
                     border-radius: 0;
                     top:0;
-                    left:0;
+                    left:50%;
                     height: auto;
                     width: 100%;
+                    transform: translate(-50%, 0%);
                     @include mobile{
                         border-radius: 0;
                         width: 100%;
