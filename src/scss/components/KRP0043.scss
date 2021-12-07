@@ -241,9 +241,12 @@
                 margin-bottom: 16px;
                 .img-wrap {
                     //height: 500px;
-                    overflow-y: scroll;
+                    width: 100%;
+                    max-width:1100px;
+                    overflow-x: scroll;
                     @include mobile{
-                        overflow: scroll;
+                        //overflow-x: scroll;
+                        max-width: 545px;
                     }
                     img {
                         margin-top: 16px;
@@ -256,10 +259,16 @@
                         white-space : pre-line;
                     }
                     .img-wrap {
+                        width: 100%;
+                        max-width:1100px;
                         height: 100%;
-                        overflow: hidden;
+                        overflow-x: scroll;
+                        @include mobile {
+                            max-width: 545px;
+                        }
                         img {
                             margin-top: 16px;
+                            display: block;
                         }
                     }
                 }
