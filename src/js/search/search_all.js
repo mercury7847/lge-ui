@@ -869,7 +869,8 @@ if ('scrollRestoration' in history) {
 
                     var data = result.data;
                     var param = result.param;
-
+                    var inputValue = param.inputValue;
+                    var splitYN = param.splitYN;
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
@@ -877,12 +878,17 @@ if ('scrollRestoration' in history) {
                     var $maxTextPro = searchedValue.substring(0, 20) + "...";
 
                     //검색한 검색어
-                    self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과'); //원본
+                    if(splitYN == "Y") {
+                        // "와인 냉장고 세미빌트인" 에 대한 검색결과가 없어 "와인 냉장고"로 검색한 결과입니다.
+                        self.$searchResultText.html('<span class="search-word">“<em class="word">' + inputValue + '</em>”</span>' + ' 에 대한 검색 결과가 없어<br><span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>로 검색한 결과 입니다.'); //원본
+                    } else {
+                        self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과'); //원본    
+                    }
+                       
                     //self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
                     /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                     //원래입력된 기존 검색어 이동
-                    var inputValue = param.inputValue;
                     if(inputValue && inputValue != searchedValue) {
                         /* BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
                         var $shortenTxt_1 = inputValue.substring(0, 10);
