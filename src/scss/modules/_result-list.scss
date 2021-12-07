@@ -149,12 +149,18 @@
                 //flex: 1;
                 padding-top: 12px;
                 padding-right: 80px;
+                &.mar {
+                    margin-right:248px;
+                }
             }
             @include mobile {
                 display: block;
                 .info-text {
                     min-height: 110px;
                     padding: 4px 0 0 126px;
+                    &.mar {
+                        margin-right:0;
+                    }
                 }
             }
             .detail-wrap {
