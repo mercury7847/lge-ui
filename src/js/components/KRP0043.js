@@ -311,6 +311,7 @@
                     } else {
                         //1207 함수 추가
                         self.requestNoData();
+
                     }
                     //success end
             });
@@ -493,7 +494,7 @@
                         location.reload();
                     } else {
                         lgkorUI.hideLoading();
-                        
+                        self.$writePopup.vcModal('hide');
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
@@ -502,7 +503,6 @@
                                 }
                             });
                         }
-                        
                     }
                 }, 'POST', 'json',true);
             }
@@ -613,7 +613,8 @@
 
             self.$writeForm.find('.ui_imageinput').vcImageFileInput({
                 individualFlag:true,
-                totalSize: 40 * 1024 * 1024,
+                totalSize: 1024, //  1024(1MB):dev test용 / 10 * 1024 * 1024 (10MB):stg,prd
+                fileNameSize : 50, // 파일명 최대 50자 이내(.확장자 포함)
                 message: {
                     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                     format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',

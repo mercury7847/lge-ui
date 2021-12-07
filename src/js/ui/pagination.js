@@ -56,11 +56,6 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if(!!data.totalCount) {
                     self.options.totalCount = data.totalCount;
                 }
-                //BTOCSITE-6032 추가 - S
-                if(!!data.totalPage) {
-                    self.options.totalPage = data.totalPage;
-                }
-                //BTOCSITE-6032 추가- E
             }
             self.update();
         },
