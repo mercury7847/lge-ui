@@ -17,7 +17,7 @@ if ('scrollRestoration' in history) {
     var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
-            '<div class="info-text">' +
+            '<div class="info-text{{#if obsFlag == "N" &&  rentalTabFlag == "N"}} mar{{/if}}">' +
                 '<div class="detail-wrap">' +
                     '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
