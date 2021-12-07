@@ -159,6 +159,11 @@
                                             max-width:100%;
                                         }
                                     }
+                                    //BTOCSITE-6032 나의글보기 내용/답변내용 개행 속성 추가 - S
+                                    &.line {
+                                        white-space: pre-line;
+                                    }
+                                    //BTOCSITE-6032 나의글보기 내용/답변내용 개행 속성 추가 - E
                                 }
                             }
                         }

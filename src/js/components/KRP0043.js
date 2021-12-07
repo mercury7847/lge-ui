@@ -1,4 +1,3 @@
-// ★ 공지사항 관련 게시글은 별도의 어드민 api개발이 완료된 이 후 , 따로 api로 그린다고함. cms에서 붙임
 (function (){
     var noticeListTmpl = 
     '<li class="lists notice" data-noticeid="{{ noticeId }}" data-noticetype="{{ noticeType }}">' +
@@ -26,9 +25,9 @@
     '</li>';
 
     var qnaListTmpl = 
-    '<li class="lists" data-que-no="{{ questionNo }}" {{#if (secret == "Y") }}data-secret-flag="{{secret}}"{{/if}} data-enabled="{{enabled}}">' +
+    '<li class="lists" data-que-no="{{ questionNo }}" data-secret-flag="{{secret}}" data-current-flag="{{currentSecret}}" data-blocked="{{blocked}}">' +
         '<div class="head">' +
-            '<a href="#n" class="accord-btn {{#if (enabled == true) }}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+            '<a href="#n" class="accord-btn {{#if (enabled == "Y")}}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge {{#if (answered == "Y") }}active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
                 '<span class="title line1{{#if (secret == "Y") }} on{{/if}}">{{ questionTitle }}</span>' +
                 '<span class="writer"> {{ creationUserName }} </span>' +
@@ -192,11 +191,13 @@
             });
 
             // qna 리스트 선택시, 비밀글 alert 처리
-            self.$qnaList.on('click', 'li', function(){
-                var queNo = $(this).data("secretFlag");
-                var enabled = $(this).data("enabled");
+            self.$qnaList.on('click', '.accord-btn', function(){
+                var $list = $(this).closest('li');
+                var secretFlag = $list.data("secretFlag");
+                var currentFlag = $list.data("currentFlag");
+                var blocked = $list.data("blocked");
 
-                if(queNo == "Y" && enabled != true) {
+                if(secretFlag == "Y" && blocked == "N" && currentFlag == "N") {
                     lgkorUI.alert("", {
                         title: '비밀글은 작성자만 조회할  수 있습니다.',
                         okBtnName : '확인'
@@ -251,6 +252,29 @@
                 window.open('/my-page/email-inquiry');
             });
         },
+        itemAccordionEnabledChk: function(item){
+            if( item.blocked == "Y" ) {
+                this.enabled = "N";
+            } else {
+                this.enabled = "Y";
+                if( item.secret == "Y" ) {
+                    this.enabled = item.sameId == "Y" ? "Y" : "N"
+                } else {
+                    this.enabled = "Y"
+                }
+            }
+
+            return this.enabled
+        },
+        itemCurrentSecretCheck: function(item){
+            if(item.sameId == "Y" && item.secret == "Y") {
+                this.currentSecret = "Y"    
+            } else {
+                this.currentSecret = "N";
+            } 
+            
+            return this.currentSecret;
+        },
         // qna-list - get
         requestQnaListData : function(param){
             console.log("QnA List - API request !!");
@@ -297,12 +321,8 @@
                             // select-box 문의유형 선택값 필터처리
                             if(selectedQTypeVal == 'ALL'){
                                 data.forEach(function(item){
-                                    item.enabled = false;
-                                    if( item.blocked == "N") {
-                                        if(item.sameId == "Y" || (item.sameId == "N" && item.secret == "N")) {
-                                            item.enabled = true    
-                                        } 
-                                    } 
+                                    item.enabled = self.itemAccordionEnabledChk(item);
+                                    item.currentSecret = self.itemCurrentSecretCheck(item);
                                     innerHTML += vcui.template(qnaListTmpl, item);
                                 });
                             } else {
@@ -312,12 +332,8 @@
                                 });
     
                                 selArr.forEach(function(item){
-                                    item.enabled = false;
-                                    if( item.blocked == "N") {
-                                        if(item.sameId == "Y" || (item.sameId == "N" && item.secret == "N")) {
-                                            item.enabled = true    
-                                        } 
-                                    } 
+                                    item.enabled = self.itemAccordionEnabledChk(item);
+                                    item.currentSecret = self.itemCurrentSecretCheck(item);
                                     innerHTML += vcui.template(qnaListTmpl, item);
                                 });
     
