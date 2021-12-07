@@ -236,8 +236,17 @@
 
                         <!-- component -->
                         <div class="product-list-area">
+                            <!-- BTOCSITE-9186 -->
+                            <button type="button" class="btn border size" data-href="#popupInchGuide" data-control="modal"><span>모델명 확인방법</span></button>
+
+
+                                             
+                            <!-- BTOCSITE-//9186 -->
                             @@include('./common/modules/list-sorting.html', {
                                 "select" : [
+
+                                진경0801!2
+                                
                                     {"option" : "인기순", "default":'value="sort_popular"'},
                                     {"option" : "최신순", "default":'value="sort_new"'},
                                     {"option" : "가격 높은순", "default":'value="sort_max_price"'},
@@ -887,5 +896,22 @@
         </div>
         @@include('./common/footer.html')
     </div>
+
+    <!-- BTOCSITE-9186 -->
+    <article  class="popup-wrap" id="popupInchGuide">
+        <header class="pop-header">
+            <h1 class="tit"><span>cm <-> 화면사이즈 변환</span></h1>
+        </header>
+        <section class="pop-conts">
+            내용
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group center">
+                <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- //BTOCSITE-9186 -->
 </body>
 </html>
