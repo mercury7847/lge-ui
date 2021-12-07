@@ -879,7 +879,7 @@ if ('scrollRestoration' in history) {
 
                     //검색한 검색어
                     if(splitYN == "Y") {
-                        // "와인 냉장고 세미빌트인" 에 대한 검색결과가 없어 "와인 냉장고"로 검색한 결과입니다.
+                        //BTOCSITE-9268 검색 > 검색결과 없음 - 조합 키워드 중 일부 키워드 검색결과만 존재 케이스 추가
                         self.$searchResultText.html('<span class="search-word">“<em class="word">' + inputValue + '</em>”</span>' + ' 에 대한 검색 결과가 없어<br><span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>로 검색한 결과 입니다.'); //원본
                     } else {
                         self.$searchResultText.html('<span class="search-word">“<em class="word">' + searchedValue + '</em>”</span>' + ' 검색 결과'); //원본    
