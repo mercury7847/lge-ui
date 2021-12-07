@@ -107,9 +107,7 @@
             //Qna LIst
             self.$qnaType = self.$pdpQna.find('.KRP0043');
             self.$dataModelId = self.$qnaType.attr('data-model-id');
-
             self.$qnaList = self.$qnaType.find('ul.qna-result-lists');
-            self.$qnaListTitle = self.$qnaList.find('.title');
 
             self.$modifyBtn = self.$qnaType.find('.modi-btn');
             self.$deleteBtn = self.$qnaType.find('.del-btn');
