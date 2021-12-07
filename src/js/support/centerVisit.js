@@ -646,6 +646,37 @@
                     success && self.requestComplete();
                 });
             });
+
+            //BTOCSITE-9289 : 예약 중일때 취소시 param 보내는 여부
+            $('#canclePopup .btn-cancel-confirm').on('click', function(e){
+                e.preventDefault();
+
+                var unlockUrl = $('#canclePopup').data('unlockUrl'); //데이터 가져오기
+                var _href = $(this).attr('href');
+                var unlockParam = {}; //unlockParam 빈 객체를 만들기
+                
+                if( $('#productCode').val() != undefined) { //빈값이진 undefined인지 확인 : undefined 가 아니면 unlockParam.productCode 는 밸류값이 들어간다
+                    unlockParam.productCode = $('#productCode').val()
+                }
+                if( $('#serviceType').val() != undefined) {
+                    unlockParam.serviceType = $('#serviceType').val()
+                }
+                if( $('#lockUserId').val() != undefined) {
+                    unlockParam.lockUserId = $('#lockUserId').val()
+                }
+
+                //보내는 param 확인
+                console.log('unlockParam', unlockParam)
+
+                //데이터 통신
+                lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                    if (res.data.resultFlag == 'Y') {
+                        location.href = _href; 
+                    } else {
+                        location.href = _href; 
+                    }
+                })
+            });
         },
         reset: function() {
             var self = this;
