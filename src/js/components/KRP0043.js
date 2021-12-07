@@ -116,8 +116,9 @@
             self.$pagination = self.$pdpQna.find('.pagination').vcPagination({scrollTop : 'noUse'});
 
             //등록하기 팝업
-            self.$writePopup = $('#popupWrite');
+            self.$writePopup = $('#popupWrite')
             self.$writeForm = self.$writePopup.find("#submitForm");
+            self.$writeFormFileItem = self.$writeForm.find(".file-item");
 
             self.$writeQnaType = self.$writePopup.find('#qnaType');
             self.$writeTitle = self.$writePopup.find('#title');
@@ -137,10 +138,7 @@
                 } else {
                     excludePrivate = "N";
                 }
-
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": data});
-                
-                
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": data});                
             });
             
             // QnA 리스트 : selectbox 선택
@@ -228,29 +226,16 @@
 
             //수정하기
             $('.qna-result-lists').on('click', '.modi-btn', function(){
-                var mode = self.$modifyBtn.attr('data-name');
+                var mode = $(this).attr('data-name');
                 var modelId = self.$dataModelId;
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
             
-            //파일 업로드 삭제
-            // self.$writePopup.on('click', '.btn-del', function(e){
-            //     var el = this;
-                
-            //     lgkorUI.confirm('', {
-            //         title:'파일을 삭제하시겠습니까?', 
-            //         cancelBtnName: '아니오', okBtnName: '예', 
-            //         ok : function (e,data){ 
-            //             self.uploadFileDelete(el);
-            //         }
-            //     });
-            // });
-
             //나의글보기 이동
-            self.$writePopup.find('.underline').off('click').on('click', function(){
-                window.open('/my-page/email-inquiry');
-            });
+            // self.$writePopup.find('.underline').off('click').on('click', function(){
+            //     window.open('/my-page/email-inquiry');
+            // });
         },
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {
@@ -289,9 +274,9 @@
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                    var data = result.data.qnaList;
+                    var listData = result.data.qnaList;
                     var noticeData = result.data.qnaNoticeList;//공지사항
-                    var html = ""; // 공지사항용
+                    //var html = ""; // 공지사항용
                     var innerHTML = ""; //qna list용
                     
                     var pagination = result.data.pagination;
@@ -300,62 +285,32 @@
 
                     if(result.status == "success"){                    
 
-                        if( (noticeData.length > 0 && data.length > 0) || data.length > 0) {
+                        if( (noticeData.length > 0 && listData.length > 0) || listData.length > 0) {
+                            var currentCount = totalCount > 999 ? "999+" : totalCount;
                             noticeData.forEach(function(item){
-                                html += vcui.template(noticeListTmpl, item);
+                                innerHTML += vcui.template(noticeListTmpl, item);
                             });
-                            self.$qnaList.empty();
-                            self.$qnaList.append(html);
-
-                            //self.$qnaType.find('.qna-result-lists').empty();
-                            // qna 리스트 문의 건수, 999건 초과시 999+
-                            if(totalCount > 999 ){
-                                self.$totalCount.text("999+");
-                                $pdpTab.text("Q&A (999+)");
-                            } else {
-                                self.$totalCount.text(totalCount);
-                                $pdpTab.html("Q&A "+"("+totalCount+")");
-                            }
-    
-                            //리스트 페이지 노출
-                            // select-box 문의유형 선택값 필터처리
-                            if(selectedQTypeVal == 'ALL'){
-                                data.forEach(function(item){
-                                    item.enabled = self.itemAccordionEnabledChk(item);
-                                    item.currentSecret = self.itemCurrentSecretCheck(item);
-                                    innerHTML += vcui.template(qnaListTmpl, item);
-                                });
-                            } else {
-                                //let selArr = data.filter(key => key.questionTypeCode == selectedQTypeVal);
-                                var selArr = data.filter(function(key){
-                                    return key.questionTypeCode == selectedQTypeVal;
-                                });
-    
-                                selArr.forEach(function(item){
-                                    item.enabled = self.itemAccordionEnabledChk(item);
-                                    item.currentSecret = self.itemCurrentSecretCheck(item);
-                                    innerHTML += vcui.template(qnaListTmpl, item);
-                                });
-    
-                            }
+                            listData.forEach(function(item){
+                                item.enabled = self.itemAccordionEnabledChk(item);
+                                item.currentSecret = self.itemCurrentSecretCheck(item);
+                                innerHTML += vcui.template(qnaListTmpl, item);
+                            });
                             
                             // 211206 추가 - 필터. no-data일경우에,비노출 처리 건, 다시 데이터 조회될 경우, 초기화 
-                            self.$nodata.hide();
+                            self.$qnaList.empty().append(innerHTML);
+                            self.$totalCount.text(currentCount);
+                            $pdpTab.text("Q&A (" + currentCount +")");
                             self.$qnaType.find('.qna-result-lists').show();
-
-                            self.$qnaList.append(innerHTML);
+                            self.$nodata.hide();
                             self.$pagination.vcPagination('setPageInfo', pagination);
-                  
                             lgkorUI.hideLoading();
                         } else {
-                            self.$qnaType.find('.qna-result-lists').hide();
-                            self.$nodata.show();
-                            lgkorUI.hideLoading();
+                            //1207 함수 추가
+                            self.requestNoData();
                         }
                     } else {
-                        self.$qnaType.find('.qna-result-lists').hide();
-                        self.$nodata.show();
-                        lgkorUI.hideLoading();
+                        //1207 함수 추가
+                        self.requestNoData();
                     }
                     //success end
             });
@@ -367,8 +322,11 @@
             var self = this;
             
             //수정하기용, 문의하기일땐 READ API거칠 필요 없음
-            var ajaxUrl = self.$qnaType.data('readAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
-            console.log(ajaxUrl);
+            console.log("param.mode", param.mode)
+            var paramCheck = param.mode == "write" ?  "" : "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
+            var ajaxUrl = self.$qnaType.data('readAjax') + paramCheck;
+            
+            console.log("ajaxUrl", ajaxUrl);
 
             //일반 case
             if(lgkorUI.stringToBool(loginFlag)) {
@@ -384,41 +342,33 @@
                     self.$writeDesc.val('');
                     self.$secretChkBtn.attr("checked",false);
 
-                    if($('.file-item').hasClass="on"){
-                        $('.file-item').removeClass("on");
-                        $('.file-item').find('.file-preview').empty();
-                        $('.file-item').find('.file-name input').prop('placeholder','');
-                        $('.file-item').find('.file-name').text('');
-                    }
-                    
-                    $('#popupWrite').find('.pop-header > .tit > span').html("문의하기");
+                    // 함수 추가 - 211207 
+                    self.fileHideCheck();
+
+                    self.$writePopup.find('.pop-header > .tit > span').html("문의하기");
                     qTypeBtnSelectedText.html("문의 유형을 선택해주세요");
                     //qTypeList.eq(0).addClass("on");
 
-                    if($('#popupWrite').hasClass='modify') {
-                        $('#popupWrite').removeClass('modify');
+                    if(self.$writePopup.hasClass='modify') {
+                        self.$writePopup.removeClass('modify');
                     }
-                    $('#popupWrite').addClass(param.mode);
+                    self.$writePopup.addClass(param.mode);
                     
-                    $('.ico-req').attr('data-href','#popupWrite');
+                    self.$reqBtn.attr('data-href','#popupWrite');
 
                 } else {
                     // modify
                     console.log("modify");
-                    
-                    if($('.file-item').hasClass="on"){
-                        $('.file-item').removeClass("on");
-                        $('.file-item').find('.file-preview').empty();
-                        $('.file-item').find('.file-name input').prop('placeholder','');
-                        $('.file-item').find('.file-name').text('');
-                    }
 
-                    if($('#popupWrite').hasClass='write') {
-                        $('#popupWrite').removeClass('write');
+                    // 함수 추가 - 211207 
+                    self.fileHideCheck();
+
+                    if(self.$writePopup.hasClass='write') {
+                        self.$writePopup.removeClass('write');
                     }
                     
-                    $('#popupWrite').addClass(param.mode);
-                    $('#popupWrite').find('.pop-header > .tit > span').html("수정하기");
+                    self.$writePopup.addClass(param.mode);
+                    self.$writePopup.find('.pop-header > .tit > span').html("수정하기");
 
                     $(param.selector).attr('data-href','#popupWrite');
 
@@ -456,7 +406,6 @@
                                     var k = imgfiles[i].fileNo -1;
 
                                     var $fileBox = imageInputFiles[k].closest('.file-item')
-                                    //var $fileBoxInputfile = imageInputFiles[i].closest('input[type=file]');
                                     var $filePreview = $fileBox.querySelector('.file-preview');
                                     var $fileName = $fileBox.querySelector('input.name');
                                     var reader = new FileReader();
@@ -485,12 +434,13 @@
                         }
                     },"POST");
                 }
-                $('#popupWrite').data("param",param);
+                self.$writePopup.data("param", param);
                 self.uploadFileChk(); //파일업로드 이벤트실행
             } else {
                 lgkorUI.confirm('', {
                     title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
-                    cancelBtnName: '아니오', okBtnName: '예', 
+                    okBtnName: '예', 
+                    cancelBtnName: '아니오', 
                     ok : function (){ 
                         window.location.href = "/sso/api/Login";
                     }
@@ -519,18 +469,13 @@
                     }
                     formData.append(key, param[key]);
 
-                    if(key.indexOf('imageFile') > -1) {
-
-                        //var changeFile = key.replace('image','change');
+                    if(key.indexOf('imageFile') > -1) {                        
 
                         //신규 업로드시 삭제된 파일 체크
                         var $file = $("#"+key);
                         if(!param[key] &&  $file.data('fileFlag') === 'insert') {
                             $file.removeData('fileFlag')
-                        } 
-
-                        //글작성 ,수정시 fileFlag 보내줌
-                        //formData.append(changeFile, $file.data('fileFlag') );
+                        }
                     }
                 }
 
@@ -542,7 +487,7 @@
                         lgkorUI.alert("", {
                             title: "게시물이 등록되었습니다.",
                             ok : function(){
-                                $('#popupWrite').vcModal('hide');
+                                self.$writePopup.vcModal('hide');
                             }
                         });
                         location.reload();
@@ -553,7 +498,7 @@
                             lgkorUI.alert("", {
                                 title: result.message,
                                 ok : function(){
-                                    $('#popupWrite').vcModal('hide');
+                                    self.$writePopup.vcModal('hide');
                                 }
                             });
                         }
@@ -607,13 +552,13 @@
                         lgkorUI.alert("", {
                             title: "게시물이 수정되었습니다.",
                             ok: function(){
-                                $('#popupWrite').vcModal('hide');
+                                self.$writePopup.vcModal('hide');
                             }
                         });
                         location.reload();
                     } else {
                         lgkorUI.hideLoading();
-                        $('#popupWrite').vcModal('hide');
+                        self.$writePopup.vcModal('hide');
                         if (result.message) {
                             lgkorUI.alert("", {
                                 title: result.message,
@@ -647,13 +592,20 @@
                 //비로그인
                 lgkorUI.confirm('', {
                     title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
-                    cancelBtnName: '아니오', okBtnName: '예', 
+                    okBtnName: '예', 
+                    cancelBtnName: '아니오',                     
                     ok : function (){ 
                         window.location.href = "/sso/api/Login";
                     }
                 });
             }
             
+        },
+        requestNoData : function() {
+            var self = this;
+            self.$qnaType.find('.qna-result-lists').hide();
+            self.$nodata.show();
+            lgkorUI.hideLoading();
         },
         //파일업로드 체크
         uploadFileChk : function(param){
@@ -677,13 +629,16 @@
                     }
                 }
             });
-
-            // self.$writeForm.find('.ui_imageinput input[type="file"]').on('change',function(e) {
-            //     // 업로드 파일변경시 delete FLAG 가 없고 , 파일이 있는경우 신규 업로드로 간주
-            //     if($(this).val() !== '' && $(this).data('fileFlag') !== 'delete') {
-            //         $(this).data('fileFlag','insert');
-            //     }
-            // });
+        },
+        fileHideCheck : function() {
+            var self = this;
+            if(self.$writeFormFileItem.hasClass="on"){
+                self.$writeFormFileItem.removeClass("on");
+                self.$writeFormFileItem.find('.file-preview').empty();
+                self.$writeFormFileItem.find('.file-name input').prop('placeholder','');
+                self.$writeFormFileItem.find('.file-name input').val('');
+            }
+            
         },
         formValidationChk : function(param) {
             var self = this;
