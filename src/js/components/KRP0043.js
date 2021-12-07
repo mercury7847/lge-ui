@@ -89,7 +89,7 @@
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","page": 1});
+                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","page": "1"});
             });
         },
         settings : function (){
@@ -150,7 +150,7 @@
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": 1});
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
             });
 
             
@@ -165,7 +165,7 @@
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": 1});
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
@@ -231,11 +231,6 @@
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
-            
-            //나의글보기 이동
-            // self.$writePopup.find('.underline').off('click').on('click', function(){
-            //     window.open('/my-page/email-inquiry');
-            // });
         },
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {

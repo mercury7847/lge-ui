@@ -10,7 +10,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             regex: /[?!,.&^~]/,
             format: 'jpg|jpeg|png|gif',
             totalSize: 10 * 1024 * 1024,
-            fileNameSize : 50, //BTOCSITE-6032 추가
+            fileNameSize : 50,
             individualFlag: false,
             individual: {
                 size: 10 *  1024 * 1024
@@ -20,10 +20,12 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                 format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
                 size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다',
-                nameLength : '첨부파일 이름은 확장자 포함 50자 이내로 등록 가능합니다.' //BTOCSITE-6032 추가 
+                nameLength : '첨부파일 이름은 확장자 포함 50자 이내로 등록 가능합니다.'
             }, 
             delCompleted : null 
+            //BTOCISTE-6032 fileNameSize 추가
             //BTOCISTE-6032 delCompleted 추가
+            //BTOCISTE-6032 message > nameLength값 추가
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -103,12 +105,11 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             } else if (self._checkFileName(file)) {
                 success = false;
                 msgType = 'name';
-            //BTOCSITE-6032 - S
             } else if (!self._checkFileNameSize(file)) {
                 success = false;
                 msgType = 'nameLength';
             } 
-            //BTOCSITE-6032 - E
+            //BTOCSITE-6032 - _checkFileNameSize 추가
 
             return {
                 success: success,
