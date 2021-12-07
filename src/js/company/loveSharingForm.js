@@ -19,7 +19,7 @@
                     userName: {
                         required: true,
                         maxLength: 25,
-                        pattern: /^[가-힣a-zA-Z0-9]+$/,
+                        pattern: /^[가-힣a-zA-Z0-9\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '특수문자는 입력이 불가합니다.'
@@ -63,7 +63,7 @@
                     groupOwner: {
                         required: true,
                         maxLength: 25,
-                        pattern: /^[가-힣a-zA-Z0-9]+$/,
+                        pattern: /^[가-힣a-zA-Z0-9\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '이름을 입력해주세요.',
                         patternMsg: '특수문자는 입력이 불가합니다.'
@@ -72,7 +72,7 @@
                     groupName: {
                         required: true,
                         maxLength: 25,
-                        pattern: /^[가-힣a-zA-Z0-9]+$/,
+                        pattern: /^[가-힣a-zA-Z0-9\s]+$/,
                         msgTarget: '.err-block',
                         errorMsg: '단체명을 입력해 주세요.',
                         patternMsg: '특수문자는 입력이 불가합니다.'
