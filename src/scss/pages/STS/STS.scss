@@ -793,6 +793,9 @@
                         border-radius: 0;
                         overflow: hidden;
                     }
+                    &:after {
+                        display: none;
+                    }
                 }
                 img{
                     position: absolute;
