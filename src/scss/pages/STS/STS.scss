@@ -663,8 +663,9 @@
                 // //BTOCSITE-9038
                 //flex:1;
                 .visual-area {
+                    position: relative;
+                    height: 368px;
                     @include mobile{
-                        position: relative;
                         height: auto;
                         border-radius: 0;
                         overflow: hidden;
@@ -785,8 +786,9 @@
             &.image {
                 overflow: hidden;
                 .visual-area{
+                    height:368px;
+                    position: relative;
                     @include mobile{
-                        position: relative;
                         height: auto;
                         border-radius: 0;
                         overflow: hidden;
