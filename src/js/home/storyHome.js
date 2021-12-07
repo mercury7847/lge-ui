@@ -639,7 +639,9 @@
                     if(window.innerWidth < 480){
                         boxheight = boxwidth * 1.25 + 50;
                     }else{
-                        boxheight = boxwidth * 1.25;
+                        //boxheight = boxwidth * 1.25;
+                         //BTOCSITE-9038
+                         boxheight = boxwidth * 1.25 + 133;
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
