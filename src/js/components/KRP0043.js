@@ -302,10 +302,13 @@
                         } else {
                             //1207 함수 추가
                             self.requestNoData();
+                            self.$pagination.vcPagination('setPageInfo', pagination);
+                            
                         }
                     } else {
                         //1207 함수 추가
                         self.requestNoData();
+                        self.$pagination.vcPagination('setPageInfo', pagination);
 
                     }
                     //success end
@@ -600,7 +603,6 @@
             var self = this;
             self.$qnaType.find('.qna-result-lists').hide();
             self.$nodata.show();
-            self.$pagination.vcPagination('setPageInfo', pagination);
             lgkorUI.hideLoading();
         },
         //파일업로드 체크
