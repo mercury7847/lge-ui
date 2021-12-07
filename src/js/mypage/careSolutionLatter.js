@@ -238,10 +238,16 @@
                     //최종
                     if( page == 1) {
                         var $cl_firstList = $('.cl_list ul li').eq(0); //추가
-                        var $cl_firstLust_accordCont = $cl_firstList.find('.accord-cont');
+                        var $cl_firstList_accordCont = $cl_firstList.find('.accord-cont');
+
+                        var $cl_firstListCoupon = self.$tabCoupon.find('.cl_list ul li').eq(0);
+                        var $cl_firstListCoupon_accordCont = $cl_firstListCoupon.find('.accord-cont');
             
                         $cl_firstList.addClass('on');
-                        $cl_firstLust_accordCont.show();
+                        $cl_firstList_accordCont.show();
+
+                        $cl_firstListCoupon.addClass('on');
+                        $cl_firstListCoupon_accordCont.show();
 
                     }
 
