@@ -541,13 +541,16 @@
     @@include('./CS/modal/choice-engineer-popup.html')
 
     <!-- 취소 팝업 -->
-    <article id="canclePopup" class="lay-wrap">
+
+    <!-- BTOCSITE-9289 data-unlock-url 추가 -->
+    <article id="canclePopup" class="lay-wrap" data-unlock-url="/lg5-common/data-ajax/support/setEngineerUnlock.json">
         <section class="lay-conts">
             <h6>취소 하시겠습니까?</h6>
         </section>
         <div class="btn-wrap laypop">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <a href="#" class="btn"><span>확인</span></a>
+            <!-- BTOCSITE-9289 class 추가 -->
+            <a href="/support" class="btn btn-cancel-confirm"><span>확인</span></a>
         </div>
     </article>
 
