@@ -29,9 +29,9 @@
         '<div class="head">' +
             '<a href="#n" class="accord-btn {{#if (enabled == "Y")}}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge {{#if (answered == "Y") }}active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
-                '<span class="title line1{{#if (secret == "Y") }} on{{/if}}">{{ questionTitle }}</span>' +
-                '<span class="writer"> {{ creationUserName }} </span>' +
-                '<span class="date"> {{ creationDate }} </span>' +
+                '<span class="title line1{{#if (secret == "Y") }} on{{/if}}">{{#if (secret =="Y") }}비밀 글 입니다.{{#else}}{{ questionTitle }}{{/if}}</span>' +
+                '<span class="writer">{{ creationUserName }}</span>' +
+                '<span class="date">{{ creationDate }}</span>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -107,7 +107,9 @@
             //Qna LIst
             self.$qnaType = self.$pdpQna.find('.KRP0043');
             self.$dataModelId = self.$qnaType.attr('data-model-id');
+
             self.$qnaList = self.$qnaType.find('ul.qna-result-lists');
+            self.$qnaListTitle = self.$qnaList.find('.title');
 
             self.$modifyBtn = self.$qnaType.find('.modi-btn');
             self.$deleteBtn = self.$qnaType.find('.del-btn');
@@ -600,6 +602,7 @@
             var self = this;
             self.$qnaType.find('.qna-result-lists').hide();
             self.$nodata.show();
+            self.$pagination.vcPagination('setPageInfo', pagination);
             lgkorUI.hideLoading();
         },
         //파일업로드 체크
