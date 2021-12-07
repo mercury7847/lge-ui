@@ -43,12 +43,6 @@
 <script src="https://wwwdev50.lge.co.kr/lg5-common/js/search/integratedSearch.min.js" async=""></script>
 
 
-
-
-
-
-
-
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL297VL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8HN5PH"
@@ -66,14 +60,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		"content_depth5": "회사소개|ESG 경영|사회|사회공헌|사랑나눔"
 	};
 </script>
-<link rel="stylesheet" href="https://wwwdev50.lge.co.kr/kr/images/company/company.css">
-<link rel="stylesheet" href="https://wwwdev50.lge.co.kr/kr/images/company/company2.css">
-
-
 <!--[S]BTOCSITE-7329 회사소개 내 사랑나눔 요청 페이지 제작의 건-->
-<!--<script src="/lg5-common/js/company/loveSharingForm.min.js"></script>--> <!--절대경로로 수정필요-->
-<script src="https://www.lge.co.kr/lg5-common/js/caresolution/addressManagement.min.js"></script>
-<script src="../../../js/company/loveSharingForm.js"></script> <!--로컬 작업용-->
+<link rel="stylesheet" href="https://wwwdev50.lge.co.kr/kr/images/company/loveSharing.css"><!--절대경로로 수정필요-->
+<script src="https://www.lge.co.kr/lg5-common/js/caresolution/addressManagement.min.js"></script> <!--절대경로로 수정필요-->
+<script src="https://wwwdev50.lge.co.kr/kr/images/company/loveSharingForm.min.js"></script> <!--절대경로로 수정필요-->
 
 <div class="container company">
 	<div class="page-header">
@@ -467,77 +457,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!--//[E]BTOCSITE-7329 회사소개 내 사랑나눔 요청 페이지 제작의 건-->
-<style>
-	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램*/
-	.company .accordion-wrap ul.bull.num_bull > li {padding-left:20px;text-indent: -20px;}
-	.company .accordion-wrap ul.bull.num_bull > li:before {display:none;}
-	.company .accordion-wrap .policy_box h4 {font-size:14px;font-weight: normal;color: #666;}
-	.company .accordion-wrap .policy_box h5{margin-top:35px;padding-top:37px;font-size:14px;font-weight:400;color:#666;border-top:1px solid #ccc}
-	.company .accordion-wrap .policy_box p{color:#666;line-height:1.714;margin-top:12px}
-	.company .accordion-wrap .policy_box ol{margin-top:19px}
-	.company .accordion-wrap .policy_box table{margin:20px 0 25px;font-size:14px;color:#666;}
-	.company .accordion-wrap .policy_box table th,
-	.company .accordion-wrap .policy_box table td {font-size:14px;color:#666;}
-
-	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청*/
-	.company .form-wrap.loveSharing {max-width:1460px;margin:12px auto 0;padding:0 40px}
-	.company .form-wrap.loveSharing .form-desc {margin:-24px 0 100px; text-align:center; font-size:16px;line-height:1.63;}
-	.company .form-wrap.loveSharing .bdb {border-bottom:2px solid #000;padding-bottom:15px}
-	.company .form-wrap.loveSharing .reqchk {font-size:16px;padding-top:20px}
-	.company .form-wrap.loveSharing .reqchk::before {content:"*";display:inline-block;margin-left:1px;margin-right:2px;color:#ec455a;font-size:inherit;line-height:inherit;vertical-align:top}
-	.company .form-wrap.loveSharing .forms {margin-top:20px}
-	.company .form-wrap.loveSharing .forms + .innder {margin-top:80px}
-	.company .form-wrap.loveSharing .forms .cell .btn {position:relative;min-width:78px;}
-	.company .form-wrap.loveSharing .forms .cell .btn input[type="file"] {min-width:auto;}
-	.company .form-wrap.loveSharing .rdo-wrap input+label {margin-right:30px}
-	.company .form-wrap.loveSharing .chk-wrap input+label {margin-right:30px}
-	.company .form-wrap.loveSharing .btn-wrap {width:100%;margin-top:64px;text-align:center}
-	.company .form-wrap.loveSharing .btn-wrap .btn {min-width:154px;}
-	.company .form-wrap.loveSharing .btn-wrap .btn + .btn {margin-left:35px;}
-	.company .form-wrap.loveSharing .file-box {position:relative}
-	.company .form-wrap.loveSharing .file-box .file-input {width:100%;}
-	.company .form-wrap.loveSharing .file-box .file-input .file-label {border:none}
-	.company .form-wrap.loveSharing .file-box .file-lists {opacity:0;position:absolute;top:0;width:calc(100% - 84px);border-radius: 8px;}
-	.company .form-wrap.loveSharing .file-box .file-lists:not(:empty) {opacity:1}
-	.company .form-wrap.loveSharing .file-box .file-lists li {margin-top:0;padding:10px 15px;background:#ededed;}
-
-	/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
-	.company .write-form-confirm {display:none}
-	.company .write-form-confirm .forms .tit {font-size:16px;font-weight:bold;line-height:1.63;}
-	.company .write-form-confirm .forms .conts .write-data {display:inline-block;padding:11px 24px;font-size:16px;line-height:1.63;}
-	.company .write-form-confirm .forms .conts.textarea-cont .write-data {word-break:break-word}
-	.company .write-form-confirm .forms .conts.address-cont .write-data:first-child {padding:11px 10px 11px 24px}
-	.company .write-form-confirm .forms .conts.address-cont .write-data + .write-data {padding:11px 2px;}
-
-	/*mobile*/
-	@media screen and (max-width:768px) {
-		/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청*/
-		.company .form-wrap.loveSharing {margin-top:33px;padding:0 16px 60px}
-		.company .form-wrap.loveSharing .form-desc {margin-bottom:33px; font-size:14px;line-height:1.57;}
-		.company .form-wrap.loveSharing .innder .mo-h2 {font-size:20px}
-		.company .form-wrap.loveSharing .reqchk {font-size:13px;padding-top:10px;padding-bottom:15px}
-		.company .form-wrap.loveSharing .forms {margin-top:20px}
-		.company .form-wrap.loveSharing .forms+.innder {margin-top:55px}
-		.company .form-wrap.loveSharing .forms .conts .email-conts-wrap {width:100%;display:flex;flex-direction:column}
-		.company .form-wrap.loveSharing .forms .conts .addr-box-wrap {width:100%}
-		.company .form-wrap.loveSharing .tit {font-size:18px}
-		.company .form-wrap.loveSharing .btn-wrap {position:fixed;z-index:108;left:0;right:0;bottom:0;width:100%;margin-top:0;}
-		.company .form-wrap.loveSharing .btn-wrap .inner {display:flex;justify-content:center}
-		.company .form-wrap.loveSharing .btn-wrap .btn {width:50%;border-radius:0;padding:16px 10px;font-size:15px;font-weight:400}
-		.company .form-wrap.loveSharing .btn-wrap .btn + .btn {margin-left:0;}
-		.company .form-wrap.loveSharing .write-form .forms .conts {width:100%}
-		.company .form-wrap.loveSharing .file-box .file-lists li {padding:11px 50px 11px 11px}
-		.company .form-wrap.loveSharing .file-box .file-lists li .file-name {font-size:14px}
-
-		/*ESG 경영 > 사회 > 사회공헌 > 사랑나눔 프로그램 > 신청 확인*/
-		.company .write-form-confirm .forms .tit {display:inline-block;width:30%;font-size:14px;line-height: 1.57;}
-		.company .write-form-confirm .forms .conts {width:70%;margin-top:0;padding-left:12px;}
-		.company .write-form-confirm .forms .conts .write-data {display:inline-block;padding:0;font-size:14px;line-height: 1.57;}
-		.company .write-form-confirm .forms .conts.textarea-cont {display:block;width:100%;margin-top:8px;padding-left:0;}
-		.company .write-form-confirm .forms .conts.textarea-cont .write-data {overflow-y:auto;width:100%;max-height:167px;min-height:100px;padding:6px 10px;border:1px solid #ddd;border-radius: 8px;}
-		.company .write-form-confirm .forms .conts.address-cont .write-data:first-child {display:block;padding:0;}
-		.company .write-form-confirm .forms .conts.address-cont .write-data + .write-data {display:inline;padding:0;}
-		.company .write-form-confirm .forms .conts.address-cont .write-data:nth-child(3) {margin-left:2px}
-	}
-
-</style>
