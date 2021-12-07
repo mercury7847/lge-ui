@@ -649,7 +649,7 @@
 
             //BTOCSITE-9289 : 예약 중일때 취소시 param 보내는 여부
             $('#canclePopup .btn-cancel-confirm').on('click', function(e){
-                e.preventDefault();
+                //e.preventDefault();
 
                 var unlockUrl = $('#canclePopup').data('unlockUrl'); //데이터 가져오기
                 var _href = $(this).attr('href');
