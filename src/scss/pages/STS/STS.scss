@@ -621,10 +621,8 @@
         .flexbox:not(.tag-area) {
             display: inline-block;
             vertical-align: top;
-            @include pc{
-                // BTOCSITE-9038
-                height:541px;
-            }
+             // BTOCSITE-9038
+             height:541px;
             @include mobile{
                 margin-top: 8px;
                 padding:0;
@@ -662,13 +660,15 @@
             }
             &.video {
                 overflow: hidden;
-                flex:1;
+                // //BTOCSITE-9038
+                //flex:1;
                 .visual-area {
-                    position: relative;
-                    //BTOCSITE-9038
-                    height:368px;
-                    border-radius: 8px 8px 0 0;
-                    overflow: hidden;
+                    @include mobile{
+                        position: relative;
+                        height: auto;
+                        border-radius: 0;
+                        overflow: hidden;
+                    }
                     &:after {
                         position: absolute;
                         top: 0;
