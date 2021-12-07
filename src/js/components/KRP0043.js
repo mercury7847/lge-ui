@@ -360,7 +360,7 @@
                 var qTypeList = self.$writeQnaType.find('option');
                 var qTypeBtnSelectedText = $("#type_desc .ui-selectbox-wrap").find('.ui-selectbox-view > a > .ui-select-text');
                 var imageInputFiles = $('.ui_imageinput').find('input[type="file"]');
-                $('inpu[type=file]').removeData('fileFlag');
+                $('input[type=file]').removeData('fileFlag');
 
                 if(param.mode == 'write') {
                     // write
@@ -529,7 +529,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        //location.reload();
+                        location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         
@@ -594,7 +594,7 @@
                                 $('#popupWrite').vcModal('hide');
                             }
                         });
-                        //location.reload();
+                        location.reload();
                     } else {
                         lgkorUI.hideLoading();
                         $('#popupWrite').vcModal('hide');
@@ -620,7 +620,7 @@
                             title: "게시물이 삭제되었습니다."
                             
                         });
-                        //location.reload();
+                        location.reload();
                     } else {
                         lgkorUI.alert("", {
                             title: result.message
