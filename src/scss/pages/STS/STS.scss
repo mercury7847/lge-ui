@@ -622,7 +622,8 @@
             display: inline-block;
             vertical-align: top;
             @include pc{
-                height:408px;
+                // BTOCSITE-9038
+                height:541px;
             }
             @include mobile{
                 margin-top: 8px;
@@ -664,7 +665,8 @@
                 flex:1;
                 .visual-area {
                     position: relative;
-                    height:184px;
+                    //BTOCSITE-9038
+                    height:368px;
                     border-radius: 8px 8px 0 0;
                     overflow: hidden;
                     &:after {
@@ -677,20 +679,25 @@
                         background-color: rgba(0,0,0,.2);
                         content: '';
                     }
-                    @include mobile{
-                        img{
-                            position:absolute;
+                    //BTOCSITE-9038
+                    img{
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        height: 100%;
+                        width:auto;
+                        transform:translate(-50%, -50%);
+                        @include mobile{
                             top:calc(50% - 50px);
-                            left:50%;
                             width:auto;
                             height:calc(100% - 100px);
-                            transform:translate(-50%, -50%);
                         }
                     }
                 }
                 .btn-video {
                     position: absolute;
-                    top: 68px;
+                    //BTOCSITE-9038
+                    top: 160px;
                     left: 50%;
                     z-index: 1;
                     width: 48px;
@@ -709,15 +716,19 @@
                     bottom: 0;
                     right: 0;
                     left: 0;
-                    padding:34px 24px;
-                    height: 225px;
+                    // BTOCSITE-9038
+                    padding:20px 24px;
+                    background: #fff;
+                    color: #000;
+                    height: 173px;
                     @include mobile {
                         padding:10px 12px;
                         height: 108px;
                     }
                     .card-title{
-                        font-size:22px;
-                        line-height:28px;
+                        // BTOCSITE-9038
+                        font-size:24px;
+                        line-height:32px;
                         @include mobile{
                             // @include textEllipsisClamp(1);
                             font-size:14px;
@@ -785,8 +796,10 @@
                     position: absolute;
                     top: 0;
                     right: 0;
-                    width:auto;
-                    height: 100%;
+                    //BTOCSITE-9038
+                    border-radius: 0;
+                    width: 100%;
+                    height: auto;
                     @include mobile{
                         border-radius: 0;
                         width: 100%;
@@ -794,8 +807,9 @@
                     }
                 }
                 .flag-wrap .flag {
-                    border-color: rgba(255,255,255,.4);
-                    color: $color-white;
+                    // BTOCSITE-9038 
+                    border-color:#000;
+                    color: #000;
                     @include mobile {
                         border-color: #000;
                         color: #000;
@@ -817,9 +831,11 @@
                     right: 0;
                     left: 0;
                     z-index: 1;
-                    color: $color-white;
-                    height: 225px;
-                    padding-top:34px;
+                    // BTOCSITE-9038
+                    color: #000;
+                    height: 173px;
+                    background: #fff;
+                    padding-top:20px;
                     @include mobile{
                         padding:10px 12px;
                         height: 108px;
@@ -827,8 +843,9 @@
                     .card-title {
                         @include textEllipsisClamp(2);
                         max-height: 82px;
-                        font-size: 30px;
-                        line-height: 38px; 
+                         // BTOCSITE-9038
+                        font-size:24px;
+                        line-height:32px;
                         
                         @include mobile{
                             font-size: 14px;
@@ -839,7 +856,8 @@
                     }
                     .tag-wrap {
                         position: absolute;
-                        bottom:40px;
+                        // BTOCSITE-9038
+                        bottom:24px;
                         @include mobile{
                             bottom:12px;
                         }
