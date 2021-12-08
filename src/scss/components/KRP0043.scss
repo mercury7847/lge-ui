@@ -410,7 +410,7 @@
 }
 
 .popup-wrap { 
-    .pop-conts {
+    section.qna {
         position: static;
         @include mobile{
             padding: 0 16px 30px;
