@@ -236,6 +236,9 @@
 
                         <!-- component -->
                         <div class="product-list-area">
+                            <!-- BTOCSITE-9186 -->
+                            <button type="button" class="btn border size btn-inchGuide" data-href="#popupInchGuide" data-control="modal"><span> 화면사이즈 cm↔inch</span></button>
+                            <!-- BTOCSITE-//9186 -->
                             @@include('./common/modules/list-sorting.html', {
                                 "select" : [
                                     {"option" : "인기순", "default":'value="sort_popular"'},
@@ -887,5 +890,65 @@
         </div>
         @@include('./common/footer.html')
     </div>
+
+    <!-- BTOCSITE-9186 -->
+    <article  class="popup-wrap popup-inch-guide" id="popupInchGuide">
+        <header class="pop-header">
+            <h1 class="tit"><span>화면사이즈 cm↔inch</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <div class="tb_row tb-row-bl">
+                <table>
+                    <caption>화면사이즈 cm↔inch 안내</caption>
+                    <colgroup>
+                        <col style="width:50%">
+                        <col style="width:50%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">cm</th>
+                        <th scope="col">inch</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>330 cm</td>
+                            <td>130"</td>
+                        </tr>
+                        <tr>
+                            <td>305 cm</td>
+                            <td>120"</td>
+                        </tr>
+                        <tr>
+                            <td>278 cm</td>
+                            <td>110"</td>
+                        </tr>
+                        <tr>
+                            <td>254 cm</td>
+                            <td>100"</td>
+                        </tr>
+                        <tr>
+                            <td>247 cm</td>
+                            <td>98"</td>
+                        </tr>
+                        <tr>
+                            <td>229 cm</td>
+                            <td>90"</td>
+                        </tr>
+                        <tr>
+                            <td>223 cm</td>
+                            <td>88"</td>
+                        </tr>
+                        <tr>
+                            <td>214 cm</td>
+                            <td>85"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- //BTOCSITE-9186 -->
 </body>
 </html>
