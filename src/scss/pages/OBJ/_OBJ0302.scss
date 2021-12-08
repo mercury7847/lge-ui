@@ -1388,10 +1388,10 @@ h2.title {
                             .price_info {
                                 .product_list {
                                     position: relative;
-                                    padding-bottom: 30px;
+                                    padding-bottom: 15px; // BTOCSITE-9262
                                     @include mobile {
                                         //padding: 0 25px 30px 25px;
-                                        padding: 0 10px 30px 10px;
+                                        padding: 0 10px 10px 10px;
                                     }
                                     li {
                                         display: flex;
@@ -1417,14 +1417,18 @@ h2.title {
                                             em {}
                                         }
                                         &.sum {
-                                            position: absolute;
-                                            bottom: 0;
-                                            left: 0;
-                                            right: 0;
-                                            @include mobile {
-                                                left: 10px;
-                                                right: 10px;
-                                            }
+                                            /* BTOCSITE-9262 */
+                                            padding:0;
+                                            margin-top: 13px;
+                                            // position: absolute; 
+                                            // bottom: 0; 
+                                            // left: 0; 
+                                            // right: 0; 
+                                            // @include mobile { 
+                                            //     left: 10px; 
+                                            //     right: 10px; 
+                                            // } 
+                                            /* //BTOCSITE-9262 */
                                             .product_name {
                                                 color: #000000;
                                             }
@@ -1469,7 +1473,7 @@ h2.title {
                                         background-size: 20px;
                                         }
                                         .product_name {
-                                            margin-left:10px;
+                                            margin-left:3px; // BTOCSITE-9262
                                             align-self: center;
                                         }
                                         .product_price {
@@ -1513,7 +1517,7 @@ h2.title {
                                     // right: 7.5%;
                                     //bottom: 20px;
                                     // bottom: 10px;
-                                    margin-top: 15px;
+                                    // margin-top: 15px; //BTOCSITE-9262
                                     color: #000000;
                                     font-size: 14px;
                                     text-align: left;
@@ -2330,3 +2334,17 @@ h2.title {
     height:auto;
 }
 /* //BTOCSITE-2852 add */
+
+/* BTOCSITE-9262 */
+.err-msg.err-msg-pannel{
+    display:none;
+    margin-top: 12px;
+    margin-left: 27px;
+    @include mobile{
+        margin-top: 10px;
+        margin-left:0;
+        text-align: center !important;
+        margin-bottom: 10px;
+    }
+}
+/* //BTOCSITE-9262 */

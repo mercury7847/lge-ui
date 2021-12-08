@@ -4162,6 +4162,7 @@
             if(plChk.length){
                 pannelSumTotal();
                 $('.sum').css('display','flex'); //2021-10-14 추가
+                $('.price_info').find('.err-msg-pannel').css('display','block'); // BTOCSITE-9262
             } else {
                 let desc = "";
                 let obj = {
@@ -6069,13 +6070,16 @@
             let sumSlide = $(".total_price_info_body .swiper-wrapper .swiper-slide");
             //console.log('idx', idx);
             //console.log('sumSlide.length', sumSlide.length);
+
             /* BTOCSITE-1582 */
             var $objContent = $('.model_experience');
             if ($objContent.attr('data-page-type') === 'NEWBEST' || $objContent.attr('data-page-type') === 'HIMART' || $objContent.attr('data-page-type') === 'ETLAND'){ //210805 BTOCSITE-3487
                 //priceHtml = '<div class="swiper-slide"><dl><dd style="background:#fff;"><div class="price_info"><button class="btn btn_purchase"><span>구매하기</span></button></div></dd></dl></div>';
                 //priceSumList.appendSlide(priceHtml);
                 //console.log('priceSumList', priceSumList);
+                
                 $(priceSumList.$el[0]).hide();
+
             }
             /* //BTOCSITE-1582 */
 
@@ -6167,6 +6171,7 @@
             priceHtml += '                                         <span class="product_total_title">총금액</span>'
             priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
+            priceHtml += '                                    <p class="err-msg err-msg-pannel">주문 시 할인 적용가를 확인할 수 있습니다.</p>'; // BTOCSITE-9262
             if ($objContent.attr('data-page-type') === 'COMMON') { //BTOCSITE-3198 구매하기 버튼명 다르게 노출
                 priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             } else {
@@ -6185,6 +6190,7 @@
                 //priceSumList.appendSlide(priceHtml);
                 //console.log('priceSumList', priceSumList);
                 $(priceSumList.$el[0]).show(); //BTOCSITE-3198 뉴베스트, 하이마트도 가격 견적비교 노출되도록
+                
             }
             /* //BTOCSITE-1582 */            
 
