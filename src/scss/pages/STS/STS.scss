@@ -665,9 +665,9 @@
                 .visual-area {
                     position: relative;
                     //BTOCSITE-9038
-                    height:calc(100% - 173px);
+                    height: 112.54%;
                     @include mobile{
-                        height:calc(100% - 107.5px);
+                        //height:calc(100% - 107.5px);
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -723,10 +723,10 @@
                     padding:20px 24px;
                     background: #fff;
                     color: #000;
-                    height: 173px;
+                    height: 52.91%;
                     @include mobile {
                         padding:10px 12px;
-                        height: 107.5px;
+                        //height: 107.5px;
                     }
                     .card-title{
                         // BTOCSITE-9038
@@ -789,10 +789,10 @@
                 overflow: hidden;
                 .visual-area{
                     //BTOCSITE-9038
-                    height:calc(100% - 173px);
+                    height: 112.54%;
                     position: relative;
                     @include mobile{
-                        height:calc(100% - 107.5px);
+                        //height:calc(100% - 107.5px);
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -844,12 +844,12 @@
                     z-index: 1;
                     // BTOCSITE-9038
                     color: #000;
-                    height: 173px;
+                    height: 52.91%;
                     background: #fff;
                     padding-top:20px;
                     @include mobile{
                         padding:10px 12px;
-                        height: 107.5px;
+                        //height: 107.5px;
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
