@@ -49,7 +49,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._resize();
                 self._arrowState();
 
-                $('.marketing-link .ui_carousel_slider').vcCarousel({
+                self.$mobileMktSlider.vcCarousel({
                     infinite: false,
                     variableWidth: true,
                     slidesToShow: 1,
@@ -135,12 +135,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$dimmed = self.$el.find('.header-wrap .dimmed');
             self.$dimmed.hide();
 
-            self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
+            self.$mobileNaviWrapper = $('.mo-nav').width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
-            self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
+            // self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
             self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
-            self.$mobileNaviWrapper.find('img').remove();
-            self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
+            // self.$mobileNaviWrapper.find('img').remove();
+            // self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
+
+            //BTOCSITE-7335
+            self.$mobileMktSlider = $('.marketing-link .ui_carousel_slider');
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
             self.$headerBottom = self.$el.find('.header-bottom');            
@@ -220,7 +223,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$hamburger.on('click', function(e){
                 e.preventDefault();
-
+                
                 self._menuToggle();
                 var active = self.$hamburger.hasClass('active');
 
@@ -228,7 +231,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     lgkorUI.addHistoryBack(self.cid, function(){                    
                         self._menuToggle(true);
                     });
-                } else{
+                } else{                    
                     lgkorUI.removeHistoryBack(self.cid);
                 }
                 
@@ -455,7 +458,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     var $superContent = $parent.find('.super-category-content')
                     e.preventDefault();
                     
-                    if( $superNav.length ) {                        
+                    if( $superNav.length ) {    
                         $superNav.find('.swiper-slide').removeClass('on')
                         $superNav.find('.swiper-slide').eq(0).addClass('on');
                         $superContent.removeClass('on');
@@ -488,15 +491,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             $('header, .nav-category-inner').on('mouseleave', function(){
                 if( window.innerWidth > 767) {
-                self._setOut();
-                $superContentLastAnchor = null
-                if($superCategoryNav.hasClass('swiper-container-initialized')) {
-                    superNavSwiper.destroy();
-                    if( $superContentLastAnchor != null) {
-                        $superContentLastAnchor.off('keydown.lastAnchor')
-                        $superContentLastAnchor = null;
+                    self._setOut();
+                    $superContentLastAnchor = null
+                    if($superCategoryNav.hasClass('swiper-container-initialized')) {
+                        superNavSwiper.destroy();
+                        if( $superContentLastAnchor != null) {
+                            $superContentLastAnchor.off('keydown.lastAnchor')
+                            $superContentLastAnchor = null;
+                        }
                     }
-                }
                 }
             })
 
@@ -667,29 +670,29 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if( isSwipe ) { $('body').addClass('is-main-sticky-header'); }            
 
             /* BTOCSITE-1937 스프레드 메뉴 수정 */
-            self.$mobileNaviItems.each(function(idx, item){
-                var $navDepth1Item = $(item).find('>.nav-item');
-                var $superNav = $(item).find('.super-category-nav');
+            // self.$mobileNaviItems.each(function(idx, item){
+            //     var $navDepth1Item = $(item).find('>.nav-item');
+            //     var $superNav = $(item).find('.super-category-nav');
 
-                if( $superNav.length ) {
-                    var $cateContainer = $('<div class="nav-category-container"></div>');
-                    var $cateContent = $('<ul></ul>');
+            //     if( $superNav.length ) {
+            //         var $cateContainer = $('<div class="nav-category-container"></div>');
+            //         var $cateContent = $('<ul></ul>');
 
-                    $cateContainer.append('<div class="category-home"><a href="' + $navDepth1Item.attr('href') + '" class="super-category-item">' + $navDepth1Item.attr('data-super-category-item') + '</a></div>')
+            //         $cateContainer.append('<div class="category-home"><a href="' + $navDepth1Item.attr('href') + '" class="super-category-item">' + $navDepth1Item.attr('data-super-category-item') + '</a></div>')
 
-                    $superNav.find('.swiper-slide').each(function(idx, slide){
-                        $(slide).find('a').find('.blind').remove();
-                        var listHTML = $('<li></li>');
-                        listHTML.append('<a href="#" class="super-category-item" target="_self">' + $(slide).find('a').text() + '</a>');
-                        listHTML.append('<div class="nav-category-layer"><div class="nav-category-inner"></div></div>');
-                        listHTML.find('.nav-category-inner').append($(item).find($(slide).find('a').attr('href')))
-                        $cateContent.append(listHTML);
-                    });
-                    $cateContainer.append($cateContent)
-                    $(item).find('.nav-category-layer').remove();
-                    $cateContainer.insertAfter($navDepth1Item)
-                }
-            });
+            //         $superNav.find('.swiper-slide').each(function(idx, slide){
+            //             $(slide).find('a').find('.blind').remove();
+            //             var listHTML = $('<li></li>');
+            //             listHTML.append('<a href="#" class="super-category-item" target="_self">' + $(slide).find('a').text() + '</a>');
+            //             listHTML.append('<div class="nav-category-layer"><div class="nav-category-inner"></div></div>');
+            //             listHTML.find('.nav-category-inner').append($(item).find($(slide).find('a').attr('href')))
+            //             $cateContent.append(listHTML);
+            //         });
+            //         $cateContainer.append($cateContent)
+            //         $(item).find('.nav-category-layer').remove();
+            //         $cateContainer.insertAfter($navDepth1Item)
+            //     }
+            // });
             self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
             self.$mobileNaviItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
             self.$mobileNaviItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
@@ -833,8 +836,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self.$dimmed.hide();
 
             } else{
-                $('.marketing-link .ui_carousel_slider').find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
-                $('.marketing-link .ui_carousel_slider').vcCarousel('update');
+                self.$mobileMktSlider.find('[data-active-src]').each(function(){self._changeActiveImgSrc(this)})
+                self.$mobileMktSlider.vcCarousel('update');
                 self._changeActiveImgSrc($('.store-counsel-banner').find('[data-active-src]')[0])
                 self._changeActiveImgSrc($('.mobile-nav-banner').find('[data-active-src]')[0])
                 self.$hamburger.addClass('active');
