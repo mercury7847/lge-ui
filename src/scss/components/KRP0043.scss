@@ -411,6 +411,7 @@
 
 .popup-wrap { 
     .pop-conts {
+        position: static;
         @include mobile{
             padding: 0 16px 30px;
         }
