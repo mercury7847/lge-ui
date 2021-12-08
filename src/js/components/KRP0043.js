@@ -280,9 +280,9 @@
                     var totalCount = result.data.qnaTotalCount;
                     var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
-                    if(result.status == "success"){                    
+                    if(result.status == "success"){
 
-                        if( (noticeData.length > 0 && listData.length > 0) || listData.length > 0) {
+                        if( (noticeData.length > 0 && listData.length > 0) || listData.length > 0 || noticeData.length > 0) {
                             var currentCount = totalCount > 999 ? "999+" : totalCount;
                             noticeData.forEach(function(item){
                                 innerHTML += vcui.template(noticeListTmpl, item);
