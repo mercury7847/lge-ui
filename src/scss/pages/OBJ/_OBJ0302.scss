@@ -1403,7 +1403,8 @@ h2.title {
                                             font-size: 16px;
                                             color: #666666;
                                             font-weight: 500;
-                                            text-align:left; // BTOCSITE-9269 
+                                            text-align:left; // BTOCSITE-9269  
+                                            flex:1; // BTOCSITE-9269  
                                             @include mobile {
                                                 font-size: 13px;
                                                 padding-right:3px;
@@ -1479,6 +1480,7 @@ h2.title {
                                             align-self: center;
                                             @include mobile{
                                                 margin-left:3px; // BTOCSITE-9269
+                                                flex:1;
                                             }
                                         }
                                         .product_price {
