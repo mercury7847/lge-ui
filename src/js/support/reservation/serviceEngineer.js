@@ -622,6 +622,12 @@
                 }
             }, 'POST');
         },
+
+        //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
+        clearPageLeventEvents : function() {
+            $(window).off("beforeunload");
+        },
+
         bindEvent: function() {
             var self = this;
 
@@ -863,7 +869,6 @@
                 var productCode = $('#productCode').val();
                 // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
                 productCode = self.getbdTypeParam();
-
                 param = {
                     serviceType: $('#serviceType').val(),
                     category: $('#category').val(),
@@ -877,7 +882,44 @@
                     time: $('#time').val()
                 }
 
+                //BTOCSITE-9289 : 시간까지 선택된 상태에서 페이지 나갈때 param보내는 기능 추가
+                var unlockUrl = self.$stepDate.data('unlockUrl'); //데이터 가져오기
+                var unlockParam = {}; //unlockParam 빈 객체를 만들기
+
+                if( $('#productCode').val() != undefined) { //빈값이진 undefined인지 확인 : undefined 가 아니면 unlockParam.productCode 는 밸류값이 들어간다
+                    unlockParam.productCode = $('#productCode').val()
+                }
+                if( $('#serviceType').val() != undefined) {
+                    unlockParam.serviceType = $('#serviceType').val()
+                }
+                if( $('#lockUserId').val() != undefined) {
+                    unlockParam.lockUserId = $('#lockUserId').val()
+                }
+
+                lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                    if (res.data.resultFlag == 'Y') {
+                        console.log('최초 unlockParam', unlockParam);
+                    }
+                })
+
+                // //console.log('페이지 나갈때 unlockParam', unlockParam);
+                $(window).on("beforeunload", function() {
+                    //alert("111111");
+                    lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                        if (res.data.resultFlag == 'Y') {
+                            //alert("2222222");
+                            console.log('페이지 나갈때 unlockParam', unlockParam);
+                            //alert("3333333");
+                            //alert("4444444");
+                        }
+                    })
+                 });
+
+                //console.log("2번째 url 가져오기:", unlockUrl);
+
+
                 self.reqestEngineer(url, param);
+                //self.setPageLeaveEvents();
             });
 
             // 엔지니어 선택 팝업 오픈
@@ -991,10 +1033,11 @@
                 if (result.success == true) {    
                     if (isLogin) {
                         lgkorUI.confirm('', {
-                            title:'예약 하시겠습니까?',
+                            title:'예약 하시겠습니까11111?',
                             okBtnName: '확인',
                             cancelBtnName: '취소',
                             ok: function() {
+                                self.clearPageLeventEvents() //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
                                 self.requestComplete();
                             }
                         }, this);       
@@ -1038,6 +1081,7 @@
             //BTOCSITE-9289 : 예약 중일때 취소시 param 보내는 여부
             $('#canclePopup .btn-cancel-confirm').on('click', function(e){
                 //e.preventDefault();
+                self.clearPageLeventEvents();
 
                 var unlockUrl = $('#canclePopup').data('unlockUrl'); //데이터 가져오기
                 var _href = $(this).attr('href');
@@ -1054,7 +1098,7 @@
                 }
 
                 //보내는 param 확인
-                console.log('unlockParam', unlockParam)
+                console.log('취소했을때 unlockParam', unlockParam)
 
                 //데이터 통신
                 lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){

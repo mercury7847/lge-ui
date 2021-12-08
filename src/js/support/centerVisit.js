@@ -547,6 +547,41 @@
             });
             self.$timeWrap.on('timeselected', function(e, time) {
                 self.data['time'] = time;
+
+                //주영
+                //BTOCSITE-9289 : 시간까지 선택된 상태에서 페이지 나갈때 param보내는 기능 추가
+                var unlockUrl = self.$stepDate.data('unlockUrl'); //데이터 가져오기
+                var unlockParam = {}; //unlockParam 빈 객체를 만들기
+
+                if( $('#productCode').val() != undefined) { //빈값이진 undefined인지 확인 : undefined 가 아니면 unlockParam.productCode 는 밸류값이 들어간다
+                    unlockParam.productCode = $('#productCode').val()
+                }
+                if( $('#serviceType').val() != undefined) {
+                    unlockParam.serviceType = $('#serviceType').val()
+                }
+                if( $('#lockUserId').val() != undefined) {
+                    unlockParam.lockUserId = $('#lockUserId').val()
+                }
+
+                lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                    if (res.data.resultFlag == 'Y') {
+                        console.log('최초 unlockParam', unlockParam);
+                    }
+                })
+
+                // //console.log('페이지 나갈때 unlockParam', unlockParam);
+                $(window).on("beforeunload", function() {
+                    //alert("111111");
+                    lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                        if (res.data.resultFlag == 'Y') {
+                            //alert("2222222");
+                            console.log('페이지 나갈때 unlockParam', unlockParam);
+                            //alert("3333333");
+                            //alert("4444444");
+                        }
+                    })
+                 });
+                 
                 self.reqestEngineer();
             });
 
