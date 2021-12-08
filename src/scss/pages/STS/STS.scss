@@ -651,7 +651,7 @@
                     flex-direction:column;
                 }
             }
-            .flag-wrap + .card-title{margin-top: 8px;}
+            .flag-wrap + .card-title{margin-top: 3px;}
             .card-title + .tag-wrap{
                 margin-top:28px;
                 @include mobile{
@@ -702,14 +702,14 @@
                 .btn-video {
                     position: absolute;
                     //BTOCSITE-9038
-                    top: 160px;
+                    top: 50%;
                     left: 50%;
                     z-index: 1;
                     width: 48px;
                     height: 48px;
                     background: url('/lg5-common/images/icons/btn-play-32-black.svg');
                     background-size: 100%;
-                    transform: translate(-50%, 0%);
+                    transform: translate(-50%, -50%);
                     @include mobile{
                         top:26%;
                         width: 41px;
