@@ -702,18 +702,15 @@
                 .btn-video {
                     position: absolute;
                     //BTOCSITE-9038
-                    top: 50%;
-                    left: 50%;
+                    top: 0;
+                    left: 0%;
                     z-index: 1;
-                    width: 48px;
-                    height: 48px;
-                    background: url('/lg5-common/images/icons/btn-play-32-black.svg');
-                    background-size: 100%;
-                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    height:calc(100% - 173px);
+                    background: url('/lg5-common/images/icons/btn-play-32-black.svg') no-repeat center center;
+                    background-size: 48px 48px;
                     @include mobile{
-                        top:26%;
-                        width: 41px;
-                        height: 41px;
+                        background-size: 41px 41px;
                     }
                 }
                 .text-area {
