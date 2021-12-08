@@ -315,6 +315,12 @@
                 });
             });
         },
+
+        //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
+        clearPageLeventEvents : function() {
+            $(window).off("beforeunload");
+        },
+
         bindEvent: function() {
             var self = this;
 
@@ -581,7 +587,7 @@
                         }
                     })
                  });
-                 
+
                 self.reqestEngineer();
             });
 
@@ -659,6 +665,7 @@
                             okBtnName: '확인',
                             cancelBtnName: '취소',
                             ok: function() {
+                                self.clearPageLeventEvents() //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
                                 self.requestComplete();
                             }
                         });       
@@ -685,6 +692,7 @@
             //BTOCSITE-9289 : 예약 중일때 취소시 param 보내는 여부
             $('#canclePopup .btn-cancel-confirm').on('click', function(e){
                 //e.preventDefault();
+                self.clearPageLeventEvents();
 
                 var unlockUrl = $('#canclePopup').data('unlockUrl'); //데이터 가져오기
                 var _href = $(this).attr('href');

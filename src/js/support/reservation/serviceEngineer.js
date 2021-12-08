@@ -1033,7 +1033,7 @@
                 if (result.success == true) {    
                     if (isLogin) {
                         lgkorUI.confirm('', {
-                            title:'예약 하시겠습니까11111?',
+                            title:'예약 하시겠습니까?',
                             okBtnName: '확인',
                             cancelBtnName: '취소',
                             ok: function() {
