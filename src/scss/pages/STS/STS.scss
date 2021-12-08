@@ -665,7 +665,7 @@
                 .visual-area {
                     position: relative;
                     //BTOCSITE-9038
-                    height: 112.54%;
+                    height: 68.03%;
                     @include mobile{
                         //height:calc(100% - 107.5px);
                         border-radius: 0;
@@ -723,7 +723,7 @@
                     padding:20px 24px;
                     background: #fff;
                     color: #000;
-                    height: 52.91%;
+                    height: 31.97%;
                     @include mobile {
                         padding:10px 12px;
                         //height: 107.5px;
@@ -789,7 +789,7 @@
                 overflow: hidden;
                 .visual-area{
                     //BTOCSITE-9038
-                    height: 112.54%;
+                    height: 68.03%;
                     position: relative;
                     @include mobile{
                         //height:calc(100% - 107.5px);
@@ -844,7 +844,7 @@
                     z-index: 1;
                     // BTOCSITE-9038
                     color: #000;
-                    height: 52.91%;
+                    height: 31.97%;
                     background: #fff;
                     padding-top:20px;
                     @include mobile{
