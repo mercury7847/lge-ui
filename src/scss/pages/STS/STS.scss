@@ -666,6 +666,8 @@
                     position: relative;
                     //BTOCSITE-9038
                     height: 68.03%;
+                    display: block;
+                    flex: none;
                     @include mobile{
                         //height:calc(100% - 107.5px);
                         border-radius: 0;
@@ -791,6 +793,8 @@
                     //BTOCSITE-9038
                     height: 68.03%;
                     position: relative;
+                    display: block;
+                    flex: none;
                     @include mobile{
                         //height:calc(100% - 107.5px);
                         border-radius: 0;
