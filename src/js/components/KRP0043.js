@@ -303,12 +303,16 @@
                             lgkorUI.hideLoading();
                         } else {
                             //1207 함수 추가
+                            $pdpTab.text("Q&A (" + totalCount +")");
+                            self.$totalCount.text(totalCount);
                             self.requestNoData();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             
                         }
                     } else {
                         //1207 함수 추가
+                        $pdpTab.text("Q&A (" + totalCount +")");
+                        self.$totalCount.text(totalCount);
                         self.requestNoData();
                         self.$pagination.vcPagination('setPageInfo', pagination);
 
