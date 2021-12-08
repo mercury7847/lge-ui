@@ -637,7 +637,9 @@
                     contype = lastbox.data('contentsType');
 
                     if(window.innerWidth < 480){
-                        boxheight = boxwidth * 1.25 + 50;
+                        //boxheight = boxwidth * 1.25 + 50;
+                        //BTOCSITE-9038
+                        boxheight = boxwidth * 1.7969;
                     }else{
                         //boxheight = boxwidth * 1.25;
                          //BTOCSITE-9038
