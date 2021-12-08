@@ -741,13 +741,28 @@
                             margin-top: 3px;
                         }
                     }
-                    .flag-wrap.box-type .flag{
+                    // BTOCSITE-9038
+                    .tag-wrap {
+                        position: absolute;
+                        bottom:24px;
                         @include mobile{
-                            border-color:#000;
-                            height: 20px;
-                            font-size:11px;
-                            padding:2px 8px;
-                            line-height: 16px;
+                            bottom:12px;
+                        }
+                        .tags {
+                            @include mobile{
+                                .tag{
+                                    display:none;
+                                    text-decoration: none;
+                                    a{
+                                        text-decoration: underline;
+                                        color:#000;
+                                        line-height: 13px;
+                                    }
+                                    &:first-child{
+                                        display:block;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
