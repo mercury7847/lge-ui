@@ -611,7 +611,7 @@
 
             self.$writeForm.find('.ui_imageinput').vcImageFileInput({
                 individualFlag:true,
-                totalSize: 1024, //  1024(1MB):dev test용 / 10 * 1024 * 1024 (10MB):stg,prd
+                totalSize: 1024 * 1024, //  1024 * 1024(1MB):dev test용 / 10 * 1024 * 1024 (10MB):stg,prd
                 fileNameSize : 50, // 파일명 최대 50자 이내(.확장자 포함)
                 message: {
                     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
