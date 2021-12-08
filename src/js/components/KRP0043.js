@@ -326,8 +326,6 @@
             console.log("param.mode", param.mode)
             var paramCheck = param.mode == "write" ?  "" : "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             var ajaxUrl = self.$qnaType.data('readAjax') + paramCheck;
-            
-            console.log("ajaxUrl", ajaxUrl);
 
             //일반 case
             if(lgkorUI.stringToBool(loginFlag)) {
@@ -556,7 +554,7 @@
                                 self.$writePopup.vcModal('hide');
                                 location.reload();
                             }
-                        });                        
+                        });                    
                     } else {
                         lgkorUI.hideLoading();
                         self.$writePopup.vcModal('hide');
@@ -577,12 +575,12 @@
             if(lgkorUI.stringToBool(loginFlag)) {
                 lgkorUI.requestAjaxData(ajaxUrl,param, function(result) {
                     if(result.status === 'success') {
-                        //if(result.returnUrl) location.href = result.returnUrl;
                         lgkorUI.alert("", {
-                            title: "게시물이 삭제되었습니다."
-                            
+                            title: "게시물이 삭제되었습니다.",
+                            ok: function(){
+                                location.reload();
+                            }
                         });
-                        location.reload();
                     } else {
                         lgkorUI.alert("", {
                             title: result.message
