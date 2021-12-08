@@ -899,13 +899,15 @@ if ('scrollRestoration' in history) {
                         // console.log($shortenTxt_2);
                         
                         //self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
-                        self.$similarText.text('“' + $shortenTxt_1 + ' ~ '+ $shortenTxt_2 +'” 검색 결과로 이동').attr('href','#'+inputValue);
-                        self.$searchSimilar.show();
-
-                        if(searchedValue.length < 20) {
-                            self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
-                        } else {
-                            self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
+                        if(splitYN != "Y") {
+                            self.$similarText.text('“' + $shortenTxt_1 + ' ~ '+ $shortenTxt_2 +'” 검색 결과로 이동').attr('href','#'+inputValue);
+                            self.$searchSimilar.show();
+    
+                            if(searchedValue.length < 20) {
+                                self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue); //원본
+                            } else {
+                                self.$searchResultText.html('<span class="search-word">“<em class="word">' + $maxTextPro + '</em>”</span>' + ' 검색 결과');
+                            }
                         }
                     } else {
                         self.$searchSimilar.hide();
