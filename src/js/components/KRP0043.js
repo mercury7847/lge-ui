@@ -30,7 +30,7 @@
             '<a href="#n" class="accord-btn {{#if (enabled == "Y")}}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge {{#if (answered == "Y") }}active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
                 '<span class="title line1{{#if (secret == "Y") && (blocked == "N") }} on{{/if}}{{#if (blocked == "Y") }} hide{{/if}}">' +
-                '{{#if (blocked == "Y") }}관리자에 의해 노출되지 않는 게시물입니다.{{#else}}{{#if (secret =="Y") }}비밀 글 입니다.{{#else}}{{ questionTitle }}{{/if}}{{/if}}' +
+                '{{ questionTitle }}' +
                 '</span>' +
                 '<span class="writer">{{ creationUserName }}</span>' +
                 '<span class="date">{{ creationDate }}</span>' +
