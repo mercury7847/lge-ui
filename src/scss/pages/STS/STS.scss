@@ -667,7 +667,7 @@
                     //BTOCSITE-9038
                     height:calc(100% - 173px);
                     @include mobile{
-                        height: auto;
+                        height:calc(100% - 107.5px);
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -711,6 +711,7 @@
                     background-size: 48px 48px;
                     @include mobile{
                         background-size: 41px 41px;
+                        height:calc(100% - 107.5px);
                     }
                 }
                 .text-area {
@@ -725,7 +726,7 @@
                     height: 173px;
                     @include mobile {
                         padding:10px 12px;
-                        height: 108px;
+                        height: 107.5px;
                     }
                     .card-title{
                         // BTOCSITE-9038
@@ -791,7 +792,7 @@
                     height:calc(100% - 173px);
                     position: relative;
                     @include mobile{
-                        height: auto;
+                        height:calc(100% - 107.5px);
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -848,7 +849,7 @@
                     padding-top:20px;
                     @include mobile{
                         padding:10px 12px;
-                        height: 108px;
+                        height: 107.5px;
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
