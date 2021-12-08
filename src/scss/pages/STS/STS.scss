@@ -669,7 +669,7 @@
                     display: block;
                     flex: none;
                     @include mobile{
-                        //height:calc(100% - 107.5px);
+                        height:62.65%;
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -728,7 +728,7 @@
                     height: 31.97%;
                     @include mobile {
                         padding:10px 12px;
-                        //height: 107.5px;
+                        height: 37.35%
                     }
                     .card-title{
                         // BTOCSITE-9038
@@ -796,7 +796,7 @@
                     display: block;
                     flex: none;
                     @include mobile{
-                        //height:calc(100% - 107.5px);
+                        height:62.65%;
                         border-radius: 0;
                         overflow: hidden;
                     }
@@ -853,7 +853,7 @@
                     padding-top:20px;
                     @include mobile{
                         padding:10px 12px;
-                        //height: 107.5px;
+                        height:37.35%;
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
