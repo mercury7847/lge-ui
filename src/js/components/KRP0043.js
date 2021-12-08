@@ -489,9 +489,10 @@
                             title: "게시물이 등록되었습니다.",
                             ok : function(){
                                 self.$writePopup.vcModal('hide');
+                                location.reload();
                             }
                         });
-                        location.reload();
+                        
                     } else {
                         lgkorUI.hideLoading();
                         self.$writePopup.vcModal('hide');
@@ -553,9 +554,9 @@
                             title: "게시물이 수정되었습니다.",
                             ok: function(){
                                 self.$writePopup.vcModal('hide');
+                                location.reload();
                             }
-                        });
-                        location.reload();
+                        });                        
                     } else {
                         lgkorUI.hideLoading();
                         self.$writePopup.vcModal('hide');
