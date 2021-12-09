@@ -4,16 +4,14 @@
         '<p class="title"><a href="#{{id}}">{{title}}</a>' +
         '</p>' +
         '<div class="info"><ul>' +
-            '{{#if (postType == "legacy") }}' +
             '<li>접수번호 {{regNumber}}</li>' +
-            '{{/if}}' +
             '<li>등록일 {{date}}</li>' +
         '</ul></div>' +
     '</li>';
 
     var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>'
 
-    $(document).ready(function() {
+    $(window).ready(function() {
         var myWrite = {
             init: function() {
                 var self = this;
