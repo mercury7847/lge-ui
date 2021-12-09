@@ -2583,7 +2583,7 @@
 	}
 	&.silver_green {
 		& input + label:before {
-			background-position:-96px -48px;
+			background-position:-120px -48px;
 		}
 	}
 	&.sand_sand {
@@ -2783,7 +2783,9 @@
 	}
 	/* //BTOCSITE-2758 시블링 컬러칩코드 추가요청 */
 
-	//BTOCSITE-4224 PLP,PDP 시블링
+
+	//[S] BTOCSITE-4224 PLP,PDP 시블링
+	//objet_botanic: -96px -240px, 보타닉 컬러는 기존 선언된 class 와 중복되어 기존소스로 사용하는것으로 함.
 	$colorChipData: (
 		av_charcoal-black: -48px -216px,
 		av_pearl-white: -72px -216px,
@@ -2794,7 +2796,6 @@
 		av_bubble-black: -24px -240px,
 		av_sour-lemon: -48px -240px,
 		fridge_manhattan-midnight: -72px -240px,
-		objet_botanic: -96px -240px,
 		objet_Stone: -120px -240px,
 
 		kimchi_shinee-pure: 0 -264px,
@@ -2819,6 +2820,7 @@
 		air_dark-blue: -120px -312px,
 
 		air_rose-gold: 0 -336px,
+		silver_manhattan: -24px -336px
 	);
 
 	@each $color, $bgPosition in $colorChipData {
@@ -2828,7 +2830,18 @@
 			}
 		}
 	}
-	//BTOCSITE-4224 PLP,PDP 시블링
+
+	//선택 시 검은색 화살표 적용 컬리칩
+	$activeBlackArrowData: (av_pearl-white, av_silver-white, av_berry-blue, av_bubble-black, av_sour-lemon);
+	@each $color in $activeBlackArrowData {
+		&.#{$color} {
+			& input:checked + label:after {
+				border-bottom: 2px solid #000 !important;
+				border-left: 2px solid #000 !important;
+			}
+		}
+	}
+	//[E] BTOCSITE-4224 PLP,PDP 시블링
 }
 
 
