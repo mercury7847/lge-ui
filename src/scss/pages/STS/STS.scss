@@ -826,6 +826,7 @@
                     position: relative;
                     display: block;
                     flex: none;
+                    background: rgb(244, 244, 244);
                     @include mobile{
                         height:62.65%;
                         border-radius: 0;
