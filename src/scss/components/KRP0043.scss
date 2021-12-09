@@ -230,12 +230,15 @@
                 padding:0 44px 60px 12px;
             }
             p.desc {
-                display: inline;
-                margin-left:6px;
+                display: inline-block;
+                width: 100%;
+                max-width: 895px;
+                margin-left:20px;
                 white-space:pre-line;
             }
             span.tit {
                 font-weight: bold;
+                position: absolute;
             }
             .que-box {
                 margin-bottom: 16px;
@@ -272,6 +275,7 @@
                     font-size:14px;
                     color: #666;
                     line-height: 26px;
+                    margin-left:20px;
                     @include mobile{
                         
                     }
