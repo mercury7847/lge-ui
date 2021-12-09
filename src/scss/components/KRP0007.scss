@@ -537,7 +537,13 @@
         }
     }
 }
-/* // BTOCSITE-9186 */
 .popup-inch-guide{
     max-width: 444px;
+    iframe{
+        min-height: 554px;
+        @include mobile{
+            height: 100%;
+        }
+    }
 }
+/* // BTOCSITE-9186 */
