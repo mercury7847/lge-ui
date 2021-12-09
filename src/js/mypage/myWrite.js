@@ -18,13 +18,6 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
-                    
-                    var $a = self.$mySort.find('li.on a');
-                    var category = $a.attr('href').replace("#","");
-                    self.requestData({
-                        "category":category,
-                        "page": "1"
-                    });
 
                     //self.checkNoData();
                 });
@@ -41,6 +34,16 @@
                 self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
                 self.$detailPopup = self.$contWrap.find('#popupDetail');
+            },
+
+            dataInit: function() {
+                var self = this;
+                var $a = self.$mySort.find('li.on a');
+                var category = $a.attr('href').replace("#","");
+                self.requestData({
+                    "category":category,
+                    "page": "1"
+                });
             },
 
             bindEvents: function() {
@@ -217,7 +220,10 @@
                 });
             }
         };
-
         myWrite.init();                
+
+        $(window).on('load', function(){
+            myWrite.dataInit();
+        })
     });
 })();
