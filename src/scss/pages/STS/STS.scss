@@ -743,8 +743,10 @@
                         padding:10px 12px;
                         height: 37.35%
                     }
-                    .card-title{
-                        // BTOCSITE-9038
+                    // BTOCSITE-9038
+                    .card-title {
+                        @include textEllipsisClamp(2);
+                        max-height: 82px;
                         font-size:24px;
                         line-height:32px;
                         // @include mobile{
