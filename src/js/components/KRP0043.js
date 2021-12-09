@@ -32,8 +32,10 @@
                 '<span class="title line1{{#if (secret == "Y") && (blocked == "N") }} on{{/if}}{{#if (blocked == "Y") }} hide{{/if}}">' +
                 '{{#if (secret == "Y") && (blocked == "N") }}비밀글입니다{{#else}}{{ questionTitle }}{{/if}}' +
                 '</span>' +
-                '<span class="writer">{{ creationUserName }}</span>' +
-                '<span class="date">{{ creationDate }}</span>' +
+                '<div class="info-wrap">' + 
+                    '<span class="writer">{{ creationUserName }}</span>' +
+                    '<span class="date">{{ creationDate }}</span>' +
+                '</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
