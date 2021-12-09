@@ -149,18 +149,12 @@
                 //flex: 1;
                 padding-top: 12px;
                 padding-right: 80px;
-                &.mar {
-                    margin-right:248px;
-                }
             }
             @include mobile {
                 display: block;
                 .info-text {
                     min-height: 110px;
                     padding: 4px 0 0 126px;
-                    &.mar {
-                        margin-right:0;
-                    }
                 }
             }
             .detail-wrap {
@@ -225,6 +219,9 @@
                         content: '';
                     }
 
+                    &:empty:before {
+                        display:none;
+                    }
                     &.mo-only { display:none; }
                 }
                 @include mobile {
@@ -234,7 +231,11 @@
                     padding-top: 6px;
                     // border-top: 1px solid $color-border;
                     text-align: left;
-                    &.mo-only { display:block; }
+                    &.mo-only { display:block;
+                        &:empty {
+                            display:none;
+                        }
+                    }
                     &.pc-only { display:none; }
                 }
 
