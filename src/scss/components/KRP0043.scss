@@ -115,6 +115,17 @@
             .title{
                 font-weight: bold; //1209 추가
             }
+            .writer {
+                @include mobile{
+                    left:12px;
+                }
+            }
+            .date {
+                @include mobile{
+                    left:51px;
+                }
+            }
+
         }
         &.qna-type > ul > .lists .head .accord-btn {
             padding:25px 396px 25px 93px;
@@ -232,7 +243,7 @@
                 @include mobile{
                     top:76px;
                     right:0;
-                    left:50px;
+                    left:45px;
                     transform: none;
                 }
             }
