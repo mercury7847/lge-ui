@@ -746,7 +746,7 @@
                     // BTOCSITE-9038
                     .card-title {
                         @include textEllipsisClamp(2);
-                        max-height: 82px;
+                        max-height: 69px;
                         font-size:24px;
                         line-height:32px;
                         // @include mobile{
@@ -757,6 +757,7 @@
                             font-size:14px;
                             line-height:20px;
                             margin-top: 2px;
+                            max-height: 43px;
                         }
                     }
                     // BTOCSITE-9038
@@ -891,8 +892,8 @@
                     }
                     .card-title {
                         @include textEllipsisClamp(2);
-                        max-height: 82px;
                         // BTOCSITE-9038
+                        max-height: 69px;
                         font-size:24px;
                         line-height:32px;
                         // @include mobile{
@@ -903,6 +904,7 @@
                             font-size:14px;
                             line-height:20px;
                             margin-top: 2px;
+                            max-height: 43px;
                         }
                     }
                     
