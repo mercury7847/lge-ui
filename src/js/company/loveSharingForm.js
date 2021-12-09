@@ -80,6 +80,7 @@
                     //고유번호증
                     groupNumber: {
                         required: true,
+                        minLength: 10,
                         msgTarget: '.err-block',
                         errorMsg: '고유번호증을 입력해 주세요.',
                         patternMsg: '정확한 고유번호를 입력해주세요.'
@@ -115,7 +116,6 @@
                     //제안 내용
                     commentContent: {
                         required: true,
-                        //minLength: 1,
                         msgTarget: '.err-block',
                         errorMsg: '내용을 입력해 주세요.'
                     },
@@ -226,6 +226,12 @@
                 }
             });
 
+            $(document).on('input', 'input[type="number"]', function(){
+                if (this.maxLength > 0 && this.value.length > this.maxLength){
+                    this.value = this.value.slice(0, this.maxLength);
+                }
+            });
+
             $('input[type="number"]').on({
                 keyup : function(e){
                     var $this = $(this);
@@ -257,7 +263,7 @@
 
                     self.$cont.find('#zipCode').val(data.zonecode);
                     self.$cont.find('#userAddress').val(address);
-                    self.$cont.find('#detailAddress').val('').prop('readonly', false);
+                    self.$cont.find('#detailAddress').val('').prop('disabled', false);
                 });
             });
             
