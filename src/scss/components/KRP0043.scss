@@ -10,7 +10,7 @@
         padding:0;
     }
     .inner {
-        max-width:1380px;
+        max-width:1380px; //1209 추가
         margin:0 auto;
         @include mobile {
             padding-top:12px;
@@ -61,8 +61,10 @@
                 margin-bottom: 12px;
             }
             .sort-box {
-                flex-grow: 1;
-                
+                flex-grow: 0.5;
+                @include mobile{
+                    flex-grow: 17.6;
+                }
             }
             .sort-area{
                 flex-grow: 20;
@@ -75,16 +77,15 @@
             .btn.border.ico-req{
                 flex-grow: 1;
                 width: 84px;
-                height: 40px;
                 line-height: 20px;
                 padding:10px 15px !important;
                 @include mobile{
                     margin-left:0;
                     min-width: 0;
                     width: 80px;
+                    line-height: 12px;
                     padding:7px 16px;
                     font-size:13px;
-                    line-height:19px;
                 }
             }
 
@@ -107,13 +108,18 @@
                 }
             }
         }
+        &.qna-type > ul > .lists.notice .head .accord-btn {
+            .title{
+                font-weight: bold; //1209 추가
+            }
+        }
         &.qna-type > ul > .lists .head .accord-btn {
             padding:25px 396px 25px 93px;
             @include mobile {
                 padding:50px 0 38px;
             }
             &:after {
-                right:48px;
+                right:32px; //1209 추가
                 width:24px;
                 height:24px;
                 margin-top:-12px;
@@ -132,7 +138,7 @@
             .badge {
                 position:absolute; top:50%; left:24px;
                 font-size:12px;
-                line-height:24px;
+                line-height:22px;
                 font-weight:bold;
                 color:#aaa;
                 border:1px solid #aaa;
@@ -140,6 +146,7 @@
                 border-radius: 4px;
                 transform:translateY(-50%);
                 width: 60px;
+                height: 24px;
                 text-align: center;
                 @include mobile {
                     top:16px;
@@ -183,6 +190,7 @@
                 }
                 &.hide {
                     color:#aaa;
+                    font-weight: normal; //1209 추가
                 }
             }
             
@@ -224,7 +232,7 @@
             }
         }
         &.qna-type > ul > .lists .accord-cont {
-            padding:0 76px 48px 108px;
+            padding:0 108px 48px 108px;
             color:#000;
             @include mobile {
                 padding:0 44px 60px 12px;
@@ -232,7 +240,7 @@
             p.desc {
                 display: inline-block;
                 width: 100%;
-                max-width: 895px;
+                max-width: 662px;
                 margin-left:20px;
                 white-space:pre-line;
             }
@@ -243,12 +251,17 @@
             .que-box {
                 margin-bottom: 16px;
                 .img-wrap {
-                    overflow-x: auto;
+                    max-height: 534px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
                     @include mobile{
                     }
                     img {
                         margin-top: 16px;
                         display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                     }
                 }
                 &.notice {
@@ -257,12 +270,16 @@
                         white-space : pre-line;
                     }
                     .img-wrap {                        
-                        overflow-x: auto;
+                        //max-height: 360px;
+                        //overflow-y: auto;
                         @include mobile {                            
                         }
                         img {
                             margin-top: 16px;
                             display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
                 }
@@ -295,7 +312,7 @@
                         width: 1px;
                         height:10px;
                         background: #ddd;
-                        margin:0 6px;
+                        margin:0 4px 0 6px;
                 }
             }
         }
@@ -366,10 +383,14 @@
 		}
 	}
     .bullet-list {
+        margin-top: 24px;
         .underline {
             text-decoration: underline;
             font-weight: normal;
         }
+    }
+    .bullet-list.top-border {
+        padding-top:16px;
     }
 	@include mobile{
 		margin-top:32px;
@@ -405,6 +426,12 @@
 							height:20px;
 							background-size:100% 100%;
 						}
+                        .btn-del {
+                            width:20px;
+							height:20px;
+							background-size:100% 100%;
+                        }
+
 					}
 				}
 			}

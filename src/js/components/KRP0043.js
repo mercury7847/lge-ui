@@ -633,7 +633,7 @@
                         var $fileItem = $(target).closest('[data-role="file-item"]');
                         $fileItem.find("input[type='file']").data('fileFlag','delete');
                         $fileItem.find('.file-preview').empty();
-                        $fileItem.find('.file-name input').prop('placeholder','');
+                        $fileItem.find('.file-name input').prop('placeholder','파일선택');
                     }
                 }
             });
@@ -643,7 +643,7 @@
             if(self.$writeFormFileItem.hasClass="on"){
                 self.$writeFormFileItem.removeClass("on");
                 self.$writeFormFileItem.find('.file-preview').empty();
-                self.$writeFormFileItem.find('.file-name input').prop('placeholder','');
+                self.$writeFormFileItem.find('.file-name input').prop('placeholder','파일선택');
                 self.$writeFormFileItem.find('.file-name input').val('');
             }
             
