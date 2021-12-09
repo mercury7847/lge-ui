@@ -128,22 +128,14 @@
             .title{
                 font-weight: bold; //1209 추가
             }
-            .writer {
-                @include mobile{
-                    left:12px;
-                }
-            }
-            .date {
-                @include mobile{
-                    left:51px;
-                }
-            }
 
         }
         &.qna-type > ul > .lists .head .accord-btn {
-            padding:25px 396px 25px 93px;
+            padding:25px 110px 25px 93px;
+            justify-content: space-between;
             @include mobile {
-                padding:40px 0 38px;
+                padding:40px 0 15px;
+                flex-direction: column;
             }
             &:after {
                 right:32px; //1209 추가
@@ -221,44 +213,39 @@
                     font-weight: normal; //1209 추가
                 }
             }
-            
-            .writer{
-                position: absolute; 
-                top:50%; right:252px;
-                transform: translateY(-50%);
-                font-size:14px;
-                width: 100%;
-                max-width: 100px;
-                text-align: center;
+            .info-wrap {
+                display: flex;
+                align-items: center;
                 @include mobile{
-                    left:12px;
-                    top:72px;
-                    right:0;
-                    text-align: left;
-                    transform: none;
-                    &::after{
-                        content: '';
-                        width:1px;
-                        height:10px;
-                        background-color: #ddd;
-                        display: inline-block;
-                        margin:0 6px;
+                    margin-left: 12px;
+                    margin-top: 3px;
+                }
+                .writer{
+                    font-size:14px;
+                    text-align: center;
+                    width: 120px;
+                    @include mobile{
+                        width: auto;
+                        text-align: left;
+                        transform: none;
+                        &::after{
+                            content: '';
+                            width:1px;
+                            height:10px;
+                            background-color: #ddd;
+                            display: inline-block;
+                            margin:0 6px;
+                        }
                     }
                 }
-            }
-            .date {
-                position: absolute;
-                top:50%; right:104px;
-                transform: translateY(-50%);
-                font-size:14px;
-                width: 100px;
-                margin-right: 0 48px;
-                text-align: center;
-                @include mobile{
-                    top:72px;
-                    right:0;
-                    left:45px;
-                    transform: none;
+                .date {
+                    font-size: 14px;
+                    width: 100px;
+                    text-align: center;
+                    @include mobile{
+                        width: auto;
+                        transform: none;
+                    }
                 }
             }
         }
