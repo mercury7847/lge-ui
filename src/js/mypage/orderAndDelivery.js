@@ -987,8 +987,9 @@
         var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-takeback').find('input[name=takebackPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1063,8 +1064,9 @@
         var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
