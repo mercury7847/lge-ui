@@ -13,7 +13,7 @@
 
     var popupDetailItemTemplate = '<li><dl><dt>{{title}}</dt><dd>{{#raw desc}}</dd></dl></li>'
 
-    $(window).ready(function() {
+    $(document).ready(function() {
         var myWrite = {
             init: function() {
                 var self = this;
