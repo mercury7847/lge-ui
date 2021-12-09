@@ -68,6 +68,9 @@
             }
             .sort-area{
                 flex-grow: 20;
+                @include mobile{
+                    flex-grow: 150;
+                }
                 .sort-list {
                     .chk-wrap{
                         width:111px;
@@ -199,11 +202,14 @@
                 top:50%; right:252px;
                 transform: translateY(-50%);
                 font-size:14px;
-                width: 100px;
+                width: 100%;
+                max-width: 100px;
                 text-align: center;
                 @include mobile{
-                    left:-14px;
+                    left:12px;
                     top:76px;
+                    right:0;
+                    text-align: left;
                     transform: none;
                     &::after{
                         content: '';
@@ -211,7 +217,7 @@
                         height:10px;
                         background-color: #ddd;
                         display: inline-block;
-                        margin-left:6px;
+                        margin:0 6px;
                     }
                 }
             }
@@ -478,4 +484,10 @@
 
 .ui-selectbox-wrap .ui-selectbox-list .ui-select-scroll {
     display: none!important;
+}
+
+.sort-select-wrap .ui-selectbox-wrap .ui-select-button {
+    @include mobile{
+        padding-right: 20px;
+    }
 }
