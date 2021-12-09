@@ -2583,7 +2583,7 @@
 	}
 	&.silver_green {
 		& input + label:before {
-			background-position:-96px -48px;
+			background-position:-120px -48px;
 		}
 	}
 	&.sand_sand {
@@ -2820,6 +2820,7 @@
 		air_dark-blue: -120px -312px,
 
 		air_rose-gold: 0 -336px,
+		silver_manhattan: -24px -336px
 	);
 
 	@each $color, $bgPosition in $colorChipData {
