@@ -41,7 +41,7 @@ if ('scrollRestoration' in history) {
 
                         // BTOCSITE-16 검색 결과 구획 정리
                         '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-                            '{{#if originalPrice != 0}}' + 
+                            '{{#if originalPrice != 0 || carePrice != 0}}' + 
                                 '<div class="info-price mo-only">' +
                                     '<a href="{{url}}">' +
                                         '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
@@ -95,7 +95,7 @@ if ('scrollRestoration' in history) {
 
             // BTOCSITE-16 검색 결과 구획 정리
             '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-                '{{#if originalPrice != 0}}' + 
+                '{{#if originalPrice != 0 || carePrice != 0}}' + 
                     '<div class="info-price pc-only">' +
                         '<a href="{{url}}">' +
                             '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
