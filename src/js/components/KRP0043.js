@@ -161,7 +161,10 @@
                 self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
             });
 
-            
+            // 닫기 버튼 클릭 시 form 전체 입력 값 초기화
+            self.$writePopup.on('click', '.btn-close', function(){
+               $("#submitForm")[0].reset();
+            });
 
             // 비밀글 제외 체크
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
@@ -278,9 +281,8 @@
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var listData = result.data.qnaList;
-                    var noticeData = result.data.qnaNoticeList;//공지사항
-                    //var html = ""; // 공지사항용
-                    var innerHTML = ""; //qna list용
+                    var noticeData = result.data.qnaNoticeList;
+                    var innerHTML = "";
                     
                     var pagination = result.data.pagination;
                     var totalCount = result.data.qnaTotalCount;
@@ -307,16 +309,14 @@
                             self.$nodata.hide();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             lgkorUI.hideLoading();
-                        } else {
-                            //1207 함수 추가
+                        } else {                            
                             //$pdpTab.text("Q&A (" + totalCount +")");
                             self.$totalCount.text(totalCount);
                             self.requestNoData();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             
                         }
-                    } else {
-                        //1207 함수 추가
+                    } else {                        
                         $pdpTab.text("Q&A (" + totalCount +")");
                         self.$totalCount.text(totalCount);
                         self.requestNoData();
@@ -428,7 +428,7 @@
                                             reader.readAsDataURL(data);
                                             reader.onload = function(e){                               
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on');                                                
+                                                $fileBox.classList.add('on');
                                                 $filePreview.innerHTML = imgTag;
                                                 $($fileName).val(imgfiles[i].fileName);
                                             }
@@ -438,8 +438,14 @@
                                     }
                                 })(i);
                             }
-                        } else {
-                            console.log("fail");
+                        } else {                    
+                            lgkorUI.alert("", {
+                                title: "게시물 확인이 불가합니다. 관리자에게 문의해주세요. ",
+                                ok : function(){
+                                    self.$writePopup.vcModal('hide');
+                                    location.reload();
+                                }
+                            });
                         }
                     },"POST");
                 }
@@ -501,17 +507,16 @@
                             }
                         });
                         
-                    } else {
-                        lgkorUI.hideLoading();
-                        self.$writePopup.vcModal('hide');
-                        if (result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message,
-                                ok : function(){
-                                    self.$writePopup.vcModal('hide');
-                                }
-                            });
-                        }
+                    } else {    
+                        lgkorUI.hideLoading();                    
+                        lgkorUI.alert("", {
+                            title: "게시물 등록에 실패하였습니다.",
+                            ok : function(){
+                                self.$writePopup.vcModal('hide');
+                                location.reload();
+                            }
+                        });
+                        
                     }
                 }, 'POST', 'json',true);
             }
@@ -556,8 +561,7 @@
                 //lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        lgkorUI.hideLoading();
-                        
+                        lgkorUI.hideLoading();                        
                         lgkorUI.alert("", {
                             title: "게시물이 수정되었습니다.",
                             ok: function(){
@@ -567,12 +571,13 @@
                         });                    
                     } else {
                         lgkorUI.hideLoading();
-                        self.$writePopup.vcModal('hide');
-                        if (result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message,
-                            });
-                        }
+                        lgkorUI.alert("", {
+                            title: "게시물 수정에 실패하였습니다.",
+                            ok : function(){
+                                self.$writePopup.vcModal('hide');
+                                location.reload();
+                            }
+                        });
                     }
                 }, 'POST', 'json',true);
             }
@@ -593,7 +598,10 @@
                         });
                     } else {
                         lgkorUI.alert("", {
-                            title: result.message
+                            title: "게시물 삭제에 실패하였습니다.",
+                            ok : function(){
+                                location.reload();
+                            }
                         });
                     }
                 },"POST");
