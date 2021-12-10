@@ -219,8 +219,10 @@
                         content: '';
                     }
 
-                    &:empty:before {
-                        display:none;
+                    &.pc-only { 
+                        &:empty:before {
+                            display:none;
+                        }
                     }
                     &.mo-only { display:none; }
                 }
@@ -231,7 +233,8 @@
                     padding-top: 6px;
                     // border-top: 1px solid $color-border;
                     text-align: left;
-                    &.mo-only { display:block;
+                    &.mo-only { 
+                        display:block;
                         &:empty {
                             display:none;
                         }
