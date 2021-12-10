@@ -11,18 +11,19 @@
 			display:inline-block;
 			width:calc((100% - 96px) / 5); //BTOCSITE-6032 탭 5개로 변경(Q&A tab 추가)
 			margin-left:24px;
+			vertical-align: top; //BTOCSITE-6032 추가
 			&:first-child {
 				margin-left:0;
 			}
 			a {
-				display:block;
+				display:flex; //BTOCSITE-6032 수정
 				height:74px;
 				border-radius:8px;
 				box-shadow:2px 4px 16px rgba(0,0,0,0.14);
 				color:#000;
 				font-size:16px;
 				font-weight:500;
-				line-height:74px;
+				line-height:1.4; //BTOCISTE-6032 수정
 				text-align:center;
 				@media screen and (min-width: 768px) and (max-width: 810px) {
 					font-size:15px;
