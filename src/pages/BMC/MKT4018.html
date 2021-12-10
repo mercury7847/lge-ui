@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"],
+        pageJS: ["event/academyEvent"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "기획전" 
+        })
+        <main class="container">
+            <div class="contents event exhibition">
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+                        <div class="ev-detail-top">
+                            <div class="top-inner" style="background:url('/lg5-common/images/dummy/@img-event-bg-top.jpg') no-repeat 0 0; background-size:cover;">
+                                <div class="tit-wrap is-bg">
+                                    <p class="tit" style="color:#fff;"><span class="blind">제목</span>웨딩(혼수가전) 페스티벌</p>
+                                    <span class="sub-tit" style="color:#fff;"><span class="blind">서브 제목</span>예비 신혼부부를 위한 LG전자 웨딩 페스티벌!</span>
+                                </div>
+                                @@include('./common/partials/KRP0016.html')
+                                <div class="info-wrap">
+                                    <div class="info-list">
+                                        <dl>
+                                            <dt style="color:#fff;">행사기간</dt>
+                                            <dd style="color:#fff;">2020.09.04 ~2020.09.30</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt style="color:#fff;">행사채널</dt>
+                                            <dd style="color:#fff;">전채널</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt style="color:#fff;">행사경품</dt>
+                                            <dd style="color:#fff;">청첩장 또는 웨딩홀 계약서 등 확인 후 제품 구매 시 할인혜택 제공</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="ev-detail-con">
+                            <div class="ev-cont">
+                                <div class="conts">
+                                    <div class="event_wr">
+                                        <!-- 로그인 전 s -->
+                                        <div class="academy-event login-no">
+                                            <div class="btn-area">
+                                                <button type="button" class="btn-opt-login" id="btn-opt-login"><span>로그인</span></button>
+                                            </div>
+                                        </div>
+                                        <article id="academyPopup01" class="popup-wrap">
+                                            <header class="pop-header">
+                                                <h1 class="tit"><span>아카데미 기획전 대상 확인</span></h1>
+                                            </header>
+                                            <section class="pop-conts">
+                                                <P class="p-title">죄송합니다.</P>
+                                                <p>회원님은 LG전자 아카데미 스토어 대상자에 포함되지 않습니다.</p>
+                                                <p>만 18세~29세 학생만 입장 가능합니다.</p>
+                                            </section>
+                                            <footer class="pop-footer">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn pink btn-list"><span>목록</span></button>
+                                                </div>
+                                            </footer>
+                                            <button type="button" class="btn-close btn-list"><span class="blind">닫기</span></button>
+                                        </article>
+                                        <!-- 로그인 전 e -->
+                                        <!-- 로그인 후 s -->
+                                        <div class="academy-event login-ok">
+                                            <button type="button" data-href="#academyPopup02" data-control="modal" class="btn pink"><span>이메일 인증하기</span></button>
+                                            <article id="academyPopup02" class="popup-wrap">
+                                                <header class="pop-header">
+                                                    <h1 class="tit"><span>이메일 인증</span></h1>
+                                                </header>
+                                                <section class="pop-conts">
+                                                    <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
+                                                    <div class="form-wrap" id="email-certified-form">
+                                                        <dl class="forms">
+                                                            <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
+                                                            <dd class="conts">
+                                                                <span class="input-wrap block">
+                                                                    <input type="text" id="email" name="email" placeholder="ac.kr 계정의 이메일 주소를 입력해 주세요." data-required="true">
+                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="agree-cont-wrap">
+                                                            <div class="agree-input">
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="agreeUserCheck" name="agreeUserCheck">
+                                                                    <label for="agreeUserCheck">(필수) 개인정보 수집 및 이용동의 </label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="agree-cont-box">
+                                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
+                                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-area">
+                                                            <button type="button" class="btn-opt-login" id="btn-opt-login"><span>이메일 인증</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="email-certified-info">
+                                                        <p class="info-title">입력하신 이메일로 인증 메일을<br>전송하였으니 확인해 주세요.</p>
+                                                        <p>(48시간 이내에 인증이 완료되어야 기획전 입장이 가능합니다.)</p>
+                                                    </div>
+                                                </section>
+                                                <footer class="pop-footer">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn pink"><span>확인</span></button>
+                                                    </div>
+                                                </footer>
+                                                <button type="button" class="btn-close btn-list"><span class="blind">닫기</span></button>
+                                            </article>
+                                        </div>
+                                        <!-- 로그인 후 e -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="ev-detail-bottom">
+                            <div class="notice-wrap">
+                                <span class="b-tit">유의사항</span>
+                                <p class="bullet-text">본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.</p>
+                                <p class="bullet-text">LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.</p>
+                                <a href="#n" class="btn-link">텍스트 링크 버튼</a>
+                                <p class="bullet-text">상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 양도가 불가능합니다.</p>
+                                <p class="bullet-text">멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.</p>
+                                <p class="bullet-text">이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다.</p>
+                                <a href="#n" class="btn-link">개인정보처리방침</a>
+                            </div>
+
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>
