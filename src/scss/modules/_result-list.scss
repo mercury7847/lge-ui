@@ -283,13 +283,15 @@
                         }
                     }
                 }
-            }
-            .price-info + .price-info {
-                margin-top: 12px;
-                @include mobile {
-                    margin-top: 5px;
+
+                a + a {
+                    margin-top: 12px;
+                    @include mobile {
+                        margin-top: 5px;
+                    }
                 }
             }
+
             .btn-area {
                 .btn + .btn {
                     margin-left: 4px;
