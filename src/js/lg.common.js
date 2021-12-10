@@ -2649,6 +2649,100 @@ var goAppUrl = function(path) {
                     domain : location.host
                 });
             }
+        },
+        addViewportEvent: function (target, param) { 
+            //BTOCSITE-8039: WCMS컴포넌트 개선 - intersectionObserber jquery ver.
+            var events = 'scroll.addViewportEvent load.addViewportEvent resize.addViewportEvent';
+            param = $.extend({
+                parent: window,
+                a11y: false,
+                triggerPosition: false,
+                triggerPositionPercent: false,
+                enter: false,
+                leave: false,
+                progress: false,
+                visiblePercent: false,
+                visible: false,
+                invisible: false,
+                fullVisible: false
+            }, param || {});
+            if (typeof (param.triggerPosition && param.triggerPositionPercent) == 'number') {
+                return true;
+            }
+            var methods = $.fn.extend({
+                destroy: function () {
+                    $(param.parent).off(events);
+                }
+            });
+            return target.each(function (idx, obj) {
+                var isEnter = false;
+                var isVisible = false;
+                var isActive = false;
+                var isFullVisible = false;
+                var visiblePercent = 0;
+                var parent = param.parent;
+                //if(param.triggerPosition)
+                $(parent).on(events, function () {
+                    var returnValue = {
+                        Height: $(obj).outerHeight(),
+                        ViewportHeight: $(parent).height(),
+                        ScrollTop: $(document).scrollTop(),
+                        OffsetTop: $(obj).offset().top
+                    };
+                    var visiblePerTopPercent = ((returnValue.ScrollTop + returnValue.ViewportHeight - returnValue.OffsetTop) / returnValue.Height * 100).toFixed(2);
+                    var visiblePerBottomPercent = -((returnValue.ScrollTop - returnValue.OffsetTop - returnValue.Height) / returnValue.Height * 100).toFixed(2);
+                    var viewPortPosition = returnValue.OffsetTop - returnValue.ScrollTop - param.triggerPosition;
+                    var viewPortPositionPercent = (viewPortPosition / returnValue.ViewportHeight * 100 - param.triggerPositionPercent).toFixed(2);
+                    isVisible = visiblePerTopPercent >= 0 && visiblePerBottomPercent >= 0;
+                    if (viewPortPositionPercent >= 50) viewPortPositionPercent = 50;
+                    else if (viewPortPositionPercent <= -50) viewPortPositionPercent = -50;
+                    if (isVisible && visiblePerTopPercent <= 100) visiblePercent = visiblePerTopPercent;
+                    else if (isVisible && visiblePerBottomPercent <= 100) visiblePercent = visiblePerBottomPercent;
+                    else if (isVisible) visiblePercent = 100;
+                    else visiblePercent = 0;
+                    if (isVisible) {
+                        /* Set Property */
+                        obj.isVisible = isVisible;
+                        obj.isEnter = isEnter;
+                        obj.viewPortPositionPercent = viewPortPositionPercent;
+                        obj.viewPortPosition = viewPortPosition;
+                        obj.visiblePercent = visiblePercent;
+                    }
+                    if (isVisible) {
+                        /* Set Trigger & Run */
+                        if (!isEnter && (param.triggerPositionPercent !== false && viewPortPositionPercent <= 0) || (param.triggerPosition && viewPortPosition <= 0)) {
+                            $(obj).trigger('enter');
+                            if ($.isFunction(param.enter)) param.enter();
+                        }
+                        if (isEnter && (param.triggerPositionPercent !== false && viewPortPositionPercent > 0) || (param.triggerPosition && viewPortPosition > 0)) {
+                            $(obj).trigger('leave');
+                            if ($.isFunction(param.leave)) param.leave();
+                        }
+                        if ($.isFunction(param.progress)) {
+                            if (param.triggerPositionPercent) param.progress(Number(viewPortPositionPercent), returnValue);
+                            if (param.triggerPosition) param.progress(Number(viewPortPosition), returnValue);
+                        }
+                    }
+                    if (!isActive && visiblePercent > 0) {
+                        $(obj).trigger('visible');
+                        if ($.isFunction(param.visible)) param.visible();
+                    }
+                    if (isActive && visiblePercent == 0) {
+                        $(obj).trigger('invisible');
+                        if ($.isFunction(param.invisible)) param.invisible();
+                        $(obj).trigger('leave');
+                        if ($.isFunction(param.leave)) param.leave();
+                    }
+                    if (!isFullVisible && visiblePercent == 100) {
+                        $(obj).trigger('fullVisible');
+                        if ($.isFunction(param.fullVisible)) param.fullVisible();
+                    }
+                    if ($.isFunction(param.visiblePercent)) param.visiblePercent(Number(visiblePercent), returnValue);
+                    isActive = visiblePercent != 0;
+                    isEnter = ((param.triggerPositionPercent && viewPortPositionPercent <= 0) && isVisible) || ((param.triggerPosition && viewPortPosition <= 0) && isVisible);
+                    isFullVisible = visiblePercent >= 100;
+                });
+            });
         }
     }
 
