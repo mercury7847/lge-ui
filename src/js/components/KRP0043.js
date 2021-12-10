@@ -5,8 +5,10 @@
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge active notice">공지</span>' + 
                 '<span class="title line1">{{ noticeTitle }}</span>' +
-                '<span class="writer"> {{ creationName }} </span>' +
-                '<span class="date"> {{ creationDate }} </span>' +
+                '<div class="info-wrap">' +
+                    '<span class="writer"> {{ creationName }} </span>' +
+                    '<span class="date"> {{ creationDate }} </span>' +
+                '</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
