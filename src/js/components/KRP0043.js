@@ -18,9 +18,11 @@
                     '<p class="desc">' +
                         '{{ noticeContent }}' +
                     '</p>' +
+                    '{{#if !!noticeImagePath}}' +
                     '<div class="img-wrap">' +
                         '<img src="{{ noticeImagePath }}" alt="">' +
                     '</div>' +
+                    '{{/if}}'
                 '</div>' +
             '</div>' +
         '</div>' +
