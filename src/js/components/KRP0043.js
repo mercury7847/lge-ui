@@ -302,14 +302,14 @@
                             // 211206 추가 - 필터. no-data일경우에,비노출 처리 건, 다시 데이터 조회될 경우, 초기화 
                             self.$qnaList.empty().append(innerHTML);
                             self.$totalCount.text(currentCount);
-                            $pdpTab.text("Q&A (" + currentCount +")");
+                            //$pdpTab.text("Q&A (" + currentCount +")");
                             self.$qnaType.find('.qna-result-lists').show();
                             self.$nodata.hide();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             lgkorUI.hideLoading();
                         } else {
                             //1207 함수 추가
-                            $pdpTab.text("Q&A (" + totalCount +")");
+                            //$pdpTab.text("Q&A (" + totalCount +")");
                             self.$totalCount.text(totalCount);
                             self.requestNoData();
                             self.$pagination.vcPagination('setPageInfo', pagination);
