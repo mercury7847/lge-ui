@@ -338,17 +338,10 @@ $(function(){
         /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
         // 히어로배너
         $context.find('.ui_wide_slider').vcCarousel({
-            infinite: true,
-            autoplay: true,
-            slidesToScroll: 1,
-            slidesToShow: 1,
-            speed: 150,
-            touchThreshold: 100
-        }).on('carouselbeforechange', function(e, slide, prev, next){
-            heroBanner();
+            autoplay: true
         }).on('carouselafterchange', function(e, slide, prev, next){
             heroBanner();
-        });
+        })
 
         function heroBanner() {
             var heroList = $('.hero-banner .slide-track > li');
