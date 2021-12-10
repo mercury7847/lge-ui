@@ -279,11 +279,10 @@ $(window).ready(function(){
         }
 
         function changeViewContents(data){
-            $('.video-wrap').empty();
+            if(data != undefined && param.page == 1){
+                $('.video-wrap').empty();
 
-            // console.log("### changeViewContents ###", data)
-
-            if(data != undefined){
+                // console.log("### changeViewContents ###", data)
 
                 var isMoreModel = false;
                 var modelist = data.modelList;
