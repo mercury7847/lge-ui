@@ -128,6 +128,13 @@
             .title{
                 font-weight: bold; //1209 추가
             }
+            .info-wrap{
+                .writer {
+                    @include mobile{
+                        width: 60px;   
+                    }
+                }
+            }
 
         }
         &.qna-type > ul > .lists .head .accord-btn {
@@ -443,13 +450,13 @@
 					}
 					.file-btns{
 						.btn-upload{
-							width:20px;
-							height:20px;
+							width:30px;
+							height:30px;
 							background-size:100% 100%;
 						}
                         .btn-del {
-                            width:20px;
-							height:20px;
+                            width:30px;
+							height:30px;
 							background-size:100% 100%;
                         }
 
